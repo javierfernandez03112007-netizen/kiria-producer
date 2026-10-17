@@ -22,7 +22,7 @@ SODIUM = np.array([90, 170, 255], np.float32) / 255
 # por captura: centro del encuadre (px de la captura), zona vertical útil, tipo de escena
 CFG = {
     "1_tierra": dict(c=(1342, 1087), y=(165, 1670), kind="planeta"),
-    "2_espana": dict(c=(1410, 1300), y=(165, 1670), kind="region"),
+    "2_espana": dict(c=(1440, 1576), y=(545, 2050), kind="region"),
     "3_granada": dict(c=(1514, 1250), y=(165, 1670), kind="ciudad"),
     "4_centro": dict(c=(1420, 920), y=(165, 1670), kind="ciudad"),
     "5_tejados": dict(c=(1500, 920), y=(165, 1670), kind="tejados"),
@@ -81,7 +81,7 @@ def urban_lights(f, img, density=1.0):
 def convert(name, img):
     cfg = CFG[name]
     kind = cfg["kind"]
-    if kind in ("planeta", "region", "ciudad"):
+    if kind in ("planeta", "region", "ciudad", "tejados"):
         img = remove_labels(img)
     img = crop916(img, cfg["c"], cfg["y"])
     f = img.astype(np.float32) / 255
@@ -90,10 +90,10 @@ def convert(name, img):
         # terminador suave y halo atmosférico azul
         out = out * 0.9 + cv2.GaussianBlur(out, (0, 0), 8) * 0.1
     elif kind == "region":
-        out = night_base(f, 0.22)
+        out = night_base(f, 0.3)
     elif kind in ("ciudad", "tejados"):
-        out = night_base(f, 0.16 if kind == "ciudad" else 0.2)
-        out += urban_lights(f, img, 1.0 if kind == "ciudad" else 0.4) * (1.0 if kind == "ciudad" else 0.6)
+        out = night_base(f, 0.26 if kind == "ciudad" else 0.3)
+        out += urban_lights(f, img, 1.0 if kind == "ciudad" else 0.4) * (1.6 if kind == "ciudad" else 0.8)
     else:  # ventana: fachada a oscuras, cristal con luz cálida de dentro
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV).astype(np.float32)
         glass = ((hsv[..., 0] > 95) & (hsv[..., 0] < 130) & (hsv[..., 1] > 60)).astype(np.float32)

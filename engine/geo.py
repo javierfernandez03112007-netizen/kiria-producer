@@ -103,8 +103,16 @@ def glow_lines(img, pts_list, color, th=2, glow=10, a=1.0, ga=0.6):
     img[:] = img * (1 - ov[..., None] * a) + (col * 0.6 + 0.4) * ov[..., None] * a
 
 
+@lru_cache(4)
+def _bboxes(res):
+    return [[(r[:, 0].min(), r[:, 1].min(), r[:, 0].max(), r[:, 1].max()) for r in rs] for _, rs in countries(res)]
+
+
 def render_globe(img, g, res="50m", highlight=GULF, land=hex_bgr("#14305A"), border_a=0.45,
-                 graticule=True, atmosphere=True):
+                 graticule=True, atmosphere=True, hi_fill=hex_bgr("#3A3424"), hi_line=AMBER, bbox=None,
+                 extra=None):
+    """bbox=(lon0, lat0, lon1, lat1) limita los anillos dibujados (zooms rápidos).
+    extra={nombres: (relleno, línea)} resalta otros países con sus colores."""
     """Dibuja océano, retícula, países y atmósfera sobre img (float BGR)."""
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     d = np.hypot(xx - g.cx, yy - g.cy) / g.R
@@ -127,12 +135,24 @@ def render_globe(img, g, res="50m", highlight=GULF, land=hex_bgr("#14305A"), bor
             lines += _split_visible(x, y, z)
         _poly(img, lines, MINT, 0.07, fill=False)
     world = countries(res)
-    normal = [g.ring_px(r) for n, rs in world if n not in highlight for r in rs]
-    hi = [g.ring_px(r) for n, rs in world if n in highlight for r in rs]
-    _poly(img, normal, land, 1.0)
-    _poly(img, hi, hex_bgr("#3A3424"), 1.0)
-    _poly(img, normal, MINT, border_a, fill=False)
-    _poly(img, hi, AMBER, 0.8, fill=False, th=2)
+    boxes = _bboxes(res)
+    extra = extra or {}
+    groups = {"normal": [], "hi": []}
+    groups.update({k: [] for k in extra})
+    for (n, rs), bb in zip(world, boxes):
+        key = "hi" if n in highlight else next((k for k in extra if n in k), "normal")
+        for r, b in zip(rs, bb):
+            if bbox and (b[2] < bbox[0] or b[0] > bbox[2] or b[3] < bbox[1] or b[1] > bbox[3]):
+                continue
+            groups[key].append(g.ring_px(r))
+    _poly(img, groups["normal"], land, 1.0)
+    _poly(img, groups["hi"], hi_fill, 1.0)
+    for k, (fc, lc) in extra.items():
+        _poly(img, groups[k], fc, 1.0)
+    _poly(img, groups["normal"], MINT, border_a, fill=False)
+    _poly(img, groups["hi"], hi_line, 0.8, fill=False, th=2)
+    for k, (fc, lc) in extra.items():
+        _poly(img, groups[k], lc, 0.9, fill=False, th=2)
 
 
 def _split_visible(x, y, z):
