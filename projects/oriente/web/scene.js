@@ -57,7 +57,7 @@ const earthCam = new THREE.PerspectiveCamera(40, W / H, 0.0003, 300);
 const street = new THREE.Scene(); street.background = new THREE.Color(0x0b0b0b); street.fog = new THREE.Fog(0x0b0b0b, 60, 260);
 const streetCam = new THREE.PerspectiveCamera(52, W / H, 0.05, 400);
 const brent = new THREE.Scene(); brent.background = new THREE.Color(0xffffff); brent.fog = new THREE.Fog(0xffffff, 60, 200);
-const brentCam = new THREE.PerspectiveCamera(50, W / H, 0.05, 300);
+const brentCam = new THREE.PerspectiveCamera(50, W / H, 0.004, 300);
 
 const S = {};   // objetos animados
 
@@ -121,6 +121,7 @@ async function buildEarth(c50, c10) {
     S.lanes.push({ l, path: new Path(pts) });
   }
   S.mainLane = S.lanes[0];
+  S.diveShip = 2;
   S.ships = [];
   for (let i = 0; i < 16; i++) {
     const sh = makeShip(); sh.scale.setScalar(0.011); earth.add(sh);
@@ -176,7 +177,24 @@ async function buildEarth(c50, c10) {
   };
 }
 
-function buildStreet() {
+function mapTexture(c50) {
+  const cv = document.createElement('canvas'); cv.width = 2048; cv.height = 1024;
+  const g = cv.getContext('2d');
+  g.fillStyle = '#0c0c0c'; g.fillRect(0, 0, 2048, 1024);
+  g.strokeStyle = 'rgba(255,255,255,0.12)'; g.lineWidth = 1;
+  for (let lo = -180; lo <= 180; lo += 15) { const x = (lo + 180) / 360 * 2048; g.beginPath(); g.moveTo(x, 0); g.lineTo(x, 1024); g.stroke(); }
+  for (let la = -90; la <= 90; la += 15) { const y = (90 - la) / 180 * 1024; g.beginPath(); g.moveTo(0, y); g.lineTo(2048, y); g.stroke(); }
+  g.strokeStyle = 'rgba(255,255,255,0.85)'; g.lineWidth = 1.6;
+  for (const c of c50) for (const r of c.rings) {
+    g.beginPath();
+    r.forEach(([lo, la], i) => { const x = (lo + 180) / 360 * 2048, y = (90 - la) / 180 * 1024; if (i && Math.abs(lo - r[i - 1][0]) > 180) g.moveTo(x, y); else if (i) g.lineTo(x, y); else g.moveTo(x, y); });
+    g.stroke();
+  }
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return t;
+}
+
+function buildStreet(c50) {
   street.add(new THREE.HemisphereLight(0xb0b4bc, 0x101010, 0.55));
   const moon = new THREE.DirectionalLight(0xffffff, 0.6); moon.position.set(-20, 40, 15); street.add(moon);
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), mat(0x1c1c1c)); ground.rotation.x = -Math.PI / 2; street.add(ground);
@@ -192,19 +210,23 @@ function buildStreet() {
   }
   for (const sx of [-1, 1]) for (let z = 36; z > -150; z -= 16) { const l = makeLamp(); l.position.set(sx * 6.3, 0, z); l.rotation.y = sx > 0 ? Math.PI : 0; street.add(l); }
   for (const z of [-20, -52]) { const pl = new THREE.PointLight(0xffffff, 40, 25, 1.6); pl.position.set(5, 4, z); street.add(pl); }
-  const hero = makeHeroHouse(); hero.position.set(14, 0, -36); hero.rotation.y = -Math.PI / 2; street.add(hero);
+  const hero = makeHeroHouse(mapTexture(c50)); hero.position.set(14, 0, -36); hero.rotation.y = -Math.PI / 2; street.add(hero);
   hero.updateMatrixWorld(true);
   S.win = hero.localToWorld(hero.userData.window.clone());
-  S.glowP = hero.localToWorld(hero.userData.glow.clone());
+  const M = hero.userData.map;
+  const mapPt = (lon, lat, h = 0) => hero.localToWorld(M.c.clone().add(new THREE.Vector3(lon / 180 * M.w / 2, h, -lat / 90 * M.h / 2)));
+  S.mapEnd = mapPt(20, 33, 0); S.mapCam = mapPt(20, 31.5, 0.42);
+  S.mapNorth = hero.localToWorld(M.c.clone().add(new THREE.Vector3(0, 0, -1))).sub(hero.localToWorld(M.c.clone())).normalize();
   S.out = new THREE.Vector3(-1, 0, 0);
   S.cars = [];
   for (let i = 0; i < 5; i++) { const c = makeCar([0x9c9c9c, 0x5a5a5a, 0xcfcfcf][i % 3]); street.add(c); S.cars.push({ obj: c, lane: i % 2, z0: 30 - i * 37 }); }
-  const W0 = S.win, D = S.out, G = S.glowP;
+  const W0 = S.win, D = S.out;
+  const above = S.mapEnd.clone().add(new THREE.Vector3(0, 1.1, 0)).add(D.clone().multiplyScalar(0.9));
   S.camPath = new THREE.CatmullRomCurve3([new THREE.Vector3(-2, 48, 6), new THREE.Vector3(-3, 22, -14),
-    W0.clone().add(D.clone().multiplyScalar(10)).add(new THREE.Vector3(0, 1.0, 0)), W0.clone().add(D.clone().multiplyScalar(2.2)),
-    W0.clone().sub(D.clone().multiplyScalar(1.2)), G.clone().add(D.clone().multiplyScalar(0.6))]);
+    W0.clone().add(D.clone().multiplyScalar(10)).add(new THREE.Vector3(0, 1.0, 0.75)), W0.clone().add(D.clone().multiplyScalar(2.2)).add(new THREE.Vector3(0, 0.3, 0.75)),
+    W0.clone().sub(D.clone().multiplyScalar(1.0)).add(new THREE.Vector3(0, 0.3, 0.75)), above, S.mapCam.clone()]);
   S.tgtPath = new THREE.CatmullRomCurve3([new THREE.Vector3(6, 0, -34), new THREE.Vector3(11, 2, -36), W0.clone(), W0.clone(),
-    G.clone(), G.clone().sub(D.clone().multiplyScalar(1))]);
+    S.mapEnd.clone().add(new THREE.Vector3(0, 0.3, 0)), S.mapEnd.clone(), S.mapEnd.clone()]);
 }
 
 function buildBrent() {
@@ -246,6 +268,8 @@ function buildBrent() {
 
 // ---------------------------------------------------------------- utilidades de cámara
 function earthLook(pos, target, up = new THREE.Vector3(0, 1, 0)) {
+  const n = Math.max(0.00002, Math.min(0.0003, pos.distanceTo(target) * 0.02));
+  if (Math.abs(earthCam.near - n) > 1e-7) { earthCam.near = n; earthCam.updateProjectionMatrix(); }
   earthCam.position.copy(pos); earthCam.up.copy(up); earthCam.lookAt(target);
 }
 function northAt(lon, lat) {
@@ -281,6 +305,19 @@ function updateSats(time) {
   }
 }
 
+function shipU(s, t) {
+  const jam = eo(prog(t, K.teme, 1.5));
+  const v = 0.022, tj = K.teme;
+  const disp = t < tj ? v * t : v * tj + v * ((t - tj) - 0.85 * (Math.min(t - tj, 1.5) * jam * 0.5 + Math.max(0, t - tj - 1.5)));
+  let u = (s.ph + disp) % 1;
+  if (jam > 0 && s.lane === 0) { const gate = 0.5; if (u < gate) u = Math.min(u, gate - 0.015 * (s.ph * 10 % 10) * jam); }
+  return u;
+}
+function placeShip(s, t) {
+  const { p, dir } = S.lanes[s.lane].path.at(shipU(s, t));
+  s.obj.visible = true; placeOnSphere(s.obj, p, dir, 0.0008);
+}
+
 function resetEarth() {
   for (const k in S.txt) S.txt[k].visible = false;
   S.arcs.forEach(a => { a.line.visible = false; a.dots.forEach(d => (d.visible = false)); a.lab.visible = false; });
@@ -294,24 +331,43 @@ function resetEarth() {
 }
 
 // ---------------------------------------------------------------- secciones
+const earthCam2 = new THREE.PerspectiveCamera(40, W / H, 0.0003, 300);
+const MAP_VIEW = () => { earthCam2.position.copy(ll(20, 33, 1.6)); earthCam2.up.set(0, 1, 0); earthCam2.lookAt(0, 0, 0); };
+
+function streetAt(tau) {
+  const u = eio(prog(tau, 2.1, 1.75));
+  streetCam.position.copy(S.camPath.getPoint(u));
+  const k = ss(prog(u, 0.82, 0.18));   // al final se mira el mapa desde arriba con el norte hacia arriba
+  streetCam.up.set(0, 1, 0).lerp(S.mapNorth, k).normalize();
+  streetCam.lookAt(S.tgtPath.getPoint(u));
+  for (const c of S.cars) { const z = ((c.z0 - (c.lane ? -1 : 1) * 14 * tau) % 180 + 180) % 180 - 150; c.obj.position.set(c.lane ? 2 : -2, 0, z); c.obj.rotation.y = c.lane ? -Math.PI / 2 : Math.PI / 2; }
+}
+
 function entry(tau) {
-  // espacio → Granada → calle → ventana → resplandor
+  // espacio → Granada → calle → ventana → mapa sobre la mesa → Tierra
   const out = { scene: earth, cam: earthCam, white: 0, black: 0, bloom: 0.7, mixB: 0, blur: 0 };
   resetEarth(); updateSats(tau * 1.0);
-  let lon, lat, dist;
-  if (tau < 1.0) { const u = tau / 1.0; lon = lerp(-14, -8, u); lat = lerp(28, 32, u); dist = lerp(5.8, 5.2, u); }
-  else { const u = eio(prog(tau, 1.0, 1.4)); lon = lerp(-8, GRANADA[0], u); lat = lerp(32, GRANADA[1], u); dist = loglerp(5.2, 1.006, u); }
-  const tgt = ll(lon, lat, 1).multiplyScalar(prog(tau, 1.0, 1.4) * 0.999);
-  earthLook(ll(lon, lat, dist), tgt);
-  S.granada.visible = tau > 1.2;
-  if (tau >= 2.1) {   // calle
-    const u = eio(prog(tau, 2.1, 1.85));
-    streetCam.position.copy(S.camPath.getPoint(u)); streetCam.lookAt(S.tgtPath.getPoint(u));
-    for (const c of S.cars) { const z = ((c.z0 - (c.lane ? -1 : 1) * 14 * tau) % 180 + 180) % 180 - 150; c.obj.position.set(c.lane ? 2 : -2, 0, z); c.obj.rotation.y = c.lane ? -Math.PI / 2 : Math.PI / 2; }
-    out.sceneB = street; out.camB = streetCam; out.mixB = ss(prog(tau, 2.1, 0.4));
-    out.blur = Math.sin(Math.PI * prog(tau, 2.05, 0.5)) * 0.9;
+  if (tau < 2.5) {
+    let lon, lat, dist;
+    if (tau < 1.0) { const u = tau / 1.0; lon = lerp(-14, -8, u); lat = lerp(28, 32, u); dist = lerp(5.8, 5.2, u); }
+    else { const u = eio(prog(tau, 1.0, 1.4)); lon = lerp(-8, GRANADA[0], u); lat = lerp(32, GRANADA[1], u); dist = loglerp(5.2, 1.006, u); }
+    const tgt = ll(lon, lat, 1).multiplyScalar(prog(tau, 1.0, 1.4) * 0.999);
+    earthLook(ll(lon, lat, dist), tgt);
+    S.granada.visible = tau > 1.2;
+    if (tau >= 2.1) {
+      streetAt(tau);
+      out.sceneB = street; out.camB = streetCam; out.mixB = ss(prog(tau, 2.1, 0.4));
+      out.blur = Math.sin(Math.PI * prog(tau, 2.1, 0.4)) * 0.3;
+    }
+    return out;
   }
-  out.white = ss(prog(tau, 3.78, 0.3));
+  streetAt(tau);
+  out.scene = street; out.cam = streetCam;
+  if (tau >= 3.75) {   // el mapa se convierte en la Tierra
+    MAP_VIEW();
+    out.sceneB = earth; out.camB = earthCam2; out.mixB = ss(prog(tau, 3.75, 0.35));
+    out.blur = Math.sin(Math.PI * prog(tau, 3.75, 0.35)) * 0.12;
+  }
   return out;
 }
 
@@ -323,7 +379,7 @@ function arcsAndHormuz(t) {
   const hz = ll(56.3, 26.5, 1);
   if (t < 8.3) {
     const u = prog(t, 4.1, 4.2);
-    pos = ll(lerp(46, 62, u), lerp(18, 24, u), lerp(5.6, 4.4, eio(u))); tgt = new THREE.Vector3(0, -0.15, 0).multiplyScalar(1 - u);
+    pos = ll(lerp(20, 62, eio(u)), lerp(33, 24, eio(u)), lerp(1.6, 4.4, eio(u))); tgt = new THREE.Vector3(0, 0, 0);
   } else if (t < 12.0) {
     const u = eio(prog(t, 8.3, 3.7));
     const lon = lerp(62, 55.2, u), lat = lerp(24, 22.2, u);
@@ -331,13 +387,18 @@ function arcsAndHormuz(t) {
     up = new THREE.Vector3(0, 1, 0).lerp(northAt(56.3, 26.5), u).normalize();
   } else {
     const u = prog(t, 12.0, 16.0);
-    const dive = ss(prog(t, 27.9, 0.7));
+    const dive = ss(prog(t, 27.85, 0.72));
     pos = ll(lerp(55.2, 56.6, u), lerp(22.2, 23.0, u), 1 + lerp(0.085, 0.07, u));
     tgt = ll(lerp(56.3, 56.5, u), lerp(26.5, 26.2, u), 1);
     up = northAt(56.3, 26.5);
-    if (dive > 0) {   // la cámara se lanza contra el carril blanco
-      const p = S.mainLane.path.at(0.52).p;
-      pos = pos.clone().lerp(p.clone().multiplyScalar(1.0009), dive); tgt = tgt.clone().lerp(S.mainLane.path.at(0.58).p, dive);
+    if (dive > 0) {   // la cámara se acerca al puente blanco de un barco hasta que todo es blanco
+      const sh = S.ships[S.diveShip].obj;
+      placeShip(S.ships[S.diveShip], t);
+      sh.updateMatrixWorld(true);
+      const face = sh.localToWorld(new THREE.Vector3(-0.465, 0.1, 0)), end = sh.localToWorld(new THREE.Vector3(-0.5, 0.115, 0));
+      const k = Math.pow(dive, 1.6);
+      pos = pos.clone().lerp(end, k); tgt = tgt.clone().lerp(face, Math.min(1, dive * 1.4));
+      up = up.clone().lerp(sh.position.clone().normalize(), dive).normalize();
     }
   }
   earthLook(pos, tgt, up);
@@ -363,16 +424,7 @@ function arcsAndHormuz(t) {
   if (near > 0) {
     S.lanes.forEach(l => (l.l.material.opacity = 0.6 * near));
     const jam = eo(prog(t, K.teme, 1.5));
-    // desplazamiento integrado: velocidad normal y frenazo en el atasco
-    const v = 0.022, tj = K.teme;
-    const disp = t < tj ? v * t : v * tj + v * ((t - tj) - 0.85 * (Math.min(t - tj, 1.5) * jam * 0.5 + Math.max(0, t - tj - 1.5)));
-    for (const s of S.ships) {
-      const lane = S.lanes[s.lane];
-      let u = (s.ph + disp) % 1;
-      if (jam > 0 && s.lane === 0) { const gate = 0.5; if (u < gate) u = Math.min(u, gate - 0.015 * (s.ph * 10 % 10) * jam); }
-      const { p, dir } = lane.path.at(u);
-      s.obj.visible = true; placeOnSphere(s.obj, p, dir, 0.0008);
-    }
+    for (const sh of S.ships) placeShip(sh, t);
   }
   // textos (anclados a la vista para que siempre se lean) y etiquetas geográficas
   earthCam.updateMatrixWorld();
@@ -407,14 +459,8 @@ function arcsAndHormuz(t) {
     const m = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).multiply(new THREE.Matrix4().makeScale(R, R, R)).multiply(new THREE.Matrix4().makeTranslation(-c.x, -c.y, -c.z));
     r.matrix.copy(m);
   });
-  // cortina blanca que se abre desde el carril
-  const dive2 = prog(t, 27.95, 0.65);
-  if (dive2 > 0) {
-    const lp = S.mainLane.path.at(0.55).p.clone().project(earthCam);
-    out.wipe = { c: [(lp.x + 1) / 2, (lp.y + 1) / 2], r: Math.pow(dive2, 2.2) * 1.6, col: 1 };
-    S.mainLane.l.material.opacity = 1; S.mainLane.l.material.linewidth = 1.6 + 10 * dive2;
-  } else S.mainLane.l.material.linewidth = 1.6;
-  out.white = ss(1 - prog(t, 4.1, 0.25)) * (t < 4.4 ? 1 : 0);
+  S.mainLane.l.material.linewidth = 1.6;
+  out.white = ss(prog(t, 28.42, 0.16));
   return out;
 }
 
@@ -429,7 +475,7 @@ function brentSection(t) {
   else c = P[1].clone().lerp(P[2], eio(prog(t, K.sept, 1.6)));
   const side = lerp(7.5, 9, prog(t, 28.6, 8));
   const off = new THREE.Vector3(-2.5, 4, side + 12);
-  const dive = ss(prog(t, 36.4, 0.7));
+  const dive = ss(prog(t, 36.25, 0.68));
   let pos = c.clone().add(off), tgt = c.clone().add(new THREE.Vector3(lerp(2.2, 5, eio(prog(t, K.marzo, 2.2))), 2.4, 0));
   S.cart.position.copy(c);
   const wide = eio(prog(t, K.sept - 0.3, 1.3));   // en el tramo largo la cámara se abre para verlo entero
@@ -437,7 +483,7 @@ function brentSection(t) {
     const mid = P[1].clone().lerp(P[2], 0.5);
     pos.lerp(mid.clone().add(new THREE.Vector3(-2, 5, 34)), wide); tgt.lerp(mid.clone().add(new THREE.Vector3(0, 2.5, 0)), wide);
   }
-  if (dive > 0) { pos = pos.lerp(P[2].clone().add(new THREE.Vector3(-1.5, 0.6, 3.5)), dive); tgt = tgt.lerp(P[2], dive); }
+  if (dive > 0) { const q = P[1].clone().lerp(P[2], 14.5 / 24); pos = pos.lerp(q.clone().add(new THREE.Vector3(0, 0, 0.16)), dive); tgt = tgt.lerp(q, Math.min(1, dive * 1.6)); }
   brentCam.position.copy(pos); brentCam.lookAt(tgt);
   // tramos visibles
   const p2 = eio(prog(t, K.sept, 1.6));
@@ -450,10 +496,8 @@ function brentSection(t) {
   vis(B.title, prog(t, 28.7, 0.4) * tf); vis(B.sub, prog(t, 28.9, 0.4) * tf);
   B.title.position.set(c.x - 0.5, c.y + 6.2, -2); B.sub.position.set(c.x - 0.5, c.y + 5.0, -2);
   vis(B.p70, prog(t, K.setenta + 0.2, 0.3)); vis(B.p110, prog(t, K.marzo + 0.2, 0.3)); vis(B.p100, prog(t, K.sept + 0.9, 0.3));
-  vis(B.feb, 1); vis(B.mar, 1); vis(B.sep, prog(t, K.sept, 0.5)); vis(B.nota, prog(t, K.sept + 0.4, 0.5));
-  brentCam.updateMatrixWorld();
-  const dp = prog(t, 36.55, 0.55);
-  if (dp > 0) { const q = P[2].clone().project(brentCam); out.wipe = { c: [(q.x + 1) / 2, (q.y + 1) / 2], r: Math.pow(dp, 2.2) * 1.6, col: 0 }; }
+  vis(B.feb, 1); vis(B.mar, 1); vis(B.sep, prog(t, K.sept, 0.5)); vis(B.nota, prog(t, K.sept + 0.4, 0.5) * (1 - prog(t, 36.2, 0.25)));
+  out.black = ss(prog(t, 36.92, 0.16));
   return out;
 }
 
@@ -508,9 +552,9 @@ function shipAndSpain(t) {
   hud(T.tr3, tA * prog(t, K.combustibles, 0.3), tgt, 0.2, 0.017);
   const iA = envA(t, K.inflacion, 52.0);
   hud(T.ip1, iA, tgt, 0.33, 0.022, 0, pop(t, K.inflacion)); hud(T.ip2, iA, tgt, 0.26, 0.085, 0, pop(t, K.inflacion)); hud(T.ip3, iA, tgt, 0.2, 0.017);
-  hud(T.q1, envA(t, K.notado, 55.6, 0.35, 0.1), tgt, 0.27, 0.07, 0, pop(t, K.notado));
-  hud(T.q2, envA(t, K.leo, 55.6, 0.3, 0.1), tgt, 0.19, 0.024, 0, pop(t, K.leo));
-  out.white = ss(prog(t, 55.25, 0.25));
+  hud(T.q1, envA(t, K.notado, 55.35, 0.35, 0.2), tgt, 0.27, 0.07, 0, pop(t, K.notado));
+  hud(T.q2, envA(t, K.leo, 55.35, 0.3, 0.2), tgt, 0.19, 0.024, 0, pop(t, K.leo));
+  if (t > 55.15) { MAP_VIEW(); out.sceneB = earth; out.camB = earthCam2; out.mixB = ss(prog(t, 55.15, 0.35)); }
   return out;
 }
 
@@ -549,6 +593,6 @@ window.renderAt = function (t) {
     new FontFace('Inter', `url(${F}Inter-Medium.otf)`, { weight: '500' }), new FontFace('Mono', `url(${F}DejaVuSansMono-Bold.ttf)`, { weight: '700' })];
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   const [c50, c10] = await Promise.all([loadTopo('../../../engine/geo/countries-50m.json'), loadTopo('../../../engine/geo/countries-10m.json')]);
-  await buildEarth(c50, c10); buildStreet(); buildBrent();
+  await buildEarth(c50, c10); buildStreet(c50); buildBrent();
   window.ready = true;
 })().catch(e => { console.error('ERROR', e.stack || e); window.failed = String(e); });

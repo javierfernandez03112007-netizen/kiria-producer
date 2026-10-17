@@ -198,7 +198,7 @@ export function makeShip(edge = 0xffffff) {
     const c = box(0.1, 0.05 + (i + j) % 2 * 0.03, 0.075, mat(greys[(i + j) % 4]), -0.3 + i * 0.11, 0.065, -0.04 + j * 0.08);
     withEdges(c, edge, 0.35); g.add(c);
   }
-  const bridge = box(0.08, 0.13, 0.15, mat(0xdddddd), -0.42, 0.1, 0);
+  const bridge = box(0.08, 0.13, 0.15, glowMat(0xf6f6f6), -0.42, 0.1, 0);
   withEdges(bridge, edge, 0.8); g.add(bridge);
   return g;
 }
@@ -272,7 +272,7 @@ export function makeHouse(w = 6, h = 4.5, d = 6, seed = 1) {
 
 // casa protagonista con la ventana doble de la foto (marco blanco, frontón, 2 hojas con cuarterones)
 // y hueco real para que la cámara entre. La ventana queda centrada en (0, wy, d/2).
-export function makeHeroHouse() {
+export function makeHeroHouse(mapTex) {
   const g = new THREE.Group();
   const w = 8, h = 6, d = 8, wy = 3.2, ww = 3.0, wh = 2.6;
   const wall = mat(0xc2c2c2);
@@ -311,8 +311,14 @@ export function makeHeroHouse() {
   // habitación interior iluminada y resplandor
   const room = new THREE.Mesh(new THREE.BoxGeometry(w - 0.6, h - 0.4, d - 0.6), new THREE.MeshStandardMaterial({ color: 0x4a4a4a, side: THREE.BackSide, roughness: 1 }));
   room.position.y = h / 2; g.add(room);
-  const light = new THREE.PointLight(0xffffff, 14, 12, 1.5); light.position.set(0, wy, -1); g.add(light);
-  const glow = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 12), glowMat(0xffffff)); glow.position.set(0, wy, -1.8); g.add(glow);
-  g.userData = { window: new THREE.Vector3(0, wy, fz), glow: glow.position.clone() };
+  const light = new THREE.PointLight(0xffffff, 10, 10, 1.5); light.position.set(0, 4.2, -1.2); g.add(light);
+  // mesa con un mapa del mundo encima (la cámara se mete en él)
+  const ty = 1.0, mz = -1.4, mw = 2.8, mh = 1.4;
+  g.add(box(3.4, 0.08, 2.0, mat(0x6a6a6a), 0, ty, mz));
+  for (const [x, z] of [[-1.5, -0.8], [1.5, -0.8], [-1.5, 0.8], [1.5, 0.8]]) g.add(box(0.08, ty, 0.08, mat(0x4a4a4a), x, ty / 2, mz + z));
+  const map = new THREE.Mesh(new THREE.PlaneGeometry(mw, mh), new THREE.MeshBasicMaterial({ map: mapTex }));
+  map.rotation.x = -Math.PI / 2; map.position.set(0, ty + 0.045, mz); g.add(map);
+  g.add(box(0.5, 0.06, 0.5, glowMat(0xd8d8d8), 0, 4.5, mz));          // lámpara de techo
+  g.userData = { window: new THREE.Vector3(0, wy, fz), map: { c: new THREE.Vector3(0, ty + 0.045, mz), w: mw, h: mh } };
   return g;
 }
