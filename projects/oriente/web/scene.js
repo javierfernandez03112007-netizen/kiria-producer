@@ -56,7 +56,7 @@ const earth = new THREE.Scene(); earth.background = new THREE.Color(0x000000);
 const earthCam = new THREE.PerspectiveCamera(40, W / H, 0.0003, 300);
 const street = new THREE.Scene(); street.background = new THREE.Color(0x0b0b0b); street.fog = new THREE.Fog(0x0b0b0b, 60, 260);
 const streetCam = new THREE.PerspectiveCamera(52, W / H, 0.05, 400);
-const brent = new THREE.Scene(); brent.background = new THREE.Color(0xffffff); brent.fog = new THREE.Fog(0xffffff, 25, 90);
+const brent = new THREE.Scene(); brent.background = new THREE.Color(0xffffff); brent.fog = new THREE.Fog(0xffffff, 60, 200);
 const brentCam = new THREE.PerspectiveCamera(50, W / H, 0.05, 300);
 
 const S = {};   // objetos animados
@@ -212,7 +212,7 @@ function buildBrent() {
   const d = new THREE.DirectionalLight(0xffffff, 0.8); d.position.set(5, 10, 8); brent.add(d);
   const grid = new THREE.GridHelper(160, 80, 0x9a9a9a, 0xd0d0d0); grid.position.set(20, 0, 0); brent.add(grid);
   const Y = v => (v - 50) * 0.15;
-  S.bp = [new THREE.Vector3(0, Y(70), 0), new THREE.Vector3(6, Y(112), 0), new THREE.Vector3(42, Y(102), 0)];
+  S.bp = [new THREE.Vector3(0, Y(70), 0), new THREE.Vector3(6, Y(112), 0), new THREE.Vector3(20, Y(102), 0)];
   // ejes de referencia de precio
   for (const v of [60, 80, 100, 120]) {
     brent.add(box(60, 0.03, 0.03, new THREE.MeshBasicMaterial({ color: 0xbdbdbd }), 20, Y(v), -1.2));
@@ -223,7 +223,7 @@ function buildBrent() {
   S.dashes = [];
   for (let i = 0; i < 24; i += 2) {
     const a = S.bp[1].clone().lerp(S.bp[2], i / 24), b = S.bp[1].clone().lerp(S.bp[2], (i + 1) / 24);
-    const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.LineCurve3(a, b), 2, 0.09, 10), new THREE.MeshStandardMaterial({ color: 0x333333 }));
+    const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.LineCurve3(a, b), 2, 0.13, 10), new THREE.MeshStandardMaterial({ color: 0x111111 }));
     brent.add(m); S.dashes.push({ m, u: (i + 1) / 24 });
   }
   S.dots = S.bp.map(p => { const m = new THREE.Mesh(new THREE.SphereGeometry(0.32, 24, 18), new THREE.MeshStandardMaterial({ color: 0x0a0a0a })); m.position.copy(p); brent.add(m); return m; });
@@ -234,14 +234,14 @@ function buildBrent() {
     title: L('BRENT', { size: 150, color: '#000000', height: 1.6 }, new THREE.Vector3(1, Y(130), -2)),
     sub: L('dólares por barril', { size: 80, weight: 600, color: '#555555', height: 0.6 }, new THREE.Vector3(1, Y(124), -2)),
     p70: L('~70 $', { size: 150, color: '#000000', height: 1.3 }, S.bp[0].clone().add(new THREE.Vector3(0, 1.5, 0))),
-    p110: L('+110 $', { size: 150, color: '#000000', height: 1.3 }, S.bp[1].clone().add(new THREE.Vector3(0, 1.5, 0))),
-    p100: L('+100 $', { size: 150, color: '#000000', height: 1.3 }, S.bp[2].clone().add(new THREE.Vector3(0, 1.5, 0))),
+    p110: L('+110 $', { size: 150, color: '#000000', height: 2.1 }, S.bp[1].clone().add(new THREE.Vector3(0, 2.0, 0))),
+    p100: L('+100 $', { size: 150, color: '#000000', height: 2.1 }, S.bp[2].clone().add(new THREE.Vector3(0, 2.0, 0))),
     feb: L('FEB', { size: 90, weight: 700, color: '#444444', height: 0.6, font: 'Mono' }, new THREE.Vector3(0, 0.4, 1.6)),
     mar: L('MAR', { size: 90, weight: 700, color: '#444444', height: 0.6, font: 'Mono' }, new THREE.Vector3(6, 0.4, 1.6)),
-    sep: L('SEP', { size: 90, weight: 700, color: '#444444', height: 0.6, font: 'Mono' }, new THREE.Vector3(42, 0.4, 1.6)),
-    nota: L('los meses intermedios no se muestran', { size: 60, weight: 600, color: '#777777', height: 0.45 }, new THREE.Vector3(24, Y(96), 1.5)),
+    sep: L('SEP', { size: 90, weight: 700, color: '#444444', height: 1.0, font: 'Mono' }, new THREE.Vector3(20, 0.6, 1.6)),
+    nota: L('los meses intermedios no se muestran', { size: 60, weight: 600, color: '#666666', height: 1.0 }, new THREE.Vector3(13, Y(98) - 2.2, 1.5)),
   };
-  // barco de juguete que recorre la línea (continuidad con el mar)
+  S.cart = new THREE.Mesh(new THREE.SphereGeometry(0.42, 24, 18), new THREE.MeshStandardMaterial({ color: 0x000000 })); brent.add(S.cart);
 }
 
 // ---------------------------------------------------------------- utilidades de cámara
@@ -349,7 +349,7 @@ function arcsAndHormuz(t) {
     if (p > 0 && arcFade > 0) {
       a.line.visible = true; a.line.material.opacity = 0.95 * arcFade;
       a.line.geometry.instanceCount = Math.max(1, Math.floor(p * a.line.userData.count));
-      a.dots.forEach((d, k) => { const u = ((t * 0.35 + k / 3 + i * 0.13) % 1) * p; d.visible = true; d.position.copy(a.path.at(u).p); });
+      a.dots.forEach((d, k) => { const u = ((t * 0.35 + k / 3 + i * 0.13) % 1) * p; d.visible = t < 9.3; d.position.copy(a.path.at(u).p); });
       if (p >= 1) { a.lab.visible = true; a.lab.material.opacity = prog(t, K.arcs + 1.35 + i * 0.32, 0.3) * arcFade; }
     }
     i++;
@@ -428,9 +428,15 @@ function brentSection(t) {
   else if (t < K.sept) c = P[1].clone();
   else c = P[1].clone().lerp(P[2], eio(prog(t, K.sept, 1.6)));
   const side = lerp(7.5, 9, prog(t, 28.6, 8));
-  const off = new THREE.Vector3(-7, 5, side + 13);
+  const off = new THREE.Vector3(-2.5, 4, side + 12);
   const dive = ss(prog(t, 36.4, 0.7));
-  let pos = c.clone().add(off), tgt = c.clone().add(new THREE.Vector3(lerp(5, 11, eio(prog(t, K.marzo, 2.2))), 1.8, 0));
+  let pos = c.clone().add(off), tgt = c.clone().add(new THREE.Vector3(lerp(2.2, 5, eio(prog(t, K.marzo, 2.2))), 2.4, 0));
+  S.cart.position.copy(c);
+  const wide = eio(prog(t, K.sept - 0.3, 1.3));   // en el tramo largo la cámara se abre para verlo entero
+  if (wide > 0) {
+    const mid = P[1].clone().lerp(P[2], 0.5);
+    pos.lerp(mid.clone().add(new THREE.Vector3(-2, 5, 34)), wide); tgt.lerp(mid.clone().add(new THREE.Vector3(0, 2.5, 0)), wide);
+  }
   if (dive > 0) { pos = pos.lerp(P[2].clone().add(new THREE.Vector3(-1.5, 0.6, 3.5)), dive); tgt = tgt.lerp(P[2], dive); }
   brentCam.position.copy(pos); brentCam.lookAt(tgt);
   // tramos visibles
@@ -440,8 +446,10 @@ function brentSection(t) {
   S.dashes.forEach(d => (d.m.visible = d.u <= p2 + 0.05));
   const B = S.btxt;
   const vis = (sp, a) => { sp.visible = a > 0.003; sp.material.opacity = a; };
-  vis(B.title, prog(t, 28.7, 0.4)); vis(B.sub, prog(t, 28.9, 0.4));
-  vis(B.p70, prog(t, K.setenta + 0.2, 0.3)); vis(B.p110, prog(t, K.marzo + 0.2, 0.3)); vis(B.p100, prog(t, K.sept + 1.4, 0.3));
+  const tf = 1 - prog(t, 32.0, 0.4);
+  vis(B.title, prog(t, 28.7, 0.4) * tf); vis(B.sub, prog(t, 28.9, 0.4) * tf);
+  B.title.position.set(c.x - 0.5, c.y + 6.2, -2); B.sub.position.set(c.x - 0.5, c.y + 5.0, -2);
+  vis(B.p70, prog(t, K.setenta + 0.2, 0.3)); vis(B.p110, prog(t, K.marzo + 0.2, 0.3)); vis(B.p100, prog(t, K.sept + 0.9, 0.3));
   vis(B.feb, 1); vis(B.mar, 1); vis(B.sep, prog(t, K.sept, 0.5)); vis(B.nota, prog(t, K.sept + 0.4, 0.5));
   brentCam.updateMatrixWorld();
   const dp = prog(t, 36.55, 0.55);
