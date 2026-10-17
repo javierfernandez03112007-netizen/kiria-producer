@@ -21,3 +21,9 @@
 ## Nota de verificación
 
 Datos facilitados por el autor del proyecto. El 17/10/2026 se intentó volver a comprobar los dos enlaces desde el entorno de producción, pero no tenía acceso de red a ine.es ni a infobae.com. Conviene revisarlos a mano antes de publicar.
+
+## Elementos de juego (sin datos)
+
+- La barra «PODER ADQUISITIVO» del HUD es una metáfora visual: baja en cada nivel pero no muestra ninguna cifra.
+- El monedero del HUD usa la cuenta ilustrativa de 10.000 € → 9.533 € (10.000 / 1,049).
+- Gráfico «Sueldo vs. precios» del colegio: marcado «ilustrativo», sin ejes numéricos.
