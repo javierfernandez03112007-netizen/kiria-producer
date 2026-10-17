@@ -51,8 +51,8 @@ HANDS = {
     "senala_e": dict(file="mano_senala_e", grip=(0.75, 0.8), axis=-135, w=46),
     "abierta": dict(file="mano_abierta", grip=(0.5, 0.85), axis=-90, w=44),
     "abierta_e": dict(file="mano_abierta_e", grip=(0.5, 0.85), axis=-90, w=44),
-    "pulgar": dict(file="mano_pulgar", grip=(0.5, 0.95), axis=-90, w=30),
-    "pulgar_e": dict(file="mano_pulgar_e", grip=(0.5, 0.95), axis=-90, w=30),
+    "pulgar": dict(file="mano_pulgar", grip=(0.5, 0.92), axis=-90, w=44, upright=True),
+    "pulgar_e": dict(file="mano_pulgar_e", grip=(0.5, 0.92), axis=-90, w=44, upright=True),
 }
 
 
@@ -159,7 +159,7 @@ class Puppet:
         himg = self.part(hd["file"], hd["w"])
         hh, hw = himg.shape[:2]
         arm_dir = np.degrees(np.arctan2(wy - sy, wx - sx))
-        rot = arm_dir - hd["axis"]
+        rot = 0.0 if hd.get("upright") else arm_dir - hd["axis"]   # el pulgar siempre hacia arriba
         g = (hd["grip"][0] * hw, hd["grip"][1] * hh)
         rh, rg, _ = self._rot(himg, rot, g)
         self._over(canvas, rh, wx - rg[0], wy - rg[1])

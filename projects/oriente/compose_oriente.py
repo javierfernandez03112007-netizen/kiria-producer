@@ -15,7 +15,7 @@ import numpy as np
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.puppet import Puppet, CW, CH  # noqa: E402
-from engine.fin_draw import text, paste, HEX, clamp, prog, eo, eio, lerp, eback  # noqa: E402
+from engine.fin_draw import text, paste, HEX, clamp, prog, eo, eio, lerp, eback, icon, halo, WHITE  # noqa: E402
 from engine import audio as A  # noqa: E402
 
 FPS, W, H = 30, 1080, 1920
@@ -23,7 +23,8 @@ END = 60.0
 FRAMES = os.environ.get("FRAMES", os.path.join(ROOT, "out", "frames"))
 AUDIO = os.path.join(ROOT, "assets", "voz.mp3")
 PUP = Puppet(os.path.join(ROOT, "assets", "avatar", "piezas"))
-AV_IN, AV_OUT = 4.35, 55.25
+AV_IN, AV_OUT = 4.35, 59.35      # al final se queda pidiendo el like y se va justo antes del bucle
+LIKE = 55.30                     # sale de la esquina al centro con el pulgar arriba
 SCALE = 0.62                      # tamaño del muñeco (lienzo 460x640 → ~285x397 px)
 AV_X, AV_FOOT = 175, 1835
 
@@ -35,12 +36,12 @@ G = {
     "explain": (34, "abierta_e", -34, "abierta"),
     "small": (22, "abierta_e", -30, "abierta"),
     "surprise": (55, "abierta_e", -55, "abierta"),
-    "thumb": (6, "puno", -100, "pulgar"),
+    "thumb": (6, "puno", -55, "pulgar"),
 }
 SCHED = [(4.35, "point_ur"), (7.0, "small"), (8.5, "point_r"), (11.9, "point_ur"), (13.6, "explain"), (16.4, "rest"),
          (18.8, "point_r"), (21.5, "small"), (23.9, "rest"), (27.4, "point_ur"), (29.9, "point_ur"), (32.1, "surprise"),
          (34.4, "point_r"), (37.4, "explain"), (38.6, "point_r"), (43.1, "point_ur"), (46.4, "explain"),
-         (48.5, "point_ur"), (51.6, "rest"), (52.1, "small"), (54.2, "thumb")]
+         (48.5, "point_ur"), (51.6, "rest"), (52.1, "small"), (54.2, "thumb")]  # el pulgar se mantiene hasta el final
 LOOK = [(0, "derecha"), (11.9, "arriba"), (13.6, "derecha"), (18.8, "derecha"), (23.9, "centro"), (28.6, "arriba"),
         (32.1, "centro"), (34.4, "derecha"), (37.4, "centro"), (38.6, "derecha"), (52.1, "centro")]
 BROWS = [(13.6, 15.0, "lift"), (23.9, 27.3, "enfado"), (32.1, 33.8, "sorpresa"), (37.4, 38.4, "lift")]
@@ -92,13 +93,36 @@ def state(t, fi):
     return st
 
 
+def like(img, t, cx, top, vis):
+    """Corazón de «me gusta» que late sobre la cabeza y corazones pequeños que suben."""
+    t0 = LIKE + 0.55
+    if t < t0 or vis < 0.02:
+        return
+    p = eback(prog(t, t0, 0.4))
+    beat = 1 + 0.12 * max(0.0, np.sin((t - t0) * 7)) ** 6
+    hx, hy = cx + 175, top - 30
+    halo(img, hx, hy, 120, WHITE, 0.35 * vis * prog(t, t0, 0.3))
+    paste(img, icon("heart", 150, "#FFFFFF"), hx, hy, vis, scale=p * beat)
+    paste(img, text("¡Dale a like!", 52, "black", "#FFFFFF", shadow=0.6), cx, top - 190, vis * eo(prog(t, t0 + 0.3, 0.3)))
+    rng = np.random.default_rng(3)
+    for i in range(7):
+        ti = t0 + 0.25 + i * 0.32
+        age = t - ti
+        if 0 <= age < 1.6:
+            x = hx + rng.uniform(-120, 120) + 25 * np.sin(age * 5 + i)
+            y = hy - 60 - 260 * age
+            paste(img, icon("heart", 54, "#FFFFFF"), x, y, vis * (1 - age / 1.6), scale=0.6 + 0.4 * eo(prog(age, 0, 0.3)))
+
+
 def compose(fi):
     t = fi / FPS
     img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
     vis = eo(prog(t, AV_IN, 0.35)) * (1 - prog(t, AV_OUT, 0.3))
     if vis > 0.01:
         rgba = PUP.render(state(t, fi))
-        s = SCALE * eback(prog(t, AV_IN, 0.45)) * (1 - 0.3 * prog(t, AV_OUT, 0.3))
+        go = eio(prog(t, LIKE, 0.7))
+        s = SCALE * eback(prog(t, AV_IN, 0.45)) * (1 + 0.75 * go) * (1 - 0.3 * prog(t, AV_OUT, 0.3))
+        cx, foot = lerp(AV_X, W / 2, go), lerp(AV_FOOT, 1660, go) + 8 * np.sin(t * 3) * go
         w, h = max(2, int(CW * s)), max(2, int(CH * s))
         rgba = cv2.resize(rgba, (w, h), interpolation=cv2.INTER_AREA)
         rgb, a = np.ascontiguousarray(rgba[..., 2::-1]), rgba[..., 3]
@@ -106,10 +130,11 @@ def compose(fi):
         sh = np.zeros((40, 300), np.float32)
         cv2.ellipse(sh, (150, 20), (int(70 * s / SCALE), 10), 0, 0, 360, 1, -1, cv2.LINE_AA)
         sh = cv2.GaussianBlur(sh, (0, 0), 6)
-        y0 = AV_FOOT - 20
-        roi = img[y0:y0 + 40, AV_X - 150:AV_X + 150]
-        roi *= (1 - 0.6 * vis * sh)[..., None]
-        paste(img, (rgb, a), AV_X, AV_FOOT + int(14 * s), vis, anchor="b")
+        y0, x0 = int(foot) - 20, int(cx) - 150
+        roi = img[y0:y0 + 40, x0:x0 + 300]
+        roi *= (1 - 0.6 * vis * sh[:roi.shape[0], :roi.shape[1]])[..., None]
+        paste(img, (rgb, a), cx, foot + int(14 * s), vis, anchor="b")
+        like(img, t, cx, foot - h * 0.95, vis)
     if 52.3 <= t < 55.4:
         paste(img, text("No es asesoramiento financiero", 26, "med", "#BDBDBD", shadow=0.5), W / 2, H - 230,
               0.9 * eo(prog(t, 52.3, 0.4)) * (1 - prog(t, 55.1, 0.3)))
