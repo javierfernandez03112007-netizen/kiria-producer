@@ -1,0 +1,267 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Holograma Inmobiliario</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single 16:9 cinema frame, letterboxed, with a quiet caption strip below */
+:root{
+  --bg:#07090c; --frame:#0b0f14; --fg:#e7ecef; --muted:#7d8b94; --holo:#5fe3ff; --warm:#e9b77a;
+  --display:"Fraunces", Georgia, serif; --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--mono);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:24px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.stage{position:relative;width:100%;max-width:1100px;aspect-ratio:16/9;background:var(--frame);border-radius:6px;overflow:hidden;box-shadow:0 30px 80px -30px #000}
+canvas{display:block;width:100%;height:100%}
+.hud{position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(10px,2.2vw,22px)}
+.top,.bot{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.brand{font-family:var(--display);font-size:clamp(14px,2.2vw,24px);letter-spacing:.01em}
+.tag{font-size:clamp(9px,1.1vw,12px);letter-spacing:.14em;text-transform:uppercase;color:var(--holo)}
+.tc{font-size:clamp(9px,1.1vw,12px);font-variant-numeric:tabular-nums;color:var(--muted);letter-spacing:.08em}
+.rec{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff5a4f;margin-right:6px;vertical-align:middle}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;font-size:12px;color:var(--muted)}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid #2a3540;border-radius:4px;padding:7px 14px;cursor:pointer}
+button:hover{border-color:var(--holo);color:var(--holo)}
+button:focus-visible{outline:2px solid var(--holo);outline-offset:2px}
+</style>
+
+<div class="stage" id="stage">
+  <canvas id="c" aria-label="Despacho inmobiliario con un edificio holográfico girando sobre una pantalla de mesa"></canvas>
+  <div class="hud">
+    <div class="top"><span class="brand">Inmobiliaria Alcazaba</span><span class="tag">Vista holográfica · Torre Mar</span></div>
+    <div class="bot"><span class="tc"><span class="rec"></span><span id="tc">00:00:00 / 00:05:00</span></span><span class="tc">24 plantas · 86 viviendas</span></div>
+  </div>
+</div>
+<div class="controls">
+  <button id="play" type="button">Pausar</button>
+  <button id="restart" type="button">Reiniciar</button>
+  <span>Bucle de 5 s</span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const DUR = 5;
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0f14);
+scene.fog = new THREE.Fog(0x0b0f14, 9, 22);
+const camera = new THREE.PerspectiveCamera(38, 16/9, 0.1, 60);
+
+/* ---------- textures drawn on canvas ---------- */
+function canvasTex(w,h,draw){const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return t;}
+
+const woodTex = canvasTex(1024,512,(g,w,h)=>{
+  g.fillStyle='#4a2f1d';g.fillRect(0,0,w,h);
+  for(let i=0;i<260;i++){const y=Math.random()*h;g.strokeStyle=`rgba(${30+Math.random()*40},${18+Math.random()*20},10,${.15+Math.random()*.25})`;g.lineWidth=1+Math.random()*3;g.beginPath();g.moveTo(0,y);for(let x=0;x<=w;x+=40)g.lineTo(x,y+Math.sin(x*.01+i)*4);g.stroke();}
+});
+const floorTex = canvasTex(1024,1024,(g,w,h)=>{
+  g.fillStyle='#2a2522';g.fillRect(0,0,w,h);
+  const pw=128;for(let x=0;x<w;x+=pw){for(let y=-Math.random()*400;y<h;y+=300+Math.random()*200){const s=34+Math.random()*14;g.fillStyle=`rgb(${s+8},${s},${s-4})`;g.fillRect(x+1,y,pw-2,298);}}
+});
+floorTex.wrapS=floorTex.wrapT=THREE.RepeatWrapping;floorTex.repeat.set(4,4);
+
+const cityTex = canvasTex(2048,800,(g,w,h)=>{
+  const sky=g.createLinearGradient(0,0,0,h);sky.addColorStop(0,'#0c1a2a');sky.addColorStop(.7,'#2b3a52');sky.addColorStop(1,'#b0714a');
+  g.fillStyle=sky;g.fillRect(0,0,w,h);
+  for(let layer=0;layer<2;layer++){
+    let x=0;while(x<w){const bw=40+Math.random()*110,bh=(layer?120:200)+Math.random()*(layer?220:330);
+      g.fillStyle=layer?'#0d131b':'#18212d';g.fillRect(x,h-bh,bw,bh);
+      for(let wy=h-bh+12;wy<h-6;wy+=14)for(let wx=x+6;wx<x+bw-6;wx+=11)if(Math.random()<.32){g.fillStyle=Math.random()<.8?'rgba(255,205,140,.85)':'rgba(170,220,255,.8)';g.fillRect(wx,wy,5,6);}
+      x+=bw+(layer?4:12);}
+  }
+});
+
+const screenTex = canvasTex(1024,640,(g,w,h)=>{
+  g.fillStyle='#04121a';g.fillRect(0,0,w,h);
+  g.strokeStyle='rgba(95,227,255,.12)';g.lineWidth=1;
+  for(let x=0;x<w;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,h);g.stroke();}
+  for(let y=0;y<h;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(w,y);g.stroke();}
+  // plot outline (parcela)
+  g.strokeStyle='rgba(95,227,255,.9)';g.lineWidth=3;g.beginPath();g.moveTo(330,170);g.lineTo(700,150);g.lineTo(730,470);g.lineTo(300,490);g.closePath();g.stroke();
+  g.fillStyle='rgba(95,227,255,.10)';g.fill();
+  // emitter ring
+  const cx=w/2,cy=h/2;
+  for(let r=40;r<=150;r+=36){g.strokeStyle=`rgba(140,240,255,${.9-r/220})`;g.lineWidth=2;g.beginPath();g.arc(cx,cy,r,0,Math.PI*2);g.stroke();}
+  const rg=g.createRadialGradient(cx,cy,0,cx,cy,120);rg.addColorStop(0,'rgba(180,250,255,.9)');rg.addColorStop(1,'rgba(95,227,255,0)');g.fillStyle=rg;g.fillRect(0,0,w,h);
+  g.font='500 26px IBM Plex Mono, monospace';g.fillStyle='rgba(180,240,255,.95)';
+  g.fillText('TORRE MAR · PARCELA 14-B',40,58);
+  g.font='22px IBM Plex Mono, monospace';g.fillStyle='rgba(95,227,255,.75)';
+  g.fillText('Superficie 2.140 m²   Altura 78 m',40,600);
+  g.fillText('Desde 285.000 €',760,600);
+});
+
+/* ---------- room ---------- */
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.MeshStandardMaterial({map:floorTex,roughness:.55,metalness:.05}));
+floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+
+const wallMat=new THREE.MeshStandardMaterial({color:0x2c3034,roughness:.9});
+const backWall=new THREE.Mesh(new THREE.PlaneGeometry(30,10),wallMat);backWall.position.set(0,5,-6);scene.add(backWall);
+const leftWall=new THREE.Mesh(new THREE.PlaneGeometry(30,10),wallMat);leftWall.position.set(-9,5,0);leftWall.rotation.y=Math.PI/2;scene.add(leftWall);
+
+// big window with city at dusk
+const city=new THREE.Mesh(new THREE.PlaneGeometry(9,3.6),new THREE.MeshBasicMaterial({map:cityTex,toneMapped:false}));
+city.position.set(1.2,2.9,-5.98);scene.add(city);
+const mullMat=new THREE.MeshStandardMaterial({color:0x111418,roughness:.4,metalness:.6});
+[-3.3,-0.3,2.7,5.7].forEach(x=>{const m=new THREE.Mesh(new THREE.BoxGeometry(.08,3.7,.1),mullMat);m.position.set(x,2.9,-5.93);scene.add(m);});
+[1.07,4.73].forEach(y=>{const m=new THREE.Mesh(new THREE.BoxGeometry(9.1,.08,.1),mullMat);m.position.set(1.2,y,-5.93);scene.add(m);});
+
+// shelf with binders on left wall
+const shelf=new THREE.Mesh(new THREE.BoxGeometry(.4,.05,3),new THREE.MeshStandardMaterial({map:woodTex,roughness:.6}));
+shelf.position.set(-8.8,2.2,-2.5);scene.add(shelf);
+const binderCols=[0x7a2e2a,0x2f4a5c,0x8a6d3b,0x3d5a3d,0x2f4a5c,0x7a2e2a];
+binderCols.forEach((c,i)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(.3,.5,.12),new THREE.MeshStandardMaterial({color:c,roughness:.7}));b.position.set(-8.75,2.48,-3.6+i*.16);scene.add(b);});
+
+// plant
+const pot=new THREE.Mesh(new THREE.CylinderGeometry(.32,.25,.6,24),new THREE.MeshStandardMaterial({color:0xcfc6b8,roughness:.8}));
+pot.position.set(-4.2,.3,-3.6);pot.castShadow=true;scene.add(pot);
+const leafMat=new THREE.MeshStandardMaterial({color:0x2f5a34,roughness:.7,side:THREE.DoubleSide});
+for(let i=0;i<14;i++){const l=new THREE.Mesh(new THREE.SphereGeometry(.18,10,8),leafMat);l.scale.set(1,2.6,.25);const a=i/14*Math.PI*2;l.position.set(-4.2+Math.cos(a)*.22,.95+Math.random()*.5,-3.6+Math.sin(a)*.22);l.rotation.set(Math.sin(a)*.6,a,Math.cos(a)*.6);l.castShadow=true;scene.add(l);}
+
+/* ---------- desk ---------- */
+const desk=new THREE.Group();scene.add(desk);
+const topMat=new THREE.MeshStandardMaterial({map:woodTex,roughness:.35,metalness:.05});
+const top=new THREE.Mesh(new THREE.BoxGeometry(4.4,.1,2.2),topMat);top.position.y=1.0;top.castShadow=top.receiveShadow=true;desk.add(top);
+const legMat=new THREE.MeshStandardMaterial({color:0x15181b,roughness:.3,metalness:.8});
+[[-2,-.9],[2,-.9],[-2,.9],[2,.9]].forEach(([x,z])=>{const l=new THREE.Mesh(new THREE.BoxGeometry(.07,.95,.07),legMat);l.position.set(x,.475,z);l.castShadow=true;desk.add(l);});
+
+// flat display lying on the desk (parallel to the top)
+const bezel=new THREE.Mesh(new THREE.BoxGeometry(1.7,.035,1.06),new THREE.MeshStandardMaterial({color:0x0a0c0e,roughness:.25,metalness:.7}));
+bezel.position.set(0,1.068,.1);bezel.castShadow=true;desk.add(bezel);
+const screen=new THREE.Mesh(new THREE.PlaneGeometry(1.6,1.0),new THREE.MeshBasicMaterial({map:screenTex,toneMapped:false}));
+screen.rotation.x=-Math.PI/2;screen.position.set(0,1.087,.1);desk.add(screen);
+
+// props: coffee cup, documents, keys, lamp
+const cup=new THREE.Mesh(new THREE.CylinderGeometry(.09,.075,.2,20),new THREE.MeshStandardMaterial({color:0xe8e2d6,roughness:.4}));
+cup.position.set(1.55,1.15,.55);cup.castShadow=true;desk.add(cup);
+const paper=new THREE.Mesh(new THREE.BoxGeometry(.55,.01,.75),new THREE.MeshStandardMaterial({color:0xefeae0,roughness:.9}));
+paper.position.set(-1.45,1.056,.35);paper.rotation.y=.25;paper.receiveShadow=true;desk.add(paper);
+const keyRing=new THREE.Mesh(new THREE.TorusGeometry(.06,.01,8,24),new THREE.MeshStandardMaterial({color:0xc9a35c,metalness:1,roughness:.3}));
+keyRing.rotation.x=Math.PI/2;keyRing.position.set(1.2,1.06,-.35);desk.add(keyRing);
+const lampBase=new THREE.Mesh(new THREE.CylinderGeometry(.15,.17,.04,24),legMat);lampBase.position.set(-1.7,1.07,-.75);desk.add(lampBase);
+const lampArm=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,.8,8),legMat);lampArm.position.set(-1.7,1.45,-.75);desk.add(lampArm);
+const shade=new THREE.Mesh(new THREE.ConeGeometry(.17,.22,24,1,true),new THREE.MeshStandardMaterial({color:0x15181b,metalness:.7,roughness:.3,side:THREE.DoubleSide}));
+shade.position.set(-1.6,1.86,-.72);shade.rotation.z=-.5;desk.add(shade);
+const bulb=new THREE.Mesh(new THREE.SphereGeometry(.05,12,8),new THREE.MeshBasicMaterial({color:0xffd9a0}));bulb.position.set(-1.57,1.79,-.71);desk.add(bulb);
+
+// chair (back to camera, behind the desk)
+const chairMat=new THREE.MeshStandardMaterial({color:0x1b1f23,roughness:.6});
+const seat=new THREE.Mesh(new THREE.BoxGeometry(.9,.12,.85),chairMat);seat.position.set(0,.62,-1.75);seat.castShadow=true;scene.add(seat);
+const back=new THREE.Mesh(new THREE.BoxGeometry(.9,1.1,.1),chairMat);back.position.set(0,1.25,-2.15);back.castShadow=true;scene.add(back);
+const post=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.55,10),legMat);post.position.set(0,.3,-1.75);scene.add(post);
+
+/* ---------- hologram ---------- */
+const HC=new THREE.Color(0x5fe3ff);
+const holo=new THREE.Group();holo.position.set(0,1.09,.1);scene.add(holo);
+const tower=new THREE.Group();tower.position.y=.12;holo.add(tower);
+
+const fillMat=new THREE.MeshBasicMaterial({color:HC,transparent:true,opacity:.09,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide});
+const edgeMat=new THREE.LineBasicMaterial({color:HC,transparent:true,opacity:.9,blending:THREE.AdditiveBlending,depthWrite:false});
+const floorMat=new THREE.LineBasicMaterial({color:HC,transparent:true,opacity:.35,blending:THREE.AdditiveBlending,depthWrite:false});
+
+function block(w,h,d,y,floors){
+  const g=new THREE.BoxGeometry(w,h,d);
+  const m=new THREE.Mesh(g,fillMat);m.position.y=y+h/2;tower.add(m);
+  const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),edgeMat);e.position.copy(m.position);tower.add(e);
+  // floor slabs
+  for(let i=1;i<floors;i++){const fy=y+h*i/floors;const pts=[[-w/2,-d/2],[w/2,-d/2],[w/2,d/2],[-w/2,d/2],[-w/2,-d/2]].map(p=>new THREE.Vector3(p[0],fy,p[1]));tower.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),floorMat));}
+  // vertical mullions on two faces
+  const vs=[];const n=Math.round(w/.07);for(let i=1;i<n;i++){const x=-w/2+w*i/n;vs.push(x,y,d/2,x,y+h,d/2,x,y,-d/2,x,y+h,-d/2);}
+  const nd=Math.round(d/.07);for(let i=1;i<nd;i++){const z=-d/2+d*i/nd;vs.push(w/2,y,z,w/2,y+h,z,-w/2,y,z,-w/2,y+h,z);}
+  const vg=new THREE.BufferGeometry();vg.setAttribute('position',new THREE.Float32BufferAttribute(vs,3));
+  tower.add(new THREE.LineSegments(vg,new THREE.LineBasicMaterial({color:HC,transparent:true,opacity:.14,blending:THREE.AdditiveBlending,depthWrite:false})));
+}
+block(.62,.22,.46,0,3);        // podium
+block(.40,.62,.34,.22,12);     // main shaft
+block(.30,.30,.26,.84,6);      // setback
+block(.20,.12,.18,1.14,2);     // crown
+const spire=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.CylinderGeometry(.004,.012,.22,4)),edgeMat);spire.position.y=1.37;tower.add(spire);
+
+// base plate rings
+for(let i=0;i<3;i++){const r=new THREE.Mesh(new THREE.RingGeometry(.42+i*.09,.425+i*.09,64),new THREE.MeshBasicMaterial({color:HC,transparent:true,opacity:.5-i*.13,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));r.rotation.x=-Math.PI/2;r.position.y=.01+i*.002;holo.add(r);}
+
+// projection beam (cone of light from screen to building)
+const beamMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,
+  uniforms:{c:{value:HC}},
+  vertexShader:'varying float vY;void main(){vY=uv.y;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+  fragmentShader:'uniform vec3 c;varying float vY;void main(){gl_FragColor=vec4(c,(1.-vY)*.22);}'});
+const beam=new THREE.Mesh(new THREE.CylinderGeometry(.55,.36,1.6,48,1,true),beamMat);beam.position.y=.8;holo.add(beam);
+
+// scan plane moving up
+const scan=new THREE.Mesh(new THREE.PlaneGeometry(.9,.9),new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,uniforms:{c:{value:HC}},
+  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+  fragmentShader:'uniform vec3 c;varying vec2 vUv;void main(){float d=length(vUv-.5)*2.;gl_FragColor=vec4(c,smoothstep(1.,.2,d)*.35);}'}));
+scan.rotation.x=-Math.PI/2;holo.add(scan);
+
+// rising particles
+const PN=260,pPos=new Float32Array(PN*3),pSeed=new Float32Array(PN);
+for(let i=0;i<PN;i++){const a=Math.random()*Math.PI*2,r=Math.sqrt(Math.random())*.5;pPos[i*3]=Math.cos(a)*r;pPos[i*3+2]=Math.sin(a)*r;pSeed[i]=Math.random();}
+const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+const parts=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xaef4ff,size:.012,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false}));holo.add(parts);
+
+/* ---------- lights ---------- */
+scene.add(new THREE.HemisphereLight(0x5a6b80,0x1a1410,.45));
+const lamp=new THREE.SpotLight(0xffc98a,6,7,.9,.6,1.5);lamp.position.set(-1.57,2.85,-.71);lamp.target.position.set(-.6,1,.2);lamp.castShadow=true;lamp.shadow.mapSize.set(1024,1024);scene.add(lamp,lamp.target);
+const holoLight=new THREE.PointLight(0x5fe3ff,3.2,4,1.8);holoLight.position.set(0,1.7,.1);scene.add(holoLight);
+const windowLight=new THREE.DirectionalLight(0xc98a5c,.6);windowLight.position.set(1,4,-8);scene.add(windowLight);
+
+/* ---------- animation ---------- */
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const tcEl=document.getElementById('tc');
+let playing=true,elapsed=0,last=performance.now();
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function frame(now){
+  const dt=Math.min((now-last)/1000,.1);last=now;
+  if(playing)elapsed+=dt;
+  const t=elapsed%DUR, p=t/DUR;
+
+  // camera: slow push-in and a gentle arc that closes the loop
+  const e=ease(p<.5?p*2:(1-p)*2);
+  const ang=-.35+.5*e;
+  const rad=5.2-1.5*e;
+  camera.position.set(Math.sin(ang)*rad,2.25+.35*(1-e),.1+Math.cos(ang)*rad);
+  camera.lookAt(0,1.62-.08*(1-e),.1);
+
+  // building: slow continuous turn
+  tower.rotation.y=elapsed*(reduce?.15:.55);
+  const flick=.85+.15*Math.sin(elapsed*31)*Math.sin(elapsed*7.3);
+  edgeMat.opacity=.85*flick;fillMat.opacity=.08+.03*Math.sin(elapsed*2.2);
+  holoLight.intensity=3+.4*Math.sin(elapsed*3);
+  // hologram materialises in the first 0.6s of the very first loop only
+  const intro=Math.min(elapsed/.8,1);tower.scale.set(1,intro<1?ease(intro):1,1);
+
+  const sy=(elapsed*.45)%1.5;scan.position.y=.12+sy;scan.material.opacity=1;
+  const pa=pGeo.attributes.position.array;
+  for(let i=0;i<PN;i++){pa[i*3+1]=((pSeed[i]*1.6+elapsed*(.15+pSeed[i]*.2))%1.6);}
+  pGeo.attributes.position.needsUpdate=true;
+
+  const fr=Math.floor((t%1)*25);
+  tcEl.textContent=`00:0${Math.floor(t)}:${String(fr).padStart(2,'0')} / 00:05:00`;
+
+  renderer.render(scene,camera);
+  requestAnimationFrame(frame);
+}
+
+function resize(){const r=canvas.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(canvas.parentElement);resize();
+requestAnimationFrame(frame);
+
+const playBtn=document.getElementById('play');
+playBtn.addEventListener('click',()=>{playing=!playing;playBtn.textContent=playing?'Pausar':'Reproducir';});
+document.getElementById('restart').addEventListener('click',()=>{elapsed=0;playing=true;playBtn.textContent='Pausar';});
+})();
+</script>
+
+</body></html>
