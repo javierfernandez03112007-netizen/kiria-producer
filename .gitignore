@@ -2,3 +2,5 @@ out/
 __pycache__/
 *.pyc
 kiria_producer.zip
+node_modules/
+frames/
