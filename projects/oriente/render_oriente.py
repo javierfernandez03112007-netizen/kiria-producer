@@ -27,7 +27,7 @@ from engine import post  # noqa: E402
 
 AUDIO = os.path.join(ROOT, "assets", "voz.mp3")
 OUT = os.path.join(ROOT, "out")
-END = 59.20
+END = 60.00
 
 # ------------------------------------------------------------------ tiempos (alineación de la voz)
 K = dict(
