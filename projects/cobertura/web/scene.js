@@ -904,7 +904,7 @@ function spaceMid(t) {   // 34,0 – 46,0
     const ca = env(t, 41.1, 43.0, 0.4, 0.4);
     S.cota500.quaternion.setFromUnitVectors(v3(0, 1, 0), limb); setOpacity(S.cota500, ca);
     S.t500.visible = false;
-    hudPlace(S.t70, spaceCam, 0, 0.62, 0.05); show(S.t70, env(t, K.bajo - 0.1, 43.2, 0.3, 0.4), pop(t, K.bajo - 0.1));
+    hudPlace(S.t70, spaceCam, 0, 0.36, 0.05); show(S.t70, env(t, K.bajo - 0.1, 43.2, 0.3, 0.4), pop(t, K.bajo - 0.1));
     out.blur = 0.25 * Math.sin(Math.PI * prog(t, 40.5, 1.2)) + 0.3 * ss(prog(t, 45.5, 0.5));
     out.white = 0;
   }
