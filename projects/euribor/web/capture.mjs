@@ -30,6 +30,7 @@ await page.waitForFunction(() => window.ready === true || window.failed, null, {
 const failed = await page.evaluate(() => window.failed);
 if (failed) { console.log('FAILED', failed); process.exit(1); }
 const t0 = Date.now();
+if (process.env.COVER) { await page.evaluate(() => window.renderCover()); await page.screenshot({ path: path.join(outDir, 'cover3d.png') }); frames = []; }
 for (const f of frames) {
   await page.evaluate(t => window.renderAt(t), f / FPS);
   await page.screenshot({ path: path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 93 });

@@ -469,6 +469,19 @@ function frameState(t) {
   return out;
 }
 
+// portada: giroscopio sin textos, centrado y algo más cerca
+window.renderCover = function () {
+  animLab(7.2); for (const k in S.T) S.T[k].visible = false; setOpacity(S.ringCota, 0);
+  const c = ST[0].c.clone().add(v3(0, 1, 0));
+  labCam.position.copy(c.clone().add(v3(-2.2, 1.6, 9.5))); labCam.up.set(0, 1, 0); labCam.lookAt(c.clone().add(v3(0, -0.6, 0)));
+  renderer.setRenderTarget(rtA); renderer.render(lab, labCam);
+  mixMat.uniforms.tA.value = rtA.texture; mixMat.uniforms.tB.value = rtA.texture; mixMat.uniforms.mixAB.value = 0; mixMat.uniforms.blur.value = 0;
+  mixMat.uniforms.white.value = 0; mixMat.uniforms.black.value = 0; mixMat.uniforms.vig.value = 0.5;
+  renderer.setRenderTarget(rtC); renderer.render(quadScene, quadCam);
+  bloom.strength = 0.7; bloom.enabled = true; renderer.setRenderTarget(null); composer.render();
+  return true;
+};
+
 window.renderAt = function (t) {
   const st = frameState(t);
   renderer.setRenderTarget(rtA); renderer.render(st.scene, st.cam);
