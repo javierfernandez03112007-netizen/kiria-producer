@@ -128,40 +128,68 @@ def tarjeta_falta(txt):
 # ---------------------------------------------------------------- bocas que envejecen
 
 @lru_cache(1)
-def mascara_dientes():
+def mapas_dientes():
+    """Máscara de dientes y mapas de dónde se acumulan manchas: junto a la encía y entre dientes."""
     src = img("08_boca_sana.jpg")
     hsv = cv2.cvtColor((src * 255).astype(np.uint8), cv2.COLOR_BGR2HSV)
-    m = ((hsv[..., 2] > 190) & (hsv[..., 1] < 55)).astype(np.uint8)
-    ih, iw = m.shape
-    zona = np.zeros_like(m)
-    cv2.ellipse(zona, (iw // 2, int(ih * .46)), (int(iw * .25), int(ih * .12)), 0, 0, 360, 1, -1)
-    m = cv2.morphologyEx(m * zona, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
-    bordes = cv2.morphologyEx(m, cv2.MORPH_GRADIENT, np.ones((7, 7), np.uint8))
-    m = cv2.GaussianBlur(m.astype(np.float32), (0, 0), 2)[..., None]
-    bordes = cv2.GaussianBlur(bordes.astype(np.float32), (0, 0), 3)[..., None]
-    return m, bordes
+    hh, ss, vv = hsv[..., 0], hsv[..., 1].astype(np.float32), hsv[..., 2].astype(np.float32)
+    ih, iw = vv.shape
+    zona = np.zeros((ih, iw), np.uint8)
+    cv2.ellipse(zona, (iw // 2, int(ih * .45)), (int(iw * .23), int(ih * .15)), 0, 0, 360, 1, -1)
+    m = ((vv > 165) & (ss < 80)).astype(np.uint8) * zona
+    m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8))
+    n, lab, st, _ = cv2.connectedComponentsWithStats(m)
+    m = np.isin(lab, [i for i in range(1, n) if st[i, cv2.CC_STAT_AREA] > 400]).astype(np.uint8)
+    encia = (((hh < 12) | (hh > 165)) & (ss > 45) & (vv > 110)).astype(np.uint8)
+    hueco = ((vv < 150) * zona).astype(np.uint8)
+    d_encia = cv2.distanceTransform(1 - encia, cv2.DIST_L2, 5)
+    d_hueco = cv2.distanceTransform(1 - hueco, cv2.DIST_L2, 5)
+    rng = np.random.default_rng(3)
+    ruido = cv2.resize(rng.random((ih // 24, iw // 24)).astype(np.float32), (iw, ih), interpolation=cv2.INTER_CUBIC)
+    ruido_f = cv2.resize(rng.random((ih // 6, iw // 6)).astype(np.float32), (iw, ih), interpolation=cv2.INTER_CUBIC)
+    org = np.clip(.55 * ruido + .45 * ruido_f, 0, 1)
+    mf = cv2.GaussianBlur(m.astype(np.float32), (0, 0), 1.2)
+    cuello = np.exp(-d_encia / 16) * mf * (.6 + .8 * org)          # tercio cervical, junto a la encía
+    sarro = np.clip(np.exp(-d_encia / 6) * mf * (org * 1.6 - .2), 0, 1)
+    entre = np.exp(-d_hueco / 7) * mf * (.5 + .9 * org)             # espacios interdentales
+    brillo = np.clip((vv / 255 - .9) / .08, 0, 1) * mf               # reflejos especulares
+    return mf[..., None], cuello[..., None], sarro[..., None], entre[..., None], brillo[..., None]
 
 
 def boca_envejecida(k):
-    """k 0..1: de sana a muy deteriorada (amarillo, manchas entre dientes y un diente que falta)."""
-    src = img("08_boca_sana.jpg").copy()
+    """k 0..1: de sana a deteriorada. Amarillea el esmalte y acumula manchas en cuellos y espacios."""
+    src = img("08_boca_sana.jpg")
     if k <= 0:
-        return src
-    m, bordes = mascara_dientes()
-    amarillo = src * np.float32([0.55, 0.85, 1.0])
-    marron = src * np.float32([0.30, 0.45, 0.60])
-    dientes = src * (1 - k) + lerp(amarillo, marron, clamp((k - .5) * 2) * .6) * k
-    dientes = dientes * (1 - bordes * clamp(k * 1.3) * .5) + np.float32([0.05, 0.12, 0.2]) * bordes * clamp(k * 1.3) * .5
-    out = src * (1 - m) + dientes * m
-    if k > .82:  # diente lateral que se pierde
+        return src.copy()
+    m, cuello, sarro, entre, brillo = mapas_dientes()
+    lab = cv2.cvtColor(src, cv2.COLOR_BGR2Lab)
+    lab[..., 0] *= 1 - .16 * k
+    lab[..., 2] += 30 * k   # hacia el amarillo
+    lab[..., 1] += 3 * k
+    out = cv2.cvtColor(lab, cv2.COLOR_Lab2BGR)
+    out = src * (1 - m) + out * m
+    k2 = clamp((k - .25) / .75)
+    marron = np.float32([0.30, 0.46, 0.62])
+    a = np.clip(cuello * .9 + entre * .8, 0, 1) * k2
+    out = out * (1 - a) + out * marron * a                           # mancha que tiñe (conserva el volumen)
+    crema = np.float32([0.55, 0.74, 0.82])
+    a = sarro * clamp((k - .45) / .55) * .85
+    out = out * (1 - a) + (crema * (.75 + .25 * out.mean(axis=2, keepdims=True))) * a
+    out = out * (1 - brillo * .55) + src * brillo * .55               # el esmalte sigue brillando
+    if k > .82:  # se pierde el incisivo lateral
         ih, iw = src.shape[:2]
-        hueco = np.zeros((ih, iw), np.float32)
-        cv2.ellipse(hueco, (int(iw * .603), int(ih * .47)), (int(iw * .024), int(ih * .075)), 0, 0, 360, 1, -1)
-        hueco = cv2.GaussianBlur(hueco, (0, 0), 3)[..., None] * clamp((k - .82) / .12)
-        out = out * (1 - hueco * m) + np.float32([0.08, 0.06, 0.12]) * hueco * m
+        f = clamp((k - .82) / .1)
+        zona_d = np.zeros((ih, iw), np.float32)
+        cv2.rectangle(zona_d, (824, 270), (891, 395), 1, -1)
+        diente = cv2.GaussianBlur(zona_d * m[..., 0], (0, 0), 1.5)[..., None] * f
+        yy = np.linspace(0, 1, ih, dtype=np.float32)[:, None, None]
+        oscuro = np.float32([0.07, 0.06, 0.13]) + np.clip(yy - .4, 0, 1) * np.float32([0.04, 0.04, 0.10])
+        out = out * (1 - diente) + oscuro * diente
+        sombra = cv2.GaussianBlur(diente[..., 0], (0, 0), 8)[..., None]
+        out = out * (1 - .4 * np.clip(sombra - diente, 0, 1))
     out = out.astype(np.float32)
     gris = cv2.cvtColor(out, cv2.COLOR_BGR2GRAY)[..., None]
-    return out * .55 + gris * .45  # tono apagado del camino gris
+    return out * .78 + gris * .22  # tono algo apagado
 
 
 # ---------------------------------------------------------------- escenas
