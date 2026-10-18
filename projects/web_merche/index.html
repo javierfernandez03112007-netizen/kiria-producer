@@ -103,7 +103,7 @@
   .arco.grande { inset: 0 70px 0 40px; }
   .arco.peque { width: 190px; height: 250px; right: 0; bottom: 40px; border: 6px solid var(--crema); animation: flotar 7s ease-in-out infinite; }
   .ondas { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .ondas path { fill: none; stroke: rgba(255, 255, 255, .55); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 900; stroke-dashoffset: 900; animation: trazo 4s ease forwards, mecer 9s ease-in-out 4s infinite alternate; }
+  .ondas path { fill: none; stroke: rgba(255, 255, 255, .4); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 900; stroke-dashoffset: 900; animation: trazo 4s ease forwards, mecer 9s ease-in-out 4s infinite alternate; }
   .ondas path:nth-child(2) { animation-delay: .3s, 4.3s; stroke: rgba(255, 236, 210, .7); }
   .ondas path:nth-child(3) { animation-delay: .6s, 4.6s; }
   .ondas path:nth-child(4) { animation-delay: .9s, 4.9s; stroke: rgba(255, 236, 210, .5); }
@@ -121,10 +121,10 @@
   /* Foto: si existe la imagen en img/ se ve; si no, queda el degradado cálido */
   .foto { background-size: cover; background-position: center; }
   .foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(59, 36, 24, .28)); }
-  .tono-1 { background-image: var(--img, none), linear-gradient(160deg, #f8d9b8 0%, #e9a173 45%, #c4683f 100%); }
-  .tono-2 { background-image: var(--img, none), linear-gradient(200deg, #fde7cc 0%, #f1b98a 55%, #d98b5b 100%); }
-  .tono-3 { background-image: var(--img, none), linear-gradient(140deg, #fbe3c7 0%, #e7b27a 50%, #b9774b 100%); }
-  .tono-4 { background-image: var(--img, none), linear-gradient(170deg, #fff1df 0%, #f3c9a6 50%, #df9a6c 100%); }
+  .tono-1 { background-image: var(--img, none), var(--stock, none), linear-gradient(160deg, #f8d9b8 0%, #e9a173 45%, #c4683f 100%); }
+  .tono-2 { background-image: var(--img, none), var(--stock, none), linear-gradient(200deg, #fde7cc 0%, #f1b98a 55%, #d98b5b 100%); }
+  .tono-3 { background-image: var(--img, none), var(--stock, none), linear-gradient(140deg, #fbe3c7 0%, #e7b27a 50%, #b9774b 100%); }
+  .tono-4 { background-image: var(--img, none), var(--stock, none), linear-gradient(170deg, #fff1df 0%, #f3c9a6 50%, #df9a6c 100%); }
 
   /* ---------- Cinta ---------- */
   .cinta { background: var(--cacao); color: var(--arena); padding: 20px 0; overflow: hidden; white-space: nowrap; }
@@ -224,6 +224,19 @@
   }
   .galeria .pieza:hover span { transform: none; opacity: 1; }
 
+  /* Costa Tropical */
+  .mar { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; padding: 0; color: #fff; }
+  .mar .fondo { position: absolute; inset: -12% 0; will-change: transform; }
+  .mar .fondo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(59, 36, 24, .72) 0%, rgba(164, 82, 45, .35) 55%, rgba(255, 210, 160, .1) 100%); }
+  .mar .envoltura { position: relative; z-index: 2; padding: 110px 0; }
+  .mar h2 { color: #fff; font-size: clamp(2.6rem, 6vw, 4.6rem); max-width: 11em; margin: 14px 0 20px; }
+  .mar h2 em { color: #ffd9a8; }
+  .mar p { max-width: 32em; font-size: 1.12rem; opacity: .95; }
+  .mar .etiqueta { color: #ffd9a8; }
+  .mar .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .mar .chips span { padding: 9px 18px; border-radius: 999px; background: rgba(255, 255, 255, .16); backdrop-filter: blur(8px); font-weight: 500; font-size: .92rem; border: 1px solid rgba(255, 255, 255, .25); }
+  .tono-mar { background-image: var(--img, none), var(--stock, none), linear-gradient(180deg, #ffd9a8 0%, #f0a77a 45%, #4f8fa3 100%); }
+
   /* Opiniones */
   .opiniones { background: var(--cacao); color: var(--arena); position: relative; overflow: hidden; }
   .opiniones::before { content: ""; position: absolute; width: 700px; height: 700px; left: -200px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(223, 169, 84, .28), transparent 65%); }
@@ -260,7 +273,11 @@
   /* CTA final */
   .final {
     margin: 0 16px 16px; border-radius: 36px; padding: 110px 24px; text-align: center; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #c4683f, #dfa954 60%, #f3c9a6);
+    background:
+      linear-gradient(135deg, rgba(196, 104, 63, .92), rgba(223, 169, 84, .82) 60%, rgba(243, 201, 166, .7)),
+      url(img/mar-2.jpg) center / cover,
+      url(https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=2000&q=75) center / cover,
+      #c4683f;
     color: #fff;
   }
   .final h2 { color: #fff; font-size: clamp(2.6rem, 6vw, 4.6rem); max-width: 14em; margin: 0 auto 18px; }
@@ -365,7 +382,7 @@
 
     <div class="arco-grupo aparece retardo-2">
       <!-- Para usar fotos reales: guardar en img/ y se cargan solas (ver --img) -->
-      <div class="arco grande foto tono-1" style="--img: url(img/hero.jpg)">
+      <div class="arco grande foto tono-1" style="--img: url(img/hero.jpg); --stock: url(https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=75)">
         <svg class="ondas" viewBox="0 0 400 600" preserveAspectRatio="none" aria-hidden="true">
           <path d="M-20 120 C 80 60, 160 200, 260 140 S 420 90, 440 160"/>
           <path d="M-20 210 C 90 150, 170 290, 270 230 S 420 180, 440 250"/>
@@ -374,7 +391,7 @@
           <path d="M-20 480 C 80 420, 160 560, 260 500 S 420 450, 440 520"/>
         </svg>
       </div>
-      <div class="arco peque foto tono-4" style="--img: url(img/detalle.jpg)"></div>
+      <div class="arco peque foto tono-4" style="--img: url(img/detalle.jpg); --stock: url(https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1400&q=75)"></div>
       <div class="sello">
         <svg viewBox="0 0 132 132" aria-hidden="true">
           <defs><path id="circulo" d="M66,66 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/></defs>
@@ -447,7 +464,7 @@
 <!-- ====== NOVIAS ====== -->
 <section class="novias" id="novias">
   <div class="envoltura">
-    <div class="marco foto tono-2 aparece" style="--img: url(img/novia.jpg)">
+    <div class="marco foto tono-2 aparece" style="--img: url(img/novia.jpg); --stock: url(https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=75)">
       <div class="cita-flotante">«Me hizo sentir totalmente yo.»<small>Carmen M. · se casó en febrero</small></div>
     </div>
     <div>
@@ -481,14 +498,25 @@
       <h2>Algunos de nuestros trabajos</h2>
     </div>
     <div class="galeria">
-      <div class="pieza aparece"><div class="foto tono-1" style="--img: url(img/galeria-1.jpg)"></div><span>Recogido de novia</span></div>
-      <div class="pieza aparece retardo-1"><div class="foto tono-4" style="--img: url(img/galeria-2.jpg)"></div><span>Ondas</span></div>
-      <div class="pieza aparece retardo-2"><div class="foto tono-3" style="--img: url(img/galeria-3.jpg)"></div><span>Color</span></div>
-      <div class="pieza aparece"><div class="foto tono-2" style="--img: url(img/galeria-4.jpg)"></div><span>Nuestro salón</span></div>
-      <div class="pieza aparece retardo-1"><div class="foto tono-3" style="--img: url(img/galeria-5.jpg)"></div><span>Semirecogido</span></div>
-      <div class="pieza aparece retardo-2"><div class="foto tono-1" style="--img: url(img/galeria-6.jpg)"></div><span>Invitadas</span></div>
-      <div class="pieza aparece retardo-3"><div class="foto tono-4" style="--img: url(img/galeria-7.jpg)"></div><span>Tratamientos</span></div>
+      <div class="pieza aparece"><div class="foto tono-1" style="--img: url(img/galeria-1.jpg); --stock: url(https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1400&q=75)"></div><span>Recogido de novia</span></div>
+      <div class="pieza aparece retardo-1"><div class="foto tono-4" style="--img: url(img/galeria-2.jpg); --stock: url(https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1400&q=75)"></div><span>Ondas</span></div>
+      <div class="pieza aparece retardo-2"><div class="foto tono-3" style="--img: url(img/galeria-3.jpg); --stock: url(https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1400&q=75)"></div><span>Color</span></div>
+      <div class="pieza aparece"><div class="foto tono-2" style="--img: url(img/galeria-4.jpg); --stock: url(https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=75)"></div><span>Nuestro salón</span></div>
+      <div class="pieza aparece retardo-1"><div class="foto tono-3" style="--img: url(img/galeria-5.jpg); --stock: url(https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=75)"></div><span>Semirecogido</span></div>
+      <div class="pieza aparece retardo-2"><div class="foto tono-1" style="--img: url(img/galeria-6.jpg); --stock: url(https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1400&q=75)"></div><span>Invitadas</span></div>
+      <div class="pieza aparece retardo-3"><div class="foto tono-4" style="--img: url(img/galeria-7.jpg); --stock: url(https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1400&q=75)"></div><span>Tratamientos</span></div>
     </div>
+  </div>
+</section>
+
+<!-- ====== COSTA TROPICAL ====== -->
+<section class="mar">
+  <div class="fondo foto tono-mar" id="fondoMar" style="--img: url(img/mar.jpg); --stock: url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=75)"></div>
+  <div class="envoltura">
+    <span class="etiqueta aparece">Motril · Costa Tropical</span>
+    <h2 class="aparece retardo-1">Novias con <em>vistas al mar</em></h2>
+    <p class="aparece retardo-2">A un paso de la playa, con la luz de la Costa Tropical. Peinados que lucen igual de bien en la iglesia, en un cortijo o en una boda frente al Mediterráneo.</p>
+    <div class="chips aparece retardo-3"><span>Bodas en la playa</span><span>Recogidos que aguantan la brisa</span><span>Ondas naturales</span></div>
   </div>
 </section>
 
@@ -583,6 +611,15 @@
     luz.style.left = (e.clientX - r.left) + 'px';
     luz.style.top = (e.clientY - r.top) + 'px';
   });
+
+  // Parallax del fondo de mar
+  const fondoMar = document.getElementById('fondoMar');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    addEventListener('scroll', () => {
+      const r = fondoMar.parentElement.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) fondoMar.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.15}px)`;
+    }, { passive: true });
+  }
 
   // Aparición al hacer scroll y contadores
   const contar = el => {
