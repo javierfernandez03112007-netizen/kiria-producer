@@ -74,7 +74,7 @@ def emoji_sprite(e, size):
 
 
 class Subs:
-    def __init__(self, lines, key=None, emoji=None, y=330, size=82, maxw=940, max_words=4, max_chars=21, W=1080):
+    def __init__(self, lines, key=None, emoji=None, y=330, size=88, maxw=940, max_words=4, max_chars=21, W=1080):
         self.size, self.y, self.maxw, self.W = size, y, maxw, W
         key = key or {}
         emoji = emoji or {}
