@@ -304,8 +304,8 @@ function buildSpace(c50) {
   const gsp = new THREE.Sprite(new THREE.SpriteMaterial({ map: canvasTex(256, 256, (g) => { const r = g.createRadialGradient(128, 128, 0, 128, 128, 128); r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(0.2, 'rgba(255,255,255,.8)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 256, 256); }), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
   gsp.position.copy(G.clone().multiplyScalar(1.0015)); gsp.scale.setScalar(0.012); space.add(gsp); S.gGlow = gsp;
   // estrellas
-  const st = []; for (let i = 0; i < 5000; i++) { const v = new THREE.Vector3().randomDirection().multiplyScalar(150 + rnd() * 100); st.push(v.x, v.y, v.z); }
-  space.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(st, 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 1.7, sizeAttenuation: false, transparent: true, opacity: 0.75 })));
+  const st = []; for (let i = 0; i < 1500; i++) { const v = new THREE.Vector3().randomDirection().multiplyScalar(150 + rnd() * 100); st.push(v.x, v.y, v.z); }
+  space.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(st, 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 1.5, sizeAttenuation: false, transparent: true, opacity: 0.45 })));
   // constelación en órbita baja (planos inclinados 53°)
   const cn = new Float32Array(N_PL * N_PER * 3);
   S.const = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(cn, 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 2.6, sizeAttenuation: false, transparent: true, opacity: 0.95 }));
@@ -570,8 +570,8 @@ function buildMount() {
   }
   mount.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(C, 3)), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.55 })));
   // estrellas y satélites en el cielo
-  const sp = []; for (let i = 0; i < 4000; i++) { const v = new THREE.Vector3().randomDirection(); v.y = Math.abs(v.y) * 0.95 + 0.02; v.normalize().multiplyScalar(1800); sp.push(v.x, v.y, v.z); }
-  mount.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(sp, 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 1.6, sizeAttenuation: false, transparent: true, opacity: 0.8, fog: false })));
+  const sp = []; for (let i = 0; i < 1300; i++) { const v = new THREE.Vector3().randomDirection(); v.y = Math.abs(v.y) * 0.95 + 0.02; v.normalize().multiplyScalar(1800); sp.push(v.x, v.y, v.z); }
+  mount.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(sp, 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 1.5, sizeAttenuation: false, transparent: true, opacity: 0.45, fog: false })));
   S.skySats = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(60 * 3), 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 3.2, sizeAttenuation: false, transparent: true, fog: false }));
   S.skySats.frustumCulled = false; mount.add(S.skySats);
   mount.add(new THREE.HemisphereLight(0x9a9a9a, 0x050505, 0.5));
@@ -667,9 +667,9 @@ function skyRise(t, t0) {
   const P = G.clone().multiplyScalar(r).addScaledVector(NORTH, -0.004 * rise);
   // al principio mira al cenit algo inclinado hacia el norte; después se voltea hacia la Tierra
   const look0 = P.clone().add(G.clone().multiplyScalar(1).addScaledVector(NORTH, 0.22));
-  const flip = ss(prog(tau, 2.9, 2.2));
+  const flip = ss(prog(tau, 1.9, 3.4));
   const m0 = new THREE.Matrix4().lookAt(P, look0, NORTH.clone().negate()), q0 = new THREE.Quaternion().setFromRotationMatrix(m0);
-  const fk = eio(prog(tau, 2.95, 2.5));
+  const fk = eio(prog(tau, 2.1, 3.6));
   const far = G.clone().multiplyScalar(lerp(1.05, 2.55, fk)).addScaledVector(NORTH, -0.35 * fk);
   const pos = P.clone().lerp(far, fk);
   const m1 = new THREE.Matrix4().lookAt(pos, G.clone().multiplyScalar(0.8).addScaledVector(NORTH, 0.42), NORTH), q1 = new THREE.Quaternion().setFromRotationMatrix(m1);
@@ -783,8 +783,8 @@ function resetMount() {
 let mountPath = null;
 const mountKeys = () => camPath([
   [26.3, PH.clone().add(v3(4.6, 2.5, 2.6)), PH.clone().add(v3(0, 1.85, 0))],
-  [27.6, PH.clone().add(v3(3.5, 2.2, 2.0)), PH.clone().add(v3(0, 1.85, 0))],
-  [28.5, v3(-60, 200, 560), v3(-78, 52, 8)],
+  [27.8, PH.clone().add(v3(3.5, 2.2, 2.0)), PH.clone().add(v3(0, 1.85, 0))],
+  [29.0, v3(-60, 200, 560), v3(-78, 52, 8)],
   [29.8, v3(-82, 205, 585), v3(-81, 50, 8)],
   [31.3, v3(-70, 200, 570), v3(-74, 48, 8)],
   [32.3, v3(160, 95, 50), v3(95, 12, -25)],
@@ -797,7 +797,7 @@ function mountSec(t) {   // 26,3 – 34,2
   phonePoseMount(t);
   const out = { scene: mount, cam: mountCam, bloom: 0.55, black: 1 - ss(prog(t, 26.3, 0.4)) };
   if (t < 32.8) { const P = mountPath(t); aim(mountCam, P.p, P.l, P.up); }
-  out.blur = 0.35 * Math.sin(Math.PI * prog(t, 27.75, 0.8));
+  out.blur = 0.2 * Math.sin(Math.PI * prog(t, 27.9, 1.1));
   // ondas del pueblo bloqueadas por la cresta
   const wa = env(t, 28.4, 32.9, 0.5, 0.5);
   S.mWaves.forEach((w, i) => {
@@ -848,7 +848,7 @@ function spaceMid(t) {   // 34,0 – 46,0
   S.geoRing.visible = geoA > 0.01; S.geoRing.material.opacity = 0.5 * geoA;
   S.geo.visible = geoA > 0.01; S.geo.rotation.z = t * 0.1;
   if (t >= 35.6 && t < 40.4) {
-    const u = eio(prog(t, 35.6, 1.4));
+    const u = eio(prog(t, 35.6, 2.0));
     const mid = A.clone().multiplyScalar(3.3);
     const camFar = mid.clone().addScaledVector(side.clone().cross(A).normalize(), -16 - 0.4 * (t - 35.6)).addScaledVector(side, -2.0);
     const prev = G.clone().multiplyScalar(1.12).addScaledVector(NORTH, -0.3);
@@ -869,11 +869,11 @@ function spaceMid(t) {   // 34,0 – 46,0
   }
   // órbita baja: satélites con su burbuja de cobertura
   if (t >= 40.4) {
-    const u = eio(prog(t, 40.4, 1.6));
+    const u = eio(prog(t, 40.4, 2.4));
     const mid = A.clone().multiplyScalar(3.3);
     const camFar = mid.clone().addScaledVector(side.clone().cross(A).normalize(), -16 - 0.4 * 4.8).addScaledVector(side, -2.0);
     const lowP = G.clone().multiplyScalar(1.55).addScaledVector(NORTH, -0.42).addScaledVector(EAST, 0.12);
-    const followK = ss(prog(t, 42.2, 1.6));
+    const followK = ss(prog(t, 42.3, 2.3));
     // satélites en tren sobre una órbita que cruza España de noreste a suroeste
     const axis = G.clone().cross(EAST.clone().multiplyScalar(-0.8).add(NORTH.clone().multiplyScalar(-0.6)).normalize()).normalize();
     const leoA = prog(t, 41.0, 0.6);
@@ -926,7 +926,7 @@ function mountSos(t) {   // 46,0 – 54,0
   if (step >= 1) { S.sosBeam.visible = true; const top = ph.position.clone().add(v3(0, 0.6, 0)); S.sosBeam.geometry.setFromPoints([top, top.clone().lerp(sp, eo(prog(t, K.satelite, 0.6)))]); S.sosBeam.computeLineDistances(); S.sosBeam.material.opacity = 0.9; }
   // cámara: primer plano del móvil; al final mira al cielo y sube
   const P0 = ph.position.clone().add(v3(2.5, 1.25, 1.65)), L0 = ph.position.clone().add(v3(-0.15, 0.12, 0));
-  const up = ss(prog(t, K.proxima + 0.3, 2.2));
+  const up = ss(prog(t, K.proxima + 0.1, 2.8));
   const L1 = ph.position.clone().add(v3(-60, 240, -40));
   const P1 = ph.position.clone().add(v3(4, 3, 4)).lerp(ph.position.clone().add(v3(-10, 60, -6)), ss(prog(t, 52.6, 1.4)));
   aim(mountCam, P0.lerp(P1, up), L0.lerp(L1, up));
@@ -946,7 +946,7 @@ function mountSos(t) {   // 46,0 – 54,0
 
 function spaceEnd(t) {   // 54,0 – 58,95
   resetSpace(); updateConstellation(t);
-  skyRise(t, 51.8);   // misma subida que el gancho, desde Granada hacia la órbita
+  skyRise(t, 51.0);   // misma subida que el gancho, desde Granada hacia la órbita
   const out = { scene: space, cam: spaceCam, bloom: 0.7 };
   if (t < 54.4) out.blur = 0.3 * (1 - ss(prog(t, 54.0, 0.4)));
   // vuelta a casa: caída hacia Granada y negro (el tejado)
@@ -998,8 +998,12 @@ window.renderCover = function () {
   return true;
 };
 
-window.renderAt = function (t) {
+// la voz va a velocidad natural (63,8 s); la escena se diseñó con la voz a 59,4 s: se estira el tiempo
+const TS = 1.0741;
+window.renderAt = function (tn) {
+  const t = Math.min(END, tn / TS);
   const st = frameState(t);
+  st.blur = (st.blur || 0) * 0.6;
   S.halo.visible = spaceCam.position.length() > 1.1; S.halo.material.opacity = 1;
   const useB = st.sceneB && st.mixB > 0;
   if (useB) { renderer.setRenderTarget(rtB); renderer.render(st.sceneB, st.camB); }

@@ -23,7 +23,9 @@ from engine.subs import Subs  # noqa: E402
 from engine.fin_draw import rrect, shadow, font  # noqa: E402
 
 FPS, W, H = 30, 1080, 1920
-END = 60.0
+END = 60.0                       # línea de tiempo de la escena (voz a 59,4 s, versión 1)
+TS = 1.0741                      # la voz va ahora a velocidad natural (63,8 s): el tiempo real se estira este factor
+N = round(END * TS * FPS)        # fotogramas del vídeo final
 FRAMES = os.environ.get("FRAMES", os.path.join(ROOT, "out", "frames"))
 AUDIO = os.path.join(ROOT, "assets", "voz.mp3")
 PUP = Puppet(os.path.join(ROOT, "..", "oriente", "assets", "avatar", "piezas"))   # mismo muñeco
@@ -66,7 +68,7 @@ SUBS = None
 def env_open():
     x = A.load(AUDIO, 16000)
     hop = 16000 // FPS
-    n = int(END * FPS)
+    n = N
     r = np.array([np.sqrt(np.mean(x[i * hop:(i + 1) * hop] ** 2) + 1e-12) if i * hop < len(x) else 0 for i in range(n)])
     db = 20 * np.log10(r + 1e-9)
     o = np.clip((db - (db.max() - 32)) / 24, 0, 1)
@@ -131,7 +133,8 @@ def like(img, t, cx, top, vis):
 
 
 def compose(fi):
-    t = fi / FPS
+    tn = fi / FPS                 # tiempo real (voz y subtítulos)
+    t = tn / TS                   # tiempo de la escena
     img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
     if 27.55 <= t < 28.25:   # el móvil vibra: «sin servicio»
         k = 1 - prog(t, 27.55, 0.7)
@@ -155,7 +158,7 @@ def compose(fi):
         roi *= (1 - 0.6 * vis * sh[:roi.shape[0], :roi.shape[1]])[..., None]
         paste(img, (rgb, a), cx, foot + int(14 * s), vis, anchor="b")
         like(img, t, cx, foot - h * 0.95, vis)
-    SUBS.draw(img, t, 1 - prog(t, 59.3, 0.25))
+    SUBS.draw(img, tn, 1 - prog(t, 59.3, 0.25))
     light = img[H - 110:H - 40, W - 260:W - 40].mean() > 0.6   # fondo blanco (Brent): marca en negro
     paste(img, text("kiria.ai", 38, "semi", "#111111" if light else "#FFFFFF", shadow=0 if light else 0.5), W - 56, H - 70,
           0.85, anchor="r")
@@ -213,7 +216,7 @@ def init():
 
 
 def main(dst=os.path.join(ROOT, "out", "cobertura.mp4")):
-    n = int(END * FPS)
+    n = N
     missing = [i for i in range(n) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")

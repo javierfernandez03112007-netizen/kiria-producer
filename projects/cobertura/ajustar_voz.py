@@ -1,4 +1,4 @@
-"""Ajusta la voz a ~60 s: acorta pausas entre frases y silencios internos y acelera un poco (atempo).
+"""Ajusta la voz: acorta pausas entre frases y silencios internos y, si TARGET tiene valor, acelera (atempo).
 Uso: python3 ajustar_voz.py   (assets/voz_original.mp3 + tiempos_original.json → assets/voz.mp3)"""
 import json
 import re
@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.audio import silences  # noqa: E402
 
 SR = 44100
-TARGET = 59.4          # duración de la voz final (s)
+TARGET = None          # duración de la voz final (s); None = velocidad natural (la v1 usaba 59,4 s)
 PAUSE = {1: 0.42, 2: 0.36, 3: 0.30, 6: 0.36, 8: 0.30, 9: 0.30, 10: 0.30, 11: 0.36, 12: 0.32}  # pausa tras la frase i
 PAUSE_DEF = 0.26
 INNER_MAX = 0.16       # silencios internos (comas) como máximo
@@ -101,7 +101,7 @@ def main():
     parts.append(x[pos:s1 + int(0.25 * SR)])
     y = np.concatenate(parts)
     kp += [((s1 + int(0.25 * SR)) / SR, len(y) / SR)]
-    tempo = len(y) / SR / TARGET
+    tempo = len(y) / SR / TARGET if TARGET else 1.0
     ko, kn = np.array(kp).T
 
     def remap(t):
@@ -115,7 +115,7 @@ def main():
     json.dump(out, open(os.path.join(ROOT, "tiempos.json"), "w"), ensure_ascii=False, indent=1)
     print(f"tras recortes {len(y) / SR:.2f}s → atempo {tempo:.3f}")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-",
-                    "-af", f"atempo={tempo:.4f}", "-c:a", "libmp3lame", "-b:a", "192k",
+                    *(["-af", f"atempo={tempo:.4f}"] if tempo != 1.0 else []), "-c:a", "libmp3lame", "-b:a", "192k",
                     os.path.join(ROOT, "assets", "voz.mp3")], input=y.tobytes(), check=True)
 
 
