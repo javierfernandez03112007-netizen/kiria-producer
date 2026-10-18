@@ -56,13 +56,13 @@ def compose(fi):
     t0 = K["sigueme"] - 0.2
     if t0 <= t < END - 0.4:
         u = eio(prog(t, t0, 0.75))
-        cx, cy = lerp(900, 600, u), lerp(1780, 1500, u)
+        cx, cy = lerp(880, 560, u), lerp(1700, 1190, u)
         tap = K["sigueme"] + 0.6
         if t >= tap:
             r = 30 + 110 * prog(t, tap, 0.5)
             ring = cv2.circle(np.zeros((300, 300), np.float32), (150, 150), int(r), 1, 4, cv2.LINE_AA)
             paste(img, (np.ones((300, 300, 3), np.float32), ring), cx, cy, 1 - prog(t, tap, 0.5))
-        a = eo(prog(t, t0, 0.25)) * (1 - prog(t, END - 0.7, 0.3))
+        a = eo(prog(t, t0, 0.25)) * (1 - prog(t, END - 1.9, 0.3))
         paste(img, cursor_sprite(), cx, cy, a, scale=0.85 if tap <= t < tap + 0.15 else 1.0, anchor="tl")
     paste(img, text("kiria.ai", 38, "semi", "#FFFFFF", shadow=0.5), W - 56, H - 70, 0.85 * (1 - prog(t, END - 0.4, 0.3)), anchor="r")
     return (np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes()
@@ -70,7 +70,7 @@ def compose(fi):
 
 def init():
     global SUBS
-    SUBS = Subs(json.load(open(os.path.join(ROOT, "tiempos.json"))), KEY, EMOJI)
+    SUBS = Subs(json.load(open(os.path.join(ROOT, "tiempos.json"))), KEY, EMOJI, y=245)
 
 
 def main(dst=os.path.join(ROOT, "out", "presentacion.mp4")):

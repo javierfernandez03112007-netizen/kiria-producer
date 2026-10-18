@@ -195,6 +195,9 @@ function rawGaze(t) {
     if (t > K.pasando && back < 1) { const L = readers[readers.length - 1]; return linePoint(L, L.x1, t).lerp(camP, eio(back)); }
     return camP;
   }
+  // antes de entrar en la lente mira a cámara (la abertura queda de frente)
+  const dv = env(t, K.comprar + 0.2, 25.0, 0.35, 0.45);
+  if (dv > 0) { const L = readers.find(R => R.read[1] > K.comprar - 0.1) || readers[readers.length - 1]; return linePoint(L, L.x1, t).lerp(camP, eio(dv)); }
   if (t < first) { const L = readers[0]; return camP.clone().lerp(linePoint(L, L.x0, t), eio(prog(t, first - 0.45, 0.45))); }
   for (let i = 0; i < readers.length; i++) {
     const L = readers[i], [a, b] = L.read;
@@ -230,7 +233,7 @@ function applyMode(mode) {
   S.paperEdge.material.opacity = white ? 0.35 : 0; S.shadow.material.opacity = white ? 0.8 : 0;
   S.dust.material.color.setHex(white ? 0x000000 : 0xffffff); S.dust.material.opacity = white ? 0.15 : 0.3;
 }
-const BASE = { p: v3(0, 3.55, 8.4), l: v3(0, 1.15, 0) };
+const BASE = { p: v3(0, 3.7, 8.6), l: v3(0, 1.75, 0) };
 function cameraAt(t) {
   let p = BASE.p.clone(), l = BASE.l.clone();
   const drift = 0.12 * Math.sin(t * 0.21);
@@ -253,11 +256,11 @@ function cameraAt(t) {
   }
   // entrada en la abertura negra de la lente (paso a negro) y salida
   const lensW = S.ap.getWorldPosition(v3(0, 0, 0));
-  const d2 = eio(prog(t, 23.45, 0.65)), u2 = eio(prog(t, 24.05, 1.1));
-  if (t > 23.4 && t < 25.3) {
-    const tp = lensW.clone().add(v3(0, 0.02, 0.12));
-    const pin = p.clone().lerp(tp, d2), lin = l.clone().lerp(lensW, d2);
-    p = pin.lerp(p, u2); l = lin.lerp(l, u2);
+  const d2 = eio(prog(t, 23.5, 0.6)), u2 = eio(prog(t, 24.05, 1.1));
+  if (t > 23.45 && t < 25.3) {
+    const dir = p.clone().sub(lensW).normalize();
+    if (t < 24.05) { p = p.clone().lerp(lensW.clone().addScaledVector(dir, 0.06), d2); l = l.clone().lerp(lensW, d2); }
+    else { p = lensW.clone().addScaledVector(dir, 1.4).lerp(p, u2); l = lensW.clone().lerp(l, u2); }
   }
   // final: se acerca otra vez a la lente (bucle)
   const k1 = eio(prog(t, END - 2.2, 2.0));
@@ -320,8 +323,8 @@ function frame(t) {
   const pa = 1 - eio(prog(t, K.pasando + 1.6, 1.6));
   S.paper.visible = pa > 0.01; S.paper.material.transparent = true; S.paper.material.opacity = pa;
   S.paper.position.y = PAPER_Y - 0.8 * (1 - pa);
+  figureAt(t);   // primero la figura: la cámara usa la posición actual de la lente
   cameraAt(t);
-  figureAt(t);
   marksAt(t);
   const dp = S.dust.geometry.attributes.position.array; for (let i = 0; i < dp.length / 3; i++) dp[i * 3 + 2] = ((dp[i * 3 + 2] + 22 + 0.012) % 26) - 22;
   S.dust.geometry.attributes.position.needsUpdate = true;
