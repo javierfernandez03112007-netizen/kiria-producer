@@ -1,11 +1,19 @@
 # «Dos caminos» — personajes, vestuario y prompts (@mybrushclub)
 
 ## Estilo común (pegar al final de cada prompt)
-> stylized 3D animated feature film style, original characters, slightly oversized heads, big expressive eyes,
-> soft rounded features, smooth subsurface-scattered skin, cinematic lighting, shallow depth of field,
-> highly detailed, vertical 9:16
+Referencia: reels de animación 3D generada con IA (estilo «película de animación» con fondos casi reales).
+Rasgos clave: ojos muy grandes, brillantes y con reflejos; cejas gruesas y esculpidas; piel suave con poros,
+pecas o barba incipiente; nariz y labios redondeados; mandíbula marcada en hombres (pueden ser corpulentos);
+pelo con mechones definidos; ropa con textura real; casas y baños realistas con luz cálida de lámpara o ventana;
+expresiones muy exageradas (bostezo, sorpresa, sonrisa de lado).
 
-Evitar: parecido con personajes de cuentas o películas concretas, logotipos de terceros, texto en la imagen.
+> Pixar-style 3D animated movie still, original characters, big glossy expressive eyes with catchlights,
+> thick sculpted eyebrows, smooth stylized skin with subtle pores and freckles, rounded nose and lips,
+> detailed strands of hair, realistic fabric textures, photorealistic home interior background,
+> warm cinematic lighting, shallow depth of field, exaggerated facial expression, 4k, vertical 9:16
+
+Truco: sube a ChatGPT/Gemini una captura de referencia y añade «same art style, but completely original
+characters, do not copy these people».
 
 ## Personajes (originales)
 
