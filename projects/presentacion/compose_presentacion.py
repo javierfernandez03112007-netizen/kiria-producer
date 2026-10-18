@@ -37,8 +37,10 @@ def cursor_sprite():
     return np.repeat((1 - inner * 0.95)[..., None], 3, axis=2).astype(np.float32), np.maximum(edge, inner)
 
 
-def glow(img, thr=0.72, k=0.55):
-    """Brillo (bloom) barato: lo más claro, desenfocado a varias escalas y sumado."""
+def glow(img, thr=0.86, k=0.45):
+    """Brillo (bloom) barato: lo más claro, desenfocado a varias escalas y sumado (solo en las partes de fondo negro)."""
+    if img.mean() > 0.45:
+        return img
     hi = np.clip(img - thr, 0, None) / (1 - thr)
     small = cv2.resize(hi, (W // 4, H // 4), interpolation=cv2.INTER_AREA)
     g = cv2.GaussianBlur(small, (0, 0), 6) * 0.6 + cv2.GaussianBlur(small, (0, 0), 20) * 0.4
