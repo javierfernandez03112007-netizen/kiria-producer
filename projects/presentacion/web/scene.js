@@ -133,7 +133,7 @@ function buildDocs() {
   // tarjeta de resumen «1 minuto»
   S.reel = reelCard(); scene.add(S.reel);
   // lo que NO hago
-  S.nos = ['«Hazte rico»', '«Compra esto»', 'Humo'].map(s => { const m = noCard(s); scene.add(m); return m; });
+  S.nos = ['Humo', '«Hazte rico»', '«Compra esto»'].map(s => { const m = noCard(s); scene.add(m); return m; });
   S.follow = followCard(); scene.add(S.follow);
 }
 function chip(s) {
@@ -171,7 +171,7 @@ function drawReel(t, u) {   // u: segundos del minuto que van pasando
 function noCard(s) {
   const t = canvasTex(900, 220, (g, w, h) => { g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineWidth = 6; rr(g, 4, 4, w - 8, h - 8, 50); g.stroke(); g.fillStyle = '#cfcfcf'; g.font = '800 84px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, w / 2, h / 2 + 4); });
   const m = new THREE.Mesh(new THREE.PlaneGeometry(2.7, 0.66), new THREE.MeshBasicMaterial({ map: t, transparent: true, depthWrite: false })); m.visible = false;
-  const x = new THREE.Mesh(new THREE.PlaneGeometry(2.9, 0.07), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true })); x.position.z = 0.01; m.add(x); m.userData.strike = x;
+  const x = new THREE.Mesh(new THREE.PlaneGeometry(2.9, 0.06), new THREE.MeshBasicMaterial({ color: 0xb0b0b0, transparent: true })); x.position.z = 0.01; m.add(x); m.userData.strike = x;
   return m;
 }
 function followCard() {
@@ -190,9 +190,11 @@ function figureAt(t, target) {
   const lx = clamp(d.x * 0.12, -0.55, 0.55), ly = clamp(d.y * 0.1, -0.28, 0.28);
   S.lens.position.set(lx, ly, 0.05);
   // parpadeo (cierra en vertical) cada ~4 s y al cambiar de bloque
-  const bt = [1.6, 5.4, 11.2, 15.4, 19.4, 23.0, 26.0, 29.8].map(x => x * (K.end / 33));
+  const bt = [2.3, K.leo - 0.45, K.busco - 0.35, K.explico - 0.35, K.humo - 0.3, K.solo - 0.35, K.interesa - 0.3];
   let blink = 0; for (const b of bt) blink = Math.max(blink, Math.sin(Math.PI * prog(t, b, 0.22)));
-  S.lid.scale.set(1, 1 - 0.92 * blink, 1);
+  // se abre al empezar y se cierra al final (bucle: cerrado → abierto)
+  const open = eo(prog(t, 0.1, 0.6)) * (1 - eio(prog(t, END - 0.75, 0.6)));
+  S.lid.scale.set(1, Math.max(0.02, open * (1 - 0.92 * blink)), 1);
   // voz: la abertura se abre y se cierra con el nivel de la voz
   const lv = ENV ? ENV[Math.min(ENV.length - 1, Math.round(t * 30))] : 0.4 + 0.4 * Math.sin(t * 9);
   S.ap.scale.setScalar(0.8 + 0.45 * lv); S.blades.rotation.z = t * 0.6 + lv * 0.8; S.blades.scale.setScalar(0.85 + 0.35 * lv);
@@ -212,7 +214,7 @@ function cornersOf(m) { const pts = []; const w = m.geometry.parameters.width / 
 function frame(t) {
   // cámara: plano medio de la figura con deriva lenta; se acerca al presentarse y al final
   const push = 1 - 0.12 * eio(prog(t, K.hola, 1.6)) - 0.1 * eio(prog(t, K.sigueme - 0.5, 1.5));
-  const ang = 0.07 * Math.sin(t * 0.18);
+  const ang = 0.04 * Math.sin(t * 0.18);
   cam.position.set(Math.sin(ang) * 11 * push, 1.4 + 0.3 * Math.sin(t * 0.21), Math.cos(ang) * 11 * push);
   cam.lookAt(0, 0.6, 0);
   let target = null, beamA = 0, beamPts = null;
@@ -221,10 +223,10 @@ function frame(t) {
   let best = null;
   S.docs.forEach(d => {
     const f = ((t * 0.07 * d.sp + d.ph) % 1);
-    const z = lerp(-26, 9, f);
+    const z = lerp(-26, 4, f);
     d.m.position.set(d.x * (1 + 0.3 * f), d.y * 0.6 + 0.9, z);
     d.m.rotation.set(0.15 * Math.sin(t * 0.3 + d.i), -d.x * 0.06, 0.05 * Math.sin(t * 0.4 + d.i));
-    const a = flowA * clamp((z + 26) / 6) * clamp((9 - z) / 4);
+    const a = flowA * clamp((z + 26) / 6) * clamp((4 - z) / 3);
     setOpacity(d.m, a);
     if (a > 0.5 && z > -10 && z < 2 && (!best || z > best.m.position.z)) best = d;
   });
@@ -265,7 +267,7 @@ function frame(t) {
   const dp = S.dust.geometry.attributes.position.array; for (let i = 0; i < dp.length / 3; i++) dp[i * 3 + 2] = ((dp[i * 3 + 2] + 26 + 0.02) % 30) - 26;
   S.dust.geometry.attributes.position.needsUpdate = true;
   // entrada desde negro y bucle: al final la figura vuelve al primer plano (mismo encuadre)
-  return { black: 1 - ss(prog(t, 0, 0.35)) };
+  return { black: Math.max(1 - ss(prog(t, 0, 0.3)), ss(prog(t, END - 0.3, 0.3))) };
 }
 
 window.renderAt = function (t) {
@@ -274,7 +276,7 @@ window.renderAt = function (t) {
   mixMat.uniforms.tA.value = rtA.texture; mixMat.uniforms.blur.value = st.blur || 0;
   mixMat.uniforms.white.value = st.white || 0; mixMat.uniforms.black.value = clamp(st.black || 0);
   renderer.setRenderTarget(rtC); renderer.render(quadScene, quadCam);
-  bloom.strength = 0.7; renderer.setRenderTarget(null); composer.render();
+  bloom.enabled = false; renderer.setRenderTarget(null); composer.render();   // el brillo se añade en Python (más rápido)
   return true;
 };
 
