@@ -2,7 +2,7 @@
 // La mirada se mueve de forma natural (giro suave, seguimiento de cada frase) y el vídeo alterna fondo negro
 // con líneas blancas y fondo blanco con líneas negras. window.renderAt(t) dibuja el instante t.
 import * as THREE from 'three';
-import { W, H, clamp, prog, lerp, eo, eio, ss } from './lib.js';
+import { W, H, clamp, prog, lerp, eo, eio, ss, fatLines } from './lib.js';
 
 let K = {}, END = 36, ENV = null;
 
@@ -26,7 +26,7 @@ const quadScene = new THREE.Scene(); quadScene.add(new THREE.Mesh(new THREE.Plan
 const quadCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
 const scene = new THREE.Scene(); scene.background = new THREE.Color(0x000000); scene.fog = new THREE.Fog(0x000000, 14, 34);
-const cam = new THREE.PerspectiveCamera(38, W / H, 0.01, 200);
+const cam = new THREE.PerspectiveCamera(38, W / H, 0.01, 200); window.cam = cam;
 const S = {}; window.S = S;
 const v3 = (x, y, z) => new THREE.Vector3(x, y, z);
 const env = (t, t0, t1, fi = 0.4, fo = 0.4) => (t < t0 || t > t1 ? 0 : Math.min(eo(prog(t, t0, fi)), 1 - prog(t, t1 - fo, fo)));
@@ -55,7 +55,8 @@ function buildFigure() {
   const ticks = new THREE.Group(); S.lid.add(ticks); S.ticks = ticks;
   for (let i = 0; i < 72; i++) {
     const a = i / 72 * Math.PI * 2, long = i % 6 === 0;
-    const m = new THREE.Mesh(new THREE.BoxGeometry(0.012, long ? 0.12 : 0.05, 0.01), long ? M.line : M.dim);
+    const m = new THREE.Mesh(new THREE.BoxGeometry(0.012, long ? 0.12 : 0.05, 0.01), new THREE.MeshBasicMaterial({ color: 0x8a8a8a }));
+    m.userData = { i, long }; S.tickList = S.tickList || []; S.tickList.push(m);
     const rx = RX * 1.2, ry = RY * 1.2; m.position.set(Math.cos(a) * rx, Math.sin(a) * ry, 0);
     m.rotation.z = Math.atan2(Math.sin(a) * rx, Math.cos(a) * ry) - Math.PI / 2; ticks.add(m);
   }
@@ -98,17 +99,17 @@ function lineDefs() {
     ['Euríbor 12 meses: 3,247 %', 'b', [K.bde + 0.38, K.ine - 0.05]],
     ['INE · precios de consumo', 'h2', [K.ine, K.ine + 0.75]],
     ['', 'gap'],
-    ['¿Qué te afecta?', 'h1', [K.busco + 0.2, K.hipoteca - 0.45]],
-    ['→ Tu hipoteca', 'b', [K.hipoteca - 0.3, K.ahorros - 0.25]],
-    ['→ Tus ahorros', 'b', [K.ahorros - 0.2, K.ahorros + 0.5]],
-    ['→ Lo que pagas en el súper', 'b', [K.ahorros + 0.55, K.super + 0.4]],
+    ['¿Qué te afecta?', 'h1', null],
+    ['→ Tu hipoteca', 'b', null],
+    ['→ Tus ahorros', 'b', null],
+    ['→ Lo que pagas en el súper', 'b', null],
     ['', 'gap'],
-    ['Explicado en 1 minuto', 'h1', [K.explico - 0.75, K.minuto + 0.35], { circle: '1 minuto', at: K.minuto }],
-    ['Con datos y fuentes', 'b', [K.minuto + 0.4, K.fuentes + 0.3], { circle: 'fuentes', at: K.fuentes }],
+    ['Explicado en 1 minuto', 'h1', null, { circle: '1 minuto', at: K.minuto }],
+    ['Con datos y fuentes', 'b', null, { circle: 'fuentes', at: K.fuentes }],
     ['', 'gap'],
-    ['Humo', 'h2', [K.humo - 0.3, K.humo + 0.35], { strike: K.humo + 0.25 }],
-    ['«Hazte rico rápido»', 'b', [K.humo + 0.55, K.rico + 0.3], { strike: K.rico + 0.1 }],
-    ['«Compra esto ya»', 'b', [K.rico + 0.45, K.comprar + 0.15], { strike: K.comprar }],
+    ['Humo', 'h2', null, { strike: K.humo + 0.25 }],
+    ['«Hazte rico rápido»', 'b', null, { strike: K.rico + 0.1 }],
+    ['«Compra esto ya»', 'b', null, { strike: K.comprar }],
     ['', 'gap'],
     ['Lo que necesitas', 'h1', [K.solo + 0.35, K.solo + 1.1]],
     ['para entender lo que pasa.', 'h1', [K.solo + 1.15, K.pasando + 0.45]],
@@ -146,9 +147,8 @@ function buildPaper() {
   shadow.position.set(0.12, -0.12, -0.01); paper.add(shadow); S.shadow = shadow;
   // marcas sobre el papel: subrayados (siguen a la mirada), tachados y círculos
   LINES.forEach(L => {
-    if (!L.read || !L.text) return;
-    const hl = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2, depthWrite: false }));
-    hl.position.z = 0.003; paper.add(hl); L.hl = hl;
+    if (!L.text) return;
+    if (L.read) { const hl = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2, depthWrite: false })); hl.position.z = 0.003; paper.add(hl); L.hl = hl; }
     if (L.fx.strike) { const s = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0x0a0a0a })); s.position.z = 0.004; paper.add(s); L.sk = s; }
     if (L.fx.circle) { const c = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ellipsePts(1, 1, 120)), new THREE.LineBasicMaterial({ color: 0x0a0a0a })); c.position.z = 0.004; paper.add(c); L.ci = c; L.ciPts = ellipsePts(1, 1, 120); }
   });
@@ -185,35 +185,35 @@ function linePoint(L, x, t) {   // punto del mundo sobre la frase L en la x del 
 // ---------------------------------------------------------------- mirada (sin estado: se calcula para cualquier t)
 const FIG = v3(0, 2.35, -0.35);
 function camPos(t) { return cam.position.clone(); }
+const CAMP = v3(0, 3.4, 9);   // mirar a cámara (aprox.)
+let GK = [];
+function buildGazeKeys() {
+  const k = [], add = (t, fn, d = 0.38) => k.push([t, fn, d]), at = p => () => p.clone();
+  add(-1, at(CAMP));
+  LINES.filter(L => L.read).forEach(L => add(L.read[0], t => { const u = clamp((t - L.read[0]) / (L.read[1] - L.read[0])); return linePoint(L, lerp(L.x0, L.x1, 0.75 * u + 0.25 * ss(u)), t); }));
+  add(K.ine + 0.8, at(v3(0.2, 1.2, 3)));
+  // busca: mira a un lado y a otro
+  add(K.busco - 0.05, at(v3(-2.1, 1.2, 1.6)), 0.32); add(K.busco + 0.55, at(v3(2.0, 0.9, 1.4)), 0.36);
+  add(K.busco + 1.15, at(v3(-0.8, 0.25, 1.8)), 0.34); add(K.busco + 1.7, at(v3(0.9, 0.35, 2.0)), 0.34);
+  // examina cada figura que sale del folio
+  [K.hipoteca - 0.15, K.ahorros - 0.15, K.super - 0.3].forEach((t0, i) => add(t0, t => objPos(i, t)));
+  add(K.explico - 0.3, at(CAMP));
+  add(K.minuto + 0.45, at(CHIP[0])); add(K.fuentes - 0.1, at(CHIP[1]));
+  add(K.fuentes + 0.55, at(CAMP));
+  add(K.humo - 0.25, at(v3(0, 1.75, 1.6))); add(K.humo + 1.0, at(CAMP));
+  add(K.pasando + 0.9, at(CAMP));
+  add(K.interesa + 0.1, t => pileTop(t), 0.45); add(K.quedate - 0.2, at(CAMP));
+  return k.sort((a, b) => a[0] - b[0]);
+}
 function rawGaze(t) {
-  const readers = LINES.filter(L => L.read);
-  const first = readers[0].read[0], lookCam = t < first - 0.45 || t > K.pasando + 1.0;
-  const camP = v3(0, 3.4, 9);   // a cámara (aprox.)
-  if (lookCam) {
-    // vuelve a cámara suavemente tras la última frase
-    const back = prog(t, K.pasando + 1.0, 0.5);
-    if (t > K.pasando && back < 1) { const L = readers[readers.length - 1]; return linePoint(L, L.x1, t).lerp(camP, eio(back)); }
-    return camP;
-  }
-  // antes de entrar en la lente mira a cámara (la abertura queda de frente)
-  const dv = env(t, K.comprar + 0.2, 25.0, 0.35, 0.45);
-  if (dv > 0) { const L = readers.find(R => R.read[1] > K.comprar - 0.1) || readers[readers.length - 1]; return linePoint(L, L.x1, t).lerp(camP, eio(dv)); }
-  if (t < first) { const L = readers[0]; return camP.clone().lerp(linePoint(L, L.x0, t), eio(prog(t, first - 0.45, 0.45))); }
-  for (let i = 0; i < readers.length; i++) {
-    const L = readers[i], [a, b] = L.read;
-    if (t >= a && t <= b) { const u = (t - a) / (b - a); return linePoint(L, lerp(L.x0, L.x1, 0.75 * u + 0.25 * ss(u)), t); }
-    const N = readers[i + 1];
-    if (N && t > b && t < N.read[0]) {   // salto a la siguiente frase: giro suave y visible
-      const d = Math.min(0.45, N.read[0] - b);
-      const u = eio(clamp((t - b) / d));
-      return linePoint(L, L.x1, t).lerp(linePoint(N, N.x0, t), u);
-    }
-  }
-  const L = readers[readers.length - 1]; return linePoint(L, L.x1, t);
+  let i = 0; while (i < GK.length - 1 && GK[i + 1][0] <= t) i++;
+  if (i === 0) return GK[0][1](t);
+  const [t0, fn, d] = GK[i];
+  return GK[i - 1][1](t).lerp(fn(t), eio(clamp((t - t0) / d)));
 }
 function gaze(t) {   // media ponderada en ±0,12 s: aceleraciones y frenadas naturales
   const p = v3(0, 0, 0); let wsum = 0;
-  for (let k = -4; k <= 4; k++) { const w = 1 - Math.abs(k) / 5; p.addScaledVector(rawGaze(t + k * 0.03), w); wsum += w; }
+  for (let k = -4; k <= 4; k++) { const w = 1 - Math.abs(k) / 5; p.addScaledVector(rawGaze(t + k * 0.035), w); wsum += w; }
   p.multiplyScalar(1 / wsum);
   // pequeña deriva (micro-movimientos), muy sutil
   p.x += 0.02 * Math.sin(t * 2.3) + 0.01 * Math.sin(t * 5.1); p.y += 0.015 * Math.sin(t * 1.7 + 1);
@@ -277,7 +277,11 @@ function figureAt(t) {
   const toG = g.clone().sub(F.position);
   const pitch = clamp(Math.atan2(-toG.y, Math.max(0.3, toG.z)) * 0.62, -0.1, 0.72);
   const yaw = clamp(Math.atan2(toG.x, Math.max(0.3, toG.z)) * 0.35, -0.3, 0.3);
-  F.rotation.set(pitch, yaw, 0);
+  // gestos: niega («rico», «comprar»), asiente («quédate») y ladea con curiosidad al buscar
+  const shake = [K.rico + 0.05, K.comprar + 0.02].reduce((s, a) => s + (t > a && t < a + 0.75 ? 0.2 * Math.sin((t - a) * Math.PI * 2 * 2.6) * (1 - (t - a) / 0.75) : 0), 0);
+  const nod = t > K.quedate + 0.05 && t < K.quedate + 0.7 ? 0.16 * Math.sin((t - K.quedate - 0.05) * Math.PI * 2 * 2.4) * (1 - (t - K.quedate - 0.05) / 0.65) : 0;
+  const tilt = 0.14 * Math.sin((t - K.busco) * 2.2) * env(t, K.busco - 0.2, K.hipoteca, 0.4, 0.4);
+  F.rotation.set(pitch + nod, yaw + shake, tilt);
   F.updateMatrixWorld(true);
   const local = S.lid.worldToLocal(g.clone()).sub(S.lens.position).normalize();
   const maxA = 0.55, ang = Math.acos(clamp(local.z, -1, 1));
@@ -295,17 +299,26 @@ function figureAt(t) {
   const sc = 1.05 + 0.35 * lv; S.ap.scale.set(sc, 1, sc);   // la abertura se dilata con la voz
   S.iris.rotation.y = t * 0.25;
   S.ticks.rotation.z = t * 0.1;
+  // reloj de un minuto: las marcas se encienden en sentido horario desde arriba
+  const white = modeAt(t) === 'white';
+  const fill = 72 * eio(prog(t, K.explico + 0.05, K.fuentes - K.explico)), clockA = env(t, K.explico, K.humo - 0.1, 0.2, 0.5);
+  S.tickList.forEach(m => {
+    const j = ((18 - m.userData.i) % 72 + 72) % 72, lit = clockA > 0 && j < fill;
+    m.material.color.setHex(lit ? (white ? 0x000000 : 0xffffff) : (m.userData.long ? (white ? 0x222222 : 0xd0d0d0) : (white ? 0x8a8a8a : 0x6a6a6a)));
+    m.scale.set(lit ? 2.2 : 1, lit ? 1.7 : 1, 1);
+  });
   S.orbits[0].rotation.set(1.2 + t * 0.35, 0.3, 0); S.orbits[1].rotation.set(0.4, 1.0 + t * 0.28, 0.2);
 }
 
 function marksAt(t) {
   LINES.forEach(L => {
-    if (!L.hl) return;
-    const [a, b] = L.read;
-    const u = clamp((t - a) / (b - a)), uu = 0.75 * u + 0.25 * ss(u);
-    const x1 = lerp(L.x0, L.x1, uu);
-    const w = Math.max(0.0001, cx2l(x1 + 10) - cx2l(L.x0 - 10)), hh = L.h * 1.05 / CH * PL;
-    L.hl.visible = t > a; L.hl.scale.set(w, hh, 1); L.hl.position.set(cx2l(L.x0 - 10) + w / 2, cy2l(L.y + L.h * 0.45), 0.003);
+    if (L.hl) {
+      const [a, b] = L.read;
+      const u = clamp((t - a) / (b - a)), uu = 0.75 * u + 0.25 * ss(u);
+      const x1 = lerp(L.x0, L.x1, uu);
+      const w = Math.max(0.0001, cx2l(x1 + 10) - cx2l(L.x0 - 10)), hh = L.h * 1.05 / CH * PL;
+      L.hl.visible = t > a; L.hl.scale.set(w, hh, 1); L.hl.position.set(cx2l(L.x0 - 10) + w / 2, cy2l(L.y + L.h * 0.45), 0.003);
+    }
     if (L.sk) { const k = eo(prog(t, L.fx.strike, 0.3)); const sw = Math.max(0.0001, (cx2l(L.x1 + 16) - cx2l(L.x0 - 16)) * k); L.sk.visible = k > 0; L.sk.scale.set(sw, 0.035, 1); L.sk.position.set(cx2l(L.x0 - 16) + sw / 2, cy2l(L.y + L.h * 0.42), 0.004); L.sk.rotation.z = -0.04; }
     if (L.ci) {
       const k = eo(prog(t, L.fx.at - 0.1, 0.45)); L.ci.visible = k > 0;
@@ -316,16 +329,113 @@ function marksAt(t) {
   });
 }
 
+
+// ---------------------------------------------------------------- otras acciones: figuras, etiquetas, humo y montón de folios
+M.obj = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true });
+const OBJX = [-0.85, 0, 0.85], OBJ_Z = Z_READ + 0.7;
+S.fat = [];
+function edges(geo, x = 0, y = 0, z = 0, ry = 0) {
+  const l = fatLines(new THREE.EdgesGeometry(geo, 25).attributes.position.array, 0xffffff, 2.6, 1); l.frustumCulled = false; l.renderOrder = 5; S.fat.push(l);
+  l.position.set(x, y, z); l.rotation.y = ry; return l;
+}
+function polyl(pts) { const a = []; for (let i = 0; i + 1 < pts.length; i++) a.push(pts[i].x, pts[i].y, pts[i].z, pts[i + 1].x, pts[i + 1].y, pts[i + 1].z); const l = fatLines(new Float32Array(a), 0xffffff, 2.6, 1); l.frustumCulled = false; l.renderOrder = 5; S.fat.push(l); return l; }
+function buildObjects() {
+  S.objs = [];
+  // casa
+  const house = new THREE.Group();
+  house.add(edges(new THREE.BoxGeometry(0.8, 0.55, 0.7), 0, 0.275));
+  const roof = edges(new THREE.ConeGeometry(0.62, 0.42, 4, 1), 0, 0.76, 0, Math.PI / 4); roof.scale.set(1, 1, 0.9); house.add(roof);
+  house.add(edges(new THREE.BoxGeometry(0.18, 0.3, 0.01), 0, 0.15, 0.36));
+  house.add(edges(new THREE.BoxGeometry(0.16, 0.14, 0.01), -0.24, 0.34, 0.36)); house.add(edges(new THREE.BoxGeometry(0.16, 0.14, 0.01), 0.24, 0.34, 0.36));
+  // monedas (tres pilas)
+  const coins = new THREE.Group();
+  [[-0.25, 6], [0.05, 9], [0.32, 4]].forEach(([x, n], j) => { for (let k = 0; k < n; k++) coins.add(edges(new THREE.CylinderGeometry(0.15, 0.15, 0.05, 40), x, 0.03 + k * 0.065, (j - 1) * 0.12)); });
+  // carrito
+  const cart = new THREE.Group();
+  const shape = new THREE.Shape(); shape.moveTo(-0.38, 0.2); shape.lineTo(0.38, 0.2); shape.lineTo(0.3, -0.12); shape.lineTo(-0.3, -0.12); shape.lineTo(-0.38, 0.2);
+  const basket = edges(new THREE.ExtrudeGeometry(shape, { depth: 0.42, bevelEnabled: false }), 0, 0.4, -0.21); cart.add(basket);
+  for (let k = 1; k < 4; k++) { const x = -0.3 + k * 0.15; cart.add(polyl([v3(x, 0.6, 0.21), v3(x * 0.8, 0.28, 0.21)])); }
+  cart.add(polyl([v3(0.38, 0.6, 0.21), v3(0.55, 0.78, 0.21), v3(0.7, 0.78, 0.21)]));
+  for (const [x, z] of [[-0.24, 0.17], [0.24, 0.17], [-0.24, -0.17], [0.24, -0.17]]) { const w = polyl(ellipsePts(0.06, 0.06, 24)); w.position.set(x, 0.07, z); cart.add(w); }
+  [house, coins, cart].forEach((o, i) => { scene.add(o); S.objs.push(o); });
+  // haz de exploración: líneas de la lente a la figura
+  S.beam = new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(20 * 6), 3)), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.4 }));
+  S.beam.frustumCulled = false; scene.add(S.beam);
+  // etiquetas «DATOS» y «FUENTES»
+  S.chips = ['DATOS', 'FUENTES'].map((txt, i) => {
+    const tex = canvasTex(640, 180, (g, w, h) => { g.strokeStyle = '#fff'; g.lineWidth = 8; rr(g, 6, 6, w - 12, h - 12, 84); g.stroke(); g.fillStyle = '#fff'; g.font = '800 84px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(txt, w / 2, h / 2 + 4); });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1.25, 0.35), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false })); m.position.copy(CHIP[i]); scene.add(m); return m;
+  });
+  // humo
+  const puff = canvasTex(128, 128, (g) => { const r = g.createRadialGradient(64, 64, 0, 64, 64, 64); r.addColorStop(0, 'rgba(255,255,255,.8)'); r.addColorStop(0.5, 'rgba(255,255,255,.35)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 128, 128); });
+  S.smokeMat = new THREE.SpriteMaterial({ map: puff, color: 0x666666, transparent: true, opacity: 0.4, depthWrite: false });
+  S.puffs = []; for (let i = 0; i < 36; i++) { const sp = new THREE.Sprite(S.smokeMat); scene.add(sp); S.puffs.push(sp); }
+  // montón de folios
+  S.sheets = [];
+  for (let i = 0; i < 16; i++) {
+    const g = new THREE.Group();
+    const sh = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.02, 2.0), new THREE.MeshBasicMaterial({ color: 0xbdbdbd }));
+    g.add(sh); g.add(new THREE.LineSegments(new THREE.EdgesGeometry(sh.geometry), new THREE.LineBasicMaterial({ color: 0x222222 })));
+    for (let k = 0; k < 6; k++) { const ln = new THREE.Mesh(new THREE.PlaneGeometry(1.1 * (0.6 + 0.4 * ((i + k) % 3) / 2), 0.05), new THREE.MeshBasicMaterial({ color: 0x777777 })); ln.rotation.x = -Math.PI / 2; ln.position.set(-0.1, 0.012, -0.7 + k * 0.25); g.add(ln); }
+    scene.add(g); S.sheets.push(g);
+  }
+}
+const CHIP = [v3(-0.6, 1.05, 1.7), v3(0.6, 1.05, 1.7)];
+function objRise(i, t) { const t0 = [K.hipoteca, K.ahorros, K.super][i] - 0.35; return eo(prog(t, t0, 0.55)) * (1 - eio(prog(t, K.explico - 0.6, 0.6))); }
+function objPos(i, t) { return v3(OBJX[i], 0.4 + 0.95 * objRise(i, t), OBJ_Z); }
+const SHEET_T = i => K.interesa - 0.3 + i * 0.2;
+function sheetPose(i, t) {   // cae, gira un poco y se posa encima del montón
+  const t0 = SHEET_T(i), u = clamp((t - t0) / 0.5);
+  const yR = 0.03 + i * 0.03, j = Math.sin(i * 12.9898) * 0.5;
+  return { y: lerp(6, yR, u * u), x: 0.15 * j * (0.3 + 0.7 * u) , z: 1.0 + 0.12 * Math.cos(i * 7.1), ry: j * 0.5 + (1 - u) * 1.2 * j, rx: (1 - u) * 0.5 * j, on: t > t0 - 0.05 };
+}
+function pileTop(t) { let n = 0; for (let i = 0; i < 16; i++) if (t > SHEET_T(i) + 0.45) n = i + 1; const i = Math.min(15, n); const p = sheetPose(i, t); return v3(p.x, Math.min(p.y, 2.2), p.z); }
+function actionsAt(t) {
+  const white = modeAt(t) === 'white';
+  M.obj.color.setHex(white ? 0x111111 : 0xeeeeee); S.fat.forEach(l => l.material.color.setHex(white ? 0x111111 : 0xeeeeee));
+  S.objs.forEach((o, i) => { const r = objRise(i, t); o.visible = r > 0.01; o.position.copy(objPos(i, t)).add(v3(0, -0.25, 0)); o.position.y = PAPER_Y + 0.95 * r - 0.6 * (1 - r); o.scale.setScalar(1.0 * (0.4 + 0.6 * r)); o.rotation.y = t * 0.6 + i; });
+  // haz: del ojo a la figura que mira
+  let tgt = null, ba = 0;
+  [0, 1, 2].forEach(i => { const t0 = [K.hipoteca, K.ahorros, K.super][i]; const a = env(t, t0 - 0.05, t0 + (i < 2 ? 0.65 : 0.9), 0.2, 0.25); if (a > ba) { ba = a; tgt = S.objs[i]; } });
+  const smokeSweep = env(t, K.humo + 0.35, K.humo + 1.0, 0.15, 0.3);
+  S.beam.visible = ba > 0.01 || smokeSweep > 0.01;
+  if (S.beam.visible) {
+    const o = S.ap.getWorldPosition(v3(0, 0, 0)), arr = S.beam.geometry.attributes.position.array; let k = 0;
+    const pts = [];
+    if (tgt) { const b = new THREE.Box3().setFromObject(tgt); for (let q = 0; q < 20; q++) pts.push(v3(lerp(b.min.x, b.max.x, (q * 0.37) % 1), lerp(b.min.y, b.max.y, (q * 0.61) % 1), lerp(b.min.z, b.max.z, (q * 0.83) % 1))); }
+    else { const sw = lerp(-1.6, 1.6, prog(t, K.humo + 0.35, 0.6)); for (let q = 0; q < 20; q++) pts.push(v3(sw + (q % 5) * 0.08, 1.4 + Math.floor(q / 5) * 0.2, 1.6)); }
+    pts.forEach(p => { arr[k++] = o.x; arr[k++] = o.y; arr[k++] = o.z; arr[k++] = p.x; arr[k++] = p.y; arr[k++] = p.z; });
+    S.beam.geometry.attributes.position.needsUpdate = true;
+    S.beam.material.color.setHex(white ? 0x000000 : 0xffffff); S.beam.material.opacity = 0.35 * Math.max(ba, smokeSweep);
+  }
+  // etiquetas
+  S.chips.forEach((c, i) => { const t0 = i ? K.fuentes - 0.2 : K.minuto + 0.3; const a = env(t, t0, K.humo - 0.2, 0.3, 0.4); c.visible = a > 0.01; c.material.opacity = a; c.material.color.setHex(white ? 0x000000 : 0xffffff); c.scale.setScalar(0.82 * (0.7 + 0.3 * eo(prog(t, t0, 0.35)))); c.position.copy(CHIP[i]).add(v3(0, 0.04 * Math.sin(t * 2 + i), 0)); c.lookAt(cam.position); });
+  // humo: se forma y el haz lo disipa
+  const sa = env(t, K.humo - 0.45, K.humo + 1.5, 0.4, 0.5);
+  const clear = eio(prog(t, K.humo + 0.45, 1.0)), grow = 0.4 + 0.6 * eo(prog(t, K.humo - 0.45, 0.8));
+  S.puffs.forEach((sp, i) => {
+    sp.visible = sa > 0.01; if (!sp.visible) return;
+    const a = i * 2.399, r = 0.15 + ((i * 0.618) % 1) * 0.75, h = (i * 0.37) % 1, out = 1 + 2.2 * clear;
+    sp.position.set(Math.cos(a + t * 0.35) * r * grow * out, 1.7 + (h - 0.5) * 0.9 * grow + 0.06 * Math.sin(t * 1.3 + i) + clear * 0.7 * h, 1.7 + Math.sin(a) * 0.25 * grow);
+    sp.scale.setScalar(1.5 * (0.55 + 0.4 * ((i * 0.29) % 1)) * grow * (1 + 0.5 * clear));
+  });
+  S.smokeMat.color.setHex(white ? 0x2a2a2a : 0xbbbbbb); S.smokeMat.opacity = 0.5 * sa * (1 - clear);
+  // montón de folios
+  const sink = eio(prog(t, K.sigueme - 0.6, 0.6));
+  S.sheets.forEach((g, i) => { const p = sheetPose(i, t); g.visible = p.on && sink < 0.99; g.position.set(p.x, p.y - 1.2 * sink, p.z); g.rotation.set(p.rx, p.ry, 0); });
+}
+
 function frame(t) {
   const mode = modeAt(t); applyMode(mode);
   placePaper(t);
   // el folio desaparece al final
   const pa = 1 - eio(prog(t, K.pasando + 1.6, 1.6));
-  S.paper.visible = pa > 0.01; S.paper.material.transparent = true; S.paper.material.opacity = pa;
+  S.paper.visible = pa > 0.01; S.paper.material.transparent = pa < 0.999; S.paper.material.opacity = pa;
   S.paper.position.y = PAPER_Y - 0.8 * (1 - pa);
   figureAt(t);   // primero la figura: la cámara usa la posición actual de la lente
   cameraAt(t);
   marksAt(t);
+  actionsAt(t);
   const dp = S.dust.geometry.attributes.position.array; for (let i = 0; i < dp.length / 3; i++) dp[i * 3 + 2] = ((dp[i * 3 + 2] + 22 + 0.012) % 26) - 22;
   S.dust.geometry.attributes.position.needsUpdate = true;
   S.follow.visible = t > K.sigueme - 0.2; const fa = eo(prog(t, K.sigueme - 0.2, 0.35)) * (1 - prog(t, END - 0.9, 0.4));
@@ -361,7 +471,7 @@ window.renderAt = function (t) {
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   const j = await (await fetch('../tiempos_k.json')).json(); K = j.K; END = j.END;
   ENV = await (await fetch('../env.json')).json();
-  buildFigure(); buildPaper(); KEYS = readKeys();
+  buildFigure(); buildPaper(); KEYS = readKeys(); buildObjects(); GK = buildGazeKeys();
   S.follow = followCard(); scene.add(S.follow);
   window.ready = true;
 })().catch(e => { console.error('ERROR', e.stack || e); window.failed = String(e); });
