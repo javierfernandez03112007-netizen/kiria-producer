@@ -7,8 +7,8 @@ Muñeco pequeño que habla y gesticula; like final; bucle.
 
 | # | Voz | Qué se ve |
 |---|---|---|
-| 01 | A unos 500 km… miles de satélites | **Espacio:** Tierra de alambre y una **constelación de miles de puntos** girando en órbita baja. Cota «≈ 500 km». |
-| 02 | Algunos ya pueden comunicarse con un móvil | Zoom a un satélite: un haz baja hasta un móvil en la superficie. |
+| 01 | Ahora mismo, mientras ves esto, varios satélites… por encima de tu cabeza | **Gancho:** pantalla de un móvil → la cámara **sube atravesando el techo** hasta el espacio; satélites cruzando justo encima. Recuadro en «por encima de tu cabeza». |
+| 02 | Vuelan a unos 500 km… comunicarse con un móvil | Constelación de miles de puntos en órbita baja con la cota «≈ 500 km»; un haz baja de un satélite a un móvil. |
 | 03 | …hay que bajar al suelo | La cámara **cae desde el espacio** hasta el suelo, en un movimiento continuo. |
 | 04 | Tu móvil no va conectado por cable… ondas de radio | Móvil (interfaz limpia) con ondas concéntricas que viajan hasta una **antena 3D de líneas**. |
 | 05 | Cada antena cubre una zona, como una burbuja | La antena genera una **cúpula de cobertura** transparente. |

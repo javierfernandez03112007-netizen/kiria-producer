@@ -1,5 +1,5 @@
-A unos quinientos kilómetros sobre tu cabeza, miles de satélites dan vueltas a la Tierra.
-Y algunos ya pueden comunicarse directamente con un móvil.
+Ahora mismo, mientras ves esto, varios satélites están pasando por encima de tu cabeza.
+Vuelan a unos quinientos kilómetros, y algunos ya pueden comunicarse directamente con un móvil.
 Para entender por qué importa, hay que bajar al suelo.
 Tu móvil no va conectado por cable: se comunica por ondas de radio con la antena más cercana.
 Cada antena cubre una zona, como una burbuja.
