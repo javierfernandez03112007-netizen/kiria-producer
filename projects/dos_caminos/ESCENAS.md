@@ -1,9 +1,13 @@
-# «Dos caminos» — escaleta (salud oral: la mayoría frente al que es constante)
+# «Dos caminos» — escaleta para **@mybrushclub** (salud oral: la mayoría frente al que es constante)
 
 **Idea:** dos caminos que salen del mismo punto. Por el **camino apagado** va la masa («borregos»); por el
 **camino vivo** va una sola persona, disciplinada y constante. La cámara entra en esa persona hasta su ojo,
 dentro del ojo vemos sus hábitos de higiene oral y al final comparamos, con el paso de los años, su boca con
 la de alguien del camino apagado.
+
+**Estilo de personajes:** animación 3D tipo película familiar (estilo «cartoon 3D» de los reels de referencia):
+cabezas algo grandes, ojos grandes y expresivos, rasgos suaves, piel con textura cálida, iluminación de cine.
+Personajes **originales** (no copiados de ninguna cuenta). Fichas y prompts en `PERSONAJES_Y_PROMPTS.md`.
 
 **Estilo y color:**
 - Camino apagado: desaturado, grises y ocres, árboles secos, hierba muerta, cielo plano, niebla ligera. Mucha gente
@@ -27,6 +31,10 @@ la de alguien del camino apagado.
 
 ## Pendiente de decidir
 - Voz en off y texto en pantalla (¿hay guion o va solo con música?).
-- Marca y CTA final (¿clínica dental, kiria.ai, otra?).
+- CTA final y colores/logo de mybrushclub.
 - Duración objetivo.
-- Aspecto visual: estilizado/3D generado con el motor o clips realistas (generados con IA o grabados) montados aquí.
+
+## Producción
+Los planos con personajes se generan con IA (imagen → vídeo) a partir de las fichas de personaje, para que
+siempre sean los mismos. Aquí se hace el montaje: zoom continuo, entrada y salida del ojo, cámara medio rápida,
+pantalla partida, contador de años, música, subtítulos y marca.
