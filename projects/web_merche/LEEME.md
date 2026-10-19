@@ -1,27 +1,24 @@
 # Web · Beauty Salón Merche (Motril)
 
-Propuesta de web en un solo archivo: `index.html` (sin dependencias, abre directamente en el navegador).
+Propuesta de web en un solo archivo, `index.html`, sin librerías: las escenas son JavaScript propio.
 
-## Fotos
-Cada hueco de foto tiene tres capas, de arriba abajo:
-1. La foto propia del salón en `img/` (si existe, es la que se ve).
-2. Una foto de stock de Unsplash (se carga desde internet al abrir la página).
-3. Un degradado cálido, por si no carga ninguna.
+## Escenas al hacer scroll
+1. **Inicio:** el vídeo (`img/merche-novia.mp4`, a 0,55x, en bucle y sin sonido) empieza dentro de un arco y se abre a pantalla completa. Después aparece el lema «Calma, paciencia y cariño».
+2. **Detalle:** zoom hacia la torsión del semirecogido, fundido a la foto del lazo y alejamiento desde el lazo, con etiquetas que señalan cada detalle.
+3. **Galería:** al bajar, las fotos corren en horizontal con giro y parallax.
+4. Servicios, novias (con calculadora de fecha que prepara el WhatsApp), mar, opiniones y contacto.
 
-Nombres de archivo para las fotos propias:
+Además: pétalos dorados que caen, barra de progreso y botones flotantes de WhatsApp y llamada.
 
-| Archivo | Dónde sale |
+## Archivos en `img/`
+| Archivo | Uso |
 |---|---|
-| `img/hero.jpg` | Arco grande de la portada (vertical) |
-| `img/detalle.jpg` | Arco pequeño de la portada |
-| `img/novia.jpg` | Sección «Para novias» (vertical) |
-| `img/galeria-1.jpg` … `img/galeria-7.jpg` | Galería |
-| `img/mar.jpg` | Sección «Novias con vistas al mar» (horizontal) |
-| `img/mar-2.jpg` | Fondo de la llamada final (horizontal) |
-
-Las fotos de stock son solo para la maqueta: sustituirlas por fotos del propio salón (con su permiso y el de las clientas que salgan). Formato JPG, ~1600 px de lado mayor.
+| `merche-novia.mp4` / `.jpg` | Vídeo de portada y su imagen de espera |
+| `semirecogido.jpg`, `lazo.jpg` | Escena de zoom y galería |
+| `novia-tiara.jpg`, `novia-ondas.jpg`, `comunion.jpg` | Galería, novias y mar |
+| `mar.jpg` (opcional) | Fondo del mar. Si no existe, se usa una foto de Unsplash |
 
 ## Datos a confirmar con el salón
-- **Horario**: solo consta «abre el lunes a las 9:00». En el `<script>` (`HORARIO`) se ha puesto L-V 9:00–20:00 como provisional.
-- Servicios y años de experiencia sacados de su ficha en Bodas.net; reseñas, de Google.
-- Correo, WhatsApp e Instagram: no encontrados; añadir si tienen.
+- **Horario:** provisional, lunes a viernes de 9:00 a 20:00 (`HORARIO` en el `<script>`).
+- **WhatsApp:** se da por hecho que el 635 99 35 49 tiene WhatsApp.
+- Permiso para usar las fotos y el vídeo de clientas, sobre todo el de la niña de comunión.

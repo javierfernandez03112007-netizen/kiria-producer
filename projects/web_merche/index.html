@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Beauty Salón Merche · Peluquería de novias en Motril</title>
-<meta name="description" content="Beauty Salón Merche: más de 20 años peinando novias en Motril. Peinados, recogidos, ondas, color y tratamientos. 4,7 de valoración en Google.">
+<meta name="description" content="Beauty Salón Merche: más de 20 años peinando novias en Motril. Recogidos, semirecogidos, ondas, color y tratamientos. 4,7 de valoración en Google.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/merche-novia.jpg">
 <style>
   :root {
     --crema: #fdf7f0;
@@ -15,8 +16,9 @@
     --melocoton: #f3c9a6;
     --terracota: #c4683f;
     --terracota-osc: #a4522d;
-    --oro: #dfa954;
-    --cacao: #3b2418;
+    --oro: #d9a54e;
+    --oro-claro: #f2d29a;
+    --cacao: #2e1c13;
     --texto: #4a3328;
     --suave: #8a6c5c;
     --radio: 28px;
@@ -24,145 +26,151 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: "DM Sans", system-ui, sans-serif;
-    background: var(--crema);
-    color: var(--texto);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  img { max-width: 100%; display: block; }
+  body { font-family: "DM Sans", system-ui, sans-serif; background: var(--crema); color: var(--texto); line-height: 1.6; overflow-x: clip; }
+  img, video { max-width: 100%; display: block; }
   a { color: inherit; }
   h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; color: var(--cacao); font-weight: 600; line-height: 1.05; }
+  .firma { font-family: "Great Vibes", cursive; font-weight: 400; }
   .envoltura { width: min(1180px, 100% - 32px); margin-inline: auto; }
-  .etiqueta {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700;
-    color: var(--terracota);
-  }
+  .etiqueta { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--terracota); }
   .etiqueta::before { content: ""; width: 28px; height: 1.5px; background: currentColor; }
   .boton {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 15px 28px; border-radius: 999px; border: 0; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; border-radius: 999px; border: 0; cursor: pointer;
     font: 700 .98rem "DM Sans", sans-serif; text-decoration: none;
-    background: linear-gradient(135deg, var(--terracota), var(--oro));
-    color: #fff; box-shadow: 0 14px 30px -12px rgba(196, 104, 63, .7);
-    transition: transform .25s, box-shadow .25s;
+    background: linear-gradient(135deg, var(--terracota), var(--oro)); color: #fff;
+    box-shadow: 0 14px 30px -12px rgba(196, 104, 63, .7); transition: transform .25s, box-shadow .25s;
   }
   .boton:hover { transform: translateY(-3px); box-shadow: 0 20px 36px -12px rgba(196, 104, 63, .8); }
-  .boton.claro { background: #fff; color: var(--cacao); box-shadow: 0 10px 24px -14px rgba(59, 36, 24, .5); }
+  .boton.claro { background: #fff; color: var(--cacao); box-shadow: 0 10px 24px -14px rgba(46, 28, 19, .5); }
+  .boton.verde { background: linear-gradient(135deg, #2f9e5b, #57c27d); box-shadow: 0 14px 30px -12px rgba(47, 158, 91, .6); }
+
+  /* ---------- Barra de progreso y pétalos ---------- */
+  .progreso { position: fixed; inset: 0 0 auto; height: 3px; z-index: 70; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--terracota), var(--oro)); }
+  .petalos { position: fixed; inset: 0; pointer-events: none; z-index: 40; overflow: hidden; }
+  .petalos i {
+    position: absolute; top: -40px; width: 12px; height: 16px; border-radius: 80% 0 80% 0;
+    background: linear-gradient(135deg, var(--oro-claro), var(--melocoton)); opacity: .55;
+    animation: caer linear infinite;
+  }
+  @keyframes caer {
+    0% { transform: translate3d(0, -40px, 0) rotate(0deg); }
+    50% { transform: translate3d(60px, 55vh, 0) rotate(200deg); }
+    100% { transform: translate3d(-30px, 110vh, 0) rotate(400deg); }
+  }
 
   /* ---------- Navegación ---------- */
-  .nav {
-    position: fixed; inset: 0 0 auto; z-index: 50;
-    transition: background .3s, box-shadow .3s, padding .3s;
-    padding: 22px 0;
-  }
-  .nav.solida { background: rgba(253, 247, 240, .85); backdrop-filter: blur(14px); box-shadow: 0 6px 24px -18px rgba(59, 36, 24, .6); padding: 12px 0; }
+  .nav { position: fixed; inset: 0 0 auto; z-index: 60; padding: 20px 0; transition: background .35s, padding .35s, color .35s, box-shadow .35s; color: #fff; }
+  .nav.solida { background: rgba(253, 247, 240, .88); backdrop-filter: blur(14px); padding: 10px 0; color: var(--cacao); box-shadow: 0 6px 24px -18px rgba(46, 28, 19, .6); }
   .nav .envoltura { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .logo { font-family: "Cormorant Garamond", serif; font-size: 1.65rem; font-weight: 600; color: var(--cacao); text-decoration: none; line-height: 1; }
-  .logo small { display: block; font-family: "DM Sans"; font-size: .62rem; letter-spacing: .32em; text-transform: uppercase; color: var(--terracota); margin-top: 4px; }
-  .nav ul { display: flex; gap: 30px; list-style: none; }
+  .logo { text-decoration: none; line-height: .9; display: flex; flex-direction: column; align-items: flex-start; }
+  .logo .firma { font-size: 2.3rem; color: var(--oro); }
+  .logo small { font-size: .6rem; letter-spacing: .34em; text-transform: uppercase; font-weight: 700; margin-top: 2px; }
+  .nav ul { display: flex; gap: 28px; list-style: none; }
   .nav ul a { text-decoration: none; font-weight: 500; font-size: .95rem; position: relative; }
-  .nav ul a::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: var(--terracota); transition: width .3s; }
+  .nav ul a::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: var(--oro); transition: width .3s; }
   .nav ul a:hover::after { width: 100%; }
   .nav .boton { padding: 11px 20px; font-size: .9rem; }
-  .menu-btn { display: none; background: none; border: 0; width: 44px; height: 44px; cursor: pointer; }
-  .menu-btn span { display: block; width: 24px; height: 2px; background: var(--cacao); margin: 5px auto; transition: .3s; }
+  .menu-btn { display: none; background: none; border: 0; width: 44px; height: 44px; cursor: pointer; color: inherit; }
+  .menu-btn span { display: block; width: 24px; height: 2px; background: currentColor; margin: 5px auto; transition: .3s; }
 
-  /* ---------- Hero ---------- */
-  .hero {
-    position: relative; min-height: 100vh; padding: 140px 0 80px;
-    display: flex; align-items: center; overflow: hidden;
-    background:
-      radial-gradient(60% 50% at 80% 20%, rgba(255, 214, 160, .75), transparent 70%),
-      radial-gradient(50% 50% at 10% 90%, rgba(243, 201, 166, .7), transparent 70%),
-      var(--crema);
+  /* ---------- Escenas fijadas ---------- */
+  .escena { position: relative; }
+  .fijo { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+
+  /* Escena 1: el vídeo se abre desde un arco hasta llenar la pantalla */
+  #inicio { height: 260vh; background: var(--cacao); }
+  #inicio .fijo { background: radial-gradient(70% 60% at 70% 30%, #5a3524, var(--cacao) 70%); }
+  .video-arco { position: absolute; inset: 0; clip-path: inset(14% 6% 10% 52% round 999px 999px 28px 28px); will-change: clip-path; }
+  .video-arco video, .video-arco img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(var(--zv, 1.25)); }
+  .video-arco::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(46, 28, 19, .25), transparent 30%, transparent 55%, rgba(46, 28, 19, .65)); opacity: var(--velo, 0); }
+  .hero-texto { position: absolute; left: max(16px, calc((100vw - 1180px) / 2)); top: 50%; transform: translateY(calc(-50% - var(--sube, 0px))); width: min(560px, 46vw); color: var(--arena); opacity: var(--op, 1); }
+  .hero-texto .firma { font-size: clamp(4.5rem, 10vw, 8.5rem); color: var(--oro); line-height: .9; display: block; }
+  .hero-texto h1 { color: #fff; font-size: clamp(2.2rem, 4.6vw, 3.9rem); margin: 10px 0 18px; }
+  .hero-texto h1 em { color: var(--oro-claro); }
+  .hero-texto p { font-size: 1.1rem; max-width: 28em; opacity: .9; }
+  .hero-texto .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .estrellas { color: var(--oro); letter-spacing: 3px; }
+  .hero-nota { display: flex; align-items: center; gap: 12px; margin-top: 26px; font-size: .9rem; }
+  .hero-nota strong { font-family: "Cormorant Garamond"; font-size: 1.7rem; color: #fff; }
+  .lema {
+    position: absolute; left: 0; right: 0; bottom: 12%; text-align: center; color: #fff; padding: 0 16px;
+    opacity: var(--lema, 0); transform: translateY(calc((1 - var(--lema, 0)) * 40px));
   }
-  .luz {
-    position: absolute; width: 560px; height: 560px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 220, 170, .9), rgba(255, 220, 170, 0) 65%);
-    pointer-events: none; transform: translate(-50%, -50%); left: 70%; top: 40%;
-    transition: left .6s ease-out, top .6s ease-out; mix-blend-mode: soft-light;
+  .lema p { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(2.2rem, 6vw, 4.8rem); line-height: 1.05; text-shadow: 0 6px 30px rgba(0, 0, 0, .35); }
+  .lema small { display: block; margin-top: 14px; letter-spacing: .3em; text-transform: uppercase; font-size: .75rem; font-weight: 700; color: var(--oro-claro); }
+  .indicador { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); color: var(--arena); font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: var(--op, 1); }
+  .indicador::after { content: ""; width: 1.5px; height: 46px; background: linear-gradient(var(--oro), transparent); animation: gotear 1.8s ease-in-out infinite; transform-origin: top; }
+  @keyframes gotear { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+  /* Escena 2: acercarse al detalle del peinado y pasar al siguiente */
+  #detalle { height: 420vh; background: var(--crema); }
+  #detalle .fijo { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; width: min(1180px, 100% - 32px); margin-inline: auto; overflow: visible; }
+  .lupa { position: relative; height: min(78vh, 720px); border-radius: 999px 999px var(--radio) var(--radio); overflow: hidden; box-shadow: var(--sombra); background: var(--arena); }
+  .lupa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform, opacity; }
+  .marca {
+    position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; opacity: 0; transform: translateY(10px);
+    transition: opacity .5s, transform .5s; pointer-events: none;
   }
-  .hero .envoltura { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; gap: 60px; align-items: center; }
-  .hero h1 { font-size: clamp(3rem, 7vw, 5.8rem); margin: 18px 0 22px; }
-  .hero h1 em { font-style: italic; color: var(--terracota); position: relative; }
-  .hero p.intro { font-size: 1.15rem; max-width: 30em; color: var(--suave); }
-  .hero .acciones { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-  .valoracion { display: flex; align-items: center; gap: 14px; margin-top: 38px; }
-  .estrellas { color: var(--oro); letter-spacing: 3px; font-size: 1.15rem; }
-  .valoracion strong { font-size: 1.6rem; color: var(--cacao); font-family: "Cormorant Garamond", serif; }
-  .valoracion span { font-size: .9rem; color: var(--suave); }
+  .marca.ve { opacity: 1; transform: none; }
+  .marca b { width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 6px rgba(255, 255, 255, .35); animation: pulso 1.6s ease-in-out infinite; flex: none; }
+  .marca span { background: rgba(253, 247, 240, .92); backdrop-filter: blur(8px); padding: 8px 14px; border-radius: 999px; font-weight: 700; font-size: .85rem; color: var(--cacao); white-space: nowrap; }
+  @keyframes pulso { 50% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } }
+  .capitulos { position: relative; min-height: 360px; }
+  .capitulo { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(30px); transition: opacity .6s, transform .6s; pointer-events: none; }
+  .capitulo.activo { opacity: 1; transform: none; pointer-events: auto; }
+  .capitulo .num { font-family: "Cormorant Garamond"; font-size: 5rem; line-height: 1; color: var(--melocoton); }
+  .capitulo h2 { font-size: clamp(2.4rem, 4.6vw, 3.8rem); margin: 6px 0 16px; }
+  .capitulo p { color: var(--suave); font-size: 1.08rem; max-width: 26em; }
+  .capitulo ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .capitulo li { font-size: .85rem; padding: 6px 14px; border-radius: 999px; background: rgba(196, 104, 63, .1); color: var(--terracota-osc); font-weight: 500; }
+  .barra-cap { display: flex; gap: 8px; margin-top: 30px; }
+  .barra-cap i { height: 3px; width: 48px; border-radius: 3px; background: var(--arena); overflow: hidden; position: relative; }
+  .barra-cap i::after { content: ""; position: absolute; inset: 0; background: var(--terracota); transform-origin: 0 50%; transform: scaleX(var(--llena, 0)); }
 
-  .arco-grupo { position: relative; height: 600px; }
-  .arco {
-    position: absolute; border-radius: 999px 999px var(--radio) var(--radio); overflow: hidden;
-    box-shadow: var(--sombra);
+  /* Escena 3: galería horizontal */
+  #galeria { height: 380vh; background: var(--cacao); color: var(--arena); }
+  #galeria .fijo { display: flex; flex-direction: column; justify-content: center; }
+  .galeria-cab { width: min(1180px, 100% - 32px); margin: 0 auto 34px; display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+  .galeria-cab h2 { color: #fff; font-size: clamp(2.4rem, 5vw, 4rem); }
+  .galeria-cab h2 .firma { color: var(--oro); font-size: 1.25em; }
+  .contador { font-family: "Cormorant Garamond"; font-size: 1.4rem; color: var(--oro-claro); white-space: nowrap; }
+  .pista { display: flex; gap: 32px; padding-left: max(16px, calc((100vw - 1180px) / 2)); will-change: transform; }
+  .tarjeta {
+    flex: none; width: clamp(250px, 30vw, 380px); height: min(62vh, 540px); border-radius: 200px 200px 24px 24px; overflow: hidden;
+    position: relative; transform: rotate(var(--giro, 0deg)) translateY(var(--dy, 0px)); transition: transform .2s linear;
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
   }
-  .arco.grande { inset: 0 70px 0 40px; }
-  .arco.peque { width: 190px; height: 250px; right: 0; bottom: 40px; border: 6px solid var(--crema); animation: flotar 7s ease-in-out infinite; }
-  .ondas { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .ondas path { fill: none; stroke: rgba(255, 255, 255, .4); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 900; stroke-dashoffset: 900; animation: trazo 4s ease forwards, mecer 9s ease-in-out 4s infinite alternate; }
-  .ondas path:nth-child(2) { animation-delay: .3s, 4.3s; stroke: rgba(255, 236, 210, .7); }
-  .ondas path:nth-child(3) { animation-delay: .6s, 4.6s; }
-  .ondas path:nth-child(4) { animation-delay: .9s, 4.9s; stroke: rgba(255, 236, 210, .5); }
-  .ondas path:nth-child(5) { animation-delay: 1.2s, 5.2s; }
-  .sello {
-    position: absolute; left: 0; top: 70px; width: 132px; height: 132px; border-radius: 50%;
-    background: #fff; box-shadow: var(--sombra); display: grid; place-items: center; text-align: center;
-    animation: flotar 6s ease-in-out infinite reverse;
-  }
-  .sello b { font-family: "Cormorant Garamond", serif; font-size: 2.6rem; color: var(--terracota); line-height: 1; display: block; }
-  .sello small { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; }
-  .sello svg { position: absolute; inset: 0; animation: girar 22s linear infinite; }
-  .sello text { font-size: 9.5px; letter-spacing: 3px; fill: var(--suave); text-transform: uppercase; }
+  .tarjeta:nth-child(even) { border-radius: 24px 24px 200px 200px; }
+  .tarjeta img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15) translateX(var(--px, 0px)); }
+  .tarjeta figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 22px; background: linear-gradient(transparent, rgba(46, 28, 19, .85)); color: #fff; }
+  .tarjeta:nth-child(even) figcaption { top: 0; bottom: auto; padding: 22px 22px 60px; background: linear-gradient(rgba(46, 28, 19, .85), transparent); }
+  .tarjeta figcaption b { font-family: "Cormorant Garamond"; font-size: 1.7rem; display: block; line-height: 1.1; }
+  .tarjeta figcaption small { color: var(--oro-claro); letter-spacing: .14em; text-transform: uppercase; font-size: .7rem; font-weight: 700; }
+  .tarjeta.final { background: linear-gradient(160deg, var(--terracota), var(--oro)); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 36px; gap: 18px; }
+  .tarjeta.final h3 { color: #fff; font-size: 2.4rem; }
+  .tarjeta.final p { color: #fff; opacity: .9; }
 
-  /* Foto: si existe la imagen en img/ se ve; si no, queda el degradado cálido */
-  .foto { background-size: cover; background-position: center; }
-  .foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(59, 36, 24, .28)); }
-  .tono-1 { background-image: var(--img, none), var(--stock, none), linear-gradient(160deg, #f8d9b8 0%, #e9a173 45%, #c4683f 100%); }
-  .tono-2 { background-image: var(--img, none), var(--stock, none), linear-gradient(200deg, #fde7cc 0%, #f1b98a 55%, #d98b5b 100%); }
-  .tono-3 { background-image: var(--img, none), var(--stock, none), linear-gradient(140deg, #fbe3c7 0%, #e7b27a 50%, #b9774b 100%); }
-  .tono-4 { background-image: var(--img, none), var(--stock, none), linear-gradient(170deg, #fff1df 0%, #f3c9a6 50%, #df9a6c 100%); }
-
-  /* ---------- Cinta ---------- */
-  .cinta { background: var(--cacao); color: var(--arena); padding: 20px 0; overflow: hidden; white-space: nowrap; }
-  .cinta div { display: inline-flex; gap: 48px; animation: desliza 30s linear infinite; padding-right: 48px; }
-  .cinta span { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-style: italic; display: inline-flex; align-items: center; gap: 48px; }
-  .cinta span::after { content: "✦"; color: var(--oro); font-style: normal; font-size: 1rem; }
-
-  /* ---------- Secciones ---------- */
-  section { padding: 120px 0; }
+  /* ---------- Secciones normales ---------- */
+  section.normal { padding: 120px 0; position: relative; }
   .cabecera { max-width: 640px; margin-bottom: 56px; }
   .cabecera h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-top: 14px; }
   .cabecera p { margin-top: 16px; color: var(--suave); font-size: 1.08rem; }
   .centro { text-align: center; margin-inline: auto; }
   .centro .etiqueta::after { content: ""; width: 28px; height: 1.5px; background: currentColor; }
 
-  /* Cifras */
   .cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .cifra { background: #fff; border-radius: 22px; padding: 28px 24px; box-shadow: var(--sombra); }
   .cifra b { display: block; font-family: "Cormorant Garamond", serif; font-size: 3rem; color: var(--terracota); line-height: 1; }
   .cifra span { font-size: .92rem; color: var(--suave); }
-  .bloque-cifras { padding: 56px 0 0; }
 
-  /* Servicios */
-  .servicios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .servicio {
-    position: relative; background: #fff; border-radius: var(--radio); padding: 36px 30px 32px;
-    box-shadow: 0 2px 0 rgba(59, 36, 24, .04); overflow: hidden; transition: transform .35s, box-shadow .35s;
-    border: 1px solid rgba(196, 104, 63, .12);
-  }
-  .servicio::before {
-    content: ""; position: absolute; width: 240px; height: 240px; border-radius: 50%; right: -90px; top: -90px;
-    background: radial-gradient(circle, rgba(243, 201, 166, .7), transparent 70%); transition: transform .5s;
-  }
-  .servicio:hover { transform: translateY(-8px); box-shadow: var(--sombra); }
-  .servicio:hover::before { transform: scale(1.5); }
-  .servicio.destacado { grid-column: span 2; background: linear-gradient(135deg, #3b2418, #6b3a22); color: var(--arena); border: 0; }
+  .servicios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 90px; }
+  .servicio { position: relative; background: #fff; border-radius: var(--radio); padding: 36px 30px 32px; overflow: hidden; transition: transform .35s, box-shadow .35s; border: 1px solid rgba(196, 104, 63, .12); }
+  .servicio::before { content: ""; position: absolute; width: 240px; height: 240px; border-radius: 50%; right: -90px; top: -90px; background: radial-gradient(circle, rgba(243, 201, 166, .7), transparent 70%); transition: transform .5s; }
+  .servicio:hover { transform: translateY(-8px) rotate(-.6deg); box-shadow: var(--sombra); }
+  .servicio:hover::before { transform: scale(1.6); }
+  .servicio.destacado { grid-column: span 2; background: linear-gradient(135deg, var(--cacao), #6b3a22); color: var(--arena); border: 0; }
   .servicio.destacado h3 { color: #fff; }
-  .servicio.destacado::before { background: radial-gradient(circle, rgba(223, 169, 84, .45), transparent 70%); width: 420px; height: 420px; }
+  .servicio.destacado::before { background: radial-gradient(circle, rgba(217, 165, 78, .45), transparent 70%); width: 420px; height: 420px; }
   .icono { width: 58px; height: 58px; border-radius: 18px; display: grid; place-items: center; background: var(--arena); color: var(--terracota); position: relative; margin-bottom: 22px; }
   .destacado .icono { background: rgba(255, 255, 255, .12); color: var(--oro); }
   .servicio h3 { font-size: 1.9rem; margin-bottom: 10px; position: relative; }
@@ -171,77 +179,45 @@
   .servicio li { font-size: .82rem; padding: 6px 14px; border-radius: 999px; background: rgba(196, 104, 63, .1); color: var(--terracota-osc); font-weight: 500; }
   .destacado li { background: rgba(255, 255, 255, .12); color: var(--arena); }
 
-  /* Novias */
-  .novias { background: linear-gradient(180deg, var(--crema), var(--arena)); }
-  .novias .envoltura { display: grid; grid-template-columns: 1fr 1.1fr; gap: 70px; align-items: center; }
-  .novias .marco { position: relative; height: 620px; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); }
-  .cita-flotante {
-    position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2;
-    background: rgba(253, 247, 240, .9); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px 22px;
-    font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-style: italic; color: var(--cacao); line-height: 1.3;
-  }
-  .cita-flotante small { display: block; font-family: "DM Sans"; font-style: normal; font-size: .8rem; color: var(--terracota); margin-top: 8px; font-weight: 700; }
+  /* Las manos detrás: foto con texto que entra de lado */
+  .manos { background: linear-gradient(180deg, var(--crema), var(--arena)); overflow: hidden; }
+  .manos .envoltura { display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px; align-items: center; }
+  .manos .foto { position: relative; border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); aspect-ratio: 1092 / 1172; }
+  .manos .foto img { width: 100%; height: 115%; object-fit: cover; transform: translateY(var(--par, 0px)); }
+  .manos .foto2 { position: absolute; width: 42%; right: -8%; bottom: -12%; border-radius: 22px; overflow: hidden; border: 6px solid var(--crema); box-shadow: var(--sombra); transform: translateY(var(--par2, 0px)) rotate(4deg); }
+  .manos .marco { position: relative; }
   .pasos { list-style: none; counter-reset: paso; margin-top: 10px; }
-  .pasos li { counter-increment: paso; position: relative; padding: 0 0 34px 76px; }
-  .pasos li::before {
-    content: counter(paso, decimal-leading-zero); position: absolute; left: 0; top: -4px;
-    width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
-    font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600;
-    background: #fff; color: var(--terracota); box-shadow: 0 10px 24px -14px rgba(122, 64, 30, .6);
-  }
+  .pasos li { counter-increment: paso; position: relative; padding: 0 0 30px 76px; }
+  .pasos li::before { content: counter(paso, decimal-leading-zero); position: absolute; left: 0; top: -4px; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; background: #fff; color: var(--terracota); box-shadow: 0 10px 24px -14px rgba(122, 64, 30, .6); }
   .pasos li:not(:last-child)::after { content: ""; position: absolute; left: 26px; top: 56px; bottom: 6px; width: 2px; background: linear-gradient(var(--melocoton), transparent); }
   .pasos h3 { font-size: 1.6rem; margin-bottom: 4px; }
   .pasos p { color: var(--suave); }
-
-  /* Calculadora de fecha */
-  .calculadora {
-    margin-top: 16px; background: #fff; border-radius: 24px; padding: 28px; box-shadow: var(--sombra);
-    display: grid; gap: 16px;
-  }
+  .calculadora { margin-top: 10px; background: #fff; border-radius: 24px; padding: 26px; box-shadow: var(--sombra); display: grid; gap: 14px; }
   .calculadora label { font-weight: 700; color: var(--cacao); }
   .calculadora .fila { display: flex; gap: 12px; flex-wrap: wrap; }
-  .calculadora input {
-    flex: 1 1 180px; padding: 14px 18px; border-radius: 14px; border: 1.5px solid var(--melocoton);
-    font: 500 1rem "DM Sans", sans-serif; color: var(--cacao); background: var(--crema);
-  }
+  .calculadora input { flex: 1 1 180px; padding: 14px 18px; border-radius: 14px; border: 1.5px solid var(--melocoton); font: 500 1rem "DM Sans", sans-serif; color: var(--cacao); background: var(--crema); }
   .calculadora input:focus { outline: none; border-color: var(--terracota); }
-  .resultado { min-height: 1.6em; font-size: 1rem; color: var(--texto); }
   .resultado b { color: var(--terracota); }
 
-  /* Galería */
-  .galeria { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 18px; grid-auto-flow: dense; }
-  .galeria .pieza { position: relative; border-radius: 22px; overflow: hidden; cursor: pointer; }
-  .galeria .pieza:nth-child(1) { grid-row: span 2; }
-  .galeria .pieza:nth-child(4) { grid-column: span 2; }
-  .galeria .pieza:nth-child(5) { grid-row: span 2; }
-  .galeria .pieza:nth-child(6), .galeria .pieza:nth-child(7) { grid-column: span 2; }
-  .galeria .pieza .foto { position: absolute; inset: 0; transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
-  .galeria .pieza:hover .foto { transform: scale(1.08); }
-  .galeria .pieza span {
-    position: absolute; left: 16px; bottom: 16px; z-index: 2; color: #fff; font-weight: 700; font-size: .9rem;
-    background: rgba(59, 36, 24, .35); backdrop-filter: blur(6px); padding: 7px 14px; border-radius: 999px;
-    transform: translateY(8px); opacity: .9; transition: .35s;
-  }
-  .galeria .pieza:hover span { transform: none; opacity: 1; }
-
-  /* Costa Tropical */
-  .mar { position: relative; min-height: 640px; display: flex; align-items: center; overflow: hidden; padding: 0; color: #fff; }
-  .mar .fondo { position: absolute; inset: -12% 0; will-change: transform; }
-  .mar .fondo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(59, 36, 24, .72) 0%, rgba(164, 82, 45, .35) 55%, rgba(255, 210, 160, .1) 100%); }
-  .mar .envoltura { position: relative; z-index: 2; padding: 110px 0; }
+  /* Mar */
+  .mar { position: relative; min-height: 660px; display: flex; align-items: center; overflow: hidden; color: #fff; }
+  .mar .fondo { position: absolute; inset: -14% 0; will-change: transform; background: url(img/mar.jpg) center / cover, url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=75) center / cover, linear-gradient(180deg, #ffd9a8 0%, #f0a77a 45%, #4f8fa3 100%); }
+  .mar .fondo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(46, 28, 19, .74) 0%, rgba(164, 82, 45, .35) 55%, rgba(255, 210, 160, .08) 100%); }
+  .mar .envoltura { position: relative; z-index: 2; padding: 110px 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; }
   .mar h2 { color: #fff; font-size: clamp(2.6rem, 6vw, 4.6rem); max-width: 11em; margin: 14px 0 20px; }
-  .mar h2 em { color: #ffd9a8; }
+  .mar h2 em { color: var(--oro-claro); }
   .mar p { max-width: 32em; font-size: 1.12rem; opacity: .95; }
-  .mar .etiqueta { color: #ffd9a8; }
+  .mar .etiqueta { color: var(--oro-claro); }
   .mar .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
   .mar .chips span { padding: 9px 18px; border-radius: 999px; background: rgba(255, 255, 255, .16); backdrop-filter: blur(8px); font-weight: 500; font-size: .92rem; border: 1px solid rgba(255, 255, 255, .25); }
-  .tono-mar { background-image: var(--img, none), var(--stock, none), linear-gradient(180deg, #ffd9a8 0%, #f0a77a 45%, #4f8fa3 100%); }
+  .polaroid { background: #fff; padding: 12px 12px 46px; border-radius: 6px; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .55); transform: rotate(var(--rot, 5deg)); width: min(340px, 80%); justify-self: center; position: relative; }
+  .polaroid img { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+  .polaroid span { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-family: "Great Vibes"; font-size: 1.7rem; color: var(--cacao); }
 
   /* Opiniones */
-  .opiniones { background: var(--cacao); color: var(--arena); position: relative; overflow: hidden; }
-  .opiniones::before { content: ""; position: absolute; width: 700px; height: 700px; left: -200px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(223, 169, 84, .28), transparent 65%); }
+  .opiniones { background: var(--cacao); color: var(--arena); overflow: hidden; }
+  .opiniones::before { content: ""; position: absolute; width: 700px; height: 700px; left: -200px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(217, 165, 78, .28), transparent 65%); }
   .opiniones h2 { color: #fff; }
-  .opiniones .cabecera p { color: rgba(246, 231, 214, .75); }
   .carrusel { position: relative; max-width: 860px; margin-inline: auto; min-height: 300px; }
   .opinion { position: absolute; inset: 0; text-align: center; opacity: 0; transform: translateY(20px); transition: opacity .7s, transform .7s; pointer-events: none; }
   .opinion.activa { opacity: 1; transform: none; pointer-events: auto; position: relative; }
@@ -255,177 +231,198 @@
   .nota-google { text-align: center; margin-top: 48px; font-size: .9rem; color: rgba(246, 231, 214, .7); }
   .nota-google b { color: var(--oro); font-size: 1.1rem; }
 
-  /* Visítanos */
+  /* Contacto */
   .visita .envoltura { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: stretch; }
-  .tarjeta-contacto { background: #fff; border-radius: var(--radio); padding: 44px; box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 26px; }
+  .tarjeta-contacto { background: #fff; border-radius: var(--radio); padding: 44px; box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 24px; }
   .tarjeta-contacto h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
   .dato { display: flex; gap: 16px; align-items: flex-start; }
   .dato .icono { margin: 0; width: 48px; height: 48px; border-radius: 14px; flex: none; }
   .dato b { display: block; color: var(--cacao); }
-  .dato a { text-decoration: none; }
+  .dato a { text-decoration: none; word-break: break-word; }
+  .dato a:hover { color: var(--terracota); }
   .estado { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin-top: 6px; }
   .estado::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
   .estado.abierto { background: #e6f4e4; color: #3e7d3a; }
   .estado.cerrado { background: #fbe9e2; color: var(--terracota-osc); }
-  .mapa { border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); min-height: 440px; background: var(--arena); }
-  .mapa iframe { width: 100%; height: 100%; min-height: 440px; border: 0; filter: sepia(.25) saturate(1.1); }
+  .mapa { border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); min-height: 460px; background: var(--arena); }
+  .mapa iframe { width: 100%; height: 100%; min-height: 460px; border: 0; filter: sepia(.25) saturate(1.1); }
 
-  /* CTA final */
   .final {
-    margin: 0 16px 16px; border-radius: 36px; padding: 110px 24px; text-align: center; position: relative; overflow: hidden;
-    background:
-      linear-gradient(135deg, rgba(196, 104, 63, .92), rgba(223, 169, 84, .82) 60%, rgba(243, 201, 166, .7)),
-      url(img/mar-2.jpg) center / cover,
-      url(https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&w=2000&q=75) center / cover,
-      #c4683f;
-    color: #fff;
+    margin: 0 16px 16px; border-radius: 36px; padding: 110px 24px; text-align: center; position: relative; overflow: hidden; color: #fff;
+    background: linear-gradient(135deg, rgba(196, 104, 63, .9), rgba(217, 165, 78, .8) 60%, rgba(243, 201, 166, .7)), url(img/novia-ondas.jpg) center 30% / cover, #c4683f;
   }
   .final h2 { color: #fff; font-size: clamp(2.6rem, 6vw, 4.6rem); max-width: 14em; margin: 0 auto 18px; }
   .final p { max-width: 34em; margin: 0 auto 34px; font-size: 1.1rem; opacity: .95; }
+  .final .acciones { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
   .final .burbuja { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .15); animation: flotar 9s ease-in-out infinite; }
+  footer { padding: 40px 16px 50px; text-align: center; font-size: .88rem; color: var(--suave); }
+  footer .firma { font-size: 2rem; color: var(--oro); display: block; }
 
-  footer { padding: 40px 0 50px; text-align: center; font-size: .88rem; color: var(--suave); }
+  .flotantes { position: fixed; right: 18px; bottom: 18px; z-index: 65; display: flex; flex-direction: column; gap: 12px; opacity: 0; transform: translateY(20px); transition: .4s; pointer-events: none; }
+  .flotantes.ve { opacity: 1; transform: none; pointer-events: auto; }
+  .flotantes a { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; color: #fff; box-shadow: 0 12px 30px -8px rgba(0, 0, 0, .35); }
+  .flotantes .wa { background: #2fb463; animation: latido 2.6s ease-in-out infinite; }
+  .flotantes .tel { background: linear-gradient(135deg, var(--terracota), var(--oro)); }
 
-  /* Botón flotante de llamada (móvil) */
-  .llamar-flotante {
-    position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 60px; height: 60px; border-radius: 50%;
-    display: none; place-items: center; color: #fff; background: linear-gradient(135deg, var(--terracota), var(--oro));
-    box-shadow: 0 12px 30px -8px rgba(196, 104, 63, .8); animation: latido 2.6s ease-in-out infinite;
-  }
-
-  /* Aparición al hacer scroll */
   .aparece { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1); }
   .aparece.visible { opacity: 1; transform: none; }
   .retardo-1 { transition-delay: .12s; } .retardo-2 { transition-delay: .24s; } .retardo-3 { transition-delay: .36s; }
 
   @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
-  @keyframes girar { to { transform: rotate(360deg); } }
-  @keyframes trazo { to { stroke-dashoffset: 0; } }
-  @keyframes mecer { to { transform: translateX(-14px) translateY(6px); } }
-  @keyframes desliza { to { transform: translateX(-100%); } }
   @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
   @media (max-width: 960px) {
     .nav ul, .nav .envoltura > .boton { display: none; }
     .menu-btn { display: block; }
-    .nav.abierto ul {
-      display: flex; flex-direction: column; position: absolute; top: 100%; left: 16px; right: 16px; gap: 0;
-      background: #fff; border-radius: 20px; padding: 10px; box-shadow: var(--sombra);
-    }
+    .nav.abierto { background: rgba(253, 247, 240, .96); color: var(--cacao); }
+    .nav.abierto ul { display: flex; flex-direction: column; position: absolute; top: 100%; left: 16px; right: 16px; gap: 0; background: #fff; border-radius: 20px; padding: 10px; box-shadow: var(--sombra); }
     .nav.abierto ul a { display: block; padding: 14px 16px; }
     .nav.abierto .menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav.abierto .menu-btn span:nth-child(2) { opacity: 0; }
     .nav.abierto .menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav { background: rgba(253, 247, 240, .85); backdrop-filter: blur(14px); }
-    .hero .envoltura, .novias .envoltura, .visita .envoltura { grid-template-columns: 1fr; }
-    .arco-grupo { height: 440px; }
-    .arco.grande { inset: 0 40px 0 30px; }
-    .arco.peque { width: 140px; height: 190px; }
-    .sello { width: 110px; height: 110px; top: 30px; }
-    .sello b { font-size: 2.1rem; }
+    .video-arco { clip-path: inset(11% 12% 44% 12% round 999px 999px 24px 24px); }
+    .video-arco video, .video-arco img { object-position: 74% 35%; }
+    .hero-texto { width: auto; right: 16px; top: auto; bottom: 4%; transform: translateY(calc(-1 * var(--sube, 0px))); }
+    .hero-texto .firma { font-size: 3.8rem; }
+    .hero-texto h1 { font-size: 2.1rem; margin: 4px 0 10px; }
+    .hero-texto p { font-size: .98rem; }
+    .hero-texto .acciones, .hero-nota { display: none; }
+    .indicador { display: none; }
+    #detalle .fijo { grid-template-columns: 1fr; grid-template-rows: 1fr auto; gap: 14px; padding: 76px 0 24px; align-items: stretch; }
+    .lupa { height: auto; min-height: 0; border-radius: 160px 160px 22px 22px; }
+    .capitulos { min-height: 230px; }
+    .capitulo { justify-content: flex-start; }
+    .capitulo .num { font-size: 2.6rem; }
+    .capitulo h2 { font-size: 2rem; margin: 2px 0 8px; }
+    .capitulo p { font-size: .95rem; }
+    .capitulo ul { display: none; }
+    .barra-cap { margin-top: 14px; }
+    .marca span { font-size: .75rem; padding: 6px 10px; }
+    .tarjeta { width: 72vw; height: 58vh; }
+    .galeria-cab { flex-direction: column; align-items: flex-start; margin-bottom: 22px; }
     .cifras { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .servicios { grid-template-columns: 1fr; }
     .servicio.destacado { grid-column: auto; }
-    .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 170px; }
-    .galeria .pieza:nth-child(4), .galeria .pieza:nth-child(7) { grid-column: span 2; }
-    .galeria .pieza:nth-child(5), .galeria .pieza:nth-child(6) { grid-row: auto; grid-column: auto; }
-    .novias .marco { height: 420px; }
-    section { padding: 84px 0; }
-    .tarjeta-contacto { padding: 30px 24px; }
-    .llamar-flotante { display: grid; }
+    .manos .envoltura, .mar .envoltura, .visita .envoltura { grid-template-columns: 1fr; }
+    .manos .foto2 { right: -2%; }
+    section.normal { padding: 84px 0; }
+    .tarjeta-contacto { padding: 30px 22px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .aparece { opacity: 1; transform: none; }
-    .ondas path { stroke-dashoffset: 0; }
+    .petalos { display: none; }
   }
 </style>
 </head>
 <body>
 
+<div class="progreso" id="progreso"></div>
+<div class="petalos" id="petalos" aria-hidden="true"></div>
+
 <!-- ====== NAVEGACIÓN ====== -->
 <nav class="nav" id="nav">
   <div class="envoltura">
-    <a href="#inicio" class="logo">Beauty Salón Merche<small>Motril · Granada</small></a>
+    <a href="#inicio" class="logo"><span class="firma">Merche</span><small>Beauty Salón</small></a>
     <ul>
+      <li><a href="#detalle">Peinados</a></li>
+      <li><a href="#galeria">Galería</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#novias">Novias</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#opiniones">Opiniones</a></li>
-      <li><a href="#visitanos">Visítanos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="tel:+34958609216" class="boton">Pedir cita</a>
+    <a href="tel:+34635993549" class="boton">Pedir cita</a>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ====== HERO ====== -->
-<header class="hero" id="inicio">
-  <div class="luz" id="luz"></div>
-  <div class="envoltura">
-    <div>
-      <span class="etiqueta aparece">Peluquería y belleza en Motril</span>
-      <h1 class="aparece retardo-1">Tu peinado,<br>tu día, <em>tú.</em></h1>
-      <p class="intro aparece retardo-2">Más de 20 años cuidando el pelo de Motril y peinando a novias en el día más importante de su vida. Calma, paciencia y cariño en cada detalle.</p>
-      <div class="acciones aparece retardo-3">
-        <a href="tel:+34958609216" class="boton">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-          958 60 92 16
-        </a>
-        <a href="#novias" class="boton claro">Soy novia ✦</a>
-      </div>
-      <div class="valoracion aparece retardo-3">
-        <strong>4,7</strong>
-        <div><div class="estrellas">★★★★★</div><span>Valoración media en Google</span></div>
-      </div>
+<!-- ====== ESCENA 1 · Vídeo que se abre ====== -->
+<section class="escena" id="inicio" data-escena="inicio">
+  <div class="fijo">
+    <div class="video-arco" id="videoArco">
+      <video autoplay muted loop playsinline poster="img/merche-novia.jpg" aria-label="Merche peinando a una novia">
+        <source src="img/merche-novia.mp4" type="video/mp4">
+      </video>
     </div>
-
-    <div class="arco-grupo aparece retardo-2">
-      <!-- Para usar fotos reales: guardar en img/ y se cargan solas (ver --img) -->
-      <div class="arco grande foto tono-1" style="--img: url(img/hero.jpg); --stock: url(https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=75)">
-        <svg class="ondas" viewBox="0 0 400 600" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M-20 120 C 80 60, 160 200, 260 140 S 420 90, 440 160"/>
-          <path d="M-20 210 C 90 150, 170 290, 270 230 S 420 180, 440 250"/>
-          <path d="M-20 300 C 80 240, 160 380, 260 320 S 420 270, 440 340"/>
-          <path d="M-20 390 C 90 330, 170 470, 270 410 S 420 360, 440 430"/>
-          <path d="M-20 480 C 80 420, 160 560, 260 500 S 420 450, 440 520"/>
-        </svg>
+    <div class="hero-texto">
+      <span class="firma">Merche</span>
+      <h1>Peinados de novia que te hacen sentir <em>tú</em>.</h1>
+      <p>Más de 20 años en Motril cuidando el pelo y peinando a novias en el día más importante de su vida.</p>
+      <div class="acciones">
+        <a href="tel:+34635993549" class="boton">Llamar · 635 99 35 49</a>
+        <a href="#detalle" class="boton claro">Ver peinados</a>
       </div>
-      <div class="arco peque foto tono-4" style="--img: url(img/detalle.jpg); --stock: url(https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1400&q=75)"></div>
-      <div class="sello">
-        <svg viewBox="0 0 132 132" aria-hidden="true">
-          <defs><path id="circulo" d="M66,66 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/></defs>
-          <text><textPath href="#circulo">Especialistas en novias · Motril ·</textPath></text>
-        </svg>
-        <div><b>+20</b><small>años</small></div>
+      <div class="hero-nota"><strong>4,7</strong><div><div class="estrellas">★★★★★</div>Valoración media en Google</div></div>
+    </div>
+    <div class="lema"><p>Calma, paciencia y cariño.</p><small>Así se vive tu día con Merche</small></div>
+    <div class="indicador">Desliza</div>
+  </div>
+</section>
+
+<!-- ====== ESCENA 2 · Zoom al detalle ====== -->
+<section class="escena" id="detalle" data-escena="detalle">
+  <div class="fijo">
+    <div class="lupa" id="lupa">
+      <img src="img/semirecogido.jpg" alt="Semirecogido con torsión y ondas" id="foto1" style="transform-origin: 57% 23%">
+      <img src="img/lazo.jpg" alt="Semirecogido con trenza, lazo negro y ondas" id="foto2" style="transform-origin: 51% 29%; opacity: 0">
+      <div class="marca" id="marca1" style="left: 50%; top: 20%"><b></b><span>Torsión pulida</span></div>
+      <div class="marca" id="marca2" style="left: 18%; top: 62%"><b></b><span>Ondas al agua</span></div>
+      <div class="marca" id="marca3" style="left: 42%; top: 26%"><b></b><span>Lazo de raso</span></div>
+      <div class="marca" id="marca4" style="left: 14%; top: 14%"><b></b><span>Trenza corona</span></div>
+    </div>
+    <div class="capitulos">
+      <div class="capitulo activo" data-cap="0">
+        <span class="num">01</span>
+        <h2>El detalle está en cada mechón</h2>
+        <p>Un semirecogido limpio con torsión, la raíz pulida y unas ondas que caen naturales. Elegante sin dejar de ser tú.</p>
+        <ul><li>Semirecogido</li><li>Torsión</li><li>Ondas</li></ul>
+      </div>
+      <div class="capitulo" data-cap="1">
+        <span class="num">02</span>
+        <h2>Y un toque que lo cambia todo</h2>
+        <p>Trenza en corona, ondas con volumen y un lazo de raso negro. Pequeños gestos que hacen que tu peinado sea solo tuyo.</p>
+        <ul><li>Trenza</li><li>Accesorios</li><li>Volumen</li></ul>
+      </div>
+      <div class="barra-cap"><i id="cap0"></i><i id="cap1"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ESCENA 3 · Galería horizontal ====== -->
+<section class="escena" id="galeria" data-escena="galeria">
+  <div class="fijo">
+    <div class="galeria-cab">
+      <div>
+        <span class="etiqueta" style="color: var(--oro-claro)">Nuestros trabajos</span>
+        <h2>Peinados con <span class="firma">alma</span></h2>
+      </div>
+      <span class="contador" id="contador">01 / 06</span>
+    </div>
+    <div class="pista" id="pista">
+      <figure class="tarjeta"><img src="img/novia-tiara.jpg" alt="Merche colocando la tiara a una novia" loading="lazy"><figcaption><small>Novia</small><b>Recogido con tiara y velo</b></figcaption></figure>
+      <figure class="tarjeta"><img src="img/novia-ondas.jpg" alt="Novia con ondas rubias y semirecogido" loading="lazy"><figcaption><small>Novia</small><b>Ondas sueltas con volumen</b></figcaption></figure>
+      <figure class="tarjeta"><img src="img/comunion.jpg" alt="Peinado de comunión con flores" loading="lazy"><figcaption><small>Comunión</small><b>Semirecogido con flores</b></figcaption></figure>
+      <figure class="tarjeta"><img src="img/lazo.jpg" alt="Trenza con lazo negro" loading="lazy"><figcaption><small>Evento</small><b>Trenza y lazo de raso</b></figcaption></figure>
+      <figure class="tarjeta"><img src="img/semirecogido.jpg" alt="Semirecogido con torsión" loading="lazy"><figcaption><small>Invitada</small><b>Torsión y ondas al agua</b></figcaption></figure>
+      <div class="tarjeta final">
+        <span class="firma" style="font-size: 3rem; color: #fff">¿El tuyo?</span>
+        <h3>Tu peinado puede ser el siguiente</h3>
+        <a href="https://wa.me/34635993549" class="boton claro" target="_blank" rel="noopener">Escríbenos</a>
       </div>
     </div>
   </div>
-</header>
+</section>
 
-<!-- ====== CINTA ====== -->
-<div class="cinta" aria-hidden="true">
-  <div><span>Novias</span><span>Recogidos</span><span>Ondas</span><span>Color</span><span>Corte</span><span>Tratamientos</span><span>Invitadas</span></div><div><span>Novias</span><span>Recogidos</span><span>Ondas</span><span>Color</span><span>Corte</span><span>Tratamientos</span><span>Invitadas</span></div>
-</div>
-
-<!-- ====== CIFRAS ====== -->
-<div class="bloque-cifras">
-  <div class="envoltura cifras">
-    <div class="cifra aparece"><b data-contar="20" data-prefijo="+">+20</b><span>años de experiencia</span></div>
-    <div class="cifra aparece retardo-1"><b data-contar="4.7" data-decimales="1">4,7</b><span>estrellas en Google</span></div>
-    <div class="cifra aparece retardo-2"><b data-contar="18" data-sufijo=" m">18 m</b><span>de antelación reservan algunas novias</span></div>
-    <div class="cifra aparece retardo-3"><b data-contar="26">26</b><span>reseñas de clientas en Google</span></div>
-  </div>
-</div>
-
-<!-- ====== SERVICIOS ====== -->
-<section id="servicios">
+<!-- ====== CIFRAS Y SERVICIOS ====== -->
+<section class="normal" id="servicios">
   <div class="envoltura">
-    <div class="cabecera aparece">
-      <span class="etiqueta">Lo que hacemos</span>
-      <h2>Belleza hecha a mano, pensada para ti</h2>
-      <p>Del corte de cada día al peinado de tu boda. Escuchamos lo que quieres y lo convertimos en algo que se parezca a ti.</p>
+    <div class="cifras">
+      <div class="cifra aparece"><b data-contar="20" data-prefijo="+">+20</b><span>años de experiencia</span></div>
+      <div class="cifra aparece retardo-1"><b data-contar="4.7" data-decimales="1">4,7</b><span>estrellas en Google</span></div>
+      <div class="cifra aparece retardo-2"><b data-contar="18" data-sufijo=" m">18 m</b><span>de antelación reservan algunas novias</span></div>
+      <div class="cifra aparece retardo-3"><b data-contar="26">26</b><span>reseñas de clientas en Google</span></div>
     </div>
+
     <div class="servicios">
       <article class="servicio destacado aparece">
         <div class="icono"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4 7.2 17.9l.9-5.4L4.2 8.7l5.4-.8z"/></svg></div>
@@ -435,14 +432,14 @@
       </article>
       <article class="servicio aparece retardo-1">
         <div class="icono"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.6c.8-.4 1.6-.6 2.5-.6 2.5 0 4.5 2 4.5 4.5"/></svg></div>
-        <h3>Invitadas</h3>
-        <p>Madrinas, madres y amigas de la novia: también os preparamos para que el día brille entero.</p>
-        <ul><li>Peinados de evento</li><li>Recogidos</li></ul>
+        <h3>Invitadas y comuniones</h3>
+        <p>Madrinas, madres, amigas y peques de comunión: también os preparamos para que el día brille entero.</p>
+        <ul><li>Eventos</li><li>Comuniones</li><li>Accesorios</li></ul>
       </article>
       <article class="servicio aparece">
         <div class="icono"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 6 7.2 6 10.5a6 6 0 0 1-12 0C6 10.2 9 7 12 3z"/></svg></div>
         <h3>Color</h3>
-        <p>Tintes y coloración con mimo, para un tono que favorezca y dure.</p>
+        <p>Tintes, rubios y coloración con mimo, para un tono que favorezca y dure.</p>
         <ul><li>Tinte</li><li>Coloración</li></ul>
       </article>
       <article class="servicio aparece retardo-1">
@@ -462,19 +459,20 @@
 </section>
 
 <!-- ====== NOVIAS ====== -->
-<section class="novias" id="novias">
+<section class="normal manos" id="novias">
   <div class="envoltura">
-    <div class="marco foto tono-2 aparece" style="--img: url(img/novia.jpg); --stock: url(https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=75)">
-      <div class="cita-flotante">«Me hizo sentir totalmente yo.»<small>Carmen M. · se casó en febrero</small></div>
+    <div class="marco aparece">
+      <div class="foto"><img src="img/novia-tiara.jpg" alt="Merche dando los últimos retoques a una novia" id="parNovia" loading="lazy"></div>
+      <div class="foto2"><img src="img/novia-ondas.jpg" alt="Novia con ondas rubias" id="parNovia2" loading="lazy"></div>
     </div>
     <div>
-      <div class="cabecera aparece" style="margin-bottom: 36px">
+      <div class="cabecera aparece" style="margin-bottom: 34px">
         <span class="etiqueta">Para novias</span>
         <h2>Tu boda, sin prisas y sin nervios</h2>
         <p>Hay novias que reservan con año y medio de antelación. No es casualidad: así funciona.</p>
       </div>
       <ol class="pasos">
-        <li class="aparece"><h3>Reserva tu fecha</h3><p>Llámanos y guardamos tu día. Las fechas de temporada vuelan.</p></li>
+        <li class="aparece"><h3>Reserva tu fecha</h3><p>Llámanos o escríbenos y guardamos tu día. Las fechas de temporada vuelan.</p></li>
         <li class="aparece retardo-1"><h3>Prueba y asesoramiento</h3><p>Hablamos de tu vestido, tu estilo y lo que sueñas. Probamos hasta que sea perfecto.</p></li>
         <li class="aparece retardo-2"><h3>El gran día</h3><p>Calma, paciencia y cariño. Tú solo tienes que disfrutar.</p></li>
       </ol>
@@ -482,7 +480,7 @@
         <label for="fechaBoda">¿Cuándo te casas?</label>
         <div class="fila">
           <input type="date" id="fechaBoda">
-          <a href="tel:+34958609216" class="boton">Reservar fecha</a>
+          <a href="https://wa.me/34635993549" target="_blank" rel="noopener" class="boton" id="reservarFecha">Reservar fecha</a>
         </div>
         <p class="resultado" id="resultado">Elige la fecha y te decimos cuánto margen tienes.</p>
       </div>
@@ -490,44 +488,28 @@
   </div>
 </section>
 
-<!-- ====== GALERÍA ====== -->
-<section id="galeria">
-  <div class="envoltura">
-    <div class="cabecera centro aparece">
-      <span class="etiqueta">Galería</span>
-      <h2>Algunos de nuestros trabajos</h2>
-    </div>
-    <div class="galeria">
-      <div class="pieza aparece"><div class="foto tono-1" style="--img: url(img/galeria-1.jpg); --stock: url(https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1400&q=75)"></div><span>Recogido de novia</span></div>
-      <div class="pieza aparece retardo-1"><div class="foto tono-4" style="--img: url(img/galeria-2.jpg); --stock: url(https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1400&q=75)"></div><span>Ondas</span></div>
-      <div class="pieza aparece retardo-2"><div class="foto tono-3" style="--img: url(img/galeria-3.jpg); --stock: url(https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=1400&q=75)"></div><span>Color</span></div>
-      <div class="pieza aparece"><div class="foto tono-2" style="--img: url(img/galeria-4.jpg); --stock: url(https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=75)"></div><span>Nuestro salón</span></div>
-      <div class="pieza aparece retardo-1"><div class="foto tono-3" style="--img: url(img/galeria-5.jpg); --stock: url(https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=75)"></div><span>Semirecogido</span></div>
-      <div class="pieza aparece retardo-2"><div class="foto tono-1" style="--img: url(img/galeria-6.jpg); --stock: url(https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1400&q=75)"></div><span>Invitadas</span></div>
-      <div class="pieza aparece retardo-3"><div class="foto tono-4" style="--img: url(img/galeria-7.jpg); --stock: url(https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1400&q=75)"></div><span>Tratamientos</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== COSTA TROPICAL ====== -->
+<!-- ====== MAR ====== -->
 <section class="mar">
-  <div class="fondo foto tono-mar" id="fondoMar" style="--img: url(img/mar.jpg); --stock: url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=75)"></div>
+  <div class="fondo" id="fondoMar"></div>
   <div class="envoltura">
-    <span class="etiqueta aparece">Motril · Costa Tropical</span>
-    <h2 class="aparece retardo-1">Novias con <em>vistas al mar</em></h2>
-    <p class="aparece retardo-2">A un paso de la playa, con la luz de la Costa Tropical. Peinados que lucen igual de bien en la iglesia, en un cortijo o en una boda frente al Mediterráneo.</p>
-    <div class="chips aparece retardo-3"><span>Bodas en la playa</span><span>Recogidos que aguantan la brisa</span><span>Ondas naturales</span></div>
+    <div>
+      <span class="etiqueta aparece">Motril · Costa Tropical</span>
+      <h2 class="aparece retardo-1">Novias con <em>vistas al mar</em></h2>
+      <p class="aparece retardo-2">A un paso de la playa, con la luz de la Costa Tropical. Peinados que lucen igual de bien en la iglesia, en un cortijo o en una boda frente al Mediterráneo.</p>
+      <div class="chips aparece retardo-3"><span>Bodas en la playa</span><span>Recogidos que aguantan la brisa</span><span>Ondas naturales</span></div>
+    </div>
+    <figure class="polaroid aparece retardo-2" id="polaroid"><img src="img/comunion.jpg" alt="Peinado con flores al aire libre" loading="lazy"><span>al aire libre</span></figure>
   </div>
 </section>
 
 <!-- ====== OPINIONES ====== -->
-<section class="opiniones" id="opiniones">
+<section class="normal opiniones" id="opiniones">
   <div class="envoltura">
     <div class="cabecera centro aparece">
       <span class="etiqueta">Lo que dicen ellas</span>
       <h2>Novias que repetirían</h2>
     </div>
-    <div class="carrusel" id="carrusel">
+    <div class="carrusel">
       <figure class="opinion activa">
         <blockquote>Merche fue quien me realizó la maravilla de peinado que me hizo sentir totalmente yo.</blockquote>
         <cite>Carmen Márquez<small>★★★★★ · Reseña en Google</small></cite>
@@ -546,82 +528,182 @@
   </div>
 </section>
 
-<!-- ====== VISÍTANOS ====== -->
-<section class="visita" id="visitanos">
+<!-- ====== CONTACTO ====== -->
+<section class="normal visita" id="contacto">
   <div class="envoltura">
     <div class="tarjeta-contacto aparece">
       <div>
-        <span class="etiqueta">Visítanos</span>
+        <span class="etiqueta">Contacto</span>
         <h2 style="margin-top: 12px">Te esperamos en Motril</h2>
       </div>
       <div class="dato">
-        <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <div><b>Dirección</b>Calle Azucarera Ntra. Sra. de Lourdes<br>18600 Motril, Granada</div>
+        <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><b>Teléfono y WhatsApp</b><a href="tel:+34635993549">635 99 35 49</a></div>
       </div>
       <div class="dato">
-        <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
-        <div><b>Teléfono</b><a href="tel:+34958609216">958 60 92 16</a></div>
+        <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <div><b>Correo</b><a href="mailto:salonpeluestetic@gmail.com">salonpeluestetic@gmail.com</a></div>
+      </div>
+      <div class="dato">
+        <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><b>Dónde estamos</b>Calle Azucarera Ntra. Sra. de Lourdes<br>18600 Motril, Granada</div>
       </div>
       <div class="dato">
         <div class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <div><b>Horario</b><span id="textoHorario">Lunes a viernes desde las 9:00</span><br><span class="estado" id="estado">—</span></div>
+        <div><b>Horario</b>Lunes a viernes desde las 9:00<br><span class="estado" id="estado">—</span></div>
       </div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap">
-        <a href="tel:+34958609216" class="boton">Llamar ahora</a>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Calle+Azucarera+Ntra+Sra+de+Lourdes+18600+Motril" target="_blank" rel="noopener" class="boton claro">Cómo llegar</a>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap">
+        <a href="https://wa.me/34635993549" target="_blank" rel="noopener" class="boton verde">WhatsApp</a>
+        <a href="tel:+34635993549" class="boton">Llamar</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Peluquer%C3%ADa+Merche+Nuestra+Se%C3%B1ora+de+Lourdes+Motril" target="_blank" rel="noopener" class="boton claro">Cómo llegar</a>
       </div>
     </div>
     <div class="mapa aparece retardo-1">
-      <iframe title="Mapa de Beauty Salón Merche" loading="lazy" src="https://maps.google.com/maps?q=Calle%20Azucarera%20Ntra.%20Sra.%20de%20Lourdes%2C%2018600%20Motril&z=16&output=embed"></iframe>
+      <iframe title="Mapa de Beauty Salón Merche" loading="lazy" src="https://maps.google.com/maps?q=Peluquer%C3%ADa%20Merche%2C%20Calle%20Azucarera%20Nuestra%20Se%C3%B1ora%20de%20Lourdes%2C%2018600%20Motril&z=16&output=embed"></iframe>
     </div>
   </div>
 </section>
 
-<!-- ====== CTA FINAL ====== -->
 <div class="final aparece">
-  <span class="burbuja" style="width:220px;height:220px;left:-60px;top:-40px"></span>
-  <span class="burbuja" style="width:140px;height:140px;right:8%;bottom:-30px;animation-delay:-3s"></span>
-  <span class="burbuja" style="width:70px;height:70px;right:22%;top:30px;animation-delay:-6s"></span>
+  <span class="burbuja" style="width: 220px; height: 220px; left: -60px; top: -40px"></span>
+  <span class="burbuja" style="width: 140px; height: 140px; right: 8%; bottom: -30px; animation-delay: -3s"></span>
+  <span class="burbuja" style="width: 70px; height: 70px; right: 22%; top: 30px; animation-delay: -6s"></span>
   <h2>¿Te casas pronto? Hablemos de tu peinado.</h2>
-  <p>Las mejores fechas se reservan con mucha antelación. Llámanos y cuéntanos cómo te imaginas ese día.</p>
-  <a href="tel:+34958609216" class="boton claro">Reservar mi fecha · 958 60 92 16</a>
+  <p>Las mejores fechas se reservan con mucha antelación. Cuéntanos cómo te imaginas ese día.</p>
+  <div class="acciones">
+    <a href="https://wa.me/34635993549" target="_blank" rel="noopener" class="boton claro">Escribir por WhatsApp</a>
+    <a href="mailto:salonpeluestetic@gmail.com?subject=Peinado%20de%20novia" class="boton claro">Enviar un correo</a>
+  </div>
 </div>
 
 <footer>
-  © <span id="anio"></span> Beauty Salón Merche · Calle Azucarera Ntra. Sra. de Lourdes, 18600 Motril (Granada)
+  <span class="firma">Merche</span>
+  © <span id="anio"></span> Beauty Salón Merche · Calle Azucarera Ntra. Sra. de Lourdes, 18600 Motril (Granada) · 635 99 35 49 · salonpeluestetic@gmail.com
 </footer>
 
-<a href="tel:+34958609216" class="llamar-flotante" aria-label="Llamar al salón">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-</a>
+<div class="flotantes" id="flotantes">
+  <a href="https://wa.me/34635993549" target="_blank" rel="noopener" class="wa" aria-label="Escribir por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3z"/></svg>
+  </a>
+  <a href="tel:+34635993549" class="tel" aria-label="Llamar al salón">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+</div>
 
 <script>
-  // Horario: confirmar con el salón. [día 0=domingo..6] -> [apertura, cierre] en horas; null = cerrado
+  // Horario provisional: confirmar con el salón. [día 0=domingo..6] -> [apertura, cierre]; null = cerrado
   const HORARIO = { 0: null, 1: [9, 20], 2: [9, 20], 3: [9, 20], 4: [9, 20], 5: [9, 20], 6: null };
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = id => document.getElementById(id);
+  const lim = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const tramo = (p, a, b) => lim((p - a) / (b - a));        // 0..1 dentro del tramo [a, b]
+  const suave = t => t * t * (3 - 2 * t);
+  const mezcla = (a, b, t) => a + (b - a) * t;
 
-  const nav = document.getElementById('nav');
-  addEventListener('scroll', () => nav.classList.toggle('solida', scrollY > 40), { passive: true });
-  document.getElementById('menuBtn').addEventListener('click', () => nav.classList.toggle('abierto'));
-  nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', () => nav.classList.remove('abierto')));
+  // Avance de una escena fijada: 0 al entrar, 1 al soltarse
+  const avance = el => {
+    const r = el.getBoundingClientRect();
+    return lim(-r.top / (r.height - innerHeight));
+  };
 
-  // Luz que sigue al cursor en la portada
-  const hero = document.querySelector('.hero'), luz = document.getElementById('luz');
-  hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    luz.style.left = (e.clientX - r.left) + 'px';
-    luz.style.top = (e.clientY - r.top) + 'px';
-  });
-
-  // Parallax del fondo de mar
-  const fondoMar = document.getElementById('fondoMar');
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    addEventListener('scroll', () => {
-      const r = fondoMar.parentElement.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < innerHeight) fondoMar.style.transform = `translateY(${(r.top + r.height / 2 - innerHeight / 2) * -0.15}px)`;
-    }, { passive: true });
+  // ---- Escena 1: el arco de vídeo se abre a pantalla completa
+  const inicio = $('inicio'), arco = $('videoArco');
+  const arcoInicio = () => innerWidth <= 960 ? [11, 12, 44, 12, 999] : [14, 6, 10, 52, 999];
+  function escenaInicio() {
+    const p = avance(inicio), t = suave(tramo(p, .05, .6));
+    const [a, d, b, i, r] = arcoInicio();
+    const radio = mezcla(r, 0, t), radioAbajo = mezcla(28, 0, t);
+    arco.style.clipPath = `inset(${mezcla(a, 0, t)}% ${mezcla(d, 0, t)}% ${mezcla(b, 0, t)}% ${mezcla(i, 0, t)}% round ${radio}px ${radio}px ${radioAbajo}px ${radioAbajo}px)`;
+    arco.style.setProperty('--zv', mezcla(1.25, 1, t));
+    arco.style.setProperty('--velo', t);
+    const sale = tramo(p, 0, .35);
+    inicio.style.setProperty('--op', 1 - sale);
+    inicio.style.setProperty('--sube', sale * 80 + 'px');
+    inicio.style.setProperty('--lema', suave(tramo(p, .6, .8)) * (1 - tramo(p, .92, 1)));
   }
 
-  // Aparición al hacer scroll y contadores
+  // ---- Escena 2: zoom hacia la torsión, fundido y salida desde el lazo
+  const detalle = $('detalle'), f1 = $('foto1'), f2 = $('foto2'), caps = detalle.querySelectorAll('.capitulo');
+  const marcas = [$('marca1'), $('marca2'), $('marca3'), $('marca4')];
+  function escenaDetalle() {
+    const p = avance(detalle);
+    const z1 = suave(tramo(p, .05, .48));                  // acercarse a la torsión
+    const fundido = suave(tramo(p, .42, .54));             // pasar a la otra foto
+    const z2 = suave(tramo(p, .5, .9));                    // alejarse desde el lazo
+    f1.style.transform = `scale(${mezcla(1, 3.2, z1)})`;
+    f1.style.opacity = 1 - fundido;
+    f2.style.transform = `scale(${mezcla(3, 1, z2)})`;
+    f2.style.opacity = fundido;
+    marcas[0].classList.toggle('ve', p > .08 && p < .28);
+    marcas[1].classList.toggle('ve', p > .12 && p < .28);
+    marcas[2].classList.toggle('ve', p > .86);
+    marcas[3].classList.toggle('ve', p > .9);
+    const cap = p < .5 ? 0 : 1;
+    caps.forEach((c, i) => c.classList.toggle('activo', i === cap));
+    $('cap0').style.setProperty('--llena', tramo(p, 0, .5));
+    $('cap1').style.setProperty('--llena', tramo(p, .5, 1));
+  }
+
+  // ---- Escena 3: la galería corre en horizontal al bajar
+  const galeria = $('galeria'), pista = $('pista'), tarjetas = [...pista.children];
+  function escenaGaleria() {
+    const p = avance(galeria);
+    const recorrido = pista.scrollWidth - innerWidth + Math.max(16, (innerWidth - 1180) / 2);
+    pista.style.transform = `translateX(${-p * recorrido}px)`;
+    const centro = innerWidth / 2;
+    tarjetas.forEach((t, i) => {
+      const r = t.getBoundingClientRect(), d = (r.left + r.width / 2 - centro) / innerWidth;
+      t.style.setProperty('--giro', (d * 8).toFixed(2) + 'deg');
+      t.style.setProperty('--dy', (Math.abs(d) * 50).toFixed(1) + 'px');
+      t.style.setProperty('--px', (d * -40).toFixed(1) + 'px');
+    });
+    $('contador').textContent = String(Math.min(tarjetas.length, Math.round(p * (tarjetas.length - 1)) + 1)).padStart(2, '0') + ' / ' + String(tarjetas.length).padStart(2, '0');
+  }
+
+  // ---- Parallax en fotos sueltas
+  const enVista = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight ? (r.top + r.height / 2 - innerHeight / 2) / innerHeight : null; };
+  function paralajes() {
+    const m = enVista($('fondoMar').parentElement);
+    if (m !== null) $('fondoMar').style.transform = `translateY(${m * -90}px)`;
+    const n = enVista($('parNovia'));
+    if (n !== null) { $('parNovia').style.setProperty('--par', n * -50 + 'px'); $('parNovia2').parentElement.style.setProperty('--par2', n * 70 + 'px'); }
+    const po = enVista($('polaroid'));
+    if (po !== null) $('polaroid').style.setProperty('--rot', (5 + po * 10).toFixed(2) + 'deg');
+  }
+
+  // ---- Bucle de scroll
+  const nav = $('nav'), progreso = $('progreso'), flotantes = $('flotantes');
+  let pendiente = false;
+  function pintar() {
+    pendiente = false;
+    const total = document.documentElement.scrollHeight - innerHeight;
+    progreso.style.transform = `scaleX(${scrollY / total})`;
+    nav.classList.toggle('solida', scrollY > inicio.offsetHeight - innerHeight * .9);
+    flotantes.classList.toggle('ve', scrollY > galeria.offsetTop + galeria.offsetHeight - innerHeight);
+    escenaInicio(); escenaDetalle(); escenaGaleria(); paralajes();
+  }
+  const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); } };
+  addEventListener('scroll', pedir, { passive: true });
+  addEventListener('resize', pedir);
+  pintar();
+
+  $('menuBtn').addEventListener('click', () => nav.classList.toggle('abierto'));
+  nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', () => nav.classList.remove('abierto')));
+
+  // ---- Pétalos dorados que caen
+  if (!quieto) {
+    const petalos = $('petalos');
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('i');
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = 12 + Math.random() * 14 + 's';
+      p.style.animationDelay = -Math.random() * 26 + 's';
+      p.style.scale = .6 + Math.random() * .9;
+      petalos.appendChild(p);
+    }
+  }
+
+  // ---- Aparición al hacer scroll y contadores
   const contar = el => {
     const fin = parseFloat(el.dataset.contar), dec = +(el.dataset.decimales || 0);
     const pre = el.dataset.prefijo || '', suf = el.dataset.sufijo || '';
@@ -636,13 +718,13 @@
   const obs = new IntersectionObserver(entradas => entradas.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('visible');
-    e.target.querySelectorAll('[data-contar]').forEach(contar);
+    if (!quieto) e.target.querySelectorAll('[data-contar]').forEach(contar);
     obs.unobserve(e.target);
   }), { threshold: .15 });
   document.querySelectorAll('.aparece').forEach(el => obs.observe(el));
 
-  // Carrusel de opiniones
-  const ops = [...document.querySelectorAll('.opinion')], puntos = document.getElementById('puntos');
+  // ---- Carrusel de opiniones
+  const ops = [...document.querySelectorAll('.opinion')], puntos = $('puntos');
   let actual = 0, temporizador;
   const ir = i => {
     ops[actual].classList.remove('activa'); puntos.children[actual].classList.remove('activo');
@@ -659,8 +741,8 @@
   const reiniciar = () => { clearInterval(temporizador); temporizador = setInterval(() => ir(actual + 1), 6000); };
   reiniciar();
 
-  // ¿Cuánto falta para tu boda?
-  const fecha = document.getElementById('fechaBoda'), res = document.getElementById('resultado');
+  // ---- ¿Cuánto falta para tu boda? (y el WhatsApp ya lleva la fecha)
+  const fecha = $('fechaBoda'), res = $('resultado'), reservar = $('reservarFecha');
   fecha.min = new Date().toISOString().slice(0, 10);
   fecha.addEventListener('change', () => {
     const dias = Math.ceil((new Date(fecha.value) - new Date()) / 864e5);
@@ -669,19 +751,19 @@
     let msg;
     if (dias < 0) msg = 'Esa fecha ya ha pasado. ¡Esperamos que fuera un día precioso!';
     else if (meses >= 12) msg = `Quedan <b>${meses} meses</b>. Es el momento ideal: reserva ahora y elige con tranquilidad.`;
-    else if (meses >= 4) msg = `Quedan <b>${meses} meses</b>. Buen margen, pero las fechas se llenan: llámanos esta semana.`;
-    else msg = `Quedan <b>${dias} días</b>. ¡Llámanos hoy mismo y vemos si tenemos hueco para ti!`;
+    else if (meses >= 4) msg = `Quedan <b>${meses} meses</b>. Buen margen, pero las fechas se llenan: escríbenos esta semana.`;
+    else msg = `Quedan <b>${dias} días</b>. ¡Escríbenos hoy mismo y vemos si tenemos hueco para ti!`;
     res.innerHTML = msg;
+    const bonita = new Date(fecha.value).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+    reservar.href = 'https://wa.me/34635993549?text=' + encodeURIComponent(`Hola Merche, me caso el ${bonita} y me gustaría reservar el peinado.`);
   });
 
-  // Abierto / cerrado ahora
+  // ---- Abierto / cerrado ahora
   const ahora = new Date(), h = HORARIO[ahora.getDay()], hora = ahora.getHours() + ahora.getMinutes() / 60;
-  const estado = document.getElementById('estado');
   const abierto = h && hora >= h[0] && hora < h[1];
-  estado.textContent = abierto ? 'Abierto ahora' : 'Cerrado ahora';
-  estado.classList.add(abierto ? 'abierto' : 'cerrado');
-
-  document.getElementById('anio').textContent = ahora.getFullYear();
+  $('estado').textContent = abierto ? 'Abierto ahora' : 'Cerrado ahora';
+  $('estado').classList.add(abierto ? 'abierto' : 'cerrado');
+  $('anio').textContent = ahora.getFullYear();
 </script>
 </body>
 </html>
