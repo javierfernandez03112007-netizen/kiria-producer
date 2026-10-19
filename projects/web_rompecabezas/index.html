@@ -91,6 +91,36 @@
   #hamburguesa .rotulo circle { fill: var(--mostaza); }
   .halo { position: absolute; width: 60vmin; height: 60vmin; right: 10%; top: 50%; transform: translateY(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(242, 177, 52, .25), transparent 65%); pointer-events: none; }
 
+  /* 2b · La torre real se parte en rodajas */
+  #torre { height: 380vh; background: linear-gradient(180deg, var(--carbon), #2c241d); color: var(--crema); }
+  #torre .fijo { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 40px; width: min(1180px, 100% - 32px); margin-inline: auto; overflow: visible; }
+  .torre-foto { position: relative; width: min(440px, 100%); aspect-ratio: 920 / 988; justify-self: center; }
+  .rodaja { position: absolute; inset: 0; background: url(img/torre.jpg) center / 100% 100%; will-change: transform; filter: drop-shadow(0 18px 18px rgba(0, 0, 0, .45)); }
+  .rodaja-rotulo { position: absolute; left: calc(100% + 20px); white-space: nowrap; display: flex; align-items: center; gap: 10px; opacity: 0; transform: translateX(-10px); transition: opacity .4s, transform .4s; }
+  .rodaja-rotulo.izq { left: auto; right: calc(100% + 20px); flex-direction: row-reverse; text-align: right; }
+  .rodaja-rotulo.ve { opacity: 1; transform: none; }
+  .rodaja-rotulo i { width: 34px; border-top: 2px dashed var(--mostaza); }
+  .rodaja-rotulo b { display: block; font-size: 1.05rem; color: #fff; }
+  .rodaja-rotulo small { color: rgba(255, 245, 230, .6); }
+  .torre-texto h2 { color: #fff; font-size: clamp(2.4rem, 5vw, 4.2rem); margin: 16px 0; }
+  .torre-texto h2 em { font-style: normal; color: var(--mostaza); }
+  .torre-texto p { color: rgba(255, 245, 230, .75); font-size: 1.08rem; max-width: 26em; }
+  .torre-texto .etiqueta { background: rgba(242, 177, 52, .15); color: var(--mostaza); }
+
+  /* 2c · La terraza aparece por una pieza de puzzle */
+  #terraza { height: 260vh; background: var(--mostaza); }
+  .ventana {
+    position: absolute; inset: 0; background: url(img/terraza.jpg) center 65% / cover;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-15 0 130 100'%3E%3Cpath d='M0,0 H100 V35 C112,30 124,38 122,50 C124,62 112,70 100,65 V100 H0 V65 C12,70 24,62 22,50 C24,38 12,30 0,35 Z'/%3E%3C/svg%3E") center / var(--m, 30%) no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-15 0 130 100'%3E%3Cpath d='M0,0 H100 V35 C112,30 124,38 122,50 C124,62 112,70 100,65 V100 H0 V65 C12,70 24,62 22,50 C24,38 12,30 0,35 Z'/%3E%3C/svg%3E") center / var(--m, 30%) no-repeat;
+    transform: rotate(var(--g, -12deg)) scale(1.05);
+  }
+  .terraza-titulo { position: absolute; left: 0; right: 0; top: 14%; text-align: center; opacity: calc(1 - var(--f, 0) * 3); }
+  .terraza-titulo h2 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+  .terraza-final { position: absolute; left: 0; right: 0; bottom: 9%; text-align: center; color: #fff; opacity: var(--fin, 0); transform: translateY(calc((1 - var(--fin, 0)) * 30px)); padding: 0 16px; }
+  .terraza-final h2 { color: #fff; font-size: clamp(2.2rem, 5.5vw, 4.4rem); text-shadow: 0 4px 24px rgba(0, 0, 0, .55); }
+  .terraza-final p { font-size: 1.15rem; text-shadow: 0 2px 12px rgba(0, 0, 0, .6); margin-top: 8px; }
+
   /* 3 · La caña se llena y llega la tapa */
   #tapa { height: 280vh; background: var(--mostaza); }
   #tapa .fijo { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: min(1180px, 100% - 32px); margin-inline: auto; gap: 30px; }
@@ -142,6 +172,31 @@
   .resena blockquote::before { content: "“"; display: block; font-size: 3.4rem; line-height: .6; color: var(--tomate); margin-bottom: 4px; }
   .resena cite { display: block; margin-top: 14px; font-style: normal; font-size: .85rem; color: var(--suave); }
   .resena cite b { color: var(--mostaza); -webkit-text-stroke: .5px var(--carbon); letter-spacing: 2px; }
+
+  /* 6 · Carta completa con pestañas */
+  .menu { background: var(--papel); }
+  .pestanas { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+  .pestanas button { font: 700 1rem "DM Sans", sans-serif; padding: 11px 20px; border-radius: 14px; border: 2.5px solid var(--carbon); background: #fff; cursor: pointer; box-shadow: 3px 3px 0 var(--carbon); transition: transform .15s, background .2s; }
+  .pestanas button.activa { background: var(--tomate); color: #fff; transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--carbon); }
+  .platos-menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; min-height: 260px; }
+  .item {
+    position: relative; background: #fff; border: 2.5px solid var(--carbon); border-radius: 20px; padding: 22px 22px 20px; box-shadow: 5px 5px 0 var(--carbon);
+    display: flex; flex-direction: column; gap: 6px; animation: encajar .7s cubic-bezier(.2, 1.4, .4, 1) both;
+  }
+  .item::after { content: ""; position: absolute; right: -15px; top: calc(50% - 13px); width: 26px; height: 26px; border-radius: 50%; background: inherit; border: 2.5px solid var(--carbon); border-left-color: transparent; transform: rotate(45deg); clip-path: inset(0 0 0 50%); }
+  .item h3 { font-size: 1.3rem; padding-right: 92px; }
+  .item.con-foto .precio { top: 182px; }
+  .item p { color: var(--suave); font-size: .92rem; flex: 1; }
+  .item .precio { position: absolute; top: 18px; right: 18px; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 1.1rem; color: var(--tomate); }
+  .item .precio.glovo { font-family: "DM Sans"; font-size: .72rem; font-weight: 700; color: var(--suave); }
+  .item a { align-self: flex-start; margin-top: 8px; font-weight: 700; font-size: .88rem; text-decoration: none; color: var(--carbon); border-bottom: 2.5px solid var(--mostaza); }
+  .item img { width: calc(100% + 44px); margin: -22px -22px 10px; height: 170px; object-fit: cover; border-radius: 17px 17px 0 0; border-bottom: 2.5px solid var(--carbon); }
+  @keyframes encajar { from { opacity: 0; transform: translate(var(--ex, 40px), var(--ey, -60px)) rotate(var(--er, 20deg)) scale(.6); } }
+  .glovo-banda { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; background: #ffc244; border: 3px solid var(--carbon); border-radius: 24px; padding: 26px 30px; box-shadow: 7px 7px 0 var(--carbon); }
+  .glovo-banda h3 { font-size: 1.7rem; }
+  .glovo-banda p { color: var(--texto); }
+  .boton.glovo { background: #00a082; color: #fff; }
+  .cartel { border: 3px solid var(--carbon); border-radius: 18px; overflow: hidden; box-shadow: 5px 5px 0 var(--carbon); }
 
   /* ---------- Secciones normales ---------- */
   section.normal { padding: 110px 0; position: relative; }
@@ -202,6 +257,17 @@
     .tapa-texto p { font-size: .98rem; margin-top: 10px; }
     .mesa { height: 100%; max-height: 52vh; }
     .carta-cab { flex-direction: column; align-items: flex-start; }
+    #torre .fijo { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 0; padding-top: 76px; align-items: start; }
+    .torre-texto h2 { font-size: 2.1rem; margin: 10px 0 6px; }
+    .torre-texto p { font-size: .95rem; }
+    .torre-texto { order: -1; }
+    .torre-foto { width: 58vw; margin-top: 9vh; justify-self: start; }
+    .rodaja-rotulo { left: calc(100% + 6px); white-space: normal; width: calc(42vw - 30px); }
+    .rodaja-rotulo.izq { right: auto; left: calc(100% + 8px); flex-direction: row; text-align: left; }
+    .rodaja-rotulo i { width: 14px; flex: none; }
+    .rodaja-rotulo b { font-size: .85rem; }
+    .rodaja-rotulo small { display: none; }
+    .item::after { display: none; }
     .plato { width: 74vw; }
     .mazo { height: 62vh; }
     .resena { width: 84vw; padding: 14px 16px; border-radius: 18px; }
@@ -243,11 +309,11 @@
     <ul>
       <li><a href="#despiece">La hamburguesa</a></li>
       <li><a href="#tapa">Tapas</a></li>
-      <li><a href="#carta">Carta</a></li>
+      <li><a href="#menu">Carta</a></li>
       <li><a href="#resenas">Opiniones</a></li>
       <li><a href="#visitanos">Visítanos</a></li>
     </ul>
-    <a href="tel:+34858706552" class="boton">Llamar</a>
+    <a href="https://glovoapp.com/es/es/granada/rompecabezas-granada/" target="_blank" rel="noopener" class="boton glovo">Pedir a domicilio</a>
   </div>
 </nav>
 
@@ -278,6 +344,27 @@
       <div class="estado-despiece" id="estadoDespiece">Montada y lista…</div>
     </div>
     <svg id="hamburguesa" viewBox="0 0 900 760" aria-label="Hamburguesa con sus ingredientes por capas"></svg>
+  </div>
+</section>
+
+<!-- ====== 2b · La torre real, en rodajas ====== -->
+<section id="torre">
+  <div class="fijo">
+    <div class="torre-foto" id="torreFoto"></div>
+    <div class="torre-texto">
+      <span class="etiqueta">Hecha aquí</span>
+      <h2>La torre de la casa, <em>capa a capa</em></h2>
+      <p>Una de nuestras especialidades, de verdad. Baja y la partimos para que veas lo que lleva por dentro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 2c · Terraza a través de una pieza ====== -->
+<section id="terraza">
+  <div class="fijo">
+    <div class="terraza-titulo"><span class="etiqueta" style="background: rgba(31, 26, 22, .1); color: var(--carbon)">Asómate</span><h2 style="margin-top: 12px">Mira por el hueco de la pieza…</h2></div>
+    <div class="ventana" id="ventana" role="img" aria-label="Terraza de RompeCabezas con suelo de piezas de puzzle"></div>
+    <div class="terraza-final"><h2>Hasta el suelo es un puzzle.</h2><p>Nuestra terraza en la Ribera del Genil, a la sombra de los árboles.</p></div>
   </div>
 </section>
 
@@ -335,7 +422,7 @@
         <span class="etiqueta">La carta</span>
         <h2>Lo que más <span class="mano">piden</span></h2>
       </div>
-      <span class="contador" id="contador">01 / 06</span>
+      <span class="contador" id="contador">01 / 08</span>
     </div>
     <div class="riel" id="riel">
       <article class="plato">
@@ -351,6 +438,20 @@
           <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4"><rect x="14" y="40" width="172" height="46" rx="23" fill="#e3a23a"/><ellipse cx="172" cy="63" rx="16" ry="23" fill="#f6e0b0"/><circle cx="172" cy="63" r="10" fill="#d97559"/></g><g fill="#a6621b"><circle cx="50" cy="55" r="3"/><circle cx="80" cy="70" r="3"/><circle cx="110" cy="52" r="3"/><circle cx="135" cy="72" r="3"/></g></svg>
         </div>
         <div class="cuerpo"><h3>Flamenquín</h3><p>Una ración de las que hacen que te caigas de la silla al verla llegar.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/torre.jpg); --fondo: linear-gradient(140deg, #fff1c9, #f2b134)">
+          <span class="sello">De la casa</span>
+          <svg viewBox="0 0 200 120"><rect x="60" y="30" width="80" height="70" rx="10" fill="#f2b134" stroke="#1f1a16" stroke-width="4"/></svg>
+        </div>
+        <div class="cuerpo"><h3>Torre de la casa</h3><p>Capas, mermelada de mango y flor comestible. La has visto partida más arriba.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/cana.jpg); --fondo: linear-gradient(140deg, #fff5e6, #f2b134)">
+          <span class="sello">Bien fría</span>
+          <svg viewBox="0 0 200 120"><rect x="80" y="10" width="40" height="100" rx="6" fill="#ffcf4d" stroke="#1f1a16" stroke-width="4"/></svg>
+        </div>
+        <div class="cuerpo"><h3>Jarra de cerveza</h3><p>Helada, con su espuma y, como siempre, con su tapa.</p></div>
       </article>
       <article class="plato">
         <div class="foto" style="--img: url(img/raciones.jpg); --fondo: linear-gradient(140deg, #e7f0d8, #4f6b3a)">
@@ -396,6 +497,23 @@
   </div>
 </section>
 
+<!-- ====== Carta completa ====== -->
+<section class="normal menu" id="menu">
+  <div class="envoltura">
+    <div class="cabecera aparece">
+      <span class="etiqueta">Carta</span>
+      <h2>Elige tus piezas</h2>
+      <p>Toca una sección y mira cómo encajan los platos. Si no te apetece salir, te lo llevamos a casa con Glovo.</p>
+    </div>
+    <div class="pestanas" id="pestanas" role="tablist"></div>
+    <div class="platos-menu" id="platosMenu" aria-live="polite"></div>
+    <div class="glovo-banda aparece">
+      <div><h3>¿Mejor en el sofá?</h3><p>Pide a domicilio en Granada desde Glovo.</p></div>
+      <a href="https://glovoapp.com/es/es/granada/rompecabezas-granada/" target="_blank" rel="noopener" class="boton glovo">Pedir en Glovo</a>
+    </div>
+  </div>
+</section>
+
 <!-- ====== Por qué venir ====== -->
 <section class="normal">
   <svg class="deco" style="left: 4%; top: 60px; --rot: -20deg" viewBox="0 0 130 100"><use href="#forma-pieza" fill="#e4572e" stroke="#1f1a16" stroke-width="5"/></svg>
@@ -418,6 +536,7 @@
 <section class="normal visita" id="visitanos">
   <div class="envoltura">
     <div class="ficha aparece">
+      <img class="cartel" src="img/cartel.jpg" alt="Cartel de la fachada de RompeCabezas" loading="lazy">
       <div><span class="etiqueta">Visítanos</span><h2 style="margin-top: 12px">Te guardamos sitio en la barra</h2></div>
       <div class="dato">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
@@ -447,7 +566,10 @@
   <svg class="deco" style="right: 8%; bottom: 30px; --rot: -25deg; animation-delay: -4s" viewBox="0 0 130 100"><use href="#forma-pieza" fill="#e4572e" stroke="#1f1a16" stroke-width="5"/></svg>
   <h2>Te falta una pieza: <span class="mano">tú.</span></h2>
   <p>Ven a por una caña y su tapa. Si sois muchos, llámanos antes y os buscamos sitio.</p>
-  <a href="tel:+34858706552" class="boton">Llamar · 858 70 65 52</a>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 14px">
+    <a href="tel:+34858706552" class="boton">Llamar · 858 70 65 52</a>
+    <a href="https://glovoapp.com/es/es/granada/rompecabezas-granada/" target="_blank" rel="noopener" class="boton glovo">Pedir en Glovo</a>
+  </div>
 </div>
 
 <footer>© <span id="anio"></span> RompeCabezas · Calle Ribera del Genil, 7 · 18005 Granada · 858 70 65 52</footer>
@@ -575,6 +697,49 @@
     estado.textContent = p < .08 ? 'Montada y lista…' : p < .5 ? 'Se rompe en piezas…' : p < .78 ? `${capas.length} piezas, una receta` : '¡Rompecabezas resuelto!';
   }
 
+  // ---------- 2b · Torre en rodajas (la foto real, cortada en bandas) ----------
+  // [desde %, hasta %, título, detalle] de arriba abajo
+  const RODAJAS = [
+    [0, 52, 'Mermelada de mango', 'con flor comestible encima'],
+    [52, 68, 'Paté y queso crema', 'primera capa'],
+    [68, 78, 'Paté', 'segunda capa'],
+    [78, 86, 'Mango', 'en láminas finas'],
+    [86, 100, 'Queso crema', 'la base de la torre']
+  ];
+  const torre = $('torre'), torreFoto = $('torreFoto');
+  const rodajas = RODAJAS.map(([a, b, titulo, detalle], i) => {
+    const d = document.createElement('div');
+    d.className = 'rodaja';
+    d.style.clipPath = `inset(${a}% 0 ${100 - b}% 0)`;
+    torreFoto.appendChild(d);
+    const r = document.createElement('div');
+    r.className = 'rodaja-rotulo' + (i % 2 ? ' izq' : '');
+    r.innerHTML = `<i></i><span><b>${titulo}</b><small>${detalle}</small></span>`;
+    torreFoto.appendChild(r);
+    return { d, r, centro: (a + b) / 2, i };
+  });
+  function escenaTorre() {
+    const p = avance(torre);
+    const t = suave(tramo(p, .1, .5)) * (1 - suave(tramo(p, .82, .97)));
+    const alto = torreFoto.offsetHeight, hueco = alto * (innerWidth < 700 ? .1 : .11);
+    rodajas.forEach(({ d, r, centro, i }) => {
+      const dy = (i - 2) * hueco * t, dx = Math.sin(i * 2.1) * 12 * t;
+      d.style.transform = `translate(${dx}px, ${dy}px) rotate(${(i % 2 ? 2 : -2) * t}deg)`;
+      r.style.top = `calc(${centro}% + ${dy}px - 18px)`;
+      r.classList.toggle('ve', t > .6 + i * .05);
+    });
+  }
+
+  // ---------- 2c · Terraza por el hueco de la pieza ----------
+  const terraza = $('terraza'), ventana = $('ventana');
+  function escenaTerraza() {
+    const p = avance(terraza), t = tramo(p, .08, .7), e = t * t * t;
+    ventana.style.setProperty('--m', mezcla(34, 1400, e) + '%');
+    ventana.style.setProperty('--g', mezcla(-12, 0, suave(t)) + 'deg');
+    terraza.style.setProperty('--f', t);
+    terraza.style.setProperty('--fin', suave(tramo(p, .72, .9)));
+  }
+
   // ---------- 3 · Caña + tapa ----------
   const tapa = $('tapa'), liquido = $('liquido'), plato = $('plato');
   function escenaTapa() {
@@ -630,12 +795,58 @@
     progreso.style.transform = `scaleX(${scrollY / (document.documentElement.scrollHeight - innerHeight)})`;
     nav.classList.toggle('solida', scrollY > 30);
     flotante.classList.toggle('ve', scrollY > inicio.offsetHeight);
-    escenaInicio(); escenaDespiece(); escenaTapa(); escenaCarta(); escenaResenas();
+    escenaInicio(); escenaDespiece(); escenaTorre(); escenaTerraza(); escenaTapa(); escenaCarta(); escenaResenas();
   }
   const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); } };
   addEventListener('scroll', pedir, { passive: true });
   addEventListener('resize', pedir);
   pintar();
+
+  // ---------- Carta con pestañas ----------
+  // Precios: null = se consulta en Glovo. Rellenar con la carta real.
+  const GLOVO = 'https://glovoapp.com/es/es/granada/rompecabezas-granada/';
+  const CARTA = {
+    'Tapas': [
+      ['Jamón asado', 'La primera tapa de la casa, recién cortado.', null],
+      ['Torre de la casa', 'Paté, queso crema, mango y su mermelada.', null, 'img/torre.jpg'],
+      ['Migas', 'Como se hacen en Granada.', null],
+      ['Lomo con ajos', 'Lomo a la plancha con ajitos.', null]
+    ],
+    'Raciones': [
+      ['Flamenquín', 'Una ración enorme, para compartir.', null],
+      ['Jamón asado', 'En ración, para la mesa.', null],
+      ['Lomo con ajos', 'Ración generosa.', null]
+    ],
+    'Hamburguesas': [
+      ['Hamburguesa de la casa', 'Pan con sésamo, carne a la plancha, queso, tomate, lechuga y salsa de la casa.', null]
+    ],
+    'Pizzas': [
+      ['Pizzas', 'Consulta las variedades del día.', null]
+    ],
+    'Bebidas': [
+      ['Jarra de cerveza', 'Bien fría y con su tapa.', null, 'img/cana.jpg'],
+      ['Refrescos', 'Variedad de refrescos.', null],
+      ['Vinos', 'Tinto y blanco por copas.', null]
+    ]
+  };
+  const pestanas = $('pestanas'), platosMenu = $('platosMenu');
+  const pintarCarta = seccion => {
+    [...pestanas.children].forEach(b => { b.classList.toggle('activa', b.textContent === seccion); b.setAttribute('aria-selected', b.textContent === seccion); });
+    platosMenu.innerHTML = CARTA[seccion].map(([nombre, desc, precio, foto], i) => `
+      <article class="item${foto ? ' con-foto' : ''}" style="animation-delay: ${i * .08}s; --ex: ${(i % 2 ? 1 : -1) * (40 + i * 15)}px; --ey: ${-50 - i * 10}px; --er: ${(i % 2 ? 1 : -1) * 18}deg">
+        ${foto ? `<img src="${foto}" alt="${nombre}" loading="lazy">` : ''}
+        <span class="precio ${precio ? '' : 'glovo'}">${precio ? precio.toFixed(2).replace('.', ',') + ' €' : 'Precio en Glovo'}</span>
+        <h3>${nombre}</h3><p>${desc}</p>
+        <a href="${GLOVO}" target="_blank" rel="noopener">Pedir a domicilio →</a>
+      </article>`).join('');
+  };
+  Object.keys(CARTA).forEach((seccion, i) => {
+    const b = document.createElement('button');
+    b.textContent = seccion; b.setAttribute('role', 'tab');
+    b.addEventListener('click', () => pintarCarta(seccion));
+    pestanas.appendChild(b);
+  });
+  pintarCarta('Tapas');
 
   // Fotos reales: si existe img/<plato>.jpg, se muestra y se oculta el dibujo
   document.querySelectorAll('.plato .foto').forEach(f => {
