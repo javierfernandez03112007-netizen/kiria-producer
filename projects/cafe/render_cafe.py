@@ -156,11 +156,12 @@ def s_moneda(tl, D, t):
 def s_montana(tl, D, t):
     x = ease(tl / D)
     name = "agricultor"
-    fx_, fy_, z = lerp(0.15, 0.37, x), lerp(0.31, 0.37, x), lerp(1.0, 1.06, x)
+    fx_, fy_, z = lerp(0.17, 0.37, x), lerp(0.24, 0.33, x), lerp(1.0, 1.06, x)
     f, _ = camara(name, fx_, fy_, z, par=(lerp(170, -170, x), 0), dz=0.1, warp=fx.viento(t, 2.5))
     fx.niebla(f, t, color=(0.82, 0.9, 1.0), a=0.38, speed=(55, -6), y0=0.0, y1=0.6, seed=3)
     sx, sy = pantalla(name, fx_, fy_, z, 0.199, 0.068)
-    fx.destello(f, sx, sy, 230, (0.5, 0.8, 1.0), 0.32 + 0.06 * np.sin(t * 3))
+    f *= 0.86
+    fx.destello(f, sx, sy, 200, (0.5, 0.8, 1.0), 0.16 + 0.04 * np.sin(t * 3))
     POLVO.draw(f, t)
     a = min(1, max(0, (t - T[3] - 0.1) / 0.4))
     if a > 0:
@@ -742,7 +743,7 @@ def mesa_y_taza():
     r = np.hypot(xx - c, yy - c)
     # platillo
     sau = (r < 470).astype(np.float32)
-    sau_col = np.float32([0.80, 0.84, 0.86]) * (0.78 + 0.22 * np.clip(1 - (r - 330) / 140, 0, 1))[..., None]
+    sau_col = np.float32([0.58, 0.62, 0.66]) * (0.78 + 0.22 * np.clip(1 - (r - 330) / 140, 0, 1))[..., None]
     sh = cv2.GaussianBlur((r < 480).astype(np.float32), (0, 0), 30)
     img = wood * (1 - 0.65 * sh[..., None])
     img = img * (1 - sau[..., None]) + sau_col * sau[..., None]
@@ -751,9 +752,9 @@ def mesa_y_taza():
     img *= (1 - 0.35 * cup_sh)[..., None]
     handle = ((np.abs(yy - c) < 46) & (xx > c + 270) & (xx < c + 420)).astype(np.float32)
     handle = cv2.GaussianBlur(handle, (0, 0), 3)
-    img = img * (1 - handle[..., None]) + np.float32([0.88, 0.91, 0.93]) * handle[..., None]
+    img = img * (1 - handle[..., None]) + np.float32([0.64, 0.68, 0.71]) * handle[..., None]
     cup = (r < 300).astype(np.float32)
-    cup_col = np.float32([0.9, 0.93, 0.95]) * (0.82 + 0.18 * np.clip((300 - r) / 40, 0, 1))[..., None]
+    cup_col = np.float32([0.66, 0.70, 0.73]) * (0.82 + 0.18 * np.clip((300 - r) / 40, 0, 1))[..., None]
     img = img * (1 - cup[..., None]) + cup_col * cup[..., None]
     lip = cv2.GaussianBlur(((r > 262) & (r < 270)).astype(np.float32), (0, 0), 2)
     img = img * (1 - 0.25 * lip[..., None])
@@ -882,7 +883,7 @@ def frame(i):
 def trozo(args):
     a, b, path = args
     ff = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s",
-                           f"{W}x{H}", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-crf", "15", "-preset", "slow",
+                           f"{W}x{H}", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-crf", "17", "-preset", "slow",
                            "-pix_fmt", "yuv420p", path], stdin=subprocess.PIPE)
     for i in range(a, b):
         ff.stdin.write(frame(i).tobytes())
