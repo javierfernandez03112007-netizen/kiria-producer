@@ -56,7 +56,7 @@ def compose(fi):
     t0 = K["sigueme"] - 0.2
     if t0 <= t < END - 0.4:
         u = eio(prog(t, t0, 0.75))
-        cx, cy = lerp(880, 330, u), lerp(1780, 1495, u)
+        cx, cy = lerp(900, 520, u), lerp(1760, 1385, u)
         tap = K["sigueme"] + 0.6
         if t >= tap:
             r = 30 + 110 * prog(t, tap, 0.5)

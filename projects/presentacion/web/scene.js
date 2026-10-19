@@ -1,6 +1,6 @@
-// «Soy Kiria» v2 — la IA del canal: un óvalo con una lente-globo que lee un folio apoyado debajo.
-// La mirada se mueve de forma natural (giro suave, seguimiento de cada frase) y el vídeo alterna fondo negro
-// con líneas blancas y fondo blanco con líneas negras. window.renderAt(t) dibuja el instante t.
+// «Soy Kiria» v5 — vídeo por escenas. La IA del canal (un óvalo con una lente-globo) aparece solo en algunas:
+// se presenta y lee datos, ve edificios de datos, una fábrica de datos conectada a ella, promesas tachadas,
+// una cinta que forma montañas de cajas y se despide. window.renderAt(t) dibuja el instante t.
 import * as THREE from 'three';
 import { W, H, clamp, prog, lerp, eo, eio, ss, fatLines } from './lib.js';
 
@@ -82,122 +82,70 @@ function buildFigure() {
   scene.add(S.dust);
 }
 
-// ---------------------------------------------------------------- el folio
-const PW = 3.6, PL = 3.6 * 4000 / 1100, CW = 1100, CH = 4000;   // tamaño en el mundo y en el lienzo
-const PAPER_Y = 0, Z_READ = 0.95;               // el folio pasa por debajo; la frase leída queda en z = Z_READ
-let LINES = [];
-function lineDefs() {
-  // [texto, estilo, lectura (ini, fin), efecto]  —  estilos: k (antetítulo), h1, h2, b (cuerpo)
-  return [
-    ['LECTURA DE HOY · ECONOMÍA', 'k', null],
-    ['Informes, datos y noticias', 'h1', [K.leo + 0.05, K.noticias + 0.55]],
-    ['de economía', 'h1', [K.noticias + 0.6, K.noticias + 1.35]],
-    ['', 'gap'],
-    ['Banco Central Europeo', 'h2', [K.bce - 0.45, K.bce + 0.75]],
-    ['Tipo de depósito: 2,50 %', 'b', [K.bce + 0.8, K.bde - 0.25]],
-    ['Banco de España', 'h2', [K.bde - 0.2, K.bde + 0.35]],
-    ['Euríbor 12 meses: 3,247 %', 'b', [K.bde + 0.38, K.ine - 0.05]],
-    ['INE · precios de consumo', 'h2', [K.ine, K.ine + 0.75]],
-    ['', 'gap'],
-    ['¿Qué te afecta?', 'h1', null],
-    ['→ Tu hipoteca', 'b', null],
-    ['→ Tus ahorros', 'b', null],
-    ['→ Lo que pagas en el súper', 'b', null],
-    ['', 'gap'],
-    ['Explicado en 1 minuto', 'h1', null, { circle: '1 minuto', at: K.minuto }],
-    ['Con datos y fuentes', 'b', null, { circle: 'fuentes', at: K.fuentes }],
-    ['', 'gap'],
-    ['Humo', 'h2', null, { strike: K.humo + 0.25 }],
-    ['«Hazte rico rápido»', 'b', null, { strike: K.rico + 0.1 }],
-    ['«Compra esto ya»', 'b', null, { strike: K.comprar }],
-    ['', 'gap'],
-    ['Lo que necesitas', 'h1', [K.solo + 0.35, K.solo + 1.1]],
-    ['para entender lo que pasa.', 'h1', [K.solo + 1.15, K.pasando + 0.45]],
-    ['', 'gap'], ['', 'gap'],
-  ];
+
+// ---------------------------------------------------------------- escenas (tiempos de cambio)
+const T = { a1: 6.25, b: 10.0, c: 19.6, d: 24.2, e: 27.7, f: 32.5 };
+function zoneAt(t) {
+  if (t < T.a1) return 'eye'; if (t < T.b) return 'inst'; if (t < T.c) return 'fact';
+  if (t < T.d) return 'prom'; if (t < T.e) return 'eye'; if (t < T.f) return 'belt'; return 'eye';
 }
-const STYLE = { k: [40, 700, '#6a6a6a', 110], h1: [82, 800, '#0a0a0a', 150], h2: [70, 800, '#111', 132], b: [62, 600, '#2a2a2a', 120], gap: [0, 0, '', 90] };
+const ZO = { inst: v3(-200, 0, 0), fact: v3(200, 0, 0), prom: v3(0, 0, -300), belt: v3(400, 0, 0) };
+
+// ---------------------------------------------------------------- folio de DATOS (no el guion)
+const PW = 3.6, PL = 3.6 * 4000 / 1100, CW = 1100, CH = 4000;
+const PAPER_Y = 0, Z_READ = 0.95;
+let ROWS = [];   // filas que el ojo lee: { y, h, x0, x1, read: [a, b] }
 function buildPaper() {
-  const defs = lineDefs();
   const tex = canvasTex(CW, CH, (g, w, h) => {
     g.fillStyle = '#fbfbfa'; g.fillRect(0, 0, w, h);
-    // líneas de cuaderno muy suaves y margen
-    g.strokeStyle = 'rgba(0,0,0,.06)'; g.lineWidth = 2; for (let y = 60; y < h; y += 48) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
-    g.strokeStyle = 'rgba(0,0,0,.18)'; g.beginPath(); g.moveTo(110, 0); g.lineTo(110, h); g.stroke();
-    let y = 300;
-    LINES = defs.map(([text, st, read, fx]) => {
-      const [size, weight, color, lh] = STYLE[st];
-      const L = { text, st, read, fx: fx || {}, y, h: size };
-      if (text) {
-        let sz = size; g.font = `${weight} ${sz}px Inter`;
-        while (g.measureText(text).width > w - 240 && sz > 30) { sz -= 2; g.font = `${weight} ${sz}px Inter`; }
-        g.fillStyle = color; g.textBaseline = 'alphabetic'; g.fillText(text, 150, y + sz * 0.8);
-        L.x0 = 150; L.x1 = 150 + g.measureText(text).width; L.h = sz;
-        if (L.fx.circle) { const i = text.indexOf(L.fx.circle); L.cx0 = 150 + g.measureText(text.slice(0, i)).width; L.cx1 = L.cx0 + g.measureText(L.fx.circle).width; }
-      }
-      y += lh;
-      return L;
-    });
-    g.fillStyle = '#9a9a9a'; g.font = '600 30px Inter'; g.fillText('kiria.ai', 150, 140);
+    g.strokeStyle = 'rgba(0,0,0,.05)'; g.lineWidth = 2; for (let x = 0; x < w; x += 50) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, h); g.stroke(); } for (let y = 0; y < h; y += 50) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
+    const T1 = (txt, x, y, size = 40, weight = 700, color = '#111', align = 'left') => { g.font = `${weight} ${size}px Inter`; g.fillStyle = color; g.textAlign = align; g.textBaseline = 'alphabetic'; g.fillText(txt, x, y); return g.measureText(txt).width; };
+    const row = (y, label, val, bar, read) => {
+      g.fillStyle = 'rgba(0,0,0,.06)'; g.fillRect(90, y - 62, w - 180, 84);
+      T1(label, 120, y, 48, 600, '#333'); T1(val, w - 120, y, 58, 800, '#000', 'right');
+      g.fillStyle = '#111'; g.fillRect(470, y - 34, bar, 22);
+      ROWS.push({ y: y - 62, h: 84, x0: 110, x1: w - 110, read });
+    };
+    T1('DATOS · ECONOMÍA', 100, 230, 34, 700, '#777');
+    T1('Euríbor a 12 meses', 100, 330, 70, 800);
+    T1('Fuente: Banco de España', 100, 390, 36, 600, '#777');
+    row(520, 'sep 2025', '2,172 %', 2.172 * 90, [K.leo + 0.05, K.leo + 0.75]);
+    row(630, 'ago 2026', '2,954 %', 2.954 * 90, [K.leo + 0.8, K.leo + 1.4]);
+    row(740, 'sep 2026', '3,247 %', 3.247 * 90, [K.leo + 1.45, K.noticias + 0.3]);
+    T1('Tipo de depósito del BCE', 100, 900, 56, 800);
+    row(1010, 'desde 16/09/2026', '2,50 %', 2.5 * 90, [K.noticias + 0.35, K.economia + 0.55]);
+    // segunda parte (se lee más tarde): gráfico de barras de los tres datos y notas
+    T1('Comparativa', 100, 1250, 64, 800);
+    const bars = [['sep 25', 2.172], ['ago 26', 2.954], ['sep 26', 3.247], ['BCE', 2.5]];
+    bars.forEach(([lb, v], i) => { const x = 160 + i * 220, hh = v * 160; g.fillStyle = i === 2 ? '#000' : '#9a9a9a'; g.fillRect(x, 1880 - hh, 120, hh); T1(lb, x + 60, 1940, 36, 700, '#444', 'center'); T1(v.toFixed(3).replace(/0+$/, '').replace('.', ',') + ' %', x + 60, 1860 - hh, 36, 800, '#111', 'center'); });
+    ROWS.push({ y: 1300, h: 600, x0: 140, x1: 1000, read: [K.solo + 0.4, K.solo + 1.6], chart: true });
+    T1('Euríbor: +1,075 puntos en un año', 100, 2080, 50, 800);
+    ROWS.push({ y: 2030, h: 70, x0: 100, x1: 900, read: [K.solo + 1.65, K.pasando + 0.6] });
+    T1('Fuentes: Banco de España · BCE', 100, 2160, 36, 600, '#777');
+    g.fillStyle = '#9a9a9a'; g.font = '600 30px Inter'; g.textAlign = 'left'; g.fillText('kiria.ai', 100, 140);
   });
-  const paper = new THREE.Mesh(new THREE.PlaneGeometry(PW, PL), new THREE.MeshBasicMaterial({ map: tex, color: 0xd0d0d0 }));
+  const paper = new THREE.Mesh(new THREE.PlaneGeometry(PW, PL), new THREE.MeshBasicMaterial({ map: tex, color: 0xcfcfcf }));
   paper.rotation.x = -Math.PI / 2; scene.add(paper); S.paper = paper;
-  S.paperEdge = new THREE.LineSegments(new THREE.EdgesGeometry(paper.geometry), new THREE.LineBasicMaterial({ color: 0x000000, transparent: true, opacity: 0 })); paper.add(S.paperEdge);
-  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(PW + 1.2, PL + 1.2), new THREE.MeshBasicMaterial({ map: canvasTex(128, 256, (g, w, h) => { g.filter = 'blur(10px)'; g.fillStyle = 'rgba(0,0,0,.55)'; g.fillRect(22, 22, w - 44, h - 44); }), transparent: true, depthWrite: false, opacity: 0 }));
-  shadow.position.set(0.12, -0.12, -0.01); paper.add(shadow); S.shadow = shadow;
-  // marcas sobre el papel: subrayados (siguen a la mirada), tachados y círculos
-  LINES.forEach(L => {
-    if (!L.text) return;
-    if (L.read) { const hl = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2, depthWrite: false })); hl.position.z = 0.003; paper.add(hl); L.hl = hl; }
-    if (L.fx.strike) { const s = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0x0a0a0a })); s.position.z = 0.004; paper.add(s); L.sk = s; }
-    if (L.fx.circle) { const c = new THREE.Line(new THREE.BufferGeometry().setFromPoints(ellipsePts(1, 1, 120)), new THREE.LineBasicMaterial({ color: 0x0a0a0a })); c.position.z = 0.004; paper.add(c); L.ci = c; L.ciPts = ellipsePts(1, 1, 120); }
-  });
+  ROWS.forEach(R => { const hl = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.16, depthWrite: false })); hl.position.z = 0.003; paper.add(hl); R.hl = hl; });
 }
-// coordenadas del lienzo → locales del plano del folio
 const cx2l = x => (x / CW - 0.5) * PW, cy2l = y => (0.5 - y / CH) * PL;
+function paperV(t) {   // la fila que se lee queda bajo el ojo
+  const ks = []; ROWS.forEach(R => { const v = (R.y + Math.min(R.h, 120) * 0.5) / CH; ks.push([R.read[0], v], [R.read[1], v + 0.003]); });
+  if (t <= ks[0][0]) return ks[0][1];
+  for (let i = 0; i < ks.length - 1; i++) { const [ta, va] = ks[i], [tb, vb] = ks[i + 1]; if (t <= tb) { const u = (t - ta) / Math.max(1e-6, tb - ta); return lerp(va, vb, i % 2 === 0 ? u : ss(u)); } }
+  return ks[ks.length - 1][1];
+}
+function rowPoint(R, x, t, yfrac = 0.5) { const v = paperV(t); const z = Z_READ - (v - 0.5) * PL + (R.y + R.h * yfrac) / CH * PL - PL / 2; return v3(cx2l(x), PAPER_Y + 0.01, z); }
 
-// desplazamiento del folio: la frase que se lee queda bajo el ojo; entre frases el folio se desliza con suavidad
-function readKeys() {
-  const ks = [];
-  LINES.forEach(L => { if (L.read) { const v = (L.y + L.h * 0.5) / CH; ks.push([L.read[0], v], [L.read[1], v + 0.004]); } });
-  return ks;
-}
-let KEYS = [];
-function paperV(t) {
-  if (t <= KEYS[0][0]) return KEYS[0][1] - 0.02 * (KEYS[0][0] - t) * 0.5;
-  for (let i = 0; i < KEYS.length - 1; i++) {
-    const [ta, va] = KEYS[i], [tb, vb] = KEYS[i + 1];
-    if (t <= tb) { const u = (t - ta) / Math.max(1e-6, tb - ta); return lerp(va, vb, i % 2 === 0 ? u : ss(u)); }
-  }
-  const [tl, vl] = KEYS[KEYS.length - 1]; return vl + 0.035 * (t - tl);
-}
-function placePaper(t) {
-  const v = paperV(t);
-  // el punto v del folio queda en z = Z_READ (el folio se aleja de cámara al avanzar la lectura)
-  S.paper.position.set(0, PAPER_Y, Z_READ - (v - 0.5) * PL);
-}
-function linePoint(L, x, t) {   // punto del mundo sobre la frase L en la x del lienzo
-  const v = paperV(t);
-  const z = Z_READ - (v - 0.5) * PL + (L.y + L.h * 0.55) / CH * PL - PL / 2;
-  return v3(cx2l(x), PAPER_Y + 0.01, z);
-}
-
-// ---------------------------------------------------------------- mirada (sin estado: se calcula para cualquier t)
-const FIG = v3(0, 2.35, -0.35);
-function camPos(t) { return cam.position.clone(); }
-const CAMP = v3(0, 3.4, 9);   // mirar a cámara (aprox.)
+// ---------------------------------------------------------------- mirada del ojo
+const CAMP = v3(0, 3.4, 9);
 let GK = [];
 function buildGazeKeys() {
   const k = [], add = (t, fn, d = 0.38) => k.push([t, fn, d]), at = p => () => p.clone();
   add(-1, at(CAMP));
-  LINES.filter(L => L.read).forEach(L => add(L.read[0], t => { const u = clamp((t - L.read[0]) / (L.read[1] - L.read[0])); return linePoint(L, lerp(L.x0, L.x1, 0.75 * u + 0.25 * ss(u)), t); }));
-  // red de datos: mira cada nodo al encenderse
-  nodeDefs().forEach(([kk, , , p, t0]) => add(t0 + 0.05, at(p), 0.4));
-  add(K.explico - 0.3, at(CAMP));
-  add(K.fuentes - 0.3, at(v3(0, 0.25, 2.7)));
-  add(K.humo - 0.25, at(v3(0, 1.75, 1.6))); add(K.humo + 1.0, at(CAMP));
-  add(K.pasando + 0.6, at(CAMP));
-  add(K.interesa - 0.4, at(BELT_B.clone()), 0.45); add(K.interesa + 1.2, t => pileTop(t), 0.5); add(K.quedate - 0.2, at(CAMP));
+  ROWS.forEach(R => add(R.read[0], t => { const u = clamp((t - R.read[0]) / (R.read[1] - R.read[0])); if (R.chart) { const yf = 0.3 + 0.5 * Math.sin(u * Math.PI * 3) ** 2; return rowPoint(R, lerp(R.x0, R.x1, u), t, yf); } return rowPoint(R, lerp(R.x0, R.x1, 0.75 * u + 0.25 * ss(u)), t); }));
+  add(K.economia + 0.6, at(CAMP));
+  add(T.d - 0.1, at(CAMP)); add(K.pasando + 0.65, at(CAMP));
   return k.sort((a, b) => a[0] - b[0]);
 }
 function rawGaze(t) {
@@ -206,79 +154,24 @@ function rawGaze(t) {
   const [t0, fn, d] = GK[i];
   return GK[i - 1][1](t).lerp(fn(t), eio(clamp((t - t0) / d)));
 }
-function gaze(t) {   // media ponderada en ±0,12 s: aceleraciones y frenadas naturales
-  const p = v3(0, 0, 0); let wsum = 0;
-  for (let k = -4; k <= 4; k++) { const w = 1 - Math.abs(k) / 5; p.addScaledVector(rawGaze(t + k * 0.035), w); wsum += w; }
-  p.multiplyScalar(1 / wsum);
-  // pequeña deriva (micro-movimientos), muy sutil
-  p.x += 0.02 * Math.sin(t * 2.3) + 0.01 * Math.sin(t * 5.1); p.y += 0.015 * Math.sin(t * 1.7 + 1);
+function gazeEye(t) {
+  const p = v3(0, 0, 0); let ws = 0;
+  for (let k = -4; k <= 4; k++) { const w = 1 - Math.abs(k) / 5; p.addScaledVector(rawGaze(t + k * 0.035), w); ws += w; }
+  p.multiplyScalar(1 / ws); p.x += 0.02 * Math.sin(t * 2.3); p.y += 0.015 * Math.sin(t * 1.7 + 1);
   return p;
 }
 
-// ---------------------------------------------------------------- modo y cámara
-// negro → (se acerca al folio blanco) → blanco → (se acerca a la abertura negra) → negro
-function modeAt(t) { return t >= NET_END && t < 24.05 ? 'white' : 'black'; }
-function applyMode(mode) {
-  const white = mode === 'white';
-  scene.background.setHex(white ? 0xffffff : 0x000000); scene.fog.color.setHex(white ? 0xffffff : 0x000000);
-  M.line.color.setHex(white ? 0x111111 : 0xe6e6e6); M.dim.color.setHex(white ? 0x6a6a6a : 0x8a8a8a);
-  M.glass.color.setHex(white ? 0xf2f2f2 : 0x050505);
-  M.blade.color.setHex(white ? 0x7a7a7a : 0x9a9a9a); M.outline.opacity = white ? 1 : 0;
-  S.paper.material.color.setHex(white ? 0xffffff : 0xcfcfcf);
-  S.paperEdge.material.opacity = white ? 0.35 : 0; S.shadow.material.opacity = white ? 0.8 : 0;
-  S.dust.material.color.setHex(white ? 0x000000 : 0xffffff); S.dust.material.opacity = white ? 0.15 : 0.3;
-}
-const BASE = { p: v3(0, 3.7, 8.6), l: v3(0, 1.75, 0) };
-function cameraAt(t) {
-  let p = BASE.p.clone(), l = BASE.l.clone();
-  const drift = 0.12 * Math.sin(t * 0.21);
-  p.applyAxisAngle(v3(0, 1, 0), drift);
-  // inicio: muy pegado a la lente, se aleja al decir «Soy Kiria»
-  const lensP = FIG.clone().add(v3(0, 0, 0.7));
-  const k0 = eio(prog(t, 0.9, 2.0));
-  p = lensP.clone().add(v3(0, 0.05, 1.6)).lerp(p, k0); l = FIG.clone().lerp(l, k0);
-  // acercamiento lento en «explicado en un minuto» y giro en «sin humo»
-  const push = 0.0 * eio(prog(t, K.explico - 0.6, 2.4));
-  p.lerp(v3(0, 2.9, 6.6), 0.5 * push);
-  const orb = 0.32 * Math.sin(Math.PI * prog(t, K.humo - 0.5, K.comprar - K.humo + 0.7));
-  p.sub(l).applyAxisAngle(v3(0, 1, 0), orb).add(l);
-  // caída al folio blanco (paso a blanco)
-  const netOrb = 0.24 * Math.sin(Math.PI * prog(t, K.busco - 0.6, NET_END - K.busco - 0.4)) * Math.sin(Math.PI * 0.5 * prog(t, K.busco - 0.6, 2));
-  p.sub(l).applyAxisAngle(v3(0, 1, 0), netOrb).add(l);
-  const d1 = eio(prog(t, NET_END - 0.65, 0.65)), u1 = eio(prog(t, NET_END, 0.9));
-  if (t > NET_END - 0.7 && t < NET_END + 1.0) {
-    const fp = v3(0, 0.25, 2.7);
-    if (t < NET_END) { p = p.clone().lerp(fp.clone().add(v3(0, 0, 0.12)), d1); l = l.clone().lerp(fp, d1); }
-    else { p = fp.clone().add(v3(0, 0.6, 2.2)).lerp(p, u1); l = fp.clone().lerp(l, u1); }
-  }
-  // entrada en la abertura negra de la lente (paso a negro) y salida
-  const lensW = S.ap.getWorldPosition(v3(0, 0, 0));
-  const d2 = eio(prog(t, 23.5, 0.6)), u2 = eio(prog(t, 24.05, 1.1));
-  if (t > 23.45 && t < 25.3) {
-    const dir = p.clone().sub(lensW).normalize();
-    if (t < 24.05) { p = p.clone().lerp(lensW.clone().addScaledVector(dir, 0.06), d2); l = l.clone().lerp(lensW, d2); }
-    else { p = lensW.clone().addScaledVector(dir, 1.4).lerp(p, u2); l = lensW.clone().lerp(l, u2); }
-  }
-  // final: se acerca otra vez a la lente (bucle)
-  const k1 = eio(prog(t, END - 2.2, 2.0));
-  p.lerp(lensP.clone().add(v3(0, 0.05, 1.6)), k1); l.lerp(FIG, k1);
-  cam.position.copy(p); cam.up.set(0, 1, 0); cam.lookAt(l);
-}
-
-function figureAt(t) {
+// ---------------------------------------------------------------- figura: posición, mirada y gestos
+const FIG = v3(0, 2.35, -0.35);
+function figureAt(t, base, scale, g) {
   const F = S.F;
-  F.position.copy(FIG).add(v3(0, 0.05 * Math.sin(t * 1.2), 0));
-  F.scale.setScalar(0.72 * (1 + 0.012 * Math.sin(t * 1.9)));
-  const g = gaze(t);
-  // el cuerpo se inclina un poco hacia lo que lee; la lente-globo gira el resto
+  F.position.copy(base).add(v3(0, 0.05 * scale * Math.sin(t * 1.2), 0));
+  F.scale.setScalar(0.72 * scale * (1 + 0.012 * Math.sin(t * 1.9)));
   const toG = g.clone().sub(F.position);
-  const pitch = clamp(Math.atan2(-toG.y, Math.max(0.3, toG.z)) * 0.62, -0.1, 0.72);
+  const pitch = clamp(Math.atan2(-toG.y, Math.max(0.3, toG.z)) * 0.62, -0.5, 0.72);
   const yaw = clamp(Math.atan2(toG.x, Math.max(0.3, toG.z)) * 0.35, -0.3, 0.3);
-  // gestos: niega («rico», «comprar»), asiente («quédate») y ladea con curiosidad al buscar
-  const shake = [K.rico + 0.05, K.comprar + 0.02].reduce((s, a) => s + (t > a && t < a + 0.75 ? 0.2 * Math.sin((t - a) * Math.PI * 2 * 2.6) * (1 - (t - a) / 0.75) : 0), 0);
-  const nod = t > K.quedate + 0.05 && t < K.quedate + 0.7 ? 0.16 * Math.sin((t - K.quedate - 0.05) * Math.PI * 2 * 2.4) * (1 - (t - K.quedate - 0.05) / 0.65) : 0;
-  const tilt = 0.14 * Math.sin((t - K.busco) * 2.2) * env(t, K.busco - 0.2, K.hipoteca, 0.4, 0.4);
-  F.rotation.set(pitch + nod, yaw + shake, tilt);
+  const nod = t > T.f + 0.15 && t < T.f + 0.8 ? 0.16 * Math.sin((t - T.f - 0.15) * Math.PI * 2 * 2.4) * (1 - (t - T.f - 0.15) / 0.65) : 0;
+  F.rotation.set(pitch + nod, yaw, 0);
   F.updateMatrixWorld(true);
   const local = S.lid.worldToLocal(g.clone()).sub(S.lens.position).normalize();
   const maxA = 0.55, ang = Math.acos(clamp(local.z, -1, 1));
@@ -286,211 +179,294 @@ function figureAt(t) {
   S.eyeball.quaternion.setFromUnitVectors(v3(0, 0, 1), local);
   S.lens.position.set(local.x * 0.3, local.y * 0.24, 0.05);
   S.spec.position.set(-0.13, 0.15, 0.6);
-  // parpadeo: se cierra en vertical (rápido al cerrar, más lento al abrir)
-  const blinks = [2.35, K.bce - 0.9, K.busco + 0.9, K.explico - 0.95, K.solo + 0.05 + 0.5, K.interesa - 0.3, K.quedate + 0.45];
+  const blinks = [2.35, K.noticias + 0.9, T.d + 1.2, K.sigueme - 0.4];
   let bl = 0; for (const b of blinks) { const x = t - b; if (x > 0 && x < 0.3) bl = Math.max(bl, x < 0.09 ? x / 0.09 : 1 - (x - 0.09) / 0.21); }
   const open = eo(prog(t, 0.15, 0.7)) * (1 - eio(prog(t, END - 0.75, 0.6)));
   S.lid.scale.set(1, Math.max(0.02, open * (1 - 0.94 * ss(bl))), 1);
-  // voz: el diafragma respira con el nivel de la voz
   const lv = ENV ? ENV[Math.min(ENV.length - 1, Math.max(0, Math.round(t * 30)))] : 0.3;
-  const sc = 1.05 + 0.35 * lv; S.ap.scale.set(sc, 1, sc);   // la abertura se dilata con la voz
-  S.iris.rotation.y = t * 0.25;
-  S.ticks.rotation.z = t * 0.1;
-  // reloj de un minuto: las marcas se encienden en sentido horario desde arriba
-  const white = modeAt(t) === 'white';
-  const fill = 72 * eio(prog(t, K.explico + 0.05, K.fuentes - K.explico)), clockA = env(t, K.explico, K.humo - 0.1, 0.2, 0.5);
+  const sc = 1.05 + 0.35 * lv; S.ap.scale.set(sc, 1, sc);
+  S.iris.rotation.y = t * 0.25; S.ticks.rotation.z = t * 0.1;
+  S.orbits[0].rotation.set(1.2 + t * 0.35, 0.3, 0); S.orbits[1].rotation.set(0.4, 1.0 + t * 0.28, 0.2);
+  // reloj de un minuto (en la fábrica, al decir «te lo explico en un minuto»)
+  const fill = 72 * eio(prog(t, K.explico + 0.05, K.fuentes - K.explico)), clockA = env(t, K.explico, T.c, 0.2, 0.3);
   S.tickList.forEach(m => {
     const j = ((18 - m.userData.i) % 72 + 72) % 72, lit = clockA > 0 && j < fill;
-    m.material.color.setHex(lit ? (white ? 0x000000 : 0xffffff) : (m.userData.long ? (white ? 0x222222 : 0xd0d0d0) : (white ? 0x8a8a8a : 0x6a6a6a)));
-    m.scale.set(lit ? 2.2 : 1, lit ? 1.7 : 1, 1);
-  });
-  S.orbits[0].rotation.set(1.2 + t * 0.35, 0.3, 0); S.orbits[1].rotation.set(0.4, 1.0 + t * 0.28, 0.2);
-}
-
-function marksAt(t) {
-  LINES.forEach(L => {
-    if (L.hl) {
-      const [a, b] = L.read;
-      const u = clamp((t - a) / (b - a)), uu = 0.75 * u + 0.25 * ss(u);
-      const x1 = lerp(L.x0, L.x1, uu);
-      const w = Math.max(0.0001, cx2l(x1 + 10) - cx2l(L.x0 - 10)), hh = L.h * 1.05 / CH * PL;
-      L.hl.visible = t > a; L.hl.scale.set(w, hh, 1); L.hl.position.set(cx2l(L.x0 - 10) + w / 2, cy2l(L.y + L.h * 0.45), 0.003);
-    }
-    if (L.sk) { const k = eo(prog(t, L.fx.strike, 0.3)); const sw = Math.max(0.0001, (cx2l(L.x1 + 16) - cx2l(L.x0 - 16)) * k); L.sk.visible = k > 0; L.sk.scale.set(sw, 0.035, 1); L.sk.position.set(cx2l(L.x0 - 16) + sw / 2, cy2l(L.y + L.h * 0.42), 0.004); L.sk.rotation.z = -0.04; }
-    if (L.ci) {
-      const k = eo(prog(t, L.fx.at - 0.1, 0.45)); L.ci.visible = k > 0;
-      const rx = (cx2l(L.cx1) - cx2l(L.cx0)) / 2 + 0.12, ry = L.h / CH * PL * 0.85;
-      const n = Math.max(2, Math.round(121 * k)); L.ci.geometry.setDrawRange(0, n);
-      L.ci.scale.set(rx, ry, 1); L.ci.position.set((cx2l(L.cx0) + cx2l(L.cx1)) / 2, cy2l(L.y + L.h * 0.42), 0.004); L.ci.rotation.z = 0.05;
-    }
+    m.material.color.setHex(lit ? 0xffffff : (m.userData.long ? 0xd0d0d0 : 0x6a6a6a)); m.scale.set(lit ? 2.2 : 1, lit ? 1.7 : 1, 1);
   });
 }
 
-
-// ---------------------------------------------------------------- red de datos con cables y pulsos, humo, cinta con cajas
-M.obj = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true });
+// ---------------------------------------------------------------- utilidades de las escenas
 S.fat = [];
-function edges(geo, x = 0, y = 0, z = 0, ry = 0) {
-  const l = fatLines(new THREE.EdgesGeometry(geo, 25).attributes.position.array, 0xffffff, 2.2, 1); l.frustumCulled = false; l.renderOrder = 5; S.fat.push(l);
-  l.position.set(x, y, z); l.rotation.y = ry; return l;
+function edges(geo, color = 0xffffff, width = 1.6, x = 0, y = 0, z = 0) {
+  const l = fatLines(new THREE.EdgesGeometry(geo, 25).attributes.position.array, color, width, 1); l.frustumCulled = false; S.fat.push(l);
+  l.position.set(x, y, z); return l;
 }
-// nodos: [clave, antetítulo, valor, posición, aparece]
-function nodeDefs() {
-  return [
-    ['inf', 'FUENTE', 'Informes', v3(-1.05, 3.2, -0.9), K.busco - 0.05],
-    ['not', 'FUENTE', 'Noticias', v3(1.05, 3.25, -0.9), K.busco + 0.35],
-    ['eur', 'EURÍBOR 12 MESES', '3,247 %', v3(-1.05, 1.05, 0.55), K.busco + 0.75],
-    ['dep', 'DEPÓSITO BCE', '2,50 %', v3(1.05, 1.1, 0.5), K.busco + 1.1],
-    ['ipc', 'INE', 'IPC', v3(0.0, 0.5, 1.15), K.busco + 1.45],
-    ['hip', 'TE AFECTA', 'Hipoteca', v3(-0.7, -0.4, 1.35), K.hipoteca - 0.2],
-    ['aho', 'TE AFECTA', 'Ahorros', v3(0.75, -0.3, 1.35), K.ahorros - 0.2],
-    ['sup', 'TE AFECTA', 'Súper', v3(0.0, -0.95, 1.95), K.super - 0.3],
-    ['fue', 'CON', 'Fuentes', v3(0.0, 0.25, 2.7), K.fuentes - 0.35],
-  ];
+function label(txt, { size = 80, color = '#ffffff', w = 1.6, weight = 800, box = false, dark = false } = {}) {
+  const c = document.createElement('canvas'), g = c.getContext('2d'); g.font = `${weight} ${size}px Inter`;
+  const tw = g.measureText(txt).width; c.width = Math.ceil(tw + size * 1.2); c.height = Math.ceil(size * 1.9);
+  g.font = `${weight} ${size}px Inter`; g.textAlign = 'center'; g.textBaseline = 'middle';
+  if (box) { g.fillStyle = dark ? '#0b0b0b' : 'rgba(0,0,0,0)'; rr(g, 4, 4, c.width - 8, c.height - 8, size * 0.45); g.fill(); g.strokeStyle = color; g.lineWidth = 5; g.stroke(); }
+  g.fillStyle = color; g.fillText(txt, c.width / 2, c.height / 2 + size * 0.05);
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * c.height / c.width), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false }));
+  m.renderOrder = 8; return m;
 }
-// cables: [de, a, aparece]   ('ojo' = la lente)
-function cableDefs() {
-  return [
-    ['inf', 'eur', K.busco + 0.85], ['not', 'dep', K.busco + 1.2], ['inf', 'not', K.busco + 0.5], ['eur', 'dep', K.busco + 1.25],
-    ['dep', 'ipc', K.busco + 1.55], ['eur', 'ipc', K.busco + 1.6],
-    ['eur', 'hip', K.hipoteca - 0.1], ['dep', 'aho', K.ahorros - 0.1], ['ipc', 'sup', K.super - 0.2], ['eur', 'aho', K.ahorros + 0.3],
-    ['hip', 'ojo', K.explico - 0.2], ['aho', 'ojo', K.explico], ['sup', 'ojo', K.explico + 0.2], ['inf', 'ojo', K.minuto], ['not', 'ojo', K.minuto + 0.1],
-    ['hip', 'fue', K.fuentes - 0.2], ['aho', 'fue', K.fuentes - 0.1], ['sup', 'fue', K.fuentes],
-  ];
-}
-const NET_END = 19.75;
-function nodeTex(k, label, value, filled) {
-  return canvasTex(640, 240, (g, w, h) => {
-    g.fillStyle = filled ? '#f4f4f4' : '#0b0b0b'; rr(g, 6, 6, w - 12, h - 12, 34); g.fill();
-    g.strokeStyle = filled ? '#ffffff' : '#e6e6e6'; g.lineWidth = 6; rr(g, 6, 6, w - 12, h - 12, 34); g.stroke();
-    g.fillStyle = filled ? '#555' : '#8a8a8a'; g.font = '700 34px Inter'; g.textBaseline = 'top'; g.fillText(label, 40, 34);
-    g.fillStyle = filled ? '#000' : '#fff'; g.font = '800 92px Inter'; g.fillText(value, 38, 86);
-    g.fillStyle = filled ? '#000' : '#fff'; g.beginPath(); g.arc(w - 46, 46, 10, 0, Math.PI * 2); g.fill();
+const zones = {};
+function zoneGroup(name) { const g = new THREE.Group(); g.position.copy(ZO[name] || v3(0, 0, 0)); scene.add(g); zones[name] = g; return g; }
+
+// ---------------------------------------------------------------- B · edificios de datos (sin ojo)
+function buildInst() {
+  const Z = zoneGroup('inst');
+  const winTex = canvasTex(256, 64, (g, w, h) => { g.fillStyle = '#0a0a0a'; g.fillRect(0, 0, w, h); for (let k = 0; k < 9; k++) { g.fillStyle = hash(k * 1.3) < 0.6 ? '#d8d8d8' : '#3a3a3a'; g.fillRect(14 + k * 27, 18, 16, 26); } });
+  const winMat = new THREE.MeshBasicMaterial({ map: winTex }), darkMat = new THREE.MeshBasicMaterial({ color: 0x0a0a0a });
+  Z.add(Object.assign(new THREE.GridHelper(80, 80, 0x2a2a2a, 0x1a1a1a), {}));
+  S.inst = [['BANCO CENTRAL EUROPEO', -1.55, 3.2, K.bce - 0.6], ['BANCO DE ESPAÑA', 0, 2.6, K.bde - 0.35], ['INE', 1.55, 2.1, K.ine - 0.3]].map(([name, x, h, t0]) => {
+    const b = new THREE.Group(); b.position.set(x, 0, 0); Z.add(b);
+    const fl = Math.round(h / 0.32);
+    for (let i = 0; i < fl; i++) {
+      const w = 1.1 - (i % 3 === 2 ? 0.06 : 0), geo = new THREE.BoxGeometry(w, 0.26, w * 0.8);
+      const fill = new THREE.Mesh(geo, [winMat, winMat, darkMat, darkMat, winMat, winMat]); fill.position.set(0, 0.15 + i * 0.32, 0); b.add(fill);
+      b.add(edges(geo, 0xe6e6e6, 1.4, 0, 0.15 + i * 0.32, 0));
+    }
+    const lab = label(name, { size: 64, w: name.length > 10 ? 1.7 : 0.75 }); lab.position.set(x, h + 0.55, 0.3); Z.add(lab);
+    const N = 160, pos = new Float32Array(N * 3);
+    const pts = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(pos, 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 2.6, sizeAttenuation: false, transparent: true }));
+    pts.frustumCulled = false; Z.add(pts);
+    return { b, lab, pts, x, h, t0, fl };
   });
+  S.beamCol = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.6, 9, 32, 1, true), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false }));
+  S.beamCol.position.set(1.55, 6.6, 0); Z.add(S.beamCol);
 }
-function buildObjects() {
-  S.nodes = {};
-  nodeDefs().forEach(([k, label, value, p, t0]) => {
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(1.15, 0.43), new THREE.MeshBasicMaterial({ map: nodeTex(k, label, value, k === 'fue'), color: k === 'fue' ? 0xffffff : 0xdedede, transparent: true, depthWrite: false }));
-    m.renderOrder = 6; scene.add(m); S.nodes[k] = { m, p, t0 };
+function instAt(t) {
+  S.inst.forEach(o => {
+    const r = eo(prog(t, o.t0, 0.7));
+    o.b.visible = r > 0.01; o.b.scale.set(1, Math.max(0.01, r), 1);
+    o.lab.visible = r > 0.3; o.lab.material.opacity = clamp((r - 0.3) / 0.5);
+    const a = o.pts.geometry.attributes.position.array;
+    for (let i = 0; i < a.length / 3; i++) { const u = ((t - o.t0) * (0.35 + (i % 5) * 0.05) + i * 0.618) % 1; a[i * 3] = o.x + Math.sin(i * 7.3) * 0.5 * (1 - u * 0.6); a[i * 3 + 1] = o.h * r + u * 6; a[i * 3 + 2] = Math.cos(i * 3.1) * 0.4 * (1 - u * 0.6); }
+    o.pts.geometry.attributes.position.needsUpdate = true; o.pts.material.opacity = r * 0.9; o.pts.visible = r > 0.05;
   });
-  S.cables = cableDefs().map(([a, b, t0]) => {
-    const pos = new Float32Array(61 * 3);
-    const l = new THREE.Line(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(pos, 3)), new THREE.LineBasicMaterial({ color: 0x8a8a8a, transparent: true, opacity: 0.9 }));
-    l.frustumCulled = false; scene.add(l);
-    const pulses = [0, 1, 2].map(() => { const m = new THREE.Mesh(new THREE.SphereGeometry(0.035, 12, 8), new THREE.MeshBasicMaterial({ color: 0xffffff })); scene.add(m); return m; });
-    return { a, b, t0, l, pulses, pts: [] };
+  S.beamCol.material.opacity = 0.9 * eio(prog(t, T.b - 0.75, 0.5));
+  const O = ZO.inst, u = eio(prog(t, T.a1, T.b - T.a1 - 0.6));
+  const cx = lerp(lerp(-1.55, 0, eio(prog(t, K.bde - 0.6, 0.7))), 1.55, eio(prog(t, K.ine - 0.5, 0.6)));
+  let p = v3(O.x + cx * 0.85, 2.3 + 0.3 * u, 8.6 - 1.0 * u), l = v3(O.x + cx, 1.9, 0);
+  const up = eio(prog(t, T.b - 0.7, 0.7));
+  p.lerp(v3(O.x + 1.55, 5.0, 1.4), up); l.lerp(v3(O.x + 1.55, 7.5, 0), up);
+  cam.position.copy(p); cam.up.set(0, 1, 0); cam.lookAt(l);
+}
+
+// ---------------------------------------------------------------- C · fábrica de datos conectada al ojo
+const FEYE = () => v3(ZO.fact.x, 6.6, -5.5);
+function buildFact() {
+  const Z = zoneGroup('fact');
+  Z.add(new THREE.GridHelper(160, 160, 0x333333, 0x1e1e1e));
+  // estanterías de datos: miles de cajitas en pasillos
+  const box = new THREE.BoxGeometry(0.16, 0.16, 0.16);
+  const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6 });
+  const pos = [];
+  for (let r = -7; r <= 7; r++) for (let zz = -70; zz <= 6; zz += 0.42) for (let lv = 0; lv < 6; lv++) { if (Math.abs(r) === 0 && zz > -14) continue; pos.push(v3(r * 1.05 + (r > 0 ? 0.35 : r < 0 ? -0.35 : 0), 0.12 + lv * 0.24, zz)); }
+  const inst = new THREE.InstancedMesh(box, mat, pos.length); const m4 = new THREE.Matrix4(), col = new THREE.Color();
+  pos.forEach((p, i) => { m4.makeTranslation(p.x, p.y, p.z); inst.setMatrixAt(i, m4); const b = hash(i) < 0.07 ? 0.95 : 0.12 + 0.18 * hash(i * 3.1); col.setRGB(b, b, b); inst.setColorAt(i, col); });
+  Z.add(inst); S.factPos = pos; S.factInst = inst;
+  // líneas finísimas de cajas al ojo + pulsos que suben
+  const eyeL = FEYE().sub(ZO.fact), N = 900, lp = new Float32Array(N * 6); S.links = [];
+  for (let i = 0; i < N; i++) { const p = pos[Math.floor(hash(i * 13.7) * pos.length)]; S.links.push(p); lp.set([p.x, p.y + 0.08, p.z, eyeL.x, eyeL.y - 0.3, eyeL.z], i * 6); }
+  S.linkLines = new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(lp, 3)), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.09, depthWrite: false }));
+  S.linkLines.frustumCulled = false; Z.add(S.linkLines);
+  S.pulses = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(N * 3), 3)), new THREE.PointsMaterial({ color: 0xffffff, size: 2.4, sizeAttenuation: false, transparent: true }));
+  S.pulses.frustumCulled = false; Z.add(S.pulses);
+  // zonas que se iluminan: hipoteca, ahorros, súper
+  S.topics = [['HIPOTECA', v3(-1.75, 0, -4), K.hipoteca], ['AHORROS', v3(1.75, 0, -8), K.ahorros], ['SÚPER', v3(-1.75, 0, -13), K.super]].map(([name, c, t0]) => {
+    const near = []; pos.forEach((p, i) => { if (Math.hypot(p.x - c.x, p.z - c.z) < 1.4) near.push(i); });
+    const lab = label(name, { size: 70, w: 1.9, box: true, dark: true }); lab.position.set(c.x * 0.55, 2.8, c.z); Z.add(lab);
+    const ll = []; near.slice(0, 120).forEach(i => { const p = pos[i]; ll.push(p.x, p.y + 0.08, p.z, eyeL.x, eyeL.y - 0.3, eyeL.z); });
+    const lines = new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(ll, 3)), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, depthWrite: false }));
+    lines.frustumCulled = false; Z.add(lines);
+    return { name, c, t0, near, lab, lines };
   });
-  // humo
+  S.fuentes = label('FUENTES · BCE · BANCO DE ESPAÑA · INE', { size: 56, w: 3.0, box: true, dark: true }); S.fuentes.position.set(eyeL.x, eyeL.y - 1.5, eyeL.z + 1); Z.add(S.fuentes);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x222222, 0.4));
+}
+function hash(x) { const s = Math.sin(x * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); }
+function factAt(t) {
+  const O = ZO.fact, eyeW = FEYE();
+  // pulsos que suben por las líneas hacia el ojo
+  const a = S.pulses.geometry.attributes.position.array, el = eyeW.clone().sub(O);
+  const speed = 0.35 + 0.5 * eio(prog(t, K.explico, 1.5));
+  S.links.forEach((p, i) => { const u = ((t - T.b) * speed * (0.6 + hash(i) * 0.8) + hash(i * 2.3)) % 1; a[i * 3] = lerp(p.x, el.x, u); a[i * 3 + 1] = lerp(p.y + 0.08, el.y - 0.3, u); a[i * 3 + 2] = lerp(p.z, el.z, u); });
+  S.pulses.geometry.attributes.position.needsUpdate = true;
+  const grow = eo(prog(t, T.b + 0.2, 1.6));
+  S.linkLines.material.opacity = 0.085 * grow + 0.05 * env(t, K.explico, T.c, 0.6, 0.3); S.pulses.material.opacity = grow;
+  // zonas iluminadas
+  const col = new THREE.Color();
+  S.topics.forEach(z => {
+    const a2 = env(t, z.t0 - 0.2, K.explico + 0.6, 0.3, 0.6);
+    z.lab.visible = a2 > 0.01; z.lab.material.opacity = a2; z.lab.lookAt(cam.position); z.lab.position.y = 2.4 + 0.5 * eo(prog(t, z.t0 - 0.2, 0.5));
+    z.lines.material.opacity = 0.45 * a2;
+    z.near.forEach(i => { const base = hash(i) < 0.07 ? 0.95 : 0.12 + 0.18 * hash(i * 3.1); const b = lerp(base, 0.95, a2 * (0.6 + 0.4 * Math.sin(t * 6 + i))); col.setRGB(b, b, b); S.factInst.setColorAt(i, col); });
+  });
+  S.factInst.instanceColor.needsUpdate = true;
+  const fa = env(t, K.fuentes - 0.3, T.c + 0.2, 0.35, 0.2); S.fuentes.visible = fa > 0.01; S.fuentes.material.opacity = fa; S.fuentes.lookAt(cam.position);
+  // cámara: entra por un pasillo mirando al ojo pequeño de arriba y va subiendo
+  const u = eio(prog(t, T.b, T.c - T.b - 0.5));
+  let p = v3(O.x + lerp(0.2, 2.2, u), lerp(0.9, 3.8, u), lerp(7.5, 1.0, u)), l = eyeW.clone().lerp(v3(O.x, 1.2, -8), 0.45 * (1 - u));
+  const sway = 0.5 * Math.sin((t - T.b) * 0.35); p.x += sway;
+  const dive = eio(prog(t, T.c - 0.55, 0.55)); p.lerp(eyeW.clone().add(v3(0, 0, 0.35)), dive); l.lerp(eyeW, dive);
+  cam.position.copy(p); cam.up.set(0, 1, 0); cam.lookAt(l);
+  // el ojo pequeño mira cada zona al iluminarse; si no, mira hacia la fábrica
+  let g = v3(O.x, 0.5, 2);
+  const keys = [[T.b, v3(O.x, 0.3, 3)], [K.busco + 0.4, v3(O.x - 4, 0.5, -1)], [K.busco + 1.1, v3(O.x + 4, 0.5, -2)], ...S.topics.map(z => [z.t0 - 0.15, v3(O.x + z.c.x, 0.6, z.c.z)]), [K.explico - 0.2, cam.position.clone()], [K.fuentes - 0.2, eyeW.clone().add(v3(0, -1.5, 1))]];
+  for (let i = 0; i < keys.length; i++) { if (t >= keys[i][0]) { const prev = i ? keys[i - 1][1] : keys[0][1]; g = prev.clone().lerp(keys[i][1], eio(clamp((t - keys[i][0]) / 0.4))); } }
+  figureAt(t, eyeW, 0.42, g);
+}
+
+// ---------------------------------------------------------------- D · promesas tachadas (fondo blanco, sin ojo)
+function buildProm() {
+  const Z = zoneGroup('prom');
+  S.cards = [['Humo', K.humo, 3.0], ['«Hazte rico rápido»', K.rico, 1.85], ['«Compra esto ya»', K.comprar, 0.7]].map(([txt, t0, y]) => {
+    const g = new THREE.Group(); g.position.set(0, y, 0); Z.add(g);
+    const card = label(txt, { size: 90, color: '#111111', w: 2.7, box: true }); g.add(card);
+    const x1 = new THREE.Mesh(new THREE.PlaneGeometry(2.9, 0.12), new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true })); x1.rotation.z = 0.25; x1.position.z = 0.02; g.add(x1);
+    const x2 = x1.clone(); x2.material = x1.material.clone(); x2.rotation.z = -0.25; g.add(x2);
+    return { g, card, x1, x2, t0, y };
+  });
   const puff = canvasTex(128, 128, (g) => { const r = g.createRadialGradient(64, 64, 0, 64, 64, 64); r.addColorStop(0, 'rgba(255,255,255,.8)'); r.addColorStop(0.5, 'rgba(255,255,255,.35)'); r.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = r; g.fillRect(0, 0, 128, 128); });
-  S.smokeMat = new THREE.SpriteMaterial({ map: puff, color: 0x666666, transparent: true, opacity: 0.4, depthWrite: false });
-  S.puffs = []; for (let i = 0; i < 36; i++) { const sp = new THREE.Sprite(S.smokeMat); scene.add(sp); S.puffs.push(sp); }
-  // cinta transportadora que baja desde arriba
-  const belt = new THREE.Group(); scene.add(belt); S.belt = belt;
-  const len = BELT_A.distanceTo(BELT_B);
-  belt.add(edges(new THREE.BoxGeometry(len, 0.06, 0.62)));
-  const bandTex = canvasTex(512, 64, (g, w, h) => { g.fillStyle = '#1a1a1a'; g.fillRect(0, 0, w, h); for (let x = 0; x < w; x += 32) { g.fillStyle = '#5a5a5a'; g.fillRect(x, 0, 6, h); } });
-  bandTex.wrapS = THREE.RepeatWrapping; bandTex.repeat.set(len * 2, 1); S.bandTex = bandTex;
-  const band = new THREE.Mesh(new THREE.PlaneGeometry(len, 0.58), new THREE.MeshBasicMaterial({ map: bandTex })); band.rotation.x = -Math.PI / 2; band.position.y = 0.035; belt.add(band);
-  const dir = BELT_B.clone().sub(BELT_A); belt.position.copy(BELT_A).add(BELT_B).multiplyScalar(0.5);
-  belt.quaternion.setFromUnitVectors(v3(1, 0, 0), dir.clone().normalize());
-  // cajas de información
-  const labels = ['PDF', '€', '%', 'IPC', 'DATOS', 'BCE', 'INE', '€', '%', 'PDF'];
-  const texs = labels.map(L => canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#151515'; g.fillRect(0, 0, w, h); g.strokeStyle = '#d8d8d8'; g.lineWidth = 10; g.strokeRect(8, 8, w - 16, h - 16); g.fillStyle = '#eee'; g.font = `800 ${L.length > 3 ? 64 : 110}px Inter`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(L, w / 2, h / 2 + 6); }));
-  S.boxes = []; S.slots = pileSlots();
-  for (let i = 0; i < NBOX; i++) {
-    const s0 = 0.3 + 0.12 * ((i * 0.618) % 1);
-    const m = new THREE.Mesh(new THREE.BoxGeometry(s0, s0, s0), new THREE.MeshBasicMaterial({ map: texs[i % texs.length], color: 0xd0d0d0 }));
-    scene.add(m); S.boxes.push({ m, s: s0 });
-  }
+  S.smokeMat = new THREE.SpriteMaterial({ map: puff, color: 0x333333, transparent: true, opacity: 0.4, depthWrite: false });
+  S.puffs = []; for (let i = 0; i < 30; i++) { const sp = new THREE.Sprite(S.smokeMat); Z.add(sp); S.puffs.push(sp); }
 }
-const BELT_A = v3(1.95, 2.9, 0.2), BELT_B = v3(1.0, 1.0, 1.15), NBOX = 34, PILE = v3(0.55, -0.3, 1.55);
-function pileSlots() {   // montaña: anillos que se estrechan al subir
-  const sl = []; const rings = [[11, 0.62, 0], [8, 0.42, 0.34], [6, 0.24, 0.66], [5, 0.1, 0.98], [3, 0.05, 1.28], [1, 0, 1.55]];
-  rings.forEach(([n, r, y], ri) => { for (let k = 0; k < n; k++) { const a = k / n * Math.PI * 2 + ri * 0.7; sl.push(v3(PILE.x + Math.cos(a) * r, PILE.y + y, PILE.z + Math.sin(a) * r * 0.8)); } });
-  return sl;
+function promAt(t) {
+  const O = ZO.prom;
+  S.cards.forEach((c, i) => {
+    const appear = eo(prog(t, T.c + 0.15 + i * 0.15, 0.4)), hit = c.t0 + (i ? 0.05 : 0.3);
+    const k = eo(prog(t, hit, 0.22));
+    c.x1.scale.x = Math.max(0.001, k); c.x2.scale.x = Math.max(0.001, eo(prog(t, hit + 0.12, 0.22)));
+    c.x1.visible = k > 0.001; c.x2.visible = t > hit + 0.12;
+    const fall = i === 2 ? 0 : eio(prog(t, hit + 0.6, 0.8));
+    c.g.position.set(0.25 * Math.sin(i * 2.1) * fall, c.y - 3.5 * fall * fall, 0); c.g.rotation.z = 0.5 * fall * (i ? 1 : -1);
+    c.g.scale.setScalar(0.7 + 0.3 * appear);
+    c.card.material.opacity = appear * (1 - fall); c.x1.material.opacity = 1 - fall; c.x2.material.opacity = 1 - fall;
+  });
+  // humo alrededor de «Humo» que se disipa
+  const sa = env(t, T.c, K.humo + 1.4, 0.3, 0.5), clear = eio(prog(t, K.humo + 0.35, 1.0));
+  S.puffs.forEach((sp, i) => { const a = i * 2.399, r = 0.4 + ((i * 0.618) % 1) * 1.2, out = 1 + 2 * clear; sp.position.set(Math.cos(a + t * 0.3) * r * out, 3.0 + Math.sin(a * 1.7) * 0.45 * out, 0.3 + Math.sin(a) * 0.3); sp.scale.setScalar(1.2 + 0.6 * ((i * 0.29) % 1)); sp.visible = sa > 0.01; });
+  S.smokeMat.opacity = 0.45 * sa * (1 - clear);
+  // cámara frontal que se acerca despacio; al final entra en la ✕ negra
+  let p = v3(O.x, 1.9, O.z + 7.2 - 0.6 * eio(prog(t, T.c, 3))), l = v3(O.x, 1.9, O.z);
+  const dive = eio(prog(t, T.d - 0.5, 0.5)); p.lerp(v3(O.x, 0.7, O.z + 0.25), dive); l.lerp(v3(O.x, 0.7, O.z), dive);
+  cam.position.copy(p); cam.up.set(0, 1, 0); cam.lookAt(l);
 }
-const BOX_T = i => K.interesa - 0.6 + i * 0.13;
-function boxPose(i, t) {
-  const t0 = BOX_T(i), ride = 0.9, fall = 0.45;
+
+// ---------------------------------------------------------------- F · cinta horizontal arriba y montañas de cajas (sin ojo)
+const NB = 90, DROPS = [-2.4, -0.2, 2.0];
+function buildBelt() {
+  const Z = zoneGroup('belt');
+  Z.add(new THREE.GridHelper(120, 120, 0x2e2e2e, 0x1b1b1b));
+  const L = 11, beltY = 4.6;
+  Z.add(edges(new THREE.BoxGeometry(L, 0.08, 0.5), 0xdedede, 1.6, 0, beltY, 0));
+  const bandTex = canvasTex(1024, 64, (g, w, h) => { g.fillStyle = '#1c1c1c'; g.fillRect(0, 0, w, h); for (let x = 0; x < w; x += 24) { g.fillStyle = '#5c5c5c'; g.fillRect(x, 0, 5, h); } });
+  bandTex.wrapS = THREE.RepeatWrapping; bandTex.repeat.set(L * 3, 1); S.bandTex = bandTex;
+  const band = new THREE.Mesh(new THREE.PlaneGeometry(L, 0.46), new THREE.MeshBasicMaterial({ map: bandTex })); band.rotation.x = -Math.PI / 2; band.position.set(0, beltY + 0.045, 0); Z.add(band);
+  for (let x = -L / 2 + 0.6; x < L / 2; x += 1.3) Z.add(edges(new THREE.BoxGeometry(0.05, 4.6, 0.05), 0x9a9a9a, 1.2, x, beltY / 2, -0.3));
+  DROPS.forEach(x => Z.add(edges(new THREE.CylinderGeometry(0.22, 0.12, 0.3, 12, 1, true), 0xdedede, 1.4, x, beltY - 0.2, 0)));
+  // cajitas de información
+  const labels = ['PDF', '€', '%', 'IPC', 'BCE', 'INE', 'DATOS'];
+  const texs = labels.map(Lb => canvasTex(128, 128, (g, w, h) => { g.fillStyle = '#1b1b1b'; g.fillRect(0, 0, w, h); g.strokeStyle = '#cfcfcf'; g.lineWidth = 6; g.strokeRect(4, 4, w - 8, h - 8); g.fillStyle = '#ddd'; g.font = `800 ${Lb.length > 3 ? 30 : 52}px Inter`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(Lb, w / 2, h / 2 + 3); }));
+  const mats = texs.map(tx => new THREE.MeshBasicMaterial({ map: tx, color: 0xbdbdbd }));
+  S.bx = []; for (let i = 0; i < NB; i++) { const s0 = 0.17 + 0.05 * hash(i * 1.7); const m = new THREE.Mesh(new THREE.BoxGeometry(s0, s0, s0), mats[i % mats.length]); Z.add(m); S.bx.push({ m, s: s0, d: i % 3 }); }
+  S.slots = DROPS.map((x, d) => mound(v3(x, 0, 0.1), Math.ceil(NB / 3), 0.16));
+  // montañas ya hechas al fondo
+  const bg = new THREE.BoxGeometry(0.2, 0.2, 0.2), bgMat = new THREE.MeshBasicMaterial({ color: 0x6a6a6a });
+  const mounds = [[-6, -6, 260], [-1.5, -9, 380], [4.5, -7, 300], [8, -14, 520], [-9, -16, 480], [1.5, -20, 640], [11, -4, 180], [-11, -3, 160]];
+  const tot = mounds.reduce((s, m) => s + m[2], 0); const bgi = new THREE.InstancedMesh(bg, bgMat, tot); const m4 = new THREE.Matrix4(), e = new THREE.Euler(), q = new THREE.Quaternion();
+  let k = 0; mounds.forEach(([x, z, n]) => mound(v3(x, 0, z), n, 0.19).forEach(p => { e.set(hash(k) * 3, hash(k * 2) * 3, hash(k * 3) * 3); q.setFromEuler(e); m4.compose(p, q, v3(1, 1, 1)); bgi.setMatrixAt(k, m4); const b = 0.3 + 0.5 * hash(k * 5); bgi.setColorAt(k, new THREE.Color(b, b, b)); k++; }));
+  Z.add(bgi);
+}
+function mound(c, n, s) {   // montaña cónica: capas que se estrechan
+  const out = []; let layer = 0;
+  while (out.length < n) { const r = Math.max(0.0, Math.sqrt(n) * s * 0.55 - layer * s * 0.7); const per = Math.max(1, Math.floor((2 * Math.PI * r) / (s * 1.05)) || 1); for (let k = 0; k < per && out.length < n; k++) { const a = k / per * Math.PI * 2 + layer * 0.6; out.push(v3(c.x + Math.cos(a) * r * (0.6 + 0.4 * hash(out.length)), c.y + s * 0.5 + layer * s * 0.82, c.z + Math.sin(a) * r * 0.7)); } if (r <= 0) layer += 1; layer += 1; }
+  return out;
+}
+function boxAt(i, t) {
+  const b = S.bx[i], t0 = T.e - 0.6 + i * 0.05, ride = 1.0 + 0.6 * b.d, fall = 0.55;
+  const x0 = -5.5, xd = DROPS[b.d], y = 4.6 + 0.045 + b.s / 2;
   if (t < t0) return null;
   const u = (t - t0) / ride;
-  if (u < 1) { const p = BELT_A.clone().lerp(BELT_B, u); p.y += S.boxes[i].s / 2 + 0.06; return { p, ride: true }; }
-  const f = clamp((t - t0 - ride) / fall), slot = S.slots[Math.min(i, S.slots.length - 1)].clone(); slot.y += S.boxes[i].s / 2;
-  const start = BELT_B.clone(); start.y += S.boxes[i].s / 2 + 0.06;
-  const p = start.clone().lerp(slot, f); p.y += Math.sin(Math.PI * f) * 0.25 - 0.0; p.x += (1 - f) * f * 0.6;
-  const spin = (1 - (1 - f) ** 2) * (1.5 + (i % 3)) ;
-  return { p, r: v3(spin * 0.7, spin * (i % 2 ? 1 : -1), spin * 0.4), landed: f >= 1 };
+  if (u < 1) return { p: v3(lerp(x0, xd, u), y, 0), r: v3(0, 0, 0) };
+  const f = clamp((t - t0 - ride) / fall), slot = S.slots[b.d][Math.floor(i / 3)] || S.slots[b.d][0];
+  const p = v3(xd, y, 0).lerp(slot, f); p.y = lerp(y, slot.y, f * f);
+  const sp = (1 - (1 - f) ** 2) * (2 + (i % 3)); return { p, r: v3(sp * 0.6, sp, sp * 0.3) };
 }
-function nodeA(k, t) { const n = S.nodes[k]; return env(t, n.t0, NET_END, 0.35, 0.3); }
-function cablePts(c) {
-  const pa = c.a === 'ojo' ? FIG.clone() : S.nodes[c.a].p, pb = c.b === 'ojo' ? FIG.clone().add(v3(0, -0.35, 0.5)) : S.nodes[c.b].p;
-  const pA = c.b === 'ojo' ? pa : pa, mid = pA.clone().lerp(pb, 0.5); mid.y -= 0.35 + 0.1 * pA.distanceTo(pb);
-  return new THREE.QuadraticBezierCurve3(pA, mid, pb).getPoints(60);
-}
-function pileTop(t) { let n = 0; for (let i = 0; i < NBOX; i++) if (t > BOX_T(i) + 1.3) n = i + 1; const sl = S.slots[Math.min(n, S.slots.length - 1)]; return sl ? sl.clone() : PILE.clone(); }
-function actionsAt(t) {
-  const white = modeAt(t) === 'white';
-  // red de datos
-  Object.entries(S.nodes).forEach(([k, n]) => {
-    const a = nodeA(k, t); n.m.visible = a > 0.01; n.m.material.opacity = a;
-    n.m.position.copy(n.p).add(v3(0, 0.03 * Math.sin(t * 1.6 + n.p.x * 3), 0)); n.m.scale.setScalar(0.9 * (0.75 + 0.25 * eo(prog(t, n.t0, 0.35))));
-    n.m.lookAt(cam.position);
-  });
-  S.cables.forEach(c => {
-    const a = env(t, c.t0, NET_END, 0.05, 0.3);
-    c.l.visible = a > 0.01; c.pulses.forEach(p => (p.visible = false));
-    if (!c.l.visible) return;
-    if (!c.pts.length) c.pts = cablePts(c);
-    const arr = c.l.geometry.attributes.position.array; c.pts.forEach((q, i) => { arr[i * 3] = q.x; arr[i * 3 + 1] = q.y; arr[i * 3 + 2] = q.z; });
-    c.l.geometry.attributes.position.needsUpdate = true;
-    const draw = eio(prog(t, c.t0, 0.5)); c.l.geometry.setDrawRange(0, Math.max(2, Math.round(61 * draw)));
-    c.l.material.opacity = 0.75 * a;
-    if (draw >= 1) c.pulses.forEach((p, i) => { const u = ((t - c.t0) * 0.7 + i / 3) % 1; const k = u * 60, j = Math.min(59, Math.floor(k)); p.visible = true; p.position.copy(c.pts[j]).lerp(c.pts[j + 1], k - j); p.scale.setScalar(a * (0.8 + 0.6 * Math.sin(Math.PI * u))); });
-  });
-  // humo (parte blanca): se forma y el ojo lo disipa
-  const sa = env(t, K.humo - 0.45, K.humo + 1.5, 0.4, 0.5);
-  const clear = eio(prog(t, K.humo + 0.45, 1.0)), grow = 0.4 + 0.6 * eo(prog(t, K.humo - 0.45, 0.8));
-  S.puffs.forEach((sp, i) => {
-    sp.visible = sa > 0.01; if (!sp.visible) return;
-    const a = i * 2.399, r = 0.15 + ((i * 0.618) % 1) * 0.75, h = (i * 0.37) % 1, out = 1 + 2.2 * clear;
-    sp.position.set(Math.cos(a + t * 0.35) * r * grow * out, 1.7 + (h - 0.5) * 0.9 * grow + 0.06 * Math.sin(t * 1.3 + i) + clear * 0.7 * h, 1.7 + Math.sin(a) * 0.25 * grow);
-    sp.scale.setScalar(1.5 * (0.55 + 0.4 * ((i * 0.29) % 1)) * grow * (1 + 0.5 * clear));
-  });
-  S.smokeMat.color.setHex(white ? 0x2a2a2a : 0xbbbbbb); S.smokeMat.opacity = 0.5 * sa * (1 - clear);
-  // cinta y montaña de cajas
-  const ba = env(t, K.interesa - 1.0, END - 1.2, 0.6, 0.5);
-  S.belt.visible = ba > 0.01;
-  if (S.belt.visible) {
-    const drop = 1 - eo(prog(t, K.interesa - 1.0, 0.7));   // la cinta baja desde arriba
-    S.belt.position.copy(BELT_A).add(BELT_B).multiplyScalar(0.5).add(v3(0.6 * drop, 3.5 * drop, 0));
-    S.bandTex.offset.x = -t * 0.9;
-    S.fat.forEach(l => l.material.color.setHex(0xd8d8d8));
-  }
-  S.boxes.forEach((b, i) => { const q = boxPose(i, t); b.m.visible = !!q && ba > 0.01; if (!q) return; b.m.position.copy(q.p); if (q.ride) b.m.quaternion.copy(S.belt.quaternion); else b.m.rotation.set(q.r.x, q.r.y, q.r.z); });
+function beltAt(t) {
+  const O = ZO.belt;
+  S.bandTex.offset.x = -t * 1.2;
+  S.bx.forEach((b, i) => { const q = boxAt(i, t); b.m.visible = !!q; if (!q) return; b.m.position.copy(q.p); b.m.rotation.set(q.r.x, q.r.y, q.r.z); });
+  // plano alejado con un ligero desplazamiento; al final se acerca a una caja oscura
+  const u = eio(prog(t, T.e, T.f - T.e));
+  let p = v3(O.x + lerp(-1.2, 1.0, u), 2.8, lerp(13.5, 12.0, u)), l = v3(O.x + lerp(-0.6, 0.4, u), 2.3, 0);
+  const near = S.bx[3].m.position.clone().add(O);
+  const dive = eio(prog(t, T.f - 0.5, 0.5)); p.lerp(near.clone().add(v3(0, 0, 0.3)), dive); l.lerp(near, dive);
+  cam.position.copy(p); cam.up.set(0, 1, 0); cam.lookAt(l);
 }
 
-function frame(t) {
-  const mode = modeAt(t); applyMode(mode);
-  placePaper(t);
-  // el folio desaparece al final
-  const pa = Math.max(env(t, 2.6, K.ine + 1.15, 0.6, 0.7), env(t, K.solo - 0.2, K.pasando + 1.0, 0.6, 0.7));
-  S.paper.visible = pa > 0.01; S.paper.material.transparent = pa < 0.999; S.paper.material.opacity = pa;
-  S.paper.position.y = PAPER_Y - 1.4 * (1 - pa);
-  figureAt(t);   // primero la figura: la cámara usa la posición actual de la lente
-  cameraAt(t);
-  marksAt(t);
-  actionsAt(t);
-  const dp = S.dust.geometry.attributes.position.array; for (let i = 0; i < dp.length / 3; i++) dp[i * 3 + 2] = ((dp[i * 3 + 2] + 22 + 0.012) % 26) - 22;
-  S.dust.geometry.attributes.position.needsUpdate = true;
-  S.follow.visible = t > K.sigueme - 0.2; const fa = eo(prog(t, K.sigueme - 0.2, 0.35)) * (1 - prog(t, END - 0.9, 0.4));
-  S.follow.material.opacity = fa; const tap = prog(t, K.sigueme + 0.6, 0.25);
-  S.follow.position.set(-0.45, 0.6, 1.7); S.follow.scale.setScalar(0.8 * (0.6 + 0.25 * eo(prog(t, K.sigueme - 0.2, 0.35))) * (1 - 0.08 * Math.sin(Math.PI * tap)));
+// ---------------------------------------------------------------- A/E/G · el ojo (cámara)
+const BASE = { p: v3(0, 3.7, 8.6), l: v3(0, 1.75, 0) };
+function eyeCam(t) {
+  let p = BASE.p.clone(), l = BASE.l.clone();
+  p.applyAxisAngle(v3(0, 1, 0), 0.1 * Math.sin(t * 0.21));
+  const lensW = S.ap.getWorldPosition(v3(0, 0, 0)), lensP = FIG.clone().add(v3(0, 0, 0.7));
+  const close = lensP.clone().add(v3(0, 0.05, 1.6));
+  // inicio pegado a la lente
+  const k0 = eio(prog(t, 0.9, 2.0)); p = close.clone().lerp(p, k0); l = FIG.clone().lerp(l, k0);
+  // salida de la lente al volver a esta escena
+  for (const ts of [T.d, T.f]) { const u = eio(prog(t, ts, 1.0)); if (t >= ts && u < 1) { const dir = p.clone().sub(lensW).normalize(); p = lensW.clone().addScaledVector(dir, 1.2).lerp(p, u); l = lensW.clone().lerp(l, u); } }
+  // entrada en la abertura negra al salir de esta escena
+  for (const te of [T.a1, T.e]) { const d = eio(prog(t, te - 0.55, 0.55)); if (d > 0 && t < te) { const dir = p.clone().sub(lensW).normalize(); p = p.clone().lerp(lensW.clone().addScaledVector(dir, 0.06), d); l = l.clone().lerp(lensW, d); } }
+  const k1 = eio(prog(t, END - 2.2, 2.0)); p.lerp(close, k1); l.lerp(FIG, k1);
+  cam.position.copy(p); cam.up.set(0, 1, 0); cam.lookAt(l);
+}
+function eyeAt(t) {
+  // antes de entrar en la lente, mira a cámara
+  let g = gazeEye(t);
+  for (const te of [T.a1, T.e]) { const k = eio(prog(t, te - 0.95, 0.4)); if (t < te && k > 0) g = g.lerp(CAMP, k); }
+  figureAt(t, FIG, 1, g);
+  eyeCam(t);
+  // folio solo mientras lee
+  const pa = Math.max(env(t, 2.7, T.a1 - 0.6, 0.6, 0.4), env(t, T.d + 0.1, T.e - 0.6, 0.5, 0.4));
+  S.paper.visible = pa > 0.01; S.paper.material.transparent = pa < 0.999; S.paper.material.opacity = pa; S.paper.position.y = PAPER_Y - 1.4 * (1 - pa);
+  const v = paperV(t); S.paper.position.x = 0; S.paper.position.z = Z_READ - (v - 0.5) * PL;
+  ROWS.forEach(R => {
+    const [a, b] = R.read, u = clamp((t - a) / (b - a)), x1 = lerp(R.x0, R.x1, R.chart ? u : 0.75 * u + 0.25 * ss(u));
+    const w = Math.max(0.0001, cx2l(x1) - cx2l(R.x0)), hh = (R.chart ? 0.08 * CH / PL : R.h) / CH * PL;
+    R.hl.visible = t > a && !R.chart; R.hl.scale.set(w, hh, 1); R.hl.position.set(cx2l(R.x0) + w / 2, cy2l(R.y + R.h / 2), 0.003);
+  });
+  // botón «Seguir»
+  const fa = eo(prog(t, K.sigueme - 0.2, 0.35)) * (1 - prog(t, END - 0.9, 0.4));
+  S.follow.visible = t > K.sigueme - 0.2 && t > T.f; S.follow.material.opacity = fa;
+  const tap = prog(t, K.sigueme + 0.6, 0.25);
+  S.follow.position.set(0, 0.85, 1.4); S.follow.scale.setScalar(0.85 * (0.6 + 0.25 * eo(prog(t, K.sigueme - 0.2, 0.35))) * (1 - 0.08 * Math.sin(Math.PI * tap)));
   S.follow.lookAt(cam.position);
+}
+
+// ---------------------------------------------------------------- fotograma
+const BG = { eye: 0x000000, inst: 0x000000, fact: 0x111111, prom: 0xffffff, belt: 0x0d0d0d };
+function frame(t) {
+  const z = zoneAt(t);
+  scene.background.setHex(BG[z]); scene.fog.color.setHex(BG[z]);
+  scene.fog.near = z === 'fact' ? 10 : z === 'belt' ? 14 : 14; scene.fog.far = z === 'fact' ? 70 : z === 'belt' ? 45 : 34;
+  for (const k in zones) zones[k].visible = k === z;
+  S.paper.visible = false; S.follow.visible = false;
+  S.F.visible = z === 'eye' || z === 'fact';
+  S.dust.visible = z === 'eye';
+  if (z === 'eye') eyeAt(t);
+  else if (z === 'inst') instAt(t);
+  else if (z === 'fact') factAt(t);
+  else if (z === 'prom') promAt(t);
+  else beltAt(t);
+  const fade = (t1, d = 0.25) => ss(prog(t, t1 - d, d)) * (1 - ss(prog(t, t1, d + 0.1)));
   return {
-    white: ss(prog(t, NET_END - 0.3, 0.3)) * (1 - ss(prog(t, NET_END, 0.35))),
-    black: Math.max(1 - ss(prog(t, 0, 0.3)), ss(prog(t, 23.85, 0.2)) * (1 - ss(prog(t, 24.05, 0.35))), ss(prog(t, END - 0.3, 0.3))),
-    vig: mode === 'white' ? 0.08 : 0.4,
+    white: Math.max(fade(T.b), fade(T.c)),
+    black: Math.max(1 - ss(prog(t, 0, 0.3)), fade(T.a1), fade(T.d), fade(T.e), fade(T.f), ss(prog(t, END - 0.3, 0.3))),
+    vig: z === 'prom' ? 0.06 : 0.4,
   };
 }
 
@@ -515,8 +491,10 @@ window.renderAt = function (t) {
     new FontFace('Inter', `url(${F}Inter-Medium.otf)`, { weight: '500' })];
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   const j = await (await fetch('../tiempos_k.json')).json(); K = j.K; END = j.END;
+  K.economia = K.economia || 5.4;
   ENV = await (await fetch('../env.json')).json();
-  buildFigure(); buildPaper(); KEYS = readKeys(); buildObjects(); GK = buildGazeKeys();
+  buildFigure(); buildPaper(); GK = buildGazeKeys();
+  buildInst(); buildFact(); buildProm(); buildBelt();
   S.follow = followCard(); scene.add(S.follow);
   window.ready = true;
 })().catch(e => { console.error('ERROR', e.stack || e); window.failed = String(e); });
