@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RompeCabezas · Bar de tapas en Granada</title>
+<meta name="description" content="RompeCabezas, bar de tapas en la Ribera del Genil (Granada). Tapa con cada bebida, jamón asado, flamenquín, raciones para compartir, terraza y fútbol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crema: #fff5e6;
+    --papel: #fbe8cc;
+    --mostaza: #f2b134;
+    --tomate: #e4572e;
+    --tomate-osc: #b83d1b;
+    --oliva: #4f6b3a;
+    --carbon: #1f1a16;
+    --tostado: #8a5a2b;
+    --texto: #3a2d22;
+    --suave: #85705c;
+    --sombra: 0 26px 60px -26px rgba(70, 35, 10, .45);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "DM Sans", system-ui, sans-serif; color: var(--texto); line-height: 1.6; overflow-x: clip;
+    background-color: var(--crema);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 130 100'%3E%3Cpath d='M0,0 H100 V35 C112,30 124,38 122,50 C124,62 112,70 100,65 V100 H0 V65 C12,70 24,62 22,50 C24,38 12,30 0,35 Z' fill='none' stroke='%23f2b134' stroke-opacity='.13' stroke-width='2'/%3E%3C/svg%3E");
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", system-ui, sans-serif; color: var(--carbon); line-height: 1; letter-spacing: -.02em; font-weight: 800; }
+  .mano { font-family: "Caveat", cursive; font-weight: 700; letter-spacing: 0; }
+  .envoltura { width: min(1180px, 100% - 32px); margin-inline: auto; }
+  .etiqueta { display: inline-block; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--tomate); background: rgba(228, 87, 46, .1); padding: 6px 12px; border-radius: 999px; }
+  .boton {
+    display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 16px; border: 2.5px solid var(--carbon);
+    font: 700 1rem "DM Sans", sans-serif; text-decoration: none; cursor: pointer; background: var(--mostaza); color: var(--carbon);
+    box-shadow: 5px 5px 0 var(--carbon); transition: transform .15s, box-shadow .15s;
+  }
+  .boton:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--carbon); }
+  .boton:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--carbon); }
+  .boton.rojo { background: var(--tomate); color: #fff; }
+  .boton.blanco { background: #fff; }
+
+  /* ---------- Navegación y progreso ---------- */
+  .progreso { position: fixed; inset: 0 0 auto; height: 4px; z-index: 80; transform-origin: 0 50%; transform: scaleX(0); background: repeating-linear-gradient(90deg, var(--tomate) 0 24px, var(--mostaza) 24px 48px, var(--oliva) 48px 72px); }
+  .nav { position: fixed; inset: 0 0 auto; z-index: 70; padding: 16px 0; transition: background .3s, box-shadow .3s, padding .3s; }
+  .nav.solida { background: rgba(255, 245, 230, .92); backdrop-filter: blur(12px); box-shadow: 0 2px 0 var(--carbon); padding: 10px 0; }
+  .nav .envoltura { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 1.35rem; color: var(--carbon); }
+  .logo svg { width: 38px; height: 30px; }
+  .nav ul { display: flex; gap: 26px; list-style: none; }
+  .nav ul a { text-decoration: none; font-weight: 700; font-size: .95rem; }
+  .nav ul a:hover { color: var(--tomate); }
+  .nav .boton { padding: 10px 18px; font-size: .9rem; box-shadow: 3px 3px 0 var(--carbon); }
+
+  /* ---------- Escenas fijadas ---------- */
+  .fijo { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+
+  /* 1 · Las letras-pieza se montan */
+  #inicio { height: 240vh; }
+  #inicio .fijo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; padding: 80px 16px 40px; }
+  #puzzle { width: min(1100px, 100%); overflow: visible; }
+  #puzzle .pieza path { stroke: var(--carbon); stroke-width: 3.5; stroke-linejoin: round; }
+  #puzzle .pieza text { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 62px; text-anchor: middle; dominant-baseline: central; }
+  .inicio-texto { text-align: center; max-width: 720px; opacity: var(--t, 0); transform: translateY(calc((1 - var(--t, 0)) * 40px)); }
+  .inicio-texto .mano { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--tomate); line-height: 1.1; display: block; }
+  .inicio-texto p { font-size: 1.15rem; color: var(--suave); margin: 10px auto 24px; max-width: 34em; }
+  .inicio-texto .acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .pista-scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); font-weight: 700; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--suave); opacity: calc(1 - var(--t, 0) * 2); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .pista-scroll::after { content: ""; width: 22px; height: 36px; border: 2.5px solid currentColor; border-radius: 12px; background: radial-gradient(circle at 50% 30%, currentColor 3px, transparent 4px); animation: rueda 1.6s infinite; }
+  @keyframes rueda { 50% { background-position: 0 8px; } }
+
+  /* 2 · La hamburguesa se despieza */
+  #despiece { height: 460vh; background: var(--carbon); color: var(--crema); }
+  #despiece .fijo { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 30px; width: min(1180px, 100% - 32px); margin-inline: auto; overflow: visible; }
+  .despiece-texto h2 { color: #fff; font-size: clamp(2.4rem, 5vw, 4.4rem); margin: 16px 0; }
+  .despiece-texto h2 em { font-style: normal; color: var(--mostaza); }
+  .despiece-texto p { color: rgba(255, 245, 230, .75); font-size: 1.08rem; max-width: 26em; }
+  .despiece-texto .etiqueta { background: rgba(242, 177, 52, .15); color: var(--mostaza); }
+  .estado-despiece { margin-top: 26px; font-family: "Caveat"; font-size: 2rem; color: var(--mostaza); min-height: 2.4rem; transition: opacity .3s; }
+  #hamburguesa { width: 100%; height: min(86vh, 760px); overflow: visible; }
+  #hamburguesa .rotulo { opacity: 0; transition: opacity .35s; }
+  #hamburguesa .rotulo.ve { opacity: 1; }
+  #hamburguesa .rotulo text { font-family: "DM Sans"; fill: #fff; font-size: 24px; font-weight: 700; }
+  #hamburguesa .rotulo text.sub { fill: rgba(255, 245, 230, .6); font-size: 18px; font-weight: 400; }
+  #hamburguesa .rotulo line { stroke: var(--mostaza); stroke-width: 2; stroke-dasharray: 4 5; }
+  #hamburguesa .rotulo circle { fill: var(--mostaza); }
+  .halo { position: absolute; width: 60vmin; height: 60vmin; right: 10%; top: 50%; transform: translateY(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(242, 177, 52, .25), transparent 65%); pointer-events: none; }
+
+  /* 3 · La caña se llena y llega la tapa */
+  #tapa { height: 280vh; background: var(--mostaza); }
+  #tapa .fijo { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: min(1180px, 100% - 32px); margin-inline: auto; gap: 30px; }
+  .tapa-texto h2 { font-size: clamp(2.6rem, 6vw, 5rem); }
+  .tapa-texto .linea { display: block; opacity: .15; transition: opacity .4s, transform .4s; transform: translateX(-10px); }
+  .tapa-texto .linea.ve { opacity: 1; transform: none; }
+  .tapa-texto .linea.roja { color: var(--tomate-osc); }
+  .tapa-texto p { margin-top: 22px; font-size: 1.1rem; max-width: 28em; }
+  .mesa { position: relative; height: min(76vh, 620px); }
+  #cana { position: absolute; left: 6%; bottom: 8%; height: 86%; overflow: visible; }
+  #plato { position: absolute; right: 0; bottom: 6%; width: 62%; overflow: visible; transform: translateX(var(--px, 120%)) rotate(var(--pr, 25deg)); }
+  .burbuja { animation: subir 2.4s linear infinite; }
+  @keyframes subir { from { transform: translateY(0); opacity: .9; } to { transform: translateY(-300px); opacity: 0; } }
+
+  /* 4 · Galería de platos en horizontal */
+  #carta { height: 380vh; background: var(--crema); }
+  #carta .fijo { display: flex; flex-direction: column; justify-content: center; }
+  .carta-cab { width: min(1180px, 100% - 32px); margin: 0 auto 30px; display: flex; justify-content: space-between; align-items: end; gap: 16px; }
+  .carta-cab h2 { font-size: clamp(2.4rem, 5vw, 4rem); margin-top: 12px; }
+  .carta-cab .mano { color: var(--tomate); font-size: 1.15em; }
+  .contador { font-family: "Bricolage Grotesque"; font-weight: 800; font-size: 1.4rem; white-space: nowrap; }
+  .riel { display: flex; gap: 30px; padding-left: max(16px, calc((100vw - 1180px) / 2)); will-change: transform; align-items: center; }
+  .plato {
+    flex: none; width: clamp(260px, 28vw, 360px); border: 3px solid var(--carbon); border-radius: 26px; background: #fff; overflow: hidden;
+    box-shadow: 8px 8px 0 var(--carbon); transform: rotate(var(--giro, 0deg)) translateY(var(--dy, 0px));
+  }
+  .plato .foto { height: min(38vh, 300px); position: relative; background-size: cover; background-position: center; background-image: var(--img, none), var(--fondo); border-bottom: 3px solid var(--carbon); display: grid; place-items: center; }
+  .plato .foto svg { width: 58%; height: auto; filter: drop-shadow(0 12px 10px rgba(0, 0, 0, .25)); }
+  .plato .foto.con-foto svg { display: none; }
+  .plato .sello { position: absolute; top: 14px; right: 14px; background: var(--tomate); color: #fff; font-weight: 700; font-size: .75rem; padding: 5px 11px; border-radius: 999px; border: 2px solid var(--carbon); transform: rotate(6deg); }
+  .plato .cuerpo { padding: 20px 22px 24px; }
+  .plato h3 { font-size: 1.6rem; }
+  .plato p { color: var(--suave); font-size: .95rem; margin-top: 6px; }
+
+  /* 5 · Reseñas que se abren */
+  #resenas { height: 260vh; background: var(--tomate); }
+  #resenas .fijo { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 70px 16px 30px; }
+  .resenas-cab { text-align: center; color: #fff; margin-bottom: 26px; position: relative; z-index: 2; }
+  .resenas-cab h2 { color: #fff; font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
+  .nota { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; background: #fff; color: var(--carbon); border: 3px solid var(--carbon); border-radius: 18px; padding: 8px 18px; box-shadow: 5px 5px 0 var(--carbon); }
+  .nota b { font-family: "Bricolage Grotesque"; font-size: 2rem; }
+  .nota span { color: var(--mostaza); letter-spacing: 2px; font-size: 1.2rem; -webkit-text-stroke: .6px var(--carbon); }
+  .mazo { position: relative; width: min(1100px, 100%); height: min(52vh, 420px); }
+  .resena {
+    position: absolute; left: 50%; top: 50%; width: min(330px, 80vw); background: #fff; border: 3px solid var(--carbon); border-radius: 22px; padding: 24px;
+    box-shadow: 7px 7px 0 var(--carbon); transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px))) rotate(var(--r, 0deg));
+  }
+  .resena blockquote { font-family: "Bricolage Grotesque"; font-weight: 700; font-size: 1.3rem; line-height: 1.25; color: var(--carbon); }
+  .resena blockquote::before { content: "“"; display: block; font-size: 3.4rem; line-height: .6; color: var(--tomate); margin-bottom: 4px; }
+  .resena cite { display: block; margin-top: 14px; font-style: normal; font-size: .85rem; color: var(--suave); }
+  .resena cite b { color: var(--mostaza); -webkit-text-stroke: .5px var(--carbon); letter-spacing: 2px; }
+
+  /* ---------- Secciones normales ---------- */
+  section.normal { padding: 110px 0; position: relative; }
+  .cabecera { max-width: 680px; margin-bottom: 50px; }
+  .cabecera h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-top: 14px; }
+  .cabecera p { margin-top: 14px; color: var(--suave); font-size: 1.08rem; }
+
+  .ventajas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .ventaja { background: #fff; border: 3px solid var(--carbon); border-radius: 22px; padding: 26px 22px; box-shadow: 6px 6px 0 var(--carbon); transition: transform .25s; }
+  .ventaja:hover { transform: rotate(-2deg) translateY(-6px); }
+  .ventaja .ico { width: 56px; height: 56px; border-radius: 16px; border: 2.5px solid var(--carbon); display: grid; place-items: center; margin-bottom: 16px; }
+  .ventaja h3 { font-size: 1.4rem; }
+  .ventaja p { color: var(--suave); font-size: .95rem; margin-top: 6px; }
+
+  .visita .envoltura { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; }
+  .ficha { background: #fff; border: 3px solid var(--carbon); border-radius: 26px; padding: 38px; box-shadow: 8px 8px 0 var(--carbon); display: flex; flex-direction: column; gap: 20px; }
+  .ficha h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+  .dato { display: flex; gap: 14px; align-items: flex-start; }
+  .dato .ico { width: 46px; height: 46px; flex: none; border-radius: 14px; border: 2.5px solid var(--carbon); background: var(--mostaza); display: grid; place-items: center; }
+  .dato b { display: block; color: var(--carbon); }
+  .dato a { text-decoration: none; }
+  .horario { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: 4px; }
+  .horario td { padding: 3px 0; }
+  .horario td:last-child { text-align: right; font-weight: 700; }
+  .horario tr.hoy td { color: var(--tomate); }
+  .estado { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid currentColor; margin-left: 8px; }
+  .estado.abierto { color: #3b7d33; }
+  .estado.cerrado { color: var(--tomate-osc); }
+  .mapa { border: 3px solid var(--carbon); border-radius: 26px; overflow: hidden; box-shadow: 8px 8px 0 var(--carbon); min-height: 440px; background: var(--papel); }
+  .mapa iframe { width: 100%; height: 100%; min-height: 440px; border: 0; }
+
+  .final { margin: 0 16px 16px; border-radius: 34px; border: 3px solid var(--carbon); background: var(--oliva); color: #fff; text-align: center; padding: 100px 24px; position: relative; overflow: hidden; }
+  .final h2 { color: #fff; font-size: clamp(2.6rem, 6vw, 4.8rem); max-width: 13em; margin: 0 auto 16px; }
+  .final h2 .mano { color: var(--mostaza); }
+  .final p { max-width: 32em; margin: 0 auto 30px; opacity: .9; font-size: 1.1rem; }
+  footer { padding: 34px 16px 50px; text-align: center; font-size: .88rem; color: var(--suave); }
+
+  .flotante { position: fixed; right: 18px; bottom: 18px; z-index: 75; width: 62px; height: 62px; border-radius: 18px; border: 3px solid var(--carbon); background: var(--tomate); color: #fff; display: grid; place-items: center; box-shadow: 4px 4px 0 var(--carbon); opacity: 0; transform: translateY(20px); transition: .3s; pointer-events: none; }
+  .flotante.ve { opacity: 1; transform: none; pointer-events: auto; }
+
+  /* Piezas de puzzle que flotan de decoración */
+  .deco { position: absolute; width: 70px; opacity: .9; animation: flotar 7s ease-in-out infinite; pointer-events: none; }
+  @keyframes flotar { 0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); } 50% { transform: translateY(-18px) rotate(calc(var(--rot, 0deg) + 12deg)); } }
+
+  .aparece { opacity: 0; transform: translateY(40px) rotate(-1.5deg); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1); }
+  .aparece.visible { opacity: 1; transform: none; }
+  .retardo-1 { transition-delay: .1s; } .retardo-2 { transition-delay: .2s; } .retardo-3 { transition-delay: .3s; }
+
+  @media (max-width: 960px) {
+    .nav ul { display: none; }
+    #despiece .fijo { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 0; padding-top: 74px; align-items: start; }
+    .despiece-texto h2 { font-size: 2.1rem; margin: 10px 0 6px; }
+    .despiece-texto p { font-size: .95rem; }
+    .estado-despiece { margin-top: 4px; font-size: 1.6rem; min-height: 2rem; }
+    #hamburguesa { height: 100%; max-height: 62vh; }
+    #tapa .fijo { grid-template-columns: 1fr; grid-template-rows: auto 1fr; padding-top: 80px; gap: 0; }
+    .tapa-texto h2 { font-size: 2.6rem; }
+    .tapa-texto p { font-size: .98rem; margin-top: 10px; }
+    .mesa { height: 100%; max-height: 52vh; }
+    .carta-cab { flex-direction: column; align-items: flex-start; }
+    .plato { width: 74vw; }
+    .mazo { height: 62vh; }
+    .resena { width: 84vw; padding: 14px 16px; border-radius: 18px; }
+    .resena blockquote { font-size: 1rem; }
+    .resena blockquote::before { font-size: 2.4rem; }
+    .resena cite { margin-top: 6px; font-size: .78rem; }
+    #hamburguesa .rotulo text { font-size: 30px; }
+    #hamburguesa .rotulo text.sub { font-size: 22px; }
+    .ventajas { grid-template-columns: 1fr 1fr; }
+    .visita .envoltura { grid-template-columns: 1fr; }
+    .ficha { padding: 26px 20px; }
+    section.normal { padding: 80px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .aparece { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+  <defs>
+    <path id="forma-pieza" d="M0,0 H100 V35 C112,30 124,38 122,50 C124,62 112,70 100,65 V100 H0 V65 C12,70 24,62 22,50 C24,38 12,30 0,35 Z"/>
+    <linearGradient id="g-pan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a948"/><stop offset=".7" stop-color="#c97a26"/><stop offset="1" stop-color="#a65f1a"/></linearGradient>
+    <linearGradient id="g-carne" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a4022"/><stop offset="1" stop-color="#4a2412"/></linearGradient>
+    <linearGradient id="g-cerveza" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf4d"/><stop offset="1" stop-color="#e79a12"/></linearGradient>
+    <linearGradient id="g-vidrio" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".25" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+  </defs>
+</svg>
+
+<div class="progreso" id="progreso"></div>
+
+<nav class="nav" id="nav">
+  <div class="envoltura">
+    <a href="#inicio" class="logo">
+      <svg viewBox="0 0 130 100"><use href="#forma-pieza" fill="#f2b134" stroke="#1f1a16" stroke-width="7"/></svg>
+      RompeCabezas
+    </a>
+    <ul>
+      <li><a href="#despiece">La hamburguesa</a></li>
+      <li><a href="#tapa">Tapas</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#resenas">Opiniones</a></li>
+      <li><a href="#visitanos">Visítanos</a></li>
+    </ul>
+    <a href="tel:+34858706552" class="boton">Llamar</a>
+  </div>
+</nav>
+
+<!-- ====== 1 · El nombre se monta pieza a pieza ====== -->
+<section id="inicio">
+  <div class="fijo">
+    <svg id="puzzle" aria-label="RompeCabezas"></svg>
+    <div class="inicio-texto">
+      <span class="mano">Aquí cada tapa encaja.</span>
+      <p>Bar de tapas en la Ribera del Genil, Granada. Tapa con cada bebida, raciones para compartir, terraza y el fútbol en la tele.</p>
+      <div class="acciones">
+        <a href="#despiece" class="boton">Ver la carta</a>
+        <a href="tel:+34858706552" class="boton blanco">858 70 65 52</a>
+      </div>
+    </div>
+    <div class="pista-scroll">Baja</div>
+  </div>
+</section>
+
+<!-- ====== 2 · Hamburguesa en despiece ====== -->
+<section id="despiece">
+  <div class="fijo">
+    <div class="halo"></div>
+    <div class="despiece-texto">
+      <span class="etiqueta">Pieza a pieza</span>
+      <h2>Nuestra hamburguesa es un <em>rompecabezas</em></h2>
+      <p>Baja despacio y mira cómo se monta. Cada pieza tiene su sitio, y por eso encaja tan bien.</p>
+      <div class="estado-despiece" id="estadoDespiece">Montada y lista…</div>
+    </div>
+    <svg id="hamburguesa" viewBox="0 0 900 760" aria-label="Hamburguesa con sus ingredientes por capas"></svg>
+  </div>
+</section>
+
+<!-- ====== 3 · Caña + tapa ====== -->
+<section id="tapa">
+  <div class="fijo">
+    <div class="tapa-texto">
+      <span class="etiqueta" style="background: rgba(31, 26, 22, .1); color: var(--carbon)">Como manda Granada</span>
+      <h2>
+        <span class="linea" id="l1">Pides una caña…</span>
+        <span class="linea" id="l2">se llena bien fría…</span>
+        <span class="linea roja" id="l3">y la tapa va de regalo.</span>
+      </h2>
+      <p>Con cada bebida, una tapa. Y la primera, el jamón asado que tanto nombran nuestros clientes.</p>
+    </div>
+    <div class="mesa">
+      <svg id="cana" viewBox="0 0 200 380" aria-hidden="true">
+        <clipPath id="clip-vaso"><path d="M20,20 L180,20 L160,360 Q100,372 40,360 Z"/></clipPath>
+        <g clip-path="url(#clip-vaso)">
+          <rect x="0" y="0" width="200" height="380" fill="rgba(255,255,255,.35)"/>
+          <g id="liquido">
+            <rect x="0" y="0" width="200" height="400" fill="url(#g-cerveza)"/>
+            <g fill="#fff" opacity=".7">
+              <circle class="burbuja" cx="60" cy="380" r="4"/><circle class="burbuja" cx="100" cy="390" r="3" style="animation-delay: -.8s"/>
+              <circle class="burbuja" cx="130" cy="385" r="5" style="animation-delay: -1.5s"/><circle class="burbuja" cx="80" cy="395" r="3" style="animation-delay: -2s"/>
+              <circle class="burbuja" cx="150" cy="390" r="3" style="animation-delay: -.4s"/>
+            </g>
+            <path id="espuma" d="M0,0 Q25,-22 50,-6 Q75,-26 100,-8 Q125,-24 150,-6 Q175,-22 200,-4 V26 H0 Z" fill="#fffaf0"/>
+          </g>
+          <rect x="20" y="20" width="160" height="350" fill="url(#g-vidrio)"/>
+        </g>
+        <path d="M20,20 L180,20 L160,360 Q100,372 40,360 Z" fill="none" stroke="#1f1a16" stroke-width="6" stroke-linejoin="round"/>
+      </svg>
+      <svg id="plato" viewBox="0 0 360 200" aria-hidden="true">
+        <ellipse cx="180" cy="130" rx="170" ry="56" fill="#fff" stroke="#1f1a16" stroke-width="5"/>
+        <ellipse cx="180" cy="124" rx="128" ry="38" fill="none" stroke="#e8dcc8" stroke-width="3"/>
+        <g stroke="#1f1a16" stroke-width="3.5" stroke-linejoin="round">
+          <path d="M98,118 Q140,70 196,98 Q170,140 98,118 Z" fill="#c9604a"/>
+          <path d="M150,124 Q205,76 262,104 Q232,150 150,124 Z" fill="#d97559"/>
+          <path d="M120,96 Q170,52 228,80 Q196,120 120,96 Z" fill="#e08a6c"/>
+        </g>
+        <g stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"><path d="M135,90 Q160,78 190,86"/><path d="M185,110 Q210,98 238,104"/></g>
+        <g fill="#4f6b3a"><circle cx="252" cy="134" r="7"/><circle cx="266" cy="126" r="5"/><circle cx="108" cy="134" r="6"/></g>
+        <text x="180" y="196" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="30" fill="#1f1a16">jamón asado</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 4 · Carta en horizontal ====== -->
+<section id="carta">
+  <div class="fijo">
+    <div class="carta-cab">
+      <div>
+        <span class="etiqueta">La carta</span>
+        <h2>Lo que más <span class="mano">piden</span></h2>
+      </div>
+      <span class="contador" id="contador">01 / 06</span>
+    </div>
+    <div class="riel" id="riel">
+      <article class="plato">
+        <div class="foto" style="--img: url(img/jamon-asado.jpg); --fondo: linear-gradient(140deg, #fbe0c4, #f2b134)">
+          <span class="sello">La estrella</span>
+          <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4" stroke-linejoin="round"><path d="M20,80 Q70,10 140,50 Q100,110 20,80 Z" fill="#c9604a"/><path d="M60,90 Q120,30 185,66 Q150,120 60,90 Z" fill="#e08a6c"/></g></svg>
+        </div>
+        <div class="cuerpo"><h3>Jamón asado</h3><p>La tapa por la que mucha gente vuelve. Tierno, en lonchas y recién hecho.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/flamenquin.jpg); --fondo: linear-gradient(140deg, #fff1c9, #e4572e)">
+          <span class="sello">XXL</span>
+          <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4"><rect x="14" y="40" width="172" height="46" rx="23" fill="#e3a23a"/><ellipse cx="172" cy="63" rx="16" ry="23" fill="#f6e0b0"/><circle cx="172" cy="63" r="10" fill="#d97559"/></g><g fill="#a6621b"><circle cx="50" cy="55" r="3"/><circle cx="80" cy="70" r="3"/><circle cx="110" cy="52" r="3"/><circle cx="135" cy="72" r="3"/></g></svg>
+        </div>
+        <div class="cuerpo"><h3>Flamenquín</h3><p>Una ración de las que hacen que te caigas de la silla al verla llegar.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/raciones.jpg); --fondo: linear-gradient(140deg, #e7f0d8, #4f6b3a)">
+          <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4"><ellipse cx="100" cy="76" rx="90" ry="34" fill="#fff"/><circle cx="70" cy="66" r="18" fill="#e3a23a"/><circle cx="104" cy="60" r="18" fill="#c9604a"/><circle cx="134" cy="70" r="18" fill="#f2b134"/></g></svg>
+        </div>
+        <div class="cuerpo"><h3>Raciones para compartir</h3><p>Generosas, para pedir varias al centro y que no sobre nadie con hambre.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/hamburguesa.jpg); --fondo: linear-gradient(140deg, #fff5e6, #f2b134)">
+          <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4" stroke-linejoin="round"><path d="M30,56 Q30,10 100,10 Q170,10 170,56 Z" fill="#e39a3b"/><path d="M24,60 Q60,72 100,62 Q140,72 176,60 L176,66 L24,66 Z" fill="#7fae4a"/><rect x="28" y="66" width="144" height="20" rx="10" fill="#6b351b"/><rect x="34" y="88" width="132" height="20" rx="8" fill="#d48a35"/></g></svg>
+        </div>
+        <div class="cuerpo"><h3>Hamburguesa de la casa</h3><p>Pan tostado, carne a la plancha y queso fundido. La has visto despiezada más arriba.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/terraza.jpg); --fondo: linear-gradient(140deg, #d9ecf2, #6aa6b8)">
+          <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4" stroke-linejoin="round"><path d="M20,50 Q100,0 180,50 Z" fill="#e4572e"/><line x1="100" y1="50" x2="100" y2="110"/><rect x="60" y="82" width="80" height="8" rx="3" fill="#fff"/></g></svg>
+        </div>
+        <div class="cuerpo"><h3>Terraza</h3><p>Para las tardes de Granada, con la Ribera del Genil al lado.</p></div>
+      </article>
+      <article class="plato">
+        <div class="foto" style="--img: url(img/futbol.jpg); --fondo: linear-gradient(140deg, #dcefd0, #3f7a35)">
+          <svg viewBox="0 0 200 120"><g stroke="#1f1a16" stroke-width="4"><rect x="30" y="14" width="140" height="84" rx="10" fill="#2d2a26"/><rect x="40" y="24" width="120" height="64" rx="4" fill="#5fae4b"/><line x1="100" y1="24" x2="100" y2="88" stroke="#fff" stroke-width="2"/><circle cx="100" cy="56" r="12" fill="none" stroke="#fff" stroke-width="2"/><line x1="80" y1="112" x2="120" y2="112"/></g></svg>
+        </div>
+        <div class="cuerpo"><h3>Fútbol en directo</h3><p>Los partidos en la tele, con tapa y caña. Ambiente de bar de los de siempre.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 5 · Reseñas que se abren ====== -->
+<section id="resenas">
+  <div class="fijo">
+    <div class="resenas-cab">
+      <h2>Lo que dicen de nosotros</h2>
+      <div class="nota"><b>4,1</b><span>★★★★☆</span>en Google</div>
+    </div>
+    <div class="mazo" id="mazo">
+      <figure class="resena"><blockquote>La comida estaba muy bien y me encanta la tapa gratis con cada bebida.</blockquote><cite>Opinión de un cliente</cite></figure>
+      <figure class="resena"><blockquote>Las raciones son muy abundantes. Al ver el flamenquín casi me caigo de la silla.</blockquote><cite>Opinión de un cliente</cite></figure>
+      <figure class="resena"><blockquote>Tapas y fútbol.</blockquote><cite>Título de una opinión en Tripadvisor</cite></figure>
+      <figure class="resena"><blockquote>Sorpresa positiva.</blockquote><cite>Título de una opinión en Tripadvisor</cite></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Por qué venir ====== -->
+<section class="normal">
+  <svg class="deco" style="left: 4%; top: 60px; --rot: -20deg" viewBox="0 0 130 100"><use href="#forma-pieza" fill="#e4572e" stroke="#1f1a16" stroke-width="5"/></svg>
+  <svg class="deco" style="right: 6%; bottom: 40px; --rot: 30deg; animation-delay: -3s" viewBox="0 0 130 100"><use href="#forma-pieza" fill="#4f6b3a" stroke="#1f1a16" stroke-width="5"/></svg>
+  <div class="envoltura">
+    <div class="cabecera aparece">
+      <span class="etiqueta">Por qué venir</span>
+      <h2>Las piezas que encajan</h2>
+    </div>
+    <div class="ventajas">
+      <div class="ventaja aparece"><div class="ico" style="background: var(--mostaza)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h11v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M16 11h2a2 2 0 0 1 0 4h-2M5 8a3 3 0 0 1 3-4c1 0 1.6.4 2 1a3 3 0 0 1 5 2"/></svg></div><h3>Tapa con cada bebida</h3><p>Como debe ser en Granada.</p></div>
+      <div class="ventaja aparece retardo-1"><div class="ico" style="background: #fbd3c5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div><h3>Raciones grandes</h3><p>Para compartir sin quedarse corto.</p></div>
+      <div class="ventaja aparece retardo-2"><div class="ico" style="background: #d7e8c9"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M12 4v17M7 21h10"/></svg></div><h3>Terraza</h3><p>Aire libre en la Ribera del Genil.</p></div>
+      <div class="ventaja aparece retardo-3"><div class="ico" style="background: #fff"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/></svg></div><h3>Fútbol en la tele</h3><p>Los partidos con ambiente.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Visítanos ====== -->
+<section class="normal visita" id="visitanos">
+  <div class="envoltura">
+    <div class="ficha aparece">
+      <div><span class="etiqueta">Visítanos</span><h2 style="margin-top: 12px">Te guardamos sitio en la barra</h2></div>
+      <div class="dato">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><b>Dirección</b>Calle Ribera del Genil, 7<br>18005 Granada</div>
+      </div>
+      <div class="dato">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><b>Teléfono y reservas</b><a href="tel:+34858706552">858 70 65 52</a></div>
+      </div>
+      <div class="dato">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div style="flex: 1"><b>Horario <span class="estado" id="estado">—</span></b><table class="horario" id="tablaHorario"></table></div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap">
+        <a href="tel:+34858706552" class="boton rojo">Llamar</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=RompeCabezas+Calle+Ribera+del+Genil+7+18005+Granada" target="_blank" rel="noopener" class="boton blanco">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="mapa aparece retardo-1">
+      <iframe title="Mapa de RompeCabezas" loading="lazy" src="https://maps.google.com/maps?q=RompeCabezas%2C%20Calle%20Ribera%20del%20Genil%207%2C%2018005%20Granada&z=16&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="final aparece">
+  <svg class="deco" style="left: 6%; top: 30px; --rot: 15deg" viewBox="0 0 130 100"><use href="#forma-pieza" fill="#f2b134" stroke="#1f1a16" stroke-width="5"/></svg>
+  <svg class="deco" style="right: 8%; bottom: 30px; --rot: -25deg; animation-delay: -4s" viewBox="0 0 130 100"><use href="#forma-pieza" fill="#e4572e" stroke="#1f1a16" stroke-width="5"/></svg>
+  <h2>Te falta una pieza: <span class="mano">tú.</span></h2>
+  <p>Ven a por una caña y su tapa. Si sois muchos, llámanos antes y os buscamos sitio.</p>
+  <a href="tel:+34858706552" class="boton">Llamar · 858 70 65 52</a>
+</div>
+
+<footer>© <span id="anio"></span> RompeCabezas · Calle Ribera del Genil, 7 · 18005 Granada · 858 70 65 52</footer>
+
+<a href="tel:+34858706552" class="flotante" id="flotante" aria-label="Llamar al bar">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+</a>
+
+<script>
+  // Horario provisional (las fuentes no coinciden; confirmar con el bar). [abre, cierra]; null = cerrado
+  const HORARIO = [
+    ['Lunes', [12, 24]], ['Martes', null], ['Miércoles', [12, 24]], ['Jueves', [12, 24]],
+    ['Viernes', [12, 24]], ['Sábado', [12, 24]], ['Domingo', [12, 24]]
+  ];
+  const NS = 'http://www.w3.org/2000/svg';
+  const $ = id => document.getElementById(id);
+  const lim = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const tramo = (p, a, b) => lim((p - a) / (b - a));
+  const suave = t => t * t * (3 - 2 * t);
+  const mezcla = (a, b, t) => a + (b - a) * t;
+  const avance = el => { const r = el.getBoundingClientRect(); return lim(-r.top / (r.height - innerHeight)); };
+  const nodo = (tag, attrs, padre) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); padre && padre.appendChild(n); return n; };
+
+  // ---------- 1 · Letras-pieza ----------
+  const LETRAS = 'ROMPECABEZAS'.split('');
+  const COLORES = ['#f2b134', '#e4572e', '#4f6b3a', '#fff5e6'];
+  const puzzle = $('puzzle'), inicio = $('inicio');
+  const azar = (s => () => (s = (s * 9301 + 49297) % 233280) / 233280)(7);   // aleatorio fijo: siempre igual
+  const piezas = LETRAS.map((l, i) => {
+    const g = nodo('g', { class: 'pieza' }, puzzle);
+    const color = COLORES[i % 4];
+    nodo('path', { d: document.getElementById('forma-pieza').getAttribute('d'), fill: color }, g);
+    const t = nodo('text', { x: 50, y: 52, fill: color === '#fff5e6' || color === '#f2b134' ? '#1f1a16' : '#fff' }, g);
+    t.textContent = l;
+    return { g, dx: (azar() - .5) * 1400, dy: (azar() - .5) * 900, rot: (azar() - .5) * 300, esc: .4 + azar() * .5 };
+  });
+  let columnas = 0;
+  function colocarPiezas() {
+    const cols = innerWidth < 700 ? 6 : 12;
+    if (cols === columnas) return;
+    columnas = cols;
+    const filas = LETRAS.length / cols;
+    puzzle.setAttribute('viewBox', `-4 -4 ${cols * 100 + 30} ${filas * 100 + 8}`);
+    piezas.forEach((p, i) => { p.x = (i % cols) * 100; p.y = Math.floor(i / cols) * 100; });
+  }
+  function escenaInicio() {
+    const pr = avance(inicio);
+    piezas.forEach((p, i) => {
+      const t = suave(tramo(pr, i * .025, .45 + i * .025));   // cada pieza llega un poco después
+      const x = p.x + p.dx * (1 - t), y = p.y + p.dy * (1 - t), r = p.rot * (1 - t), e = mezcla(p.esc, 1, t);
+      p.g.setAttribute('transform', `translate(${x} ${y}) rotate(${r} 50 50) translate(50 50) scale(${e}) translate(-50 -50)`);
+    });
+    inicio.style.setProperty('--t', suave(tramo(pr, .62, .85)));
+  }
+
+  // ---------- 2 · Hamburguesa en despiece ----------
+  // Capas de abajo arriba: [id, alto, título, detalle, dibujo]
+  const CAPAS = [
+    ['pan-base', 46, 'Pan tostado', 'base crujiente', g => {
+      nodo('path', { d: 'M310,0 H590 Q600,0 598,12 L590,34 Q586,46 572,46 H328 Q314,46 310,34 L302,12 Q300,0 310,0 Z', fill: 'url(#g-pan)', stroke: '#1f1a16', 'stroke-width': 5 }, g);
+      nodo('rect', { x: 312, y: 2, width: 276, height: 8, rx: 4, fill: '#f6d199' }, g);
+    }],
+    ['salsa', 18, 'Salsa de la casa', 'nuestra receta', g => {
+      nodo('path', { d: 'M318,6 Q360,-4 400,6 T480,6 T560,6 T590,6 Q600,14 590,18 H310 Q300,14 318,6 Z', fill: '#f4e3b5', stroke: '#1f1a16', 'stroke-width': 4 }, g);
+    }],
+    ['carne', 58, 'Carne a la plancha', 'jugosa, hecha al momento', g => {
+      nodo('rect', { x: 296, y: 0, width: 308, height: 58, rx: 26, fill: 'url(#g-carne)', stroke: '#1f1a16', 'stroke-width': 5 }, g);
+      for (let k = 0; k < 9; k++) nodo('path', { d: `M${322 + k * 30},${14 + (k % 2) * 16} q8,-6 16,0`, stroke: '#a8643a', 'stroke-width': 3, fill: 'none', 'stroke-linecap': 'round' }, g);
+    }],
+    ['queso', 26, 'Queso fundido', 'cayendo por los bordes', g => {
+      nodo('path', { d: 'M300,0 H600 V10 L585,10 L572,30 L560,10 L470,10 L455,36 L440,10 L360,10 L345,28 L332,10 H300 Z', fill: '#f7c531', stroke: '#1f1a16', 'stroke-width': 4.5, 'stroke-linejoin': 'round' }, g);
+    }],
+    ['cebolla', 20, 'Cebolla', 'en aros finos', g => {
+      for (let k = 0; k < 5; k++) nodo('ellipse', { cx: 340 + k * 55, cy: 10, rx: 30, ry: 9, fill: 'none', stroke: '#b05a9a', 'stroke-width': 6 }, g);
+      for (let k = 0; k < 5; k++) nodo('ellipse', { cx: 340 + k * 55, cy: 10, rx: 30, ry: 9, fill: 'none', stroke: '#1f1a16', 'stroke-width': 1.5 }, g);
+    }],
+    ['tomate', 24, 'Tomate', 'en rodajas', g => {
+      for (let k = 0; k < 3; k++) {
+        nodo('rect', { x: 312 + k * 94, y: 0, width: 88, height: 24, rx: 12, fill: '#e4572e', stroke: '#1f1a16', 'stroke-width': 4 }, g);
+        nodo('ellipse', { cx: 356 + k * 94, cy: 12, rx: 26, ry: 5, fill: '#f28b6c' }, g);
+      }
+    }],
+    ['lechuga', 28, 'Lechuga', 'fresca y crujiente', g => {
+      nodo('path', { d: 'M292,14 Q305,-4 322,10 Q340,-6 360,10 Q380,-6 400,10 Q420,-6 440,10 Q460,-6 480,10 Q500,-6 520,10 Q540,-6 560,10 Q580,-4 608,14 Q590,30 560,22 Q530,32 500,22 Q470,32 440,22 Q410,32 380,22 Q350,32 320,22 Q300,30 292,14 Z', fill: '#7fbf4a', stroke: '#1f1a16', 'stroke-width': 4.5, 'stroke-linejoin': 'round' }, g);
+    }],
+    ['pan-arriba', 110, 'Pan con sésamo', 'tostado por dentro', g => {
+      nodo('path', { d: 'M302,110 Q296,6 450,2 Q604,6 598,110 Z', fill: 'url(#g-pan)', stroke: '#1f1a16', 'stroke-width': 5, 'stroke-linejoin': 'round' }, g);
+      nodo('path', { d: 'M350,40 Q420,10 500,22', stroke: '#fbd99a', 'stroke-width': 10, fill: 'none', 'stroke-linecap': 'round', opacity: .7 }, g);
+      [[380, 50], [420, 34], [470, 30], [520, 44], [400, 76], [450, 62], [505, 74], [555, 70], [350, 80]].forEach(([x, y], k) =>
+        nodo('ellipse', { cx: x, cy: y, rx: 7, ry: 4, transform: `rotate(${k * 37 % 60 - 30} ${x} ${y})`, fill: '#fff4d6', stroke: '#1f1a16', 'stroke-width': 1.5 }, g));
+    }]
+  ];
+  const svgHam = $('hamburguesa'), despiece = $('despiece');
+  const altoMontada = CAPAS.reduce((s, c) => s + c[1], 0) - 30;   // las capas se solapan un poco
+  const capas = CAPAS.map(([id, alto, titulo, detalle, dibujo], i) => {
+    const g = nodo('g', { id: 'capa-' + id }, svgHam);
+    const dib = nodo('g', {}, g);
+    dibujo(dib);
+    const izq = i % 2 === 0;
+    const rot = nodo('g', { class: 'rotulo' }, g);
+    const xLinea = izq ? 300 : 600, xTexto = izq ? 252 : 648;
+    nodo('line', { x1: izq ? 262 : 638, y1: alto / 2, x2: xLinea, y2: alto / 2 }, rot);
+    nodo('circle', { cx: xLinea, cy: alto / 2, r: 5 }, rot);
+    const t1 = nodo('text', { x: xTexto, y: alto / 2 - 4, 'text-anchor': izq ? 'end' : 'start' }, rot); t1.textContent = titulo;
+    const t2 = nodo('text', { x: xTexto, y: alto / 2 + 20, 'text-anchor': izq ? 'end' : 'start', class: 'sub' }, rot); t2.textContent = detalle;
+    return { g, dib, rot, alto, i };
+  });
+  function escenaDespiece() {
+    const p = avance(despiece);
+    const abre = suave(tramo(p, .08, .45));         // se separa
+    const cierra = suave(tramo(p, .78, .95));       // y vuelve a encajar
+    const t = abre * (1 - cierra);
+    const hueco = innerWidth < 700 ? 52 : 46;
+    const total = altoMontada + hueco * (capas.length - 1) * t;
+    let y = 380 + total / 2;                          // base, centrado en el lienzo
+    capas.forEach((c, i) => {
+      y -= c.alto - (i ? 4 : 0);
+      const tambaleo = Math.sin(i * 1.7) * 14 * t, giro = (i % 2 ? 1 : -1) * 3 * t;
+      c.g.setAttribute('transform', `translate(${tambaleo} ${y})`);
+      c.dib.setAttribute('transform', `rotate(${giro} 450 ${c.alto / 2})`);
+      c.rot.classList.toggle('ve', t > .55 + i * .04 && innerWidth >= 380);
+      y -= hueco * t;
+    });
+    const estado = $('estadoDespiece');
+    estado.textContent = p < .08 ? 'Montada y lista…' : p < .5 ? 'Se rompe en piezas…' : p < .78 ? `${capas.length} piezas, una receta` : '¡Rompecabezas resuelto!';
+  }
+
+  // ---------- 3 · Caña + tapa ----------
+  const tapa = $('tapa'), liquido = $('liquido'), plato = $('plato');
+  function escenaTapa() {
+    const p = avance(tapa);
+    const lleno = suave(tramo(p, .05, .5));
+    liquido.setAttribute('transform', `translate(0 ${mezcla(372, 38, lleno)})`);
+    const llega = suave(tramo(p, .55, .85));
+    plato.style.setProperty('--px', mezcla(120, 0, llega) + '%');
+    plato.style.setProperty('--pr', mezcla(25, -4, llega) + 'deg');
+    $('l1').classList.toggle('ve', p > .02);
+    $('l2').classList.toggle('ve', p > .3);
+    $('l3').classList.toggle('ve', p > .6);
+  }
+
+  // ---------- 4 · Carta horizontal ----------
+  const carta = $('carta'), riel = $('riel'), platos = [...riel.children];
+  function escenaCarta() {
+    const p = avance(carta);
+    const recorrido = riel.scrollWidth - innerWidth + Math.max(16, (innerWidth - 1180) / 2) + 20;
+    riel.style.transform = `translateX(${-p * recorrido}px)`;
+    platos.forEach(c => {
+      const r = c.getBoundingClientRect(), d = (r.left + r.width / 2 - innerWidth / 2) / innerWidth;
+      c.style.setProperty('--giro', (d * -10).toFixed(2) + 'deg');
+      c.style.setProperty('--dy', (Math.abs(d) * 60).toFixed(1) + 'px');
+    });
+    $('contador').textContent = String(Math.round(p * (platos.length - 1)) + 1).padStart(2, '0') + ' / ' + String(platos.length).padStart(2, '0');
+  }
+
+  // ---------- 5 · Reseñas que se abren ----------
+  const resenas = $('resenas'), cartas = [...$('mazo').children];
+  function escenaResenas() {
+    const p = suave(tramo(avance(resenas), .05, .6));
+    const movil = innerWidth < 760, w = Math.min(innerWidth, 1100);
+    cartas.forEach((c, i) => {
+      // Destino: rejilla 2x2 en escritorio; abanico apilado en móvil
+      const col = i % 2, fila = Math.floor(i / 2);
+      const x = movil ? (i % 2 ? 10 : -10) : (col - .5) * (w * .46) + (fila ? 30 : -30);
+      const y = movil ? (i - 1.5) * ($('mazo').offsetHeight / 4) : (fila - .5) * 210;
+      const r = movil ? (i % 2 ? 4 : -4) : (i % 2 ? 3 : -3);
+      c.style.setProperty('--x', mezcla(i * 3, x, p) + 'px');
+      c.style.setProperty('--y', mezcla(i * -3, y, p) + 'px');
+      c.style.setProperty('--r', mezcla((i - 1.5) * 4, r, p) + 'deg');
+      c.style.zIndex = movil ? i : 4 - i;
+    });
+  }
+
+  // ---------- Bucle de scroll ----------
+  const nav = $('nav'), progreso = $('progreso'), flotante = $('flotante');
+  let pendiente = false;
+  function pintar() {
+    pendiente = false;
+    colocarPiezas();
+    progreso.style.transform = `scaleX(${scrollY / (document.documentElement.scrollHeight - innerHeight)})`;
+    nav.classList.toggle('solida', scrollY > 30);
+    flotante.classList.toggle('ve', scrollY > inicio.offsetHeight);
+    escenaInicio(); escenaDespiece(); escenaTapa(); escenaCarta(); escenaResenas();
+  }
+  const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); } };
+  addEventListener('scroll', pedir, { passive: true });
+  addEventListener('resize', pedir);
+  pintar();
+
+  // Fotos reales: si existe img/<plato>.jpg, se muestra y se oculta el dibujo
+  document.querySelectorAll('.plato .foto').forEach(f => {
+    const url = (f.style.getPropertyValue('--img').match(/url\((.*)\)/) || [])[1];
+    if (!url) return;
+    const prueba = new Image();
+    prueba.onload = () => f.classList.add('con-foto');
+    prueba.src = url;
+  });
+
+  // Aparición al hacer scroll
+  const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.aparece').forEach(el => obs.observe(el));
+
+  // Horario y abierto/cerrado
+  const ahora = new Date(), hoy = (ahora.getDay() + 6) % 7, hora = ahora.getHours() + ahora.getMinutes() / 60;
+  const fmt = h => (h === 24 ? '00' : String(h).padStart(2, '0')) + ':00';
+  $('tablaHorario').innerHTML = HORARIO.map(([d, h], i) => `<tr class="${i === hoy ? 'hoy' : ''}"><td>${d}</td><td>${h ? fmt(h[0]) + ' – ' + fmt(h[1]) : 'Cerrado'}</td></tr>`).join('');
+  const h = HORARIO[hoy][1], abierto = h && hora >= h[0] && hora < h[1];
+  $('estado').textContent = abierto ? 'Abierto' : 'Cerrado';
+  $('estado').classList.add(abierto ? 'abierto' : 'cerrado');
+  $('anio').textContent = ahora.getFullYear();
+</script>
+</body>
+</html>
