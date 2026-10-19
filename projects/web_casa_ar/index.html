@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa A&amp;R · Bar de tapas en Granada</title>
+<meta name="description" content="Casa A&R, bar de tapas en la Ribera del Genil (Granada). Arroces, pulpo a la brasa, almejas y cerveza Alhambra bien fría.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1d4a37;
+    --verde-osc: #11301f;
+    --verde-claro: #cfe3c3;
+    --oro: #d8a94f;
+    --arena: #f7f1e6;
+    --hueso: #fffaf2;
+    --mar: #2e6f86;
+    --limon: #f3d45a;
+    --texto: #2c2a24;
+    --suave: #6f6a5c;
+    --sombra: 0 30px 70px -30px rgba(17, 48, 31, .55);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Manrope", system-ui, sans-serif; background: var(--hueso); color: var(--texto); line-height: 1.6; overflow-x: clip; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.02; color: var(--verde-osc); letter-spacing: -.01em; }
+  em { font-style: italic; }
+  .envoltura { width: min(1180px, 100% - 32px); margin-inline: auto; }
+  .etiqueta { display: inline-flex; align-items: center; gap: 10px; font-size: .76rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: var(--oro); }
+  .etiqueta::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .boton {
+    display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; border-radius: 999px; border: 0; text-decoration: none; cursor: pointer;
+    font: 700 .98rem "Manrope", sans-serif; background: var(--oro); color: var(--verde-osc); transition: transform .25s, box-shadow .25s;
+    box-shadow: 0 14px 30px -14px rgba(216, 169, 79, .9);
+  }
+  .boton:hover { transform: translateY(-3px); }
+  .boton.verde { background: var(--verde); color: var(--hueso); box-shadow: 0 14px 30px -14px rgba(29, 74, 55, .9); }
+  .boton.linea { background: transparent; color: inherit; box-shadow: inset 0 0 0 2px currentColor; }
+
+  /* ---------- Barra y progreso ---------- */
+  .progreso { position: fixed; inset: 0 0 auto; height: 3px; z-index: 80; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--oro), var(--limon)); }
+  .nav { position: fixed; inset: 0 0 auto; z-index: 70; padding: 20px 0; color: var(--hueso); transition: background .35s, padding .35s, color .35s; }
+  .nav.solida { background: rgba(255, 250, 242, .92); backdrop-filter: blur(12px); color: var(--verde-osc); padding: 10px 0; box-shadow: 0 8px 30px -24px rgba(17, 48, 31, .8); }
+  .nav .envoltura { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-family: "Fraunces"; font-weight: 800; font-size: 1.6rem; text-decoration: none; letter-spacing: -.02em; }
+  .logo span { color: var(--oro); font-style: italic; font-weight: 400; }
+  .nav ul { display: flex; gap: 28px; list-style: none; }
+  .nav ul a { text-decoration: none; font-weight: 700; font-size: .93rem; opacity: .9; }
+  .nav ul a:hover { color: var(--oro); }
+  .nav .boton { padding: 10px 20px; font-size: .9rem; }
+
+  .fijo { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+
+  /* 1 · Tres arcos: el del centro se abre */
+  #inicio { height: 270vh; background: var(--verde-osc); }
+  #inicio .fijo { background: radial-gradient(80% 70% at 50% 40%, #24573f, var(--verde-osc) 75%); }
+  .arcos { position: absolute; inset: 0; }
+  .arco { position: absolute; top: 56%; width: min(22vw, 290px); aspect-ratio: 5 / 9; border-radius: 999px 999px 18px 18px; overflow: hidden; border: 7px solid #2a6b4d; box-shadow: var(--sombra); background-size: cover; background-position: center; }
+  .arco.lado { transform: translate(var(--x), -50%); opacity: var(--o, 1); }
+  .arco.izq { left: calc(50% - min(22vw, 290px) * 1.65); }
+  .arco.der { left: calc(50% + min(22vw, 290px) * .65); }
+  .arco-centro { position: absolute; inset: 0; background: url(img/arroz.jpg) center / cover; clip-path: inset(var(--ci, 18%) var(--cl, 37%) var(--ci2, 18%) var(--cl, 37%) round var(--cr, 999px) var(--cr, 999px) 18px 18px); }
+  .arco-centro::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17, 48, 31, .55), transparent 35%, transparent 55%, rgba(17, 48, 31, .8)); opacity: var(--velo, 0); }
+  .marco-centro { position: absolute; left: 50%; top: 56%; width: min(22vw, 290px); aspect-ratio: 5 / 9; transform: translate(-50%, -50%); border-radius: 999px 999px 18px 18px; border: 7px solid #2a6b4d; opacity: calc(1 - var(--velo, 0) * 3); pointer-events: none; }
+  .titulo-inicio { position: absolute; left: 0; right: 0; top: 7%; text-align: center; color: var(--hueso); opacity: var(--ot, 1); transform: translateY(calc(var(--ot, 1) * 0px - (1 - var(--ot, 1)) * 40px)); z-index: 2; padding: 0 16px; }
+  .titulo-inicio h1 { color: var(--hueso); font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; }
+  .titulo-inicio h1 span { color: var(--oro); font-style: italic; font-weight: 400; }
+  .titulo-inicio p { margin-top: 6px; letter-spacing: .3em; text-transform: uppercase; font-size: .78rem; font-weight: 700; color: var(--verde-claro); }
+  .lema { position: absolute; left: 0; right: 0; bottom: 10%; text-align: center; color: #fff; padding: 0 16px; opacity: var(--lema, 0); transform: translateY(calc((1 - var(--lema, 0)) * 40px)); z-index: 2; }
+  .lema h2 { color: #fff; font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 400; font-style: italic; text-shadow: 0 6px 30px rgba(0, 0, 0, .4); }
+  .lema p { margin-top: 10px; font-size: 1.1rem; }
+  .lema .acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
+  .desliza { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: var(--verde-claro); font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; font-weight: 700; opacity: var(--ot, 1); }
+
+  /* 2 · El pulpo se corta en tiras */
+  #pulpo { height: 400vh; background: var(--arena); }
+  #pulpo .fijo { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 40px; width: min(1180px, 100% - 32px); margin-inline: auto; overflow: visible; }
+  .pulpo-texto h2 { font-size: clamp(2.6rem, 5vw, 4.4rem); margin: 16px 0 14px; }
+  .pulpo-texto h2 em { color: var(--mar); }
+  .pulpo-texto p { color: var(--suave); font-size: 1.08rem; max-width: 26em; }
+  .paso-pulpo { margin-top: 24px; font-family: "Fraunces"; font-style: italic; font-size: 1.5rem; color: var(--verde); min-height: 2rem; }
+  .tabla { position: relative; width: 100%; aspect-ratio: 1161 / 1050; }
+  .tira { position: absolute; inset: 0; background: url(img/pulpo.jpg) center / 100% 100%; border-radius: 22px; will-change: transform; filter: drop-shadow(0 20px 22px rgba(17, 48, 31, .3)); }
+  .pin { position: absolute; z-index: 3; transform: translate(-9px, -9px); display: flex; align-items: center; gap: 10px; opacity: 0; transition: opacity .4s; pointer-events: none; }
+  .pin.ve { opacity: 1; }
+  .pin b { width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(255, 255, 255, .4); flex: none; animation: pulso 1.6s infinite; }
+  .pin span { background: var(--verde-osc); color: var(--hueso); padding: 7px 14px; border-radius: 12px; font-weight: 700; font-size: .85rem; white-space: nowrap; box-shadow: 0 10px 20px -10px rgba(0, 0, 0, .6); }
+  .pin span small { display: block; font-weight: 400; font-size: .74rem; color: var(--verde-claro); }
+  .pin.izq { flex-direction: row-reverse; transform: translate(calc(-100% + 9px), -9px); }
+  @keyframes pulso { 50% { box-shadow: 0 0 0 11px rgba(255, 255, 255, 0); } }
+
+  /* 3 · Las almejas: zoom con ondas */
+  #almejas { height: 280vh; background: var(--mar); color: #fff; }
+  #almejas .fijo { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; width: min(1180px, 100% - 32px); margin-inline: auto; overflow: visible; }
+  .cuenco { position: relative; aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 10px rgba(255, 255, 255, .12), 0 0 0 22px rgba(255, 255, 255, .06), var(--sombra); width: min(500px, 100%); justify-self: center; }
+  .cuenco img { width: 100%; height: 100%; object-fit: cover; transform: scale(var(--za, 1.6)) rotate(var(--ra, -20deg)); }
+  .onda { position: absolute; left: 50%; top: 50%; width: 100%; aspect-ratio: 1; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .45); transform: translate(-50%, -50%) scale(.2); animation: onda 3.6s ease-out infinite; pointer-events: none; }
+  .onda:nth-child(3) { animation-delay: 1.2s; } .onda:nth-child(4) { animation-delay: 2.4s; }
+  @keyframes onda { to { transform: translate(-50%, -50%) scale(1.4); opacity: 0; } }
+  .almejas-texto h2 { color: #fff; font-size: clamp(2.6rem, 5.5vw, 4.6rem); margin: 16px 0 14px; }
+  .almejas-texto h2 em { color: var(--limon); }
+  .almejas-texto p { font-size: 1.1rem; opacity: .9; max-width: 26em; }
+  .almejas-texto .etiqueta { color: var(--limon); }
+  .frases { margin-top: 26px; display: grid; gap: 10px; }
+  .frases span { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; opacity: .2; transform: translateX(-14px); transition: .5s; }
+  .frases span::before { content: ""; width: 26px; height: 2px; background: var(--limon); }
+  .frases span.ve { opacity: 1; transform: none; }
+
+  /* 4 · Paneo por la barra */
+  #barra { height: 300vh; background: var(--verde-osc); }
+  .panorama { position: absolute; top: 0; left: 0; height: 100%; width: auto; max-width: none; will-change: transform; }
+  #barra .fijo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17, 48, 31, .55), transparent 30%, transparent 65%, rgba(17, 48, 31, .85)); pointer-events: none; }
+  .barra-texto { position: absolute; left: max(16px, calc((100vw - 1180px) / 2)); bottom: 9%; z-index: 2; color: #fff; max-width: 620px; }
+  .barra-texto h2 { color: #fff; font-size: clamp(2.4rem, 5.5vw, 4.4rem); }
+  .barra-texto h2 em { color: var(--oro); }
+  .barra-texto p { margin-top: 10px; font-size: 1.08rem; opacity: .9; }
+  .chapa { position: absolute; z-index: 2; background: var(--hueso); color: var(--verde-osc); font-weight: 700; padding: 10px 18px; border-radius: 999px; box-shadow: var(--sombra); opacity: 0; transform: translateY(14px) scale(.9); transition: .45s; }
+  .chapa.ve { opacity: 1; transform: none; }
+  .chapa::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--oro); margin-right: 8px; }
+
+  /* 5 · Carta */
+  section.normal { padding: 120px 0; position: relative; }
+  .cabecera { max-width: 660px; margin-bottom: 54px; }
+  .cabecera h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-top: 14px; }
+  .cabecera p { margin-top: 14px; color: var(--suave); font-size: 1.08rem; }
+  .carta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .plato { position: relative; border-radius: 26px; overflow: hidden; background: #fff; box-shadow: 0 20px 50px -30px rgba(17, 48, 31, .5); transition: transform .4s; }
+  .plato:hover { transform: translateY(-8px); }
+  .plato .img { aspect-ratio: 4 / 3.4; overflow: hidden; }
+  .plato img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); transform: scale(1.15); }
+  .plato.visible img { transform: scale(1); }
+  .plato:hover img { transform: scale(1.06); }
+  .plato .cuerpo { padding: 22px 24px 26px; }
+  .plato h3 { font-size: 1.6rem; }
+  .plato p { color: var(--suave); margin-top: 6px; font-size: .96rem; }
+  .plato .sello { position: absolute; top: 16px; left: 16px; background: var(--hueso); color: var(--verde); font-weight: 700; font-size: .75rem; padding: 6px 12px; border-radius: 999px; letter-spacing: .06em; }
+
+  .salon { background: var(--verde); color: var(--hueso); overflow: hidden; }
+  .salon .envoltura { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .salon h2 { color: var(--hueso); font-size: clamp(2.4rem, 5vw, 3.8rem); margin: 14px 0; }
+  .salon h2 em { color: var(--oro); }
+  .salon p { opacity: .85; font-size: 1.08rem; }
+  .salon .foto { border-radius: 260px 260px 26px 26px; overflow: hidden; box-shadow: var(--sombra); border: 8px solid #2a6b4d; }
+  .salon .foto img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; transform: translateY(var(--par, 0px)) scale(1.12); }
+
+  .visita .envoltura { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; }
+  .ficha { background: #fff; border-radius: 28px; padding: 42px; box-shadow: 0 20px 50px -30px rgba(17, 48, 31, .5); display: flex; flex-direction: column; gap: 22px; }
+  .ficha h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+  .dato { display: flex; gap: 14px; align-items: flex-start; }
+  .dato .ico { width: 48px; height: 48px; flex: none; border-radius: 16px; background: var(--verde-claro); color: var(--verde); display: grid; place-items: center; }
+  .dato b { display: block; color: var(--verde-osc); }
+  .dato a { text-decoration: none; }
+  .mapa { border-radius: 28px; overflow: hidden; box-shadow: 0 20px 50px -30px rgba(17, 48, 31, .5); min-height: 440px; background: var(--arena); }
+  .mapa iframe { width: 100%; height: 100%; min-height: 440px; border: 0; }
+
+  .final { margin: 0 16px 16px; border-radius: 36px; padding: 110px 24px; text-align: center; color: #fff; position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(17, 48, 31, .65), rgba(17, 48, 31, .85)), url(img/almejas.jpg) center / cover; }
+  .final h2 { color: #fff; font-size: clamp(2.6rem, 6vw, 4.6rem); max-width: 13em; margin: 0 auto 16px; font-weight: 400; }
+  .final h2 em { color: var(--oro); }
+  .final p { max-width: 32em; margin: 0 auto 30px; opacity: .9; font-size: 1.1rem; }
+  footer { padding: 34px 16px 50px; text-align: center; font-size: .88rem; color: var(--suave); }
+
+  .flotante { position: fixed; right: 18px; bottom: 18px; z-index: 75; width: 60px; height: 60px; border-radius: 50%; background: var(--oro); color: var(--verde-osc); display: grid; place-items: center; box-shadow: 0 14px 30px -10px rgba(0, 0, 0, .45); opacity: 0; transform: translateY(20px); transition: .3s; pointer-events: none; }
+  .flotante.ve { opacity: 1; transform: none; pointer-events: auto; }
+
+  .aparece { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1); }
+  .aparece.visible { opacity: 1; transform: none; }
+  .retardo-1 { transition-delay: .12s; } .retardo-2 { transition-delay: .24s; }
+
+  /* Sin teléfono configurado, se ocultan los botones de llamar */
+  .sin-tel [data-tel] { display: none !important; }
+
+  @media (max-width: 960px) {
+    .nav ul { display: none; }
+    .arco { width: 30vw; }
+    .arco.izq { left: calc(50% - 30vw * 1.6); }
+    .arco.der { left: calc(50% + 30vw * .6); }
+    .marco-centro { width: 30vw; }
+    #pulpo .fijo, #almejas .fijo { grid-template-columns: 1fr; grid-template-rows: auto 1fr; gap: 10px; padding-top: 80px; align-items: start; }
+    .pulpo-texto h2, .almejas-texto h2 { font-size: 2.3rem; margin: 8px 0 6px; }
+    .pulpo-texto p, .almejas-texto p { font-size: .95rem; }
+    .paso-pulpo { margin-top: 6px; font-size: 1.2rem; }
+    .tabla { width: 84%; justify-self: center; margin-top: 3vh; }
+    .pin span { font-size: .72rem; padding: 5px 9px; }
+    .pin span small { display: none; }
+    .cuenco { width: 74vw; margin-top: 2vh; }
+    .frases { margin-top: 12px; gap: 6px; font-size: .9rem; }
+    .carta { grid-template-columns: 1fr; }
+    .salon .envoltura, .visita .envoltura { grid-template-columns: 1fr; }
+    .ficha { padding: 28px 22px; }
+    section.normal { padding: 84px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .aparece { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progreso" id="progreso"></div>
+
+<nav class="nav" id="nav">
+  <div class="envoltura">
+    <a href="#inicio" class="logo">Casa <span>A&amp;R</span></a>
+    <ul>
+      <li><a href="#pulpo">Pulpo</a></li>
+      <li><a href="#almejas">Almejas</a></li>
+      <li><a href="#barra">La barra</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#visitanos">Visítanos</a></li>
+    </ul>
+    <a href="#visitanos" class="boton">Cómo llegar</a>
+  </div>
+</nav>
+
+<!-- ====== 1 · Tres arcos ====== -->
+<section id="inicio">
+  <div class="fijo">
+    <div class="titulo-inicio">
+      <h1>Casa <span>A&amp;R</span></h1>
+      <p>Tapas · Arroces · Pescado y marisco · Granada</p>
+    </div>
+    <div class="arcos">
+      <div class="arco lado izq" id="arcoIzq" style="background-image: url(img/pulpo.jpg)"></div>
+      <div class="arco-centro" id="arcoCentro"></div>
+      <div class="marco-centro"></div>
+      <div class="arco lado der" id="arcoDer" style="background-image: url(img/almejas.jpg)"></div>
+    </div>
+    <div class="lema">
+      <h2>Sabor de casa, a un paso del Genil.</h2>
+      <p>Arroces, pulpo, almejas y una Alhambra bien fría.</p>
+      <div class="acciones">
+        <a href="#carta" class="boton">Ver la carta</a>
+        <a href="#" data-tel class="boton linea" style="color: #fff">Llamar</a>
+      </div>
+    </div>
+    <div class="desliza">Desliza</div>
+  </div>
+</section>
+
+<!-- ====== 2 · Pulpo cortado en tiras ====== -->
+<section id="pulpo">
+  <div class="fijo">
+    <div class="pulpo-texto">
+      <span class="etiqueta">Al corte</span>
+      <h2>Pulpo a la brasa, <em>cortado ante ti</em></h2>
+      <p>Tierno por dentro, tostado por fuera. Baja y lo cortamos para que veas lo que lleva el plato.</p>
+      <div class="paso-pulpo" id="pasoPulpo">Recién salido de la brasa…</div>
+    </div>
+    <div class="tabla" id="tabla"></div>
+  </div>
+</section>
+
+<!-- ====== 3 · Almejas ====== -->
+<section id="almejas">
+  <div class="fijo">
+    <div class="cuenco" id="cuenco">
+      <img src="img/almejas.jpg" alt="Plato de almejas con limón">
+      <span class="onda"></span><span class="onda"></span><span class="onda"></span>
+    </div>
+    <div class="almejas-texto">
+      <span class="etiqueta">Del mar a la mesa</span>
+      <h2>Almejas que saben <em>a mar</em></h2>
+      <p>Abiertas al momento, con su jugo y un buen chorro de limón.</p>
+      <div class="frases" id="frases">
+        <span>Abiertas al momento</span>
+        <span>Con su jugo</span>
+        <span>Un toque de limón</span>
+        <span>Y pan para mojar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 4 · Paneo por la barra ====== -->
+<section id="barra">
+  <div class="fijo">
+    <img class="panorama" id="panorama" src="img/barra.jpg" alt="Barra de Casa A&R con vinos y cerveza Alhambra">
+    <span class="chapa" id="chapa1" style="left: 12%; top: 22%">Vinos tintos y blancos</span>
+    <span class="chapa" id="chapa2" style="left: 46%; top: 30%">Cerveza Alhambra</span>
+    <span class="chapa" id="chapa3" style="right: 10%; top: 20%">Bien frío, siempre</span>
+    <div class="barra-texto">
+      <span class="etiqueta">La barra</span>
+      <h2>Para acompañar, <em>lo de aquí</em></h2>
+      <p>Alhambra de Granada y una buena selección de vinos para cada plato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 5 · Carta ====== -->
+<section class="normal" id="carta">
+  <div class="envoltura">
+    <div class="cabecera aparece">
+      <span class="etiqueta">La carta</span>
+      <h2>Lo que no te puedes perder</h2>
+      <p>Cocina de siempre, hecha con calma. Pregunta por las sugerencias del día.</p>
+    </div>
+    <div class="carta">
+      <article class="plato aparece"><div class="img"><img src="img/arroz.jpg" alt="Arroz meloso con marisco" loading="lazy"></div><span class="sello">De la casa</span><div class="cuerpo"><h3>Arroz meloso</h3><p>Con marisco y su caldo, con un gajo de limón al lado.</p></div></article>
+      <article class="plato aparece retardo-1"><div class="img"><img src="img/pulpo.jpg" alt="Pulpo a la brasa con guarnición" loading="lazy"></div><span class="sello">A la brasa</span><div class="cuerpo"><h3>Pulpo a la brasa</h3><p>Con aceite de oliva, perejil y verduras salteadas.</p></div></article>
+      <article class="plato aparece retardo-2"><div class="img"><img src="img/almejas.jpg" alt="Almejas con limón" loading="lazy"></div><span class="sello">Del mar</span><div class="cuerpo"><h3>Almejas</h3><p>Abiertas al momento, con limón y su jugo.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== El salón ====== -->
+<section class="normal salon">
+  <div class="envoltura">
+    <div>
+      <span class="etiqueta">El salón</span>
+      <h2>Una casa con <em>arcos de Granada</em></h2>
+      <p>Mesas tranquilas para comer con calma, con la luz de los arcos y el verde de la Alhambra en las paredes. Ideal para comidas en familia y con amigos.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px">
+        <a href="#" data-tel class="boton">Reservar mesa</a>
+        <a href="#visitanos" class="boton linea">Dónde estamos</a>
+      </div>
+    </div>
+    <div class="foto aparece retardo-1"><img src="img/salon.jpg" alt="Salón de Casa A&R con arcos y botellas de Alhambra" id="fotoSalon" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ====== Visítanos ====== -->
+<section class="normal visita" id="visitanos">
+  <div class="envoltura">
+    <div class="ficha aparece">
+      <div><span class="etiqueta">Visítanos</span><h2 style="margin-top: 12px">Te esperamos en la Ribera del Genil</h2></div>
+      <div class="dato">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div><b>Dirección</b><span id="textoDireccion"></span></div>
+      </div>
+      <div class="dato" data-tel>
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+        <div><b>Teléfono y reservas</b><a href="#" data-tel id="textoTelefono"></a></div>
+      </div>
+      <div class="dato" id="datoHorario">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><b>Horario</b><span id="textoHorario"></span></div>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap">
+        <a href="#" data-tel class="boton verde">Llamar</a>
+        <a id="comoLlegar" target="_blank" rel="noopener" class="boton">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="mapa aparece retardo-1"><iframe id="mapa" title="Mapa de Casa A&R" loading="lazy"></iframe></div>
+  </div>
+</section>
+
+<div class="final aparece">
+  <h2>Siéntate, que <em>esto es tu casa.</em></h2>
+  <p>Arroces, pulpo, almejas y tapas de siempre, al lado del Genil.</p>
+  <a href="#" data-tel class="boton">Reservar mesa</a>
+  <a href="#visitanos" class="boton linea" style="margin-left: 8px">Cómo llegar</a>
+</div>
+
+<footer>© <span id="anio"></span> Casa A&amp;R · <span id="pieDireccion"></span></footer>
+
+<a href="#" data-tel class="flotante" id="flotante" aria-label="Llamar">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+</a>
+
+<script>
+  // ---------- Datos del local: rellenar y todo se actualiza solo ----------
+  const DATOS = {
+    direccion: 'Calle Ribera del Genil, 8 · 18006 Granada',
+    telefono: '',            // p. ej. '958 00 00 00'. Vacío = se ocultan los botones de llamar
+    horario: ''              // p. ej. 'Todos los días de 12:00 a 00:00'. Vacío = no se muestra
+  };
+  const $ = id => document.getElementById(id);
+  const tel = DATOS.telefono.replace(/\s/g, '');
+  if (tel) {
+    document.querySelectorAll('a[data-tel]').forEach(a => a.href = 'tel:+34' + tel);
+    $('textoTelefono').textContent = DATOS.telefono;
+  } else document.body.classList.add('sin-tel');
+  if (DATOS.horario) $('textoHorario').textContent = DATOS.horario; else $('datoHorario').remove();
+  $('textoDireccion').textContent = $('pieDireccion').textContent = DATOS.direccion;
+  const consulta = encodeURIComponent('Casa A&R, ' + DATOS.direccion.replace('·', ','));
+  $('comoLlegar').href = 'https://www.google.com/maps/search/?api=1&query=' + consulta;
+  $('mapa').src = 'https://maps.google.com/maps?q=' + consulta + '&z=17&output=embed';
+  $('anio').textContent = new Date().getFullYear();
+
+  const lim = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const tramo = (p, a, b) => lim((p - a) / (b - a));
+  const suave = t => t * t * (3 - 2 * t);
+  const mezcla = (a, b, t) => a + (b - a) * t;
+  const avance = el => { const r = el.getBoundingClientRect(); return lim(-r.top / (r.height - innerHeight)); };
+
+  // ---------- 1 · Arcos ----------
+  const inicio = $('inicio'), centro = $('arcoCentro');
+  function escenaInicio() {
+    const p = avance(inicio);
+    const sale = suave(tramo(p, .05, .35)), abre = suave(tramo(p, .2, .65));
+    $('arcoIzq').style.setProperty('--x', -sale * 70 + 'vw');
+    $('arcoDer').style.setProperty('--x', sale * 70 + 'vw');
+    $('arcoIzq').style.setProperty('--o', 1 - sale);
+    $('arcoDer').style.setProperty('--o', 1 - sale);
+    // Medidas del arco central en % de la pantalla
+    const anchoArco = innerWidth < 960 ? innerWidth * .3 : Math.min(innerWidth * .22, 290), altoArco = anchoArco * 9 / 5;
+    const lado = (innerWidth - anchoArco) / 2 / innerWidth * 100;
+    const arriba = (innerHeight * .56 - altoArco / 2) / innerHeight * 100, abajo = 100 - arriba - altoArco / innerHeight * 100;
+    centro.style.setProperty('--cl', mezcla(lado, 0, abre) + '%');
+    centro.style.setProperty('--ci', mezcla(arriba, 0, abre) + '%');
+    centro.style.setProperty('--ci2', mezcla(abajo, 0, abre) + '%');
+    centro.style.setProperty('--cr', mezcla(anchoArco, 0, abre) + 'px');
+    centro.style.setProperty('--velo', abre);
+    inicio.style.setProperty('--ot', 1 - tramo(p, 0, .25));
+    inicio.style.setProperty('--lema', suave(tramo(p, .7, .88)));
+  }
+
+  // ---------- 2 · Pulpo en tiras ----------
+  const TIRAS = 4;
+  // [x %, y %, nombre, detalle]: dónde está cada cosa en la foto
+  const PINES = [
+    [16, 30, 'Pulpo a la brasa', 'tostado por fuera, tierno por dentro'],
+    [44, 48, 'Corte limpio', 'para que se vea lo jugoso'],
+    [34, 70, 'Aceite y perejil', 'el aliño de siempre'],
+    [70, 90, 'Calabacín', 'salteado'],
+    [92, 40, 'Patata', 'para acompañar']
+  ];
+  const tabla = $('tabla'), pulpo = $('pulpo');
+  const tiras = [...Array(TIRAS)].map((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'tira';
+    d.style.clipPath = `inset(0 ${100 - (i + 1) * 100 / TIRAS}% 0 ${i * 100 / TIRAS}% round 18px)`;
+    tabla.appendChild(d);
+    return d;
+  });
+  const pines = PINES.map(([x, y, nombre, detalle]) => {
+    const d = document.createElement('div');
+    d.className = 'pin' + (x > 60 ? ' izq' : '');
+    d.innerHTML = `<b></b><span>${nombre}<small>${detalle}</small></span>`;
+    tabla.appendChild(d);
+    return { d, x, y, tira: Math.min(TIRAS - 1, Math.floor(x / (100 / TIRAS))) };
+  });
+  function escenaPulpo() {
+    const p = avance(pulpo);
+    const t = suave(tramo(p, .1, .45)) * (1 - suave(tramo(p, .85, .98)));
+    const hueco = tabla.offsetWidth * (innerWidth < 960 ? .05 : .07);
+    const desp = i => (i - (TIRAS - 1) / 2) * hueco * t;
+    tiras.forEach((d, i) => d.style.transform = `translate(${desp(i)}px, ${(i % 2 ? 14 : -14) * t}px) rotate(${(i % 2 ? 1.5 : -1.5) * t}deg)`);
+    pines.forEach(({ d, x, y, tira }, k) => {
+      d.style.left = `calc(${x}% + ${desp(tira)}px)`;
+      d.style.top = `calc(${y}% + ${(tira % 2 ? 14 : -14) * t}px)`;
+      d.classList.toggle('ve', p > .45 + k * .06 && p < .86);
+    });
+    $('pasoPulpo').textContent = p < .1 ? 'Recién salido de la brasa…' : p < .45 ? 'Lo cortamos…' : p < .86 ? 'Y esto es lo que lleva.' : 'Listo para la mesa.';
+  }
+
+  // ---------- 3 · Almejas ----------
+  const almejas = $('almejas'), cuenco = $('cuenco'), frases = [...$('frases').children];
+  function escenaAlmejas() {
+    const p = avance(almejas), t = suave(tramo(p, 0, .8));
+    cuenco.style.setProperty('--za', mezcla(1.7, 1, t));
+    cuenco.style.setProperty('--ra', mezcla(-25, 0, t) + 'deg');
+    frases.forEach((f, i) => f.classList.toggle('ve', p > .15 + i * .17));
+  }
+
+  // ---------- 4 · Paneo de la barra ----------
+  const barra = $('barra'), panorama = $('panorama');
+  function escenaBarra() {
+    const p = avance(barra);
+    const sobra = Math.max(0, panorama.offsetWidth - innerWidth);
+    panorama.style.transform = `translateX(${-p * sobra}px) scale(${mezcla(1.08, 1, p)})`;
+    $('chapa1').classList.toggle('ve', p > .1 && p < .55);
+    $('chapa2').classList.toggle('ve', p > .35 && p < .85);
+    $('chapa3').classList.toggle('ve', p > .7);
+  }
+
+  // ---------- Bucle ----------
+  const nav = $('nav'), progreso = $('progreso'), flotante = $('flotante');
+  let pendiente = false;
+  function pintar() {
+    pendiente = false;
+    progreso.style.transform = `scaleX(${scrollY / (document.documentElement.scrollHeight - innerHeight)})`;
+    nav.classList.toggle('solida', scrollY > inicio.offsetHeight - innerHeight);
+    flotante.classList.toggle('ve', scrollY > inicio.offsetHeight);
+    escenaInicio(); escenaPulpo(); escenaAlmejas(); escenaBarra();
+    const r = $('fotoSalon').getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight) $('fotoSalon').style.setProperty('--par', ((r.top + r.height / 2 - innerHeight / 2) * -.12) + 'px');
+  }
+  const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(pintar); } };
+  addEventListener('scroll', pedir, { passive: true });
+  addEventListener('resize', pedir);
+  panorama.addEventListener('load', pedir);
+  pintar();
+
+  const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll('.aparece').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
