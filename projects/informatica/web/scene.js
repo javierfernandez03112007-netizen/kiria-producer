@@ -403,56 +403,115 @@ function buildCalc() {
   lights(Z, 900); Z.add(new THREE.HemisphereLight(0xffffff, 0x2a1d16, 1.5));
 }
 function chalk(g, txt, x, y, size, k = 1, color = '#eef3ef') { g.save(); g.translate(x, y); g.rotate(-0.02 + 0.04 * hash(x + y)); g.font = `600 ${size}px Inter`; g.fillStyle = color; g.globalAlpha = 0.92; g.fillText(txt.slice(0, Math.ceil(txt.length * k)), 0, 0); g.restore(); }
+// límite imposible escrito con tiza (fracción de fracciones, raíces e integrales)
+const MON = {
+  A: [{ sqrt: 'aΛ²(x − 1) + bΛ(x − 1) + c' }, ' − ', { sqrt: 'c + Λ(x − 1)' }],
+  B: ['R', { big: '(' }, { int: 1 }, { frac: ['R(t)', '1 + t²'] }, 'dt', { big: ')' }, ' + R', { big: '(' }, { int: 1 }, { frac: ['1 + t²', 'sgn(t)'] }, 'dt', { big: ')' }, ' + 1 − x'],
+  C: [{ sqrt: 'bΛ(x − 1) − aΛ²(x − 1) + d' }, ' − ', { sqrt: 'd + Λ(x − 1)' }],
+  E: ['R', { big: '(' }, { int: 1 }, { frac: ['rect(t)', '1 + t²'] }, 'dt', { big: ')' }, ' + R', { big: '(' }, { int: 1 }, { frac: ['1 + t²', 'Λ(t) − 1'] }, 'dt', { big: ')' }, ' + 1 − x'],
+};
+function mrow(g, items, x, y, sz, draw) {
+  const F = s => `italic ${s}px Serif`, x0 = x;
+  for (const it of items) {
+    if (typeof it === 'string') { g.font = F(sz); if (draw) g.fillText(it, x, y); x += g.measureText(it).width; }
+    else if (it.sqrt) { g.font = F(sz); const w = g.measureText(it.sqrt).width; if (draw) { g.beginPath(); g.moveTo(x, y - 0.32 * sz); g.lineTo(x + 0.12 * sz, y - 0.4 * sz); g.lineTo(x + 0.25 * sz, y + 0.08 * sz); g.lineTo(x + 0.42 * sz, y - 0.86 * sz); g.lineTo(x + 0.5 * sz + w, y - 0.86 * sz); g.stroke(); g.fillText(it.sqrt, x + 0.48 * sz, y); } x += 0.55 * sz + w; }
+    else if (it.frac) { const fs = sz * 0.72; g.font = F(fs); const wn = g.measureText(it.frac[0]).width, wd = g.measureText(it.frac[1]).width, w = Math.max(wn, wd) + 0.3 * fs, yb = y - 0.3 * sz;
+      if (draw) { g.fillText(it.frac[0], x + (w - wn) / 2, yb - 0.2 * fs); g.fillText(it.frac[1], x + (w - wd) / 2, yb + 0.85 * fs); g.beginPath(); g.moveTo(x, yb); g.lineTo(x + w, yb); g.stroke(); } x += w + 0.1 * sz; }
+    else if (it.int) { if (draw) { g.font = `${sz * 1.7}px Serif`; g.fillText('∫', x, y + 0.3 * sz); g.font = F(sz * 0.45); g.fillText('−x', x + 0.45 * sz, y - 0.95 * sz); g.fillText('x²', x - 0.05 * sz, y + 0.75 * sz); } x += 0.75 * sz; }
+    else if (it.big) { if (draw) { g.save(); g.translate(x, y - 0.3 * sz); g.scale(1, 2.0); g.font = `${sz}px Serif`; g.fillText(it.big, 0, 0.33 * sz); g.restore(); } x += 0.4 * sz; }
+  }
+  return x - x0;
+}
+function drawMonster(g, X, Y, maxW, k, color) {
+  g.save(); g.fillStyle = color; g.strokeStyle = color; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+  const w1 = Math.max(...['A', 'B', 'C', 'E'].map(r => mrow(g, MON[r], 0, 0, 1, false))), sz = Math.min(52, maxW / w1), W = w1 * sz; S.monW = W;
+  g.lineWidth = Math.max(3, sz * 0.07); g.lineCap = 'round';
+  g.beginPath(); g.rect(X - 260, 0, 260 + (W + 40) * k, 2000); g.clip();          // se va escribiendo de izquierda a derecha
+  const lim = Y + 0.15 * sz; g.font = `${sz * 1.1}px Serif`; g.fillText('lim', X - 1.95 * sz, lim); g.font = `italic ${sz * 0.5}px Serif`; g.fillText('x → −1⁺', X - 2.15 * sz, lim + 0.75 * sz);
+  const b1 = Y - 2.25 * sz, b2 = Y + 1.45 * sz, row = (r, y) => { const w = mrow(g, MON[r], 0, 0, sz, false); mrow(g, MON[r], X + (W - w) / 2, y, sz, true); };
+  row('A', b1 - 0.35 * sz); row('B', b1 + 1.3 * sz); row('C', Y + 0.95 * sz); row('E', b2 + 1.3 * sz);
+  for (const [y, w] of [[b1, W * 0.96], [Y, W + 0.3 * sz], [b2, W * 0.96]]) { g.beginPath(); g.moveTo(X + (W - w) / 2, y); g.lineTo(X + (W + w) / 2, y); g.stroke(); }
+  g.restore();
+}
 function calcAt(t) {
   const O = zones.calc.position, t0 = ZT.find(z => z[0] === 'calc')[1], g = S.calcTex.userData.g;
   g.fillStyle = '#1f4a37'; g.fillRect(0, 0, 1600, 1040); for (let i = 0; i < 40; i++) { g.fillStyle = `rgba(255,255,255,${0.015 + 0.02 * hash(i)})`; g.fillRect(hash(i * 3) * 1600, hash(i * 5) * 1040, 200, 60); }
   g.textBaseline = 'alphabetic'; g.textAlign = 'left';
   // límites que se escriben cada vez más rápido (y más pequeños) hasta llenar la pizarra
-  const lt = t - (K.limites - 0.25);
-  if (lt > 0) { let x = 40, y = 120, size = 74, n = 0; for (let i = 0; i < 60; i++) { const tw = Math.pow(0.82, i) * 0.55 + 0.04, s0 = i === 0 ? 0 : (1 - Math.pow(0.82, i)) / (1 - 0.82) * 0.55 * 0.82 + i * 0.04; const k = clamp((lt - s0) / tw); if (k <= 0) break; const L = LIMS[(2 * i) % LIMS.length], sub = LIMS[(2 * i + 1) % LIMS.length]; const sz = Math.max(30, size - i * 2.2); chalk(g, L, x, y, sz, k); chalk(g, sub, x + sz * 0.3, y + sz * 0.55, sz * 0.5, k, '#cfe2d6'); g.font = `600 ${sz}px Inter`; x += g.measureText(L).width + 70; if (x > 1250) { x = 40 + 120 * hash(i); y += sz * 1.6; } if (y > 1000) { y = 120 + 60 * hash(i); x = 90 + 300 * hash(i * 2); } n++; } }
+  drawMonster(g, 330, 250, 1060, eio(prog(t, t0 + 0.1, K.limites + 0.5 - t0)), '#eef3ef');
+  const lt = t - (K.limites + 0.2);
+  if (lt > 0) { let x = 200, y = 520, size = 74, n = 0; for (let i = 0; i < 60; i++) { const tw = Math.pow(0.82, i) * 0.55 + 0.04, s0 = i === 0 ? 0 : (1 - Math.pow(0.82, i)) / (1 - 0.82) * 0.55 * 0.82 + i * 0.04; const k = clamp((lt - s0) / tw); if (k <= 0) break; const L = LIMS[(2 * i) % LIMS.length], sub = LIMS[(2 * i + 1) % LIMS.length]; const sz = Math.max(30, size - i * 2.2); chalk(g, L, x, y, sz, k); chalk(g, sub, x + sz * 0.3, y + sz * 0.55, sz * 0.5, k, '#cfe2d6'); g.font = `600 ${sz}px Inter`; x += g.measureText(L).width + 70; if (x > 1250) { x = 200 + 100 * hash(i); y += sz * 1.6; } if (y > 1000) { y = 120 + 60 * hash(i); x = 90 + 300 * hash(i * 2); } n++; } }
   // derivada (tangente que se desliza) e integral (área que se rellena), en el centro
   const dA = env(t, K.derivadas - 0.1, 99, 0.25, 0.1), iA = env(t, K.integrales - 0.1, 99, 0.25, 0.1);
-  if (dA > 0) { g.save(); g.globalAlpha = dA; g.fillStyle = 'rgba(15,40,30,.85)'; g.fillRect(380, 300, 840, 520); g.strokeStyle = '#eef3ef'; g.lineWidth = 6; g.beginPath(); for (let i = 0; i <= 100; i++) { const x = 420 + i * 7.6, yv = 700 - 260 * Math.sin(i / 100 * Math.PI * 0.9) * (0.5 + i / 200); i ? g.lineTo(x, yv) : g.moveTo(x, yv); } g.stroke();
+  if (dA > 0) { g.save(); g.translate(0, 190); g.globalAlpha = dA; g.fillStyle = 'rgba(15,40,30,.85)'; g.fillRect(380, 300, 840, 520); g.strokeStyle = '#eef3ef'; g.lineWidth = 6; g.beginPath(); for (let i = 0; i <= 100; i++) { const x = 420 + i * 7.6, yv = 700 - 260 * Math.sin(i / 100 * Math.PI * 0.9) * (0.5 + i / 200); i ? g.lineTo(x, yv) : g.moveTo(x, yv); } g.stroke();
     if (iA > 0) { g.globalAlpha = 0.55 * iA; g.fillStyle = '#ff6b5e'; g.beginPath(); g.moveTo(420, 760); const m = Math.floor(100 * eo(prog(t, K.integrales, 0.8))); for (let i = 0; i <= m; i++) { const x = 420 + i * 7.6, yv = 700 - 260 * Math.sin(i / 100 * Math.PI * 0.9) * (0.5 + i / 200); g.lineTo(x, yv); } g.lineTo(420 + m * 7.6, 760); g.fill(); g.globalAlpha = dA; }
     const u = (t - K.derivadas) * 0.35 % 1, i0 = u * 100, x0 = 420 + i0 * 7.6, f = q => 700 - 260 * Math.sin(q / 100 * Math.PI * 0.9) * (0.5 + q / 200), y0 = f(i0), sl = (f(i0 + 0.5) - f(i0 - 0.5)) / 7.6;
     g.strokeStyle = '#ff5a1f'; g.lineWidth = 7; g.beginPath(); g.moveTo(x0 - 220, y0 - sl * 220); g.lineTo(x0 + 220, y0 + sl * 220); g.stroke(); g.fillStyle = '#ff5a1f'; g.beginPath(); g.arc(x0, y0, 12, 0, 7); g.fill();
     chalk(g, "f '(x)", 440, 380, 70, 1, '#ffd2b8'); if (iA > 0) chalk(g, '∫ f(x) dx', 900, 380, 70, 1, '#ffb3aa'); g.restore(); }
   S.calcTex.needsUpdate = true;
   const u = eio(prog(t, t0, ZT.find(z => z[0] === 'alg')[1] - t0)), push = eio(prog(t, K.limites, 1.6));
-  cam.position.set(O.x, 2.4, lerp(14.5, 12.8, push) - 0.3 * u); cam.lookAt(O.x, 2.4, 0);
+  // primero la cámara sigue la tiza de cerca mientras escribe el límite imposible; luego se aleja y la pizarra se llena
+  const wk = eio(prog(t, t0 + 0.1, K.limites + 0.5 - t0)), head = ((330 + (S.monW || 1000) * wk) / 1600 - 0.5) * 6.1;
+  const near = v3(O.x + clamp(head - 0.6, -1.4, 1.6), 3.35, 5.2), far = v3(O.x, 2.4, 12.8 - 0.3 * u), back = eio(prog(t, K.limites + 0.35, 0.8));
+  const cp = near.clone().lerp(far, back); cam.position.copy(cp); cam.lookAt(cp.x, cp.y, 0);
 }
 
 // ---------------------------------------------------------------- 10 · álgebra: figuras que giran, se estiran y se aplastan
 function buildAlg() {
   const Z = zone('alg', 1000);
-  const sp = new THREE.Group(); Z.add(sp); S.space = sp; sp.position.y = 1.6;
-  const L = []; for (let i = -3; i <= 3; i++) for (let j = -3; j <= 3; j++) { L.push(-3 * 0.5, i * 0.5, j * 0.5, 3 * 0.5, i * 0.5, j * 0.5); L.push(i * 0.5, -3 * 0.5, j * 0.5, i * 0.5, 3 * 0.5, j * 0.5); L.push(i * 0.5, j * 0.5, -3 * 0.5, i * 0.5, j * 0.5, 3 * 0.5); }
-  sp.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(L, 3)), new THREE.LineBasicMaterial({ color: C.blue, transparent: true, opacity: 0.35 })));
-  // figuras vacías: solo aristas blancas finas, cada una gira sobre su eje inclinado (como la Tierra)
-  const lm = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.92 });
-  const fig = (geo, x, y, z, wire = false) => { const tilt = new THREE.Group(); tilt.position.set(x, y, z); tilt.rotation.z = 0.41; sp.add(tilt); const l = new THREE.LineSegments(wire ? new THREE.WireframeGeometry(geo) : new THREE.EdgesGeometry(geo, 1), lm); tilt.add(l); return l; };
-  S.figs = [fig(new THREE.TorusKnotGeometry(0.42, 0.13, 44, 5, 2, 3), -0.6, 0.3, 0, true), fig(new THREE.ConeGeometry(0.45, 0.8, 4), 0.8, -0.4, 0.4),
-    fig(new THREE.BoxGeometry(0.6, 0.6, 0.6), 0.5, 0.75, -0.6), fig(new THREE.IcosahedronGeometry(0.35, 0), -0.7, -0.75, 0.6),
-    fig(new THREE.OctahedronGeometry(0.28, 0), 0.9, 0.5, 0.9), fig(new THREE.SphereGeometry(0.3, 10, 6), -0.9, 0.9, -0.8, true), fig(new THREE.DodecahedronGeometry(0.28, 0), 0.1, -0.9, -0.9)];
-  S.mat = label('[ 1  0  0 ]', { size: 70, w: 1.8, font: 'Mono', weight: 700 }); Z.add(S.mat);
-  S.matTex = canvasTex(700, 300); S.matBoard = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 0.9), new THREE.MeshBasicMaterial({ map: S.matTex, transparent: true })); Z.add(S.matBoard); S.mat.visible = false;
+  // figuras de alambre (referencia del usuario): se presentan de una en una y giran sobre su eje
+  const lm = new THREE.LineBasicMaterial({ color: 0x5aa0ff, transparent: true, opacity: 0.95 });
+  const segs = (L, pts, closed = false) => { for (let i = 0; i < pts.length - (closed ? 0 : 1); i++) { const a = pts[i], b = pts[(i + 1) % pts.length]; L.push(a[0], a[1], a[2], b[0], b[1], b[2]); } };
+  const surf = (L, fn, nu, nv, su = 48, sv = 48, cu = false, cv = false) => {
+    for (let i = 0; i <= nu - (cu ? 1 : 0); i++) { const pts = []; for (let k = 0; k <= sv; k++) pts.push(fn(i / nu, k / sv)); segs(L, pts); }
+    for (let j = 0; j <= nv - (cv ? 1 : 0); j++) { const pts = []; for (let k = 0; k <= su; k++) pts.push(fn(k / su, j / nv)); segs(L, pts); }
+  };
+  const rev = (r, y) => (u, v) => { const a = u * Math.PI * 2; return [Math.cos(a) * r(v), y(v), Math.sin(a) * r(v)]; };
+  const star = (n, r1, r2, y = 0, rot = 0, s = 1) => Array.from({ length: n * 2 }, (_, i) => { const a = rot + i * Math.PI / n, r = (i % 2 ? r2 : r1) * s; return [Math.cos(a) * r, y, Math.sin(a) * r]; });
+  const B = [];
+  // 1 · malla deformada
+  B.push(L => surf(L, (u, v) => { const x = (u - 0.5) * 1.5, y = (v - 0.5) * 2.2; return [x + 0.18 * Math.sin(v * Math.PI * 1.5), y, 0.45 * Math.exp(-((x + 0.15) ** 2 * 5 + (y - 0.1) ** 2 * 1.4)) - 0.2 * Math.cos(v * 3)]; }, 14, 20));
+  // 2 · prisma de estrella con punta
+  B.push(L => { const lo = star(5, 0.95, 0.45, -0.45), hi = star(5, 0.95, 0.45, 0.15); segs(L, lo, true); segs(L, hi, true); lo.forEach((p, i) => { segs(L, [p, hi[i]]); segs(L, [hi[i], [0, 0.95, 0]]); }); for (let k = 1; k < 3; k++) segs(L, star(5, 0.95, 0.45, -0.45 + k * 0.2), true); });
+  // 3 · huevo / bala
+  B.push(L => surf(L, rev(v => 0.62 * Math.sqrt(Math.max(0, 1 - (v * 1.4 - 0.4) ** 2)), v => (v * 1.4 - 0.4) * 1.1), 14, 10, 48, 48, true));
+  // 4 · chevron de cuadrados apilados
+  B.push(L => { for (let i = 0; i <= 26; i++) { const s = i / 26, x = (s - 0.5) * 2.0, y = 0.55 - Math.abs(x) * 0.9, nx = Math.sign(x || 1) * 0.9, n = Math.hypot(nx, 1), px = nx / n * 0.22, py = 1 / n * 0.22; segs(L, [[x - px, y - py, -0.22], [x + px, y + py, -0.22], [x + px, y + py, 0.22], [x - px, y - py, 0.22]], true); } });
+  // 5 · estrella retorcida (contornos apilados que giran)
+  B.push(L => { for (let i = 0; i < 18; i++) { const pts = star(6, 1.0, 0.5, 0, i * 0.06, 1 - i * 0.02).map(p => [p[0], p[2], (i - 9) * 0.035]); segs(L, pts, true); } });
+  // 6 · toro grande
+  B.push(L => surf(L, (u, v) => { const a = u * Math.PI * 2, b = v * Math.PI * 2, R = 0.85, r = 0.32; return [(R + r * Math.cos(b)) * Math.cos(a), r * Math.sin(b), (R + r * Math.cos(b)) * Math.sin(a)]; }, 28, 14, 64, 32, true, true));
+  // 7 · toro hinchado con pico en el centro
+  B.push(L => { surf(L, (u, v) => { const a = u * Math.PI * 2, b = v * Math.PI * 2, R = 0.62, r = 0.42; return [(R + r * Math.cos(b)) * Math.cos(a), 0.55 * r * Math.sin(b), (R + r * Math.cos(b)) * Math.sin(a)]; }, 24, 12, 64, 32, true, true); surf(L, rev(v => 0.2 * (1 - v), v => 0.05 + v * 0.22), 8, 2, 24, 4, true); });
+  // 8 · cuenco
+  B.push(L => { surf(L, rev(v => 0.3 + 0.48 * Math.sin(Math.PI * (0.12 + 0.7 * v)), v => v * 0.9 - 0.45), 20, 9, 64, 32, true); surf(L, rev(v => 0.42 - 0.08 * v, v => 0.45 - v * 0.25), 20, 2, 64, 8, true); });
+  S.figs = B.map(build => { const L = []; build(L); const tilt = new THREE.Group(); tilt.position.y = 1.95; Z.add(tilt); const spin = new THREE.Group(); tilt.add(spin);
+    spin.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(L, 3)), lm)); return { tilt, spin }; });
+  S.matTex = canvasTex(700, 300); S.matBoard = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 0.77), new THREE.MeshBasicMaterial({ map: S.matTex, transparent: true })); Z.add(S.matBoard);
 }
 function algAt(t) {
   const O = zones.alg.position, t0 = ZT.find(z => z[0] === 'alg')[1];
   const rot = eio(prog(t, K.giran - 0.1, 0.5)), str = eio(prog(t, K.estiran - 0.05, 0.4)), sq = prog(t, K.aplastan - 0.05, 0.35);
-  const sqE = sq < 1 ? eo(sq) : 1;
-  S.space.rotation.set(0.3 + rot * 0.8, (t - t0) * 0.4 + rot * Math.PI * 0.9, 0);
-  S.figs.forEach((f, i) => { f.rotation.y = (t - t0) * (1.2 + 0.35 * i) * (i % 2 ? -1 : 1); });
-  const bounce = sq >= 1 ? 1 + 0.15 * Math.exp(-(t - K.aplastan - 0.3) * 6) * Math.cos((t - K.aplastan) * 25) : 1;
-  S.space.scale.set(1 + 0.8 * str, Math.max(0.03, (1 - 0.97 * sqE)) * (sq >= 1 ? bounce : 1), 1);
+  const sqE = sq < 1 ? eo(sq) : 1, bounce = sq >= 1 ? 1 + 0.15 * Math.exp(-(t - K.aplastan - 0.3) * 6) * Math.cos((t - K.aplastan) * 25) : 1;
+  // una figura cada vez: entra por la derecha, gira sobre su eje (inclinado, como la Tierra) y sale por la izquierda
+  const T = [t0, K.algebra + 0.4, K.matrices, (K.matrices + K.giran) / 2, K.giran, K.estiran, (K.estiran + K.aplastan) / 2, K.aplastan, 1e9];
+  S.figs.forEach((f, i) => {
+    const a = T[i], b = T[i + 1], inn = i === 0 ? 1 : eo(prog(t, a - 0.1, 0.24)), out = eio(prog(t, b - 0.1, 0.22));
+    f.tilt.visible = t > a - 0.1 && t < b + 0.12; if (!f.tilt.visible) return;
+    f.tilt.position.x = 3.2 * (1 - inn) - 3.2 * out; f.tilt.rotation.z = 0.41;
+    const s = 1.22 * (0.6 + 0.4 * inn) * (1 - 0.4 * out); f.tilt.scale.setScalar(s);
+    f.spin.rotation.set(i === 4 ? 0 : 0.25, (t - a) * 2.4, i === 4 ? (t - a) * 5 * rot : 0);
+    if (i === 5) f.spin.scale.set(1 + 0.8 * str, 1, 1);
+    if (i === 7) { f.tilt.rotation.z = 0.41 * (1 - sqE); f.spin.scale.set(1 + 0.3 * sqE, Math.max(0.03, 1 - 0.97 * sqE) * bounce, 1 + 0.3 * sqE); }
+  });
   const g = S.matTex.userData.g; g.clearRect(0, 0, 700, 300); g.fillStyle = 'rgba(20,22,26,.85)'; rr(g, 0, 0, 700, 300, 40); g.fill();
-  const m = sq > 0.5 ? [['1', '0', '0'], ['0', '0', '0'], ['0', '0', '1']] : str > 0.5 ? [['1.8', '0', '0'], ['0', '1', '0'], ['0', '0', '1']] : rot > 0.5 ? ['cos θ', '−sen θ', '0'].map((_, i) => i === 0 ? ['cos', '−sen', '0'] : i === 1 ? ['sen', 'cos', '0'] : ['0', '0', '1']) : [['1', '0', '0'], ['0', '1', '0'], ['0', '0', '1']];
+  const m = sq > 0.5 ? [['1', '0', '0'], ['0', '0', '0'], ['0', '0', '1']] : str > 0.5 ? [['1.8', '0', '0'], ['0', '1', '0'], ['0', '0', '1']] : rot > 0.5 ? [['cos', '−sen', '0'], ['sen', 'cos', '0'], ['0', '0', '1']] : [['1', '0', '0'], ['0', '1', '0'], ['0', '0', '1']];
   g.font = '700 60px Mono'; g.textAlign = 'center'; g.textBaseline = 'middle';
   m.forEach((row, i) => row.forEach((v, j) => { g.fillStyle = (sq > 0.5 && i === 1 && j === 1) || (str > 0.5 && i === 0 && j === 0) ? '#ff5a1f' : '#f0f0f0'; g.fillText(v, 180 + j * 170, 65 + i * 85); }));
   g.strokeStyle = '#f0f0f0'; g.lineWidth = 8; g.beginPath(); g.moveTo(90, 25); g.lineTo(60, 25); g.lineTo(60, 275); g.lineTo(90, 275); g.moveTo(610, 25); g.lineTo(640, 25); g.lineTo(640, 275); g.lineTo(610, 275); g.stroke();
   S.matTex.needsUpdate = true;
-  S.matBoard.position.set(O.x, 3.55, 0.6); S.matBoard.lookAt(cam.position); S.matBoard.material.opacity = env(t, K.matrices - 0.1, 99, 0.3, 0.1);
-  const u = eio(prog(t, t0, 4)); cam.position.set(O.x, 2.6, lerp(8.4, 7.4, u)); cam.lookAt(O.x, 2.0, 0);
+  S.matBoard.position.set(0, 3.6, 0.3); S.matBoard.material.opacity = env(t, K.matrices - 0.1, 99, 0.3, 0.1);
+  const u = eio(prog(t, t0, 4)); cam.position.set(O.x, 2.0, lerp(7.6, 7.0, u)); cam.lookAt(O.x, 2.0, 0);
 }
 
 // ---------------------------------------------------------------- 11 · programación: variables, bucles, funciones
@@ -548,13 +607,42 @@ function buildZoom() {
   S.lapKeys = new THREE.Mesh(new THREE.PlaneGeometry(2.8, 1.0), new THREE.MeshStandardMaterial({ map: keysTex(), roughness: 0.6, transparent: true }));
   S.lapKeys.rotation.x = -Math.PI / 2; S.lapKeys.position.set(0, 0.062, -0.35); S.lapKeys.renderOrder = 5; lap.add(S.lapKeys);
   S.lapPad = rbox(1.0, 0.004, 0.6, new THREE.MeshStandardMaterial({ color: 0x4a4e55, roughness: 0.35, transparent: true }), 0.002); S.lapPad.position.set(0, 0.061, 0.62); S.lapPad.renderOrder = 5; lap.add(S.lapPad);
-  // placa dentro (escala 0.1) en el centro del teclado
+  // placa base (inspirada en una real: zócalo con ventilador, ranuras de RAM, PCI y AGP, chips QFP, condensadores, pila, conectores)
   const board = new THREE.Group(); board.position.set(0, -0.01, 0.2); board.scale.setScalar(0.12); lap.add(board);
-  board.add(rbox(4, 0.1, 3, clay(0x2f6e4f, 0.6), 0.04));
-  const pcb = canvasTex(1600, 1200, (g, w, h) => { g.fillStyle = '#2f6e4f'; g.fillRect(0, 0, w, h); g.strokeStyle = '#d9a441'; g.lineCap = 'round';
-    for (let i = 0; i < 160; i++) { g.lineWidth = 3 + hash(i) * 5; g.beginPath(); let x = hash(i * 3) * w, y = hash(i * 5) * h; g.moveTo(x, y); for (let k = 0; k < 3; k++) { if ((i + k) % 2) x += (hash(i * 7 + k) - 0.5) * 500; else y += (hash(i * 11 + k) - 0.5) * 400; g.lineTo(x, y); } g.stroke(); g.fillStyle = '#e8c070'; g.beginPath(); g.arc(x, y, 7, 0, 7); g.fill(); } });
-  const pcbM = new THREE.Mesh(new THREE.PlaneGeometry(3.9, 2.9), new THREE.MeshStandardMaterial({ map: pcb, roughness: 0.5 })); pcbM.rotation.x = -Math.PI / 2; pcbM.position.y = 0.051; board.add(pcbM);
-  for (let i = 0; i < 30; i++) { const c = rbox(0.2 + hash(i) * 0.4, 0.15, 0.2 + hash(i * 2) * 0.3, clay([0x1d1f23, 0x2a2c31, 0xc9c9c9, C.orange][i % 4], 0.4), 0.02); if (Math.hypot((hash(i * 3) - 0.5) * 3.4, (hash(i * 5) - 0.5) * 2.4) < 0.8) continue; c.position.set((hash(i * 3) - 0.5) * 3.4, 0.1, (hash(i * 5) - 0.5) * 2.4); board.add(c); }
+  board.add(rbox(4, 0.1, 3, clay(0x1f5a3a, 0.6), 0.04));
+  const pcb = canvasTex(2000, 1500, (g, w, h) => { g.fillStyle = '#1f5a3a'; g.fillRect(0, 0, w, h); g.lineCap = 'round';
+    for (let i = 0; i < 420; i++) { g.strokeStyle = hash(i * 13) < 0.7 ? 'rgba(120,190,120,.55)' : 'rgba(217,164,65,.8)'; g.lineWidth = 2 + hash(i) * 3; g.beginPath(); let x = hash(i * 3) * w, y = hash(i * 5) * h; g.moveTo(x, y); for (let k = 0; k < 3; k++) { if ((i + k) % 2) x += (hash(i * 7 + k) - 0.5) * 300; else y += (hash(i * 11 + k) - 0.5) * 240; g.lineTo(x, y); } g.stroke(); }
+    for (let i = 0; i < 260; i++) { g.fillStyle = '#d6dcd2'; g.globalAlpha = 0.7; g.fillRect(hash(i * 17) * w, hash(i * 19) * h, 14 + hash(i) * 26, 3); g.fillRect(hash(i * 17) * w, hash(i * 19) * h + 10, 3, 10); }
+    g.globalAlpha = 1; g.font = '700 26px Inter'; g.fillStyle = '#e6ece2'; ['CPU', 'DIMM1', 'DIMM2', 'DIMM3', 'DIMM4', 'AGP', 'PCI1', 'PCI2', 'PCI3', 'IDE1', 'IDE2', 'BAT', 'ATX', 'J12', 'R105', 'C73'].forEach((s, i) => g.fillText(s, hash(i * 23) * (w - 120), 40 + hash(i * 29) * (h - 60)));
+    for (const [x, y] of [[40, 40], [w - 40, 40], [40, h - 40], [w - 40, h - 40], [w / 2, 60]]) { g.fillStyle = '#c9b27a'; g.beginPath(); g.arc(x, y, 22, 0, 7); g.fill(); g.fillStyle = '#0d1a12'; g.beginPath(); g.arc(x, y, 12, 0, 7); g.fill(); } });
+  const pcbM = new THREE.Mesh(new THREE.PlaneGeometry(3.95, 2.95), new THREE.MeshStandardMaterial({ map: pcb, roughness: 0.45 })); pcbM.rotation.x = -Math.PI / 2; pcbM.position.y = 0.051; board.add(pcbM);
+  const put = (m, x, y, z) => { m.position.set(x, 0.05 + y, z); board.add(m); return m; };
+  const slot = (len, col, x, z, along = 'z') => { const g = new THREE.Group(); const b = rbox(along === 'z' ? 0.09 : len, 0.1, along === 'z' ? len : 0.09, clay(col, 0.5), 0.015); g.add(b); const gr = new THREE.Mesh(new THREE.BoxGeometry(along === 'z' ? 0.02 : len * 0.94, 0.01, along === 'z' ? len * 0.94 : 0.02), clay(0x111111)); gr.position.y = 0.05; g.add(gr); for (const s of [-1, 1]) { const c = rbox(0.11, 0.14, 0.05, clay(col, 0.5), 0.01); if (along === 'z') c.position.set(0, 0.02, s * len / 2); else { c.rotation.y = Math.PI / 2; c.position.set(s * len / 2, 0.02, 0); } g.add(c); } return put(g, x, 0.05, z); };
+  const qfp = (s, x, z, txt) => { const g = new THREE.Group(); g.add(rbox(s, 0.06, s, clay(0x15161a, 0.35), 0.01)); const pm = clay(0xc9ccd2, 0.3); for (let k = 0; k < 4; k++) { const p = new THREE.Mesh(new THREE.BoxGeometry(s * 0.86, 0.012, 0.06), pm); p.position.set(0, -0.02, s / 2 + 0.03); const r = new THREE.Group(); r.rotation.y = k * Math.PI / 2; r.add(p); g.add(r); }
+    if (txt) { const l = label(txt, { size: 40, w: s * 0.7, color: '#9aa0a8', weight: 600 }); l.rotation.x = -Math.PI / 2; l.position.y = 0.032; g.add(l); } return put(g, x, 0.03, z); };
+  // ventilador del procesador
+  { const g = new THREE.Group(); const hs = rbox(0.85, 0.22, 0.85, clay(0x8a8e95, 0.35), 0.02); hs.position.y = 0.11; g.add(hs); const fr = rbox(0.78, 0.14, 0.78, clay(0x141518, 0.5), 0.05); fr.position.y = 0.29; g.add(fr);
+    S.fan = new THREE.Group(); S.fan.position.y = 0.37; g.add(S.fan); const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.03, 28), new THREE.MeshStandardMaterial({ color: 0x3d8fd8, roughness: 0.5 })); S.fan.add(hub);
+    for (let k = 0; k < 7; k++) { const bl = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.01, 0.1), clay(0x1d1e22, 0.5)); bl.position.set(Math.cos(k / 7 * Math.PI * 2) * 0.24, 0, Math.sin(k / 7 * Math.PI * 2) * 0.24); bl.rotation.set(0.4, -k / 7 * Math.PI * 2, 0); S.fan.add(bl); }
+    const cw = new THREE.Mesh(new THREE.RingGeometry(0.34, 0.37, 40), clay(0x0a0a0c)); cw.rotation.x = -Math.PI / 2; cw.position.y = 0.365; g.add(cw); put(g, -1.4, 0, -0.95); }
+  // RAM (blancas), AGP (marrón) y PCI (crema)
+  [-1.22, -1.09, -0.96, -0.83].forEach(x => slot(1.7, 0xefe8d8, x, 0.45));
+  slot(1.6, 0x6b3a22, -0.66, 0.5);
+  [-1.32, -1.12, -0.92].forEach(z => slot(1.5, 0xe8d9b5, 1.05, z, 'x'));
+  // chips
+  qfp(0.55, 1.05, 0.05, 'NEC'); qfp(0.42, 0.95, 0.75, 'KOREA'); qfp(0.32, 1.65, 0.45); qfp(0.28, -0.05, -1.1);
+  // pila de botón
+  { const g = new THREE.Group(); const hb = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.03, 32), clay(0x2a2c31, 0.4)); g.add(hb); const cell = new THREE.Mesh(new THREE.CylinderGeometry(0.21, 0.21, 0.04, 32), new THREE.MeshStandardMaterial({ color: 0x3b8fe0, roughness: 0.35 })); cell.position.y = 0.03; g.add(cell); put(g, 0.45, 0.02, 1.15); }
+  // conectores IDE (negros) y de alimentación ATX (blanco)
+  for (const z of [1.05, 1.3]) { const c = rbox(0.9, 0.12, 0.17, clay(0x141518, 0.5), 0.01); put(c, -0.05, 0.06, z); const pins = new THREE.Mesh(new THREE.PlaneGeometry(0.82, 0.08), new THREE.MeshBasicMaterial({ map: canvasTex(400, 40, (g, w, h) => { g.fillStyle = '#0c0d10'; g.fillRect(0, 0, w, h); g.fillStyle = '#c9b27a'; for (let i = 0; i < 20; i++) for (let j = 0; j < 2; j++) g.fillRect(8 + i * 19.5, 8 + j * 16, 6, 6); }) })); pins.rotation.x = -Math.PI / 2; put(pins, -0.05, 0.121, z); }
+  { const c = rbox(0.62, 0.15, 0.22, clay(0xf2efe8, 0.5), 0.01); put(c, 1.45, 0.075, 1.25); const holes = new THREE.Mesh(new THREE.PlaneGeometry(0.56, 0.17), new THREE.MeshBasicMaterial({ map: canvasTex(320, 100, (g, w, h) => { g.fillStyle = '#f2efe8'; g.fillRect(0, 0, w, h); g.fillStyle = '#3a3226'; for (let i = 0; i < 10; i++) for (let j = 0; j < 2; j++) g.fillRect(10 + i * 31, 14 + j * 44, 22, 28); }) })); holes.rotation.x = -Math.PI / 2; put(holes, 1.45, 0.151, 1.25); }
+  // condensadores electrolíticos
+  const capM = clay(0xb8bcc4, 0.3), capT = clay(0x8c3a2e, 0.5);
+  [[-0.85, -1.35], [-0.75, -0.55], [-1.85, -0.3], [-1.85, 0.0], [-1.6, 0.25], [-0.45, -0.6], [-0.4, 0.7], [-0.45, 1.3], [0.55, -0.55], [0.6, 0.55], [1.55, -0.65], [1.85, -0.2], [1.85, 0.95], [0.9, 1.3], [-1.85, 1.3], [-1.6, 1.3], [0.1, 0.75], [-0.5, -1.35]].forEach(([x, z], i) => { const c = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.17, 16), capM); put(c, x, 0.085, z); const top = new THREE.Mesh(new THREE.CircleGeometry(0.05, 16), capT); top.rotation.x = -Math.PI / 2; put(top, x, 0.171, z); });
+  // componentes SMD pequeños
+  for (let i = 0; i < 70; i++) { const x = (hash(i * 31) - 0.5) * 3.7, z = (hash(i * 37) - 0.5) * 2.7; if (Math.hypot(x, z) < 0.65) continue; if (x < -0.55 && z > -0.45) continue; if (x > 0.25 && z < -0.8) continue; const c = rbox(0.1 + hash(i) * 0.08, 0.03, 0.06, clay(i % 3 ? 0x15161a : 0x6b5a3a, 0.4), 0.005); put(c, x, 0.015, z); }
+  // puertos traseros
+  for (let k = 0; k < 4; k++) { const p = rbox(0.22, 0.2, 0.3, clay(0xb8bcc4, 0.3), 0.02); put(p, 1.85, 0.1, -0.05 + k * 0.3); }
   // chip (escala 0.01) en el centro de la placa
   const chip = new THREE.Group(); chip.position.set(0, 0.15, 0); board.add(chip); chip.add(rbox(1.0, 0.12, 1.0, clay(0x2a2c31, 0.3), 0.03));
   const die = canvasTex(2048, 2048, (g, w, h) => { g.fillStyle = '#1c2b52'; g.fillRect(0, 0, w, h);
@@ -572,6 +660,7 @@ function buildZoom() {
 }
 function zoomAt(t) {
   const O = zones.zoom.position, t0 = ZT.find(z => z[0] === 'zoom')[1];
+  S.fan.rotation.y = t * 9;
   const a = (t - t0) * 7; S.electron.position.set(Math.cos(a) * 0.45, 0.2, Math.sin(a) * 0.3); S.eGlow.position.copy(S.electron.position);
   const tw = S.tr.getWorldPosition(v3(0, 0, 0));
   // distancia logarítmica: del electrón (muy cerca) al portátil completo
@@ -609,7 +698,8 @@ window.renderAt = function (t) {
   const F = '../../../engine/fonts/';
   const faces = [new FontFace('Inter', `url(${F}Inter-Black.otf)`, { weight: '900' }), new FontFace('Inter', `url(${F}Inter-Bold.otf)`, { weight: '800' }),
     new FontFace('Inter', `url(${F}Inter-Bold.otf)`, { weight: '700' }), new FontFace('Inter', `url(${F}Inter-SemiBold.otf)`, { weight: '600' }),
-    new FontFace('Mono', `url(${F}DejaVuSansMono-Bold.ttf)`, { weight: '700' })];
+    new FontFace('Mono', `url(${F}DejaVuSansMono-Bold.ttf)`, { weight: '700' }),
+    new FontFace('Serif', `url(${F}LiberationSerif-Regular.ttf)`), new FontFace('Serif', `url(${F}LiberationSerif-Italic.ttf)`, { style: 'italic' })];
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   const lines = await (await fetch('../tiempos.json')).json();
   WORDS = lines.flatMap(l => l.words.map(w => ({ ...w, n: norm(w.w) })));
