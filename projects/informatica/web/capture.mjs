@@ -26,7 +26,7 @@ const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
 page.on('console', m => { if (m.type() === 'error' || m.text().startsWith('ERROR')) console.log('[page]', m.text()); });
 page.on('pageerror', e => console.log('[pageerror]', e.message));
 await page.goto(`http://127.0.0.1:${port}/projects/informatica/web/index.html`);
-await page.waitForFunction(() => window.ready === true || window.failed, null, { timeout: 120000 });
+await page.waitForFunction(() => window.ready === true || window.failed, null, { timeout: 400000 });
 const failed = await page.evaluate(() => window.failed);
 if (failed) { console.log('FAILED', failed); process.exit(1); }
 const t0 = Date.now();
