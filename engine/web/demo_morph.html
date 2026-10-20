@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}</style>
+<script type="importmap">{"imports":{"three":"../../projects/cobertura/web/node_modules/three/build/three.module.js"}}</script>
+</head><body><script type="module">
+// Demo del motor de morfos: esfera → moneda → dónut → billete → gota, con aplastamiento elástico.
+import * as THREE from 'three';
+import { Morpher, squash } from './morph.js';
+const W = 1080, H = 1920;
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }); r.setSize(W, H); document.body.appendChild(r.domElement);
+r.outputColorSpace = THREE.SRGBColorSpace;
+const s = new THREE.Scene(); s.background = new THREE.Color(0x050505);
+const c = new THREE.PerspectiveCamera(35, W / H, 0.1, 50); c.position.set(0, 0.6, 4.2); c.lookAt(0, 0, 0);
+s.add(new THREE.AmbientLight(0xffffff, 0.25)); const k = new THREE.DirectionalLight(0xffffff, 2.6); k.position.set(-2, 3, 3); s.add(k);
+const rim = new THREE.DirectionalLight(0xffffff, 1.2); rim.position.set(3, -1, -2); s.add(rim);
+const m = new Morpher(['sphere', 'coin', 'donut', 'bill', 'drop'], new THREE.MeshStandardMaterial({ color: 0xd8d8d8, roughness: 0.3, metalness: 0.2 }));
+s.add(m.mesh);
+const seq = [[0, 'sphere'], [1, 'coin'], [2, 'donut'], [3, 'bill'], [4, 'drop']];
+window.renderAt = t => { m.play(seq, t, 0.4); const i = Math.max(0, seq.findLastIndex(q => t >= q[0])); m.mesh.scale.copy(squash(t, seq[i][0])).multiplyScalar(1.6); m.mesh.rotation.set(0.5, t * 0.8, 0); r.render(s, c); return true; };
+window.ready = true;
+</script></body></html>
