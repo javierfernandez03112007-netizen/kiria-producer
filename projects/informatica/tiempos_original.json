@@ -1,0 +1,220 @@
+[
+ {
+  "text": "Tres de cada cuatro.",
+  "start": 0.07,
+  "end": 1.12,
+  "pauses": []
+ },
+ {
+  "text": "Es la cifra de abandono que más se repite cuando hablas con gente de Ingeniería Informática.",
+  "start": 1.76,
+  "end": 6.31,
+  "pauses": []
+ },
+ {
+  "text": "Y al final te digo si, aun así, merece la pena.",
+  "start": 6.88,
+  "end": 9.97,
+  "pauses": [
+   [
+    8.06,
+    8.21
+   ],
+   [
+    8.78,
+    9.12
+   ]
+  ]
+ },
+ {
+  "text": "Sobre el papel, son cuatro años.",
+  "start": 10.78,
+  "end": 12.83,
+  "pauses": [
+   [
+    11.53,
+    11.65
+   ]
+  ]
+ },
+ {
+  "text": "Pero según se explicó en una auditoría de la Universidad de Granada, la media tarda seis o siete.",
+  "start": 13.22,
+  "end": 18.48,
+  "pauses": [
+   [
+    16.5,
+    16.79
+   ]
+  ]
+ },
+ {
+  "text": "Porque esta carrera no es lo que parece.",
+  "start": 19.16,
+  "end": 21.69,
+  "pauses": [
+   [
+    20.38,
+    20.53
+   ]
+  ]
+ },
+ {
+  "text": "Te imaginas un ordenador, un café y líneas de código toda la noche.",
+  "start": 22.29,
+  "end": 26.38,
+  "pauses": [
+   [
+    24.42,
+    24.6
+   ]
+  ]
+ },
+ {
+  "text": "Y sí, programas. Pero lo primero que te encuentras es una clase de física.",
+  "start": 26.87,
+  "end": 31.5,
+  "pauses": [
+   [
+    27.22,
+    27.53
+   ],
+   [
+    28.09,
+    28.51
+   ]
+  ]
+ },
+ {
+  "text": "Campos eléctricos, circuitos, por qué un cable conduce y otro no.",
+  "start": 31.93,
+  "end": 36.1,
+  "pauses": [
+   [
+    33.97,
+    34.21
+   ]
+  ]
+ },
+ {
+  "text": "Después, cálculo: límites, derivadas, integrales.",
+  "start": 36.6,
+  "end": 40.61,
+  "pauses": [
+   [
+    37.11,
+    37.38
+   ],
+   [
+    37.85,
+    38.24
+   ]
+  ]
+ },
+ {
+  "text": "Álgebra: matrices que giran, estiran y aplastan el espacio.",
+  "start": 41.04,
+  "end": 45.12,
+  "pauses": [
+   [
+    41.53,
+    41.95
+   ]
+  ]
+ },
+ {
+  "text": "Programación desde cero: variables, bucles, funciones.",
+  "start": 45.62,
+  "end": 49.62,
+  "pauses": [
+   [
+    46.89,
+    47.34
+   ]
+  ]
+ },
+ {
+  "text": "Y ensamblador: hablarle al procesador casi en su idioma, registro a registro.",
+  "start": 50.08,
+  "end": 55.08,
+  "pauses": [
+   [
+    50.91,
+    51.39
+   ],
+   [
+    53.56,
+    53.8
+   ]
+  ]
+ },
+ {
+  "text": "Cada asignatura es una pieza.",
+  "start": 55.55,
+  "end": 57.17,
+  "pauses": []
+ },
+ {
+  "text": "Y hasta que no encajan, no ves para qué sirven.",
+  "start": 57.56,
+  "end": 60.1,
+  "pauses": [
+   [
+    58.68,
+    58.85
+   ]
+  ]
+ },
+ {
+  "text": "Entonces, ¿merece la pena?",
+  "start": 60.83,
+  "end": 62.66,
+  "pauses": [
+   [
+    61.6,
+    61.83
+   ]
+  ]
+ },
+ {
+  "text": "Si solo buscas programar, igual no.",
+  "start": 63.29,
+  "end": 65.52,
+  "pauses": [
+   [
+    64.62,
+    64.97
+   ]
+  ]
+ },
+ {
+  "text": "Pero si quieres entender un ordenador por dentro, desde el electrón hasta la aplicación, sí. Muchísimo.",
+  "start": 65.96,
+  "end": 72.39,
+  "pauses": [
+   [
+    68.41,
+    68.61
+   ],
+   [
+    70.45,
+    70.84
+   ],
+   [
+    71.14,
+    71.6
+   ]
+  ]
+ },
+ {
+  "text": "¿Tú la empezarías? Te leo en comentarios.",
+  "start": 73.05,
+  "end": 75.54,
+  "pauses": [
+   [
+    73.9,
+    74.44
+   ]
+  ]
+ }
+]

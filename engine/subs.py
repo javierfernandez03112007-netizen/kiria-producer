@@ -26,7 +26,7 @@ def norm(w):
 
 
 @lru_cache(512)
-def word_sprite(w, size, stroke=7):
+def word_sprite(w, size, stroke=7, color=None):
     """Palabra blanca con contorno negro y sombra (legible sobre fondo blanco o negro)."""
     f = font("black", size)
     asc, desc = f.getmetrics()
@@ -42,6 +42,8 @@ def word_sprite(w, size, stroke=7):
     sh = np.roll(cv2.GaussianBlur(a_e, (0, 0), size * 0.08), int(size * 0.06), axis=0) * 0.55
     a = np.maximum(a_e, sh)
     rgb = np.repeat(a_f[..., None], 3, axis=2)        # blanco dentro, negro en el contorno y la sombra
+    if color is not None:                              # color de acento (BGR 0-1) dentro de la letra
+        rgb = a_f[..., None] * np.array(color, np.float32)[None, None, :]
     return rgb.astype(np.float32), a.astype(np.float32), pad
 
 
@@ -74,8 +76,10 @@ def emoji_sprite(e, size):
 
 
 class Subs:
-    def __init__(self, lines, key=None, emoji=None, y=330, size=88, maxw=940, max_words=4, max_chars=21, W=1080):
+    def __init__(self, lines, key=None, emoji=None, y=330, size=88, maxw=940, max_words=4, max_chars=21, W=1080, style='box', accent=None, stroke=7):
+        """style='box': palabra clave en recuadro de selección; style='accent': palabra clave en color (accent, BGR 0-1)."""
         self.size, self.y, self.maxw, self.W = size, y, maxw, W
+        self.style, self.accent, self.stroke = style, accent, stroke
         key = key or {}
         emoji = emoji or {}
         self.chunks = []
@@ -136,7 +140,7 @@ class Subs:
         items = self.layout(c["words"])
         keys = [it for it in items if it[0]["key"] and t >= it[0]["start"] - 0.05]
         # recuadro de selección alrededor de las palabras clave ya dichas
-        if keys:
+        if keys and self.style == 'box':
             k0 = min(keys, key=lambda it: it[0]["start"])
             u = eback(prog(t, k0[0]["start"] - 0.05, 0.22))
             x0 = min(it[1] for it in keys) - 16
@@ -150,7 +154,8 @@ class Subs:
             if t < w["start"] - 0.05:
                 continue
             p = prog(t, w["start"] - 0.05, 0.16)
-            rgb, a, pad = word_sprite(w["w"], self.size)
+            col = self.accent if (self.style == 'accent' and w["key"]) else None
+            rgb, a, pad = word_sprite(w["w"], self.size, self.stroke, col)
             k = 0.72 + 0.28 * eback(p)
             paste(img, (rgb, a), x + wid / 2, y, alpha * fade * clamp(p * 2.5), scale=k)
             if ew:

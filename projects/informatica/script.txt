@@ -1,0 +1,19 @@
+Tres de cada cuatro.
+Es la cifra de abandono que más se repite cuando hablas con gente de Ingeniería Informática.
+Y al final te digo si, aun así, merece la pena.
+Sobre el papel, son cuatro años.
+Pero según se explicó en una auditoría de la Universidad de Granada, la media tarda seis o siete.
+Porque esta carrera no es lo que parece.
+Te imaginas un ordenador, un café y líneas de código toda la noche.
+Y sí, programas. Pero lo primero que te encuentras es una clase de física.
+Campos eléctricos, circuitos, por qué un cable conduce y otro no.
+Después, cálculo: límites, derivadas, integrales.
+Álgebra: matrices que giran, estiran y aplastan el espacio.
+Programación desde cero: variables, bucles, funciones.
+Y ensamblador: hablarle al procesador casi en su idioma, registro a registro.
+Cada asignatura es una pieza.
+Y hasta que no encajan, no ves para qué sirven.
+Entonces, ¿merece la pena?
+Si solo buscas programar, igual no.
+Pero si quieres entender un ordenador por dentro, desde el electrón hasta la aplicación, sí. Muchísimo.
+¿Tú la empezarías? Te leo en comentarios.
