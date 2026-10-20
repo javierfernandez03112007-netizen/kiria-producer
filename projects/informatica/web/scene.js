@@ -510,7 +510,7 @@ function algAt(t) {
   m.forEach((row, i) => row.forEach((v, j) => { g.fillStyle = (sq > 0.5 && i === 1 && j === 1) || (str > 0.5 && i === 0 && j === 0) ? '#ff5a1f' : '#f0f0f0'; g.fillText(v, 180 + j * 170, 65 + i * 85); }));
   g.strokeStyle = '#f0f0f0'; g.lineWidth = 8; g.beginPath(); g.moveTo(90, 25); g.lineTo(60, 25); g.lineTo(60, 275); g.lineTo(90, 275); g.moveTo(610, 25); g.lineTo(640, 25); g.lineTo(640, 275); g.lineTo(610, 275); g.stroke();
   S.matTex.needsUpdate = true;
-  S.matBoard.position.set(0, 3.6, 0.3); S.matBoard.material.opacity = env(t, K.matrices - 0.1, 99, 0.3, 0.1);
+  S.matBoard.position.set(0, 0.25, 0.3); S.matBoard.material.opacity = env(t, K.matrices - 0.1, 99, 0.3, 0.1);
   const u = eio(prog(t, t0, 4)); cam.position.set(O.x, 2.0, lerp(7.6, 7.0, u)); cam.lookAt(O.x, 2.0, 0);
 }
 

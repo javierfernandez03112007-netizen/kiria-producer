@@ -67,6 +67,7 @@ def headline(img, t, t0, t1, parts, y=1340, size=118):
     v = max(0.0, 1 - (t - t0) / 0.5)
     jx, jy = 9 * v * np.sin((t - t0) * 95), 5 * v * np.cos((t - t0) * 120)
     s = 0.88 + 0.12 * eback(prog(t, t0, 0.25))
+    s *= min(1.0, (W - 100) / total)          # que nunca se salga de la pantalla
     x = W / 2 - total * s / 2 + jx
     for sp, wdt in zip(sprites, widths):
         paste(img, sp, x + wdt * s / 2, y + jy, a, scale=s)
@@ -86,14 +87,14 @@ def pill(img, t):
         return
     k = eio(prog(t, t1 - 0.15, 0.5))            # al final vuelve al centro y se abre
     a = eo(prog(t, t0, 0.3)) * (1 - prog(t, t1 + 0.2, 0.3))
-    txt = text("¿Merece la pena?  ·  al final", 30, "semi", "#FFFFFF", shadow=0)
+    txt = text("¿Merece la pena?  ·  al final", 38, "semi", "#FFFFFF", shadow=0)
     w = txt[1].shape[1] + 40
     x = lerp(W - 40 - w, W / 2 - w / 2, k)
     y = lerp(470, 1260, k)
     bob = 4 * np.sin(t * 3)
-    rrect(img, x, y + bob, w, 64, 32, hex_bgr("#1A1C20"), 0.88 * a)
-    rrect(img, x + 14, y + bob + 22, 20, 20, 10, hex_bgr(CORAL), a)
-    paste(img, txt, x + w / 2 + 14, y + bob + 32, a)
+    rrect(img, x, y + bob, w, 76, 38, hex_bgr("#1A1C20"), 0.88 * a)
+    rrect(img, x + 16, y + bob + 27, 22, 22, 11, hex_bgr(CORAL), a)
+    paste(img, txt, x + w / 2 + 16, y + bob + 38, a)
 
 
 def compose(fi):
