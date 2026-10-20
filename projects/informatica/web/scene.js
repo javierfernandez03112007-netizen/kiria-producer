@@ -23,9 +23,13 @@ const quadScene = new THREE.Scene(); quadScene.add(new THREE.Mesh(new THREE.Plan
 const quadCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
 const scene = new THREE.Scene();
-const BG = 0xdfe6f2;
-const sky = (() => { const c = document.createElement('canvas'); c.width = 4; c.height = 512; const g = c.getContext('2d'); const gr = g.createLinearGradient(0, 0, 0, 512); gr.addColorStop(0, '#9cc4ff'); gr.addColorStop(0.55, '#e4ecf7'); gr.addColorStop(1, '#fff1e2'); g.fillStyle = gr; g.fillRect(0, 0, 4, 512); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t; })();
-scene.background = sky; scene.fog = new THREE.Fog(BG, 35, 110);
+const BG = 0x0b1020;
+const sky = (() => { const hash = x => { const s = Math.sin(x * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); }; const c = document.createElement('canvas'); c.width = 4096; c.height = 2048; const g = c.getContext('2d');
+  const gr = g.createLinearGradient(0, 0, 0, 2048); gr.addColorStop(0, '#05070f'); gr.addColorStop(0.5, '#0b1020'); gr.addColorStop(1, '#070912'); g.fillStyle = gr; g.fillRect(0, 0, 4096, 2048);
+  for (let i = 0; i < 9; i++) { const x = hash(i * 31) * 4096, y = 500 + hash(i * 17) * 1000, r = 300 + hash(i * 7) * 600, rg = g.createRadialGradient(x, y, 0, x, y, r); rg.addColorStop(0, ['rgba(70,60,140,.22)', 'rgba(40,80,150,.2)', 'rgba(110,50,110,.16)'][i % 3]); rg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = rg; g.fillRect(x - r, y - r, 2 * r, 2 * r); }
+  for (let i = 0; i < 2600; i++) { const b = hash(i * 1.7); g.fillStyle = `rgba(${200 + 55 * hash(i)},${210 + 45 * hash(i * 2)},255,${0.15 + b * b * 0.6})`; const sz = b > 0.97 ? 3 : b > 0.85 ? 2 : 1; g.fillRect(hash(i * 3.3) * 4096, hash(i * 5.1) * 2048, sz, sz); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.mapping = THREE.EquirectangularReflectionMapping; return t; })();
+scene.background = sky; scene.fog = new THREE.Fog(BG, 28, 80);
 const BLACK = new THREE.Color(0x000000);
 const cam = new THREE.PerspectiveCamera(36, W / H, 0.001, 400);
 const S = {}; window.S = S; window.cam = cam; window.RC = THREE.Raycaster; window.SCN = scene;
@@ -36,7 +40,7 @@ function canvasTex(w, h, draw) { const c = document.createElement('canvas'); c.w
 function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 
 // paleta (como la referencia)
-const C = { orange: 0xff5a1f, coral: 0xff5470, blue: 0x2f6bff, grid: 0x7d93d6, floor: 0xc08a58, clay: 0x3f78ff, clayL: 0x9aa3b2, wood: 0xe0b07c, pale: 0x5c9dff, board: 0x1f5a40, wall: 0xf3eadc, white: 0xf2f2f2 };
+const C = { orange: 0xff5a1f, coral: 0xff5470, blue: 0x2f6bff, grid: 0x34406a, floor: 0xc08a58, clay: 0x3f78ff, clayL: 0x9aa3b2, wood: 0xe0b07c, pale: 0x5c9dff, board: 0x1f5a40, wall: 0xf3eadc, white: 0xf2f2f2 };
 const clay = (c = C.clay, r = 0.55) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: 0.05 });
 function rbox(w, h, d, m, r = 0.06) {   // caja de bordes redondeados (aspecto arcilla)
   // el bisel crece hacia fuera: se encoge el perfil para que la caja mida exactamente w × h × d
@@ -105,11 +109,46 @@ function plant(Z, x, z, s = 1) {
   for (let i = 0; i < 9; i++) { const a = i * 2.4, tilt = 0.35 + hash(i) * 0.5; const lf = new THREE.Mesh(new THREE.SphereGeometry(0.07, 10, 8), lm); lf.scale.set(0.6, 2.6, 0.25); const piv = new THREE.Group(); piv.position.y = 0.22; piv.rotation.set(tilt * Math.cos(a), 0, tilt * Math.sin(a)); lf.position.y = 0.17; piv.add(lf); g.add(piv); lf.castShadow = true; }
   return g;
 }
-function floorGrid(size, div, color = C.grid) { const g = new THREE.GridHelper(size, div, color, color); g.material.transparent = true; g.material.opacity = 0.4; return g; }
+function floorGrid(size, div, color = C.grid) { const g = new THREE.GridHelper(size, div, color, color); g.material.transparent = true; g.material.opacity = 0.35; return g; }
 function lights(group, x = 0) {
   const k = new THREE.DirectionalLight(0xfff4e8, 3.6); k.position.set(x - 6, 12, 8); k.castShadow = true; k.shadow.mapSize.set(2048, 2048); k.shadow.bias = -0.0004; k.shadow.radius = 4;
   Object.assign(k.shadow.camera, { left: -12, right: 12, top: 12, bottom: -12, near: 1, far: 50 }); k.target.position.set(x, 0, 0); scene.add(k.target); group.add(k);
 }
+
+// ---------------------------------------------------------------- decoración viva (informática y matemáticas) y fondo espacial apagado
+const POSTERS = {
+  pi: ['#ffcf3a', '#1b1b2f', g => { g.font = '900 300px Serif'; g.fillText('π', 300, 330); g.font = '700 46px Mono'; g.fillText('3.14159265…', 300, 520); }],
+  euler: ['#2f6bff', '#ffffff', g => { g.font = 'italic 120px Serif'; g.fillText('e', 170, 360); g.font = 'italic 64px Serif'; g.fillText('iπ', 250, 290); g.font = 'italic 120px Serif'; g.fillText('+ 1 = 0', 410, 360); g.font = '700 40px Inter'; g.fillText('EULER', 300, 520); }],
+  binary: ['#111827', '#3cff8f', g => { g.font = '700 44px Mono'; for (let r = 0; r < 9; r++) g.fillText(Array.from({ length: 8 }, (_, i) => (hash(r * 8 + i) < 0.5 ? '0' : '1')).join(' '), 300, 90 + r * 62); }],
+  code: ['#ff5a1f', '#ffffff', g => { g.font = '900 170px Inter'; g.fillText('</>', 300, 300); g.font = '700 42px Mono'; g.fillText('hello, world', 300, 470); }],
+  sigma: ['#22c08a', '#0f2a20', g => { g.font = '400 220px Serif'; g.fillText('Σ', 300, 300); g.font = 'italic 52px Serif'; g.fillText('n(n+1) / 2', 300, 480); }],
+  emc: ['#8a5cff', '#ffffff', g => { g.font = 'italic 150px Serif'; g.fillText('E = mc²', 300, 330); g.font = '700 40px Inter'; g.fillText('FÍSICA', 300, 500); }],
+  grad: ['#ff5470', '#ffffff', g => { g.font = 'italic 110px Serif'; g.fillText('∇·E = ρ/ε₀', 300, 330); }],
+  bug: ['#ffc12e', '#1b1b2f', g => { g.font = '900 90px Inter'; g.fillText('NO', 300, 220); g.fillText('BUGS', 300, 320); g.font = '700 40px Mono'; g.fillText('git commit -m', 300, 470); }],
+};
+function poster(Z, kind, x, y, z, w = 0.7, ry = 0) {
+  const [bg, fg, draw] = POSTERS[kind];
+  const tex = canvasTex(600, 600 * 1.3, (g, W2, H2) => { g.fillStyle = bg; g.fillRect(0, 0, W2, H2); g.fillStyle = fg; g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.translate(0, 60); draw(g); });
+  const p = new THREE.Group(); p.position.set(x, y, z); p.rotation.y = ry; Z.add(p);
+  const fr = rbox(w + 0.04, w * 1.3 + 0.04, 0.02, clay(0xf5f5f5, 0.4), 0.008); p.add(fr);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, w * 1.3), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.6 })); m.position.z = 0.012; p.add(m); return p;
+}
+function books(Z, x, y, z, s = 1, n = 5) { const g = new THREE.Group(); g.position.set(x, y, z); g.scale.setScalar(s); Z.add(g); let h = 0;
+  for (let i = 0; i < n; i++) { const t = 0.035 + hash(i * 7) * 0.025, b = rbox(0.24 - hash(i) * 0.05, t, 0.17 - hash(i * 3) * 0.03, clay([0xff5a1f, 0x2f6bff, 0x22c08a, 0xffc12e, 0x8a5cff, 0xff5470][i % 6], 0.5), 0.006); b.position.y = h + t / 2; b.rotation.y = (hash(i * 5) - 0.5) * 0.4; g.add(b); h += t; } return g; }
+function rubik(Z, x, y, z, s = 0.06) { const g = new THREE.Group(); g.position.set(x, y + s * 1.5, z); g.rotation.y = 0.5; Z.add(g); const cols = [0xff3b30, 0x2f6bff, 0x22c08a, 0xffc12e, 0xffffff, 0xff7a1f];
+  for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (let k = -1; k <= 1; k++) { const c = rbox(s * 0.95, s * 0.95, s * 0.95, clay(cols[Math.floor(hash(i * 9 + j * 3 + k + 13) * 6)], 0.35), s * 0.15); c.position.set(i * s, j * s, k * s); g.add(c); } return g; }
+function clock(Z, x, y, z, r = 0.22, ry = 0) { const g = new THREE.Group(); g.position.set(x, y, z); g.rotation.y = ry; Z.add(g);
+  const f = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.04, 40), clay(0xff5a1f, 0.4)); f.rotation.x = Math.PI / 2; g.add(f);
+  const face = new THREE.Mesh(new THREE.CircleGeometry(r * 0.85, 40), new THREE.MeshStandardMaterial({ map: canvasTex(256, 256, (q, w, h) => { q.fillStyle = '#fff'; q.fillRect(0, 0, w, h); q.fillStyle = '#222'; for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; q.fillRect(128 + Math.sin(a) * 100 - 4, 128 - Math.cos(a) * 100 - 10, 8, 20); } q.strokeStyle = '#222'; q.lineWidth = 10; q.beginPath(); q.moveTo(128, 128); q.lineTo(128, 50); q.moveTo(128, 128); q.lineTo(185, 150); q.stroke(); }) }));
+  face.position.z = 0.021; g.add(face); return g; }
+function sticky(Z, x, y, z, txt, col = '#ffe14d', ry = 0, rz = 0) { const m = new THREE.Mesh(new THREE.PlaneGeometry(0.09, 0.09), new THREE.MeshStandardMaterial({ map: canvasTex(128, 128, (g, w, h) => { g.fillStyle = col; g.fillRect(0, 0, w, h); g.fillStyle = '#222'; g.font = '700 30px Mono'; g.textAlign = 'center'; g.fillText(txt, 64, 76); }) }));
+  m.position.set(x, y, z); m.rotation.set(0, ry, rz); Z.add(m); return m; }
+// símbolos flotando en el espacio (apagados), detrás de cada escena
+const FLOAT = [];
+function floaters(Z, n = 14, R = 9, y0 = 1.5) {
+  const syms = ['π', 'Σ', '∫', '{ }', '</>', '0101', '√x', '∞', 'λ', 'f(x)', 'dx', '∂', '≠', '01'];
+  for (let i = 0; i < n; i++) { const l = label(syms[i % syms.length], { size: 120, color: '#7d8bb8', w: 0.9, weight: 700 }); l.material.opacity = 0.35; l.material.fog = false;
+    const a = hash(i * 13 + Z.position.x) * Math.PI * 2, r = R * (0.7 + hash(i * 7) * 0.6); l.position.set(Math.cos(a) * r * 1.2, y0 + (hash(i * 3) - 0.3) * 6, -6 - hash(i * 5) * 10); Z.add(l); FLOAT.push({ l, ph: hash(i) * 6, y: l.position.y }); } }
 
 // ---------------------------------------------------------------- tiempos (palabras de la voz)
 let WORDS = [], END = 67.6, ENV = [];
@@ -129,6 +168,10 @@ function buildHook() {
     const hole = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 1.1), new THREE.MeshBasicMaterial({ color: 0x050506 })); hole.rotation.x = -Math.PI / 2; hole.position.set(x, 0.005, 0.1); Z.add(hole);
     return { g, door, hole, fall: i !== 2, x };
   });
+  // pizarrín con fórmula, libros y cubo de Rubik sobre la plataforma
+  { const st = rbox(1.2, 0.7, 0.04, clay(C.board, 0.8), 0.02); st.position.set(0, 0.75, -0.95); Z.add(st); const sl = label('∫ eˣ dx = eˣ + C', { size: 90, w: 1.0, font: 'Serif', weight: 400, color: '#f0f6f0' }); sl.position.set(0, 0.78, -0.92); Z.add(sl);
+    for (const x of [-0.5, 0.5]) { const l = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.45, 8), DM.leg); l.position.set(x, 0.22, -0.95); Z.add(l); } }
+  books(Z, -1.85, 0, 0.75, 1.2); rubik(Z, 1.85, 0, 0.75, 0.07); floaters(Z);
   lights(Z, 0);
   Z.add(new THREE.HemisphereLight(0xbfd0ff, 0x2a1d16, 1.4));
 }
@@ -151,6 +194,7 @@ function hookAt(t, final) {
 // ---------------------------------------------------------------- 1 · cien maniquíes: tres de cada cuatro desaparecen
 function buildGridPeople() {
   const Z = zone('ppl', 100); Z.add(floorGrid(80, 80));
+  floaters(Z);
   S.ppl = [];
   for (let i = 0; i < 100; i++) { const d = makeDoll(i % 4 === 3 ? C.pale : C.wood, 0.8); d.position.set(((i % 10) - 4.5) * 0.55, 0, (Math.floor(i / 10) - 4.5) * 0.55); d.rotation.y = 0.4 + hash(i) * 0.3; Z.add(d); S.ppl.push(d); }
   S.pplLab = label('INGENIERÍA INFORMÁTICA', { size: 60, w: 2.6, pill: true }); S.pplLab.position.set(0, 0.05, 3.0); S.pplLab.rotation.x = -Math.PI / 2; Z.add(S.pplLab);
@@ -167,6 +211,7 @@ function pplAt(t) {
 // ---------------------------------------------------------------- 2 · caja sellada «¿?» (la respuesta, al final)
 function buildBox() {
   const Z = zone('box', 200); Z.add(floorGrid(60, 60));
+  floaters(Z);
   const b = new THREE.Group(); Z.add(b); S.box = b;
   b.add(rbox(1.4, 1.4, 1.4, clay(0x2f6bff, 0.35), 0.14));
   const q = label('¿?', { size: 200, color: '#ffffff', w: 0.9 }); q.position.set(0, 0.05, 0.72); b.add(q);
@@ -185,6 +230,7 @@ function boxAt(t) {
 // ---------------------------------------------------------------- 3 · sobre el papel: cuatro años
 function buildYears() {
   const Z = zone('yrs', 300); Z.add(floorGrid(60, 60));
+  floaters(Z);
   const paper = new THREE.Mesh(new THREE.PlaneGeometry(6, 3.2), clay(0xe9e6df, 0.9)); paper.rotation.x = -Math.PI / 2; paper.receiveShadow = true; Z.add(paper);
   S.yrs = [1, 2, 3, 4, 5, 6, 7].map(i => { const g = new THREE.Group(); Z.add(g); const b = rbox(0.62, 0.5, 0.62, clay(i <= 4 ? C.blue : C.coral, 0.5), 0.08); b.position.y = 0.25; g.add(b); const l = label(i + 'º', { size: 120, color: i <= 4 ? '#ffffff' : '#ffffff', w: 0.36 }); l.position.set(0, 0.25, 0.32); g.add(l); g.position.set(-1.2 + (i - 1) * 0.8, 0, 0); return g; });
   lights(Z, 300); Z.add(new THREE.HemisphereLight(0xffffff, 0x2a1d16, 1.4));
@@ -209,7 +255,8 @@ function buildHall() {
     const d = desk(); d.position.set(x, 0, z); d.scale.setScalar(1.25); Z.add(d);
     const p = makeDoll(hash(r * 12 + c) < 0.25 ? C.pale : C.wood, 1.1); p.position.set(x, 0, z + 0.38); p.rotation.y = Math.PI; sit(p); p.userData.ph = hash(r * 7 + c); Z.add(p);
   }
-  lamp(Z, -3.6, -5.3, 1.8, 2.2); lamp(Z, 3.6, -5.3, 1.8, 2.2); plant(Z, -6.2, -5.2, 1.5); plant(Z, 6.2, -5.2, 1.5); plant(Z, -6.3, 2.5, 1.3);
+  lamp(Z, -3.6, -5.3, 1.8, 2.2); lamp(Z, 3.6, -5.3, 1.8, 2.2); plant(Z, -6.2, -5.2, 1.5); plant(Z, 6.2, -5.2, 1.5);
+  poster(Z, 'pi', -4.9, 1.3, -5.78, 0.9); poster(Z, 'binary', 4.9, 1.3, -5.78, 0.9); poster(Z, 'euler', -6.0, 1.3, -5.78, 0.7); poster(Z, 'code', 6.0, 1.3, -5.78, 0.7); clock(Z, 0, 2.15, -5.78, 0.18); floaters(Z, 16, 12); plant(Z, -6.3, 2.5, 1.3);
   S.hallLab = label('Universidad de Granada · auditoría', { size: 54, w: 3.6, pill: true }); Z.add(S.hallLab);
   lights(Z, 400); Z.add(new THREE.HemisphereLight(0xbfd0ff, 0x2a1d16, 1.3));
 }
@@ -240,6 +287,7 @@ function hallAt(t) {
 // ---------------------------------------------------------------- 5 · «no es lo que parece»: la tarjeta de código se da la vuelta
 function buildFlip() {
   const Z = zone('flip', 500); Z.add(floorGrid(60, 60));
+  floaters(Z);
   const card = new THREE.Group(); Z.add(card); S.card = card;
   card.add(rbox(2.2, 3.0, 0.16, clay(0x2b2e34), 0.12));
   const front = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 2.7), new THREE.MeshBasicMaterial({ map: canvasTex(600, 850, (g, w, h) => { g.fillStyle = '#121418'; rr(g, 0, 0, w, h, 40); g.fill(); g.fillStyle = '#ff5a1f'; g.font = '900 220px Inter'; g.textAlign = 'center'; g.fillText('</>', w / 2, 380); g.font = '700 46px Mono'; g.fillStyle = '#9aa3ad'; ['print("hola")', 'if x > 0:', '   x += 1'].forEach((s, i) => g.fillText(s, w / 2, 540 + i * 70)); }) }));
@@ -300,6 +348,9 @@ function buildRoom() {
   const bl = new THREE.Mesh(new THREE.SphereGeometry(0.04, 12, 10), new THREE.MeshBasicMaterial({ color: 0xfff1cf })); bl.position.set(0.38, 0.38, 0.08); flexo.add(bl);
   const fl2 = new THREE.PointLight(0xffb86a, 2.2, 3.2, 1.3); fl2.position.set(0.42, 0.3, 0.1); flexo.add(fl2);
   plant(Z, -1.7, -1.1, 1.6); lamp(Z, 2.4, -0.9, 1.7, 1.4);
+  poster(Z, 'code', -1.05, 2.45, -1.58, 0.55); poster(Z, 'bug', -1.05, 1.65, -1.58, 0.38); poster(Z, 'sigma', 2.75, 2.5, -1.58, 0.55);
+  books(Z, 0.95, 1.04, -0.85, 1.0, 6); rubik(Z, 0.85, 1.04, -0.35, 0.025);
+  sticky(Z, -0.62, 1.68, -0.8, 'x++', '#ffe14d', 0, 0.1); sticky(Z, 0.42, 1.5, -0.8, 'O(n)', '#7dffb0', 0, -0.08); sticky(Z, 0.42, 1.38, -0.8, '42', '#ff9ec7', 0, 0.06);
   const lampL = new THREE.PointLight(0x9fb6ff, 0.5, 3, 1.6); lampL.position.set(-0.1, 1.9, 0.2); Z.add(lampL);
   Z.add(new THREE.HemisphereLight(0x6c7cff, 0x1a120d, 0.35)); lights(Z, 600);
 }
@@ -344,6 +395,7 @@ function buildClass() {
   S.prof2 = makeDoll(C.pale, 1.1); S.prof2.position.set(1.6, 0, -2.2); Z.add(S.prof2);
   for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) { const x = (c - 1.5) * 1.3, z = -0.6 + r * 1.2; const d = desk(); d.position.set(x, 0, z); Z.add(d); const p = makeDoll(hash(r * 4 + c) < 0.3 ? C.pale : C.wood); p.position.set(x, 0, z + 0.3); p.rotation.y = Math.PI; sit(p); Z.add(p); }
   lamp(Z, -3.05, -2.3, 1.4, 1.8); plant(Z, 3.0, -2.3, 1.2); plant(Z, -3.05, 2.3, 1.1);
+  poster(Z, 'emc', -2.45, 0.72, -2.66, 0.5); poster(Z, 'grad', 2.5, 0.72, -2.66, 0.5); poster(Z, 'pi', -3.41, 0.72, -0.8, 0.45, Math.PI / 2); poster(Z, 'sigma', -3.41, 0.72, 0.6, 0.45, Math.PI / 2); clock(Z, -1.7, 1.0, -2.66, 0.12); floaters(Z);
   lights(Z, 700); Z.add(new THREE.HemisphereLight(0xbfd0ff, 0x2a1d16, 1.4));
 }
 function clsAt(t) {
@@ -362,6 +414,7 @@ function clsAt(t) {
 // ---------------------------------------------------------------- 8 · física: campos eléctricos, gravedad y circuitos
 function buildPhys() {
   const Z = zone('phys', 800); Z.add(floorGrid(80, 80));
+  floaters(Z);
   // dipolo: cargas + y − con líneas de campo
   const qp = new THREE.Mesh(new THREE.SphereGeometry(0.28, 32, 24), clay(C.coral, 0.35)), qn = new THREE.Mesh(new THREE.SphereGeometry(0.28, 32, 24), clay(C.blue, 0.35));
   qp.position.set(-1.2, 1.6, 0); qn.position.set(1.2, 1.6, 0); Z.add(qp, qn);
@@ -412,7 +465,9 @@ function physAt(t) {
 const LIMS = ['lim  sen x / x = 1', 'x→0', 'lim (1 + 1/n)ⁿ = e', 'n→∞', 'lim (xˣ − 1)/(x·ln x)', 'x→0⁺', 'lim √(x²+x) − x = ½', 'x→∞', 'lim (tg x − sen x)/x³', 'x→0', 'lim n·(e^(1/n) − 1)', 'n→∞', 'lim (1 − cos x)/x²', 'x→0', 'lim ln(1+x)^(1/x)', 'x→0', 'lim Σ 1/(n+k)', 'n→∞', 'lim x^(1/ln x)', 'x→∞', 'lim (aˣ − bˣ)/x', 'x→0', 'lim ∛(n³+n²) − n', 'n→∞'];
 function buildCalc() {
   const Z = zone('calc', 900); Z.add(floorGrid(60, 60));
-  const fr = rbox(6.4, 4.2, 0.12, clay(0x6e5232, 0.7), 0.05); fr.position.set(0, 2.4, -0.07); Z.add(fr);
+  floaters(Z);
+  const fr = rbox(6.4, 4.2, 0.12, clay(0xb8763a, 0.6), 0.05); fr.position.set(0, 2.4, -0.07); Z.add(fr);
+  { const tr = rbox(6.2, 0.06, 0.2, clay(0xb8763a, 0.6), 0.02); tr.position.set(0, 0.27, 0.08); Z.add(tr); for (let i = 0; i < 4; i++) { const ch = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.3, 10), clay([0xffffff, 0xffe14d, 0xff9ec7, 0x7dd3ff][i], 0.8)); ch.rotation.z = Math.PI / 2; ch.position.set(-2 + i * 0.45, 0.33, 0.1); Z.add(ch); } const er = rbox(0.5, 0.1, 0.16, clay(0x2f6bff, 0.6), 0.02); er.position.set(1.8, 0.35, 0.1); Z.add(er); }
   S.calcTex = canvasTex(1600, 1040); S.calcBoard = new THREE.Mesh(new THREE.PlaneGeometry(6.1, 3.96), new THREE.MeshStandardMaterial({ map: S.calcTex, roughness: 0.95 })); S.calcBoard.position.set(0, 2.4, 0.0); Z.add(S.calcBoard);
   lights(Z, 900); Z.add(new THREE.HemisphereLight(0xffffff, 0x2a1d16, 1.5));
 }
@@ -531,7 +586,9 @@ function algAt(t) {
 // ---------------------------------------------------------------- 11 · programación: variables, bucles, funciones
 function buildProg() {
   const Z = zone('prog', 1100); Z.add(floorGrid(60, 60));
+  floaters(Z);
   const mon = rbox(3.4, 2.2, 0.14, clay(0x1d1f23, 0.4), 0.08); mon.position.set(0, 2.2, -1.2); Z.add(mon);
+  sticky(Z, -1.62, 3.15, -1.12, 'i++', '#ffe14d', 0, 0.12); sticky(Z, 1.6, 1.3, -1.12, 'TODO', '#7dffb0', 0, -0.1); books(Z, 1.1, 0, -1.1, 2.2, 6); rubik(Z, -1.0, 0, -1.0, 0.09);
   { const nk = rbox(0.3, 1.2, 0.12, clay(0x1d1f23, 0.4), 0.04); nk.position.set(0, 0.6, -1.32); Z.add(nk); const ft = rbox(1.2, 0.06, 0.7, clay(0x1d1f23, 0.4), 0.03); ft.position.set(0, 0.03, -1.3); Z.add(ft); }
   S.progTex = canvasTex(1100, 700); const scr = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 2.0), new THREE.MeshBasicMaterial({ map: S.progTex })); scr.position.set(0, 2.2, -1.12); Z.add(scr);
   // variable: cajita con su valor
@@ -562,6 +619,7 @@ const ASM = ['push   %rbp', 'mov    %rsp, %rbp', 'sub    $16, %rsp', 'movl   %ed
 const REGS = ['%rax', '%rbx', '%rcx', '%rdx', '%rsi', '%rdi', '%rsp', '%rbp'];
 function buildAsm() {
   const Z = zone('asm', 1200); Z.add(floorGrid(60, 60));
+  floaters(Z);
   const mon = rbox(3.0, 3.8, 0.16, clay(0x1d1f23, 0.4), 0.1); mon.position.set(-0.6, 2.4, -0.6); Z.add(mon);
   { const nk = rbox(0.3, 0.6, 0.12, clay(0x1d1f23, 0.4), 0.04); nk.position.set(-0.6, 0.3, -0.72); Z.add(nk); const ft = rbox(1.2, 0.06, 0.7, clay(0x1d1f23, 0.4), 0.03); ft.position.set(-0.6, 0.03, -0.7); Z.add(ft); }
   S.asmTex = canvasTex(800, 1040); const scr = new THREE.Mesh(new THREE.PlaneGeometry(2.8, 3.6), new THREE.MeshBasicMaterial({ map: S.asmTex })); scr.position.set(-0.6, 2.4, -0.51); Z.add(scr);
@@ -592,6 +650,7 @@ function asmAt(t) {
 const PIECES = ['FÍSICA', 'CÁLCULO', 'ÁLGEBRA', 'PROGRAMACIÓN', 'ENSAMBLADOR', 'REDES'];
 function buildPuzzle() {
   const Z = zone('puz', 1300); Z.add(floorGrid(60, 60));
+  floaters(Z);
   const cols = [C.orange, C.coral, C.blue, 0x22c08a, 0xffc12e, 0x8a5cff];
   S.pcs = PIECES.map((name, i) => { const g = new THREE.Group(); Z.add(g); const b = rbox(1.0, 0.5, 1.0, clay(cols[i], 0.45), 0.07); g.add(b); const nub = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.12, 20), clay(cols[i], 0.45)); nub.position.y = 0.3; g.add(nub); const l = label(name, { size: 64, w: 0.9 }); l.position.set(0, 0, 0.51); g.add(l);
     const tgt = v3(((i % 3) - 1) * 1.02, 0.25 + Math.floor(i / 3) * 0.52, 0); const start = v3(Math.cos(i * 1.7) * 2.6, 1.2 + hash(i) * 2.2, Math.sin(i * 1.7) * 2.0); return { g, tgt, start, i }; });
@@ -692,7 +751,8 @@ function zoneAt(t) { let z = ZT[0]; for (const q of ZT) if (t >= q[1]) z = q; re
 function frame(t) {
   const [name, t0] = zoneAt(t), zname = name === 'end' ? 'hook' : name;
   for (const k in zones) zones[k].visible = k === zname;
-  scene.background = zname === 'alg' ? BLACK : sky; scene.fog.color.set(zname === 'alg' ? 0x000000 : BG); scene.environmentIntensity = zname === 'alg' ? 0 : zname === 'room' ? 0.3 : 0.55;
+  scene.background = zname === 'alg' ? BLACK : sky; scene.fog.color.set(zname === 'alg' ? 0x000000 : BG);
+  FLOAT.forEach(f => { f.l.position.y = f.y + 0.25 * Math.sin(t * 0.6 + f.ph); f.l.rotation.z = 0.15 * Math.sin(t * 0.4 + f.ph); }); scene.environmentIntensity = zname === 'alg' ? 0 : zname === 'room' ? 0.3 : 0.55;
   RUN[name](t);
   // barrido con desenfoque en cada cambio de escena (fluidez, sin cortes secos)
   let blur = 0, dir = 1;
