@@ -101,10 +101,8 @@ def compose(fi):
     t = fi / FPS
     img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
     SUBS.draw(img, t, 1 - prog(t, END - 0.5, 0.3))
-    pill(img, t)
     for t0, t1, parts in HEAD:
         headline(img, t, t0, t1, parts)
-    paste(img, text("kiria.ai", 36, "semi", "#FFFFFF", shadow=0.4), W - 56, H - 70, 0.75, anchor="r")
     return (np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes()
 
 
