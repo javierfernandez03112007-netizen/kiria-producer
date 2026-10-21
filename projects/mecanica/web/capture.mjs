@@ -23,6 +23,7 @@ await new Promise(r => server.listen(0, '127.0.0.1', r));
 const port = server.address().port;
 const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--allow-file-access-from-files', '--disable-web-security'] });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
+page.setDefaultTimeout(300000);
 page.on('console', m => { if (m.type() === 'error' || m.text().startsWith('ERROR')) console.log('[page]', m.text()); });
 page.on('pageerror', e => console.log('[pageerror]', e.message));
 await page.goto(`http://127.0.0.1:${port}/projects/mecanica/web/index.html`);
@@ -32,6 +33,7 @@ if (failed) { console.log('FAILED', failed); process.exit(1); }
 const t0 = Date.now();
 if (process.env.COVER) { await page.evaluate(() => window.renderCover()); await page.screenshot({ path: path.join(outDir, 'cover3d.png') }); frames = []; }
 for (const f of frames) {
+  if (process.env.SKIP && fs.existsSync(path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`))) continue;
   await page.evaluate(t => window.renderAt(t), f / FPS);
   await page.screenshot({ path: path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 93 });
 }

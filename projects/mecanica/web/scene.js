@@ -157,7 +157,7 @@ function at(word, k = 1) { const exact = word.startsWith('='), key = norm(word);
 let K = {};
 
 // ---------------------------------------------------------------- materiales y piezas comunes (plástico plastificado, metal)
-const plastic = (c, r = 0.22) => new THREE.MeshPhysicalMaterial({ color: c, roughness: r, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06, sheen: 0.25, sheenColor: 0xffffff });
+const plastic = (c, r = 0.22) => new THREE.MeshPhysicalMaterial({ color: c, roughness: r, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.06 });
 const metal = (c = 0xd8dde6, r = 0.18) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: 1 });
 const PL = { blue: 0x46b4ff, green: 0x19e37c, orange: 0xff6a2b, red: 0xff3b4e, yellow: 0xffc12e, violet: 0x8a5cff, white: 0xf4f6fa, teal: 0x22c0b0 };
 function dollP(color = PL.blue, s = 1) {      // maniquí articulado de plástico brillante
