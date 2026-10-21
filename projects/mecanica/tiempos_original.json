@@ -1,0 +1,232 @@
+[
+ {
+  "text": "Tres de cada diez.",
+  "start": 0.06,
+  "end": 1.06,
+  "pauses": []
+ },
+ {
+  "text": "Según los datos del último curso, el treinta y uno coma veinticinco por ciento dejó Ingeniería Mecánica en un solo año.",
+  "start": 1.63,
+  "end": 7.99,
+  "pauses": [
+   [
+    3.31,
+    3.5
+   ]
+  ]
+ },
+ {
+  "text": "Y al final te digo si, aun así, merece la pena.",
+  "start": 8.56,
+  "end": 11.55,
+  "pauses": [
+   [
+    10.51,
+    10.75
+   ]
+  ]
+ },
+ {
+  "text": "Porque esta carrera no va solo de motores.",
+  "start": 12.12,
+  "end": 14.36,
+  "pauses": []
+ },
+ {
+  "text": "Te imaginas un taller, una llave inglesa y un coche desmontado.",
+  "start": 14.82,
+  "end": 18.3,
+  "pauses": [
+   [
+    15.96,
+    16.09
+   ]
+  ]
+ },
+ {
+  "text": "Y llegarás. Pero antes, matemáticas.",
+  "start": 18.83,
+  "end": 21.76,
+  "pauses": [
+   [
+    19.55,
+    19.96
+   ],
+   [
+    20.56,
+    20.82
+   ]
+  ]
+ },
+ {
+  "text": "Cálculo infinitesimal: derivadas para saber cuánto cambia algo, integrales para sumarlo todo.",
+  "start": 22.27,
+  "end": 28.38,
+  "pauses": [
+   [
+    23.57,
+    23.97
+   ],
+   [
+    26.27,
+    26.65
+   ]
+  ]
+ },
+ {
+  "text": "Álgebra lineal: vectores y matrices para mover fuerzas en el espacio.",
+  "start": 28.86,
+  "end": 32.98,
+  "pauses": [
+   [
+    29.81,
+    30.17
+   ]
+  ]
+ },
+ {
+  "text": "Física: fuerzas, ondas, electromagnetismo. Por qué un puente aguanta y otro se cae.",
+  "start": 33.5,
+  "end": 39.37,
+  "pauses": [
+   [
+    33.99,
+    34.41
+   ],
+   [
+    36.97,
+    37.32
+   ]
+  ]
+ },
+ {
+  "text": "Química: de qué está hecho un metal y por qué se oxida.",
+  "start": 39.93,
+  "end": 43.3,
+  "pauses": [
+   [
+    40.37,
+    40.76
+   ],
+   [
+    42.15,
+    42.27
+   ]
+  ]
+ },
+ {
+  "text": "Expresión gráfica: dibujo técnico a mano, vistas y cotas. Y después, todo en CAD.",
+  "start": 43.82,
+  "end": 49.9,
+  "pauses": [
+   [
+    44.93,
+    45.31
+   ],
+   [
+    47.97,
+    48.39
+   ],
+   [
+    48.94,
+    49.28
+   ]
+  ]
+ },
+ {
+  "text": "Estadística y métodos numéricos: cuando una ecuación no se puede resolver, se aproxima.",
+  "start": 50.46,
+  "end": 55.6,
+  "pauses": [
+   [
+    52.28,
+    52.66
+   ],
+   [
+    54.68,
+    54.85
+   ]
+  ]
+ },
+ {
+  "text": "E informática: programar para que el ordenador haga los cálculos por ti.",
+  "start": 56.14,
+  "end": 60.09,
+  "pauses": [
+   [
+    56.93,
+    57.33
+   ]
+  ]
+ },
+ {
+  "text": "Cada asignatura es un engranaje.",
+  "start": 60.62,
+  "end": 62.37,
+  "pauses": []
+ },
+ {
+  "text": "Y hasta que no giran juntos, la máquina no se mueve.",
+  "start": 62.74,
+  "end": 65.64,
+  "pauses": [
+   [
+    64.08,
+    64.27
+   ]
+  ]
+ },
+ {
+  "text": "Entonces, ¿merece la pena?",
+  "start": 66.2,
+  "end": 67.9,
+  "pauses": [
+   [
+    66.87,
+    67.12
+   ]
+  ]
+ },
+ {
+  "text": "Si solo te gustan los coches, igual no.",
+  "start": 68.42,
+  "end": 70.72,
+  "pauses": [
+   [
+    69.91,
+    70.17
+   ]
+  ]
+ },
+ {
+  "text": "Pero si quieres entender cómo se diseña todo lo que se mueve, desde un tornillo hasta un motor, sí. Muchísimo.",
+  "start": 71.18,
+  "end": 78.09,
+  "pauses": [
+   [
+    74.27,
+    74.54
+   ],
+   [
+    76.18,
+    76.56
+   ],
+   [
+    76.9,
+    77.32
+   ]
+  ]
+ },
+ {
+  "text": "¿Tú la empezarías? Te leo en comentarios.",
+  "start": 78.62,
+  "end": 80.84,
+  "pauses": [
+   [
+    79.42,
+    79.81
+   ]
+  ]
+ }
+]
