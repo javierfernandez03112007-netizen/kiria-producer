@@ -1,0 +1,12 @@
+🫧 Ordenamiento burbuja, explicado con un doble for en C++.
+
+🔁 El for de fuera (i) cuenta las pasadas.
+🔍 El for de dentro (j) compara cada número con el de al lado.
+🔄 Si v[j] > v[j + 1], se intercambian con una variable auxiliar.
+⬆️ En cada pasada, el mayor «sube» al final como una burbuja… y ya no se vuelve a tocar (por eso j llega hasta n - 1 - i).
+
+📊 10 números, 45 comparaciones y 24 intercambios hasta dejar el array ordenado.
+
+💬 ¿Qué algoritmo quieres ver ahora: selección, inserción o quicksort?
+
+#programacion #cpp #algoritmos #ingenieriainformatica #aprenderaprogramar #bubblesort #informatica #codigo #kiriaai

@@ -7,3 +7,6 @@ transforman, respuesta al final; honestidad y estilo) y usa `engine/GUION.md` pa
 Motor: `engine/` (Python: audio, subtítulos, marioneta, dibujo 2D) y `engine/web/` (three.js: `morph.js`,
 `cues.js`). Cada vídeo vive en `projects/<nombre>/` con `web/` (escena 3D renderizada con Playwright),
 `compose_*.py` (subtítulos, marioneta, voz), `FUENTES.md` y `DESCRIPCION.txt`.
+
+Formatos guardados: `engine/FORMATO_CODIGO.md` (algoritmos: monitor con código arriba + barras 3D de plástico abajo,
+sonido sintetizado con `engine/sfx.py`; plantilla `projects/burbuja/`).
