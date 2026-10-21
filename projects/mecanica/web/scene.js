@@ -478,7 +478,7 @@ function buildAlg() {
   const a = rbox(1.6, 0.25, 0.8, pm, 0.06); part.add(a); const b = rbox(0.25, 1.2, 0.8, pm, 0.06); b.position.set(-0.68, 0.48, 0); part.add(b);
   for (const x of [0.3, 0.6]) { const hl = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.27, 24), new THREE.MeshBasicMaterial({ color: 0x0b1020 })); hl.position.set(x, 0, 0); part.add(hl); }
   S.vecs = [[PL.red, 1.1], [PL.green, 0.9], [PL.blue, 1.0]].map(([c, l], i) => { const ar = arrow(l, c, 0.045); ar.position.set([0.45, -0.68, 0.0][i], [0.15, 1.1, 0.15][i], [0, 0, 0.42][i]); part.add(ar); return ar; });
-  S.matTex = canvasTex(700, 300); S.matB = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 0.82), new THREE.MeshBasicMaterial({ map: S.matTex, transparent: true, depthWrite: false })); S.matB.position.set(0, 3.55, 0.3); Z.add(S.matB);
+  S.matTex = canvasTex(700, 300); S.matB = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 0.82), new THREE.MeshBasicMaterial({ map: S.matTex, transparent: true, depthWrite: false })); S.matB.position.set(0, 0.45, 0.6); Z.add(S.matB);
   studio(Z, 700);
 }
 function algAt(t) {
@@ -751,22 +751,22 @@ function buildZoom() {
   car.traverse(o => { if (o.material && !o.userData.keep) { o.material = o.material.clone(); o.material.transparent = true; } });
   // motor dentro del capó
   const eng = new THREE.Group(); eng.position.set(0.55 * 2.2, 0.55 * 2.2, 0); eng.scale.setScalar(0.35); Z.add(eng); S.zeng = eng;
-  eng.add(rbox(1.4, 0.9, 1.0, plastic(PL.red, 0.25), 0.06)); const hd2 = rbox(1.5, 0.22, 1.05, metal(0xd9dde4, 0.15), 0.06); hd2.position.y = 0.56; eng.add(hd2);
+  eng.add(rbox(1.4, 0.9, 1.0, plastic(PL.red, 0.25), 0.06)); const hd2 = rbox(1.5, 0.22, 1.05, plastic(PL.orange, 0.2), 0.06); hd2.position.y = 0.56; eng.add(hd2);
   // pistón con su tornillo
   const pis = new THREE.Group(); pis.position.set(0, 0.95, 0.56); pis.scale.setScalar(0.18); eng.add(pis); S.zpis = pis;
   const ph = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.6, 40), metal(0xe6e9ef, 0.1)); pis.add(ph); const rd = new THREE.Mesh(new THREE.BoxGeometry(0.2, 1.4, 0.14), metal(0x9aa0aa)); rd.position.y = -0.9; pis.add(rd);
-  const scr = new THREE.Group(); scr.position.set(0, -1.5, 0.08); scr.rotation.x = Math.PI / 2; scr.scale.setScalar(0.14); pis.add(scr); S.zscr = scr;
+  const scr = new THREE.Group(); scr.position.set(0.35, 0.67 + 0.05 * 2.0, 0.25); scr.scale.setScalar(0.05); eng.add(scr); S.zscr = scr;
   const sm = metal(0xc9ced6, 0.12); const shd = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.4, 6), sm); shd.position.y = 0.2; scr.add(shd);
   const thr = []; for (let i = 0; i <= 400; i++) { const a = i / 400 * Math.PI * 2 * 10; thr.push(v3(Math.cos(a) * 0.32, -i / 400 * 2.0, Math.sin(a) * 0.32)); } scr.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(thr), 800, 0.06, 8), sm));
   const core = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 2.0, 24), sm); core.position.y = -1.0; scr.add(core);
-  S.zLab = [['tornillo', 0.004], ['pistón', 0.02], ['motor', 0.12], ['coche', 1.6]].map(([n, s]) => { const l = label(n, { size: 70, w: 1, pill: true }); Z.add(l); l.userData.s = s; return l; });
+  S.zLab = [['tornillo', 0.0125], ['motor', 0.12], ['coche', 1.6]].map(([n, s]) => { const l = label(n, { size: 70, w: 1, pill: true }); Z.add(l); l.userData.s = s; return l; });
   studio(Z, 1600, 1.2);
 }
 function zoomAt(t) {
   const O = zones.zoom.position, t0 = ZT.find(z => z[0] === 'zoom')[1];
   S.zscr.rotation.y = (t - t0) * 1.2;
   const tgtS = S.zscr.getWorldPosition(v3(0, 0, 0)), tgtC = v3(O.x, 1.0, 0);
-  const k = eio(prog(t, K.tornillo - 0.4, K.si3 - K.tornillo + 0.6)), d = Math.exp(lerp(Math.log(0.04), Math.log(11), k));
+  const k = eio(prog(t, K.tornillo - 0.4, K.si3 - K.tornillo + 0.6)), d = Math.exp(lerp(Math.log(0.075), Math.log(11), k));
   const tgt = tgtS.clone().lerp(tgtC, eio(clamp((k - 0.45) / 0.55)));
   const a = 0.6 + (t - t0) * 0.12; cam.position.copy(tgt).add(v3(Math.sin(a) * 0.35, 0.45, 0.82).normalize().multiplyScalar(d)); cam.lookAt(tgt);
   const ck = clamp((d - 1.5) / 2.5); S.zcar.traverse(o => { if (o.material && o.material.transparent !== undefined && o.isMesh) o.material.opacity = 0.15 + 0.85 * ck; });
