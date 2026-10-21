@@ -3,7 +3,9 @@ Según los datos del último curso, el treinta y uno coma veinticinco por ciento
 Y al final te digo si, aun así, merece la pena.
 Porque esta carrera no va solo de motores.
 Te imaginas un taller, una llave inglesa y un coche desmontado.
-Y llegarás. Pero antes, matemáticas: cálculo infinitesimal y álgebra lineal.
+Y llegarás. Pero antes, matemáticas.
+Cálculo infinitesimal: derivadas para saber cuánto cambia algo, integrales para sumarlo todo.
+Álgebra lineal: vectores y matrices para mover fuerzas en el espacio.
 Física: fuerzas, ondas, electromagnetismo. Por qué un puente aguanta y otro se cae.
 Química: de qué está hecho un metal y por qué se oxida.
 Expresión gráfica: dibujo técnico a mano, vistas y cotas. Y después, todo en CAD.
