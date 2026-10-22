@@ -1,0 +1,225 @@
+[
+ {
+  "text": "¿Informática o Teleco?",
+  "start": 0.06,
+  "end": 1.75,
+  "pauses": []
+ },
+ {
+  "text": "Desde hace años, entre las dos hay tensión.",
+  "start": 2.32,
+  "end": 4.92,
+  "pauses": []
+ },
+ {
+  "text": "Los de Teleco dicen que Informática es solo programar. Los de Informática, que Teleco es solo cables y antenas.",
+  "start": 5.38,
+  "end": 11.86,
+  "pauses": [
+   [
+    8.24,
+    8.71
+   ]
+  ]
+ },
+ {
+  "text": "Y ninguno tiene razón.",
+  "start": 12.32,
+  "end": 13.8,
+  "pauses": []
+ },
+ {
+  "text": "Las dos tienen fama de duras: en Informática, la cifra de abandono que más se repite es tres de cada cuatro.",
+  "start": 14.31,
+  "end": 20.36,
+  "pauses": [
+   [
+    15.79,
+    16.22
+   ],
+   [
+    19.23,
+    19.37
+   ]
+  ]
+ },
+ {
+  "text": "Y en Zaragoza, una promoción antigua de Teleco llegó a un sesenta y ocho por ciento.",
+  "start": 20.78,
+  "end": 25.28,
+  "pauses": [
+   [
+    21.53,
+    21.66
+   ]
+  ]
+ },
+ {
+  "text": "Pero por dentro se parecen más de lo que admiten.",
+  "start": 25.78,
+  "end": 28.17,
+  "pauses": []
+ },
+ {
+  "text": "Matemáticas: álgebra, cálculo y estadística. Programación y algoritmos.",
+  "start": 28.73,
+  "end": 33.8,
+  "pauses": [
+   [
+    29.57,
+    29.98
+   ],
+   [
+    30.53,
+    30.67
+   ],
+   [
+    31.93,
+    32.36
+   ]
+  ]
+ },
+ {
+  "text": "Arquitectura de ordenadores, sistemas digitales, sistemas operativos y redes.",
+  "start": 34.16,
+  "end": 38.79,
+  "pauses": [
+   [
+    36.85,
+    36.98
+   ]
+  ]
+ },
+ {
+  "text": "Tanto, que quien estudia una puede acabar trabajando en la otra.",
+  "start": 39.24,
+  "end": 42.57,
+  "pauses": [
+   [
+    40.83,
+    40.95
+   ]
+  ]
+ },
+ {
+  "text": "La rivalidad empieza al salir.",
+  "start": 43.14,
+  "end": 44.89,
+  "pauses": []
+ },
+ {
+  "text": "Informática crea: videojuegos, aplicaciones y webs, inteligencia artificial, software, datos y sistemas.",
+  "start": 45.36,
+  "end": 52.62,
+  "pauses": [
+   [
+    46.55,
+    46.94
+   ],
+   [
+    49.01,
+    49.19
+   ]
+  ]
+ },
+ {
+  "text": "Teleco conecta: redes cinco G y seis G, fibra óptica, satélites, antenas, electrónica y comunicaciones aeronáuticas.",
+  "start": 53.05,
+  "end": 61.28,
+  "pauses": [
+   [
+    53.47,
+    53.6
+   ],
+   [
+    54.11,
+    54.52
+   ],
+   [
+    56.15,
+    56.39
+   ]
+  ]
+ },
+ {
+  "text": "Y en ciberseguridad, se encuentran.",
+  "start": 61.69,
+  "end": 63.68,
+  "pauses": [
+   [
+    62.68,
+    62.86
+   ]
+  ]
+ },
+ {
+  "text": "Si lo tuyo es programar, crear videojuegos o la inteligencia artificial, es Informática.",
+  "start": 64.21,
+  "end": 69.19,
+  "pauses": [
+   [
+    68.03,
+    68.24
+   ]
+  ]
+ },
+ {
+  "text": "Si lo tuyo son las antenas, los satélites, la electrónica y las ondas, es Teleco.",
+  "start": 69.6,
+  "end": 74.41,
+  "pauses": [
+   [
+    73.53,
+    73.72
+   ]
+  ]
+ },
+ {
+  "text": "Y si son las redes e internet, valen las dos, aunque Teleco juega en casa.",
+  "start": 74.84,
+  "end": 79.21,
+  "pauses": [
+   [
+    76.37,
+    76.55
+   ],
+   [
+    77.4,
+    77.62
+   ]
+  ]
+ },
+ {
+  "text": "La diferencia cabe en una frase.",
+  "start": 79.76,
+  "end": 81.54,
+  "pauses": []
+ },
+ {
+  "text": "Informática hace que las cosas funcionen.",
+  "start": 82.0,
+  "end": 84.34,
+  "pauses": []
+ },
+ {
+  "text": "Teleco hace que lleguen. Rápido, seguro y a cualquier parte.",
+  "start": 84.76,
+  "end": 89.15,
+  "pauses": [
+   [
+    85.22,
+    85.45
+   ],
+   [
+    86.33,
+    86.74
+   ]
+  ]
+ },
+ {
+  "text": "Cuéntame en comentarios de qué equipo eres.",
+  "start": 89.61,
+  "end": 91.58,
+  "pauses": []
+ }
+]
