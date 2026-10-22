@@ -1,19 +1,21 @@
-Informática y Telecomunicaciones.
-En Informática, la cifra de abandono que más se repite es tres de cada cuatro.
-Y en Zaragoza, una promoción antigua de Teleco llegó a registrar un sesenta y ocho por ciento.
-Las dos comparten una base enorme.
-Matemáticas: álgebra, cálculo y estadística.
-Programación y algoritmos, arquitectura de ordenadores, sistemas digitales y sistemas operativos.
-Redes y comunicaciones. Y mucha lógica para resolver problemas.
-Por eso, quien estudia una puede acabar trabajando en la otra, si se especializa.
-Pero las salidas cambian.
-De Informática salen desarrolladores de videojuegos, de aplicaciones y webs, ingenieros de inteligencia artificial y de software, analistas de datos y administradores de sistemas.
-De Teleco salen ingenieros de redes cinco G y seis G, especialistas en fibra óptica, ingenieros de satélites, diseñadores de antenas, de sistemas electrónicos y de comunicaciones aeronáuticas.
-Y ciberseguridad, en las dos.
-Si te gusta programar, crear videojuegos o la inteligencia artificial, encaja Informática.
-Si te gustan las antenas, los satélites, la electrónica, las ondas y las señales, encaja Teleco.
-Las redes e internet, en las dos, pero sobre todo en Teleco.
-La diferencia, en una frase.
-Informática busca crear programas y sistemas que funcionen.
-Teleco, que la información viaje de un dispositivo a otro, rápida, segura y eficiente.
-Cuéntame en comentarios cuál elegirías.
+¿Informática o Teleco?
+Desde hace años, entre las dos hay tensión.
+Los de Teleco dicen que Informática es solo programar. Los de Informática, que Teleco es solo cables y antenas.
+Y ninguno tiene razón.
+Las dos tienen fama de duras: en Informática, la cifra de abandono que más se repite es tres de cada cuatro.
+Y en Zaragoza, una promoción antigua de Teleco llegó a un sesenta y ocho por ciento.
+Pero por dentro se parecen más de lo que admiten.
+Matemáticas: álgebra, cálculo y estadística. Programación y algoritmos.
+Arquitectura de ordenadores, sistemas digitales, sistemas operativos y redes.
+Tanto, que quien estudia una puede acabar trabajando en la otra.
+La rivalidad empieza al salir.
+Informática crea: videojuegos, aplicaciones y webs, inteligencia artificial, software, datos y sistemas.
+Teleco conecta: redes cinco G y seis G, fibra óptica, satélites, antenas, electrónica y comunicaciones aeronáuticas.
+Y en ciberseguridad, se encuentran.
+Si lo tuyo es programar, crear videojuegos o la inteligencia artificial, es Informática.
+Si lo tuyo son las antenas, los satélites, la electrónica y las ondas, es Teleco.
+Y si son las redes e internet, valen las dos, aunque Teleco juega en casa.
+La diferencia cabe en una frase.
+Informática hace que las cosas funcionen.
+Teleco hace que lleguen. Rápido, seguro y a cualquier parte.
+Cuéntame en comentarios de qué equipo eres.
