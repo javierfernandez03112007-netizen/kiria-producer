@@ -857,6 +857,7 @@ function frame(t) {
 
 window.renderAt = function (t) {
   const st = frame(t);
+  if (window.camOverride) { window.camOverride(cam, v3); st.dir = [0, 0]; }
   renderer.setRenderTarget(rtA); renderer.render(scene, cam);
   post.uniforms.tA.value = rtA.texture; post.uniforms.dir.value.set(st.dir[0], st.dir[1]); post.uniforms.fade.value = st.fade; post.uniforms.vig.value = st.vig;
   renderer.setRenderTarget(null); renderer.render(quadScene, quadCam);
