@@ -1,0 +1,193 @@
+[
+ {
+  "text": "Apaga la luz.",
+  "start": 0.08,
+  "end": 0.86,
+  "pauses": []
+ },
+ {
+  "text": "Ahora el móvil, el metro, el hospital.",
+  "start": 1.36,
+  "end": 4.14,
+  "pauses": [
+   [
+    2.39,
+    2.68
+   ],
+   [
+    3.35,
+    3.47
+   ]
+  ]
+ },
+ {
+  "text": "Todo eso depende de alguien que estudió Ingeniería Eléctrica.",
+  "start": 4.66,
+  "end": 7.71,
+  "pauses": []
+ },
+ {
+  "text": "Y no es una carrera fácil: en la Universidad de Salamanca, según sus propios indicadores, en alguna promoción abandonó hasta el cuarenta y tres por ciento.",
+  "start": 8.25,
+  "end": 16.94,
+  "pauses": [
+   [
+    9.68,
+    10.22
+   ],
+   [
+    11.69,
+    11.84
+   ],
+   [
+    13.35,
+    13.69
+   ]
+  ]
+ },
+ {
+  "text": "Empiezas con la base: cálculo, álgebra, física y expresión gráfica.",
+  "start": 17.51,
+  "end": 22.29,
+  "pauses": [
+   [
+    18.62,
+    19.1
+   ],
+   [
+    19.7,
+    19.85
+   ]
+  ]
+ },
+ {
+  "text": "Y luego llega lo tuyo.",
+  "start": 22.78,
+  "end": 24.11,
+  "pauses": []
+ },
+ {
+  "text": "Teoría de circuitos: tensión, corriente y resistencia, hasta que la ley de Ohm te sale sola.",
+  "start": 24.63,
+  "end": 30.33,
+  "pauses": [
+   [
+    25.84,
+    26.19
+   ],
+   [
+    28.28,
+    28.51
+   ]
+  ]
+ },
+ {
+  "text": "Campos y ondas: por qué un imán puede mover un motor.",
+  "start": 30.8,
+  "end": 34.04,
+  "pauses": [
+   [
+    31.79,
+    32.16
+   ]
+  ]
+ },
+ {
+  "text": "Máquinas eléctricas: transformadores, generadores y motores, por dentro.",
+  "start": 34.53,
+  "end": 39.27,
+  "pauses": [
+   [
+    35.67,
+    36.02
+   ],
+   [
+    38.43,
+    38.74
+   ]
+  ]
+ },
+ {
+  "text": "Electrónica de potencia y control: decirle a la energía cuánta, cuándo y adónde.",
+  "start": 39.75,
+  "end": 45.03,
+  "pauses": [
+   [
+    41.52,
+    41.94
+   ],
+   [
+    43.16,
+    43.3
+   ],
+   [
+    43.77,
+    43.94
+   ],
+   [
+    44.34,
+    44.46
+   ]
+  ]
+ },
+ {
+  "text": "Y sistemas eléctricos: cómo viaja la electricidad desde una central hasta tu enchufe.",
+  "start": 45.52,
+  "end": 50.38,
+  "pauses": [
+   [
+    46.79,
+    47.12
+   ]
+  ]
+ },
+ {
+  "text": "Instalaciones, energías renovables, coche eléctrico.",
+  "start": 50.86,
+  "end": 54.18,
+  "pauses": []
+ },
+ {
+  "text": "De aquí salen quienes diseñan parques solares y eólicos, redes de alta tensión, puntos de carga y la instalación de cualquier edificio o fábrica.",
+  "start": 54.63,
+  "end": 62.8,
+  "pauses": [
+   [
+    57.63,
+    57.87
+   ],
+   [
+    59.15,
+    59.39
+   ]
+  ]
+ },
+ {
+  "text": "Si te gusta entender todo lo que funciona con un enchufe, esta es tu carrera.",
+  "start": 63.26,
+  "end": 67.25,
+  "pauses": [
+   [
+    65.99,
+    66.26
+   ]
+  ]
+ },
+ {
+  "text": "Porque cuando todo se apaga, alguien tiene que volver a encenderlo.",
+  "start": 67.68,
+  "end": 71.29,
+  "pauses": [
+   [
+    69.16,
+    69.51
+   ]
+  ]
+ },
+ {
+  "text": "Cuéntame en comentarios si la empezarías.",
+  "start": 71.83,
+  "end": 73.79,
+  "pauses": []
+ }
+]
