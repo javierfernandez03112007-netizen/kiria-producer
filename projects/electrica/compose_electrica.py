@@ -50,7 +50,7 @@ HEAD = [
 SUBS = None
 
 
-def headline(img, t, t0, t1, parts, y=1340, size=118):
+def headline(img, t, t0, t1, parts, y=1540, size=108):
     a = eo(prog(t, t0, 0.18)) * (1 - prog(t, t1 - 0.2, 0.2))
     if a < 0.01:
         return

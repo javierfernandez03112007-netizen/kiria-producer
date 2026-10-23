@@ -18,7 +18,7 @@ const VS = 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,
 const brightM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, px: { value: new THREE.Vector2(1.5 / (W * PR), 1.5 / (H * PR)) } }, vertexShader: VS, depthTest: false,
   fragmentShader: `uniform sampler2D tA; uniform vec2 px; varying vec2 vUv;
     void main(){ vec3 c = vec3(0.); for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) c += texture2D(tA, vUv + vec2(float(i), float(j)) * px).rgb; c /= 9.0;
-      float l = max(c.r, max(c.g, c.b)), k = clamp((l - 1.3) / 1.5, 0., 1.); gl_FragColor = vec4(c * k * k, 1.); }` });
+      float l = max(c.r, max(c.g, c.b)), k = clamp((l - 1.9) / 2.0, 0., 1.); gl_FragColor = vec4(c * k * k, 1.); }` });
 const blurM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, d: { value: new THREE.Vector2() } }, vertexShader: VS, depthTest: false,
   fragmentShader: `uniform sampler2D tA; uniform vec2 d; varying vec2 vUv;
     void main(){ vec3 c = texture2D(tA, vUv).rgb * 0.227027;
@@ -26,7 +26,7 @@ const blurM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, d: { v
       c += (texture2D(tA, vUv + d * 3.230769).rgb + texture2D(tA, vUv - d * 3.230769).rgb) * 0.070270;
       gl_FragColor = vec4(c, 1.); }` });
 const post = new THREE.ShaderMaterial({        // acabado cinematográfico: desenfoque de movimiento, resplandor, aberración cromática, ACES, gradación teal/naranja, grano
-  uniforms: { tA: { value: null }, tB: { value: null }, tC: { value: null }, dir: { value: new THREE.Vector2(0, 0) }, fade: { value: 0 }, vig: { value: 0.3 }, time: { value: 0 }, flash: { value: 0 }, bloom: { value: 0.6 } },
+  uniforms: { tA: { value: null }, tB: { value: null }, tC: { value: null }, dir: { value: new THREE.Vector2(0, 0) }, fade: { value: 0 }, vig: { value: 0.3 }, time: { value: 0 }, flash: { value: 0 }, bloom: { value: 0.5 } },
   vertexShader: VS,
   fragmentShader: `uniform sampler2D tA, tB, tC; uniform vec2 dir; uniform float fade, vig, time, flash, bloom; varying vec2 vUv;
     float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
@@ -273,17 +273,23 @@ function tube(pts, r, m, seg) { return new THREE.Mesh(new THREE.TubeGeometry(new
 function cat(a, b, sag, n = 24) { const pts = []; for (let i = 0; i <= n; i++) { const q = i / n, p = a.clone().lerp(b, q); p.y -= sag * 4 * q * (1 - q); pts.push(p); } return pts; }
 function hardHat(d, color = 0xffffff) { const J = d.userData.J, m = plastic(color, 0.2); const dome = new THREE.Mesh(new THREE.SphereGeometry(0.088, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2), m); dome.position.y = 0.11; J.neck.add(dome); const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.115, 0.115, 0.012, 24), m); brim.position.y = 0.11; J.neck.add(brim); }
 function engineer(color = YEL, s = 1) { const d = dollP(color, s); hardHat(d); return d; }
-// cámara por fotogramas clave (Catmull-Rom): [[t, [x,y,z] posición, [x,y,z] mira], …], en coordenadas de la zona
-function camKeys(t, KS, ox) {
-  const n = KS.length, mk = (k, j) => { const a = KS[j][k]; return v3(a[0] + ox, a[1], a[2]); };
-  if (t <= KS[0][0]) return { p: mk(1, 0), l: mk(2, 0) };
-  if (t >= KS[n - 1][0]) return { p: mk(1, n - 1), l: mk(2, n - 1) };
-  let i = 0; while (t > KS[i + 1][0]) i++;
-  const u = (t - KS[i][0]) / (KS[i + 1][0] - KS[i][0]), g = (j, k) => mk(k, Math.max(0, Math.min(n - 1, j)));
-  const cr = k => { const P0 = g(i - 1, k), P1 = g(i, k), P2 = g(i + 1, k), P3 = g(i + 2, k), u2 = u * u, u3 = u2 * u;
-    return P1.clone().multiplyScalar(2).add(P2.clone().sub(P0).multiplyScalar(u)).add(P0.clone().multiplyScalar(2).sub(P1.clone().multiplyScalar(5)).add(P2.clone().multiplyScalar(4)).sub(P3).multiplyScalar(u2)).add(P0.clone().negate().add(P1.clone().multiplyScalar(3)).sub(P2.clone().multiplyScalar(3)).add(P3).multiplyScalar(u3)).multiplyScalar(0.5); };
-  return { p: cr(1), l: cr(2) };
+// cámara por fotogramas clave: [[t, [x,y,z] posición, [x,y,z] mira, fov?], …] en coordenadas de la zona.
+// Interpolación cúbica monótona (Fritsch–Carlson) con los tiempos reales: suave y sin pasarse nunca de largo.
+function mono(t, T, Y) {
+  const n = T.length; if (t <= T[0]) return Y[0]; if (t >= T[n - 1]) return Y[n - 1];
+  let i = 0; while (t > T[i + 1]) i++;
+  const d = k => (Y[k + 1] - Y[k]) / (T[k + 1] - T[k]), hh = k => T[k + 1] - T[k];
+  const m = k => { if (k <= 0 || k >= n - 1) return 0; const a = d(k - 1), b = d(k); if (a * b <= 0) return 0; const h0 = hh(k - 1), h1 = hh(k); return 3 * (h0 + h1) / ((2 * h1 + h0) / a + (h1 + 2 * h0) / b); };
+  const h = hh(i), u = (t - T[i]) / h, u2 = u * u, u3 = u2 * u;
+  return (2 * u3 - 3 * u2 + 1) * Y[i] + (u3 - 2 * u2 + u) * h * m(i) + (-2 * u3 + 3 * u2) * Y[i + 1] + (u3 - u2) * h * m(i + 1);
 }
+function camKeys(t, KS, ox) {
+  const T = KS.map(k => k[0]), comp = (j, c) => mono(t, T, KS.map(k => k[j][c]));
+  return { p: v3(comp(1, 0) + ox, comp(1, 1), comp(1, 2)), l: v3(comp(2, 0) + ox, comp(2, 1), comp(2, 2)), f: mono(t, T, KS.map(k => k[3] || 36)) };
+}
+// cámara que se para en cada cosa y se desplaza rápido (y suave) a la siguiente: P = [[t de llegada, x], …]
+const sm5 = x => x * x * x * (x * (x * 6 - 15) + 10);
+function holdMove(t, P, dur = 0.34) { let x = P[0][1]; for (let i = 1; i < P.length; i++) x += (P[i][1] - P[i - 1][1]) * sm5(clamp((t - (P[i][0] - dur)) / dur)); return x; }
 // torre de alta tensión de celosía (crucetas a lo largo de z: la línea corre a lo largo de x; girada 90° corre a lo largo de z)
 function pylon(h = 4, m = metal(0xc9ced6, 0.35)) {
   const g = new THREE.Group(), corners = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
@@ -376,7 +382,7 @@ function cityAt(t, final) {
   S.lamps.forEach(l => (l.m.emissiveIntensity = 3 * cityLevel(t, l.dist, l.i, final)));
   const lampOn = cityLevel(t, 2.6, 301, final); S.lampL.forEach(l => (l.intensity = 3 * lampOn));
   // metro: entra iluminado y, al oír «metro», se apaga y frena hasta pararse en el centro
-  const v = 3.2, tau = 0.45, xs = -0.2; let tx, tw;
+  const v = 3.2, tau = 0.3, xs = -0.2; let tx, tw;
   if (!final) { const ts = K.metro + 0.12; tx = t < ts ? xs - v * tau - v * (ts - t) : xs - v * tau * Math.exp(-(t - ts) / tau); tw = t < ts ? 1 : t < ts + 0.12 ? flick(t, 11) : 0; }
   else { tx = xs; tw = cityLevel(t, 6.0, 11, true); }
   S.train.position.x = tx; S.trainWin.emissiveIntensity = 2.4 * tw;
@@ -392,17 +398,17 @@ function cityAt(t, final) {
   J.shR.rotation.set(lerp(-0.1, -2.95, k), 0, 0.15); J.elR.rotation.x = lerp(-0.2, -0.1, k);
   if (!final) {
     S.eng.rotation.y = -0.15 + 0.1 * Math.sin(t * 0.8); J.shL.rotation.set(0.05, 0, -0.15); J.elL.rotation.x = -0.2; S.bulbM.emissiveIntensity = 5 * k;
-    lookLab(S.engLab, env(t, K.ingenieria - 0.1, 99, 0.25, 0.1), v3(0.25, 2.05, 4.5));
+    lookLab(S.engLab, env(t, K.ingenieria - 0.1, 99, 0.25, 0.1), v3(0.25, 0.55, 5.0));
   } else {
     const press = env(t, K.encender - 0.32, K.encender + 0.45, 0.24, 0.3);
     S.eng.rotation.y = -0.2; J.shL.rotation.set(-0.3 * press, 0, -0.15 - 1.85 * press); J.elL.rotation.x = -0.25 * press; S.bulbM.emissiveIntensity = 5 * k * (1 - 0.5 * press);
     S.engLab.visible = false;
   }
-  const keys = final ? [[K.porque - 0.4, [0, 2.1, 11.0], [0, 1.7, -4]], [K.apaga2 + 0.3, [0, 1.9, 10.2], [0, 1.6, -2]], [K.alguien2 + 0.25, [0.3, 1.2, 8.2], [0.3, 1.05, 4.3]], [K.encender + 0.1, [0.25, 1.2, 7.7], [0.25, 1.1, 4.3]],
-    [K.encender + 0.8, [0.2, 1.4, 9.2], [0.15, 1.35, 1.5]], [K.cuentame + 0.4, [0.1, 1.25, 9.0], [0.1, 1.35, 0]], [END, [0.1, 1.2, 8.8], [0.1, 1.35, 0]]]
+  const keys = final ? [[K.porque - 0.4, [0, 2.1, 11.0], [0, 1.7, -4]], [K.apaga2 + 0.3, [0, 1.9, 10.2], [0, 1.6, -2]], [K.alguien2 + 0.25, [0.25, 1.25, 8.95], [0.25, 1.1, 4.3]], [K.encender + 0.1, [0.25, 1.25, 8.6], [0.25, 1.12, 4.3]],
+    [K.encender + 0.8, [0.25, 1.4, 9.8], [0.25, 1.35, 1.5]], [K.cuentame + 0.4, [0.25, 1.3, 9.8], [0.25, 1.35, 0]], [END, [0.25, 1.25, 9.6], [0.25, 1.35, 0]]]
     : [[0, [0.1, 1.2, 8.8], [0.1, 1.35, 0]], [1.05, [0, 1.6, 10.0], [0, 1.6, -2]], [K.movil - 0.2, [-1.9, 1.0, 5.3], [-1.9, 0.9, 2.0]], [K.movil + 0.35, [-1.85, 1.0, 5.1], [-1.9, 0.9, 2.0]],
-      [K.metro + 0.05, [0.4, 1.85, 6.9], [0.4, 1.65, -1.6]], [K.metro + 0.5, [0.45, 1.85, 6.7], [0.45, 1.65, -1.6]], [K.hospital, [2.4, 2.0, 4.9], [2.4, 1.85, -3.8]], [K.hospital + 0.6, [2.35, 2.0, 4.7], [2.4, 1.85, -3.8]],
-      [K.alguien - 0.35, [0.3, 1.9, 10.2], [0.3, 1.5, 0]], [K.alguien + 0.3, [0.3, 1.2, 8.2], [0.3, 1.05, 4.3]], [K.alguien + 2.4, [0.3, 1.2, 7.8], [0.3, 1.05, 4.3]]];
+      [K.metro + 0.05, [0.4, 3.5, 7.4], [0.4, 1.75, -1.6]], [K.metro + 0.5, [0.45, 3.45, 7.2], [0.45, 1.75, -1.6]], [K.hospital, [2.4, 2.0, 4.9], [2.4, 1.85, -3.8]], [K.hospital + 0.6, [2.35, 2.0, 4.7], [2.4, 1.85, -3.8]],
+      [K.alguien - 0.35, [0.25, 1.9, 10.4], [0.25, 1.5, 0]], [K.alguien + 0.3, [0.25, 1.25, 8.95], [0.25, 1.1, 4.3]], [K.alguien + 2.4, [0.25, 1.25, 8.6], [0.25, 1.1, 4.3]]];
   return camKeys(t, keys, O.x);
 }
 
@@ -436,11 +442,11 @@ function wireAt(t) {
     J.hpL.rotation.set(fall > 0 ? -0.6 : 0, 0, 0); J.hpR.rotation.set(fall > 0 ? 0.4 : 0, 0, 0); J.knL.rotation.x = fall > 0 ? 0.8 : 0.05; J.knR.rotation.x = fall > 0 ? 0.3 : 0.05;
     if (o.fi >= 0) { const sp = S.wsp[o.fi], t0 = K.abandono + WR.dt[o.fi]; burst(sp, v3(o.x, y0, 0.67), t, t0, 0.8, 0.7, false); sp.material.opacity = t > t0 ? Math.max(0, 1 - (t - t0) / 0.7) : 0; }
   });
-  lookLab(S.usal, env(t, K.universidad - 0.1, K.abandono - 0.25, 0.3, 0.3), v3(clamp(cam.position.x - O.x, -0.5, 0.5), 4.72, 0.7));
+  lookLab(S.usal, env(t, K.universidad - 0.1, K.abandono - 0.25, 0.3, 0.3), v3(clamp(cam.position.x - O.x, -0.5, 0.5), 2.72, 0.8));
   const ck = prog(t, K.cuarenta - 0.1, K.ciento - K.cuarenta + 0.25), v = Math.round(43 * eio(ck)); const g2 = S.pTex.userData.g; g2.clearRect(0, 0, 800, 380); g2.fillStyle = 'rgba(20,22,26,.88)'; rr(g2, 40, 20, 720, 340, 60); g2.fill();
   g2.fillStyle = '#ffd23f'; g2.font = '900 170px Inter'; g2.textAlign = 'center'; g2.textBaseline = 'middle'; g2.fillText(`${v} %`, 400, 150); g2.fillStyle = '#ffffff'; g2.font = '700 44px Inter'; g2.fillText('abandono en alguna promoción', 400, 290); S.pTex.needsUpdate = true;
-  S.pct.position.set(0, 4.95, 0.7); S.pct.material.opacity = env(t, K.cuarenta - 0.15, 99, 0.2, 0.1); S.pct.visible = S.pct.material.opacity > 0.01;
-  return camKeys(t, [[K.wire0 - 0.4, [-0.35, 3.55, 5.6], [-0.35, 3.3, 0.67]], [K.indicadores, [0.35, 3.55, 5.4], [0.35, 3.3, 0.67]], [K.abandono - 0.4, [0, 3.35, 9.4], [0, 3.0, 0.67]],
+  S.pct.position.set(0, 2.15, 0.8); S.pct.material.opacity = env(t, K.cuarenta - 0.15, 99, 0.2, 0.1); S.pct.visible = S.pct.material.opacity > 0.01;
+  return camKeys(t, [[K.wire0 - 0.4, [-0.35, 3.62, 5.6], [-0.35, 3.36, 0.67]], [K.indicadores, [0.35, 3.62, 5.4], [0.35, 3.36, 0.67]], [K.abandono - 0.4, [0, 3.35, 9.4], [0, 3.0, 0.67]],
     [K.ciento + 0.3, [0, 3.1, 10.0], [0, 2.65, 0.67]], [K.base0 + 0.4, [0, 3.1, 10.0], [0, 2.65, 0.67]]], O.x);
 }
 
@@ -490,7 +496,7 @@ function buildCircuit() {
   for (const x of [-0.28, 0.28]) { const cp = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.22, 24), plastic(0x1f3f8f, 0.25)); cp.position.set(x, 0.19, -0.45); Z.add(cp); const ct = new THREE.Mesh(new THREE.CylinderGeometry(0.071, 0.071, 0.012, 24), metal(0xd9dde4, 0.2)); ct.position.set(x, 0.3, -0.45); Z.add(ct); }
   S.elec = new THREE.InstancedMesh(new THREE.SphereGeometry(0.035, 10, 8), glowM(CYAN, 3.5), 44); Z.add(S.elec);
   S.vL = pill('V · tensión', '#1b1d24', 'rgba(58,212,255,.95)', 0.85); S.iL = pill('I · corriente', '#1b1d24', 'rgba(58,212,255,.95)', 0.95); S.rL = pill('R · resistencia', '#ffffff', 'rgba(255,90,31,.95)', 1.05); [S.vL, S.iL, S.rL].forEach(l => Z.add(l));
-  S.ohm = label('V = I · R', { size: 150, w: 1.7, color: '#ffd23f', weight: 900 }); Z.add(S.ohm);
+  S.ohm = label('V = I · R', { size: 150, w: 1.55, color: '#ffd23f', weight: 900, pill: true, bg: 'rgba(13,17,23,.9)' }); Z.add(S.ohm);
   studio(Z, 90, 0.9);
 }
 function circuitAt(t) {
@@ -500,8 +506,8 @@ function circuitAt(t) {
   S.elec.instanceMatrix.needsUpdate = true;
   S.resM.emissiveIntensity = 2.2 * prog(t, K.resistencia - 0.1, 0.4) * (0.8 + 0.2 * Math.sin(t * 9));
   const lk = prog(t, K.sola - 0.15, 0.25); S.ledM.emissiveIntensity = 0.3 + 6 * lk; S.ledL.intensity = 4 * lk;
-  lookLab(S.vL, env(t, K.tension - 0.1, 99, 0.25, 0.1), v3(-0.68, 0.62, 0.0)); lookLab(S.iL, env(t, K.corriente - 0.1, 99, 0.25, 0.1), v3(0.0, 0.42, 1.3)); lookLab(S.rL, env(t, K.resistencia - 0.1, 99, 0.25, 0.1), v3(0.0, 0.52, -1.25));
-  const ok = eo(prog(t, K.ley - 0.1, 0.35)); S.ohm.visible = ok > 0.01; S.ohm.position.set(0, 1.25 + 0.05 * Math.sin(t * 2), 0.1); S.ohm.scale.setScalar(Math.max(0.01, ok * (1 + 0.15 * Math.sin(Math.PI * clamp((t - K.ley) / 0.35))))); S.ohm.lookAt(cam.position);
+  lookLab(S.vL, env(t, K.tension - 0.1, K.ley + 0.1, 0.25, 0.25), v3(-0.68, 0.62, 0.0)); lookLab(S.iL, env(t, K.corriente - 0.1, K.ley + 0.1, 0.25, 0.25), v3(0.0, 0.42, 1.3)); lookLab(S.rL, env(t, K.resistencia - 0.1, K.ley + 0.1, 0.25, 0.25), v3(0.0, 0.52, -1.25));
+  const ok = eo(prog(t, K.ley - 0.1, 0.35)); S.ohm.visible = ok > 0.01; S.ohm.position.set(0, 0.85 + 0.04 * Math.sin(t * 2), 0.3); S.ohm.scale.setScalar(Math.max(0.01, ok * (1 + 0.15 * Math.sin(Math.PI * clamp((t - K.ley) / 0.35))))); S.ohm.lookAt(cam.position);
   return camKeys(t, [[K.circ0 - 0.4, [0, 6.7, 4.0], [0, 0, -0.15]], [K.resistencia, [0, 6.3, 3.8], [0, 0, -0.15]], [K.ley, [0, 5.0, 4.7], [0, 0.45, 0]], [K.campos0 + 0.4, [0, 4.8, 4.6], [0, 0.5, 0]]], O.x);
 }
 
@@ -539,7 +545,7 @@ function fieldAt(t) {
 function buildMachines() {
   const Z = zone('machines', 150), XS = [-2.2, 0, 2.2];
   const lam = canvasTex(64, 256, (g, w, h) => { for (let y = 0; y < h; y += 8) { g.fillStyle = y % 16 ? '#3a3f48' : '#2a2d34'; g.fillRect(0, y, w, 8); } });
-  const coreM = new THREE.MeshStandardMaterial({ map: lam, roughness: 0.4, metalness: 0.6 }), cu = metal(0xd38b4a, 0.22);
+  const coreM = new THREE.MeshStandardMaterial({ map: lam, roughness: 0.4, metalness: 0.6 }), cu = metal(0xd38b4a, 0.38);
   const helix = (r, h, turns) => { const pts = []; for (let i = 0; i <= turns * 24; i++) { const a = i / 24 * Math.PI * 2; pts.push(v3(Math.cos(a) * r, -h / 2 + h * i / (turns * 24), Math.sin(a) * r)); } return new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), turns * 48, 0.018, 6), cu); };
   S.mach = [];
   // transformador: cuba con radiadores, tres pasatapas de porcelana y depósito de expansión; dentro, núcleo y bobinas
@@ -576,10 +582,11 @@ function buildMachines() {
 function machinesAt(t) {
   const O = zones.machines.position, XS = [-2.2, 0, 2.2], cues = [K.transformadores, K.generadores, K.motores], inside = eo(prog(t, K.pordentro - 0.1, 0.45));
   S.mach.forEach((m, i) => { const k = eo(prog(t, K.maq0 + 0.05 + i * 0.16, 0.4)), hl = Math.sin(Math.PI * clamp((t - cues[i] + 0.12) / 0.4)); m.g.visible = k > 0.01; m.g.scale.setScalar(Math.max(0.01, k * (1 + 0.14 * hl)));
-    m.shell.forEach(s => { s.material.opacity = 1 - 0.85 * inside; s.material.depthWrite = inside < 0.5; }); if (m.spin) m.spin.rotation.x = (t - K.maq0) * (3 + 9 * inside);
-    lookLab(S.machLab[i], env(t, cues[i] - 0.1, 99, 0.25, 0.1), v3(XS[i], m.top + 0.25, 0.3)); });
-  return camKeys(t, [[K.maq0 - 0.4, [-2.2, 1.15, 6.6], [-2.2, 0.8, 0]], [K.transformadores + 0.1, [-2.2, 1.1, 5.0], [-2.2, 0.8, 0]], [K.generadores + 0.1, [0, 1.1, 5.0], [0, 0.8, 0]], [K.motores + 0.1, [2.2, 1.1, 5.0], [2.2, 0.8, 0]],
-    [K.pordentro + 0.15, [2.2, 1.0, 3.3], [2.2, 0.75, 0]], [K.ctrl0 + 0.4, [2.2, 1.0, 3.2], [2.2, 0.75, 0]]], O.x);
+    m.shell.forEach(s => { s.material.opacity = 1 - 0.78 * inside; s.material.depthWrite = inside < 0.5; }); if (m.spin) m.spin.rotation.x = (t - K.maq0) * (3 + 9 * inside);
+    lookLab(S.machLab[i], env(t, cues[i] - 0.1, 99, 0.25, 0.1), v3(XS[i], 0.13, 0.75)); });
+  const x = holdMove(t, [[K.maq0 - 0.4, -2.2], [K.generadores, 0], [K.motores, 2.2]], 0.36), zi = eio(prog(t, K.pordentro - 0.1, 0.5));
+  const z = lerp(lerp(6.8, 5.1, eio(prog(t, K.maq0 - 0.2, K.transformadores - K.maq0 + 0.3))), 3.5, zi), y = lerp(1.12, 1.0, zi);
+  return { p: v3(O.x + x, y, z), l: v3(O.x + x, lerp(0.8, 0.75, zi), 0) };
 }
 
 // ---------------------------------------------------------------- 6 · electrónica de potencia y control: el convertidor decide cuánta, cuándo y adónde (en vertical)
@@ -614,51 +621,54 @@ function controlAt(t) {
   const wk = prog(t, K.cuando - 0.1, 0.3); g.fillStyle = '#ffffff'; g.fillText('CUÁNDO', 40, 290); g.strokeStyle = '#ffffff'; g.lineWidth = 6; g.beginPath(); g.arc(250, 370, 62, 0, 7); g.stroke(); const ang = -Math.PI / 2 + wk * (t - K.cuando) * 6; g.strokeStyle = '#ffd23f'; g.beginPath(); g.moveTo(250, 370); g.lineTo(250 + Math.cos(ang) * 50, 370 + Math.sin(ang) * 50); g.stroke();
   g.fillStyle = '#ffffff'; g.fillText('ADÓNDE', 40, 500); ['CASA', 'FÁBRICA', 'COCHE'].forEach((e, i) => { g.fillStyle = sel > 0.5 && i === 2 ? '#19e37c' : '#23262c'; rr(g, 40 + i * 145, 525, 125, 90, 18); g.fill(); g.fillStyle = sel > 0.5 && i === 2 ? '#0d1117' : '#ffffff'; g.font = '800 30px Inter'; g.textAlign = 'center'; g.fillText(e, 102 + i * 145, 580); g.textAlign = 'left'; g.font = '800 34px Inter'; });
   g.globalAlpha = 1; S.dTex.needsUpdate = true;
-  return camKeys(t, [[K.ctrl0 - 0.4, [0, 1.75, 8.3], [0, 1.6, 0]], [K.decirle, [0, 1.85, 7.5], [0, 1.7, 0]], [K.cuanta, [0, BY, 3.3], [0, BY, 0]], [K.cuando + 0.15, [0, BY, 3.1], [0, BY, 0]],
-    [K.adonde + 0.1, [0.1, 1.5, 7.4], [0.1, 1.35, 0]], [K.grid0 + 0.4, [0.1, 1.5, 7.6], [0.1, 1.35, 0]]], O.x);
+  return camKeys(t, [[K.ctrl0 - 0.4, [0, 1.75, 8.3], [0, 1.6, 0]], [K.decirle, [0, 1.85, 7.5], [0, 1.7, 0]], [K.cuanta, [0, BY, 3.75], [0, BY, 0]], [K.cuando + 0.15, [0, BY, 3.55], [0, BY, 0]],
+    [K.adonde + 0.1, [0, 1.5, 7.9], [0, 1.35, 0]], [K.grid0 + 0.4, [0, 1.5, 8.1], [0, 1.35, 0]]], O.x);
 }
 
-// ---------------------------------------------------------------- 7 · sistemas eléctricos: la línea se pierde a lo lejos hasta la central; la corriente viene hasta tu enchufe
+// ---------------------------------------------------------------- 7 · sistemas eléctricos: la línea serpentea desde la central del fondo hasta tu enchufe (zoom a la central y la corriente viene hacia ti)
 function buildGrid() {
   const Z = zone('grid', 210), conc = plastic(0xd9dde4, 0.6);
   const prof = []; for (let i = 0; i <= 24; i++) { const y = i / 24 * 4.0, r = 1.0 + 0.75 * Math.pow((y - 2.7) / 2.7, 2) * (y < 2.7 ? 1 : 0.35); prof.push(new THREE.Vector2(r, y)); }
-  const tower = new THREE.Mesh(new THREE.LatheGeometry(prof, 48), conc); tower.position.set(-1.7, 0, -16.5); tower.castShadow = true; Z.add(tower);
-  const hall = rbox(2.4, 1.4, 1.6, plastic(0xf4f6fa, 0.4), 0.06); hall.position.set(1.0, 0.7, -15.2); Z.add(hall);
-  const chim = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.24, 5.2, 20), plastic(0xff3b30, 0.3)); chim.position.set(2.5, 2.6, -16.2); Z.add(chim);
-  for (const y of [1.4, 2.8, 4.2]) { const b = new THREE.Mesh(new THREE.CylinderGeometry(0.23 - y * 0.015, 0.23 - y * 0.015, 0.25, 20), plastic(0xf4f6fa, 0.3)); b.position.set(2.5, y, -16.2); Z.add(b); }
-  S.steam = sparks(Z, 220, 0xdfe6f0, 0.3); S.steam.material.blending = THREE.NormalBlending; S.steam.material.opacity = 0.32;
-  const xf = rbox(0.8, 0.8, 0.7, metal(0x8f969f, 0.35), 0.04); xf.position.set(0.4, 0.4, -12.6); Z.add(xf);
-  const cm = new THREE.MeshStandardMaterial({ color: 0x2a2d34, roughness: 0.35, metalness: 0.7 }), PZ = [-9.6, -6.0, -2.4], H = 3.4, y1 = H * 0.86 - 0.22, y2 = H * 0.72 - 0.22;
-  PZ.forEach(z => { const p = pylon(H, metal(0xc9ced6, 0.35)); p.rotation.y = Math.PI / 2; p.position.set(0, 0, z); Z.add(p); });
-  for (const [y, x] of [[y1, 0.67], [y1, -0.67], [y2, 0.9], [y2, -0.9]]) for (let k = 0; k < PZ.length - 1; k++) Z.add(tube(cat(v3(x, y, PZ[k]), v3(x, y, PZ[k + 1]), 0.18), 0.016, cm, 40));
-  for (const x of [0.67, 0.9, -0.67]) Z.add(tube([v3(0.4, 0.82, -12.6), v3(x * 0.6, 2.0, -11.2), v3(x, x === 0.9 ? y2 : y1, PZ[0])], 0.016, cm, 30));
-  const sub = new THREE.Group(); sub.position.set(0, 0, 0.4); Z.add(sub); for (const x of [-0.3, 0.3]) { const b = rbox(0.42, 0.5, 0.42, metal(0x8f969f, 0.35), 0.03); b.position.set(x, 0.25, 0); sub.add(b); } const fr = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.025, 0.6), metal(0xc9ced6)); fr.position.y = 1.0; sub.add(fr);
+  const tower = new THREE.Mesh(new THREE.LatheGeometry(prof, 48), conc); tower.position.set(-1.25, 0, -15.0); tower.castShadow = true; Z.add(tower);
+  const hall = rbox(2.2, 1.4, 1.6, plastic(0xe9e4da, 0.5), 0.06); hall.position.set(0.95, 0.7, -14.3); Z.add(hall);
+  const chim = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.24, 5.0, 20), plastic(0xff3b30, 0.3)); chim.position.set(2.15, 2.5, -15.3); Z.add(chim);
+  for (const y of [1.4, 2.8, 4.2]) { const b = new THREE.Mesh(new THREE.CylinderGeometry(0.235 - y * 0.016, 0.235 - y * 0.016, 0.25, 20), plastic(0xf4f6fa, 0.3)); b.position.set(2.15, y, -15.3); Z.add(b); }
+  S.steam = sparks(Z, 220, 0xdfe6f0, 0.3); S.steam.material.blending = THREE.NormalBlending; S.steam.material.opacity = 0.3;
+  const xf = rbox(0.8, 0.8, 0.7, metal(0x8f969f, 0.35), 0.04); xf.position.set(0.3, 0.4, -12.0); Z.add(xf);
+  const cm = new THREE.MeshStandardMaterial({ color: 0x2a2d34, roughness: 0.35, metalness: 0.7 }), PP = [[2.0, -8.6], [-1.3, -4.2]], H = 3.4, y1 = H * 0.86 - 0.22, y2 = H * 0.72 - 0.22;
+  PP.forEach(([x, z]) => { const p = pylon(H, metal(0xc9ced6, 0.35)); p.rotation.y = Math.PI / 2; p.position.set(x, 0, z); Z.add(p); });
+  const cond = [[y1, 0.67], [y1, -0.67], [y2, 0.9], [y2, -0.9]];
+  for (const [y, dx] of cond) for (let k = 0; k < PP.length - 1; k++) Z.add(tube(cat(v3(PP[k][0] + dx, y, PP[k][1]), v3(PP[k + 1][0] + dx, y, PP[k + 1][1]), 0.18), 0.016, cm, 40));
+  for (const [y, dx] of cond.slice(0, 3)) Z.add(tube([v3(0.3, 0.82, -12.0), v3(1.0 + dx * 0.5, 2.0, -10.6), v3(PP[0][0] + dx, y, PP[0][1])], 0.016, cm, 30));
+  const sub = new THREE.Group(); sub.position.set(0.1, 0, 0.4); Z.add(sub); for (const x of [-0.3, 0.3]) { const b = rbox(0.42, 0.5, 0.42, metal(0x8f969f, 0.35), 0.03); b.position.set(x, 0.25, 0); sub.add(b); } const fr = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.025, 0.6), metal(0xc9ced6)); fr.position.y = 1.0; sub.add(fr);
   for (const p of [[-0.5, -0.25], [0.5, -0.25], [-0.5, 0.25], [0.5, 0.25]]) { const l = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 1.0, 6), metal(0xc9ced6)); l.position.set(p[0], 0.5, p[1]); sub.add(l); }
-  for (const x of [0.67, -0.67]) Z.add(tube([v3(x, y1, PZ[2]), v3(x * 0.7, 1.9, -1.0), v3(x * 0.45, 1.02, 0.4)], 0.016, cm, 30));
-  const house = new THREE.Group(); house.position.set(1.3, 0, 3.0); Z.add(house); const hb = rbox(1.0, 0.8, 0.9, plastic(0xf4f6fa, 0.4), 0.04); hb.position.y = 0.4; house.add(hb);
+  for (const dx of [0.67, -0.67]) Z.add(tube([v3(PP[1][0] + dx, y1, PP[1][1]), v3(-0.5 + dx * 0.6, 1.9, -1.8), v3(0.1 + dx * 0.4, 1.02, 0.4)], 0.016, cm, 30));
+  const house = new THREE.Group(); house.position.set(1.3, 0, 3.0); Z.add(house); const hb = rbox(1.0, 0.8, 0.9, new THREE.MeshStandardMaterial({ color: 0xcdbfa6, roughness: 0.8 }), 0.04); hb.position.y = 0.4; house.add(hb);
   const roof = new THREE.Mesh(new THREE.ConeGeometry(0.78, 0.5, 4), plastic(0xff6a2b, 0.3)); roof.rotation.y = Math.PI / 4; roof.position.y = 1.05; house.add(roof);
   const door = rbox(0.22, 0.4, 0.02, plastic(0x6b4a2f, 0.5), 0.01); door.position.set(-0.25, 0.2, 0.46); house.add(door);
-  Z.add(tube([v3(0.3, 1.02, 0.4), v3(0.9, 1.3, 1.6), v3(1.3, 0.95, 2.55)], 0.012, cm, 30));
-  const sock = new THREE.Group(); sock.position.set(1.42, 0.42, 3.46); Z.add(sock); sock.add(rbox(0.26, 0.26, 0.03, plastic(0xffffff, 0.2), 0.04)); for (const x of [-0.05, 0.05]) { const h = new THREE.Mesh(new THREE.CircleGeometry(0.018, 12), new THREE.MeshBasicMaterial({ color: 0x111111 })); h.position.set(x, 0, 0.017); sock.add(h); }
+  Z.add(tube([v3(0.1, 1.02, 0.4), v3(0.8, 1.3, 1.6), v3(1.3, 0.95, 2.55)], 0.012, cm, 30));
+  const sock = new THREE.Group(); sock.position.set(1.42, 0.42, 3.46); Z.add(sock); sock.add(rbox(0.26, 0.26, 0.03, plastic(0xe6e8ec, 0.3), 0.04)); for (const x of [-0.05, 0.05]) { const h = new THREE.Mesh(new THREE.CircleGeometry(0.018, 12), new THREE.MeshBasicMaterial({ color: 0x111111 })); h.position.set(x, 0, 0.017); sock.add(h); }
   S.sockGlow = new THREE.PointLight(0xffd060, 0, 1.6, 1.6); S.sockGlow.position.set(1.42, 0.45, 3.7); Z.add(S.sockGlow);
-  S.route = new THREE.CatmullRomCurve3([v3(1.0, 0.9, -14.3), v3(0.4, 0.85, -12.6), v3(0.4, 2.0, -11.2), v3(0.67, y1, PZ[0]), v3(0.67, y1 - 0.18, -7.8), v3(0.67, y1, PZ[1]), v3(0.67, y1 - 0.18, -4.2), v3(0.67, y1, PZ[2]), v3(0.47, 1.9, -1.0), v3(0.3, 1.05, 0.4), v3(0.9, 1.3, 1.6), v3(1.3, 0.95, 2.6), v3(1.42, 0.45, 3.5)]);
+  const m1 = [(PP[0][0] + PP[1][0]) / 2 + 0.67, y1 - 0.18, (PP[0][1] + PP[1][1]) / 2];
+  S.route = new THREE.CatmullRomCurve3([v3(0.95, 0.9, -13.5), v3(0.3, 0.85, -12.0), v3(1.0, 2.0, -10.6), v3(PP[0][0] + 0.67, y1, PP[0][1]), v3(...m1), v3(PP[1][0] + 0.67, y1, PP[1][1]), v3(-0.3, 1.9, -1.8), v3(0.37, 1.05, 0.4), v3(0.8, 1.3, 1.6), v3(1.3, 0.95, 2.6), v3(1.42, 0.45, 3.5)]);
   S.flow = new THREE.InstancedMesh(new THREE.SphereGeometry(0.045, 10, 8), glowM(YEL, 3.5), 30); Z.add(S.flow);
   S.pulse = new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), glowM(0xfff2c0, 6)); Z.add(S.pulse); S.pulseL = new THREE.PointLight(0xffd060, 0, 4, 1.6); Z.add(S.pulseL);
-  S.cenLab = pill('CENTRAL', '#ffffff', 'rgba(20,22,26,.9)', 1.6); Z.add(S.cenLab);
-  S.encLab = pill('TU ENCHUFE', '#1b1d24', 'rgba(255,210,63,.95)', 0.42); Z.add(S.encLab);
-  studio(Z, 210, 1.1); const far = new THREE.SpotLight(0xffffff, 300, 40, 0.5, 0.6, 1.4); far.position.set(3, 12, -8); far.target.position.set(0, 1, -15); Z.add(far); Z.add(far.target);
+  S.cenLab = pill('CENTRAL', '#ffffff', 'rgba(20,22,26,.9)', 1.3); Z.add(S.cenLab);
+  S.encLab = pill('TU ENCHUFE', '#1b1d24', 'rgba(255,210,63,.95)', 0.27); Z.add(S.encLab);
+  studio(Z, 210, 0.85); const far = new THREE.SpotLight(0xffffff, 300, 40, 0.5, 0.6, 1.4); far.position.set(3, 12, -7); far.target.position.set(0, 1, -14); Z.add(far); Z.add(far.target);
 }
 function gridAt(t) {
   const O = zones.grid.position, dm = new THREE.Matrix4();
-  burst(S.steam, v3(-1.7, 4.0, -16.5), t * 0.22, 0, 0.35, 1.0, true);
+  burst(S.steam, v3(-2.0, 4.0, -15.0), t * 0.22, 0, 0.35, 1.0, true);
   const fk = prog(t, K.viaja - 0.2, 0.4);
   for (let i = 0; i < 30; i++) { const u = ((i / 30) + (t - K.viaja) * 0.16) % 1, p = S.route.getPoint((u + 1) % 1); dm.makeScale(fk, fk, fk); dm.setPosition(p.x, p.y, p.z); S.flow.setMatrixAt(i, dm); } S.flow.instanceMatrix.needsUpdate = true;
   const pk = clamp((t - (K.central - 0.05)) / (K.enchufe - K.central + 0.05)), pe = pk * pk * (3 - 2 * pk);
   S.pulse.visible = t > K.central - 0.25 && pk < 1; const pp = S.route.getPoint(pe); S.pulse.position.copy(pp); S.pulseL.position.copy(pp); S.pulseL.intensity = S.pulse.visible ? 5 : 0;
-  const arrive = prog(t, K.enchufe - 0.05, 0.3); S.sockGlow.intensity = 5 * arrive * (0.8 + 0.2 * Math.sin(t * 20));
-  lookLab(S.cenLab, env(t, K.central - 0.15, K.central + 0.7, 0.15, 0.2), v3(0.4, 5.0, -15.0));
-  lookLab(S.encLab, env(t, K.enchufe - 0.1, 99, 0.2, 0.1), v3(1.42, 0.68, 3.5));
-  const keys = [[K.grid0 - 0.4, [0, 2.7, 8.6], [0, 1.7, -6]], [K.viaja, [0, 2.6, 7.8], [0, 1.8, -7]], [K.central - 0.1, [0.1, 2.4, 0.8], [0.1, 1.9, -15]], [K.enchufe + 0.05, [1.42, 0.6, 5.0], [1.42, 0.45, 3.46]], [K.inst0 + 0.4, [1.42, 0.62, 5.1], [1.42, 0.45, 3.46]]];
+  const arrive = prog(t, K.enchufe - 0.05, 0.3); S.sockGlow.intensity = 4 * arrive * (0.8 + 0.2 * Math.sin(t * 20));
+  lookLab(S.cenLab, env(t, K.central - 0.15, K.central + 0.7, 0.15, 0.2), v3(0.35, 1.15, -11.3));
+  lookLab(S.encLab, env(t, K.enchufe - 0.1, 99, 0.2, 0.1), v3(1.42, 0.63, 3.5));
+  const keys = [[K.grid0 - 0.4, [0, 2.9, 9.4], [0, 1.6, -6.5], 36], [K.viaja, [0, 2.85, 9.0], [0, 1.7, -7], 36], [K.desde, [0, 2.8, 8.7], [0.3, 2.0, -12], 30], [K.central - 0.1, [0, 2.75, 8.4], [0.4, 2.2, -14.5], 22],
+    [K.enchufe + 0.05, [1.42, 0.6, 4.95], [1.42, 0.45, 3.46], 36], [K.inst0 + 0.4, [1.42, 0.62, 5.05], [1.42, 0.45, 3.46], 36]];
   const c = camKeys(t, keys, O.x);
   if (t > K.central && t < K.enchufe) { const k = clamp((t - K.central) / (K.enchufe - K.central)); c.l.lerp(v3(O.x + pp.x, pp.y, pp.z), Math.sin(Math.PI * k) * 0.6); }
   return c;
@@ -690,10 +700,10 @@ function buildInstall() {
   S.rotorW = new THREE.Group(); S.rotorW.position.set(1.0, 3.2, -2.65); Z.add(S.rotorW); S.rotorW.add(new THREE.Mesh(new THREE.SphereGeometry(0.09, 16, 12), plastic(0xf4f6fa)));
   for (let k = 0; k < 3; k++) { const b = rbox(0.09, 0.9, 0.03, plastic(0xf4f6fa, 0.3), 0.02); b.geometry.translate(0, 0.45, 0); b.rotation.z = k * 2.094; S.rotorW.add(b); }
   // coche eléctrico que llega y se pone a cargar
-  S.car = carModel(0x1f6bff); Z.add(S.car);
+  S.car = carModel(0x1f6bff); S.car.scale.setScalar(0.65); Z.add(S.car);
   const chg = rbox(0.22, 0.75, 0.16, plastic(0xf4f6fa, 0.3), 0.04); chg.position.set(0.62, 0.375, 0.85); Z.add(chg); S.chgScr = glowM(0x19e37c, 0); const cs = new THREE.Mesh(new THREE.PlaneGeometry(0.14, 0.1), S.chgScr); cs.position.set(0.62, 0.6, 0.932); Z.add(cs);
-  S.cable = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([v3(0.62, 0.45, 0.94), v3(0.6, 0.12, 1.15), v3(0.45, 0.25, 1.3), v3(0.38, 0.34, 1.33)]), 40, 0.02, 6), glowM(0x19e37c, 0)); Z.add(S.cable);
-  S.chgLab = pill('CARGANDO', '#1b1d24', 'rgba(25,227,124,.95)', 0.85); Z.add(S.chgLab);
+  S.cable = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([v3(0.62, 0.45, 0.94), v3(0.6, 0.12, 1.08), v3(0.42, 0.18, 1.16), v3(0.32, 0.26, 1.2)]), 40, 0.018, 6), glowM(0x19e37c, 0)); Z.add(S.cable);
+  S.chgLab = pill('CARGANDO', '#1b1d24', 'rgba(25,227,124,.95)', 0.62); Z.add(S.chgLab);
   studio(Z, 240, 1.0);
 }
 function installAt(t) {
@@ -701,10 +711,10 @@ function installAt(t) {
   S.wires.forEach((m, i) => { const c = m.geometry.index.count; m.geometry.setDrawRange(0, Math.floor(c * clamp(ik * 1.5 - i * 0.15))); });
   const lit = prog(t, K.instalaciones + 0.45, 0.25); S.bulbs.forEach((b, i) => { const k = prog(t, K.instalaciones + 0.45 + i * 0.15, 0.2); b.m.emissiveIntensity = 5 * k; b.L.intensity = 2.5 * k; }); S.tvM.emissiveIntensity = 1.6 * lit; S.lapM.emissiveIntensity = 1.6 * prog(t, K.instalaciones + 0.7, 0.2);
   const rk = prog(t, K.energias - 0.1, 0.4); S.panels.forEach((m, i) => (m.emissiveIntensity = 0.9 * rk * (0.6 + 0.4 * Math.sin(t * 4 + i)))); S.rotorW.rotation.z = -(t - K.energias) * 3 * prog(t, K.renovables - 0.2, 0.5);
-  const dk = eo(prog(t, K.coche - 0.5, 0.75)); S.car.visible = t > K.coche - 0.55; S.car.position.set(lerp(4.5, 0, dk), 0, 1.6); S.car.userData.P.wheels.forEach(w => (w.rotation.z = -(1 - dk) * 9));
+  const dk = eo(prog(t, K.coche - 0.5, 0.75)); S.car.visible = t > K.coche - 0.55; S.car.position.set(lerp(4.5, -0.05, dk), 0, 1.5); S.car.userData.P.wheels.forEach(w => (w.rotation.z = -(1 - dk) * 9));
   const ck = prog(t, K.coche + 0.25, 0.3); S.cable.visible = ck > 0.01; S.cable.material.emissiveIntensity = 2.5 * ck * (0.7 + 0.3 * Math.sin(t * 10)); S.chgScr.emissiveIntensity = 3 * ck; S.car.userData.P.lights.forEach(l => (l.material.emissiveIntensity = 0.6 + 2.5 * ck));
-  lookLab(S.chgLab, env(t, K.coche + 0.25, 99, 0.25, 0.1), v3(0, 0.95, 1.6));
-  return camKeys(t, [[K.inst0 - 0.4, [0, 1.25, 5.4], [0, 1.1, 0]], [K.instalaciones + 0.8, [0, 1.3, 5.1], [0, 1.15, 0]], [K.renovables, [0.4, 2.0, 8.8], [0.4, 1.75, -0.6]], [K.coche + 0.2, [0, 0.95, 7.6], [0, 0.75, 1.0]], [K.sal0 + 0.4, [0, 0.95, 7.5], [0, 0.75, 1.0]]], O.x);
+  lookLab(S.chgLab, env(t, K.coche + 0.25, 99, 0.25, 0.1), v3(-0.05, 0.62, 1.5));
+  return camKeys(t, [[K.inst0 - 0.4, [0, 1.3, 7.1], [0, 1.15, 0]], [K.instalaciones + 0.8, [0, 1.35, 6.7], [0, 1.18, 0]], [K.renovables, [0.4, 2.0, 8.9], [0.4, 1.75, -0.6]], [K.coche + 0.2, [0, 0.9, 6.9], [0, 0.65, 1.0]], [K.sal0 + 0.4, [0, 0.9, 6.8], [0, 0.65, 1.0]]], O.x);
 }
 
 // ---------------------------------------------------------------- 9 · salidas: parques solares y eólicos, alta tensión, puntos de carga, edificios y fábricas
@@ -720,8 +730,8 @@ function buildCareers() {
   S.hvFlow = new THREE.InstancedMesh(new THREE.SphereGeometry(0.035, 10, 8), glowM(YEL, 3.5), 24); Z.add(S.hvFlow);
   S.chg = [2.0, 2.8].map(x => { const c = rbox(0.2, 0.7, 0.15, plastic(0xf4f6fa, 0.3), 0.04); c.position.set(x, 0.35, -0.5); Z.add(c); const m = glowM(0x19e37c, 0); const s = new THREE.Mesh(new THREE.PlaneGeometry(0.13, 0.1), m); s.position.set(x, 0.55, -0.42); Z.add(s); return m; });
   const car = carModel(0xff3b30); car.position.set(2.4, 0, 0.35); Z.add(car);
-  const ofTex = canvasTex(128, 256, (g, w, h) => { g.fillStyle = '#000'; g.fillRect(0, 0, w, h); g.fillStyle = '#cfe8ff'; for (let y = 0; y < 14; y++) g.fillRect(6, 8 + y * 17.5, w - 12, 10); });
-  S.office = new THREE.MeshStandardMaterial({ color: 0x1b2333, roughness: 0.1, metalness: 0.8, emissive: 0xffffff, emissiveMap: ofTex, emissiveIntensity: 0 }); const ofc = new THREE.Mesh(new THREE.BoxGeometry(1.0, 3.0, 0.9), S.office); ofc.position.set(5.0, 1.5, -0.3); Z.add(ofc);
+  const ofc = new THREE.Mesh(new THREE.BoxGeometry(1.0, 3.0, 0.9), new THREE.MeshStandardMaterial({ color: 0x1b2333, roughness: 0.12, metalness: 0.8 })); ofc.position.set(5.0, 1.5, -0.3); Z.add(ofc);
+  S.ofFl = Array.from({ length: 13 }, (_, k) => { const m = new THREE.MeshStandardMaterial({ color: 0x0a0d14, emissive: 0xcfe8ff, emissiveIntensity: 0, roughness: 0.3 }); const f = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.12, 0.02), m); f.position.set(5.0, 0.2 + k * 0.215, 0.16); Z.add(f); return m; });
   S.fac = new THREE.MeshStandardMaterial({ color: 0x8f969f, roughness: 0.5, emissive: 0xffd9a0, emissiveIntensity: 0, emissiveMap: windowTex(9) }); const fb = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.85, 1.1), S.fac); fb.position.set(7.4, 0.425, -0.2); Z.add(fb);
   for (let k = 0; k < 3; k++) { const s = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 1.1, 3, 1, false, 0, Math.PI), plastic(0x3a3f48, 0.4)); s.rotation.set(Math.PI / 2, 0, Math.PI / 2); s.position.set(6.85 + k * 0.56, 0.85, -0.2); s.scale.set(0.62, 1, 0.5); Z.add(s); }
   for (const x of [6.8, 7.3]) { const ch = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 1.2, 12), plastic(0xff3b30, 0.3)); ch.position.set(x, 1.3, -0.55); Z.add(ch); }
@@ -736,20 +746,20 @@ function careersAt(t) {
   S.turb.forEach((r, i) => (r.rotation.z = -(t - K.eolicos) * 3.2 * prog(t, K.eolicos - 0.2, 0.5) - i));
   const hk = prog(t, K.redes - 0.1, 0.3); let n = 0; S.hv.forEach((c, j) => { for (let i = 0; i < 6; i++) { const u = ((i / 6) + (t - K.redes) * 0.35 + j * 0.1) % 1, p = c.getPoint((u + 1) % 1); dm.makeScale(hk, hk, hk); dm.setPosition(p.x, p.y, p.z); S.hvFlow.setMatrixAt(n++, dm); } }); S.hvFlow.instanceMatrix.needsUpdate = true;
   S.chg.forEach((m, i) => (m.emissiveIntensity = 3 * prog(t, K.carga - 0.1 + i * 0.15, 0.25)));
-  S.office.emissiveIntensity = 1.8 * prog(t, K.edificio - 0.15, 0.5);
+  S.ofFl.forEach((m, k) => (m.emissiveIntensity = 2.0 * prog(t, K.instalacion2 + 0.25 + k * 0.07, 0.12)));
   S.fac.emissiveIntensity = 1.8 * prog(t, K.fabrica - 0.15, 0.3); burst(S.cSteam, v3(7.05, 1.9, -0.55), t * 0.3, 0, 0.2, 1, true); S.cSteam.material.opacity = 0.35 * prog(t, K.fabrica - 0.1, 0.4);
   const cues = [K.parques, K.eolicos, K.redes, K.puntos, K.edificio, K.fabrica], LX = [-7.2, -4.2, -0.6, 2.4, 5.0, 7.4], LY = [1.25, 3.45, 3.2, 1.3, 3.4, 2.15];
-  S.carLab.forEach((l, i) => lookLab(l, env(t, cues[i] - 0.1, 99, 0.2, 0.1), v3(LX[i], LY[i], 0.6)));
-  const X = [[K.sal0 - 0.4, -6.6], [K.parques, -7.2], [K.eolicos, -4.2], [K.redes + 0.25, -0.6], [K.puntos + 0.2, 2.4], [K.instalacion2, 3.6], [K.edificio, 5.0], [K.fabrica, 7.35], [K.plug0 + 0.4, 7.5]];
-  return camKeys(t, X.map(([tt, x]) => [tt, [x, 1.9, 7.6], [x, 1.45, 0]]), O.x);
+  S.carLab.forEach((l, i) => lookLab(l, env(t, cues[i] - 0.1, 99, 0.2, 0.1), v3(LX[i], 0.4, 1.3)));
+  const x = holdMove(t, [[K.sal0 - 0.4, -7.2], [K.eolicos - 0.02, -4.2], [K.redes + 0.15, -0.6], [K.puntos + 0.05, 2.4], [K.instalacion2 + 0.3, 5.0], [K.fabrica - 0.02, 7.4]], 0.34);
+  return { p: v3(O.x + x, 1.9, 7.6), l: v3(O.x + x, 1.45, 0) };
 }
 
 // ---------------------------------------------------------------- 10 · el enchufe: entra la clavija y todo se enciende
 function buildPlug() {
   const Z = zone('plug', 300);
-  const wall = rbox(4.0, 3.2, 0.2, plastic(0x1e2638, 0.6), 0.04); wall.position.set(0, 1.6, -0.1); Z.add(wall);
+  const wall = rbox(4.0, 3.2, 0.2, new THREE.MeshStandardMaterial({ color: 0x1e2638, roughness: 0.92 }), 0.04); wall.position.set(0, 1.6, -0.1); Z.add(wall);
   const sock = new THREE.Group(); sock.position.set(0, 1.45, 0.0); Z.add(sock);
-  sock.add(rbox(0.46, 0.46, 0.06, plastic(0xffffff, 0.15), 0.06)); const rec = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.05, 40, 1, true), plastic(0xd9dde4, 0.3)); rec.rotation.x = Math.PI / 2; rec.position.z = 0.01; sock.add(rec);
+  sock.add(rbox(0.46, 0.46, 0.06, plastic(0xe6e8ec, 0.3), 0.06)); const rec = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.05, 40, 1, true), plastic(0xd9dde4, 0.3)); rec.rotation.x = Math.PI / 2; rec.position.z = 0.01; sock.add(rec);
   const bot = new THREE.Mesh(new THREE.CircleGeometry(0.17, 40), plastic(0xeef0f3, 0.3)); bot.position.z = -0.012; sock.add(bot); for (const x of [-0.06, 0.06]) { const h = new THREE.Mesh(new THREE.CircleGeometry(0.022, 16), new THREE.MeshBasicMaterial({ color: 0x0a0a0a })); h.position.set(x, 0, -0.01); sock.add(h); }
   S.plug = new THREE.Group(); Z.add(S.plug);
   const pb = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.17, 0.26, 40), plastic(0xffffff, 0.2)); pb.rotation.x = Math.PI / 2; pb.position.z = 0.13; S.plug.add(pb);
@@ -773,24 +783,33 @@ function plugAt(t) {
   burst(S.psp, v3(0, 1.45, 0.1), t, K.enchufe2, 0.6, 0.5, false); S.psp.material.opacity = t > K.enchufe2 ? Math.max(0, 1 - (t - K.enchufe2) / 0.5) : 0;
   const on = i => prog(t, K.enchufe2 + 0.1 + i * 0.14, 0.15);
   S.app.lampM.emissiveIntensity = 3.5 * on(0); S.app.lampL.intensity = 2.5 * on(0); S.app.lapM.emissiveIntensity = 1.6 * on(1); S.app.phM.emissiveIntensity = 1.6 * on(2); S.app.fan.rotation.z = -(t - K.enchufe2) * 14 * on(3);
-  return camKeys(t, [[K.plug0 - 0.4, [0.15, 1.5, 1.9], [0, 1.45, 0]], [K.enchufe2 - 0.6, [0.2, 1.45, 2.1], [0.02, 1.42, 0]], [K.enchufe2 + 0.05, [0.05, 1.45, 2.0], [0, 1.42, 0]], [K.carrera2, [0, 1.1, 5.6], [0, 1.0, 0]], [K.porque + 0.4, [0, 1.1, 5.7], [0, 1.0, 0]]], O.x);
+  return camKeys(t, [[K.plug0 - 0.4, [0.15, 1.5, 1.9], [0, 1.45, 0]], [K.enchufe2 - 0.6, [0.2, 1.45, 2.1], [0.02, 1.42, 0]], [K.enchufe2 + 0.05, [0.05, 1.45, 2.0], [0, 1.42, 0]], [K.carrera2, [0, 1.1, 6.1], [0, 1.0, 0]], [K.porque + 0.4, [0, 1.1, 6.2], [0, 1.0, 0]]], O.x);
 }
 
 // ---------------------------------------------------------------- suelo espejo continuo (uno solo para todo el recorrido) y chispa guía
 function buildFloor() {
   const W2 = 420, D2 = 80, cx = 150, cz = -8;
-  const refl = new Reflector(new THREE.PlaneGeometry(W2, D2), { textureWidth: 720 * PR, textureHeight: 1280 * PR, color: 0x6f7c99 }); refl.rotation.x = -Math.PI / 2; refl.position.set(cx, 0, cz); scene.add(refl);
+  const refl = new Reflector(new THREE.PlaneGeometry(W2, D2), { textureWidth: 540 * PR, textureHeight: 960 * PR, color: 0x6f7c99 }); refl.rotation.x = -Math.PI / 2; refl.position.set(cx, 0, cz); scene.add(refl);
   const d = new THREE.Mesh(new THREE.PlaneGeometry(W2, D2), new THREE.MeshBasicMaterial({ color: 0x050812, transparent: true, opacity: 0.8 })); d.rotation.x = -Math.PI / 2; d.position.set(cx, 0.002, cz); scene.add(d);
   const sh = new THREE.Mesh(new THREE.PlaneGeometry(W2, D2), new THREE.ShadowMaterial({ opacity: 0.5 })); sh.rotation.x = -Math.PI / 2; sh.position.set(cx, 0.004, cz); sh.receiveShadow = true; scene.add(sh);
   const pts = []; for (let z = cz - D2 / 2; z <= cz + D2 / 2; z += 2) pts.push(cx - W2 / 2, 0, z, cx + W2 / 2, 0, z); for (let x = cx - W2 / 2; x <= cx + W2 / 2; x += 2) pts.push(x, 0, cz - D2 / 2, x, 0, cz + D2 / 2);
   const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
-  const gr = new THREE.LineSegments(gg, new THREE.LineBasicMaterial({ color: C.grid, transparent: true, opacity: 0.2 })); gr.position.y = 0.006; scene.add(gr);
+  S.gridM = new THREE.LineBasicMaterial({ color: 0x4a5a8c, transparent: true, opacity: 0.2 }); const gr = new THREE.LineSegments(gg, S.gridM); gr.position.y = 0.006; scene.add(gr);
+}
+function buildFloaters() {                            // símbolos eléctricos apagados flotando al fondo de todo el recorrido (pasan de lado en los vuelos)
+  const syms = ['Ω', 'V = I·R', 'P = V·I', '∿', 'kWh', 'Σ', '∫', '50 Hz', 'cos φ', '∇·B = 0', 'kV', 'Φ', 'A', '⏚'];
+  const src = syms.map(s => { const l = label(s, { size: 120, color: '#7d8bb8', w: 0.5 + 0.12 * s.length, weight: 700 }); l.material.opacity = 0.2; l.material.fog = false; return l; });
+  for (let i = 0; i < 150; i++) { const x = -20 + i * 2.3 + (hash(i * 3.1) - 0.5) * 1.4; if ((x > -14 && x < 14) || (x > 199 && x < 221)) continue;
+    const L = src[i % syms.length], m = new THREE.Mesh(L.geometry, L.material); m.layers.set(1); m.renderOrder = 1; m.position.set(x, 1.4 + hash(i * 5.3) * 5, -7 - hash(i * 7.7) * 7); m.scale.setScalar(0.7 + hash(i * 2.2) * 0.6); scene.add(m); FLOAT.push({ l: m, ph: hash(i) * 6, y: m.position.y }); }
 }
 function buildLead() {
   S.lead = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14), glowM(0xfff2c0, 8)); S.lead.frustumCulled = false; scene.add(S.lead);
   S.leadL = new THREE.PointLight(0xffd36a, 0, 9, 1.4); scene.add(S.leadL);
-  S.trail = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 12, 8), glowM(0xffd23f, 6), 22); S.trail.frustumCulled = false; scene.add(S.trail);
+  S.trail = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 12, 8), glowM(0xffd23f, 6), 48); S.trail.frustumCulled = false; scene.add(S.trail);
   S.hit = sparks(scene, 120, 0xffe9a8, 0.05);
+  // bobina: anillos de cobre a lo largo del trayecto; la chispa pasa por dentro y cada anillo se enciende a su paso
+  S.rings = new THREE.InstancedMesh(new THREE.TorusGeometry(0.42, 0.028, 8, 48), new THREE.MeshBasicMaterial({ color: 0xffffff }), 24);
+  S.rings.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(24 * 3), 3); S.rings.frustumCulled = false; S.rings.visible = false; scene.add(S.rings);
 }
 
 // ---------------------------------------------------------------- secuencia: qué zona manda en cada instante y cómo se pasa a la siguiente
@@ -799,23 +818,23 @@ const D = 0.42;                                       // medio vuelo (s): el via
 const smoother = x => x * x * x * (x * (x * 6 - 15) + 10);
 function segIdx(t) { let i = 0; SEQ.forEach((s, k) => { if (t >= s.t0) i = k; }); return i; }
 // la chispa sale del protagonista de la escena que se va, vuela en arco y se clava en el de la siguiente; la cámara la persigue
-function sparkAt(A, B, u) { const e = smoother(clamp(u / 0.84)); const p = A.l.clone().lerp(B.l, e); p.y += 1.4 * Math.sin(Math.PI * e); return p; }
+function sparkAt(A, B, u) { const e = smoother(clamp(u / 0.84)); const p = A.l.clone().lerp(B.l, e); p.y += 0.45 * Math.sin(Math.PI * e); return p; }
 function camState(t) {
   const i = segIdx(t), cur = SEQ[i], nxt = SEQ[i + 1];
   let A = null, B = null, ts = 0;
   if (i > 0 && cur.trans === 'fly' && t - cur.t0 < D) { A = SEQ[i - 1]; B = cur; ts = cur.t0; }
   else if (nxt && nxt.trans === 'fly' && nxt.t0 - t < D) { A = cur; B = nxt; ts = nxt.t0; }
   const envOf = z => (z === 'city' ? 0.18 : 0.55);
-  if (!A) { const c = cur.fn(t); return { p: c.p, l: c.l, roll: 0, vis: [cur.zone], fns: [cur.fn], envI: envOf(cur.zone), lead: null, fade: dipFade(t) }; }
+  if (!A) { const c = cur.fn(t); return { p: c.p, l: c.l, f: c.f || 36, roll: 0, vis: [cur.zone], fns: [cur.fn], envI: envOf(cur.zone), lead: null, fade: dipFade(t) }; }
   const ca = A.fn(t), cb = B.fn(t), u = clamp((t - (ts - D)) / (2 * D)), e = smoother(clamp((u - 0.06) / 0.94)), arc = Math.sin(Math.PI * e);
-  const p = ca.p.clone().lerp(cb.p, e); p.y += 1.0 * arc;
+  const p = ca.p.clone().lerp(cb.p, e); p.y *= 1 - 0.38 * arc;                // a mitad de vuelo baja hacia el suelo: la rejilla pasa a toda velocidad
   const l = ca.l.clone().lerp(cb.l, e).lerp(sparkAt(ca, cb, u), 0.55 * Math.sin(Math.PI * u));
-  return { p, l, roll: 0.05 * arc, vis: [A.zone, B.zone], fns: [A.fn, B.fn], envI: lerp(envOf(A.zone), envOf(B.zone), e), lead: { A: ca, B: cb, u, ts }, fade: dipFade(t) };
+  return { p, l, f: lerp(ca.f || 36, cb.f || 36, e), arc, roll: 0.05 * arc, vis: [A.zone, B.zone], fns: [A.fn, B.fn], envI: lerp(envOf(A.zone), envOf(B.zone), e), lead: { A: ca, B: cb, u, ts }, fade: dipFade(t) };
 }
 function dipFade(t) { let f = 0; SEQ.forEach(s => { if (s.trans === 'dip') f = Math.max(f, 1 - clamp(Math.abs(t - s.t0) / 0.32)); }); return f * f * (3 - 2 * f); }
 
 const _q = new THREE.Vector3(), _f = new THREE.Vector3();
-function placeCam(st) { cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll); cam.updateMatrixWorld(); }
+function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll); cam.updateMatrixWorld(); }
 function frame(t) {
   // cámara del fotograma anterior (para el desenfoque de movimiento, como un obturador de 180°)
   placeCam(camState(t - 1 / 60)); const prevVP = new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
@@ -823,18 +842,25 @@ function frame(t) {
   const st = camState(t); placeCam(st);
   st.fns.forEach(fn => fn(t));                         // segunda pasada con la cámara ya colocada: los rótulos miran a la cámara buena
   const visZ = new Set(st.vis); for (const k in zones) zones[k].visible = visZ.has(k);
-  scene.environmentIntensity = st.envI;
+  scene.environmentIntensity = st.envI; S.gridM.opacity = 0.2 + 0.4 * (st.arc || 0);
+  FLOAT.forEach(f => { f.l.position.y = f.y + 0.25 * Math.sin(t * 0.6 + f.ph); f.l.rotation.z = 0.15 * Math.sin(t * 0.4 + f.ph); });
   // chispa guía, estela e impacto
   S.hit.visible = false;
   if (st.lead) {
     const { A, B, u } = st.lead, vis = clamp(Math.min(u / 0.06, (0.9 - u) / 0.06)), lp = sparkAt(A, B, u), sz = 0.012 * lp.distanceTo(cam.position);
     S.lead.visible = S.trail.visible = vis > 0.01; S.lead.position.copy(lp); S.lead.scale.setScalar(Math.max(0.001, sz * vis)); S.leadL.position.copy(lp); S.leadL.intensity = 30 * vis;
     const dm = new THREE.Matrix4();
-    for (let k = 0; k < 22; k++) { const q = sparkAt(A, B, u - (k + 1) * 0.011), s = Math.max(0.001, sz * vis * 0.75 * (1 - k / 22)); dm.makeScale(s, s, s); dm.setPosition(q.x, q.y, q.z); S.trail.setMatrixAt(k, dm); }
+    for (let k = 0; k < 48; k++) { const q = sparkAt(A, B, u - (k + 1) * 0.005), s = Math.max(0.001, sz * vis * 0.8 * (1 - k / 48)); dm.makeScale(s, s, s); dm.setPosition(q.x, q.y, q.z); S.trail.setMatrixAt(k, dm); }
     S.trail.instanceMatrix.needsUpdate = true;
+    const qa = new THREE.Quaternion(), sc = new THREE.Vector3(), col = new THREE.Color();
+    for (let k = 0; k < 24; k++) { const uk = 0.12 + k * 0.028, q = sparkAt(A, B, uk), dv = sparkAt(A, B, uk + 0.01).sub(q).normalize();
+      const app = clamp(Math.min((u - uk + 0.12) / 0.06, (0.98 - u) / 0.08)), glow = Math.exp(-(((u - uk) / 0.025) ** 2));
+      qa.setFromUnitVectors(v3(0, 0, 1), dv); sc.setScalar(Math.max(0.001, app)); dm.compose(q, qa, sc); S.rings.setMatrixAt(k, dm);
+      S.rings.setColorAt(k, col.setRGB(0.55 + 3.2 * glow, 0.3 + 2.4 * glow, 0.12 + 0.9 * glow)); }
+    S.rings.instanceMatrix.needsUpdate = true; S.rings.instanceColor.needsUpdate = true; S.rings.visible = true;
     const th = st.lead.ts - D + 2 * D * 0.84;          // momento del impacto en la escena nueva
-    if (t > th) { S.hit.visible = true; burst(S.hit, B.l, t, th, 0.7, 0.45, false); S.hit.material.opacity = Math.max(0, 1 - (t - th) / 0.45); post.uniforms.flash.value = 0.16 * Math.exp(-(t - th) / 0.05); }
-  } else { S.lead.visible = S.trail.visible = false; S.leadL.intensity = 0; }
+    if (t > th) { S.hit.visible = true; burst(S.hit, B.l, t, th, 0.7, 0.45, false); S.hit.material.opacity = Math.max(0, 1 - (t - th) / 0.45); post.uniforms.flash.value = 0.006 * Math.exp(-(t - th) / 0.05); }
+  } else { S.lead.visible = S.trail.visible = S.rings.visible = false; S.leadL.intensity = 0; }
   // desenfoque: cuánto se ha movido en pantalla un punto fijo a 6 m delante de la cámara
   cam.getWorldDirection(_f); _q.copy(cam.position).addScaledVector(_f, 6).applyMatrix4(prevVP);
   let dx = -_q.x * 0.25, dy = -_q.y * 0.25; const L = Math.hypot(dx, dy), MX = 0.12; if (L > MX) { dx *= MX / L; dy *= MX / L; }
@@ -889,7 +915,7 @@ window.renderAt = function (t) {
     { name: 'circuit', zone: 'circuit', t0: K.circ0, fn: circuitAt, trans: 'fly' },
     { name: 'field', zone: 'field', t0: K.campos0, fn: fieldAt, trans: 'fly' },
     { name: 'machines', zone: 'machines', t0: K.maq0, fn: machinesAt, trans: 'fly' },
-    { name: 'control', zone: 'control', t0: K.ctrl0, fn: controlAt, trans: 'fly' },
+    { name: 'control', zone: 'control', t0: K.ctrl0 + 0.15, fn: controlAt, trans: 'fly' },
     { name: 'grid', zone: 'grid', t0: K.grid0, fn: gridAt, trans: 'fly' },
     { name: 'install', zone: 'install', t0: K.inst0, fn: installAt, trans: 'fly' },
     { name: 'careers', zone: 'careers', t0: K.sal0, fn: careersAt, trans: 'fly' },
@@ -897,7 +923,7 @@ window.renderAt = function (t) {
     { name: 'end', zone: 'city', t0: K.porque, fn: t => cityAt(t, true), trans: 'dip' },
   ];
   { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55; }
-  buildFloor(); buildLead();
+  buildFloor(); buildFloaters(); buildLead();
   buildCity(); buildWire(); buildBase(); buildCircuit(); buildField(); buildMachines(); buildControl(); buildGrid(); buildInstall(); buildCareers(); buildPlug();
   window.K = K; window.SEQ = SEQ;
   window.ready = true;
