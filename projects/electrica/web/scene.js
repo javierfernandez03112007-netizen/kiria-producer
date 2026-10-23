@@ -868,9 +868,7 @@ function frame(t) {
 }
 
 function blurPass(src, dst, dx, dy) { quad.material = blurM; blurM.uniforms.tA.value = src.texture; blurM.uniforms.d.value.set(dx, dy); renderer.setRenderTarget(dst); renderer.render(quadScene, quadCam); }
-window.renderAt = function (t) {
-  const st = frame(t);
-  if (window.camOverride) { window.camOverride(cam, v3); st.dir = [0, 0]; }
+function drawFrame(st, t) {
   renderer.setRenderTarget(rtA); renderer.render(scene, cam);
   // resplandor: lo que pasa del blanco → desenfoque gaussiano a 1/4 y a 1/8 de resolución
   quad.material = brightM; brightM.uniforms.tA.value = rtA.texture; renderer.setRenderTarget(rtB[0]); renderer.render(quadScene, quadCam);
@@ -879,6 +877,18 @@ window.renderAt = function (t) {
   quad.material = post; post.uniforms.tA.value = rtA.texture; post.uniforms.tB.value = rtB[0].texture; post.uniforms.tC.value = rtC[0].texture;
   post.uniforms.dir.value.set(st.dir[0], st.dir[1]); post.uniforms.fade.value = st.fade; post.uniforms.vig.value = st.vig; post.uniforms.time.value = t;
   renderer.setRenderTarget(null); renderer.render(quadScene, quadCam);
+}
+window.renderAt = function (t) {
+  const st = frame(t);
+  if (window.camOverride) { window.camOverride(cam, v3); st.dir = [0, 0]; }
+  drawFrame(st, t);
+  return true;
+};
+// portada: la ciudad a oscuras, el interruptor gigante y la ingeniera con la bombilla encendida (sin rótulo, con aire arriba para el título)
+window.renderCover = function () {
+  const t = 5.95, st = frame(t); S.engLab.visible = false;
+  cam.fov = 36; cam.updateProjectionMatrix(); cam.position.set(0.3, 1.15, 10.4); cam.up.set(0, 1, 0); cam.lookAt(0.3, 1.75, 4.3); cam.updateMatrixWorld();
+  st.dir = [0, 0]; st.fade = 0; drawFrame(st, t);
   return true;
 };
 
