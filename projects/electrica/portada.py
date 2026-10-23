@@ -30,7 +30,7 @@ def main():
     post.grain(img, 0, 0.008)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
     # miniatura 4:5 (lo que enseña la cuadrícula del perfil): mismo diseño algo más compacto
-    m = base[H - 1350 - 150:H - 150].copy()
+    m = base[H - 1350 - 50:H - 50].copy()
     halo(m, W / 2, 300, 380, (1.0, 0.82, 0.25), 0.07)
     paste(m, chip("¿quién vuelve a encender la luz?", 31, "#000000", "#FFFFFF", "bold"), W / 2, 95)
     s1 = 118
