@@ -443,7 +443,7 @@ function wireAt(t) {
     if (o.fi >= 0) { const sp = S.wsp[o.fi], t0 = K.abandono + WR.dt[o.fi]; burst(sp, v3(o.x, y0, 0.67), t, t0, 0.8, 0.7, false); sp.material.opacity = t > t0 ? Math.max(0, 1 - (t - t0) / 0.7) : 0; }
   });
   lookLab(S.usal, env(t, K.universidad - 0.1, K.abandono - 0.25, 0.3, 0.3), v3(clamp(cam.position.x - O.x, -0.5, 0.5), 2.72, 0.8));
-  const ck = prog(t, K.cuarenta - 0.1, K.ciento - K.cuarenta + 0.25), v = Math.round(43 * eio(ck)); const g2 = S.pTex.userData.g; g2.clearRect(0, 0, 800, 380); g2.fillStyle = 'rgba(20,22,26,.88)'; rr(g2, 40, 20, 720, 340, 60); g2.fill();
+  const ck = prog(t, K.cuarenta - 0.1, 0.55), v = Math.round(43 * eio(ck)); const g2 = S.pTex.userData.g; g2.clearRect(0, 0, 800, 380); g2.fillStyle = 'rgba(20,22,26,.88)'; rr(g2, 40, 20, 720, 340, 60); g2.fill();
   g2.fillStyle = '#ffd23f'; g2.font = '900 170px Inter'; g2.textAlign = 'center'; g2.textBaseline = 'middle'; g2.fillText(`${v} %`, 400, 150); g2.fillStyle = '#ffffff'; g2.font = '700 44px Inter'; g2.fillText('abandono en alguna promoción', 400, 290); S.pTex.needsUpdate = true;
   S.pct.position.set(0, 2.15, 0.8); S.pct.material.opacity = env(t, K.cuarenta - 0.15, 99, 0.2, 0.1); S.pct.visible = S.pct.material.opacity > 0.01;
   return camKeys(t, [[K.wire0 - 0.4, [-0.35, 3.62, 5.6], [-0.35, 3.36, 0.67]], [K.indicadores, [0.35, 3.62, 5.4], [0.35, 3.36, 0.67]], [K.abandono - 0.4, [0, 3.35, 9.4], [0, 3.0, 0.67]],
