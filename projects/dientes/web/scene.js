@@ -677,10 +677,10 @@ window.renderAt = function (t) {
   drawFrame(st, t);
   return true;
 };
-// portada: la boca abierta llena de bacterias de colores, de frente (sin cepillo)
+// portada: la boca abierta llena de bacterias de colores, de frente (sin cepillo), algo baja para dejar sitio al título
 window.renderCover = function () {
-  const t = 6.3, st = frame(t);
-  cam.fov = 30; cam.updateProjectionMatrix(); cam.position.set(0, -0.35, 10.6); cam.up.set(0, 1, 0); cam.lookAt(0, -0.45, 0); cam.updateMatrixWorld();
+  const t = Number(window.COVER_T || K.estropeas + 1.5), st = frame(t);   // las bacterias bailando, antes del «?»
+  cam.fov = 30; cam.updateProjectionMatrix(); cam.position.set(0, 0.25, 10.6); cam.up.set(0, 1, 0); cam.lookAt(0, 0.45, 0); cam.updateMatrixWorld();
   post.uniforms.white.value = 0; post.uniforms.night.value = 0; st.dir = [0, 0]; drawFrame(st, t);
   return true;
 };
