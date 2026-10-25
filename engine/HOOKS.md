@@ -111,4 +111,4 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 | Informática | «Tres de cada cuatro.» | dato a pelo |
 | Informática vs Teleco | «¿Informática o Teleco?» | pregunta-duelo |
 | Dientes | «Te cepillas los dientes perfecto… y en el último segundo lo estropeas.» | ≈ 11 / 04 (lo haces mal sin saberlo) |
-| Industrial | «Lo que nadie te cuenta de Ingeniería Industrial: acabas la carrera… y todavía no eres ingeniero industrial.» | 45 + 16 (re-hook 16 + 35) |
+| Industrial | «Ingeniería Industrial: acabas la carrera… y todavía no eres ingeniero industrial.» (el «Lo que nadie te cuenta de» del guion no salió en el audio) | 16 (re-hook 16 + 35) |

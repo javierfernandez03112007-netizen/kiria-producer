@@ -1273,8 +1273,9 @@ window.renderAt = function (t) {
 };
 // portada: el graduado, el casco flotando sin llegar y la interrogación brillando en el hueco
 window.renderCover = function () {
-  const t = Number(window.COVER_T || K.falta1 + 0.15), st = frame(t);
-  const Z = S.gradZ; Z.updateMatrixWorld(); const P = v3(4.4, 1.55, -1.15).applyMatrix4(Z.matrixWorld), L = v3(0, 2.25, 0).applyMatrix4(Z.matrixWorld);
+  const t = Number(window.COVER_T || K.falta1 + 0.05), st = frame(t);
+  S.lead.visible = S.trail.visible = S.hit.visible = false; S.leadL.intensity = 0;
+  const Z = S.gradZ; Z.updateMatrixWorld(); const P = v3(2.8, 2.12, -0.8).applyMatrix4(Z.matrixWorld), L = v3(0, 2.3, 0).applyMatrix4(Z.matrixWorld);
   cam.fov = 34; cam.updateProjectionMatrix(); cam.position.copy(P); cam.up.set(0, 1, 0); cam.lookAt(L); cam.updateMatrixWorld();
   st.dir = [0, 0]; st.fade = 0; drawFrame(st, t);
   return true;
