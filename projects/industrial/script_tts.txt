@@ -1,9 +1,9 @@
-Un trece y medio sobre catorce. Cuatro años de carrera. Y todavía no eres ingeniero industrial.
+Lo que nadie te cuenta de Ingeniería Industrial: acabas la carrera… y todavía no eres ingeniero industrial.
 Al final te digo qué te falta.
-Trece con quinientos veinticinco fue la nota de corte más alta de toda la Politécnica de Madrid en dos mil veinticinco. Y era la de Ingeniero Industrial.
-Y es que no es una ingeniería: son todas a la vez.
-Empiezas con la base: cálculo, álgebra, física, química y dibujo técnico.
-Luego, estructuras y máquinas: por qué una viga aguanta y cómo se mueve un mecanismo.
+Y eso que entrar es dificilísimo: en la Politécnica de Madrid pidió un trece con quinientos veinticinco sobre catorce, la nota de corte más alta de toda la universidad en dos mil veinticinco.
+Crees que es una ingeniería más. En realidad, son todas a la vez. Así es por dentro.
+La base: cálculo, álgebra, física, química y dibujo técnico.
+Estructuras y máquinas: por qué una viga aguanta y cómo se mueve un mecanismo.
 Termodinámica y fluidos: cómo el calor mueve un motor y el agua, una turbina.
 Electricidad y electrónica: circuitos, motores y los chips que los controlan.
 Automática: enseñar a una fábrica a funcionar sola.
@@ -13,4 +13,4 @@ De aquí sale quien diseña coches, robots, centrales y cadenas de montaje. Y qu
 ¿Y qué te falta para ser ingeniero industrial? El máster.
 Es una profesión regulada: para ejercerla, después del grado necesitas el máster habilitante. En la Politécnica, cuatro años más dos.
 Seis años para entender casi todo lo que se fabrica.
-¿Te atreverías? Te leo en comentarios.
+Si estás eligiendo carrera, guárdalo. Y cuéntame: ¿te atreverías?

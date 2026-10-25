@@ -5,12 +5,12 @@ alrededor, una fábrica de plástico brillante que se monta sola, estilo `burbuj
 
 | Voz | Qué se ve |
 |---|---|
-| «Un trece y medio sobre catorce» (0–1 s) | Un brazo robótico suelda en el aire un «13,5» gigante de acero al rojo; una barra de 0 a 14 se llena casi entera. |
-| «Cuatro años de carrera» | El 13,5 se parte en cuatro engranajes que giran (un año cada uno). |
-| «todavía no eres ingeniero industrial» | El casco baja hacia la cabeza… y se queda flotando a un palmo. |
+| «Lo que nadie te cuenta de Ingeniería Industrial» (0–1 s, hook 45) | Un birrete de graduado lanzado al aire se transforma en pleno vuelo en un casco de ingeniero. |
+| «acabas la carrera… y todavía no eres ingeniero industrial» (16) | El casco baja hacia la cabeza… y se queda flotando a un palmo, temblando. |
 | «Al final te digo qué te falta» | Hueco con «?» bajo el casco. |
-| «Trece con quinientos veinticinco… Politécnica de Madrid en 2025» | Contador 13,525; barras de notas de corte, la más alta se ilumina: «INGENIERO INDUSTRIAL». |
-| «son todas a la vez» | El casco se abre como una navaja suiza: engranaje, rayo, matraz, chip, brazo robot, gráfica. |
+| «entrar es dificilísimo… trece con quinientos veinticinco sobre catorce… la más alta… en 2025» | Un brazo robótico suelda en el aire «13,525»; barra de 0 a 14 casi llena; barras de notas de corte, la más alta se ilumina. |
+| «Crees que es una ingeniería más. En realidad, son todas a la vez» (re-hook 16) | Un solo engranaje… que se abre como una navaja suiza: engranaje, rayo, matraz, chip, brazo robot, gráfica. |
+| «Así es por dentro» (35) | La cámara se mete dentro del casco: dentro hay una fábrica. |
 | «cálculo, álgebra, física, química y dibujo técnico» | Integral → matriz → manzana que cae → molécula → plano con cotas, cada una al oírla. |
 | «estructuras y máquinas» | Viga que se curva con colores de tensión; biela y manivela que mueven un pistón. |
 | «termodinámica y fluidos» | Llama que empuja el pistón; chorro de agua que gira una turbina. |
@@ -22,4 +22,4 @@ alrededor, una fábrica de plástico brillante que se monta sola, estilo `burbuj
 | «¿Y qué te falta…? El máster» (respuesta, ≈45 s) | El casco por fin baja y encaja; en la visera, «MÁSTER». |
 | «cuatro años más dos» | 4 bloques + 2 bloques = 6 que encajan como piezas. |
 | «Seis años para entender casi todo lo que se fabrica» | Mejor plano: la fábrica funcionando entera. |
-| «¿Te atreverías?» | Vuelta al brazo soldando el 13,5 (bucle). |
+| «Si estás eligiendo carrera, guárdalo… ¿te atreverías?» | Vuelta al birrete en el aire (bucle). |

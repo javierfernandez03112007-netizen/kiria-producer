@@ -3,7 +3,8 @@
 ## Las tres reglas de retención
 1. **El primer segundo es lo más raro del vídeo.** Nada de título, «hola» ni logo: una imagen imposible o
    inesperada que obligue a parar el dedo (un billete que se derrite, una casa que respira, una moneda que se
-   aplasta en dónut…). El tema se entiende después.
+   aplasta en dónut…). El tema se entiende después. La primera frase de la voz es un **hook** sacado de
+   `engine/HOOKS.md` (45 plantillas; mejor si se combinan dos): corta, verdadera y con una promesa que el vídeo cumple.
 2. **Cada frase se ve justo cuando se oye.** Lo que se nombra aparece en ese mismo instante (±0,05 s) y los
    objetos se TRANSFORMAN en lo que se dice: si la voz dice «dónut», el objeto que hay en pantalla se aplasta
    hasta ser un dónut. Herramientas: `engine/web/cues.js` (segundo exacto de cada palabra a partir de
