@@ -506,7 +506,7 @@ function gradAt(t) {
   lookLab(S.ySix, env(t, K.seis + 0.25, K.si3 - 0.1, 0.2, 0.3), v3(0.9, 0.62, 0.0)); S.ySix.scale.setScalar(0.85 + 0.15 * pop(t, K.seis + 0.25, 0.3));
   S.ped.position.y = 0.11 + 0.0 * six;
   const bmk = pop(t, K.guardalo, 0.35) * (1 - clamp((t - K.te2) / 0.3));
-  show(S.bmark, bmk * 0.5); S.bmark.position.set(0.95, 2.0 + 0.5 * (1 - clamp((t - K.guardalo) / 0.25)), -0.42); S.bmark.rotation.set(0, Math.PI / 2 - 0.3, 0.12 * Math.sin(t * 3));
+  show(S.bmark, bmk * 0.5); S.bmark.position.set(0.95, 1.62 + 0.5 * (1 - clamp((t - K.guardalo) / 0.25)), -0.8); S.bmark.rotation.set(0, Math.PI / 2 - 0.3, 0.12 * Math.sin(t * 3));
   const bbk = pop(t, K.cuentame, 0.35) * (1 - clamp((t - K.te2 - 0.25) / 0.3));
   show(S.bubble, bbk * 0.62); S.bubble.position.set(0.8, 2.4, 0.5); S.bubble.rotation.set(0, Math.PI / 2 + 0.25, 0);
   S.dots.forEach((s, i) => { s.position.y = 0.05 * Math.max(0, Math.sin(t * 9 - i * 0.9)); });
