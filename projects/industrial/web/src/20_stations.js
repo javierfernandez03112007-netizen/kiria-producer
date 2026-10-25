@@ -53,7 +53,7 @@ function buildBase() {
   const cols = [PL.blue, PL.violet, PL.green, PL.orange, PL.teal], names = ['CÁLCULO', 'ÁLGEBRA', 'FÍSICA', 'QUÍMICA', 'DIBUJO TÉCNICO'];
   S.blocks = cols.map((c, i) => { const b = rbox(0.72, BLKH, 0.72, plastic(c, 0.2), 0.07); st.Z.add(b);
     const f = facePlane(iconFace(i), 0.5, 0.5); f.position.z = 0.361; b.add(f);
-    const l = pill(names[i], '#ffffff', 'rgba(16,20,30,.9)', i === 4 ? 0.82 : 0.6, 60); st.Z.add(l); return { b, l }; });
+    const l = pill(names[i], '#ffffff', 'rgba(16,20,30,.92)', i === 4 ? 1.05 : 0.78, 66); st.Z.add(l); return { b, l }; });
   S.bDust = sparks(st.Z, 60, 0xcfe6ff, 0.05);
   const slab = new THREE.Group(); st.Z.add(slab); S.slab = slab;
   const sl = rbox(1.9, 0.09, 1.1, plastic(0xe9edf3, 0.3), 0.03); slab.add(sl);
@@ -74,7 +74,7 @@ function baseAt(t) {
     const fall = u < 1 ? lerp(y0 + 2.6, y0, u * u) : y0 + 0.05 * Math.exp(-(t - T[i]) * 10) * Math.abs(Math.sin((t - T[i]) * 20));
     o.b.visible = u > 0; o.b.position.set(0, fall, 0); o.b.rotation.set(0, (1 - u) * 0.8 + 0.12 * Math.sin(i * 2.1), 0);
     const sq = t > T[i] ? 0.1 * Math.exp(-(t - T[i]) * 11) : 0; o.b.scale.set(1 + sq, 1 - sq, 1 + sq);
-    lookLab(o.l, env(t, T[i] + 0.04, 99, 0.2, 0.2), v3(i % 2 ? -0.7 : 0.7, y0, 0.42)); o.l.scale.setScalar(0.55);
+    lookLab(o.l, env(t, T[i] + 0.04, 99, 0.2, 0.2), v3(i % 2 ? -0.74 : 0.74, y0, 0.45)); o.l.scale.setScalar(0.56);
     if (t > T[i]) last = i;
   });
   if (last >= 0 && t - T[last] < 0.6) { S.bDust.visible = true; burst(S.bDust, v3(0, 0.15 + last * BLKH, 0.2), t, T[last], 0.45, 0.6, false, 0.4); S.bDust.material.opacity = 1 - (t - T[last]) / 0.6; } else S.bDust.visible = false;
@@ -84,9 +84,9 @@ function baseAt(t) {
   const a = S.smoke.geometry.attributes.position.array; for (let i = 0; i < 40; i++) { const tt = (t * 0.6 + hash(i)) % 1; a[i * 3] = 0.48 + 0.12 * Math.sin(i + t); a[i * 3 + 1] = 0.8 + tt * 1.0; a[i * 3 + 2] = -0.12 + 0.08 * Math.cos(i * 2 + t); } S.smoke.geometry.attributes.position.needsUpdate = true; S.smoke.material.opacity = 0.45 * fk;
   return camKeys(t, [
     [K.base0 - 0.3, [0.5, 1.2, 5.6], [0.0, 1.0, 0], 36],
-    [K.calculo + 0.15, [0.6, 1.0, 5.2], [0.05, 0.75, 0], 36],
-    [K.fisica + 0.1, [0.7, 1.55, 5.6], [0.05, 1.3, 0], 36],
-    [K.dibujo + 0.2, [0.8, 2.25, 6.0], [0.05, 1.95, 0], 36],
+    [K.calculo + 0.15, [0.2, 1.0, 5.6], [0.0, 0.75, 0], 36],
+    [K.fisica + 0.1, [0.25, 1.55, 6.0], [0.0, 1.3, 0], 36],
+    [K.dibujo + 0.2, [0.3, 2.25, 6.4], [0.0, 1.95, 0], 36],
     [K.tecnico + 0.45, [0.9, 2.9, 6.9], [0.05, 2.35, 0], 36],
   ], st.Z);
 }
@@ -170,7 +170,9 @@ function buildThermo() {
   const fw = new THREE.Mesh(new THREE.TorusGeometry(0.36, 0.055, 12, 48), MAT.steel); fw.castShadow = true; S.fly.add(fw);
   for (let i = 0; i < 5; i++) { const sp2 = rbox(0.045, 0.68, 0.035, MAT.steel, 0.01); sp2.rotation.z = i / 5 * Math.PI; S.fly.add(sp2); }
   S.fire = sph(0.2, new THREE.MeshBasicMaterial({ color: 0xffa040, transparent: true, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending })); E.add(S.fire);
-  S.fireCore = sph(0.1, new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, toneMapped: false, depthWrite: false })); E.add(S.fireCore);
+  S.fireCore = sph(0.1, new THREE.MeshBasicMaterial({ color: 0xffd060, transparent: true, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending })); E.add(S.fireCore);
+  S.tongues = []; for (let i = 0; i < 7; i++) { const c = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.22, 10), new THREE.MeshBasicMaterial({ color: 0xff7a20, transparent: true, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending })); c.rotation.x = Math.PI; E.add(c); S.tongues.push(c); }
+  S.heatG = cyl(0.245, 0.245, 0.5, new THREE.MeshBasicMaterial({ color: 0xff6a20, transparent: true, opacity: 0, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide }), 40); S.heatG.position.y = 1.45; E.add(S.heatG);
   S.heat = sparks(E, 50, 0xff9a40, 0.06);
   const T = new THREE.Group(); T.position.set(0.72, 0.15, 0.3); Z.add(T); S.turb = T;
   const stand = rbox(0.24, 0.95, 0.24, plastic(0x2b303b, 0.3), 0.04); stand.position.set(0, 0.47, -0.25); T.add(stand);
@@ -192,7 +194,9 @@ function thermoAt(t) {
   const comb = Math.pow(0.5 + 0.5 * Math.cos(th), 3);
   S.fire.visible = S.fireCore.visible = heat > 0.01; S.fire.position.set(0, 1.58, 0.02); S.fireCore.position.copy(S.fire.position);
   S.fire.scale.setScalar(Math.max(0.001, heat * (0.55 + 0.6 * comb))); S.fire.material.color.setRGB(2.2 * heat, 0.9 * heat, 0.2 * heat);
-  S.fireCore.scale.setScalar(Math.max(0.001, heat * (0.4 + 0.7 * comb))); S.fireCore.material.color.setRGB(3 * heat, 2.4 * heat, 1.2 * heat);
+  S.fireCore.scale.setScalar(Math.max(0.001, heat * (0.4 + 0.7 * comb))); S.fireCore.material.color.setRGB(2.6 * heat, 1.7 * heat, 0.5 * heat);
+  S.tongues.forEach((c, i) => { const a = i / 7 * Math.PI * 2 + t * 3, fl = 0.6 + 0.4 * Math.sin(t * 37 + i * 2.3); c.visible = heat > 0.01; c.position.set(Math.cos(a) * 0.12, 1.5 - 0.1 * comb, 0.02 + Math.sin(a) * 0.12); c.scale.set(1, Math.max(0.001, heat * fl * (0.6 + 0.9 * comb)), 1); c.material.color.setRGB(2.2 * heat, 0.8 * heat, 0.15 * heat); });
+  S.heatG.material.opacity = 0.12 * heat * (0.5 + comb);
   S.heat.visible = heat > 0.01; if (S.heat.visible) { burst(S.heat, v3(0, 1.85, 0), t, 0, 0.22, 1.0, true, -0.5); S.heat.material.opacity = heat * 0.9; }
   const wk = clamp((t - K.agua) / 0.2), tk = clamp((t - K.turbina + 0.15) / 0.6);
   S.wheelT.rotation.z = -(t - K.turbina) * 9 * tk - 0.6 * wk * Math.max(0, t - K.agua);
@@ -304,7 +308,7 @@ function buildMat() {
   for (let i = 0; i < 3; i++) { const j = rbox(0.1, 0.12, 0.16, MAT.steel, 0.02); const a = i / 3 * Math.PI * 2; j.position.set(Math.cos(a) * 0.36, 0.8, Math.sin(a) * 0.36); j.rotation.y = -a; Z.add(j); }
   S.billet = cyl(0.3, 0.3, 0.5, metal(0xcfd5de, 0.28), 48); S.billet.position.set(0, BIL_Y, 0); Z.add(S.billet);
   S.mgear = gear(16, 0.27, 0.4, metal(0xd8dde6, 0.22)); S.mgear.rotation.x = Math.PI / 2; S.mgear.position.set(0, BIL_Y, 0); Z.add(S.mgear);
-  const col = rbox(0.3, 2.6, 0.3, plastic(PL.blue, 0.25), 0.05); col.position.set(0, 1.6, -0.75); Z.add(col);
+  const col = rbox(0.32, 2.7, 0.32, plastic(0x2b303b, 0.3), 0.05); col.position.set(0, 1.65, -0.78); Z.add(col);
   S.cutter = new THREE.Group(); Z.add(S.cutter);
   const head = rbox(0.42, 0.5, 0.5, plastic(PL.orange, 0.25), 0.06); head.position.set(0, 0.4, -0.25); S.cutter.add(head);
   const arm2 = rbox(0.2, 0.16, 0.6, plastic(PL.orange, 0.25), 0.04); arm2.position.set(0, 0.55, -0.55); S.cutter.add(arm2);
@@ -328,7 +332,7 @@ function matAt(t) {
   S.billet.rotation.y = t * 2;
   S.billet.visible = cut < 0.98; S.billet.scale.set(1 - 0.1 * cut, 1 - 0.2 * cut, 1 - 0.1 * cut);
   const gk = clamp((cut - 0.25) / 0.75); S.mgear.visible = gk > 0.01; S.mgear.scale.setScalar(Math.max(0.001, 0.9 + 0.1 * gk)); setOp(S.mgear, gk); S.mgear.rotation.z = t * 1.5;
-  const ck = env(t, K.produce - 0.7, 99, 0.35, 0.3); S.cutter.visible = ck > 0.01;
+  const ck = env(t, K.produce - 0.7, 99, 0.35, 0.3); S.cutter.visible = true;
   const orbit = cut * Math.PI * 2, inCut = cut > 0 && cut < 1 ? 1 : 0;
   S.cutter.position.set(0.36 * Math.sin(orbit) * inCut, BIL_Y + 0.62 + 1.0 * (1 - ck) - 0.15 * Math.sin(Math.PI * cut), 0.18 * (Math.cos(orbit) - 1) * inCut); S.mill.position.y = -0.1; S.mill.rotation.y = t * 40;
   S.chips.visible = inCut > 0; if (S.chips.visible) burst(S.chips, v3(S.cutter.position.x, BIL_Y + 0.25, S.cutter.position.z + 0.2), t, 0, 0.7, 0.4, true, 4);
@@ -385,6 +389,10 @@ function buildCareers() {
   S.car = carModel(0xff3b4e); S.car.position.set(-2.4, 0.15, 0.35); S.car.rotation.y = 0.75; Z.add(S.car);
   S.carW = new THREE.LineSegments(new THREE.EdgesGeometry(S.car.userData.P.body.geometry, 25), new THREE.LineBasicMaterial({ color: 0x7fe6ff, transparent: true, toneMapped: false })); S.carW.position.copy(S.car.position); S.carW.rotation.copy(S.car.rotation); Z.add(S.carW);
   S.carW2 = new THREE.LineSegments(new THREE.EdgesGeometry(S.car.userData.P.cabin.geometry, 25), S.carW.material); S.carW2.position.copy(S.car.position); S.carW2.rotation.copy(S.car.rotation); Z.add(S.carW2);
+  S.holoM = new THREE.MeshBasicMaterial({ color: 0x3fd8ff, transparent: true, opacity: 0.3, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending });
+  S.holo = new THREE.Group(); S.holo.position.copy(S.car.position); S.holo.rotation.copy(S.car.rotation); Z.add(S.holo);
+  for (const part of [S.car.userData.P.body, S.car.userData.P.cabin]) { const h = new THREE.Mesh(part.geometry, S.holoM); h.position.copy(part.position); S.holo.add(h); }
+  S.grid2 = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.6), new THREE.MeshBasicMaterial({ map: canvasTex(512, 320, (q, w, h) => { q.strokeStyle = 'rgba(80,220,255,.55)'; q.lineWidth = 2; for (let x = 0; x <= w; x += 32) { q.beginPath(); q.moveTo(x, 0); q.lineTo(x, h); q.stroke(); } for (let y = 0; y <= h; y += 32) { q.beginPath(); q.moveTo(0, y); q.lineTo(w, y); q.stroke(); } }), transparent: true, toneMapped: false, depthWrite: false })); S.grid2.rotation.x = -Math.PI / 2; S.grid2.position.set(-2.4, 0.16, 0.35); Z.add(S.grid2);
   S.hrob = robotArm(PL.sky, 1.0); S.hrob.position.set(-0.75, 0.15, 0.0); Z.add(S.hrob); const gr = gripper(); S.hrob.userData.J.tool.add(gr);
   const P = new THREE.Group(); P.position.set(1.0, 0.15, -0.3); Z.add(P); S.plant = P;
   const prof = []; for (let i = 0; i <= 12; i++) { const y = i / 12 * 1.7, r = 0.56 - 0.3 * Math.sin(Math.PI * Math.min(1, y / 1.4) * 0.75); prof.push(new THREE.Vector2(r, y)); }
@@ -403,7 +411,9 @@ function buildCareers() {
 }
 function careersAt(t) {
   const wire = env(t, K.sale - 0.05, K.coches + 0.25, 0.25, 0.25), solid = clamp((t - K.coches) / 0.3);
-  S.carW.visible = S.carW2.visible = wire > 0.01 && solid < 1; S.carW.material.opacity = wire * (1 - solid); S.carW.material.color.setRGB(1.0, 2.2, 2.6);
+  S.carW.visible = S.carW2.visible = wire > 0.01 && solid < 1; S.carW.material.opacity = wire * (1 - solid); S.carW.material.color.setRGB(1.2, 2.6, 3.0);
+  S.holo.visible = wire > 0.01 && solid < 1; S.holoM.opacity = 0.32 * wire * (1 - solid) * (0.85 + 0.15 * Math.sin(t * 30)); S.holoM.color.setRGB(0.4, 1.4, 2.0);
+  S.grid2.visible = wire > 0.01; S.grid2.material.opacity = wire * (1 - solid * 0.7); S.grid2.material.color.setRGB(1.3, 1.3, 1.3);
   S.car.visible = solid > 0.01; S.car.userData.P.wheels.forEach(w => w.rotation.z = -t * 3 * solid); setOp(S.car, solid);
   const rk = pop(t, K.robots, 0.35); show(S.hrob, rk); const ph = t * 2.2;
   pose(S.hrob, 0.6 * Math.sin(ph * 0.5), -0.4 + 0.3 * Math.sin(ph), 1.1 + 0.3 * Math.sin(ph + 1), 0.6 + 0.3 * Math.sin(ph * 1.3));
@@ -418,7 +428,7 @@ function careersAt(t) {
   return camKeys(t, careerKeys(), S.stCar.Z);
 }
 function careerKeys() { return [
-  [K.de12 - 0.3, [-2.2, 1.5, 4.9], [-2.4, 0.7, 0.3], 36],
+  [K.de12 - 0.3, [-2.1, 1.75, 5.2], [-2.4, 0.6, 0.3], 36],
   [K.coches + 0.3, [-2.3, 1.35, 4.3], [-2.4, 0.65, 0.3], 36],
   [K.robots + 0.2, [-0.75, 1.9, 4.8], [-0.75, 1.35, 0.0], 36],
   [K.centrales + 0.3, [0.95, 2.2, 6.0], [0.95, 1.6, -0.3], 36],
@@ -430,20 +440,20 @@ function revealAt(t) {
   const c0 = camKeys(K.y3 - 0.1, careerKeys(), S.stCar.Z);
   return camKeys(t, [
     [K.y3 - 0.1, c0.p.toArray(), c0.l.toArray(), 36],
-    [K.acaba + 0.2, [69, 3.4, 6.0], [62, 1.2, 0.4], 38],
-    [K.dirigiendo + 0.35, [78, 5.6, 4.4], [56, 0.8, -0.2], 40],
-    [K.fabrica2 + 0.2, [84, 6.0, 2.6], [50, 0.8, -0.3], 40],
-    [K.y_q, [84, 6.0, 2.6], [50, 0.8, -0.3], 40],
+    [K.acaba + 0.2, [71, 3.6, 6.0], [62, 1.2, 0.4], 38],
+    [K.dirigiendo + 0.35, [82, 5.6, 4.4], [60, 0.8, -0.2], 40],
+    [K.fabrica2 + 0.2, [90, 6.0, 2.6], [56, 0.8, -0.3], 40],
+    [K.y_q, [90, 6.0, 2.6], [56, 0.8, -0.3], 40],
   ]);
 }
 function buildHall() {
   const Z = zone('hall', 0); S.hallZ = Z; const pm = plastic(0x232838, 0.35), lm = glowM(0xffe2b0, 2.2);
-  for (let i = -1; i <= 8; i++) { const x = i * 9 + 4.5;
+  for (let i = -1; i <= 7; i++) { const x = i * 9 + 4.5;
     for (const z of [-2.6, 2.9]) { const p = rbox(0.28, 5.2, 0.28, pm, 0.04); p.position.set(x, 2.6, z); Z.add(p);
       const lamp = cyl(0.2, 0.28, 0.12, plastic(0x2b303b, 0.3), 24); lamp.position.set(x, 4.9, z + (z < 0 ? 0.45 : -0.45)); Z.add(lamp);
       const bulb = new THREE.Mesh(new THREE.CircleGeometry(0.17, 24), lm); bulb.rotation.x = Math.PI / 2; bulb.position.set(x, 4.83, z + (z < 0 ? 0.45 : -0.45)); Z.add(bulb);
       const st2 = new THREE.Mesh(new THREE.BoxGeometry(0.02, 3.6, 0.02), glowM(0x47d6ff, 1.4)); st2.position.set(x + 0.15, 1.9, z + (z < 0 ? 0.15 : -0.15)); Z.add(st2); }
-    const tray = rbox(9, 0.08, 0.32, plastic(0x2b303b, 0.35), 0.02); tray.position.set(x + 4.5, 4.4, -2.6); Z.add(tray); }
+    if (i < 7) { const tray = rbox(9, 0.08, 0.32, plastic(0x2b303b, 0.35), 0.02); tray.position.set(x + 4.5, 4.4, -2.6); Z.add(tray); } }
 }
 function neonOn2(n, k, t = 0) {
   if (!n) return; const fl = k > 0 && k < 1 ? (Math.sin(t * 90) > 0.2 ? 1 : 0.35) : 1, e = (0.2 + 1.9 * k) * fl;

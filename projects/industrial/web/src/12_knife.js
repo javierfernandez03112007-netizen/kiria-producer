@@ -20,8 +20,8 @@ function buildKnife() {
   S.tools = icons.map((mk, i) => {
     const piv = new THREE.Group(); Z.add(piv);
     const arm = rbox(0.09, 0.95, 0.06, plastic(0xd8dde6, 0.2), 0.03); arm.position.y = 0.48; piv.add(arm);
-    const ic = mk(); ic.position.y = 1.12; ic.scale.setScalar(2.3); piv.add(ic);
-    const lb = pill(names[i], '#ffffff', 'rgba(16,20,30,.9)', 0.78, 62); Z.add(lb);
+    const ic = mk(); ic.position.y = 1.18; ic.scale.setScalar(2.5); piv.add(ic);
+    const lb = pill(names[i], '#ffffff', 'rgba(16,20,30,.92)', 0.95, 66); Z.add(lb);
     return { piv, ic, lb };
   });
   S.kRing = new THREE.Mesh(new THREE.TorusGeometry(0.9, 0.02, 8, 80), new THREE.MeshBasicMaterial({ color: 0x8fe6ff, transparent: true, toneMapped: false })); S.kRing.rotation.x = Math.PI / 2; Z.add(S.kRing);
@@ -39,11 +39,11 @@ function knifeAt(t) {
   const tilt = sm5(clamp((t - K.asi) / 0.5)); S.kHat.rotation.x = 0.15 - 1.75 * tilt;    // «así es por dentro»: se gira y enseña su interior oscuro
   const T0 = [K.son, K.son + 0.14, K.todas, K.todas + 0.14, K.vez - 0.12, K.vez];
   S.tools.forEach((o, i) => {
-    const a = -0.88 + i * 0.352, k = sm5(clamp((t - T0[i]) / 0.32)), close = sm5(clamp((t - (K.asi - 0.1)) / 0.35));
+    const a = -0.9 + i * 0.36, k = sm5(clamp((t - T0[i]) / 0.32)), close = sm5(clamp((t - (K.asi - 0.1)) / 0.35));
     const ang = lerp(Math.PI * 0.98, a, k) * (1 - close) + Math.PI * 0.98 * close;
     o.piv.visible = k > 0.01 && close < 0.99; o.piv.position.copy(KH).add(v3(0, -0.15, 0.45)); o.piv.rotation.set(0, 0, -ang);
     o.ic.rotation.set(0, t * 1.2 + i, 0); if (o.ic.userData.spin) o.ic.userData.spin.rotation.z = t * 3;
-    const tip = v3(0, 1.62, 0).applyAxisAngle(v3(0, 0, 1), -ang).add(o.piv.position);
+    const tip = v3(0, 1.72, 0).applyAxisAngle(v3(0, 0, 1), -ang).add(o.piv.position);
     lookLab(o.lb, k * (1 - close) * env(t, T0[i] + 0.15, K.asi, 0.2, 0.2), tip.add(v3(0, 0.0, 0.3))); o.lb.scale.setScalar(0.85);
   });
   const rk = env(t, K.son, K.asi, 0.3, 0.3); S.kRing.visible = rk > 0.01; S.kRing.position.copy(KH).add(v3(0, -0.25, 0)); S.kRing.scale.setScalar(1 + 0.5 * rk + 0.05 * Math.sin(t * 6)); S.kRing.material.opacity = rk * 0.8; S.kRing.material.color.setRGB(1.2, 2.2, 2.6);
@@ -53,7 +53,7 @@ function knifeAt(t) {
     [K.crees - 0.45, [0.4, 1.45, 2.6], [0, 1.3, 0.2], 34],
     [K.mas, [0.3, 1.42, 2.1], [0, 1.3, 0.2], 34],
     [K.realidad + 0.25, [0.5, 1.9, 5.9], [0, 1.5, 0], 36],
-    [K.vez + 0.2, [0.4, 2.35, 7.6], [0, 2.0, 0], 36],
+    [K.vez + 0.2, [0.25, 2.45, 9.0], [0, 2.1, 0], 36],
     [K.asi + 0.25, [0.3, 1.45, 3.8], [0, 1.15, 0], 36],
     [K.dentro + 0.25, [0.05, 1.15, 1.7], [0, 1.1, 0], 40],
     [K.base0, [0.0, 1.12, 0.55], [0, 1.1, -0.2], 46],

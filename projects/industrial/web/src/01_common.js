@@ -43,7 +43,7 @@ function mats() {
   for (const k in PL) MAT[k] = plastic(PL[k], 0.2);
   MAT.steel = metal(0xd2d7df, 0.22); MAT.dsteel = metal(0x7c8592, 0.35); MAT.gold = metal(0xffc861, 0.2); MAT.copper = metal(0xe08a52, 0.25);
   MAT.rubber = new THREE.MeshStandardMaterial({ color: 0x15171c, roughness: 0.7 });
-  MAT.glass = new THREE.MeshPhysicalMaterial({ color: 0xbfe4ff, roughness: 0.04, metalness: 0, transmission: 0, transparent: true, opacity: 0.22, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+  MAT.glass = new THREE.MeshPhysicalMaterial({ color: 0x6f8fb0, roughness: 0.05, metalness: 0, transmission: 0, transparent: true, opacity: 0.13, clearcoat: 1, clearcoatRoughness: 0.05, depthWrite: false, side: THREE.DoubleSide, envMapIntensity: 0.35 });
 }
 
 // ---------------------------------------------------------------- piezas comunes
@@ -113,12 +113,12 @@ function makeDoll(m) {
 function hardHat(col = PL.yellow) {
   const g = new THREE.Group(), m = plastic(col, 0.16);
   const dome = new THREE.Mesh(new THREE.SphereGeometry(0.5, 48, 24, 0, Math.PI * 2, 0, Math.PI / 2), m); dome.scale.set(1, 0.86, 1.12); g.add(dome);
-  const ridge = rbox(0.13, 0.1, 1.0, m, 0.05); ridge.position.y = 0.4; g.add(ridge);
-  for (const s of [-1, 1]) { const r2 = rbox(0.07, 0.07, 0.86, m, 0.03); r2.position.set(s * 0.2, 0.36, 0); r2.rotation.z = -s * 0.42; g.add(r2); }
+  const ridge = rbox(0.13, 0.07, 1.0, m, 0.035); ridge.position.y = 0.435; g.add(ridge);
+  for (const s of [-1, 1]) { const r2 = rbox(0.07, 0.06, 0.86, m, 0.03); r2.position.set(s * 0.2, 0.395, 0); r2.rotation.z = -s * 0.42; g.add(r2); }
   // ala: anillo (abierto por dentro, para poder ver el interior oscuro del casco)
   const bp = [[0.47, -0.012], [0.63, -0.022], [0.645, 0.0], [0.63, 0.022], [0.49, 0.03], [0.47, 0.01]].map(([x, y]) => new THREE.Vector2(x, y)); bp.push(bp[0].clone());
   const brim = new THREE.Mesh(new THREE.LatheGeometry(bp, 72), m); brim.scale.set(1, 1, 1.18); brim.position.set(0, 0.0, 0.06); brim.castShadow = true; g.add(brim);
-  const inner = new THREE.Mesh(new THREE.SphereGeometry(0.47, 40, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x07080c, roughness: 0.9, side: THREE.BackSide })); inner.scale.set(1, 0.8, 1.1); g.add(inner);
+  const inner = new THREE.Mesh(new THREE.SphereGeometry(0.49, 40, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x07080c, roughness: 0.9, side: THREE.DoubleSide })); inner.scale.set(1, 0.76, 1.11); g.add(inner);
   const band = new THREE.Mesh(new THREE.TorusGeometry(0.43, 0.025, 8, 48), new THREE.MeshStandardMaterial({ color: 0x2a2d34, roughness: 0.6 })); band.rotation.x = Math.PI / 2; band.position.y = 0.06; band.scale.set(1, 1.1, 1); g.add(band);
   // pegatina delantera (vacía hasta la respuesta)
   const st = facePlane(canvasTex(512, 160, (q, w, h) => { q.fillStyle = '#10131a'; rr(q, 6, 6, w - 12, h - 12, 40); q.fill(); q.fillStyle = '#ffffff'; q.font = '900 92px Inter'; q.textAlign = 'center'; q.textBaseline = 'middle'; q.fillText('MÁSTER', w / 2, h / 2 + 4); }), 0.42, 0.13);

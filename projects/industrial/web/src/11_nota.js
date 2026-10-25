@@ -66,7 +66,7 @@ function notaAt(t) {
   neonLab(S.l14, 1 + 1.6 * env(t, K.catorce - 0.05, K.catorce + 0.7, 0.08, 0.5));
   // universidad
   const uk = pop(t, K.politecnica - 0.05, 0.45); show(S.uni, uk); S.uni.position.y = -0.4 * (1 - clamp(uk));
-  lookLab(S.uniL, env(t, K.politecnica, K.pidio + 0.2, 0.15, 0.3), v3(3.4, 3.95, -2.0)); S.uniL.scale.setScalar(0.95);
+  lookLab(S.uniL, env(t, K.politecnica, K.pidio + 0.2, 0.15, 0.3), v3(1.9, 4.05, -1.4)); S.uniL.scale.setScalar(0.7);
   // robot soldador: escribe 13,525 en el aire de izquierda a derecha
   const rev = clamp((t - K.trece) / Math.max(0.5, K.sobre - K.trece - 0.05)), cool = clamp((t - K.sobre) / 0.8);
   const wk = env(t, K.trece - 0.35, K.sobre + 0.25, 0.3, 0.3);
@@ -85,7 +85,7 @@ function notaAt(t) {
   const ok = sm5(clamp((t - (K.nota - 0.2)) / 0.6));
   S.others.forEach((g, i) => { const k = clamp(ok * 1.4 - i * 0.07); g.visible = k > 0.01; g.scale.set(1, Math.max(0.001, k), 1); });
   const ck = pop(t, K.alta, 0.4); show(S.crown, ck); S.crown.position.y = 0.3 + COLH + 0.2 + 0.3 * (1 - clamp(ck)); S.crown.rotation.y = t * 0.8;
-  lookLab(S.topL, env(t, K.universidad, K.y_end_nota + 0.5, 0.2, 0.3), v3(0, 0.3 + COLH + 1.55, 0.3)); S.topL.scale.setScalar(0.9);
+  lookLab(S.topL, env(t, K.alta - 0.05, K.y_end_nota + 0.5, 0.2, 0.3), v3(1.45, 0.3 + COLH - 0.45, 0.5)); S.topL.scale.setScalar(1.1);
   // maniquí: mira arriba y se encoge de hombros con «dificilísimo»
   const J = S.nDoll.userData.J; J.neck.rotation.x = -0.55 - 0.2 * env(t, K.dificil, K.en1 + 0.5, 0.2, 0.4);
   J.shL.rotation.z = -0.2 - 0.5 * env(t, K.dificil, K.en1 + 0.4, 0.2, 0.3); J.shR.rotation.z = 0.2 + 0.5 * env(t, K.dificil, K.en1 + 0.4, 0.2, 0.3);
@@ -97,8 +97,8 @@ function notaAt(t) {
     [K.trece, [0.3, 7.0, 6.4], [0.0, 7.2, 0.2], 34],
     [K.sobre - 0.1, [0.45, 6.9, 6.2], [0.05, 7.1, 0.2], 34],
     [K.catorce + 0.3, [0.7, 5.9, 7.0], [0.0, 6.3, 0.0], 36],
-    [K.nota, [0.6, 4.8, 10.8], [0.0, 4.2, -0.6], 36],
-    [K.y_end_nota, [0.5, 4.7, 12.6], [0.0, 4.0, -0.8], 36],
+    [K.nota, [1.2, 4.6, 10.6], [0.4, 4.1, -0.6], 36],
+    [K.y_end_nota, [-0.6, 4.9, 12.4], [0.3, 4.0, -0.8], 36],
   ], Z);
 }
 function neonLab(l, k) { if (l) l.material.color.setRGB(k, k, k); }

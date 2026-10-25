@@ -1,7 +1,7 @@
 
 // ---------------------------------------------------------------- 0 · el graduado: birrete → casco que no llega (gancho), «¿qué te falta?», y la respuesta (el máster) al final
 // Zona «grad»: al final de la línea, girada 180°: en coordenadas locales el graduado mira hacia +x (= hacia la línea, -x del mundo).
-const GX = 72;
+const GX = 78;
 function buildGrad() {
   const Z = zone('grad', GX); Z.rotation.y = Math.PI;
   const ped = cyl(0.95, 1.0, 0.22, plastic(0x161a24, 0.3), 64); ped.position.y = 0.11; Z.add(ped); S.ped = ped;
@@ -156,13 +156,13 @@ function gradAt(t) {
   S.dip.visible = t < K.dirigiendo || t > tLand;
   // ---- sello, candado y llave, años, marcapáginas, bocadillo
   const sk = pop(t, K.profesion, 0.32) * (1 - clamp((t - (K.en3 - 0.2)) / 0.3));
-  show(S.seal, sk * 0.42); S.seal.position.set(0.95, 1.2 + 0.6 * (1 - clamp((t - K.profesion) / 0.2)), 0.62); S.seal.rotation.set(0, Math.PI / 2 - 0.35, 0);
-  lookLab(S.sealL, env(t, K.regulada, K.en3 - 0.1, 0.2, 0.3), v3(0.95, 0.78, 0.62)); S.sealL.scale.setScalar(0.85);
+  show(S.seal, sk * 0.42); S.seal.position.set(1.15, 1.25 + 0.6 * (1 - clamp((t - K.profesion) / 0.2)), 0.42); S.seal.rotation.set(0, Math.PI / 2 - 0.35, 0);
+  lookLab(S.sealL, env(t, K.regulada, K.ejercerla + 0.45, 0.2, 0.3), v3(1.2, 0.8, 0.12)); S.sealL.scale.setScalar(0.68);
   const lk = pop(t, K.ejercerla, 0.32) * (1 - clamp((t - (K.en3 - 0.1)) / 0.3));
   show(S.lock, lk * 0.62); S.lock.position.set(0.85, 1.3, -0.95); S.lock.rotation.set(0, 0.35, 0);
   const open = sm5(clamp((t - K.habilitante - 0.12) / 0.25)); S.shackle.position.y = 0.25 + 0.14 * open; S.shackle.rotation.y = 1.2 * open;
   const g1 = pop(t, K.grado, 0.3), m1 = pop(t, K.master2, 0.3), join = sm5(clamp((t - (K.master2 + 0.15)) / 0.25)), ins = sm5(clamp((t - (K.habilitante - 0.25)) / 0.3));
-  S.keyG.visible = g1 > 0.01 && t < K.en3 + 0.1; S.keyG.rotation.order = 'YXZ'; S.keyG.position.set(0.85 + 0.12 * ins, 1.3 - 0.02, lerp(0.15, -0.95 + 0.62, ins)); S.keyG.rotation.set(Math.PI / 2 * clamp((t - K.habilitante) / 0.18), Math.PI / 2 + 0.35, 0);
+  S.keyG.visible = g1 > 0.01 && t < K.en3 + 0.1; S.keyG.rotation.order = 'YXZ'; S.keyG.position.set(0.85 + 0.05 * ins, 1.28, lerp(-0.1, -0.36, ins)); S.keyG.rotation.set(Math.PI / 2 * clamp((t - K.habilitante) / 0.18), Math.PI / 2 + 0.35, 0);
   S.kGrado.scale.setScalar(Math.max(0.001, g1)); S.kGrado.position.set(lerp(-0.42, -0.26, join), 0, 0);
   S.kMaster.scale.setScalar(Math.max(0.001, m1)); S.kMaster.position.set(lerp(0.42, 0.26, join), lerp(0.25, 0, join), 0);
   S.kBit.visible = join > 0.5; S.kBit.position.x = 0.5; S.kBit.scale.setScalar(Math.max(0.001, clamp((join - 0.5) * 2)));
@@ -177,7 +177,7 @@ function gradAt(t) {
   lookLab(S.ySix, env(t, K.seis + 0.25, K.si3 - 0.1, 0.2, 0.3), v3(0.9, 0.62, 0.0)); S.ySix.scale.setScalar(0.85 + 0.15 * pop(t, K.seis + 0.25, 0.3));
   S.ped.position.y = 0.11 + 0.0 * six;
   const bmk = pop(t, K.guardalo, 0.35) * (1 - clamp((t - K.te2) / 0.3));
-  show(S.bmark, bmk * 0.62); S.bmark.position.set(0.9, 1.95 + 0.5 * (1 - clamp((t - K.guardalo) / 0.25)), -0.62); S.bmark.rotation.set(0, Math.PI / 2 - 0.3, 0.12 * Math.sin(t * 3));
+  show(S.bmark, bmk * 0.5); S.bmark.position.set(0.95, 2.0 + 0.5 * (1 - clamp((t - K.guardalo) / 0.25)), -0.42); S.bmark.rotation.set(0, Math.PI / 2 - 0.3, 0.12 * Math.sin(t * 3));
   const bbk = pop(t, K.cuentame, 0.35) * (1 - clamp((t - K.te2 - 0.25) / 0.3));
   show(S.bubble, bbk * 0.62); S.bubble.position.set(0.8, 2.4, 0.5); S.bubble.rotation.set(0, Math.PI / 2 + 0.25, 0);
   S.dots.forEach((s, i) => { s.position.y = 0.05 * Math.max(0, Math.sin(t * 9 - i * 0.9)); });
@@ -204,14 +204,15 @@ function gradKeys(t) {
     [K.falta2 + 0.1, [-4.5, 3.6, -4.2], [0, 1.9, 0], 36],
     [K.industrial3 + 0.15, [2.5, 2.4, -1.25], [0, hov.y - 0.1, 0], 34],
     [K.master1 + 0.5, [2.6, 2.3, -1.1], [0, 2.05, 0], 34],
-    [K.profesion + 0.2, [4.3, 1.95, -0.7], [0.4, 1.4, 0.15], 34],
-    [K.ejercerla + 0.25, [4.2, 1.85, -0.9], [0.4, 1.35, -0.4], 34],
-    [K.habilitante + 0.3, [3.6, 1.6, -1.1], [0.7, 1.25, -0.75], 34],
-    [K.y4 - 0.1, [5.3, 1.7, -0.2], [0.8, 1.0, 0.0], 36],
-    [K.dos + 0.3, [5.4, 1.75, -0.1], [0.8, 1.0, 0.0], 36],
+    [K.profesion + 0.2, [5.0, 1.8, -0.4], [0.5, 1.3, 0.35], 34],
+    [K.ejercerla + 0.25, [4.6, 1.75, -0.8], [0.5, 1.3, -0.35], 34],
+    [K.habilitante + 0.3, [4.0, 1.55, -1.0], [0.7, 1.25, -0.6], 34],
+    [K.y4 - 0.1, [5.8, 1.35, -0.1], [0.8, 0.9, 0.0], 36],
+    [K.dos + 0.3, [6.0, 1.4, 0.0], [0.8, 0.9, 0.0], 36],
     [K.seis + 0.5, [-3.2, 3.0, -4.6], [1.0, 1.4, 0.0], 36],
     [K.fabrica3, [-6.5, 4.4, -1.6], [14, 0.9, 0.3], 40],
-    [K.si3 + 0.25, [4.4, 2.3, -1.6], [0.4, 1.75, -0.1], 34],
+    [K.fabrica3 + 0.35, [-1.0, 3.8, -4.4], [0.6, 1.9, 0.0], 36],
+    [K.si3 + 0.3, [4.4, 2.3, -1.6], [0.4, 1.75, -0.1], 34],
     [K.guardalo + 0.3, [3.6, 2.25, -1.3], [0.4, 1.85, -0.2], 34],
     [K.te2, [3.0, 2.45, -0.6], [0.2, 2.15, 0.0], 34],
     [END - 0.6, [2.4, 3.05, 0.6], [0.02, 3.25, 0.04], 34],
