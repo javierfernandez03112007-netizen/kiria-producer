@@ -1,0 +1,15 @@
+Tu móvil habla con el cargador cada vez que lo apoyas.
+¿Y qué le dice? Te lo cuento al final.
+El truco: dentro del cargador hay una bobina de cobre.
+Su corriente cambia de sentido más de 100.000 veces por segundo.
+Crea un campo magnético que atraviesa la bobina del móvil… y en ella aparece corriente.
+Se llama inducción, y la descubrió Faraday.
+Parece que carga por contacto. En realidad, las dos bobinas nunca se tocan.
+Pero parte de la energía se pierde, en forma de calor.
+En una prueba, cargar sin cable gastó casi un 50 % más que con cable.
+Descentrado, aún más. Por eso hay cargadores con imanes que lo centran.
+¿Y qué le dice? El cargador pregunta: «¿Hay alguien?». Y el móvil: «Sí, soy compatible».
+Luego, varias veces por segundo, le pide más, menos o «así está bien».
+Se lo dice con el mismo campo magnético, a golpecitos, como en morse.
+Y le cuenta cuánta energía recibe. Si no cuadra, algo la está robando, una moneda, unas llaves… y el cargador corta.
+La próxima vez que lo apoyes, ya sabes: están hablando. ¿Tú cargas con cable o sin cable?

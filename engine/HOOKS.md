@@ -112,3 +112,4 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 | Informática vs Teleco | «¿Informática o Teleco?» | pregunta-duelo |
 | Dientes | «Te cepillas los dientes perfecto… y en el último segundo lo estropeas.» | ≈ 11 / 04 (lo haces mal sin saberlo) |
 | Industrial | «Ingeniería Industrial: acabas la carrera… y todavía no eres ingeniero industrial.» (el «Lo que nadie te cuenta de» del guion no salió en el audio) | 16 (re-hook 16 + 35) |
+| Carga sin cable | «Tu móvil habla con el cargador cada vez que lo apoyas.» | 02 (re-hook 16, cierre 04) |
