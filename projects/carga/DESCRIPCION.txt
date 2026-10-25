@@ -1,0 +1,21 @@
+🔌 Tu móvil habla con el cargador cada vez que lo apoyas.
+
+Dentro del cargador hay una bobina de cobre cuya corriente cambia de sentido más de 100.000 veces por segundo. Crea un campo magnético que atraviesa la bobina del móvil… y en ella aparece corriente. Es la inducción electromagnética, la que descubrió Faraday en 1831. Parece que carga por contacto, pero las dos bobinas nunca se tocan.
+
+🔥 No es gratis: parte de la energía se pierde en forma de calor. En una prueba de 2020 con el mismo móvil, cargar sin cable gastó de media casi un 50 % más que con cable (y un 80 % más con una base barata y el móvil mal colocado). Por eso ya hay cargadores con imanes que lo centran solos.
+
+💬 ¿Y qué le dice? Primero el cargador pregunta «¿hay alguien?» y el móvil contesta «sí, soy compatible». Después, varias veces por segundo, le pide más, menos o «así está bien»… a golpecitos, con el mismo campo magnético. Y si la energía no cuadra (una moneda, unas llaves), el cargador corta.
+
+👇 ¿Tú cargas con cable o sin cable?
+
+📚 Fuentes: estándar Qi (Wireless Power Consortium) y notas técnicas de fabricantes de chips; prueba de OneZero (agosto de 2020) citada por The Next Web; Faraday, 1831.
+
+#cargainalambrica #tecnologia #ciencia #fisica #moviles #curiosidades #aprendeentiktok #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+🔌 Tu móvil habla con el cargador cada vez que lo apoyas… y si pones una moneda en medio, el cargador corta. ¿Sabes qué le dice? 👀 ¿Tú cargas con cable o sin cable? 👇
+
+#cargainalambrica #tecnologia #ciencia #curiosidades #moviles

@@ -42,9 +42,13 @@ window.renderAt = function (t) {
 // portada: el móvil despiezado de pie sobre el cargador, hablando (sin desenfoque)
 window.renderCover = function () {
   const t = Number(window.COVER_T || 0.55); frame(t);
+  // cámara de portada: algo más lejos que en el vídeo para dejar sitio arriba al título
+  cam.fov = 32; cam.updateProjectionMatrix(); cam.position.set(2.44, 2.02, 4.16); cam.up.set(0, 1, 0); cam.lookAt(0, 1.19, 0); cam.updateMatrixWorld();
   if (window.camOverride) window.camOverride(cam, v3);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0;
   drawFrame(t); hudBegin();
+  // en la portada solo queda la onda de voz entre las dos bobinas (sin cabecera ni etiquetas)
+  if (!window.COVER_NOWAVE) waveform(proj(wp(S.charger.userData.tx)), proj(wp(S.phone.userData.rx)), 60, t, 1);
   return true;
 };
 
