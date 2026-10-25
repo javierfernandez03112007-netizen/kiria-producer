@@ -6,7 +6,7 @@ Crea un campo magnético que atraviesa la bobina del móvil… y en ella aparece
 Se llama inducción, y la descubrió Faraday.
 Parece que carga por contacto. En realidad, las dos bobinas nunca se tocan.
 Pero parte de la energía se pierde, en forma de calor.
-En una prueba, cargar sin cable gastó casi un 50 % más que con cable.
+En una prueba, cargar sin cable gastó casi un 50% más que con cable.
 Descentrado, aún más. Por eso hay cargadores con imanes que lo centran.
 ¿Y qué le dice? El cargador pregunta: «¿Hay alguien?». Y el móvil: «Sí, soy compatible».
 Luego, varias veces por segundo, le pide más, menos o «así está bien».
