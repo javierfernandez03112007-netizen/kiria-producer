@@ -23,12 +23,16 @@ Motor: three.js como `industrial/` (60 fps, bloom suave, desenfoque de movimient
 | «En una prueba, cargar sin cable gastó casi un 50 % más que con cable» | Dos barras de cristal: CON CABLE 14,26 Wh · SIN CABLE 21,01 Wh «+47 %»; rótulo pequeño «PRUEBA 2020 · MISMO MÓVIL 0→100 %». |
 | «Descentrado, aún más» | El móvil resbala a un lado, las líneas de campo fallan la bobina; tercera barra «+80 %». |
 | «Por eso hay cargadores con imanes que lo centran» | Un anillo de imanes aparece en la base y el móvil hace «clic» al centro; bobinas alineadas. |
-| «¿Y qué le dice? El cargador pregunta: “¿Hay alguien?”» (respuesta, ≈ 40 s) | La base lanza un ping: un anillo turquesa sube como un sonar; «PING». |
-| «Y el móvil: “Sí, soy compatible”» | La bobina del móvil devuelve una ráfaga de pulsos; «ID · CONFIG ✓». |
-| «varias veces por segundo, le pide más, menos o “así está bien”» | Paquetes «+», «−», «0» bajan del móvil a la base; un dial de potencia sube y baja con cada uno. |
+| «¿Y qué le dice? El cargador pregunta: “¿Hay alguien?”» (respuesta, ≈ 34 s) | La cámara baja en picado; el móvil se separa un poco del cargador (rayos X) y la base lanza un ping: un anillo turquesa sube hasta la bobina del móvil. Terminal «TX › ¿HAY ALGUIEN?». |
+| «Y el móvil: “Sí, soy compatible”» | Anillos ámbar bajan de la bobina del móvil a la del cargador; «RX › SÍ, SOY COMPATIBLE ✓». |
+| «varias veces por segundo, le pide más, menos o “así está bien”» | Ráfaga de puntitos y glifos «+», «−», «=» que bajan del móvil a la base; barra de potencia que sube y baja; «CADA ≤ 250 ms». |
 | «con el mismo campo magnético, a golpecitos, como en morse» | Las líneas de campo laten en puntos y rayas; una tira de puntos y rayas cruza entre las bobinas. |
 | «Y le cuenta cuánta energía recibe. Si no cuadra» | Dos barras: ENVÍA / RECIBE (sin cifras); no cuadran: hueco rojo «Δ». |
 | «algo la está robando, una moneda, unas llaves» | Entre el móvil y la base aparece una moneda (genérica, sin cara real) que se pone al rojo; luego unas llaves. |
 | «y el cargador corta» (mejor plano) | Todo el campo se apaga de golpe; la moneda se enfría; «FOD · STOP». |
 | «La próxima vez que lo apoyes, ya sabes: están hablando» | El móvil vuelve a apoyarse y se despieza como al principio, la onda de voz vuelve (bucle). |
 | «¿Tú cargas con cable o sin cable?» | Un cable a un lado y la base al otro; vuelta al primer fotograma. |
+
+Montaje final: 60 fps, 59,6 s (voz a ×1,12 con pausas recortadas, `ajustar_voz.py`). Render con `web/capture.mjs` (4 máquinas:
+`render_local.sh` + 3 trozos en ramas `render-carga-a/b/c`, unidos con `merge_chunks.sh`), subtítulos y sonido sintetizado en
+`compose_carga.py`; portada y miniatura con `portada.py`.
