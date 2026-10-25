@@ -22,7 +22,7 @@ const BLW = Math.round(W * PR / 4), BLH = Math.round(H * PR / 4);
 const rtB = [0, 1].map(() => new THREE.WebGLRenderTarget(BLW, BLH, { type: THREE.HalfFloatType }));
 const rtC = [0, 1].map(() => new THREE.WebGLRenderTarget(Math.round(BLW / 2), Math.round(BLH / 2), { type: THREE.HalfFloatType }));
 const VS = 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }';
-const brightM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, px: { value: new THREE.Vector2(1.5 / (W * PR), 1.5 / (H * PR)) }, th: { value: 1.35 } }, vertexShader: VS, depthTest: false,
+const brightM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, px: { value: new THREE.Vector2(1.5 / (W * PR), 1.5 / (H * PR)) }, th: { value: 1.7 } }, vertexShader: VS, depthTest: false,
   fragmentShader: `uniform sampler2D tA; uniform vec2 px; uniform float th; varying vec2 vUv;
     void main(){ vec3 c = vec3(0.); for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) c += texture2D(tA, vUv + vec2(float(i), float(j)) * px).rgb; c /= 9.0;
       float l = max(c.r, max(c.g, c.b)), k = clamp((l - th) / 1.6, 0., 1.); gl_FragColor = vec4(c * k * k, 1.); }` });
@@ -44,8 +44,12 @@ const post = new THREE.ShaderMaterial({
       vec2 m = (m0 + vec2(J.x * q.x + J.y * q.y, J.z * q.x + J.w * q.y)) * 0.5 * mbk;
       float L = length(m); if (L > 0.09) m *= 0.09 / L;
       vec2 c = vUv - .5; vec2 cc = c * 0.0035 * ca; vec3 a = vec3(0.), b = vec3(0.);
-      for(int i=0;i<24;i++){ float k=(float(i)/23.0-0.5); vec2 u=vUv-m*k; a.r+=texture2D(tA, u+cc).r; a.g+=texture2D(tA, u).g; a.b+=texture2D(tA, u-cc).b; } a/=24.0;
-      for(int i=0;i<6;i++){ float k=(float(i)/5.0-0.5); vec2 u=vUv-m*k; b += texture2D(tB, u).rgb * 0.8 + texture2D(tC, u).rgb * 1.15; } b /= 6.0;
+      // nº de muestras según cuánto se mueve este píxel (1 si está quieto, hasta 24 en los vuelos rápidos)
+      int n = int(clamp(ceil(L * 1920.0 / 2.5), 1.0, 24.0)); float fn = float(n);
+      for(int i=0;i<24;i++){ if (i >= n) break; float k = n > 1 ? float(i)/(fn-1.0)-0.5 : 0.0; a += texture2D(tA, vUv-m*k).rgb; } a /= fn;
+      a.r += (texture2D(tA, vUv+cc).r - texture2D(tA, vUv).r) * 0.8; a.b += (texture2D(tA, vUv-cc).b - texture2D(tA, vUv).b) * 0.8;
+      int nb = n < 6 ? n : 6; float fb = float(nb);
+      for(int i=0;i<6;i++){ if (i >= nb) break; float k = nb > 1 ? float(i)/(fb-1.0)-0.5 : 0.0; vec2 u=vUv-m*k; b += texture2D(tB, u).rgb * 0.8 + texture2D(tC, u).rgb * 1.15; } b /= fb;
       a += b * bloom;
       a = mix(a, vec3(0.0), fade); a += flash; a += tint;
       a = clamp((a*(2.51*a+0.03))/(a*(2.43*a+0.59)+0.14),0.,1.); a = pow(a, vec3(1.0/2.2));
@@ -135,8 +139,8 @@ function buildRig() {
   const key = new THREE.SpotLight(0xfff1e4, 34, 14, 0.62, 0.75, 1.4); key.position.set(-1.7, 3.3, 2.1); key.target.position.set(0, 0.15, 0);
   key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0002; key.shadow.normalBias = 0.01; key.shadow.radius = 5; key.shadow.camera.near = 0.5; key.shadow.camera.far = 12;
   scene.add(key, key.target);
-  const rimC = new THREE.PointLight(0x5fd8ff, 5.5, 9, 1.4); rimC.position.set(-2.0, 1.1, -1.6);
-  const rimW = new THREE.PointLight(0xff8a55, 4.0, 9, 1.4); rimW.position.set(2.1, 1.2, -1.5);
+  const rimC = new THREE.PointLight(0x5fd8ff, 1.2, 9, 1.4); rimC.position.set(-2.3, 0.42, -1.9);
+  const rimW = new THREE.PointLight(0xff8a55, 1.6, 9, 1.4); rimW.position.set(2.3, 0.48, -1.7);
   const fill = new THREE.PointLight(0xc4d4ff, 2.2, 10, 1.4); fill.position.set(0.6, 1.6, 3.2);
   scene.add(rimC, rimW, fill); S.rig = { key, rimC, rimW, fill, coilL: {}, fieldL: {}, coinL: { position: new THREE.Vector3() } };   // 4 luces: el brillo de bobinas y moneda va en el material
 }
@@ -447,12 +451,12 @@ function setCurrent(c, glow, off, heat = 0, base = 0.18) { const U = c.userData.
 // ---------------------------------------------------------------- materiales del móvil y del cargador
 function phoneMats() {
   return {
-    frame: new THREE.MeshPhysicalMaterial({ color: 0x531523, metalness: 0.85, roughness: 0.26, clearcoat: 0.7, clearcoatRoughness: 0.12 }),
+    frame: new THREE.MeshPhysicalMaterial({ color: 0x531523, metalness: 0.85, roughness: 0.34, clearcoat: 0.4, clearcoatRoughness: 0.35 }),
     back: new THREE.MeshStandardMaterial({ color: 0x3e0e1b, metalness: 0.35, roughness: 0.4 }),
     bump: new THREE.MeshStandardMaterial({ color: 0x47101f, metalness: 0.55, roughness: 0.2 }),
     lens: new THREE.MeshStandardMaterial({ color: 0x050608, metalness: 0.3, roughness: 0.05 }),
     ring: new THREE.MeshStandardMaterial({ color: 0x8a3a4a, metalness: 1, roughness: 0.22 }),
-    screen: new THREE.MeshStandardMaterial({ color: 0x030405, metalness: 0.2, roughness: 0.06, emissive: 0xffffff, emissiveIntensity: 0 }),
+    screen: new THREE.MeshStandardMaterial({ color: 0x040506, metalness: 0.0, roughness: 0.42, emissive: 0xffffff, emissiveIntensity: 0 }),
     batt: new THREE.MeshStandardMaterial({ color: 0x24272d, metalness: 0.4, roughness: 0.5 }),
     board: new THREE.MeshStandardMaterial({ color: 0x0f2a24, metalness: 0.3, roughness: 0.55 }),
     chip: new THREE.MeshStandardMaterial({ color: 0x15171b, metalness: 0.5, roughness: 0.35 }),
@@ -511,7 +515,7 @@ function phoneState(P, ex, xr, edgeBase = 0.1) {
   const { parts } = P.userData;
   for (const k in parts) { const g = parts[k], u = g.userData; g.position.z = u.z + u.ez * ex; }
   for (const k of ['frame', 'back', 'screen']) { const g = parts[k]; setOp(g, 1 - 0.94 * xr); edgeOp(g, edgeBase + 0.85 * xr); }
-  for (const k of ['batt', 'board']) setOp(parts[k], 1 - 0.8 * xr);
+  for (const k of ['batt', 'board']) setOp(parts[k], 1 - 0.92 * xr);
   edgeOp(parts.batt, 0.25 + 0.5 * xr);
 }
 
@@ -679,7 +683,7 @@ function phonePose(t) {
   const tc = K.cada - 0.08, tl = K.apoyas + 0.16;
   if (t0 < tc) return V;
   if (t0 < tl) { const u = (t0 - tc) / (tl - tc); const P = mixPose(V, ON, sm5(u)); P.p.copy(V.p).lerp(ON.p, Math.pow(u, 2.1)); P.ex = 1 - sm5(clamp(u * 1.4)); return P; }
-  const bounce = (ta) => 0.012 * Math.max(0, Math.sin((t - ta) * 34)) * Math.exp(-(t - ta) * 9);
+  const bounce = (ta) => (t < ta ? 0 : 0.012 * Math.max(0, Math.sin((t - ta) * 34)) * Math.exp(-(t - ta) * 9));
   if (t < K.truco) { const P = pose(ON.p.clone(), Q_ON); P.p.y += bounce(tl); return P; }
   // «el truco»: sale disparado hacia arriba (fuera de plano) y vuelve a bajar cuando el campo «atraviesa la bobina del móvil»
   if (t < K.parece + 0.1) {
@@ -696,7 +700,10 @@ function phonePose(t) {
   if (t < K.centran) { const P = mixPose(ON, OFF, sm5(clamp((t - K.descentrado) / 0.5))); P.xr = 0.8 * sm5(clamp((t - K.imanes + 0.1) / 0.4)); return P; }
   const tsn = K.centran + 0.16;
   if (t < tsn) { const u = clamp((t - K.centran) / 0.16); const P = mixPose(OFF, ON, u * u); P.xr = 0.8; return P; }
-  if (t < K.algo) { const P = pose(ON.p.clone(), Q_ON); P.xr = 0.8 * (1 - sm5(clamp((t - tsn - 0.25) / 0.4))) + (t > K.y11 + 0.4 ? sm5(clamp((t - K.y11 - 0.4) / 0.4)) * (1 - sm5(clamp((t - K.y14) / 0.5))) : 0); return P; }
+  // «¿y qué le dice?»: se separa un poco del cargador (rayos X) para ver la conversación entre las dos bobinas
+  if (t < K.algo) { const lift = sm5(clamp((t - K.y11 - 0.05) / 0.5)) * (1 - sm5(clamp((t - K.y14) / 0.45)));
+    const P = pose(ON.p.clone(), Q_ON); P.p.y += (0.3 + 0.008 * Math.sin(t * 1.7)) * lift + bounce(K.y14 + 0.45) * 0.5;
+    P.xr = Math.max(0.8 * (1 - sm5(clamp((t - tsn - 0.25) / 0.4))), 0.7 * lift); return P; }
   // la moneda: se levanta, entra la moneda, se posa encima (y en rayos X para verla)
   const tup = K.algo + 0.35, tdn = K.robando + 0.2;
   if (t < K.proxima) {
@@ -724,7 +731,7 @@ function flowOff(t) { let o = 0; const dt = 1 / 240; for (let x = -1; x < t; x +
 function txGlow(t) {
   if (t < K.apoyas + 0.2) return 0.8;
   if (t < K.corriente4) return 0.12;
-  if (t < K.corta) return keyed(t, [[K.corriente4, 0.15], [K.corriente4 + 0.25, 0.9], [K.crea, 0.8], [K.se6, 0.75], [K.realidad, 0.75], [K.dos7, 0.45], [K.en9, 0.45], [K.en9 + 0.5, 0.6], [K.y11, 0.6], [K.el11, 0.32], [K.mismo, 0.32], [K.morse, 0.6], [K.y14, 0.75]]);
+  if (t < K.corta) return keyed(t, [[K.corriente4, 0.15], [K.corriente4 + 0.25, 0.72], [K.crea, 0.72], [K.se6, 0.75], [K.realidad, 0.75], [K.dos7, 0.45], [K.en9, 0.45], [K.en9 + 0.5, 0.6], [K.y11, 0.6], [K.el11, 0.6], [K.y14, 0.75]]);
   if (t < K.corta + 0.08) return 2.2;                                      // chispazo y corte
   if (t < K.apoyes + 0.1) return 0;
   return clamp((t - K.apoyes - 0.1) / 0.3) * 0.75 * (t > END - 1.45 ? 1 - sm5(clamp((t - END + 1.45) / 1.2)) * 0.2 : 1);
@@ -768,18 +775,18 @@ function buildPackets() {
   S.dots = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 6), basicGlow(0xffb547, 2.5), 40); S.dots.frustumCulled = false; scene.add(S.dots);
 }
 function packetsAt(t) {
-  const yT = 0.05, yR = 0.108, face = o => o.quaternion.copy(cam.quaternion);
+  const yT = 0.06, yR = wp(S.phone.userData.rx).y - 0.01, face = o => o.quaternion.copy(cam.quaternion);
   // anillos: el cargador pregunta (turquesa, sube) y el móvil contesta (ámbar, baja)
   const R = [[K.pregunta, 1], [K.hay11, 1], [K.si11, -1], [K.compatible, -1]];
-  S.rings.forEach((r, i) => { const [t0, dir] = R[i], u = (t - t0) / 0.55; r.visible = u > 0 && u < 1; if (!r.visible) return;
-    const s = 0.04 + 0.26 * eo(u); r.scale.set(s, s, s * 0.6); r.position.set(0, dir > 0 ? lerp(yT, yR, u) : lerp(yR, yT, u), 0); r.material.color.set(dir > 0 ? 0x62e3d4 : 0xffb547).multiplyScalar(2.2 * (1 - u)); });
+  S.rings.forEach((r, i) => { const [t0, dir] = R[i], u = (t - t0) / 0.6; r.visible = u > 0 && u < 1; if (!r.visible) return;
+    const s = 0.08 + 0.22 * eo(u); r.scale.set(s, s, s * 0.6); r.position.set(0, dir > 0 ? lerp(yT, yR, u) : lerp(yR, yT, u), 0); r.material.color.set(dir > 0 ? 0x62e3d4 : 0xffb547).multiplyScalar(2.2 * (1 - u * 0.7)); });
   // glifos que bajan del móvil al cargador: «+», «−», «=»
   const G = [[S.pk.plus, K.mas12], [S.pk.minus, K.menos], [S.pk.eq, K.asi]];
-  G.forEach(([o, t0]) => { const u = (t - t0 + 0.05) / 0.5; o.visible = u > 0 && u < 1.25; if (!o.visible) return; face(o);
-    const s = 0.034 * (0.6 + 0.4 * eo(clamp(u * 3))) * (u > 1 ? 1 - (u - 1) * 4 : 1); o.scale.setScalar(Math.max(1e-4, s)); o.position.set(-0.02, lerp(yR - 0.008, yT + 0.012, sm5(clamp(u))), 0.015); });
+  G.forEach(([o, t0]) => { const u = (t - t0 + 0.05) / 0.55; o.visible = u > 0 && u < 1.25; if (!o.visible) return; face(o);
+    const s = 0.075 * (0.6 + 0.4 * eo(clamp(u * 3))) * (u > 1 ? 1 - (u - 1) * 4 : 1); o.scale.setScalar(Math.max(1e-4, s)); o.position.set(0.0, lerp(yR - 0.03, yT + 0.03, sm5(clamp(u))), 0.12); });
   // ráfaga de paquetes pequeños «varias veces por segundo»
   const dm = new THREE.Matrix4(), a = env(t, K.luego, K.golpecitos, 0.3, 0.3); S.dots.visible = a > 0.01;
-  for (let i = 0; i < 40; i++) { const u = ((t - K.luego) * 1.6 + i / 40 * 4) % 1, x = (hash(i * 3.3) - 0.5) * 0.3, z = (hash(i * 7.7) - 0.6) * 0.08; const s = 0.0016 * a * Math.sin(Math.PI * u);
+  for (let i = 0; i < 40; i++) { const u = ((t - K.luego) * 1.4 + i / 40 * 4) % 1, x = (hash(i * 3.3) - 0.5) * 0.36, z = (hash(i * 7.7) - 0.5) * 0.3; const s = 0.0045 * a * Math.sin(Math.PI * u);
     dm.makeScale(Math.max(1e-5, s), Math.max(1e-5, s), Math.max(1e-5, s)); dm.setPosition(x, lerp(yR, yT, u), z); S.dots.setMatrixAt(i, dm); }
   S.dots.instanceMatrix.needsUpdate = true;
 }
@@ -812,14 +819,15 @@ function stageAt(t) {
   const off = flowOff(t), tg = txGlow(t), heat = 0.9 * env(t, K.calor - 0.1, K.en9 + 0.9, 0.4, 0.8);
   const tap = tapAt(t), mod = t > K.mismo && t < K.morse + 0.6 ? 0.35 + 0.9 * tap : 1;
   setCurrent(cu.tx, tg * mod, off, heat * 0.8);
-  const macro = env(t, K.dos7 - 0.3, K.en9 + 0.3, 0.3, 0.3) + env(t, K.el11 - 0.3, K.mismo + 0.4, 0.3, 0.4);
+  const macro = env(t, K.dos7 - 0.3, K.en9 + 0.3, 0.3, 0.3);
   const rxOn = (t < K.apoyas + 0.2 ? 0.55 : (t > K.aparece && t < K.corta ? (t < K.aparece + 0.3 ? 0.9 * (t - K.aparece) / 0.3 : 0.75) : (t > K.apoyes + 0.1 ? 0.6 : 0))) * (1 - 0.55 * macro);
   setCurrent(pu.rx, rxOn * mod, -off * 0.9, heat);
   S.rig.coilL.intensity = 1.4 * tg + 2.5 * heat;
   // ---- campo magnético
   const fk = keyed(t, [[K.crea - 0.02, 0], [K.crea + 0.8, 1], [K.induccion + 0.2, 1], [K.y6, 0], [K.realidad + 0.1, 0], [K.dos7, 1], [K.en9 - 0.1, 1], [K.en9 + 0.4, 0], [K.y11, 0], [K.y11 + 0.6, 1], [K.corta, 1], [K.corta + 0.12, 0], [K.apoyes + 0.1, 0], [K.apoyes + 0.7, 1], [END - 1.6, 1], [END - 1.1, 0]]);
   const ph = P.position.y, stretch = 1 + 1.15 * clamp((ph - PY_ON) / 0.6);
-  fieldState(t, fk, stretch, off * 0.55, (0.55 + 0.45 * mod) * (t > K.corta && t < K.corta + 0.12 ? 2.5 : 1));
+  const proto = env(t, K.y11, K.y14, 0.4, 0.4);
+  fieldState(t, fk, stretch, off * 0.55, (0.55 + 0.45 * mod) * (1 - 0.35 * proto) * (t > K.corta && t < K.corta + 0.12 ? 2.5 : 1));
   S.rig.fieldL.intensity = 1.6 * fk;
   // ---- Faraday: las bobinas se convierten en los devanados del anillo de hierro
   const fr = env(t, K.y6 - 0.1, K.parece + 0.35, 0.55, 0.45);
@@ -837,7 +845,7 @@ function stageAt(t) {
   const mk = win(t, K.y6 - 0.1, 0.45) * (1 - win(t, K.parece, 0.35));
   cu.tx.scale.setScalar(Math.max(1e-3, 1 - mk)); pu.rx.scale.setScalar(Math.max(1e-3, 1 - mk)); pu.parts.coil.children[0].visible = mk < 0.7;
   // ---- corte transversal
-  const sec = keyed(t, [[K.realidad - 0.05, 0], [K.realidad + 0.55, 1], [K.en9 - 0.2, 1], [K.en9 + 0.3, 0], [K.y11 + 0.05, 0], [K.y11 + 0.75, 1], [K.mismo + 0.3, 1], [K.mismo + 0.9, 0]]);
+  const sec = keyed(t, [[K.realidad - 0.05, 0], [K.realidad + 0.55, 1], [K.en9 - 0.2, 1], [K.en9 + 0.3, 0]]);
   SEC.constant = sec > 0.001 ? lerp(1.2, 0, sm5(sec)) : 50; secSides(sec > 0.001);
   // ---- barras de la prueba
   const bars = S.bars.userData.bars, bOut = 1 - win(t, K.por10, 0.5);
@@ -851,17 +859,17 @@ function stageAt(t) {
   const coin = S.coin, key = S.key;
   coin.visible = t > K.algo + 0.12 && t < K.apoyes; key.visible = t > K.llaves - 0.35 && t < K.apoyes;
   if (coin.visible) { const inn = sm5(clamp((t - K.algo - 0.12) / 0.5)), out = sm5(clamp((t - K.proxima - 0.05) / 0.45));
-    coin.position.set(lerp(0.9, 0.06, inn) + 1.2 * out, 0.1015 + 0.0072, lerp(0.55, 0.1, inn) + 0.6 * out); coin.rotation.y = 2 * (1 - inn) + out;
-    const ch = win(t, K.robando, 0.8) * (1 - win(t, K.corta + 0.05, 1.0)); coin.userData.m.emissiveIntensity = 2.4 * ch; coin.userData.m.emissive.setRGB(1, 0.18 + 0.25 * ch, 0.04);
+    coin.position.set(lerp(0.95, 0.17, inn) + 1.2 * out, 0.1015 + 0.0072, lerp(0.6, 0.15, inn) + 0.6 * out); coin.rotation.y = 2 * (1 - inn) + out;
+    const ch = win(t, K.robando, 0.8) * (1 - win(t, K.corta + 0.05, 1.0)); coin.userData.m.emissiveIntensity = 4.5 * ch; coin.userData.m.emissive.setRGB(1, 0.18 + 0.25 * ch, 0.04);
     S.rig.coinL.intensity = 3.5 * ch; S.rig.coinL.position.set(coin.position.x, 0.16, coin.position.z); }
   else S.rig.coinL.intensity = 0;
   if (key.visible) { const inn = sm5(clamp((t - K.llaves + 0.35) / 0.45)), out = sm5(clamp((t - K.proxima) / 0.45));
-    key.position.set(lerp(-0.95, -0.2, inn) - 1.2 * out, 0.1015 + 0.006, lerp(-0.6, -0.16, inn) - 0.5 * out); key.rotation.y = 0.7 + 1.5 * (1 - inn);
-    const kh = win(t, K.llaves + 0.1, 0.7) * (1 - win(t, K.corta + 0.05, 1.0)); key.userData.m.emissiveIntensity = 2.0 * kh; }
+    key.position.set(lerp(-0.95, -0.24, inn) - 1.2 * out, 0.1015 + 0.006, lerp(-0.6, -0.06, inn) - 0.5 * out); key.rotation.y = 0.7 + 1.5 * (1 - inn);
+    const kh = win(t, K.llaves + 0.1, 0.7) * (1 - win(t, K.corta + 0.05, 1.0)); key.userData.m.emissiveIntensity = 4.0 * kh; }
   // ---- energía, pings, paquetes, USB
   energyAt(t); packetsAt(t);
   const ub = S.usb, uk = env(t, K.tu15 - 0.1, END - 1.3, 0.35, 0.4); ub.visible = uk > 0.01;
-  if (ub.visible) { ub.position.set(-0.68, 0.45 + 0.03 * Math.sin(t * 2), 0.35); ub.rotation.set(0.15, 0.6 + 0.2 * Math.sin(t * 0.8), -0.25); ub.scale.setScalar(Math.max(1e-3, uk)); }
+  if (ub.visible) { ub.position.set(-0.68, 0.45 + 0.03 * Math.sin(t * 2), 0.35); ub.rotation.set(0.15, 0.6 + 0.2 * Math.sin(t * 0.8), -0.25); ub.scale.setScalar(Math.max(1e-3, 1.7 * uk)); }
 }
 // ---------------------------------------------------------------- cámara: claves + giro cenital (frase 4) + vuelta al primer plano (bucle)
 let CK = [], CK_OPEN = [];
@@ -901,23 +909,22 @@ function buildCam() {
     // la prueba: se aleja mucho y sube (barras)
     [K.prueba + 0.25, [1.9, 1.8, 5.8], [-0.25, 1.2, -0.6], 32],
     [K.mas9, [2.2, 2.0, 6.2], [-0.25, 1.25, -0.7], 32],
-    [K.descentrado + 0.2, [1.4, 1.35, 3.9], [0.0, 0.55, -0.4], 32],
     [K.aun + 0.4, [1.9, 1.95, 5.9], [-0.2, 1.3, -0.7], 32],
     // imanes: arriba, en picado
     [K.imanes, [1.2, 2.4, 2.6], [0.05, 0.08, 0], 32],
     [K.centran + 0.3, [0.9, 2.2, 2.3], [0, 0.1, 0], 32],
-    // «¿y qué le dice?»: se mete en el hueco entre las bobinas (se acerca y abre el gran angular a la vez)
-    [K.y11 + 0.2, [0.7, 1.4, 1.9], [0, 0.1, 0], 36],
-    [K.el11, [0.04, 0.085, 0.46], [0, 0.079, -0.2], 50],
-    [K.compatible, [0.0, 0.08, 0.36], [0, 0.079, -0.3], 54],
-    [K.bien, [-0.02, 0.079, 0.27], [0, 0.079, -0.3], 58],
-    // sale para ver el campo con los golpecitos
-    [K.mismo + 0.35, [0.4, 0.3, 1.4], [0, 0.1, 0], 40],
+    // «¿y qué le dice?»: baja en picado hasta la altura del hueco entre las dos bobinas (se acerca y abre el angular a la vez)
+    [K.y11 + 0.25, [0.6, 0.3, 1.05], [0, 0.22, 0], 46],
+    [K.el11 + 0.3, [1.5, 1.45, 2.6], [0, 0.25, 0], 34],
+    [K.compatible, [0.95, 1.5, 2.75], [0, 0.25, 0], 34],
+    [K.bien, [-0.75, 1.4, 2.7], [0, 0.25, 0], 34],
+    // se aleja para ver el campo con los golpecitos
+    [K.mismo + 0.35, [-1.5, 1.25, 3.2], [0, 0.25, 0], 34],
     [K.morse + 0.3, [2.0, 1.0, 3.0], [0, 0.15, 0], 32],
     // la moneda
     [K.algo, [2.4, 1.45, 3.0], [0.03, 0.12, 0.03], 30],
-    [K.moneda, [1.9, 1.25, 2.5], [0.05, 0.11, 0.05], 30],
-    [K.corta, [1.8, 1.15, 2.3], [0.04, 0.11, 0.04], 30],
+    [K.moneda, [1.5, 1.0, 1.95], [0.05, 0.11, 0.05], 30],
+    [K.corta, [1.42, 0.95, 1.85], [0.04, 0.11, 0.04], 30],
     [K.corta + 0.6, [2.0, 1.3, 2.7], [0.03, 0.12, 0.02], 30],
     // vuelve a apoyarse y «están hablando»
     [K.apoyes + 0.2, [2.1, 1.55, 3.4], [0, 0.2, 0], 32],
@@ -998,7 +1005,7 @@ function hudAt(t) {
   coilArrow(t, env(t, K.corriente4, K.crea + 0.1, 0.3, 0.3));
   const sa = env(t, K.corriente4, K.crea, 0.3, 0.3);
   if (sa > 0.01) { const f = 2 + 70 * Math.pow(clamp((t - K.cambia) / 2.6), 2); scope((u, tt) => Math.sin(Math.PI * 2 * u * f * (curDir(tt) > 0 ? 1 : 1) - tt * 14), t, sa, 'CORRIENTE · TX', '87–205 kHz'); }
-  const ca = env(t, K.mas4, K.crea, 0.2, 0.3);
+  const ca = env(t, K.cienmil - 0.1, K.crea, 0.2, 0.3);
   if (ca > 0.01) { const n = Math.round(100000 * eo(clamp((t - K.cienmil + 0.1) / 0.55))), s = '+' + n.toLocaleString('es-ES').replace(/\./g, ' ');
     bigText(s, 56, 1350, 64, HC.amber, ca, { align: 'left', type: false, ls: 4, glow: 18 });
     bigText('CAMBIOS DE SENTIDO', 58, 1420, 20, HC.grey, ca, { align: 'left', bold: false, ls: 4 }); bigText('POR SEGUNDO', 58, 1452, 20, HC.grey, ca, { align: 'left', bold: false, ls: 4 }); }
@@ -1030,11 +1037,11 @@ function hudAt(t) {
   const ta = ckk(t, K.prueba, K.por10, 0.6) * ckf(t, K.por10);
   if (ta > 0) { hg.save(); hg.globalAlpha = ta; hg.fillStyle = 'rgba(0,0,0,.6)'; rr(hg, 150, 1440, 780, 56, 28); hg.fill(); hg.strokeStyle = 'rgba(238,242,246,.3)'; hg.lineWidth = 1.5; hg.stroke(); hg.restore();
     bigText('PRUEBA 2020 · MISMO MÓVIL · 0 → 100 %', 540, 1469, 22, HC.white, ta, { bold: false, ls: 3 }); }
-  co(t, K.prueba + 0.35, K.por10, top(bars[0]), 'CON CABLE', '14,26 Wh', { dx: -60, dy: -120, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.white });
-  co(t, K.gasto + 0.2, K.por10, top(bars[1]), 'SIN CABLE', '21,01 Wh', { dx: -40, dy: -170, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.amber });
-  co(t, K.cincuenta, K.por10, top(bars[1]).add(v3(0.2, -0.1, 0)), '+47 %', 'MÁS ENERGÍA', { dx: 160, dy: -60, size: 58, color: HC.amber, d: 0.35 });
+  co(t, K.prueba + 0.35, K.descentrado + 0.2, top(bars[0]), 'CON CABLE', '14,26 Wh', { dx: -60, dy: -120, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.white });
+  co(t, K.gasto + 0.2, K.descentrado + 0.2, top(bars[1]), 'SIN CABLE', '21,01 Wh', { dx: -40, dy: -170, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.amber });
+  co(t, K.cincuenta, K.aun + 0.1, top(bars[1]).add(v3(0.2, -0.1, 0)), '+47 %', 'MÁS ENERGÍA', { dx: 160, dy: -60, size: 58, color: HC.amber, d: 0.35 });
   co(t, K.descentrado, K.por10, phW.clone().add(v3(0.1, 0.04, 0.1)), 'DESCENTRADO', null, { dx: 120, dy: 140, color: HC.red, d: 0.4 });
-  co(t, K.aun + 0.25, K.por10, top(bars[2]), '+80 %', '25,62 Wh · DESCENTRADO', { dx: 140, dy: -90, size: 58, color: '#FF7A55', d: 0.35 });
+  co(t, K.aun + 0.25, K.por10, top(bars[2]), '+80 %', '25,62 Wh', { dx: -140, dy: 60, size: 58, color: '#FF7A55', d: 0.35 });
   // ---- 10: imanes
   co(t, K.imanes, K.y11, v3(0.3 * Math.cos(0.6), 0.07, 0.3 * Math.sin(0.6)), 'IMANES', 'ALINEAN LAS BOBINAS', { dx: 130, dy: -170, d: 0.45 });
   co(t, K.centran + 0.15, K.y11, phW.clone().add(v3(0, 0.05, 0)), 'CENTRADO ✓', null, { dx: -120, dy: -200, color: HC.teal, d: 0.35 });

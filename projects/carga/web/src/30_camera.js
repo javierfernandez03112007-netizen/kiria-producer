@@ -36,23 +36,22 @@ function buildCam() {
     // la prueba: se aleja mucho y sube (barras)
     [K.prueba + 0.25, [1.9, 1.8, 5.8], [-0.25, 1.2, -0.6], 32],
     [K.mas9, [2.2, 2.0, 6.2], [-0.25, 1.25, -0.7], 32],
-    [K.descentrado + 0.2, [1.4, 1.35, 3.9], [0.0, 0.55, -0.4], 32],
     [K.aun + 0.4, [1.9, 1.95, 5.9], [-0.2, 1.3, -0.7], 32],
     // imanes: arriba, en picado
     [K.imanes, [1.2, 2.4, 2.6], [0.05, 0.08, 0], 32],
     [K.centran + 0.3, [0.9, 2.2, 2.3], [0, 0.1, 0], 32],
-    // «¿y qué le dice?»: se mete en el hueco entre las bobinas (se acerca y abre el gran angular a la vez)
-    [K.y11 + 0.2, [0.7, 1.4, 1.9], [0, 0.1, 0], 36],
-    [K.el11, [0.04, 0.085, 0.46], [0, 0.079, -0.2], 50],
-    [K.compatible, [0.0, 0.08, 0.36], [0, 0.079, -0.3], 54],
-    [K.bien, [-0.02, 0.079, 0.27], [0, 0.079, -0.3], 58],
-    // sale para ver el campo con los golpecitos
-    [K.mismo + 0.35, [0.4, 0.3, 1.4], [0, 0.1, 0], 40],
+    // «¿y qué le dice?»: baja en picado hasta la altura del hueco entre las dos bobinas (se acerca y abre el angular a la vez)
+    [K.y11 + 0.25, [0.6, 0.3, 1.05], [0, 0.22, 0], 46],
+    [K.el11 + 0.3, [1.5, 1.45, 2.6], [0, 0.25, 0], 34],
+    [K.compatible, [0.95, 1.5, 2.75], [0, 0.25, 0], 34],
+    [K.bien, [-0.75, 1.4, 2.7], [0, 0.25, 0], 34],
+    // se aleja para ver el campo con los golpecitos
+    [K.mismo + 0.35, [-1.5, 1.25, 3.2], [0, 0.25, 0], 34],
     [K.morse + 0.3, [2.0, 1.0, 3.0], [0, 0.15, 0], 32],
     // la moneda
     [K.algo, [2.4, 1.45, 3.0], [0.03, 0.12, 0.03], 30],
-    [K.moneda, [1.9, 1.25, 2.5], [0.05, 0.11, 0.05], 30],
-    [K.corta, [1.8, 1.15, 2.3], [0.04, 0.11, 0.04], 30],
+    [K.moneda, [1.5, 1.0, 1.95], [0.05, 0.11, 0.05], 30],
+    [K.corta, [1.42, 0.95, 1.85], [0.04, 0.11, 0.04], 30],
     [K.corta + 0.6, [2.0, 1.3, 2.7], [0.03, 0.12, 0.02], 30],
     // vuelve a apoyarse y «están hablando»
     [K.apoyes + 0.2, [2.1, 1.55, 3.4], [0, 0.2, 0], 32],

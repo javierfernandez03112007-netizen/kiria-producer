@@ -34,12 +34,12 @@ function setCurrent(c, glow, off, heat = 0, base = 0.18) { const U = c.userData.
 // ---------------------------------------------------------------- materiales del móvil y del cargador
 function phoneMats() {
   return {
-    frame: new THREE.MeshPhysicalMaterial({ color: 0x531523, metalness: 0.85, roughness: 0.26, clearcoat: 0.7, clearcoatRoughness: 0.12 }),
+    frame: new THREE.MeshPhysicalMaterial({ color: 0x531523, metalness: 0.85, roughness: 0.34, clearcoat: 0.4, clearcoatRoughness: 0.35 }),
     back: new THREE.MeshStandardMaterial({ color: 0x3e0e1b, metalness: 0.35, roughness: 0.4 }),
     bump: new THREE.MeshStandardMaterial({ color: 0x47101f, metalness: 0.55, roughness: 0.2 }),
     lens: new THREE.MeshStandardMaterial({ color: 0x050608, metalness: 0.3, roughness: 0.05 }),
     ring: new THREE.MeshStandardMaterial({ color: 0x8a3a4a, metalness: 1, roughness: 0.22 }),
-    screen: new THREE.MeshStandardMaterial({ color: 0x030405, metalness: 0.2, roughness: 0.06, emissive: 0xffffff, emissiveIntensity: 0 }),
+    screen: new THREE.MeshStandardMaterial({ color: 0x040506, metalness: 0.0, roughness: 0.42, emissive: 0xffffff, emissiveIntensity: 0 }),
     batt: new THREE.MeshStandardMaterial({ color: 0x24272d, metalness: 0.4, roughness: 0.5 }),
     board: new THREE.MeshStandardMaterial({ color: 0x0f2a24, metalness: 0.3, roughness: 0.55 }),
     chip: new THREE.MeshStandardMaterial({ color: 0x15171b, metalness: 0.5, roughness: 0.35 }),
@@ -98,7 +98,7 @@ function phoneState(P, ex, xr, edgeBase = 0.1) {
   const { parts } = P.userData;
   for (const k in parts) { const g = parts[k], u = g.userData; g.position.z = u.z + u.ez * ex; }
   for (const k of ['frame', 'back', 'screen']) { const g = parts[k]; setOp(g, 1 - 0.94 * xr); edgeOp(g, edgeBase + 0.85 * xr); }
-  for (const k of ['batt', 'board']) setOp(parts[k], 1 - 0.8 * xr);
+  for (const k of ['batt', 'board']) setOp(parts[k], 1 - 0.92 * xr);
   edgeOp(parts.batt, 0.25 + 0.5 * xr);
 }
 

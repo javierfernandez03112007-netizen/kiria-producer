@@ -55,7 +55,7 @@ function hudAt(t) {
   coilArrow(t, env(t, K.corriente4, K.crea + 0.1, 0.3, 0.3));
   const sa = env(t, K.corriente4, K.crea, 0.3, 0.3);
   if (sa > 0.01) { const f = 2 + 70 * Math.pow(clamp((t - K.cambia) / 2.6), 2); scope((u, tt) => Math.sin(Math.PI * 2 * u * f * (curDir(tt) > 0 ? 1 : 1) - tt * 14), t, sa, 'CORRIENTE · TX', '87–205 kHz'); }
-  const ca = env(t, K.mas4, K.crea, 0.2, 0.3);
+  const ca = env(t, K.cienmil - 0.1, K.crea, 0.2, 0.3);
   if (ca > 0.01) { const n = Math.round(100000 * eo(clamp((t - K.cienmil + 0.1) / 0.55))), s = '+' + n.toLocaleString('es-ES').replace(/\./g, ' ');
     bigText(s, 56, 1350, 64, HC.amber, ca, { align: 'left', type: false, ls: 4, glow: 18 });
     bigText('CAMBIOS DE SENTIDO', 58, 1420, 20, HC.grey, ca, { align: 'left', bold: false, ls: 4 }); bigText('POR SEGUNDO', 58, 1452, 20, HC.grey, ca, { align: 'left', bold: false, ls: 4 }); }
@@ -87,11 +87,11 @@ function hudAt(t) {
   const ta = ckk(t, K.prueba, K.por10, 0.6) * ckf(t, K.por10);
   if (ta > 0) { hg.save(); hg.globalAlpha = ta; hg.fillStyle = 'rgba(0,0,0,.6)'; rr(hg, 150, 1440, 780, 56, 28); hg.fill(); hg.strokeStyle = 'rgba(238,242,246,.3)'; hg.lineWidth = 1.5; hg.stroke(); hg.restore();
     bigText('PRUEBA 2020 · MISMO MÓVIL · 0 → 100 %', 540, 1469, 22, HC.white, ta, { bold: false, ls: 3 }); }
-  co(t, K.prueba + 0.35, K.por10, top(bars[0]), 'CON CABLE', '14,26 Wh', { dx: -60, dy: -120, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.white });
-  co(t, K.gasto + 0.2, K.por10, top(bars[1]), 'SIN CABLE', '21,01 Wh', { dx: -40, dy: -170, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.amber });
-  co(t, K.cincuenta, K.por10, top(bars[1]).add(v3(0.2, -0.1, 0)), '+47 %', 'MÁS ENERGÍA', { dx: 160, dy: -60, size: 58, color: HC.amber, d: 0.35 });
+  co(t, K.prueba + 0.35, K.descentrado + 0.2, top(bars[0]), 'CON CABLE', '14,26 Wh', { dx: -60, dy: -120, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.white });
+  co(t, K.gasto + 0.2, K.descentrado + 0.2, top(bars[1]), 'SIN CABLE', '21,01 Wh', { dx: -40, dy: -170, side: -1, len: 40, d: 0.45, subSize: 22, subCol: HC.amber });
+  co(t, K.cincuenta, K.aun + 0.1, top(bars[1]).add(v3(0.2, -0.1, 0)), '+47 %', 'MÁS ENERGÍA', { dx: 160, dy: -60, size: 58, color: HC.amber, d: 0.35 });
   co(t, K.descentrado, K.por10, phW.clone().add(v3(0.1, 0.04, 0.1)), 'DESCENTRADO', null, { dx: 120, dy: 140, color: HC.red, d: 0.4 });
-  co(t, K.aun + 0.25, K.por10, top(bars[2]), '+80 %', '25,62 Wh · DESCENTRADO', { dx: 140, dy: -90, size: 58, color: '#FF7A55', d: 0.35 });
+  co(t, K.aun + 0.25, K.por10, top(bars[2]), '+80 %', '25,62 Wh', { dx: -140, dy: 60, size: 58, color: '#FF7A55', d: 0.35 });
   // ---- 10: imanes
   co(t, K.imanes, K.y11, v3(0.3 * Math.cos(0.6), 0.07, 0.3 * Math.sin(0.6)), 'IMANES', 'ALINEAN LAS BOBINAS', { dx: 130, dy: -170, d: 0.45 });
   co(t, K.centran + 0.15, K.y11, phW.clone().add(v3(0, 0.05, 0)), 'CENTRADO ✓', null, { dx: -120, dy: -200, color: HC.teal, d: 0.35 });

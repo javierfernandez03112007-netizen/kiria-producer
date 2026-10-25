@@ -21,7 +21,7 @@ function phonePose(t) {
   const tc = K.cada - 0.08, tl = K.apoyas + 0.16;
   if (t0 < tc) return V;
   if (t0 < tl) { const u = (t0 - tc) / (tl - tc); const P = mixPose(V, ON, sm5(u)); P.p.copy(V.p).lerp(ON.p, Math.pow(u, 2.1)); P.ex = 1 - sm5(clamp(u * 1.4)); return P; }
-  const bounce = (ta) => 0.012 * Math.max(0, Math.sin((t - ta) * 34)) * Math.exp(-(t - ta) * 9);
+  const bounce = (ta) => (t < ta ? 0 : 0.012 * Math.max(0, Math.sin((t - ta) * 34)) * Math.exp(-(t - ta) * 9));
   if (t < K.truco) { const P = pose(ON.p.clone(), Q_ON); P.p.y += bounce(tl); return P; }
   // «el truco»: sale disparado hacia arriba (fuera de plano) y vuelve a bajar cuando el campo «atraviesa la bobina del móvil»
   if (t < K.parece + 0.1) {
@@ -38,7 +38,10 @@ function phonePose(t) {
   if (t < K.centran) { const P = mixPose(ON, OFF, sm5(clamp((t - K.descentrado) / 0.5))); P.xr = 0.8 * sm5(clamp((t - K.imanes + 0.1) / 0.4)); return P; }
   const tsn = K.centran + 0.16;
   if (t < tsn) { const u = clamp((t - K.centran) / 0.16); const P = mixPose(OFF, ON, u * u); P.xr = 0.8; return P; }
-  if (t < K.algo) { const P = pose(ON.p.clone(), Q_ON); P.xr = 0.8 * (1 - sm5(clamp((t - tsn - 0.25) / 0.4))) + (t > K.y11 + 0.4 ? sm5(clamp((t - K.y11 - 0.4) / 0.4)) * (1 - sm5(clamp((t - K.y14) / 0.5))) : 0); return P; }
+  // «¿y qué le dice?»: se separa un poco del cargador (rayos X) para ver la conversación entre las dos bobinas
+  if (t < K.algo) { const lift = sm5(clamp((t - K.y11 - 0.05) / 0.5)) * (1 - sm5(clamp((t - K.y14) / 0.45)));
+    const P = pose(ON.p.clone(), Q_ON); P.p.y += (0.3 + 0.008 * Math.sin(t * 1.7)) * lift + bounce(K.y14 + 0.45) * 0.5;
+    P.xr = Math.max(0.8 * (1 - sm5(clamp((t - tsn - 0.25) / 0.4))), 0.7 * lift); return P; }
   // la moneda: se levanta, entra la moneda, se posa encima (y en rayos X para verla)
   const tup = K.algo + 0.35, tdn = K.robando + 0.2;
   if (t < K.proxima) {
@@ -66,7 +69,7 @@ function flowOff(t) { let o = 0; const dt = 1 / 240; for (let x = -1; x < t; x +
 function txGlow(t) {
   if (t < K.apoyas + 0.2) return 0.8;
   if (t < K.corriente4) return 0.12;
-  if (t < K.corta) return keyed(t, [[K.corriente4, 0.15], [K.corriente4 + 0.25, 0.9], [K.crea, 0.8], [K.se6, 0.75], [K.realidad, 0.75], [K.dos7, 0.45], [K.en9, 0.45], [K.en9 + 0.5, 0.6], [K.y11, 0.6], [K.el11, 0.32], [K.mismo, 0.32], [K.morse, 0.6], [K.y14, 0.75]]);
+  if (t < K.corta) return keyed(t, [[K.corriente4, 0.15], [K.corriente4 + 0.25, 0.72], [K.crea, 0.72], [K.se6, 0.75], [K.realidad, 0.75], [K.dos7, 0.45], [K.en9, 0.45], [K.en9 + 0.5, 0.6], [K.y11, 0.6], [K.el11, 0.6], [K.y14, 0.75]]);
   if (t < K.corta + 0.08) return 2.2;                                      // chispazo y corte
   if (t < K.apoyes + 0.1) return 0;
   return clamp((t - K.apoyes - 0.1) / 0.3) * 0.75 * (t > END - 1.45 ? 1 - sm5(clamp((t - END + 1.45) / 1.2)) * 0.2 : 1);
@@ -110,18 +113,18 @@ function buildPackets() {
   S.dots = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 6), basicGlow(0xffb547, 2.5), 40); S.dots.frustumCulled = false; scene.add(S.dots);
 }
 function packetsAt(t) {
-  const yT = 0.05, yR = 0.108, face = o => o.quaternion.copy(cam.quaternion);
+  const yT = 0.06, yR = wp(S.phone.userData.rx).y - 0.01, face = o => o.quaternion.copy(cam.quaternion);
   // anillos: el cargador pregunta (turquesa, sube) y el móvil contesta (ámbar, baja)
   const R = [[K.pregunta, 1], [K.hay11, 1], [K.si11, -1], [K.compatible, -1]];
-  S.rings.forEach((r, i) => { const [t0, dir] = R[i], u = (t - t0) / 0.55; r.visible = u > 0 && u < 1; if (!r.visible) return;
-    const s = 0.04 + 0.26 * eo(u); r.scale.set(s, s, s * 0.6); r.position.set(0, dir > 0 ? lerp(yT, yR, u) : lerp(yR, yT, u), 0); r.material.color.set(dir > 0 ? 0x62e3d4 : 0xffb547).multiplyScalar(2.2 * (1 - u)); });
+  S.rings.forEach((r, i) => { const [t0, dir] = R[i], u = (t - t0) / 0.6; r.visible = u > 0 && u < 1; if (!r.visible) return;
+    const s = 0.08 + 0.22 * eo(u); r.scale.set(s, s, s * 0.6); r.position.set(0, dir > 0 ? lerp(yT, yR, u) : lerp(yR, yT, u), 0); r.material.color.set(dir > 0 ? 0x62e3d4 : 0xffb547).multiplyScalar(2.2 * (1 - u * 0.7)); });
   // glifos que bajan del móvil al cargador: «+», «−», «=»
   const G = [[S.pk.plus, K.mas12], [S.pk.minus, K.menos], [S.pk.eq, K.asi]];
-  G.forEach(([o, t0]) => { const u = (t - t0 + 0.05) / 0.5; o.visible = u > 0 && u < 1.25; if (!o.visible) return; face(o);
-    const s = 0.034 * (0.6 + 0.4 * eo(clamp(u * 3))) * (u > 1 ? 1 - (u - 1) * 4 : 1); o.scale.setScalar(Math.max(1e-4, s)); o.position.set(-0.02, lerp(yR - 0.008, yT + 0.012, sm5(clamp(u))), 0.015); });
+  G.forEach(([o, t0]) => { const u = (t - t0 + 0.05) / 0.55; o.visible = u > 0 && u < 1.25; if (!o.visible) return; face(o);
+    const s = 0.075 * (0.6 + 0.4 * eo(clamp(u * 3))) * (u > 1 ? 1 - (u - 1) * 4 : 1); o.scale.setScalar(Math.max(1e-4, s)); o.position.set(0.0, lerp(yR - 0.03, yT + 0.03, sm5(clamp(u))), 0.12); });
   // ráfaga de paquetes pequeños «varias veces por segundo»
   const dm = new THREE.Matrix4(), a = env(t, K.luego, K.golpecitos, 0.3, 0.3); S.dots.visible = a > 0.01;
-  for (let i = 0; i < 40; i++) { const u = ((t - K.luego) * 1.6 + i / 40 * 4) % 1, x = (hash(i * 3.3) - 0.5) * 0.3, z = (hash(i * 7.7) - 0.6) * 0.08; const s = 0.0016 * a * Math.sin(Math.PI * u);
+  for (let i = 0; i < 40; i++) { const u = ((t - K.luego) * 1.4 + i / 40 * 4) % 1, x = (hash(i * 3.3) - 0.5) * 0.36, z = (hash(i * 7.7) - 0.5) * 0.3; const s = 0.0045 * a * Math.sin(Math.PI * u);
     dm.makeScale(Math.max(1e-5, s), Math.max(1e-5, s), Math.max(1e-5, s)); dm.setPosition(x, lerp(yR, yT, u), z); S.dots.setMatrixAt(i, dm); }
   S.dots.instanceMatrix.needsUpdate = true;
 }
@@ -154,14 +157,15 @@ function stageAt(t) {
   const off = flowOff(t), tg = txGlow(t), heat = 0.9 * env(t, K.calor - 0.1, K.en9 + 0.9, 0.4, 0.8);
   const tap = tapAt(t), mod = t > K.mismo && t < K.morse + 0.6 ? 0.35 + 0.9 * tap : 1;
   setCurrent(cu.tx, tg * mod, off, heat * 0.8);
-  const macro = env(t, K.dos7 - 0.3, K.en9 + 0.3, 0.3, 0.3) + env(t, K.el11 - 0.3, K.mismo + 0.4, 0.3, 0.4);
+  const macro = env(t, K.dos7 - 0.3, K.en9 + 0.3, 0.3, 0.3);
   const rxOn = (t < K.apoyas + 0.2 ? 0.55 : (t > K.aparece && t < K.corta ? (t < K.aparece + 0.3 ? 0.9 * (t - K.aparece) / 0.3 : 0.75) : (t > K.apoyes + 0.1 ? 0.6 : 0))) * (1 - 0.55 * macro);
   setCurrent(pu.rx, rxOn * mod, -off * 0.9, heat);
   S.rig.coilL.intensity = 1.4 * tg + 2.5 * heat;
   // ---- campo magnético
   const fk = keyed(t, [[K.crea - 0.02, 0], [K.crea + 0.8, 1], [K.induccion + 0.2, 1], [K.y6, 0], [K.realidad + 0.1, 0], [K.dos7, 1], [K.en9 - 0.1, 1], [K.en9 + 0.4, 0], [K.y11, 0], [K.y11 + 0.6, 1], [K.corta, 1], [K.corta + 0.12, 0], [K.apoyes + 0.1, 0], [K.apoyes + 0.7, 1], [END - 1.6, 1], [END - 1.1, 0]]);
   const ph = P.position.y, stretch = 1 + 1.15 * clamp((ph - PY_ON) / 0.6);
-  fieldState(t, fk, stretch, off * 0.55, (0.55 + 0.45 * mod) * (t > K.corta && t < K.corta + 0.12 ? 2.5 : 1));
+  const proto = env(t, K.y11, K.y14, 0.4, 0.4);
+  fieldState(t, fk, stretch, off * 0.55, (0.55 + 0.45 * mod) * (1 - 0.35 * proto) * (t > K.corta && t < K.corta + 0.12 ? 2.5 : 1));
   S.rig.fieldL.intensity = 1.6 * fk;
   // ---- Faraday: las bobinas se convierten en los devanados del anillo de hierro
   const fr = env(t, K.y6 - 0.1, K.parece + 0.35, 0.55, 0.45);
@@ -179,7 +183,7 @@ function stageAt(t) {
   const mk = win(t, K.y6 - 0.1, 0.45) * (1 - win(t, K.parece, 0.35));
   cu.tx.scale.setScalar(Math.max(1e-3, 1 - mk)); pu.rx.scale.setScalar(Math.max(1e-3, 1 - mk)); pu.parts.coil.children[0].visible = mk < 0.7;
   // ---- corte transversal
-  const sec = keyed(t, [[K.realidad - 0.05, 0], [K.realidad + 0.55, 1], [K.en9 - 0.2, 1], [K.en9 + 0.3, 0], [K.y11 + 0.05, 0], [K.y11 + 0.75, 1], [K.mismo + 0.3, 1], [K.mismo + 0.9, 0]]);
+  const sec = keyed(t, [[K.realidad - 0.05, 0], [K.realidad + 0.55, 1], [K.en9 - 0.2, 1], [K.en9 + 0.3, 0]]);
   SEC.constant = sec > 0.001 ? lerp(1.2, 0, sm5(sec)) : 50; secSides(sec > 0.001);
   // ---- barras de la prueba
   const bars = S.bars.userData.bars, bOut = 1 - win(t, K.por10, 0.5);
@@ -193,15 +197,15 @@ function stageAt(t) {
   const coin = S.coin, key = S.key;
   coin.visible = t > K.algo + 0.12 && t < K.apoyes; key.visible = t > K.llaves - 0.35 && t < K.apoyes;
   if (coin.visible) { const inn = sm5(clamp((t - K.algo - 0.12) / 0.5)), out = sm5(clamp((t - K.proxima - 0.05) / 0.45));
-    coin.position.set(lerp(0.9, 0.06, inn) + 1.2 * out, 0.1015 + 0.0072, lerp(0.55, 0.1, inn) + 0.6 * out); coin.rotation.y = 2 * (1 - inn) + out;
-    const ch = win(t, K.robando, 0.8) * (1 - win(t, K.corta + 0.05, 1.0)); coin.userData.m.emissiveIntensity = 2.4 * ch; coin.userData.m.emissive.setRGB(1, 0.18 + 0.25 * ch, 0.04);
+    coin.position.set(lerp(0.95, 0.17, inn) + 1.2 * out, 0.1015 + 0.0072, lerp(0.6, 0.15, inn) + 0.6 * out); coin.rotation.y = 2 * (1 - inn) + out;
+    const ch = win(t, K.robando, 0.8) * (1 - win(t, K.corta + 0.05, 1.0)); coin.userData.m.emissiveIntensity = 4.5 * ch; coin.userData.m.emissive.setRGB(1, 0.18 + 0.25 * ch, 0.04);
     S.rig.coinL.intensity = 3.5 * ch; S.rig.coinL.position.set(coin.position.x, 0.16, coin.position.z); }
   else S.rig.coinL.intensity = 0;
   if (key.visible) { const inn = sm5(clamp((t - K.llaves + 0.35) / 0.45)), out = sm5(clamp((t - K.proxima) / 0.45));
-    key.position.set(lerp(-0.95, -0.2, inn) - 1.2 * out, 0.1015 + 0.006, lerp(-0.6, -0.16, inn) - 0.5 * out); key.rotation.y = 0.7 + 1.5 * (1 - inn);
-    const kh = win(t, K.llaves + 0.1, 0.7) * (1 - win(t, K.corta + 0.05, 1.0)); key.userData.m.emissiveIntensity = 2.0 * kh; }
+    key.position.set(lerp(-0.95, -0.24, inn) - 1.2 * out, 0.1015 + 0.006, lerp(-0.6, -0.06, inn) - 0.5 * out); key.rotation.y = 0.7 + 1.5 * (1 - inn);
+    const kh = win(t, K.llaves + 0.1, 0.7) * (1 - win(t, K.corta + 0.05, 1.0)); key.userData.m.emissiveIntensity = 4.0 * kh; }
   // ---- energía, pings, paquetes, USB
   energyAt(t); packetsAt(t);
   const ub = S.usb, uk = env(t, K.tu15 - 0.1, END - 1.3, 0.35, 0.4); ub.visible = uk > 0.01;
-  if (ub.visible) { ub.position.set(-0.68, 0.45 + 0.03 * Math.sin(t * 2), 0.35); ub.rotation.set(0.15, 0.6 + 0.2 * Math.sin(t * 0.8), -0.25); ub.scale.setScalar(Math.max(1e-3, uk)); }
+  if (ub.visible) { ub.position.set(-0.68, 0.45 + 0.03 * Math.sin(t * 2), 0.35); ub.rotation.set(0.15, 0.6 + 0.2 * Math.sin(t * 0.8), -0.25); ub.scale.setScalar(Math.max(1e-3, 1.7 * uk)); }
 }
