@@ -6,6 +6,7 @@
 
 tiempos.json: [{text, start, end, words: [{w, start, end}]}] (ver projects/cobertura/ajustar_voz.py).
 key:   {nº de frase (1..): ["palabra", ...]}   palabras clave (sin signos, minúsculas); si son seguidas, un solo recuadro
+       (o {nº de frase: {"palabra": "#RRGGBB"}} con style='accent': cada palabra clave en su color)
 emoji: {(nº de frase, "palabra"): "🛰️"}         emoji que aparece justo después de esa palabra
 """
 import os
@@ -16,7 +17,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-from engine.fin_draw import blend, paste, prog, eo, eback, clamp, font, text
+from engine.fin_draw import blend, paste, prog, eo, eback, clamp, font, text, hex_bgr
 
 EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
 
@@ -85,8 +86,11 @@ class Subs:
         self.chunks = []
         for li, ln in enumerate(lines, 1):
             ws = [dict(w) for w in ln["words"]]
+            kk = key.get(li, [])
             for w in ws:
-                w["key"] = norm(w["w"]) in key.get(li, [])
+                w["key"] = norm(w["w"]) in kk
+                # key[li] también puede ser {palabra: "#RRGGBB"}: cada palabra clave con su color
+                w["kcol"] = hex_bgr(kk[norm(w["w"])]) if isinstance(kk, dict) and w["key"] else None
                 w["emoji"] = emoji.get((li, norm(w["w"])))
             cur = []
             for i, w in enumerate(ws):
@@ -154,7 +158,7 @@ class Subs:
             if t < w["start"] - 0.05:
                 continue
             p = prog(t, w["start"] - 0.05, 0.16)
-            col = self.accent if (self.style == 'accent' and w["key"]) else None
+            col = (w.get("kcol") or self.accent) if (self.style == 'accent' and w["key"]) else None
             rgb, a, pad = word_sprite(w["w"], self.size, self.stroke, col)
             k = 0.72 + 0.28 * eback(p)
             paste(img, (rgb, a), x + wid / 2, y, alpha * fade * clamp(p * 2.5), scale=k)

@@ -1,0 +1,1042 @@
+[
+ {
+  "text": "Casi cinco de cada diez ofertas de trabajo en España piden FP. La carrera, solo dos.",
+  "start": 0.0,
+  "end": 4.974,
+  "words": [
+   {
+    "w": "Casi",
+    "start": 0.0,
+    "end": 0.348
+   },
+   {
+    "w": "cinco",
+    "start": 0.348,
+    "end": 0.626
+   },
+   {
+    "w": "de",
+    "start": 0.626,
+    "end": 0.765
+   },
+   {
+    "w": "cada",
+    "start": 0.765,
+    "end": 0.974
+   },
+   {
+    "w": "diez",
+    "start": 0.974,
+    "end": 1.252
+   },
+   {
+    "w": "ofertas",
+    "start": 1.252,
+    "end": 1.6
+   },
+   {
+    "w": "de",
+    "start": 1.6,
+    "end": 1.67
+   },
+   {
+    "w": "trabajo",
+    "start": 1.67,
+    "end": 1.948
+   },
+   {
+    "w": "en",
+    "start": 1.948,
+    "end": 2.087
+   },
+   {
+    "w": "España",
+    "start": 2.087,
+    "end": 2.548
+   },
+   {
+    "w": "piden",
+    "start": 2.548,
+    "end": 2.939
+   },
+   {
+    "w": "FP.",
+    "start": 2.939,
+    "end": 3.774
+   },
+   {
+    "w": "La",
+    "start": 3.774,
+    "end": 3.904
+   },
+   {
+    "w": "carrera,",
+    "start": 3.904,
+    "end": 4.435
+   },
+   {
+    "w": "solo",
+    "start": 4.435,
+    "end": 4.748
+   },
+   {
+    "w": "dos.",
+    "start": 4.748,
+    "end": 4.974
+   }
+  ]
+ },
+ {
+  "text": "Y aun así, hay ingenieros informáticos que dicen que uno de FP nunca estará a su nivel.",
+  "start": 5.165,
+  "end": 9.687,
+  "words": [
+   {
+    "w": "Y",
+    "start": 5.165,
+    "end": 5.31
+   },
+   {
+    "w": "aun",
+    "start": 5.31,
+    "end": 5.487
+   },
+   {
+    "w": "así,",
+    "start": 5.487,
+    "end": 5.887
+   },
+   {
+    "w": "hay",
+    "start": 5.887,
+    "end": 6.043
+   },
+   {
+    "w": "ingenieros",
+    "start": 6.043,
+    "end": 6.6
+   },
+   {
+    "w": "informáticos",
+    "start": 6.6,
+    "end": 7.157
+   },
+   {
+    "w": "que",
+    "start": 7.157,
+    "end": 7.296
+   },
+   {
+    "w": "dicen",
+    "start": 7.296,
+    "end": 7.574
+   },
+   {
+    "w": "que",
+    "start": 7.574,
+    "end": 7.713
+   },
+   {
+    "w": "uno",
+    "start": 7.713,
+    "end": 7.922
+   },
+   {
+    "w": "de",
+    "start": 7.922,
+    "end": 8.061
+   },
+   {
+    "w": "FP",
+    "start": 8.061,
+    "end": 8.617
+   },
+   {
+    "w": "nunca",
+    "start": 8.617,
+    "end": 8.896
+   },
+   {
+    "w": "estará",
+    "start": 8.896,
+    "end": 9.243
+   },
+   {
+    "w": "a",
+    "start": 9.243,
+    "end": 9.313
+   },
+   {
+    "w": "su",
+    "start": 9.313,
+    "end": 9.522
+   },
+   {
+    "w": "nivel.",
+    "start": 9.522,
+    "end": 9.687
+   }
+  ]
+ },
+ {
+  "text": "¿Tienen razón? Al final te lo digo… y a un bando no le va a gustar.",
+  "start": 10.009,
+  "end": 13.704,
+  "words": [
+   {
+    "w": "¿Tienen",
+    "start": 10.009,
+    "end": 10.261
+   },
+   {
+    "w": "razón?",
+    "start": 10.261,
+    "end": 10.983
+   },
+   {
+    "w": "Al",
+    "start": 10.983,
+    "end": 11.104
+   },
+   {
+    "w": "final",
+    "start": 11.104,
+    "end": 11.383
+   },
+   {
+    "w": "te",
+    "start": 11.383,
+    "end": 11.522
+   },
+   {
+    "w": "lo",
+    "start": 11.522,
+    "end": 11.661
+   },
+   {
+    "w": "digo…",
+    "start": 11.661,
+    "end": 12.191
+   },
+   {
+    "w": "y",
+    "start": 12.191,
+    "end": 12.27
+   },
+   {
+    "w": "a",
+    "start": 12.27,
+    "end": 12.365
+   },
+   {
+    "w": "un",
+    "start": 12.365,
+    "end": 12.504
+   },
+   {
+    "w": "bando",
+    "start": 12.504,
+    "end": 12.922
+   },
+   {
+    "w": "no",
+    "start": 12.922,
+    "end": 13.061
+   },
+   {
+    "w": "le",
+    "start": 13.061,
+    "end": 13.2
+   },
+   {
+    "w": "va",
+    "start": 13.2,
+    "end": 13.339
+   },
+   {
+    "w": "a",
+    "start": 13.339,
+    "end": 13.409
+   },
+   {
+    "w": "gustar.",
+    "start": 13.409,
+    "end": 13.704
+   }
+  ]
+ },
+ {
+  "text": "Los de FP dicen: dos años, prácticas en empresa y a trabajar. Vosotros, cuatro años de teoría.",
+  "start": 13.861,
+  "end": 19.391,
+  "words": [
+   {
+    "w": "Los",
+    "start": 13.861,
+    "end": 13.948
+   },
+   {
+    "w": "de",
+    "start": 13.948,
+    "end": 14.087
+   },
+   {
+    "w": "FP",
+    "start": 14.087,
+    "end": 14.574
+   },
+   {
+    "w": "dicen:",
+    "start": 14.574,
+    "end": 15.148
+   },
+   {
+    "w": "dos",
+    "start": 15.148,
+    "end": 15.417
+   },
+   {
+    "w": "años,",
+    "start": 15.417,
+    "end": 15.826
+   },
+   {
+    "w": "prácticas",
+    "start": 15.826,
+    "end": 16.261
+   },
+   {
+    "w": "en",
+    "start": 16.261,
+    "end": 16.4
+   },
+   {
+    "w": "empresa",
+    "start": 16.4,
+    "end": 16.748
+   },
+   {
+    "w": "y",
+    "start": 16.748,
+    "end": 16.957
+   },
+   {
+    "w": "a",
+    "start": 16.957,
+    "end": 17.096
+   },
+   {
+    "w": "trabajar.",
+    "start": 17.096,
+    "end": 17.696
+   },
+   {
+    "w": "Vosotros,",
+    "start": 17.696,
+    "end": 18.287
+   },
+   {
+    "w": "cuatro",
+    "start": 18.287,
+    "end": 18.643
+   },
+   {
+    "w": "años",
+    "start": 18.643,
+    "end": 18.852
+   },
+   {
+    "w": "de",
+    "start": 18.852,
+    "end": 18.991
+   },
+   {
+    "w": "teoría.",
+    "start": 18.991,
+    "end": 19.391
+   }
+  ]
+ },
+ {
+  "text": "Y los de la carrera responden: sabéis usar herramientas, pero no entendéis lo que hay debajo.",
+  "start": 19.67,
+  "end": 23.913,
+  "words": [
+   {
+    "w": "Y",
+    "start": 19.67,
+    "end": 19.728
+   },
+   {
+    "w": "los",
+    "start": 19.728,
+    "end": 19.8
+   },
+   {
+    "w": "de",
+    "start": 19.8,
+    "end": 19.939
+   },
+   {
+    "w": "la",
+    "start": 19.939,
+    "end": 20.009
+   },
+   {
+    "w": "carrera",
+    "start": 20.009,
+    "end": 20.426
+   },
+   {
+    "w": "responden:",
+    "start": 20.426,
+    "end": 21.2
+   },
+   {
+    "w": "sabéis",
+    "start": 21.2,
+    "end": 21.548
+   },
+   {
+    "w": "usar",
+    "start": 21.548,
+    "end": 21.826
+   },
+   {
+    "w": "herramientas,",
+    "start": 21.826,
+    "end": 22.4
+   },
+   {
+    "w": "pero",
+    "start": 22.4,
+    "end": 22.53
+   },
+   {
+    "w": "no",
+    "start": 22.53,
+    "end": 22.739
+   },
+   {
+    "w": "entendéis",
+    "start": 22.739,
+    "end": 23.226
+   },
+   {
+    "w": "lo",
+    "start": 23.226,
+    "end": 23.296
+   },
+   {
+    "w": "que",
+    "start": 23.296,
+    "end": 23.435
+   },
+   {
+    "w": "hay",
+    "start": 23.435,
+    "end": 23.643
+   },
+   {
+    "w": "debajo.",
+    "start": 23.643,
+    "end": 23.913
+   }
+  ]
+ },
+ {
+  "text": "Vamos a los datos.",
+  "start": 24.209,
+  "end": 25.052,
+  "words": [
+   {
+    "w": "Vamos",
+    "start": 24.209,
+    "end": 24.452
+   },
+   {
+    "w": "a",
+    "start": 24.452,
+    "end": 24.591
+   },
+   {
+    "w": "los",
+    "start": 24.591,
+    "end": 24.73
+   },
+   {
+    "w": "datos.",
+    "start": 24.73,
+    "end": 25.052
+   }
+  ]
+ },
+ {
+  "text": "Para programar en España, la ley no te exige ningún título: la Ingeniería Informática ni siquiera es una profesión regulada. Industrial o Teleco, sí.",
+  "start": 25.27,
+  "end": 32.922,
+  "words": [
+   {
+    "w": "Para",
+    "start": 25.27,
+    "end": 25.374
+   },
+   {
+    "w": "programar",
+    "start": 25.374,
+    "end": 25.791
+   },
+   {
+    "w": "en",
+    "start": 25.791,
+    "end": 25.93
+   },
+   {
+    "w": "España,",
+    "start": 25.93,
+    "end": 26.47
+   },
+   {
+    "w": "la",
+    "start": 26.47,
+    "end": 26.557
+   },
+   {
+    "w": "ley",
+    "start": 26.557,
+    "end": 26.835
+   },
+   {
+    "w": "no",
+    "start": 26.835,
+    "end": 26.974
+   },
+   {
+    "w": "te",
+    "start": 26.974,
+    "end": 27.113
+   },
+   {
+    "w": "exige",
+    "start": 27.113,
+    "end": 27.53
+   },
+   {
+    "w": "ningún",
+    "start": 27.53,
+    "end": 27.878
+   },
+   {
+    "w": "título:",
+    "start": 27.878,
+    "end": 28.426
+   },
+   {
+    "w": "la",
+    "start": 28.426,
+    "end": 28.513
+   },
+   {
+    "w": "Ingeniería",
+    "start": 28.513,
+    "end": 29.07
+   },
+   {
+    "w": "Informática",
+    "start": 29.07,
+    "end": 29.626
+   },
+   {
+    "w": "ni",
+    "start": 29.626,
+    "end": 29.765
+   },
+   {
+    "w": "siquiera",
+    "start": 29.765,
+    "end": 30.183
+   },
+   {
+    "w": "es",
+    "start": 30.183,
+    "end": 30.322
+   },
+   {
+    "w": "una",
+    "start": 30.322,
+    "end": 30.461
+   },
+   {
+    "w": "profesión",
+    "start": 30.461,
+    "end": 30.878
+   },
+   {
+    "w": "regulada.",
+    "start": 30.878,
+    "end": 31.626
+   },
+   {
+    "w": "Industrial",
+    "start": 31.626,
+    "end": 32.07
+   },
+   {
+    "w": "o",
+    "start": 32.07,
+    "end": 32.209
+   },
+   {
+    "w": "Teleco,",
+    "start": 32.209,
+    "end": 32.835
+   },
+   {
+    "w": "sí.",
+    "start": 32.835,
+    "end": 32.922
+   }
+  ]
+ },
+ {
+  "text": "Punto para FP.",
+  "start": 33.13,
+  "end": 33.983,
+  "words": [
+   {
+    "w": "Punto",
+    "start": 33.13,
+    "end": 33.365
+   },
+   {
+    "w": "para",
+    "start": 33.365,
+    "end": 33.643
+   },
+   {
+    "w": "FP.",
+    "start": 33.643,
+    "end": 33.983
+   }
+  ]
+ },
+ {
+  "text": "Pero en las oposiciones, los puestos de informática del grupo A exigen carrera. Con FP, como mucho, el grupo B.",
+  "start": 34.165,
+  "end": 40.078,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 34.165,
+    "end": 34.287
+   },
+   {
+    "w": "en",
+    "start": 34.287,
+    "end": 34.357
+   },
+   {
+    "w": "las",
+    "start": 34.357,
+    "end": 34.565
+   },
+   {
+    "w": "oposiciones,",
+    "start": 34.565,
+    "end": 35.261
+   },
+   {
+    "w": "los",
+    "start": 35.261,
+    "end": 35.4
+   },
+   {
+    "w": "puestos",
+    "start": 35.4,
+    "end": 35.817
+   },
+   {
+    "w": "de",
+    "start": 35.817,
+    "end": 35.957
+   },
+   {
+    "w": "informática",
+    "start": 35.957,
+    "end": 36.374
+   },
+   {
+    "w": "del",
+    "start": 36.374,
+    "end": 36.513
+   },
+   {
+    "w": "grupo",
+    "start": 36.513,
+    "end": 36.861
+   },
+   {
+    "w": "A",
+    "start": 36.861,
+    "end": 37.078
+   },
+   {
+    "w": "exigen",
+    "start": 37.078,
+    "end": 37.565
+   },
+   {
+    "w": "carrera.",
+    "start": 37.565,
+    "end": 38.226
+   },
+   {
+    "w": "Con",
+    "start": 38.226,
+    "end": 38.527
+   },
+   {
+    "w": "FP,",
+    "start": 38.527,
+    "end": 38.896
+   },
+   {
+    "w": "como",
+    "start": 38.896,
+    "end": 39.104
+   },
+   {
+    "w": "mucho,",
+    "start": 39.104,
+    "end": 39.452
+   },
+   {
+    "w": "el",
+    "start": 39.452,
+    "end": 39.591
+   },
+   {
+    "w": "grupo",
+    "start": 39.591,
+    "end": 39.939
+   },
+   {
+    "w": "B.",
+    "start": 39.939,
+    "end": 40.078
+   }
+  ]
+ },
+ {
+  "text": "Y sin carrera no hay máster universitario.",
+  "start": 40.296,
+  "end": 42.313,
+  "words": [
+   {
+    "w": "Y",
+    "start": 40.296,
+    "end": 40.405
+   },
+   {
+    "w": "sin",
+    "start": 40.405,
+    "end": 40.539
+   },
+   {
+    "w": "carrera",
+    "start": 40.539,
+    "end": 41.026
+   },
+   {
+    "w": "no",
+    "start": 41.026,
+    "end": 41.165
+   },
+   {
+    "w": "hay",
+    "start": 41.165,
+    "end": 41.304
+   },
+   {
+    "w": "máster",
+    "start": 41.304,
+    "end": 41.722
+   },
+   {
+    "w": "universitario.",
+    "start": 41.722,
+    "end": 42.313
+   }
+  ]
+ },
+ {
+  "text": "Punto para la carrera.",
+  "start": 42.496,
+  "end": 43.417,
+  "words": [
+   {
+    "w": "Punto",
+    "start": 42.496,
+    "end": 42.809
+   },
+   {
+    "w": "para",
+    "start": 42.809,
+    "end": 43.017
+   },
+   {
+    "w": "la",
+    "start": 43.017,
+    "end": 43.087
+   },
+   {
+    "w": "carrera.",
+    "start": 43.087,
+    "end": 43.417
+   }
+  ]
+ },
+ {
+  "text": "Entonces, ¿quién tiene razón?",
+  "start": 43.661,
+  "end": 45.191,
+  "words": [
+   {
+    "w": "Entonces,",
+    "start": 43.661,
+    "end": 44.322
+   },
+   {
+    "w": "¿quién",
+    "start": 44.322,
+    "end": 44.557
+   },
+   {
+    "w": "tiene",
+    "start": 44.557,
+    "end": 44.904
+   },
+   {
+    "w": "razón?",
+    "start": 44.904,
+    "end": 45.191
+   }
+  ]
+ },
+ {
+  "text": "Para empezar a trabajar antes, FP. Para tener más puertas abiertas, carrera.",
+  "start": 45.322,
+  "end": 49.183,
+  "words": [
+   {
+    "w": "Para",
+    "start": 45.322,
+    "end": 45.466
+   },
+   {
+    "w": "empezar",
+    "start": 45.466,
+    "end": 45.722
+   },
+   {
+    "w": "a",
+    "start": 45.722,
+    "end": 45.861
+   },
+   {
+    "w": "trabajar",
+    "start": 45.861,
+    "end": 46.209
+   },
+   {
+    "w": "antes,",
+    "start": 46.209,
+    "end": 46.591
+   },
+   {
+    "w": "FP.",
+    "start": 46.591,
+    "end": 47.235
+   },
+   {
+    "w": "Para",
+    "start": 47.235,
+    "end": 47.409
+   },
+   {
+    "w": "tener",
+    "start": 47.409,
+    "end": 47.687
+   },
+   {
+    "w": "más",
+    "start": 47.687,
+    "end": 47.896
+   },
+   {
+    "w": "puertas",
+    "start": 47.896,
+    "end": 48.243
+   },
+   {
+    "w": "abiertas,",
+    "start": 48.243,
+    "end": 48.809
+   },
+   {
+    "w": "carrera.",
+    "start": 48.809,
+    "end": 49.183
+   }
+  ]
+ },
+ {
+  "text": "Y la jugada maestra: las dos. Primero FP, y luego la carrera sin selectividad y con medio curso convalidado.",
+  "start": 49.391,
+  "end": 55.522,
+  "words": [
+   {
+    "w": "Y",
+    "start": 49.391,
+    "end": 49.462
+   },
+   {
+    "w": "la",
+    "start": 49.462,
+    "end": 49.548
+   },
+   {
+    "w": "jugada",
+    "start": 49.548,
+    "end": 49.965
+   },
+   {
+    "w": "maestra:",
+    "start": 49.965,
+    "end": 50.67
+   },
+   {
+    "w": "las",
+    "start": 50.67,
+    "end": 50.878
+   },
+   {
+    "w": "dos.",
+    "start": 50.878,
+    "end": 51.417
+   },
+   {
+    "w": "Primero",
+    "start": 51.417,
+    "end": 51.791
+   },
+   {
+    "w": "FP,",
+    "start": 51.791,
+    "end": 52.4
+   },
+   {
+    "w": "y",
+    "start": 52.4,
+    "end": 52.491
+   },
+   {
+    "w": "luego",
+    "start": 52.491,
+    "end": 52.704
+   },
+   {
+    "w": "la",
+    "start": 52.704,
+    "end": 52.843
+   },
+   {
+    "w": "carrera",
+    "start": 52.843,
+    "end": 53.261
+   },
+   {
+    "w": "sin",
+    "start": 53.261,
+    "end": 53.4
+   },
+   {
+    "w": "selectividad",
+    "start": 53.4,
+    "end": 54.026
+   },
+   {
+    "w": "y",
+    "start": 54.026,
+    "end": 54.165
+   },
+   {
+    "w": "con",
+    "start": 54.165,
+    "end": 54.304
+   },
+   {
+    "w": "medio",
+    "start": 54.304,
+    "end": 54.652
+   },
+   {
+    "w": "curso",
+    "start": 54.652,
+    "end": 55.0
+   },
+   {
+    "w": "convalidado.",
+    "start": 55.0,
+    "end": 55.522
+   }
+  ]
+ },
+ {
+  "text": "¿Equipo FP o equipo carrera? Defiéndelo en comentarios.",
+  "start": 55.739,
+  "end": 58.944,
+  "words": [
+   {
+    "w": "¿Equipo",
+    "start": 55.739,
+    "end": 56.061
+   },
+   {
+    "w": "FP",
+    "start": 56.061,
+    "end": 56.678
+   },
+   {
+    "w": "o",
+    "start": 56.678,
+    "end": 56.757
+   },
+   {
+    "w": "equipo",
+    "start": 56.757,
+    "end": 57.174
+   },
+   {
+    "w": "carrera?",
+    "start": 57.174,
+    "end": 57.787
+   },
+   {
+    "w": "Defiéndelo",
+    "start": 57.787,
+    "end": 58.34
+   },
+   {
+    "w": "en",
+    "start": 58.34,
+    "end": 58.474
+   },
+   {
+    "w": "comentarios.",
+    "start": 58.474,
+    "end": 58.944
+   }
+  ]
+ }
+]
