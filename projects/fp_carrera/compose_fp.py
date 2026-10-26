@@ -42,7 +42,7 @@ def at(word, k=1, line=None):
 T, A, WH = "#62E3D4", "#FFB547", "#EEF2F6"
 KEY = {1: {"cinco": T, "fp": T, "carrera": A, "dos": A}, 2: {"fp": T, "nivel": A}, 3: {"bando": WH}, 4: {"fp": T, "dos": T, "prácticas": T, "cuatro": A, "teoría": A},
        5: {"carrera": A, "herramientas": T, "debajo": A}, 6: {"datos": WH}, 7: {"ningún": T, "título": T, "regulada": A}, 8: {"fp": T},
-       9: {"carrera": A, "fp": T}, 10: {"máster": A}, 11: {"carrera": A}, 12: {"razón": WH}, 13: {"fp": T, "carrera": A}, 14: {"dos": WH, "fp": T, "carrera": A, "convalidado": T},
+       9: {"carrera": A, "fp": T, "a": A, "b": T}, 10: {"máster": A}, 11: {"carrera": A}, 12: {"razón": WH}, 13: {"fp": T, "carrera": A}, 14: {"dos": WH, "fp": T, "carrera": A, "convalidado": T},
        15: {"fp": T, "carrera": A, "comentarios": WH}}
 SUBS = None
 
