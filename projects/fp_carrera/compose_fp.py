@@ -56,7 +56,7 @@ def compose(fi):
 
 def init():
     global SUBS
-    SUBS = Subs(LINES, KEY, {}, y=330, size=82, style="accent", accent=hex_bgr(WH))
+    SUBS = Subs(LINES, KEY, {}, y=330, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")
 
 
 # ---------------------------------------------------------------- efectos sintetizados

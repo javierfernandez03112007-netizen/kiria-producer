@@ -151,12 +151,15 @@ def rgba(hexc, a=1.0):
 
 # ---------------------------------------------------------------- texto
 WEIGHTS = {"black": "Inter-Black.otf", "bold": "Inter-Bold.otf", "semi": "Inter-SemiBold.otf",
-           "med": "Inter-Medium.otf", "mono": "DejaVuSansMono-Bold.ttf"}
+           "med": "Inter-Medium.otf", "mono": "DejaVuSansMono-Bold.ttf", "impact": "impact.ttf"}
 
 
 @lru_cache(64)
 def font(weight, size):
-    return ImageFont.truetype(os.path.join(FONTS, WEIGHTS[weight]), size)
+    p = os.path.join(FONTS, WEIGHTS[weight])
+    if not os.path.exists(p) and weight == "impact":   # no se sube al repo (licencia): se baja de la fuente original
+        raise FileNotFoundError("falta engine/fonts/impact.ttf → python3 engine/fonts/get_impact.py")
+    return ImageFont.truetype(p, size)
 
 
 @lru_cache(2048)

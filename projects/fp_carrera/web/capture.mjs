@@ -25,6 +25,8 @@ const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=sw
 const PR = Number(process.env.PR || 1);   // PR=2 → 2160x3840 reales (4K vertical)
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: PR });
 await page.addInitScript(`window.PR = ${PR};`);
+if (process.env.COVER_T) await page.addInitScript(`window.COVER_T = ${Number(process.env.COVER_T)};`);
+if (process.env.COVER_CAM) await page.addInitScript(`window.COVER_CAM = [${process.env.COVER_CAM}];`);
 page.setDefaultTimeout(300000);
 page.on('console', m => { if (m.type() === 'error' || m.text().startsWith('ERROR')) console.log('[page]', m.text()); });
 page.on('pageerror', e => console.log('[pageerror]', e.message));

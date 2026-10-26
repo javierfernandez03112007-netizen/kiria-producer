@@ -24,5 +24,7 @@
 - Cambios negro↔blanco solo acercándose a un objeto blanco o negro; nunca una bola o círculo que crece.
 - Poco desenfoque. Figuras de ingeniería (cotas, despieces, solo aristas) mejor que gráficos al uso.
 - Subtítulos palabra a palabra (`engine/subs.py`): palabra clave en recuadro, emojis en gris.
+- Letra de los subtítulos: **Impact** (`Subs(..., face="impact")`, tamaño ≈ 96, contorno 8). No se sube al repo por licencia:
+  `python3 engine/fonts/get_impact.py` la baja del paquete oficial (necesita `apt-get install cabextract`).
 - 1080x1920, 30 fps, ≈ 60 s (o lo que pida la voz), bucle: el último fotograma enlaza con el primero.
 - Voz en español de España (ElevenLabs). Audio estéreo AAC.

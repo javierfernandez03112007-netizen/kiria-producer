@@ -987,10 +987,21 @@ window.renderAt = function (t) {
   drawFrame(t); hudAt(t);
   return true;
 };
-// portada: los dos podios, el de la carrera más alto, con el trofeo y la interrogación (sin HUD)
+// portada: los dos muñecos señalándose, el de la carrera en el podio alto, el trofeo con la interrogación en medio (sin HUD)
 window.renderCover = function () {
   const t = Number(window.COVER_T || 9.6); frame(t);
-  cam.fov = 32; cam.updateProjectionMatrix(); cam.position.set(1.15, 1.35, -1.2); cam.up.set(0, 1, 0); cam.lookAt(0.05, 0.95, -7); cam.updateMatrixWorld(); rigFollow(v3(0.05, 0.95, -7));
+  const A = S.arena.userData, C = window.COVER_CAM || [0, 1.45, -0.6, 0, 1.49, -7, 35.5];
+  // en makeDoll «shL» queda en +x local... al revés de lo que supone dollPose: aquí la pose se pone a mano
+  for (const [d, side] of [[A.dF, -1], [A.dC, 1]]) {
+    dollPose(d, side, t, 0, 0, 0); const J = d.userData.J, pt = side < 0 ? J.shR : J.shL, hang = side < 0 ? J.shL : J.shR;
+    pt.rotation.set(-0.2, 0, -side * 1.5); (side < 0 ? J.elR : J.elL).rotation.set(0, 0, 0);
+    hang.rotation.set(0, 0, side * 0.16); (side < 0 ? J.elL : J.elR).rotation.set(-0.25, 0, 0);
+    d.rotation.y = -side * (window.COVER_ROT || 0.7);
+  }
+  A.dC.userData.J.neck.rotation.x = 0.22;
+  A.tr.visible = true; A.tr.scale.setScalar(window.COVER_TS || 1.25); A.tr.position.y = window.COVER_TY || 1.05; A.tr.rotation.y = 0.4;
+  A.q.visible = true; A.q.scale.setScalar(0.75 * (window.COVER_TS || 1.25)); A.q.position.y = (window.COVER_TY || 1.05) + (window.COVER_QY || 0.78); A.q.rotation.y = 0;
+  cam.fov = C[6]; cam.updateProjectionMatrix(); cam.position.set(C[0], C[1], C[2]); cam.up.set(0, 1, 0); cam.lookAt(C[3], C[4], C[5]); cam.updateMatrixWorld(); rigFollow(v3(C[3], C[4], C[5]));
   if (window.camOverride) window.camOverride(cam, v3);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0;
   drawFrame(t); hudBegin();
