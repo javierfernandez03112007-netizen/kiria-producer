@@ -14,6 +14,8 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 5. **Combina dos** cuando se pueda (p. ej. 45 + 16): suele ser la versión más fuerte.
 6. **Re-hook a mitad de vídeo** (≈ 15–30 s): una segunda plantilla corta para reenganchar (16 y 35 funcionan muy bien).
 7. No repetir la misma fórmula en vídeos seguidos (ver «Hooks ya usados»).
+8. **Tensión antes que curiosidad**: un hook que enfrenta a dos bandos o rompe una creencia retiene más que uno que solo
+   despierta curiosidad (lección del vídeo de la carga sin cable).
 
 ## Las 45 plantillas
 
@@ -112,4 +114,5 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 | Informática vs Teleco | «¿Informática o Teleco?» | pregunta-duelo |
 | Dientes | «Te cepillas los dientes perfecto… y en el último segundo lo estropeas.» | ≈ 11 / 04 (lo haces mal sin saberlo) |
 | Industrial | «Ingeniería Industrial: acabas la carrera… y todavía no eres ingeniero industrial.» (el «Lo que nadie te cuenta de» del guion no salió en el audio) | 16 (re-hook 16 + 35) |
-| Carga sin cable | «Tu móvil habla con el cargador cada vez que lo apoyas.» | 02 (re-hook 16, cierre 04) |
+| Carga sin cable | «Tu móvil habla con el cargador cada vez que lo apoyas.» (retuvo poco: daba curiosidad pero no tensión) | 02 (re-hook 16, cierre 04) |
+| FP o carrera (informática) | «Para trabajar de programador en España, la ley no te exige ningún título. Ni carrera, ni FP.» | 16 (dato que rompe una creencia) + duelo con marcador; cierre «¿Equipo FP o equipo carrera?» |
