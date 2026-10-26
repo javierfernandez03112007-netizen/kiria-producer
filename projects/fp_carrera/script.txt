@@ -1,16 +1,15 @@
-Para trabajar de programador en España, la ley no te exige ningún título. Ni carrera, ni FP.
-Y aun así, FP o carrera es una guerra eterna. Al final te digo quién gana… y a un bando no le va a gustar.
+Casi cinco de cada diez ofertas de trabajo en España piden FP. La carrera, solo dos.
+Y aun así, hay ingenieros informáticos que dicen que uno de FP nunca estará a su nivel.
+¿Tienen razón? Al final te lo digo… y a un bando no le va a gustar.
 Los de FP dicen: dos años, prácticas en empresa y a trabajar. Vosotros, cuatro años de teoría.
 Y los de la carrera responden: sabéis usar herramientas, pero no entendéis lo que hay debajo.
-¿Quién tiene razón? Datos.
-De todas las ofertas de empleo en España, casi la mitad piden FP. Solo una de cada cinco pide carrera.
+Vamos a los datos.
+Para programar en España, la ley no te exige ningún título: la Ingeniería Informática ni siquiera es una profesión regulada. Industrial o Teleco, sí.
 Punto para FP.
 Pero en las oposiciones, los puestos de informática del grupo A exigen carrera. Con FP, como mucho, el grupo B.
 Y sin carrera no hay máster universitario.
 Punto para la carrera.
-Y ahora lo que escuece: la Ingeniería Informática ni siquiera es una profesión regulada. Industrial o Teleco, sí.
-Así que en la empresa privada, cada una pide lo que quiere.
-Entonces, ¿quién gana?
+Entonces, ¿quién tiene razón?
 Para empezar a trabajar antes, FP. Para tener más puertas abiertas, carrera.
 Y la jugada maestra: las dos. Primero FP, y luego la carrera sin selectividad y con medio curso convalidado.
 ¿Equipo FP o equipo carrera? Defiéndelo en comentarios.

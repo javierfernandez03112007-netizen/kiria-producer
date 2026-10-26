@@ -16,11 +16,14 @@
   3/2022 toda la FP es dual).
 - **«Cuatro años de teoría» / «sabéis usar herramientas, pero no entendéis lo que hay debajo»**: opiniones que se oyen en
   cada bando, puestas en su boca (no son datos).
-- **«De todas las ofertas de empleo en España, casi la mitad piden FP. Solo una de cada cinco pide carrera»**: informe
+- **«Casi cinco de cada diez ofertas de trabajo en España piden FP. La carrera, solo dos»** (hook): informe
   Infoempleo Adecco (edición 2025, ofertas de 2024): el 46,96 % de las ofertas piden FP y el 21,42 % titulación
   universitaria. The Objective (28-09-2025) https://theobjective.com/sociedad/2025-09-28/fp-ofertas-de-trabajo-espana/ ;
-  Forbes https://forbes.es/?p=799252 . Ojo: es el total de ofertas de todos los sectores, no solo informática (por eso en la
-  voz «de todas las ofertas de empleo en España»).
+  Forbes https://forbes.es/?p=799252 . Xataka https://www.xataka.com/empresas-y-economia/dato-muestra-desesperacion-mercado-laboral-conseguir-mano-obra-47-vacantes-piden-grado-fp
+  46,96 % → «casi cinco de cada diez»; 21,42 % → «dos de cada diez». Ojo: es el total de ofertas de todos los sectores,
+  no solo informática (por eso la voz dice «ofertas de trabajo en España», sin «de informática»).
+- **«Hay ingenieros informáticos que dicen que uno de FP nunca estará a su nivel»**: opinión que existe en el debate
+  (se presenta como lo que dicen algunos, no como dato).
 - **«En las oposiciones, los puestos del grupo A exigen carrera. Con FP, como mucho, el grupo B»**: Estatuto Básico del
   Empleado Público (RDLeg 5/2015), art. 76: grupo A (A1 y A2) título universitario de Grado; grupo B, Técnico Superior;
   C1, Bachiller o Técnico. En la AGE, Técnicos Auxiliares de Informática (TAI) es C1; los cuerpos de Gestión de Sistemas

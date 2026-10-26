@@ -115,4 +115,4 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 | Dientes | «Te cepillas los dientes perfecto… y en el último segundo lo estropeas.» | ≈ 11 / 04 (lo haces mal sin saberlo) |
 | Industrial | «Ingeniería Industrial: acabas la carrera… y todavía no eres ingeniero industrial.» (el «Lo que nadie te cuenta de» del guion no salió en el audio) | 16 (re-hook 16 + 35) |
 | Carga sin cable | «Tu móvil habla con el cargador cada vez que lo apoyas.» (retuvo poco: daba curiosidad pero no tensión) | 02 (re-hook 16, cierre 04) |
-| FP o carrera (informática) | «Para trabajar de programador en España, la ley no te exige ningún título. Ni carrera, ni FP.» | 16 (dato que rompe una creencia) + duelo con marcador; cierre «¿Equipo FP o equipo carrera?» |
+| FP o carrera (informática) | «Casi cinco de cada diez ofertas de trabajo en España piden FP. La carrera, solo dos.» + «hay ingenieros que dicen que uno de FP nunca estará a su nivel» | dato a pelo «X de cada Y» + duelo con marcador; cierre «¿Equipo FP o equipo carrera?» |
