@@ -1,7 +1,7 @@
-# Fuentes — Bomberados IA: «¿Clase B o clase F?» (vídeo para la marca)
+# Fuentes — Bomberados IA: «¿Verdadero o falso?» (vídeo para la marca)
 
-- **«Fuego de aceite en una sartén: ¿clase B o clase F?» / «los líquidos son clase B… el aceite de cocina tiene clase
-  propia: la F»**: norma UNE-EN 2:1994/A1:2005 (clasificación de los fuegos; la vigente en España, a la que remite el
+- **«Un fuego de aceite en una sartén es de clase B. ¿Verdadero o falso?» → «Falso… los líquidos son clase B… el
+  aceite de cocina tiene clase propia: la F»**: norma UNE-EN 2:1994/A1:2005 (clasificación de los fuegos; la vigente en España, a la que remite el
   Reglamento de instalaciones de protección contra incendios, RD 513/2017). Clase B: fuegos de líquidos o sólidos
   licuables (gasolina, alcohol…). Clase C: gases (butano, propano, gas natural). Clase F, añadida en la modificación
   A1: fuegos de aceites y grasas vegetales o animales en aparatos o utensilios de cocina.
