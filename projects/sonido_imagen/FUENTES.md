@@ -10,8 +10,21 @@
   Ingeniero Técnico de Telecomunicación, especialidad Sonido e Imagen. UC3M https://uc3m.es/grado/sonido-imagen ;
   UPV https://www.upv.es/titulaciones/GISTSI/index-es.html ; memoria UMA
   https://www.uma.es/media/files/MV_Ingenier%C3%ADa_Sonido_e_Imagen_26-02-2025.pdf
-- **«Crees que es para poner música en conciertos»**: idea que se oye (se confunde con el técnico de sonido de FP); es
-  una creencia, no un dato.
+- **«La carrera que muchos de Teleco llaman "la Teleco fácil"» / «cuatro años para acabar enchufando cables» (los de
+  FP) / «sin nosotros, no veríais ni una serie» (Sonido e Imagen)**: piques que se oyen en cada bando, puestos en su boca
+  (opiniones, no datos).
+- **«En la Politécnica de Madrid, Teleco pidió un nueve con cuatro. Sonido e Imagen, un ocho»**: notas de corte
+  oficiales UPM 2025-26 (grupo 1, PAU): Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación (ETSIT,
+  código 0313) 9,408 https://admision.upm.es/gsfs/SFS34147 ; Grado en Ingeniería de Sonido e Imagen (ETSIST) 8,066
+  https://admision.upm.es/gsfs/SFS34945 (también en el PDF de notas UPM 2025-26). Se compara el grado simple de Teleco
+  (la doble vía grado + máster pidió 11,589 y no se usa).
+- **«La nota de corte mide cuánta gente la pide, no lo difícil que es»**: la nota de corte es la del último admitido
+  (oferta de plazas frente a demanda), no una medida de la dificultad de la carrera.
+- **«Las dos dan la misma profesión, ingeniero técnico de telecomunicación, y el mismo máster»**: los dos grados habilitan
+  para Ingeniero Técnico de Telecomunicación (Orden CIN/352/2009) y dan acceso directo, sin complementos, al Máster
+  Universitario en Ingeniería de Telecomunicación (Orden CIN/355/2009), que habilita para Ingeniero de Telecomunicación.
+  UAM https://www.uam.es/uam/master-universitario-ingenieria-telecomunicacion-eur-ace ; UAH (requisitos de admisión).
+- **«Teleco fácil, no. Teleco con apellido»**: veredicto propio a partir de lo anterior (opinión del vídeo).
 - **Asignaturas** (base, señales, acústica, electroacústica, vídeo y televisión): plan de la UPM (álgebra, cálculo,
   circuitos, electrónica, programación, electromagnetismo; luego audio y vídeo) https://www.upm.es/gsfs/SFS48262 ;
   UCAM (Acústica obligatoria de 2.º, Electroacústica en la mención de Sonido e Imagen)
