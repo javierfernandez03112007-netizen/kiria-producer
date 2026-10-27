@@ -3,10 +3,8 @@ const wpos = (o, v = new THREE.Vector3()) => o.getWorldPosition(v);
 const popS = (t, t0, d = 0.35) => Math.max(1e-4, pop(t, t0, d));
 function loopT(t) { return t > END - 1.25 ? t - END : t; }      // al final, el principio otra vez (bucle)
 const wink = (t, t0, d) => { const u = (t - t0) / d; return u > 0 && u < 1 ? Math.pow(Math.sin(Math.PI * u), 0.7) : 0; };
-function blinkAt(t) {   // 0 abierto → 1 cerrado: guiño en «engañando», parpadeos lentos en «solo se guarda lo que se mueve»
-  let b = wink(t, K.enganando + 0.12, 0.34);
-  for (const t0 of [K.fotogramas + 0.1, K.guarda15 - 0.05, K.mueve + 0.05]) b = Math.max(b, wink(t, t0, 0.75));
-  return b;
+function blinkAt(t) {   // 0 abierto → 1 cerrado: guiño en «engañando»
+  return wink(t, K.enganando + 0.12, 0.34);
 }
 const _ec = new THREE.Color(), _m = new THREE.Matrix4(), _qq = new THREE.Quaternion(), _ee = new THREE.Euler(), _pp = new THREE.Vector3(), _one = new THREE.Vector3(1, 1, 1);
 function eyeAt(t) {
@@ -15,9 +13,9 @@ function eyeAt(t) {
   const burst = inLoop ? 0 : sm5(clamp((tt - K.borrado + 0.02) / 0.5)) * (1 - sm5(clamp((tt - K.notado + 0.05) / 0.45)));
   const gl = inLoop ? 0 : env(tt, -0.1, K.mas1 + 0.1, 0.05, 0.25);      // filas que tiemblan al principio (imagen «sospechosa»)
   const b = blinkAt(tt), bp = blinkAt(tt - 0.06);
-  const mv = env(t, K.fotogramas - 0.15, K.sonido16 - 0.1, 0.3, 0.35);   // solo lo que se mueve: el resto se apaga
+  const mv = 0;
   const dimS = env(t, K.sonido16 - 0.35, K.ahora + 0.2, 0.4, 0.5);        // detrás del espectro, más oscuro
-  const split = t > K.luz - 0.15 && t < K.fotogramas ? sm5(clamp((t - K.luz + 0.15) / 0.6)) * (1 - sm5(clamp((t - K.menos - 0.35) / 0.5))) : 0;
+  const split = t > K.luz - 0.15 && t < K.sonido16 ? sm5(clamp((t - K.luz + 0.15) / 0.6)) * (1 - sm5(clamp((t - K.menos - 0.35) / 0.5))) : 0;
   const N = EYE_NX * EYE_NY, open = E.L.open, skin = E.L.skin; let na = 0;
   E.vox.visible = split < 0.001; E.luma.visible = split >= 0.001; E.chroma.visible = split > 0.12;
   const target = split >= 0.001 ? E.luma : E.vox;
@@ -57,22 +55,16 @@ function duelAt(t) {
   U.sp.userData.rings.forEach((r, k) => { const u = (t * 1.1 + k / 3) % 1; r.scale.setScalar(1 + u * 1.6); r.position.z = 0.16 + u * 0.35; r.material.opacity = (1 - u) * 0.75 * (0.4 + vo); });
   U.ln.rotation.y = Math.sin(t * 0.8) * 0.35 - 0.2; U.ln.position.y = 1.02 + 0.03 * Math.sin(t * 2.1);
   // quién está hablando: el aro de su podio brilla más
-  const hiS = env(t, K.borra, K.teleco2, 0.2, 0.3) + env(t, K.sonido6 - 0.1, K.asi, 0.2, 0.3), hiT = env(t, K.teleco2 - 0.05, K.tienen3, 0.2, 0.3), hiF = env(t, K.fp5 - 0.1, K.sonido6, 0.2, 0.3);
-  U.pS.userData.rim.material.color.copy(CTe).multiplyScalar(0.6 + 1.6 * clamp(hiS)); U.pT.userData.rim.material.color.copy(CAm).multiplyScalar(0.6 + 1.6 * hiT); U.pF.userData.rim.material.color.copy(CMg).multiplyScalar(0.6 + 1.6 * hiF);
+  const hiS = env(t, K.borra, K.teleco2, 0.2, 0.3) + env(t, K.sonido6 - 0.1, K.asi, 0.2, 0.3), hiT = env(t, K.teleco2 - 0.05, K.municion + 0.3, 0.2, 0.3);
+  U.pS.userData.rim.material.color.copy(CTe).multiplyScalar(0.6 + 1.6 * clamp(hiS)); U.pT.userData.rim.material.color.copy(CAm).multiplyScalar(0.6 + 1.6 * hiT);
   // barras de notas de corte (0,16 m por punto)
   // suben al decir cada nombre; se esconden mientras hablan FP y la tele, y vuelven para el veredicto
-  const bv = (t > K.municion - 0.3 && t < K.rematan + 0.6) || (t > K.entonces - 0.4 && t < K.dos12 + 0.2); U.bT.visible = U.bS.visible = bv;
-  if (bv) { const fo = t < K.entonces - 0.4 ? 1 - sm5(clamp((t - K.fp5) / 0.5)) : sm5(clamp((t - K.entonces + 0.4) / 0.6)) * (1 - sm5(clamp((t - K.dos12 + 0.2) / 0.4)));
-    const gT = t < K.entonces - 0.4 ? sm5(clamp((t - K.teleco4 + 0.1) / Math.max(0.5, K.cuatro4 - K.teleco4 + 0.2))) : 1, gS = t < K.entonces - 0.4 ? sm5(clamp((t - K.sonido4 + 0.1) / Math.max(0.5, K.ocho - K.sonido4 + 0.2))) : 1;
+  const bv = (t > K.municion - 0.3 && t < K.responde + 0.6) || (t > K.entonces - 0.4 && t < K.dos12 + 0.2); U.bT.visible = U.bS.visible = bv;
+  if (bv) { const fo = t < K.entonces - 0.4 ? 1 - sm5(clamp((t - K.sonido6 + 0.1) / 0.5)) : sm5(clamp((t - K.entonces + 0.4) / 0.6)) * (1 - sm5(clamp((t - K.dos12 + 0.2) / 0.4)));
+    const gT = t < K.entonces - 0.4 ? sm5(clamp((t - K.politecnica) / Math.max(0.5, K.cuatro4 - K.politecnica + 0.2))) : 1, gS = t < K.entonces - 0.4 ? sm5(clamp((t - K.sonido4 + 0.1) / Math.max(0.5, K.ocho - K.sonido4 + 0.2))) : 1;
     setBarH(U.bT, 9.408 * 0.16 * gT * fo); setBarH(U.bS, 8.066 * 0.16 * gS * fo);
-    U.bT.userData.top.visible = t > K.nueve && fo > 0.3; U.bS.userData.top.visible = t > K.ocho - 0.05 && fo > 0.3; }
-  // el cable de FP: se estira hasta el altavoz y salta la chispa
-  const ua = sm5(clamp((t - K.cuatro5) / Math.max(0.4, K.cables - K.cuatro5 + 0.15)));
-  U.cable.visible = t > K.cuatro5 - 0.05 && t < K.dos12; U.cable.userData.U.uA.value = ua;
-  const cp = U.curve.getPointAt(clamp(ua, 0, 1)), ct = U.curve.getTangentAt(clamp(ua, 0.001, 1));
-  U.pl.visible = U.cable.visible; U.pl.position.copy(cp); U.pl.quaternion.setFromUnitVectors(v3(0, 0, 1), ct.clone().normalize());
-  if (!U.cable.visible) { U.pl.position.set(0.05, 0.3, -0.95); }
-  const sk = t > K.cables + 0.1 ? Math.exp(-(t - K.cables - 0.1) * 6) : 0; U.spark.visible = sk > 0.02; U.spark.position.copy(U.curve.getPointAt(1)); U.spark.scale.setScalar(0.3 + sk * 1.6);
+    const crowdShot = t > K.nota - 0.1;   // en el plano del público las cifras quedarían bajo la cabecera
+    U.bT.userData.top.visible = t > K.nueve && fo > 0.3 && !crowdShot; U.bS.userData.top.visible = t > K.ocho - 0.05 && fo > 0.3 && !crowdShot; }
   // la tele: una serie… y sin Sonido e Imagen, sin señal
   const tvk = env(t, K.responde - 0.4, K.asi + 0.3, 0.35, 0.3); U.T.visible = tvk > 0.01; U.T.scale.setScalar(Math.max(1e-3, tvk));
   const off = t > K.veriais; U.T.userData.scr.material.map = off ? U.T.userData.nT : U.T.userData.sT; U.T.userData.off.visible = off;
@@ -96,7 +88,7 @@ function duelAt(t) {
 // ---------------------------------------------------------------- por dentro
 function insideAt(t) {
   const Z = S.inside, U = Z.userData; const vis = t > K.asi - 1.0 && t < K.entonces + 0.5; Z.visible = vis; if (!vis) return;
-  U.wave.userData.U.uA.value = sm5(clamp((t - K.senales + 0.05) / 0.9));
+  U.wave.userData.U.uA.value = eo(clamp((t - K.serie) / Math.max(0.9, K.senales - K.serie + 0.2)));
   const sg = sm5(clamp((t - K.convierten + 0.1) / 0.6));
   U.sv.forEach((s, i) => { const g = sm5(clamp(sg * 1.6 - i / U.sv.length * 0.6)), h = Math.abs(s.v) * g + 1e-3; _m.compose(_pp.set(s.x, 1.45 + Math.sign(s.v) * h / 2, 0), _qq.identity(), _one.set(1, h, 1)); U.samp.setMatrixAt(i, _m); });
   _one.set(1, 1, 1); U.samp.instanceMatrix.needsUpdate = true; U.samp.visible = sg > 0.01;

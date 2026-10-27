@@ -99,7 +99,7 @@ function buildEye() {
   luma.instanceMatrix.needsUpdate = chroma.instanceMatrix.needsUpdate = true; luma.instanceColor.needsUpdate = chroma.instanceColor.needsUpdate = true;
   // párpado: para cada columna, la y (en vóxeles) del borde superior abierto y del inferior
   const lidTop = [], lidBot = []; for (let ix = 0; ix < EYE_NX; ix++) { const x = ix * 10 + 5; lidTop.push(quadY(LID_P, x) / 10); lidBot.push(quadY(LOW_P, x) / 10); }
-  // flechas de movimiento (vectores) sobre los vóxeles que cambian al parpadear
+  // flechas de movimiento (vectores) sobre los vóxeles que cambian al parpadear (sin uso: la frase se quitó de la voz)
   const arrows = new THREE.InstancedMesh(new THREE.ConeGeometry(0.008, 0.03, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.6, 1.6), toneMapped: false }), 160);
   arrows.frustumCulled = false; arrows.count = 0; G.add(arrows);
   // marco fino alrededor de la imagen
@@ -205,21 +205,15 @@ function tv() {
 
 // ---------------------------------------------------------------- zona del duelo
 const DZ = v3(0, 0, -9);
-const DPOS = { tel: v3(-0.62, 0, 0), si: v3(0.62, 0, 0), fp: v3(0, 0, -0.95) };
+const DPOS = { tel: v3(-0.62, 0, 0), si: v3(0.62, 0, 0) };
 function buildDuel() {
   const Z = new THREE.Group(); Z.position.copy(DZ); scene.add(Z);
-  const pT = podium(AMB, 'TELECO'), pS = podium(TEA, 'SONIDO E IMAGEN'), pF = podium(MAG, 'FP', 0.24);
-  pT.position.copy(DPOS.tel); pS.position.copy(DPOS.si); pF.position.copy(DPOS.fp); Z.add(pT, pS, pF);
-  setPodiumH(pT, 0.3); setPodiumH(pS, 0.3); setPodiumH(pF, 0.22);
+  const pT = podium(AMB, 'TELECO'), pS = podium(TEA, 'SONIDO E IMAGEN');
+  pT.position.copy(DPOS.tel); pS.position.copy(DPOS.si); Z.add(pT, pS);
+  setPodiumH(pT, 0.3); setPodiumH(pS, 0.3);
   const tw = tower(AMB); tw.position.set(DPOS.tel.x, 0.3, 0); tw.scale.setScalar(0.95); Z.add(tw);
   const sp = speaker(TEA); sp.position.set(DPOS.si.x, 0.3, 0); sp.rotation.y = -0.25; Z.add(sp);
   const ln = lens(TEA); ln.position.set(DPOS.si.x, 1.05, 0.05); Z.add(ln);
-  const cl = coil(MAG); cl.position.set(DPOS.fp.x, 0.22, DPOS.fp.z); Z.add(cl);
-  const pl = plug(MAG); Z.add(pl);
-  // cable de FP hasta la parte de atrás del altavoz
-  const curve = new THREE.CatmullRomCurve3([v3(0.05, 0.3, -0.95), v3(0.12, 0.62, -0.75), v3(0.4, 0.75, -0.45), v3(0.58, 0.55, -0.28), v3(0.62, 0.48, -0.17)]);
-  const cable = growTube(curve, 0.011, plasticS(MAG, 0.35), 140, 8); Z.add(cable);
-  const spark = new THREE.Mesh(new THREE.SphereGeometry(0.05, 16, 12), basicGlow(0xffd0f0, 2)); Z.add(spark);
   // barras de notas de corte (UPM 2025-26) detrás de cada bando: 0,16 m por punto
   const bT = bar(AMB, '9,408', 'TELECO'), bS = bar(TEA, '8,066', 'SONIDO E IMAGEN');
   bT.position.set(-0.36, 0, -1.6); bS.position.set(0.36, 0, -1.6); Z.add(bT, bS);
@@ -227,8 +221,8 @@ function buildDuel() {
   const T = tv(); T.position.set(1.3, 0.62, 0.35); T.rotation.y = -0.55; Z.add(T);
   // público: cuánta gente pide cada carrera (ilustrativo)
   const mkCrowd = (n, col, cx) => { const m = new THREE.InstancedMesh(new THREE.CapsuleGeometry(0.026, 0.06, 3, 8), plasticS(col, 0.4), n); m.frustumCulled = false; m.castShadow = true; Z.add(m);
-    const P = []; for (let i = 0; i < n; i++) { const a = hash(i * 3.7 + cx) * 6.283, r = Math.sqrt(hash(i * 5.9 + cx)) * 0.62; P.push(v3(cx + Math.cos(a) * r, 0.056, 0.8 + Math.sin(a) * r * 0.65)); } m.userData.P = P; return m; };
-  const crT = mkCrowd(420, AMB, -0.95), crS = mkCrowd(300, TEA, 0.95);
+    const P = []; for (let i = 0; i < n; i++) { const a = hash(i * 3.7 + cx) * 6.283, r = Math.sqrt(hash(i * 5.9 + cx)) * 0.42; P.push(v3(cx + Math.cos(a) * r, 0.056, 0.85 + Math.sin(a) * r * 0.7)); } m.userData.P = P; return m; };
+  const crT = mkCrowd(420, AMB, -0.6), crS = mkCrowd(300, TEA, 0.6);
   // títulos: dos diplomas que se funden en uno
   const dipTex = (head, col) => canvasTex(640, 420, (g, w, h) => { g.fillStyle = '#F2EEE6'; rr(g, 0, 0, w, h, 26); g.fill(); g.strokeStyle = col; g.lineWidth = 14; rr(g, 18, 18, w - 36, h - 36, 18); g.stroke();
     g.fillStyle = '#1B1F27'; g.textAlign = 'center'; g.font = '700 30px SpaceMono'; g.letterSpacing = '4px'; g.fillText(head, w / 2, 100);
@@ -247,7 +241,7 @@ function buildDuel() {
   const sTel = signPlane('TELECO', { w: 1.3, h: 0.32, col: '#EEF2F6' }); sign.add(sTel);
   const plate = rbox(1.0, 0.16, 0.04, plasticS(TEA, 0.25), 0.03); plate.position.set(0, -0.27, 0); sign.add(plate);
   const pTxt = signPlane('SONIDO E IMAGEN', { w: 0.92, h: 0.13, col: '#04110F' }); pTxt.position.set(0, -0.27, 0.022); sign.add(pTxt);
-  Z.userData = { pT, pS, pF, tw, sp, ln, cl, pl, curve, cable, spark, bT, bS, T, crT, crS, dT, dS, door, dl, sign, sTel, plate, pTxt };
+  Z.userData = { pT, pS, tw, sp, ln, bT, bS, T, crT, crS, dT, dS, door, dl, sign, sTel, plate, pTxt };
   return Z;
 }
 

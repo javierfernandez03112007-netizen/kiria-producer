@@ -16,7 +16,7 @@ function frame(t) {
   const inv = [[dy[1] / det, -dy[0] / det], [-dx[1] / det, dx[0] / det]];
   const J = [N[0][0] * inv[0][0] + N[0][1] * inv[1][0], N[0][0] * inv[0][1] + N[0][1] * inv[1][1], N[1][0] * inv[0][0] + N[1][1] * inv[1][0], N[1][0] * inv[0][1] + N[1][1] * inv[1][1]];
   post.uniforms.m0.value.set(m[0][0], m[0][1]); post.uniforms.a0.value.set(a[0].x, a[0].y); post.uniforms.J.value.set(...J);
-  let fl = 0; for (const [t0, k] of [[K.borrado, 0.1], [K.cables + 0.1, 0.06], [K.no13, 0.07], [K.apellido, 0.07], [K.tira, 0.05]]) if (t > t0) fl += k * Math.exp(-(t - t0) / 0.07);
+  let fl = 0; for (const [t0, k] of [[K.borrado, 0.1], [K.no13, 0.07], [K.apellido, 0.07], [K.tira, 0.05]]) if (t > t0) fl += k * Math.exp(-(t - t0) / 0.07);
   post.uniforms.flash.value = fl; post.uniforms.tint.value.set(0, 0, 0);
   return st;
 }
@@ -60,22 +60,19 @@ window.renderCover = function () {
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
   K = {
     te1: atL(1, '=te'), enganando: atL(1, 'enganando'), mas1: atL(1, '=mas'), noventa: atL(1, 'noventa'), ciento: atL(1, 'ciento'), video1: atL(1, 'video'), borrado: atL(1, 'borrado'),
-    y2: atL(2, '=y'), notado: atL(2, 'notado'), borra: atL(2, 'borra'), sonido2: atL(2, 'sonido'), carrera2: atL(2, 'carrera'), teleco2: atL(2, 'teleco'), llaman: atL(2, 'llaman'), facil2: atL(2, 'facil'),
-    tienen3: atL(3, 'tienen'), razon: atL(3, 'razon'), final: atL(3, 'final'), truco3: atL(3, 'truco'),
-    municion: atL(4, 'municion'), politecnica: atL(4, 'politecnica'), teleco4: atL(4, 'teleco'), nueve: atL(4, 'nueve'), cuatro4: atL(4, 'cuatro'), sonido4: atL(4, 'sonido'), ocho: atL(4, 'ocho'),
-    fp5: atL(5, '=fp'), rematan: atL(5, 'rematan'), cuatro5: atL(5, 'cuatro'), enchufando: atL(5, 'enchufando'), cables: atL(5, 'cables'),
-    sonido6: atL(6, 'sonido'), responde: atL(6, 'responde'), sin6: atL(6, '=sin'), veriais: atL(6, 'veriais'), serie: atL(6, 'serie'),
-    asi: atL(7, 'asi'), dentro: atL(7, 'dentro'), senales: atL(7, 'senales'), matematicas: atL(7, 'matematicas'), convierten: atL(7, 'convierten'), numeros: atL(7, 'numeros'),
-    acustica: atL(8, '=acustica'), electro: atL(8, 'electroacustica'), salas: atL(8, 'salas'), microfonos: atL(8, 'microfonos'), altavoces: atL(8, 'altavoces'),
-    video9: atL(9, 'video'), llega: atL(9, 'llega'), millones: atL(9, 'millones'), pantallas: atL(9, 'pantallas'), vez: atL(9, 'vez'),
-    entonces: atL(10, 'entonces'), facil10: atL(10, 'facil'),
-    nota: atL(11, 'nota'), mide: atL(11, 'mide'), gente: atL(11, 'gente'), pide: atL(11, 'pide'), dificil: atL(11, 'dificil'),
-    dos12: atL(12, '=dos'), misma: atL(12, 'misma'), profesion: atL(12, 'profesion'), ingeniero: atL(12, 'ingeniero'), master: atL(12, 'master'),
-    teleco13: atL(13, 'teleco'), facil13: atL(13, 'facil'), no13: atL(13, '=no'), teleco13b: atL(13, 'teleco', 2), apellido: atL(13, 'apellido'),
-    truco14: atL(14, 'truco'), ojo: atL(14, 'ojo'), luz: atL(14, 'luz'), color14: atL(14, 'color'), color14b: atL(14, 'color', 2), cuatro14: atL(14, 'cuatro'), menos: atL(14, 'menos'),
-    fotogramas: atL(15, 'fotogramas'), cambia: atL(15, 'cambia'), guarda15: atL(15, 'guarda'), mueve: atL(15, 'mueve'),
-    sonido16: atL(16, 'sonido'), fuerte: atL(16, 'fuerte'), tapa: atL(16, 'tapa'), flojo: atL(16, 'flojo'), flojo2: atL(16, 'flojo', 2), tira: atL(16, 'tira'),
-    ahora: atL(17, 'ahora'), vuelve: atL(17, 'vuelve'), notas: atL(17, 'notas'), teleco17: atL(17, 'teleco'), leo: atL(17, 'leo'), mandaselo: atL(17, 'mandaselo'),
+    y2: atL(2, '=y'), notado: atL(2, 'notado'), borra: atL(2, 'borra'), ingenieria2: atL(2, 'ingenieria'), sonido2: atL(2, 'sonido'), carrera2: atL(2, 'carrera'), teleco2: atL(2, 'teleco'), llaman: atL(2, 'llaman'), facil2: atL(2, 'facil'),
+    municion: atL(3, 'municion'), politecnica: atL(3, 'politecnica'), teleco4: atL(3, 'teleco'), nueve: atL(3, 'nueve'), cuatro4: atL(3, 'cuatro'), sonido4: atL(3, 'sonido'), ocho: atL(3, 'ocho'),
+    sonido6: atL(4, 'sonido'), responde: atL(4, 'responde'), sin6: atL(4, '=sin'), veriais: atL(4, 'veriais'), serie: atL(4, 'serie'),
+    asi: atL(5, 'asi'), dentro: atL(5, 'dentro'), senales: atL(5, 'senales'), matematicas: atL(5, 'matematicas'), convierten: atL(5, 'convierten'), numeros: atL(5, 'numeros'),
+    acustica: atL(6, '=acustica'), electro: atL(6, 'electroacustica'), salas: atL(6, 'salas'), microfonos: atL(6, 'microfonos'), altavoces: atL(6, 'altavoces'),
+    video9: atL(7, 'video'), llega: atL(7, 'llega'), millones: atL(7, 'millones'), pantallas: atL(7, 'pantallas'), vez: atL(7, 'vez'),
+    entonces: atL(8, 'entonces'), facil10: atL(8, 'facil'),
+    nota: atL(9, 'nota'), mide: atL(9, 'mide'), gente: atL(9, 'gente'), pide: atL(9, 'pide'), dificil: atL(9, 'dificil'),
+    dos12: atL(10, '=dos'), misma: atL(10, 'misma'), profesion: atL(10, 'profesion'), ingeniero: atL(10, 'ingeniero'), master: atL(10, 'master'),
+    teleco13: atL(11, 'teleco'), facil13: atL(11, 'facil'), no13: atL(11, '=no'), teleco13b: atL(11, 'teleco', 2), apellido: atL(11, 'apellido'),
+    truco14: atL(12, 'truco'), ojo: atL(12, 'ojo'), luz: atL(12, 'luz'), color14: atL(12, 'color'), color14b: atL(12, 'color', 2), cuatro14: atL(12, 'cuatro'), menos: atL(12, 'menos'),
+    sonido16: atL(13, 'sonido'), fuerte: atL(13, 'fuerte'), tapa: atL(13, 'tapa'), flojo: atL(13, 'flojo'), flojo2: atL(13, 'flojo', 2), tira: atL(13, 'tira'),
+    ahora: atL(14, 'ahora'), vuelve: atL(14, 'vuelve'), notas: atL(14, 'notas'), teleco17: atL(14, 'teleco'), leo: atL(14, 'leo'), mandaselo: atL(14, 'mandaselo'),
   };
   { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5; }
   buildCam(); buildHudPlan();

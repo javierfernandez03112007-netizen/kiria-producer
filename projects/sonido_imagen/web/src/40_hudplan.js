@@ -5,7 +5,7 @@ const HMAG = '#FF7AB8';
 function co(t, t0, t1, anchor, txt, sub, o = {}) { const k = ckk(t, t0, t1, o.d || 0.6); if (k > 0) callout(anchor, txt, sub, k, { ...o, fade: ckf(t, t1) }); }
 let SECT = [];
 function buildHudPlan() {
-  SECT = [[-9, 'EL VÍDEO QUE ESTÁS VIENDO'], [K.borra, 'EL PIQUE'], [K.municion, 'LA MUNICIÓN'], [K.fp5, 'LO QUE DICE CADA BANDO'], [K.asi, 'POR DENTRO'],
+  SECT = [[-9, 'EL VÍDEO QUE ESTÁS VIENDO'], [K.borra, 'EL PIQUE'], [K.municion, 'LA MUNICIÓN'], [K.sonido6, 'LA RESPUESTA'], [K.asi, 'POR DENTRO'],
     [K.entonces, 'VEREDICTO'], [K.truco14, 'EL TRUCO'], [K.ahora, 'TU TURNO']];
 }
 function sectAt(t) { let s = SECT[0][1]; for (const [t0, x] of SECT) if (t >= t0 - 0.05) s = x; return s; }
@@ -29,9 +29,9 @@ function headerSI(t, sub) {
   // bucles abiertos: el veredicto y el truco (se cierran al final)
   let x0 = 1024;
   if (t >= K.apellido + 0.1) x0 = loopBox(t, 'VEREDICTO · CON APELLIDO ✓', HC.white, clamp((t - K.apellido - 0.1) / 0.3), 240, false);
-  else if (t >= K.tienen3) x0 = loopBox(t, 'VEREDICTO · ???', HC.white, clamp((t - K.tienen3) / 0.2), 240, true);
+  else if (t >= K.facil2 + 0.4) x0 = loopBox(t, 'VEREDICTO · ???', HC.white, clamp((t - K.facil2 - 0.4) / 0.2), 240, true);
   if (t >= K.tira + 0.2) loopBox(t, 'TRUCO · ✓', HC.white, clamp((t - K.tira - 0.2) / 0.3), 240, false, x0 - 18);
-  else if (t >= K.truco3) loopBox(t, 'TRUCO · ???', HC.white, clamp((t - K.truco3) / 0.2), 240, true, x0 - 18);
+  else if (t >= K.notado + 0.4) loopBox(t, 'TRUCO · ???', HC.white, clamp((t - K.notado - 0.4) / 0.2), 240, true, x0 - 18);
 }
 function pill(txt, t, t0, t1, y = 1500, col = HC.white) { const k = ckk(t, t0, t1, 0.4) * ckf(t, t1); if (k <= 0) return; hg.save(); hg.globalAlpha = k; hfont(21, false); hg.letterSpacing = '3px';
   const w = hg.measureText(txt).width + 60; hg.fillStyle = 'rgba(0,0,0,.6)'; rr(hg, 540 - w / 2, y - 28, w, 56, 28); hg.fill(); hg.strokeStyle = 'rgba(238,242,246,.3)'; hg.lineWidth = 1.5; hg.stroke();
@@ -48,11 +48,10 @@ function hudAt(t) {
   if (ck > 0) { const n = Math.round(99 * sm5(clamp((tt - K.mas1) / Math.max(0.4, K.ciento - K.mas1 + 0.2)))), pb = tt > K.borrado ? Math.exp(-(tt - K.borrado) * 5) : 0;
     bigText(n + ' %', 540, 1300, Math.round(170 * (1 + 0.25 * pb)), HC.red, ck, { type: false, glow: 30 + 30 * pb, ls: 8 });
     bigText('DEL VÍDEO, BORRADO', 540, 1420, 40, HC.white, ck * clamp((tt - K.video1 + 0.1) / 0.3), { ls: 8 }); }
-  stamp('¿LA TELECO FÁCIL?', 540, 1380, ckk(t, K.facil2 - 0.05, K.tienen3 + 0.6, 0.35) * ckf(t, K.tienen3 + 0.6), HC.amber, 58);
+  stamp('¿LA TELECO FÁCIL?', 540, 1380, ckk(t, K.facil2 - 0.05, K.municion + 0.2, 0.35) * ckf(t, K.municion + 0.2), HC.amber, 58);
   // ---- 4: la munición
-  pill('UPM · NOTAS DE CORTE 2025-26', t, K.politecnica, K.fp5 - 0.1, 1540);
-  // ---- 5-6: lo que dice cada bando
-  co(t, K.enchufando - 0.1, K.sonido6 - 0.05, wpos(D.pl), '«4 AÑOS PARA ENCHUFAR CABLES»', 'DICEN LOS DE FP', { dx: -110, dy: -190, color: HMAG, d: 0.45, size: 26 });
+  pill('UPM · NOTAS DE CORTE 2025-26', t, K.politecnica, K.sonido6 - 0.1, 1540);
+  // ---- 4: la respuesta de Sonido e Imagen
   if (D.T.visible) co(t, K.sin6 - 0.05, K.asi, wpos(D.T).add(v3(0, 0.38, 0)), '«SIN NOSOTROS, NI UNA SERIE»', 'RESPONDE SONIDO E IMAGEN', { dx: -120, dy: -170, color: HC.teal, d: 0.45 });
   // ---- 7-9: por dentro
   co(t, K.senales, K.convierten + 0.2, v3(IZ.x - 0.35, 1.7, IZ.z), 'SEÑAL', 'CONTINUA', { dx: 120, dy: -170, color: HC.teal, d: 0.35 });
@@ -65,7 +64,7 @@ function hudAt(t) {
   // ---- 10-13: veredicto
   stamp('¿FÁCIL?', 540, 1380, ckk(t, K.facil10 - 0.05, K.nota, 0.35) * ckf(t, K.nota), HC.amber, 80);
   pill('NOTA DE CORTE = LA DEL ÚLTIMO QUE ENTRA', t, K.nota, K.dos12 - 0.1, 1540);
-  if (D.crT.visible) co(t, K.gente, K.pide + 0.5, v3(DZ.x - 0.95, 0.12, DZ.z + 0.75), 'CUÁNTA GENTE LA PIDE', null, { dx: 80, dy: -230, color: HC.white, d: 0.4 });
+  if (D.crT.visible) co(t, K.gente, K.pide + 0.5, v3(DZ.x - 0.6, 0.12, DZ.z + 0.85), 'CUÁNTA GENTE LA PIDE', null, { dx: 60, dy: -260, color: HC.white, d: 0.4 });
   stamp('DIFICULTAD ✕', 540, 1380, ckk(t, K.dificil - 0.05, K.dos12, 0.35) * ckf(t, K.dos12), HC.red, 62);
   if (D.dT.visible) co(t, K.profesion - 0.1, K.master - 0.15, wpos(D.dT).add(v3(0, 0.16, 0)), 'LA MISMA PROFESIÓN', 'INGENIERO TÉCNICO DE TELECOMUNICACIÓN', { dx: 90, dy: -190, color: HC.white, d: 0.4 });
   if (D.door.visible) co(t, K.master - 0.05, K.facil13, wpos(D.door).add(v3(0.42, 1.3, 0)), 'EL MISMO MÁSTER', 'INGENIERO DE TELECOMUNICACIÓN', { dx: 100, dy: -150, color: HC.white, d: 0.4 });
@@ -74,7 +73,6 @@ function hudAt(t) {
   // ---- 14-16: el truco
   if (E.luma.visible) co(t, K.luz - 0.05, K.menos + 0.3, wpos(E.luma).add(v3(-0.3, 0.55, 0)), 'LUZ', 'TODO EL DETALLE', { dx: -100, dy: -170, color: HC.white, d: 0.4 });
   if (E.chroma.visible) co(t, K.color14b - 0.05, K.menos + 0.3, wpos(E.chroma).add(v3(0.42, -0.5, 0)), 'COLOR', '¼ DE LOS PUNTOS', { dx: 110, dy: 170, color: HC.amber, d: 0.4 });
-  co(t, K.guarda15 - 0.1, K.sonido16 - 0.15, v3(0, EYE_C.y + 0.32, 0.03), 'SOLO LO QUE SE MUEVE', 'EL RESTO, COPIADO DEL ANTERIOR', { dx: 90, dy: 260, color: HC.white, d: 0.4 });
   if (S.spec.visible) { const bx = i => S.spec.position.x + (i - (P.N - 1) / 2) * 0.034;
     co(t, K.fuerte - 0.05, K.ahora, v3(bx(P.LOUD), P.H0[P.LOUD] + 0.02, S.spec.position.z), 'FUERTE', null, { dx: -110, dy: -120, color: HC.amber, d: 0.35 });
     co(t, K.flojo - 0.05, K.tira + 0.1, v3(bx(P.WEAK), P.H0[P.WEAK] + 0.02, S.spec.position.z), 'FLOJO', 'TAPADO', { dx: 110, dy: -260, color: HC.teal, d: 0.35 });

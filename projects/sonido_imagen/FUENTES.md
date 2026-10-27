@@ -1,18 +1,16 @@
 # Fuentes — «Ingeniería de Sonido e Imagen» (el vídeo borrado)
 
-- **«Más del noventa y nueve por ciento de este vídeo está borrado» / «sin comprimir, un minuto pesaría más de diez
-  gigas»**: cálculo propio. Imagen sin comprimir 1080×1920 píxeles × 3 bytes (RGB de 8 bits): a 30 fps son 11,2 GB por
+- **«Más del noventa y nueve por ciento de este vídeo está borrado»**: cálculo propio. Imagen sin comprimir 1080×1920 píxeles × 3 bytes (RGB de 8 bits): a 30 fps son 11,2 GB por
   minuto (a 60 fps, 22,4 GB). El máster que entregamos pesa ≈ 35–45 MB por minuto (H.264, crf 22) e Instagram lo
   recomprime aún más: se guarda menos del 0,5 % de los datos → «más del 99 % borrado» (compresión con pérdida).
   Comprobar el tamaño del máster final antes de publicar.
-- **«Es una Teleco» / «sales con el título de ingeniero técnico de telecomunicación»**: los grados de Sonido e Imagen
+- **«Ingeniería de Sonido e Imagen» es una Teleco (sale con la profesión de ingeniero técnico de telecomunicación)**: los grados de Sonido e Imagen
   (UC3M, UPV, UMA, UA, UPM…) cumplen la Orden CIN/352/2009 (BOE 20-02-2009) y habilitan para la profesión regulada de
   Ingeniero Técnico de Telecomunicación, especialidad Sonido e Imagen. UC3M https://uc3m.es/grado/sonido-imagen ;
   UPV https://www.upv.es/titulaciones/GISTSI/index-es.html ; memoria UMA
   https://www.uma.es/media/files/MV_Ingenier%C3%ADa_Sonido_e_Imagen_26-02-2025.pdf
-- **«La carrera que muchos de Teleco llaman "la Teleco fácil"» / «cuatro años para acabar enchufando cables» (los de
-  FP) / «sin nosotros, no veríais ni una serie» (Sonido e Imagen)**: piques que se oyen en cada bando, puestos en su boca
-  (opiniones, no datos).
+- **«La carrera que muchos de Teleco llaman "la Teleco fácil"» / «sin nosotros, no veríais ni una serie» (Sonido e
+  Imagen)**: piques que se oyen en cada bando, puestos en su boca (opiniones, no datos).
 - **«En la Politécnica de Madrid, Teleco pidió un nueve con cuatro. Sonido e Imagen, un ocho»**: notas de corte
   oficiales UPM 2025-26 (grupo 1, PAU): Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación (ETSIT,
   código 0313) 9,408 https://admision.upm.es/gsfs/SFS34147 ; Grado en Ingeniería de Sonido e Imagen (ETSIST) 8,066
@@ -37,8 +35,6 @@
   vídeos de redes): el color va a la mitad de resolución en horizontal y en vertical (¼ de muestras), porque el ojo es
   más sensible al brillo que al color. Citrix https://docs.citrix.com/es-es/citrix-virtual-apps-desktops/graphics/thinwire/colorspace ;
   https://www.profesionalreview.com/2019/11/09/que-es-444-422-y-420-subsampling/
-- **«Solo se guarda lo que se mueve»**: predicción entre fotogramas (H.264): se guardan vectores de movimiento y la
-  diferencia con el fotograma anterior en vez de cada imagen entera. Simplificación divulgativa.
-- **«Un ruido fuerte tapa a uno flojo parecido: el flojo se tira»**: enmascaramiento psicoacústico (MP3, ISO/IEC
+- **«Un sonido fuerte tapa a uno flojo parecido: el flojo se tira»**: enmascaramiento psicoacústico (MP3, ISO/IEC
   11172-3, modelo psicoacústico; AAC igual): el codificador descarta o cuantiza al mínimo lo que queda por debajo del
   umbral de enmascaramiento. IEEE https://technav.ieee.org/topic/psychoacoustic-models/

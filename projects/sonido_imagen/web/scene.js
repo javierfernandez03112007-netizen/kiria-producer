@@ -1,5 +1,5 @@
-// «Sonido e Imagen»: un ojo hecho de cubos que estalla (el 99 % borrado), el pique Teleco / Sonido e Imagen / FP, la carrera por dentro,
-// el veredicto («Teleco con apellido») y los tres trucos de la compresión (color a ¼, solo lo que se mueve, el sonido tapado).
+// «Sonido e Imagen»: un ojo hecho de cubos que estalla (el 99 % borrado), el pique Teleco / Sonido e Imagen, la carrera por dentro,
+// el veredicto («Teleco con apellido») y dos trucos de la compresión (el color a ¼ y el sonido tapado).
 // Espacio 3D negro con flujo óptico y suelo espejo.
 // Encima, un HUD técnico en blanco y grises (líneas guía, etiquetas monoespaciadas) dibujado en un lienzo 2D.
 // window.renderAt(t) dibuja el instante t. Pensado para 60 fps.
@@ -516,7 +516,7 @@ function buildEye() {
   luma.instanceMatrix.needsUpdate = chroma.instanceMatrix.needsUpdate = true; luma.instanceColor.needsUpdate = chroma.instanceColor.needsUpdate = true;
   // párpado: para cada columna, la y (en vóxeles) del borde superior abierto y del inferior
   const lidTop = [], lidBot = []; for (let ix = 0; ix < EYE_NX; ix++) { const x = ix * 10 + 5; lidTop.push(quadY(LID_P, x) / 10); lidBot.push(quadY(LOW_P, x) / 10); }
-  // flechas de movimiento (vectores) sobre los vóxeles que cambian al parpadear
+  // flechas de movimiento (vectores) sobre los vóxeles que cambian al parpadear (sin uso: la frase se quitó de la voz)
   const arrows = new THREE.InstancedMesh(new THREE.ConeGeometry(0.008, 0.03, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.6, 1.6), toneMapped: false }), 160);
   arrows.frustumCulled = false; arrows.count = 0; G.add(arrows);
   // marco fino alrededor de la imagen
@@ -622,21 +622,15 @@ function tv() {
 
 // ---------------------------------------------------------------- zona del duelo
 const DZ = v3(0, 0, -9);
-const DPOS = { tel: v3(-0.62, 0, 0), si: v3(0.62, 0, 0), fp: v3(0, 0, -0.95) };
+const DPOS = { tel: v3(-0.62, 0, 0), si: v3(0.62, 0, 0) };
 function buildDuel() {
   const Z = new THREE.Group(); Z.position.copy(DZ); scene.add(Z);
-  const pT = podium(AMB, 'TELECO'), pS = podium(TEA, 'SONIDO E IMAGEN'), pF = podium(MAG, 'FP', 0.24);
-  pT.position.copy(DPOS.tel); pS.position.copy(DPOS.si); pF.position.copy(DPOS.fp); Z.add(pT, pS, pF);
-  setPodiumH(pT, 0.3); setPodiumH(pS, 0.3); setPodiumH(pF, 0.22);
+  const pT = podium(AMB, 'TELECO'), pS = podium(TEA, 'SONIDO E IMAGEN');
+  pT.position.copy(DPOS.tel); pS.position.copy(DPOS.si); Z.add(pT, pS);
+  setPodiumH(pT, 0.3); setPodiumH(pS, 0.3);
   const tw = tower(AMB); tw.position.set(DPOS.tel.x, 0.3, 0); tw.scale.setScalar(0.95); Z.add(tw);
   const sp = speaker(TEA); sp.position.set(DPOS.si.x, 0.3, 0); sp.rotation.y = -0.25; Z.add(sp);
   const ln = lens(TEA); ln.position.set(DPOS.si.x, 1.05, 0.05); Z.add(ln);
-  const cl = coil(MAG); cl.position.set(DPOS.fp.x, 0.22, DPOS.fp.z); Z.add(cl);
-  const pl = plug(MAG); Z.add(pl);
-  // cable de FP hasta la parte de atrás del altavoz
-  const curve = new THREE.CatmullRomCurve3([v3(0.05, 0.3, -0.95), v3(0.12, 0.62, -0.75), v3(0.4, 0.75, -0.45), v3(0.58, 0.55, -0.28), v3(0.62, 0.48, -0.17)]);
-  const cable = growTube(curve, 0.011, plasticS(MAG, 0.35), 140, 8); Z.add(cable);
-  const spark = new THREE.Mesh(new THREE.SphereGeometry(0.05, 16, 12), basicGlow(0xffd0f0, 2)); Z.add(spark);
   // barras de notas de corte (UPM 2025-26) detrás de cada bando: 0,16 m por punto
   const bT = bar(AMB, '9,408', 'TELECO'), bS = bar(TEA, '8,066', 'SONIDO E IMAGEN');
   bT.position.set(-0.36, 0, -1.6); bS.position.set(0.36, 0, -1.6); Z.add(bT, bS);
@@ -644,8 +638,8 @@ function buildDuel() {
   const T = tv(); T.position.set(1.3, 0.62, 0.35); T.rotation.y = -0.55; Z.add(T);
   // público: cuánta gente pide cada carrera (ilustrativo)
   const mkCrowd = (n, col, cx) => { const m = new THREE.InstancedMesh(new THREE.CapsuleGeometry(0.026, 0.06, 3, 8), plasticS(col, 0.4), n); m.frustumCulled = false; m.castShadow = true; Z.add(m);
-    const P = []; for (let i = 0; i < n; i++) { const a = hash(i * 3.7 + cx) * 6.283, r = Math.sqrt(hash(i * 5.9 + cx)) * 0.62; P.push(v3(cx + Math.cos(a) * r, 0.056, 0.8 + Math.sin(a) * r * 0.65)); } m.userData.P = P; return m; };
-  const crT = mkCrowd(420, AMB, -0.95), crS = mkCrowd(300, TEA, 0.95);
+    const P = []; for (let i = 0; i < n; i++) { const a = hash(i * 3.7 + cx) * 6.283, r = Math.sqrt(hash(i * 5.9 + cx)) * 0.42; P.push(v3(cx + Math.cos(a) * r, 0.056, 0.85 + Math.sin(a) * r * 0.7)); } m.userData.P = P; return m; };
+  const crT = mkCrowd(420, AMB, -0.6), crS = mkCrowd(300, TEA, 0.6);
   // títulos: dos diplomas que se funden en uno
   const dipTex = (head, col) => canvasTex(640, 420, (g, w, h) => { g.fillStyle = '#F2EEE6'; rr(g, 0, 0, w, h, 26); g.fill(); g.strokeStyle = col; g.lineWidth = 14; rr(g, 18, 18, w - 36, h - 36, 18); g.stroke();
     g.fillStyle = '#1B1F27'; g.textAlign = 'center'; g.font = '700 30px SpaceMono'; g.letterSpacing = '4px'; g.fillText(head, w / 2, 100);
@@ -664,7 +658,7 @@ function buildDuel() {
   const sTel = signPlane('TELECO', { w: 1.3, h: 0.32, col: '#EEF2F6' }); sign.add(sTel);
   const plate = rbox(1.0, 0.16, 0.04, plasticS(TEA, 0.25), 0.03); plate.position.set(0, -0.27, 0); sign.add(plate);
   const pTxt = signPlane('SONIDO E IMAGEN', { w: 0.92, h: 0.13, col: '#04110F' }); pTxt.position.set(0, -0.27, 0.022); sign.add(pTxt);
-  Z.userData = { pT, pS, pF, tw, sp, ln, cl, pl, curve, cable, spark, bT, bS, T, crT, crS, dT, dS, door, dl, sign, sTel, plate, pTxt };
+  Z.userData = { pT, pS, tw, sp, ln, bT, bS, T, crT, crS, dT, dS, door, dl, sign, sTel, plate, pTxt };
   return Z;
 }
 
@@ -728,10 +722,8 @@ const wpos = (o, v = new THREE.Vector3()) => o.getWorldPosition(v);
 const popS = (t, t0, d = 0.35) => Math.max(1e-4, pop(t, t0, d));
 function loopT(t) { return t > END - 1.25 ? t - END : t; }      // al final, el principio otra vez (bucle)
 const wink = (t, t0, d) => { const u = (t - t0) / d; return u > 0 && u < 1 ? Math.pow(Math.sin(Math.PI * u), 0.7) : 0; };
-function blinkAt(t) {   // 0 abierto → 1 cerrado: guiño en «engañando», parpadeos lentos en «solo se guarda lo que se mueve»
-  let b = wink(t, K.enganando + 0.12, 0.34);
-  for (const t0 of [K.fotogramas + 0.1, K.guarda15 - 0.05, K.mueve + 0.05]) b = Math.max(b, wink(t, t0, 0.75));
-  return b;
+function blinkAt(t) {   // 0 abierto → 1 cerrado: guiño en «engañando»
+  return wink(t, K.enganando + 0.12, 0.34);
 }
 const _ec = new THREE.Color(), _m = new THREE.Matrix4(), _qq = new THREE.Quaternion(), _ee = new THREE.Euler(), _pp = new THREE.Vector3(), _one = new THREE.Vector3(1, 1, 1);
 function eyeAt(t) {
@@ -740,9 +732,9 @@ function eyeAt(t) {
   const burst = inLoop ? 0 : sm5(clamp((tt - K.borrado + 0.02) / 0.5)) * (1 - sm5(clamp((tt - K.notado + 0.05) / 0.45)));
   const gl = inLoop ? 0 : env(tt, -0.1, K.mas1 + 0.1, 0.05, 0.25);      // filas que tiemblan al principio (imagen «sospechosa»)
   const b = blinkAt(tt), bp = blinkAt(tt - 0.06);
-  const mv = env(t, K.fotogramas - 0.15, K.sonido16 - 0.1, 0.3, 0.35);   // solo lo que se mueve: el resto se apaga
+  const mv = 0;
   const dimS = env(t, K.sonido16 - 0.35, K.ahora + 0.2, 0.4, 0.5);        // detrás del espectro, más oscuro
-  const split = t > K.luz - 0.15 && t < K.fotogramas ? sm5(clamp((t - K.luz + 0.15) / 0.6)) * (1 - sm5(clamp((t - K.menos - 0.35) / 0.5))) : 0;
+  const split = t > K.luz - 0.15 && t < K.sonido16 ? sm5(clamp((t - K.luz + 0.15) / 0.6)) * (1 - sm5(clamp((t - K.menos - 0.35) / 0.5))) : 0;
   const N = EYE_NX * EYE_NY, open = E.L.open, skin = E.L.skin; let na = 0;
   E.vox.visible = split < 0.001; E.luma.visible = split >= 0.001; E.chroma.visible = split > 0.12;
   const target = split >= 0.001 ? E.luma : E.vox;
@@ -782,22 +774,16 @@ function duelAt(t) {
   U.sp.userData.rings.forEach((r, k) => { const u = (t * 1.1 + k / 3) % 1; r.scale.setScalar(1 + u * 1.6); r.position.z = 0.16 + u * 0.35; r.material.opacity = (1 - u) * 0.75 * (0.4 + vo); });
   U.ln.rotation.y = Math.sin(t * 0.8) * 0.35 - 0.2; U.ln.position.y = 1.02 + 0.03 * Math.sin(t * 2.1);
   // quién está hablando: el aro de su podio brilla más
-  const hiS = env(t, K.borra, K.teleco2, 0.2, 0.3) + env(t, K.sonido6 - 0.1, K.asi, 0.2, 0.3), hiT = env(t, K.teleco2 - 0.05, K.tienen3, 0.2, 0.3), hiF = env(t, K.fp5 - 0.1, K.sonido6, 0.2, 0.3);
-  U.pS.userData.rim.material.color.copy(CTe).multiplyScalar(0.6 + 1.6 * clamp(hiS)); U.pT.userData.rim.material.color.copy(CAm).multiplyScalar(0.6 + 1.6 * hiT); U.pF.userData.rim.material.color.copy(CMg).multiplyScalar(0.6 + 1.6 * hiF);
+  const hiS = env(t, K.borra, K.teleco2, 0.2, 0.3) + env(t, K.sonido6 - 0.1, K.asi, 0.2, 0.3), hiT = env(t, K.teleco2 - 0.05, K.municion + 0.3, 0.2, 0.3);
+  U.pS.userData.rim.material.color.copy(CTe).multiplyScalar(0.6 + 1.6 * clamp(hiS)); U.pT.userData.rim.material.color.copy(CAm).multiplyScalar(0.6 + 1.6 * hiT);
   // barras de notas de corte (0,16 m por punto)
   // suben al decir cada nombre; se esconden mientras hablan FP y la tele, y vuelven para el veredicto
-  const bv = (t > K.municion - 0.3 && t < K.rematan + 0.6) || (t > K.entonces - 0.4 && t < K.dos12 + 0.2); U.bT.visible = U.bS.visible = bv;
-  if (bv) { const fo = t < K.entonces - 0.4 ? 1 - sm5(clamp((t - K.fp5) / 0.5)) : sm5(clamp((t - K.entonces + 0.4) / 0.6)) * (1 - sm5(clamp((t - K.dos12 + 0.2) / 0.4)));
-    const gT = t < K.entonces - 0.4 ? sm5(clamp((t - K.teleco4 + 0.1) / Math.max(0.5, K.cuatro4 - K.teleco4 + 0.2))) : 1, gS = t < K.entonces - 0.4 ? sm5(clamp((t - K.sonido4 + 0.1) / Math.max(0.5, K.ocho - K.sonido4 + 0.2))) : 1;
+  const bv = (t > K.municion - 0.3 && t < K.responde + 0.6) || (t > K.entonces - 0.4 && t < K.dos12 + 0.2); U.bT.visible = U.bS.visible = bv;
+  if (bv) { const fo = t < K.entonces - 0.4 ? 1 - sm5(clamp((t - K.sonido6 + 0.1) / 0.5)) : sm5(clamp((t - K.entonces + 0.4) / 0.6)) * (1 - sm5(clamp((t - K.dos12 + 0.2) / 0.4)));
+    const gT = t < K.entonces - 0.4 ? sm5(clamp((t - K.politecnica) / Math.max(0.5, K.cuatro4 - K.politecnica + 0.2))) : 1, gS = t < K.entonces - 0.4 ? sm5(clamp((t - K.sonido4 + 0.1) / Math.max(0.5, K.ocho - K.sonido4 + 0.2))) : 1;
     setBarH(U.bT, 9.408 * 0.16 * gT * fo); setBarH(U.bS, 8.066 * 0.16 * gS * fo);
-    U.bT.userData.top.visible = t > K.nueve && fo > 0.3; U.bS.userData.top.visible = t > K.ocho - 0.05 && fo > 0.3; }
-  // el cable de FP: se estira hasta el altavoz y salta la chispa
-  const ua = sm5(clamp((t - K.cuatro5) / Math.max(0.4, K.cables - K.cuatro5 + 0.15)));
-  U.cable.visible = t > K.cuatro5 - 0.05 && t < K.dos12; U.cable.userData.U.uA.value = ua;
-  const cp = U.curve.getPointAt(clamp(ua, 0, 1)), ct = U.curve.getTangentAt(clamp(ua, 0.001, 1));
-  U.pl.visible = U.cable.visible; U.pl.position.copy(cp); U.pl.quaternion.setFromUnitVectors(v3(0, 0, 1), ct.clone().normalize());
-  if (!U.cable.visible) { U.pl.position.set(0.05, 0.3, -0.95); }
-  const sk = t > K.cables + 0.1 ? Math.exp(-(t - K.cables - 0.1) * 6) : 0; U.spark.visible = sk > 0.02; U.spark.position.copy(U.curve.getPointAt(1)); U.spark.scale.setScalar(0.3 + sk * 1.6);
+    const crowdShot = t > K.nota - 0.1;   // en el plano del público las cifras quedarían bajo la cabecera
+    U.bT.userData.top.visible = t > K.nueve && fo > 0.3 && !crowdShot; U.bS.userData.top.visible = t > K.ocho - 0.05 && fo > 0.3 && !crowdShot; }
   // la tele: una serie… y sin Sonido e Imagen, sin señal
   const tvk = env(t, K.responde - 0.4, K.asi + 0.3, 0.35, 0.3); U.T.visible = tvk > 0.01; U.T.scale.setScalar(Math.max(1e-3, tvk));
   const off = t > K.veriais; U.T.userData.scr.material.map = off ? U.T.userData.nT : U.T.userData.sT; U.T.userData.off.visible = off;
@@ -821,7 +807,7 @@ function duelAt(t) {
 // ---------------------------------------------------------------- por dentro
 function insideAt(t) {
   const Z = S.inside, U = Z.userData; const vis = t > K.asi - 1.0 && t < K.entonces + 0.5; Z.visible = vis; if (!vis) return;
-  U.wave.userData.U.uA.value = sm5(clamp((t - K.senales + 0.05) / 0.9));
+  U.wave.userData.U.uA.value = eo(clamp((t - K.serie) / Math.max(0.9, K.senales - K.serie + 0.2)));
   const sg = sm5(clamp((t - K.convierten + 0.1) / 0.6));
   U.sv.forEach((s, i) => { const g = sm5(clamp(sg * 1.6 - i / U.sv.length * 0.6)), h = Math.abs(s.v) * g + 1e-3; _m.compose(_pp.set(s.x, 1.45 + Math.sign(s.v) * h / 2, 0), _qq.identity(), _one.set(1, h, 1)); U.samp.setMatrixAt(i, _m); });
   _one.set(1, 1, 1); U.samp.instanceMatrix.needsUpdate = true; U.samp.visible = sg > 0.01;
@@ -878,8 +864,6 @@ function buildCam() {
     [K.teleco2 + 0.05, [-1.55, 1.5, -6.7], [-0.62, 0.9, -9], 32, 0.02],
     [K.facil2 + 0.3, [-1.3, 1.55, -6.9], [-0.62, 0.95, -9], 32],
     // ¿tienen razón? plano general de los tres bandos
-    [K.tienen3 + 0.1, [0, 2.3, -3.7], [0, 0.6, -9.3], 32],
-    [K.truco3 + 0.3, [0.1, 2.2, -3.9], [0, 0.6, -9.3], 32],
     // munición: notas de corte
     [K.municion, [0, 1.65, -4.9], [0, 1.0, -10.4], 32],
     [K.teleco4, [-0.5, 1.5, -5.9], [-0.2, 0.95, -10.6], 32, 0.02],
@@ -887,10 +871,6 @@ function buildCam() {
     [K.sonido4, [0.5, 1.5, -5.9], [0.2, 0.95, -10.6], 32, -0.02],
     [K.ocho + 0.15, [0.08, 1.7, -4.7], [0, 1.3, -10.6], 32],
     [K.ocho + 0.7, [0.04, 1.72, -4.5], [0, 1.3, -10.6], 32],
-    // FP: el cable que se enchufa
-    [K.rematan, [-0.1, 2.2, -7.0], [0.12, 0.35, -9.85], 32],
-    [K.enchufando, [0.2, 1.9, -7.1], [0.3, 0.45, -9.5], 32],
-    [K.cables + 0.35, [0.5, 1.7, -7.3], [0.5, 0.5, -9.25], 32],
     // la tele: sin nosotros, ni una serie
     [K.responde, [2.0, 1.05, -7.2], [1.3, 0.82, -8.65], 32],
     [K.serie + 0.35, [1.85, 1.0, -7.4], [1.3, 0.82, -8.65], 32],
@@ -905,9 +885,8 @@ function buildCam() {
     // veredicto: vuelta al duelo
     [K.entonces + 0.25, [0, 1.9, -3.4], [0, 1.0, -9.6], 32],
     [K.facil10 + 0.3, [0.05, 1.85, -3.6], [0, 1.0, -9.6], 32],
-    [K.nota + 0.05, [-1.9, 1.5, -5.6], [-0.95, 0.25, -8.3], 32, 0.02],
-    [K.pide, [1.9, 1.5, -5.6], [0.95, 0.25, -8.3], 32, -0.02],
-    [K.dificil + 0.25, [0, 2.2, -4.2], [0, 0.4, -8.6], 32],
+    [K.nota + 0.05, [0, 2.5, -3.9], [0, 0.5, -8.7], 36],
+    [K.dificil + 0.25, [0, 2.65, -3.6], [0, 0.45, -8.6], 36],
     [K.dos12 + 0.05, [0, 1.5, -5.4], [0, 1.0, -9.0], 32],
     [K.profesion, [0, 1.4, -6.2], [0, 1.1, -8.8], 32],
     [K.master + 0.1, [0.15, 1.35, -6.6], [0, 0.85, -10.5], 32],
@@ -917,8 +896,6 @@ function buildCam() {
     [K.truco14 + 0.3, [0.6, 1.66, 3.2], EYE_L, 32, 0.02],
     [K.luz, [2.35, 1.9, 2.45], EYE_L, 32],
     [K.menos + 0.3, [2.15, 1.8, 2.65], EYE_L, 32],
-    [K.fotogramas + 0.05, [0.3, 1.72, 2.75], [0, 1.72, 0], 32],
-    [K.mueve + 0.45, [0.15, 1.74, 2.5], [0, 1.74, 0], 32],
     [K.sonido16 + 0.05, [0.0, 0.62, 3.6], [0, 0.42, 0.75], 32],
     [K.tira + 0.4, [0.05, 0.6, 3.4], [0.05, 0.4, 0.75], 32],
     // vuelve a verlo: el ojo entero y otra vez hacia la pupila
@@ -930,7 +907,7 @@ function blendCam(A, B, w) { return { p: A.p.clone().lerp(B.p, w), l: A.l.clone(
 function camAt(t) {
   let c = camKeys(t, CK);
   const we = win(t, END - 1.25, 0.95); if (we > 0) c = blendCam(c, camKeys(t - END, CK_OPEN), we);
-  let sh = 0; for (const [t0, a] of [[K.borrado, 0.012], [K.cables + 0.1, 0.008], [K.veriais, 0.006], [K.no13, 0.01], [K.apellido, 0.008], [K.tira, 0.008]]) if (t > t0) sh += a * Math.exp(-(t - t0) * 8);
+  let sh = 0; for (const [t0, a] of [[K.borrado, 0.012], [K.veriais, 0.006], [K.no13, 0.01], [K.apellido, 0.008], [K.tira, 0.008]]) if (t > t0) sh += a * Math.exp(-(t - t0) * 8);
   if (sh > 1e-4) { c.p.x += sh * Math.sin(t * 97); c.p.y += sh * Math.cos(t * 83); }
   return c;
 }
@@ -944,7 +921,7 @@ const HMAG = '#FF7AB8';
 function co(t, t0, t1, anchor, txt, sub, o = {}) { const k = ckk(t, t0, t1, o.d || 0.6); if (k > 0) callout(anchor, txt, sub, k, { ...o, fade: ckf(t, t1) }); }
 let SECT = [];
 function buildHudPlan() {
-  SECT = [[-9, 'EL VÍDEO QUE ESTÁS VIENDO'], [K.borra, 'EL PIQUE'], [K.municion, 'LA MUNICIÓN'], [K.fp5, 'LO QUE DICE CADA BANDO'], [K.asi, 'POR DENTRO'],
+  SECT = [[-9, 'EL VÍDEO QUE ESTÁS VIENDO'], [K.borra, 'EL PIQUE'], [K.municion, 'LA MUNICIÓN'], [K.sonido6, 'LA RESPUESTA'], [K.asi, 'POR DENTRO'],
     [K.entonces, 'VEREDICTO'], [K.truco14, 'EL TRUCO'], [K.ahora, 'TU TURNO']];
 }
 function sectAt(t) { let s = SECT[0][1]; for (const [t0, x] of SECT) if (t >= t0 - 0.05) s = x; return s; }
@@ -968,9 +945,9 @@ function headerSI(t, sub) {
   // bucles abiertos: el veredicto y el truco (se cierran al final)
   let x0 = 1024;
   if (t >= K.apellido + 0.1) x0 = loopBox(t, 'VEREDICTO · CON APELLIDO ✓', HC.white, clamp((t - K.apellido - 0.1) / 0.3), 240, false);
-  else if (t >= K.tienen3) x0 = loopBox(t, 'VEREDICTO · ???', HC.white, clamp((t - K.tienen3) / 0.2), 240, true);
+  else if (t >= K.facil2 + 0.4) x0 = loopBox(t, 'VEREDICTO · ???', HC.white, clamp((t - K.facil2 - 0.4) / 0.2), 240, true);
   if (t >= K.tira + 0.2) loopBox(t, 'TRUCO · ✓', HC.white, clamp((t - K.tira - 0.2) / 0.3), 240, false, x0 - 18);
-  else if (t >= K.truco3) loopBox(t, 'TRUCO · ???', HC.white, clamp((t - K.truco3) / 0.2), 240, true, x0 - 18);
+  else if (t >= K.notado + 0.4) loopBox(t, 'TRUCO · ???', HC.white, clamp((t - K.notado - 0.4) / 0.2), 240, true, x0 - 18);
 }
 function pill(txt, t, t0, t1, y = 1500, col = HC.white) { const k = ckk(t, t0, t1, 0.4) * ckf(t, t1); if (k <= 0) return; hg.save(); hg.globalAlpha = k; hfont(21, false); hg.letterSpacing = '3px';
   const w = hg.measureText(txt).width + 60; hg.fillStyle = 'rgba(0,0,0,.6)'; rr(hg, 540 - w / 2, y - 28, w, 56, 28); hg.fill(); hg.strokeStyle = 'rgba(238,242,246,.3)'; hg.lineWidth = 1.5; hg.stroke();
@@ -987,11 +964,10 @@ function hudAt(t) {
   if (ck > 0) { const n = Math.round(99 * sm5(clamp((tt - K.mas1) / Math.max(0.4, K.ciento - K.mas1 + 0.2)))), pb = tt > K.borrado ? Math.exp(-(tt - K.borrado) * 5) : 0;
     bigText(n + ' %', 540, 1300, Math.round(170 * (1 + 0.25 * pb)), HC.red, ck, { type: false, glow: 30 + 30 * pb, ls: 8 });
     bigText('DEL VÍDEO, BORRADO', 540, 1420, 40, HC.white, ck * clamp((tt - K.video1 + 0.1) / 0.3), { ls: 8 }); }
-  stamp('¿LA TELECO FÁCIL?', 540, 1380, ckk(t, K.facil2 - 0.05, K.tienen3 + 0.6, 0.35) * ckf(t, K.tienen3 + 0.6), HC.amber, 58);
+  stamp('¿LA TELECO FÁCIL?', 540, 1380, ckk(t, K.facil2 - 0.05, K.municion + 0.2, 0.35) * ckf(t, K.municion + 0.2), HC.amber, 58);
   // ---- 4: la munición
-  pill('UPM · NOTAS DE CORTE 2025-26', t, K.politecnica, K.fp5 - 0.1, 1540);
-  // ---- 5-6: lo que dice cada bando
-  co(t, K.enchufando - 0.1, K.sonido6 - 0.05, wpos(D.pl), '«4 AÑOS PARA ENCHUFAR CABLES»', 'DICEN LOS DE FP', { dx: -110, dy: -190, color: HMAG, d: 0.45, size: 26 });
+  pill('UPM · NOTAS DE CORTE 2025-26', t, K.politecnica, K.sonido6 - 0.1, 1540);
+  // ---- 4: la respuesta de Sonido e Imagen
   if (D.T.visible) co(t, K.sin6 - 0.05, K.asi, wpos(D.T).add(v3(0, 0.38, 0)), '«SIN NOSOTROS, NI UNA SERIE»', 'RESPONDE SONIDO E IMAGEN', { dx: -120, dy: -170, color: HC.teal, d: 0.45 });
   // ---- 7-9: por dentro
   co(t, K.senales, K.convierten + 0.2, v3(IZ.x - 0.35, 1.7, IZ.z), 'SEÑAL', 'CONTINUA', { dx: 120, dy: -170, color: HC.teal, d: 0.35 });
@@ -1004,7 +980,7 @@ function hudAt(t) {
   // ---- 10-13: veredicto
   stamp('¿FÁCIL?', 540, 1380, ckk(t, K.facil10 - 0.05, K.nota, 0.35) * ckf(t, K.nota), HC.amber, 80);
   pill('NOTA DE CORTE = LA DEL ÚLTIMO QUE ENTRA', t, K.nota, K.dos12 - 0.1, 1540);
-  if (D.crT.visible) co(t, K.gente, K.pide + 0.5, v3(DZ.x - 0.95, 0.12, DZ.z + 0.75), 'CUÁNTA GENTE LA PIDE', null, { dx: 80, dy: -230, color: HC.white, d: 0.4 });
+  if (D.crT.visible) co(t, K.gente, K.pide + 0.5, v3(DZ.x - 0.6, 0.12, DZ.z + 0.85), 'CUÁNTA GENTE LA PIDE', null, { dx: 60, dy: -260, color: HC.white, d: 0.4 });
   stamp('DIFICULTAD ✕', 540, 1380, ckk(t, K.dificil - 0.05, K.dos12, 0.35) * ckf(t, K.dos12), HC.red, 62);
   if (D.dT.visible) co(t, K.profesion - 0.1, K.master - 0.15, wpos(D.dT).add(v3(0, 0.16, 0)), 'LA MISMA PROFESIÓN', 'INGENIERO TÉCNICO DE TELECOMUNICACIÓN', { dx: 90, dy: -190, color: HC.white, d: 0.4 });
   if (D.door.visible) co(t, K.master - 0.05, K.facil13, wpos(D.door).add(v3(0.42, 1.3, 0)), 'EL MISMO MÁSTER', 'INGENIERO DE TELECOMUNICACIÓN', { dx: 100, dy: -150, color: HC.white, d: 0.4 });
@@ -1013,7 +989,6 @@ function hudAt(t) {
   // ---- 14-16: el truco
   if (E.luma.visible) co(t, K.luz - 0.05, K.menos + 0.3, wpos(E.luma).add(v3(-0.3, 0.55, 0)), 'LUZ', 'TODO EL DETALLE', { dx: -100, dy: -170, color: HC.white, d: 0.4 });
   if (E.chroma.visible) co(t, K.color14b - 0.05, K.menos + 0.3, wpos(E.chroma).add(v3(0.42, -0.5, 0)), 'COLOR', '¼ DE LOS PUNTOS', { dx: 110, dy: 170, color: HC.amber, d: 0.4 });
-  co(t, K.guarda15 - 0.1, K.sonido16 - 0.15, v3(0, EYE_C.y + 0.32, 0.03), 'SOLO LO QUE SE MUEVE', 'EL RESTO, COPIADO DEL ANTERIOR', { dx: 90, dy: 260, color: HC.white, d: 0.4 });
   if (S.spec.visible) { const bx = i => S.spec.position.x + (i - (P.N - 1) / 2) * 0.034;
     co(t, K.fuerte - 0.05, K.ahora, v3(bx(P.LOUD), P.H0[P.LOUD] + 0.02, S.spec.position.z), 'FUERTE', null, { dx: -110, dy: -120, color: HC.amber, d: 0.35 });
     co(t, K.flojo - 0.05, K.tira + 0.1, v3(bx(P.WEAK), P.H0[P.WEAK] + 0.02, S.spec.position.z), 'FLOJO', 'TAPADO', { dx: 110, dy: -260, color: HC.teal, d: 0.35 });
@@ -1040,7 +1015,7 @@ function frame(t) {
   const inv = [[dy[1] / det, -dy[0] / det], [-dx[1] / det, dx[0] / det]];
   const J = [N[0][0] * inv[0][0] + N[0][1] * inv[1][0], N[0][0] * inv[0][1] + N[0][1] * inv[1][1], N[1][0] * inv[0][0] + N[1][1] * inv[1][0], N[1][0] * inv[0][1] + N[1][1] * inv[1][1]];
   post.uniforms.m0.value.set(m[0][0], m[0][1]); post.uniforms.a0.value.set(a[0].x, a[0].y); post.uniforms.J.value.set(...J);
-  let fl = 0; for (const [t0, k] of [[K.borrado, 0.1], [K.cables + 0.1, 0.06], [K.no13, 0.07], [K.apellido, 0.07], [K.tira, 0.05]]) if (t > t0) fl += k * Math.exp(-(t - t0) / 0.07);
+  let fl = 0; for (const [t0, k] of [[K.borrado, 0.1], [K.no13, 0.07], [K.apellido, 0.07], [K.tira, 0.05]]) if (t > t0) fl += k * Math.exp(-(t - t0) / 0.07);
   post.uniforms.flash.value = fl; post.uniforms.tint.value.set(0, 0, 0);
   return st;
 }
@@ -1084,22 +1059,19 @@ window.renderCover = function () {
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
   K = {
     te1: atL(1, '=te'), enganando: atL(1, 'enganando'), mas1: atL(1, '=mas'), noventa: atL(1, 'noventa'), ciento: atL(1, 'ciento'), video1: atL(1, 'video'), borrado: atL(1, 'borrado'),
-    y2: atL(2, '=y'), notado: atL(2, 'notado'), borra: atL(2, 'borra'), sonido2: atL(2, 'sonido'), carrera2: atL(2, 'carrera'), teleco2: atL(2, 'teleco'), llaman: atL(2, 'llaman'), facil2: atL(2, 'facil'),
-    tienen3: atL(3, 'tienen'), razon: atL(3, 'razon'), final: atL(3, 'final'), truco3: atL(3, 'truco'),
-    municion: atL(4, 'municion'), politecnica: atL(4, 'politecnica'), teleco4: atL(4, 'teleco'), nueve: atL(4, 'nueve'), cuatro4: atL(4, 'cuatro'), sonido4: atL(4, 'sonido'), ocho: atL(4, 'ocho'),
-    fp5: atL(5, '=fp'), rematan: atL(5, 'rematan'), cuatro5: atL(5, 'cuatro'), enchufando: atL(5, 'enchufando'), cables: atL(5, 'cables'),
-    sonido6: atL(6, 'sonido'), responde: atL(6, 'responde'), sin6: atL(6, '=sin'), veriais: atL(6, 'veriais'), serie: atL(6, 'serie'),
-    asi: atL(7, 'asi'), dentro: atL(7, 'dentro'), senales: atL(7, 'senales'), matematicas: atL(7, 'matematicas'), convierten: atL(7, 'convierten'), numeros: atL(7, 'numeros'),
-    acustica: atL(8, '=acustica'), electro: atL(8, 'electroacustica'), salas: atL(8, 'salas'), microfonos: atL(8, 'microfonos'), altavoces: atL(8, 'altavoces'),
-    video9: atL(9, 'video'), llega: atL(9, 'llega'), millones: atL(9, 'millones'), pantallas: atL(9, 'pantallas'), vez: atL(9, 'vez'),
-    entonces: atL(10, 'entonces'), facil10: atL(10, 'facil'),
-    nota: atL(11, 'nota'), mide: atL(11, 'mide'), gente: atL(11, 'gente'), pide: atL(11, 'pide'), dificil: atL(11, 'dificil'),
-    dos12: atL(12, '=dos'), misma: atL(12, 'misma'), profesion: atL(12, 'profesion'), ingeniero: atL(12, 'ingeniero'), master: atL(12, 'master'),
-    teleco13: atL(13, 'teleco'), facil13: atL(13, 'facil'), no13: atL(13, '=no'), teleco13b: atL(13, 'teleco', 2), apellido: atL(13, 'apellido'),
-    truco14: atL(14, 'truco'), ojo: atL(14, 'ojo'), luz: atL(14, 'luz'), color14: atL(14, 'color'), color14b: atL(14, 'color', 2), cuatro14: atL(14, 'cuatro'), menos: atL(14, 'menos'),
-    fotogramas: atL(15, 'fotogramas'), cambia: atL(15, 'cambia'), guarda15: atL(15, 'guarda'), mueve: atL(15, 'mueve'),
-    sonido16: atL(16, 'sonido'), fuerte: atL(16, 'fuerte'), tapa: atL(16, 'tapa'), flojo: atL(16, 'flojo'), flojo2: atL(16, 'flojo', 2), tira: atL(16, 'tira'),
-    ahora: atL(17, 'ahora'), vuelve: atL(17, 'vuelve'), notas: atL(17, 'notas'), teleco17: atL(17, 'teleco'), leo: atL(17, 'leo'), mandaselo: atL(17, 'mandaselo'),
+    y2: atL(2, '=y'), notado: atL(2, 'notado'), borra: atL(2, 'borra'), ingenieria2: atL(2, 'ingenieria'), sonido2: atL(2, 'sonido'), carrera2: atL(2, 'carrera'), teleco2: atL(2, 'teleco'), llaman: atL(2, 'llaman'), facil2: atL(2, 'facil'),
+    municion: atL(3, 'municion'), politecnica: atL(3, 'politecnica'), teleco4: atL(3, 'teleco'), nueve: atL(3, 'nueve'), cuatro4: atL(3, 'cuatro'), sonido4: atL(3, 'sonido'), ocho: atL(3, 'ocho'),
+    sonido6: atL(4, 'sonido'), responde: atL(4, 'responde'), sin6: atL(4, '=sin'), veriais: atL(4, 'veriais'), serie: atL(4, 'serie'),
+    asi: atL(5, 'asi'), dentro: atL(5, 'dentro'), senales: atL(5, 'senales'), matematicas: atL(5, 'matematicas'), convierten: atL(5, 'convierten'), numeros: atL(5, 'numeros'),
+    acustica: atL(6, '=acustica'), electro: atL(6, 'electroacustica'), salas: atL(6, 'salas'), microfonos: atL(6, 'microfonos'), altavoces: atL(6, 'altavoces'),
+    video9: atL(7, 'video'), llega: atL(7, 'llega'), millones: atL(7, 'millones'), pantallas: atL(7, 'pantallas'), vez: atL(7, 'vez'),
+    entonces: atL(8, 'entonces'), facil10: atL(8, 'facil'),
+    nota: atL(9, 'nota'), mide: atL(9, 'mide'), gente: atL(9, 'gente'), pide: atL(9, 'pide'), dificil: atL(9, 'dificil'),
+    dos12: atL(10, '=dos'), misma: atL(10, 'misma'), profesion: atL(10, 'profesion'), ingeniero: atL(10, 'ingeniero'), master: atL(10, 'master'),
+    teleco13: atL(11, 'teleco'), facil13: atL(11, 'facil'), no13: atL(11, '=no'), teleco13b: atL(11, 'teleco', 2), apellido: atL(11, 'apellido'),
+    truco14: atL(12, 'truco'), ojo: atL(12, 'ojo'), luz: atL(12, 'luz'), color14: atL(12, 'color'), color14b: atL(12, 'color', 2), cuatro14: atL(12, 'cuatro'), menos: atL(12, 'menos'),
+    sonido16: atL(13, 'sonido'), fuerte: atL(13, 'fuerte'), tapa: atL(13, 'tapa'), flojo: atL(13, 'flojo'), flojo2: atL(13, 'flojo', 2), tira: atL(13, 'tira'),
+    ahora: atL(14, 'ahora'), vuelve: atL(14, 'vuelve'), notas: atL(14, 'notas'), teleco17: atL(14, 'teleco'), leo: atL(14, 'leo'), mandaselo: atL(14, 'mandaselo'),
   };
   { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5; }
   buildCam(); buildHudPlan();

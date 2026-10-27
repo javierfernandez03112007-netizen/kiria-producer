@@ -19,8 +19,6 @@ function buildCam() {
     [K.teleco2 + 0.05, [-1.55, 1.5, -6.7], [-0.62, 0.9, -9], 32, 0.02],
     [K.facil2 + 0.3, [-1.3, 1.55, -6.9], [-0.62, 0.95, -9], 32],
     // ¿tienen razón? plano general de los tres bandos
-    [K.tienen3 + 0.1, [0, 2.3, -3.7], [0, 0.6, -9.3], 32],
-    [K.truco3 + 0.3, [0.1, 2.2, -3.9], [0, 0.6, -9.3], 32],
     // munición: notas de corte
     [K.municion, [0, 1.65, -4.9], [0, 1.0, -10.4], 32],
     [K.teleco4, [-0.5, 1.5, -5.9], [-0.2, 0.95, -10.6], 32, 0.02],
@@ -28,10 +26,6 @@ function buildCam() {
     [K.sonido4, [0.5, 1.5, -5.9], [0.2, 0.95, -10.6], 32, -0.02],
     [K.ocho + 0.15, [0.08, 1.7, -4.7], [0, 1.3, -10.6], 32],
     [K.ocho + 0.7, [0.04, 1.72, -4.5], [0, 1.3, -10.6], 32],
-    // FP: el cable que se enchufa
-    [K.rematan, [-0.1, 2.2, -7.0], [0.12, 0.35, -9.85], 32],
-    [K.enchufando, [0.2, 1.9, -7.1], [0.3, 0.45, -9.5], 32],
-    [K.cables + 0.35, [0.5, 1.7, -7.3], [0.5, 0.5, -9.25], 32],
     // la tele: sin nosotros, ni una serie
     [K.responde, [2.0, 1.05, -7.2], [1.3, 0.82, -8.65], 32],
     [K.serie + 0.35, [1.85, 1.0, -7.4], [1.3, 0.82, -8.65], 32],
@@ -46,9 +40,8 @@ function buildCam() {
     // veredicto: vuelta al duelo
     [K.entonces + 0.25, [0, 1.9, -3.4], [0, 1.0, -9.6], 32],
     [K.facil10 + 0.3, [0.05, 1.85, -3.6], [0, 1.0, -9.6], 32],
-    [K.nota + 0.05, [-1.9, 1.5, -5.6], [-0.95, 0.25, -8.3], 32, 0.02],
-    [K.pide, [1.9, 1.5, -5.6], [0.95, 0.25, -8.3], 32, -0.02],
-    [K.dificil + 0.25, [0, 2.2, -4.2], [0, 0.4, -8.6], 32],
+    [K.nota + 0.05, [0, 2.5, -3.9], [0, 0.5, -8.7], 36],
+    [K.dificil + 0.25, [0, 2.65, -3.6], [0, 0.45, -8.6], 36],
     [K.dos12 + 0.05, [0, 1.5, -5.4], [0, 1.0, -9.0], 32],
     [K.profesion, [0, 1.4, -6.2], [0, 1.1, -8.8], 32],
     [K.master + 0.1, [0.15, 1.35, -6.6], [0, 0.85, -10.5], 32],
@@ -58,8 +51,6 @@ function buildCam() {
     [K.truco14 + 0.3, [0.6, 1.66, 3.2], EYE_L, 32, 0.02],
     [K.luz, [2.35, 1.9, 2.45], EYE_L, 32],
     [K.menos + 0.3, [2.15, 1.8, 2.65], EYE_L, 32],
-    [K.fotogramas + 0.05, [0.3, 1.72, 2.75], [0, 1.72, 0], 32],
-    [K.mueve + 0.45, [0.15, 1.74, 2.5], [0, 1.74, 0], 32],
     [K.sonido16 + 0.05, [0.0, 0.62, 3.6], [0, 0.42, 0.75], 32],
     [K.tira + 0.4, [0.05, 0.6, 3.4], [0.05, 0.4, 0.75], 32],
     // vuelve a verlo: el ojo entero y otra vez hacia la pupila
@@ -71,7 +62,7 @@ function blendCam(A, B, w) { return { p: A.p.clone().lerp(B.p, w), l: A.l.clone(
 function camAt(t) {
   let c = camKeys(t, CK);
   const we = win(t, END - 1.25, 0.95); if (we > 0) c = blendCam(c, camKeys(t - END, CK_OPEN), we);
-  let sh = 0; for (const [t0, a] of [[K.borrado, 0.012], [K.cables + 0.1, 0.008], [K.veriais, 0.006], [K.no13, 0.01], [K.apellido, 0.008], [K.tira, 0.008]]) if (t > t0) sh += a * Math.exp(-(t - t0) * 8);
+  let sh = 0; for (const [t0, a] of [[K.borrado, 0.012], [K.veriais, 0.006], [K.no13, 0.01], [K.apellido, 0.008], [K.tira, 0.008]]) if (t > t0) sh += a * Math.exp(-(t - t0) * 8);
   if (sh > 1e-4) { c.p.x += sh * Math.sin(t * 97); c.p.y += sh * Math.cos(t * 83); }
   return c;
 }

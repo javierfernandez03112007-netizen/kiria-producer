@@ -17,8 +17,8 @@ sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.audio import silences  # noqa: E402
 
 SR = 44100
-TEMPO = 1.15          # velocidad final (la voz original dura 75 s; ritmo de debate)
-PAUSE = {3: 0.42, 6: 0.3, 8: 0.3, 11: 0.32, 12: 0.42, 14: 0.3}   # pausa tras la frase i (antes del atempo)
+TEMPO = 1.08          # velocidad final (la voz original dura 74 s; que el vídeo pase del minuto)
+PAUSE = {1: 0.3, 2: 0.36, 4: 0.42, 7: 0.42, 8: 0.32, 11: 0.45, 13: 0.38}   # pausa tras la frase i (antes del atempo)
 PAUSE_DEF = 0.27
 INNER_MAX = 0.15      # silencios internos (comas, puntos dentro de la frase) como máximo
 

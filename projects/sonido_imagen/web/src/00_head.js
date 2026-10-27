@@ -1,5 +1,5 @@
-// «Sonido e Imagen»: un ojo hecho de cubos que estalla (el 99 % borrado), el pique Teleco / Sonido e Imagen / FP, la carrera por dentro,
-// el veredicto («Teleco con apellido») y los tres trucos de la compresión (color a ¼, solo lo que se mueve, el sonido tapado).
+// «Sonido e Imagen»: un ojo hecho de cubos que estalla (el 99 % borrado), el pique Teleco / Sonido e Imagen, la carrera por dentro,
+// el veredicto («Teleco con apellido») y dos trucos de la compresión (el color a ¼ y el sonido tapado).
 // Espacio 3D negro con flujo óptico y suelo espejo.
 // Encima, un HUD técnico en blanco y grises (líneas guía, etiquetas monoespaciadas) dibujado en un lienzo 2D.
 // window.renderAt(t) dibuja el instante t. Pensado para 60 fps.

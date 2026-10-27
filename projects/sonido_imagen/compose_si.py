@@ -1,6 +1,6 @@
 """Compone «Sonido e Imagen»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en Impact
-(Teleco ámbar, Sonido e Imagen turquesa, FP magenta, lo borrado en rojo) + voz + efectos sintetizados (fallo digital,
-explosión de cubos, barras, enchufe, tele sin señal, señal, sala, emisión, público, sellos, y los dos tonos del truco final).
+(Teleco ámbar, Sonido e Imagen turquesa, lo borrado en rojo) + voz + efectos sintetizados (fallo digital,
+explosión de cubos, barras, tele sin señal, señal, sala, emisión, público, sellos, y los dos tonos del truco final).
 
     python3 ajustar_voz.py
     ./render_local.sh                                   (o trozos en varias máquinas + merge_chunks.sh)
@@ -42,22 +42,19 @@ def at(word, k=1, line=None):
 # ---------------------------------------------------------------- subtítulos
 T, A, M, R, WH = "#62E3D4", "#FFB547", "#FF7AB8", "#FF5A4E", "#EEF2F6"
 KEY = {1: {"engañando": R, "noventa": R, "nueve": R, "borrado": R},
-       2: {"notado": WH, "sonido": T, "imagen": T, "teleco": A, "fácil": A},
-       3: {"razón": WH, "truco": WH},
-       4: {"munición": WH, "teleco": A, "nueve": A, "cuatro": A, "sonido": T, "imagen": T, "ocho": T},
-       5: {"fp": M, "cuatro": M, "cables": M},
-       6: {"sonido": T, "imagen": T, "serie": T},
-       7: {"dentro": WH, "señales": T, "números": T},
-       8: {"acústica": WH, "electroacústica": WH, "micrófonos": T, "altavoces": T},
-       9: {"vídeo": WH, "millones": T, "pantallas": T},
-       10: {"teleco": A, "fácil": A},
-       11: {"gente": WH, "difícil": R},
-       12: {"misma": WH, "profesión": WH, "máster": WH},
-       13: {"fácil": R, "no": R, "apellido": T},
-       14: {"truco": WH, "luz": WH, "color": A, "cuatro": A, "menos": A},
-       15: {"mueve": WH},
-       16: {"fuerte": A, "flojo": T, "tira": R},
-       17: {"verlo": WH, "teleco": A, "fácil": A}}
+       2: {"notado": WH, "ingeniería": T, "sonido": T, "imagen": T, "teleco": A, "fácil": A},
+       3: {"munición": WH, "teleco": A, "nueve": A, "cuatro": A, "sonido": T, "imagen": T, "ocho": T},
+       4: {"sonido": T, "imagen": T, "serie": T},
+       5: {"señales": T, "números": T},
+       6: {"acústica": WH, "electroacústica": WH, "micrófonos": T, "altavoces": T},
+       7: {"vídeo": WH, "millones": T, "pantallas": T},
+       8: {"teleco": A, "fácil": A},
+       9: {"gente": WH, "difícil": R},
+       10: {"misma": WH, "profesión": WH, "máster": WH},
+       11: {"fácil": R, "no": R, "apellido": T},
+       12: {"truco": WH, "luz": WH, "color": A, "cuatro": A, "menos": A},
+       13: {"fuerte": A, "flojo": T, "tira": R},
+       14: {"verlo": WH, "teleco": A, "fácil": A}}
 SUBS = None
 
 
@@ -237,27 +234,21 @@ def sfx_track(path):
     mix(sfx.whoosh(0.9), at("borrado") + 0.05, 0.6)
     mix(rewind(sr), at("notado") - 0.55, 0.7)
     mix(sfx.clack(5), at("notado") + 0.02, 0.6)
-    # 2-3: el pique
+    # 2: el pique
     mix(sfx.whoosh(1.0), at("borra") - 0.25, 0.8)                       # vuelo al duelo
     mix(ping(1568.0, 0.5, sr), at("teleco", 1, 2) + 0.02, 0.35)
     mix(sfx.clack(6), at("fácil", 1, 2) + 0.03, 0.8)
     mix(buzz(0.22, sr), at("fácil", 1, 2) + 0.05, 0.35)
-    mix(sfx.whoosh(0.7), at("tienen", 1, 3) - 0.2, 0.45)
-    mix(sfx_ding(1318.5, 0.9, sr), at("truco", 1, 3), 0.6)
-    # 4: munición (las dos barras)
-    mix(sweep(260, 820, max(0.5, at("cuatro", 1, 4) - at("teleco", 1, 4) + 0.2), sr), at("teleco", 1, 4), 0.8)
-    mix(sfx_ding(1567.98, 0.9, sr), at("nueve", 1, 4), 0.7)
-    mix(sweep(240, 700, max(0.5, at("ocho") - at("sonido", 1, 4) + 0.2), sr), at("sonido", 1, 4), 0.8)
+    # 3: munición (las dos barras)
+    mix(sweep(260, 820, max(0.5, at("cuatro", 1, 3) - at("teleco", 1, 3) + 0.2), sr), at("teleco", 1, 3), 0.8)
+    mix(sfx_ding(1567.98, 0.9, sr), at("nueve", 1, 3), 0.7)
+    mix(sweep(240, 700, max(0.5, at("ocho") - at("sonido", 1, 3) + 0.2), sr), at("sonido", 1, 3), 0.8)
     mix(sfx_ding(1396.9, 0.9, sr), at("ocho"), 0.7)
-    # 5-6: FP enchufa el cable; la tele se queda sin señal
-    mix(sfx.whoosh(0.6), at("rematan") - 0.15, 0.4)
-    mix(sfx.whoosh(0.8), at("cuatro", 1, 5), 0.35)
-    mix(sfx.clack(7), at("cables") + 0.1, 0.9)
-    mix(sizzle(0.6, sr), at("cables") + 0.1, 0.6)
+    # 4: sin Sonido e Imagen, la tele se queda sin señal
     mix(sfx.whoosh(0.6), at("responde") - 0.2, 0.35)
     mix(static(1.5, sr), at("veríais"), 0.8)
     mix(thump(sr, 45, 0.3), at("veríais"), 0.6)
-    # 7-9: por dentro
+    # 5-7: por dentro
     mix(sfx.whoosh(1.1), at("así") - 0.2, 0.8)                           # vuelo a «por dentro»
     mix(tone(440, 1.3, sr, 0.16, 0.25), at("señales"), 0.7)
     for k in range(12):
@@ -268,41 +259,38 @@ def sfx_track(path):
     mix(sfx.clack(1), at("micrófonos") + 0.02, 0.4)
     for k in range(3):
         mix(thump(sr), at("altavoces") + k * 0.18, 0.7)
-    mix(sfx.whoosh(0.9), at("vídeo", 1, 9) - 0.2, 0.5)
+    mix(sfx.whoosh(0.9), at("vídeo", 1, 7) - 0.2, 0.5)
     for k in range(3):
         mix(ping(1046.5, 0.9, sr), at("llega") + k * 0.32, 0.35)
     rng = np.random.default_rng(12)
     for k in range(22):
         mix(blip(rng.uniform(2500, 5000), rng.uniform(2500, 5000), 0.04, sr), at("millones") + rng.uniform(0, 1.2), 0.25)
-    # 10-13: veredicto
+    # 8-11: veredicto
     mix(sfx.whoosh(1.1), at("entonces") - 0.25, 0.8)                     # vuelta al duelo
-    mix(sfx.clack(3), at("fácil", 1, 10) + 0.03, 0.7)
-    mix(murmur(max(1.0, at("dos", 1, 12) - at("gente", 1, 11) + 0.3), sr), at("gente", 1, 11) - 0.1, 0.55)
+    mix(sfx.clack(3), at("fácil", 1, 8) + 0.03, 0.7)
+    mix(murmur(max(1.0, at("dos", 1, 10) - at("gente", 1, 9) + 0.3), sr), at("gente", 1, 9) - 0.1, 0.55)
     mix(buzz(0.28, sr), at("difícil") + 0.03, 0.5)
     mix(sfx.clack(8), at("difícil") + 0.03, 0.7)
-    mix(sfx.whoosh(0.8), at("dos", 1, 12) - 0.1, 0.45)
+    mix(sfx.whoosh(0.8), at("dos", 1, 10) - 0.1, 0.45)
     mix(chord(sr), at("profesión"), 0.6)
     mix(sfx.whoosh(0.7), at("máster") - 0.3, 0.45)
     mix(sfx_ding(2093.0, 1.0, sr), at("máster") + 0.1, 0.55)
-    mix(buzz(0.3, sr), at("no", 1, 13) + 0.02, 0.55)
-    mix(sfx.clack(4), at("no", 1, 13) + 0.02, 0.8)
+    mix(buzz(0.3, sr), at("no", 1, 11) + 0.02, 0.55)
+    mix(sfx.clack(4), at("no", 1, 11) + 0.02, 0.8)
     mix(sfx.whoosh(0.5), at("apellido") - 0.3, 0.4)
     mix(sfx.clack(9), at("apellido") + 0.05, 0.9)
     mix(chord(sr, (659.25, 783.99, 987.77, 1318.5)), at("apellido") + 0.1, 0.8)
-    # 14-16: el truco
-    mix(sfx.whoosh(1.1), at("truco", 1, 14) - 0.25, 0.8)                # vuelta al ojo
+    # 12-13: el truco
+    mix(sfx.whoosh(1.1), at("truco") - 0.25, 0.8)                # vuelta al ojo
     mix(sfx.whoosh(0.7), at("luz") - 0.1, 0.5)
-    mix(sfx_ding(1174.7, 0.8, sr), at("color", 2, 14), 0.45)
-    for k in range(8):
-        mix(sfx.tick(4 + k % 6), at("fotogramas") + 0.1 + k * 0.3, 0.2)
-    mix(sfx_ding(1567.98, 0.8, sr), at("mueve"), 0.4)
+    mix(sfx_ding(1174.7, 0.8, sr), at("color", 2, 12), 0.45)
     # los dos tonos: el fuerte tapa al flojo… y el flojo se quita sin que se note
     tf = at("fuerte")
     mix(tone(880.0, max(0.8, at("tira") + 0.9 - tf), sr, 0.2, 0.08), tf, 0.8)
-    tw = at("flojo", 1, 16)
+    tw = at("flojo", 1, 13)
     mix(tone(990.0, max(0.3, at("tira") - tw), sr, 0.035, 0.05), tw, 0.8)
     mix(shatter(sr, 0.7, seed=5, n=12), at("tira") + 0.02, 0.5)
-    # 17: vuelve a verlo
+    # 14: vuelve a verlo
     mix(rewind(sr, 0.8), at("vuelve") - 0.2, 0.5)
     mix(bell(sr), at("leo"), 0.35)
     mix(sfx.whoosh(1.2), END - 1.2, 0.6)
