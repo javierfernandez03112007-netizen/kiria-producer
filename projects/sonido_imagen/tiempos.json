@@ -1,0 +1,1291 @@
+[
+ {
+  "text": "Te están engañando: más del noventa y nueve por ciento de este vídeo… está borrado.",
+  "words": [
+   {
+    "w": "Te",
+    "start": 0.0,
+    "end": 0.125
+   },
+   {
+    "w": "están",
+    "start": 0.125,
+    "end": 0.374
+   },
+   {
+    "w": "engañando:",
+    "start": 0.374,
+    "end": 0.872
+   },
+   {
+    "w": "más",
+    "start": 1.012,
+    "end": 1.137
+   },
+   {
+    "w": "del",
+    "start": 1.137,
+    "end": 1.261
+   },
+   {
+    "w": "noventa",
+    "start": 1.261,
+    "end": 1.635
+   },
+   {
+    "w": "y",
+    "start": 1.635,
+    "end": 1.76
+   },
+   {
+    "w": "nueve",
+    "start": 1.76,
+    "end": 2.009
+   },
+   {
+    "w": "por",
+    "start": 2.009,
+    "end": 2.134
+   },
+   {
+    "w": "ciento",
+    "start": 2.134,
+    "end": 2.383
+   },
+   {
+    "w": "de",
+    "start": 2.383,
+    "end": 2.508
+   },
+   {
+    "w": "este",
+    "start": 2.508,
+    "end": 2.757
+   },
+   {
+    "w": "vídeo…",
+    "start": 2.757,
+    "end": 3.006
+   },
+   {
+    "w": "está",
+    "start": 3.326,
+    "end": 3.575
+   },
+   {
+    "w": "borrado.",
+    "start": 3.575,
+    "end": 3.949
+   }
+  ],
+  "start": 0.0,
+  "end": 3.949
+ },
+ {
+  "text": "Y no lo has notado. Lo borra gente de Sonido e Imagen: la carrera que muchos de Teleco llaman «la Teleco fácil».",
+  "words": [
+   {
+    "w": "Y",
+    "start": 4.309,
+    "end": 4.434
+   },
+   {
+    "w": "no",
+    "start": 4.434,
+    "end": 4.558
+   },
+   {
+    "w": "lo",
+    "start": 4.558,
+    "end": 4.683
+   },
+   {
+    "w": "has",
+    "start": 4.683,
+    "end": 4.807
+   },
+   {
+    "w": "notado.",
+    "start": 4.807,
+    "end": 5.181
+   },
+   {
+    "w": "Lo",
+    "start": 5.501,
+    "end": 5.626
+   },
+   {
+    "w": "borra",
+    "start": 5.626,
+    "end": 5.875
+   },
+   {
+    "w": "gente",
+    "start": 5.875,
+    "end": 6.124
+   },
+   {
+    "w": "de",
+    "start": 6.124,
+    "end": 6.249
+   },
+   {
+    "w": "Sonido",
+    "start": 6.249,
+    "end": 6.623
+   },
+   {
+    "w": "e",
+    "start": 6.623,
+    "end": 6.747
+   },
+   {
+    "w": "Imagen:",
+    "start": 6.747,
+    "end": 7.121
+   },
+   {
+    "w": "la",
+    "start": 7.261,
+    "end": 7.386
+   },
+   {
+    "w": "carrera",
+    "start": 7.386,
+    "end": 7.76
+   },
+   {
+    "w": "que",
+    "start": 7.76,
+    "end": 7.884
+   },
+   {
+    "w": "muchos",
+    "start": 7.884,
+    "end": 8.133
+   },
+   {
+    "w": "de",
+    "start": 8.133,
+    "end": 8.258
+   },
+   {
+    "w": "Teleco",
+    "start": 8.258,
+    "end": 8.632
+   },
+   {
+    "w": "llaman",
+    "start": 8.632,
+    "end": 8.881
+   },
+   {
+    "w": "«la",
+    "start": 8.881,
+    "end": 9.006
+   },
+   {
+    "w": "Teleco",
+    "start": 9.006,
+    "end": 9.38
+   },
+   {
+    "w": "fácil».",
+    "start": 9.38,
+    "end": 9.629
+   }
+  ],
+  "start": 4.309,
+  "end": 9.629
+ },
+ {
+  "text": "¿Tienen razón? Al final te lo digo… y te enseño el truco.",
+  "words": [
+   {
+    "w": "¿Tienen",
+    "start": 9.989,
+    "end": 10.238
+   },
+   {
+    "w": "razón?",
+    "start": 10.238,
+    "end": 10.487
+   },
+   {
+    "w": "Al",
+    "start": 10.807,
+    "end": 10.932
+   },
+   {
+    "w": "final",
+    "start": 10.932,
+    "end": 11.181
+   },
+   {
+    "w": "te",
+    "start": 11.181,
+    "end": 11.306
+   },
+   {
+    "w": "lo",
+    "start": 11.306,
+    "end": 11.43
+   },
+   {
+    "w": "digo…",
+    "start": 11.43,
+    "end": 11.679
+   },
+   {
+    "w": "y",
+    "start": 11.999,
+    "end": 12.124
+   },
+   {
+    "w": "te",
+    "start": 12.124,
+    "end": 12.249
+   },
+   {
+    "w": "enseño",
+    "start": 12.249,
+    "end": 12.622
+   },
+   {
+    "w": "el",
+    "start": 12.622,
+    "end": 12.747
+   },
+   {
+    "w": "truco.",
+    "start": 12.747,
+    "end": 12.996
+   }
+  ],
+  "start": 9.989,
+  "end": 12.996
+ },
+ {
+  "text": "Y tienen munición: en la Politécnica de Madrid, Teleco pidió un nueve con cuatro. Sonido e Imagen, un ocho.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 13.356,
+    "end": 13.481
+   },
+   {
+    "w": "tienen",
+    "start": 13.481,
+    "end": 13.73
+   },
+   {
+    "w": "munición:",
+    "start": 13.73,
+    "end": 14.104
+   },
+   {
+    "w": "en",
+    "start": 14.244,
+    "end": 14.369
+   },
+   {
+    "w": "la",
+    "start": 14.369,
+    "end": 14.493
+   },
+   {
+    "w": "Politécnica",
+    "start": 14.493,
+    "end": 15.116
+   },
+   {
+    "w": "de",
+    "start": 15.116,
+    "end": 15.241
+   },
+   {
+    "w": "Madrid,",
+    "start": 15.241,
+    "end": 15.49
+   },
+   {
+    "w": "Teleco",
+    "start": 15.63,
+    "end": 16.004
+   },
+   {
+    "w": "pidió",
+    "start": 16.004,
+    "end": 16.253
+   },
+   {
+    "w": "un",
+    "start": 16.253,
+    "end": 16.378
+   },
+   {
+    "w": "nueve",
+    "start": 16.378,
+    "end": 16.627
+   },
+   {
+    "w": "con",
+    "start": 16.627,
+    "end": 16.752
+   },
+   {
+    "w": "cuatro.",
+    "start": 16.752,
+    "end": 17.001
+   },
+   {
+    "w": "Sonido",
+    "start": 17.321,
+    "end": 17.695
+   },
+   {
+    "w": "e",
+    "start": 17.695,
+    "end": 17.819
+   },
+   {
+    "w": "Imagen,",
+    "start": 17.819,
+    "end": 18.193
+   },
+   {
+    "w": "un",
+    "start": 18.333,
+    "end": 18.458
+   },
+   {
+    "w": "ocho.",
+    "start": 18.458,
+    "end": 18.707
+   }
+  ],
+  "start": 13.356,
+  "end": 18.707
+ },
+ {
+  "text": "Y los de FP rematan: cuatro años para acabar enchufando cables.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 19.067,
+    "end": 19.191
+   },
+   {
+    "w": "los",
+    "start": 19.191,
+    "end": 19.316
+   },
+   {
+    "w": "de",
+    "start": 19.316,
+    "end": 19.441
+   },
+   {
+    "w": "FP",
+    "start": 19.441,
+    "end": 19.565
+   },
+   {
+    "w": "rematan:",
+    "start": 19.565,
+    "end": 19.939
+   },
+   {
+    "w": "cuatro",
+    "start": 20.079,
+    "end": 20.328
+   },
+   {
+    "w": "años",
+    "start": 20.328,
+    "end": 20.578
+   },
+   {
+    "w": "para",
+    "start": 20.578,
+    "end": 20.827
+   },
+   {
+    "w": "acabar",
+    "start": 20.827,
+    "end": 21.201
+   },
+   {
+    "w": "enchufando",
+    "start": 21.201,
+    "end": 21.699
+   },
+   {
+    "w": "cables.",
+    "start": 21.699,
+    "end": 21.948
+   }
+  ],
+  "start": 19.067,
+  "end": 21.948
+ },
+ {
+  "text": "Y Sonido e Imagen responde: sin nosotros, no veríais ni una serie.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 22.308,
+    "end": 22.433
+   },
+   {
+    "w": "Sonido",
+    "start": 22.433,
+    "end": 22.807
+   },
+   {
+    "w": "e",
+    "start": 22.807,
+    "end": 22.931
+   },
+   {
+    "w": "Imagen",
+    "start": 22.931,
+    "end": 23.305
+   },
+   {
+    "w": "responde:",
+    "start": 23.305,
+    "end": 23.679
+   },
+   {
+    "w": "sin",
+    "start": 23.819,
+    "end": 23.944
+   },
+   {
+    "w": "nosotros,",
+    "start": 23.944,
+    "end": 24.317
+   },
+   {
+    "w": "no",
+    "start": 24.457,
+    "end": 24.582
+   },
+   {
+    "w": "veríais",
+    "start": 24.582,
+    "end": 24.831
+   },
+   {
+    "w": "ni",
+    "start": 24.831,
+    "end": 24.956
+   },
+   {
+    "w": "una",
+    "start": 24.956,
+    "end": 25.205
+   },
+   {
+    "w": "serie.",
+    "start": 25.205,
+    "end": 25.454
+   }
+  ],
+  "start": 22.308,
+  "end": 25.454
+ },
+ {
+  "text": "Así es por dentro. Señales: las matemáticas que convierten sonido e imagen en números.",
+  "words": [
+   {
+    "w": "Así",
+    "start": 25.814,
+    "end": 26.063
+   },
+   {
+    "w": "es",
+    "start": 26.063,
+    "end": 26.188
+   },
+   {
+    "w": "por",
+    "start": 26.188,
+    "end": 26.313
+   },
+   {
+    "w": "dentro.",
+    "start": 26.313,
+    "end": 26.562
+   },
+   {
+    "w": "Señales:",
+    "start": 26.882,
+    "end": 27.256
+   },
+   {
+    "w": "las",
+    "start": 27.396,
+    "end": 27.52
+   },
+   {
+    "w": "matemáticas",
+    "start": 27.52,
+    "end": 28.143
+   },
+   {
+    "w": "que",
+    "start": 28.143,
+    "end": 28.268
+   },
+   {
+    "w": "convierten",
+    "start": 28.268,
+    "end": 28.642
+   },
+   {
+    "w": "sonido",
+    "start": 28.642,
+    "end": 29.016
+   },
+   {
+    "w": "e",
+    "start": 29.016,
+    "end": 29.14
+   },
+   {
+    "w": "imagen",
+    "start": 29.14,
+    "end": 29.514
+   },
+   {
+    "w": "en",
+    "start": 29.514,
+    "end": 29.639
+   },
+   {
+    "w": "números.",
+    "start": 29.639,
+    "end": 30.012
+   }
+  ],
+  "start": 25.814,
+  "end": 30.012
+ },
+ {
+  "text": "Acústica y electroacústica: salas, micrófonos y altavoces.",
+  "words": [
+   {
+    "w": "Acústica",
+    "start": 30.372,
+    "end": 30.871
+   },
+   {
+    "w": "y",
+    "start": 30.871,
+    "end": 30.995
+   },
+   {
+    "w": "electroacústica:",
+    "start": 30.995,
+    "end": 31.743
+   },
+   {
+    "w": "salas,",
+    "start": 31.883,
+    "end": 32.132
+   },
+   {
+    "w": "micrófonos",
+    "start": 32.272,
+    "end": 32.771
+   },
+   {
+    "w": "y",
+    "start": 32.771,
+    "end": 32.895
+   },
+   {
+    "w": "altavoces.",
+    "start": 32.895,
+    "end": 33.394
+   }
+  ],
+  "start": 30.372,
+  "end": 33.394
+ },
+ {
+  "text": "Y vídeo: cómo llega una imagen a millones de pantallas a la vez.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 33.754,
+    "end": 33.878
+   },
+   {
+    "w": "vídeo:",
+    "start": 33.878,
+    "end": 34.128
+   },
+   {
+    "w": "cómo",
+    "start": 34.268,
+    "end": 34.517
+   },
+   {
+    "w": "llega",
+    "start": 34.517,
+    "end": 34.766
+   },
+   {
+    "w": "una",
+    "start": 34.766,
+    "end": 35.015
+   },
+   {
+    "w": "imagen",
+    "start": 35.015,
+    "end": 35.389
+   },
+   {
+    "w": "a",
+    "start": 35.389,
+    "end": 35.514
+   },
+   {
+    "w": "millones",
+    "start": 35.514,
+    "end": 35.888
+   },
+   {
+    "w": "de",
+    "start": 35.888,
+    "end": 36.012
+   },
+   {
+    "w": "pantallas",
+    "start": 36.012,
+    "end": 36.386
+   },
+   {
+    "w": "a",
+    "start": 36.386,
+    "end": 36.511
+   },
+   {
+    "w": "la",
+    "start": 36.511,
+    "end": 36.635
+   },
+   {
+    "w": "vez.",
+    "start": 36.635,
+    "end": 36.76
+   }
+  ],
+  "start": 33.754,
+  "end": 36.76
+ },
+ {
+  "text": "Entonces, ¿es la Teleco fácil?",
+  "words": [
+   {
+    "w": "Entonces,",
+    "start": 37.12,
+    "end": 37.494
+   },
+   {
+    "w": "¿es",
+    "start": 37.634,
+    "end": 37.758
+   },
+   {
+    "w": "la",
+    "start": 37.758,
+    "end": 37.883
+   },
+   {
+    "w": "Teleco",
+    "start": 37.883,
+    "end": 38.257
+   },
+   {
+    "w": "fácil?",
+    "start": 38.257,
+    "end": 38.506
+   }
+  ],
+  "start": 37.12,
+  "end": 38.506
+ },
+ {
+  "text": "La nota de corte mide cuánta gente la pide, no lo difícil que es.",
+  "words": [
+   {
+    "w": "La",
+    "start": 38.866,
+    "end": 38.991
+   },
+   {
+    "w": "nota",
+    "start": 38.991,
+    "end": 39.24
+   },
+   {
+    "w": "de",
+    "start": 39.24,
+    "end": 39.364
+   },
+   {
+    "w": "corte",
+    "start": 39.364,
+    "end": 39.614
+   },
+   {
+    "w": "mide",
+    "start": 39.614,
+    "end": 39.863
+   },
+   {
+    "w": "cuánta",
+    "start": 39.863,
+    "end": 40.112
+   },
+   {
+    "w": "gente",
+    "start": 40.112,
+    "end": 40.361
+   },
+   {
+    "w": "la",
+    "start": 40.361,
+    "end": 40.486
+   },
+   {
+    "w": "pide,",
+    "start": 40.486,
+    "end": 40.735
+   },
+   {
+    "w": "no",
+    "start": 40.875,
+    "end": 41.0
+   },
+   {
+    "w": "lo",
+    "start": 41.0,
+    "end": 41.124
+   },
+   {
+    "w": "difícil",
+    "start": 41.124,
+    "end": 41.498
+   },
+   {
+    "w": "que",
+    "start": 41.498,
+    "end": 41.623
+   },
+   {
+    "w": "es.",
+    "start": 41.623,
+    "end": 41.747
+   }
+  ],
+  "start": 38.866,
+  "end": 41.747
+ },
+ {
+  "text": "Y las dos dan la misma profesión, ingeniero técnico de telecomunicación, y el mismo máster.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 42.107,
+    "end": 42.232
+   },
+   {
+    "w": "las",
+    "start": 42.232,
+    "end": 42.356
+   },
+   {
+    "w": "dos",
+    "start": 42.356,
+    "end": 42.481
+   },
+   {
+    "w": "dan",
+    "start": 42.481,
+    "end": 42.606
+   },
+   {
+    "w": "la",
+    "start": 42.606,
+    "end": 42.73
+   },
+   {
+    "w": "misma",
+    "start": 42.73,
+    "end": 42.98
+   },
+   {
+    "w": "profesión,",
+    "start": 42.98,
+    "end": 43.353
+   },
+   {
+    "w": "ingeniero",
+    "start": 43.493,
+    "end": 43.992
+   },
+   {
+    "w": "técnico",
+    "start": 43.992,
+    "end": 44.366
+   },
+   {
+    "w": "de",
+    "start": 44.366,
+    "end": 44.49
+   },
+   {
+    "w": "telecomunicación,",
+    "start": 44.49,
+    "end": 45.362
+   },
+   {
+    "w": "y",
+    "start": 45.502,
+    "end": 45.627
+   },
+   {
+    "w": "el",
+    "start": 45.627,
+    "end": 45.752
+   },
+   {
+    "w": "mismo",
+    "start": 45.752,
+    "end": 46.001
+   },
+   {
+    "w": "máster.",
+    "start": 46.001,
+    "end": 46.25
+   }
+  ],
+  "start": 42.107,
+  "end": 46.25
+ },
+ {
+  "text": "Teleco fácil, no. Teleco con apellido.",
+  "words": [
+   {
+    "w": "Teleco",
+    "start": 46.61,
+    "end": 46.984
+   },
+   {
+    "w": "fácil,",
+    "start": 46.984,
+    "end": 47.233
+   },
+   {
+    "w": "no.",
+    "start": 47.373,
+    "end": 47.498
+   },
+   {
+    "w": "Teleco",
+    "start": 47.818,
+    "end": 48.192
+   },
+   {
+    "w": "con",
+    "start": 48.192,
+    "end": 48.316
+   },
+   {
+    "w": "apellido.",
+    "start": 48.316,
+    "end": 48.815
+   }
+  ],
+  "start": 46.61,
+  "end": 48.815
+ },
+ {
+  "text": "¿Y el truco? Tu ojo ve el detalle en la luz, no en el color: el color se guarda con cuatro veces menos.",
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 49.175,
+    "end": 49.299
+   },
+   {
+    "w": "el",
+    "start": 49.299,
+    "end": 49.424
+   },
+   {
+    "w": "truco?",
+    "start": 49.424,
+    "end": 49.673
+   },
+   {
+    "w": "Tu",
+    "start": 49.993,
+    "end": 50.118
+   },
+   {
+    "w": "ojo",
+    "start": 50.118,
+    "end": 50.367
+   },
+   {
+    "w": "ve",
+    "start": 50.367,
+    "end": 50.492
+   },
+   {
+    "w": "el",
+    "start": 50.492,
+    "end": 50.616
+   },
+   {
+    "w": "detalle",
+    "start": 50.616,
+    "end": 50.99
+   },
+   {
+    "w": "en",
+    "start": 50.99,
+    "end": 51.115
+   },
+   {
+    "w": "la",
+    "start": 51.115,
+    "end": 51.239
+   },
+   {
+    "w": "luz,",
+    "start": 51.239,
+    "end": 51.364
+   },
+   {
+    "w": "no",
+    "start": 51.504,
+    "end": 51.628
+   },
+   {
+    "w": "en",
+    "start": 51.628,
+    "end": 51.753
+   },
+   {
+    "w": "el",
+    "start": 51.753,
+    "end": 51.878
+   },
+   {
+    "w": "color:",
+    "start": 51.878,
+    "end": 52.127
+   },
+   {
+    "w": "el",
+    "start": 52.267,
+    "end": 52.391
+   },
+   {
+    "w": "color",
+    "start": 52.391,
+    "end": 52.641
+   },
+   {
+    "w": "se",
+    "start": 52.641,
+    "end": 52.765
+   },
+   {
+    "w": "guarda",
+    "start": 52.765,
+    "end": 53.014
+   },
+   {
+    "w": "con",
+    "start": 53.014,
+    "end": 53.139
+   },
+   {
+    "w": "cuatro",
+    "start": 53.139,
+    "end": 53.388
+   },
+   {
+    "w": "veces",
+    "start": 53.388,
+    "end": 53.638
+   },
+   {
+    "w": "menos.",
+    "start": 53.638,
+    "end": 53.887
+   }
+  ],
+  "start": 49.175,
+  "end": 53.887
+ },
+ {
+  "text": "Entre fotogramas casi nada cambia: solo se guarda lo que se mueve.",
+  "words": [
+   {
+    "w": "Entre",
+    "start": 54.247,
+    "end": 54.496
+   },
+   {
+    "w": "fotogramas",
+    "start": 54.496,
+    "end": 54.994
+   },
+   {
+    "w": "casi",
+    "start": 54.994,
+    "end": 55.244
+   },
+   {
+    "w": "nada",
+    "start": 55.244,
+    "end": 55.493
+   },
+   {
+    "w": "cambia:",
+    "start": 55.493,
+    "end": 55.742
+   },
+   {
+    "w": "solo",
+    "start": 55.882,
+    "end": 56.131
+   },
+   {
+    "w": "se",
+    "start": 56.131,
+    "end": 56.256
+   },
+   {
+    "w": "guarda",
+    "start": 56.256,
+    "end": 56.505
+   },
+   {
+    "w": "lo",
+    "start": 56.505,
+    "end": 56.63
+   },
+   {
+    "w": "que",
+    "start": 56.63,
+    "end": 56.754
+   },
+   {
+    "w": "se",
+    "start": 56.754,
+    "end": 56.879
+   },
+   {
+    "w": "mueve.",
+    "start": 56.879,
+    "end": 57.128
+   }
+  ],
+  "start": 54.247,
+  "end": 57.128
+ },
+ {
+  "text": "Y un sonido fuerte tapa a uno flojo parecido: el flojo se tira.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 57.488,
+    "end": 57.613
+   },
+   {
+    "w": "un",
+    "start": 57.613,
+    "end": 57.737
+   },
+   {
+    "w": "sonido",
+    "start": 57.737,
+    "end": 58.111
+   },
+   {
+    "w": "fuerte",
+    "start": 58.111,
+    "end": 58.36
+   },
+   {
+    "w": "tapa",
+    "start": 58.36,
+    "end": 58.61
+   },
+   {
+    "w": "a",
+    "start": 58.61,
+    "end": 58.734
+   },
+   {
+    "w": "uno",
+    "start": 58.734,
+    "end": 58.983
+   },
+   {
+    "w": "flojo",
+    "start": 58.983,
+    "end": 59.233
+   },
+   {
+    "w": "parecido:",
+    "start": 59.233,
+    "end": 59.731
+   },
+   {
+    "w": "el",
+    "start": 59.871,
+    "end": 59.996
+   },
+   {
+    "w": "flojo",
+    "start": 59.996,
+    "end": 60.245
+   },
+   {
+    "w": "se",
+    "start": 60.245,
+    "end": 60.369
+   },
+   {
+    "w": "tira.",
+    "start": 60.369,
+    "end": 60.619
+   }
+  ],
+  "start": 57.488,
+  "end": 60.619
+ },
+ {
+  "text": "Ahora vuelve a verlo, a ver si lo notas. ¿Teleco fácil o no? Te leo… y mándaselo a alguien de Teleco.",
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 60.979,
+    "end": 61.353
+   },
+   {
+    "w": "vuelve",
+    "start": 61.353,
+    "end": 61.602
+   },
+   {
+    "w": "a",
+    "start": 61.602,
+    "end": 61.726
+   },
+   {
+    "w": "verlo,",
+    "start": 61.726,
+    "end": 61.976
+   },
+   {
+    "w": "a",
+    "start": 62.116,
+    "end": 62.24
+   },
+   {
+    "w": "ver",
+    "start": 62.24,
+    "end": 62.365
+   },
+   {
+    "w": "si",
+    "start": 62.365,
+    "end": 62.489
+   },
+   {
+    "w": "lo",
+    "start": 62.489,
+    "end": 62.614
+   },
+   {
+    "w": "notas.",
+    "start": 62.614,
+    "end": 62.863
+   },
+   {
+    "w": "¿Teleco",
+    "start": 63.183,
+    "end": 63.557
+   },
+   {
+    "w": "fácil",
+    "start": 63.557,
+    "end": 63.806
+   },
+   {
+    "w": "o",
+    "start": 63.806,
+    "end": 63.931
+   },
+   {
+    "w": "no?",
+    "start": 63.931,
+    "end": 64.055
+   },
+   {
+    "w": "Te",
+    "start": 64.375,
+    "end": 64.5
+   },
+   {
+    "w": "leo…",
+    "start": 64.5,
+    "end": 64.625
+   },
+   {
+    "w": "y",
+    "start": 64.945,
+    "end": 65.069
+   },
+   {
+    "w": "mándaselo",
+    "start": 65.069,
+    "end": 65.568
+   },
+   {
+    "w": "a",
+    "start": 65.568,
+    "end": 65.692
+   },
+   {
+    "w": "alguien",
+    "start": 65.692,
+    "end": 65.942
+   },
+   {
+    "w": "de",
+    "start": 65.942,
+    "end": 66.066
+   },
+   {
+    "w": "Teleco.",
+    "start": 66.066,
+    "end": 66.44
+   }
+  ],
+  "start": 60.979,
+  "end": 66.44
+ }
+]

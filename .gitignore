@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 kiria_producer.zip
 node_modules/
+node_modules
 frames/
 engine/fonts/impact.ttf
