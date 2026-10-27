@@ -1037,8 +1037,15 @@ window.renderAt = function (t) {
 };
 // portada: el ojo estallando en cubos (sin HUD)
 window.renderCover = function () {
-  const t = Number(window.COVER_T || 2.0); frame(t);
-  const C = window.COVER_CAM || [0.9, 1.75, 3.0, 0, 1.62, 0, 32];
+  const t = window.COVER_T ? Number(window.COVER_T) : K.borrado - 0.15; frame(t);
+  // el ojo entero en el centro y los bordes estallando en cubos hacia la cámara
+  { const E = S.eye, r0 = window.COVER_R0 || 0.36, m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), p = new THREE.Vector3(), one = new THREE.Vector3(1, 1, 1);
+    E.base.forEach((P, i) => { const sd = E.seed[i], d = Math.hypot(P.x, (P.y + 0.04) * 0.85), u = clamp((d - r0) / 0.55);
+      if (u > 0) { const k = u * u * (window.COVER_K || 1.1); e.set(sd.spin.x * k * 0.3, sd.spin.y * k * 0.3, sd.spin.z * k * 0.3); q.setFromEuler(e); p.set(P.x * (1 + k * 0.9) + sd.dir.x * k * 0.25, P.y * (1 + k * 0.5) + sd.dir.y * k * 0.25, sd.dir.z * k * 0.55); }
+      else { q.identity(); p.copy(P); }
+      m.compose(p, q, one); E.vox.setMatrixAt(i, m); });
+    E.vox.instanceMatrix.needsUpdate = true; E.fr.visible = false; }
+  const C = window.COVER_CAM || [0.35, 1.5, 3.4, 0, 1.55, 0, 34];
   cam.fov = C[6]; cam.updateProjectionMatrix(); cam.position.set(C[0], C[1], C[2]); cam.up.set(0, 1, 0); cam.lookAt(C[3], C[4], C[5]); cam.updateMatrixWorld(); rigFollow(v3(C[3], C[4], C[5]));
   if (window.camOverride) window.camOverride(cam, v3);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0;
