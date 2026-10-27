@@ -25,7 +25,7 @@ function helmetsAt(t) {
 }
 // 2-3: multitudes — aparecen por filas; en Madrid y València se encienden en oro los que entran; en el País Vasco, rojo el 75 % que suspende
 function crowdsAt(t) {
-  const C = S.crowd, vis = t > K.ultima - 1.0 && t < K.porque + 0.8; C.Z.visible = vis; if (!vis) return;
+  const C = S.crowd, vis = t > K.ultima - 1.0 && t < K.uno + 0.2; C.Z.visible = vis; if (!vis) return;
   const t0s = [K.ultima + 0.2, K.valencia - 0.3, K.pais - 0.4], fdur = [K.personas - K.ultima - 0.2, K.aspirantes - K.valencia + 0.3, 0.6], tok = [K.doscientas, K.noventa, K.setenta];
   C.blocks.forEach((B, k) => {
     const rows = Math.ceil(B.R.n / B.cols);
