@@ -235,7 +235,7 @@ function buildDuel() {
   const pm = plasticS(0xe9edf2, 0.35); const p1 = rbox(0.08, 1.3, 0.08, pm, 0.02), p2 = p1.clone(), lt = rbox(0.9, 0.1, 0.1, pm, 0.02);
   p1.position.set(-0.42, 0.65, 0); p2.position.set(0.42, 0.65, 0); lt.position.set(0, 1.33, 0); door.add(p1, p2, lt);
   const dl = new THREE.Mesh(new THREE.PlaneGeometry(0.76, 1.25), new THREE.MeshBasicMaterial({ color: new THREE.Color(1.4, 1.35, 1.25), transparent: true, opacity: 0, toneMapped: false, depthWrite: false })); dl.position.set(0, 0.63, 0); door.add(dl);
-  const dlab = signPlane('MÁSTER', { w: 0.6, h: 0.13, col: '#EEF2F6' }); dlab.position.set(0, 1.5, 0); door.add(dlab);
+  // sin rótulo 3D: la etiqueta del HUD («EL MISMO MÁSTER») ya lo dice y se pisaban
   // TELECO + apellido
   const sign = new THREE.Group(); sign.position.set(0, 1.55, -0.35); Z.add(sign);
   const sTel = signPlane('TELECO', { w: 1.3, h: 0.32, col: '#EEF2F6' }); sign.add(sTel);
