@@ -1,0 +1,971 @@
+[
+ {
+  "text": "Ocho de cada diez opositores a bombero en Madrid se quedan sin plaza.",
+  "start": 0.0,
+  "end": 3.632,
+  "words": [
+   {
+    "w": "Ocho",
+    "start": 0.0,
+    "end": 0.377
+   },
+   {
+    "w": "de",
+    "start": 0.377,
+    "end": 0.453
+   },
+   {
+    "w": "cada",
+    "start": 0.453,
+    "end": 0.604
+   },
+   {
+    "w": "diez",
+    "start": 0.604,
+    "end": 0.906
+   },
+   {
+    "w": "opositores",
+    "start": 0.906,
+    "end": 1.358
+   },
+   {
+    "w": "a",
+    "start": 1.358,
+    "end": 1.509
+   },
+   {
+    "w": "bombero",
+    "start": 1.509,
+    "end": 2.038
+   },
+   {
+    "w": "en",
+    "start": 2.038,
+    "end": 2.113
+   },
+   {
+    "w": "Madrid",
+    "start": 2.113,
+    "end": 2.566
+   },
+   {
+    "w": "se",
+    "start": 2.566,
+    "end": 2.717
+   },
+   {
+    "w": "quedan",
+    "start": 2.717,
+    "end": 3.17
+   },
+   {
+    "w": "sin",
+    "start": 3.17,
+    "end": 3.321
+   },
+   {
+    "w": "plaza.",
+    "start": 3.321,
+    "end": 3.632
+   }
+  ]
+ },
+ {
+  "text": "En la última oposición de la Comunidad se presentaron mil doscientas ochenta y cinco personas para doscientas sesenta y siete plazas.",
+  "start": 3.953,
+  "end": 10.5,
+  "words": [
+   {
+    "w": "En",
+    "start": 3.953,
+    "end": 4.056
+   },
+   {
+    "w": "la",
+    "start": 4.056,
+    "end": 4.16
+   },
+   {
+    "w": "última",
+    "start": 4.16,
+    "end": 4.528
+   },
+   {
+    "w": "oposición",
+    "start": 4.528,
+    "end": 5.057
+   },
+   {
+    "w": "de",
+    "start": 5.057,
+    "end": 5.132
+   },
+   {
+    "w": "la",
+    "start": 5.132,
+    "end": 5.208
+   },
+   {
+    "w": "Comunidad",
+    "start": 5.208,
+    "end": 5.811
+   },
+   {
+    "w": "se",
+    "start": 5.811,
+    "end": 5.962
+   },
+   {
+    "w": "presentaron",
+    "start": 5.962,
+    "end": 6.566
+   },
+   {
+    "w": "mil",
+    "start": 6.566,
+    "end": 6.702
+   },
+   {
+    "w": "doscientas",
+    "start": 6.702,
+    "end": 7.109
+   },
+   {
+    "w": "ochenta",
+    "start": 7.109,
+    "end": 7.517
+   },
+   {
+    "w": "y",
+    "start": 7.517,
+    "end": 7.653
+   },
+   {
+    "w": "cinco",
+    "start": 7.653,
+    "end": 8.075
+   },
+   {
+    "w": "personas",
+    "start": 8.075,
+    "end": 8.604
+   },
+   {
+    "w": "para",
+    "start": 8.604,
+    "end": 8.83
+   },
+   {
+    "w": "doscientas",
+    "start": 8.83,
+    "end": 9.215
+   },
+   {
+    "w": "sesenta",
+    "start": 9.215,
+    "end": 9.6
+   },
+   {
+    "w": "y",
+    "start": 9.6,
+    "end": 9.728
+   },
+   {
+    "w": "siete",
+    "start": 9.728,
+    "end": 10.113
+   },
+   {
+    "w": "plazas.",
+    "start": 10.113,
+    "end": 10.5
+   }
+  ]
+ },
+ {
+  "text": "En València, mil seiscientos treinta y cuatro aspirantes para noventa y dos. Y en el País Vasco, el setenta y cinco por ciento suspendió el primer examen.",
+  "start": 10.708,
+  "end": 18.425,
+  "words": [
+   {
+    "w": "En",
+    "start": 10.708,
+    "end": 10.951
+   },
+   {
+    "w": "València,",
+    "start": 10.951,
+    "end": 11.377
+   },
+   {
+    "w": "mil",
+    "start": 11.377,
+    "end": 11.528
+   },
+   {
+    "w": "seiscientos",
+    "start": 11.528,
+    "end": 11.981
+   },
+   {
+    "w": "treinta",
+    "start": 11.981,
+    "end": 12.283
+   },
+   {
+    "w": "y",
+    "start": 12.283,
+    "end": 12.434
+   },
+   {
+    "w": "cuatro",
+    "start": 12.434,
+    "end": 12.887
+   },
+   {
+    "w": "aspirantes",
+    "start": 12.887,
+    "end": 13.491
+   },
+   {
+    "w": "para",
+    "start": 13.491,
+    "end": 13.717
+   },
+   {
+    "w": "noventa",
+    "start": 13.717,
+    "end": 14.247
+   },
+   {
+    "w": "y",
+    "start": 14.247,
+    "end": 14.726
+   },
+   {
+    "w": "dos.",
+    "start": 14.726,
+    "end": 14.818
+   },
+   {
+    "w": "Y",
+    "start": 14.818,
+    "end": 14.91
+   },
+   {
+    "w": "en",
+    "start": 14.91,
+    "end": 15.001
+   },
+   {
+    "w": "el",
+    "start": 15.001,
+    "end": 15.093
+   },
+   {
+    "w": "País",
+    "start": 15.093,
+    "end": 15.236
+   },
+   {
+    "w": "Vasco,",
+    "start": 15.236,
+    "end": 15.717
+   },
+   {
+    "w": "el",
+    "start": 15.717,
+    "end": 15.849
+   },
+   {
+    "w": "setenta",
+    "start": 15.849,
+    "end": 16.211
+   },
+   {
+    "w": "y",
+    "start": 16.211,
+    "end": 16.332
+   },
+   {
+    "w": "cinco",
+    "start": 16.332,
+    "end": 16.574
+   },
+   {
+    "w": "por",
+    "start": 16.574,
+    "end": 16.694
+   },
+   {
+    "w": "ciento",
+    "start": 16.694,
+    "end": 17.057
+   },
+   {
+    "w": "suspendió",
+    "start": 17.057,
+    "end": 17.736
+   },
+   {
+    "w": "el",
+    "start": 17.736,
+    "end": 17.811
+   },
+   {
+    "w": "primer",
+    "start": 17.811,
+    "end": 18.113
+   },
+   {
+    "w": "examen.",
+    "start": 18.113,
+    "end": 18.425
+   }
+  ]
+ },
+ {
+  "text": "¿Por qué suspende tanta gente?",
+  "start": 18.708,
+  "end": 20.132,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 18.708,
+    "end": 18.83
+   },
+   {
+    "w": "qué",
+    "start": 18.83,
+    "end": 18.981
+   },
+   {
+    "w": "suspende",
+    "start": 18.981,
+    "end": 19.585
+   },
+   {
+    "w": "tanta",
+    "start": 19.585,
+    "end": 19.887
+   },
+   {
+    "w": "gente?",
+    "start": 19.887,
+    "end": 20.132
+   }
+  ]
+ },
+ {
+  "text": "Uno: el test teórico es eliminatorio. Un temario enorme, decenas de preguntas, una sola mañana… y en algunas, cada fallo resta.",
+  "start": 20.33,
+  "end": 28.67,
+  "words": [
+   {
+    "w": "Uno:",
+    "start": 20.33,
+    "end": 20.896
+   },
+   {
+    "w": "el",
+    "start": 20.896,
+    "end": 21.075
+   },
+   {
+    "w": "test",
+    "start": 21.075,
+    "end": 21.292
+   },
+   {
+    "w": "teórico",
+    "start": 21.292,
+    "end": 21.868
+   },
+   {
+    "w": "es",
+    "start": 21.868,
+    "end": 22.047
+   },
+   {
+    "w": "eliminatorio.",
+    "start": 22.047,
+    "end": 23.047
+   },
+   {
+    "w": "Un",
+    "start": 23.047,
+    "end": 23.181
+   },
+   {
+    "w": "temario",
+    "start": 23.181,
+    "end": 23.642
+   },
+   {
+    "w": "enorme,",
+    "start": 23.642,
+    "end": 24.17
+   },
+   {
+    "w": "decenas",
+    "start": 24.17,
+    "end": 24.698
+   },
+   {
+    "w": "de",
+    "start": 24.698,
+    "end": 24.849
+   },
+   {
+    "w": "preguntas,",
+    "start": 24.849,
+    "end": 25.528
+   },
+   {
+    "w": "una",
+    "start": 25.528,
+    "end": 25.755
+   },
+   {
+    "w": "sola",
+    "start": 25.755,
+    "end": 26.132
+   },
+   {
+    "w": "mañana…",
+    "start": 26.132,
+    "end": 26.868
+   },
+   {
+    "w": "y",
+    "start": 26.868,
+    "end": 26.949
+   },
+   {
+    "w": "en",
+    "start": 26.949,
+    "end": 27.047
+   },
+   {
+    "w": "algunas,",
+    "start": 27.047,
+    "end": 27.613
+   },
+   {
+    "w": "cada",
+    "start": 27.613,
+    "end": 27.811
+   },
+   {
+    "w": "fallo",
+    "start": 27.811,
+    "end": 28.34
+   },
+   {
+    "w": "resta.",
+    "start": 28.34,
+    "end": 28.67
+   }
+  ]
+ },
+ {
+  "text": "Dos: el tiempo. En el País Vasco, la mayoría suspendió el psicotécnico por no llegar a contestar.",
+  "start": 28.934,
+  "end": 34.491,
+  "words": [
+   {
+    "w": "Dos:",
+    "start": 28.934,
+    "end": 29.604
+   },
+   {
+    "w": "el",
+    "start": 29.604,
+    "end": 29.83
+   },
+   {
+    "w": "tiempo.",
+    "start": 29.83,
+    "end": 30.538
+   },
+   {
+    "w": "En",
+    "start": 30.538,
+    "end": 30.668
+   },
+   {
+    "w": "el",
+    "start": 30.668,
+    "end": 30.798
+   },
+   {
+    "w": "País",
+    "start": 30.798,
+    "end": 30.972
+   },
+   {
+    "w": "Vasco,",
+    "start": 30.972,
+    "end": 31.425
+   },
+   {
+    "w": "la",
+    "start": 31.425,
+    "end": 31.5
+   },
+   {
+    "w": "mayoría",
+    "start": 31.5,
+    "end": 31.953
+   },
+   {
+    "w": "suspendió",
+    "start": 31.953,
+    "end": 32.481
+   },
+   {
+    "w": "el",
+    "start": 32.481,
+    "end": 32.557
+   },
+   {
+    "w": "psicotécnico",
+    "start": 32.557,
+    "end": 33.311
+   },
+   {
+    "w": "por",
+    "start": 33.311,
+    "end": 33.462
+   },
+   {
+    "w": "no",
+    "start": 33.462,
+    "end": 33.613
+   },
+   {
+    "w": "llegar",
+    "start": 33.613,
+    "end": 33.915
+   },
+   {
+    "w": "a",
+    "start": 33.915,
+    "end": 33.991
+   },
+   {
+    "w": "contestar.",
+    "start": 33.991,
+    "end": 34.491
+   }
+  ]
+ },
+ {
+  "text": "Y tres: leerse el temario no es lo mismo que entrenar el examen.",
+  "start": 34.651,
+  "end": 38.311,
+  "words": [
+   {
+    "w": "Y",
+    "start": 34.651,
+    "end": 34.717
+   },
+   {
+    "w": "tres:",
+    "start": 34.717,
+    "end": 35.377
+   },
+   {
+    "w": "leerse",
+    "start": 35.377,
+    "end": 35.783
+   },
+   {
+    "w": "el",
+    "start": 35.783,
+    "end": 35.934
+   },
+   {
+    "w": "temario",
+    "start": 35.934,
+    "end": 36.462
+   },
+   {
+    "w": "no",
+    "start": 36.462,
+    "end": 36.613
+   },
+   {
+    "w": "es",
+    "start": 36.613,
+    "end": 36.764
+   },
+   {
+    "w": "lo",
+    "start": 36.764,
+    "end": 36.915
+   },
+   {
+    "w": "mismo",
+    "start": 36.915,
+    "end": 37.142
+   },
+   {
+    "w": "que",
+    "start": 37.142,
+    "end": 37.368
+   },
+   {
+    "w": "entrenar",
+    "start": 37.368,
+    "end": 37.821
+   },
+   {
+    "w": "el",
+    "start": 37.821,
+    "end": 37.972
+   },
+   {
+    "w": "examen.",
+    "start": 37.972,
+    "end": 38.311
+   }
+  ]
+ },
+ {
+  "text": "Lo más duro no es la prueba física. La mayoría cae antes, en el test.",
+  "start": 38.538,
+  "end": 42.575,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 38.538,
+    "end": 38.623
+   },
+   {
+    "w": "más",
+    "start": 38.623,
+    "end": 38.774
+   },
+   {
+    "w": "duro",
+    "start": 38.774,
+    "end": 39.151
+   },
+   {
+    "w": "no",
+    "start": 39.151,
+    "end": 39.302
+   },
+   {
+    "w": "es",
+    "start": 39.302,
+    "end": 39.453
+   },
+   {
+    "w": "la",
+    "start": 39.453,
+    "end": 39.604
+   },
+   {
+    "w": "prueba",
+    "start": 39.604,
+    "end": 39.981
+   },
+   {
+    "w": "física.",
+    "start": 39.981,
+    "end": 40.604
+   },
+   {
+    "w": "La",
+    "start": 40.604,
+    "end": 40.704
+   },
+   {
+    "w": "mayoría",
+    "start": 40.704,
+    "end": 41.047
+   },
+   {
+    "w": "cae",
+    "start": 41.047,
+    "end": 41.5
+   },
+   {
+    "w": "antes,",
+    "start": 41.5,
+    "end": 41.962
+   },
+   {
+    "w": "en",
+    "start": 41.962,
+    "end": 42.113
+   },
+   {
+    "w": "el",
+    "start": 42.113,
+    "end": 42.34
+   },
+   {
+    "w": "test.",
+    "start": 42.34,
+    "end": 42.575
+   }
+  ]
+ },
+ {
+  "text": "Por eso existe Bomberados: la app para opositores a bombero.",
+  "start": 42.66,
+  "end": 46.132,
+  "words": [
+   {
+    "w": "Por",
+    "start": 42.66,
+    "end": 42.774
+   },
+   {
+    "w": "eso",
+    "start": 42.774,
+    "end": 43.0
+   },
+   {
+    "w": "existe",
+    "start": 43.0,
+    "end": 43.453
+   },
+   {
+    "w": "Bomberados:",
+    "start": 43.453,
+    "end": 44.387
+   },
+   {
+    "w": "la",
+    "start": 44.387,
+    "end": 44.519
+   },
+   {
+    "w": "app",
+    "start": 44.519,
+    "end": 44.821
+   },
+   {
+    "w": "para",
+    "start": 44.821,
+    "end": 45.047
+   },
+   {
+    "w": "opositores",
+    "start": 45.047,
+    "end": 45.575
+   },
+   {
+    "w": "a",
+    "start": 45.575,
+    "end": 45.726
+   },
+   {
+    "w": "bombero.",
+    "start": 45.726,
+    "end": 46.132
+   }
+  ]
+ },
+ {
+  "text": "Giras la ruleta del temario, haces test y compites en directo contra otros opositores o contra una inteligencia artificial.",
+  "start": 46.283,
+  "end": 52.575,
+  "words": [
+   {
+    "w": "Giras",
+    "start": 46.283,
+    "end": 46.604
+   },
+   {
+    "w": "la",
+    "start": 46.604,
+    "end": 46.679
+   },
+   {
+    "w": "ruleta",
+    "start": 46.679,
+    "end": 47.132
+   },
+   {
+    "w": "del",
+    "start": 47.132,
+    "end": 47.283
+   },
+   {
+    "w": "temario,",
+    "start": 47.283,
+    "end": 47.736
+   },
+   {
+    "w": "haces",
+    "start": 47.736,
+    "end": 48.123
+   },
+   {
+    "w": "test",
+    "start": 48.123,
+    "end": 48.491
+   },
+   {
+    "w": "y",
+    "start": 48.491,
+    "end": 48.575
+   },
+   {
+    "w": "compites",
+    "start": 48.575,
+    "end": 49.104
+   },
+   {
+    "w": "en",
+    "start": 49.104,
+    "end": 49.179
+   },
+   {
+    "w": "directo",
+    "start": 49.179,
+    "end": 49.632
+   },
+   {
+    "w": "contra",
+    "start": 49.632,
+    "end": 49.858
+   },
+   {
+    "w": "otros",
+    "start": 49.858,
+    "end": 50.16
+   },
+   {
+    "w": "opositores",
+    "start": 50.16,
+    "end": 50.764
+   },
+   {
+    "w": "o",
+    "start": 50.764,
+    "end": 50.915
+   },
+   {
+    "w": "contra",
+    "start": 50.915,
+    "end": 51.217
+   },
+   {
+    "w": "una",
+    "start": 51.217,
+    "end": 51.443
+   },
+   {
+    "w": "inteligencia",
+    "start": 51.443,
+    "end": 52.047
+   },
+   {
+    "w": "artificial.",
+    "start": 52.047,
+    "end": 52.575
+   }
+  ]
+ },
+ {
+  "text": "Estudias jugando y contra el reloj, como el día del examen.",
+  "start": 52.689,
+  "end": 55.604,
+  "words": [
+   {
+    "w": "Estudias",
+    "start": 52.689,
+    "end": 53.151
+   },
+   {
+    "w": "jugando",
+    "start": 53.151,
+    "end": 53.604
+   },
+   {
+    "w": "y",
+    "start": 53.604,
+    "end": 53.755
+   },
+   {
+    "w": "contra",
+    "start": 53.755,
+    "end": 53.981
+   },
+   {
+    "w": "el",
+    "start": 53.981,
+    "end": 54.132
+   },
+   {
+    "w": "reloj,",
+    "start": 54.132,
+    "end": 54.547
+   },
+   {
+    "w": "como",
+    "start": 54.547,
+    "end": 54.745
+   },
+   {
+    "w": "el",
+    "start": 54.745,
+    "end": 54.821
+   },
+   {
+    "w": "día",
+    "start": 54.821,
+    "end": 55.047
+   },
+   {
+    "w": "del",
+    "start": 55.047,
+    "end": 55.274
+   },
+   {
+    "w": "examen.",
+    "start": 55.274,
+    "end": 55.604
+   }
+  ]
+ },
+ {
+  "text": "Bomberados. Pruébala gratis cinco días.",
+  "start": 55.67,
+  "end": 57.994,
+  "words": [
+   {
+    "w": "Bomberados.",
+    "start": 55.67,
+    "end": 56.553
+   },
+   {
+    "w": "Pruébala",
+    "start": 56.553,
+    "end": 56.959
+   },
+   {
+    "w": "gratis",
+    "start": 56.959,
+    "end": 57.391
+   },
+   {
+    "w": "cinco",
+    "start": 57.391,
+    "end": 57.679
+   },
+   {
+    "w": "días.",
+    "start": 57.679,
+    "end": 57.994
+   }
+  ]
+ }
+]
