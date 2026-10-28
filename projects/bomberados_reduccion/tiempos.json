@@ -1,0 +1,319 @@
+[
+ {
+  "text": "Estrechas la manguera y el agua sale disparada. Pero… ¿y la presión?",
+  "start": 0.0,
+  "end": 3.99,
+  "words": [
+   {
+    "w": "Estrechas",
+    "start": 0.0,
+    "end": 0.615
+   },
+   {
+    "w": "la",
+    "start": 0.615,
+    "end": 0.692
+   },
+   {
+    "w": "manguera",
+    "start": 0.692,
+    "end": 1.154
+   },
+   {
+    "w": "y",
+    "start": 1.154,
+    "end": 1.308
+   },
+   {
+    "w": "el",
+    "start": 1.308,
+    "end": 1.385
+   },
+   {
+    "w": "agua",
+    "start": 1.385,
+    "end": 1.692
+   },
+   {
+    "w": "sale",
+    "start": 1.692,
+    "end": 2.077
+   },
+   {
+    "w": "disparada.",
+    "start": 2.077,
+    "end": 2.875
+   },
+   {
+    "w": "Pero…",
+    "start": 2.875,
+    "end": 3.144
+   },
+   {
+    "w": "¿y",
+    "start": 3.144,
+    "end": 3.442
+   },
+   {
+    "w": "la",
+    "start": 3.442,
+    "end": 3.596
+   },
+   {
+    "w": "presión?",
+    "start": 3.596,
+    "end": 3.99
+   }
+  ]
+ },
+ {
+  "text": "El agua pasa por una reducción de 45 a 25 milímetros. ¿Cuál es la buena?",
+  "start": 4.26,
+  "end": 9.058,
+  "words": [
+   {
+    "w": "El",
+    "start": 4.26,
+    "end": 4.366
+   },
+   {
+    "w": "agua",
+    "start": 4.366,
+    "end": 4.615
+   },
+   {
+    "w": "pasa",
+    "start": 4.615,
+    "end": 4.923
+   },
+   {
+    "w": "por",
+    "start": 4.923,
+    "end": 5.077
+   },
+   {
+    "w": "una",
+    "start": 5.077,
+    "end": 5.231
+   },
+   {
+    "w": "reducción",
+    "start": 5.231,
+    "end": 5.692
+   },
+   {
+    "w": "de",
+    "start": 5.692,
+    "end": 5.846
+   },
+   {
+    "w": "45",
+    "start": 5.846,
+    "end": 6.615
+   },
+   {
+    "w": "a",
+    "start": 6.615,
+    "end": 6.846
+   },
+   {
+    "w": "25",
+    "start": 6.846,
+    "end": 7.385
+   },
+   {
+    "w": "milímetros.",
+    "start": 7.385,
+    "end": 8.385
+   },
+   {
+    "w": "¿Cuál",
+    "start": 8.385,
+    "end": 8.452
+   },
+   {
+    "w": "es",
+    "start": 8.452,
+    "end": 8.606
+   },
+   {
+    "w": "la",
+    "start": 8.606,
+    "end": 8.76
+   },
+   {
+    "w": "buena?",
+    "start": 8.76,
+    "end": 9.058
+   }
+  ]
+ },
+ {
+  "text": "Cinco segundos.",
+  "start": 9.3,
+  "end": 10.25,
+  "words": [
+   {
+    "w": "Cinco",
+    "start": 9.3,
+    "end": 9.76
+   },
+   {
+    "w": "segundos.",
+    "start": 9.76,
+    "end": 10.25
+   }
+  ]
+ },
+ {
+  "text": "¿A, B, C o D? Déjalo en comentarios: la respuesta está en la descripción.",
+  "start": 14.873,
+  "end": 19.767,
+  "words": [
+   {
+    "w": "¿A,",
+    "start": 14.873,
+    "end": 15.335
+   },
+   {
+    "w": "B,",
+    "start": 15.335,
+    "end": 15.863
+   },
+   {
+    "w": "C",
+    "start": 15.863,
+    "end": 16.335
+   },
+   {
+    "w": "o",
+    "start": 16.335,
+    "end": 16.685
+   },
+   {
+    "w": "D?",
+    "start": 16.685,
+    "end": 16.95
+   },
+   {
+    "w": "Déjalo",
+    "start": 16.95,
+    "end": 17.354
+   },
+   {
+    "w": "en",
+    "start": 17.354,
+    "end": 17.431
+   },
+   {
+    "w": "comentarios:",
+    "start": 17.431,
+    "end": 18.094
+   },
+   {
+    "w": "la",
+    "start": 18.094,
+    "end": 18.19
+   },
+   {
+    "w": "respuesta",
+    "start": 18.19,
+    "end": 18.729
+   },
+   {
+    "w": "está",
+    "start": 18.729,
+    "end": 18.96
+   },
+   {
+    "w": "en",
+    "start": 18.96,
+    "end": 19.113
+   },
+   {
+    "w": "la",
+    "start": 19.113,
+    "end": 19.267
+   },
+   {
+    "w": "descripción.",
+    "start": 19.267,
+    "end": 19.767
+   }
+  ]
+ },
+ {
+  "text": "Bomberados: falla en casa, no en el examen.",
+  "start": 19.921,
+  "end": 22.642,
+  "words": [
+   {
+    "w": "Bomberados:",
+    "start": 19.921,
+    "end": 20.825
+   },
+   {
+    "w": "falla",
+    "start": 20.825,
+    "end": 21.219
+   },
+   {
+    "w": "en",
+    "start": 21.219,
+    "end": 21.373
+   },
+   {
+    "w": "casa,",
+    "start": 21.373,
+    "end": 21.719
+   },
+   {
+    "w": "no",
+    "start": 21.719,
+    "end": 21.902
+   },
+   {
+    "w": "en",
+    "start": 21.902,
+    "end": 22.056
+   },
+   {
+    "w": "el",
+    "start": 22.056,
+    "end": 22.21
+   },
+   {
+    "w": "examen.",
+    "start": 22.21,
+    "end": 22.642
+   }
+  ]
+ },
+ {
+  "text": "Pruébala gratis cinco días.",
+  "start": 22.747,
+  "end": 24.225,
+  "words": [
+   {
+    "w": "Pruébala",
+    "start": 22.747,
+    "end": 23.117
+   },
+   {
+    "w": "gratis",
+    "start": 23.117,
+    "end": 23.572
+   },
+   {
+    "w": "cinco",
+    "start": 23.572,
+    "end": 23.875
+   },
+   {
+    "w": "días.",
+    "start": 23.875,
+    "end": 24.225
+   }
+  ]
+ }
+]

@@ -1,0 +1,118 @@
+{
+ "numero": 1,
+ "tema": "HIDRÁULICA",
+ "intro": "reduccion",
+ "enunciado": "Al pasar agua por una reducción de 45 mm a 25 mm:",
+ "opciones": [
+  "La presión disminuye y aumenta la velocidad.",
+  "La presión aumenta y aumenta la velocidad.",
+  "La presión permanece constante y aumenta la velocidad.",
+  "La presión permanece constante y disminuye la velocidad."
+ ],
+ "correcta": "A",
+ "fuente": "Examen oficial de oposición a bombero (convocatoria: PENDIENTE). Continuidad y Bernoulli: manual de bomberos del IVASPE, tema 15.",
+ "cues": {
+  "enunciado": [
+   "el",
+   1,
+   2
+  ],
+  "opciones": [
+   "reducción",
+   1,
+   2
+  ],
+  "d1": [
+   "45",
+   1,
+   2
+  ],
+  "d2": [
+   "25",
+   1,
+   2
+  ],
+  "manometro": [
+   "presión",
+   1,
+   1
+  ],
+  "cuenta": [
+   "segundos",
+   1,
+   3
+  ],
+  "letras": [
+   [
+    "a",
+    1,
+    4
+   ],
+   [
+    "b",
+    1,
+    4
+   ],
+   [
+    "c",
+    1,
+    4
+   ],
+   [
+    "d",
+    1,
+    4
+   ]
+  ],
+  "descripcion": [
+   "respuesta",
+   1,
+   4
+  ],
+  "marca": [
+   "bomberados",
+   1,
+   5
+  ],
+  "prueba": [
+   "pruébala",
+   1,
+   6
+  ]
+ },
+ "subs_key": {
+  "1": {
+   "manguera": "#FF7A2F",
+   "disparada": "#62E3D4",
+   "presión": "#FF5A4E"
+  },
+  "2": {
+   "reducción": "#F2B233",
+   "45": "#F2B233",
+   "25": "#F2B233",
+   "buena": "#EEF2F6"
+  },
+  "3": {
+   "cinco": "#FF5A4E",
+   "segundos": "#FF5A4E"
+  },
+  "4": {
+   "a": "#F2B233",
+   "b": "#F2B233",
+   "c": "#F2B233",
+   "d": "#F2B233",
+   "comentarios": "#EEF2F6",
+   "descripción": "#F2B233"
+  },
+  "5": {
+   "bomberados": "#F2B233",
+   "casa": "#62E3D4",
+   "examen": "#EEF2F6"
+  },
+  "6": {
+   "gratis": "#62E3D4",
+   "cinco": "#F2B233",
+   "días": "#F2B233"
+  }
+ }
+}
