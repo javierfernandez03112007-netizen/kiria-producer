@@ -7,6 +7,7 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 ## Hechos
 - 🎬 «Ocho de cada diez opositores a bombero en Madrid se quedan sin plaza» (F2) — `projects/bomberos/`
 - 🎬 «Un fuego de aceite en una sartén es de clase B. ¿V o F?» (F1) — `projects/bomberados_ia/`
+- ✍️ Pregunta del día #1: reducción de 45 a 25 mm, ¿presión y velocidad? (F3; respuesta en la descripción) — `projects/bomberados_reduccion/`
 
 ## Temario (preguntas con trampa)
 | Idea | Formato | Respuesta a comprobar | Fuente a buscar |

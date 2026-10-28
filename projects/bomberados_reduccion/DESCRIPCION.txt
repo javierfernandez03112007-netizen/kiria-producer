@@ -1,0 +1,38 @@
+💧 Estrechas la manguera y el agua sale disparada… pero ¿qué pasa con la presión?
+
+❓ Al pasar agua por una reducción de 45 mm a 25 mm:
+a) La presión disminuye y aumenta la velocidad.
+b) La presión aumenta y aumenta la velocidad.
+c) La presión permanece constante y aumenta la velocidad.
+d) La presión permanece constante y disminuye la velocidad.
+
+👇 Pon tu letra en comentarios antes de bajar… y mándaselo a quien esté opositando.
+
+🚒 BOMBERADOS — la app para preparar la oposición a bombero
+Test de todo el temario, partidas contra otros opositores y contra una IA, y cuando fallas una pregunta, su IA te dice en qué manual y en qué página está. Falla en casa, no en el examen.
+🎁 Pruébala gratis 5 días: enlace en la bio.
+
+#bomberos #oposicionesbombero #opositores #oposiciones #bombero #testoposiciones #hidraulica #bomberados
+
+.
+.
+.
+✅ Respuesta: A) la presión disminuye y aumenta la velocidad.
+Por la ecuación de continuidad (caudal = sección × velocidad), al pasar de 45 a 25 mm la sección se queda en un tercio y el agua va unas 3,2 veces más rápido. Y por Bernoulli, si sube la velocidad, baja la presión en el estrechamiento: es el efecto Venturi. La trampa es la B.
+📚 Fuente: ecuación de continuidad y teorema de Bernoulli, tema de hidráulica básica del manual de bomberos del IVASPE (Generalitat Valenciana).
+
+---
+
+Versión corta (TikTok):
+
+💧 Reducción de 45 a 25 mm: ¿qué pasa con la presión y la velocidad? A, B, C o D 👇 Bomberados: falla en casa, no en el examen. Pruébala gratis 5 días 👉 bio.
+✅ Respuesta: A (continuidad + Bernoulli: más velocidad, menos presión).
+
+#bomberos #oposicionesbombero #opositores #bomberados
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- El bloque «🚒 BOMBERADOS» es el fijo de la serie: CONFIRMAR con la marca las funciones y la prueba gratis de 5 días.
+- Apuntar la página exacta del manual del IVASPE en FUENTES.md antes de publicar.
+- Si se publica como colaboración pagada: «Colaboración pagada» / #publi visible.
