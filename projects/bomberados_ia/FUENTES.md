@@ -8,6 +8,10 @@
   https://www.une.org (texto oficial de UNE-EN 2) ; resumen: https://www.safelincs.co.uk/blog/2026/05/13/what-is-a-class-f-fire/
 - **Preguntas parecidas que enseña la IA (gasolina → B, butano → C, aceite de freidora → F)**: misma norma.
 - **«La treinta y siete, en rojo» / la plantilla**: EJEMPLO (situación inventada para el vídeo).
+- **La pantalla de la app** (lista del simulacro, la pregunta 37, el botón de la IA y sus tres tarjetas): recreación (sin capturas de
+  la marca), con la etiqueta «Recreación · Ejemplo». La tarjeta «Manual de Incendios · Tema 2 · Pág. 34» es un EJEMPLO: cambiarla por
+  la respuesta real de la IA de la marca para esta pregunta. La definición de la clase F y las preguntas parecidas (gasolina → B,
+  butano → C) sí son de la norma UNE-EN 2.
 - **«Su inteligencia artificial te dice en qué manual está y en qué página», «te lo define», «te la compara con las
   preguntas parecidas»**: funciones de Bomberados según el encargo de la marca. CONFIRMAR con la marca y pedirle un
   ejemplo real (nombre del manual, tema y página de esta pregunta, y su definición) para que la pantalla de la IA no
