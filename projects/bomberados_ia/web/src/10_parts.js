@@ -218,7 +218,7 @@ function spineTex(txt, col) {
 }
 function buildBooks(R) {
   const edgeT = canvasTex(256, 64, (g, w, h) => { g.fillStyle = '#eae3d4'; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(120,108,90,.35)'; for (let y = 2; y < h; y += 3) g.fillRect(0, y, w, 1); });
-  const edgeM = stdTex(edgeT, 0.9);
+  const edgeM = new THREE.MeshLambertMaterial({ map: edgeT });
   const tower = new THREE.Group(); tower.position.set(-0.47, DY, 0.06); R.add(tower);
   const BK = [['MANUAL DE INCENDIOS', '#8c2a24'], ['RESCATE', '#23476b'], ['HIDRÁULICA', '#2f6b5a'], ['CONSTRUCCIÓN', '#6b5a2f'], ['LEGISLACIÓN', '#4a3a6b'], ['TEMARIO GENERAL', '#2b2f36']];
   let y = 0; const books = [];
@@ -231,12 +231,12 @@ function buildBooks(R) {
   // el libro abierto delante del opositor
   const ob = new THREE.Group(); ob.position.set(-0.17, DY, 0.15); ob.rotation.y = 0.1; R.add(ob);
   const cover = rbox(0.37, 0.006, 0.26, plasticS(0x8c2a24, 0.6), 0.004); cover.position.y = 0.003; ob.add(cover);
-  const pgM = stdTex(pageTex('fire', 1), 0.85), pgM2 = stdTex(pageTex('text', 2), 0.85);
+  const pgM = new THREE.MeshLambertMaterial({ map: pageTex('fire', 1) }), pgM2 = new THREE.MeshLambertMaterial({ map: pageTex('text', 2) });   // papel mate: Lambert (más barato)
   for (const s of [-1, 1]) { const st = new THREE.Mesh(new THREE.BoxGeometry(0.175, 0.016, 0.245), [edgeM, edgeM, s < 0 ? pgM2 : pgM, edgeM, edgeM, edgeM]); st.position.set(s * 0.089, 0.014, 0); st.rotation.z = -s * 0.03; st.castShadow = true; st.receiveShadow = true; ob.add(st); }
   const PK = [['text', 3], ['index', 4], ['text', 5], ['fire', 6], ['text', 7], ['text', 8]], PT = PK.map(([k, s]) => pageTex(k, s)), PB = PK.map(([k, s]) => pageTex(k === 'index' ? 'text' : k, s + 20, true));
   const pages = []; for (let k = 0; k < 8; k++) { const geo = new THREE.PlaneGeometry(0.17, 0.24, 16, 1); geo.rotateX(-Math.PI / 2);
-    const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: PT[k % PT.length], roughness: 0.85, side: THREE.FrontSide })); m.castShadow = true; m.position.y = 0.023; m.frustumCulled = false; ob.add(m);
-    const b = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: PB[k % PB.length], roughness: 0.85, side: THREE.BackSide })); b.position.y = 0.023; b.frustumCulled = false; ob.add(b);
+    const m = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ map: PT[k % PT.length], side: THREE.FrontSide })); m.castShadow = true; m.position.y = 0.023; m.frustumCulled = false; ob.add(m);
+    const b = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ map: PB[k % PB.length], side: THREE.BackSide })); b.position.y = 0.023; b.frustumCulled = false; ob.add(b);
     pages.push({ m, b, base: Float32Array.from(geo.attributes.position.array) }); }
   return { tower, books, tabs, ob, pages };
 }

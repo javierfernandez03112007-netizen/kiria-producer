@@ -67,6 +67,7 @@ function fireAt(t) {
 // ---- la habitación: la tarde que se va, el flexo y el reloj
 function roomAt(t) {
   const R = S.room, vis = t > TV0() + 0.1 && t < TF1() + 0.2; R.R.visible = vis; S.pan.G.visible = !(t > TV1() + 0.2 && t < TF0() - 0.1);
+  S.floor.refl.visible = !(t > TV1() + 0.1 && t < TF0() - 0.05);     // en la habitación el espejo queda bajo la madera: no se calcula
   S.gridM.uniforms.op.value = 1 - win(t, TV0() + 0.2, 0.4) * (1 - win(t, TF0() + 0.4, 0.4));
   if (!vis) return;
   const night = win(t, K.va - 0.15, 0.9); S.night = night;

@@ -5,7 +5,7 @@
 const FIRE_VS = `#include <common>
 #include <logdepthbuf_pars_vertex>
 attribute vec2 corner; attribute vec4 seed; attribute vec3 tgt; attribute float grp;
-uniform mat4 VP, PVP; uniform vec2 res; uniform float ppu, time, dtp, size, lsize, bright;
+uniform mat4 VP, PVP; uniform vec2 res; uniform float ppu, pxs, time, dtp, size, lsize, bright;
 uniform vec3 orig; uniform float rad, hgt, power;
 uniform vec4 L0, L1, L0p, L1p; uniform vec2 form, heat;
 varying float vA; varying float vS; varying float vT; varying float vLen; varying vec3 vC;
@@ -51,11 +51,11 @@ void main(){
   float vis = mix(power, 1.0, f) * ht;
   if (a.w < 0.015 || b.w < 0.008 || vis < 0.003) { gl_Position = vec4(0.,0.,-2.,1.); vA = 0.; vS = 0.; vT = 0.; vLen = 0.; vC = vec3(0.); return; }
   vec2 pa = a.xy / a.w * res * 0.5, pb = b.xy / b.w * res * 0.5;
-  vec2 d = pb - pa; float L = min(length(d), 520.0);
+  vec2 d = pb - pa; float L = min(length(d), 520.0 * pxs);
   vec2 dir = L > 0.01 ? normalize(d) : vec2(1., 0.); vec2 nr = vec2(-dir.y, dir.x);
   float wf = size * (0.55 + 0.8 * seed.x) * (0.45 + 0.9 * ag) * (1.0 - smoothstep(0.75, 1.0, ag) * 0.5);
   float wl = lsize * lw * (0.55 + 0.6 * seed.x) * (0.8 + 0.7 * ag);
-  float sz = clamp(mix(wf, wl, f) * ppu / a.w, 1.0, 85.0);
+  float sz = clamp(mix(wf, wl, f) * ppu / a.w, 1.0 * pxs, 85.0 * pxs);
   vec2 px = (corner.x > 0.5 ? pa - dir * sz : pa + dir * (L + sz)) + nr * corner.y * sz;
   gl_Position = vec4(px / (res * 0.5) * a.w, a.z, a.w);
   #include <logdepthbuf_vertex>
@@ -101,13 +101,13 @@ function buildFire(o) {
   g.setAttribute('seed', new THREE.InstancedBufferAttribute(sd, 4)); g.setAttribute('tgt', new THREE.InstancedBufferAttribute(tg, 3)); g.setAttribute('grp', new THREE.InstancedBufferAttribute(gr, 1));
   g.instanceCount = N;
   const m = new THREE.ShaderMaterial({ vertexShader: FIRE_VS, fragmentShader: FIRE_FS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { VP: { value: new THREE.Matrix4() }, PVP: { value: new THREE.Matrix4() }, res: { value: new THREE.Vector2(W, H) }, ppu: { value: 1000 }, time: { value: 0 }, dtp: { value: 1 / 36 },
+    uniforms: { VP: { value: new THREE.Matrix4() }, PVP: { value: new THREE.Matrix4() }, res: { value: new THREE.Vector2(W / 2, H / 2) }, ppu: { value: 1000 }, pxs: { value: 0.5 }, time: { value: 0 }, dtp: { value: 1 / 36 },
       size: { value: o.size }, lsize: { value: o.lsize }, bright: { value: o.bright }, orig: { value: o.orig.clone() }, rad: { value: o.rad }, hgt: { value: o.hgt }, power: { value: 1 },
       L0: { value: new THREE.Vector4(0, 0, 0, 0.3) }, L1: { value: new THREE.Vector4(0, 0, 0, 0.3) }, L0p: { value: new THREE.Vector4(0, 0, 0, 0.3) }, L1p: { value: new THREE.Vector4(0, 0, 0, 0.3) }, form: { value: new THREE.Vector2(0, 0) }, heat: { value: new THREE.Vector2(1, 1) } } });
-  const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.layers.set(1); mesh.renderOrder = 3; scene.add(mesh);
+  const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.renderOrder = 3; fireScene.add(mesh);   // en su propia escena (ver rtF)
   return { mesh, u: m.uniforms };
 }
 function fireUpdate(F, t, VP, PVP) {
   const u = F.u; u.VP.value.copy(VP); u.PVP.value.copy(PVP); u.time.value = t;
-  u.ppu.value = H * 0.5 / Math.tan(cam.fov * Math.PI / 360);
+  u.ppu.value = H * 0.25 / Math.tan(cam.fov * Math.PI / 360);   // píxeles del lienzo del fuego (media resolución)
 }

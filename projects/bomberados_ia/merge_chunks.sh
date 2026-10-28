@@ -3,7 +3,7 @@
 # en out/frames y, si no falta ninguno, compone el vídeo final.
 cd /home/user/kiria-producer/projects/bomberados_ia
 N=2891
-for spec in b:723:1446 c:1446:2169 d:2169:2891; do
+for spec in b:730:1348 c:1348:1967 d:1967:2891; do
   IFS=: read x A B <<< "$spec"
   git fetch -q origin render-bi-$x || { echo "falta la rama render-bi-$x"; exit 1; }
   git show origin/render-bi-$x:projects/bomberados_ia/chunks/chunk_${A}_${B}.mp4 > out/chunk_$x.mp4

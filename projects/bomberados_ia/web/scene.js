@@ -24,10 +24,13 @@ const rtA = new THREE.WebGLRenderTarget(W * PR, H * PR, { type: THREE.HalfFloatT
 const BLW = Math.round(W * PR / 4), BLH = Math.round(H * PR / 4);
 const rtB = [0, 1].map(() => new THREE.WebGLRenderTarget(BLW, BLH, { type: THREE.HalfFloatType }));
 const rtC = [0, 1].map(() => new THREE.WebGLRenderTarget(Math.round(BLW / 2), Math.round(BLH / 2), { type: THREE.HalfFloatType }));
+// el fuego va aparte: a media resolución y sin multimuestreo (es lo que más cuesta), y se suma luego a la imagen y al resplandor
+const rtF = new THREE.WebGLRenderTarget(Math.round(W * PR / 2), Math.round(H * PR / 2), { type: THREE.HalfFloatType });
+const fireScene = new THREE.Scene();
 const VS = 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }';
-const brightM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, px: { value: new THREE.Vector2(1.5 / (W * PR), 1.5 / (H * PR)) }, th: { value: 1.7 } }, vertexShader: VS, depthTest: false,
-  fragmentShader: `uniform sampler2D tA; uniform vec2 px; uniform float th; varying vec2 vUv;
-    void main(){ vec3 c = vec3(0.); for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) c += texture2D(tA, vUv + vec2(float(i), float(j)) * px).rgb; c /= 9.0;
+const brightM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, tF: { value: null }, px: { value: new THREE.Vector2(1.5 / (W * PR), 1.5 / (H * PR)) }, th: { value: 1.7 } }, vertexShader: VS, depthTest: false,
+  fragmentShader: `uniform sampler2D tA, tF; uniform vec2 px; uniform float th; varying vec2 vUv;
+    void main(){ vec3 c = vec3(0.); for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) c += texture2D(tA, vUv + vec2(float(i), float(j)) * px).rgb; c = c / 9.0 + texture2D(tF, vUv).rgb;
       float l = max(c.r, max(c.g, c.b)), k = clamp((l - th) / 1.6, 0., 1.); gl_FragColor = vec4(c * k * k, 1.); }` });
 const blurM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, d: { value: new THREE.Vector2() } }, vertexShader: VS, depthTest: false,
   fragmentShader: `uniform sampler2D tA; uniform vec2 d; varying vec2 vUv;
@@ -38,10 +41,10 @@ const blurM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, d: { v
 // desenfoque de movimiento con el flujo de la cámara (traslación + zoom + giro: campo afín medido a la distancia a la
 // que se mira), resplandor, aberración cromática, ACES, viñeta y grano. El negro se queda negro.
 const post = new THREE.ShaderMaterial({
-  uniforms: { tA: { value: null }, tB: { value: null }, tC: { value: null }, m0: { value: new THREE.Vector2() }, a0: { value: new THREE.Vector2() }, J: { value: new THREE.Vector4() },
+  uniforms: { tA: { value: null }, tB: { value: null }, tC: { value: null }, tF: { value: null }, m0: { value: new THREE.Vector2() }, a0: { value: new THREE.Vector2() }, J: { value: new THREE.Vector4() },
     fade: { value: 0 }, white: { value: 0 }, vig: { value: 0.38 }, time: { value: 0 }, flash: { value: 0 }, bloom: { value: 0.75 }, ca: { value: 1 }, mbk: { value: 0.8 }, tint: { value: new THREE.Vector3(0, 0, 0) } },
   vertexShader: VS,
-  fragmentShader: `uniform sampler2D tA, tB, tC; uniform vec2 m0, a0; uniform vec4 J; uniform vec3 tint; uniform float fade, white, vig, time, flash, bloom, ca, mbk; varying vec2 vUv;
+  fragmentShader: `uniform sampler2D tA, tB, tC, tF; uniform vec2 m0, a0; uniform vec4 J; uniform vec3 tint; uniform float fade, white, vig, time, flash, bloom, ca, mbk; varying vec2 vUv;
     float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
     void main(){ vec2 p = vUv * 2.0 - 1.0, q = p - a0;
       vec2 m = (m0 + vec2(J.x * q.x + J.y * q.y, J.z * q.x + J.w * q.y)) * 0.5 * mbk;
@@ -53,7 +56,7 @@ const post = new THREE.ShaderMaterial({
       a.r += (texture2D(tA, vUv+cc).r - texture2D(tA, vUv).r) * 0.8; a.b += (texture2D(tA, vUv-cc).b - texture2D(tA, vUv).b) * 0.8;
       int nb = n < 6 ? n : 6; float fb = float(nb);
       for(int i=0;i<6;i++){ if (i >= nb) break; float k = nb > 1 ? float(i)/(fb-1.0)-0.5 : 0.0; vec2 u=vUv-m*k; b += texture2D(tB, u).rgb * 0.8 + texture2D(tC, u).rgb * 1.15; } b /= fb;
-      a += b * bloom;
+      a += texture2D(tF, vUv).rgb; a += b * bloom;
       a = mix(a, vec3(0.0), fade); a += flash; a += tint;
       a = clamp((a*(2.51*a+0.03))/(a*(2.43*a+0.59)+0.14),0.,1.); a = pow(a, vec3(1.0/2.2));
       float lu = dot(a, vec3(0.2126,0.7152,0.0722));
@@ -137,7 +140,7 @@ const basicGlow = (c, k = 1) => new THREE.MeshBasicMaterial({ color: new THREE.C
 // ---------------------------------------------------------------- luces fijas (mismo número siempre: no se recompilan sombreadores)
 function buildRig() {
   const key = new THREE.SpotLight(0xfff1e4, 34, 14, 0.62, 0.75, 1.4); key.position.set(-1.7, 3.3, 2.1); key.target.position.set(0, 0.15, 0);
-  key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0002; key.shadow.normalBias = 0.01; key.shadow.radius = 5; key.shadow.camera.near = 0.5; key.shadow.camera.far = 12;
+  key.castShadow = false; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0002; key.shadow.normalBias = 0.01; key.shadow.radius = 5; key.shadow.camera.near = 0.5; key.shadow.camera.far = 12;
   scene.add(key, key.target);
   const rimC = new THREE.PointLight(0x5fd8ff, 1.2, 9, 1.4); rimC.position.set(-2.3, 0.42, -1.9);
   const rimW = new THREE.PointLight(0xff8a55, 1.6, 9, 1.4); rimW.position.set(2.3, 0.48, -1.7);
@@ -428,7 +431,7 @@ function buildFloor() {
 const FIRE_VS = `#include <common>
 #include <logdepthbuf_pars_vertex>
 attribute vec2 corner; attribute vec4 seed; attribute vec3 tgt; attribute float grp;
-uniform mat4 VP, PVP; uniform vec2 res; uniform float ppu, time, dtp, size, lsize, bright;
+uniform mat4 VP, PVP; uniform vec2 res; uniform float ppu, pxs, time, dtp, size, lsize, bright;
 uniform vec3 orig; uniform float rad, hgt, power;
 uniform vec4 L0, L1, L0p, L1p; uniform vec2 form, heat;
 varying float vA; varying float vS; varying float vT; varying float vLen; varying vec3 vC;
@@ -474,11 +477,11 @@ void main(){
   float vis = mix(power, 1.0, f) * ht;
   if (a.w < 0.015 || b.w < 0.008 || vis < 0.003) { gl_Position = vec4(0.,0.,-2.,1.); vA = 0.; vS = 0.; vT = 0.; vLen = 0.; vC = vec3(0.); return; }
   vec2 pa = a.xy / a.w * res * 0.5, pb = b.xy / b.w * res * 0.5;
-  vec2 d = pb - pa; float L = min(length(d), 520.0);
+  vec2 d = pb - pa; float L = min(length(d), 520.0 * pxs);
   vec2 dir = L > 0.01 ? normalize(d) : vec2(1., 0.); vec2 nr = vec2(-dir.y, dir.x);
   float wf = size * (0.55 + 0.8 * seed.x) * (0.45 + 0.9 * ag) * (1.0 - smoothstep(0.75, 1.0, ag) * 0.5);
   float wl = lsize * lw * (0.55 + 0.6 * seed.x) * (0.8 + 0.7 * ag);
-  float sz = clamp(mix(wf, wl, f) * ppu / a.w, 1.0, 85.0);
+  float sz = clamp(mix(wf, wl, f) * ppu / a.w, 1.0 * pxs, 85.0 * pxs);
   vec2 px = (corner.x > 0.5 ? pa - dir * sz : pa + dir * (L + sz)) + nr * corner.y * sz;
   gl_Position = vec4(px / (res * 0.5) * a.w, a.z, a.w);
   #include <logdepthbuf_vertex>
@@ -524,15 +527,15 @@ function buildFire(o) {
   g.setAttribute('seed', new THREE.InstancedBufferAttribute(sd, 4)); g.setAttribute('tgt', new THREE.InstancedBufferAttribute(tg, 3)); g.setAttribute('grp', new THREE.InstancedBufferAttribute(gr, 1));
   g.instanceCount = N;
   const m = new THREE.ShaderMaterial({ vertexShader: FIRE_VS, fragmentShader: FIRE_FS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-    uniforms: { VP: { value: new THREE.Matrix4() }, PVP: { value: new THREE.Matrix4() }, res: { value: new THREE.Vector2(W, H) }, ppu: { value: 1000 }, time: { value: 0 }, dtp: { value: 1 / 36 },
+    uniforms: { VP: { value: new THREE.Matrix4() }, PVP: { value: new THREE.Matrix4() }, res: { value: new THREE.Vector2(W / 2, H / 2) }, ppu: { value: 1000 }, pxs: { value: 0.5 }, time: { value: 0 }, dtp: { value: 1 / 36 },
       size: { value: o.size }, lsize: { value: o.lsize }, bright: { value: o.bright }, orig: { value: o.orig.clone() }, rad: { value: o.rad }, hgt: { value: o.hgt }, power: { value: 1 },
       L0: { value: new THREE.Vector4(0, 0, 0, 0.3) }, L1: { value: new THREE.Vector4(0, 0, 0, 0.3) }, L0p: { value: new THREE.Vector4(0, 0, 0, 0.3) }, L1p: { value: new THREE.Vector4(0, 0, 0, 0.3) }, form: { value: new THREE.Vector2(0, 0) }, heat: { value: new THREE.Vector2(1, 1) } } });
-  const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.layers.set(1); mesh.renderOrder = 3; scene.add(mesh);
+  const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.renderOrder = 3; fireScene.add(mesh);   // en su propia escena (ver rtF)
   return { mesh, u: m.uniforms };
 }
 function fireUpdate(F, t, VP, PVP) {
   const u = F.u; u.VP.value.copy(VP); u.PVP.value.copy(PVP); u.time.value = t;
-  u.ppu.value = H * 0.5 / Math.tan(cam.fov * Math.PI / 360);
+  u.ppu.value = H * 0.25 / Math.tan(cam.fov * Math.PI / 360);   // píxeles del lienzo del fuego (media resolución)
 }
 // ---------------------------------------------------------------- «Bomberados IA»: piezas
 const GOLD = 0xf2b233, EMB = 0xff7a2f, RED = 0xe0453a, TEA = 0x2fc7b6;
@@ -754,7 +757,7 @@ function spineTex(txt, col) {
 }
 function buildBooks(R) {
   const edgeT = canvasTex(256, 64, (g, w, h) => { g.fillStyle = '#eae3d4'; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(120,108,90,.35)'; for (let y = 2; y < h; y += 3) g.fillRect(0, y, w, 1); });
-  const edgeM = stdTex(edgeT, 0.9);
+  const edgeM = new THREE.MeshLambertMaterial({ map: edgeT });
   const tower = new THREE.Group(); tower.position.set(-0.47, DY, 0.06); R.add(tower);
   const BK = [['MANUAL DE INCENDIOS', '#8c2a24'], ['RESCATE', '#23476b'], ['HIDRÁULICA', '#2f6b5a'], ['CONSTRUCCIÓN', '#6b5a2f'], ['LEGISLACIÓN', '#4a3a6b'], ['TEMARIO GENERAL', '#2b2f36']];
   let y = 0; const books = [];
@@ -767,12 +770,12 @@ function buildBooks(R) {
   // el libro abierto delante del opositor
   const ob = new THREE.Group(); ob.position.set(-0.17, DY, 0.15); ob.rotation.y = 0.1; R.add(ob);
   const cover = rbox(0.37, 0.006, 0.26, plasticS(0x8c2a24, 0.6), 0.004); cover.position.y = 0.003; ob.add(cover);
-  const pgM = stdTex(pageTex('fire', 1), 0.85), pgM2 = stdTex(pageTex('text', 2), 0.85);
+  const pgM = new THREE.MeshLambertMaterial({ map: pageTex('fire', 1) }), pgM2 = new THREE.MeshLambertMaterial({ map: pageTex('text', 2) });   // papel mate: Lambert (más barato)
   for (const s of [-1, 1]) { const st = new THREE.Mesh(new THREE.BoxGeometry(0.175, 0.016, 0.245), [edgeM, edgeM, s < 0 ? pgM2 : pgM, edgeM, edgeM, edgeM]); st.position.set(s * 0.089, 0.014, 0); st.rotation.z = -s * 0.03; st.castShadow = true; st.receiveShadow = true; ob.add(st); }
   const PK = [['text', 3], ['index', 4], ['text', 5], ['fire', 6], ['text', 7], ['text', 8]], PT = PK.map(([k, s]) => pageTex(k, s)), PB = PK.map(([k, s]) => pageTex(k === 'index' ? 'text' : k, s + 20, true));
   const pages = []; for (let k = 0; k < 8; k++) { const geo = new THREE.PlaneGeometry(0.17, 0.24, 16, 1); geo.rotateX(-Math.PI / 2);
-    const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: PT[k % PT.length], roughness: 0.85, side: THREE.FrontSide })); m.castShadow = true; m.position.y = 0.023; m.frustumCulled = false; ob.add(m);
-    const b = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: PB[k % PB.length], roughness: 0.85, side: THREE.BackSide })); b.position.y = 0.023; b.frustumCulled = false; ob.add(b);
+    const m = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ map: PT[k % PT.length], side: THREE.FrontSide })); m.castShadow = true; m.position.y = 0.023; m.frustumCulled = false; ob.add(m);
+    const b = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ map: PB[k % PB.length], side: THREE.BackSide })); b.position.y = 0.023; b.frustumCulled = false; ob.add(b);
     pages.push({ m, b, base: Float32Array.from(geo.attributes.position.array) }); }
   return { tower, books, tabs, ob, pages };
 }
@@ -1065,6 +1068,7 @@ function fireAt(t) {
 // ---- la habitación: la tarde que se va, el flexo y el reloj
 function roomAt(t) {
   const R = S.room, vis = t > TV0() + 0.1 && t < TF1() + 0.2; R.R.visible = vis; S.pan.G.visible = !(t > TV1() + 0.2 && t < TF0() - 0.1);
+  S.floor.refl.visible = !(t > TV1() + 0.1 && t < TF0() - 0.05);     // en la habitación el espejo queda bajo la madera: no se calcula
   S.gridM.uniforms.op.value = 1 - win(t, TV0() + 0.2, 0.4) * (1 - win(t, TF0() + 0.4, 0.4));
   if (!vis) return;
   const night = win(t, K.va - 0.15, 0.9); S.night = night;
@@ -1382,10 +1386,11 @@ function frame(t) {
 function blurPass(src, dst, dx, dy) { quad.material = blurM; blurM.uniforms.tA.value = src.texture; blurM.uniforms.d.value.set(dx, dy); renderer.setRenderTarget(dst); renderer.render(quadScene, quadCam); }
 function drawFrame(t) {
   renderer.setRenderTarget(rtA); renderer.render(scene, cam);
-  quad.material = brightM; brightM.uniforms.tA.value = rtA.texture; renderer.setRenderTarget(rtB[0]); renderer.render(quadScene, quadCam);
+  renderer.setRenderTarget(rtF); renderer.render(fireScene, cam);
+  quad.material = brightM; brightM.uniforms.tA.value = rtA.texture; brightM.uniforms.tF.value = rtF.texture; renderer.setRenderTarget(rtB[0]); renderer.render(quadScene, quadCam);
   blurPass(rtB[0], rtB[1], 1 / BLW, 0); blurPass(rtB[1], rtB[0], 0, 1 / BLH);
   blurPass(rtB[0], rtC[1], 2 / BLW, 0); blurPass(rtC[1], rtC[0], 0, 2 / BLH); blurPass(rtC[0], rtC[1], 3 / BLW, 0); blurPass(rtC[1], rtC[0], 0, 3 / BLH);
-  quad.material = post; post.uniforms.tA.value = rtA.texture; post.uniforms.tB.value = rtB[0].texture; post.uniforms.tC.value = rtC[0].texture; post.uniforms.time.value = t;
+  quad.material = post; post.uniforms.tA.value = rtA.texture; post.uniforms.tF.value = rtF.texture; post.uniforms.tB.value = rtB[0].texture; post.uniforms.tC.value = rtC[0].texture; post.uniforms.time.value = t;
   renderer.setRenderTarget(null); renderer.render(quadScene, quadCam);
 }
 window.renderAt = function (t) {
