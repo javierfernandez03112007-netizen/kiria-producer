@@ -1,7 +1,7 @@
 # Fuentes — Pregunta del día #1: reducción de 45 a 25 mm
 
-- **Pregunta y respuesta (A: la presión disminuye y aumenta la velocidad)**: aportadas por el usuario (pregunta tipo test
-  de oposición). Origen exacto (examen, convocatoria, academia): PREGUNTAR.
+- **Pregunta y respuesta (A: la presión disminuye y aumenta la velocidad)**: pregunta de un examen oficial de oposición a
+  bombero, según el usuario. Pendiente: apuntar qué convocatoria y año.
 - **Por qué es la A**:
   - Ecuación de continuidad: caudal Q = sección × velocidad. De Ø 45 a Ø 25 mm la sección queda en (25/45)² ≈ 0,31,
     así que la velocidad se multiplica por (45/25)² ≈ 3,24.
