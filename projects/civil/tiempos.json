@@ -1,0 +1,991 @@
+[
+ {
+  "text": "Un arquitecto puede proyectar un puente. Un ingeniero de Caminos… no puede proyectar tu casa.",
+  "start": 0.0,
+  "end": 5.442,
+  "words": [
+   {
+    "w": "Un",
+    "start": 0.0,
+    "end": 0.231
+   },
+   {
+    "w": "arquitecto",
+    "start": 0.231,
+    "end": 0.846
+   },
+   {
+    "w": "puede",
+    "start": 0.846,
+    "end": 1.154
+   },
+   {
+    "w": "proyectar",
+    "start": 1.154,
+    "end": 1.615
+   },
+   {
+    "w": "un",
+    "start": 1.615,
+    "end": 1.769
+   },
+   {
+    "w": "puente.",
+    "start": 1.769,
+    "end": 2.394
+   },
+   {
+    "w": "Un",
+    "start": 2.394,
+    "end": 2.502
+   },
+   {
+    "w": "ingeniero",
+    "start": 2.502,
+    "end": 2.99
+   },
+   {
+    "w": "de",
+    "start": 2.99,
+    "end": 3.144
+   },
+   {
+    "w": "Caminos…",
+    "start": 3.144,
+    "end": 3.913
+   },
+   {
+    "w": "no",
+    "start": 3.913,
+    "end": 4.144
+   },
+   {
+    "w": "puede",
+    "start": 4.144,
+    "end": 4.452
+   },
+   {
+    "w": "proyectar",
+    "start": 4.452,
+    "end": 5.067
+   },
+   {
+    "w": "tu",
+    "start": 5.067,
+    "end": 5.221
+   },
+   {
+    "w": "casa.",
+    "start": 5.221,
+    "end": 5.442
+   }
+  ]
+ },
+ {
+  "text": "Y lo dicen una ley y el Tribunal Supremo.",
+  "start": 5.644,
+  "end": 7.971,
+  "words": [
+   {
+    "w": "Y",
+    "start": 5.644,
+    "end": 5.722
+   },
+   {
+    "w": "lo",
+    "start": 5.722,
+    "end": 5.817
+   },
+   {
+    "w": "dicen",
+    "start": 5.817,
+    "end": 6.279
+   },
+   {
+    "w": "una",
+    "start": 6.279,
+    "end": 6.51
+   },
+   {
+    "w": "ley",
+    "start": 6.51,
+    "end": 6.817
+   },
+   {
+    "w": "y",
+    "start": 6.817,
+    "end": 6.971
+   },
+   {
+    "w": "el",
+    "start": 6.971,
+    "end": 7.048
+   },
+   {
+    "w": "Tribunal",
+    "start": 7.048,
+    "end": 7.587
+   },
+   {
+    "w": "Supremo.",
+    "start": 7.587,
+    "end": 7.971
+   }
+  ]
+ },
+ {
+  "text": "¿Por qué? Al final te lo digo… y no va a gustar a nadie.",
+  "start": 8.25,
+  "end": 11.356,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 8.25,
+    "end": 8.356
+   },
+   {
+    "w": "qué?",
+    "start": 8.356,
+    "end": 9.038
+   },
+   {
+    "w": "Al",
+    "start": 9.038,
+    "end": 9.115
+   },
+   {
+    "w": "final",
+    "start": 9.115,
+    "end": 9.423
+   },
+   {
+    "w": "te",
+    "start": 9.423,
+    "end": 9.577
+   },
+   {
+    "w": "lo",
+    "start": 9.577,
+    "end": 9.731
+   },
+   {
+    "w": "digo…",
+    "start": 9.731,
+    "end": 10.019
+   },
+   {
+    "w": "y",
+    "start": 10.019,
+    "end": 10.135
+   },
+   {
+    "w": "no",
+    "start": 10.135,
+    "end": 10.365
+   },
+   {
+    "w": "va",
+    "start": 10.365,
+    "end": 10.519
+   },
+   {
+    "w": "a",
+    "start": 10.519,
+    "end": 10.596
+   },
+   {
+    "w": "gustar",
+    "start": 10.596,
+    "end": 10.981
+   },
+   {
+    "w": "a",
+    "start": 10.981,
+    "end": 11.135
+   },
+   {
+    "w": "nadie.",
+    "start": 11.135,
+    "end": 11.356
+   }
+  ]
+ },
+ {
+  "text": "Los de Caminos: «Vosotros dibujáis; nosotros hacemos que no se caiga».",
+  "start": 11.692,
+  "end": 15.779,
+  "words": [
+   {
+    "w": "Los",
+    "start": 11.692,
+    "end": 11.827
+   },
+   {
+    "w": "de",
+    "start": 11.827,
+    "end": 11.981
+   },
+   {
+    "w": "Caminos:",
+    "start": 11.981,
+    "end": 12.75
+   },
+   {
+    "w": "«Vosotros",
+    "start": 12.75,
+    "end": 13.202
+   },
+   {
+    "w": "dibujáis;",
+    "start": 13.202,
+    "end": 14.038
+   },
+   {
+    "w": "nosotros",
+    "start": 14.038,
+    "end": 14.577
+   },
+   {
+    "w": "hacemos",
+    "start": 14.577,
+    "end": 14.962
+   },
+   {
+    "w": "que",
+    "start": 14.962,
+    "end": 15.115
+   },
+   {
+    "w": "no",
+    "start": 15.115,
+    "end": 15.269
+   },
+   {
+    "w": "se",
+    "start": 15.269,
+    "end": 15.423
+   },
+   {
+    "w": "caiga».",
+    "start": 15.423,
+    "end": 15.779
+   }
+  ]
+ },
+ {
+  "text": "Y los arquitectos: «Vosotros calculáis; nosotros hacemos que se pueda vivir dentro».",
+  "start": 16.048,
+  "end": 20.817,
+  "words": [
+   {
+    "w": "Y",
+    "start": 16.048,
+    "end": 16.148
+   },
+   {
+    "w": "los",
+    "start": 16.148,
+    "end": 16.269
+   },
+   {
+    "w": "arquitectos:",
+    "start": 16.269,
+    "end": 17.202
+   },
+   {
+    "w": "«Vosotros",
+    "start": 17.202,
+    "end": 17.721
+   },
+   {
+    "w": "calculáis;",
+    "start": 17.721,
+    "end": 18.558
+   },
+   {
+    "w": "nosotros",
+    "start": 18.558,
+    "end": 19.096
+   },
+   {
+    "w": "hacemos",
+    "start": 19.096,
+    "end": 19.558
+   },
+   {
+    "w": "que",
+    "start": 19.558,
+    "end": 19.712
+   },
+   {
+    "w": "se",
+    "start": 19.712,
+    "end": 19.865
+   },
+   {
+    "w": "pueda",
+    "start": 19.865,
+    "end": 20.173
+   },
+   {
+    "w": "vivir",
+    "start": 20.173,
+    "end": 20.558
+   },
+   {
+    "w": "dentro».",
+    "start": 20.558,
+    "end": 20.817
+   }
+  ]
+ },
+ {
+  "text": "Por dentro, Caminos es esto: suelos, por qué se inclina la torre de Pisa; estructuras que aguantan trenes y viento; presas que frenan ríos.",
+  "start": 21.269,
+  "end": 29.702,
+  "words": [
+   {
+    "w": "Por",
+    "start": 21.269,
+    "end": 21.503
+   },
+   {
+    "w": "dentro,",
+    "start": 21.503,
+    "end": 21.885
+   },
+   {
+    "w": "Caminos",
+    "start": 21.885,
+    "end": 22.548
+   },
+   {
+    "w": "es",
+    "start": 22.548,
+    "end": 22.779
+   },
+   {
+    "w": "esto:",
+    "start": 22.779,
+    "end": 23.327
+   },
+   {
+    "w": "suelos,",
+    "start": 23.327,
+    "end": 23.981
+   },
+   {
+    "w": "por",
+    "start": 23.981,
+    "end": 24.144
+   },
+   {
+    "w": "qué",
+    "start": 24.144,
+    "end": 24.221
+   },
+   {
+    "w": "se",
+    "start": 24.221,
+    "end": 24.375
+   },
+   {
+    "w": "inclina",
+    "start": 24.375,
+    "end": 24.913
+   },
+   {
+    "w": "la",
+    "start": 24.913,
+    "end": 24.99
+   },
+   {
+    "w": "torre",
+    "start": 24.99,
+    "end": 25.298
+   },
+   {
+    "w": "de",
+    "start": 25.298,
+    "end": 25.375
+   },
+   {
+    "w": "Pisa;",
+    "start": 25.375,
+    "end": 25.904
+   },
+   {
+    "w": "estructuras",
+    "start": 25.904,
+    "end": 26.442
+   },
+   {
+    "w": "que",
+    "start": 26.442,
+    "end": 26.596
+   },
+   {
+    "w": "aguantan",
+    "start": 26.596,
+    "end": 27.135
+   },
+   {
+    "w": "trenes",
+    "start": 27.135,
+    "end": 27.519
+   },
+   {
+    "w": "y",
+    "start": 27.519,
+    "end": 27.673
+   },
+   {
+    "w": "viento;",
+    "start": 27.673,
+    "end": 28.308
+   },
+   {
+    "w": "presas",
+    "start": 28.308,
+    "end": 28.663
+   },
+   {
+    "w": "que",
+    "start": 28.663,
+    "end": 28.817
+   },
+   {
+    "w": "frenan",
+    "start": 28.817,
+    "end": 29.356
+   },
+   {
+    "w": "ríos.",
+    "start": 29.356,
+    "end": 29.702
+   }
+  ]
+ },
+ {
+  "text": "Carreteras y vías: España tiene la segunda red de alta velocidad del mundo.",
+  "start": 30.0,
+  "end": 34.269,
+  "words": [
+   {
+    "w": "Carreteras",
+    "start": 30.0,
+    "end": 30.51
+   },
+   {
+    "w": "y",
+    "start": 30.51,
+    "end": 30.663
+   },
+   {
+    "w": "vías:",
+    "start": 30.663,
+    "end": 31.346
+   },
+   {
+    "w": "España",
+    "start": 31.346,
+    "end": 31.808
+   },
+   {
+    "w": "tiene",
+    "start": 31.808,
+    "end": 32.038
+   },
+   {
+    "w": "la",
+    "start": 32.038,
+    "end": 32.192
+   },
+   {
+    "w": "segunda",
+    "start": 32.192,
+    "end": 32.654
+   },
+   {
+    "w": "red",
+    "start": 32.654,
+    "end": 32.885
+   },
+   {
+    "w": "de",
+    "start": 32.885,
+    "end": 33.038
+   },
+   {
+    "w": "alta",
+    "start": 33.038,
+    "end": 33.269
+   },
+   {
+    "w": "velocidad",
+    "start": 33.269,
+    "end": 33.808
+   },
+   {
+    "w": "del",
+    "start": 33.808,
+    "end": 34.038
+   },
+   {
+    "w": "mundo.",
+    "start": 34.038,
+    "end": 34.269
+   }
+  ]
+ },
+ {
+  "text": "Y aun así, el Supremo les ha dejado proyectar un polideportivo… pero tu casa, no.",
+  "start": 34.404,
+  "end": 38.654,
+  "words": [
+   {
+    "w": "Y",
+    "start": 34.404,
+    "end": 34.56
+   },
+   {
+    "w": "aun",
+    "start": 34.56,
+    "end": 34.75
+   },
+   {
+    "w": "así,",
+    "start": 34.75,
+    "end": 35.019
+   },
+   {
+    "w": "el",
+    "start": 35.019,
+    "end": 35.13
+   },
+   {
+    "w": "Supremo",
+    "start": 35.13,
+    "end": 35.51
+   },
+   {
+    "w": "les",
+    "start": 35.51,
+    "end": 35.74
+   },
+   {
+    "w": "ha",
+    "start": 35.74,
+    "end": 35.817
+   },
+   {
+    "w": "dejado",
+    "start": 35.817,
+    "end": 36.202
+   },
+   {
+    "w": "proyectar",
+    "start": 36.202,
+    "end": 36.587
+   },
+   {
+    "w": "un",
+    "start": 36.587,
+    "end": 36.663
+   },
+   {
+    "w": "polideportivo…",
+    "start": 36.663,
+    "end": 37.615
+   },
+   {
+    "w": "pero",
+    "start": 37.615,
+    "end": 37.837
+   },
+   {
+    "w": "tu",
+    "start": 37.837,
+    "end": 38.067
+   },
+   {
+    "w": "casa,",
+    "start": 38.067,
+    "end": 38.442
+   },
+   {
+    "w": "no.",
+    "start": 38.442,
+    "end": 38.654
+   }
+  ]
+ },
+ {
+  "text": "Porque una ley de 1999 dice: si en un edificio se vive, se estudia, se cura o se reza, lo firma un arquitecto.",
+  "start": 38.894,
+  "end": 46.837,
+  "words": [
+   {
+    "w": "Porque",
+    "start": 38.894,
+    "end": 39.077
+   },
+   {
+    "w": "una",
+    "start": 39.077,
+    "end": 39.308
+   },
+   {
+    "w": "ley",
+    "start": 39.308,
+    "end": 39.538
+   },
+   {
+    "w": "de",
+    "start": 39.538,
+    "end": 39.692
+   },
+   {
+    "w": "1999",
+    "start": 39.692,
+    "end": 41.154
+   },
+   {
+    "w": "dice:",
+    "start": 41.154,
+    "end": 41.798
+   },
+   {
+    "w": "si",
+    "start": 41.798,
+    "end": 41.913
+   },
+   {
+    "w": "en",
+    "start": 41.913,
+    "end": 42.067
+   },
+   {
+    "w": "un",
+    "start": 42.067,
+    "end": 42.221
+   },
+   {
+    "w": "edificio",
+    "start": 42.221,
+    "end": 42.683
+   },
+   {
+    "w": "se",
+    "start": 42.683,
+    "end": 42.837
+   },
+   {
+    "w": "vive,",
+    "start": 42.837,
+    "end": 43.298
+   },
+   {
+    "w": "se",
+    "start": 43.298,
+    "end": 43.529
+   },
+   {
+    "w": "estudia,",
+    "start": 43.529,
+    "end": 44.067
+   },
+   {
+    "w": "se",
+    "start": 44.067,
+    "end": 44.298
+   },
+   {
+    "w": "cura",
+    "start": 44.298,
+    "end": 44.769
+   },
+   {
+    "w": "o",
+    "start": 44.769,
+    "end": 44.837
+   },
+   {
+    "w": "se",
+    "start": 44.837,
+    "end": 44.99
+   },
+   {
+    "w": "reza,",
+    "start": 44.99,
+    "end": 45.481
+   },
+   {
+    "w": "lo",
+    "start": 45.481,
+    "end": 45.673
+   },
+   {
+    "w": "firma",
+    "start": 45.673,
+    "end": 46.135
+   },
+   {
+    "w": "un",
+    "start": 46.135,
+    "end": 46.288
+   },
+   {
+    "w": "arquitecto.",
+    "start": 46.288,
+    "end": 46.837
+   }
+  ]
+ },
+ {
+  "text": "Un puente no es un edificio: cuando el Colegio de Caminos lo quiso en exclusiva, el Supremo dijo que no.",
+  "start": 47.154,
+  "end": 52.442,
+  "words": [
+   {
+    "w": "Un",
+    "start": 47.154,
+    "end": 47.333
+   },
+   {
+    "w": "puente",
+    "start": 47.333,
+    "end": 47.75
+   },
+   {
+    "w": "no",
+    "start": 47.75,
+    "end": 47.904
+   },
+   {
+    "w": "es",
+    "start": 47.904,
+    "end": 48.135
+   },
+   {
+    "w": "un",
+    "start": 48.135,
+    "end": 48.288
+   },
+   {
+    "w": "edificio:",
+    "start": 48.288,
+    "end": 48.952
+   },
+   {
+    "w": "cuando",
+    "start": 48.952,
+    "end": 49.048
+   },
+   {
+    "w": "el",
+    "start": 49.048,
+    "end": 49.202
+   },
+   {
+    "w": "Colegio",
+    "start": 49.202,
+    "end": 49.587
+   },
+   {
+    "w": "de",
+    "start": 49.587,
+    "end": 49.663
+   },
+   {
+    "w": "Caminos",
+    "start": 49.663,
+    "end": 50.125
+   },
+   {
+    "w": "lo",
+    "start": 50.125,
+    "end": 50.279
+   },
+   {
+    "w": "quiso",
+    "start": 50.279,
+    "end": 50.587
+   },
+   {
+    "w": "en",
+    "start": 50.587,
+    "end": 50.663
+   },
+   {
+    "w": "exclusiva,",
+    "start": 50.663,
+    "end": 51.288
+   },
+   {
+    "w": "el",
+    "start": 51.288,
+    "end": 51.423
+   },
+   {
+    "w": "Supremo",
+    "start": 51.423,
+    "end": 51.885
+   },
+   {
+    "w": "dijo",
+    "start": 51.885,
+    "end": 52.192
+   },
+   {
+    "w": "que",
+    "start": 52.192,
+    "end": 52.346
+   },
+   {
+    "w": "no.",
+    "start": 52.346,
+    "end": 52.442
+   }
+  ]
+ },
+ {
+  "text": "La ley no mira quién calcula mejor. Mira quién va a dormir dentro.",
+  "start": 52.663,
+  "end": 56.442,
+  "words": [
+   {
+    "w": "La",
+    "start": 52.663,
+    "end": 52.75
+   },
+   {
+    "w": "ley",
+    "start": 52.75,
+    "end": 53.058
+   },
+   {
+    "w": "no",
+    "start": 53.058,
+    "end": 53.212
+   },
+   {
+    "w": "mira",
+    "start": 53.212,
+    "end": 53.519
+   },
+   {
+    "w": "quién",
+    "start": 53.519,
+    "end": 53.827
+   },
+   {
+    "w": "calcula",
+    "start": 53.827,
+    "end": 54.288
+   },
+   {
+    "w": "mejor.",
+    "start": 54.288,
+    "end": 54.712
+   },
+   {
+    "w": "Mira",
+    "start": 54.712,
+    "end": 55.125
+   },
+   {
+    "w": "quién",
+    "start": 55.125,
+    "end": 55.433
+   },
+   {
+    "w": "va",
+    "start": 55.433,
+    "end": 55.587
+   },
+   {
+    "w": "a",
+    "start": 55.587,
+    "end": 55.663
+   },
+   {
+    "w": "dormir",
+    "start": 55.663,
+    "end": 56.125
+   },
+   {
+    "w": "dentro.",
+    "start": 56.125,
+    "end": 56.442
+   }
+  ]
+ },
+ {
+  "text": "¿Caminos o Arquitectura? Mándaselo a un arquitecto, a ver qué te dice.",
+  "start": 56.673,
+  "end": 60.428,
+  "words": [
+   {
+    "w": "¿Caminos",
+    "start": 56.673,
+    "end": 57.231
+   },
+   {
+    "w": "o",
+    "start": 57.231,
+    "end": 57.327
+   },
+   {
+    "w": "Arquitectura?",
+    "start": 57.327,
+    "end": 58.308
+   },
+   {
+    "w": "Mándaselo",
+    "start": 58.308,
+    "end": 58.856
+   },
+   {
+    "w": "a",
+    "start": 58.856,
+    "end": 58.933
+   },
+   {
+    "w": "un",
+    "start": 58.933,
+    "end": 59.087
+   },
+   {
+    "w": "arquitecto,",
+    "start": 59.087,
+    "end": 59.605
+   },
+   {
+    "w": "a",
+    "start": 59.605,
+    "end": 59.69
+   },
+   {
+    "w": "ver",
+    "start": 59.69,
+    "end": 59.841
+   },
+   {
+    "w": "qué",
+    "start": 59.841,
+    "end": 59.993
+   },
+   {
+    "w": "te",
+    "start": 59.993,
+    "end": 60.144
+   },
+   {
+    "w": "dice.",
+    "start": 60.144,
+    "end": 60.428
+   }
+  ]
+ }
+]
