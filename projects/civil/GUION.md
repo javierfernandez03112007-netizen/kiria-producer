@@ -25,6 +25,6 @@ figuras de ingeniería de aristas blancas sobre negro, cámara siempre en movimi
 
 ## Comprobación (`engine/GUION.md`)
 - **Hook:** plantilla 16 (rompe una creencia: «el de Caminos sabe más de estructuras, así que puede con todo»), con dos bandos enfrentados. Es verdad: lo dicen la LOE y el Supremo (ver `FUENTES.md`). Es una fórmula nueva: no repite el «dato a pelo» ni el «¿X o Y?».
-- **Pregunta antes del segundo 4 («¿Por qué?») y respuesta al final** (frases 9–11).
+- **Pregunta abierta en los primeros segundos:** la paradoja del hook (0–5 s) ya es la pregunta; el «¿Por qué?» explícito llega hacia los 8 s. **Respuesta al final** (frases 9–11).
 - **Re-hook** hacia los 30 s (frase 8, el polideportivo).
 - **Cada frase tiene su objeto o transformación:** puente → papel; casa → sello; vigas → «?»; torre → tablero del puente; río → presa; presa → mapa; libro → iconos → edificios; casa → persona durmiendo.
