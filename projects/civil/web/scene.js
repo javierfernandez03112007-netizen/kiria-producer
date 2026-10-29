@@ -831,7 +831,7 @@ function buildStamp() {
   const knob = sph(0.1, HM, 24, 16); knob.position.y = 0.29; knob.scale.set(1, 0.8, 1); G.add(knob);
   const decal = textPlane(0.62, 0.46, (g, w, h) => { g.strokeStyle = 'rgba(255,82,71,.95)'; g.lineWidth = 26; g.strokeRect(30, 30, w - 60, h - 60); g.fillStyle = 'rgba(255,82,71,.95)'; g.font = '900 250px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('NO', w / 2, h / 2 + 12);
     g.globalCompositeOperation = 'destination-out'; for (let i = 0; i < 900; i++) { g.fillStyle = `rgba(0,0,0,${0.3 + hash(i) * 0.7})`; g.fillRect(hash(i * 3.3) * w, hash(i * 7.1) * h, 2 + hash(i * 1.3) * 7, 2 + hash(i * 2.9) * 5); } }, 512);
-  decal.rotation.x = -Math.PI / 2; decal.rotation.z = -0.12; decal.position.set(HSX.x, 0.02, HSX.z + 0.02); decal.material.opacity = 0; scene.add(decal);
+  decal.rotation.x = -Math.PI / 2; decal.rotation.z = -0.12; decal.position.set(HSX.x, 0.036, HSX.z + 0.02); decal.material.opacity = 0; scene.add(decal);
   return { G, decal };
 }
 // ---------------------------------------------------------------- escenario: cada pieza según el tiempo (todo sale de K, los tiempos de la voz)
