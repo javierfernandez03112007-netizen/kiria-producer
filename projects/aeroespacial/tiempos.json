@@ -1,0 +1,1102 @@
+[
+ {
+  "text": "Ingeniería Aeroespacial: acabas la carrera… y todavía no eres ingeniero aeronáutico.",
+  "start": 0.054,
+  "end": 4.821,
+  "words": [
+   {
+    "w": "Ingeniería",
+    "start": 0.054,
+    "end": 0.696
+   },
+   {
+    "w": "Aeroespacial:",
+    "start": 0.696,
+    "end": 1.732
+   },
+   {
+    "w": "acabas",
+    "start": 1.732,
+    "end": 2.205
+   },
+   {
+    "w": "la",
+    "start": 2.205,
+    "end": 2.277
+   },
+   {
+    "w": "carrera…",
+    "start": 2.277,
+    "end": 2.688
+   },
+   {
+    "w": "y",
+    "start": 2.688,
+    "end": 2.795
+   },
+   {
+    "w": "todavía",
+    "start": 2.795,
+    "end": 3.223
+   },
+   {
+    "w": "no",
+    "start": 3.223,
+    "end": 3.438
+   },
+   {
+    "w": "eres",
+    "start": 3.438,
+    "end": 3.723
+   },
+   {
+    "w": "ingeniero",
+    "start": 3.723,
+    "end": 4.152
+   },
+   {
+    "w": "aeronáutico.",
+    "start": 4.152,
+    "end": 4.821
+   }
+  ]
+ },
+ {
+  "text": "Al final te digo qué te falta.",
+  "start": 5.063,
+  "end": 6.25,
+  "words": [
+   {
+    "w": "Al",
+    "start": 5.063,
+    "end": 5.134
+   },
+   {
+    "w": "final",
+    "start": 5.134,
+    "end": 5.348
+   },
+   {
+    "w": "te",
+    "start": 5.348,
+    "end": 5.491
+   },
+   {
+    "w": "digo",
+    "start": 5.491,
+    "end": 5.705
+   },
+   {
+    "w": "qué",
+    "start": 5.705,
+    "end": 5.848
+   },
+   {
+    "w": "te",
+    "start": 5.848,
+    "end": 5.991
+   },
+   {
+    "w": "falta.",
+    "start": 5.991,
+    "end": 6.25
+   }
+  ]
+ },
+ {
+  "text": "Y eso que entrar no es fácil: en la Politécnica de Madrid pidió un 12,484 sobre 14 en 2025.",
+  "start": 6.366,
+  "end": 13.027,
+  "words": [
+   {
+    "w": "Y",
+    "start": 6.366,
+    "end": 6.446
+   },
+   {
+    "w": "eso",
+    "start": 6.446,
+    "end": 6.634
+   },
+   {
+    "w": "que",
+    "start": 6.634,
+    "end": 6.848
+   },
+   {
+    "w": "entrar",
+    "start": 6.848,
+    "end": 7.134
+   },
+   {
+    "w": "no",
+    "start": 7.134,
+    "end": 7.277
+   },
+   {
+    "w": "es",
+    "start": 7.277,
+    "end": 7.42
+   },
+   {
+    "w": "fácil:",
+    "start": 7.42,
+    "end": 7.938
+   },
+   {
+    "w": "en",
+    "start": 7.938,
+    "end": 7.998
+   },
+   {
+    "w": "la",
+    "start": 7.998,
+    "end": 8.071
+   },
+   {
+    "w": "Politécnica",
+    "start": 8.071,
+    "end": 8.714
+   },
+   {
+    "w": "de",
+    "start": 8.714,
+    "end": 8.786
+   },
+   {
+    "w": "Madrid",
+    "start": 8.786,
+    "end": 9.125
+   },
+   {
+    "w": "pidió",
+    "start": 9.125,
+    "end": 9.438
+   },
+   {
+    "w": "un",
+    "start": 9.438,
+    "end": 9.58
+   },
+   {
+    "w": "12,484",
+    "start": 9.58,
+    "end": 11.08
+   },
+   {
+    "w": "sobre",
+    "start": 11.08,
+    "end": 11.366
+   },
+   {
+    "w": "14",
+    "start": 11.366,
+    "end": 11.866
+   },
+   {
+    "w": "en",
+    "start": 11.866,
+    "end": 12.08
+   },
+   {
+    "w": "2025.",
+    "start": 12.08,
+    "end": 13.027
+   }
+  ]
+ },
+ {
+  "text": "Crees que va de aviones. En realidad, va de todo lo que vuela. Así es por dentro.",
+  "start": 13.116,
+  "end": 17.616,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 13.116,
+    "end": 13.33
+   },
+   {
+    "w": "que",
+    "start": 13.33,
+    "end": 13.473
+   },
+   {
+    "w": "va",
+    "start": 13.473,
+    "end": 13.616
+   },
+   {
+    "w": "de",
+    "start": 13.616,
+    "end": 13.759
+   },
+   {
+    "w": "aviones.",
+    "start": 13.759,
+    "end": 14.393
+   },
+   {
+    "w": "En",
+    "start": 14.393,
+    "end": 14.554
+   },
+   {
+    "w": "realidad,",
+    "start": 14.554,
+    "end": 15.125
+   },
+   {
+    "w": "va",
+    "start": 15.125,
+    "end": 15.411
+   },
+   {
+    "w": "de",
+    "start": 15.411,
+    "end": 15.554
+   },
+   {
+    "w": "todo",
+    "start": 15.554,
+    "end": 15.768
+   },
+   {
+    "w": "lo",
+    "start": 15.768,
+    "end": 15.911
+   },
+   {
+    "w": "que",
+    "start": 15.911,
+    "end": 16.054
+   },
+   {
+    "w": "vuela.",
+    "start": 16.054,
+    "end": 16.732
+   },
+   {
+    "w": "Así",
+    "start": 16.732,
+    "end": 16.92
+   },
+   {
+    "w": "es",
+    "start": 16.92,
+    "end": 17.134
+   },
+   {
+    "w": "por",
+    "start": 17.134,
+    "end": 17.348
+   },
+   {
+    "w": "dentro.",
+    "start": 17.348,
+    "end": 17.616
+   }
+  ]
+ },
+ {
+  "text": "La base: cálculo, álgebra, física, química y dibujo técnico.",
+  "start": 17.804,
+  "end": 21.714,
+  "words": [
+   {
+    "w": "La",
+    "start": 17.804,
+    "end": 17.955
+   },
+   {
+    "w": "base:",
+    "start": 17.955,
+    "end": 18.607
+   },
+   {
+    "w": "cálculo,",
+    "start": 18.607,
+    "end": 19.152
+   },
+   {
+    "w": "álgebra,",
+    "start": 19.152,
+    "end": 19.83
+   },
+   {
+    "w": "física,",
+    "start": 19.83,
+    "end": 20.286
+   },
+   {
+    "w": "química",
+    "start": 20.286,
+    "end": 20.804
+   },
+   {
+    "w": "y",
+    "start": 20.804,
+    "end": 20.924
+   },
+   {
+    "w": "dibujo",
+    "start": 20.924,
+    "end": 21.339
+   },
+   {
+    "w": "técnico.",
+    "start": 21.339,
+    "end": 21.714
+   }
+  ]
+ },
+ {
+  "text": "Aerodinámica: por qué un avión de cientos de toneladas se sostiene en el aire.",
+  "start": 21.893,
+  "end": 25.795,
+  "words": [
+   {
+    "w": "Aerodinámica:",
+    "start": 21.893,
+    "end": 22.866
+   },
+   {
+    "w": "por",
+    "start": 22.866,
+    "end": 22.938
+   },
+   {
+    "w": "qué",
+    "start": 22.938,
+    "end": 23.116
+   },
+   {
+    "w": "un",
+    "start": 23.116,
+    "end": 23.259
+   },
+   {
+    "w": "avión",
+    "start": 23.259,
+    "end": 23.545
+   },
+   {
+    "w": "de",
+    "start": 23.545,
+    "end": 23.688
+   },
+   {
+    "w": "cientos",
+    "start": 23.688,
+    "end": 24.045
+   },
+   {
+    "w": "de",
+    "start": 24.045,
+    "end": 24.116
+   },
+   {
+    "w": "toneladas",
+    "start": 24.116,
+    "end": 24.759
+   },
+   {
+    "w": "se",
+    "start": 24.759,
+    "end": 24.902
+   },
+   {
+    "w": "sostiene",
+    "start": 24.902,
+    "end": 25.402
+   },
+   {
+    "w": "en",
+    "start": 25.402,
+    "end": 25.473
+   },
+   {
+    "w": "el",
+    "start": 25.473,
+    "end": 25.616
+   },
+   {
+    "w": "aire.",
+    "start": 25.616,
+    "end": 25.795
+   }
+  ]
+ },
+ {
+  "text": "Estructuras y materiales: alas que se doblan sin romperse y fibra de carbono.",
+  "start": 25.964,
+  "end": 29.947,
+  "words": [
+   {
+    "w": "Estructuras",
+    "start": 25.964,
+    "end": 26.527
+   },
+   {
+    "w": "y",
+    "start": 26.527,
+    "end": 26.67
+   },
+   {
+    "w": "materiales:",
+    "start": 26.67,
+    "end": 27.438
+   },
+   {
+    "w": "alas",
+    "start": 27.438,
+    "end": 27.679
+   },
+   {
+    "w": "que",
+    "start": 27.679,
+    "end": 27.822
+   },
+   {
+    "w": "se",
+    "start": 27.822,
+    "end": 27.893
+   },
+   {
+    "w": "doblan",
+    "start": 27.893,
+    "end": 28.25
+   },
+   {
+    "w": "sin",
+    "start": 28.25,
+    "end": 28.464
+   },
+   {
+    "w": "romperse",
+    "start": 28.464,
+    "end": 29.045
+   },
+   {
+    "w": "y",
+    "start": 29.045,
+    "end": 29.179
+   },
+   {
+    "w": "fibra",
+    "start": 29.179,
+    "end": 29.536
+   },
+   {
+    "w": "de",
+    "start": 29.536,
+    "end": 29.607
+   },
+   {
+    "w": "carbono.",
+    "start": 29.607,
+    "end": 29.947
+   }
+  ]
+ },
+ {
+  "text": "Propulsión: motores a reacción y cohetes, por dentro.",
+  "start": 30.125,
+  "end": 33.375,
+  "words": [
+   {
+    "w": "Propulsión:",
+    "start": 30.125,
+    "end": 30.946
+   },
+   {
+    "w": "motores",
+    "start": 30.946,
+    "end": 31.313
+   },
+   {
+    "w": "a",
+    "start": 31.313,
+    "end": 31.455
+   },
+   {
+    "w": "reacción",
+    "start": 31.455,
+    "end": 31.955
+   },
+   {
+    "w": "y",
+    "start": 31.955,
+    "end": 32.098
+   },
+   {
+    "w": "cohetes,",
+    "start": 32.098,
+    "end": 32.866
+   },
+   {
+    "w": "por",
+    "start": 32.866,
+    "end": 33.036
+   },
+   {
+    "w": "dentro.",
+    "start": 33.036,
+    "end": 33.375
+   }
+  ]
+ },
+ {
+  "text": "Mecánica orbital: cómo se pone un satélite en órbita… y por qué no se cae.",
+  "start": 33.554,
+  "end": 37.643,
+  "words": [
+   {
+    "w": "Mecánica",
+    "start": 33.554,
+    "end": 34.089
+   },
+   {
+    "w": "orbital:",
+    "start": 34.089,
+    "end": 34.804
+   },
+   {
+    "w": "cómo",
+    "start": 34.804,
+    "end": 34.955
+   },
+   {
+    "w": "se",
+    "start": 34.955,
+    "end": 35.098
+   },
+   {
+    "w": "pone",
+    "start": 35.098,
+    "end": 35.384
+   },
+   {
+    "w": "un",
+    "start": 35.384,
+    "end": 35.455
+   },
+   {
+    "w": "satélite",
+    "start": 35.455,
+    "end": 35.955
+   },
+   {
+    "w": "en",
+    "start": 35.955,
+    "end": 36.098
+   },
+   {
+    "w": "órbita…",
+    "start": 36.098,
+    "end": 36.714
+   },
+   {
+    "w": "y",
+    "start": 36.714,
+    "end": 36.813
+   },
+   {
+    "w": "por",
+    "start": 36.813,
+    "end": 36.955
+   },
+   {
+    "w": "qué",
+    "start": 36.955,
+    "end": 37.17
+   },
+   {
+    "w": "no",
+    "start": 37.17,
+    "end": 37.313
+   },
+   {
+    "w": "se",
+    "start": 37.313,
+    "end": 37.384
+   },
+   {
+    "w": "cae.",
+    "start": 37.384,
+    "end": 37.643
+   }
+  ]
+ },
+ {
+  "text": "Y hasta navegación aérea y aeropuertos: que miles de aviones compartan el cielo sin chocar.",
+  "start": 37.804,
+  "end": 42.286,
+  "words": [
+   {
+    "w": "Y",
+    "start": 37.804,
+    "end": 37.887
+   },
+   {
+    "w": "hasta",
+    "start": 37.887,
+    "end": 38.08
+   },
+   {
+    "w": "navegación",
+    "start": 38.08,
+    "end": 38.58
+   },
+   {
+    "w": "aérea",
+    "start": 38.58,
+    "end": 38.938
+   },
+   {
+    "w": "y",
+    "start": 38.938,
+    "end": 39.08
+   },
+   {
+    "w": "aeropuertos:",
+    "start": 39.08,
+    "end": 39.929
+   },
+   {
+    "w": "que",
+    "start": 39.929,
+    "end": 40.018
+   },
+   {
+    "w": "miles",
+    "start": 40.018,
+    "end": 40.375
+   },
+   {
+    "w": "de",
+    "start": 40.375,
+    "end": 40.446
+   },
+   {
+    "w": "aviones",
+    "start": 40.446,
+    "end": 40.875
+   },
+   {
+    "w": "compartan",
+    "start": 40.875,
+    "end": 41.446
+   },
+   {
+    "w": "el",
+    "start": 41.446,
+    "end": 41.518
+   },
+   {
+    "w": "cielo",
+    "start": 41.518,
+    "end": 41.804
+   },
+   {
+    "w": "sin",
+    "start": 41.804,
+    "end": 41.946
+   },
+   {
+    "w": "chocar.",
+    "start": 41.946,
+    "end": 42.286
+   }
+  ]
+ },
+ {
+  "text": "De aquí sale quien diseña aviones, motores, cohetes y satélites. Y quien hace que todo eso vuele seguro.",
+  "start": 42.473,
+  "end": 48.384,
+  "words": [
+   {
+    "w": "De",
+    "start": 42.473,
+    "end": 42.571
+   },
+   {
+    "w": "aquí",
+    "start": 42.571,
+    "end": 42.786
+   },
+   {
+    "w": "sale",
+    "start": 42.786,
+    "end": 43.071
+   },
+   {
+    "w": "quien",
+    "start": 43.071,
+    "end": 43.286
+   },
+   {
+    "w": "diseña",
+    "start": 43.286,
+    "end": 43.714
+   },
+   {
+    "w": "aviones,",
+    "start": 43.714,
+    "end": 44.357
+   },
+   {
+    "w": "motores,",
+    "start": 44.357,
+    "end": 44.902
+   },
+   {
+    "w": "cohetes",
+    "start": 44.902,
+    "end": 45.482
+   },
+   {
+    "w": "y",
+    "start": 45.482,
+    "end": 45.58
+   },
+   {
+    "w": "satélites.",
+    "start": 45.58,
+    "end": 46.393
+   },
+   {
+    "w": "Y",
+    "start": 46.393,
+    "end": 46.513
+   },
+   {
+    "w": "quien",
+    "start": 46.513,
+    "end": 46.661
+   },
+   {
+    "w": "hace",
+    "start": 46.661,
+    "end": 46.946
+   },
+   {
+    "w": "que",
+    "start": 46.946,
+    "end": 47.089
+   },
+   {
+    "w": "todo",
+    "start": 47.089,
+    "end": 47.375
+   },
+   {
+    "w": "eso",
+    "start": 47.375,
+    "end": 47.589
+   },
+   {
+    "w": "vuele",
+    "start": 47.589,
+    "end": 48.089
+   },
+   {
+    "w": "seguro.",
+    "start": 48.089,
+    "end": 48.384
+   }
+  ]
+ },
+ {
+  "text": "¿Y qué te falta para ser ingeniero aeronáutico? El máster.",
+  "start": 48.491,
+  "end": 51.652,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 48.491,
+    "end": 48.625
+   },
+   {
+    "w": "qué",
+    "start": 48.625,
+    "end": 48.839
+   },
+   {
+    "w": "te",
+    "start": 48.839,
+    "end": 48.982
+   },
+   {
+    "w": "falta",
+    "start": 48.982,
+    "end": 49.268
+   },
+   {
+    "w": "para",
+    "start": 49.268,
+    "end": 49.482
+   },
+   {
+    "w": "ser",
+    "start": 49.482,
+    "end": 49.625
+   },
+   {
+    "w": "ingeniero",
+    "start": 49.625,
+    "end": 50.054
+   },
+   {
+    "w": "aeronáutico?",
+    "start": 50.054,
+    "end": 51.054
+   },
+   {
+    "w": "El",
+    "start": 51.054,
+    "end": 51.205
+   },
+   {
+    "w": "máster.",
+    "start": 51.205,
+    "end": 51.652
+   }
+  ]
+ },
+ {
+  "text": "Es una profesión regulada: el grado te hace ingeniero técnico aeronáutico; para ser ingeniero aeronáutico, necesitas el máster habilitante. En la Politécnica, 4 años más 2.",
+  "start": 52.018,
+  "end": 61.33,
+  "words": [
+   {
+    "w": "Es",
+    "start": 52.018,
+    "end": 52.134
+   },
+   {
+    "w": "una",
+    "start": 52.134,
+    "end": 52.348
+   },
+   {
+    "w": "profesión",
+    "start": 52.348,
+    "end": 52.777
+   },
+   {
+    "w": "regulada:",
+    "start": 52.777,
+    "end": 53.464
+   },
+   {
+    "w": "el",
+    "start": 53.464,
+    "end": 53.582
+   },
+   {
+    "w": "grado",
+    "start": 53.582,
+    "end": 53.857
+   },
+   {
+    "w": "te",
+    "start": 53.857,
+    "end": 54.0
+   },
+   {
+    "w": "hace",
+    "start": 54.0,
+    "end": 54.286
+   },
+   {
+    "w": "ingeniero",
+    "start": 54.286,
+    "end": 54.786
+   },
+   {
+    "w": "técnico",
+    "start": 54.786,
+    "end": 55.143
+   },
+   {
+    "w": "aeronáutico;",
+    "start": 55.143,
+    "end": 55.973
+   },
+   {
+    "w": "para",
+    "start": 55.973,
+    "end": 56.08
+   },
+   {
+    "w": "ser",
+    "start": 56.08,
+    "end": 56.295
+   },
+   {
+    "w": "ingeniero",
+    "start": 56.295,
+    "end": 56.723
+   },
+   {
+    "w": "aeronáutico,",
+    "start": 56.723,
+    "end": 57.58
+   },
+   {
+    "w": "necesitas",
+    "start": 57.58,
+    "end": 58.009
+   },
+   {
+    "w": "el",
+    "start": 58.009,
+    "end": 58.152
+   },
+   {
+    "w": "máster",
+    "start": 58.152,
+    "end": 58.58
+   },
+   {
+    "w": "habilitante.",
+    "start": 58.58,
+    "end": 59.357
+   },
+   {
+    "w": "En",
+    "start": 59.357,
+    "end": 59.43
+   },
+   {
+    "w": "la",
+    "start": 59.43,
+    "end": 59.518
+   },
+   {
+    "w": "Politécnica,",
+    "start": 59.518,
+    "end": 60.223
+   },
+   {
+    "w": "4",
+    "start": 60.223,
+    "end": 60.527
+   },
+   {
+    "w": "años",
+    "start": 60.527,
+    "end": 60.884
+   },
+   {
+    "w": "más",
+    "start": 60.884,
+    "end": 61.098
+   },
+   {
+    "w": "2.",
+    "start": 61.098,
+    "end": 61.33
+   }
+  ]
+ },
+ {
+  "text": "6 años para entender todo lo que vuela.",
+  "start": 61.741,
+  "end": 64.018,
+  "words": [
+   {
+    "w": "6",
+    "start": 61.741,
+    "end": 62.071
+   },
+   {
+    "w": "años",
+    "start": 62.071,
+    "end": 62.429
+   },
+   {
+    "w": "para",
+    "start": 62.429,
+    "end": 62.643
+   },
+   {
+    "w": "entender",
+    "start": 62.643,
+    "end": 63.241
+   },
+   {
+    "w": "todo",
+    "start": 63.241,
+    "end": 63.429
+   },
+   {
+    "w": "lo",
+    "start": 63.429,
+    "end": 63.5
+   },
+   {
+    "w": "que",
+    "start": 63.5,
+    "end": 63.714
+   },
+   {
+    "w": "vuela.",
+    "start": 63.714,
+    "end": 64.018
+   }
+  ]
+ },
+ {
+  "text": "Si estás eligiendo carrera, guárdalo. Y cuéntame: ¿te atreverías?",
+  "start": 64.063,
+  "end": 67.572,
+  "words": [
+   {
+    "w": "Si",
+    "start": 64.063,
+    "end": 64.143
+   },
+   {
+    "w": "estás",
+    "start": 64.143,
+    "end": 64.429
+   },
+   {
+    "w": "eligiendo",
+    "start": 64.429,
+    "end": 64.98
+   },
+   {
+    "w": "carrera,",
+    "start": 64.98,
+    "end": 65.402
+   },
+   {
+    "w": "guárdalo.",
+    "start": 65.402,
+    "end": 66.179
+   },
+   {
+    "w": "Y",
+    "start": 66.179,
+    "end": 66.384
+   },
+   {
+    "w": "cuéntame:",
+    "start": 66.384,
+    "end": 66.949
+   },
+   {
+    "w": "¿te",
+    "start": 66.949,
+    "end": 67.026
+   },
+   {
+    "w": "atreverías?",
+    "start": 67.026,
+    "end": 67.572
+   }
+  ]
+ }
+]
