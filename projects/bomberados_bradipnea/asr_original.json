@@ -1,0 +1,327 @@
+[
+ {
+  "w": "Pregunta",
+  "start": 0.0,
+  "end": 0.56
+ },
+ {
+  "w": "oficial",
+  "start": 0.56,
+  "end": 0.96
+ },
+ {
+  "w": "del",
+  "start": 0.96,
+  "end": 1.12
+ },
+ {
+  "w": "examen",
+  "start": 1.12,
+  "end": 1.52
+ },
+ {
+  "w": "de",
+  "start": 1.52,
+  "end": 1.68
+ },
+ {
+  "w": "2026",
+  "start": 1.68,
+  "end": 2.48
+ },
+ {
+  "w": "del",
+  "start": 2.48,
+  "end": 2.72
+ },
+ {
+  "w": "Ayuntamiento",
+  "start": 2.72,
+  "end": 3.2
+ },
+ {
+  "w": "de",
+  "start": 3.2,
+  "end": 3.36
+ },
+ {
+  "w": "Albacete.",
+  "start": 3.36,
+  "end": 4.56
+ },
+ {
+  "w": "En",
+  "start": 4.56,
+  "end": 4.72
+ },
+ {
+  "w": "función",
+  "start": 4.72,
+  "end": 5.12
+ },
+ {
+  "w": "de",
+  "start": 5.12,
+  "end": 5.2
+ },
+ {
+  "w": "la",
+  "start": 5.2,
+  "end": 5.36
+ },
+ {
+  "w": "frecuencia",
+  "start": 5.36,
+  "end": 5.84
+ },
+ {
+  "w": "respiratoria,",
+  "start": 5.84,
+  "end": 6.64
+ },
+ {
+  "w": "¿qué",
+  "start": 6.64,
+  "end": 7.04
+ },
+ {
+  "w": "se",
+  "start": 7.04,
+  "end": 7.2
+ },
+ {
+  "w": "considera",
+  "start": 7.2,
+  "end": 7.68
+ },
+ {
+  "w": "Bradibnea?",
+  "start": 7.68,
+  "end": 8.96
+ },
+ {
+  "w": "Parece",
+  "start": 8.96,
+  "end": 9.52
+ },
+ {
+  "w": "fácil,",
+  "start": 9.52,
+  "end": 10.16
+ },
+ {
+  "w": "hasta",
+  "start": 10.16,
+  "end": 10.56
+ },
+ {
+  "w": "que",
+  "start": 10.56,
+  "end": 10.72
+ },
+ {
+  "w": "ves",
+  "start": 10.72,
+  "end": 11.04
+ },
+ {
+  "w": "las",
+  "start": 11.04,
+  "end": 11.28
+ },
+ {
+  "w": "opciones.",
+  "start": 11.28,
+  "end": 12.08
+ },
+ {
+  "w": "Tienes",
+  "start": 12.08,
+  "end": 12.64
+ },
+ {
+  "w": "5",
+  "start": 12.64,
+  "end": 13.04
+ },
+ {
+  "w": "segundos.",
+  "start": 13.04,
+  "end": 14.0
+ },
+ {
+  "w": "A,",
+  "start": 14.0,
+  "end": 14.8
+ },
+ {
+  "w": "B,",
+  "start": 14.8,
+  "end": 15.6
+ },
+ {
+  "w": "C",
+  "start": 15.6,
+  "end": 16.16
+ },
+ {
+  "w": "o",
+  "start": 16.16,
+  "end": 16.48
+ },
+ {
+  "w": "D.",
+  "start": 16.48,
+  "end": 17.12
+ },
+ {
+  "w": "Comenta",
+  "start": 17.12,
+  "end": 17.68
+ },
+ {
+  "w": "tu",
+  "start": 17.68,
+  "end": 17.84
+ },
+ {
+  "w": "respuesta",
+  "start": 17.84,
+  "end": 18.24
+ },
+ {
+  "w": "y",
+  "start": 18.24,
+  "end": 18.32
+ },
+ {
+  "w": "mándaselo",
+  "start": 18.32,
+  "end": 18.96
+ },
+ {
+  "w": "a",
+  "start": 18.96,
+  "end": 19.04
+ },
+ {
+  "w": "quien",
+  "start": 19.04,
+  "end": 19.28
+ },
+ {
+  "w": "oposite",
+  "start": 19.28,
+  "end": 19.84
+ },
+ {
+  "w": "contigo.",
+  "start": 19.84,
+  "end": 20.24
+ },
+ {
+  "w": "A",
+  "start": 20.24,
+  "end": 20.4
+ },
+ {
+  "w": "ver",
+  "start": 20.4,
+  "end": 20.56
+ },
+ {
+  "w": "quién",
+  "start": 20.56,
+  "end": 20.8
+ },
+ {
+  "w": "acierta.",
+  "start": 20.8,
+  "end": 21.68
+ },
+ {
+  "w": "La",
+  "start": 21.68,
+  "end": 21.92
+ },
+ {
+  "w": "solución",
+  "start": 21.92,
+  "end": 22.56
+ },
+ {
+  "w": "en",
+  "start": 22.56,
+  "end": 22.72
+ },
+ {
+  "w": "la",
+  "start": 22.72,
+  "end": 22.88
+ },
+ {
+  "w": "descripción.",
+  "start": 22.88,
+  "end": 23.92
+ },
+ {
+  "w": "Bomberados.",
+  "start": 23.92,
+  "end": 24.96
+ },
+ {
+  "w": "Falla",
+  "start": 24.96,
+  "end": 25.44
+ },
+ {
+  "w": "en",
+  "start": 25.44,
+  "end": 25.6
+ },
+ {
+  "w": "casa,",
+  "start": 25.6,
+  "end": 26.16
+ },
+ {
+  "w": "no",
+  "start": 26.16,
+  "end": 26.32
+ },
+ {
+  "w": "en",
+  "start": 26.32,
+  "end": 26.48
+ },
+ {
+  "w": "el",
+  "start": 26.48,
+  "end": 26.64
+ },
+ {
+  "w": "examen.",
+  "start": 26.64,
+  "end": 27.28
+ },
+ {
+  "w": "Pruébala",
+  "start": 27.28,
+  "end": 27.84
+ },
+ {
+  "w": "gratis",
+  "start": 27.84,
+  "end": 28.32
+ },
+ {
+  "w": "5",
+  "start": 28.32,
+  "end": 28.64
+ },
+ {
+  "w": "días.",
+  "start": 28.64,
+  "end": 29.153
+ }
+]

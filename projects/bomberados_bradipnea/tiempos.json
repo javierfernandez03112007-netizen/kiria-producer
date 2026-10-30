@@ -1,0 +1,376 @@
+[
+ {
+  "text": "Pregunta oficial del examen de 2026 del Ayuntamiento de Albacete.",
+  "start": 0.0,
+  "end": 3.829,
+  "words": [
+   {
+    "w": "Pregunta",
+    "start": 0.0,
+    "end": 0.533
+   },
+   {
+    "w": "oficial",
+    "start": 0.533,
+    "end": 0.914
+   },
+   {
+    "w": "del",
+    "start": 0.914,
+    "end": 1.067
+   },
+   {
+    "w": "examen",
+    "start": 1.067,
+    "end": 1.448
+   },
+   {
+    "w": "de",
+    "start": 1.448,
+    "end": 1.6
+   },
+   {
+    "w": "2026",
+    "start": 1.6,
+    "end": 2.362
+   },
+   {
+    "w": "del",
+    "start": 2.362,
+    "end": 2.59
+   },
+   {
+    "w": "Ayuntamiento",
+    "start": 2.59,
+    "end": 3.048
+   },
+   {
+    "w": "de",
+    "start": 3.048,
+    "end": 3.2
+   },
+   {
+    "w": "Albacete.",
+    "start": 3.2,
+    "end": 3.829
+   }
+  ]
+ },
+ {
+  "text": "En función de la frecuencia respiratoria, ¿qué se considera bradipnea?",
+  "start": 4.114,
+  "end": 7.505,
+  "words": [
+   {
+    "w": "En",
+    "start": 4.114,
+    "end": 4.243
+   },
+   {
+    "w": "función",
+    "start": 4.243,
+    "end": 4.543
+   },
+   {
+    "w": "de",
+    "start": 4.543,
+    "end": 4.619
+   },
+   {
+    "w": "la",
+    "start": 4.619,
+    "end": 4.771
+   },
+   {
+    "w": "frecuencia",
+    "start": 4.771,
+    "end": 5.229
+   },
+   {
+    "w": "respiratoria,",
+    "start": 5.229,
+    "end": 6.133
+   },
+   {
+    "w": "¿qué",
+    "start": 6.133,
+    "end": 6.21
+   },
+   {
+    "w": "se",
+    "start": 6.21,
+    "end": 6.362
+   },
+   {
+    "w": "considera",
+    "start": 6.362,
+    "end": 6.819
+   },
+   {
+    "w": "bradipnea?",
+    "start": 6.819,
+    "end": 7.505
+   }
+  ]
+ },
+ {
+  "text": "Parece fácil… hasta que ves las opciones. Tienes cinco segundos.",
+  "start": 7.771,
+  "end": 11.552,
+  "words": [
+   {
+    "w": "Parece",
+    "start": 7.771,
+    "end": 8.19
+   },
+   {
+    "w": "fácil…",
+    "start": 8.19,
+    "end": 8.629
+   },
+   {
+    "w": "hasta",
+    "start": 8.629,
+    "end": 8.895
+   },
+   {
+    "w": "que",
+    "start": 8.895,
+    "end": 9.048
+   },
+   {
+    "w": "ves",
+    "start": 9.048,
+    "end": 9.352
+   },
+   {
+    "w": "las",
+    "start": 9.352,
+    "end": 9.581
+   },
+   {
+    "w": "opciones.",
+    "start": 9.581,
+    "end": 10.381
+   },
+   {
+    "w": "Tienes",
+    "start": 10.381,
+    "end": 10.714
+   },
+   {
+    "w": "cinco",
+    "start": 10.714,
+    "end": 11.095
+   },
+   {
+    "w": "segundos.",
+    "start": 11.095,
+    "end": 11.552
+   }
+  ]
+ },
+ {
+  "text": "¿A, B, C o D? Comenta tu respuesta y mándaselo a quien oposite contigo, a ver quién acierta.",
+  "start": 16.219,
+  "end": 22.276,
+  "words": [
+   {
+    "w": "¿A,",
+    "start": 16.219,
+    "end": 16.762
+   },
+   {
+    "w": "B,",
+    "start": 16.762,
+    "end": 17.371
+   },
+   {
+    "w": "C",
+    "start": 17.371,
+    "end": 17.924
+   },
+   {
+    "w": "o",
+    "start": 17.924,
+    "end": 18.038
+   },
+   {
+    "w": "D?",
+    "start": 18.038,
+    "end": 18.676
+   },
+   {
+    "w": "Comenta",
+    "start": 18.676,
+    "end": 19.019
+   },
+   {
+    "w": "tu",
+    "start": 19.019,
+    "end": 19.171
+   },
+   {
+    "w": "respuesta",
+    "start": 19.171,
+    "end": 19.552
+   },
+   {
+    "w": "y",
+    "start": 19.552,
+    "end": 19.629
+   },
+   {
+    "w": "mándaselo",
+    "start": 19.629,
+    "end": 20.238
+   },
+   {
+    "w": "a",
+    "start": 20.238,
+    "end": 20.314
+   },
+   {
+    "w": "quien",
+    "start": 20.314,
+    "end": 20.543
+   },
+   {
+    "w": "oposite",
+    "start": 20.543,
+    "end": 21.076
+   },
+   {
+    "w": "contigo,",
+    "start": 21.076,
+    "end": 21.419
+   },
+   {
+    "w": "a",
+    "start": 21.419,
+    "end": 21.5
+   },
+   {
+    "w": "ver",
+    "start": 21.5,
+    "end": 21.6
+   },
+   {
+    "w": "quién",
+    "start": 21.6,
+    "end": 21.829
+   },
+   {
+    "w": "acierta.",
+    "start": 21.829,
+    "end": 22.276
+   }
+  ]
+ },
+ {
+  "text": "La solución, en la descripción.",
+  "start": 22.467,
+  "end": 23.933,
+  "words": [
+   {
+    "w": "La",
+    "start": 22.467,
+    "end": 22.609
+   },
+   {
+    "w": "solución,",
+    "start": 22.609,
+    "end": 23.124
+   },
+   {
+    "w": "en",
+    "start": 23.124,
+    "end": 23.209
+   },
+   {
+    "w": "la",
+    "start": 23.209,
+    "end": 23.362
+   },
+   {
+    "w": "descripción.",
+    "start": 23.362,
+    "end": 23.933
+   }
+  ]
+ },
+ {
+  "text": "Bomberados: falla en casa, no en el examen.",
+  "start": 24.133,
+  "end": 26.743,
+  "words": [
+   {
+    "w": "Bomberados:",
+    "start": 24.133,
+    "end": 24.981
+   },
+   {
+    "w": "falla",
+    "start": 24.981,
+    "end": 25.352
+   },
+   {
+    "w": "en",
+    "start": 25.352,
+    "end": 25.505
+   },
+   {
+    "w": "casa,",
+    "start": 25.505,
+    "end": 25.876
+   },
+   {
+    "w": "no",
+    "start": 25.876,
+    "end": 26.029
+   },
+   {
+    "w": "en",
+    "start": 26.029,
+    "end": 26.181
+   },
+   {
+    "w": "el",
+    "start": 26.181,
+    "end": 26.333
+   },
+   {
+    "w": "examen.",
+    "start": 26.333,
+    "end": 26.743
+   }
+  ]
+ },
+ {
+  "text": "Pruébala gratis cinco días.",
+  "start": 26.92,
+  "end": 28.289,
+  "words": [
+   {
+    "w": "Pruébala",
+    "start": 26.92,
+    "end": 27.248
+   },
+   {
+    "w": "gratis",
+    "start": 27.248,
+    "end": 27.686
+   },
+   {
+    "w": "cinco",
+    "start": 27.686,
+    "end": 27.978
+   },
+   {
+    "w": "días.",
+    "start": 27.978,
+    "end": 28.289
+   }
+  ]
+ }
+]

@@ -16,9 +16,9 @@
  "correcta": "B",
  "fuente": "Examen del Ayuntamiento de Albacete 2026 (según el usuario). Definición: bradipnea = menos de 12 respiraciones por minuto en el adulto (diccionario médico de la Clínica Universidad de Navarra).",
  "voz": {
-  "tempo": 1.03,
+  "tempo": 1.05,
   "count_line": 2,
-  "count": 4.4,
+  "count": 4.2,
   "pause": {
    "1": 0.35,
    "2": 0.4,

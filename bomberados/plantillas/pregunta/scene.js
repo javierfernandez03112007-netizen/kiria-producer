@@ -358,7 +358,7 @@ function stamp(t, alpha) {                    // sello del examen oficial
   const p = prog(t, t0, 0.22);
   const s = lerp(1.9, 1, eio(p));
   g.save(); g.globalAlpha = alpha * clamp(p * 3);
-  g.translate(540, 520); g.rotate(-0.07); g.scale(s, s);
+  g.translate(540, 610); g.rotate(-0.07); g.scale(s, s);
   const ink = '#FF4A3D';
   rr(-380, -125, 760, 250, 26); g.fillStyle = 'rgba(40,6,4,0.55)'; g.fill();
   g.strokeStyle = ink; g.lineWidth = 9; g.stroke();
@@ -423,7 +423,7 @@ function introRespiracion(t) {
   const sh = CUE.sello !== undefined ? Math.exp(-Math.pow((t - CUE.sello - 0.2) / 0.08, 2)) : 0;
   g.save(); g.translate(Math.sin(t * 90) * 10 * sh, Math.cos(t * 77) * 8 * sh);
   const drift = 1 + 0.04 * prog(t, 0, tm);                       // la cámara se acerca despacio
-  const cx = lerp(540, 255, k), cy = lerp(1080, 650, k) + lift;
+  const cx = lerp(540, 255, k), cy = lerp(1140, 650, k) + lift;
   lungs(t, cx, cy, lerp(1.12 * drift, 0.5, k), out);
   stamp(t, 1 - prog(t, tm - 0.1, 0.35));
   const ma = eo(prog(t, CUE.fr ?? tm, 0.4)) * out;
@@ -568,7 +568,7 @@ function share(t) {
     g.beginPath(); g.ellipse(x, y + 42, 44, 30, 0, Math.PI, 0); g.fill();               // hombros
     txt(lab, x, y + 122, lab.length > 4 ? 24 : 34, GOLD, 700, 'center', 'SpaceMono');
   }
-  const u = eio(prog(t, CUE.compartir, 0.9));
+  const u = eio(prog(t, CUE.compartir, 1.2));
   const px = lerp(ax + 90, bx - 90, u), py = y - 150 * Math.sin(Math.PI * u);
   // estela discontinua
   g.setLineDash([14, 14]); g.strokeStyle = 'rgba(98,227,212,0.7)'; g.lineWidth = 4;
@@ -576,6 +576,8 @@ function share(t) {
   for (let i = 0; i <= 40; i++) { const v = u * i / 40; const xx = lerp(ax + 90, bx - 90, v), yy = y - 150 * Math.sin(Math.PI * v); i ? g.lineTo(xx, yy) : g.moveTo(xx, yy); }
   g.stroke(); g.setLineDash([]);
   if (u < 1) plane(px, py, Math.atan2(-150 * Math.PI * Math.cos(Math.PI * u), bx - ax - 180), 0.9);
+  const hit = prog(t, CUE.compartir + 1.2, 0.5);                // llega: onda en el compañero
+  if (hit > 0 && hit < 1) { g.beginPath(); g.arc(bx, y, 78 + 60 * hit, 0, 7); g.strokeStyle = `rgba(98,227,212,${(1 - hit).toFixed(3)})`; g.lineWidth = 6; g.stroke(); }
   // «¿QUIÉN ACIERTA?»
   const q = back(prog(t, CUE.acierta ?? CUE.compartir + 0.8, 0.4));
   if (q > 0) {
