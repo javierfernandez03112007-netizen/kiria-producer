@@ -91,17 +91,58 @@ def blip(f0, f1, d=0.1):
     return np.sin(2 * np.pi * np.cumsum(np.linspace(f0, f1, len(t))) / sfx.SR) * np.exp(-t / (d * 0.5)) * 0.3
 
 
+BREATH_P = 4.2                        # el mismo ciclo que breath() en scene.js
+
+
+def breathing(d):                      # inspiración (ruido que sube, más claro) y espiración (más grave), con pausa
+    t = _t(d)
+    u = (t % BREATH_P) / BREATH_P
+    ins = np.where(u < 0.4, np.sin(np.pi * np.clip(u / 0.4, 0, 1)), 0.0)
+    exp_ = np.where((u >= 0.4) & (u < 0.85), np.sin(np.pi * np.clip((u - 0.4) / 0.45, 0, 1)), 0.0)
+    w = np.random.default_rng(11).standard_normal(len(t))
+    bright = w - _lp(w, 4)
+    dark = _lp(w, 12) - _lp(w, 90)
+    return (bright * ins ** 1.5 * 0.18 + dark * exp_ ** 1.5 * 0.35) * np.minimum(1, t / 0.2) * np.minimum(1, (d - t) / 0.3)
+
+
+def stamp_hit():                       # golpe seco de sello de goma
+    t = _t(0.25)
+    w = np.random.default_rng(12).standard_normal(len(t))
+    return (_lp(w, 20) * 1.4 + np.sin(2 * np.pi * 140 * t) * 0.6) * np.exp(-t / 0.035)
+
+
+def monitor_beep():
+    t = _t(0.14)
+    return np.sin(2 * np.pi * 1320 * t) * np.minimum(1, t / 0.005) * np.exp(-t / 0.06) * 0.35
+
+
 def sfx_track(path):
     out = np.zeros(int((END + 1) * sfx.SR))
     mix = lambda x, t0, g=1.0: sfx.mix(out, x, max(0.0, t0), g)  # noqa: E731
     c = {k: (at(v) if not isinstance(v[0], list) else [at(s) for s in v]) for k, v in Q["cues"].items()}
     mix(sfx.drone(len(out)), 0, 0.4)
     mix(boom(1.0, 55), 0, 0.6)
-    mix(hiss(c["cuenta"] + 0.2), 0, 0.7)                     # el agua corre hasta la cuenta atrás
-    mix(blip(500, 900, 0.18), c["manometro"], 0.6)
+    if Q["intro"] == "reduccion":
+        mix(hiss(c["cuenta"] + 0.2), 0, 0.7)                 # el agua corre hasta la cuenta atrás
+        mix(blip(500, 900, 0.18), c["manometro"], 0.6)
+        for k in ("d1", "d2"):
+            mix(sfx.clack(3), c[k], 0.5)
+    if Q["intro"] == "respiracion":
+        mix(breathing(c["cuenta"] + 0.3), 0, 0.9)            # la respiración, al ritmo de los pulmones de la escena
+        mix(sfx.whoosh(0.5), c["sello"] - 0.25, 0.6)          # el sello cae
+        mix(boom(1.2, 48), c["sello"] - 0.02, 1.0)
+        mix(stamp_hit(), c["sello"] - 0.02, 0.9)
+        for k in ("albacete", "anio"):
+            mix(sfx.clack(5), c[k], 0.45)
+        mix(blip(1000, 1000, 0.12), c["fr"], 0.5)              # el monitor se enciende
+        t = c["fr"] + 0.3
+        while t < c["cuenta"] - 0.2:                            # pitido suave en cada respiración (al llenarse)
+            k = int(t / BREATH_P)
+            tb = k * BREATH_P + 0.4 * BREATH_P
+            if tb >= t:
+                mix(monitor_beep(), tb, 0.35)
+            t = (k + 1) * BREATH_P + 0.01
     mix(sfx.whoosh(0.8), c["enunciado"] - 0.2, 0.7)
-    for k in ("d1", "d2"):
-        mix(sfx.clack(3), c[k], 0.5)
     mix(sfx.whoosh(0.6), c["opciones"] - 0.1, 0.6)
     for i in range(4):
         mix(sfx.clack(i), c["opciones"] + 0.03 * i, 0.4)
@@ -151,5 +192,8 @@ if __name__ == "__main__":
             img = cv2.imread(os.path.join(PROJ, "out", "test", f"f{fi:05d}.jpg")).astype(np.float32) / 255
             SUBS.draw(img, t, 1)
             cv2.imwrite(os.path.join(PROJ, "out", "ctest", f"c{t:05.2f}.jpg"), (np.clip(img, 0, 1) * 255).astype(np.uint8))
+    elif len(sys.argv) > 2 and sys.argv[2] == "--sfx":
+        os.makedirs(os.path.join(PROJ, "out"), exist_ok=True)
+        sfx_track(os.path.join(PROJ, "out", "sfx.wav"))
     else:
         main()
