@@ -458,7 +458,7 @@ function cards(t) {
     g.save(); g.globalAlpha = ea * out; g.translate(0, (1 - ea) * 40 + (1 - out) * 300);
     rr(CX, EY, CW, eh, 22); g.fillStyle = 'rgba(14,12,14,0.8)'; g.fill();
     g.strokeStyle = EMBER; g.lineWidth = 3; g.stroke();
-    const glow = CUE.opciones !== undefined ? prog(t, CUE.opciones, 0.3) : 0;
+    const glow = prog(t, CUE.resaltar ?? CUE.opciones, 0.3);
     elines.forEach((l, i) => lineHL(l, CX + 40, EY + 78 + i * 60, 50, WHITE, glow > 0 ? GOLD : WHITE));
     g.restore();
   }
@@ -516,8 +516,9 @@ function toDescription(t) {
   const y = 690, s = lerp(0.85, 1, back(prog(t, CUE.descripcion, 0.5)));
   g.translate(540, y); g.scale(s, s);
   rr(-420, -130, 840, 180, 28); g.fillStyle = 'rgba(14,12,14,0.9)'; g.fill(); g.strokeStyle = GOLD; g.lineWidth = 4; g.stroke();
-  txt('LA RESPUESTA,', 0, -50, 64, WHITE, 400, 'center', 'Impact');
-  txt('EN LA DESCRIPCIÓN', 0, 26, 64, GOLD, 400, 'center', 'Impact');
+  const [b1, b2] = Q.banner || ['LA RESPUESTA,', 'EN LA DESCRIPCIÓN'];
+  txt(b1, 0, -50, 64, WHITE, 400, 'center', 'Impact');
+  txt(b2, 0, 26, 64, GOLD, 400, 'center', 'Impact');
   const b = 14 * Math.abs(Math.sin((t - CUE.descripcion) * 4));
   g.fillStyle = GOLD;
   g.beginPath(); g.moveTo(-34, 80 + b); g.lineTo(34, 80 + b); g.lineTo(0, 124 + b); g.closePath(); g.fill();
@@ -526,7 +527,7 @@ function toDescription(t) {
 
 // ---------------------------------------------------------------- letras A B C D al decirlas (zona de arriba)
 function letters(t) {
-  const t0 = CUE.letras[0] - 0.1, t1 = CUE.descripcion - 0.1;
+  const t0 = CUE.letras[0] - 0.1, t1 = (CUE.compartir ?? CUE.descripcion) - 0.1;
   const a = prog(t, t0, 0.25) * (1 - prog(t, t1, 0.3));
   if (a <= 0) return;
   g.save(); g.globalAlpha = a;
@@ -539,6 +540,47 @@ function letters(t) {
     const lg = g.createLinearGradient(0, -92, 0, 92); lg.addColorStop(0, '#FFD65C'); lg.addColorStop(1, '#E88C1E');
     g.fillStyle = lg; g.fill();
     txt(LET[i], 0, 40, 120, '#160F05', 400, 'center', 'Impact');
+    g.restore();
+  }
+  g.restore();
+}
+
+// ---------------------------------------------------------------- «mándaselo… a ver quién acierta»: avión de papel
+function plane(x, y, ang, s) {
+  g.save(); g.translate(x, y); g.rotate(ang); g.scale(s, s);
+  g.beginPath(); g.moveTo(60, 0); g.lineTo(-50, -40); g.lineTo(-22, 0); g.lineTo(-50, 40); g.closePath();
+  g.fillStyle = WHITE; g.shadowColor = 'rgba(98,227,212,0.8)'; g.shadowBlur = 24; g.fill(); g.shadowBlur = 0;
+  g.beginPath(); g.moveTo(60, 0); g.lineTo(-22, 0); g.lineTo(-38, 26); g.closePath(); g.fillStyle = '#BFD3DA'; g.fill();
+  g.restore();
+}
+function share(t) {
+  if (CUE.compartir === undefined) return;
+  const t0 = CUE.compartir - 0.05, t1 = CUE.descripcion - 0.1;
+  const a = prog(t, t0, 0.2) * (1 - prog(t, t1, 0.3));
+  if (a <= 0) return;
+  g.save(); g.globalAlpha = a;
+  // de una tarjeta de opositor a otra
+  const ax = 190, bx = 890, y = 700;
+  for (const [x, lab] of [[ax, 'TÚ'], [bx, 'QUIEN OPOSITA CONTIGO']]) {
+    g.beginPath(); g.arc(x, y, 78, 0, 7); g.fillStyle = 'rgba(14,12,14,0.9)'; g.fill();
+    g.strokeStyle = GOLD; g.lineWidth = 4; g.stroke();
+    g.beginPath(); g.arc(x, y - 18, 26, 0, 7); g.fillStyle = GOLD; g.fill();            // cabeza
+    g.beginPath(); g.ellipse(x, y + 42, 44, 30, 0, Math.PI, 0); g.fill();               // hombros
+    txt(lab, x, y + 122, lab.length > 4 ? 24 : 34, GOLD, 700, 'center', 'SpaceMono');
+  }
+  const u = eio(prog(t, CUE.compartir, 0.9));
+  const px = lerp(ax + 90, bx - 90, u), py = y - 150 * Math.sin(Math.PI * u);
+  // estela discontinua
+  g.setLineDash([14, 14]); g.strokeStyle = 'rgba(98,227,212,0.7)'; g.lineWidth = 4;
+  g.beginPath();
+  for (let i = 0; i <= 40; i++) { const v = u * i / 40; const xx = lerp(ax + 90, bx - 90, v), yy = y - 150 * Math.sin(Math.PI * v); i ? g.lineTo(xx, yy) : g.moveTo(xx, yy); }
+  g.stroke(); g.setLineDash([]);
+  if (u < 1) plane(px, py, Math.atan2(-150 * Math.PI * Math.cos(Math.PI * u), bx - ax - 180), 0.9);
+  // «¿QUIÉN ACIERTA?»
+  const q = back(prog(t, CUE.acierta ?? CUE.compartir + 0.8, 0.4));
+  if (q > 0) {
+    g.save(); g.translate(540, 520); g.scale(q, q);
+    txt('¿QUIÉN ACIERTA?', 0, 0, 92, GOLD, 400, 'center', 'Impact');
     g.restore();
   }
   g.restore();
@@ -590,6 +632,7 @@ window.renderAt = t => {
   if (Q.intro === 'respiracion') introRespiracion(t);
   countdown(t);
   letters(t);
+  share(t);
   toDescription(t);
   cards(t);
   closing(t);
