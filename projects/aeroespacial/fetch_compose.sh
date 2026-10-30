@@ -7,7 +7,7 @@ missing() { python3 -c "import os; print(sum(1 for i in range($N) if not os.path
 while true; do
   git fetch -q origin '+refs/heads/render-aero-*:refs/remotes/origin/render-aero-*' 2>/dev/null
   for br in $(git branch -r --list 'origin/render-aero-*'); do
-    for c in $(git ls-tree --name-only $br projects/aeroespacial/chunks/ 2>/dev/null | grep 'chunk_[0-9]*_[0-9]*\.mp4'); do
+    for c in $(git ls-tree --full-tree --name-only $br projects/aeroespacial/chunks/ 2>/dev/null | grep 'chunk_[0-9]*_[0-9]*\.mp4'); do
       tag=$(basename $c .mp4); [ -f out/$tag.done ] && continue
       A=$(echo $tag | cut -d_ -f2); B=$(echo $tag | cut -d_ -f3)
       git show $br:$c > out/$tag.mp4 || continue
