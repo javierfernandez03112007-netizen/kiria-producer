@@ -20,7 +20,7 @@ fetch_chunks() {
     rm -rf out/tmp_$x; touch out/chunk_$x.done; echo "$(date +%H:%M) trozo $x ($A..$((B - 1))) metido"
   done
 }
-( while kill -0 $WAIT_PID 2>/dev/null; do sleep 20; done
+( if [ "${WAIT_PID:-0}" -gt 1 ]; then while kill -0 $WAIT_PID 2>/dev/null; do sleep 20; done; fi
   echo "$(date +%H:%M) trozo local 0-1030 terminado; sigo con 1030-$N"
   WK=3 ./render_local.sh 1030 $N ) &
 LOCAL=$!
