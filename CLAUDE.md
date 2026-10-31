@@ -13,3 +13,6 @@ sonido sintetizado con `engine/sfx.py`; plantilla `projects/burbuja/`).
 
 Sección **Bomberados** (vídeos para la marca, estructuras propias): antes de cualquier vídeo de Bomberados lee
 `bomberados/MARCA.md` (qué cambia respecto a kiria.ai), `bomberados/FORMATOS.md` e `bomberados/IDEAS.md`.
+
+Web del estudio (venta de vídeos hechos con IA a empresas): `web_estudio/`. Antes de tocarla lee `web_estudio/README.md`
+(idea base aprobada, datos reales que usa y lo que falta). Las versiones nuevas parten de la etiqueta `web-estudio-v1`.

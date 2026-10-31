@@ -1,0 +1,415 @@
+<title>kiria.ai Estudio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Reels en 3D con inteligencia artificial para marcas: guion, voz, animación y subtítulos. Listos para Instagram, TikTok y YouTube Shorts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Concepto: una sala de montaje. La página se lee como una línea de tiempo de un reel vertical:
+   titular con el recuadro amarillo de nuestros subtítulos, vídeos en formato 9:16, y datos técnicos en tipo monoespaciado. */
+:root {
+  color-scheme: dark;
+  --ink: #0a0c10;          /* fondo */
+  --panel: #12161d;        /* superficies */
+  --line: #252c37;         /* filetes */
+  --fg: #eef2f6;           /* texto */
+  --muted: #9aa4b2;        /* texto secundario */
+  --yellow: #ffc83d;       /* el recuadro de las palabras clave de nuestros subtítulos */
+  --teal: #62e3d4;         /* acento secundario */
+  --rec: #ff4d4d;          /* el punto de grabación */
+  --display: "Anton", "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --wrap: 1180px;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { background: var(--ink); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+a { color: inherit; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.98; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(38px, 6vw, 68px); }
+h3 { font-size: 26px; letter-spacing: 0.02em; }
+p { margin: 0; }
+.key { background: var(--yellow); color: #111; padding: 0 0.12em; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
+.pending { display: inline-block; border: 1px dashed var(--yellow); color: var(--yellow); font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; vertical-align: middle; }
+
+/* cabecera */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--ink) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+.brand b { font-family: var(--display); font-weight: 400; font-size: 26px; letter-spacing: 0.02em; }
+.brand b i { font-style: normal; color: var(--yellow); }
+nav { display: flex; gap: 22px; align-items: center; }
+nav a.l { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
+nav a.l:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 18px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; font-family: var(--body); white-space: nowrap; }
+.btn.y { background: var(--yellow); color: #111; }
+.btn.y:hover { filter: brightness(1.06); }
+.btn.o { border-color: var(--line); color: var(--fg); background: transparent; }
+.btn.o:hover { border-color: var(--muted); }
+@media (max-width: 860px) { nav a.l { display: none; } }
+@media (max-width: 520px) { .brand .mono { display: none; } }
+
+/* portada */
+.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 48px; align-items: center; padding-block: 64px 56px; }
+.hero h1 { font-size: clamp(54px, 8.6vw, 112px); line-height: 1.04; }
+/* el recuadro amarillo abraza las mayúsculas sin pisar las líneas de arriba y de abajo */
+.hero h1 .key { display: inline-block; line-height: 0.86; padding: 0.045em 0.1em; }
+.hero .lede { margin-top: 26px; max-width: 34em; font-size: 19px; color: #cfd6df; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero .chips { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 28px; }
+.phone { position: relative; width: min(340px, 100%); margin-left: auto; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 34px; padding: 10px; background: #050608; border: 1px solid var(--line); box-shadow: 0 30px 80px -30px rgba(255, 200, 61, 0.25), 0 0 0 1px rgba(255,255,255,0.03) inset; }
+.phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; display: block; background: #000; }
+.hud { position: absolute; left: 22px; right: 22px; top: 22px; display: flex; justify-content: space-between; pointer-events: none; }
+.rec { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: rgba(0,0,0,0.45); padding: 4px 8px; border-radius: 6px; }
+.rec::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rec); animation: blink 1.2s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }
+.spec { position: absolute; left: 22px; right: 22px; bottom: 22px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); pointer-events: none; }
+.spec span { background: rgba(0,0,0,0.45); padding: 3px 7px; border-radius: 5px; }
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-block: 40px 40px; } .phone { margin: 8px auto 0; width: min(300px, 100%); } }
+
+/* pruebas */
+.proof { border-block: 1px solid var(--line); background: var(--panel); }
+.proof .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stat { padding-block: 30px; padding-inline: 22px; border-left: 1px solid var(--line); min-width: 0; }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5vw, 60px); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat b.y { color: var(--yellow); }
+.stat p { margin-top: 10px; color: var(--muted); font-size: 15px; }
+@media (max-width: 860px) { .proof .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } .stat:nth-child(-n+2) { border-top: 0; } }
+
+section { padding-block: 84px; }
+.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px 40px; margin-bottom: 36px; }
+.head p { max-width: 30em; color: var(--muted); }
+
+/* clientes */
+.clients { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.client { padding: 26px 22px; border-left: 1px solid var(--line); min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.client:first-child { border-left: 0; }
+.client b { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 5.6vw, 30px); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; overflow-wrap: anywhere; }
+.client span { color: var(--muted); font-size: 14px; }
+@media (max-width: 860px) { .clients { grid-template-columns: repeat(2, minmax(0, 1fr)); } .client { border-left: 0; border-top: 1px solid var(--line); } .client:nth-child(odd) { border-right: 1px solid var(--line); } .client:nth-child(-n+2) { border-top: 0; } }
+
+/* trabajos */
+.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.card { min-width: 0; }
+.card .vid { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid var(--line); }
+.card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card .tag { position: absolute; left: 12px; top: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 6px; }
+.card .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 12px; }
+.card h3 { font-size: 22px; }
+.card .views { font-family: var(--mono); font-size: 12px; color: var(--yellow); white-space: nowrap; }
+.card p { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+@media (max-width: 860px) { .work { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } .card h3 { font-size: 19px; } }
+@media (max-width: 520px) { .card .meta { flex-direction: column; align-items: flex-start; gap: 2px; } .card h3 { font-size: 18px; } .card .views { font-size: 11px; } .card p { font-size: 13.5px; } .client { padding: 20px 16px; } }
+
+/* formatos */
+.formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.fmt { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; display: grid; gap: 12px; min-width: 0; }
+.fmt .top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.fmt .top .mono { white-space: nowrap; }
+.fmt p { color: #c9d1db; }
+.fmt .ex { color: var(--muted); font-size: 14.5px; }
+@media (max-width: 760px) { .formats { grid-template-columns: 1fr; } }
+
+/* anatomía de un reel */
+.tl { border: 1px solid var(--line); border-radius: 16px; padding: 26px; background: var(--panel); }
+.tl .scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+.tl .track { display: grid; grid-template-columns: 1fr 3fr 41fr 10fr 5fr; align-items: stretch; height: 42px; border-radius: 8px; overflow: hidden; gap: 2px; }
+.tl .track span { display: block; min-width: 4px; }
+.tl .legend { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+.tl .legend div { min-width: 0; display: grid; gap: 6px; }
+.tl .legend i { display: block; width: 26px; height: 6px; border-radius: 3px; }
+.tl .legend b { font-size: 15px; }
+.tl .legend p { color: var(--muted); font-size: 14px; }
+.c1 { background: var(--rec); } .c2 { background: var(--yellow); } .c3 { background: #3a4656; } .c4 { background: var(--teal); } .c5 { background: #eef2f6; }
+@media (max-width: 860px) { .tl .legend { grid-template-columns: 1fr; } }
+
+/* proceso */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
+.step { border-top: 2px solid var(--line); padding-top: 18px; min-width: 0; display: grid; gap: 10px; align-content: start; }
+.step::before { counter-increment: s; content: "0" counter(s); font-family: var(--mono); color: var(--yellow); font-size: 13px; letter-spacing: 0.1em; }
+.step p { color: var(--muted); font-size: 15px; }
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* qué recibes */
+.deliver { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.specs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.specs li { display: flex; justify-content: space-between; gap: 18px; padding: 15px 20px; border-top: 1px solid var(--line); font-size: 15.5px; }
+.specs li:first-child { border-top: 0; }
+.specs li span:last-child { font-family: var(--mono); font-size: 13px; color: var(--muted); text-align: right; }
+@media (max-width: 860px) { .deliver { grid-template-columns: 1fr; } }
+
+/* preguntas */
+details { border-top: 1px solid var(--line); padding-block: 18px; }
+details:last-child { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; font-weight: 600; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--mono); color: var(--yellow); }
+details[open] summary::after { content: "–"; }
+details p { margin-top: 10px; color: #c9d1db; max-width: 62ch; }
+
+/* contacto */
+.contact { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+.contact .ways { display: grid; gap: 14px; margin-top: 26px; }
+.way { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.way span { color: var(--muted); font-size: 14px; }
+form { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: grid; gap: 16px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { display: grid; gap: 7px; font-size: 14px; font-weight: 600; }
+input, select, textarea { font: inherit; font-size: 16px; color: var(--fg); background: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 12px 13px; width: 100%; }
+textarea { min-height: 120px; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--yellow); }
+.out { border: 1px dashed var(--yellow); border-radius: 12px; padding: 16px; display: grid; gap: 12px; }
+.out pre { margin: 0; white-space: pre-wrap; font-family: var(--mono); font-size: 13px; color: #d8dee6; }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; } .row2 { grid-template-columns: 1fr; } }
+
+footer { border-top: 1px solid var(--line); padding-block: 30px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+footer nav { gap: 18px; }
+footer a { text-decoration: none; color: var(--muted); }
+</style>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>kiria<i>.</i>ai</b><span class="mono">Estudio de vídeo</span></a>
+    <nav>
+      <a class="l" href="#trabajos">Trabajos</a>
+      <a class="l" href="#formatos">Formatos</a>
+      <a class="l" href="#proceso">Cómo trabajamos</a>
+      <a class="btn y" href="#contacto">Pedir un vídeo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="mono">Reels en 3D con inteligencia artificial</p>
+      <h1 style="margin-top:16px">Vídeos que <span class="key">paran</span> el scroll.</h1>
+      <p class="lede">Hacemos el vídeo entero para tu marca: guion, voz en español, animación 3D, subtítulos y sonido. Listo para publicar en Instagram, TikTok y YouTube Shorts.</p>
+      <div class="cta">
+        <a class="btn y" href="#contacto">Pedir presupuesto</a>
+        <a class="btn o" href="#trabajos">Ver trabajos</a>
+      </div>
+      <div class="chips">
+        <span class="mono">1080 × 1920</span><span class="mono">60 fps</span><span class="mono">45–75 s</span><span class="mono">Datos con fuente</span>
+      </div>
+    </div>
+    <div class="phone">
+      <video src="media/showreel.mp4" poster="media/industrial.jpg" autoplay muted loop playsinline preload="auto" aria-label="Muestra de nuestros vídeos"></video>
+      <div class="hud"><span class="rec">REC</span></div>
+      <div class="spec"><span>9:16</span><span id="tc">00:00:00:00</span></div>
+    </div>
+  </div>
+
+  <div class="proof">
+    <div class="wrap grid">
+      <div class="stat"><b class="y">460.000</b><p>visualizaciones en un solo reel (Ingeniería Industrial)</p></div>
+      <div class="stat"><b>22.000</b><p>me gusta en ese mismo vídeo</p></div>
+      <div class="stat"><b>+20</b><p>vídeos producidos con este formato</p></div>
+      <div class="stat"><b>4</b><p>marcas que ya han trabajado con nosotros</p></div>
+    </div>
+  </div>
+
+  <section id="clientes">
+    <div class="wrap">
+      <div class="head">
+        <h2>Han confiado en nosotros</h2>
+        <p>Academias, apps y negocios locales que querían salir en redes con algo distinto a la foto de siempre.</p>
+      </div>
+      <div class="clients">
+        <div class="client"><b>Élite Bomberos</b><span>Academia de oposiciones a bombero</span></div>
+        <div class="client"><b>Bomberados</b><span>App de test para opositores: reels de producto</span></div>
+        <div class="client"><b>Fersalv</b><span class="pending">Qué hicimos: pendiente</span></div>
+        <div class="client"><b>Beauty Salon Merche</b><span class="pending">Qué hicimos: pendiente</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabajos" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <h2>Trabajos</h2>
+        <p>Fragmentos reales de vídeos que hemos producido. Aquí se ven sin sonido: el vídeo completo lleva voz en español y efectos.</p>
+      </div>
+      <div class="work">
+        <article class="card"><div class="vid"><video data-src="media/industrial.mp4" poster="media/industrial.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
+          <div class="meta"><h3>Ingeniería Industrial</h3><span class="views">460.000 visualizaciones</span></div><p>La carrera explicada asignatura a asignatura, con la nota de corte y la respuesta al final.</p></article>
+        <article class="card"><div class="vid"><video data-src="media/software.mp4" poster="media/software.jpg" muted loop playsinline preload="none"></video><span class="tag">El duelo</span></div>
+          <div class="meta"><h3>Software vs Informática</h3></div><p>Un combate en un ring, con datos del BOE y de las notas de corte. Pensado para generar comentarios.</p></article>
+        <article class="card"><div class="vid"><video data-src="media/aeroespacial.mp4" poster="media/aeroespacial.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
+          <div class="meta"><h3>Ingeniería Aeroespacial</h3></div><p>Del birrete a un avión real en el primer segundo, y de ahí al túnel de viento, el motor y la órbita.</p></article>
+        <article class="card"><div class="vid"><video data-src="media/bomberados.mp4" poster="media/bomberados.jpg" muted loop playsinline preload="none"></video><span class="tag">Para marcas</span></div>
+          <div class="meta"><h3>Bomberados</h3></div><p>Reel de marca para una app de opositores: un dato que engancha y la app como solución.</p></article>
+        <article class="card"><div class="vid"><video data-src="media/civil.mp4" poster="media/civil.jpg" muted loop playsinline preload="none"></video><span class="tag">El duelo</span></div>
+          <div class="meta"><h3>Ingeniería Civil</h3></div><p>Caminos contra Arquitectura, con la ley y dos sentencias del Supremo como árbitro.</p></article>
+        <article class="card"><div class="vid"><video data-src="media/bomberados_ia.mp4" poster="media/bomberados_ia.jpg" muted loop playsinline preload="none"></video><span class="tag">Pregunta test</span></div>
+          <div class="meta"><h3>Bomberados IA</h3></div><p>Una pregunta de examen con verdadero o falso, y la app explicando la respuesta.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="formatos" style="background:var(--panel);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head">
+        <h2>Formatos</h2>
+        <p>Cada formato tiene su estructura probada. Elegimos el que mejor cuenta lo tuyo.</p>
+      </div>
+      <div class="formats">
+        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>Así es por dentro</h3><span class="mono">60–75 s</span></div>
+          <p>Abrimos tu producto, servicio o carrera en 3D y enseñamos cómo funciona por dentro, pieza a pieza.</p><p class="ex">Ejemplo: Ingeniería Industrial, Aeroespacial.</p></div>
+        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>El duelo</h3><span class="mono">60–75 s</span></div>
+          <p>Dos opciones frente a frente, con marcador y datos. Funciona para comparar y para que la gente opine.</p><p class="ex">Ejemplo: Software vs Informática, Caminos vs Arquitectura.</p></div>
+        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>El dato que sorprende</h3><span class="mono">55–65 s</span></div>
+          <p>Un número real que nadie espera, explicado con gráficos técnicos que se mueven al ritmo de la voz.</p><p class="ex">Ejemplo: «Ocho de cada diez opositores…» para Bomberados.</p></div>
+        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>Pregunta test</h3><span class="mono">45–60 s</span></div>
+          <p>Una pregunta con su respuesta al final. Ideal para academias, formación y apps de estudio.</p><p class="ex">Ejemplo: Bomberados IA.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="anatomia">
+    <div class="wrap">
+      <div class="head">
+        <h2>Anatomía de un reel</h2>
+        <p>Por qué la gente se queda hasta el final: la pregunta se abre en los primeros segundos y la respuesta no llega hasta el cierre.</p>
+      </div>
+      <div class="tl">
+        <div class="scale"><span>0 s</span><span>15 s</span><span>30 s</span><span>45 s</span><span>60 s</span></div>
+        <div class="track" role="img" aria-label="Línea de tiempo de 60 segundos dividida en cinco partes"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
+        <div class="legend">
+          <div><i class="c1"></i><b>0–1 s · La imagen imposible</b><p>Algo que obliga a parar el dedo antes de entender de qué va.</p></div>
+          <div><i class="c2"></i><b>1–4 s · La pregunta</b><p>La que el vídeo responde al final. Sin título ni saludo.</p></div>
+          <div><i class="c3"></i><b>4–45 s · Los datos</b><p>Cada cosa aparece justo cuando se nombra, y los objetos se transforman en lo que se dice.</p></div>
+          <div><i class="c4"></i><b>45–55 s · La respuesta</b><p>Con el mejor plano del vídeo.</p></div>
+          <div><i class="c5"></i><b>55–60 s · Cierre y bucle</b><p>Una pregunta para comentarios, y el último fotograma enlaza con el primero.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><h2>Cómo trabajamos</h2><p>Tú nos cuentas qué quieres conseguir. Del resto nos encargamos nosotros.</p></div>
+      <div class="steps">
+        <div class="step"><h3>Brief</h3><p>Nos cuentas tu negocio, a quién quieres llegar y qué quieres que pase después de ver el vídeo.</p></div>
+        <div class="step"><h3>Guion</h3><p>Te enviamos el guion con el gancho, los datos y el cierre. No seguimos hasta que lo apruebas.</p></div>
+        <div class="step"><h3>Voz y 3D</h3><p>Voz en español, escena en 3D, subtítulos palabra a palabra y efectos de sonido.</p></div>
+        <div class="step"><h3>Entrega</h3><p>El vídeo listo para subir, con portada, miniatura y descripción. Plazo: <span class="pending">pendiente</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="entrega" style="background:var(--panel);border-block:1px solid var(--line)">
+    <div class="wrap deliver">
+      <div>
+        <h2>Qué recibes</h2>
+        <p style="margin-top:18px;color:var(--muted);max-width:30em">Todo lo necesario para publicar ese mismo día. Si tu vídeo da una cifra, lleva su fuente.</p>
+        <div style="margin-top:28px"><a class="btn y" href="#contacto">Pedir presupuesto</a></div>
+      </div>
+      <ul class="specs">
+        <li><span>Vídeo vertical</span><span>MP4 · 1080×1920 · 60 fps</span></li>
+        <li><span>Duración</span><span>45–75 s</span></li>
+        <li><span>Voz</span><span>Español de España</span></li>
+        <li><span>Subtítulos</span><span>Palabra a palabra</span></li>
+        <li><span>Sonido</span><span>Voz + efectos · −16 LUFS</span></li>
+        <li><span>Portada y miniatura</span><span>9:16 y 4:5</span></li>
+        <li><span>Descripción y hashtags</span><span>Versión larga y corta</span></li>
+        <li><span>Fuentes de los datos</span><span>Documento aparte</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="head"><h2>Preguntas</h2></div>
+      <details><summary>¿Está hecho con inteligencia artificial?</summary><p>Sí. Usamos IA para la voz, el guion y la animación, y revisamos a mano cada dato y cada plano antes de entregarlo.</p></details>
+      <details><summary>¿Puede salir mi marca?</summary><p>Sí: tu logo, tus colores, tu producto y tu forma de hablar. El vídeo es tuyo para publicarlo donde quieras.</p></details>
+      <details><summary>¿Los datos son reales?</summary><p>Siempre. Cada cifra que aparece lleva su fuente, y te la damos por escrito junto al vídeo.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende del formato, la duración y cuántos vídeos necesites. Cuéntanos tu idea y te enviamos un presupuesto cerrado.</p></details>
+      <details><summary>¿Cuánto tarda?</summary><p>El plazo depende del guion y de los cambios que pidas. <span class="pending">Plazo habitual: pendiente</span></p></details>
+      <details><summary>¿Para qué redes sirve?</summary><p>Para Instagram Reels, TikTok y YouTube Shorts: formato vertical 9:16, con subtítulos para verlo sin sonido.</p></details>
+    </div>
+  </section>
+
+  <section id="contacto" style="background:var(--panel);border-top:1px solid var(--line)">
+    <div class="wrap contact">
+      <div>
+        <h2>Cuéntanos tu vídeo</h2>
+        <p style="margin-top:18px;color:var(--muted);max-width:28em">Rellena el formulario y te respondemos con una propuesta de guion y presupuesto.</p>
+        <div class="ways">
+          <div class="way"><div><b>Correo</b><br><span class="pending">Correo: pendiente</span></div></div>
+          <div class="way"><div><b>WhatsApp</b><br><span class="pending">Número: pendiente</span></div></div>
+          <div class="way"><div><b>Instagram</b><br><span class="pending">Usuario: pendiente</span></div></div>
+        </div>
+      </div>
+      <form id="f" novalidate>
+        <div class="row2">
+          <label for="nombre">Nombre<input id="nombre" name="nombre" autocomplete="name" required></label>
+          <label for="empresa">Empresa<input id="empresa" name="empresa" autocomplete="organization"></label>
+        </div>
+        <div class="row2">
+          <label for="email">Correo<input id="email" name="email" type="email" autocomplete="email" required></label>
+          <label for="formato">Formato<select id="formato" name="formato"><option>Aún no lo sé</option><option>Así es por dentro</option><option>El duelo</option><option>El dato que sorprende</option><option>Pregunta test</option></select></label>
+        </div>
+        <label for="idea">¿Qué quieres contar?<textarea id="idea" name="idea" placeholder="Tu producto, tu servicio o tu idea, y qué te gustaría que pasara después de ver el vídeo." required></textarea></label>
+        <button class="btn y" type="submit" style="justify-self:start">Preparar mensaje</button>
+        <div class="out" id="out" hidden>
+          <b>Tu mensaje está listo</b>
+          <pre id="msg"></pre>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn o" type="button" id="copy">Copiar mensaje</button></div>
+          <p class="mono" style="text-transform:none;letter-spacing:0">En esta versión de prueba el formulario no envía nada: en la web final llegará directamente a tu correo.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 kiria.ai · Estudio de vídeo con IA</span>
+    <nav><a href="#top">Aviso legal</a><a href="#top">Privacidad</a><a href="#top">Cookies</a><span class="pending">Textos legales: pendientes</span></nav>
+  </div>
+</footer>
+
+<script>
+// contador de tiempo del vídeo de portada (horas:minutos:segundos:fotogramas a 60 fps)
+(() => {
+  const v = document.querySelector('.phone video'), tc = document.getElementById('tc');
+  const pad = n => String(n).padStart(2, '0');
+  const tick = () => { const t = v.currentTime || 0, f = Math.floor((t % 1) * 60); tc.textContent = `00:00:${pad(Math.floor(t))}:${pad(f)}`; requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+})();
+// los vídeos de trabajos se cargan y reproducen solo cuando se ven
+(() => {
+  const vids = document.querySelectorAll('.card video');
+  const play = v => { if (!v.src) v.src = v.dataset.src; const p = v.play(); if (p) p.catch(() => {}); };
+  if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(e.target); else e.target.pause(); }), { threshold: 0.35 });
+  vids.forEach(v => io.observe(v));
+})();
+// formulario: en la vista previa prepara el mensaje para copiarlo
+(() => {
+  const f = document.getElementById('f'), out = document.getElementById('out'), msg = document.getElementById('msg');
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(f));
+    if (!d.nombre || !d.email || !d.idea) { [...f.querySelectorAll('[required]')].find(i => !i.value)?.focus(); return; }
+    msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa un vídeo (${d.formato}).\n\n${d.idea}\n\nMi correo: ${d.email}`;
+    out.hidden = false;
+  });
+  document.getElementById('copy').addEventListener('click', () => {
+    navigator.clipboard.writeText(msg.textContent).then(() => { document.getElementById('copy').textContent = 'Copiado'; }).catch(() => {
+      const r = document.createRange(); r.selectNodeContents(msg); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  });
+})();
+</script>
