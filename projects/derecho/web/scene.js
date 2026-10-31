@@ -1408,6 +1408,7 @@ window.renderCover = function () {
   if (window.camOverride) window.camOverride(cam, v3);
   const VP = vpOf(); flowUpdate(t, VP, VP); fxUpdate(t, VP, VP);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0; post.uniforms.white.value = 0;
+  if (S.ctrCone) S.ctrCone.visible = false;      // en la portada, sin el haz del centro (de frente se ve como columnas)
   hudBegin(); drawFrame(t);
   return true;
 };
