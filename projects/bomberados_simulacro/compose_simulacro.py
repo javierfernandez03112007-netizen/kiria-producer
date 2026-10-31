@@ -133,14 +133,17 @@ def sfx_track(path):
     mix(sfx.clack(2), c["domingo"] + 0.08, 0.5)
     mix(scratch(0.35, 40), c["uno"] - 0.04, 0.6)
     mix(sfx.ding(1318.5, 0.9), c["uno"] + 0.24, 0.6)
-    # SIMULACRO EN DIRECTO
+    # SEGUNDO SIMULACRO · EXAMEN OPOSICIÓN BOMBERO · CIUDAD REAL · EN DIRECTO
+    mix(sfx.whoosh(0.5), c["segundo"] - 0.2, 0.6)
     mix(sfx.whoosh(0.6), c["simulacro"] - 0.3, 0.8)
     mix(boom(1.4, 50), c["simulacro"] + 0.04, 1.0)
     mix(sfx.clack(6), c["simulacro"] + 0.08, 0.7)
+    mix(sfx.clack(7), c["examen3"] + 0.02, 0.4)
+    mix(boom(1.2, 56), c["ciudad"] + 0.04, 0.8)
+    mix(bell(784.0, 1.2), c["ciudad"] + 0.06, 0.35)
     mix(blip(1000, 1000, 0.12), c["directo"] + 0.02, 0.6)
     mix(blip(1000, 1000, 0.12), c["directo"] + 0.17, 0.6)
     mix(sfx.whoosh(0.45), c["adrian"] - 0.18, 0.6)
-    mix(bell(784.0, 1.2), c["elite"] + 0.02, 0.4)
     # a casa: el título sube a la cabecera, la casa se dibuja, el reloj del examen y la etiqueta de 10 €
     mix(sfx.whoosh(0.8), c["desde"] - 0.3, 0.7)
     mix(sfx.whoosh(0.5), c["casa"] - 0.12, 0.4)

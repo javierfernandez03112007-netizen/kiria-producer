@@ -3,7 +3,7 @@
 // Objetos que se transforman: la hoja de respuestas llena de ✗ (sello SUSPENSO, sobre una pila de manuales) → el
 // calendario de octubre vacío («SIMULACROS 0») → pasa a noviembre, el domingo 1 se rodea y el contador pasa a 1 → la
 // casilla sale volando y se hace el chip de la fecha; «SIMULACRO» + «EN DIRECTO» + Adrián Luna + Élite Bomberos → el
-// título sube a la cabecera → casa con un portátil (examen en directo) + etiqueta de 10 € → botón APÚNTATE +
+// título sube a la cabecera → casa con un portátil (examen en directo) + etiqueta de 12 € → botón APÚNTATE +
 // @elitebomberos → vuelve la hoja y cada ✗ se vuelve ✓ → placa BOMBERADOS + recordatorio del simulacro.
 const W = 1080, H = 1920;
 const PR = window.PR || 1;
@@ -125,10 +125,10 @@ function dots(t) {
 const SHEET0 = { x: 540, y: 880, s: 0.92 };
 const MARKX = 215, ROWY = i => -205 + i * 54, BX = j => -150 + j * 80;
 const FIRST = 1;                                      // fila de la ✗ que abre el vídeo (en primer plano)
-function sections() { return ['academia', 'domingo', 'simulacro', 'desde', 'apuntate', 'despues', 'marca'].map(k => CUE[k]).filter(x => x !== undefined); }
+function sections() { return ['academia', 'domingo', 'segundo', 'desde', 'apuntate', 'despues', 'marca'].map(k => CUE[k]).filter(x => x !== undefined); }
 function shakeAmt(t) {
   let s = 0;
-  for (const [t0, a] of [[0.05, 0.5], [0.17, 0.7], [CUE.examen1 + 0.1, 1], [CUE.simulacro0 + 0.05, 0.3], [CUE.simulacro + 0.1, 0.9], [CUE.precio + 0.22, 0.45], [CUE.marca, 0.5]]) {
+  for (const [t0, a] of [[0.05, 0.5], [0.17, 0.7], [CUE.examen1 + 0.1, 1], [CUE.simulacro0 + 0.05, 0.3], [CUE.simulacro + 0.1, 0.9], [CUE.ciudad + 0.1, 0.6], [CUE.precio + 0.22, 0.45], [CUE.marca, 0.5]]) {
     const u = t - t0; if (u >= 0 && u < 0.6) s += a * Math.exp(-u * 11);
   }
   return s;
@@ -306,7 +306,7 @@ function calCells(nov) {
   return out;
 }
 function calendar(t) {
-  const tin = CUE.academia - 0.12, tout = CUE.simulacro - 0.05;
+  const tin = CUE.academia - 0.12, tout = CUE.segundo - 0.05;
   const e = eo(prog(t, tin, 0.5)), o = eio(prog(t, tout, 0.5));
   if (e <= 0 || o >= 1) return;
   g.save();
@@ -339,7 +339,7 @@ function calendar(t) {
   for (const c of calCells(nov)) {
     const x = COLX(c.c), y = ROWYC(c.r);
     const hot = nov && c.d === 1;
-    if (hot && t > CUE.simulacro - 0.12) continue;                  // la casilla ya ha salido volando (chip de la fecha)
+    if (hot && t > CUE.segundo - 0.12) continue;                  // la casilla ya ha salido volando (chip de la fecha)
     rr(x - 52, y - 45, 104, 90, 14); g.fillStyle = 'rgba(255,255,255,0.035)'; g.fill();
     txt(String(c.d), x - 40, y - 8, 30, c.c >= 5 ? 'rgba(238,242,246,0.55)' : 'rgba(238,242,246,0.8)', 700, 'left', 'Inter');
     if (!nov) {
@@ -377,7 +377,7 @@ function pillW(px, h, label, dot) { return measure(label, px, 0.04) + h * 0.9 + 
 
 const cross = y => 1 - 0.7 * Math.exp(-Math.pow((y - 330) / 85, 2));   // al cruzar la franja de los subtítulos, casi transparente
 function simStack(t) {
-  const t0 = CUE.simulacro;
+  const t0 = CUE.segundo, ts = CUE.simulacro;
   if (t < t0 - 0.14) return;
   const k = eio(prog(t, CUE.desde - 0.15, 0.55));
   const kb = eio(prog(t, CUE.desde - 0.03, 0.55)), kc = eio(prog(t, CUE.desde + 0.07, 0.55));   // escalonados: no se pisan
@@ -406,22 +406,52 @@ function simStack(t) {
     g.restore();
     if (ca < 0.6) { g.save(); g.globalAlpha *= 1 - ca / 0.6; txt('1', x - 40 * (1 - ca), y - 8, 30, WHITE, 700, 'left', 'Inter'); g.restore(); }
   }
+  // SEGUNDO (encima del título)
+  const sa = eo(prog(t, t0 - 0.06, 0.35)), out3 = eio(prog(t, CUE.desde - 0.2, 0.42));
+  if (sa > 0 && out3 < 1) {
+    g.save(); g.globalAlpha *= sa * (1 - out3); g.translate(0, (1 - sa) * 24 - out3 * 120);
+    g.font = '400 72px Bebas'; g.letterSpacing = `${lerp(34, 18, sa).toFixed(1)}px`; g.textAlign = 'center'; g.fillStyle = ORANGE;
+    g.fillText('SEGUNDO', 540 + 9, 676); g.letterSpacing = '0px';
+    g.restore();
+  }
+  // EXAMEN OPOSICIÓN BOMBERO, entre dos rayas
+  const xa = eo(prog(t, CUE.examen3 - 0.06, 0.4));
+  if (xa > 0 && out3 < 1) {
+    g.save(); g.globalAlpha *= xa * (1 - out3); g.translate(0, out3 * 520);
+    g.font = '800 30px Inter'; g.letterSpacing = `${lerp(22, 9, xa).toFixed(1)}px`;
+    const w = g.measureText('EXAMEN OPOSICIÓN BOMBERO').width;
+    g.textAlign = 'center'; g.fillStyle = 'rgba(238,242,246,0.88)'; g.fillText('EXAMEN OPOSICIÓN BOMBERO', 540 + 4, 948); g.letterSpacing = '0px';
+    const lw = 110 * xa; g.fillStyle = ORANGE;
+    g.fillRect(540 - w / 2 - 26 - lw, 936, lw, 3); g.fillRect(540 + w / 2 + 26, 936, lw, 3);
+    g.restore();
+  }
+  // CIUDAD REAL (golpe, naranja → rojo como el cartel)
+  const ra = eo(prog(t, CUE.ciudad - 0.04, 0.16));
+  if (ra > 0 && out3 < 1) {
+    const sc3 = lerp(1.4, 1, ra);
+    g.save(); g.globalAlpha *= clamp(ra * 3) * (1 - out3); g.translate(540, 1050 + out3 * 520); g.scale(sc3, sc3);
+    g.font = '400 168px Bebas'; g.letterSpacing = '4px'; g.textAlign = 'center';
+    const cg = g.createLinearGradient(-330, 0, 330, 0); cg.addColorStop(0, '#FF8A1F'); cg.addColorStop(1, '#E8341C');
+    g.fillStyle = cg; g.shadowColor = 'rgba(232,52,28,0.5)'; g.shadowBlur = 36; g.fillText('CIUDAD REAL', 2, 50); g.shadowBlur = 0; g.letterSpacing = '0px';
+    g.restore();
+  }
   // título
   const px = lerp(236, 46, k), tw = measure('SIMULACRO', px);
-  const slam = eo(prog(t, t0 - 0.04, 0.16)), sc = lerp(1.55, 1, slam);
-  const tx = lerp(540 - tw / 2, 60, k), ty = lerp(800, 140, k);
+  const slam = eo(prog(t, ts - 0.04, 0.16)), sc = lerp(1.55, 1, slam);
+  const tx = lerp(540 - tw / 2, 60, k), ty = lerp(866, 140, k);
   g.save(); g.globalAlpha *= clamp(slam * 3) * (k > 0 && k < 1 ? cross(ty - px * 0.35) : 1);
   g.translate(tx + tw / 2, ty - px * 0.35); g.scale(sc, sc); g.translate(-(tx + tw / 2), -(ty - px * 0.35));
   g.font = `400 ${px}px Bebas`; g.letterSpacing = `${(px * 0.02).toFixed(1)}px`; g.textAlign = 'left'; g.fillStyle = WHITE;
   g.shadowColor = 'rgba(255,122,26,0.45)'; g.shadowBlur = 40 * (1 - k); g.fillText('SIMULACRO', tx, ty); g.shadowBlur = 0; g.letterSpacing = '0px';
-  const ul = eo(prog(t, t0 + 0.12, 0.35)) * (1 - k);
+  const ul = eo(prog(t, ts + 0.12, 0.35)) * (1 - k);
   if (ul > 0) { g.fillStyle = ORANGE; g.fillRect(tx, ty + 24, tw * ul, 12); }
   g.restore();
+  if (kc > 0) { g.save(); g.globalAlpha *= kc; g.letterSpacing = '2px'; txt('EXAMEN BOMBERO · CIUDAD REAL', 60, 182, 24, DIM, 700, 'left', 'Inter'); g.letterSpacing = '0px'; g.restore(); }
   // EN DIRECTO
   const ba = back(prog(t, CUE.directo - 0.06, 0.36));
   if (ba > 0) {
     const bh = lerp(88, 42, kb), bpx = lerp(62, 26, kb);
-    const bcx = lerp(540, bx + bw / 2, kb), bcy = lerp(912, 124, kb);
+    const bcx = lerp(540, bx + bw / 2, kb), bcy = lerp(1196, 124, kb);
     g.save(); g.translate(bcx, bcy); g.scale(kb > 0 ? 1 : ba, kb > 0 ? 1 : ba); g.globalAlpha *= kb > 0 && kb < 1 ? cross(bcy) : 1;
     if (kb < 1) { const gl = g.createRadialGradient(0, 0, 10, 0, 0, 260); gl.addColorStop(0, `rgba(255,59,59,${(0.35 * (1 - kb)).toFixed(3)})`); gl.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gl; g.fillRect(-260, -260, 520, 520); }
     pill(0, 0, bh, bpx, 'EN DIRECTO', RED, null, '#FFFFFF', true, t);
@@ -430,23 +460,12 @@ function simStack(t) {
   // Adrián Luna
   const pa = eo(prog(t, CUE.adrian - 0.1, 0.4)), pout = eio(prog(t, CUE.desde - 0.2, 0.42));
   if (pa > 0 && pout < 1) {
-    g.save(); g.globalAlpha *= pa * (1 - pout); g.translate(540 - (1 - pa) * 260, 1085 + pout * 520);
+    g.save(); g.globalAlpha *= pa * (1 - pout); g.translate(540 - (1 - pa) * 260, 1350 + pout * 520);
     rr(-400, -86, 800, 172, 26); g.fillStyle = 'rgba(17,18,20,0.92)'; g.fill(); g.strokeStyle = 'rgba(255,255,255,0.10)'; g.lineWidth = 2; g.stroke();
     g.beginPath(); g.arc(-300, 0, 58, 0, 7); g.fillStyle = rgba(ORANGE, 0.16); g.fill(); g.strokeStyle = ORANGE; g.lineWidth = 3; g.stroke();
     mic(-300, 2, 1);
     g.letterSpacing = '5px'; txt('CON', -212, -24, 28, DIM, 800, 'left', 'Inter'); g.letterSpacing = '0px';
     txt('ADRIÁN LUNA', -214, 56, 98, WHITE, 400, 'left', 'Bebas');
-    g.restore();
-  }
-  // Élite Bomberos
-  const ea = prog(t, CUE.elite - 0.06, 0.45), eout = eio(prog(t, CUE.desde - 0.2, 0.42));
-  if (ea > 0 && eout < 1) {
-    const sp = lerp(36, 5, eo(ea));
-    g.save(); g.globalAlpha *= clamp(ea * 2) * (1 - eout); g.translate(0, eout * 520);
-    g.font = '400 96px Bebas'; g.letterSpacing = sp + 'px';
-    const w = g.measureText('ÉLITE BOMBEROS').width, x0 = 540 - (w + 74) / 2;
-    flame(x0 + 26, 1262, 1.15);
-    g.textAlign = 'left'; g.fillStyle = ORANGE; g.fillText('ÉLITE BOMBEROS', x0 + 74, 1296); g.letterSpacing = '0px';
     g.restore();
   }
   g.restore();
@@ -535,7 +554,7 @@ function house(t) {
   g.restore();
 }
 
-// ---------------------------------------------------------------- etiqueta de precio: 10 €
+// ---------------------------------------------------------------- etiqueta de precio: 12 €
 function priceTag(t) {
   const t0 = CUE.precio - 0.15;
   if (t < t0) return;
@@ -556,7 +575,7 @@ function priceTag(t) {
   g.beginPath(); g.arc(0, 124, 11, 0, 7); g.fillStyle = '#3A1A06'; g.fill();
   g.strokeStyle = 'rgba(238,242,246,0.75)'; g.lineWidth = 3; g.beginPath(); g.moveTo(0, 0); g.lineTo(0, 118); g.stroke();
   g.letterSpacing = '5px'; txt('SOLO', 2, 180, 30, '#FFF4E8', 900, 'center', 'Inter'); g.letterSpacing = '0px';
-  txt('10 €', 0, 286, 128, '#FFFFFF', 400, 'center', 'Bebas');
+  txt('12 €', 0, 286, 128, '#FFFFFF', 400, 'center', 'Bebas');
   // brillo que cruza
   const sw = prog((t - t0 - 0.55) % 2.6, 0, 0.5);
   if (t > t0 + 0.55 && sw > 0 && sw < 1) {
@@ -651,14 +670,17 @@ function closing(t) {
   const ra = back(prog(t, (CUE.falla ?? CUE.marca + 0.6) + 0.5, 0.45));
   if (ra > 0) {
     g.globalAlpha = a * clamp(ra * 2);
-    const s1 = 'SIMULACRO · DOM 1 NOV · ';
-    g.font = '400 50px Bebas'; g.letterSpacing = '2px'; const w1 = g.measureText(s1).width;
-    g.font = '900 38px Inter'; g.letterSpacing = '0px'; const w2 = g.measureText(HANDLE).width;
-    const wt = w1 + w2;
-    g.save(); g.translate(540, 1236); g.scale(ra, ra);
-    rr(-wt / 2 - 40, -48, wt + 80, 96, 48); g.fillStyle = 'rgba(17,18,20,0.92)'; g.fill(); g.strokeStyle = ORANGE; g.lineWidth = 3; g.stroke();
-    g.textAlign = 'left'; g.font = '400 50px Bebas'; g.letterSpacing = '2px'; g.fillStyle = WHITE; g.fillText(s1, -wt / 2, 18);
-    g.letterSpacing = '0px'; g.font = '900 38px Inter'; g.fillStyle = ORANGE; g.fillText(HANDLE, -wt / 2 + w1, 15);
+    const l1 = 'SIMULACRO BOMBERO CIUDAD REAL', l2 = 'DOM 1 NOV · 12 € · ';
+    g.font = '400 50px Bebas'; g.letterSpacing = '3px'; const w1 = g.measureText(l1).width;
+    g.font = '400 46px Bebas'; g.letterSpacing = '2px'; const w2 = g.measureText(l2).width;
+    g.font = '900 36px Inter'; g.letterSpacing = '0px'; const w3 = g.measureText(HANDLE).width;
+    const wt = Math.max(w1, w2 + w3);
+    g.save(); g.translate(540, 1268); g.scale(ra, ra);
+    rr(-wt / 2 - 44, -80, wt + 88, 160, 36); g.fillStyle = 'rgba(17,18,20,0.92)'; g.fill(); g.strokeStyle = ORANGE; g.lineWidth = 3; g.stroke();
+    g.textAlign = 'center'; g.font = '400 50px Bebas'; g.letterSpacing = '3px'; g.fillStyle = WHITE; g.fillText(l1, 2, -12);
+    const x2 = -(w2 + w3) / 2;
+    g.textAlign = 'left'; g.font = '400 46px Bebas'; g.letterSpacing = '2px'; g.fillStyle = ORANGE; g.fillText(l2, x2, 50);
+    g.letterSpacing = '0px'; g.font = '900 36px Inter'; g.fillStyle = ORANGE; g.fillText(HANDLE, x2 + w2, 48);
     g.restore();
   }
   g.restore();

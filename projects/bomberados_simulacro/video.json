@@ -1,5 +1,5 @@
 {
- "formato": "promo simulacro (Élite Bomberos) · estilo app",
+ "formato": "promo simulacro (Élite Bomberos, 2º simulacro examen bombero Ciudad Real) · estilo app",
  "voz": {
   "tempo": 1.03,
   "count_line": 0,
@@ -49,25 +49,35 @@
    1,
    3
   ],
+  "segundo": [
+   "segundo",
+   1,
+   3
+  ],
   "simulacro": [
    "simulacro",
+   1,
+   3
+  ],
+  "examen3": [
+   "examen",
+   1,
+   3
+  ],
+  "ciudad": [
+   "ciudad",
    1,
    3
   ],
   "directo": [
    "directo",
    1,
-   3
+   4
   ],
   "adrian": [
    "adrián",
    1,
-   3
-  ],
-  "elite": [
-   "élite",
-   1,
-   3
+   4
   ],
   "desde": [
    "desde",
@@ -85,7 +95,7 @@
    4
   ],
   "precio": [
-   "10",
+   "12",
    1,
    4
   ],
@@ -139,18 +149,20 @@
    "domingo": "#FF7A1A",
    "1": "#FF7A1A",
    "noviembre": "#FF7A1A",
+   "segundo": "#EEF2F6",
    "simulacro": "#EEF2F6",
+   "bombero": "#EEF2F6",
+   "ciudad": "#FF7A1A",
+   "real": "#FF7A1A"
+  },
+  "4": {
    "directo": "#FF5A4E",
    "adrián": "#F2B233",
    "luna": "#F2B233",
-   "élite": "#FF7A1A",
-   "bomberos": "#FF7A1A"
-  },
-  "4": {
    "casa": "#2DD4BF",
    "examen": "#EEF2F6",
    "verdad": "#EEF2F6",
-   "10": "#F2B233",
+   "12": "#F2B233",
    "euros": "#F2B233"
   },
   "5": {
@@ -168,6 +180,6 @@
  },
  "portada": {
   "titulo": "¿HARTO DE SUSPENDER?",
-  "etiqueta": "DOMINGO 1 NOV · ONLINE · 10 €"
+  "etiqueta": "DOMINGO 1 NOV · ONLINE · 12 €"
  }
 }

@@ -1,5 +1,5 @@
-"""Miniatura de la promo del simulacro: el fotograma con «DOMINGO · 1 NOV / SIMULACRO / EN DIRECTO / ADRIÁN LUNA /
-ÉLITE BOMBEROS» + gancho arriba. Uso: python3 projects/bomberados_simulacro/portada.py   (necesita out/frames)
+"""Miniatura de la promo del simulacro: el fotograma con «DOMINGO · 1 NOV / SEGUNDO SIMULACRO / EXAMEN OPOSICIÓN BOMBERO / CIUDAD REAL / EN DIRECTO /
+ADRIÁN LUNA» + gancho arriba. Uso: python3 projects/bomberados_simulacro/portada.py   (necesita out/frames)
 → out/portada.jpg (1080x1920) y out/portada_grid.jpg (1080x1440, el recorte de la cuadrícula del perfil)."""
 import json
 import os
@@ -23,7 +23,7 @@ def at(spec):
     return [w for w in LINES[line - 1]["words"] if norm(w["w"]) == norm(word)][k - 1]["start"] - 0.03
 
 
-fi = int(round((at(V["cues"]["elite"]) + 0.75) * 60))
+fi = int(round(min(at(V["cues"]["desde"]) - 0.22, at(V["cues"]["adrian"]) + 0.5) * 60))   # pila completa: SEGUNDO SIMULACRO … CIUDAD REAL, EN DIRECTO, Adrián Luna
 im = Image.open(os.path.join(PROJ, "out", "frames", f"f{fi:05d}.jpg")).convert("RGB")
 W = im.width
 glow = Image.new("RGBA", im.size, (0, 0, 0, 0))
