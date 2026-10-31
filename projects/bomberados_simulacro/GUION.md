@@ -14,4 +14,5 @@ con el estilo de la Pregunta del día: Bebas, tarjetas oscuras, rejilla de punto
 | «Y después, repasa cada fallo con Bomberados: falla en casa, no en el examen.» | Vuelve la hoja: un barrido turquesa convierte cada ✗ en ✓ y el sello se va; placa BOMBERADOS + lema + recordatorio «SIMULACRO · DOM 1 NOV · @elitebomberos» |
 
 Hook: pregunta de identificación (dolor real del opositor) + imagen rara en el primer segundo (la ✗ gigante).
-Promo de la academia de la propia marca: si se publica como colaboración pagada, #publi.
+Se publica en la cuenta de Instagram de la academia (@elitebomberos), con la descripción en primera persona; Bomberados es
+su app, así que no lleva #publi.
