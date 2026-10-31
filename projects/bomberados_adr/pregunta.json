@@ -1,0 +1,36 @@
+{
+ "numero": 3,
+ "estilo": "app",
+ "tema": "MERCANCÍAS PELIGROSAS · ADR",
+ "intro": "adr",
+ "enunciado": "En el panel naranja de un camión cisterna, el número de arriba indica:",
+ "resaltar": ["arriba"],
+ "opciones": [
+  "El número ONU de la materia.",
+  "El número de identificación del peligro.",
+  "La clase de la mercancía peligrosa.",
+  "El teléfono de emergencias."
+ ],
+ "correcta": "B",
+ "fuente": "INSST, NTP 786 (Transporte de mercancías peligrosas por carretera): número de identificación de peligro en el cuartel superior del panel y número ONU en el inferior (ADR, capítulo 5.3.2). Ejemplo del panel: 33 / 1203 (gasolina).",
+ "banner": ["LA SOLUCIÓN,", "EN LA DESCRIPCIÓN"],
+ "voz": {"tempo": 1.03, "count_line": 2, "count": 4.4, "pause": {"1": 0.3, "2": 0.4, "3": 0.05, "4": 0.3, "5": 0.3, "6": 0.22}, "pause_def": 0.24},
+ "cues": {
+  "titulo_fin": ["en", 1, 2], "panel": ["panel", 1, 2], "camion": ["camión", 1, 2], "numeros": ["números", 1, 2],
+  "enunciado": ["qué", 1, 2], "arriba": ["arriba", 1, 2], "resaltar": ["arriba", 1, 2],
+  "opciones": ["claro", 1, 3], "cuenta": ["segundos", 1, 3],
+  "letras": [["a", 1, 4], ["b", 1, 4], ["c", 1, 4], ["d", 1, 4]],
+  "compartir": ["mándaselo", 1, 4], "acierta": ["acierta", 1, 4],
+  "descripcion": ["solución", 1, 5], "marca": ["bomberados", 1, 6], "prueba": ["pruébala", 1, 7]
+ },
+ "subs_key": {
+  "1": {"pregunta": "#EEF2F6", "día": "#FF7A1A"},
+  "2": {"panel": "#FF7A1A", "naranja": "#FF7A1A", "cisterna": "#EEF2F6", "números": "#F2B233", "arriba": "#2DD4BF"},
+  "3": {"claro": "#EEF2F6", "cinco": "#FF5A4E", "segundos": "#FF5A4E"},
+  "4": {"a": "#2DD4BF", "b": "#FF7A1A", "c": "#F0457A", "d": "#8B7CF6", "comenta": "#EEF2F6", "mándaselo": "#2DD4BF", "acierta": "#F2B233"},
+  "5": {"solución": "#F2B233", "descripción": "#F2B233"},
+  "6": {"bomberados": "#F2B233", "casa": "#62E3D4", "examen": "#EEF2F6"},
+  "7": {"gratis": "#62E3D4", "cinco": "#F2B233", "días": "#F2B233"}
+ },
+ "portada": {"titulo": "¿QUÉ INDICA EL NÚMERO DE ARRIBA?", "etiqueta": "PREGUNTA DEL DÍA · MERCANCÍAS PELIGROSAS"}
+}

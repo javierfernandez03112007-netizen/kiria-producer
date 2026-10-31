@@ -105,6 +105,14 @@ def breathing(d):                      # inspiración (ruido que sube, más clar
     return (bright * ins ** 1.5 * 0.18 + dark * exp_ ** 1.5 * 0.35) * np.minimum(1, t / 0.2) * np.minimum(1, (d - t) / 0.3)
 
 
+def rumble(d):                          # motor diésel: graves que laten
+    t = _t(d)
+    w = np.random.default_rng(13).standard_normal(len(t))
+    lo = _lp(w, 120) * 6
+    eng = np.sin(2 * np.pi * 38 * t) * (0.6 + 0.4 * np.sin(2 * np.pi * 7 * t))
+    return (lo * 0.5 + eng * 0.35) * np.minimum(1, t / 0.3) * np.minimum(1, (d - t) / 0.4)
+
+
 def stamp_hit():                       # golpe seco de sello de goma
     t = _t(0.25)
     w = np.random.default_rng(12).standard_normal(len(t))
@@ -142,6 +150,16 @@ def sfx_track(path):
             if tb >= t:
                 mix(monitor_beep(), tb, 0.35)
             t = (k + 1) * BREATH_P + 0.01
+    if Q["intro"] == "adr":
+        mix(boom(1.0, 70), 0.02, 0.5)                          # el título entra
+        mix(sfx.whoosh(0.6), c["panel"] - 0.3, 0.8)            # el panel se estampa
+        mix(boom(1.2, 50), c["panel"] + 0.05, 0.9)
+        mix(sfx.clack(6), c["panel"] + 0.08, 0.8)
+        mix(rumble(c["enunciado"] - c["camion"] + 0.6), c["camion"] - 0.2, 0.9)   # la cisterna en marcha
+        mix(sfx.whoosh(0.9), c["camion"] - 0.15, 0.7)
+        mix(bell(988.0, 0.8), c["numeros"] + 0.12, 0.35)
+        mix(bell(1318.5, 0.8), c["numeros"] + 0.42, 0.35)
+        mix(blip(900, 1500, 0.16), c["arriba"], 0.6)
     mix(sfx.whoosh(0.8), c["enunciado"] - 0.2, 0.7)
     mix(sfx.whoosh(0.6), c["opciones"] - 0.1, 0.6)
     for i in range(4):

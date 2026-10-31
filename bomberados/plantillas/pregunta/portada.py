@@ -15,7 +15,7 @@ from engine.subs import norm  # noqa: E402
 PROJ = os.path.join(REPO, sys.argv[1])
 Q = json.load(open(os.path.join(PROJ, "pregunta.json")))
 LINES = json.load(open(os.path.join(PROJ, "tiempos.json")))
-IMPACT = os.path.join(REPO, "engine", "fonts", "impact.ttf")
+IMPACT = os.path.join(REPO, "engine", "fonts", "BebasNeue-Regular.ttf" if Q.get("estilo") == "app" else "impact.ttf")
 P = Q.get("portada", {})
 
 

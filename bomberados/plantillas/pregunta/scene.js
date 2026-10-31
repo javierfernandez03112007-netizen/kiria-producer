@@ -11,7 +11,7 @@ const g = cv.getContext('2d');
 
 const GOLD = '#F2B233', EMBER = '#FF7A2F', RED = '#FF5A4E', WHITE = '#EEF2F6', WATER = '#5EC8F2', DIM = '#8A93A3';
 const F = '../../../engine/fonts/';
-let Q, CUE = {}, END = 25;
+let Q, CUE = {}, END = 25, APP = false, DISPLAY = 'Impact';   // APP: estilo de la app (Bebas, tarjetas oscuras, cámara)
 
 // ---------------------------------------------------------------- utilidades
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -505,7 +505,7 @@ function countdown(t) {
   g.strokeStyle = n <= 2 ? RED : GOLD; g.lineCap = 'round';
   g.beginPath(); g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - u)); g.stroke();
   const pop = 1 + 0.25 * Math.exp(-sub * 8);
-  txt(String(n), x, y + 70 * pop, 200 * pop, n <= 2 ? RED : WHITE, 400, 'center', 'Impact');
+  txt(String(n), x, y + 70 * pop, 200 * pop, n <= 2 ? RED : WHITE, 400, 'center', DISPLAY);
   g.restore();
 }
 
@@ -517,8 +517,8 @@ function toDescription(t) {
   g.translate(540, y); g.scale(s, s);
   rr(-420, -130, 840, 180, 28); g.fillStyle = 'rgba(14,12,14,0.9)'; g.fill(); g.strokeStyle = GOLD; g.lineWidth = 4; g.stroke();
   const [b1, b2] = Q.banner || ['LA RESPUESTA,', 'EN LA DESCRIPCIÓN'];
-  txt(b1, 0, -50, 64, WHITE, 400, 'center', 'Impact');
-  txt(b2, 0, 26, 64, GOLD, 400, 'center', 'Impact');
+  txt(b1, 0, -50, 64, WHITE, 400, 'center', DISPLAY);
+  txt(b2, 0, 26, 64, GOLD, 400, 'center', DISPLAY);
   const b = 14 * Math.abs(Math.sin((t - CUE.descripcion) * 4));
   g.fillStyle = GOLD;
   g.beginPath(); g.moveTo(-34, 80 + b); g.lineTo(34, 80 + b); g.lineTo(0, 124 + b); g.closePath(); g.fill();
@@ -539,7 +539,7 @@ function letters(t) {
     g.beginPath(); g.arc(0, 0, 92, 0, 7);
     const lg = g.createLinearGradient(0, -92, 0, 92); lg.addColorStop(0, '#FFD65C'); lg.addColorStop(1, '#E88C1E');
     g.fillStyle = lg; g.fill();
-    txt(LET[i], 0, 40, 120, '#160F05', 400, 'center', 'Impact');
+    txt(LET[i], 0, 40, 120, '#160F05', 400, 'center', DISPLAY);
     g.restore();
   }
   g.restore();
@@ -582,7 +582,7 @@ function share(t) {
   const q = back(prog(t, CUE.acierta ?? CUE.compartir + 0.8, 0.4));
   if (q > 0) {
     g.save(); g.translate(540, 520); g.scale(q, q);
-    txt('¿QUIÉN ACIERTA?', 0, 0, 92, GOLD, 400, 'center', 'Impact');
+    txt('¿QUIÉN ACIERTA?', 0, 0, 92, GOLD, 400, 'center', DISPLAY);
     g.restore();
   }
   g.restore();
@@ -599,13 +599,13 @@ function closing(t) {
   g.fillStyle = hg; g.fillRect(0, 300, W, 1200);
   const s = lerp(0.6, 1, back(prog(t, CUE.marca - 0.1, 0.55)));
   g.save(); g.translate(540, 880); g.scale(s, s);
-  g.font = '400 150px Impact'; const tw = g.measureText('BOMBERADOS').width;
+  g.font = `400 150px ${DISPLAY}`; const tw = g.measureText('BOMBERADOS').width;
   const pw = tw + 110, ph = 210;
   rr(-pw / 2, -ph / 2, pw, ph, 32);
   const pg = g.createLinearGradient(0, -ph / 2, 0, ph / 2); pg.addColorStop(0, '#FFD65C'); pg.addColorStop(1, '#E88C1E');
   g.fillStyle = pg; g.shadowColor = 'rgba(255,122,47,0.9)'; g.shadowBlur = 60; g.fill(); g.shadowBlur = 0;
   rr(-pw / 2 + 8, -ph / 2 + 8, pw - 16, 22, 11); g.fillStyle = 'rgba(255,240,190,0.35)'; g.fill();
-  txt('BOMBERADOS', 0, 54, 150, '#160F05', 400, 'center', 'Impact');
+  txt('BOMBERADOS', 0, 54, 150, '#160F05', 400, 'center', DISPLAY);
   g.restore();
   const la = eo(prog(t, CUE.marca + 0.6, 0.4));
   g.globalAlpha = a * la;
@@ -617,7 +617,7 @@ function closing(t) {
     g.globalAlpha = a * clamp(pa * 2);
     g.save(); g.translate(540, 1270); g.scale(ps, ps);
     rr(-400, -78, 800, 156, 78); g.fillStyle = EMBER; g.shadowColor = 'rgba(255,122,47,0.8)'; g.shadowBlur = 40; g.fill(); g.shadowBlur = 0;
-    txt('PRUÉBALA GRATIS 5 DÍAS', 0, 26, 74, '#FFFFFF', 400, 'center', 'Impact');
+    txt('PRUÉBALA GRATIS 5 DÍAS', 0, 26, 74, '#FFFFFF', 400, 'center', DISPLAY);
     g.restore();
     g.globalAlpha = a * prog(t, CUE.prueba + 0.5, 0.4);
     txt('enlace en la bio', 540, 1420, 40, DIM, 600, 'center');
@@ -625,10 +625,326 @@ function closing(t) {
   g.restore();
 }
 
+// ================================================================ estilo «app» (Q.estilo = 'app'): el de la app de Bomberados
+// Titulares en Bebas (mayúsculas condensadas, palabra clave en naranja), tarjetas oscuras con borde fino e iconos en
+// círculos de color, rejilla de puntos de fondo, cámara que empuja y «latigazos» con estelas entre bloques.
+const ORANGE = '#FF7A1A', TEAL = '#2DD4BF', PINK = '#F0457A', VIOLET = '#8B7CF6';
+const LETCOL = [TEAL, ORANGE, PINK, VIOLET];
+function rgba(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; }
+function sectionStarts() { return [CUE.panel, CUE.enunciado, CUE.opciones, CUE.cuenta, CUE.letras && CUE.letras[0], CUE.compartir, CUE.descripcion, CUE.marca].filter(x => x !== undefined); }
+
+function dots(t) {                            // rejilla de puntos como el mapa de la app, que respira y deriva
+  const step = 26, oy = (t * 9) % step;
+  for (let y = -step; y < H + step; y += step) {
+    for (let x = 13; x < W; x += step) {
+      const yy = y + oy;
+      const n = 0.5 + 0.5 * Math.sin(x * 0.011 + t * 0.25) * Math.sin(yy * 0.0085 - t * 0.17);
+      const side = Math.pow(Math.abs(x - W / 2) / (W / 2), 1.5);
+      const a = (0.025 + 0.11 * n * n * n) * (0.45 + 0.55 * side);
+      if (a < 0.03) continue;
+      g.fillStyle = `rgba(70,210,150,${a.toFixed(3)})`; g.fillRect(x - 1.5, yy - 1.5, 3, 3);
+    }
+  }
+}
+
+function camera(t) {                          // empuje suave dentro de cada bloque + golpe de zoom al cambiar de bloque
+  const s0 = Math.max(0, ...sectionStarts().filter(x => x <= t));
+  const z = 1 + 0.022 * eo(prog(t, s0, 5)) + (s0 > 0 ? 0.045 * (1 - eo(prog(t, s0, 0.45))) : 0);
+  g.translate(540, 960); g.scale(z, z); g.translate(-540, -960);
+}
+
+function whips(t) {                           // estelas radiales (flujo óptico) en cada cambio de bloque
+  g.save(); g.globalCompositeOperation = 'lighter'; g.lineCap = 'round';
+  for (const b of sectionStarts()) {
+    const u = prog(t, b - 0.02, 0.38);
+    if (u <= 0 || u >= 1) continue;
+    const a = 1 - u;
+    for (let i = 0; i < 34; i++) {
+      const ang = i / 34 * Math.PI * 2 + hash(i + b) * 0.2;
+      const r1 = 260 + 900 * eo(u) * (0.7 + 0.5 * hash(i + 3)), r2 = r1 + 140 + 160 * hash(i + 9);
+      g.strokeStyle = `rgba(255,170,90,${(0.22 * a).toFixed(3)})`; g.lineWidth = 2 + 3 * hash(i + 5);
+      g.beginPath(); g.moveTo(540 + Math.cos(ang) * r1, 960 + Math.sin(ang) * r1); g.lineTo(540 + Math.cos(ang) * r2, 960 + Math.sin(ang) * r2); g.stroke();
+    }
+  }
+  g.restore();
+}
+
+function titleText(x, y, px, align, a) {      // «PREGUNTA DEL DÍA» con «DEL DÍA» en naranja
+  g.font = `400 ${px}px Bebas`; g.letterSpacing = `${(px * 0.02).toFixed(1)}px`;
+  const w1 = g.measureText('PREGUNTA ').width, w2 = g.measureText('DEL DÍA').width;
+  const x0 = align === 'center' ? x - (w1 + w2) / 2 : x;
+  g.textAlign = 'left'; g.globalAlpha = a;
+  g.fillStyle = WHITE; g.fillText('PREGUNTA ', x0, y);
+  g.fillStyle = ORANGE; g.fillText('DEL DÍA', x0 + w1, y);
+  g.letterSpacing = '0px';
+  return { x0, w: w1 + w2 };
+}
+
+function hudApp(t) {
+  const fade = 1 - prog(t, CUE.marca - 0.1, 0.4) * 0.6;
+  const tEnd = CUE.titulo_fin ?? 0;
+  const k = eio(prog(t, tEnd - 0.2, 0.55));   // el título grande del principio sube y se convierte en el de arriba
+  g.save();
+  if (k < 1 && tEnd > 0) {
+    // título grande: entra palabra a palabra desde abajo, con barrido naranja debajo
+    const px = lerp(140, 46, k), y = lerp(860, 140, k);
+    const enter = eo(prog(t, 0.02, 0.45));
+    g.save(); g.translate(0, (1 - enter) * 60);
+    const shade = (1 - k) * 0.55;
+    if (shade > 0) { const sg = g.createRadialGradient(540, 820, 50, 540, 820, 620); sg.addColorStop(0, `rgba(0,0,0,${shade})`); sg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = sg; g.fillRect(0, 300, W, 1100); }
+    const xLeft = lerp(540, 60, k);
+    const m = titleText(xLeft, y, px, k < 0.5 ? 'center' : 'left', enter * fade);
+    if (k < 0.5) {
+      const sw = eo(prog(t, 0.25, 0.5)) * (1 - k * 2);
+      g.fillStyle = ORANGE; g.fillRect(m.x0, y + 22, m.w * sw, 9);
+      // chip «Nº»
+      const cp = back(prog(t, 0.45, 0.35)) * (1 - k * 2);
+      if (cp > 0) { g.save(); g.translate(540, y + 110); g.scale(cp, cp); rr(-90, -40, 180, 80, 40); g.fillStyle = rgba(ORANGE, 0.15); g.fill(); g.strokeStyle = ORANGE; g.lineWidth = 3; g.stroke(); txt('Nº ' + Q.numero, 0, 22, 56, ORANGE, 400, 'center', 'Bebas'); g.restore(); }
+    }
+    g.restore();
+  } else {
+    const m = titleText(60, 140, 46, 'left', fade);
+    g.globalAlpha = fade;
+    rr(m.x0 + m.w + 14, 104, 74, 44, 22); g.fillStyle = rgba(ORANGE, 0.15); g.fill(); g.strokeStyle = rgba(ORANGE, 0.8); g.lineWidth = 2; g.stroke();
+    txt('Nº ' + Q.numero, m.x0 + m.w + 51, 138, 32, ORANGE, 400, 'center', 'Bebas');
+  }
+  g.globalAlpha = fade * eo(prog(t, tEnd, 0.4));
+  g.letterSpacing = '3px'; txt('BOMBERADOS', W - 60, 138, 40, WHITE, 400, 'right', 'Bebas'); g.letterSpacing = '0px';
+  txt(Q.tema, 60, 180, 24, DIM, 600, 'left', 'Inter');
+  if (Q.examen) txt(Q.examen, W - 60, 180, 22, RED, 700, 'right', 'SpaceMono');
+  // barra de progreso del vídeo (guía la mirada y retiene)
+  g.fillStyle = 'rgba(238,242,246,0.12)'; g.fillRect(60, 200, W - 120, 4);
+  g.fillStyle = ORANGE; g.fillRect(60, 200, (W - 120) * clamp(t / END), 4);
+  g.restore();
+}
+
+// ---------------------------------------------------------------- tarjetas, cuenta atrás y letras con el estilo de la app
+function cardsApp(t) {
+  const out = 1 - eio(prog(t, CUE.marca - 0.15, 0.55));
+  if (out <= 0) return;
+  const lines = wrap(Q.enunciado, CW - 80, 46, 800);
+  const eh = 78 + lines.length * 56;
+  const ea = eo(prog(t, CUE.enunciado, 0.5));
+  if (ea > 0) {
+    g.save(); g.globalAlpha = ea * out; g.translate((1 - ea) * -80, (1 - out) * 300);
+    rr(CX, EY, CW, eh, 20); g.fillStyle = 'rgba(17,18,20,0.92)'; g.fill();
+    g.strokeStyle = 'rgba(255,255,255,0.10)'; g.lineWidth = 2; g.stroke();
+    g.fillStyle = ORANGE; g.fillRect(CX, EY + 22, 5, eh - 44);                       // filo naranja
+    g.letterSpacing = '4px'; txt('PREGUNTA', CX + 36, EY + 50, 30, ORANGE, 400, 'left', 'Bebas'); g.letterSpacing = '0px';
+    // el texto se revela con un barrido de izquierda a derecha
+    g.save(); rr(CX, EY, CW * eo(prog(t, CUE.enunciado + 0.05, 0.6)) + 1, eh, 20); g.clip();
+    const glow = prog(t, CUE.resaltar ?? CUE.opciones, 0.3);
+    lines.forEach((l, i) => { g.font = '800 46px Inter'; lineHL(l, CX + 36, EY + 104 + i * 56, 46, WHITE, glow > 0 ? ORANGE : WHITE); });
+    g.restore();
+    g.restore();
+  }
+  const oy = EY + eh + 16;
+  for (let i = 0; i < 4; i++) {
+    const t0 = CUE.opciones + 0.07 * i;
+    const p = prog(t, t0, 0.5);
+    if (p <= 0) continue;
+    const y = oy + i * 134, h = 118, col = LETCOL[i];
+    const e = eo(p), bk = back(p);
+    g.save(); g.globalAlpha = clamp(p * 2.5) * out;
+    g.translate((1 - e) * 460 + (1 - out) * (i % 2 ? 1 : -1) * 700, 0);
+    // estela de entrada
+    if (p < 1) { const sg = g.createLinearGradient(CX + CW, 0, CX + CW + 300, 0); sg.addColorStop(0, rgba(col, 0.25 * (1 - e))); sg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = sg; g.fillRect(CX + CW, y + 20, 300, h - 40); }
+    const beat = t > CUE.cuenta && t < CUE.letras[0] ? 0.5 + 0.5 * Math.sin((t - CUE.cuenta) * Math.PI * 2 + i * 0.6) : 0;
+    const say = Math.exp(-Math.pow((t - CUE.letras[i] - 0.15) / 0.2, 2));
+    g.translate(540, y + h / 2); g.scale(lerp(0.96, 1, bk) * (1 + 0.025 * say), lerp(0.96, 1, bk) * (1 + 0.025 * say)); g.translate(-540, -(y + h / 2));
+    rr(CX, y, CW, h, 18); g.fillStyle = say > 0.05 ? rgba(col, 0.10 + 0.12 * say) : 'rgba(17,18,20,0.9)'; g.fill();
+    g.strokeStyle = say > 0.2 ? col : `rgba(255,255,255,${(0.09 + 0.08 * beat).toFixed(3)})`; g.lineWidth = 2 + 2 * say; g.stroke();
+    const lx = CX + 66, ly = y + h / 2;
+    g.beginPath(); g.arc(lx, ly, 38, 0, 7); g.fillStyle = rgba(col, 0.16); g.fill(); g.strokeStyle = rgba(col, 0.55); g.lineWidth = 2; g.stroke();
+    txt(LET[i], lx, ly + 19, 56, col, 400, 'center', 'Bebas');
+    const ol = wrap(Q.opciones[i], CW - 170, 38, 600);
+    const y0 = ly - (ol.length - 1) * 23 + 13;
+    ol.forEach((l, j) => txt(l, CX + 130, y0 + j * 46, 38, WHITE, 600));
+    g.restore();
+  }
+}
+
+function countdownApp(t) {
+  const t0 = CUE.cuenta, t1 = CUE.letras[0] - 0.1;
+  const a = prog(t, t0, 0.3) * (1 - prog(t, t1, 0.35));
+  if (a <= 0) return;
+  const x = 540, y = 650, r = 150;
+  const u = clamp((t - t0) / (t1 - t0));
+  const n = Math.max(1, 5 - Math.floor(u * 5));
+  const sub = (u * 5) % 1;
+  g.save(); g.globalAlpha = a;
+  // onda que se expande cada segundo
+  g.strokeStyle = rgba(n <= 2 ? RED : ORANGE, 0.5 * (1 - sub)); g.lineWidth = 4;
+  g.beginPath(); g.arc(x, y, r + 20 + 120 * eo(sub), 0, 7); g.stroke();
+  g.beginPath(); g.arc(x, y, r + 22, 0, 7); g.fillStyle = 'rgba(12,12,14,0.9)'; g.fill();
+  g.lineWidth = 14; g.strokeStyle = 'rgba(255,255,255,0.08)'; g.beginPath(); g.arc(x, y, r, 0, 7); g.stroke();
+  g.strokeStyle = n <= 2 ? RED : ORANGE; g.lineCap = 'round';
+  g.beginPath(); g.arc(x, y, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - u)); g.stroke();
+  const pop = 1 + 0.22 * Math.exp(-sub * 8);
+  txt(String(n), x, y + 84 * pop, 240 * pop, WHITE, 400, 'center', 'Bebas');
+  g.restore();
+}
+
+function lettersApp(t) {
+  const t0 = CUE.letras[0] - 0.1, t1 = (CUE.compartir ?? CUE.descripcion) - 0.1;
+  const a = prog(t, t0, 0.25) * (1 - prog(t, t1, 0.3));
+  if (a <= 0) return;
+  g.save(); g.globalAlpha = a;
+  for (let i = 0; i < 4; i++) {
+    const p = back(prog(t, CUE.letras[i], 0.35));
+    if (p <= 0) continue;
+    const x = 540 + (i - 1.5) * 220, y = 650, col = LETCOL[i];
+    g.save(); g.translate(x, y); g.scale(p, p);
+    g.beginPath(); g.arc(0, 0, 90, 0, 7); g.fillStyle = rgba(col, 0.18); g.fill(); g.strokeStyle = col; g.lineWidth = 4; g.stroke();
+    txt(LET[i], 0, 46, 130, col, 400, 'center', 'Bebas');
+    g.restore();
+  }
+  g.restore();
+}
+
+// ---------------------------------------------------------------- intro «adr»: panel naranja → cisterna por detrás → el número de arriba
+const PANEL_W = 400, PANEL_H = 300;           // proporción real del panel (40 x 30 cm)
+function panelDraw(alpha, topHL, botDim, pulseTop, pulseBot, t) {   // panel en coordenadas propias, centrado en (0,0)
+  g.save(); g.globalAlpha *= alpha;
+  rr(-PANEL_W / 2, -PANEL_H / 2, PANEL_W, PANEL_H, 10);
+  const pg = g.createLinearGradient(0, -PANEL_H / 2, 0, PANEL_H / 2); pg.addColorStop(0, '#FF8A1F'); pg.addColorStop(1, '#F06A0A');
+  g.fillStyle = pg; g.fill();
+  g.lineWidth = 16; g.strokeStyle = '#111'; g.stroke();
+  g.fillStyle = '#111'; g.fillRect(-PANEL_W / 2, -7, PANEL_W, 14);
+  g.font = '400 118px Bebas'; g.textAlign = 'center'; g.fillStyle = '#111';
+  g.fillText('33', 0, -24); g.fillText('1203', 0, 122);
+  // brillo
+  g.globalAlpha *= 0.35; rr(-PANEL_W / 2 + 14, -PANEL_H / 2 + 14, PANEL_W - 28, 22, 8); g.fillStyle = '#FFE0B8'; g.fill();
+  g.restore();
+  if (botDim > 0) { g.save(); g.globalAlpha = alpha * botDim * 0.55; g.fillStyle = '#000'; g.fillRect(-PANEL_W / 2 + 8, 7, PANEL_W - 16, PANEL_H / 2 - 15); g.restore(); }
+  for (const [k, yc] of [[pulseTop, -PANEL_H / 4], [pulseBot, PANEL_H / 4]]) {
+    if (k < 0.01) continue;
+    g.save(); g.globalAlpha = alpha * k; g.strokeStyle = WHITE; g.lineWidth = 6; g.shadowColor = 'rgba(255,255,255,0.9)'; g.shadowBlur = 20;
+    rr(-PANEL_W / 2 - 14, yc - PANEL_H / 4 - 10, PANEL_W + 28, PANEL_H / 2 + 20, 14); g.stroke(); g.restore();
+  }
+  if (topHL > 0) {
+    g.save(); g.globalAlpha = alpha * topHL;
+    g.setLineDash([22, 14]); g.lineDashOffset = -t * 60; g.strokeStyle = TEAL; g.lineWidth = 7; g.shadowColor = rgba(TEAL, 0.9); g.shadowBlur = 18;
+    rr(-PANEL_W / 2 - 18, -PANEL_H / 2 - 18, PANEL_W + 36, PANEL_H / 2 + 22, 16); g.stroke(); g.setLineDash([]); g.shadowBlur = 0;
+    const s = back(clamp(topHL * 1.3));
+    g.translate(PANEL_W / 2 + 86, -PANEL_H / 4); g.scale(s, s);
+    g.beginPath(); g.arc(0, 0, 56, 0, 7); g.fillStyle = TEAL; g.fill();
+    txt('?', 0, 30, 92, '#062A26', 400, 'center', 'Bebas');
+    g.restore();
+  }
+}
+
+function truckDraw(t, alpha) {                // cisterna vista por detrás, en coordenadas propias (panel en (0, 300))
+  if (alpha <= 0) return;
+  g.save(); g.globalAlpha *= alpha;
+  // ruedas
+  for (const s of [-1, 1]) { rr(s * 270 - 60, 300, 120, 150, 26); g.fillStyle = '#0C0C0E'; g.fill(); }
+  // chasis y parachoques
+  rr(-320, 170, 640, 70, 10); g.fillStyle = '#1B1D22'; g.fill();
+  rr(-345, 225, 690, 150, 14); const bg = g.createLinearGradient(0, 225, 0, 375); bg.addColorStop(0, '#2A2D33'); bg.addColorStop(1, '#121317'); g.fillStyle = bg; g.fill();
+  // pilotos traseros
+  for (const s of [-1, 1]) {
+    g.save(); g.shadowColor = 'rgba(255,40,40,0.95)'; g.shadowBlur = 40;
+    rr(s * 280 - 34, 262, 68, 40, 10); g.fillStyle = '#FF2E2E'; g.fill(); g.restore();
+    rr(s * 280 - 34, 310, 68, 26, 8); g.fillStyle = '#FFB020'; g.fill();
+  }
+  // tanque (tapa trasera)
+  const tg = g.createRadialGradient(-90, -170, 40, 0, -80, 330);
+  tg.addColorStop(0, '#F3F5F8'); tg.addColorStop(0.55, '#AEB4BD'); tg.addColorStop(1, '#4B5059');
+  g.beginPath(); g.ellipse(0, -80, 310, 280, 0, 0, 7); g.fillStyle = tg; g.fill();
+  g.strokeStyle = 'rgba(30,32,36,0.6)'; g.lineWidth = 6; g.beginPath(); g.ellipse(0, -80, 280, 252, 0, 0, 7); g.stroke();
+  for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; g.beginPath(); g.arc(Math.cos(a) * 296, -80 + Math.sin(a) * 267, 4, 0, 7); g.fillStyle = 'rgba(40,42,46,0.7)'; g.fill(); }
+  // placa-etiqueta de peligro (rombo rojo, clase 3)
+  g.save(); g.translate(0, -90); g.rotate(Math.PI / 4);
+  rr(-70, -70, 140, 140, 8); g.fillStyle = '#E3262B'; g.fill(); g.strokeStyle = '#fff'; g.lineWidth = 5; g.strokeRect(-60, -60, 120, 120);
+  g.restore();
+  g.beginPath(); g.moveTo(0, -150); g.bezierCurveTo(26, -122, 18, -104, 0, -92); g.bezierCurveTo(-18, -104, -26, -122, 0, -150); g.fillStyle = '#fff'; g.fill();   // llama
+  txt('3', 0, -18, 46, '#fff', 400, 'center', 'Bebas');
+  g.restore();
+}
+
+function road(t, alpha, horizonY) {           // carretera en perspectiva que corre hacia la cámara
+  if (alpha <= 0) return;
+  g.save(); g.globalAlpha = alpha;
+  const vx = 540;
+  g.fillStyle = 'rgba(20,20,24,0.85)';
+  g.beginPath(); g.moveTo(vx - 30, horizonY); g.lineTo(vx + 30, horizonY); g.lineTo(W + 500, H); g.lineTo(-500, H); g.closePath(); g.fill();
+  for (let i = 0; i < 9; i++) {
+    const z = ((i / 9) + t * 0.9) % 1, z2 = Math.min(1, z + 0.045);
+    const y1 = lerp(horizonY, H, z * z), y2 = lerp(horizonY, H, z2 * z2);
+    const w1 = lerp(2, 22, z * z), w2 = lerp(2, 22, z2 * z2);
+    g.fillStyle = `rgba(255,214,120,${(0.75 * z).toFixed(3)})`;
+    g.beginPath(); g.moveTo(vx - w1, y1); g.lineTo(vx + w1, y1); g.lineTo(vx + w2, y2); g.lineTo(vx - w2, y2); g.closePath(); g.fill();
+  }
+  // bordes de la calzada
+  g.strokeStyle = 'rgba(255,255,255,0.25)'; g.lineWidth = 4;
+  g.beginPath(); g.moveTo(vx - 30, horizonY); g.lineTo(-500, H); g.moveTo(vx + 30, horizonY); g.lineTo(W + 500, H); g.stroke();
+  g.restore();
+}
+
+function introADR(t) {
+  const tp = CUE.panel ?? 1.4, tc = CUE.camion ?? tp + 0.8, tn = CUE.numeros ?? tc + 1, ta = CUE.arriba ?? tn + 1, te = CUE.enunciado ?? ta;
+  const out = 1 - prog(t, CUE.cuenta - 0.1, 0.45);
+  if (out <= 0) return;
+  // fases del panel en pantalla: centro (x, y), ancho en px, giro
+  const fly = { x: 540, y: 1270, w: lerp(300, 500, eo(prog(t, 0, 1.3))), r: lerp(-0.4, -0.14, eo(prog(t, 0, 1.3))) };
+  const hero = { x: 540, y: 1040, w: 780, r: 0 };
+  const mount = { x: 540, y: 1250, w: 210, r: 0 };
+  const close = { x: 540, y: 1120, w: 360, r: 0 };
+  const top = { x: 540, y: 650, w: 400, r: 0 };
+  const mix = (A, B, k) => ({ x: lerp(A.x, B.x, k), y: lerp(A.y, B.y, k), w: lerp(A.w, B.w, k), r: lerp(A.r, B.r, k) });
+  let P = fly;
+  P = mix(P, hero, back(prog(t, tp - 0.05, 0.4)));
+  P = mix(P, mount, eio(prog(t, tc - 0.1, 0.75)));
+  P = mix(P, close, eio(prog(t, tn - 0.1, 0.6)));
+  P = mix(P, top, eio(prog(t, te - 0.1, 0.65)));
+  const lift = -260 * eio(1 - out);
+  const sc = P.w / PANEL_W;
+  // la cisterna va «pegada» al panel: su escala sale del ancho del panel (210 px = tamaño real en la escena de la cisterna)
+  const truckA = prog(t, tc - 0.05, 0.3) * (1 - prog(t, te - 0.1, 0.4));
+  const ts = P.w / 210;
+  const vib = Math.sin(t * 31) * 1.5 * truckA;
+  road(t, truckA * clamp(1.6 - ts * 0.4), P.y - 300 * ts * 0.4 + lift);
+  g.save(); g.translate(P.x, P.y + lift + vib); g.scale(ts * 0.525, ts * 0.525); g.translate(0, -300);
+  truckDraw(t, truckA * out);
+  g.restore();
+  // el panel
+  const sh = Math.exp(-Math.pow((t - tp - 0.12) / 0.08, 2));             // sacudida al «estamparse»
+  g.save(); g.translate(P.x + Math.sin(t * 80) * 10 * sh, P.y + lift + vib); g.rotate(P.r);
+  if (t < tp) g.transform(1, 0.12, -0.2, 1, 0, 0);                         // de lado, entrando
+  g.scale(sc, sc);
+  panelDraw(out * (t < tp ? 0.75 + 0.25 * prog(t, 0, 1) : 1),
+    eo(prog(t, ta - 0.05, 0.35)), prog(t, ta, 0.4),
+    Math.exp(-Math.pow((t - tn - 0.15) / 0.22, 2)), Math.exp(-Math.pow((t - tn - 0.45) / 0.22, 2)), t);
+  g.restore();
+}
+
+function renderApp(t) {
+  g.save(); camera(t);
+  if (Q.intro === 'adr') introADR(t);
+  countdownApp(t);
+  lettersApp(t);
+  share(t);
+  toDescription(t);
+  cardsApp(t);
+  closing(t);
+  g.restore();
+  whips(t);
+  hudApp(t);
+}
+
 // ---------------------------------------------------------------- fotograma
 window.renderAt = t => {
   g.setTransform(PR, 0, 0, PR, 0, 0);
   background(t);
+  if (APP) {
+    dots(t);
+    sparks(t);
+    renderApp(t);
+    const f = Math.max(1 - prog(t, 0, 0.12), prog(t, END - 0.25, 0.25));
+    if (f > 0) { g.fillStyle = `rgba(0,0,0,${f})`; g.fillRect(0, 0, W, H); }
+    return;
+  }
   sparks(t);
   if (Q.intro === 'reduccion') introReduccion(t);
   if (Q.intro === 'respiracion') introRespiracion(t);
@@ -649,9 +965,10 @@ window.renderAt = t => {
     const faces = [new FontFace('Inter', `url(${F}Inter-Black.otf)`, { weight: '900' }), new FontFace('Inter', `url(${F}Inter-Black.otf)`, { weight: '800' }),
       new FontFace('Inter', `url(${F}Inter-Bold.otf)`, { weight: '700' }), new FontFace('Inter', `url(${F}Inter-SemiBold.otf)`, { weight: '600' }),
       new FontFace('SpaceMono', `url(${F}SpaceMono-Bold.ttf)`, { weight: '700' }), new FontFace('SpaceMono', `url(${F}SpaceMono-Regular.ttf)`, { weight: '400' }),
-      new FontFace('Impact', `url(${F}impact.ttf)`)];
+      new FontFace('Impact', `url(${F}impact.ttf)`), new FontFace('Bebas', `url(${F}BebasNeue-Regular.ttf)`)];
     for (const f of faces) { await f.load(); document.fonts.add(f); }
     Q = await (await fetch('../pregunta.json')).json();
+    APP = Q.estilo === 'app'; if (APP) DISPLAY = 'Bebas';
     const lines = await (await fetch('../tiempos.json')).json();
     for (const [k, v] of Object.entries(Q.cues)) CUE[k] = Array.isArray(v[0]) ? v.map(s => cueTime(s, lines)) : cueTime(v, lines);
     END = lines[lines.length - 1].end + 1.2;
