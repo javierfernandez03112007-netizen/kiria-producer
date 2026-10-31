@@ -970,7 +970,7 @@ function pcAt(t) {
   const G = S.pc, on = t > K.dicen3 && t < K.construimos + 0.3; G.visible = on; if (!on) return;
   const ex = win(t, K.por3 - 0.05, 0.45) * (1 - win(t, K.montar - 0.05, 0.6));
   G.userData.parts.forEach((p, i) => { const k = sm5(clamp(ex * 1.25 - i * 0.05)); p.position.copy(p.userData.home).addScaledVector(p.userData.off, k); p.rotation.set(0.25 * k * (i % 2 ? 1 : -1), 0.4 * k * (i % 3 - 1), 0); });
-  setOp(G.userData.caseG, 1 - 0.75 * ex); G.userData.glass.position.z = 0.2 + 0.5 * ex; G.userData.glass.position.y = 0.31 + 0.25 * ex; G.userData.glass.rotation.x = -0.6 * ex; G.userData.glass.material.opacity = 0.16 * (1 - ex * 0.7);
+  setOp(G.userData.caseG, 1 - 0.75 * ex); G.userData.glass.position.z = 0.2 + 0.5 * ex; G.userData.glass.position.y = 0.31 + 0.25 * ex; G.userData.glass.rotation.x = -0.6 * ex; G.userData.glass.material.opacity = 0.16 * (1 - clamp(ex * 3)); G.userData.glass.visible = ex < 0.33; if (G.userData.glass.userData.edges) G.userData.glass.userData.edges.material.opacity = 0.8 * (1 - clamp(ex * 3));
 }
 // ---------------------------------------------------------------- D · el código se compila en una app, la app entra en el móvil y el móvil se multiplica
 function phonesAt(t) {
