@@ -1,0 +1,1130 @@
+[
+ {
+  "text": "Crees que Ingeniería del Software e Ingeniería Informática son rivales. En realidad, según el BOE, una es parte de la otra.",
+  "start": 0.0,
+  "end": 6.589,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 0.0,
+    "end": 0.357
+   },
+   {
+    "w": "que",
+    "start": 0.357,
+    "end": 0.5
+   },
+   {
+    "w": "Ingeniería",
+    "start": 0.5,
+    "end": 1.0
+   },
+   {
+    "w": "del",
+    "start": 1.0,
+    "end": 1.143
+   },
+   {
+    "w": "Software",
+    "start": 1.143,
+    "end": 1.5
+   },
+   {
+    "w": "e",
+    "start": 1.5,
+    "end": 1.643
+   },
+   {
+    "w": "Ingeniería",
+    "start": 1.643,
+    "end": 2.214
+   },
+   {
+    "w": "Informática",
+    "start": 2.214,
+    "end": 2.786
+   },
+   {
+    "w": "son",
+    "start": 2.786,
+    "end": 3.0
+   },
+   {
+    "w": "rivales.",
+    "start": 3.0,
+    "end": 3.857
+   },
+   {
+    "w": "En",
+    "start": 3.857,
+    "end": 3.937
+   },
+   {
+    "w": "realidad,",
+    "start": 3.937,
+    "end": 4.509
+   },
+   {
+    "w": "según",
+    "start": 4.509,
+    "end": 4.723
+   },
+   {
+    "w": "el",
+    "start": 4.723,
+    "end": 4.937
+   },
+   {
+    "w": "BOE,",
+    "start": 4.937,
+    "end": 5.375
+   },
+   {
+    "w": "una",
+    "start": 5.375,
+    "end": 5.661
+   },
+   {
+    "w": "es",
+    "start": 5.661,
+    "end": 5.875
+   },
+   {
+    "w": "parte",
+    "start": 5.875,
+    "end": 6.089
+   },
+   {
+    "w": "de",
+    "start": 6.089,
+    "end": 6.232
+   },
+   {
+    "w": "la",
+    "start": 6.232,
+    "end": 6.375
+   },
+   {
+    "w": "otra.",
+    "start": 6.375,
+    "end": 6.589
+   }
+  ]
+ },
+ {
+  "text": "Y al final te digo qué dice la ley… y no le va a gustar a ninguna.",
+  "start": 6.732,
+  "end": 9.857,
+  "words": [
+   {
+    "w": "Y",
+    "start": 6.732,
+    "end": 6.825
+   },
+   {
+    "w": "al",
+    "start": 6.825,
+    "end": 6.917
+   },
+   {
+    "w": "final",
+    "start": 6.917,
+    "end": 7.143
+   },
+   {
+    "w": "te",
+    "start": 7.143,
+    "end": 7.286
+   },
+   {
+    "w": "digo",
+    "start": 7.286,
+    "end": 7.571
+   },
+   {
+    "w": "qué",
+    "start": 7.571,
+    "end": 7.786
+   },
+   {
+    "w": "dice",
+    "start": 7.786,
+    "end": 8.071
+   },
+   {
+    "w": "la",
+    "start": 8.071,
+    "end": 8.214
+   },
+   {
+    "w": "ley…",
+    "start": 8.214,
+    "end": 8.536
+   },
+   {
+    "w": "y",
+    "start": 8.536,
+    "end": 8.624
+   },
+   {
+    "w": "no",
+    "start": 8.624,
+    "end": 8.732
+   },
+   {
+    "w": "le",
+    "start": 8.732,
+    "end": 8.875
+   },
+   {
+    "w": "va",
+    "start": 8.875,
+    "end": 9.018
+   },
+   {
+    "w": "a",
+    "start": 9.018,
+    "end": 9.089
+   },
+   {
+    "w": "gustar",
+    "start": 9.089,
+    "end": 9.446
+   },
+   {
+    "w": "a",
+    "start": 9.446,
+    "end": 9.518
+   },
+   {
+    "w": "ninguna.",
+    "start": 9.518,
+    "end": 9.857
+   }
+  ]
+ },
+ {
+  "text": "Los de Informática dicen: «Vosotros solo programáis; nosotros sabemos cómo funciona un ordenador por dentro».",
+  "start": 10.018,
+  "end": 15.634,
+  "words": [
+   {
+    "w": "Los",
+    "start": 10.018,
+    "end": 10.138
+   },
+   {
+    "w": "de",
+    "start": 10.138,
+    "end": 10.286
+   },
+   {
+    "w": "Informática",
+    "start": 10.286,
+    "end": 10.857
+   },
+   {
+    "w": "dicen:",
+    "start": 10.857,
+    "end": 11.455
+   },
+   {
+    "w": "«Vosotros",
+    "start": 11.455,
+    "end": 11.938
+   },
+   {
+    "w": "solo",
+    "start": 11.938,
+    "end": 12.223
+   },
+   {
+    "w": "programáis;",
+    "start": 12.223,
+    "end": 12.884
+   },
+   {
+    "w": "nosotros",
+    "start": 12.884,
+    "end": 13.446
+   },
+   {
+    "w": "sabemos",
+    "start": 13.446,
+    "end": 13.875
+   },
+   {
+    "w": "cómo",
+    "start": 13.875,
+    "end": 14.161
+   },
+   {
+    "w": "funciona",
+    "start": 14.161,
+    "end": 14.589
+   },
+   {
+    "w": "un",
+    "start": 14.589,
+    "end": 14.732
+   },
+   {
+    "w": "ordenador",
+    "start": 14.732,
+    "end": 15.232
+   },
+   {
+    "w": "por",
+    "start": 15.232,
+    "end": 15.375
+   },
+   {
+    "w": "dentro».",
+    "start": 15.375,
+    "end": 15.634
+   }
+  ]
+ },
+ {
+  "text": "Y los de Software responden: «Vosotros sabéis montar un ordenador; nosotros construimos los programas que usan millones».",
+  "start": 15.857,
+  "end": 21.929,
+  "words": [
+   {
+    "w": "Y",
+    "start": 15.857,
+    "end": 15.921
+   },
+   {
+    "w": "los",
+    "start": 15.921,
+    "end": 16.0
+   },
+   {
+    "w": "de",
+    "start": 16.0,
+    "end": 16.143
+   },
+   {
+    "w": "Software",
+    "start": 16.143,
+    "end": 16.571
+   },
+   {
+    "w": "responden:",
+    "start": 16.571,
+    "end": 17.312
+   },
+   {
+    "w": "«Vosotros",
+    "start": 17.312,
+    "end": 17.723
+   },
+   {
+    "w": "sabéis",
+    "start": 17.723,
+    "end": 18.152
+   },
+   {
+    "w": "montar",
+    "start": 18.152,
+    "end": 18.437
+   },
+   {
+    "w": "un",
+    "start": 18.437,
+    "end": 18.58
+   },
+   {
+    "w": "ordenador;",
+    "start": 18.58,
+    "end": 19.17
+   },
+   {
+    "w": "nosotros",
+    "start": 19.17,
+    "end": 19.732
+   },
+   {
+    "w": "construimos",
+    "start": 19.732,
+    "end": 20.304
+   },
+   {
+    "w": "los",
+    "start": 20.304,
+    "end": 20.446
+   },
+   {
+    "w": "programas",
+    "start": 20.446,
+    "end": 20.875
+   },
+   {
+    "w": "que",
+    "start": 20.875,
+    "end": 21.018
+   },
+   {
+    "w": "usan",
+    "start": 21.018,
+    "end": 21.446
+   },
+   {
+    "w": "millones».",
+    "start": 21.446,
+    "end": 21.929
+   }
+  ]
+ },
+ {
+  "text": "Informática es la generalista: circuitos, redes, sistemas operativos, inteligencia artificial… y software.",
+  "start": 22.08,
+  "end": 28.348,
+  "words": [
+   {
+    "w": "Informática",
+    "start": 22.08,
+    "end": 22.714
+   },
+   {
+    "w": "es",
+    "start": 22.714,
+    "end": 22.929
+   },
+   {
+    "w": "la",
+    "start": 22.929,
+    "end": 23.071
+   },
+   {
+    "w": "generalista:",
+    "start": 23.071,
+    "end": 23.946
+   },
+   {
+    "w": "circuitos,",
+    "start": 23.946,
+    "end": 24.795
+   },
+   {
+    "w": "redes,",
+    "start": 24.795,
+    "end": 25.366
+   },
+   {
+    "w": "sistemas",
+    "start": 25.366,
+    "end": 25.795
+   },
+   {
+    "w": "operativos,",
+    "start": 25.795,
+    "end": 26.58
+   },
+   {
+    "w": "inteligencia",
+    "start": 26.58,
+    "end": 27.223
+   },
+   {
+    "w": "artificial…",
+    "start": 27.223,
+    "end": 27.884
+   },
+   {
+    "w": "y",
+    "start": 27.884,
+    "end": 27.955
+   },
+   {
+    "w": "software.",
+    "start": 27.955,
+    "end": 28.348
+   }
+  ]
+ },
+ {
+  "text": "Software va al grano: requisitos, arquitectura, pruebas y equipos que entregan cada pocas semanas.",
+  "start": 28.527,
+  "end": 33.875,
+  "words": [
+   {
+    "w": "Software",
+    "start": 28.527,
+    "end": 28.866
+   },
+   {
+    "w": "va",
+    "start": 28.866,
+    "end": 29.152
+   },
+   {
+    "w": "al",
+    "start": 29.152,
+    "end": 29.295
+   },
+   {
+    "w": "grano:",
+    "start": 29.295,
+    "end": 29.821
+   },
+   {
+    "w": "requisitos,",
+    "start": 29.821,
+    "end": 30.661
+   },
+   {
+    "w": "arquitectura,",
+    "start": 30.661,
+    "end": 31.491
+   },
+   {
+    "w": "pruebas",
+    "start": 31.491,
+    "end": 31.875
+   },
+   {
+    "w": "y",
+    "start": 31.875,
+    "end": 32.018
+   },
+   {
+    "w": "equipos",
+    "start": 32.018,
+    "end": 32.375
+   },
+   {
+    "w": "que",
+    "start": 32.375,
+    "end": 32.518
+   },
+   {
+    "w": "entregan",
+    "start": 32.518,
+    "end": 33.018
+   },
+   {
+    "w": "cada",
+    "start": 33.018,
+    "end": 33.232
+   },
+   {
+    "w": "pocas",
+    "start": 33.232,
+    "end": 33.518
+   },
+   {
+    "w": "semanas.",
+    "start": 33.518,
+    "end": 33.875
+   }
+  ]
+ },
+ {
+  "text": "En la Politécnica de Madrid, en 2025, Informática pidió un 10,175 y Software un 10,036. Ni dos décimas.",
+  "start": 34.098,
+  "end": 42.58,
+  "words": [
+   {
+    "w": "En",
+    "start": 34.098,
+    "end": 34.196
+   },
+   {
+    "w": "la",
+    "start": 34.196,
+    "end": 34.293
+   },
+   {
+    "w": "Politécnica",
+    "start": 34.293,
+    "end": 34.857
+   },
+   {
+    "w": "de",
+    "start": 34.857,
+    "end": 34.929
+   },
+   {
+    "w": "Madrid,",
+    "start": 34.929,
+    "end": 35.357
+   },
+   {
+    "w": "en",
+    "start": 35.357,
+    "end": 35.5
+   },
+   {
+    "w": "2025,",
+    "start": 35.5,
+    "end": 36.518
+   },
+   {
+    "w": "Informática",
+    "start": 36.518,
+    "end": 37.08
+   },
+   {
+    "w": "pidió",
+    "start": 37.08,
+    "end": 37.437
+   },
+   {
+    "w": "un",
+    "start": 37.437,
+    "end": 37.58
+   },
+   {
+    "w": "10,175",
+    "start": 37.58,
+    "end": 39.161
+   },
+   {
+    "w": "y",
+    "start": 39.161,
+    "end": 39.304
+   },
+   {
+    "w": "Software",
+    "start": 39.304,
+    "end": 39.795
+   },
+   {
+    "w": "un",
+    "start": 39.795,
+    "end": 39.955
+   },
+   {
+    "w": "10,036.",
+    "start": 39.955,
+    "end": 41.661
+   },
+   {
+    "w": "Ni",
+    "start": 41.661,
+    "end": 41.893
+   },
+   {
+    "w": "dos",
+    "start": 41.893,
+    "end": 42.107
+   },
+   {
+    "w": "décimas.",
+    "start": 42.107,
+    "end": 42.58
+   }
+  ]
+ },
+ {
+  "text": "Y en el BOE, Ingeniería del Software es una de las cinco especialidades de Ingeniería Informática.",
+  "start": 42.687,
+  "end": 47.304,
+  "words": [
+   {
+    "w": "Y",
+    "start": 42.687,
+    "end": 42.858
+   },
+   {
+    "w": "en",
+    "start": 42.858,
+    "end": 43.029
+   },
+   {
+    "w": "el",
+    "start": 43.029,
+    "end": 43.2
+   },
+   {
+    "w": "BOE,",
+    "start": 43.2,
+    "end": 43.446
+   },
+   {
+    "w": "Ingeniería",
+    "start": 43.446,
+    "end": 44.018
+   },
+   {
+    "w": "del",
+    "start": 44.018,
+    "end": 44.161
+   },
+   {
+    "w": "Software",
+    "start": 44.161,
+    "end": 44.518
+   },
+   {
+    "w": "es",
+    "start": 44.518,
+    "end": 44.661
+   },
+   {
+    "w": "una",
+    "start": 44.661,
+    "end": 44.875
+   },
+   {
+    "w": "de",
+    "start": 44.875,
+    "end": 44.946
+   },
+   {
+    "w": "las",
+    "start": 44.946,
+    "end": 45.089
+   },
+   {
+    "w": "cinco",
+    "start": 45.089,
+    "end": 45.375
+   },
+   {
+    "w": "especialidades",
+    "start": 45.375,
+    "end": 46.018
+   },
+   {
+    "w": "de",
+    "start": 46.018,
+    "end": 46.161
+   },
+   {
+    "w": "Ingeniería",
+    "start": 46.161,
+    "end": 46.804
+   },
+   {
+    "w": "Informática.",
+    "start": 46.804,
+    "end": 47.304
+   }
+  ]
+ },
+ {
+  "text": "La mitad de la carrera es la misma; cambian 48 créditos de especialidad.",
+  "start": 47.5,
+  "end": 51.286,
+  "words": [
+   {
+    "w": "La",
+    "start": 47.5,
+    "end": 47.571
+   },
+   {
+    "w": "mitad",
+    "start": 47.571,
+    "end": 47.857
+   },
+   {
+    "w": "de",
+    "start": 47.857,
+    "end": 48.0
+   },
+   {
+    "w": "la",
+    "start": 48.0,
+    "end": 48.071
+   },
+   {
+    "w": "carrera",
+    "start": 48.071,
+    "end": 48.429
+   },
+   {
+    "w": "es",
+    "start": 48.429,
+    "end": 48.571
+   },
+   {
+    "w": "la",
+    "start": 48.571,
+    "end": 48.714
+   },
+   {
+    "w": "misma;",
+    "start": 48.714,
+    "end": 49.196
+   },
+   {
+    "w": "cambian",
+    "start": 49.196,
+    "end": 49.58
+   },
+   {
+    "w": "48",
+    "start": 49.58,
+    "end": 50.223
+   },
+   {
+    "w": "créditos",
+    "start": 50.223,
+    "end": 50.652
+   },
+   {
+    "w": "de",
+    "start": 50.652,
+    "end": 50.795
+   },
+   {
+    "w": "especialidad.",
+    "start": 50.795,
+    "end": 51.286
+   }
+  ]
+ },
+ {
+  "text": "¿Y qué dice la ley de quién puede programar? Nada.",
+  "start": 51.482,
+  "end": 54.295,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 51.482,
+    "end": 51.616
+   },
+   {
+    "w": "qué",
+    "start": 51.616,
+    "end": 51.759
+   },
+   {
+    "w": "dice",
+    "start": 51.759,
+    "end": 52.045
+   },
+   {
+    "w": "la",
+    "start": 52.045,
+    "end": 52.187
+   },
+   {
+    "w": "ley",
+    "start": 52.187,
+    "end": 52.402
+   },
+   {
+    "w": "de",
+    "start": 52.402,
+    "end": 52.545
+   },
+   {
+    "w": "quién",
+    "start": 52.545,
+    "end": 52.83
+   },
+   {
+    "w": "puede",
+    "start": 52.83,
+    "end": 53.116
+   },
+   {
+    "w": "programar?",
+    "start": 53.116,
+    "end": 53.929
+   },
+   {
+    "w": "Nada.",
+    "start": 53.929,
+    "end": 54.295
+   }
+  ]
+ },
+ {
+  "text": "La informática no es una profesión regulada: para programar, no te hace falta ni la una ni la otra.",
+  "start": 54.741,
+  "end": 59.661,
+  "words": [
+   {
+    "w": "La",
+    "start": 54.741,
+    "end": 54.857
+   },
+   {
+    "w": "informática",
+    "start": 54.857,
+    "end": 55.429
+   },
+   {
+    "w": "no",
+    "start": 55.429,
+    "end": 55.571
+   },
+   {
+    "w": "es",
+    "start": 55.571,
+    "end": 55.714
+   },
+   {
+    "w": "una",
+    "start": 55.714,
+    "end": 55.929
+   },
+   {
+    "w": "profesión",
+    "start": 55.929,
+    "end": 56.357
+   },
+   {
+    "w": "regulada:",
+    "start": 56.357,
+    "end": 57.045
+   },
+   {
+    "w": "para",
+    "start": 57.045,
+    "end": 57.223
+   },
+   {
+    "w": "programar,",
+    "start": 57.223,
+    "end": 57.723
+   },
+   {
+    "w": "no",
+    "start": 57.723,
+    "end": 57.866
+   },
+   {
+    "w": "te",
+    "start": 57.866,
+    "end": 58.009
+   },
+   {
+    "w": "hace",
+    "start": 58.009,
+    "end": 58.223
+   },
+   {
+    "w": "falta",
+    "start": 58.223,
+    "end": 58.509
+   },
+   {
+    "w": "ni",
+    "start": 58.509,
+    "end": 58.652
+   },
+   {
+    "w": "la",
+    "start": 58.652,
+    "end": 58.866
+   },
+   {
+    "w": "una",
+    "start": 58.866,
+    "end": 59.152
+   },
+   {
+    "w": "ni",
+    "start": 59.152,
+    "end": 59.295
+   },
+   {
+    "w": "la",
+    "start": 59.295,
+    "end": 59.437
+   },
+   {
+    "w": "otra.",
+    "start": 59.437,
+    "end": 59.661
+   }
+  ]
+ },
+ {
+  "text": "Ni un título. Ni un colegio.",
+  "start": 59.812,
+  "end": 61.393,
+  "words": [
+   {
+    "w": "Ni",
+    "start": 59.812,
+    "end": 59.991
+   },
+   {
+    "w": "un",
+    "start": 59.991,
+    "end": 60.134
+   },
+   {
+    "w": "título.",
+    "start": 60.134,
+    "end": 60.643
+   },
+   {
+    "w": "Ni",
+    "start": 60.643,
+    "end": 60.857
+   },
+   {
+    "w": "un",
+    "start": 60.857,
+    "end": 61.0
+   },
+   {
+    "w": "colegio.",
+    "start": 61.0,
+    "end": 61.393
+   }
+  ]
+ },
+ {
+  "text": "Así que esta pelea no la gana un título: la gana quien sabe hacerlo.",
+  "start": 61.491,
+  "end": 65.143,
+  "words": [
+   {
+    "w": "Así",
+    "start": 61.491,
+    "end": 61.607
+   },
+   {
+    "w": "que",
+    "start": 61.607,
+    "end": 61.821
+   },
+   {
+    "w": "esta",
+    "start": 61.821,
+    "end": 62.036
+   },
+   {
+    "w": "pelea",
+    "start": 62.036,
+    "end": 62.464
+   },
+   {
+    "w": "no",
+    "start": 62.464,
+    "end": 62.607
+   },
+   {
+    "w": "la",
+    "start": 62.607,
+    "end": 62.75
+   },
+   {
+    "w": "gana",
+    "start": 62.75,
+    "end": 63.036
+   },
+   {
+    "w": "un",
+    "start": 63.036,
+    "end": 63.179
+   },
+   {
+    "w": "título:",
+    "start": 63.179,
+    "end": 63.678
+   },
+   {
+    "w": "la",
+    "start": 63.678,
+    "end": 63.83
+   },
+   {
+    "w": "gana",
+    "start": 63.83,
+    "end": 64.187
+   },
+   {
+    "w": "quien",
+    "start": 64.187,
+    "end": 64.473
+   },
+   {
+    "w": "sabe",
+    "start": 64.473,
+    "end": 64.902
+   },
+   {
+    "w": "hacerlo.",
+    "start": 64.902,
+    "end": 65.143
+   }
+  ]
+ },
+ {
+  "text": "¿Equipo Software o equipo Informática? Te leo en comentarios… y mándaselo a un informático.",
+  "start": 65.259,
+  "end": 70.014,
+  "words": [
+   {
+    "w": "¿Equipo",
+    "start": 65.259,
+    "end": 65.67
+   },
+   {
+    "w": "Software",
+    "start": 65.67,
+    "end": 66.152
+   },
+   {
+    "w": "o",
+    "start": 66.152,
+    "end": 66.241
+   },
+   {
+    "w": "equipo",
+    "start": 66.241,
+    "end": 66.67
+   },
+   {
+    "w": "Informática?",
+    "start": 66.67,
+    "end": 67.509
+   },
+   {
+    "w": "Te",
+    "start": 67.509,
+    "end": 67.607
+   },
+   {
+    "w": "leo",
+    "start": 67.607,
+    "end": 67.893
+   },
+   {
+    "w": "en",
+    "start": 67.893,
+    "end": 68.036
+   },
+   {
+    "w": "comentarios…",
+    "start": 68.036,
+    "end": 68.696
+   },
+   {
+    "w": "y",
+    "start": 68.696,
+    "end": 68.799
+   },
+   {
+    "w": "mándaselo",
+    "start": 68.799,
+    "end": 69.266
+   },
+   {
+    "w": "a",
+    "start": 69.266,
+    "end": 69.337
+   },
+   {
+    "w": "un",
+    "start": 69.337,
+    "end": 69.551
+   },
+   {
+    "w": "informático.",
+    "start": 69.551,
+    "end": 70.014
+   }
+  ]
+ }
+]
