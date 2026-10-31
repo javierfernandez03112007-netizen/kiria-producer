@@ -1,0 +1,1199 @@
+[
+ {
+  "text": "Menos de 3 de cada 100 estudiantes que empiezan Derecho podrán llegar a ser jueces o fiscales.",
+  "start": 0.0,
+  "end": 4.58,
+  "words": [
+   {
+    "w": "Menos",
+    "start": 0.0,
+    "end": 0.357
+   },
+   {
+    "w": "de",
+    "start": 0.357,
+    "end": 0.5
+   },
+   {
+    "w": "3",
+    "start": 0.5,
+    "end": 0.714
+   },
+   {
+    "w": "de",
+    "start": 0.714,
+    "end": 0.857
+   },
+   {
+    "w": "cada",
+    "start": 0.857,
+    "end": 1.071
+   },
+   {
+    "w": "100",
+    "start": 1.071,
+    "end": 1.357
+   },
+   {
+    "w": "estudiantes",
+    "start": 1.357,
+    "end": 1.786
+   },
+   {
+    "w": "que",
+    "start": 1.786,
+    "end": 1.929
+   },
+   {
+    "w": "empiezan",
+    "start": 1.929,
+    "end": 2.429
+   },
+   {
+    "w": "Derecho",
+    "start": 2.429,
+    "end": 2.839
+   },
+   {
+    "w": "podrán",
+    "start": 2.839,
+    "end": 3.08
+   },
+   {
+    "w": "llegar",
+    "start": 3.08,
+    "end": 3.366
+   },
+   {
+    "w": "a",
+    "start": 3.366,
+    "end": 3.437
+   },
+   {
+    "w": "ser",
+    "start": 3.437,
+    "end": 3.58
+   },
+   {
+    "w": "jueces",
+    "start": 3.58,
+    "end": 4.009
+   },
+   {
+    "w": "o",
+    "start": 4.009,
+    "end": 4.152
+   },
+   {
+    "w": "fiscales.",
+    "start": 4.152,
+    "end": 4.58
+   }
+  ]
+ },
+ {
+  "text": "Y ninguno puede ser abogado nada más acabar la carrera. Al final te digo qué te falta.",
+  "start": 4.83,
+  "end": 9.134,
+  "words": [
+   {
+    "w": "Y",
+    "start": 4.83,
+    "end": 4.92
+   },
+   {
+    "w": "ninguno",
+    "start": 4.92,
+    "end": 5.348
+   },
+   {
+    "w": "puede",
+    "start": 5.348,
+    "end": 5.562
+   },
+   {
+    "w": "ser",
+    "start": 5.562,
+    "end": 5.705
+   },
+   {
+    "w": "abogado",
+    "start": 5.705,
+    "end": 6.277
+   },
+   {
+    "w": "nada",
+    "start": 6.277,
+    "end": 6.491
+   },
+   {
+    "w": "más",
+    "start": 6.491,
+    "end": 6.634
+   },
+   {
+    "w": "acabar",
+    "start": 6.634,
+    "end": 7.062
+   },
+   {
+    "w": "la",
+    "start": 7.062,
+    "end": 7.134
+   },
+   {
+    "w": "carrera.",
+    "start": 7.134,
+    "end": 7.875
+   },
+   {
+    "w": "Al",
+    "start": 7.875,
+    "end": 7.977
+   },
+   {
+    "w": "final",
+    "start": 7.977,
+    "end": 8.214
+   },
+   {
+    "w": "te",
+    "start": 8.214,
+    "end": 8.357
+   },
+   {
+    "w": "digo",
+    "start": 8.357,
+    "end": 8.571
+   },
+   {
+    "w": "qué",
+    "start": 8.571,
+    "end": 8.714
+   },
+   {
+    "w": "te",
+    "start": 8.714,
+    "end": 8.857
+   },
+   {
+    "w": "falta.",
+    "start": 8.857,
+    "end": 9.134
+   }
+  ]
+ },
+ {
+  "text": "Cada año empiezan Derecho más de veintiséis mil estudiantes. Plazas de juez y fiscal por oposición: menos de seiscientas.",
+  "start": 9.277,
+  "end": 15.893,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 9.277,
+    "end": 9.411
+   },
+   {
+    "w": "año",
+    "start": 9.411,
+    "end": 9.696
+   },
+   {
+    "w": "empiezan",
+    "start": 9.696,
+    "end": 10.125
+   },
+   {
+    "w": "Derecho",
+    "start": 10.125,
+    "end": 10.625
+   },
+   {
+    "w": "más",
+    "start": 10.625,
+    "end": 10.768
+   },
+   {
+    "w": "de",
+    "start": 10.768,
+    "end": 10.911
+   },
+   {
+    "w": "veintiséis",
+    "start": 10.911,
+    "end": 11.489
+   },
+   {
+    "w": "mil",
+    "start": 11.489,
+    "end": 11.768
+   },
+   {
+    "w": "estudiantes.",
+    "start": 11.768,
+    "end": 12.679
+   },
+   {
+    "w": "Plazas",
+    "start": 12.679,
+    "end": 12.92
+   },
+   {
+    "w": "de",
+    "start": 12.92,
+    "end": 12.991
+   },
+   {
+    "w": "juez",
+    "start": 12.991,
+    "end": 13.348
+   },
+   {
+    "w": "y",
+    "start": 13.348,
+    "end": 13.42
+   },
+   {
+    "w": "fiscal",
+    "start": 13.42,
+    "end": 13.777
+   },
+   {
+    "w": "por",
+    "start": 13.777,
+    "end": 13.92
+   },
+   {
+    "w": "oposición:",
+    "start": 13.92,
+    "end": 14.643
+   },
+   {
+    "w": "menos",
+    "start": 14.643,
+    "end": 14.929
+   },
+   {
+    "w": "de",
+    "start": 14.929,
+    "end": 15.143
+   },
+   {
+    "w": "seiscientas.",
+    "start": 15.143,
+    "end": 15.893
+   }
+  ]
+ },
+ {
+  "text": "Crees que Derecho es memorizar leyes. En realidad, es aprender a ganar discusiones con ellas. Así es por dentro.",
+  "start": 16.134,
+  "end": 22.062,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 16.134,
+    "end": 16.321
+   },
+   {
+    "w": "que",
+    "start": 16.321,
+    "end": 16.464
+   },
+   {
+    "w": "Derecho",
+    "start": 16.464,
+    "end": 16.893
+   },
+   {
+    "w": "es",
+    "start": 16.893,
+    "end": 17.036
+   },
+   {
+    "w": "memorizar",
+    "start": 17.036,
+    "end": 17.536
+   },
+   {
+    "w": "leyes.",
+    "start": 17.536,
+    "end": 18.205
+   },
+   {
+    "w": "En",
+    "start": 18.205,
+    "end": 18.33
+   },
+   {
+    "w": "realidad,",
+    "start": 18.33,
+    "end": 18.83
+   },
+   {
+    "w": "es",
+    "start": 18.83,
+    "end": 18.911
+   },
+   {
+    "w": "aprender",
+    "start": 18.911,
+    "end": 19.339
+   },
+   {
+    "w": "a",
+    "start": 19.339,
+    "end": 19.482
+   },
+   {
+    "w": "ganar",
+    "start": 19.482,
+    "end": 19.768
+   },
+   {
+    "w": "discusiones",
+    "start": 19.768,
+    "end": 20.339
+   },
+   {
+    "w": "con",
+    "start": 20.339,
+    "end": 20.482
+   },
+   {
+    "w": "ellas.",
+    "start": 20.482,
+    "end": 21.188
+   },
+   {
+    "w": "Así",
+    "start": 21.188,
+    "end": 21.455
+   },
+   {
+    "w": "es",
+    "start": 21.455,
+    "end": 21.598
+   },
+   {
+    "w": "por",
+    "start": 21.598,
+    "end": 21.812
+   },
+   {
+    "w": "dentro.",
+    "start": 21.812,
+    "end": 22.062
+   }
+  ]
+ },
+ {
+  "text": "La base: Derecho Romano, Constitucional y teoría del Derecho.",
+  "start": 22.25,
+  "end": 25.688,
+  "words": [
+   {
+    "w": "La",
+    "start": 22.25,
+    "end": 22.348
+   },
+   {
+    "w": "base:",
+    "start": 22.348,
+    "end": 22.92
+   },
+   {
+    "w": "Derecho",
+    "start": 22.92,
+    "end": 23.357
+   },
+   {
+    "w": "Romano,",
+    "start": 23.357,
+    "end": 23.857
+   },
+   {
+    "w": "Constitucional",
+    "start": 23.857,
+    "end": 24.643
+   },
+   {
+    "w": "y",
+    "start": 24.643,
+    "end": 24.786
+   },
+   {
+    "w": "teoría",
+    "start": 24.786,
+    "end": 25.214
+   },
+   {
+    "w": "del",
+    "start": 25.214,
+    "end": 25.357
+   },
+   {
+    "w": "Derecho.",
+    "start": 25.357,
+    "end": 25.688
+   }
+  ]
+ },
+ {
+  "text": "Civil: contratos, herencias y familia… todo lo que firmas sin leer.",
+  "start": 25.946,
+  "end": 29.58,
+  "words": [
+   {
+    "w": "Civil:",
+    "start": 25.946,
+    "end": 26.536
+   },
+   {
+    "w": "contratos,",
+    "start": 26.536,
+    "end": 27.134
+   },
+   {
+    "w": "herencias",
+    "start": 27.134,
+    "end": 27.705
+   },
+   {
+    "w": "y",
+    "start": 27.705,
+    "end": 27.848
+   },
+   {
+    "w": "familia…",
+    "start": 27.848,
+    "end": 28.375
+   },
+   {
+    "w": "todo",
+    "start": 28.375,
+    "end": 28.498
+   },
+   {
+    "w": "lo",
+    "start": 28.498,
+    "end": 28.58
+   },
+   {
+    "w": "que",
+    "start": 28.58,
+    "end": 28.723
+   },
+   {
+    "w": "firmas",
+    "start": 28.723,
+    "end": 29.152
+   },
+   {
+    "w": "sin",
+    "start": 29.152,
+    "end": 29.295
+   },
+   {
+    "w": "leer.",
+    "start": 29.295,
+    "end": 29.58
+   }
+  ]
+ },
+ {
+  "text": "Penal: qué es delito, qué pena tiene y cómo se prueba.",
+  "start": 29.777,
+  "end": 32.732,
+  "words": [
+   {
+    "w": "Penal:",
+    "start": 29.777,
+    "end": 30.33
+   },
+   {
+    "w": "qué",
+    "start": 30.33,
+    "end": 30.429
+   },
+   {
+    "w": "es",
+    "start": 30.429,
+    "end": 30.571
+   },
+   {
+    "w": "delito,",
+    "start": 30.571,
+    "end": 31.098
+   },
+   {
+    "w": "qué",
+    "start": 31.098,
+    "end": 31.221
+   },
+   {
+    "w": "pena",
+    "start": 31.221,
+    "end": 31.509
+   },
+   {
+    "w": "tiene",
+    "start": 31.509,
+    "end": 31.866
+   },
+   {
+    "w": "y",
+    "start": 31.866,
+    "end": 32.009
+   },
+   {
+    "w": "cómo",
+    "start": 32.009,
+    "end": 32.295
+   },
+   {
+    "w": "se",
+    "start": 32.295,
+    "end": 32.437
+   },
+   {
+    "w": "prueba.",
+    "start": 32.437,
+    "end": 32.732
+   }
+  ]
+ },
+ {
+  "text": "Administrativo: cómo se defiende un ciudadano frente a la Administración.",
+  "start": 32.937,
+  "end": 36.286,
+  "words": [
+   {
+    "w": "Administrativo:",
+    "start": 32.937,
+    "end": 33.839
+   },
+   {
+    "w": "cómo",
+    "start": 33.839,
+    "end": 34.0
+   },
+   {
+    "w": "se",
+    "start": 34.0,
+    "end": 34.071
+   },
+   {
+    "w": "defiende",
+    "start": 34.071,
+    "end": 34.571
+   },
+   {
+    "w": "un",
+    "start": 34.571,
+    "end": 34.714
+   },
+   {
+    "w": "ciudadano",
+    "start": 34.714,
+    "end": 35.214
+   },
+   {
+    "w": "frente",
+    "start": 35.214,
+    "end": 35.429
+   },
+   {
+    "w": "a",
+    "start": 35.429,
+    "end": 35.571
+   },
+   {
+    "w": "la",
+    "start": 35.571,
+    "end": 35.714
+   },
+   {
+    "w": "Administración.",
+    "start": 35.714,
+    "end": 36.286
+   }
+  ]
+ },
+ {
+  "text": "Mercantil y Laboral: empresas, despidos y nóminas.",
+  "start": 36.473,
+  "end": 39.607,
+  "words": [
+   {
+    "w": "Mercantil",
+    "start": 36.473,
+    "end": 36.982
+   },
+   {
+    "w": "y",
+    "start": 36.982,
+    "end": 37.125
+   },
+   {
+    "w": "Laboral:",
+    "start": 37.125,
+    "end": 37.705
+   },
+   {
+    "w": "empresas,",
+    "start": 37.705,
+    "end": 38.348
+   },
+   {
+    "w": "despidos",
+    "start": 38.348,
+    "end": 38.991
+   },
+   {
+    "w": "y",
+    "start": 38.991,
+    "end": 39.134
+   },
+   {
+    "w": "nóminas.",
+    "start": 39.134,
+    "end": 39.607
+   }
+  ]
+ },
+ {
+  "text": "Procesal: cómo funciona un juicio, de la demanda a la sentencia.",
+  "start": 39.759,
+  "end": 43.125,
+  "words": [
+   {
+    "w": "Procesal:",
+    "start": 39.759,
+    "end": 40.446
+   },
+   {
+    "w": "cómo",
+    "start": 40.446,
+    "end": 40.625
+   },
+   {
+    "w": "funciona",
+    "start": 40.625,
+    "end": 41.054
+   },
+   {
+    "w": "un",
+    "start": 41.054,
+    "end": 41.196
+   },
+   {
+    "w": "juicio,",
+    "start": 41.196,
+    "end": 41.67
+   },
+   {
+    "w": "de",
+    "start": 41.67,
+    "end": 41.804
+   },
+   {
+    "w": "la",
+    "start": 41.804,
+    "end": 41.946
+   },
+   {
+    "w": "demanda",
+    "start": 41.946,
+    "end": 42.375
+   },
+   {
+    "w": "a",
+    "start": 42.375,
+    "end": 42.518
+   },
+   {
+    "w": "la",
+    "start": 42.518,
+    "end": 42.661
+   },
+   {
+    "w": "sentencia.",
+    "start": 42.661,
+    "end": 43.125
+   }
+  ]
+ },
+ {
+  "text": "Y hasta Internacional y Europeo: leyes que valen más allá de España.",
+  "start": 43.321,
+  "end": 46.67,
+  "words": [
+   {
+    "w": "Y",
+    "start": 43.321,
+    "end": 43.439
+   },
+   {
+    "w": "hasta",
+    "start": 43.439,
+    "end": 43.714
+   },
+   {
+    "w": "Internacional",
+    "start": 43.714,
+    "end": 44.286
+   },
+   {
+    "w": "y",
+    "start": 44.286,
+    "end": 44.429
+   },
+   {
+    "w": "Europeo:",
+    "start": 44.429,
+    "end": 44.973
+   },
+   {
+    "w": "leyes",
+    "start": 44.973,
+    "end": 45.295
+   },
+   {
+    "w": "que",
+    "start": 45.295,
+    "end": 45.437
+   },
+   {
+    "w": "valen",
+    "start": 45.437,
+    "end": 45.795
+   },
+   {
+    "w": "más",
+    "start": 45.795,
+    "end": 45.937
+   },
+   {
+    "w": "allá",
+    "start": 45.937,
+    "end": 46.223
+   },
+   {
+    "w": "de",
+    "start": 46.223,
+    "end": 46.366
+   },
+   {
+    "w": "España.",
+    "start": 46.366,
+    "end": 46.67
+   }
+  ]
+ },
+ {
+  "text": "De aquí salen abogados, jueces, fiscales, notarios… Pero ninguno sale solo con la carrera.",
+  "start": 46.839,
+  "end": 51.982,
+  "words": [
+   {
+    "w": "De",
+    "start": 46.839,
+    "end": 46.92
+   },
+   {
+    "w": "aquí",
+    "start": 46.92,
+    "end": 47.134
+   },
+   {
+    "w": "salen",
+    "start": 47.134,
+    "end": 47.491
+   },
+   {
+    "w": "abogados,",
+    "start": 47.491,
+    "end": 48.134
+   },
+   {
+    "w": "jueces,",
+    "start": 48.134,
+    "end": 48.777
+   },
+   {
+    "w": "fiscales,",
+    "start": 48.777,
+    "end": 49.491
+   },
+   {
+    "w": "notarios…",
+    "start": 49.491,
+    "end": 50.196
+   },
+   {
+    "w": "Pero",
+    "start": 50.196,
+    "end": 50.295
+   },
+   {
+    "w": "ninguno",
+    "start": 50.295,
+    "end": 50.795
+   },
+   {
+    "w": "sale",
+    "start": 50.795,
+    "end": 51.152
+   },
+   {
+    "w": "solo",
+    "start": 51.152,
+    "end": 51.437
+   },
+   {
+    "w": "con",
+    "start": 51.437,
+    "end": 51.509
+   },
+   {
+    "w": "la",
+    "start": 51.509,
+    "end": 51.652
+   },
+   {
+    "w": "carrera.",
+    "start": 51.652,
+    "end": 51.982
+   }
+  ]
+ },
+ {
+  "text": "¿Qué te falta para ser abogado? Un máster de acceso, con prácticas, aprobar el examen estatal… y colegiarte.",
+  "start": 52.116,
+  "end": 57.384,
+  "words": [
+   {
+    "w": "¿Qué",
+    "start": 52.116,
+    "end": 52.22
+   },
+   {
+    "w": "te",
+    "start": 52.22,
+    "end": 52.348
+   },
+   {
+    "w": "falta",
+    "start": 52.348,
+    "end": 52.634
+   },
+   {
+    "w": "para",
+    "start": 52.634,
+    "end": 52.777
+   },
+   {
+    "w": "ser",
+    "start": 52.777,
+    "end": 52.991
+   },
+   {
+    "w": "abogado?",
+    "start": 52.991,
+    "end": 53.607
+   },
+   {
+    "w": "Un",
+    "start": 53.607,
+    "end": 53.714
+   },
+   {
+    "w": "máster",
+    "start": 53.714,
+    "end": 54.071
+   },
+   {
+    "w": "de",
+    "start": 54.071,
+    "end": 54.214
+   },
+   {
+    "w": "acceso,",
+    "start": 54.214,
+    "end": 54.625
+   },
+   {
+    "w": "con",
+    "start": 54.625,
+    "end": 54.795
+   },
+   {
+    "w": "prácticas,",
+    "start": 54.795,
+    "end": 55.437
+   },
+   {
+    "w": "aprobar",
+    "start": 55.437,
+    "end": 55.732
+   },
+   {
+    "w": "el",
+    "start": 55.732,
+    "end": 55.875
+   },
+   {
+    "w": "examen",
+    "start": 55.875,
+    "end": 56.232
+   },
+   {
+    "w": "estatal…",
+    "start": 56.232,
+    "end": 56.723
+   },
+   {
+    "w": "y",
+    "start": 56.723,
+    "end": 56.927
+   },
+   {
+    "w": "colegiarte.",
+    "start": 56.927,
+    "end": 57.384
+   }
+  ]
+ },
+ {
+  "text": "¿Y para ser juez? Una oposición: un test y dos exámenes orales ante un tribunal. Si apruebas, la Escuela Judicial, en Barcelona.",
+  "start": 57.536,
+  "end": 64.714,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 57.536,
+    "end": 57.643
+   },
+   {
+    "w": "para",
+    "start": 57.643,
+    "end": 57.857
+   },
+   {
+    "w": "ser",
+    "start": 57.857,
+    "end": 58.071
+   },
+   {
+    "w": "juez?",
+    "start": 58.071,
+    "end": 58.607
+   },
+   {
+    "w": "Una",
+    "start": 58.607,
+    "end": 58.795
+   },
+   {
+    "w": "oposición:",
+    "start": 58.795,
+    "end": 59.562
+   },
+   {
+    "w": "un",
+    "start": 59.562,
+    "end": 59.732
+   },
+   {
+    "w": "test",
+    "start": 59.732,
+    "end": 60.179
+   },
+   {
+    "w": "y",
+    "start": 60.179,
+    "end": 60.267
+   },
+   {
+    "w": "dos",
+    "start": 60.267,
+    "end": 60.375
+   },
+   {
+    "w": "exámenes",
+    "start": 60.375,
+    "end": 60.875
+   },
+   {
+    "w": "orales",
+    "start": 60.875,
+    "end": 61.232
+   },
+   {
+    "w": "ante",
+    "start": 61.232,
+    "end": 61.446
+   },
+   {
+    "w": "un",
+    "start": 61.446,
+    "end": 61.589
+   },
+   {
+    "w": "tribunal.",
+    "start": 61.589,
+    "end": 62.33
+   },
+   {
+    "w": "Si",
+    "start": 62.33,
+    "end": 62.495
+   },
+   {
+    "w": "apruebas,",
+    "start": 62.495,
+    "end": 63.062
+   },
+   {
+    "w": "la",
+    "start": 63.062,
+    "end": 63.17
+   },
+   {
+    "w": "Escuela",
+    "start": 63.17,
+    "end": 63.527
+   },
+   {
+    "w": "Judicial,",
+    "start": 63.527,
+    "end": 64.134
+   },
+   {
+    "w": "en",
+    "start": 64.134,
+    "end": 64.299
+   },
+   {
+    "w": "Barcelona.",
+    "start": 64.299,
+    "end": 64.714
+   }
+  ]
+ },
+ {
+  "text": "Cuatro años de carrera… y la toga, después.",
+  "start": 65.054,
+  "end": 67.259,
+  "words": [
+   {
+    "w": "Cuatro",
+    "start": 65.054,
+    "end": 65.384
+   },
+   {
+    "w": "años",
+    "start": 65.384,
+    "end": 65.67
+   },
+   {
+    "w": "de",
+    "start": 65.67,
+    "end": 65.812
+   },
+   {
+    "w": "carrera…",
+    "start": 65.812,
+    "end": 66.268
+   },
+   {
+    "w": "y",
+    "start": 66.268,
+    "end": 66.36
+   },
+   {
+    "w": "la",
+    "start": 66.36,
+    "end": 66.473
+   },
+   {
+    "w": "toga,",
+    "start": 66.473,
+    "end": 66.839
+   },
+   {
+    "w": "después.",
+    "start": 66.839,
+    "end": 67.259
+   }
+  ]
+ },
+ {
+  "text": "Si estás pensando en estudiar Derecho, guárdalo. Y dime: ¿abogado o juez?",
+  "start": 67.348,
+  "end": 71.337,
+  "words": [
+   {
+    "w": "Si",
+    "start": 67.348,
+    "end": 67.469
+   },
+   {
+    "w": "estás",
+    "start": 67.469,
+    "end": 67.75
+   },
+   {
+    "w": "pensando",
+    "start": 67.75,
+    "end": 68.107
+   },
+   {
+    "w": "en",
+    "start": 68.107,
+    "end": 68.25
+   },
+   {
+    "w": "estudiar",
+    "start": 68.25,
+    "end": 68.607
+   },
+   {
+    "w": "Derecho,",
+    "start": 68.607,
+    "end": 69.107
+   },
+   {
+    "w": "guárdalo.",
+    "start": 69.107,
+    "end": 69.866
+   },
+   {
+    "w": "Y",
+    "start": 69.866,
+    "end": 70.078
+   },
+   {
+    "w": "dime:",
+    "start": 70.078,
+    "end": 70.43
+   },
+   {
+    "w": "¿abogado",
+    "start": 70.43,
+    "end": 70.962
+   },
+   {
+    "w": "o",
+    "start": 70.962,
+    "end": 71.172
+   },
+   {
+    "w": "juez?",
+    "start": 71.172,
+    "end": 71.337
+   }
+  ]
+ }
+]

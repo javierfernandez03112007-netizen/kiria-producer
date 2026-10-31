@@ -12,3 +12,16 @@ se abren desde esta máquina: hay que permitirlos en la red de la sesión o comp
 | L14 | Juez: oposición con un primer ejercicio tipo test y dos ejercicios orales; después, Escuela Judicial (Barcelona). Fiscal: Centro de Estudios Jurídicos (Madrid) | LO 6/1985 del Poder Judicial (art. 301 y ss.); convocatorias del CGPJ (poderjudicial.es) y del CEJ (cej-mjusticia.es) |
 | L5–L11 | Asignaturas troncales típicas del grado (Romano, Constitucional, Civil, Penal, Administrativo, Mercantil, Laboral, Procesal, Internacional, UE) | Planes de estudio de grado en Derecho (p. ej. UCM, USAL) — descripción general |
 | L15 | «Cuatro años de carrera» | Grado de 240 ECTS |
+
+## Rótulos del vídeo (HUD) — 31-10-2026
+| Rótulo | Fuente / nota |
+|---|---|
+| «3 / 100 · PODRÁN SER JUEZ O FISCAL» | Cálculo de L1 (575 / 26.488 = 2,2 %, «menos de 3»): plazas por estudiante que empieza, no seguimiento de personas |
+| «+26.000 EMPIEZAN DERECHO CADA AÑO» · «< 600 PLAZAS DE JUEZ Y FISCAL · POR OPOSICIÓN» | Filas L1 y L3 (CONFIRMAR en el BOE / Ministerio) |
+| Campo de 163 × 163 figuritas (26.569) con un bloque dorado de 24 × 24 (576) | Proporción visual de las dos cifras anteriores (≈ 2,2 %) |
+| «GRADO · 240 ECTS · 4 AÑOS» | Grado de 240 ECTS (RD 822/2021, ordenación de las enseñanzas universitarias) |
+| «MÁSTER DE ACCESO ≈ 1 AÑO Y MEDIO» | RD 775/2011: formación de 60 ECTS + 30 ECTS de prácticas externas = 90 ECTS (≈ año y medio) — CONFIRMAR si hubo cambios posteriores |
+| «1 TEST · 2 ORALES ANTE UN TRIBUNAL» | Convocatorias de la Comisión de Selección (CGPJ/CEJ): primer ejercicio tipo test y dos ejercicios orales |
+| «ESCUELA JUDICIAL · BARCELONA» | La Escuela Judicial del CGPJ tiene su sede en Barcelona |
+| Contrato de arrendamiento y nómina | Documentos de EJEMPLO (sin datos reales) |
+| Globo: fronteras reales (Natural Earth vía world-atlas 110m, `engine/geo/`); España en dorado | — |
