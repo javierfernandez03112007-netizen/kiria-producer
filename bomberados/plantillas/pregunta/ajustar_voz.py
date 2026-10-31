@@ -2,7 +2,7 @@
 acorta pausas, mete el silencio de la cuenta atrás, acelera un poco (atempo) y escribe tiempos.json.
 Uso: python3 bomberados/plantillas/pregunta/ajustar_voz.py projects/<p>
 (assets/voz_original.mp3 + asr_original.json + script.txt → assets/voz.mp3 + tiempos.json)
-Parámetros en pregunta.json → "voz": tempo, count_line (frase tras la que va la cuenta atrás, desde 0), count (s),
+Parámetros en pregunta.json (o video.json) → "voz": tempo, count_line (frase tras la que va la cuenta atrás, desde 0), count (s; 0 = sin cuenta atrás),
 pause ({nº de frase: pausa tras ella}), pause_def."""
 import difflib
 import json
@@ -17,7 +17,8 @@ import numpy as np
 REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 sys.path.insert(0, REPO)
 ROOT = os.path.join(REPO, sys.argv[1])
-V = json.load(open(os.path.join(ROOT, "pregunta.json"))).get("voz", {})
+CFG = os.path.join(ROOT, "video.json")          # otros formatos (promos…) guardan su configuración en video.json
+V = json.load(open(CFG if os.path.exists(CFG) else os.path.join(ROOT, "pregunta.json"))).get("voz", {})
 from engine.audio import silences  # noqa: E402
 
 SR = 44100

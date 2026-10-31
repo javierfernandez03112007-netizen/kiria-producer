@@ -1,0 +1,351 @@
+[
+ {
+  "text": "Pregunta del día.",
+  "start": 0.0,
+  "end": 1.087,
+  "words": [
+   {
+    "w": "Pregunta",
+    "start": 0.0,
+    "end": 0.621
+   },
+   {
+    "w": "del",
+    "start": 0.621,
+    "end": 0.854
+   },
+   {
+    "w": "día.",
+    "start": 0.854,
+    "end": 1.087
+   }
+  ]
+ },
+ {
+  "text": "En el panel naranja de un camión cisterna hay dos números. ¿Qué indica el de arriba?",
+  "start": 1.369,
+  "end": 5.951,
+  "words": [
+   {
+    "w": "En",
+    "start": 1.369,
+    "end": 1.485
+   },
+   {
+    "w": "el",
+    "start": 1.485,
+    "end": 1.6
+   },
+   {
+    "w": "panel",
+    "start": 1.6,
+    "end": 1.883
+   },
+   {
+    "w": "naranja",
+    "start": 1.883,
+    "end": 2.272
+   },
+   {
+    "w": "de",
+    "start": 2.272,
+    "end": 2.35
+   },
+   {
+    "w": "un",
+    "start": 2.35,
+    "end": 2.505
+   },
+   {
+    "w": "camión",
+    "start": 2.505,
+    "end": 2.893
+   },
+   {
+    "w": "cisterna",
+    "start": 2.893,
+    "end": 3.592
+   },
+   {
+    "w": "hay",
+    "start": 3.592,
+    "end": 3.825
+   },
+   {
+    "w": "dos",
+    "start": 3.825,
+    "end": 4.058
+   },
+   {
+    "w": "números.",
+    "start": 4.058,
+    "end": 4.903
+   },
+   {
+    "w": "¿Qué",
+    "start": 4.903,
+    "end": 4.981
+   },
+   {
+    "w": "indica",
+    "start": 4.981,
+    "end": 5.369
+   },
+   {
+    "w": "el",
+    "start": 5.369,
+    "end": 5.524
+   },
+   {
+    "w": "de",
+    "start": 5.524,
+    "end": 5.68
+   },
+   {
+    "w": "arriba?",
+    "start": 5.68,
+    "end": 5.951
+   }
+  ]
+ },
+ {
+  "text": "¿Lo tienes claro? Tienes cinco segundos.",
+  "start": 6.146,
+  "end": 8.505,
+  "words": [
+   {
+    "w": "¿Lo",
+    "start": 6.146,
+    "end": 6.223
+   },
+   {
+    "w": "tienes",
+    "start": 6.223,
+    "end": 6.612
+   },
+   {
+    "w": "claro?",
+    "start": 6.612,
+    "end": 7.184
+   },
+   {
+    "w": "Tienes",
+    "start": 7.184,
+    "end": 7.612
+   },
+   {
+    "w": "cinco",
+    "start": 7.612,
+    "end": 8.0
+   },
+   {
+    "w": "segundos.",
+    "start": 8.0,
+    "end": 8.505
+   }
+  ]
+ },
+ {
+  "text": "¿A, B, C o D? Comenta tu respuesta y mándaselo a quien oposite contigo, a ver quién acierta.",
+  "start": 13.39,
+  "end": 19.342,
+  "words": [
+   {
+    "w": "¿A,",
+    "start": 13.39,
+    "end": 13.895
+   },
+   {
+    "w": "B,",
+    "start": 13.895,
+    "end": 14.507
+   },
+   {
+    "w": "C",
+    "start": 14.507,
+    "end": 15.07
+   },
+   {
+    "w": "o",
+    "start": 15.07,
+    "end": 15.196
+   },
+   {
+    "w": "D?",
+    "start": 15.196,
+    "end": 15.798
+   },
+   {
+    "w": "Comenta",
+    "start": 15.798,
+    "end": 16.118
+   },
+   {
+    "w": "tu",
+    "start": 16.118,
+    "end": 16.274
+   },
+   {
+    "w": "respuesta",
+    "start": 16.274,
+    "end": 16.584
+   },
+   {
+    "w": "y",
+    "start": 16.584,
+    "end": 16.74
+   },
+   {
+    "w": "mándaselo",
+    "start": 16.74,
+    "end": 17.283
+   },
+   {
+    "w": "a",
+    "start": 17.283,
+    "end": 17.361
+   },
+   {
+    "w": "quien",
+    "start": 17.361,
+    "end": 17.594
+   },
+   {
+    "w": "oposite",
+    "start": 17.594,
+    "end": 18.138
+   },
+   {
+    "w": "contigo,",
+    "start": 18.138,
+    "end": 18.429
+   },
+   {
+    "w": "a",
+    "start": 18.429,
+    "end": 18.516
+   },
+   {
+    "w": "ver",
+    "start": 18.516,
+    "end": 18.672
+   },
+   {
+    "w": "quién",
+    "start": 18.672,
+    "end": 18.905
+   },
+   {
+    "w": "acierta.",
+    "start": 18.905,
+    "end": 19.342
+   }
+  ]
+ },
+ {
+  "text": "La solución, en la descripción.",
+  "start": 19.546,
+  "end": 21.099,
+  "words": [
+   {
+    "w": "La",
+    "start": 19.546,
+    "end": 19.701
+   },
+   {
+    "w": "solución,",
+    "start": 19.701,
+    "end": 20.245
+   },
+   {
+    "w": "en",
+    "start": 20.245,
+    "end": 20.313
+   },
+   {
+    "w": "la",
+    "start": 20.313,
+    "end": 20.468
+   },
+   {
+    "w": "descripción.",
+    "start": 20.468,
+    "end": 21.099
+   }
+  ]
+ },
+ {
+  "text": "Bomberados: falla en casa, no en el examen.",
+  "start": 21.332,
+  "end": 23.934,
+  "words": [
+   {
+    "w": "Bomberados:",
+    "start": 21.332,
+    "end": 22.235
+   },
+   {
+    "w": "falla",
+    "start": 22.235,
+    "end": 22.652
+   },
+   {
+    "w": "en",
+    "start": 22.652,
+    "end": 22.73
+   },
+   {
+    "w": "casa,",
+    "start": 22.73,
+    "end": 23.06
+   },
+   {
+    "w": "no",
+    "start": 23.06,
+    "end": 23.264
+   },
+   {
+    "w": "en",
+    "start": 23.264,
+    "end": 23.342
+   },
+   {
+    "w": "el",
+    "start": 23.342,
+    "end": 23.497
+   },
+   {
+    "w": "examen.",
+    "start": 23.497,
+    "end": 23.934
+   }
+  ]
+ },
+ {
+  "text": "Pruébala gratis cinco días.",
+  "start": 24.094,
+  "end": 25.496,
+  "words": [
+   {
+    "w": "Pruébala",
+    "start": 24.094,
+    "end": 24.424
+   },
+   {
+    "w": "gratis",
+    "start": 24.424,
+    "end": 24.864
+   },
+   {
+    "w": "cinco",
+    "start": 24.864,
+    "end": 25.157
+   },
+   {
+    "w": "días.",
+    "start": 25.157,
+    "end": 25.496
+   }
+  ]
+ }
+]

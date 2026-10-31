@@ -9,6 +9,8 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 - 🎬 «Un fuego de aceite en una sartén es de clase B. ¿V o F?» (F1) — `projects/bomberados_ia/`
 - 🎬 Pregunta del día #1: reducción de 45 a 25 mm, ¿presión y velocidad? (F3; respuesta en la descripción) — `projects/bomberados_reduccion/`
 - 🎬 Pregunta del día #2: bradipnea, examen del Ayuntamiento de Albacete 2026 (F3; reto «¿quién acierta?») — `projects/bomberados_bradipnea/`
+- 🎬 Pregunta del día #3: panel naranja ADR, ¿qué indica el número de arriba? (F3, estilo de la app) — `projects/bomberados_adr/`
+- 🎬 Promo: simulacro en directo de Élite Bomberos con Adrián Luna, domingo 1 nov, 10 € (escena propia, estilo de la app) — `projects/bomberados_simulacro/`
 
 ## Temario (preguntas con trampa)
 | Idea | Formato | Respuesta a comprobar | Fuente a buscar |

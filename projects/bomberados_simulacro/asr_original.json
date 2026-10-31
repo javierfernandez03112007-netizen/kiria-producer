@@ -1,0 +1,337 @@
+[
+ {
+  "w": "¿Harto",
+  "start": 0.0,
+  "end": 0.48
+ },
+ {
+  "w": "de",
+  "start": 0.48,
+  "end": 0.56
+ },
+ {
+  "w": "estudiar",
+  "start": 0.56,
+  "end": 0.96
+ },
+ {
+  "w": "y",
+  "start": 0.96,
+  "end": 1.12
+ },
+ {
+  "w": "seguir",
+  "start": 1.12,
+  "end": 1.44
+ },
+ {
+  "w": "fallando",
+  "start": 1.44,
+  "end": 1.84
+ },
+ {
+  "w": "en",
+  "start": 1.84,
+  "end": 2.0
+ },
+ {
+  "w": "el",
+  "start": 2.0,
+  "end": 2.08
+ },
+ {
+  "w": "examen?",
+  "start": 2.08,
+  "end": 2.72
+ },
+ {
+  "w": "¿Y",
+  "start": 2.72,
+  "end": 2.96
+ },
+ {
+  "w": "tu",
+  "start": 2.96,
+  "end": 3.12
+ },
+ {
+  "w": "academia",
+  "start": 3.12,
+  "end": 3.68
+ },
+ {
+  "w": "no",
+  "start": 3.68,
+  "end": 3.76
+ },
+ {
+  "w": "te",
+  "start": 3.76,
+  "end": 3.92
+ },
+ {
+  "w": "hace",
+  "start": 3.92,
+  "end": 4.24
+ },
+ {
+  "w": "ni",
+  "start": 4.24,
+  "end": 4.4
+ },
+ {
+  "w": "un",
+  "start": 4.4,
+  "end": 4.56
+ },
+ {
+  "w": "simulacro?",
+  "start": 4.56,
+  "end": 5.52
+ },
+ {
+  "w": "Este",
+  "start": 5.52,
+  "end": 5.76
+ },
+ {
+  "w": "domingo,",
+  "start": 5.76,
+  "end": 6.4
+ },
+ {
+  "w": "1",
+  "start": 6.4,
+  "end": 6.64
+ },
+ {
+  "w": "de",
+  "start": 6.64,
+  "end": 6.8
+ },
+ {
+  "w": "noviembre,",
+  "start": 6.8,
+  "end": 7.36
+ },
+ {
+  "w": "simulacro",
+  "start": 7.36,
+  "end": 8.0
+ },
+ {
+  "w": "en",
+  "start": 8.0,
+  "end": 8.08
+ },
+ {
+  "w": "directo",
+  "start": 8.08,
+  "end": 8.4
+ },
+ {
+  "w": "con",
+  "start": 8.4,
+  "end": 8.56
+ },
+ {
+  "w": "Adrián",
+  "start": 8.56,
+  "end": 9.04
+ },
+ {
+  "w": "Luna,",
+  "start": 9.04,
+  "end": 9.44
+ },
+ {
+  "w": "en",
+  "start": 9.44,
+  "end": 9.6
+ },
+ {
+  "w": "Elite",
+  "start": 9.6,
+  "end": 10.08
+ },
+ {
+  "w": "Bomberos.",
+  "start": 10.08,
+  "end": 10.96
+ },
+ {
+  "w": "Desde",
+  "start": 10.96,
+  "end": 11.28
+ },
+ {
+  "w": "tu",
+  "start": 11.28,
+  "end": 11.44
+ },
+ {
+  "w": "casa,",
+  "start": 11.44,
+  "end": 11.84
+ },
+ {
+  "w": "como",
+  "start": 11.84,
+  "end": 12.08
+ },
+ {
+  "w": "en",
+  "start": 12.08,
+  "end": 12.16
+ },
+ {
+  "w": "el",
+  "start": 12.16,
+  "end": 12.32
+ },
+ {
+  "w": "examen",
+  "start": 12.32,
+  "end": 12.72
+ },
+ {
+  "w": "de",
+  "start": 12.72,
+  "end": 12.88
+ },
+ {
+  "w": "verdad,",
+  "start": 12.88,
+  "end": 13.36
+ },
+ {
+  "w": "y",
+  "start": 13.36,
+  "end": 13.6
+ },
+ {
+  "w": "por",
+  "start": 13.6,
+  "end": 13.76
+ },
+ {
+  "w": "solo",
+  "start": 13.76,
+  "end": 14.08
+ },
+ {
+  "w": "10",
+  "start": 14.08,
+  "end": 14.48
+ },
+ {
+  "w": "euros.",
+  "start": 14.48,
+  "end": 15.12
+ },
+ {
+  "w": "Apúntate",
+  "start": 15.12,
+  "end": 15.76
+ },
+ {
+  "w": "en",
+  "start": 15.76,
+  "end": 15.84
+ },
+ {
+  "w": "el",
+  "start": 15.84,
+  "end": 15.92
+ },
+ {
+  "w": "Instagram",
+  "start": 15.92,
+  "end": 16.32
+ },
+ {
+  "w": "de",
+  "start": 16.32,
+  "end": 16.48
+ },
+ {
+  "w": "Elite",
+  "start": 16.48,
+  "end": 17.04
+ },
+ {
+  "w": "Bomberos.",
+  "start": 17.04,
+  "end": 17.76
+ },
+ {
+  "w": "Y",
+  "start": 17.76,
+  "end": 17.92
+ },
+ {
+  "w": "después",
+  "start": 17.92,
+  "end": 18.4
+ },
+ {
+  "w": "repasa",
+  "start": 18.4,
+  "end": 19.04
+ },
+ {
+  "w": "cada",
+  "start": 19.04,
+  "end": 19.28
+ },
+ {
+  "w": "fallo",
+  "start": 19.28,
+  "end": 19.6
+ },
+ {
+  "w": "con",
+  "start": 19.6,
+  "end": 19.76
+ },
+ {
+  "w": "bomberados.",
+  "start": 19.76,
+  "end": 20.72
+ },
+ {
+  "w": "Falla",
+  "start": 20.72,
+  "end": 21.2
+ },
+ {
+  "w": "en",
+  "start": 21.2,
+  "end": 21.28
+ },
+ {
+  "w": "casa,",
+  "start": 21.28,
+  "end": 21.76
+ },
+ {
+  "w": "no",
+  "start": 21.76,
+  "end": 21.92
+ },
+ {
+  "w": "en",
+  "start": 21.92,
+  "end": 22.08
+ },
+ {
+  "w": "el",
+  "start": 22.08,
+  "end": 22.24
+ },
+ {
+  "w": "examen.",
+  "start": 22.24,
+  "end": 22.831
+ }
+]

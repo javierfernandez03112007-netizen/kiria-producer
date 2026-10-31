@@ -124,6 +124,7 @@ function dots(t) {
 // ---------------------------------------------------------------- cámara: arranca pegada a la primera ✗ y se aleja
 const SHEET0 = { x: 540, y: 880, s: 0.92 };
 const MARKX = 215, ROWY = i => -205 + i * 54, BX = j => -150 + j * 80;
+const FIRST = 1;                                      // fila de la ✗ que abre el vídeo (en primer plano)
 function sections() { return ['academia', 'domingo', 'simulacro', 'desde', 'apuntate', 'despues', 'marca'].map(k => CUE[k]).filter(x => x !== undefined); }
 function shakeAmt(t) {
   let s = 0;
@@ -133,7 +134,7 @@ function shakeAmt(t) {
   return s;
 }
 function camera(t) {
-  const px = SHEET0.x + MARKX * SHEET0.s, py = SHEET0.y + ROWY(0) * SHEET0.s;
+  const px = SHEET0.x + MARKX * SHEET0.s, py = SHEET0.y + ROWY(FIRST) * SHEET0.s;
   const k = eio(prog(t, 0.36, 0.95));
   const z0 = Math.pow(6.5, 1 - k), m = k / z0;                  // la ✗ va en línea recta del centro a su sitio
   const fx = px + (540 - px) * m, fy = py + (960 - py) * m;
@@ -182,8 +183,8 @@ function checkMark(p, col) {                          // ✓ que se dibuja
 function stampDraw(p, out) {                          // sello de goma «SUSPENSO»
   const a = clamp(p * 4) * (1 - out);
   if (a <= 0) return;
-  const s = lerp(1.9, 1, eo(p)) * (1 + 0.35 * out);
-  g.save(); g.translate(0, 30); g.rotate(-0.24); g.scale(s, s); g.globalAlpha *= a * 0.9;
+  const s = lerp(1.9, 1, eo(p)) * (1 + 0.35 * out) * 0.84;       // dentro del papel
+  g.save(); g.translate(-8, 30); g.rotate(-0.24); g.scale(s, s); g.globalAlpha *= a * 0.9;
   g.strokeStyle = PEN; g.lineWidth = 9; rr(-262, -98, 524, 176, 18); g.stroke();
   g.lineWidth = 3; rr(-246, -82, 492, 144, 12); g.stroke();
   g.letterSpacing = '6px'; txt('SUSPENSO', 3, 44, 150, PEN, 400, 'center', 'Bebas'); g.letterSpacing = '0px';
@@ -230,9 +231,9 @@ function sheetDraw(t, st) {
   // salpicadura de tinta de la primera ✗
   if (st.splash > 0) {
     g.fillStyle = PEN;
-    for (let i = 0; i < 16; i++) {
-      const an = hash(i * 9.1) * Math.PI * 2, d = 30 + 46 * hash(i * 4.3) * st.splash, r = (1 + 4 * Math.pow(hash(i * 2.7), 2)) * clamp(st.splash * 3);
-      g.beginPath(); g.arc(MARKX + Math.cos(an) * d, ROWY(0) + Math.sin(an) * d, r, 0, 7); g.fill();
+    for (let i = 0; i < 9; i++) {
+      const an = hash(i * 9.1) * Math.PI * 2, d = 30 + 40 * hash(i * 4.3) * st.splash, r = (0.8 + 2.2 * Math.pow(hash(i * 2.7), 2)) * clamp(st.splash * 3);
+      g.beginPath(); g.arc(MARKX + Math.cos(an) * d, ROWY(FIRST) + Math.sin(an) * d, r, 0, 7); g.fill();
     }
   }
   txt('FIRMA:', -262, 352, 22, '#6B6760', 700, 'left', 'Inter');
@@ -261,7 +262,7 @@ function sheet(t) {
   if (a <= 0) return;
   const marks = [], flip = [];
   for (let i = 0; i < 10; i++) {
-    marks.push(i === 0 ? clamp((t + 0.1) / 0.3) : prog(t, CUE.fallando - 0.05 + 0.065 * i, 0.16));
+    marks.push(i === FIRST ? clamp((t + 0.1) / 0.3) : prog(t, CUE.fallando - 0.05 + 0.065 * i, 0.16));
     flip.push(prog(t, CUE.repasa + 0.1 + 0.075 * i, 0.22));
   }
   const st = { marks, flip, splash: prog(t, 0.12, 0.25) * (1 - prog(t, CUE.despues - 0.2, 0.2)), stamp: prog(t, CUE.examen1 - 0.02, 0.16), stampOut: eo(prog(t, CUE.repasa + 0.45, 0.4)), scan: prog(t, CUE.repasa, 0.9) };
@@ -374,20 +375,42 @@ function pill(cx, cy, h, px, label, fill, stroke, col, dot, t) {
 function measure(s, px, sp = 0.02) { g.font = `400 ${px}px Bebas`; g.letterSpacing = `${(px * sp).toFixed(1)}px`; const w = g.measureText(s).width; g.letterSpacing = '0px'; return w; }
 function pillW(px, h, label, dot) { return measure(label, px, 0.04) + h * 0.9 + (dot ? h * 0.5 : 0); }
 
+const cross = y => 1 - 0.7 * Math.exp(-Math.pow((y - 330) / 85, 2));   // al cruzar la franja de los subtítulos, casi transparente
 function simStack(t) {
   const t0 = CUE.simulacro;
   if (t < t0 - 0.14) return;
   const k = eio(prog(t, CUE.desde - 0.15, 0.55));
+  const kb = eio(prog(t, CUE.desde - 0.03, 0.55)), kc = eio(prog(t, CUE.desde + 0.07, 0.55));   // escalonados: no se pisan
   const fade = 1 - prog(t, CUE.marca - 0.1, 0.4) * 0.6;
   const sh = shakeAmt(t) * (1 - k);
   g.save(); g.translate(sh * 16 * Math.sin(t * 93), sh * 12 * Math.cos(t * 71)); g.globalAlpha = fade;
   // posiciones en la cabecera
   const tw46 = measure('SIMULACRO', 46), bx = 60 + tw46 + 18, bw = pillW(26, 42, 'EN DIRECTO', true), cxh = bx + bw + 12, cw = pillW(26, 42, 'DOM 1 NOV', false);
+  // chip de la fecha: sale de la casilla del domingo 1 (por detrás del título)
+  const ca = eio(prog(t, t0 - 0.12, 0.5));
+  if (CAM && ca > 0) {
+    const [sx, sy] = camPt(CAL.x + COLX(6), CAL.y + ROWYC(0));
+    const big = { x: 540, y: 556, h: 84, px: 54 };
+    const w0 = 104, h0 = 90;
+    const wb = pillW(54, 84, 'DOMINGO · 1 NOV', false);
+    const cy = eo(prog(t, t0 - 0.12, 0.3));                       // sube antes de ir a la izquierda: rodea el título
+    let x = lerp(sx, big.x, ca), y = lerp(sy, big.y, cy), h = lerp(h0, big.h, ca), w = lerp(w0, wb, ca);
+    if (kc > 0) { x = lerp(x, cxh + cw / 2, kc); y = lerp(y, 124, kc); h = lerp(h, 42, kc); w = lerp(w, cw, kc); }
+    g.save(); g.globalAlpha *= kc > 0 && kc < 1 ? cross(y) : 1;
+    rr(x - w / 2, y - h / 2, w, h, lerp(14, h / 2, ca)); g.fillStyle = `rgba(255,122,26,${lerp(0.3, 0.16, ca).toFixed(3)})`; g.fill();
+    g.strokeStyle = ORANGE; g.lineWidth = lerp(7, 3, ca); g.stroke();
+    const lab = kc < 0.5 ? 'DOMINGO · 1 NOV' : 'DOM 1 NOV', lpx = lerp(54, 26, kc);
+    g.globalAlpha *= clamp((ca - 0.45) * 3) * (kc < 0.5 ? 1 - kc * 2 : (kc - 0.5) * 2);
+    g.font = `400 ${lpx}px Bebas`; g.letterSpacing = `${(lpx * 0.04).toFixed(1)}px`; g.textAlign = 'center'; g.fillStyle = ORANGE;
+    g.fillText(lab, x, y + lpx * 0.35); g.letterSpacing = '0px';
+    g.restore();
+    if (ca < 0.6) { g.save(); g.globalAlpha *= 1 - ca / 0.6; txt('1', x - 40 * (1 - ca), y - 8, 30, WHITE, 700, 'left', 'Inter'); g.restore(); }
+  }
   // título
   const px = lerp(236, 46, k), tw = measure('SIMULACRO', px);
   const slam = eo(prog(t, t0 - 0.04, 0.16)), sc = lerp(1.55, 1, slam);
   const tx = lerp(540 - tw / 2, 60, k), ty = lerp(800, 140, k);
-  g.save(); g.globalAlpha *= clamp(slam * 3);
+  g.save(); g.globalAlpha *= clamp(slam * 3) * (k > 0 && k < 1 ? cross(ty - px * 0.35) : 1);
   g.translate(tx + tw / 2, ty - px * 0.35); g.scale(sc, sc); g.translate(-(tx + tw / 2), -(ty - px * 0.35));
   g.font = `400 ${px}px Bebas`; g.letterSpacing = `${(px * 0.02).toFixed(1)}px`; g.textAlign = 'left'; g.fillStyle = WHITE;
   g.shadowColor = 'rgba(255,122,26,0.45)'; g.shadowBlur = 40 * (1 - k); g.fillText('SIMULACRO', tx, ty); g.shadowBlur = 0; g.letterSpacing = '0px';
@@ -397,31 +420,12 @@ function simStack(t) {
   // EN DIRECTO
   const ba = back(prog(t, CUE.directo - 0.06, 0.36));
   if (ba > 0) {
-    const bh = lerp(88, 42, k), bpx = lerp(62, 26, k);
-    const bcx = lerp(540, bx + bw / 2, k), bcy = lerp(912, 124, k);
-    g.save(); g.translate(bcx, bcy); g.scale(k > 0 ? 1 : ba, k > 0 ? 1 : ba);
-    if (k < 1) { const gl = g.createRadialGradient(0, 0, 10, 0, 0, 260); gl.addColorStop(0, `rgba(255,59,59,${(0.35 * (1 - k)).toFixed(3)})`); gl.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gl; g.fillRect(-260, -260, 520, 520); }
+    const bh = lerp(88, 42, kb), bpx = lerp(62, 26, kb);
+    const bcx = lerp(540, bx + bw / 2, kb), bcy = lerp(912, 124, kb);
+    g.save(); g.translate(bcx, bcy); g.scale(kb > 0 ? 1 : ba, kb > 0 ? 1 : ba); g.globalAlpha *= kb > 0 && kb < 1 ? cross(bcy) : 1;
+    if (kb < 1) { const gl = g.createRadialGradient(0, 0, 10, 0, 0, 260); gl.addColorStop(0, `rgba(255,59,59,${(0.35 * (1 - kb)).toFixed(3)})`); gl.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gl; g.fillRect(-260, -260, 520, 520); }
     pill(0, 0, bh, bpx, 'EN DIRECTO', RED, null, '#FFFFFF', true, t);
     g.restore();
-  }
-  // chip de la fecha: sale de la casilla del domingo 1
-  const ca = eio(prog(t, t0 - 0.12, 0.5));
-  if (CAM && ca > 0) {
-    const [sx, sy] = camPt(CAL.x + COLX(6), CAL.y + ROWYC(0));
-    const big = { x: 540, y: 528, h: 84, px: 54 };
-    const w0 = 104, h0 = 90;
-    const wb = pillW(54, 84, 'DOMINGO · 1 NOV', false);
-    let x = lerp(sx, big.x, ca), y = lerp(sy, big.y, ca), h = lerp(h0, big.h, ca), w = lerp(w0, wb, ca);
-    if (k > 0) { x = lerp(x, cxh + cw / 2, k); y = lerp(y, 124, k); h = lerp(h, 42, k); w = lerp(w, cw, k); }
-    g.save();
-    rr(x - w / 2, y - h / 2, w, h, lerp(14, h / 2, ca)); g.fillStyle = `rgba(255,122,26,${lerp(0.3, 0.16, ca).toFixed(3)})`; g.fill();
-    g.strokeStyle = ORANGE; g.lineWidth = lerp(7, 3, ca); g.stroke();
-    const lab = k < 0.5 ? 'DOMINGO · 1 NOV' : 'DOM 1 NOV', lpx = lerp(54, 26, k);
-    g.globalAlpha *= clamp((ca - 0.45) * 3) * (k < 0.5 ? 1 - k * 2 : (k - 0.5) * 2) ;
-    g.font = `400 ${lpx}px Bebas`; g.letterSpacing = `${(lpx * 0.04).toFixed(1)}px`; g.textAlign = 'center'; g.fillStyle = ORANGE;
-    g.fillText(lab, x, y + lpx * 0.35); g.letterSpacing = '0px';
-    g.restore();
-    if (ca < 0.6) { g.save(); g.globalAlpha *= 1 - ca / 0.6; txt('1', x - 40 * (1 - ca), y - 8, 30, WHITE, 700, 'left', 'Inter'); g.restore(); }
   }
   // Adrián Luna
   const pa = eo(prog(t, CUE.adrian - 0.1, 0.4)), pout = eio(prog(t, CUE.desde - 0.2, 0.42));

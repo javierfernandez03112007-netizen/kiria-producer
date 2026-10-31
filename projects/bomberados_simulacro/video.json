@@ -1,22 +1,173 @@
 {
  "formato": "promo simulacro (Élite Bomberos) · estilo app",
- "voz": {"tempo": 1.03, "count_line": 0, "count": 0, "pause": {"1": 0.3, "2": 0.35, "3": 0.26, "4": 0.28, "5": 0.3}, "pause_def": 0.24},
+ "voz": {
+  "tempo": 1.03,
+  "count_line": 0,
+  "count": 0,
+  "pause": {
+   "1": 0.3,
+   "2": 0.35,
+   "3": 0.26,
+   "4": 0.28,
+   "5": 0.3
+  },
+  "pause_def": 0.24
+ },
  "cues": {
-  "estudiar": ["estudiar", 1, 1], "fallando": ["fallando", 1, 1], "examen1": ["examen", 1, 1],
-  "academia": ["academia", 1, 2], "simulacro0": ["simulacro", 1, 2],
-  "domingo": ["domingo", 1, 3], "uno": ["1", 1, 3], "simulacro": ["simulacro", 1, 3], "directo": ["directo", 1, 3],
-  "adrian": ["adrián", 1, 3], "elite": ["élite", 1, 3],
-  "desde": ["desde", 1, 4], "casa": ["casa", 1, 4], "examen2": ["examen", 1, 4], "precio": ["10", 1, 4],
-  "apuntate": ["apúntate", 1, 5], "instagram": ["instagram", 1, 5], "elite2": ["élite", 1, 5],
-  "despues": ["después", 1, 6], "repasa": ["repasa", 1, 6], "marca": ["bomberados", 1, 6], "falla": ["falla", 1, 6]
+  "estudiar": [
+   "estudiar",
+   1,
+   1
+  ],
+  "fallando": [
+   "fallando",
+   1,
+   1
+  ],
+  "examen1": [
+   "examen",
+   1,
+   1
+  ],
+  "academia": [
+   "academia",
+   1,
+   2
+  ],
+  "simulacro0": [
+   "simulacro",
+   1,
+   2
+  ],
+  "domingo": [
+   "domingo",
+   1,
+   3
+  ],
+  "uno": [
+   "1",
+   1,
+   3
+  ],
+  "simulacro": [
+   "simulacro",
+   1,
+   3
+  ],
+  "directo": [
+   "directo",
+   1,
+   3
+  ],
+  "adrian": [
+   "adrián",
+   1,
+   3
+  ],
+  "elite": [
+   "élite",
+   1,
+   3
+  ],
+  "desde": [
+   "desde",
+   1,
+   4
+  ],
+  "casa": [
+   "casa",
+   1,
+   4
+  ],
+  "examen2": [
+   "examen",
+   1,
+   4
+  ],
+  "precio": [
+   "10",
+   1,
+   4
+  ],
+  "apuntate": [
+   "apúntate",
+   1,
+   5
+  ],
+  "instagram": [
+   "instagram",
+   1,
+   5
+  ],
+  "elite2": [
+   "élite",
+   1,
+   5
+  ],
+  "despues": [
+   "después",
+   1,
+   6
+  ],
+  "repasa": [
+   "repasa",
+   1,
+   6
+  ],
+  "marca": [
+   "bomberados",
+   1,
+   6
+  ],
+  "falla": [
+   "falla",
+   1,
+   6
+  ]
  },
  "subs_key": {
-  "1": {"harto": "#EEF2F6", "fallando": "#FF5A4E", "examen": "#FF5A4E"},
-  "2": {"academia": "#EEF2F6", "simulacro": "#FF5A4E"},
-  "3": {"domingo": "#FF7A1A", "1": "#FF7A1A", "noviembre": "#FF7A1A", "simulacro": "#EEF2F6", "directo": "#FF5A4E", "adrián": "#F2B233", "luna": "#F2B233", "élite": "#FF7A1A", "bomberos": "#FF7A1A"},
-  "4": {"casa": "#2DD4BF", "examen": "#EEF2F6", "verdad": "#EEF2F6", "10": "#F2B233", "euros": "#F2B233"},
-  "5": {"apúntate": "#FF7A1A", "instagram": "#EEF2F6", "élite": "#FF7A1A", "bomberos": "#FF7A1A"},
-  "6": {"fallo": "#FF5A4E", "bomberados": "#F2B233", "casa": "#62E3D4", "examen": "#EEF2F6"}
+  "1": {
+   "harto": "#EEF2F6",
+   "fallando": "#FF5A4E",
+   "examen": "#FF5A4E"
+  },
+  "2": {
+   "academia": "#EEF2F6",
+   "simulacro": "#FF5A4E"
+  },
+  "3": {
+   "domingo": "#FF7A1A",
+   "1": "#FF7A1A",
+   "noviembre": "#FF7A1A",
+   "simulacro": "#EEF2F6",
+   "directo": "#FF5A4E",
+   "adrián": "#F2B233",
+   "luna": "#F2B233",
+   "élite": "#FF7A1A",
+   "bomberos": "#FF7A1A"
+  },
+  "4": {
+   "casa": "#2DD4BF",
+   "examen": "#EEF2F6",
+   "verdad": "#EEF2F6",
+   "10": "#F2B233",
+   "euros": "#F2B233"
+  },
+  "5": {
+   "apúntate": "#FF7A1A",
+   "instagram": "#EEF2F6",
+   "élite": "#FF7A1A",
+   "bomberos": "#FF7A1A"
+  },
+  "6": {
+   "fallo": "#FF5A4E",
+   "bomberados": "#F2B233",
+   "casa": "#62E3D4",
+   "examen": "#EEF2F6"
+  }
  },
- "portada": {"titulo": "SIMULACRO EN DIRECTO · 10 €", "etiqueta": "DOMINGO 1 NOV · ONLINE · ÉLITE BOMBEROS"}
+ "portada": {
+  "titulo": "¿HARTO DE SUSPENDER?",
+  "etiqueta": "DOMINGO 1 NOV · ONLINE · 10 €"
+ }
 }

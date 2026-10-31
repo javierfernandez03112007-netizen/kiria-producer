@@ -1,0 +1,379 @@
+[
+ {
+  "text": "¿Harto de estudiar y seguir fallando en el examen?",
+  "start": 0.0,
+  "end": 2.417,
+  "words": [
+   {
+    "w": "¿Harto",
+    "start": 0.0,
+    "end": 0.466
+   },
+   {
+    "w": "de",
+    "start": 0.466,
+    "end": 0.544
+   },
+   {
+    "w": "estudiar",
+    "start": 0.544,
+    "end": 0.932
+   },
+   {
+    "w": "y",
+    "start": 0.932,
+    "end": 1.087
+   },
+   {
+    "w": "seguir",
+    "start": 1.087,
+    "end": 1.398
+   },
+   {
+    "w": "fallando",
+    "start": 1.398,
+    "end": 1.786
+   },
+   {
+    "w": "en",
+    "start": 1.786,
+    "end": 1.942
+   },
+   {
+    "w": "el",
+    "start": 1.942,
+    "end": 2.019
+   },
+   {
+    "w": "examen?",
+    "start": 2.019,
+    "end": 2.417
+   }
+  ]
+ },
+ {
+  "text": "¿Y tu academia no te hace ni un simulacro?",
+  "start": 2.583,
+  "end": 4.67,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 2.583,
+    "end": 2.652
+   },
+   {
+    "w": "tu",
+    "start": 2.652,
+    "end": 2.738
+   },
+   {
+    "w": "academia",
+    "start": 2.738,
+    "end": 3.282
+   },
+   {
+    "w": "no",
+    "start": 3.282,
+    "end": 3.359
+   },
+   {
+    "w": "te",
+    "start": 3.359,
+    "end": 3.515
+   },
+   {
+    "w": "hace",
+    "start": 3.515,
+    "end": 3.825
+   },
+   {
+    "w": "ni",
+    "start": 3.825,
+    "end": 3.981
+   },
+   {
+    "w": "un",
+    "start": 3.981,
+    "end": 4.136
+   },
+   {
+    "w": "simulacro?",
+    "start": 4.136,
+    "end": 4.67
+   }
+  ]
+ },
+ {
+  "text": "Este domingo, 1 de noviembre, simulacro en directo con Adrián Luna, en Élite Bomberos.",
+  "start": 4.806,
+  "end": 9.65,
+  "words": [
+   {
+    "w": "Este",
+    "start": 4.806,
+    "end": 4.961
+   },
+   {
+    "w": "domingo,",
+    "start": 4.961,
+    "end": 5.583
+   },
+   {
+    "w": "1",
+    "start": 5.583,
+    "end": 5.816
+   },
+   {
+    "w": "de",
+    "start": 5.816,
+    "end": 5.971
+   },
+   {
+    "w": "noviembre,",
+    "start": 5.971,
+    "end": 6.563
+   },
+   {
+    "w": "simulacro",
+    "start": 6.563,
+    "end": 7.136
+   },
+   {
+    "w": "en",
+    "start": 7.136,
+    "end": 7.214
+   },
+   {
+    "w": "directo",
+    "start": 7.214,
+    "end": 7.524
+   },
+   {
+    "w": "con",
+    "start": 7.524,
+    "end": 7.68
+   },
+   {
+    "w": "Adrián",
+    "start": 7.68,
+    "end": 8.146
+   },
+   {
+    "w": "Luna,",
+    "start": 8.146,
+    "end": 8.621
+   },
+   {
+    "w": "en",
+    "start": 8.621,
+    "end": 8.689
+   },
+   {
+    "w": "Élite",
+    "start": 8.689,
+    "end": 9.155
+   },
+   {
+    "w": "Bomberos.",
+    "start": 9.155,
+    "end": 9.65
+   }
+  ]
+ },
+ {
+  "text": "Desde tu casa, como en el examen de verdad… y por solo 10 euros.",
+  "start": 9.757,
+  "end": 13.417,
+  "words": [
+   {
+    "w": "Desde",
+    "start": 9.757,
+    "end": 10.068
+   },
+   {
+    "w": "tu",
+    "start": 10.068,
+    "end": 10.223
+   },
+   {
+    "w": "casa,",
+    "start": 10.223,
+    "end": 10.515
+   },
+   {
+    "w": "como",
+    "start": 10.515,
+    "end": 10.68
+   },
+   {
+    "w": "en",
+    "start": 10.68,
+    "end": 10.757
+   },
+   {
+    "w": "el",
+    "start": 10.757,
+    "end": 10.913
+   },
+   {
+    "w": "examen",
+    "start": 10.913,
+    "end": 11.301
+   },
+   {
+    "w": "de",
+    "start": 11.301,
+    "end": 11.456
+   },
+   {
+    "w": "verdad…",
+    "start": 11.456,
+    "end": 11.981
+   },
+   {
+    "w": "y",
+    "start": 11.981,
+    "end": 12.155
+   },
+   {
+    "w": "por",
+    "start": 12.155,
+    "end": 12.311
+   },
+   {
+    "w": "solo",
+    "start": 12.311,
+    "end": 12.621
+   },
+   {
+    "w": "10",
+    "start": 12.621,
+    "end": 13.01
+   },
+   {
+    "w": "euros.",
+    "start": 13.01,
+    "end": 13.417
+   }
+  ]
+ },
+ {
+  "text": "Apúntate en el Instagram de Élite Bomberos.",
+  "start": 13.466,
+  "end": 15.65,
+  "words": [
+   {
+    "w": "Apúntate",
+    "start": 13.466,
+    "end": 13.981
+   },
+   {
+    "w": "en",
+    "start": 13.981,
+    "end": 14.058
+   },
+   {
+    "w": "el",
+    "start": 14.058,
+    "end": 14.136
+   },
+   {
+    "w": "Instagram",
+    "start": 14.136,
+    "end": 14.524
+   },
+   {
+    "w": "de",
+    "start": 14.524,
+    "end": 14.68
+   },
+   {
+    "w": "Élite",
+    "start": 14.68,
+    "end": 15.223
+   },
+   {
+    "w": "Bomberos.",
+    "start": 15.223,
+    "end": 15.65
+   }
+  ]
+ },
+ {
+  "text": "Y después, repasa cada fallo con Bomberados: falla en casa, no en el examen.",
+  "start": 15.66,
+  "end": 20.002,
+  "words": [
+   {
+    "w": "Y",
+    "start": 15.66,
+    "end": 15.786
+   },
+   {
+    "w": "después,",
+    "start": 15.786,
+    "end": 16.252
+   },
+   {
+    "w": "repasa",
+    "start": 16.252,
+    "end": 16.874
+   },
+   {
+    "w": "cada",
+    "start": 16.874,
+    "end": 17.107
+   },
+   {
+    "w": "fallo",
+    "start": 17.107,
+    "end": 17.417
+   },
+   {
+    "w": "con",
+    "start": 17.417,
+    "end": 17.573
+   },
+   {
+    "w": "Bomberados:",
+    "start": 17.573,
+    "end": 18.349
+   },
+   {
+    "w": "falla",
+    "start": 18.349,
+    "end": 18.806
+   },
+   {
+    "w": "en",
+    "start": 18.806,
+    "end": 18.883
+   },
+   {
+    "w": "casa,",
+    "start": 18.883,
+    "end": 19.201
+   },
+   {
+    "w": "no",
+    "start": 19.201,
+    "end": 19.326
+   },
+   {
+    "w": "en",
+    "start": 19.326,
+    "end": 19.468
+   },
+   {
+    "w": "el",
+    "start": 19.468,
+    "end": 19.611
+   },
+   {
+    "w": "examen.",
+    "start": 19.611,
+    "end": 20.002
+   }
+  ]
+ }
+]
