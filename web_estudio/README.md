@@ -6,7 +6,8 @@ vídeos hechos con IA directamente a empresas** (no se vende el motor ni las ide
 - Página: `index.html` (un solo archivo, sin librerías) + `media/` (clips y pósters).
 - Vista previa privada (Artifact): https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy — se actualiza publicando
   este mismo `index.html` con esa `url`. Solo el dueño la ve hasta que la comparta desde el menú «Compartir».
-- Copia fija de esta versión: etiqueta git `web-estudio-v1`.
+- Copia fija de esta versión: rama `web-estudio-v1` (commit 5913977; no la muevas). Las etiquetas git no se pueden
+  subir desde estas máquinas (el proxy devuelve 403).
 
 ## Concepto
 Una sala de montaje: la página se lee como un reel vertical. Titular en Anton con el recuadro amarillo de nuestros
