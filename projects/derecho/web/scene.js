@@ -667,7 +667,7 @@ function buildMats() {
   M.brass = metal(0xcfa860, 0.27); M.gold = metal(0xffcf6e, 0.18); M.steel = metal(0xd3d8e0, 0.16); M.dsteel = metal(0x8a929e, 0.3); M.silver = metal(0xe6e9ee, 0.12);
   M.marble = new THREE.MeshPhysicalMaterial({ map: repTex(marbleTex('#ece8e1', '#8f8a82'), 1, 1), roughness: 0.2, clearcoat: 0.6, clearcoatRoughness: 0.1 });
   M.stone = new THREE.MeshStandardMaterial({ map: repTex(marbleTex('#cfc9be', '#9a9387', 9, 12), 1, 1), roughness: 0.62 });
-  M.cloth = new THREE.MeshPhysicalMaterial({ color: 0x0b0c10, roughness: 0.82, sheen: 1, sheenRoughness: 0.45, sheenColor: new THREE.Color(0x5a6070) });
+  M.cloth = new THREE.MeshPhysicalMaterial({ color: 0x08090c, roughness: 0.78, sheen: 1, sheenRoughness: 0.55, sheenColor: new THREE.Color(0x2c2f37) });
   M.lace = new THREE.MeshPhysicalMaterial({ color: 0xf4f2ec, roughness: 0.7, sheen: 1, sheenColor: new THREE.Color(0xffffff) });
   M.paper = new THREE.MeshStandardMaterial({ color: 0xf2eee3, roughness: 0.9 });
   M.pages = new THREE.MeshStandardMaterial({ map: canvasTex(64, 256, (g, w, h) => { g.fillStyle = '#efe9da'; g.fillRect(0, 0, w, h); for (let i = 0; i < h; i += 2) { g.fillStyle = `rgba(120,100,70,${0.05 + hash(i) * 0.12})`; g.fillRect(0, i, w, 1); } }), roughness: 0.92 });
@@ -907,9 +907,9 @@ function buildCenter() {
   const stand = grp(at(cyl(0.006, 0.006, 0.5, M.brass, 10), 0, 0.33, 0), at(cyl(0.004, 0.004, 0.2, M.brass, 8), 0, 0.57, 0, 0, 0, Math.PI / 2), at(cyl(0.05, 0.05, 0.01, M.brass, 24), 0, 0.085, 0));
   const tg = toga(0.46, true); tg.position.y = 0.11; S.vit.add(stand, tg); S.vit.userData.toga = tg;
   S.dip = new THREE.Group(); Z.add(S.dip);
-  const roll = cyl(0.014, 0.014, 0.3, M.paper, 20); roll.rotation.z = Math.PI / 2; S.dip.add(roll);
+  const roll = cyl(0.012, 0.012, 0.25, M.paper, 20); roll.rotation.z = Math.PI / 2; S.dip.add(roll);
   const dpt = canvasTex(1024, 360, (g, w, h) => { g.fillStyle = '#f1ead8'; g.fillRect(0, 0, w, h); g.strokeStyle = '#b08a3e'; g.lineWidth = 8; g.strokeRect(18, 18, w - 36, h - 36); g.fillStyle = '#2b2218'; g.textAlign = 'center'; g.font = '700 46px Inter'; g.fillText('TÍTULO UNIVERSITARIO OFICIAL DE', w / 2, 110); g.font = '900 104px Inter'; g.fillText('GRADO EN DERECHO', w / 2, 225); g.font = '500 34px Inter'; g.fillText('240 créditos ECTS', w / 2, 300); });
-  S.dipP = mesh(new THREE.PlaneGeometry(0.3, 0.105), new THREE.MeshStandardMaterial({ map: dpt, roughness: 0.8, side: THREE.DoubleSide }), false); S.dipP.position.y = -0.06; S.dip.add(S.dipP);
+  S.dipP = mesh(new THREE.PlaneGeometry(0.24, 0.084), new THREE.MeshStandardMaterial({ map: dpt, roughness: 0.8, side: THREE.DoubleSide }), false); S.dipP.position.y = -0.06; S.dip.add(S.dipP);
   const rib = new THREE.Mesh(new THREE.TorusGeometry(0.016, 0.004, 8, 20), plastic(0x8e1418, 0.3)); rib.rotation.y = Math.PI / 2; S.dip.add(rib); S.dip.userData.rib = rib;
   // el campo (figuritas sencillas, miles) y su resplandor dorado
   const idx = []; for (let r = 0; r < FN; r++) for (let c = 0; c < FN; c++) if (!(c >= GRID0 && c < GRID0 + 10 && r >= GRID0 && r < GRID0 + 10)) idx.push([c, r]);
