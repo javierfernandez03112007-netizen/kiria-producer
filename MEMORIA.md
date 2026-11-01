@@ -49,6 +49,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Pendiente de permiso: borrar las ramas `render-mag-*` y archivar las 6 sesiones «Render Magisterio».
 
 ## Herramientas y accesos
+- **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
+  velocidad 1,00, estabilidad 0,50, similitud 1,00. Con la voz que generé yo (modelo v2 y efectos sintetizados y de ambiente) a Javi
+  **no le gustó el audio**: o él manda su MP3 (se sincroniza con `asr_parakeet.py` → `ajustar_voz.py`) o se usa `engine/tts.py`
+  (ya con sus ajustes). **Efectos: solo de ElevenLabs, uno por suceso, en el instante exacto y cortados cuando el suceso termina**
+  (nada de fondo continuo ni sonidos sintetizados). Modelo de Parakeet: se baja de las «releases» de sherpa-onnx en GitHub (≈ 490 MB).
 - **Voz y efectos desde la sesión**: `python3 engine/tts.py projects/<p>` (voz de Danny + tiempos de cada palabra, sin reconocedor)
   → `ajustar_voz.py` → `env_voz.py`; efectos realistas: `projects/magisterio/sfx_eleven.py` (copiar y cambiar la lista).
 - **Metricool**: conectado en claude.ai (1-11-2026); publicar solo tras la revisión de Javi.
