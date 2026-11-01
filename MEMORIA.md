@@ -60,5 +60,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (303 trimestral, 390 anual), IRPF (130 trimestral si es actividad empresarial), VeriFactu obligatorio para autónomos desde el 1-7-2027.
   ElevenLabs necesita plan de pago para uso comercial.
 
+## Bomberados (Élite Bomberos)
+Todo lo de la marca, el estado de cada vídeo, Notion y la siguiente tarea (Pregunta del día #4 PAS): **`bomberados/MEMORIA_BOMBERADOS.md`**.
+
 ## Canal de YouTube
 Kit hecho en `projects/canal/`: `perfil.png`, `banner.jpg`, `DESCRIPCION_CANAL.txt` («Las carreras, por dentro»).
