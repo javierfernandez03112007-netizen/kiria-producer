@@ -1,0 +1,43 @@
+{
+ "estilo": "app",
+ "numero": 5,
+ "tema": "PROTECCIÓN CIVIL · LEGISLACIÓN",
+ "intro": "leyes",
+ "enunciado": "¿Qué ley regula el Sistema Nacional de Protección Civil?",
+ "resaltar": ["ley"],
+ "opciones": ["Ley 2/1985, de 21 de enero.", "Real Decreto 524/2023, de 20 de junio.", "Ley Orgánica 4/1981, de 1 de junio.", "Ley 17/2015, de 9 de julio."],
+ "libros": ["LEY 2/1985", "RD 524/2023", "LO 4/1981", "LEY 17/2015"],
+ "correcta": "D",
+ "fuente": "Ley 17/2015, de 9 de julio, del Sistema Nacional de Protección Civil (BOE-A-2015-7730), que derogó la Ley 2/1985. Ver FUENTES.md.",
+ "banner": ["LA SOLUCIÓN,", "EN LA DESCRIPCIÓN"],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "voz": {"tempo": 1.0, "count_line": 2, "count": 4.4, "pause": {"1": 0.28, "2": 0.32, "3": 0.05, "4": 0.3, "5": 0.3, "6": 0.22}, "pause_def": 0.24},
+ "cues": {
+  "trampa": ["trampa", 1, 1],
+  "civil0": ["civil", 1, 1],
+  "enunciado": ["qué", 1, 2],
+  "resaltar": ["ley", 1, 2],
+  "opciones": ["ojo", 1, 3],
+  "derogada": ["derogada", 1, 3],
+  "cuenta": ["segundos", 1, 3],
+  "letras": [["a", 1, 4], ["b", 1, 4], ["c", 1, 4], ["d", 1, 4]],
+  "comenta": ["comenta", 1, 4],
+  "compartir": ["compártelo", 1, 4],
+  "acierta": ["acierta", 1, 4],
+  "descripcion": ["solución", 1, 5],
+  "marca": ["bomberados", 1, 6],
+  "prueba": ["pruébala", 1, 7]
+ },
+ "subs_key": {
+  "1": {"trampa": "#FF5A4E", "protección": "#FF7A1A", "civil": "#FF7A1A"},
+  "2": {"ley": "#F2B233", "sistema": "#FF7A1A", "nacional": "#FF7A1A"},
+  "3": {"ojo": "#F2B233", "derogada": "#FF5A4E", "cinco": "#FF5A4E", "segundos": "#FF5A4E"},
+  "4": {"a": "#2DD4BF", "b": "#FF7A1A", "c": "#F0457A", "d": "#8B7CF6", "comenta": "#EEF2F6", "letra": "#F2B233", "compártelo": "#2DD4BF", "compañero": "#2DD4BF", "oposición": "#2DD4BF", "acierta": "#F2B233"},
+  "5": {"solución": "#F2B233", "descripción": "#F2B233"},
+  "6": {"bomberados": "#F2B233", "casa": "#62E3D4", "examen": "#EEF2F6"},
+  "7": {"gratis": "#62E3D4", "cinco": "#F2B233", "días": "#F2B233"}
+ },
+ "portada": {"titulo": "¿QUÉ LEY ES?", "etiqueta": "PREGUNTA DEL DÍA · PROTECCIÓN CIVIL", "desfase": 1.6},
+ "realce": ["compartir", "marca", "prueba"],
+ "mezcla": {"sfx": 1.0}
+}

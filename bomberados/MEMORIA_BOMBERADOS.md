@@ -23,6 +23,14 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 - **Momentos de venta = lo más destacado del vídeo** (Javi, 1 nov): «¡Bomberados!», «¡Pruébala gratis cinco días!» y «compártelo / mándaselo a tu compañero de oposición» son cuando se vende la app: la voz ahí tiene que sonar MÁS fuerte, con más ímpetu y más clara que todo lo demás (gancho incluido) y algo más pausada (≈ 5 sílabas/s), sin efectos que la tapen, y la imagen con su golpe más grande.
   Cómo: en `script_tts.txt` (eleven_v3) indicaciones de ímpetu en esas frases ([excited], [emphatic], [proud]), una pausa corta («…») antes de «¡Bomberados!» y mayúsculas en la palabra clave (p. ej. «¡Pruébala GRATIS cinco días!»; los subtítulos salen de `script.txt` y no cambian); el gancho, urgente pero sin gritar más que la venta. Medir cada toma con `bomberados/plantillas/pregunta/medir_voz.py` (tiene que dar «OK»; si da «OJO», otra toma o generar esas frases aparte) y poner `"realce": ["compartir", "marca", "prueba"]` en pregunta.json (la mezcla sube la voz +3 dB y baja los efectos −8 dB en esas frases). En el PAS (ya entregado) no se cumplió: venta −20/−22 dB frente al gancho −17 dB, y «mándaselo…» demasiado rápido (7,7 sílabas/s).
 - Voz por defecto: Danny con eleven_v3 e indicaciones de emoción (ánimo: caótica en el caos, con ímpetu en la venta).
+- **Forma de trabajar desde el 1 nov (Javi)**: yo escribo el guion (siguiente vídeo según Notion) y se lo mando en
+  `GUION_PARA_GRABAR.txt` con `SendUserFile` (versión Eleven v3 con indicaciones entre corchetes + versión sin corchetes);
+  **la voz la graba Javi** y me manda 2–3 tomas (elijo con `medir_voz.py`). ElevenLabs por API **solo para efectos de
+  sonido** (la voz por API, solo si él lo pide). Mientras graba, voy haciendo la escena con tiempos provisionales.
+- **Efectos de sonido muy profesionales y pegados a la imagen (Javi)**: cada sonido empieza cuando empieza en pantalla lo
+  que lo produce y **acaba cuando acaba esa situación** (si el humo desaparece, el siseo se apaga en ese fotograma; si la
+  lluvia para, la lluvia para). Nada de colas que sigan sonando tras el final visual ni sonidos que acaben antes que su imagen.
+  En `compose.py`: `_tramo()` recorta o repite cada efecto a su tramo exacto (inicio, fin) con fundidos cortos.
 - **Importante para responder**: Javi solo ve bien el **último mensaje** de cada turno; lo que escribo a mitad del trabajo no le aparece.
   Los guiones y entregas van en el mensaje final y en archivos con `SendUserFile` (esos sí los ve). Le gusta que sea rápido.
 

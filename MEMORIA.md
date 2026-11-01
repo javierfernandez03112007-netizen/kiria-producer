@@ -7,7 +7,9 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
 - Respuestas en español, claras y con estimaciones de tiempo honestas.
 - Cada cambio se hace commit y push a `master` (sin PR salvo que lo pida), con las líneas de atribución que indique el sistema y sin
   identificadores de modelo.
-- Javi suele mandar el **audio de ElevenLabs (voz Danny)**; si no, se genera con la API (ver «Herramientas»).
+- Javi manda el **audio de ElevenLabs (voz Danny)**: yo le doy el guion y él graba la voz (decidido el 1 nov 2026; la voz
+  por API solo si lo pide). La API de ElevenLabs se usa para los **efectos de sonido**, cada uno pegado a su imagen
+  (acaba cuando acaba en pantalla lo que lo produce).
 - Guion: lo escribo yo siguiendo `engine/REGLAS.md`, `engine/GUION.md` y `engine/HOOKS.md`; se lo doy **todo junto en un solo bloque**
   para pegarlo en ElevenLabs. Datos siempre reales y con fuente en `FUENTES.md` (lo dudoso, «CONFIRMAR»).
 - Entrega de cada vídeo: `out/<nombre>.mp4` (1080x1920, 60 fps, 20–60 MB, ≈ −15/−16 LUFS), `out/portada.jpg` (9:16), `out/miniatura.jpg`
