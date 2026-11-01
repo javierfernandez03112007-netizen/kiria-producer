@@ -35,7 +35,7 @@ Lo que funciona: carreras «por dentro» con un giro verdadero («acabas la carr
 datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o juez?»). Los duelos generan comentarios.
 
 ## Próximas ideas
-1. **Psicología**: «Estudias cuatro años de Psicología… y la ley no te deja tratar ni a un solo paciente» → Máster en Psicología General
+1. **Psicología** (elegida el 1-11-2026; plan y datos en `projects/psicologia/IDEA.md` y `FUENTES.md`): «Estudias cuatro años de Psicología… y la ley no te deja tratar ni a un solo paciente» → Máster en Psicología General
    Sanitaria o PIR. (Comprobar Ley 33/2011, créditos del máster, plazas PIR y nota de corte antes del guion.)
 2. Medicina (6 años + MIR), duelos (ADE vs Economía, Matemáticas vs Física, Arquitectura vs Edificación, Informática vs Ciencia de Datos),
    «la nota de corte más alta no es Medicina», serie numerada «Carreras por dentro».
