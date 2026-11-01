@@ -1,0 +1,1010 @@
+[
+ {
+  "text": "La bolsa española subió un 58 % el año pasado… y 96 de cada 100 fondos dirigidos por profesionales lo hicieron peor.",
+  "start": 0.0,
+  "end": 7.602,
+  "words": [
+   {
+    "w": "La",
+    "start": 0.0,
+    "end": 0.148
+   },
+   {
+    "w": "bolsa",
+    "start": 0.148,
+    "end": 0.519
+   },
+   {
+    "w": "española",
+    "start": 0.519,
+    "end": 0.963
+   },
+   {
+    "w": "subió",
+    "start": 0.963,
+    "end": 1.333
+   },
+   {
+    "w": "un",
+    "start": 1.333,
+    "end": 1.556
+   },
+   {
+    "w": "58",
+    "start": 1.556,
+    "end": 2.111
+   },
+   {
+    "w": "%",
+    "start": 2.111,
+    "end": 2.667
+   },
+   {
+    "w": "el",
+    "start": 2.667,
+    "end": 2.815
+   },
+   {
+    "w": "año",
+    "start": 2.815,
+    "end": 3.037
+   },
+   {
+    "w": "pasado…",
+    "start": 3.037,
+    "end": 3.565
+   },
+   {
+    "w": "y",
+    "start": 3.565,
+    "end": 3.648
+   },
+   {
+    "w": "96",
+    "start": 3.648,
+    "end": 4.241
+   },
+   {
+    "w": "de",
+    "start": 4.241,
+    "end": 4.389
+   },
+   {
+    "w": "cada",
+    "start": 4.389,
+    "end": 4.611
+   },
+   {
+    "w": "100",
+    "start": 4.611,
+    "end": 4.907
+   },
+   {
+    "w": "fondos",
+    "start": 4.907,
+    "end": 5.278
+   },
+   {
+    "w": "dirigidos",
+    "start": 5.278,
+    "end": 5.796
+   },
+   {
+    "w": "por",
+    "start": 5.796,
+    "end": 5.944
+   },
+   {
+    "w": "profesionales",
+    "start": 5.944,
+    "end": 6.713
+   },
+   {
+    "w": "lo",
+    "start": 6.713,
+    "end": 6.833
+   },
+   {
+    "w": "hicieron",
+    "start": 6.833,
+    "end": 7.352
+   },
+   {
+    "w": "peor.",
+    "start": 7.352,
+    "end": 7.602
+   }
+  ]
+ },
+ {
+  "text": "Entonces, ¿para qué sirve estudiar Economía? Te lo digo al final.",
+  "start": 7.657,
+  "end": 11.167,
+  "words": [
+   {
+    "w": "Entonces,",
+    "start": 7.657,
+    "end": 8.426
+   },
+   {
+    "w": "¿para",
+    "start": 8.426,
+    "end": 8.574
+   },
+   {
+    "w": "qué",
+    "start": 8.574,
+    "end": 8.722
+   },
+   {
+    "w": "sirve",
+    "start": 8.722,
+    "end": 9.167
+   },
+   {
+    "w": "estudiar",
+    "start": 9.167,
+    "end": 9.611
+   },
+   {
+    "w": "Economía?",
+    "start": 9.611,
+    "end": 10.398
+   },
+   {
+    "w": "Te",
+    "start": 10.398,
+    "end": 10.49
+   },
+   {
+    "w": "lo",
+    "start": 10.49,
+    "end": 10.581
+   },
+   {
+    "w": "digo",
+    "start": 10.581,
+    "end": 10.806
+   },
+   {
+    "w": "al",
+    "start": 10.806,
+    "end": 10.954
+   },
+   {
+    "w": "final.",
+    "start": 10.954,
+    "end": 11.167
+   }
+  ]
+ },
+ {
+  "text": "Crees que te enseña a hacerte rico. En realidad, te enseña por qué casi nadie lo consigue.",
+  "start": 11.296,
+  "end": 16.12,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 11.296,
+    "end": 11.583
+   },
+   {
+    "w": "que",
+    "start": 11.583,
+    "end": 11.731
+   },
+   {
+    "w": "te",
+    "start": 11.731,
+    "end": 11.88
+   },
+   {
+    "w": "enseña",
+    "start": 11.88,
+    "end": 12.25
+   },
+   {
+    "w": "a",
+    "start": 12.25,
+    "end": 12.398
+   },
+   {
+    "w": "hacerte",
+    "start": 12.398,
+    "end": 12.769
+   },
+   {
+    "w": "rico.",
+    "start": 12.769,
+    "end": 13.306
+   },
+   {
+    "w": "En",
+    "start": 13.306,
+    "end": 13.444
+   },
+   {
+    "w": "realidad,",
+    "start": 13.444,
+    "end": 13.981
+   },
+   {
+    "w": "te",
+    "start": 13.981,
+    "end": 14.046
+   },
+   {
+    "w": "enseña",
+    "start": 14.046,
+    "end": 14.565
+   },
+   {
+    "w": "por",
+    "start": 14.565,
+    "end": 14.713
+   },
+   {
+    "w": "qué",
+    "start": 14.713,
+    "end": 14.935
+   },
+   {
+    "w": "casi",
+    "start": 14.935,
+    "end": 15.231
+   },
+   {
+    "w": "nadie",
+    "start": 15.231,
+    "end": 15.602
+   },
+   {
+    "w": "lo",
+    "start": 15.602,
+    "end": 15.75
+   },
+   {
+    "w": "consigue.",
+    "start": 15.75,
+    "end": 16.12
+   }
+  ]
+ },
+ {
+  "text": "Microeconomía: por qué sube tu alquiler.",
+  "start": 16.306,
+  "end": 18.593,
+  "words": [
+   {
+    "w": "Microeconomía:",
+    "start": 16.306,
+    "end": 17.417
+   },
+   {
+    "w": "por",
+    "start": 17.417,
+    "end": 17.504
+   },
+   {
+    "w": "qué",
+    "start": 17.504,
+    "end": 17.611
+   },
+   {
+    "w": "sube",
+    "start": 17.611,
+    "end": 17.981
+   },
+   {
+    "w": "tu",
+    "start": 17.981,
+    "end": 18.13
+   },
+   {
+    "w": "alquiler.",
+    "start": 18.13,
+    "end": 18.593
+   }
+  ]
+ },
+ {
+  "text": "Macroeconomía: inflación, paro y crisis.",
+  "start": 18.75,
+  "end": 21.472,
+  "words": [
+   {
+    "w": "Macroeconomía:",
+    "start": 18.75,
+    "end": 19.815
+   },
+   {
+    "w": "inflación,",
+    "start": 19.815,
+    "end": 20.509
+   },
+   {
+    "w": "paro",
+    "start": 20.509,
+    "end": 20.833
+   },
+   {
+    "w": "y",
+    "start": 20.833,
+    "end": 20.981
+   },
+   {
+    "w": "crisis.",
+    "start": 20.981,
+    "end": 21.472
+   }
+  ]
+ },
+ {
+  "text": "Matemáticas y estadística… muchas más de las que esperas.",
+  "start": 21.602,
+  "end": 24.407,
+  "words": [
+   {
+    "w": "Matemáticas",
+    "start": 21.602,
+    "end": 22.222
+   },
+   {
+    "w": "y",
+    "start": 22.222,
+    "end": 22.37
+   },
+   {
+    "w": "estadística…",
+    "start": 22.37,
+    "end": 23.065
+   },
+   {
+    "w": "muchas",
+    "start": 23.065,
+    "end": 23.426
+   },
+   {
+    "w": "más",
+    "start": 23.426,
+    "end": 23.574
+   },
+   {
+    "w": "de",
+    "start": 23.574,
+    "end": 23.722
+   },
+   {
+    "w": "las",
+    "start": 23.722,
+    "end": 23.87
+   },
+   {
+    "w": "que",
+    "start": 23.87,
+    "end": 24.019
+   },
+   {
+    "w": "esperas.",
+    "start": 24.019,
+    "end": 24.407
+   }
+  ]
+ },
+ {
+  "text": "Econometría: datos para separar lo que funciona de lo que no.",
+  "start": 24.528,
+  "end": 27.796,
+  "words": [
+   {
+    "w": "Econometría:",
+    "start": 24.528,
+    "end": 25.426
+   },
+   {
+    "w": "datos",
+    "start": 25.426,
+    "end": 25.824
+   },
+   {
+    "w": "para",
+    "start": 25.824,
+    "end": 26.046
+   },
+   {
+    "w": "separar",
+    "start": 26.046,
+    "end": 26.417
+   },
+   {
+    "w": "lo",
+    "start": 26.417,
+    "end": 26.565
+   },
+   {
+    "w": "que",
+    "start": 26.565,
+    "end": 26.713
+   },
+   {
+    "w": "funciona",
+    "start": 26.713,
+    "end": 27.231
+   },
+   {
+    "w": "de",
+    "start": 27.231,
+    "end": 27.38
+   },
+   {
+    "w": "lo",
+    "start": 27.38,
+    "end": 27.528
+   },
+   {
+    "w": "que",
+    "start": 27.528,
+    "end": 27.676
+   },
+   {
+    "w": "no.",
+    "start": 27.676,
+    "end": 27.796
+   }
+  ]
+ },
+ {
+  "text": "Y Finanzas: cuánto vale de verdad una empresa.",
+  "start": 27.954,
+  "end": 30.778,
+  "words": [
+   {
+    "w": "Y",
+    "start": 27.954,
+    "end": 28.213
+   },
+   {
+    "w": "Finanzas:",
+    "start": 28.213,
+    "end": 29.028
+   },
+   {
+    "w": "cuánto",
+    "start": 29.028,
+    "end": 29.333
+   },
+   {
+    "w": "vale",
+    "start": 29.333,
+    "end": 29.63
+   },
+   {
+    "w": "de",
+    "start": 29.63,
+    "end": 29.778
+   },
+   {
+    "w": "verdad",
+    "start": 29.778,
+    "end": 30.148
+   },
+   {
+    "w": "una",
+    "start": 30.148,
+    "end": 30.444
+   },
+   {
+    "w": "empresa.",
+    "start": 30.444,
+    "end": 30.778
+   }
+  ]
+ },
+ {
+  "text": "Lo más loco: en 2013 dieron el Nobel de Economía a dos que defendían lo contrario.",
+  "start": 30.898,
+  "end": 35.583,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 30.898,
+    "end": 31.074
+   },
+   {
+    "w": "más",
+    "start": 31.074,
+    "end": 31.222
+   },
+   {
+    "w": "loco:",
+    "start": 31.222,
+    "end": 31.796
+   },
+   {
+    "w": "en",
+    "start": 31.796,
+    "end": 31.921
+   },
+   {
+    "w": "2013",
+    "start": 31.921,
+    "end": 32.491
+   },
+   {
+    "w": "dieron",
+    "start": 32.491,
+    "end": 32.861
+   },
+   {
+    "w": "el",
+    "start": 32.861,
+    "end": 33.009
+   },
+   {
+    "w": "Nobel",
+    "start": 33.009,
+    "end": 33.38
+   },
+   {
+    "w": "de",
+    "start": 33.38,
+    "end": 33.528
+   },
+   {
+    "w": "Economía",
+    "start": 33.528,
+    "end": 33.972
+   },
+   {
+    "w": "a",
+    "start": 33.972,
+    "end": 34.12
+   },
+   {
+    "w": "dos",
+    "start": 34.12,
+    "end": 34.343
+   },
+   {
+    "w": "que",
+    "start": 34.343,
+    "end": 34.491
+   },
+   {
+    "w": "defendían",
+    "start": 34.491,
+    "end": 35.083
+   },
+   {
+    "w": "lo",
+    "start": 35.083,
+    "end": 35.157
+   },
+   {
+    "w": "contrario.",
+    "start": 35.157,
+    "end": 35.583
+   }
+  ]
+ },
+ {
+  "text": "Uno decía que el precio de la bolsa ya lo sabe todo. El otro, que la bolsa infla burbujas.",
+  "start": 35.722,
+  "end": 40.241,
+  "words": [
+   {
+    "w": "Uno",
+    "start": 35.722,
+    "end": 35.917
+   },
+   {
+    "w": "decía",
+    "start": 35.917,
+    "end": 36.287
+   },
+   {
+    "w": "que",
+    "start": 36.287,
+    "end": 36.435
+   },
+   {
+    "w": "el",
+    "start": 36.435,
+    "end": 36.509
+   },
+   {
+    "w": "precio",
+    "start": 36.509,
+    "end": 36.806
+   },
+   {
+    "w": "de",
+    "start": 36.806,
+    "end": 36.88
+   },
+   {
+    "w": "la",
+    "start": 36.88,
+    "end": 36.954
+   },
+   {
+    "w": "bolsa",
+    "start": 36.954,
+    "end": 37.324
+   },
+   {
+    "w": "ya",
+    "start": 37.324,
+    "end": 37.546
+   },
+   {
+    "w": "lo",
+    "start": 37.546,
+    "end": 37.694
+   },
+   {
+    "w": "sabe",
+    "start": 37.694,
+    "end": 37.917
+   },
+   {
+    "w": "todo.",
+    "start": 37.917,
+    "end": 38.343
+   },
+   {
+    "w": "El",
+    "start": 38.343,
+    "end": 38.444
+   },
+   {
+    "w": "otro,",
+    "start": 38.444,
+    "end": 38.741
+   },
+   {
+    "w": "que",
+    "start": 38.741,
+    "end": 38.889
+   },
+   {
+    "w": "la",
+    "start": 38.889,
+    "end": 38.963
+   },
+   {
+    "w": "bolsa",
+    "start": 38.963,
+    "end": 39.333
+   },
+   {
+    "w": "infla",
+    "start": 39.333,
+    "end": 39.778
+   },
+   {
+    "w": "burbujas.",
+    "start": 39.778,
+    "end": 40.241
+   }
+  ]
+ },
+ {
+  "text": "¿Quién tenía razón? Para tu bolsillo, casi siempre el primero: intentar ganarle cuesta comisiones… y casi nunca sale bien.",
+  "start": 40.287,
+  "end": 47.222,
+  "words": [
+   {
+    "w": "¿Quién",
+    "start": 40.287,
+    "end": 40.518
+   },
+   {
+    "w": "tenía",
+    "start": 40.518,
+    "end": 40.889
+   },
+   {
+    "w": "razón?",
+    "start": 40.889,
+    "end": 41.481
+   },
+   {
+    "w": "Para",
+    "start": 41.481,
+    "end": 41.565
+   },
+   {
+    "w": "tu",
+    "start": 41.565,
+    "end": 41.713
+   },
+   {
+    "w": "bolsillo,",
+    "start": 41.713,
+    "end": 42.38
+   },
+   {
+    "w": "casi",
+    "start": 42.38,
+    "end": 42.676
+   },
+   {
+    "w": "siempre",
+    "start": 42.676,
+    "end": 42.972
+   },
+   {
+    "w": "el",
+    "start": 42.972,
+    "end": 43.12
+   },
+   {
+    "w": "primero:",
+    "start": 43.12,
+    "end": 43.722
+   },
+   {
+    "w": "intentar",
+    "start": 43.722,
+    "end": 44.167
+   },
+   {
+    "w": "ganarle",
+    "start": 44.167,
+    "end": 44.685
+   },
+   {
+    "w": "cuesta",
+    "start": 44.685,
+    "end": 45.056
+   },
+   {
+    "w": "comisiones…",
+    "start": 45.056,
+    "end": 45.88
+   },
+   {
+    "w": "y",
+    "start": 45.88,
+    "end": 46.018
+   },
+   {
+    "w": "casi",
+    "start": 46.018,
+    "end": 46.315
+   },
+   {
+    "w": "nunca",
+    "start": 46.315,
+    "end": 46.685
+   },
+   {
+    "w": "sale",
+    "start": 46.685,
+    "end": 46.981
+   },
+   {
+    "w": "bien.",
+    "start": 46.981,
+    "end": 47.222
+   }
+  ]
+ },
+ {
+  "text": "Por eso los fondos que solo copian a la bolsa cobran menos… y acaban por delante de casi todos.",
+  "start": 47.38,
+  "end": 52.093,
+  "words": [
+   {
+    "w": "Por",
+    "start": 47.38,
+    "end": 47.518
+   },
+   {
+    "w": "eso",
+    "start": 47.518,
+    "end": 47.741
+   },
+   {
+    "w": "los",
+    "start": 47.741,
+    "end": 47.889
+   },
+   {
+    "w": "fondos",
+    "start": 47.889,
+    "end": 48.185
+   },
+   {
+    "w": "que",
+    "start": 48.185,
+    "end": 48.333
+   },
+   {
+    "w": "solo",
+    "start": 48.333,
+    "end": 48.63
+   },
+   {
+    "w": "copian",
+    "start": 48.63,
+    "end": 49.074
+   },
+   {
+    "w": "a",
+    "start": 49.074,
+    "end": 49.148
+   },
+   {
+    "w": "la",
+    "start": 49.148,
+    "end": 49.222
+   },
+   {
+    "w": "bolsa",
+    "start": 49.222,
+    "end": 49.593
+   },
+   {
+    "w": "cobran",
+    "start": 49.593,
+    "end": 50.037
+   },
+   {
+    "w": "menos…",
+    "start": 50.037,
+    "end": 50.287
+   },
+   {
+    "w": "y",
+    "start": 50.287,
+    "end": 50.352
+   },
+   {
+    "w": "acaban",
+    "start": 50.352,
+    "end": 50.796
+   },
+   {
+    "w": "por",
+    "start": 50.796,
+    "end": 50.944
+   },
+   {
+    "w": "delante",
+    "start": 50.944,
+    "end": 51.315
+   },
+   {
+    "w": "de",
+    "start": 51.315,
+    "end": 51.463
+   },
+   {
+    "w": "casi",
+    "start": 51.463,
+    "end": 51.759
+   },
+   {
+    "w": "todos.",
+    "start": 51.759,
+    "end": 52.093
+   }
+  ]
+ },
+ {
+  "text": "Para eso sirve Economía: para que no te vendan humo.",
+  "start": 52.185,
+  "end": 54.907,
+  "words": [
+   {
+    "w": "Para",
+    "start": 52.185,
+    "end": 52.333
+   },
+   {
+    "w": "eso",
+    "start": 52.333,
+    "end": 52.556
+   },
+   {
+    "w": "sirve",
+    "start": 52.556,
+    "end": 53.0
+   },
+   {
+    "w": "Economía:",
+    "start": 53.0,
+    "end": 53.685
+   },
+   {
+    "w": "para",
+    "start": 53.685,
+    "end": 53.824
+   },
+   {
+    "w": "que",
+    "start": 53.824,
+    "end": 53.972
+   },
+   {
+    "w": "no",
+    "start": 53.972,
+    "end": 54.12
+   },
+   {
+    "w": "te",
+    "start": 54.12,
+    "end": 54.268
+   },
+   {
+    "w": "vendan",
+    "start": 54.268,
+    "end": 54.713
+   },
+   {
+    "w": "humo.",
+    "start": 54.713,
+    "end": 54.907
+   }
+  ]
+ },
+ {
+  "text": "Esto no es asesoramiento financiero. Y dime: ¿gestor o indexado?",
+  "start": 54.907,
+  "end": 58.872,
+  "words": [
+   {
+    "w": "Esto",
+    "start": 54.907,
+    "end": 55.157
+   },
+   {
+    "w": "no",
+    "start": 55.157,
+    "end": 55.38
+   },
+   {
+    "w": "es",
+    "start": 55.38,
+    "end": 55.528
+   },
+   {
+    "w": "asesoramiento",
+    "start": 55.528,
+    "end": 56.343
+   },
+   {
+    "w": "financiero.",
+    "start": 56.343,
+    "end": 57.056
+   },
+   {
+    "w": "Y",
+    "start": 57.056,
+    "end": 57.261
+   },
+   {
+    "w": "dime:",
+    "start": 57.261,
+    "end": 57.601
+   },
+   {
+    "w": "¿gestor",
+    "start": 57.601,
+    "end": 58.062
+   },
+   {
+    "w": "o",
+    "start": 58.062,
+    "end": 58.283
+   },
+   {
+    "w": "indexado?",
+    "start": 58.283,
+    "end": 58.872
+   }
+  ]
+ }
+]

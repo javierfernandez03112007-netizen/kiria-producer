@@ -1,0 +1,907 @@
+[
+{
+"w": "La",
+"start": 0.0,
+"end": 0.08
+},
+{
+"w": "bolsa",
+"start": 0.16,
+"end": 0.48
+},
+{
+"w": "española",
+"start": 0.56,
+"end": 0.96
+},
+{
+"w": "subió",
+"start": 1.04,
+"end": 1.36
+},
+{
+"w": "un",
+"start": 1.44,
+"end": 1.52
+},
+{
+"w": "58%",
+"start": 1.68,
+"end": 2.48
+},
+{
+"w": "el",
+"start": 2.88,
+"end": 2.96
+},
+{
+"w": "año",
+"start": 3.04,
+"end": 3.28
+},
+{
+"w": "pasado,",
+"start": 3.28,
+"end": 3.84
+},
+{
+"w": "y",
+"start": 3.92,
+"end": 4.0
+},
+{
+"w": "96",
+"start": 4.24,
+"end": 4.72
+},
+{
+"w": "de",
+"start": 4.88,
+"end": 4.96
+},
+{
+"w": "cada",
+"start": 5.04,
+"end": 5.12
+},
+{
+"w": "100",
+"start": 5.28,
+"end": 5.52
+},
+{
+"w": "fondos",
+"start": 5.6,
+"end": 5.92
+},
+{
+"w": "dirigidos",
+"start": 6.0,
+"end": 6.48
+},
+{
+"w": "por",
+"start": 6.56,
+"end": 6.64
+},
+{
+"w": "profesionales",
+"start": 6.72,
+"end": 7.28
+},
+{
+"w": "lo",
+"start": 7.52,
+"end": 7.6
+},
+{
+"w": "hicieron",
+"start": 7.68,
+"end": 8.16
+},
+{
+"w": "peor.",
+"start": 8.24,
+"end": 8.72
+},
+{
+"w": "Entonces,",
+"start": 8.96,
+"end": 9.6
+},
+{
+"w": "¿para",
+"start": 9.68,
+"end": 10.08
+},
+{
+"w": "qué",
+"start": 10.16,
+"end": 10.24
+},
+{
+"w": "sirve",
+"start": 10.32,
+"end": 10.64
+},
+{
+"w": "estudiar",
+"start": 10.8,
+"end": 11.2
+},
+{
+"w": "economía?",
+"start": 11.28,
+"end": 11.92
+},
+{
+"w": "Te",
+"start": 12.08,
+"end": 12.16
+},
+{
+"w": "lo",
+"start": 12.24,
+"end": 12.32
+},
+{
+"w": "digo",
+"start": 12.4,
+"end": 12.64
+},
+{
+"w": "al",
+"start": 12.72,
+"end": 12.8
+},
+{
+"w": "final.",
+"start": 12.88,
+"end": 13.28
+},
+{
+"w": "Crees",
+"start": 13.44,
+"end": 13.84
+},
+{
+"w": "que",
+"start": 13.92,
+"end": 14.0
+},
+{
+"w": "te",
+"start": 14.08,
+"end": 14.16
+},
+{
+"w": "enseña",
+"start": 14.24,
+"end": 14.72
+},
+{
+"w": "a",
+"start": 14.64,
+"end": 14.72
+},
+{
+"w": "hacerte",
+"start": 14.8,
+"end": 15.12
+},
+{
+"w": "rico.",
+"start": 15.2,
+"end": 15.68
+},
+{
+"w": "En",
+"start": 15.84,
+"end": 15.92
+},
+{
+"w": "realidad,",
+"start": 16.08,
+"end": 16.64
+},
+{
+"w": "te",
+"start": 16.72,
+"end": 16.8
+},
+{
+"w": "enseña",
+"start": 16.88,
+"end": 17.36
+},
+{
+"w": "por",
+"start": 17.44,
+"end": 17.52
+},
+{
+"w": "qué",
+"start": 17.6,
+"end": 17.68
+},
+{
+"w": "casi",
+"start": 17.84,
+"end": 18.08
+},
+{
+"w": "nadie",
+"start": 18.16,
+"end": 18.4
+},
+{
+"w": "lo",
+"start": 18.56,
+"end": 18.64
+},
+{
+"w": "consigue.",
+"start": 18.72,
+"end": 19.36
+},
+{
+"w": "Microeconomía.",
+"start": 19.6,
+"end": 20.72
+},
+{
+"w": "¿Por",
+"start": 20.88,
+"end": 21.12
+},
+{
+"w": "qué",
+"start": 21.04,
+"end": 21.12
+},
+{
+"w": "sube",
+"start": 21.2,
+"end": 21.52
+},
+{
+"w": "tu",
+"start": 21.6,
+"end": 21.68
+},
+{
+"w": "alquiler?",
+"start": 21.76,
+"end": 22.48
+},
+{
+"w": "Macroeconomía.",
+"start": 22.64,
+"end": 23.76
+},
+{
+"w": "Inflación,",
+"start": 23.92,
+"end": 24.64
+},
+{
+"w": "paro",
+"start": 24.72,
+"end": 25.04
+},
+{
+"w": "y",
+"start": 25.2,
+"end": 25.28
+},
+{
+"w": "crisis.",
+"start": 25.36,
+"end": 25.92
+},
+{
+"w": "Matemáticas",
+"start": 26.12,
+"end": 26.84
+},
+{
+"w": "y",
+"start": 26.92,
+"end": 27.0
+},
+{
+"w": "estadística.",
+"start": 27.08,
+"end": 27.88
+},
+{
+"w": "Muchas",
+"start": 28.12,
+"end": 28.44
+},
+{
+"w": "más",
+"start": 28.52,
+"end": 28.6
+},
+{
+"w": "de",
+"start": 28.68,
+"end": 28.76
+},
+{
+"w": "las",
+"start": 28.84,
+"end": 28.92
+},
+{
+"w": "que",
+"start": 29.0,
+"end": 29.08
+},
+{
+"w": "esperas.",
+"start": 29.16,
+"end": 29.72
+},
+{
+"w": "Econometría.",
+"start": 29.88,
+"end": 30.84
+},
+{
+"w": "Datos",
+"start": 31.0,
+"end": 31.32
+},
+{
+"w": "para",
+"start": 31.48,
+"end": 31.56
+},
+{
+"w": "separar",
+"start": 31.72,
+"end": 32.04
+},
+{
+"w": "lo",
+"start": 32.12,
+"end": 32.2
+},
+{
+"w": "que",
+"start": 32.28,
+"end": 32.36
+},
+{
+"w": "funciona",
+"start": 32.44,
+"end": 32.92
+},
+{
+"w": "de",
+"start": 33.0,
+"end": 33.08
+},
+{
+"w": "lo",
+"start": 33.16,
+"end": 33.24
+},
+{
+"w": "que",
+"start": 33.32,
+"end": 33.4
+},
+{
+"w": "no.",
+"start": 33.48,
+"end": 33.8
+},
+{
+"w": "Y",
+"start": 33.96,
+"end": 34.04
+},
+{
+"w": "finanzas.",
+"start": 34.28,
+"end": 34.92
+},
+{
+"w": "¿Cuánto",
+"start": 35.16,
+"end": 35.56
+},
+{
+"w": "vale",
+"start": 35.64,
+"end": 35.88
+},
+{
+"w": "de",
+"start": 35.96,
+"end": 36.04
+},
+{
+"w": "verdad",
+"start": 36.12,
+"end": 36.44
+},
+{
+"w": "una",
+"start": 36.52,
+"end": 36.6
+},
+{
+"w": "empresa?",
+"start": 36.84,
+"end": 37.4
+},
+{
+"w": "Lo",
+"start": 37.56,
+"end": 37.64
+},
+{
+"w": "más",
+"start": 37.88,
+"end": 37.96
+},
+{
+"w": "loco.",
+"start": 38.04,
+"end": 38.52
+},
+{
+"w": "En",
+"start": 38.68,
+"end": 38.76
+},
+{
+"w": "2013",
+"start": 38.84,
+"end": 39.4
+},
+{
+"w": "dieron",
+"start": 39.56,
+"end": 39.88
+},
+{
+"w": "el",
+"start": 39.96,
+"end": 40.04
+},
+{
+"w": "Nobel",
+"start": 40.12,
+"end": 40.44
+},
+{
+"w": "de",
+"start": 40.52,
+"end": 40.6
+},
+{
+"w": "Economía",
+"start": 40.68,
+"end": 41.08
+},
+{
+"w": "a",
+"start": 41.16,
+"end": 41.24
+},
+{
+"w": "dos",
+"start": 41.32,
+"end": 41.4
+},
+{
+"w": "que",
+"start": 41.56,
+"end": 41.64
+},
+{
+"w": "defendían",
+"start": 41.72,
+"end": 42.28
+},
+{
+"w": "lo",
+"start": 42.36,
+"end": 42.44
+},
+{
+"w": "contrario.",
+"start": 42.44,
+"end": 43.0
+},
+{
+"w": "Uno",
+"start": 43.16,
+"end": 43.4
+},
+{
+"w": "decía",
+"start": 43.48,
+"end": 43.8
+},
+{
+"w": "que",
+"start": 43.88,
+"end": 43.96
+},
+{
+"w": "el",
+"start": 44.04,
+"end": 44.12
+},
+{
+"w": "precio",
+"start": 44.12,
+"end": 44.44
+},
+{
+"w": "de",
+"start": 44.44,
+"end": 44.52
+},
+{
+"w": "la",
+"start": 44.52,
+"end": 44.6
+},
+{
+"w": "bolsa",
+"start": 44.6,
+"end": 44.92
+},
+{
+"w": "ya",
+"start": 45.0,
+"end": 45.08
+},
+{
+"w": "lo",
+"start": 45.24,
+"end": 45.32
+},
+{
+"w": "sabe",
+"start": 45.4,
+"end": 45.48
+},
+{
+"w": "todo.",
+"start": 45.64,
+"end": 46.04
+},
+{
+"w": "El",
+"start": 46.12,
+"end": 46.2
+},
+{
+"w": "otro,",
+"start": 46.36,
+"end": 46.6
+},
+{
+"w": "que",
+"start": 46.68,
+"end": 46.76
+},
+{
+"w": "la",
+"start": 46.84,
+"end": 46.92
+},
+{
+"w": "bolsa",
+"start": 46.92,
+"end": 47.16
+},
+{
+"w": "infla",
+"start": 47.32,
+"end": 47.72
+},
+{
+"w": "burbujas.",
+"start": 47.8,
+"end": 48.52
+},
+{
+"w": "¿Quién",
+"start": 48.6,
+"end": 48.84
+},
+{
+"w": "tenía",
+"start": 48.92,
+"end": 49.24
+},
+{
+"w": "razón?",
+"start": 49.32,
+"end": 49.8
+},
+{
+"w": "Para",
+"start": 49.96,
+"end": 50.04
+},
+{
+"w": "tu",
+"start": 50.2,
+"end": 50.28
+},
+{
+"w": "bolsillo,",
+"start": 50.36,
+"end": 51.0
+},
+{
+"w": "casi",
+"start": 51.08,
+"end": 51.32
+},
+{
+"w": "siempre",
+"start": 51.4,
+"end": 51.64
+},
+{
+"w": "el",
+"start": 51.72,
+"end": 51.8
+},
+{
+"w": "primero.",
+"start": 51.88,
+"end": 52.28
+},
+{
+"w": "Intentar",
+"start": 52.52,
+"end": 53.0
+},
+{
+"w": "ganarle",
+"start": 53.16,
+"end": 53.56
+},
+{
+"w": "cuesta",
+"start": 53.72,
+"end": 53.96
+},
+{
+"w": "comisiones",
+"start": 54.12,
+"end": 54.68
+},
+{
+"w": "y",
+"start": 54.92,
+"end": 55.0
+},
+{
+"w": "casi",
+"start": 55.16,
+"end": 55.4
+},
+{
+"w": "nunca",
+"start": 55.48,
+"end": 55.56
+},
+{
+"w": "sale",
+"start": 55.88,
+"end": 56.12
+},
+{
+"w": "bien.",
+"start": 56.2,
+"end": 56.6
+},
+{
+"w": "Por",
+"start": 56.76,
+"end": 56.84
+},
+{
+"w": "eso",
+"start": 57.0,
+"end": 57.08
+},
+{
+"w": "los",
+"start": 57.24,
+"end": 57.32
+},
+{
+"w": "fondos",
+"start": 57.4,
+"end": 57.72
+},
+{
+"w": "que",
+"start": 57.72,
+"end": 57.8
+},
+{
+"w": "solo",
+"start": 57.88,
+"end": 57.96
+},
+{
+"w": "copian",
+"start": 58.2,
+"end": 58.52
+},
+{
+"w": "a",
+"start": 58.68,
+"end": 58.76
+},
+{
+"w": "la",
+"start": 58.76,
+"end": 58.84
+},
+{
+"w": "bolsa",
+"start": 58.84,
+"end": 59.16
+},
+{
+"w": "cobran",
+"start": 59.24,
+"end": 59.64
+},
+{
+"w": "menos",
+"start": 59.72,
+"end": 59.8
+},
+{
+"w": "y",
+"start": 60.12,
+"end": 60.2
+},
+{
+"w": "acaban",
+"start": 60.36,
+"end": 60.76
+},
+{
+"w": "por",
+"start": 60.84,
+"end": 60.92
+},
+{
+"w": "delante",
+"start": 61.0,
+"end": 61.32
+},
+{
+"w": "de",
+"start": 61.4,
+"end": 61.48
+},
+{
+"w": "casi",
+"start": 61.56,
+"end": 61.8
+},
+{
+"w": "todos.",
+"start": 61.88,
+"end": 62.36
+},
+{
+"w": "Para",
+"start": 62.52,
+"end": 62.6
+},
+{
+"w": "eso",
+"start": 62.84,
+"end": 62.92
+},
+{
+"w": "sirve",
+"start": 63.08,
+"end": 63.4
+},
+{
+"w": "economía,",
+"start": 63.56,
+"end": 64.2
+},
+{
+"w": "para",
+"start": 64.36,
+"end": 64.44
+},
+{
+"w": "que",
+"start": 64.6,
+"end": 64.68
+},
+{
+"w": "no",
+"start": 64.76,
+"end": 64.84
+},
+{
+"w": "te",
+"start": 64.92,
+"end": 65.0
+},
+{
+"w": "vendan",
+"start": 65.08,
+"end": 65.4
+},
+{
+"w": "humo.",
+"start": 65.56,
+"end": 66.04
+},
+{
+"w": "Esto",
+"start": 66.12,
+"end": 66.44
+},
+{
+"w": "no",
+"start": 66.44,
+"end": 66.52
+},
+{
+"w": "es",
+"start": 66.68,
+"end": 66.76
+},
+{
+"w": "asesoramiento",
+"start": 66.84,
+"end": 67.64
+},
+{
+"w": "financiero.",
+"start": 67.72,
+"end": 68.36
+},
+{
+"w": "Y",
+"start": 68.44,
+"end": 68.52
+},
+{
+"w": "dime,",
+"start": 68.68,
+"end": 69.08
+},
+{
+"w": "¿gestor",
+"start": 69.16,
+"end": 69.8
+},
+{
+"w": "o",
+"start": 69.88,
+"end": 69.96
+},
+{
+"w": "indexado?",
+"start": 70.12,
+"end": 70.76
+}
+]
