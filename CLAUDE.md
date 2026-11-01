@@ -1,5 +1,8 @@
 # kiria-producer
 
+**Al empezar cualquier sesión, lee `MEMORIA.md`**: decisiones, forma de trabajar, render en varias máquinas, resultados del canal,
+ideas pendientes, accesos (ElevenLabs, dominios) y el negocio de la web.
+
 Productor de reels para el canal kiria.ai (economía, España). Antes de hacer o tocar cualquier vídeo, lee y
 cumple `engine/REGLAS.md` (retención: primer segundo rarísimo, cada frase visible al oírla con objetos que se
 transforman, respuesta al final; honestidad y estilo) y usa `engine/GUION.md` para el guion y `engine/HOOKS.md` para la primera frase (hook).
