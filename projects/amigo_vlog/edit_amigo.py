@@ -429,7 +429,7 @@ def load_audio(path, sr=44100):
     return np.frombuffer(raw, np.float32).reshape(-1, 2).copy()
 
 
-def build_audio(with_music=True):
+def build_audio(with_music=True, sfx_gain=1.0):
     sys.path.insert(0, ROOT)
     import music_amigo as MU
     sr = MU.SR
@@ -452,15 +452,18 @@ def build_audio(with_music=True):
             dst = voice if sg.get("caps") else amb
             dst[j0:j0 + len(seg)] += seg[:max(0, n - j0)]
     # la voz: graves fuera y algo de compresión; el ambiente de la carrera: sin el retumbe del viento
-    voice = MU.highpass(voice, 85, sr)
-    voice = MU.compress(voice, sr, thresh=0.12, ratio=3.0)
+    import voice_fx as VF                          # voz tratada: menos ruido, más clara y presente, «s» suaves, compresión
+    act = np.zeros(n, bool)
+    for c0, c1, ws in CAPS:
+        act[int(max(0, c0 - 0.05) * sr):int((ws[-1][1] + 0.55) * sr)] = True
+    voice = VF.process_voice(voice, act) * 0.9
     amb = MU.highpass(amb, 160, sr) * 1.5
     venv = MU.envelope(voice, sr) + MU.envelope(amb, sr) * 0.6   # la música baja con la voz y con los gritos
     marks = dict(dur=DUR, destino=T_DESTINO, drop=T_DROP, hoy=out_time(19.36), ganado=out_time(11.44), bw0=SEGS[2]["t0"], color=SEGS[4]["t0"],
                  whips=[SEGS[j]["t0"] for j, k in TRANS.items() if k == "whip"], medal=SEGS[11]["outp"][1][0] + 0.15,
                  slow0=SEGS[11]["outp"][1][0], slow1=SEGS[11]["outp"][1][1], q=SEGS[12]["t1"] - 1.75, teaser=SEGS[1]["t0"], sunset=SEGS[3]["t0"])
     sfx = MU.sfx_track(n, marks)
-    out = voice * 1.0 + amb + sfx
+    out = voice * 1.0 + amb + sfx * sfx_gain
     if with_music:
         mus = MU.music_track(n, marks)
         duck = 1 - 0.72 * np.clip(venv / 0.08, 0, 1)
