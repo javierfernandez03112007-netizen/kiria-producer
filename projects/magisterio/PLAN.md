@@ -1,4 +1,4 @@
-# Magisterio por dentro — plan (estructura de Derecho / Industrial)
+# Magisterio por dentro — plan (estructura de Derecho / Industrial; 60 s)
 
 **Hook:** «Dicen que Magisterio es la carrera de los collares de macarrones. Y es verdad.» (16 al revés: das la razón al
 bulo y al final le das la vuelta). **Pregunta (antes del s 4):** ¿para qué sirven? **Respuesta (al final):** pinza para
@@ -18,7 +18,7 @@ es el mismo collar → bucle.
 | Matemáticas: sumar / contar | ábaco con macarrones de cuentas |
 | Lengua: letra a letra | letras de pasta que forman «MAMÁ» |
 | dislexia, TDAH, autismo… en la misma clase | tres pupitres distintos en una misma fila (con respeto: sin caricaturas) |
-| Ciencias, Música… prácticas en un colegio | tubo de ensayo → flauta (cilindro) → fachada de colegio con pizarra |
+| meses de prácticas en un colegio | fachada de colegio con pizarra |
 | examen extra… casi la mitad | fila de figuritas (las de Derecho): cae casi la mitad |
 | casi diecinueve aspirantes por plaza | 19 figuritas ante una sola silla de maestro |
 | hasta veinticinco niños de tres años… y tú | 25 sillitas aparecen de golpe frente a una silla grande |
@@ -27,4 +27,5 @@ es el mismo collar → bucle.
 | un millón de conexiones por segundo | los macarrones del collar se encienden como neuronas conectadas |
 | sabiendo por qué | vuelve el collar del primer fotograma |
 
-Voz: `engine/tts.py` (Danny, con tiempos por palabra) → `ajustar_voz.py` (copiar de `derecho/`) → `tiempos.json`.
+Voz: `engine/tts.py` (Danny, con tiempos por palabra) → `ajustar_voz.py` (pausas recortadas + atempo 1,12) → `assets/voz.mp3`
+(60,2 s) y `tiempos.json`.
