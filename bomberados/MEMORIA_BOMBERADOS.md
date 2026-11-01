@@ -77,7 +77,9 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Sonido: 12 efectos generados con la API de efectos de ElevenLabs (`assets/sfx/`), colocados en `compose.py`
   (`sfx_track_pas`): trueno, lluvia dentro/fuera (baja sola con la voz), frenazo, vapor, latido al ritmo del ECG, relé de los
   intermitentes (más fuerte en la cuenta atrás), golpe de tensión, brasas y marca. Mezcla −16 LUFS.
-- Render: 1 fotograma/s con 4 procesos (≈ 25 min para 25 s). Portada: fotograma 2,1 s tras las opciones.
+- Render: ≈ 1,1 fotogramas/s con 4 procesos (1.505 fotogramas en 22,7 min) + composición 1,8 min. Vídeo: 20,3 MB, −16,1 LUFS.
+  Portada: fotograma 2,1 s tras las opciones. Notion: fila 409d785b-2d75-818c-be6c-cc95d13f2993 en «Listo para subir» (su fecha,
+  dom 1 nov, es anterior a la Nº 3: Javi decide; propuesta miér 4 nov 14:00).
 - Pendiente antes de publicar: comprobar en dgt.es lo de la baliza V-16 (citada en la explicación) y la prueba de 5 días.
 - Fuentes (honestidad): DGT «Qué hacer ante un accidente de tráfico», Cruz Roja «En mi carretera», RACE y Ministerio de
   Sanidad (módulo 6); dgt.es y sanidad.gob.es no abren desde estas máquinas («comprobar página»). Ver `FUENTES.md`.
@@ -87,7 +89,7 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - BD **Vídeos de Bomberados**: collection://5422fb68-0692-456e-8aac-49a9c79151c9 (vista principal ordenada por «Publicación (día y
   hora)»; estados: Idea, Guion, Voz grabada, En producción, Listo para subir, Programado, Publicado, Descartado; horas en CET = UTC+1).
   Filas: ADR 409d785b-2d75-817b-b6c9-ded54b8406f2 (Listo para subir); Simulacro 40ad785b-2d75-8161-bf9f-e950f0e762a1 (Listo para subir);
-  PAS: fila del dom 1 nov 12:00 (sin producir; pasarla a «Guion»). Hay una fila duplicada de bradipnea creada por Javi
+  PAS: 409d785b-2d75-818c-be6c-cc95d13f2993 (Listo para subir; fecha por decidir, después de la ADR). Hay una fila duplicada de bradipnea creada por Javi
   (40ad785b2d7580e48f2fef57fe507f62): no borrarla sin su permiso.
 - BD **Agenda**: collection://4c1519e9-87cc-4110-8c5b-625ed6610ef6 (filas diarias «📤 publicar» del 31 oct al 30 nov; el lote del 16 al
   30 nov se creó en segundo plano y no se ha comprobado). Rutina semanal: lunes revisión + temas + guiones + Javi graba voces a las 18:00,
