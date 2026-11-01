@@ -39,7 +39,7 @@
   "6": {"bomberados": "#F2B233", "casa": "#62E3D4", "examen": "#EEF2F6"},
   "7": {"gratis": "#62E3D4", "cinco": "#F2B233", "días": "#F2B233"}
  },
- "portada": {"titulo": "¿QUÉ LEY ES?", "etiqueta": "PREGUNTA DEL DÍA · PROTECCIÓN CIVIL", "desfase": 1.6},
+ "portada": {"titulo": "¿QUÉ LEY ES?", "etiqueta": "PREGUNTA DEL DÍA · PROTECCIÓN CIVIL", "desfase": 2.4},
  "realce": ["compartir", "marca", "prueba"],
- "mezcla": {"sfx": 1.0}
+ "mezcla": {"sfx": 1.0, "ganancia": -0.6}
 }

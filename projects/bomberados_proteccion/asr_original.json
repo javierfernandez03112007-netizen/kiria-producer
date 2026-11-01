@@ -1,0 +1,307 @@
+[
+ {
+  "w": "Pregunta",
+  "start": 0.0,
+  "end": 0.64
+ },
+ {
+  "w": "Trampa",
+  "start": 0.64,
+  "end": 1.04
+ },
+ {
+  "w": "de",
+  "start": 1.04,
+  "end": 1.2
+ },
+ {
+  "w": "Protección",
+  "start": 1.2,
+  "end": 1.68
+ },
+ {
+  "w": "Civil.",
+  "start": 1.68,
+  "end": 2.32
+ },
+ {
+  "w": "¿Qué",
+  "start": 2.32,
+  "end": 2.72
+ },
+ {
+  "w": "ley",
+  "start": 2.72,
+  "end": 3.04
+ },
+ {
+  "w": "regula",
+  "start": 3.04,
+  "end": 3.52
+ },
+ {
+  "w": "el",
+  "start": 3.52,
+  "end": 3.6
+ },
+ {
+  "w": "Sistema",
+  "start": 3.6,
+  "end": 3.92
+ },
+ {
+  "w": "Nacional",
+  "start": 3.92,
+  "end": 4.32
+ },
+ {
+  "w": "de",
+  "start": 4.32,
+  "end": 4.48
+ },
+ {
+  "w": "Protección",
+  "start": 4.48,
+  "end": 4.96
+ },
+ {
+  "w": "Civil?",
+  "start": 4.96,
+  "end": 5.68
+ },
+ {
+  "w": "Ojo,",
+  "start": 5.68,
+  "end": 6.32
+ },
+ {
+  "w": "que",
+  "start": 6.32,
+  "end": 6.56
+ },
+ {
+  "w": "una",
+  "start": 6.56,
+  "end": 6.8
+ },
+ {
+  "w": "de",
+  "start": 6.8,
+  "end": 6.88
+ },
+ {
+  "w": "estas",
+  "start": 6.88,
+  "end": 7.2
+ },
+ {
+  "w": "ya",
+  "start": 7.2,
+  "end": 7.44
+ },
+ {
+  "w": "está",
+  "start": 7.44,
+  "end": 7.68
+ },
+ {
+  "w": "derogada.",
+  "start": 7.68,
+  "end": 8.56
+ },
+ {
+  "w": "Tienes",
+  "start": 8.56,
+  "end": 8.96
+ },
+ {
+  "w": "cinco",
+  "start": 8.96,
+  "end": 9.36
+ },
+ {
+  "w": "segundos.",
+  "start": 9.36,
+  "end": 10.08
+ },
+ {
+  "w": "A,",
+  "start": 10.08,
+  "end": 10.64
+ },
+ {
+  "w": "B,",
+  "start": 10.64,
+  "end": 11.2
+ },
+ {
+  "w": "C",
+  "start": 11.2,
+  "end": 11.6
+ },
+ {
+  "w": "o",
+  "start": 11.6,
+  "end": 11.84
+ },
+ {
+  "w": "D.",
+  "start": 11.84,
+  "end": 12.24
+ },
+ {
+  "w": "Comenta",
+  "start": 12.24,
+  "end": 12.72
+ },
+ {
+  "w": "tu",
+  "start": 12.72,
+  "end": 12.88
+ },
+ {
+  "w": "letra",
+  "start": 12.88,
+  "end": 13.36
+ },
+ {
+  "w": "y",
+  "start": 13.36,
+  "end": 13.52
+ },
+ {
+  "w": "compártelo",
+  "start": 13.52,
+  "end": 14.24
+ },
+ {
+  "w": "con",
+  "start": 14.24,
+  "end": 14.32
+ },
+ {
+  "w": "tu",
+  "start": 14.32,
+  "end": 14.48
+ },
+ {
+  "w": "compañero",
+  "start": 14.48,
+  "end": 14.96
+ },
+ {
+  "w": "de",
+  "start": 14.96,
+  "end": 15.04
+ },
+ {
+  "w": "oposición.",
+  "start": 15.04,
+  "end": 15.68
+ },
+ {
+  "w": "A",
+  "start": 15.68,
+  "end": 15.84
+ },
+ {
+  "w": "ver",
+  "start": 15.84,
+  "end": 16.0
+ },
+ {
+  "w": "quién",
+  "start": 16.0,
+  "end": 16.32
+ },
+ {
+  "w": "acierta.",
+  "start": 16.32,
+  "end": 17.12
+ },
+ {
+  "w": "La",
+  "start": 17.12,
+  "end": 17.28
+ },
+ {
+  "w": "solución",
+  "start": 17.28,
+  "end": 17.92
+ },
+ {
+  "w": "en",
+  "start": 17.92,
+  "end": 18.08
+ },
+ {
+  "w": "la",
+  "start": 18.08,
+  "end": 18.24
+ },
+ {
+  "w": "descripción.",
+  "start": 18.24,
+  "end": 18.96
+ },
+ {
+  "w": "¡Bomberados!",
+  "start": 18.96,
+  "end": 20.24
+ },
+ {
+  "w": "Falla",
+  "start": 20.24,
+  "end": 20.72
+ },
+ {
+  "w": "en",
+  "start": 20.72,
+  "end": 20.8
+ },
+ {
+  "w": "casa,",
+  "start": 20.8,
+  "end": 21.2
+ },
+ {
+  "w": "no",
+  "start": 21.2,
+  "end": 21.44
+ },
+ {
+  "w": "en",
+  "start": 21.44,
+  "end": 21.52
+ },
+ {
+  "w": "el",
+  "start": 21.52,
+  "end": 21.68
+ },
+ {
+  "w": "examen.",
+  "start": 21.68,
+  "end": 22.24
+ },
+ {
+  "w": "Pruébala",
+  "start": 22.24,
+  "end": 22.8
+ },
+ {
+  "w": "gratis",
+  "start": 22.8,
+  "end": 23.28
+ },
+ {
+  "w": "cinco",
+  "start": 23.28,
+  "end": 23.6
+ },
+ {
+  "w": "días.",
+  "start": 23.6,
+  "end": 24.189
+ }
+]

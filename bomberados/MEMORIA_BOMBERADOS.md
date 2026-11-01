@@ -61,6 +61,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #3 Panel naranja ADR (estilo app) | `projects/bomberados_adr/` | **listo para subir** (26,7 s; Notion: mar 3 nov 14:00; respuesta B) |
 | Promo 2º simulacro examen bombero Ciudad Real | `projects/bomberados_simulacro/` | **entregado** 31 oct (21,8 s, 12 €, para la cuenta @elitebomberos) |
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
+| PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -118,3 +119,10 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Pedir a la marca: logo y colores oficiales, capturas, precio, temarios, ejemplos reales de la IA, si la prueba de 5 días es real.
 - ElevenLabs: generar la voz y los efectos con `bomberados/plantillas/pregunta/elevenlabs.py` (ver `MEMORIA.md` si falla la clave).
 - Siguiente Pregunta del día: reutilizar el fondo «carretera» solo si la pregunta pasa en carretera; si no, el de brasas.
+
+### PD #5 Protección civil — cómo se hizo (1 nov)
+- Primer vídeo con el flujo nuevo: guion mío → voz de Javi (una toma, Eleven v3 con indicaciones; `medir_voz.py` dio «OK»:
+  venta −21 dB frente a −22 dB del resto y tono 184–237 Hz) → escena «escritorio» (`leyes.js`) → 15 efectos de ElevenLabs
+  pegados a su imagen (`sfx_track_leyes`, `_tramo`). Mezcla con «realce»: venta −12/−13 dB frente al gancho −15 dB.
+- ElevenLabs devolvió casi silencio para «quiet room tone»: `_to()` ya no sube más de +24 dB (antes lo convertía en ruido).
+- Limitador de la mezcla a −1 dBFS (antes −0,5): con el realce el pico real pasaba de 0 dBFS.

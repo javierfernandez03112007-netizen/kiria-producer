@@ -460,7 +460,7 @@ def audio_filter():
     rs = realce()
     return ("[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,volume='" + _envelope(rs, 0.41) + "':eval=frame,aresample=48000,"
             "aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + ",volume='" + _envelope(rs, -0.6) + "':eval=frame[s];"
-            "[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.94:level=disabled[a]")
+            "[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.891:level=disabled[a]")
 
 
 def main():
