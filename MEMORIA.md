@@ -63,5 +63,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 ## Bomberados (Élite Bomberos)
 Todo lo de la marca, el estado de cada vídeo, Notion y la siguiente tarea (Pregunta del día #4 PAS): **`bomberados/MEMORIA_BOMBERADOS.md`**.
 
+## Notion (gestión)
+- Página «kiria.ai · Centro de producción» (privada): https://app.notion.com/p/40bd785b2d75818493f1f70b6c3a610b
+  - Base «Calendario de contenido» (collection://c194bf8b-4e4a-46b8-b6ad-c1953f4d0f2b): cada vídeo con estado, formato, gancho,
+    fecha y métricas. Al terminar un vídeo o recibir datos, actualizarla.
+  - Base «Clientes y marcas» (collection://2bea0963-17fa-474e-b9e2-42839b86e428): empresas, qué se hizo, permisos, logo, precio.
+
 ## Canal de YouTube
 Kit hecho en `projects/canal/`: `perfil.png`, `banner.jpg`, `DESCRIPCION_CANAL.txt` («Las carreras, por dentro»).
