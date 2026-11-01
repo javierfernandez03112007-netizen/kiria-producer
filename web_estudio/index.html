@@ -1,288 +1,415 @@
 <title>kiria.ai Estudio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Reels en 3D con inteligencia artificial para marcas: guion, voz, animación y subtítulos. Listos para Instagram, TikTok y YouTube Shorts.">
+<meta name="description" content="Estudio de vídeo con IA en España. Reels en 3D para marcas, academias y universidades: guion, voz, animación, subtítulos y sonido. 3,2 millones de visualizaciones en 7 días con nuestros propios vídeos.">
+<meta property="og:title" content="kiria.ai · Estudio de vídeo con IA">
+<meta property="og:description" content="Reels en 3D que explican cualquier cosa en 60 segundos. De España, para todo el mundo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<script>document.documentElement.classList.add('js'); if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('rm');</script>
 <style>
-/* Concepto: una sala de montaje. La página se lee como una línea de tiempo de un reel vertical:
-   titular con el recuadro amarillo de nuestros subtítulos, vídeos en formato 9:16, y datos técnicos en tipo monoespaciado. */
+/* kiria.ai Estudio · v2
+   Concepto: «ideas humanas + ejecución con IA». Fondo blanco de laboratorio, tinta casi negra, el recuadro amarillo de
+   nuestros subtítulos para las palabras clave, rojo para lo humano y azul para la IA. Un solo tema claro, elegido a propósito
+   (la portada es blanca por petición del cliente); las bandas oscuras llevan sus colores definidos aquí mismo. */
 :root {
-  color-scheme: dark;
-  --ink: #0a0c10;          /* fondo */
-  --panel: #12161d;        /* superficies */
-  --line: #252c37;         /* filetes */
-  --fg: #eef2f6;           /* texto */
-  --muted: #9aa4b2;        /* texto secundario */
-  --yellow: #ffc83d;       /* el recuadro de las palabras clave de nuestros subtítulos */
-  --teal: #62e3d4;         /* acento secundario */
-  --rec: #ff4d4d;          /* el punto de grabación */
+  color-scheme: light;
+  --bg: #ffffff;
+  --soft: #f5f5f2;
+  --ink: #0c0e12;
+  --ink2: #3a404a;
+  --muted: #6c737e;
+  --line: #e4e4df;
+  --line2: #cfcfc8;
+  --yellow: #ffc83d;
+  --on-yellow: #171200;
+  --amber: #f59e0b;
+  --red: #e5243f;
+  --blue: #2357ff;
+  --cyan: #0aa5c6;
+  --night: #0b0d11;
+  --night2: #141821;
+  --nightline: #272d38;
+  --nightfg: #eef1f5;
+  --nightmuted: #9aa3af;
+  --on-ink: #ffffff;
   --display: "Anton", "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
-  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --wrap: 1180px;
+  --wrap: 1200px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
-body { background: var(--ink); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+.rm { scroll-behavior: auto; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.98; margin: 0; text-wrap: balance; }
-h2 { font-size: clamp(38px, 6vw, 68px); }
-h3 { font-size: 26px; letter-spacing: 0.02em; }
 p { margin: 0; }
-.key { background: var(--yellow); color: #111; padding: 0 0.12em; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; border-radius: 4px; }
-.pending { display: inline-block; border: 1px dashed var(--yellow); color: var(--yellow); font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; vertical-align: middle; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.005em; line-height: 0.96; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(42px, 6.4vw, 84px); }
+h3 { font-size: 26px; letter-spacing: 0.02em; line-height: 1; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.key { background: var(--yellow); color: var(--on-yellow); padding: 0 0.1em; border-radius: 0.06em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+h1 .key, h2 .key { display: inline-block; line-height: 0.84; padding: 0.05em 0.09em; }
+.pending { display: inline-block; border: 1px dashed var(--amber); color: #8a5a00; background: #fff8e6; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; vertical-align: middle; line-height: 1.5; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 76px); }
+
+/* botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border-radius: 999px; font: 600 15px/1 var(--body); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .2s, border-color .2s, transform .2s var(--ease); white-space: nowrap; }
+.btn:active { transform: scale(0.98); }
+.btn.dark { background: var(--ink); color: var(--on-ink); }
+.btn.dark:hover { background: #272b34; }
+.btn.ghost { border-color: var(--line2); color: var(--ink); background: var(--bg); }
+.btn.ghost:hover { border-color: var(--ink); }
+.btn.yel { background: var(--yellow); color: var(--on-yellow); }
+.btn.yel:hover { background: #ffd261; }
+.btn .arr { transition: transform .2s var(--ease); }
+.btn:hover .arr { transform: translateX(3px); }
 
 /* cabecera */
-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--ink) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
-.brand b { font-family: var(--display); font-weight: 400; font-size: 26px; letter-spacing: 0.02em; }
-.brand b i { font-style: normal; color: var(--yellow); }
-nav { display: flex; gap: 22px; align-items: center; }
-nav a.l { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
-nav a.l:hover { color: var(--fg); }
-.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 18px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; font-family: var(--body); white-space: nowrap; }
-.btn.y { background: var(--yellow); color: #111; }
-.btn.y:hover { filter: brightness(1.06); }
-.btn.o { border-color: var(--line); color: var(--fg); background: transparent; }
-.btn.o:hover { border-color: var(--muted); }
-@media (max-width: 860px) { nav a.l { display: none; } }
-@media (max-width: 520px) { .brand .mono { display: none; } }
+.top { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); background: rgba(255, 255, 255, 0.8); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.top.scrolled { border-bottom-color: var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand b { font-family: var(--display); font-weight: 400; font-size: 25px; letter-spacing: 0.02em; }
+.brand b i { font-style: normal; color: var(--red); }
+.brand span { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.links { display: flex; align-items: center; gap: 26px; }
+.links a.l { color: var(--ink2); text-decoration: none; font-weight: 500; font-size: 15px; }
+.links a.l:hover { color: var(--ink); }
+.links .btn { padding: 11px 18px; font-size: 14.5px; }
+@media (max-width: 900px) { .links a.l { display: none; } }
+@media (max-width: 420px) { .brand span { display: none; } }
 
-/* portada */
-.hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 48px; align-items: center; padding-block: 64px 56px; }
-.hero h1 { font-size: clamp(54px, 8.6vw, 112px); line-height: 1.04; }
-/* el recuadro amarillo abraza las mayúsculas sin pisar las líneas de arriba y de abajo */
-.hero h1 .key { display: inline-block; line-height: 0.86; padding: 0.045em 0.1em; }
-.hero .lede { margin-top: 26px; max-width: 34em; font-size: 19px; color: #cfd6df; }
-.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.hero .chips { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 28px; }
-.phone { position: relative; width: min(340px, 100%); margin-left: auto; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 34px; padding: 10px; background: #050608; border: 1px solid var(--line); box-shadow: 0 30px 80px -30px rgba(255, 200, 61, 0.25), 0 0 0 1px rgba(255,255,255,0.03) inset; }
-.phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; display: block; background: #000; }
-.hud { position: absolute; left: 22px; right: 22px; top: 22px; display: flex; justify-content: space-between; pointer-events: none; }
-.rec { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: rgba(0,0,0,0.45); padding: 4px 8px; border-radius: 6px; }
-.rec::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--rec); animation: blink 1.2s steps(2) infinite; }
-@keyframes blink { 50% { opacity: 0.2; } }
-.spec { position: absolute; left: 22px; right: 22px; bottom: 22px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); pointer-events: none; }
-.spec span { background: rgba(0,0,0,0.45); padding: 3px 7px; border-radius: 5px; }
-@media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-block: 40px 40px; } .phone { margin: 8px auto 0; width: min(300px, 100%); } }
+/* portada: el escenario blanco con las dos cabezas */
+.stage { position: relative; height: 420vh; background: var(--bg); }
+.pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.vis { position: absolute; inset: 0; }
+#heads { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.poster { position: absolute; left: 50%; top: 50%; width: min(1100px, 96%); max-width: 96%; transform: translate(-50%, -46%); opacity: 0; transition: opacity .6s; pointer-events: none; }
+.nogl .poster { opacity: 1; }
+.intro { position: absolute; left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 88px); display: grid; justify-items: center; gap: 14px; text-align: center; will-change: opacity, transform; }
+.live { display: inline-flex; align-items: center; gap: 10px; padding: 8px 15px 8px 13px; border: 1px solid var(--line); border-radius: 999px; font: 600 13.5px/1.2 var(--body); background: var(--bg); box-shadow: 0 6px 24px -14px rgba(12, 14, 18, 0.35); }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: live 1.8s infinite; flex: none; }
+@keyframes live { 0% { box-shadow: 0 0 0 0 rgba(229, 36, 63, .45); } 70% { box-shadow: 0 0 0 9px rgba(229, 36, 63, 0); } 100% { box-shadow: 0 0 0 0 rgba(229, 36, 63, 0); } }
+.intro p.t { max-width: 30em; color: var(--ink2); font-size: clamp(15px, 1.5vw, 18px); text-wrap: balance; }
+.tag { position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: 5px; text-align: center; white-space: nowrap; pointer-events: none; will-change: transform, opacity; }
+.tag b { font-family: var(--display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.03em; font-size: clamp(17px, 2vw, 26px); line-height: 1; }
+.tag.h b { color: var(--red); }
+.tag.a b { color: var(--blue); }
+.tag span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 560px) { .tag span { font-size: 9.5px; letter-spacing: 0.04em; white-space: normal; max-width: 40vw; line-height: 1.5; } }
+.flash, .ring { position: absolute; left: 0; top: 0; border-radius: 50%; pointer-events: none; opacity: 0; will-change: transform, opacity; }
+.flash { width: 50vmin; height: 50vmin; margin: -25vmin 0 0 -25vmin; background: radial-gradient(circle, rgba(255, 214, 102, 1) 0%, rgba(255, 186, 31, 0.7) 22%, rgba(255, 200, 61, 0.18) 48%, rgba(255, 200, 61, 0) 70%); }
+.ring { width: 24vmin; height: 24vmin; margin: -12vmin 0 0 -12vmin; border: 2px solid var(--amber); }
+.reveal { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 22px; text-align: center; opacity: 0; pointer-events: none; padding-top: 40px; will-change: opacity, transform; }
+.reveal.on { pointer-events: auto; }
+.reveal h1 { font-size: clamp(56px, 10.4vw, 156px); line-height: 0.94; max-width: 11ch; }
+.reveal .lede { max-width: 36em; color: var(--ink2); font-size: clamp(16px, 1.7vw, 19px); text-wrap: pretty; }
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.hint { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); transform: translateX(-50%); display: grid; justify-items: center; gap: 10px; font: 500 11px/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.hint i { width: 1px; height: 38px; background: linear-gradient(var(--ink), rgba(12, 14, 18, 0)); transform-origin: top; animation: drip 1.8s var(--ease) infinite; }
+@keyframes drip { 0% { transform: scaleY(0); opacity: 1; } 55% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+/* sin movimiento: las cabezas quietas y el titular debajo */
+.rm .stage { height: auto; }
+.rm .pin { position: relative; height: auto; overflow: visible; }
+.rm .vis { position: relative; height: 82vh; height: 82svh; }
+.rm .reveal { position: relative; inset: auto; opacity: 1; pointer-events: auto; padding-block: 8px 96px; }
+.rm .hint, .rm .flash, .rm .ring { display: none; }
 
-/* pruebas */
-.proof { border-block: 1px solid var(--line); background: var(--panel); }
-.proof .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.stat { padding-block: 30px; padding-inline: 22px; border-left: 1px solid var(--line); min-width: 0; }
-.stat:first-child { border-left: 0; padding-left: 0; }
-.stat b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5vw, 60px); line-height: 1; font-variant-numeric: tabular-nums; }
-.stat b.y { color: var(--yellow); }
-.stat p { margin-top: 10px; color: var(--muted); font-size: 15px; }
-@media (max-width: 860px) { .proof .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } .stat:nth-child(-n+2) { border-top: 0; } }
+/* bandas comunes */
+.band { padding-block: 104px; }
+.soft { background: var(--soft); }
+.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px 48px; margin-bottom: 44px; }
+.head > div { display: grid; gap: 16px; }
+.head p.sub { max-width: 31em; color: var(--ink2); }
+.js .rv { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.js .rv.in { opacity: 1; transform: none; }
+.rm .rv { opacity: 1 !important; transform: none !important; }
 
-section { padding-block: 84px; }
-.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px 40px; margin-bottom: 36px; }
-.head p { max-width: 30em; color: var(--muted); }
+/* cifras */
+.proof { padding-block: 120px 100px; }
+.proof .big { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px 56px; align-items: end; }
+.proof .big b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(110px, 19vw, 260px); line-height: 0.82; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.proof .big b small { font-size: 0.5em; letter-spacing: 0; margin-left: 0.08em; color: var(--red); }
+.proof .big p { font-size: clamp(20px, 2.2vw, 28px); line-height: 1.25; max-width: 15em; text-wrap: balance; }
+.proof .big p em { font-style: normal; background: var(--yellow); padding: 0 0.15em; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; border-top: 1.5px solid var(--ink); }
+.stat { padding-top: 20px; padding-right: 22px; min-width: 0; display: grid; gap: 8px; align-content: start; }
+.stat b { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 4.6vw, 62px); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat p { color: var(--ink2); font-size: 15px; }
+.note { margin-top: 30px; }
+@media (max-width: 900px) { .proof .big { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } }
 
-/* clientes */
-.clients { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-.client { padding: 26px 22px; border-left: 1px solid var(--line); min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-.client:first-child { border-left: 0; }
-.client b { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 5.6vw, 30px); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; overflow-wrap: anywhere; }
-.client span { color: var(--muted); font-size: 14px; }
-@media (max-width: 860px) { .clients { grid-template-columns: repeat(2, minmax(0, 1fr)); } .client { border-left: 0; border-top: 1px solid var(--line); } .client:nth-child(odd) { border-right: 1px solid var(--line); } .client:nth-child(-n+2) { border-top: 0; } }
+/* marcas */
+.clients { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
+.client { padding: 30px 22px 30px 0; min-width: 0; display: grid; gap: 10px; align-content: start; }
+.client + .client { padding-left: 22px; border-left: 1px solid var(--line); }
+.client b { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 2.6vw, 34px); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; overflow-wrap: anywhere; }
+.client span { color: var(--muted); font-size: 14.5px; }
+@media (max-width: 900px) { .clients { grid-template-columns: repeat(2, minmax(0, 1fr)); } .client:nth-child(3) { padding-left: 0; border-left: 0; } .client:nth-child(n+3) { border-top: 1px solid var(--line); } }
 
 /* trabajos */
-.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.card { min-width: 0; }
-.card .vid { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid var(--line); }
-.card video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.card .tag { position: absolute; left: 12px; top: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 6px; }
-.card .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 12px; }
-.card h3 { font-size: 22px; }
-.card .views { font-family: var(--mono); font-size: 12px; color: var(--yellow); white-space: nowrap; }
-.card p { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
-@media (max-width: 860px) { .work { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } .card h3 { font-size: 19px; } }
-@media (max-width: 520px) { .card .meta { flex-direction: column; align-items: flex-start; gap: 2px; } .card h3 { font-size: 18px; } .card .views { font-size: 11px; } .card p { font-size: 13.5px; } .client { padding: 20px 16px; } }
+.work { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 20px; }
+.card { min-width: 0; display: grid; gap: 12px; align-content: start; }
+.vid { position: relative; aspect-ratio: 9 / 16; max-width: 100%; border-radius: 18px; overflow: hidden; background: var(--night); }
+.vid video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vid .tag2 { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(10, 12, 16, 0.62); color: var(--on-ink); padding: 4px 8px; border-radius: 6px; }
+.card h3 { font-size: 21px; }
+.card .views { font-family: var(--mono); font-size: 11.5px; font-weight: 700; color: var(--red); letter-spacing: 0.04em; }
+.card p { color: var(--ink2); font-size: 14.5px; }
+.card.cta-card .vid { background: var(--soft); border: 1.5px dashed var(--line2); display: grid; place-items: center; text-align: center; padding: 22px; text-decoration: none; transition: border-color .2s, background .2s; }
+.card.cta-card .vid:hover { border-color: var(--ink); background: var(--bg); }
+.card.cta-card .vid div { display: grid; gap: 12px; justify-items: center; }
+.card.cta-card .plus { width: 54px; height: 54px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; font: 400 30px/1 var(--display); color: var(--on-yellow); }
+@media (max-width: 1000px) { .work { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .work { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; } .card h3 { font-size: 18px; } .card p { font-size: 13.5px; } }
 
 /* formatos */
-.formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-.fmt { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; display: grid; gap: 12px; min-width: 0; }
-.fmt .top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
-.fmt .top .mono { white-space: nowrap; }
-.fmt p { color: #c9d1db; }
+.formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fmt { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: grid; gap: 12px; min-width: 0; transition: border-color .2s, transform .3s var(--ease); }
+.fmt:hover { border-color: var(--line2); transform: translateY(-2px); }
+.fmt .top2 { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.fmt .top2 .mono { white-space: nowrap; }
+.fmt p { color: var(--ink2); }
 .fmt .ex { color: var(--muted); font-size: 14.5px; }
-@media (max-width: 760px) { .formats { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .formats { grid-template-columns: 1fr; } .fmt { padding: 22px; } }
 
 /* anatomía de un reel */
-.tl { border: 1px solid var(--line); border-radius: 16px; padding: 26px; background: var(--panel); }
+.tl { border: 1px solid var(--line); border-radius: 18px; padding: 28px; background: var(--bg); }
 .tl .scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
-.tl .track { display: grid; grid-template-columns: 1fr 3fr 41fr 10fr 5fr; align-items: stretch; height: 42px; border-radius: 8px; overflow: hidden; gap: 2px; }
+.tl .track { display: grid; grid-template-columns: 1fr 3fr 41fr 10fr 5fr; height: 44px; border-radius: 10px; overflow: hidden; gap: 2px; }
 .tl .track span { display: block; min-width: 4px; }
-.tl .legend { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
-.tl .legend div { min-width: 0; display: grid; gap: 6px; }
+.tl .legend { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+.tl .legend div { min-width: 0; display: grid; gap: 6px; align-content: start; }
 .tl .legend i { display: block; width: 26px; height: 6px; border-radius: 3px; }
 .tl .legend b { font-size: 15px; }
-.tl .legend p { color: var(--muted); font-size: 14px; }
-.c1 { background: var(--rec); } .c2 { background: var(--yellow); } .c3 { background: #3a4656; } .c4 { background: var(--teal); } .c5 { background: #eef2f6; }
-@media (max-width: 860px) { .tl .legend { grid-template-columns: 1fr; } }
+.tl .legend p { color: var(--ink2); font-size: 14px; }
+.c1 { background: var(--red); } .c2 { background: var(--yellow); } .c3 { background: #c9ccd3; } .c4 { background: var(--blue); } .c5 { background: var(--ink); }
+@media (max-width: 860px) { .tl .legend { grid-template-columns: 1fr; } .tl { padding: 20px; } }
 
-/* proceso */
-.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; counter-reset: s; }
-.step { border-top: 2px solid var(--line); padding-top: 18px; min-width: 0; display: grid; gap: 10px; align-content: start; }
-.step::before { counter-increment: s; content: "0" counter(s); font-family: var(--mono); color: var(--yellow); font-size: 13px; letter-spacing: 0.1em; }
-.step p { color: var(--muted); font-size: 15px; }
+/* proceso y entrega */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; counter-reset: s; }
+.step { border-top: 1.5px solid var(--ink); padding-top: 18px; min-width: 0; display: grid; gap: 10px; align-content: start; }
+.step::before { counter-increment: s; content: "0" counter(s); font-family: var(--mono); font-weight: 700; color: var(--red); font-size: 12.5px; letter-spacing: 0.1em; }
+.step p { color: var(--ink2); font-size: 15px; }
 @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+.deliver { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; margin-top: 96px; }
+.specs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--bg); }
+.specs li { display: flex; justify-content: space-between; gap: 18px; padding: 15px 20px; font-size: 15.5px; }
+.specs li + li { border-top: 1px solid var(--line); }
+.specs li span:last-child { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-align: right; }
+@media (max-width: 860px) { .deliver { grid-template-columns: 1fr; margin-top: 72px; } }
 
-/* qué recibes */
-.deliver { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
-.specs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-.specs li { display: flex; justify-content: space-between; gap: 18px; padding: 15px 20px; border-top: 1px solid var(--line); font-size: 15.5px; }
-.specs li:first-child { border-top: 0; }
-.specs li span:last-child { font-family: var(--mono); font-size: 13px; color: var(--muted); text-align: right; }
-@media (max-width: 860px) { .deliver { grid-template-columns: 1fr; } }
+/* el mundo */
+.world { padding-block: 112px; overflow: hidden; }
+.world-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px 40px; align-items: center; }
+.world-copy { display: grid; gap: 22px; align-content: center; }
+.world-copy p.body { color: var(--ink2); max-width: 31em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 13.5px; font-weight: 500; background: var(--bg); }
+.globe-box { position: relative; width: 100%; max-width: 640px; aspect-ratio: 1 / 1; margin-left: auto; justify-self: end; touch-action: pan-y; cursor: grab; }
+.globe-box:active { cursor: grabbing; }
+.sphere { position: absolute; left: 50%; top: 50%; border-radius: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle at 36% 30%, #ffffff 0%, #f3f5f9 38%, #e6eaf1 72%, #d9dee8 100%); box-shadow: inset -18px -24px 60px rgba(35, 87, 255, 0.07), 0 40px 80px -40px rgba(12, 14, 18, 0.35); }
+#globe { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.es { position: absolute; left: 0; top: 0; pointer-events: none; display: flex; align-items: center; gap: 8px; font: 600 13px/1 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); padding: 6px 10px 6px 8px; border-radius: 999px; box-shadow: 0 8px 24px -14px rgba(12, 14, 18, 0.5); white-space: nowrap; opacity: 0; transition: opacity .3s; }
+.es i { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+.drag { text-align: center; margin-top: 4px; }
+@media (max-width: 900px) { .world-grid { grid-template-columns: 1fr; } .globe-box { margin: 0 auto; justify-self: center; max-width: 520px; } }
+
+/* anunciarse (banda oscura) */
+.ads { background: var(--night); color: var(--nightfg); padding-block: 112px; }
+.ads .mono { color: var(--nightmuted); }
+.ads .head p.sub { color: var(--nightmuted); }
+.ads-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 20px; align-items: stretch; }
+.offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.offer { background: var(--night2); border: 1px solid var(--nightline); border-radius: 18px; padding: 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.offer h3 { font-size: 24px; color: var(--nightfg); }
+.offer p { color: var(--nightmuted); font-size: 15px; }
+.offer .n { font-family: var(--mono); font-size: 11.5px; color: var(--yellow); letter-spacing: 0.1em; }
+.kit { background: var(--yellow); color: var(--on-yellow); border-radius: 18px; padding: 28px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.kit .mono { color: rgba(23, 18, 0, 0.7); }
+.kit ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.kit li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding-block: 11px; border-top: 1px solid rgba(23, 18, 0, 0.18); font-size: 15px; }
+.kit li b { font-family: var(--display); font-weight: 400; font-size: 26px; line-height: 1; white-space: nowrap; }
+.kit .pending { background: rgba(255, 255, 255, 0.55); border-color: rgba(23, 18, 0, 0.45); color: var(--on-yellow); }
+.kit .btn { justify-self: start; }
+.legal-note { margin-top: 22px; color: var(--nightmuted); font-size: 14px; }
+@media (max-width: 900px) { .ads-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .offers { grid-template-columns: 1fr; } }
+
+/* planes */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.plan { border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px; display: grid; gap: 18px; align-content: start; background: var(--bg); min-width: 0; position: relative; }
+.plan.feat { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.plan.feat p, .plan.feat li { color: #c9ced6; }
+.plan .badge { position: absolute; top: 18px; right: 18px; background: var(--yellow); color: var(--on-yellow); font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; }
+.plan h3 { font-size: 30px; }
+.plan p { color: var(--ink2); font-size: 15px; }
+.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.plan li { display: flex; gap: 10px; font-size: 15px; color: var(--ink2); }
+.plan li::before { content: "→"; font-family: var(--mono); color: var(--red); flex: none; }
+.plan .price { display: flex; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
+.plan.feat .price { border-top-color: #2a2f38; }
+.plan .btn { justify-self: start; }
+@media (max-width: 900px) { .plans { grid-template-columns: 1fr; } }
 
 /* preguntas */
-details { border-top: 1px solid var(--line); padding-block: 18px; }
+.faq { max-width: 880px; }
+details { border-top: 1px solid var(--line); padding-block: 20px; }
 details:last-child { border-bottom: 1px solid var(--line); }
-summary { cursor: pointer; font-weight: 600; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary { cursor: pointer; font-weight: 600; font-size: 18.5px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
 summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; font-family: var(--mono); color: var(--yellow); }
+summary::after { content: "+"; font-family: var(--mono); color: var(--red); font-size: 20px; line-height: 1; }
 details[open] summary::after { content: "–"; }
-details p { margin-top: 10px; color: #c9d1db; max-width: 62ch; }
+details p { margin-top: 10px; color: var(--ink2); max-width: 64ch; }
 
 /* contacto */
-.contact { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
-.contact .ways { display: grid; gap: 14px; margin-top: 26px; }
-.way { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-.way span { color: var(--muted); font-size: 14px; }
-form { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: grid; gap: 16px; }
+.contact { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 56px; align-items: start; }
+.ways { display: grid; gap: 12px; margin-top: 28px; }
+.way { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color .2s; min-width: 0; }
+a.way:hover { border-color: var(--ink); }
+.way .val { color: var(--ink2); font-size: 14.5px; overflow-wrap: anywhere; }
+.way .arr { color: var(--red); font-size: 20px; flex: none; }
+.more { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 40px; padding: 22px 26px; border: 1.5px dashed var(--line2); border-radius: 18px; background: var(--bg); }
+.more p { font-size: 17px; font-weight: 500; max-width: 34em; }
+.wa-float { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #0b1a10; font: 700 15px/1 var(--body); text-decoration: none; padding: 13px 17px; border-radius: 999px; box-shadow: 0 14px 34px -12px rgba(12, 14, 18, 0.45); transition: transform .2s var(--ease); }
+.wa-float:hover { transform: translateY(-2px); }
+.wa-float svg { width: 20px; height: 20px; }
+@media (max-width: 520px) { .wa-float span { display: none; } .wa-float { padding: 14px; } }
+form { background: var(--bg); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: grid; gap: 16px; box-shadow: 0 30px 60px -40px rgba(12, 14, 18, 0.25); }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 label { display: grid; gap: 7px; font-size: 14px; font-weight: 600; }
-input, select, textarea { font: inherit; font-size: 16px; color: var(--fg); background: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 12px 13px; width: 100%; }
+input, select, textarea { font: inherit; font-size: 16px; color: var(--ink); background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px 13px; width: 100%; }
 textarea { min-height: 120px; resize: vertical; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--yellow); }
-.out { border: 1px dashed var(--yellow); border-radius: 12px; padding: 16px; display: grid; gap: 12px; }
-.out pre { margin: 0; white-space: pre-wrap; font-family: var(--mono); font-size: 13px; color: #d8dee6; }
-@media (max-width: 860px) { .contact { grid-template-columns: 1fr; } .row2 { grid-template-columns: 1fr; } }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); background: var(--bg); }
+.out { border: 1px dashed var(--amber); border-radius: 14px; padding: 16px; display: grid; gap: 12px; background: #fffbef; }
+.out pre { margin: 0; white-space: pre-wrap; font-family: var(--mono); font-size: 13px; color: var(--ink2); }
+@media (max-width: 860px) { .contact { grid-template-columns: 1fr; } .row2 { grid-template-columns: 1fr; } form { padding: 20px; } }
 
-footer { border-top: 1px solid var(--line); padding-block: 30px; color: var(--muted); font-size: 14px; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
-footer nav { gap: 18px; }
-footer a { text-decoration: none; color: var(--muted); }
+/* pie */
+footer { background: var(--night); color: var(--nightmuted); padding-block: 56px 96px; font-size: 14px; }
+footer .wrap { display: grid; gap: 28px; }
+.foot1 { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px; }
+.foot1 .brand { color: var(--nightfg); }
+.foot1 .brand b { font-size: 44px; }
+.foot1 nav { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+footer a { text-decoration: none; color: var(--nightmuted); }
+footer a:hover { color: var(--nightfg); }
+.credits { border-top: 1px solid var(--nightline); padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-size: 12.5px; }
 </style>
 
-<header>
+<header class="top" id="top">
   <div class="wrap bar">
-    <a class="brand" href="#top"><b>kiria<i>.</i>ai</b><span class="mono">Estudio de vídeo</span></a>
-    <nav>
+    <a class="brand" href="#inicio" aria-label="kiria.ai, inicio"><b>kiria<i>.</i>ai</b><span>Estudio de vídeo</span></a>
+    <nav class="links" aria-label="Secciones">
       <a class="l" href="#trabajos">Trabajos</a>
-      <a class="l" href="#formatos">Formatos</a>
-      <a class="l" href="#proceso">Cómo trabajamos</a>
-      <a class="btn y" href="#contacto">Pedir un vídeo</a>
+      <a class="l" href="#mundo">Mundo</a>
+      <a class="l" href="#anunciarse">Anunciarse</a>
+      <a class="l" href="#planes">Planes</a>
+      <a class="btn dark" href="#contacto">Pedir propuesta</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
-  <div class="wrap hero">
-    <div>
-      <p class="mono">Reels en 3D con inteligencia artificial</p>
-      <h1 style="margin-top:16px">Vídeos que <span class="key">paran</span> el scroll.</h1>
-      <p class="lede">Hacemos el vídeo entero para tu marca: guion, voz en español, animación 3D, subtítulos y sonido. Listo para publicar en Instagram, TikTok y YouTube Shorts.</p>
-      <div class="cta">
-        <a class="btn y" href="#contacto">Pedir presupuesto</a>
-        <a class="btn o" href="#trabajos">Ver trabajos</a>
+<main id="inicio">
+  <section class="stage" id="stage" aria-label="Portada">
+    <div class="pin">
+      <div class="vis">
+        <canvas id="heads" aria-hidden="true"></canvas>
+        <img class="poster" src="media/cabezas.jpg" alt="Una cabeza humana con el cerebro a la vista y una cabeza de inteligencia artificial, frente a frente">
+        <div class="intro wrap" id="intro">
+          <p class="live"><i></i>3,2 millones de visualizaciones en 7 días</p>
+          <p class="t">Estudio de vídeo con IA, en España. Hacemos reels en 3D que explican cualquier cosa en 60 segundos.</p>
+        </div>
+        <div class="tag h" id="tagH"><b>Cerebro humano</b><span>La idea · el guion · el criterio</span></div>
+        <div class="tag a" id="tagA"><b>Inteligencia artificial</b><span>La voz · el 3D · la velocidad</span></div>
+        <div class="flash" id="flash"></div>
+        <div class="ring" id="ring"></div>
+        <div class="hint" id="hint"><span>Desliza</span><i></i></div>
       </div>
-      <div class="chips">
-        <span class="mono">1080 × 1920</span><span class="mono">60 fps</span><span class="mono">45–75 s</span><span class="mono">Datos con fuente</span>
+      <div class="reveal wrap" id="reveal">
+        <p class="mono">Ideas humanas + ejecución con IA</p>
+        <h1>Vídeos que <span class="key">paran</span> el scroll.</h1>
+        <p class="lede">Guion, voz en español, animación 3D, subtítulos y sonido: el vídeo entero, listo para publicar. Para marcas, academias y universidades que quieren explicar lo suyo y que la gente se quede hasta el final.</p>
+        <div class="cta"><a class="btn dark" href="#contacto">Pedir propuesta <span class="arr">→</span></a><a class="btn ghost" href="#trabajos">Ver trabajos</a></div>
       </div>
     </div>
-    <div class="phone">
-      <video src="media/showreel.mp4" poster="media/industrial.jpg" autoplay muted loop playsinline preload="auto" aria-label="Muestra de nuestros vídeos"></video>
-      <div class="hud"><span class="rec">REC</span></div>
-      <div class="spec"><span>9:16</span><span id="tc">00:00:00:00</span></div>
-    </div>
-  </div>
+  </section>
 
-  <div class="proof">
-    <div class="wrap grid">
-      <div class="stat"><b class="y">460.000</b><p>visualizaciones en un solo reel (Ingeniería Industrial)</p></div>
-      <div class="stat"><b>22.000</b><p>me gusta en ese mismo vídeo</p></div>
-      <div class="stat"><b>+20</b><p>vídeos producidos con este formato</p></div>
-      <div class="stat"><b>4</b><p>marcas que ya han trabajado con nosotros</p></div>
-    </div>
-  </div>
-
-  <section id="clientes">
+  <section class="proof" id="cifras">
     <div class="wrap">
-      <div class="head">
-        <h2>Han confiado en nosotros</h2>
-        <p>Academias, apps y negocios locales que querían salir en redes con algo distinto a la foto de siempre.</p>
+      <p class="mono rv">Resultados del canal kiria.ai en Instagram · 1 de noviembre de 2026</p>
+      <div class="big rv" style="margin-top:22px">
+        <b><span data-count="3.2" data-dec="1">3,2</span><small>M</small></b>
+        <p>visualizaciones en <em>7 días</em> con reels hechos aquí, con el mismo método que usamos para las marcas.</p>
       </div>
-      <div class="clients">
+      <div class="stats rv">
+        <div class="stat"><b>+20</b><p>vídeos producidos con este formato</p></div>
+        <div class="stat"><b>4</b><p>marcas que ya han trabajado con nosotros</p></div>
+        <div class="stat"><b>60 s</b><p>lo que dura un vídeo: guion, voz, 3D, subtítulos y sonido</p></div>
+        <div class="stat"><b>100 %</b><p>online: trabajamos con marcas de cualquier país</p></div>
+      </div>
+      <p class="mono note rv" style="text-transform:none;letter-spacing:0.02em">Cifras redondeadas de las estadísticas de Instagram del canal.</p>
+    </div>
+  </section>
+
+  <section class="band" id="clientes" style="padding-top:0">
+    <div class="wrap">
+      <div class="head rv"><div><p class="mono">Clientes</p><h2>Han confiado en nosotros</h2></div><p class="sub">Academias, apps, constructoras y negocios locales que querían algo distinto a lo de siempre: vídeos y webs.</p></div>
+      <div class="clients rv">
         <div class="client"><b>Élite Bomberos</b><span>Academia de oposiciones a bombero</span></div>
         <div class="client"><b>Bomberados</b><span>App de test para opositores: reels de producto</span></div>
-        <div class="client"><b>Fersalv</b><span class="pending">Qué hicimos: pendiente</span></div>
-        <div class="client"><b>Beauty Salon Merche</b><span class="pending">Qué hicimos: pendiente</span></div>
+        <div class="client"><b>Fersalv</b><span>Construcción: vídeos generados con IA</span></div>
+        <div class="client"><b>Beauty Salon Merche</b><span>Salón de belleza: su página web</span></div>
       </div>
     </div>
   </section>
 
-  <section id="trabajos" style="padding-top:0">
+  <section class="band soft" id="trabajos">
     <div class="wrap">
-      <div class="head">
-        <h2>Trabajos</h2>
-        <p>Fragmentos reales de vídeos que hemos producido. Aquí se ven sin sonido: el vídeo completo lleva voz en español y efectos.</p>
-      </div>
+      <div class="head rv"><div><p class="mono">Trabajos</p><h2>Hecho aquí</h2></div><p class="sub">Fragmentos reales de vídeos que hemos producido. Aquí se ven sin sonido: el vídeo completo lleva voz en español y efectos.</p></div>
       <div class="work">
-        <article class="card"><div class="vid"><video data-src="media/industrial.mp4" poster="media/industrial.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
-          <div class="meta"><h3>Ingeniería Industrial</h3><span class="views">460.000 visualizaciones</span></div><p>La carrera explicada asignatura a asignatura, con la nota de corte y la respuesta al final.</p></article>
-        <article class="card"><div class="vid"><video data-src="media/software.mp4" poster="media/software.jpg" muted loop playsinline preload="none"></video><span class="tag">El duelo</span></div>
-          <div class="meta"><h3>Software vs Informática</h3></div><p>Un combate en un ring, con datos del BOE y de las notas de corte. Pensado para generar comentarios.</p></article>
-        <article class="card"><div class="vid"><video data-src="media/aeroespacial.mp4" poster="media/aeroespacial.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
-          <div class="meta"><h3>Ingeniería Aeroespacial</h3></div><p>Del birrete a un avión real en el primer segundo, y de ahí al túnel de viento, el motor y la órbita.</p></article>
-        <article class="card"><div class="vid"><video data-src="media/bomberados.mp4" poster="media/bomberados.jpg" muted loop playsinline preload="none"></video><span class="tag">Para marcas</span></div>
-          <div class="meta"><h3>Bomberados</h3></div><p>Reel de marca para una app de opositores: un dato que engancha y la app como solución.</p></article>
-        <article class="card"><div class="vid"><video data-src="media/civil.mp4" poster="media/civil.jpg" muted loop playsinline preload="none"></video><span class="tag">El duelo</span></div>
-          <div class="meta"><h3>Ingeniería Civil</h3></div><p>Caminos contra Arquitectura, con la ley y dos sentencias del Supremo como árbitro.</p></article>
-        <article class="card"><div class="vid"><video data-src="media/bomberados_ia.mp4" poster="media/bomberados_ia.jpg" muted loop playsinline preload="none"></video><span class="tag">Pregunta test</span></div>
-          <div class="meta"><h3>Bomberados IA</h3></div><p>Una pregunta de examen con verdadero o falso, y la app explicando la respuesta.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/derecho.mp4" poster="media/derecho.jpg" muted loop playsinline preload="none"></video><span class="tag2">Así es por dentro</span></div>
+          <h3>Derecho por dentro</h3><p>Un mazo gigante sobre cien estudiantes en el primer segundo, y qué falta para ser abogado o juez.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/industrial.mp4" poster="media/industrial.jpg" muted loop playsinline preload="none"></video><span class="tag2">Así es por dentro</span></div>
+          <h3>Ingeniería Industrial</h3><p>La carrera asignatura a asignatura, con la nota de corte y la respuesta al final.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/software.mp4" poster="media/software.jpg" muted loop playsinline preload="none"></video><span class="tag2">El duelo</span></div>
+          <h3>Software vs Informática</h3><p>Un combate en un ring, con datos del BOE y de las notas de corte.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/aeroespacial.mp4" poster="media/aeroespacial.jpg" muted loop playsinline preload="none"></video><span class="tag2">Así es por dentro</span></div>
+          <h3>Ingeniería Aeroespacial</h3><p>Del birrete a un avión real en el primer segundo; después, el túnel de viento y la órbita.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/magisterio.mp4" poster="media/magisterio.jpg" muted loop playsinline preload="none"></video><span class="tag2">Así es por dentro</span></div>
+          <h3>Magisterio</h3><p>Un tópico desmontado sin salir del aula: lo que se estudia de verdad.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/bomberados.mp4" poster="media/bomberados.jpg" muted loop playsinline preload="none"></video><span class="tag2">Para marcas</span></div>
+          <h3>Bomberados</h3><p>Reel de marca para una app de opositores: un dato que engancha y la app como solución.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/civil.mp4" poster="media/civil.jpg" muted loop playsinline preload="none"></video><span class="tag2">El duelo</span></div>
+          <h3>Ingeniería Civil</h3><p>Caminos contra Arquitectura, con la ley y dos sentencias del Supremo como árbitro.</p></article>
+        <article class="card rv"><div class="vid"><video data-src="media/bomberados_ia.mp4" poster="media/bomberados_ia.jpg" muted loop playsinline preload="none"></video><span class="tag2">Pregunta test</span></div>
+          <h3>Bomberados IA</h3><p>Una pregunta de examen con verdadero o falso, y la app explicando la respuesta.</p></article>
       </div>
+      <div class="more rv"><p>¿Quieres el tuyo? Cuéntanos qué quieres explicar y te proponemos un guion.</p><a class="btn dark" href="#contacto">Pedir propuesta <span class="arr">→</span></a></div>
     </div>
   </section>
 
-  <section id="formatos" style="background:var(--panel);border-block:1px solid var(--line)">
+  <section class="band" id="formatos">
     <div class="wrap">
-      <div class="head">
-        <h2>Formatos</h2>
-        <p>Cada formato tiene su estructura probada. Elegimos el que mejor cuenta lo tuyo.</p>
-      </div>
+      <div class="head rv"><div><p class="mono">Formatos</p><h2>Estructuras probadas</h2></div><p class="sub">Cada formato tiene su estructura. Elegimos el que mejor cuenta lo tuyo.</p></div>
       <div class="formats">
-        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>Así es por dentro</h3><span class="mono">60–75 s</span></div>
-          <p>Abrimos tu producto, servicio o carrera en 3D y enseñamos cómo funciona por dentro, pieza a pieza.</p><p class="ex">Ejemplo: Ingeniería Industrial, Aeroespacial.</p></div>
-        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>El duelo</h3><span class="mono">60–75 s</span></div>
-          <p>Dos opciones frente a frente, con marcador y datos. Funciona para comparar y para que la gente opine.</p><p class="ex">Ejemplo: Software vs Informática, Caminos vs Arquitectura.</p></div>
-        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>El dato que sorprende</h3><span class="mono">55–65 s</span></div>
-          <p>Un número real que nadie espera, explicado con gráficos técnicos que se mueven al ritmo de la voz.</p><p class="ex">Ejemplo: «Ocho de cada diez opositores…» para Bomberados.</p></div>
-        <div class="fmt" style="background:var(--ink)"><div class="top"><h3>Pregunta test</h3><span class="mono">45–60 s</span></div>
+        <div class="fmt rv"><div class="top2"><h3>Así es por dentro</h3><span class="mono">60–75 s</span></div>
+          <p>Abrimos tu producto, servicio o carrera en 3D y enseñamos cómo funciona por dentro, pieza a pieza.</p><p class="ex">Ejemplos: Ingeniería Industrial, Aeroespacial, Magisterio.</p></div>
+        <div class="fmt rv"><div class="top2"><h3>El duelo</h3><span class="mono">60–75 s</span></div>
+          <p>Dos opciones frente a frente, con marcador y datos. Funciona para comparar y para que la gente opine.</p><p class="ex">Ejemplos: Software vs Informática, Caminos vs Arquitectura.</p></div>
+        <div class="fmt rv"><div class="top2"><h3>El dato que sorprende</h3><span class="mono">55–65 s</span></div>
+          <p>Un número real que nadie espera, explicado con gráficos que se mueven al ritmo de la voz.</p><p class="ex">Ejemplo: «Ocho de cada diez opositores…» para Bomberados.</p></div>
+        <div class="fmt rv"><div class="top2"><h3>Pregunta test</h3><span class="mono">45–60 s</span></div>
           <p>Una pregunta con su respuesta al final. Ideal para academias, formación y apps de estudio.</p><p class="ex">Ejemplo: Bomberados IA.</p></div>
       </div>
-    </div>
-  </section>
-
-  <section id="anatomia">
-    <div class="wrap">
-      <div class="head">
-        <h2>Anatomía de un reel</h2>
-        <p>Por qué la gente se queda hasta el final: la pregunta se abre en los primeros segundos y la respuesta no llega hasta el cierre.</p>
-      </div>
-      <div class="tl">
+      <div class="tl rv" style="margin-top:56px">
+        <div class="head" style="margin-bottom:22px"><div><p class="mono">Anatomía de un reel</p><h3 style="font-size:clamp(26px,3vw,36px)">Por qué la gente se queda hasta el final</h3></div></div>
         <div class="scale"><span>0 s</span><span>15 s</span><span>30 s</span><span>45 s</span><span>60 s</span></div>
         <div class="track" role="img" aria-label="Línea de tiempo de 60 segundos dividida en cinco partes"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
         <div class="legend">
@@ -296,120 +423,535 @@ footer a { text-decoration: none; color: var(--muted); }
     </div>
   </section>
 
-  <section id="proceso" style="padding-top:0">
+  <section class="band soft" id="proceso">
     <div class="wrap">
-      <div class="head"><h2>Cómo trabajamos</h2><p>Tú nos cuentas qué quieres conseguir. Del resto nos encargamos nosotros.</p></div>
-      <div class="steps">
+      <div class="head rv"><div><p class="mono">Cómo trabajamos</p><h2>De la idea al vídeo</h2></div><p class="sub">Tú nos cuentas qué quieres conseguir. Del resto nos encargamos nosotros.</p></div>
+      <div class="steps rv">
         <div class="step"><h3>Brief</h3><p>Nos cuentas tu negocio, a quién quieres llegar y qué quieres que pase después de ver el vídeo.</p></div>
         <div class="step"><h3>Guion</h3><p>Te enviamos el guion con el gancho, los datos y el cierre. No seguimos hasta que lo apruebas.</p></div>
         <div class="step"><h3>Voz y 3D</h3><p>Voz en español, escena en 3D, subtítulos palabra a palabra y efectos de sonido.</p></div>
         <div class="step"><h3>Entrega</h3><p>El vídeo listo para subir, con portada, miniatura y descripción. Plazo: <span class="pending">pendiente</span></p></div>
       </div>
-    </div>
-  </section>
-
-  <section id="entrega" style="background:var(--panel);border-block:1px solid var(--line)">
-    <div class="wrap deliver">
-      <div>
-        <h2>Qué recibes</h2>
-        <p style="margin-top:18px;color:var(--muted);max-width:30em">Todo lo necesario para publicar ese mismo día. Si tu vídeo da una cifra, lleva su fuente.</p>
-        <div style="margin-top:28px"><a class="btn y" href="#contacto">Pedir presupuesto</a></div>
+      <div class="deliver">
+        <div class="rv" style="display:grid;gap:18px">
+          <p class="mono">Qué recibes</p>
+          <h2>Todo para publicar el mismo día</h2>
+          <p style="color:var(--ink2);max-width:30em">Si tu vídeo da una cifra, lleva su fuente, y te la damos por escrito.</p>
+          <div><a class="btn dark" href="#contacto">Pedir propuesta <span class="arr">→</span></a></div>
+        </div>
+        <ul class="specs rv">
+          <li><span>Vídeo vertical</span><span>MP4 · 1080×1920 · 60 fps</span></li>
+          <li><span>Duración</span><span>45–75 s</span></li>
+          <li><span>Voz</span><span>Español de España</span></li>
+          <li><span>Subtítulos</span><span>Palabra a palabra</span></li>
+          <li><span>Sonido</span><span>Voz + efectos · −15 LUFS</span></li>
+          <li><span>Portada y miniatura</span><span>9:16 y 4:5</span></li>
+          <li><span>Descripción y hashtags</span><span>Versión larga y corta</span></li>
+          <li><span>Fuentes de los datos</span><span>Documento aparte</span></li>
+        </ul>
       </div>
-      <ul class="specs">
-        <li><span>Vídeo vertical</span><span>MP4 · 1080×1920 · 60 fps</span></li>
-        <li><span>Duración</span><span>45–75 s</span></li>
-        <li><span>Voz</span><span>Español de España</span></li>
-        <li><span>Subtítulos</span><span>Palabra a palabra</span></li>
-        <li><span>Sonido</span><span>Voz + efectos · −16 LUFS</span></li>
-        <li><span>Portada y miniatura</span><span>9:16 y 4:5</span></li>
-        <li><span>Descripción y hashtags</span><span>Versión larga y corta</span></li>
-        <li><span>Fuentes de los datos</span><span>Documento aparte</span></li>
-      </ul>
     </div>
   </section>
 
-  <section id="preguntas">
-    <div class="wrap">
-      <div class="head"><h2>Preguntas</h2></div>
-      <details><summary>¿Está hecho con inteligencia artificial?</summary><p>Sí. Usamos IA para la voz, el guion y la animación, y revisamos a mano cada dato y cada plano antes de entregarlo.</p></details>
-      <details><summary>¿Puede salir mi marca?</summary><p>Sí: tu logo, tus colores, tu producto y tu forma de hablar. El vídeo es tuyo para publicarlo donde quieras.</p></details>
-      <details><summary>¿Los datos son reales?</summary><p>Siempre. Cada cifra que aparece lleva su fuente, y te la damos por escrito junto al vídeo.</p></details>
-      <details><summary>¿Cuánto cuesta?</summary><p>Depende del formato, la duración y cuántos vídeos necesites. Cuéntanos tu idea y te enviamos un presupuesto cerrado.</p></details>
-      <details><summary>¿Cuánto tarda?</summary><p>El plazo depende del guion y de los cambios que pidas. <span class="pending">Plazo habitual: pendiente</span></p></details>
-      <details><summary>¿Para qué redes sirve?</summary><p>Para Instagram Reels, TikTok y YouTube Shorts: formato vertical 9:16, con subtítulos para verlo sin sonido.</p></details>
-    </div>
-  </section>
-
-  <section id="contacto" style="background:var(--panel);border-top:1px solid var(--line)">
-    <div class="wrap contact">
+  <section class="world" id="mundo">
+    <div class="wrap world-grid">
+      <div class="world-copy rv">
+        <p class="mono">Hecho en España · 100 % online</p>
+        <h2>De España, para todo el <span class="key">mundo</span>.</h2>
+        <p class="body">Trabajamos en remoto con marcas de cualquier país: brief, guion, revisiones y entrega, todo online y sin desplazamientos. Y como cada vídeo lleva subtítulos palabra a palabra, se entiende en cualquier parte, con sonido o sin él.</p>
+        <div class="chips"><span>Voz en español de España</span><span>Subtítulos palabra a palabra</span><span>Entrega online</span><span class="pending">Otros idiomas: pendiente</span></div>
+      </div>
       <div>
-        <h2>Cuéntanos tu vídeo</h2>
-        <p style="margin-top:18px;color:var(--muted);max-width:28em">Rellena el formulario y te respondemos con una propuesta de guion y presupuesto.</p>
-        <div class="ways">
-          <div class="way"><div><b>Correo</b><br><span class="pending">Correo: pendiente</span></div></div>
-          <div class="way"><div><b>WhatsApp</b><br><span class="pending">Número: pendiente</span></div></div>
-          <div class="way"><div><b>Instagram</b><br><span class="pending">Usuario: pendiente</span></div></div>
+        <div class="globe-box" id="globeBox" aria-label="Globo terráqueo con arcos desde España hacia países de todo el mundo. Se puede girar arrastrando." role="img">
+          <div class="sphere" id="sphere"></div>
+          <canvas id="globe"></canvas>
+          <div class="es" id="esLabel"><i></i>España</div>
+        </div>
+        <p class="mono drag">Arrastra para girar el globo</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ads" id="anunciarse">
+    <div class="wrap">
+      <div class="head rv"><div><p class="mono">Para marcas · Patrocinio</p><h2>Anúnciate en <span class="key">kiria.ai</span></h2></div><p class="sub">Hablamos de carreras, oposiciones y dinero, con datos y en 60 segundos. Encaja con marcas de educación, empleo y finanzas personales.</p></div>
+      <div class="ads-grid">
+        <div class="offers">
+          <div class="offer rv"><span class="n">01</span><h3>Vídeo patrocinado</h3><p>Un «por dentro» de tu carrera, máster, academia o producto, publicado en kiria.ai e identificado como publicidad.</p></div>
+          <div class="offer rv"><span class="n">02</span><h3>Serie con tu marca</h3><p>Varios capítulos de una misma serie («Carreras por dentro, con…») para que tu marca se asocie a un tema.</p></div>
+          <div class="offer rv"><span class="n">03</span><h3>Mención al cierre</h3><p>Tu marca en los últimos segundos, cuando la gente ya se ha quedado hasta el final.</p></div>
+          <div class="offer rv"><span class="n">04</span><h3>Colaboración</h3><p>Hacemos el vídeo para tu cuenta y lo publicamos a la vez en kiria.ai como colaboración.</p></div>
+        </div>
+        <div class="kit rv">
+          <p class="mono">Media kit</p>
+          <ul>
+            <li><span>Visualizaciones en 7 días</span><b>3,2 M</b></li>
+            <li><span>Vídeos publicados</span><b>+20</b></li>
+            <li><span>Seguidores</span><span class="pending">pendiente</span></li>
+            <li><span>Edad y país del público</span><span class="pending">pendiente</span></li>
+            <li><span>Tarifas</span><span class="pending">pendiente</span></li>
+          </ul>
+          <a class="btn dark" href="#contacto" data-formato="Anunciarme en kiria.ai">Pedir el media kit <span class="arr">→</span></a>
         </div>
       </div>
-      <form id="f" novalidate>
+      <p class="legal-note rv">Toda la publicidad va identificada como tal, como exige la ley.</p>
+    </div>
+  </section>
+
+  <section class="band" id="planes">
+    <div class="wrap">
+      <div class="head rv"><div><p class="mono">Planes</p><h2>Elige cómo empezar</h2></div><p class="sub">Tres formas de trabajar con nosotros. Precios y condiciones: <span class="pending">pendientes</span></p></div>
+      <div class="plans">
+        <div class="plan rv"><h3>Un vídeo</h3><p>Para probar el formato.</p>
+          <ul><li>1 vídeo de 45–75 s</li><li>Guion aprobado antes de producir</li><li>Portada, miniatura y descripción</li><li>Fuentes de los datos por escrito</li></ul>
+          <div class="price"><span class="mono">Precio</span><span class="pending">pendiente</span></div><a class="btn ghost" href="#contacto" data-formato="Un vídeo">Pedir propuesta</a></div>
+        <div class="plan feat rv"><span class="badge">Recomendado</span><h3>Serie mensual</h3><p>Para publicar con constancia.</p>
+          <ul><li>4 vídeos al mes</li><li>Una serie con tu marca</li><li>Calendario de publicación</li><li>Todo lo del plan anterior</li></ul>
+          <div class="price"><span class="mono">Precio</span><span class="pending">pendiente</span></div><a class="btn yel" href="#contacto" data-formato="Serie mensual">Pedir propuesta <span class="arr">→</span></a></div>
+        <div class="plan rv"><h3>Vídeo + difusión</h3><p>Para llegar también a nuestro público.</p>
+          <ul><li>Vídeo para tu cuenta</li><li>Publicación en kiria.ai como colaboración</li><li>Identificado como publicidad</li><li>Datos de alcance al terminar</li></ul>
+          <div class="price"><span class="mono">Precio</span><span class="pending">pendiente</span></div><a class="btn ghost" href="#contacto" data-formato="Anunciarme en kiria.ai">Pedir propuesta</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band soft" id="preguntas">
+    <div class="wrap">
+      <div class="head rv"><div><p class="mono">Preguntas</p><h2>Lo que suelen preguntarnos</h2></div></div>
+      <div class="faq rv">
+        <details><summary>¿Está hecho con inteligencia artificial?</summary><p>Sí. Usamos IA para la voz, el guion y la animación, y revisamos a mano cada dato y cada plano antes de entregarlo.</p></details>
+        <details><summary>¿Puede salir mi marca?</summary><p>Sí: tu logo, tus colores, tu producto y tu forma de hablar. El vídeo es tuyo para publicarlo donde quieras.</p></details>
+        <details><summary>¿Los datos son reales?</summary><p>Siempre. Cada cifra que aparece lleva su fuente, y te la damos por escrito junto al vídeo.</p></details>
+        <details><summary>¿Trabajáis con marcas de fuera de España?</summary><p>Sí. Todo el proceso es online, desde el brief hasta la entrega. La voz es en español de España; otros idiomas: <span class="pending">pendiente</span></p></details>
+        <details><summary>¿Puedo anunciarme en el canal kiria.ai?</summary><p>Sí, con vídeos patrocinados, series o colaboraciones, siempre identificados como publicidad. Pídenos el media kit.</p></details>
+        <details><summary>¿Cuánto cuesta?</summary><p>Depende del formato, la duración y cuántos vídeos necesites. Cuéntanos tu idea y te enviamos un presupuesto cerrado.</p></details>
+        <details><summary>¿Cuánto tarda?</summary><p>El plazo depende del guion y de los cambios que pidas. <span class="pending">Plazo habitual: pendiente</span></p></details>
+        <details><summary>¿Para qué redes sirve?</summary><p>Para Instagram Reels, TikTok y YouTube Shorts: formato vertical 9:16, con subtítulos para verlo sin sonido.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="contacto">
+    <div class="wrap contact">
+      <div class="rv">
+        <p class="mono">Contacto</p>
+        <h2 style="margin-top:16px">Cuéntanos tu vídeo</h2>
+        <p style="margin-top:18px;color:var(--ink2);max-width:28em">Rellena el formulario y se abrirá WhatsApp con tu mensaje escrito. Te respondemos con una propuesta de guion y presupuesto.</p>
+        <div class="ways">
+          <a class="way" href="https://wa.me/34601621977?text=Hola%2C%20me%20interesa%20un%20v%C3%ADdeo%20para%20mi%20marca." target="_blank" rel="noopener"><span><b>WhatsApp</b><br><span class="val">+34 601 621 977</span></span><span class="arr">→</span></a>
+          <a class="way" href="mailto:javierfernandez03112007@gmail.com"><span><b>Correo</b><br><span class="val">javierfernandez03112007@gmail.com</span></span><span class="arr">→</span></a>
+          <a class="way" href="https://www.instagram.com/javifer.h/" target="_blank" rel="noopener"><span><b>Instagram</b><br><span class="val">@javifer.h</span></span><span class="arr">→</span></a>
+        </div>
+      </div>
+      <form id="f" class="rv" novalidate>
         <div class="row2">
           <label for="nombre">Nombre<input id="nombre" name="nombre" autocomplete="name" required></label>
           <label for="empresa">Empresa<input id="empresa" name="empresa" autocomplete="organization"></label>
         </div>
         <div class="row2">
           <label for="email">Correo<input id="email" name="email" type="email" autocomplete="email" required></label>
-          <label for="formato">Formato<select id="formato" name="formato"><option>Aún no lo sé</option><option>Así es por dentro</option><option>El duelo</option><option>El dato que sorprende</option><option>Pregunta test</option></select></label>
+          <label for="formato">Qué te interesa<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>Serie mensual</option><option>Anunciarme en kiria.ai</option><option>Así es por dentro</option><option>El duelo</option><option>El dato que sorprende</option><option>Pregunta test</option></select></label>
         </div>
         <label for="idea">¿Qué quieres contar?<textarea id="idea" name="idea" placeholder="Tu producto, tu servicio o tu idea, y qué te gustaría que pasara después de ver el vídeo." required></textarea></label>
-        <button class="btn y" type="submit" style="justify-self:start">Preparar mensaje</button>
+        <button class="btn dark" type="submit" style="justify-self:start">Enviar por WhatsApp <span class="arr">→</span></button>
         <div class="out" id="out" hidden>
           <b>Tu mensaje está listo</b>
           <pre id="msg"></pre>
-          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn o" type="button" id="copy">Copiar mensaje</button></div>
-          <p class="mono" style="text-transform:none;letter-spacing:0">En esta versión de prueba el formulario no envía nada: en la web final llegará directamente a tu correo.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn dark" id="wa" target="_blank" rel="noopener">Abrir WhatsApp</a><a class="btn ghost" id="mail">Enviar por correo</a><button class="btn ghost" type="button" id="copy">Copiar mensaje</button></div>
+          <p class="mono" style="text-transform:none;letter-spacing:0">Si WhatsApp no se ha abierto solo, pulsa «Abrir WhatsApp» o escríbenos al +34 601 621 977.</p>
         </div>
       </form>
     </div>
   </section>
 </main>
 
+<a class="wa-float" href="https://wa.me/34601621977?text=Hola%2C%20me%20interesa%20un%20v%C3%ADdeo%20para%20mi%20marca." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
+
 <footer>
   <div class="wrap">
-    <span>© 2026 kiria.ai · Estudio de vídeo con IA</span>
-    <nav><a href="#top">Aviso legal</a><a href="#top">Privacidad</a><a href="#top">Cookies</a><span class="pending">Textos legales: pendientes</span></nav>
+    <div class="foot1">
+      <a class="brand" href="#inicio"><b>kiria<i>.</i>ai</b><span>Estudio de vídeo con IA · Hecho en España</span></a>
+      <nav aria-label="Legal"><a href="#inicio">Aviso legal</a><a href="#inicio">Privacidad</a><a href="#inicio">Cookies</a><span class="pending">Textos legales: pendientes</span></nav>
+    </div>
+    <div class="credits">
+      <span>© 2026 kiria.ai</span>
+      <span>Cabeza 3D: escaneo de Lee Perry-Smith (Infinite-Realities), licencia CC BY 3.0 · Mapa: Natural Earth (dominio público)</span>
+    </div>
   </div>
 </footer>
 
 <script>
-// contador de tiempo del vídeo de portada (horas:minutos:segundos:fotogramas a 60 fps)
-(() => {
-  const v = document.querySelector('.phone video'), tc = document.getElementById('tc');
-  const pad = n => String(n).padStart(2, '0');
-  const tick = () => { const t = v.currentTime || 0, f = Math.floor((t % 1) * 60); tc.textContent = `00:00:${pad(Math.floor(t))}:${pad(f)}`; requestAnimationFrame(tick); };
-  requestAnimationFrame(tick);
+// ---------------------------------------------------------------- utilidades
+const sm = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const M4 = {
+  persp(f, a, n, fa) { const t = 1 / Math.tan(f / 2), nf = 1 / (n - fa); return new Float32Array([t / a, 0, 0, 0, 0, t, 0, 0, 0, 0, (fa + n) * nf, -1, 0, 0, 2 * fa * n * nf, 0]); },
+  look(e, c, u) {
+    let z0 = e[0] - c[0], z1 = e[1] - c[1], z2 = e[2] - c[2], l = Math.hypot(z0, z1, z2); z0 /= l; z1 /= l; z2 /= l;
+    let x0 = u[1] * z2 - u[2] * z1, x1 = u[2] * z0 - u[0] * z2, x2 = u[0] * z1 - u[1] * z0; l = Math.hypot(x0, x1, x2); x0 /= l; x1 /= l; x2 /= l;
+    const y0 = z1 * x2 - z2 * x1, y1 = z2 * x0 - z0 * x2, y2 = z0 * x1 - z1 * x0;
+    return new Float32Array([x0, y0, z0, 0, x1, y1, z1, 0, x2, y2, z2, 0, -(x0 * e[0] + x1 * e[1] + x2 * e[2]), -(y0 * e[0] + y1 * e[1] + y2 * e[2]), -(z0 * e[0] + z1 * e[1] + z2 * e[2]), 1]);
+  },
+  mul(a, b) { const o = new Float32Array(16); for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) { let s = 0; for (let k = 0; k < 4; k++) s += a[k * 4 + j] * b[i * 4 + k]; o[i * 4 + j] = s; } return o; },
+  trs(tx, ty, tz, yaw, pitch, s) { // T · Ry(yaw) · Rx(pitch) · S
+    const cy = Math.cos(yaw), sy = Math.sin(yaw), cx = Math.cos(pitch), sx = Math.sin(pitch);
+    return new Float32Array([cy * s, 0, -sy * s, 0, sy * sx * s, cx * s, cy * sx * s, 0, sy * cx * s, -sx * s, cy * cx * s, 0, tx, ty, tz, 1]);
+  },
+  rx(a) { const c = Math.cos(a), s = Math.sin(a); return new Float32Array([1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1]); },
+  ry(a) { const c = Math.cos(a), s = Math.sin(a); return new Float32Array([c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]); },
+  xf(m, v) { return [m[0] * v[0] + m[4] * v[1] + m[8] * v[2] + m[12], m[1] * v[0] + m[5] * v[1] + m[9] * v[2] + m[13], m[2] * v[0] + m[6] * v[1] + m[10] * v[2] + m[14], m[3] * v[0] + m[7] * v[1] + m[11] * v[2] + m[15]]; },
+};
+function glProgram(gl, vs, fs) {
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+  const p = gl.createProgram(); gl.attachShader(p, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+  const u = {}, a = {};
+  for (let i = 0, n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS); i < n; i++) { const k = gl.getActiveUniform(p, i).name; u[k] = gl.getUniformLocation(p, k); }
+  for (let i = 0, n = gl.getProgramParameter(p, gl.ACTIVE_ATTRIBUTES); i < n; i++) { const k = gl.getActiveAttrib(p, i).name; a[k] = gl.getAttribLocation(p, k); }
+  return { p, u, a, f(name, ...v) { const l = u[name]; if (l) gl['uniform' + v.length + 'f'](l, ...v); }, m(name, v) { const l = u[name]; if (l) gl.uniformMatrix4fv(l, false, v); } };
+}
+async function fetchB64(url) { const r = await fetch(url); if (!r.ok) throw new Error(url); const t = atob((await r.text()).trim()), b = new Uint8Array(t.length); for (let i = 0; i < t.length; i++) b[i] = t.charCodeAt(i); return b.buffer; }
+function glBuf(gl, data) { const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW); return b; }
+function glAttr(gl, prog, name, buf, size, type, norm) { const loc = prog.a[name]; if (loc === undefined || loc < 0) return; gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, size, type, norm, 0, 0); }
+function fitCanvas(cv, maxDpr) { const d = Math.min(window.devicePixelRatio || 1, maxDpr), w = Math.max(1, Math.round(cv.clientWidth * d)), h = Math.max(1, Math.round(cv.clientHeight * d)); if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; return true; } return false; }
+
+// ---------------------------------------------------------------- cabecera
+(() => { const top = document.getElementById('top'); const on = () => top.classList.toggle('scrolled', scrollY > 8); addEventListener('scroll', on, { passive: true }); on(); })();
+
+// ---------------------------------------------------------------- portada: cerebro humano + inteligencia artificial → se juntan y explotan
+(async () => {
+  const stage = document.getElementById('stage'), vis = stage.querySelector('.vis'), cv = document.getElementById('heads');
+  const $ = id => document.getElementById(id);
+  const tagH = $('tagH'), tagA = $('tagA'), intro = $('intro'), reveal = $('reveal'), hint = $('hint'), flash = $('flash'), ring = $('ring');
+  const fail = () => { document.documentElement.classList.add('nogl'); tagH.style.display = tagA.style.display = 'none'; reveal.style.opacity = 1; reveal.classList.add('on'); };
+  const gl = cv.getContext('webgl', { alpha: true, antialias: false, premultipliedAlpha: true, powerPreference: 'high-performance' });
+  if (!gl) return fail();
+  let buf; try { buf = await fetchB64('media/cabezas.txt'); } catch (e) { return fail(); }
+  const dv = new DataView(buf); if (dv.getUint32(0, true) !== 0x3130484b) return fail();
+  const cnt = [0, 1, 2, 3, 4, 5].map(i => dv.getUint32(4 + i * 4, true));
+  let off = 28; const P = [], N = [], A = [];
+  for (let i = 0; i < 5; i++) { P.push(new Int16Array(buf, off, cnt[i] * 3)); off += cnt[i] * 6; }
+  const E = new Uint16Array(buf, off, cnt[5] * 2); off += cnt[5] * 4;
+  for (let i = 0; i < 5; i++) { N.push(new Int8Array(buf, off, cnt[i] * 3)); off += cnt[i] * 3; }
+  for (let i = 0; i < 5; i++) { A.push(new Uint8Array(buf, off, cnt[i] * 4)); off += cnt[i] * 4; }
+  // la red de la IA: cada arista, dos vértices
+  const ne = cnt[5], LP = new Int16Array(ne * 6), LN = new Int8Array(ne * 6), LA = new Uint8Array(ne * 8);
+  for (let i = 0; i < ne; i++) for (let j = 0; j < 2; j++) { const v = E[i * 2 + j]; for (let c = 0; c < 3; c++) { LP[i * 6 + j * 3 + c] = P[3][v * 3 + c]; LN[i * 6 + j * 3 + c] = N[3][v * 3 + c]; } for (let c = 0; c < 4; c++) LA[i * 8 + j * 4 + c] = A[3][v * 4 + c]; }
+  const sets = [0, 1, 2, 3, 4].map(i => ({ n: cnt[i], p: glBuf(gl, P[i]), nr: glBuf(gl, N[i]), a: glBuf(gl, A[i]) }));
+  const lines = { n: ne * 2, p: glBuf(gl, LP), nr: glBuf(gl, LN), a: glBuf(gl, LA) };
+  const VS = `
+precision highp float;
+attribute vec3 aPos; attribute vec3 aNor; attribute vec4 aAux;
+uniform mat4 uProj, uView, uModel;
+uniform vec3 uCam, uCenter;
+uniform float uTime, uExplode, uImplode, uHeat, uMode, uSize, uPx, uScan, uLine, uMinPx, uMaxPx;
+varying vec4 vCol; varying float vSq; varying float vLine;
+float hash(float n) { return fract(sin(n) * 43758.5453123); }
+void main() {
+  float sd = aAux.x * 255.0 + 1.0;
+  float r1 = hash(sd * 12.9898 + aPos.x * 78.233 + aPos.z * 3.1);
+  float r2 = hash(sd * 39.3468 + aPos.y * 11.135 + aPos.x * 5.7);
+  float r3 = hash(sd * 73.156 + aPos.z * 52.235 + aPos.y * 1.3);
+  vec4 wp = uModel * vec4(aPos, 1.0);
+  vec3 n = normalize(mat3(uModel) * aNor);
+  float fres = 1.0 - abs(dot(n, normalize(uCam - wp.xyz)));
+  wp.xyz += (vec3(r1, r2, r3) - 0.5) * 0.012 * uHeat * sin(uTime * 40.0 + r1 * 30.0);
+  wp.xyz = mix(wp.xyz, uCenter, uImplode * (0.08 + 0.14 * r1));
+  float delay = r2 * 0.32;
+  float k = clamp((uExplode - delay) / (1.0 - delay), 0.0, 1.0);
+  float ek = 1.0 - (1.0 - k) * (1.0 - k) * (1.0 - k);
+  vec3 dir = normalize(wp.xyz - uCenter + (vec3(r1, r2, r3) - 0.5) * 0.8); dir.z *= 0.45;
+  wp.xyz += dir * ek * (0.5 + 2.4 * r3 * r3);
+  wp.xyz += vec3(sin(r1 * 40.0 + uTime * 0.7), cos(r2 * 40.0 + uTime * 0.6), sin(r3 * 40.0 + uTime * 0.5)) * 0.14 * ek;
+  wp.y -= 0.3 * k * k * r1;
+  vec4 mv = uView * wp;
+  gl_Position = uProj * mv;
+  vec3 col; float a; float size = 1.0; vSq = 0.0; vLine = uLine;
+  if (uMode < 0.5) {            // piel humana: punteado de grafito, más denso en los bordes
+    col = vec3(0.09, 0.10, 0.13);
+    a = 0.06 + 0.62 * fres * fres;
+    a = mix(a, 0.32, aAux.y);
+    a *= smoothstep(-0.665, -0.42, aPos.y);
+  } else if (uMode < 1.5) {     // cerebro: circunvoluciones; los surcos más oscuros; pulsos de actividad
+    float fold = aAux.y; float part = aAux.z;
+    col = mix(vec3(1.0, 0.58, 0.64), vec3(0.78, 0.05, 0.19), fold);
+    a = 0.22 + 0.62 * fold;
+    float w = sin(aPos.z * 16.0 + aPos.y * 8.0 - uTime * 2.4 + part * 3.0);
+    float pulse = smoothstep(0.93, 1.0, w) * (0.5 + 0.5 * r2);
+    col = mix(col, vec3(1.0, 0.72, 0.16), pulse);
+    a = max(a, pulse * 0.95);
+    if (part > 0.9) a *= 0.42;
+    size = 1.12;
+  } else if (uMode < 2.5) {     // IA: anillos de escáner con una línea que barre la cabeza
+    col = vec3(0.13, 0.33, 1.0);
+    a = 0.10 + 0.5 * fres;
+    float sc = exp(-pow((aPos.y - uScan) * 26.0, 2.0));
+    col = mix(col, vec3(0.0, 0.72, 0.93), sc); a += sc * 0.55;
+  } else if (uMode < 3.5) {     // IA: nodos de la red; algunos se encienden
+    col = vec3(0.09, 0.24, 0.92); a = 0.55 + 0.35 * fres; size = 2.3;
+    float f = step(0.975, hash(floor(uTime * 2.5 + r1 * 50.0) + r2 * 97.0));
+    col = mix(col, vec3(1.0, 0.66, 0.05), f); size *= 1.0 + 0.8 * f;
+  } else if (uMode < 4.5) {     // IA: el cerebro, en vóxeles
+    vSq = 1.0;
+    float w = sin(aPos.y * 26.0 - uTime * 2.6 + aPos.z * 9.0);
+    float g = smoothstep(0.7, 1.0, w);
+    col = mix(vec3(0.16, 0.34, 1.0), vec3(0.0, 0.74, 0.95), g);
+    a = 0.17 + 0.42 * g; size = 1.3;
+  } else {                      // IA: conexiones
+    col = vec3(0.13, 0.33, 1.0); a = 0.08 + 0.26 * fres;
+  }
+  col = mix(col, vec3(1.0, 0.62, 0.05), uHeat * 0.35 * step(0.6, r3));
+  float spark = step(0.84, r1) * smoothstep(0.0, 0.2, k);
+  col = mix(col, vec3(1.0, 0.64, 0.02), spark);
+  a *= 1.0 - smoothstep(0.3, 0.85, k);
+  if (uLine > 0.5) a *= 1.0 - smoothstep(0.0, 0.05, uExplode);
+  vCol = vec4(col * a, a);
+  gl_PointSize = clamp(uSize * size * uPx / -mv.z * (1.0 + 0.5 * ek * r3), uMinPx, uMaxPx);
+}`;
+  const FS = `
+precision mediump float;
+varying vec4 vCol; varying float vSq; varying float vLine;
+void main() {
+  float m = 1.0;
+  if (vLine < 0.5) {
+    vec2 c = gl_PointCoord - 0.5;
+    m = vSq > 0.5 ? 1.0 - smoothstep(0.34, 0.5, max(abs(c.x), abs(c.y))) : 1.0 - smoothstep(0.26, 0.5, length(c));
+  }
+  if (m < 0.01) discard;
+  gl_FragColor = vCol * m;
+}`;
+  let prog; try { prog = glProgram(gl, VS, FS); } catch (e) { console.error(e); return fail(); }
+  const FOV = 30 * Math.PI / 180, CENTER = [0, 0.04, 0];
+  let W = 1, H = 1, D0 = 0.78, baseZ = 4, CY = -0.08, density = 1, visible = true, raf = 0, pS = 0, last = performance.now() / 1000;
+  const fit = () => {
+    W = vis.clientWidth; H = vis.clientHeight; const asp = W / H, portrait = asp < 0.85;
+    D0 = portrait ? 0.56 : 0.78;
+    const span = 2 * (D0 + 0.55), headH = 1.17;
+    const visH = Math.max(headH / (portrait ? 0.36 : 0.54), span / ((portrait ? 1.04 : 0.8) * asp));
+    baseZ = visH / (2 * Math.tan(FOV / 2));
+    CY = -0.08 + visH * (portrait ? 0.0 : 0.045);
+    const headPx = headH / visH * H;
+    density = Math.min(1, Math.max(0.4, Math.pow(headPx / 430, 1.6)));
+  };
+  const progress = () => { if (RM) return 0; if (window.kiriaP !== undefined) return window.kiriaP; const r = stage.getBoundingClientRect(), total = stage.offsetHeight - vis.clientHeight; return total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0; };
+  const project = (VP, v) => { const c = M4.xf(VP, v); return [(c[0] / c[3] * 0.5 + 0.5) * W, (0.5 - c[1] / c[3] * 0.5) * H]; };
+  const draw = (s, mode, model, size, prim, frac) => {
+    glAttr(gl, prog, 'aPos', s.p, 3, gl.SHORT, true); glAttr(gl, prog, 'aNor', s.nr, 3, gl.BYTE, true); glAttr(gl, prog, 'aAux', s.a, 4, gl.UNSIGNED_BYTE, true);
+    prog.m('uModel', model); prog.f('uMode', mode); prog.f('uSize', size); prog.f('uLine', prim === gl.LINES ? 1 : 0);
+    gl.drawArrays(prim, 0, prim === gl.LINES ? s.n : Math.floor(s.n * frac));
+  };
+  const frame = () => {
+    raf = 0;
+    const now = performance.now() / 1000, dt = Math.min(0.05, now - last); last = now;
+    const target = progress();
+    pS += (target - pS) * (1 - Math.exp(-dt * 7)); if (Math.abs(target - pS) < 0.0004 || window.kiriaP !== undefined) pS = target;
+    const p = pS, t = now;
+    if (fitCanvas(cv, 2) || W !== vis.clientWidth || H !== vis.clientHeight) fit();
+    const a1 = sm(0.03, 0.40, p), a2 = sm(0.40, 0.555, p);
+    const X = lerp(lerp(D0, 0.565, a1), 0.08, a2);
+    const yaw = lerp(1.05, Math.PI / 2, sm(0.03, 0.34, p));
+    const implode = sm(0.47, 0.56, p) * (1 - sm(0.56, 0.595, p));
+    const explode = sm(0.56, 0.9, p);
+    const bob = Math.sin(t * 1.1) * 0.008 * (1 - a2);
+    const camZ = baseZ * lerp(1, 0.9, sm(0.22, 0.555, p)) * lerp(1, 1.1, explode);
+    const sh = Math.max(0, 0.22 - explode) * 0.05 * (explode > 0 ? 1 : 0);
+    const eye = [Math.sin(t * 53) * sh, CY + 0.02 + Math.cos(t * 47) * sh, camZ];
+    const V = M4.look(eye, [0, CY, 0], [0, 1, 0]), Pm = M4.persp(FOV, W / H, 0.05, 60), VP = M4.mul(Pm, V);
+    const MH = M4.trs(-X, bob - 0.02, 0, yaw, 0, 1), MA = M4.trs(X, -bob - 0.02, 0, -yaw, 0, 1);
+    gl.viewport(0, 0, cv.width, cv.height); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    if (explode < 0.999) {
+      gl.useProgram(prog.p); gl.disable(gl.DEPTH_TEST); gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      prog.m('uProj', Pm); prog.m('uView', V); prog.f('uCam', eye[0], eye[1], eye[2]); prog.f('uCenter', CENTER[0], CENTER[1], CENTER[2]);
+      prog.f('uTime', t % 1000); prog.f('uExplode', explode); prog.f('uImplode', implode); prog.f('uHeat', a2 * (1 - explode));
+      prog.f('uPx', cv.height / (2 * Math.tan(FOV / 2))); prog.f('uScan', -0.7 + 1.3 * ((t * 0.32) % 1)); const dpr = Math.min(window.devicePixelRatio || 1, 2); prog.f('uMinPx', dpr); prog.f('uMaxPx', 6 * dpr);
+      draw(sets[0], 0, MH, 0.0036, gl.POINTS, density);
+      draw(sets[1], 1, MH, 0.0042, gl.POINTS, Math.min(1, density * 1.15));
+      draw(sets[2], 2, MA, 0.0034, gl.POINTS, density);
+      draw(sets[4], 4, MA, 0.0052, gl.POINTS, 1);
+      draw(lines, 5, MA, 0.003, gl.LINES, 1);
+      draw(sets[3], 3, MA, 0.0042, gl.POINTS, 1);
+    }
+    // capas de texto encima
+    const io = 1 - sm(0, 0.08, p); intro.style.opacity = io; intro.style.transform = `translateY(${-30 * (1 - io)}px)`;
+    hint.style.opacity = 1 - sm(0, 0.03, p);
+    const to = 1 - sm(0.1, 0.24, p);
+    const ph = project(VP, M4.xf(MH, [0, -0.72, 0.05])), pa = project(VP, M4.xf(MA, [0, -0.72, 0.05]));
+    tagH.style.opacity = tagA.style.opacity = to;
+    tagH.style.transform = `translate(${ph[0]}px, ${ph[1] + 10}px) translateX(-50%)`; tagA.style.transform = `translate(${pa[0]}px, ${pa[1] + 10}px) translateX(-50%)`;
+    const pc = project(VP, CENTER);
+    const fo = sm(0.52, 0.565, p) * (1 - sm(0.565, 0.66, p));
+    flash.style.opacity = fo; flash.style.transform = `translate(${pc[0]}px, ${pc[1]}px) scale(${0.25 + 1.6 * sm(0.52, 0.64, p)})`;
+    const ro = sm(0.558, 0.572, p) * (1 - sm(0.6, 0.76, p));
+    ring.style.opacity = ro; ring.style.transform = `translate(${pc[0]}px, ${pc[1]}px) scale(${0.1 + 7.5 * sm(0.558, 0.76, p)})`;
+    const rv = RM ? 1 : sm(0.7, 0.86, p);
+    reveal.style.opacity = rv; reveal.style.transform = RM ? 'none' : `translateY(${(1 - rv) * 28}px) scale(${0.97 + 0.03 * rv})`;
+    reveal.classList.toggle('on', rv > 0.5);
+    if (visible && !RM && (explode < 0.999 || Math.abs(target - pS) > 0.0004)) raf = requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!raf && visible) raf = requestAnimationFrame(frame); };
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; kick(); }).observe(stage);
+  addEventListener('scroll', kick, { passive: true });
+  addEventListener('resize', () => { fit(); kick(); });
+  fit(); kick();
+  window.kiriaKick = kick;
 })();
-// los vídeos de trabajos se cargan y reproducen solo cuando se ven
+
+// ---------------------------------------------------------------- el globo: arcos desde España hacia el mundo
+(async () => {
+  const box = document.getElementById('globeBox'), cv = document.getElementById('globe'), sphere = document.getElementById('sphere'), es = document.getElementById('esLabel');
+  const gl = cv.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: true });
+  if (!gl) return;
+  let buf; try { buf = await fetchB64('media/globo.txt'); } catch (e) { return; }
+  const dv = new DataView(buf), n = dv.getUint32(4, true), ll = new Int16Array(buf, 8, n * 2), fl = new Uint8Array(buf, 8 + n * 4, n);
+  const R = Math.PI / 180, toV = (la, lo) => [Math.cos(la * R) * Math.sin(lo * R), Math.sin(la * R), Math.cos(la * R) * Math.cos(lo * R)];
+  const ES = [40.42, -3.70];
+  const DEST = [[19.43, -99.13], [4.71, -74.07], [-34.6, -58.38], [-33.45, -70.67], [-12.05, -77.04], [-23.55, -46.63], [40.71, -74.01], [25.76, -80.19], [43.65, -79.38], [34.05, -118.24],
+    [51.51, -0.13], [48.86, 2.35], [52.52, 13.4], [41.9, 12.5], [59.33, 18.07], [6.52, 3.38], [-1.29, 36.82], [-33.92, 18.42], [30.04, 31.24], [25.2, 55.27],
+    [19.08, 72.88], [1.35, 103.82], [39.9, 116.4], [35.68, 139.69], [37.57, 126.98], [-33.87, 151.21], [14.6, 120.98], [18.47, -69.9], [9.93, -84.08], [-0.18, -78.47]];
+  // tierra
+  const dp = new Float32Array(n * 3), da = new Uint8Array(n * 4);
+  for (let i = 0; i < n; i++) { dp.set(toV(ll[i * 2] / 100, ll[i * 2 + 1] / 100), i * 3); da[i * 4] = fl[i] * 255; da[i * 4 + 3] = (Math.random() * 255) | 0; }
+  // arcos (con su punta de flecha) y ondas en cada destino
+  const ap = [], aa = [], rp = [], ra = [], NS = 140, A0 = toV(ES[0], ES[1]);
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2], nrm = v => { const l = Math.hypot(v[0], v[1], v[2]); return [v[0] / l, v[1] / l, v[2] / l]; }, crs = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  DEST.forEach((d, k) => {
+    const B = toV(d[0], d[1]), om = Math.acos(Math.min(1, dot(A0, B))), h = 0.04 + 0.26 * om / Math.PI, ph = (k * 0.618) % 1;
+    const at = t => { const s0 = Math.sin((1 - t) * om) / Math.sin(om), s1 = Math.sin(t * om) / Math.sin(om), e = 1 + h * Math.sin(Math.PI * t); return [(A0[0] * s0 + B[0] * s1) * e, (A0[1] * s0 + B[1] * s1) * e, (A0[2] * s0 + B[2] * s1) * e]; };
+    for (let i = 0; i <= NS; i++) { const t = i / NS; ap.push(...at(t)); aa.push(0, Math.round(t * 255), Math.round(ph * 255), 0); }
+    const Ept = at(1), Pq = at(0.985), T = nrm([Ept[0] - Pq[0], Ept[1] - Pq[1], Ept[2] - Pq[2]]), S = nrm(crs(T, Ept)), L = 0.045;
+    for (const sgn of [-1, 1]) for (let j = 1; j <= 9; j++) { const s = j / 9 * L; ap.push(Ept[0] - T[0] * s + S[0] * s * 0.62 * sgn, Ept[1] - T[1] * s + S[1] * s * 0.62 * sgn, Ept[2] - T[2] * s + S[2] * s * 0.62 * sgn); aa.push(0, 255, Math.round(ph * 255), 0); }
+    for (let j = 0; j < 40; j++) { rp.push(...B); ra.push(0, Math.round(j / 40 * 255), Math.round(ph * 255), 0); }
+  });
+  for (const ph of [0, 0.5]) for (let j = 0; j < 56; j++) { rp.push(...A0); ra.push(255, Math.round(j / 56 * 255), Math.round(ph * 255), 0); }
+  const B1 = { n, p: glBuf(gl, dp), a: glBuf(gl, da) }, B2 = { n: ap.length / 3, p: glBuf(gl, new Float32Array(ap)), a: glBuf(gl, new Uint8Array(aa)) }, B3 = { n: rp.length / 3, p: glBuf(gl, new Float32Array(rp)), a: glBuf(gl, new Uint8Array(ra)) };
+  const B4 = { n: 1, p: glBuf(gl, new Float32Array(A0)), a: glBuf(gl, new Uint8Array([255, 0, 0, 0])) };
+  const VS = `
+precision highp float;
+attribute vec3 aPos; attribute vec4 aAux;
+uniform mat4 uProj, uView, uModel; uniform vec3 uCam; uniform float uTime, uMode, uSize, uPx;
+varying vec4 vCol;
+void main() {
+  vec3 p = aPos;
+  float ph = aAux.z, cyc = fract(uTime * 0.11 + ph) * 1.4;
+  float ringR = 0.0, ringA = 0.0;
+  if (uMode > 1.5 && uMode < 2.5) {
+    vec3 c = normalize(aPos), up = abs(c.y) > 0.95 ? vec3(1.0, 0.0, 0.0) : vec3(0.0, 1.0, 0.0);
+    vec3 e1 = normalize(cross(up, c)), e2 = cross(c, e1);
+    float ang = aAux.y * 6.2831853;
+    float big = aAux.x;
+    float rr = big > 0.5 ? fract(uTime * 0.45 + ph) : clamp((cyc - 1.0) / 0.4, 0.0, 1.0);
+    ringR = mix(0.012, 0.075, rr) * (big > 0.5 ? 1.25 : 1.0);
+    ringA = (1.0 - rr) * (big > 0.5 ? 0.9 : (cyc > 1.0 ? 0.95 : 0.0));
+    p = c * 1.002 + (e1 * cos(ang) + e2 * sin(ang)) * ringR;
+  }
+  vec4 wp = uModel * vec4(p, 1.0);
+  vec3 D = wp.xyz - uCam;
+  float b = dot(uCam, D), a2 = dot(D, D), c2 = dot(uCam, uCam) - 1.0, disc = b * b - a2 * c2;
+  float hid = 0.0;
+  if (disc > 0.0) { float s1 = (-b - sqrt(disc)) / a2; if (s1 > 0.0 && s1 < 0.995) hid = 1.0; }
+  vec4 mv = uView * wp; gl_Position = uProj * mv;
+  vec3 col; float a; float size = 1.0;
+  if (uMode < 0.5) {
+    float isEs = aAux.x;
+    float facing = dot(normalize(wp.xyz), normalize(uCam - wp.xyz));
+    col = mix(vec3(0.12, 0.15, 0.20), vec3(0.90, 0.14, 0.25), isEs);
+    a = mix(0.22 + 0.5 * smoothstep(0.0, 0.6, facing), 1.0, isEs);
+    size = mix(1.0, 1.3, isEs);
+  } else if (uMode < 1.5) {
+    float t = aAux.y, d = cyc - t;
+    float glow = d >= 0.0 ? exp(-d * 6.0) : 0.0;
+    col = mix(vec3(0.90, 0.14, 0.25), vec3(0.96, 0.55, 0.0), smoothstep(0.0, 1.0, t));
+    a = 0.16 + 0.84 * glow; size = 1.0 + 1.3 * glow;
+  } else if (uMode < 2.5) {
+    col = aAux.x > 0.5 ? vec3(0.90, 0.14, 0.25) : vec3(0.96, 0.55, 0.0); a = ringA; size = 1.0;
+  } else {
+    col = vec3(0.90, 0.14, 0.25); a = 1.0; size = 3.2;
+  }
+  a *= hid > 0.5 ? 0.07 : 1.0;
+  vCol = vec4(col * a, a);
+  gl_PointSize = max(1.0, uSize * size * uPx / -mv.z);
+}`;
+  const FS = `
+precision mediump float; varying vec4 vCol;
+void main() { float m = 1.0 - smoothstep(0.28, 0.5, length(gl_PointCoord - 0.5)); if (m < 0.01) discard; gl_FragColor = vCol * m; }`;
+  let prog; try { prog = glProgram(gl, VS, FS); } catch (e) { console.error(e); return; }
+  const FOV = 30 * Math.PI / 180, CAMZ = 5.0;
+  let spin = (3.7 + 30) * R, tilt = 0.46, vSpin = 0, vTilt = 0, dragging = false, lastX = 0, lastY = 0, idle = 0, visible = false, raf = 0, last = performance.now() / 1000;
+  const home = spin;
+  box.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; vSpin = vTilt = 0; box.setPointerCapture(e.pointerId); kick(); });
+  box.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.clientX - lastX, dy = e.clientY - lastY; lastX = e.clientX; lastY = e.clientY; const k = 2.6 / box.clientWidth; spin += dx * k; tilt = Math.max(-0.35, Math.min(1.05, tilt + dy * k * 0.7)); vSpin = dx * k * 60; vTilt = dy * k * 42; idle = 0; });
+  const up = () => { dragging = false; };
+  box.addEventListener('pointerup', up); box.addEventListener('pointercancel', up);
+  const frame = () => {
+    raf = 0;
+    const now = performance.now() / 1000, dt = Math.min(0.05, now - last); last = now;
+    fitCanvas(cv, 2);
+    const W = cv.clientWidth, H = cv.clientHeight;
+    if (!dragging) {
+      spin += vSpin * dt; tilt = Math.max(-0.35, Math.min(1.05, tilt + vTilt * dt)); vSpin *= Math.exp(-dt * 2.2); vTilt *= Math.exp(-dt * 2.2);
+      idle += dt;
+      if (idle > 3 && !RM) { const goal = home + 0.55 * Math.sin(now * 0.12); spin += (goal - spin) * (1 - Math.exp(-dt * 0.35)); tilt += (0.46 - tilt) * (1 - Math.exp(-dt * 0.35)); }
+    }
+    const Pm = M4.persp(FOV, W / H, 0.1, 50), V = M4.look([0, 0, CAMZ], [0, 0, 0], [0, 1, 0]), Mm = M4.mul(M4.rx(tilt), M4.ry(spin)), VP = M4.mul(Pm, V);
+    const rpx = Math.tan(Math.asin(1 / CAMZ)) / Math.tan(FOV / 2) * H / 2;
+    sphere.style.width = sphere.style.height = (rpx * 2) + 'px';
+    gl.viewport(0, 0, cv.width, cv.height); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.useProgram(prog.p); gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    prog.m('uProj', Pm); prog.m('uView', V); prog.m('uModel', Mm); prog.f('uCam', 0, 0, CAMZ); prog.f('uTime', RM ? 4.0 : now % 1000); prog.f('uPx', cv.height / (2 * Math.tan(FOV / 2)));
+    const go = (s, mode, size) => { glAttr(gl, prog, 'aPos', s.p, 3, gl.FLOAT, false); glAttr(gl, prog, 'aAux', s.a, 4, gl.UNSIGNED_BYTE, true); prog.f('uMode', mode); prog.f('uSize', size); gl.drawArrays(gl.POINTS, 0, s.n); };
+    go(B1, 0, 0.0125); go(B2, 1, 0.0105); go(B3, 2, 0.0085); go(B4, 3, 0.012);
+    const wpE = M4.xf(Mm, A0), facing = wpE[2] > 0.2;
+    const ce = M4.xf(VP, [wpE[0] * 1.02, wpE[1] * 1.02, wpE[2] * 1.02]);
+    es.style.opacity = facing ? 1 : 0;
+    es.style.transform = `translate(${(ce[0] / ce[3] * 0.5 + 0.5) * W + 12}px, ${(0.5 - ce[1] / ce[3] * 0.5) * H - 34}px)`;
+    if (visible && !RM) raf = requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; if (visible) kick(); }, { rootMargin: '120px' }).observe(box);
+  addEventListener('resize', kick);
+  window.kiriaGlobe = kick;
+})();
+
+// ---------------------------------------------------------------- entradas suaves, cifras que cuentan, vídeos que se cargan al verse
 (() => {
+  const rv = document.querySelectorAll('.rv');
+  const fmt = (v, dec) => v.toLocaleString('es-ES', { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: true });
+  const count = el => {
+    const to = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), t0 = performance.now(), D = 1400;
+    const step = () => { const k = Math.min(1, (performance.now() - t0) / D), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(to * e, dec); if (k < 1) requestAnimationFrame(step); };
+    step();
+  };
+  if (!('IntersectionObserver' in window)) { rv.forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target);
+    if (!RM) e.target.querySelectorAll('[data-count]').forEach(count);
+  }), { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+  rv.forEach(e => io.observe(e));
   const vids = document.querySelectorAll('.card video');
   const play = v => { if (!v.src) v.src = v.dataset.src; const p = v.play(); if (p) p.catch(() => {}); };
-  if (!('IntersectionObserver' in window)) { vids.forEach(play); return; }
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(e.target); else e.target.pause(); }), { threshold: 0.35 });
-  vids.forEach(v => io.observe(v));
+  const vo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(e.target); else e.target.pause(); }), { threshold: 0.35 });
+  vids.forEach(v => vo.observe(v));
 })();
-// formulario: en la vista previa prepara el mensaje para copiarlo
+
+// ---------------------------------------------------------------- formulario: en la vista previa prepara el mensaje para copiarlo
 (() => {
-  const f = document.getElementById('f'), out = document.getElementById('out'), msg = document.getElementById('msg');
+  const f = document.getElementById('f'), out = document.getElementById('out'), msg = document.getElementById('msg'), sel = document.getElementById('formato');
+  document.querySelectorAll('[data-formato]').forEach(a => a.addEventListener('click', () => { sel.value = a.dataset.formato; }));
   f.addEventListener('submit', e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(f));
     if (!d.nombre || !d.email || !d.idea) { [...f.querySelectorAll('[required]')].find(i => !i.value)?.focus(); return; }
-    msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa un vídeo (${d.formato}).\n\n${d.idea}\n\nMi correo: ${d.email}`;
+    msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa: ${d.formato}.\n\n${d.idea}\n\nMi correo: ${d.email}`;
     out.hidden = false;
+    const wa = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg.textContent);
+    document.getElementById('wa').href = wa;
+    document.getElementById('mail').href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent('Vídeo para ' + (d.empresa || d.nombre)) + '&body=' + encodeURIComponent(msg.textContent);
+    try { window.open(wa, '_blank', 'noopener'); } catch (err) {}
   });
   document.getElementById('copy').addEventListener('click', () => {
-    navigator.clipboard.writeText(msg.textContent).then(() => { document.getElementById('copy').textContent = 'Copiado'; }).catch(() => {
-      const r = document.createRange(); r.selectNodeContents(msg); const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-    });
+    const b = document.getElementById('copy');
+    navigator.clipboard.writeText(msg.textContent).then(() => { b.textContent = 'Copiado'; }).catch(() => { const r = document.createRange(); r.selectNodeContents(msg); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Texto seleccionado: cópialo'; });
   });
 })();
 </script>
