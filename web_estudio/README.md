@@ -19,7 +19,7 @@ subtítulos, vídeos 9:16 y datos técnicos en monoespaciada. Tema oscuro único
 ## Secciones (en orden)
 1. Cabecera fija: marca + «Pedir un vídeo».
 2. Portada: «Vídeos que **paran** el scroll.», móvil con el showreel en bucle, REC y contador de tiempo.
-3. Pruebas: 460.000 visualizaciones (Industrial) · 378.000 en 15 h (Derecho) · +20 vídeos · 4 marcas.
+3. Pruebas: 2,1 M visualizaciones generadas en 7 días · +20 vídeos · 4 marcas (Javi pidió no poner cifras de un solo vídeo).
 4. Han confiado en nosotros: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
 5. Trabajos: 6 clips que se cargan y reproducen al verse (Derecho, Industrial, Software vs Informática, Aeroespacial,
    Bomberados, Bomberados IA).
@@ -28,8 +28,13 @@ subtítulos, vídeos 9:16 y datos técnicos en monoespaciada. Tema oscuro único
 8. Cómo trabajamos: Brief → Guion (se aprueba) → Voz y 3D → Entrega.
 9. Qué recibes: especificaciones de entrega.
 10. Preguntas frecuentes.
-11. Contacto: formulario (en la vista previa solo prepara un mensaje para copiar) + correo, WhatsApp, Instagram.
+11. Contacto: el formulario abre WhatsApp (+34 601 621 977) con el mensaje escrito (también correo o copiar);
+    correo javierfernandez03112007@gmail.com, Instagram @javifer.h; botón flotante de WhatsApp.
 12. Pie con enlaces legales.
+
+## Clientes (qué hicimos)
+- Élite Bomberos / Bomberados: reels de la app. Fersalv: vídeos de construcción generados con IA. Beauty Salon Merche: su página web.
+- En las tarjetas de trabajos NO se ponen visitas (decisión de Javi, 01-11-2026).
 
 ## Datos: solo reales (regla de honestidad de `engine/REGLAS.md`)
 Usados en la página:

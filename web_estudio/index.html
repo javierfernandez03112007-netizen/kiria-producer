@@ -76,13 +76,13 @@ nav a.l:hover { color: var(--fg); }
 
 /* pruebas */
 .proof { border-block: 1px solid var(--line); background: var(--panel); }
-.proof .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.proof .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .stat { padding-block: 30px; padding-inline: 22px; border-left: 1px solid var(--line); min-width: 0; }
 .stat:first-child { border-left: 0; padding-left: 0; }
 .stat b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5vw, 60px); line-height: 1; font-variant-numeric: tabular-nums; }
 .stat b.y { color: var(--yellow); }
 .stat p { margin-top: 10px; color: var(--muted); font-size: 15px; }
-@media (max-width: 860px) { .proof .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); } .stat:nth-child(-n+2) { border-top: 0; } }
+@media (max-width: 860px) { .stat { padding-inline: 12px; } .stat b { font-size: clamp(30px, 8vw, 44px); } .stat p { font-size: 13px; } }
 
 section { padding-block: 84px; }
 .head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px 40px; margin-bottom: 36px; }
@@ -160,7 +160,10 @@ details p { margin-top: 10px; color: #c9d1db; max-width: 62ch; }
 .contact { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
 .contact .ways { display: grid; gap: 14px; margin-top: 26px; }
 .way { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-.way span { color: var(--muted); font-size: 14px; }
+.way span { color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+a.way { text-decoration: none; color: var(--fg); transition: border-color .2s; } a.way:hover { border-color: var(--yellow); } .way .arr { color: var(--yellow); font-size: 20px; }
+.wa-float { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 30; display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #0b1a10; font-weight: 700; font-size: 15px; text-decoration: none; padding: 12px 16px; border-radius: 999px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.6); }
+.wa-float svg { width: 20px; height: 20px; }
 form { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: grid; gap: 16px; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 label { display: grid; gap: 7px; font-size: 14px; font-weight: 600; }
@@ -212,8 +215,7 @@ footer a { text-decoration: none; color: var(--muted); }
 
   <div class="proof">
     <div class="wrap grid">
-      <div class="stat"><b class="y">460.000</b><p>visualizaciones en un solo reel (Ingeniería Industrial)</p></div>
-      <div class="stat"><b>378.000</b><p>visualizaciones en 15 horas (Derecho por dentro)</p></div>
+      <div class="stat"><b class="y">2,1 M</b><p>visualizaciones generadas en 7 días</p></div>
       <div class="stat"><b>+20</b><p>vídeos producidos con este formato</p></div>
       <div class="stat"><b>4</b><p>marcas que ya han trabajado con nosotros</p></div>
     </div>
@@ -223,13 +225,13 @@ footer a { text-decoration: none; color: var(--muted); }
     <div class="wrap">
       <div class="head">
         <h2>Han confiado en nosotros</h2>
-        <p>Academias, apps y negocios locales que querían salir en redes con algo distinto a la foto de siempre.</p>
+        <p>Academias, apps, constructoras y negocios locales que querían algo distinto a lo de siempre: vídeos y webs.</p>
       </div>
       <div class="clients">
         <div class="client"><b>Élite Bomberos</b><span>Academia de oposiciones a bombero</span></div>
         <div class="client"><b>Bomberados</b><span>App de test para opositores: reels de producto</span></div>
-        <div class="client"><b>Fersalv</b><span class="pending">Qué hicimos: pendiente</span></div>
-        <div class="client"><b>Beauty Salon Merche</b><span class="pending">Qué hicimos: pendiente</span></div>
+        <div class="client"><b>Fersalv</b><span>Construcción: vídeos generados con IA</span></div>
+        <div class="client"><b>Beauty Salon Merche</b><span>Salón de belleza: su página web</span></div>
       </div>
     </div>
   </section>
@@ -242,9 +244,9 @@ footer a { text-decoration: none; color: var(--muted); }
       </div>
       <div class="work">
         <article class="card"><div class="vid"><video data-src="media/derecho.mp4" poster="media/derecho.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
-          <div class="meta"><h3>Derecho por dentro</h3><span class="views">378.000 en 15 h</span></div><p>Un mazo gigante sobre cien estudiantes en el primer segundo, y la respuesta a qué falta para ser abogado o juez.</p></article>
+          <div class="meta"><h3>Derecho por dentro</h3></div><p>Un mazo gigante sobre cien estudiantes en el primer segundo, y la respuesta a qué falta para ser abogado o juez.</p></article>
         <article class="card"><div class="vid"><video data-src="media/industrial.mp4" poster="media/industrial.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
-          <div class="meta"><h3>Ingeniería Industrial</h3><span class="views">460.000 visualizaciones</span></div><p>La carrera explicada asignatura a asignatura, con la nota de corte y la respuesta al final.</p></article>
+          <div class="meta"><h3>Ingeniería Industrial</h3></div><p>La carrera explicada asignatura a asignatura, con la nota de corte y la respuesta al final.</p></article>
         <article class="card"><div class="vid"><video data-src="media/software.mp4" poster="media/software.jpg" muted loop playsinline preload="none"></video><span class="tag">El duelo</span></div>
           <div class="meta"><h3>Software vs Informática</h3></div><p>Un combate en un ring, con datos del BOE y de las notas de corte. Pensado para generar comentarios.</p></article>
         <article class="card"><div class="vid"><video data-src="media/aeroespacial.mp4" poster="media/aeroespacial.jpg" muted loop playsinline preload="none"></video><span class="tag">Así es por dentro</span></div>
@@ -344,11 +346,11 @@ footer a { text-decoration: none; color: var(--muted); }
     <div class="wrap contact">
       <div>
         <h2>Cuéntanos tu vídeo</h2>
-        <p style="margin-top:18px;color:var(--muted);max-width:28em">Rellena el formulario y te respondemos con una propuesta de guion y presupuesto.</p>
+        <p style="margin-top:18px;color:var(--muted);max-width:28em">Rellena el formulario y se abrirá WhatsApp con tu mensaje listo. Te respondemos con una propuesta de guion y presupuesto.</p>
         <div class="ways">
-          <div class="way"><div><b>Correo</b><br><span class="pending">Correo: pendiente</span></div></div>
-          <div class="way"><div><b>WhatsApp</b><br><span class="pending">Número: pendiente</span></div></div>
-          <div class="way"><div><b>Instagram</b><br><span class="pending">Usuario: pendiente</span></div></div>
+          <a class="way" href="mailto:javierfernandez03112007@gmail.com"><div><b>Correo</b><br><span>javierfernandez03112007@gmail.com</span></div><span class="arr">→</span></a>
+          <a class="way" href="https://wa.me/34601621977?text=Hola%2C%20me%20interesa%20un%20v%C3%ADdeo%20para%20mi%20marca." target="_blank" rel="noopener"><div><b>WhatsApp</b><br><span>+34 601 621 977</span></div><span class="arr">→</span></a>
+          <a class="way" href="https://www.instagram.com/javifer.h/" target="_blank" rel="noopener"><div><b>Instagram</b><br><span>@javifer.h</span></div><span class="arr">→</span></a>
         </div>
       </div>
       <form id="f" novalidate>
@@ -361,17 +363,19 @@ footer a { text-decoration: none; color: var(--muted); }
           <label for="formato">Formato<select id="formato" name="formato"><option>Aún no lo sé</option><option>Así es por dentro</option><option>El duelo</option><option>El dato que sorprende</option><option>Pregunta test</option></select></label>
         </div>
         <label for="idea">¿Qué quieres contar?<textarea id="idea" name="idea" placeholder="Tu producto, tu servicio o tu idea, y qué te gustaría que pasara después de ver el vídeo." required></textarea></label>
-        <button class="btn y" type="submit" style="justify-self:start">Preparar mensaje</button>
+        <button class="btn y" type="submit" style="justify-self:start">Enviar por WhatsApp</button>
         <div class="out" id="out" hidden>
           <b>Tu mensaje está listo</b>
           <pre id="msg"></pre>
-          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn o" type="button" id="copy">Copiar mensaje</button></div>
-          <p class="mono" style="text-transform:none;letter-spacing:0">En esta versión de prueba el formulario no envía nada: en la web final llegará directamente a tu correo.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn y" id="wa" target="_blank" rel="noopener">Abrir WhatsApp</a><a class="btn o" id="mail">Enviar por correo</a><button class="btn o" type="button" id="copy">Copiar mensaje</button></div>
+          <p class="mono" style="text-transform:none;letter-spacing:0">Si WhatsApp no se ha abierto solo, pulsa «Abrir WhatsApp».</p>
         </div>
       </form>
     </div>
   </section>
 </main>
+
+<a class="wa-float" href="https://wa.me/34601621977?text=Hola%2C%20me%20interesa%20un%20v%C3%ADdeo%20para%20mi%20marca." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>WhatsApp</a>
 
 <footer>
   <div class="wrap">
@@ -396,7 +400,7 @@ footer a { text-decoration: none; color: var(--muted); }
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(e.target); else e.target.pause(); }), { threshold: 0.35 });
   vids.forEach(v => io.observe(v));
 })();
-// formulario: en la vista previa prepara el mensaje para copiarlo
+// formulario: prepara el mensaje y abre WhatsApp con él (también por correo o para copiar)
 (() => {
   const f = document.getElementById('f'), out = document.getElementById('out'), msg = document.getElementById('msg');
   f.addEventListener('submit', e => {
@@ -405,6 +409,10 @@ footer a { text-decoration: none; color: var(--muted); }
     if (!d.nombre || !d.email || !d.idea) { [...f.querySelectorAll('[required]')].find(i => !i.value)?.focus(); return; }
     msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa un vídeo (${d.formato}).\n\n${d.idea}\n\nMi correo: ${d.email}`;
     out.hidden = false;
+    const wa = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg.textContent);
+    document.getElementById('wa').href = wa;
+    document.getElementById('mail').href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent('Vídeo para ' + (d.empresa || d.nombre)) + '&body=' + encodeURIComponent(msg.textContent);
+    window.open(wa, '_blank', 'noopener');
   });
   document.getElementById('copy').addEventListener('click', () => {
     navigator.clipboard.writeText(msg.textContent).then(() => { document.getElementById('copy').textContent = 'Copiado'; }).catch(() => {
