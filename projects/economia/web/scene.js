@@ -961,6 +961,9 @@ function boardAt(t) {
       if (K2[18] > 0) { g.save(); g.setLineDash([18, 12]); bLine(g, pi.map(p => [p[0], p[1] - 10]), K2[18], '#DCE6FF', 5, 16); g.restore(); bTxt(g, 'FONDO INDEXADO = COPIA', (CX0 + CX1) / 2, 590, 30, '#DCE6FF', K2[18], { w: 800 }); }
       if (K2[19] > 0) bTxt(g, 'COMISIÓN BAJA', CX0 + 170, 110, 32, '#DCE6FF', K2[19], { w: 800 }); }
     if (ph === 9) {
+      if (K2[21] > 0 && K2[22] < 0.25) { const fo = 1 - clamp(K2[22] * 4);
+        bTxt(g, 'ESTO NO ES', (CX0 + CX1) / 2, 215, 44, GRY, K2[21], { a: fo, w: 800 }); bTxt(g, 'ASESORAMIENTO', (CX0 + CX1) / 2, 315, 62, WHT, K2[21], { a: fo, type: false, w: 900 });
+        bTxt(g, 'FINANCIERO', (CX0 + CX1) / 2, 405, 62, GOLD, K2[21], { a: fo, type: false, w: 900 }); }
       bTxt(g, '¿GESTOR', (CX0 + CX1) / 2, 280, 110, WHT, K2[22], { type: false, w: 900 }); bTxt(g, 'O INDEXADO?', (CX0 + CX1) / 2, 420, 100, GOLD, K2[23], { type: false, w: 900 }); }
     T.needsUpdate = true; }
   // cinta de valores (se mueve sin parar y da vueltas enteras en el bucle)

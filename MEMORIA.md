@@ -47,6 +47,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Entregado el 1-11-2026 (61,2 s, 60 fps, 50 MB, −15 LUFS). Render: esta máquina va a ≈ 0,3–0,4 fotogramas/s con esta escena; con
   6 máquinas de ayuda (`render_chunk.sh A B X` → ramas `render-mag-1…6`, `fetch_compose.sh` las recoge y compone) tardó ≈ 30 min.
   Pendiente de permiso: borrar las ramas `render-mag-*` y archivar las 6 sesiones «Render Magisterio».
+- **Economía** (`projects/economia/`, 1-11-2026): «La bolsa española subió un 58 %… y 96 de cada 100 fondos lo hicieron peor».
+  Todo dentro de una sala de bolsa (panel LED, cinta de valores, mesas de operadores). Voz de Javi (su MP3, Danny v4),
+  efectos solo de ElevenLabs (`sfx_eleven.py`, 27). 60,1 s, 60 fps, −15 LUFS. Render: esta máquina 0–600 + 6 de ayuda
+  (`render-ecob-1…6`) ≈ 30 min; tras revisarlo se rehízo 55,5–57,7 s (el panel quedaba vacío en «esto no es asesoramiento
+  financiero»: ahora sale grande). Antes de publicar: confirmar en el PDF de SPIVA el «2 de 50» y el +58,4 % (ver DESCRIPCION.txt).
+  Pendiente de permiso: borrar las ramas `render-ecob-*` y archivar las 6 sesiones «Render Economía».
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
@@ -69,8 +75,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   publicación vía Metricool **solo tras revisión de Javi** al principio. Conectores sugeridos: Metricool y vidIQ (claude.ai → conectores).
 
 ## Negocio (vender vídeos a empresas)
-- Web del estudio: `web_estudio/` (ver su `README.md`; copia fija en la rama `web-estudio-v1`). Vista previa privada:
-  https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
+- Web del estudio: `web_estudio/` (ver su `README.md`; v1 oscura en la rama `web-estudio-v1`). Vista previa privada:
+  https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy. **v2 (1-11-2026, noche)**: portada blanca con cabeza humana (cerebro
+  rojo) y cabeza de IA (azul) que se juntan y explotan al deslizar; globo 3D con arcos desde España («De España, para todo
+  el mundo»); sección «Anúnciate en kiria.ai» (patrocinio) y 3 planes con precios pendientes. Reglas de Javi: en la web solo
+  el total del canal (3,2 M en 7 días), nunca cifras de un solo vídeo ni visitas en las tarjetas. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
 - Publicarla: Cloudflare Pages o Netlify (gratis) + dominio propio (≈ 10–15 €/año); contacto por WhatsApp con mensaje prellenado.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
   Instagram), plazos, precios, opiniones y datos legales (titular, NIF, dirección).
