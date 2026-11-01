@@ -4,6 +4,7 @@
 |---|---|---|---|---|---|---|
 | 15 h | 378.000 | 25.100 | 78 | 811 | 4.285 | 820 |
 | ≈ 1 día (1-11-2026, mediodía) | ≈ 720.000 | ≈ 50.000 | | | | |
+| ≈ 1,5 días (1-11-2026, noche) | ≈ 750.000 | ≈ 60.000 | | | | |
 | 48 h | (pendiente) | | | | | |
 
 Lectura a las 15 h: 6,6 % de me gusta por visita; 1,1 compartidos por cada 100 visitas (muy alto: el vídeo se manda a otros,

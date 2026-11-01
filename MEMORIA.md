@@ -26,10 +26,10 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
 ## Resultados del canal (datos que ha dado Javi)
 | Vídeo | Datos |
 |---|---|
-| Ingeniería Industrial | 460.000 visitas, 22.000 me gusta, muchos seguidores |
+| Ingeniería Industrial | ≈ 500.000 visitas (1-11-2026; antes 460.000 visitas, 22.000 me gusta), muchos seguidores |
 | Ingeniería Informática | 165.000 visitas y 9.400 me gusta (en su momento) |
-| Derecho por dentro | ≈ 720.000 visitas y ≈ 50.000 me gusta al día siguiente (1-11-2026); 378.000 visitas en 15 h, 25.100 me gusta, 78 comentarios, 811 guardados, 4.285 envíos, 820 seguidores (ver `projects/derecho/METRICAS.md`; faltan los datos de 24 h y 48 h) |
-| Total canal | ≈ 800.000 visitas entre todos; vídeos con 14.000, 10.000 y 6.000 me gusta |
+| Derecho por dentro | ≈ 750.000 visitas y ≈ 60.000 me gusta (1-11-2026, noche); ≈ 720.000 y ≈ 50.000 a mediodía; 378.000 visitas en 15 h, 25.100 me gusta, 78 comentarios, 811 guardados, 4.285 envíos, 820 seguidores (ver `projects/derecho/METRICAS.md`; faltan los datos de 24 h y 48 h) |
+| Total canal | **≈ 3,2 millones de visitas en 7 días** (Instagram, dato de Javi del 1-11-2026, noche); antes ≈ 800.000 entre todos; vídeos con 14.000, 10.000 y 6.000 me gusta |
 
 Lo que funciona: carreras «por dentro» con un giro verdadero («acabas la carrera… y todavía no eres…», «menos de 3 de cada 100»),
 datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o juez?»). Los duelos generan comentarios.
