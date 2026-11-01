@@ -29,13 +29,13 @@ BAND_Y = 1495                                    # centro de la franja de los su
 # arriba: deja los subtítulos antiguos fuera de plano). grade: 'base', 'bw', 'fade' (se apaga), 'vivid'.
 SEGS = [
     dict(name="avance", pieces=[(36.55, 37.25, 1.0)], cam="top", s=(1.50, 1.42), grade="vivid", cx=(560, 540), y0=(20, 30)),
-    dict(name="intro", pieces=[(0.20, 2.17, 1.0)], cam="band", s=(1.0, 1.06), grade="base", caps=True),
-    dict(name="salida", pieces=[(2.17, 4.27, 1.0)], cam="band", s=(1.06, 1.16), grade="bw", caps=True),
-    dict(name="atardecer", pieces=[(4.27, 7.32, 1.0)], cam="band", s=(1.14, 1.04), grade="bw", caps=True),
-    dict(name="porque", pieces=[(7.62, 11.95, 1.0)], cam="band", s=(1.0, 1.04), grade="base", caps=True, punch=(11.40, 1.13)),
-    dict(name="sumo", pieces=[(12.36, 16.45, 1.0)], cam="band", s=(1.07, 1.10), grade="base", caps=True),
-    dict(name="sensacion", pieces=[(16.72, 19.95, 1.0)], cam="band", s=(1.0, 1.08), grade="base", caps=True),
-    dict(name="destino", pieces=[(20.18, 23.05, 1.0)], cam="band", s=(1.04, 1.18), grade="fade", caps=True, shake_end=True),
+    dict(name="intro", pieces=[(0.20, 2.17, 1.0)], cam="top", s=(1.38, 1.44), grade="base", caps=True, y0=(0, 10)),
+    dict(name="salida", pieces=[(2.17, 4.27, 1.0)], cam="top", s=(1.40, 1.52), grade="bw", caps=True, y0=(0, 10)),
+    dict(name="atardecer", pieces=[(4.27, 7.32, 1.0)], cam="top", s=(1.50, 1.38), grade="bw", caps=True, y0=(20, 0)),
+    dict(name="porque", pieces=[(7.62, 11.95, 1.0)], cam="top", s=(1.38, 1.42), grade="base", caps=True, punch=(11.40, 1.12), y0=(0, 8)),
+    dict(name="sumo", pieces=[(12.36, 16.45, 1.0)], cam="top", s=(1.45, 1.49), grade="base", caps=True, y0=(10, 0)),
+    dict(name="sensacion", pieces=[(16.72, 19.95, 1.0)], cam="top", s=(1.38, 1.46), grade="base", caps=True, y0=(0, 10)),
+    dict(name="destino", pieces=[(20.18, 23.05, 1.0)], cam="top", s=(1.40, 1.58), grade="fade", caps=True, shake_end=True, y0=(0, 20)),
     dict(name="corre", pieces=[(23.60, 23.95, 0.45), (23.95, 24.15, 0.7), (24.15, 24.42, 1.0)], cam="top", s=(1.58, 1.46), grade="vivid", y0=(10, 40), ybot=1800),   # aquí no hay subtítulos antiguos: encuadre más bajo
     dict(name="sonrisa", pieces=[(24.45, 26.45, 1.0)], cam="top", s=(1.46, 1.52), grade="vivid", y0=(30, 40), cx=(540, 545)),
     dict(name="pancarta", pieces=[(27.55, 29.25, 1.25)], cam="top", s=(1.48, 1.55), grade="vivid", y0=(40, 30), cx=(712, 700)),
@@ -344,12 +344,60 @@ def pill_visible(t):
     return False
 
 
+import captions_amigo as CA
+# estilo de cada grupo (índice de CAPS): palabra a palabra, recuadro de selección, titular arriba, apilado, «héroe» en el centro
+STY = {0: ("box", "MARATÓN"), 3: ("word", {"CARRERA": CA.GOLD}), 4: ("head",), 5: ("skip",), 6: ("stack",),
+       7: ("word", {"KILÓMETRO": CA.GOLD}, ("KILÓMETRO", "🏃")), 8: ("word", {"KILÓMETRO": CA.GOLD}), 9: ("word", {"NADIE": CA.RED}, ("NADIE", "👀")),
+       11: ("box", "TODO"), 13: ("dim",), 14: ("dim",), 15: ("hero", "GANADO", CA.GREEN, "🏆"), 22: ("box", "VISUALIZADA", ("VISUALIZADA", "🎯")),
+       23: ("word", {"SENSACIÓN": CA.GOLD}), 24: ("head2",), 25: ("hero", "HOY", CA.GOLD, None), 26: ("word", {"TRABAJO": CA.GOLD}),
+       28: ("hero", "DESTINO", CA.GOLD, None)}
+
+
+def draw_caps(img, t, sg):
+    for gi, (c0, c1, ws) in enumerate(CAPS):
+        st = STY.get(gi, ("word",))
+        end = CAPS[gi + 1][1] + 0.2 if st[0] == "head" else c1 + 0.2
+        if not (c0 - 0.06 <= t <= end):
+            continue
+        kind = st[0]
+        if kind in ("word", "dim", "box") and t <= c1:
+            keyc = st[1] if kind == "word" and len(st) > 1 and isinstance(st[1], dict) else {}
+            box = st[1] if kind == "box" else None
+            emo = st[2] if len(st) > 2 else None
+            CA.line_words(img, t, ws, CA.Y_SUB, 96 if kind != "dim" else 84, keyc, box, kind == "dim", emo)
+        elif kind == "stack" and t <= c1:
+            CA.stack(img, t, ws, 1290)
+        elif kind == "head":                       # «SE CONSTRUYE / MUCHO ANTES» arriba, vibrando
+            g5 = CAPS[gi + 1]
+            CA.headline(img, t, c0 - 0.03, g5[1] + 0.1, [[("SE", CA.WHITE), ("CONSTRUYE", CA.GOLD)]], 300, 120)
+            CA.headline(img, t, g5[0] - 0.03, g5[1] + 0.1, [[("MUCHO", CA.WHITE), ("ANTES", CA.WHITE)]], 430, 120)
+        elif kind == "head2":                      # «NO TIENE PRECIO»
+            CA.headline(img, t, c0 - 0.03, c1 + 0.15, [[("NO", CA.WHITE), ("TIENE", CA.WHITE), ("PRECIO", CA.GOLD)]], 320, 130)
+        elif kind == "hero":
+            big, col, emo = st[1], st[2], st[3]
+            tb = [tw for w, tw in ws if w == big][0]
+            if t < tb - 0.04 and t <= c1:
+                CA.line_words(img, t, [(w, tw) for w, tw in ws if w != big], 930, 110)
+            else:
+                small = " ".join(w for w, _ in ws if w != big) or None
+                t_end = min(c1 + 0.15, T_DROP + 0.08) if big == "DESTINO" else c1 + 0.15   # «DESTINO» se va con el golpe del drop
+                CA.hero(img, t, tb - 0.04, t_end, small, big, col, 930, emo, 230 if big != "DESTINO" else 250)
+    if sg["name"] == "medalla":
+        tm = sg["outp"][1][0] + 0.15
+        CA.hero(img, t, tm, sg["t1"] + 0.05, None, "FINISHER", CA.GOLD, 360, "🏅", 170)
+    if sg["name"] == "grito":
+        tq = sg["t1"] - 1.75
+        CA.headline(img, t, tq, DUR - 0.1, [[("¿CUÁL", CA.WHITE), ("ES", CA.WHITE), ("TU", CA.WHITE)], [("PRÓXIMO", CA.GOLD), ("RETO?", CA.GOLD)]], 300, 112)
+        if t > tq + 0.3:
+            CA.paste(img, CA.emoji_img("👇", 110), W / 2, 640 + 10 * np.sin(t * 9), 1.0, min(1, (t - tq - 0.3) / 0.15))
+
+
 def render(k):
     t = k / FPS
     i, sg, ts = src_time(t)
     img = frame_at(ts)
     M, s = cam_matrix(t, i, sg)
-    img = cv2.warpAffine(img, M, (W, H), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REFLECT)
+    img = cv2.warpAffine(img, M, (W, H), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
     if s > 1.25:                                  # nitidez tras ampliar
         img = cv2.addWeighted(img, 1.35, cv2.GaussianBlur(img, (0, 0), 1.6), -0.35, 0)
     # transiciones
@@ -381,41 +429,7 @@ def render(k):
     img = grade(img, sg["grade"], t, sg)
     if flash > 0:
         img = (img.astype(np.float32) * (1 - min(1, flash)) + 255 * min(1, flash)).astype(np.uint8)
-    # subtítulos nuevos sobre la franja esmerilada (tapa los antiguos)
-    if sg.get("caps"):
-        si = int(round(ts * FPS))
-        old = OLDCAP.get(si, 0) > 700
-        vis = pill_visible(t) or old
-        if vis:
-            cur = None
-            for c0, c1, ws in CAPS:
-                if c0 - 0.06 <= t <= c1:
-                    cur = (c0, c1, ws)
-            pw, ph = 600 * s, 150 * s
-            spr, sc = None, 1.0
-            if cur:
-                ws = cur[2]
-                j = max([n for n, (w, tw) in enumerate(ws) if tw - 0.04 <= t] or [0])
-                big = ws[0][0] == "DESTINO"
-                spr = caption_sprite(ws, j, big)
-                tw0 = ws[j][1]
-                pop = min(1, (t - tw0) / 0.1) if t >= tw0 else 0
-                sc = 1.0 + 0.07 * np.sin(pop * np.pi)
-                if big:
-                    sc *= 1.0 + 0.15 * max(0, 1 - (t - tw0) / 0.25)
-                pw = max(pw, spr.width * sc + 70)
-                ph = max(ph, spr.height * sc * 0.9)
-            ya = M[1, 0] * 540 + M[1, 1] * BAND_Y + M[1, 2]
-            frosted(img, W / 2, ya, min(1060, pw), ph, 1.0)
-            if spr is not None:
-                paste_rgba(img, spr, W / 2, ya + 4, sc)
-    # rótulos de la carrera
-    if sg["name"] == "medalla":
-        tm = sg["outp"][1][0] + 0.15
-        big_text(img, [("FINISHER", GOLD)], 380, (t - tm) / 0.25 if t > tm else 0, 170)
-    if sg["name"] == "grito":
-        tq = sg["t1"] - 1.75
-        big_text(img, [("¿CUÁL ES TU", WHITE), ("PRÓXIMO RETO?", GOLD)], 330, (t - tq) / 0.25 if t > tq else 0, 118)
+    draw_caps(img, t, sg)
     return img
 
 
@@ -432,6 +446,7 @@ def load_audio(path, sr=44100):
 def build_audio(with_music=True, sfx_gain=1.0):
     sys.path.insert(0, ROOT)
     import music_amigo as MU
+    import music2_amigo as MU2
     sr = MU.SR
     src = load_audio(os.path.join(ROOT, "assets", "audio_original.wav"), sr)
     n = int((DUR + 0.6) * sr)
@@ -465,8 +480,8 @@ def build_audio(with_music=True, sfx_gain=1.0):
     sfx = MU.sfx_track(n, marks)
     out = voice * 1.0 + amb + sfx * sfx_gain
     if with_music:
-        mus = MU.music_track(n, marks)
-        duck = 1 - 0.72 * np.clip(venv / 0.08, 0, 1)
+        mus = MU2.music_track(n, marks)
+        duck = 1 - 0.6 * np.clip(venv / 0.08, 0, 1)
         out += mus * duck[:, None]
     return out, sr
 
@@ -492,8 +507,8 @@ def main():
             ff.stdin.write(buf)
     ff.stdin.close()
     ff.wait()
-    for name, mus in [("maraton_editado.mp4", True), ("maraton_sin_musica.mp4", False)]:
-        a, sr = build_audio(mus)
+    for name, mus in [("maraton_v3.mp4", True), ("maraton_v3_sin_musica.mp4", False)]:
+        a, sr = build_audio(mus, sfx_gain=0.6)
         wav = os.path.join(ROOT, "out", "audio_tmp.wav")
         write_wav(wav, a / max(1e-6, np.abs(a).max()) * 0.9, sr)
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", vid, "-i", wav, "-filter_complex", "[1:a]loudnorm=I=-14:TP=-1.2:LRA=9,aresample=48000[a]",
