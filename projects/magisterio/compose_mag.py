@@ -1,13 +1,11 @@
 """Compone «Magisterio por dentro»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en Impact
-(lo que llega en dorado, el bulo y los suspensos en rojo) + voz de Danny + efectos: sonidos reales del aula generados con ElevenLabs
-(tiza, macarrones, ábaco, peonza, calendario, lápiz, timbre, niños a lo lejos y el ambiente de la clase) y sintetizados (golpes,
-campanitas, acordes, chisporroteo de la red de conexiones).
+(lo que llega en dorado, el bulo y los suspensos en rojo) + la voz de Javi (ElevenLabs, Danny) + efectos SOLO de ElevenLabs, uno por
+suceso y cortados cuando el suceso termina (sin ambiente ni sonidos sintetizados).
 
     python3 ajustar_voz.py && python3 env_voz.py && python3 sfx_eleven.py
     WK=3 ./render_local.sh 0 N
     python3 projects/magisterio/compose_mag.py [--test t1 t2 ...] [--sfx]
 """
-import importlib.util
 import json
 import os
 import subprocess
@@ -22,9 +20,6 @@ sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.fin_draw import prog, hex_bgr  # noqa: E402
 from engine.subs import Subs, norm  # noqa: E402
 
-_spec = importlib.util.spec_from_file_location("compose_bi", os.path.join(ROOT, "..", "bomberados_ia", "compose_bi.py"))
-CB = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(CB)
 
 FPS, W, H = 60, 1080, 1920
 LINES = json.load(open(os.path.join(ROOT, "tiempos.json")))
@@ -83,39 +78,19 @@ def init():
     SUBS = Subs(LINES, KEY, {}, y=330, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")
 
 
-# ---------------------------------------------------------------- efectos
-_t, _lp = CB._t, CB._lp
-
-
-def knock(sr, f=170.0, d=0.4, seed=1):            # golpe sobre madera
-    t = _t(d, sr)
-    w = np.random.default_rng(seed).standard_normal(len(t))
-    body = sum(a * np.sin(2 * np.pi * f * m * t) * np.exp(-t / (0.06 / m)) for m, a in [(1, 1), (2.3, 0.5), (3.9, 0.25)])
-    return (body * 0.8 + (_lp(w, 3) - _lp(w, 20)) * np.exp(-t / 0.012) * 0.9) * np.minimum(1, t / 0.0008)
-
-
-def metal(sr, f=2200.0, d=0.5, seed=2):           # clic metálico (pinza de la tarjeta)
-    t = _t(d, sr)
-    y = sum(a * np.sin(2 * np.pi * f * m * t) * np.exp(-t / (0.09 / m ** 0.7)) for m, a in [(1, 1), (1.47, 0.6), (2.09, 0.4), (2.76, 0.25)])
-    w = np.random.default_rng(seed).standard_normal(len(t))
-    return (y * 0.35 + (w - _lp(w, 2)) * np.exp(-t / 0.004) * 0.5) * np.minimum(1, t / 0.0005)
-
-
-def heart(sr):                                    # latido («y tú»)
-    t = _t(0.7, sr)
-    one = lambda t0: np.sin(2 * np.pi * 52 * (t - t0)) * np.exp(-np.clip(t - t0, 0, None) / 0.07) * (t >= t0)  # noqa: E731
-    return (one(0) + 0.7 * one(0.24)) * 0.9
-
-
+# ---------------------------------------------------------------- efectos: SOLO de ElevenLabs (assets/sfx, ver sfx_eleven.py), cada uno en el
+# instante en que pasa la cosa y cortado cuando termina (con un fundido corto): no queda nada sonando de fondo.
 _CACHE = {}
 
 
-def sample(name, sr, peak=0.5):                   # efecto de ElevenLabs (assets/sfx/<name>.mp3) → mono, 48 kHz
+def sample(name, sr):                             # mono 48 kHz, sin el silencio del principio, pico a 0,5
     if name not in _CACHE:
         raw = subprocess.run(["ffmpeg", "-v", "quiet", "-i", os.path.join(ROOT, "assets", "sfx", name + ".mp3"), "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"],
                              capture_output=True, check=True).stdout
         x = np.frombuffer(raw, np.float32).astype(np.float64)
-        _CACHE[name] = x / (np.abs(x).max() + 1e-9) * peak
+        x = x / (np.abs(x).max() + 1e-9) * 0.5
+        on = np.flatnonzero(np.abs(x) > 0.02)
+        _CACHE[name] = x[max(0, on[0] - int(0.004 * sr)):] if len(on) else x
     return _CACHE[name]
 
 
@@ -123,76 +98,94 @@ def sfx_track(path):
     from engine import sfx
     sr = sfx.SR
     out = np.zeros(int((END + 1) * sr))
-    mix = lambda x, t0, g=1.0: sfx.mix(out, x, max(0.0, t0), g)  # noqa: E731
-    # fondo: el aula (pájaros a lo lejos) en bucle y un dron muy suave
-    amb = sample("aula", sr, 0.5)
-    for k in range(int(END / (len(amb) / sr)) + 1):
-        mix(amb, k * (len(amb) / sr) - k * 0.5, 0.28)
-    mix(sfx.drone(len(out)), 0, 0.3)
-    # 1: la chispa del collar; se aleja la cámara; «es verdad»
-    mix(CB.shimmer(1.6, sr, 3), 0.0, 0.35)
-    mix(sfx.whoosh(0.7), at("collares") - 0.2, 0.5)
-    mix(knock(sr, 150, 0.45, 1), at("verdad") + 0.02, 0.9); mix(CB.chord(sr, (523.25, 659.25, 783.99), 1.0), at("verdad") + 0.05, 0.25)
+
+    def put(name, t0, dur, g=1.0, fade=0.08, start=0.0):
+        x = sample(name, sr)[int(start * sr):][:max(1, int(dur * sr))].copy()
+        fi = min(len(x), int(0.004 * sr)); x[:fi] *= np.linspace(0, 1, fi)
+        fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
+        sfx.mix(out, x, max(0.0, t0), g)
+
+    def span(t0, t1):
+        return max(0.15, t1 - t0)
+
+    # 1: la chispa del collar; la cámara se aleja; el sello «ES VERDAD»
+    put("chispa", 0.0, 0.6, 0.35, 0.2)
+    put("whoosh", at("collares") - 0.05, 0.6, 0.25)
+    put("sello", at("verdad") - 0.02, 0.45, 0.8)
     # 2: los macarrones forman la «?»
-    mix(sample("macarrones", sr), at("para") + 0.05, 0.8)
-    for i in range(16):
-        mix(sfx.clack(200 + i), at("para") + 0.25 + i * 0.025, 0.12)
-    mix(CB.blip(700, 400, 0.18, sr), at("final"), 0.4)
-    # 3: la clase (niños a lo lejos al decir «jugar»); a la pizarra; la tiza dibuja el cerebro
-    mix(sfx.whoosh(1.2), at("crees") - 0.1, 0.7); mix(sample("ninos", sr), at("jugar") - 0.1, 0.25)
-    mix(sfx.whoosh(1.0), at("realidad"), 0.7)
-    mix(sample("tiza", sr), at("aprender", 1, 3) + 0.05, 0.8); mix(sfx.ding(1046.5, 0.8), at("cerebro", 1, 3) + 0.05, 0.3)
-    # transiciones entre rincones (la cámara vuela)
-    for li in (4, 5, 6, 7, 8, 9, 10, 11, 12):
-        mix(sfx.whoosh(0.7), first(li) - 0.45, 0.6)
-    # 4: tallímetro: aparecen los niños de 1, 3 y 6 años
-    for i, w in enumerate(("aprender", "niño", "edad")):
-        mix(knock(sr, 260 - 40 * i, 0.3, 10 + i), at(w, 1, 4) - 0.05, 0.5)
-    # 5: el ábaco suma; contar 1…5
-    mix(sample("abaco", sr), at("sumar") - 0.08, 0.9)
+    put("macarrones_q", at("para") + 0.3, 0.6, 0.7)
+    # 3: la clase; a la pizarra; la tiza dibuja el cerebro
+    put("whoosh_largo", at("crees") - 0.05, 0.9, 0.3, 0.2)
+    put("whoosh", at("realidad") + 0.1, 0.7, 0.3)
+    put("tiza_dibujo", at("aprender", 1, 3) - 0.05, span(at("aprender", 1, 3) - 0.05, at("cerebro", 1, 3) + 0.25), 0.7, 0.1)
+    # 4: tallímetro: los niños de 1, 3 y 6 años
+    put("whoosh", at("psicología") - 0.25, 0.55, 0.3)
+    for w in ("aprender", "niño", "edad"):
+        put("madera_toc", at(w, 1, 4) - 0.1, 0.35, 0.6)
+    # 5: el ábaco suma 2 + 3; se cuentan 1…5
+    put("whoosh", at("matemáticas", 1, 5) - 0.4, 0.55, 0.3)
+    put("abaco", at("sumar") - 0.05, 0.62, 0.8)
     for i in range(5):
-        mix(sfx.tick(4 + i), at("contar") + i * 0.07, 0.3)
-    # 6: se abre el cuento; las letras de pasta caen una a una
-    mix(CB.paper(sr, 0.25, 4, 1.2), at("enseñar", 1, 6), 0.6)
-    for i, t0 in enumerate((at("letra", 1, 6), at("letra", 1, 6) + 0.2, at("letra", 1, 6) + 0.4, at("letra", 2, 6))):
-        mix(knock(sr, 320 + 30 * i, 0.25, 20 + i), t0, 0.45); mix(sfx.clack(30 + i), t0 + 0.01, 0.2)
-    # 7: b/d, la peonza, el ∞; «en la misma clase»
-    mix(CB.blip(500, 800, 0.12, sr), at("dislexia"), 0.35); mix(sample("peonza", sr), at("tdah") - 0.05, 0.45)
-    mix(CB.shimmer(1.0, sr, 9), at("autismo") - 0.05, 0.4); mix(sfx.whoosh(0.9), at("misma") - 0.1, 0.6)
-    # 8: el calendario pasa hojas; la tarjeta de prácticas; el timbre del colegio
-    mix(sample("calendario", sr), at("meses") - 0.02, 0.8); mix(metal(sr, 2600, 0.4, 5), at("prácticas") + 0.05, 0.4)
-    mix(sample("timbre", sr), at("colegio"), 0.22)
-    # 9: tiza «¿FÁCIL?», Cataluña, los 100; se tachan 45
-    mix(sample("tiza", sr, 0.45), at("fácil", 1, 9) - 0.02, 0.8); mix(sample("tiza", sr, 0.4), at("este") - 0.05, 0.6)
-    mix(sample("tiza_tachar", sr), at("mitad"), 0.9); mix(CB.buzz(0.3, sr, 100), at("suspendió") + 0.05, 0.3)
-    # 10: el temario; los 19 muñecos; la plaza dorada
-    mix(knock(sr, 140, 0.4, 30), at("oposición") + 0.02, 0.6); mix(sample("madera", sr), at("diecinueve") - 0.1, 0.8)
-    mix(CB.shimmer(1.2, sr, 11), at("plaza") - 0.05, 0.5); mix(CB.chord(sr, (440.0, 554.37, 659.25, 880.0), 1.2), at("plaza"), 0.25)
-    # 11: aparecen los 25 niños (murmullo); «y tú» (latido)
-    mix(sample("ninos", sr), at("veinticinco") - 0.1, 0.45)
-    for i in range(10):
-        mix(sfx.clack(60 + i), at("veinticinco") + i * 0.045, 0.1)
-    mix(heart(sr), at("y", 2, 11), 0.9)
-    # 12: los macarrones vuelven al cuenco; ensartar; la pinza; el lápiz
-    mix(sample("macarrones_cuenco", sr), at("macarrones", 1, 12) + 0.15, 0.8)
-    mix(CB.paper(sr, 0.18, 12, 0.8), at("ensartarlos") + 0.2, 0.5); mix(sfx.clack(77), at("ensartarlos") + 0.35, 0.3)
-    mix(metal(sr, 3200, 0.25, 13), at("pinza") + 0.1, 0.25); mix(sample("lapiz", sr), at("escribir"), 0.85)
-    # 13: cada macarrón ensartado en la serie; la serie; el estudio; a la pizarra: matemáticas de once años
-    for j, t0 in enumerate([at("negro") - 0.12] + [at("negro") + 0.12 + k * 0.1 for k in range(6)]):
-        mix(sfx.clack(90 + j), t0 + 0.3, 0.25)
-    mix(sfx.ding(1318.5, 0.8), at("serie") + 0.02, 0.3); mix(CB.paper(sr, 0.2, 14, 1.0), at("estudio"), 0.4)
-    mix(sfx.whoosh(0.9), at("predice") - 0.05, 0.8); mix(sample("tiza", sr, 0.45), at("matemáticas", 1, 13) - 0.2, 0.7)
-    mix(sample("tiza_tachar", sr, 0.35), at("once") - 0.05, 0.5)
-    # 14: la red se enciende (chisporroteo que crece) y el millón
-    mix(sfx.whoosh(0.8), first(14) - 0.6, 0.6)
-    mix(CB.crackle(2.6, sr, 15, 0.002, 0.6), at("crea") - 0.1, 0.5); mix(CB.shimmer(2.4, sr, 16), at("crea"), 0.5)
-    mix(CB.chord(sr, (392.0, 493.88, 587.33, 783.99), 1.6), at("millón") + 0.02, 0.35)
-    # 15: vuelta al collar; «sí»; «sabiendo por qué»
-    mix(sfx.whoosh(1.2), at("así") - 0.2, 0.8); mix(knock(sr, 170, 0.4, 40), at("sí", 1, 15) + 0.02, 0.7)
-    mix(CB.shimmer(2.0, sr, 17), at("sabiendo") - 0.1, 0.55); mix(CB.chord(sr, (523.25, 659.25, 783.99, 1046.5), 2.0), at("sabiendo") + 0.05, 0.4)
-    # 16: el avión de papel; ¿Infantil o Primaria?; vuelta al principio
-    mix(sfx.whoosh(0.6), at("mándaselo") - 0.1, 0.6); mix(CB.blip(600, 900, 0.12, sr), at("infantil", 1, 16), 0.3); mix(CB.blip(900, 1350, 0.12, sr), at("primaria"), 0.3)
-    mix(CB.shimmer(1.4, sr, 18), END - 1.6, 0.3)
+        put("cuenta", at("contar") - 0.1 + i * 0.07, 0.15, 0.5)
+    # 6: se abre el cuento; caen las letras de pasta
+    put("whoosh", at("lengua") - 0.4, 0.55, 0.3)
+    put("libro", at("enseñar", 1, 6), 0.5, 0.6)
+    for t0 in (at("letra", 1, 6) - 0.08, at("letra", 1, 6) + 0.12, at("letra", 1, 6) + 0.32, at("letra", 2, 6) - 0.04):
+        put("letra", t0, 0.25, 0.6)
+    # 7: b/d se dan la vuelta; la peonza gira hasta que nos vamos; el ∞ brilla; «en la misma clase»
+    put("whoosh", at("dislexia") - 0.35, 0.5, 0.3)
+    put("giro", at("dislexia") + 0.05, 0.45, 0.45)
+    put("peonza", at("tdah") - 0.05, span(at("tdah") - 0.05, at("meses") - 0.3), 0.35, 0.25)
+    put("brillo", at("autismo") - 0.05, 0.8, 0.45, 0.2)
+    put("whoosh_largo", at("misma") - 0.05, 0.8, 0.3, 0.2)
+    # 8: pasan los meses; la tarjeta de prácticas; el timbre del colegio
+    put("whoosh", at("meses") - 0.45, 0.5, 0.3)
+    put("calendario", at("meses"), 0.95, 0.7)
+    put("tarjeta", at("prácticas") - 0.05, 0.4, 0.5)
+    put("timbre", at("colegio"), 0.7, 0.3, 0.2)
+    # 9: la tiza escribe «¿FÁCIL?» y «CATALUÑA · 2026», dibuja los 100 y tacha 45; el 45,5 %
+    put("whoosh", at("fácil", 1, 9) - 0.45, 0.55, 0.3)
+    put("tiza_escribir", at("fácil", 1, 9) - 0.05, 0.45, 0.6)
+    put("tiza_escribir", at("cataluña"), 0.5, 0.5, 0.08, 0.3)
+    put("tiza_palitos", at("este") - 0.05, span(at("este") - 0.05, at("casi", 1, 9) + 0.15), 0.55)
+    put("tiza_tachar", at("mitad"), span(at("mitad"), at("examen") + 0.1), 0.7)
+    put("impacto", at("mitad") - 0.05, 0.6, 0.45, 0.2)
+    # 10: el temario; entran los 19 muñecos; brilla la sillita dorada
+    put("whoosh", at("oposición") - 0.45, 0.5, 0.3)
+    put("carpeta", at("oposición") - 0.05, 0.35, 0.6)
+    put("munecos", at("diecinueve") - 0.12, 0.6, 0.6)
+    put("brillo", at("plaza") - 0.05, 0.8, 0.5, 0.2)
+    # 11: la clase desde la mesa de la maestra; aparecen los 25 niños; «y tú» (latido)
+    put("whoosh_largo", at("infantil", 1, 10) + 0.3, 0.7, 0.3, 0.2)
+    put("munecos", at("veinticinco") - 0.1, 0.5, 0.6, 0.08, 0.1)
+    put("latido", at("y", 2, 11), 0.55, 0.8, 0.15)
+    # 12: los macarrones vuelven al cuenco; ensartar; la pinza; el lápiz escribe
+    put("whoosh_largo", at("y", 1, 12) - 0.05, 0.8, 0.3, 0.2)
+    put("cuenco", at("macarrones", 1, 12) + 0.15, 0.55, 0.6)
+    put("ensartar", at("ensartarlos") + 0.05, 0.4, 0.6)
+    put("clic", at("pinza") + 0.05, 0.2, 0.45)
+    put("lapiz", at("escribir") - 0.05, 0.9, 0.75)
+    # 13: cada macarrón que entra en la serie; «primera serie»; el estudio; a la pizarra: matemáticas de 11 años
+    for ts in [at("negro") - 0.12] + [at("negro") + 0.12 + k * 0.1 for k in range(6)]:
+        put("ensarte_clic", ts + 0.3, 0.15, 0.45)
+    put("ding", at("serie") - 0.05, 0.45, 0.4)
+    put("papel", at("según") - 0.05, 0.3, 0.4)
+    put("whoosh_largo", at("predice") - 0.05, 0.75, 0.35, 0.2)
+    put("tiza_escribir", at("predice"), span(at("predice"), at("matemáticas", 1, 13) + 0.55), 0.55)
+    put("tiza_escribir", at("once") - 0.05, 0.4, 0.5, 0.08, 0.4)
+    # 14: la red de conexiones crece; el millón
+    put("whoosh", at("primeros") - 0.45, 0.55, 0.3)
+    put("red", at("crea") - 0.25, span(at("crea") - 0.25, at("segundo") + 0.4), 0.5, 0.3)
+    put("brillo", at("millón") + 0.15, 0.8, 0.5, 0.2)
+    # 15: vuelta al collar; «SÍ»; «sabiendo por qué»
+    put("whoosh_largo", at("así") - 0.1, 1.0, 0.35, 0.25)
+    put("sello", at("sí", 1, 15) - 0.03, 0.4, 0.7)
+    put("brillo", at("sabiendo") + 0.05, 0.9, 0.55, 0.25)
+    # 16: el avión de papel; ¿Infantil o Primaria?; la chispa del bucle
+    put("avion", at("mándaselo") - 0.05, 0.6, 0.5, 0.15)
+    put("pop", at("infantil", 1, 16) - 0.1, 0.2, 0.45)
+    put("pop", at("primaria") - 0.1, 0.2, 0.45)
+    put("chispa", END - 0.7, 0.6, 0.3, 0.2)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
@@ -204,7 +197,7 @@ def main(dst=os.path.join(ROOT, "out", "magisterio.mp4")):
     sfx_track(sfxp)
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", "-i", AUDIO, "-i", sfxp, "-filter_complex",
-           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=0.4[s];[v][s]amix=inputs=2:duration=first:normalize=0,volume=1.6dB,alimiter=limit=0.89:level=false[a]",
+           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=0.8[s];[v][s]amix=inputs=2:duration=first:normalize=0,volume=1.6dB,alimiter=limit=0.89:level=false[a]",
            "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "7M", "-bufsize", "14M", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-shortest", "-movflags", "+faststart", dst]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
