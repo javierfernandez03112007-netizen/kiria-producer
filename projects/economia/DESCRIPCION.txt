@@ -1,0 +1,35 @@
+📉 La bolsa española subió un 58 % el año pasado… y 96 de cada 100 fondos dirigidos por profesionales lo hicieron peor. Según el informe SPIVA de S&P Dow Jones Indices, en 2025 solo 2 de los 50 fondos de bolsa española batieron al índice.
+
+📚 Así es Economía por dentro: Microeconomía (por qué sube tu alquiler), Macroeconomía (inflación, paro y crisis), Matemáticas y Estadística (muchas más de las que esperas), Econometría (datos para separar lo que funciona de lo que no) y Finanzas (cuánto vale de verdad una empresa).
+
+🏅 Lo más loco: en 2013 dieron el Nobel de Economía a la vez a Eugene Fama, para quien el precio de la bolsa ya recoge todo lo que se sabe, y a Robert Shiller, que avisó de las burbujas.
+
+💸 ¿Quién tenía razón? Para tu bolsillo, casi siempre el primero: intentar ganarle a la bolsa cuesta comisiones… y casi nunca sale bien. En el primer semestre de 2026, el fondo medio de bolsa española ganó un 9,0 % y el índice, un 14,5 %.
+
+📊 Por eso los fondos indexados, que solo copian a la bolsa, cobran menos… y acaban por delante de casi todos.
+
+✅ Para eso sirve Economía: para que no te vendan humo.
+
+⚠️ Esto no es asesoramiento financiero. Rentabilidades pasadas no garantizan rentabilidades futuras.
+
+👇 ¿Gestor o indexado? Te leo en comentarios.
+
+📚 Fuentes: SPIVA Europe Year-End 2025 y Mid-Year 2026 (S&P Dow Jones Indices); El Economista (octubre de 2026); Premio Nobel de Economía 2013 (Fundación Nobel).
+
+#economia #bolsa #inversion #fondosindexados #finanzaspersonales #universidad #carrerasuniversitarias #estudiantes #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+📉 La bolsa subió un 58 %… y 96 de cada 100 fondos profesionales lo hicieron peor. ¿Para qué estudiar Economía? 👇 ¿Gestor o indexado? (No es asesoramiento financiero)
+
+#economia #bolsa #inversion #fondosindexados #universidad
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- CONFIRMAR en el PDF de SPIVA Europe Year-End 2025 el «2 de 50» (96 %) y el +58,4 % del S&P Spain BMI; spglobal.com no abría desde la sesión (datos vía Rankia y El Economista).
+- El −5,5 puntos es del primer semestre de 2026 (índice +14,5 % frente a fondo medio +9,0 %, El Economista / SPIVA Mid-Year 2026).
+- EJEMPLO: el alquiler que sube de 750 € a 1.050 €, las gráficas del panel y la fórmula de valoración son ilustrativas.
+- Voz: la de Javi (ElevenLabs, Danny, modelo v4), ajustada a 59 s. Efectos: solo de ElevenLabs, uno por suceso y cortados cuando termina.
