@@ -43,6 +43,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 ## Herramientas y accesos
 - **ElevenLabs**: la clave está como secreto del entorno «Predeterminado»; el entorno añade el encabezado `xi-api-key` a las peticiones a
   `api.elevenlabs.io` (no hay que ponerla en el código). Uso: voz Danny para guiones y efectos de sonido realistas.
+  Voz Danny: `voice_id` **wnKyx1zkUEUnfURKiuaP** (modelo `eleven_multilingual_v2`). Efectos: `POST /v1/sound-generation`.
+  Ojo (1-11-2026): la clave guardada en el entorno daba «Invalid API key»; Javi dio una clave nueva (sin permiso `user_read`,
+  pero con voz, voces y efectos). Si vuelve a fallar, pedirle que la actualice en Network secrets del entorno; nunca escribirla en el repo.
 - Dominios pedidos para el entorno: `www.boe.es`, `boe.es`, `www.ciencia.gob.es` (verificar datos), `polyhaven.com`, `api.polyhaven.com`,
   `dl.polyhaven.org` (texturas, modelos y luces HDRI CC0 para más realismo). Comprobar en cada sesión nueva que responden.
 - Reconocedor de voz: Parakeet TDT v3 (sherpa-onnx), ver `projects/derecho/asr_parakeet.py` (el modelo se descarga aparte).
