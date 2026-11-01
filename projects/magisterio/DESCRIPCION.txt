@@ -27,4 +27,4 @@ Versión corta (TikTok):
 NOTAS PARA LA ENTREGA (no publicar):
 - Lo marcado CONFIRMAR en FUENTES.md: la cifra de Harvard (un millón de conexiones por segundo) se ha comprobado en webs que la citan; el máximo de 25 alumnos por aula, en la ley (LOE / RD 132/2010). El BOE no abría desde la sesión.
 - El 45,5 % es de la convocatoria ordinaria de la PAP 2026 en Cataluña (no de toda España). Los 19 por plaza son de Infantil en Canarias, con los opositores que entregaron la programación.
-- Efectos de sonido: generados con ElevenLabs (tiza, macarrones, ábaco, peonza, calendario, lápiz, timbre, niños a lo lejos, ambiente del aula) y sintetizados. Voz: Danny (ElevenLabs). Para uso comercial hace falta plan de pago.
+- Voz: la de Javi (ElevenLabs, Danny, modelo v4), ajustada a 59 s como en Derecho. Efectos: solo de ElevenLabs, uno por suceso y cortados cuando termina. Para uso comercial hace falta plan de pago.
