@@ -13,7 +13,7 @@
  "fuente": "Conducta PAS (Proteger, Avisar, Socorrer, en ese orden): Cruz Roja Española, manual de primeros auxilios; Ministerio de Sanidad, «Accidentes» (módulo 6); DGT. Ver FUENTES.md.",
  "banner": ["LA SOLUCIÓN,", "EN LA DESCRIPCIÓN"],
  "ey": 840,
- "voz": {"tempo": 1.03, "count_line": 2, "count": 4.4, "pause": {"1": 0.28, "2": 0.35, "3": 0.05, "4": 0.3, "5": 0.3, "6": 0.22}, "pause_def": 0.24},
+ "voz": {"tempo": 1.04, "count_line": 2, "count": 4.4, "pause": {"1": 0.28, "2": 0.35, "3": 0.05, "4": 0.3, "5": 0.3, "6": 0.22}, "pause_def": 0.24},
  "cues": {
   "primero0": ["primero", 1, 1],
   "accidente": ["accidente", 1, 1],
@@ -41,5 +41,5 @@
   "7": {"gratis": "#62E3D4", "cinco": "#F2B233", "días": "#F2B233"}
  },
  "portada": {"titulo": "¿QUÉ HACES PRIMERO?", "etiqueta": "PREGUNTA DEL DÍA · PRIMEROS AUXILIOS", "desfase": 2.1},
- "mezcla": {"sfx": 1.0}
+ "mezcla": {"sfx": 1.0, "ganancia": 1.1}
 }

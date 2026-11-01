@@ -40,7 +40,8 @@ fotograma, aviso ⚠ con la distancia, frenazo con cabeceo y ABS (cue `accidente
 proyectadas, luna rota, piloto roto, vapor, cristales), chip «1 HERIDO» con ECG y la grúa de cámara que sube (cue
 `herido`), pulso rojo en `instinto`, intermitentes al ritmo de la cuenta atrás y la lluvia que se convierte en brasas en
 `marca`. Render ≈ 1 fotograma/s con 4 procesos (25 s → ≈ 25 min).
-Sonido: `compose.py` usa `assets/sfx/*.mp3` (efectos de ElevenLabs) y `sfx_track_pas`; `"mezcla": {"sfx": 1.0}`.
+Sonido: `compose.py` usa `assets/sfx/*.mp3` (efectos de ElevenLabs) y `sfx_track_pas`; `"mezcla": {"sfx": 1.0, "ganancia": 1.1}`
+(«ganancia»: dB sobre la mezcla final, para quedar en ≈ −15,5 LUFS con una voz muy dinámica).
 
 Otras opciones nuevas de pregunta.json: `"ey"` (altura de la tarjeta del enunciado), `"iconos"` (phone, cross, shield,
 exit: icono tras la letra), cue `"comenta"` (las letras se vuelven bocadillos), `"portada": {"desfase": 2.1}` (fotograma

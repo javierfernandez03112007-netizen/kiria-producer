@@ -338,10 +338,11 @@ def main():
     sfxp = os.path.join(PROJ, "out", "sfx.wav")
     (sfx_track_pas if Q.get("intro") == "pas" else sfx_track)(sfxp)
     sv = Q.get("mezcla", {}).get("sfx", 0.35)
+    gan = Q.get("mezcla", {}).get("ganancia", 0.0)          # dB sobre la mezcla final (antes del limitador)
     dst = os.path.join(PROJ, "out", os.path.basename(PROJ) + ".mp4")
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", "-i", AUDIO, "-i", sfxp, "-filter_complex",
-           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + "[s];[v][s]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.94:level=disabled[a]",
+           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + "[s];[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.94:level=disabled[a]",
            "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "8M", "-bufsize", "16M", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", f"{N / FPS:.3f}", "-movflags", "+faststart", dst]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)

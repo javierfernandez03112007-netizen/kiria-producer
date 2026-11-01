@@ -23,14 +23,15 @@
 ## La escena (todo dibujado, sin marcas reales)
 - Coche plateado genérico, sin logotipo; matrícula sin caracteres. Carretera convencional de dos carriles con eje
   discontinuo (3,5 m de trazo y 9 m de hueco), bionda con captafaros e hitos de arista: ilustrativo.
-- Velocidad (72 km/h) y distancias del aviso (de ≈ 46 m a 5 m): EJEMPLO de la escena, no un dato.
+- Velocidad (72 km/h) y distancias del aviso (de ≈ 32 m a 5 m): EJEMPLO de la escena, no un dato.
 - Intermitentes de emergencia: parpadean ≈ 61 veces por minuto (un número de la cuenta atrás por parpadeo).
 - «1 HERIDO» y el electrocardiograma (112 → 138 latidos por minuto): EJEMPLO dramatizado.
 - La escena no muestra «PAS» en pantalla para no dar la respuesta.
 
 ## Voz y sonido
 - Voz: Danny («Relatable, Expressive and Warm», español peninsular) de ElevenLabs, generada con la API
-  (eleven_multilingual_v2) desde `script_tts.txt` («oposíte» con tilde solo para que la voz acentúe bien «oposite»).
+  (eleven_v3 con indicaciones de emoción entre corchetes, que no se leen) desde `script_tts.txt` («oposíte» con tilde solo
+  para que la voz acentúe bien «oposite»). Primera versión (descartada por poco enérgica): eleven_multilingual_v2.
 - Efectos (`assets/sfx/*.mp3`): generados con la API de efectos de sonido de ElevenLabs (lluvia dentro y fuera del coche,
   frenazo con ABS, trueno, relé de los intermitentes, latido, vapor, golpe de tensión, brasas, transición y marca).
   Uso comercial: necesita plan de pago de ElevenLabs (ver `MEMORIA.md`).

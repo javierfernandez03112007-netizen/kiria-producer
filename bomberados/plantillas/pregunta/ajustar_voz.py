@@ -115,13 +115,12 @@ def main():
     s0 = max(0, int(lstart[0] * SR) - int(0.06 * SR))
     s1 = int(sp1 * SR)
     parts, pos, kp = [], s0, [(s0 / SR, 0.0)]
-    for a, b, want in cuts:
-        m = (a + b) / 2
-        e = int((m - want / 2) * SR)
+    for a, b, want in cuts:                    # se queda `want` s de silencio (la mitad a cada lado) y se quita el resto
+        e = int((a + want / 2) * SR)
         parts.append(x[pos:e])
         nt = sum(len(p) for p in parts) / SR
         kp += [(e / SR, nt)]
-        pos = int((m + want / 2) * SR)
+        pos = int((b - want / 2) * SR)
         kp += [(pos / SR, nt)]
     parts.append(x[pos:s1 + int(0.25 * SR)])
     y = np.concatenate(parts)

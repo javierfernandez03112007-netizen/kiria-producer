@@ -49,7 +49,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #2 Bradipnea (examen Albacete 2026) | `projects/bomberados_bradipnea/` | publicado 30 oct (12.900 / 14 / 109) |
 | PD #3 Panel naranja ADR (estilo app) | `projects/bomberados_adr/` | **listo para subir** (26,7 s; Notion: mar 3 nov 14:00; respuesta B) |
 | Promo 2º simulacro examen bombero Ciudad Real | `projects/bomberados_simulacro/` | **entregado** 31 oct (21,8 s, 12 €, para la cuenta @elitebomberos) |
-| PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (25,1 s; respuesta C; propuesta: miér 4 nov 14:00) |
+| PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -67,8 +67,14 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   Ojo, que el instinto te la juega… Tienes cinco segundos. / ¿A, B, C o D? Comenta tu letra y mándaselo a quien oposite
   contigo, a ver quién acierta. / La solución, en la descripción. / Bomberados: falla en casa, no en el examen. / Pruébala
   gratis cinco días.» («Comenta tu letra» en vez de «tu respuesta»: más concreto). Respuesta C (Proteger), en la descripción.
-- Voz: Danny generada con la API (`bomberados/plantillas/pregunta/elevenlabs.py voz`, eleven_multilingual_v2, stability 0.38,
-  style 0.35); en la primera toma dijo «opósite» → en `script_tts.txt` va «oposíte». La v3 salió lenta y teatral (descartada).
+- Voz: Danny generada con la API (`bomberados/plantillas/pregunta/elevenlabs.py voz`). Primero con eleven_multilingual_v2
+  (dijo «opósite» → en `script_tts.txt` va «oposíte»). Javi aprobó el vídeo pero pidió **voz con ánimo: caótica en el caos y
+  con ímpetu en «¡Bomberados!» y en «mándaselo…»** → versión final con **eleven_v3 + indicaciones de emoción** ([panicked],
+  [urgent], [tense], [excited], [energetic]; stability 0.5; 3 tomas, se elige la que el reconocedor entiende entera y tiene más
+  variación de tono). **Usar este estilo de voz por defecto en Bomberados.** Las marcas de tiempo de v3 fallan a veces
+  ~0,15 s tras una pausa: `elevenlabs.py` las engancha al inicio real de la voz (`snap`).
+- `ajustar_voz.py` tenía un fallo: en vez de dejar la pausa pedida (`pause`, 0,17 s dentro de la frase) la RESTABA del
+  silencio (frases pegadas). Arreglado el 1 nov: ahora deja exactamente esa pausa. Los vídeos anteriores no cambian.
 - Escena: fondo nuevo «carretera» (`bomberados/plantillas/pregunta/carretera.js`): POV de noche con lluvia, relámpago en el
   primer fotograma, aviso ⚠ con la distancia, frenazo con ABS y velocímetro 72 → 0, coche accidentado con la luna rota, vapor y
   cristales, encuadre naranja, chip «1 HERIDO» con ECG y anillo sobre la cabeza del conductor, grúa de cámara al decir
@@ -77,7 +83,7 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Sonido: 12 efectos generados con la API de efectos de ElevenLabs (`assets/sfx/`), colocados en `compose.py`
   (`sfx_track_pas`): trueno, lluvia dentro/fuera (baja sola con la voz), frenazo, vapor, latido al ritmo del ECG, relé de los
   intermitentes (más fuerte en la cuenta atrás), golpe de tensión, brasas y marca. Mezcla −16 LUFS.
-- Render: ≈ 1,1 fotogramas/s con 4 procesos (1.505 fotogramas en 22,7 min) + composición 1,8 min. Vídeo: 20,3 MB, −16,1 LUFS.
+- Render: ≈ 1,1 fotogramas/s con 4 procesos (≈ 23 min para 26 s) + composición ≈ 2 min.
   Portada: fotograma 2,1 s tras las opciones. Notion: fila 409d785b-2d75-818c-be6c-cc95d13f2993 en «Listo para subir» (su fecha,
   dom 1 nov, es anterior a la Nº 3: Javi decide; propuesta miér 4 nov 14:00).
 - Pendiente antes de publicar: comprobar en dgt.es lo de la baliza V-16 (citada en la explicación) y la prueba de 5 días.

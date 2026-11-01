@@ -1,312 +1,312 @@
 [
  {
   "w": "Llegas",
-  "start": 0.0,
-  "end": 0.348
+  "start": 0.136,
+  "end": 0.4
  },
  {
   "w": "el",
-  "start": 0.406,
-  "end": 0.453
+  "start": 0.427,
+  "end": 0.48
  },
  {
   "w": "primero",
-  "start": 0.499,
-  "end": 0.836
+  "start": 0.52,
+  "end": 0.8
  },
  {
   "w": "a",
-  "start": 0.871,
-  "end": 0.894
+  "start": 0.84,
+  "end": 0.88
  },
  {
   "w": "un",
-  "start": 0.964,
-  "end": 1.033
+  "start": 0.907,
+  "end": 0.96
  },
  {
   "w": "accidente",
-  "start": 1.068,
-  "end": 1.498
+  "start": 1.004,
+  "end": 1.44
  },
  {
   "w": "de",
-  "start": 1.533,
-  "end": 1.591
+  "start": 1.467,
+  "end": 1.52
  },
  {
   "w": "tráfico",
-  "start": 1.614,
-  "end": 2.229
+  "start": 1.573,
+  "end": 2.08
  },
  {
   "w": "Hay",
-  "start": 2.299,
-  "end": 2.496
+  "start": 2.37,
+  "end": 2.56
  },
  {
   "w": "un",
-  "start": 2.543,
-  "end": 2.612
+  "start": 2.613,
+  "end": 2.72
  },
  {
   "w": "herido",
-  "start": 2.635,
-  "end": 3.181
+  "start": 2.74,
+  "end": 3.2
  },
  {
   "w": "Qué",
-  "start": 3.355,
-  "end": 3.576
+  "start": 3.44,
+  "end": 3.76
  },
  {
   "w": "es",
-  "start": 3.611,
-  "end": 3.657
+  "start": 3.84,
+  "end": 4.0
  },
  {
   "w": "lo",
-  "start": 3.704,
-  "end": 3.762
+  "start": 4.027,
+  "end": 4.08
  },
  {
   "w": "primero",
-  "start": 3.785,
-  "end": 4.063
+  "start": 4.13,
+  "end": 4.48
  },
  {
   "w": "que",
-  "start": 4.11,
-  "end": 4.18
+  "start": 4.5,
+  "end": 4.56
  },
  {
   "w": "haces",
-  "start": 4.214,
-  "end": 4.76
+  "start": 4.6,
+  "end": 5.12
  },
  {
   "w": "Ojo",
-  "start": 5.143,
-  "end": 5.492
+  "start": 5.9,
+  "end": 6.163
  },
  {
   "w": "que",
-  "start": 5.515,
-  "end": 5.596
+  "start": 6.183,
+  "end": 6.243
  },
  {
   "w": "el",
-  "start": 5.619,
-  "end": 5.677
+  "start": 6.27,
+  "end": 6.323
  },
  {
   "w": "instinto",
-  "start": 5.735,
-  "end": 6.107
+  "start": 6.387,
+  "end": 6.963
  },
  {
   "w": "te",
-  "start": 6.153,
-  "end": 6.2
+  "start": 6.99,
+  "end": 7.043
  },
  {
   "w": "la",
-  "start": 6.246,
-  "end": 6.304
+  "start": 7.07,
+  "end": 7.123
  },
  {
   "w": "juega",
-  "start": 6.351,
-  "end": 7.024
+  "start": 7.183,
+  "end": 8.243
  },
  {
   "w": "Tienes",
-  "start": 7.407,
-  "end": 7.697
+  "start": 8.38,
+  "end": 8.643
  },
  {
   "w": "cinco",
-  "start": 7.744,
-  "end": 7.976
+  "start": 8.683,
+  "end": 8.883
  },
  {
   "w": "segundos",
-  "start": 8.022,
-  "end": 8.661
+  "start": 8.945,
+  "end": 9.843
  },
  {
   "w": "A",
-  "start": 8.812,
-  "end": 9.125
+  "start": 9.969,
+  "end": 10.289
  },
  {
   "w": "B",
-  "start": 9.149,
-  "end": 9.346
+  "start": 10.356,
+  "end": 10.609
  },
  {
   "w": "C",
-  "start": 9.381,
-  "end": 9.52
+  "start": 10.649,
+  "end": 10.729
  },
  {
   "w": "o",
-  "start": 9.601,
-  "end": 9.648
+  "start": 10.929,
+  "end": 11.129
  },
  {
   "w": "D",
-  "start": 9.694,
-  "end": 10.031
+  "start": 11.209,
+  "end": 11.449
  },
  {
   "w": "Comenta",
-  "start": 10.728,
-  "end": 11.157
+  "start": 11.769,
+  "end": 12.409
  },
  {
   "w": "tu",
-  "start": 11.204,
-  "end": 11.273
+  "start": 12.462,
+  "end": 12.569
  },
  {
   "w": "letra",
-  "start": 11.32,
-  "end": 11.598
+  "start": 12.622,
+  "end": 12.889
  },
  {
   "w": "y",
-  "start": 11.645,
-  "end": 11.668
+  "start": 13.009,
+  "end": 13.129
  },
  {
   "w": "mándaselo",
-  "start": 11.738,
-  "end": 12.249
+  "start": 13.15,
+  "end": 13.689
  },
  {
   "w": "a",
-  "start": 12.295,
-  "end": 12.318
+  "start": 13.729,
+  "end": 13.769
  },
  {
   "w": "quien",
-  "start": 12.376,
-  "end": 12.516
+  "start": 13.809,
+  "end": 14.009
  },
  {
   "w": "oposite",
-  "start": 12.55,
-  "end": 12.91
+  "start": 14.049,
+  "end": 14.489
  },
  {
   "w": "contigo",
-  "start": 12.957,
-  "end": 13.468
+  "start": 14.537,
+  "end": 15.209
  },
  {
   "w": "a",
-  "start": 13.514,
-  "end": 13.549
+  "start": 15.249,
+  "end": 15.289
  },
  {
   "w": "ver",
-  "start": 13.584,
-  "end": 13.723
+  "start": 15.329,
+  "end": 15.449
  },
  {
   "w": "quién",
-  "start": 13.804,
-  "end": 14.001
+  "start": 15.489,
+  "end": 15.689
  },
  {
   "w": "acierta",
-  "start": 14.06,
-  "end": 14.791
+  "start": 15.742,
+  "end": 16.249
  },
  {
   "w": "La",
-  "start": 15.232,
-  "end": 15.348
+  "start": 16.409,
+  "end": 16.729
  },
  {
   "w": "solución",
-  "start": 15.395,
-  "end": 16.103
+  "start": 16.789,
+  "end": 17.289
  },
  {
   "w": "en",
-  "start": 16.173,
-  "end": 16.289
+  "start": 17.422,
+  "end": 17.689
  },
  {
   "w": "la",
-  "start": 16.347,
-  "end": 16.405
+  "start": 17.716,
+  "end": 17.769
  },
  {
   "w": "descripción",
-  "start": 16.451,
-  "end": 17.194
+  "start": 17.815,
+  "end": 18.769
  },
  {
   "w": "Bomberados",
-  "start": 17.798,
-  "end": 18.657
+  "start": 19.1,
+  "end": 19.929
  },
  {
-  "w": "falla",
-  "start": 18.808,
-  "end": 19.075
+  "w": "Falla",
+  "start": 20.41,
+  "end": 20.649
  },
  {
   "w": "en",
-  "start": 19.121,
-  "end": 19.191
+  "start": 20.702,
+  "end": 20.809
  },
  {
   "w": "casa",
-  "start": 19.249,
-  "end": 19.69
+  "start": 20.889,
+  "end": 21.529
  },
  {
   "w": "no",
-  "start": 19.737,
-  "end": 19.841
+  "start": 21.59,
+  "end": 21.769
  },
  {
   "w": "en",
-  "start": 19.888,
-  "end": 19.934
+  "start": 21.822,
+  "end": 21.929
  },
  {
   "w": "el",
-  "start": 19.981,
-  "end": 20.027
+  "start": 21.956,
+  "end": 22.009
  },
  {
   "w": "examen",
-  "start": 20.085,
-  "end": 20.596
+  "start": 22.073,
+  "end": 22.569
  },
  {
   "w": "Pruébala",
-  "start": 20.77,
-  "end": 21.176
+  "start": 23.025,
+  "end": 23.369
  },
  {
   "w": "gratis",
-  "start": 21.211,
-  "end": 21.571
+  "start": 23.426,
+  "end": 23.769
  },
  {
   "w": "cinco",
-  "start": 21.606,
-  "end": 21.873
+  "start": 23.849,
+  "end": 24.249
  },
  {
   "w": "días",
-  "start": 21.919,
-  "end": 22.616
+  "start": 24.329,
+  "end": 24.729
  }
 ]
