@@ -180,16 +180,168 @@ def sfx_track(path):
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
+# ---------------------------------------------------------------- intro «pas» (fondo «carretera»): efectos reales de ElevenLabs
+# Los efectos están en assets/sfx/*.mp3 (generados con la API de ElevenLabs, ver FUENTES.md). Se colocan con los mismos
+# tiempos que la escena (carretera.js): frenazo, parada, latido del chip «1 HERIDO», relé de los intermitentes (su ritmo
+# es el de la cuenta atrás) y la lluvia que baja sola cuando habla la voz.
+SFXD = os.path.join(PROJ, "assets", "sfx")
+
+
+def _load(name):
+    raw = subprocess.run(["ffmpeg", "-v", "quiet", "-i", os.path.join(SFXD, name + ".mp3"), "-ac", "2", "-ar", str(sfx.SR),
+                          "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, np.float32).reshape(-1, 2).astype(np.float64)
+
+
+def _rms_db(x):
+    m = x.mean(1)
+    fr = m[: len(m) // 480 * 480].reshape(-1, 480)
+    e = np.sqrt((fr ** 2).mean(1))
+    act = e[e > 10 ** (-50 / 20)]
+    return 20 * np.log10(np.sqrt((act ** 2).mean()) + 1e-12) if len(act) else -120
+
+
+def _to(x, db):                       # escala un efecto a un nivel RMS (dBFS) de su parte activa
+    return x * 10 ** ((db - _rms_db(x)) / 20)
+
+
+def _cut(x, a, b=None, fade=0.004):   # trozo [a, b) s con fundidos cortos
+    y = x[int(a * sfx.SR): None if b is None else int(b * sfx.SR)].copy()
+    n = max(1, int(fade * sfx.SR))
+    if len(y) > 2 * n:
+        y[:n] *= np.linspace(0, 1, n)[:, None]
+        y[-n:] *= np.linspace(1, 0, n)[:, None]
+    return y
+
+
+def _loop(x, dur, xf=1.0):            # repite un ambiente con fundido cruzado hasta dur s
+    n, k = int(dur * sfx.SR), int(xf * sfx.SR)
+    out = x.copy()
+    while len(out) < n:
+        a = out[-k:] * np.linspace(1, 0, k)[:, None] + x[:k] * np.linspace(0, 1, k)[:, None]
+        out = np.concatenate([out[:-k], a, x[k:]])
+    return out[:n]
+
+
+def _env(x, pts):                     # envolvente por puntos [(t, ganancia), ...] (t relativo al inicio del efecto)
+    t = np.arange(len(x)) / sfx.SR
+    ts, gs = zip(*pts)
+    return x * np.interp(t, ts, gs)[:, None]
+
+
+def _put(out, x, at, g=1.0):
+    s0 = int(round(at * sfx.SR))
+    if s0 < 0:
+        x, s0 = x[-s0:], 0
+    e = min(len(out), s0 + len(x))
+    if e > s0:
+        out[s0:e] += x[: e - s0] * g
+
+
+def sfx_track_pas(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))           # ambientes (lluvia, tensión): bajan cuando habla la voz
+    c = {k: (at(v) if not isinstance(v[0], list) else [at(s) for s in v]) for k, v in Q["cues"].items()}
+    tA = c["accidente"] - 0.04; tS = tA + 1.15                      # frenazo y parada (igual que carretera.js)
+    tc, t1 = c["cuenta"], c["letras"][0] - 0.1; P = (t1 - tc) / 5  # intermitentes = cuenta atrás
+    tM = c["marca"]
+    th, ti = c["herido"], c.get("instinto", 1e9)
+    mono = lambda y: np.repeat(np.asarray(y, float)[:, None], 2, axis=1)  # noqa: E731
+
+    # 1) relámpago + trueno en el primer fotograma
+    _put(out, _to(_load("trueno"), -27), -0.06)
+    # 2) dentro del coche a 72 km/h con lluvia; el rodar se apaga al frenar
+    lc = _loop(_to(_load("lluvia_coche"), -29), tS + 0.8)
+    _put(amb, _env(lc, [(0, 1), (tA, 1), (tS, 0.45), (tS + 0.8, 0)]), 0)
+    # 3) frenazo con ABS y golpe de parada
+    _put(out, _to(_load("frenazo"), -24), tA - 0.1)
+    _put(out, mono(boom(0.6, 70)), tS - 0.02, 0.22)
+    # 4) fuera: lluvia en el asfalto hasta la marca; vapor del motor
+    lf = _loop(_to(_load("lluvia_fuera"), -31), tM + 1.0 - (tS - 0.3), 1.2)
+    _put(amb, _env(lf, [(0, 0), (0.7, 1), (tM - (tS - 0.3), 1), (tM + 0.7 - (tS - 0.3), 0)]), tS - 0.3)
+    _put(amb, _env(_to(_load("vapor"), -35), [(0, 0), (0.4, 1), (4.5, 1), (5, 0)]), tS + 0.15)
+    # 5) aviso, encuadre y chip: sonidos de interfaz suaves
+    _put(out, mono(sfx.ding(1318.5, 0.6)), c.get("primero0", 0.45), 0.25)
+    _put(out, mono(blip(900, 1500, 0.12)), tA + 0.25, 0.35)
+    _put(out, mono(blip(700, 1200, 0.12)), th, 0.3)
+    # 6) latido (al ritmo del electrocardiograma del chip): 112 lpm y 138 tras «instinto»
+    lat = _load("latido")
+    lub = _to(_cut(lat, 0.17, 0.55, 0.01), -23)
+    dub = _to(_cut(lat, 0.17, 0.45, 0.01), -29)
+    dub = dub[np.arange(0, len(dub) - 1, 1.15).astype(int)]          # «dub»: algo más agudo y corto que el «lub»
+    t, beats = th, []
+    while t < tc - 0.15:
+        beats.append(t)
+        per = 60 / (138 if t > ti else 112)
+        t += per
+        if beats[-1] <= ti < t:                                      # al cambiar de ritmo, la fase sigue la del chip
+            k = int(np.ceil((ti - th) / (60 / 138)))
+            t = th + k * 60 / 138
+    for b in beats:
+        _put(out, lub, b - 0.03)
+        _put(out, dub, b + 0.2, 0.6)
+    # 7) relé de los intermitentes: tic al encender, tac al apagar (más fuerte en la cuenta atrás)
+    rel = _load("rele")
+    tic, tac = _cut(rel, 0.433, 0.52), _cut(rel, 0.215, 0.29)
+    tic, tac = tic / np.abs(tic).max(), tac / np.abs(tac).max()     # pico 1
+    k0 = int(np.floor((tS + 0.3 - tc) / P))
+    k = k0
+    while True:
+        ton = tc + k * P
+        if ton > tM - 0.3:
+            break
+        loud = tc - 0.02 <= ton <= t1 + 0.02
+        if ton >= tS + 0.3:
+            _put(out, tic, ton - 0.003, 0.34 if loud else 0.07)
+            _put(out, tac, ton + P / 2 - 0.003, 0.24 if loud else 0.05)
+        k += 1
+    _put(out, mono(bell(523.25, 0.9)), t1, 0.18)
+    # 8) «el instinto te la juega»: golpe con subida que llega a la cuenta atrás
+    _put(out, _to(_load("golpe"), -25), ti - 0.02)
+    # 9) fondo de tensión: su punto álgido cae al final de la cuenta atrás
+    ten = _to(_load("tension"), -30)
+    _put(amb, ten, t1 - 13.0)
+    # 10) transiciones de las tarjetas, letras y el avión de papel
+    wh = _to(_load("whoosh"), -31)
+    for tw in (c["enunciado"], c["opciones"], c["descripcion"]):
+        _put(out, wh, tw - 0.48)
+    for i in range(4):
+        _put(out, mono(sfx.clack(i)), c["opciones"] + 0.07 * i + 0.1, 0.35)
+    for i, tl in enumerate(c["letras"]):
+        _put(out, mono(blip(800 + 150 * i, 1100 + 150 * i, 0.09)), tl + 0.05, 0.4)
+    if "compartir" in c:
+        _put(out, _to(_load("whoosh"), -32), c["compartir"] - 0.25)
+    # 11) la lluvia se vuelve brasas y aparece la marca
+    _put(out, _to(_load("brasas"), -30), tM - 0.45)
+    _put(out, _to(_load("marca"), -28), tM - 0.25)
+    _put(out, mono(sfx.ding(1568.0, 0.8)), c["prueba"] - 0.05, 0.45)
+    _put(out, mono(sfx.ding(2093.0, 1.0)), c["prueba"] + 0.4, 0.35)
+    # los ambientes bajan 6 dB mientras habla la voz
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.6 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out * 1.0) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
+
 def main():
     missing = [i for i in range(N) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
     sfxp = os.path.join(PROJ, "out", "sfx.wav")
-    sfx_track(sfxp)
+    (sfx_track_pas if Q.get("intro") == "pas" else sfx_track)(sfxp)
+    sv = Q.get("mezcla", {}).get("sfx", 0.35)
     dst = os.path.join(PROJ, "out", os.path.basename(PROJ) + ".mp4")
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", "-i", AUDIO, "-i", sfxp, "-filter_complex",
-           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=0.35[s];[v][s]amix=inputs=2:duration=first:normalize=0[a]",
+           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + "[s];[v][s]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.94:level=disabled[a]",
            "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "8M", "-bufsize", "16M", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", f"{N / FPS:.3f}", "-movflags", "+faststart", dst]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
@@ -212,6 +364,6 @@ if __name__ == "__main__":
             cv2.imwrite(os.path.join(PROJ, "out", "ctest", f"c{t:05.2f}.jpg"), (np.clip(img, 0, 1) * 255).astype(np.uint8))
     elif len(sys.argv) > 2 and sys.argv[2] == "--sfx":
         os.makedirs(os.path.join(PROJ, "out"), exist_ok=True)
-        sfx_track(os.path.join(PROJ, "out", "sfx.wav"))
+        (sfx_track_pas if Q.get("intro") == "pas" else sfx_track)(os.path.join(PROJ, "out", "sfx.wav"))
     else:
         main()

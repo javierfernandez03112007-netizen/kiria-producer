@@ -434,7 +434,7 @@ function introRespiracion(t) {
 // ---------------------------------------------------------------- tarjetas de la pregunta
 const CX = 60, CW = W - 120;
 const LET = ['A', 'B', 'C', 'D'];
-const EY = 890;                               // arriba de la tarjeta del enunciado
+let EY = 890;                                 // arriba de la tarjeta del enunciado (pregunta.json → "ey")
 function enunciadoLayout() {
   const lines = wrap(Q.enunciado, CW - 80, 50, 800);
   return { lines, h: 60 + lines.length * 60 };
@@ -718,6 +718,28 @@ function hudApp(t) {
   g.restore();
 }
 
+// ---------------------------------------------------------------- iconos de las opciones (pregunta.json → "iconos")
+function optIcon(name, x, y, s, col) {        // icono centrado en (x, y), de s px
+  g.save(); g.translate(x, y); g.scale(s / 48, s / 48);
+  g.strokeStyle = col; g.fillStyle = col; g.lineWidth = 3.6; g.lineCap = 'round'; g.lineJoin = 'round';
+  if (name === 'phone') {                     // móvil marcando el 112
+    rr(-14, -22, 28, 44, 6); g.stroke();
+    g.fillRect(-5, -18, 10, 2.5);
+    g.font = '400 17px Bebas'; g.textAlign = 'center'; g.fillText('112', 0, 7);
+    g.beginPath(); g.arc(0, 15, 2.4, 0, 7); g.fill();
+  } else if (name === 'cross') {              // cruz de primeros auxilios
+    rr(-20, -20, 40, 40, 9); g.stroke();
+    g.beginPath(); g.moveTo(0, -11); g.lineTo(0, 11); g.moveTo(-11, 0); g.lineTo(11, 0); g.lineWidth = 6; g.stroke();
+  } else if (name === 'shield') {             // escudo
+    g.beginPath(); g.moveTo(0, -22); g.lineTo(18, -15); g.lineTo(17, 3); g.quadraticCurveTo(14, 16, 0, 23); g.quadraticCurveTo(-14, 16, -17, 3); g.lineTo(-18, -15); g.closePath(); g.stroke();
+    g.beginPath(); g.moveTo(0, -12); g.lineTo(0, 13); g.lineWidth = 2.6; g.stroke();
+  } else if (name === 'exit') {               // sacar: flecha que sale de un hueco
+    g.beginPath(); g.moveTo(2, -20); g.lineTo(-16, -20); g.lineTo(-16, 20); g.lineTo(2, 20); g.stroke();
+    g.beginPath(); g.moveTo(-5, 0); g.lineTo(20, 0); g.moveTo(11, -9); g.lineTo(20, 0); g.lineTo(11, 9); g.stroke();
+  }
+  g.restore();
+}
+
 // ---------------------------------------------------------------- tarjetas, cuenta atrás y letras con el estilo de la app
 function cardsApp(t) {
   const out = 1 - eio(prog(t, CUE.marca - 0.15, 0.55));
@@ -757,9 +779,12 @@ function cardsApp(t) {
     const lx = CX + 66, ly = y + h / 2;
     g.beginPath(); g.arc(lx, ly, 38, 0, 7); g.fillStyle = rgba(col, 0.16); g.fill(); g.strokeStyle = rgba(col, 0.55); g.lineWidth = 2; g.stroke();
     txt(LET[i], lx, ly + 19, 56, col, 400, 'center', 'Bebas');
-    const ol = wrap(Q.opciones[i], CW - 170, 38, 600);
+    const ico = Q.iconos && Q.iconos[i];
+    if (ico) optIcon(ico, CX + 152, ly, 50, rgba(col, 0.95));
+    const tx = ico ? CX + 200 : CX + 130;
+    const ol = wrap(Q.opciones[i], CW - (tx - CX) - 70, 38, 600);
     const y0 = ly - (ol.length - 1) * 23 + 13;
-    ol.forEach((l, j) => txt(l, CX + 130, y0 + j * 46, 38, WHITE, 600));
+    ol.forEach((l, j) => txt(l, tx, y0 + j * 46, 38, WHITE, 600));
     g.restore();
   }
 }
@@ -795,7 +820,11 @@ function lettersApp(t) {
     if (p <= 0) continue;
     const x = 540 + (i - 1.5) * 220, y = 650, col = LETCOL[i];
     g.save(); g.translate(x, y); g.scale(p, p);
-    g.beginPath(); g.arc(0, 0, 90, 0, 7); g.fillStyle = rgba(col, 0.18); g.fill(); g.strokeStyle = col; g.lineWidth = 4; g.stroke();
+    const kc = CUE.comenta !== undefined ? eo(prog(t, CUE.comenta + 0.04 * i, 0.3)) : 0;   // «comenta»: círculo → bocadillo
+    g.translate(0, -26 * kc);
+    g.beginPath(); g.arc(0, 0, 90, 0, 7);
+    if (kc > 0) { g.moveTo(-34, 82); g.lineTo(-44 - 20 * kc, 82 + 48 * kc); g.lineTo(8, 88); }
+    g.fillStyle = rgba(col, 0.18 + 0.1 * kc); g.fill(); g.strokeStyle = col; g.lineWidth = 4; g.stroke();
     txt(LET[i], 0, 46, 130, col, 400, 'center', 'Bebas');
     g.restore();
   }
@@ -922,11 +951,15 @@ function introADR(t) {
 function renderApp(t) {
   g.save(); camera(t);
   if (Q.intro === 'adr') introADR(t);
+  if (Q.intro === 'pas' && typeof introPAS === 'function') introPAS(t);
   countdownApp(t);
   lettersApp(t);
   share(t);
   toDescription(t);
+  const ins = CUE.instinto !== undefined ? Math.exp(-Math.pow((t - CUE.instinto - 0.12) / 0.1, 2)) : 0;   // «el instinto te la juega»
+  if (ins > 0.01) { g.save(); g.translate(Math.sin(t * 95) * 9 * ins, Math.cos(t * 71) * 4 * ins); }
   cardsApp(t);
+  if (ins > 0.01) g.restore();
   closing(t);
   g.restore();
   whips(t);
@@ -938,10 +971,10 @@ window.renderAt = t => {
   g.setTransform(PR, 0, 0, PR, 0, 0);
   background(t);
   if (APP) {
-    dots(t);
-    sparks(t);
+    const road = Q.fondo === 'carretera' && typeof roadBackground === 'function';
+    if (road) roadBackground(t); else { dots(t); sparks(t); }
     renderApp(t);
-    const f = Math.max(1 - prog(t, 0, 0.12), prog(t, END - 0.25, 0.25));
+    const f = Math.max(road ? 0 : 1 - prog(t, 0, 0.12), prog(t, END - 0.25, 0.25));
     if (f > 0) { g.fillStyle = `rgba(0,0,0,${f})`; g.fillRect(0, 0, W, H); }
     return;
   }
@@ -969,6 +1002,7 @@ window.renderAt = t => {
     for (const f of faces) { await f.load(); document.fonts.add(f); }
     Q = await (await fetch('../pregunta.json')).json();
     APP = Q.estilo === 'app'; if (APP) DISPLAY = 'Bebas';
+    if (Q.ey) EY = Q.ey;
     const lines = await (await fetch('../tiempos.json')).json();
     for (const [k, v] of Object.entries(Q.cues)) CUE[k] = Array.isArray(v[0]) ? v.map(s => cueTime(s, lines)) : cueTime(v, lines);
     END = lines[lines.length - 1].end + 1.2;

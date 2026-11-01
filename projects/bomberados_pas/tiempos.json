@@ -1,0 +1,361 @@
+[
+ {
+  "text": "Llegas el primero a un accidente de tráfico.",
+  "start": 0.0,
+  "end": 2.039,
+  "words": [
+   {
+    "w": "Llegas",
+    "start": 0.0,
+    "end": 0.394
+   },
+   {
+    "w": "el",
+    "start": 0.394,
+    "end": 0.484
+   },
+   {
+    "w": "primero",
+    "start": 0.484,
+    "end": 0.846
+   },
+   {
+    "w": "a",
+    "start": 0.846,
+    "end": 0.936
+   },
+   {
+    "w": "un",
+    "start": 0.936,
+    "end": 1.037
+   },
+   {
+    "w": "accidente",
+    "start": 1.037,
+    "end": 1.488
+   },
+   {
+    "w": "de",
+    "start": 1.488,
+    "end": 1.567
+   },
+   {
+    "w": "tráfico.",
+    "start": 1.567,
+    "end": 2.039
+   }
+  ]
+ },
+ {
+  "text": "Hay un herido. ¿Qué es lo primero que haces?",
+  "start": 2.291,
+  "end": 4.262,
+  "words": [
+   {
+    "w": "Hay",
+    "start": 2.291,
+    "end": 2.469
+   },
+   {
+    "w": "un",
+    "start": 2.469,
+    "end": 2.558
+   },
+   {
+    "w": "herido.",
+    "start": 2.558,
+    "end": 3.243
+   },
+   {
+    "w": "¿Qué",
+    "start": 3.243,
+    "end": 3.341
+   },
+   {
+    "w": "es",
+    "start": 3.341,
+    "end": 3.431
+   },
+   {
+    "w": "lo",
+    "start": 3.431,
+    "end": 3.51
+   },
+   {
+    "w": "primero",
+    "start": 3.51,
+    "end": 3.825
+   },
+   {
+    "w": "que",
+    "start": 3.825,
+    "end": 3.926
+   },
+   {
+    "w": "haces?",
+    "start": 3.926,
+    "end": 4.262
+   }
+  ]
+ },
+ {
+  "text": "Ojo, que el instinto te la juega… Tienes cinco segundos.",
+  "start": 4.505,
+  "end": 7.466,
+  "words": [
+   {
+    "w": "Ojo,",
+    "start": 4.505,
+    "end": 4.85
+   },
+   {
+    "w": "que",
+    "start": 4.85,
+    "end": 4.95
+   },
+   {
+    "w": "el",
+    "start": 4.95,
+    "end": 5.063
+   },
+   {
+    "w": "instinto",
+    "start": 5.063,
+    "end": 5.469
+   },
+   {
+    "w": "te",
+    "start": 5.469,
+    "end": 5.559
+   },
+   {
+    "w": "la",
+    "start": 5.559,
+    "end": 5.661
+   },
+   {
+    "w": "juega…",
+    "start": 5.661,
+    "end": 6.447
+   },
+   {
+    "w": "Tienes",
+    "start": 6.447,
+    "end": 6.722
+   },
+   {
+    "w": "cinco",
+    "start": 6.722,
+    "end": 6.992
+   },
+   {
+    "w": "segundos.",
+    "start": 6.992,
+    "end": 7.466
+   }
+  ]
+ },
+ {
+  "text": "¿A, B, C o D? Comenta tu letra y mándaselo a quien oposite contigo, a ver quién acierta.",
+  "start": 12.264,
+  "end": 17.517,
+  "words": [
+   {
+    "w": "¿A,",
+    "start": 12.264,
+    "end": 12.438
+   },
+   {
+    "w": "B,",
+    "start": 12.438,
+    "end": 12.663
+   },
+   {
+    "w": "C",
+    "start": 12.663,
+    "end": 12.877
+   },
+   {
+    "w": "o",
+    "start": 12.877,
+    "end": 12.967
+   },
+   {
+    "w": "D?",
+    "start": 12.967,
+    "end": 13.856
+   },
+   {
+    "w": "Comenta",
+    "start": 13.856,
+    "end": 14.268
+   },
+   {
+    "w": "tu",
+    "start": 14.268,
+    "end": 14.381
+   },
+   {
+    "w": "letra",
+    "start": 14.381,
+    "end": 14.696
+   },
+   {
+    "w": "y",
+    "start": 14.696,
+    "end": 14.786
+   },
+   {
+    "w": "mándaselo",
+    "start": 14.786,
+    "end": 15.327
+   },
+   {
+    "w": "a",
+    "start": 15.327,
+    "end": 15.406
+   },
+   {
+    "w": "quien",
+    "start": 15.406,
+    "end": 15.575
+   },
+   {
+    "w": "oposite",
+    "start": 15.575,
+    "end": 15.97
+   },
+   {
+    "w": "contigo,",
+    "start": 15.97,
+    "end": 16.511
+   },
+   {
+    "w": "a",
+    "start": 16.511,
+    "end": 16.579
+   },
+   {
+    "w": "ver",
+    "start": 16.579,
+    "end": 16.792
+   },
+   {
+    "w": "quién",
+    "start": 16.792,
+    "end": 17.041
+   },
+   {
+    "w": "acierta.",
+    "start": 17.041,
+    "end": 17.517
+   }
+  ]
+ },
+ {
+  "text": "La solución, en la descripción.",
+  "start": 17.887,
+  "end": 19.526,
+  "words": [
+   {
+    "w": "La",
+    "start": 17.887,
+    "end": 18.046
+   },
+   {
+    "w": "solución,",
+    "start": 18.046,
+    "end": 18.682
+   },
+   {
+    "w": "en",
+    "start": 18.682,
+    "end": 18.805
+   },
+   {
+    "w": "la",
+    "start": 18.805,
+    "end": 18.906
+   },
+   {
+    "w": "descripción.",
+    "start": 18.906,
+    "end": 19.526
+   }
+  ]
+ },
+ {
+  "text": "Bomberados: falla en casa, no en el examen.",
+  "start": 19.922,
+  "end": 22.381,
+  "words": [
+   {
+    "w": "Bomberados:",
+    "start": 19.922,
+    "end": 20.738
+   },
+   {
+    "w": "falla",
+    "start": 20.738,
+    "end": 21.042
+   },
+   {
+    "w": "en",
+    "start": 21.042,
+    "end": 21.166
+   },
+   {
+    "w": "casa,",
+    "start": 21.166,
+    "end": 21.64
+   },
+   {
+    "w": "no",
+    "start": 21.64,
+    "end": 21.786
+   },
+   {
+    "w": "en",
+    "start": 21.786,
+    "end": 21.877
+   },
+   {
+    "w": "el",
+    "start": 21.877,
+    "end": 21.978
+   },
+   {
+    "w": "examen.",
+    "start": 21.978,
+    "end": 22.381
+   }
+  ]
+ },
+ {
+  "text": "Pruébala gratis cinco días.",
+  "start": 22.478,
+  "end": 23.885,
+  "words": [
+   {
+    "w": "Pruébala",
+    "start": 22.478,
+    "end": 22.857
+   },
+   {
+    "w": "gratis",
+    "start": 22.857,
+    "end": 23.241
+   },
+   {
+    "w": "cinco",
+    "start": 23.241,
+    "end": 23.545
+   },
+   {
+    "w": "días.",
+    "start": 23.545,
+    "end": 23.885
+   }
+  ]
+ }
+]

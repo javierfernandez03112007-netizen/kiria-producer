@@ -1,7 +1,8 @@
 """Miniatura de una Pregunta del día: un fotograma con la pregunta y las 4 opciones + titular en Impact.
 Uso: python3 bomberados/plantillas/pregunta/portada.py projects/<p>   (necesita out/frames)
 → out/portada.jpg (1080x1920) y out/portada_grid.jpg (1080x1440, el recorte de la cuadrícula del perfil).
-Textos en pregunta.json → "portada": {"titulo": "...", "etiqueta": "..."}; fotograma: 1,3 s después de que salgan las opciones."""
+Textos en pregunta.json → "portada": {"titulo": "...", "etiqueta": "...", "desfase": 1.3}; fotograma: «desfase» s (1,3 por defecto)
+después de que salgan las opciones."""
 import json
 import os
 import sys
@@ -25,7 +26,7 @@ def at(spec):
     return hits[k - 1]["start"] - 0.03
 
 
-fi = int(round((at(Q["cues"]["opciones"]) + 1.3) * 60))
+fi = int(round((at(Q["cues"]["opciones"]) + P.get("desfase", 1.3)) * 60))   # «desfase»: s tras las opciones
 im = Image.open(os.path.join(PROJ, "out", "frames", f"f{fi:05d}.jpg")).convert("RGB")
 W = im.width
 

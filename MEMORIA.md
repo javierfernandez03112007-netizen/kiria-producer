@@ -43,6 +43,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 ## Herramientas y accesos
 - **ElevenLabs**: la clave está como secreto del entorno «Predeterminado»; el entorno añade el encabezado `xi-api-key` a las peticiones a
   `api.elevenlabs.io` (no hay que ponerla en el código). Uso: voz Danny para guiones y efectos de sonido realistas.
+  Herramienta: `bomberados/plantillas/pregunta/elevenlabs.py` (voz con tiempos exactos por palabra y efectos). Voz Danny
+  («Relatable, Expressive and Warm», español peninsular): `wnKyx1zkUEUnfURKiuaP`. La cuenta no es Creator (mp3 a 128 kbps).
+  El 1-11-2026 el proxy respondía «upstream auth failed» (no leía la clave del entorno) y se trabajó con una clave que Javi
+  pegó en el chat solo para esa sesión (no está guardada en ningún sitio): **pedirle que la regenere y la vuelva a guardar en
+  el entorno**. Comprobar al empezar: `curl -s -D - -o /dev/null https://api.elevenlabs.io/v1/voices`.
 - Dominios pedidos para el entorno: `www.boe.es`, `boe.es`, `www.ciencia.gob.es` (verificar datos), `polyhaven.com`, `api.polyhaven.com`,
   `dl.polyhaven.org` (texturas, modelos y luces HDRI CC0 para más realismo). Comprobar en cada sesión nueva que responden.
 - Reconocedor de voz: Parakeet TDT v3 (sherpa-onnx), ver `projects/derecho/asr_parakeet.py` (el modelo se descarga aparte).

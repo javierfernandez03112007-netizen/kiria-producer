@@ -10,6 +10,7 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 - 🎬 Pregunta del día #1: reducción de 45 a 25 mm, ¿presión y velocidad? (F3; respuesta en la descripción) — `projects/bomberados_reduccion/`
 - 🎬 Pregunta del día #2: bradipnea, examen del Ayuntamiento de Albacete 2026 (F3; reto «¿quién acierta?») — `projects/bomberados_bradipnea/`
 - 🎬 Pregunta del día #3: panel naranja ADR, ¿qué indica el número de arriba? (F3, estilo de la app) — `projects/bomberados_adr/`
+- 🎬 Pregunta del día #4: llegas el primero a un accidente con un herido, ¿qué haces primero? (F3, conducta PAS; fondo «carretera» con escena propia y efectos de ElevenLabs) — `projects/bomberados_pas/`
 - 🎬 Promo: simulacro en directo de Élite Bomberos con Adrián Luna, domingo 1 nov, 10 € (escena propia, estilo de la app) — `projects/bomberados_simulacro/`
 
 ## Temario (preguntas con trampa)
@@ -23,7 +24,6 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 | 💡 Flashover vs backdraft: la pregunta que más se confunde | 8 | combustión súbita generalizada vs explosión de humo por entrada de aire | manuales oficiales |
 | 💡 Panel naranja de un camión: ¿qué número va arriba? | 3 / 8 | arriba el número de peligro, abajo el número ONU | ADR (acuerdo europeo de mercancías peligrosas) |
 | 💡 RCP: ¿cuántas compresiones y cuántas ventilaciones? | 3 | 30:2 en adultos | guías del ERC (Consejo Español de RCP) |
-| 💡 P.A.S.: el orden que se pregunta siempre | 3 | Proteger, Avisar, Socorrer | protección civil / Cruz Roja |
 | 💡 ¿Qué ley regula el Sistema Nacional de Protección Civil? | 3 | Ley 17/2015 | BOE |
 | 💡 Constitución: artículos que entran en casi todos los temarios | 4 | según bases | BOE (CE 1978) + bases de convocatorias |
 | 💡 Agentes extintores: agua, espuma, polvo, CO2 — cuál para cada clase | 4 / 9 | tabla de idoneidad | RIPCI / UNE-EN 3-7 |

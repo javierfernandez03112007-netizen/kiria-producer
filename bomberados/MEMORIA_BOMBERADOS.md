@@ -49,7 +49,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #2 Bradipnea (examen Albacete 2026) | `projects/bomberados_bradipnea/` | publicado 30 oct (12.900 / 14 / 109) |
 | PD #3 Panel naranja ADR (estilo app) | `projects/bomberados_adr/` | **listo para subir** (26,7 s; Notion: mar 3 nov 14:00; respuesta B) |
 | Promo 2º simulacro examen bombero Ciudad Real | `projects/bomberados_simulacro/` | **entregado** 31 oct (21,8 s, 12 €, para la cuenta @elitebomberos) |
-| PD #4 PAS | `projects/bomberados_pas/` | **guion entregado, falta la voz y la escena** (ver abajo) |
+| PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (25,1 s; respuesta C; propuesta: miér 4 nov 14:00) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -62,31 +62,25 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   OPOSICIÓN BOMBERO / CIUDAD REAL / EN DIRECTO / Adrián Luna → casa con portátil + etiqueta 12 € → APÚNTATE @elitebomberos → ✗→✓ →
   BOMBERADOS). Composición: `compose_simulacro.py`; portada: `portada.py`; config: `video.json`.
 
-### PD #4 PAS — lo que falta (siguiente tarea)
-- Guion (ya entregado, en `projects/bomberados_pas/GUION_PARA_GRABAR.txt`):
-  «Llegas el primero a un accidente de tráfico. / Hay un herido. ¿Qué es lo primero que haces? / Ojo, que el instinto te la juega…
-  Tienes cinco segundos. / ¿A, be, ce o de? Comenta tu respuesta y mándaselo a quien oposite contigo, a ver quién acierta. / La
-  solución, en la descripción. / Bomberados: falla en casa, no en el examen. / Pruébala gratis cinco días.»
-- Pregunta: «Llegas el primero a un accidente de tráfico con un herido. ¿Qué es lo primero que debes hacer?» A) Llamar al 112.
-  B) Atender al herido. C) **Proteger el lugar del accidente** (correcta). D) Sacar al herido del vehículo. Config en `pregunta.json`
-  (Nº 4, `"intro": "pas"`, `"fondo": "carretera"`, `"secciones"`, `"iconos"`). Publicar después de la ADR (Nº 3).
-- Javi pidió: «muy muy profesional, mucho flujo óptico, que enganche de principio a fin, cambia el fondo si ayuda». Diseño acordado
-  (falta programarlo en la plantilla `scene.js` + efectos en `compose.py`):
-  - Fondo nuevo «carretera»: de noche, POV a ~85 km/h con perspectiva (focal ~1400 px, cámara a 1,2 m), discontinuas y postes con
-    captafaros que pasan, lluvia, líneas de velocidad; a lo lejos parpadean los **intermitentes de emergencia** (periodo ≈ 0,88 s).
-  - En «accidente»: frenazo (cabeceo + sacudida + chirrido) y se para a ~5 m de un coche accidentado visto por detrás, inclinado,
-    con humo, luna rota, piloto que parpadea y cristales en el suelo; faros propios lo iluminan.
-  - En «herido»: chip «1 HERIDO» con latido (ECG) sobre el coche + sonido de corazón.
-  - En «qué»: la cámara sube y se aleja (horizonte 770→480, altura 1,2→2,5 m, distancia 5→11 m) y entra la tarjeta de la pregunta
-    (hacer `EY` configurable, p. ej. `"ey": 840`, porque el enunciado ocupa 3 líneas); paralaje lento de cámara para no perder movimiento.
-  - Opciones con icono tras la letra (móvil/112, cruz, escudo, salida), sin pisar el lado derecho (botones de TikTok/Reels).
-  - Cuenta atrás al ritmo del «tic-tac» del relé de los intermitentes; lluvia siempre; al llegar a «Bomberados» vuelve el fondo de
-    brasas con la placa.
-  - No poner «PAS» en pantalla (delataría la respuesta). La explicación PAS va al final de la descripción.
-- Fuente (honestidad): conducta PAS = Proteger, Avisar (112), Socorrer, en ese orden (Cruz Roja, manual de primeros auxilios básicos;
-  Ministerio de Sanidad, «Accidentes, módulo 6»: sanidad.gob.es/ca/ciudadanos/accidentes/docs/modulo6.pdf; DGT). Desde estas máquinas
-  no abren sanidad.gob.es, gobiernodecanarias.net ni defensa.gob.es: citar con la URL y marcar «comprobar página». No mover al herido
-  salvo peligro inminente. Si se menciona la baliza V-16 (obligatoria desde 2026 según la DGT), verificarlo en la web de la DGT.
+### PD #4 PAS — hecho (1 nov), cómo se hizo
+- Guion final (`script.txt`): «Llegas el primero a un accidente de tráfico. / Hay un herido. ¿Qué es lo primero que haces? /
+  Ojo, que el instinto te la juega… Tienes cinco segundos. / ¿A, B, C o D? Comenta tu letra y mándaselo a quien oposite
+  contigo, a ver quién acierta. / La solución, en la descripción. / Bomberados: falla en casa, no en el examen. / Pruébala
+  gratis cinco días.» («Comenta tu letra» en vez de «tu respuesta»: más concreto). Respuesta C (Proteger), en la descripción.
+- Voz: Danny generada con la API (`bomberados/plantillas/pregunta/elevenlabs.py voz`, eleven_multilingual_v2, stability 0.38,
+  style 0.35); en la primera toma dijo «opósite» → en `script_tts.txt` va «oposíte». La v3 salió lenta y teatral (descartada).
+- Escena: fondo nuevo «carretera» (`bomberados/plantillas/pregunta/carretera.js`): POV de noche con lluvia, relámpago en el
+  primer fotograma, aviso ⚠ con la distancia, frenazo con ABS y velocímetro 72 → 0, coche accidentado con la luna rota, vapor y
+  cristales, encuadre naranja, chip «1 HERIDO» con ECG y anillo sobre la cabeza del conductor, grúa de cámara al decir
+  «herido», opciones con iconos, pulso rojo en «instinto», cuenta atrás al ritmo de los intermitentes, letras que se vuelven
+  bocadillos en «comenta», y la lluvia que se convierte en brasas en «Bomberados». No sale «PAS» en pantalla.
+- Sonido: 12 efectos generados con la API de efectos de ElevenLabs (`assets/sfx/`), colocados en `compose.py`
+  (`sfx_track_pas`): trueno, lluvia dentro/fuera (baja sola con la voz), frenazo, vapor, latido al ritmo del ECG, relé de los
+  intermitentes (más fuerte en la cuenta atrás), golpe de tensión, brasas y marca. Mezcla −16 LUFS.
+- Render: 1 fotograma/s con 4 procesos (≈ 25 min para 25 s). Portada: fotograma 2,1 s tras las opciones.
+- Pendiente antes de publicar: comprobar en dgt.es lo de la baliza V-16 (citada en la explicación) y la prueba de 5 días.
+- Fuentes (honestidad): DGT «Qué hacer ante un accidente de tráfico», Cruz Roja «En mi carretera», RACE y Ministerio de
+  Sanidad (módulo 6); dgt.es y sanidad.gob.es no abren desde estas máquinas («comprobar página»). Ver `FUENTES.md`.
 
 ## Notion (centro de trabajo de Javi; MCP de Notion)
 - Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).
@@ -103,4 +97,5 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Medio «¿Puedes ser bombero solo con la ESO?» (titulaciones ESO / Bachiller / FP; verificar TREBEP art. 76, convocatoria de Madrid C1
   y una convocatoria oficial; si no se encuentra la de Cataluña, quitarla). Hueco propuesto: mar 3 nov 20:30.
 - Pedir a la marca: logo y colores oficiales, capturas, precio, temarios, ejemplos reales de la IA, si la prueba de 5 días es real.
-- ElevenLabs: si el entorno tiene la clave (ver `MEMORIA.md`), generar la voz Danny directamente en vez de esperar el mp3.
+- ElevenLabs: generar la voz y los efectos con `bomberados/plantillas/pregunta/elevenlabs.py` (ver `MEMORIA.md` si falla la clave).
+- Siguiente Pregunta del día: reutilizar el fondo «carretera» solo si la pregunta pasa en carretera; si no, el de brasas.
