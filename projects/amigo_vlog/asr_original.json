@@ -1,0 +1,332 @@
+[
+{
+"w": "Una",
+"start": 0.0,
+"end": 0.32
+},
+{
+"w": "maratón",
+"start": 0.32,
+"end": 0.88
+},
+{
+"w": "no",
+"start": 0.96,
+"end": 1.04
+},
+{
+"w": "se",
+"start": 1.04,
+"end": 1.12
+},
+{
+"w": "corre",
+"start": 1.12,
+"end": 1.28
+},
+{
+"w": "el",
+"start": 1.36,
+"end": 1.44
+},
+{
+"w": "día",
+"start": 1.44,
+"end": 1.68
+},
+{
+"w": "de",
+"start": 1.68,
+"end": 1.76
+},
+{
+"w": "la",
+"start": 1.84,
+"end": 1.92
+},
+{
+"w": "carrera,",
+"start": 1.92,
+"end": 2.4
+},
+{
+"w": "se",
+"start": 2.48,
+"end": 2.56
+},
+{
+"w": "construye",
+"start": 2.64,
+"end": 3.04
+},
+{
+"w": "mucho",
+"start": 3.2,
+"end": 3.28
+},
+{
+"w": "antes,",
+"start": 3.52,
+"end": 3.84
+},
+{
+"w": "entrena",
+"start": 4.0,
+"end": 4.4
+},
+{
+"w": "a",
+"start": 4.48,
+"end": 4.56
+},
+{
+"w": "entreno,",
+"start": 4.64,
+"end": 5.12
+},
+{
+"w": "kilómetro",
+"start": 5.2,
+"end": 5.6
+},
+{
+"w": "a",
+"start": 5.68,
+"end": 5.76
+},
+{
+"w": "kilómetro,",
+"start": 5.84,
+"end": 6.32
+},
+{
+"w": "cuando",
+"start": 6.48,
+"end": 6.56
+},
+{
+"w": "nadie",
+"start": 6.72,
+"end": 6.96
+},
+{
+"w": "mira.",
+"start": 7.04,
+"end": 7.6
+},
+{
+"w": "Porque",
+"start": 7.68,
+"end": 7.84
+},
+{
+"w": "cuando",
+"start": 7.92,
+"end": 8.0
+},
+{
+"w": "lo",
+"start": 8.16,
+"end": 8.24
+},
+{
+"w": "das",
+"start": 8.32,
+"end": 8.4
+},
+{
+"w": "todo",
+"start": 8.56,
+"end": 8.64
+},
+{
+"w": "por",
+"start": 8.8,
+"end": 8.88
+},
+{
+"w": "algo,",
+"start": 8.96,
+"end": 9.36
+},
+{
+"w": "aunque",
+"start": 9.44,
+"end": 9.76
+},
+{
+"w": "no",
+"start": 9.84,
+"end": 9.92
+},
+{
+"w": "lo",
+"start": 10.0,
+"end": 10.08
+},
+{
+"w": "consiga,",
+"start": 10.16,
+"end": 10.8
+},
+{
+"w": "ya",
+"start": 10.96,
+"end": 11.04
+},
+{
+"w": "has",
+"start": 11.2,
+"end": 11.28
+},
+{
+"w": "ganado.",
+"start": 11.44,
+"end": 12.16
+},
+{
+"w": "Y",
+"start": 12.4,
+"end": 12.48
+},
+{
+"w": "si",
+"start": 12.64,
+"end": 12.72
+},
+{
+"w": "eso",
+"start": 12.96,
+"end": 13.04
+},
+{
+"w": "le",
+"start": 13.2,
+"end": 13.28
+},
+{
+"w": "subo,",
+"start": 13.44,
+"end": 13.84
+},
+{
+"w": "que",
+"start": 13.84,
+"end": 13.92
+},
+{
+"w": "a",
+"start": 14.0,
+"end": 14.08
+},
+{
+"w": "las",
+"start": 14.08,
+"end": 14.16
+},
+{
+"w": "cosas",
+"start": 14.16,
+"end": 14.24
+},
+{
+"w": "salen",
+"start": 14.32,
+"end": 14.56
+},
+{
+"w": "tal",
+"start": 14.72,
+"end": 14.8
+},
+{
+"w": "y",
+"start": 14.96,
+"end": 15.04
+},
+{
+"w": "como",
+"start": 15.04,
+"end": 15.12
+},
+{
+"w": "la",
+"start": 15.2,
+"end": 15.28
+},
+{
+"w": "tenías",
+"start": 15.36,
+"end": 15.76
+},
+{
+"w": "visualizada,",
+"start": 15.76,
+"end": 16.64
+},
+{
+"w": "la",
+"start": 16.8,
+"end": 16.88
+},
+{
+"w": "sensación",
+"start": 17.04,
+"end": 17.76
+},
+{
+"w": "no",
+"start": 18.16,
+"end": 18.24
+},
+{
+"w": "tiene",
+"start": 18.4,
+"end": 18.48
+},
+{
+"w": "precio.",
+"start": 18.72,
+"end": 19.36
+},
+{
+"w": "Y",
+"start": 19.36,
+"end": 19.44
+},
+{
+"w": "hoy,",
+"start": 19.6,
+"end": 20.08
+},
+{
+"w": "todo",
+"start": 20.24,
+"end": 20.32
+},
+{
+"w": "ese",
+"start": 20.56,
+"end": 20.64
+},
+{
+"w": "trabajo",
+"start": 20.8,
+"end": 21.2
+},
+{
+"w": "tiene",
+"start": 21.68,
+"end": 21.76
+},
+{
+"w": "un",
+"start": 22.24,
+"end": 22.32
+},
+{
+"w": "destino.",
+"start": 22.56,
+"end": 23.6
+}
+]
