@@ -2,11 +2,12 @@
 # Recoge los trozos de TODAS las ramas render-mag-* (chunks/chunk_A_B.mp4), mete los fotogramas que falten y, con los N,
 # compone el vídeo (out/magisterio.mp4) y escribe out/DONE. Uso: nohup ./fetch_compose.sh > out/fetch.log 2>&1 &
 cd /home/user/kiria-producer/projects/magisterio
+PFX=${PFX:-render-mag}
 N=$(python3 -c "import json; L=json.load(open('tiempos.json')); print(int((L[-1]['end'] + 1.2) * 60))")
 missing() { python3 -c "import os; print(sum(1 for i in range($N) if not os.path.exists('out/frames/f%05d.jpg'%i)))"; }
 while true; do
-  git fetch -q origin '+refs/heads/render-mag-*:refs/remotes/origin/render-mag-*' 2>/dev/null
-  for br in $(git branch -r --list 'origin/render-mag-*'); do
+  git fetch -q origin "+refs/heads/$PFX-*:refs/remotes/origin/$PFX-*" 2>/dev/null
+  for br in $(git branch -r --list "origin/$PFX-*"); do
     for c in $(git ls-tree --full-tree --name-only $br projects/magisterio/chunks/ 2>/dev/null | grep 'chunk_[0-9]*_[0-9]*\.mp4'); do
       tag=$(basename $c .mp4); [ -f out/$tag.done ] && continue
       A=$(echo $tag | cut -d_ -f2); B=$(echo $tag | cut -d_ -f3)

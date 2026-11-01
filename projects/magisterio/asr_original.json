@@ -1,1 +1,967 @@
-[{"w": "Dicen", "start": 0.0, "end": 0.325}, {"w": "que", "start": 0.372, "end": 0.441}, {"w": "Magisterio", "start": 0.488, "end": 1.057}, {"w": "es", "start": 1.091, "end": 1.138}, {"w": "la", "start": 1.196, "end": 1.265}, {"w": "carrera", "start": 1.3, "end": 1.602}, {"w": "de", "start": 1.637, "end": 1.683}, {"w": "los", "start": 1.718, "end": 1.823}, {"w": "collares", "start": 1.869, "end": 2.241}, {"w": "de", "start": 2.276, "end": 2.322}, {"w": "macarrones.", "start": 2.368, "end": 3.088}, {"w": "Y", "start": 3.413, "end": 3.529}, {"w": "es", "start": 3.622, "end": 3.692}, {"w": "verdad.", "start": 3.738, "end": 4.203}, {"w": "¿Para", "start": 4.447, "end": 4.714}, {"w": "qué", "start": 4.772, "end": 4.853}, {"w": "sirven?", "start": 4.899, "end": 5.41}, {"w": "Te", "start": 5.793, "end": 5.909}, {"w": "lo", "start": 5.944, "end": 6.002}, {"w": "digo", "start": 6.037, "end": 6.211}, {"w": "al", "start": 6.235, "end": 6.281}, {"w": "final.", "start": 6.327, "end": 6.827}, {"w": "Crees", "start": 7.21, "end": 7.488}, {"w": "que", "start": 7.546, "end": 7.628}, {"w": "es", "start": 7.663, "end": 7.721}, {"w": "jugar", "start": 7.755, "end": 8.011}, {"w": "con", "start": 8.069, "end": 8.185}, {"w": "niños.", "start": 8.231, "end": 8.835}, {"w": "En", "start": 9.218, "end": 9.346}, {"w": "realidad,", "start": 9.404, "end": 10.054}, {"w": "es", "start": 10.228, "end": 10.356}, {"w": "aprender", "start": 10.414, "end": 10.797}, {"w": "cómo", "start": 10.867, "end": 11.169}, {"w": "aprende", "start": 11.204, "end": 11.587}, {"w": "un", "start": 11.633, "end": 11.703}, {"w": "cerebro.", "start": 11.749, "end": 12.365}, {"w": "Psicología:", "start": 12.875, "end": 13.886}, {"w": "qué", "start": 14.211, "end": 14.327}, {"w": "puede", "start": 14.362, "end": 14.594}, {"w": "aprender", "start": 14.617, "end": 14.965}, {"w": "un", "start": 15.035, "end": 15.105}, {"w": "niño", "start": 15.139, "end": 15.383}, {"w": "a", "start": 15.406, "end": 15.43}, {"w": "cada", "start": 15.464, "end": 15.673}, {"w": "edad.", "start": 15.697, "end": 16.115}, {"w": "Matemáticas:", "start": 16.556, "end": 17.601}, {"w": "enseñar", "start": 17.844, "end": 18.239}, {"w": "a", "start": 18.274, "end": 18.297}, {"w": "sumar", "start": 18.332, "end": 18.622}, {"w": "a", "start": 18.669, "end": 18.692}, {"w": "quien", "start": 18.738, "end": 18.878}, {"w": "aún", "start": 18.936, "end": 19.18}, {"w": "no", "start": 19.249, "end": 19.354}, {"w": "sabe", "start": 19.423, "end": 19.679}, {"w": "contar.", "start": 19.714, "end": 20.329}, {"w": "Lengua:", "start": 20.77, "end": 21.351}, {"w": "enseñar", "start": 21.676, "end": 22.152}, {"w": "a", "start": 22.198, "end": 22.221}, {"w": "leer,", "start": 22.268, "end": 22.709}, {"w": "letra", "start": 23.034, "end": 23.429}, {"w": "a", "start": 23.452, "end": 23.475}, {"w": "letra.", "start": 23.522, "end": 24.056}, {"w": "Dislexia,", "start": 24.381, "end": 25.298}, {"w": "te", "start": 25.542, "end": 25.658}, {"w": "de", "start": 25.728, "end": 25.809}, {"w": "a", "start": 25.89, "end": 25.913}, {"w": "hache,", "start": 25.983, "end": 26.575}, {"w": "autismo…", "start": 26.749, "end": 27.632}, {"w": "en", "start": 27.876, "end": 27.968}, {"w": "la", "start": 28.015, "end": 28.084}, {"w": "misma", "start": 28.143, "end": 28.41}, {"w": "clase.", "start": 28.456, "end": 29.025}, {"w": "Y", "start": 29.466, "end": 29.559}, {"w": "meses", "start": 29.652, "end": 29.872}, {"w": "de", "start": 29.907, "end": 29.965}, {"w": "prácticas", "start": 30.0, "end": 30.441}, {"w": "en", "start": 30.488, "end": 30.534}, {"w": "un", "start": 30.604, "end": 30.65}, {"w": "colegio.", "start": 30.697, "end": 31.231}, {"w": "¿Fácil?", "start": 31.3, "end": 32.032}, {"w": "En", "start": 32.543, "end": 32.67}, {"w": "Cataluña,", "start": 32.717, "end": 33.239}, {"w": "este", "start": 33.286, "end": 33.495}, {"w": "año", "start": 33.529, "end": 33.75}, {"w": "casi", "start": 33.785, "end": 34.005}, {"w": "la", "start": 34.052, "end": 34.11}, {"w": "mitad", "start": 34.145, "end": 34.412}, {"w": "suspendió", "start": 34.447, "end": 34.899}, {"w": "el", "start": 34.923, "end": 34.969}, {"w": "examen", "start": 35.015, "end": 35.329}, {"w": "extra", "start": 35.387, "end": 35.608}, {"w": "para", "start": 35.642, "end": 35.782}, {"w": "entrar.", "start": 35.805, "end": 36.362}, {"w": "Y", "start": 36.745, "end": 36.838}, {"w": "en", "start": 36.954, "end": 37.001}, {"w": "la", "start": 37.059, "end": 37.117}, {"w": "oposición", "start": 37.175, "end": 37.732}, {"w": "de", "start": 37.779, "end": 37.837}, {"w": "Canarias:", "start": 37.883, "end": 38.661}, {"w": "casi", "start": 38.94, "end": 39.3}, {"w": "diecinueve", "start": 39.358, "end": 39.88}, {"w": "por", "start": 39.926, "end": 40.054}, {"w": "plaza", "start": 40.124, "end": 40.379}, {"w": "en", "start": 40.402, "end": 40.449}, {"w": "Infantil.", "start": 40.507, "end": 41.227}, {"w": "Y", "start": 41.61, "end": 41.703}, {"w": "si", "start": 41.796, "end": 41.865}, {"w": "la", "start": 41.923, "end": 41.993}, {"w": "sacas:", "start": 42.039, "end": 42.643}, {"w": "hasta", "start": 42.852, "end": 43.108}, {"w": "veinticinco", "start": 43.142, "end": 43.665}, {"w": "niños", "start": 43.711, "end": 43.978}, {"w": "de", "start": 44.013, "end": 44.06}, {"w": "tres", "start": 44.106, "end": 44.28}, {"w": "años…", "start": 44.315, "end": 44.907}, {"w": "y", "start": 45.232, "end": 45.348}, {"w": "tú.", "start": 45.418, "end": 45.801}, {"w": "¿Y", "start": 46.08, "end": 46.324}, {"w": "los", "start": 46.416, "end": 46.533}, {"w": "macarrones?", "start": 46.591, "end": 47.345}, {"w": "Ensartarlos", "start": 47.786, "end": 48.518}, {"w": "entrena", "start": 48.588, "end": 48.913}, {"w": "la", "start": 48.959, "end": 49.017}, {"w": "pinza", "start": 49.064, "end": 49.365}, {"w": "de", "start": 49.4, "end": 49.447}, {"w": "los", "start": 49.482, "end": 49.598}, {"w": "dedos,", "start": 49.632, "end": 50.027}, {"w": "la", "start": 50.236, "end": 50.317}, {"w": "que", "start": 50.364, "end": 50.434}, {"w": "usará", "start": 50.48, "end": 50.759}, {"w": "para", "start": 50.817, "end": 50.979}, {"w": "escribir.", "start": 51.014, "end": 51.618}, {"w": "Si", "start": 52.129, "end": 52.256}, {"w": "alterna", "start": 52.303, "end": 52.709}, {"w": "blanco", "start": 52.744, "end": 53.127}, {"w": "y", "start": 53.162, "end": 53.197}, {"w": "negro,", "start": 53.243, "end": 53.742}, {"w": "hace", "start": 53.8, "end": 54.044}, {"w": "su", "start": 54.102, "end": 54.207}, {"w": "primera", "start": 54.253, "end": 54.636}, {"w": "serie:", "start": 54.694, "end": 55.275}, {"w": "según", "start": 55.554, "end": 55.832}, {"w": "un", "start": 55.879, "end": 55.925}, {"w": "estudio,", "start": 55.983, "end": 56.575}, {"w": "eso", "start": 56.633, "end": 56.912}, {"w": "a", "start": 56.958, "end": 56.982}, {"w": "los", "start": 57.005, "end": 57.121}, {"w": "cuatro", "start": 57.167, "end": 57.423}, {"w": "años", "start": 57.446, "end": 57.817}, {"w": "predice", "start": 57.992, "end": 58.386}, {"w": "sus", "start": 58.433, "end": 58.572}, {"w": "matemáticas", "start": 58.619, "end": 59.257}, {"w": "a", "start": 59.327, "end": 59.35}, {"w": "los", "start": 59.385, "end": 59.501}, {"w": "once.", "start": 59.559, "end": 60.047}, {"w": "En", "start": 60.859, "end": 60.987}, {"w": "sus", "start": 61.033, "end": 61.173}, {"w": "primeros", "start": 61.208, "end": 61.544}, {"w": "años,", "start": 61.567, "end": 62.102}, {"w": "su", "start": 62.229, "end": 62.334}, {"w": "cerebro", "start": 62.38, "end": 62.705}, {"w": "crea", "start": 62.74, "end": 62.961}, {"w": "más", "start": 63.019, "end": 63.192}, {"w": "de", "start": 63.239, "end": 63.309}, {"w": "un", "start": 63.39, "end": 63.483}, {"w": "millón", "start": 63.529, "end": 63.808}, {"w": "de", "start": 63.854, "end": 63.912}, {"w": "conexiones", "start": 63.959, "end": 64.493}, {"w": "por", "start": 64.551, "end": 64.667}, {"w": "segundo.", "start": 64.725, "end": 65.317}, {"w": "Así", "start": 65.433, "end": 65.654}, {"w": "que", "start": 65.712, "end": 65.793}, {"w": "sí:", "start": 65.84, "end": 66.246}, {"w": "Magisterio", "start": 66.525, "end": 67.244}, {"w": "es", "start": 67.302, "end": 67.384}, {"w": "hacer", "start": 67.43, "end": 67.651}, {"w": "collares", "start": 67.709, "end": 68.103}, {"w": "de", "start": 68.138, "end": 68.185}, {"w": "macarrones…", "start": 68.231, "end": 68.974}, {"w": "pero", "start": 69.253, "end": 69.45}, {"w": "sabiendo", "start": 69.497, "end": 69.868}, {"w": "por", "start": 69.915, "end": 70.019}, {"w": "qué.", "start": 70.077, "end": 70.437}, {"w": "Mándaselo", "start": 70.82, "end": 71.331}, {"w": "a", "start": 71.377, "end": 71.401}, {"w": "quien", "start": 71.447, "end": 71.575}, {"w": "te", "start": 71.61, "end": 71.679}, {"w": "dijo", "start": 71.726, "end": 71.97}, {"w": "que", "start": 72.016, "end": 72.086}, {"w": "Magisterio", "start": 72.144, "end": 72.678}, {"w": "era", "start": 72.713, "end": 72.84}, {"w": "fácil.", "start": 72.898, "end": 73.421}, {"w": "¿Infantil", "start": 73.63, "end": 74.338}, {"w": "o", "start": 74.396, "end": 74.419}, {"w": "Primaria?", "start": 74.454, "end": 75.278}]
+[
+{
+"w": "Dicen",
+"start": 0.0,
+"end": 0.4
+},
+{
+"w": "que",
+"start": 0.4,
+"end": 0.48
+},
+{
+"w": "magisterio",
+"start": 0.56,
+"end": 1.12
+},
+{
+"w": "es",
+"start": 1.28,
+"end": 1.36
+},
+{
+"w": "la",
+"start": 1.44,
+"end": 1.52
+},
+{
+"w": "carrera",
+"start": 1.52,
+"end": 1.92
+},
+{
+"w": "de",
+"start": 1.84,
+"end": 1.92
+},
+{
+"w": "los",
+"start": 1.92,
+"end": 2.0
+},
+{
+"w": "collares",
+"start": 2.08,
+"end": 2.64
+},
+{
+"w": "de",
+"start": 2.72,
+"end": 2.8
+},
+{
+"w": "macarrones.",
+"start": 2.8,
+"end": 3.6
+},
+{
+"w": "Y",
+"start": 3.76,
+"end": 3.84
+},
+{
+"w": "es",
+"start": 4.0,
+"end": 4.08
+},
+{
+"w": "verdad.",
+"start": 4.16,
+"end": 4.64
+},
+{
+"w": "¿Para",
+"start": 4.72,
+"end": 4.96
+},
+{
+"w": "qué",
+"start": 5.04,
+"end": 5.12
+},
+{
+"w": "sirven?",
+"start": 5.36,
+"end": 5.84
+},
+{
+"w": "Te",
+"start": 6.0,
+"end": 6.08
+},
+{
+"w": "lo",
+"start": 6.24,
+"end": 6.32
+},
+{
+"w": "digo",
+"start": 6.4,
+"end": 6.64
+},
+{
+"w": "al",
+"start": 6.72,
+"end": 6.8
+},
+{
+"w": "final.",
+"start": 6.88,
+"end": 7.28
+},
+{
+"w": "Crees",
+"start": 7.52,
+"end": 7.92
+},
+{
+"w": "que",
+"start": 8.0,
+"end": 8.08
+},
+{
+"w": "es",
+"start": 8.16,
+"end": 8.24
+},
+{
+"w": "jugar",
+"start": 8.32,
+"end": 8.72
+},
+{
+"w": "con",
+"start": 8.72,
+"end": 8.8
+},
+{
+"w": "niños.",
+"start": 8.88,
+"end": 9.44
+},
+{
+"w": "En",
+"start": 9.6,
+"end": 9.68
+},
+{
+"w": "realidad",
+"start": 9.84,
+"end": 10.24
+},
+{
+"w": "es",
+"start": 10.48,
+"end": 10.56
+},
+{
+"w": "aprender",
+"start": 10.72,
+"end": 11.04
+},
+{
+"w": "cómo",
+"start": 11.28,
+"end": 11.52
+},
+{
+"w": "aprende",
+"start": 11.6,
+"end": 11.92
+},
+{
+"w": "un",
+"start": 12.08,
+"end": 12.16
+},
+{
+"w": "cerebro.",
+"start": 12.24,
+"end": 12.8
+},
+{
+"w": "Psicología.",
+"start": 13.04,
+"end": 13.92
+},
+{
+"w": "¿Qué",
+"start": 14.08,
+"end": 14.48
+},
+{
+"w": "puede",
+"start": 14.4,
+"end": 14.48
+},
+{
+"w": "aprender",
+"start": 14.72,
+"end": 15.04
+},
+{
+"w": "un",
+"start": 15.12,
+"end": 15.2
+},
+{
+"w": "niño",
+"start": 15.28,
+"end": 15.52
+},
+{
+"w": "a",
+"start": 15.6,
+"end": 15.68
+},
+{
+"w": "cada",
+"start": 15.76,
+"end": 15.84
+},
+{
+"w": "edad?",
+"start": 16.0,
+"end": 16.48
+},
+{
+"w": "Matemáticas.",
+"start": 16.72,
+"end": 17.68
+},
+{
+"w": "Enseñar",
+"start": 17.84,
+"end": 18.24
+},
+{
+"w": "a",
+"start": 18.32,
+"end": 18.4
+},
+{
+"w": "sumar",
+"start": 18.48,
+"end": 18.8
+},
+{
+"w": "a",
+"start": 18.88,
+"end": 18.96
+},
+{
+"w": "quien",
+"start": 19.04,
+"end": 19.2
+},
+{
+"w": "aún",
+"start": 19.28,
+"end": 19.52
+},
+{
+"w": "no",
+"start": 19.52,
+"end": 19.6
+},
+{
+"w": "sabe",
+"start": 19.68,
+"end": 19.76
+},
+{
+"w": "contar.",
+"start": 20.0,
+"end": 20.56
+},
+{
+"w": "Lengua.",
+"start": 20.8,
+"end": 21.52
+},
+{
+"w": "Enseñar",
+"start": 21.68,
+"end": 22.16
+},
+{
+"w": "a",
+"start": 22.24,
+"end": 22.32
+},
+{
+"w": "leer.",
+"start": 22.32,
+"end": 22.8
+},
+{
+"w": "Letra",
+"start": 22.88,
+"end": 23.28
+},
+{
+"w": "a",
+"start": 23.44,
+"end": 23.52
+},
+{
+"w": "letra.",
+"start": 23.6,
+"end": 24.08
+},
+{
+"w": "Dislexia.",
+"start": 24.24,
+"end": 24.88
+},
+{
+"w": "TDAH,",
+"start": 25.38,
+"end": 26.34
+},
+{
+"w": "autismo,",
+"start": 26.5,
+"end": 27.22
+},
+{
+"w": "en",
+"start": 27.46,
+"end": 27.54
+},
+{
+"w": "la",
+"start": 27.7,
+"end": 27.78
+},
+{
+"w": "misma",
+"start": 27.86,
+"end": 28.1
+},
+{
+"w": "clase.",
+"start": 28.26,
+"end": 28.82
+},
+{
+"w": "Y",
+"start": 28.9,
+"end": 28.98
+},
+{
+"w": "meses",
+"start": 29.14,
+"end": 29.46
+},
+{
+"w": "de",
+"start": 29.54,
+"end": 29.62
+},
+{
+"w": "prácticas",
+"start": 29.7,
+"end": 30.1
+},
+{
+"w": "en",
+"start": 30.18,
+"end": 30.26
+},
+{
+"w": "un",
+"start": 30.26,
+"end": 30.34
+},
+{
+"w": "colegio.",
+"start": 30.42,
+"end": 31.06
+},
+{
+"w": "¿Fácil?",
+"start": 31.06,
+"end": 31.94
+},
+{
+"w": "En",
+"start": 32.1,
+"end": 32.18
+},
+{
+"w": "Cataluña,",
+"start": 32.26,
+"end": 32.98
+},
+{
+"w": "este",
+"start": 33.06,
+"end": 33.14
+},
+{
+"w": "año",
+"start": 33.3,
+"end": 33.46
+},
+{
+"w": "casi",
+"start": 33.62,
+"end": 33.86
+},
+{
+"w": "la",
+"start": 33.94,
+"end": 34.02
+},
+{
+"w": "mitad",
+"start": 34.02,
+"end": 34.34
+},
+{
+"w": "suspendió",
+"start": 34.42,
+"end": 34.98
+},
+{
+"w": "el",
+"start": 34.98,
+"end": 35.06
+},
+{
+"w": "examen",
+"start": 35.14,
+"end": 35.38
+},
+{
+"w": "extra",
+"start": 35.46,
+"end": 35.7
+},
+{
+"w": "para",
+"start": 35.78,
+"end": 35.86
+},
+{
+"w": "entrar,",
+"start": 36.02,
+"end": 36.42
+},
+{
+"w": "y",
+"start": 36.5,
+"end": 36.58
+},
+{
+"w": "en",
+"start": 36.74,
+"end": 36.82
+},
+{
+"w": "la",
+"start": 36.82,
+"end": 36.9
+},
+{
+"w": "oposición",
+"start": 36.9,
+"end": 37.38
+},
+{
+"w": "de",
+"start": 37.38,
+"end": 37.46
+},
+{
+"w": "Canarias,",
+"start": 37.54,
+"end": 38.18
+},
+{
+"w": "casi",
+"start": 38.34,
+"end": 38.58
+},
+{
+"w": "19",
+"start": 38.66,
+"end": 39.06
+},
+{
+"w": "por",
+"start": 39.3,
+"end": 39.38
+},
+{
+"w": "plaza",
+"start": 39.46,
+"end": 39.78
+},
+{
+"w": "en",
+"start": 39.86,
+"end": 39.94
+},
+{
+"w": "infantil.",
+"start": 40.02,
+"end": 40.66
+},
+{
+"w": "Y",
+"start": 40.82,
+"end": 40.9
+},
+{
+"w": "si",
+"start": 40.98,
+"end": 41.06
+},
+{
+"w": "la",
+"start": 41.14,
+"end": 41.22
+},
+{
+"w": "sacas,",
+"start": 41.3,
+"end": 41.86
+},
+{
+"w": "hasta",
+"start": 42.02,
+"end": 42.34
+},
+{
+"w": "25",
+"start": 42.42,
+"end": 42.82
+},
+{
+"w": "niños",
+"start": 43.06,
+"end": 43.46
+},
+{
+"w": "de",
+"start": 43.54,
+"end": 43.62
+},
+{
+"w": "3",
+"start": 43.7,
+"end": 43.86
+},
+{
+"w": "años.",
+"start": 43.94,
+"end": 44.5
+},
+{
+"w": "¿Y",
+"start": 44.58,
+"end": 44.74
+},
+{
+"w": "tú?",
+"start": 44.9,
+"end": 45.22
+},
+{
+"w": "¿Y",
+"start": 45.3,
+"end": 45.46
+},
+{
+"w": "los",
+"start": 45.62,
+"end": 45.7
+},
+{
+"w": "macarrones?",
+"start": 45.78,
+"end": 46.58
+},
+{
+"w": "En",
+"start": 46.82,
+"end": 46.9
+},
+{
+"w": "Sartarlos",
+"start": 46.98,
+"end": 47.62
+},
+{
+"w": "entrena",
+"start": 47.78,
+"end": 48.18
+},
+{
+"w": "la",
+"start": 48.26,
+"end": 48.34
+},
+{
+"w": "pinza",
+"start": 48.34,
+"end": 48.66
+},
+{
+"w": "de",
+"start": 48.74,
+"end": 48.82
+},
+{
+"w": "los",
+"start": 48.82,
+"end": 48.9
+},
+{
+"w": "dedos,",
+"start": 48.98,
+"end": 49.3
+},
+{
+"w": "la",
+"start": 49.38,
+"end": 49.46
+},
+{
+"w": "que",
+"start": 49.54,
+"end": 49.62
+},
+{
+"w": "usará",
+"start": 49.7,
+"end": 49.94
+},
+{
+"w": "para",
+"start": 50.1,
+"end": 50.18
+},
+{
+"w": "escribir.",
+"start": 50.26,
+"end": 50.74
+},
+{
+"w": "Si",
+"start": 50.93,
+"end": 51.01
+},
+{
+"w": "alterna",
+"start": 51.17,
+"end": 51.65
+},
+{
+"w": "blanco",
+"start": 51.73,
+"end": 52.05
+},
+{
+"w": "y",
+"start": 52.13,
+"end": 52.21
+},
+{
+"w": "negro,",
+"start": 52.21,
+"end": 52.61
+},
+{
+"w": "hace",
+"start": 52.69,
+"end": 52.93
+},
+{
+"w": "su",
+"start": 53.01,
+"end": 53.09
+},
+{
+"w": "primera",
+"start": 53.17,
+"end": 53.49
+},
+{
+"w": "serie.",
+"start": 53.57,
+"end": 54.05
+},
+{
+"w": "Según",
+"start": 54.13,
+"end": 54.45
+},
+{
+"w": "un",
+"start": 54.53,
+"end": 54.61
+},
+{
+"w": "estudio,",
+"start": 54.69,
+"end": 55.17
+},
+{
+"w": "eso",
+"start": 55.25,
+"end": 55.33
+},
+{
+"w": "a",
+"start": 55.65,
+"end": 55.73
+},
+{
+"w": "los",
+"start": 55.73,
+"end": 55.81
+},
+{
+"w": "cuatro",
+"start": 55.89,
+"end": 56.13
+},
+{
+"w": "años",
+"start": 56.21,
+"end": 56.37
+},
+{
+"w": "predice",
+"start": 56.53,
+"end": 56.93
+},
+{
+"w": "sus",
+"start": 57.09,
+"end": 57.17
+},
+{
+"w": "matemáticas",
+"start": 57.25,
+"end": 57.81
+},
+{
+"w": "a",
+"start": 57.89,
+"end": 57.97
+},
+{
+"w": "los",
+"start": 58.05,
+"end": 58.13
+},
+{
+"w": "11.",
+"start": 58.21,
+"end": 58.69
+},
+{
+"w": "En",
+"start": 58.85,
+"end": 58.93
+},
+{
+"w": "sus",
+"start": 59.09,
+"end": 59.17
+},
+{
+"w": "primeros",
+"start": 59.33,
+"end": 59.57
+},
+{
+"w": "años,",
+"start": 59.65,
+"end": 60.05
+},
+{
+"w": "su",
+"start": 60.13,
+"end": 60.21
+},
+{
+"w": "cerebro",
+"start": 60.29,
+"end": 60.69
+},
+{
+"w": "crea",
+"start": 60.77,
+"end": 61.09
+},
+{
+"w": "más",
+"start": 61.17,
+"end": 61.25
+},
+{
+"w": "de",
+"start": 61.33,
+"end": 61.41
+},
+{
+"w": "un",
+"start": 61.49,
+"end": 61.57
+},
+{
+"w": "millón",
+"start": 61.65,
+"end": 61.89
+},
+{
+"w": "de",
+"start": 61.97,
+"end": 62.05
+},
+{
+"w": "conexiones",
+"start": 62.05,
+"end": 62.69
+},
+{
+"w": "por",
+"start": 62.77,
+"end": 62.85
+},
+{
+"w": "segundo.",
+"start": 62.93,
+"end": 63.49
+},
+{
+"w": "Así",
+"start": 63.65,
+"end": 63.73
+},
+{
+"w": "que",
+"start": 63.97,
+"end": 64.05
+},
+{
+"w": "sí,",
+"start": 64.13,
+"end": 64.45
+},
+{
+"w": "Magisterio",
+"start": 64.61,
+"end": 65.33
+},
+{
+"w": "es",
+"start": 65.49,
+"end": 65.57
+},
+{
+"w": "hacer",
+"start": 65.65,
+"end": 65.73
+},
+{
+"w": "collares",
+"start": 65.89,
+"end": 66.37
+},
+{
+"w": "de",
+"start": 66.53,
+"end": 66.61
+},
+{
+"w": "macarrones,",
+"start": 66.61,
+"end": 67.41
+},
+{
+"w": "pero",
+"start": 67.49,
+"end": 67.57
+},
+{
+"w": "sabiendo",
+"start": 67.81,
+"end": 68.29
+},
+{
+"w": "por",
+"start": 68.37,
+"end": 68.45
+},
+{
+"w": "qué.",
+"start": 68.53,
+"end": 68.77
+},
+{
+"w": "Mándaselo",
+"start": 68.93,
+"end": 69.49
+},
+{
+"w": "a",
+"start": 69.65,
+"end": 69.73
+},
+{
+"w": "quien",
+"start": 69.73,
+"end": 69.89
+},
+{
+"w": "te",
+"start": 69.97,
+"end": 70.05
+},
+{
+"w": "dijo",
+"start": 70.05,
+"end": 70.21
+},
+{
+"w": "que",
+"start": 70.29,
+"end": 70.37
+},
+{
+"w": "magisterio",
+"start": 70.45,
+"end": 71.01
+},
+{
+"w": "era",
+"start": 71.09,
+"end": 71.17
+},
+{
+"w": "fácil.",
+"start": 71.33,
+"end": 71.81
+},
+{
+"w": "¿Infantil",
+"start": 71.89,
+"end": 72.61
+},
+{
+"w": "o",
+"start": 72.77,
+"end": 72.85
+},
+{
+"w": "primaria?",
+"start": 73.01,
+"end": 73.65
+}
+]

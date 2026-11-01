@@ -1,8 +1,8 @@
 #!/bin/bash
 # Máquina de ayuda: renderiza los fotogramas A..B-1 de «Magisterio por dentro», los codifica en chunks/chunk_A_B.mp4 y los sube a la
-# rama render-mag-X. Uso (desde la raíz del repo): bash projects/magisterio/render_chunk.sh A B X
+# rama <PFX>-X (por defecto render-mag). Uso (desde la raíz del repo): bash projects/magisterio/render_chunk.sh A B X [PFX]
 set -u
-A=$1; B=$2; X=$3
+A=$1; B=$2; X=$3; PFX=${4:-render-mag}
 cd "$(dirname "$0")"
 (cd web && npm install --silent >/dev/null 2>&1; ./build.sh)
 mkdir -p out/frames chunks
@@ -22,8 +22,8 @@ done
 n=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of csv=p=0 $F)
 [ "$n" = "$((B - A))" ] || { echo "ERROR: el trozo tiene $n fotogramas"; exit 1; }
 cd ../..
-git checkout -q -B render-mag-$X
+git checkout -q -B $PFX-$X
 git add -f projects/magisterio/$F
 git commit -qm "Magisterio: trozo $A-$B renderizado (máquina de ayuda $X)"
-for i in 1 2 3 4 5; do git push -q -f -u origin render-mag-$X && break; sleep $((2 ** i)); done
-echo "SUBIDO render-mag-$X $F ($(du -h projects/magisterio/$F | cut -f1))"
+for i in 1 2 3 4 5; do git push -q -f -u origin $PFX-$X && break; sleep $((2 ** i)); done
+echo "SUBIDO $PFX-$X $F ($(du -h projects/magisterio/$F | cut -f1))"

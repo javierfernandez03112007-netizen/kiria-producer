@@ -1194,6 +1194,8 @@ function buildCam() {
     k(K.facil16, [0.2, 0.93, 0.48], [0, 0.835, 0], 39),
     k(END - 1.0, TA, LA, 35), k(END, T0, L0, 34), k(END + 0.5, [0.19, 1.01, 0.62], [0, 0.835, 0], 34),
   ]];
+  // con otra voz, dos claves podrían quedar en el mismo instante o al revés: se fuerzan siempre crecientes
+  const ks = CKS[0]; for (let i = 1; i < ks.length; i++) if (ks[i][0] <= ks[i - 1][0] + 0.04) ks[i][0] = ks[i - 1][0] + 0.04;
 }
 function camAt(t) { return camKeys(t, CKS[0]); }
 function prevT(t, dt) { for (const c of CUTS) if (t >= c && t - dt < c) return t; return t - dt; }

@@ -2,1072 +2,1072 @@
  {
   "text": "Dicen que Magisterio es la carrera de los collares de macarrones. Y es verdad.",
   "start": 0.0,
-  "end": 3.518,
+  "end": 3.804,
   "words": [
    {
     "w": "Dicen",
     "start": 0.0,
-    "end": 0.332
+    "end": 0.357
    },
    {
     "w": "que",
-    "start": 0.332,
-    "end": 0.436
+    "start": 0.357,
+    "end": 0.5
    },
    {
     "w": "Magisterio",
-    "start": 0.436,
-    "end": 0.974
+    "start": 0.5,
+    "end": 1.143
    },
    {
     "w": "es",
-    "start": 0.974,
-    "end": 1.068
+    "start": 1.143,
+    "end": 1.286
    },
    {
     "w": "la",
-    "start": 1.068,
-    "end": 1.161
+    "start": 1.286,
+    "end": 1.357
    },
    {
     "w": "carrera",
-    "start": 1.161,
-    "end": 1.462
+    "start": 1.357,
+    "end": 1.643
    },
    {
     "w": "de",
-    "start": 1.462,
-    "end": 1.534
+    "start": 1.643,
+    "end": 1.714
    },
    {
     "w": "los",
-    "start": 1.534,
-    "end": 1.669
+    "start": 1.714,
+    "end": 1.857
    },
    {
     "w": "collares",
-    "start": 1.669,
-    "end": 2.032
+    "start": 1.857,
+    "end": 2.429
    },
    {
     "w": "de",
-    "start": 2.032,
-    "end": 2.114
+    "start": 2.429,
+    "end": 2.5
    },
    {
     "w": "macarrones.",
-    "start": 2.114,
-    "end": 2.929
+    "start": 2.5,
+    "end": 3.277
    },
    {
     "w": "Y",
-    "start": 2.929,
-    "end": 3.1
+    "start": 3.277,
+    "end": 3.437
    },
    {
     "w": "es",
-    "start": 3.1,
-    "end": 3.204
+    "start": 3.437,
+    "end": 3.58
    },
    {
     "w": "verdad.",
-    "start": 3.204,
-    "end": 3.518
+    "start": 3.58,
+    "end": 3.804
    }
   ]
  },
  {
   "text": "¿Para qué sirven? Te lo digo al final.",
-  "start": 3.58,
-  "end": 5.295,
+  "start": 3.946,
+  "end": 5.696,
   "words": [
    {
     "w": "¿Para",
-    "start": 3.58,
-    "end": 3.752
+    "start": 3.946,
+    "end": 4.145
    },
    {
     "w": "qué",
-    "start": 3.752,
-    "end": 3.865
+    "start": 4.145,
+    "end": 4.277
    },
    {
     "w": "sirven?",
-    "start": 3.865,
-    "end": 4.529
+    "start": 4.277,
+    "end": 4.929
    },
    {
     "w": "Te",
-    "start": 4.529,
-    "end": 4.664
+    "start": 4.929,
+    "end": 4.993
    },
    {
     "w": "lo",
-    "start": 4.664,
-    "end": 4.747
+    "start": 4.993,
+    "end": 5.071
    },
    {
     "w": "digo",
-    "start": 4.747,
-    "end": 4.924
+    "start": 5.071,
+    "end": 5.357
    },
    {
     "w": "al",
-    "start": 4.924,
-    "end": 5.006
+    "start": 5.357,
+    "end": 5.5
    },
    {
     "w": "final.",
-    "start": 5.006,
-    "end": 5.295
+    "start": 5.5,
+    "end": 5.696
    }
   ]
  },
  {
   "text": "Crees que es jugar con niños. En realidad, es aprender cómo aprende un cerebro.",
-  "start": 5.518,
-  "end": 9.687,
+  "start": 5.929,
+  "end": 9.982,
   "words": [
    {
     "w": "Crees",
-    "start": 5.518,
-    "end": 5.773
+    "start": 5.929,
+    "end": 6.179
    },
    {
     "w": "que",
-    "start": 5.773,
-    "end": 5.878
+    "start": 6.179,
+    "end": 6.321
    },
    {
     "w": "es",
-    "start": 5.878,
-    "end": 5.96
+    "start": 6.321,
+    "end": 6.464
    },
    {
     "w": "jugar",
-    "start": 5.96,
-    "end": 6.24
+    "start": 6.464,
+    "end": 6.821
    },
    {
     "w": "con",
-    "start": 6.24,
-    "end": 6.385
+    "start": 6.821,
+    "end": 6.964
    },
    {
     "w": "niños.",
-    "start": 6.385,
-    "end": 7.161
+    "start": 6.964,
+    "end": 7.589
    },
    {
     "w": "En",
-    "start": 7.161,
-    "end": 7.298
+    "start": 7.589,
+    "end": 7.688
    },
    {
     "w": "realidad,",
-    "start": 7.298,
-    "end": 7.911
+    "start": 7.688,
+    "end": 8.259
    },
    {
     "w": "es",
-    "start": 7.911,
-    "end": 8.066
+    "start": 8.259,
+    "end": 8.339
    },
    {
     "w": "aprender",
-    "start": 8.066,
-    "end": 8.471
+    "start": 8.339,
+    "end": 8.839
    },
    {
     "w": "cómo",
-    "start": 8.471,
-    "end": 8.771
+    "start": 8.839,
+    "end": 9.125
    },
    {
     "w": "aprende",
-    "start": 8.771,
-    "end": 9.154
+    "start": 9.125,
+    "end": 9.554
    },
    {
     "w": "un",
-    "start": 9.154,
-    "end": 9.258
+    "start": 9.554,
+    "end": 9.696
    },
    {
     "w": "cerebro.",
-    "start": 9.258,
-    "end": 9.687
+    "start": 9.696,
+    "end": 9.982
    }
   ]
  },
  {
   "text": "Psicología: qué puede aprender un niño a cada edad.",
-  "start": 10.17,
-  "end": 12.688,
+  "start": 10.295,
+  "end": 12.973,
   "words": [
    {
     "w": "Psicología:",
-    "start": 10.17,
-    "end": 11.143
+    "start": 10.295,
+    "end": 11.179
    },
    {
     "w": "qué",
-    "start": 11.143,
-    "end": 11.261
+    "start": 11.179,
+    "end": 11.295
    },
    {
     "w": "puede",
-    "start": 11.261,
-    "end": 11.488
+    "start": 11.295,
+    "end": 11.58
    },
    {
     "w": "aprender",
-    "start": 11.488,
-    "end": 11.862
+    "start": 11.58,
+    "end": 11.938
    },
    {
     "w": "un",
-    "start": 11.862,
-    "end": 11.954
+    "start": 11.938,
+    "end": 12.08
    },
    {
     "w": "niño",
-    "start": 11.954,
-    "end": 12.193
+    "start": 12.08,
+    "end": 12.366
    },
    {
     "w": "a",
-    "start": 12.193,
-    "end": 12.271
+    "start": 12.366,
+    "end": 12.509
    },
    {
     "w": "cada",
-    "start": 12.271,
-    "end": 12.453
+    "start": 12.509,
+    "end": 12.723
    },
    {
     "w": "edad.",
-    "start": 12.453,
-    "end": 12.688
+    "start": 12.723,
+    "end": 12.973
    }
   ]
  },
  {
   "text": "Matemáticas: enseñar a sumar a quien aún no sabe contar.",
-  "start": 13.023,
-  "end": 16.098,
+  "start": 13.196,
+  "end": 16.313,
   "words": [
    {
     "w": "Matemáticas:",
-    "start": 13.023,
-    "end": 14.062
+    "start": 13.196,
+    "end": 14.125
    },
    {
     "w": "enseñar",
-    "start": 14.062,
-    "end": 14.423
+    "start": 14.125,
+    "end": 14.464
    },
    {
     "w": "a",
-    "start": 14.423,
-    "end": 14.529
+    "start": 14.464,
+    "end": 14.607
    },
    {
     "w": "sumar",
-    "start": 14.529,
-    "end": 14.776
+    "start": 14.607,
+    "end": 14.964
    },
    {
     "w": "a",
-    "start": 14.776,
-    "end": 14.883
+    "start": 14.964,
+    "end": 15.107
    },
    {
     "w": "quien",
-    "start": 14.883,
-    "end": 15.014
+    "start": 15.107,
+    "end": 15.321
    },
    {
     "w": "aún",
-    "start": 15.014,
-    "end": 15.294
+    "start": 15.321,
+    "end": 15.536
    },
    {
     "w": "no",
-    "start": 15.294,
-    "end": 15.449
+    "start": 15.536,
+    "end": 15.679
    },
    {
     "w": "sabe",
-    "start": 15.449,
-    "end": 15.709
+    "start": 15.679,
+    "end": 15.964
    },
    {
     "w": "contar.",
-    "start": 15.709,
-    "end": 16.098
+    "start": 15.964,
+    "end": 16.313
    }
   ]
  },
  {
   "text": "Lengua: enseñar a leer, letra a letra.",
-  "start": 16.455,
+  "start": 16.554,
   "end": 18.964,
   "words": [
    {
     "w": "Lengua:",
-    "start": 16.455,
-    "end": 17.152
+    "start": 16.554,
+    "end": 17.196
    },
    {
     "w": "enseñar",
-    "start": 17.152,
-    "end": 17.596
+    "start": 17.196,
+    "end": 17.634
    },
    {
     "w": "a",
-    "start": 17.596,
-    "end": 17.659
+    "start": 17.634,
+    "end": 17.705
    },
    {
     "w": "leer,",
-    "start": 17.659,
-    "end": 18.209
+    "start": 17.705,
+    "end": 18.116
    },
    {
     "w": "letra",
-    "start": 18.209,
-    "end": 18.582
+    "start": 18.116,
+    "end": 18.571
    },
    {
     "w": "a",
-    "start": 18.582,
-    "end": 18.839
+    "start": 18.571,
+    "end": 18.714
    },
    {
     "w": "letra.",
-    "start": 18.839,
+    "start": 18.714,
     "end": 18.964
    }
   ]
  },
  {
   "text": "Dislexia, TDAH, autismo… en la misma clase.",
-  "start": 19.241,
-  "end": 22.634,
+  "start": 19.205,
+  "end": 22.571,
   "words": [
    {
     "w": "Dislexia,",
-    "start": 19.241,
-    "end": 20.118
+    "start": 19.205,
+    "end": 19.982
    },
    {
     "w": "TDAH,",
-    "start": 20.118,
-    "end": 21.071
+    "start": 19.982,
+    "end": 20.973
    },
    {
     "w": "autismo…",
-    "start": 21.071,
-    "end": 21.8
+    "start": 20.973,
+    "end": 21.598
    },
    {
     "w": "en",
-    "start": 21.8,
-    "end": 21.924
+    "start": 21.598,
+    "end": 21.777
    },
    {
     "w": "la",
-    "start": 21.924,
-    "end": 22.038
+    "start": 21.777,
+    "end": 21.92
    },
    {
     "w": "misma",
-    "start": 22.038,
-    "end": 22.318
+    "start": 21.92,
+    "end": 22.277
    },
    {
     "w": "clase.",
-    "start": 22.318,
-    "end": 22.634
+    "start": 22.277,
+    "end": 22.571
    }
   ]
  },
  {
   "text": "Y meses de prácticas en un colegio.",
-  "start": 23.071,
-  "end": 24.482,
+  "start": 22.741,
+  "end": 24.393,
   "words": [
    {
     "w": "Y",
-    "start": 23.071,
-    "end": 23.189
+    "start": 22.741,
+    "end": 22.866
    },
    {
     "w": "meses",
-    "start": 23.189,
-    "end": 23.417
+    "start": 22.866,
+    "end": 23.223
    },
    {
     "w": "de",
-    "start": 23.417,
-    "end": 23.5
+    "start": 23.223,
+    "end": 23.366
    },
    {
     "w": "prácticas",
-    "start": 23.5,
-    "end": 23.936
+    "start": 23.366,
+    "end": 23.795
    },
    {
     "w": "en",
-    "start": 23.936,
-    "end": 24.039
+    "start": 23.795,
+    "end": 23.866
    },
    {
     "w": "un",
-    "start": 24.039,
-    "end": 24.122
+    "start": 23.866,
+    "end": 24.009
    },
    {
     "w": "colegio.",
-    "start": 24.122,
-    "end": 24.482
+    "start": 24.009,
+    "end": 24.393
    }
   ]
  },
  {
   "text": "¿Fácil? En Cataluña, este año casi la mitad suspendió el examen extra para entrar.",
-  "start": 24.75,
-  "end": 28.866,
+  "start": 24.509,
+  "end": 28.821,
   "words": [
    {
     "w": "¿Fácil?",
-    "start": 24.75,
-    "end": 25.67
+    "start": 24.509,
+    "end": 25.214
    },
    {
     "w": "En",
-    "start": 25.67,
-    "end": 25.792
+    "start": 25.214,
+    "end": 25.349
    },
    {
     "w": "Cataluña,",
-    "start": 25.792,
-    "end": 26.3
+    "start": 25.349,
+    "end": 25.964
    },
    {
     "w": "este",
-    "start": 26.3,
-    "end": 26.517
+    "start": 25.964,
+    "end": 26.143
    },
    {
     "w": "año",
-    "start": 26.517,
-    "end": 26.746
+    "start": 26.143,
+    "end": 26.429
    },
    {
     "w": "casi",
-    "start": 26.746,
-    "end": 26.984
+    "start": 26.429,
+    "end": 26.714
    },
    {
     "w": "la",
-    "start": 26.984,
-    "end": 27.067
+    "start": 26.714,
+    "end": 26.786
    },
    {
     "w": "mitad",
-    "start": 27.067,
-    "end": 27.337
+    "start": 26.786,
+    "end": 27.143
    },
    {
     "w": "suspendió",
-    "start": 27.337,
-    "end": 27.762
+    "start": 27.143,
+    "end": 27.643
    },
    {
     "w": "el",
-    "start": 27.762,
-    "end": 27.844
+    "start": 27.643,
+    "end": 27.786
    },
    {
     "w": "examen",
-    "start": 27.844,
-    "end": 28.176
+    "start": 27.786,
+    "end": 28.071
    },
    {
     "w": "extra",
-    "start": 28.176,
-    "end": 28.404
+    "start": 28.071,
+    "end": 28.357
    },
    {
     "w": "para",
-    "start": 28.404,
-    "end": 28.549
+    "start": 28.357,
+    "end": 28.571
    },
    {
     "w": "entrar.",
-    "start": 28.549,
-    "end": 28.866
+    "start": 28.571,
+    "end": 28.821
    }
   ]
  },
  {
   "text": "Y en la oposición de Canarias: casi diecinueve por plaza en Infantil.",
-  "start": 29.214,
-  "end": 32.92,
+  "start": 28.982,
+  "end": 32.196,
   "words": [
    {
     "w": "Y",
-    "start": 29.214,
-    "end": 29.379
+    "start": 28.982,
+    "end": 29.06
    },
    {
     "w": "en",
-    "start": 29.379,
-    "end": 29.472
+    "start": 29.06,
+    "end": 29.138
    },
    {
     "w": "la",
-    "start": 29.472,
-    "end": 29.576
+    "start": 29.138,
+    "end": 29.216
    },
    {
     "w": "oposición",
-    "start": 29.576,
-    "end": 30.115
+    "start": 29.216,
+    "end": 29.589
    },
    {
     "w": "de",
-    "start": 30.115,
-    "end": 30.208
+    "start": 29.589,
+    "end": 29.732
    },
    {
     "w": "Canarias:",
-    "start": 30.208,
-    "end": 31.054
+    "start": 29.732,
+    "end": 30.321
    },
    {
     "w": "casi",
-    "start": 31.054,
-    "end": 31.391
+    "start": 30.321,
+    "end": 30.598
    },
    {
     "w": "diecinueve",
-    "start": 31.391,
-    "end": 31.898
+    "start": 30.598,
+    "end": 31.17
    },
    {
     "w": "por",
-    "start": 31.898,
-    "end": 32.075
+    "start": 31.17,
+    "end": 31.313
    },
    {
     "w": "plaza",
-    "start": 32.075,
-    "end": 32.323
+    "start": 31.313,
+    "end": 31.67
    },
    {
     "w": "en",
-    "start": 32.323,
-    "end": 32.417
+    "start": 31.67,
+    "end": 31.813
    },
    {
     "w": "Infantil.",
-    "start": 32.417,
-    "end": 32.92
+    "start": 31.813,
+    "end": 32.196
    }
   ]
  },
  {
   "text": "Y si la sacas: hasta veinticinco niños de tres años… y tú.",
-  "start": 33.268,
-  "end": 36.402,
+  "start": 32.42,
+  "end": 35.75,
   "words": [
    {
     "w": "Y",
-    "start": 33.268,
-    "end": 33.371
+    "start": 32.42,
+    "end": 32.508
    },
    {
     "w": "si",
-    "start": 33.371,
-    "end": 33.485
+    "start": 32.508,
+    "end": 32.616
    },
    {
     "w": "la",
-    "start": 33.485,
-    "end": 33.588
+    "start": 32.616,
+    "end": 32.759
    },
    {
     "w": "sacas:",
-    "start": 33.588,
-    "end": 34.214
+    "start": 32.759,
+    "end": 33.286
    },
    {
     "w": "hasta",
-    "start": 34.214,
-    "end": 34.439
+    "start": 33.286,
+    "end": 33.625
    },
    {
     "w": "veinticinco",
-    "start": 34.439,
-    "end": 34.947
+    "start": 33.625,
+    "end": 34.196
    },
    {
     "w": "niños",
-    "start": 34.947,
-    "end": 35.217
+    "start": 34.196,
+    "end": 34.625
    },
    {
     "w": "de",
-    "start": 35.217,
-    "end": 35.3
+    "start": 34.625,
+    "end": 34.768
    },
    {
     "w": "tres",
-    "start": 35.3,
-    "end": 35.487
+    "start": 34.768,
+    "end": 34.982
    },
    {
     "w": "años…",
-    "start": 35.487,
-    "end": 36.098
+    "start": 34.982,
+    "end": 35.482
    },
    {
     "w": "y",
-    "start": 36.098,
-    "end": 36.204
+    "start": 35.482,
+    "end": 35.571
    },
    {
     "w": "tú.",
-    "start": 36.204,
-    "end": 36.402
+    "start": 35.571,
+    "end": 35.75
    }
   ]
  },
  {
   "text": "¿Y los macarrones? Ensartarlos entrena la pinza de los dedos, la que usará para escribir.",
-  "start": 36.625,
-  "end": 40.804,
+  "start": 35.866,
+  "end": 40.125,
   "words": [
    {
     "w": "¿Y",
-    "start": 36.625,
-    "end": 36.737
+    "start": 35.866,
+    "end": 35.926
    },
    {
     "w": "los",
-    "start": 36.737,
-    "end": 36.894
+    "start": 35.926,
+    "end": 36.0
    },
    {
     "w": "macarrones?",
-    "start": 36.894,
-    "end": 37.741
+    "start": 36.0,
+    "end": 36.946
    },
    {
     "w": "Ensartarlos",
-    "start": 37.741,
-    "end": 38.409
+    "start": 36.946,
+    "end": 37.652
    },
    {
     "w": "entrena",
-    "start": 38.409,
-    "end": 38.74
+    "start": 37.652,
+    "end": 38.08
    },
    {
     "w": "la",
-    "start": 38.74,
-    "end": 38.834
+    "start": 38.08,
+    "end": 38.152
    },
    {
     "w": "pinza",
-    "start": 38.834,
-    "end": 39.134
+    "start": 38.152,
+    "end": 38.509
    },
    {
     "w": "de",
-    "start": 39.134,
-    "end": 39.207
+    "start": 38.509,
+    "end": 38.58
    },
    {
     "w": "los",
-    "start": 39.207,
-    "end": 39.341
+    "start": 38.58,
+    "end": 38.723
    },
    {
     "w": "dedos,",
-    "start": 39.341,
-    "end": 39.746
+    "start": 38.723,
+    "end": 39.054
    },
    {
     "w": "la",
-    "start": 39.746,
-    "end": 39.861
+    "start": 39.054,
+    "end": 39.134
    },
    {
     "w": "que",
-    "start": 39.861,
-    "end": 39.964
+    "start": 39.134,
+    "end": 39.232
    },
    {
     "w": "usará",
-    "start": 39.964,
-    "end": 40.265
+    "start": 39.232,
+    "end": 39.589
    },
    {
     "w": "para",
-    "start": 40.265,
-    "end": 40.441
+    "start": 39.589,
+    "end": 39.732
    },
    {
     "w": "escribir.",
-    "start": 40.441,
-    "end": 40.804
+    "start": 39.732,
+    "end": 40.125
    }
   ]
  },
  {
   "text": "Si alterna blanco y negro, hace su primera serie: según un estudio, eso a los cuatro años predice sus matemáticas a los once.",
-  "start": 41.25,
-  "end": 47.705,
+  "start": 40.321,
+  "end": 46.607,
   "words": [
    {
     "w": "Si",
-    "start": 41.25,
-    "end": 41.396
+    "start": 40.321,
+    "end": 40.44
    },
    {
     "w": "alterna",
-    "start": 41.396,
-    "end": 41.789
+    "start": 40.44,
+    "end": 40.848
    },
    {
     "w": "blanco",
-    "start": 41.789,
-    "end": 42.162
+    "start": 40.848,
+    "end": 41.205
    },
    {
     "w": "y",
-    "start": 42.162,
-    "end": 42.235
+    "start": 41.205,
+    "end": 41.277
    },
    {
     "w": "negro,",
-    "start": 42.235,
-    "end": 42.625
+    "start": 41.277,
+    "end": 41.571
    },
    {
     "w": "hace",
-    "start": 42.625,
-    "end": 42.868
+    "start": 41.571,
+    "end": 41.857
    },
    {
     "w": "su",
-    "start": 42.868,
-    "end": 43.003
+    "start": 41.857,
+    "end": 42.0
    },
    {
     "w": "primera",
-    "start": 43.003,
-    "end": 43.396
+    "start": 42.0,
+    "end": 42.357
    },
    {
     "w": "serie:",
-    "start": 43.396,
-    "end": 44.03
+    "start": 42.357,
+    "end": 42.848
    },
    {
     "w": "según",
-    "start": 44.03,
-    "end": 44.321
+    "start": 42.848,
+    "end": 43.08
    },
    {
     "w": "un",
-    "start": 44.321,
-    "end": 44.413
+    "start": 43.08,
+    "end": 43.223
    },
    {
     "w": "estudio,",
-    "start": 44.413,
-    "end": 44.994
+    "start": 43.223,
+    "end": 43.813
    },
    {
     "w": "eso",
-    "start": 44.994,
-    "end": 45.284
+    "start": 43.813,
+    "end": 44.08
    },
    {
     "w": "a",
-    "start": 45.284,
-    "end": 45.368
+    "start": 44.08,
+    "end": 44.152
    },
    {
     "w": "los",
-    "start": 45.368,
-    "end": 45.471
+    "start": 44.152,
+    "end": 44.295
    },
    {
     "w": "cuatro",
-    "start": 45.471,
-    "end": 45.72
+    "start": 44.295,
+    "end": 44.58
    },
    {
     "w": "años",
-    "start": 45.72,
-    "end": 46.073
+    "start": 44.58,
+    "end": 44.866
    },
    {
     "w": "predice",
-    "start": 46.073,
-    "end": 46.467
+    "start": 44.866,
+    "end": 45.366
    },
    {
     "w": "sus",
-    "start": 46.467,
-    "end": 46.633
+    "start": 45.366,
+    "end": 45.509
    },
    {
     "w": "matemáticas",
-    "start": 46.633,
-    "end": 47.265
+    "start": 45.509,
+    "end": 46.08
    },
    {
     "w": "a",
-    "start": 47.265,
-    "end": 47.358
+    "start": 46.08,
+    "end": 46.223
    },
    {
     "w": "los",
-    "start": 47.358,
-    "end": 47.472
+    "start": 46.223,
+    "end": 46.366
    },
    {
     "w": "once.",
-    "start": 47.472,
-    "end": 47.705
+    "start": 46.366,
+    "end": 46.607
    }
   ]
  },
  {
   "text": "En sus primeros años, su cerebro crea más de un millón de conexiones por segundo.",
-  "start": 48.473,
-  "end": 52.161,
+  "start": 46.866,
+  "end": 50.759,
   "words": [
    {
     "w": "En",
-    "start": 48.473,
-    "end": 48.592
+    "start": 46.866,
+    "end": 46.955
    },
    {
     "w": "sus",
-    "start": 48.592,
-    "end": 48.748
+    "start": 46.955,
+    "end": 47.17
    },
    {
     "w": "primeros",
-    "start": 48.748,
-    "end": 49.069
+    "start": 47.17,
+    "end": 47.455
    },
    {
     "w": "años,",
-    "start": 49.069,
-    "end": 49.527
+    "start": 47.455,
+    "end": 47.884
    },
    {
     "w": "su",
-    "start": 49.527,
-    "end": 49.661
+    "start": 47.884,
+    "end": 48.027
    },
    {
     "w": "cerebro",
-    "start": 49.661,
-    "end": 49.982
+    "start": 48.027,
+    "end": 48.455
    },
    {
     "w": "crea",
-    "start": 49.982,
-    "end": 50.231
+    "start": 48.455,
+    "end": 48.813
    },
    {
     "w": "más",
-    "start": 50.231,
-    "end": 50.428
+    "start": 48.813,
+    "end": 48.955
    },
    {
     "w": "de",
-    "start": 50.428,
-    "end": 50.562
+    "start": 48.955,
+    "end": 49.098
    },
    {
     "w": "un",
-    "start": 50.562,
-    "end": 50.687
+    "start": 49.098,
+    "end": 49.241
    },
    {
     "w": "millón",
-    "start": 50.687,
-    "end": 50.977
+    "start": 49.241,
+    "end": 49.527
    },
    {
     "w": "de",
-    "start": 50.977,
-    "end": 51.071
+    "start": 49.527,
+    "end": 49.598
    },
    {
     "w": "conexiones",
-    "start": 51.071,
-    "end": 51.599
+    "start": 49.598,
+    "end": 50.241
    },
    {
     "w": "por",
-    "start": 51.599,
-    "end": 51.754
+    "start": 50.241,
+    "end": 50.384
    },
    {
     "w": "segundo.",
-    "start": 51.754,
-    "end": 52.161
+    "start": 50.384,
+    "end": 50.759
    }
   ]
  },
  {
   "text": "Así que sí: Magisterio es hacer collares de macarrones… pero sabiendo por qué.",
-  "start": 52.393,
-  "end": 56.286,
+  "start": 51.089,
+  "end": 55.089,
   "words": [
    {
     "w": "Así",
-    "start": 52.393,
-    "end": 52.636
+    "start": 51.089,
+    "end": 51.313
    },
    {
     "w": "que",
-    "start": 52.636,
-    "end": 52.75
+    "start": 51.313,
+    "end": 51.455
    },
    {
     "w": "sí:",
-    "start": 52.75,
-    "end": 53.228
+    "start": 51.455,
+    "end": 51.893
    },
    {
     "w": "Magisterio",
-    "start": 53.228,
-    "end": 53.921
+    "start": 51.893,
+    "end": 52.616
    },
    {
     "w": "es",
-    "start": 53.921,
-    "end": 54.036
+    "start": 52.616,
+    "end": 52.679
    },
    {
     "w": "hacer",
-    "start": 54.036,
-    "end": 54.285
+    "start": 52.679,
+    "end": 52.893
    },
    {
     "w": "collares",
-    "start": 54.285,
-    "end": 54.668
+    "start": 52.893,
+    "end": 53.464
    },
    {
     "w": "de",
-    "start": 54.668,
-    "end": 54.751
+    "start": 53.464,
+    "end": 53.536
    },
    {
     "w": "macarrones…",
-    "start": 54.751,
-    "end": 55.396
+    "start": 53.536,
+    "end": 54.161
    },
    {
     "w": "pero",
-    "start": 55.396,
-    "end": 55.613
+    "start": 54.161,
+    "end": 54.339
    },
    {
     "w": "sabiendo",
-    "start": 55.613,
-    "end": 55.987
+    "start": 54.339,
+    "end": 54.839
    },
    {
     "w": "por",
-    "start": 55.987,
-    "end": 56.131
+    "start": 54.839,
+    "end": 54.982
    },
    {
     "w": "qué.",
-    "start": 56.131,
-    "end": 56.286
+    "start": 54.982,
+    "end": 55.089
    }
   ]
  },
  {
   "text": "Mándaselo a quien te dijo que Magisterio era fácil. ¿Infantil o Primaria?",
-  "start": 56.491,
-  "end": 60.018,
+  "start": 55.205,
+  "end": 58.825,
   "words": [
    {
     "w": "Mándaselo",
-    "start": 56.491,
-    "end": 56.988
+    "start": 55.205,
+    "end": 55.679
    },
    {
     "w": "a",
-    "start": 56.988,
-    "end": 57.051
+    "start": 55.679,
+    "end": 55.75
    },
    {
     "w": "quien",
-    "start": 57.051,
-    "end": 57.196
+    "start": 55.75,
+    "end": 55.964
    },
    {
     "w": "te",
-    "start": 57.196,
-    "end": 57.3
+    "start": 55.964,
+    "end": 56.036
    },
    {
     "w": "dijo",
-    "start": 57.3,
-    "end": 57.559
+    "start": 56.036,
+    "end": 56.25
    },
    {
     "w": "que",
-    "start": 57.559,
-    "end": 57.673
+    "start": 56.25,
+    "end": 56.393
    },
    {
     "w": "Magisterio",
-    "start": 57.673,
-    "end": 58.181
+    "start": 56.393,
+    "end": 56.964
    },
    {
     "w": "era",
-    "start": 58.181,
-    "end": 58.346
+    "start": 56.964,
+    "end": 57.179
    },
    {
     "w": "fácil.",
-    "start": 58.346,
-    "end": 59.009
+    "start": 57.179,
+    "end": 57.732
    },
    {
     "w": "¿Infantil",
-    "start": 59.009,
-    "end": 59.55
+    "start": 57.732,
+    "end": 58.303
    },
    {
     "w": "o",
-    "start": 59.55,
-    "end": 59.662
+    "start": 58.303,
+    "end": 58.408
    },
    {
     "w": "Primaria?",
-    "start": 59.662,
-    "end": 60.018
+    "start": 58.408,
+    "end": 58.825
    }
   ]
  }
