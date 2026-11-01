@@ -331,18 +331,43 @@ def sfx_track_pas(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
 
+def realce():
+    """Momentos de venta (pregunta.json → "realce": ["compartir", "marca", "prueba"]): desde la palabra del cue hasta el final de
+    su frase la voz sube +3 dB y los efectos bajan −8 dB (con rampas de 80 ms). Regla de Javi: «¡Bomberados!», «¡Pruébala gratis!»
+    y «compártelo con tu compañero de oposición» son lo más destacado del vídeo."""
+    rs = []
+    for name in Q.get("realce", []):
+        spec = Q["cues"][name]
+        rs.append((at(spec) - 0.02, LINES[spec[2] - 1]["end"] + 0.12))
+    return rs
+
+
+def _envelope(rs, amount, ramp=0.08):    # expresión de ffmpeg: 1 fuera de los tramos, 1 + amount dentro
+    if not rs:
+        return "1"
+    terms = "+".join(f"clip((t-{a:.3f})/{ramp},0,1)*clip(({b:.3f}-t)/{ramp},0,1)" for a, b in rs)
+    return f"1+{amount}*min(1,{terms})"
+
+
+def audio_filter():
+    sv = Q.get("mezcla", {}).get("sfx", 0.35)
+    gan = Q.get("mezcla", {}).get("ganancia", 0.0)          # dB sobre la mezcla final (antes del limitador)
+    rs = realce()
+    return ("[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,volume='" + _envelope(rs, 0.41) + "':eval=frame,aresample=48000,"
+            "aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + ",volume='" + _envelope(rs, -0.6) + "':eval=frame[s];"
+            "[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.94:level=disabled[a]")
+
+
 def main():
     missing = [i for i in range(N) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
     sfxp = os.path.join(PROJ, "out", "sfx.wav")
     (sfx_track_pas if Q.get("intro") == "pas" else sfx_track)(sfxp)
-    sv = Q.get("mezcla", {}).get("sfx", 0.35)
-    gan = Q.get("mezcla", {}).get("ganancia", 0.0)          # dB sobre la mezcla final (antes del limitador)
     dst = os.path.join(PROJ, "out", os.path.basename(PROJ) + ".mp4")
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", "-i", AUDIO, "-i", sfxp, "-filter_complex",
-           "[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + "[s];[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.94:level=disabled[a]",
+           audio_filter(),
            "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "8M", "-bufsize", "16M", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", f"{N / FPS:.3f}", "-movflags", "+faststart", dst]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)

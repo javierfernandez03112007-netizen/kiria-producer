@@ -6,6 +6,8 @@
           (mismo número de palabras en los dos ficheros). Después: ajustar_voz.py projects/<p>
         Con eleven_v3, script_tts.txt puede llevar indicaciones de emoción entre corchetes ([panicked], [urgent], [excited]…):
         no se leen y no cuentan como palabras. --salida <dir>: guarda la toma ahí (para comparar varias) en vez de en el proyecto.
+        Momentos de venta (compartir, «¡Bomberados!», «¡Pruébala gratis!»): los más fuertes y claros del vídeo → [excited],
+        [emphatic], [proud], pausa «…» antes de «¡Bomberados!», MAYÚSCULAS en la palabra clave; comprobar con medir_voz.py.
     python3 bomberados/plantillas/pregunta/elevenlabs.py efecto projects/<p>/assets/sfx/<nombre>.mp3 <segundos> "<descripción en inglés>"
 
 Clave: el entorno «Predeterminado» la añade sola a las peticiones a api.elevenlabs.io. Si el proxy responde «upstream auth

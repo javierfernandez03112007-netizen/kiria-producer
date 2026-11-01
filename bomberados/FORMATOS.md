@@ -23,6 +23,8 @@ vídeos seguidos. Los que tienen ⚡ son los baratos para publicar a diario.
   se generan en lote desde un JSON de preguntas (`pregunta`, `opciones`, `correcta`, `fuente`).
 - Cada pregunta con su fuente (norma, ley, manual oficial) en el JSON; nada de preguntas inventadas.
 - Cierre fijo de 1,5 s: placa BOMBERADOS + «Pruébala gratis 5 días».
+- La llamada a compartir, «¡Bomberados!» y «¡Pruébala gratis!» son los momentos más destacados del vídeo (voz más fuerte y
+  clara que el gancho, mezcla con `"realce"`, golpe visual más grande). Ver «Voz y momentos de venta» en `MARCA.md`.
 - Portada automática con la pregunta.
 
 ## Calendario orientativo (para escalar)

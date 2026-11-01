@@ -46,3 +46,13 @@ Sonido: `compose.py` usa `assets/sfx/*.mp3` (efectos de ElevenLabs) y `sfx_track
 Otras opciones nuevas de pregunta.json: `"ey"` (altura de la tarjeta del enunciado), `"iconos"` (phone, cross, shield,
 exit: icono tras la letra), cue `"comenta"` (las letras se vuelven bocadillos), `"portada": {"desfase": 2.1}` (fotograma
 de la portada, en s tras las opciones).
+
+## Momentos de venta (regla de Javi): lo más destacado del vídeo
+
+La llamada a compartir («mándaselo / compártelo con tu compañero de oposición»), «¡Bomberados!» y «¡Pruébala gratis cinco
+días!» tienen que sonar más fuertes, con más ímpetu y más claras que todo lo demás (gancho incluido) y algo más pausadas:
+- Voz: indicaciones de ímpetu en `script_tts.txt` (eleven_v3), pausa «…» antes de «¡Bomberados!», mayúsculas en la palabra
+  clave. Comprobar cada toma con `python3 bomberados/plantillas/pregunta/medir_voz.py projects/<p> [--toma <dir>]` → «OK».
+- Mezcla: `"realce": ["compartir", "marca", "prueba"]` en pregunta.json → `compose.py` sube la voz +3 dB y baja los
+  efectos −8 dB en esas frases (rampas de 80 ms).
+- Imagen: el golpe más grande del vídeo en esos momentos (zoom, destello), sin nada que compita.
