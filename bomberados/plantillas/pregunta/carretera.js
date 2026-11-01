@@ -18,10 +18,7 @@ const RAIL_X = 5.0, POST_X = -4.95;                // bionda a la derecha, hitos
 let RD = null;                                     // línea de tiempo (se calcula con los cues la primera vez)
 let RDL = null;                                    // lo último que se dibujó (cámara, caja del coche, cabeza): para el HUD
 
-// ---------------------------------------------------------------- utilidades de color
-const mixc = (a, b, k) => [lerp(a[0], b[0], k), lerp(a[1], b[1], k), lerp(a[2], b[2], k)];
-const rgbs = (c, a = 1) => `rgba(${Math.round(clamp(c[0], 0, 255))},${Math.round(clamp(c[1], 0, 255))},${Math.round(clamp(c[2], 0, 255))},${a.toFixed(3)})`;
-const sstep = (a, b, x) => { const k = clamp((x - a) / (b - a)); return k * k * (3 - 2 * k); };
+// ---------------------------------------------------------------- utilidades (mixc, rgbs, sstep y glowAt están en scene.js)
 function noise1(x, s = 0) { return 0.5 + 0.25 * Math.sin(x * 1.7 + s) + 0.15 * Math.sin(x * 3.9 + 2.1 * s + 1) + 0.1 * Math.sin(x * 8.3 + 3.7 * s + 2); }
 
 // ---------------------------------------------------------------- línea de tiempo
@@ -375,12 +372,6 @@ function ambAt(R, X, Y, Z) {                        // luz ámbar de los intermi
   const a = CW_.lights.ambL, b = CW_.lights.ambR;
   const d = Math.min(Math.hypot(X - a[0], Y - a[1], Z - a[2]), Math.hypot(X - b[0], Y - b[1], Z - b[2]));
   return R.hz * 1.6 / (1 + d * d * 0.35);
-}
-function glowAt(x, y, r, col, a) {
-  if (a <= 0.004 || r < 1) return;
-  const gg = g.createRadialGradient(x, y, 0, x, y, r);
-  gg.addColorStop(0, rgbs(col, a)); gg.addColorStop(0.4, rgbs(col, a * 0.35)); gg.addColorStop(1, rgbs(col, 0));
-  g.save(); g.globalCompositeOperation = 'lighter'; g.fillStyle = gg; g.fillRect(x - r, y - r, 2 * r, 2 * r); g.restore();
 }
 
 // ---------------------------------------------------------------- vapor que sale del capó (iluminado por los intermitentes)

@@ -201,8 +201,8 @@ def _rms_db(x):
     return 20 * np.log10(np.sqrt((act ** 2).mean()) + 1e-12) if len(act) else -120
 
 
-def _to(x, db):                       # escala un efecto a un nivel RMS (dBFS) de su parte activa
-    return x * 10 ** ((db - _rms_db(x)) / 20)
+def _to(x, db):                       # escala un efecto a un nivel RMS (dBFS) de su parte activa (como mucho +24 dB:
+    return x * 10 ** (min(24.0, db - _rms_db(x)) / 20)   # si ElevenLabs devuelve casi silencio, no se convierte en ruido)
 
 
 def _cut(x, a, b=None, fade=0.004):   # trozo [a, b) s con fundidos cortos
@@ -331,6 +331,111 @@ def sfx_track_pas(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
 
+
+# ---------------------------------------------------------------- intro «leyes» (fondo «escritorio», leyes.js)
+# Regla de Javi: cada sonido empieza cuando empieza en pantalla lo que lo produce y ACABA cuando acaba esa situación.
+# Los tiempos son los mismos que DK en leyes.js.
+def _onset(x, db=30):                 # quita el silencio inicial: el golpe del efecto cae justo en su instante
+    m = np.abs(x).max(1)
+    i = int(np.argmax(m > m.max() * 10 ** (-db / 20)))
+    return x[max(0, i - int(0.004 * sfx.SR)):]
+
+
+def _tramo(x, dur, fade_in=0.01, fade_out=0.08, xf=0.25):
+    """Ajusta un efecto a un tramo exacto: si es corto se repite (con fundido cruzado) y si es largo se corta; con fundido
+    de salida para que se apague justo cuando acaba en pantalla."""
+    n = int(dur * sfx.SR)
+    y = (_loop(x, dur, min(xf, len(x) / sfx.SR / 3)) if len(x) < n else x[:n]).copy()
+    fi, fo = min(len(y), int(fade_in * sfx.SR)), min(len(y), int(fade_out * sfx.SR))
+    if fi > 0:
+        y[:fi] *= np.linspace(0, 1, fi)[:, None]
+    if fo > 0:
+        y[-fo:] *= np.linspace(1, 0, fo)[:, None]
+    return y
+
+
+def sfx_track_leyes(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: (at(v) if not isinstance(v[0], list) else [at(s) for s in v]) for k, v in Q["cues"].items()}
+    land = [0.05 + 0.1 * i for i in range(4)]
+    tT, tB, tCam = c["trampa"], c["civil0"], c["enunciado"] - 0.12
+    tS, tc, t1 = c["derogada"], c["cuenta"], c["letras"][0] - 0.1
+    P = (t1 - tc) / 5
+    tM = c["marca"]
+    tBurn, tOff = tM - 0.45, tM - 0.2
+    tFade = tBurn + 0.35 + 0.6                  # el escritorio ya se ha fundido con las brasas
+    # libros: un golpe seco al tocar la mesa (lo que dura el rebote)
+    lib = _onset(_load("libro"))
+    for i, tl in enumerate(land):
+        _put(out, _tramo(_to(lib, -19), 0.32, 0.002, 0.1), tl - 0.004, [1.0, 0.8, 0.9, 0.75][i])
+    # cepo: el golpe metálico cuando se tocan las mandíbulas; dura lo que su vibración
+    _put(out, _tramo(_to(_onset(_load("cepo")), -15), 0.42, 0.001, 0.12), tT + 0.075)
+    # papeles: desde que despegan hasta que aterriza el último (dos capas para cubrir todo el vuelo)
+    pap = _onset(_load("papeles"))
+    vuelo = 0.12 + 1.25
+    _put(out, _tramo(_to(pap, -27), vuelo, 0.02, 0.18), tT + 0.06)
+    _put(out, _tramo(_to(pap, -31), vuelo - 0.6, 0.05, 0.18), tT + 0.66)
+    # rotativo: suena mientras está encendido
+    _put(amb, _tramo(_to(_load("rotativo"), -34), tOff + 0.15 - tB, 0.01, 0.15), tB)
+    # cámara que sube y tarjetas que entran
+    wh = _onset(_load("whoosh"))
+    _put(out, _tramo(_to(wh, -31), 0.32, 0.01, 0.08), tCam + 0.28)
+    for tw in (c["enunciado"], c["opciones"], c["descripcion"]):
+        _put(out, _tramo(_to(wh, -31), 0.32, 0.01, 0.08), tw - 0.02)
+    # sello: baja (0,38 s), salta de libro en libro con cada número (0,28 s) y se va (0,45 s)
+    _put(out, _tramo(_to(_onset(_load("sello_baja")), -25), 0.36, 0.005, 0.1), tS - 0.05)
+    sm = _onset(_load("sello_mueve"))
+    for k in range(5):
+        _put(out, _tramo(_to(sm, -30), 0.28, 0.005, 0.08), tc + k * P - 0.05, 0.9 if k < 4 else 0.7)
+    _put(out, _tramo(_to(sm, -28), 0.45, 0.01, 0.15), t1 + 0.05)
+    # cuenta atrás: un tic por número y una campanita al acabar
+    tic = _onset(_load("tic"))
+    for k in range(5):
+        _put(out, _tramo(_to(tic, -18), 0.12, 0.001, 0.04), tc + k * P - 0.003)
+    _put(out, np.repeat(bell(523.25, 0.7)[:, None], 2, axis=1), t1, 0.15)
+    # letras y burbujas de «comenta»
+    toq = _onset(_load("toque"))
+    for tl in c["letras"]:
+        _put(out, _tramo(_to(toq, -26), 0.15, 0.001, 0.05), tl + 0.04)
+    if "comenta" in c:
+        bu = _onset(_load("burbuja"))
+        for i in range(4):
+            _put(out, _tramo(_to(bu, -25), 0.12, 0.001, 0.04), c["comenta"] + 0.04 * i, 1 - 0.1 * i)
+    # momentos de venta: destello; el avión de papel suena mientras vuela (1,2 s)
+    de = _onset(_load("destello"))
+    for k in ("compartir", "marca", "prueba"):
+        if k in c:
+            _put(out, _tramo(_to(de, -24), 0.6, 0.002, 0.2), c[k] - 0.04)
+    if "compartir" in c:
+        av = _onset(_load("avion"))
+        _put(out, _tramo(_to(av, -28), 0.62, 0.02, 0.1), c["compartir"])
+        _put(out, _tramo(_to(av, -30), 0.6, 0.08, 0.15), c["compartir"] + 0.6)
+        _put(out, _tramo(_to(_onset(_load("burbuja")), -24), 0.12, 0.001, 0.04), c["compartir"] + 1.2)
+    # los libros arden (desde que prenden hasta que el escritorio se funde) y quedan las brasas hasta el final
+    fu = _load("fuego")
+    fu = fu[int(0.3 * sfx.SR):]
+    _put(out, _tramo(_to(fu, -26), tFade + 0.2 - tBurn, 0.02, 0.35), tBurn)
+    _put(amb, _tramo(_to(_load("brasas"), -36), END - (tFade - 0.3), 0.4, 0.3), tFade - 0.3)
+    _put(out, _tramo(_to(_onset(_load("marca")), -26), 1.0, 0.002, 0.25), tM - 0.05)
+    # los ambientes bajan 6 dB mientras habla la voz
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
+
+def sfx_any(path):
+    {"pas": sfx_track_pas, "leyes": sfx_track_leyes}.get(Q.get("intro"), sfx_track)(path)
+
 def realce():
     """Momentos de venta (pregunta.json → "realce": ["compartir", "marca", "prueba"]): desde la palabra del cue hasta el final de
     su frase la voz sube +3 dB y los efectos bajan −8 dB (con rampas de 80 ms). Regla de Javi: «¡Bomberados!», «¡Pruébala gratis!»
@@ -363,7 +468,7 @@ def main():
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
     sfxp = os.path.join(PROJ, "out", "sfx.wav")
-    (sfx_track_pas if Q.get("intro") == "pas" else sfx_track)(sfxp)
+    sfx_any(sfxp)
     dst = os.path.join(PROJ, "out", os.path.basename(PROJ) + ".mp4")
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", "-i", AUDIO, "-i", sfxp, "-filter_complex",
@@ -390,6 +495,6 @@ if __name__ == "__main__":
             cv2.imwrite(os.path.join(PROJ, "out", "ctest", f"c{t:05.2f}.jpg"), (np.clip(img, 0, 1) * 255).astype(np.uint8))
     elif len(sys.argv) > 2 and sys.argv[2] == "--sfx":
         os.makedirs(os.path.join(PROJ, "out"), exist_ok=True)
-        (sfx_track_pas if Q.get("intro") == "pas" else sfx_track)(os.path.join(PROJ, "out", "sfx.wav"))
+        sfx_any(os.path.join(PROJ, "out", "sfx.wav"))
     else:
         main()

@@ -56,3 +56,13 @@ días!» tienen que sonar más fuertes, con más ímpetu y más claras que todo 
 - Mezcla: `"realce": ["compartir", "marca", "prueba"]` en pregunta.json → `compose.py` sube la voz +3 dB y baja los
   efectos −8 dB en esas frases (rampas de 80 ms).
 - Imagen: el golpe más grande del vídeo en esos momentos (zoom, destello), sin nada que compita.
+
+## Fondo «escritorio» e intro «leyes» (`leyes.js`, Nº 5)
+
+`"fondo": "escritorio"` + `"intro": "leyes"` y, en `web/index.html`, `leyes.js` DESPUÉS de `scene.js`. Escritorio de opositor
+de noche con flexo: caen cuatro libros (`"libros": [["LEY", "2/1985"], …]`, con la letra de cada opción), un cepo de acero se
+cierra en el cue `trampa`, un rotativo se enciende en `civil0`, la cámara sube en `enunciado`, un sello DEROGADA baja en
+`derogada` y flota de libro en libro con la cuenta atrás sin posarse (no da la respuesta), y los libros arden en `marca`.
+`"cuenta_pos": [x, y, r]` coloca la cuenta atrás (aquí a la derecha, para que se vea el sello). Sonido: `sfx_track_leyes`
+con `_tramo()`: cada efecto se recorta o se repite para que acabe justo cuando acaba su imagen.
+Otras opciones: `"compartir_a"` (a quién va el avión de papel) y el golpe visual de los momentos de venta (`"realce"`).
