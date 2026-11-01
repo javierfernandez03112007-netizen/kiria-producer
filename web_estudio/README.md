@@ -19,10 +19,10 @@ subtítulos, vídeos 9:16 y datos técnicos en monoespaciada. Tema oscuro único
 ## Secciones (en orden)
 1. Cabecera fija: marca + «Pedir un vídeo».
 2. Portada: «Vídeos que **paran** el scroll.», móvil con el showreel en bucle, REC y contador de tiempo.
-3. Pruebas: 460.000 visualizaciones · 22.000 me gusta · +20 vídeos · 4 marcas.
+3. Pruebas: 460.000 visualizaciones (Industrial) · 378.000 en 15 h (Derecho) · +20 vídeos · 4 marcas.
 4. Han confiado en nosotros: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
-5. Trabajos: 6 clips que se cargan y reproducen al verse (Industrial, Software vs Informática, Aeroespacial,
-   Bomberados, Civil, Bomberados IA).
+5. Trabajos: 6 clips que se cargan y reproducen al verse (Derecho, Industrial, Software vs Informática, Aeroespacial,
+   Bomberados, Bomberados IA).
 6. Formatos: Así es por dentro · El duelo · El dato que sorprende · Pregunta test (con duraciones reales).
 7. Anatomía de un reel: barra proporcional de 60 s (imagen imposible → pregunta → datos → respuesta → bucle).
 8. Cómo trabajamos: Brief → Guion (se aprueba) → Voz y 3D → Entrega.
