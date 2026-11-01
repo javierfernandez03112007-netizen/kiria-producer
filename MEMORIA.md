@@ -28,7 +28,7 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
 |---|---|
 | Ingeniería Industrial | 460.000 visitas, 22.000 me gusta, muchos seguidores |
 | Ingeniería Informática | 165.000 visitas y 9.400 me gusta (en su momento) |
-| Derecho por dentro | 378.000 visitas en 15 h, 25.100 me gusta, 78 comentarios, 811 guardados, 4.285 envíos, 820 seguidores (ver `projects/derecho/METRICAS.md`; faltan los datos de 24 h y 48 h) |
+| Derecho por dentro | ≈ 720.000 visitas y ≈ 50.000 me gusta al día siguiente (1-11-2026); 378.000 visitas en 15 h, 25.100 me gusta, 78 comentarios, 811 guardados, 4.285 envíos, 820 seguidores (ver `projects/derecho/METRICAS.md`; faltan los datos de 24 h y 48 h) |
 | Total canal | ≈ 800.000 visitas entre todos; vídeos con 14.000, 10.000 y 6.000 me gusta |
 
 Lo que funciona: carreras «por dentro» con un giro verdadero («acabas la carrera… y todavía no eres…», «menos de 3 de cada 100»),
