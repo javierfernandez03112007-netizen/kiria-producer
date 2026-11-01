@@ -40,7 +40,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 2. Medicina (6 años + MIR), duelos (ADE vs Economía, Matemáticas vs Física, Arquitectura vs Edificación, Informática vs Ciencia de Datos),
    «la nota de corte más alta no es Medicina», serie numerada «Carreras por dentro».
 
+## Vídeos recientes
+- **Magisterio** (`projects/magisterio/`, 1-11-2026): idea de Javi (desmentir que Magisterio es «solo collares de macarrones»). 60 s (Javi
+  pidió vídeos de 60 s, no más largos) y **todo dentro del aula de Infantil** (Javi: «que no se salga del entorno de Magisterio»): pizarra
+  con tiza, rincones, mesas con macarrones, mesa de la maestra. Voz generada aquí con `engine/tts.py`; efectos reales con `sfx_eleven.py`.
+
 ## Herramientas y accesos
+- **Voz y efectos desde la sesión**: `python3 engine/tts.py projects/<p>` (voz de Danny + tiempos de cada palabra, sin reconocedor)
+  → `ajustar_voz.py` → `env_voz.py`; efectos realistas: `projects/magisterio/sfx_eleven.py` (copiar y cambiar la lista).
+- **Metricool**: conectado en claude.ai (1-11-2026); publicar solo tras la revisión de Javi.
 - **ElevenLabs**: la clave está como secreto del entorno «Predeterminado»; el entorno añade el encabezado `xi-api-key` a las peticiones a
   `api.elevenlabs.io` (no hay que ponerla en el código). Uso: voz Danny para guiones y efectos de sonido realistas.
   Voz Danny: `voice_id` **wnKyx1zkUEUnfURKiuaP** (modelo `eleven_multilingual_v2`). Efectos: `POST /v1/sound-generation`.
