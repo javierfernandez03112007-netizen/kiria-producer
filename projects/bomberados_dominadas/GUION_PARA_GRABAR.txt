@@ -1,0 +1,30 @@
+«¿QUÉ NOTA SACARÍAS EN LAS DOMINADAS DE BOMBERO?» (vídeo para todo el mundo, no solo opositores)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+La parte SIN VOZ (el muñeco haciendo las dominadas mientras sube la nota) la meto yo entre la frase 2 y la 3: no la grabes.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[serious, provocative] Si haces ONCE dominadas… suspendes la oposición de bombero en Andalucía.
+[excited] Mira qué nota sacarías tú.
+[serious] Y ojo, que no todas cuentan: [emphatic] barbilla POR ENCIMA de la barra, brazos estirados del todo al bajar… y sin balanceo ni patadas.
+[excited, emphatic] ¿Cuántas haces tú? Comenta tu número… ¡y MÁNDASELO a quien entrene contigo, a ver quién saca más nota!
+[energetic] ¿Vas en serio con la oposición? [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla)
+1. CON VOZ (≈ 3 s) — «Si haces once dominadas… suspendes la oposición de bombero en Andalucía.»
+   Pantalla: fondo claro y suave de estudio; un muñeco de bombero (casco y chaquetón con bandas reflectantes) colgado de la
+   barra; contador «11» y sello rojo «SUSPENSO» al decir «suspendes».
+2. CON VOZ (≈ 1,5 s) — «Mira qué nota sacarías tú.» El contador vuelve a 0 y aparece la tabla de notas.
+3. SIN VOZ (≈ 12 s) — El muñeco hace dominadas (las primeras a velocidad real, luego acelerado «×3»); el contador sube y la
+   nota se actualiza en cada umbral, con su sonido: 12 → 5 APROBADO · 16 → 6 · 20 → 7 · 24 → 8 · 26 → 9 · 30 → 10 (explosión
+   dorada). Al lado, la tabla oficial con dos columnas (hombres / mujeres: 12-14-18-21-23-25) que se va encendiendo.
+4. CON VOZ (≈ 7 s) — «Y ojo, que no todas cuentan…» El muñeco hace 3 repeticiones malas, cada una con ✗ rojo «NO CUENTA»:
+   barbilla por debajo de la barra, brazos sin estirar, balanceo y patada; y una buena con ✓ verde.
+5. CON VOZ ★ (≈ 5 s) — «¿Cuántas haces tú? Comenta tu número… ¡y mándaselo a quien entrene contigo…!» Golpe visual,
+   «COMENTA TU NÚMERO 👇» y avión de papel.
+6. CON VOZ ★ (≈ 4 s) — «¿Vas en serio con la oposición? ¡Bomberados! ¡Pruébala gratis cinco días!» Placa BOMBERADOS y botón.
+★ = momentos de venta: los más fuertes del vídeo.

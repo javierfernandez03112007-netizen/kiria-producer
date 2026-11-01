@@ -126,3 +126,12 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   pegados a su imagen (`sfx_track_leyes`, `_tramo`). Mezcla con «realce»: venta −12/−13 dB frente al gancho −15 dB.
 - ElevenLabs devolvió casi silencio para «quiet room tone»: `_to()` ya no sube más de +24 dB (antes lo convertía en ruido).
 - Limitador de la mezcla a −1 dBFS (antes −0,5): con el realce el pico real pasaba de 0 dBFS.
+
+## Alcance y siguiente paso (Javi, 1 nov)
+- Las Preguntas del día rondan las **10.000 visitas de media con poca interacción**. Se siguen haciendo (familiaridad con la
+  serie), pero hay que alternar con formatos de más alcance e interacción.
+- Formato nuevo (FORMATOS nº 13): **«¿Qué nota sacarías en la prueba física de bombero?»**, pensado para cualquier persona
+  que entrene (más alcance), con el muñeco de bombero haciendo la prueba, el contador y la nota subiendo según el baremo
+  oficial, partes con voz y una parte sin voz (la demostración), técnica para que no te anulen repeticiones y la pregunta
+  «¿cuántas haces tú? comenta tu número». Primero: dominadas (Decreto 36/2025 de Andalucía; tabla intermedia por CONFIRMAR).
+  Siguientes ideas: colocar un puntal (buscar convocatoria con baremo por tiempo), trepa de cuerda, press de banca, 100 m.

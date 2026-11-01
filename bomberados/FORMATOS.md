@@ -16,6 +16,7 @@ vídeos seguidos. Los que tienen ⚡ son los baratos para publicar a diario.
 | 9 | **Explicado en 30 s** | 30–45 s | Un concepto del temario con objetos que se transforman (triángulo → tetraedro del fuego, métodos de extinción…) | 3D | `engine/web/morph.js` |
 | 10 | **Convocatoria al día** | 15–30 s | Plazas abiertas / fechas / requisitos de una convocatoria real (BOE / boletín autonómico, con fecha) → «prepárala con Bomberados» | 2D, rápido | HUD de `projects/bomberos/` |
 | 11 | **Prueba física** | 25–45 s | Marcas exigidas en una convocatoria concreta (bases oficiales) con el cronómetro y el atleta-maniquí | 3D | — |
+| 13 | **¿Qué nota sacarías? (prueba física)** | 30–40 s | Para TODO el mundo, no solo opositores: «Si haces X… suspendes» → el muñeco de bombero hace la prueba sin voz (contador + nota que sube en cada umbral del baremo oficial, tabla H/M) → cómo hacerla bien para que no te la anulen → «¿cuántas haces tú? comenta tu número» → marca | 2D, fondo claro | `projects/bomberados_dominadas/` |
 | 12 | **Carrusel / foto** | — | 5–8 láminas 1080x1350 (miniaturas con preguntas, «guarda esto») desde `portada.py` | imagen | `projects/bomberados_ia/portada.py` |
 
 ## Reglas propias de las series ⚡
