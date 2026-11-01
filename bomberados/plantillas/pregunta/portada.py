@@ -14,7 +14,8 @@ sys.path.insert(0, REPO)
 from engine.subs import norm  # noqa: E402
 
 PROJ = os.path.join(REPO, sys.argv[1])
-Q = json.load(open(os.path.join(PROJ, "pregunta.json")))
+_cfg = os.path.join(PROJ, "pregunta.json")
+Q = json.load(open(_cfg if os.path.exists(_cfg) else os.path.join(PROJ, "video.json")))
 LINES = json.load(open(os.path.join(PROJ, "tiempos.json")))
 IMPACT = os.path.join(REPO, "engine", "fonts", "BebasNeue-Regular.ttf" if Q.get("estilo") == "app" else "impact.ttf")
 P = Q.get("portada", {})
@@ -26,7 +27,7 @@ def at(spec):
     return hits[k - 1]["start"] - 0.03
 
 
-fi = int(round((at(Q["cues"]["opciones"]) + P.get("desfase", 1.3)) * 60))   # «desfase»: s tras las opciones
+fi = int(round((P["t"] if "t" in P else at(Q["cues"]["opciones"]) + P.get("desfase", 1.3)) * 60))   # «t»: segundo exacto; si no, «desfase» tras las opciones
 im = Image.open(os.path.join(PROJ, "out", "frames", f"f{fi:05d}.jpg")).convert("RGB")
 W = im.width
 

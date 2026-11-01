@@ -1,0 +1,377 @@
+[
+ {
+  "text": "Si haces once dominadas… suspendes la oposición de bombero en Andalucía.",
+  "start": 0.0,
+  "end": 4.53,
+  "words": [
+   {
+    "w": "Si",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "haces",
+    "start": 0.24,
+    "end": 0.64
+   },
+   {
+    "w": "once",
+    "start": 0.64,
+    "end": 1.04
+   },
+   {
+    "w": "dominadas…",
+    "start": 1.04,
+    "end": 2.04
+   },
+   {
+    "w": "suspendes",
+    "start": 2.04,
+    "end": 2.64
+   },
+   {
+    "w": "la",
+    "start": 2.64,
+    "end": 2.8
+   },
+   {
+    "w": "oposición",
+    "start": 2.8,
+    "end": 3.2
+   },
+   {
+    "w": "de",
+    "start": 3.2,
+    "end": 3.36
+   },
+   {
+    "w": "bombero",
+    "start": 3.36,
+    "end": 3.84
+   },
+   {
+    "w": "en",
+    "start": 3.84,
+    "end": 3.92
+   },
+   {
+    "w": "Andalucía.",
+    "start": 3.92,
+    "end": 4.53
+   }
+  ]
+ },
+ {
+  "text": "Mira qué nota sacarías tú.",
+  "start": 4.78,
+  "end": 6.27,
+  "words": [
+   {
+    "w": "Mira",
+    "start": 4.78,
+    "end": 5.13
+   },
+   {
+    "w": "qué",
+    "start": 5.13,
+    "end": 5.29
+   },
+   {
+    "w": "nota",
+    "start": 5.29,
+    "end": 5.61
+   },
+   {
+    "w": "sacarías",
+    "start": 5.61,
+    "end": 6.17
+   },
+   {
+    "w": "tú.",
+    "start": 6.17,
+    "end": 6.27
+   }
+  ]
+ },
+ {
+  "text": "Y ojo, que no todas cuentan: barbilla por encima de la barra, brazos estirados del todo al bajar… y sin balanceo ni patadas.",
+  "start": 18.37,
+  "end": 26.04,
+  "words": [
+   {
+    "w": "Y",
+    "start": 18.37,
+    "end": 18.5
+   },
+   {
+    "w": "ojo,",
+    "start": 18.5,
+    "end": 18.99
+   },
+   {
+    "w": "que",
+    "start": 18.99,
+    "end": 19.13
+   },
+   {
+    "w": "no",
+    "start": 19.13,
+    "end": 19.29
+   },
+   {
+    "w": "todas",
+    "start": 19.29,
+    "end": 19.61
+   },
+   {
+    "w": "cuentan:",
+    "start": 19.61,
+    "end": 20.17
+   },
+   {
+    "w": "barbilla",
+    "start": 20.17,
+    "end": 20.95
+   },
+   {
+    "w": "por",
+    "start": 20.95,
+    "end": 21.11
+   },
+   {
+    "w": "encima",
+    "start": 21.11,
+    "end": 21.51
+   },
+   {
+    "w": "de",
+    "start": 21.51,
+    "end": 21.59
+   },
+   {
+    "w": "la",
+    "start": 21.59,
+    "end": 21.75
+   },
+   {
+    "w": "barra,",
+    "start": 21.75,
+    "end": 22.3
+   },
+   {
+    "w": "brazos",
+    "start": 22.3,
+    "end": 22.71
+   },
+   {
+    "w": "estirados",
+    "start": 22.71,
+    "end": 23.27
+   },
+   {
+    "w": "del",
+    "start": 23.27,
+    "end": 23.43
+   },
+   {
+    "w": "todo",
+    "start": 23.43,
+    "end": 23.67
+   },
+   {
+    "w": "al",
+    "start": 23.67,
+    "end": 23.83
+   },
+   {
+    "w": "bajar…",
+    "start": 23.83,
+    "end": 24.45
+   },
+   {
+    "w": "y",
+    "start": 24.45,
+    "end": 24.55
+   },
+   {
+    "w": "sin",
+    "start": 24.55,
+    "end": 24.71
+   },
+   {
+    "w": "balanceo",
+    "start": 24.71,
+    "end": 25.43
+   },
+   {
+    "w": "ni",
+    "start": 25.43,
+    "end": 25.59
+   },
+   {
+    "w": "patadas.",
+    "start": 25.59,
+    "end": 26.04
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántas haces tú? Comenta tu número… ¡y mándaselo a quien entrene contigo, a ver quién saca más nota!",
+  "start": 26.34,
+  "end": 31.59,
+  "words": [
+   {
+    "w": "¿Cuántas",
+    "start": 26.34,
+    "end": 26.62
+   },
+   {
+    "w": "haces",
+    "start": 26.62,
+    "end": 26.94
+   },
+   {
+    "w": "tú?",
+    "start": 26.94,
+    "end": 27.27
+   },
+   {
+    "w": "Comenta",
+    "start": 27.27,
+    "end": 27.63
+   },
+   {
+    "w": "tu",
+    "start": 27.63,
+    "end": 27.79
+   },
+   {
+    "w": "número…",
+    "start": 27.79,
+    "end": 28.38
+   },
+   {
+    "w": "¡y",
+    "start": 28.38,
+    "end": 28.517
+   },
+   {
+    "w": "mándaselo",
+    "start": 28.517,
+    "end": 29.14
+   },
+   {
+    "w": "a",
+    "start": 29.14,
+    "end": 29.22
+   },
+   {
+    "w": "quien",
+    "start": 29.22,
+    "end": 29.46
+   },
+   {
+    "w": "entrene",
+    "start": 29.46,
+    "end": 29.86
+   },
+   {
+    "w": "contigo,",
+    "start": 29.86,
+    "end": 30.33
+   },
+   {
+    "w": "a",
+    "start": 30.33,
+    "end": 30.42
+   },
+   {
+    "w": "ver",
+    "start": 30.42,
+    "end": 30.58
+   },
+   {
+    "w": "quién",
+    "start": 30.58,
+    "end": 30.82
+   },
+   {
+    "w": "saca",
+    "start": 30.82,
+    "end": 31.14
+   },
+   {
+    "w": "más",
+    "start": 31.14,
+    "end": 31.3
+   },
+   {
+    "w": "nota!",
+    "start": 31.3,
+    "end": 31.59
+   }
+  ]
+ },
+ {
+  "text": "¿Vas en serio con la oposición? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 31.89,
+  "end": 36.257,
+  "words": [
+   {
+    "w": "¿Vas",
+    "start": 31.89,
+    "end": 32.2
+   },
+   {
+    "w": "en",
+    "start": 32.2,
+    "end": 32.28
+   },
+   {
+    "w": "serio",
+    "start": 32.28,
+    "end": 32.6
+   },
+   {
+    "w": "con",
+    "start": 32.6,
+    "end": 32.68
+   },
+   {
+    "w": "la",
+    "start": 32.68,
+    "end": 32.84
+   },
+   {
+    "w": "oposición?",
+    "start": 32.84,
+    "end": 33.52
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 33.52,
+    "end": 34.694
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 34.694,
+    "end": 35.141
+   },
+   {
+    "w": "gratis",
+    "start": 35.141,
+    "end": 35.587
+   },
+   {
+    "w": "cinco",
+    "start": 35.587,
+    "end": 35.885
+   },
+   {
+    "w": "días!",
+    "start": 35.885,
+    "end": 36.257
+   }
+  ]
+ }
+]

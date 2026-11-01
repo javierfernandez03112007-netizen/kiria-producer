@@ -591,7 +591,9 @@ function share(t) {
   const q = back(prog(t, CUE.acierta ?? CUE.compartir + 0.8, 0.4));
   if (q > 0) {
     g.save(); g.translate(540, 520); g.scale(q, q);
-    txt('¿QUIÉN ACIERTA?', 0, 0, 92, GOLD, 400, 'center', DISPLAY);
+    g.font = `400 92px ${DISPLAY}`; g.textAlign = 'center'; g.lineJoin = 'round';
+    if (Q.fondo_claro) { g.strokeStyle = 'rgba(20,16,10,0.85)'; g.lineWidth = 10; g.strokeText(Q.compartir_titulo || '¿QUIÉN ACIERTA?', 0, 0); }
+    txt(Q.compartir_titulo || '¿QUIÉN ACIERTA?', 0, 0, 92, GOLD, 400, 'center', DISPLAY);
     g.restore();
   }
   g.restore();
@@ -1017,10 +1019,13 @@ window.renderAt = t => {
       new FontFace('SpaceMono', `url(${F}SpaceMono-Bold.ttf)`, { weight: '700' }), new FontFace('SpaceMono', `url(${F}SpaceMono-Regular.ttf)`, { weight: '400' }),
       new FontFace('Impact', `url(${F}impact.ttf)`), new FontFace('Bebas', `url(${F}BebasNeue-Regular.ttf)`)];
     for (const f of faces) { await f.load(); document.fonts.add(f); }
-    Q = await (await fetch('../pregunta.json')).json();
+    let r = await fetch('../pregunta.json');                     // otros formatos guardan su configuración en video.json
+    if (!r.ok) r = await fetch('../video.json');
+    Q = await r.json();
     APP = Q.estilo === 'app'; if (APP) DISPLAY = 'Bebas';
     if (Q.ey) EY = Q.ey;
     const lines = await (await fetch('../tiempos.json')).json();
+    window.LINES_ = lines;                                      // para otros formatos (dominadas.js)
     for (const [k, v] of Object.entries(Q.cues)) CUE[k] = Array.isArray(v[0]) ? v.map(s => cueTime(s, lines)) : cueTime(v, lines);
     END = lines[lines.length - 1].end + 1.2;
     window.END = END;

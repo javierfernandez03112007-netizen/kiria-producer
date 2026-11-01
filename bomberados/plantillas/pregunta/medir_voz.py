@@ -19,7 +19,7 @@ toma = sys.argv[sys.argv.index("--toma") + 1] if "--toma" in sys.argv else None
 mp3 = os.path.join(toma, "voz_original.mp3") if toma else os.path.join(proj, "assets", "voz_original.mp3")
 words = json.load(open(os.path.join(toma, "asr_original.json") if toma else os.path.join(proj, "asr_original.json")))
 lines = [l.strip() for l in open(os.path.join(proj, "script.txt"), encoding="utf-8") if l.strip()]
-cfg = json.load(open(os.path.join(proj, "pregunta.json")))
+cfg = json.load(open(os.path.join(proj, "pregunta.json") if os.path.exists(os.path.join(proj, "pregunta.json")) else os.path.join(proj, "video.json")))
 venta = {}                                  # frase → palabra desde la que se mide (la del cue)
 for c in cfg.get("realce", ["compartir", "marca", "prueba"]):
     if c in cfg["cues"]:

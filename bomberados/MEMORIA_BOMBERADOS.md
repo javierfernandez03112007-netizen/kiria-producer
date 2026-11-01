@@ -62,6 +62,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | Promo 2º simulacro examen bombero Ciudad Real | `projects/bomberados_simulacro/` | **entregado** 31 oct (21,8 s, 12 €, para la cuenta @elitebomberos) |
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
+| ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -135,3 +136,14 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   oficial, partes con voz y una parte sin voz (la demostración), técnica para que no te anulen repeticiones y la pregunta
   «¿cuántas haces tú? comenta tu número». Primero: dominadas (Decreto 36/2025 de Andalucía; tabla intermedia por CONFIRMAR).
   Siguientes ideas: colocar un puntal (buscar convocatoria con baremo por tiempo), trepa de cuerda, press de banca, 100 m.
+
+### ¿Qué nota sacarías? Dominadas — cómo se hizo (1 nov)
+- Escena `bomberados/plantillas/pregunta/dominadas.js` (sustituye el renderAt de scene.js; config en `video.json`, que ahora
+  leen scene.js, compose.py, portada.py y medir_voz.py): estudio claro, muñeco de bombero con cinemática real de dominada
+  (manos fijas, codos por IK), contador, nota por umbral, escala H/M, ×4 honesto en la parte acelerada, técnica ✓/✗ y venta.
+- La parte sin voz es el hueco de `voz.count` tras la frase 2 (`count_line: 1`): ajustar_voz.py la mete sola.
+- El reconocedor oyó «1 minadas» en el archivo entero; aislado oye «once dominadas»: se corrigieron esas dos palabras a mano.
+- Mezcla: música solo en la parte sin voz; venta −14,8/−13,8 dB frente al gancho −15,6. Limitador de la plantilla a −1,5 dBFS
+  (con AAC el pico real pasaba de 0 dBFS) y «ganancia» −0,4 → −15,8 LUFS, pico −0,7.
+- Render ligero: 2,8 fotogramas/s (37 s en 14 min). Si se cambia un tramo, se puede renderizar solo ese rango
+  (`capture.mjs out/frames --range A B w 4`) y volver a componer.

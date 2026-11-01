@@ -13,6 +13,8 @@
  },
  "realce": ["compartir", "marca", "prueba"],
  "compartir_a": "QUIEN ENTRENE CONTIGO",
- "portada": {"titulo": "¿QUÉ NOTA SACARÍAS?", "etiqueta": "PRUEBA FÍSICA DE BOMBERO · DOMINADAS"},
- "mezcla": {"sfx": 1.0}
+ "compartir_titulo": "¿QUIÉN SACA MÁS NOTA?",
+ "fondo_claro": true,
+ "portada": {"titulo": "¿QUÉ NOTA SACARÍAS?", "etiqueta": "PRUEBA FÍSICA DE BOMBERO · DOMINADAS", "t": 16.8},
+ "mezcla": {"sfx": 1.0, "ganancia": -0.4}
 }

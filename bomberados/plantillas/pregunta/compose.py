@@ -22,7 +22,8 @@ from engine.subs import Subs, norm  # noqa: E402
 
 FPS, W, H = 60, 1080, 1920
 PROJ = os.path.join(REPO, sys.argv[1])
-Q = json.load(open(os.path.join(PROJ, "pregunta.json")))
+_cfg = os.path.join(PROJ, "pregunta.json")
+Q = json.load(open(_cfg if os.path.exists(_cfg) else os.path.join(PROJ, "video.json")))
 LINES = json.load(open(os.path.join(PROJ, "tiempos.json")))
 END = LINES[-1]["end"] + 1.2
 N = int(END * FPS)
@@ -433,7 +434,85 @@ def sfx_track_leyes(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
 
+
+# ---------------------------------------------------------------- formato «¿Qué nota sacarías?» (dominadas.js)
+def _pitch(x, f):                     # sube el tono (y acorta) un efecto: f > 1 más agudo
+    idx = np.arange(0, len(x) - 1, f)
+    return np.stack([np.interp(idx, np.arange(len(x)), x[:, c]) for c in range(2)], 1)
+
+
+def sfx_track_prueba(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    # misma línea de tiempo que PB en dominadas.js
+    d0, d1 = LINES[1]["end"] + 0.12, LINES[2]["start"] - 0.25
+    raw = [1.15 - 0.1 * (k - 1) if k <= 3 else 0.8 - 0.07 * (k - 3) if k <= 8 else 0.3 if k <= 27 else [0.45, 0.65, 0.95][k - 28] for k in range(1, 31)]
+    span = d1 - d0 - 1.1
+    durs = [x * span / sum(raw) for x in raw]
+    ends = list(d0 + np.cumsum(durs))
+    tops = [e - 0.58 * d for e, d in zip(ends, durs)]          # cuando la barbilla pasa la barra (cuenta la repetición)
+    T = Q.get("tabla", {"hombres": [12, 16, 20, 24, 26, 30]})
+    tic = _onset(_load("tic"))
+    # gancho: la 11 en «once», sello y zumbido en «suspendes», cae al suelo y vuelve a la barra en «mira»
+    _put(out, _tramo(_to(tic, -26), 0.18, 0.001, 0.06), c["once"])
+    _put(out, _tramo(_to(_onset(_load("sello")), -17), 0.3, 0.001, 0.1), c["suspendes"] + 0.08)
+    _put(out, _tramo(_to(_onset(_load("fallo")), -27), 0.6, 0.002, 0.15), c["suspendes"] + 0.1)
+    _put(out, _tramo(_to(_onset(_load("caida")), -21), 0.3, 0.002, 0.1), c["suspendes"] + 0.48)
+    _put(out, _tramo(_to(_onset(_load("salto")), -22), 0.26, 0.002, 0.08), c["mira"] + 0.38)
+    # parte sin voz: música solo mientras dura la demostración, un tic por repetición, la nota que sube y el 10
+    _put(amb, _tramo(_to(_load("musica"), -22), d1 + 0.25 - d0, 0.15, 0.45), d0)
+    for k, tp in enumerate(tops):
+        _put(out, _tramo(_to(tic, -27), 0.12, 0.001, 0.05), tp, 0.8 if 3 <= k < 27 else 1.0)
+    br = _onset(_load("barra"))
+    for k in range(3):
+        _put(out, _tramo(_to(br, -30), 0.25, 0.005, 0.08), ends[k] - durs[k] + 0.05)
+    nota = _onset(_load("nota"))
+    for i, n in enumerate(T["hombres"][:-1]):
+        _put(out, _tramo(_to(_pitch(nota, 1 + 0.07 * i), -22), 0.5, 0.002, 0.15), tops[n - 1])
+    _put(out, _tramo(_to(_onset(_load("diez")), -18), 1.15, 0.002, 0.3), tops[29])
+    av = _onset(_load("avance"))
+    _put(out, _tramo(_to(av, -28), min(len(av) / sfx.SR, ends[27] - ends[3]), 0.05, 0.3), ends[3])
+    # técnica: ✗ y ✓ cuando aparece cada uno
+    for k, good in (("ojo", False), ("barbilla", True), ("brazos", True), ("balanceo", False)):
+        if k in c:
+            snd = _onset(_load("acierto" if good else "fallo"))
+            _put(out, _tramo(_to(snd, -25 if good else -27), 0.3 if good else 0.45, 0.002, 0.1), c[k] + 0.45)
+    # venta: burbujas, avión mientras vuela, destellos, fuego al pasar a las brasas y la marca
+    bu = _onset(_load("burbuja"))
+    for k in ("cuantas", "comenta"):
+        if k in c:
+            _put(out, _tramo(_to(bu, -25), 0.12, 0.001, 0.04), c[k])
+    de = _onset(_load("destello"))
+    for k in ("compartir", "marca", "prueba"):
+        if k in c:
+            _put(out, _tramo(_to(de, -24), 0.6, 0.002, 0.2), c[k] - 0.04)
+    if "compartir" in c:
+        av2 = _onset(_load("avion"))
+        _put(out, _tramo(_to(av2, -28), 0.62, 0.02, 0.1), c["compartir"])
+        _put(out, _tramo(_to(av2, -30), 0.6, 0.08, 0.15), c["compartir"] + 0.6)
+        _put(out, _tramo(_to(bu, -24), 0.12, 0.001, 0.04), c["compartir"] + 1.2)
+    tM = c["marca"]
+    fu = _load("fuego")[int(0.3 * sfx.SR):]
+    _put(out, _tramo(_to(fu, -27), 0.9, 0.02, 0.3), tM - 0.3)
+    _put(amb, _tramo(_to(_load("brasas"), -36), END - (tM + 0.2), 0.4, 0.3), tM + 0.2)
+    _put(out, _tramo(_to(_onset(_load("marca")), -26), 1.0, 0.002, 0.25), tM - 0.05)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
 def sfx_any(path):
+    if Q.get("formato") == "nota_prueba":
+        return sfx_track_prueba(path)
     {"pas": sfx_track_pas, "leyes": sfx_track_leyes}.get(Q.get("intro"), sfx_track)(path)
 
 def realce():
@@ -460,7 +539,7 @@ def audio_filter():
     rs = realce()
     return ("[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,volume='" + _envelope(rs, 0.41) + "':eval=frame,aresample=48000,"
             "aformat=channel_layouts=stereo,apad[v];[2:a]volume=" + str(sv) + ",volume='" + _envelope(rs, -0.6) + "':eval=frame[s];"
-            "[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.891:level=disabled[a]")
+            "[v][s]amix=inputs=2:duration=first:normalize=0,volume=" + str(gan) + "dB,alimiter=limit=0.841:level=disabled[a]")
 
 
 def main():
