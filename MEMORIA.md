@@ -44,6 +44,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 - **Magisterio** (`projects/magisterio/`, 1-11-2026): idea de Javi (desmentir que Magisterio es «solo collares de macarrones»). 60 s (Javi
   pidió vídeos de 60 s, no más largos) y **todo dentro del aula de Infantil** (Javi: «que no se salga del entorno de Magisterio»): pizarra
   con tiza, rincones, mesas con macarrones, mesa de la maestra. Voz generada aquí con `engine/tts.py`; efectos reales con `sfx_eleven.py`.
+  Entregado el 1-11-2026 (61,2 s, 60 fps, 50 MB, −15 LUFS). Render: esta máquina va a ≈ 0,3–0,4 fotogramas/s con esta escena; con
+  6 máquinas de ayuda (`render_chunk.sh A B X` → ramas `render-mag-1…6`, `fetch_compose.sh` las recoge y compone) tardó ≈ 30 min.
+  Pendiente de permiso: borrar las ramas `render-mag-*` y archivar las 6 sesiones «Render Magisterio».
 
 ## Herramientas y accesos
 - **Voz y efectos desde la sesión**: `python3 engine/tts.py projects/<p>` (voz de Danny + tiempos de cada palabra, sin reconocedor)
