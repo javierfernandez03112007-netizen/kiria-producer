@@ -63,7 +63,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 | ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
-| Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **guion enviado** 2 nov; escena hecha con tiempos provisionales; falta la voz de Javi y los efectos (Notion: jue 5 nov 20:30) |
+| Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -157,8 +157,13 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Escena `bomberados/plantillas/pregunta/tetraedro.js` (ver README de la plantilla) y `tiempos_prov.py` para trabajar sin voz.
 - Fuentes: INSST NTP 599, NTP 99 y Tema 5 (insst.es no abre desde aquí: comprobar frases). El vídeo dice que el polvo
   apaga las llamas «de otra forma» (inhibición de la reacción en cadena), no que solo actúe así.
-- ElevenLabs NO está conectado en esta sesión (el proxy no añade la clave: 401/«API key is invalid»). Para los efectos hace
-  falta que Javi guarde la clave en la configuración del entorno (Network secrets / variable `XI_API_KEY`), nunca en el chat.
+- ElevenLabs NO estaba conectado en esta sesión (el proxy no añadía la clave: 401/«API key is invalid»). Se resolvió
+  reutilizando la biblioteca de efectos de ElevenLabs de los vídeos anteriores (copiados en `assets/sfx`): fuego, brasas,
+  vapor (chorro del extintor y humo), cepo (eslabón que se parte), barra (eslabones), golpe (tetraedro), diez (rótulo),
+  whoosh, nota, latido, toque, burbuja, destello, avión y marca. Para generar efectos nuevos: Network secrets del entorno
+  con `api.elevenlabs.io` y cabecera `xi-api-key` (sin prefijo), nunca la clave en el chat.
+- Voz de Javi (una toma): el reconocedor la entendió entera; `medir_voz.py` OK. En video.json, las claves de `voz.pause`
+  son el número de frase (desde 1) tras la que va la pausa.
 
 ## Idea de Javi (2 nov): «dron» alrededor de una persona que habla a cámara
 - Pregunta: con un vídeo de una persona hablando y fotos de lo que tiene delante y a los lados, ¿se pueden hacer varias

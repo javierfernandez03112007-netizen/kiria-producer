@@ -1,596 +1,596 @@
 [
  {
   "text": "Te enseñaron que el fuego es un triángulo… y le falta una pieza.",
-  "start": 0.0,
-  "end": 4.312,
+  "start": 0.06,
+  "end": 4.02,
   "words": [
    {
     "w": "Te",
-    "start": 0.0,
-    "end": 0.199
+    "start": 0.06,
+    "end": 0.3
    },
    {
     "w": "enseñaron",
-    "start": 0.199,
-    "end": 0.874
+    "start": 0.3,
+    "end": 0.86
    },
    {
     "w": "que",
-    "start": 0.874,
-    "end": 1.072
+    "start": 0.86,
+    "end": 1.02
    },
    {
     "w": "el",
-    "start": 1.072,
-    "end": 1.271
+    "start": 1.02,
+    "end": 1.1
    },
    {
     "w": "fuego",
-    "start": 1.271,
-    "end": 1.629
+    "start": 1.1,
+    "end": 1.42
    },
    {
     "w": "es",
-    "start": 1.629,
-    "end": 1.827
+    "start": 1.42,
+    "end": 1.58
    },
    {
     "w": "un",
-    "start": 1.827,
-    "end": 2.026
+    "start": 1.58,
+    "end": 1.74
    },
    {
     "w": "triángulo…",
-    "start": 2.026,
-    "end": 2.542
+    "start": 1.74,
+    "end": 2.65
    },
    {
     "w": "y",
-    "start": 2.842,
-    "end": 3.041
+    "start": 2.65,
+    "end": 2.73
    },
    {
     "w": "le",
-    "start": 3.041,
-    "end": 3.24
+    "start": 2.73,
+    "end": 2.97
    },
    {
     "w": "falta",
-    "start": 3.24,
-    "end": 3.597
+    "start": 2.97,
+    "end": 3.37
    },
    {
     "w": "una",
-    "start": 3.597,
-    "end": 3.955
+    "start": 3.37,
+    "end": 3.61
    },
    {
     "w": "pieza.",
-    "start": 3.955,
-    "end": 4.312
+    "start": 3.61,
+    "end": 4.02
    }
   ]
  },
  {
   "text": "¿Sabes cuál?",
-  "start": 4.432,
-  "end": 4.988,
+  "start": 4.14,
+  "end": 4.71,
   "words": [
    {
     "w": "¿Sabes",
-    "start": 4.432,
-    "end": 4.789
+    "start": 4.14,
+    "end": 4.45
    },
    {
     "w": "cuál?",
-    "start": 4.789,
-    "end": 4.988
+    "start": 4.45,
+    "end": 4.71
    }
   ]
  },
  {
   "text": "Combustible, oxígeno y calor: quita uno y el fuego se apaga.",
-  "start": 5.288,
-  "end": 9.659,
+  "start": 5.01,
+  "end": 9.05,
   "words": [
    {
     "w": "Combustible,",
-    "start": 5.288,
-    "end": 5.963
+    "start": 5.01,
+    "end": 5.89
    },
    {
     "w": "oxígeno",
-    "start": 6.063,
-    "end": 6.738
+    "start": 5.89,
+    "end": 6.45
    },
    {
     "w": "y",
-    "start": 6.738,
-    "end": 6.937
+    "start": 6.45,
+    "end": 6.61
    },
    {
     "w": "calor:",
-    "start": 6.937,
-    "end": 7.294
+    "start": 6.61,
+    "end": 7.11
    },
    {
     "w": "quita",
-    "start": 7.474,
-    "end": 7.831
+    "start": 7.11,
+    "end": 7.45
    },
    {
     "w": "uno",
-    "start": 7.831,
-    "end": 8.189
+    "start": 7.45,
+    "end": 7.88
    },
    {
     "w": "y",
-    "start": 8.189,
-    "end": 8.388
+    "start": 7.88,
+    "end": 7.979
    },
    {
     "w": "el",
-    "start": 8.388,
-    "end": 8.586
+    "start": 7.979,
+    "end": 8.1
    },
    {
     "w": "fuego",
-    "start": 8.586,
-    "end": 8.944
+    "start": 8.1,
+    "end": 8.5
    },
    {
     "w": "se",
-    "start": 8.944,
-    "end": 9.143
+    "start": 8.5,
+    "end": 8.66
    },
    {
     "w": "apaga.",
-    "start": 9.143,
-    "end": 9.659
+    "start": 8.66,
+    "end": 9.05
    }
   ]
  },
  {
   "text": "Pero el polvo de un extintor apaga las llamas de otra forma.",
-  "start": 9.909,
-  "end": 13.722,
+  "start": 9.3,
+  "end": 12.93,
   "words": [
    {
     "w": "Pero",
-    "start": 9.909,
-    "end": 10.266
+    "start": 9.3,
+    "end": 9.38
    },
    {
     "w": "el",
-    "start": 10.266,
-    "end": 10.465
+    "start": 9.38,
+    "end": 9.54
    },
    {
     "w": "polvo",
-    "start": 10.465,
-    "end": 10.823
+    "start": 9.54,
+    "end": 9.86
    },
    {
     "w": "de",
-    "start": 10.823,
-    "end": 11.021
+    "start": 9.86,
+    "end": 10.02
    },
    {
     "w": "un",
-    "start": 11.021,
-    "end": 11.22
+    "start": 10.02,
+    "end": 10.18
    },
    {
     "w": "extintor",
-    "start": 11.22,
-    "end": 11.736
+    "start": 10.18,
+    "end": 10.74
    },
    {
     "w": "apaga",
-    "start": 11.736,
-    "end": 12.252
+    "start": 10.74,
+    "end": 11.14
    },
    {
     "w": "las",
-    "start": 12.252,
-    "end": 12.451
+    "start": 11.14,
+    "end": 11.3
    },
    {
     "w": "llamas",
-    "start": 12.451,
-    "end": 12.809
+    "start": 11.3,
+    "end": 11.94
    },
    {
     "w": "de",
-    "start": 12.809,
-    "end": 13.007
+    "start": 11.94,
+    "end": 12.18
    },
    {
     "w": "otra",
-    "start": 13.007,
-    "end": 13.365
+    "start": 12.18,
+    "end": 12.66
    },
    {
     "w": "forma.",
-    "start": 13.365,
-    "end": 13.722
+    "start": 12.66,
+    "end": 12.93
    }
   ]
  },
  {
   "text": "Hay una cuarta pieza: la que hace que el fuego se alimente solo… la reacción en cadena.",
-  "start": 14.042,
-  "end": 19.805,
+  "start": 13.25,
+  "end": 18.47,
   "words": [
    {
     "w": "Hay",
-    "start": 14.042,
-    "end": 14.241
+    "start": 13.25,
+    "end": 13.44
    },
    {
     "w": "una",
-    "start": 14.241,
-    "end": 14.598
+    "start": 13.44,
+    "end": 13.68
    },
    {
     "w": "cuarta",
-    "start": 14.598,
-    "end": 14.956
+    "start": 13.68,
+    "end": 14.08
    },
    {
     "w": "pieza:",
-    "start": 14.956,
-    "end": 15.313
+    "start": 14.08,
+    "end": 14.65
    },
    {
     "w": "la",
-    "start": 15.493,
-    "end": 15.692
+    "start": 14.65,
+    "end": 14.749
    },
    {
     "w": "que",
-    "start": 15.692,
-    "end": 15.891
+    "start": 14.749,
+    "end": 14.87
    },
    {
     "w": "hace",
-    "start": 15.891,
-    "end": 16.248
+    "start": 14.87,
+    "end": 15.19
    },
    {
     "w": "que",
-    "start": 16.248,
-    "end": 16.447
+    "start": 15.19,
+    "end": 15.35
    },
    {
     "w": "el",
-    "start": 16.447,
-    "end": 16.645
+    "start": 15.35,
+    "end": 15.43
    },
    {
     "w": "fuego",
-    "start": 16.645,
-    "end": 17.003
+    "start": 15.43,
+    "end": 15.83
    },
    {
     "w": "se",
-    "start": 17.003,
-    "end": 17.202
+    "start": 15.83,
+    "end": 15.99
    },
    {
     "w": "alimente",
-    "start": 17.202,
-    "end": 17.877
+    "start": 15.99,
+    "end": 16.55
    },
    {
     "w": "solo…",
-    "start": 17.877,
-    "end": 18.234
+    "start": 16.55,
+    "end": 17.15
    },
    {
     "w": "la",
-    "start": 18.534,
-    "end": 18.733
+    "start": 17.15,
+    "end": 17.25
    },
    {
     "w": "reacción",
-    "start": 18.733,
-    "end": 19.09
+    "start": 17.25,
+    "end": 17.81
    },
    {
     "w": "en",
-    "start": 19.09,
-    "end": 19.289
+    "start": 17.81,
+    "end": 17.97
    },
    {
     "w": "cadena.",
-    "start": 19.289,
-    "end": 19.805
+    "start": 17.97,
+    "end": 18.47
    }
   ]
  },
  {
   "text": "Y el polvo la corta.",
-  "start": 19.985,
-  "end": 21.296,
+  "start": 18.65,
+  "end": 19.77,
   "words": [
    {
     "w": "Y",
-    "start": 19.985,
-    "end": 20.184
+    "start": 18.65,
+    "end": 18.722
    },
    {
     "w": "el",
-    "start": 20.184,
-    "end": 20.382
+    "start": 18.722,
+    "end": 18.81
    },
    {
     "w": "polvo",
-    "start": 20.382,
-    "end": 20.74
+    "start": 18.81,
+    "end": 19.29
    },
    {
     "w": "la",
-    "start": 20.74,
-    "end": 20.939
+    "start": 19.29,
+    "end": 19.45
    },
    {
     "w": "corta.",
-    "start": 20.939,
-    "end": 21.296
+    "start": 19.45,
+    "end": 19.77
    }
   ]
  },
  {
   "text": "Por eso el fuego no es un triángulo… ¡es un tetraedro!",
-  "start": 21.546,
-  "end": 24.984,
+  "start": 20.02,
+  "end": 23.49,
   "words": [
    {
     "w": "Por",
-    "start": 21.546,
-    "end": 21.745
+    "start": 20.02,
+    "end": 20.18
    },
    {
     "w": "eso",
-    "start": 21.745,
-    "end": 22.102
+    "start": 20.18,
+    "end": 20.34
    },
    {
     "w": "el",
-    "start": 22.102,
-    "end": 22.301
+    "start": 20.34,
+    "end": 20.5
    },
    {
     "w": "fuego",
-    "start": 22.301,
-    "end": 22.658
+    "start": 20.5,
+    "end": 20.9
    },
    {
     "w": "no",
-    "start": 22.658,
-    "end": 22.857
+    "start": 20.9,
+    "end": 21.06
    },
    {
     "w": "es",
-    "start": 22.857,
-    "end": 23.056
+    "start": 21.06,
+    "end": 21.22
    },
    {
     "w": "un",
-    "start": 23.056,
-    "end": 23.255
+    "start": 21.22,
+    "end": 21.38
    },
    {
     "w": "triángulo…",
-    "start": 23.255,
-    "end": 23.771
+    "start": 21.38,
+    "end": 22.25
    },
    {
     "w": "¡es",
-    "start": 24.071,
-    "end": 24.269
+    "start": 22.25,
+    "end": 22.45
    },
    {
     "w": "un",
-    "start": 24.269,
-    "end": 24.468
+    "start": 22.45,
+    "end": 22.61
    },
    {
     "w": "tetraedro!",
-    "start": 24.468,
-    "end": 24.984
+    "start": 22.61,
+    "end": 23.49
    }
   ]
  },
  {
   "text": "¿A ti te lo enseñaron con triángulo o con tetraedro? Comenta.",
-  "start": 25.284,
-  "end": 28.999,
+  "start": 23.79,
+  "end": 27.08,
   "words": [
    {
     "w": "¿A",
-    "start": 25.284,
-    "end": 25.483
+    "start": 23.79,
+    "end": 23.871
    },
    {
     "w": "ti",
-    "start": 25.483,
-    "end": 25.681
+    "start": 23.871,
+    "end": 23.97
    },
    {
     "w": "te",
-    "start": 25.681,
-    "end": 25.88
+    "start": 23.97,
+    "end": 24.05
    },
    {
     "w": "lo",
-    "start": 25.88,
-    "end": 26.079
+    "start": 24.05,
+    "end": 24.21
    },
    {
     "w": "enseñaron",
-    "start": 26.079,
-    "end": 26.754
+    "start": 24.21,
+    "end": 24.77
    },
    {
     "w": "con",
-    "start": 26.754,
-    "end": 26.953
+    "start": 24.77,
+    "end": 24.93
    },
    {
     "w": "triángulo",
-    "start": 26.953,
-    "end": 27.469
+    "start": 24.93,
+    "end": 25.41
    },
    {
     "w": "o",
-    "start": 27.469,
-    "end": 27.667
+    "start": 25.41,
+    "end": 25.57
    },
    {
     "w": "con",
-    "start": 27.667,
-    "end": 27.866
+    "start": 25.57,
+    "end": 25.73
    },
    {
     "w": "tetraedro?",
-    "start": 27.866,
-    "end": 28.382
+    "start": 25.73,
+    "end": 26.64
    },
    {
     "w": "Comenta.",
-    "start": 28.482,
-    "end": 28.999
+    "start": 26.64,
+    "end": 27.08
    }
   ]
  },
  {
   "text": "¡Y mándaselo a tu compañero de oposición, a ver si lo sabía!",
-  "start": 29.149,
-  "end": 34.129,
+  "start": 27.23,
+  "end": 30.36,
   "words": [
    {
     "w": "¡Y",
-    "start": 29.149,
-    "end": 29.389
+    "start": 27.23,
+    "end": 27.36
    },
    {
     "w": "mándaselo",
-    "start": 29.389,
-    "end": 30.229
+    "start": 27.36,
+    "end": 28.08
    },
    {
     "w": "a",
-    "start": 30.229,
-    "end": 30.469
+    "start": 28.08,
+    "end": 28.16
    },
    {
     "w": "tu",
-    "start": 30.469,
-    "end": 30.709
+    "start": 28.16,
+    "end": 28.32
    },
    {
     "w": "compañero",
-    "start": 30.709,
-    "end": 31.549
+    "start": 28.32,
+    "end": 28.72
    },
    {
     "w": "de",
-    "start": 31.549,
-    "end": 31.789
+    "start": 28.72,
+    "end": 28.88
    },
    {
     "w": "oposición,",
-    "start": 31.789,
-    "end": 32.629
+    "start": 28.88,
+    "end": 29.44
    },
    {
     "w": "a",
-    "start": 32.729,
-    "end": 32.969
+    "start": 29.44,
+    "end": 29.6
    },
    {
     "w": "ver",
-    "start": 32.969,
-    "end": 33.209
+    "start": 29.6,
+    "end": 29.68
    },
    {
     "w": "si",
-    "start": 33.209,
-    "end": 33.449
+    "start": 29.68,
+    "end": 29.84
    },
    {
     "w": "lo",
-    "start": 33.449,
-    "end": 33.689
+    "start": 29.84,
+    "end": 30.0
    },
    {
     "w": "sabía!",
-    "start": 33.689,
-    "end": 34.129
+    "start": 30.0,
+    "end": 30.36
    }
   ]
  },
  {
   "text": "¿Vas en serio con la oposición? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 34.429,
-  "end": 39.469,
+  "start": 30.66,
+  "end": 35.157,
   "words": [
    {
     "w": "¿Vas",
-    "start": 34.429,
-    "end": 34.669
+    "start": 30.66,
+    "end": 30.96
    },
    {
     "w": "en",
-    "start": 34.669,
-    "end": 34.909
+    "start": 30.96,
+    "end": 31.12
    },
    {
     "w": "serio",
-    "start": 34.909,
-    "end": 35.349
+    "start": 31.12,
+    "end": 31.44
    },
    {
     "w": "con",
-    "start": 35.349,
-    "end": 35.589
+    "start": 31.44,
+    "end": 31.6
    },
    {
     "w": "la",
-    "start": 35.589,
-    "end": 35.829
+    "start": 31.6,
+    "end": 31.68
    },
    {
     "w": "oposición?",
-    "start": 35.829,
-    "end": 36.669
+    "start": 31.68,
+    "end": 32.43
    },
    {
     "w": "¡Bomberados!",
-    "start": 36.769,
-    "end": 37.609
+    "start": 32.43,
+    "end": 33.634
    },
    {
     "w": "¡Pruébala",
-    "start": 37.709,
-    "end": 38.349
+    "start": 33.634,
+    "end": 34.045
    },
    {
     "w": "gratis",
-    "start": 38.349,
-    "end": 38.789
+    "start": 34.045,
+    "end": 34.494
    },
    {
     "w": "cinco",
-    "start": 38.789,
-    "end": 39.229
+    "start": 34.494,
+    "end": 34.793
    },
    {
     "w": "días!",
-    "start": 39.229,
-    "end": 39.469
+    "start": 34.793,
+    "end": 35.157
    }
   ]
  }

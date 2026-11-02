@@ -28,7 +28,7 @@ LINES = json.load(open(os.path.join(PROJ, "tiempos.json")))
 END = LINES[-1]["end"] + 1.2
 N = int(END * FPS)
 FRAMES = os.path.join(PROJ, "out", "frames")
-AUDIO = os.path.join(PROJ, "assets", "voz.mp3")
+AUDIO = os.environ.get("VOZ") or os.path.join(PROJ, "assets", "voz.mp3")   # VOZ=…: otra pista (p. ej. silencio para un avance sin voz)
 WORDS = [dict(w, n=norm(w["w"]), line=i + 1) for i, l in enumerate(LINES) for w in l["words"]]
 SUBS = None
 
@@ -510,7 +510,110 @@ def sfx_track_prueba(path):
         wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
+# ---------------------------------------------------------------- formato «tetraedro» (tetraedro.js, «Explicado en 30 s»)
+# Efectos de ElevenLabs ya generados para otros vídeos (copiados en assets/sfx). Misma línea de tiempo que TT en
+# tetraedro.js: cada sonido empieza cuando empieza su imagen y acaba cuando acaba (_tramo).
+def sfx_track_tetra(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))           # la llama que arde y las brasas: bajan cuando habla la voz
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(f1=c["triangulo"] + 0.22, ign=c["fuego"] - 0.05, lift=c["falta"] - 0.05, q=c["pieza"], cual=c["cual"],
+             b=[c["combustible"], c["oxigeno"], c["calor"]], quita=c["quita"] + 0.05, out1=c["apaga"] + 0.3,
+             noz=c["polvo"] - 0.12, spray0=c["extintor"] + 0.06, spray1=c["otra"] + 0.2, die2=c["apaga2"] - 0.05,
+             out2=c["llamas"] + 0.35, red=c["otra"], zoom=c["cuarta"] - 0.15, feed=c["alimente"] - 0.1, lab=c["reaccion"],
+             jet=c["polvo2"] - 0.05, cut=c["corta"] + 0.04, back=c["triangulo2"] - 0.35, no=c["triangulo2"],
+             tet=c["tetraedro"] - 0.08, triO=c["op_tri"], tetO=c["op_tet"], com=c["comenta"], share=c["compartir"],
+             marca=c["marca"])
+    T["ret"] = min(c["polvo"] - 0.5, LINES[2]["end"] + 0.1)
+    T["relit"] = T["ret"] + 0.2
+    fuego, brasas, vapor = _load("fuego"), _load("brasas"), _load("vapor")
+    ign, bub, bar = _onset(fuego), _onset(_load("burbuja")), _onset(_load("barra"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]          # tramo continuo de la llama
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    def flame(a, b, fade=0.3):                                # la llama del centro mientras se ve
+        if b - a > 0.1:
+            put(burn, a, -30, b - a, 0.15, fade, track=amb)
+
+    # 1) gancho: la mecha chisporrotea hasta que se apagan sus llamitas; el triángulo se cierra
+    put(brasas, 0.0, -27, T["f1"] + 0.6, 0.002, 0.4)
+    put(vapor[int(1.0 * sfx.SR):], 0.0, -35, T["f1"] + 0.3, 0.002, 0.3)
+    put("whoosh2", T["f1"] - 0.35, -27, 0.9)
+    # 2) prende la llama del centro y arde
+    put(ign, T["ign"] - 0.05, -25, 0.9, 0.01, 0.3)
+    flame(T["ign"] + 0.3, T["out1"])
+    # 3) se despega en 3D, salta el «?» y late en «cuál»
+    put("whoosh", T["lift"], -27, 0.7)
+    put("nota", T["q"], -25, 0.9)
+    put("toque", T["cual"] + 0.05, -26, 0.4)
+    # 4) insignias: combustible, oxígeno, calor
+    for i, tb in enumerate(T["b"]):
+        put(_pitch(bub, 1 + 0.08 * i), tb, -25, 0.3)
+    # 5) «quita»: el calor sale despedido, la llama se apaga y humea; vuelve y prende otra vez
+    put("whoosh2", T["quita"] - 0.1, -25, 0.7)
+    put(vapor, T["out1"] - 0.2, -33, 1.9, 0.2, 0.8)
+    put("whoosh", T["ret"], -29, 0.5)
+    put(ign, T["relit"] - 0.05, -27, 0.6, 0.01, 0.2)
+    flame(T["relit"] + 0.2, T["out2"])
+    # 6) extintor: llega la boquilla, el chorro dura lo que se ve y queda un poco de humo; el «?» en rojo
+    put(bar, T["noz"] + 0.3, -30, 0.3)
+    put(vapor, T["spray0"], -25, T["spray1"] - T["spray0"], 0.01, 0.15)
+    put(vapor, T["out2"] - 0.15, -36, 1.6, 0.2, 0.6)
+    put("latido", T["red"], -24, 0.45)
+    # 7) la cuarta pieza: zoom, eslabones que se enganchan, la cadena que se alimenta y el rótulo
+    put("whoosh2", T["zoom"] - 0.15, -25, 0.8)
+    for i in range(5):
+        put(_pitch(bar, 1.15 + 0.07 * i), T["zoom"] + 0.15 + 0.07 * i, -33, 0.18)
+    flame(T["zoom"] + 0.2, T["cut"] + 0.5, 0.35)
+    put(brasas, T["feed"], -27, T["cut"] - T["feed"], 0.3, 0.15, track=amb)
+    put("diez", T["lab"], -27, 1.2, 0.005, 0.4)
+    # 8) «corta»: chorro de polvo, el eslabón se parte, todo se apaga y humea
+    put(vapor, T["jet"], -25, T["cut"] + 0.2 - T["jet"], 0.01, 0.12)
+    put("cepo", T["cut"] - 0.02, -15, 0.8, 0.002, 0.3)
+    put(vapor, T["cut"] + 0.35, -34, 1.9, 0.2, 0.8)
+    # 9) vuelve el triángulo, parpadeo rojo, se arma el tetraedro (golpe con su onda) y arde dentro
+    put("whoosh", T["back"], -29, 0.5)
+    put("fallo", T["no"] + 0.1, -31, 0.4, 0.005, 0.15)
+    put(ign, T["back"] + 0.1, -29, 0.6, 0.01, 0.2)
+    flame(T["back"] + 0.35, T["marca"] - 0.3)
+    put("golpe", T["tet"] - 0.35, -21, 1.7, 0.01, 0.4)
+    put("destello", T["tet"] + 0.28, -26, 0.8)
+    # 10) encuesta: cada opción aparece y se vuelven bocadillos en «comenta»
+    for k in ("triO", "tetO"):
+        put(bub, T[k], -24, 0.3)
+    put(bub, T["com"], -24, 0.3)
+    put(_pitch(bub, 1.12), T["com"] + 0.12, -25, 0.3)
+    # 11) venta: destellos, avión de papel, estallido en brasas y la marca
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    av = _onset(_load("avion"))
+    put(av, T["share"], -28, 0.62, 0.02, 0.1)
+    put(av, T["share"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, T["share"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = T["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put(brasas, tM + 0.2, -36, END - (tM + 0.2), 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    # la llama y las brasas bajan cuando habla la voz
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
 def sfx_any(path):
+    if Q.get("formato") == "tetraedro":
+        return sfx_track_tetra(path)
     if Q.get("formato") == "nota_prueba":
         return sfx_track_prueba(path)
     {"pas": sfx_track_pas, "leyes": sfx_track_leyes}.get(Q.get("intro"), sfx_track)(path)
@@ -548,7 +651,7 @@ def main():
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
     sfxp = os.path.join(PROJ, "out", "sfx.wav")
     sfx_any(sfxp)
-    dst = os.path.join(PROJ, "out", os.path.basename(PROJ) + ".mp4")
+    dst = os.path.join(PROJ, "out", os.path.basename(PROJ) + os.environ.get("SUFIJO", "") + ".mp4")
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS),
            "-i", "-", "-i", AUDIO, "-i", sfxp, "-filter_complex",
            audio_filter(),

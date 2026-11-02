@@ -767,10 +767,10 @@ window.renderAt = t => {
       let qx = 540, qy = 960;
       if (t < TT.back) { const PA = proj(APEX, V); qx = PA.x; qy = PA.y; const zz = 1 + 2.4 * zIn; g.translate(qx, qy); g.scale(zz, zz); g.translate(-qx, -qy); }
       else { const zz = lerp(0.88, 1, back_); g.translate(540, 960); g.scale(zz, zz); g.translate(-540, -960); }
-      const A = t < TT.back ? 1 - prog(t, TT.zoom + 0.15, 0.3) : back_;
+      const A = t < TT.back ? 1 - prog(t, TT.zoom + 0.08, 0.25) : back_;
       fuse(t);
       if (t >= TT.lift - 0.01) {
-        const o = objectLayer(t, V, A * (t < TT.lift + 0.5 ? eio(prog(t, TT.lift, 0.35)) : 1));
+        objectLayer(t, V, A);                              // la llama y las aristas pasan sin corte de la tiza al 3D
       } else {
         // antes del despegue: solo la llama del centro (la mecha la pinta fuse)
         flame(OX, OY + 70, 0.95, fk, t, 1);

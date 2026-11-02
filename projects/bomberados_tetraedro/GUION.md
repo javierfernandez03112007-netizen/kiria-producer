@@ -20,5 +20,7 @@ Hook: plantilla 16 (creencia rota: «te enseñaron… y le falta una pieza») + 
 respuesta («la reacción en cadena» → «tetraedro») al final, antes de la venta. Comentarios: pregunta de una palabra
 («¿triángulo o tetraedro?»). Momentos de venta con `realce` (voz +3 dB, efectos −8 dB).
 
-Estado (2 nov): guion enviado a Javi; escena hecha con tiempos provisionales (`tiempos_prov.py`, ≈ 39 s); faltan la voz de
-Javi, los efectos (ElevenLabs no conectado en esta sesión), el render y la entrega.
+Voz (2 nov): una toma de Javi (Danny, Eleven v3), 38,2 s → 35,2 s sin pausas largas (`ajustar_voz.py`, tempo 1,0). El
+reconocedor la entiende entera (105 de 105 palabras). `medir_voz.py`: OK (venta −20,1/−21,8 dB frente a −22,6 dB del resto);
+«¡Y mándaselo…!» va algo rápido (7,2 sílabas/s). Efectos: los de ElevenLabs de los vídeos anteriores (la API no estaba
+conectada), colocados en `compose.py` → `sfx_track_tetra`.
