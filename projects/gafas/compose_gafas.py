@@ -1,10 +1,10 @@
-"""Compone «Economía por dentro»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en Impact
-(lo que llega en dorado, el bulo y los suspensos en rojo) + la voz de Javi (ElevenLabs, Danny) + efectos SOLO de ElevenLabs, uno por
-suceso y cortados cuando el suceso termina (sin ambiente ni sonidos sintetizados).
+"""Compone «Gafas de esquí: la luz, por dentro»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en
+Impact (lo naranja en naranja, el espejo y el polarizado en azul, la ultravioleta en violeta, lo que quema o no pasa en rojo) + la voz de
+Javi (ElevenLabs, Danny) + efectos SOLO de ElevenLabs, uno por suceso y cortados cuando el suceso termina (sin ambiente ni sintetizados).
 
     python3 ajustar_voz.py && python3 env_voz.py && python3 sfx_eleven.py
     WK=3 ./render_local.sh 0 N
-    python3 projects/economia/compose_eco.py [--test t1 t2 ...] [--sfx]
+    python3 projects/gafas/compose_gafas.py [--test t1 t2 ...] [--sfx]
 """
 import json
 import os
@@ -46,20 +46,19 @@ def first(line):
 
 # ---------------------------------------------------------------- subtítulos
 GO, R, WH = "#FFC24A", "#FF5A4E", "#EEF2F6"
-_K = {1: {"58": GO, "96": R, "100": R, "profesionales": WH, "peor": R},
-      2: {"sirve": WH, "economía": GO, "final": WH},
-      3: {"rico": GO, "realidad": WH, "nadie": R, "consigue": WH},
-      4: {"microeconomía": GO, "alquiler": WH},
-      5: {"macroeconomía": GO, "inflación": WH, "paro": WH, "crisis": R},
-      6: {"matemáticas": GO, "estadística": GO, "esperas": WH},
-      7: {"econometría": GO, "datos": WH, "funciona": WH},
-      8: {"finanzas": GO, "vale": WH, "empresa": WH},
-      9: {"2013": GO, "nobel": GO, "contrario": R},
-      10: {"precio": WH, "todo": GO, "burbujas": R},
-      11: {"razón": WH, "primero": GO, "comisiones": R, "nunca": R},
-      12: {"copian": GO, "menos": GO, "delante": GO, "todos": WH},
-      13: {"economía": GO, "humo": R},
-      14: {"financiero": WH, "gestor": WH, "indexado": GO}}
+OR, BL, VI, YE, RO = "#FF8A2A", "#8FB8FF", "#C9A6FF", "#FFD31A", "#FF7FA6"
+_K = {1: {"sol": GO, "dos": GO, "cielo": WH, "suelo": OR},
+      2: {"naranjas": OR, "espejo": BL, "final": WH},
+      3: {"colores": GO, "ves": WH, "ultravioleta": VI},
+      4: {"80": VI, "quema": R, "ojos": R},
+      5: {"desmontar": OR},
+      6: {"espejo": GO, "finísima": WH, "rebota": GO},
+      7: {"lente": VI, "ultravioleta": VI},
+      8: {"polarizada": BL, "horizontal": OR, "rejilla": BL, "vertical": BL, "pasar": R},
+      9: {"segunda": BL, "aire": BL, "empañe": WH},
+      10: {"color": GO, "gris": WH, "espejo": BL, "3": GO, "18": GO},
+      11: {"nublados": WH, "naranja": OR, "amarillo": YE, "rosa": RO, "azul": BL, "relieve": OR},
+      12: {"moda": R, "decides": GO, "naranjas": OR, "espejo": BL}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -106,76 +105,68 @@ def sfx_track(path):
     def span(t0, t1):
         return max(0.15, t1 - t0)
 
-    # 1: la bolsa sube (+58 %); 96 de cada 100 resbalan montaña abajo y se amontonan
-    put("subida", at("subió"), span(at("subió"), at("58") + 0.55), 0.6, 0.2)
-    put("impacto", at("96"), 0.6, 0.55, 0.2)
-    put("resbalan", at("96") + 0.1, 1.6, 0.7, 0.25)
-    put("monton", at("96") + 1.25, 0.6, 0.5, 0.15)
-    put("whoosh", at("profesionales") - 0.1, 0.55, 0.25)
-    # 2: al panel: la «?»
-    put("whoosh_largo", at("entonces"), 0.8, 0.3, 0.2)
-    put("panel", at("para", 1, 2), 0.5, 0.55)
-    # 3: monedas: el montón («rico»), el embudo («casi nadie») y la única que sale («consigue»)
-    put("whoosh", at("crees") - 0.1, 0.6, 0.3)
-    put("monedas_caen", at("rico") - 0.15, 0.7, 0.7)
-    put("embudo", at("casi", 1, 3) - 0.05, 1.1, 0.7, 0.15)
-    put("moneda_sola", at("consigue") - 0.05, 0.6, 0.7, 0.15)
-    # 4: el alquiler sube
-    put("whoosh", at("microeconomía") - 0.35, 0.5, 0.3)
-    put("precio_sube", at("sube"), 0.65, 0.7)
-    # 5: inflación, paro, crisis
-    put("whoosh", at("macroeconomía") - 0.35, 0.5, 0.3)
-    put("linea", at("inflación") - 0.05, 0.6, 0.5)
-    put("barras", at("paro") - 0.05, 0.5, 0.5)
-    put("caida", at("crisis") - 0.05, 0.6, 0.55)
-    # 6: el panel: ecuaciones y la campana
-    put("whoosh_largo", at("matemáticas") - 0.35, 0.7, 0.3, 0.2)
-    put("rotulador", at("matemáticas"), 0.45, 0.45)
-    put("rotulador", at("estadística"), 0.45, 0.45, 0.08, 0.4)
-    put("linea", at("muchas"), 0.6, 0.45)
-    # 7: los puntos, la recta que se ajusta, los que quedan por encima
-    put("puntos", at("datos") - 0.1, 0.6, 0.5)
-    put("linea", at("separar"), 0.6, 0.5)
-    put("ding", at("funciona"), 0.4, 0.35)
-    # 8: la torre crece planta a planta
-    put("whoosh_largo", at("finanzas") - 0.2, 0.8, 0.3, 0.2)
-    put("torre", at("finanzas") - 0.1, 0.85, 0.6)
-    # 9: «2013» y el Nobel en el panel; las dos medallas; se dan la espalda
-    put("whoosh", at("loco") - 0.1, 0.6, 0.3)
-    put("panel", at("2013") - 0.03, 0.4, 0.5)
-    put("panel", at("nobel"), 0.4, 0.4, 0.08, 0.2)
-    put("whoosh", at("dos") - 0.25, 0.5, 0.3)
-    put("giro", at("contrario"), 0.45, 0.5)
-    # 10: el precio tranquilo; la burbuja se infla y explota
-    put("whoosh", at("uno") - 0.15, 0.5, 0.3)
-    put("linea", at("uno"), 0.9, 0.4, 0.2)
-    put("whoosh", at("infla") - 0.05, 0.5, 0.3)
-    put("burbuja", at("infla"), span(at("infla"), at("quién") - 0.15), 0.6, 0.1)
-    put("pop", at("quién") - 0.15, 0.4, 0.75)
-    # 11: «FAMA»; las comisiones se llevan las monedas; −5,5 puntos
-    put("whoosh", at("quién") + 0.1, 0.5, 0.3)
-    put("ding", at("primero"), 0.45, 0.45)
-    put("whoosh", at("cuesta") - 0.3, 0.5, 0.3)
-    put("cajero", at("comisiones") - 0.35, 1.0, 0.7, 0.15)
-    put("impacto", at("nunca") - 0.1, 0.5, 0.4, 0.15)
-    # 12: la copia de la bolsa se dibuja y adelanta a casi todos
-    put("whoosh", at("fondos", 1, 12), 0.5, 0.3)
-    put("whoosh_largo", at("copian") + 0.05, 0.7, 0.3, 0.2)
-    put("linea", at("copian") - 0.05, 0.7, 0.55)
-    put("brillo", at("acaban"), 0.9, 0.5, 0.25)
-    # 13: el «producto» brillante y el humo
-    put("whoosh", at("para", 1, 13), 0.5, 0.3)
-    put("tecla", at("vendan") - 0.15, 0.2, 0.4)
-    put("humo", at("humo"), 1.0, 0.7, 0.3)
-    # 14: al panel: ¿gestor o indexado?; vuelta a la montaña (bucle)
-    put("whoosh_largo", at("asesoramiento") - 0.1, 0.8, 0.3, 0.2)
-    put("panel", at("gestor") - 0.1, 0.35, 0.5)
-    put("panel", at("indexado") - 0.1, 0.35, 0.5, 0.08, 0.3)
+    # 1: tiempo congelado; rayos del cielo y del suelo
+    put("congelar", 0.0, 0.9, 0.5, 0.3)
+    put("rayo", at("cielo") - 0.35, 0.8, 0.45, 0.25)
+    put("rebote", at("suelo") - 0.4, 0.7, 0.45, 0.2)
+    # 2: a las gafas: naranja → espejo; la pregunta queda arriba
+    put("whoosh", at("por", 1, 2) - 0.2, 0.55, 0.3)
+    put("cambio", at("espejo", 1, 2) - 0.15, 0.5, 0.55)
+    put("panel", at("final", 1, 2), 0.3, 0.35)
+    # 3: al cristal de hielo: el rayo blanco, los colores y la ultravioleta
+    put("whoosh_largo", at("luz", 1, 3) - 0.3, 0.9, 0.3, 0.25)
+    put("rayo", at("luz", 1, 3) + 0.1, 0.7, 0.35, 0.2)
+    put("prisma", at("colores") - 0.35, 1.0, 0.55, 0.3)
+    put("ultravioleta", at("ultravioleta", 1, 3) - 0.25, 0.9, 0.4, 0.3)
+    # 4: la nieve devuelve la ultravioleta: 80 %; el ojo se quema
+    put("whoosh", at("nieve", 1, 4) - 0.3, 0.5, 0.25)
+    put("rebote", at("devuelve") - 0.1, 0.7, 0.45, 0.2)
+    put("contador", at("80") - 0.1, 0.6, 0.4, 0.1)
+    put("quemar", at("quema") - 0.1, 0.7, 0.45, 0.25)
+    # 5: llegan las gafas grandes y se desmontan
+    put("whoosh_largo", at("vamos") - 0.3, 0.9, 0.35, 0.25)
+    put("desmontar", at("desmontar") - 0.05, 0.9, 0.6, 0.2)
+    # 6: el espejo rebota parte de la luz
+    put("rayo", at("fuera") - 0.3, 0.6, 0.3, 0.2)
+    put("clic", at("espejo", 1, 6) - 0.1, 0.3, 0.45)
+    put("rebote", at("rebota") - 0.1, 0.7, 0.45, 0.2)
+    # 7: la lente frena la ultravioleta
+    put("clic", at("lente", 1, 7) - 0.1, 0.3, 0.45)
+    put("frenar", at("frena") - 0.1, 0.5, 0.5, 0.15)
+    # 8: el polarizado: la onda horizontal y la rejilla vertical que la para
+    put("clic", at("polarizada") - 0.1, 0.3, 0.45)
+    put("onda", at("reflejo") - 0.3, 0.9, 0.35, 0.3)
+    put("rejilla", at("rejilla") - 0.1, 0.45, 0.5)
+    put("bloqueo", at("deja") - 0.1, 0.6, 0.55, 0.2)
+    # 9: la segunda lente, el aire y el vaho que se va
+    put("clic", at("segunda") - 0.1, 0.3, 0.45)
+    put("aire", at("aire") - 0.1, 0.6, 0.35, 0.2)
+    put("vaho", at("empañe") - 0.3, 0.9, 0.45, 0.3)
+    # 10: se cierran y miran al sol; lente gris de categoría 3 y los fotones que no pasan
+    put("cierre", at("color", 1, 10) - 0.2, 0.8, 0.5, 0.2)
+    put("cambio", at("gris") - 0.2, 0.5, 0.5)
+    put("fotones", at("categoría") - 0.2, span(at("categoría") - 0.2, at("días") - 0.1), 0.3, 0.35)
+    put("ding", at("18") - 0.05, 0.5, 0.3, 0.2)
+    # 11: día nublado; naranja, amarillo, rosa; menos azul; la lente entra y vuelve el relieve
+    put("nubes", at("días") - 0.4, 1.2, 0.4, 0.4)
+    put("cambio", at("naranja", 1, 11) - 0.2, 0.45, 0.5)
+    put("cambio", at("amarillo") - 0.15, 0.45, 0.45)
+    put("cambio", at("rosa") - 0.15, 0.45, 0.45)
+    put("panel", at("frenan") - 0.2, 0.3, 0.35)
+    put("whoosh", at("azul") - 0.6, 0.6, 0.25)
+    put("barrido", at("vuelves") - 0.3, 0.7, 0.5, 0.2)
+    put("brillo", at("relieve") - 0.05, 0.9, 0.45, 0.3)
+    # 12: atrás; «la luz que decides no ver»; el duelo naranja contra espejo; vuelta al esquiador (bucle)
+    put("whoosh", at("color", 1, 12) - 0.1, 0.6, 0.3)
+    put("panel", at("decides") - 0.1, 0.3, 0.4)
+    put("duelo", at("tú") - 0.3, 0.7, 0.5, 0.2)
+    put("tecla", at("naranjas", 1, 12) - 0.1, 0.25, 0.4)
+    put("tecla", at("espejo", 1, 12) - 0.1, 0.25, 0.4)
     put("whoosh_largo", END - 1.0, 0.9, 0.3, 0.25)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
-def main(dst=os.path.join(ROOT, "out", "economia.mp4")):
+def main(dst=os.path.join(ROOT, "out", "gafas.mp4")):
     missing = [i for i in range(N) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")

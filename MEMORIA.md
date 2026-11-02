@@ -53,6 +53,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (`render-ecob-1…6`) ≈ 30 min; tras revisarlo se rehízo 55,5–57,7 s (el panel quedaba vacío en «esto no es asesoramiento
   financiero»: ahora sale grande). Antes de publicar: confirmar en el PDF de SPIVA el «2 de 50» y el +58,4 % (ver DESCRIPCION.txt).
   Pendiente de permiso: borrar las ramas `render-ecob-*` y archivar las 6 sesiones «Render Economía».
+- **Gafas de esquí** (`projects/gafas/`, 2-11-2026): idea de Javi («por qué las gafas de esquí tienen colores… polarizadas…
+  esquiador en la nieve → el sol → los rayos → desmontar las gafas», «profesional y cinematográfico») y «que las gafas resalten
+  en naranja». Esquiador congelado con la nieve suspendida a contraluz → rayos del cielo y del suelo → cristal de hielo con el
+  espectro y la UV → la nieve devuelve el 80 % y quema el ojo → gafas grandes desmontadas capa a capa (espejo, lente UV,
+  polarizado con ondas y rejilla, cámara de aire) → categoría 3 con 100 fotones → día nublado: la lente naranja entra de izquierda
+  a derecha y vuelve el relieve (la nieve se aplana fuera de la lente: `RELIEF` en `10_world.js`) → duelo naranja/espejo → bucle.
+  Voz de Javi (su MP3, 58,8 s), 28 efectos de ElevenLabs. Render: esta máquina 0–385 + 8 de ayuda (`render-gafas-1…8`); las
+  de ayuda iban a ≈ 100 fotogramas/min (un trozo de 400 en ≈ 4 min), mucho más rápidas que esta (≈ 20/min).
+  Pendiente de permiso: borrar las ramas `render-gafas-*` y archivar las 8 sesiones «Render Gafas».
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
