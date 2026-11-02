@@ -110,6 +110,8 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .reveal h1 { font-size: clamp(56px, 10.4vw, 156px); line-height: 0.94; max-width: 11ch; }
 .reveal .lede { max-width: 36em; color: var(--ink2); font-size: clamp(16px, 1.7vw, 19px); text-wrap: pretty; }
 .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.from { text-decoration: none; color: var(--ink2); border-bottom: 1px solid var(--line2); padding-bottom: 2px; }
+.from:hover { color: var(--ink); border-color: var(--ink); }
 .hint { position: absolute; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); transform: translateX(-50%); display: grid; justify-items: center; gap: 10px; font: 500 11px/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 .hint i { width: 1px; height: 38px; background: linear-gradient(var(--ink), rgba(12, 14, 18, 0)); transform-origin: top; animation: drip 1.8s var(--ease) infinite; }
 @keyframes drip { 0% { transform: scaleY(0); opacity: 1; } 55% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
@@ -242,21 +244,122 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 @media (max-width: 900px) { .ads-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .offers { grid-template-columns: 1fr; } }
 
-/* planes */
-.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-.plan { border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px; display: grid; gap: 18px; align-content: start; background: var(--bg); min-width: 0; position: relative; }
-.plan.feat { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
-.plan.feat p, .plan.feat li { color: #c9ced6; }
-.plan .badge { position: absolute; top: 18px; right: 18px; background: var(--yellow); color: var(--on-yellow); font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; }
-.plan h3 { font-size: 30px; }
-.plan p { color: var(--ink2); font-size: 15px; }
-.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.plan li { display: flex; gap: 10px; font-size: 15px; color: var(--ink2); }
-.plan li::before { content: "→"; font-family: var(--mono); color: var(--red); flex: none; }
-.plan .price { display: flex; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
-.plan.feat .price { border-top-color: #2a2f38; }
-.plan .btn { justify-self: start; }
-@media (max-width: 900px) { .plans { grid-template-columns: 1fr; } }
+/* franja en movimiento */
+.marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--bg); padding-block: 26px; display: grid; gap: 4px; }
+.marquee .row { display: flex; width: max-content; will-change: transform; }
+.marquee .row span { font-family: var(--display); text-transform: uppercase; font-size: clamp(46px, 7.4vw, 104px); line-height: 1.02; letter-spacing: 0.01em; white-space: nowrap; padding-right: 0.35em; }
+.marquee .row span i { font-style: normal; color: var(--red); padding-inline: 0.18em; }
+.marquee .row.o span { color: transparent; -webkit-text-stroke: 1.4px var(--ink); }
+.marquee .row.o span i { color: var(--blue); -webkit-text-stroke: 0; }
+
+/* trabajos: carrusel 3D (sin JS o sin movimiento, la rejilla) */
+.carousel { display: none; }
+.js:not(.rm) .carousel { display: block; }
+.js:not(.rm) #trabajos .work { display: none; }
+.ring-stage { --cw: 232px; position: relative; height: calc(var(--cw) * 1.78 + 120px); perspective: 1500px; perspective-origin: 50% 42%; overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.ring-stage:active { cursor: grabbing; }
+.wheel { position: absolute; left: 50%; top: calc(var(--cw) * 0.889 + 40px); width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+.slot { position: absolute; left: calc(var(--cw) / -2); top: calc(var(--cw) * -0.889); width: var(--cw); aspect-ratio: 9 / 16; margin: 0; border-radius: 18px; overflow: hidden; background: var(--night); backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 34px 60px -34px rgba(12, 14, 18, 0.6); }
+.slot video { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.slot .tag2 { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(10, 12, 16, 0.62); color: var(--on-ink); padding: 4px 8px; border-radius: 6px; }
+.slot.front { box-shadow: 0 0 0 3px var(--yellow), 0 44px 80px -34px rgba(12, 14, 18, 0.7); }
+.floor { position: absolute; left: 50%; bottom: 22px; width: min(820px, 92%); height: 70px; transform: translateX(-50%); background: radial-gradient(ellipse at center, rgba(12, 14, 18, 0.2), rgba(12, 14, 18, 0) 70%); pointer-events: none; }
+.ring-ui { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; }
+.ring-ui .nav { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line2); background: var(--bg); font: 600 20px/1 var(--body); cursor: pointer; color: var(--ink); transition: border-color .2s, transform .2s var(--ease); }
+.ring-ui .nav:hover { border-color: var(--ink); }
+.ring-ui .nav:active { transform: scale(0.94); }
+.cap { text-align: center; display: grid; gap: 8px; justify-items: center; min-height: 118px; align-content: start; transition: opacity .22s; }
+.cap h3 { font-size: clamp(26px, 3.2vw, 38px); }
+.cap p { color: var(--ink2); max-width: 34em; font-size: 15.5px; }
+.dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.dots button { width: 8px; height: 8px; border-radius: 4px; border: 0; padding: 0; background: var(--line2); cursor: pointer; transition: width .3s var(--ease), background .3s; }
+.dots button.on { width: 28px; background: var(--ink); }
+@media (max-width: 700px) { .ring-stage { --cw: 156px; } .ring-ui .nav { width: 44px; height: 44px; } .cap { min-height: 140px; } }
+
+/* sobre nosotros */
+.about { padding-block: 128px 112px; }
+.manifesto { margin-top: 26px; font-weight: 600; font-size: clamp(27px, 3.7vw, 52px); line-height: 1.2; letter-spacing: -0.018em; max-width: 23em; text-wrap: pretty; }
+.manifesto .w { color: #cdd0d6; transition: color .4s; }
+.manifesto .w.on { color: var(--ink); }
+.manifesto .w.hh.on { color: var(--red); }
+.manifesto .w.ha.on { color: var(--blue); }
+.pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 72px; }
+.pillar { border-top: 1.5px solid var(--ink); padding-top: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.pillar .n { font-family: var(--mono); font-size: 11.5px; color: var(--red); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.pillar h3 { font-size: 24px; }
+.pillar p { color: var(--ink2); font-size: 15px; }
+@media (max-width: 900px) { .pillars { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .pillars { grid-template-columns: 1fr; } }
+
+/* precios */
+.types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; padding: 6px; border: 1px solid var(--line); border-radius: 18px; background: var(--soft); }
+.types button { display: grid; gap: 5px; justify-items: start; text-align: left; padding: 14px 16px; border-radius: 13px; border: 0; background: transparent; cursor: pointer; font-family: var(--body); color: var(--ink); transition: background .25s, box-shadow .25s; min-width: 0; }
+.types button b { font: 400 23px/1 var(--display); text-transform: uppercase; letter-spacing: 0.02em; }
+.types button span { font-size: 13px; color: var(--muted); }
+.types button em { font: 700 14px/1 var(--mono); font-style: normal; color: var(--ink2); }
+.types button[aria-selected="true"] { background: var(--bg); box-shadow: 0 10px 26px -16px rgba(12, 14, 18, 0.55), 0 0 0 1px var(--line); }
+.types button[aria-selected="true"] em { color: var(--red); }
+.type-desc { margin-top: 16px; color: var(--ink2); min-height: 1.6em; }
+.addon { display: flex; align-items: center; gap: 16px; margin-top: 18px; padding: 15px 18px; border: 1.5px dashed var(--line2); border-radius: 16px; cursor: pointer; transition: border-color .2s, background .2s; }
+.addon:hover { border-color: var(--ink); }
+.addon.on { border-style: solid; border-color: var(--ink); background: var(--soft); }
+.addon small { display: block; color: var(--ink2); font-size: 14px; margin-top: 2px; }
+.switch { position: relative; width: 48px; height: 28px; flex: none; display: inline-block; }
+.switch input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; z-index: 1; }
+.switch i { position: absolute; inset: 0; border-radius: 999px; background: var(--line2); transition: background .2s; }
+.switch i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); box-shadow: 0 1px 3px rgba(12, 14, 18, 0.3); transition: transform .25s var(--ease); }
+.switch input:checked + i { background: var(--ink); }
+.switch input:checked + i::after { transform: translateX(20px); }
+.switch input:focus-visible + i { outline: 2px solid var(--blue); outline-offset: 2px; }
+.prices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 26px; align-items: stretch; }
+.pcard { position: relative; border: 1px solid var(--line); border-radius: 20px; padding: 26px 22px; display: grid; gap: 12px; align-content: start; grid-template-rows: auto auto auto 1fr auto; background: var(--bg); min-width: 0; transition: transform .3s var(--ease), border-color .2s; }
+.pcard:hover { transform: translateY(-3px); border-color: var(--line2); }
+.pcard.feat { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.pcard.feat p, .pcard.feat .per { color: #c9ced6; }
+.pcard .badge { position: absolute; top: 18px; right: 18px; background: var(--red); color: var(--on-ink); font: 700 12.5px/1 var(--mono); padding: 7px 9px; border-radius: 999px; }
+.pcard .rec { font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-yellow); background: var(--yellow); padding: 6px 9px; border-radius: 999px; justify-self: start; }
+.pcard h3 { font-size: 27px; padding-right: 64px; }
+.pcard p { color: var(--ink2); font-size: 14.5px; }
+.amount { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; padding-top: 14px; border-top: 1px solid var(--line); align-self: end; }
+.pcard.feat .amount { border-top-color: #2a2f38; }
+.amount s { width: 100%; font-size: 14px; color: var(--muted); }
+.amount b { font: 400 clamp(42px, 4.2vw, 56px)/1 var(--display); letter-spacing: 0.01em; font-variant-numeric: tabular-nums; }
+.amount .cur { font-weight: 700; font-size: 15px; }
+.per { font-size: 13.5px; color: var(--muted); }
+.pcard .btn { justify-self: stretch; margin-top: 6px; }
+.price-notes { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 13.5px; color: var(--muted); }
+@media (max-width: 1050px) { .prices { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .prices { grid-template-columns: 1fr; } }
+
+/* cookies y textos legales */
+.cookie { position: fixed; left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 60; width: min(440px, calc(100% - 32px)); background: var(--bg); border: 1px solid var(--line); border-radius: 18px; padding: 20px; display: grid; gap: 12px; box-shadow: 0 30px 70px -28px rgba(12, 14, 18, 0.55); }
+.cookie b { font-size: 16.5px; }
+.cookie p { font-size: 14px; color: var(--ink2); }
+.cookie .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cookie .two .btn { padding: 12px 10px; }
+.ck .wa-float { display: none; }
+@media (max-width: 560px) { .cookie { padding: 16px; gap: 9px; } .cookie p { font-size: 13px; } .cookie .two .btn { padding: 11px 8px; } }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; justify-self: start; }
+footer .linkbtn { color: var(--nightmuted); text-decoration: none; }
+footer .linkbtn:hover { color: var(--nightfg); }
+dialog.legal { width: min(780px, calc(100% - 24px)); max-width: calc(100% - 24px); max-height: min(86vh, 900px); border: 0; border-radius: 20px; padding: 0; background: var(--bg); color: var(--ink); overflow: auto; box-shadow: 0 40px 120px -30px rgba(12, 14, 18, 0.6); }
+dialog.legal::backdrop { background: rgba(12, 14, 18, 0.5); }
+.legal .lh { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 22px; background: var(--bg); border-bottom: 1px solid var(--line); }
+.legal .lh h2 { font-size: clamp(26px, 4vw, 36px); }
+.legal .x { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); cursor: pointer; font-size: 18px; flex: none; color: var(--ink); }
+.legal .lb { padding: 10px 22px 28px; display: grid; gap: 12px; font-size: 15px; color: var(--ink2); }
+.legal .lb h4 { margin: 12px 0 0; font: 700 16px/1.3 var(--body); color: var(--ink); }
+.legal .lb ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.legal .upd { font: 500 12px/1.4 var(--mono); color: var(--muted); }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.legal table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 13.5px; }
+.legal th, .legal td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.legal tr:last-child td { border-bottom: 0; }
+.legal th { font: 700 11px/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--soft); }
+.opt { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.opt p { font-size: 14px; }
+.lbtns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 
 /* preguntas */
 .faq { max-width: 880px; }
@@ -308,9 +411,9 @@ footer a:hover { color: var(--nightfg); }
     <a class="brand" href="#inicio" aria-label="kiria.ai, inicio"><b>kiria<i>.</i>ai</b><span>Estudio de vídeo</span></a>
     <nav class="links" aria-label="Secciones">
       <a class="l" href="#trabajos">Trabajos</a>
-      <a class="l" href="#mundo">Mundo</a>
+      <a class="l" href="#nosotros">Nosotros</a>
+      <a class="l" href="#precios">Precios</a>
       <a class="l" href="#anunciarse">Anunciarse</a>
-      <a class="l" href="#planes">Planes</a>
       <a class="btn dark" href="#contacto">Pedir propuesta</a>
     </nav>
   </div>
@@ -337,6 +440,7 @@ footer a:hover { color: var(--nightfg); }
         <h1>Vídeos que <span class="key">paran</span> el scroll.</h1>
         <p class="lede">Guion, voz en español, animación 3D, subtítulos y sonido: el vídeo entero, listo para publicar. Para marcas, academias y universidades que quieren explicar lo suyo y que la gente se quede hasta el final.</p>
         <div class="cta"><a class="btn dark" href="#contacto">Pedir propuesta <span class="arr">→</span></a><a class="btn ghost" href="#trabajos">Ver trabajos</a></div>
+        <a class="mono from" href="#precios">Desde 4,99 € por vídeo · Ver precios</a>
       </div>
     </div>
   </section>
@@ -358,7 +462,12 @@ footer a:hover { color: var(--nightfg); }
     </div>
   </section>
 
-  <section class="band" id="clientes" style="padding-top:0">
+  <div class="marquee" aria-hidden="true">
+    <div class="row" id="mq1"><span>Guion <i>•</i> Voz <i>•</i> 3D <i>•</i> Subtítulos <i>•</i> Sonido <i>•</i> Datos con fuente <i>•</i></span><span>Guion <i>•</i> Voz <i>•</i> 3D <i>•</i> Subtítulos <i>•</i> Sonido <i>•</i> Datos con fuente <i>•</i></span><span>Guion <i>•</i> Voz <i>•</i> 3D <i>•</i> Subtítulos <i>•</i> Sonido <i>•</i> Datos con fuente <i>•</i></span><span>Guion <i>•</i> Voz <i>•</i> 3D <i>•</i> Subtítulos <i>•</i> Sonido <i>•</i> Datos con fuente <i>•</i></span></div>
+    <div class="row o" id="mq2"><span>Instagram <i>•</i> TikTok <i>•</i> YouTube Shorts <i>•</i> 1080×1920 <i>•</i> 60 fps <i>•</i></span><span>Instagram <i>•</i> TikTok <i>•</i> YouTube Shorts <i>•</i> 1080×1920 <i>•</i> 60 fps <i>•</i></span><span>Instagram <i>•</i> TikTok <i>•</i> YouTube Shorts <i>•</i> 1080×1920 <i>•</i> 60 fps <i>•</i></span><span>Instagram <i>•</i> TikTok <i>•</i> YouTube Shorts <i>•</i> 1080×1920 <i>•</i> 60 fps <i>•</i></span></div>
+  </div>
+
+  <section class="band" id="clientes">
     <div class="wrap">
       <div class="head rv"><div><p class="mono">Clientes</p><h2>Han confiado en nosotros</h2></div><p class="sub">Academias, apps, constructoras y negocios locales que querían algo distinto a lo de siempre: vídeos y webs.</p></div>
       <div class="clients rv">
@@ -372,7 +481,20 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="band soft" id="trabajos">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Trabajos</p><h2>Hecho aquí</h2></div><p class="sub">Fragmentos reales de vídeos que hemos producido. Aquí se ven sin sonido: el vídeo completo lleva voz en español y efectos.</p></div>
+      <div class="head rv"><div><p class="mono">Trabajos</p><h2>Hecho aquí</h2></div><p class="sub">Fragmentos reales de vídeos que hemos producido. Arrastra la rueda o usa las flechas. Aquí se ven sin sonido: el vídeo completo lleva voz en español y efectos.</p></div>
+    </div>
+    <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Trabajos">
+      <div class="ring-stage" id="ringStage"><div class="wheel" id="wheel"></div><div class="floor"></div></div>
+      <div class="wrap">
+        <div class="ring-ui">
+          <button class="nav" id="ringPrev" type="button" aria-label="Trabajo anterior">←</button>
+          <div class="cap" id="cap" aria-live="polite"><span class="mono" id="capTag"></span><h3 id="capTitle"></h3><p id="capDesc"></p></div>
+          <button class="nav" id="ringNext" type="button" aria-label="Trabajo siguiente">→</button>
+        </div>
+        <div class="dots" id="ringDots"></div>
+      </div>
+    </div>
+    <div class="wrap">
       <div class="work">
         <article class="card rv"><div class="vid"><video data-src="media/derecho.mp4" poster="media/derecho.jpg" muted loop playsinline preload="none"></video><span class="tag2">Así es por dentro</span></div>
           <h3>Derecho por dentro</h3><p>Un mazo gigante sobre cien estudiantes en el primer segundo, y qué falta para ser abogado o juez.</p></article>
@@ -423,6 +545,19 @@ footer a:hover { color: var(--nightfg); }
     </div>
   </section>
 
+  <section class="about" id="nosotros">
+    <div class="wrap">
+      <p class="mono rv">Sobre nosotros · Qué es kiria.ai</p>
+      <p class="manifesto" id="manifesto">kiria.ai es una marca digital española que crea vídeos con inteligencia artificial. Juntamos lo mejor de las personas, <span class="hh">la idea, el guion y el criterio,</span> con lo mejor de la IA, <span class="ha">la voz, el 3D y la velocidad,</span> para que cualquier marca pueda explicar lo suyo en un minuto, con datos reales y sin humo.</p>
+      <div class="pillars">
+        <div class="pillar rv"><span class="n">01 · Qué hacemos</span><h3>Reels que se ven enteros</h3><p>Vídeos verticales en 3D con voz en español, subtítulos palabra a palabra y efectos de sonido, listos para Instagram, TikTok y YouTube Shorts.</p></div>
+        <div class="pillar rv"><span class="n">02 · Cómo</span><h3>Personas + IA</h3><p>Una persona decide la idea, escribe el guion y revisa cada dato. La IA pone la voz, anima las escenas y acelera todo lo demás.</p></div>
+        <div class="pillar rv"><span class="n">03 · Nuestro laboratorio</span><h3>Probado en casa</h3><p>En nuestro canal, kiria.ai, contamos las carreras universitarias por dentro y probamos cada formato antes de usarlo con una marca: 3,2 millones de visualizaciones en 7 días.</p></div>
+        <div class="pillar rv"><span class="n">04 · En qué creemos</span><h3>Datos con fuente</h3><p>Guion aprobado antes de producir, cifras con su fuente y precios claros. Si no lo podemos demostrar, no sale en el vídeo.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="band soft" id="proceso">
     <div class="wrap">
       <div class="head rv"><div><p class="mono">Cómo trabajamos</p><h2>De la idea al vídeo</h2></div><p class="sub">Tú nos cuentas qué quieres conseguir. Del resto nos encargamos nosotros.</p></div>
@@ -441,7 +576,7 @@ footer a:hover { color: var(--nightfg); }
         </div>
         <ul class="specs rv">
           <li><span>Vídeo vertical</span><span>MP4 · 1080×1920 · 60 fps</span></li>
-          <li><span>Duración</span><span>45–75 s</span></li>
+          <li><span>Duración</span><span>De 15 s a más de 1 min</span></li>
           <li><span>Voz</span><span>Español de España</span></li>
           <li><span>Subtítulos</span><span>Palabra a palabra</span></li>
           <li><span>Sonido</span><span>Voz + efectos · −15 LUFS</span></li>
@@ -480,7 +615,7 @@ footer a:hover { color: var(--nightfg); }
           <div class="offer rv"><span class="n">01</span><h3>Vídeo patrocinado</h3><p>Un «por dentro» de tu carrera, máster, academia o producto, publicado en kiria.ai e identificado como publicidad.</p></div>
           <div class="offer rv"><span class="n">02</span><h3>Serie con tu marca</h3><p>Varios capítulos de una misma serie («Carreras por dentro, con…») para que tu marca se asocie a un tema.</p></div>
           <div class="offer rv"><span class="n">03</span><h3>Mención al cierre</h3><p>Tu marca en los últimos segundos, cuando la gente ya se ha quedado hasta el final.</p></div>
-          <div class="offer rv"><span class="n">04</span><h3>Colaboración</h3><p>Hacemos el vídeo para tu cuenta y lo publicamos a la vez en kiria.ai como colaboración.</p></div>
+          <div class="offer rv"><span class="n">04</span><h3>Colaboración</h3><p>Hacemos el vídeo para tu cuenta y lo publicamos a la vez en kiria.ai como colaboración: +2 € sobre cualquier plan.</p></div>
         </div>
         <div class="kit rv">
           <p class="mono">Media kit</p>
@@ -498,20 +633,24 @@ footer a:hover { color: var(--nightfg); }
     </div>
   </section>
 
-  <section class="band" id="planes">
+  <section class="band" id="precios">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Planes</p><h2>Elige cómo empezar</h2></div><p class="sub">Tres formas de trabajar con nosotros. Precios y condiciones: <span class="pending">pendientes</span></p></div>
-      <div class="plans">
-        <div class="plan rv"><h3>Un vídeo</h3><p>Para probar el formato.</p>
-          <ul><li>1 vídeo de 45–75 s</li><li>Guion aprobado antes de producir</li><li>Portada, miniatura y descripción</li><li>Fuentes de los datos por escrito</li></ul>
-          <div class="price"><span class="mono">Precio</span><span class="pending">pendiente</span></div><a class="btn ghost" href="#contacto" data-formato="Un vídeo">Pedir propuesta</a></div>
-        <div class="plan feat rv"><span class="badge">Recomendado</span><h3>Serie mensual</h3><p>Para publicar con constancia.</p>
-          <ul><li>4 vídeos al mes</li><li>Una serie con tu marca</li><li>Calendario de publicación</li><li>Todo lo del plan anterior</li></ul>
-          <div class="price"><span class="mono">Precio</span><span class="pending">pendiente</span></div><a class="btn yel" href="#contacto" data-formato="Serie mensual">Pedir propuesta <span class="arr">→</span></a></div>
-        <div class="plan rv"><h3>Vídeo + difusión</h3><p>Para llegar también a nuestro público.</p>
-          <ul><li>Vídeo para tu cuenta</li><li>Publicación en kiria.ai como colaboración</li><li>Identificado como publicidad</li><li>Datos de alcance al terminar</li></ul>
-          <div class="price"><span class="mono">Precio</span><span class="pending">pendiente</span></div><a class="btn ghost" href="#contacto" data-formato="Anunciarme en kiria.ai">Pedir propuesta</a></div>
+      <div class="head rv"><div><p class="mono">Precios</p><h2>Precios claros, <span class="key">desde 4,99 €</span></h2></div><p class="sub">Elige el tipo de vídeo y cuántos quieres al mes. Cuantos más vídeos, menos pagas por cada uno.</p></div>
+      <div class="types rv" id="types" role="tablist" aria-label="Tipo de vídeo">
+        <button type="button" role="tab" aria-selected="true" data-t="0"><b>Básico</b><span>15–30 s</span><em>4,99 €</em></button>
+        <button type="button" role="tab" aria-selected="false" data-t="1"><b>Publicidad</b><span>30–45 s</span><em>7,99 €</em></button>
+        <button type="button" role="tab" aria-selected="false" data-t="2"><b>Completo</b><span>45 s – 1 min</span><em>11,99 €</em></button>
+        <button type="button" role="tab" aria-selected="false" data-t="3"><b>Pro</b><span>Más de 1 min</span><em>14,99 €</em></button>
       </div>
+      <p class="type-desc" id="typeDesc">Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.</p>
+      <label class="addon rv" id="addon"><span class="switch"><input type="checkbox" id="difusion"><i></i></span><span><b>Añadir difusión en kiria.ai · +2 €</b><small>Publicamos también tu vídeo en nuestra cuenta como colaboración, identificado como publicidad. Se suma a cualquier plan.</small></span></label>
+      <div class="prices" id="prices">
+        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>4,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn ghost buy" href="#contacto">Lo quiero</a></div>
+        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>19,96 €</s><b data-amt>17,96</b><span class="cur">€/mes</span></div><p class="per" data-per>4,49 € por vídeo</p><a class="btn ghost buy" href="#contacto">Lo quiero</a></div>
+        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>49,90 €</s><b data-amt>43,91</b><span class="cur">€/mes</span></div><p class="per" data-per>4,39 € por vídeo</p><a class="btn yel buy" href="#contacto">Lo quiero <span class="arr">→</span></a></div>
+        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>149,70 €</s><b data-amt>127,25</b><span class="cur">€/mes</span></div><p class="per" data-per>4,24 € por vídeo</p><a class="btn ghost buy" href="#contacto">Lo quiero</a></div>
+      </div>
+      <div class="price-notes rv"><span>Precios en euros. IVA: <span class="pending">pendiente</span></span><span>Pago online: <span class="pending">pendiente</span></span><span>«Lo quiero» abre WhatsApp con tu pedido escrito.</span></div>
     </div>
   </section>
 
@@ -524,7 +663,8 @@ footer a:hover { color: var(--nightfg); }
         <details><summary>¿Los datos son reales?</summary><p>Siempre. Cada cifra que aparece lleva su fuente, y te la damos por escrito junto al vídeo.</p></details>
         <details><summary>¿Trabajáis con marcas de fuera de España?</summary><p>Sí. Todo el proceso es online, desde el brief hasta la entrega. La voz es en español de España; otros idiomas: <span class="pending">pendiente</span></p></details>
         <details><summary>¿Puedo anunciarme en el canal kiria.ai?</summary><p>Sí, con vídeos patrocinados, series o colaboraciones, siempre identificados como publicidad. Pídenos el media kit.</p></details>
-        <details><summary>¿Cuánto cuesta?</summary><p>Depende del formato, la duración y cuántos vídeos necesites. Cuéntanos tu idea y te enviamos un presupuesto cerrado.</p></details>
+        <details><summary>¿Cuánto cuesta?</summary><p>Desde 4,99 € un vídeo básico de 15 a 30 segundos. Con 4, 10 o 30 vídeos al mes tienes un 10 %, un 12 % o un 15 % de descuento. Todos los precios están en la sección <a href="#precios">Precios</a>.</p></details>
+        <details><summary>¿Qué es la difusión en kiria.ai?</summary><p>Por 2 € más, además de hacerte el vídeo, lo publicamos en nuestra cuenta como colaboración con tu marca, identificado como publicidad. Se puede añadir a cualquier plan.</p></details>
         <details><summary>¿Cuánto tarda?</summary><p>El plazo depende del guion y de los cambios que pidas. <span class="pending">Plazo habitual: pendiente</span></p></details>
         <details><summary>¿Para qué redes sirve?</summary><p>Para Instagram Reels, TikTok y YouTube Shorts: formato vertical 9:16, con subtítulos para verlo sin sonido.</p></details>
       </div>
@@ -546,11 +686,15 @@ footer a:hover { color: var(--nightfg); }
       <form id="f" class="rv" novalidate>
         <div class="row2">
           <label for="nombre">Nombre<input id="nombre" name="nombre" autocomplete="name" required></label>
-          <label for="empresa">Empresa<input id="empresa" name="empresa" autocomplete="organization"></label>
+          <label for="email">Correo<input id="email" name="email" type="email" autocomplete="email" required></label>
         </div>
         <div class="row2">
-          <label for="email">Correo<input id="email" name="email" type="email" autocomplete="email" required></label>
-          <label for="formato">Qué te interesa<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>Serie mensual</option><option>Anunciarme en kiria.ai</option><option>Así es por dentro</option><option>El duelo</option><option>El dato que sorprende</option><option>Pregunta test</option></select></label>
+          <label for="empresa">Empresa (opcional)<input id="empresa" name="empresa" autocomplete="organization"></label>
+          <label for="formato">Plan<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>4 vídeos al mes</option><option>10 vídeos al mes</option><option>Un vídeo al día</option><option>Anunciarme en kiria.ai</option></select></label>
+        </div>
+        <div class="row2">
+          <label for="tipo">Tipo de vídeo<select id="tipo" name="tipo"><option>Aún no lo sé</option><option>Básico (15–30 s)</option><option>Publicidad (30–45 s)</option><option>Completo (45 s – 1 min)</option><option>Pro (más de 1 min)</option></select></label>
+          <label for="dif">Difusión en kiria.ai (+2 €)<select id="dif" name="dif"><option>No</option><option>Sí</option></select></label>
         </div>
         <label for="idea">¿Qué quieres contar?<textarea id="idea" name="idea" placeholder="Tu producto, tu servicio o tu idea, y qué te gustaría que pasara después de ver el vídeo." required></textarea></label>
         <button class="btn dark" type="submit" style="justify-self:start">Enviar por WhatsApp <span class="arr">→</span></button>
@@ -571,7 +715,7 @@ footer a:hover { color: var(--nightfg); }
   <div class="wrap">
     <div class="foot1">
       <a class="brand" href="#inicio"><b>kiria<i>.</i>ai</b><span>Estudio de vídeo con IA · Hecho en España</span></a>
-      <nav aria-label="Legal"><a href="#inicio">Aviso legal</a><a href="#inicio">Privacidad</a><a href="#inicio">Cookies</a><span class="pending">Textos legales: pendientes</span></nav>
+      <nav aria-label="Legal"><a href="#aviso-legal" data-open="aviso">Aviso legal</a><a href="#privacidad" data-open="privacidad">Privacidad</a><a href="#cookies" data-open="cookies">Cookies</a><button class="linkbtn" type="button" data-open="cfg">Configurar cookies</button></nav>
     </div>
     <div class="credits">
       <span>© 2026 kiria.ai</span>
@@ -579,6 +723,103 @@ footer a:hover { color: var(--nightfg); }
     </div>
   </div>
 </footer>
+
+<div class="cookie" id="cookie" role="region" aria-label="Aviso de cookies" hidden>
+  <b>Tu privacidad, primero</b>
+  <p>Usamos almacenamiento técnico para que la web funcione y recuerde tu elección. Las cookies de análisis y de publicidad son opcionales y solo se activan si las aceptas. <button class="linkbtn" type="button" data-open="cookies">Política de cookies</button></p>
+  <div class="two"><button class="btn dark" type="button" id="ckNo">Rechazar</button><button class="btn dark" type="button" id="ckYes">Aceptar</button></div>
+  <button class="linkbtn" type="button" data-open="cfg">Configurar</button>
+</div>
+
+<dialog class="legal" id="dlg-aviso" aria-labelledby="t-aviso">
+  <div class="lh"><h2 id="t-aviso">Aviso legal</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
+  <div class="lb">
+    <p class="upd">Última actualización: 2 de noviembre de 2026</p>
+    <h4>1. Titular de la web</h4>
+    <p>En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), estos son los datos del titular:</p>
+    <ul>
+      <li>Titular: <span class="pending">pendiente: nombre y apellidos o razón social</span></li>
+      <li>NIF: <span class="pending">pendiente</span></li>
+      <li>Domicilio: <span class="pending">pendiente</span></li>
+      <li>Correo: javierfernandez03112007@gmail.com</li>
+      <li>WhatsApp: +34 601 621 977</li>
+      <li>Actividad: producción de vídeos con inteligencia artificial para marcas y empresas, con la marca kiria.ai.</li>
+    </ul>
+    <h4>2. Uso de la web</h4>
+    <p>Al navegar por esta web aceptas este aviso legal. Te comprometes a usarla de forma lícita, sin dañar su funcionamiento ni el de los servicios a los que enlaza.</p>
+    <h4>3. Propiedad intelectual e industrial</h4>
+    <p>Los textos, diseños, vídeos y la marca kiria.ai pertenecen a su titular o se usan con permiso. No puedes copiarlos, distribuirlos ni transformarlos sin autorización por escrito. Los elementos de terceros llevan su crédito: la cabeza en 3D procede del escaneo de Lee Perry-Smith (Infinite-Realities), con licencia CC BY 3.0, y el mapa del globo, de Natural Earth (dominio público). Las marcas de los clientes pertenecen a sus dueños.</p>
+    <h4>4. Contratación</h4>
+    <p>Cada encargo se confirma por escrito antes de empezar: tipo de vídeo, guion, plazo y precio. Las condiciones de contratación, pago y cancelación se detallarán en ese momento. <span class="pending">Condiciones generales de contratación: pendientes</span></p>
+    <h4>5. Responsabilidad</h4>
+    <p>Trabajamos para que la información sea correcta y esté al día, pero no podemos garantizar que la web esté siempre libre de errores o interrupciones. No respondemos de los contenidos de las webs externas a las que enlazamos (WhatsApp, Instagram…), que tienen sus propias condiciones.</p>
+    <h4>6. Ley aplicable</h4>
+    <p>Este aviso se rige por la ley española. Si eres consumidor, para cualquier conflicto serán competentes los juzgados y tribunales de tu domicilio.</p>
+  </div>
+</dialog>
+
+<dialog class="legal" id="dlg-privacidad" aria-labelledby="t-priv">
+  <div class="lh"><h2 id="t-priv">Política de privacidad</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
+  <div class="lb">
+    <p class="upd">Última actualización: 2 de noviembre de 2026</p>
+    <p>Tratamos tus datos según el Reglamento General de Protección de Datos (RGPD, UE 2016/679) y la Ley Orgánica 3/2018 (LOPDGDD). Te lo contamos claro:</p>
+    <h4>Responsable</h4>
+    <p><span class="pending">pendiente: nombre y apellidos o razón social</span>, NIF <span class="pending">pendiente</span>. Contacto: javierfernandez03112007@gmail.com.</p>
+    <h4>Qué datos tratamos</h4>
+    <p>Los que nos das al escribirnos por el formulario, WhatsApp, correo o Instagram: nombre, empresa, correo, teléfono y lo que nos cuentes de tu proyecto. Si contratas, también los necesarios para facturar.</p>
+    <h4>Para qué los usamos</h4>
+    <ul><li>Responder a tu consulta y enviarte una propuesta o un presupuesto.</li><li>Hacer y entregar los vídeos que encargues, y facturarlos.</li><li>Cumplir nuestras obligaciones legales, por ejemplo las fiscales.</li></ul>
+    <p>No tomamos decisiones automatizadas sobre ti ni te enviamos publicidad sin tu permiso.</p>
+    <h4>Base legal</h4>
+    <p>Tu solicitud y la preparación o ejecución del contrato (artículo 6.1.b del RGPD), el cumplimiento de obligaciones legales (artículo 6.1.c) y, cuando te lo pidamos, tu consentimiento (artículo 6.1.a), que puedes retirar cuando quieras.</p>
+    <h4>Cuánto tiempo los guardamos</h4>
+    <p>Mientras dure la conversación o el encargo y, después, solo durante los plazos que marca la ley (por ejemplo, la normativa fiscal y mercantil).</p>
+    <h4>Quién más puede verlos</h4>
+    <p>No los cedemos a nadie salvo obligación legal. Nos ayudan proveedores que los tratan por nuestra cuenta: WhatsApp (Meta Platforms Ireland) si nos escribes por ahí y Google (Gmail) para el correo. Proveedor de pagos y alojamiento de la web: <span class="pending">pendiente</span>. Algunos pueden llevar datos fuera del Espacio Económico Europeo, siempre con las garantías del RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
+    <h4>El formulario de esta web</h4>
+    <p>No guarda nada en nuestros servidores: prepara tu mensaje y lo abre en WhatsApp o en tu correo, y tú decides si enviarlo.</p>
+    <h4>Tus derechos</h4>
+    <p>Puedes pedir el acceso, la rectificación o la supresión de tus datos, oponerte a su uso, limitarlo o pedir su portabilidad escribiendo a javierfernandez03112007@gmail.com. Si crees que no los tratamos bien, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+    <h4>Menores</h4>
+    <p>Esta web no está pensada para menores de 14 años. Para contratar hay que ser mayor de edad.</p>
+  </div>
+</dialog>
+
+<dialog class="legal" id="dlg-cookies" aria-labelledby="t-cook">
+  <div class="lh"><h2 id="t-cook">Política de cookies</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
+  <div class="lb">
+    <p class="upd">Última actualización: 2 de noviembre de 2026</p>
+    <h4>Qué son las cookies</h4>
+    <p>Son pequeños archivos que una web guarda en tu navegador para recordar información. Aquí llamamos cookies también a tecnologías parecidas, como el almacenamiento local del navegador. Las regula el artículo 22.2 de la LSSI-CE.</p>
+    <h4>Qué usamos en esta web</h4>
+    <p>Hoy esta web no usa cookies de análisis ni de publicidad. Solo guarda tu elección sobre cookies, para no volver a preguntarte cada vez que entras.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Nombre</th><th>Titular</th><th>Para qué</th><th>Duración</th><th>Tipo</th></tr></thead>
+      <tbody><tr><td>kiria_cookies</td><td>kiria.ai (propia)</td><td>Recordar si aceptas o rechazas las cookies opcionales</td><td>12 meses</td><td>Técnica · almacenamiento local</td></tr></tbody>
+    </table></div>
+    <h4>Servicios de terceros</h4>
+    <ul>
+      <li><b>Google Fonts</b> (Google Ireland): carga las tipografías de la web. No instala cookies, pero tu navegador envía tu dirección IP a Google para descargarlas.</li>
+      <li><b>WhatsApp e Instagram</b> (Meta): solo si pulsas sus enlaces. Al entrar en sus servicios se aplican sus propias políticas de cookies.</li>
+    </ul>
+    <h4>Cookies opcionales</h4>
+    <p>Si en el futuro añadimos analítica o publicidad, solo se activarán si las aceptas, y aparecerán en esta tabla con su nombre, su titular y su duración.</p>
+    <h4>Cómo cambiar tu elección</h4>
+    <p>En cualquier momento desde «Configurar cookies», al pie de la página, o borrando los datos de este sitio en los ajustes de privacidad de tu navegador (Chrome, Safari, Firefox o Edge).</p>
+    <div class="lbtns"><button class="btn dark" type="button" data-open="cfg">Configurar cookies</button></div>
+  </div>
+</dialog>
+
+<dialog class="legal" id="dlg-cfg" aria-labelledby="t-cfg">
+  <div class="lh"><h2 id="t-cfg">Configurar cookies</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
+  <div class="lb">
+    <div class="opt"><div><b>Técnicas</b><p>Necesarias para que la web funcione y recuerde tu elección.</p></div><span class="mono">Siempre activas</span></div>
+    <div class="opt"><div><b>Análisis</b><p>Para saber qué secciones se ven más y mejorar la web. Ahora mismo no usamos ninguna.</p></div><span class="switch"><input type="checkbox" id="ckA" aria-label="Cookies de análisis"><i></i></span></div>
+    <div class="opt"><div><b>Publicidad</b><p>Para medir campañas. Ahora mismo no usamos ninguna.</p></div><span class="switch"><input type="checkbox" id="ckM" aria-label="Cookies de publicidad"><i></i></span></div>
+    <div class="lbtns"><button class="btn dark" type="button" id="cfgNo">Rechazar todas</button><button class="btn dark" type="button" id="cfgYes">Aceptar todas</button><button class="btn ghost" type="button" id="cfgSave">Guardar mi elección</button></div>
+    <button class="linkbtn" type="button" data-open="cookies">Leer la política de cookies</button>
+  </div>
+</dialog>
 
 <script>
 // ---------------------------------------------------------------- utilidades
@@ -942,7 +1183,7 @@ void main() { float m = 1.0 - smoothstep(0.28, 0.5, length(gl_PointCoord - 0.5))
     e.preventDefault();
     const d = Object.fromEntries(new FormData(f));
     if (!d.nombre || !d.email || !d.idea) { [...f.querySelectorAll('[required]')].find(i => !i.value)?.focus(); return; }
-    msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa: ${d.formato}.\n\n${d.idea}\n\nMi correo: ${d.email}`;
+    msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa: ${d.formato} · ${d.tipo}${d.dif === 'Sí' ? ' · con difusión en kiria.ai (+2 €)' : ''}.\n\n${d.idea}\n\nMi correo: ${d.email}`;
     out.hidden = false;
     const wa = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg.textContent);
     document.getElementById('wa').href = wa;
@@ -954,4 +1195,145 @@ void main() { float m = 1.0 - smoothstep(0.28, 0.5, length(gl_PointCoord - 0.5))
     navigator.clipboard.writeText(msg.textContent).then(() => { b.textContent = 'Copiado'; }).catch(() => { const r = document.createRange(); r.selectNodeContents(msg); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Texto seleccionado: cópialo'; });
   });
 })();
+// ---------------------------------------------------------------- franja en movimiento (avanza sola y con el scroll, cada fila hacia un lado)
+(() => {
+  const r1 = document.getElementById('mq1'), r2 = document.getElementById('mq2'); if (!r1) return;
+  let w1 = 1, w2 = 1, raf = 0, vis = false; const t0 = performance.now();
+  const measure = () => { w1 = r1.firstElementChild.offsetWidth || 1; w2 = r2.firstElementChild.offsetWidth || 1; };
+  const frame = () => {
+    raf = 0; const s = scrollY * 0.55 + (RM ? 0 : (performance.now() - t0) * 0.035);
+    r1.style.transform = `translate3d(${-(s % w1)}px,0,0)`; r2.style.transform = `translate3d(${-(w2 - (s % w2))}px,0,0)`;
+    if (vis && !RM) raf = requestAnimationFrame(frame);
+  };
+  new IntersectionObserver(e => { vis = e[0].isIntersecting; if (vis && !raf) raf = requestAnimationFrame(frame); }).observe(r1.parentElement);
+  addEventListener('resize', measure); if (document.fonts) document.fonts.ready.then(measure); measure(); frame();
+})();
+
+// ---------------------------------------------------------------- trabajos: rueda 3D que gira con el scroll, se arrastra y se para en un vídeo
+(() => {
+  const stage = document.getElementById('ringStage'); if (!stage || RM) return;
+  const ring = document.getElementById('wheel'), sec = document.getElementById('trabajos');
+  const items = [...sec.querySelectorAll('.work .card')].map(c => { const v = c.querySelector('video'); return { src: v.dataset.src, poster: v.getAttribute('poster'), tag: c.querySelector('.tag2').textContent, title: c.querySelector('h3').textContent, desc: c.querySelector('p').textContent }; });
+  const N = items.length, STEP = 360 / N;
+  const slots = items.map((it, i) => { const f = document.createElement('figure'); f.className = 'slot'; f.dataset.i = i; f.innerHTML = `<video muted loop playsinline preload="none" poster="${it.poster}"></video><span class="tag2">${it.tag}</span>`; ring.appendChild(f); return f; });
+  const dots = document.getElementById('ringDots'), dbtn = items.map((it, i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', it.title); b.addEventListener('click', () => goTo(i)); dots.appendChild(b); return b; });
+  const cap = document.getElementById('cap'), cT = document.getElementById('capTag'), cH = document.getElementById('capTitle'), cP = document.getElementById('capDesc');
+  let R = 300, ang = 0, drag = 0, vel = 0, dragging = false, moved = 0, lastX = 0, downSlot = null, lastInput = performance.now(), visible = false, raf = 0, front = -1, last = performance.now(), capT = 0;
+  const norm = a => ((a % 360) + 540) % 360 - 180;
+  const layout = () => { const cw = slots[0].offsetWidth || 232; R = Math.round(cw / (2 * Math.tan(Math.PI / N)) + cw * 0.14); slots.forEach((s, i) => { s.style.transform = `rotateY(${i * STEP}deg) translateZ(${R}px)`; }); };
+  const scrollAng = () => { const r = sec.getBoundingClientRect(); return -((innerHeight - r.top) / (innerHeight + r.height)) * 150; };
+  const goTo = i => { drag -= norm(i * STEP + ang); vel = 0; lastInput = performance.now(); kick(); };
+  const setFront = i => {
+    front = i; slots.forEach((s, j) => s.classList.toggle('front', j === i)); dbtn.forEach((b, j) => b.classList.toggle('on', j === i));
+    slots.forEach((s, j) => { const v = s.firstElementChild; if (j === i && visible) { if (!v.src) v.src = items[j].src; const pr = v.play(); if (pr) pr.catch(() => {}); } else v.pause(); });
+    cap.style.opacity = 0; clearTimeout(capT);
+    capT = setTimeout(() => { cT.textContent = items[i].tag; cH.textContent = items[i].title; cP.textContent = items[i].desc; cap.style.opacity = 1; }, 160);
+  };
+  stage.addEventListener('pointerdown', e => { dragging = true; moved = 0; lastX = e.clientX; vel = 0; downSlot = e.target.closest('.slot'); stage.setPointerCapture(e.pointerId); lastInput = performance.now(); kick(); });
+  stage.addEventListener('pointermove', e => { if (!dragging) return; const dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx); const k = 260 / Math.max(320, stage.clientWidth); drag += dx * k; vel = dx * k * 60; lastInput = performance.now(); });
+  const up = () => { if (!dragging) return; dragging = false; if (moved < 6 && downSlot) goTo(+downSlot.dataset.i); lastInput = performance.now(); };
+  stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+  document.getElementById('ringPrev').addEventListener('click', () => { drag += STEP; lastInput = performance.now(); kick(); });
+  document.getElementById('ringNext').addEventListener('click', () => { drag -= STEP; lastInput = performance.now(); kick(); });
+  const frame = () => {
+    raf = 0; const now = performance.now(), dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (!dragging) { drag += vel * dt; vel *= Math.exp(-dt * 4.5); }
+    const idle = now - lastInput, sa = scrollAng();
+    if (!dragging && idle > 300 && Math.abs(vel) < 25) { const t0 = drag + sa, snap = Math.round(t0 / STEP) * STEP; drag += (snap - t0) * (1 - Math.exp(-dt * 5)); }
+    if (idle > 6500) { drag -= STEP; lastInput = now; }
+    ang += (drag + sa - ang) * (1 - Math.exp(-dt * 8));
+    ring.style.transform = `translateZ(${-R}px) rotateY(${ang.toFixed(3)}deg)`;
+    let best = 0, bestA = 999;
+    slots.forEach((s, i) => { const a = norm(i * STEP + ang), c = Math.max(0, Math.cos(a * Math.PI / 180)); s.style.opacity = (0.3 + 0.7 * c).toFixed(3); s.style.filter = `brightness(${(0.55 + 0.45 * c).toFixed(3)})`; if (Math.abs(a) < bestA) { bestA = Math.abs(a); best = i; } });
+    if (best !== front) setFront(best);
+    if (visible) raf = requestAnimationFrame(frame);
+  };
+  const kick = () => { if (!raf && visible) raf = requestAnimationFrame(frame); };
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; if (visible) { last = performance.now(); kick(); if (front >= 0) setFront(front); } else slots.forEach(s => s.firstElementChild.pause()); }, { threshold: 0.15 }).observe(stage);
+  addEventListener('scroll', () => { lastInput = performance.now(); kick(); }, { passive: true });
+  addEventListener('resize', () => { layout(); kick(); });
+  layout(); ang = drag + scrollAng(); window.kiriaRing = goTo;
+})();
+
+// ---------------------------------------------------------------- sobre nosotros: el texto se enciende palabra a palabra al bajar
+(() => {
+  const el = document.getElementById('manifesto'); if (!el) return;
+  const wrap = (node, cls) => [...node.childNodes].forEach(ch => {
+    if (ch.nodeType === 3) { const fr = document.createDocumentFragment(); ch.textContent.split(/(\s+)/).forEach(part => { if (!part) return; if (/^\s+$/.test(part)) { fr.appendChild(document.createTextNode(part)); return; } const w = document.createElement('span'); w.className = 'w' + (cls ? ' ' + cls : ''); w.textContent = part; fr.appendChild(w); }); ch.replaceWith(fr); }
+    else if (ch.nodeType === 1) wrap(ch, ch.className);
+  });
+  wrap(el, '');
+  const ws = [...el.querySelectorAll('.w')];
+  if (RM) { ws.forEach(w => w.classList.add('on')); return; }
+  let pend = false;
+  const upd = () => { pend = false; const r = el.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight * 0.82 - r.top) / (r.height + innerHeight * 0.3))), n = Math.round(p * ws.length); ws.forEach((w, i) => w.classList.toggle('on', i < n)); };
+  addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(upd); } }, { passive: true }); upd();
+})();
+
+// ---------------------------------------------------------------- precios: tipo de vídeo × número de vídeos, con descuento y difusión opcional (+2 €)
+(() => {
+  const box = document.getElementById('prices'); if (!box) return;
+  const T = [
+    { n: 'Básico', d: '15–30 s', c: 499, t: 'Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.' },
+    { n: 'Publicidad', d: '30–45 s', c: 799, t: 'Un anuncio de tu producto o servicio: gancho, problema, solución y llamada a la acción.' },
+    { n: 'Completo', d: '45 s – 1 min', c: 1199, t: 'La estructura completa de nuestros reels: imagen imposible, pregunta, datos y la respuesta al final.' },
+    { n: 'Pro', d: 'más de 1 min', c: 1499, t: 'Para contarlo a fondo: más escenas, más datos y más 3D.' }];
+  const cards = [...box.querySelectorAll('.pcard')], tabs = [...document.querySelectorAll('#types [role=tab]')], desc = document.getElementById('typeDesc'), dif = document.getElementById('difusion'), addon = document.getElementById('addon');
+  const eur = c => (c / 100).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true });
+  let t = 0;
+  const count = (el, to) => {
+    const from = el._v ?? to; el._v = to; if (RM || from === to) { el.textContent = eur(to); return; }
+    const t0 = performance.now(), D = 480; cancelAnimationFrame(el._r);
+    const step = () => { const k = Math.min(1, (performance.now() - t0) / D), e = 1 - Math.pow(1 - k, 3); el.textContent = eur(Math.round(from + (to - from) * e)); if (k < 1) el._r = requestAnimationFrame(step); };
+    step();
+  };
+  const render = () => {
+    tabs.forEach((b, i) => { b.setAttribute('aria-selected', i === t ? 'true' : 'false'); b.tabIndex = i === t ? 0 : -1; });
+    desc.textContent = T[t].t; addon.classList.toggle('on', dif.checked);
+    const extra = dif.checked ? 200 : 0;
+    cards.forEach(card => {
+      const n = +card.dataset.n, d = +card.dataset.d, full = n * T[t].c, tot = Math.round(full * (100 - d) / 100) + extra;
+      count(card.querySelector('[data-amt]'), tot);
+      const old = card.querySelector('s'), per = card.querySelector('[data-per]'), buy = card.querySelector('.buy'), plan = card.querySelector('h3').textContent;
+      if (n > 1) { old.hidden = false; old.textContent = eur(full + extra) + ' €'; per.textContent = eur(Math.round(tot / n)) + ' € por vídeo' + (extra ? ' · con difusión' : ''); }
+      else { old.hidden = true; per.textContent = 'Pago único' + (extra ? ' · con difusión' : ''); }
+      const msg = `Hola, quiero el plan «${plan}» (tipo ${T[t].n}, ${T[t].d})${extra ? ', con difusión en kiria.ai' : ''}: ${eur(tot)} €${n > 1 ? ' al mes' : ''}.`;
+      buy.href = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg); buy.target = '_blank'; buy.rel = 'noopener';
+    });
+  };
+  tabs.forEach((b, i) => {
+    b.addEventListener('click', () => { t = i; render(); });
+    b.addEventListener('keydown', e => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault(); t = (t + (e.key === 'ArrowRight' ? 1 : 3)) % 4; render(); tabs[t].focus(); });
+  });
+  dif.addEventListener('change', render);
+  render();
+})();
+
+// ---------------------------------------------------------------- cookies y textos legales
+(() => {
+  const KEY = 'kiria_cookies', banner = document.getElementById('cookie'), A = document.getElementById('ckA'), M = document.getElementById('ckM');
+  const read = () => { try { const v = JSON.parse(localStorage.getItem(KEY) || 'null'); if (v && Date.now() - v.t < 365 * 864e5) return v; } catch (e) {} return null; };
+  const apply = c => { window.kiriaConsent = c; /* aquí se cargarían la analítica (c.a) o la publicidad (c.m) cuando existan */ };
+  const show = on => { banner.hidden = !on; document.documentElement.classList.toggle('ck', on); };
+  const save = (a, m) => { const c = { v: 1, a, m, t: Date.now() }; try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {} apply(c); show(false); };
+  const dl = name => document.getElementById('dlg-' + name);
+  const open = name => {
+    const d = dl(name); if (!d) return;
+    document.querySelectorAll('dialog.legal[open]').forEach(o => { if (o !== d) o.close(); });
+    if (name === 'cfg') { const c = read(); A.checked = !!(c && c.a); M.checked = !!(c && c.m); }
+    if (typeof d.showModal === 'function') { if (!d.open) d.showModal(); } else d.setAttribute('open', '');
+    d.scrollTop = 0;
+  };
+  const close = d => { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); };
+  document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); open(b.dataset.open); }));
+  document.querySelectorAll('dialog.legal').forEach(d => { d.addEventListener('click', e => { if (e.target === d) close(d); }); d.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => close(d))); });
+  document.getElementById('ckYes').addEventListener('click', () => save(true, true));
+  document.getElementById('ckNo').addEventListener('click', () => save(false, false));
+  document.getElementById('cfgYes').addEventListener('click', () => { save(true, true); close(dl('cfg')); });
+  document.getElementById('cfgNo').addEventListener('click', () => { save(false, false); close(dl('cfg')); });
+  document.getElementById('cfgSave').addEventListener('click', () => { save(A.checked, M.checked); close(dl('cfg')); });
+  const c = read(); if (c) apply(c); else show(true);
+  const fromHash = { '#aviso-legal': 'aviso', '#privacidad': 'privacidad', '#cookies': 'cookies' }[location.hash]; if (fromHash) open(fromHash);
+})();
+
 </script>

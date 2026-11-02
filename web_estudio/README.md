@@ -1,4 +1,4 @@
-# Web del estudio (venta de vídeos a empresas) — versión 2
+# Web del estudio (venta de vídeos a empresas) — versión 3
 
 Idea aprobada por el usuario el 31-10-2026 («vamos a partir de esa idea»): **una web muy profesional para vender
 vídeos hechos con IA directamente a empresas** (no se vende el motor ni las ideas). El 1-11-2026 Javi pidió
@@ -13,6 +13,28 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   la comparta desde el menú «Compartir».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
+
+## Novedades de la v3 (2-11-2026, pedido de Javi)
+- **Más movimiento**: franja de texto que se desliza sola y con el scroll (dos filas en sentidos opuestos), **rueda 3D
+  de trabajos** (los 8 clips en círculo: gira con el scroll, se arrastra, se para en un vídeo, flechas y puntos; avanza
+  sola cada 6,5 s) y el texto de «Sobre nosotros» que se enciende palabra a palabra (rojo lo humano, azul la IA).
+- **Sobre nosotros** (`#nosotros`): kiria.ai es una marca digital española que crea vídeos con IA + 4 pilares.
+- **Precios** (`#precios`) con los de Javi y un extra de **difusión en kiria.ai: +2 € sobre cualquier plan**
+  (interpretado como +2 € por plan, no por vídeo; confirmar). «Lo quiero» abre WhatsApp con el pedido escrito.
+- **Cookies profesionales**: aviso con «Rechazar» y «Aceptar» al mismo nivel (guía de la AEPD) y «Configurar»;
+  la elección se guarda 12 meses en `localStorage` (`kiria_cookies`); hoy no hay cookies de análisis ni de publicidad.
+  Ventanas con **Aviso legal** (LSSI-CE art. 10), **Política de privacidad** (RGPD y LOPDGDD) y **Política de cookies**
+  (LSSI-CE art. 22.2), con los datos del titular marcados «pendiente». Enlaces directos: `#aviso-legal`, `#privacidad`, `#cookies`.
+
+### Tabla de precios (redondeo al céntimo, mitad hacia arriba)
+| Tipo | Duración | 1 vídeo | 4/mes (−10 %) | 10/mes (−12 %) | 30/mes, uno al día (−15 %) |
+|---|---|---|---|---|---|
+| Básico | 15–30 s | 4,99 € | 17,96 € (antes 19,96) | 43,91 € (antes 49,90) | 127,25 € (antes 149,70) |
+| Publicidad | 30–45 s | 7,99 € | 28,76 € (31,96) | 70,31 € (79,90) | 203,75 € (239,70) |
+| Completo | 45 s – 1 min | 11,99 € | 43,16 € (47,96) | 105,51 € (119,90) | 305,75 € (359,70) |
+| Pro | más de 1 min | 14,99 € | 53,96 € (59,96) | 131,91 € (149,90) | 382,25 € (449,70) |
+Con difusión: +2,00 € al total de cualquier plan. Javi escribió «publicidad 30-35 seg» y luego el precio «30-45»: se puso 30–45 s.
+Pendiente: si el IVA va incluido, qué incluye cada tipo, pago online (Stripe) y condiciones de contratación.
 
 ## Concepto (v2)
 «Ideas humanas + ejecución con IA». Fondo blanco de laboratorio, tinta casi negra, el recuadro amarillo de nuestros
@@ -40,7 +62,7 @@ subtítulos para las palabras clave, **rojo para lo humano** y **azul para la IA
    30 arcos desde España (cometa rojo → ámbar, punta de flecha y onda en cada destino); vuelve solo a España si nadie lo toca.
 9. **Anúnciate en kiria.ai** (banda oscura): vídeo patrocinado, serie con tu marca, mención al cierre, colaboración;
    media kit (3,2 M en 7 días, +20 vídeos; seguidores, público y tarifas pendientes). «Toda la publicidad va identificada».
-10. Planes: Un vídeo · Serie mensual (recomendado) · Vídeo + difusión. Precios pendientes.
+10. Precios (v3): ver la tabla de arriba; sustituye a los planes de la v2.
 11. Preguntas frecuentes (8).
 12. Contacto: el formulario abre WhatsApp (+34 601 621 977) con el mensaje escrito (también correo o copiar);
     correo javierfernandez03112007@gmail.com, Instagram @javifer.h; botón flotante de WhatsApp.

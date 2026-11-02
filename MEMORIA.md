@@ -79,7 +79,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy. **v2 (1-11-2026, noche)**: portada blanca con cabeza humana (cerebro
   rojo) y cabeza de IA (azul) que se juntan y explotan al deslizar; globo 3D con arcos desde España («De España, para todo
   el mundo»); sección «Anúnciate en kiria.ai» (patrocinio) y 3 planes con precios pendientes. Reglas de Javi: en la web solo
-  el total del canal (3,2 M en 7 días), nunca cifras de un solo vídeo ni visitas en las tarjetas. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
+  el total del canal (3,2 M en 7 días), nunca cifras de un solo vídeo ni visitas en las tarjetas.
+- **Precios de Javi (2-11-2026)**: Básico 15–30 s 4,99 € · Publicidad 30–45 s 7,99 € · Completo 45 s–1 min 11,99 € · Pro +1 min
+  14,99 €. Packs: 4 vídeos/mes −10 %, 10/mes −12 %, 30/mes (uno al día) −15 % sobre la suma. Difusión en kiria.ai: +2 € a cualquier
+  plan. Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
 - Publicarla: Cloudflare Pages o Netlify (gratis) + dominio propio (≈ 10–15 €/año); contacto por WhatsApp con mensaje prellenado.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
   Instagram), plazos, precios, opiniones y datos legales (titular, NIF, dirección).
