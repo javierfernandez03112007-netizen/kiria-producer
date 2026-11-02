@@ -19,21 +19,22 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   de trabajos** (los 8 clips en círculo: gira con el scroll, se arrastra, se para en un vídeo, flechas y puntos; avanza
   sola cada 6,5 s) y el texto de «Sobre nosotros» que se enciende palabra a palabra (rojo lo humano, azul la IA).
 - **Sobre nosotros** (`#nosotros`): kiria.ai es una marca digital española que crea vídeos con IA + 4 pilares.
-- **Precios** (`#precios`) con los de Javi y un extra de **difusión en kiria.ai: +2 € sobre cualquier plan**
-  (interpretado como +2 € por plan, no por vídeo; confirmar). «Lo quiero» abre WhatsApp con el pedido escrito.
+- **Precios** (`#precios`) con los de Javi y un extra de **difusión en kiria.ai: +2 € por cada vídeo** (confirmado por Javi).
+  «Lo quiero» abre WhatsApp con el pedido escrito.
 - **Cookies profesionales**: aviso con «Rechazar» y «Aceptar» al mismo nivel (guía de la AEPD) y «Configurar»;
   la elección se guarda 12 meses en `localStorage` (`kiria_cookies`); hoy no hay cookies de análisis ni de publicidad.
   Ventanas con **Aviso legal** (LSSI-CE art. 10), **Política de privacidad** (RGPD y LOPDGDD) y **Política de cookies**
   (LSSI-CE art. 22.2), con los datos del titular marcados «pendiente». Enlaces directos: `#aviso-legal`, `#privacidad`, `#cookies`.
 
-### Tabla de precios (redondeo al céntimo, mitad hacia arriba)
+### Tabla de precios (2-11-2026: +1 € a cada tipo; redondeo al céntimo, mitad hacia arriba)
 | Tipo | Duración | 1 vídeo | 4/mes (−10 %) | 10/mes (−12 %) | 30/mes, uno al día (−15 %) |
 |---|---|---|---|---|---|
-| Básico | 15–30 s | 4,99 € | 17,96 € (antes 19,96) | 43,91 € (antes 49,90) | 127,25 € (antes 149,70) |
-| Publicidad | 30–45 s | 7,99 € | 28,76 € (31,96) | 70,31 € (79,90) | 203,75 € (239,70) |
-| Completo | 45 s – 1 min | 11,99 € | 43,16 € (47,96) | 105,51 € (119,90) | 305,75 € (359,70) |
-| Pro | más de 1 min | 14,99 € | 53,96 € (59,96) | 131,91 € (149,90) | 382,25 € (449,70) |
-Con difusión: +2,00 € al total de cualquier plan. Javi escribió «publicidad 30-35 seg» y luego el precio «30-45»: se puso 30–45 s.
+| Básico | 15–30 s | 5,99 € | 21,56 € (antes 23,96) | 52,71 € (antes 59,90) | 152,75 € (antes 179,70) |
+| Publicidad | 30–45 s | 8,99 € | 32,36 € (35,96) | 79,11 € (89,90) | 229,25 € (269,70) |
+| Completo | 45 s – 1 min | 12,99 € | 46,76 € (51,96) | 114,31 € (129,90) | 331,25 € (389,70) |
+| Pro | más de 1 min | 15,99 € | 57,56 € (63,96) | 140,71 € (159,90) | 407,75 € (479,70) |
+**Difusión en kiria.ai: +2 € por cada vídeo** (sin descuento), en cualquier plan; p. ej. 10 de Publicidad con difusión = 99,11 €.
+Javi escribió «publicidad 30-35 seg» y luego el precio «30-45»: se puso 30–45 s.
 Pendiente: si el IVA va incluido, qué incluye cada tipo, pago online (Stripe) y condiciones de contratación.
 
 ## Concepto (v2)
