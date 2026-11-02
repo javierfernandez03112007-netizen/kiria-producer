@@ -63,7 +63,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 | ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
-| Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
+| Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; 36,4 s, −15,3 LUFS, pico −0,6; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -181,3 +181,9 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   la voz por encima (o sincronizar labios después). Para usarla desde aquí: permitir api.higgsfield.ai, cloud.higgsfield.ai
   y platform.higgsfield.ai en el acceso a red del entorno (hoy están bloqueados) y guardar la clave como variables
   `HIGGSFIELD_KEY_ID` y `HIGGSFIELD_KEY_SECRET`; vale desde la siguiente sesión. Gasta créditos de Higgsfield por plano.
+- 2 nov: Javi dijo que había conectado Higgsfield, pero desde esta sesión el proxy sigue rechazando api.higgsfield.ai
+  («403 to CONNECT», política de red) y no hay variables HIGGSFIELD_*. Hay que comprobar que el secreto está en el entorno
+  de ESTA sesión (Edit cloud environment desde la flecha del título) y, si aun así no va, abrir una sesión nueva en ese
+  entorno. Javi pegó la clave de Higgsfield en el chat: no se ha guardado en ningún sitio; se le recomendó crear otra.
+- Render del tetraedro: ≈ 1,4 fotogramas/s con 4 procesos (36 s → ≈ 26 min). Ojo: un bucle de espera con
+  `pgrep -f "capture.mjs …"` se encuentra a sí mismo y no acaba nunca; contar fotogramas en vez de buscar el proceso.

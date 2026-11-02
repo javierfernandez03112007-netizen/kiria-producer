@@ -193,6 +193,6 @@
  },
  "mezcla": {
   "sfx": 1.0,
-  "ganancia": 0.0
+  "ganancia": -1.0
  }
 }
