@@ -61,7 +61,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   a derecha y vuelve el relieve (la nieve se aplana fuera de la lente: `RELIEF` en `10_world.js`) → duelo naranja/espejo → bucle.
   Voz de Javi (su MP3, 58,8 s), 28 efectos de ElevenLabs. Render: esta máquina 0–385 + 8 de ayuda (`render-gafas-1…8`); las
   de ayuda iban a ≈ 100 fotogramas/min (un trozo de 400 en ≈ 4 min), mucho más rápidas que esta (≈ 20/min).
-  Pendiente de permiso: borrar las ramas `render-gafas-*` y archivar las 8 sesiones «Render Gafas».
+  Entregado el 2-11-2026 (59,75 s, 60 fps, 50 MB, −15 LUFS) con portada «¿NARANJA O ESPEJO?». Javi se queda con esa versión 1
+  (en 49,9–50,5 s la cámara pierde un momento las gafas al rodearlas; le propuse arreglarlo y dijo que no hacía falta).
+  Pendiente de permiso: borrar las ramas `render-gafas-*` y archivar las 9 sesiones «Render Gafas» (la 4 se repitió).
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
