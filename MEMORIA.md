@@ -64,6 +64,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Entregado el 2-11-2026 (59,75 s, 60 fps, 50 MB, −15 LUFS) con portada «¿NARANJA O ESPEJO?». Javi se queda con esa versión 1
   (en 49,9–50,5 s la cámara pierde un momento las gafas al rodearlas; le propuse arreglarlo y dijo que no hacía falta).
   Pendiente de permiso: borrar las ramas `render-gafas-*` y archivar las 9 sesiones «Render Gafas» (la 4 se repitió).
+- **Medicina** (`projects/medicina/`, 2-11-2026): Javi pidió «uno del mismo estilo que Derecho porque ha arrasado». Plantilla de
+  Derecho (figuritas, pedestales con haz de luz, HUD, cámara con zambullida en una lámina). Martillo de reflejos gigante sobre
+  100 figuritas con bata (quedan 3 doradas: «menos de 4 de cada 100 pueden elegir Dermatología») → vitrina «especialista» →
+  libros y huesos → negatoscopio «aquí falla» → estaciones (cuerpo sano, lo que falla, clínicas, hospital, hoja del MIR con
+  reloj) → corte al campo de 15.129 figuritas (9.225 doradas = plazas; las 4 primeras filas = Dermatología, «agotada antes
+  del 500») → residencia R1–R5 → 6 + 5 = 11 libros y cirujano → ¿quirófano o consulta? → bucle. Voz: su MP3 (69,5 s → sin
+  pausas y atempo 1,04 → 60,1 s). 37 efectos de ElevenLabs. Render: esta máquina 0–200 + 8 de ayuda (`render-med-1…8`).
+  Antes de publicar: confirmar presentados MIR 2026 y el número exacto de cierre de Dermatología (ver DESCRIPCION.txt).
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),

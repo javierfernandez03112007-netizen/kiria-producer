@@ -1,5 +1,5 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Derecho por dentro».
-Base: el mazo acaba de golpear; caen los estudiantes y quedan tres en dorado (sin HUD):
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Medicina por dentro».
+Base: el martillo de reflejos acaba de golpear; caen las figuritas con bata y quedan tres en dorado (sin HUD):
     COVER=1 COVER_T=1.45 COVER_CAM="0.1,0.26,1.12,-0.1,0.13,0,40" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos (lo que llega, en dorado)."""
 import os
@@ -29,9 +29,9 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("DERECHO", None)], y + 110 * k, int(190 * k), int(12 * k))
-    row(img, [("MENOS", None), ("DE", None), ("3", GOLD), ("DE", None), ("CADA", None), ("100", GOLD)], y + 265 * k, int(96 * k), int(8 * k))
-    paste(img, chip("podrán ser jueces o fiscales", int(40 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 380 * k)
+    row(img, [("MEDICINA", None)], y + 110 * k, int(190 * k), int(12 * k))
+    row(img, [("MENOS", None), ("DE", None), ("4", GOLD), ("DE", None), ("CADA", None), ("100", GOLD)], y + 265 * k, int(96 * k), int(8 * k))
+    paste(img, chip("pueden elegir Dermatología", int(40 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 380 * k)
 
 
 def main():
