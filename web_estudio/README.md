@@ -14,6 +14,15 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
 
+## Página de pago (v4.1, 2-11-2026)
+- Cada plan tiene **«Pagar ahora»**, que abre la página de pago `#pago` (vista dentro de la misma web): resumen del pedido
+  (tipo, plan y difusión se pueden cambiar; líneas con el descuento y la difusión; total), datos (nombre, correo, empresa),
+  método (tarjeta, Bizum, Apple Pay/Google Pay) y botón «Pagar X €». **No pide datos de tarjeta**: el cobro irá en la página
+  segura de Stripe. Para activarlo, rellenar `PAY_LINKS` en el script (clave «tipo-vídeos-difusión», p. ej. `'1-10-0'` =
+  Publicidad, 10 al mes, sin difusión → enlace de pago de Stripe; se le añade `prefilled_email`). Mientras esté vacío, el botón
+  muestra «El pago online se está activando» y ofrece confirmar el pedido por WhatsApp con todo escrito.
+- Sin mención al IVA (Javi, 2-11-2026). Las palabras clave tienen el degradado en movimiento hacia la derecha (4,5 s por vuelta).
+
 ## Novedades de la v4 (2-11-2026, pedido de Javi)
 - **Página en tonos oscuros** (`--bg #0a0b10`, paneles `#141823`, texto `#f2f4f8`). La portada sigue empezando en blanco (las
   cabezas) y **el fondo se apaga con la explosión** (progreso 0,6–0,8) hasta fundirse con el resto; la cabecera es clara solo
@@ -43,7 +52,7 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 | Pro | más de 1 min | 15,99 € | 57,56 € (63,96) | 140,71 € (159,90) | 407,75 € (479,70) |
 **Difusión en kiria.ai: +2 € por cada vídeo** (sin descuento), en cualquier plan; p. ej. 10 de Publicidad con difusión = 99,11 €.
 Javi escribió «publicidad 30-35 seg» y luego el precio «30-45»: se puso 30–45 s.
-Pendiente: si el IVA va incluido, qué incluye cada tipo, pago online (Stripe) y condiciones de contratación.
+Pendiente: qué incluye cada tipo, enlaces de pago de Stripe y condiciones de contratación. (El IVA no se menciona, por decisión de Javi.)
 
 ## Concepto (v2)
 «Ideas humanas + ejecución con IA». Fondo blanco de laboratorio, tinta casi negra, el recuadro amarillo de nuestros

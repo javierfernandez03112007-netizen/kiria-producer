@@ -84,7 +84,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Pro +1 min 15,99 €. Packs: 4 vídeos/mes −10 %, 10/mes −12 %, 30/mes (uno al día) −15 % sobre la suma. Difusión en kiria.ai:
   +2 € por cada vídeo.
 - **Gustos de Javi para la web (2-11-2026)**: mayoritariamente oscura; nada de recuadros amarillos para destacar (letra en otro
-  color: degradado rojo → azul); quiere mucho movimiento (cabezas, globo, rueda 3D…); no enseñar idiomas ni datos de público. Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
+  color: degradado rojo → azul); quiere mucho movimiento (cabezas, globo, rueda 3D…); no enseñar idiomas ni datos de público. Sin mención al IVA. Página de pago `#pago` lista: falta crear la cuenta de Stripe y pegar
+  los enlaces en `PAY_LINKS` (ver `web_estudio/README.md`); mientras, el pago se confirma por WhatsApp. Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
 - Publicarla: Cloudflare Pages o Netlify (gratis) + dominio propio (≈ 10–15 €/año); contacto por WhatsApp con mensaje prellenado.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
   Instagram), plazos, precios, opiniones y datos legales (titular, NIF, dirección).
