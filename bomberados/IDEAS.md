@@ -17,7 +17,7 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 | Idea | Formato | Respuesta a comprobar | Fuente a buscar |
 |---|---|---|---|
 | 💡 «Si echas agua a una sartén con aceite ardiendo, se apaga. ¿V o F?» | 1 / 6 | Falso: el agua se evapora de golpe y proyecta el aceite en llamas | guías de prevención (112, protección civil) |
-| 💡 ¿Triángulo o tetraedro del fuego? (el cuarto lado: la reacción en cadena) | 9 | Tetraedro: combustible, comburente, calor y reacción en cadena | manuales oficiales de bomberos / NTP del INSST |
+| ✍️ ¿Triángulo o tetraedro del fuego? («Al fuego le falta una pieza»; guion enviado y escena hecha el 2 nov, falta la voz) | 9 | Tetraedro: combustible, comburente, energía de activación y reacción en cadena | INSST NTP 599, NTP 99 y Tema 5 (en `projects/bomberados_tetraedro/FUENTES.md`) |
 | 💡 Los 4 métodos de extinción en 30 s (enfriar, sofocar, quitar combustible, inhibir) | 9 | uno por lado del tetraedro | ídem |
 | 💡 «Un extintor de CO2 sirve para cualquier fuego» | 6 | Falso: según clases de fuego y eficacia del extintor | RD 513/2017 (RIPCI), UNE-EN 3-7 |
 | 💡 ¿Qué significa «21A-113B» en un extintor? | 8 / 3 | eficacia frente a fuegos A y B | UNE-EN 3-7 |

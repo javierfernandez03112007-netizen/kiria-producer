@@ -63,6 +63,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 | ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
+| Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **guion enviado** 2 nov; escena hecha con tiempos provisionales; falta la voz de Javi y los efectos (Notion: jue 5 nov 20:30) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -147,3 +148,24 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   (con AAC el pico real pasaba de 0 dBFS) y «ganancia» −0,4 → −15,8 LUFS, pico −0,7.
 - Render ligero: 2,8 fotogramas/s (37 s en 14 min). Si se cambia un tramo, se puede renderizar solo ese rango
   (`capture.mjs out/frames --range A B w 4`) y volver a componer.
+
+### Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) — 2 nov
+- Javi preguntó «lo del vídeo medio, ¿cómo lo hacemos o sobre qué?» → el siguiente medio de Notion (jue 5 nov 20:30,
+  «Explicado en 30 s»), con un gancho para todo el mundo: «Te enseñaron que el fuego es un triángulo… y le falta una pieza».
+  Alternativas que se le dieron: sartén con aceite + agua (Mito o realidad, sáb 7: el más «para todo el mundo») y
+  «¿Puedes ser bombero solo con la ESO?» (hay que comprobar convocatorias).
+- Escena `bomberados/plantillas/pregunta/tetraedro.js` (ver README de la plantilla) y `tiempos_prov.py` para trabajar sin voz.
+- Fuentes: INSST NTP 599, NTP 99 y Tema 5 (insst.es no abre desde aquí: comprobar frases). El vídeo dice que el polvo
+  apaga las llamas «de otra forma» (inhibición de la reacción en cadena), no que solo actúe así.
+- ElevenLabs NO está conectado en esta sesión (el proxy no añade la clave: 401/«API key is invalid»). Para los efectos hace
+  falta que Javi guarde la clave en la configuración del entorno (Network secrets / variable `XI_API_KEY`), nunca en el chat.
+
+## Idea de Javi (2 nov): «dron» alrededor de una persona que habla a cámara
+- Pregunta: con un vídeo de una persona hablando y fotos de lo que tiene delante y a los lados, ¿se pueden hacer varias
+  escenas como si un dron girara a su alrededor mientras sigue hablando a cámara? Respuesta: sí, en «2,5D»: se recorta a la
+  persona fotograma a fotograma (segmentación: el modelo selfie de MediaPipe y los de rembg/RobustVideoMatting se descargan
+  bien desde aquí) y se coloca como un panel dentro del sitio reconstruido con las fotos (panorama alrededor + suelo) en
+  three.js; la cámara virtual vuela en arcos (mejor 30–90° por plano, con cortes), y él sigue mirando a cámara. Límites: es un
+  recorte plano (no se le ve el perfil), la luz del vídeo y de las fotos tiene que coincidir y no deben verse los pies.
+  Pedirle: vídeo en trípode con margen alrededor, panorámica de 360° (o 6–8 fotos solapadas) desde el sitio exacto donde
+  estaba, misma luz y hora, y unos segundos del fondo sin él. Primero una prueba de 5 s.

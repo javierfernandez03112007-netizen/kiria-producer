@@ -1,0 +1,56 @@
+«AL FUEGO LE FALTA UNA PIEZA» (¿triángulo o tetraedro?) — vídeo MEDIO del jueves 5 nov (20:30), formato «Explicado en 30 s»
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 30 s). Lo más fuerte tiene que ser el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+El gancho, con intriga, sin gritar.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[curious, playful] Te enseñaron que el fuego es un triángulo… [mischievously] y le falta UNA pieza.
+[intrigued] ¿Sabes cuál?
+[confident] Combustible, oxígeno y calor: quita UNO… y el fuego se apaga.
+[intrigued] Pero el polvo de un extintor apaga las llamas… de OTRA forma.
+[mysterious] Hay una cuarta pieza: la que hace que el fuego se alimente solo… [impressed] la reacción en cadena.
+[satisfied] Y el polvo la corta.
+[confident] Por eso el fuego no es un triángulo… [emphatic] ¡es un TETRAEDRO!
+[playful] ¿A ti te lo enseñaron con triángulo o con tetraedro? Comenta.
+[excited, emphatic] ¡Y MÁNDASELO a tu compañero de oposición, a ver si lo sabía!
+[energetic] ¿Vas en serio con la oposición?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes:
+Te enseñaron que el fuego es un triángulo… y le falta UNA pieza.
+¿Sabes cuál?
+Combustible, oxígeno y calor: quita UNO… y el fuego se apaga.
+Pero el polvo de un extintor apaga las llamas… de OTRA forma.
+Hay una cuarta pieza: la que hace que el fuego se alimente solo… la reacción en cadena.
+Y el polvo la corta.
+Por eso el fuego no es un triángulo… ¡es un TETRAEDRO!
+¿A ti te lo enseñaron con triángulo o con tetraedro? Comenta.
+¡Y MÁNDASELO a tu compañero de oposición, a ver si lo sabía!
+¿Vas en serio con la oposición?… ¡BOMBERADOS! ¡Pruébala GRATIS cinco días!
+
+GUION COMPLETO (voz y pantalla) — cada cosa sale en pantalla justo cuando se dice
+1. «Te enseñaron que el fuego es un triángulo… y le falta una pieza.» (≈ 3 s)
+   Primer fotograma: una pizarra de clase con un triángulo de tiza que ARDE como una mecha y una llama en el centro.
+   En «pieza» la cámara gira: el triángulo está en 3D y de sus esquinas salen líneas de tiza hacia un hueco con «?».
+2. «¿Sabes cuál?» — el «?» late: «LA 4.ª PIEZA».
+3. «Combustible, oxígeno y calor: quita uno y el fuego se apaga.» — cada lado se enciende al nombrarlo (tronco, O₂,
+   termómetro). En «quita uno» el lado del calor sale disparado y la llama se apaga con un hilo de humo.
+4. «Pero el polvo de un extintor apaga las llamas de otra forma.» — entra la boquilla de un extintor: nube de polvo, la
+   llama se apaga con los tres lados en su sitio y el «?» se pone rojo.
+5. «Hay una cuarta pieza… la reacción en cadena.» — dentro de la llama, una cadena de eslabones de fuego que se
+   encienden unos a otros en bucle; rótulo REACCIÓN EN CADENA.
+6. «Y el polvo la corta.» — un grano de polvo parte un eslabón: la cadena se rompe y se apaga.
+7. «Por eso el fuego no es un triángulo… ¡es un tetraedro!» — la cuarta pieza sube a la punta y se arma el TETRAEDRO en
+   3D con sus cuatro caras (combustible, comburente, calor, reacción en cadena), girando. El mejor plano del vídeo.
+8. «¿A ti te lo enseñaron con triángulo o con tetraedro? Comenta.» — dos botones de encuesta ▲ TRIÁNGULO / ◆ TETRAEDRO
+   que se vuelven bocadillos de comentario.
+9. ★ «¡Y mándaselo a tu compañero de oposición, a ver si lo sabía!» — golpe, avión de papel y «¿LO SABÍA?».
+10. ★ «¿Vas en serio con la oposición? ¡Bomberados! ¡Pruébala gratis cinco días!» — el tetraedro se deshace en brasas:
+   placa BOMBERADOS + «PRUÉBALA GRATIS 5 DÍAS».
+★ = momentos de venta: los más fuertes del vídeo.
+
+Por qué así: casi todo el mundo aprendió el «triángulo del fuego» (en el cole o en un curso), así que el gancho le sirve a
+cualquiera, no solo a opositores; la pregunta del final («¿triángulo o tetraedro?») se contesta con una palabra, para que
+comente mucha gente. Fuente: INSST (NTP 599 y NTP 99).

@@ -66,3 +66,19 @@ cierra en el cue `trampa`, un rotativo se enciende en `civil0`, la cámara sube 
 `"cuenta_pos": [x, y, r]` coloca la cuenta atrás (aquí a la derecha, para que se vea el sello). Sonido: `sfx_track_leyes`
 con `_tramo()`: cada efecto se recorta o se repite para que acabe justo cuando acaba su imagen.
 Otras opciones: `"compartir_a"` (a quién va el avión de papel) y el golpe visual de los momentos de venta (`"realce"`).
+
+## Formato 9 «Explicado en 30 s»: escena «tetraedro» (`tetraedro.js`, vídeo medio del 5 nov)
+
+`video.json` con `"formato": "tetraedro"` y, en `web/index.html`, `tetraedro.js` DESPUÉS de `scene.js` (sustituye `renderAt`).
+Pizarra de clase pintada una vez (`makeBoard`): triángulo de tiza que arde como una mecha en el primer fotograma (rastro de
+llamitas, chispas, cámara que se abre), llama central (`flame`), el triángulo se despega en 3D (`proj`, giro yaw/pitch) con
+una cuarta esquina «?», insignias con icono (`badge`: tronco, O₂, termómetro, cadena), extintor con nube de polvo
+(`extinguisher`, `powder`), anillo de eslabones de fuego que se encienden unos a otros y se parte (`ringScene`),
+tetraedro 3D con caras de cristal que gira, encuesta TRIÁNGULO / TETRAEDRO que se vuelve bocadillos y estallido en brasas
+antes de la placa. Cues: ver `projects/bomberados_tetraedro/video.json`. La línea de tiempo `TT` (en `ttInit`) es la que
+tiene que repetir `compose.py` para los efectos.
+
+## Tiempos provisionales (para hacer la escena mientras Javi graba)
+
+`python3 bomberados/plantillas/pregunta/tiempos_prov.py projects/<p>` → `tiempos.json` repartido por sílabas (≈ 6,3 sílabas/s;
+las frases de venta a ≈ 5). Con la voz de verdad, `asr.py` + `ajustar_voz.py` lo sustituyen.

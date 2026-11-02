@@ -1,0 +1,198 @@
+{
+ "formato": "tetraedro",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "count_line": -1,
+  "pause": {
+   "0": 0.12,
+   "1": 0.3,
+   "2": 0.25,
+   "3": 0.32,
+   "4": 0.18,
+   "5": 0.25,
+   "6": 0.3,
+   "7": 0.15,
+   "8": 0.3
+  },
+  "pause_def": 0.24
+ },
+ "cues": {
+  "ensenaron": [
+   "enseñaron",
+   1,
+   1
+  ],
+  "fuego": [
+   "fuego",
+   1,
+   1
+  ],
+  "triangulo": [
+   "triángulo",
+   1,
+   1
+  ],
+  "falta": [
+   "falta",
+   1,
+   1
+  ],
+  "pieza": [
+   "pieza",
+   1,
+   1
+  ],
+  "cual": [
+   "cuál",
+   1,
+   2
+  ],
+  "combustible": [
+   "combustible",
+   1,
+   3
+  ],
+  "oxigeno": [
+   "oxígeno",
+   1,
+   3
+  ],
+  "calor": [
+   "calor",
+   1,
+   3
+  ],
+  "quita": [
+   "quita",
+   1,
+   3
+  ],
+  "apaga": [
+   "apaga",
+   1,
+   3
+  ],
+  "polvo": [
+   "polvo",
+   1,
+   4
+  ],
+  "extintor": [
+   "extintor",
+   1,
+   4
+  ],
+  "apaga2": [
+   "apaga",
+   1,
+   4
+  ],
+  "llamas": [
+   "llamas",
+   1,
+   4
+  ],
+  "otra": [
+   "otra",
+   1,
+   4
+  ],
+  "cuarta": [
+   "cuarta",
+   1,
+   5
+  ],
+  "alimente": [
+   "alimente",
+   1,
+   5
+  ],
+  "reaccion": [
+   "reacción",
+   1,
+   5
+  ],
+  "polvo2": [
+   "polvo",
+   1,
+   6
+  ],
+  "corta": [
+   "corta",
+   1,
+   6
+  ],
+  "triangulo2": [
+   "triángulo",
+   1,
+   7
+  ],
+  "tetraedro": [
+   "tetraedro",
+   1,
+   7
+  ],
+  "encuesta": [
+   "ti",
+   1,
+   8
+  ],
+  "op_tri": [
+   "triángulo",
+   1,
+   8
+  ],
+  "op_tet": [
+   "tetraedro",
+   1,
+   8
+  ],
+  "comenta": [
+   "comenta",
+   1,
+   8
+  ],
+  "compartir": [
+   "mándaselo",
+   1,
+   9
+  ],
+  "acierta": [
+   "ver",
+   1,
+   9
+  ],
+  "serio": [
+   "serio",
+   1,
+   10
+  ],
+  "marca": [
+   "bomberados",
+   1,
+   10
+  ],
+  "prueba": [
+   "pruébala",
+   1,
+   10
+  ]
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿LO SABÍA?",
+ "portada": {
+  "titulo": "AL FUEGO LE FALTA UNA PIEZA",
+  "etiqueta": "¿TRIÁNGULO O TETRAEDRO?",
+  "t": 2.6
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ }
+}
