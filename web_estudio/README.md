@@ -1,4 +1,4 @@
-# Web del estudio (venta de vídeos a empresas) — versión 3
+# Web del estudio (venta de vídeos a empresas) — versión 4
 
 Idea aprobada por el usuario el 31-10-2026 («vamos a partir de esa idea»): **una web muy profesional para vender
 vídeos hechos con IA directamente a empresas** (no se vende el motor ni las ideas). El 1-11-2026 Javi pidió
@@ -13,6 +13,14 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   la comparta desde el menú «Compartir».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
+
+## Novedades de la v4 (2-11-2026, pedido de Javi)
+- **Página en tonos oscuros** (`--bg #0a0b10`, paneles `#141823`, texto `#f2f4f8`). La portada sigue empezando en blanco (las
+  cabezas) y **el fondo se apaga con la explosión** (progreso 0,6–0,8) hasta fundirse con el resto; la cabecera es clara solo
+  sobre la parte blanca. Las cabezas usan tokens claros dentro de `.stage`; el titular final, tokens oscuros.
+- **Sin recuadros amarillos**: las palabras clave van en letra con degradado rojo → violeta → azul (`--grad`).
+- Anúnciate: fuera «Seguidores» y «Edad y país»; «Tarifas» es un botón que lleva a Precios; se añade «Difusión: 2 €/vídeo».
+- Globo y preguntas: fuera «Otros idiomas».
 
 ## Novedades de la v3 (2-11-2026, pedido de Javi)
 - **Más movimiento**: franja de texto que se desliza sola y con el scroll (dos filas en sentidos opuestos), **rueda 3D
