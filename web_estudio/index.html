@@ -330,11 +330,6 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .per { font-size: 13.5px; color: var(--muted); }
 .pcard .btn { align-self: stretch; margin-top: 6px; }
 .pcard .rec { align-self: flex-start; }
-.pcard .badge { z-index: 2; }
-.pvid { position: relative; aspect-ratio: 3 / 4; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--night); margin: -6px -4px 2px; }
-.pvid video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
-.pvid .tag2 { position: absolute; left: 8px; bottom: 8px; right: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(10, 12, 16, 0.66); color: #ffffff; padding: 4px 8px; border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; justify-self: start; width: max-content; max-width: calc(100% - 16px); }
-@media (max-width: 560px) { .pvid { aspect-ratio: 4 / 5; } }
 .pcard .amount { margin-top: auto; }
 .wa-link { align-self: center; font-size: 13.5px; color: var(--muted); text-decoration: none; }
 .wa-link:hover { color: var(--ink); }
@@ -753,10 +748,10 @@ footer a:hover { color: var(--nightfg); }
       <p class="type-desc" id="typeDesc">Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.</p>
       <label class="addon rv" id="addon"><span class="switch"><input type="checkbox" id="difusion"><i></i></span><span><b>Añadir difusión en kiria.ai · +2 € por vídeo</b><small>Publicamos también tus vídeos en nuestra cuenta como colaboración, identificados como publicidad. Se suma a cualquier plan: 2 € por cada vídeo.</small></span></label>
       <div class="prices" id="prices">
-        <div class="pcard rv" data-n="1" data-d="0"><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>5,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>23,96 €</s><b data-amt>21,56</b><span class="cur">€/mes</span></div><p class="per" data-per>5,39 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>59,90 €</s><b data-amt>52,71</b><span class="cur">€/mes</span></div><p class="per" data-per>5,27 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>179,70 €</s><b data-amt>152,75</b><span class="cur">€/mes</span></div><p class="per" data-per>5,09 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>5,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>23,96 €</s><b data-amt>21,56</b><span class="cur">€/mes</span></div><p class="per" data-per>5,39 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>59,90 €</s><b data-amt>52,71</b><span class="cur">€/mes</span></div><p class="per" data-per>5,27 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>179,70 €</s><b data-amt>152,75</b><span class="cur">€/mes</span></div><p class="per" data-per>5,09 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
       </div>
       <div class="price-notes rv"><span>Precios en euros.</span><span>«Pagar ahora» te lleva a la página de pago.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
     </div>
@@ -1436,12 +1431,6 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
 (() => {
   const box = document.getElementById('prices'); if (!box) return;
   const T = KT;
-  // ejemplos en vídeo según el tipo elegido (uno distinto en cada caja)
-  const EX = [['bomberados_ia', 'bomberados', 'software', 'civil'], ['bomberados', 'bomberados_ia', 'magisterio', 'industrial'], ['industrial', 'derecho', 'magisterio', 'economia'], ['aeroespacial', 'derecho', 'software', 'civil']];
-  const EXN = { bomberados_ia: 'Bomberados IA', bomberados: 'Bomberados', software: 'Software vs Informática', civil: 'Ingeniería Civil', magisterio: 'Magisterio', industrial: 'Ingeniería Industrial', derecho: 'Derecho por dentro', economia: 'Economía', aeroespacial: 'Ingeniería Aeroespacial' };
-  let pvOn = false;
-  const playV = v => { if (!v.dataset.name) return; const want = `media/${v.dataset.name}.mp4`; if (v.getAttribute('src') !== want) v.setAttribute('src', want); if (!RM) { const pr = v.play(); if (pr) pr.catch(() => {}); } };
-  const setV = (v, name) => { if (!v || v.dataset.name === name) return; v.dataset.name = name; v.poster = `media/${name}.jpg`; v.parentElement.querySelector('.tag2').textContent = 'Ejemplo · ' + EXN[name]; if (pvOn) playV(v); };
   const cards = [...box.querySelectorAll('.pcard')], tabs = [...document.querySelectorAll('#types [role=tab]')], desc = document.getElementById('typeDesc'), dif = document.getElementById('difusion'), addon = document.getElementById('addon');
   const eur = c => (c / 100).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true });
   let t = 0;
@@ -1454,8 +1443,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   const render = () => {
     tabs.forEach((b, i) => { b.setAttribute('aria-selected', i === t ? 'true' : 'false'); b.tabIndex = i === t ? 0 : -1; });
     desc.textContent = T[t].t; addon.classList.toggle('on', dif.checked);
-    cards.forEach((card, ci) => {
-      setV(card.querySelector('.pvid video'), EX[t][ci % EX[t].length]);
+    cards.forEach(card => {
       const n = +card.dataset.n, d = +card.dataset.d, full = n * T[t].c, extra = dif.checked ? 200 * n : 0, tot = Math.round(full * (100 - d) / 100) + extra;
       count(card.querySelector('[data-amt]'), tot);
       const old = card.querySelector('s'), per = card.querySelector('[data-per]');
@@ -1470,7 +1458,6 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   });
   dif.addEventListener('change', render);
   render();
-  new IntersectionObserver(es => { pvOn = es[0].isIntersecting; cards.forEach(c => { const v = c.querySelector('.pvid video'); if (pvOn) playV(v); else v.pause(); }); }, { threshold: 0.12 }).observe(box);
 })();
 
 // ---------------------------------------------------------------- webs: «Pagar ahora» y el navegador que se inclina con el scroll

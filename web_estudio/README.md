@@ -14,15 +14,13 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
 
-## Webs y vídeos en Precios (v4.3, 2-11-2026)
+## Webs (v4.3–4.4, 2-11-2026)
 - Apartado **Webs** (`#webs`, en el menú): «Web con tus fotos» **250 €** y «Web con fotos nuestras» **350 €** (sesión de fotos
   en su negocio; zona: consultar), pago único y todo incluido (diseño adaptado al móvil, textos con IA revisados, detalles con IA,
   enlaces a Instagram/correo/reservas, publicada). Navegador animado que se inclina con el scroll y enseña esta misma web
   (`media/web_demo.jpg`, capturas de las secciones). «Pagar ahora» abre `#pago` en modo web (claves `PAY_LINKS` `web-0` y `web-1`);
   «Pedir mi web» rellena el formulario. Pregunta frecuente «¿También hacéis páginas web?».
-- **Cada caja de Precios lleva un vídeo de ejemplo** que se reproduce solo (en silencio) y cambia con el tipo elegido:
-  Básico → Bomberados IA, Bomberados, Software, Civil · Publicidad → Bomberados, Bomberados IA, Magisterio, Industrial ·
-  Completo → Industrial, Derecho, Magisterio, Economía · Pro → Aeroespacial, Derecho, Software, Civil (`media/economia.*` nuevo).
+- Las cajas de Precios llevaron un vídeo de ejemplo según el tipo, pero Javi pidió quitarlo (2-11-2026): van sin vídeo.
 
 ## Contacto (v4.2, 2-11-2026, decisión de Javi)
 - **Sin número de teléfono ni WhatsApp en ninguna parte.** Las dudas, por Instagram **@kiria.ai** (https://www.instagram.com/kiria.ai/,
