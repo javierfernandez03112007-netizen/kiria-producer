@@ -71,7 +71,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   reloj) → corte al campo de 15.129 figuritas (9.225 doradas = plazas; las 4 primeras filas = Dermatología, «agotada antes
   del 500») → residencia R1–R5 → 6 + 5 = 11 libros y cirujano → ¿quirófano o consulta? → bucle. Voz: su MP3 (69,5 s → sin
   pausas y atempo 1,04 → 60,1 s). 37 efectos de ElevenLabs. Render: esta máquina 0–200 + 8 de ayuda (`render-med-1…8`).
+  Entregado el 2-11-2026 (61,1 s, 60 fps, 51 MB, −15 LUFS) con portada «MEDICINA · MENOS DE 4 DE CADA 100». Ojo: la
+  plantilla de Derecho no traía `web/package.json` y las máquinas de ayuda fallaron 55 min sin three.js (copiarlo siempre).
   Antes de publicar: confirmar presentados MIR 2026 y el número exacto de cierre de Dermatología (ver DESCRIPCION.txt).
+  Pendiente de permiso: borrar las ramas `render-med-*` y archivar las 8 sesiones «Render Medicina».
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
