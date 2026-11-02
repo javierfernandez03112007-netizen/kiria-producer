@@ -49,3 +49,14 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 | 💡 Pregunta del día (serie diaria) | 3 |
 | 💡 Test relámpago: ¿cuántas aciertas de 3? | 4 |
 | 💡 Pregunta fallada → la IA te dice manual y página (versión corta de `bomberados_ia`, 15 s) | 3 / 5 |
+
+## Ideas para petarlo (2 nov, tras mirar la competencia: ver `COMPETENCIA.md`)
+| Idea | Gancho / mecánica | Fuente a comprobar |
+|---|---|---|
+| 💡 «Si echas agua aquí… pasa esto» (sartén con aceite, cámara superlenta; es el «Mito o realidad» del sáb 7) | bola de fuego en el 1.er segundo; «mándaselo a quien cocina en tu casa» | guías oficiales 112 / Protección Civil |
+| 💡 «Encuentra los 5 peligros de incendio de esta casa» (10 s para mirar) | «comenta cuántos has visto»; cada peligro se revela con su mini incendio | guías oficiales de prevención en el hogar |
+| 💡 «Para el vídeo en el 10,00» (muñeco trepando la cuerda con cronómetro gigante) | reto de reflejos: comentan su tiempo y lo vuelven a ver | marca del 10 en unas bases oficiales |
+| 💡 «Hoy tienes 4 minutos para salir de tu casa en llamas. Tus abuelos tenían casi 30.» | dos salones ardiendo a la vez hasta el flashover; enlaza con «flashover vs backdraft» | UL FSRI (3:40 frente a 29:30) |
+| 💡 «Las pruebas más raras para ser bombero» (palear arena, claustrofobia, viga…) | «¿cuál te parece más difícil? comenta el número» | bases de cada convocatoria |
+| 💡 «¿Cuántos opositores hay por plaza en tu ciudad?» (mapa que se enciende) | «¿y en tu ciudad?» → serie con los comentarios | listas oficiales de admitidos y plazas |
+| 💡 «La pregunta que más falla la gente en Bomberados» | reto con datos que solo tiene la app | dato de la marca (CONFIRMAR) |
