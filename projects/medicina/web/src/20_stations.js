@@ -42,16 +42,18 @@ function buildStations() {
   }
   // ---------- L7 sexto: casi todo el año en el hospital (cama con paciente y gotero; médica y dos estudiantes con bata)
   { const s = station('HO', ANG.HO, 1.1);
-    s.bed = hospitalBed(1.15); s.bed.position.set(-0.1, 0, -0.05); s.bed.rotation.y = Math.PI / 2; s.top.add(s.bed);
-    s.doc = medFig('coat', 1.25); s.doc.position.set(0.0, 0, 0.42); s.doc.rotation.y = Math.PI * 0.95; s.top.add(s.doc); s.doc.userData.J.shR.rotation.x = -0.5;
-    s.stu = [medFig('coat', 1.05), medFig('coat', 1.05)]; s.stu.forEach((f, i) => { f.position.set(0.32 + i * 0.16, 0, 0.3 - i * 0.12); f.rotation.y = Math.PI * 1.15; s.top.add(f); });
-    s.mon = ecgMonitor(0.7); s.mon.position.set(-0.45, 0.42, -0.3); s.mon.rotation.y = 0.6; s.top.add(s.mon);
+    s.bed = hospitalBed(1.1); s.bed.position.set(0.0, 0, 0.0); s.bed.rotation.y = 0; s.top.add(s.bed);
+    s.doc = medFig('coat', 2.1); s.doc.position.set(-0.42, 0, -0.06); s.doc.rotation.y = Math.PI / 2 + 0.3; s.top.add(s.doc); s.doc.userData.J.shR.rotation.x = -0.6;
+    s.stu = [medFig('coat', 1.8), medFig('coat', 1.8)]; s.stu.forEach((f, i) => { f.position.set(0.32 + i * 0.1, 0, -0.42 + i * 0.16); f.rotation.y = -Math.PI / 2 - 0.3; s.top.add(f); });
+    s.mon = ecgMonitor(0.7); s.mon.position.set(-0.3, 0.42, -0.5); s.mon.rotation.y = 0.4; s.top.add(s.mon);
   }
   // ---------- L8 el MIR: hoja de respuestas (200 preguntas), reloj (4 h 30 min) y lápiz
   { const s = station('MI', ANG.MI, 1.1);
     s.desk = grp(at(mesh(new THREE.BoxGeometry(0.8, 0.025, 0.46), M.woodL), 0, 0.12, 0)); for (const x of [-0.37, 0.37]) s.desk.add(at(mesh(new THREE.BoxGeometry(0.03, 0.12, 0.42), M.woodL), x, 0.06, 0)); s.top.add(s.desk);
     s.sheetK = -1; s.wrong = 137; s.sheet = canvasPlane(0.34, 0.46, 1024, (g, w, h) => drawSheet(g, w, h, 0, s.wrong), { cs: false });
-    s.sheet.rotation.x = -Math.PI / 2; s.sheet.rotation.z = 0.06; s.sheet.position.set(-0.05, 0.1335, 0.0); s.desk.add(s.sheet);
+    s.clip = rbox(0.38, 0.5, 0.012, M.woodL, 0.012); s.clip.rotation.x = -Math.PI / 2 + 0.42; s.clip.position.set(-0.05, 0.2, 0.0); s.desk.add(s.clip);
+    const clamp2 = mesh(new THREE.BoxGeometry(0.12, 0.02, 0.025), M.chrome); clamp2.position.set(0, 0.24, 0.012); s.clip.add(clamp2);
+    s.sheet.position.set(0, -0.01, 0.0075); s.clip.add(s.sheet);
     s.pen = pen(); s.pen.rotation.set(0.0, 0.6, -1.25); s.top.add(s.pen);
     s.clk = wallClock(1.35); s.clk.position.set(0.32, 0.55, -0.22); s.clk.rotation.y = -0.25; s.top.add(s.clk);
     s.cpost = grp(at(cyl(0.008, 0.008, 0.36, M.brass, 8), 0, 0.18, 0), at(cyl(0.06, 0.07, 0.012, M.wood, 24), 0, 0.006, 0)); s.cpost.position.set(0.32, 0, -0.24); s.top.add(s.cpost);
@@ -90,8 +92,8 @@ function stationsAt(t) {
   const vis = (s, a, b) => { s.Z.visible = t > a && t < b; return s.Z.visible; };
   // L4
   { const s = ST.CS; if (vis(s, K.dentro3 - 0.2, K.patologia5 + 0.8)) {
-    show(s.skull, pop(t, K.anatomia4 - 0.15, 0.45) * 1.6); s.skull.rotation.y = 0.35 + 0.8 * (1 - eo(clamp((t - K.anatomia4) / 0.8))); s.skull.userData.jaw.rotation.x = 0.06 + 0.06 * Math.max(0, Math.sin(t * 6));
-    show(s.bone, pop(t, K.anatomia4 + 0.05, 0.4) * 1.1);
+    show(s.skull, pop(t, K.cuerpo4 - 0.15, 0.45) * 1.6); s.skull.rotation.y = 0.35 + 0.8 * (1 - eo(clamp((t - K.cuerpo4) / 0.9))); s.skull.userData.jaw.rotation.x = 0.06 + 0.06 * Math.max(0, Math.sin(t * 6));
+    show(s.bone, pop(t, K.sano4 - 0.05, 0.4) * 1.1);
     const hk = pop(t, K.fisiologia4 - 0.15, 0.45); show(s.heart, hk * 1.7); show(s.hstand, hk); if (s.heart.visible) { const b = beat(t) * clamp((t - K.fisiologia4) / 0.3); s.heart.userData.body.scale.setScalar(1 + 0.07 * b); s.heart.rotation.y = 0.4 + Math.sin(t * 0.8) * 0.25; }
     const mk = pop(t, K.bioquimica4 - 0.15, 0.45); show(s.mol, mk * 1.4); show(s.mstand, mk); s.mol.rotation.set(t * 0.6, t * 0.9, 0.3);
   } }
@@ -121,8 +123,8 @@ function stationsAt(t) {
     if (Math.abs(key - s.sheetK) > 0.004) { const T = s.sheet.userData.tex; drawSheet(T.userData.g, T.userData.c.width, T.userData.c.height, wr ? 1 : fk, wr ? s.wrong : -1); T.needsUpdate = true; s.sheetK = key; }
     const q = Math.min(199, Math.floor(200 * fk)), col = Math.floor(q / 50), row = q % 50;
     const rh = (1385 - 110) / 50, u = (20 + col * 246 + 36 + 26 * Math.floor(hash(q * 5.3) * 4)) / 1024 - 0.5, v = (100 + row * rh + rh / 2) / 1385 - 0.5;
-    const P = v3(u * 0.34, 0, v * 0.46).applyAxisAngle(_up, 0.06).add(v3(-0.05, 0.1335, 0)); s.desk.localToWorld(P); s.top.worldToLocal(P);
-    s.pen.visible = s.desk.scale.x > 0.5 && t < K.resta8 + 0.6; s.pen.position.copy(P).add(v3(0, 0.012 + (fk > 0 && fk < 1 ? 0.004 * Math.abs(Math.sin(t * 40)) : 0.03), 0));
+    const lift = 0.006 + (fk > 0 && fk < 1 ? 0.004 * Math.abs(Math.sin(t * 40)) : 0.03), P = v3(u * 0.34, -v * 0.46, lift); s.sheet.localToWorld(P); s.top.worldToLocal(P);
+    s.pen.visible = s.desk.scale.x > 0.5 && t < K.resta8 + 0.6; s.pen.position.copy(P);
     const ck = pop(t, K.cuatro8 - 0.2, 0.45); show(s.clk, ck * 1.35); show(s.cpost, ck); setClock(s.clk, 14 + 4.5 * eio(clamp((t - K.cuatro8) / (K.media8 - K.cuatro8 + 0.4))));
   } }
   // L11

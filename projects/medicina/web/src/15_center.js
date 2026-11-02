@@ -39,8 +39,8 @@ function buildCenter() {
   const BK = [[0x6e1414, 'ANATOMÍA'], [0x173d2a, 'FISIOLOGÍA'], [0x1b2a4a, 'HISTOLOGÍA'], [0x4a2a14, 'BIOQUÍMICA'], [0x2a1a2e, 'PATOLOGÍA'], [0x14361f, 'FARMACOLOGÍA']];
   S.books = BK.map(([c, n], k) => { const b = book(0.2, 0.28, 0.05, c, n, ''); b.userData.k = k; Z.add(b); return b; });
   S.flip = []; for (let k = 0; k < 9; k++) { const p = mesh(new THREE.PlaneGeometry(0.19, 0.27), new THREE.MeshStandardMaterial({ map: paperTex((g, w, h) => { textLines(g, 40, 60, w - 80, 12, 22, 'rgba(40,36,30,.5)', k); g.strokeStyle = 'rgba(60,40,30,.55)'; g.lineWidth = 3; g.beginPath(); g.ellipse(w / 2, h * 0.68, 60, 110, 0, 0, 7); g.stroke(); g.beginPath(); g.moveTo(w / 2 - 20, h * 0.52); g.lineTo(w / 2 + 20, h * 0.84); g.stroke(); }), roughness: 0.85, side: THREE.DoubleSide }), false); p.geometry.translate(0.095, 0, 0); const pv = new THREE.Group(); pv.add(p); Z.add(pv); S.flip.push(pv); }
-  S.skull = skull(1.15); S.skull.position.set(-0.36, 0, 0.12); Z.add(S.skull);
-  S.bone = bone(1.0); S.bone.rotation.set(0, 0.4, Math.PI / 2); S.bone.position.set(0.34, 0.03, 0.16); Z.add(S.bone);
+  S.skull = skull(1.15); S.skull.position.set(-0.22, 0, 0.3); Z.add(S.skull);
+  S.bone = bone(1.0); S.bone.rotation.set(0, 0.4, Math.PI / 2); S.bone.position.set(0.24, 0.03, 0.32); Z.add(S.bone);
   S.lbox = lightbox(1.0); S.lbox.position.set(0, 0, -0.2); Z.add(S.lbox);
   S.mag = magnifier(0.8); Z.add(S.mag);
   S.ob = openBook(0.34, 0.46, 0x6e1414, (g, w, h) => { g.fillStyle = '#2b2218'; g.textAlign = 'left'; g.font = '800 30px Inter'; g.fillText('ATLAS DE ANATOMÍA', 70, 80); g.fillText('Lámina 1', w / 2 + 60, 80);
@@ -53,8 +53,8 @@ function buildCenter() {
   S.ctrCone = lightCone(1.6, 5, 0.05); Z.add(S.ctrCone);
   // el campo del MIR: 15.129 figuritas sencillas (cuerpo y cabeza) y el resplandor de las plazas
   const n = FN * FN;
-  S.field = new THREE.InstancedMesh(coatGeo(true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 }), n); S.field.frustumCulled = false; S.field.receiveShadow = true;
-  S.fieldH = new THREE.InstancedMesh(headGeo(true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 }), n); S.fieldH.frustumCulled = false;
+  S.field = new THREE.InstancedMesh(coatGeo(true).scale(1.35, 1.35, 1.35), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 }), n); S.field.frustumCulled = false; S.field.receiveShadow = true;
+  S.fieldH = new THREE.InstancedMesh(headGeo(true).scale(1.35, 1.35, 1.35), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 }), n); S.fieldH.frustumCulled = false;
   for (let i = 0; i < n; i++) { S.field.setColorAt(i, C_COAT); S.fieldH.setColorAt(i, C_SKIN); } Z.add(S.field, S.fieldH);
   const glowT = canvasTex(128, 128, (g, w, h) => { const r = g.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w * 0.7); r.addColorStop(0, 'rgba(255,200,90,.9)'); r.addColorStop(0.6, 'rgba(255,180,60,.35)'); r.addColorStop(1, 'rgba(255,170,50,0)'); g.fillStyle = r; g.fillRect(0, 0, w, h); });
   S.gglow = new THREE.Mesh(new THREE.PlaneGeometry(FN * FSP * 1.05, FG * FSP * 1.12), new THREE.MeshBasicMaterial({ map: glowT, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
@@ -132,7 +132,7 @@ function centerAt(t, st) {
     let i = 0;
     for (let r = 0; r < FN; r++) for (let c = 0; c < FN; c++, i++) {
       const P = fieldPos(c, r), dist = Math.hypot(P.x, P.z - 3.6), k = pop(t, t0 + dist / 5.5 + hash(i * 0.37) * 0.1, 0.3) * (1 - out);
-      _o.position.set(P.x, -0.09 * out, P.z); _o.quaternion.identity(); _o.scale.setScalar(Math.max(0.0001, k) * (c === ME_C && r === ME_R && meK > 0.01 ? 0.0001 : 1)); _o.updateMatrix(); S.field.setMatrixAt(i, _o.matrix); S.fieldH.setMatrixAt(i, _o.matrix);
+      _o.position.set(P.x + (hash(i * 1.7) - 0.5) * 0.026, -0.09 * out, P.z + (hash(i * 2.3) - 0.5) * 0.026); _o.quaternion.setFromAxisAngle(_up, hash(i * 4.1) * 6.28); _o.scale.setScalar(Math.max(0.0001, k) * (0.88 + 0.24 * hash(i * 3.1)) * (c === ME_C && r === ME_R && meK > 0.01 ? 0.0001 : 1)); _o.updateMatrix(); S.field.setMatrixAt(i, _o.matrix); S.fieldH.setMatrixAt(i, _o.matrix);
       _col.copy(C_COAT);
       if (r < FG) _col.lerp(C_GOLD, gOn); else _col.lerp(C_DIM, dim * 0.85);
       if (r < FD) { _col.lerp(C_DERM, dOn); _col.lerp(C_GREY, dOff * 0.5); } else if (dOn > 0) _col.multiplyScalar(1 - 0.55 * dOn);

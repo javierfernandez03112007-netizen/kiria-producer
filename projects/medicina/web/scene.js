@@ -967,8 +967,8 @@ function skull(s = 1) {
   const g = new THREE.Group(), m = M.ivory;
   const cr = sph(0.1, m, 48, 32); cr.scale.set(0.88, 0.94, 1.1); cr.position.set(0, 0.135, -0.012); g.add(cr);
   const face = sph(0.075, m, 36, 24); face.scale.set(0.96, 0.86, 0.78); face.position.set(0, 0.078, 0.052); g.add(face);
-  const brow = sph(0.05, m, 24, 16); brow.scale.set(1.6, 0.45, 0.6); brow.position.set(0, 0.123, 0.085); g.add(brow);
-  for (const sd of [-1, 1]) { const e = sph(0.025, M.dark, 20, 14); e.scale.set(1.05, 0.88, 0.55); e.position.set(sd * 0.033, 0.1, 0.104); g.add(e);
+  const brow = sph(0.05, m, 24, 16); brow.scale.set(1.45, 0.32, 0.5); brow.position.set(0, 0.128, 0.078); g.add(brow);
+  for (const sd of [-1, 1]) { const e = sph(0.022, M.dark, 20, 14); e.scale.set(1.0, 0.9, 0.32); e.position.set(sd * 0.031, 0.1, 0.1); g.add(e);
     const ck = sph(0.022, m, 16, 12); ck.scale.set(1.35, 0.75, 1); ck.position.set(sd * 0.058, 0.072, 0.083); g.add(ck);
     const temple = sph(0.03, m, 16, 12); temple.scale.set(0.5, 1, 1.2); temple.position.set(sd * 0.075, 0.1, 0.03); g.add(temple); }
   const nose = new THREE.Mesh(new THREE.ConeGeometry(0.013, 0.03, 3), M.dark); nose.position.set(0, 0.07, 0.112); nose.rotation.x = Math.PI; nose.scale.set(1, 1, 0.45); g.add(nose);
@@ -1106,13 +1106,13 @@ function teddy(s = 1) {
 function hospitalBed(s = 1) {
   const g = new THREE.Group(), ch = M.chrome;
   const frame = mesh(new THREE.BoxGeometry(0.36, 0.025, 0.72), M.enamel); frame.position.y = 0.13; g.add(frame);
-  const mat = rbox(0.34, 0.06, 0.7, M.mattress, 0.02); mat.rotation.x = Math.PI / 2; mat.position.y = 0.17; g.add(mat);
-  const pil = rbox(0.24, 0.04, 0.1, M.mattress, 0.018); pil.rotation.x = Math.PI / 2 - 0.25; pil.position.set(0, 0.215, -0.28); g.add(pil);
-  const bl = mesh(new THREE.BoxGeometry(0.35, 0.03, 0.42), M.blanket); bl.position.set(0, 0.2, 0.12); g.add(bl);
+  const mat = mesh(new THREE.BoxGeometry(0.34, 0.06, 0.7), M.mattress); mat.position.y = 0.17; g.add(mat);
+  const pil = mesh(new THREE.CapsuleGeometry(0.03, 0.17, 6, 12), M.mattress); pil.rotation.z = Math.PI / 2; pil.scale.set(1, 1, 0.55); pil.position.set(0, 0.215, -0.28); g.add(pil);
+  const bl = mesh(new THREE.BoxGeometry(0.35, 0.03, 0.4), M.blanket); bl.position.set(0, 0.262, 0.13); g.add(bl);
   for (const z of [-0.36, 0.36]) { const hb = mesh(new THREE.BoxGeometry(0.38, z < 0 ? 0.22 : 0.14, 0.02), M.enamel); hb.position.set(0, 0.13 + (z < 0 ? 0.11 : 0.07), z); g.add(hb); }
   for (const x of [-0.17, 0.17]) for (const z of [-0.33, 0.33]) { const l = cyl(0.008, 0.008, 0.11, ch, 10); l.position.set(x, 0.065, z); g.add(l); const w = cyl(0.014, 0.014, 0.01, M.tubing, 14); w.rotation.z = Math.PI / 2; w.position.set(x, 0.014, z); g.add(w); }
   for (const x of [-0.185, 0.185]) { const r = mesh(new THREE.BoxGeometry(0.008, 0.05, 0.3), ch); r.position.set(x, 0.24, -0.1); g.add(r); }
-  const pat = figurine(M.ceramic, 0.95); pat.rotation.x = -Math.PI / 2; pat.position.set(0, 0.205, 0.24); pat.userData.J.shL.rotation.z = -0.15; pat.userData.J.shR.rotation.z = 0.15; g.add(pat); g.userData.pat = pat;
+  const pat = figurine(M.ceramic, 2.5); pat.rotation.x = -Math.PI / 2; pat.position.set(0, 0.236, 0.25); pat.userData.J.shL.rotation.z = -0.15; pat.userData.J.shR.rotation.z = 0.15; g.add(pat); g.userData.pat = pat;
   const pole = cyl(0.006, 0.006, 0.62, ch, 10); pole.position.set(0.24, 0.31, -0.26); g.add(pole); const pb = cyl(0.05, 0.05, 0.01, ch, 20); pb.position.set(0.24, 0.005, -0.26); g.add(pb);
   const hook = cyl(0.003, 0.003, 0.08, ch, 8); hook.rotation.z = Math.PI / 2; hook.position.set(0.24, 0.6, -0.26); g.add(hook);
   const bag = rbox(0.06, 0.09, 0.02, M.bag, 0.01); bag.position.set(0.24, 0.53, -0.26); g.add(bag); const liq = rbox(0.05, 0.06, 0.012, M.liquid, 0.008); liq.position.set(0.24, 0.515, -0.26); g.add(liq);
@@ -1247,8 +1247,8 @@ function buildCenter() {
   const BK = [[0x6e1414, 'ANATOMÍA'], [0x173d2a, 'FISIOLOGÍA'], [0x1b2a4a, 'HISTOLOGÍA'], [0x4a2a14, 'BIOQUÍMICA'], [0x2a1a2e, 'PATOLOGÍA'], [0x14361f, 'FARMACOLOGÍA']];
   S.books = BK.map(([c, n], k) => { const b = book(0.2, 0.28, 0.05, c, n, ''); b.userData.k = k; Z.add(b); return b; });
   S.flip = []; for (let k = 0; k < 9; k++) { const p = mesh(new THREE.PlaneGeometry(0.19, 0.27), new THREE.MeshStandardMaterial({ map: paperTex((g, w, h) => { textLines(g, 40, 60, w - 80, 12, 22, 'rgba(40,36,30,.5)', k); g.strokeStyle = 'rgba(60,40,30,.55)'; g.lineWidth = 3; g.beginPath(); g.ellipse(w / 2, h * 0.68, 60, 110, 0, 0, 7); g.stroke(); g.beginPath(); g.moveTo(w / 2 - 20, h * 0.52); g.lineTo(w / 2 + 20, h * 0.84); g.stroke(); }), roughness: 0.85, side: THREE.DoubleSide }), false); p.geometry.translate(0.095, 0, 0); const pv = new THREE.Group(); pv.add(p); Z.add(pv); S.flip.push(pv); }
-  S.skull = skull(1.15); S.skull.position.set(-0.36, 0, 0.12); Z.add(S.skull);
-  S.bone = bone(1.0); S.bone.rotation.set(0, 0.4, Math.PI / 2); S.bone.position.set(0.34, 0.03, 0.16); Z.add(S.bone);
+  S.skull = skull(1.15); S.skull.position.set(-0.22, 0, 0.3); Z.add(S.skull);
+  S.bone = bone(1.0); S.bone.rotation.set(0, 0.4, Math.PI / 2); S.bone.position.set(0.24, 0.03, 0.32); Z.add(S.bone);
   S.lbox = lightbox(1.0); S.lbox.position.set(0, 0, -0.2); Z.add(S.lbox);
   S.mag = magnifier(0.8); Z.add(S.mag);
   S.ob = openBook(0.34, 0.46, 0x6e1414, (g, w, h) => { g.fillStyle = '#2b2218'; g.textAlign = 'left'; g.font = '800 30px Inter'; g.fillText('ATLAS DE ANATOMÍA', 70, 80); g.fillText('Lámina 1', w / 2 + 60, 80);
@@ -1261,8 +1261,8 @@ function buildCenter() {
   S.ctrCone = lightCone(1.6, 5, 0.05); Z.add(S.ctrCone);
   // el campo del MIR: 15.129 figuritas sencillas (cuerpo y cabeza) y el resplandor de las plazas
   const n = FN * FN;
-  S.field = new THREE.InstancedMesh(coatGeo(true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 }), n); S.field.frustumCulled = false; S.field.receiveShadow = true;
-  S.fieldH = new THREE.InstancedMesh(headGeo(true), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 }), n); S.fieldH.frustumCulled = false;
+  S.field = new THREE.InstancedMesh(coatGeo(true).scale(1.35, 1.35, 1.35), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.55 }), n); S.field.frustumCulled = false; S.field.receiveShadow = true;
+  S.fieldH = new THREE.InstancedMesh(headGeo(true).scale(1.35, 1.35, 1.35), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5 }), n); S.fieldH.frustumCulled = false;
   for (let i = 0; i < n; i++) { S.field.setColorAt(i, C_COAT); S.fieldH.setColorAt(i, C_SKIN); } Z.add(S.field, S.fieldH);
   const glowT = canvasTex(128, 128, (g, w, h) => { const r = g.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w * 0.7); r.addColorStop(0, 'rgba(255,200,90,.9)'); r.addColorStop(0.6, 'rgba(255,180,60,.35)'); r.addColorStop(1, 'rgba(255,170,50,0)'); g.fillStyle = r; g.fillRect(0, 0, w, h); });
   S.gglow = new THREE.Mesh(new THREE.PlaneGeometry(FN * FSP * 1.05, FG * FSP * 1.12), new THREE.MeshBasicMaterial({ map: glowT, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
@@ -1340,7 +1340,7 @@ function centerAt(t, st) {
     let i = 0;
     for (let r = 0; r < FN; r++) for (let c = 0; c < FN; c++, i++) {
       const P = fieldPos(c, r), dist = Math.hypot(P.x, P.z - 3.6), k = pop(t, t0 + dist / 5.5 + hash(i * 0.37) * 0.1, 0.3) * (1 - out);
-      _o.position.set(P.x, -0.09 * out, P.z); _o.quaternion.identity(); _o.scale.setScalar(Math.max(0.0001, k) * (c === ME_C && r === ME_R && meK > 0.01 ? 0.0001 : 1)); _o.updateMatrix(); S.field.setMatrixAt(i, _o.matrix); S.fieldH.setMatrixAt(i, _o.matrix);
+      _o.position.set(P.x + (hash(i * 1.7) - 0.5) * 0.026, -0.09 * out, P.z + (hash(i * 2.3) - 0.5) * 0.026); _o.quaternion.setFromAxisAngle(_up, hash(i * 4.1) * 6.28); _o.scale.setScalar(Math.max(0.0001, k) * (0.88 + 0.24 * hash(i * 3.1)) * (c === ME_C && r === ME_R && meK > 0.01 ? 0.0001 : 1)); _o.updateMatrix(); S.field.setMatrixAt(i, _o.matrix); S.fieldH.setMatrixAt(i, _o.matrix);
       _col.copy(C_COAT);
       if (r < FG) _col.lerp(C_GOLD, gOn); else _col.lerp(C_DIM, dim * 0.85);
       if (r < FD) { _col.lerp(C_DERM, dOn); _col.lerp(C_GREY, dOff * 0.5); } else if (dOn > 0) _col.multiplyScalar(1 - 0.55 * dOn);
@@ -1396,16 +1396,18 @@ function buildStations() {
   }
   // ---------- L7 sexto: casi todo el año en el hospital (cama con paciente y gotero; médica y dos estudiantes con bata)
   { const s = station('HO', ANG.HO, 1.1);
-    s.bed = hospitalBed(1.15); s.bed.position.set(-0.1, 0, -0.05); s.bed.rotation.y = Math.PI / 2; s.top.add(s.bed);
-    s.doc = medFig('coat', 1.25); s.doc.position.set(0.0, 0, 0.42); s.doc.rotation.y = Math.PI * 0.95; s.top.add(s.doc); s.doc.userData.J.shR.rotation.x = -0.5;
-    s.stu = [medFig('coat', 1.05), medFig('coat', 1.05)]; s.stu.forEach((f, i) => { f.position.set(0.32 + i * 0.16, 0, 0.3 - i * 0.12); f.rotation.y = Math.PI * 1.15; s.top.add(f); });
-    s.mon = ecgMonitor(0.7); s.mon.position.set(-0.45, 0.42, -0.3); s.mon.rotation.y = 0.6; s.top.add(s.mon);
+    s.bed = hospitalBed(1.1); s.bed.position.set(0.0, 0, 0.0); s.bed.rotation.y = 0; s.top.add(s.bed);
+    s.doc = medFig('coat', 2.1); s.doc.position.set(-0.42, 0, -0.06); s.doc.rotation.y = Math.PI / 2 + 0.3; s.top.add(s.doc); s.doc.userData.J.shR.rotation.x = -0.6;
+    s.stu = [medFig('coat', 1.8), medFig('coat', 1.8)]; s.stu.forEach((f, i) => { f.position.set(0.32 + i * 0.1, 0, -0.42 + i * 0.16); f.rotation.y = -Math.PI / 2 - 0.3; s.top.add(f); });
+    s.mon = ecgMonitor(0.7); s.mon.position.set(-0.3, 0.42, -0.5); s.mon.rotation.y = 0.4; s.top.add(s.mon);
   }
   // ---------- L8 el MIR: hoja de respuestas (200 preguntas), reloj (4 h 30 min) y lápiz
   { const s = station('MI', ANG.MI, 1.1);
     s.desk = grp(at(mesh(new THREE.BoxGeometry(0.8, 0.025, 0.46), M.woodL), 0, 0.12, 0)); for (const x of [-0.37, 0.37]) s.desk.add(at(mesh(new THREE.BoxGeometry(0.03, 0.12, 0.42), M.woodL), x, 0.06, 0)); s.top.add(s.desk);
     s.sheetK = -1; s.wrong = 137; s.sheet = canvasPlane(0.34, 0.46, 1024, (g, w, h) => drawSheet(g, w, h, 0, s.wrong), { cs: false });
-    s.sheet.rotation.x = -Math.PI / 2; s.sheet.rotation.z = 0.06; s.sheet.position.set(-0.05, 0.1335, 0.0); s.desk.add(s.sheet);
+    s.clip = rbox(0.38, 0.5, 0.012, M.woodL, 0.012); s.clip.rotation.x = -Math.PI / 2 + 0.42; s.clip.position.set(-0.05, 0.2, 0.0); s.desk.add(s.clip);
+    const clamp2 = mesh(new THREE.BoxGeometry(0.12, 0.02, 0.025), M.chrome); clamp2.position.set(0, 0.24, 0.012); s.clip.add(clamp2);
+    s.sheet.position.set(0, -0.01, 0.0075); s.clip.add(s.sheet);
     s.pen = pen(); s.pen.rotation.set(0.0, 0.6, -1.25); s.top.add(s.pen);
     s.clk = wallClock(1.35); s.clk.position.set(0.32, 0.55, -0.22); s.clk.rotation.y = -0.25; s.top.add(s.clk);
     s.cpost = grp(at(cyl(0.008, 0.008, 0.36, M.brass, 8), 0, 0.18, 0), at(cyl(0.06, 0.07, 0.012, M.wood, 24), 0, 0.006, 0)); s.cpost.position.set(0.32, 0, -0.24); s.top.add(s.cpost);
@@ -1444,8 +1446,8 @@ function stationsAt(t) {
   const vis = (s, a, b) => { s.Z.visible = t > a && t < b; return s.Z.visible; };
   // L4
   { const s = ST.CS; if (vis(s, K.dentro3 - 0.2, K.patologia5 + 0.8)) {
-    show(s.skull, pop(t, K.anatomia4 - 0.15, 0.45) * 1.6); s.skull.rotation.y = 0.35 + 0.8 * (1 - eo(clamp((t - K.anatomia4) / 0.8))); s.skull.userData.jaw.rotation.x = 0.06 + 0.06 * Math.max(0, Math.sin(t * 6));
-    show(s.bone, pop(t, K.anatomia4 + 0.05, 0.4) * 1.1);
+    show(s.skull, pop(t, K.cuerpo4 - 0.15, 0.45) * 1.6); s.skull.rotation.y = 0.35 + 0.8 * (1 - eo(clamp((t - K.cuerpo4) / 0.9))); s.skull.userData.jaw.rotation.x = 0.06 + 0.06 * Math.max(0, Math.sin(t * 6));
+    show(s.bone, pop(t, K.sano4 - 0.05, 0.4) * 1.1);
     const hk = pop(t, K.fisiologia4 - 0.15, 0.45); show(s.heart, hk * 1.7); show(s.hstand, hk); if (s.heart.visible) { const b = beat(t) * clamp((t - K.fisiologia4) / 0.3); s.heart.userData.body.scale.setScalar(1 + 0.07 * b); s.heart.rotation.y = 0.4 + Math.sin(t * 0.8) * 0.25; }
     const mk = pop(t, K.bioquimica4 - 0.15, 0.45); show(s.mol, mk * 1.4); show(s.mstand, mk); s.mol.rotation.set(t * 0.6, t * 0.9, 0.3);
   } }
@@ -1475,8 +1477,8 @@ function stationsAt(t) {
     if (Math.abs(key - s.sheetK) > 0.004) { const T = s.sheet.userData.tex; drawSheet(T.userData.g, T.userData.c.width, T.userData.c.height, wr ? 1 : fk, wr ? s.wrong : -1); T.needsUpdate = true; s.sheetK = key; }
     const q = Math.min(199, Math.floor(200 * fk)), col = Math.floor(q / 50), row = q % 50;
     const rh = (1385 - 110) / 50, u = (20 + col * 246 + 36 + 26 * Math.floor(hash(q * 5.3) * 4)) / 1024 - 0.5, v = (100 + row * rh + rh / 2) / 1385 - 0.5;
-    const P = v3(u * 0.34, 0, v * 0.46).applyAxisAngle(_up, 0.06).add(v3(-0.05, 0.1335, 0)); s.desk.localToWorld(P); s.top.worldToLocal(P);
-    s.pen.visible = s.desk.scale.x > 0.5 && t < K.resta8 + 0.6; s.pen.position.copy(P).add(v3(0, 0.012 + (fk > 0 && fk < 1 ? 0.004 * Math.abs(Math.sin(t * 40)) : 0.03), 0));
+    const lift = 0.006 + (fk > 0 && fk < 1 ? 0.004 * Math.abs(Math.sin(t * 40)) : 0.03), P = v3(u * 0.34, -v * 0.46, lift); s.sheet.localToWorld(P); s.top.worldToLocal(P);
+    s.pen.visible = s.desk.scale.x > 0.5 && t < K.resta8 + 0.6; s.pen.position.copy(P);
     const ck = pop(t, K.cuatro8 - 0.2, 0.45); show(s.clk, ck * 1.35); show(s.cpost, ck); setClock(s.clk, 14 + 4.5 * eio(clamp((t - K.cuatro8) / (K.media8 - K.cuatro8 + 0.4))));
   } }
   // L11
@@ -1531,14 +1533,14 @@ function buildCam() {
     [K.desde6 + 0.2, stCam(CL, 10.1, 1.3, 0), stLook(CL, 0.7, 0), 35], [K.clinicas6 + 0.1, stCam(CL, 9.5, 0.95, -0.2), stLook(CL, 0.62, -0.24, R_ST + 0.25), 34],
     [K.corazon6 + 0.1, stCam(CL, 9.4, 1.05, -0.32), stLook(CL, 0.95, -0.36, R_ST - 0.2), 34], [K.cerebro6 + 0.1, stCam(CL, 9.35, 1.0, 0.05), stLook(CL, 0.85, 0.06), 34],
     [K.ninos6 + 0.1, stCam(CL, 9.35, 0.85, 0.36), stLook(CL, 0.66, 0.38, R_ST + 0.15), 34], hold(K.sexto7 - 0.2, CL, 9.4, 0.86, 0.38, 0.66, 0.4, R_ST + 0.15, 34),
-    [K.sexto7 + 0.2, stCam(HO, 10.2, 1.4, 0), stLook(HO, 0.7, 0), 36], [K.entero7 + 0.1, stCam(HO, 9.6, 1.05, 0.25), stLook(HO, 0.72, 0.1, R_ST + 0.1), 35],
-    [K.hospital7 + 0.2, stCam(HO, 9.45, 1.0, -0.1), stLook(HO, 0.75, -0.1, R_ST - 0.05), 34], hold(K.que8 + 0.1, HO, 9.45, 1.0, -0.12, 0.75, -0.12, R_ST - 0.05, 34),
-    [K.falta8 + 0.3, stCam(MI, 10.0, 1.4, 0), stLook(MI, 0.7, 0), 35], [K.n200 + 0.1, stCam(MI, 9.2, 1.15, -0.08), stLook(MI, 0.68, -0.06, R_ST + 0.05), 33],
+    [K.sexto7 + 0.2, stCam(HO, 10.5, 1.95, 0.0), stLook(HO, 0.7, 0, R_ST - 0.1), 38], [K.entero7 + 0.1, stCam(HO, 10.2, 1.7, 0.18), stLook(HO, 0.74, 0.0, R_ST - 0.15), 37],
+    [K.hospital7 + 0.2, stCam(HO, 10.05, 1.55, -0.12), stLook(HO, 0.76, -0.04, R_ST - 0.15), 36], hold(K.que8 + 0.1, HO, 10.0, 1.52, -0.14, 0.76, -0.05, R_ST - 0.15, 36),
+    [K.falta8 + 0.3, stCam(MI, 10.0, 1.4, 0), stLook(MI, 0.7, 0), 35], [K.n200 + 0.1, stCam(MI, 9.05, 1.3, -0.06), stLook(MI, 0.78, -0.05, R_ST + 0.02), 33],
     [K.cuatro8 + 0.1, stCam(MI, 9.35, 1.05, 0.25), stLook(MI, 0.98, 0.3, R_ST - 0.1), 34], [K.media8 + 0.2, stCam(MI, 9.4, 1.1, 0.2), stLook(MI, 0.9, 0.22, R_ST - 0.1), 34],
-    [K.fallo8, stCam(MI, 9.0, 0.95, -0.05), stLook(MI, 0.68, -0.05, R_ST + 0.08), 31], hold(cut2 - 0.0005, MI, 8.98, 0.94, -0.04, 0.68, -0.05, R_ST + 0.08, 31),
+    [K.fallo8, stCam(MI, 8.85, 1.15, -0.05), stLook(MI, 0.78, -0.05, R_ST + 0.02), 31], hold(cut2 - 0.0005, MI, 8.83, 1.14, -0.04, 0.78, -0.05, R_ST + 0.02, 31),
   ];
   const A3 = [
-    [cut2, [1.0, 2.0, 6.4], [0, 0, 2.0], 40], [K.n15000 + 0.3, [1.4, 3.4, 7.0], [0, 0, 1.0], 42], [K.n9000 + 0.1, [2.0, 6.6, 7.8], [0.2, 0, 0.3], 42], [K.plazas9 + 0.4, [2.0, 8.2, 7.2], [0.2, 0, 0.0], 41],
+    [cut2, [1.0, 1.2, 5.8], [0, 0.05, 2.6], 40], [K.n15000 + 0.3, [1.4, 2.2, 6.6], [0, 0, 1.6], 42], [K.n9000 + 0.1, [2.0, 4.6, 7.6], [0.2, 0, 0.6], 42], [K.plazas9 + 0.4, [2.0, 6.0, 7.4], [0.2, 0, 0.2], 41],
     [K.tu9 + 0.1, [0.3, 2.4, 4.3], [-0.6, 0, 1.6], 38], [K.numero9 + 0.3, [-0.55, 0.5, 2.1], [me.x, 0.05, me.z], 35], [K.especialidad9 + 0.1, [-0.5, 0.42, 1.88], [me.x, 0.06, me.z], 33], [K.ciudad9 + 0.3, [-0.42, 0.62, 2.1], [me.x, 0.04, me.z - 0.06], 34],
     [K.este10 + 0.2, [0.8, 1.5, 5.4], [0, 0, 3.3], 38], [K.dermatologia10 + 0.3, [0.5, 0.85, 4.6], [0, 0, 3.45], 36], [K.agoto10 + 0.2, [0.15, 0.68, 4.35], [0, 0, 3.42], 34], [K.n500 + 0.3, [-0.4, 1.1, 5.0], [0, 0, 3.2], 37],
     [cut3 - 0.0005, [-0.5, 1.2, 5.2], [0, 0, 3.15], 37],
@@ -1549,7 +1551,7 @@ function buildCam() {
     [K.seis12 + 0.15, stCam(AN, 9.6, 1.0, -0.15), stLook(AN, 0.75, -0.18, R_ST + 0.06), 34], [K.cinco12 + 0.2, stCam(AN, 9.55, 1.25, -0.12), stLook(AN, 0.98, -0.18, R_ST + 0.06), 34], [K.once12 + 0.1, stCam(AN, 9.9, 1.3, 0.0), stLook(AN, 0.92, 0.0), 36],
     [K.cirujano12 + 0.2, stCam(AN, 9.45, 1.0, 0.22), stLook(AN, 0.8, 0.24, R_ST + 0.05), 34], hold(K.si13 - 0.3, AN, 9.5, 1.0, 0.22, 0.8, 0.24, R_ST + 0.05, 34),
     [K.si13 + 0.2, stCam(DU, 10.4, 1.4, 0), stLook(DU, 0.7, 0), 37], [K.guardalo13, stCam(DU, 10.1, 1.25, 0), stLook(DU, 0.72, 0), 37],
-    [K.quirofano13 + 0.1, stCam(DU, 9.5, 1.05, -0.4), stLook(DU, 0.8, -0.42), 35], [K.consulta13 + 0.12, stCam(DU, 9.5, 1.05, 0.38), stLook(DU, 0.78, 0.4), 35], [K.consulta13 + 0.4, stCam(DU, 10.0, 1.2, 0.2), stLook(DU, 0.75, 0.1), 36],
+    [K.quirofano13 + 0.1, stCam(DU, 9.5, 1.05, -0.4), stLook(DU, 0.8, -0.42), 35], [K.consulta13 + 0.12, stCam(DU, 9.5, 1.05, 0.38), stLook(DU, 0.78, 0.4), 35], [K.consulta13 + 0.4, stCam(DU, 10.0, 1.2, 0.2), stLook(DU, 0.75, 0.1), 36], [END - 0.7, [1.4, 1.0, 3.4], [0, 0.22, 0], 42],
     [END - 0.25, TA, LA, 44], [END, T0, L0, 44], [END + T_HIT, [0.47, 0.14, 0.92], [0, 0.24, 0], 43],
   ];
   CKS = [A1, A2, A3, A4];
@@ -1645,9 +1647,10 @@ function hudAt(t) {
   // L11–L12
   const RE = ST.RE; if (RE.Z.visible) { const k = cw(t, K.cuatro11 - 0.05, K.cobrando11 - 0.1); if (k > 0.01) { bigText('4 – 5 AÑOS', W / 2, Y, 96, HC.white, k, { glow: 14, type: false, dark: 28 }); bigText('DE RESIDENCIA', W / 2, Y + 80, 34, HG, cw(t, K.residencia11 - 0.1, K.cobrando11 - 0.1), { dark: 22 }); }
     lab(RE.nom, 0, 0.12, 0, 'COBRANDO', 'CONTRATO DE RESIDENTE', cw(t, K.cobrando11 + 0.1, K.seis12 - 0.1), { dx: -110, dy: -140, color: HC.green }); lab(RE.clk, 0, 0.16, 0, 'GUARDIAS', null, cw(t, K.guardias11 + 0.05, K.seis12 - 0.1), { dx: -110, dy: -120, color: HC.amber }); }
-  const AN = ST.AN; if (AN.Z.visible) { const a = cw(t, K.seis12 - 0.05, K.si13 - 0.1); if (a > 0.01) { const s6 = 'GRADO 6', s5 = cw(t, K.cinco12 - 0.1, K.si13 - 0.1); bigText(s6, W / 2 - (s5 > 0.01 ? 180 : 0), Y, 70, HC.white, a, { type: false, dark: 26 });
-      if (s5 > 0.01) bigText('+ MIR 5', W / 2 + 190, Y, 70, '#62E3D4', s5, { type: false, dark: 26 });
-      const o = cw(t, K.once12 - 0.05, K.si13 - 0.1); if (o > 0.01) bigText('= 11 AÑOS', W / 2, Y + 100, 96, HG, o, { glow: 22, type: false, dark: 30 }); }
+  const AN = ST.AN; if (AN.Z.visible) { const a = cw(t, K.seis12 - 0.05, K.si13 - 0.1); if (a > 0.01) { const s5 = cw(t, K.cinco12 - 0.1, K.si13 - 0.1), dx = s5 > 0.01 ? 200 : 0;
+      bigText('6', W / 2 - dx, Y - 20, 110, HC.white, a, { type: false, dark: 28 }); bigText('GRADO', W / 2 - dx, Y + 60, 30, HC.grey, a, { dark: 20 });
+      if (s5 > 0.01) { bigText('+', W / 2, Y - 20, 90, HC.white, s5, { type: false, dark: 24 }); bigText('5', W / 2 + dx, Y - 20, 110, '#62E3D4', s5, { type: false, dark: 28 }); bigText('RESIDENCIA', W / 2 + dx, Y + 60, 30, '#62E3D4', s5, { dark: 20 }); }
+      const o = cw(t, K.once12 - 0.05, K.si13 - 0.1); if (o > 0.01) bigText('= 11 AÑOS', W / 2, Y + 150, 96, HG, o, { glow: 22, type: false, dark: 30 }); }
     lab(AN.sur, 0, 1.15, 0, 'CIRUJANO', null, cw(t, K.cirujano12 + 0.05, K.si13 - 0.1), { dx: 110, dy: -130, color: HG }); }
   // L13: guárdalo · ¿quirófano o consulta?
   { const g = cw(t, K.guardalo13 - 0.05, K.dime13); if (g > 0.01) { const s = eo(clamp((t - K.guardalo13 + 0.05) / 0.3)); hg.save(); hg.globalAlpha = g; hg.translate(W / 2, Y); hg.scale(s, s); hg.fillStyle = HG; hg.shadowColor = HG; hg.shadowBlur = 24; hg.beginPath(); hg.moveTo(-50, -80); hg.lineTo(50, -80); hg.lineTo(50, 80); hg.lineTo(0, 45); hg.lineTo(-50, 80); hg.closePath(); hg.fill(); hg.restore(); }

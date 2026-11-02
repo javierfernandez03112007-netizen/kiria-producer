@@ -67,9 +67,10 @@ function hudAt(t) {
   // L11–L12
   const RE = ST.RE; if (RE.Z.visible) { const k = cw(t, K.cuatro11 - 0.05, K.cobrando11 - 0.1); if (k > 0.01) { bigText('4 – 5 AÑOS', W / 2, Y, 96, HC.white, k, { glow: 14, type: false, dark: 28 }); bigText('DE RESIDENCIA', W / 2, Y + 80, 34, HG, cw(t, K.residencia11 - 0.1, K.cobrando11 - 0.1), { dark: 22 }); }
     lab(RE.nom, 0, 0.12, 0, 'COBRANDO', 'CONTRATO DE RESIDENTE', cw(t, K.cobrando11 + 0.1, K.seis12 - 0.1), { dx: -110, dy: -140, color: HC.green }); lab(RE.clk, 0, 0.16, 0, 'GUARDIAS', null, cw(t, K.guardias11 + 0.05, K.seis12 - 0.1), { dx: -110, dy: -120, color: HC.amber }); }
-  const AN = ST.AN; if (AN.Z.visible) { const a = cw(t, K.seis12 - 0.05, K.si13 - 0.1); if (a > 0.01) { const s6 = 'GRADO 6', s5 = cw(t, K.cinco12 - 0.1, K.si13 - 0.1); bigText(s6, W / 2 - (s5 > 0.01 ? 180 : 0), Y, 70, HC.white, a, { type: false, dark: 26 });
-      if (s5 > 0.01) bigText('+ MIR 5', W / 2 + 190, Y, 70, '#62E3D4', s5, { type: false, dark: 26 });
-      const o = cw(t, K.once12 - 0.05, K.si13 - 0.1); if (o > 0.01) bigText('= 11 AÑOS', W / 2, Y + 100, 96, HG, o, { glow: 22, type: false, dark: 30 }); }
+  const AN = ST.AN; if (AN.Z.visible) { const a = cw(t, K.seis12 - 0.05, K.si13 - 0.1); if (a > 0.01) { const s5 = cw(t, K.cinco12 - 0.1, K.si13 - 0.1), dx = s5 > 0.01 ? 200 : 0;
+      bigText('6', W / 2 - dx, Y - 20, 110, HC.white, a, { type: false, dark: 28 }); bigText('GRADO', W / 2 - dx, Y + 60, 30, HC.grey, a, { dark: 20 });
+      if (s5 > 0.01) { bigText('+', W / 2, Y - 20, 90, HC.white, s5, { type: false, dark: 24 }); bigText('5', W / 2 + dx, Y - 20, 110, '#62E3D4', s5, { type: false, dark: 28 }); bigText('RESIDENCIA', W / 2 + dx, Y + 60, 30, '#62E3D4', s5, { dark: 20 }); }
+      const o = cw(t, K.once12 - 0.05, K.si13 - 0.1); if (o > 0.01) bigText('= 11 AÑOS', W / 2, Y + 150, 96, HG, o, { glow: 22, type: false, dark: 30 }); }
     lab(AN.sur, 0, 1.15, 0, 'CIRUJANO', null, cw(t, K.cirujano12 + 0.05, K.si13 - 0.1), { dx: 110, dy: -130, color: HG }); }
   // L13: guárdalo · ¿quirófano o consulta?
   { const g = cw(t, K.guardalo13 - 0.05, K.dime13); if (g > 0.01) { const s = eo(clamp((t - K.guardalo13 + 0.05) / 0.3)); hg.save(); hg.globalAlpha = g; hg.translate(W / 2, Y); hg.scale(s, s); hg.fillStyle = HG; hg.shadowColor = HG; hg.shadowBlur = 24; hg.beginPath(); hg.moveTo(-50, -80); hg.lineTo(50, -80); hg.lineTo(50, 80); hg.lineTo(0, 45); hg.lineTo(-50, 80); hg.closePath(); hg.fill(); hg.restore(); }

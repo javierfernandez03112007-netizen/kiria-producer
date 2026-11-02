@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.audio import silences  # noqa: E402
 
 SR = 44100
-TEMPO = 1.04          # voz de Danny (v4, ajustes de Javi) generada aquí: 61,9 s → ≈ 59,6 s
+TEMPO = 1.04          # la voz de Javi (69,5 s): sin pausas largas 62,5 s → ≈ 60 s
 PAUSE = {1: 0.4, 2: 0.4, 3: 0.32, 7: 0.3, 10: 0.36, 12: 0.34}   # pausa tras la frase i (antes del atempo)
 PAUSE_DEF = 0.22
 INNER_MAX = 0.15      # silencios internos (comas, puntos dentro de la frase) como máximo

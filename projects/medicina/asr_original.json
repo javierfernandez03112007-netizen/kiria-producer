@@ -1,1 +1,787 @@
-[{"w": "Menos", "start": 0.0, "end": 0.32}, {"w": "de", "start": 0.4, "end": 0.48}, {"w": "cuatro", "start": 0.56, "end": 0.8}, {"w": "de", "start": 0.88, "end": 0.96}, {"w": "cada", "start": 1.0, "end": 1.2}, {"w": "cien", "start": 1.28, "end": 1.44}, {"w": "médicos", "start": 1.52, "end": 1.92}, {"w": "que", "start": 2.0, "end": 2.08}, {"w": "hacen", "start": 2.16, "end": 2.32}, {"w": "el", "start": 2.36, "end": 2.4}, {"w": "MIR", "start": 2.48, "end": 2.72}, {"w": "pueden", "start": 2.96, "end": 3.2}, {"w": "elegir", "start": 3.28, "end": 3.6}, {"w": "ser", "start": 3.68, "end": 3.84}, {"w": "dermatólogos.", "start": 3.92, "end": 4.96}, {"w": "Y", "start": 5.2, "end": 5.28}, {"w": "ninguno", "start": 5.4, "end": 5.76}, {"w": "puede", "start": 5.84, "end": 6.08}, {"w": "ser", "start": 6.16, "end": 6.24}, {"w": "especialista", "start": 6.32, "end": 6.96}, {"w": "solo", "start": 7.04, "end": 7.28}, {"w": "con", "start": 7.36, "end": 7.44}, {"w": "la", "start": 7.48, "end": 7.52}, {"w": "carrera.", "start": 7.6, "end": 8.28}, {"w": "Al", "start": 8.56, "end": 8.72}, {"w": "final", "start": 8.88, "end": 9.04}, {"w": "te", "start": 9.12, "end": 9.2}, {"w": "digo", "start": 9.28, "end": 9.44}, {"w": "qué", "start": 9.48, "end": 9.52}, {"w": "te", "start": 9.6, "end": 9.68}, {"w": "falta.", "start": 9.76, "end": 10.36}, {"w": "Crees", "start": 10.64, "end": 10.88}, {"w": "que", "start": 10.92, "end": 10.96}, {"w": "Medicina", "start": 11.04, "end": 11.52}, {"w": "es", "start": 11.6, "end": 11.68}, {"w": "memorizar", "start": 11.76, "end": 12.24}, {"w": "huesos.", "start": 12.28, "end": 12.96}, {"w": "En", "start": 13.2, "end": 13.36}, {"w": "realidad,", "start": 13.48, "end": 14.16}, {"w": "es", "start": 14.24, "end": 14.32}, {"w": "aprender", "start": 14.4, "end": 14.8}, {"w": "a", "start": 14.827, "end": 14.853}, {"w": "encontrar", "start": 14.88, "end": 15.36}, {"w": "qué", "start": 15.6, "end": 15.76}, {"w": "falla.", "start": 15.84, "end": 16.44}, {"w": "Así", "start": 16.72, "end": 16.96}, {"w": "es", "start": 17.04, "end": 17.12}, {"w": "por", "start": 17.2, "end": 17.28}, {"w": "dentro.", "start": 17.36, "end": 17.76}, {"w": "Primero,", "start": 18.16, "end": 18.72}, {"w": "el", "start": 18.8, "end": 18.88}, {"w": "cuerpo", "start": 18.96, "end": 19.2}, {"w": "sano:", "start": 19.28, "end": 19.92}, {"w": "Anatomía,", "start": 20.0, "end": 20.64}, {"w": "Fisiología", "start": 20.72, "end": 21.44}, {"w": "y", "start": 21.52, "end": 21.56}, {"w": "Bioquímica.", "start": 21.6, "end": 22.32}, {"w": "Luego,", "start": 22.72, "end": 23.12}, {"w": "lo", "start": 23.36, "end": 23.44}, {"w": "que", "start": 23.52, "end": 23.6}, {"w": "falla:", "start": 23.68, "end": 24.32}, {"w": "Patología,", "start": 24.4, "end": 25.12}, {"w": "Microbiología", "start": 25.2, "end": 26.0}, {"w": "y", "start": 26.16, "end": 26.24}, {"w": "Farmacología.", "start": 26.32, "end": 27.12}, {"w": "Desde", "start": 27.6, "end": 27.84}, {"w": "tercero,", "start": 27.92, "end": 28.48}, {"w": "las", "start": 28.56, "end": 28.72}, {"w": "clínicas:", "start": 28.8, "end": 29.68}, {"w": "corazón,", "start": 29.76, "end": 30.48}, {"w": "cerebro,", "start": 30.56, "end": 31.28}, {"w": "niños…", "start": 31.4, "end": 32.24}, {"w": "Y", "start": 32.28, "end": 32.32}, {"w": "sexto,", "start": 32.4, "end": 33.04}, {"w": "casi", "start": 33.147, "end": 33.36}, {"w": "entero", "start": 33.52, "end": 33.76}, {"w": "dentro", "start": 33.88, "end": 34.08}, {"w": "del", "start": 34.16, "end": 34.24}, {"w": "hospital.", "start": 34.48, "end": 35.0}, {"w": "¿Qué", "start": 35.28, "end": 35.36}, {"w": "te", "start": 35.4, "end": 35.44}, {"w": "falta?", "start": 35.52, "end": 36.08}, {"w": "El", "start": 36.32, "end": 36.48}, {"w": "MIR:", "start": 36.56, "end": 37.2}, {"w": "doscientas", "start": 37.32, "end": 37.76}, {"w": "preguntas", "start": 37.84, "end": 38.32}, {"w": "en", "start": 38.4, "end": 38.56}, {"w": "cuatro", "start": 38.64, "end": 38.88}, {"w": "horas", "start": 38.96, "end": 39.2}, {"w": "y", "start": 39.24, "end": 39.28}, {"w": "media.", "start": 39.48, "end": 39.88}, {"w": "Y", "start": 40.08, "end": 40.16}, {"w": "cada", "start": 40.24, "end": 40.48}, {"w": "fallo", "start": 40.56, "end": 40.88}, {"w": "resta.", "start": 40.96, "end": 41.64}, {"w": "Más", "start": 41.92, "end": 42.08}, {"w": "de", "start": 42.16, "end": 42.24}, {"w": "quince", "start": 42.28, "end": 42.56}, {"w": "mil", "start": 42.72, "end": 42.8}, {"w": "médicos", "start": 42.88, "end": 43.28}, {"w": "para", "start": 43.36, "end": 43.52}, {"w": "unas", "start": 43.6, "end": 43.84}, {"w": "nueve", "start": 43.88, "end": 44.08}, {"w": "mil", "start": 44.16, "end": 44.24}, {"w": "plazas.", "start": 44.4, "end": 45.36}, {"w": "Tu", "start": 45.4, "end": 45.44}, {"w": "número", "start": 45.52, "end": 45.84}, {"w": "decide", "start": 45.96, "end": 46.24}, {"w": "especialidad…", "start": 46.32, "end": 47.52}, {"w": "y", "start": 47.56, "end": 47.6}, {"w": "ciudad.", "start": 47.68, "end": 48.16}, {"w": "Este", "start": 48.56, "end": 48.8}, {"w": "año,", "start": 48.88, "end": 49.28}, {"w": "Dermatología", "start": 49.36, "end": 50.08}, {"w": "se", "start": 50.16, "end": 50.24}, {"w": "agotó", "start": 50.28, "end": 50.56}, {"w": "antes", "start": 50.72, "end": 50.88}, {"w": "del", "start": 50.96, "end": 51.12}, {"w": "número", "start": 51.16, "end": 51.44}, {"w": "quinientos.", "start": 51.52, "end": 52.56}, {"w": "Y", "start": 52.6, "end": 52.64}, {"w": "después,", "start": 52.76, "end": 53.36}, {"w": "de", "start": 53.44, "end": 53.52}, {"w": "cuatro", "start": 53.6, "end": 53.84}, {"w": "a", "start": 53.92, "end": 54.0}, {"w": "cinco", "start": 54.08, "end": 54.32}, {"w": "años", "start": 54.4, "end": 54.64}, {"w": "de", "start": 54.68, "end": 54.72}, {"w": "residencia:", "start": 54.8, "end": 55.84}, {"w": "ya", "start": 55.92, "end": 56.0}, {"w": "cobrando…", "start": 56.08, "end": 57.04}, {"w": "y", "start": 57.08, "end": 57.12}, {"w": "haciendo", "start": 57.16, "end": 57.6}, {"w": "guardias.", "start": 57.68, "end": 58.44}, {"w": "Seis", "start": 58.72, "end": 58.88}, {"w": "de", "start": 58.96, "end": 59.04}, {"w": "carrera", "start": 59.12, "end": 59.52}, {"w": "y", "start": 59.6, "end": 59.68}, {"w": "hasta", "start": 59.72, "end": 60.0}, {"w": "cinco", "start": 60.08, "end": 60.32}, {"w": "de", "start": 60.4, "end": 60.48}, {"w": "residencia:", "start": 60.56, "end": 61.6}, {"w": "once", "start": 61.76, "end": 61.92}, {"w": "años", "start": 62.0, "end": 62.32}, {"w": "para", "start": 62.44, "end": 62.56}, {"w": "ser", "start": 62.64, "end": 62.72}, {"w": "cirujano.", "start": 62.8, "end": 63.64}, {"w": "Si", "start": 63.92, "end": 64.0}, {"w": "estás", "start": 64.08, "end": 64.24}, {"w": "pensando", "start": 64.32, "end": 64.64}, {"w": "en", "start": 64.72, "end": 64.76}, {"w": "estudiar", "start": 64.8, "end": 65.12}, {"w": "Medicina,", "start": 65.2, "end": 66.08}, {"w": "guárdalo.", "start": 66.16, "end": 66.88}, {"w": "Y", "start": 67.12, "end": 67.16}, {"w": "dime:", "start": 67.2, "end": 67.52}, {"w": "¿quirófano", "start": 67.84, "end": 68.4}, {"w": "o", "start": 68.56, "end": 68.64}, {"w": "consulta?", "start": 68.72, "end": 69.52}]
+[
+{
+"w": "Menos",
+"start": 0.0,
+"end": 0.32
+},
+{
+"w": "de",
+"start": 0.4,
+"end": 0.48
+},
+{
+"w": "cuatro",
+"start": 0.56,
+"end": 0.8
+},
+{
+"w": "de",
+"start": 0.88,
+"end": 0.96
+},
+{
+"w": "cada",
+"start": 0.96,
+"end": 1.04
+},
+{
+"w": "cien",
+"start": 1.2,
+"end": 1.36
+},
+{
+"w": "médicos",
+"start": 1.52,
+"end": 2.0
+},
+{
+"w": "que",
+"start": 1.92,
+"end": 2.0
+},
+{
+"w": "hacen",
+"start": 2.08,
+"end": 2.24
+},
+{
+"w": "el",
+"start": 2.32,
+"end": 2.4
+},
+{
+"w": "MIR",
+"start": 2.48,
+"end": 2.8
+},
+{
+"w": "pueden",
+"start": 2.96,
+"end": 3.12
+},
+{
+"w": "elegir",
+"start": 3.2,
+"end": 3.6
+},
+{
+"w": "ser",
+"start": 3.68,
+"end": 3.76
+},
+{
+"w": "dermatólogos,",
+"start": 3.92,
+"end": 4.88
+},
+{
+"w": "y",
+"start": 5.04,
+"end": 5.12
+},
+{
+"w": "ninguno",
+"start": 5.28,
+"end": 5.6
+},
+{
+"w": "puede",
+"start": 5.76,
+"end": 5.84
+},
+{
+"w": "ser",
+"start": 6.08,
+"end": 6.16
+},
+{
+"w": "especialista",
+"start": 6.32,
+"end": 6.88
+},
+{
+"w": "solo",
+"start": 7.04,
+"end": 7.12
+},
+{
+"w": "con",
+"start": 7.36,
+"end": 7.44
+},
+{
+"w": "la",
+"start": 7.52,
+"end": 7.6
+},
+{
+"w": "carrera.",
+"start": 7.68,
+"end": 8.24
+},
+{
+"w": "Al",
+"start": 8.48,
+"end": 8.56
+},
+{
+"w": "final",
+"start": 8.72,
+"end": 8.8
+},
+{
+"w": "te",
+"start": 9.12,
+"end": 9.2
+},
+{
+"w": "digo",
+"start": 9.28,
+"end": 9.52
+},
+{
+"w": "que",
+"start": 9.6,
+"end": 9.68
+},
+{
+"w": "te",
+"start": 9.76,
+"end": 9.84
+},
+{
+"w": "falta.",
+"start": 9.92,
+"end": 10.4
+},
+{
+"w": "¿Crees",
+"start": 10.56,
+"end": 10.96
+},
+{
+"w": "que",
+"start": 11.04,
+"end": 11.12
+},
+{
+"w": "medicina",
+"start": 11.28,
+"end": 11.68
+},
+{
+"w": "es",
+"start": 11.76,
+"end": 11.84
+},
+{
+"w": "memorizar",
+"start": 11.92,
+"end": 12.4
+},
+{
+"w": "huesos?",
+"start": 12.56,
+"end": 13.2
+},
+{
+"w": "En",
+"start": 13.44,
+"end": 13.52
+},
+{
+"w": "realidad",
+"start": 13.68,
+"end": 14.0
+},
+{
+"w": "es",
+"start": 14.24,
+"end": 14.32
+},
+{
+"w": "aprender",
+"start": 14.48,
+"end": 14.8
+},
+{
+"w": "a",
+"start": 14.96,
+"end": 15.04
+},
+{
+"w": "encontrar",
+"start": 15.12,
+"end": 15.52
+},
+{
+"w": "qué",
+"start": 15.68,
+"end": 15.76
+},
+{
+"w": "falla.",
+"start": 16.0,
+"end": 16.56
+},
+{
+"w": "Así",
+"start": 16.8,
+"end": 16.88
+},
+{
+"w": "es",
+"start": 17.12,
+"end": 17.2
+},
+{
+"w": "por",
+"start": 17.36,
+"end": 17.44
+},
+{
+"w": "dentro.",
+"start": 17.6,
+"end": 18.08
+},
+{
+"w": "Primero,",
+"start": 18.32,
+"end": 18.88
+},
+{
+"w": "el",
+"start": 18.96,
+"end": 19.04
+},
+{
+"w": "cuerpo",
+"start": 19.12,
+"end": 19.44
+},
+{
+"w": "sano,",
+"start": 19.52,
+"end": 20.08
+},
+{
+"w": "anatomía,",
+"start": 20.24,
+"end": 20.96
+},
+{
+"w": "fisiología",
+"start": 21.04,
+"end": 21.68
+},
+{
+"w": "y",
+"start": 21.84,
+"end": 21.92
+},
+{
+"w": "bioquímica.",
+"start": 22.0,
+"end": 22.96
+},
+{
+"w": "Luego,",
+"start": 23.12,
+"end": 23.6
+},
+{
+"w": "lo",
+"start": 23.68,
+"end": 23.76
+},
+{
+"w": "que",
+"start": 23.84,
+"end": 23.92
+},
+{
+"w": "falla",
+"start": 24.0,
+"end": 24.32
+},
+{
+"w": "patología,",
+"start": 24.8,
+"end": 25.52
+},
+{
+"w": "microbiología",
+"start": 25.6,
+"end": 26.48
+},
+{
+"w": "y",
+"start": 26.64,
+"end": 26.72
+},
+{
+"w": "farmacología.",
+"start": 26.8,
+"end": 27.6
+},
+{
+"w": "Desde",
+"start": 27.91,
+"end": 28.23
+},
+{
+"w": "tercero,",
+"start": 28.39,
+"end": 28.95
+},
+{
+"w": "las",
+"start": 29.03,
+"end": 29.11
+},
+{
+"w": "clínicas.",
+"start": 29.27,
+"end": 29.91
+},
+{
+"w": "Corazón,",
+"start": 30.07,
+"end": 30.71
+},
+{
+"w": "cerebro,",
+"start": 30.87,
+"end": 31.51
+},
+{
+"w": "niños.",
+"start": 31.67,
+"end": 32.31
+},
+{
+"w": "Y",
+"start": 32.55,
+"end": 32.63
+},
+{
+"w": "sexto,",
+"start": 32.79,
+"end": 33.35
+},
+{
+"w": "casi",
+"start": 33.43,
+"end": 33.67
+},
+{
+"w": "entero",
+"start": 33.83,
+"end": 34.15
+},
+{
+"w": "dentro",
+"start": 34.31,
+"end": 34.63
+},
+{
+"w": "del",
+"start": 34.63,
+"end": 34.71
+},
+{
+"w": "hospital.",
+"start": 34.79,
+"end": 35.43
+},
+{
+"w": "¿Qué",
+"start": 35.51,
+"end": 35.91
+},
+{
+"w": "te",
+"start": 35.91,
+"end": 35.99
+},
+{
+"w": "falta?",
+"start": 36.07,
+"end": 36.55
+},
+{
+"w": "El",
+"start": 36.71,
+"end": 36.79
+},
+{
+"w": "MIR.",
+"start": 36.95,
+"end": 37.51
+},
+{
+"w": "200",
+"start": 37.75,
+"end": 38.31
+},
+{
+"w": "preguntas",
+"start": 38.47,
+"end": 38.87
+},
+{
+"w": "en",
+"start": 39.03,
+"end": 39.11
+},
+{
+"w": "cuatro",
+"start": 39.19,
+"end": 39.43
+},
+{
+"w": "horas",
+"start": 39.51,
+"end": 39.75
+},
+{
+"w": "y",
+"start": 39.83,
+"end": 39.91
+},
+{
+"w": "media.",
+"start": 39.99,
+"end": 40.47
+},
+{
+"w": "Y",
+"start": 40.55,
+"end": 40.63
+},
+{
+"w": "cada",
+"start": 40.79,
+"end": 40.87
+},
+{
+"w": "fallo",
+"start": 41.03,
+"end": 41.35
+},
+{
+"w": "resta.",
+"start": 41.59,
+"end": 42.15
+},
+{
+"w": "Más",
+"start": 42.39,
+"end": 42.55
+},
+{
+"w": "de",
+"start": 42.63,
+"end": 42.71
+},
+{
+"w": "15.000",
+"start": 42.79,
+"end": 43.43
+},
+{
+"w": "médicos",
+"start": 43.51,
+"end": 44.07
+},
+{
+"w": "para",
+"start": 43.99,
+"end": 44.07
+},
+{
+"w": "unas",
+"start": 44.23,
+"end": 44.47
+},
+{
+"w": "9.000",
+"start": 44.47,
+"end": 45.03
+},
+{
+"w": "plazas.",
+"start": 45.11,
+"end": 45.59
+},
+{
+"w": "Tu",
+"start": 45.75,
+"end": 45.83
+},
+{
+"w": "número",
+"start": 45.99,
+"end": 46.23
+},
+{
+"w": "decide",
+"start": 46.31,
+"end": 46.71
+},
+{
+"w": "especialidad",
+"start": 46.87,
+"end": 47.43
+},
+{
+"w": "y",
+"start": 47.83,
+"end": 47.91
+},
+{
+"w": "ciudad.",
+"start": 48.07,
+"end": 48.63
+},
+{
+"w": "Este",
+"start": 48.87,
+"end": 48.95
+},
+{
+"w": "año,",
+"start": 49.19,
+"end": 49.51
+},
+{
+"w": "dermatología",
+"start": 49.59,
+"end": 50.31
+},
+{
+"w": "se",
+"start": 50.39,
+"end": 50.47
+},
+{
+"w": "agotó",
+"start": 50.55,
+"end": 51.03
+},
+{
+"w": "antes",
+"start": 51.11,
+"end": 51.19
+},
+{
+"w": "del",
+"start": 51.35,
+"end": 51.43
+},
+{
+"w": "número",
+"start": 51.51,
+"end": 51.83
+},
+{
+"w": "500.",
+"start": 51.91,
+"end": 52.55
+},
+{
+"w": "Y",
+"start": 52.75,
+"end": 52.83
+},
+{
+"w": "después",
+"start": 53.07,
+"end": 53.39
+},
+{
+"w": "de",
+"start": 53.71,
+"end": 53.79
+},
+{
+"w": "4",
+"start": 53.95,
+"end": 54.19
+},
+{
+"w": "a",
+"start": 54.35,
+"end": 54.43
+},
+{
+"w": "5",
+"start": 54.51,
+"end": 54.75
+},
+{
+"w": "años",
+"start": 54.83,
+"end": 55.07
+},
+{
+"w": "de",
+"start": 55.15,
+"end": 55.23
+},
+{
+"w": "residencia,",
+"start": 55.31,
+"end": 56.03
+},
+{
+"w": "ya",
+"start": 56.19,
+"end": 56.27
+},
+{
+"w": "cobrando",
+"start": 56.51,
+"end": 57.15
+},
+{
+"w": "y",
+"start": 57.23,
+"end": 57.31
+},
+{
+"w": "haciendo",
+"start": 57.47,
+"end": 57.87
+},
+{
+"w": "guardias.",
+"start": 57.95,
+"end": 58.67
+},
+{
+"w": "6",
+"start": 58.83,
+"end": 59.07
+},
+{
+"w": "de",
+"start": 59.23,
+"end": 59.31
+},
+{
+"w": "carrera",
+"start": 59.39,
+"end": 59.79
+},
+{
+"w": "y",
+"start": 59.87,
+"end": 59.95
+},
+{
+"w": "hasta",
+"start": 60.03,
+"end": 60.27
+},
+{
+"w": "5",
+"start": 60.35,
+"end": 60.59
+},
+{
+"w": "de",
+"start": 60.75,
+"end": 60.83
+},
+{
+"w": "residencia.",
+"start": 60.91,
+"end": 61.71
+},
+{
+"w": "11",
+"start": 61.87,
+"end": 62.27
+},
+{
+"w": "años",
+"start": 62.35,
+"end": 62.59
+},
+{
+"w": "para",
+"start": 62.67,
+"end": 62.75
+},
+{
+"w": "ser",
+"start": 62.83,
+"end": 62.91
+},
+{
+"w": "cirujano.",
+"start": 63.07,
+"end": 63.87
+},
+{
+"w": "Si",
+"start": 64.11,
+"end": 64.19
+},
+{
+"w": "estás",
+"start": 64.35,
+"end": 64.59
+},
+{
+"w": "pensando",
+"start": 64.67,
+"end": 64.91
+},
+{
+"w": "en",
+"start": 64.99,
+"end": 65.07
+},
+{
+"w": "estudiar",
+"start": 65.15,
+"end": 65.55
+},
+{
+"w": "medicina,",
+"start": 65.63,
+"end": 66.27
+},
+{
+"w": "guárdalo.",
+"start": 66.35,
+"end": 67.15
+},
+{
+"w": "Y",
+"start": 67.23,
+"end": 67.31
+},
+{
+"w": "dime,",
+"start": 67.39,
+"end": 67.79
+},
+{
+"w": "quirófano",
+"start": 68.03,
+"end": 68.67
+},
+{
+"w": "o",
+"start": 68.83,
+"end": 68.91
+},
+{
+"w": "consulta.",
+"start": 68.99,
+"end": 69.63
+}
+]

@@ -2,7 +2,7 @@
  {
   "text": "Menos de 4 de cada 100 médicos que hacen el MIR pueden elegir ser dermatólogos.",
   "start": 0.0,
-  "end": 4.394,
+  "end": 4.365,
   "words": [
    {
     "w": "Menos",
@@ -22,51 +22,51 @@
    {
     "w": "de",
     "start": 0.846,
-    "end": 0.962
+    "end": 0.923
    },
    {
     "w": "cada",
-    "start": 0.962,
-    "end": 1.231
+    "start": 0.923,
+    "end": 1.154
    },
    {
     "w": "100",
-    "start": 1.231,
+    "start": 1.154,
     "end": 1.462
    },
    {
     "w": "médicos",
     "start": 1.462,
-    "end": 1.923
+    "end": 1.846
    },
    {
     "w": "que",
-    "start": 1.923,
-    "end": 2.077
+    "start": 1.846,
+    "end": 2.0
    },
    {
     "w": "hacen",
-    "start": 2.077,
-    "end": 2.269
+    "start": 2.0,
+    "end": 2.231
    },
    {
     "w": "el",
-    "start": 2.269,
+    "start": 2.231,
     "end": 2.385
    },
    {
     "w": "MIR",
     "start": 2.385,
-    "end": 2.731
+    "end": 2.702
    },
    {
     "w": "pueden",
-    "start": 2.731,
-    "end": 3.01
+    "start": 2.702,
+    "end": 2.933
    },
    {
     "w": "elegir",
-    "start": 3.01,
+    "start": 2.933,
     "end": 3.394
    },
    {
@@ -77,33 +77,33 @@
    {
     "w": "dermatólogos.",
     "start": 3.625,
-    "end": 4.394
+    "end": 4.365
    }
   ]
  },
  {
   "text": "Y ninguno puede ser especialista solo con la carrera. Al final te digo qué te falta.",
   "start": 4.481,
-  "end": 9.038,
+  "end": 9.135,
   "words": [
    {
     "w": "Y",
     "start": 4.481,
-    "end": 4.663
+    "end": 4.548
    },
    {
     "w": "ninguno",
-    "start": 4.663,
-    "end": 5.087
+    "start": 4.548,
+    "end": 5.01
    },
    {
     "w": "puede",
-    "start": 5.087,
-    "end": 5.394
+    "start": 5.01,
+    "end": 5.317
    },
    {
     "w": "ser",
-    "start": 5.394,
+    "start": 5.317,
     "end": 5.548
    },
    {
@@ -119,26 +119,26 @@
    {
     "w": "con",
     "start": 6.548,
-    "end": 6.663
+    "end": 6.702
    },
    {
     "w": "la",
-    "start": 6.663,
-    "end": 6.779
+    "start": 6.702,
+    "end": 6.856
    },
    {
     "w": "carrera.",
-    "start": 6.779,
-    "end": 7.587
+    "start": 6.856,
+    "end": 7.635
    },
    {
     "w": "Al",
-    "start": 7.587,
-    "end": 7.865
+    "start": 7.635,
+    "end": 7.712
    },
    {
     "w": "final",
-    "start": 7.865,
+    "start": 7.712,
     "end": 8.096
    },
    {
@@ -149,729 +149,729 @@
    {
     "w": "digo",
     "start": 8.25,
-    "end": 8.442
-   },
-   {
-    "w": "qué",
-    "start": 8.442,
     "end": 8.558
    },
    {
-    "w": "te",
+    "w": "qué",
     "start": 8.558,
     "end": 8.712
    },
    {
-    "w": "falta.",
+    "w": "te",
     "start": 8.712,
-    "end": 9.038
+    "end": 8.865
+   },
+   {
+    "w": "falta.",
+    "start": 8.865,
+    "end": 9.135
    }
   ]
  },
  {
   "text": "Crees que Medicina es memorizar huesos. En realidad, es aprender a encontrar qué falla. Así es por dentro.",
-  "start": 9.173,
-  "end": 15.413,
+  "start": 9.356,
+  "end": 15.577,
   "words": [
    {
     "w": "Crees",
-    "start": 9.173,
-    "end": 9.442
-   },
-   {
-    "w": "que",
-    "start": 9.442,
+    "start": 9.356,
     "end": 9.558
    },
    {
-    "w": "Medicina",
+    "w": "que",
     "start": 9.558,
-    "end": 10.096
+    "end": 9.788
    },
    {
-    "w": "es",
-    "start": 10.096,
+    "w": "Medicina",
+    "start": 9.788,
     "end": 10.25
    },
    {
-    "w": "memorizar",
+    "w": "es",
     "start": 10.25,
-    "end": 10.75
+    "end": 10.404
+   },
+   {
+    "w": "memorizar",
+    "start": 10.404,
+    "end": 11.019
    },
    {
     "w": "huesos.",
-    "start": 10.75,
-    "end": 11.538
-   },
-   {
-    "w": "En",
-    "start": 11.538,
+    "start": 11.019,
     "end": 11.76
    },
    {
-    "w": "realidad,",
+    "w": "En",
     "start": 11.76,
-    "end": 12.346
+    "end": 11.952
+   },
+   {
+    "w": "realidad,",
+    "start": 11.952,
+    "end": 12.49
    },
    {
     "w": "es",
-    "start": 12.346,
-    "end": 12.5
+    "start": 12.49,
+    "end": 12.577
    },
    {
     "w": "aprender",
-    "start": 12.5,
-    "end": 12.911
+    "start": 12.577,
+    "end": 13.038
    },
    {
     "w": "a",
-    "start": 12.911,
-    "end": 13.078
+    "start": 13.038,
+    "end": 13.192
    },
    {
     "w": "encontrar",
-    "start": 13.078,
-    "end": 13.51
+    "start": 13.192,
+    "end": 13.663
    },
    {
     "w": "qué",
-    "start": 13.51,
-    "end": 13.74
+    "start": 13.663,
+    "end": 13.894
    },
    {
     "w": "falla.",
-    "start": 13.74,
-    "end": 14.452
+    "start": 13.894,
+    "end": 14.635
    },
    {
     "w": "Así",
-    "start": 14.452,
-    "end": 14.75
+    "start": 14.635,
+    "end": 14.827
    },
    {
     "w": "es",
-    "start": 14.75,
-    "end": 14.904
-   },
-   {
-    "w": "por",
-    "start": 14.904,
+    "start": 14.827,
     "end": 15.058
    },
    {
-    "w": "dentro.",
+    "w": "por",
     "start": 15.058,
-    "end": 15.413
+    "end": 15.288
+   },
+   {
+    "w": "dentro.",
+    "start": 15.288,
+    "end": 15.577
    }
   ]
  },
  {
   "text": "Primero, el cuerpo sano: Anatomía, Fisiología y Bioquímica.",
-  "start": 15.529,
-  "end": 19.183,
+  "start": 15.779,
+  "end": 19.596,
   "words": [
    {
     "w": "Primero,",
-    "start": 15.529,
-    "end": 15.99
+    "start": 15.779,
+    "end": 16.202
    },
    {
     "w": "el",
-    "start": 15.99,
-    "end": 16.144
+    "start": 16.202,
+    "end": 16.298
    },
    {
     "w": "cuerpo",
-    "start": 16.144,
-    "end": 16.452
+    "start": 16.298,
+    "end": 16.683
    },
    {
     "w": "sano:",
-    "start": 16.452,
-    "end": 17.0
+    "start": 16.683,
+    "end": 17.298
    },
    {
     "w": "Anatomía,",
-    "start": 17.0,
-    "end": 17.692
+    "start": 17.298,
+    "end": 18.0
    },
    {
     "w": "Fisiología",
-    "start": 17.692,
-    "end": 18.462
+    "start": 18.0,
+    "end": 18.769
    },
    {
     "w": "y",
-    "start": 18.462,
-    "end": 18.538
+    "start": 18.769,
+    "end": 18.923
    },
    {
     "w": "Bioquímica.",
-    "start": 18.538,
-    "end": 19.183
+    "start": 18.923,
+    "end": 19.596
    }
   ]
  },
  {
   "text": "Luego, lo que falla: Patología, Microbiología y Farmacología.",
-  "start": 19.413,
-  "end": 23.317,
+  "start": 19.875,
+  "end": 23.952,
   "words": [
    {
     "w": "Luego,",
-    "start": 19.413,
-    "end": 19.875
+    "start": 19.875,
+    "end": 20.375
    },
    {
     "w": "lo",
-    "start": 19.875,
-    "end": 20.029
+    "start": 20.375,
+    "end": 20.481
    },
    {
     "w": "que",
-    "start": 20.029,
-    "end": 20.183
+    "start": 20.481,
+    "end": 20.635
    },
    {
     "w": "falla:",
-    "start": 20.183,
-    "end": 20.731
+    "start": 20.635,
+    "end": 21.26
    },
    {
     "w": "Patología,",
-    "start": 20.731,
-    "end": 21.5
+    "start": 21.26,
+    "end": 22.029
    },
    {
     "w": "Microbiología",
-    "start": 21.5,
-    "end": 22.423
+    "start": 22.029,
+    "end": 23.029
    },
    {
     "w": "y",
-    "start": 22.423,
-    "end": 22.577
+    "start": 23.029,
+    "end": 23.183
    },
    {
     "w": "Farmacología.",
-    "start": 22.577,
-    "end": 23.317
+    "start": 23.183,
+    "end": 23.952
    }
   ]
  },
  {
   "text": "Desde tercero, las clínicas: corazón, cerebro, niños…",
-  "start": 23.596,
-  "end": 27.404,
+  "start": 24.24,
+  "end": 28.067,
   "words": [
    {
     "w": "Desde",
-    "start": 23.596,
-    "end": 23.904
+    "start": 24.24,
+    "end": 24.5
    },
    {
     "w": "tercero,",
-    "start": 23.904,
-    "end": 24.375
+    "start": 24.5,
+    "end": 25.115
    },
    {
     "w": "las",
-    "start": 24.375,
-    "end": 24.606
+    "start": 25.115,
+    "end": 25.346
    },
    {
     "w": "clínicas:",
-    "start": 24.606,
-    "end": 25.385
+    "start": 25.346,
+    "end": 26.048
    },
    {
     "w": "corazón,",
-    "start": 25.385,
-    "end": 26.154
+    "start": 26.048,
+    "end": 26.74
    },
    {
     "w": "cerebro,",
-    "start": 26.154,
-    "end": 26.962
+    "start": 26.74,
+    "end": 27.51
    },
    {
     "w": "niños…",
-    "start": 26.962,
-    "end": 27.404
+    "start": 27.51,
+    "end": 28.067
    }
   ]
  },
  {
   "text": "Y sexto, casi entero dentro del hospital.",
-  "start": 27.596,
-  "end": 29.788,
+  "start": 28.317,
+  "end": 30.567,
   "words": [
    {
     "w": "Y",
-    "start": 27.596,
-    "end": 27.712
+    "start": 28.317,
+    "end": 28.539
    },
    {
     "w": "sexto,",
-    "start": 27.712,
-    "end": 28.286
+    "start": 28.539,
+    "end": 28.913
    },
    {
     "w": "casi",
-    "start": 28.286,
-    "end": 28.644
+    "start": 28.913,
+    "end": 29.231
    },
    {
     "w": "entero",
-    "start": 28.644,
-    "end": 28.99
+    "start": 29.231,
+    "end": 29.692
    },
    {
     "w": "dentro",
-    "start": 28.99,
-    "end": 29.26
+    "start": 29.692,
+    "end": 30.0
    },
    {
     "w": "del",
-    "start": 29.26,
-    "end": 29.567
+    "start": 30.0,
+    "end": 30.154
    },
    {
     "w": "hospital.",
-    "start": 29.567,
-    "end": 29.788
+    "start": 30.154,
+    "end": 30.567
    }
   ]
  },
  {
   "text": "¿Qué te falta? El MIR: 200 preguntas en cuatro horas y media. Y cada fallo resta.",
-  "start": 30.058,
-  "end": 35.49,
+  "start": 30.865,
+  "end": 36.327,
   "words": [
    {
     "w": "¿Qué",
-    "start": 30.058,
-    "end": 30.163
+    "start": 30.865,
+    "end": 30.942
    },
    {
     "w": "te",
-    "start": 30.163,
-    "end": 30.279
+    "start": 30.942,
+    "end": 31.096
    },
    {
     "w": "falta?",
-    "start": 30.279,
-    "end": 30.904
-   },
-   {
-    "w": "El",
-    "start": 30.904,
-    "end": 31.135
-   },
-   {
-    "w": "MIR:",
-    "start": 31.135,
+    "start": 31.096,
     "end": 31.721
    },
    {
-    "w": "200",
+    "w": "El",
     "start": 31.721,
-    "end": 32.221
+    "end": 31.798
+   },
+   {
+    "w": "MIR:",
+    "start": 31.798,
+    "end": 32.423
+   },
+   {
+    "w": "200",
+    "start": 32.423,
+    "end": 33.115
    },
    {
     "w": "preguntas",
-    "start": 32.221,
-    "end": 32.76
+    "start": 33.115,
+    "end": 33.654
    },
    {
     "w": "en",
-    "start": 32.76,
-    "end": 32.99
+    "start": 33.654,
+    "end": 33.808
    },
    {
     "w": "cuatro",
-    "start": 32.99,
-    "end": 33.298
+    "start": 33.808,
+    "end": 34.115
    },
    {
     "w": "horas",
-    "start": 33.298,
-    "end": 33.567
+    "start": 34.115,
+    "end": 34.423
    },
    {
     "w": "y",
-    "start": 33.567,
-    "end": 33.798
+    "start": 34.423,
+    "end": 34.577
    },
    {
     "w": "media.",
-    "start": 33.798,
-    "end": 34.231
+    "start": 34.577,
+    "end": 35.106
    },
    {
     "w": "Y",
-    "start": 34.231,
-    "end": 34.385
+    "start": 35.106,
+    "end": 35.202
    },
    {
     "w": "cada",
-    "start": 34.385,
-    "end": 34.692
+    "start": 35.202,
+    "end": 35.433
    },
    {
     "w": "fallo",
-    "start": 34.692,
-    "end": 35.077
+    "start": 35.433,
+    "end": 35.971
    },
    {
     "w": "resta.",
-    "start": 35.077,
-    "end": 35.49
+    "start": 35.971,
+    "end": 36.327
    }
   ]
  },
  {
   "text": "Más de 15.000 médicos para unas 9.000 plazas. Tu número decide especialidad… y ciudad.",
-  "start": 35.788,
-  "end": 41.317,
+  "start": 36.567,
+  "end": 42.0,
   "words": [
    {
     "w": "Más",
-    "start": 35.788,
-    "end": 36.019
+    "start": 36.567,
+    "end": 36.76
    },
    {
     "w": "de",
-    "start": 36.019,
-    "end": 36.135
+    "start": 36.76,
+    "end": 36.913
    },
    {
     "w": "15.000",
-    "start": 36.135,
-    "end": 36.712
+    "start": 36.913,
+    "end": 37.606
    },
    {
     "w": "médicos",
-    "start": 36.712,
-    "end": 37.173
+    "start": 37.606,
+    "end": 38.067
    },
    {
     "w": "para",
-    "start": 37.173,
-    "end": 37.404
+    "start": 38.067,
+    "end": 38.298
    },
    {
     "w": "unas",
-    "start": 37.404,
-    "end": 37.673
+    "start": 38.298,
+    "end": 38.529
    },
    {
     "w": "9.000",
-    "start": 37.673,
-    "end": 38.173
+    "start": 38.529,
+    "end": 39.144
    },
    {
     "w": "plazas.",
-    "start": 38.173,
-    "end": 38.99
+    "start": 39.144,
+    "end": 39.798
    },
    {
     "w": "Tu",
-    "start": 38.99,
-    "end": 39.106
+    "start": 39.798,
+    "end": 39.878
    },
    {
     "w": "número",
-    "start": 39.106,
-    "end": 39.529
+    "start": 39.878,
+    "end": 40.154
    },
    {
     "w": "decide",
-    "start": 39.529,
-    "end": 39.875
+    "start": 40.154,
+    "end": 40.692
    },
    {
     "w": "especialidad…",
-    "start": 39.875,
-    "end": 40.779
+    "start": 40.692,
+    "end": 41.481
    },
    {
     "w": "y",
-    "start": 40.779,
-    "end": 40.894
+    "start": 41.481,
+    "end": 41.558
    },
    {
     "w": "ciudad.",
-    "start": 40.894,
-    "end": 41.317
+    "start": 41.558,
+    "end": 42.0
    }
   ]
  },
  {
   "text": "Este año, Dermatología se agotó antes del número 500.",
-  "start": 41.538,
-  "end": 44.942,
+  "start": 42.231,
+  "end": 45.577,
   "words": [
    {
     "w": "Este",
-    "start": 41.538,
-    "end": 41.837
+    "start": 42.231,
+    "end": 42.423
    },
    {
     "w": "año,",
-    "start": 41.837,
-    "end": 42.298
+    "start": 42.423,
+    "end": 42.808
    },
    {
     "w": "Dermatología",
-    "start": 42.298,
-    "end": 43.067
+    "start": 42.808,
+    "end": 43.577
    },
    {
     "w": "se",
-    "start": 43.067,
-    "end": 43.183
+    "start": 43.577,
+    "end": 43.731
    },
    {
     "w": "agotó",
-    "start": 43.183,
-    "end": 43.606
+    "start": 43.731,
+    "end": 44.269
    },
    {
     "w": "antes",
-    "start": 43.606,
-    "end": 43.837
+    "start": 44.269,
+    "end": 44.5
    },
    {
     "w": "del",
-    "start": 43.837,
-    "end": 44.029
+    "start": 44.5,
+    "end": 44.654
    },
    {
     "w": "número",
-    "start": 44.029,
-    "end": 44.375
+    "start": 44.654,
+    "end": 45.038
    },
    {
     "w": "500.",
-    "start": 44.375,
-    "end": 44.942
+    "start": 45.038,
+    "end": 45.577
    }
   ]
  },
  {
   "text": "Y después, de cuatro a cinco años de residencia: ya cobrando… y haciendo guardias.",
-  "start": 45.067,
-  "end": 49.846,
+  "start": 45.712,
+  "end": 50.471,
   "words": [
    {
     "w": "Y",
-    "start": 45.067,
-    "end": 45.221
+    "start": 45.712,
+    "end": 45.808
    },
    {
     "w": "después,",
-    "start": 45.221,
-    "end": 45.731
+    "start": 45.808,
+    "end": 46.327
    },
    {
     "w": "de",
-    "start": 45.731,
-    "end": 45.885
+    "start": 46.327,
+    "end": 46.51
    },
    {
     "w": "cuatro",
-    "start": 45.885,
-    "end": 46.192
+    "start": 46.51,
+    "end": 46.894
    },
    {
     "w": "a",
-    "start": 46.192,
-    "end": 46.346
+    "start": 46.894,
+    "end": 47.048
    },
    {
     "w": "cinco",
-    "start": 46.346,
-    "end": 46.654
+    "start": 47.048,
+    "end": 47.356
    },
    {
     "w": "años",
-    "start": 46.654,
-    "end": 46.923
+    "start": 47.356,
+    "end": 47.663
    },
    {
     "w": "de",
-    "start": 46.923,
-    "end": 47.038
+    "start": 47.663,
+    "end": 47.817
    },
    {
     "w": "residencia:",
-    "start": 47.038,
-    "end": 47.971
+    "start": 47.817,
+    "end": 48.606
    },
    {
     "w": "ya",
-    "start": 47.971,
-    "end": 48.125
+    "start": 48.606,
+    "end": 48.827
    },
    {
     "w": "cobrando…",
-    "start": 48.125,
-    "end": 48.798
+    "start": 48.827,
+    "end": 49.433
    },
    {
     "w": "y",
-    "start": 48.798,
-    "end": 48.875
+    "start": 49.433,
+    "end": 49.543
    },
    {
     "w": "haciendo",
-    "start": 48.875,
-    "end": 49.375
+    "start": 49.543,
+    "end": 49.923
    },
    {
     "w": "guardias.",
-    "start": 49.375,
-    "end": 49.846
+    "start": 49.923,
+    "end": 50.471
    }
   ]
  },
  {
   "text": "Seis de carrera y hasta cinco de residencia: once años para ser cirujano.",
-  "start": 50.163,
-  "end": 54.471,
+  "start": 50.683,
+  "end": 55.087,
   "words": [
    {
     "w": "Seis",
-    "start": 50.163,
-    "end": 50.394
+    "start": 50.683,
+    "end": 50.942
    },
    {
     "w": "de",
-    "start": 50.394,
-    "end": 50.548
+    "start": 50.942,
+    "end": 51.096
    },
    {
     "w": "carrera",
-    "start": 50.548,
-    "end": 51.01
+    "start": 51.096,
+    "end": 51.558
    },
    {
     "w": "y",
-    "start": 51.01,
-    "end": 51.125
+    "start": 51.558,
+    "end": 51.712
    },
    {
     "w": "hasta",
-    "start": 51.125,
-    "end": 51.471
+    "start": 51.712,
+    "end": 52.019
    },
    {
     "w": "cinco",
-    "start": 51.471,
-    "end": 51.779
+    "start": 52.019,
+    "end": 52.404
    },
    {
     "w": "de",
-    "start": 51.779,
-    "end": 51.933
+    "start": 52.404,
+    "end": 52.558
    },
    {
     "w": "residencia:",
-    "start": 51.933,
-    "end": 52.942
+    "start": 52.558,
+    "end": 53.413
    },
    {
     "w": "once",
-    "start": 52.942,
-    "end": 53.173
+    "start": 53.413,
+    "end": 53.798
    },
    {
     "w": "años",
-    "start": 53.173,
-    "end": 53.596
+    "start": 53.798,
+    "end": 54.106
    },
    {
     "w": "para",
-    "start": 53.596,
-    "end": 53.788
+    "start": 54.106,
+    "end": 54.26
    },
    {
     "w": "ser",
-    "start": 53.788,
-    "end": 53.942
+    "start": 54.26,
+    "end": 54.49
    },
    {
     "w": "cirujano.",
-    "start": 53.942,
-    "end": 54.471
+    "start": 54.49,
+    "end": 55.087
    }
   ]
  },
  {
   "text": "Si estás pensando en estudiar Medicina, guárdalo. Y dime: ¿quirófano o consulta?",
-  "start": 54.692,
-  "end": 59.337,
+  "start": 55.269,
+  "end": 59.888,
   "words": [
    {
     "w": "Si",
-    "start": 54.692,
-    "end": 54.846
+    "start": 55.269,
+    "end": 55.394
    },
    {
     "w": "estás",
-    "start": 54.846,
-    "end": 55.077
+    "start": 55.394,
+    "end": 55.702
    },
    {
     "w": "pensando",
-    "start": 55.077,
-    "end": 55.462
+    "start": 55.702,
+    "end": 56.01
    },
    {
     "w": "en",
-    "start": 55.462,
-    "end": 55.538
+    "start": 56.01,
+    "end": 56.163
    },
    {
     "w": "estudiar",
-    "start": 55.538,
-    "end": 55.923
+    "start": 56.163,
+    "end": 56.625
    },
    {
     "w": "Medicina,",
-    "start": 55.923,
-    "end": 56.702
+    "start": 56.625,
+    "end": 57.25
    },
    {
     "w": "guárdalo.",
-    "start": 56.702,
-    "end": 57.481
+    "start": 57.25,
+    "end": 58.087
    },
    {
     "w": "Y",
-    "start": 57.481,
-    "end": 57.558
+    "start": 58.087,
+    "end": 58.303
    },
    {
     "w": "dime:",
-    "start": 57.558,
-    "end": 58.081
+    "start": 58.303,
+    "end": 58.662
    },
    {
     "w": "¿quirófano",
-    "start": 58.081,
-    "end": 58.718
+    "start": 58.662,
+    "end": 59.261
    },
    {
     "w": "o",
-    "start": 58.718,
-    "end": 58.838
+    "start": 59.261,
+    "end": 59.413
    },
    {
     "w": "consulta?",
-    "start": 58.838,
-    "end": 59.337
+    "start": 59.413,
+    "end": 59.888
    }
   ]
  }

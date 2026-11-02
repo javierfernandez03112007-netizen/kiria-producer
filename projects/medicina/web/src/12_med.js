@@ -87,8 +87,8 @@ function skull(s = 1) {
   const g = new THREE.Group(), m = M.ivory;
   const cr = sph(0.1, m, 48, 32); cr.scale.set(0.88, 0.94, 1.1); cr.position.set(0, 0.135, -0.012); g.add(cr);
   const face = sph(0.075, m, 36, 24); face.scale.set(0.96, 0.86, 0.78); face.position.set(0, 0.078, 0.052); g.add(face);
-  const brow = sph(0.05, m, 24, 16); brow.scale.set(1.6, 0.45, 0.6); brow.position.set(0, 0.123, 0.085); g.add(brow);
-  for (const sd of [-1, 1]) { const e = sph(0.025, M.dark, 20, 14); e.scale.set(1.05, 0.88, 0.55); e.position.set(sd * 0.033, 0.1, 0.104); g.add(e);
+  const brow = sph(0.05, m, 24, 16); brow.scale.set(1.45, 0.32, 0.5); brow.position.set(0, 0.128, 0.078); g.add(brow);
+  for (const sd of [-1, 1]) { const e = sph(0.022, M.dark, 20, 14); e.scale.set(1.0, 0.9, 0.32); e.position.set(sd * 0.031, 0.1, 0.1); g.add(e);
     const ck = sph(0.022, m, 16, 12); ck.scale.set(1.35, 0.75, 1); ck.position.set(sd * 0.058, 0.072, 0.083); g.add(ck);
     const temple = sph(0.03, m, 16, 12); temple.scale.set(0.5, 1, 1.2); temple.position.set(sd * 0.075, 0.1, 0.03); g.add(temple); }
   const nose = new THREE.Mesh(new THREE.ConeGeometry(0.013, 0.03, 3), M.dark); nose.position.set(0, 0.07, 0.112); nose.rotation.x = Math.PI; nose.scale.set(1, 1, 0.45); g.add(nose);
@@ -226,13 +226,13 @@ function teddy(s = 1) {
 function hospitalBed(s = 1) {
   const g = new THREE.Group(), ch = M.chrome;
   const frame = mesh(new THREE.BoxGeometry(0.36, 0.025, 0.72), M.enamel); frame.position.y = 0.13; g.add(frame);
-  const mat = rbox(0.34, 0.06, 0.7, M.mattress, 0.02); mat.rotation.x = Math.PI / 2; mat.position.y = 0.17; g.add(mat);
-  const pil = rbox(0.24, 0.04, 0.1, M.mattress, 0.018); pil.rotation.x = Math.PI / 2 - 0.25; pil.position.set(0, 0.215, -0.28); g.add(pil);
-  const bl = mesh(new THREE.BoxGeometry(0.35, 0.03, 0.42), M.blanket); bl.position.set(0, 0.2, 0.12); g.add(bl);
+  const mat = mesh(new THREE.BoxGeometry(0.34, 0.06, 0.7), M.mattress); mat.position.y = 0.17; g.add(mat);
+  const pil = mesh(new THREE.CapsuleGeometry(0.03, 0.17, 6, 12), M.mattress); pil.rotation.z = Math.PI / 2; pil.scale.set(1, 1, 0.55); pil.position.set(0, 0.215, -0.28); g.add(pil);
+  const bl = mesh(new THREE.BoxGeometry(0.35, 0.03, 0.4), M.blanket); bl.position.set(0, 0.262, 0.13); g.add(bl);
   for (const z of [-0.36, 0.36]) { const hb = mesh(new THREE.BoxGeometry(0.38, z < 0 ? 0.22 : 0.14, 0.02), M.enamel); hb.position.set(0, 0.13 + (z < 0 ? 0.11 : 0.07), z); g.add(hb); }
   for (const x of [-0.17, 0.17]) for (const z of [-0.33, 0.33]) { const l = cyl(0.008, 0.008, 0.11, ch, 10); l.position.set(x, 0.065, z); g.add(l); const w = cyl(0.014, 0.014, 0.01, M.tubing, 14); w.rotation.z = Math.PI / 2; w.position.set(x, 0.014, z); g.add(w); }
   for (const x of [-0.185, 0.185]) { const r = mesh(new THREE.BoxGeometry(0.008, 0.05, 0.3), ch); r.position.set(x, 0.24, -0.1); g.add(r); }
-  const pat = figurine(M.ceramic, 0.95); pat.rotation.x = -Math.PI / 2; pat.position.set(0, 0.205, 0.24); pat.userData.J.shL.rotation.z = -0.15; pat.userData.J.shR.rotation.z = 0.15; g.add(pat); g.userData.pat = pat;
+  const pat = figurine(M.ceramic, 2.5); pat.rotation.x = -Math.PI / 2; pat.position.set(0, 0.236, 0.25); pat.userData.J.shL.rotation.z = -0.15; pat.userData.J.shR.rotation.z = 0.15; g.add(pat); g.userData.pat = pat;
   const pole = cyl(0.006, 0.006, 0.62, ch, 10); pole.position.set(0.24, 0.31, -0.26); g.add(pole); const pb = cyl(0.05, 0.05, 0.01, ch, 20); pb.position.set(0.24, 0.005, -0.26); g.add(pb);
   const hook = cyl(0.003, 0.003, 0.08, ch, 8); hook.rotation.z = Math.PI / 2; hook.position.set(0.24, 0.6, -0.26); g.add(hook);
   const bag = rbox(0.06, 0.09, 0.02, M.bag, 0.01); bag.position.set(0.24, 0.53, -0.26); g.add(bag); const liq = rbox(0.05, 0.06, 0.012, M.liquid, 0.008); liq.position.set(0.24, 0.515, -0.26); g.add(liq);
