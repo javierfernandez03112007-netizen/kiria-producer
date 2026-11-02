@@ -1,0 +1,1056 @@
+[
+ {
+  "text": "En la nieve, el sol te da dos veces: desde el cielo… y desde el suelo.",
+  "start": 0.0,
+  "end": 4.46,
+  "words": [
+   {
+    "w": "En",
+    "start": 0.0,
+    "end": 0.16
+   },
+   {
+    "w": "la",
+    "start": 0.16,
+    "end": 0.32
+   },
+   {
+    "w": "nieve,",
+    "start": 0.32,
+    "end": 0.8
+   },
+   {
+    "w": "el",
+    "start": 0.8,
+    "end": 0.89
+   },
+   {
+    "w": "sol",
+    "start": 0.89,
+    "end": 1.13
+   },
+   {
+    "w": "te",
+    "start": 1.13,
+    "end": 1.37
+   },
+   {
+    "w": "da",
+    "start": 1.37,
+    "end": 1.61
+   },
+   {
+    "w": "dos",
+    "start": 1.61,
+    "end": 1.93
+   },
+   {
+    "w": "veces:",
+    "start": 1.93,
+    "end": 2.61
+   },
+   {
+    "w": "desde",
+    "start": 2.61,
+    "end": 2.9
+   },
+   {
+    "w": "el",
+    "start": 2.9,
+    "end": 3.06
+   },
+   {
+    "w": "cielo…",
+    "start": 3.06,
+    "end": 3.56
+   },
+   {
+    "w": "y",
+    "start": 3.56,
+    "end": 3.64
+   },
+   {
+    "w": "desde",
+    "start": 3.64,
+    "end": 3.96
+   },
+   {
+    "w": "el",
+    "start": 3.96,
+    "end": 4.04
+   },
+   {
+    "w": "suelo.",
+    "start": 4.04,
+    "end": 4.46
+   }
+  ]
+ },
+ {
+  "text": "¿Por qué unas gafas son naranjas y otras de espejo? Te lo digo al final.",
+  "start": 4.63,
+  "end": 8.51,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 4.63,
+    "end": 4.716
+   },
+   {
+    "w": "qué",
+    "start": 4.716,
+    "end": 4.82
+   },
+   {
+    "w": "unas",
+    "start": 4.82,
+    "end": 5.06
+   },
+   {
+    "w": "gafas",
+    "start": 5.06,
+    "end": 5.46
+   },
+   {
+    "w": "son",
+    "start": 5.46,
+    "end": 5.62
+   },
+   {
+    "w": "naranjas",
+    "start": 5.62,
+    "end": 6.26
+   },
+   {
+    "w": "y",
+    "start": 6.26,
+    "end": 6.42
+   },
+   {
+    "w": "otras",
+    "start": 6.42,
+    "end": 6.74
+   },
+   {
+    "w": "de",
+    "start": 6.74,
+    "end": 6.9
+   },
+   {
+    "w": "espejo?",
+    "start": 6.9,
+    "end": 7.62
+   },
+   {
+    "w": "Te",
+    "start": 7.62,
+    "end": 7.71
+   },
+   {
+    "w": "lo",
+    "start": 7.71,
+    "end": 7.87
+   },
+   {
+    "w": "digo",
+    "start": 7.87,
+    "end": 8.19
+   },
+   {
+    "w": "al",
+    "start": 8.19,
+    "end": 8.35
+   },
+   {
+    "w": "final.",
+    "start": 8.35,
+    "end": 8.51
+   }
+  ]
+ },
+ {
+  "text": "La luz del sol trae todos los colores… y una parte que no ves: la ultravioleta.",
+  "start": 8.67,
+  "end": 13.45,
+  "words": [
+   {
+    "w": "La",
+    "start": 8.67,
+    "end": 8.814
+   },
+   {
+    "w": "luz",
+    "start": 8.814,
+    "end": 8.99
+   },
+   {
+    "w": "del",
+    "start": 8.99,
+    "end": 9.15
+   },
+   {
+    "w": "sol",
+    "start": 9.15,
+    "end": 9.55
+   },
+   {
+    "w": "trae",
+    "start": 9.55,
+    "end": 9.95
+   },
+   {
+    "w": "todos",
+    "start": 9.95,
+    "end": 10.27
+   },
+   {
+    "w": "los",
+    "start": 10.27,
+    "end": 10.43
+   },
+   {
+    "w": "colores…",
+    "start": 10.43,
+    "end": 11.06
+   },
+   {
+    "w": "y",
+    "start": 11.06,
+    "end": 11.141
+   },
+   {
+    "w": "una",
+    "start": 11.141,
+    "end": 11.33
+   },
+   {
+    "w": "parte",
+    "start": 11.33,
+    "end": 11.65
+   },
+   {
+    "w": "que",
+    "start": 11.65,
+    "end": 11.81
+   },
+   {
+    "w": "no",
+    "start": 11.81,
+    "end": 12.05
+   },
+   {
+    "w": "ves:",
+    "start": 12.05,
+    "end": 12.5
+   },
+   {
+    "w": "la",
+    "start": 12.5,
+    "end": 12.62
+   },
+   {
+    "w": "ultravioleta.",
+    "start": 12.62,
+    "end": 13.45
+   }
+  ]
+ },
+ {
+  "text": "La nieve devuelve hasta el 80 %… y sin protección te quema los ojos.",
+  "start": 13.62,
+  "end": 18.03,
+  "words": [
+   {
+    "w": "La",
+    "start": 13.62,
+    "end": 13.758
+   },
+   {
+    "w": "nieve",
+    "start": 13.758,
+    "end": 14.08
+   },
+   {
+    "w": "devuelve",
+    "start": 14.08,
+    "end": 14.64
+   },
+   {
+    "w": "hasta",
+    "start": 14.64,
+    "end": 14.88
+   },
+   {
+    "w": "el",
+    "start": 14.88,
+    "end": 15.04
+   },
+   {
+    "w": "80",
+    "start": 15.04,
+    "end": 15.64
+   },
+   {
+    "w": "%…",
+    "start": 15.64,
+    "end": 16.11
+   },
+   {
+    "w": "y",
+    "start": 16.11,
+    "end": 16.214
+   },
+   {
+    "w": "sin",
+    "start": 16.214,
+    "end": 16.34
+   },
+   {
+    "w": "protección",
+    "start": 16.34,
+    "end": 16.9
+   },
+   {
+    "w": "te",
+    "start": 16.9,
+    "end": 17.06
+   },
+   {
+    "w": "quema",
+    "start": 17.06,
+    "end": 17.62
+   },
+   {
+    "w": "los",
+    "start": 17.62,
+    "end": 17.7
+   },
+   {
+    "w": "ojos.",
+    "start": 17.7,
+    "end": 18.03
+   }
+  ]
+ },
+ {
+  "text": "Así que vamos a desmontar unas gafas.",
+  "start": 18.08,
+  "end": 20.21,
+  "words": [
+   {
+    "w": "Así",
+    "start": 18.08,
+    "end": 18.32
+   },
+   {
+    "w": "que",
+    "start": 18.32,
+    "end": 18.56
+   },
+   {
+    "w": "vamos",
+    "start": 18.56,
+    "end": 18.88
+   },
+   {
+    "w": "a",
+    "start": 18.88,
+    "end": 19.04
+   },
+   {
+    "w": "desmontar",
+    "start": 19.04,
+    "end": 19.6
+   },
+   {
+    "w": "unas",
+    "start": 19.6,
+    "end": 19.84
+   },
+   {
+    "w": "gafas.",
+    "start": 19.84,
+    "end": 20.21
+   }
+  ]
+ },
+ {
+  "text": "Fuera, el espejo: una capa finísima que rebota parte de la luz antes de entrar.",
+  "start": 20.31,
+  "end": 24.88,
+  "words": [
+   {
+    "w": "Fuera,",
+    "start": 20.31,
+    "end": 20.79
+   },
+   {
+    "w": "el",
+    "start": 20.79,
+    "end": 20.97
+   },
+   {
+    "w": "espejo:",
+    "start": 20.97,
+    "end": 21.58
+   },
+   {
+    "w": "una",
+    "start": 21.58,
+    "end": 21.7
+   },
+   {
+    "w": "capa",
+    "start": 21.7,
+    "end": 22.1
+   },
+   {
+    "w": "finísima",
+    "start": 22.1,
+    "end": 22.66
+   },
+   {
+    "w": "que",
+    "start": 22.66,
+    "end": 22.82
+   },
+   {
+    "w": "rebota",
+    "start": 22.82,
+    "end": 23.38
+   },
+   {
+    "w": "parte",
+    "start": 23.38,
+    "end": 23.62
+   },
+   {
+    "w": "de",
+    "start": 23.62,
+    "end": 23.7
+   },
+   {
+    "w": "la",
+    "start": 23.7,
+    "end": 23.78
+   },
+   {
+    "w": "luz",
+    "start": 23.78,
+    "end": 24.1
+   },
+   {
+    "w": "antes",
+    "start": 24.1,
+    "end": 24.34
+   },
+   {
+    "w": "de",
+    "start": 24.34,
+    "end": 24.5
+   },
+   {
+    "w": "entrar.",
+    "start": 24.5,
+    "end": 24.88
+   }
+  ]
+ },
+ {
+  "text": "Detrás, la lente: frena la ultravioleta.",
+  "start": 25.1,
+  "end": 27.64,
+  "words": [
+   {
+    "w": "Detrás,",
+    "start": 25.1,
+    "end": 25.71
+   },
+   {
+    "w": "la",
+    "start": 25.71,
+    "end": 25.86
+   },
+   {
+    "w": "lente:",
+    "start": 25.86,
+    "end": 26.48
+   },
+   {
+    "w": "frena",
+    "start": 26.48,
+    "end": 26.83
+   },
+   {
+    "w": "la",
+    "start": 26.83,
+    "end": 26.99
+   },
+   {
+    "w": "ultravioleta.",
+    "start": 26.99,
+    "end": 27.64
+   }
+  ]
+ },
+ {
+  "text": "Y si es polarizada, lleva un filtro: el reflejo del hielo vibra en horizontal… y el filtro es como una rejilla vertical. No lo deja pasar.",
+  "start": 27.81,
+  "end": 35.4,
+  "words": [
+   {
+    "w": "Y",
+    "start": 27.81,
+    "end": 27.882
+   },
+   {
+    "w": "si",
+    "start": 27.882,
+    "end": 27.97
+   },
+   {
+    "w": "es",
+    "start": 27.97,
+    "end": 28.13
+   },
+   {
+    "w": "polarizada,",
+    "start": 28.13,
+    "end": 28.93
+   },
+   {
+    "w": "lleva",
+    "start": 28.93,
+    "end": 29.33
+   },
+   {
+    "w": "un",
+    "start": 29.33,
+    "end": 29.49
+   },
+   {
+    "w": "filtro:",
+    "start": 29.49,
+    "end": 30.02
+   },
+   {
+    "w": "el",
+    "start": 30.02,
+    "end": 30.119
+   },
+   {
+    "w": "reflejo",
+    "start": 30.119,
+    "end": 30.46
+   },
+   {
+    "w": "del",
+    "start": 30.46,
+    "end": 30.62
+   },
+   {
+    "w": "hielo",
+    "start": 30.62,
+    "end": 31.02
+   },
+   {
+    "w": "vibra",
+    "start": 31.02,
+    "end": 31.42
+   },
+   {
+    "w": "en",
+    "start": 31.42,
+    "end": 31.58
+   },
+   {
+    "w": "horizontal…",
+    "start": 31.58,
+    "end": 32.17
+   },
+   {
+    "w": "y",
+    "start": 32.17,
+    "end": 32.24
+   },
+   {
+    "w": "el",
+    "start": 32.24,
+    "end": 32.32
+   },
+   {
+    "w": "filtro",
+    "start": 32.32,
+    "end": 32.8
+   },
+   {
+    "w": "es",
+    "start": 32.8,
+    "end": 32.96
+   },
+   {
+    "w": "como",
+    "start": 32.96,
+    "end": 33.12
+   },
+   {
+    "w": "una",
+    "start": 33.12,
+    "end": 33.36
+   },
+   {
+    "w": "rejilla",
+    "start": 33.36,
+    "end": 33.84
+   },
+   {
+    "w": "vertical.",
+    "start": 33.84,
+    "end": 34.43
+   },
+   {
+    "w": "No",
+    "start": 34.43,
+    "end": 34.57
+   },
+   {
+    "w": "lo",
+    "start": 34.57,
+    "end": 34.73
+   },
+   {
+    "w": "deja",
+    "start": 34.73,
+    "end": 35.13
+   },
+   {
+    "w": "pasar.",
+    "start": 35.13,
+    "end": 35.4
+   }
+  ]
+ },
+ {
+  "text": "Al final, una segunda lente con aire en medio, para que no se empañe.",
+  "start": 35.64,
+  "end": 39.07,
+  "words": [
+   {
+    "w": "Al",
+    "start": 35.64,
+    "end": 35.79
+   },
+   {
+    "w": "final,",
+    "start": 35.79,
+    "end": 36.19
+   },
+   {
+    "w": "una",
+    "start": 36.19,
+    "end": 36.36
+   },
+   {
+    "w": "segunda",
+    "start": 36.36,
+    "end": 36.76
+   },
+   {
+    "w": "lente",
+    "start": 36.76,
+    "end": 37.16
+   },
+   {
+    "w": "con",
+    "start": 37.16,
+    "end": 37.32
+   },
+   {
+    "w": "aire",
+    "start": 37.32,
+    "end": 37.64
+   },
+   {
+    "w": "en",
+    "start": 37.64,
+    "end": 37.8
+   },
+   {
+    "w": "medio,",
+    "start": 37.8,
+    "end": 38.08
+   },
+   {
+    "w": "para",
+    "start": 38.08,
+    "end": 38.21
+   },
+   {
+    "w": "que",
+    "start": 38.21,
+    "end": 38.37
+   },
+   {
+    "w": "no",
+    "start": 38.37,
+    "end": 38.53
+   },
+   {
+    "w": "se",
+    "start": 38.53,
+    "end": 38.69
+   },
+   {
+    "w": "empañe.",
+    "start": 38.69,
+    "end": 39.07
+   }
+  ]
+ },
+ {
+  "text": "¿Y el color? Para el sol, gris o espejo de categoría 3: dejan pasar menos del 18 % de la luz.",
+  "start": 39.26,
+  "end": 45.6,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 39.26,
+    "end": 39.33
+   },
+   {
+    "w": "el",
+    "start": 39.33,
+    "end": 39.49
+   },
+   {
+    "w": "color?",
+    "start": 39.49,
+    "end": 40.08
+   },
+   {
+    "w": "Para",
+    "start": 40.08,
+    "end": 40.22
+   },
+   {
+    "w": "el",
+    "start": 40.22,
+    "end": 40.38
+   },
+   {
+    "w": "sol,",
+    "start": 40.38,
+    "end": 40.72
+   },
+   {
+    "w": "gris",
+    "start": 40.72,
+    "end": 41.11
+   },
+   {
+    "w": "o",
+    "start": 41.11,
+    "end": 41.35
+   },
+   {
+    "w": "espejo",
+    "start": 41.35,
+    "end": 41.75
+   },
+   {
+    "w": "de",
+    "start": 41.75,
+    "end": 41.83
+   },
+   {
+    "w": "categoría",
+    "start": 41.83,
+    "end": 42.47
+   },
+   {
+    "w": "3:",
+    "start": 42.47,
+    "end": 42.92
+   },
+   {
+    "w": "dejan",
+    "start": 42.92,
+    "end": 43.28
+   },
+   {
+    "w": "pasar",
+    "start": 43.28,
+    "end": 43.68
+   },
+   {
+    "w": "menos",
+    "start": 43.68,
+    "end": 43.92
+   },
+   {
+    "w": "del",
+    "start": 43.92,
+    "end": 44.08
+   },
+   {
+    "w": "18",
+    "start": 44.08,
+    "end": 44.6
+   },
+   {
+    "w": "%",
+    "start": 44.6,
+    "end": 45.12
+   },
+   {
+    "w": "de",
+    "start": 45.12,
+    "end": 45.2
+   },
+   {
+    "w": "la",
+    "start": 45.2,
+    "end": 45.36
+   },
+   {
+    "w": "luz.",
+    "start": 45.36,
+    "end": 45.6
+   }
+  ]
+ },
+ {
+  "text": "Para días nublados, naranja, amarillo o rosa: frenan parte del azul, la luz que más se dispersa… y vuelves a ver el relieve.",
+  "start": 45.7,
+  "end": 52.89,
+  "words": [
+   {
+    "w": "Para",
+    "start": 45.7,
+    "end": 45.78
+   },
+   {
+    "w": "días",
+    "start": 45.78,
+    "end": 46.1
+   },
+   {
+    "w": "nublados,",
+    "start": 46.1,
+    "end": 46.9
+   },
+   {
+    "w": "naranja,",
+    "start": 46.9,
+    "end": 47.54
+   },
+   {
+    "w": "amarillo",
+    "start": 47.54,
+    "end": 48.1
+   },
+   {
+    "w": "o",
+    "start": 48.1,
+    "end": 48.26
+   },
+   {
+    "w": "rosa:",
+    "start": 48.26,
+    "end": 48.78
+   },
+   {
+    "w": "frenan",
+    "start": 48.78,
+    "end": 49.32
+   },
+   {
+    "w": "parte",
+    "start": 49.32,
+    "end": 49.48
+   },
+   {
+    "w": "del",
+    "start": 49.48,
+    "end": 49.72
+   },
+   {
+    "w": "azul,",
+    "start": 49.72,
+    "end": 50.15
+   },
+   {
+    "w": "la",
+    "start": 50.15,
+    "end": 50.29
+   },
+   {
+    "w": "luz",
+    "start": 50.29,
+    "end": 50.53
+   },
+   {
+    "w": "que",
+    "start": 50.53,
+    "end": 50.69
+   },
+   {
+    "w": "más",
+    "start": 50.69,
+    "end": 50.85
+   },
+   {
+    "w": "se",
+    "start": 50.85,
+    "end": 51.01
+   },
+   {
+    "w": "dispersa…",
+    "start": 51.01,
+    "end": 51.5
+   },
+   {
+    "w": "y",
+    "start": 51.5,
+    "end": 51.59
+   },
+   {
+    "w": "vuelves",
+    "start": 51.59,
+    "end": 51.99
+   },
+   {
+    "w": "a",
+    "start": 51.99,
+    "end": 52.07
+   },
+   {
+    "w": "ver",
+    "start": 52.07,
+    "end": 52.23
+   },
+   {
+    "w": "el",
+    "start": 52.23,
+    "end": 52.39
+   },
+   {
+    "w": "relieve.",
+    "start": 52.39,
+    "end": 52.89
+   }
+  ]
+ },
+ {
+  "text": "Así que el color no es moda: es la luz que decides no ver. ¿Tú las llevas naranjas o de espejo?",
+  "start": 52.91,
+  "end": 58.556,
+  "words": [
+   {
+    "w": "Así",
+    "start": 52.91,
+    "end": 53.05
+   },
+   {
+    "w": "que",
+    "start": 53.05,
+    "end": 53.21
+   },
+   {
+    "w": "el",
+    "start": 53.21,
+    "end": 53.37
+   },
+   {
+    "w": "color",
+    "start": 53.37,
+    "end": 53.77
+   },
+   {
+    "w": "no",
+    "start": 53.77,
+    "end": 53.93
+   },
+   {
+    "w": "es",
+    "start": 53.93,
+    "end": 54.17
+   },
+   {
+    "w": "moda:",
+    "start": 54.17,
+    "end": 54.7
+   },
+   {
+    "w": "es",
+    "start": 54.7,
+    "end": 54.82
+   },
+   {
+    "w": "la",
+    "start": 54.82,
+    "end": 54.98
+   },
+   {
+    "w": "luz",
+    "start": 54.98,
+    "end": 55.22
+   },
+   {
+    "w": "que",
+    "start": 55.22,
+    "end": 55.38
+   },
+   {
+    "w": "decides",
+    "start": 55.38,
+    "end": 55.94
+   },
+   {
+    "w": "no",
+    "start": 55.94,
+    "end": 56.18
+   },
+   {
+    "w": "ver.",
+    "start": 56.18,
+    "end": 56.687
+   },
+   {
+    "w": "¿Tú",
+    "start": 56.687,
+    "end": 56.783
+   },
+   {
+    "w": "las",
+    "start": 56.783,
+    "end": 56.901
+   },
+   {
+    "w": "llevas",
+    "start": 56.901,
+    "end": 57.212
+   },
+   {
+    "w": "naranjas",
+    "start": 57.212,
+    "end": 57.758
+   },
+   {
+    "w": "o",
+    "start": 57.758,
+    "end": 57.913
+   },
+   {
+    "w": "de",
+    "start": 57.913,
+    "end": 58.147
+   },
+   {
+    "w": "espejo?",
+    "start": 58.147,
+    "end": 58.556
+   }
+  ]
+ }
+]
