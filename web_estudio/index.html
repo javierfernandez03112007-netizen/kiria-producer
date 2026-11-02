@@ -356,7 +356,7 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .lines li.total { color: var(--ink); font-weight: 700; font-size: 17px; border-top: 1.5px solid var(--ink); align-items: baseline; }
 .lines li.total span:last-child { font: 400 clamp(32px, 3.4vw, 42px)/1 var(--display); letter-spacing: 0.01em; }
 .next { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--muted); font-size: 14px; }
-.methods { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .method { position: relative; display: grid; gap: 4px; align-content: start; padding: 13px 14px; border: 1px solid var(--line2); border-radius: 12px; cursor: pointer; background: var(--bg); transition: border-color .2s, box-shadow .2s; min-width: 0; }
 .method input { position: absolute; opacity: 0; pointer-events: none; }
 .method.on { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
@@ -377,7 +377,7 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .cookie p { font-size: 14px; color: var(--ink2); }
 .cookie .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .cookie .two .btn { padding: 12px 10px; }
-.ck .wa-float { display: none; }
+.ck .ig-float { display: none; }
 @media (max-width: 560px) { .cookie { padding: 16px; gap: 9px; } .cookie p { font-size: 13px; } .cookie .two .btn { padding: 11px 8px; } }
 .linkbtn { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; justify-self: start; }
 footer .linkbtn { color: var(--nightmuted); text-decoration: none; }
@@ -419,10 +419,10 @@ a.way:hover { border-color: var(--ink); }
 .way .arr { color: var(--red); font-size: 20px; flex: none; }
 .more { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 40px; padding: 22px 26px; border: 1.5px dashed var(--line2); border-radius: 18px; background: var(--panel); }
 .more p { font-size: 17px; font-weight: 500; max-width: 34em; }
-.wa-float { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #0b1a10; font: 700 15px/1 var(--body); text-decoration: none; padding: 13px 17px; border-radius: 999px; box-shadow: 0 14px 34px -12px rgba(12, 14, 18, 0.45); transition: transform .2s var(--ease); }
-.wa-float:hover { transform: translateY(-2px); }
-.wa-float svg { width: 20px; height: 20px; }
-@media (max-width: 520px) { .wa-float span { display: none; } .wa-float { padding: 14px; } }
+.ig-float { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: 9px; background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 55%, #962fbf 78%, #4f5bd5 100%); color: #ffffff; font: 700 14.5px/1 var(--body); text-decoration: none; padding: 13px 17px; border-radius: 999px; box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.6); transition: transform .2s var(--ease); }
+.ig-float:hover { transform: translateY(-2px); }
+.ig-float svg { width: 20px; height: 20px; }
+@media (max-width: 520px) { .ig-float span { display: none; } .ig-float { padding: 14px; } }
 form { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: grid; gap: 16px; box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.6); }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 label { display: grid; gap: 7px; font-size: 14px; font-weight: 600; }
@@ -683,12 +683,12 @@ footer a:hover { color: var(--nightfg); }
       <p class="type-desc" id="typeDesc">Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.</p>
       <label class="addon rv" id="addon"><span class="switch"><input type="checkbox" id="difusion"><i></i></span><span><b>Añadir difusión en kiria.ai · +2 € por vídeo</b><small>Publicamos también tus vídeos en nuestra cuenta como colaboración, identificados como publicidad. Se suma a cualquier plan: 2 € por cada vídeo.</small></span></label>
       <div class="prices" id="prices">
-        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>5,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link buy" href="#contacto">o pídelo por WhatsApp →</a></div>
-        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>23,96 €</s><b data-amt>21,56</b><span class="cur">€/mes</span></div><p class="per" data-per>5,39 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link buy" href="#contacto">o pídelo por WhatsApp →</a></div>
-        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>59,90 €</s><b data-amt>52,71</b><span class="cur">€/mes</span></div><p class="per" data-per>5,27 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link buy" href="#contacto">o pídelo por WhatsApp →</a></div>
-        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>179,70 €</s><b data-amt>152,75</b><span class="cur">€/mes</span></div><p class="per" data-per>5,09 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link buy" href="#contacto">o pídelo por WhatsApp →</a></div>
+        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>5,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>23,96 €</s><b data-amt>21,56</b><span class="cur">€/mes</span></div><p class="per" data-per>5,39 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>59,90 €</s><b data-amt>52,71</b><span class="cur">€/mes</span></div><p class="per" data-per>5,27 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>179,70 €</s><b data-amt>152,75</b><span class="cur">€/mes</span></div><p class="per" data-per>5,09 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
       </div>
-      <div class="price-notes rv"><span>Precios en euros.</span><span>«Pagar ahora» te lleva a la página de pago; también puedes pedirlo por WhatsApp con tu pedido ya escrito.</span></div>
+      <div class="price-notes rv"><span>Precios en euros.</span><span>«Pagar ahora» te lleva a la página de pago.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
     </div>
   </section>
 
@@ -714,11 +714,10 @@ footer a:hover { color: var(--nightfg); }
       <div class="rv">
         <p class="mono">Contacto</p>
         <h2 style="margin-top:16px">Cuéntanos tu vídeo</h2>
-        <p style="margin-top:18px;color:var(--ink2);max-width:28em">Rellena el formulario y se abrirá WhatsApp con tu mensaje escrito. Te respondemos con una propuesta de guion y presupuesto.</p>
+        <p style="margin-top:18px;color:var(--ink2);max-width:28em">Rellena el formulario y te dejamos el mensaje listo para enviarlo por correo o por Instagram. Te respondemos con una propuesta de guion y presupuesto.</p>
         <div class="ways">
-          <a class="way" href="https://wa.me/34601621977?text=Hola%2C%20me%20interesa%20un%20v%C3%ADdeo%20para%20mi%20marca." target="_blank" rel="noopener"><span><b>WhatsApp</b><br><span class="val">+34 601 621 977</span></span><span class="arr">→</span></a>
           <a class="way" href="mailto:javierfernandez03112007@gmail.com"><span><b>Correo</b><br><span class="val">javierfernandez03112007@gmail.com</span></span><span class="arr">→</span></a>
-          <a class="way" href="https://www.instagram.com/javifer.h/" target="_blank" rel="noopener"><span><b>Instagram</b><br><span class="val">@javifer.h</span></span><span class="arr">→</span></a>
+          <a class="way" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener"><span><b>Instagram</b><br><span class="val">@kiria.ai</span></span><span class="arr">→</span></a>
         </div>
       </div>
       <form id="f" class="rv" novalidate>
@@ -735,12 +734,12 @@ footer a:hover { color: var(--nightfg); }
           <label for="dif">Difusión en kiria.ai (+2 € por vídeo)<select id="dif" name="dif"><option>No</option><option>Sí</option></select></label>
         </div>
         <label for="idea">¿Qué quieres contar?<textarea id="idea" name="idea" placeholder="Tu producto, tu servicio o tu idea, y qué te gustaría que pasara después de ver el vídeo." required></textarea></label>
-        <button class="btn dark" type="submit" style="justify-self:start">Enviar por WhatsApp <span class="arr">→</span></button>
+        <button class="btn dark" type="submit" style="justify-self:start">Preparar mensaje <span class="arr">→</span></button>
         <div class="out" id="out" hidden>
           <b>Tu mensaje está listo</b>
           <pre id="msg"></pre>
-          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn dark" id="wa" target="_blank" rel="noopener">Abrir WhatsApp</a><a class="btn ghost" id="mail">Enviar por correo</a><button class="btn ghost" type="button" id="copy">Copiar mensaje</button></div>
-          <p class="mono" style="text-transform:none;letter-spacing:0">Si WhatsApp no se ha abierto solo, pulsa «Abrir WhatsApp» o escríbenos al +34 601 621 977.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn dark" id="mail" href="mailto:javierfernandez03112007@gmail.com">Enviar por correo</a><button class="btn ghost" type="button" id="copy">Copiar mensaje</button><a class="btn ghost" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">Abrir Instagram</a></div>
+          <p class="mono" style="text-transform:none;letter-spacing:0">Si el correo no se abre solo, copia el mensaje y mándalo a javierfernandez03112007@gmail.com o por mensaje directo a @kiria.ai en Instagram.</p>
         </div>
       </form>
     </div>
@@ -774,15 +773,14 @@ footer a:hover { color: var(--nightfg); }
         <h3>Método de pago</h3>
         <div class="methods" role="radiogroup" aria-label="Método de pago">
           <label class="method on"><input type="radio" name="metodo" value="Tarjeta" checked><b>Tarjeta</b><span>Visa, Mastercard…</span></label>
-          <label class="method"><input type="radio" name="metodo" value="Bizum"><b>Bizum</b><span>Desde tu móvil</span></label>
-          <label class="method"><input type="radio" name="metodo" value="Apple Pay o Google Pay"><b>Apple Pay · Google Pay</b><span>Con el móvil</span></label>
+                    <label class="method"><input type="radio" name="metodo" value="Apple Pay o Google Pay"><b>Apple Pay · Google Pay</b><span>Con el móvil</span></label>
         </div>
         <button class="btn dark pay-btn" type="submit" id="coPay">Pagar 5,99 €</button>
         <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Pago seguro con Stripe: los datos de tu tarjeta los gestiona Stripe y nosotros nunca los vemos.</span></p>
         <div class="co-note" id="coNote" hidden>
           <b>El pago online se está activando</b>
-          <p>Todavía no está conectada la pasarela de pago. Confirma tu pedido por WhatsApp y te enviamos el enlace de pago seguro.</p>
-          <a class="btn dark" id="coWa" href="https://wa.me/34601621977" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+          <p>Todavía no está conectada la pasarela de pago. Envíanos tu pedido por correo o por Instagram y te mandamos el enlace de pago seguro.</p>
+          <div class="lbtns"><a class="btn dark" id="coMailBtn" href="mailto:javierfernandez03112007@gmail.com">Enviar pedido por correo</a><button class="btn ghost" type="button" id="coCopy">Copiar pedido</button><a class="btn ghost" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">Instagram @kiria.ai</a></div>
         </div>
         <a class="btn dark" id="coGo" href="#pago" target="_blank" rel="noopener" hidden>Ir a la página de pago segura</a>
       </form>
@@ -790,7 +788,7 @@ footer a:hover { color: var(--nightfg); }
   </div>
 </section>
 
-<a class="wa-float" href="https://wa.me/34601621977?text=Hola%2C%20me%20interesa%20un%20v%C3%ADdeo%20para%20mi%20marca." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
+<a class="ig-float" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener" aria-label="Escríbenos por Instagram, @kiria.ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>¿Dudas? @kiria.ai</span></a>
 
 <footer>
   <div class="wrap">
@@ -823,7 +821,7 @@ footer a:hover { color: var(--nightfg); }
       <li>NIF: <span class="pending">pendiente</span></li>
       <li>Domicilio: <span class="pending">pendiente</span></li>
       <li>Correo: javierfernandez03112007@gmail.com</li>
-      <li>WhatsApp: +34 601 621 977</li>
+      <li>Instagram: @kiria.ai</li>
       <li>Actividad: producción de vídeos con inteligencia artificial para marcas y empresas, con la marca kiria.ai.</li>
     </ul>
     <h4>2. Uso de la web</h4>
@@ -833,7 +831,7 @@ footer a:hover { color: var(--nightfg); }
     <h4>4. Contratación</h4>
     <p>Cada encargo se confirma por escrito antes de empezar: tipo de vídeo, guion, plazo y precio. Las condiciones de contratación, pago y cancelación se detallarán en ese momento. <span class="pending">Condiciones generales de contratación: pendientes</span></p>
     <h4>5. Responsabilidad</h4>
-    <p>Trabajamos para que la información sea correcta y esté al día, pero no podemos garantizar que la web esté siempre libre de errores o interrupciones. No respondemos de los contenidos de las webs externas a las que enlazamos (WhatsApp, Instagram…), que tienen sus propias condiciones.</p>
+    <p>Trabajamos para que la información sea correcta y esté al día, pero no podemos garantizar que la web esté siempre libre de errores o interrupciones. No respondemos de los contenidos de las webs externas a las que enlazamos (como Instagram), que tienen sus propias condiciones.</p>
     <h4>6. Ley aplicable</h4>
     <p>Este aviso se rige por la ley española. Si eres consumidor, para cualquier conflicto serán competentes los juzgados y tribunales de tu domicilio.</p>
   </div>
@@ -847,7 +845,7 @@ footer a:hover { color: var(--nightfg); }
     <h4>Responsable</h4>
     <p><span class="pending">pendiente: nombre y apellidos o razón social</span>, NIF <span class="pending">pendiente</span>. Contacto: javierfernandez03112007@gmail.com.</p>
     <h4>Qué datos tratamos</h4>
-    <p>Los que nos das al escribirnos por el formulario, WhatsApp, correo o Instagram: nombre, empresa, correo, teléfono y lo que nos cuentes de tu proyecto. Si contratas, también los necesarios para facturar.</p>
+    <p>Los que nos das al escribirnos por correo o por Instagram: nombre, empresa, correo y lo que nos cuentes de tu proyecto. Si contratas, también los necesarios para facturar.</p>
     <h4>Para qué los usamos</h4>
     <ul><li>Responder a tu consulta y enviarte una propuesta o un presupuesto.</li><li>Hacer y entregar los vídeos que encargues, y facturarlos.</li><li>Cumplir nuestras obligaciones legales, por ejemplo las fiscales.</li></ul>
     <p>No tomamos decisiones automatizadas sobre ti ni te enviamos publicidad sin tu permiso.</p>
@@ -856,9 +854,9 @@ footer a:hover { color: var(--nightfg); }
     <h4>Cuánto tiempo los guardamos</h4>
     <p>Mientras dure la conversación o el encargo y, después, solo durante los plazos que marca la ley (por ejemplo, la normativa fiscal y mercantil).</p>
     <h4>Quién más puede verlos</h4>
-    <p>No los cedemos a nadie salvo obligación legal. Nos ayudan proveedores que los tratan por nuestra cuenta: WhatsApp (Meta Platforms Ireland) si nos escribes por ahí y Google (Gmail) para el correo. Proveedor de pagos y alojamiento de la web: <span class="pending">pendiente</span>. Algunos pueden llevar datos fuera del Espacio Económico Europeo, siempre con las garantías del RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
+    <p>No los cedemos a nadie salvo obligación legal. Nos ayudan proveedores que los tratan por nuestra cuenta: Instagram (Meta Platforms Ireland) si nos escribes por ahí y Google (Gmail) para el correo. Proveedor de pagos y alojamiento de la web: <span class="pending">pendiente</span>. Algunos pueden llevar datos fuera del Espacio Económico Europeo, siempre con las garantías del RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
     <h4>El formulario de esta web</h4>
-    <p>No guarda nada en nuestros servidores: prepara tu mensaje y lo abre en WhatsApp o en tu correo, y tú decides si enviarlo.</p>
+    <p>No guarda nada en nuestros servidores: prepara tu mensaje para que lo envíes tú por correo o por Instagram.</p>
     <h4>Tus derechos</h4>
     <p>Puedes pedir el acceso, la rectificación o la supresión de tus datos, oponerte a su uso, limitarlo o pedir su portabilidad escribiendo a javierfernandez03112007@gmail.com. Si crees que no los tratamos bien, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
     <h4>Menores</h4>
@@ -881,7 +879,7 @@ footer a:hover { color: var(--nightfg); }
     <h4>Servicios de terceros</h4>
     <ul>
       <li><b>Google Fonts</b> (Google Ireland): carga las tipografías de la web. No instala cookies, pero tu navegador envía tu dirección IP a Google para descargarlas.</li>
-      <li><b>WhatsApp e Instagram</b> (Meta): solo si pulsas sus enlaces. Al entrar en sus servicios se aplican sus propias políticas de cookies.</li>
+      <li><b>Instagram</b> (Meta): solo si pulsas sus enlaces. Al entrar en sus servicios se aplican sus propias políticas de cookies.</li>
     </ul>
     <h4>Cookies opcionales</h4>
     <p>Si en el futuro añadimos analítica o publicidad, solo se activarán si las aceptas, y aparecerán en esta tabla con su nombre, su titular y su duración.</p>
@@ -1268,10 +1266,8 @@ void main() { float m = 1.0 - smoothstep(0.28, 0.5, length(gl_PointCoord - 0.5))
     if (!d.nombre || !d.email || !d.idea) { [...f.querySelectorAll('[required]')].find(i => !i.value)?.focus(); return; }
     msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa: ${d.formato} · ${d.tipo}${d.dif === 'Sí' ? ' · con difusión en kiria.ai (+2 € por vídeo)' : ''}.\n\n${d.idea}\n\nMi correo: ${d.email}`;
     out.hidden = false;
-    const wa = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg.textContent);
-    document.getElementById('wa').href = wa;
     document.getElementById('mail').href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent('Vídeo para ' + (d.empresa || d.nombre)) + '&body=' + encodeURIComponent(msg.textContent);
-    try { window.open(wa, '_blank', 'noopener'); } catch (err) {}
+    out.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
   });
   document.getElementById('copy').addEventListener('click', () => {
     const b = document.getElementById('copy');
@@ -1380,11 +1376,9 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     cards.forEach(card => {
       const n = +card.dataset.n, d = +card.dataset.d, full = n * T[t].c, extra = dif.checked ? 200 * n : 0, tot = Math.round(full * (100 - d) / 100) + extra;
       count(card.querySelector('[data-amt]'), tot);
-      const old = card.querySelector('s'), per = card.querySelector('[data-per]'), buy = card.querySelector('.buy'), plan = card.querySelector('h3').textContent;
+      const old = card.querySelector('s'), per = card.querySelector('[data-per]');
       if (n > 1) { old.hidden = false; old.textContent = eur(full + extra) + ' €'; per.textContent = eur(Math.round(tot / n)) + ' € por vídeo' + (extra ? ' · con difusión' : ''); }
       else { old.hidden = true; per.textContent = 'Pago único' + (extra ? ' · con difusión' : ''); }
-      const msg = `Hola, quiero el plan «${plan}» (tipo ${T[t].n}, ${T[t].d})${extra ? ', con difusión en kiria.ai' : ''}: ${eur(tot)} €${n > 1 ? ' al mes' : ''}.`;
-      buy.href = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg); buy.target = '_blank'; buy.rel = 'noopener';
       card.querySelector('.pay').onclick = e => { e.preventDefault(); if (window.kiriaGoPay) window.kiriaGoPay(t, KP.findIndex(q => q.n === n), dif.checked); };
     });
   };
@@ -1400,10 +1394,12 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
 (() => {
   const co = document.getElementById('pago'), main = document.getElementById('inicio'); if (!co) return;
   // Enlaces de pago de Stripe, uno por pedido: clave «tipo-vídeos-difusión», p. ej. '1-10-0' = Publicidad, 10 al mes, sin difusión.
-  // Mientras esté vacío, el botón ofrece confirmar el pedido por WhatsApp.
+  // Mientras esté vacío, el botón ofrece enviar el pedido por correo o por Instagram.
   const PAY_LINKS = {};
   const $ = id => document.getElementById(id);
-  const selT = $('coT'), selP = $('coP'), chk = $('coDif'), lines = $('coLines'), btn = $('coPay'), note = $('coNote'), wa = $('coWa'), go = $('coGo'), form = $('coForm');
+  const selT = $('coT'), selP = $('coP'), chk = $('coDif'), lines = $('coLines'), btn = $('coPay'), note = $('coNote'), mailBtn = $('coMailBtn'), go = $('coGo'), form = $('coForm');
+  let pedido = '';
+  $('coCopy').addEventListener('click', () => { const b = $('coCopy'); navigator.clipboard.writeText(pedido).then(() => { b.textContent = 'Copiado'; }).catch(() => { b.textContent = 'No se pudo copiar'; }); });
   KT.forEach((x, i) => selT.add(new Option(`${x.n} (${x.d}) · ${eurK(x.c)} €`, i)));
   KP.forEach((x, i) => selP.add(new Option(x.n > 1 ? `${x.name} (−${x.d} %)` : x.name, i)));
   let st = { t: 0, pi: 0, dif: false };
@@ -1432,7 +1428,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     if (!/^\S+@\S+\.\S+$/.test(mail.value.trim())) { mail.focus(); return; }
     const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t], metodo = (co.querySelector('.method input:checked') || {}).value || 'Tarjeta';
     const msg = `Hola, soy ${name.value.trim()}${emp ? ' de ' + emp : ''}. Quiero pagar el plan «${c.name}» (tipo ${ty.n}, ${ty.d})${st.dif ? ', con difusión en kiria.ai' : ''}: ${eurK(c.tot)} €${c.n > 1 ? ' al mes' : ''}. Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`;
-    wa.href = 'https://wa.me/34601621977?text=' + encodeURIComponent(msg);
+    pedido = msg; mailBtn.href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent('Pedido: ' + c.name + ' (' + ty.n + ')') + '&body=' + encodeURIComponent(msg);
     const url = PAY_LINKS[`${st.t}-${c.n}-${st.dif ? 1 : 0}`];
     if (url) { go.href = url + (url.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(mail.value.trim()); go.hidden = false; try { window.open(go.href, '_blank', 'noopener'); } catch (err) {} }
     else { note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }

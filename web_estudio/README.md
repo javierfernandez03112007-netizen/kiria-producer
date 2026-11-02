@@ -14,13 +14,20 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
 
+## Contacto (v4.2, 2-11-2026, decisión de Javi)
+- **Sin número de teléfono ni WhatsApp en ninguna parte.** Las dudas, por Instagram **@kiria.ai** (https://www.instagram.com/kiria.ai/,
+  la cuenta conectada a Metricool) o por correo (javierfernandez03112007@gmail.com). Botón flotante «¿Dudas? @kiria.ai».
+- El formulario prepara el mensaje para enviarlo por correo (enlace `mailto`), copiarlo o abrir Instagram.
+- Página de pago: **sin Bizum** (solo tarjeta y Apple Pay/Google Pay). Sin pasarela conectada, ofrece enviar el pedido por correo,
+  copiarlo o escribir por Instagram.
+
 ## Página de pago (v4.1, 2-11-2026)
 - Cada plan tiene **«Pagar ahora»**, que abre la página de pago `#pago` (vista dentro de la misma web): resumen del pedido
   (tipo, plan y difusión se pueden cambiar; líneas con el descuento y la difusión; total), datos (nombre, correo, empresa),
-  método (tarjeta, Bizum, Apple Pay/Google Pay) y botón «Pagar X €». **No pide datos de tarjeta**: el cobro irá en la página
+  método (tarjeta o Apple Pay/Google Pay; Bizum quitado por Javi) y botón «Pagar X €». **No pide datos de tarjeta**: el cobro irá en la página
   segura de Stripe. Para activarlo, rellenar `PAY_LINKS` en el script (clave «tipo-vídeos-difusión», p. ej. `'1-10-0'` =
   Publicidad, 10 al mes, sin difusión → enlace de pago de Stripe; se le añade `prefilled_email`). Mientras esté vacío, el botón
-  muestra «El pago online se está activando» y ofrece confirmar el pedido por WhatsApp con todo escrito.
+  muestra «El pago online se está activando» y ofrece enviar el pedido por correo, copiarlo o escribir por Instagram.
 - Sin mención al IVA (Javi, 2-11-2026). Las palabras clave tienen el degradado en movimiento hacia la derecha (4,5 s por vuelta).
 
 ## Novedades de la v4 (2-11-2026, pedido de Javi)
