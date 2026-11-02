@@ -169,3 +169,10 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   recorte plano (no se le ve el perfil), la luz del vídeo y de las fotos tiene que coincidir y no deben verse los pies.
   Pedirle: vídeo en trípode con margen alrededor, panorámica de 360° (o 6–8 fotos solapadas) desde el sitio exacto donde
   estaba, misma luz y hora, y unos segundos del fondo sin él. Primero una prueba de 5 s.
+- Javi propuso añadir **Higgsfield** (2 nov). No hay conector para Claude; tiene API oficial (docs.higgsfield.ai: clave
+  «Key ID» + «Secret», imagen → vídeo con movimientos de cámara como órbita 360° o dron, y otros modelos como Kling o
+  Seedance). Con ella los planos de dron serían 3D de verdad (se le ve el perfil), pero cada plano dura pocos segundos, el
+  modelo se inventa lo que no ve y la boca no sigue la voz → mezclar planos reales hablando + planos de dron generados con
+  la voz por encima (o sincronizar labios después). Para usarla desde aquí: permitir api.higgsfield.ai, cloud.higgsfield.ai
+  y platform.higgsfield.ai en el acceso a red del entorno (hoy están bloqueados) y guardar la clave como variables
+  `HIGGSFIELD_KEY_ID` y `HIGGSFIELD_KEY_SECRET`; vale desde la siguiente sesión. Gasta créditos de Higgsfield por plano.
