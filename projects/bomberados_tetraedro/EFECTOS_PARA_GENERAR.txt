@@ -1,0 +1,25 @@
+EFECTOS QUE FALTAN — «Al fuego le falta una pieza» (solo si ElevenLabs sigue sin conectar en la sesión)
+
+Dónde: elevenlabs.io → Sound Effects. Pega el texto en inglés tal cual, pon la duración indicada, genera y descarga.
+Mándame los 5 archivos con su nombre (mecha, extintor, cadena, rotura, apagar). El resto (fuego, brasas, whoosh,
+burbujas, avión, marca…) los reutilizo de los vídeos anteriores. Yo los recorto para que cada uno acabe justo cuando
+acaba en pantalla.
+
+1. mecha (3 s)
+   Burning fuse fizzing and sizzling with crackling sparks, close-up, no music
+
+2. extintor (3 s)
+   Fire extinguisher dry chemical powder discharge, strong pressurized whoosh and hiss, close-up, no music
+
+3. cadena (4 s)
+   Heavy metal chain links clinking and rattling slowly, with a soft fire crackle, no music
+
+4. rotura (1 s)
+   Metal chain link snapping apart, sharp metallic clank with a short ring, no music
+
+5. apagar (1,5 s)
+   Small flame being snuffed out, soft puff then a fading smoke hiss, no music
+
+Otra opción: guarda la clave nueva de ElevenLabs en la configuración del entorno (menú del entorno en la barra de título
+de la sesión → Editar → Network secrets, o como variable XI_API_KEY). Vale desde la siguiente sesión y entonces los genero
+yo. Nunca pegues la clave en el chat.
