@@ -330,6 +330,11 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .per { font-size: 13.5px; color: var(--muted); }
 .pcard .btn { align-self: stretch; margin-top: 6px; }
 .pcard .rec { align-self: flex-start; }
+.pcard .badge { z-index: 2; }
+.pvid { position: relative; aspect-ratio: 3 / 4; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--night); margin: -6px -4px 2px; }
+.pvid video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
+.pvid .tag2 { position: absolute; left: 8px; bottom: 8px; right: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(10, 12, 16, 0.66); color: #ffffff; padding: 4px 8px; border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; justify-self: start; width: max-content; max-width: calc(100% - 16px); }
+@media (max-width: 560px) { .pvid { aspect-ratio: 4 / 5; } }
 .pcard .amount { margin-top: auto; }
 .wa-link { align-self: center; font-size: 13.5px; color: var(--muted); text-decoration: none; }
 .wa-link:hover { color: var(--ink); }
@@ -337,6 +342,39 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 @media (max-width: 1050px) { .prices { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .prices { grid-template-columns: 1fr; } }
+
+/* webs: navegador con una web que se desplaza sola y se inclina con el scroll */
+.webs { background: radial-gradient(900px 480px at 10% 10%, rgba(157, 107, 255, 0.12), transparent 60%), var(--soft); overflow: hidden; }
+.webs-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; align-items: center; }
+.browser-wrap { perspective: 1400px; display: grid; gap: 14px; justify-items: center; }
+.browser { width: min(560px, 100%); border-radius: 16px; overflow: hidden; background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03); transform: rotateX(var(--rx, 14deg)) rotateY(var(--ry, -10deg)); transform-style: preserve-3d; will-change: transform; }
+.bbar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: #1b2030; border-bottom: 1px solid var(--line); }
+.bbar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4254; }
+.bbar i:nth-child(1) { background: #ff5f57; } .bbar i:nth-child(2) { background: #febc2e; } .bbar i:nth-child(3) { background: #28c840; }
+.bbar .url { margin-left: 10px; flex: 1; background: var(--bg); border-radius: 7px; padding: 5px 10px; font: 500 12px/1 var(--mono); color: var(--muted); }
+.bscreen { height: clamp(300px, 34vw, 420px); overflow: hidden; position: relative; background: var(--bg); }
+.bscreen img { display: block; width: 100%; height: auto; max-width: 100%; animation: bscroll 26s ease-in-out infinite alternate; will-change: transform; }
+@keyframes bscroll { 0%, 6% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + clamp(300px, 34vw, 420px))); } }
+.bcap { text-transform: none; letter-spacing: 0.02em; }
+.wplans { display: grid; gap: 14px; }
+.wcard { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: grid; gap: 14px; min-width: 0; transition: transform .3s var(--ease), border-color .2s; }
+.wcard:hover { transform: translateY(-3px); border-color: var(--line2); }
+.wcard.feat { background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--grad) border-box; border: 1.5px solid transparent; }
+.wcard .rec { justify-self: start; font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; background: var(--grad); padding: 6px 9px; border-radius: 999px; }
+.wtop { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.wtop h3 { font-size: clamp(24px, 2.6vw, 30px); }
+.wprice { display: grid; justify-items: end; gap: 2px; }
+.wprice b { font: 400 clamp(40px, 4vw, 52px)/1 var(--display); letter-spacing: 0.01em; }
+.wprice span { font-size: 13px; color: var(--muted); }
+.wcard p { color: var(--ink2); font-size: 15px; }
+.wcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.wcard li { display: flex; gap: 10px; font-size: 14.5px; color: var(--ink2); }
+.wcard li::before { content: "✓"; color: #6ee7a8; font-weight: 700; flex: none; }
+.wbtns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.wnote { font-size: 14px; color: var(--muted); }
+.wnote a { color: var(--ink); }
+@media (max-width: 900px) { .webs-grid { grid-template-columns: 1fr; } .browser { --rx: 8deg; --ry: 0deg; } }
+@media (prefers-reduced-motion: reduce) { .bscreen img { animation: none; } .browser { transform: none; } }
 
 /* página de pago (#pago) */
 .checkout { padding-block: calc(env(safe-area-inset-top, 0px) + 100px) 96px; min-height: 100vh; background: radial-gradient(900px 520px at 88% 0%, rgba(79, 125, 255, 0.13), transparent 60%), radial-gradient(700px 420px at 0% 100%, rgba(255, 77, 97, 0.09), transparent 60%), var(--bg); }
@@ -452,6 +490,7 @@ footer a:hover { color: var(--nightfg); }
       <a class="l" href="#trabajos">Trabajos</a>
       <a class="l" href="#nosotros">Nosotros</a>
       <a class="l" href="#precios">Precios</a>
+      <a class="l" href="#webs">Webs</a>
       <a class="l" href="#anunciarse">Anunciarse</a>
       <a class="btn dark" href="#contacto">Pedir propuesta</a>
     </nav>
@@ -646,6 +685,37 @@ footer a:hover { color: var(--nightfg); }
     </div>
   </section>
 
+  <section class="band webs" id="webs">
+    <div class="wrap">
+      <div class="head rv"><div><p class="mono">Nuevo · Páginas web</p><h2>Tu web, montada y <span class="key">lista</span></h2></div><p class="sub">También hacemos la página web de tu negocio: diseño, textos, fotos y detalles con IA, todo montado y publicado. Un único pago, todo incluido.</p></div>
+      <div class="webs-grid">
+        <div class="browser-wrap rv" id="browserWrap">
+          <div class="browser" id="browser">
+            <div class="bbar"><i></i><i></i><i></i><span class="url">kiria.ai</span></div>
+            <div class="bscreen"><img src="media/web_demo.jpg" alt="Ejemplo: esta misma web de kiria.ai, de arriba abajo" loading="lazy" id="browserImg"></div>
+          </div>
+          <p class="mono bcap">Ejemplo: esta misma web, hecha por nosotros</p>
+        </div>
+        <div class="wplans">
+          <div class="wcard rv">
+            <div class="wtop"><h3>Web con tus fotos</h3><div class="wprice"><b>250 €</b><span>pago único</span></div></div>
+            <p>Nos mandas las fotos de tu negocio y nosotros hacemos todo lo demás.</p>
+            <ul><li>Diseño a medida, adaptado al móvil</li><li>Textos y descripciones con IA, revisados a mano</li><li>Detalles con IA: fotos retocadas, animaciones o imágenes generadas</li><li>Enlaces a tu Instagram, tu correo o tus reservas</li><li>Montada, publicada y lista para usar</li></ul>
+            <div class="wbtns"><a class="btn dark wpay" href="#pago" data-w="0">Pagar ahora</a><a class="btn ghost" href="#contacto" data-formato="Web con tus fotos (250 €)">Pedir mi web</a></div>
+          </div>
+          <div class="wcard feat rv">
+            <span class="rec">Todo hecho por nosotros</span>
+            <div class="wtop"><h3>Web con fotos nuestras</h3><div class="wprice"><b>350 €</b><span>pago único</span></div></div>
+            <p>Vamos a tu negocio, hacemos las fotos y te entregamos la web terminada.</p>
+            <ul><li>Sesión de fotos en tu negocio (consúltanos la zona)</li><li>Todo lo que incluye la web con tus fotos</li><li>Fotos retocadas para la web y para tus redes</li></ul>
+            <div class="wbtns"><a class="btn dark wpay" href="#pago" data-w="1">Pagar ahora <span class="arr">→</span></a><a class="btn ghost" href="#contacto" data-formato="Web con fotos nuestras (350 €)">Pedir mi web</a></div>
+          </div>
+          <p class="wnote">¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="ads" id="anunciarse">
     <div class="wrap">
       <div class="head rv"><div><p class="mono">Para marcas · Patrocinio</p><h2>Anúnciate en <span class="key">kiria.ai</span></h2></div><p class="sub">Hablamos de carreras, oposiciones y dinero, con datos y en 60 segundos. Encaja con marcas de educación, empleo y finanzas personales.</p></div>
@@ -683,10 +753,10 @@ footer a:hover { color: var(--nightfg); }
       <p class="type-desc" id="typeDesc">Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.</p>
       <label class="addon rv" id="addon"><span class="switch"><input type="checkbox" id="difusion"><i></i></span><span><b>Añadir difusión en kiria.ai · +2 € por vídeo</b><small>Publicamos también tus vídeos en nuestra cuenta como colaboración, identificados como publicidad. Se suma a cualquier plan: 2 € por cada vídeo.</small></span></label>
       <div class="prices" id="prices">
-        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>5,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>23,96 €</s><b data-amt>21,56</b><span class="cur">€/mes</span></div><p class="per" data-per>5,39 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>59,90 €</s><b data-amt>52,71</b><span class="cur">€/mes</span></div><p class="per" data-per>5,27 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>179,70 €</s><b data-amt>152,75</b><span class="cur">€/mes</span></div><p class="per" data-per>5,09 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="1" data-d="0"><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>5,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>23,96 €</s><b data-amt>21,56</b><span class="cur">€/mes</span></div><p class="per" data-per>5,39 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>59,90 €</s><b data-amt>52,71</b><span class="cur">€/mes</span></div><p class="per" data-per>5,27 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><div class="pvid"><video muted loop playsinline preload="none"></video><span class="tag2">Ejemplo</span></div><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>179,70 €</s><b data-amt>152,75</b><span class="cur">€/mes</span></div><p class="per" data-per>5,09 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
       </div>
       <div class="price-notes rv"><span>Precios en euros.</span><span>«Pagar ahora» te lleva a la página de pago.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
     </div>
@@ -704,6 +774,7 @@ footer a:hover { color: var(--nightfg); }
         <details><summary>¿Cuánto cuesta?</summary><p>Desde 5,99 € un vídeo básico de 15 a 30 segundos. Con 4, 10 o 30 vídeos al mes tienes un 10 %, un 12 % o un 15 % de descuento. Todos los precios están en la sección <a href="#precios">Precios</a>.</p></details>
         <details><summary>¿Qué es la difusión en kiria.ai?</summary><p>Por 2 € más por cada vídeo, además de hacértelo, lo publicamos en nuestra cuenta como colaboración con tu marca, identificado como publicidad. Se puede añadir a cualquier plan.</p></details>
         <details><summary>¿Cuánto tarda?</summary><p>El plazo depende del guion y de los cambios que pidas. <span class="pending">Plazo habitual: pendiente</span></p></details>
+        <details><summary>¿También hacéis páginas web?</summary><p>Sí. La web de tu negocio con tus fotos por 250 €, o con fotos que hacemos nosotros por 350 €. Pago único y todo incluido: diseño, textos, detalles con IA y la web publicada. Míralo en <a href="#webs">Webs</a>.</p></details>
         <details><summary>¿Para qué redes sirve?</summary><p>Para Instagram Reels, TikTok y YouTube Shorts: formato vertical 9:16, con subtítulos para verlo sin sonido.</p></details>
       </div>
     </div>
@@ -727,7 +798,7 @@ footer a:hover { color: var(--nightfg); }
         </div>
         <div class="row2">
           <label for="empresa">Empresa (opcional)<input id="empresa" name="empresa" autocomplete="organization"></label>
-          <label for="formato">Plan<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>4 vídeos al mes</option><option>10 vídeos al mes</option><option>Un vídeo al día</option><option>Anunciarme en kiria.ai</option></select></label>
+          <label for="formato">Plan<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>4 vídeos al mes</option><option>10 vídeos al mes</option><option>Un vídeo al día</option><option>Anunciarme en kiria.ai</option><option>Web con tus fotos (250 €)</option><option>Web con fotos nuestras (350 €)</option></select></label>
         </div>
         <div class="row2">
           <label for="tipo">Tipo de vídeo<select id="tipo" name="tipo"><option>Aún no lo sé</option><option>Básico (15–30 s)</option><option>Publicidad (30–45 s)</option><option>Completo (45 s – 1 min)</option><option>Pro (más de 1 min)</option></select></label>
@@ -754,13 +825,16 @@ footer a:hover { color: var(--nightfg); }
         <p class="mono">Tu pedido</p>
         <h2 id="coTitle">Un vídeo</h2>
         <p id="coSub" class="co-sub">Básico · 15–30 s</p>
-        <div class="co-sel">
+        <div class="co-sel" id="coVideo">
           <label for="coT">Tipo de vídeo<select id="coT"></select></label>
           <label for="coP">Plan<select id="coP"></select></label>
         </div>
+        <div class="co-sel" id="coWeb" hidden>
+          <label for="coW">Tipo de web<select id="coW"></select></label>
+        </div>
         <label class="addon" id="coAddon"><span class="switch"><input type="checkbox" id="coDif"><i></i></span><span><b>Difusión en kiria.ai · +2 € por vídeo</b><small>También lo publicamos en nuestra cuenta como colaboración, identificado como publicidad.</small></span></label>
         <ul class="lines" id="coLines"></ul>
-        <ol class="next"><li>Pagas de forma segura.</li><li>Te escribimos para el brief.</li><li>Te enviamos el guion para que lo apruebes.</li><li>Recibes el vídeo listo para publicar.</li></ol>
+        <ol class="next" id="coNext"></ol>
       </div>
       <form class="co-card co-pay" id="coForm" novalidate>
         <p class="mono">Pago</p>
@@ -1355,12 +1429,19 @@ const KT = [
     { n: 'Publicidad', d: '30–45 s', c: 899, t: 'Un anuncio de tu producto o servicio: gancho, problema, solución y llamada a la acción.' },
     { n: 'Completo', d: '45 s – 1 min', c: 1299, t: 'La estructura completa de nuestros reels: imagen imposible, pregunta, datos y la respuesta al final.' },
     { n: 'Pro', d: 'más de 1 min', c: 1599, t: 'Para contarlo a fondo: más escenas, más datos y más 3D.' }];
+const KW = [{ name: 'Web con tus fotos', c: 25000, sub: 'Con las fotos de tu negocio · pago único' }, { name: 'Web con fotos nuestras', c: 35000, sub: 'Hacemos las fotos en tu negocio · pago único' }];
 const KP = [{ n: 1, d: 0, name: 'Un vídeo' }, { n: 4, d: 10, name: '4 vídeos al mes' }, { n: 10, d: 12, name: '10 vídeos al mes' }, { n: 30, d: 15, name: 'Un vídeo al día' }];
 const eurK = c => (c / 100).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true });
 const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Math.round(full * (100 - p.d) / 100), extra = dif ? 200 * p.n : 0; return { n: p.n, d: p.d, name: p.name, full, disc: full - net, extra, tot: net + extra }; };
 (() => {
   const box = document.getElementById('prices'); if (!box) return;
   const T = KT;
+  // ejemplos en vídeo según el tipo elegido (uno distinto en cada caja)
+  const EX = [['bomberados_ia', 'bomberados', 'software', 'civil'], ['bomberados', 'bomberados_ia', 'magisterio', 'industrial'], ['industrial', 'derecho', 'magisterio', 'economia'], ['aeroespacial', 'derecho', 'software', 'civil']];
+  const EXN = { bomberados_ia: 'Bomberados IA', bomberados: 'Bomberados', software: 'Software vs Informática', civil: 'Ingeniería Civil', magisterio: 'Magisterio', industrial: 'Ingeniería Industrial', derecho: 'Derecho por dentro', economia: 'Economía', aeroespacial: 'Ingeniería Aeroespacial' };
+  let pvOn = false;
+  const playV = v => { if (!v.dataset.name) return; const want = `media/${v.dataset.name}.mp4`; if (v.getAttribute('src') !== want) v.setAttribute('src', want); if (!RM) { const pr = v.play(); if (pr) pr.catch(() => {}); } };
+  const setV = (v, name) => { if (!v || v.dataset.name === name) return; v.dataset.name = name; v.poster = `media/${name}.jpg`; v.parentElement.querySelector('.tag2').textContent = 'Ejemplo · ' + EXN[name]; if (pvOn) playV(v); };
   const cards = [...box.querySelectorAll('.pcard')], tabs = [...document.querySelectorAll('#types [role=tab]')], desc = document.getElementById('typeDesc'), dif = document.getElementById('difusion'), addon = document.getElementById('addon');
   const eur = c => (c / 100).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true });
   let t = 0;
@@ -1373,7 +1454,8 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   const render = () => {
     tabs.forEach((b, i) => { b.setAttribute('aria-selected', i === t ? 'true' : 'false'); b.tabIndex = i === t ? 0 : -1; });
     desc.textContent = T[t].t; addon.classList.toggle('on', dif.checked);
-    cards.forEach(card => {
+    cards.forEach((card, ci) => {
+      setV(card.querySelector('.pvid video'), EX[t][ci % EX[t].length]);
       const n = +card.dataset.n, d = +card.dataset.d, full = n * T[t].c, extra = dif.checked ? 200 * n : 0, tot = Math.round(full * (100 - d) / 100) + extra;
       count(card.querySelector('[data-amt]'), tot);
       const old = card.querySelector('s'), per = card.querySelector('[data-per]');
@@ -1388,12 +1470,23 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   });
   dif.addEventListener('change', render);
   render();
+  new IntersectionObserver(es => { pvOn = es[0].isIntersecting; cards.forEach(c => { const v = c.querySelector('.pvid video'); if (pvOn) playV(v); else v.pause(); }); }, { threshold: 0.12 }).observe(box);
+})();
+
+// ---------------------------------------------------------------- webs: «Pagar ahora» y el navegador que se inclina con el scroll
+(() => {
+  document.querySelectorAll('.wpay').forEach(a => a.addEventListener('click', e => { e.preventDefault(); if (window.kiriaGoPayWeb) window.kiriaGoPayWeb(+a.dataset.w); }));
+  const br = document.getElementById('browser'), wrap = document.getElementById('browserWrap'); if (!br || RM) return;
+  let pend = false;
+  const upd = () => { pend = false; const r = wrap.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height))); const k = 1 - Math.min(1, p * 1.6); br.style.setProperty('--rx', (14 * k).toFixed(2) + 'deg'); br.style.setProperty('--ry', (innerWidth > 900 ? -10 * k + 4 * (p - 0.5) : 0).toFixed(2) + 'deg'); };
+  addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(upd); } }, { passive: true }); addEventListener('resize', upd); upd();
 })();
 
 // ---------------------------------------------------------------- página de pago (#pago): resumen del pedido y salto a la pasarela
 (() => {
   const co = document.getElementById('pago'), main = document.getElementById('inicio'); if (!co) return;
-  // Enlaces de pago de Stripe, uno por pedido: clave «tipo-vídeos-difusión», p. ej. '1-10-0' = Publicidad, 10 al mes, sin difusión.
+  // Enlaces de pago de Stripe, uno por pedido: clave «tipo-vídeos-difusión», p. ej. '1-10-0' = Publicidad, 10 al mes, sin difusión;
+  // para las webs, 'web-0' (con tus fotos, 250 €) y 'web-1' (con fotos nuestras, 350 €).
   // Mientras esté vacío, el botón ofrece enviar el pedido por correo o por Instagram.
   const PAY_LINKS = {};
   const $ = id => document.getElementById(id);
@@ -1402,9 +1495,24 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   $('coCopy').addEventListener('click', () => { const b = $('coCopy'); navigator.clipboard.writeText(pedido).then(() => { b.textContent = 'Copiado'; }).catch(() => { b.textContent = 'No se pudo copiar'; }); });
   KT.forEach((x, i) => selT.add(new Option(`${x.n} (${x.d}) · ${eurK(x.c)} €`, i)));
   KP.forEach((x, i) => selP.add(new Option(x.n > 1 ? `${x.name} (−${x.d} %)` : x.name, i)));
-  let st = { t: 0, pi: 0, dif: false };
-  try { const v = JSON.parse(sessionStorage.getItem('kiria_pedido') || 'null'); if (v && KT[v.t] && KP[v.pi]) st = v; } catch (e) {}
+  const selW = $('coW'); KW.forEach((x, i) => selW.add(new Option(`${x.name} · ${eurK(x.c)} €`, i)));
+  selW.addEventListener('change', () => { st.w = +selW.value; render(); });
+  const NEXT = { video: ['Pagas de forma segura.', 'Te escribimos para el brief.', 'Te enviamos el guion para que lo apruebes.', 'Recibes el vídeo listo para publicar.'], web: ['Pagas de forma segura.', 'Te escribimos para conocer tu negocio y recoger tus fotos (o quedar para hacerlas).', 'Te enseñamos el diseño para que lo apruebes.', 'Publicamos tu web, lista para usar.'] };
+  let st = { kind: 'video', t: 0, pi: 0, dif: false, w: 0 };
+  try { const v = JSON.parse(sessionStorage.getItem('kiria_pedido') || 'null'); if (v && KT[v.t] && KP[v.pi]) st = Object.assign(st, v); } catch (e) {}
   const render = () => {
+    const web = st.kind === 'web';
+    $('coVideo').hidden = web; $('coAddon').hidden = web; $('coWeb').hidden = !web;
+    $('coNext').innerHTML = NEXT[web ? 'web' : 'video'].map(x => `<li>${x}</li>`).join('');
+    note.hidden = true; go.hidden = true;
+    try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {}
+    if (web) {
+      const wv = KW[st.w] || KW[0]; selW.value = st.w;
+      $('coTitle').textContent = wv.name; $('coSub').textContent = wv.sub;
+      lines.innerHTML = `<li><span>${wv.name} · todo incluido</span><span>${eurK(wv.c)} €</span></li><li class="total"><span>Total · pago único</span><span>${eurK(wv.c)} €</span></li>`;
+      btn.textContent = `Pagar ${eurK(wv.c)} €`;
+      return;
+    }
     selT.value = st.t; selP.value = st.pi; chk.checked = st.dif; $('coAddon').classList.toggle('on', st.dif);
     const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t], mes = c.n > 1;
     $('coTitle').textContent = c.name; $('coSub').textContent = `${ty.n} · ${ty.d}`;
@@ -1426,10 +1534,11 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     const name = $('coName'), mail = $('coMail'), emp = $('coCompany').value.trim();
     if (!name.value.trim()) { name.focus(); return; }
     if (!/^\S+@\S+\.\S+$/.test(mail.value.trim())) { mail.focus(); return; }
-    const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t], metodo = (co.querySelector('.method input:checked') || {}).value || 'Tarjeta';
-    const msg = `Hola, soy ${name.value.trim()}${emp ? ' de ' + emp : ''}. Quiero pagar el plan «${c.name}» (tipo ${ty.n}, ${ty.d})${st.dif ? ', con difusión en kiria.ai' : ''}: ${eurK(c.tot)} €${c.n > 1 ? ' al mes' : ''}. Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`;
-    pedido = msg; mailBtn.href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent('Pedido: ' + c.name + ' (' + ty.n + ')') + '&body=' + encodeURIComponent(msg);
-    const url = PAY_LINKS[`${st.t}-${c.n}-${st.dif ? 1 : 0}`];
+    const metodo = (co.querySelector('.method input:checked') || {}).value || 'Tarjeta', quien = `Hola, soy ${name.value.trim()}${emp ? ' de ' + emp : ''}.`;
+    let msg, asunto, url;
+    if (st.kind === 'web') { const wv = KW[st.w] || KW[0]; msg = `${quien} Quiero pagar «${wv.name}»: ${eurK(wv.c)} € (pago único). Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + wv.name; url = PAY_LINKS['web-' + st.w]; }
+    else { const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t]; msg = `${quien} Quiero pagar el plan «${c.name}» (tipo ${ty.n}, ${ty.d})${st.dif ? ', con difusión en kiria.ai' : ''}: ${eurK(c.tot)} €${c.n > 1 ? ' al mes' : ''}. Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + c.name + ' (' + ty.n + ')'; url = PAY_LINKS[`${st.t}-${c.n}-${st.dif ? 1 : 0}`]; }
+    pedido = msg; mailBtn.href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(msg);
     if (url) { go.href = url + (url.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(mail.value.trim()); go.hidden = false; try { window.open(go.href, '_blank', 'noopener'); } catch (err) {} }
     else { note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }
   });
@@ -1442,7 +1551,8 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     was = on;
     if (window.kiriaTop) window.kiriaTop();
   };
-  window.kiriaGoPay = (t, pi, dif) => { st = { t, pi: Math.max(0, pi), dif: !!dif }; try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {} if (location.hash === '#pago') route(); else location.hash = 'pago'; };
+  window.kiriaGoPayWeb = w => { st = Object.assign({}, st, { kind: 'web', w }); try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {} if (location.hash === '#pago') route(); else location.hash = 'pago'; };
+  window.kiriaGoPay = (t, pi, dif) => { st = Object.assign({}, st, { kind: 'video', t, pi: Math.max(0, pi), dif: !!dif }); try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {} if (location.hash === '#pago') route(); else location.hash = 'pago'; };
   addEventListener('hashchange', route); route();
 })();
 

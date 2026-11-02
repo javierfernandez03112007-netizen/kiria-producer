@@ -87,7 +87,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   color: degradado rojo → azul); quiere mucho movimiento (cabezas, globo, rueda 3D…); no enseñar idiomas ni datos de público. Sin mención al IVA. Página de pago `#pago` lista: falta crear la cuenta de Stripe y pegar
   los enlaces en `PAY_LINKS` (ver `web_estudio/README.md`); mientras, el pedido se manda por correo o Instagram.
 - **Contacto en la web (2-11-2026)**: NUNCA el teléfono de Javi ni WhatsApp; dudas por Instagram **@kiria.ai** o por correo.
-  Pago sin Bizum (solo tarjeta y Apple Pay/Google Pay). Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
+  Pago sin Bizum (solo tarjeta y Apple Pay/Google Pay).
+- **Webs para empresas (2-11-2026)**: con fotos de la empresa 250 € y con fotos nuestras 350 €, pago único, todo incluido (con IA). Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
 - Publicarla: Cloudflare Pages o Netlify (gratis) + dominio propio (≈ 10–15 €/año); contacto por WhatsApp con mensaje prellenado.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
   Instagram), plazos, precios, opiniones y datos legales (titular, NIF, dirección).
