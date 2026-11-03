@@ -362,10 +362,10 @@ function slInit() {
   SL = {};
   SL.race0 = c('quemaron') - 0.05;                          // arranca el ensayo (acelerado)
   SL.foNew = c('horno') + 0.04;                             // tu salón: flashover (3:30)
-  SL.foOld = Math.max(SL.foNew + 1.2, L[5].end - 0.05);    // el de los abuelos: flashover (29:30) al acabar la frase 6
+  SL.foOld = Math.max(SL.foNew + 1.2, (c('hora2') ?? L[5].end) - 0.25);   // el de los abuelos: flashover (29:30) en «media hora»
   SL.v1 = TFO.new / (SL.foNew - SL.race0);
   SL.v2 = (TFO.old - TFO.new) / (SL.foOld - SL.foNew);
-  SL.bed0 = L[6].start - 0.2;                               // dormitorio
+  SL.bed0 = L[6].start - 0.05;                              // dormitorio («esta noche»)
   SL.close = c('cierra') + 0.02;                            // se cierra la puerta
   SL.split = c('ensayo2') - 0.15;                           // dos dormitorios
   SL.t38 = c('treinta'); SL.t260 = c('doscientos');

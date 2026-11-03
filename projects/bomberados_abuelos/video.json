@@ -1,21 +1,208 @@
 {
  "formato": "salones",
- "voz": {"tempo": 1.0, "count": 0, "count_line": -1, "pause": {"1": 0.22, "2": 0.25, "3": 0.25, "4": 0.12, "5": 0.22, "6": 0.32, "7": 0.25, "8": 0.3, "9": 0.3}, "pause_def": 0.24},
- "cues": {
-  "abuelos": ["abuelos", 1, 1], "media": ["media", 1, 1], "llamas": ["llamas", 1, 1], "tu": ["tú", 1, 1], "cuatro": ["cuatro", 1, 1],
-  "sabes": ["sabes", 1, 2],
-  "algodon": ["algodón", 1, 3], "espuma": ["espuma", 1, 3], "microfibra": ["microfibra", 1, 3], "plastico": ["plástico", 1, 3], "petroleo": ["petróleo", 1, 3],
-  "ensayo": ["ensayo", 1, 4], "quemaron": ["quemaron", 1, 4], "vez": ["vez", 1, 4],
-  "tres": ["tres", 1, 5], "horno": ["horno", 1, 5],
-  "abuelos2": ["abuelos", 1, 6], "aguanto": ["aguantó", 1, 6], "hora2": ["hora", 1, 6],
-  "salvar": ["salvar", 1, 7], "cierra": ["cierra", 1, 7], "cuarto": ["cuarto", 1, 7],
-  "ensayo2": ["ensayo", 1, 8], "cerrada": ["cerrada", 1, 8], "treinta": ["treinta", 1, 8], "grados": ["grados", 1, 8], "abierta": ["abierta", 1, 8], "doscientos": ["doscientos", 1, 8], "sesenta": ["sesenta", 1, 8],
-  "compartir": ["mándaselo", 1, 9], "acierta": ["cierren", 1, 9],
-  "opositas": ["opositas", 1, 10], "marca": ["bomberados", 1, 10], "prueba": ["pruébala", 1, 10]
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "count_line": -1,
+  "pause": {
+   "1": 0.22,
+   "2": 0.25,
+   "3": 0.25,
+   "4": 0.12,
+   "5": 0.22,
+   "6": 0.32,
+   "7": 0.25,
+   "8": 0.3,
+   "9": 0.3
+  },
+  "pause_def": 0.24
  },
- "realce": ["compartir", "marca", "prueba"],
+ "cues": {
+  "abuelos": [
+   "abuelos",
+   1,
+   1
+  ],
+  "media": [
+   "media",
+   1,
+   1
+  ],
+  "llamas": [
+   "llamas",
+   1,
+   1
+  ],
+  "tu": [
+   "tú",
+   1,
+   1
+  ],
+  "cuatro": [
+   "cuatro",
+   1,
+   1
+  ],
+  "sabes": [
+   "sabes",
+   1,
+   2
+  ],
+  "algodon": [
+   "algodón",
+   1,
+   3
+  ],
+  "espuma": [
+   "espuma",
+   1,
+   3
+  ],
+  "microfibra": [
+   "microfibra",
+   1,
+   3
+  ],
+  "plastico": [
+   "plástico",
+   1,
+   3
+  ],
+  "petroleo": [
+   "petróleo",
+   1,
+   3
+  ],
+  "ensayo": [
+   "ensayo",
+   1,
+   4
+  ],
+  "quemaron": [
+   "quemaron",
+   1,
+   4
+  ],
+  "vez": [
+   "vez",
+   1,
+   4
+  ],
+  "tres": [
+   "tres",
+   1,
+   5
+  ],
+  "horno": [
+   "horno",
+   1,
+   5
+  ],
+  "abuelos2": [
+   "abuelos",
+   1,
+   6
+  ],
+  "aguanto": [
+   "aguantó",
+   1,
+   6
+  ],
+  "hora2": [
+   "hora",
+   1,
+   6
+  ],
+  "salvar": [
+   "salvar",
+   1,
+   7
+  ],
+  "cierra": [
+   "cierra",
+   1,
+   7
+  ],
+  "cuarto": [
+   "cuarto",
+   1,
+   7
+  ],
+  "ensayo2": [
+   "ensayo",
+   1,
+   8
+  ],
+  "cerrada": [
+   "cerrada",
+   1,
+   8
+  ],
+  "treinta": [
+   "treinta",
+   1,
+   8
+  ],
+  "grados": [
+   "grados",
+   1,
+   8
+  ],
+  "abierta": [
+   "abierta",
+   1,
+   8
+  ],
+  "doscientos": [
+   "doscientos",
+   1,
+   8
+  ],
+  "sesenta": [
+   "sesenta",
+   1,
+   8
+  ],
+  "compartir": [
+   "mándaselo",
+   1,
+   9
+  ],
+  "acierta": [
+   "cierren",
+   1,
+   9
+  ],
+  "opositas": [
+   "opositas",
+   1,
+   10
+  ],
+  "marca": [
+   "bomberados",
+   1,
+   10
+  ],
+  "prueba": [
+   "pruébala",
+   1,
+   10
+  ]
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
  "compartir_a": "TU FAMILIA",
  "compartir_titulo": "QUE CIERREN LA PUERTA",
- "portada": {"titulo": "TUS ABUELOS TENÍAN MEDIA HORA", "etiqueta": "TÚ, MENOS DE 4 MINUTOS", "t": 2.0},
- "mezcla": {"sfx": 1.0, "ganancia": -1.0}
+ "portada": {
+  "titulo": "TUS ABUELOS TENÍAN MEDIA HORA",
+  "etiqueta": "TÚ, MENOS DE 4 MINUTOS",
+  "t": 17.8
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": -1.0
+ }
 }

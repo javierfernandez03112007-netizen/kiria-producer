@@ -2,675 +2,675 @@
  {
   "text": "Tus abuelos tenían media hora para salir de un salón en llamas. Tú tienes menos de cuatro minutos.",
   "start": 0.0,
-  "end": 5.899,
+  "end": 5.61,
   "words": [
    {
     "w": "Tus",
     "start": 0.0,
-    "end": 0.199
+    "end": 0.32
    },
    {
     "w": "abuelos",
-    "start": 0.199,
-    "end": 0.715
+    "start": 0.32,
+    "end": 0.8
    },
    {
     "w": "tenían",
-    "start": 0.715,
-    "end": 1.072
+    "start": 0.8,
+    "end": 1.12
    },
    {
     "w": "media",
-    "start": 1.072,
-    "end": 1.43
+    "start": 1.12,
+    "end": 1.52
    },
    {
     "w": "hora",
-    "start": 1.43,
-    "end": 1.787
+    "start": 1.52,
+    "end": 1.76
    },
    {
     "w": "para",
-    "start": 1.787,
-    "end": 2.145
+    "start": 1.76,
+    "end": 1.92
    },
    {
     "w": "salir",
-    "start": 2.145,
-    "end": 2.502
+    "start": 1.92,
+    "end": 2.16
    },
    {
     "w": "de",
-    "start": 2.502,
-    "end": 2.701
+    "start": 2.16,
+    "end": 2.32
    },
    {
     "w": "un",
-    "start": 2.701,
-    "end": 2.9
+    "start": 2.32,
+    "end": 2.4
    },
    {
     "w": "salón",
-    "start": 2.9,
-    "end": 3.257
+    "start": 2.4,
+    "end": 2.8
    },
    {
     "w": "en",
-    "start": 3.257,
-    "end": 3.456
+    "start": 2.8,
+    "end": 2.96
    },
    {
     "w": "llamas.",
-    "start": 3.456,
-    "end": 3.813
+    "start": 2.96,
+    "end": 3.57
    },
    {
     "w": "Tú",
-    "start": 3.913,
-    "end": 4.112
+    "start": 3.57,
+    "end": 3.79
    },
    {
     "w": "tienes",
-    "start": 4.112,
-    "end": 4.47
+    "start": 3.79,
+    "end": 4.27
    },
    {
     "w": "menos",
-    "start": 4.47,
-    "end": 4.827
+    "start": 4.27,
+    "end": 4.51
    },
    {
     "w": "de",
-    "start": 4.827,
-    "end": 5.026
+    "start": 4.51,
+    "end": 4.67
    },
    {
     "w": "cuatro",
-    "start": 5.026,
-    "end": 5.383
+    "start": 4.67,
+    "end": 5.07
    },
    {
     "w": "minutos.",
-    "start": 5.383,
-    "end": 5.899
+    "start": 5.07,
+    "end": 5.61
    }
   ]
  },
  {
   "text": "¿Sabes por qué?",
-  "start": 6.139,
-  "end": 6.894,
+  "start": 5.83,
+  "end": 6.5,
   "words": [
    {
     "w": "¿Sabes",
-    "start": 6.139,
-    "end": 6.496
+    "start": 5.83,
+    "end": 6.15
    },
    {
     "w": "por",
-    "start": 6.496,
-    "end": 6.695
+    "start": 6.15,
+    "end": 6.31
    },
    {
     "w": "qué?",
-    "start": 6.695,
-    "end": 6.894
+    "start": 6.31,
+    "end": 6.5
    }
   ]
  },
  {
   "text": "Su sofá era de algodón. El tuyo es de espuma y microfibra: plástico que sale del petróleo.",
-  "start": 7.114,
-  "end": 13.153,
+  "start": 6.75,
+  "end": 11.78,
   "words": [
    {
     "w": "Su",
-    "start": 7.114,
-    "end": 7.313
+    "start": 6.75,
+    "end": 6.912
    },
    {
     "w": "sofá",
-    "start": 7.313,
-    "end": 7.67
+    "start": 6.912,
+    "end": 7.29
    },
    {
     "w": "era",
-    "start": 7.67,
-    "end": 8.028
+    "start": 7.29,
+    "end": 7.45
    },
    {
     "w": "de",
-    "start": 8.028,
-    "end": 8.226
+    "start": 7.45,
+    "end": 7.61
    },
    {
     "w": "algodón.",
-    "start": 8.226,
-    "end": 8.743
+    "start": 7.61,
+    "end": 8.3
    },
    {
     "w": "El",
-    "start": 8.843,
-    "end": 9.041
+    "start": 8.3,
+    "end": 8.39
    },
    {
     "w": "tuyo",
-    "start": 9.041,
-    "end": 9.399
+    "start": 8.39,
+    "end": 8.71
    },
    {
     "w": "es",
-    "start": 9.399,
-    "end": 9.597
+    "start": 8.71,
+    "end": 8.79
    },
    {
     "w": "de",
-    "start": 9.597,
-    "end": 9.796
+    "start": 8.79,
+    "end": 8.95
    },
    {
     "w": "espuma",
-    "start": 9.796,
-    "end": 10.312
+    "start": 8.95,
+    "end": 9.43
    },
    {
     "w": "y",
-    "start": 10.312,
-    "end": 10.511
+    "start": 9.43,
+    "end": 9.51
    },
    {
     "w": "microfibra:",
-    "start": 10.511,
-    "end": 11.186
+    "start": 9.51,
+    "end": 10.27
    },
    {
     "w": "plástico",
-    "start": 11.366,
-    "end": 11.882
+    "start": 10.27,
+    "end": 10.73
    },
    {
     "w": "que",
-    "start": 11.882,
-    "end": 12.081
+    "start": 10.73,
+    "end": 10.89
    },
    {
     "w": "sale",
-    "start": 12.081,
-    "end": 12.438
+    "start": 10.89,
+    "end": 11.13
    },
    {
     "w": "del",
-    "start": 12.438,
-    "end": 12.637
+    "start": 11.13,
+    "end": 11.29
    },
    {
     "w": "petróleo.",
-    "start": 12.637,
-    "end": 13.153
+    "start": 11.29,
+    "end": 11.78
    }
   ]
  },
  {
   "text": "En un ensayo, quemaron los dos salones a la vez.",
-  "start": 13.403,
-  "end": 16.443,
+  "start": 12.03,
+  "end": 14.48,
   "words": [
    {
     "w": "En",
-    "start": 13.403,
-    "end": 13.602
+    "start": 12.03,
+    "end": 12.115
    },
    {
     "w": "un",
-    "start": 13.602,
-    "end": 13.8
+    "start": 12.115,
+    "end": 12.22
    },
    {
     "w": "ensayo,",
-    "start": 13.8,
-    "end": 14.317
+    "start": 12.22,
+    "end": 12.7
    },
    {
     "w": "quemaron",
-    "start": 14.417,
-    "end": 14.933
+    "start": 12.7,
+    "end": 13.26
    },
    {
     "w": "los",
-    "start": 14.933,
-    "end": 15.132
+    "start": 13.26,
+    "end": 13.42
    },
    {
     "w": "dos",
-    "start": 15.132,
-    "end": 15.33
+    "start": 13.42,
+    "end": 13.58
    },
    {
     "w": "salones",
-    "start": 15.33,
-    "end": 15.846
+    "start": 13.58,
+    "end": 14.06
    },
    {
     "w": "a",
-    "start": 15.846,
-    "end": 16.045
+    "start": 14.06,
+    "end": 14.14
    },
    {
     "w": "la",
-    "start": 16.045,
-    "end": 16.244
+    "start": 14.14,
+    "end": 14.3
    },
    {
     "w": "vez.",
-    "start": 16.244,
-    "end": 16.443
+    "start": 14.3,
+    "end": 14.48
    }
   ]
  },
  {
   "text": "A los tres minutos y medio… el tuyo ya era un horno.",
-  "start": 16.693,
-  "end": 20.33,
+  "start": 14.6,
+  "end": 17.61,
   "words": [
    {
     "w": "A",
-    "start": 16.693,
-    "end": 16.892
+    "start": 14.6,
+    "end": 14.69
    },
    {
     "w": "los",
-    "start": 16.892,
-    "end": 17.09
+    "start": 14.69,
+    "end": 14.85
    },
    {
     "w": "tres",
-    "start": 17.09,
-    "end": 17.289
+    "start": 14.85,
+    "end": 15.09
    },
    {
     "w": "minutos",
-    "start": 17.289,
-    "end": 17.805
+    "start": 15.09,
+    "end": 15.49
    },
    {
     "w": "y",
-    "start": 17.805,
-    "end": 18.004
+    "start": 15.49,
+    "end": 15.65
    },
    {
     "w": "medio…",
-    "start": 18.004,
-    "end": 18.362
+    "start": 15.65,
+    "end": 16.21
    },
    {
     "w": "el",
-    "start": 18.662,
-    "end": 18.86
+    "start": 16.21,
+    "end": 16.29
    },
    {
     "w": "tuyo",
-    "start": 18.86,
-    "end": 19.218
+    "start": 16.29,
+    "end": 16.69
    },
    {
     "w": "ya",
-    "start": 19.218,
-    "end": 19.416
+    "start": 16.69,
+    "end": 16.85
    },
    {
     "w": "era",
-    "start": 19.416,
-    "end": 19.774
+    "start": 16.85,
+    "end": 17.09
    },
    {
     "w": "un",
-    "start": 19.774,
-    "end": 19.973
+    "start": 17.09,
+    "end": 17.33
    },
    {
     "w": "horno.",
-    "start": 19.973,
-    "end": 20.33
+    "start": 17.33,
+    "end": 17.61
    }
   ]
  },
  {
   "text": "El de tus abuelos aguantó casi media hora.",
-  "start": 20.45,
-  "end": 23.151,
+  "start": 17.83,
+  "end": 20.12,
   "words": [
    {
     "w": "El",
-    "start": 20.45,
-    "end": 20.649
+    "start": 17.83,
+    "end": 17.898
    },
    {
     "w": "de",
-    "start": 20.649,
-    "end": 20.847
+    "start": 17.898,
+    "end": 17.98
    },
    {
     "w": "tus",
-    "start": 20.847,
-    "end": 21.046
+    "start": 17.98,
+    "end": 18.14
    },
    {
     "w": "abuelos",
-    "start": 21.046,
-    "end": 21.562
+    "start": 18.14,
+    "end": 18.62
    },
    {
     "w": "aguantó",
-    "start": 21.562,
-    "end": 22.079
+    "start": 18.62,
+    "end": 19.18
    },
    {
     "w": "casi",
-    "start": 22.079,
-    "end": 22.436
+    "start": 19.18,
+    "end": 19.5
    },
    {
     "w": "media",
-    "start": 22.436,
-    "end": 22.793
+    "start": 19.5,
+    "end": 19.9
    },
    {
     "w": "hora.",
-    "start": 22.793,
-    "end": 23.151
+    "start": 19.9,
+    "end": 20.12
    }
   ]
  },
  {
   "text": "Lo que te puede salvar esta noche: cierra la puerta de tu cuarto.",
-  "start": 23.371,
-  "end": 27.246,
+  "start": 20.44,
+  "end": 23.69,
   "words": [
    {
     "w": "Lo",
-    "start": 23.371,
-    "end": 23.57
+    "start": 20.44,
+    "end": 20.53
    },
    {
     "w": "que",
-    "start": 23.57,
-    "end": 23.768
+    "start": 20.53,
+    "end": 20.64
    },
    {
     "w": "te",
-    "start": 23.768,
-    "end": 23.967
+    "start": 20.64,
+    "end": 20.8
    },
    {
     "w": "puede",
-    "start": 23.967,
-    "end": 24.325
+    "start": 20.8,
+    "end": 21.12
    },
    {
     "w": "salvar",
-    "start": 24.325,
-    "end": 24.682
+    "start": 21.12,
+    "end": 21.44
    },
    {
     "w": "esta",
-    "start": 24.682,
-    "end": 25.04
+    "start": 21.44,
+    "end": 21.68
    },
    {
     "w": "noche:",
-    "start": 25.04,
-    "end": 25.397
+    "start": 21.68,
+    "end": 22.15
    },
    {
     "w": "cierra",
-    "start": 25.577,
-    "end": 25.934
+    "start": 22.15,
+    "end": 22.65
    },
    {
     "w": "la",
-    "start": 25.934,
-    "end": 26.133
+    "start": 22.65,
+    "end": 22.81
    },
    {
     "w": "puerta",
-    "start": 26.133,
-    "end": 26.491
+    "start": 22.81,
+    "end": 23.13
    },
    {
     "w": "de",
-    "start": 26.491,
-    "end": 26.689
+    "start": 23.13,
+    "end": 23.21
    },
    {
     "w": "tu",
-    "start": 26.689,
-    "end": 26.888
+    "start": 23.21,
+    "end": 23.37
    },
    {
     "w": "cuarto.",
-    "start": 26.888,
-    "end": 27.246
+    "start": 23.37,
+    "end": 23.69
    }
   ]
  },
  {
   "text": "En otro ensayo, con la puerta cerrada, el cuarto no pasó de treinta y ocho grados. Abierta… llegó a doscientos sesenta.",
-  "start": 27.566,
-  "end": 35.196,
+  "start": 23.94,
+  "end": 30.77,
   "words": [
    {
     "w": "En",
-    "start": 27.566,
-    "end": 27.765
+    "start": 23.94,
+    "end": 24.027
    },
    {
     "w": "otro",
-    "start": 27.765,
-    "end": 28.122
+    "start": 24.027,
+    "end": 24.23
    },
    {
     "w": "ensayo,",
-    "start": 28.122,
-    "end": 28.638
+    "start": 24.23,
+    "end": 24.79
    },
    {
     "w": "con",
-    "start": 28.738,
-    "end": 28.937
+    "start": 24.79,
+    "end": 24.95
    },
    {
     "w": "la",
-    "start": 28.937,
-    "end": 29.136
+    "start": 24.95,
+    "end": 25.03
    },
    {
     "w": "puerta",
-    "start": 29.136,
-    "end": 29.493
+    "start": 25.03,
+    "end": 25.35
    },
    {
     "w": "cerrada,",
-    "start": 29.493,
-    "end": 30.009
+    "start": 25.35,
+    "end": 25.98
    },
    {
     "w": "el",
-    "start": 30.109,
-    "end": 30.308
+    "start": 25.98,
+    "end": 26.08
    },
    {
     "w": "cuarto",
-    "start": 30.308,
-    "end": 30.666
+    "start": 26.08,
+    "end": 26.4
    },
    {
     "w": "no",
-    "start": 30.666,
-    "end": 30.864
+    "start": 26.4,
+    "end": 26.56
    },
    {
     "w": "pasó",
-    "start": 30.864,
-    "end": 31.222
+    "start": 26.56,
+    "end": 26.88
    },
    {
     "w": "de",
-    "start": 31.222,
-    "end": 31.421
+    "start": 26.88,
+    "end": 27.04
    },
    {
     "w": "treinta",
-    "start": 31.421,
-    "end": 31.778
+    "start": 27.04,
+    "end": 27.27
    },
    {
     "w": "y",
-    "start": 31.778,
-    "end": 31.977
+    "start": 27.27,
+    "end": 27.386
    },
    {
     "w": "ocho",
-    "start": 31.977,
-    "end": 32.334
+    "start": 27.386,
+    "end": 27.68
    },
    {
     "w": "grados.",
-    "start": 32.334,
-    "end": 32.692
+    "start": 27.68,
+    "end": 28.24
    },
    {
     "w": "Abierta…",
-    "start": 32.792,
-    "end": 33.308
+    "start": 28.24,
+    "end": 29.03
    },
    {
     "w": "llegó",
-    "start": 33.608,
-    "end": 33.965
+    "start": 29.03,
+    "end": 29.41
    },
    {
     "w": "a",
-    "start": 33.965,
-    "end": 34.164
+    "start": 29.41,
+    "end": 29.57
    },
    {
     "w": "doscientos",
-    "start": 34.164,
-    "end": 34.68
+    "start": 29.57,
+    "end": 30.218
    },
    {
     "w": "sesenta.",
-    "start": 34.68,
-    "end": 35.196
+    "start": 30.218,
+    "end": 30.77
    }
   ]
  },
  {
   "text": "¡Mándaselo a tu familia, y que esta noche cierren la puerta!",
-  "start": 35.446,
-  "end": 39.986,
+  "start": 31.07,
+  "end": 34.17,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 35.446,
-    "end": 36.286
+    "start": 31.07,
+    "end": 31.67
    },
    {
     "w": "a",
-    "start": 36.286,
-    "end": 36.526
+    "start": 31.67,
+    "end": 31.75
    },
    {
     "w": "tu",
-    "start": 36.526,
-    "end": 36.766
+    "start": 31.75,
+    "end": 31.91
    },
    {
     "w": "familia,",
-    "start": 36.766,
-    "end": 37.406
+    "start": 31.91,
+    "end": 32.31
    },
    {
     "w": "y",
-    "start": 37.506,
-    "end": 37.746
+    "start": 32.31,
+    "end": 32.47
    },
    {
     "w": "que",
-    "start": 37.746,
-    "end": 37.986
+    "start": 32.47,
+    "end": 32.63
    },
    {
     "w": "esta",
-    "start": 37.986,
-    "end": 38.426
+    "start": 32.63,
+    "end": 32.87
    },
    {
     "w": "noche",
-    "start": 38.426,
-    "end": 38.866
+    "start": 32.87,
+    "end": 33.19
    },
    {
     "w": "cierren",
-    "start": 38.866,
-    "end": 39.306
+    "start": 33.19,
+    "end": 33.75
    },
    {
     "w": "la",
-    "start": 39.306,
-    "end": 39.546
+    "start": 33.75,
+    "end": 33.83
    },
    {
     "w": "puerta!",
-    "start": 39.546,
-    "end": 39.986
+    "start": 33.83,
+    "end": 34.17
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 40.286,
-  "end": 44.806,
+  "start": 34.47,
+  "end": 38.369,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 40.286,
-    "end": 41.126
+    "start": 34.47,
+    "end": 35.03
    },
    {
     "w": "a",
-    "start": 41.126,
-    "end": 41.366
+    "start": 35.03,
+    "end": 35.11
    },
    {
     "w": "bombero?",
-    "start": 41.366,
-    "end": 42.006
+    "start": 35.11,
+    "end": 35.67
    },
    {
     "w": "¡Bomberados!",
-    "start": 42.106,
-    "end": 42.946
+    "start": 35.67,
+    "end": 36.794
    },
    {
     "w": "¡Pruébala",
-    "start": 43.046,
-    "end": 43.686
+    "start": 36.794,
+    "end": 37.174
    },
    {
     "w": "gratis",
-    "start": 43.686,
-    "end": 44.126
+    "start": 37.174,
+    "end": 37.693
    },
    {
     "w": "cinco",
-    "start": 44.126,
-    "end": 44.566
+    "start": 37.693,
+    "end": 37.989
    },
    {
     "w": "días!",
-    "start": 44.566,
-    "end": 44.806
+    "start": 37.989,
+    "end": 38.369
    }
   ]
  }

@@ -621,8 +621,8 @@ def sfx_track_salones(path):
     c = {k: at(v) for k, v in Q["cues"].items()}
     race0 = c["quemaron"] - 0.05
     foNew = c["horno"] + 0.04
-    foOld = max(foNew + 1.2, LINES[5]["end"] - 0.05)
-    bed0 = LINES[6]["start"] - 0.2
+    foOld = max(foNew + 1.2, c.get("hora2", LINES[5]["end"]) - 0.25)
+    bed0 = LINES[6]["start"] - 0.05
     close = c["cierra"] + 0.02
     split = c["ensayo2"] - 0.15
     fuego, brasas, vapor = _load("fuego"), _load("brasas"), _load("vapor")
