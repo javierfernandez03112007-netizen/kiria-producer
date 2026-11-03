@@ -1,19 +1,146 @@
 {
  "formato": "profeia",
  "estilo": "app",
- "voz": {"tempo": 1.0, "count": 0, "count_line": -1, "pause": {"1": 0.15, "2": 0.25, "3": 0.12, "4": 0.25, "5": 0.3, "6": 0.25}, "pause_def": 0.24},
- "cues": {
-  "albacete": ["albacete", 1, 1], "anio": ["2026", 1, 1],
-  "encuentras": ["encuentras", 1, 2], "que": ["qué", 1, 2], "imposible": ["imposible", 1, 2],
-  "facil": ["fácil", 1, 3], "copias": ["copias", 1, 3], "pasas": ["pasas", 1, 3], "profe": ["profe", 1, 3],
-  "segundos": ["segundos", 1, 4], "correcta": ["correcta", 1, 4], "explicacion": ["explicación", 1, 4], "pagina": ["página", 1, 4], "temario": ["temario", 1, 4],
-  "buscando": ["buscando", 1, 5], "pregunta2": ["pregunta", 1, 5], "entiende": ["entiende", 1, 5], "avanzando": ["avanzando", 1, 5],
-  "compartir": ["mándaselo", 1, 6], "acierta": ["oposición", 1, 6],
-  "marca": ["bomberados", 1, 7], "prueba": ["pruébala", 1, 7]
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "count_line": -1,
+  "pause": {
+   "1": 0.15,
+   "2": 0.25,
+   "3": 0.12,
+   "4": 0.25,
+   "5": 0.3,
+   "6": 0.25
+  },
+  "pause_def": 0.24
  },
- "realce": ["compartir", "marca", "prueba"],
+ "cues": {
+  "albacete": [
+   "albacete",
+   1,
+   1
+  ],
+  "anio": [
+   "2026",
+   1,
+   1
+  ],
+  "encuentras": [
+   "encuentras",
+   1,
+   2
+  ],
+  "que": [
+   "qué",
+   1,
+   2
+  ],
+  "imposible": [
+   "imposible",
+   1,
+   2
+  ],
+  "facil": [
+   "fácil",
+   1,
+   3
+  ],
+  "copias": [
+   "copias",
+   1,
+   3
+  ],
+  "pasas": [
+   "pasas",
+   1,
+   3
+  ],
+  "profe": [
+   "profe",
+   1,
+   3
+  ],
+  "segundos": [
+   "segundos",
+   1,
+   4
+  ],
+  "correcta": [
+   "correcta",
+   1,
+   4
+  ],
+  "explicacion": [
+   "explicación",
+   1,
+   4
+  ],
+  "pagina": [
+   "página",
+   1,
+   4
+  ],
+  "temario": [
+   "temario",
+   1,
+   4
+  ],
+  "buscando": [
+   "buscando",
+   1,
+   5
+  ],
+  "pregunta2": [
+   "pregunta",
+   1,
+   5
+  ],
+  "entiende": [
+   "entiende",
+   1,
+   5
+  ],
+  "avanzando": [
+   "avanzando",
+   1,
+   5
+  ],
+  "compartir": [
+   "mándaselo",
+   1,
+   6
+  ],
+  "acierta": [
+   "oposición",
+   1,
+   6
+  ],
+  "marca": [
+   "bomberados",
+   1,
+   7
+  ],
+  "prueba": [
+   "pruébala",
+   1,
+   7
+  ]
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
  "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
  "compartir_titulo": "¿LA HABRÍA ACERTADO?",
- "portada": {"titulo": "¿ESTO QUÉ ES?", "etiqueta": "EXAMEN AYTO. ALBACETE 2026", "t": 4.0},
- "mezcla": {"sfx": 1.0, "ganancia": -0.5}
+ "portada": {
+  "titulo": "¿ESTO QUÉ ES?",
+  "etiqueta": "EXAMEN AYTO. ALBACETE 2026",
+  "t": 6.3
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": -0.5
+ }
 }
