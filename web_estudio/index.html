@@ -397,6 +397,9 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .ms-art::before { content: ""; position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, 0.16); top: -18%; right: -16%; }
 .ms-art::after { content: ""; position: absolute; width: 46%; aspect-ratio: 1; border-radius: 50%; background: rgba(0, 0, 0, 0.1); bottom: -14%; left: -10%; }
 .ms-art svg { width: 38%; height: 38%; position: relative; z-index: 1; stroke-width: 1.4; }
+.ms-art .ph { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity .5s; z-index: 2; }
+.msite.hasimg .ms-art .ph { opacity: 1; }
+.msite.hasimg .ms-art::before, .msite.hasimg .ms-art::after { display: none; }
 .ms-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2cqw; padding: 0 4cqw 4cqw; }
 .ms-cards div { background: var(--m-soft); border-radius: 2cqw; padding: 2.2cqw; font-size: 1.85cqw; font-weight: 600; display: flex; align-items: center; gap: 1.4cqw; min-width: 0; transition: background .45s; }
 .ms-cards svg { width: 2.8cqw; height: 2.8cqw; color: var(--m-acc); flex: none; }
@@ -539,6 +542,17 @@ details p { margin-top: 10px; color: var(--ink2); max-width: 64ch; }
 a.way:hover { border-color: var(--ink); }
 .way .val { color: var(--ink2); font-size: 14.5px; overflow-wrap: anywhere; }
 .way .arr { color: var(--red); font-size: 20px; flex: none; }
+button.way { width: 100%; font: inherit; text-align: left; cursor: pointer; }
+button.way:hover { border-color: var(--ink); }
+.sel { user-select: all; color: var(--ink); overflow-wrap: anywhere; }
+.form-err { color: #ff8a98; font-size: 14px; }
+.thanks { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); width: min(560px, calc(100% - 32px)); z-index: 90; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 18px 18px 18px 20px; border-radius: 18px; background: #101722; border: 1px solid #2c6b4f; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8); color: var(--ink); animation: thanksIn .5s var(--ease); }
+.thanks .ok { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #1f6f4a; color: #d9ffe9; font-weight: 700; }
+.thanks b { display: block; font-size: 17px; margin-bottom: 4px; }
+.thanks p { color: var(--ink2); font-size: 14.5px; }
+.thanks button { background: none; border: 0; color: var(--muted); font-size: 18px; cursor: pointer; line-height: 1; padding: 4px; }
+@keyframes thanksIn { from { opacity: 0; transform: translate(-50%, 16px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.rm .thanks { animation: none; }
 .more { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 40px; padding: 22px 26px; border: 1.5px dashed var(--line2); border-radius: 18px; background: var(--panel); }
 .more p { font-size: 17px; font-weight: 500; max-width: 34em; }
 .ig-float { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: 9px; background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 55%, #962fbf 78%, #4f5bd5 100%); color: #ffffff; font: 700 14.5px/1 var(--body); text-decoration: none; padding: 13px 17px; border-radius: 999px; box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.6); transition: transform .2s var(--ease); }
@@ -927,9 +941,9 @@ footer a:hover { color: var(--nightfg); }
       <div class="rv">
         <p class="mono">Contacto</p>
         <h2 style="margin-top:16px">Cuéntanos tu vídeo</h2>
-        <p style="margin-top:18px;color:var(--ink2);max-width:28em">Rellena el formulario y te dejamos el mensaje listo para enviarlo por correo o por Instagram. Te respondemos con una propuesta de guion y presupuesto.</p>
+        <p style="margin-top:18px;color:var(--ink2);max-width:28em">Rellena el formulario y envíanoslo: te llegará un correo de confirmación y te respondemos con una propuesta de guion y presupuesto, por correo o por Instagram.</p>
         <div class="ways">
-          <a class="way" href="mailto:javierfernandez03112007@gmail.com"><span><b>Correo</b><br><span class="val">javierfernandez03112007@gmail.com</span></span><span class="arr">→</span></a>
+          <button class="way" type="button" id="copyMail"><span><b>Correo</b><br><span class="val">javierfernandez03112007@gmail.com</span></span><span class="arr" id="copyMailTxt">Copiar</span></button>
           <a class="way" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener"><span><b>Instagram</b><br><span class="val">@kiria.ai</span></span><span class="arr">→</span></a>
         </div>
       </div>
@@ -947,12 +961,14 @@ footer a:hover { color: var(--nightfg); }
           <label for="dif">Difusión en kiria.ai (+2 € por vídeo)<select id="dif" name="dif"><option>No</option><option>Sí</option></select></label>
         </div>
         <label for="idea">¿Qué quieres contar?<textarea id="idea" name="idea" placeholder="Tu producto, tu servicio o tu idea, y qué te gustaría que pasara después de ver el vídeo." required></textarea></label>
-        <button class="btn dark" type="submit" style="justify-self:start">Preparar mensaje <span class="arr">→</span></button>
+        <p class="form-err" id="formErr" role="alert" hidden></p>
+        <button class="btn dark" type="submit" id="fSend" style="justify-self:start">Enviar mensaje <span class="arr">→</span></button>
         <div class="out" id="out" hidden>
           <b>Tu mensaje está listo</b>
+          <p style="color:var(--ink2);font-size:14.5px">Desde esta vista previa no podemos enviarlo automáticamente: cópialo y mándanoslo por Instagram o por correo, y te respondemos lo antes posible. En la web publicada se envía solo y te llega un correo de confirmación.</p>
           <pre id="msg"></pre>
-          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn dark" id="mail" href="mailto:javierfernandez03112007@gmail.com">Enviar por correo</a><button class="btn ghost" type="button" id="copy">Copiar mensaje</button><a class="btn ghost" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">Abrir Instagram</a></div>
-          <p class="mono" style="text-transform:none;letter-spacing:0">Si el correo no se abre solo, copia el mensaje y mándalo a javierfernandez03112007@gmail.com o por mensaje directo a @kiria.ai en Instagram.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn dark" id="igSend" href="https://ig.me/m/kiria.ai" target="_blank" rel="noopener">Copiar y abrir Instagram</a><button class="btn ghost" type="button" id="copy">Copiar mensaje</button></div>
+          <p class="mono" style="text-transform:none;letter-spacing:0">Correo: <span class="sel">javierfernandez03112007@gmail.com</span></p>
         </div>
       </form>
     </div>
@@ -995,8 +1011,9 @@ footer a:hover { color: var(--nightfg); }
         <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Pago seguro con Stripe: los datos de tu tarjeta los gestiona Stripe y nosotros nunca los vemos.</span></p>
         <div class="co-note" id="coNote" hidden>
           <b>El pago online se está activando</b>
-          <p>Todavía no está conectada la pasarela de pago. Envíanos tu pedido por correo o por Instagram y te mandamos el enlace de pago seguro.</p>
-          <div class="lbtns"><a class="btn dark" id="coMailBtn" href="mailto:javierfernandez03112007@gmail.com">Enviar pedido por correo</a><button class="btn ghost" type="button" id="coCopy">Copiar pedido</button><a class="btn ghost" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">Instagram @kiria.ai</a></div>
+          <p id="coNoteTxt">Todavía no está conectada la pasarela de pago. Envíanos tu pedido y te mandamos el enlace de pago seguro (te llegará un correo de confirmación).</p>
+          <div class="lbtns"><button class="btn dark" type="button" id="coSend">Enviar pedido</button><a class="btn ghost" id="coIg" href="https://ig.me/m/kiria.ai" target="_blank" rel="noopener">Copiar y abrir Instagram</a><button class="btn ghost" type="button" id="coCopy">Copiar pedido</button></div>
+          <p class="mono" style="text-transform:none;letter-spacing:0">Correo: <span class="sel">javierfernandez03112007@gmail.com</span></p>
         </div>
         <a class="btn dark" id="coGo" href="#pago" target="_blank" rel="noopener" hidden>Ir a la página de pago segura</a>
       </form>
@@ -1070,15 +1087,17 @@ footer a:hover { color: var(--nightfg); }
     <h4>Cuánto tiempo los guardamos</h4>
     <p>Mientras dure la conversación o el encargo y, después, solo durante los plazos que marca la ley (por ejemplo, la normativa fiscal y mercantil).</p>
     <h4>Quién más puede verlos</h4>
-    <p>No los cedemos a nadie salvo obligación legal. Nos ayudan proveedores que los tratan por nuestra cuenta: Instagram (Meta Platforms Ireland) si nos escribes por ahí y Google (Gmail) para el correo. Proveedor de pagos y alojamiento de la web: <span class="pending">pendiente</span>. Algunos pueden llevar datos fuera del Espacio Económico Europeo, siempre con las garantías del RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
+    <p>No los cedemos a nadie salvo obligación legal. Nos ayudan proveedores que los tratan por nuestra cuenta: Instagram (Meta Platforms Ireland) si nos escribes por ahí, Google (Gmail) para el correo y FormSubmit para enviarnos los mensajes del formulario. Proveedor de pagos y alojamiento de la web: <span class="pending">pendiente</span>. Algunos pueden llevar datos fuera del Espacio Económico Europeo, siempre con las garantías del RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
     <h4>El formulario de esta web</h4>
-    <p>No guarda nada en nuestros servidores: prepara tu mensaje para que lo envíes tú por correo o por Instagram.</p>
+    <p>Lo que escribes en el formulario nos llega por correo electrónico a través de FormSubmit (formsubmit.co), un servicio que lo envía a nuestro buzón y te manda a ti un correo de confirmación. No lo usamos para nada más que responderte.</p>
     <h4>Tus derechos</h4>
     <p>Puedes pedir el acceso, la rectificación o la supresión de tus datos, oponerte a su uso, limitarlo o pedir su portabilidad escribiendo a javierfernandez03112007@gmail.com. Si crees que no los tratamos bien, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
     <h4>Menores</h4>
     <p>Esta web no está pensada para menores de 14 años. Para contratar hay que ser mayor de edad.</p>
   </div>
 </dialog>
+
+<div class="thanks" id="thanks" role="status" hidden><span class="ok">✓</span><div><b>¡Mensaje enviado!</b><p>Gracias por escribirnos. Te hemos mandado un correo de confirmación y te responderemos lo antes posible por correo o por Instagram.</p></div><button type="button" id="thanksX" aria-label="Cerrar">✕</button></div>
 
 <dialog class="legal" id="dlg-cookies" aria-labelledby="t-cook">
   <div class="lh"><h2 id="t-cook">Política de cookies</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
@@ -1474,21 +1493,44 @@ void main() { float m = 1.0 - smoothstep(0.28, 0.5, length(gl_PointCoord - 0.5))
 
 // ---------------------------------------------------------------- formulario: en la vista previa prepara el mensaje para copiarlo
 (() => {
-  const f = document.getElementById('f'), out = document.getElementById('out'), msg = document.getElementById('msg'), sel = document.getElementById('formato');
+  const f = document.getElementById('f'), out = document.getElementById('out'), msg = document.getElementById('msg'), sel = document.getElementById('formato'), err = document.getElementById('formErr');
   document.querySelectorAll('[data-formato]').forEach(a => a.addEventListener('click', () => { sel.value = a.dataset.formato; }));
+  const copyTo = (text, btn, ok) => navigator.clipboard.writeText(text).then(() => { if (btn) btn.textContent = ok || 'Copiado'; }).catch(() => { const r = document.createRange(); r.selectNodeContents(msg); const s2 = getSelection(); s2.removeAllRanges(); s2.addRange(r); if (btn) btn.textContent = 'Texto seleccionado: cópialo'; });
   f.addEventListener('submit', e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(f));
-    if (!d.nombre || !d.email || !d.idea) { [...f.querySelectorAll('[required]')].find(i => !i.value)?.focus(); return; }
-    msg.textContent = `Hola, soy ${d.nombre}${d.empresa ? ' de ' + d.empresa : ''}.\nMe interesa: ${d.formato} · ${d.tipo}${d.dif === 'Sí' ? ' · con difusión en kiria.ai (+2 € por vídeo)' : ''}.\n\n${d.idea}\n\nMi correo: ${d.email}`;
+    const bad = !d.nombre?.trim() ? 'nombre' : !/^\S+@\S+\.\S+$/.test((d.email || '').trim()) ? 'email' : !d.idea?.trim() ? 'idea' : '';
+    if (bad) { err.textContent = bad === 'email' ? 'Revisa tu correo: así podremos responderte y mandarte la confirmación.' : 'Falta rellenar este campo.'; err.hidden = false; document.getElementById(bad).focus(); return; }
+    err.hidden = true;
+    msg.textContent = `Hola, soy ${d.nombre.trim()}${d.empresa ? ' de ' + d.empresa.trim() : ''}.\nMe interesa: ${d.formato} · ${d.tipo}${d.dif === 'Sí' ? ' · con difusión en kiria.ai (+2 € por vídeo)' : ''}.\n\n${d.idea.trim()}\n\nMi correo: ${d.email.trim()}`;
+    if (kiriaSend({ subject: 'Mensaje desde la web: ' + (d.empresa || d.nombre).trim(), message: msg.textContent, name: d.nombre.trim(), email: d.email.trim() })) { document.getElementById('fSend').textContent = 'Enviando…'; return; }
     out.hidden = false;
-    document.getElementById('mail').href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent('Vídeo para ' + (d.empresa || d.nombre)) + '&body=' + encodeURIComponent(msg.textContent);
     out.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
   });
-  document.getElementById('copy').addEventListener('click', () => {
-    const b = document.getElementById('copy');
-    navigator.clipboard.writeText(msg.textContent).then(() => { b.textContent = 'Copiado'; }).catch(() => { const r = document.createRange(); r.selectNodeContents(msg); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Texto seleccionado: cópialo'; });
-  });
+  document.getElementById('copy').addEventListener('click', () => copyTo(msg.textContent, document.getElementById('copy')));
+  document.getElementById('igSend').addEventListener('click', () => copyTo(msg.textContent, null));     // copia y deja que el enlace abra Instagram en otra pestaña
+  document.getElementById('copyMail').addEventListener('click', () => navigator.clipboard.writeText(KMAIL).then(() => { document.getElementById('copyMailTxt').textContent = 'Copiado'; }).catch(() => { document.getElementById('copyMailTxt').textContent = 'Selecciónalo y cópialo'; }));
+})();
+// ---------------------------------------------------------------- envío de mensajes y pedidos. En la web publicada se envían con FormSubmit:
+// te llegan a tu correo (la primera vez, FormSubmit te pide activar el formulario con un correo) y al cliente le llega un correo de
+// confirmación; después vuelve a esta web con #gracias. Dentro de la vista previa de Claude (un marco) o abriendo el archivo no se puede
+// enviar a otra web: se enseña el mensaje para copiarlo y mandarlo por Instagram. Nunca se usa mailto (dejaba la página en blanco).
+const KMAIL = 'javierfernandez03112007@gmail.com';
+const KPREVIEW = (() => { try { return window.top !== window.self || location.protocol === 'file:' || /(^|\.)(claude\.ai|claudeusercontent\.com|anthropic\.com)$/.test(location.hostname); } catch (e) { return true; } })();
+const KREPLY = '¡Hola! Hemos recibido tu mensaje en kiria.ai. Gracias por escribirnos: te responderemos lo antes posible por correo o por Instagram (@kiria.ai).';
+function kiriaSend({ subject, message, name, email }) {
+  if (KPREVIEW) return false;
+  const fm = document.createElement('form'); fm.method = 'POST'; fm.action = 'https://formsubmit.co/' + KMAIL; fm.hidden = true;
+  const add = (n, v) => { const i = document.createElement('input'); i.type = 'hidden'; i.name = n; i.value = v; fm.appendChild(i); };
+  add('nombre', name); add('email', email); add('mensaje', message); add('_subject', subject); add('_template', 'table');
+  add('_autoresponse', KREPLY); add('_next', location.origin + location.pathname + '#gracias');
+  document.body.appendChild(fm); fm.submit(); return true;
+}
+(() => {
+  const box = document.getElementById('thanks'); if (!box) return;
+  const show = () => { if (location.hash !== '#gracias') return; box.hidden = false; try { history.replaceState(null, '', location.pathname + location.search + '#contacto'); } catch (e) {} };
+  document.getElementById('thanksX').addEventListener('click', () => { box.hidden = true; });
+  addEventListener('hashchange', show); show();
 })();
 // ---------------------------------------------------------------- franja en movimiento (avanza sola y con el scroll, cada fila hacia un lado)
 (() => {
@@ -1628,16 +1670,17 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     { name: 'La Despensa', kick: 'Tienda de barrio', tag: 'Productos de aquí, elegidos uno a uno.', cta: 'Ver productos', cta2: 'Cómo llegar', nav: ['Productos', 'Novedades', 'Contacto'], cards: ['Novedades', 'Para regalar', 'Recogida en tienda'], ic: 'bolsa', c: ['#fbf8f1', '#23200f', '#b0731a', '#f2e8d2', '#f1cf83', '#a3650f'] },
     { name: 'Reformas Sol', kick: 'Reformas', tag: 'Cocinas, baños y pintura, con presupuesto por escrito.', cta: 'Pedir presupuesto', cta2: 'Ver trabajos', nav: ['Servicios', 'Trabajos', 'Contacto'], cards: ['Cocinas', 'Baños', 'Pintura'], ic: 'llave', c: ['#f6f6f3', '#1d1f22', '#e0662a', '#ebeae5', '#ffb37d', '#c9531c'] }];
   const CIC = ['ok', 'reloj', 'pin'];
+  const PH = ['peluqueria', 'restaurante', 'academia', 'fisioterapia', 'tienda', 'reformas'], PHOK = {};      // fotos en media/sectores/<clave>.jpg
   const site = document.getElementById('mSite'), siteM = document.getElementById('mSiteM'), nameIn = document.getElementById('wName'), url = document.getElementById('wUrl'),
     dev = document.getElementById('browserWrap'), cap = document.getElementById('wCap'), tabs = [...document.querySelectorAll('.wsec [role=tab]')];
   if (site && nameIn) {
     const esc = t => t.replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
     const svg = k => `<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
-    const slug = t => (t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '') || 'tunegocio') + '.es';
+    const slug = t => (t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '') || 'tunegocio') + '.es';
     const CAP0 = cap.textContent;
     let s = 0;
     const html = (d, nm) => `<div class="ms-nav"><b class="ms-logo"><i></i>${nm}</b>${d.nav.map(x => `<span>${x}</span>`).join('')}<em class="ms-cta">${d.cta}</em><span class="ms-burger"><i></i><i></i><i></i></span></div>`
-      + `<div class="ms-hero"><div><p class="ms-kick">${d.kick}</p><p class="ms-title">${nm}</p><p class="ms-tag">${d.tag}</p><div class="ms-btns"><em>${d.cta}</em><b>${d.cta2}</b></div></div><div class="ms-art">${svg(d.ic)}</div></div>`
+      + `<div class="ms-hero"><div><p class="ms-kick">${d.kick}</p><p class="ms-title">${nm}</p><p class="ms-tag">${d.tag}</p><div class="ms-btns"><em>${d.cta}</em><b>${d.cta2}</b></div></div><div class="ms-art">${svg(d.ic)}<span class="ph" style="background-image:url(media/sectores/${PH[s]}.jpg)"></span></div></div>`
       + `<div class="ms-cards">${d.cards.map((x, i) => `<div>${svg(CIC[i])}<span>${x}</span></div>`).join('')}</div>`;
     const draw = (anim) => {
       tabs.forEach((b, i) => { b.setAttribute('aria-selected', i === s ? 'true' : 'false'); b.tabIndex = i === s ? 0 : -1; });
@@ -1647,7 +1690,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
       cap.textContent = CAP0; url.textContent = slug(nameIn.value.trim() || d.name);
       for (const el of [site, siteM]) {
         el.style.cssText = `--m-bg:${d.c[0]};--m-ink:${d.c[1]};--m-acc:${d.c[2]};--m-soft:${d.c[3]};--m-a1:${d.c[4]};--m-a2:${d.c[5]}`;
-        el.innerHTML = html(d, nm);
+        el.innerHTML = html(d, nm); el.classList.toggle('hasimg', !!PHOK[PH[s]]);
         if (anim && !RM && el.animate) el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.7,.2,1)' });
       }
     };
@@ -1657,6 +1700,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     });
     nameIn.addEventListener('input', () => { if (s === 6) { s = 0; } draw(false); });
     draw(false);
+    PH.forEach(k => { const im = new Image(); im.onload = () => { PHOK[k] = true; if (s < 6 && PH[s] === k) draw(false); }; im.src = 'media/sectores/' + k + '.jpg'; });
   }
   // los cuatro pasos: la línea se llena y cada paso se enciende al bajar
   const steps = document.getElementById('wSteps');
@@ -1681,7 +1725,11 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   // Mientras esté vacío, el botón ofrece enviar el pedido por correo o por Instagram.
   const PAY_LINKS = {};
   const $ = id => document.getElementById(id);
-  const selT = $('coT'), selP = $('coP'), chk = $('coDif'), lines = $('coLines'), btn = $('coPay'), note = $('coNote'), mailBtn = $('coMailBtn'), go = $('coGo'), form = $('coForm');
+  const selT = $('coT'), selP = $('coP'), chk = $('coDif'), lines = $('coLines'), btn = $('coPay'), note = $('coNote'), go = $('coGo'), form = $('coForm');
+  let pedidoInfo = null;
+  if (KPREVIEW) { $('coSend').hidden = true; $('coNoteTxt').textContent = 'Todavía no está conectada la pasarela de pago. Copia tu pedido y envíanoslo por Instagram o por correo: te mandamos el enlace de pago seguro.'; }
+  $('coSend').addEventListener('click', () => { if (pedidoInfo && kiriaSend(pedidoInfo)) $('coSend').textContent = 'Enviando…'; });
+  $('coIg').addEventListener('click', () => { navigator.clipboard.writeText(pedido).catch(() => {}); });
   let pedido = '';
   $('coCopy').addEventListener('click', () => { const b = $('coCopy'); navigator.clipboard.writeText(pedido).then(() => { b.textContent = 'Copiado'; }).catch(() => { b.textContent = 'No se pudo copiar'; }); });
   KT.forEach((x, i) => selT.add(new Option(`${x.n} (${x.d}) · ${eurK(x.c)} €`, i)));
@@ -1729,7 +1777,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     let msg, asunto, url;
     if (st.kind === 'web') { const wv = KW[st.w] || KW[0]; msg = `${quien} Quiero pagar «${wv.name}»: ${eurK(wv.c)} € (pago único). Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + wv.name; url = PAY_LINKS['web-' + st.w]; }
     else { const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t]; msg = `${quien} Quiero pagar el plan «${c.name}» (tipo ${ty.n}, ${ty.d})${st.dif ? ', con difusión en kiria.ai' : ''}: ${eurK(c.tot)} €${c.n > 1 ? ' al mes' : ''}. Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + c.name + ' (' + ty.n + ')'; url = PAY_LINKS[`${st.t}-${c.n}-${st.dif ? 1 : 0}`]; }
-    pedido = msg; mailBtn.href = 'mailto:javierfernandez03112007@gmail.com?subject=' + encodeURIComponent(asunto) + '&body=' + encodeURIComponent(msg);
+    pedido = msg; pedidoInfo = { subject: asunto, message: msg, name: name.value.trim(), email: mail.value.trim() };
     if (url) { go.href = url + (url.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(mail.value.trim()); go.hidden = false; try { window.open(go.href, '_blank', 'noopener'); } catch (err) {} }
     else { note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }
   });

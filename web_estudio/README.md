@@ -30,6 +30,25 @@ sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño ante
   @kiria.ai, formulario y correo como texto). Sin plazos ni número de revisiones: aún no están decididos para las webs.
 - Las cajas de Precios llevaron un vídeo de ejemplo según el tipo, pero Javi pidió quitarlo (2-11-2026): van sin vídeo.
 
+## Formulario y pedidos (v5.1, 3-11-2026): sin mailto
+- Javi avisó de que al escribir «se peta la página o sale todo en blanco»: el formulario y la página de pago abrían enlaces `mailto:`,
+  que dentro de la vista previa de Claude dejan el marco en blanco. Ya no hay ningún `mailto` en la web.
+- **Web publicada (dominio propio)**: «Enviar mensaje» y «Enviar pedido» mandan los datos con **FormSubmit** (formsubmit.co, gratis,
+  sin cuenta) a javierfernandez03112007@gmail.com, con `_autoresponse` (al cliente le llega un correo de confirmación) y `_next`
+  (vuelve a la web con `#gracias` y sale el aviso «¡Mensaje enviado!»). **La primera vez FormSubmit manda a ese correo un mensaje
+  para activar el formulario: hay que pulsar «Activate Form».** Después se puede cambiar el correo por el alias que da FormSubmit.
+  Según varias fuentes, la confirmación al cliente solo funciona con el envío normal (con su paso «no soy un robot»), no por AJAX:
+  por eso se usa el envío normal. Probado con una simulación (la sesión no llega a formsubmit.co).
+- **Vista previa (dentro de un marco) o archivo local**: no se puede enviar a otra web; sale «Tu mensaje está listo» con «Copiar y
+  abrir Instagram» (copia el texto y abre `ig.me/m/kiria.ai`) y «Copiar mensaje», y el correo como texto para copiar.
+- Correo mal escrito: aviso en rojo y se queda en el campo. Privacidad y cookies: FormSubmit añadido como proveedor.
+
+## Fotos de los sectores (pendiente, 3-11-2026)
+- Javi pidió fotos «muy estéticas» y sin derechos para cada sector de «Imagina la tuya». El código ya las busca en
+  `media/sectores/<clave>.jpg` (claves: peluqueria, restaurante, academia, fisioterapia, tienda, reformas); si no están, sale el
+  degradado con el icono. La red de la sesión bloquea images.unsplash.com e images.pexels.com: Javi tiene que permitirlos
+  (ajustes del entorno → Network access → Allowed domains). Licencias de Unsplash y Pexels: uso libre, también comercial.
+
 ## Contacto (v4.2, 2-11-2026, decisión de Javi)
 - **Sin número de teléfono ni WhatsApp en ninguna parte.** Las dudas, por Instagram **@kiria.ai** (https://www.instagram.com/kiria.ai/,
   la cuenta conectada a Metricool) o por correo (javierfernandez03112007@gmail.com). Botón flotante «¿Dudas? @kiria.ai».
