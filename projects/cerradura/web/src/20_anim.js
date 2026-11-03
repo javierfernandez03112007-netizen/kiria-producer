@@ -122,6 +122,7 @@ function lockAt(t) {
   ghostSet(g, 1 - side); post.uniforms.xray.value = xrayAt(t);
   M.boltM.opacity = 1 - 0.85 * side; M.boltM.depthWrite = side < 0.5;
   for (const m of S.sideFade) { m.opacity = 1 - 0.9 * side; m.depthWrite = side < 0.5; }
+  S.strike.visible = side < 0.3;       // (el cerradero, entre la cámara y el bombín en la vista lateral)
   S.clipPl.constant = cy;
   for (const c of S.caps) { c.visible = cy < 100; c.position.y = cy - 0.0005; }
   S.floor.d.visible = cy > 100; S.inside.visible = cy > 100;

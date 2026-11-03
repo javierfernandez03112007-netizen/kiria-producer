@@ -987,7 +987,7 @@ function buildLock() {
   ghostE(jb(0.4, 20.8, 1.0, 4.45, 10.4, -0.05, M.jamb), 0.35); ghostE(jb(0.4, 20.8, 1.0, -4.4, 10.4, -0.05, M.jamb), 0.25); ghostE(jb(9.25, 0.4, 1.0, 0.025, 20.6, -0.05, M.jamb), 0.25);
   jb(0.7, 21.5, 0.08, 4.6, 10.75, 0.49, M.jamb); jb(0.7, 21.5, 0.08, -4.55, 10.75, 0.49, M.jamb); jb(9.85, 0.7, 0.08, 0.025, 21.15, 0.49, M.jamb);
   jb(11.35, 30, 1.0, 10.325, 15, -0.05, M.wall); jb(11.4, 30, 1.0, -10.3, 15, -0.05, M.wall); jb(9.25, 9.2, 1.0, 0.025, 25.4, -0.05, M.wall);
-  M.strike.side = THREE.DoubleSide; const strike = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 1.3), M.strike); strike.rotation.y = -Math.PI / 2; strike.position.set(JX - 0.0015, 10.65, 0); JG.add(strike);
+  M.strike.side = THREE.DoubleSide; const strike = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 1.3), M.strike); strike.rotation.y = -Math.PI / 2; strike.position.set(JX - 0.0015, 10.65, 0); JG.add(strike); S.strike = strike;
   // el interior de la casa (luz cálida que se ve por la rendija y al abrir)
   const ins = new THREE.Mesh(new THREE.PlaneGeometry(40, 30), M.inside); ins.position.set(0, 12, -9.5); root.add(ins); S.inside = ins;
   // tapas del corte (planta): puerta (gira con ella), marco y pared
@@ -1217,6 +1217,7 @@ function lockAt(t) {
   ghostSet(g, 1 - side); post.uniforms.xray.value = xrayAt(t);
   M.boltM.opacity = 1 - 0.85 * side; M.boltM.depthWrite = side < 0.5;
   for (const m of S.sideFade) { m.opacity = 1 - 0.9 * side; m.depthWrite = side < 0.5; }
+  S.strike.visible = side < 0.3;       // (el cerradero, entre la cámara y el bombín en la vista lateral)
   S.clipPl.constant = cy;
   for (const c of S.caps) { c.visible = cy < 100; c.position.y = cy - 0.0005; }
   S.floor.d.visible = cy > 100; S.inside.visible = cy > 100;
