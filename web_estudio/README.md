@@ -13,11 +13,12 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   la comparta desde el menú «Compartir».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
-- **Web pública (GitHub Pages, 3-11-2026, elección de Javi): https://javierfernandez03112007-netizen.github.io/kiria-producer/**
-  Se publica con `./web_estudio/publicar.sh`: añade la cabecera de una página normal (charset, viewport, el reset del Artifact,
-  icono, enlace para compartir), copia `media/` y lo sube a la rama `gh-pages` (GitHub la sirve sola; la primera subida activó
-  Pages). Hay que volver a ejecutarlo después de cada cambio en `index.html`. Ahí el formulario y los pedidos se envían solos.
-  Más adelante se puede poner un dominio propio en Ajustes → Pages del repositorio.
+- **Sin publicar (decisión de Javi, 3-11-2026: «no quiero que esté publicada aún, solo aquí para ir supervisando»).** Se
+  supervisa solo en la vista privada (Artifact). Estuvo unos 50 minutos en GitHub Pages
+  (javierfernandez03112007-netizen.github.io/kiria-producer); ahora la rama `gh-pages` está vacía y la dirección da 404. Pages
+  sigue activado en el repositorio: para apagarlo del todo, Ajustes → Pages → «Unpublish site» (o borrar la rama `gh-pages`
+  en GitHub; desde la sesión no se puede, el proxy de git corta los borrados). Cuando Javi diga de publicarla:
+  `./web_estudio/publicar.sh --publicar` (cabecera completa, `media/` y rama `gh-pages`; ahí el formulario se envía solo).
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la

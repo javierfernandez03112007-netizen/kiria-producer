@@ -6,9 +6,16 @@
 # del artifact, icono y enlace para compartir), copia web_estudio/media/ y lo sube todo a la rama gh-pages.
 # GitHub Pages sirve esa rama; en una web normal el formulario y los pedidos se envían solos (FormSubmit).
 #
-# Uso (desde cualquier carpeta del repo):  ./web_estudio/publicar.sh            → construye y sube
-#                                          ./web_estudio/publicar.sh --solo-construir DIR   → solo deja la web en DIR
+# Javi (3-11-2026): «no quiero que esté publicada aún, solo aquí para ir supervisando» → NO publicar hasta que él lo diga;
+# mientras, la web se supervisa en la vista privada (Artifact). Por eso el script no hace nada sin una orden expresa:
+#   ./web_estudio/publicar.sh --publicar                 → construye y sube (solo cuando Javi lo pida)
+#   ./web_estudio/publicar.sh --solo-construir DIR       → solo deja la web en DIR, para probarla en local
 set -euo pipefail
+case "${1:-}" in
+  --publicar|--solo-construir) ;;
+  *) echo "No se publica nada: Javi pidió no publicar la web todavía (se supervisa en la vista privada de claude.ai)."
+     echo "Cuando él lo diga: ./web_estudio/publicar.sh --publicar  ·  para probar en local: --solo-construir DIR"; exit 1 ;;
+esac
 cd "$(git rev-parse --show-toplevel)"
 URL=https://javierfernandez03112007-netizen.github.io/kiria-producer/
 if [ -n "${2:-}" ]; then OUT=$2; else OUT=$(mktemp -d); trap 'rm -rf "$OUT"' EXIT; fi     # la carpeta temporal se borra al acabar

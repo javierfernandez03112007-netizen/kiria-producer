@@ -128,11 +128,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 - **Contacto en la web (2-11-2026)**: NUNCA el teléfono de Javi ni WhatsApp; dudas por Instagram **@kiria.ai** o por correo.
   Pago sin Bizum (solo tarjeta y Apple Pay/Google Pay).
 - **Webs para empresas (2-11-2026)**: con fotos de la empresa 250 € y con fotos nuestras 350 €, pago único, todo incluido (con IA). Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
-- **Publicada (3-11-2026, elección de Javi): https://javierfernandez03112007-netizen.github.io/kiria-producer/** (GitHub Pages,
-  rama `gh-pages`). Tras cada cambio en `web_estudio/index.html`: `./web_estudio/publicar.sh` (y publicar también el Artifact).
-  Ahí el formulario y los pedidos se envían solos con FormSubmit; **el primer mensaje hace que FormSubmit mande a Javi el correo
-  «Activate Form»: hasta que lo pulse no llegan los mensajes.** Más adelante, dominio propio (≈ 10–15 €/año) en Ajustes → Pages.
-  La red de la sesión no llega a github.io ni a formsubmit.co: se comprueba con la ejecución «pages build and deployment» de Actions.
+- **Web SIN publicar (Javi, 3-11-2026): «no quiero que esté publicada aún, solo aquí para ir supervisando».** Se supervisa en
+  el Artifact. Estuvo ~50 min en GitHub Pages; la rama `gh-pages` quedó vacía (la dirección da 404). Publicar solo cuando Javi
+  lo pida: `./web_estudio/publicar.sh --publicar` (sin esa orden el script no hace nada). En la web publicada el formulario se
+  envía solo con FormSubmit; el primer mensaje hace que FormSubmit mande a Javi el correo «Activate Form» (hay que pulsarlo).
+  La sesión no puede borrar ramas remotas (el proxy de git corta `push --delete`).
 - **Productos en 3D (3-11-2026, idea de Javi)**: en «Webs», antes de los planes, el visitante sube la foto de su producto y lo ve en
   caja, bolsa, tarro, botella, lata, taza o foto en 3D, girándolo como el globo (three.js solo en ese apartado). Ver README.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
