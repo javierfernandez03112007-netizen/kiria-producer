@@ -60,3 +60,14 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 | 💡 «Las pruebas más raras para ser bombero» (palear arena, claustrofobia, viga…) | «¿cuál te parece más difícil? comenta el número» | bases de cada convocatoria |
 | 💡 «¿Cuántos opositores hay por plaza en tu ciudad?» (mapa que se enciende) | «¿y en tu ciudad?» → serie con los comentarios | listas oficiales de admitidos y plazas |
 | 💡 «La pregunta que más falla la gente en Bomberados» | reto con datos que solo tiene la app | dato de la marca (CONFIRMAR) |
+
+## Del temario que manda Javi (ver `TEMARIO.md`, con manual y página)
+| Idea | Formato | Dato | Fuente |
+|---|---|---|---|
+| 💡 «¿El gas de tu casa sube o baja?» | 3 / 6 | gas natural 0,62 (sube, rejilla a 180 cm); butano 2,03 y propano 1,54 (bajan, rejilla a 30 cm) | Manual de Bomberos del Ayto. de Madrid, Gas Natural, pág. 2 |
+| 💡 «El gas no huele a nada» | 6 | el olor es THT, un aditivo (0,005 ppm) | ídem |
+| 💡 «Mira la llama de tu cocina» | 6 / 9 | azul = buena combustión; amarilla = CO, tóxico > 50 ppm | ídem |
+| 💡 «Si arde una fuga de gas, los bomberos no la apagan» | 8 | se corta el flujo de gas y el fuego se apaga solo | manual de control de emergencias, pág. 226 |
+| 💡 «El gas natural no es tóxico… pero te puede matar» | 6 | asfixia con O2 < 19,5 % | Manual del Ayto. de Madrid, pág. 2 |
+| 💡 «¿Por qué tu cocina de butano no vale para gas natural?» | 9 | familias de gases, índice de Wobbe (UNE-EN 437) | ídem |
+| 💡 «¿Por qué si se rompe una farola no se apagan todas?» | 9 | farolas en fases alternas | manual de control de emergencias, pág. 226 |

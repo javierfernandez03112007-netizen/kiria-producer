@@ -201,3 +201,10 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Voz de Javi (una toma, 3 nov): el reconocedor oyó «micra» en el archivo entero; aislado oye «microfibra» → corregido a
   mano en asr_original.json. `medir_voz.py`: OK (venta −21,3/−20,4 dB frente a −22,7). Render ≈ 10 min con 4 procesos
   (2.374 fotogramas). El flashover de los abuelos va en «media hora» (cue `hora2`) para que se vea antes del dormitorio.
+
+## Material de temario que manda Javi (desde el 3 nov)
+- Javi manda fotos de páginas de manuales «para próximos vídeos». Se guardan así: datos y resumen con su fuente en
+  `bomberados/TEMARIO.md` (el repositorio es PÚBLICO: nada de fotos ni texto completo de los manuales) y el texto completo
+  en Notion, página «📚 Temario para vídeos — …» dentro del Centro de trabajo (la primera: 40dd785b-2d75-8114-8afa-db06db88fef0).
+- 3 nov: gas natural (Manual de Bomberos del Ayuntamiento de Madrid, pág. 2) y fugas de gas, incendio, deflagración y
+  alumbrado público (manual de control de emergencias, pág. 226). Ideas sacadas de ahí en `TEMARIO.md` e `IDEAS.md`.
