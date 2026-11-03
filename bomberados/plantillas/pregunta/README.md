@@ -85,10 +85,16 @@ las frases de venta a ≈ 5). Con la voz de verdad, `asr.py` + `ajustar_voz.py` 
 
 ## Render con el grupo fijo de máquinas de ayuda (Javi, 3 nov: abrir las necesarias, pero SIEMPRE las mismas)
 - Máquinas: sesiones «Bomberados · render 1/2/3» (etiqueta `bomberados-render`, modelo Sonnet), creadas una vez y
-  reutilizadas en todos los vídeos (ver `bomberados/MEMORIA_BOMBERADOS.md` para sus identificadores).
-- Reparto: N = fotogramas totales; esta máquina hace un trozo con `render.sh` (o capture.mjs --range) y a cada máquina
-  se le manda por `send_message`: «render projects/<p> A B render-bomberados-mX <commit>». Ellas ejecutan
-  `render_trozo.sh projects/<p> A B 4 render-bomberados-mX` (renderiza, codifica `trozos/<p>_A_B.mp4` y lo sube a su rama
-  huérfana) y contestan «hecho».
-- Aquí: `recoger_trozos.sh projects/<p>` → fotogramas en out/frames → `compose.py`. Si un proyecto necesita archivos que no
-  están en el repositorio, `projects/<p>/preparar.sh` los genera (p. ej. fotogramas de una grabación de la app).
+  reutilizadas en todos los vídeos (identificadores en `bomberados/MEMORIA_BOMBERADOS.md`). Cada una sube a su rama
+  `render-bomberados-m1/m2/m3` (un solo commit huérfano que se sobrescribe en cada vídeo: las ramas no crecen).
+- Antes de mandar trabajo: el proyecto tiene que estar subido a master (las máquinas renderizan ESE commit). Lo que no
+  está en el repositorio lo genera `projects/<p>/preparar.sh` (fotogramas de una grabación, `npm install three`…);
+  la fuente Impact la copia o la baja el propio `render_trozo.sh`.
+- Reparto: N = fotogramas totales (60 fps); esta máquina hace un trozo con capture.mjs --range y a cada máquina se le manda
+  por `send_message`: «render projects/<p> A B <commit>». Ellas ejecutan, siempre con la versión de master del script y
+  sin tocar su copia (renderizan en `~/render-wt`):
+  `git fetch -q origin master && bash <(git show origin/master:bomberados/plantillas/pregunta/render_trozo.sh) projects/<p> A B 4 render-bomberados-mX <commit>`
+  y contestan «hecho …».
+- Aquí: `ESPERA=<nº de trozos> REV=<commit> recoger_trozos.sh projects/<p>` (en segundo plano: espera a que estén todos
+  los trozos de ese commit) → fotogramas en out/frames → `compose.py`.
+- Calidad: el trozo (crf 12) vuelve a fotogramas con ≈ 46 dB de PSNR y desvío de color < 0,1 niveles: no se nota el corte.

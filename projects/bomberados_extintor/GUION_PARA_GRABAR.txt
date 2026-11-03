@@ -1,0 +1,44 @@
+«¿QUÉ SIGNIFICA 21A-113B?» — Pregunta del día del miércoles 4 de noviembre (versión cinematográfica)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 30 s). El gancho, en voz baja e intrigante, como quien cuenta un secreto (sin gritar).
+En la respuesta, con aplomo. Lo más fuerte tiene que ser el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!»,
+algo más despacio.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[intrigued, low voice] La ley obliga a tenerlo a menos de quince metros de ti… [mysterious] y casi nadie sabe leerlo.
+[curious] ¿Qué significa «veintiuno A, ciento trece B»?
+[playful] Comenta tu letra antes de ver la respuesta.
+[confident, revealing] Es la A. En el ensayo oficial, apagó una pila de madera de DOS METROS DIEZ: el veintiuno A…
+[impressed] y una bandeja de CIENTO TRECE litros en llamas: el ciento trece B.
+[serious] Cuanto más alto el número, más fuego apaga.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, la cámara no se para nunca: cámara lenta que se acelera y se frena
+(«flujo óptico»), desenfoque de movimiento en los barridos, profundidad de campo y luz de estudio.
+1. «La ley obliga a tenerlo a menos de quince metros de ti… y casi nadie sabe leerlo.»
+   Primer fotograma: un extintor CONGELADO en el aire en plena descarga, con la nube de polvo quieta y las llamas paradas
+   (tiempo detenido). La cámara gira a su alrededor; en «leerlo» se lanza en barrido hasta la etiqueta: 21A-113B.
+2. «¿Qué significa 21A-113B?» — macro sobre la etiqueta; el código se ilumina y salen las cuatro opciones flotando:
+   A · 2,1 m de madera y 113 L en llamas   B · 21 kg de polvo y 113 bar de presión
+   C · Apaga 21 m² y 113 m² de fuego       D · Fabricado en 2021, lote 113B
+3. «Comenta tu letra antes de ver la respuesta.» — cuenta atrás 3, 2, 1 sin voz (tic-tac).
+4. «Es la A. En el ensayo oficial apagó una pila de madera de dos metros diez: el 21A…» — la cámara atraviesa la
+   tarjeta A y entra en el laboratorio: una pila de listones ardiendo, cinta métrica de 2,10 m; el extintor dispara y
+   el polvo barre las llamas a cámara lenta.
+5. «…y una bandeja de 113 litros en llamas: el 113B.» — barrido a una bandeja redonda de líquido ardiendo; «113 L».
+6. «Cuanto más alto el número, más fuego apaga.» — fila de extintores (13A, 21A, 34A…) con fuegos cada vez mayores.
+7. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+8. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS entre brasas.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Datos (ver FUENTES.md): eficacia según la norma UNE-EN 3-7. El número de la A es la longitud, en decímetros, de la
+pila de madera del ensayo que el extintor apaga (21A → 2,1 m). El de la B son los litros de líquido de la bandeja
+(dos tercios de heptano y un tercio de agua: 113B → 113 litros). Código Técnico (DB SI 4, tabla 1.1): en general,
+extintores de eficacia 21A-113B a 15 m de recorrido como máximo, en cada planta, desde todo origen de evacuación.
