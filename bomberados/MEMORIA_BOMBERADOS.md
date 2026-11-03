@@ -208,3 +208,5 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   en Notion, página «📚 Temario para vídeos — …» dentro del Centro de trabajo (la primera: 40dd785b-2d75-8114-8afa-db06db88fef0).
 - 3 nov: gas natural (Manual de Bomberos del Ayuntamiento de Madrid, pág. 2) y fugas de gas, incendio, deflagración y
   alumbrado público (manual de control de emergencias, pág. 226). Ideas sacadas de ahí en `TEMARIO.md` e `IDEAS.md`.
+- 3 nov: grabación de pantalla de la app por dentro (Profe IA / Asistente de Bomberados que responde y cita manual y
+  página) en `bomberados/app/` (ver su README). Confirma la función de la IA con manual y página.
