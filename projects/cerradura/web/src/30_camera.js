@@ -64,6 +64,7 @@ function stageAt(t, st) {
   const c = st.l, d = st.p.distanceTo(c), yaw = Math.atan2(st.p.x - c.x, st.p.z - c.z), k = clamp(d / 5, 0.25, 1.6), hs = inSeg(t, TT.cut3, TT.cut4);
   rigAt(c, yaw, k, hs ? 1.4 : 1.15, 0.6);
   const R = S.rig; R.sun.intensity = 0; R.hemi.intensity = hs ? 0.35 : 0.1;
+  if (hs) { for (const L of [R.a, R.b, R.f]) { L.position.y += 9; L.intensity *= 0.35; } }     // en las casas, sin manchas de luz en los tejados
   scene.fog.density = hs ? 0.028 : 0.016;
   post.uniforms.fade.value = darkAt(t);
 }
