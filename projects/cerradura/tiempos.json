@@ -1,0 +1,883 @@
+[
+ {
+  "text": "Cierras la puerta de un portazo… y una radiografía puede abrirla.",
+  "start": 0.06,
+  "end": 3.81,
+  "words": [
+   {
+    "w": "Cierras",
+    "start": 0.06,
+    "end": 0.62
+   },
+   {
+    "w": "la",
+    "start": 0.62,
+    "end": 0.7
+   },
+   {
+    "w": "puerta",
+    "start": 0.7,
+    "end": 0.94
+   },
+   {
+    "w": "de",
+    "start": 0.94,
+    "end": 1.02
+   },
+   {
+    "w": "un",
+    "start": 1.02,
+    "end": 1.18
+   },
+   {
+    "w": "portazo…",
+    "start": 1.18,
+    "end": 1.9
+   },
+   {
+    "w": "y",
+    "start": 1.9,
+    "end": 1.978
+   },
+   {
+    "w": "una",
+    "start": 1.978,
+    "end": 2.16
+   },
+   {
+    "w": "radiografía",
+    "start": 2.16,
+    "end": 3.09
+   },
+   {
+    "w": "puede",
+    "start": 3.09,
+    "end": 3.36
+   },
+   {
+    "w": "abrirla.",
+    "start": 3.36,
+    "end": 3.81
+   }
+  ]
+ },
+ {
+  "text": "¿Cómo? Vamos dentro de la cerradura. Y al final, cómo evitarlo.",
+  "start": 3.96,
+  "end": 8.09,
+  "words": [
+   {
+    "w": "¿Cómo?",
+    "start": 3.96,
+    "end": 4.59
+   },
+   {
+    "w": "Vamos",
+    "start": 4.59,
+    "end": 4.95
+   },
+   {
+    "w": "dentro",
+    "start": 4.95,
+    "end": 5.27
+   },
+   {
+    "w": "de",
+    "start": 5.27,
+    "end": 5.43
+   },
+   {
+    "w": "la",
+    "start": 5.43,
+    "end": 5.59
+   },
+   {
+    "w": "cerradura.",
+    "start": 5.59,
+    "end": 6.44
+   },
+   {
+    "w": "Y",
+    "start": 6.44,
+    "end": 6.566
+   },
+   {
+    "w": "al",
+    "start": 6.566,
+    "end": 6.72
+   },
+   {
+    "w": "final,",
+    "start": 6.72,
+    "end": 7.27
+   },
+   {
+    "w": "cómo",
+    "start": 7.27,
+    "end": 7.53
+   },
+   {
+    "w": "evitarlo.",
+    "start": 7.53,
+    "end": 8.09
+   }
+  ]
+ },
+ {
+  "text": "Dentro hay un cilindro con una fila de pitones y muelles.",
+  "start": 8.23,
+  "end": 11.24,
+  "words": [
+   {
+    "w": "Dentro",
+    "start": 8.23,
+    "end": 8.65
+   },
+   {
+    "w": "hay",
+    "start": 8.65,
+    "end": 8.81
+   },
+   {
+    "w": "un",
+    "start": 8.81,
+    "end": 8.97
+   },
+   {
+    "w": "cilindro",
+    "start": 8.97,
+    "end": 9.45
+   },
+   {
+    "w": "con",
+    "start": 9.45,
+    "end": 9.53
+   },
+   {
+    "w": "una",
+    "start": 9.53,
+    "end": 9.77
+   },
+   {
+    "w": "fila",
+    "start": 9.77,
+    "end": 10.01
+   },
+   {
+    "w": "de",
+    "start": 10.01,
+    "end": 10.17
+   },
+   {
+    "w": "pitones",
+    "start": 10.17,
+    "end": 10.65
+   },
+   {
+    "w": "y",
+    "start": 10.65,
+    "end": 10.73
+   },
+   {
+    "w": "muelles.",
+    "start": 10.73,
+    "end": 11.24
+   }
+  ]
+ },
+ {
+  "text": "Sin llave, los pitones bloquean el giro.",
+  "start": 11.48,
+  "end": 13.66,
+  "words": [
+   {
+    "w": "Sin",
+    "start": 11.48,
+    "end": 11.63
+   },
+   {
+    "w": "llave,",
+    "start": 11.63,
+    "end": 12.07
+   },
+   {
+    "w": "los",
+    "start": 12.07,
+    "end": 12.2
+   },
+   {
+    "w": "pitones",
+    "start": 12.2,
+    "end": 12.68
+   },
+   {
+    "w": "bloquean",
+    "start": 12.68,
+    "end": 13.24
+   },
+   {
+    "w": "el",
+    "start": 13.24,
+    "end": 13.4
+   },
+   {
+    "w": "giro.",
+    "start": 13.4,
+    "end": 13.66
+   }
+  ]
+ },
+ {
+  "text": "Cada diente de la llave sube su pitón a la altura justa… y todos se alinean.",
+  "start": 14.01,
+  "end": 18.22,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 14.01,
+    "end": 14.14
+   },
+   {
+    "w": "diente",
+    "start": 14.14,
+    "end": 14.46
+   },
+   {
+    "w": "de",
+    "start": 14.46,
+    "end": 14.54
+   },
+   {
+    "w": "la",
+    "start": 14.54,
+    "end": 14.7
+   },
+   {
+    "w": "llave",
+    "start": 14.7,
+    "end": 15.02
+   },
+   {
+    "w": "sube",
+    "start": 15.02,
+    "end": 15.42
+   },
+   {
+    "w": "su",
+    "start": 15.42,
+    "end": 15.5
+   },
+   {
+    "w": "pitón",
+    "start": 15.5,
+    "end": 15.9
+   },
+   {
+    "w": "a",
+    "start": 15.9,
+    "end": 15.98
+   },
+   {
+    "w": "la",
+    "start": 15.98,
+    "end": 16.14
+   },
+   {
+    "w": "altura",
+    "start": 16.14,
+    "end": 16.54
+   },
+   {
+    "w": "justa…",
+    "start": 16.54,
+    "end": 17.04
+   },
+   {
+    "w": "y",
+    "start": 17.04,
+    "end": 17.12
+   },
+   {
+    "w": "todos",
+    "start": 17.12,
+    "end": 17.44
+   },
+   {
+    "w": "se",
+    "start": 17.44,
+    "end": 17.68
+   },
+   {
+    "w": "alinean.",
+    "start": 17.68,
+    "end": 18.22
+   }
+  ]
+ },
+ {
+  "text": "Entonces el cilindro gira y empuja el cerrojo: una barra recta de acero.",
+  "start": 18.5,
+  "end": 22.85,
+  "words": [
+   {
+    "w": "Entonces",
+    "start": 18.5,
+    "end": 18.9
+   },
+   {
+    "w": "el",
+    "start": 18.9,
+    "end": 19.06
+   },
+   {
+    "w": "cilindro",
+    "start": 19.06,
+    "end": 19.62
+   },
+   {
+    "w": "gira",
+    "start": 19.62,
+    "end": 19.94
+   },
+   {
+    "w": "y",
+    "start": 19.94,
+    "end": 20.1
+   },
+   {
+    "w": "empuja",
+    "start": 20.1,
+    "end": 20.66
+   },
+   {
+    "w": "el",
+    "start": 20.66,
+    "end": 20.74
+   },
+   {
+    "w": "cerrojo:",
+    "start": 20.74,
+    "end": 21.46
+   },
+   {
+    "w": "una",
+    "start": 21.46,
+    "end": 21.63
+   },
+   {
+    "w": "barra",
+    "start": 21.63,
+    "end": 21.95
+   },
+   {
+    "w": "recta",
+    "start": 21.95,
+    "end": 22.35
+   },
+   {
+    "w": "de",
+    "start": 22.35,
+    "end": 22.43
+   },
+   {
+    "w": "acero.",
+    "start": 22.43,
+    "end": 22.85
+   }
+  ]
+ },
+ {
+  "text": "Pero hay otra pieza: el resbalón, el que cierra solo con el portazo.",
+  "start": 23.13,
+  "end": 27.14,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 23.13,
+    "end": 23.26
+   },
+   {
+    "w": "hay",
+    "start": 23.26,
+    "end": 23.5
+   },
+   {
+    "w": "otra",
+    "start": 23.5,
+    "end": 23.82
+   },
+   {
+    "w": "pieza:",
+    "start": 23.82,
+    "end": 24.47
+   },
+   {
+    "w": "el",
+    "start": 24.47,
+    "end": 24.55
+   },
+   {
+    "w": "resbalón,",
+    "start": 24.55,
+    "end": 25.45
+   },
+   {
+    "w": "el",
+    "start": 25.45,
+    "end": 25.52
+   },
+   {
+    "w": "que",
+    "start": 25.52,
+    "end": 25.68
+   },
+   {
+    "w": "cierra",
+    "start": 25.68,
+    "end": 26.16
+   },
+   {
+    "w": "solo",
+    "start": 26.16,
+    "end": 26.4
+   },
+   {
+    "w": "con",
+    "start": 26.4,
+    "end": 26.48
+   },
+   {
+    "w": "el",
+    "start": 26.48,
+    "end": 26.64
+   },
+   {
+    "w": "portazo.",
+    "start": 26.64,
+    "end": 27.14
+   }
+  ]
+ },
+ {
+  "text": "Tiene una cara inclinada… y ese es su punto débil.",
+  "start": 27.41,
+  "end": 30.42,
+  "words": [
+   {
+    "w": "Tiene",
+    "start": 27.41,
+    "end": 27.62
+   },
+   {
+    "w": "una",
+    "start": 27.62,
+    "end": 27.86
+   },
+   {
+    "w": "cara",
+    "start": 27.86,
+    "end": 28.18
+   },
+   {
+    "w": "inclinada…",
+    "start": 28.18,
+    "end": 28.84
+   },
+   {
+    "w": "y",
+    "start": 28.84,
+    "end": 29.0
+   },
+   {
+    "w": "ese",
+    "start": 29.0,
+    "end": 29.32
+   },
+   {
+    "w": "es",
+    "start": 29.32,
+    "end": 29.48
+   },
+   {
+    "w": "su",
+    "start": 29.48,
+    "end": 29.72
+   },
+   {
+    "w": "punto",
+    "start": 29.72,
+    "end": 30.04
+   },
+   {
+    "w": "débil.",
+    "start": 30.04,
+    "end": 30.42
+   }
+  ]
+ },
+ {
+  "text": "Una lámina flexible, como una radiografía, entra por la rendija, empuja esa cara… y el resbalón se mete.",
+  "start": 30.51,
+  "end": 36.86,
+  "words": [
+   {
+    "w": "Una",
+    "start": 30.51,
+    "end": 30.66
+   },
+   {
+    "w": "lámina",
+    "start": 30.66,
+    "end": 31.14
+   },
+   {
+    "w": "flexible,",
+    "start": 31.14,
+    "end": 31.83
+   },
+   {
+    "w": "como",
+    "start": 31.83,
+    "end": 32.02
+   },
+   {
+    "w": "una",
+    "start": 32.02,
+    "end": 32.18
+   },
+   {
+    "w": "radiografía,",
+    "start": 32.18,
+    "end": 33.11
+   },
+   {
+    "w": "entra",
+    "start": 33.11,
+    "end": 33.39
+   },
+   {
+    "w": "por",
+    "start": 33.39,
+    "end": 33.55
+   },
+   {
+    "w": "la",
+    "start": 33.55,
+    "end": 33.71
+   },
+   {
+    "w": "rendija,",
+    "start": 33.71,
+    "end": 34.45
+   },
+   {
+    "w": "empuja",
+    "start": 34.45,
+    "end": 35.0
+   },
+   {
+    "w": "esa",
+    "start": 35.0,
+    "end": 35.32
+   },
+   {
+    "w": "cara…",
+    "start": 35.32,
+    "end": 35.61
+   },
+   {
+    "w": "y",
+    "start": 35.61,
+    "end": 35.763
+   },
+   {
+    "w": "el",
+    "start": 35.763,
+    "end": 35.916
+   },
+   {
+    "w": "resbalón",
+    "start": 35.916,
+    "end": 36.46
+   },
+   {
+    "w": "se",
+    "start": 36.46,
+    "end": 36.62
+   },
+   {
+    "w": "mete.",
+    "start": 36.62,
+    "end": 36.86
+   }
+  ]
+ },
+ {
+  "text": "Y ojo: en España se denuncian más de 200 robos en casas cada día.",
+  "start": 37.0,
+  "end": 41.34,
+  "words": [
+   {
+    "w": "Y",
+    "start": 37.0,
+    "end": 37.228
+   },
+   {
+    "w": "ojo:",
+    "start": 37.228,
+    "end": 37.61
+   },
+   {
+    "w": "en",
+    "start": 37.61,
+    "end": 37.71
+   },
+   {
+    "w": "España",
+    "start": 37.71,
+    "end": 38.11
+   },
+   {
+    "w": "se",
+    "start": 38.11,
+    "end": 38.27
+   },
+   {
+    "w": "denuncian",
+    "start": 38.27,
+    "end": 38.91
+   },
+   {
+    "w": "más",
+    "start": 38.91,
+    "end": 39.07
+   },
+   {
+    "w": "de",
+    "start": 39.07,
+    "end": 39.15
+   },
+   {
+    "w": "200",
+    "start": 39.15,
+    "end": 39.79
+   },
+   {
+    "w": "robos",
+    "start": 39.79,
+    "end": 40.27
+   },
+   {
+    "w": "en",
+    "start": 40.27,
+    "end": 40.43
+   },
+   {
+    "w": "casas",
+    "start": 40.43,
+    "end": 40.83
+   },
+   {
+    "w": "cada",
+    "start": 40.83,
+    "end": 41.07
+   },
+   {
+    "w": "día.",
+    "start": 41.07,
+    "end": 41.34
+   }
+  ]
+ },
+ {
+  "text": "El cerrojo, en cambio, es recto: ninguna lámina lo mueve.",
+  "start": 41.52,
+  "end": 44.94,
+  "words": [
+   {
+    "w": "El",
+    "start": 41.52,
+    "end": 41.68
+   },
+   {
+    "w": "cerrojo,",
+    "start": 41.68,
+    "end": 42.23
+   },
+   {
+    "w": "en",
+    "start": 42.23,
+    "end": 42.31
+   },
+   {
+    "w": "cambio,",
+    "start": 42.31,
+    "end": 42.84
+   },
+   {
+    "w": "es",
+    "start": 42.84,
+    "end": 43.03
+   },
+   {
+    "w": "recto:",
+    "start": 43.03,
+    "end": 43.6
+   },
+   {
+    "w": "ninguna",
+    "start": 43.6,
+    "end": 44.0
+   },
+   {
+    "w": "lámina",
+    "start": 44.0,
+    "end": 44.48
+   },
+   {
+    "w": "lo",
+    "start": 44.48,
+    "end": 44.64
+   },
+   {
+    "w": "mueve.",
+    "start": 44.64,
+    "end": 44.94
+   }
+  ]
+ },
+ {
+  "text": "Así que echa siempre la llave, aunque salgas un minuto.",
+  "start": 45.13,
+  "end": 48.19,
+  "words": [
+   {
+    "w": "Así",
+    "start": 45.13,
+    "end": 45.34
+   },
+   {
+    "w": "que",
+    "start": 45.34,
+    "end": 45.75
+   },
+   {
+    "w": "echa",
+    "start": 45.75,
+    "end": 46.14
+   },
+   {
+    "w": "siempre",
+    "start": 46.14,
+    "end": 46.54
+   },
+   {
+    "w": "la",
+    "start": 46.54,
+    "end": 46.62
+   },
+   {
+    "w": "llave,",
+    "start": 46.62,
+    "end": 47.05
+   },
+   {
+    "w": "aunque",
+    "start": 47.05,
+    "end": 47.27
+   },
+   {
+    "w": "salgas",
+    "start": 47.27,
+    "end": 47.75
+   },
+   {
+    "w": "un",
+    "start": 47.75,
+    "end": 47.91
+   },
+   {
+    "w": "minuto.",
+    "start": 47.91,
+    "end": 48.19
+   }
+  ]
+ },
+ {
+  "text": "¿Tú das el portazo o echas la llave? Mándaselo a quien nunca la echa.",
+  "start": 48.42,
+  "end": 52.425,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 48.42,
+    "end": 48.51
+   },
+   {
+    "w": "das",
+    "start": 48.51,
+    "end": 48.75
+   },
+   {
+    "w": "el",
+    "start": 48.75,
+    "end": 48.91
+   },
+   {
+    "w": "portazo",
+    "start": 48.91,
+    "end": 49.55
+   },
+   {
+    "w": "o",
+    "start": 49.55,
+    "end": 49.63
+   },
+   {
+    "w": "echas",
+    "start": 49.63,
+    "end": 50.03
+   },
+   {
+    "w": "la",
+    "start": 50.03,
+    "end": 50.19
+   },
+   {
+    "w": "llave?",
+    "start": 50.19,
+    "end": 50.747
+   },
+   {
+    "w": "Mándaselo",
+    "start": 50.747,
+    "end": 51.385
+   },
+   {
+    "w": "a",
+    "start": 51.385,
+    "end": 51.464
+   },
+   {
+    "w": "quien",
+    "start": 51.464,
+    "end": 51.699
+   },
+   {
+    "w": "nunca",
+    "start": 51.699,
+    "end": 51.935
+   },
+   {
+    "w": "la",
+    "start": 51.935,
+    "end": 52.17
+   },
+   {
+    "w": "echa.",
+    "start": 52.17,
+    "end": 52.425
+   }
+  ]
+ }
+]
