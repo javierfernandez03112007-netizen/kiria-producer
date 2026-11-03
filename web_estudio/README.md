@@ -58,14 +58,14 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   Ventanas con **Aviso legal** (LSSI-CE art. 10), **Política de privacidad** (RGPD y LOPDGDD) y **Política de cookies**
   (LSSI-CE art. 22.2), con los datos del titular marcados «pendiente». Enlaces directos: `#aviso-legal`, `#privacidad`, `#cookies`.
 
-### Tabla de precios (2-11-2026: +1 € a cada tipo; redondeo al céntimo, mitad hacia arriba)
+### Tabla de precios (3-11-2026: otro +1 € a cada tipo, pedido de Javi; antes 5,99 / 8,99 / 12,99 / 15,99; redondeo al céntimo, mitad hacia arriba)
 | Tipo | Duración | 1 vídeo | 4/mes (−10 %) | 10/mes (−12 %) | 30/mes, uno al día (−15 %) |
 |---|---|---|---|---|---|
-| Básico | 15–30 s | 5,99 € | 21,56 € (antes 23,96) | 52,71 € (antes 59,90) | 152,75 € (antes 179,70) |
-| Publicidad | 30–45 s | 8,99 € | 32,36 € (35,96) | 79,11 € (89,90) | 229,25 € (269,70) |
-| Completo | 45 s – 1 min | 12,99 € | 46,76 € (51,96) | 114,31 € (129,90) | 331,25 € (389,70) |
-| Pro | más de 1 min | 15,99 € | 57,56 € (63,96) | 140,71 € (159,90) | 407,75 € (479,70) |
-**Difusión en kiria.ai: +2 € por cada vídeo** (sin descuento), en cualquier plan; p. ej. 10 de Publicidad con difusión = 99,11 €.
+| Básico | 15–30 s | 6,99 € | 25,16 € (antes 27,96) | 61,51 € (antes 69,90) | 178,25 € (antes 209,70) |
+| Publicidad | 30–45 s | 9,99 € | 35,96 € (39,96) | 87,91 € (99,90) | 254,75 € (299,70) |
+| Completo | 45 s – 1 min | 13,99 € | 50,36 € (55,96) | 123,11 € (139,90) | 356,75 € (419,70) |
+| Pro | más de 1 min | 16,99 € | 61,16 € (67,96) | 149,51 € (169,90) | 433,25 € (509,70) |
+**Difusión en kiria.ai: +2 € por cada vídeo** (sin descuento), en cualquier plan; p. ej. 10 de Publicidad con difusión = 107,91 €.
 Javi escribió «publicidad 30-35 seg» y luego el precio «30-45»: se puso 30–45 s.
 Pendiente: qué incluye cada tipo, enlaces de pago de Stripe y condiciones de contratación. (El IVA no se menciona, por decisión de Javi.)
 
