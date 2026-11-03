@@ -116,7 +116,8 @@ Sin movimiento (`prefers-reduced-motion`) las cabezas salen quietas y el titular
 
 ## Pendiente (en la página sale como recuadro discontinuo «pendiente»)
 - Nombre comercial y dominio; textos legales (titular, NIF, dirección: aviso legal, privacidad y cookies).
-- Plazo habitual de entrega y rondas de cambios; **precios** de los 3 planes; tarifas de patrocinio.
+- Rondas de cambios; tarifas de patrocinio. (Plazo de entrega ya puesto: **entre 12 y 72 h desde la compra efectiva**, Javi 3-11-2026,
+  en el paso «Entrega» de Cómo trabajamos y en la pregunta «¿Cuánto tarda?».)
 - Media kit: seguidores, edad y país del público, alcance medio por vídeo (capturas de Instagram).
 - Otros idiomas (¿voz en inglés o portugués?).
 - Opiniones de clientes con permiso; logos y permiso de cada marca.
