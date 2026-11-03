@@ -703,7 +703,78 @@ def sfx_track_salones(path):
         wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
+# ---------------------------------------------------------------- formato «profeia» (profeia.js): anuncio de Profe IA
+# Efectos de ElevenLabs ya generados para otros vídeos (copiados en assets/sfx). Misma línea de tiempo que PI en profeia.js.
+def sfx_track_profeia(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    q0, calm, phone = c["encuentras"] - 0.1, c["facil"] - 0.1, c["pasas"] - 0.45
+    ok, exp_, pag, tem = c["correcta"], c["explicacion"], c["pagina"], c["temario"]
+    page, marca = LINES[4]["start"] - 0.15, c["marca"]
+    l3end = LINES[2]["end"]
+    bub, tic = _onset(_load("burbuja")), _onset(_load("tic"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0)
+
+    # 1) el sello cae, Albacete 2026, la pregunta, la confusión y «¡imposible!»
+    put("sello_baja", 0.12, -16, 0.6, 0.002, 0.25)
+    put("tension", 0.0, -32, calm + 0.2, 0.3, 0.4, track=amb)
+    put("toque", c["albacete"], -27, 0.4)
+    put("destello", c["anio"], -26, 0.6)
+    put("whoosh", q0, -28, 0.6)
+    for k in range(3):
+        put(_pitch(bub, 1 + 0.1 * k), c["que"] + 0.12 * k, -28, 0.25)
+    put("fallo", c["imposible"] + 0.05, -25, 0.5, 0.005, 0.15)
+    put("latido", c["imposible"] + 0.1, -23, 1.0, 0.005, 0.2)
+    # 2) copiar, el móvil, los toques en la app y la espera acelerada
+    put(tic, c["copias"] + 0.2, -24, 0.15, 0.001, 0.05)
+    put("whoosh2", c["copias"] + 0.45, -27, 0.7)
+    put("whoosh", phone, -28, 0.6)
+    for tt in (phone + 0.4, phone + 0.85, max(phone + 1.55, l3end)):
+        put(tic, tt, -27, 0.12, 0.001, 0.04)
+    seg = c["segundos"]
+    if ok - 0.3 - seg > 0.2:
+        put("avance", seg, -31, ok - 0.3 - seg, 0.05, 0.15)
+    put("musica", calm + 0.2, -35, marca - 0.3 - calm - 0.2, 0.6, 0.6, track=amb)
+    # 3) correcta, explicación, página exacta y la página del manual
+    put("acierto", ok, -22, 0.6, 0.002, 0.2)
+    put("toque", exp_ + 0.05, -27, 0.4)
+    put("nota", pag + 0.45, -25, 0.8, 0.005, 0.3)
+    put("papeles", tem + 0.05, -28, 0.8, 0.01, 0.3)
+    put("papeles", page, -31, 0.8, 0.01, 0.3)
+    put("destello", c["pregunta2"] - 0.05, -25, 0.7)
+    for k in ("pregunta2", "entiende", "avanzando"):
+        put(bub, c[k], -27, 0.25)
+    # 4) venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    put(_load("fuego")[int(0.3 * sfx.SR):], marca - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", marca + 0.2, -36, END - (marca + 0.2), 0.4, 0.3, track=amb)
+    put("marca", marca - 0.05, -26, 1.0, 0.002, 0.25)
+    put("sello_baja", marca + 0.3, -26, 0.4, 0.002, 0.15)                 # la etiqueta PRO
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
 def sfx_any(path):
+    if Q.get("formato") == "profeia":
+        return sfx_track_profeia(path)
     if Q.get("formato") == "salones":
         return sfx_track_salones(path)
     if Q.get("formato") == "tetraedro":

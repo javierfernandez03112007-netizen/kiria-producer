@@ -1,0 +1,376 @@
+[
+ {
+  "text": "Ayuntamiento de Albacete, examen de 2026.",
+  "start": 0.0,
+  "end": 2.987,
+  "words": [
+   {
+    "w": "Ayuntamiento",
+    "start": 0.0,
+    "end": 0.775
+   },
+   {
+    "w": "de",
+    "start": 0.775,
+    "end": 0.962
+   },
+   {
+    "w": "Albacete,",
+    "start": 0.962,
+    "end": 1.591
+   },
+   {
+    "w": "examen",
+    "start": 1.691,
+    "end": 2.172
+   },
+   {
+    "w": "de",
+    "start": 2.172,
+    "end": 2.359
+   },
+   {
+    "w": "2026.",
+    "start": 2.359,
+    "end": 2.987
+   }
+  ]
+ },
+ {
+  "text": "Te encuentras esta pregunta… ¿Pero esto qué es? ¡Es imposible!",
+  "start": 3.227,
+  "end": 6.968,
+  "words": [
+   {
+    "w": "Te",
+    "start": 3.227,
+    "end": 3.414
+   },
+   {
+    "w": "encuentras",
+    "start": 3.414,
+    "end": 3.895
+   },
+   {
+    "w": "esta",
+    "start": 3.895,
+    "end": 4.229
+   },
+   {
+    "w": "pregunta…",
+    "start": 4.229,
+    "end": 4.711
+   },
+   {
+    "w": "¿Pero",
+    "start": 5.011,
+    "end": 5.345
+   },
+   {
+    "w": "esto",
+    "start": 5.345,
+    "end": 5.679
+   },
+   {
+    "w": "qué",
+    "start": 5.679,
+    "end": 5.866
+   },
+   {
+    "w": "es?",
+    "start": 5.866,
+    "end": 6.053
+   },
+   {
+    "w": "¡Es",
+    "start": 6.153,
+    "end": 6.34
+   },
+   {
+    "w": "imposible!",
+    "start": 6.34,
+    "end": 6.968
+   }
+  ]
+ },
+ {
+  "text": "Pues muy fácil: copias la pregunta y se la pasas a Profe IA.",
+  "start": 7.118,
+  "end": 10.612,
+  "words": [
+   {
+    "w": "Pues",
+    "start": 7.118,
+    "end": 7.305
+   },
+   {
+    "w": "muy",
+    "start": 7.305,
+    "end": 7.492
+   },
+   {
+    "w": "fácil:",
+    "start": 7.492,
+    "end": 7.826
+   },
+   {
+    "w": "copias",
+    "start": 8.006,
+    "end": 8.34
+   },
+   {
+    "w": "la",
+    "start": 8.34,
+    "end": 8.527
+   },
+   {
+    "w": "pregunta",
+    "start": 8.527,
+    "end": 9.009
+   },
+   {
+    "w": "y",
+    "start": 9.009,
+    "end": 9.196
+   },
+   {
+    "w": "se",
+    "start": 9.196,
+    "end": 9.383
+   },
+   {
+    "w": "la",
+    "start": 9.383,
+    "end": 9.57
+   },
+   {
+    "w": "pasas",
+    "start": 9.57,
+    "end": 9.904
+   },
+   {
+    "w": "a",
+    "start": 9.904,
+    "end": 10.091
+   },
+   {
+    "w": "Profe",
+    "start": 10.091,
+    "end": 10.425
+   },
+   {
+    "w": "IA.",
+    "start": 10.425,
+    "end": 10.612
+   }
+  ]
+ },
+ {
+  "text": "En segundos tienes la respuesta correcta, su explicación… y la página exacta del temario.",
+  "start": 10.862,
+  "end": 16.234,
+  "words": [
+   {
+    "w": "En",
+    "start": 10.862,
+    "end": 11.049
+   },
+   {
+    "w": "segundos",
+    "start": 11.049,
+    "end": 11.53
+   },
+   {
+    "w": "tienes",
+    "start": 11.53,
+    "end": 11.864
+   },
+   {
+    "w": "la",
+    "start": 11.864,
+    "end": 12.051
+   },
+   {
+    "w": "respuesta",
+    "start": 12.051,
+    "end": 12.533
+   },
+   {
+    "w": "correcta,",
+    "start": 12.533,
+    "end": 13.014
+   },
+   {
+    "w": "su",
+    "start": 13.114,
+    "end": 13.301
+   },
+   {
+    "w": "explicación…",
+    "start": 13.301,
+    "end": 13.929
+   },
+   {
+    "w": "y",
+    "start": 14.229,
+    "end": 14.416
+   },
+   {
+    "w": "la",
+    "start": 14.416,
+    "end": 14.603
+   },
+   {
+    "w": "página",
+    "start": 14.603,
+    "end": 15.084
+   },
+   {
+    "w": "exacta",
+    "start": 15.084,
+    "end": 15.566
+   },
+   {
+    "w": "del",
+    "start": 15.566,
+    "end": 15.753
+   },
+   {
+    "w": "temario.",
+    "start": 15.753,
+    "end": 16.234
+   }
+  ]
+ },
+ {
+  "text": "Deja de perder tiempo buscando. Pregunta, entiende y sigue avanzando.",
+  "start": 16.354,
+  "end": 20.336,
+  "words": [
+   {
+    "w": "Deja",
+    "start": 16.354,
+    "end": 16.688
+   },
+   {
+    "w": "de",
+    "start": 16.688,
+    "end": 16.875
+   },
+   {
+    "w": "perder",
+    "start": 16.875,
+    "end": 17.209
+   },
+   {
+    "w": "tiempo",
+    "start": 17.209,
+    "end": 17.543
+   },
+   {
+    "w": "buscando.",
+    "start": 17.543,
+    "end": 18.025
+   },
+   {
+    "w": "Pregunta,",
+    "start": 18.125,
+    "end": 18.606
+   },
+   {
+    "w": "entiende",
+    "start": 18.706,
+    "end": 19.187
+   },
+   {
+    "w": "y",
+    "start": 19.187,
+    "end": 19.374
+   },
+   {
+    "w": "sigue",
+    "start": 19.374,
+    "end": 19.708
+   },
+   {
+    "w": "avanzando.",
+    "start": 19.708,
+    "end": 20.336
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a tu compañero de oposición!",
+  "start": 20.586,
+  "end": 23.826,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 20.586,
+    "end": 21.426
+   },
+   {
+    "w": "a",
+    "start": 21.426,
+    "end": 21.666
+   },
+   {
+    "w": "tu",
+    "start": 21.666,
+    "end": 21.906
+   },
+   {
+    "w": "compañero",
+    "start": 21.906,
+    "end": 22.746
+   },
+   {
+    "w": "de",
+    "start": 22.746,
+    "end": 22.986
+   },
+   {
+    "w": "oposición!",
+    "start": 22.986,
+    "end": 23.826
+   }
+  ]
+ },
+ {
+  "text": "¡Bomberados PRO! ¡Pruébala gratis cinco días!",
+  "start": 24.126,
+  "end": 27.066,
+  "words": [
+   {
+    "w": "¡Bomberados",
+    "start": 24.126,
+    "end": 24.966
+   },
+   {
+    "w": "PRO!",
+    "start": 24.966,
+    "end": 25.206
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 25.306,
+    "end": 25.946
+   },
+   {
+    "w": "gratis",
+    "start": 25.946,
+    "end": 26.386
+   },
+   {
+    "w": "cinco",
+    "start": 26.386,
+    "end": 26.826
+   },
+   {
+    "w": "días!",
+    "start": 26.826,
+    "end": 27.066
+   }
+  ]
+ }
+]

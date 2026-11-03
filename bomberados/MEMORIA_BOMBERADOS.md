@@ -63,6 +63,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 | ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
+| Anuncio «Profe IA · Bomberados PRO» (idea de Javi, con la grabación real de la app) | `projects/bomberados_profeia/` | **guion enviado** 3 nov; escena hecha con tiempos provisionales; falta la voz de Javi |
 | Medio «Tus abuelos tenían media hora» (salón de antes contra el de hoy) | `projects/bomberados_abuelos/` | **listo para subir** (3 nov; 39,6 s, −15,5 LUFS, pico −1,2; voz de Javi; efectos de ElevenLabs reutilizados; Notion: fecha por decidir, propuesta mar 10) |
 | Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; 36,4 s, −15,3 LUFS, pico −0,6; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
@@ -210,3 +211,10 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   alumbrado público (manual de control de emergencias, pág. 226). Ideas sacadas de ahí en `TEMARIO.md` e `IDEAS.md`.
 - 3 nov: grabación de pantalla de la app por dentro (Profe IA / Asistente de Bomberados que responde y cita manual y
   página) en `bomberados/app/` (ver su README). Confirma la función de la IA con manual y página.
+
+### «Profe IA · Bomberados PRO» — 3 nov (idea de Javi)
+- Anuncio de la función con la GRABACIÓN REAL de la app (`bomberados/app/app_ia_por_dentro_2026-11-03.mp4`): pregunta
+  del examen de Albacete 2026 (CONFIRMAR) sobre la fuga de GLP → copiar → Profe IA → respuesta b), explicación y fuente
+  MF0404 · p. 228 → página del manual. Escena `profeia.js`: renderAt async que carga cada fotograma de la grabación
+  (`out/rec/`, 30 fps) con el tiempo remapeado a la voz (lo acelerado lleva ▶▶ ×N) y zooms de cámara a la respuesta,
+  la explicación y la página. Sonido `sfx_track_profeia` (biblioteca de efectos de ElevenLabs).
