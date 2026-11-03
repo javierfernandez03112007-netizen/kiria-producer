@@ -7,3 +7,10 @@
 | L10 «más de 200 robos en casas cada día» | 74.353 robos con fuerza en domicilios en 2025 (−8,3 %) → 204 al día | Ministerio del Interior, Balance de Criminalidad, cuarto trimestre de 2025 https://estadisticasdecriminalidad.ses.mir.es/publico/portalestadistico/dam/jcr:7d3776cd-9ca4-4c02-8ca4-96b2571dbee4/Balance%20de%20Criminalidad%20Cuarto%20Trimestre%202025.pdf · Matiz: son robos en general, no solo con este método |
 | L11 «ninguna lámina lo mueve» | El cerrojo (pestillo de la vuelta de llave) no tiene cara inclinada: desde fuera no se puede empujar con una lámina | Selectra (misma página) |
 | L12 «echa siempre la llave, aunque salgas un minuto» | Recomendación de la Policía Nacional y de la Guardia Civil: cerrar siempre con llave y dar todas las vueltas, aunque se salga poco tiempo | Qué! (13-5-2024) https://www.que.es/2024/05/13/policia-nacional-salir-casa-evitar-disgustos/2/ ; Selectra https://selectra.es/alarmas/noticias/puerta-casa-2026-blindada-guardia-civil |
+
+## Simplificaciones del dibujo (no publicar como dato)
+- La cerradura es un modelo genérico a escala (1 unidad = 10 cm, ampliado para meter la cámara): bombín de perfil europeo con 5 pitones arriba
+  (en muchas puertas van abajo), leva central, resbalón de latón con cara inclinada hacia fuera y cerrojo de acero de dos vueltas.
+- Los cortes de la llave, la radiografía («RX · EJEMPLO») y su mano son de EJEMPLO. La rendija está algo exagerada para que se vea la lámina.
+- Las 200 casitas son una imagen de «más de 200 cada día» (204 de media en 2025); no representan casas reales ni un método concreto de robo.
+- El vídeo explica el método del resbalón para que se evite (echar la llave); no da más detalle que el que ya publican la Policía y las aseguradoras.

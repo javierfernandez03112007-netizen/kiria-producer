@@ -1,7 +1,7 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Medicina por dentro».
-Base: el martillo de reflejos acaba de golpear; caen las figuritas con bata y quedan tres en dorado (sin HUD):
-    COVER=1 COVER_T=1.45 COVER_CAM="0.1,0.26,1.12,-0.1,0.13,0,40" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
-Título en Impact con contorno, como los subtítulos (lo que llega, en dorado)."""
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «La cerradura por dentro».
+Base: la radiografía de una mano entrando por la rendija de la puerta, junto al bombín (sin HUD):
+    COVER=1 COVER_T=3.05 COVER_CAM="7.3,11.75,6.4,4.45,10.9,0.25,38" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Título en Impact con contorno, como los subtítulos (la radiografía en celeste)."""
 import os
 import sys
 
@@ -16,6 +16,7 @@ from engine import post  # noqa: E402
 
 W, H = 1080, 1920
 GOLD = "#FFC24A"
+BLUE = "#8FE6FF"
 
 
 def row(img, parts, cy, size, stroke):
@@ -29,20 +30,23 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("MEDICINA", None)], y + 110 * k, int(190 * k), int(12 * k))
-    row(img, [("MENOS", None), ("DE", None), ("4", GOLD), ("DE", None), ("CADA", None), ("100", GOLD)], y + 265 * k, int(96 * k), int(8 * k))
-    paste(img, chip("pueden elegir Dermatología", int(40 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 380 * k)
+    row(img, [("UNA", None), ("RADIOGRAFÍA", BLUE)], y + 100 * k, int(132 * k), int(10 * k))
+    row(img, [("PUEDE", None), ("ABRIR", None), ("TU", None), ("PUERTA", None)], y + 236 * k, int(100 * k), int(9 * k))
+    paste(img, chip("si solo das el portazo", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 365 * k)
 
 
 def main():
     base = cv2.imread(os.path.join(ROOT, "out", "cover", "cover3d.png")).astype(np.float32) / 255
     img = base.copy()
-    halo(img, W / 2, 1150, 520, (0.85, 0.75, 0.5), 0.05)
-    title(img, 150)
+    g = np.clip(1 - np.arange(H) / 700.0, 0, 1)[:, None, None] ** 1.5      # oscurece arriba para que se lea el título
+    img *= 1 - 0.55 * g
+    title(img, 120)
     post.grain(img, 0, 0.008)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
-    m = base[330:330 + 1350].copy()
-    title(m, 40, 0.8)
+    m = base[300:300 + 1350].copy()
+    g = np.clip(1 - np.arange(1350) / 520.0, 0, 1)[:, None, None] ** 1.5
+    m *= 1 - 0.55 * g
+    title(m, 30, 0.8)
     cv2.imwrite(os.path.join(ROOT, "out", "miniatura.jpg"), post.finish(m), [cv2.IMWRITE_JPEG_QUALITY, 95])
     print("portada → out/portada.jpg · miniatura → out/miniatura.jpg")
 

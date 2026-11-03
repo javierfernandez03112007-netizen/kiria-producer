@@ -1,0 +1,30 @@
+🔑 Cierras la puerta de un portazo… y una radiografía puede abrirla. Así funciona tu cerradura por dentro (y cómo evitarlo).
+
+🔩 Dentro del bombín hay una fila de pitones y muelles: sin llave, bloquean el giro. Cada diente de la llave sube su pitón a la altura justa, todos se alinean y el cilindro gira y saca el cerrojo: una barra recta de acero.
+
+🚪 Pero hay otra pieza: el resbalón, el que cierra solo con el portazo. Tiene una cara inclinada… y ese es su punto débil: una lámina flexible que entra por la rendija la empuja y el resbalón se mete.
+
+📊 En España se denunciaron 74.353 robos con fuerza en domicilios en 2025: más de 200 cada día.
+
+✅ El cerrojo, en cambio, es recto: ninguna lámina lo mueve. Así que echa siempre la llave (todas las vueltas), aunque salgas un minuto. Es lo que recomiendan la Policía Nacional y la Guardia Civil.
+
+👇 ¿Tú das el portazo o echas la llave? Mándaselo a quien nunca la echa.
+
+📚 Fuentes: Ministerio del Interior (Balance de Criminalidad, 4.º trimestre de 2025); Policía Nacional y Guardia Civil (consejos para cerrar la puerta); Selectra (método del resbalón); Obramat (bombines de seguridad).
+
+#cerradura #seguridad #hogar #robos #llave #puertas #comofunciona #curiosidades #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+🔑 Cierras de un portazo… y una radiografía puede abrir tu puerta. Te enseño la cerradura por dentro y cómo evitarlo 👇 ¿Portazo o llave?
+
+#cerradura #seguridad #hogar #comofunciona #curiosidades
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Dato: 74.353 robos con fuerza en domicilios en 2025 (Interior, Balance 4T 2025) → 204 al día. «Más de 200» y «se denuncian» son exactos; son robos en general, no solo por el resbalón.
+- La llave, la radiografía («RX · EJEMPLO») y la mano son de EJEMPLO; la cerradura es un modelo genérico a escala.
+- Voz: la de Javi (su MP3, ElevenLabs, Danny v4), sin pausas largas (52,7 s + 1,2 s de cola para el bucle). Efectos: solo de ElevenLabs (30), uno por suceso.

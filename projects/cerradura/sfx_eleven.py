@@ -28,7 +28,7 @@ SFX = {     # uno por suceso; en compose_cer.py se recortan a lo que dura cada c
     "whoosh_largo": ("smooth cinematic whoosh flying over a dark town at night, airy, clean ending", 1.2),
     "resbalon": ("spring loaded door latch clicking in and out, small brass clack", 0.6),
     "abre_puerta": ("door handle pressed and the door pulled open, latch retracting, soft creak", 0.9),
-    "portazo2": ("door slammed shut, wooden bang with the latch snapping into the strike plate", 1.0),
+    "portazo2": ("loud heavy wooden door slammed hard, strong low thump and a metal latch clack, short room echo", 1.0),
     "aviso": ("low ominous single synth hit, warning tone, short, no music", 0.8),
     "flex": ("flexible plastic sheet bending and wobbling, wobbly plastic thunder sheet sound, short", 1.0),
     "rasca_larga": ("plastic film slowly pushing a spring door latch back, scraping on brass, tense", 3.0),

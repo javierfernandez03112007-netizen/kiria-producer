@@ -75,6 +75,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   plantilla de Derecho no traía `web/package.json` y las máquinas de ayuda fallaron 55 min sin three.js (copiarlo siempre).
   Antes de publicar: confirmar presentados MIR 2026 y el número exacto de cierre de Dermatología (ver DESCRIPCION.txt).
   Pendiente de permiso: borrar las ramas `render-med-*` y archivar las 8 sesiones «Render Medicina».
+- **La cerradura por dentro** (`projects/cerradura/`, 3-11-2026): primer tema que no es una carrera («explica por dentro la
+  cerradura y cómo abrir una puerta con una radiografía»). Enfoque honesto: se enseña el método del resbalón para que se evite
+  (echar la llave). Escena propia (no plantilla): puerta a escala (1 unidad = 10 cm) que se vuelve transparente, bombín de perfil
+  europeo cortado por la mitad (pitones de latón, contrapitones de acero, muelles, llave con dientes que los sube), leva y cerrojo
+  de dos vueltas, vista en planta con plano de corte (`clipPl` + tapas rayadas) para el resbalón y la radiografía (una mano «RX ·
+  EJEMPLO», en planta solo su línea de corte), 200 casitas con alarma roja. Primer segundo: el portazo visto en rayos X (post
+  `xray`). Truco técnico: si un material cambia de opaco a transparente hay que poner `needsUpdate` (si no, three.js lo deja opaco).
+  Voz: su MP3 (59,5 s → sin pausas largas → 52,7 s). 30 efectos de ElevenLabs. Render: esta máquina 3160–3217 + 8 de ayuda
+  (`render-cer-1…8`). Pendiente de permiso: borrar las ramas `render-cer-*` y archivar las 8 sesiones «Render cerradura».
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
