@@ -772,7 +772,109 @@ def sfx_track_profeia(path):
         wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
+# ---------------------------------------------------------------- formato «extintor» (extintor.js, 3D cinematográfico)
+# Efectos de ElevenLabs ya generados para otros vídeos (copiados en assets/sfx). Misma línea de tiempo que T en
+# extintor.js: cada sonido empieza cuando empieza su imagen y acaba cuando acaba (_tramo). En el tiempo congelado del
+# gancho el fuego suena grave y apagado; vuelve a sonar normal cuando el tiempo arranca.
+def sfx_track_extintor(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))           # fuegos y tensión de fondo: bajan cuando habla la voz
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    l3e, l4s = LINES[2]["end"], LINES[3]["start"]
+    T = dict(c)
+    T["count0"], T["count1"] = l3e + 0.05, l4s - 0.05
+    T["w1"] = c["leerlo"] - 0.1; T["macro"] = T["w1"] + 0.5
+    T["out"] = max(c["codigo"] + 0.55, T["macro"] + 1.3); T["cardsIn"] = T["out"] + 0.3
+    T["lab"] = c["esla"] + 0.62; T["w2"] = c["bandeja"] - 0.3; T["w3"] = c["cuanto"] - 0.25; T["fin"] = c["compartir"] - 0.2
+    fuego, vapor, brasas, bub = _load("fuego"), _load("vapor"), _load("brasas"), _onset(_load("burbuja"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    # 1) gancho: tiempo congelado (fuego grave y lejano, tensión), el anillo de 15 m, el tiempo arranca y barrido a la etiqueta
+    put(_pitch(burn, 0.55), 0.0, -31, c["nadie"] + 0.1, 0.25, 0.3, track=amb)
+    put("tension", 0.0, -30, T["w1"] + 0.2, 0.4, 0.3, track=amb)
+    put("latido", 0.15, -29, 0.5)
+    put("destello", c["metros"] - 0.25, -27, 0.9, 0.005, 0.3)
+    put(_pitch(_onset(_load("whoosh")), 0.8), c["metros"] - 0.3, -31, 0.7)
+    put(burn, c["nadie"] - 0.05, -30, T["out"] - c["nadie"], 0.5, 0.4, track=amb)
+    put(vapor, c["nadie"], -35, T["w1"] - c["nadie"] + 0.2, 0.4, 0.2, track=amb)
+    put("whoosh2", T["w1"] - 0.12, -23, 0.75)
+    # 2) el código se enciende; las cuatro tarjetas entran; «comenta»; cuenta atrás 3-2-1 con tensión
+    put("destello", c["codigo"] - 0.12, -25, 0.8, 0.005, 0.3)
+    put("nota", c["codigo"] - 0.05, -28, 0.9)
+    put("whoosh", T["out"] + 0.2, -30, 0.6)
+    for i in range(4):
+        put(_pitch(bub, 1 + 0.06 * i), T["cardsIn"] + 0.11 * i + 0.12, -27, 0.25)
+    put("toque", c["comenta"] - 0.05, -27, 0.35)
+    put("tension", T["count0"] - 0.2, -27, T["count1"] - T["count0"] + 0.3, 0.3, 0.1)
+    for k in range(3):
+        put("tic", T["count0"] + k * (T["count1"] - T["count0"]) / 3, -22 + 2 * k, 0.3)
+    # 3) «es la A»: acierto, la cámara atraviesa la tarjeta (destello) y entra en el laboratorio con el fuego rugiendo
+    put("acierto", c["esla"] - 0.02, -24, 0.8, 0.002, 0.3)
+    put("whoosh2", c["esla"] + 0.18, -24, 0.6)
+    put("golpe", T["lab"] - 0.06, -22, 1.0, 0.005, 0.5)
+    hit = c["apago"] + 0.05
+    put(burn, T["lab"], -24, hit - T["lab"] + 0.25, 0.05, 0.6, track=amb)
+    # 4) «apagó»: entra la boquilla, cámara lenta (golpe grave) y el chorro de polvo; luego humea
+    put("whoosh", c["apago"] - 0.6, -30, 0.5)
+    put(_pitch(_onset(_load("golpe")), 0.7), c["apago"] - 0.15, -24, 1.1, 0.005, 0.5)
+    put(_pitch(vapor, 0.75), hit - 0.3, -24, 1.25, 0.01, 0.3)
+    put(vapor, hit + 0.95, -28, 0.6, 0.05, 0.3)
+    put(vapor[int(1.0 * sfx.SR):], hit + 1.2, -36, 1.4, 0.3, 0.8, track=amb)
+    # 5) la cinta métrica corre (clics) y sale el «21A»
+    d0, d1 = c["dos"] - 0.15, c["dos"] - 0.15 + max(0.6, c["diez"] - c["dos"] + 0.25)
+    rele = _onset(_load("rele"))
+    for k in range(int((d1 - d0) / 0.07)):
+        put(_pitch(rele, 1.6), d0 + 0.07 * k, -33, 0.05, 0.001, 0.02)
+    put("golpe", c["a21"] - 0.1, -23, 0.9, 0.005, 0.4)
+    put("destello", c["a21"] - 0.05, -27, 0.7)
+    # 6) barrido a la bandeja: el fuego grande ruge; la probeta se llena (agua y heptano) y salen 113 L y 113B
+    put("whoosh2", T["w2"] - 0.05, -23, 0.6)
+    put(fuego, T["w2"] + 0.25, -23, T["w3"] - T["w2"], 0.15, 0.3, track=amb)
+    for k in range(4):
+        put(_pitch(bub, 0.7 + 0.05 * k), c["litros"] - 0.2 + 0.18 * k, -27, 0.2)
+    put("toque", c["litros"] + 0.25, -27, 0.35)
+    put("golpe", c["b113"] - 0.1, -23, 0.9, 0.005, 0.4)
+    put("destello", c["b113"] - 0.05, -27, 0.7)
+    # 7) más número, más fuego: barrido y un golpe con llamarada en cada salto
+    put("whoosh", T["w3"] - 0.05, -25, 0.6)
+    steps = [c["cuanto"] - 0.1, c["cuanto"] + 0.35, c["numero"] - 0.05, c["fuego"] - 0.2, c["fuego"] + 0.25]
+    for k, ts in enumerate(steps):
+        put(_pitch(_onset(_load("golpe")), 1.15 - 0.08 * k), ts, -30 + 1.5 * k, 0.5, 0.005, 0.25)
+        put(fuego[int(0.3 * sfx.SR):], ts, -31 + 1.5 * k, 0.6, 0.02, 0.3)
+    put(burn, T["w3"] + 0.3, -26, T["fin"] - T["w3"], 0.2, 0.4, track=amb)
+    # 8) venta: destellos, avión de papel, la marca con su estallido y brasas
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put(brasas, T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "extintor":
+        return sfx_track_extintor(path)
     if Q.get("formato") == "profeia":
         return sfx_track_profeia(path)
     if Q.get("formato") == "salones":

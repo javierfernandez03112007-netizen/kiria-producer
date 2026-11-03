@@ -27,6 +27,7 @@ main() {
     fi
   fi
   [ -x "$P/preparar.sh" ] && { (cd "$P" && ./preparar.sh) || { echo "falló preparar.sh"; return 1; }; }
+  [ -f "$P/procesos" ] && WK=$(cat "$P/procesos")      # escenas WebGL (SwiftShader ya usa varios núcleos): menos procesos
   mkdir -p "$P/out/frames" "$P/out/trozos"
   # los trozos de este vídeo hechos con otro commit ya no valen
   [ "$(cat "$P/out/trozos/rev" 2>/dev/null)" = "$SHA" ] || rm -f "$P"/out/trozos/*.mp4
