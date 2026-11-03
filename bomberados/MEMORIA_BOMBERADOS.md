@@ -63,7 +63,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 | ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
-| Medio «Tus abuelos tenían media hora» (salón de antes contra el de hoy) | `projects/bomberados_abuelos/` | **guion enviado** 3 nov; escena hecha con tiempos provisionales; falta la voz de Javi (Notion: fecha por decidir) |
+| Medio «Tus abuelos tenían media hora» (salón de antes contra el de hoy) | `projects/bomberados_abuelos/` | **listo para subir** (3 nov; 39,6 s, −15,5 LUFS, pico −1,2; voz de Javi; efectos de ElevenLabs reutilizados; Notion: fecha por decidir, propuesta mar 10) |
 | Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; 36,4 s, −15,3 LUFS, pico −0,6; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
@@ -198,3 +198,6 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   ensayo acelerado con ×N honesto, rollover y flashover, dormitorio de noche con la puerta que se cierra y dos dormitorios
   con termómetros. Sonido: `sfx_track_salones` con efectos de ElevenLabs de los vídeos anteriores (la API sigue sin
   conectar). Venta: «¡Mándaselo a tu familia, y que esta noche cierren la puerta!».
+- Voz de Javi (una toma, 3 nov): el reconocedor oyó «micra» en el archivo entero; aislado oye «microfibra» → corregido a
+  mano en asr_original.json. `medir_voz.py`: OK (venta −21,3/−20,4 dB frente a −22,7). Render ≈ 10 min con 4 procesos
+  (2.374 fotogramas). El flashover de los abuelos va en «media hora» (cue `hora2`) para que se vea antes del dormitorio.
