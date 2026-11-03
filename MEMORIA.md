@@ -83,7 +83,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   EJEMPLO», en planta solo su línea de corte), 200 casitas con alarma roja. Primer segundo: el portazo visto en rayos X (post
   `xray`). Truco técnico: si un material cambia de opaco a transparente hay que poner `needsUpdate` (si no, three.js lo deja opaco).
   Voz: su MP3 (59,5 s → sin pausas largas → 52,7 s). 30 efectos de ElevenLabs. Render: esta máquina 3160–3217 + 8 de ayuda
-  (`render-cer-1…8`). Pendiente de permiso: borrar las ramas `render-cer-*` y archivar las 8 sesiones «Render cerradura».
+  nuevas (`render-cer-1…8`, ≈ 10 min) y, para los arreglos, las 8 de Medicina ya abiertas (`render-cer-m/n/p/q*`, trozos de
+  ≈ 56 fotogramas en ≈ 3 min; `overwrite_chunks.sh` mete encima un tramo rehecho). Entregado el 3-11-2026 (53,6 s, 60 fps,
+  46 MB, −15,1 LUFS) con portada «UNA RADIOGRAFÍA PUEDE ABRIR TU PUERTA · si solo das el portazo».
+  Lecciones: (1) Javi quiere ver fotos del proceso mientras se hace y que se REUTILICEN las máquinas ya abiertas (no abrir
+  nuevas); (2) a una máquina de ayuda NO se le puede dar un segundo encargo si su primer mensaje decía «no hagas nada más»: las
+  8 de la cerradura lo rechazaron y se perdió una hora sin darme cuenta. Al crearlas, decir «espera más trozos míos» y comprobar
+  con list_events que cada una arranca; (3) un material que pasa de opaco a transparente necesita `needsUpdate`; (4) revisar los
+  trozos según llegan (bolas negras, reflejo de luz y el cerradero tapando el bombín se arreglaron rehaciendo solo esos tramos).
+  Pendiente de permiso: borrar las ramas `render-cer-*` y archivar las 8 sesiones «Render cerradura».
 
 ## Herramientas y accesos
 - **Voz de Javi en ElevenLabs** (1-11-2026, del nombre de su archivo): Danny (`wnKyx1zkUEUnfURKiuaP`), modelo **v4** (`eleven_v4`),
