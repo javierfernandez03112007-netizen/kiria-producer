@@ -63,6 +63,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | PD #4 PAS (el primero en un accidente) | `projects/bomberados_pas/` | **listo para subir** (26,1 s, voz v3 con ánimo, −15,5 LUFS; respuesta C; propuesta: miér 4 nov 14:00) |
 | PD #5 Protección civil (¿qué ley?) | `projects/bomberados_proteccion/` | **listo para subir** (28,8 s; voz de Javi, Eleven v3; respuesta D; Notion: lun 2 nov 14:00) |
 | ¿Qué nota sacarías? Dominadas (formato nuevo, para todo el mundo) | `projects/bomberados_dominadas/` | **listo para subir** (37,5 s; voz de Javi; tabla intermedia por CONFIRMAR; fecha por decidir) |
+| Medio «Tus abuelos tenían media hora» (salón de antes contra el de hoy) | `projects/bomberados_abuelos/` | **guion enviado** 3 nov; escena hecha con tiempos provisionales; falta la voz de Javi (Notion: fecha por decidir) |
 | Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; 36,4 s, −15,3 LUFS, pico −0,6; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
@@ -187,3 +188,13 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   entorno. Javi pegó la clave de Higgsfield en el chat: no se ha guardado en ningún sitio; se le recomendó crear otra.
 - Render del tetraedro: ≈ 1,4 fotogramas/s con 4 procesos (36 s → ≈ 26 min). Ojo: un bucle de espera con
   `pgrep -f "capture.mjs …"` se encuentra a sí mismo y no acaba nunca; contar fotogramas en vez de buscar el proceso.
+
+### «Tus abuelos tenían media hora» — 3 nov
+- Javi eligió la idea 4 de la lista («hazme el vídeo de mi casa y la de mis abuelos… lo más profesional posible, con un
+  gancho que haga sentir algo»). Datos de UL FSRI: salón moderno → flashover en 3:30; salón con muebles de mediados del
+  siglo XX → 29:30; puerta cerrada 38 °C frente a 260 °C abierta (ver `FUENTES.md`; las webs de FSRI no abren desde aquí).
+- Escena `bomberados/plantillas/pregunta/salones.js`: pantalla partida con los dos salones en perspectiva de un punto
+  (pintados una vez a doble resolución para el zoom de la apertura), cuentas atrás «PARA SALIR», lupas de materiales,
+  ensayo acelerado con ×N honesto, rollover y flashover, dormitorio de noche con la puerta que se cierra y dos dormitorios
+  con termómetros. Sonido: `sfx_track_salones` con efectos de ElevenLabs de los vídeos anteriores (la API sigue sin
+  conectar). Venta: «¡Mándaselo a tu familia, y que esta noche cierren la puerta!».

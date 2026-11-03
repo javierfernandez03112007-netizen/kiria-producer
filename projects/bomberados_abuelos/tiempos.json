@@ -1,0 +1,677 @@
+[
+ {
+  "text": "Tus abuelos tenían media hora para salir de un salón en llamas. Tú tienes menos de cuatro minutos.",
+  "start": 0.0,
+  "end": 5.899,
+  "words": [
+   {
+    "w": "Tus",
+    "start": 0.0,
+    "end": 0.199
+   },
+   {
+    "w": "abuelos",
+    "start": 0.199,
+    "end": 0.715
+   },
+   {
+    "w": "tenían",
+    "start": 0.715,
+    "end": 1.072
+   },
+   {
+    "w": "media",
+    "start": 1.072,
+    "end": 1.43
+   },
+   {
+    "w": "hora",
+    "start": 1.43,
+    "end": 1.787
+   },
+   {
+    "w": "para",
+    "start": 1.787,
+    "end": 2.145
+   },
+   {
+    "w": "salir",
+    "start": 2.145,
+    "end": 2.502
+   },
+   {
+    "w": "de",
+    "start": 2.502,
+    "end": 2.701
+   },
+   {
+    "w": "un",
+    "start": 2.701,
+    "end": 2.9
+   },
+   {
+    "w": "salón",
+    "start": 2.9,
+    "end": 3.257
+   },
+   {
+    "w": "en",
+    "start": 3.257,
+    "end": 3.456
+   },
+   {
+    "w": "llamas.",
+    "start": 3.456,
+    "end": 3.813
+   },
+   {
+    "w": "Tú",
+    "start": 3.913,
+    "end": 4.112
+   },
+   {
+    "w": "tienes",
+    "start": 4.112,
+    "end": 4.47
+   },
+   {
+    "w": "menos",
+    "start": 4.47,
+    "end": 4.827
+   },
+   {
+    "w": "de",
+    "start": 4.827,
+    "end": 5.026
+   },
+   {
+    "w": "cuatro",
+    "start": 5.026,
+    "end": 5.383
+   },
+   {
+    "w": "minutos.",
+    "start": 5.383,
+    "end": 5.899
+   }
+  ]
+ },
+ {
+  "text": "¿Sabes por qué?",
+  "start": 6.139,
+  "end": 6.894,
+  "words": [
+   {
+    "w": "¿Sabes",
+    "start": 6.139,
+    "end": 6.496
+   },
+   {
+    "w": "por",
+    "start": 6.496,
+    "end": 6.695
+   },
+   {
+    "w": "qué?",
+    "start": 6.695,
+    "end": 6.894
+   }
+  ]
+ },
+ {
+  "text": "Su sofá era de algodón. El tuyo es de espuma y microfibra: plástico que sale del petróleo.",
+  "start": 7.114,
+  "end": 13.153,
+  "words": [
+   {
+    "w": "Su",
+    "start": 7.114,
+    "end": 7.313
+   },
+   {
+    "w": "sofá",
+    "start": 7.313,
+    "end": 7.67
+   },
+   {
+    "w": "era",
+    "start": 7.67,
+    "end": 8.028
+   },
+   {
+    "w": "de",
+    "start": 8.028,
+    "end": 8.226
+   },
+   {
+    "w": "algodón.",
+    "start": 8.226,
+    "end": 8.743
+   },
+   {
+    "w": "El",
+    "start": 8.843,
+    "end": 9.041
+   },
+   {
+    "w": "tuyo",
+    "start": 9.041,
+    "end": 9.399
+   },
+   {
+    "w": "es",
+    "start": 9.399,
+    "end": 9.597
+   },
+   {
+    "w": "de",
+    "start": 9.597,
+    "end": 9.796
+   },
+   {
+    "w": "espuma",
+    "start": 9.796,
+    "end": 10.312
+   },
+   {
+    "w": "y",
+    "start": 10.312,
+    "end": 10.511
+   },
+   {
+    "w": "microfibra:",
+    "start": 10.511,
+    "end": 11.186
+   },
+   {
+    "w": "plástico",
+    "start": 11.366,
+    "end": 11.882
+   },
+   {
+    "w": "que",
+    "start": 11.882,
+    "end": 12.081
+   },
+   {
+    "w": "sale",
+    "start": 12.081,
+    "end": 12.438
+   },
+   {
+    "w": "del",
+    "start": 12.438,
+    "end": 12.637
+   },
+   {
+    "w": "petróleo.",
+    "start": 12.637,
+    "end": 13.153
+   }
+  ]
+ },
+ {
+  "text": "En un ensayo, quemaron los dos salones a la vez.",
+  "start": 13.403,
+  "end": 16.443,
+  "words": [
+   {
+    "w": "En",
+    "start": 13.403,
+    "end": 13.602
+   },
+   {
+    "w": "un",
+    "start": 13.602,
+    "end": 13.8
+   },
+   {
+    "w": "ensayo,",
+    "start": 13.8,
+    "end": 14.317
+   },
+   {
+    "w": "quemaron",
+    "start": 14.417,
+    "end": 14.933
+   },
+   {
+    "w": "los",
+    "start": 14.933,
+    "end": 15.132
+   },
+   {
+    "w": "dos",
+    "start": 15.132,
+    "end": 15.33
+   },
+   {
+    "w": "salones",
+    "start": 15.33,
+    "end": 15.846
+   },
+   {
+    "w": "a",
+    "start": 15.846,
+    "end": 16.045
+   },
+   {
+    "w": "la",
+    "start": 16.045,
+    "end": 16.244
+   },
+   {
+    "w": "vez.",
+    "start": 16.244,
+    "end": 16.443
+   }
+  ]
+ },
+ {
+  "text": "A los tres minutos y medio… el tuyo ya era un horno.",
+  "start": 16.693,
+  "end": 20.33,
+  "words": [
+   {
+    "w": "A",
+    "start": 16.693,
+    "end": 16.892
+   },
+   {
+    "w": "los",
+    "start": 16.892,
+    "end": 17.09
+   },
+   {
+    "w": "tres",
+    "start": 17.09,
+    "end": 17.289
+   },
+   {
+    "w": "minutos",
+    "start": 17.289,
+    "end": 17.805
+   },
+   {
+    "w": "y",
+    "start": 17.805,
+    "end": 18.004
+   },
+   {
+    "w": "medio…",
+    "start": 18.004,
+    "end": 18.362
+   },
+   {
+    "w": "el",
+    "start": 18.662,
+    "end": 18.86
+   },
+   {
+    "w": "tuyo",
+    "start": 18.86,
+    "end": 19.218
+   },
+   {
+    "w": "ya",
+    "start": 19.218,
+    "end": 19.416
+   },
+   {
+    "w": "era",
+    "start": 19.416,
+    "end": 19.774
+   },
+   {
+    "w": "un",
+    "start": 19.774,
+    "end": 19.973
+   },
+   {
+    "w": "horno.",
+    "start": 19.973,
+    "end": 20.33
+   }
+  ]
+ },
+ {
+  "text": "El de tus abuelos aguantó casi media hora.",
+  "start": 20.45,
+  "end": 23.151,
+  "words": [
+   {
+    "w": "El",
+    "start": 20.45,
+    "end": 20.649
+   },
+   {
+    "w": "de",
+    "start": 20.649,
+    "end": 20.847
+   },
+   {
+    "w": "tus",
+    "start": 20.847,
+    "end": 21.046
+   },
+   {
+    "w": "abuelos",
+    "start": 21.046,
+    "end": 21.562
+   },
+   {
+    "w": "aguantó",
+    "start": 21.562,
+    "end": 22.079
+   },
+   {
+    "w": "casi",
+    "start": 22.079,
+    "end": 22.436
+   },
+   {
+    "w": "media",
+    "start": 22.436,
+    "end": 22.793
+   },
+   {
+    "w": "hora.",
+    "start": 22.793,
+    "end": 23.151
+   }
+  ]
+ },
+ {
+  "text": "Lo que te puede salvar esta noche: cierra la puerta de tu cuarto.",
+  "start": 23.371,
+  "end": 27.246,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 23.371,
+    "end": 23.57
+   },
+   {
+    "w": "que",
+    "start": 23.57,
+    "end": 23.768
+   },
+   {
+    "w": "te",
+    "start": 23.768,
+    "end": 23.967
+   },
+   {
+    "w": "puede",
+    "start": 23.967,
+    "end": 24.325
+   },
+   {
+    "w": "salvar",
+    "start": 24.325,
+    "end": 24.682
+   },
+   {
+    "w": "esta",
+    "start": 24.682,
+    "end": 25.04
+   },
+   {
+    "w": "noche:",
+    "start": 25.04,
+    "end": 25.397
+   },
+   {
+    "w": "cierra",
+    "start": 25.577,
+    "end": 25.934
+   },
+   {
+    "w": "la",
+    "start": 25.934,
+    "end": 26.133
+   },
+   {
+    "w": "puerta",
+    "start": 26.133,
+    "end": 26.491
+   },
+   {
+    "w": "de",
+    "start": 26.491,
+    "end": 26.689
+   },
+   {
+    "w": "tu",
+    "start": 26.689,
+    "end": 26.888
+   },
+   {
+    "w": "cuarto.",
+    "start": 26.888,
+    "end": 27.246
+   }
+  ]
+ },
+ {
+  "text": "En otro ensayo, con la puerta cerrada, el cuarto no pasó de treinta y ocho grados. Abierta… llegó a doscientos sesenta.",
+  "start": 27.566,
+  "end": 35.196,
+  "words": [
+   {
+    "w": "En",
+    "start": 27.566,
+    "end": 27.765
+   },
+   {
+    "w": "otro",
+    "start": 27.765,
+    "end": 28.122
+   },
+   {
+    "w": "ensayo,",
+    "start": 28.122,
+    "end": 28.638
+   },
+   {
+    "w": "con",
+    "start": 28.738,
+    "end": 28.937
+   },
+   {
+    "w": "la",
+    "start": 28.937,
+    "end": 29.136
+   },
+   {
+    "w": "puerta",
+    "start": 29.136,
+    "end": 29.493
+   },
+   {
+    "w": "cerrada,",
+    "start": 29.493,
+    "end": 30.009
+   },
+   {
+    "w": "el",
+    "start": 30.109,
+    "end": 30.308
+   },
+   {
+    "w": "cuarto",
+    "start": 30.308,
+    "end": 30.666
+   },
+   {
+    "w": "no",
+    "start": 30.666,
+    "end": 30.864
+   },
+   {
+    "w": "pasó",
+    "start": 30.864,
+    "end": 31.222
+   },
+   {
+    "w": "de",
+    "start": 31.222,
+    "end": 31.421
+   },
+   {
+    "w": "treinta",
+    "start": 31.421,
+    "end": 31.778
+   },
+   {
+    "w": "y",
+    "start": 31.778,
+    "end": 31.977
+   },
+   {
+    "w": "ocho",
+    "start": 31.977,
+    "end": 32.334
+   },
+   {
+    "w": "grados.",
+    "start": 32.334,
+    "end": 32.692
+   },
+   {
+    "w": "Abierta…",
+    "start": 32.792,
+    "end": 33.308
+   },
+   {
+    "w": "llegó",
+    "start": 33.608,
+    "end": 33.965
+   },
+   {
+    "w": "a",
+    "start": 33.965,
+    "end": 34.164
+   },
+   {
+    "w": "doscientos",
+    "start": 34.164,
+    "end": 34.68
+   },
+   {
+    "w": "sesenta.",
+    "start": 34.68,
+    "end": 35.196
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a tu familia, y que esta noche cierren la puerta!",
+  "start": 35.446,
+  "end": 39.986,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 35.446,
+    "end": 36.286
+   },
+   {
+    "w": "a",
+    "start": 36.286,
+    "end": 36.526
+   },
+   {
+    "w": "tu",
+    "start": 36.526,
+    "end": 36.766
+   },
+   {
+    "w": "familia,",
+    "start": 36.766,
+    "end": 37.406
+   },
+   {
+    "w": "y",
+    "start": 37.506,
+    "end": 37.746
+   },
+   {
+    "w": "que",
+    "start": 37.746,
+    "end": 37.986
+   },
+   {
+    "w": "esta",
+    "start": 37.986,
+    "end": 38.426
+   },
+   {
+    "w": "noche",
+    "start": 38.426,
+    "end": 38.866
+   },
+   {
+    "w": "cierren",
+    "start": 38.866,
+    "end": 39.306
+   },
+   {
+    "w": "la",
+    "start": 39.306,
+    "end": 39.546
+   },
+   {
+    "w": "puerta!",
+    "start": 39.546,
+    "end": 39.986
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 40.286,
+  "end": 44.806,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 40.286,
+    "end": 41.126
+   },
+   {
+    "w": "a",
+    "start": 41.126,
+    "end": 41.366
+   },
+   {
+    "w": "bombero?",
+    "start": 41.366,
+    "end": 42.006
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 42.106,
+    "end": 42.946
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 43.046,
+    "end": 43.686
+   },
+   {
+    "w": "gratis",
+    "start": 43.686,
+    "end": 44.126
+   },
+   {
+    "w": "cinco",
+    "start": 44.126,
+    "end": 44.566
+   },
+   {
+    "w": "días!",
+    "start": 44.566,
+    "end": 44.806
+   }
+  ]
+ }
+]

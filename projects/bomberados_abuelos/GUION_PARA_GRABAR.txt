@@ -1,0 +1,43 @@
+«TUS ABUELOS TENÍAN MEDIA HORA» — el salón de tus abuelos contra el tuyo (vídeo medio, para todo el mundo)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 40 s). El gancho, serio y cercano, como quien cuenta algo que te importa (sin gritar).
+Lo más fuerte tiene que ser el final: «¡MÁNDASELO a tu familia…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!», algo más despacio.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[serious, intimate] Tus abuelos tenían media hora para salir de un salón en llamas… [tense] Tú tienes MENOS de cuatro minutos.
+[curious] ¿Sabes por qué?
+[calm] Su sofá era de algodón. [serious] El tuyo es de espuma y microfibra: plástico que sale del petróleo.
+[tense] En un ensayo, quemaron los dos salones a la vez.
+[urgent] A los tres minutos y medio… el tuyo ya era un HORNO.
+[softly, surprised] El de tus abuelos aguantó casi media hora.
+[serious, warm] Lo que te puede salvar esta noche: CIERRA la puerta de tu cuarto.
+[impressed] En otro ensayo, con la puerta cerrada, el cuarto no pasó de treinta y ocho grados. Abierta… llegó a doscientos sesenta.
+[excited, emphatic] ¡MÁNDASELO a tu familia, y que esta noche cierren la puerta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — pantalla partida: arriba EL SALÓN DE TUS ABUELOS, abajo EL TUYO
+1. «Tus abuelos tenían media hora… Tú tienes menos de cuatro minutos.»
+   Primer fotograma: los dos salones a la vez. Arriba, el de los abuelos (luz cálida, sofá de flores, mueble de madera,
+   tele antigua, fotos de boda en la pared); abajo, el tuyo (sofá gris, tele plana, luces LED, el móvil cargando).
+   En los dos prende a la vez una llamita en el sofá y arrancan dos cronómetros: 30:00 arriba y 4:00 abajo.
+2. «¿Sabes por qué?» — los cronómetros laten.
+3. «Su sofá era de algodón. El tuyo es de espuma y microfibra: plástico que sale del petróleo.» — zoom a los cojines:
+   el de arriba se vuelve copos de algodón; el de abajo, espuma con burbujas y una gota de petróleo.
+4. «En un ensayo, quemaron los dos salones a la vez.» — rótulo del laboratorio; los dos fuegos crecen (vídeo acelerado,
+   con el «×» en pantalla).
+5. «A los tres minutos y medio… el tuyo ya era un horno.» — abajo el humo negro baja del techo, sube el termómetro y en
+   3:30 el salón entero estalla en llamas (FLASHOVER). Arriba, el fuego sigue pequeño.
+6. «El de tus abuelos aguantó casi media hora.» — el cronómetro de arriba corre hasta 29:30.
+7. «Lo que te puede salvar esta noche: cierra la puerta de tu cuarto.» — una puerta de dormitorio que se cierra.
+8. «En otro ensayo… 38 grados… 260.» — dos dormitorios: puerta cerrada (azul, 38 °C) y puerta abierta (rojo, 260 °C).
+9. ★ «¡Mándaselo a tu familia, y que esta noche cierren la puerta!» — golpe, avión de papel TÚ → TU FAMILIA.
+10. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Datos: ensayos de UL (laboratorio de seguridad de EE. UU., FSRI): salón con muebles de ahora → flashover en 3:30;
+con muebles de mediados del siglo XX → 29:30. Puerta cerrada: el cuarto no pasó de 100 °F (38 °C); abierta, 500 °F (260 °C).

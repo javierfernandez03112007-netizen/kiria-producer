@@ -611,7 +611,101 @@ def sfx_track_tetra(path):
         wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
+# ---------------------------------------------------------------- formato «salones» (salones.js): abuelos contra hoy
+# Efectos de ElevenLabs ya generados para otros vídeos (copiados en assets/sfx). Misma línea de tiempo que SL en
+# salones.js: cada sonido empieza cuando empieza su imagen y acaba cuando acaba (_tramo).
+def sfx_track_salones(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))           # fondos (tensión, fuego que arde): bajan cuando habla la voz
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    race0 = c["quemaron"] - 0.05
+    foNew = c["horno"] + 0.04
+    foOld = max(foNew + 1.2, LINES[5]["end"] - 0.05)
+    bed0 = LINES[6]["start"] - 0.2
+    close = c["cierra"] + 0.02
+    split = c["ensayo2"] - 0.15
+    fuego, brasas, vapor = _load("fuego"), _load("brasas"), _load("vapor")
+    ign, bub, tic = _onset(fuego), _onset(_load("burbuja")), _onset(_load("tic"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    def ramp(x, t0, t1, db0, db1, track):           # fondo que sube de volumen de db0 a db1
+        y = _tramo(_to(x, db1), max(0.05, t1 - t0), 0.2, 0.25)
+        y = _env(y, [(0, 10 ** ((db0 - db1) / 20)), (t1 - t0, 1.0)])
+        _put(track, y, t0)
+
+    # 1) gancho: prende la llamita, tensión de fondo, las dos cuentas atrás (con latido en la tuya)
+    put(ign, 0.0, -30, 0.8, 0.005, 0.3)
+    put(brasas, 0.0, -38, race0, 0.1, 0.3, track=amb)
+    put("tension", 0.5, -30, foOld + 0.4 - 0.5, 0.8, 0.5, track=amb)
+    put("toque", c["media"], -26, 0.4)
+    put("toque", c["cuatro"], -26, 0.4)
+    put("latido", c["cuatro"] + 0.05, -21, 1.1, 0.005, 0.2)
+    for k in range(2):
+        put(tic, c["sabes"] + 0.1 + 0.3 * k, -27, 0.15, 0.001, 0.05)
+    # 2) las lupas: algodón, espuma y la gota de petróleo
+    put(bub, c["algodon"], -26, 0.3)
+    put(bub, c["espuma"], -26, 0.3)
+    put(_pitch(_onset(_load("nota")), 0.75), c["petroleo"], -27, 0.9, 0.005, 0.3)
+    # 3) el ensayo: reloj, fuego que crece, flashover del tuyo y después el de los abuelos
+    put("whoosh2", race0 - 0.3, -25, 0.9)
+    tt = race0
+    while tt < foNew:
+        put(tic, tt, -30, 0.12, 0.001, 0.04)
+        tt += 0.25
+    while tt < foOld:
+        put(tic, tt, -34, 0.1, 0.001, 0.04)
+        tt += 0.2
+    ramp(brasas, race0, foNew, -40, -25, amb)
+    ramp(burn, race0 + 0.5, foNew, -42, -27, amb)
+    put("golpe", foNew - 0.55, -21, 1.4, 0.01, 0.4)
+    put(ign, foNew - 0.1, -24, 1.2, 0.01, 0.4)
+    put("trueno", foNew, -29, 2.0, 0.01, 0.8)
+    put(burn, foNew + 0.3, -28, bed0 - foNew - 0.3, 0.2, 0.35, track=amb)
+    put("golpe", foOld - 0.55, -24, 1.2, 0.01, 0.4)
+    put(ign, foOld - 0.1, -25, 1.0, 0.01, 0.35)
+    # 4) el dormitorio: el pasillo arde mientras la puerta está abierta; al cerrarse, solo se oye apagado
+    put("whoosh", bed0, -28, 0.6)
+    put(brasas, bed0 + 0.1, -30, close + 0.6 - bed0 - 0.1, 0.2, 0.08, track=amb)
+    put(brasas, close + 0.6, -44, split - close - 0.6, 0.05, 0.3, track=amb)
+    put("caida", close + 0.52, -19, 0.6, 0.002, 0.25)
+    put(tic, close + 0.6, -27, 0.12, 0.001, 0.04)
+    # 5) dos dormitorios: puerta cerrada (38 °C, tranquilo) y abierta (260 °C, alarma)
+    put("whoosh", split, -28, 0.6)
+    put(brasas, split + 0.3, -31, c["compartir"] - split - 0.4, 0.4, 0.3, track=amb)
+    put("nota", c["treinta"] + 0.9, -27, 0.9, 0.005, 0.3)
+    put("fallo", c["doscientos"] + 1.1, -29, 0.5, 0.005, 0.15)
+    put("latido", c["doscientos"] + 1.15, -22, 1.1, 0.005, 0.2)
+    # 6) venta: destellos, avión de papel, fuego de la marca
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put(brasas, tM + 0.2, -36, END - (tM + 0.2), 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
 def sfx_any(path):
+    if Q.get("formato") == "salones":
+        return sfx_track_salones(path)
     if Q.get("formato") == "tetraedro":
         return sfx_track_tetra(path)
     if Q.get("formato") == "nota_prueba":
