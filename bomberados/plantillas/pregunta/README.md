@@ -82,3 +82,13 @@ tiene que repetir `compose.py` para los efectos.
 
 `python3 bomberados/plantillas/pregunta/tiempos_prov.py projects/<p>` → `tiempos.json` repartido por sílabas (≈ 6,3 sílabas/s;
 las frases de venta a ≈ 5). Con la voz de verdad, `asr.py` + `ajustar_voz.py` lo sustituyen.
+
+## Render con el grupo fijo de máquinas de ayuda (Javi, 3 nov: abrir las necesarias, pero SIEMPRE las mismas)
+- Máquinas: sesiones «Bomberados · render 1/2/3» (etiqueta `bomberados-render`, modelo Sonnet), creadas una vez y
+  reutilizadas en todos los vídeos (ver `bomberados/MEMORIA_BOMBERADOS.md` para sus identificadores).
+- Reparto: N = fotogramas totales; esta máquina hace un trozo con `render.sh` (o capture.mjs --range) y a cada máquina
+  se le manda por `send_message`: «render projects/<p> A B render-bomberados-mX <commit>». Ellas ejecutan
+  `render_trozo.sh projects/<p> A B 4 render-bomberados-mX` (renderiza, codifica `trozos/<p>_A_B.mp4` y lo sube a su rama
+  huérfana) y contestan «hecho».
+- Aquí: `recoger_trozos.sh projects/<p>` → fotogramas en out/frames → `compose.py`. Si un proyecto necesita archivos que no
+  están en el repositorio, `projects/<p>/preparar.sh` los genera (p. ej. fotogramas de una grabación de la app).

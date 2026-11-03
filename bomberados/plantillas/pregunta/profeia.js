@@ -67,6 +67,7 @@ function cam(t) {
 
 // ---------------------------------------------------------------- escena 1: el sello y la pregunta
 function examStamp(t) {
+  if (window.COVER_T !== undefined) return;     // portada: sin el sello (lo tapan los rótulos de la portada)
   const out = eio(prog(t, PI.q0 - 0.2, 0.5));           // sube y se hace pequeño cuando entra la pregunta
   const fade = 1 - prog(t, PI.calm, 0.35);
   if (fade <= 0) return;
