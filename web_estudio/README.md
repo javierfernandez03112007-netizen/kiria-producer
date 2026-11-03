@@ -43,6 +43,11 @@ sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño ante
   abrir Instagram» (copia el texto y abre `ig.me/m/kiria.ai`) y «Copiar mensaje», y el correo como texto para copiar.
 - Correo mal escrito: aviso en rojo y se queda en el campo. Privacidad y cookies: FormSubmit añadido como proveedor.
 
+## Foto propia en «Imagina la tuya» (v5.2, 3-11-2026, idea de Javi)
+- Botón «Prueba con una foto tuya» (y arrastrar una imagen sobre la vista previa): la foto se reduce en el propio navegador
+  (máx. 1400 px) y se pone en la web de ejemplo (ordenador y móvil) en cualquier sector; «Quitar foto» la retira. No se sube a
+  ningún sitio (FileReader + canvas, solo en la pantalla del visitante).
+
 ## Fotos de los sectores (pendiente, 3-11-2026)
 - Javi pidió fotos «muy estéticas» y sin derechos para cada sector de «Imagina la tuya». El código ya las busca en
   `media/sectores/<clave>.jpg` (claves: peluqueria, restaurante, academia, fisioterapia, tienda, reformas); si no están, sale el

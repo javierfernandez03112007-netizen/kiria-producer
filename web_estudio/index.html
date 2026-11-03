@@ -361,6 +361,12 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .wsec button.real { border-style: dashed; }
 .wsec button.real[aria-selected="true"] { border-style: solid; }
 .wcap { font-size: 13.5px; color: var(--muted); }
+.wphoto { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 4px; }
+.wup { cursor: pointer; gap: 9px; }
+.wup svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.wclear { background: none; border: 0; color: var(--muted); font: 600 14px/1 var(--body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
+.wclear:hover { color: var(--ink); }
+.wdev.drop .browser { outline: 2px dashed #b45cff; outline-offset: 6px; }
 .wdev { position: relative; perspective: 1400px; padding: 0 0 54px; min-width: 0; }
 .browser { width: min(600px, calc(100% - 40px)); border-radius: 16px; overflow: hidden; background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03); transform: rotateX(var(--rx, 12deg)) rotateY(var(--ry, -8deg)); transform-style: preserve-3d; will-change: transform; }
 .bbar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: #1b2030; border-bottom: 1px solid var(--line); }
@@ -804,6 +810,12 @@ footer a:hover { color: var(--nightfg); }
             <button type="button" role="tab" aria-selected="false" data-s="5">Reformas</button>
             <button type="button" role="tab" aria-selected="false" data-s="6" class="real">Ejemplo real: esta web</button>
           </div>
+          <div class="wphoto">
+            <label class="btn ghost wup" for="wFile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg><span id="wUpTxt">Prueba con una foto tuya</span></label>
+            <input id="wFile" type="file" accept="image/*" hidden>
+            <button type="button" class="wclear" id="wClear" hidden>Quitar foto</button>
+          </div>
+          <p class="wcap">Opcional: la foto no se sube a ningún sitio, solo se ve aquí, en tu pantalla. También puedes arrastrarla sobre la web.</p>
           <p class="wcap" id="wCap">Vista previa de ejemplo: tu web se diseña a medida, con tus fotos, tus colores y tus textos.</p>
         </div>
         <div class="wdev rv" id="browserWrap">
@@ -1682,6 +1694,25 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     const html = (d, nm) => `<div class="ms-nav"><b class="ms-logo"><i></i>${nm}</b>${d.nav.map(x => `<span>${x}</span>`).join('')}<em class="ms-cta">${d.cta}</em><span class="ms-burger"><i></i><i></i><i></i></span></div>`
       + `<div class="ms-hero"><div><p class="ms-kick">${d.kick}</p><p class="ms-title">${nm}</p><p class="ms-tag">${d.tag}</p><div class="ms-btns"><em>${d.cta}</em><b>${d.cta2}</b></div></div><div class="ms-art">${svg(d.ic)}<span class="ph" style="background-image:url(media/sectores/${PH[s]}.jpg)"></span></div></div>`
       + `<div class="ms-cards">${d.cards.map((x, i) => `<div>${svg(CIC[i])}<span>${x}</span></div>`).join('')}</div>`;
+    let userPh = null;          // foto del visitante (data: URL, solo en su pantalla)
+    const fileIn = document.getElementById('wFile'), upTxt = document.getElementById('wUpTxt'), clearBtn = document.getElementById('wClear');
+    const loadUserPhoto = f => {
+      if (!f || !/^image\//.test(f.type)) { upTxt.textContent = 'Elige una imagen (JPG, PNG…)'; return; }
+      const rd = new FileReader();
+      rd.onload = () => { const im = new Image(); im.onload = () => {
+          const k = Math.min(1, 1400 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.max(1, Math.round(im.width * k)); c.height = Math.max(1, Math.round(im.height * k));
+          c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+          try { userPh = c.toDataURL('image/jpeg', 0.86); } catch (e) { userPh = rd.result; }
+          upTxt.textContent = 'Cambiar foto'; clearBtn.hidden = false; if (s === 6) s = 0; draw(true); };
+        im.onerror = () => { upTxt.textContent = 'No se pudo abrir esa imagen'; }; im.src = rd.result; };
+      rd.onerror = () => { upTxt.textContent = 'No se pudo abrir esa imagen'; };
+      rd.readAsDataURL(f);
+    };
+    fileIn.addEventListener('change', () => { loadUserPhoto(fileIn.files[0]); fileIn.value = ''; });
+    clearBtn.addEventListener('click', () => { userPh = null; clearBtn.hidden = true; upTxt.textContent = 'Prueba con una foto tuya'; draw(true); });
+    dev.addEventListener('dragover', e => { e.preventDefault(); dev.classList.add('drop'); });
+    dev.addEventListener('dragleave', () => dev.classList.remove('drop'));
+    dev.addEventListener('drop', e => { e.preventDefault(); dev.classList.remove('drop'); const f = [...((e.dataTransfer && e.dataTransfer.files) || [])].find(x => /^image\//.test(x.type)); if (f) loadUserPhoto(f); });
     const draw = (anim) => {
       tabs.forEach((b, i) => { b.setAttribute('aria-selected', i === s ? 'true' : 'false'); b.tabIndex = i === s ? 0 : -1; });
       const real = s === 6; dev.classList.toggle('isreal', real);
@@ -1690,7 +1721,8 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
       cap.textContent = CAP0; url.textContent = slug(nameIn.value.trim() || d.name);
       for (const el of [site, siteM]) {
         el.style.cssText = `--m-bg:${d.c[0]};--m-ink:${d.c[1]};--m-acc:${d.c[2]};--m-soft:${d.c[3]};--m-a1:${d.c[4]};--m-a2:${d.c[5]}`;
-        el.innerHTML = html(d, nm); el.classList.toggle('hasimg', !!PHOK[PH[s]]);
+        el.innerHTML = html(d, nm); el.classList.toggle('hasimg', !!userPh || !!PHOK[PH[s]]);
+        if (userPh) el.querySelector('.ph').style.backgroundImage = 'url("' + userPh + '")';
         if (anim && !RM && el.animate) el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.7,.2,1)' });
       }
     };
