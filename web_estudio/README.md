@@ -7,12 +7,17 @@ a la izquierda una cabeza humana con el cerebro a la vista y a la derecha una de
 explotan y sigue la página. Después pidió un globo 3D que se pueda girar, con flechas curvas que unan España con
 países de todo el mundo y el mensaje «de España a todo el mundo».
 
-- Página: `index.html` (un solo archivo, sin librerías: WebGL escrito a mano) + `media/`.
+- Página: `index.html` (un solo archivo; WebGL escrito a mano, salvo el visor de productos en 3D, que carga three.js) + `media/`.
 - Vista previa privada (Artifact): https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy — se actualiza publicando
   este mismo `index.html` con esa `url` y los archivos nuevos de `media/` en `files`. Solo el dueño la ve hasta que
   la comparta desde el menú «Compartir».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
+- **Web pública (GitHub Pages, 3-11-2026, elección de Javi): https://javierfernandez03112007-netizen.github.io/kiria-producer/**
+  Se publica con `./web_estudio/publicar.sh`: añade la cabecera de una página normal (charset, viewport, el reset del Artifact,
+  icono, enlace para compartir), copia `media/` y lo sube a la rama `gh-pages` (GitHub la sirve sola; la primera subida activó
+  Pages). Hay que volver a ejecutarlo después de cada cambio en `index.html`. Ahí el formulario y los pedidos se envían solos.
+  Más adelante se puede poner un dominio propio en Ajustes → Pages del repositorio.
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
@@ -33,9 +38,9 @@ sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño ante
 ## Formulario y pedidos (v5.1, 3-11-2026): sin mailto
 - Javi avisó de que al escribir «se peta la página o sale todo en blanco»: el formulario y la página de pago abrían enlaces `mailto:`,
   que dentro de la vista previa de Claude dejan el marco en blanco. Ya no hay ningún `mailto` en la web.
-- **Web publicada (dominio propio)**: «Enviar mensaje» y «Enviar pedido» mandan los datos con **FormSubmit** (formsubmit.co, gratis,
+- **Web publicada (GitHub Pages o dominio propio)**: «Enviar mensaje» y «Enviar pedido» mandan los datos con **FormSubmit** (formsubmit.co, gratis,
   sin cuenta) a javierfernandez03112007@gmail.com, con `_autoresponse` (al cliente le llega un correo de confirmación) y `_next`
-  (vuelve a la web con `#gracias` y sale el aviso «¡Mensaje enviado!»). **La primera vez FormSubmit manda a ese correo un mensaje
+  (vuelve a la web con `#gracias` y sale arriba el aviso «¡Mensaje enviado!»; abajo tapaba el aviso de cookies). **La primera vez FormSubmit manda a ese correo un mensaje
   para activar el formulario: hay que pulsar «Activate Form».** Después se puede cambiar el correo por el alias que da FormSubmit.
   Según varias fuentes, la confirmación al cliente solo funciona con el envío normal (con su paso «no soy un robot»), no por AJAX:
   por eso se usa el envío normal. Probado con una simulación (la sesión no llega a formsubmit.co).
@@ -47,6 +52,20 @@ sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño ante
 - Botón «Prueba con una foto tuya» (y arrastrar una imagen sobre la vista previa): la foto se reduce en el propio navegador
   (máx. 1400 px) y se pone en la web de ejemplo (ordenador y móvil) en cualquier sector; «Quitar foto» la retira. No se sube a
   ningún sitio (FileReader + canvas, solo en la pantalla del visitante).
+
+## Productos en 3D (v5.3, 3-11-2026, idea de Javi: «si vendes productos… muéstralo en 3D como la esfera, modo mockups»)
+- Apartado «¿Vendes productos?» · «Tus productos, en 3D», justo antes de los planes de pago y de las dudas. El visitante sube la
+  foto de su producto (o la arrastra al visor) y lo ve en 3D sobre una peana que se gira arrastrando, con inercia, como el globo
+  (en móvil, el arrastre vertical sigue moviendo la página; también con las flechas del teclado). Siete maquetas: caja, bolsa,
+  tarro (cristal de verdad, con el contenido del color de la foto), botella, lata, taza y «foto en 3D» (bloque de metacrilato).
+- Las etiquetas se pintan en un canvas con la foto, la marca (el nombre escrito en «Imagina la tuya»), el nombre del producto y
+  el precio; los colores salen del tono más vivo de la foto. Sin foto, cada maqueta lleva un ejemplo (galletas, miel de romero,
+  aceite…) con un monograma. Al cambiar de maqueta el producto da una vuelta y se queda de frente; luego gira solo.
+- Debajo, una ficha de tienda (marca, nombre, precio y «Añadir a la cesta», que avisa de que es una demo) y la dirección
+  `tunegocio.es/tienda/producto`. Botón «Lo quiero en mi web» → formulario con el plan «Web con tienda y productos en 3D»
+  (sin precio propio: no está decidido; se habla con el cliente).
+- three.js 0.170.0 desde jsDelivr, solo cuando el visitante se acerca al apartado (el resto de la web sigue sin librerías).
+  La foto no sale del navegador (FileReader + canvas).
 
 ## Fotos de los sectores (pendiente, 3-11-2026)
 - Javi pidió fotos «muy estéticas» y sin derechos para cada sector de «Imagina la tuya». El código ya las busca en

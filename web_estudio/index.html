@@ -469,6 +469,41 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 @media (max-width: 640px) { .wplans, .wincl, .wsteps { grid-template-columns: 1fr; } .wdev { padding-bottom: 70px; } .browser { width: calc(100% - 26px); } .phone { width: 118px; } .whead { margin-top: 72px; } }
 @media (prefers-reduced-motion: reduce) { .bscreen img, .pscreen img { animation: none; } .browser { transform: none; } }
 
+/* productos en 3D (v5.3, 3-11-2026): «¿Vendes productos?» — el visitante sube la foto de su producto y lo ve en 3D en caja, bolsa,
+   tarro, botella, lata, taza o como foto en 3D, sobre una peana que se gira arrastrando (como el globo). three.js se carga solo al
+   llegar a este apartado; la foto no sale del navegador. */
+.w3d { display: grid; grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr); gap: 48px; align-items: center; }
+.w3shop { border-radius: 18px; overflow: hidden; background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03); min-width: 0; }
+.w3stage { position: relative; aspect-ratio: 4 / 3.3; max-width: 100%; overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; outline: none;
+  background: radial-gradient(56% 46% at 50% 66%, rgba(180, 92, 255, 0.24), transparent 72%), radial-gradient(120% 90% at 50% 0%, #1b2133, #0b0d14 74%); }
+.w3stage:focus-visible { box-shadow: inset 0 0 0 2px #b45cff; }
+.w3stage.drag { cursor: grabbing; }
+.w3stage.drop { box-shadow: inset 0 0 0 2px #b45cff; }
+.w3stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.w3msg { position: absolute; inset: 0; display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); font: 500 13px/1.5 var(--mono); }
+.w3tag, .w3hint { position: absolute; top: 14px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 999px; background: rgba(10, 11, 16, 0.62); border: 1px solid var(--line2); color: var(--ink2); font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; pointer-events: none; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.w3tag { left: 14px; }
+.w3tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); }
+.w3hint { right: 14px; transition: opacity .5s; }
+.w3hint svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.w3hint.off { opacity: 0; }
+.w3info { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 18px; padding: 16px 18px; border-top: 1px solid var(--line); }
+.w3info > div { min-width: 0; }
+.w3br { font: 700 11px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.w3nm { font: 700 18px/1.25 var(--body); margin-top: 6px; overflow-wrap: anywhere; }
+.w3buy { display: flex; align-items: center; gap: 14px; }
+.w3pr { font: 400 30px/1 var(--display); letter-spacing: 0.01em; white-space: nowrap; }
+.w3cart { padding: 12px 16px; border-radius: 999px; border: 0; background: var(--ink); color: var(--on-ink); font: 700 14px/1 var(--body); cursor: pointer; white-space: nowrap; transition: transform .2s var(--ease), background .2s; }
+.w3cart:hover { transform: translateY(-1px); }
+.w3cart.ok { background: #6ee7a8; }
+.w3ctl { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.w3ctl > p.lead { color: var(--ink2); font-size: 16px; }
+.w3fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.48fr); gap: 10px; }
+.w3fields .wname { margin-top: 0; }
+.w3ctl .wbtns { margin-top: 6px; }
+@media (max-width: 980px) { .w3d { grid-template-columns: 1fr; gap: 30px; } }
+@media (max-width: 640px) { .w3stage { aspect-ratio: 1 / 1.02; } .w3info { padding: 14px; } .w3pr { font-size: 26px; } .w3fields { grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr); } }
+
 /* página de pago (#pago) */
 .checkout { padding-block: calc(env(safe-area-inset-top, 0px) + 100px) 96px; min-height: 100vh; background: radial-gradient(900px 520px at 88% 0%, rgba(79, 125, 255, 0.13), transparent 60%), radial-gradient(700px 420px at 0% 100%, rgba(255, 77, 97, 0.09), transparent 60%), var(--bg); }
 .back { display: inline-flex; color: var(--muted); text-decoration: none; font-size: 14.5px; margin-bottom: 26px; }
@@ -552,12 +587,12 @@ button.way { width: 100%; font: inherit; text-align: left; cursor: pointer; }
 button.way:hover { border-color: var(--ink); }
 .sel { user-select: all; color: var(--ink); overflow-wrap: anywhere; }
 .form-err { color: #ff8a98; font-size: 14px; }
-.thanks { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); width: min(560px, calc(100% - 32px)); z-index: 90; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 18px 18px 18px 20px; border-radius: 18px; background: #101722; border: 1px solid #2c6b4f; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8); color: var(--ink); animation: thanksIn .5s var(--ease); }
+.thanks { position: fixed; left: 50%; top: calc(84px + env(safe-area-inset-top, 0px)); transform: translateX(-50%); width: min(560px, calc(100% - 32px)); z-index: 90; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 18px 18px 18px 20px; border-radius: 18px; background: #101722; border: 1px solid #2c6b4f; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8); color: var(--ink); animation: thanksIn .5s var(--ease); }
 .thanks .ok { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #1f6f4a; color: #d9ffe9; font-weight: 700; }
 .thanks b { display: block; font-size: 17px; margin-bottom: 4px; }
 .thanks p { color: var(--ink2); font-size: 14.5px; }
 .thanks button { background: none; border: 0; color: var(--muted); font-size: 18px; cursor: pointer; line-height: 1; padding: 4px; }
-@keyframes thanksIn { from { opacity: 0; transform: translate(-50%, 16px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes thanksIn { from { opacity: 0; transform: translate(-50%, -16px); } to { opacity: 1; transform: translate(-50%, 0); } }
 .rm .thanks { animation: none; }
 .more { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 40px; padding: 22px 26px; border: 1.5px dashed var(--line2); border-radius: 18px; background: var(--panel); }
 .more p { font-size: 17px; font-weight: 500; max-width: 34em; }
@@ -848,6 +883,49 @@ footer a:hover { color: var(--nightfg); }
         <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><h4>Publicada y lista</h4><p>La dejamos funcionando, sin que tengas que tocar nada técnico.</p></div>
       </div>
 
+      <div class="whead rv"><p class="mono">¿Vendes productos?</p><h3>Tus productos, <span class="key">en 3D</span></h3></div>
+      <div class="w3d">
+        <div class="w3shop rv">
+          <div class="bbar"><i></i><i></i><i></i><span class="url" id="w3Url">tunegocio.es/tienda/producto</span></div>
+          <div class="w3stage" id="w3Stage" tabindex="0" role="img" aria-label="Tu producto en 3D sobre una peana. Arrastra, o usa las flechas, para girarlo.">
+            <canvas id="w3Cv"></canvas>
+            <p class="w3msg" id="w3Msg">Cargando el 3D…</p>
+            <span class="w3tag">Vista 3D</span>
+            <span class="w3hint" id="w3Hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7 4 12l4 5M16 7l4 5-4 5M4 12h16"/></svg>Arrastra para girarlo</span>
+          </div>
+          <div class="w3info">
+            <div><p class="w3br" id="w3Br">Tu marca</p><p class="w3nm" id="w3Nm">Galletas artesanas</p></div>
+            <div class="w3buy"><b class="w3pr" id="w3Pr">6,90 €</b><button type="button" class="w3cart" id="w3Cart">Añadir a la cesta</button></div>
+          </div>
+        </div>
+        <div class="w3ctl rv">
+          <p class="mono">Pruébalo con el tuyo</p>
+          <p class="lead">Sube una foto de tu producto y elige cómo presentarlo. En tu tienda online, tus clientes podrán girarlo con el dedo antes de comprar.</p>
+          <div class="wphoto">
+            <label class="btn dark wup" for="w3File"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg><span id="w3UpTxt">Sube la foto de tu producto</span></label>
+            <input id="w3File" type="file" accept="image/*" hidden>
+            <button type="button" class="wclear" id="w3Clear" hidden>Quitar foto</button>
+          </div>
+          <p class="wcap">La foto no se sube a ningún sitio: solo se ve aquí, en tu pantalla. También puedes arrastrarla al visor.</p>
+          <p class="wlab">Cómo lo presentamos</p>
+          <div class="wsec" id="w3Kinds" role="tablist" aria-label="Cómo presentar tu producto">
+            <button type="button" role="tab" aria-selected="true" data-k="caja">Caja</button>
+            <button type="button" role="tab" aria-selected="false" data-k="bolsa">Bolsa</button>
+            <button type="button" role="tab" aria-selected="false" data-k="tarro">Tarro</button>
+            <button type="button" role="tab" aria-selected="false" data-k="botella">Botella</button>
+            <button type="button" role="tab" aria-selected="false" data-k="lata">Lata</button>
+            <button type="button" role="tab" aria-selected="false" data-k="taza">Taza</button>
+            <button type="button" role="tab" aria-selected="false" data-k="peana">Foto en 3D</button>
+          </div>
+          <div class="w3fields">
+            <label class="wname">Nombre del producto<input id="w3Name" type="text" maxlength="34" placeholder="Por ejemplo: Miel de romero" spellcheck="false"></label>
+            <label class="wname">Precio<input id="w3Price" type="text" inputmode="decimal" maxlength="9" placeholder="12,90"></label>
+          </div>
+          <p class="wcap">La marca es el nombre de tu negocio que escribiste arriba, en «Imagina la tuya».</p>
+          <div class="wbtns"><a class="btn ghost" href="#contacto" data-formato="Web con tienda y productos en 3D">Lo quiero en mi web <span class="arr">→</span></a></div>
+        </div>
+      </div>
+
       <div class="whead rv"><p class="mono">Precio cerrado · pago único</p><h3>Elige cómo la <span class="key">hacemos</span></h3></div>
       <div class="wplans">
         <div class="wcard rv">
@@ -966,7 +1044,7 @@ footer a:hover { color: var(--nightfg); }
         </div>
         <div class="row2">
           <label for="empresa">Empresa (opcional)<input id="empresa" name="empresa" autocomplete="organization"></label>
-          <label for="formato">Plan<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>4 vídeos al mes</option><option>10 vídeos al mes</option><option>Un vídeo al día</option><option>Anunciarme en kiria.ai</option><option>Web con tus fotos (250 €)</option><option>Web con fotos nuestras (350 €)</option></select></label>
+          <label for="formato">Plan<select id="formato" name="formato"><option>Aún no lo sé</option><option>Un vídeo</option><option>4 vídeos al mes</option><option>10 vídeos al mes</option><option>Un vídeo al día</option><option>Anunciarme en kiria.ai</option><option>Web con tus fotos (250 €)</option><option>Web con fotos nuestras (350 €)</option><option>Web con tienda y productos en 3D</option></select></label>
         </div>
         <div class="row2">
           <label for="tipo">Tipo de vídeo<select id="tipo" name="tipo"><option>Aún no lo sé</option><option>Básico (15–30 s)</option><option>Publicidad (30–45 s)</option><option>Completo (45 s – 1 min)</option><option>Pro (más de 1 min)</option></select></label>
@@ -1684,7 +1762,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   const CIC = ['ok', 'reloj', 'pin'];
   const PH = ['peluqueria', 'restaurante', 'academia', 'fisioterapia', 'tienda', 'reformas'], PHOK = {};      // fotos en media/sectores/<clave>.jpg
   const site = document.getElementById('mSite'), siteM = document.getElementById('mSiteM'), nameIn = document.getElementById('wName'), url = document.getElementById('wUrl'),
-    dev = document.getElementById('browserWrap'), cap = document.getElementById('wCap'), tabs = [...document.querySelectorAll('.wsec [role=tab]')];
+    dev = document.getElementById('browserWrap'), cap = document.getElementById('wCap'), tabs = [...document.querySelectorAll('.wctl .wsec [role=tab]')];
   if (site && nameIn) {
     const esc = t => t.replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
     const svg = k => `<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
@@ -1747,6 +1825,383 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   let pend = false;
   const upd = () => { pend = false; const r = wrap.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height))); const k = 1 - Math.min(1, p * 1.6); br.style.setProperty('--rx', (12 * k).toFixed(2) + 'deg'); br.style.setProperty('--ry', (innerWidth > 980 ? -8 * k + 4 * (p - 0.5) : 0).toFixed(2) + 'deg'); };
   addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(upd); } }, { passive: true }); addEventListener('resize', upd); upd();
+})();
+
+// ---------------------------------------------------------------- productos en 3D (v5.3): el visitante sube la foto de su producto y lo ve en caja,
+// bolsa, tarro, botella, lata, taza o como foto en 3D, sobre una peana que se gira arrastrando (como el globo). three.js se descarga de
+// jsDelivr solo al acercarse a este apartado. Las piezas son sencillas (cajas con cantos redondeados, tornos, cilindros) y las etiquetas se
+// pintan en un canvas con la foto, la marca (el nombre de «Imagina la tuya») y el nombre del producto. La foto no sale del navegador.
+(() => {
+  const $ = id => document.getElementById(id);
+  const stage = $('w3Stage'), cv = $('w3Cv'), msg = $('w3Msg');
+  if (!stage || !cv) return;
+  const nameIn = $('w3Name'), priceIn = $('w3Price'), brandIn = $('wName'), fileIn = $('w3File'), upTxt = $('w3UpTxt'), clearBtn = $('w3Clear'), hint = $('w3Hint'), cart = $('w3Cart');
+  const tabs = [...document.querySelectorAll('#w3Kinds [role=tab]')];
+  const THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
+  // ejemplo de cada presentación cuando todavía no hay foto: nombre, precio y colores
+  const DEF = {
+    caja: { name: 'Galletas artesanas', price: 6.9, a1: '#ff4d61', a2: '#6b4dff', base: '#161a29', ink: '#f2f4f8' },
+    bolsa: { name: 'Bolsa de regalo', price: 4.5, a1: '#b45cff', a2: '#ff4d61', base: '#c79d6d', ink: '#1d1812', rope: '#1c1a17' },
+    tarro: { name: 'Miel de romero', price: 7.5, a1: '#ffb547', a2: '#d9622b', base: '#f4ecdc', ink: '#3b2a17', fill: '#d48b1c', lid: '#c9a04a' },
+    botella: { name: 'Aceite de oliva virgen extra', price: 12.9, a1: '#b5c25a', a2: '#3f6b2a', base: '#f1e8d3', ink: '#2b2418', glass: '#13261b', cap: '#7c1f2b' },
+    lata: { name: 'Refresco de limón', price: 1.9, a1: '#ff4d61', a2: '#4f7dff', base: '#12152a', ink: '#ffffff' },
+    taza: { name: 'Taza de la casa', price: 9.9, a1: '#4f7dff', a2: '#b45cff', base: '#f3f1ec', ink: '#1a1d26', inner: '#4f7dff' },
+    peana: { name: 'Tu producto', price: 24.9, a1: '#ff4d61', a2: '#4f7dff', base: '#141826', ink: '#f2f4f8' },
+  };
+  let kind = 'caja', photo = null, PH = null, api = null;
+  const brand = () => (brandIn && brandIn.value.trim()) || 'Tu marca';
+  const pname = () => nameIn.value.trim() || DEF[kind].name;
+  const price = () => { const v = parseFloat(priceIn.value.replace(/[^\d,.]/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.')); return isFinite(v) && v > 0 ? v : DEF[kind].price; };
+  const eur = v => v.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+  const slug = t => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const info = () => {
+    $('w3Br').textContent = brand(); $('w3Nm').textContent = pname(); $('w3Pr').textContent = eur(price());
+    $('w3Url').textContent = (slug(brand()).replace(/-/g, '') || 'tunegocio') + '.es/tienda/' + (slug(pname()) || 'producto');
+  };
+  // colores sacados de la foto: el tono más vivo (media circular del matiz, pesada por la saturación)
+  const domColor = c => {
+    const t = document.createElement('canvas'); t.width = t.height = 28;
+    const g = t.getContext('2d', { willReadFrequently: true }); g.drawImage(c, 0, 0, 28, 28);
+    const d = g.getImageData(0, 0, 28, 28).data; let x = 0, y = 0, w = 0, S = 0;
+    for (let i = 0; i < d.length; i += 4) {
+      if (d[i + 3] < 128) continue;
+      const r = d[i] / 255, gg = d[i + 1] / 255, b = d[i + 2] / 255, mx = Math.max(r, gg, b), mn = Math.min(r, gg, b), ch = mx - mn, l = (mx + mn) / 2;
+      if (ch < 0.03) continue;
+      let h = mx === r ? ((gg - b) / ch + 6) % 6 : mx === gg ? (b - r) / ch + 2 : (r - gg) / ch + 4; h *= Math.PI / 3;
+      const k = ch * ch; x += Math.cos(h) * k; y += Math.sin(h) * k; w += k; S += ch / (1 - Math.abs(2 * l - 1) + 1e-6) * k;
+    }
+    if (w < 0.02) return { h: 32, s: 0.08 };
+    return { h: (Math.atan2(y, x) * 180 / Math.PI + 360) % 360, s: Math.min(1, S / w) };
+  };
+  const hsl = (h, s, l) => `hsl(${Math.round(h)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+  const h2r = (h, s, l) => { const a = s * Math.min(l, 1 - l), f = n => { const k = (n + h / 30) % 12; return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)); }; return 0.2126 * f(0) + 0.7152 * f(8) + 0.0722 * f(4); };
+  const pal = () => {
+    const d = DEF[kind]; if (!PH) return d;
+    const h = PH.h, s = Math.min(0.7, Math.max(0.2, PH.s)), paper = kind === 'tarro' || kind === 'botella' || kind === 'taza', bagL = 0.5;
+    return { ...d, a1: hsl(h, s, 0.5), a2: hsl(h, s, 0.24),
+      base: paper ? d.base : kind === 'bolsa' ? hsl(h, s * 0.8, bagL) : hsl(h, s, 0.2),
+      ink: paper ? hsl(h, s, 0.17) : kind === 'bolsa' ? (h2r(h, s * 0.8, bagL) > 0.55 ? '#1d1812' : '#ffffff') : '#ffffff',
+      rope: kind === 'bolsa' && h2r(h, s * 0.8, bagL) > 0.55 ? '#1c1a17' : '#f3eee6',
+      fill: hsl(h, Math.max(0.5, s), 0.42), lid: hsl(h, s, 0.34), cap: hsl(h, s, 0.3), glass: hsl(h, 0.35, 0.09), inner: hsl(h, s, 0.5) };
+  };
+
+  // ---------------------------------------------------------------- pintar etiquetas
+  const FD = '"Anton", Impact, "Arial Narrow", sans-serif', FB = '"Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif', FM = '"JetBrains Mono", ui-monospace, Menlo, monospace';
+  const C = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+  const rr = (g, x, y, w, h, r) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, r); else g.rect(x, y, w, h); };
+  const circ = (g, x, y, r) => { g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); };
+  const LS = g => 'letterSpacing' in g;
+  // una línea de texto que cabe en «mw» (se encoge si no)
+  const line = (g, t, x, y, mw, px, fam, wt = '', ls = 0) => {
+    const set = s => { g.font = `${wt} ${s}px ${fam}`; if (LS(g)) g.letterSpacing = (ls * s).toFixed(1) + 'px'; };
+    set(px); const w = g.measureText(t).width; if (w > mw) set(px * mw / w);
+    g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(t, x, y); if (LS(g)) g.letterSpacing = '0px';
+  };
+  // un título en 1-3 líneas, lo más grande que quepa en mw × mh
+  const title = (g, t, x, y, mw, mh, fam) => {
+    const words = t.split(/\s+/).filter(Boolean); let best = null;
+    for (let n = 1; n <= Math.min(3, words.length); n++) {
+      const target = t.length / n, ls = []; let cur = '';
+      for (const w of words) { if (cur && cur.length + 1 + w.length > target * 1.2 && ls.length < n - 1) { ls.push(cur); cur = w; } else cur = cur ? cur + ' ' + w : w; }
+      ls.push(cur); g.font = `100px ${fam}`;
+      const mx = Math.max(...ls.map(l => g.measureText(l).width)), s = Math.min(mw / mx * 100, mh / (ls.length * 1.04));
+      if (!best || s > best.s * 1.04) best = { s, ls };
+    }
+    if (!best) return;
+    g.font = `${best.s}px ${fam}`; g.textAlign = 'center'; g.textBaseline = 'middle';
+    best.ls.forEach((l, i) => g.fillText(l, x, y + (i - (best.ls.length - 1) / 2) * best.s * 1.04));
+  };
+  const cover = (g, im, x, y, w, h) => { const s = Math.max(w / im.width, h / im.height), iw = im.width * s, ih = im.height * s; g.drawImage(im, x + (w - iw) / 2, y + (h - ih) / 2, iw, ih); };
+  // la imagen principal: la foto del visitante o, sin foto, un dibujo de ejemplo (monograma con la inicial de la marca, la marca o el producto)
+  const art = (g, x, y, w, h, P, r = 0, def = 'mono') => {
+    g.save(); rr(g, x, y, w, h, r); g.clip();
+    if (photo) { g.fillStyle = P.base; g.fillRect(x, y, w, h); cover(g, photo, x, y, w, h); }
+    else {
+      const gr = g.createLinearGradient(x, y, x + w, y + h); gr.addColorStop(0, P.a1); gr.addColorStop(1, P.a2); g.fillStyle = gr; g.fillRect(x, y, w, h);
+      const m = Math.max(w, h), n = Math.min(w, h);
+      g.fillStyle = 'rgba(255,255,255,0.16)'; circ(g, x + w * 0.88, y + h * 0.08, m * 0.34); g.fill();
+      g.fillStyle = 'rgba(0,0,0,0.13)'; circ(g, x + w * 0.08, y + h * 0.95, m * 0.26); g.fill();
+      g.fillStyle = '#ffffff';
+      if (def === 'mono') {
+        g.strokeStyle = 'rgba(255,255,255,0.75)'; g.lineWidth = Math.max(2, n * 0.012); circ(g, x + w / 2, y + h / 2, n * 0.33); g.stroke();
+        line(g, ([...brand()][0] || 'K').toUpperCase(), x + w / 2, y + h / 2 + n * 0.02, n * 0.5, n * 0.42, FD);
+      } else title(g, (def === 'brand' ? brand() : pname()).toUpperCase(), x + w / 2, y + h / 2, w * 0.8, h * 0.56, FD);
+    }
+    g.restore();
+  };
+  const lines = (g, x, y, w, n, lh, col, a = 0.22) => { g.fillStyle = col; g.globalAlpha = a; for (let i = 0; i < n; i++) { rr(g, x, y + i * lh, w * (i === n - 1 ? 0.5 : 0.78 + 0.22 * ((i * 0.618) % 1)), lh * 0.42, lh * 0.21); g.fill(); } g.globalAlpha = 1; };
+  const bars = (g, x, y, w, h) => { g.fillStyle = '#ffffff'; rr(g, x - w * 0.08, y - h * 0.12, w * 1.16, h * 1.24, 6); g.fill(); g.fillStyle = '#121212'; const u = w / 96; let px = x, i = 0; while (px < x + w - u) { const bw = u * (1 + ((i * 7 + 3) % 4)); if (i % 2 === 0) g.fillRect(px, y, bw, h); px += bw; i++; } };
+  const ctx = c => { const g = c.getContext('2d'); g.clearRect(0, 0, c.width, c.height); return g; };
+  const PAINT = {
+    boxFront(c, P) { const g = ctx(c), W = c.width, H = c.height, b = H * 0.235;
+      g.fillStyle = P.base; g.fillRect(0, 0, W, H); art(g, 0, 0, W, H - b, P);
+      const gr = g.createLinearGradient(0, 0, W, 0); gr.addColorStop(0, P.a1); gr.addColorStop(1, P.a2); g.fillStyle = gr; g.fillRect(0, H - b, W, H * 0.009);
+      g.fillStyle = P.ink; g.globalAlpha = 0.72; line(g, brand().toUpperCase(), W / 2, H - b * 0.68, W * 0.84, H * 0.03, FM, '700', 0.16); g.globalAlpha = 1;
+      line(g, pname(), W / 2, H - b * 0.34, W * 0.88, H * 0.062, FB, '700'); },
+    boxBack(c, P) { const g = ctx(c), W = c.width, H = c.height;
+      g.fillStyle = P.base; g.fillRect(0, 0, W, H); g.fillStyle = P.ink;
+      line(g, brand().toUpperCase(), W / 2, H * 0.12, W * 0.8, H * 0.085, FD);
+      g.globalAlpha = 0.85; line(g, pname(), W / 2, H * 0.21, W * 0.8, H * 0.042, FB, '600'); g.globalAlpha = 1;
+      lines(g, W * 0.1, H * 0.3, W * 0.8, 9, H * 0.042, P.ink); bars(g, W * 0.58, H * 0.8, W * 0.3, H * 0.09); },
+    boxSide(c, P) { const g = ctx(c), W = c.width, H = c.height;
+      g.fillStyle = P.base; g.fillRect(0, 0, W, H); g.save(); g.translate(W / 2, H / 2); g.rotate(-Math.PI / 2); g.fillStyle = P.ink;
+      line(g, brand().toUpperCase(), 0, -W * 0.1, H * 0.78, W * 0.42, FD); g.globalAlpha = 0.75; line(g, pname(), 0, W * 0.25, H * 0.7, W * 0.12, FB, '600'); g.restore(); },
+    boxTop(c, P) { const g = ctx(c), W = c.width, H = c.height; g.fillStyle = P.base; g.fillRect(0, 0, W, H); g.fillStyle = P.ink; line(g, brand().toUpperCase(), W / 2, H / 2, W * 0.7, H * 0.34, FD); },
+    bagFront(c, P) { const g = ctx(c), W = c.width, H = c.height;
+      g.fillStyle = P.base; g.fillRect(0, 0, W, H); art(g, W * 0.09, H * 0.09, W * 0.82, H * 0.6, P, W * 0.035);
+      g.fillStyle = P.ink; line(g, brand().toUpperCase(), W / 2, H * 0.8, W * 0.8, H * 0.1, FD);
+      g.globalAlpha = 0.7; line(g, (slug(brand()).replace(/-/g, '') || 'tunegocio') + '.es', W / 2, H * 0.9, W * 0.7, H * 0.035, FM, '700', 0.06); g.globalAlpha = 1; },
+    bagBack(c, P) { const g = ctx(c), W = c.width, H = c.height; g.fillStyle = P.base; g.fillRect(0, 0, W, H); g.fillStyle = P.ink;
+      line(g, brand().toUpperCase(), W / 2, H * 0.46, W * 0.78, H * 0.16, FD); g.globalAlpha = 0.7; line(g, (slug(brand()).replace(/-/g, '') || 'tunegocio') + '.es', W / 2, H * 0.6, W * 0.7, H * 0.04, FM, '700', 0.06); g.globalAlpha = 1; },
+    bagSide(c, P) { const g = ctx(c), W = c.width, H = c.height; g.fillStyle = P.base; g.fillRect(0, 0, W, H);
+      g.strokeStyle = 'rgba(0,0,0,0.2)'; g.lineWidth = 3; g.beginPath(); g.moveTo(W / 2, 0); g.lineTo(W / 2, H * 0.8); g.lineTo(0, H * 0.94); g.moveTo(W / 2, H * 0.8); g.lineTo(W, H * 0.94); g.stroke();
+      const sh = g.createLinearGradient(0, 0, W, 0); sh.addColorStop(0, 'rgba(0,0,0,0.1)'); sh.addColorStop(0.5, 'rgba(255,255,255,0.06)'); sh.addColorStop(1, 'rgba(0,0,0,0.1)'); g.fillStyle = sh; g.fillRect(0, 0, W, H); },
+    plain(c, P) { const g = ctx(c); g.fillStyle = P.base; g.fillRect(0, 0, c.width, c.height); },
+    jarLabel(c, P) { const g = ctx(c), W = c.width, H = c.height;
+      rr(g, 2, 2, W - 4, H - 4, H * 0.07); g.fillStyle = P.base; g.fill();
+      g.strokeStyle = P.ink; g.globalAlpha = 0.35; g.lineWidth = 3; rr(g, H * 0.04, H * 0.04, W - H * 0.08, H - H * 0.08, H * 0.045); g.stroke(); g.globalAlpha = 1;
+      art(g, W * 0.09, H * 0.1, W * 0.82, H * 0.54, P, H * 0.035);
+      g.fillStyle = P.ink; line(g, brand().toUpperCase(), W / 2, H * 0.745, W * 0.8, H * 0.1, FD);
+      g.globalAlpha = 0.8; line(g, pname(), W / 2, H * 0.865, W * 0.8, H * 0.066, FB, '600'); g.globalAlpha = 1; },
+    bottleLabel(c, P) { const g = ctx(c), W = c.width, H = c.height;
+      rr(g, 2, 2, W - 4, H - 4, H * 0.05); g.fillStyle = P.base; g.fill(); g.strokeStyle = P.ink; g.lineWidth = 3;
+      g.globalAlpha = 0.45; rr(g, H * 0.035, H * 0.035, W - H * 0.07, H - H * 0.07, H * 0.03); g.stroke(); g.globalAlpha = 0.25; rr(g, H * 0.06, H * 0.06, W - H * 0.12, H - H * 0.12, H * 0.02); g.stroke(); g.globalAlpha = 1;
+      g.fillStyle = P.ink; line(g, brand().toUpperCase(), W / 2, H * 0.17, W * 0.66, H * 0.12, FD);
+      art(g, W * 0.24, H * 0.27, W * 0.52, H * 0.45, P, H * 0.03);
+      title(g, pname(), W / 2, H * 0.83, W * 0.7, H * 0.13, FB); },
+    canPrint(c, P) { const g = ctx(c), W = c.width, H = c.height;
+      g.fillStyle = P.base; g.fillRect(0, 0, W, H);
+      const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, 'rgba(255,255,255,0.07)'); gr.addColorStop(1, 'rgba(0,0,0,0.12)'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
+      art(g, W * 0.31, H * 0.07, W * 0.38, H * 0.66, P, H * 0.04);
+      g.fillStyle = P.ink; line(g, brand().toUpperCase(), W / 2, H * 0.85, W * 0.36, H * 0.15, FD);
+      for (const u of [0.19, 0.81]) { g.save(); g.translate(W * u, H / 2); g.rotate(-Math.PI / 2); g.globalAlpha = 0.9; line(g, pname().toUpperCase(), 0, 0, H * 0.84, W * 0.035, FB, '700', 0.04); g.restore(); }
+      bars(g, W * 0.025, H * 0.62, W * 0.07, H * 0.2); lines(g, W * 0.9, H * 0.18, W * 0.08, 8, H * 0.07, P.ink, 0.3); },
+    mugPrint(c, P) { const g = ctx(c), W = c.width, H = c.height; art(g, 2, 2, W - 4, H - 4, P, H * 0.06, 'brand'); },
+    photoFront(c, P) { const g = ctx(c); g.fillStyle = P.base; g.fillRect(0, 0, c.width, c.height); art(g, 0, 0, c.width, c.height, P, 0, 'name'); },
+    photoBack(c, P) { const g = ctx(c), W = c.width, H = c.height; g.fillStyle = P.base; g.fillRect(0, 0, W, H); g.fillStyle = P.ink; line(g, brand().toUpperCase(), W / 2, H / 2, W * 0.7, H * 0.16, FD); },
+  };
+
+  // ---------------------------------------------------------------- el 3D
+  async function boot() {
+    let T;
+    try { T = await import(THREE_URL); } catch (e) { msg.textContent = 'No se ha podido cargar el 3D. Recarga la página para intentarlo otra vez.'; return; }
+    let R;
+    try { R = new T.WebGLRenderer({ canvas: cv, antialias: true, alpha: false, powerPreference: 'high-performance' }); } catch (e) { msg.textContent = 'Este navegador no puede mostrar el 3D.'; return; }
+    R.outputColorSpace = T.SRGBColorSpace; R.toneMapping = T.ACESFilmicToneMapping; R.toneMappingExposure = 1.0;
+    const ANI = Math.min(8, R.capabilities.getMaxAnisotropy());
+    const scene = new T.Scene(), cam = new T.PerspectiveCamera(30, 1.2, 0.1, 60); scene.add(cam);
+    const tx = c => { const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; t.anisotropy = ANI; return t; };
+    // fondo pegado a la cámara (el mismo degradado que el visor antes de cargar): así el cristal del tarro refracta el fondo de verdad
+    { const c = C(512, 512), g = c.getContext('2d');
+      let gr = g.createRadialGradient(256, 0, 0, 256, 0, 560); gr.addColorStop(0, '#1b2133'); gr.addColorStop(1, '#0b0d14'); g.fillStyle = gr; g.fillRect(0, 0, 512, 512);
+      gr = g.createRadialGradient(256, 338, 0, 256, 338, 300); gr.addColorStop(0, 'rgba(180,92,255,0.26)'); gr.addColorStop(1, 'rgba(180,92,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 512, 512);
+      const bg = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: tx(c), toneMapped: false, depthWrite: false }));
+      bg.renderOrder = -10; bg.position.z = -30; cam.add(bg); scene.userData.bg = bg; }
+    // luz de estudio: reflejos de cajas de luz blancas y dos contraluces con los colores de la marca
+    { const pm = new T.PMREMGenerator(R), es = new T.Scene();
+      es.add(new T.Mesh(new T.BoxGeometry(14, 9, 14), new T.MeshBasicMaterial({ color: new T.Color(0.02, 0.022, 0.035), side: T.BackSide })));
+      const box = (w, h, col, k, x, y, z) => { const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(col).multiplyScalar(k), side: T.DoubleSide })); m.position.set(x, y, z); m.lookAt(0, 0.6, 0); es.add(m); };
+      box(3.4, 2.4, '#ffffff', 3.2, -3.4, 3.4, 3.6); box(2.2, 3.4, '#f1f4ff', 1.3, 4.4, 1.8, 1.8); box(6, 0.8, '#ffffff', 2.2, 0, 6, -0.5);
+      box(1.1, 4.4, '#ff4d61', 3.0, -4.6, 1.6, -3.2); box(1.1, 4.4, '#4f7dff', 3.4, 4.6, 1.6, -3.2);
+      scene.environment = pm.fromScene(es, 0.03).texture; pm.dispose(); }
+    scene.add(new T.HemisphereLight('#cfd8ff', '#140d1c', 0.45));
+    const key = new T.DirectionalLight('#ffffff', 1.5); key.position.set(-2.6, 4.2, 3.4); scene.add(key);
+    const rimL = new T.DirectionalLight('#ff6b7d', 1.0); rimL.position.set(-3.5, 1.6, -3); scene.add(rimL);
+    const rimR = new T.DirectionalLight('#6f93ff', 1.2); rimR.position.set(3.5, 1.8, -3); scene.add(rimR);
+    // la peana: gira con el producto; aro con el degradado de la marca, ondas como las del globo, sombra de contacto y halo debajo
+    const turn = new T.Group(); scene.add(turn);
+    { const c = C(512, 512), g = c.getContext('2d'); g.fillStyle = '#171c29'; g.fillRect(0, 0, 512, 512); g.strokeStyle = 'rgba(255,255,255,0.045)'; g.lineWidth = 1.5;
+      for (let r = 30; r < 256; r += 13) { circ(g, 256, 256, r); g.stroke(); }
+      const side = new T.MeshStandardMaterial({ color: '#121622', roughness: 0.35, metalness: 0.45 }), top = new T.MeshStandardMaterial({ map: tx(c), roughness: 0.42, metalness: 0.3 });
+      const ped = new T.Mesh(new T.CylinderGeometry(1.08, 1.13, 0.16, 120), [side, top, side]); ped.position.y = -0.08; turn.add(ped);
+      const gc = C(512, 2), gg = gc.getContext('2d'), lg = gg.createLinearGradient(0, 0, 512, 0);
+      [['#ff4d61', 0], ['#b45cff', 0.25], ['#4f7dff', 0.5], ['#b45cff', 0.75], ['#ff4d61', 1]].forEach(([col, o]) => lg.addColorStop(o, col)); gg.fillStyle = lg; gg.fillRect(0, 0, 512, 2);
+      const ring = new T.Mesh(new T.TorusGeometry(1.081, 0.0085, 8, 180), new T.MeshBasicMaterial({ map: tx(gc), toneMapped: false })); ring.rotation.x = Math.PI / 2; turn.add(ring); }
+    const radial = (a0, col) => { const c = C(256, 256), g = c.getContext('2d'), gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, `rgba(${col},${a0})`); gr.addColorStop(0.55, `rgba(${col},${a0 * 0.45})`); gr.addColorStop(1, `rgba(${col},0)`); g.fillStyle = gr; g.fillRect(0, 0, 256, 256); return tx(c); };
+    const shadow = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: radial(0.7, '0,0,0'), transparent: true, depthWrite: false, toneMapped: false }));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.002; turn.add(shadow);
+    const halo = new T.Mesh(new T.PlaneGeometry(3.9, 3.9), new T.MeshBasicMaterial({ map: radial(0.5, '180,92,255'), transparent: true, depthWrite: false, blending: T.AdditiveBlending, toneMapped: false }));
+    halo.rotation.x = -Math.PI / 2; halo.position.y = -0.17; scene.add(halo);
+    const ripG = new T.RingGeometry(0.962, 1, 128);
+    const rips = [0, 1, 2].map(i => { const m = new T.Mesh(ripG, new T.MeshBasicMaterial({ color: i === 1 ? '#ffa31f' : '#ff4d61', transparent: true, opacity: 0, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false }));
+      m.rotation.x = -Math.PI / 2; m.position.y = 0.004 + i * 0.0005; turn.add(m); return { m, ph: i / 3 }; });
+
+    // ---------------------------------------------------------------- piezas
+    const V2 = pts => pts.map(([x, y]) => new T.Vector2(x, y));
+    const lathe = (pts, n = 96) => new T.LatheGeometry(V2(pts), n);
+    // caja con cantos redondeados: los vértices de una BoxGeometry con muchos segmentos se empujan hacia una caja interior + radio
+    const roundBox = (W, H, D, r, n = 20) => {
+      const geo = new T.BoxGeometry(W, H, D, n, Math.max(2, Math.round(n * H / W)), Math.max(2, Math.round(n * D / W)));
+      const p = geo.attributes.position, nr = geo.attributes.normal, v = new T.Vector3(), c = new T.Vector3(), hx = W / 2 - r, hy = H / 2 - r, hz = D / 2 - r;
+      for (let i = 0; i < p.count; i++) {
+        v.fromBufferAttribute(p, i); c.set(Math.max(-hx, Math.min(hx, v.x)), Math.max(-hy, Math.min(hy, v.y)), Math.max(-hz, Math.min(hz, v.z)));
+        v.sub(c).normalize(); nr.setXYZ(i, v.x, v.y, v.z); p.setXYZ(i, c.x + v.x * r, c.y + v.y * r, c.z + v.z * r);
+      }
+      return geo;
+    };
+    const DS = T.DoubleSide;
+    const build = k => {
+      const g = new T.Group(), jobs = [], P = pal();
+      const paint = (w, h, fn) => { const c = C(w, h), t = tx(c); jobs.push(() => { PAINT[fn](c, pal()); t.needsUpdate = true; }); return t; };
+      const tint = (m, f) => jobs.push(() => m.color.set(f(pal())));
+      let h = 1, foot = [0.8, 0.8];
+      if (k === 'caja') {
+        const W = 0.92, H = 1.22, D = 0.4, m = t => new T.MeshPhysicalMaterial({ map: t, roughness: 0.42, clearcoat: 0.35, clearcoatRoughness: 0.3 });
+        const ms = m(paint(448, 1358, 'boxSide')), mt = m(paint(1024, 446, 'boxTop'));
+        const box = new T.Mesh(roundBox(W, H, D, 0.016, 24), [ms, ms, mt, mt, m(paint(1024, 1358, 'boxFront')), m(paint(1024, 1358, 'boxBack'))]);
+        box.position.y = H / 2; g.add(box); h = H; foot = [W, D];
+      } else if (k === 'bolsa') {
+        const W = 0.98, H = 1.0, D = 0.38, m = t => new T.MeshStandardMaterial({ map: t, roughness: 0.82 }), ms = m(paint(400, 1045, 'bagSide'));
+        const outer = new T.Mesh(new T.BoxGeometry(W, H, D), [ms, ms, new T.MeshBasicMaterial({ visible: false }), m(paint(256, 128, 'plain')), m(paint(1024, 1045, 'bagFront')), m(paint(1024, 1045, 'bagBack'))]);
+        outer.position.y = H / 2; g.add(outer);
+        const inM = new T.MeshStandardMaterial({ roughness: 0.9, side: T.BackSide }); jobs.push(() => inM.color.set(pal().base).multiplyScalar(0.5));
+        const inside = new T.Mesh(new T.BoxGeometry(W - 0.008, H - 0.004, D - 0.008), inM); inside.position.y = H / 2 + 0.002; g.add(inside);
+        const rope = new T.MeshStandardMaterial({ roughness: 0.75 }); tint(rope, p => p.rope);
+        for (const z of [D / 2 - 0.035, -(D / 2 - 0.035)]) {
+          const cu = new T.CatmullRomCurve3([[-0.2, H - 0.07], [-0.19, H + 0.15], [0, H + 0.27], [0.19, H + 0.15], [0.2, H - 0.07]].map(([x, y]) => new T.Vector3(x, y, z)));
+          g.add(new T.Mesh(new T.TubeGeometry(cu, 48, 0.013, 10), rope));
+        }
+        h = H + 0.27; foot = [W, D];
+      } else if (k === 'tarro') {
+        const r = 0.42, Rl = r - 0.06 + 0.03;
+        g.add(new T.Mesh(lathe([[0.001, 0], [r - 0.05, 0], [r - 0.012, 0.012], [r, 0.05], [r, 0.68], [r - 0.014, 0.73], [r - 0.05, 0.765], [r - 0.06, 0.78], [r - 0.06, 0.84]]),
+          new T.MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.03, metalness: 0, transmission: 1, thickness: 0.06, ior: 1.5, side: DS })));
+        const fill = new T.MeshPhysicalMaterial({ roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.08, side: DS }); tint(fill, p => p.fill);
+        g.add(new T.Mesh(lathe([[0.001, 0.02], [r - 0.045, 0.02], [r - 0.022, 0.045], [r - 0.022, 0.64], [0.001, 0.645]]), fill));
+        const lid = new T.MeshStandardMaterial({ metalness: 0.85, roughness: 0.32, side: DS }); tint(lid, p => p.lid);
+        g.add(new T.Mesh(lathe([[Rl - 0.012, 0.79], [Rl, 0.8], [Rl, 0.935], [Rl - 0.004, 0.95], [Rl - 0.03, 0.955], [0.001, 0.955]]), lid));
+        const label = new T.Mesh(new T.CylinderGeometry(r + 0.004, r + 0.004, 0.5, 96, 1, true, -0.85, 1.7),
+          new T.MeshStandardMaterial({ map: paint(1024, 712, 'jarLabel'), roughness: 0.62, alphaTest: 0.5, alphaToCoverage: true }));
+        label.position.y = 0.37; g.add(label); h = 0.96; foot = [2 * r, 2 * r];
+      } else if (k === 'botella') {
+        const glass = new T.MeshPhysicalMaterial({ roughness: 0.07, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.03, side: DS }); tint(glass, p => p.glass);
+        g.add(new T.Mesh(lathe([[0.001, 0], [0.22, 0], [0.262, 0.016], [0.27, 0.06], [0.27, 0.78], [0.262, 0.84], [0.236, 0.92], [0.185, 0.995], [0.125, 1.065], [0.097, 1.12], [0.089, 1.18], [0.089, 1.36], [0.099, 1.372], [0.099, 1.398], [0.085, 1.41], [0.001, 1.41]]), glass));
+        const cap = new T.MeshStandardMaterial({ metalness: 0.55, roughness: 0.38, side: DS }); tint(cap, p => p.cap);
+        g.add(new T.Mesh(lathe([[0.093, 1.2], [0.096, 1.212], [0.096, 1.404], [0.09, 1.418], [0.001, 1.42]]), cap));
+        const label = new T.Mesh(new T.CylinderGeometry(0.273, 0.273, 0.44, 96, 1, true, -1.25, 2.5),
+          new T.MeshStandardMaterial({ map: paint(1024, 660, 'bottleLabel'), roughness: 0.66, alphaTest: 0.5, alphaToCoverage: true }));
+        label.position.y = 0.42; g.add(label); h = 1.42; foot = [0.54, 0.54];
+      } else if (k === 'lata') {
+        const metal = new T.MeshStandardMaterial({ color: '#d4d8df', metalness: 1, roughness: 0.26, side: DS });
+        g.add(new T.Mesh(lathe([[0.001, 0.035], [0.19, 0.016], [0.232, 0.0], [0.262, 0.004], [0.288, 0.04], [0.3, 0.075], [0.3, 0.905], [0.287, 0.95], [0.266, 0.982], [0.27, 0.99], [0.266, 1.0], [0.254, 0.995], [0.249, 0.978], [0.001, 0.975]]), metal));
+        const print = new T.Mesh(new T.CylinderGeometry(0.3015, 0.3015, 0.83, 128, 1, true, Math.PI, Math.PI * 2),
+          new T.MeshPhysicalMaterial({ map: paint(2048, 898, 'canPrint'), metalness: 0.35, roughness: 0.3, clearcoat: 0.6, clearcoatRoughness: 0.15 }));
+        print.position.y = 0.49; g.add(print);
+        const tab = new T.Mesh(roundBox(0.1, 0.008, 0.17, 0.0035, 8), metal); tab.position.set(0, 0.982, 0.05); g.add(tab);
+        h = 1.0; foot = [0.6, 0.6];
+      } else if (k === 'taza') {
+        const cer = new T.MeshPhysicalMaterial({ color: '#f4f2ee', roughness: 0.2, clearcoat: 0.8, clearcoatRoughness: 0.08, side: DS });
+        g.add(new T.Mesh(lathe([[0.001, 0], [0.37, 0], [0.392, 0.012], [0.4, 0.045], [0.4, 0.84], [0.396, 0.856], [0.386, 0.862]]), cer));
+        const inner = new T.MeshPhysicalMaterial({ roughness: 0.2, clearcoat: 0.8, clearcoatRoughness: 0.08, side: DS }); tint(inner, p => p.inner);
+        g.add(new T.Mesh(lathe([[0.386, 0.862], [0.374, 0.856], [0.366, 0.836], [0.366, 0.1], [0.35, 0.075], [0.001, 0.07]]), inner));
+        const handle = new T.Mesh(new T.TorusGeometry(0.19, 0.042, 20, 48, Math.PI), cer); handle.rotation.z = -Math.PI / 2; handle.position.set(0.385, 0.45, 0); g.add(handle);
+        const print = new T.Mesh(new T.CylinderGeometry(0.4025, 0.4025, 0.56, 96, 1, true, -1.02, 2.04),
+          new T.MeshPhysicalMaterial({ map: paint(1024, 697, 'mugPrint'), roughness: 0.2, clearcoat: 0.8, clearcoatRoughness: 0.08, alphaTest: 0.5, alphaToCoverage: true }));
+        print.position.y = 0.45; g.add(print); h = 0.86; foot = [0.95, 0.8];
+      } else {
+        const ar = photo ? photo.width / photo.height : 0.8; let w = 0.84, hh = w / ar;
+        if (hh > 1.14) { hh = 1.14; w = hh * ar; } if (w > 1.3) { w = 1.3; hh = w / ar; }
+        const cw = ar >= 1 ? 1024 : Math.round(1024 * ar), ch = ar >= 1 ? Math.round(1024 / ar) : 1024;
+        const edge = new T.MeshPhysicalMaterial({ color: '#dfe7f2', roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.02 });
+        const face = t => new T.MeshPhysicalMaterial({ map: t, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.03 });
+        const block = new T.Mesh(roundBox(w, hh, 0.07, 0.013, 24), [edge, edge, edge, edge, face(paint(cw, ch, 'photoFront')), face(paint(cw, ch, 'photoBack'))]);
+        block.position.y = 0.1 + hh / 2; g.add(block);
+        const base = new T.Mesh(roundBox(Math.min(0.92, Math.max(0.5, w * 0.72)), 0.1, 0.3, 0.024, 16), new T.MeshStandardMaterial({ color: '#1b1f2b', roughness: 0.45, metalness: 0.3 }));
+        base.position.y = 0.05; g.add(base); h = 0.1 + hh; foot = [Math.max(0.5, w * 0.72), 0.3];
+      }
+      g.userData = { h, foot, paint: () => jobs.forEach(f => f()) };
+      g.userData.paint();
+      return g;
+    };
+    const dispose = g => g.traverse(o => { if (o.geometry) o.geometry.dispose(); (Array.isArray(o.material) ? o.material : o.material ? [o.material] : []).forEach(m => { if (m.map) m.map.dispose(); m.dispose(); }); });
+
+    // ---------------------------------------------------------------- cambiar de presentación, girar y dibujar
+    let cur = null, outs = [], tIn = 1, flash = 0, bump = 1, TT = 0;
+    const goal = { y: 0.6, d: 4.4 }, camS = { y: 0.6, d: 4.4 };
+    const show = k => {
+      if (cur) outs.push({ g: cur, t: 0 });
+      cur = build(k); cur.scale.setScalar(0.001); turn.add(cur); tIn = 0; flash = 1;
+      const h = cur.userData.h, f = cur.userData.foot; goal.y = h * 0.41 + 0.02; goal.d = Math.max(4.35, 2.5 + h * 1.95);
+      shadow.scale.set(f[0] * 1.5 + 0.22, f[1] * 1.5 + 0.22, 1);
+      const to = FRONT + Math.ceil((spin - FRONT) / (2 * Math.PI) + 0.45) * 2 * Math.PI;      // de frente, tras media vuelta o más
+      if (RM) spin = to; else pres = { from: spin, to, t: 0 };
+      vSpin = 0; idle = -1.6;
+    };
+    const FRONT = -0.4; let pres = null, spin = FRONT - 2.4, vSpin = 0, tilt = 0.3, dragging = false, lx = 0, ly = 0, idle = 0, raf = 0, visible = false, last = performance.now();
+    const ease = t => 1 + 2.70158 * Math.pow(t - 1, 3) + 1.70158 * Math.pow(t - 1, 2);
+    const frame = now => {
+      raf = 0;
+      const dt = Math.min(0.05, Math.max(0, (now - last) / 1000)); last = now; TT += dt;
+      const w = cv.clientWidth, hgt = cv.clientHeight;
+      if (w && hgt) { const pr = Math.min(window.devicePixelRatio || 1, 2); if (cv.width !== Math.round(w * pr) || cv.height !== Math.round(hgt * pr)) { R.setPixelRatio(pr); R.setSize(w, hgt, false); } cam.aspect = w / hgt; cam.updateProjectionMatrix(); }
+      if (pres && !dragging) { pres.t = Math.min(1, pres.t + dt / 1.2); spin = pres.from + (pres.to - pres.from) * (1 - Math.pow(1 - pres.t, 3)); if (pres.t >= 1) pres = null; }
+      else if (!dragging) {
+        idle += dt;
+        if (idle > 2 && !RM) vSpin += (0.4 - vSpin) * (1 - Math.exp(-dt * 0.9)); else vSpin *= Math.exp(-dt * 2.2);
+        spin += vSpin * dt;
+      }
+      turn.rotation.y = spin;
+      if (tIn < 1) { tIn = Math.min(1, tIn + dt / 0.62); cur.scale.setScalar(Math.max(0.001, ease(tIn))); }
+      for (const o of outs) { o.t = Math.min(1, o.t + dt / 0.26); o.g.scale.setScalar(Math.max(0.001, 1 - o.t * o.t)); if (o.t >= 1) { turn.remove(o.g); dispose(o.g); } }
+      outs = outs.filter(o => o.t < 1);
+      if (bump < 1) { bump = Math.min(1, bump + dt / 0.5); cur.position.y = Math.sin(bump * Math.PI) * 0.14; }
+      flash *= Math.exp(-dt * 3);
+      for (const r of rips) { const u = (TT * 0.3 + r.ph) % 1; r.m.scale.setScalar(0.36 + 0.71 * u); r.m.material.opacity = (0.42 + flash * 0.6) * Math.pow(1 - u, 1.6) * Math.min(1, u / 0.08); }
+      halo.material.opacity = 0.85 + flash * 0.5;
+      const kk = 1 - Math.exp(-dt * 4); camS.y += (goal.y - camS.y) * kk; camS.d += (goal.d - camS.d) * kk;
+      const d = camS.d * Math.max(1, 1.16 / cam.aspect);
+      cam.position.set(0, camS.y + Math.sin(tilt) * d, Math.cos(tilt) * d); cam.lookAt(0, camS.y, 0);
+      const bg = scene.userData.bg, bh = 2 * 30 * Math.tan(cam.fov * Math.PI / 360); bg.scale.set(bh * cam.aspect * 1.02, bh * 1.02, 1);
+      R.render(scene, cam);
+      if (visible) raf = requestAnimationFrame(frame);
+    };
+    const kick = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } };
+    new IntersectionObserver(es => { visible = es[es.length - 1].isIntersecting; if (visible) kick(); }, { rootMargin: '60px' }).observe(stage);
+    stage.addEventListener('pointerdown', e => { if (e.button) return; dragging = true; pres = null; lx = e.clientX; ly = e.clientY; vSpin = 0; idle = 0; try { stage.setPointerCapture(e.pointerId); } catch (_) {} stage.classList.add('drag'); hint.classList.add('off'); kick(); });
+    stage.addEventListener('pointermove', e => {
+      if (!dragging) return; const dx = e.clientX - lx, dy = e.clientY - ly, k = 5.2 / Math.max(260, stage.clientWidth); lx = e.clientX; ly = e.clientY;
+      spin += dx * k; vSpin = dx * k * 60; if (e.pointerType !== 'touch') tilt = Math.max(0.04, Math.min(0.62, tilt + dy * k * 0.5)); idle = 0;
+    });
+    const up = () => { dragging = false; stage.classList.remove('drag'); };
+    stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up); stage.addEventListener('lostpointercapture', up);
+    stage.addEventListener('keydown', e => { if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return; e.preventDefault(); pres = null; vSpin = (e.key === 'ArrowRight' ? 1 : -1) * 2.6; idle = 0; hint.classList.add('off'); kick(); });
+    show(kind); msg.hidden = true; kick();
+    if (document.fonts) document.fonts.ready.then(() => cur && cur.userData.paint());
+    return { show: k => { show(k); kick(); }, repaint: () => { if (cur) cur.userData.paint(); kick(); }, bump: () => { bump = 0; flash = 1; kick(); } };
+  }
+
+  // ---------------------------------------------------------------- controles (funcionan aunque el 3D aún no haya cargado)
+  let rpT = 0;
+  const onText = () => { info(); clearTimeout(rpT); rpT = setTimeout(() => api && api.repaint(), 80); };
+  [nameIn, priceIn].forEach(el => el.addEventListener('input', onText)); if (brandIn) brandIn.addEventListener('input', onText);
+  const pick = k => { kind = k; tabs.forEach(b => { const on = b.dataset.k === k; b.setAttribute('aria-selected', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; }); info(); if (api) api.show(k); };
+  tabs.forEach((b, i) => {
+    b.addEventListener('click', () => pick(b.dataset.k));
+    b.addEventListener('keydown', e => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault(); const j = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; pick(tabs[j].dataset.k); tabs[j].focus(); });
+  });
+  const loadPhoto = f => {
+    if (!f || !/^image\//.test(f.type)) { upTxt.textContent = 'Elige una imagen (JPG, PNG…)'; return; }
+    const rd = new FileReader();
+    rd.onload = () => { const im = new Image(); im.onload = () => {
+        const k = Math.min(1, 1600 / Math.max(im.width, im.height)), c = C(Math.max(1, Math.round(im.width * k)), Math.max(1, Math.round(im.height * k)));
+        c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); photo = c; PH = domColor(c);
+        upTxt.textContent = 'Cambiar foto'; clearBtn.hidden = false; if (api) api.show(kind); };
+      im.onerror = () => { upTxt.textContent = 'No se pudo abrir esa imagen'; }; im.src = rd.result; };
+    rd.onerror = () => { upTxt.textContent = 'No se pudo abrir esa imagen'; };
+    rd.readAsDataURL(f);
+  };
+  fileIn.addEventListener('change', () => { loadPhoto(fileIn.files[0]); fileIn.value = ''; });
+  clearBtn.addEventListener('click', () => { photo = null; PH = null; clearBtn.hidden = true; upTxt.textContent = 'Sube la foto de tu producto'; if (api) api.show(kind); });
+  stage.addEventListener('dragover', e => { e.preventDefault(); stage.classList.add('drop'); });
+  stage.addEventListener('dragleave', () => stage.classList.remove('drop'));
+  stage.addEventListener('drop', e => { e.preventDefault(); stage.classList.remove('drop'); const f = [...((e.dataTransfer && e.dataTransfer.files) || [])].find(x => /^image\//.test(x.type)); if (f) loadPhoto(f); });
+  let cartT = 0;
+  cart.addEventListener('click', () => { cart.textContent = 'Añadido ✓ (es una demo)'; cart.classList.add('ok'); clearTimeout(cartT); cartT = setTimeout(() => { cart.textContent = 'Añadir a la cesta'; cart.classList.remove('ok'); }, 2200); if (api) api.bump(); });
+  info();
+  // three.js solo se descarga cuando el visitante se acerca a este apartado
+  let started = false;
+  const io = new IntersectionObserver(es => { if (started || !es.some(e => e.isIntersecting)) return; started = true; io.disconnect(); boot().then(a => { api = a || null; }); }, { rootMargin: '500px 0px' });
+  io.observe(stage);
 })();
 
 // ---------------------------------------------------------------- página de pago (#pago): resumen del pedido y salto a la pasarela

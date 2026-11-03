@@ -128,7 +128,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 - **Contacto en la web (2-11-2026)**: NUNCA el teléfono de Javi ni WhatsApp; dudas por Instagram **@kiria.ai** o por correo.
   Pago sin Bizum (solo tarjeta y Apple Pay/Google Pay).
 - **Webs para empresas (2-11-2026)**: con fotos de la empresa 250 € y con fotos nuestras 350 €, pago único, todo incluido (con IA). Tabla completa en `web_estudio/README.md`. Web v3: rueda 3D de trabajos, «Sobre nosotros», cookies y textos legales. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
-- Publicarla: Cloudflare Pages o Netlify (gratis) + dominio propio (≈ 10–15 €/año); contacto por WhatsApp con mensaje prellenado.
+- **Publicada (3-11-2026, elección de Javi): https://javierfernandez03112007-netizen.github.io/kiria-producer/** (GitHub Pages,
+  rama `gh-pages`). Tras cada cambio en `web_estudio/index.html`: `./web_estudio/publicar.sh` (y publicar también el Artifact).
+  Ahí el formulario y los pedidos se envían solos con FormSubmit; **el primer mensaje hace que FormSubmit mande a Javi el correo
+  «Activate Form»: hasta que lo pulse no llegan los mensajes.** Más adelante, dominio propio (≈ 10–15 €/año) en Ajustes → Pages.
+  La red de la sesión no llega a github.io ni a formsubmit.co: se comprueba con la ejecución «pages build and deployment» de Actions.
+- **Productos en 3D (3-11-2026, idea de Javi)**: en «Webs», antes de los planes, el visitante sube la foto de su producto y lo ve en
+  caja, bolsa, tarro, botella, lata, taza o foto en 3D, girándolo como el globo (three.js solo en ese apartado). Ver README.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
   Instagram), plazos, precios, opiniones y datos legales (titular, NIF, dirección).
 - Legal en España (orientativo, confirmar con gestor): aviso legal (LSSI), privacidad (RGPD) y cookies; para cobrar, alta de autónomo
