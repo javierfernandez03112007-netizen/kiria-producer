@@ -11,7 +11,7 @@
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 URL=https://javierfernandez03112007-netizen.github.io/kiria-producer/
-OUT=${2:-$(mktemp -d)}
+if [ -n "${2:-}" ]; then OUT=$2; else OUT=$(mktemp -d); trap 'rm -rf "$OUT"' EXIT; fi     # la carpeta temporal se borra al acabar
 mkdir -p "$OUT"
 
 python3 - "$OUT" "$URL" <<'PY'
