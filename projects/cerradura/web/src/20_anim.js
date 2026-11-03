@@ -102,7 +102,7 @@ function buildExtras() {
   S.flow = [
     flowCloud(9000, i => [3.8 + gauss(i) * 1.6, 10.8 + gauss(i + 5e3) * 1.4, 0.6 + Math.abs(gauss(i + 9e3)) * 1.8], { size: 1.4, bright: 0.5, seed: 1, nearF: 0.05, farF: 0.05, col: 0xfff0d8, drift: 0.02 }),
     flowCloud(4000, i => [3.55 + gauss(i) * 0.35, 10.55 + gauss(i + 3e3) * 0.3, gauss(i + 6e3) * 0.4], { size: 1.0, bright: 0.35, seed: 2, nearF: 0.02, farF: 0.1, col: 0xd8ecff, drift: 0.004 }),
-    flowCloud(5000, i => [gauss(i) * 14, 0.3 + hash(i * 4.4) * 7, 60 - 8 + gauss(i + 7e3) * 9], { size: 1.3, bright: 0.45, seed: 3, nearF: 0.5, farF: 0.02, col: 0xffe0b8, drift: 0.02 }),
+    flowCloud(5000, i => [gauss(i) * 14, 0.3 + hash(i * 4.4) * 7, 60 - 9 + clamp(gauss(i + 7e3), -2.5, 1.2) * 6], { size: 1.3, bright: 0.45, seed: 3, nearF: 2.0, farF: 0.02, col: 0xffe0b8, drift: 0.02 }),
   ];
 }
 function ghostSet(g, lines = 1) {

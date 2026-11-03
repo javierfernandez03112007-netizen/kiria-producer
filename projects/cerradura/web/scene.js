@@ -1088,7 +1088,7 @@ function housesAt(t, burn) {      // burn(h, k) = 0..1: puerta abierta y luz roj
     for (let w = 0; w < 2; w++) { const pw = W(h, (w ? 0.3 : -0.3) * s, 0.452 * s); pw.y = 0.55 * s * h.sy; m4.compose(pw, q, v3(s, s, 1)); win.setMatrixAt(k * 2 + w, m4); }
   });
   H.forEach((h, k) => { const b = burn(h, k), p = W(h, 0, 0.75 * h.s); p.y = 0.01; m4.compose(p, q.setFromEuler(new THREE.Euler(0, 0, 0)), v3(h.s, 1, h.s)); S.H.pool.setMatrixAt(k, m4); S.H.pool.setColorAt(k, c.setRGB(1.6 * b, 0.12 * b, 0.06 * b)); });
-  H.forEach((h, k) => { const b = burn(h, k), fl = 0.6 + 0.4 * Math.sin(t * 17 + k * 1.7); m4.compose(v3(h.x, (0.8 + 0.5) * h.s * h.sy + 0.06, h.z), q.setFromEuler(new THREE.Euler(0, 0, 0)), v3(1, 1, 1)); S.alarm.setMatrixAt(k, m4); S.alarm.setColorAt(k, c.setRGB(b * 5 * fl, b * 0.35 * fl, b * 0.25 * fl)); });
+  H.forEach((h, k) => { const b = burn(h, k), fl = 0.6 + 0.4 * Math.sin(t * 17 + k * 1.7), sz = b > 0.01 ? 1 : 0.0001; m4.compose(v3(h.x, (0.8 + 0.5) * h.s * h.sy + 0.06, h.z), q.setFromEuler(new THREE.Euler(0, 0, 0)), v3(sz, sz, sz)); S.alarm.setMatrixAt(k, m4); S.alarm.setColorAt(k, c.setRGB(b * 5 * fl, b * 0.35 * fl, b * 0.25 * fl)); });
   S.alarm.instanceMatrix.needsUpdate = true; S.alarm.instanceColor.needsUpdate = true;
   S.H.pool.instanceMatrix.needsUpdate = true; S.H.pool.instanceColor.needsUpdate = true;
   door.instanceMatrix.needsUpdate = true; door.instanceColor.needsUpdate = true; win.instanceMatrix.needsUpdate = true;
@@ -1197,7 +1197,7 @@ function buildExtras() {
   S.flow = [
     flowCloud(9000, i => [3.8 + gauss(i) * 1.6, 10.8 + gauss(i + 5e3) * 1.4, 0.6 + Math.abs(gauss(i + 9e3)) * 1.8], { size: 1.4, bright: 0.5, seed: 1, nearF: 0.05, farF: 0.05, col: 0xfff0d8, drift: 0.02 }),
     flowCloud(4000, i => [3.55 + gauss(i) * 0.35, 10.55 + gauss(i + 3e3) * 0.3, gauss(i + 6e3) * 0.4], { size: 1.0, bright: 0.35, seed: 2, nearF: 0.02, farF: 0.1, col: 0xd8ecff, drift: 0.004 }),
-    flowCloud(5000, i => [gauss(i) * 14, 0.3 + hash(i * 4.4) * 7, 60 - 8 + gauss(i + 7e3) * 9], { size: 1.3, bright: 0.45, seed: 3, nearF: 0.5, farF: 0.02, col: 0xffe0b8, drift: 0.02 }),
+    flowCloud(5000, i => [gauss(i) * 14, 0.3 + hash(i * 4.4) * 7, 60 - 9 + clamp(gauss(i + 7e3), -2.5, 1.2) * 6], { size: 1.3, bright: 0.45, seed: 3, nearF: 2.0, farF: 0.02, col: 0xffe0b8, drift: 0.02 }),
   ];
 }
 function ghostSet(g, lines = 1) {
