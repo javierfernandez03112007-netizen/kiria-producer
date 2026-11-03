@@ -14,12 +14,20 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
 
-## Webs (v4.3–4.4, 2-11-2026)
-- Apartado **Webs** (`#webs`, en el menú): «Web con tus fotos» **250 €** y «Web con fotos nuestras» **350 €** (sesión de fotos
-  en su negocio; zona: consultar), pago único y todo incluido (diseño adaptado al móvil, textos con IA revisados, detalles con IA,
-  enlaces a Instagram/correo/reservas, publicada). Navegador animado que se inclina con el scroll y enseña esta misma web
-  (`media/web_demo.jpg`, capturas de las secciones). «Pagar ahora» abre `#pago` en modo web (claves `PAY_LINKS` `web-0` y `web-1`);
-  «Pedir mi web» rellena el formulario. Pregunta frecuente «¿También hacéis páginas web?».
+## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
+Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
+sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño antes de publicar, dudas propias y cierre sin compromiso.
+- Cabecera «Una web que se parece **a tu negocio**» + tres sellos de confianza (precio cerrado por escrito · ves el diseño antes
+  de publicarlo · te lo explicamos todo, sin tecnicismos).
+- **«Imagina la tuya»** (demo interactiva): el visitante escribe el nombre de su negocio y elige sector (peluquería, restaurante,
+  academia, fisioterapia, tienda, reformas) y ve al momento una web de ejemplo en un navegador y en un móvil (colores, textos,
+  dirección `nombre.es`); «Ejemplo real: esta web» enseña `media/web_demo.jpg`. Los nombres por defecto son inventados y la
+  vista previa avisa de que la web real se diseña a medida. El navegador se inclina con el scroll, como antes.
+- **Así trabajamos contigo** (4 pasos con una línea que se llena al bajar): nos cuentas tu idea → fotos y textos → ves tu web →
+  publicada. **Qué incluye** (6 tarjetas con icono). **Planes** 250 € / 350 € (mismos precios y contenido), botones «Empezar mi
+  web» (abre `#pago` en modo web, claves `web-0`/`web-1`) y «Prefiero hablarlo antes» (rellena el formulario).
+- **Dudas sobre las webs** (qué necesito, cambios, pago, ¿sabré manejarla?) y tarjeta **«¿Hablamos de tu web?»** (Instagram
+  @kiria.ai, formulario y correo como texto). Sin plazos ni número de revisiones: aún no están decididos para las webs.
 - Las cajas de Precios llevaron un vídeo de ejemplo según el tipo, pero Javi pidió quitarlo (2-11-2026): van sin vídeo.
 
 ## Contacto (v4.2, 2-11-2026, decisión de Javi)

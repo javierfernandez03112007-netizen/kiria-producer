@@ -338,38 +338,127 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 @media (max-width: 760px) { .types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .prices { grid-template-columns: 1fr; } }
 
-/* webs: navegador con una web que se desplaza sola y se inclina con el scroll */
-.webs { background: radial-gradient(900px 480px at 10% 10%, rgba(157, 107, 255, 0.12), transparent 60%), var(--soft); overflow: hidden; }
-.webs-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; align-items: center; }
-.browser-wrap { perspective: 1400px; display: grid; gap: 14px; justify-items: center; }
-.browser { width: min(560px, 100%); border-radius: 16px; overflow: hidden; background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03); transform: rotateX(var(--rx, 14deg)) rotateY(var(--ry, -10deg)); transform-style: preserve-3d; will-change: transform; }
+/* webs (v5, 3-11-2026): cercana y profesional — confianza, vista previa interactiva («imagina la tuya»), cómo trabajamos contigo,
+   qué incluye, planes, dudas y cierre. Inspiración: páginas de agencias y servicios de «web en una semana» (proceso por pasos,
+   precio cerrado por escrito, aprobar el diseño antes de publicar). */
+.webs { background: radial-gradient(900px 480px at 10% 10%, rgba(157, 107, 255, 0.12), transparent 60%), radial-gradient(700px 420px at 95% 60%, rgba(79, 125, 255, 0.08), transparent 60%), var(--soft); overflow: hidden; }
+.wtrust { list-style: none; margin: -14px 0 46px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.wtrust li { display: inline-flex; align-items: center; gap: 10px; padding: 9px 15px; border: 1px solid var(--line2); border-radius: 999px; background: rgba(255, 255, 255, 0.02); font-size: 14.5px; color: var(--ink2); }
+.wtrust li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #6ee7a8; box-shadow: 0 0 0 4px rgba(110, 231, 168, 0.15); flex: none; }
+.wdemo { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); gap: 48px; align-items: center; }
+.wctl { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.wctl h3 { font-size: clamp(32px, 3.6vw, 46px); }
+.wctl > p.lead { color: var(--ink2); font-size: 16px; }
+.wname { display: grid; gap: 8px; font-size: 14px; color: var(--muted); margin-top: 6px; }
+.wname input { width: 100%; padding: 15px 16px; border-radius: 14px; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); font: 500 17px/1.2 var(--body); outline: none; transition: border-color .2s, box-shadow .2s; }
+.wname input::placeholder { color: #5f6878; }
+.wname input:focus { border-color: #b45cff; box-shadow: 0 0 0 4px rgba(180, 92, 255, 0.18); }
+.wlab { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.wsec { display: flex; flex-wrap: wrap; gap: 8px; }
+.wsec button { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line2); background: var(--panel); color: var(--ink2); font: 600 14px/1 var(--body); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.wsec button:hover { border-color: var(--ink2); color: var(--ink); }
+.wsec button[aria-selected="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.wsec button.real { border-style: dashed; }
+.wsec button.real[aria-selected="true"] { border-style: solid; }
+.wcap { font-size: 13.5px; color: var(--muted); }
+.wdev { position: relative; perspective: 1400px; padding: 0 0 54px; min-width: 0; }
+.browser { width: min(600px, calc(100% - 40px)); border-radius: 16px; overflow: hidden; background: var(--panel); border: 1px solid var(--line2); box-shadow: 0 50px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03); transform: rotateX(var(--rx, 12deg)) rotateY(var(--ry, -8deg)); transform-style: preserve-3d; will-change: transform; }
 .bbar { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: #1b2030; border-bottom: 1px solid var(--line); }
-.bbar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4254; }
+.bbar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4254; flex: none; }
 .bbar i:nth-child(1) { background: #ff5f57; } .bbar i:nth-child(2) { background: #febc2e; } .bbar i:nth-child(3) { background: #28c840; }
-.bbar .url { margin-left: 10px; flex: 1; background: var(--bg); border-radius: 7px; padding: 5px 10px; font: 500 12px/1 var(--mono); color: var(--muted); }
-.bscreen { height: clamp(300px, 34vw, 420px); overflow: hidden; position: relative; background: var(--bg); }
-.bscreen img { display: block; width: 100%; height: auto; max-width: 100%; animation: bscroll 26s ease-in-out infinite alternate; will-change: transform; }
-@keyframes bscroll { 0%, 6% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + clamp(300px, 34vw, 420px))); } }
-.bcap { text-transform: none; letter-spacing: 0.02em; }
-.wplans { display: grid; gap: 14px; }
-.wcard { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: grid; gap: 14px; min-width: 0; transition: transform .3s var(--ease), border-color .2s; }
+.bbar .url { margin-left: 10px; flex: 1; min-width: 0; background: var(--bg); border-radius: 7px; padding: 5px 10px; font: 500 12px/1 var(--mono); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bscreen { height: clamp(290px, 29vw, 380px); overflow: hidden; position: relative; background: #ffffff; container-type: inline-size; }
+.bscreen img, .pscreen img { display: block; width: 100%; height: auto; max-width: 100%; animation: bscroll 26s ease-in-out infinite alternate; will-change: transform; }
+@keyframes bscroll { 0%, 6% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + clamp(290px, 29vw, 380px))); } }
+.pscreen img { animation-name: pscroll; }
+@keyframes pscroll { 0%, 6% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + 280px)); } }
+.phone { position: absolute; right: 0; bottom: 0; width: clamp(122px, 12.5vw, 156px); aspect-ratio: 9 / 19.5; border-radius: 26px; background: #0b0d12; border: 1px solid var(--line2); padding: 6px; box-shadow: 0 40px 70px -24px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.04); z-index: 2; }
+.pscreen { width: 100%; height: 100%; border-radius: 21px; overflow: hidden; background: #ffffff; position: relative; container-type: inline-size; }
+.pnotch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 32%; height: 9px; border-radius: 9px; background: #0b0d12; z-index: 3; }
+/* la web de ejemplo (dentro del navegador y del móvil): tamaños relativos a su pantalla (cqw) */
+.msite { position: absolute; inset: 0; background: var(--m-bg); color: var(--m-ink); font-family: var(--body); overflow: hidden; display: flex; flex-direction: column; transition: background .45s, color .45s; }
+.msite svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ms-nav { display: flex; align-items: center; gap: 3cqw; padding: 2.6cqw 4cqw; border-bottom: 1px solid rgba(0, 0, 0, 0.07); font-size: 1.85cqw; }
+.ms-logo { font: 700 2.5cqw/1 var(--body); letter-spacing: -0.01em; margin-right: auto; display: flex; align-items: center; gap: 1.3cqw; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ms-logo i { width: 3.1cqw; height: 3.1cqw; border-radius: 1cqw; background: var(--m-acc); flex: none; transition: background .45s; }
+.ms-nav span { opacity: 0.66; white-space: nowrap; }
+.ms-cta { font-style: normal; background: var(--m-acc); color: #ffffff; padding: 1.3cqw 2.3cqw; border-radius: 99px; font-weight: 600; white-space: nowrap; transition: background .45s; }
+.ms-burger { display: none; }
+.ms-hero { flex: 1; display: grid; grid-template-columns: 1.08fr 0.92fr; grid-template-rows: minmax(0, 1fr); gap: 4cqw; padding: 4.6cqw 4cqw 3cqw; align-items: stretch; min-height: 0; }
+.ms-hero > div:first-child { align-self: center; min-width: 0; }
+.ms-kick { font: 700 1.6cqw/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--m-acc); transition: color .45s; }
+.ms-title { font: 700 6cqw/0.98 var(--body); letter-spacing: -0.03em; margin: 1.6cqw 0 1.8cqw; overflow-wrap: anywhere; }
+.ms-tag { font-size: 2.15cqw; line-height: 1.4; opacity: 0.8; }
+.ms-btns { display: flex; gap: 1.6cqw; margin-top: 2.8cqw; flex-wrap: wrap; }
+.ms-btns em, .ms-btns b { font-style: normal; font-size: 1.85cqw; font-weight: 600; padding: 1.5cqw 2.7cqw; border-radius: 99px; white-space: nowrap; }
+.ms-btns em { background: var(--m-acc); color: #ffffff; transition: background .45s; }
+.ms-btns b { border: 1px solid rgba(0, 0, 0, 0.16); }
+.ms-art { position: relative; min-height: 0; border-radius: 3cqw; background: linear-gradient(145deg, var(--m-a1), var(--m-a2)); display: grid; place-items: center; overflow: hidden; color: #ffffff; transition: background .45s; }
+.ms-art::before { content: ""; position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, 0.16); top: -18%; right: -16%; }
+.ms-art::after { content: ""; position: absolute; width: 46%; aspect-ratio: 1; border-radius: 50%; background: rgba(0, 0, 0, 0.1); bottom: -14%; left: -10%; }
+.ms-art svg { width: 38%; height: 38%; position: relative; z-index: 1; stroke-width: 1.4; }
+.ms-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2cqw; padding: 0 4cqw 4cqw; }
+.ms-cards div { background: var(--m-soft); border-radius: 2cqw; padding: 2.2cqw; font-size: 1.85cqw; font-weight: 600; display: flex; align-items: center; gap: 1.4cqw; min-width: 0; transition: background .45s; }
+.ms-cards svg { width: 2.8cqw; height: 2.8cqw; color: var(--m-acc); flex: none; }
+.msite.m .ms-nav { padding: 13cqw 6cqw 4cqw; font-size: 5cqw; }
+.msite.m .ms-logo { font-size: 6.4cqw; gap: 2.6cqw; }
+.msite.m .ms-logo i { width: 7cqw; height: 7cqw; border-radius: 2cqw; }
+.msite.m .ms-nav span, .msite.m .ms-cta { display: none; }
+.msite.m .ms-burger { display: grid; gap: 1.4cqw; width: 7cqw; }
+.msite.m .ms-burger i { height: 0.9cqw; border-radius: 1cqw; background: currentColor; opacity: 0.75; }
+.msite.m .ms-hero { grid-template-columns: 1fr; padding: 4cqw 6cqw; gap: 4cqw; align-content: start; flex: none; }
+.msite.m .ms-art { order: -1; aspect-ratio: 16 / 10; border-radius: 6cqw; align-self: start; }
+.msite.m .ms-kick { font-size: 4.1cqw; }
+.msite.m .ms-title { font-size: 11.5cqw; margin: 2.6cqw 0 3cqw; }
+.msite.m .ms-tag { font-size: 5cqw; }
+.msite.m .ms-btns { margin-top: 5cqw; }
+.msite.m .ms-btns em { font-size: 4.7cqw; padding: 3.4cqw 5cqw; }
+.msite.m .ms-btns b { display: none; }
+.msite.m .ms-cards { grid-template-columns: 1fr; padding: 2cqw 6cqw 6cqw; gap: 3cqw; }
+.msite.m .ms-cards div { font-size: 4.7cqw; padding: 4.2cqw; border-radius: 4cqw; gap: 3cqw; }
+.msite.m .ms-cards svg { width: 6cqw; height: 6cqw; }
+.bscreen .wreal, .pscreen .wreal { display: none; }
+.wdev.isreal .msite { display: none; }
+.wdev.isreal .bscreen .wreal, .wdev.isreal .pscreen .wreal { display: block; }
+/* cómo trabajamos contigo, qué incluye, planes, dudas y cierre */
+.whead { display: grid; gap: 14px; margin: 96px 0 30px; }
+.whead h3 { font-size: clamp(32px, 4vw, 52px); }
+.wsteps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; position: relative; --fill: 0; }
+.wsteps::before, .wsteps::after { content: ""; position: absolute; left: 24px; right: 24px; top: 23px; height: 2px; background: var(--line2); border-radius: 2px; }
+.wsteps::after { right: auto; width: calc((100% - 48px) * var(--fill)); background: var(--grad); }
+.wsteps li { position: relative; display: grid; gap: 10px; align-content: start; padding-right: 10px; min-width: 0; }
+.wn { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line2); font: 700 14px/1 var(--mono); color: var(--ink); position: relative; z-index: 1; transition: background .3s, color .3s, border-color .3s; }
+.wsteps li.on .wn { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.wsteps h4, .wi h4 { font: 700 19px/1.2 var(--body); margin: 6px 0 0; letter-spacing: -0.005em; }
+.wsteps p, .wi p { color: var(--ink2); font-size: 15px; }
+.wincl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.wi { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 8px; align-content: start; min-width: 0; transition: border-color .2s, transform .3s var(--ease); }
+.wi:hover { border-color: var(--line2); transform: translateY(-2px); }
+.wi svg { width: 28px; height: 28px; fill: none; stroke: #c59bff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.wplans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+.wcard { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; transition: transform .3s var(--ease), border-color .2s; }
 .wcard:hover { transform: translateY(-3px); border-color: var(--line2); }
 .wcard.feat { background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--grad) border-box; border: 1.5px solid transparent; }
-.wcard .rec { justify-self: start; font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; background: var(--grad); padding: 6px 9px; border-radius: 999px; }
+.wcard .rec { align-self: flex-start; font: 700 10.5px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; background: var(--grad); padding: 6px 9px; border-radius: 999px; }
 .wtop { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-.wtop h3 { font-size: clamp(24px, 2.6vw, 30px); }
+.wtop h3 { font-size: clamp(26px, 2.6vw, 32px); }
 .wprice { display: grid; justify-items: end; gap: 2px; }
-.wprice b { font: 400 clamp(40px, 4vw, 52px)/1 var(--display); letter-spacing: 0.01em; }
+.wprice b { font: 400 clamp(44px, 4.4vw, 58px)/1 var(--display); letter-spacing: 0.01em; }
 .wprice span { font-size: 13px; color: var(--muted); }
-.wcard p { color: var(--ink2); font-size: 15px; }
-.wcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.wcard li { display: flex; gap: 10px; font-size: 14.5px; color: var(--ink2); }
+.wcard > p { color: var(--ink2); font-size: 15.5px; }
+.wcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.wcard li { display: flex; gap: 10px; font-size: 15px; color: var(--ink2); }
 .wcard li::before { content: "✓"; color: #6ee7a8; font-weight: 700; flex: none; }
-.wbtns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-.wnote { font-size: 14px; color: var(--muted); }
-.wnote a { color: var(--ink); }
-@media (max-width: 900px) { .webs-grid { grid-template-columns: 1fr; } .browser { --rx: 8deg; --ry: 0deg; } }
-@media (prefers-reduced-motion: reduce) { .bscreen img { animation: none; } .browser { transform: none; } }
+.wbtns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 6px; }
+.wend { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 40px; margin-top: 64px; align-items: start; }
+.wfaq h4 { font: 700 13px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.wtalk { border-radius: 22px; padding: 30px; display: grid; gap: 14px; background: linear-gradient(160deg, rgba(255, 77, 97, 0.14), rgba(79, 125, 255, 0.14)), var(--panel); border: 1px solid var(--line2); }
+.wtalk h3 { font-size: clamp(30px, 3.2vw, 42px); }
+.wtalk p { color: var(--ink2); }
+.wtalk .mail { font: 500 14px/1.4 var(--mono); color: var(--ink); user-select: all; overflow-wrap: anywhere; }
+@media (max-width: 980px) { .wdemo, .wend { grid-template-columns: 1fr; } .wsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } .wsteps::before, .wsteps::after { display: none; } .wincl { grid-template-columns: repeat(2, minmax(0, 1fr)); } .browser { --rx: 6deg; --ry: 0deg; } }
+@media (max-width: 640px) { .wplans, .wincl, .wsteps { grid-template-columns: 1fr; } .wdev { padding-bottom: 70px; } .browser { width: calc(100% - 26px); } .phone { width: 118px; } .whead { margin-top: 72px; } }
+@media (prefers-reduced-motion: reduce) { .bscreen img, .pscreen img { animation: none; } .browser { transform: none; } }
 
 /* página de pago (#pago) */
 .checkout { padding-block: calc(env(safe-area-inset-top, 0px) + 100px) 96px; min-height: 100vh; background: radial-gradient(900px 520px at 88% 0%, rgba(79, 125, 255, 0.13), transparent 60%), radial-gradient(700px 420px at 0% 100%, rgba(255, 77, 97, 0.09), transparent 60%), var(--bg); }
@@ -682,30 +771,88 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="band webs" id="webs">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Nuevo · Páginas web</p><h2>Tu web, montada y <span class="key">lista</span></h2></div><p class="sub">También hacemos la página web de tu negocio: diseño, textos, fotos y detalles con IA, todo montado y publicado. Un único pago, todo incluido.</p></div>
-      <div class="webs-grid">
-        <div class="browser-wrap rv" id="browserWrap">
-          <div class="browser" id="browser">
-            <div class="bbar"><i></i><i></i><i></i><span class="url">kiria.ai</span></div>
-            <div class="bscreen"><img src="media/web_demo.jpg" alt="Ejemplo: esta misma web de kiria.ai, de arriba abajo" loading="lazy" id="browserImg"></div>
+      <div class="head rv"><div><p class="mono">Páginas web · para tu negocio</p><h2>Una web que se parece <span class="key">a tu negocio</span></h2></div><p class="sub">Tú nos cuentas qué haces y a quién; nosotros nos encargamos del diseño, los textos, las fotos y de publicarla. Sin tecnicismos y con una persona al otro lado en cada paso.</p></div>
+      <ul class="wtrust rv"><li>Precio cerrado, confirmado por escrito</li><li>Ves el diseño antes de publicarlo</li><li>Te lo explicamos todo, sin tecnicismos</li></ul>
+
+      <div class="wdemo">
+        <div class="wctl rv">
+          <p class="mono">Pruébalo ahora</p>
+          <h3>Imagina la tuya</h3>
+          <p class="lead">Escribe el nombre de tu negocio y elige tu sector: así podría empezar tu web.</p>
+          <label class="wname">Nombre de tu negocio<input id="wName" type="text" maxlength="26" placeholder="Por ejemplo: Peluquería Ana" autocomplete="organization" spellcheck="false"></label>
+          <p class="wlab">Tu sector</p>
+          <div class="wsec" role="tablist" aria-label="Sector de tu negocio">
+            <button type="button" role="tab" aria-selected="true" data-s="0">Peluquería</button>
+            <button type="button" role="tab" aria-selected="false" data-s="1">Restaurante</button>
+            <button type="button" role="tab" aria-selected="false" data-s="2">Academia</button>
+            <button type="button" role="tab" aria-selected="false" data-s="3">Fisioterapia</button>
+            <button type="button" role="tab" aria-selected="false" data-s="4">Tienda</button>
+            <button type="button" role="tab" aria-selected="false" data-s="5">Reformas</button>
+            <button type="button" role="tab" aria-selected="false" data-s="6" class="real">Ejemplo real: esta web</button>
           </div>
-          <p class="mono bcap">Ejemplo: esta misma web, hecha por nosotros</p>
+          <p class="wcap" id="wCap">Vista previa de ejemplo: tu web se diseña a medida, con tus fotos, tus colores y tus textos.</p>
         </div>
-        <div class="wplans">
-          <div class="wcard rv">
-            <div class="wtop"><h3>Web con tus fotos</h3><div class="wprice"><b>250 €</b><span>pago único</span></div></div>
-            <p>Nos mandas las fotos de tu negocio y nosotros hacemos todo lo demás.</p>
-            <ul><li>Diseño a medida, adaptado al móvil</li><li>Textos y descripciones con IA, revisados a mano</li><li>Detalles con IA: fotos retocadas, animaciones o imágenes generadas</li><li>Enlaces a tu Instagram, tu correo o tus reservas</li><li>Montada, publicada y lista para usar</li></ul>
-            <div class="wbtns"><a class="btn dark wpay" href="#pago" data-w="0">Pagar ahora</a><a class="btn ghost" href="#contacto" data-formato="Web con tus fotos (250 €)">Pedir mi web</a></div>
+        <div class="wdev rv" id="browserWrap">
+          <div class="browser" id="browser">
+            <div class="bbar"><i></i><i></i><i></i><span class="url" id="wUrl">estudiolua.es</span></div>
+            <div class="bscreen">
+              <div class="msite" id="mSite" aria-hidden="true"></div>
+              <img class="wreal" src="media/web_demo.jpg" alt="Ejemplo real: esta misma web de kiria.ai, de arriba abajo" loading="lazy" id="browserImg">
+            </div>
           </div>
-          <div class="wcard feat rv">
-            <span class="rec">Todo hecho por nosotros</span>
-            <div class="wtop"><h3>Web con fotos nuestras</h3><div class="wprice"><b>350 €</b><span>pago único</span></div></div>
-            <p>Vamos a tu negocio, hacemos las fotos y te entregamos la web terminada.</p>
-            <ul><li>Sesión de fotos en tu negocio (consúltanos la zona)</li><li>Todo lo que incluye la web con tus fotos</li><li>Fotos retocadas para la web y para tus redes</li></ul>
-            <div class="wbtns"><a class="btn dark wpay" href="#pago" data-w="1">Pagar ahora <span class="arr">→</span></a><a class="btn ghost" href="#contacto" data-formato="Web con fotos nuestras (350 €)">Pedir mi web</a></div>
-          </div>
-          <p class="wnote">¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</p>
+          <div class="phone" aria-hidden="true"><div class="pnotch"></div><div class="pscreen"><div class="msite m" id="mSiteM"></div><img class="wreal" src="media/web_demo.jpg" alt="" loading="lazy"></div></div>
+        </div>
+      </div>
+
+      <div class="whead rv"><p class="mono">Así trabajamos contigo</p><h3>De tu idea a tu web, <span class="key">en cuatro pasos</span></h3></div>
+      <ol class="wsteps" id="wSteps">
+        <li class="rv"><span class="wn">01</span><h4>Nos cuentas tu idea</h4><p>Por Instagram o por correo, sin compromiso. Te preguntamos lo justo: qué haces, a quién te diriges y cómo quieres que te contacten.</p></li>
+        <li class="rv"><span class="wn">02</span><h4>Fotos y textos</h4><p>Nos mandas tus fotos o vamos a hacerlas. Escribimos los textos con IA y los revisamos a mano, con tu forma de hablar.</p></li>
+        <li class="rv"><span class="wn">03</span><h4>Ves tu web</h4><p>Te enseñamos el diseño antes de publicarlo y lo ajustamos contigo.</p></li>
+        <li class="rv"><span class="wn">04</span><h4>Publicada</h4><p>La dejamos funcionando y te explicamos cómo usarla. Desde ese día, tu negocio tiene web.</p></li>
+      </ol>
+
+      <div class="whead rv"><p class="mono">Qué incluye</p><h3>Todo lo que necesita <span class="key">tu web</span></h3></div>
+      <div class="wincl">
+        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><rect x="15.5" y="9" width="5" height="9" rx="1.2"/></svg><h4>Diseño a medida</h4><p>Hecho para tu negocio, sin plantillas repetidas, y pensado primero para el móvil.</p></div>
+        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg><h4>Textos que se entienden</h4><p>Escritos con IA y revisados a mano: claros, sin relleno y con tu tono.</p></div>
+        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg><h4>Fotos cuidadas</h4><p>Retocamos tus fotos (o las hacemos nosotros) y, si hace falta, creamos imágenes con IA.</p></div>
+        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><h4>Botones que traen clientes</h4><p>Enlaces a tu Instagram, tu correo o tus reservas, siempre a mano.</p></div>
+        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg><h4>Detalles con IA</h4><p>Pequeñas animaciones e imágenes que hacen que tu web no parezca una más.</p></div>
+        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><h4>Publicada y lista</h4><p>La dejamos funcionando, sin que tengas que tocar nada técnico.</p></div>
+      </div>
+
+      <div class="whead rv"><p class="mono">Precio cerrado · pago único</p><h3>Elige cómo la <span class="key">hacemos</span></h3></div>
+      <div class="wplans">
+        <div class="wcard rv">
+          <div class="wtop"><h3>Web con tus fotos</h3><div class="wprice"><b>250 €</b><span>pago único</span></div></div>
+          <p>Tú pones las fotos de tu negocio; nosotros, todo lo demás.</p>
+          <ul><li>Diseño a medida, adaptado al móvil</li><li>Textos y descripciones con IA, revisados a mano</li><li>Detalles con IA: fotos retocadas, animaciones o imágenes generadas</li><li>Enlaces a tu Instagram, tu correo o tus reservas</li><li>Montada, publicada y lista para usar</li></ul>
+          <div class="wbtns"><a class="btn dark wpay" href="#pago" data-w="0">Empezar mi web</a><a class="btn ghost" href="#contacto" data-formato="Web con tus fotos (250 €)">Prefiero hablarlo antes</a></div>
+        </div>
+        <div class="wcard feat rv">
+          <span class="rec">Todo hecho por nosotros</span>
+          <div class="wtop"><h3>Web con fotos nuestras</h3><div class="wprice"><b>350 €</b><span>pago único</span></div></div>
+          <p>Vamos a tu negocio, hacemos las fotos y te entregamos la web terminada.</p>
+          <ul><li>Sesión de fotos en tu negocio (consúltanos la zona)</li><li>Fotos retocadas para la web y para tus redes</li><li>Todo lo que incluye la web con tus fotos</li></ul>
+          <div class="wbtns"><a class="btn dark wpay" href="#pago" data-w="1">Empezar mi web <span class="arr">→</span></a><a class="btn ghost" href="#contacto" data-formato="Web con fotos nuestras (350 €)">Prefiero hablarlo antes</a></div>
+        </div>
+      </div>
+
+      <div class="wend">
+        <div class="wfaq rv">
+          <h4>Dudas sobre las webs</h4>
+          <details><summary>¿Qué necesito para empezar?</summary><p>Solo contarnos cómo es tu negocio y, si eliges la web con tus fotos, mandárnoslas. Si no tienes fotos, vamos nosotros a hacerlas (consúltanos la zona).</p></details>
+          <details><summary>¿Puedo pedir cambios?</summary><p>Sí. Antes de publicarla te enseñamos el diseño y lo ajustamos contigo.</p></details>
+          <details><summary>¿Cómo se paga?</summary><p>Con un pago único, con tarjeta, Apple Pay o Google Pay. El precio es cerrado y te lo confirmamos por escrito antes de empezar.</p></details>
+          <details><summary>¿Sabré manejarla?</summary><p>Sí: cuando la publicamos te explicamos cómo funciona, paso a paso y sin tecnicismos.</p></details>
+        </div>
+        <div class="wtalk rv">
+          <p class="mono">Sin compromiso</p>
+          <h3>¿Hablamos de tu web?</h3>
+          <p>Cuéntanos tu negocio por Instagram o por correo y te decimos cómo quedaría la tuya.</p>
+          <div class="wbtns"><a class="btn dark" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">Escribir a @kiria.ai <span class="arr">→</span></a><a class="btn ghost" href="#contacto">Usar el formulario</a></div>
+          <p class="mail">javierfernandez03112007@gmail.com</p>
         </div>
       </div>
     </div>
@@ -1460,12 +1607,69 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   render();
 })();
 
-// ---------------------------------------------------------------- webs: «Pagar ahora» y el navegador que se inclina con el scroll
+// ---------------------------------------------------------------- webs: «Empezar mi web», la vista previa interactiva («imagina la tuya»),
+// los pasos que se encienden al bajar y el navegador que se inclina con el scroll
 (() => {
   document.querySelectorAll('.wpay').forEach(a => a.addEventListener('click', e => { e.preventDefault(); if (window.kiriaGoPayWeb) window.kiriaGoPayWeb(+a.dataset.w); }));
+  const IC = {
+    tij: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/>',
+    plato: '<path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3Zm0 0v7"/>',
+    libro: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+    pulso: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>',
+    bolsa: '<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>',
+    llave: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+    ok: '<path d="M20 6 9 17l-5-5"/>', reloj: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>'
+  };
+  const S = [
+    { name: 'Estudio Lúa', kick: 'Peluquería y estética', tag: 'Cortes, color y peinados que te hacen sentir tú.', cta: 'Reservar cita', cta2: 'Ver servicios', nav: ['Servicios', 'Precios', 'Contacto'], cards: ['Corte y peinado', 'Color y mechas', 'Tratamientos'], ic: 'tij', c: ['#fbf6f3', '#241a1d', '#c2577a', '#f3e5e8', '#f2b8c9', '#a8456a'] },
+    { name: 'Casa Brasa', kick: 'Restaurante', tag: 'Cocina casera de mercado, todos los días.', cta: 'Reservar mesa', cta2: 'Ver la carta', nav: ['Carta', 'Menú del día', 'Contacto'], cards: ['Menú del día', 'Carta de temporada', 'Para llevar'], ic: 'plato', c: ['#fbf7f1', '#2a1d14', '#c4562b', '#f3e7da', '#f4b183', '#a9411f'] },
+    { name: 'Academia Norte', kick: 'Academia', tag: 'Clases de refuerzo y preparación de exámenes, en grupos pequeños.', cta: 'Pedir información', cta2: 'Ver cursos', nav: ['Cursos', 'Horarios', 'Contacto'], cards: ['ESO y Bachillerato', 'Selectividad', 'Idiomas'], ic: 'libro', c: ['#f5f8ff', '#121a33', '#2f5bea', '#e4ebff', '#9db7ff', '#2a47c2'] },
+    { name: 'Clínica Alba', kick: 'Fisioterapia', tag: 'Fisioterapia y bienestar, con cita en un clic.', cta: 'Pedir cita', cta2: 'Tratamientos', nav: ['Tratamientos', 'Equipo', 'Contacto'], cards: ['Fisioterapia', 'Pilates', 'Masaje deportivo'], ic: 'pulso', c: ['#f2fbf9', '#10302b', '#11907c', '#dbf2ec', '#8fdccb', '#0f7d6b'] },
+    { name: 'La Despensa', kick: 'Tienda de barrio', tag: 'Productos de aquí, elegidos uno a uno.', cta: 'Ver productos', cta2: 'Cómo llegar', nav: ['Productos', 'Novedades', 'Contacto'], cards: ['Novedades', 'Para regalar', 'Recogida en tienda'], ic: 'bolsa', c: ['#fbf8f1', '#23200f', '#b0731a', '#f2e8d2', '#f1cf83', '#a3650f'] },
+    { name: 'Reformas Sol', kick: 'Reformas', tag: 'Cocinas, baños y pintura, con presupuesto por escrito.', cta: 'Pedir presupuesto', cta2: 'Ver trabajos', nav: ['Servicios', 'Trabajos', 'Contacto'], cards: ['Cocinas', 'Baños', 'Pintura'], ic: 'llave', c: ['#f6f6f3', '#1d1f22', '#e0662a', '#ebeae5', '#ffb37d', '#c9531c'] }];
+  const CIC = ['ok', 'reloj', 'pin'];
+  const site = document.getElementById('mSite'), siteM = document.getElementById('mSiteM'), nameIn = document.getElementById('wName'), url = document.getElementById('wUrl'),
+    dev = document.getElementById('browserWrap'), cap = document.getElementById('wCap'), tabs = [...document.querySelectorAll('.wsec [role=tab]')];
+  if (site && nameIn) {
+    const esc = t => t.replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+    const svg = k => `<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
+    const slug = t => (t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '') || 'tunegocio') + '.es';
+    const CAP0 = cap.textContent;
+    let s = 0;
+    const html = (d, nm) => `<div class="ms-nav"><b class="ms-logo"><i></i>${nm}</b>${d.nav.map(x => `<span>${x}</span>`).join('')}<em class="ms-cta">${d.cta}</em><span class="ms-burger"><i></i><i></i><i></i></span></div>`
+      + `<div class="ms-hero"><div><p class="ms-kick">${d.kick}</p><p class="ms-title">${nm}</p><p class="ms-tag">${d.tag}</p><div class="ms-btns"><em>${d.cta}</em><b>${d.cta2}</b></div></div><div class="ms-art">${svg(d.ic)}</div></div>`
+      + `<div class="ms-cards">${d.cards.map((x, i) => `<div>${svg(CIC[i])}<span>${x}</span></div>`).join('')}</div>`;
+    const draw = (anim) => {
+      tabs.forEach((b, i) => { b.setAttribute('aria-selected', i === s ? 'true' : 'false'); b.tabIndex = i === s ? 0 : -1; });
+      const real = s === 6; dev.classList.toggle('isreal', real);
+      if (real) { url.textContent = 'kiria.ai'; cap.textContent = 'Ejemplo real: esta misma web, diseñada y programada por nosotros.'; return; }
+      const d = S[s], nm = esc(nameIn.value.trim() || d.name);
+      cap.textContent = CAP0; url.textContent = slug(nameIn.value.trim() || d.name);
+      for (const el of [site, siteM]) {
+        el.style.cssText = `--m-bg:${d.c[0]};--m-ink:${d.c[1]};--m-acc:${d.c[2]};--m-soft:${d.c[3]};--m-a1:${d.c[4]};--m-a2:${d.c[5]}`;
+        el.innerHTML = html(d, nm);
+        if (anim && !RM && el.animate) el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      }
+    };
+    tabs.forEach((b, i) => {
+      b.addEventListener('click', () => { s = i; draw(true); });
+      b.addEventListener('keydown', e => { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault(); s = (s + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; draw(true); tabs[s].focus(); });
+    });
+    nameIn.addEventListener('input', () => { if (s === 6) { s = 0; } draw(false); });
+    draw(false);
+  }
+  // los cuatro pasos: la línea se llena y cada paso se enciende al bajar
+  const steps = document.getElementById('wSteps');
+  if (steps) {
+    const lis = [...steps.children];
+    let pendS = false;
+    const updS = () => { pendS = false; const r = steps.getBoundingClientRect(), p = RM ? 1 : Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (innerHeight * 0.55)));
+      steps.style.setProperty('--fill', p.toFixed(3)); lis.forEach((li, i) => li.classList.toggle('on', p >= i / (lis.length - 1) - 0.001)); };
+    addEventListener('scroll', () => { if (!pendS) { pendS = true; requestAnimationFrame(updS); } }, { passive: true }); addEventListener('resize', updS); updS();
+  }
   const br = document.getElementById('browser'), wrap = document.getElementById('browserWrap'); if (!br || RM) return;
   let pend = false;
-  const upd = () => { pend = false; const r = wrap.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height))); const k = 1 - Math.min(1, p * 1.6); br.style.setProperty('--rx', (14 * k).toFixed(2) + 'deg'); br.style.setProperty('--ry', (innerWidth > 900 ? -10 * k + 4 * (p - 0.5) : 0).toFixed(2) + 'deg'); };
+  const upd = () => { pend = false; const r = wrap.getBoundingClientRect(), p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height))); const k = 1 - Math.min(1, p * 1.6); br.style.setProperty('--rx', (12 * k).toFixed(2) + 'deg'); br.style.setProperty('--ry', (innerWidth > 980 ? -8 * k + 4 * (p - 0.5) : 0).toFixed(2) + 'deg'); };
   addEventListener('scroll', () => { if (!pend) { pend = true; requestAnimationFrame(upd); } }, { passive: true }); addEventListener('resize', upd); upd();
 })();
 
