@@ -1,0 +1,327 @@
+[
+ {
+  "w": "Ayuntamiento",
+  "start": 0.08,
+  "end": 0.8
+ },
+ {
+  "w": "de",
+  "start": 0.8,
+  "end": 0.96
+ },
+ {
+  "w": "Albacete.",
+  "start": 0.96,
+  "end": 2.08
+ },
+ {
+  "w": "Examen",
+  "start": 2.08,
+  "end": 2.64
+ },
+ {
+  "w": "de",
+  "start": 2.64,
+  "end": 2.8
+ },
+ {
+  "w": "2026.",
+  "start": 2.8,
+  "end": 4.08
+ },
+ {
+  "w": "¿Te",
+  "start": 4.08,
+  "end": 4.4
+ },
+ {
+  "w": "encuentras",
+  "start": 4.4,
+  "end": 5.12
+ },
+ {
+  "w": "esta",
+  "start": 5.12,
+  "end": 5.36
+ },
+ {
+  "w": "pregunta?",
+  "start": 5.36,
+  "end": 6.0
+ },
+ {
+  "w": "¿Pero",
+  "start": 6.0,
+  "end": 6.32
+ },
+ {
+  "w": "esto",
+  "start": 6.32,
+  "end": 6.64
+ },
+ {
+  "w": "qué",
+  "start": 6.64,
+  "end": 6.96
+ },
+ {
+  "w": "es?",
+  "start": 6.96,
+  "end": 7.2
+ },
+ {
+  "w": "¡Es",
+  "start": 7.2,
+  "end": 7.6
+ },
+ {
+  "w": "imposible!",
+  "start": 7.6,
+  "end": 8.64
+ },
+ {
+  "w": "Pues",
+  "start": 8.64,
+  "end": 8.96
+ },
+ {
+  "w": "muy",
+  "start": 8.96,
+  "end": 9.2
+ },
+ {
+  "w": "fácil.",
+  "start": 9.2,
+  "end": 9.76
+ },
+ {
+  "w": "Copias",
+  "start": 9.76,
+  "end": 10.32
+ },
+ {
+  "w": "la",
+  "start": 10.32,
+  "end": 10.48
+ },
+ {
+  "w": "pregunta",
+  "start": 10.48,
+  "end": 10.88
+ },
+ {
+  "w": "y",
+  "start": 10.88,
+  "end": 11.04
+ },
+ {
+  "w": "se",
+  "start": 11.04,
+  "end": 11.2
+ },
+ {
+  "w": "la",
+  "start": 11.2,
+  "end": 11.36
+ },
+ {
+  "w": "pasas",
+  "start": 11.36,
+  "end": 11.68
+ },
+ {
+  "w": "a",
+  "start": 11.68,
+  "end": 11.84
+ },
+ {
+  "w": "Profe",
+  "start": 11.84,
+  "end": 12.32
+ },
+ {
+  "w": "IA.",
+  "start": 12.32,
+  "end": 12.88
+ },
+ {
+  "w": "En",
+  "start": 12.88,
+  "end": 13.04
+ },
+ {
+  "w": "segundos",
+  "start": 13.04,
+  "end": 13.52
+ },
+ {
+  "w": "tienes",
+  "start": 13.52,
+  "end": 13.92
+ },
+ {
+  "w": "la",
+  "start": 13.92,
+  "end": 14.0
+ },
+ {
+  "w": "respuesta",
+  "start": 14.0,
+  "end": 14.4
+ },
+ {
+  "w": "correcta,",
+  "start": 14.4,
+  "end": 15.04
+ },
+ {
+  "w": "su",
+  "start": 15.04,
+  "end": 15.2
+ },
+ {
+  "w": "explicación",
+  "start": 15.2,
+  "end": 16.0
+ },
+ {
+  "w": "y",
+  "start": 16.0,
+  "end": 16.16
+ },
+ {
+  "w": "la",
+  "start": 16.16,
+  "end": 16.32
+ },
+ {
+  "w": "página",
+  "start": 16.32,
+  "end": 16.72
+ },
+ {
+  "w": "exacta",
+  "start": 16.72,
+  "end": 17.2
+ },
+ {
+  "w": "del",
+  "start": 17.2,
+  "end": 17.44
+ },
+ {
+  "w": "temario.",
+  "start": 17.44,
+  "end": 18.24
+ },
+ {
+  "w": "Deja",
+  "start": 18.24,
+  "end": 18.56
+ },
+ {
+  "w": "de",
+  "start": 18.56,
+  "end": 18.72
+ },
+ {
+  "w": "perder",
+  "start": 18.72,
+  "end": 19.04
+ },
+ {
+  "w": "tiempo",
+  "start": 19.04,
+  "end": 19.36
+ },
+ {
+  "w": "buscando.",
+  "start": 19.36,
+  "end": 20.16
+ },
+ {
+  "w": "Pregunta,",
+  "start": 20.16,
+  "end": 20.96
+ },
+ {
+  "w": "entiende",
+  "start": 20.96,
+  "end": 21.6
+ },
+ {
+  "w": "y",
+  "start": 21.6,
+  "end": 21.84
+ },
+ {
+  "w": "sigue",
+  "start": 21.84,
+  "end": 22.24
+ },
+ {
+  "w": "avanzando.",
+  "start": 22.24,
+  "end": 22.96
+ },
+ {
+  "w": "Mándaselo",
+  "start": 22.96,
+  "end": 23.68
+ },
+ {
+  "w": "a",
+  "start": 23.68,
+  "end": 23.76
+ },
+ {
+  "w": "tu",
+  "start": 23.76,
+  "end": 23.92
+ },
+ {
+  "w": "compañero",
+  "start": 23.92,
+  "end": 24.4
+ },
+ {
+  "w": "de",
+  "start": 24.4,
+  "end": 24.48
+ },
+ {
+  "w": "oposición.",
+  "start": 24.48,
+  "end": 25.12
+ },
+ {
+  "w": "¡Bomberados",
+  "start": 25.12,
+  "end": 26.16
+ },
+ {
+  "w": "Pro.",
+  "start": 26.16,
+  "end": 26.64
+ },
+ {
+  "w": "Pruébala",
+  "start": 26.64,
+  "end": 27.2
+ },
+ {
+  "w": "gratis",
+  "start": 27.2,
+  "end": 27.68
+ },
+ {
+  "w": "cinco",
+  "start": 27.68,
+  "end": 28.0
+ },
+ {
+  "w": "días.",
+  "start": 28.0,
+  "end": 28.604
+ }
+]

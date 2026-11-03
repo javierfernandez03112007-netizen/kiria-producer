@@ -1,375 +1,375 @@
 [
  {
   "text": "Ayuntamiento de Albacete, examen de 2026.",
-  "start": 0.0,
-  "end": 2.987,
+  "start": 0.06,
+  "end": 3.6,
   "words": [
    {
     "w": "Ayuntamiento",
-    "start": 0.0,
-    "end": 0.775
+    "start": 0.06,
+    "end": 0.78
    },
    {
     "w": "de",
-    "start": 0.775,
-    "end": 0.962
+    "start": 0.78,
+    "end": 0.94
    },
    {
     "w": "Albacete,",
-    "start": 0.962,
-    "end": 1.591
+    "start": 0.94,
+    "end": 1.79
    },
    {
     "w": "examen",
-    "start": 1.691,
-    "end": 2.172
+    "start": 1.79,
+    "end": 2.33
    },
    {
     "w": "de",
-    "start": 2.172,
-    "end": 2.359
+    "start": 2.33,
+    "end": 2.49
    },
    {
     "w": "2026.",
-    "start": 2.359,
-    "end": 2.987
+    "start": 2.49,
+    "end": 3.6
    }
   ]
  },
  {
   "text": "Te encuentras esta pregunta… ¿Pero esto qué es? ¡Es imposible!",
-  "start": 3.227,
-  "end": 6.968,
+  "start": 3.75,
+  "end": 7.51,
   "words": [
    {
     "w": "Te",
-    "start": 3.227,
-    "end": 3.414
+    "start": 3.75,
+    "end": 3.923
    },
    {
     "w": "encuentras",
-    "start": 3.414,
-    "end": 3.895
+    "start": 3.923,
+    "end": 4.52
    },
    {
     "w": "esta",
-    "start": 3.895,
-    "end": 4.229
+    "start": 4.52,
+    "end": 4.76
    },
    {
     "w": "pregunta…",
-    "start": 4.229,
-    "end": 4.711
+    "start": 4.76,
+    "end": 5.47
    },
    {
     "w": "¿Pero",
-    "start": 5.011,
-    "end": 5.345
+    "start": 5.47,
+    "end": 5.59
    },
    {
     "w": "esto",
-    "start": 5.345,
-    "end": 5.679
+    "start": 5.59,
+    "end": 5.91
    },
    {
     "w": "qué",
-    "start": 5.679,
-    "end": 5.866
+    "start": 5.91,
+    "end": 6.23
    },
    {
     "w": "es?",
-    "start": 5.866,
-    "end": 6.053
+    "start": 6.23,
+    "end": 6.55
    },
    {
     "w": "¡Es",
-    "start": 6.153,
-    "end": 6.34
+    "start": 6.55,
+    "end": 6.75
    },
    {
     "w": "imposible!",
-    "start": 6.34,
-    "end": 6.968
+    "start": 6.75,
+    "end": 7.51
    }
   ]
  },
  {
   "text": "Pues muy fácil: copias la pregunta y se la pasas a Profe IA.",
-  "start": 7.118,
-  "end": 10.612,
+  "start": 7.76,
+  "end": 11.39,
   "words": [
    {
     "w": "Pues",
-    "start": 7.118,
-    "end": 7.305
+    "start": 7.76,
+    "end": 7.96
    },
    {
     "w": "muy",
-    "start": 7.305,
-    "end": 7.492
+    "start": 7.96,
+    "end": 8.2
    },
    {
     "w": "fácil:",
-    "start": 7.492,
-    "end": 7.826
+    "start": 8.2,
+    "end": 8.78
    },
    {
     "w": "copias",
-    "start": 8.006,
-    "end": 8.34
+    "start": 8.78,
+    "end": 9.2
    },
    {
     "w": "la",
-    "start": 8.34,
-    "end": 8.527
+    "start": 9.2,
+    "end": 9.36
    },
    {
     "w": "pregunta",
-    "start": 8.527,
-    "end": 9.009
+    "start": 9.36,
+    "end": 9.89
    },
    {
     "w": "y",
-    "start": 9.009,
-    "end": 9.196
+    "start": 9.89,
+    "end": 9.98
    },
    {
     "w": "se",
-    "start": 9.196,
-    "end": 9.383
+    "start": 9.98,
+    "end": 10.07
    },
    {
     "w": "la",
-    "start": 9.383,
-    "end": 9.57
+    "start": 10.07,
+    "end": 10.19
    },
    {
     "w": "pasas",
-    "start": 9.57,
-    "end": 9.904
+    "start": 10.19,
+    "end": 10.51
    },
    {
     "w": "a",
-    "start": 9.904,
-    "end": 10.091
+    "start": 10.51,
+    "end": 10.67
    },
    {
     "w": "Profe",
-    "start": 10.091,
-    "end": 10.425
+    "start": 10.67,
+    "end": 11.15
    },
    {
     "w": "IA.",
-    "start": 10.425,
-    "end": 10.612
+    "start": 11.15,
+    "end": 11.39
    }
   ]
  },
  {
   "text": "En segundos tienes la respuesta correcta, su explicación… y la página exacta del temario.",
-  "start": 10.862,
-  "end": 16.234,
+  "start": 11.51,
+  "end": 16.55,
   "words": [
    {
     "w": "En",
-    "start": 10.862,
-    "end": 11.049
+    "start": 11.51,
+    "end": 11.63
    },
    {
     "w": "segundos",
-    "start": 11.049,
-    "end": 11.53
+    "start": 11.63,
+    "end": 12.11
    },
    {
     "w": "tienes",
-    "start": 11.53,
-    "end": 11.864
+    "start": 12.11,
+    "end": 12.51
    },
    {
     "w": "la",
-    "start": 11.864,
-    "end": 12.051
+    "start": 12.51,
+    "end": 12.59
    },
    {
     "w": "respuesta",
-    "start": 12.051,
-    "end": 12.533
+    "start": 12.59,
+    "end": 12.99
    },
    {
     "w": "correcta,",
-    "start": 12.533,
-    "end": 13.014
+    "start": 12.99,
+    "end": 13.63
    },
    {
     "w": "su",
-    "start": 13.114,
-    "end": 13.301
+    "start": 13.63,
+    "end": 13.79
    },
    {
     "w": "explicación…",
-    "start": 13.301,
-    "end": 13.929
+    "start": 13.79,
+    "end": 14.65
    },
    {
     "w": "y",
-    "start": 14.229,
-    "end": 14.416
+    "start": 14.65,
+    "end": 14.75
    },
    {
     "w": "la",
-    "start": 14.416,
-    "end": 14.603
+    "start": 14.75,
+    "end": 14.91
    },
    {
     "w": "página",
-    "start": 14.603,
-    "end": 15.084
+    "start": 14.91,
+    "end": 15.31
    },
    {
     "w": "exacta",
-    "start": 15.084,
-    "end": 15.566
+    "start": 15.31,
+    "end": 15.79
    },
    {
     "w": "del",
-    "start": 15.566,
-    "end": 15.753
+    "start": 15.79,
+    "end": 16.03
    },
    {
     "w": "temario.",
-    "start": 15.753,
-    "end": 16.234
+    "start": 16.03,
+    "end": 16.55
    }
   ]
  },
  {
   "text": "Deja de perder tiempo buscando. Pregunta, entiende y sigue avanzando.",
-  "start": 16.354,
-  "end": 20.336,
+  "start": 16.8,
+  "end": 21.04,
   "words": [
    {
     "w": "Deja",
-    "start": 16.354,
-    "end": 16.688
+    "start": 16.8,
+    "end": 17.06
    },
    {
     "w": "de",
-    "start": 16.688,
-    "end": 16.875
+    "start": 17.06,
+    "end": 17.22
    },
    {
     "w": "perder",
-    "start": 16.875,
-    "end": 17.209
+    "start": 17.22,
+    "end": 17.54
    },
    {
     "w": "tiempo",
-    "start": 17.209,
-    "end": 17.543
+    "start": 17.54,
+    "end": 17.86
    },
    {
     "w": "buscando.",
-    "start": 17.543,
-    "end": 18.025
+    "start": 17.86,
+    "end": 18.52
    },
    {
     "w": "Pregunta,",
-    "start": 18.125,
-    "end": 18.606
+    "start": 18.52,
+    "end": 19.28
    },
    {
     "w": "entiende",
-    "start": 18.706,
-    "end": 19.187
+    "start": 19.28,
+    "end": 20.01
    },
    {
     "w": "y",
-    "start": 19.187,
-    "end": 19.374
+    "start": 20.01,
+    "end": 20.11
    },
    {
     "w": "sigue",
-    "start": 19.374,
-    "end": 19.708
+    "start": 20.11,
+    "end": 20.51
    },
    {
     "w": "avanzando.",
-    "start": 19.708,
-    "end": 20.336
+    "start": 20.51,
+    "end": 21.04
    }
   ]
  },
  {
   "text": "¡Mándaselo a tu compañero de oposición!",
-  "start": 20.586,
-  "end": 23.826,
+  "start": 21.32,
+  "end": 23.33,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 20.586,
-    "end": 21.426
+    "start": 21.32,
+    "end": 21.95
    },
    {
     "w": "a",
-    "start": 21.426,
-    "end": 21.666
+    "start": 21.95,
+    "end": 22.03
    },
    {
     "w": "tu",
-    "start": 21.666,
-    "end": 21.906
+    "start": 22.03,
+    "end": 22.19
    },
    {
     "w": "compañero",
-    "start": 21.906,
-    "end": 22.746
+    "start": 22.19,
+    "end": 22.67
    },
    {
     "w": "de",
-    "start": 22.746,
-    "end": 22.986
+    "start": 22.67,
+    "end": 22.75
    },
    {
     "w": "oposición!",
-    "start": 22.986,
-    "end": 23.826
+    "start": 22.75,
+    "end": 23.33
    }
   ]
  },
  {
   "text": "¡Bomberados PRO! ¡Pruébala gratis cinco días!",
-  "start": 24.126,
-  "end": 27.066,
+  "start": 23.56,
+  "end": 26.494,
   "words": [
    {
     "w": "¡Bomberados",
-    "start": 24.126,
-    "end": 24.966
+    "start": 23.56,
+    "end": 24.43
    },
    {
     "w": "PRO!",
-    "start": 24.966,
-    "end": 25.206
+    "start": 24.43,
+    "end": 24.887
    },
    {
     "w": "¡Pruébala",
-    "start": 25.306,
-    "end": 25.946
+    "start": 24.887,
+    "end": 25.31
    },
    {
     "w": "gratis",
-    "start": 25.946,
-    "end": 26.386
+    "start": 25.31,
+    "end": 25.772
    },
    {
     "w": "cinco",
-    "start": 26.386,
-    "end": 26.826
+    "start": 25.772,
+    "end": 26.08
    },
    {
     "w": "días!",
-    "start": 26.826,
-    "end": 27.066
+    "start": 26.08,
+    "end": 26.494
    }
   ]
  }

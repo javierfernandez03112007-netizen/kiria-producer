@@ -16,7 +16,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 ## Reglas fijas (de Javi)
 - Datos y preguntas de temario **siempre con fuente oficial** en `FUENTES.md`; funciones de la app, «CONFIRMAR».
 - 1080x1920, 60 fps, voz **Danny** de ElevenLabs («Relatable, Expressive and Warm»; NO «Deep Monotone»), subtítulos Impact palabra a palabra.
-- Commit y push a `master` siempre, sin PR. Máquinas extra en la nube solo con permiso cada vez.
+- Commit y push a `master` siempre, sin PR. **Máquinas extra en la nube (Javi, 3 nov): permiso general para Bomberados, pero un grupo FIJO de máquinas que se reutiliza para todos los vídeos (nunca crear máquinas nuevas por cada vídeo)**; solo merecen la pena para renders largos (los 2D de Bomberados tardan 10–25 min en esta máquina con 4 procesos).
 - Hook verdadero y apuntado en «Hooks ya usados» de `engine/HOOKS.md`. Nada de datos inventados ni ataques a la competencia;
   colaboraciones pagadas con #publi (si lo publica la propia academia, no hace falta).
 - La respuesta de la Pregunta del día NO va en el vídeo: va al final de la descripción, tras el bloque fijo de Bomberados.
@@ -218,3 +218,5 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   MF0404 · p. 228 → página del manual. Escena `profeia.js`: renderAt async que carga cada fotograma de la grabación
   (`out/rec/`, 30 fps) con el tiempo remapeado a la voz (lo acelerado lleva ▶▶ ×N) y zooms de cámara a la respuesta,
   la explicación y la página. Sonido `sfx_track_profeia` (biblioteca de efectos de ElevenLabs).
+- 3 nov: grabación de la ruleta y una partida 1 vs 1 (con cuenta atrás, INCORRECTO/la buena en verde y «Fuente:
+  Ayuntamiento de Albacete 2020») en `bomberados/app/app_ruleta_1vs1_movil.mp4`.

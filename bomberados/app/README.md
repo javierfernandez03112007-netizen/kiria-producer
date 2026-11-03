@@ -28,3 +28,18 @@ cronómetro y preguntas de legislación (Ley 2/2002 de Andalucía, Consorcio Pro
 SCIS, callejero…), «Configurar test» con número de preguntas y filtro por etiquetas; preguntas con acierto/fallo en
 verde/rojo, «Repasar fallos», pantalla de RESULTADOS (aciertos/errores) y vuelta al grupo.
 Ojo: sale la barra de estado del móvil y nombres de grupos: recortar al usarlo.
+
+## app_ruleta_1vs1_movil.mp4 (19 s, vertical 1206x2622; grabación del 7 mar, recibida el 3 nov)
+**Partida 1 vs 1 con la ruleta del temario**:
+- 0–1 s: inicio con «Partidas activas» (un 1 vs 1 en curso), «Nueva partida», invitaciones e historial.
+- 1–7 s: la **RULETA** de temas (iconos de fuego, vehículos, hidráulica…), «¡Girar la Ruleta!» → «Girando…» →
+  «Tema seleccionado: IPCI». Marcador de los dos jugadores arriba.
+- 7–16 s: pregunta con **cuenta atrás de 60 s** (Específico de Bombero · IPCI): «En una red de incendios, según la
+  UNE 23500 sobre abastecimiento de agua de incendios, ¿para qué sirve el contador no reseteable del número de arranques
+  de la bomba auxiliar (jockey)?» A) controlar el estado general de la red general; B) …de la propia bomba auxiliar;
+  C) conocer el estado de las bombas principales; D) facturar el mantenimiento.
+- 16–17 s: **INCORRECTO**, la buena es la **A** (en verde), botón «Justificar» y **«Fuente: (Ayuntamiento de Albacete
+  2020)»**; «Continuar».
+- 17–19 s: «TU TURNO HA TERMINADO» (turno del rival).
+Usos: «La ruleta del temario» (POV), «Tú contra…» 1 vs 1, cierre de los vídeos. Ojo: sale la barra de estado y nombres de
+jugadores: recortar o tapar al usarlo.
