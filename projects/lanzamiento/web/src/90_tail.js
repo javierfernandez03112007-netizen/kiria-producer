@@ -57,21 +57,25 @@ window.renderCover = function () {
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   FONT3 = new FontLoader().parse(await new TTFLoader().loadAsync(F + 'Inter-Black.otf'));
   const names = await (await fetch('img/reels.json')).json();
+  PRODUCTO = new Image(); PRODUCTO.src = 'img/producto.jpg'; await PRODUCTO.decode();
   for (let i = 0; i < names.length; i++) { const R = []; for (let j = 1; j <= 6; j++) { const im = new Image(); im.src = `img/r${i}_${j}.jpg`; await im.decode(); R.push(im); } REELS.push(R); }
   const lines = await (await fetch('../tiempos.json')).json();
   VENV = await (await fetch('../voz_env.json')).json();
   WORDS = lines.flatMap((l, li) => l.words.map(w => ({ ...w, n: norm(w.w), li: li + 1 })));
   END = Math.ceil(lines[lines.length - 1].end + 2.6);
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
-  // (los nombres de las claves son los de la primera versión; las frases de los precios se quitaron: 2 = guion, 3 = voz, 4 = 3D, 5 = subtítulos, 6 = sonido, 7 = comenta)
+  // frases: 1 = 3,2 M · 2 = seguidores · 3 = guion · 4 = voz · 5 = 3D · 6 = subtítulos · 7 = sonido · 8 = prueba tu objeto · 9 = comenta KIRIA
+  // (las claves conservan los nombres de la primera versión para no tocar la escena)
   K = {
     k32: atL(1, '32'), millones1: atL(1, 'millones'), visual1: atL(1, 'visualizaciones'), en1: atL(1, '=en'), siete1: atL(1, '=7'), dias1: atL(1, 'dias'), y1: atL(1, '=y'), ni1: atL(1, '=ni'), sola1: atL(1, 'sola'), camara1: atL(1, 'camara'),
-    guion3: atL(2, 'guion'), que3: atL(2, '=que'), engancha3: atL(2, 'engancha'), desde3: atL(2, 'desde'), primer3: atL(2, 'primer'), segundo3: atL(2, 'segundo'),
-    una4: atL(3, '=una'), voz4: atL(3, 'voz'),
-    cada5: atL(4, 'cada'), objeto5: atL(4, 'objeto'), construido5: atL(4, 'construido'), d3_5: atL(4, '3d'), que5: atL(4, '=que'), mueve5: atL(4, 'mueve'), justo5: atL(4, 'justo'), oyes5: atL(4, 'oyes'),
-    subtitulos6: atL(5, 'subtitulos'), palabra6: atL(5, 'palabra'), a6: atL(5, '=a'), palabra6b: atL(5, 'palabra', 2),
-    sonido7: atL(6, 'sonido'), efecto7: atL(6, 'efecto'), a7: atL(6, '=a'), efecto7b: atL(6, 'efecto', 2),
-    si11: atL(7, '=si'), videos11: atL(7, 'videos'), cuenta11: atL(7, 'cuenta'), negocio11: atL(7, 'negocio'), comenta11: atL(7, 'comenta'), kiria11: atL(7, 'kiria'),
+    mas2: atL(2, 'mas'), n2500: atL(2, '2500'), seguidores2: atL(2, 'seguidores'), seis2: atL(2, '=6'), dias2: atL(2, 'dias'), como2: atL(2, 'como'),
+    guion3: atL(3, 'guion'), que3: atL(3, '=que'), engancha3: atL(3, 'engancha'), desde3: atL(3, 'desde'), primer3: atL(3, 'primer'), segundo3: atL(3, 'segundo'),
+    una4: atL(4, '=una'), voz4: atL(4, 'voz'),
+    cada5: atL(5, 'cada'), objeto5: atL(5, 'objeto'), construido5: atL(5, 'construido'), d3_5: atL(5, '3d'), que5: atL(5, '=que'), mueve5: atL(5, 'mueve'), justo5: atL(5, 'justo'), oyes5: atL(5, 'oyes'),
+    subtitulos6: atL(6, 'subtitulos'), palabra6: atL(6, 'palabra'), a6: atL(6, '=a'), palabra6b: atL(6, 'palabra', 2),
+    sonido7: atL(7, 'sonido'), efecto7: atL(7, 'efecto'), a7: atL(7, '=a'), efecto7b: atL(7, 'efecto', 2),
+    ademas8: atL(8, 'ademas'), probar8: atL(8, 'probar'), objeto8: atL(8, 'objeto'), d3_8: atL(8, '3d'), ver8: atL(8, '=ver'), redes8: atL(8, 'redes'), pagina8: atL(8, 'pagina'), web8: atL(8, 'web'),
+    si11: atL(9, '=si'), videos11: atL(9, 'videos'), comenta11: atL(9, 'comenta'), kiria11: atL(9, 'kiria'), paso9: atL(9, 'paso'), enlace9: atL(9, 'enlace'), privado9: atL(9, 'privado'),
   };
   // «3,2» es una sola palabra en los tiempos: «tres», «coma» y «dos» se reparten por sílabas
   K.coma1 = K.k32 + 0.24; K.dos1 = K.k32 + 0.56;

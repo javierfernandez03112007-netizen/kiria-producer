@@ -46,6 +46,11 @@ SFX = {     # uno por suceso; en compose_lan.py se recortan a lo que dura cada c
     "enviado": ("message sent, soft modern swoosh notification", 0.6),
     "contador": ("fast digital counter ticking up quickly, numbers rolling on a screen, short and clean", 1.0),
     "vuelve": ("reverse whoosh building up quickly, rushing air sucked back, clean ending", 0.8),
+    # versión larga: «prueba tu objeto en 3D» y el enlace por privado
+    "corazon": ("cute soft pop of a like heart appearing on a phone screen with a tiny sparkle, short", 0.5),
+    "estira": ("phone screen stretching wide like elastic, smooth rubbery stretch ending in a soft snap, short", 0.6),
+    "mensaje": ("incoming direct message notification on a phone, two soft bright chimes, modern, short", 0.6),
+    "avion": ("paper airplane gliding fast through the air, light papery flutter and swoosh", 1.2),
 }
 
 

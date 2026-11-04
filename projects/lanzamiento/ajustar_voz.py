@@ -18,7 +18,7 @@ from engine.audio import silences  # noqa: E402
 
 SR = 44100
 TEMPO = 1.03          # voz de Danny (ElevenLabs), sin las frases de los precios: un poco más ágil
-PAUSE = {1: 0.38, 6: 0.42}   # pausa tras la frase i (antes del atempo): tras «cámara» y antes de «Si quieres»
+PAUSE = {1: 0.36, 2: 0.32, 7: 0.4, 8: 0.38}   # pausa tras la frase i (antes del atempo): tras «cámara», «¿Cómo?», «efecto a efecto» y «página web»
 PAUSE_DEF = 0.22
 INNER_MAX = 0.15      # silencios internos (comas, puntos dentro de la frase) como máximo
 INNER_LONG = 0.3      # silencio tras «…» dentro de la frase: pausa dramática

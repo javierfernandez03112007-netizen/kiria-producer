@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------- HUD: cabecera con el precio pendiente (bucle abierto), rótulos con línea guía y el cierre «comenta KIRIA»
+// ---------------------------------------------------------------- HUD: cabecera con los resultados, rótulos con línea guía y el cierre «comenta KIRIA»
 function buildHudPlan() {}
 const wpo = (o, x, y, z) => { o.updateWorldMatrix(true, false); return o.localToWorld(v3(x, y, z)); };
 const HG = '#FFC24A', HD = '#8FE6FF';
@@ -41,8 +41,8 @@ function hudAt(t) {
   lab(v3(0.46, 1.05, WKZ), 'VOZ', null, cw(t, K.voz4 - 0.02, K.cada5 - 0.05), { dx: 110, dy: 200, color: HD });
   // 5: el objeto en 3D
   if (S.gavel.pv.visible) lab(wpo(S.gavel.gv, -0.48, 0.0, 0.13), 'OBJETO EN 3D', null, cw(t, K.d3_5 + 0.05, K.que5 + 0.1), { dx: -120, dy: -200, color: HC.white });
-  // cierre: comenta KIRIA (y el enlace con el 10 %)
+  // cierre: comenta KIRIA y te paso el enlace por privado
   { const k = cw(t, K.kiria11 + 0.45, END - 1.0); if (k > 0.01) {
       bigText('COMENTA «KIRIA»', W / 2, 1540, 66, HC.white, k, { glow: 12, type: false, dark: 26 });
-      bigText('Y TE ESCRIBIMOS POR PRIVADO', W / 2, 1628, 30, HG, cw(t, K.kiria11 + 0.75, END - 1.0), { dark: 18, ls: 4 }); } }
+      bigText('Y TE PASO EL ENLACE POR PRIVADO', W / 2, 1628, 30, HG, cw(t, K.paso9 - 0.05, END - 1.0), { dark: 18, ls: 4 }); } }
 }

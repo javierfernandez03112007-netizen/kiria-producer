@@ -1,8 +1,8 @@
 #!/bin/bash
 # Máquina de ayuda: renderiza los fotogramas A..B-1 de «Ni una sola cámara», los codifica en chunks/chunk_A_B.mp4 y los sube a la
-# rama <PFX>-X (por defecto render-mag). Uso (desde la raíz del repo): bash projects/lanzamiento/render_chunk.sh A B X [PFX]
+# rama <PFX>-X (por defecto render-lan3: la versión larga de 33 s). Uso (desde la raíz del repo): bash projects/lanzamiento/render_chunk.sh A B X [PFX]
 set -u
-A=$1; B=$2; X=$3; PFX=${4:-render-lan}
+A=$1; B=$2; X=$3; PFX=${4:-render-lan3}
 cd "$(dirname "$0")"
 (cd web && npm install --silent >/dev/null 2>&1; ./build.sh)
 mkdir -p out/frames chunks

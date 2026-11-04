@@ -11,9 +11,9 @@ function buildTimes() {
     land: K.camara1 + 0.03,                                           // la cámara de cine toca el suelo
     slam: K.oyes5 + 0.03,                                             // el mazo golpea el taco
     words: [K.subtitulos6, K.palabra6, K.a6, K.palabra6b].map(x => x + 0.03),
-    suck: K.si11 + 0.02,                                              // las palabras y el taco se meten en la pantalla del móvil
-    morph0: K.camara1 + 0.43, morph1: K.guion3 + 0.12,               // las aristas de la cámara de cine forman el guion
-    swipes: [0.95, 2.1, 3.3, 5.0, 6.6, 8.3, 10.0, 12.6, 15.0, END - 0.7],   // 10: el bucle vuelve al mismo vídeo
+    suck: K.ademas8 + 0.02,                                           // las palabras y el taco se meten en la pantalla del móvil
+    morph0: K.camara1 + 0.43, morph1: K.mas2 + 0.5,                  // las aristas de la cámara de cine se meten en la pantalla: los resultados
+    swipes: [0.95, 2.1, 3.3, 10.0, 12.6, 15.0, 18.0, K.videos11 - 0.05, K.videos11 + 0.4, END - 0.7],   // 10: el bucle vuelve al mismo vídeo
   };
   TT.rings = [[K.sonido7, 4], [K.sonido7 + 0.12, 4], [K.efecto7, 0], [K.a7, 1], [K.efecto7b, 2], [K.efecto7b + 0.13, 3]];
 }
@@ -60,11 +60,12 @@ function drawStats(g, t, k) {
   g.fillStyle = 'rgba(255,255,255,.5)'; g.font = '500 24px Inter'; g.fillText('de nuestros propios vídeos', 36, 178);
   let y = 250;
   STATS.forEach(([fin, lab, val, fmt], i) => {
-    const u = eo(clamp((t - K.videos11 - 0.05 - i * 0.16) / 0.8)), a = clamp((t - K.videos11 + 0.1 - i * 0.16) / 0.25);
+    const u = eo(clamp((t - K.mas2 - 0.05 - i * 0.16) / 0.8)), a = clamp((t - K.mas2 + 0.1 - i * 0.16) / 0.25);
     g.globalAlpha = k * a; g.fillStyle = '#16181d'; rr(g, 24, y, SCR.w - 48, 190, 26); g.fill();
+    if (i === 1) { const hl = cwin(t, K.n2500, K.como2 - 0.1, 0.2, 0.3); if (hl > 0) { g.save(); g.globalAlpha = k * a * hl; g.strokeStyle = '#7cf0a9'; g.lineWidth = 6; g.shadowColor = '#7cf0a9'; g.shadowBlur = 24; rr(g, 24, y, SCR.w - 48, 190, 26); g.stroke(); g.restore(); } }
     g.fillStyle = i === 0 ? '#ffc24a' : '#ffffff'; g.font = '900 78px Inter'; g.fillText(u >= 0.999 ? fin : fmt(val * u), 52, y + 102);
     g.fillStyle = 'rgba(255,255,255,.62)'; g.font = '600 27px Inter'; g.fillText(lab, 54, y + 152);
-    if (i === 1) { const mx = Math.max(...GAINS), bw = 22, x0 = SCR.w - 56 - GAINS.length * (bw + 8); GAINS.forEach((v, j) => { const h = 76 * v / mx * eo(clamp((t - K.videos11 - 0.3 - j * 0.05) / 0.5)); g.fillStyle = j >= 4 ? '#7cf0a9' : 'rgba(124,240,169,.45)'; rr(g, x0 + j * (bw + 8), y + 104 - h, bw, Math.max(4, h), 5); g.fill(); }); }
+    if (i === 1) { const mx = Math.max(...GAINS), bw = 22, x0 = SCR.w - 56 - GAINS.length * (bw + 8); GAINS.forEach((v, j) => { const h = 76 * v / mx * eo(clamp((t - K.seis2 - 0.1 - j * 0.06) / 0.5)); g.fillStyle = j >= 4 ? '#7cf0a9' : 'rgba(124,240,169,.45)'; rr(g, x0 + j * (bw + 8), y + 104 - h, bw, Math.max(4, h), 5); g.fill(); }); }
     y += 214;
   });
   g.restore();
@@ -86,14 +87,58 @@ function drawComments(g, t, k, typed, posted) {
   g.fillStyle = typed ? '#111' : '#777'; g.beginPath(); g.moveTo(SCR.w - 82, iy + 50); g.lineTo(SCR.w - 66, iy + 22); g.lineTo(SCR.w - 50, iy + 50); g.closePath(); g.fill();
   g.restore();
 }
+function drawReelProduct(g, t, k) {   // un vídeo de redes con el tarro en 3D delante (sale de la pantalla): aquí solo el fondo, el pedestal y la interfaz
+  const gr = g.createRadialGradient(SCR.w / 2, SCR.h * 0.5, 30, SCR.w / 2, SCR.h * 0.5, SCR.h * 0.62); gr.addColorStop(0, '#ffe3cf'); gr.addColorStop(0.55, '#f08a7a'); gr.addColorStop(1, '#8c1d2a');
+  g.fillStyle = gr; g.fillRect(0, 0, SCR.w, SCR.h);
+  g.fillStyle = 'rgba(255,255,255,.18)'; for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2 + t * 0.15; g.beginPath(); g.moveTo(SCR.w / 2, SCR.h * 0.6); g.arc(SCR.w / 2, SCR.h * 0.6, SCR.h, a, a + 0.12); g.closePath(); g.fill(); }
+  g.fillStyle = '#f7e9de'; g.beginPath(); g.ellipse(SCR.w / 2, SCR.h * 0.72, 190, 46, 0, 0, 7); g.fill(); g.fillStyle = '#e2cbbb'; g.fillRect(SCR.w / 2 - 190, SCR.h * 0.72, 380, 70); g.beginPath(); g.ellipse(SCR.w / 2, SCR.h * 0.72 + 70, 190, 46, 0, 0, 7); g.fill();
+  g.fillStyle = '#f7e9de'; g.beginPath(); g.ellipse(SCR.w / 2, SCR.h * 0.72, 190, 46, 0, 0, 7); g.fill();
+  g.fillStyle = '#ffffff'; g.font = '900 46px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('NUEVO', SCR.w / 2, 190);
+  g.fillStyle = 'rgba(255,255,255,.8)'; g.font = '700 24px Inter'; g.fillText('@tumarca', SCR.w / 2, 236);
+  const gr2 = g.createLinearGradient(0, SCR.h * 0.78, 0, SCR.h); gr2.addColorStop(0, 'rgba(0,0,0,0)'); gr2.addColorStop(1, 'rgba(0,0,0,.55)'); g.fillStyle = gr2; g.fillRect(0, 0, SCR.w, SCR.h);
+  icons(g, 1); statusBar(g, true);
+  const hk = clamp((t - K.redes8) / 0.55); if (hk > 0 && hk < 1) { g.save(); g.globalAlpha = 1 - hk * hk; g.translate(SCR.w / 2, SCR.h * 0.34); g.scale(0.5 + hk, 0.5 + hk); g.fillStyle = '#ff4d61';
+    g.beginPath(); g.moveTo(0, 60); g.bezierCurveTo(-120, -20, -60, -110, 0, -50); g.bezierCurveTo(60, -110, 120, -20, 0, 60); g.fill(); g.restore(); }
+  if (t > K.redes8) { const x = SCR.w - 58, y = SCR.h - 430; g.fillStyle = '#ff4d61'; g.beginPath(); g.moveTo(x, y + 18); g.bezierCurveTo(x - 34, y - 6, x - 22, y - 34, x, y - 16); g.bezierCurveTo(x + 22, y - 34, x + 34, y - 6, x, y + 18); g.fill(); }
+  g.fillStyle = '#ffffff'; g.fillRect(0, SCR.h - 8, SCR.w * clamp((t - K.ver8) / 3), 4);
+  if (k < 1) { g.fillStyle = `rgba(0,0,0,${1 - k})`; g.fillRect(0, 0, SCR.w, SCR.h); }
+}
+function drawWeb(g, t, k) {      // página web (el móvil se ha estirado en horizontal): se dibuja en el tamaño estirado para que no se deforme
+  const sx = S.phone.scale.x, sy = S.phone.scale.y, W2 = SCR.w * sx, H2 = SCR.h * sy; g.save(); g.setTransform(1 / sx, 0, 0, 1 / sy, 0, 0);
+  g.fillStyle = '#f5f2ec'; g.fillRect(0, 0, W2, H2);
+  g.fillStyle = '#e4e0d8'; g.fillRect(0, 0, W2, 70); [['#ff5f57', 0], ['#febc2e', 1], ['#28c840', 2]].forEach(([c, i]) => { g.fillStyle = c; g.beginPath(); g.arc(34 + i * 30, 35, 10, 0, 7); g.fill(); });
+  g.fillStyle = '#ffffff'; rr(g, 140, 16, Math.min(W2 - 180, 560), 38, 19); g.fill(); g.fillStyle = '#6b7280'; g.font = '600 22px Inter'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText('tutienda.es', 166, 36);
+  g.fillStyle = '#16181d'; g.font = '900 30px Inter'; g.fillText('TU MARCA', 40, 118); g.fillStyle = 'rgba(22,24,29,.35)'; for (let i = 0; i < 3; i++) { rr(g, W2 - 380 + i * 120, 108, 90, 16, 8); g.fill(); }
+  const hx = W2 * 0.06, hy = 170, hw = W2 * 0.42, hh = H2 - 230; const gr = g.createRadialGradient(hx + hw / 2, hy + hh * 0.62, 10, hx + hw / 2, hy + hh * 0.62, hw * 0.6); gr.addColorStop(0, '#e9e4da'); gr.addColorStop(1, '#f5f2ec'); g.fillStyle = gr; rr(g, hx, hy, hw, hh, 28); g.fill();
+  g.fillStyle = 'rgba(22,24,29,.12)'; g.beginPath(); g.ellipse(hx + hw / 2, hy + hh * 0.86, hw * 0.3, 18, 0, 0, 7); g.fill();
+  const tx = W2 * 0.54; g.fillStyle = '#16181d'; g.font = '900 64px Inter'; g.fillText('Tu producto', tx, hy + 70); g.font = '900 64px Inter'; g.fillStyle = '#b3122a'; g.fillText('en 3D', tx, hy + 146);
+  g.fillStyle = 'rgba(22,24,29,.35)'; [0, 1, 2].forEach(i => { rr(g, tx, hy + 200 + i * 34, (W2 * 0.38) * (i === 2 ? 0.6 : 1), 16, 8); g.fill(); });
+  g.fillStyle = '#16181d'; rr(g, tx, hy + 330, 260, 66, 33); g.fill(); g.fillStyle = '#ffffff'; g.font = '800 26px Inter'; g.textAlign = 'center'; g.fillText('Gíralo con el dedo', tx + 130, hy + 364);
+  g.restore(); if (k < 1) { g.fillStyle = `rgba(0,0,0,${1 - k})`; g.fillRect(0, 0, SCR.w, SCR.h); }
+}
+function drawDM(g, t, k) {       // mensaje privado con el enlace
+  g.fillStyle = '#0b0c0f'; g.fillRect(0, 0, SCR.w, SCR.h); statusBar(g, true);
+  g.save(); g.globalAlpha = k; g.fillStyle = '#16181d'; g.fillRect(0, 76, SCR.w, 96); g.fillStyle = '#3a3f49'; g.beginPath(); g.arc(70, 124, 30, 0, 7); g.fill();
+  g.fillStyle = '#ffffff'; g.font = '800 30px Inter'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText('Mensajes', 116, 124);
+  g.fillStyle = '#ffffff'; rr(g, SCR.w - 220, 230, 190, 70, 35); g.fill(); g.fillStyle = '#111317'; g.font = '900 32px Inter'; g.textAlign = 'center'; g.fillText('KIRIA', SCR.w - 125, 266);
+  const m = win(t, K.privado9 - 0.05, 0.3); if (m > 0) { g.globalAlpha = k * m; const y = 340 + 30 * (1 - eo(m));
+    g.fillStyle = '#23262d'; rr(g, 30, y, 400, 92, 30); g.fill(); g.fillStyle = '#ffffff'; g.font = '700 28px Inter'; g.textAlign = 'left'; g.fillText('¡Aquí tienes el enlace!', 58, y + 46);
+    g.fillStyle = '#23262d'; rr(g, 30, y + 112, 440, 170, 26); g.fill(); g.fillStyle = '#7cf0a9'; rr(g, 54, y + 136, 120, 120, 20); g.fill();
+    g.strokeStyle = '#0b0c0f'; g.lineWidth = 10; g.lineCap = 'round'; g.beginPath(); g.arc(98, y + 196, 22, 0.6, 3.9); g.stroke(); g.beginPath(); g.arc(130, y + 196, 22, 3.75, 7.05); g.stroke();
+    g.fillStyle = '#ffffff'; g.font = '800 30px Inter'; g.fillText('Enlace', 196, y + 180); g.fillStyle = 'rgba(255,255,255,.5)'; g.font = '600 22px Inter'; g.fillText('Toca para abrir', 196, y + 222); }
+  g.restore();
+}
 function drawScreen(t) {
   const g = S.scrT.userData.g; g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
-  const ts = K.videos11 - 0.05, tm = K.comenta11, tEnd = END - 0.85;
-  if (t >= ts && t < tm) drawStats(g, t, win(t, ts, 0.2));
-  else if (t >= tm && t < tEnd + 0.3) {
+  const tS0 = K.mas2 - 0.1, tS1 = K.como2 + 0.25, tR = K.ver8 - 0.25, tW = K.pagina8 - 0.3, tF = K.si11 + 0.1, tm = K.comenta11, tD = K.privado9 - 0.05, tEnd = END - 0.85;
+  if (t >= tS0 && t < tS1) drawStats(g, t, win(t, tS0, 0.2));
+  else if (t >= tR && t < tW) drawReelProduct(g, t, win(t, tR, 0.25));
+  else if (t >= tW && t < tF) drawWeb(g, t, 1 - win(t, K.si11 - 0.1, 0.2));      // se apaga mientras el móvil vuelve a su forma (y entra el tarro)
+  else if (t >= tm && t < tD) {
     const typed = 'KIRIA'.slice(0, clamp(Math.floor((t - K.kiria11) / 0.09) + 1, 0, 5) * (t >= K.kiria11 ? 1 : 0));
-    const posted = win(t, K.kiria11 + 0.75, 0.25); drawComments(g, t, win(t, tm, 0.3) * (1 - win(t, tEnd, 0.3)), posted > 0.5 ? '' : typed, posted);
-  } else drawFeed(g, t);
+    const posted = win(t, K.kiria11 + 0.6, 0.25); drawComments(g, t, win(t, tm, 0.3), posted > 0.5 ? '' : typed, posted);
+  } else if (t >= tD && t < tEnd + 0.3) drawDM(g, t, win(t, tD, 0.2) * (1 - win(t, tEnd, 0.3)));
+  else { drawFeed(g, t); const b = t >= tF && t < tF + 0.5 ? 1 - win(t, tF + 0.22, 0.25) : 0; if (b > 0) { g.fillStyle = `rgba(0,0,0,${b})`; g.fillRect(0, 0, SCR.w, SCR.h); } }
   g.restore(); S.scrT.needsUpdate = true;
 }
 
@@ -121,9 +166,11 @@ function bez(p0, p1, p2, p3, u, out) { const v = 1 - u; return out.set(0, 0, 0).
 function glyphWorld(i) { const o = S.num.ms[i]; o.updateWorldMatrix(true, false); return v3(0, o.userData.h * 0.42, 0).applyMatrix4(o.matrixWorld); }
 function stageAt2(t) {
   // móvil: flota un poco
-  S.phone.position.y = PHN.y + 0.012 * sinL(t, 1.6); S.phone.rotation.y = 0.04 * sinL(t, 0.7); S.phone.updateMatrixWorld(true);
+  S.phone.position.y = PHN.y + 0.012 * sinL(t, 1.6); S.phone.rotation.y = 0.04 * sinL(t, 0.7);
+  { const wk = eio(clamp((t - K.pagina8 + 0.3) / 0.4)) * (1 - eio(clamp((t - K.si11) / 0.35))); S.phone.scale.set(1 + 0.85 * wk, 1 - 0.4 * wk, 1); }
+  S.phone.updateMatrixWorld(true);
   drawScreen(t);
-  { const dim = cwin(t, TT.morph0, K.si11 - 0.05, 0.5, 0.4); S.scr.material.color.setScalar(1.18 - 0.78 * dim); }   // la pantalla se apaga un poco mientras pasa lo de delante
+  { const dim = cwin(t, K.como2 + 0.2, K.ademas8 + 0.2, 0.5, 0.4); S.scr.material.color.setScalar(1.18 - 0.78 * dim); }   // la pantalla se apaga un poco mientras pasa lo de delante
   // ---- 1: los objetos salen disparados de la pantalla y se convierten en «3,2 M»
   const tau = t > TT.loop ? t - END : t;
   for (const b of S.burst) {
@@ -168,10 +215,13 @@ function stageAt2(t) {
       for (let i = 0; i < N; i++) { const di = (i / N) * 0.22, u = eio(clamp((t - t0 - di) / 0.42)), A = S.camSegs[i], B = S.tagSegs[i % T2], lift = Math.sin(Math.PI * u) * 0.22;
         _a.copy(A[0]).lerp(B[0], u); _a.y += lift; _b.copy(A[1]).lerp(B[1], u); _b.y += lift; M2.userData.set(i, _a, _b); }
       M2.userData.flush(); M2.material.opacity = 1 - win(t, t1, 0.18); } }
-  // ---- 3: el guion sale de la pantalla
-  { const t0 = TT.morph1 - 0.22, tb = K.una4 - 0.05, P = S.paper, vis = t > t0 && t < K.voz4 + 0.35; P.visible = vis;
-    if (vis) { const e = eo(clamp((t - t0) / 0.3)); P.position.set(0, 1.06 + 0.012 * Math.sin(t * 2), WKZ); P.scale.setScalar(lerp(0.96, 1, e)); P.rotation.set(0, 0.03 * Math.sin(t * 1.1), 0.02 * Math.sin(t * 1.4));
-      const out = win(t, tb + 0.22, 0.3); P.material.opacity = e * (1 - out); P.position.z -= out * 0.3; drawPaper(t, t < tb + 0.04); } }
+  // ---- 2: el ¿? sale de la pantalla; 3: el guion sale de la pantalla
+  { const tq = K.como2 - 0.04, Q = S.q, vis = t > tq && t < K.guion3 + 0.25; Q.visible = vis;
+    if (vis) { const e = eo(clamp((t - tq) / 0.45)), out = eio(clamp((t - K.guion3 + 0.25) / 0.35)); Q.position.set(0, lerp(1.0, 1.2, e), lerp(0.05, 0.75, e)); Q.rotation.set(0, (t - tq) * 2.4, 0.15 * Math.sin(t * 3));
+      Q.scale.setScalar(Math.max(0.001, pop(t, tq, 0.45) * 1.25 * (1 - out))); } }
+  { const t0 = K.guion3 - 0.12, tb = K.una4 - 0.05, P = S.paper, vis = t > t0 && t < K.voz4 + 0.35; P.visible = vis;
+    if (vis) { const e = eo(clamp((t - t0) / 0.5)); P.position.set(0, 1.08 + 0.02 * Math.sin(t * 2) - 0.02 * e, lerp(0.05, WKZ, e)); P.scale.setScalar(lerp(0.35, 1, e)); P.rotation.set(-0.05 * (1 - e), 0.18 * (1 - e) + 0.03 * Math.sin(t * 1.1), 0.02 * Math.sin(t * 1.4));
+      const out = win(t, tb + 0.22, 0.3); P.material.opacity = 1 - out; P.position.z -= out * 0.3; drawPaper(t, t < tb + 0.04); } }
   // ---- 4: las líneas del guion se levantan y son la onda de la voz; 5: se recogen y empieza el mazo
   { const t0 = K.una4 - 0.05, tv = K.voz4 + 0.05, tc = K.cada5, vis = t > t0 && t < tc + 0.5; S.bars.forEach(b => (b.visible = vis));
     if (vis) { S.paper.updateWorldMatrix(true, false);
@@ -183,7 +233,7 @@ function stageAt2(t) {
         const Pw2 = v3(xw, 1.0, WKZ); b.position.copy(Pw).lerp(Pw2, k1); b.rotation.set(0, 0, Math.PI / 2 * (1 - k1));
         const len = lerp(wl, hh, k1); b.scale.set(lerp(0.014, 0.022, k1), Math.max(0.002, len * (1 - kc)), lerp(0.004, 0.022, k1));
         if (kc > 0) { b.position.lerp(v3(0, 0.92, WKZ + 0.18), kc * 0.6); } }); } }
-  gavelAt(t); towerAt(t); ctaAt(t);
+  gavelAt(t); towerAt(t); productAt(t); ctaAt(t);
 }
 
 // ---------------------------------------------------------------- el mazo (se construye en 3D y golpea justo en «oyes»)
@@ -229,14 +279,29 @@ function towerAt(t) {
 }
 const WSLOT = [[0, 0.86], [-0.28, 0.68], [0, 0.68], [0.28, 0.68]];
 
-// ---------------------------------------------------------------- tu negocio (toldo), el bocadillo «KIRIA» y la vuelta al principio
+// ---------------------------------------------------------------- «prueba tu objeto en 3D»: la foto se vuelve un tarro en 3D; en redes (reel) y en una página web
+function productAt(t) {
+  const tc = K.probar8 - 0.15, t3 = K.d3_8 - 0.05, tw = K.pagina8 - 0.3, tgo = K.si11;
+  { const C = S.card, vis = t > tc && t < t3 + 0.3; C.visible = vis;
+    if (vis) { const e = eo(clamp((t - tc) / 0.5)), m = eio(clamp((t - t3) / 0.28)); const p = v3(-0.9, 0.3, 1.7).lerp(v3(-0.06, 0.98, 1.15), e).lerp(v3(0, 0.95, 1.1), m);
+      C.position.copy(p); C.rotation.set(-0.3 * (1 - e) + 0.03 * Math.sin(t * 2), 0.6 * (1 - e) + 0.08 * Math.sin(t * 1.3) + m * 1.2, -0.25 * (1 - e)); C.scale.setScalar(Math.max(0.001, (1 - m) * (1 + 0.04 * Math.sin(t * 3)))); } }
+  { const J = S.jar, vis = t > t3 && t < tgo + 0.55; J.visible = vis;
+    if (vis) { const k = pop(t, t3, 0.45), wk = eio(clamp((t - tw) / 0.45)), gk = eio(clamp((t - tgo) / 0.5));
+      const vk = eio(clamp((t - K.ver8 + 0.1) / 0.6));
+      const tr1 = K.redes8 + 0.15, tr2 = K.web8 + 0.1, ry = 0.25 * Math.sin((t - t3) * 2) + 2 * Math.PI * (eio(clamp((t - t3) / (tr1 - t3))) + eio(clamp((t - tr1) / (tr2 - tr1))));   // gira como en un expositor y se para de frente en «redes» y en «web»      // «ver cómo se vería en redes»: se pone delante del vídeo, sobre el pedestal
+      const p = v3(0, 0.78, 1.1).lerp(v3(0, 0.6, 0.2), vk).lerp(v3(-0.33, 0.42, 0.35), wk).lerp(v3(0, PHN.y, 0.05), gk);
+      J.position.copy(p); J.position.y += 0.015 * Math.sin(t * 2.2); J.rotation.set(0.12 * (1 - vk) + 0.05, ry, 0.04 * Math.sin(t * 1.5)); J.scale.setScalar(Math.max(0.001, k * lerp(lerp(1.25, 1.0, vk), 1.45, wk) * (1 - gk))); } }
+}
+// ---------------------------------------------------------------- el bocadillo «KIRIA», el avión de papel con el enlace y la vuelta al principio
 function ctaAt(t) {
-  const tn = K.negocio11 - 0.02, tOut = END - 1.2;
-  { const vis = t > tn && t < tOut + 0.4; S.awning.visible = vis;
-    if (vis) { S.awning.position.y = S.phone.position.y + PHN.h / 2 + 0.11; const back = eio(clamp((t - tOut) / 0.35));
-      S.slats.forEach((p, i) => { const k = eio(clamp((t - tn - i * 0.035) / 0.32)); p.rotation.x = lerp(-Math.PI / 2, 0.42 + 0.03 * Math.sin(t * 2 + i), k * (1 - back)) + 0.08 * Math.sin(clamp((t - tn - i * 0.035) / 0.5) * Math.PI) * (1 - back); p.scale.setScalar(Math.max(0.001, Math.min(1, k * 3) * (1 - back))); }); } }
-  { const tb = K.comenta11 - 0.03, vis = t > tb && t < tOut + 0.45, B = S.bubble; B.visible = vis;
-    if (vis) { const e = eio(clamp((t - tb) / 0.45)), back = eio(clamp((t - tOut) / 0.4)); const p = v3(0.12, 1.12, 0.06).lerp(v3(0.3, 1.5, 0.52), e).lerp(v3(0.1, 1.15, 0.0), back);
+  S.awning.visible = false;
+  const tb = K.comenta11 - 0.03, tp = K.paso9 - 0.05, tin = K.privado9 + 0.25;
+  { const vis = t > tb && t < tp + 0.32, B = S.bubble; B.visible = vis;
+    if (vis) { const e = eio(clamp((t - tb) / 0.45)), back = eio(clamp((t - tp) / 0.3)); const p = v3(0.12, 1.12, 0.06).lerp(v3(0.3, 1.5, 0.52), e);
       B.position.copy(p); B.position.y += 0.015 * Math.sin(t * 2.4); B.rotation.set(0.03 * Math.sin(t * 1.5), -0.22 + 0.05 * Math.sin(t * 0.9), 0.04 * Math.sin(t * 1.2)); B.scale.setScalar(Math.max(0.001, pop(t, tb, 0.45) * (1 - back)));
       S.letters.forEach((l, i) => { const k = pop(t, K.kiria11 + i * 0.09, 0.3); l.visible = k > 0.002; l.scale.setScalar(Math.max(0.001, k)); l.position.z = 0.06 + 0.03 * Math.sin(clamp((t - K.kiria11 - i * 0.09) / 0.3) * Math.PI); }); } }
+  { const P = S.plane, vis = t > tp && t < tin; P.visible = vis;
+    if (vis) { const u = clamp((t - tp) / (tin - tp)), e = eio(u), A = v3(0.3, 1.5, 0.52), B1 = v3(0.95, 1.85, 1.0), B2 = v3(-0.55, 1.75, 1.15), Z = v3(0.0, 1.15, 0.06);
+      const pos = bez(A, B1, B2, Z, e, new THREE.Vector3()), nx = bez(A, B1, B2, Z, Math.min(1, e + 0.02), new THREE.Vector3());
+      P.position.copy(pos); P.lookAt(nx.x + (nx.x === pos.x ? 0.001 : 0), nx.y, nx.z + 0.0001); P.rotateZ(Math.sin(u * Math.PI * 2) * 0.5); P.scale.setScalar(Math.max(0.001, pop(t, tp, 0.25) * (1 - easeIn(clamp((u - 0.8) / 0.2)))) * 0.9); } }
 }

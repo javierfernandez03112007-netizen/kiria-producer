@@ -7,7 +7,7 @@
 {
 "w": "millones",
 "start": 0.88,
-"end": 1.28
+"end": 1.2
 },
 {
 "w": "de",
@@ -57,231 +57,376 @@
 {
 "w": "cámara.",
 "start": 4.88,
-"end": 5.6
+"end": 5.52
 },
 {
-"w": "Un",
-"start": 5.84,
-"end": 5.92
+"w": "Más",
+"start": 5.76,
+"end": 6.08
 },
 {
-"w": "guión",
-"start": 6.16,
-"end": 6.56
+"w": "de",
+"start": 6.08,
+"end": 6.16
 },
 {
-"w": "que",
-"start": 6.64,
-"end": 6.72
-},
-{
-"w": "engancha",
-"start": 6.8,
+"w": "2.500",
+"start": 6.24,
 "end": 7.2
 },
 {
-"w": "desde",
-"start": 7.36,
-"end": 7.44
-},
-{
-"w": "el",
-"start": 7.6,
+"w": "seguidores",
+"start": 7.28,
 "end": 7.68
 },
 {
-"w": "primer",
-"start": 7.68,
-"end": 7.76
-},
-{
-"w": "segundo.",
-"start": 8.0,
-"end": 8.64
-},
-{
-"w": "Una",
-"start": 8.88,
-"end": 9.12
-},
-{
-"w": "voz.",
-"start": 9.2,
-"end": 9.76
-},
-{
-"w": "Cada",
-"start": 9.92,
-"end": 10.16
-},
-{
-"w": "objeto",
-"start": 10.24,
-"end": 10.64
-},
-{
-"w": "construido",
-"start": 10.8,
-"end": 11.2
+"w": "nuevos",
+"start": 7.84,
+"end": 8.16
 },
 {
 "w": "en",
-"start": 11.36,
+"start": 8.24,
+"end": 8.32
+},
+{
+"w": "6",
+"start": 8.4,
+"end": 8.64
+},
+{
+"w": "días.",
+"start": 8.8,
+"end": 9.36
+},
+{
+"w": "¿Cómo?",
+"start": 9.44,
+"end": 10.32
+},
+{
+"w": "Un",
+"start": 10.8,
+"end": 10.88
+},
+{
+"w": "guión",
+"start": 11.04,
 "end": 11.44
 },
 {
-"w": "3D,",
-"start": 11.52,
-"end": 12.24
-},
-{
 "w": "que",
-"start": 12.32,
-"end": 12.4
+"start": 11.52,
+"end": 11.6
 },
 {
-"w": "se",
+"w": "engancha",
+"start": 11.68,
+"end": 12.08
+},
+{
+"w": "desde",
+"start": 12.24,
+"end": 12.32
+},
+{
+"w": "el",
 "start": 12.48,
 "end": 12.56
 },
 {
+"w": "primer",
+"start": 12.56,
+"end": 12.64
+},
+{
+"w": "segundo.",
+"start": 12.96,
+"end": 13.6
+},
+{
+"w": "Una",
+"start": 13.84,
+"end": 14.08
+},
+{
+"w": "voz.",
+"start": 14.16,
+"end": 14.64
+},
+{
+"w": "Cada",
+"start": 14.8,
+"end": 15.12
+},
+{
+"w": "objeto",
+"start": 15.2,
+"end": 15.6
+},
+{
+"w": "construido",
+"start": 15.76,
+"end": 16.16
+},
+{
+"w": "en",
+"start": 16.32,
+"end": 16.4
+},
+{
+"w": "3D,",
+"start": 16.48,
+"end": 17.12
+},
+{
+"w": "que",
+"start": 17.2,
+"end": 17.28
+},
+{
+"w": "se",
+"start": 17.36,
+"end": 17.44
+},
+{
 "w": "mueve",
-"start": 12.64,
-"end": 12.96
+"start": 17.52,
+"end": 17.92
 },
 {
 "w": "justo",
-"start": 13.04,
-"end": 13.28
+"start": 18.0,
+"end": 18.24
 },
 {
 "w": "cuando",
-"start": 13.36,
-"end": 13.44
+"start": 18.32,
+"end": 18.4
 },
 {
 "w": "lo",
-"start": 13.68,
-"end": 13.76
+"start": 18.56,
+"end": 18.64
 },
 {
 "w": "oyes.",
-"start": 13.84,
-"end": 14.4
-},
-{
-"w": "Subtítulos",
-"start": 14.56,
-"end": 15.28
-},
-{
-"w": "palabra",
-"start": 15.44,
-"end": 15.84
-},
-{
-"w": "a",
-"start": 15.92,
-"end": 16.0
-},
-{
-"w": "palabra.",
-"start": 16.08,
-"end": 16.56
-},
-{
-"w": "Y",
-"start": 16.64,
-"end": 16.72
-},
-{
-"w": "el",
-"start": 16.8,
-"end": 16.88
-},
-{
-"w": "sonido",
-"start": 16.96,
-"end": 17.36
-},
-{
-"w": "efecto",
-"start": 17.68,
-"end": 18.08
-},
-{
-"w": "a",
-"start": 18.24,
-"end": 18.32
-},
-{
-"w": "efecto.",
-"start": 18.4,
-"end": 19.04
-},
-{
-"w": "Si",
-"start": 19.2,
+"start": 18.8,
 "end": 19.28
 },
 {
-"w": "quieres",
+"w": "Subtítulos",
 "start": 19.44,
-"end": 19.84
+"end": 20.24
 },
 {
-"w": "vídeos",
-"start": 19.84,
-"end": 20.16
+"w": "palabra",
+"start": 20.4,
+"end": 20.72
 },
 {
-"w": "así",
-"start": 20.24,
-"end": 20.32
+"w": "a",
+"start": 20.8,
+"end": 20.88
 },
 {
-"w": "para",
-"start": 20.56,
-"end": 20.64
-},
-{
-"w": "tu",
-"start": 20.72,
-"end": 20.8
-},
-{
-"w": "cuenta",
-"start": 20.88,
-"end": 21.2
-},
-{
-"w": "o",
-"start": 21.28,
-"end": 21.36
-},
-{
-"w": "para",
-"start": 21.44,
+"w": "palabra.",
+"start": 20.96,
 "end": 21.52
 },
 {
-"w": "tu",
+"w": "Y",
 "start": 21.6,
 "end": 21.68
 },
 {
-"w": "negocio,",
+"w": "el",
 "start": 21.76,
-"end": 22.16
+"end": 21.84
+},
+{
+"w": "sonido",
+"start": 21.92,
+"end": 22.32
+},
+{
+"w": "efecto",
+"start": 22.64,
+"end": 23.04
+},
+{
+"w": "a",
+"start": 23.2,
+"end": 23.28
+},
+{
+"w": "efecto.",
+"start": 23.36,
+"end": 24.16
+},
+{
+"w": "Y",
+"start": 24.4,
+"end": 24.48
+},
+{
+"w": "además",
+"start": 24.56,
+"end": 24.96
+},
+{
+"w": "puedes",
+"start": 25.12,
+"end": 25.36
+},
+{
+"w": "probar",
+"start": 25.44,
+"end": 25.68
+},
+{
+"w": "tu",
+"start": 25.76,
+"end": 25.84
+},
+{
+"w": "objeto",
+"start": 25.92,
+"end": 26.16
+},
+{
+"w": "en",
+"start": 26.24,
+"end": 26.32
+},
+{
+"w": "3D.",
+"start": 26.32,
+"end": 26.8
+},
+{
+"w": "Y",
+"start": 27.01,
+"end": 27.09
+},
+{
+"w": "ver",
+"start": 27.33,
+"end": 27.41
+},
+{
+"w": "cómo",
+"start": 27.57,
+"end": 27.73
+},
+{
+"w": "se",
+"start": 27.81,
+"end": 27.89
+},
+{
+"w": "vería",
+"start": 27.97,
+"end": 28.21
+},
+{
+"w": "en",
+"start": 28.29,
+"end": 28.37
+},
+{
+"w": "redes",
+"start": 28.45,
+"end": 28.77
+},
+{
+"w": "o",
+"start": 29.01,
+"end": 29.09
+},
+{
+"w": "en",
+"start": 29.17,
+"end": 29.25
+},
+{
+"w": "una",
+"start": 29.33,
+"end": 29.41
+},
+{
+"w": "página",
+"start": 29.57,
+"end": 29.89
+},
+{
+"w": "web.",
+"start": 29.97,
+"end": 30.37
+},
+{
+"w": "Si",
+"start": 30.61,
+"end": 30.69
+},
+{
+"w": "quieres",
+"start": 30.85,
+"end": 31.25
+},
+{
+"w": "vídeos",
+"start": 31.25,
+"end": 31.57
+},
+{
+"w": "así,",
+"start": 31.65,
+"end": 31.89
 },
 {
 "w": "comenta",
-"start": 22.32,
-"end": 22.56
+"start": 31.97,
+"end": 32.21
 },
 {
-"w": "Kirya.",
-"start": 22.88,
-"end": 23.44
+"w": "Kirya",
+"start": 32.45,
+"end": 32.85
+},
+{
+"w": "y",
+"start": 33.01,
+"end": 33.09
+},
+{
+"w": "te",
+"start": 33.17,
+"end": 33.25
+},
+{
+"w": "paso",
+"start": 33.25,
+"end": 33.49
+},
+{
+"w": "el",
+"start": 33.49,
+"end": 33.57
+},
+{
+"w": "enlace",
+"start": 33.65,
+"end": 33.97
+},
+{
+"w": "por",
+"start": 34.05,
+"end": 34.13
+},
+{
+"w": "privado.",
+"start": 34.21,
+"end": 34.69
 }
 ]

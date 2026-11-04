@@ -715,6 +715,7 @@ const WKZ = 1.0;                                                                
 const PIV = v3(0, 0.255, WKZ + 0.48);                                           // eje del mazo (el mango apunta hacia la cámara; la cabeza, de lado)
 const SCR = { w: 540, h: Math.round(540 * PHN.sh / PHN.sw) };                    // lienzo de la pantalla
 const REELS = [];                                                               // [vídeo][fotograma] imágenes de nuestros vídeos
+let PRODUCTO = null;                                                            // foto de ejemplo de «tu objeto» (un dibujo: tarro de mermelada)
 
 function rplane(w, h, r, seg = 10) { const g = new THREE.ShapeGeometry(rrShape(w, h, r), seg); const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / w + 0.5, p.getY(i) / h + 0.5); return g; }
 // texto 3D (Inter Black); centrado en x y en z; en y, centrado o sobre la línea base (base = true)
@@ -915,8 +916,33 @@ function buildCTA() {
   scene.add(bub); S.bubble = bub;
 }
 
+// ---------------------------------------------------------------- «prueba tu objeto en 3D»: la foto, el tarro en 3D, el ¿? y el avión de papel
+function buildProduct() {
+  const T = canvasTex(400, 480, (g, w, h) => { g.fillStyle = '#f4f1e8'; g.fillRect(0, 0, w, h); const im = PRODUCTO, s = Math.max((w - 40) / im.width, (h - 120) / im.height);
+    g.save(); g.beginPath(); g.rect(20, 20, w - 40, h - 120); g.clip(); g.drawImage(im, 20 + (w - 40 - im.width * s) / 2, 20 + (h - 120 - im.height * s) / 2, im.width * s, im.height * s); g.restore();
+    g.fillStyle = '#2a2c31'; g.font = '900 38px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('TU OBJETO', w / 2, h - 52); });
+  const card = new THREE.Group(); card.add(rbox(0.4, 0.48, 0.012, paint(0xf4f1e8, 0.5, 0.3), 0.012));
+  const cf = new THREE.Mesh(new THREE.PlaneGeometry(0.4, 0.48), new THREE.MeshStandardMaterial({ map: T, roughness: 0.6 })); cf.position.z = 0.0066; card.add(cf);
+  scene.add(card); S.card = card;
+  const jar = new THREE.Group(), r = 0.17;
+  jar.add(lathe([[0.001, 0], [r - 0.02, 0], [r, 0.02], [r, 0.27], [r - 0.006, 0.29], [r - 0.024, 0.305], [r - 0.024, 0.33]], 64, new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.03, transparent: true, opacity: 0.22, clearcoat: 1, side: THREE.DoubleSide, depthWrite: false })));
+  jar.add(lathe([[0.001, 0.008], [r - 0.012, 0.008], [r - 0.008, 0.02], [r - 0.008, 0.26], [0.001, 0.262]], 64, plastic(0xb3122a, 0.25)));
+  jar.add(lathe([[r - 0.012, 0.31], [r - 0.006, 0.312], [r - 0.006, 0.37], [r - 0.012, 0.376], [0.001, 0.377]], 64, metal(0xd4a640, 0.28)));
+  const LT = canvasTex(512, 256, (g, w, h) => { g.fillStyle = '#f4f1e8'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(40,36,30,.6)'; g.lineWidth = 6; g.strokeRect(10, 10, w - 20, h - 20);
+    g.fillStyle = '#2a2c31'; g.font = '900 64px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('TU MARCA', w / 2, 92);
+    g.fillStyle = '#b3122a'; g.font = '800 30px Inter'; g.fillText('FRESA · HECHA A MANO', w / 2, 150);
+    [[150, 205], [256, 212], [362, 205]].forEach(([x, y]) => { g.fillStyle = '#e8434f'; g.beginPath(); g.ellipse(x, y, 20, 24, 0, 0, 7); g.fill(); g.fillStyle = '#3f9a3f'; g.beginPath(); g.moveTo(x - 14, y - 18); g.lineTo(x, y - 32); g.lineTo(x + 14, y - 18); g.closePath(); g.fill(); }); });
+  const label = new THREE.Mesh(new THREE.CylinderGeometry(r + 0.003, r + 0.003, 0.16, 64, 1, true, -1.1, 2.2), new THREE.MeshStandardMaterial({ map: LT, roughness: 0.6 })); label.position.y = 0.14; jar.add(label);
+  jar.traverse(o => { if (o.isMesh) o.castShadow = true; }); scene.add(jar); S.jar = jar;
+  const q = qmark(paint(0xf2f3f5, 0.2, 1)); scene.add(q); S.q = q;
+  const pl = new THREE.Group(), pm = new THREE.MeshStandardMaterial({ color: 0xf4f6f9, roughness: 0.45, side: THREE.DoubleSide });
+  const tri = (a, b, c) => { const g = new THREE.BufferGeometry().setFromPoints([a, b, c]); g.computeVertexNormals(); const m = new THREE.Mesh(g, pm); m.castShadow = true; return m; };
+  pl.add(tri(v3(0, 0, 0.3), v3(-0.17, 0.02, -0.12), v3(0, -0.02, -0.1)), tri(v3(0, 0, 0.3), v3(0.17, 0.02, -0.12), v3(0, -0.02, -0.1)), tri(v3(0, 0, 0.3), v3(0, -0.02, -0.1), v3(0, -0.09, -0.11)));
+  scene.add(pl); S.plane = pl;
+}
+
 function buildLaunch() {
-  buildPhone(); buildNumber(); buildMovieCam(); buildWork(); buildCTA();
+  buildPhone(); buildNumber(); buildMovieCam(); buildWork(); buildCTA(); buildProduct();
   // objetos que salen de la pantalla (posición y giro en el primer fotograma, y a qué cifra van)
   const birr = birrete(); birr.scale.setScalar(0.42);
   const doll = makeDoll(M.gold); doll.scale.setScalar(0.62);
@@ -935,14 +961,9 @@ function buildLaunch() {
   S.shards = Array.from({ length: 56 }, (_, i) => { const s = new THREE.Shape(), k = 0.045 + hash(i * 4.4) * 0.1; s.moveTo(0, 0); s.lineTo(k * (0.6 + hash(i) * 0.8), k * 0.25); s.lineTo(k * 0.2, k * (0.7 + hash(i * 2) * 0.6)); s.lineTo(0, 0);
     const m = new THREE.Mesh(new THREE.ShapeGeometry(s), shM); edges(m, 0xeef4ff, 1.1, 1, 0.55); scene.add(m);
     return { m, a: v3((hash(i * 1.7) - 0.5) * 0.7, PHN.y + (hash(i * 2.3) - 0.5) * 1.5, 0.06), v: v3((hash(i * 3.1) - 0.5) * 1.4, (hash(i * 5.3) - 0.35) * 1.1, 0.6 + hash(i * 6.9) * 1.2), w: hash(i * 8.1) * 6 }; });
-  // líneas que pasan de la cámara de cine al guion: el contorno del papel y sus renglones (sin precios en el vídeo: decisión de Javi)
+  // las aristas de la cámara de cine vuelan y se meten en la pantalla del móvil (allí salen los resultados)
   const nSeg = S.camSegs.length; S.morph = segSet(nSeg, 0xeef2f6, 2.6, 1); scene.add(S.morph);
-  const PP = new THREE.Object3D(); PP.position.set(0, 1.06, WKZ); PP.updateMatrixWorld(true);
-  const pz = x => 0.035 * (x / 0.31) ** 2, tS = [], add = (x0, y0, x1, y1) => tS.push([v3(x0, y0, pz(x0) + 0.004).applyMatrix4(PP.matrixWorld), v3(x1, y1, pz(x1) + 0.004).applyMatrix4(PP.matrixWorld)]);
-  for (let i = 0; i < 10; i++) { const a = -0.31 + 0.062 * i, b = a + 0.062; add(a, 0.43, b, 0.43); add(a, -0.43, b, -0.43); }
-  for (let i = 0; i < 12; i++) { const a = 0.43 - 0.86 * i / 12, b = 0.43 - 0.86 * (i + 1) / 12; add(-0.31, a, -0.31, b); add(0.31, a, 0.31, b); }
-  for (let i = 0; i < 12; i++) { const y = 0.43 - (PL0 + i * PLS) * 0.86 / 860, x0 = -0.31 + 52 * 0.62 / 620, w = PLW(i) * 0.62 / 620; add(x0, y, x0 + w * 0.5, y); add(x0 + w * 0.5, y, x0 + w, y); }
-  S.tagSegs = tS;
+  S.tagSegs = Array.from({ length: nSeg }, (_, i) => { const p = v3((hash(i * 1.7) - 0.5) * 0.6, PHN.y + (hash(i * 3.9) - 0.5) * 1.4, PHN.d / 2 + 0.01); return [p, p.clone()]; });
 }
 // ---------------------------------------------------------------- tiempos y animación de cada pieza (todo es función del instante t: se puede dibujar en cualquier orden)
 const inSeg = (t, a, b) => t >= a && t < b;
@@ -957,9 +978,9 @@ function buildTimes() {
     land: K.camara1 + 0.03,                                           // la cámara de cine toca el suelo
     slam: K.oyes5 + 0.03,                                             // el mazo golpea el taco
     words: [K.subtitulos6, K.palabra6, K.a6, K.palabra6b].map(x => x + 0.03),
-    suck: K.si11 + 0.02,                                              // las palabras y el taco se meten en la pantalla del móvil
-    morph0: K.camara1 + 0.43, morph1: K.guion3 + 0.12,               // las aristas de la cámara de cine forman el guion
-    swipes: [0.95, 2.1, 3.3, 5.0, 6.6, 8.3, 10.0, 12.6, 15.0, END - 0.7],   // 10: el bucle vuelve al mismo vídeo
+    suck: K.ademas8 + 0.02,                                           // las palabras y el taco se meten en la pantalla del móvil
+    morph0: K.camara1 + 0.43, morph1: K.mas2 + 0.5,                  // las aristas de la cámara de cine se meten en la pantalla: los resultados
+    swipes: [0.95, 2.1, 3.3, 10.0, 12.6, 15.0, 18.0, K.videos11 - 0.05, K.videos11 + 0.4, END - 0.7],   // 10: el bucle vuelve al mismo vídeo
   };
   TT.rings = [[K.sonido7, 4], [K.sonido7 + 0.12, 4], [K.efecto7, 0], [K.a7, 1], [K.efecto7b, 2], [K.efecto7b + 0.13, 3]];
 }
@@ -1006,11 +1027,12 @@ function drawStats(g, t, k) {
   g.fillStyle = 'rgba(255,255,255,.5)'; g.font = '500 24px Inter'; g.fillText('de nuestros propios vídeos', 36, 178);
   let y = 250;
   STATS.forEach(([fin, lab, val, fmt], i) => {
-    const u = eo(clamp((t - K.videos11 - 0.05 - i * 0.16) / 0.8)), a = clamp((t - K.videos11 + 0.1 - i * 0.16) / 0.25);
+    const u = eo(clamp((t - K.mas2 - 0.05 - i * 0.16) / 0.8)), a = clamp((t - K.mas2 + 0.1 - i * 0.16) / 0.25);
     g.globalAlpha = k * a; g.fillStyle = '#16181d'; rr(g, 24, y, SCR.w - 48, 190, 26); g.fill();
+    if (i === 1) { const hl = cwin(t, K.n2500, K.como2 - 0.1, 0.2, 0.3); if (hl > 0) { g.save(); g.globalAlpha = k * a * hl; g.strokeStyle = '#7cf0a9'; g.lineWidth = 6; g.shadowColor = '#7cf0a9'; g.shadowBlur = 24; rr(g, 24, y, SCR.w - 48, 190, 26); g.stroke(); g.restore(); } }
     g.fillStyle = i === 0 ? '#ffc24a' : '#ffffff'; g.font = '900 78px Inter'; g.fillText(u >= 0.999 ? fin : fmt(val * u), 52, y + 102);
     g.fillStyle = 'rgba(255,255,255,.62)'; g.font = '600 27px Inter'; g.fillText(lab, 54, y + 152);
-    if (i === 1) { const mx = Math.max(...GAINS), bw = 22, x0 = SCR.w - 56 - GAINS.length * (bw + 8); GAINS.forEach((v, j) => { const h = 76 * v / mx * eo(clamp((t - K.videos11 - 0.3 - j * 0.05) / 0.5)); g.fillStyle = j >= 4 ? '#7cf0a9' : 'rgba(124,240,169,.45)'; rr(g, x0 + j * (bw + 8), y + 104 - h, bw, Math.max(4, h), 5); g.fill(); }); }
+    if (i === 1) { const mx = Math.max(...GAINS), bw = 22, x0 = SCR.w - 56 - GAINS.length * (bw + 8); GAINS.forEach((v, j) => { const h = 76 * v / mx * eo(clamp((t - K.seis2 - 0.1 - j * 0.06) / 0.5)); g.fillStyle = j >= 4 ? '#7cf0a9' : 'rgba(124,240,169,.45)'; rr(g, x0 + j * (bw + 8), y + 104 - h, bw, Math.max(4, h), 5); g.fill(); }); }
     y += 214;
   });
   g.restore();
@@ -1032,14 +1054,58 @@ function drawComments(g, t, k, typed, posted) {
   g.fillStyle = typed ? '#111' : '#777'; g.beginPath(); g.moveTo(SCR.w - 82, iy + 50); g.lineTo(SCR.w - 66, iy + 22); g.lineTo(SCR.w - 50, iy + 50); g.closePath(); g.fill();
   g.restore();
 }
+function drawReelProduct(g, t, k) {   // un vídeo de redes con el tarro en 3D delante (sale de la pantalla): aquí solo el fondo, el pedestal y la interfaz
+  const gr = g.createRadialGradient(SCR.w / 2, SCR.h * 0.5, 30, SCR.w / 2, SCR.h * 0.5, SCR.h * 0.62); gr.addColorStop(0, '#ffe3cf'); gr.addColorStop(0.55, '#f08a7a'); gr.addColorStop(1, '#8c1d2a');
+  g.fillStyle = gr; g.fillRect(0, 0, SCR.w, SCR.h);
+  g.fillStyle = 'rgba(255,255,255,.18)'; for (let i = 0; i < 14; i++) { const a = i / 14 * Math.PI * 2 + t * 0.15; g.beginPath(); g.moveTo(SCR.w / 2, SCR.h * 0.6); g.arc(SCR.w / 2, SCR.h * 0.6, SCR.h, a, a + 0.12); g.closePath(); g.fill(); }
+  g.fillStyle = '#f7e9de'; g.beginPath(); g.ellipse(SCR.w / 2, SCR.h * 0.72, 190, 46, 0, 0, 7); g.fill(); g.fillStyle = '#e2cbbb'; g.fillRect(SCR.w / 2 - 190, SCR.h * 0.72, 380, 70); g.beginPath(); g.ellipse(SCR.w / 2, SCR.h * 0.72 + 70, 190, 46, 0, 0, 7); g.fill();
+  g.fillStyle = '#f7e9de'; g.beginPath(); g.ellipse(SCR.w / 2, SCR.h * 0.72, 190, 46, 0, 0, 7); g.fill();
+  g.fillStyle = '#ffffff'; g.font = '900 46px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('NUEVO', SCR.w / 2, 190);
+  g.fillStyle = 'rgba(255,255,255,.8)'; g.font = '700 24px Inter'; g.fillText('@tumarca', SCR.w / 2, 236);
+  const gr2 = g.createLinearGradient(0, SCR.h * 0.78, 0, SCR.h); gr2.addColorStop(0, 'rgba(0,0,0,0)'); gr2.addColorStop(1, 'rgba(0,0,0,.55)'); g.fillStyle = gr2; g.fillRect(0, 0, SCR.w, SCR.h);
+  icons(g, 1); statusBar(g, true);
+  const hk = clamp((t - K.redes8) / 0.55); if (hk > 0 && hk < 1) { g.save(); g.globalAlpha = 1 - hk * hk; g.translate(SCR.w / 2, SCR.h * 0.34); g.scale(0.5 + hk, 0.5 + hk); g.fillStyle = '#ff4d61';
+    g.beginPath(); g.moveTo(0, 60); g.bezierCurveTo(-120, -20, -60, -110, 0, -50); g.bezierCurveTo(60, -110, 120, -20, 0, 60); g.fill(); g.restore(); }
+  if (t > K.redes8) { const x = SCR.w - 58, y = SCR.h - 430; g.fillStyle = '#ff4d61'; g.beginPath(); g.moveTo(x, y + 18); g.bezierCurveTo(x - 34, y - 6, x - 22, y - 34, x, y - 16); g.bezierCurveTo(x + 22, y - 34, x + 34, y - 6, x, y + 18); g.fill(); }
+  g.fillStyle = '#ffffff'; g.fillRect(0, SCR.h - 8, SCR.w * clamp((t - K.ver8) / 3), 4);
+  if (k < 1) { g.fillStyle = `rgba(0,0,0,${1 - k})`; g.fillRect(0, 0, SCR.w, SCR.h); }
+}
+function drawWeb(g, t, k) {      // página web (el móvil se ha estirado en horizontal): se dibuja en el tamaño estirado para que no se deforme
+  const sx = S.phone.scale.x, sy = S.phone.scale.y, W2 = SCR.w * sx, H2 = SCR.h * sy; g.save(); g.setTransform(1 / sx, 0, 0, 1 / sy, 0, 0);
+  g.fillStyle = '#f5f2ec'; g.fillRect(0, 0, W2, H2);
+  g.fillStyle = '#e4e0d8'; g.fillRect(0, 0, W2, 70); [['#ff5f57', 0], ['#febc2e', 1], ['#28c840', 2]].forEach(([c, i]) => { g.fillStyle = c; g.beginPath(); g.arc(34 + i * 30, 35, 10, 0, 7); g.fill(); });
+  g.fillStyle = '#ffffff'; rr(g, 140, 16, Math.min(W2 - 180, 560), 38, 19); g.fill(); g.fillStyle = '#6b7280'; g.font = '600 22px Inter'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText('tutienda.es', 166, 36);
+  g.fillStyle = '#16181d'; g.font = '900 30px Inter'; g.fillText('TU MARCA', 40, 118); g.fillStyle = 'rgba(22,24,29,.35)'; for (let i = 0; i < 3; i++) { rr(g, W2 - 380 + i * 120, 108, 90, 16, 8); g.fill(); }
+  const hx = W2 * 0.06, hy = 170, hw = W2 * 0.42, hh = H2 - 230; const gr = g.createRadialGradient(hx + hw / 2, hy + hh * 0.62, 10, hx + hw / 2, hy + hh * 0.62, hw * 0.6); gr.addColorStop(0, '#e9e4da'); gr.addColorStop(1, '#f5f2ec'); g.fillStyle = gr; rr(g, hx, hy, hw, hh, 28); g.fill();
+  g.fillStyle = 'rgba(22,24,29,.12)'; g.beginPath(); g.ellipse(hx + hw / 2, hy + hh * 0.86, hw * 0.3, 18, 0, 0, 7); g.fill();
+  const tx = W2 * 0.54; g.fillStyle = '#16181d'; g.font = '900 64px Inter'; g.fillText('Tu producto', tx, hy + 70); g.font = '900 64px Inter'; g.fillStyle = '#b3122a'; g.fillText('en 3D', tx, hy + 146);
+  g.fillStyle = 'rgba(22,24,29,.35)'; [0, 1, 2].forEach(i => { rr(g, tx, hy + 200 + i * 34, (W2 * 0.38) * (i === 2 ? 0.6 : 1), 16, 8); g.fill(); });
+  g.fillStyle = '#16181d'; rr(g, tx, hy + 330, 260, 66, 33); g.fill(); g.fillStyle = '#ffffff'; g.font = '800 26px Inter'; g.textAlign = 'center'; g.fillText('Gíralo con el dedo', tx + 130, hy + 364);
+  g.restore(); if (k < 1) { g.fillStyle = `rgba(0,0,0,${1 - k})`; g.fillRect(0, 0, SCR.w, SCR.h); }
+}
+function drawDM(g, t, k) {       // mensaje privado con el enlace
+  g.fillStyle = '#0b0c0f'; g.fillRect(0, 0, SCR.w, SCR.h); statusBar(g, true);
+  g.save(); g.globalAlpha = k; g.fillStyle = '#16181d'; g.fillRect(0, 76, SCR.w, 96); g.fillStyle = '#3a3f49'; g.beginPath(); g.arc(70, 124, 30, 0, 7); g.fill();
+  g.fillStyle = '#ffffff'; g.font = '800 30px Inter'; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText('Mensajes', 116, 124);
+  g.fillStyle = '#ffffff'; rr(g, SCR.w - 220, 230, 190, 70, 35); g.fill(); g.fillStyle = '#111317'; g.font = '900 32px Inter'; g.textAlign = 'center'; g.fillText('KIRIA', SCR.w - 125, 266);
+  const m = win(t, K.privado9 - 0.05, 0.3); if (m > 0) { g.globalAlpha = k * m; const y = 340 + 30 * (1 - eo(m));
+    g.fillStyle = '#23262d'; rr(g, 30, y, 400, 92, 30); g.fill(); g.fillStyle = '#ffffff'; g.font = '700 28px Inter'; g.textAlign = 'left'; g.fillText('¡Aquí tienes el enlace!', 58, y + 46);
+    g.fillStyle = '#23262d'; rr(g, 30, y + 112, 440, 170, 26); g.fill(); g.fillStyle = '#7cf0a9'; rr(g, 54, y + 136, 120, 120, 20); g.fill();
+    g.strokeStyle = '#0b0c0f'; g.lineWidth = 10; g.lineCap = 'round'; g.beginPath(); g.arc(98, y + 196, 22, 0.6, 3.9); g.stroke(); g.beginPath(); g.arc(130, y + 196, 22, 3.75, 7.05); g.stroke();
+    g.fillStyle = '#ffffff'; g.font = '800 30px Inter'; g.fillText('Enlace', 196, y + 180); g.fillStyle = 'rgba(255,255,255,.5)'; g.font = '600 22px Inter'; g.fillText('Toca para abrir', 196, y + 222); }
+  g.restore();
+}
 function drawScreen(t) {
   const g = S.scrT.userData.g; g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
-  const ts = K.videos11 - 0.05, tm = K.comenta11, tEnd = END - 0.85;
-  if (t >= ts && t < tm) drawStats(g, t, win(t, ts, 0.2));
-  else if (t >= tm && t < tEnd + 0.3) {
+  const tS0 = K.mas2 - 0.1, tS1 = K.como2 + 0.25, tR = K.ver8 - 0.25, tW = K.pagina8 - 0.3, tF = K.si11 + 0.1, tm = K.comenta11, tD = K.privado9 - 0.05, tEnd = END - 0.85;
+  if (t >= tS0 && t < tS1) drawStats(g, t, win(t, tS0, 0.2));
+  else if (t >= tR && t < tW) drawReelProduct(g, t, win(t, tR, 0.25));
+  else if (t >= tW && t < tF) drawWeb(g, t, 1 - win(t, K.si11 - 0.1, 0.2));      // se apaga mientras el móvil vuelve a su forma (y entra el tarro)
+  else if (t >= tm && t < tD) {
     const typed = 'KIRIA'.slice(0, clamp(Math.floor((t - K.kiria11) / 0.09) + 1, 0, 5) * (t >= K.kiria11 ? 1 : 0));
-    const posted = win(t, K.kiria11 + 0.75, 0.25); drawComments(g, t, win(t, tm, 0.3) * (1 - win(t, tEnd, 0.3)), posted > 0.5 ? '' : typed, posted);
-  } else drawFeed(g, t);
+    const posted = win(t, K.kiria11 + 0.6, 0.25); drawComments(g, t, win(t, tm, 0.3), posted > 0.5 ? '' : typed, posted);
+  } else if (t >= tD && t < tEnd + 0.3) drawDM(g, t, win(t, tD, 0.2) * (1 - win(t, tEnd, 0.3)));
+  else { drawFeed(g, t); const b = t >= tF && t < tF + 0.5 ? 1 - win(t, tF + 0.22, 0.25) : 0; if (b > 0) { g.fillStyle = `rgba(0,0,0,${b})`; g.fillRect(0, 0, SCR.w, SCR.h); } }
   g.restore(); S.scrT.needsUpdate = true;
 }
 
@@ -1067,9 +1133,11 @@ function bez(p0, p1, p2, p3, u, out) { const v = 1 - u; return out.set(0, 0, 0).
 function glyphWorld(i) { const o = S.num.ms[i]; o.updateWorldMatrix(true, false); return v3(0, o.userData.h * 0.42, 0).applyMatrix4(o.matrixWorld); }
 function stageAt2(t) {
   // móvil: flota un poco
-  S.phone.position.y = PHN.y + 0.012 * sinL(t, 1.6); S.phone.rotation.y = 0.04 * sinL(t, 0.7); S.phone.updateMatrixWorld(true);
+  S.phone.position.y = PHN.y + 0.012 * sinL(t, 1.6); S.phone.rotation.y = 0.04 * sinL(t, 0.7);
+  { const wk = eio(clamp((t - K.pagina8 + 0.3) / 0.4)) * (1 - eio(clamp((t - K.si11) / 0.35))); S.phone.scale.set(1 + 0.85 * wk, 1 - 0.4 * wk, 1); }
+  S.phone.updateMatrixWorld(true);
   drawScreen(t);
-  { const dim = cwin(t, TT.morph0, K.si11 - 0.05, 0.5, 0.4); S.scr.material.color.setScalar(1.18 - 0.78 * dim); }   // la pantalla se apaga un poco mientras pasa lo de delante
+  { const dim = cwin(t, K.como2 + 0.2, K.ademas8 + 0.2, 0.5, 0.4); S.scr.material.color.setScalar(1.18 - 0.78 * dim); }   // la pantalla se apaga un poco mientras pasa lo de delante
   // ---- 1: los objetos salen disparados de la pantalla y se convierten en «3,2 M»
   const tau = t > TT.loop ? t - END : t;
   for (const b of S.burst) {
@@ -1114,10 +1182,13 @@ function stageAt2(t) {
       for (let i = 0; i < N; i++) { const di = (i / N) * 0.22, u = eio(clamp((t - t0 - di) / 0.42)), A = S.camSegs[i], B = S.tagSegs[i % T2], lift = Math.sin(Math.PI * u) * 0.22;
         _a.copy(A[0]).lerp(B[0], u); _a.y += lift; _b.copy(A[1]).lerp(B[1], u); _b.y += lift; M2.userData.set(i, _a, _b); }
       M2.userData.flush(); M2.material.opacity = 1 - win(t, t1, 0.18); } }
-  // ---- 3: el guion sale de la pantalla
-  { const t0 = TT.morph1 - 0.22, tb = K.una4 - 0.05, P = S.paper, vis = t > t0 && t < K.voz4 + 0.35; P.visible = vis;
-    if (vis) { const e = eo(clamp((t - t0) / 0.3)); P.position.set(0, 1.06 + 0.012 * Math.sin(t * 2), WKZ); P.scale.setScalar(lerp(0.96, 1, e)); P.rotation.set(0, 0.03 * Math.sin(t * 1.1), 0.02 * Math.sin(t * 1.4));
-      const out = win(t, tb + 0.22, 0.3); P.material.opacity = e * (1 - out); P.position.z -= out * 0.3; drawPaper(t, t < tb + 0.04); } }
+  // ---- 2: el ¿? sale de la pantalla; 3: el guion sale de la pantalla
+  { const tq = K.como2 - 0.04, Q = S.q, vis = t > tq && t < K.guion3 + 0.25; Q.visible = vis;
+    if (vis) { const e = eo(clamp((t - tq) / 0.45)), out = eio(clamp((t - K.guion3 + 0.25) / 0.35)); Q.position.set(0, lerp(1.0, 1.2, e), lerp(0.05, 0.75, e)); Q.rotation.set(0, (t - tq) * 2.4, 0.15 * Math.sin(t * 3));
+      Q.scale.setScalar(Math.max(0.001, pop(t, tq, 0.45) * 1.25 * (1 - out))); } }
+  { const t0 = K.guion3 - 0.12, tb = K.una4 - 0.05, P = S.paper, vis = t > t0 && t < K.voz4 + 0.35; P.visible = vis;
+    if (vis) { const e = eo(clamp((t - t0) / 0.5)); P.position.set(0, 1.08 + 0.02 * Math.sin(t * 2) - 0.02 * e, lerp(0.05, WKZ, e)); P.scale.setScalar(lerp(0.35, 1, e)); P.rotation.set(-0.05 * (1 - e), 0.18 * (1 - e) + 0.03 * Math.sin(t * 1.1), 0.02 * Math.sin(t * 1.4));
+      const out = win(t, tb + 0.22, 0.3); P.material.opacity = 1 - out; P.position.z -= out * 0.3; drawPaper(t, t < tb + 0.04); } }
   // ---- 4: las líneas del guion se levantan y son la onda de la voz; 5: se recogen y empieza el mazo
   { const t0 = K.una4 - 0.05, tv = K.voz4 + 0.05, tc = K.cada5, vis = t > t0 && t < tc + 0.5; S.bars.forEach(b => (b.visible = vis));
     if (vis) { S.paper.updateWorldMatrix(true, false);
@@ -1129,7 +1200,7 @@ function stageAt2(t) {
         const Pw2 = v3(xw, 1.0, WKZ); b.position.copy(Pw).lerp(Pw2, k1); b.rotation.set(0, 0, Math.PI / 2 * (1 - k1));
         const len = lerp(wl, hh, k1); b.scale.set(lerp(0.014, 0.022, k1), Math.max(0.002, len * (1 - kc)), lerp(0.004, 0.022, k1));
         if (kc > 0) { b.position.lerp(v3(0, 0.92, WKZ + 0.18), kc * 0.6); } }); } }
-  gavelAt(t); towerAt(t); ctaAt(t);
+  gavelAt(t); towerAt(t); productAt(t); ctaAt(t);
 }
 
 // ---------------------------------------------------------------- el mazo (se construye en 3D y golpea justo en «oyes»)
@@ -1175,16 +1246,31 @@ function towerAt(t) {
 }
 const WSLOT = [[0, 0.86], [-0.28, 0.68], [0, 0.68], [0.28, 0.68]];
 
-// ---------------------------------------------------------------- tu negocio (toldo), el bocadillo «KIRIA» y la vuelta al principio
+// ---------------------------------------------------------------- «prueba tu objeto en 3D»: la foto se vuelve un tarro en 3D; en redes (reel) y en una página web
+function productAt(t) {
+  const tc = K.probar8 - 0.15, t3 = K.d3_8 - 0.05, tw = K.pagina8 - 0.3, tgo = K.si11;
+  { const C = S.card, vis = t > tc && t < t3 + 0.3; C.visible = vis;
+    if (vis) { const e = eo(clamp((t - tc) / 0.5)), m = eio(clamp((t - t3) / 0.28)); const p = v3(-0.9, 0.3, 1.7).lerp(v3(-0.06, 0.98, 1.15), e).lerp(v3(0, 0.95, 1.1), m);
+      C.position.copy(p); C.rotation.set(-0.3 * (1 - e) + 0.03 * Math.sin(t * 2), 0.6 * (1 - e) + 0.08 * Math.sin(t * 1.3) + m * 1.2, -0.25 * (1 - e)); C.scale.setScalar(Math.max(0.001, (1 - m) * (1 + 0.04 * Math.sin(t * 3)))); } }
+  { const J = S.jar, vis = t > t3 && t < tgo + 0.55; J.visible = vis;
+    if (vis) { const k = pop(t, t3, 0.45), wk = eio(clamp((t - tw) / 0.45)), gk = eio(clamp((t - tgo) / 0.5));
+      const vk = eio(clamp((t - K.ver8 + 0.1) / 0.6));
+      const tr1 = K.redes8 + 0.15, tr2 = K.web8 + 0.1, ry = 0.25 * Math.sin((t - t3) * 2) + 2 * Math.PI * (eio(clamp((t - t3) / (tr1 - t3))) + eio(clamp((t - tr1) / (tr2 - tr1))));   // gira como en un expositor y se para de frente en «redes» y en «web»      // «ver cómo se vería en redes»: se pone delante del vídeo, sobre el pedestal
+      const p = v3(0, 0.78, 1.1).lerp(v3(0, 0.6, 0.2), vk).lerp(v3(-0.33, 0.42, 0.35), wk).lerp(v3(0, PHN.y, 0.05), gk);
+      J.position.copy(p); J.position.y += 0.015 * Math.sin(t * 2.2); J.rotation.set(0.12 * (1 - vk) + 0.05, ry, 0.04 * Math.sin(t * 1.5)); J.scale.setScalar(Math.max(0.001, k * lerp(lerp(1.25, 1.0, vk), 1.45, wk) * (1 - gk))); } }
+}
+// ---------------------------------------------------------------- el bocadillo «KIRIA», el avión de papel con el enlace y la vuelta al principio
 function ctaAt(t) {
-  const tn = K.negocio11 - 0.02, tOut = END - 1.2;
-  { const vis = t > tn && t < tOut + 0.4; S.awning.visible = vis;
-    if (vis) { S.awning.position.y = S.phone.position.y + PHN.h / 2 + 0.11; const back = eio(clamp((t - tOut) / 0.35));
-      S.slats.forEach((p, i) => { const k = eio(clamp((t - tn - i * 0.035) / 0.32)); p.rotation.x = lerp(-Math.PI / 2, 0.42 + 0.03 * Math.sin(t * 2 + i), k * (1 - back)) + 0.08 * Math.sin(clamp((t - tn - i * 0.035) / 0.5) * Math.PI) * (1 - back); p.scale.setScalar(Math.max(0.001, Math.min(1, k * 3) * (1 - back))); }); } }
-  { const tb = K.comenta11 - 0.03, vis = t > tb && t < tOut + 0.45, B = S.bubble; B.visible = vis;
-    if (vis) { const e = eio(clamp((t - tb) / 0.45)), back = eio(clamp((t - tOut) / 0.4)); const p = v3(0.12, 1.12, 0.06).lerp(v3(0.3, 1.5, 0.52), e).lerp(v3(0.1, 1.15, 0.0), back);
+  S.awning.visible = false;
+  const tb = K.comenta11 - 0.03, tp = K.paso9 - 0.05, tin = K.privado9 + 0.25;
+  { const vis = t > tb && t < tp + 0.32, B = S.bubble; B.visible = vis;
+    if (vis) { const e = eio(clamp((t - tb) / 0.45)), back = eio(clamp((t - tp) / 0.3)); const p = v3(0.12, 1.12, 0.06).lerp(v3(0.3, 1.5, 0.52), e);
       B.position.copy(p); B.position.y += 0.015 * Math.sin(t * 2.4); B.rotation.set(0.03 * Math.sin(t * 1.5), -0.22 + 0.05 * Math.sin(t * 0.9), 0.04 * Math.sin(t * 1.2)); B.scale.setScalar(Math.max(0.001, pop(t, tb, 0.45) * (1 - back)));
       S.letters.forEach((l, i) => { const k = pop(t, K.kiria11 + i * 0.09, 0.3); l.visible = k > 0.002; l.scale.setScalar(Math.max(0.001, k)); l.position.z = 0.06 + 0.03 * Math.sin(clamp((t - K.kiria11 - i * 0.09) / 0.3) * Math.PI); }); } }
+  { const P = S.plane, vis = t > tp && t < tin; P.visible = vis;
+    if (vis) { const u = clamp((t - tp) / (tin - tp)), e = eio(u), A = v3(0.3, 1.5, 0.52), B1 = v3(0.95, 1.85, 1.0), B2 = v3(-0.55, 1.75, 1.15), Z = v3(0.0, 1.15, 0.06);
+      const pos = bez(A, B1, B2, Z, e, new THREE.Vector3()), nx = bez(A, B1, B2, Z, Math.min(1, e + 0.02), new THREE.Vector3());
+      P.position.copy(pos); P.lookAt(nx.x + (nx.x === pos.x ? 0.001 : 0), nx.y, nx.z + 0.0001); P.rotateZ(Math.sin(u * Math.PI * 2) * 0.5); P.scale.setScalar(Math.max(0.001, pop(t, tp, 0.25) * (1 - easeIn(clamp((u - 0.8) / 0.2)))) * 0.9); } }
 }
 // ---------------------------------------------------------------- cámara: un solo plano continuo alrededor del móvil (sin cortes) que acaba donde empieza (bucle)
 let CKS = [];
@@ -1197,7 +1283,12 @@ function buildCam() {
     [K.siete1, [0.35, 1.68, 6.15], [0.0, 1.44, 0.2], 34],
     [K.ni1 + 0.2, [0.85, 1.35, 5.8], [0.2, 0.95, 0.45], 34],
     [TT.land + 0.3, [1.0, 1.0, 4.6], [0.3, 0.58, 0.95], 34],
-    [TT.morph1 + 0.1, [0.3, 1.15, 3.7], [0.0, 1.04, 0.85], 34],
+    // 2: las aristas de la cámara de cine se meten en la pantalla → los resultados, de cerca
+    [K.mas2 + 0.55, [0.14, 1.12, 3.15], [0.0, 1.08, 0.1], 34],
+    [K.dias2, [0.04, 1.08, 2.95], [0.0, 1.04, 0.1], 34],
+    [K.como2 + 0.35, [0.3, 1.12, 3.55], [0.0, 1.05, 0.7], 34],
+    // 3–7: guion, voz, objeto en 3D, subtítulos y sonido delante del móvil
+    [K.guion3 + 0.3, [0.3, 1.15, 3.7], [0.0, 1.04, 0.85], 34],
     [K.segundo3 + 0.2, [0.1, 1.1, 3.4], [0.0, 1.05, WKZ], 34],
     [K.voz4 + 0.25, [-0.15, 1.05, 3.45], [0.0, 1.0, WKZ], 34],
     [K.d3_5 + 0.2, [0.75, 1.02, 3.35], [-0.06, 0.74, WKZ + 0.2], 34],
@@ -1205,10 +1296,16 @@ function buildCam() {
     [TT.slam, [0.82, 0.62, 3.05], [0.0, 0.3, WKZ + 0.1], 34],
     [K.subtitulos6 + 0.35, [0.25, 1.0, 4.15], [0.0, 0.68, WKZ], 34],
     [K.efecto7, [-0.2, 0.98, 4.05], [0.0, 0.7, WKZ], 34],
-    [K.si11 + 0.1, [-0.05, 1.1, 4.3], [0.0, 0.9, 0.6], 34],
-    [K.cuenta11, [0.18, 1.12, 2.95], [0.0, 1.0, 0.0], 34],
-    [K.negocio11 + 0.3, [0.42, 1.55, 4.5], [0.04, 1.4, 0.2], 34],
-    [K.kiria11 + 0.4, [0.42, 1.56, 4.45], [0.14, 1.45, 0.3], 34],
+    // 8: todo entra en el móvil; tu objeto en 3D, en redes y en una página web
+    [K.ademas8 + 0.3, [0.1, 1.15, 3.9], [0.0, 0.95, 0.5], 34],
+    [K.objeto8 + 0.2, [-0.1, 1.08, 3.55], [-0.03, 0.95, 1.0], 34],
+    [K.d3_8 + 0.3, [0.35, 1.02, 3.55], [0.0, 0.92, 0.8], 34],
+    [K.redes8, [0.18, 1.08, 3.75], [0.0, 0.94, 0.3], 34],
+    [K.pagina8 + 0.15, [0.0, 1.12, 4.8], [-0.02, 0.98, 0.3], 34],
+    [K.web8 + 0.35, [0.06, 1.1, 4.6], [-0.02, 0.98, 0.3], 34],
+    // 9: comenta KIRIA → el enlace llega por privado
+    [K.comenta11 + 0.3, [0.4, 1.4, 4.2], [0.12, 1.3, 0.3], 34],
+    [K.privado9 + 0.2, [0.35, 1.38, 4.3], [0.1, 1.28, 0.3], 34],
     [END - 1.0, [0.6, 1.5, 4.85], [0.06, 1.42, 0.3], 34],
     [END, ...A0],
   ];
@@ -1221,7 +1318,7 @@ function camAt(t) {
 function prevT(t, dt) { return t - dt; }
 function flashAt(t) {
   let f = 0;
-  for (const [t0, k] of [[TT.land, 0.04], [TT.slam, 0.1], [TT.suck + 0.42, 0.05], [K.kiria11, 0.04]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.08);
+  for (const [t0, k] of [[TT.land, 0.04], [TT.slam, 0.1], [TT.suck + 0.5, 0.04], [K.d3_8, 0.035], [K.privado9 + 0.25, 0.04]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.08);
   return f;
 }
 function whiteAt(t) { return 0; }
@@ -1236,7 +1333,7 @@ function stageAt(t, st) {
   stageAt2(t);
   post.uniforms.fade.value = 0;
 }
-// ---------------------------------------------------------------- HUD: cabecera con el precio pendiente (bucle abierto), rótulos con línea guía y el cierre «comenta KIRIA»
+// ---------------------------------------------------------------- HUD: cabecera con los resultados, rótulos con línea guía y el cierre «comenta KIRIA»
 function buildHudPlan() {}
 const wpo = (o, x, y, z) => { o.updateWorldMatrix(true, false); return o.localToWorld(v3(x, y, z)); };
 const HG = '#FFC24A', HD = '#8FE6FF';
@@ -1279,10 +1376,10 @@ function hudAt(t) {
   lab(v3(0.46, 1.05, WKZ), 'VOZ', null, cw(t, K.voz4 - 0.02, K.cada5 - 0.05), { dx: 110, dy: 200, color: HD });
   // 5: el objeto en 3D
   if (S.gavel.pv.visible) lab(wpo(S.gavel.gv, -0.48, 0.0, 0.13), 'OBJETO EN 3D', null, cw(t, K.d3_5 + 0.05, K.que5 + 0.1), { dx: -120, dy: -200, color: HC.white });
-  // cierre: comenta KIRIA (y el enlace con el 10 %)
+  // cierre: comenta KIRIA y te paso el enlace por privado
   { const k = cw(t, K.kiria11 + 0.45, END - 1.0); if (k > 0.01) {
       bigText('COMENTA «KIRIA»', W / 2, 1540, 66, HC.white, k, { glow: 12, type: false, dark: 26 });
-      bigText('Y TE ESCRIBIMOS POR PRIVADO', W / 2, 1628, 30, HG, cw(t, K.kiria11 + 0.75, END - 1.0), { dark: 18, ls: 4 }); } }
+      bigText('Y TE PASO EL ENLACE POR PRIVADO', W / 2, 1628, 30, HG, cw(t, K.paso9 - 0.05, END - 1.0), { dark: 18, ls: 4 }); } }
 }
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
@@ -1343,21 +1440,25 @@ window.renderCover = function () {
   for (const f of faces) { await f.load(); document.fonts.add(f); }
   FONT3 = new FontLoader().parse(await new TTFLoader().loadAsync(F + 'Inter-Black.otf'));
   const names = await (await fetch('img/reels.json')).json();
+  PRODUCTO = new Image(); PRODUCTO.src = 'img/producto.jpg'; await PRODUCTO.decode();
   for (let i = 0; i < names.length; i++) { const R = []; for (let j = 1; j <= 6; j++) { const im = new Image(); im.src = `img/r${i}_${j}.jpg`; await im.decode(); R.push(im); } REELS.push(R); }
   const lines = await (await fetch('../tiempos.json')).json();
   VENV = await (await fetch('../voz_env.json')).json();
   WORDS = lines.flatMap((l, li) => l.words.map(w => ({ ...w, n: norm(w.w), li: li + 1 })));
   END = Math.ceil(lines[lines.length - 1].end + 2.6);
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
-  // (los nombres de las claves son los de la primera versión; las frases de los precios se quitaron: 2 = guion, 3 = voz, 4 = 3D, 5 = subtítulos, 6 = sonido, 7 = comenta)
+  // frases: 1 = 3,2 M · 2 = seguidores · 3 = guion · 4 = voz · 5 = 3D · 6 = subtítulos · 7 = sonido · 8 = prueba tu objeto · 9 = comenta KIRIA
+  // (las claves conservan los nombres de la primera versión para no tocar la escena)
   K = {
     k32: atL(1, '32'), millones1: atL(1, 'millones'), visual1: atL(1, 'visualizaciones'), en1: atL(1, '=en'), siete1: atL(1, '=7'), dias1: atL(1, 'dias'), y1: atL(1, '=y'), ni1: atL(1, '=ni'), sola1: atL(1, 'sola'), camara1: atL(1, 'camara'),
-    guion3: atL(2, 'guion'), que3: atL(2, '=que'), engancha3: atL(2, 'engancha'), desde3: atL(2, 'desde'), primer3: atL(2, 'primer'), segundo3: atL(2, 'segundo'),
-    una4: atL(3, '=una'), voz4: atL(3, 'voz'),
-    cada5: atL(4, 'cada'), objeto5: atL(4, 'objeto'), construido5: atL(4, 'construido'), d3_5: atL(4, '3d'), que5: atL(4, '=que'), mueve5: atL(4, 'mueve'), justo5: atL(4, 'justo'), oyes5: atL(4, 'oyes'),
-    subtitulos6: atL(5, 'subtitulos'), palabra6: atL(5, 'palabra'), a6: atL(5, '=a'), palabra6b: atL(5, 'palabra', 2),
-    sonido7: atL(6, 'sonido'), efecto7: atL(6, 'efecto'), a7: atL(6, '=a'), efecto7b: atL(6, 'efecto', 2),
-    si11: atL(7, '=si'), videos11: atL(7, 'videos'), cuenta11: atL(7, 'cuenta'), negocio11: atL(7, 'negocio'), comenta11: atL(7, 'comenta'), kiria11: atL(7, 'kiria'),
+    mas2: atL(2, 'mas'), n2500: atL(2, '2500'), seguidores2: atL(2, 'seguidores'), seis2: atL(2, '=6'), dias2: atL(2, 'dias'), como2: atL(2, 'como'),
+    guion3: atL(3, 'guion'), que3: atL(3, '=que'), engancha3: atL(3, 'engancha'), desde3: atL(3, 'desde'), primer3: atL(3, 'primer'), segundo3: atL(3, 'segundo'),
+    una4: atL(4, '=una'), voz4: atL(4, 'voz'),
+    cada5: atL(5, 'cada'), objeto5: atL(5, 'objeto'), construido5: atL(5, 'construido'), d3_5: atL(5, '3d'), que5: atL(5, '=que'), mueve5: atL(5, 'mueve'), justo5: atL(5, 'justo'), oyes5: atL(5, 'oyes'),
+    subtitulos6: atL(6, 'subtitulos'), palabra6: atL(6, 'palabra'), a6: atL(6, '=a'), palabra6b: atL(6, 'palabra', 2),
+    sonido7: atL(7, 'sonido'), efecto7: atL(7, 'efecto'), a7: atL(7, '=a'), efecto7b: atL(7, 'efecto', 2),
+    ademas8: atL(8, 'ademas'), probar8: atL(8, 'probar'), objeto8: atL(8, 'objeto'), d3_8: atL(8, '3d'), ver8: atL(8, '=ver'), redes8: atL(8, 'redes'), pagina8: atL(8, 'pagina'), web8: atL(8, 'web'),
+    si11: atL(9, '=si'), videos11: atL(9, 'videos'), comenta11: atL(9, 'comenta'), kiria11: atL(9, 'kiria'), paso9: atL(9, 'paso'), enlace9: atL(9, 'enlace'), privado9: atL(9, 'privado'),
   };
   // «3,2» es una sola palabra en los tiempos: «tres», «coma» y «dos» se reparten por sílabas
   K.coma1 = K.k32 + 0.24; K.dos1 = K.k32 + 0.56;

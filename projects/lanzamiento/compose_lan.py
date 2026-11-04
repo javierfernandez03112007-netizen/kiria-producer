@@ -1,6 +1,7 @@
-"""Compone «Ni una sola cámara» (lanzamiento de la web del estudio): fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos
-palabra a palabra en Impact (cifras y precios en dorado o verde, «cámara» y «oyes» en rojo, la voz en celeste) + la voz de Danny
-(ElevenLabs, el MP3 de Javi) + efectos SOLO de ElevenLabs, uno por suceso y cortados cuando el suceso termina.
+"""Compone «Ni una sola cámara» (lanzamiento de la web del estudio, versión larga de 9 frases): fotogramas 3D a 60 fps (out/frames, ya con
+el HUD) + subtítulos palabra a palabra en Impact (cifras en dorado o verde, «cámara» y «oyes» en rojo, la voz y las redes en celeste) + la
+voz de Danny (ElevenLabs: la toma de Javi recortada + las frases nuevas, ver voz_con_extra.py) + efectos SOLO de ElevenLabs, uno por suceso
+y cortados cuando el suceso termina.
 
     python3 ajustar_voz.py && python3 env_voz.py && python3 sfx_eleven.py
     WK=3 ./render_local.sh 0 N
@@ -48,12 +49,14 @@ def first(line):
 GO, R, WH = "#FFC24A", "#FF5A4E", "#EEF2F6"
 BL, GR, TE, AM = "#8FE6FF", "#7CF0A9", "#62E3D4", "#FFB547"
 _K = {1: {"3,2": GO, "millones": GO, "7": WH, "días": WH, "cámara": R},
-      2: {"guion": WH, "primer": GO, "segundo": GO},
-      3: {"voz": BL},
-      4: {"3D": GO, "oyes": R},
-      5: {"subtítulos": WH},
-      6: {"sonido": BL},
-      7: {"cuenta": WH, "negocio": WH, "kiria": GO}}
+      2: {"2.500": GR, "seguidores": WH, "6": WH, "días": WH, "cómo": GO},
+      3: {"guion": WH, "primer": GO, "segundo": GO},
+      4: {"voz": BL},
+      5: {"3D": GO, "oyes": R},
+      6: {"subtítulos": WH},
+      7: {"sonido": BL},
+      8: {"probar": WH, "3D": GO, "redes": BL, "página": WH, "web": WH},
+      9: {"kiria": GO, "enlace": GR, "privado": WH}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -89,8 +92,8 @@ def sample(name, sr):                             # mono 48 kHz, sin el silencio
 def times():                                       # los mismos instantes que web/src/20_anim.js (buildTimes)
     k32 = at("3,2")
     T = {"glyph": [k32 + 0.17, k32 + 0.34, k32 + 0.62, at("millones") + 0.05],
-         "land": at("cámara") + 0.03, "slam": at("oyes") + 0.03, "suck": at("si") + 0.02,
-         "words": [at("subtítulos") + 0.03, at("palabra") + 0.03, at("a", 1, 5) + 0.03, at("palabra", 2) + 0.03]}
+         "land": at("cámara") + 0.03, "slam": at("oyes") + 0.03, "suck": at("además") + 0.02,
+         "words": [at("subtítulos") + 0.03, at("palabra", 1, 6) + 0.03, at("a", 1, 6) + 0.03, at("palabra", 2, 6) + 0.03]}
     T["morph0"] = at("cámara") + 0.43
     return T
 
@@ -119,31 +122,47 @@ def sfx_track(path):
     put("cae", at("ni") - 0.2, span(at("ni") - 0.2, T["land"]), 0.4, 0.06)
     put("camara_suelo", T["land"] - 0.02, 0.7, 0.65, 0.25)
     put("glitch", T["land"] + 0.12, 0.45, 0.35, 0.2)
-    # 2: las aristas forman el guion; se escribe; el gancho, en el primer segundo
-    put("laser", T["morph0"] - 0.02, span(T["morph0"] - 0.02, at("guion") + 0.15), 0.4, 0.2)
-    put("papel", at("guion") - 0.08, 0.5, 0.4, 0.2)
-    put("teclea", at("que", 1, 2), 0.85, 0.32, 0.15)
+    # 2: las aristas se meten en la pantalla y salen los resultados (las cifras suben); la barra de los seguidores; el ¿? sale de la pantalla
+    put("laser", T["morph0"] - 0.02, span(T["morph0"] - 0.02, at("más") + 0.25), 0.4, 0.2)
+    put("contador", at("más") + 0.0, 0.95, 0.35, 0.25)
+    put("ping", at("2.500") + 0.02, 0.45, 0.3, 0.2)
+    put("dias", at("6") + 0.1, 0.55, 0.35, 0.2)
+    put("burbuja", at("cómo") - 0.04, 0.4, 0.45, 0.15)
+    # 3: el guion sale de la pantalla; se escribe; el gancho, en el primer segundo
+    put("papel", at("guion") - 0.12, 0.5, 0.4, 0.2)
+    put("teclea", at("que", 1, 3), 0.85, 0.32, 0.15)
     put("marcador", at("desde") - 0.02, 0.45, 0.4)
     put("cronometro", at("segundo") - 0.02, 0.35, 0.45)
-    # 3: las líneas son la onda de la voz; 4: se construye el mazo en 3D y golpea en «oyes»
-    put("onda", at("una", 1, 3) - 0.05, 0.75, 0.35, 0.25)
-    put("construye", at("cada") - 0.02, span(at("cada") - 0.02, at("3D") + 0.05), 0.35, 0.2)
-    put("solido", at("3D") - 0.02, 0.55, 0.45, 0.2)
-    put("taco", at("que", 1, 4) - 0.02, 0.35, 0.4)
-    put("tension", at("que", 1, 4) + 0.1, span(at("que", 1, 4) + 0.1, T["slam"] - 0.04), 0.35, 0.1)
+    # 4: las líneas son la onda de la voz; 5: se construye el mazo en 3D y golpea en «oyes»
+    put("onda", at("una", 1, 4) - 0.05, 0.75, 0.35, 0.25)
+    put("construye", at("cada") - 0.02, span(at("cada") - 0.02, at("3D", 1, 5) + 0.05), 0.35, 0.2)
+    put("solido", at("3D", 1, 5) - 0.02, 0.55, 0.45, 0.2)
+    put("taco", at("que", 1, 5) - 0.02, 0.35, 0.4)
+    put("tension", at("que", 1, 5) + 0.1, span(at("que", 1, 5) + 0.1, T["slam"] - 0.04), 0.35, 0.1)
     put("mazo", T["slam"] - 0.01, 1.0, 0.95, 0.35)
-    # 5: las palabras caen una a una; 6: el sonido, efecto a efecto
+    # 6: las palabras caen una a una; 7: el sonido, efecto a efecto
     for i, tw in enumerate(T["words"]):
         put("palabra", tw - 0.01, 0.35, 0.5 if i else 0.6)
-    for te in [at("sonido"), at("efecto"), at("a", 1, 6), at("efecto", 2)]:
+    for te in [at("sonido"), at("efecto"), at("a", 1, 7), at("efecto", 2)]:
         put("ping", te - 0.01, 0.5, 0.4, 0.2)
-    # 7: todo se mete en el móvil; los resultados; tu negocio (toldo); comenta KIRIA
+    # 8: todo se mete en el móvil; la foto de tu objeto entra y se vuelve un tarro en 3D; en redes (me gusta); el móvil se estira y es una web
     put("absorbe", T["suck"] - 0.02, 0.55, 0.45, 0.2)
-    put("contador", at("vídeos") + 0.0, 0.95, 0.35, 0.25)
-    put("toldo", at("negocio") + 0.0, 0.65, 0.45, 0.2)
+    put("tarjeta", at("probar") - 0.15, 0.45, 0.45, 0.15)
+    put("construye", at("3D", 1, 8) - 0.3, 0.32, 0.3, 0.12)
+    put("solido", at("3D", 1, 8) - 0.05, 0.55, 0.55, 0.2)
+    put("sale", at("ver") - 0.12, 0.45, 0.35, 0.15)
+    put("corazon", at("redes") - 0.01, 0.45, 0.5, 0.15)
+    put("estira", at("página") - 0.3, 0.55, 0.45, 0.15)
+    put("tap", at("web") + 0.15, 0.3, 0.35)
+    # 9: el tarro vuelve al móvil y siguen los vídeos; comenta KIRIA; el avión de papel lleva el enlace por privado
+    put("pantalla", at("si", 1, 9) + 0.05, 0.5, 0.35, 0.2)
+    put("desliza", at("vídeos") - 0.06, 0.35, 0.3, 0.12)
+    put("desliza", at("vídeos") + 0.39, 0.35, 0.3, 0.12)
     put("burbuja", at("comenta") - 0.02, 0.35, 0.5)
     put("teclas", at("kiria") - 0.02, 0.5, 0.45, 0.15)
-    put("enviado", at("kiria") + 0.73, 0.55, 0.4, 0.2)
+    put("enviado", at("kiria") + 0.58, 0.5, 0.35, 0.2)
+    put("avion", at("paso") - 0.05, span(at("paso") - 0.05, at("privado") + 0.25), 0.4, 0.15)
+    put("mensaje", at("privado") + 0.22, 0.6, 0.5, 0.2)
     # bucle: los objetos vuelven a salir de la pantalla
     put("vuelve", END - 0.8, 0.8, 0.4, 0.05)
     sfx.write(path, out, drive=1.0, level=0.9)

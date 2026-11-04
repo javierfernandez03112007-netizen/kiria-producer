@@ -6,6 +6,7 @@ const WKZ = 1.0;                                                                
 const PIV = v3(0, 0.255, WKZ + 0.48);                                           // eje del mazo (el mango apunta hacia la cámara; la cabeza, de lado)
 const SCR = { w: 540, h: Math.round(540 * PHN.sh / PHN.sw) };                    // lienzo de la pantalla
 const REELS = [];                                                               // [vídeo][fotograma] imágenes de nuestros vídeos
+let PRODUCTO = null;                                                            // foto de ejemplo de «tu objeto» (un dibujo: tarro de mermelada)
 
 function rplane(w, h, r, seg = 10) { const g = new THREE.ShapeGeometry(rrShape(w, h, r), seg); const p = g.attributes.position, uv = g.attributes.uv; for (let i = 0; i < p.count; i++) uv.setXY(i, p.getX(i) / w + 0.5, p.getY(i) / h + 0.5); return g; }
 // texto 3D (Inter Black); centrado en x y en z; en y, centrado o sobre la línea base (base = true)
@@ -206,8 +207,33 @@ function buildCTA() {
   scene.add(bub); S.bubble = bub;
 }
 
+// ---------------------------------------------------------------- «prueba tu objeto en 3D»: la foto, el tarro en 3D, el ¿? y el avión de papel
+function buildProduct() {
+  const T = canvasTex(400, 480, (g, w, h) => { g.fillStyle = '#f4f1e8'; g.fillRect(0, 0, w, h); const im = PRODUCTO, s = Math.max((w - 40) / im.width, (h - 120) / im.height);
+    g.save(); g.beginPath(); g.rect(20, 20, w - 40, h - 120); g.clip(); g.drawImage(im, 20 + (w - 40 - im.width * s) / 2, 20 + (h - 120 - im.height * s) / 2, im.width * s, im.height * s); g.restore();
+    g.fillStyle = '#2a2c31'; g.font = '900 38px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('TU OBJETO', w / 2, h - 52); });
+  const card = new THREE.Group(); card.add(rbox(0.4, 0.48, 0.012, paint(0xf4f1e8, 0.5, 0.3), 0.012));
+  const cf = new THREE.Mesh(new THREE.PlaneGeometry(0.4, 0.48), new THREE.MeshStandardMaterial({ map: T, roughness: 0.6 })); cf.position.z = 0.0066; card.add(cf);
+  scene.add(card); S.card = card;
+  const jar = new THREE.Group(), r = 0.17;
+  jar.add(lathe([[0.001, 0], [r - 0.02, 0], [r, 0.02], [r, 0.27], [r - 0.006, 0.29], [r - 0.024, 0.305], [r - 0.024, 0.33]], 64, new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.03, transparent: true, opacity: 0.22, clearcoat: 1, side: THREE.DoubleSide, depthWrite: false })));
+  jar.add(lathe([[0.001, 0.008], [r - 0.012, 0.008], [r - 0.008, 0.02], [r - 0.008, 0.26], [0.001, 0.262]], 64, plastic(0xb3122a, 0.25)));
+  jar.add(lathe([[r - 0.012, 0.31], [r - 0.006, 0.312], [r - 0.006, 0.37], [r - 0.012, 0.376], [0.001, 0.377]], 64, metal(0xd4a640, 0.28)));
+  const LT = canvasTex(512, 256, (g, w, h) => { g.fillStyle = '#f4f1e8'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(40,36,30,.6)'; g.lineWidth = 6; g.strokeRect(10, 10, w - 20, h - 20);
+    g.fillStyle = '#2a2c31'; g.font = '900 64px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('TU MARCA', w / 2, 92);
+    g.fillStyle = '#b3122a'; g.font = '800 30px Inter'; g.fillText('FRESA · HECHA A MANO', w / 2, 150);
+    [[150, 205], [256, 212], [362, 205]].forEach(([x, y]) => { g.fillStyle = '#e8434f'; g.beginPath(); g.ellipse(x, y, 20, 24, 0, 0, 7); g.fill(); g.fillStyle = '#3f9a3f'; g.beginPath(); g.moveTo(x - 14, y - 18); g.lineTo(x, y - 32); g.lineTo(x + 14, y - 18); g.closePath(); g.fill(); }); });
+  const label = new THREE.Mesh(new THREE.CylinderGeometry(r + 0.003, r + 0.003, 0.16, 64, 1, true, -1.1, 2.2), new THREE.MeshStandardMaterial({ map: LT, roughness: 0.6 })); label.position.y = 0.14; jar.add(label);
+  jar.traverse(o => { if (o.isMesh) o.castShadow = true; }); scene.add(jar); S.jar = jar;
+  const q = qmark(paint(0xf2f3f5, 0.2, 1)); scene.add(q); S.q = q;
+  const pl = new THREE.Group(), pm = new THREE.MeshStandardMaterial({ color: 0xf4f6f9, roughness: 0.45, side: THREE.DoubleSide });
+  const tri = (a, b, c) => { const g = new THREE.BufferGeometry().setFromPoints([a, b, c]); g.computeVertexNormals(); const m = new THREE.Mesh(g, pm); m.castShadow = true; return m; };
+  pl.add(tri(v3(0, 0, 0.3), v3(-0.17, 0.02, -0.12), v3(0, -0.02, -0.1)), tri(v3(0, 0, 0.3), v3(0.17, 0.02, -0.12), v3(0, -0.02, -0.1)), tri(v3(0, 0, 0.3), v3(0, -0.02, -0.1), v3(0, -0.09, -0.11)));
+  scene.add(pl); S.plane = pl;
+}
+
 function buildLaunch() {
-  buildPhone(); buildNumber(); buildMovieCam(); buildWork(); buildCTA();
+  buildPhone(); buildNumber(); buildMovieCam(); buildWork(); buildCTA(); buildProduct();
   // objetos que salen de la pantalla (posición y giro en el primer fotograma, y a qué cifra van)
   const birr = birrete(); birr.scale.setScalar(0.42);
   const doll = makeDoll(M.gold); doll.scale.setScalar(0.62);
@@ -226,12 +252,7 @@ function buildLaunch() {
   S.shards = Array.from({ length: 56 }, (_, i) => { const s = new THREE.Shape(), k = 0.045 + hash(i * 4.4) * 0.1; s.moveTo(0, 0); s.lineTo(k * (0.6 + hash(i) * 0.8), k * 0.25); s.lineTo(k * 0.2, k * (0.7 + hash(i * 2) * 0.6)); s.lineTo(0, 0);
     const m = new THREE.Mesh(new THREE.ShapeGeometry(s), shM); edges(m, 0xeef4ff, 1.1, 1, 0.55); scene.add(m);
     return { m, a: v3((hash(i * 1.7) - 0.5) * 0.7, PHN.y + (hash(i * 2.3) - 0.5) * 1.5, 0.06), v: v3((hash(i * 3.1) - 0.5) * 1.4, (hash(i * 5.3) - 0.35) * 1.1, 0.6 + hash(i * 6.9) * 1.2), w: hash(i * 8.1) * 6 }; });
-  // líneas que pasan de la cámara de cine al guion: el contorno del papel y sus renglones (sin precios en el vídeo: decisión de Javi)
+  // las aristas de la cámara de cine vuelan y se meten en la pantalla del móvil (allí salen los resultados)
   const nSeg = S.camSegs.length; S.morph = segSet(nSeg, 0xeef2f6, 2.6, 1); scene.add(S.morph);
-  const PP = new THREE.Object3D(); PP.position.set(0, 1.06, WKZ); PP.updateMatrixWorld(true);
-  const pz = x => 0.035 * (x / 0.31) ** 2, tS = [], add = (x0, y0, x1, y1) => tS.push([v3(x0, y0, pz(x0) + 0.004).applyMatrix4(PP.matrixWorld), v3(x1, y1, pz(x1) + 0.004).applyMatrix4(PP.matrixWorld)]);
-  for (let i = 0; i < 10; i++) { const a = -0.31 + 0.062 * i, b = a + 0.062; add(a, 0.43, b, 0.43); add(a, -0.43, b, -0.43); }
-  for (let i = 0; i < 12; i++) { const a = 0.43 - 0.86 * i / 12, b = 0.43 - 0.86 * (i + 1) / 12; add(-0.31, a, -0.31, b); add(0.31, a, 0.31, b); }
-  for (let i = 0; i < 12; i++) { const y = 0.43 - (PL0 + i * PLS) * 0.86 / 860, x0 = -0.31 + 52 * 0.62 / 620, w = PLW(i) * 0.62 / 620; add(x0, y, x0 + w * 0.5, y); add(x0 + w * 0.5, y, x0 + w, y); }
-  S.tagSegs = tS;
+  S.tagSegs = Array.from({ length: nSeg }, (_, i) => { const p = v3((hash(i * 1.7) - 0.5) * 0.6, PHN.y + (hash(i * 3.9) - 0.5) * 1.4, PHN.d / 2 + 0.01); return [p, p.clone()]; });
 }
