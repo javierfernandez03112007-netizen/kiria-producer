@@ -24,6 +24,9 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 - Stripe: web del negocio https://kiriaai.com; en cada enlace de pago, «Después del pago» → redirigir a https://kiriaai.com/#pagado
   (la web enseña el aviso «¡Pago recibido!» y borra el pedido guardado).
 - Publicar: `./web_estudio/publicar.sh --publicar` (cabecera completa, `media/` y rama `gh-pages`; Cloudflare se actualiza solo).
+- **Enlaces de pago de Stripe** (Javi los crea; todos con códigos promocionales, dirección de facturación, NIF de empresa, sin impuestos
+  automáticos ni Managed Payments, y «Después del pago» → https://kiriaai.com/#pagado). Faltan por conectar a los botones:
+  - Vídeo Básico (15–30 s) · 6,99 €: https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
