@@ -45,9 +45,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    visitas, seguidores etc.»).** Solo resultados reales (con fuente: panel de Instagram o Metricool) y «comenta KIRIA». Vídeo 1 «Ni una sola cámara» (`projects/lanzamiento/`,
    entregado el 4-11-2026: 23 s, 1380 fotogramas, −14,7 LUFS; voz de Danny con las frases de los precios recortadas). A Javi le
    encantó y pidió la **versión larga (v3, 33 s, 1980 fotogramas)**: «más de 2.500 seguidores nuevos en 6 días. ¿Cómo?», «puedes probar tu
-   objeto en 3D… en redes… o en una página web» y el cierre «comenta KIRIA y te paso el enlace por privado» (frases nuevas generadas con la
-   voz y los ajustes de su toma: `tts_extra.py` + `voz_con_extra.py`; render por trozos en ramas `render-lan3-*`). La v2 queda en
-   `out/lanzamiento_v2_23s.mp4`. Pendiente antes de publicar: la captura de los 3,2 M en 7 días (Metricool da 1,93 M del 26 oct al
+   objeto en 3D… en redes… o en una página web» y el cierre «comenta KIRIA y te paso el enlace por privado». Voz: **la toma completa que
+   mandó Javi** (11:41; antes había generado yo las frases nuevas con su voz y ajustes, `tts_extra.py` + `voz_con_extra.py`, ya sin usar);
+   render por trozos en ramas `render-lan4-*`. La v2 queda en `out/lanzamiento_v2_23s.mp4`. Pendiente antes de publicar: la captura de los 3,2 M en 7 días (Metricool da 1,93 M del 26 oct al
    1 nov) y la respuesta automática a «KIRIA» con el enlace.
 3. **Lanzamiento de la web del estudio (plan de Javi, 4-11-2026)**: varios reels con «comenta KIRIA» → mensaje privado con el enlace a
    WhatsApp → allí la web con un 10 % extra. Propuesto: decir «tener un vídeo así», no «aprender» (no hay curso); Canal de WhatsApp
@@ -117,6 +117,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (nada de fondo continuo ni sonidos sintetizados). Modelo de Parakeet: se baja de las «releases» de sherpa-onnx en GitHub (≈ 490 MB).
 - **Voz y efectos desde la sesión**: `python3 engine/tts.py projects/<p>` (voz de Danny + tiempos de cada palabra, sin reconocedor)
   → `ajustar_voz.py` → `env_voz.py`; efectos realistas: `projects/magisterio/sfx_eleven.py` (copiar y cambiar la lista).
+- **`ajustar_voz.py`: copiar el de `projects/lanzamiento/`** (4-11-2026). En los demás proyectos el recorte de silencios QUITA del centro
+  la duración de `PAUSE`/`INNER_MAX` en vez de DEJARLA: con silencios poco más largos que ese valor casi no queda pausa (en la toma de Javi
+  del lanzamiento, 0,09 s tras «cámara» y 0,02 s tras «redes…»). En el de lanzamiento ya deja la pausa indicada; los vídeos ya entregados
+  no se han tocado.
 - **Metricool**: conectado en claude.ai (1-11-2026); publicar solo tras la revisión de Javi.
 - **ElevenLabs**: la clave está como secreto del entorno «Predeterminado»; el entorno añade el encabezado `xi-api-key` a las peticiones a
   `api.elevenlabs.io` (no hay que ponerla en el código). Uso: voz Danny para guiones y efectos de sonido realistas.

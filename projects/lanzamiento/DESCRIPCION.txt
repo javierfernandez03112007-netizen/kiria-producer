@@ -22,8 +22,7 @@ NOTAS DE ENTREGA:
 - PENDIENTE antes de publicar: la captura del panel de Instagram con los 3,2 millones de visualizaciones en 7 días (Metricool da
   1,93 M del 26 oct al 1 nov para las visualizaciones de la cuenta).
 - La respuesta automática a «KIRIA» (enlace al canal de WhatsApp) tiene que estar lista antes de publicar: el vídeo dice «te paso el enlace por privado».
-- Las frases nuevas de la versión larga (seguidores, «prueba tu objeto en 3D», «te paso el enlace») las generé con la misma voz y ajustes
-  que la toma de Javi (Danny, eleven_v4, 0,50 / 0,75). Si prefiere grabarlas él, se cambia assets/extra.mp3 y se rehace.
+- Voz: la toma de Javi de la versión larga (Danny en ElevenLabs, 4-11-2026 11:41), con las pausas ajustadas y a ×1,04.
 - El tarro de mermelada «TU MARCA», «@tumarca» y la web «tutienda.es» son un ejemplo dibujado, no un cliente.
 - Versión corta anterior (23 s): out/lanzamiento_v2_23s.mp4.
 - Portada: out/portada.jpg (9:16) · miniatura 4:5: out/miniatura.jpg. Vídeo en bucle: el final enlaza con el principio.
