@@ -58,8 +58,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    real; publicar la web el día del lanzamiento (ahora sin publicar) y añadir un código de descuento.
    **Fecha: domingo 8-11-2026 a las 12:00** (Javi, 4-11-2026). **Web PUBLICADA el 4-11-2026** (provisional, GitHub Pages:
    https://javierfernandez03112007-netizen.github.io/kiria-producer/) porque Stripe pide la dirección de la web. **Dominio: kiriaai.com** (Javi lo
-   pagó el 4-11-2026 en DonDominio) → Cloudflare Pages (proyecto `kiriaai`, rama `gh-pages`); `publicar.sh` ya apunta a kiriaai.com:
-   no publicar hasta que el dominio abra la web (ver `web_estudio/README.md`). Guía de cobros (Stripe con enlaces de pago, dominio, alta de autónomo) en Notion: «Cobrar con tarjeta, dominio y alta de autónomo».
+   pagó el 4-11-2026 en DonDominio) → Cloudflare Pages (proyecto `kiriaai`, rama `gh-pages`). **Web en https://kiriaai.com desde el
+   4-11-2026** (www y github.io llevan ahí). Enlaces de pago de Stripe: los crea Javi, apuntados en `web_estudio/README.md`. Guía de cobros (Stripe con enlaces de pago, dominio, alta de autónomo) en Notion: «Cobrar con tarjeta, dominio y alta de autónomo».
    **Correo de la web (Javi, 4-11-2026): kiriaai2026@gmail.com** (contacto, formulario FormSubmit — hay que activarlo de nuevo con ese
    correo — y correo de atención de Stripe). Plan, calendario y textos (canal, mensaje automático, bienvenida,
    lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto = la de Instagram (`whatsapp/foto_canal.png`).

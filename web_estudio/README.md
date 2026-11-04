@@ -15,7 +15,8 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   los datos 3D van en base64 dentro de `.txt`.
 - **PUBLICADA el 4-11-2026**, provisional, en https://javierfernandez03112007-netizen.github.io/kiria-producer/ (Javi: «la ponemos ya
   en la web y empezamos a editar cosas ya publicada para poder generar Stripe»: Stripe pide la dirección de la web). El 3-11 estuvo retirada.
-- **Dominio: kiriaai.com** (Javi lo pagó el 4-11-2026 en DonDominio). Pasa a **Cloudflare Pages**: proyecto `kiriaai`, rama `gh-pages`,
+- **Dominio: kiriaai.com** (Javi lo pagó el 4-11-2026 en DonDominio). **EN MARCHA desde el 4-11-2026** (kiriaai.com y www, «Active»; publicada
+  la versión con kiriaai.com, gh-pages 3c74bfc). Está en **Cloudflare Pages**: proyecto `kiriaai`, rama `gh-pages`,
   sin compilación, dominios `kiriaai.com` y `www.kiriaai.com`; los nameservers de DonDominio apuntan a Cloudflare. GitHub Pages no admite
   webs para vender: cuando kiriaai.com funcione, Javi lo apaga (Settings → Pages → Branch: None). Pasos para Javi: guía de cobros de Notion, Parte 3.
 - `publicar.sh` ya usa https://kiriaai.com/ (canonical y og) y su cabecera lleva un script que manda `www.kiriaai.com` y `*.github.io` a
