@@ -576,6 +576,7 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .add-in .btn { justify-self: start; }
 .co-sel.one { grid-template-columns: minmax(0, 1fr); }
 .paywith { font-size: 14px; color: var(--ink2); }
+.co-err { order: 9; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 .paywith b { color: var(--ink); }
 @media (max-width: 900px) { .co-grid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .methods, .co-sel { grid-template-columns: 1fr; } .co-card { padding: 22px; } }
@@ -1123,7 +1124,7 @@ footer a:hover { color: var(--nightfg); }
         <ul class="lines" id="coLines"></ul>
         <p class="renew" id="coRenew" hidden>Los planes mensuales se renuevan solos cada mes hasta que los canceles. Puedes cancelarlos cuando quieras en <a href="https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00" target="_blank" rel="noopener">Mi suscripción</a> (también al pie de la web).</p>
         <details class="more-add" id="coMore">
-          <summary>+ Añadir algo más</summary>
+          <summary>Añadir algo más</summary>
           <div class="add-in">
             <div class="co-sel" id="coVideo">
               <label for="coT">Tipo de vídeo<select id="coT"></select></label>
@@ -1152,6 +1153,7 @@ footer a:hover { color: var(--nightfg); }
         <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Pago seguro con Stripe: los datos de tu tarjeta los gestiona Stripe y nosotros nunca los vemos.</span></p>
         <div class="co-note" id="coNote" hidden>
           <b>El pago online se está activando</b>
+          <p class="co-err" id="coErr" hidden></p>
           <p id="coNoteTxt">Todavía no está conectada la pasarela de pago. Envíanos tu pedido y te mandamos el enlace de pago seguro (te llegará un correo de confirmación).</p>
           <div class="lbtns"><button class="btn dark" type="button" id="coSend">Enviar pedido</button><a class="btn ghost" id="coIg" href="https://ig.me/m/kiria.ai" target="_blank" rel="noopener">Copiar y abrir Instagram</a><button class="btn ghost" type="button" id="coCopy">Copiar pedido</button></div>
           <p class="mono" style="text-transform:none;letter-spacing:0">Correo: <span class="sel">kiriaai2026@gmail.com</span></p>
@@ -2348,7 +2350,8 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     const tt = totals(), res = cart.map(l => { const x = info(l); return `${x.q > 1 ? x.q + ' × ' : ''}${x.name} (${x.det}): ${eurK(x.each * x.q)} €${x.month ? ' al mes' : ''}`; });
     pedido = `Hola, soy ${nm}${emp ? ' de ' + emp : ''}. Mi pedido:\n- ${res.join('\n- ')}\nHoy: ${eurK(tt.hoy)} €${tt.mes ? ` · después, ${eurK(tt.mes)} € al mes` : ''}. Mi correo: ${em}`;
     pedidoInfo = { subject: `Pedido (${eurK(tt.hoy)} €): ` + cart.map(l => info(l).name).join(' + '), message: pedido, name: nm, email: em };
-    const fallback = () => {
+    const fallback = code => {
+      const ce = $('coErr'); ce.hidden = !code; ce.textContent = code ? 'Código: ' + code : '';
       const l = cart.length === 1 ? cart[0] : null, k = !l ? '' : l.k === 'w' ? 'web-' + l.w : `${l.t}-${KP[l.pi].n}-${l.dif ? 1 : 0}`;
       if (!KPREVIEW && k && PAY_LINKS[k] && info(l).q === 1) { kiriaNotify(pedidoInfo); location.href = PAY_LINKS[k] + '?prefilled_email=' + encodeURIComponent(em); return; }
       render(); note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
@@ -2359,11 +2362,11 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
       body: JSON.stringify({ items: cart.map(l => l.k === 'w' ? { k: 'w', w: l.w } : { k: 'v', t: l.t, pi: l.pi, dif: l.dif ? 1 : 0, q: l.q || 1 }), email: em, name: nm, empresa: emp }) })
       .then(r => r.json().catch(() => ({})).then(j => {
         let u = null; try { u = new URL(j.url); } catch (err) {}
-        if (!r.ok || !u || u.protocol !== 'https:' || !/(^|\.)stripe\.com$/.test(u.hostname)) throw new Error(j.error || 'HTTP ' + r.status);
+        if (!r.ok || !u || u.protocol !== 'https:' || !/(^|\.)stripe\.com$/.test(u.hostname)) throw new Error((j.error || 'HTTP ' + r.status) + (j.detalle ? ': ' + j.detalle : ''));
         kiriaNotify(pedidoInfo);                    // a Javi le llega el pedido por correo (FormSubmit) mientras el cliente paga
         go.href = u.href; location.href = u.href;   // misma pestaña: al pagar, Stripe vuelve a #pagado
       }))
-      .catch(err => { console.warn('Pago con Stripe no disponible:', err && err.message); fallback(); });
+      .catch(err => { console.warn('Pago con Stripe no disponible:', err && err.message); fallback(String(err && err.message || 'sin respuesta').slice(0, 80)); });
   });
   addEventListener('pageshow', () => { render(); });   // al volver atrás desde Stripe
   let was = false;
