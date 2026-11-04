@@ -1,5 +1,5 @@
 #!/bin/bash
-# Máquina de ayuda: renderiza los fotogramas A..B-1 de «El túnel del Banco Central», los codifica en chunks/chunk_A_B.mp4 y los sube a la
+# Máquina de ayuda: renderiza los fotogramas A..B-1 de «Química vs Ingeniería Química», los codifica en chunks/chunk_A_B.mp4 y los sube a la
 # rama <PFX>-X (por defecto render-qui). Uso (desde la raíz del repo): bash projects/quimica/render_chunk.sh A B X [PFX]
 set -u
 A=$1; B=$2; X=$3; PFX=${4:-render-qui}
@@ -24,6 +24,6 @@ n=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_r
 cd ../..
 git checkout -q -B $PFX-$X
 git add -f projects/quimica/$F
-git commit -qm "Robo al banco: trozo $A-$B renderizado (máquina de ayuda $X)"
+git commit -qm "Química: trozo $A-$B renderizado (máquina de ayuda $X)"
 for i in 1 2 3 4 5; do git push -q -f -u origin $PFX-$X && break; sleep $((2 ** i)); done
 echo "SUBIDO $PFX-$X $F ($(du -h projects/quimica/$F | cut -f1))"

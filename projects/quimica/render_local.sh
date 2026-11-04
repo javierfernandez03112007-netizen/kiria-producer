@@ -1,5 +1,5 @@
 #!/bin/bash
-# Render de «El túnel del Banco Central» a 60 fps en esta máquina (W procesos, cada uno un fotograma de cada W, en orden).
+# Render de «Química vs Ingeniería Química» a 60 fps en esta máquina (W procesos, cada uno un fotograma de cada W, en orden).
 # Uso: ./render_local.sh [inicio] [fin]   (por defecto todos: 0..N-1). SKIP=1 salta los ya hechos, así que se puede relanzar.
 cd /home/user/kiria-producer/projects/quimica
 A=${1:-0}; N=${2:-$(python3 -c "import json; L=json.load(open('tiempos.json')); import math; print(int(math.ceil(L[-1]['end'] + 2.0) * 60))")}

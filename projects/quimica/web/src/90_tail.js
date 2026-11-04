@@ -60,25 +60,25 @@ window.renderCover = function () {
   END = Math.ceil(lines[lines.length - 1].end + 2.0);
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
   K = {
-    cavaron1: atL(1, 'cavaron'), tunel1: atL(1, 'tunel'), n78: atL(1, '78'), metros1: atL(1, 'metros'), llegar1: atL(1, 'llegar'), debajo1: atL(1, 'debajo'), camara1: atL(1, 'camara'), banco1: atL(1, 'banco'),
-    fortaleza2: atL(2, 'fortaleza'), brasil2: atL(2, 'brasil'), y20052: atL(2, '2005'),
-    alquilan3: atL(3, 'alquilan'), casa3: atL(3, 'casa'), central3: atL(3, 'central'), falsa3: atL(3, 'falsa'), cesped3: atL(3, 'cesped'),
-    tres4: atL(4, 'tres'), vender4: atL(4, 'vender'), casa4: atL(4, 'casa'), sale4: atL(4, 'sale'), tierra4: atL(4, 'tierra'),
-    bajo5: atL(5, 'bajo'), avanza5: atL(5, 'avanza'), vigas5: atL(5, 'vigas'), luz5: atL(5, 'luz'), ventilacion5: atL(5, 'ventilacion'),
-    hasta6: atL(6, 'hasta'), obstaculo6: atL(6, 'obstaculo'), suelo6: atL(6, 'suelo'), unmetro6: atL(6, '=un'), hormigon6: atL(6, 'hormigon'),
-    perforan7: atL(7, 'perforan'), martillos7: atL(7, 'martillos'), discos7: atL(7, 'discos'), capa7: atL(7, 'capa'), esperan7: atL(7, 'esperan'),
-    viernes8: atL(8, 'viernes'), cerrado8: atL(8, 'cerrado'), rompen8: atL(8, 'rompen'), entran8: atL(8, 'entran'),
-    dentro9: atL(9, 'dentro'), camaras9: atL(9, 'camaras'), sensores9: atL(9, 'sensores'), funcionan9: atL(9, 'funcionan'),
-    solo10: atL(10, 'solo'), billetes10: atL(10, 'billetes'), usados10: atL(10, 'usados'), rastrear10: atL(10, 'rastrear'),
-    sacan11: atL(11, 'sacan'), toneladas11: atL(11, 'toneladas'), billetes11: atL(11, 'billetes'), n164: atL(11, '164'), millones11: atL(11, 'millones'), reales11: atL(11, 'reales'),
-    lunes12: atL(12, 'lunes'), abren12: atL(12, 'abren'), agujero12: atL(12, 'agujero'),
-    mayor13: atL(13, 'mayor'), mayor13b: atL(13, 'mayor', 2), dinero13: atL(13, 'dinero'), aparecer13: atL(13, 'aparecer'),
-    donde14: atL(14, 'donde'),
+    crees1: atL(1, 'crees'), quimica1: atL(1, 'quimica'), ingenieria1: atL(1, 'ingenieria'), misma1: atL(1, 'misma'), carrera1: atL(1, 'carrera'),
+    realidad2: atL(2, 'realidad'), gramos2: atL(2, 'gramos'), otra2: atL(2, 'otra'), toneladas2: atL(2, 'toneladas'),
+    cual3: atL(3, 'cual'), cobra3: atL(3, 'cobra'), digo3: atL(3, 'digo'), final3: atL(3, 'final'),
+    primero4: atL(4, 'primero'), quimica4: atL(4, 'quimica'), matematicas4: atL(4, 'matematicas'), fisica4: atL(4, 'fisica'), laboratorio4: atL(4, 'laboratorio'),
+    separan5: atL(5, 'separan'), quimico5: atL(5, 'quimico'), moleculas5: atL(5, 'moleculas'), algo5: atL(5, 'algo'), nuevo5: atL(5, 'nuevo'), tubo5: atL(5, 'tubo'), ensayo5: atL(5, 'ensayo'),
+    ingeniero6: atL(6, 'ingeniero'), receta6: atL(6, 'receta'), fabrica6: atL(6, 'fabrica'), reactores6: atL(6, 'reactores'), columnas6: atL(6, 'columnas'), tuberias6: atL(6, 'tuberias'),
+    salgan6: atL(6, 'salgan'), toneladas6: atL(6, 'toneladas'), dia6: atL(6, 'dia'), seguras6: atL(6, 'seguras'), baratas6: atL(6, 'baratas'),
+    uno7: atL(7, 'uno'), laboratorios7: atL(7, 'laboratorios'), investigacion7: atL(7, 'investigacion'), farmaceuticas7: atL(7, 'farmaceuticas'),
+    otro7: atL(7, 'otro'), plantas7: atL(7, 'plantas'), refinerias7: atL(7, 'refinerias'), depuradoras7: atL(7, 'depuradoras'),
+    trabajo8: atL(8, 'trabajo'), igual8: atL(8, 'igual'), n8_8: atL(8, '=8'), n10_8: atL(8, '=10'),
+    pero9: atL(9, 'pero'), cuatro9: atL(9, 'cuatro'), gana9: atL(9, 'gana'), n27_9: atL(9, '27'),
+    ingeniero10: atL(10, 'ingeniero'), n31_10: atL(10, '31'), casi10: atL(10, 'casi'), n4_10: atL(10, '4'), mas10: atL(10, 'mas'),
+    eso11: atL(11, 'eso'), sin11: atL(11, 'sin'), fabrica11: atL(11, 'fabrica'), nada11: atL(11, 'nada'), fabricar11: atL(11, 'fabricar'),
+    laboratorio12: atL(12, 'laboratorio'), fabrica12: atL(12, 'fabrica'), equipo12: atL(12, 'equipo'), equipo12b: atL(12, 'equipo', 2), ingenieria12: atL(12, 'ingenieria'),
   };
   mats(); buildMats(); buildRig();
   scene.fog = new THREE.FogExp2(0x02040a, 0.012);
   { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.35; }
-  buildFlow(); buildRobo(); buildTimes();
+  buildFlow(); buildQuimica(); buildTimes();
   post.uniforms.ca.value = 0.4;
   buildCam(); buildHudPlan();
   for (const m of LMS) m.resolution.set(W * PR, H * PR);
