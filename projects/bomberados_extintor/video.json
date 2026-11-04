@@ -162,7 +162,8 @@
  "portada": {
   "titulo": "¿QUÉ SIGNIFICA?",
   "etiqueta": "PREGUNTA DEL DÍA",
-  "t": 7.45
+  "t": 7.45,
+  "oscurecer": true
  },
  "mezcla": {
   "sfx": 1.0,

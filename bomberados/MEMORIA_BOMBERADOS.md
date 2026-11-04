@@ -67,7 +67,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | Anuncio «Profe IA · Bomberados PRO» (idea de Javi, con la grabación real de la app) | `projects/bomberados_profeia/` | **guion enviado** 3 nov; escena hecha con tiempos provisionales; falta la voz de Javi |
 | Medio «Tus abuelos tenían media hora» (salón de antes contra el de hoy) | `projects/bomberados_abuelos/` | **listo para subir** (3 nov; 39,6 s, −15,5 LUFS, pico −1,2; voz de Javi; efectos de ElevenLabs reutilizados; Notion: fecha por decidir, propuesta mar 10) |
 | Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; 36,4 s, −15,3 LUFS, pico −0,6; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
-| PD 4 nov «¿Qué significa 21A-113B?» (versión CINEMATOGRÁFICA en 3D, idea de Javi) | `projects/bomberados_extintor/` | **escena hecha, falta la voz de Javi** (guion enviado el 3 nov; respuesta A; Notion: mié 4 nov 14:00, «En producción») |
+| PD 4 nov «¿Qué significa 21A-113B?» (versión CINEMATOGRÁFICA en 3D, idea de Javi) | `projects/bomberados_extintor/` | **listo para subir** (4 nov; 35,8 s, −14,5 LUFS, pico −1,1; voz de Javi; render repartido en 7 máquinas: ≈ 16 min el vídeo entero, 9 min el trozo más lento; respuesta A; Notion: mié 4 nov 14:00) |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -127,6 +127,7 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   «render projects/bomberados_extintor A B <commit>» a las 6 máquinas; aquí el último trozo con capture.mjs --range) →
   `ESPERA=6 REV=<commit> recoger_trozos.sh` → `compose.py` (efectos: `sfx_track_extintor`) → `portada.py` → entregar.
 - Pendiente de comprobar: tabla 1.1 del DB SI 4 (codigotecnico.org no abre desde aquí) y hogares tipo de la UNE-EN 3-7.
+- Hecho el 4 nov: voz a las 08:01 → vídeo a las 08:45. Al montar se vio que los títulos 3D «113B» y de eficacias chocaban con los subtítulos (y ≈ 330): se bajaron y se re-renderizaron solo esos 250 fotogramas en 5 máquinas (≈ 4 min). Portada: macro del código encendido (t 7,45) con `"oscurecer": true` (degradado oscuro detrás del titular, nuevo en portada.py).
 
 ## Notion (centro de trabajo de Javi; MCP de Notion)
 - Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).

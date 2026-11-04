@@ -40,6 +40,12 @@ def centered(d, y, s, size, fill, stroke=9):
     d.text(((W - d.textlength(s, font=f)) / 2, y), s, font=f, fill=fill, stroke_width=stroke, stroke_fill="#000000")
 
 
+if P.get("oscurecer"):                 # fondo claro detrás del titular: degradado oscuro arriba para que se lea
+    sh = Image.new("L", im.size, 0)
+    for y in range(0, 640):
+        a = int(170 * min(1, (640 - y) / 260))
+        ImageDraw.Draw(sh).line([(0, y), (W, y)], fill=a)
+    im = Image.composite(Image.new("RGB", im.size, (8, 6, 6)), im, sh)
 glow = Image.new("RGBA", im.size, (0, 0, 0, 0))
 ImageDraw.Draw(glow).ellipse((90, 230, 990, 520), fill=(255, 110, 30, 110))
 im = Image.alpha_composite(im.convert("RGBA"), glow.filter(ImageFilter.GaussianBlur(70))).convert("RGB")
