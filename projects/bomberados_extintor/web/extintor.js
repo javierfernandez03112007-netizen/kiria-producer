@@ -476,7 +476,7 @@ function buildStudio() {
       x.fillStyle = '#0b0d10'; x.font = '400 104px Bebas'; x.textAlign = 'center'; x.fillText(ok ? '✓' : L, 125, 162);
       x.fillStyle = '#F2F5F8'; x.textAlign = 'left'; const px = fitText(x, s, 880, 64, 'Inter', 800); x.fillText(s, 225, 125 + px * 0.36);
     }, { aniso: 2 });
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(0.238, 0.238 * 250 / 1150), new THREE.MeshBasicMaterial({ map: mk(false), transparent: true, depthWrite: true, alphaTest: 0.02, fog: false }));
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(0.23, 0.23 * 250 / 1150), new THREE.MeshBasicMaterial({ map: mk(false), transparent: true, depthWrite: true, alphaTest: 0.02, fog: false }));
     m.renderOrder = 20; m.userData = { tN: m.material.map, tOk: i === 0 ? mk(true) : null }; NODOF.push(m); studio.add(m); cards.push(m);
   });
 }
@@ -542,8 +542,8 @@ function buildLab() {
   gauge = new THREE.Group(); gauge.position.set(2.98, 0, 1.6);
   const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.185, 0.185, 1.16, 64, 1, true), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.05, transparent: true, opacity: 0.16, side: THREE.DoubleSide, clearcoat: 1, depthWrite: false }));
   glass.position.y = 0.58; gauge.add(glass);
-  water = new THREE.Mesh(new THREE.CylinderGeometry(0.178, 0.178, 1, 64), new THREE.MeshStandardMaterial({ color: 0x2a6fd0, roughness: 0.15, emissive: 0x0a2a60, emissiveIntensity: 0.7 }));
-  hept = new THREE.Mesh(new THREE.CylinderGeometry(0.178, 0.178, 1, 64), new THREE.MeshStandardMaterial({ color: 0xe0a02c, roughness: 0.12, emissive: 0x5a3200, emissiveIntensity: 0.8 }));
+  water = new THREE.Mesh(new THREE.CylinderGeometry(0.178, 0.178, 1, 64), new THREE.MeshPhysicalMaterial({ color: 0x2a78e0, roughness: 0.05, clearcoat: 1, emissive: 0x0a3070, emissiveIntensity: 0.8, transparent: true, opacity: 0.88 }));
+  hept = new THREE.Mesh(new THREE.CylinderGeometry(0.178, 0.178, 1, 64), new THREE.MeshPhysicalMaterial({ color: 0xf2a51e, roughness: 0.05, clearcoat: 1, emissive: 0x8a4a00, emissiveIntensity: 0.9, transparent: true, opacity: 0.86 }));
   gauge.add(water, hept); lab.add(gauge);
   title113 = titleMesh([['113 L', 250, 'Impact', 'fire'], ['⅔ HEPTANO + ⅓ AGUA', 112, 'Bebas', '#ffffff']], 0.62, { h: 470, plate: true, y0: 30 }); lab.add(title113);
   capL = titleMesh([[' ', 10, 'Bebas', '#ffffff']], 0.1, { h: 20 }); lab.add(capL);
@@ -589,13 +589,13 @@ function camMacro(t) {
   const q = heroPt(Math.sin(a) * ER * 0.3, CODE_Y, Math.cos(a) * ER * 0.3);
   return pose(p, q, 26, d + 0.004, 7);
 }
-const CARD_Y = HERO_POS.y + 0.43, CARD_Z = 0.6;
+const CARD_Y = HERO_POS.y + 0.36, CARD_Z = 0.6;
 function camCards(t) {
-  const k = e3(pr(t, T.out, T.esla - T.out)), p = V(mx(0.12, 0.04, k), mx(0.6, 0.58, k), mx(1.56, 1.38, k));
-  return pose(p, V(0.02, 0.555, 0), 30, p.z - CARD_Z, 2.2);
+  const k = e3(pr(t, T.out, T.esla - T.out)), p = V(mx(0.12, 0.04, k), mx(0.64, 0.62, k), mx(1.58, 1.47, k));
+  return pose(p, V(0.02, 0.6, 0), 30, p.z - CARD_Z, 2.2);
 }
 function camThrough(t) {
-  const a = V(0.02, CARD_Y, CARD_Z), k = e5(pr(t, T.esla + 0.18, T.lab - T.esla - 0.18));
+  const a = V(0.06, CARD_Y, CARD_Z), k = e5(pr(t, T.esla + 0.18, T.lab - T.esla - 0.18));
   return blend(camCards(T.esla + 0.18), pose(V(a.x, a.y, a.z + 0.04), V(a.x, a.y, a.z - 1), 30, 0.04, 0.5), k);
 }
 function hermite(keys, t) {       // keys: [[t, [valores...]], ...] → valores en t (C1, sin pasarse: tangentes de Fritsch–Carlson)
@@ -639,7 +639,7 @@ function labKeys() {
 const LABP = (v) => pose(V(v[0], v[1], v[2]).add(LAB), V(v[3], v[4], v[5]).add(LAB), v[6], null, 0);
 function camEnd(t) {
   const k = pr(t, T.fin, T.end - T.fin), az = mx(0.55, -0.1, e3(k)), r = mx(1.85, 1.6, k);
-  return pose(V(Math.sin(az) * r, 0.7, Math.cos(az) * r), V(0.05, 0.6, 0), 30, null, 1.4);
+  return pose(V(Math.sin(az) * r, 0.7, Math.cos(az) * r), V(0.05, 0.6, 0), 30, 0.55, 2.6);
 }
 function camAt(t) {
   if (t < T.w1) return camHook(t);
@@ -683,7 +683,7 @@ function update(t) {
     cards.forEach((m, i) => {
       const k = bk(pr(t, T.cardsIn + i * 0.11, 0.55));
       const tick = t > T.count0 && t < T.count1 ? Math.pow(1 - ((t - T.count0) % 1), 6) * 0.02 : 0;
-      m.position.set(0.02 + (1 - k) * 0.5, CARD_Y - i * 0.066 + 0.003 * Math.sin(t * 1.7 + i), CARD_Z); m.rotation.set(0, -(1 - k) * 0.9 + 0.035 * Math.sin(t * 0.9 + i), 0);
+      m.position.set(0.06 + (1 - k) * 0.5, CARD_Y - i * 0.066 + 0.003 * Math.sin(t * 1.7 + i), CARD_Z); m.rotation.set(0, -(1 - k) * 0.9 + 0.035 * Math.sin(t * 0.9 + i), 0);
       m.scale.setScalar(1 + tick);
       const right = i === 0, kr = pr(t, T.esla, 0.25);
       m.material.map = right && kr > 0 ? m.userData.tOk : m.userData.tN;
@@ -735,7 +735,7 @@ function update(t) {
     rateLight.intensity = 3 * grow + 1.2 * Math.sin(t * 21);
     rateTitles.forEach((m, i) => {
       const on = i === si && t > T.cuanto - 0.15;
-      showTitle(m, on ? cl(since / 0.12) : 0, LP(-7.0, 1.72, 0.55), mx(0.8, 1, bk(cl(since / 0.25))) * (0.85 + 0.15 * i / 4));
+      showTitle(m, on ? cl(since / 0.12) : 0, LP(-7.0, 1.3, 0.55), mx(0.8, 1, bk(cl(since / 0.25))) * (0.85 + 0.15 * i / 4));
     });
   }
 }
@@ -813,7 +813,7 @@ window.renderAt = t => {
   }
   if (N > 1) update(t);
   finMat.uniforms.tSrc.value = accRT.texture; finMat.uniforms.uTime.value = t;
-  finMat.uniforms.uDim.value = (t >= T.fin ? mx(1, 0.45, sm(T.compartir - 0.2, T.compartir + 0.3, t)) : 1) * (1 - sm(T.end - 0.3, T.end, t)) * sm(0, 0.12, t);
+  finMat.uniforms.uDim.value = (t >= T.fin ? mx(1, 0.5, sm(T.compartir - 0.2, T.compartir + 0.3, t)) : 1) * (1 - sm(T.end - 0.3, T.end, t));
   finMat.uniforms.uFlash.value = 0.8 * sm(T.lab - 0.18, T.lab, t) * (1 - sm(T.lab, T.lab + 0.3, t));
   finMat.uniforms.uFlashCol.value.setRGB(0.85, 1.0, 0.9);
   finMat.uniforms.uCA.value = 0.0025 + 0.002 * (N > 2 ? 1 : 0);
