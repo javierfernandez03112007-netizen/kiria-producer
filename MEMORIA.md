@@ -71,6 +71,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **Química vs Ingeniería Química** (`projects/quimica/`, 4/5-11-2026): duelo de carreras (Javi: «el de magisterio ya está subido hazme el
+  de quimica»). Gancho: una fábrica química en miniatura dentro de un tubo de ensayo que rompe el cristal y crece hasta su tamaño real;
+  laboratorio delante y planta (reactor, columna, tuberías, camión cisterna) detrás, en un solo plano. 12 frases, voz Danny v4 con los
+  ajustes de Javi (`engine/tts.py`, ×1,08), 22 efectos de ElevenLabs. Datos: U-Ranking 2025 (afiliación 81,2 % / 84,6 %; base media de
+  cotización 27.253 € / 31.202 €, egresados de 2019); el orden de las columnas lo confirma la búsqueda, las cifras exactas se confirman en
+  el PDF antes de publicar (u-ranking.es no se abre desde la sesión). **Entregado el 5-11-2026** (`out/quimica.mp4`, 59 s, −15,1 LUFS,
+  render en ramas `render-qui-*` en ≈ 20 min con las 6 máquinas; subida prevista jue 5 a las 18:00). Notion: fila «Química vs Ingeniería Química».
 - **El túnel del Banco Central** (`projects/robo_banco/`, 4-11-2026): idea de Javi («el mayor robo de la historia de un banco»). Lo honesto:
   el mayor del mundo fue el del Banco Central de Irak (2003, con una carta); se cuenta Fortaleza (2005), «el mayor robo a un banco de la
   historia de Brasil». Cambios de Javi al guion: empezar por «Cavaron un túnel…», sin Irak, contar cómo rompieron el suelo de la cámara,
