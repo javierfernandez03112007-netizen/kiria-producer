@@ -50,6 +50,8 @@ if not host.endswith('github.io'):           # www y la antigua dirección de Gi
 page = top + head.strip() + '\n</head>\n<body>\n' + body.strip() + '\n</body>\n</html>\n'
 open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(page)
 shutil.copytree('web_estudio/media', os.path.join(out, 'media'), dirs_exist_ok=True)
+if os.path.isdir('web_estudio/functions'):              # Cloudflare Pages Functions (/api/checkout: pago del carrito con Stripe)
+    shutil.copytree('web_estudio/functions', os.path.join(out, 'functions'), dirs_exist_ok=True)
 open(os.path.join(out, '.nojekyll'), 'w').close()      # sin Jekyll: se sirve tal cual
 print(f'web construida en {out} ({len(page) // 1024} KB de HTML)')
 PY

@@ -534,6 +534,34 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .co-note { border: 1px dashed var(--amber); background: rgba(245, 165, 36, 0.07); border-radius: 14px; padding: 16px; display: grid; gap: 10px; font-size: 14.5px; color: var(--ink2); }
 .co-note b { color: var(--ink); }
 .co-note .btn { justify-self: start; }
+.cartbtn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14px; }
+.cartbtn:hover { border-color: var(--ink); }
+.cartbtn svg { width: 18px; height: 18px; }
+.cartbtn span { min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; background: var(--red); color: #fff; font-size: 12px; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.cart { list-style: none; margin: 0; padding: 0; display: grid; }
+.cart li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px 12px; align-items: center; padding-block: 14px; border-top: 1px solid var(--line); }
+.cart li:first-child { border-top: 0; padding-top: 0; }
+.cart .ci { min-width: 0; }
+.cart .ci b { display: block; font-size: 16px; }
+.cart .ci small { color: var(--muted); font-size: 13.5px; }
+.cart .cp { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cart .cp small { color: var(--muted); font-weight: 500; }
+.cart .rm { border: 0; background: none; color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer; padding: 6px; }
+.cart .rm:hover { color: var(--red); }
+.qty { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; border: 1px solid var(--line2); border-radius: 999px; }
+.qty button { width: 32px; height: 30px; border: 0; background: none; color: var(--ink); font-size: 17px; cursor: pointer; }
+.qty span { min-width: 20px; text-align: center; font-variant-numeric: tabular-nums; font-size: 14.5px; }
+.cart-empty { color: var(--ink2); }
+.cart-empty a { color: var(--ink); }
+.renew { font-size: 13.5px; color: var(--muted); margin-top: -8px; }
+.more-add { border: 1px dashed var(--line2); border-radius: 16px; padding: 14px 16px; }
+.more-add summary { cursor: pointer; font-weight: 700; list-style: none; }
+.more-add summary::-webkit-details-marker { display: none; }
+.add-in { display: grid; gap: 12px; margin-top: 14px; }
+.add-in .btn { justify-self: start; }
+.co-sel.one { grid-template-columns: minmax(0, 1fr); }
+.paywith { font-size: 14px; color: var(--ink2); }
+.paywith b { color: var(--ink); }
 @media (max-width: 900px) { .co-grid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .methods, .co-sel { grid-template-columns: 1fr; } .co-card { padding: 22px; } }
 
@@ -631,6 +659,7 @@ footer a:hover { color: var(--nightfg); }
       <a class="l" href="#precios">Precios</a>
       <a class="l" href="#webs">Webs</a>
       <a class="l" href="#anunciarse">Anunciarse</a>
+      <a class="cartbtn" id="cartBtn" href="#pago" hidden aria-label="Ver el carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3.5h2.6l2.4 11.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2l1.7-7.3H6.1"/></svg><span id="cartN">0</span></a>
       <a class="btn dark" href="#contacto">Pedir propuesta</a>
     </nav>
   </div>
@@ -999,12 +1028,12 @@ footer a:hover { color: var(--nightfg); }
       <p class="type-desc" id="typeDesc">Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.</p>
       <label class="addon rv" id="addon"><span class="switch"><input type="checkbox" id="difusion"><i></i></span><span><b>Añadir difusión en kiria.ai · +2 € por vídeo</b><small>Publicamos también tus vídeos en nuestra cuenta como colaboración, identificados como publicidad. Se suma a cualquier plan: 2 € por cada vídeo.</small></span></label>
       <div class="prices" id="prices">
-        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>6,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>27,96 €</s><b data-amt>25,16</b><span class="cur">€/mes</span></div><p class="per" data-per>6,29 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>69,90 €</s><b data-amt>61,51</b><span class="cur">€/mes</span></div><p class="per" data-per>6,15 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>209,70 €</s><b data-amt>178,25</b><span class="cur">€/mes</span></div><p class="per" data-per>5,94 € por vídeo</p><a class="btn dark pay" href="#pago">Pagar ahora</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>6,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Añadir al carrito</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>27,96 €</s><b data-amt>25,16</b><span class="cur">€/mes</span></div><p class="per" data-per>6,29 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>69,90 €</s><b data-amt>61,51</b><span class="cur">€/mes</span></div><p class="per" data-per>6,15 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>209,70 €</s><b data-amt>178,25</b><span class="cur">€/mes</span></div><p class="per" data-per>5,94 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
       </div>
-      <div class="price-notes rv"><span>Precios en euros.</span><span>«Pagar ahora» te lleva a la página de pago.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
+      <div class="price-notes rv"><span>Precios en euros.</span><span>Añade lo que quieras al carrito y lo pagas todo junto.</span><span>Los planes mensuales se renuevan cada mes; cancélalos cuando quieras.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
     </div>
   </section>
 
@@ -1067,21 +1096,31 @@ footer a:hover { color: var(--nightfg); }
 
 <section class="checkout" id="pago" hidden aria-labelledby="coTitle">
   <div class="wrap">
-    <a class="back" href="#precios">← Volver a precios</a>
+    <a class="back" href="#precios">← Seguir comprando</a>
     <div class="co-grid">
       <div class="co-card co-sum">
         <p class="mono">Tu pedido</p>
-        <h2 id="coTitle">Un vídeo</h2>
-        <p id="coSub" class="co-sub">Básico · 15–30 s</p>
-        <div class="co-sel" id="coVideo">
-          <label for="coT">Tipo de vídeo<select id="coT"></select></label>
-          <label for="coP">Plan<select id="coP"></select></label>
-        </div>
-        <div class="co-sel" id="coWeb" hidden>
-          <label for="coW">Tipo de web<select id="coW"></select></label>
-        </div>
-        <label class="addon" id="coAddon"><span class="switch"><input type="checkbox" id="coDif"><i></i></span><span><b>Difusión en kiria.ai · +2 € por vídeo</b><small>También lo publicamos en nuestra cuenta como colaboración, identificado como publicidad.</small></span></label>
+        <h2 id="coTitle">Tu carrito</h2>
+        <p id="coSub" class="co-sub">Todavía no has añadido nada</p>
+        <ul class="cart" id="coCart"></ul>
+        <p class="cart-empty" id="coEmpty" hidden>Tu carrito está vacío. Elige un vídeo o una web en <a href="#precios">precios</a>, o añádelo aquí abajo.</p>
         <ul class="lines" id="coLines"></ul>
+        <p class="renew" id="coRenew" hidden>Los planes mensuales se renuevan solos cada mes hasta que los canceles. Puedes cancelarlos cuando quieras.</p>
+        <details class="more-add" id="coMore">
+          <summary>+ Añadir algo más</summary>
+          <div class="add-in">
+            <div class="co-sel" id="coVideo">
+              <label for="coT">Tipo de vídeo<select id="coT"></select></label>
+              <label for="coP">Plan<select id="coP"></select></label>
+            </div>
+            <label class="addon" id="coAddon"><span class="switch"><input type="checkbox" id="coDif"><i></i></span><span><b>Difusión en kiria.ai · +2 € por vídeo</b><small>También lo publicamos en nuestra cuenta como colaboración, identificado como publicidad.</small></span></label>
+            <button class="btn ghost" type="button" id="coAddV">Añadir vídeo al carrito</button>
+            <div class="co-sel one" id="coWeb">
+              <label for="coW">Página web<select id="coW"></select></label>
+            </div>
+            <button class="btn ghost" type="button" id="coAddW">Añadir web al carrito</button>
+          </div>
+        </details>
         <ol class="next" id="coNext"></ol>
       </div>
       <form class="co-card co-pay" id="coForm" novalidate>
@@ -1092,11 +1131,7 @@ footer a:hover { color: var(--nightfg); }
           <label for="coMail">Correo<input id="coMail" name="email" type="email" autocomplete="email" required></label>
         </div>
         <label for="coCompany">Empresa (opcional)<input id="coCompany" name="empresa" autocomplete="organization"></label>
-        <h3>Método de pago</h3>
-        <div class="methods" role="radiogroup" aria-label="Método de pago">
-          <label class="method on"><input type="radio" name="metodo" value="Tarjeta" checked><b>Tarjeta</b><span>Visa, Mastercard…</span></label>
-                    <label class="method"><input type="radio" name="metodo" value="Apple Pay o Google Pay"><b>Apple Pay · Google Pay</b><span>Con el móvil</span></label>
-        </div>
+        <p class="paywith">Pagas con <b>tarjeta, Apple Pay o Google Pay</b> en la página segura de Stripe. ¿Tienes un código de descuento? Lo añades allí.</p>
         <button class="btn dark pay-btn" type="submit" id="coPay">Pagar 6,99 €</button>
         <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Pago seguro con Stripe: los datos de tu tarjeta los gestiona Stripe y nosotros nunca los vemos.</span></p>
         <div class="co-note" id="coNote" hidden>
@@ -1633,7 +1668,8 @@ function kiriaNotify({ subject, message, name, email }) {
   const box = document.getElementById('paid'); if (!box) return;
   const show = () => {
     if (location.hash !== '#pagado') return; box.hidden = false;
-    try { sessionStorage.removeItem('kiria_pedido'); } catch (e) {}
+    try { sessionStorage.removeItem('kiria_pedido'); localStorage.removeItem('kiria_carrito'); } catch (e) {}   // pagado: se vacía el carrito
+    if (window.kiriaCartClear) window.kiriaCartClear();
     try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
   };
   document.getElementById('paidX').addEventListener('click', () => { box.hidden = true; });
@@ -2221,78 +2257,99 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   io.observe(stage);
 })();
 
-// ---------------------------------------------------------------- página de pago (#pago): resumen del pedido y salto a la pasarela
+// ---------------------------------------------------------------- carrito y pago (#pago): el cliente junta vídeos sueltos, planes mensuales
+// (suscripción), difusión y webs, y lo paga todo de una vez en Stripe. La página de pago la crea functions/api/checkout.js (Cloudflare),
+// que vuelve a calcular los precios con las mismas tablas (KT, KP, KW). Si no responde (sin clave, en la vista previa…), se ofrece
+// mandar el pedido por correo o por Instagram. El carrito se guarda en este navegador (localStorage) y se vacía al volver de pagar.
 (() => {
   const co = document.getElementById('pago'), main = document.getElementById('inicio'); if (!co) return;
-  // Enlaces de pago de Stripe, uno por pedido: clave «tipo-vídeos-difusión», p. ej. '1-10-0' = Publicidad, 10 al mes, sin difusión;
-  // para las webs, 'web-0' (con tus fotos, 250 €) y 'web-1' (con fotos nuestras, 350 €).
-  // Mientras esté vacío, el botón ofrece enviar el pedido por correo o por Instagram.
+  // Reserva por si la función no responde: enlaces de pago de Stripe para un carrito de UNA línea. Clave «tipo-vídeos-difusión».
   const PAY_LINKS = {
     '0-1-0': 'https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00',      // Vídeo Básico · 1 vídeo · 6,99 € (Javi, 4-11-2026)
   };
-  const $ = id => document.getElementById(id);
-  const selT = $('coT'), selP = $('coP'), chk = $('coDif'), lines = $('coLines'), btn = $('coPay'), note = $('coNote'), go = $('coGo'), form = $('coForm');
-  let pedidoInfo = null;
-  if (KPREVIEW) { $('coSend').hidden = true; $('coNoteTxt').textContent = 'Todavía no está conectada la pasarela de pago. Copia tu pedido y envíanoslo por Instagram o por correo: te mandamos el enlace de pago seguro.'; }
+  const KEY = 'kiria_carrito', MAXQ = 10, $ = id => document.getElementById(id);
+  const list = $('coCart'), empty = $('coEmpty'), lines = $('coLines'), renew = $('coRenew'), btn = $('coPay'), note = $('coNote'), go = $('coGo'), form = $('coForm');
+  const selT = $('coT'), selP = $('coP'), chk = $('coDif'), selW = $('coW'), badge = $('cartBtn'), badgeN = $('cartN');
+  const okLine = l => !!l && ((l.k === 'v' && !!KT[l.t] && !!KP[l.pi]) || (l.k === 'w' && !!KW[l.w]));
+  let cart = [];
+  try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); if (Array.isArray(v)) cart = v.filter(okLine).slice(0, 20); } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} };
+  const isPack = l => l.k === 'v' && KP[l.pi].n > 1;
+  const add = l => {
+    const i = cart.findIndex(x => l.k === 'w' ? x.k === 'w' && x.w === l.w : x.k === 'v' && x.t === l.t && x.pi === l.pi && !!x.dif === !!l.dif);
+    if (i >= 0) { if (l.k === 'v' && !isPack(l)) cart[i].q = Math.min(MAXQ, (cart[i].q || 1) + 1); }
+    else if (cart.length < 20) cart.push(l.k === 'w' ? { k: 'w', w: l.w } : { k: 'v', t: l.t, pi: l.pi, dif: !!l.dif, q: 1 });
+    save();
+  };
+  // nombre, detalle, precio de una unidad, cantidad y si se cobra cada mes
+  const info = l => {
+    if (l.k === 'w') { const w = KW[l.w]; return { name: w.name, det: 'Pago único · todo incluido', each: w.c, q: 1, month: false }; }
+    const c = kCalc(l.t, l.pi, l.dif), ty = KT[l.t], pack = c.n > 1;
+    return { name: pack ? `${ty.n} · ${c.n} vídeos al mes` : `Vídeo ${ty.n}`, det: `${ty.d}${pack ? ` · −${c.d} %` : ' · pago único'}${l.dif ? ' · con difusión' : ''}`, each: c.tot, q: pack ? 1 : (l.q || 1), month: pack };
+  };
+  const totals = () => cart.reduce((a, l) => { const x = info(l); a.hoy += x.each * x.q; if (x.month) a.mes += x.each; a.n += x.q; return a; }, { hoy: 0, mes: 0, n: 0 });
+  const NEXT = { video: ['Pagas de forma segura.', 'Te escribimos para el brief.', 'Te enviamos el guion para que lo apruebes.', 'Recibes el vídeo listo para publicar.'], web: ['Pagas de forma segura.', 'Te escribimos para conocer tu negocio y recoger tus fotos (o quedar para hacerlas).', 'Te enseñamos el diseño para que lo apruebes.', 'Publicamos tu web, lista para usar.'], mix: ['Pagas de forma segura.', 'Te escribimos para el brief de tus vídeos y para conocer tu negocio.', 'Te enviamos los guiones y el diseño para que los apruebes.', 'Recibes tus vídeos y publicamos tu web.'] };
+  if (KPREVIEW) { $('coSend').hidden = true; $('coNoteTxt').textContent = 'Desde esta vista previa no se puede pagar. Copia tu pedido y envíanoslo por Instagram o por correo: te mandamos el enlace de pago seguro.'; }
+  let pedido = '', pedidoInfo = null;
   $('coSend').addEventListener('click', () => { if (pedidoInfo && kiriaSend(pedidoInfo)) $('coSend').textContent = 'Enviando…'; });
   $('coIg').addEventListener('click', () => { navigator.clipboard.writeText(pedido).catch(() => {}); });
-  let pedido = '';
   $('coCopy').addEventListener('click', () => { const b = $('coCopy'); navigator.clipboard.writeText(pedido).then(() => { b.textContent = 'Copiado'; }).catch(() => { b.textContent = 'No se pudo copiar'; }); });
   KT.forEach((x, i) => selT.add(new Option(`${x.n} (${x.d}) · ${eurK(x.c)} €`, i)));
-  KP.forEach((x, i) => selP.add(new Option(x.n > 1 ? `${x.name} (−${x.d} %)` : x.name, i)));
-  const selW = $('coW'); KW.forEach((x, i) => selW.add(new Option(`${x.name} · ${eurK(x.c)} €`, i)));
-  selW.addEventListener('change', () => { st.w = +selW.value; render(); });
-  const NEXT = { video: ['Pagas de forma segura.', 'Te escribimos para el brief.', 'Te enviamos el guion para que lo apruebes.', 'Recibes el vídeo listo para publicar.'], web: ['Pagas de forma segura.', 'Te escribimos para conocer tu negocio y recoger tus fotos (o quedar para hacerlas).', 'Te enseñamos el diseño para que lo apruebes.', 'Publicamos tu web, lista para usar.'] };
-  let st = { kind: 'video', t: 0, pi: 0, dif: false, w: 0 };
-  try { const v = JSON.parse(sessionStorage.getItem('kiria_pedido') || 'null'); if (v && KT[v.t] && KP[v.pi]) st = Object.assign(st, v); } catch (e) {}
+  KP.forEach((x, i) => selP.add(new Option(x.n > 1 ? `${x.n} vídeos al mes (−${x.d} %)` : 'Un vídeo (pago único)', i)));
+  KW.forEach((x, i) => selW.add(new Option(`${x.name} · ${eurK(x.c)} €`, i)));
   const render = () => {
-    const web = st.kind === 'web';
-    $('coVideo').hidden = web; $('coAddon').hidden = web; $('coWeb').hidden = !web;
-    $('coNext').innerHTML = NEXT[web ? 'web' : 'video'].map(x => `<li>${x}</li>`).join('');
+    const tt = totals();
+    badge.hidden = !cart.length; badgeN.textContent = tt.n;
+    $('coSub').textContent = !cart.length ? 'Todavía no has añadido nada' : tt.n === 1 ? '1 producto' : `${tt.n} productos`;
+    empty.hidden = !!cart.length;
+    list.innerHTML = cart.map((l, i) => { const x = info(l);
+      return `<li><div class="ci"><b>${x.name}</b><small>${x.det}</small></div><span class="cp">${eurK(x.each * x.q)} €${x.month ? '<small> /mes</small>' : ''}</span><button type="button" class="rm" data-i="${i}" aria-label="Quitar ${x.name}">✕</button>`
+        + (l.k === 'v' && !x.month ? `<div class="qty"><button type="button" data-i="${i}" data-d="-1" aria-label="Uno menos">−</button><span>${x.q}</span><button type="button" data-i="${i}" data-d="1" aria-label="Uno más">+</button></div>` : '') + '</li>'; }).join('');
+    lines.innerHTML = !cart.length ? '' : tt.mes && tt.mes !== tt.hoy
+      ? `<li class="total"><span>Hoy pagas</span><span>${eurK(tt.hoy)} €</span></li><li><span>Y después, cada mes</span><span>${eurK(tt.mes)} €</span></li>`
+      : `<li class="total"><span>Total${tt.mes ? ' al mes' : ''}</span><span>${eurK(tt.hoy)} €</span></li>`;
+    renew.hidden = !tt.mes;
+    btn.disabled = !cart.length;
+    btn.textContent = !cart.length ? 'Añade algo al carrito' : `Pagar ${eurK(tt.hoy)} €${tt.mes ? (tt.mes === tt.hoy ? ' al mes' : ' hoy') : ''}`;
+    const hasW = cart.some(l => l.k === 'w'), hasV = cart.some(l => l.k === 'v');
+    $('coNext').innerHTML = (hasW && hasV ? NEXT.mix : hasW ? NEXT.web : NEXT.video).map(x => `<li>${x}</li>`).join('');
     note.hidden = true; go.hidden = true;
-    try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {}
-    if (web) {
-      const wv = KW[st.w] || KW[0]; selW.value = st.w;
-      $('coTitle').textContent = wv.name; $('coSub').textContent = wv.sub;
-      lines.innerHTML = `<li><span>${wv.name} · todo incluido</span><span>${eurK(wv.c)} €</span></li><li class="total"><span>Total · pago único</span><span>${eurK(wv.c)} €</span></li>`;
-      btn.textContent = `Pagar ${eurK(wv.c)} €`;
-      return;
-    }
-    selT.value = st.t; selP.value = st.pi; chk.checked = st.dif; $('coAddon').classList.toggle('on', st.dif);
-    const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t], mes = c.n > 1;
-    $('coTitle').textContent = c.name; $('coSub').textContent = `${ty.n} · ${ty.d}`;
-    lines.innerHTML = `<li><span>${c.n} ${c.n > 1 ? 'vídeos' : 'vídeo'} × ${eurK(ty.c)} €</span><span>${eurK(c.full)} €</span></li>`
-      + (c.disc ? `<li class="disc"><span>Descuento del pack (−${c.d} %)</span><span>−${eurK(c.disc)} €</span></li>` : '')
-      + (c.extra ? `<li><span>Difusión en kiria.ai (${c.n} × 2 €)</span><span>${eurK(c.extra)} €</span></li>` : '')
-      + `<li class="total"><span>Total${mes ? ' al mes' : ''}</span><span>${eurK(c.tot)} €</span></li>`;
-    btn.textContent = `Pagar ${eurK(c.tot)} €${mes ? ' al mes' : ''}`;
-    note.hidden = true; go.hidden = true;
-    try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {}
   };
-  selT.addEventListener('change', () => { st.t = +selT.value; render(); });
-  selP.addEventListener('change', () => { st.pi = +selP.value; render(); });
-  chk.addEventListener('change', () => { st.dif = chk.checked; render(); });
-  const methods = [...co.querySelectorAll('.method')];
-  methods.forEach(m => m.querySelector('input').addEventListener('change', () => methods.forEach(x => x.classList.toggle('on', x.querySelector('input').checked))));
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = $('coName'), mail = $('coMail'), emp = $('coCompany').value.trim();
-    if (!name.value.trim()) { name.focus(); return; }
-    if (!/^\S+@\S+\.\S+$/.test(mail.value.trim())) { mail.focus(); return; }
-    const metodo = (co.querySelector('.method input:checked') || {}).value || 'Tarjeta', quien = `Hola, soy ${name.value.trim()}${emp ? ' de ' + emp : ''}.`;
-    let msg, asunto, url;
-    if (st.kind === 'web') { const wv = KW[st.w] || KW[0]; msg = `${quien} Quiero pagar «${wv.name}»: ${eurK(wv.c)} € (pago único). Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + wv.name; url = PAY_LINKS['web-' + st.w]; }
-    else { const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t]; msg = `${quien} Quiero pagar el plan «${c.name}» (tipo ${ty.n}, ${ty.d})${st.dif ? ', con difusión en kiria.ai' : ''}: ${eurK(c.tot)} €${c.n > 1 ? ' al mes' : ''}. Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + c.name + ' (' + ty.n + ')'; url = PAY_LINKS[`${st.t}-${c.n}-${st.dif ? 1 : 0}`]; }
-    pedido = msg; pedidoInfo = { subject: asunto, message: msg, name: name.value.trim(), email: mail.value.trim() };
-    if (url) {
-      go.href = url + (url.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(mail.value.trim()); go.hidden = false;
-      kiriaNotify(pedidoInfo);                       // a Javi le llega el pedido por correo (nombre, empresa, plan) mientras el cliente paga
-      if (KPREVIEW) { try { window.open(go.href, '_blank', 'noopener'); } catch (err) {} }
-      else { btn.disabled = true; btn.textContent = 'Abriendo el pago seguro…'; location.href = go.href; }   // misma pestaña: al pagar, Stripe vuelve a #pagado
-    }
-    else { note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }
+  list.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b || !cart[+b.dataset.i]) return; const i = +b.dataset.i;
+    if (b.classList.contains('rm')) cart.splice(i, 1); else cart[i].q = Math.min(MAXQ, Math.max(1, (cart[i].q || 1) + +b.dataset.d));
+    save(); render();
   });
-  addEventListener('pageshow', () => { btn.disabled = false; if (location.hash === '#pago') render(); });   // al volver atrás desde Stripe
+  const flash = b => { const t0 = b.textContent; b.textContent = 'Añadido ✓'; clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = t0; }, 1600); };
+  $('coAddV').addEventListener('click', e => { add({ k: 'v', t: +selT.value, pi: +selP.value, dif: chk.checked }); render(); flash(e.currentTarget); });
+  $('coAddW').addEventListener('click', e => { add({ k: 'w', w: +selW.value }); render(); flash(e.currentTarget); });
+  chk.addEventListener('change', () => $('coAddon').classList.toggle('on', chk.checked));
+  form.addEventListener('submit', e => {
+    e.preventDefault(); if (!cart.length) return;
+    const name = $('coName'), mail = $('coMail'), emp = $('coCompany').value.trim(), nm = name.value.trim(), em = mail.value.trim();
+    if (!nm) { name.focus(); return; }
+    if (!/^\S+@\S+\.\S+$/.test(em)) { mail.focus(); return; }
+    const tt = totals(), res = cart.map(l => { const x = info(l); return `${x.q > 1 ? x.q + ' × ' : ''}${x.name} (${x.det}): ${eurK(x.each * x.q)} €${x.month ? ' al mes' : ''}`; });
+    pedido = `Hola, soy ${nm}${emp ? ' de ' + emp : ''}. Mi pedido:\n- ${res.join('\n- ')}\nHoy: ${eurK(tt.hoy)} €${tt.mes ? ` · después, ${eurK(tt.mes)} € al mes` : ''}. Mi correo: ${em}`;
+    pedidoInfo = { subject: `Pedido (${eurK(tt.hoy)} €): ` + cart.map(l => info(l).name).join(' + '), message: pedido, name: nm, email: em };
+    const fallback = () => {
+      const l = cart.length === 1 ? cart[0] : null, k = !l ? '' : l.k === 'w' ? 'web-' + l.w : `${l.t}-${KP[l.pi].n}-${l.dif ? 1 : 0}`;
+      if (!KPREVIEW && k && PAY_LINKS[k] && info(l).q === 1) { kiriaNotify(pedidoInfo); location.href = PAY_LINKS[k] + '?prefilled_email=' + encodeURIComponent(em); return; }
+      render(); note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
+    };
+    if (KPREVIEW) { fallback(); return; }
+    btn.disabled = true; btn.textContent = 'Abriendo el pago seguro…';
+    fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cart.map(l => l.k === 'w' ? { k: 'w', w: l.w } : { k: 'v', t: l.t, pi: l.pi, dif: l.dif ? 1 : 0, q: l.q || 1 }), email: em, name: nm, empresa: emp }) })
+      .then(r => r.json().catch(() => ({})).then(j => {
+        let u = null; try { u = new URL(j.url); } catch (err) {}
+        if (!r.ok || !u || u.protocol !== 'https:' || !/(^|\.)stripe\.com$/.test(u.hostname)) throw new Error(j.error || 'HTTP ' + r.status);
+        kiriaNotify(pedidoInfo);                    // a Javi le llega el pedido por correo (FormSubmit) mientras el cliente paga
+        go.href = u.href; location.href = u.href;   // misma pestaña: al pagar, Stripe vuelve a #pagado
+      }))
+      .catch(err => { console.warn('Pago con Stripe no disponible:', err && err.message); fallback(); });
+  });
+  addEventListener('pageshow', () => { render(); });   // al volver atrás desde Stripe
   let was = false;
   const route = () => {
     const on = location.hash === '#pago';
@@ -2302,11 +2359,12 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     was = on;
     if (window.kiriaTop) window.kiriaTop();
   };
-  window.kiriaGoPayWeb = w => { st = Object.assign({}, st, { kind: 'web', w }); try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {} if (location.hash === '#pago') route(); else location.hash = 'pago'; };
-  window.kiriaGoPay = (t, pi, dif) => { st = Object.assign({}, st, { kind: 'video', t, pi: Math.max(0, pi), dif: !!dif }); try { sessionStorage.setItem('kiria_pedido', JSON.stringify(st)); } catch (e) {} if (location.hash === '#pago') route(); else location.hash = 'pago'; };
-  addEventListener('hashchange', route); route();
+  const open = () => { if (location.hash === '#pago') route(); else location.hash = 'pago'; };
+  window.kiriaGoPay = (t, pi, dif) => { add({ k: 'v', t, pi: Math.max(0, pi), dif: !!dif }); selT.value = t; render(); open(); };
+  window.kiriaGoPayWeb = w => { add({ k: 'w', w }); render(); open(); };
+  window.kiriaCartClear = () => { cart = []; save(); render(); };
+  addEventListener('hashchange', route); render(); route();
 })();
-
 // ---------------------------------------------------------------- cookies y textos legales
 (() => {
   const KEY = 'kiria_cookies', banner = document.getElementById('cookie'), A = document.getElementById('ckA'), M = document.getElementById('ckM');

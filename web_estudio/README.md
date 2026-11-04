@@ -25,9 +25,18 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
 - Stripe: web del negocio https://kiriaai.com; en cada enlace de pago, «Después del pago» → redirigir a https://kiriaai.com/#pagado
   (la web enseña el aviso «¡Pago recibido!» y borra el pedido guardado).
 - Publicar: `./web_estudio/publicar.sh --publicar` (cabecera completa, `media/` y rama `gh-pages`; Cloudflare se actualiza solo).
-- **Enlaces de pago de Stripe** (Javi los crea; todos con códigos promocionales, dirección de facturación, NIF de empresa, sin impuestos
-  automáticos ni Managed Payments, y «Después del pago» → https://kiriaai.com/#pagado). Faltan por conectar a los botones:
-  - Vídeo Básico (15–30 s) · 6,99 €: https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00
+- **Carrito y pago con Stripe (4-11-2026, Javi: «que la persona añada todo al carrito y lo pague ahí»)**: los botones de precios y
+  de webs añaden al carrito (localStorage `kiria_carrito`, insignia en la cabecera) y #pago es el carrito: vídeos sueltos con cantidad,
+  planes mensuales (= suscripción), difusión y webs; «Hoy pagas / Y después, cada mes». «Pagar» llama a `functions/api/checkout.js`
+  (Cloudflare Pages Functions; publicar.sh copia `web_estudio/functions/`), que recalcula los precios con las mismas tablas (KT, KP,
+  KW, kCalc: **si cambias un precio, cámbialo en los dos sitios**) y abre Stripe Checkout (modo `subscription` si hay planes; si no,
+  `payment`), con códigos promocionales, dirección de facturación y NIF; al pagar vuelve a /#pagado (vacía el carrito). La clave es
+  una **clave restringida** de Javi (Checkout Sessions, Products, Prices y Customers en escritura) guardada en Cloudflare como secreto
+  `STRIPE_KEY`; nunca en el repo ni en el chat. Sin clave, la función responde 503 y la web usa la reserva: un único Vídeo Básico va al
+  enlace de pago de Javi (https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00, 6,99 €); lo demás ofrece mandar el pedido por correo.
+  Antes de redirigir, el pedido llega a kiriaai2026@gmail.com por FormSubmit (AJAX). Pruebas: función con fetch simulado (precios
+  iguales que la web en las 34 combinaciones) y carrito con Playwright. Falta: el portal de bajas de Stripe (enlace en la web) y las
+  condiciones de suscripción.
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
