@@ -1,8 +1,8 @@
 #!/bin/bash
-# Recoge los trozos de TODAS las ramas render-lan3-* (chunks/chunk_A_B.mp4), mete los fotogramas que falten y, con los N,
+# Recoge los trozos de TODAS las ramas render-lan4-* (chunks/chunk_A_B.mp4), mete los fotogramas que falten y, con los N,
 # compone el vídeo (out/lanzamiento.mp4) y escribe out/DONE. Uso: nohup ./fetch_compose.sh > out/fetch.log 2>&1 &
 cd /home/user/kiria-producer/projects/lanzamiento
-PFX=${PFX:-render-lan3}
+PFX=${PFX:-render-lan4}
 N=$(python3 -c "import json; L=json.load(open('tiempos.json')); import math; print(int(math.ceil(L[-1]['end'] + 2.6) * 60))")
 missing() { python3 -c "import os; print(sum(1 for i in range($N) if not os.path.exists('out/frames/f%05d.jpg'%i)))"; }
 while true; do

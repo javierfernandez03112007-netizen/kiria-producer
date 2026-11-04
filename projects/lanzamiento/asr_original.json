@@ -1,7 +1,7 @@
 [
 {
 "w": "3,2",
-"start": 0.0,
+"start": 0.08,
 "end": 0.72
 },
 {
@@ -36,397 +36,397 @@
 },
 {
 "w": "Y",
-"start": 3.68,
-"end": 3.76
+"start": 3.6,
+"end": 3.68
 },
 {
 "w": "ni",
-"start": 4.0,
-"end": 4.08
+"start": 3.84,
+"end": 3.92
 },
 {
 "w": "una",
-"start": 4.24,
-"end": 4.32
+"start": 4.16,
+"end": 4.24
 },
 {
 "w": "sola",
 "start": 4.48,
-"end": 4.8
+"end": 4.72
 },
 {
 "w": "cámara.",
-"start": 4.88,
-"end": 5.52
+"start": 4.8,
+"end": 5.28
 },
 {
 "w": "Más",
-"start": 5.76,
-"end": 6.08
+"start": 5.52,
+"end": 5.76
 },
 {
 "w": "de",
-"start": 6.08,
-"end": 6.16
+"start": 5.76,
+"end": 5.84
 },
 {
 "w": "2.500",
-"start": 6.24,
-"end": 7.2
+"start": 5.92,
+"end": 6.88
 },
 {
 "w": "seguidores",
-"start": 7.28,
-"end": 7.68
+"start": 6.96,
+"end": 7.36
 },
 {
 "w": "nuevos",
-"start": 7.84,
-"end": 8.16
+"start": 7.44,
+"end": 7.84
 },
 {
 "w": "en",
-"start": 8.24,
-"end": 8.32
+"start": 7.92,
+"end": 8.0
 },
 {
 "w": "6",
-"start": 8.4,
-"end": 8.64
+"start": 8.16,
+"end": 8.4
 },
 {
 "w": "días.",
-"start": 8.8,
-"end": 9.36
+"start": 8.48,
+"end": 8.96
 },
 {
 "w": "¿Cómo?",
-"start": 9.44,
-"end": 10.32
+"start": 9.12,
+"end": 9.76
 },
 {
 "w": "Un",
-"start": 10.8,
-"end": 10.88
+"start": 10.0,
+"end": 10.08
 },
 {
 "w": "guión",
-"start": 11.04,
-"end": 11.44
+"start": 10.16,
+"end": 10.56
 },
 {
 "w": "que",
-"start": 11.52,
-"end": 11.6
+"start": 10.64,
+"end": 10.72
 },
 {
 "w": "engancha",
-"start": 11.68,
-"end": 12.08
+"start": 10.8,
+"end": 11.28
 },
 {
 "w": "desde",
-"start": 12.24,
-"end": 12.32
+"start": 11.44,
+"end": 11.52
 },
 {
 "w": "el",
-"start": 12.48,
-"end": 12.56
+"start": 11.68,
+"end": 11.76
 },
 {
 "w": "primer",
-"start": 12.56,
-"end": 12.64
+"start": 11.76,
+"end": 11.84
 },
 {
 "w": "segundo.",
-"start": 12.96,
-"end": 13.6
+"start": 12.08,
+"end": 12.72
 },
 {
 "w": "Una",
-"start": 13.84,
-"end": 14.08
+"start": 12.96,
+"end": 13.2
 },
 {
 "w": "voz.",
-"start": 14.16,
-"end": 14.64
+"start": 13.28,
+"end": 13.76
 },
 {
 "w": "Cada",
-"start": 14.8,
-"end": 15.12
+"start": 13.92,
+"end": 14.16
 },
 {
 "w": "objeto",
-"start": 15.2,
-"end": 15.6
+"start": 14.32,
+"end": 14.72
 },
 {
 "w": "construido",
-"start": 15.76,
-"end": 16.16
+"start": 14.8,
+"end": 15.2
 },
 {
 "w": "en",
+"start": 15.36,
+"end": 15.44
+},
+{
+"w": "3D",
+"start": 15.52,
+"end": 15.92
+},
+{
+"w": "que",
 "start": 16.32,
 "end": 16.4
 },
 {
-"w": "3D,",
+"w": "se",
 "start": 16.48,
-"end": 17.12
+"end": 16.56
 },
 {
-"w": "que",
-"start": 17.2,
+"w": "mueve",
+"start": 16.64,
+"end": 16.96
+},
+{
+"w": "justo",
+"start": 17.04,
 "end": 17.28
 },
 {
-"w": "se",
+"w": "cuando",
 "start": 17.36,
 "end": 17.44
 },
 {
-"w": "mueve",
-"start": 17.52,
-"end": 17.92
-},
-{
-"w": "justo",
-"start": 18.0,
-"end": 18.24
-},
-{
-"w": "cuando",
-"start": 18.32,
-"end": 18.4
-},
-{
 "w": "lo",
-"start": 18.56,
-"end": 18.64
+"start": 17.6,
+"end": 17.68
 },
 {
 "w": "oyes.",
-"start": 18.8,
-"end": 19.28
+"start": 17.76,
+"end": 18.32
 },
 {
 "w": "Subtítulos",
-"start": 19.44,
-"end": 20.24
+"start": 18.48,
+"end": 19.2
 },
 {
 "w": "palabra",
-"start": 20.4,
-"end": 20.72
+"start": 19.36,
+"end": 19.76
 },
 {
 "w": "a",
+"start": 19.76,
+"end": 19.84
+},
+{
+"w": "palabra.",
+"start": 19.92,
+"end": 20.48
+},
+{
+"w": "Y",
+"start": 20.56,
+"end": 20.64
+},
+{
+"w": "el",
 "start": 20.8,
 "end": 20.88
 },
 {
-"w": "palabra.",
-"start": 20.96,
-"end": 21.52
-},
-{
-"w": "Y",
-"start": 21.6,
-"end": 21.68
-},
-{
-"w": "el",
-"start": 21.76,
-"end": 21.84
-},
-{
 "w": "sonido",
-"start": 21.92,
-"end": 22.32
+"start": 20.96,
+"end": 21.36
 },
 {
 "w": "efecto",
-"start": 22.64,
-"end": 23.04
+"start": 21.68,
+"end": 22.08
 },
 {
 "w": "a",
-"start": 23.2,
-"end": 23.28
+"start": 22.16,
+"end": 22.24
 },
 {
 "w": "efecto.",
-"start": 23.36,
-"end": 24.16
+"start": 22.4,
+"end": 22.88
 },
 {
 "w": "Y",
+"start": 22.96,
+"end": 23.04
+},
+{
+"w": "además",
+"start": 23.2,
+"end": 23.6
+},
+{
+"w": "puedes",
+"start": 23.68,
+"end": 23.92
+},
+{
+"w": "probar",
+"start": 24.0,
+"end": 24.32
+},
+{
+"w": "tu",
 "start": 24.4,
 "end": 24.48
 },
 {
-"w": "además",
-"start": 24.56,
-"end": 24.96
-},
-{
-"w": "puedes",
-"start": 25.12,
-"end": 25.36
-},
-{
-"w": "probar",
-"start": 25.44,
-"end": 25.68
-},
-{
-"w": "tu",
-"start": 25.76,
-"end": 25.84
-},
-{
 "w": "objeto",
-"start": 25.92,
-"end": 26.16
+"start": 24.56,
+"end": 24.8
 },
 {
 "w": "en",
-"start": 26.24,
-"end": 26.32
+"start": 24.8,
+"end": 24.88
 },
 {
 "w": "3D.",
-"start": 26.32,
-"end": 26.8
+"start": 24.96,
+"end": 25.44
 },
 {
 "w": "Y",
+"start": 25.73,
+"end": 25.81
+},
+{
+"w": "ver",
+"start": 26.05,
+"end": 26.13
+},
+{
+"w": "cómo",
+"start": 26.29,
+"end": 26.45
+},
+{
+"w": "se",
+"start": 26.53,
+"end": 26.61
+},
+{
+"w": "vería",
+"start": 26.69,
+"end": 26.93
+},
+{
+"w": "en",
 "start": 27.01,
 "end": 27.09
 },
 {
-"w": "ver",
-"start": 27.33,
-"end": 27.41
-},
-{
-"w": "cómo",
-"start": 27.57,
-"end": 27.73
-},
-{
-"w": "se",
-"start": 27.81,
-"end": 27.89
-},
-{
-"w": "vería",
-"start": 27.97,
-"end": 28.21
-},
-{
-"w": "en",
-"start": 28.29,
-"end": 28.37
-},
-{
 "w": "redes",
-"start": 28.45,
-"end": 28.77
+"start": 27.17,
+"end": 27.49
 },
 {
 "w": "o",
-"start": 29.01,
-"end": 29.09
+"start": 27.73,
+"end": 27.81
 },
 {
 "w": "en",
+"start": 27.97,
+"end": 28.05
+},
+{
+"w": "una",
+"start": 28.13,
+"end": 28.21
+},
+{
+"w": "página",
+"start": 28.29,
+"end": 28.61
+},
+{
+"w": "web.",
+"start": 28.69,
+"end": 29.09
+},
+{
+"w": "Si",
 "start": 29.17,
 "end": 29.25
 },
 {
-"w": "una",
-"start": 29.33,
-"end": 29.41
-},
-{
-"w": "página",
-"start": 29.57,
-"end": 29.89
-},
-{
-"w": "web.",
-"start": 29.97,
-"end": 30.37
-},
-{
-"w": "Si",
-"start": 30.61,
-"end": 30.69
-},
-{
 "w": "quieres",
-"start": 30.85,
-"end": 31.25
+"start": 29.33,
+"end": 29.65
 },
 {
 "w": "vídeos",
-"start": 31.25,
-"end": 31.57
+"start": 29.73,
+"end": 30.05
 },
 {
 "w": "así,",
-"start": 31.65,
-"end": 31.89
+"start": 30.05,
+"end": 30.37
 },
 {
 "w": "comenta",
-"start": 31.97,
-"end": 32.21
+"start": 30.45,
+"end": 30.69
 },
 {
 "w": "Kirya",
-"start": 32.45,
-"end": 32.85
+"start": 31.01,
+"end": 31.41
 },
 {
 "w": "y",
-"start": 33.01,
-"end": 33.09
+"start": 31.49,
+"end": 31.57
 },
 {
 "w": "te",
-"start": 33.17,
-"end": 33.25
+"start": 31.65,
+"end": 31.73
 },
 {
 "w": "paso",
-"start": 33.25,
-"end": 33.49
+"start": 31.81,
+"end": 31.97
 },
 {
 "w": "el",
-"start": 33.49,
-"end": 33.57
+"start": 32.05,
+"end": 32.13
 },
 {
 "w": "enlace",
-"start": 33.65,
-"end": 33.97
+"start": 32.21,
+"end": 32.53
 },
 {
 "w": "por",
-"start": 34.05,
-"end": 34.13
+"start": 32.53,
+"end": 32.61
 },
 {
 "w": "privado.",
-"start": 34.21,
-"end": 34.69
+"start": 32.69,
+"end": 33.25
 }
 ]

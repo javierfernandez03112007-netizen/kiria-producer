@@ -1,494 +1,494 @@
 [
  {
   "text": "3,2 millones de visualizaciones en 7 días… y ni una sola cámara.",
-  "start": 0.0,
-  "end": 4.748,
+  "start": 0.058,
+  "end": 4.779,
   "words": [
    {
     "w": "3,2",
-    "start": 0.0,
-    "end": 0.854
+    "start": 0.058,
+    "end": 0.827
    },
    {
     "w": "millones",
-    "start": 0.854,
-    "end": 1.32
+    "start": 0.827,
+    "end": 1.288
    },
    {
     "w": "de",
-    "start": 1.32,
-    "end": 1.398
+    "start": 1.288,
+    "end": 1.365
    },
    {
     "w": "visualizaciones",
-    "start": 1.398,
-    "end": 2.252
+    "start": 1.365,
+    "end": 2.212
    },
    {
     "w": "en",
-    "start": 2.252,
-    "end": 2.485
+    "start": 2.212,
+    "end": 2.442
    },
    {
     "w": "7",
-    "start": 2.485,
-    "end": 2.874
+    "start": 2.442,
+    "end": 2.827
    },
    {
     "w": "días…",
-    "start": 2.874,
-    "end": 3.456
+    "start": 2.827,
+    "end": 3.471
    },
    {
     "w": "y",
-    "start": 3.456,
-    "end": 3.592
+    "start": 3.471,
+    "end": 3.623
    },
    {
     "w": "ni",
-    "start": 3.592,
-    "end": 3.825
+    "start": 3.623,
+    "end": 3.808
    },
    {
     "w": "una",
-    "start": 3.825,
-    "end": 4.058
+    "start": 3.808,
+    "end": 4.115
    },
    {
     "w": "sola",
-    "start": 4.058,
-    "end": 4.447
+    "start": 4.115,
+    "end": 4.423
    },
    {
     "w": "cámara.",
-    "start": 4.447,
-    "end": 4.748
+    "start": 4.423,
+    "end": 4.779
    }
   ]
  },
  {
   "text": "Más de 2.500 seguidores nuevos en 6 días. ¿Cómo?",
-  "start": 5.155,
-  "end": 8.922,
+  "start": 5.125,
+  "end": 8.712,
   "words": [
    {
     "w": "Más",
-    "start": 5.155,
-    "end": 5.262
+    "start": 5.125,
+    "end": 5.26
    },
    {
     "w": "de",
-    "start": 5.262,
-    "end": 5.417
+    "start": 5.26,
+    "end": 5.413
    },
    {
     "w": "2.500",
-    "start": 5.417,
-    "end": 6.427
+    "start": 5.413,
+    "end": 6.413
    },
    {
     "w": "seguidores",
-    "start": 6.427,
-    "end": 6.971
+    "start": 6.413,
+    "end": 6.875
    },
    {
     "w": "nuevos",
-    "start": 6.971,
-    "end": 7.359
+    "start": 6.875,
+    "end": 7.337
    },
    {
     "w": "en",
-    "start": 7.359,
-    "end": 7.515
+    "start": 7.337,
+    "end": 7.567
    },
    {
     "w": "6",
-    "start": 7.515,
-    "end": 7.903
+    "start": 7.567,
+    "end": 7.875
    },
    {
     "w": "días.",
-    "start": 7.903,
-    "end": 8.524
+    "start": 7.875,
+    "end": 8.365
    },
    {
     "w": "¿Cómo?",
-    "start": 8.524,
-    "end": 8.922
+    "start": 8.365,
+    "end": 8.712
    }
   ]
  },
  {
   "text": "Un guion que engancha desde el primer segundo.",
-  "start": 9.67,
-  "end": 11.942,
+  "start": 9.144,
+  "end": 11.471,
   "words": [
    {
     "w": "Un",
-    "start": 9.67,
-    "end": 9.858
+    "start": 9.144,
+    "end": 9.348
    },
    {
     "w": "guion",
-    "start": 9.858,
-    "end": 10.087
+    "start": 9.348,
+    "end": 9.596
    },
    {
     "w": "que",
-    "start": 10.087,
-    "end": 10.243
+    "start": 9.596,
+    "end": 9.75
    },
    {
     "w": "engancha",
-    "start": 10.243,
-    "end": 10.786
+    "start": 9.75,
+    "end": 10.365
    },
    {
     "w": "desde",
-    "start": 10.786,
-    "end": 11.019
+    "start": 10.365,
+    "end": 10.596
    },
    {
     "w": "el",
-    "start": 11.019,
-    "end": 11.097
+    "start": 10.596,
+    "end": 10.673
    },
    {
     "w": "primer",
-    "start": 11.097,
-    "end": 11.485
+    "start": 10.673,
+    "end": 10.981
    },
    {
     "w": "segundo.",
-    "start": 11.485,
-    "end": 11.942
+    "start": 10.981,
+    "end": 11.471
    }
   ]
  },
  {
   "text": "Una voz.",
-  "start": 12.184,
-  "end": 12.757,
+  "start": 11.683,
+  "end": 12.221,
   "words": [
    {
     "w": "Una",
-    "start": 12.184,
-    "end": 12.437
+    "start": 11.683,
+    "end": 11.894
    },
    {
     "w": "voz.",
-    "start": 12.437,
-    "end": 12.757
+    "start": 11.894,
+    "end": 12.221
    }
   ]
  },
  {
   "text": "Cada objeto, construido en 3D… que se mueve justo cuando lo oyes.",
-  "start": 12.99,
-  "end": 16.845,
+  "start": 12.433,
+  "end": 16.423,
   "words": [
    {
     "w": "Cada",
-    "start": 12.99,
-    "end": 13.233
+    "start": 12.433,
+    "end": 12.712
    },
    {
     "w": "objeto,",
-    "start": 13.233,
-    "end": 13.796
+    "start": 12.712,
+    "end": 13.173
    },
    {
     "w": "construido",
-    "start": 13.796,
-    "end": 14.32
+    "start": 13.173,
+    "end": 13.712
    },
    {
     "w": "en",
-    "start": 14.32,
-    "end": 14.476
+    "start": 13.712,
+    "end": 13.865
    },
    {
     "w": "3D…",
-    "start": 14.476,
-    "end": 15.0
+    "start": 13.865,
+    "end": 14.644
    },
    {
     "w": "que",
-    "start": 15.0,
-    "end": 15.087
+    "start": 14.644,
+    "end": 14.788
    },
    {
     "w": "se",
-    "start": 15.087,
-    "end": 15.194
+    "start": 14.788,
+    "end": 14.942
    },
    {
     "w": "mueve",
-    "start": 15.194,
-    "end": 15.66
+    "start": 14.942,
+    "end": 15.327
    },
    {
     "w": "justo",
-    "start": 15.66,
-    "end": 15.971
+    "start": 15.327,
+    "end": 15.635
    },
    {
     "w": "cuando",
-    "start": 15.971,
-    "end": 16.204
+    "start": 15.635,
+    "end": 15.865
    },
    {
     "w": "lo",
-    "start": 16.204,
-    "end": 16.437
+    "start": 15.865,
+    "end": 16.019
    },
    {
     "w": "oyes.",
-    "start": 16.437,
-    "end": 16.845
+    "start": 16.019,
+    "end": 16.423
    }
   ]
  },
  {
   "text": "Subtítulos palabra a palabra.",
-  "start": 16.971,
-  "end": 18.709,
+  "start": 16.635,
+  "end": 18.346,
   "words": [
    {
     "w": "Subtítulos",
-    "start": 16.971,
-    "end": 17.777
+    "start": 16.635,
+    "end": 17.442
    },
    {
     "w": "palabra",
-    "start": 17.777,
-    "end": 18.165
+    "start": 17.442,
+    "end": 17.827
    },
    {
     "w": "a",
-    "start": 18.165,
-    "end": 18.32
+    "start": 17.827,
+    "end": 17.981
    },
    {
     "w": "palabra.",
-    "start": 18.32,
-    "end": 18.709
+    "start": 17.981,
+    "end": 18.346
    }
   ]
  },
  {
   "text": "Y el sonido, efecto a efecto.",
-  "start": 18.816,
-  "end": 20.65,
+  "start": 18.558,
+  "end": 20.462,
   "words": [
    {
     "w": "Y",
-    "start": 18.816,
-    "end": 18.883
+    "start": 18.558,
+    "end": 18.644
    },
    {
     "w": "el",
-    "start": 18.883,
-    "end": 19.039
+    "start": 18.644,
+    "end": 18.798
    },
    {
     "w": "sonido,",
-    "start": 19.039,
-    "end": 19.592
+    "start": 18.798,
+    "end": 19.404
    },
    {
     "w": "efecto",
-    "start": 19.592,
-    "end": 20.136
+    "start": 19.404,
+    "end": 19.856
    },
    {
     "w": "a",
-    "start": 20.136,
-    "end": 20.291
+    "start": 19.856,
+    "end": 20.087
    },
    {
     "w": "efecto.",
-    "start": 20.291,
-    "end": 20.65
+    "start": 20.087,
+    "end": 20.462
    }
   ]
  },
  {
   "text": "Y además, puedes probar tu objeto en 3D… y ver cómo se vería en redes… o en una página web.",
-  "start": 21.126,
-  "end": 26.194,
+  "start": 20.798,
+  "end": 26.334,
   "words": [
    {
     "w": "Y",
-    "start": 21.126,
-    "end": 21.235
+    "start": 20.798,
+    "end": 20.915
    },
    {
     "w": "además,",
-    "start": 21.235,
-    "end": 21.612
+    "start": 20.915,
+    "end": 21.317
    },
    {
     "w": "puedes",
-    "start": 21.612,
-    "end": 21.922
+    "start": 21.317,
+    "end": 21.625
    },
    {
     "w": "probar",
-    "start": 21.922,
-    "end": 22.233
+    "start": 21.625,
+    "end": 22.01
    },
    {
     "w": "tu",
-    "start": 22.233,
-    "end": 22.388
+    "start": 22.01,
+    "end": 22.163
    },
    {
     "w": "objeto",
-    "start": 22.388,
-    "end": 22.699
+    "start": 22.163,
+    "end": 22.394
    },
    {
     "w": "en",
-    "start": 22.699,
-    "end": 22.777
+    "start": 22.394,
+    "end": 22.548
    },
    {
     "w": "3D…",
-    "start": 22.777,
-    "end": 23.388
+    "start": 22.548,
+    "end": 23.519
    },
    {
     "w": "y",
-    "start": 23.388,
-    "end": 23.466
+    "start": 23.519,
+    "end": 23.596
    },
    {
     "w": "ver",
-    "start": 23.466,
-    "end": 23.699
+    "start": 23.596,
+    "end": 23.827
    },
    {
     "w": "cómo",
-    "start": 23.699,
-    "end": 23.932
+    "start": 23.827,
+    "end": 24.058
    },
    {
     "w": "se",
-    "start": 23.932,
-    "end": 24.087
+    "start": 24.058,
+    "end": 24.212
    },
    {
     "w": "vería",
-    "start": 24.087,
-    "end": 24.398
+    "start": 24.212,
+    "end": 24.519
    },
    {
     "w": "en",
-    "start": 24.398,
-    "end": 24.553
+    "start": 24.519,
+    "end": 24.673
    },
    {
     "w": "redes…",
-    "start": 24.553,
-    "end": 25.155
+    "start": 24.673,
+    "end": 25.355
    },
    {
     "w": "o",
-    "start": 25.155,
-    "end": 25.252
+    "start": 25.355,
+    "end": 25.455
    },
    {
     "w": "en",
-    "start": 25.252,
-    "end": 25.408
+    "start": 25.455,
+    "end": 25.576
    },
    {
     "w": "una",
-    "start": 25.408,
-    "end": 25.641
+    "start": 25.576,
+    "end": 25.729
    },
    {
     "w": "página",
-    "start": 25.641,
-    "end": 26.029
+    "start": 25.729,
+    "end": 26.113
    },
    {
     "w": "web.",
-    "start": 26.029,
-    "end": 26.194
+    "start": 26.113,
+    "end": 26.334
    }
   ]
  },
  {
   "text": "Si quieres vídeos así, comenta KIRIA y te paso el enlace por privado.",
-  "start": 26.521,
-  "end": 30.063,
+  "start": 26.689,
+  "end": 30.314,
   "words": [
    {
     "w": "Si",
-    "start": 26.521,
-    "end": 26.632
+    "start": 26.689,
+    "end": 26.815
    },
    {
     "w": "quieres",
-    "start": 26.632,
-    "end": 26.892
+    "start": 26.815,
+    "end": 27.111
    },
    {
     "w": "vídeos",
-    "start": 26.892,
-    "end": 27.273
+    "start": 27.111,
+    "end": 27.418
    },
    {
     "w": "así,",
-    "start": 27.273,
-    "end": 27.673
+    "start": 27.418,
+    "end": 27.888
    },
    {
     "w": "comenta",
-    "start": 27.673,
-    "end": 28.035
+    "start": 27.888,
+    "end": 28.338
    },
    {
     "w": "KIRIA",
-    "start": 28.035,
-    "end": 28.568
+    "start": 28.338,
+    "end": 28.799
    },
    {
     "w": "y",
-    "start": 28.568,
-    "end": 28.72
+    "start": 28.799,
+    "end": 28.952
    },
    {
     "w": "te",
-    "start": 28.72,
-    "end": 28.797
+    "start": 28.952,
+    "end": 29.106
    },
    {
     "w": "paso",
-    "start": 28.797,
-    "end": 29.025
+    "start": 29.106,
+    "end": 29.336
    },
    {
     "w": "el",
-    "start": 29.025,
-    "end": 29.177
+    "start": 29.336,
+    "end": 29.489
    },
    {
     "w": "enlace",
-    "start": 29.177,
-    "end": 29.558
+    "start": 29.489,
+    "end": 29.796
    },
    {
     "w": "por",
-    "start": 29.558,
-    "end": 29.711
+    "start": 29.796,
+    "end": 29.95
    },
    {
     "w": "privado.",
-    "start": 29.711,
-    "end": 30.063
+    "start": 29.95,
+    "end": 30.314
    }
   ]
  }
