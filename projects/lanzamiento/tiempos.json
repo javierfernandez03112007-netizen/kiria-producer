@@ -1,0 +1,336 @@
+[
+ {
+  "text": "3,2 millones de visualizaciones en 7 días… y ni una sola cámara.",
+  "start": 0.0,
+  "end": 4.748,
+  "words": [
+   {
+    "w": "3,2",
+    "start": 0.0,
+    "end": 0.854
+   },
+   {
+    "w": "millones",
+    "start": 0.854,
+    "end": 1.32
+   },
+   {
+    "w": "de",
+    "start": 1.32,
+    "end": 1.398
+   },
+   {
+    "w": "visualizaciones",
+    "start": 1.398,
+    "end": 2.252
+   },
+   {
+    "w": "en",
+    "start": 2.252,
+    "end": 2.485
+   },
+   {
+    "w": "7",
+    "start": 2.485,
+    "end": 2.874
+   },
+   {
+    "w": "días…",
+    "start": 2.874,
+    "end": 3.456
+   },
+   {
+    "w": "y",
+    "start": 3.456,
+    "end": 3.592
+   },
+   {
+    "w": "ni",
+    "start": 3.592,
+    "end": 3.825
+   },
+   {
+    "w": "una",
+    "start": 3.825,
+    "end": 4.058
+   },
+   {
+    "w": "sola",
+    "start": 4.058,
+    "end": 4.447
+   },
+   {
+    "w": "cámara.",
+    "start": 4.447,
+    "end": 4.748
+   }
+  ]
+ },
+ {
+  "text": "Un guion que engancha desde el primer segundo.",
+  "start": 5.32,
+  "end": 7.592,
+  "words": [
+   {
+    "w": "Un",
+    "start": 5.32,
+    "end": 5.53
+   },
+   {
+    "w": "guion",
+    "start": 5.53,
+    "end": 5.786
+   },
+   {
+    "w": "que",
+    "start": 5.786,
+    "end": 5.942
+   },
+   {
+    "w": "engancha",
+    "start": 5.942,
+    "end": 6.485
+   },
+   {
+    "w": "desde",
+    "start": 6.485,
+    "end": 6.718
+   },
+   {
+    "w": "el",
+    "start": 6.718,
+    "end": 6.796
+   },
+   {
+    "w": "primer",
+    "start": 6.796,
+    "end": 7.107
+   },
+   {
+    "w": "segundo.",
+    "start": 7.107,
+    "end": 7.592
+   }
+  ]
+ },
+ {
+  "text": "Una voz.",
+  "start": 7.835,
+  "end": 8.408,
+  "words": [
+   {
+    "w": "Una",
+    "start": 7.835,
+    "end": 8.058
+   },
+   {
+    "w": "voz.",
+    "start": 8.058,
+    "end": 8.408
+   }
+  ]
+ },
+ {
+  "text": "Cada objeto, construido en 3D… que se mueve justo cuando lo oyes.",
+  "start": 8.641,
+  "end": 12.495,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 8.641,
+    "end": 8.854
+   },
+   {
+    "w": "objeto,",
+    "start": 8.854,
+    "end": 9.447
+   },
+   {
+    "w": "construido",
+    "start": 9.447,
+    "end": 9.942
+   },
+   {
+    "w": "en",
+    "start": 9.942,
+    "end": 10.097
+   },
+   {
+    "w": "3D…",
+    "start": 10.097,
+    "end": 10.651
+   },
+   {
+    "w": "que",
+    "start": 10.651,
+    "end": 10.738
+   },
+   {
+    "w": "se",
+    "start": 10.738,
+    "end": 10.893
+   },
+   {
+    "w": "mueve",
+    "start": 10.893,
+    "end": 11.282
+   },
+   {
+    "w": "justo",
+    "start": 11.282,
+    "end": 11.592
+   },
+   {
+    "w": "cuando",
+    "start": 11.592,
+    "end": 11.903
+   },
+   {
+    "w": "lo",
+    "start": 11.903,
+    "end": 12.058
+   },
+   {
+    "w": "oyes.",
+    "start": 12.058,
+    "end": 12.495
+   }
+  ]
+ },
+ {
+  "text": "Subtítulos palabra a palabra.",
+  "start": 12.621,
+  "end": 14.359,
+  "words": [
+   {
+    "w": "Subtítulos",
+    "start": 12.621,
+    "end": 13.398
+   },
+   {
+    "w": "palabra",
+    "start": 13.398,
+    "end": 13.864
+   },
+   {
+    "w": "a",
+    "start": 13.864,
+    "end": 14.019
+   },
+   {
+    "w": "palabra.",
+    "start": 14.019,
+    "end": 14.359
+   }
+  ]
+ },
+ {
+  "text": "Y el sonido, efecto a efecto.",
+  "start": 14.466,
+  "end": 16.301,
+  "words": [
+   {
+    "w": "Y",
+    "start": 14.466,
+    "end": 14.553
+   },
+   {
+    "w": "el",
+    "start": 14.553,
+    "end": 14.66
+   },
+   {
+    "w": "sonido,",
+    "start": 14.66,
+    "end": 15.243
+   },
+   {
+    "w": "efecto",
+    "start": 15.243,
+    "end": 15.757
+   },
+   {
+    "w": "a",
+    "start": 15.757,
+    "end": 15.913
+   },
+   {
+    "w": "efecto.",
+    "start": 15.913,
+    "end": 16.301
+   }
+  ]
+ },
+ {
+  "text": "Si quieres vídeos así para tu cuenta o para tu negocio, comenta KIRIA.",
+  "start": 16.515,
+  "end": 20.183,
+  "words": [
+   {
+    "w": "Si",
+    "start": 16.515,
+    "end": 16.631
+   },
+   {
+    "w": "quieres",
+    "start": 16.631,
+    "end": 16.903
+   },
+   {
+    "w": "vídeos",
+    "start": 16.903,
+    "end": 17.291
+   },
+   {
+    "w": "así",
+    "start": 17.291,
+    "end": 17.602
+   },
+   {
+    "w": "para",
+    "start": 17.602,
+    "end": 17.757
+   },
+   {
+    "w": "tu",
+    "start": 17.757,
+    "end": 17.913
+   },
+   {
+    "w": "cuenta",
+    "start": 17.913,
+    "end": 18.301
+   },
+   {
+    "w": "o",
+    "start": 18.301,
+    "end": 18.456
+   },
+   {
+    "w": "para",
+    "start": 18.456,
+    "end": 18.612
+   },
+   {
+    "w": "tu",
+    "start": 18.612,
+    "end": 18.767
+   },
+   {
+    "w": "negocio,",
+    "start": 18.767,
+    "end": 19.251
+   },
+   {
+    "w": "comenta",
+    "start": 19.251,
+    "end": 19.684
+   },
+   {
+    "w": "KIRIA.",
+    "start": 19.684,
+    "end": 20.183
+   }
+  ]
+ }
+]

@@ -1,8 +1,12 @@
-# Fuentes · Lanzamiento, vídeo 1 («Ni una sola cámara»)
+# Fuentes · Lanzamiento, vídeo 1 («Ni una sola cámara», sin precios)
 
-| Dato | Fuente | Estado |
+| Dato en el vídeo | Fuente | Estado |
 |---|---|---|
-| 3,2 millones de visualizaciones en 7 días (cuenta kiria.ai) | Estadísticas de Instagram de la cuenta, dato de Javi del 1-11-2026 (`MEMORIA.md`, «Resultados del canal») | **Falta la captura con las fechas exactas**; «más de» solo si la captura lo dice |
-| Precios: Completo (45 s – 1 min) 13,99 €, Básico (15–30 s) 6,99 € | Tabla de precios de la web del estudio (`web_estudio/index.html`, `KT`; `web_estudio/README.md`) | Comprobar el día de publicar |
-| 10 % de descuento extra para quien llegue por el canal de WhatsApp | Plan de lanzamiento de Javi (4-11-2026) | Falta decidir plazo y si se suma a los descuentos de los packs |
-| «Ni una sola cámara» | Los vídeos de kiria.ai que salen en el móvil están hechos en 3D (three.js) con IA, sin imágenes grabadas | Confirmar vídeo a vídeo |
+| 3,2 millones de visualizaciones en 7 días | Panel de Instagram de la cuenta, dato de Javi del 1-11-2026 (`MEMORIA.md`) | **Falta la captura con las fechas.** Metricool (getAnalyticsDataByMetrics, «Instagram Evolution > Views», 4-11-2026) da 1.928.082 del 26 oct al 1 nov: el panel de Instagram cuenta distinto. CONFIRMAR |
+| +2.500 seguidores nuevos en 6 días (y la gráfica por día) | Metricool, «Followers Gained», 27 oct – 1 nov: 124, 93, 127, 140, 975 y 1.138 = 2.597 (consulta del 4-11-2026) | OK |
+| +150.000 me gusta en 2 semanas | Metricool, «Reels Likes» de los reels publicados del 20 oct al 2 nov: 154.841 (consulta del 4-11-2026) | OK |
+| +37.000 veces enviados en 2 semanas | Metricool, «Reels Shares» de los mismos reels: 37.305 (consulta del 4-11-2026) | OK |
+| Seguidores totales (no sale en el vídeo) | Metricool, «Followers»: 3.065 (31 oct), 3.976 (1 nov), 4.295 (2 nov) | — |
+| «Ni una sola cámara» | Los vídeos de kiria.ai del móvil están hechos en 3D (three.js) con IA, sin imágenes grabadas | Confirmar vídeo a vídeo |
+
+Sin precios ni descuentos en el vídeo: decisión de Javi (4-11-2026).
