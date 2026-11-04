@@ -35,8 +35,9 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   `STRIPE_KEY`; nunca en el repo ni en el chat. Sin clave, la función responde 503 y la web usa la reserva: un único Vídeo Básico va al
   enlace de pago de Javi (https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00, 6,99 €); lo demás ofrece mandar el pedido por correo.
   Antes de redirigir, el pedido llega a kiriaai2026@gmail.com por FormSubmit (AJAX). Pruebas: función con fetch simulado (precios
-  iguales que la web en las 34 combinaciones) y carrito con Playwright. Falta: el portal de bajas de Stripe (enlace en la web) y las
-  condiciones de suscripción.
+  iguales que la web en las 34 combinaciones) y carrito con Playwright. Portal de clientes de Stripe (bajas y tarjeta; Javi lo comprobó:
+  pide el correo y manda un enlace de acceso): https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00 → «Mi suscripción» al pie,
+  en el carrito y en el aviso de pago. Falta: las condiciones de suscripción en las condiciones de compra.
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
