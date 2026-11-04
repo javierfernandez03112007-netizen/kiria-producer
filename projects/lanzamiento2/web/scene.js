@@ -856,9 +856,9 @@ function buildKind(k) {
   } else if (k === 'tarro') {
     const r = 0.42, Rl = r - 0.06 + 0.03;
     const glass = add(latheG([[0.001, 0], [r - 0.05, 0], [r - 0.012, 0.012], [r, 0.05], [r, 0.68], [r - 0.014, 0.73], [r - 0.05, 0.765], [r - 0.06, 0.78], [r - 0.06, 0.84]]),
-      new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.16, metalness: 0, transparent: true, opacity: 0.1, specularIntensity: 0.35, side: DS, depthWrite: false, envMapIntensity: 0.5 }));
+      new THREE.MeshPhysicalMaterial({ color: 0xeef5ff, roughness: 0.12, metalness: 0, transparent: true, opacity: 0.2, specularIntensity: 0.3, side: DS, depthWrite: false, envMapIntensity: 0.7 }));
     glass.castShadow = false; glass.renderOrder = 2;
-    add(latheG([[0.001, 0.02], [r - 0.045, 0.02], [r - 0.022, 0.045], [r - 0.022, 0.64], [0.001, 0.645]]), new THREE.MeshPhysicalMaterial({ color: P.fill, roughness: 0.3, clearcoat: 0.35, clearcoatRoughness: 0.2, specularIntensity: 0.5, side: DS }));
+    add(latheG([[0.001, 0.02], [r - 0.045, 0.02], [r - 0.022, 0.045], [r - 0.022, 0.71], [r - 0.06, 0.725], [0.001, 0.73]]), new THREE.MeshPhysicalMaterial({ color: P.fill, roughness: 0.3, clearcoat: 0.35, clearcoatRoughness: 0.2, specularIntensity: 0.5, side: DS }));
     add(latheG([[Rl - 0.012, 0.79], [Rl, 0.8], [Rl, 0.935], [Rl - 0.004, 0.95], [Rl - 0.03, 0.955], [0.001, 0.955]]), new THREE.MeshStandardMaterial({ color: P.lid, metalness: 0.85, roughness: 0.32, side: DS }));
     add(new THREE.CylinderGeometry(r + 0.004, r + 0.004, 0.5, 96, 1, true, -0.85, 1.7), new THREE.MeshStandardMaterial({ map: paintTex(1024, 712, 'jarLabel', k), roughness: 0.62, alphaTest: 0.5, side: DS })).position.y = 0.37;
     h = 0.96;
