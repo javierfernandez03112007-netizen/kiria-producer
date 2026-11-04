@@ -1,0 +1,851 @@
+[
+ {
+  "text": "Crees que Química e Ingeniería Química son la misma carrera.",
+  "start": 0.0,
+  "end": 3.148,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 0.0,
+    "end": 0.333
+   },
+   {
+    "w": "que",
+    "start": 0.333,
+    "end": 0.519
+   },
+   {
+    "w": "Química",
+    "start": 0.519,
+    "end": 0.963
+   },
+   {
+    "w": "e",
+    "start": 0.963,
+    "end": 1.111
+   },
+   {
+    "w": "Ingeniería",
+    "start": 1.111,
+    "end": 1.704
+   },
+   {
+    "w": "Química",
+    "start": 1.704,
+    "end": 2.148
+   },
+   {
+    "w": "son",
+    "start": 2.148,
+    "end": 2.37
+   },
+   {
+    "w": "la",
+    "start": 2.37,
+    "end": 2.519
+   },
+   {
+    "w": "misma",
+    "start": 2.519,
+    "end": 2.741
+   },
+   {
+    "w": "carrera.",
+    "start": 2.741,
+    "end": 3.148
+   }
+  ]
+ },
+ {
+  "text": "En realidad, una trabaja con gramos… y la otra, con toneladas.",
+  "start": 3.426,
+  "end": 7.194,
+  "words": [
+   {
+    "w": "En",
+    "start": 3.426,
+    "end": 3.574
+   },
+   {
+    "w": "realidad,",
+    "start": 3.574,
+    "end": 4.269
+   },
+   {
+    "w": "una",
+    "start": 4.269,
+    "end": 4.417
+   },
+   {
+    "w": "trabaja",
+    "start": 4.417,
+    "end": 4.824
+   },
+   {
+    "w": "con",
+    "start": 4.824,
+    "end": 4.972
+   },
+   {
+    "w": "gramos…",
+    "start": 4.972,
+    "end": 5.676
+   },
+   {
+    "w": "y",
+    "start": 5.676,
+    "end": 5.759
+   },
+   {
+    "w": "la",
+    "start": 5.759,
+    "end": 5.907
+   },
+   {
+    "w": "otra,",
+    "start": 5.907,
+    "end": 6.426
+   },
+   {
+    "w": "con",
+    "start": 6.426,
+    "end": 6.574
+   },
+   {
+    "w": "toneladas.",
+    "start": 6.574,
+    "end": 7.194
+   }
+  ]
+ },
+ {
+  "text": "¿Y cuál cobra más al acabar? Te lo digo al final.",
+  "start": 7.583,
+  "end": 9.796,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 7.583,
+    "end": 7.704
+   },
+   {
+    "w": "cuál",
+    "start": 7.704,
+    "end": 8.0
+   },
+   {
+    "w": "cobra",
+    "start": 8.0,
+    "end": 8.185
+   },
+   {
+    "w": "más",
+    "start": 8.185,
+    "end": 8.407
+   },
+   {
+    "w": "al",
+    "start": 8.407,
+    "end": 8.519
+   },
+   {
+    "w": "acabar?",
+    "start": 8.519,
+    "end": 9.009
+   },
+   {
+    "w": "Te",
+    "start": 9.009,
+    "end": 9.102
+   },
+   {
+    "w": "lo",
+    "start": 9.102,
+    "end": 9.213
+   },
+   {
+    "w": "digo",
+    "start": 9.213,
+    "end": 9.398
+   },
+   {
+    "w": "al",
+    "start": 9.398,
+    "end": 9.509
+   },
+   {
+    "w": "final.",
+    "start": 9.509,
+    "end": 9.796
+   }
+  ]
+ },
+ {
+  "text": "En primero se parecen mucho: química, matemáticas, física… y laboratorio.",
+  "start": 10.13,
+  "end": 14.565,
+  "words": [
+   {
+    "w": "En",
+    "start": 10.13,
+    "end": 10.278
+   },
+   {
+    "w": "primero",
+    "start": 10.278,
+    "end": 10.648
+   },
+   {
+    "w": "se",
+    "start": 10.648,
+    "end": 10.796
+   },
+   {
+    "w": "parecen",
+    "start": 10.796,
+    "end": 11.13
+   },
+   {
+    "w": "mucho:",
+    "start": 11.13,
+    "end": 11.593
+   },
+   {
+    "w": "química,",
+    "start": 11.593,
+    "end": 12.222
+   },
+   {
+    "w": "matemáticas,",
+    "start": 12.222,
+    "end": 13.185
+   },
+   {
+    "w": "física…",
+    "start": 13.185,
+    "end": 13.917
+   },
+   {
+    "w": "y",
+    "start": 13.917,
+    "end": 13.991
+   },
+   {
+    "w": "laboratorio.",
+    "start": 13.991,
+    "end": 14.565
+   }
+  ]
+ },
+ {
+  "text": "Luego se separan. El químico baja a las moléculas: descubre cómo fabricar algo nuevo… en un tubo de ensayo.",
+  "start": 14.824,
+  "end": 20.806,
+  "words": [
+   {
+    "w": "Luego",
+    "start": 14.824,
+    "end": 15.12
+   },
+   {
+    "w": "se",
+    "start": 15.12,
+    "end": 15.269
+   },
+   {
+    "w": "separan.",
+    "start": 15.269,
+    "end": 15.852
+   },
+   {
+    "w": "El",
+    "start": 15.852,
+    "end": 16.019
+   },
+   {
+    "w": "químico",
+    "start": 16.019,
+    "end": 16.5
+   },
+   {
+    "w": "baja",
+    "start": 16.5,
+    "end": 16.796
+   },
+   {
+    "w": "a",
+    "start": 16.796,
+    "end": 16.907
+   },
+   {
+    "w": "las",
+    "start": 16.907,
+    "end": 17.056
+   },
+   {
+    "w": "moléculas:",
+    "start": 17.056,
+    "end": 17.778
+   },
+   {
+    "w": "descubre",
+    "start": 17.778,
+    "end": 18.333
+   },
+   {
+    "w": "cómo",
+    "start": 18.333,
+    "end": 18.593
+   },
+   {
+    "w": "fabricar",
+    "start": 18.593,
+    "end": 19.074
+   },
+   {
+    "w": "algo",
+    "start": 19.074,
+    "end": 19.259
+   },
+   {
+    "w": "nuevo…",
+    "start": 19.259,
+    "end": 19.843
+   },
+   {
+    "w": "en",
+    "start": 19.843,
+    "end": 19.954
+   },
+   {
+    "w": "un",
+    "start": 19.954,
+    "end": 20.065
+   },
+   {
+    "w": "tubo",
+    "start": 20.065,
+    "end": 20.324
+   },
+   {
+    "w": "de",
+    "start": 20.324,
+    "end": 20.472
+   },
+   {
+    "w": "ensayo.",
+    "start": 20.472,
+    "end": 20.806
+   }
+  ]
+ },
+ {
+  "text": "El ingeniero químico convierte esa receta en una fábrica: reactores, columnas, tuberías… para que salgan toneladas cada día, seguras y baratas.",
+  "start": 21.019,
+  "end": 29.852,
+  "words": [
+   {
+    "w": "El",
+    "start": 21.019,
+    "end": 21.13
+   },
+   {
+    "w": "ingeniero",
+    "start": 21.13,
+    "end": 21.574
+   },
+   {
+    "w": "químico",
+    "start": 21.574,
+    "end": 22.13
+   },
+   {
+    "w": "convierte",
+    "start": 22.13,
+    "end": 22.611
+   },
+   {
+    "w": "esa",
+    "start": 22.611,
+    "end": 22.759
+   },
+   {
+    "w": "receta",
+    "start": 22.759,
+    "end": 23.278
+   },
+   {
+    "w": "en",
+    "start": 23.278,
+    "end": 23.426
+   },
+   {
+    "w": "una",
+    "start": 23.426,
+    "end": 23.611
+   },
+   {
+    "w": "fábrica:",
+    "start": 23.611,
+    "end": 24.37
+   },
+   {
+    "w": "reactores,",
+    "start": 24.37,
+    "end": 25.074
+   },
+   {
+    "w": "columnas,",
+    "start": 25.074,
+    "end": 25.815
+   },
+   {
+    "w": "tuberías…",
+    "start": 25.815,
+    "end": 26.759
+   },
+   {
+    "w": "para",
+    "start": 26.759,
+    "end": 26.87
+   },
+   {
+    "w": "que",
+    "start": 26.87,
+    "end": 26.982
+   },
+   {
+    "w": "salgan",
+    "start": 26.982,
+    "end": 27.426
+   },
+   {
+    "w": "toneladas",
+    "start": 27.426,
+    "end": 27.944
+   },
+   {
+    "w": "cada",
+    "start": 27.944,
+    "end": 28.241
+   },
+   {
+    "w": "día,",
+    "start": 28.241,
+    "end": 28.676
+   },
+   {
+    "w": "seguras",
+    "start": 28.676,
+    "end": 29.269
+   },
+   {
+    "w": "y",
+    "start": 29.269,
+    "end": 29.343
+   },
+   {
+    "w": "baratas.",
+    "start": 29.343,
+    "end": 29.852
+   }
+  ]
+ },
+ {
+  "text": "Uno acaba en laboratorios, investigación o farmacéuticas. El otro, en plantas químicas, refinerías o depuradoras.",
+  "start": 30.167,
+  "end": 36.704,
+  "words": [
+   {
+    "w": "Uno",
+    "start": 30.167,
+    "end": 30.352
+   },
+   {
+    "w": "acaba",
+    "start": 30.352,
+    "end": 30.611
+   },
+   {
+    "w": "en",
+    "start": 30.611,
+    "end": 30.685
+   },
+   {
+    "w": "laboratorios,",
+    "start": 30.685,
+    "end": 31.611
+   },
+   {
+    "w": "investigación",
+    "start": 31.611,
+    "end": 32.352
+   },
+   {
+    "w": "o",
+    "start": 32.352,
+    "end": 32.5
+   },
+   {
+    "w": "farmacéuticas.",
+    "start": 32.5,
+    "end": 33.435
+   },
+   {
+    "w": "El",
+    "start": 33.435,
+    "end": 33.583
+   },
+   {
+    "w": "otro,",
+    "start": 33.583,
+    "end": 34.019
+   },
+   {
+    "w": "en",
+    "start": 34.019,
+    "end": 34.204
+   },
+   {
+    "w": "plantas",
+    "start": 34.204,
+    "end": 34.5
+   },
+   {
+    "w": "químicas,",
+    "start": 34.5,
+    "end": 35.241
+   },
+   {
+    "w": "refinerías",
+    "start": 35.241,
+    "end": 35.944
+   },
+   {
+    "w": "o",
+    "start": 35.944,
+    "end": 36.093
+   },
+   {
+    "w": "depuradoras.",
+    "start": 36.093,
+    "end": 36.704
+   }
+  ]
+ },
+ {
+  "text": "Trabajo encuentran casi igual: unos 8 de cada 10.",
+  "start": 36.917,
+  "end": 39.537,
+  "words": [
+   {
+    "w": "Trabajo",
+    "start": 36.917,
+    "end": 37.287
+   },
+   {
+    "w": "encuentran",
+    "start": 37.287,
+    "end": 37.769
+   },
+   {
+    "w": "casi",
+    "start": 37.769,
+    "end": 38.102
+   },
+   {
+    "w": "igual:",
+    "start": 38.102,
+    "end": 38.611
+   },
+   {
+    "w": "unos",
+    "start": 38.611,
+    "end": 38.759
+   },
+   {
+    "w": "8",
+    "start": 38.759,
+    "end": 38.982
+   },
+   {
+    "w": "de",
+    "start": 38.982,
+    "end": 39.093
+   },
+   {
+    "w": "cada",
+    "start": 39.093,
+    "end": 39.315
+   },
+   {
+    "w": "10.",
+    "start": 39.315,
+    "end": 39.537
+   }
+  ]
+ },
+ {
+  "text": "Pero cuatro años después de acabar, el químico gana de media unos 27.000 euros al año…",
+  "start": 39.796,
+  "end": 44.417,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 39.796,
+    "end": 39.982
+   },
+   {
+    "w": "cuatro",
+    "start": 39.982,
+    "end": 40.315
+   },
+   {
+    "w": "años",
+    "start": 40.315,
+    "end": 40.611
+   },
+   {
+    "w": "después",
+    "start": 40.611,
+    "end": 40.944
+   },
+   {
+    "w": "de",
+    "start": 40.944,
+    "end": 41.019
+   },
+   {
+    "w": "acabar,",
+    "start": 41.019,
+    "end": 41.556
+   },
+   {
+    "w": "el",
+    "start": 41.556,
+    "end": 41.704
+   },
+   {
+    "w": "químico",
+    "start": 41.704,
+    "end": 42.074
+   },
+   {
+    "w": "gana",
+    "start": 42.074,
+    "end": 42.296
+   },
+   {
+    "w": "de",
+    "start": 42.296,
+    "end": 42.519
+   },
+   {
+    "w": "media",
+    "start": 42.519,
+    "end": 42.778
+   },
+   {
+    "w": "unos",
+    "start": 42.778,
+    "end": 42.963
+   },
+   {
+    "w": "27.000",
+    "start": 42.963,
+    "end": 43.778
+   },
+   {
+    "w": "euros",
+    "start": 43.778,
+    "end": 44.074
+   },
+   {
+    "w": "al",
+    "start": 44.074,
+    "end": 44.185
+   },
+   {
+    "w": "año…",
+    "start": 44.185,
+    "end": 44.417
+   }
+  ]
+ },
+ {
+  "text": "y el ingeniero químico, unos 31.000. Casi 4.000 euros más.",
+  "start": 44.62,
+  "end": 48.5,
+  "words": [
+   {
+    "w": "y",
+    "start": 44.62,
+    "end": 44.695
+   },
+   {
+    "w": "el",
+    "start": 44.695,
+    "end": 44.787
+   },
+   {
+    "w": "ingeniero",
+    "start": 44.787,
+    "end": 45.232
+   },
+   {
+    "w": "químico,",
+    "start": 45.232,
+    "end": 45.898
+   },
+   {
+    "w": "unos",
+    "start": 45.898,
+    "end": 46.083
+   },
+   {
+    "w": "31.000.",
+    "start": 46.083,
+    "end": 46.963
+   },
+   {
+    "w": "Casi",
+    "start": 46.963,
+    "end": 47.315
+   },
+   {
+    "w": "4.000",
+    "start": 47.315,
+    "end": 47.87
+   },
+   {
+    "w": "euros",
+    "start": 47.87,
+    "end": 48.241
+   },
+   {
+    "w": "más.",
+    "start": 48.241,
+    "end": 48.5
+   }
+  ]
+ },
+ {
+  "text": "Eso sí: sin el químico, la fábrica no tendría nada que fabricar.",
+  "start": 48.954,
+  "end": 52.5,
+  "words": [
+   {
+    "w": "Eso",
+    "start": 48.954,
+    "end": 49.139
+   },
+   {
+    "w": "sí:",
+    "start": 49.139,
+    "end": 49.519
+   },
+   {
+    "w": "sin",
+    "start": 49.519,
+    "end": 49.667
+   },
+   {
+    "w": "el",
+    "start": 49.667,
+    "end": 49.741
+   },
+   {
+    "w": "químico,",
+    "start": 49.741,
+    "end": 50.407
+   },
+   {
+    "w": "la",
+    "start": 50.407,
+    "end": 50.556
+   },
+   {
+    "w": "fábrica",
+    "start": 50.556,
+    "end": 51.0
+   },
+   {
+    "w": "no",
+    "start": 51.0,
+    "end": 51.148
+   },
+   {
+    "w": "tendría",
+    "start": 51.148,
+    "end": 51.667
+   },
+   {
+    "w": "nada",
+    "start": 51.667,
+    "end": 51.963
+   },
+   {
+    "w": "que",
+    "start": 51.963,
+    "end": 52.185
+   },
+   {
+    "w": "fabricar.",
+    "start": 52.185,
+    "end": 52.5
+   }
+  ]
+ },
+ {
+  "text": "¿Laboratorio o fábrica? ¿Equipo Química o equipo Ingeniería Química?",
+  "start": 52.889,
+  "end": 56.872,
+  "words": [
+   {
+    "w": "¿Laboratorio",
+    "start": 52.889,
+    "end": 53.722
+   },
+   {
+    "w": "o",
+    "start": 53.722,
+    "end": 53.843
+   },
+   {
+    "w": "fábrica?",
+    "start": 53.843,
+    "end": 54.435
+   },
+   {
+    "w": "¿Equipo",
+    "start": 54.435,
+    "end": 54.806
+   },
+   {
+    "w": "Química",
+    "start": 54.806,
+    "end": 55.404
+   },
+   {
+    "w": "o",
+    "start": 55.404,
+    "end": 55.528
+   },
+   {
+    "w": "equipo",
+    "start": 55.528,
+    "end": 55.882
+   },
+   {
+    "w": "Ingeniería",
+    "start": 55.882,
+    "end": 56.447
+   },
+   {
+    "w": "Química?",
+    "start": 56.447,
+    "end": 56.872
+   }
+  ]
+ }
+]
