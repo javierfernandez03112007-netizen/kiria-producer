@@ -37,7 +37,7 @@ function stageAt2(t) {
       for (let i = 0; i < n; i++) { const c = C[i % C.length], u = (hash(i * 1.37) + (t - TT.flow0) * (0.22 + hash(i) * 0.1)) % 1, p = c.getPointAt(u); arr[i * 3] = p.x; arr[i * 3 + 1] = p.y; arr[i * 3 + 2] = p.z; }
       S.flowPts.geometry.attributes.position.needsUpdate = true; S.flowPts.material.size = 0.22 * s; S.flowPts.material.opacity = a; } }
   // --- el camión cisterna sale cargado y vuelve a su sitio para el bucle
-  { const u = clamp((t - TT.truck0) / 4.0); S.truck.position.x = 9.5 + 16 * u * u; S.truck.visible = u < 0.98 || t > TT.rw; if (t > TT.rw) S.truck.position.x = 9.5; }
+  { const u = clamp((t - TT.truck0) / 4.0); S.truck.position.x = 9.5 + 16 * u * u; S.truck.visible = (u < 0.98 || t > TT.rw) && plantK(t) > 0.5; if (t > TT.rw) S.truck.position.x = 9.5; }   // en miniatura no cabe en el tubo
   // --- la gota del cuentagotas en «gramos»
   { const u = clamp((t - K.gramos2 + 0.25) / 0.38); S.drop.position.y = -0.325 * u * u; S.drop.scale.setScalar(Math.max(0.001, u < 1 ? 1 : 1 - clamp((t - K.gramos2 - 0.13) / 0.15))); }
   // --- la molécula: aparece átomo a átomo, se reordena con un átomo nuevo y entra en el tubo pequeño

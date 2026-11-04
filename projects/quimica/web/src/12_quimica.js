@@ -4,7 +4,7 @@
 const BENCH = { x: 0, z: 3.5, y: 0.92, w: 3.2, d: 1.15 };
 const TUBE = { x: 0.15, z: 3.42, r: 0.3, h: 1.45 };            // tubo de ensayo gigante (el del gancho)
 const MINI_Y = BENCH.y + 0.33;                                  // suelo de la fábrica en miniatura (dentro del tubo)
-const PLANT0 = v3(0, 0, -10), PS0 = 0.03;                       // la fábrica: dónde está a tamaño real y a qué escala cabe en el tubo
+const PLANT0 = v3(0, 0, -10), PS0 = 0.027;                       // la fábrica: dónde está a tamaño real y a qué escala cabe en el tubo
 const RACK = { x: -0.62, z: 3.8 }, BAL = { x: -1.3, z: 3.2 }, MOL = v3(0.15, 1.95, 3.42);
 const TEAL_C = 0x35d6c6, AMB_C = 0xffb547;
 let PL_G = null;                                                // grupo de la fábrica

@@ -1,10 +1,10 @@
-"""Compone «El túnel del Banco Central» (Fortaleza, 2005): fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a
-palabra en Impact (cifras en dorado, «cámara acorazada», «falsa» y «agujero» en rojo) + la voz de Danny (ElevenLabs, ajustes de Javi)
+"""Compone «Química vs Ingeniería Química» (duelo): fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra
+en Impact (química en turquesa, ingeniería química en ámbar, cifras en dorado) + la voz de Danny (ElevenLabs, ajustes de Javi)
 + efectos SOLO de ElevenLabs, uno por suceso y cortados cuando el suceso termina.
 
     python3 ajustar_voz.py && python3 env_voz.py && python3 sfx_eleven.py
     ./render_local.sh 0 N   (o por trozos con las máquinas de ayuda: render_chunk.sh + fetch_compose.sh)
-    python3 compose_robo.py [--test t1 t2 ...] [--sfx]
+    python3 compose_quimica.py [--test t1 t2 ...] [--sfx]
 """
 import json
 import math
@@ -48,20 +48,18 @@ def first(line):
 # ---------------------------------------------------------------- subtítulos
 GO, R, WH = "#FFC24A", "#FF5A4E", "#EEF2F6"
 BL, GR, TE, AM = "#8FE6FF", "#7CF0A9", "#62E3D4", "#FFB547"
-_K = {1: {"túnel": WH, "78": GO, "metros": GO, "cámara": R, "acorazada": R},
-      2: {"fortaleza": WH, "brasil": WH, "2005": GO},
-      3: {"falsa": R, "césped": GR, "artificial": GR},
-      4: {"tierra": AM},
-      5: {"vigas": WH, "luz": GO, "ventilación": TE},
-      6: {"metro": GO, "diez": GO, "hormigón": WH, "armado": WH},
-      7: {"diamante": BL, "capa": GO, "fina": GO, "esperan": R},
-      8: {"viernes": WH, "rompen": R, "entran": R},
-      9: {"cámaras": R, "sensores": R},
-      10: {"50": GO, "usados": WH},
-      11: {"toneladas": GO, "164": GO, "millones": GO, "reales": GO},
-      12: {"lunes": WH, "agujero": R},
-      13: {"mayor": GO, "brasil": WH, "aparecer": R},
-      14: {"dónde": GO}}
+_K = {1: {"ingeniería": AM, "misma": WH},
+      2: {"gramos": TE, "toneladas": AM},
+      3: {"cobra": GO, "final": GO},
+      4: {"primero": WH, "laboratorio": WH},
+      5: {"químico": TE, "moléculas": TE, "nuevo": AM, "tubo": TE, "ensayo": TE},
+      6: {"ingeniero": AM, "fábrica": AM, "toneladas": AM, "seguras": GR, "baratas": GR},
+      7: {"uno": TE, "otro": AM},
+      8: {"8": GO, "10": GO},
+      9: {"químico": TE, "27.000": TE, "euros": TE},
+      10: {"ingeniero": AM, "31.000": AM, "4.000": GO, "más": GO},
+      11: {"sin": R, "químico": TE, "nada": R},
+      12: {"laboratorio": TE, "fábrica": AM}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -108,53 +106,47 @@ def sfx_track(path):
     def span(t0, t1):
         return max(0.15, t1 - t0)
 
-    # 1: el pico en la tierra (primer fotograma); la línea del túnel; la cota de 78 m; se enciende la cámara acorazada
-    put("pico", 0.0, 0.8, 0.5, 0.2)
-    put("linea", at("túnel") - 0.02, span(at("túnel"), at("debajo") + 0.2), 0.38, 0.2)
-    put("regla", at("78") - 0.02, 0.5, 0.4)
-    put("luces_camara", at("cámara", 1, 1) - 0.05, 0.9, 0.45, 0.3)
-    # 2: Fortaleza, 2005
-    put("titulo", at("fortaleza") - 0.05, 1.3, 0.6, 0.4)
-    # 3–4: el cartel, «FALSA», los meses, la camioneta con tierra
-    put("cartel", at("casa", 1, 3) - 0.05, 0.7, 0.35, 0.2)
-    put("sello", at("falsa") - 0.02, 0.45, 0.6)
-    put("calendario", at("tres", 1, 4) - 0.02, 0.8, 0.4, 0.2)
-    put("camion", at("sale") - 0.3, 2.4, 0.45, 0.6)
-    # 5: el túnel avanza: pala, vigas, luz, ventilación
-    put("pala", at("bajo") - 0.05, span(at("bajo"), at("vigas")), 0.4, 0.2)
-    put("madera", at("vigas") - 0.02, 0.6, 0.5)
-    put("bombillas", at("luz") - 0.05, 0.9, 0.45, 0.2)
-    put("ventilador", at("ventilación") - 0.05, 1.0, 0.35, 0.3)
-    # 6–7: la losa; martillos y disco de diamante hasta la capa fina; la espera
-    put("hormigon", at("hormigón") - 0.02, 0.7, 0.6, 0.25)
-    put("martillo", at("perforan") - 0.02, span(at("perforan"), at("capa", 1, 7) + 0.1), 0.45, 0.15)
-    put("disco", at("discos") - 0.05, span(at("discos"), at("capa", 1, 7) + 0.1), 0.25, 0.15)
-    put("reloj", at("esperan") - 0.05, 1.1, 0.5, 0.3)
-    # 8: el viernes, el banco cerrado; rompen la capa y entran
-    put("calendario", at("viernes") - 0.05, 0.6, 0.35, 0.15)
-    put("persiana", at("cerrado") - 0.1, 1.1, 0.45, 0.3)
-    put("rotura", at("rompen") + 0.22, 1.1, 0.75, 0.3)
-    put("pasos", at("entran") - 0.05, 0.9, 0.4, 0.3)
-    # 9–10: cámaras y sensores apagados; los fajos de 50
-    put("apagado", at("cámaras") - 0.02, 0.7, 0.45, 0.2)
-    put("apagado", at("sensores") - 0.02, 0.7, 0.4, 0.2)
-    put("fajos", at("billetes", 1, 10) - 0.02, 0.7, 0.5, 0.2)
-    # 11: los billetes por el túnel; los contadores
-    put("chorro", at("sacan") - 0.1, span(at("sacan"), at("reales") + 0.6), 0.5, 0.4)
-    put("contador", at("toneladas") - 0.05, 1.0, 0.3, 0.25)
-    put("contador", at("164") - 0.05, 1.0, 0.3, 0.25)
-    # 12: el lunes abren la cámara
-    put("calendario", at("lunes") - 0.05, 0.6, 0.35, 0.15)
-    put("puerta", at("abren") - 0.05, 1.9, 0.6, 0.4)
-    # 13: el mayor robo de Brasil; la sirena lejana
-    put("titulo", at("mayor", 1, 13) - 0.05, 1.3, 0.5, 0.4)
-    put("sirena", at("dinero") - 0.4, 2.3, 0.22, 0.8)
-    # bucle: todo vuelve a su sitio
-    put("vuelve", END - 0.85, 0.8, 0.4, 0.05)
+    # 1–2: el tubo con la fábrica dentro; la gota en la balanza («gramos»); el tubo estalla y la fábrica crece («toneladas»)
+    put("gota", at("gramos") + 0.1, 0.45, 0.45)
+    put("vidrio", at("toneladas", 1, 2) - 0.12, 0.95, 0.55, 0.25)
+    put("crece", at("toneladas", 1, 2) - 0.05, 1.6, 0.5, 0.4)
+    # 3: la pregunta
+    put("pregunta", at("cuál") - 0.05, 0.9, 0.35, 0.3)
+    # 4: 1.º curso: una marca por asignatura y el sello «CASI IGUAL»
+    for w, li in [("química", 4), ("matemáticas", 4), ("física", 4), ("laboratorio", 4)]:
+        put("check", at(w, 1, li) - 0.02, 0.4, 0.3, 0.1)
+    put("sello", at("laboratorio", 1, 4) + 0.33, 0.45, 0.5)
+    # 5: la molécula, la sustancia nueva y el tubo de ensayo
+    put("burbujas", at("moléculas") - 0.05, 1.0, 0.35, 0.3)
+    put("molecula", at("algo") - 0.05, 0.85, 0.45, 0.25)
+    put("tubo", at("tubo") - 0.05, span(at("tubo"), at("ensayo") + 0.5), 0.4, 0.25)
+    # 6: la receta vuela; la fábrica: reactor, columna, tuberías, el camión; seguras y baratas
+    put("papel", at("receta") - 0.1, 0.65, 0.4, 0.2)
+    put("fabrica", at("fábrica", 1, 6) - 0.1, span(at("fábrica", 1, 6), at("seguras") + 0.4), 0.22, 0.5)
+    put("reactor", at("reactores") - 0.02, 0.8, 0.4, 0.25)
+    put("vapor", at("columnas") - 0.02, 0.8, 0.35, 0.25)
+    put("tuberias", at("tuberías") - 0.05, span(at("tuberías"), at("toneladas", 1, 6)), 0.3, 0.3)
+    put("camion", at("toneladas", 1, 6) - 0.15, 2.3, 0.4, 0.6)
+    put("ok", at("seguras") - 0.02, 0.45, 0.35)
+    put("ok", at("baratas") - 0.02, 0.45, 0.35)
+    # 8: 8 de cada 10
+    put("check", at("8") - 0.05, 0.4, 0.35, 0.1)
+    put("check", at("10") - 0.05, 0.4, 0.35, 0.1)
+    # 9–10: los sueldos y la diferencia
+    put("contador", at("27.000") - 0.1, 0.9, 0.3, 0.25)
+    put("contador", at("31.000") - 0.1, 0.9, 0.3, 0.25)
+    put("caja", at("4.000") - 0.02, 0.7, 0.5, 0.2)
+    # 11: sin el químico la fábrica se apaga… y su gota la enciende
+    put("apagado", at("sin", 1, 11) - 0.05, 0.9, 0.45, 0.3)
+    put("encendido", at("fabricar") + 0.25, 1.0, 0.4, 0.3)
+    # 12: ¿laboratorio o fábrica?
+    put("duelo", at("laboratorio", 1, 12) - 0.05, 1.3, 0.5, 0.4)
+    # bucle: la fábrica vuelve a meterse en el tubo
+    put("vuelve", END - 1.35, 1.0, 0.4, 0.05)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
-def main(dst=os.path.join(ROOT, "out", "robo_banco.mp4")):
+def main(dst=os.path.join(ROOT, "out", "quimica.mp4")):
     missing = [i for i in range(N) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")

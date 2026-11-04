@@ -1,4 +1,4 @@
-"""Efectos SOLO de ElevenLabs para «El túnel del Banco Central» (uno por suceso; compose_robo.py los recorta a lo que dura cada cosa).
+"""Efectos SOLO de ElevenLabs para «Química vs Ingeniería Química» (uno por suceso; compose_quimica.py los recorta a lo que dura cada cosa).
 Uso: ELEVENLABS_KEY_FILE=/ruta/fuera/del/repo python3 sfx_eleven.py [--force]   → assets/sfx/<nombre>.mp3"""
 import os
 import sys
@@ -8,32 +8,27 @@ import requests
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SFX = {
-    "pico": ("pickaxe striking hard soil and small stones underground, muffled, two quick hits", 0.9),
-    "linea": ("fast rising electric whoosh, a line of light racing through a long tunnel", 1.0),
-    "regla": ("metal tape measure extending quickly, short metallic zip", 0.6),
-    "luces_camara": ("heavy industrial ceiling lights switching on with a loud clunk and a soft electric hum", 1.0),
-    "titulo": ("deep cinematic boom hit with a short dark reverb tail, documentary title", 1.4),
-    "cartel": ("old shop sign light flickering on, electric buzz, short", 0.8),
-    "sello": ("rubber stamp slammed hard on paper on a wooden desk, sharp thud", 0.5),
-    "calendario": ("calendar pages flipping fast, paper flutter", 0.8),
-    "camion": ("small old pickup truck engine starting and driving away on asphalt at night", 2.4),
-    "pala": ("shovel digging into dirt underground, rhythmic scraping, muffled", 1.6),
-    "madera": ("wooden beams knocked into place in a tunnel, two hollow wooden knocks", 0.7),
-    "bombillas": ("light bulbs switching on one after another, soft clicks with a faint hum", 1.0),
-    "ventilador": ("small ventilation fan starting up inside a narrow tunnel, whirring", 1.2),
-    "hormigon": ("deep heavy impact on a thick concrete slab, solid low thud, short", 0.8),
-    "martillo": ("jackhammer drilling into reinforced concrete underground, gritty, muffled", 3.0),
-    "disco": ("diamond saw blade cutting concrete, high pitched grinding whine", 2.0),
-    "reloj": ("single old clock ticking slowly in a silent room", 1.2),
-    "persiana": ("heavy steel security shutter rolling down and closing with a metallic clang", 1.2),
-    "rotura": ("thin concrete layer cracking and breaking, chunks falling onto a wooden floor", 1.2),
-    "pasos": ("cautious footsteps on concrete in an empty echoing vault", 1.0),
-    "apagado": ("electronic security devices powering down, descending beep then silence", 0.8),
-    "fajos": ("stacks of banknotes riffled and handled, paper money flutter", 0.8),
-    "chorro": ("many bundles of banknotes sliding and tumbling down a chute, papery rush", 2.4),
+    "vidrio": ("large glass test tube shattering, bright glass shards scattering on a lab bench", 1.0),
+    "crece": ("huge industrial machinery rising and growing, deep rumble building into a big whoosh", 1.8),
+    "gota": ("single drop of liquid falling into a small metal dish, clean plink", 0.5),
+    "pregunta": ("short suspenseful tension sting, quick rising synth, ends abruptly", 1.0),
+    "check": ("soft clean user interface tick, positive confirm, very short", 0.5),
+    "sello": ("rubber stamp slammed on paper on a wooden desk, sharp thud", 0.5),
+    "burbujas": ("liquid bubbling and fizzing in a glass flask in a laboratory", 1.2),
+    "molecula": ("magical sparkle shimmer with soft glass clinks, small pieces snapping together", 0.9),
+    "tubo": ("liquid pouring into a glass test tube, gentle glug", 0.9),
+    "papel": ("sheet of paper whooshing through the air", 0.7),
+    "fabrica": ("large chemical plant ambience, steam hiss and industrial machinery hum", 3.0),
+    "reactor": ("heavy electric motor starting up and an industrial mixer churning inside a steel tank", 1.0),
+    "vapor": ("pressurized steam release hiss from a valve, short", 0.9),
+    "tuberias": ("liquid rushing through metal pipes, flowing, industrial", 1.8),
+    "camion": ("heavy tanker truck diesel engine accelerating away on a road", 2.4),
+    "ok": ("two-note positive chime, short and clean", 0.5),
     "contador": ("fast digital counter ticking up quickly, numbers rolling, short and clean", 1.0),
-    "puerta": ("massive bank vault door unlocking and swinging open, heavy metal mechanism, deep creak", 2.0),
-    "sirena": ("distant police siren at night echoing between buildings", 2.4),
+    "caja": ("cash register ka-ching, short", 0.7),
+    "apagado": ("industrial machines powering down, descending hum then silence", 1.0),
+    "encendido": ("industrial machines powering up with a rising hum and lights switching on", 1.2),
+    "duelo": ("deep cinematic boom hit with a short dark reverb tail", 1.4),
     "vuelve": ("reverse whoosh building up quickly, rushing air sucked back, clean ending", 0.8),
 }
 
