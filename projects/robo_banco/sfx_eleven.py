@@ -58,6 +58,6 @@ def gen(item):
 
 if __name__ == "__main__":
     os.makedirs(os.path.join(ROOT, "assets", "sfx"), exist_ok=True)
-    with ThreadPoolExecutor(5) as ex:
+    with ThreadPoolExecutor(3) as ex:
         for n, s in ex.map(gen, SFX.items()):
             print(n, s)

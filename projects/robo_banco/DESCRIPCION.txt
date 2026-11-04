@@ -1,0 +1,35 @@
+«EL TÚNEL DEL BANCO CENTRAL» — Fortaleza (Brasil), 2005 · ≈ 62 s
+
+DESCRIPCIÓN (Instagram):
+🕳️ Cavaron un túnel de 78 metros… hasta llegar justo debajo de la cámara acorazada del Banco Central de Brasil.
+
+📍 Fortaleza, 2005. Alquilaron una casa enfrente del banco y montaron una falsa empresa de césped artificial: en tres meses no vendieron ni un metro, pero de la casa no paraba de salir tierra.
+
+🧱 El último obstáculo: el suelo de la cámara, 1,10 m de hormigón armado. Lo perforaron dejando una capa fina sin romper… y esperaron al fin de semana.
+
+💰 Un viernes de agosto, con el banco cerrado, entraron. Se llevaron solo billetes de 50 reales ya usados: 3,5 toneladas, 164 millones de reales. El lunes, en la cámara solo quedaba un agujero en el suelo.
+
+Es el mayor robo a un banco de la historia de Brasil, y la mayor parte del dinero sigue sin aparecer (se ha recuperado en torno al 15–18 %).
+
+👇 ¿Dónde crees que está el dinero?
+
+📚 Fuentes: Diário do Nordeste y O Povo (reportajes de los 15 y 20 años del caso), AP y AFP (agosto de 2005), MercoPress, Infobae.
+
+#robo #banco #brasil #historia #truecrime #tunel #misterio #curiosidades #kiriaai
+
+---
+
+VERSIÓN CORTA (TikTok):
+🕳️ Cavaron 78 metros de túnel hasta la cámara acorazada del Banco Central de Brasil y se llevaron 3,5 toneladas de billetes. ¿Dónde crees que está el dinero? 👇
+
+#robo #banco #brasil #truecrime #curiosidades
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: Danny (ElevenLabs, eleven_v4, estabilidad 0,50, similitud 0,75: los ajustes de la toma de Javi), generada aquí con engine/tts.py
+  a partir del guion aprobado por Javi (4-11-2026); ajustada a ×1,08.
+- Maqueta en corte: la avenida va acortada; las medidas reales salen en los rótulos (78 m, 4 m, 1,10 m, 75 cm).
+- CONFIRMAR antes de publicar (ver FUENTES.md): el grosor del suelo y las herramientas (las fuentes dan 1 m–1,10 m y martillos/discos
+  de diamante o soplete y sierra), «las cámaras y los sensores no funcionaban» (AP 2005) y «enfrente del banco» (AFP 2005).
+- «RECUPERADO ≈ R$ 25 M»: O Povo, 2020 (R$ 24,9 M recuperados por el Banco Central).

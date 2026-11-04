@@ -18,3 +18,4 @@
 | 3,5 toneladas; R$ 164,7 millones (≈ 65–70 M$) | Diário do Nordeste; Wikipedia; MercoPress | OK |
 | Recuperado: R$ 24,9 M (≈ 15 %), + R$ 5,2 M en custodia judicial | O Povo, 2020 https://mais.opovo.com.br/reportagens-especiais/furto-banco-central-fortaleza-15-anos/2020/08/07/do-que-a-quadrilha-levou--banco-central-conseguiu-recuperar-r--24-9-milhoes.html | OK (no sale en la voz) |
 | «el mayor robo a un banco de la historia de Brasil» | Diário do Nordeste («maior furto a banco no Brasil»); MercoPress | OK |
+| Rótulo «RECUPERADO ≈ R$ 25 M» (HUD final) | O Povo, 2020: el Banco Central recuperó R$ 24.910.976,67 (≈ 15 %) | OK |
