@@ -47,7 +47,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    encantó y pidió la **versión larga (v3, 33 s, 1980 fotogramas)**: «más de 2.500 seguidores nuevos en 6 días. ¿Cómo?», «puedes probar tu
    objeto en 3D… en redes… o en una página web» y el cierre «comenta KIRIA y te paso el enlace por privado». Voz: **la toma completa que
    mandó Javi** (11:41; antes había generado yo las frases nuevas con su voz y ajustes, `tts_extra.py` + `voz_con_extra.py`, ya sin usar);
-   render por trozos en ramas `render-lan4-*`. La v2 queda en `out/lanzamiento_v2_23s.mp4`. Pendiente antes de publicar: la captura de los 3,2 M en 7 días (Metricool da 1,93 M del 26 oct al
+   render por trozos en ramas `render-lan4-*`. **v3 entregada el 4-11-2026 (12:05): 33 s, 1980 fotogramas, −14,6 LUFS.** La v2 queda en
+   `out/lanzamiento_v2_23s.mp4`. Pendiente antes de publicar: la captura de los 3,2 M en 7 días (Metricool da 1,93 M del 26 oct al
    1 nov) y la respuesta automática a «KIRIA» con el enlace.
 3. **Lanzamiento de la web del estudio (plan de Javi, 4-11-2026)**: varios reels con «comenta KIRIA» → mensaje privado con el enlace a
    WhatsApp → allí la web con un 10 % extra. Propuesto: decir «tener un vídeo así», no «aprender» (no hay curso); Canal de WhatsApp
