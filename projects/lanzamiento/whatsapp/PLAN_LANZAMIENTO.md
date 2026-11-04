@@ -5,6 +5,7 @@ gente a una **comunidad de WhatsApp**; el domingo a las 12:00 se publica allí l
 
 ## Comunidad de WhatsApp (decisión de Javi, 4-11-2026)
 - Javi creó una **comunidad** (no un canal) con la foto y la descripción, y dijo que **no importa que se vea su número**.
+- Enlace de la comunidad: https://chat.whatsapp.com/ElEyf2TCRzt0nYZaW3mblE
 - La gente entra con el enlace de invitación; se escribe solo en el grupo **Avisos** (solo administradores).
 - En los grupos de una comunidad, «aprobar nuevos participantes» suele venir activado: hay que desactivarlo.
 - Notion: plan día a día y guía paso a paso (todo gratis) en «kiria.ai · Centro de producción» →
@@ -48,7 +49,7 @@ Dudas: Instagram @kiria.ai
 **Mensaje automático (DM a quien comenta KIRIA):**
 ```text
 ¡Hola! 👋 Gracias por comentar KIRIA.
-Aquí tienes el enlace a nuestro canal de WhatsApp: [ENLACE DEL CANAL]
+Aquí tienes el enlace a nuestro canal de WhatsApp: https://chat.whatsapp.com/ElEyf2TCRzt0nYZaW3mblE
 El domingo 8 a las 12:00 publicamos allí la web con un 10 % extra solo para quien esté en el canal.
 Toca «Seguir» y activa la campanita 🔔 para que te llegue el aviso.
 ```

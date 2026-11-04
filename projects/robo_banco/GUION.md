@@ -1,44 +1,46 @@
-# «El túnel del Banco Central» (≈ 60 s) — BORRADOR para Javi
+# «El túnel del Banco Central» (≈ 60 s) — versión 2 (cambios de Javi, 4-11-2026)
 
 Idea de Javi (4-11-2026): «el mayor robo de la historia de un banco: dónde fue y cómo se hizo, entraron, se disfrazaron…, cómo
-abrieron la cámara y salieron». Estaba en las ideas del Centro de producción de Notion.
+abrieron la cámara y salieron». Cambios de Javi al borrador: **empezar por «Cavaron un túnel…»**, **sin lo de Irak**, más
+profesional («que entren más ganas de verlo»), **contar cómo rompieron el suelo de la cámara acorazada** y que dure **1 minuto**.
 
-**Lo honesto:** el mayor robo a un banco de la historia (por dinero) es el del Banco Central de Irak (2003): no hubo túnel ni disfraces,
-bastó una carta de Sadam Husein (Guinness lo registra como «el mayor robo a un banco por un jefe de Estado»). El que tiene todo lo que
-pide Javi (tapadera, túnel, cámara acorazada, salida) es el del **Banco Central de Brasil en Fortaleza (2005)**, el mayor de la historia
-de Brasil. Por eso: Fortaleza paso a paso y, al final, el giro: «no es el mayor del mundo… el mayor se hizo con una carta».
-
-Formato: «por dentro» con pregunta de bando al final (lo que más funciona en la cuenta). Hook: plantilla 16 + curiosidad (HOOKS.md).
-Re-hook a mitad: «…pero no el mayor del mundo». Narración de hechos históricos, sin instrucciones útiles para delinquir.
+**Lo honesto:** el mayor robo a un banco del mundo (por dinero) fue el del Banco Central de Irak (2003); por eso aquí se dice «el
+mayor robo a un banco de la historia **de Brasil**», que sí es verdad. Narración de hechos históricos publicados en prensa, sin
+instrucciones útiles para delinquir. Estilo: presente narrativo, frases cortas, tensión (la capa fina que dejan sin romper).
+Cierre: pregunta abierta para comentarios («¿Dónde crees que está?»).
 
 ## Voz (script.txt)
 ```text
-Durante tres meses, una empresa de césped artificial no vendió ni un solo metro de césped.
-Estaba en Fortaleza, Brasil… enfrente del Banco Central.
-De la casa no salía césped: salía tierra.
-Cavaban un túnel de casi 80 metros, a 4 metros bajo la calle, con luz… y hasta aire acondicionado.
-Un fin de semana de agosto de 2005 llegaron debajo de la cámara acorazada, rompieron el suelo… y entraron.
-No sonó ni una alarma.
-Solo cogieron billetes de 50 ya usados: así nadie podría seguirles la pista.
-Y sacaron por el túnel tres toneladas y media de billetes: 164 millones de reales.
-El lunes, al abrir la cámara, el dinero ya no estaba.
-Fue el mayor robo a un banco de la historia de Brasil… pero no el mayor del mundo.
-El mayor fue en Irak, en 2003: sin túnel y sin disfraces. Bastó una carta pidiendo casi mil millones de dólares… y tres camiones.
-¿Qué te parece más increíble: tres meses cavando… o una carta?
+Cavaron un túnel de 78 metros… hasta llegar justo debajo de la cámara acorazada de un banco.
+Fortaleza, Brasil, 2005.
+Alquilan una casa enfrente del Banco Central: una falsa empresa de césped artificial.
+Tres meses sin vender ni un metro de césped: de la casa solo sale tierra.
+Bajo la avenida, el túnel avanza con vigas, luz y ventilación.
+Hasta el último obstáculo: el suelo de la cámara. Un metro y diez de hormigón armado.
+Lo perforan con martillos percutores y discos de diamante… pero dejan una capa fina sin romper. Y esperan.
+Un viernes de agosto, con el banco cerrado, rompen esa última capa… y entran.
+Dentro, las cámaras y los sensores no funcionan.
+Solo cogen billetes de 50 ya usados, difíciles de rastrear.
+En un fin de semana sacan por el túnel tres toneladas y media de billetes: 164 millones de reales.
+El lunes abren la cámara… y solo hay un agujero en el suelo.
+Es el mayor robo a un banco de la historia de Brasil… y la mayor parte del dinero sigue sin aparecer.
+¿Dónde crees que está?
 ```
+≈ 170 palabras: con la voz de Danny y el ajuste de pausas, ≈ 60–63 s (se afina con el atempo).
 
-## Qué se ve (palabra → forma), todo en 3D
+## Qué se ve (palabra → forma), todo en 3D y en corte (como una maqueta abierta)
 | Voz | Imagen |
 |---|---|
-| «tres meses… césped artificial… ni un solo metro» | Primer segundo: una tienda con rollos de césped artificial y un contador de ventas a 0; la cámara atraviesa el suelo y debajo brilla un túnel. |
-| «Fortaleza, Brasil… enfrente del Banco Central» | Mapa → la calle en maqueta: la casa a un lado, el Banco Central al otro. |
-| «no salía césped: salía tierra» | Un camión sale de la casa… cargado de tierra. |
-| «túnel de casi 80 m, a 4 m… luz… aire acondicionado» | Corte de la calle: el túnel avanza con su regla (0 → 78 m), vigas, bombillas y un aparato de aire. |
-| «fin de semana de agosto de 2005… rompieron el suelo… entraron» | Calendario SÁB 6 AGO 2005; el túnel llega bajo la cámara; el suelo se agrieta y se abre. |
-| «No sonó ni una alarma» | Sensores y alarmas en gris, en silencio. |
-| «billetes de 50 ya usados» | Fajos de 50 reales; una línea de «rastro» que se corta. |
-| «tres toneladas y media… 164 millones de reales» | Los fajos bajan por el túnel; báscula 3,5 t; contador R$ 164 M. |
-| «El lunes… ya no estaba» | La puerta de la cámara se abre: vacía, con un agujero en el suelo. |
-| «el mayor de Brasil… no el mayor del mundo» | El mapa se aleja de Brasil al mundo. |
-| «Irak, 2003… una carta… tres camiones» | Una carta manuscrita vuela; tres camiones se llenan de cajas de dólares; contador ≈ 1.000 M $. |
-| «¿tres meses cavando… o una carta?» | Pantalla partida: el túnel / la carta (bucle al primer plano). |
+| «Cavaron un túnel de 78 metros… debajo de la cámara acorazada» | Primer segundo: corte vertical de la calle; arriba, la cámara con los contenedores de billetes; abajo, un túnel iluminado que acaba justo bajo su suelo; cae polvo del techo del túnel. |
+| «Fortaleza, Brasil, 2005» | Rótulo de lugar y año sobre la maqueta de la avenida, de noche. |
+| «Alquilan una casa enfrente… falsa empresa de césped artificial» | La casa con su cartel y rollos de césped; el banco al otro lado de la avenida. |
+| «Tres meses sin vender… solo sale tierra» | Contador de ventas a 0; un calendario que pasa abril → agosto; sacos de tierra que salen. |
+| «Bajo la avenida, el túnel avanza con vigas, luz y ventilación» | El túnel crece bajo la avenida con su regla (0 → 78 m), vigas, bombillas y un tubo de ventilación. |
+| «el suelo de la cámara. Un metro y diez de hormigón armado» | Corte del suelo: capas de hormigón con la malla de acero; cota «1,10 m». |
+| «martillos percutores y discos de diamante… capa fina… esperan» | Un círculo de unos 75 cm se va abriendo hacia arriba; queda una lámina fina resaltada; un reloj que se para. |
+| «Un viernes de agosto… rompen esa última capa… y entran» | Calendario VIE · AGO 2005; la lámina se agrieta y se rompe; luz que sube a la cámara. |
+| «las cámaras y los sensores no funcionan» | Cámaras y sensores de la cámara en gris, apagados. |
+| «billetes de 50 ya usados» | Fajos de 50 reales gastados; el resto, intactos. |
+| «tres toneladas y media… 164 millones de reales» | Los fajos bajan por el agujero y recorren el túnel; báscula 3,5 t; contador R$ 164 M. |
+| «El lunes abren la cámara… un agujero en el suelo» | La puerta de la cámara se abre: vacía, con el agujero. |
+| «el mayor robo… de Brasil… sigue sin aparecer. ¿Dónde crees que está?» | Contador de lo recuperado (≈ 15–18 %) frente a lo que falta; bucle al primer plano del túnel. |
