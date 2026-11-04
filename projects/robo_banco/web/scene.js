@@ -1017,7 +1017,7 @@ function buildCam() {
     [K.alquilan3 - 0.1, [14.0, 4.5, 14.0], [2.0, 1.5, -3.0], 38],
     // 3–4: la casa del «césped» y la tierra que sale
     [K.casa3 + 0.3, [1.2, 3.0, 9.8], [-4.0, 2.0, -3.5], 38],
-    [K.cesped3, [0.2, 1.8, 7.5], [-3.2, 1.0, -2.2], 38],
+    [K.cesped3, [0.8, 2.6, 9.4], [-3.3, 2.3, -2.4], 38],
     [K.vender4, [2.2, 3.0, 10.4], [-2.4, 1.2, -3.0], 38],
     [K.sale4, [5.5, 3.8, 9.5], [3.2, 0.6, -6.0], 38],
     // 5: bajo la avenida, el túnel avanza
@@ -1119,7 +1119,7 @@ function hudAt(t) {
   // 2: Fortaleza, Brasil, 2005
   { const k = cw(t, K.fortaleza2 - 0.05, K.alquilan3 - 0.1, 0.25, 0.3); bigText('FORTALEZA · BRASIL', W / 2, 1480, 56, HC.white, k, { dark: 22 }); bigText('2005', W / 2, 1570, 72, HG, cw(t, K.y20052 - 0.05, K.alquilan3 - 0.1), { dark: 22, glow: 14 }); }
   // 3: la casa alquilada y la empresa falsa
-  lab(v3(-4.0, 1.4, -2.6), 'CASA ALQUILADA', 'ENFRENTE DEL BANCO', cw(t, K.casa3 - 0.05, K.falsa3 - 0.1), { dx: 160, dy: 230, color: HC.white });
+  lab(v3(-4.0, 2.2, -2.6), 'CASA ALQUILADA', 'ENFRENTE DEL BANCO', cw(t, K.casa3 - 0.05, K.falsa3 - 0.1), { dx: 150, dy: 260, color: HC.white });
   { const k = cw(t, K.falsa3 - 0.05, K.tres4 + 0.2, 0.2, 0.3); stamp('FALSA', 700, 1380, k, HC.red, 84); }
   // 4: ventas a 0, abril → agosto, la tierra
   { const k = cw(t, K.tres4, K.casa4 + 0.2, 0.25, 0.3), m = ['ABRIL', 'MAYO', 'JUNIO', 'JULIO'][Math.min(3, Math.floor(clamp((t - K.tres4) / (K.casa4 - K.tres4)) * 4))];

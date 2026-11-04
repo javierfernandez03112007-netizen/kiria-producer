@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.audio import silences  # noqa: E402
 
 SR = 44100
-TEMPO = 1.08          # voz de Danny (ElevenLabs, ajustes de Javi): un poco más ágil para quedarse en ≈ 60 s
+TEMPO = 1.09          # voz de Javi (Danny en ElevenLabs, su toma de las 14:59): un poco más ágil para quedarse en ≈ 60 s
 PAUSE = {1: 0.38, 2: 0.3, 7: 0.5, 8: 0.36, 11: 0.3, 12: 0.42, 13: 0.3}   # pausa tras la frase i: el gancho, «2005», «Y esperan», «y entran», «164 millones», «agujero en el suelo» y antes de la pregunta
 PAUSE_DEF = 0.22
 INNER_MAX = 0.15      # silencios internos (comas, puntos dentro de la frase) como máximo

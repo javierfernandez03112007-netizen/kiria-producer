@@ -1,1 +1,912 @@
-[{"w": "Cavaron", "start": 0.0, "end": 0.4}, {"w": "un", "start": 0.44, "end": 0.48}, {"w": "túnel", "start": 0.56, "end": 0.88}, {"w": "de", "start": 0.92, "end": 0.96}, {"w": "setenta", "start": 1.04, "end": 1.44}, {"w": "y", "start": 1.52, "end": 1.6}, {"w": "ocho", "start": 1.68, "end": 1.84}, {"w": "metros…", "start": 1.92, "end": 2.8}, {"w": "hasta", "start": 2.84, "end": 3.04}, {"w": "llegar", "start": 3.12, "end": 3.44}, {"w": "justo", "start": 3.52, "end": 3.84}, {"w": "debajo", "start": 3.92, "end": 4.24}, {"w": "de", "start": 4.28, "end": 4.32}, {"w": "la", "start": 4.4, "end": 4.44}, {"w": "cámara", "start": 4.48, "end": 4.8}, {"w": "acorazada", "start": 4.88, "end": 5.36}, {"w": "de", "start": 5.44, "end": 5.52}, {"w": "un", "start": 5.6, "end": 5.68}, {"w": "banco.", "start": 5.76, "end": 6.52}, {"w": "Fortaleza,", "start": 6.96, "end": 7.84}, {"w": "Brasil,", "start": 7.88, "end": 8.64}, {"w": "dos", "start": 8.72, "end": 8.8}, {"w": "mil", "start": 8.88, "end": 9.04}, {"w": "cinco.", "start": 9.12, "end": 10.0}, {"w": "Alquilan", "start": 10.08, "end": 10.4}, {"w": "una", "start": 10.48, "end": 10.56}, {"w": "casa", "start": 10.64, "end": 10.88}, {"w": "enfrente", "start": 11.0, "end": 11.36}, {"w": "del", "start": 11.44, "end": 11.52}, {"w": "Banco", "start": 11.6, "end": 11.84}, {"w": "Central:", "start": 11.92, "end": 12.88}, {"w": "una", "start": 12.96, "end": 13.04}, {"w": "falsa", "start": 13.12, "end": 13.36}, {"w": "empresa", "start": 13.44, "end": 13.84}, {"w": "de", "start": 13.88, "end": 13.92}, {"w": "césped", "start": 14.0, "end": 14.32}, {"w": "artificial.", "start": 14.4, "end": 15.36}, {"w": "Tres", "start": 15.68, "end": 15.92}, {"w": "meses", "start": 16.0, "end": 16.24}, {"w": "sin", "start": 16.32, "end": 16.48}, {"w": "vender", "start": 16.52, "end": 16.88}, {"w": "ni", "start": 16.96, "end": 17.04}, {"w": "un", "start": 17.12, "end": 17.2}, {"w": "metro", "start": 17.28, "end": 17.52}, {"w": "de", "start": 17.6, "end": 17.68}, {"w": "césped:", "start": 17.76, "end": 18.56}, {"w": "de", "start": 18.6, "end": 18.64}, {"w": "la", "start": 18.72, "end": 18.8}, {"w": "casa", "start": 18.88, "end": 19.12}, {"w": "solo", "start": 19.28, "end": 19.52}, {"w": "sale", "start": 19.6, "end": 19.84}, {"w": "tierra.", "start": 19.92, "end": 20.32}, {"w": "Bajo", "start": 20.96, "end": 21.12}, {"w": "la", "start": 21.2, "end": 21.28}, {"w": "avenida,", "start": 21.4, "end": 22.0}, {"w": "el", "start": 22.04, "end": 22.08}, {"w": "túnel", "start": 22.16, "end": 22.4}, {"w": "avanza", "start": 22.48, "end": 22.8}, {"w": "con", "start": 22.88, "end": 23.04}, {"w": "vigas,", "start": 23.12, "end": 23.76}, {"w": "luz", "start": 23.8, "end": 24.08}, {"w": "y", "start": 24.24, "end": 24.28}, {"w": "ventilación.", "start": 24.32, "end": 25.04}, {"w": "Hasta", "start": 25.52, "end": 25.76}, {"w": "el", "start": 25.84, "end": 25.92}, {"w": "último", "start": 25.96, "end": 26.24}, {"w": "obstáculo:", "start": 26.32, "end": 27.28}, {"w": "el", "start": 27.36, "end": 27.44}, {"w": "suelo", "start": 27.6, "end": 27.84}, {"w": "de", "start": 27.88, "end": 27.92}, {"w": "la", "start": 28.0, "end": 28.04}, {"w": "cámara.", "start": 28.08, "end": 28.48}, {"w": "Un", "start": 29.04, "end": 29.12}, {"w": "metro", "start": 29.28, "end": 29.52}, {"w": "y", "start": 29.56, "end": 29.6}, {"w": "diez", "start": 29.72, "end": 29.88}, {"w": "de", "start": 29.92, "end": 30.0}, {"w": "hormigón", "start": 30.08, "end": 30.4}, {"w": "armado.", "start": 30.48, "end": 31.16}, {"w": "Lo", "start": 31.44, "end": 31.52}, {"w": "perforan", "start": 31.6, "end": 32.0}, {"w": "con", "start": 32.08, "end": 32.16}, {"w": "martillos", "start": 32.28, "end": 32.64}, {"w": "percutores", "start": 32.76, "end": 33.28}, {"w": "y", "start": 33.32, "end": 33.36}, {"w": "discos", "start": 33.48, "end": 33.68}, {"w": "de", "start": 33.76, "end": 33.8}, {"w": "diamante…", "start": 33.84, "end": 34.8}, {"w": "pero", "start": 34.88, "end": 35.0}, {"w": "dejan", "start": 35.04, "end": 35.28}, {"w": "una", "start": 35.36, "end": 35.44}, {"w": "capa", "start": 35.52, "end": 35.76}, {"w": "fina", "start": 35.92, "end": 36.16}, {"w": "sin", "start": 36.24, "end": 36.4}, {"w": "romper.", "start": 36.48, "end": 37.16}, {"w": "Y", "start": 37.44, "end": 37.52}, {"w": "esperan.", "start": 37.72, "end": 38.48}, {"w": "Un", "start": 38.8, "end": 38.88}, {"w": "viernes", "start": 38.96, "end": 39.28}, {"w": "de", "start": 39.32, "end": 39.36}, {"w": "agosto,", "start": 39.44, "end": 40.0}, {"w": "con", "start": 40.08, "end": 40.16}, {"w": "el", "start": 40.2, "end": 40.24}, {"w": "banco", "start": 40.32, "end": 40.48}, {"w": "cerrado,", "start": 40.56, "end": 41.36}, {"w": "rompen", "start": 41.44, "end": 41.84}, {"w": "esa", "start": 41.92, "end": 42.08}, {"w": "última", "start": 42.16, "end": 42.48}, {"w": "capa…", "start": 42.56, "end": 43.28}, {"w": "y", "start": 43.36, "end": 43.44}, {"w": "entran.", "start": 43.56, "end": 44.32}, {"w": "Dentro,", "start": 44.64, "end": 45.28}, {"w": "las", "start": 45.36, "end": 45.44}, {"w": "cámaras", "start": 45.52, "end": 45.84}, {"w": "y", "start": 45.88, "end": 45.92}, {"w": "los", "start": 45.96, "end": 46.0}, {"w": "sensores", "start": 46.08, "end": 46.64}, {"w": "no", "start": 46.72, "end": 46.8}, {"w": "funcionan.", "start": 46.88, "end": 47.44}, {"w": "Solo", "start": 47.92, "end": 48.16}, {"w": "cogen", "start": 48.2, "end": 48.48}, {"w": "billetes", "start": 48.56, "end": 48.88}, {"w": "de", "start": 48.92, "end": 48.96}, {"w": "cincuenta", "start": 49.04, "end": 49.44}, {"w": "ya", "start": 49.6, "end": 49.68}, {"w": "usados,", "start": 49.76, "end": 50.48}, {"w": "difíciles", "start": 50.56, "end": 51.04}, {"w": "de", "start": 51.08, "end": 51.12}, {"w": "rastrear.", "start": 51.2, "end": 51.76}, {"w": "En", "start": 52.32, "end": 52.4}, {"w": "un", "start": 52.44, "end": 52.48}, {"w": "fin", "start": 52.56, "end": 52.72}, {"w": "de", "start": 52.76, "end": 52.8}, {"w": "semana", "start": 52.88, "end": 53.2}, {"w": "sacan", "start": 53.28, "end": 53.52}, {"w": "por", "start": 53.6, "end": 53.68}, {"w": "el", "start": 53.76, "end": 53.84}, {"w": "túnel", "start": 53.92, "end": 54.16}, {"w": "tres", "start": 54.32, "end": 54.56}, {"w": "toneladas", "start": 54.64, "end": 55.12}, {"w": "y", "start": 55.2, "end": 55.24}, {"w": "media", "start": 55.28, "end": 55.52}, {"w": "de", "start": 55.6, "end": 55.68}, {"w": "billetes:", "start": 55.76, "end": 56.8}, {"w": "ciento", "start": 56.84, "end": 57.12}, {"w": "sesenta", "start": 57.28, "end": 57.6}, {"w": "y", "start": 57.68, "end": 57.76}, {"w": "cuatro", "start": 57.84, "end": 58.08}, {"w": "millones", "start": 58.24, "end": 58.72}, {"w": "de", "start": 58.8, "end": 58.88}, {"w": "reales.", "start": 58.96, "end": 59.76}, {"w": "El", "start": 60.08, "end": 60.16}, {"w": "lunes", "start": 60.24, "end": 60.56}, {"w": "abren", "start": 60.72, "end": 61.04}, {"w": "la", "start": 61.08, "end": 61.12}, {"w": "cámara…", "start": 61.2, "end": 62.08}, {"w": "y", "start": 62.16, "end": 62.24}, {"w": "solo", "start": 62.32, "end": 62.56}, {"w": "hay", "start": 62.64, "end": 62.8}, {"w": "un", "start": 62.84, "end": 62.88}, {"w": "agujero", "start": 62.96, "end": 63.36}, {"w": "en", "start": 63.4, "end": 63.44}, {"w": "el", "start": 63.52, "end": 63.56}, {"w": "suelo.", "start": 63.6, "end": 64.0}, {"w": "Es", "start": 64.64, "end": 64.8}, {"w": "el", "start": 64.88, "end": 64.96}, {"w": "mayor", "start": 65.04, "end": 65.36}, {"w": "robo", "start": 65.44, "end": 65.76}, {"w": "a", "start": 65.8, "end": 65.84}, {"w": "un", "start": 65.92, "end": 66.0}, {"w": "banco", "start": 66.08, "end": 66.32}, {"w": "de", "start": 66.4, "end": 66.44}, {"w": "la", "start": 66.48, "end": 66.52}, {"w": "historia", "start": 66.56, "end": 66.96}, {"w": "de", "start": 67.04, "end": 67.08}, {"w": "Brasil…", "start": 67.12, "end": 68.08}, {"w": "y", "start": 68.16, "end": 68.2}, {"w": "la", "start": 68.24, "end": 68.32}, {"w": "mayor", "start": 68.4, "end": 68.56}, {"w": "parte", "start": 68.72, "end": 68.92}, {"w": "del", "start": 68.96, "end": 69.04}, {"w": "dinero", "start": 69.12, "end": 69.52}, {"w": "sigue", "start": 69.68, "end": 69.92}, {"w": "sin", "start": 70.0, "end": 70.08}, {"w": "aparecer.", "start": 70.16, "end": 70.72}, {"w": "¿Dónde", "start": 71.36, "end": 71.6}, {"w": "crees", "start": 71.68, "end": 71.92}, {"w": "que", "start": 71.96, "end": 72.0}, {"w": "está?", "start": 72.08, "end": 72.64}]
+[
+{
+"w": "Cavaron",
+"start": 0.08,
+"end": 0.48
+},
+{
+"w": "un",
+"start": 0.56,
+"end": 0.64
+},
+{
+"w": "túnel",
+"start": 0.72,
+"end": 1.12
+},
+{
+"w": "de",
+"start": 1.04,
+"end": 1.12
+},
+{
+"w": "78",
+"start": 1.2,
+"end": 1.76
+},
+{
+"w": "metros",
+"start": 2.0,
+"end": 2.4
+},
+{
+"w": "hasta",
+"start": 2.72,
+"end": 2.96
+},
+{
+"w": "llegar",
+"start": 3.04,
+"end": 3.44
+},
+{
+"w": "justo",
+"start": 3.52,
+"end": 3.76
+},
+{
+"w": "debajo",
+"start": 3.84,
+"end": 4.16
+},
+{
+"w": "de",
+"start": 4.24,
+"end": 4.32
+},
+{
+"w": "la",
+"start": 4.32,
+"end": 4.4
+},
+{
+"w": "cámara",
+"start": 4.4,
+"end": 4.72
+},
+{
+"w": "acorazada",
+"start": 4.8,
+"end": 5.52
+},
+{
+"w": "de",
+"start": 5.52,
+"end": 5.6
+},
+{
+"w": "un",
+"start": 5.68,
+"end": 5.76
+},
+{
+"w": "banco.",
+"start": 5.84,
+"end": 6.4
+},
+{
+"w": "Fortaleza,",
+"start": 6.64,
+"end": 7.6
+},
+{
+"w": "Brasil,",
+"start": 7.76,
+"end": 8.4
+},
+{
+"w": "2005.",
+"start": 8.48,
+"end": 9.6
+},
+{
+"w": "Alquilan",
+"start": 9.76,
+"end": 10.48
+},
+{
+"w": "una",
+"start": 10.56,
+"end": 10.64
+},
+{
+"w": "casa",
+"start": 10.72,
+"end": 10.8
+},
+{
+"w": "enfrente",
+"start": 10.96,
+"end": 11.28
+},
+{
+"w": "del",
+"start": 11.36,
+"end": 11.44
+},
+{
+"w": "Banco",
+"start": 11.52,
+"end": 11.84
+},
+{
+"w": "Central.",
+"start": 11.92,
+"end": 12.48
+},
+{
+"w": "Una",
+"start": 12.72,
+"end": 12.96
+},
+{
+"w": "falsa",
+"start": 12.96,
+"end": 13.2
+},
+{
+"w": "empresa",
+"start": 13.36,
+"end": 13.68
+},
+{
+"w": "de",
+"start": 13.68,
+"end": 13.76
+},
+{
+"w": "césped",
+"start": 13.84,
+"end": 14.4
+},
+{
+"w": "artificial.",
+"start": 14.48,
+"end": 15.28
+},
+{
+"w": "Tres",
+"start": 15.44,
+"end": 15.68
+},
+{
+"w": "meses",
+"start": 15.84,
+"end": 16.16
+},
+{
+"w": "sin",
+"start": 16.24,
+"end": 16.32
+},
+{
+"w": "vender",
+"start": 16.48,
+"end": 16.8
+},
+{
+"w": "ni",
+"start": 16.88,
+"end": 16.96
+},
+{
+"w": "un",
+"start": 17.12,
+"end": 17.2
+},
+{
+"w": "metro",
+"start": 17.28,
+"end": 17.52
+},
+{
+"w": "de",
+"start": 17.52,
+"end": 17.6
+},
+{
+"w": "césped.",
+"start": 17.6,
+"end": 18.4
+},
+{
+"w": "De",
+"start": 18.56,
+"end": 18.64
+},
+{
+"w": "la",
+"start": 18.72,
+"end": 18.8
+},
+{
+"w": "casa",
+"start": 18.88,
+"end": 18.96
+},
+{
+"w": "solo",
+"start": 19.28,
+"end": 19.36
+},
+{
+"w": "sale",
+"start": 19.6,
+"end": 19.92
+},
+{
+"w": "tierra.",
+"start": 20.08,
+"end": 20.64
+},
+{
+"w": "Bajo",
+"start": 20.8,
+"end": 21.04
+},
+{
+"w": "la",
+"start": 21.12,
+"end": 21.2
+},
+{
+"w": "avenida,",
+"start": 21.36,
+"end": 21.92
+},
+{
+"w": "el",
+"start": 21.92,
+"end": 22.0
+},
+{
+"w": "túnel",
+"start": 22.08,
+"end": 22.48
+},
+{
+"w": "avanza",
+"start": 22.56,
+"end": 22.8
+},
+{
+"w": "con",
+"start": 22.96,
+"end": 23.04
+},
+{
+"w": "vigas,",
+"start": 23.2,
+"end": 23.76
+},
+{
+"w": "luz",
+"start": 23.84,
+"end": 24.16
+},
+{
+"w": "y",
+"start": 24.24,
+"end": 24.32
+},
+{
+"w": "ventilación.",
+"start": 24.4,
+"end": 25.12
+},
+{
+"w": "Hasta",
+"start": 25.41,
+"end": 25.73
+},
+{
+"w": "el",
+"start": 25.89,
+"end": 25.97
+},
+{
+"w": "último",
+"start": 26.05,
+"end": 26.29
+},
+{
+"w": "obstáculo,",
+"start": 26.45,
+"end": 27.17
+},
+{
+"w": "el",
+"start": 27.41,
+"end": 27.49
+},
+{
+"w": "suelo",
+"start": 27.65,
+"end": 27.97
+},
+{
+"w": "de",
+"start": 28.05,
+"end": 28.13
+},
+{
+"w": "la",
+"start": 28.13,
+"end": 28.21
+},
+{
+"w": "cámara.",
+"start": 28.29,
+"end": 28.85
+},
+{
+"w": "Un",
+"start": 29.01,
+"end": 29.09
+},
+{
+"w": "metro",
+"start": 29.25,
+"end": 29.57
+},
+{
+"w": "y",
+"start": 29.65,
+"end": 29.73
+},
+{
+"w": "diez",
+"start": 29.73,
+"end": 29.89
+},
+{
+"w": "de",
+"start": 29.97,
+"end": 30.05
+},
+{
+"w": "hormigón",
+"start": 30.13,
+"end": 30.69
+},
+{
+"w": "armado.",
+"start": 30.77,
+"end": 31.25
+},
+{
+"w": "Lo",
+"start": 31.41,
+"end": 31.49
+},
+{
+"w": "perforan",
+"start": 31.57,
+"end": 32.13
+},
+{
+"w": "con",
+"start": 32.21,
+"end": 32.29
+},
+{
+"w": "martillos",
+"start": 32.29,
+"end": 32.85
+},
+{
+"w": "percutores",
+"start": 32.85,
+"end": 33.41
+},
+{
+"w": "y",
+"start": 33.49,
+"end": 33.57
+},
+{
+"w": "discos",
+"start": 33.65,
+"end": 33.97
+},
+{
+"w": "de",
+"start": 34.05,
+"end": 34.13
+},
+{
+"w": "diamante,",
+"start": 34.13,
+"end": 34.85
+},
+{
+"w": "pero",
+"start": 34.93,
+"end": 35.01
+},
+{
+"w": "dejan",
+"start": 35.17,
+"end": 35.49
+},
+{
+"w": "una",
+"start": 35.57,
+"end": 35.65
+},
+{
+"w": "capa",
+"start": 35.73,
+"end": 35.97
+},
+{
+"w": "fina",
+"start": 36.05,
+"end": 36.37
+},
+{
+"w": "sin",
+"start": 36.45,
+"end": 36.53
+},
+{
+"w": "romper.",
+"start": 36.61,
+"end": 37.33
+},
+{
+"w": "Y",
+"start": 37.49,
+"end": 37.57
+},
+{
+"w": "esperan.",
+"start": 37.73,
+"end": 38.37
+},
+{
+"w": "Un",
+"start": 38.61,
+"end": 38.69
+},
+{
+"w": "viernes",
+"start": 38.85,
+"end": 39.25
+},
+{
+"w": "de",
+"start": 39.33,
+"end": 39.41
+},
+{
+"w": "agosto,",
+"start": 39.49,
+"end": 39.89
+},
+{
+"w": "con",
+"start": 39.97,
+"end": 40.05
+},
+{
+"w": "el",
+"start": 40.13,
+"end": 40.21
+},
+{
+"w": "banco",
+"start": 40.29,
+"end": 40.53
+},
+{
+"w": "cerrado,",
+"start": 40.61,
+"end": 41.17
+},
+{
+"w": "rompen",
+"start": 41.33,
+"end": 41.73
+},
+{
+"w": "esa",
+"start": 41.97,
+"end": 42.21
+},
+{
+"w": "última",
+"start": 42.21,
+"end": 42.45
+},
+{
+"w": "capa",
+"start": 42.61,
+"end": 43.01
+},
+{
+"w": "y",
+"start": 43.25,
+"end": 43.33
+},
+{
+"w": "entran.",
+"start": 43.49,
+"end": 44.21
+},
+{
+"w": "Dentro,",
+"start": 44.53,
+"end": 45.17
+},
+{
+"w": "las",
+"start": 45.25,
+"end": 45.33
+},
+{
+"w": "cámaras",
+"start": 45.49,
+"end": 45.89
+},
+{
+"w": "y",
+"start": 45.89,
+"end": 45.97
+},
+{
+"w": "los",
+"start": 46.05,
+"end": 46.13
+},
+{
+"w": "sensores",
+"start": 46.21,
+"end": 46.61
+},
+{
+"w": "no",
+"start": 46.77,
+"end": 46.85
+},
+{
+"w": "funcionan.",
+"start": 47.01,
+"end": 47.65
+},
+{
+"w": "Solo",
+"start": 47.81,
+"end": 47.97
+},
+{
+"w": "cogen",
+"start": 48.13,
+"end": 48.29
+},
+{
+"w": "billetes",
+"start": 48.53,
+"end": 49.01
+},
+{
+"w": "de",
+"start": 49.01,
+"end": 49.09
+},
+{
+"w": "50",
+"start": 49.09,
+"end": 49.49
+},
+{
+"w": "ya",
+"start": 49.65,
+"end": 49.73
+},
+{
+"w": "usados.",
+"start": 49.89,
+"end": 50.29
+},
+{
+"w": "Difíciles",
+"start": 50.52,
+"end": 51.16
+},
+{
+"w": "de",
+"start": 51.16,
+"end": 51.24
+},
+{
+"w": "rastrear.",
+"start": 51.32,
+"end": 52.04
+},
+{
+"w": "En",
+"start": 52.12,
+"end": 52.2
+},
+{
+"w": "un",
+"start": 52.36,
+"end": 52.44
+},
+{
+"w": "fin",
+"start": 52.52,
+"end": 52.6
+},
+{
+"w": "de",
+"start": 52.76,
+"end": 52.84
+},
+{
+"w": "semana",
+"start": 52.84,
+"end": 53.08
+},
+{
+"w": "sacan",
+"start": 53.24,
+"end": 53.64
+},
+{
+"w": "por",
+"start": 53.64,
+"end": 53.72
+},
+{
+"w": "el",
+"start": 53.8,
+"end": 53.88
+},
+{
+"w": "túnel",
+"start": 53.88,
+"end": 54.2
+},
+{
+"w": "3",
+"start": 54.28,
+"end": 54.52
+},
+{
+"w": "toneladas",
+"start": 54.6,
+"end": 55.16
+},
+{
+"w": "y",
+"start": 55.24,
+"end": 55.32
+},
+{
+"w": "media",
+"start": 55.32,
+"end": 55.56
+},
+{
+"w": "de",
+"start": 55.64,
+"end": 55.72
+},
+{
+"w": "billetes.",
+"start": 55.72,
+"end": 56.44
+},
+{
+"w": "164",
+"start": 56.68,
+"end": 57.8
+},
+{
+"w": "millones",
+"start": 58.04,
+"end": 58.44
+},
+{
+"w": "de",
+"start": 58.52,
+"end": 58.6
+},
+{
+"w": "reales.",
+"start": 58.68,
+"end": 59.32
+},
+{
+"w": "El",
+"start": 59.48,
+"end": 59.56
+},
+{
+"w": "lunes",
+"start": 59.72,
+"end": 60.04
+},
+{
+"w": "abren",
+"start": 60.2,
+"end": 60.52
+},
+{
+"w": "la",
+"start": 60.6,
+"end": 60.68
+},
+{
+"w": "cámara.",
+"start": 60.76,
+"end": 61.32
+},
+{
+"w": "Y",
+"start": 61.48,
+"end": 61.56
+},
+{
+"w": "solo",
+"start": 61.72,
+"end": 61.8
+},
+{
+"w": "hay",
+"start": 62.04,
+"end": 62.12
+},
+{
+"w": "un",
+"start": 62.28,
+"end": 62.36
+},
+{
+"w": "agujero",
+"start": 62.44,
+"end": 62.92
+},
+{
+"w": "en",
+"start": 63.0,
+"end": 63.08
+},
+{
+"w": "el",
+"start": 63.08,
+"end": 63.16
+},
+{
+"w": "suelo.",
+"start": 63.24,
+"end": 63.72
+},
+{
+"w": "Es",
+"start": 63.96,
+"end": 64.04
+},
+{
+"w": "el",
+"start": 64.2,
+"end": 64.28
+},
+{
+"w": "mayor",
+"start": 64.36,
+"end": 64.6
+},
+{
+"w": "robo",
+"start": 64.68,
+"end": 65.0
+},
+{
+"w": "a",
+"start": 65.16,
+"end": 65.24
+},
+{
+"w": "un",
+"start": 65.32,
+"end": 65.4
+},
+{
+"w": "banco",
+"start": 65.48,
+"end": 65.72
+},
+{
+"w": "de",
+"start": 65.8,
+"end": 65.88
+},
+{
+"w": "la",
+"start": 65.88,
+"end": 65.96
+},
+{
+"w": "historia",
+"start": 66.04,
+"end": 66.36
+},
+{
+"w": "de",
+"start": 66.36,
+"end": 66.44
+},
+{
+"w": "Brasil.",
+"start": 66.52,
+"end": 67.16
+},
+{
+"w": "Y",
+"start": 67.24,
+"end": 67.32
+},
+{
+"w": "la",
+"start": 67.48,
+"end": 67.56
+},
+{
+"w": "mayor",
+"start": 67.64,
+"end": 67.88
+},
+{
+"w": "parte",
+"start": 67.96,
+"end": 68.04
+},
+{
+"w": "del",
+"start": 68.12,
+"end": 68.2
+},
+{
+"w": "dinero",
+"start": 68.36,
+"end": 68.68
+},
+{
+"w": "sigue",
+"start": 68.84,
+"end": 69.16
+},
+{
+"w": "sin",
+"start": 69.24,
+"end": 69.32
+},
+{
+"w": "aparecer.",
+"start": 69.48,
+"end": 70.12
+},
+{
+"w": "¿Dónde",
+"start": 70.2,
+"end": 70.6
+},
+{
+"w": "crees",
+"start": 70.68,
+"end": 71.0
+},
+{
+"w": "que",
+"start": 71.08,
+"end": 71.16
+},
+{
+"w": "está?",
+"start": 71.24,
+"end": 71.56
+}
+]

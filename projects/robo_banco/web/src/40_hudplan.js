@@ -43,7 +43,7 @@ function hudAt(t) {
   // 2: Fortaleza, Brasil, 2005
   { const k = cw(t, K.fortaleza2 - 0.05, K.alquilan3 - 0.1, 0.25, 0.3); bigText('FORTALEZA · BRASIL', W / 2, 1480, 56, HC.white, k, { dark: 22 }); bigText('2005', W / 2, 1570, 72, HG, cw(t, K.y20052 - 0.05, K.alquilan3 - 0.1), { dark: 22, glow: 14 }); }
   // 3: la casa alquilada y la empresa falsa
-  lab(v3(-4.0, 1.4, -2.6), 'CASA ALQUILADA', 'ENFRENTE DEL BANCO', cw(t, K.casa3 - 0.05, K.falsa3 - 0.1), { dx: 160, dy: 230, color: HC.white });
+  lab(v3(-4.0, 2.2, -2.6), 'CASA ALQUILADA', 'ENFRENTE DEL BANCO', cw(t, K.casa3 - 0.05, K.falsa3 - 0.1), { dx: 150, dy: 260, color: HC.white });
   { const k = cw(t, K.falsa3 - 0.05, K.tres4 + 0.2, 0.2, 0.3); stamp('FALSA', 700, 1380, k, HC.red, 84); }
   // 4: ventas a 0, abril → agosto, la tierra
   { const k = cw(t, K.tres4, K.casa4 + 0.2, 0.25, 0.3), m = ['ABRIL', 'MAYO', 'JUNIO', 'JULIO'][Math.min(3, Math.floor(clamp((t - K.tres4) / (K.casa4 - K.tres4)) * 4))];
