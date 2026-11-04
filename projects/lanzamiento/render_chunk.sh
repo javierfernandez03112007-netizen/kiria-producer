@@ -5,7 +5,7 @@ set -u
 A=$1; B=$2; X=$3; PFX=${4:-render-lan3}
 cd "$(dirname "$0")"
 (cd web && npm install --silent >/dev/null 2>&1; ./build.sh)
-mkdir -p out/frames chunks
+rm -rf out/frames && mkdir -p out/frames chunks      # nada de fotogramas de versiones anteriores (SKIP=1 los daría por buenos)
 for attempt in 1 2 3 4; do
   for w in 0 1 2; do FPS=60 SKIP=1 timeout 30000 node web/capture.mjs out/frames --range $A $B $w 3 > out/w$w.log 2>&1 & sleep 5; done
   wait
