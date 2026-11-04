@@ -42,7 +42,7 @@ sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño ante
 - Javi avisó de que al escribir «se peta la página o sale todo en blanco»: el formulario y la página de pago abrían enlaces `mailto:`,
   que dentro de la vista previa de Claude dejan el marco en blanco. Ya no hay ningún `mailto` en la web.
 - **Web publicada (GitHub Pages o dominio propio)**: «Enviar mensaje» y «Enviar pedido» mandan los datos con **FormSubmit** (formsubmit.co, gratis,
-  sin cuenta) a javierfernandez03112007@gmail.com, con `_autoresponse` (al cliente le llega un correo de confirmación) y `_next`
+  sin cuenta) a kiriaai2026@gmail.com (correo de la web desde el 4-11-2026), con `_autoresponse` (al cliente le llega un correo de confirmación) y `_next`
   (vuelve a la web con `#gracias` y sale arriba el aviso «¡Mensaje enviado!»; abajo tapaba el aviso de cookies). **La primera vez FormSubmit manda a ese correo un mensaje
   para activar el formulario: hay que pulsar «Activate Form».** Después se puede cambiar el correo por el alias que da FormSubmit.
   Según varias fuentes, la confirmación al cliente solo funciona con el envío normal (con su paso «no soy un robot»), no por AJAX:
@@ -78,7 +78,7 @@ sesión): proceso por pasos, precio cerrado por escrito, aprobar el diseño ante
 
 ## Contacto (v4.2, 2-11-2026, decisión de Javi)
 - **Sin número de teléfono ni WhatsApp en ninguna parte.** Las dudas, por Instagram **@kiria.ai** (https://www.instagram.com/kiria.ai/,
-  la cuenta conectada a Metricool) o por correo (javierfernandez03112007@gmail.com). Botón flotante «¿Dudas? @kiria.ai».
+  la cuenta conectada a Metricool) o por correo (kiriaai2026@gmail.com, el correo de la web desde el 4-11-2026). Botón flotante «¿Dudas? @kiria.ai».
 - El formulario prepara el mensaje para enviarlo por correo (enlace `mailto`), copiarlo o abrir Instagram.
 - Página de pago: **sin Bizum** (solo tarjeta y Apple Pay/Google Pay). Sin pasarela conectada, ofrece enviar el pedido por correo,
   copiarlo o escribir por Instagram.
