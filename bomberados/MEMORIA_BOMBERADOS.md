@@ -67,6 +67,7 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
 | Anuncio «Profe IA · Bomberados PRO» (idea de Javi, con la grabación real de la app) | `projects/bomberados_profeia/` | **guion enviado** 3 nov; escena hecha con tiempos provisionales; falta la voz de Javi |
 | Medio «Tus abuelos tenían media hora» (salón de antes contra el de hoy) | `projects/bomberados_abuelos/` | **listo para subir** (3 nov; 39,6 s, −15,5 LUFS, pico −1,2; voz de Javi; efectos de ElevenLabs reutilizados; Notion: fecha por decidir, propuesta mar 10) |
 | Medio «Al fuego le falta una pieza» (¿triángulo o tetraedro?) | `projects/bomberados_tetraedro/` | **listo para subir** (2 nov; 36,4 s, −15,3 LUFS, pico −0,6; voz de Javi; efectos de ElevenLabs reutilizados; Notion: jue 5 nov 20:30) |
+| PD 4 nov «¿Qué significa 21A-113B?» (versión CINEMATOGRÁFICA en 3D, idea de Javi) | `projects/bomberados_extintor/` | **escena hecha, falta la voz de Javi** (guion enviado el 3 nov; respuesta A; Notion: mié 4 nov 14:00, «En producción») |
 Lo que más se comparte: vídeos sobre la propia oposición y preguntas con trampa (compartidos por cada 1.000 visitas: Ocho 15,9,
 Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
@@ -106,6 +107,26 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Pendiente antes de publicar: comprobar en dgt.es lo de la baliza V-16 (citada en la explicación) y la prueba de 5 días.
 - Fuentes (honestidad): DGT «Qué hacer ante un accidente de tráfico», Cruz Roja «En mi carretera», RACE y Ministerio de
   Sanidad (módulo 6); dgt.es y sanidad.gob.es no abren desde estas máquinas («comprobar página»). Ver `FUENTES.md`.
+
+
+### PD 4 nov «¿Qué significa 21A-113B?» — 3D cinematográfico (3 nov)
+- Javi pidió «de manera cinematográfica con mucho flujo óptico y muy profesional». Formato nuevo: three.js
+  (`projects/bomberados_extintor/web/extintor.js`) + la capa 2D de `scene.js` (cuenta atrás, rótulos, venta). Luz de estudio,
+  pintura con barniz, profundidad de campo propia (desenfoque a ½ y ¼ + profundidad), resplandor, desenfoque de movimiento
+  por subfotogramas en los barridos, cámara lenta con rampas de velocidad (`warp`), cámara con spline de Hermite sin paradas.
+  Llamas = láminas con ruido que miran a la cámara (mucho más baratas y creíbles que partículas); humo, chispas y polvo =
+  partículas sin estado. Todo es función de t (cada fotograma se renderiza suelto en cualquier máquina).
+- Guion: gancho «La ley obliga a tenerlo a menos de quince metros de ti… y casi nadie sabe leerlo» (extintor CONGELADO en el
+  aire en plena descarga + anillo «a menos de 15 m»), macro del código, 4 opciones de cristal (A correcta), cuenta atrás de 3 s
+  sin voz, la cámara atraviesa la A → ensayo 21A (pila de 2,1 m, polvo a cámara lenta, cinta métrica) → bandeja 113B (probeta
+  de 113 L a escala real) → «más número, más fuego» (8A-34B … 43A-233B) → venta. Datos y matices en `FUENTES.md`.
+- Coste: 3–6 s por fotograma a 1080×1920 con SwiftShader (1 proceso ya usa ≈ 2,2 núcleos): render repartido en las 6 máquinas
+  + esta, con `procesos` = 2 en el proyecto. Vista rápida: `prev.mjs`/`anim.mjs` (PR 0,5, sin desenfoque de movimiento).
+- Cuando llegue la voz: `assets/voz_original.mp3` → `asr.py` → `ajustar_voz.py` (cuenta atrás 3 s tras la frase 3) →
+  `medir_voz.py` → vistas rápidas → commit y push → repartir N = (fin + 1,2) × 60 fotogramas en 7 trozos (órdenes
+  «render projects/bomberados_extintor A B <commit>» a las 6 máquinas; aquí el último trozo con capture.mjs --range) →
+  `ESPERA=6 REV=<commit> recoger_trozos.sh` → `compose.py` (efectos: `sfx_track_extintor`) → `portada.py` → entregar.
+- Pendiente de comprobar: tabla 1.1 del DB SI 4 (codigotecnico.org no abre desde aquí) y hogares tipo de la UNE-EN 3-7.
 
 ## Notion (centro de trabajo de Javi; MCP de Notion)
 - Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).
