@@ -59,6 +59,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 ## Negocio (vender vídeos a empresas)
 - Web del estudio: `web_estudio/` (ver su `README.md`; copia fija en la rama `web-estudio-v1`). Vista previa privada:
   https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy. Marcas: Élite Bomberos, Bomberados, Fersalv, Beauty Salon Merche.
+- Vídeo a cámara para promocionar la web (4-11-2026): guion y fuentes en `projects/estudio_promo/`; Javi lo graba y yo lo monto.
+  Recorte sin croma probado: Robust Video Matting en ONNX (`rvm_mobilenetv3_fp32.onnx`, releases de GitHub PeterL1n/RobustVideoMatting
+  v1.0.0) con onnxruntime, downsample 0,25: ≈ 0,25 s por fotograma a 1080x1920; quedarse con la mayor mancha para quitar a la gente del fondo.
 - Publicarla: Cloudflare Pages o Netlify (gratis) + dominio propio (≈ 10–15 €/año); contacto por WhatsApp con mensaje prellenado.
 - Falta de Javi: nombre comercial y dominio, qué se hizo para Fersalv y Beauty Salon Merche, logos y permisos, contacto (correo, WhatsApp,
   Instagram), plazos, precios, opiniones y datos legales (titular, NIF, dirección).
