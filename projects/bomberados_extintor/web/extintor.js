@@ -727,7 +727,7 @@ function update(t) {
     const off113 = 1 - sm(T.w3 + 0.1, T.w3 + 0.35, t);
     showTitle(title113, eO(tl) * off113, LP(3.08, 1.45 + 0.04 * eO(tl), 1.62));
     const tb = pr(t, T.b113 - 0.08, 0.45);
-    showTitle(title113B, eO(tb) * off113, LP(3.95, 2.05 + 0.1 * eO(tb), -0.1), mx(0.7, 1, bk(tb)));
+    showTitle(title113B, eO(tb) * off113, LP(3.95, 1.78 + 0.08 * eO(tb), -0.1), mx(0.7, 1, bk(tb)));
     const steps = [T.cuanto - 0.1, T.cuanto + 0.35, (T.numero ?? T.cuanto + 0.8) - 0.05, T.fuego - 0.2, T.fuego + 0.25];
     let si = 0; for (let i = 0; i < steps.length; i++) if (t >= steps[i]) si = i;
     const NUM = [8, 13, 21, 34, 43], since = t - steps[si];
@@ -737,7 +737,7 @@ function update(t) {
     rateLight.intensity = 3 * grow + 1.2 * Math.sin(t * 21);
     rateTitles.forEach((m, i) => {
       const on = i === si && t > T.cuanto - 0.15;
-      showTitle(m, on ? cl(since / 0.12) : 0, LP(-7.0, 1.3, 0.55), mx(0.8, 1, bk(cl(since / 0.25))) * (0.85 + 0.15 * i / 4));
+      showTitle(m, on ? cl(since / 0.12) : 0, LP(-7.0, 1.12, 0.55), mx(0.8, 1, bk(cl(since / 0.25))) * (0.85 + 0.15 * i / 4));
     });
   }
 }
