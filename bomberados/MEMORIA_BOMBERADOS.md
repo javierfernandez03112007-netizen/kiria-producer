@@ -128,6 +128,7 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   `ESPERA=6 REV=<commit> recoger_trozos.sh` → `compose.py` (efectos: `sfx_track_extintor`) → `portada.py` → entregar.
 - Pendiente de comprobar: tabla 1.1 del DB SI 4 (codigotecnico.org no abre desde aquí) y hogares tipo de la UNE-EN 3-7.
 - Hecho el 4 nov: voz a las 08:01 → vídeo a las 08:45. Al montar se vio que los títulos 3D «113B» y de eficacias chocaban con los subtítulos (y ≈ 330): se bajaron y se re-renderizaron solo esos 250 fotogramas en 5 máquinas (≈ 4 min). Portada: macro del código encendido (t 7,45) con `"oscurecer": true` (degradado oscuro detrás del titular, nuevo en portada.py).
+- **Javi (4 nov): «aleja la cámara, está muy pegada y no se observan bien las cosas»** → v2 con todos los planos más abiertos (gancho a ≈ 3 m, macro que acaba enseñando la etiqueta entera, opciones con el extintor entero detrás, la pila vista en diagonal con sus llamas, la bandeja entera, venta con el extintor entero y poco desenfoque). **Por defecto en los vídeos en 3D: planos abiertos donde se vea el objeto entero; los primeros planos, cortos y solo para leer algo.**
 
 ## Notion (centro de trabajo de Javi; MCP de Notion)
 - Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).
