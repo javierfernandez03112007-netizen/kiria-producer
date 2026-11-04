@@ -56,6 +56,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    una herramienta aprobada por Meta; vídeos: «tu negocio por dentro», cómo se hace un vídeo (proceso), antes/después con
    negocios reales en colaboración, el reto «comenta tu negocio», el precio (desde 6,99 €) y «tu producto en 3D»; 10 % con plazo
    real; publicar la web el día del lanzamiento (ahora sin publicar) y añadir un código de descuento.
+   **Fecha: domingo 8-11-2026 a las 12:00** (Javi, 4-11-2026). Plan, calendario y textos (canal, mensaje automático, bienvenida,
+   lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto del canal = la de Instagram (`whatsapp/foto_canal.png`).
 
 ## Vídeos recientes
 - **Magisterio** (`projects/magisterio/`, 1-11-2026): idea de Javi (desmentir que Magisterio es «solo collares de macarrones»). 60 s (Javi
