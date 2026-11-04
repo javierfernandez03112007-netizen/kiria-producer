@@ -16,3 +16,11 @@ Archivos de cada versión (`<v>` = noche o blanca):
 Dorso: «Vídeos 3D para redes sociales · Tu producto, en 3D · Páginas web para negocios», QR a https://kiriaai.com (comprobado que se
 lee), @kiria.ai y kiriaai2026@gmail.com. Para cambiar textos: FRONT y BACK en `hacer_tarjetas.cjs` → `node hacer_tarjetas.cjs` (une los
 PDF con pdfunite). El QR (`qr.svg`) se rehace con Python (librería qrcode) si cambia la dirección.
+
+## Catálogo de 16 modelos (5-11-2026)
+Javi: «hazme 10 modelos diferentes… también en tonos grises, o por los dos lados modo noche, uno blanco y otro noche, al revés…
+entre 10 y 20». `node hacer_modelos.cjs` → `modelos/catalogo_1.png` y `catalogo_2.png` (8 modelos cada uno, frente y dorso
+numerados), `modelos/mNN_frente.png`, `mNN_dorso.png` y `mNN_imprenta.pdf` (91 × 61 mm con sangrado, frente y dorso) de cada uno.
+Colores: noche, negro, grafito, gris, perla, piedra, blanco y degradado de la marca. Frentes: A (izquierda), B (centrado),
+C (editorial: logo grande abajo), D (barra de color a la izquierda). Dorsos: A (lista + QR a la derecha), B (QR centrado).
+QR comprobado (se lee https://kiriaai.com) en los modelos 1, 6, 9 y 13.
