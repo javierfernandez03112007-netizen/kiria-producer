@@ -1023,17 +1023,17 @@ const GAINS = [124, 93, 127, 140, 975, 1138];      // seguidores nuevos por día
 function drawStats(g, t, k) {
   g.fillStyle = '#0b0c0f'; g.fillRect(0, 0, SCR.w, SCR.h); statusBar(g, true);
   g.save(); g.globalAlpha = k; g.textAlign = 'left'; g.textBaseline = 'alphabetic';
-  g.fillStyle = '#ffffff'; g.font = '900 44px Inter'; g.fillText('Resultados', 36, 140);
-  g.fillStyle = 'rgba(255,255,255,.5)'; g.font = '500 24px Inter'; g.fillText('de nuestros propios vídeos', 36, 178);
-  let y = 250;
+  g.fillStyle = '#ffffff'; g.font = '900 44px Inter'; g.fillText('Resultados', 36, 204);      // más abajo que la barra de estado: el subtítulo no lo pisa
+  g.fillStyle = 'rgba(255,255,255,.5)'; g.font = '500 24px Inter'; g.fillText('de nuestros propios vídeos', 36, 240);
+  let y = 296;
   STATS.forEach(([fin, lab, val, fmt], i) => {
     const u = eo(clamp((t - K.mas2 - 0.05 - i * 0.16) / 0.8)), a = clamp((t - K.mas2 + 0.1 - i * 0.16) / 0.25);
-    g.globalAlpha = k * a; g.fillStyle = '#16181d'; rr(g, 24, y, SCR.w - 48, 190, 26); g.fill();
-    if (i === 1) { const hl = cwin(t, K.n2500, K.como2 - 0.1, 0.2, 0.3); if (hl > 0) { g.save(); g.globalAlpha = k * a * hl; g.strokeStyle = '#7cf0a9'; g.lineWidth = 6; g.shadowColor = '#7cf0a9'; g.shadowBlur = 24; rr(g, 24, y, SCR.w - 48, 190, 26); g.stroke(); g.restore(); } }
-    g.fillStyle = i === 0 ? '#ffc24a' : '#ffffff'; g.font = '900 78px Inter'; g.fillText(u >= 0.999 ? fin : fmt(val * u), 52, y + 102);
-    g.fillStyle = 'rgba(255,255,255,.62)'; g.font = '600 27px Inter'; g.fillText(lab, 54, y + 152);
-    if (i === 1) { const mx = Math.max(...GAINS), bw = 22, x0 = SCR.w - 56 - GAINS.length * (bw + 8); GAINS.forEach((v, j) => { const h = 76 * v / mx * eo(clamp((t - K.seis2 - 0.1 - j * 0.06) / 0.5)); g.fillStyle = j >= 4 ? '#7cf0a9' : 'rgba(124,240,169,.45)'; rr(g, x0 + j * (bw + 8), y + 104 - h, bw, Math.max(4, h), 5); g.fill(); }); }
-    y += 214;
+    g.globalAlpha = k * a; g.fillStyle = '#16181d'; rr(g, 24, y, SCR.w - 48, 176, 26); g.fill();
+    if (i === 1) { const hl = cwin(t, K.n2500, K.como2 - 0.1, 0.2, 0.3); if (hl > 0) { g.save(); g.globalAlpha = k * a * hl; g.strokeStyle = '#7cf0a9'; g.lineWidth = 6; g.shadowColor = '#7cf0a9'; g.shadowBlur = 24; rr(g, 24, y, SCR.w - 48, 176, 26); g.stroke(); g.restore(); } }
+    g.fillStyle = i === 0 ? '#ffc24a' : '#ffffff'; g.font = '900 78px Inter'; g.fillText(u >= 0.999 ? fin : fmt(val * u), 52, y + 96);
+    g.fillStyle = 'rgba(255,255,255,.62)'; g.font = '600 27px Inter'; g.fillText(lab, 54, y + 142);
+    if (i === 1) { const mx = Math.max(...GAINS), bw = 22, x0 = SCR.w - 56 - GAINS.length * (bw + 8); GAINS.forEach((v, j) => { const h = 72 * v / mx * eo(clamp((t - K.seis2 - 0.1 - j * 0.06) / 0.5)); g.fillStyle = j >= 4 ? '#7cf0a9' : 'rgba(124,240,169,.45)'; rr(g, x0 + j * (bw + 8), y + 98 - h, bw, Math.max(4, h), 5); g.fill(); }); }
+    y += 196;
   });
   g.restore();
 }
