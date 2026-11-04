@@ -57,7 +57,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    negocios reales en colaboración, el reto «comenta tu negocio», el precio (desde 6,99 €) y «tu producto en 3D»; 10 % con plazo
    real; publicar la web el día del lanzamiento (ahora sin publicar) y añadir un código de descuento.
    **Fecha: domingo 8-11-2026 a las 12:00** (Javi, 4-11-2026). Plan, calendario y textos (canal, mensaje automático, bienvenida,
-   lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto del canal = la de Instagram (`whatsapp/foto_canal.png`).
+   lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto = la de Instagram (`whatsapp/foto_canal.png`).
+   Javi creó una **comunidad** de WhatsApp (no canal; «no importa que quede visible el número») y lo quiere **todo gratis** (si
+   automatizar el enlace es de pago, lo manda él a mano). En Notion: «Lanzamiento · plan día a día hasta el domingo 8» + «Guía paso a
+   paso del lanzamiento (todo gratis)» y cada vídeo con su hora en «Calendario de contenido» (columna «Subir el», vista «📅 Subidas»).
+   Lanzamiento: L1 «Ni una sola cámara» jue 5 10:00 · L2 «Tu producto, en 3D» vie 6 10:00 · L3 «Tu negocio, por dentro» sáb 7 10:00 ·
+   L4 «Ya está abierta» dom 8 12:00 (Claude entrega cada uno la víspera antes de las 21:00). Cuenta a las 18:00: La cerradura (mié 4),
+   Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
 - **Magisterio** (`projects/magisterio/`, 1-11-2026): idea de Javi (desmentir que Magisterio es «solo collares de macarrones»). 60 s (Javi

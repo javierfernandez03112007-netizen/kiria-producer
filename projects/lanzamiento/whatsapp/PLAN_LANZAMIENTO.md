@@ -1,14 +1,17 @@
 # Lanzamiento de la web · domingo 8-11-2026 a las 12:00 (hora de España)
 
 Decisión de Javi (4-11-2026): el lanzamiento es el domingo 8 a las 12:00. Antes, los vídeos con «comenta KIRIA» llevan a la
-gente a un **canal de WhatsApp**; el domingo a las 12:00 se publica allí la web con un 10 % extra.
+gente a una **comunidad de WhatsApp**; el domingo a las 12:00 se publica allí la web con un 10 % extra.
 
-## Por qué un canal de WhatsApp (y no un grupo)
-- No hay que añadir a nadie: entran solos con el enlace (botón «Seguir»).
-- Los seguidores **no ven tu número** y tú no ves el suyo; no pueden escribir en el canal (solo reaccionar y votar encuestas).
-  Encaja con «nada de teléfono a la vista»: las dudas, por Instagram @kiria.ai o por correo.
-- Sin el tope de 1.024 personas de los grupos.
-- Ojo: **las notificaciones de un canal vienen silenciadas**. Hay que pedir que activen la campanita 🔔.
+## Comunidad de WhatsApp (decisión de Javi, 4-11-2026)
+- Javi creó una **comunidad** (no un canal) con la foto y la descripción, y dijo que **no importa que se vea su número**.
+- La gente entra con el enlace de invitación; se escribe solo en el grupo **Avisos** (solo administradores).
+- En los grupos de una comunidad, «aprobar nuevos participantes» suele venir activado: hay que desactivarlo.
+- Notion: plan día a día y guía paso a paso (todo gratis) en «kiria.ai · Centro de producción» →
+  «Lanzamiento · plan día a día hasta el domingo 8» (y su subpágina «Guía paso a paso del lanzamiento (todo gratis)»);
+  cada vídeo con su hora en «Calendario de contenido» (columna «Subir el», vista «📅 Subidas»).
+- Envío del enlace a quien comenta KIRIA, gratis: automatización de Meta Business Suite si la cuenta la tiene (no todas las guías
+  coinciden); si no, a mano con una «respuesta guardada» de Instagram (atajo «kiria»), en tandas, y el enlace en la bio por si acaso.
 
 ## Calendario (mejores horas de la cuenta según Metricool: jueves y viernes a las 10:00)
 | Cuándo | Qué | Quién |
