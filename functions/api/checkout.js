@@ -77,7 +77,7 @@ export async function onRequestPost({ request, env }) {
   if (mensual) {
     f.set('subscription_data[description]', txt('kiria.ai · ' + resumen, 490));
     for (const [k, v] of Object.entries(meta)) if (v) f.set(`subscription_data[metadata][${k}]`, v);
-    f.set('custom_text[submit][message]', 'Los packs mensuales se renuevan solos cada mes hasta que los canceles. Puedes cancelarlos cuando quieras desde el enlace de tu correo de confirmación o escribiéndonos.');
+    f.set('custom_text[submit][message]', 'Los planes mensuales se renuevan solos cada mes hasta que los canceles. Puedes cancelarlos cuando quieras en «Mi suscripción», al pie de kiriaai.com, o escribiéndonos.');
   } else {
     f.set('customer_creation', 'always');
     f.set('payment_intent_data[description]', txt('kiria.ai · ' + resumen, 990));

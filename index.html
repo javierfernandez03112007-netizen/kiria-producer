@@ -568,6 +568,7 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .cart-empty { color: var(--ink2); }
 .cart-empty a { color: var(--ink); }
 .renew { font-size: 13.5px; color: var(--muted); margin-top: -8px; }
+.renew a, .thanks p a { color: var(--ink); }
 .more-add { border: 1px dashed var(--line2); border-radius: 16px; padding: 14px 16px; }
 .more-add summary { cursor: pointer; font-weight: 700; list-style: none; }
 .more-add summary::-webkit-details-marker { display: none; }
@@ -1120,7 +1121,7 @@ footer a:hover { color: var(--nightfg); }
         <ul class="cart" id="coCart"></ul>
         <p class="cart-empty" id="coEmpty" hidden>Tu carrito está vacío. Elige un vídeo o una web en <a href="#precios">precios</a>, o añádelo aquí abajo.</p>
         <ul class="lines" id="coLines"></ul>
-        <p class="renew" id="coRenew" hidden>Los planes mensuales se renuevan solos cada mes hasta que los canceles. Puedes cancelarlos cuando quieras.</p>
+        <p class="renew" id="coRenew" hidden>Los planes mensuales se renuevan solos cada mes hasta que los canceles. Puedes cancelarlos cuando quieras en <a href="https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00" target="_blank" rel="noopener">Mi suscripción</a> (también al pie de la web).</p>
         <details class="more-add" id="coMore">
           <summary>+ Añadir algo más</summary>
           <div class="add-in">
@@ -1167,7 +1168,7 @@ footer a:hover { color: var(--nightfg); }
   <div class="wrap">
     <div class="foot1">
       <a class="brand" href="#inicio"><b>kiria<i>.</i>ai</b><span>Estudio de vídeo con IA · Hecho en España</span></a>
-      <nav aria-label="Legal"><a href="#aviso-legal" data-open="aviso">Aviso legal</a><a href="#privacidad" data-open="privacidad">Privacidad</a><a href="#cookies" data-open="cookies">Cookies</a><button class="linkbtn" type="button" data-open="cfg">Configurar cookies</button></nav>
+      <nav aria-label="Legal"><a href="#aviso-legal" data-open="aviso">Aviso legal</a><a href="#privacidad" data-open="privacidad">Privacidad</a><a href="#cookies" data-open="cookies">Cookies</a><button class="linkbtn" type="button" data-open="cfg">Configurar cookies</button><a href="https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00" target="_blank" rel="noopener">Mi suscripción</a></nav>
     </div>
     <div class="credits">
       <span>© 2026 kiria.ai</span>
@@ -1238,7 +1239,7 @@ footer a:hover { color: var(--nightfg); }
 </dialog>
 
 <div class="thanks" id="thanks" role="status" hidden><span class="ok">✓</span><div><b>¡Mensaje enviado!</b><p>Gracias por escribirnos. Te hemos mandado un correo de confirmación y te responderemos lo antes posible por correo o por Instagram.</p></div><button type="button" id="thanksX" aria-label="Cerrar">✕</button></div>
-<div class="thanks" id="paid" role="status" hidden><span class="ok">✓</span><div><b>¡Pago recibido!</b><p>Gracias por tu compra. Stripe te ha enviado el recibo por correo y en breve te escribimos para empezar con tu pedido (de 12 a 72 h desde la compra). Si tienes cualquier duda, escríbenos por Instagram (@kiria.ai) o a kiriaai2026@gmail.com.</p></div><button type="button" id="paidX" aria-label="Cerrar">✕</button></div>
+<div class="thanks" id="paid" role="status" hidden><span class="ok">✓</span><div><b>¡Pago recibido!</b><p>Gracias por tu compra. Stripe te ha enviado el recibo por correo y en breve te escribimos para empezar con tu pedido (de 12 a 72 h desde la compra). Si has contratado un plan mensual, puedes gestionarlo o cancelarlo en <a href="https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00" target="_blank" rel="noopener">Mi suscripción</a>, al pie de la web. Si tienes cualquier duda, escríbenos por Instagram (@kiria.ai) o a kiriaai2026@gmail.com.</p></div><button type="button" id="paidX" aria-label="Cerrar">✕</button></div>
 
 <dialog class="legal" id="dlg-cookies" aria-labelledby="t-cook">
   <div class="lh"><h2 id="t-cook">Política de cookies</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
