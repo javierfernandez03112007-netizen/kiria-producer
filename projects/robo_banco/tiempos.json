@@ -1,0 +1,1010 @@
+[
+ {
+  "text": "Cavaron un túnel de 78 metros… hasta llegar justo debajo de la cámara acorazada de un banco.",
+  "start": 0.0,
+  "end": 5.5,
+  "words": [
+   {
+    "w": "Cavaron",
+    "start": 0.0,
+    "end": 0.407
+   },
+   {
+    "w": "un",
+    "start": 0.407,
+    "end": 0.519
+   },
+   {
+    "w": "túnel",
+    "start": 0.519,
+    "end": 0.852
+   },
+   {
+    "w": "de",
+    "start": 0.852,
+    "end": 0.963
+   },
+   {
+    "w": "78",
+    "start": 0.963,
+    "end": 1.778
+   },
+   {
+    "w": "metros…",
+    "start": 1.778,
+    "end": 2.491
+   },
+   {
+    "w": "hasta",
+    "start": 2.491,
+    "end": 2.722
+   },
+   {
+    "w": "llegar",
+    "start": 2.722,
+    "end": 3.093
+   },
+   {
+    "w": "justo",
+    "start": 3.093,
+    "end": 3.463
+   },
+   {
+    "w": "debajo",
+    "start": 3.463,
+    "end": 3.796
+   },
+   {
+    "w": "de",
+    "start": 3.796,
+    "end": 3.907
+   },
+   {
+    "w": "la",
+    "start": 3.907,
+    "end": 3.981
+   },
+   {
+    "w": "cámara",
+    "start": 3.981,
+    "end": 4.352
+   },
+   {
+    "w": "acorazada",
+    "start": 4.352,
+    "end": 4.87
+   },
+   {
+    "w": "de",
+    "start": 4.87,
+    "end": 5.019
+   },
+   {
+    "w": "un",
+    "start": 5.019,
+    "end": 5.167
+   },
+   {
+    "w": "banco.",
+    "start": 5.167,
+    "end": 5.5
+   }
+  ]
+ },
+ {
+  "text": "Fortaleza, Brasil, 2005.",
+  "start": 5.88,
+  "end": 8.102,
+  "words": [
+   {
+    "w": "Fortaleza,",
+    "start": 5.88,
+    "end": 6.694
+   },
+   {
+    "w": "Brasil,",
+    "start": 6.694,
+    "end": 7.37
+   },
+   {
+    "w": "2005.",
+    "start": 7.37,
+    "end": 8.102
+   }
+  ]
+ },
+ {
+  "text": "Alquilan una casa enfrente del Banco Central: una falsa empresa de césped artificial.",
+  "start": 8.417,
+  "end": 12.611,
+  "words": [
+   {
+    "w": "Alquilan",
+    "start": 8.417,
+    "end": 8.787
+   },
+   {
+    "w": "una",
+    "start": 8.787,
+    "end": 8.935
+   },
+   {
+    "w": "casa",
+    "start": 8.935,
+    "end": 9.269
+   },
+   {
+    "w": "enfrente",
+    "start": 9.269,
+    "end": 9.676
+   },
+   {
+    "w": "del",
+    "start": 9.676,
+    "end": 9.824
+   },
+   {
+    "w": "Banco",
+    "start": 9.824,
+    "end": 10.12
+   },
+   {
+    "w": "Central:",
+    "start": 10.12,
+    "end": 10.713
+   },
+   {
+    "w": "una",
+    "start": 10.713,
+    "end": 10.861
+   },
+   {
+    "w": "falsa",
+    "start": 10.861,
+    "end": 11.157
+   },
+   {
+    "w": "empresa",
+    "start": 11.157,
+    "end": 11.565
+   },
+   {
+    "w": "de",
+    "start": 11.565,
+    "end": 11.676
+   },
+   {
+    "w": "césped",
+    "start": 11.676,
+    "end": 12.046
+   },
+   {
+    "w": "artificial.",
+    "start": 12.046,
+    "end": 12.611
+   }
+  ]
+ },
+ {
+  "text": "Tres meses sin vender ni un metro de césped: de la casa solo sale tierra.",
+  "start": 12.815,
+  "end": 16.87,
+  "words": [
+   {
+    "w": "Tres",
+    "start": 12.815,
+    "end": 13.093
+   },
+   {
+    "w": "meses",
+    "start": 13.093,
+    "end": 13.389
+   },
+   {
+    "w": "sin",
+    "start": 13.389,
+    "end": 13.574
+   },
+   {
+    "w": "vender",
+    "start": 13.574,
+    "end": 13.982
+   },
+   {
+    "w": "ni",
+    "start": 13.982,
+    "end": 14.13
+   },
+   {
+    "w": "un",
+    "start": 14.13,
+    "end": 14.278
+   },
+   {
+    "w": "metro",
+    "start": 14.278,
+    "end": 14.574
+   },
+   {
+    "w": "de",
+    "start": 14.574,
+    "end": 14.722
+   },
+   {
+    "w": "césped:",
+    "start": 14.722,
+    "end": 15.296
+   },
+   {
+    "w": "de",
+    "start": 15.296,
+    "end": 15.407
+   },
+   {
+    "w": "la",
+    "start": 15.407,
+    "end": 15.556
+   },
+   {
+    "w": "casa",
+    "start": 15.556,
+    "end": 15.926
+   },
+   {
+    "w": "solo",
+    "start": 15.926,
+    "end": 16.222
+   },
+   {
+    "w": "sale",
+    "start": 16.222,
+    "end": 16.519
+   },
+   {
+    "w": "tierra.",
+    "start": 16.519,
+    "end": 16.87
+   }
+  ]
+ },
+ {
+  "text": "Bajo la avenida, el túnel avanza con vigas, luz y ventilación.",
+  "start": 17.111,
+  "end": 20.815,
+  "words": [
+   {
+    "w": "Bajo",
+    "start": 17.111,
+    "end": 17.333
+   },
+   {
+    "w": "la",
+    "start": 17.333,
+    "end": 17.519
+   },
+   {
+    "w": "avenida,",
+    "start": 17.519,
+    "end": 18.074
+   },
+   {
+    "w": "el",
+    "start": 18.074,
+    "end": 18.185
+   },
+   {
+    "w": "túnel",
+    "start": 18.185,
+    "end": 18.482
+   },
+   {
+    "w": "avanza",
+    "start": 18.482,
+    "end": 18.852
+   },
+   {
+    "w": "con",
+    "start": 18.852,
+    "end": 19.074
+   },
+   {
+    "w": "vigas,",
+    "start": 19.074,
+    "end": 19.704
+   },
+   {
+    "w": "luz",
+    "start": 19.704,
+    "end": 20.111
+   },
+   {
+    "w": "y",
+    "start": 20.111,
+    "end": 20.185
+   },
+   {
+    "w": "ventilación.",
+    "start": 20.185,
+    "end": 20.815
+   }
+  ]
+ },
+ {
+  "text": "Hasta el último obstáculo: el suelo de la cámara. Un metro y diez de hormigón armado.",
+  "start": 21.019,
+  "end": 25.315,
+  "words": [
+   {
+    "w": "Hasta",
+    "start": 21.019,
+    "end": 21.296
+   },
+   {
+    "w": "el",
+    "start": 21.296,
+    "end": 21.407
+   },
+   {
+    "w": "último",
+    "start": 21.407,
+    "end": 21.741
+   },
+   {
+    "w": "obstáculo:",
+    "start": 21.741,
+    "end": 22.417
+   },
+   {
+    "w": "el",
+    "start": 22.417,
+    "end": 22.639
+   },
+   {
+    "w": "suelo",
+    "start": 22.639,
+    "end": 22.898
+   },
+   {
+    "w": "de",
+    "start": 22.898,
+    "end": 23.009
+   },
+   {
+    "w": "la",
+    "start": 23.009,
+    "end": 23.083
+   },
+   {
+    "w": "cámara.",
+    "start": 23.083,
+    "end": 23.583
+   },
+   {
+    "w": "Un",
+    "start": 23.583,
+    "end": 23.806
+   },
+   {
+    "w": "metro",
+    "start": 23.806,
+    "end": 24.065
+   },
+   {
+    "w": "y",
+    "start": 24.065,
+    "end": 24.213
+   },
+   {
+    "w": "diez",
+    "start": 24.213,
+    "end": 24.398
+   },
+   {
+    "w": "de",
+    "start": 24.398,
+    "end": 24.546
+   },
+   {
+    "w": "hormigón",
+    "start": 24.546,
+    "end": 24.917
+   },
+   {
+    "w": "armado.",
+    "start": 24.917,
+    "end": 25.315
+   }
+  ]
+ },
+ {
+  "text": "Lo perforan con martillos percutores y discos de diamante… pero dejan una capa fina sin romper. Y esperan.",
+  "start": 25.519,
+  "end": 31.167,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 25.519,
+    "end": 25.639
+   },
+   {
+    "w": "perforan",
+    "start": 25.639,
+    "end": 26.083
+   },
+   {
+    "w": "con",
+    "start": 26.083,
+    "end": 26.269
+   },
+   {
+    "w": "martillos",
+    "start": 26.269,
+    "end": 26.713
+   },
+   {
+    "w": "percutores",
+    "start": 26.713,
+    "end": 27.232
+   },
+   {
+    "w": "y",
+    "start": 27.232,
+    "end": 27.38
+   },
+   {
+    "w": "discos",
+    "start": 27.38,
+    "end": 27.639
+   },
+   {
+    "w": "de",
+    "start": 27.639,
+    "end": 27.713
+   },
+   {
+    "w": "diamante…",
+    "start": 27.713,
+    "end": 28.491
+   },
+   {
+    "w": "pero",
+    "start": 28.491,
+    "end": 28.639
+   },
+   {
+    "w": "dejan",
+    "start": 28.639,
+    "end": 28.935
+   },
+   {
+    "w": "una",
+    "start": 28.935,
+    "end": 29.083
+   },
+   {
+    "w": "capa",
+    "start": 29.083,
+    "end": 29.454
+   },
+   {
+    "w": "fina",
+    "start": 29.454,
+    "end": 29.75
+   },
+   {
+    "w": "sin",
+    "start": 29.75,
+    "end": 29.972
+   },
+   {
+    "w": "romper.",
+    "start": 29.972,
+    "end": 30.482
+   },
+   {
+    "w": "Y",
+    "start": 30.482,
+    "end": 30.741
+   },
+   {
+    "w": "esperan.",
+    "start": 30.741,
+    "end": 31.167
+   }
+  ]
+ },
+ {
+  "text": "Un viernes de agosto, con el banco cerrado, rompen esa última capa… y entran.",
+  "start": 31.639,
+  "end": 36.157,
+  "words": [
+   {
+    "w": "Un",
+    "start": 31.639,
+    "end": 31.787
+   },
+   {
+    "w": "viernes",
+    "start": 31.787,
+    "end": 32.12
+   },
+   {
+    "w": "de",
+    "start": 32.12,
+    "end": 32.232
+   },
+   {
+    "w": "agosto,",
+    "start": 32.232,
+    "end": 32.806
+   },
+   {
+    "w": "con",
+    "start": 32.806,
+    "end": 32.917
+   },
+   {
+    "w": "el",
+    "start": 32.917,
+    "end": 33.028
+   },
+   {
+    "w": "banco",
+    "start": 33.028,
+    "end": 33.25
+   },
+   {
+    "w": "cerrado,",
+    "start": 33.25,
+    "end": 33.944
+   },
+   {
+    "w": "rompen",
+    "start": 33.944,
+    "end": 34.389
+   },
+   {
+    "w": "esa",
+    "start": 34.389,
+    "end": 34.611
+   },
+   {
+    "w": "última",
+    "start": 34.611,
+    "end": 34.982
+   },
+   {
+    "w": "capa…",
+    "start": 34.982,
+    "end": 35.583
+   },
+   {
+    "w": "y",
+    "start": 35.583,
+    "end": 35.769
+   },
+   {
+    "w": "entran.",
+    "start": 35.769,
+    "end": 36.157
+   }
+  ]
+ },
+ {
+  "text": "Dentro, las cámaras y los sensores no funcionan.",
+  "start": 36.537,
+  "end": 39.065,
+  "words": [
+   {
+    "w": "Dentro,",
+    "start": 36.537,
+    "end": 37.157
+   },
+   {
+    "w": "las",
+    "start": 37.157,
+    "end": 37.306
+   },
+   {
+    "w": "cámaras",
+    "start": 37.306,
+    "end": 37.639
+   },
+   {
+    "w": "y",
+    "start": 37.639,
+    "end": 37.713
+   },
+   {
+    "w": "los",
+    "start": 37.713,
+    "end": 37.824
+   },
+   {
+    "w": "sensores",
+    "start": 37.824,
+    "end": 38.417
+   },
+   {
+    "w": "no",
+    "start": 38.417,
+    "end": 38.565
+   },
+   {
+    "w": "funcionan.",
+    "start": 38.565,
+    "end": 39.065
+   }
+  ]
+ },
+ {
+  "text": "Solo cogen billetes de 50 ya usados, difíciles de rastrear.",
+  "start": 39.269,
+  "end": 42.704,
+  "words": [
+   {
+    "w": "Solo",
+    "start": 39.269,
+    "end": 39.528
+   },
+   {
+    "w": "cogen",
+    "start": 39.528,
+    "end": 39.861
+   },
+   {
+    "w": "billetes",
+    "start": 39.861,
+    "end": 40.194
+   },
+   {
+    "w": "de",
+    "start": 40.194,
+    "end": 40.306
+   },
+   {
+    "w": "50",
+    "start": 40.306,
+    "end": 40.824
+   },
+   {
+    "w": "ya",
+    "start": 40.824,
+    "end": 40.972
+   },
+   {
+    "w": "usados,",
+    "start": 40.972,
+    "end": 41.63
+   },
+   {
+    "w": "difíciles",
+    "start": 41.63,
+    "end": 42.111
+   },
+   {
+    "w": "de",
+    "start": 42.111,
+    "end": 42.222
+   },
+   {
+    "w": "rastrear.",
+    "start": 42.222,
+    "end": 42.704
+   }
+  ]
+ },
+ {
+  "text": "En un fin de semana sacan por el túnel tres toneladas y media de billetes: 164 millones de reales.",
+  "start": 42.917,
+  "end": 49.241,
+  "words": [
+   {
+    "w": "En",
+    "start": 42.917,
+    "end": 43.028
+   },
+   {
+    "w": "un",
+    "start": 43.028,
+    "end": 43.139
+   },
+   {
+    "w": "fin",
+    "start": 43.139,
+    "end": 43.324
+   },
+   {
+    "w": "de",
+    "start": 43.324,
+    "end": 43.435
+   },
+   {
+    "w": "semana",
+    "start": 43.435,
+    "end": 43.806
+   },
+   {
+    "w": "sacan",
+    "start": 43.806,
+    "end": 44.102
+   },
+   {
+    "w": "por",
+    "start": 44.102,
+    "end": 44.25
+   },
+   {
+    "w": "el",
+    "start": 44.25,
+    "end": 44.398
+   },
+   {
+    "w": "túnel",
+    "start": 44.398,
+    "end": 44.815
+   },
+   {
+    "w": "tres",
+    "start": 44.815,
+    "end": 45.056
+   },
+   {
+    "w": "toneladas",
+    "start": 45.056,
+    "end": 45.574
+   },
+   {
+    "w": "y",
+    "start": 45.574,
+    "end": 45.648
+   },
+   {
+    "w": "media",
+    "start": 45.648,
+    "end": 45.944
+   },
+   {
+    "w": "de",
+    "start": 45.944,
+    "end": 46.093
+   },
+   {
+    "w": "billetes:",
+    "start": 46.093,
+    "end": 46.824
+   },
+   {
+    "w": "164",
+    "start": 46.824,
+    "end": 48.12
+   },
+   {
+    "w": "millones",
+    "start": 48.12,
+    "end": 48.639
+   },
+   {
+    "w": "de",
+    "start": 48.639,
+    "end": 48.787
+   },
+   {
+    "w": "reales.",
+    "start": 48.787,
+    "end": 49.241
+   }
+  ]
+ },
+ {
+  "text": "El lunes abren la cámara… y solo hay un agujero en el suelo.",
+  "start": 49.546,
+  "end": 52.861,
+  "words": [
+   {
+    "w": "El",
+    "start": 49.546,
+    "end": 49.694
+   },
+   {
+    "w": "lunes",
+    "start": 49.694,
+    "end": 50.139
+   },
+   {
+    "w": "abren",
+    "start": 50.139,
+    "end": 50.472
+   },
+   {
+    "w": "la",
+    "start": 50.472,
+    "end": 50.583
+   },
+   {
+    "w": "cámara…",
+    "start": 50.583,
+    "end": 51.185
+   },
+   {
+    "w": "y",
+    "start": 51.185,
+    "end": 51.333
+   },
+   {
+    "w": "solo",
+    "start": 51.333,
+    "end": 51.63
+   },
+   {
+    "w": "hay",
+    "start": 51.63,
+    "end": 51.815
+   },
+   {
+    "w": "un",
+    "start": 51.815,
+    "end": 51.926
+   },
+   {
+    "w": "agujero",
+    "start": 51.926,
+    "end": 52.333
+   },
+   {
+    "w": "en",
+    "start": 52.333,
+    "end": 52.444
+   },
+   {
+    "w": "el",
+    "start": 52.444,
+    "end": 52.519
+   },
+   {
+    "w": "suelo.",
+    "start": 52.519,
+    "end": 52.861
+   }
+  ]
+ },
+ {
+  "text": "Es el mayor robo a un banco de la historia de Brasil… y la mayor parte del dinero sigue sin aparecer.",
+  "start": 53.278,
+  "end": 58.593,
+  "words": [
+   {
+    "w": "Es",
+    "start": 53.278,
+    "end": 53.5
+   },
+   {
+    "w": "el",
+    "start": 53.5,
+    "end": 53.648
+   },
+   {
+    "w": "mayor",
+    "start": 53.648,
+    "end": 54.018
+   },
+   {
+    "w": "robo",
+    "start": 54.018,
+    "end": 54.352
+   },
+   {
+    "w": "a",
+    "start": 54.352,
+    "end": 54.463
+   },
+   {
+    "w": "un",
+    "start": 54.463,
+    "end": 54.611
+   },
+   {
+    "w": "banco",
+    "start": 54.611,
+    "end": 54.907
+   },
+   {
+    "w": "de",
+    "start": 54.907,
+    "end": 54.981
+   },
+   {
+    "w": "la",
+    "start": 54.981,
+    "end": 55.056
+   },
+   {
+    "w": "historia",
+    "start": 55.056,
+    "end": 55.5
+   },
+   {
+    "w": "de",
+    "start": 55.5,
+    "end": 55.574
+   },
+   {
+    "w": "Brasil…",
+    "start": 55.574,
+    "end": 56.269
+   },
+   {
+    "w": "y",
+    "start": 56.269,
+    "end": 56.343
+   },
+   {
+    "w": "la",
+    "start": 56.343,
+    "end": 56.491
+   },
+   {
+    "w": "mayor",
+    "start": 56.491,
+    "end": 56.787
+   },
+   {
+    "w": "parte",
+    "start": 56.787,
+    "end": 57.009
+   },
+   {
+    "w": "del",
+    "start": 57.009,
+    "end": 57.157
+   },
+   {
+    "w": "dinero",
+    "start": 57.157,
+    "end": 57.676
+   },
+   {
+    "w": "sigue",
+    "start": 57.676,
+    "end": 57.972
+   },
+   {
+    "w": "sin",
+    "start": 57.972,
+    "end": 58.12
+   },
+   {
+    "w": "aparecer.",
+    "start": 58.12,
+    "end": 58.593
+   }
+  ]
+ },
+ {
+  "text": "¿Dónde crees que está?",
+  "start": 58.924,
+  "end": 59.827,
+  "words": [
+   {
+    "w": "¿Dónde",
+    "start": 58.924,
+    "end": 59.205
+   },
+   {
+    "w": "crees",
+    "start": 59.205,
+    "end": 59.45
+   },
+   {
+    "w": "que",
+    "start": 59.45,
+    "end": 59.555
+   },
+   {
+    "w": "está?",
+    "start": 59.555,
+    "end": 59.827
+   }
+  ]
+ }
+]

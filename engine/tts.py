@@ -47,10 +47,12 @@ def main():
     ap.add_argument("--voz", default=DANNY)
     ap.add_argument("--modelo", default="eleven_v4")
     ap.add_argument("--salida", default="voz_original")
+    ap.add_argument("--estabilidad", type=float, default=0.5)
+    ap.add_argument("--similitud", type=float, default=1.0)      # su toma del lanzamiento iba con 0,75 («…pvc_s50_sim75_v4»)
     a = ap.parse_args()
     texto = " ".join(l.strip() for l in open(os.path.join(a.proyecto, "script_tts.txt"), encoding="utf-8") if l.strip())
     r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{a.voz}/with-timestamps",
-                      headers={"xi-api-key": clave()}, json={"text": texto, "model_id": a.modelo, "voice_settings": {"stability": 0.5, "similarity_boost": 1.0, "speed": 1.0, "use_speaker_boost": True}}, timeout=300)
+                      headers={"xi-api-key": clave()}, json={"text": texto, "model_id": a.modelo, "voice_settings": {"stability": a.estabilidad, "similarity_boost": a.similitud, "speed": 1.0, "use_speaker_boost": True}}, timeout=300)
     r.raise_for_status()
     d = r.json()
     os.makedirs(os.path.join(a.proyecto, "assets"), exist_ok=True)
