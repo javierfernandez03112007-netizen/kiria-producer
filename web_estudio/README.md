@@ -13,7 +13,9 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   la comparta desde el menú «Compartir».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
-- **Sin publicar (decisión de Javi, 3-11-2026: «no quiero que esté publicada aún, solo aquí para ir supervisando»).** Se
+- **PUBLICADA el 4-11-2026** en https://javierfernandez03112007-netizen.github.io/kiria-producer/ (Javi: «la ponemos ya en la web y empezamos a
+  editar cosas ya publicada para poder generar Stripe»: Stripe pide la dirección de la web). Es la dirección provisional: con su dominio
+  pasará a Cloudflare Pages (GitHub Pages no admite tiendas online). Antes (3-11-2026) estuvo retirada: Se
   supervisa solo en la vista privada (Artifact). Estuvo unos 50 minutos en GitHub Pages
   (javierfernandez03112007-netizen.github.io/kiria-producer); ahora la rama `gh-pages` está vacía y la dirección da 404. Pages
   sigue activado en el repositorio: para apagarlo del todo, Ajustes → Pages → «Unpublish site» (o borrar la rama `gh-pages`

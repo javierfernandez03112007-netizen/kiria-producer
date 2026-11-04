@@ -56,7 +56,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    una herramienta aprobada por Meta; vídeos: «tu negocio por dentro», cómo se hace un vídeo (proceso), antes/después con
    negocios reales en colaboración, el reto «comenta tu negocio», el precio (desde 6,99 €) y «tu producto en 3D»; 10 % con plazo
    real; publicar la web el día del lanzamiento (ahora sin publicar) y añadir un código de descuento.
-   **Fecha: domingo 8-11-2026 a las 12:00** (Javi, 4-11-2026). Plan, calendario y textos (canal, mensaje automático, bienvenida,
+   **Fecha: domingo 8-11-2026 a las 12:00** (Javi, 4-11-2026). **Web PUBLICADA el 4-11-2026** (provisional, GitHub Pages:
+   https://javierfernandez03112007-netizen.github.io/kiria-producer/) porque Stripe pide la dirección de la web; con su dominio, a Cloudflare
+   Pages. Guía de cobros (Stripe con enlaces de pago, dominio, alta de autónomo) en Notion: «Cobrar con tarjeta, dominio y alta de autónomo». Plan, calendario y textos (canal, mensaje automático, bienvenida,
    lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto = la de Instagram (`whatsapp/foto_canal.png`).
    Javi creó una **comunidad** de WhatsApp (https://chat.whatsapp.com/ElEyf2TCRzt0nYZaW3mblE; no canal; «no importa que quede visible el número») y lo quiere **todo gratis** (si
    automatizar el enlace es de pago, lo manda él a mano). En Notion: «Lanzamiento · plan día a día hasta el domingo 8» + «Guía paso a

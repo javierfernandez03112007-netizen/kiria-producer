@@ -6,8 +6,8 @@
 # del artifact, icono y enlace para compartir), copia web_estudio/media/ y lo sube todo a la rama gh-pages.
 # GitHub Pages sirve esa rama; en una web normal el formulario y los pedidos se envían solos (FormSubmit).
 #
-# Javi (3-11-2026): «no quiero que esté publicada aún, solo aquí para ir supervisando» → NO publicar hasta que él lo diga;
-# mientras, la web se supervisa en la vista privada (Artifact). Por eso el script no hace nada sin una orden expresa:
+# Javi (3-11-2026): «no quiero que esté publicada aún» → se retiró. Javi (4-11-2026): «la ponemos ya en la web» (Stripe pide la
+# dirección de la web para abrir la cuenta) → PUBLICADA desde el 4-11-2026. Se sigue publicando solo con orden expresa:
 #   ./web_estudio/publicar.sh --publicar                 → construye y sube (solo cuando Javi lo pida)
 #   ./web_estudio/publicar.sh --solo-construir DIR       → solo deja la web en DIR, para probarla en local
 set -euo pipefail
