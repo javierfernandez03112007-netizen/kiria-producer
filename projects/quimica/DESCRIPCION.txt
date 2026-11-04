@@ -1,0 +1,33 @@
+«QUÍMICA vs INGENIERÍA QUÍMICA» · duelo de carreras · ≈ 59 s
+
+DESCRIPCIÓN (Instagram):
+⚗️ Química e Ingeniería Química parecen la misma carrera… y no lo son.
+
+🧪 En primero se parecen mucho: química, matemáticas, física y laboratorio. Luego se separan: el químico baja a las moléculas y descubre cómo fabricar algo nuevo en un tubo de ensayo. El ingeniero químico convierte esa receta en una fábrica: reactores, columnas de destilación, tuberías… toneladas cada día, seguras y baratas.
+
+👩‍🔬 Uno acaba en laboratorios, investigación o farmacéuticas. 👷 El otro, en plantas químicas, refinerías o depuradoras.
+
+📊 Trabajo encuentran casi igual (81,2 % frente a 84,6 % afiliados a la Seguridad Social). Pero cuatro años después de acabar, el químico tiene una base media de cotización de 27.253 € al año y el ingeniero químico, de 31.202 €: casi 4.000 € más. (La base de cotización se parece mucho al sueldo bruto.)
+
+Eso sí: sin el químico, la fábrica no tendría nada que fabricar.
+
+👇 ¿Laboratorio o fábrica? ¿Equipo Química o equipo Ingeniería Química?
+
+📚 Fuente: U-Ranking 2025 (Fundación BBVA e Ivie), con datos del Ministerio de Universidades y la Seguridad Social: egresados de 2019, medidos cuatro años después.
+
+#química #ingenieriaquimica #carreras #universidad #selectividad #estudiantes #orientacion #kiriaai
+
+---
+
+VERSIÓN CORTA (TikTok):
+⚗️ Química vs Ingeniería Química: empiezan casi igual… y uno acaba ganando casi 4.000 € más al año. ¿Laboratorio o fábrica? 👇
+
+#química #ingenieriaquimica #carreras #universidad
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: Danny (ElevenLabs, eleven_v4, estabilidad 0,50, similitud 0,75: los ajustes de Javi), generada con engine/tts.py; ajustada a ×1,08 (57 s).
+- Datos: ver FUENTES.md. La tabla de U-Ranking no se pudo abrir desde la sesión (red): las cifras salen de las búsquedas. CONFIRMAR antes de
+  publicar que 81,2/84,6 son la tasa de afiliación y 27.253/31.202 la base media de cotización (el orden de las tres columnas es ese).
+- «0,50 g» en la balanza y la receta (Mezclar, Calentar, Destilar, Enfriar) son EJEMPLOS.

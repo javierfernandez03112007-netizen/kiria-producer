@@ -1,7 +1,7 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «El túnel del Banco Central».
-Base: la cámara acorazada con los billetes, la losa con el agujero y el túnel debajo (sin HUD):
-    COVER=1 COVER_T=44.25 COVER_CAM="27.2,-0.9,7.2,22.6,-2.9,-1.0,42" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
-Título en Impact con contorno, como los subtítulos (la cifra en dorado)."""
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Química vs Ingeniería Química».
+Base: el primer fotograma (la fábrica entera dentro del tubo de ensayo), sin HUD:
+    COVER=1 COVER_T=0.5 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Título en Impact con contorno, como los subtítulos (Química en turquesa, Ingeniería Química en ámbar)."""
 import os
 import sys
 
@@ -15,8 +15,8 @@ from engine.subs import word_sprite  # noqa: E402
 from engine import post  # noqa: E402
 
 W, H = 1080, 1920
-GOLD = "#FFC24A"
-RED = "#FF5A4E"
+TEAL = "#35D6C6"
+AMB = "#FFB547"
 
 
 def row(img, parts, cy, size, stroke):
@@ -30,9 +30,10 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("CAVARON", None), ("UN", None), ("TÚNEL", None)], y + 80 * k, int(104 * k), int(9 * k))
-    row(img, [("DE", None), ("78", GOLD), ("METROS", GOLD)], y + 225 * k, int(150 * k), int(11 * k))
-    paste(img, chip("el mayor robo a un banco de Brasil", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 362 * k)
+    row(img, [("QUÍMICA", TEAL)], y + 80 * k, int(150 * k), int(11 * k))
+    row(img, [("VS", None)], y + 205 * k, int(78 * k), int(8 * k))
+    row(img, [("INGENIERÍA", AMB), ("QUÍMICA", AMB)], y + 315 * k, int(104 * k), int(9 * k))
+    paste(img, chip("¿cuál cobra más al acabar?", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 455 * k)
 
 
 def main():
