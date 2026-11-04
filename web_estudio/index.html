@@ -1617,6 +1617,11 @@ function kiriaSend({ subject, message, name, email }) {
   add('_autoresponse', KREPLY); add('_next', location.origin + location.pathname + '#gracias');
   document.body.appendChild(fm); fm.submit(); return true;
 }
+function kiriaNotify({ subject, message, name, email }) {
+  if (KPREVIEW) return;
+  try { fetch('https://formsubmit.co/ajax/' + KMAIL, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ nombre: name, email, mensaje: message, _subject: subject, _template: 'table' }) }).catch(() => {}); } catch (e) {}
+}
 (() => {
   const box = document.getElementById('thanks'); if (!box) return;
   const show = () => { if (location.hash !== '#gracias') return; box.hidden = false; try { history.replaceState(null, '', location.pathname + location.search + '#contacto'); } catch (e) {} };
@@ -2222,7 +2227,9 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
   // Enlaces de pago de Stripe, uno por pedido: clave «tipo-vídeos-difusión», p. ej. '1-10-0' = Publicidad, 10 al mes, sin difusión;
   // para las webs, 'web-0' (con tus fotos, 250 €) y 'web-1' (con fotos nuestras, 350 €).
   // Mientras esté vacío, el botón ofrece enviar el pedido por correo o por Instagram.
-  const PAY_LINKS = {};
+  const PAY_LINKS = {
+    '0-1-0': 'https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00',      // Vídeo Básico · 1 vídeo · 6,99 € (Javi, 4-11-2026)
+  };
   const $ = id => document.getElementById(id);
   const selT = $('coT'), selP = $('coP'), chk = $('coDif'), lines = $('coLines'), btn = $('coPay'), note = $('coNote'), go = $('coGo'), form = $('coForm');
   let pedidoInfo = null;
@@ -2277,9 +2284,15 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     if (st.kind === 'web') { const wv = KW[st.w] || KW[0]; msg = `${quien} Quiero pagar «${wv.name}»: ${eurK(wv.c)} € (pago único). Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + wv.name; url = PAY_LINKS['web-' + st.w]; }
     else { const c = kCalc(st.t, st.pi, st.dif), ty = KT[st.t]; msg = `${quien} Quiero pagar el plan «${c.name}» (tipo ${ty.n}, ${ty.d})${st.dif ? ', con difusión en kiria.ai' : ''}: ${eurK(c.tot)} €${c.n > 1 ? ' al mes' : ''}. Pago con: ${metodo}. Mi correo: ${mail.value.trim()}`; asunto = 'Pedido: ' + c.name + ' (' + ty.n + ')'; url = PAY_LINKS[`${st.t}-${c.n}-${st.dif ? 1 : 0}`]; }
     pedido = msg; pedidoInfo = { subject: asunto, message: msg, name: name.value.trim(), email: mail.value.trim() };
-    if (url) { go.href = url + (url.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(mail.value.trim()); go.hidden = false; try { window.open(go.href, '_blank', 'noopener'); } catch (err) {} }
+    if (url) {
+      go.href = url + (url.includes('?') ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(mail.value.trim()); go.hidden = false;
+      kiriaNotify(pedidoInfo);                       // a Javi le llega el pedido por correo (nombre, empresa, plan) mientras el cliente paga
+      if (KPREVIEW) { try { window.open(go.href, '_blank', 'noopener'); } catch (err) {} }
+      else { btn.disabled = true; btn.textContent = 'Abriendo el pago seguro…'; location.href = go.href; }   // misma pestaña: al pagar, Stripe vuelve a #pagado
+    }
     else { note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }
   });
+  addEventListener('pageshow', () => { btn.disabled = false; if (location.hash === '#pago') render(); });   // al volver atrás desde Stripe
   let was = false;
   const route = () => {
     const on = location.hash === '#pago';
