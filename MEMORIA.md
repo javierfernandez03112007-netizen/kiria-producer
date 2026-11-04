@@ -22,6 +22,8 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
   y avisa con `send_message`. `fetch_compose.sh` recoge los trozos y compone solo al tener todos los fotogramas.
 - Rendimiento: ≈ 0,6 fotogramas/s por máquina de 4 núcleos (3 procesos). Un vídeo de 72 s (4.352 fotogramas) con 6 máquinas: ≈ 35–45 min.
 - Pendiente de permiso: borrar ramas `render-*` antiguas y archivar las sesiones de ayuda (no hacerlo sin que lo diga).
+- Las máquinas «Bomberados · render N» solo aceptan órdenes de la sesión BOMBERADOS (rechazan las de otras sesiones): para los vídeos de
+  kiria.ai se crean máquinas propias con `create_session` (4-11-2026: «Lanzamiento · render 1–6», etiqueta `kiria-render-lan`).
 
 ## Resultados del canal (datos que ha dado Javi)
 | Vídeo | Datos |
@@ -39,6 +41,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Sanitaria o PIR. (Comprobar Ley 33/2011, créditos del máster, plazas PIR y nota de corte antes del guion.)
 2. Medicina (6 años + MIR), duelos (ADE vs Economía, Matemáticas vs Física, Arquitectura vs Edificación, Informática vs Ciencia de Datos),
    «la nota de corte más alta no es Medicina», serie numerada «Carreras por dentro».
+3. **Vídeos del lanzamiento: SIN PRECIOS (Javi, 4-11-2026: «no pongas ningún precio ni nada en los vídeos, solamente quiero mostrar resultados,
+   visitas, seguidores etc.»).** Solo resultados reales (con fuente: panel de Instagram o Metricool) y «comenta KIRIA». Vídeo 1: `projects/lanzamiento/`.
 3. **Lanzamiento de la web del estudio (plan de Javi, 4-11-2026)**: varios reels con «comenta KIRIA» → mensaje privado con el enlace a
    WhatsApp → allí la web con un 10 % extra. Propuesto: decir «tener un vídeo así», no «aprender» (no hay curso); Canal de WhatsApp
    en vez de grupo (en un grupo se ve su número, que no quiere enseñar, y el tope es 1.024); respuesta automática a «KIRIA» con
