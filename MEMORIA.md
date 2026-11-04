@@ -66,6 +66,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **El túnel del Banco Central** (`projects/robo_banco/`, 4-11-2026): idea de Javi («el mayor robo de la historia de un banco»). Lo honesto:
+  el mayor del mundo fue el del Banco Central de Irak (2003, con una carta); se cuenta Fortaleza (2005), «el mayor robo a un banco de la
+  historia de Brasil». Cambios de Javi al guion: empezar por «Cavaron un túnel…», sin Irak, contar cómo rompieron el suelo de la cámara,
+  1 min. Maqueta en corte de noche (casa del «GRAMA SINTÉTICA», avenida acortada, túnel con vigas/luz/ventilación, losa de 1,10 m con
+  acero y agujero de 75 cm que se perfora dejando la capa fina, cámara acorazada con palés de billetes, puerta redonda). 27 efectos de
+  ElevenLabs (máx. 4 peticiones a la vez). Voz provisional con `engine/tts.py --similitud 0.75`; Javi quiere grabar la suya. Render en
+  ramas `render-robo-*` (cada trozo ≈ 570 fotogramas). Portada «CAVARON UN TÚNEL DE 78 METROS».
 - **Magisterio** (`projects/magisterio/`, 1-11-2026): idea de Javi (desmentir que Magisterio es «solo collares de macarrones»). 60 s (Javi
   pidió vídeos de 60 s, no más largos) y **todo dentro del aula de Infantil** (Javi: «que no se salga del entorno de Magisterio»): pizarra
   con tiza, rincones, mesas con macarrones, mesa de la maestra. Voz generada aquí con `engine/tts.py`; efectos reales con `sfx_eleven.py`.
