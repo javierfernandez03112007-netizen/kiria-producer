@@ -584,7 +584,7 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 /* reseñas y valoraciones */
 .reviews .head { margin-bottom: 32px; }
 .rev-sum { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; color: var(--ink2); }
-.rev-sum b { font: 400 clamp(44px, 6vw, 64px)/1 var(--display); color: var(--ink); }
+.rev-sum b { font: 400 clamp(40px, 5vw, 56px)/1 var(--display); color: var(--ink); }
 .st { color: var(--amber); letter-spacing: 2px; }
 .rev-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
 .rev { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
@@ -592,6 +592,12 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .rev .rn { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13.5px; color: var(--muted); }
 .rev .rn b { color: var(--ink); }
 .rev .ver { color: #6ee7a8; }
+.rev .visit { color: var(--ink2); }
+.rev .rr { display: grid; gap: 2px; font-size: 13.5px; color: var(--muted); }
+.rev .rr span { display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+.rev-sum .avg { display: grid; gap: 2px; }
+.rev-sum .avg small { font-size: 13px; color: var(--muted); }
+.rev-sum { gap: 18px 34px; }
 .rev-empty { border: 1px dashed var(--line2); border-radius: 18px; padding: 24px 26px; color: var(--ink2); max-width: 44em; }
 .rev-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 28px; }
 .rev-note { font-size: 13.5px; color: var(--muted); max-width: 46em; flex: 1 1 22em; }
@@ -1146,14 +1152,14 @@ footer a:hover { color: var(--nightfg); }
   <section class="band reviews" id="resenas" aria-labelledby="revT">
     <div class="wrap">
       <div class="head rv">
-        <div><p class="mono">Reseñas</p><h2 id="revT">Reseñas de clientes</h2></div>
+        <div><p class="mono">Reseñas</p><h2 id="revT">Qué opinan de kiria.ai</h2></div>
         <div class="rev-sum" id="revSum" hidden></div>
       </div>
       <div class="rev-list" id="revList"></div>
-      <div class="rev-empty rv" id="revEmpty" hidden><p>Todavía no hay reseñas publicadas: acabamos de abrir. ¿Ya nos has comprado algo? Cuéntanos qué tal y serás de los primeros.</p></div>
+      <div class="rev-empty rv" id="revEmpty" hidden><p>Todavía no hay reseñas publicadas: acabamos de abrir. Cuéntanos qué te parece la web (y, si nos has comprado algo, qué tal) y serás de los primeros.</p></div>
       <div class="rev-foot rv">
         <button class="btn dark" type="button" data-open="valorar">Valorar kiria.ai <span class="arr">→</span></button>
-        <p class="rev-note">Solo publicamos reseñas de clientes que nos han comprado (lo comprobamos con el correo de su compra) y las publicamos todas, buenas o malas, salvo insultos o spam. No damos nada a cambio de una reseña.</p>
+        <p class="rev-note">Publicamos las reseñas de clientes y de visitantes que nos dan permiso, todas, buenas o malas, salvo insultos o spam. «Compra verificada» quiere decir que hemos comprobado su compra con el correo con el que pagó; las valoraciones de un producto solo las publicamos si son de quien lo ha comprado. No damos nada a cambio de una reseña.</p>
       </div>
     </div>
   </section>
@@ -1280,7 +1286,7 @@ footer a:hover { color: var(--nightfg); }
     <h4>Quién más puede verlos</h4>
     <p>No los cedemos a nadie salvo obligación legal. Nos ayudan proveedores que los tratan por nuestra cuenta: Instagram (Meta Platforms Ireland) si nos escribes por ahí, Google (Gmail) para el correo y FormSubmit para enviarnos los mensajes del formulario. Si compras, el pago lo gestiona Stripe (Stripe Payments Europe, Ltd., Irlanda): la tarjeta se escribe en la página segura de Stripe y nosotros no la vemos. La web está alojada en Cloudflare (Cloudflare, Inc.). Algunos pueden llevar datos fuera del Espacio Económico Europeo, siempre con las garantías del RGPD (por ejemplo, el Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
     <h4>El formulario de esta web</h4>
-    <p>Si nos dejas una valoración, nos llegan por correo tus estrellas, tu comentario y, si los escribes, tu nombre y tu correo (FormSubmit, como el formulario). El correo solo lo usamos para comprobar que eres cliente. Tu reseña solo se publica, con tu nombre, si eres cliente y marcas la casilla que lo autoriza; puedes pedirnos que la quitemos cuando quieras.</p>
+    <p>Si nos dejas una valoración, nos llegan por correo tus estrellas, tu comentario y, si los escribes, tu nombre y tu correo (FormSubmit, como el formulario). El correo solo lo usamos para comprobar que eres cliente. Tu reseña solo se publica, con tu nombre, si marcas la casilla que lo autoriza; puedes pedirnos que la quitemos cuando quieras.</p>
     <p>Lo que escribes en el formulario nos llega por correo electrónico a través de FormSubmit (formsubmit.co), un servicio que lo envía a nuestro buzón y te manda a ti un correo de confirmación. No lo usamos para nada más que responderte.</p>
     <h4>Tus derechos</h4>
     <p>Puedes pedir el acceso, la rectificación o la supresión de tus datos, oponerte a su uso, limitarlo o pedir su portabilidad escribiendo a kiriaai2026@gmail.com. Si crees que no los tratamos bien, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
@@ -1297,18 +1303,22 @@ footer a:hover { color: var(--nightfg); }
   <form class="lb" id="rateForm" novalidate>
     <div class="rate-in" id="rateIn">
       <p id="rateSub">Tu opinión nos ayuda a mejorar. Te lleva 20 segundos.</p>
-      <fieldset class="stars" id="rateStars"><legend>Tu valoración</legend>
-        <label><input type="radio" name="estrellas" value="1"><span aria-hidden="true">★</span><span class="sr">1 estrella</span></label><label><input type="radio" name="estrellas" value="2"><span aria-hidden="true">★</span><span class="sr">2 estrellas</span></label><label><input type="radio" name="estrellas" value="3"><span aria-hidden="true">★</span><span class="sr">3 estrellas</span></label><label><input type="radio" name="estrellas" value="4"><span aria-hidden="true">★</span><span class="sr">4 estrellas</span></label><label><input type="radio" name="estrellas" value="5"><span aria-hidden="true">★</span><span class="sr">5 estrellas</span></label>
+      <fieldset class="stars" data-k="web"><legend>La web: ¿te ha resultado fácil de usar?</legend>
+        <label><input type="radio" name="web" value="1"><span aria-hidden="true">★</span><span class="sr">1 estrella</span></label><label><input type="radio" name="web" value="2"><span aria-hidden="true">★</span><span class="sr">2 estrellas</span></label><label><input type="radio" name="web" value="3"><span aria-hidden="true">★</span><span class="sr">3 estrellas</span></label><label><input type="radio" name="web" value="4"><span aria-hidden="true">★</span><span class="sr">4 estrellas</span></label><label><input type="radio" name="web" value="5"><span aria-hidden="true">★</span><span class="sr">5 estrellas</span></label>
+      </fieldset>
+      <label for="rateProd">¿Has comprado algo?<select id="rateProd"><option value="">No, todavía no</option><option>Vídeo Básico</option><option>Vídeo Publicidad</option><option>Vídeo Completo</option><option>Vídeo Pro</option><option>Plan mensual de vídeos</option><option>Página web</option></select></label>
+      <fieldset class="stars" data-k="prod" id="rateProdStars" hidden><legend>¿Qué te ha parecido lo que compraste?</legend>
+        <label><input type="radio" name="prod" value="1"><span aria-hidden="true">★</span><span class="sr">1 estrella</span></label><label><input type="radio" name="prod" value="2"><span aria-hidden="true">★</span><span class="sr">2 estrellas</span></label><label><input type="radio" name="prod" value="3"><span aria-hidden="true">★</span><span class="sr">3 estrellas</span></label><label><input type="radio" name="prod" value="4"><span aria-hidden="true">★</span><span class="sr">4 estrellas</span></label><label><input type="radio" name="prod" value="5"><span aria-hidden="true">★</span><span class="sr">5 estrellas</span></label>
       </fieldset>
       <label for="rateTxt">Cuéntanos (opcional)<textarea id="rateTxt" maxlength="600" rows="3" placeholder="¿Qué te ha gustado? ¿Qué mejorarías?"></textarea></label>
       <div class="co-sel">
         <label for="rateName">Tu nombre (opcional)<input id="rateName" autocomplete="given-name" maxlength="60"></label>
         <label for="rateMail">Tu correo (opcional)<input id="rateMail" type="email" autocomplete="email" maxlength="120"></label>
       </div>
-      <label class="chk"><input type="checkbox" id="ratePub"><span>Si soy cliente, podéis publicar mi reseña con mi nombre</span></label>
+      <label class="chk"><input type="checkbox" id="ratePub"><span>Podéis publicar mi reseña con mi nombre</span></label>
       <p class="rate-err" id="rateErr" role="alert" hidden>Elige de 1 a 5 estrellas.</p>
       <div class="rate-btns"><button class="btn dark" type="submit">Enviar valoración</button><button class="btn ghost" type="button" data-close>Ahora no</button></div>
-      <p class="rate-note">Tu correo no se publica: solo sirve para comprobar que eres cliente. Más información en <a href="#privacidad" data-open="privacidad">Privacidad</a>.</p>
+      <p class="rate-note">Tu correo no se publica: solo sirve para comprobar si nos has comprado (entonces tu reseña lleva «Compra verificada»). Más información en <a href="#privacidad" data-open="privacidad">Privacidad</a>.</p>
     </div>
     <div class="rate-ok" id="rateOk" hidden><b>¡Gracias por tu valoración!</b><p id="rateOkTxt">Nos ayuda muchísimo a mejorar.</p></div>
   </form>
@@ -1324,7 +1334,7 @@ footer a:hover { color: var(--nightfg); }
     <p>Hoy esta web no usa cookies de análisis ni de publicidad. Solo guarda en tu navegador lo necesario para que funcione: tu elección sobre cookies, tu carrito y si ya te hemos pedido una valoración.</p>
     <div class="tbl"><table>
       <thead><tr><th>Nombre</th><th>Titular</th><th>Para qué</th><th>Duración</th><th>Tipo</th></tr></thead>
-      <tbody><tr><td>kiria_cookies</td><td>kiria.ai (propia)</td><td>Recordar si aceptas o rechazas las cookies opcionales</td><td>12 meses</td><td>Técnica · almacenamiento local</td></tr><tr><td>kiria_carrito</td><td>kiria.ai (propia)</td><td>Guardar lo que has puesto en el carrito hasta que pagas</td><td>Hasta que pagas o lo vacías</td><td>Técnica · almacenamiento local</td></tr><tr><td>kiria_correo</td><td>kiria.ai (propia)</td><td>Rellenar tu correo al valorar tu compra</td><td>Hasta que borres los datos del navegador</td><td>Técnica · almacenamiento local</td></tr><tr><td>kiria_valora</td><td>kiria.ai (propia)</td><td>No volver a pedirte una valoración durante 60 días</td><td>60 días</td><td>Técnica · almacenamiento local</td></tr></tbody>
+      <tbody><tr><td>kiria_cookies</td><td>kiria.ai (propia)</td><td>Recordar si aceptas o rechazas las cookies opcionales</td><td>12 meses</td><td>Técnica · almacenamiento local</td></tr><tr><td>kiria_carrito</td><td>kiria.ai (propia)</td><td>Guardar lo que has puesto en el carrito hasta que pagas</td><td>Hasta que pagas o lo vacías</td><td>Técnica · almacenamiento local</td></tr><tr><td>kiria_correo, kiria_compra</td><td>kiria.ai (propia)</td><td>Rellenar tu correo y lo que compraste al valorar tu compra</td><td>Hasta que borres los datos del navegador</td><td>Técnica · almacenamiento local</td></tr><tr><td>kiria_valora</td><td>kiria.ai (propia)</td><td>No volver a pedirte una valoración durante 60 días</td><td>60 días</td><td>Técnica · almacenamiento local</td></tr></tbody>
     </table></div>
     <h4>Servicios de terceros</h4>
     <ul>
@@ -2419,7 +2429,7 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     const name = $('coName'), mail = $('coMail'), emp = $('coCompany').value.trim(), nm = name.value.trim(), em = mail.value.trim();
     if (!nm) { name.focus(); return; }
     if (!/^\S+@\S+\.\S+$/.test(em)) { mail.focus(); return; }
-    try { localStorage.setItem('kiria_correo', em); } catch (err) {}
+    try { localStorage.setItem('kiria_correo', em); const l0 = cart[0]; localStorage.setItem('kiria_compra', l0.k === 'w' ? 'Página web' : isPack(l0) ? 'Plan mensual de vídeos' : 'Vídeo ' + KT[l0.t].n); } catch (err) {}
     const tt = totals(), res = cart.map(l => { const x = info(l); return `${x.q > 1 ? x.q + ' × ' : ''}${x.name} (${x.det}): ${eurK(x.each * x.q)} €${x.month ? ' al mes' : ''}`; });
     pedido = `Hola, soy ${nm}${emp ? ' de ' + emp : ''}. Mi pedido:\n- ${res.join('\n- ')}\nHoy: ${eurK(tt.hoy)} €${tt.mes ? ` · después, ${eurK(tt.mes)} € al mes` : ''}. Mi correo: ${em}`;
     pedidoInfo = { subject: `Pedido (${eurK(tt.hoy)} €): ` + cart.map(l => info(l).name).join(' + '), message: pedido, name: nm, email: em };
@@ -2487,46 +2497,61 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
 
 // ---------------------------------------------------------------- valoraciones y reseñas. La ventana «Valóranos» se abre: a los 3 minutos de
 // estar en la web (con la pestaña a la vista; una vez cada 60 días y nunca durante el pago), unos segundos después de pagar (#pagado) y con
-// el enlace kiriaai.com/#valorar, que Javi manda junto a cada vídeo entregado. Las valoraciones le llegan por correo (FormSubmit).
-// RESEÑAS PUBLICADAS: solo las de clientes que han comprado (Javi lo comprueba con el correo de Stripe) y que han marcado la casilla de
-// publicar; se añaden a mano aquí abajo y se publican todas, buenas o malas (salvo insultos o spam). Nunca reseñas inventadas.
+// el enlace kiriaai.com/#valorar, que Javi manda junto a cada vídeo entregado. Cada valoración puntúa la facilidad de uso de la web y, si
+// la persona ha comprado algo, ese producto. Llegan a Javi por correo (FormSubmit).
+// RESEÑAS PUBLICADAS (Javi, 4-11-2026: «que puedan dejar reseñas personas que hagan uso de la web»): de clientes y de visitantes que marcan
+// «publicar», todas, buenas o malas (salvo insultos o spam), añadidas a mano aquí abajo. v: true solo si Javi ha comprobado la compra con el
+// correo de Stripe; la nota del producto (p) solo se muestra si v es true. Nunca reseñas inventadas.
 const KRES = [
-  // { n: 'Nombre', s: 5, t: 'Texto tal cual lo escribió el cliente', f: '2026-11-10', v: true },   // v: compra comprobada
+  // { n: 'Nombre', f: '2026-11-10', w: 5, p: 4, prod: 'Vídeo Publicidad', t: 'Texto tal cual lo escribió', v: true },
 ];
 (() => {
   const dlg = document.getElementById('dlg-valorar'); if (!dlg) return;
   const KEY = 'kiria_valora', $ = id => document.getElementById(id);
-  const form = $('rateForm'), box = $('rateIn'), ok = $('rateOk'), err = $('rateErr'), stars = [...dlg.querySelectorAll('.stars input')];
+  const form = $('rateForm'), box = $('rateIn'), ok = $('rateOk'), err = $('rateErr'), prodSel = $('rateProd'), prodBox = $('rateProdStars');
+  const sets = [...dlg.querySelectorAll('.stars')];
   const TXT = {
     visita: ['¿Qué te parece kiria.ai?', 'Tu opinión nos ayuda a mejorar. Te lleva 20 segundos.'],
     compra: ['¿Qué tal ha sido tu compra?', 'Gracias por confiar en nosotros. ¿Nos dejas tu valoración? Te lleva 20 segundos.'],
     entrega: ['¿Qué te ha parecido tu vídeo?', 'Tu reseña ayuda a otros negocios a decidirse. ¡Gracias!'] };
   let ctx = 'visita';
-  const paint = v => stars.forEach(s => s.parentElement.classList.toggle('on', +s.value <= v));
-  const chosen = () => +(stars.find(s => s.checked) || {}).value || 0;
-  stars.forEach(s => { s.addEventListener('change', () => { paint(+s.value); err.hidden = true; }); s.parentElement.addEventListener('mouseenter', () => paint(+s.value)); });
-  $('rateStars').addEventListener('mouseleave', () => paint(chosen()));
+  const val = k => +((dlg.querySelector(`.stars[data-k="${k}"] input:checked`) || {}).value) || 0;
+  const paint = (fs, v) => fs.querySelectorAll('input').forEach(i => i.parentElement.classList.toggle('on', +i.value <= v));
+  sets.forEach(fs => {
+    fs.querySelectorAll('input').forEach(i => { i.addEventListener('change', () => { paint(fs, +i.value); err.hidden = true; }); i.parentElement.addEventListener('mouseenter', () => paint(fs, +i.value)); });
+    fs.addEventListener('mouseleave', () => paint(fs, val(fs.dataset.k)));
+  });
+  const syncProd = () => { prodBox.hidden = !prodSel.value; err.hidden = true; };
+  prodSel.addEventListener('change', syncProd);
   const mark = () => { try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {} };
   const seen = () => { try { return Date.now() - (+localStorage.getItem(KEY) || 0) < 60 * 864e5; } catch (e) { return true; } };
   const prep = c => {
     ctx = TXT[c] ? c : 'visita'; $('t-valorar').textContent = TXT[ctx][0]; $('rateSub').textContent = TXT[ctx][1];
-    if (!ok.hidden) { form.reset(); paint(0); } box.hidden = false; ok.hidden = true; err.hidden = true;
-    try { const m = localStorage.getItem('kiria_correo'); if (m && !$('rateMail').value) $('rateMail').value = m; } catch (e) {}
-    mark();
+    if (!ok.hidden) { form.reset(); sets.forEach(fs => paint(fs, 0)); } box.hidden = false; ok.hidden = true; err.hidden = true;
+    try {
+      const m = localStorage.getItem('kiria_correo'); if (m && !$('rateMail').value) $('rateMail').value = m;
+      const q = localStorage.getItem('kiria_compra'); if (ctx !== 'visita' && q && !prodSel.value && [...prodSel.options].some(o => o.value === q)) prodSel.value = q;
+    } catch (e) {}
+    syncProd(); mark();
   };
   window.kiriaRate = c => { prep(c); if (window.kiriaOpen) window.kiriaOpen('valorar'); };
   document.querySelectorAll('[data-open="valorar"]').forEach(b => b.addEventListener('click', () => prep(b.closest('#paid') ? 'compra' : 'visita')));
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const v = chosen(); if (!v) { err.hidden = false; return; }
+    const w = val('web'), pr = prodSel.value, pv = pr ? val('prod') : 0;
+    if (pr && !pv) { err.textContent = 'Valora también lo que compraste (de 1 a 5 estrellas) o elige «No, todavía no».'; err.hidden = false; return; }
+    if (!w && !pv) { err.textContent = 'Elige de 1 a 5 estrellas.'; err.hidden = false; return; }
     const nm = $('rateName').value.trim(), em = $('rateMail').value.trim(), tx = $('rateTxt').value.trim(), pub = $('ratePub').checked;
     const quien = nm || 'Sin nombre', cuando = { visita: 'visitante de la web', compra: 'después de pagar', entrega: 'vídeo entregado' }[ctx];
+    const st = n => n ? '★'.repeat(n) + '☆'.repeat(5 - n) + ` (${n} de 5)` : '(sin valorar)';
     if (!KPREVIEW) try {
       fetch('https://formsubmit.co/ajax/' + KMAIL, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ estrellas: '★'.repeat(v) + '☆'.repeat(5 - v) + ` (${v} de 5)`, comentario: tx || '(sin comentario)', nombre: quien, email: em || '(no lo ha dado)',
-          publicar: pub ? 'Sí, con su nombre (si es cliente)' : 'No', momento: cuando, _subject: `⭐ ${v}/5 · Valoración de ${quien} (${cuando})`, _template: 'table' }) }).catch(() => {});
+        body: JSON.stringify({ web_facilidad_de_uso: st(w), producto: pr || 'No ha comprado', valoracion_del_producto: pr ? st(pv) : '—', comentario: tx || '(sin comentario)',
+          nombre: quien, email: em || '(no lo ha dado)', publicar: pub ? 'Sí, con su nombre' : 'No', momento: cuando,
+          _subject: `⭐ ${[w ? 'Web ' + w + '/5' : '', pv ? pr + ' ' + pv + '/5' : ''].filter(Boolean).join(' · ')} · Valoración de ${quien}`, _template: 'table' }) }).catch(() => {});
     } catch (e2) {}
-    $('rateOkTxt').textContent = KPREVIEW ? 'Desde esta vista previa no se envía: en kiriaai.com sí nos llega.' : v >= 4 ? 'Nos alegra muchísimo. ¡Nos ayuda a crecer!' : 'Gracias por decírnoslo: lo tendremos en cuenta para mejorar.';
+    const low = Math.min(...[w, pv].filter(Boolean));
+    $('rateOkTxt').textContent = KPREVIEW ? 'Desde esta vista previa no se envía: en kiriaai.com sí nos llega.' : low >= 4 ? 'Nos alegra muchísimo. ¡Nos ayuda a crecer!' : 'Gracias por decírnoslo: lo tendremos en cuenta para mejorar.';
     box.hidden = true; ok.hidden = false; mark();
     setTimeout(() => { if (dlg.open && !ok.hidden) dlg.close(); }, 2600);
   });
@@ -2542,17 +2567,19 @@ const KRES = [
   }
   if (location.hash === '#valorar') setTimeout(() => window.kiriaRate('entrega'), 500);
   addEventListener('hashchange', () => { if (location.hash === '#valorar') window.kiriaRate('entrega'); });
-  // reseñas publicadas (KRES)
+  // reseñas publicadas (KRES): medias de producto (solo compras verificadas) y de facilidad de uso de la web
   const list = $('revList'), sum = $('revSum'), empty = $('revEmpty');
   const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const fecha = f => { const d = new Date(f + 'T12:00:00'); return isNaN(d) ? '' : d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); };
-  const est = n => '★'.repeat(n) + '☆'.repeat(5 - n);
-  const R = KRES.filter(r => r && r.n && r.t && r.s >= 1 && r.s <= 5);
+  const est = n => '★'.repeat(n) + '☆'.repeat(5 - n), ok5 = n => Number.isInteger(n) && n >= 1 && n <= 5;
+  const R = KRES.filter(r => r && r.n && (ok5(r.w) || (r.v && ok5(r.p))));
+  const media = (label, a) => { if (!a.length) return ''; const m = a.reduce((x, y) => x + y, 0) / a.length;
+    return `<div class="avg"><b>${m.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</b><span class="st" aria-hidden="true">${est(Math.min(5, Math.floor(m + 0.25)))}</span><small>${label} · ${a.length} ${a.length === 1 ? 'valoración' : 'valoraciones'}</small></div>`; };
   if (R.length) {
-    const avg = R.reduce((a, r) => a + r.s, 0) / R.length;
     sum.hidden = false;
-    sum.innerHTML = `<b>${avg.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</b><span class="st" aria-hidden="true">${est(Math.min(5, Math.floor(avg + 0.25)))}</span><span>${R.length} ${R.length === 1 ? 'reseña' : 'reseñas'}</span>`;
-    list.innerHTML = R.map(r => `<article class="rev"><p class="st" aria-label="${r.s} de 5 estrellas">${est(r.s)}</p><p class="rt">${esc(r.t)}</p><p class="rn"><b>${esc(r.n)}</b>${r.v ? '<span class="ver">✓ Compra verificada</span>' : ''}<span>${fecha(r.f)}</span></p></article>`).join('');
+    sum.innerHTML = media('Productos (compras verificadas)', R.filter(r => r.v && ok5(r.p)).map(r => r.p)) + media('Facilidad de uso de la web', R.filter(r => ok5(r.w)).map(r => r.w));
+    list.innerHTML = R.map(r => `<article class="rev"><div class="rr">${r.v && ok5(r.p) ? `<span><b class="st" aria-label="${r.p} de 5">${est(r.p)}</b>${esc(r.prod || 'Producto')}</span>` : ''}${ok5(r.w) ? `<span><b class="st" aria-label="${r.w} de 5">${est(r.w)}</b>Facilidad de uso de la web</span>` : ''}</div>`
+      + (r.t ? `<p class="rt">${esc(r.t)}</p>` : '') + `<p class="rn"><b>${esc(r.n)}</b>${r.v ? '<span class="ver">✓ Compra verificada</span>' : '<span class="visit">Visitante de la web</span>'}<span>${fecha(r.f)}</span></p></article>`).join('');
   } else empty.hidden = false;
 })();
 
