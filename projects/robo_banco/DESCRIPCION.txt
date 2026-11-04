@@ -11,6 +11,8 @@ DESCRIPCIÓN (Instagram):
 
 Es el mayor robo a un banco de la historia de Brasil, y la mayor parte del dinero sigue sin aparecer (se ha recuperado en torno al 15–18 %).
 
+📝 Para ser exactos: las cámaras de la cámara acorazada no grababan (solo daban imagen en directo) y los sensores, según la prensa de la época, estaban apagados por unas obras. Y cómo perforaron el suelo no está del todo claro: la policía habló al principio de soplete y sierra eléctrica.
+
 👇 ¿Dónde crees que está el dinero?
 
 📚 Fuentes: Diário do Nordeste y O Povo (reportajes de los 15 y 20 años del caso), AP y AFP (agosto de 2005), MercoPress, Infobae.
@@ -27,9 +29,9 @@ VERSIÓN CORTA (TikTok):
 ---
 
 NOTAS DE ENTREGA:
-- Voz: Danny (ElevenLabs, eleven_v4, estabilidad 0,50, similitud 0,75: los ajustes de la toma de Javi), generada aquí con engine/tts.py
-  a partir del guion aprobado por Javi (4-11-2026); ajustada a ×1,08.
+- Voz: la de Javi (toma del 4-11-2026, assets/voz_original.mp3), recortada y ajustada a ×1,09 con ajustar_voz.py; vídeo final de 62 s
+  (out/robo_banco.mp4, render repartido render-robo2, −15,2 LUFS).
 - Maqueta en corte: la avenida va acortada; las medidas reales salen en los rótulos (78 m, 4 m, 1,10 m, 75 cm).
-- CONFIRMAR antes de publicar (ver FUENTES.md): el grosor del suelo y las herramientas (las fuentes dan 1 m–1,10 m y martillos/discos
-  de diamante o soplete y sierra), «las cámaras y los sensores no funcionaban» (AP 2005) y «enfrente del banco» (AFP 2005).
+- Comprobado el 4-11 (búsquedas; las webs originales no abren desde la sesión): grosor ≈ 1,1 m OK; «enfrente» solo lo dice AFP (otras: a una
+  manzana); las herramientas no se confirman y las cámaras no grababan (no es que no funcionaran) → aclarado en «Para ser exactos».
 - «RECUPERADO ≈ R$ 25 M»: O Povo, 2020 (R$ 24,9 M recuperados por el Banco Central).
