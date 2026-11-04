@@ -1,0 +1,26 @@
+«TU PRODUCTO, EN 3D» · lanzamiento 2 de kiriaai.com · 23 s · viernes 6 a las 10:00 · SIN PRECIOS
+
+DESCRIPCIÓN (Instagram):
+📸 Esto no es una foto. Es tu producto… en 3D.
+
+Subes una foto y lo ves en caja, en bolsa, en tarro, en botella, en lata o en taza.
+🛒 En tu web, tus clientes lo giran con el dedo antes de comprarlo.
+📱 Y en tus redes, lo enseñas en vídeo.
+
+🗓️ El domingo podrás probarlo con el tuyo.
+
+👇 Comenta KIRIA y te paso el enlace por privado.
+
+#producto3d #tiendaonline #emprendedores #pymes #packaging #ecommerce #marketingdigital #kiriaai
+
+---
+
+VERSIÓN CORTA (TikTok / historia):
+📸 Esto no es una foto: es tu producto en 3D. El domingo podrás probarlo con el tuyo. Comenta KIRIA 👇
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: Danny (ElevenLabs, eleven_v4, estabilidad 0,50, similitud 0,75), generada con engine/tts.py; ajustada a ×1,04 (20 s de voz, 23 s con el final).
+- Lo que se ve es lo que hace la web (ver FUENTES.md). La foto de las fresas, «TU MARCA» y la tienda «tumarca.es» son EJEMPLOS.
+- Efectos: los de ElevenLabs del lanzamiento 1 (projects/lanzamiento/assets/sfx).

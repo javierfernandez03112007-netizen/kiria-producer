@@ -1,0 +1,374 @@
+[
+ {
+  "text": "Esto no es una foto.",
+  "start": 0.0,
+  "end": 1.269,
+  "words": [
+   {
+    "w": "Esto",
+    "start": 0.0,
+    "end": 0.385
+   },
+   {
+    "w": "no",
+    "start": 0.385,
+    "end": 0.538
+   },
+   {
+    "w": "es",
+    "start": 0.538,
+    "end": 0.692
+   },
+   {
+    "w": "una",
+    "start": 0.692,
+    "end": 0.846
+   },
+   {
+    "w": "foto.",
+    "start": 0.846,
+    "end": 1.269
+   }
+  ]
+ },
+ {
+  "text": "Es tu producto… en 3D.",
+  "start": 1.615,
+  "end": 3.462,
+  "words": [
+   {
+    "w": "Es",
+    "start": 1.615,
+    "end": 1.712
+   },
+   {
+    "w": "tu",
+    "start": 1.712,
+    "end": 1.865
+   },
+   {
+    "w": "producto…",
+    "start": 1.865,
+    "end": 2.779
+   },
+   {
+    "w": "en",
+    "start": 2.779,
+    "end": 2.971
+   },
+   {
+    "w": "3D.",
+    "start": 2.971,
+    "end": 3.462
+   }
+  ]
+ },
+ {
+  "text": "Subes una foto y lo ves en caja, en bolsa, en tarro, en botella, en lata… o en taza.",
+  "start": 3.76,
+  "end": 9.558,
+  "words": [
+   {
+    "w": "Subes",
+    "start": 3.76,
+    "end": 4.067
+   },
+   {
+    "w": "una",
+    "start": 4.067,
+    "end": 4.221
+   },
+   {
+    "w": "foto",
+    "start": 4.221,
+    "end": 4.606
+   },
+   {
+    "w": "y",
+    "start": 4.606,
+    "end": 4.721
+   },
+   {
+    "w": "lo",
+    "start": 4.721,
+    "end": 4.837
+   },
+   {
+    "w": "ves",
+    "start": 4.837,
+    "end": 5.067
+   },
+   {
+    "w": "en",
+    "start": 5.067,
+    "end": 5.221
+   },
+   {
+    "w": "caja,",
+    "start": 5.221,
+    "end": 5.837
+   },
+   {
+    "w": "en",
+    "start": 5.837,
+    "end": 5.99
+   },
+   {
+    "w": "bolsa,",
+    "start": 5.99,
+    "end": 6.606
+   },
+   {
+    "w": "en",
+    "start": 6.606,
+    "end": 6.76
+   },
+   {
+    "w": "tarro,",
+    "start": 6.76,
+    "end": 7.337
+   },
+   {
+    "w": "en",
+    "start": 7.337,
+    "end": 7.452
+   },
+   {
+    "w": "botella,",
+    "start": 7.452,
+    "end": 8.173
+   },
+   {
+    "w": "en",
+    "start": 8.173,
+    "end": 8.327
+   },
+   {
+    "w": "lata…",
+    "start": 8.327,
+    "end": 9.029
+   },
+   {
+    "w": "o",
+    "start": 9.029,
+    "end": 9.106
+   },
+   {
+    "w": "en",
+    "start": 9.106,
+    "end": 9.221
+   },
+   {
+    "w": "taza.",
+    "start": 9.221,
+    "end": 9.558
+   }
+  ]
+ },
+ {
+  "text": "En tu web, tus clientes lo giran con el dedo antes de comprarlo. Y en tus redes, lo enseñas en vídeo.",
+  "start": 9.856,
+  "end": 15.0,
+  "words": [
+   {
+    "w": "En",
+    "start": 9.856,
+    "end": 10.01
+   },
+   {
+    "w": "tu",
+    "start": 10.01,
+    "end": 10.163
+   },
+   {
+    "w": "web,",
+    "start": 10.163,
+    "end": 10.577
+   },
+   {
+    "w": "tus",
+    "start": 10.577,
+    "end": 10.76
+   },
+   {
+    "w": "clientes",
+    "start": 10.76,
+    "end": 11.183
+   },
+   {
+    "w": "lo",
+    "start": 11.183,
+    "end": 11.298
+   },
+   {
+    "w": "giran",
+    "start": 11.298,
+    "end": 11.606
+   },
+   {
+    "w": "con",
+    "start": 11.606,
+    "end": 11.721
+   },
+   {
+    "w": "el",
+    "start": 11.721,
+    "end": 11.837
+   },
+   {
+    "w": "dedo",
+    "start": 11.837,
+    "end": 12.183
+   },
+   {
+    "w": "antes",
+    "start": 12.183,
+    "end": 12.375
+   },
+   {
+    "w": "de",
+    "start": 12.375,
+    "end": 12.452
+   },
+   {
+    "w": "comprarlo.",
+    "start": 12.452,
+    "end": 13.135
+   },
+   {
+    "w": "Y",
+    "start": 13.135,
+    "end": 13.202
+   },
+   {
+    "w": "en",
+    "start": 13.202,
+    "end": 13.317
+   },
+   {
+    "w": "tus",
+    "start": 13.317,
+    "end": 13.471
+   },
+   {
+    "w": "redes,",
+    "start": 13.471,
+    "end": 14.01
+   },
+   {
+    "w": "lo",
+    "start": 14.01,
+    "end": 14.202
+   },
+   {
+    "w": "enseñas",
+    "start": 14.202,
+    "end": 14.587
+   },
+   {
+    "w": "en",
+    "start": 14.587,
+    "end": 14.702
+   },
+   {
+    "w": "vídeo.",
+    "start": 14.702,
+    "end": 15.0
+   }
+  ]
+ },
+ {
+  "text": "El domingo podrás probarlo con el tuyo.",
+  "start": 15.288,
+  "end": 17.096,
+  "words": [
+   {
+    "w": "El",
+    "start": 15.288,
+    "end": 15.423
+   },
+   {
+    "w": "domingo",
+    "start": 15.423,
+    "end": 15.808
+   },
+   {
+    "w": "podrás",
+    "start": 15.808,
+    "end": 16.154
+   },
+   {
+    "w": "probarlo",
+    "start": 16.154,
+    "end": 16.577
+   },
+   {
+    "w": "con",
+    "start": 16.577,
+    "end": 16.692
+   },
+   {
+    "w": "el",
+    "start": 16.692,
+    "end": 16.808
+   },
+   {
+    "w": "tuyo.",
+    "start": 16.808,
+    "end": 17.096
+   }
+  ]
+ },
+ {
+  "text": "Comenta KIRIA y te paso el enlace por privado.",
+  "start": 17.402,
+  "end": 19.695,
+  "words": [
+   {
+    "w": "Comenta",
+    "start": 17.402,
+    "end": 17.773
+   },
+   {
+    "w": "KIRIA",
+    "start": 17.773,
+    "end": 18.154
+   },
+   {
+    "w": "y",
+    "start": 18.154,
+    "end": 18.268
+   },
+   {
+    "w": "te",
+    "start": 18.268,
+    "end": 18.382
+   },
+   {
+    "w": "paso",
+    "start": 18.382,
+    "end": 18.648
+   },
+   {
+    "w": "el",
+    "start": 18.648,
+    "end": 18.763
+   },
+   {
+    "w": "enlace",
+    "start": 18.763,
+    "end": 19.143
+   },
+   {
+    "w": "por",
+    "start": 19.143,
+    "end": 19.295
+   },
+   {
+    "w": "privado.",
+    "start": 19.295,
+    "end": 19.695
+   }
+  ]
+ }
+]
