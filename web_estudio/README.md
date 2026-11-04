@@ -38,6 +38,12 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   iguales que la web en las 34 combinaciones) y carrito con Playwright. Portal de clientes de Stripe (bajas y tarjeta; Javi lo comprobó:
   pide el correo y manda un enlace de acceso): https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00 → «Mi suscripción» al pie,
   en el carrito y en el aviso de pago. Falta: las condiciones de suscripción en las condiciones de compra.
+- **Valoraciones y reseñas (4-11-2026, Javi)**: ventana «Valóranos» (1–5 estrellas, comentario, nombre y correo opcionales, casilla de
+  publicar) a los 3 min en la web (una vez cada 60 días; nunca durante el pago ni con otra ventana o el aviso de cookies abiertos), a los
+  3,5 s de volver de pagar (#pagado, con el correo de la compra ya puesto) y con **kiriaai.com/#valorar** (Javi lo manda con cada vídeo
+  entregado). Llegan a kiriaai2026@gmail.com por FormSubmit («⭐ 4/5 · Valoración de…»). Sección «Reseñas de clientes» al final de
+  <main>: lee `KRES` en index.html (a mano, `{ n, s, t, f, v }`); vacía → «Todavía no hay reseñas». **Solo reseñas reales de clientes
+  que lo autorizan, todas, buenas o malas**, con la nota de cómo se comprueban (obligatoria: Directiva Ómnibus / TRLGDCU). Nunca inventar.
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
