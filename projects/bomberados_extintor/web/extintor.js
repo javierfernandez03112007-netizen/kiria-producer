@@ -526,8 +526,8 @@ function buildLab() {
   }, { aniso: 2 });
   tape = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 2.1 * 128 / 4200), new THREE.MeshStandardMaterial({ map: tapeTex, roughness: 0.4 }));
   tape.geometry.translate(1.05, 0, 0); tape.rotation.x = -Math.PI / 2 + 0.35; tape.position.set(-1.05, 0.27, 0.36); lab.add(tape);
-  title21 = titleMesh([['21A', 330, 'Impact', 'fire']], 1.15, { h: 400 }); lab.add(title21);
-  cap21 = titleMesh([['= 2,10 m DE MADERA', 120, 'Bebas', '#ffffff']], 0.95, { h: 180, hdr: 1.1 }); lab.add(cap21);
+  title21 = titleMesh([['21A', 330, 'Impact', 'fire']], 1.35, { h: 400 }); lab.add(title21);
+  cap21 = titleMesh([['= 2,10 m DE MADERA', 120, 'Bebas', '#ffffff']], 1.3, { h: 180, hdr: 1.1, plate: true }); lab.add(cap21);
   // bandeja del ensayo 113B: 113 litros (2/3 heptano + 1/3 agua)
   const TR = V(4.3, 0, -0.5);
   const wall = new THREE.Mesh(new THREE.CylinderGeometry(1.065, 1.065, 0.2, 96, 1, true), new THREE.MeshStandardMaterial({ color: 0x3d4148, metalness: 0.8, roughness: 0.5, side: THREE.DoubleSide }));
@@ -539,15 +539,15 @@ function buildLab() {
     { seed: 77, disc: true, extent: [0.95, 0.05, 0.95], smokeN: 30, smokeSize: 0.75, smokeY: 2.3, emberN: 60, bright: 0.85 });
   trayLight = new THREE.PointLight(0xff6a20, 9, 0, 2); trayLight.position.set(TR.x, 1.4, TR.z + 0.6); lab.add(trayLight);
   // probeta a escala real con 113 litros: radio 0,18 m y 1,11 m de alto (⅓ agua abajo, ⅔ heptano arriba)
-  gauge = new THREE.Group(); gauge.position.set(2.98, 0, 1.6);
+  gauge = new THREE.Group(); gauge.position.set(3.3, 0, 1.75);
   const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.185, 0.185, 1.16, 64, 1, true), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.05, transparent: true, opacity: 0.16, side: THREE.DoubleSide, clearcoat: 1, depthWrite: false }));
   glass.position.y = 0.58; gauge.add(glass);
   water = new THREE.Mesh(new THREE.CylinderGeometry(0.178, 0.178, 1, 64), new THREE.MeshPhysicalMaterial({ color: 0x2a78e0, roughness: 0.05, clearcoat: 1, emissive: 0x0a3070, emissiveIntensity: 0.8, transparent: true, opacity: 0.88 }));
   hept = new THREE.Mesh(new THREE.CylinderGeometry(0.178, 0.178, 1, 64), new THREE.MeshPhysicalMaterial({ color: 0xf2a51e, roughness: 0.05, clearcoat: 1, emissive: 0x8a4a00, emissiveIntensity: 0.9, transparent: true, opacity: 0.86 }));
   gauge.add(water, hept); lab.add(gauge);
-  title113 = titleMesh([['113 L', 250, 'Impact', 'fire'], ['⅔ HEPTANO + ⅓ AGUA', 112, 'Bebas', '#ffffff']], 0.62, { h: 470, plate: true, y0: 30 }); lab.add(title113);
+  title113 = titleMesh([['113 L', 250, 'Impact', 'fire'], ['⅔ HEPTANO + ⅓ AGUA', 112, 'Bebas', '#ffffff']], 0.95, { h: 470, plate: true, y0: 30 }); lab.add(title113);
   capL = titleMesh([[' ', 10, 'Bebas', '#ffffff']], 0.1, { h: 20 }); lab.add(capL);
-  title113B = titleMesh([['113B', 330, 'Impact', 'fire']], 1.25, { h: 400 }); lab.add(title113B);
+  title113B = titleMesh([['113B', 330, 'Impact', 'fire']], 1.6, { h: 400 }); lab.add(title113B);
   // más número → más fuego: un extintor delante de un fuego que crece
   rateExt = makeExtinguisher('21A-113B', '6 KG', { small: true }); rateExt.position.set(-7, 0, 0.7); rateExt.rotation.y = 0.25; lab.add(rateExt);
   const RF = V(-7, 0.02, -1.3);
@@ -555,7 +555,7 @@ function buildLab() {
     { seed: 91, extent: [0.95, 0.05, 0.3], smokeN: 24, smokeSize: 0.6, smokeY: 1.5, emberN: 50, bright: 0.95 });
   rateFire.F.mesh.position.set(RF.x, RF.y, RF.z);
   rateLight = new THREE.PointLight(0xff6a20, 5, 0, 2); rateLight.position.set(-7, 1.0, -0.6); lab.add(rateLight);
-  for (const r of ['8A-34B', '13A-89B', '21A-113B', '34A-183B', '43A-233B']) { const m = titleMesh([[r, 260, 'Impact', 'fire']], 1.1, { h: 330 }); rateTitles.push(m); lab.add(m); }
+  for (const r of ['8A-34B', '13A-89B', '21A-113B', '34A-183B', '43A-233B']) { const m = titleMesh([[r, 260, 'Impact', 'fire']], 1.5, { h: 330 }); rateTitles.push(m); lab.add(m); }
 }
 
 // ------------------------------------------------------------------ tiempos
@@ -580,22 +580,22 @@ function blend(a, b, k) { return { p: a.p.clone().lerp(b.p, k), q: a.q.clone().s
 function heroPt(x, y, z) { return hero.localToWorld(V(x, y, z)); }
 const C0 = V(0.1, 0.46, 0.18);
 function camHook(t) {
-  const k = e3(pr(t, 0, T.w1 + 0.15)), az = mx(-0.55, 0.5, k), r = mx(2.35, 2.0, k), y = mx(0.95, 0.62, k);
-  return pose(V(C0.x + Math.sin(az) * r, y, C0.z + Math.cos(az) * r), V(C0.x + 0.02, mx(0.46, 0.5, k), C0.z), 30, null, 1.3);
+  const k = e3(pr(t, 0, T.w1 + 0.15)), az = mx(-0.55, 0.5, k), r = mx(3.4, 2.9, k), y = mx(1.25, 0.88, k);
+  return pose(V(C0.x + Math.sin(az) * r, y, C0.z + Math.cos(az) * r), V(C0.x + 0.02, mx(0.5, 0.52, k), C0.z), 30, null, 0.9);
 }
 function camMacro(t) {
-  const k = e3(pr(t, T.macro, T.out + 0.25 - T.macro)), kc = e3(pr(t, T.macro, T.codigo + 0.1 - T.macro)), a = mx(-0.36, 0.04, kc) + 0.06 * k, d = mx(0.2, 0.45, kc) + 0.03 * k;
+  const k = e3(pr(t, T.macro, T.out + 0.25 - T.macro)), kc = e3(pr(t, T.macro, T.codigo + 0.1 - T.macro)), a = mx(-0.3, 0.03, kc) + 0.05 * k, d = mx(0.33, 0.64, kc) + 0.05 * k;
   const p = heroPt(Math.sin(a) * (ER + d), CODE_Y + 0.003, Math.cos(a) * (ER + d));
   const q = heroPt(Math.sin(a) * ER * 0.3, CODE_Y, Math.cos(a) * ER * 0.3);
   return pose(p, q, 26, d + 0.004, 7);
 }
-const CARD_Y = HERO_POS.y + 0.36, CARD_Z = 0.6;
+const CARD_Y = 0.765, CARD_Z = 1.72;
 function camCards(t) {
-  const k = e3(pr(t, T.out, T.esla - T.out)), p = V(mx(0.12, 0.04, k), mx(0.64, 0.62, k), mx(1.58, 1.47, k));
-  return pose(p, V(0.02, 0.6, 0), 30, p.z - CARD_Z, 2.2);
+  const k = e3(pr(t, T.out, T.esla - T.out)), p = V(mx(0.12, 0.06, k), mx(0.69, 0.68, k), mx(2.72, 2.6, k));
+  return pose(p, V(0.04, 0.62, 0), 30, p.z - CARD_Z, 0.8);
 }
 function camThrough(t) {
-  const a = V(0.06, CARD_Y, CARD_Z), k = e5(pr(t, T.esla + 0.18, T.lab - T.esla - 0.18));
+  const a = V(0.085, CARD_Y, CARD_Z), k = e5(pr(t, T.esla + 0.18, T.lab - T.esla - 0.18));
   return blend(camCards(T.esla + 0.18), pose(V(a.x, a.y, a.z + 0.04), V(a.x, a.y, a.z - 1), 30, 0.04, 0.5), k);
 }
 function hermite(keys, t) {       // keys: [[t, [valores...]], ...] → valores en t (C1, sin pasarse: tangentes de Fritsch–Carlson)
@@ -621,25 +621,25 @@ function hermite(keys, t) {       // keys: [[t, [valores...]], ...] → valores 
 }
 function labKeys() {
   const K = [
-    [T.lab, [-2.4, 2.6, 3.4, 0, 0.8, 0, 32]],
-    [T.apago - 0.3, [-1.7, 1.5, 2.75, 0.0, 0.7, 0, 32]],
-    [T.apago + 0.9, [-1.15, 0.85, 2.0, 0.15, 0.6, 0, 32]],
-    [T.dos - 0.1, [-0.6, 0.66, 1.55, -0.2, 0.46, 0, 32]],
-    [T.a21 - 0.25, [0.7, 0.7, 1.5, 0.9, 0.5, 0, 32]],
-    [T.a21 + 0.35, [0.35, 1.05, 2.75, 0.25, 0.78, 0, 33]],
-    [T.w2, [0.25, 1.15, 3.05, 0.2, 0.82, 0, 34]],
-    [T.w2 + 0.42, [1.45, 1.75, 4.4, 3.85, 0.95, -0.3, 34]],
-    [T.w3, [2.05, 1.5, 4.7, 3.95, 1.05, -0.2, 34]],
-    [T.w3 + 0.42, [-7.15, 0.95, 3.3, -7.0, 0.75, -0.3, 34]],
-    [T.fin, [-7.05, 1.15, 4.4, -7.0, 0.95, -0.5, 34]],
+    [T.lab, [-4.4, 3.0, 4.6, 0.1, 0.75, 0, 34]],
+    [T.apago - 0.3, [-3.5, 2.0, 3.8, 0.1, 0.7, 0, 34]],
+    [T.apago + 0.9, [-2.75, 1.4, 3.15, 0.15, 0.6, 0, 34]],
+    [T.dos - 0.1, [-2.5, 1.2, 2.75, -0.1, 0.45, 0.1, 34]],
+    [T.a21 - 0.25, [-1.3, 1.15, 3.2, 0.55, 0.45, 0.1, 34]],
+    [T.a21 + 0.35, [-0.9, 1.75, 4.9, 0.25, 0.85, 0, 34]],
+    [T.w2, [-0.6, 1.8, 5.1, 0.3, 0.9, 0, 34]],
+    [T.w2 + 0.42, [1.15, 2.5, 6.7, 3.95, 0.85, -0.3, 34]],
+    [T.w3, [1.75, 2.2, 7.1, 4.05, 0.95, -0.2, 34]],
+    [T.w3 + 0.42, [-7.2, 1.3, 4.9, -7.0, 0.85, -0.3, 34]],
+    [T.fin, [-7.05, 1.5, 6.0, -7.0, 1.05, -0.5, 34]],
   ];
   for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 0.2);
   return K;
 }
 const LABP = (v) => pose(V(v[0], v[1], v[2]).add(LAB), V(v[3], v[4], v[5]).add(LAB), v[6], null, 0);
 function camEnd(t) {
-  const k = pr(t, T.fin, T.end - T.fin), az = mx(0.55, -0.1, e3(k)), r = mx(1.85, 1.6, k);
-  return pose(V(Math.sin(az) * r, 0.7, Math.cos(az) * r), V(0.05, 0.6, 0), 30, 0.55, 2.6);
+  const k = pr(t, T.fin, T.end - T.fin), az = mx(0.55, -0.1, e3(k)), r = mx(3.0, 2.7, k);
+  return pose(V(Math.sin(az) * r, 0.85, Math.cos(az) * r), V(0.05, 0.6, 0), 30, 0.8, 0.7);
 }
 function camAt(t) {
   if (t < T.w1) return camHook(t);
@@ -683,7 +683,7 @@ function update(t) {
     cards.forEach((m, i) => {
       const k = bk(pr(t, T.cardsIn + i * 0.11, 0.55));
       const tick = t > T.count0 && t < T.count1 ? Math.pow(1 - ((t - T.count0) % 1), 6) * 0.02 : 0;
-      m.position.set(0.06 + (1 - k) * 0.5, CARD_Y - i * 0.066 + 0.003 * Math.sin(t * 1.7 + i), CARD_Z); m.rotation.set(0, -(1 - k) * 0.9 + 0.035 * Math.sin(t * 0.9 + i), 0);
+      m.position.set(0.085 + (1 - k) * 0.5, CARD_Y - i * 0.066 + 0.003 * Math.sin(t * 1.7 + i), CARD_Z); m.rotation.set(0, -(1 - k) * 0.9 + 0.035 * Math.sin(t * 0.9 + i), 0);
       m.scale.setScalar(1 + tick);
       const right = i === 0, kr = pr(t, T.esla, 0.25);
       m.material.map = right && kr > 0 ? m.userData.tOk : m.userData.tN;
@@ -716,8 +716,8 @@ function update(t) {
     tape.visible = tk > 0; tape.scale.x = Math.max(0.001, tk); tapeTex.repeat.x = Math.max(0.001, tk);
     const a21 = pr(t, T.a21 - 0.08, 0.45);
     const off21 = 1 - sm(T.w2 + 0.1, T.w2 + 0.35, t);
-    showTitle(title21, eO(a21) * off21, LP(0.25, 1.12 + 0.06 * eO(a21), 0.3), mx(0.7, 1, bk(a21)));
-    showTitle(cap21, eO(pr(t, T.a21 + 0.12, 0.4)) * off21, LP(0.25, 0.95, 0.35));
+    showTitle(title21, eO(a21) * off21, LP(0.2, 1.42 + 0.06 * eO(a21), 0.3), mx(0.7, 1, bk(a21)));
+    showTitle(cap21, eO(pr(t, T.a21 + 0.12, 0.4)) * off21, LP(0.2, 1.12, 0.4));
     trayFire.F.u.uTime.value = t + 60; trayFire.s.u.uTime.value = t + 60; trayFire.e.u.uTime.value = t + 60;
     trayLight.intensity = 8.5 + 2.5 * Math.sin(t * 19) * Math.sin(t * 6.1);
     const gk = pr(t, T.litros - 0.2, 0.9), wk = e3(cl(gk / 0.4)), hk = e3(cl((gk - 0.35) / 0.65)), HW = 0.37, HH = 0.74;
@@ -725,9 +725,9 @@ function update(t) {
     hept.scale.y = Math.max(0.001, HH * hk); hept.position.y = 0.02 + HW * wk + hept.scale.y / 2; hept.visible = hk > 0;
     const tl = pr(t, T.litros + 0.25, 0.4);
     const off113 = 1 - sm(T.w3 + 0.1, T.w3 + 0.35, t);
-    showTitle(title113, eO(tl) * off113, LP(3.08, 1.45 + 0.04 * eO(tl), 1.62));
+    showTitle(title113, eO(tl) * off113, LP(3.35, 1.55 + 0.04 * eO(tl), 1.78));
     const tb = pr(t, T.b113 - 0.08, 0.45);
-    showTitle(title113B, eO(tb) * off113, LP(3.95, 1.78 + 0.08 * eO(tb), -0.1), mx(0.7, 1, bk(tb)));
+    showTitle(title113B, eO(tb) * off113, LP(3.95, 2.05 + 0.08 * eO(tb), -0.1), mx(0.7, 1, bk(tb)));
     const steps = [T.cuanto - 0.1, T.cuanto + 0.35, (T.numero ?? T.cuanto + 0.8) - 0.05, T.fuego - 0.2, T.fuego + 0.25];
     let si = 0; for (let i = 0; i < steps.length; i++) if (t >= steps[i]) si = i;
     const NUM = [8, 13, 21, 34, 43], since = t - steps[si];
@@ -737,7 +737,7 @@ function update(t) {
     rateLight.intensity = 3 * grow + 1.2 * Math.sin(t * 21);
     rateTitles.forEach((m, i) => {
       const on = i === si && t > T.cuanto - 0.15;
-      showTitle(m, on ? cl(since / 0.12) : 0, LP(-7.0, 1.12, 0.55), mx(0.8, 1, bk(cl(since / 0.25))) * (0.85 + 0.15 * i / 4));
+      showTitle(m, on ? cl(since / 0.12) : 0, LP(-7.0, 1.25, 0.6), mx(0.8, 1, bk(cl(since / 0.25))) * (0.85 + 0.15 * i / 4));
     });
   }
 }
