@@ -13,14 +13,17 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   la comparta desde el menú «Compartir».
 - Versiones fijas: v1 (oscura) en la rama `web-estudio-v1` (commit 5913977). El Artifact no sirve archivos `.bin`:
   los datos 3D van en base64 dentro de `.txt`.
-- **PUBLICADA el 4-11-2026** en https://javierfernandez03112007-netizen.github.io/kiria-producer/ (Javi: «la ponemos ya en la web y empezamos a
-  editar cosas ya publicada para poder generar Stripe»: Stripe pide la dirección de la web). Es la dirección provisional: con su dominio
-  pasará a Cloudflare Pages (GitHub Pages no admite tiendas online). Antes (3-11-2026) estuvo retirada: Se
-  supervisa solo en la vista privada (Artifact). Estuvo unos 50 minutos en GitHub Pages
-  (javierfernandez03112007-netizen.github.io/kiria-producer); ahora la rama `gh-pages` está vacía y la dirección da 404. Pages
-  sigue activado en el repositorio: para apagarlo del todo, Ajustes → Pages → «Unpublish site» (o borrar la rama `gh-pages`
-  en GitHub; desde la sesión no se puede, el proxy de git corta los borrados). Cuando Javi diga de publicarla:
-  `./web_estudio/publicar.sh --publicar` (cabecera completa, `media/` y rama `gh-pages`; ahí el formulario se envía solo).
+- **PUBLICADA el 4-11-2026**, provisional, en https://javierfernandez03112007-netizen.github.io/kiria-producer/ (Javi: «la ponemos ya
+  en la web y empezamos a editar cosas ya publicada para poder generar Stripe»: Stripe pide la dirección de la web). El 3-11 estuvo retirada.
+- **Dominio: kiriaai.com** (Javi lo pagó el 4-11-2026 en DonDominio). Pasa a **Cloudflare Pages**: proyecto `kiriaai`, rama `gh-pages`,
+  sin compilación, dominios `kiriaai.com` y `www.kiriaai.com`; los nameservers de DonDominio apuntan a Cloudflare. GitHub Pages no admite
+  webs para vender: cuando kiriaai.com funcione, Javi lo apaga (Settings → Pages → Branch: None). Pasos para Javi: guía de cobros de Notion, Parte 3.
+- `publicar.sh` ya usa https://kiriaai.com/ (canonical y og) y su cabecera lleva un script que manda `www.kiriaai.com` y `*.github.io` a
+  https://kiriaai.com/. **No publicar con ese valor hasta que kiriaai.com abra la web**; si hace falta antes:
+  `WEB_URL=https://javierfernandez03112007-netizen.github.io/kiria-producer/ ./web_estudio/publicar.sh --publicar` (no redirige).
+- Stripe: web del negocio https://kiriaai.com; en cada enlace de pago, «Después del pago» → redirigir a https://kiriaai.com/#pagado
+  (la web enseña el aviso «¡Pago recibido!» y borra el pedido guardado).
+- Publicar: `./web_estudio/publicar.sh --publicar` (cabecera completa, `media/` y rama `gh-pages`; Cloudflare se actualiza solo).
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la

@@ -1,10 +1,12 @@
 #!/bin/bash
-# Publica la web del estudio en GitHub Pages: https://javierfernandez03112007-netizen.github.io/kiria-producer/
+# Publica la web del estudio: https://kiriaai.com/ (Cloudflare Pages, proyecto «kiriaai», sirve la rama gh-pages).
+# Antes estaba en GitHub Pages (https://javierfernandez03112007-netizen.github.io/kiria-producer/), que no admite webs para vender:
+# esa dirección y www.kiriaai.com llevan a https://kiriaai.com/ (script de la cabecera). Otra dirección: WEB_URL=https://.../
 #
 # Toma web_estudio/index.html (el mismo archivo que se publica como artifact en claude.ai, que no lleva <html>/<head>
 # porque el artifact los añade solo), le pone la cabecera de una página normal (charset, viewport, el pequeño reset
 # del artifact, icono y enlace para compartir), copia web_estudio/media/ y lo sube todo a la rama gh-pages.
-# GitHub Pages sirve esa rama; en una web normal el formulario y los pedidos se envían solos (FormSubmit).
+# Cloudflare Pages se actualiza solo con cada subida a esa rama; en una web normal el formulario y los pedidos se envían solos (FormSubmit).
 #
 # Javi (3-11-2026): «no quiero que esté publicada aún» → se retiró. Javi (4-11-2026): «la ponemos ya en la web» (Stripe pide la
 # dirección de la web para abrir la cuenta) → PUBLICADA desde el 4-11-2026. Se sigue publicando solo con orden expresa:
@@ -17,7 +19,7 @@ case "${1:-}" in
      echo "Cuando él lo diga: ./web_estudio/publicar.sh --publicar  ·  para probar en local: --solo-construir DIR"; exit 1 ;;
 esac
 cd "$(git rev-parse --show-toplevel)"
-URL=https://javierfernandez03112007-netizen.github.io/kiria-producer/
+URL=${WEB_URL:-https://kiriaai.com/}
 if [ -n "${2:-}" ]; then OUT=$2; else OUT=$(mktemp -d); trap 'rm -rf "$OUT"' EXIT; fi     # la carpeta temporal se borra al acabar
 mkdir -p "$OUT"
 
@@ -41,6 +43,10 @@ top = ('<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n'
        f'<meta property="og:type" content="website">\n<meta property="og:url" content="{url}">\n'
        f'<meta property="og:image" content="{url}media/cabezas.jpg">\n<meta property="og:locale" content="es_ES">\n'
        '<meta name="theme-color" content="#0a0b10">\n')
+host = re.match(r'https://([^/]+)/', url).group(1)
+if not host.endswith('github.io'):           # www y la antigua dirección de GitHub Pages → la dirección principal (los *.pages.dev, no)
+    top += ('<script>(function(){var h=location.hostname;if(h==="www.' + host + '"||/\\.github\\.io$/.test(h))'
+            'location.replace("' + url + '"+location.search+location.hash);})();</script>\n')
 page = top + head.strip() + '\n</head>\n<body>\n' + body.strip() + '\n</body>\n</html>\n'
 open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(page)
 shutil.copytree('web_estudio/media', os.path.join(out, 'media'), dirs_exist_ok=True)

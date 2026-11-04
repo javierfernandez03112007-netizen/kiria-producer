@@ -1188,6 +1188,7 @@ footer a:hover { color: var(--nightfg); }
 </dialog>
 
 <div class="thanks" id="thanks" role="status" hidden><span class="ok">✓</span><div><b>¡Mensaje enviado!</b><p>Gracias por escribirnos. Te hemos mandado un correo de confirmación y te responderemos lo antes posible por correo o por Instagram.</p></div><button type="button" id="thanksX" aria-label="Cerrar">✕</button></div>
+<div class="thanks" id="paid" role="status" hidden><span class="ok">✓</span><div><b>¡Pago recibido!</b><p>Gracias por tu compra. Stripe te ha enviado el recibo por correo y en breve te escribimos para empezar con tu pedido (de 12 a 72 h desde la compra). Si tienes cualquier duda, escríbenos por Instagram (@kiria.ai) o a kiriaai2026@gmail.com.</p></div><button type="button" id="paidX" aria-label="Cerrar">✕</button></div>
 
 <dialog class="legal" id="dlg-cookies" aria-labelledby="t-cook">
   <div class="lh"><h2 id="t-cook">Política de cookies</h2><button class="x" type="button" data-close aria-label="Cerrar">✕</button></div>
@@ -1620,6 +1621,17 @@ function kiriaSend({ subject, message, name, email }) {
   const box = document.getElementById('thanks'); if (!box) return;
   const show = () => { if (location.hash !== '#gracias') return; box.hidden = false; try { history.replaceState(null, '', location.pathname + location.search + '#contacto'); } catch (e) {} };
   document.getElementById('thanksX').addEventListener('click', () => { box.hidden = true; });
+  addEventListener('hashchange', show); show();
+})();
+// después de pagar, Stripe devuelve al cliente a la web con #pagado (se configura en cada enlace de pago: «Después del pago»)
+(() => {
+  const box = document.getElementById('paid'); if (!box) return;
+  const show = () => {
+    if (location.hash !== '#pagado') return; box.hidden = false;
+    try { sessionStorage.removeItem('kiria_pedido'); } catch (e) {}
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  };
+  document.getElementById('paidX').addEventListener('click', () => { box.hidden = true; });
   addEventListener('hashchange', show); show();
 })();
 // ---------------------------------------------------------------- franja en movimiento (avanza sola y con el scroll, cada fila hacia un lado)
