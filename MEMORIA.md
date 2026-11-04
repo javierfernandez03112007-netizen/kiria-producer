@@ -43,8 +43,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    «la nota de corte más alta no es Medicina», serie numerada «Carreras por dentro».
 3. **Vídeos del lanzamiento: SIN PRECIOS (Javi, 4-11-2026: «no pongas ningún precio ni nada en los vídeos, solamente quiero mostrar resultados,
    visitas, seguidores etc.»).** Solo resultados reales (con fuente: panel de Instagram o Metricool) y «comenta KIRIA». Vídeo 1 «Ni una sola cámara» (`projects/lanzamiento/`,
-   entregado el 4-11-2026: 23 s, 1380 fotogramas, −14,7 LUFS; voz de Danny con las frases de los precios recortadas). Pendiente antes de publicar:
-   la captura de los 3,2 M en 7 días (Metricool da 1,93 M del 26 oct al 1 nov).
+   entregado el 4-11-2026: 23 s, 1380 fotogramas, −14,7 LUFS; voz de Danny con las frases de los precios recortadas). A Javi le
+   encantó y pidió la **versión larga (v3, 33 s, 1980 fotogramas)**: «más de 2.500 seguidores nuevos en 6 días. ¿Cómo?», «puedes probar tu
+   objeto en 3D… en redes… o en una página web» y el cierre «comenta KIRIA y te paso el enlace por privado» (frases nuevas generadas con la
+   voz y los ajustes de su toma: `tts_extra.py` + `voz_con_extra.py`; render por trozos en ramas `render-lan3-*`). La v2 queda en
+   `out/lanzamiento_v2_23s.mp4`. Pendiente antes de publicar: la captura de los 3,2 M en 7 días (Metricool da 1,93 M del 26 oct al
+   1 nov) y la respuesta automática a «KIRIA» con el enlace.
 3. **Lanzamiento de la web del estudio (plan de Javi, 4-11-2026)**: varios reels con «comenta KIRIA» → mensaje privado con el enlace a
    WhatsApp → allí la web con un 10 % extra. Propuesto: decir «tener un vídeo así», no «aprender» (no hay curso); Canal de WhatsApp
    en vez de grupo (en un grupo se ve su número, que no quiere enseñar, y el tope es 1.024); respuesta automática a «KIRIA» con

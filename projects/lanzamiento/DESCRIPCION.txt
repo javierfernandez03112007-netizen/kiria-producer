@@ -1,19 +1,19 @@
-«NI UNA SOLA CÁMARA» — vídeo 1 del lanzamiento (23 s, sin precios)
+«NI UNA SOLA CÁMARA» — vídeo 1 del lanzamiento (33 s, versión larga, sin precios)
 
 DESCRIPCIÓN (Instagram):
 3,2 millones de visualizaciones en 7 días con vídeos en 3D hechos con IA. Sin una sola cámara.
 
-Guion, voz, cada objeto en 3D, subtítulos palabra a palabra y sonido, efecto a efecto.
+Guion, voz, cada objeto en 3D, subtítulos palabra a palabra y sonido, efecto a efecto. Y además puedes probar tu producto en 3D: cómo se vería en redes o en tu página web.
 
-¿Quieres vídeos así para tu cuenta, tus productos o tu negocio? Comenta KIRIA y te escribimos por privado 👇
+¿Quieres vídeos así para tu cuenta, tus productos o tu negocio? Comenta KIRIA y te paso el enlace por privado 👇
 
 #reels #ia #3d #marketing #negocios #emprendedores
 
 COMENTARIO FIJADO:
-Comenta KIRIA y te escribimos por privado 👇
+Comenta KIRIA y te paso el enlace por privado 👇
 
 VERSIÓN CORTA (TikTok):
-3,2 millones de visualizaciones en 7 días… y ni una sola cámara. ¿Quieres vídeos así para tu negocio? Comenta KIRIA 👇
+3,2 millones de visualizaciones en 7 días… y ni una sola cámara. ¿Quieres vídeos así para tu negocio? Comenta KIRIA y te paso el enlace 👇
 
 NOTAS DE ENTREGA:
 - Sin precios ni descuentos en el vídeo ni en el texto (decisión de Javi, 4-11-2026).
@@ -21,5 +21,9 @@ NOTAS DE ENTREGA:
   y 37.305 envíos en los reels publicados del 20 oct al 2 nov. Ver FUENTES.md.
 - PENDIENTE antes de publicar: la captura del panel de Instagram con los 3,2 millones de visualizaciones en 7 días (Metricool da
   1,93 M del 26 oct al 1 nov para las visualizaciones de la cuenta).
-- La respuesta automática a «KIRIA» (enlace al canal de WhatsApp) tiene que estar lista antes de publicar.
+- La respuesta automática a «KIRIA» (enlace al canal de WhatsApp) tiene que estar lista antes de publicar: el vídeo dice «te paso el enlace por privado».
+- Las frases nuevas de la versión larga (seguidores, «prueba tu objeto en 3D», «te paso el enlace») las generé con la misma voz y ajustes
+  que la toma de Javi (Danny, eleven_v4, 0,50 / 0,75). Si prefiere grabarlas él, se cambia assets/extra.mp3 y se rehace.
+- El tarro de mermelada «TU MARCA», «@tumarca» y la web «tutienda.es» son un ejemplo dibujado, no un cliente.
+- Versión corta anterior (23 s): out/lanzamiento_v2_23s.mp4.
 - Portada: out/portada.jpg (9:16) · miniatura 4:5: out/miniatura.jpg. Vídeo en bucle: el final enlaza con el principio.
