@@ -1,0 +1,35 @@
+🚒🚒 Si juntas dos camiones de bomberos, NO consigues el doble de todo… consigues el doble de presión o el doble de agua. Depende de cómo los conectes:
+
+🔗 EN SERIE: el agua pasa por una bomba y después por la otra → se suman las PRESIONES (el caudal es el mismo). Sirve para llevar el agua más lejos o más alto.
+↔️ EN PARALELO: las dos bombas empujan a la vez a la misma línea → se suman los CAUDALES (la presión es la misma). Sirve para echar más agua.
+
+⚠️ La trampa del examen: en serie NO se suma el caudal… y en paralelo NO se suma la presión.
+
+(Ejemplo con dos bombas iguales y sin contar pérdidas: 8 + 8 = 16 bar en serie; 1.000 + 1.000 = 2.000 L/min en paralelo.)
+
+🏢 Y tú, para subir agua a un piso 20… ¿serie o paralelo? 💬 Comenta antes de mirar la respuesta 👇
+
+👇 Mándaselo a quien oposite contigo: ¿lo sabrá?
+
+🚒 BOMBERADOS — la app para preparar la oposición a bombero.
+🎁 Pruébala GRATIS 5 días: enlace en la bio.
+
+#bomberos #oposicionesbombero #opositores #hidraulica #autobomba #bomberados
+
+(Respuesta: en SERIE. Para ganar altura hace falta presión: cada 10 m de altura son ≈ 1 bar, más lo que se pierde por la manguera.)
+
+---
+
+Versión corta (TikTok):
+
+🚒🚒 Dos camiones de bomberos: en SERIE se suman las presiones; en PARALELO, los caudales. La trampa del examen: en serie NO se suma el caudal 😉 ¿Piso 20: serie o paralelo? Comenta 👇 Bomberados: pruébala GRATIS 5 días 👉 bio.
+
+#bomberos #oposicionesbombero #hidraulica #bomberados
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Comentario fijado: «📌 ¿Piso 20: serie o paralelo? Respuesta en la descripción 👇».
+- Los números son un ejemplo (dos bombas iguales, sin pérdidas); en pantalla lo pone.
+- PENDIENTE: la página del manual que uséis sobre acoplamiento de bombas, para citarla en FUENTES.md.
+- CONFIRMAR la prueba gratis de 5 días.

@@ -1,0 +1,762 @@
+[
+ {
+  "text": "Si juntas dos camiones de bomberos, no consigues el doble de todo…",
+  "start": 0.0,
+  "end": 3.913,
+  "words": [
+   {
+    "w": "Si",
+    "start": 0.0,
+    "end": 0.199
+   },
+   {
+    "w": "juntas",
+    "start": 0.199,
+    "end": 0.556
+   },
+   {
+    "w": "dos",
+    "start": 0.556,
+    "end": 0.755
+   },
+   {
+    "w": "camiones",
+    "start": 0.755,
+    "end": 1.271
+   },
+   {
+    "w": "de",
+    "start": 1.271,
+    "end": 1.47
+   },
+   {
+    "w": "bomberos,",
+    "start": 1.47,
+    "end": 1.986
+   },
+   {
+    "w": "no",
+    "start": 2.086,
+    "end": 2.285
+   },
+   {
+    "w": "consigues",
+    "start": 2.285,
+    "end": 2.801
+   },
+   {
+    "w": "el",
+    "start": 2.801,
+    "end": 3.0
+   },
+   {
+    "w": "doble",
+    "start": 3.0,
+    "end": 3.357
+   },
+   {
+    "w": "de",
+    "start": 3.357,
+    "end": 3.556
+   },
+   {
+    "w": "todo…",
+    "start": 3.556,
+    "end": 3.913
+   }
+  ]
+ },
+ {
+  "text": "Consigues el doble de presión… o el doble de agua. Depende de cómo los conectes.",
+  "start": 4.153,
+  "end": 9.28,
+  "words": [
+   {
+    "w": "Consigues",
+    "start": 4.153,
+    "end": 4.669
+   },
+   {
+    "w": "el",
+    "start": 4.669,
+    "end": 4.868
+   },
+   {
+    "w": "doble",
+    "start": 4.868,
+    "end": 5.225
+   },
+   {
+    "w": "de",
+    "start": 5.225,
+    "end": 5.424
+   },
+   {
+    "w": "presión…",
+    "start": 5.424,
+    "end": 5.782
+   },
+   {
+    "w": "o",
+    "start": 6.082,
+    "end": 6.28
+   },
+   {
+    "w": "el",
+    "start": 6.28,
+    "end": 6.479
+   },
+   {
+    "w": "doble",
+    "start": 6.479,
+    "end": 6.836
+   },
+   {
+    "w": "de",
+    "start": 6.836,
+    "end": 7.035
+   },
+   {
+    "w": "agua.",
+    "start": 7.035,
+    "end": 7.393
+   },
+   {
+    "w": "Depende",
+    "start": 7.493,
+    "end": 8.009
+   },
+   {
+    "w": "de",
+    "start": 8.009,
+    "end": 8.208
+   },
+   {
+    "w": "cómo",
+    "start": 8.208,
+    "end": 8.565
+   },
+   {
+    "w": "los",
+    "start": 8.565,
+    "end": 8.764
+   },
+   {
+    "w": "conectes.",
+    "start": 8.764,
+    "end": 9.28
+   }
+  ]
+ },
+ {
+  "text": "En serie, el agua pasa por una bomba y después por la otra: se suman las presiones.",
+  "start": 9.48,
+  "end": 14.726,
+  "words": [
+   {
+    "w": "En",
+    "start": 9.48,
+    "end": 9.679
+   },
+   {
+    "w": "serie,",
+    "start": 9.679,
+    "end": 10.036
+   },
+   {
+    "w": "el",
+    "start": 10.136,
+    "end": 10.335
+   },
+   {
+    "w": "agua",
+    "start": 10.335,
+    "end": 10.692
+   },
+   {
+    "w": "pasa",
+    "start": 10.692,
+    "end": 11.05
+   },
+   {
+    "w": "por",
+    "start": 11.05,
+    "end": 11.249
+   },
+   {
+    "w": "una",
+    "start": 11.249,
+    "end": 11.606
+   },
+   {
+    "w": "bomba",
+    "start": 11.606,
+    "end": 11.963
+   },
+   {
+    "w": "y",
+    "start": 11.963,
+    "end": 12.162
+   },
+   {
+    "w": "después",
+    "start": 12.162,
+    "end": 12.52
+   },
+   {
+    "w": "por",
+    "start": 12.52,
+    "end": 12.718
+   },
+   {
+    "w": "la",
+    "start": 12.718,
+    "end": 12.917
+   },
+   {
+    "w": "otra:",
+    "start": 12.917,
+    "end": 13.275
+   },
+   {
+    "w": "se",
+    "start": 13.455,
+    "end": 13.653
+   },
+   {
+    "w": "suman",
+    "start": 13.653,
+    "end": 14.011
+   },
+   {
+    "w": "las",
+    "start": 14.011,
+    "end": 14.21
+   },
+   {
+    "w": "presiones.",
+    "start": 14.21,
+    "end": 14.726
+   }
+  ]
+ },
+ {
+  "text": "Ocho bares más ocho: dieciséis. El mismo caudal, pero llega mucho más lejos o más alto.",
+  "start": 15.026,
+  "end": 20.49,
+  "words": [
+   {
+    "w": "Ocho",
+    "start": 15.026,
+    "end": 15.383
+   },
+   {
+    "w": "bares",
+    "start": 15.383,
+    "end": 15.741
+   },
+   {
+    "w": "más",
+    "start": 15.741,
+    "end": 15.94
+   },
+   {
+    "w": "ocho:",
+    "start": 15.94,
+    "end": 16.297
+   },
+   {
+    "w": "dieciséis.",
+    "start": 16.477,
+    "end": 16.993
+   },
+   {
+    "w": "El",
+    "start": 17.093,
+    "end": 17.292
+   },
+   {
+    "w": "mismo",
+    "start": 17.292,
+    "end": 17.649
+   },
+   {
+    "w": "caudal,",
+    "start": 17.649,
+    "end": 18.007
+   },
+   {
+    "w": "pero",
+    "start": 18.107,
+    "end": 18.464
+   },
+   {
+    "w": "llega",
+    "start": 18.464,
+    "end": 18.822
+   },
+   {
+    "w": "mucho",
+    "start": 18.822,
+    "end": 19.179
+   },
+   {
+    "w": "más",
+    "start": 19.179,
+    "end": 19.378
+   },
+   {
+    "w": "lejos",
+    "start": 19.378,
+    "end": 19.736
+   },
+   {
+    "w": "o",
+    "start": 19.736,
+    "end": 19.934
+   },
+   {
+    "w": "más",
+    "start": 19.934,
+    "end": 20.133
+   },
+   {
+    "w": "alto.",
+    "start": 20.133,
+    "end": 20.49
+   }
+  ]
+ },
+ {
+  "text": "En paralelo, las dos bombas empujan a la vez a la misma línea: se suman los caudales.",
+  "start": 20.64,
+  "end": 26.044,
+  "words": [
+   {
+    "w": "En",
+    "start": 20.64,
+    "end": 20.839
+   },
+   {
+    "w": "paralelo,",
+    "start": 20.839,
+    "end": 21.514
+   },
+   {
+    "w": "las",
+    "start": 21.614,
+    "end": 21.812
+   },
+   {
+    "w": "dos",
+    "start": 21.812,
+    "end": 22.011
+   },
+   {
+    "w": "bombas",
+    "start": 22.011,
+    "end": 22.369
+   },
+   {
+    "w": "empujan",
+    "start": 22.369,
+    "end": 22.885
+   },
+   {
+    "w": "a",
+    "start": 22.885,
+    "end": 23.083
+   },
+   {
+    "w": "la",
+    "start": 23.083,
+    "end": 23.282
+   },
+   {
+    "w": "vez",
+    "start": 23.282,
+    "end": 23.481
+   },
+   {
+    "w": "a",
+    "start": 23.481,
+    "end": 23.68
+   },
+   {
+    "w": "la",
+    "start": 23.68,
+    "end": 23.878
+   },
+   {
+    "w": "misma",
+    "start": 23.878,
+    "end": 24.236
+   },
+   {
+    "w": "línea:",
+    "start": 24.236,
+    "end": 24.593
+   },
+   {
+    "w": "se",
+    "start": 24.773,
+    "end": 24.972
+   },
+   {
+    "w": "suman",
+    "start": 24.972,
+    "end": 25.33
+   },
+   {
+    "w": "los",
+    "start": 25.33,
+    "end": 25.528
+   },
+   {
+    "w": "caudales.",
+    "start": 25.528,
+    "end": 26.044
+   }
+  ]
+ },
+ {
+  "text": "Mil litros por minuto más mil: dos mil. La misma presión, pero el doble de agua.",
+  "start": 26.344,
+  "end": 31.174,
+  "words": [
+   {
+    "w": "Mil",
+    "start": 26.344,
+    "end": 26.543
+   },
+   {
+    "w": "litros",
+    "start": 26.543,
+    "end": 26.9
+   },
+   {
+    "w": "por",
+    "start": 26.9,
+    "end": 27.099
+   },
+   {
+    "w": "minuto",
+    "start": 27.099,
+    "end": 27.615
+   },
+   {
+    "w": "más",
+    "start": 27.615,
+    "end": 27.814
+   },
+   {
+    "w": "mil:",
+    "start": 27.814,
+    "end": 28.013
+   },
+   {
+    "w": "dos",
+    "start": 28.193,
+    "end": 28.391
+   },
+   {
+    "w": "mil.",
+    "start": 28.391,
+    "end": 28.59
+   },
+   {
+    "w": "La",
+    "start": 28.69,
+    "end": 28.889
+   },
+   {
+    "w": "misma",
+    "start": 28.889,
+    "end": 29.246
+   },
+   {
+    "w": "presión,",
+    "start": 29.246,
+    "end": 29.604
+   },
+   {
+    "w": "pero",
+    "start": 29.704,
+    "end": 30.061
+   },
+   {
+    "w": "el",
+    "start": 30.061,
+    "end": 30.26
+   },
+   {
+    "w": "doble",
+    "start": 30.26,
+    "end": 30.617
+   },
+   {
+    "w": "de",
+    "start": 30.617,
+    "end": 30.816
+   },
+   {
+    "w": "agua.",
+    "start": 30.816,
+    "end": 31.174
+   }
+  ]
+ },
+ {
+  "text": "La trampa del examen: en serie no se suma el caudal… y en paralelo no se suma la presión.",
+  "start": 31.324,
+  "end": 37.326,
+  "words": [
+   {
+    "w": "La",
+    "start": 31.324,
+    "end": 31.523
+   },
+   {
+    "w": "trampa",
+    "start": 31.523,
+    "end": 31.88
+   },
+   {
+    "w": "del",
+    "start": 31.88,
+    "end": 32.079
+   },
+   {
+    "w": "examen:",
+    "start": 32.079,
+    "end": 32.595
+   },
+   {
+    "w": "en",
+    "start": 32.775,
+    "end": 32.974
+   },
+   {
+    "w": "serie",
+    "start": 32.974,
+    "end": 33.331
+   },
+   {
+    "w": "no",
+    "start": 33.331,
+    "end": 33.53
+   },
+   {
+    "w": "se",
+    "start": 33.53,
+    "end": 33.729
+   },
+   {
+    "w": "suma",
+    "start": 33.729,
+    "end": 34.086
+   },
+   {
+    "w": "el",
+    "start": 34.086,
+    "end": 34.285
+   },
+   {
+    "w": "caudal…",
+    "start": 34.285,
+    "end": 34.642
+   },
+   {
+    "w": "y",
+    "start": 34.942,
+    "end": 35.141
+   },
+   {
+    "w": "en",
+    "start": 35.141,
+    "end": 35.34
+   },
+   {
+    "w": "paralelo",
+    "start": 35.34,
+    "end": 36.015
+   },
+   {
+    "w": "no",
+    "start": 36.015,
+    "end": 36.214
+   },
+   {
+    "w": "se",
+    "start": 36.214,
+    "end": 36.412
+   },
+   {
+    "w": "suma",
+    "start": 36.412,
+    "end": 36.77
+   },
+   {
+    "w": "la",
+    "start": 36.77,
+    "end": 36.968
+   },
+   {
+    "w": "presión.",
+    "start": 36.968,
+    "end": 37.326
+   }
+  ]
+ },
+ {
+  "text": "Y tú, para subir agua a un piso veinte… ¿serie o paralelo? Comenta.",
+  "start": 37.626,
+  "end": 42.456,
+  "words": [
+   {
+    "w": "Y",
+    "start": 37.626,
+    "end": 37.825
+   },
+   {
+    "w": "tú,",
+    "start": 37.825,
+    "end": 38.023
+   },
+   {
+    "w": "para",
+    "start": 38.123,
+    "end": 38.481
+   },
+   {
+    "w": "subir",
+    "start": 38.481,
+    "end": 38.838
+   },
+   {
+    "w": "agua",
+    "start": 38.838,
+    "end": 39.196
+   },
+   {
+    "w": "a",
+    "start": 39.196,
+    "end": 39.395
+   },
+   {
+    "w": "un",
+    "start": 39.395,
+    "end": 39.593
+   },
+   {
+    "w": "piso",
+    "start": 39.593,
+    "end": 39.951
+   },
+   {
+    "w": "veinte…",
+    "start": 39.951,
+    "end": 40.308
+   },
+   {
+    "w": "¿serie",
+    "start": 40.608,
+    "end": 40.966
+   },
+   {
+    "w": "o",
+    "start": 40.966,
+    "end": 41.164
+   },
+   {
+    "w": "paralelo?",
+    "start": 41.164,
+    "end": 41.839
+   },
+   {
+    "w": "Comenta.",
+    "start": 41.939,
+    "end": 42.456
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo!",
+  "start": 42.756,
+  "end": 45.556,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 42.756,
+    "end": 43.596
+   },
+   {
+    "w": "a",
+    "start": 43.596,
+    "end": 43.836
+   },
+   {
+    "w": "quien",
+    "start": 43.836,
+    "end": 44.076
+   },
+   {
+    "w": "oposite",
+    "start": 44.076,
+    "end": 44.916
+   },
+   {
+    "w": "contigo!",
+    "start": 44.916,
+    "end": 45.556
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 45.856,
+  "end": 50.376,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 45.856,
+    "end": 46.696
+   },
+   {
+    "w": "a",
+    "start": 46.696,
+    "end": 46.936
+   },
+   {
+    "w": "bombero?",
+    "start": 46.936,
+    "end": 47.576
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 47.676,
+    "end": 48.516
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 48.616,
+    "end": 49.256
+   },
+   {
+    "w": "gratis",
+    "start": 49.256,
+    "end": 49.696
+   },
+   {
+    "w": "cinco",
+    "start": 49.696,
+    "end": 50.136
+   },
+   {
+    "w": "días!",
+    "start": 50.136,
+    "end": 50.376
+   }
+  ]
+ }
+]

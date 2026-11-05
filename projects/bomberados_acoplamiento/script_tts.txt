@@ -1,0 +1,10 @@
+[intrigued] Si juntas dos camiones de bomberos, no consigues el doble de todo…
+[revealing] Consigues el doble de PRESIÓN… o el doble de AGUA. [serious] Depende de cómo los conectes.
+[explaining, confident] En SERIE, el agua pasa por una bomba y después por la otra: se suman las PRESIONES.
+[impressed] Ocho bares más ocho: dieciséis. El mismo caudal, pero llega mucho más lejos… o más alto.
+[explaining, confident] En PARALELO, las dos bombas empujan a la vez a la misma línea: se suman los CAUDALES.
+[impressed] Mil litros por minuto más mil: dos mil. La misma presión, pero el DOBLE de agua.
+[serious, warning] La trampa del examen: en serie NO se suma el caudal… y en paralelo NO se suma la presión.
+[curious, playful] Y tú, para subir agua a un piso veinte… ¿serie o paralelo? Comenta.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

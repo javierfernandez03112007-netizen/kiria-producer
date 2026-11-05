@@ -1,0 +1,48 @@
+«¿SERIE O PARALELO?» — Acoplamiento de autobombas (vídeo medio, explicado; 3D cinematográfico con planos abiertos)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 40 s). El gancho, intrigante, como quien va a contar un truco. La explicación, clara y segura,
+con una pausa en cada «más» de los números. Lo más fuerte tiene que ser el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y
+«¡Pruébala GRATIS!», algo más despacio.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[intrigued] Si juntas dos camiones de bomberos, no consigues el doble de todo…
+[revealing] Consigues el doble de PRESIÓN… o el doble de AGUA. [serious] Depende de cómo los conectes.
+[explaining, confident] En SERIE, el agua pasa por una bomba y después por la otra: se suman las PRESIONES.
+[impressed] Ocho bares más ocho: dieciséis. El mismo caudal, pero llega mucho más lejos… o más alto.
+[explaining, confident] En PARALELO, las dos bombas empujan a la vez a la misma línea: se suman los CAUDALES.
+[impressed] Mil litros por minuto más mil: dos mil. La misma presión, pero el DOBLE de agua.
+[serious, warning] La trampa del examen: en serie NO se suma el caudal… y en paralelo NO se suma la presión.
+[curious, playful] Y tú, para subir agua a un piso veinte… ¿serie o paralelo? Comenta.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con planos ABIERTOS (se ven los dos camiones enteros), cámara
+siempre en movimiento y el agua que corre por dentro de las mangueras como luz.
+1. «Si juntas dos camiones de bomberos, no consigues el doble de todo…» — dos autobombas a la vez en plano general; una
+   manguera sale de cada una y se buscan; rótulo «×2 ?».
+2. «Consigues el doble de presión… o el doble de agua. Depende de cómo los conectes.» — el plano se parte en dos:
+   a un lado «PRESIÓN ×2», al otro «AGUA ×2»; las mangueras se enganchan de dos formas distintas.
+3. «En serie… se suman las presiones.» — camión 1 → camión 2 → manguera larga hasta lo alto de un edificio. El agua
+   (luz azul) pasa por la primera bomba y luego por la segunda. Manómetros encima de cada camión.
+4. «Ocho bares más ocho: dieciséis…» — 8 bar + 8 bar = 16 bar; el caudal no cambia (1.000 L/min en toda la línea);
+   el chorro llega al último piso. Rótulo pequeño: «Ejemplo · sin contar pérdidas».
+5. «En paralelo… se suman los caudales.» — los dos camiones mandan su agua a una pieza en Y y de ahí a una sola línea.
+6. «Mil litros por minuto más mil: dos mil…» — 1.000 + 1.000 = 2.000 L/min; la presión se queda en 8 bar; sale un
+   chorro el doble de gordo sobre un fuego grande.
+7. «La trampa del examen…» — tarjetas: «SERIE → suma PRESIÓN (el caudal NO)» / «PARALELO → suma CAUDAL (la presión NO)».
+8. «¿…piso veinte? ¿serie o paralelo? Comenta.» — edificio alto con el piso 20 marcado; dos botones «SERIE» / «PARALELO»
+   que se vuelven bocadillos.
+9. ★ «¡Mándaselo a quien oposite contigo!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+10. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la pregunta (en la descripción y en el comentario fijado): SERIE (para ganar altura hace falta presión).
+Datos (ver FUENTES.md): en serie el caudal es el de una bomba y se suman las presiones (alturas); en paralelo la presión
+es la misma y se suman los caudales. Con dos bombas iguales y sin contar pérdidas. Los números (8 bar, 1.000 L/min) son
+un ejemplo. Si tienes la página del manual que usáis sobre acoplamiento de bombas, mándamela y la cito.

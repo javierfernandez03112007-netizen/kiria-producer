@@ -872,7 +872,82 @@ def sfx_track_extintor(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
 
+# ---------------------------------------------------------------- formato «acoplamiento» (acoplamiento.js, 3D de noche)
+# Misma línea de tiempo que T en acoplamiento.js: el agua que corre suena (vapor) solo mientras corre; cada rótulo con su toque.
+def sfx_track_acoplamiento(path):
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["l6e"], T["l8s"] = LINES[5]["end"], LINES[7]["start"]
+    T["sOn"], T["sOff"], T["pOn"], T["fin"] = c["serie"] - 0.1, c["paralelo"] - 0.35, c["paralelo"] - 0.05, c["compartir"] - 0.25
+    fuego, vapor, bub = _load("fuego"), _load("vapor"), _onset(_load("burbuja"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    # noche de intervención: fuego de fondo y la sirena/rotativo lejos al principio
+    put(burn, 0.0, -31, END, 0.4, 0.6, track=amb)
+    put("rotativo", 0.0, -33, c["conectes"] + 0.3, 0.3, 0.6, track=amb)
+    put("tension", 0.0, -34, c["serie"], 0.5, 0.5, track=amb)
+    put("whoosh", c["todo"] - 0.35, -28, 0.6)
+    put("toque", c["presion"] - 0.05, -27, 0.35)
+    put("toque", c["agua"] - 0.05, -27, 0.35)
+    # EN SERIE: las mangueras se tienden, el agua corre por la 1 y luego por la 2, el chorro arriba
+    put("destello", c["serie"] - 0.1, -26, 0.7)
+    put("whoosh2", T["sOn"] + 0.1, -28, 0.8)
+    put(bub, c["bomba1"] - 0.05, -27, 0.25); put(_pitch(bub, 1.1), c["otra"] - 0.05, -27, 0.25)
+    put(vapor, c["bomba1"], -36, T["sOff"] - c["bomba1"], 0.3, 0.3, track=amb)
+    put(vapor, c["otra"] + 0.8, -30, T["sOff"] + 0.2 - c["otra"] - 0.8, 0.2, 0.3)
+    put("toque", c["ocho1"] - 0.05, -27, 0.35)
+    put("golpe", c["dieciseis"] - 0.05, -24, 0.9, 0.005, 0.4)
+    put(_pitch(bub, 0.9), c["caudal"] - 0.05, -28, 0.25)
+    put("whoosh", c["alto"] - 0.4, -30, 0.6)
+    # EN PARALELO: barrido, las dos líneas a la vez, el chorro gordo sobre la nave
+    put("whoosh2", c["paralelo"] - 0.3, -25, 0.7)
+    put("destello", c["paralelo"] - 0.05, -26, 0.7)
+    put(vapor, c["vez"], -35, END - c["vez"], 0.3, 0.6, track=amb)
+    put(vapor, c["linea"] + 0.7, -27, T["fin"] - c["linea"] - 0.7, 0.2, 0.5)
+    put(_pitch(bub, 1.0), c["mil1"] - 0.05, -27, 0.25); put(_pitch(bub, 1.1), c["mil2"] - 0.05, -27, 0.25)
+    put("golpe", c["dosmil"] - 0.05, -24, 0.9, 0.005, 0.4)
+    # la trampa
+    put("tension", c["trampa"] - 0.2, -29, T["l8s"] - c["trampa"], 0.2, 0.3)
+    put("acierto", c["noserie"] - 0.15, -29, 0.5); put("fallo", c["noserie"] + 0.6, -30, 0.4)
+    put("acierto", c["noparalelo"] - 0.15, -29, 0.5); put("fallo", c["noparalelo"] + 0.6, -30, 0.4)
+    # piso 20: la cámara sube, se enciende la planta, los botones y los bocadillos
+    put("whoosh", T["l8s"] - 0.1, -28, 0.8)
+    put("nota", c["veinte"] - 0.05, -27, 0.9)
+    put(bub, T["l8s"] + 0.95, -27, 0.25); put(_pitch(bub, 1.1), T["l8s"] + 1.05, -27, 0.25)
+    put(bub, c["comenta"] - 0.05, -25, 0.25); put(_pitch(bub, 1.15), c["comenta"] + 0.08, -26, 0.25)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "acoplamiento":
+        return sfx_track_acoplamiento(path)
     if Q.get("formato") == "extintor":
         return sfx_track_extintor(path)
     if Q.get("formato") == "profeia":
