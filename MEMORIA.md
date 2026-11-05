@@ -63,6 +63,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    **Correo de la web (Javi, 4-11-2026): kiriaai2026@gmail.com** (contacto, formulario FormSubmit — hay que activarlo de nuevo con ese
    correo — y correo de atención de Stripe). Plan, calendario y textos (canal, mensaje automático, bienvenida,
    lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto = la de Instagram (`whatsapp/foto_canal.png`).
+   **CAMBIO (Javi, 5-11-2026, 10:15): se deja lo de WhatsApp y la web ya está en la bio de Instagram** (la regla de abajo ya no vale).
+   El reel L2 «Tu producto, en 3D» se publicó el 5-11 a las 08:56: a las 10:15, 433 visualizaciones, 115 de alcance, 24 me gusta, 7 comentarios,
+   12 guardados (Metricool). Los anuncios llegan poco (Bomberados: 8,1 mil) frente a los reels informativos (10 mil–880 mil). Seguidores
+   (Metricool, 5-11): ≈ 4.500; 31 % España, 69 % Latinoamérica (México 13 %); 25-34 años el 33 %, 25-54 el 64 %; 65 % hombres.
    **REGLA (Javi, 5-11-2026): nadie debe saber que la web ya está abierta.** Hasta el domingo 8 a las 12:00 no se enseña kiriaai.com en ningún
    sitio (ni el correo kiriaai2026@gmail.com, que la delata): solo «abrimos nuestra web el domingo», con adelantos, pistas y cuenta atrás
    (`cuenta_3/2/1/hoy.png`). El vídeo L2 ya tapa la dirección («••••••••.com»). Las tarjetas (QR a la web), a partir del domingo.
