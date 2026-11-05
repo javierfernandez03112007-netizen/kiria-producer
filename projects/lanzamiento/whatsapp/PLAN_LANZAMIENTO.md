@@ -36,47 +36,8 @@ gente a una **comunidad de WhatsApp**; el domingo a las 12:00 se publica allí l
 - Los que se escapen: contestar a mano con una «respuesta guardada» de Instagram (Herramientas para empresas → Respuestas guardadas).
 
 ## Textos
-**Nombre del canal:** kiria.ai
-
-**Descripción del canal:**
-```text
-Vídeos en 3D hechos con IA para tu cuenta, tus productos o tu negocio. Sin una sola cámara.
-📅 Domingo 8 a las 12:00 abrimos la web, con un 10 % extra solo para el canal.
-🔔 Activa la campanita para que te llegue el aviso.
-Dudas: Instagram @kiria.ai
-```
-
-**Mensaje automático (DM a quien comenta KIRIA):**
-```text
-¡Hola! 👋 Gracias por comentar KIRIA.
-Aquí tienes el enlace a nuestro canal de WhatsApp: https://chat.whatsapp.com/ElEyf2TCRzt0nYZaW3mblE
-El domingo 8 a las 12:00 publicamos allí la web con un 10 % extra solo para quien esté en el canal.
-Toca «Seguir» y activa la campanita 🔔 para que te llegue el aviso.
-```
-
-**Bienvenida (jueves, primer mensaje del canal):**
-```text
-¡Te damos la bienvenida al canal de kiria.ai! 🎬
-Hacemos vídeos en 3D con IA, sin una sola cámara: guion, voz, cada objeto en 3D, subtítulos y sonido.
-📅 Domingo 8 a las 12:00 abrimos la web y aquí tendrás un 10 % extra.
-🔔 Activa la campanita para que no te lo pierdas.
-```
-
-**Viernes (con `out/proceso_v3.jpg`):**
-```text
-Así se hace uno de nuestros vídeos: ninguna escena está grabada con cámara, todo es 3D. 🎥❌
-El domingo a las 12:00 abrimos la web 🔔
-```
-
-**Sábado (encuesta):** «¿Qué vídeo querrías para tu negocio?» → Mi producto en 3D · Mi negocio por dentro · Un anuncio para redes · Mi web
-
-**Domingo 12:00 (lanzamiento):**
-```text
-🚀 Ya está abierta la web de kiria.ai: [ENLACE DE LA WEB]
-Vídeos en 3D hechos con IA para tu cuenta, tus productos o tu negocio, y webs con tus productos en 3D.
-🎁 Solo para el canal: 10 % extra con el código [CÓDIGO] hasta [FECHA].
-Dudas: por Instagram @kiria.ai
-```
+Todos los textos (descripción, bienvenida, normas, evento, avisos de cada día, respuesta a «KIRIA», perfil de Business) están en
+**`COMUNIDAD.md`** (5-11-2026): es una **comunidad**, no un canal, así que ya no se habla de «Seguir» ni de «campanita».
 
 ## Pendiente de Javi
 - Enlace del canal (para el mensaje automático) y captura de los 3,2 M en 7 días.

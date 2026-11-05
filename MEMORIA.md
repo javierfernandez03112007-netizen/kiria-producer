@@ -63,6 +63,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    **Correo de la web (Javi, 4-11-2026): kiriaai2026@gmail.com** (contacto, formulario FormSubmit — hay que activarlo de nuevo con ese
    correo — y correo de atención de Stripe). Plan, calendario y textos (canal, mensaje automático, bienvenida,
    lanzamiento) en `projects/lanzamiento/whatsapp/PLAN_LANZAMIENTO.md`; foto = la de Instagram (`whatsapp/foto_canal.png`).
+   **Guía profesional de la comunidad (5-11-2026):** `projects/lanzamiento/whatsapp/COMUNIDAD.md` + Notion «Comunidad de WhatsApp · qué poner en cada sitio»
+   (ficha, ajustes, avisos día a día, normas, evento del domingo, respuesta a «KIRIA», Business) e imágenes `bienvenida.png`, `lanzamiento.png`, `historia_comunidad.png`.
    Javi creó una **comunidad** de WhatsApp (https://chat.whatsapp.com/ElEyf2TCRzt0nYZaW3mblE; no canal; «no importa que quede visible el número») y lo quiere **todo gratis** (si
    automatizar el enlace es de pago, lo manda él a mano). En Notion: «Lanzamiento · plan día a día hasta el domingo 8» + «Guía paso a
    paso del lanzamiento (todo gratis)» y cada vídeo con su hora en «Calendario de contenido» (columna «Subir el», vista «📅 Subidas»).
