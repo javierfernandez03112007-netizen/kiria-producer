@@ -131,6 +131,16 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Hecho el 4 nov: voz a las 08:01 → vídeo a las 08:45. Al montar se vio que los títulos 3D «113B» y de eficacias chocaban con los subtítulos (y ≈ 330): se bajaron y se re-renderizaron solo esos 250 fotogramas en 5 máquinas (≈ 4 min). Portada: macro del código encendido (t 7,45) con `"oscurecer": true` (degradado oscuro detrás del titular, nuevo en portada.py).
 - **Javi (4 nov): «aleja la cámara, está muy pegada y no se observan bien las cosas»** → v2 con todos los planos más abiertos (gancho a ≈ 3 m, macro que acaba enseñando la etiqueta entera, opciones con el extintor entero detrás, la pila vista en diagonal con sus llamas, la bandeja entera, venta con el extintor entero y poco desenfoque). **Por defecto en los vídeos en 3D: planos abiertos donde se vea el objeto entero; los primeros planos, cortos y solo para leer algo.**
 
+
+### Análisis de la cuenta cada 12 h (Javi, 5 nov: «analiza lo que funciona y lo que no y vamos a escalar la cuenta»)
+- Javi actualiza en Notion las métricas de cada vídeo cada 12 h. Tarea programada en ESTA sesión, 8:43 y 20:43 (Madrid):
+  leer la BD, rehacer `bomberados/ANALISIS.md` y la página de Notion «📈 Análisis de la cuenta»
+  (40fd785b-2d75-8178-a380-df98f5fb42bb, dentro del Centro de trabajo), rellenar «Conclusión» de cada vídeo, commit y push,
+  y mandar a Javi un resumen corto. Todo por cada 1.000 vistas (envíos, comentarios, guardados, seguidores) + alcance.
+- Primer análisis (5 nov, 4 vídeos con datos): lo que habla de la propia oposición se comparte muchísimo («Ocho de cada
+  diez»: 24.800 vistas, 394 envíos); las trampas se comparten (aceite 17/1.000) pero ese tuvo poco alcance; las Preguntas
+  del día traen el doble de comentarios. Faltan guardados, seguidores y retención 3 s.
+
 ## Notion (centro de trabajo de Javi; MCP de Notion)
 - Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).
 - BD **Vídeos de Bomberados**: collection://5422fb68-0692-456e-8aac-49a9c79151c9 (vista principal ordenada por «Publicación (día y
