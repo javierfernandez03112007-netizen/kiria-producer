@@ -1,1021 +1,1021 @@
 [
  {
   "text": "Les robaron más de 6.000 millones de dólares en 20 minutos… y todo empezó con una entrevista de trabajo.",
-  "start": 0.0,
-  "end": 5.911,
+  "start": 0.053,
+  "end": 5.637,
   "words": [
    {
     "w": "Les",
-    "start": 0.0,
-    "end": 0.25
+    "start": 0.053,
+    "end": 0.212
    },
    {
     "w": "robaron",
-    "start": 0.25,
-    "end": 0.643
+    "start": 0.212,
+    "end": 0.584
    },
    {
     "w": "más",
-    "start": 0.643,
-    "end": 0.857
+    "start": 0.584,
+    "end": 0.761
    },
    {
     "w": "de",
-    "start": 0.857,
-    "end": 0.964
+    "start": 0.761,
+    "end": 0.92
    },
    {
     "w": "6.000",
-    "start": 0.964,
-    "end": 1.5
+    "start": 0.92,
+    "end": 1.487
    },
    {
     "w": "millones",
-    "start": 1.5,
-    "end": 1.929
+    "start": 1.487,
+    "end": 1.894
    },
    {
     "w": "de",
-    "start": 1.929,
-    "end": 2.0
+    "start": 1.894,
+    "end": 1.982
    },
    {
     "w": "dólares",
-    "start": 2.0,
-    "end": 2.464
+    "start": 1.982,
+    "end": 2.372
    },
    {
     "w": "en",
-    "start": 2.464,
-    "end": 2.643
+    "start": 2.372,
+    "end": 2.566
    },
    {
     "w": "20",
-    "start": 2.643,
-    "end": 2.929
+    "start": 2.566,
+    "end": 2.885
    },
    {
     "w": "minutos…",
-    "start": 2.929,
-    "end": 3.723
+    "start": 2.885,
+    "end": 3.637
    },
    {
     "w": "y",
-    "start": 3.723,
-    "end": 3.875
+    "start": 3.637,
+    "end": 3.814
    },
    {
     "w": "todo",
-    "start": 3.875,
-    "end": 4.161
+    "start": 3.814,
+    "end": 4.027
    },
    {
     "w": "empezó",
-    "start": 4.161,
-    "end": 4.589
+    "start": 4.027,
+    "end": 4.416
    },
    {
     "w": "con",
-    "start": 4.589,
-    "end": 4.804
+    "start": 4.416,
+    "end": 4.558
    },
    {
     "w": "una",
-    "start": 4.804,
-    "end": 4.946
+    "start": 4.558,
+    "end": 4.699
    },
    {
     "w": "entrevista",
-    "start": 4.946,
-    "end": 5.411
+    "start": 4.699,
+    "end": 5.177
    },
    {
     "w": "de",
-    "start": 5.411,
-    "end": 5.518
+    "start": 5.177,
+    "end": 5.265
    },
    {
     "w": "trabajo.",
-    "start": 5.518,
-    "end": 5.911
+    "start": 5.265,
+    "end": 5.637
    }
   ]
  },
  {
   "text": "¿Han recuperado el dinero? Al final te lo digo.",
-  "start": 6.179,
-  "end": 8.161,
+  "start": 5.903,
+  "end": 7.938,
   "words": [
    {
     "w": "¿Han",
-    "start": 6.179,
-    "end": 6.357
+    "start": 5.903,
+    "end": 6.097
    },
    {
     "w": "recuperado",
-    "start": 6.357,
-    "end": 6.821
+    "start": 6.097,
+    "end": 6.558
    },
    {
     "w": "el",
-    "start": 6.821,
-    "end": 6.929
+    "start": 6.558,
+    "end": 6.628
    },
    {
     "w": "dinero?",
-    "start": 6.929,
-    "end": 7.33
+    "start": 6.628,
+    "end": 7.106
    },
    {
     "w": "Al",
-    "start": 7.33,
-    "end": 7.545
+    "start": 7.106,
+    "end": 7.23
    },
    {
     "w": "final",
-    "start": 7.545,
-    "end": 7.688
+    "start": 7.23,
+    "end": 7.513
    },
    {
     "w": "te",
-    "start": 7.688,
-    "end": 7.795
+    "start": 7.513,
+    "end": 7.602
    },
    {
     "w": "lo",
-    "start": 7.795,
-    "end": 7.962
+    "start": 7.602,
+    "end": 7.69
    },
    {
     "w": "digo.",
-    "start": 7.962,
-    "end": 8.161
+    "start": 7.69,
+    "end": 7.938
    }
   ]
  },
  {
   "text": "Binance, la mayor plataforma de criptomonedas, guarda parte del dinero en carteras conectadas a internet.",
-  "start": 8.482,
-  "end": 13.607,
+  "start": 8.292,
+  "end": 13.23,
   "words": [
    {
     "w": "Binance,",
-    "start": 8.482,
-    "end": 9.205
+    "start": 8.292,
+    "end": 8.965
    },
    {
     "w": "la",
-    "start": 9.205,
-    "end": 9.348
+    "start": 8.965,
+    "end": 9.053
    },
    {
     "w": "mayor",
-    "start": 9.348,
-    "end": 9.563
+    "start": 9.053,
+    "end": 9.319
    },
    {
     "w": "plataforma",
-    "start": 9.563,
-    "end": 10.063
+    "start": 9.319,
+    "end": 9.779
    },
    {
     "w": "de",
-    "start": 10.063,
-    "end": 10.241
+    "start": 9.779,
+    "end": 9.867
    },
    {
     "w": "criptomonedas,",
-    "start": 10.241,
-    "end": 11.036
+    "start": 9.867,
+    "end": 10.717
    },
    {
     "w": "guarda",
-    "start": 11.036,
-    "end": 11.321
+    "start": 10.717,
+    "end": 11.018
    },
    {
     "w": "parte",
-    "start": 11.321,
-    "end": 11.607
+    "start": 11.018,
+    "end": 11.248
    },
    {
     "w": "del",
-    "start": 11.607,
-    "end": 11.75
+    "start": 11.248,
+    "end": 11.389
    },
    {
     "w": "dinero",
-    "start": 11.75,
-    "end": 12.036
+    "start": 11.389,
+    "end": 11.673
    },
    {
     "w": "en",
-    "start": 12.036,
-    "end": 12.143
+    "start": 11.673,
+    "end": 11.796
    },
    {
     "w": "carteras",
-    "start": 12.143,
-    "end": 12.607
+    "start": 11.796,
+    "end": 12.221
    },
    {
     "w": "conectadas",
-    "start": 12.607,
-    "end": 13.071
+    "start": 12.221,
+    "end": 12.717
    },
    {
     "w": "a",
-    "start": 13.071,
-    "end": 13.357
+    "start": 12.717,
+    "end": 12.788
    },
    {
     "w": "internet.",
-    "start": 13.357,
-    "end": 13.607
+    "start": 12.788,
+    "end": 13.23
    }
   ]
  },
  {
   "text": "Uno de sus ingenieros recibe una oferta de trabajo.",
-  "start": 13.777,
-  "end": 16.232,
+  "start": 13.425,
+  "end": 15.788,
   "words": [
    {
     "w": "Uno",
-    "start": 13.777,
-    "end": 13.955
+    "start": 13.425,
+    "end": 13.584
    },
    {
     "w": "de",
-    "start": 13.955,
-    "end": 14.063
+    "start": 13.584,
+    "end": 13.673
    },
    {
     "w": "sus",
-    "start": 14.063,
-    "end": 14.205
+    "start": 13.673,
+    "end": 13.832
    },
    {
     "w": "ingenieros",
-    "start": 14.205,
-    "end": 14.884
+    "start": 13.832,
+    "end": 14.469
    },
    {
     "w": "recibe",
-    "start": 14.884,
-    "end": 15.205
+    "start": 14.469,
+    "end": 14.823
    },
    {
     "w": "una",
-    "start": 15.205,
-    "end": 15.42
+    "start": 14.823,
+    "end": 14.965
    },
    {
     "w": "oferta",
-    "start": 15.42,
-    "end": 15.741
+    "start": 14.965,
+    "end": 15.301
    },
    {
     "w": "de",
-    "start": 15.741,
-    "end": 15.848
+    "start": 15.301,
+    "end": 15.407
    },
    {
     "w": "trabajo.",
-    "start": 15.848,
-    "end": 16.232
+    "start": 15.407,
+    "end": 15.788
    }
   ]
  },
  {
   "text": "Dos videollamadas: recursos humanos… y el jefe de una empresa que no existe.",
-  "start": 16.455,
-  "end": 20.777,
+  "start": 16.053,
+  "end": 20.363,
   "words": [
    {
     "w": "Dos",
-    "start": 16.455,
-    "end": 16.67
+    "start": 16.053,
+    "end": 16.248
    },
    {
     "w": "videollamadas:",
-    "start": 16.67,
-    "end": 17.598
+    "start": 16.248,
+    "end": 17.186
    },
    {
     "w": "recursos",
-    "start": 17.598,
-    "end": 18.027
+    "start": 17.186,
+    "end": 17.575
    },
    {
     "w": "humanos…",
-    "start": 18.027,
-    "end": 18.768
+    "start": 17.575,
+    "end": 18.372
    },
    {
     "w": "y",
-    "start": 18.768,
-    "end": 18.875
+    "start": 18.372,
+    "end": 18.46
    },
    {
     "w": "el",
-    "start": 18.875,
-    "end": 18.982
+    "start": 18.46,
+    "end": 18.602
    },
    {
     "w": "jefe",
-    "start": 18.982,
-    "end": 19.268
+    "start": 18.602,
+    "end": 18.85
    },
    {
     "w": "de",
-    "start": 19.268,
-    "end": 19.411
+    "start": 18.85,
+    "end": 18.956
    },
    {
     "w": "una",
-    "start": 19.411,
-    "end": 19.696
+    "start": 18.956,
+    "end": 19.08
    },
    {
     "w": "empresa",
-    "start": 19.696,
-    "end": 19.982
+    "start": 19.08,
+    "end": 19.575
    },
    {
     "w": "que",
-    "start": 19.982,
-    "end": 20.196
+    "start": 19.575,
+    "end": 19.788
    },
    {
     "w": "no",
-    "start": 20.196,
-    "end": 20.339
+    "start": 19.788,
+    "end": 19.947
    },
    {
     "w": "existe.",
-    "start": 20.339,
-    "end": 20.777
+    "start": 19.947,
+    "end": 20.363
    }
   ]
  },
  {
   "text": "Y una prueba: ejecutar un código en el ordenador del trabajo.",
-  "start": 20.938,
-  "end": 23.795,
+  "start": 20.558,
+  "end": 23.381,
   "words": [
    {
     "w": "Y",
-    "start": 20.938,
-    "end": 21.045
+    "start": 20.558,
+    "end": 20.717
    },
    {
     "w": "una",
-    "start": 21.045,
-    "end": 21.259
+    "start": 20.717,
+    "end": 20.894
    },
    {
     "w": "prueba:",
-    "start": 21.259,
-    "end": 21.777
+    "start": 20.894,
+    "end": 21.345
    },
    {
     "w": "ejecutar",
-    "start": 21.777,
-    "end": 22.205
+    "start": 21.345,
+    "end": 21.788
    },
    {
     "w": "un",
-    "start": 22.205,
-    "end": 22.348
+    "start": 21.788,
+    "end": 21.929
    },
    {
     "w": "código",
-    "start": 22.348,
-    "end": 22.634
+    "start": 21.929,
+    "end": 22.23
    },
    {
     "w": "en",
-    "start": 22.634,
-    "end": 22.741
+    "start": 22.23,
+    "end": 22.336
    },
    {
     "w": "el",
-    "start": 22.741,
-    "end": 22.884
+    "start": 22.336,
+    "end": 22.442
    },
    {
     "w": "ordenador",
-    "start": 22.884,
-    "end": 23.277
+    "start": 22.442,
+    "end": 22.885
    },
    {
     "w": "del",
-    "start": 23.277,
-    "end": 23.384
+    "start": 22.885,
+    "end": 23.009
    },
    {
     "w": "trabajo.",
-    "start": 23.384,
-    "end": 23.795
+    "start": 23.009,
+    "end": 23.381
    }
   ]
  },
  {
   "text": "Dentro iba un programa espía que el antivirus no detectó.",
-  "start": 23.982,
-  "end": 26.902,
+  "start": 23.619,
+  "end": 26.496,
   "words": [
    {
     "w": "Dentro",
-    "start": 23.982,
-    "end": 24.482
+    "start": 23.619,
+    "end": 24.097
    },
    {
     "w": "iba",
-    "start": 24.482,
-    "end": 24.696
+    "start": 24.097,
+    "end": 24.257
    },
    {
     "w": "un",
-    "start": 24.696,
-    "end": 24.911
+    "start": 24.257,
+    "end": 24.345
    },
    {
     "w": "programa",
-    "start": 24.911,
-    "end": 25.125
+    "start": 24.345,
+    "end": 24.699
    },
    {
     "w": "espía",
-    "start": 25.125,
-    "end": 25.518
+    "start": 24.699,
+    "end": 25.124
    },
    {
     "w": "que",
-    "start": 25.518,
-    "end": 25.625
+    "start": 25.124,
+    "end": 25.212
    },
    {
     "w": "el",
-    "start": 25.625,
-    "end": 25.768
+    "start": 25.212,
+    "end": 25.319
    },
    {
     "w": "antivirus",
-    "start": 25.768,
-    "end": 26.339
+    "start": 25.319,
+    "end": 25.938
    },
    {
     "w": "no",
-    "start": 26.339,
-    "end": 26.482
+    "start": 25.938,
+    "end": 26.062
    },
    {
     "w": "detectó.",
-    "start": 26.482,
-    "end": 26.902
+    "start": 26.062,
+    "end": 26.496
    }
   ]
  },
  {
   "text": "Pero no robaron nada. Esperaron.",
-  "start": 27.063,
-  "end": 28.75,
+  "start": 26.673,
+  "end": 28.354,
   "words": [
    {
     "w": "Pero",
-    "start": 27.063,
-    "end": 27.33
+    "start": 26.673,
+    "end": 26.956
    },
    {
     "w": "no",
-    "start": 27.33,
-    "end": 27.438
+    "start": 26.956,
+    "end": 27.097
    },
    {
     "w": "robaron",
-    "start": 27.438,
-    "end": 27.795
+    "start": 27.097,
+    "end": 27.469
    },
    {
     "w": "nada.",
-    "start": 27.795,
-    "end": 28.196
+    "start": 27.469,
+    "end": 27.858
    },
    {
     "w": "Esperaron.",
-    "start": 28.196,
-    "end": 28.75
+    "start": 27.858,
+    "end": 28.354
    }
   ]
  },
  {
   "text": "Con una IA de la propia empresa, saltaron a los ordenadores de otros dos ingenieros.",
-  "start": 29.071,
-  "end": 33.777,
+  "start": 28.69,
+  "end": 33.363,
   "words": [
    {
     "w": "Con",
-    "start": 29.071,
-    "end": 29.214
+    "start": 28.69,
+    "end": 28.814
    },
    {
     "w": "una",
-    "start": 29.214,
-    "end": 29.357
+    "start": 28.814,
+    "end": 28.938
    },
    {
     "w": "IA",
-    "start": 29.357,
-    "end": 30.357
+    "start": 28.938,
+    "end": 29.982
    },
    {
     "w": "de",
-    "start": 30.357,
-    "end": 30.464
+    "start": 29.982,
+    "end": 30.071
    },
    {
     "w": "la",
-    "start": 30.464,
-    "end": 30.571
+    "start": 30.071,
+    "end": 30.177
    },
    {
     "w": "propia",
-    "start": 30.571,
-    "end": 31.0
+    "start": 30.177,
+    "end": 30.442
    },
    {
     "w": "empresa,",
-    "start": 31.0,
-    "end": 31.438
+    "start": 30.442,
+    "end": 31.062
    },
    {
     "w": "saltaron",
-    "start": 31.438,
-    "end": 31.866
+    "start": 31.062,
+    "end": 31.469
    },
    {
     "w": "a",
-    "start": 31.866,
-    "end": 31.938
+    "start": 31.469,
+    "end": 31.565
    },
    {
     "w": "los",
-    "start": 31.938,
-    "end": 32.08
+    "start": 31.565,
+    "end": 31.681
    },
    {
     "w": "ordenadores",
-    "start": 32.08,
-    "end": 32.616
+    "start": 31.681,
+    "end": 32.195
    },
    {
     "w": "de",
-    "start": 32.616,
-    "end": 32.795
+    "start": 32.195,
+    "end": 32.301
    },
    {
     "w": "otros",
-    "start": 32.795,
-    "end": 33.009
+    "start": 32.301,
+    "end": 32.619
    },
    {
     "w": "dos",
-    "start": 33.009,
-    "end": 33.295
+    "start": 32.619,
+    "end": 32.832
    },
    {
     "w": "ingenieros.",
-    "start": 33.295,
-    "end": 33.777
+    "start": 32.832,
+    "end": 33.363
    }
   ]
  },
  {
   "text": "El 29 de octubre atacan: en unos 20 minutos, más de 6.000 millones salen por diez cadenas de bloques.",
-  "start": 33.938,
-  "end": 39.955,
+  "start": 33.549,
+  "end": 39.54,
   "words": [
    {
     "w": "El",
-    "start": 33.938,
-    "end": 34.036
+    "start": 33.549,
+    "end": 33.708
    },
    {
     "w": "29",
-    "start": 34.036,
-    "end": 34.536
+    "start": 33.708,
+    "end": 34.115
    },
    {
     "w": "de",
-    "start": 34.536,
-    "end": 34.607
+    "start": 34.115,
+    "end": 34.186
    },
    {
     "w": "octubre",
-    "start": 34.607,
-    "end": 35.071
+    "start": 34.186,
+    "end": 34.593
    },
    {
     "w": "atacan:",
-    "start": 35.071,
-    "end": 35.598
+    "start": 34.593,
+    "end": 35.186
    },
    {
     "w": "en",
-    "start": 35.598,
-    "end": 35.777
+    "start": 35.186,
+    "end": 35.292
    },
    {
     "w": "unos",
-    "start": 35.777,
-    "end": 35.955
+    "start": 35.292,
+    "end": 35.504
    },
    {
     "w": "20",
-    "start": 35.955,
-    "end": 36.241
+    "start": 35.504,
+    "end": 35.788
    },
    {
     "w": "minutos,",
-    "start": 36.241,
-    "end": 36.938
+    "start": 35.788,
+    "end": 36.487
    },
    {
     "w": "más",
-    "start": 36.938,
-    "end": 37.152
+    "start": 36.487,
+    "end": 36.664
    },
    {
     "w": "de",
-    "start": 37.152,
-    "end": 37.259
+    "start": 36.664,
+    "end": 36.823
    },
    {
     "w": "6.000",
-    "start": 37.259,
-    "end": 37.795
+    "start": 36.823,
+    "end": 37.389
    },
    {
     "w": "millones",
-    "start": 37.795,
-    "end": 38.366
+    "start": 37.389,
+    "end": 37.973
    },
    {
     "w": "salen",
-    "start": 38.366,
-    "end": 38.723
+    "start": 37.973,
+    "end": 38.274
    },
    {
     "w": "por",
-    "start": 38.723,
-    "end": 38.866
+    "start": 38.274,
+    "end": 38.451
    },
    {
     "w": "diez",
-    "start": 38.866,
-    "end": 39.08
+    "start": 38.451,
+    "end": 38.717
    },
    {
     "w": "cadenas",
-    "start": 39.08,
-    "end": 39.473
+    "start": 38.717,
+    "end": 39.071
    },
    {
     "w": "de",
-    "start": 39.473,
-    "end": 39.58
+    "start": 39.071,
+    "end": 39.159
    },
    {
     "w": "bloques.",
-    "start": 39.58,
-    "end": 39.955
+    "start": 39.159,
+    "end": 39.54
    }
   ]
  },
  {
   "text": "El mayor robo de criptomonedas de la historia: cuatro veces el récord anterior.",
-  "start": 40.17,
-  "end": 44.027,
+  "start": 39.735,
+  "end": 43.54,
   "words": [
    {
     "w": "El",
-    "start": 40.17,
-    "end": 40.313
+    "start": 39.735,
+    "end": 39.894
    },
    {
     "w": "mayor",
-    "start": 40.313,
-    "end": 40.67
+    "start": 39.894,
+    "end": 40.266
    },
    {
     "w": "robo",
-    "start": 40.67,
-    "end": 40.955
+    "start": 40.266,
+    "end": 40.478
    },
    {
     "w": "de",
-    "start": 40.955,
-    "end": 41.027
+    "start": 40.478,
+    "end": 40.584
    },
    {
     "w": "criptomonedas",
-    "start": 41.027,
-    "end": 41.705
+    "start": 40.584,
+    "end": 41.239
    },
    {
     "w": "de",
-    "start": 41.705,
-    "end": 41.777
+    "start": 41.239,
+    "end": 41.327
    },
    {
     "w": "la",
-    "start": 41.777,
-    "end": 41.884
+    "start": 41.327,
+    "end": 41.398
    },
    {
     "w": "historia:",
-    "start": 41.884,
-    "end": 42.464
+    "start": 41.398,
+    "end": 41.991
    },
    {
     "w": "cuatro",
-    "start": 42.464,
-    "end": 42.786
+    "start": 41.991,
+    "end": 42.327
    },
    {
     "w": "veces",
-    "start": 42.786,
-    "end": 43.143
+    "start": 42.327,
+    "end": 42.664
    },
    {
     "w": "el",
-    "start": 43.143,
-    "end": 43.286
+    "start": 42.664,
+    "end": 42.823
    },
    {
     "w": "récord",
-    "start": 43.286,
-    "end": 43.643
+    "start": 42.823,
+    "end": 43.106
    },
    {
     "w": "anterior.",
-    "start": 43.643,
-    "end": 44.027
+    "start": 43.106,
+    "end": 43.54
    }
   ]
  },
  {
   "text": "El FBI se lo atribuye a hackers de Corea del Norte, que lo niegan.",
-  "start": 44.205,
-  "end": 47.339,
+  "start": 43.735,
+  "end": 46.85,
   "words": [
    {
     "w": "El",
-    "start": 44.205,
-    "end": 44.313
+    "start": 43.735,
+    "end": 43.894
    },
    {
     "w": "FBI",
-    "start": 44.313,
-    "end": 44.813
+    "start": 43.894,
+    "end": 44.336
    },
    {
     "w": "se",
-    "start": 44.813,
-    "end": 44.92
+    "start": 44.336,
+    "end": 44.425
    },
    {
     "w": "lo",
-    "start": 44.92,
-    "end": 45.063
+    "start": 44.425,
+    "end": 44.513
    },
    {
     "w": "atribuye",
-    "start": 45.063,
-    "end": 45.42
+    "start": 44.513,
+    "end": 44.92
    },
    {
     "w": "a",
-    "start": 45.42,
-    "end": 45.563
+    "start": 44.92,
+    "end": 45.044
    },
    {
     "w": "hackers",
-    "start": 45.563,
-    "end": 45.848
+    "start": 45.044,
+    "end": 45.363
    },
    {
     "w": "de",
-    "start": 45.848,
-    "end": 45.955
+    "start": 45.363,
+    "end": 45.469
    },
    {
     "w": "Corea",
-    "start": 45.955,
-    "end": 46.241
+    "start": 45.469,
+    "end": 45.717
    },
    {
     "w": "del",
-    "start": 46.241,
-    "end": 46.408
+    "start": 45.717,
+    "end": 45.876
    },
    {
     "w": "Norte,",
-    "start": 46.408,
-    "end": 46.777
+    "start": 45.876,
+    "end": 46.319
    },
    {
     "w": "que",
-    "start": 46.777,
-    "end": 46.884
+    "start": 46.319,
+    "end": 46.407
    },
    {
     "w": "lo",
-    "start": 46.884,
-    "end": 46.955
+    "start": 46.407,
+    "end": 46.513
    },
    {
     "w": "niegan.",
-    "start": 46.955,
-    "end": 47.339
+    "start": 46.513,
+    "end": 46.85
    }
   ]
  },
  {
   "text": "¿Y el dinero? Unos 2.850 millones se han congelado.",
-  "start": 47.607,
-  "end": 51.107,
+  "start": 47.115,
+  "end": 50.54,
   "words": [
    {
     "w": "¿Y",
-    "start": 47.607,
-    "end": 47.732
+    "start": 47.115,
+    "end": 47.248
    },
    {
     "w": "el",
-    "start": 47.732,
-    "end": 47.804
+    "start": 47.248,
+    "end": 47.336
    },
    {
     "w": "dinero?",
-    "start": 47.804,
-    "end": 48.304
+    "start": 47.336,
+    "end": 47.85
    },
    {
     "w": "Unos",
-    "start": 48.304,
-    "end": 48.554
+    "start": 47.85,
+    "end": 48.08
    },
    {
     "w": "2.850",
-    "start": 48.554,
-    "end": 49.768
+    "start": 48.08,
+    "end": 49.336
    },
    {
     "w": "millones",
-    "start": 49.768,
-    "end": 50.339
+    "start": 49.336,
+    "end": 49.761
    },
    {
     "w": "se",
-    "start": 50.339,
-    "end": 50.482
+    "start": 49.761,
+    "end": 49.867
    },
    {
     "w": "han",
-    "start": 50.482,
-    "end": 50.625
+    "start": 49.867,
+    "end": 50.027
    },
    {
     "w": "congelado.",
-    "start": 50.625,
-    "end": 51.107
+    "start": 50.027,
+    "end": 50.54
    }
   ]
  },
  {
   "text": "El resto lo ha puesto Binance: dice que ningún cliente ha perdido nada.",
-  "start": 51.295,
-  "end": 54.759,
+  "start": 50.735,
+  "end": 54.159,
   "words": [
    {
     "w": "El",
-    "start": 51.295,
-    "end": 51.473
+    "start": 50.735,
+    "end": 50.858
    },
    {
     "w": "resto",
-    "start": 51.473,
-    "end": 51.723
+    "start": 50.858,
+    "end": 51.177
    },
    {
     "w": "lo",
-    "start": 51.723,
-    "end": 51.83
+    "start": 51.177,
+    "end": 51.266
    },
    {
     "w": "ha",
-    "start": 51.83,
-    "end": 51.938
+    "start": 51.266,
+    "end": 51.372
    },
    {
     "w": "puesto",
-    "start": 51.938,
-    "end": 52.223
+    "start": 51.372,
+    "end": 51.655
    },
    {
     "w": "Binance:",
-    "start": 52.223,
-    "end": 52.857
+    "start": 51.655,
+    "end": 52.283
    },
    {
     "w": "dice",
-    "start": 52.857,
-    "end": 53.143
+    "start": 52.283,
+    "end": 52.566
    },
    {
     "w": "que",
-    "start": 53.143,
-    "end": 53.321
+    "start": 52.566,
+    "end": 52.69
    },
    {
     "w": "ningún",
-    "start": 53.321,
-    "end": 53.786
+    "start": 52.69,
+    "end": 53.062
    },
    {
     "w": "cliente",
-    "start": 53.786,
-    "end": 54.036
+    "start": 53.062,
+    "end": 53.451
    },
    {
     "w": "ha",
-    "start": 54.036,
-    "end": 54.143
+    "start": 53.451,
+    "end": 53.575
    },
    {
     "w": "perdido",
-    "start": 54.143,
-    "end": 54.5
+    "start": 53.575,
+    "end": 53.929
    },
    {
     "w": "nada.",
-    "start": 54.5,
-    "end": 54.759
+    "start": 53.929,
+    "end": 54.159
    }
   ]
  },
  {
   "text": "Si en una entrevista te piden descargar algo… sospecha.",
-  "start": 55.08,
-  "end": 57.99,
+  "start": 54.54,
+  "end": 57.511,
   "words": [
    {
     "w": "Si",
-    "start": 55.08,
-    "end": 55.223
+    "start": 54.54,
+    "end": 54.646
    },
    {
     "w": "en",
-    "start": 55.223,
-    "end": 55.33
+    "start": 54.646,
+    "end": 54.752
    },
    {
     "w": "una",
-    "start": 55.33,
-    "end": 55.438
+    "start": 54.752,
+    "end": 54.876
    },
    {
     "w": "entrevista",
-    "start": 55.438,
-    "end": 55.938
+    "start": 54.876,
+    "end": 55.407
    },
    {
     "w": "te",
-    "start": 55.938,
-    "end": 56.08
+    "start": 55.407,
+    "end": 55.531
    },
    {
     "w": "piden",
-    "start": 56.08,
-    "end": 56.402
+    "start": 55.531,
+    "end": 55.797
    },
    {
     "w": "descargar",
-    "start": 56.402,
-    "end": 56.795
+    "start": 55.797,
+    "end": 56.274
    },
    {
     "w": "algo…",
-    "start": 56.795,
-    "end": 57.449
+    "start": 56.274,
+    "end": 57.001
    },
    {
     "w": "sospecha.",
-    "start": 57.449,
-    "end": 57.99
+    "start": 57.001,
+    "end": 57.511
    }
   ]
  }

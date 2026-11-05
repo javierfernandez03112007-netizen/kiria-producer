@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.audio import silences  # noqa: E402
 
 SR = 44100
-TEMPO = 1.12          # para quedarse en ≈ 60 s (Javi: vídeos de 60 s como mucho)
+TEMPO = 1.13          # para quedarse en 60 s (Javi: vídeos de 60 s como mucho); con la voz de Javi (5-11-2026) 1,12 daba 61 s
 PAUSE = {1: 0.3, 2: 0.32, 8: 0.36, 12: 0.3, 14: 0.3}   # pausa tras la frase i: el gancho, la pregunta, «Esperaron», el FBI y la respuesta
 PAUSE_DEF = 0.18
 INNER_MAX = 0.15      # silencios internos (comas, puntos dentro de la frase) como máximo

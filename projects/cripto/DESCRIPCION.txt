@@ -31,6 +31,7 @@ COMENTARIO FIJADO:
 ---
 
 NOTAS DE ENTREGA:
-- Voz: Danny (ElevenLabs, eleven_v4, estabilidad 0,50, similitud 0,75: los ajustes de Javi), generada con engine/tts.py.
+- Voz: la de Javi (su MP3 de ElevenLabs: Danny, v4, estabilidad 0,50, similitud 0,75, 71 s), con los tiempos de cada palabra de
+  engine/alinear.py y ajustada a ×1,13 sin pausas largas (57,7 s; vídeo de 60 s).
 - Datos: ver FUENTES.md (todo con fuente; las cifras, redondeadas a la baja).
 - Las videollamadas, los avatares, la oferta y las pantallas son una recreación. Sin logotipos.
