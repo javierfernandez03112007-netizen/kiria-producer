@@ -40,6 +40,7 @@ if (process.env.COVER) { await page.evaluate(() => window.renderCover()); await 
 for (const f of frames) {
   if (process.env.SKIP && fs.existsSync(path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`))) continue;
   await page.evaluate(t => window.renderAt(t), f / FPS);
+  await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));   // que se pinten las dos capas
   await page.screenshot({ path: path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 93 });
 }
 console.log(`ok ${frames.length} frames en ${((Date.now() - t0) / 1000).toFixed(1)} s`);
