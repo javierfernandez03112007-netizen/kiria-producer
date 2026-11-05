@@ -89,9 +89,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   y salta a otros dos portátiles; 1.400 monedas salen por diez cadenas de bloques con reloj 00:00→20:00; torres del récord (×4 frente a
   Bybit 2025); FBI / «LO NIEGAN»; cuatro cadenas se congelan (≈ 2.850 M$); la cartera se vuelve a llenar («LO PONE BINANCE»); «SOSPECHA».
   Datos en `FUENTES.md`; cabecera con «VÍDEO HECHO CON IA · KIRIAAI.COM» y comentario fijado con la web. Se montó primero con la voz de
-  Danny generada por mí (`engine/tts.py`, ×1,12): **error de orden**, Javi quiere dar él la voz → con su MP3 se re-sincroniza
-  (`tiempos.json`) y se vuelve a renderizar. Ojo: el trozo 900–1440 se cayó en la máquina 2 (se cerró Chromium) y lo reanudó ella misma;
-  los registros (`fetch.log`, eventos de las sesiones) van en hora UTC (Madrid = UTC+1 en noviembre).
+  Danny generada por mí (`engine/tts.py`, ×1,12): **error de orden**, Javi dio él la voz (su MP3 de 71 s, «…pvc_s50_sim75_v4») →
+  tiempos por palabra con `engine/alinear.py`, ×1,13 para 60 s, y se volvió a renderizar entero (ramas `render-crv-*`, ≈ 35 min con las
+  6 máquinas + esta; la versión provisional quedó en `out/old_tts/`). En la revisión, el sello «29 OCT 2026» y el reloj se pisaban
+  ≈ 0,7 s: arreglado en `40_hudplan.js` y rehechos solo los fotogramas 2100–2175. **Entregado el 5-11-2026** (`out/cripto.mp4`, 60 s,
+  −14,9 LUFS; subida vie 6 a las 18:00). Notion: fila «El mayor robo cripto (hackeo a Binance)».
+  Ojo: el trozo 900–1440 se cayó en la máquina 2 (se cerró Chromium) y lo reanudó ella misma; los registros (`fetch.log`, eventos de las
+  sesiones) van en hora UTC (Madrid = UTC+1 en noviembre). Al volver a renderizar, usar un prefijo de ramas NUEVO (si no, `fetch_compose.sh`
+  mete los trozos viejos) y quitar `out/DONE`.
 - **Lanzamiento 2 · Tu producto, en 3D** (`projects/lanzamiento2/`, 5-11-2026): 6 frases, 23 s, sin precios. Un tarro «TU MARCA · Fresa»
   sale de una polaroid y salta a la peana del visor de kiriaai.com; las seis presentaciones (caja, bolsa, tarro, botella, lata, taza) son
   las mismas formas y etiquetas que la web (código portado de `web_estudio/index.html` a `web/src/12_l2.js`); móvil con la tienda (el dedo
@@ -172,6 +177,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   **no le gustó el audio**: o él manda su MP3 (se sincroniza con `asr_parakeet.py` → `ajustar_voz.py`) o se usa `engine/tts.py`
   (ya con sus ajustes). **Efectos: solo de ElevenLabs, uno por suceso, en el instante exacto y cortados cuando el suceso termina**
   (nada de fondo continuo ni sonidos sintetizados). Modelo de Parakeet: se baja de las «releases» de sherpa-onnx en GitHub (≈ 490 MB).
+- **Voz de Javi (su MP3) → tiempos por palabra**: copiarlo a `projects/<p>/assets/voz_original.mp3` y
+  `ELEVENLABS_KEY_FILE=<archivo fuera del repo> python3 engine/alinear.py projects/<p>` (Scribe de ElevenLabs: la clave no tiene permiso
+  de alineación forzada; la del entorno da «Invalid API key») → `ajustar_voz.py` → `env_voz.py`. Sin descargar Parakeet. ≈ 1 min.
 - **Voz y efectos desde la sesión**: `python3 engine/tts.py projects/<p>` (voz de Danny + tiempos de cada palabra, sin reconocedor)
   → `ajustar_voz.py` → `env_voz.py`; efectos realistas: `projects/magisterio/sfx_eleven.py` (copiar y cambiar la lista).
 - **`ajustar_voz.py`: copiar el de `projects/lanzamiento/`** (4-11-2026). En los demás proyectos el recorte de silencios QUITA del centro

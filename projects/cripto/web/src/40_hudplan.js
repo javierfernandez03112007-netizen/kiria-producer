@@ -54,7 +54,8 @@ function hudAt(t) {
   lab(wpo(S.lap, 0, 0.42, -0.2), 'IA DE LA EMPRESA', null, cw(t, K.ia9, K.saltaron9), { dx: 120, dy: -150, color: HC.red });
   S.side.forEach((l, i) => lab(wpo(l, 0, 0.45, -0.2), i ? 'INGENIERO 3' : 'INGENIERO 2', null, cw(t, TT.land - 0.2, K.n29_10), { dx: i ? -40 : 40, dy: -150, color: HC.red }));
   // 10: el día, el reloj y las cadenas
-  { const k = cwin(t, K.n29_10 - 0.05, K.minutos10, 0.2, 0.3); if (k > 0.01) stamp('29 OCT 2026', W / 2, 1480, k, HC.red, 70); }
+  // el sello se va antes de que salga el reloj (en el mismo sitio): con la voz de Javi se pisaban ≈ 0,7 s
+  { const k = cwin(t, K.n29_10 - 0.05, TT.timer0 - 0.35, 0.2, 0.25); if (k > 0.01) stamp('29 OCT 2026', W / 2, 1480, k, HC.red, 70); }
   timerHud(t);
   lab(S.chains[NCH - 2].curve.getPointAt(0.55), '10 CADENAS DE BLOQUES', null, cw(t, K.cadenas10, K.mayor11 - 0.1), { dx: -150, dy: -140, color: HC.white });
   // 11: las torres
