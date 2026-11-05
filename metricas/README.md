@@ -13,7 +13,7 @@ Petición de Javi (5 nov 2026): recopilar cada 12 h los datos de cada vídeo de 
   Una fila por vídeo y captura: Captura («<vídeo> · dd/mm hh:mm»), Vídeo (relación), Capturado, Horas desde publicación,
   Visitas, **Visitas nuevas** (diferencia con la captura anterior), Alcance, Me gusta, Comentarios, Guardados, Compartidos,
   Interacciones, Engagement (%), Tiempo medio visto (s), Vistas de más de 3 s (%). Vistas «🕒 Últimas capturas» y gráfico
-  «Visitas nuevas por captura».
+  «Visitas nuevas por día».
 
 ## Tarea programada
 Esta sesión (`session_014gBm8Nojm4JMj7MbLpxerp`) tiene la tarea «Métricas kiria.ai y Bomberados a Notion»
