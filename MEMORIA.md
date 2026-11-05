@@ -71,6 +71,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **Lanzamiento 2 · Tu producto, en 3D** (`projects/lanzamiento2/`, 5-11-2026): 6 frases, 23 s, sin precios. Un tarro «TU MARCA · Fresa»
+  sale de una polaroid y salta a la peana del visor de kiriaai.com; las seis presentaciones (caja, bolsa, tarro, botella, lata, taza) son
+  las mismas formas y etiquetas que la web (código portado de `web_estudio/index.html` a `web/src/12_l2.js`); móvil con la tienda (el dedo
+  gira el tarro y lo añade a la cesta), vídeo en redes, «DOMINGO» y «Pruébalo con el tuyo»; cierre «comenta KIRIA». Voz Danny v4 (×1,04),
+  efectos del lanzamiento 1. **Entregado el 5-11-2026** (`out/lanzamiento2.mp4`, −15,1 LUFS, ramas `render-l2-*`; subida vie 6 a las 10:00).
+  Ojo: los reinicios de la sesión matan los procesos en segundo plano (render local y `fetch_compose.sh`): comprobar y relanzar.
 - **Química vs Ingeniería Química** (`projects/quimica/`, 4/5-11-2026): duelo de carreras (Javi: «el de magisterio ya está subido hazme el
   de quimica»). Gancho: una fábrica química en miniatura dentro de un tubo de ensayo que rompe el cristal y crece hasta su tamaño real;
   laboratorio delante y planta (reactor, columna, tuberías, camión cisterna) detrás, en un solo plano. 12 frases, voz Danny v4 con los
