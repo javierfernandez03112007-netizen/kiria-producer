@@ -78,6 +78,10 @@ Todo lo de la marca, el estado de cada vídeo, Notion y la siguiente tarea (Preg
   - Base «Calendario de contenido» (collection://c194bf8b-4e4a-46b8-b6ad-c1953f4d0f2b): cada vídeo con estado, formato, gancho,
     fecha y métricas. Al terminar un vídeo o recibir datos, actualizarla.
   - Base «Clientes y marcas» (collection://2bea0963-17fa-474e-b9e2-42839b86e428): empresas, qué se hizo, permisos, logo, precio.
+  - **Métricas automáticas cada 12 h** (Javi, 5 nov): BD «📊 Métricas por vídeo» (collection://e7139401-c71c-4076-af0b-95353fb25eb0)
+    y «🕒 Historial de métricas (cada 12 h)» (collection://c8ba2abc-2a70-4b2d-975f-b6f8b67b6f0d), rellenadas desde Metricool a las
+    08:33 y 20:33 por la tarea programada de la sesión session_014gBm8Nojm4JMj7MbLpxerp. Cómo funciona: `metricas/README.md`.
+    En Metricool solo está @kiria.ai (brandId 7793103); falta conectar @elitebomberos (Bomberados).
 
 ## Canal de YouTube
 Kit hecho en `projects/canal/`: `perfil.png`, `banner.jpg`, `DESCRIPCION_CANAL.txt` («Las carreras, por dentro»).
