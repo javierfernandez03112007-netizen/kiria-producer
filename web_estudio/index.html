@@ -139,18 +139,31 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .js .rv.in { opacity: 1; transform: none; }
 .rm .rv { opacity: 1 !important; transform: none !important; }
 
+/* cuatro cuadrados (Javi, 5-11-2026: «que ocupe menos espacio»): los bloques de cuatro (formatos, nosotros, cómo trabajamos,
+   pasos de la web y anunciarse) van en cuadrados, cuatro en fila en el ordenador y 2 × 2 en el móvil.
+   Arriba la etiqueta o el número; abajo el título y una sola frase (máx. ≈ 65 caracteres para que quepa en el cuadrado del móvil). */
+.quad { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+.q { aspect-ratio: 1 / 1; max-width: 100%; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; padding: 22px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line); transition: border-color .2s; }
+.q:hover { border-color: var(--line2); }
+.q .n { font: 700 11.5px/1.35 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+.q .n.dim { color: var(--muted); }
+.q h3 { font-size: clamp(21px, 2.1vw, 27px); }
+.q p { margin-top: 9px; color: var(--ink2); font-size: 15px; line-height: 1.45; }
+@media (max-width: 1000px) { .q { padding: 16px; border-radius: 16px; gap: 10px; } .q h3 { font-size: 20px; } .q p { margin-top: 7px; font-size: 13.5px; line-height: 1.4; } }
+@media (max-width: 700px) { .quad { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+@media (max-width: 380px) { .q { padding: 13px; } .q h3 { font-size: 18px; } .q p { font-size: 13px; } }
+
 /* cifras */
 .proof { padding-block: 120px 100px; }
 .proof .big { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px 56px; align-items: end; }
 .proof .big b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(110px, 19vw, 260px); line-height: 0.82; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
 .proof .big b small { font-size: 0.5em; letter-spacing: 0; margin-left: 0.08em; color: var(--red); }
 .proof .big p { font-size: clamp(20px, 2.2vw, 28px); line-height: 1.25; max-width: 15em; text-wrap: balance; }
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; border-top: 1.5px solid var(--ink); }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 64px; border-top: 1.5px solid var(--ink); }
 .stat { padding-top: 20px; padding-right: 22px; min-width: 0; display: grid; gap: 8px; align-content: start; }
 .stat b { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 4.6vw, 62px); line-height: 1; font-variant-numeric: tabular-nums; }
 .stat p { color: var(--ink2); font-size: 15px; }
-.note { margin-top: 30px; }
-@media (max-width: 900px) { .proof .big { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } }
+@media (max-width: 900px) { .proof .big { grid-template-columns: 1fr; } .stats { margin-top: 44px; } }
 
 /* marcas */
 .clients { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
@@ -176,42 +189,8 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 @media (max-width: 1000px) { .work { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 700px) { .work { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; } .card h3 { font-size: 18px; } .card p { font-size: 13.5px; } }
 
-/* formatos */
-.formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.fmt { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: grid; gap: 12px; min-width: 0; transition: border-color .2s, transform .3s var(--ease); }
-.fmt:hover { border-color: var(--line2); transform: translateY(-2px); }
-.fmt .top2 { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
-.fmt .top2 .mono { white-space: nowrap; }
-.fmt p { color: var(--ink2); }
-.fmt .ex { color: var(--muted); font-size: 14.5px; }
-@media (max-width: 760px) { .formats { grid-template-columns: 1fr; } .fmt { padding: 22px; } }
-
-/* anatomía de un reel */
-.tl { border: 1px solid var(--line); border-radius: 18px; padding: 28px; background: var(--panel); }
-.tl .scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
-.tl .track { display: grid; grid-template-columns: 1fr 3fr 41fr 10fr 5fr; height: 44px; border-radius: 10px; overflow: hidden; gap: 2px; }
-.tl .track span { display: block; min-width: 4px; }
-.tl .legend { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
-.tl .legend div { min-width: 0; display: grid; gap: 6px; align-content: start; }
-.tl .legend i { display: block; width: 26px; height: 6px; border-radius: 3px; }
-.tl .legend b { font-size: 15px; }
-.tl .legend p { color: var(--ink2); font-size: 14px; }
-.c1 { background: var(--red); } .c2 { background: var(--violet); } .c3 { background: #3a4254; } .c4 { background: var(--blue); } .c5 { background: var(--ink); }
-@media (max-width: 860px) { .tl .legend { grid-template-columns: 1fr; } .tl { padding: 20px; } }
-
-/* proceso y entrega */
-.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; counter-reset: s; }
-.step { border-top: 1.5px solid var(--ink); padding-top: 18px; min-width: 0; display: grid; gap: 10px; align-content: start; }
-.step::before { counter-increment: s; content: "0" counter(s); font-family: var(--mono); font-weight: 700; color: var(--red); font-size: 12.5px; letter-spacing: 0.1em; }
-.step p { color: var(--ink2); font-size: 15px; }
-@media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
-.deliver { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; margin-top: 96px; }
-.specs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); }
-.specs li { display: flex; justify-content: space-between; gap: 18px; padding: 15px 20px; font-size: 15.5px; }
-.specs li + li { border-top: 1px solid var(--line); }
-.specs li span:last-child { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-align: right; }
-@media (max-width: 860px) { .deliver { grid-template-columns: 1fr; margin-top: 72px; } }
+/* cómo trabajamos: qué recibes, en una fila de etiquetas bajo los cuatro pasos */
+.recibes { display: grid; gap: 12px; margin-top: 26px; }
 
 /* el mundo */
 .world { padding-block: 112px; overflow: hidden; }
@@ -233,20 +212,15 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .ads { background: radial-gradient(900px 420px at 88% 0%, rgba(79, 125, 255, 0.16), transparent 62%), radial-gradient(760px 380px at 0% 100%, rgba(255, 77, 97, 0.12), transparent 60%), var(--night); color: var(--nightfg); padding-block: 112px; }
 .ads .mono { color: var(--nightmuted); }
 .ads .head p.sub { color: var(--nightmuted); }
-.ads-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 20px; align-items: stretch; }
-.offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.offer { background: var(--night2); border: 1px solid var(--nightline); border-radius: 18px; padding: 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.offer h3 { font-size: 24px; color: var(--nightfg); }
-.offer p { color: var(--nightmuted); font-size: 15px; }
-.offer .n { font-family: var(--mono); font-size: 11.5px; color: var(--red); letter-spacing: 0.1em; }
-.kit { background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--grad) border-box; border: 1.5px solid transparent; color: var(--ink); border-radius: 18px; padding: 28px; display: grid; gap: 18px; align-content: start; min-width: 0; }
-.kit ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.kit li { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding-block: 11px; border-top: 1px solid var(--line); font-size: 15px; color: var(--ink2); }
-.kit li b { font-family: var(--display); font-weight: 400; font-size: 26px; line-height: 1; white-space: nowrap; color: var(--ink); }
-.kit .btn { justify-self: start; }
+.ads .q { background: var(--night2); border-color: var(--nightline); }
+.ads .q h3 { color: var(--nightfg); }
+.ads .q p { color: var(--nightmuted); }
+.kit { margin-top: 14px; background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--grad) border-box; border: 1.5px solid transparent; color: var(--ink); border-radius: 18px; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; min-width: 0; }
+.kit > div:first-child { display: grid; gap: 8px; min-width: 0; }
+.kit-t { font-size: 16px; color: var(--ink2); }
+.kit-t b { font: 400 24px/1 var(--display); color: var(--ink); letter-spacing: 0.01em; }
+.kit .wbtns { margin-top: 0; padding-top: 0; }
 .legal-note { margin-top: 22px; color: var(--nightmuted); font-size: 14px; }
-@media (max-width: 900px) { .ads-grid { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .offers { grid-template-columns: 1fr; } }
 
 /* franja en movimiento */
 .marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--bg); padding-block: 26px; display: grid; gap: 4px; }
@@ -287,13 +261,8 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .manifesto .w.on { color: var(--ink); }
 .manifesto .w.hh.on { color: var(--red); }
 .manifesto .w.ha.on { color: var(--blue); }
-.pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 72px; }
-.pillar { border-top: 1.5px solid var(--ink); padding-top: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.pillar .n { font-family: var(--mono); font-size: 11.5px; color: var(--red); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-.pillar h3 { font-size: 24px; }
-.pillar p { color: var(--ink2); font-size: 15px; }
-@media (max-width: 900px) { .pillars { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .pillars { grid-template-columns: 1fr; } }
+.pillars { margin-top: 64px; }
+@media (max-width: 700px) { .pillars { margin-top: 44px; } }
 
 /* precios */
 .types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; padding: 6px; border: 1px solid var(--line); border-radius: 18px; background: var(--soft); }
@@ -331,8 +300,6 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .pcard .btn { align-self: stretch; margin-top: 6px; }
 .pcard .rec { align-self: flex-start; }
 .pcard .amount { margin-top: auto; }
-.wa-link { align-self: center; font-size: 13.5px; color: var(--muted); text-decoration: none; }
-.wa-link:hover { color: var(--ink); }
 .price-notes { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 13.5px; color: var(--muted); }
 @media (max-width: 1050px) { .prices { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .types { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -432,18 +399,11 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 /* cómo trabajamos contigo, qué incluye, planes, dudas y cierre */
 .whead { display: grid; gap: 14px; margin: 96px 0 30px; }
 .whead h3 { font-size: clamp(32px, 4vw, 52px); }
-.wsteps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; position: relative; --fill: 0; }
-.wsteps::before, .wsteps::after { content: ""; position: absolute; left: 24px; right: 24px; top: 23px; height: 2px; background: var(--line2); border-radius: 2px; }
-.wsteps::after { right: auto; width: calc((100% - 48px) * var(--fill)); background: var(--grad); }
-.wsteps li { position: relative; display: grid; gap: 10px; align-content: start; padding-right: 10px; min-width: 0; }
-.wn { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--panel); border: 1px solid var(--line2); font: 700 14px/1 var(--mono); color: var(--ink); position: relative; z-index: 1; transition: background .3s, color .3s, border-color .3s; }
+/* los cuatro pasos de la web: cuadrados como los demás; el número se enciende al bajar */
+.wn { width: 42px; height: 42px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line2); font: 700 13px/1 var(--mono); color: var(--ink); transition: background .3s, color .3s, border-color .3s; }
 .wsteps li.on .wn { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
-.wsteps h4, .wi h4 { font: 700 19px/1.2 var(--body); margin: 6px 0 0; letter-spacing: -0.005em; }
-.wsteps p, .wi p { color: var(--ink2); font-size: 15px; }
-.wincl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.wi { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 8px; align-content: start; min-width: 0; transition: border-color .2s, transform .3s var(--ease); }
-.wi:hover { border-color: var(--line2); transform: translateY(-2px); }
-.wi svg { width: 28px; height: 28px; fill: none; stroke: #c59bff; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.wsteps h4 { font: 700 19px/1.2 var(--body); margin: 0; letter-spacing: -0.005em; }
+@media (max-width: 1000px) { .wn { width: 34px; height: 34px; font-size: 12px; } .wsteps h4 { font-size: 16px; } }
 .wplans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
 .wcard { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; transition: transform .3s var(--ease), border-color .2s; }
 .wcard:hover { transform: translateY(-3px); border-color: var(--line2); }
@@ -465,8 +425,8 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .wtalk h3 { font-size: clamp(30px, 3.2vw, 42px); }
 .wtalk p { color: var(--ink2); }
 .wtalk .mail { font: 500 14px/1.4 var(--mono); color: var(--ink); user-select: all; overflow-wrap: anywhere; }
-@media (max-width: 980px) { .wdemo, .wend { grid-template-columns: 1fr; } .wsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; } .wsteps::before, .wsteps::after { display: none; } .wincl { grid-template-columns: repeat(2, minmax(0, 1fr)); } .browser { --rx: 6deg; --ry: 0deg; } }
-@media (max-width: 640px) { .wplans, .wincl, .wsteps { grid-template-columns: 1fr; } .wdev { padding-bottom: 70px; } .browser { width: calc(100% - 26px); } .phone { width: 118px; } .whead { margin-top: 72px; } }
+@media (max-width: 980px) { .wdemo, .wend { grid-template-columns: 1fr; } .browser { --rx: 6deg; --ry: 0deg; } }
+@media (max-width: 640px) { .wplans { grid-template-columns: 1fr; } .wdev { padding-bottom: 70px; } .browser { width: calc(100% - 26px); } .phone { width: 118px; } .whead { margin-top: 72px; } }
 @media (prefers-reduced-motion: reduce) { .bscreen img, .pscreen img { animation: none; } .browser { transform: none; } }
 
 /* productos en 3D (v5.3, 3-11-2026): «¿Vendes productos?» — el visitante sube la foto de su producto y lo ve en 3D en caja, bolsa,
@@ -735,7 +695,7 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="proof" id="cifras">
     <div class="wrap">
-      <p class="mono rv">Resultados del canal kiria.ai en Instagram · 1 de noviembre de 2026</p>
+      <p class="mono rv">Resultados del canal kiria.ai en Instagram · 1 de noviembre de 2026 · cifras redondeadas</p>
       <div class="big rv" style="margin-top:22px">
         <b><span data-count="3.2" data-dec="1">3,2</span><small>M</small></b>
         <p>visualizaciones en <em>7 días</em> con reels hechos aquí, con el mismo método que usamos para las marcas.</p>
@@ -743,10 +703,7 @@ footer a:hover { color: var(--nightfg); }
       <div class="stats rv">
         <div class="stat"><b>+20</b><p>vídeos producidos con este formato</p></div>
         <div class="stat"><b>4</b><p>marcas que ya han trabajado con nosotros</p></div>
-        <div class="stat"><b>60 s</b><p>lo que dura un vídeo: guion, voz, 3D, subtítulos y sonido</p></div>
-        <div class="stat"><b>100 %</b><p>online: trabajamos con marcas de cualquier país</p></div>
       </div>
-      <p class="mono note rv" style="text-transform:none;letter-spacing:0.02em">Cifras redondeadas de las estadísticas de Instagram del canal.</p>
     </div>
   </section>
 
@@ -757,7 +714,7 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="band" id="clientes">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Clientes</p><h2>Han confiado en nosotros</h2></div><p class="sub">Academias, apps, constructoras y negocios locales que querían algo distinto a lo de siempre: vídeos y webs.</p></div>
+      <div class="head rv"><div><p class="mono">Clientes</p><h2>Han confiado en nosotros</h2></div></div>
       <div class="clients rv">
         <div class="client"><b>Élite Bomberos</b><span>Academia de oposiciones a bombero</span></div>
         <div class="client"><b>Bomberados</b><span>App de test para opositores: reels de producto</span></div>
@@ -769,7 +726,7 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="band soft" id="trabajos">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Trabajos</p><h2>Hecho aquí</h2></div><p class="sub">Fragmentos reales de vídeos que hemos producido. Arrastra la rueda o usa las flechas. Aquí se ven sin sonido: el vídeo completo lleva voz en español y efectos.</p></div>
+      <div class="head rv"><div><p class="mono">Trabajos</p><h2>Hecho aquí</h2></div><p class="sub">Fragmentos reales, sin sonido: el vídeo completo lleva voz y efectos. Arrastra la rueda o usa las flechas.</p></div>
     </div>
     <div class="carousel" id="carousel" aria-roledescription="carrusel" aria-label="Trabajos">
       <div class="ring-stage" id="ringStage"><div class="wheel" id="wheel"></div><div class="floor"></div></div>
@@ -807,28 +764,12 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="band" id="formatos">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Formatos</p><h2>Estructuras probadas</h2></div><p class="sub">Cada formato tiene su estructura. Elegimos el que mejor cuenta lo tuyo.</p></div>
-      <div class="formats">
-        <div class="fmt rv"><div class="top2"><h3>Así es por dentro</h3><span class="mono">60–75 s</span></div>
-          <p>Abrimos tu producto, servicio o carrera en 3D y enseñamos cómo funciona por dentro, pieza a pieza.</p><p class="ex">Ejemplos: Ingeniería Industrial, Aeroespacial, Magisterio.</p></div>
-        <div class="fmt rv"><div class="top2"><h3>El duelo</h3><span class="mono">60–75 s</span></div>
-          <p>Dos opciones frente a frente, con marcador y datos. Funciona para comparar y para que la gente opine.</p><p class="ex">Ejemplos: Software vs Informática, Caminos vs Arquitectura.</p></div>
-        <div class="fmt rv"><div class="top2"><h3>El dato que sorprende</h3><span class="mono">55–65 s</span></div>
-          <p>Un número real que nadie espera, explicado con gráficos que se mueven al ritmo de la voz.</p><p class="ex">Ejemplo: «Ocho de cada diez opositores…» para Bomberados.</p></div>
-        <div class="fmt rv"><div class="top2"><h3>Pregunta test</h3><span class="mono">45–60 s</span></div>
-          <p>Una pregunta con su respuesta al final. Ideal para academias, formación y apps de estudio.</p><p class="ex">Ejemplo: Bomberados IA.</p></div>
-      </div>
-      <div class="tl rv" style="margin-top:56px">
-        <div class="head" style="margin-bottom:22px"><div><p class="mono">Anatomía de un reel</p><h3 style="font-size:clamp(26px,3vw,36px)">Por qué la gente se queda hasta el final</h3></div></div>
-        <div class="scale"><span>0 s</span><span>15 s</span><span>30 s</span><span>45 s</span><span>60 s</span></div>
-        <div class="track" role="img" aria-label="Línea de tiempo de 60 segundos dividida en cinco partes"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
-        <div class="legend">
-          <div><i class="c1"></i><b>0–1 s · La imagen imposible</b><p>Algo que obliga a parar el dedo antes de entender de qué va.</p></div>
-          <div><i class="c2"></i><b>1–4 s · La pregunta</b><p>La que el vídeo responde al final. Sin título ni saludo.</p></div>
-          <div><i class="c3"></i><b>4–45 s · Los datos</b><p>Cada cosa aparece justo cuando se nombra, y los objetos se transforman en lo que se dice.</p></div>
-          <div><i class="c4"></i><b>45–55 s · La respuesta</b><p>Con el mejor plano del vídeo.</p></div>
-          <div><i class="c5"></i><b>55–60 s · Cierre y bucle</b><p>Una pregunta para comentarios, y el último fotograma enlaza con el primero.</p></div>
-        </div>
+      <div class="head rv"><div><p class="mono">Formatos</p><h2>Estructuras probadas</h2></div><p class="sub">Elegimos el que mejor cuenta lo tuyo. Todos abren con una imagen que para el scroll y guardan la respuesta para el final.</p></div>
+      <div class="quad">
+        <div class="q rv"><span class="n dim">60–75 s</span><div><h3>Así es por dentro</h3><p>Tu producto, servicio o carrera abierto en 3D, pieza a pieza.</p></div></div>
+        <div class="q rv"><span class="n dim">60–75 s</span><div><h3>El duelo</h3><p>Dos opciones frente a frente, con datos. Genera comentarios.</p></div></div>
+        <div class="q rv"><span class="n dim">55–65 s</span><div><h3>El dato que sorprende</h3><p>Un número real que nadie espera, con gráficos al ritmo de la voz.</p></div></div>
+        <div class="q rv"><span class="n dim">45–60 s</span><div><h3>Pregunta test</h3><p>Una pregunta con la respuesta al final. Ideal para academias.</p></div></div>
       </div>
     </div>
   </section>
@@ -837,11 +778,11 @@ footer a:hover { color: var(--nightfg); }
     <div class="wrap">
       <p class="mono rv">Sobre nosotros · Qué es kiria.ai</p>
       <p class="manifesto" id="manifesto">kiria.ai es una marca digital española que crea vídeos con inteligencia artificial. Juntamos lo mejor de las personas, <span class="hh">la idea, el guion y el criterio,</span> con lo mejor de la IA, <span class="ha">la voz, el 3D y la velocidad,</span> para que cualquier marca pueda explicar lo suyo en un minuto, con datos reales y sin humo.</p>
-      <div class="pillars">
-        <div class="pillar rv"><span class="n">01 · Qué hacemos</span><h3>Reels que se ven enteros</h3><p>Vídeos verticales en 3D con voz en español, subtítulos palabra a palabra y efectos de sonido, listos para Instagram, TikTok y YouTube Shorts.</p></div>
-        <div class="pillar rv"><span class="n">02 · Cómo</span><h3>Personas + IA</h3><p>Una persona decide la idea, escribe el guion y revisa cada dato. La IA pone la voz, anima las escenas y acelera todo lo demás.</p></div>
-        <div class="pillar rv"><span class="n">03 · Nuestro laboratorio</span><h3>Probado en casa</h3><p>En nuestro canal, kiria.ai, contamos las carreras universitarias por dentro y probamos cada formato antes de usarlo con una marca: 3,2 millones de visualizaciones en 7 días.</p></div>
-        <div class="pillar rv"><span class="n">04 · En qué creemos</span><h3>Datos con fuente</h3><p>Guion aprobado antes de producir, cifras con su fuente y precios claros. Si no lo podemos demostrar, no sale en el vídeo.</p></div>
+      <div class="quad pillars">
+        <div class="q rv"><span class="n">Qué hacemos</span><div><h3>Reels que se ven enteros</h3><p>Vídeos verticales en 3D para Instagram, TikTok y Shorts.</p></div></div>
+        <div class="q rv"><span class="n">Cómo</span><div><h3>Personas + IA</h3><p>Una persona escribe y revisa cada dato; la IA pone voz y 3D.</p></div></div>
+        <div class="q rv"><span class="n">Laboratorio</span><div><h3>Probado en casa</h3><p>Cada formato se prueba antes en nuestro canal, kiria.ai.</p></div></div>
+        <div class="q rv"><span class="n">En qué creemos</span><div><h3>Datos con fuente</h3><p>Si no lo podemos demostrar, no sale en el vídeo.</p></div></div>
       </div>
     </div>
   </section>
@@ -849,29 +790,15 @@ footer a:hover { color: var(--nightfg); }
   <section class="band soft" id="proceso">
     <div class="wrap">
       <div class="head rv"><div><p class="mono">Cómo trabajamos</p><h2>De la idea al vídeo</h2></div><p class="sub">Tú nos cuentas qué quieres conseguir. Del resto nos encargamos nosotros.</p></div>
-      <div class="steps rv">
-        <div class="step"><h3>Brief</h3><p>Nos cuentas tu negocio, a quién quieres llegar y qué quieres que pase después de ver el vídeo.</p></div>
-        <div class="step"><h3>Guion</h3><p>Te enviamos el guion con el gancho, los datos y el cierre. No seguimos hasta que lo apruebas.</p></div>
-        <div class="step"><h3>Voz y 3D</h3><p>Voz en español, escena en 3D, subtítulos palabra a palabra y efectos de sonido.</p></div>
-        <div class="step"><h3>Entrega</h3><p>El vídeo listo para subir, con portada, miniatura y descripción. Plazo: <b>entre 12 y 72 h desde la compra efectiva</b>.</p></div>
-      </div>
-      <div class="deliver">
-        <div class="rv" style="display:grid;gap:18px">
-          <p class="mono">Qué recibes</p>
-          <h2>Todo para publicar el mismo día</h2>
-          <p style="color:var(--ink2);max-width:30em">Si tu vídeo da una cifra, lleva su fuente, y te la damos por escrito.</p>
-          <div><a class="btn dark" href="#contacto">Pedir propuesta <span class="arr">→</span></a></div>
-        </div>
-        <ul class="specs rv">
-          <li><span>Vídeo vertical</span><span>MP4 · 1080×1920 · 60 fps</span></li>
-          <li><span>Duración</span><span>De 15 s a más de 1 min</span></li>
-          <li><span>Voz</span><span>Español de España</span></li>
-          <li><span>Subtítulos</span><span>Palabra a palabra</span></li>
-          <li><span>Sonido</span><span>Voz + efectos · −15 LUFS</span></li>
-          <li><span>Portada y miniatura</span><span>9:16 y 4:5</span></li>
-          <li><span>Descripción y hashtags</span><span>Versión larga y corta</span></li>
-          <li><span>Fuentes de los datos</span><span>Documento aparte</span></li>
-        </ul>
+      <ol class="quad">
+        <li class="q rv"><span class="n">01</span><div><h3>Brief</h3><p>Tu negocio, a quién quieres llegar y qué esperas del vídeo.</p></div></li>
+        <li class="q rv"><span class="n">02</span><div><h3>Guion</h3><p>Te lo enviamos y no seguimos hasta que lo apruebas.</p></div></li>
+        <li class="q rv"><span class="n">03</span><div><h3>Voz y 3D</h3><p>Voz en español, escena en 3D, subtítulos y sonido.</p></div></li>
+        <li class="q rv"><span class="n">04</span><div><h3>Entrega</h3><p>Entre 12 y 72 h desde la compra efectiva, listo para subir.</p></div></li>
+      </ol>
+      <div class="recibes rv">
+        <p class="mono">Qué recibes</p>
+        <div class="chips"><span>MP4 1080×1920 · 60 fps</span><span>Subtítulos palabra a palabra</span><span>Portada y miniatura</span><span>Descripción y hashtags</span><span>Fuentes de los datos</span></div>
       </div>
     </div>
   </section>
@@ -881,8 +808,7 @@ footer a:hover { color: var(--nightfg); }
       <div class="world-copy rv">
         <p class="mono">Hecho en España · 100 % online</p>
         <h2>De España, para todo el <span class="key">mundo</span>.</h2>
-        <p class="body">Trabajamos en remoto con marcas de cualquier país: brief, guion, revisiones y entrega, todo online y sin desplazamientos. Y como cada vídeo lleva subtítulos palabra a palabra, se entiende en cualquier parte, con sonido o sin él.</p>
-        <div class="chips"><span>Voz en español de España</span><span>Subtítulos palabra a palabra</span><span>Entrega online</span></div>
+        <p class="body">Trabajamos en remoto con marcas de cualquier país: brief, guion, revisiones y entrega, todo online. Con subtítulos palabra a palabra, se entiende con sonido o sin él.</p>
       </div>
       <div>
         <div class="globe-box" id="globeBox" aria-label="Globo terráqueo con arcos desde España hacia países de todo el mundo. Se puede girar arrastrando." role="img">
@@ -897,7 +823,7 @@ footer a:hover { color: var(--nightfg); }
 
   <section class="band webs" id="webs">
     <div class="wrap">
-      <div class="head rv"><div><p class="mono">Páginas web · para tu negocio</p><h2>Una web que se parece <span class="key">a tu negocio</span></h2></div><p class="sub">Tú nos cuentas qué haces y a quién; nosotros nos encargamos del diseño, los textos, las fotos y de publicarla. Sin tecnicismos y con una persona al otro lado en cada paso.</p></div>
+      <div class="head rv"><div><p class="mono">Páginas web · para tu negocio</p><h2>Una web que se parece <span class="key">a tu negocio</span></h2></div><p class="sub">Tú nos cuentas qué haces y a quién; nosotros nos encargamos del diseño, los textos, las fotos y de publicarla.</p></div>
       <ul class="wtrust rv"><li>Precio cerrado, confirmado por escrito</li><li>Ves el diseño antes de publicarlo</li><li>Te lo explicamos todo, sin tecnicismos</li></ul>
 
       <div class="wdemo">
@@ -921,7 +847,7 @@ footer a:hover { color: var(--nightfg); }
             <input id="wFile" type="file" accept="image/*" hidden>
             <button type="button" class="wclear" id="wClear" hidden>Quitar foto</button>
           </div>
-          <p class="wcap">Opcional: la foto no se sube a ningún sitio, solo se ve aquí, en tu pantalla. También puedes arrastrarla sobre la web.</p>
+          <p class="wcap">Opcional. La foto no se sube a ningún sitio: solo se ve en tu pantalla.</p>
           <p class="wcap" id="wCap">Vista previa de ejemplo: tu web se diseña a medida, con tus fotos, tus colores y tus textos.</p>
         </div>
         <div class="wdev rv" id="browserWrap">
@@ -937,22 +863,12 @@ footer a:hover { color: var(--nightfg); }
       </div>
 
       <div class="whead rv"><p class="mono">Así trabajamos contigo</p><h3>De tu idea a tu web, <span class="key">en cuatro pasos</span></h3></div>
-      <ol class="wsteps" id="wSteps">
-        <li class="rv"><span class="wn">01</span><h4>Nos cuentas tu idea</h4><p>Por Instagram o por correo, sin compromiso. Te preguntamos lo justo: qué haces, a quién te diriges y cómo quieres que te contacten.</p></li>
-        <li class="rv"><span class="wn">02</span><h4>Fotos y textos</h4><p>Nos mandas tus fotos o vamos a hacerlas. Escribimos los textos con IA y los revisamos a mano, con tu forma de hablar.</p></li>
-        <li class="rv"><span class="wn">03</span><h4>Ves tu web</h4><p>Te enseñamos el diseño antes de publicarlo y lo ajustamos contigo.</p></li>
-        <li class="rv"><span class="wn">04</span><h4>Publicada</h4><p>La dejamos funcionando y te explicamos cómo usarla. Desde ese día, tu negocio tiene web.</p></li>
+      <ol class="quad wsteps" id="wSteps">
+        <li class="q rv"><span class="wn">01</span><div><h4>Nos cuentas tu idea</h4><p>Por Instagram o por correo, sin compromiso.</p></div></li>
+        <li class="q rv"><span class="wn">02</span><div><h4>Fotos y textos</h4><p>Nos mandas tus fotos o las hacemos; los textos, con tu tono.</p></div></li>
+        <li class="q rv"><span class="wn">03</span><div><h4>Ves tu web</h4><p>Te enseñamos el diseño antes de publicarla y lo ajustamos.</p></div></li>
+        <li class="q rv"><span class="wn">04</span><div><h4>Publicada</h4><p>La dejamos funcionando y te explicamos cómo usarla.</p></div></li>
       </ol>
-
-      <div class="whead rv"><p class="mono">Qué incluye</p><h3>Todo lo que necesita <span class="key">tu web</span></h3></div>
-      <div class="wincl">
-        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><rect x="15.5" y="9" width="5" height="9" rx="1.2"/></svg><h4>Diseño a medida</h4><p>Hecho para tu negocio, sin plantillas repetidas, y pensado primero para el móvil.</p></div>
-        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg><h4>Textos que se entienden</h4><p>Escritos con IA y revisados a mano: claros, sin relleno y con tu tono.</p></div>
-        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg><h4>Fotos cuidadas</h4><p>Retocamos tus fotos (o las hacemos nosotros) y, si hace falta, creamos imágenes con IA.</p></div>
-        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><h4>Botones que traen clientes</h4><p>Enlaces a tu Instagram, tu correo o tus reservas, siempre a mano.</p></div>
-        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg><h4>Detalles con IA</h4><p>Pequeñas animaciones e imágenes que hacen que tu web no parezca una más.</p></div>
-        <div class="wi rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><h4>Publicada y lista</h4><p>La dejamos funcionando, sin que tengas que tocar nada técnico.</p></div>
-      </div>
 
       <div class="whead rv"><p class="mono">¿Vendes productos?</p><h3>Tus productos, <span class="key">en 3D</span></h3></div>
       <div class="w3d">
@@ -977,7 +893,7 @@ footer a:hover { color: var(--nightfg); }
             <input id="w3File" type="file" accept="image/*" hidden>
             <button type="button" class="wclear" id="w3Clear" hidden>Quitar foto</button>
           </div>
-          <p class="wcap">La foto no se sube a ningún sitio: solo se ve aquí, en tu pantalla. También puedes arrastrarla al visor.</p>
+          <p class="wcap">La foto no se sube a ningún sitio: solo se ve en tu pantalla.</p>
           <p class="wlab">Cómo lo presentamos</p>
           <div class="wsec" id="w3Kinds" role="tablist" aria-label="Cómo presentar tu producto">
             <button type="button" role="tab" aria-selected="true" data-k="caja">Caja</button>
@@ -1036,23 +952,15 @@ footer a:hover { color: var(--nightfg); }
   <section class="ads" id="anunciarse">
     <div class="wrap">
       <div class="head rv"><div><p class="mono">Para marcas · Patrocinio</p><h2>Anúnciate en <span class="key">kiria.ai</span></h2></div><p class="sub">Hablamos de carreras, oposiciones y dinero, con datos y en 60 segundos. Encaja con marcas de educación, empleo y finanzas personales.</p></div>
-      <div class="ads-grid">
-        <div class="offers">
-          <div class="offer rv"><span class="n">01</span><h3>Vídeo patrocinado</h3><p>Un «por dentro» de tu carrera, máster, academia o producto, publicado en kiria.ai e identificado como publicidad.</p></div>
-          <div class="offer rv"><span class="n">02</span><h3>Serie con tu marca</h3><p>Varios capítulos de una misma serie («Carreras por dentro, con…») para que tu marca se asocie a un tema.</p></div>
-          <div class="offer rv"><span class="n">03</span><h3>Mención al cierre</h3><p>Tu marca en los últimos segundos, cuando la gente ya se ha quedado hasta el final.</p></div>
-          <div class="offer rv"><span class="n">04</span><h3>Colaboración</h3><p>Hacemos el vídeo para tu cuenta y lo publicamos a la vez en kiria.ai como colaboración: +2 € por vídeo, en cualquier plan.</p></div>
-        </div>
-        <div class="kit rv">
-          <p class="mono">Media kit</p>
-          <ul>
-            <li><span>Visualizaciones en 7 días</span><b>3,2 M</b></li>
-            <li><span>Vídeos publicados</span><b>+20</b></li>
-            <li><span>Difusión en kiria.ai</span><b>2 € / vídeo</b></li>
-            <li><span>Tarifas</span><a class="btn ghost sm" href="#precios">Ver precios <span class="arr">→</span></a></li>
-          </ul>
-          <a class="btn dark" href="#contacto" data-formato="Anunciarme en kiria.ai">Pedir el media kit <span class="arr">→</span></a>
-        </div>
+      <div class="quad">
+        <div class="q rv"><span class="n">En kiria.ai</span><div><h3>Vídeo patrocinado</h3><p>Un «por dentro» de tu carrera, academia o producto.</p></div></div>
+        <div class="q rv"><span class="n">Varios capítulos</span><div><h3>Serie con tu marca</h3><p>Una serie para que tu marca se asocie a un tema.</p></div></div>
+        <div class="q rv"><span class="n">Últimos segundos</span><div><h3>Mención al cierre</h3><p>Tu marca al final, cuando la gente ya se ha quedado.</p></div></div>
+        <div class="q rv"><span class="n">+2 € por vídeo</span><div><h3>Colaboración</h3><p>Hacemos tu vídeo y lo publicamos también en kiria.ai.</p></div></div>
+      </div>
+      <div class="kit rv">
+        <div><p class="mono">Media kit</p><p class="kit-t"><b>3,2 M</b> visualizaciones en 7 días · <b>+20</b> vídeos publicados</p></div>
+        <div class="wbtns"><a class="btn dark" href="#contacto" data-formato="Anunciarme en kiria.ai">Pedir el media kit <span class="arr">→</span></a><a class="btn ghost" href="#precios">Ver precios</a></div>
       </div>
       <p class="legal-note rv">Toda la publicidad va identificada como tal, como exige la ley.</p>
     </div>
@@ -1070,12 +978,12 @@ footer a:hover { color: var(--nightfg); }
       <p class="type-desc" id="typeDesc">Un mensaje corto: una novedad, una oferta o un dato, contado rápido y con subtítulos.</p>
       <label class="addon rv" id="addon"><span class="switch"><input type="checkbox" id="difusion"><i></i></span><span><b>Añadir difusión en kiria.ai · +2 € por vídeo</b><small>Publicamos también tus vídeos en nuestra cuenta como colaboración, identificados como publicidad. Se suma a cualquier plan: 2 € por cada vídeo.</small></span></label>
       <div class="prices" id="prices">
-        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>6,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Añadir al carrito</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>27,96 €</s><b data-amt>25,16</b><span class="cur">€/mes</span></div><p class="per" data-per>6,29 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>69,90 €</s><b data-amt>61,51</b><span class="cur">€/mes</span></div><p class="per" data-per>6,15 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito <span class="arr">→</span></a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
-        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>209,70 €</s><b data-amt>178,25</b><span class="cur">€/mes</span></div><p class="per" data-per>5,94 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito</a><a class="wa-link" href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">¿Dudas? Escríbenos por Instagram →</a></div>
+        <div class="pcard rv" data-n="1" data-d="0"><h3>Un vídeo</h3><p>Para probar el formato.</p><div class="amount"><s hidden></s><b data-amt>6,99</b><span class="cur">€</span></div><p class="per" data-per>Pago único</p><a class="btn dark pay" href="#pago">Añadir al carrito</a></div>
+        <div class="pcard rv" data-n="4" data-d="10"><span class="badge">−10 %</span><h3>4 vídeos al mes</h3><p>Uno por semana.</p><div class="amount"><s>27,96 €</s><b data-amt>25,16</b><span class="cur">€/mes</span></div><p class="per" data-per>6,29 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito</a></div>
+        <div class="pcard feat rv" data-n="10" data-d="12"><span class="badge">−12 %</span><span class="rec">Recomendado</span><h3>10 vídeos al mes</h3><p>Dos o tres por semana.</p><div class="amount"><s>69,90 €</s><b data-amt>61,51</b><span class="cur">€/mes</span></div><p class="per" data-per>6,15 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito <span class="arr">→</span></a></div>
+        <div class="pcard rv" data-n="30" data-d="15"><span class="badge">−15 %</span><h3>Un vídeo al día</h3><p>30 vídeos al mes.</p><div class="amount"><s>209,70 €</s><b data-amt>178,25</b><span class="cur">€/mes</span></div><p class="per" data-per>5,94 € por vídeo</p><a class="btn dark pay" href="#pago">Añadir al carrito</a></div>
       </div>
-      <div class="price-notes rv"><span>Precios en euros.</span><span>Añade lo que quieras al carrito y lo pagas todo junto.</span><span>Los planes mensuales se renuevan cada mes; cancélalos cuando quieras.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
+      <div class="price-notes rv"><span>Añade lo que quieras al carrito y lo pagas todo junto.</span><span>Los planes mensuales se renuevan cada mes; cancélalos cuando quieras.</span><span>¿Dudas? Escríbenos por Instagram (<a href="https://www.instagram.com/kiria.ai/" target="_blank" rel="noopener">@kiria.ai</a>) o por correo.</span></div>
     </div>
   </section>
 
@@ -1087,11 +995,9 @@ footer a:hover { color: var(--nightfg); }
         <details><summary>¿Puede salir mi marca?</summary><p>Sí: tu logo, tus colores, tu producto y tu forma de hablar. El vídeo es tuyo para publicarlo donde quieras.</p></details>
         <details><summary>¿Los datos son reales?</summary><p>Siempre. Cada cifra que aparece lleva su fuente, y te la damos por escrito junto al vídeo.</p></details>
         <details><summary>¿Trabajáis con marcas de fuera de España?</summary><p>Sí. Todo el proceso es online, desde el brief hasta la entrega.</p></details>
-        <details><summary>¿Puedo anunciarme en el canal kiria.ai?</summary><p>Sí, con vídeos patrocinados, series o colaboraciones, siempre identificados como publicidad. Pídenos el media kit.</p></details>
         <details><summary>¿Cuánto cuesta?</summary><p>Desde 6,99 € un vídeo básico de 15 a 30 segundos. Con 4, 10 o 30 vídeos al mes tienes un 10 %, un 12 % o un 15 % de descuento. Todos los precios están en la sección <a href="#precios">Precios</a>.</p></details>
         <details><summary>¿Qué es la difusión en kiria.ai?</summary><p>Por 2 € más por cada vídeo, además de hacértelo, lo publicamos en nuestra cuenta como colaboración con tu marca, identificado como publicidad. Se puede añadir a cualquier plan.</p></details>
         <details><summary>¿Cuánto tarda?</summary><p>Entre 12 y 72 horas desde la compra efectiva. Dentro de ese margen, depende del tipo de vídeo y de los cambios que pidas.</p></details>
-        <details><summary>¿También hacéis páginas web?</summary><p>Sí. La web de tu negocio con tus fotos por 250 €, o con fotos que hacemos nosotros por 350 €. Pago único y todo incluido: diseño, textos, detalles con IA y la web publicada. Míralo en <a href="#webs">Webs</a>.</p></details>
         <details><summary>¿Para qué redes sirve?</summary><p>Para Instagram Reels, TikTok y YouTube Shorts: formato vertical 9:16, con subtítulos para verlo sin sonido.</p></details>
       </div>
     </div>
@@ -1134,14 +1040,14 @@ footer a:hover { color: var(--nightfg); }
       </form>
     </div>
   </section>
-  <section class="band reviews" id="resenas" aria-labelledby="revT">
+  <!-- Reseñas: la sección solo aparece cuando hay alguna publicada en KRES (vacía daba mala imagen: «acabamos de abrir») -->
+  <section class="band reviews" id="resenas" aria-labelledby="revT" hidden>
     <div class="wrap">
       <div class="head rv">
         <div><p class="mono">Reseñas</p><h2 id="revT">Qué opinan de kiria.ai</h2></div>
         <div class="rev-sum" id="revSum" hidden></div>
       </div>
       <div class="rev-list" id="revList"></div>
-      <div class="rev-empty rv" id="revEmpty" hidden><p>Todavía no hay reseñas publicadas: acabamos de abrir. Cuéntanos qué te parece la web (y, si nos has comprado algo, qué tal) y serás de los primeros.</p></div>
       <div class="rev-foot rv">
         <button class="btn dark" type="button" data-open="valorar">Valorar kiria.ai <span class="arr">→</span></button>
         <p class="rev-note">Publicamos las reseñas de clientes y de visitantes que nos dan permiso, todas, buenas o malas, salvo insultos o spam. «Compra verificada» quiere decir que hemos comprobado su compra con el correo con el que pagó; las valoraciones de un producto solo las publicamos si son de quien lo ha comprado. No damos nada a cambio de una reseña.</p>
@@ -1209,7 +1115,7 @@ footer a:hover { color: var(--nightfg); }
   <div class="wrap">
     <div class="foot1">
       <a class="brand" href="#inicio"><b>kiria<i>.</i>ai</b><span>Estudio de vídeo con IA · Hecho en España</span></a>
-      <nav aria-label="Legal"><a href="#aviso-legal" data-open="aviso">Aviso legal</a><a href="#privacidad" data-open="privacidad">Privacidad</a><a href="#cookies" data-open="cookies">Cookies</a><button class="linkbtn" type="button" data-open="cfg">Configurar cookies</button><a href="https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00" target="_blank" rel="noopener">Mi suscripción</a></nav>
+      <nav aria-label="Enlaces del pie"><button class="linkbtn" type="button" data-open="valorar">Valóranos</button><a href="#aviso-legal" data-open="aviso">Aviso legal</a><a href="#privacidad" data-open="privacidad">Privacidad</a><a href="#cookies" data-open="cookies">Cookies</a><button class="linkbtn" type="button" data-open="cfg">Configurar cookies</button><a href="https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00" target="_blank" rel="noopener">Mi suscripción</a></nav>
     </div>
     <div class="credits">
       <span>© 2026 kiria.ai</span>
@@ -2553,7 +2459,7 @@ const KRES = [
   if (location.hash === '#valorar') setTimeout(() => window.kiriaRate('entrega'), 500);
   addEventListener('hashchange', () => { if (location.hash === '#valorar') window.kiriaRate('entrega'); });
   // reseñas publicadas (KRES): medias de producto (solo compras verificadas) y de facilidad de uso de la web
-  const list = $('revList'), sum = $('revSum'), empty = $('revEmpty');
+  const list = $('revList'), sum = $('revSum'), sec = $('resenas');
   const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const fecha = f => { const d = new Date(f + 'T12:00:00'); return isNaN(d) ? '' : d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }); };
   const est = n => '★'.repeat(n) + '☆'.repeat(5 - n), ok5 = n => Number.isInteger(n) && n >= 1 && n <= 5;
@@ -2561,11 +2467,11 @@ const KRES = [
   const media = (label, a) => { if (!a.length) return ''; const m = a.reduce((x, y) => x + y, 0) / a.length;
     return `<div class="avg"><b>${m.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</b><span class="st" aria-hidden="true">${est(Math.min(5, Math.floor(m + 0.25)))}</span><small>${label} · ${a.length} ${a.length === 1 ? 'valoración' : 'valoraciones'}</small></div>`; };
   if (R.length) {
-    sum.hidden = false;
+    sec.hidden = false; sum.hidden = false;
     sum.innerHTML = media('Productos (compras verificadas)', R.filter(r => r.v && ok5(r.p)).map(r => r.p)) + media('Facilidad de uso de la web', R.filter(r => ok5(r.w)).map(r => r.w));
     list.innerHTML = R.map(r => `<article class="rev"><div class="rr">${r.v && ok5(r.p) ? `<span><b class="st" aria-label="${r.p} de 5">${est(r.p)}</b>${esc(r.prod || 'Producto')}</span>` : ''}${ok5(r.w) ? `<span><b class="st" aria-label="${r.w} de 5">${est(r.w)}</b>Facilidad de uso de la web</span>` : ''}</div>`
       + (r.t ? `<p class="rt">${esc(r.t)}</p>` : '') + `<p class="rn"><b>${esc(r.n)}</b>${r.v ? '<span class="ver">✓ Compra verificada</span>' : '<span class="visit">Visitante de la web</span>'}<span>${fecha(r.f)}</span></p></article>`).join('');
-  } else empty.hidden = false;
+  }
 })();
 
 </script>

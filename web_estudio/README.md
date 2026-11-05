@@ -1,4 +1,4 @@
-# Web del estudio (venta de vídeos a empresas) — versión 4
+# Web del estudio (venta de vídeos a empresas) — versión 6
 
 Idea aprobada por el usuario el 31-10-2026 («vamos a partir de esa idea»): **una web muy profesional para vender
 vídeos hechos con IA directamente a empresas** (no se vende el motor ni las ideas). El 1-11-2026 Javi pidió
@@ -47,6 +47,29 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   solo de compradores → cada una lleva «✓ Compra verificada» (v: Javi comprobó la compra con el correo de Stripe) o «Visitante de la
   web»; la nota de producto solo se muestra con v. Medias separadas (productos, solo verificadas; web). Se publican todas las que lo
   autorizan, buenas o malas, con la nota de cómo se comprueban (Directiva Ómnibus / TRLGDCU). Nunca inventar.
+  **v6: la sección solo aparece cuando hay al menos una reseña en `KRES`** (vacía decía «acabamos de abrir»); para valorar queda
+  «Valóranos» en el pie, la ventana de los 3 min y kiriaai.com/#valorar.
+
+## v6 (5-11-2026): más corta y sin relleno
+- Pedido de Javi: «la parte de información que suele dividirse en 4 fases vamos a hacer como cuatro cuadrados y que ocupe menos
+  espacio y cosas de relleno y no muy profesionales vamos a quitarlas».
+- Hecha en la rama `claude/zen-ramanujan-fevarx` (parte de `claude/stoic-newton-ja94mt`, donde estaba la v5). **Sin publicar en
+  kiriaai.com** hasta que Javi lo pida (`publicar.sh --publicar`); sí en la vista privada del Artifact.
+- **Cuatro cuadrados** (clases `.quad` + `.q`): todos los bloques de cuatro van en cuadrados, cuatro en fila en el ordenador y 2 × 2
+  en el móvil (antes, en el móvil, uno debajo de otro). Arriba la etiqueta o el número; abajo el título y una sola frase (≈ 65
+  caracteres como máximo para que quepa en el cuadrado del móvil). Son: Formatos (con su duración), Sobre nosotros (Qué hacemos ·
+  Cómo · Laboratorio · En qué creemos, sin números porque no son pasos), Cómo trabajamos (01–04), los cuatro pasos de la web (01–04,
+  el número se enciende al bajar; ya sin la línea que se llenaba) y Anúnciate (En kiria.ai · Varios capítulos · Últimos segundos ·
+  +2 € por vídeo).
+- **Quitado por relleno o repetido**: la anatomía de un reel (su idea queda en una frase de Formatos, y no enseña el método), «Qué
+  recibes» como lista de 8 filas (ahora 5 etiquetas bajo los pasos), «Qué incluye» de las webs (repetía la lista de los planes), las
+  cifras de relleno «60 s» y «100 % online», la nota de cifras (va en la línea de arriba), los «Ejemplos» de los formatos, las
+  etiquetas del globo, el enlace «¿Dudas? Escríbenos por Instagram» repetido en las 4 tarjetas de precio, «Precios en euros.», las
+  preguntas «¿Puedo anunciarme…?» y «¿También hacéis páginas web?» (tienen su sección y su botón arriba) y textos de entrada largos.
+- Media kit: una barra (3,2 M en 7 días · +20 vídeos, «Pedir el media kit» y «Ver precios»).
+- Alto en el móvil (390 px): 28.377 → 22.083 px (−22 %); en el ordenador (1280 px): 19.018 → 16.831 px. La portada de las cabezas
+  (420 vh) no se ha tocado.
+- `media/web_demo.jpg` («Ejemplo real: esta web») es una captura de una versión anterior: rehacerla cuando la web esté cerrada.
 
 ## Webs (v5, 3-11-2026: rehecho a petición de Javi, «muy frío» → más profesional y cercano)
 Inspirado en páginas de agencias y de servicios de «web en una semana» (búsqueda web; algunas no se pudieron abrir desde la
@@ -157,7 +180,14 @@ subtítulos para las palabras clave, **rojo para lo humano** y **azul para la IA
   `--amber #f59e0b`, `--night #0b0d11`.
 - Fuentes (Google Fonts): Anton (titulares), Instrument Sans (texto), JetBrains Mono (datos).
 
-## Secciones (en orden)
+## Secciones (en orden, v6)
+Cabecera (Trabajos · Nosotros · Precios · Webs · Anunciarse · carrito · «Pedir propuesta») → portada de las cabezas → cifras
+(3,2 M en 7 días · +20 vídeos · 4 marcas) → franja en movimiento → clientes → trabajos (rueda 3D) → formatos (4 cuadrados) →
+sobre nosotros (frase que se enciende + 4 cuadrados) → cómo trabajamos (4 cuadrados + qué recibes) → mundo (globo) → webs (Imagina
+la tuya, 4 pasos en cuadrados, productos en 3D, planes, dudas) → anúnciate (4 cuadrados + media kit) → precios → preguntas (8) →
+contacto → reseñas (solo si hay) → pie (Valóranos, legales, Mi suscripción, créditos).
+
+La lista de abajo es la de la v2, como referencia de cómo funciona cada parte:
 1. Cabecera fija y translúcida: marca + Trabajos · Mundo · Anunciarse · Planes + «Pedir propuesta».
 2. **Portada (420 vh, fija mientras se desliza)**: arriba, «3,2 millones de visualizaciones en 7 días» y una frase.
    Cabeza humana punteada (escaneo real) con el cerebro en rojo (circunvoluciones, cisura de Silvio, surco central,
