@@ -677,13 +677,20 @@ function overlay(t) {
   // 5-6) en paralelo
   const pA = sm(T.paralelo - 0.15, T.paralelo + 0.2, t) * (1 - sm(T.trampa - 0.35, T.trampa - 0.05, t));
   banner('EN PARALELO', 'las dos bombas a la vez', BLUE2, pA);
-  if (pA > 0) {
-    chip(pa.x, pa.y, '1.000 L/MIN', BLUE2, sm(T.mil1 - 0.1, T.mil1 + 0.2, t) * pA, 1, 'q');
-    chip(pb.x, pb.y, '1.000 L/MIN', BLUE2, sm(T.mil2 - 0.1, T.mil2 + 0.2, t) * pA, 1, 'q');
-    const ft = proj(hoses.pt.curve.getPoint(0.55));
-    chip(ft.x, ft.y + 90, '2.000 L/MIN', BLUE2, sm(T.dosmil - 0.1, T.dosmil + 0.2, t) * pA, 1.2 + 0.2 * Math.exp(-((t - T.dosmil - 0.15) ** 2) / 0.02), 'q', 60);
+  if (pA > 0) {               // la suma de caudales en una sola línea, limpia (sin rótulos encima de los camiones)
+    const e1 = sm(T.mil1 - 0.1, T.mil1 + 0.2, t), e2 = sm(T.mil2 - 0.1, T.mil2 + 0.2, t), e3 = sm(T.dosmil - 0.1, T.dosmil + 0.2, t);
+    const pa2 = Math.max(e1, e2, e3) * pA;
+    if (pa2 > 0) {
+      g.save(); g.globalAlpha = pa2; g.translate(540, 1470);
+      rr(-470, -82, 940, 164, 40); g.fillStyle = 'rgba(8,10,14,0.85)'; g.fill(); g.strokeStyle = BLUE2; g.lineWidth = 4; g.stroke();
+      g.font = '400 86px Bebas';
+      const parts = [['1.000', e1, '#F4F6F8'], [' + 1.000', e2, '#F4F6F8'], [' = 2.000 L/MIN', e3, BLUE2]];
+      const tw = parts.reduce((a, [s2]) => a + g.measureText(s2).width, 0); let x = -tw / 2;
+      for (const [s2, a, col] of parts) { const w = g.measureText(s2).width; if (a > 0) { g.globalAlpha = pa2 * a; txt(s2, x, 30, 86, col, 400, 'left', 'Bebas'); } x += w; }
+      g.restore();
+    }
     const pr8 = sm(T.l6e - 1.6, T.l6e - 1.2, t) * pA;
-    chip(ft.x, ft.y + 210, 'MISMA PRESIÓN: 8 BAR', ORANGE2, pr8, 0.85, 'p');
+    chip(540, 1640, 'MISMA PRESIÓN: 8 BAR', ORANGE2, pr8, 1.05, 'p');
   }
   // 7) la trampa
   const tr = sm(T.trampa - 0.2, T.trampa + 0.2, t) * (1 - sm(T.l8s - 0.3, T.l8s, t));
