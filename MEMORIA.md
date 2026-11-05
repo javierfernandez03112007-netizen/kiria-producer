@@ -7,7 +7,10 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
 - Respuestas en español, claras y con estimaciones de tiempo honestas.
 - Cada cambio se hace commit y push a `master` (sin PR salvo que lo pida), con las líneas de atribución que indique el sistema y sin
   identificadores de modelo.
-- Javi suele mandar el **audio de ElevenLabs (voz Danny)**; si no, se genera con la API (ver «Herramientas»).
+- **Orden de trabajo, SIEMPRE (Javi, 5-11-2026: «¿por qué nunca me das el guion primero para darte la voz y ya sigues editando?»)**:
+  1) le doy el guion en un solo bloque para pegarlo en ElevenLabs, 2) **espero su MP3 (voz Danny)**, 3) monto y renderizo el vídeo con su
+  voz (se sincroniza con el texto conocido). Mientras llega su audio se puede preparar la escena, pero no generar yo la voz ni renderizar
+  el vídeo final con una voz provisional, salvo que él lo pida.
 - Guion: lo escribo yo siguiendo `engine/REGLAS.md`, `engine/GUION.md` y `engine/HOOKS.md`; se lo doy **todo junto en un solo bloque**
   para pegarlo en ElevenLabs. Datos siempre reales y con fuente en `FUENTES.md` (lo dudoso, «CONFIRMAR»).
 - Entrega de cada vídeo: `out/<nombre>.mp4` (1080x1920, 60 fps, 20–60 MB, ≈ −15/−16 LUFS), `out/portada.jpg` (9:16), `out/miniatura.jpg`
@@ -80,6 +83,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **El mayor robo cripto · hackeo a Binance** (`projects/cripto/`, 5-11-2026): de la lista de noticias virales (Javi: «Vamos a hacer el
+  video de las criptomonedas»). 15 frases, 60 s, un solo plano en bucle: el portátil del ingeniero con la videollamada y las monedas ₿
+  metiéndose en la pantalla; la cartera caliente de cristal detrás; el programa espía (bicho negro de ojos rojos) baja por el cable, espera
+  y salta a otros dos portátiles; 1.400 monedas salen por diez cadenas de bloques con reloj 00:00→20:00; torres del récord (×4 frente a
+  Bybit 2025); FBI / «LO NIEGAN»; cuatro cadenas se congelan (≈ 2.850 M$); la cartera se vuelve a llenar («LO PONE BINANCE»); «SOSPECHA».
+  Datos en `FUENTES.md`; cabecera con «VÍDEO HECHO CON IA · KIRIAAI.COM» y comentario fijado con la web. Se montó primero con la voz de
+  Danny generada por mí (`engine/tts.py`, ×1,12): **error de orden**, Javi quiere dar él la voz → con su MP3 se re-sincroniza
+  (`tiempos.json`) y se vuelve a renderizar. Ojo: el trozo 900–1440 se cayó en la máquina 2 (se cerró Chromium) y lo reanudó ella misma;
+  los registros (`fetch.log`, eventos de las sesiones) van en hora UTC (Madrid = UTC+1 en noviembre).
 - **Lanzamiento 2 · Tu producto, en 3D** (`projects/lanzamiento2/`, 5-11-2026): 6 frases, 23 s, sin precios. Un tarro «TU MARCA · Fresa»
   sale de una polaroid y salta a la peana del visor de kiriaai.com; las seis presentaciones (caja, bolsa, tarro, botella, lata, taza) son
   las mismas formas y etiquetas que la web (código portado de `web_estudio/index.html` a `web/src/12_l2.js`); móvil con la tienda (el dedo
