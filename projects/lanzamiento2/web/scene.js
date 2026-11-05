@@ -1113,7 +1113,7 @@ function drawReel(g, t) {
 }
 const TABS = ['Caja', 'Bolsa', 'Tarro', 'Botella', 'Lata', 'Taza', 'Foto en 3D'];
 function drawTry(g, t) {      // el apartado «¿Vendes productos?» de kiriaai.com: el visor arriba y «Pruébalo con el tuyo» abajo
-  g.fillStyle = '#0c0e14'; g.fillRect(0, 0, SCR.w, SCR.h); statusBar(g, true); browserBar(g, 'kiriaai.com');
+  g.fillStyle = '#0c0e14'; g.fillRect(0, 0, SCR.w, SCR.h); statusBar(g, true); browserBar(g, '••••••••.com');      // la dirección no se enseña hasta el domingo 8 a las 12:00 (Javi, 5-11-2026)
   stageBg(g, 16, 158, SCR.w - 32, 650);
   g.fillStyle = 'rgba(255,255,255,.1)'; rr(g, 34, 176, 128, 40, 20); g.fill(); g.fillStyle = '#e3e8f3'; g.font = '700 20px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('Vista 3D', 98, 197);
   g.fillStyle = '#ff6b7d'; g.font = '700 19px SpaceMono'; g.letterSpacing = '3px'; g.textAlign = 'left'; g.fillText('¿VENDES PRODUCTOS?', 34, 850); g.letterSpacing = '0px';

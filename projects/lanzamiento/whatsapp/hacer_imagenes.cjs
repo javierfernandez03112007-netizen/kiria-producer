@@ -75,6 +75,28 @@ const pages = {
     <div style="position:absolute;left:80px;right:80px;bottom:230px;height:150px;border:3px dashed rgba(238,242,246,.55);border-radius:28px;display:flex;align-items:center;justify-content:center;font:700 28px Mono;letter-spacing:5px;color:#9aa1ab">↓ AQUÍ EL STICKER DE ENLACE ↓</div>
   </div>`],
 };
+// cuenta atrás (jueves → domingo): sin la dirección de la web (se dice el domingo a las 12:00)
+const cuenta = (big, small, line) => [1080, 1080, `
+  <div class="c" style="width:1080px;height:1080px">
+    <div class="globe" style="left:420px;top:150px;width:820px;height:820px;opacity:.6"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#000 0,rgba(0,0,0,.75) 45%,rgba(0,0,0,.2) 100%)"></div>
+    <div style="position:absolute;left:72px;right:72px;top:64px;display:flex;justify-content:space-between;align-items:center">
+      <div class="lab">Cuenta atrás</div><div class="lab gold">Domingo 8 · 12:00</div></div>
+    <div class="rule" style="position:absolute;left:72px;right:72px;top:118px"></div>
+    <div style="position:absolute;left:66px;top:150px">${big}</div>
+    <div style="position:absolute;left:72px;right:72px;top:${small[1]}px;font:700 44px Inter;line-height:1.3;color:#e6ebf2">${small[0]}</div>
+    <div class="box" style="position:absolute;left:72px;right:72px;bottom:72px;padding:26px 34px;display:flex;justify-content:space-between;align-items:center">
+      <div style="font:700 24px Mono;letter-spacing:6px;color:#9aa1ab">SOLO PARA LA COMUNIDAD</div>
+      <div style="font:900 44px Inter">${line}</div></div>
+  </div>`];
+const num = (n, w) => `<div style="display:flex;align-items:flex-end;gap:28px"><div style="font:900 520px Inter;line-height:.82;letter-spacing:-20px">${n}</div><div style="font:900 120px Inter;line-height:1;padding-bottom:26px">${w}</div></div>`;
+const word = (a, b) => `<div style="font:900 200px Inter;line-height:.9;letter-spacing:-6px">${a}</div><div style="font:700 150px Mono;letter-spacing:6px;margin-top:20px" class="gold">${b}</div>`;
+Object.assign(pages, {
+  'cuenta_3.png': cuenta(`<div style="font:700 34px Mono;letter-spacing:8px;color:#9aa1ab;margin:0 0 8px 6px">FALTAN</div>` + num('3', 'DÍAS'), ['Abrimos nuestra web el domingo<br>a las 12:00, aquí primero.', 660], '10 % extra'),
+  'cuenta_2.png': cuenta(`<div style="font:700 34px Mono;letter-spacing:8px;color:#9aa1ab;margin:0 0 8px 6px">FALTAN</div>` + num('2', 'DÍAS'), ['Vídeos en 3D con IA, sin cámaras.<br>Y tu producto, en 3D.', 660], '10 % extra'),
+  'cuenta_1.png': cuenta(word('MAÑANA', '12:00'), ['Te avisamos aquí antes<br>que a nadie.', 560], '10 % extra'),
+  'cuenta_hoy.png': cuenta(word('HOY', '12:00'), ['A las 12:00 publicamos aquí<br>el enlace y tu código.', 560], '10 % extra'),
+});
 (async () => {
   const b = await chromium.launch();
   for (const [name, [w, h, html]] of Object.entries(pages)) {
