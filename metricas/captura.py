@@ -82,7 +82,7 @@ def main():
         horas = round((ahora - pub).total_seconds() / 3600, 1)
         visitas = num(f[2])
         props = {
-            "Captura": f"{v['titulo']} · {ahora:%d/%m %H:%M}",
+            "Captura": f"{v.get('titulo') or rid} · {ahora:%d/%m %H:%M}",
             "Vídeo": [pid(v["pagina"])],
             "date:Capturado:start": ahora.isoformat(timespec="seconds"),
             "date:Capturado:is_datetime": 1,
@@ -105,6 +105,10 @@ def main():
             props["Visitas nuevas"] = visitas - int(anteriores[rid])
         paginas.append({"properties": {k: val for k, val in props.items() if val is not None}})
 
+    comparables = [p["properties"] for p in paginas if "Visitas nuevas" in p["properties"]]
+    if comparables and len(comparables) == len(paginas) and all(p["Visitas nuevas"] == 0 for p in comparables):
+        print("SIN CAMBIOS: ningún vídeo ha ganado visitas desde la captura anterior (Metricool no ha refrescado): "
+              "no crear estas filas", file=sys.stderr)
     for rid, fecha in faltan:
         print(f"FALTA FILA en «Métricas por vídeo»: reel {rid} publicado {fecha}", file=sys.stderr)
     json.dump(paginas, sys.stdout, ensure_ascii=False)
