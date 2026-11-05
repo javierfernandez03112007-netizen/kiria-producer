@@ -1,0 +1,36 @@
+«EL MAYOR ROBO DE CRIPTOMONEDAS DE LA HISTORIA» · hackeo a Binance · ≈ 60 s · viernes 6 a las 18:00
+
+DESCRIPCIÓN (Instagram):
+💸 Les robaron más de 6.000 millones de dólares en unos 20 minutos… y todo empezó con una entrevista de trabajo.
+
+🎭 Septiembre: un ingeniero de Binance, la mayor plataforma de criptomonedas, recibe una oferta de trabajo. Dos videollamadas (una con «recursos humanos» y otra con el jefe de una empresa que no existe) y una prueba técnica: ejecutar un código en el ordenador del trabajo. Dentro iba un programa espía que el antivirus no detectó.
+
+⏳ No robaron nada… esperaron. El 20 de octubre, con una herramienta de IA de la propia empresa, saltaron a los ordenadores de otros dos ingenieros.
+
+💥 El 29 de octubre, más de 6.000 millones salieron de sus carteras conectadas a internet por diez cadenas de bloques. Es el mayor robo de criptomonedas de la historia: unas cuatro veces el récord anterior (Bybit, 2025, unos 1.500 millones).
+
+🕵️ El FBI lo atribuye a hackers de Corea del Norte. Corea del Norte lo niega.
+
+🧊 ¿Y el dinero? Unos 2.850 millones se han congelado. El resto lo ha repuesto Binance con sus fondos: según la empresa, ningún cliente ha perdido dinero.
+
+⚠️ Si en una entrevista te piden descargar y ejecutar algo en tu ordenador… sospecha.
+
+👇 ¿Tú lo habrías descargado?
+
+🎬 Este vídeo no tiene ni una sola cámara: lo hacemos con IA. ¿Quieres uno así para tu negocio, tu academia o tu cuenta? → kiriaai.com (enlace en la bio)
+
+📚 Fuentes: informe preliminar de Binance (3-11-2026) recogido por NBC News, SecurityWeek y Help Net Security; TRM Labs y Chainalysis; FBI (vía La Nación y Quartz); Infobae y RPP.
+
+#binance #criptomonedas #bitcoin #hackeo #ciberseguridad #robo #tecnologia #kiriaai
+
+---
+
+COMENTARIO FIJADO:
+🎬 Este vídeo no tiene ni una sola cámara: lo hacemos con IA. ¿Quieres uno así para tu negocio, tu academia o tu cuenta? → kiriaai.com (enlace en la bio)
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: Danny (ElevenLabs, eleven_v4, estabilidad 0,50, similitud 0,75: los ajustes de Javi), generada con engine/tts.py.
+- Datos: ver FUENTES.md (todo con fuente; las cifras, redondeadas a la baja).
+- Las videollamadas, los avatares, la oferta y las pantallas son una recreación. Sin logotipos.
