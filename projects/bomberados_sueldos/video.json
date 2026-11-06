@@ -1,0 +1,30 @@
+{
+ "formato": "sueldos",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "count_line": 1,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": ["compartir", "marca", "prueba"],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿MADRID O GRANADA?",
+ "portada": {"titulo": "¿CUÁNTO GANA UN BOMBERO?", "etiqueta": "MADRID vs GRANADA · DATOS OFICIALES", "t": 30.0, "oscurecer": true},
+ "mezcla": {"sfx": 1.0, "ganancia": 0.0},
+ "cues": {
+  "casco": ["casco,", 1, 1], "fuego": ["fuego", 1, 1], "oposicion": ["oposición…", 1, 1], "cobran": ["cobran", 1, 1], "mismo3": ["mismo.", 3, 1],
+  "cuanto": ["¿Cuánto", 1, 2], "madrid0": ["Madrid…", 1, 2], "granada0": ["Granada?", 1, 2],
+  "igual": ["igual:", 1, 3], "base": ["base", 1, 3], "estado": ["Estado.", 1, 3], "novecientos": ["novecientos", 1, 3], "espana": ["España.", 1, 3],
+  "diferencia": ["diferencia", 1, 4], "complemento": ["complemento", 1, 4], "ayuntamiento": ["ayuntamiento:", 1, 4], "especifico": ["específico.", 1, 4],
+  "madrid1": ["Madrid:", 1, 5], "e27": ["veintisiete", 1, 5], "granada1": ["Granada:", 1, 5], "e25": ["veinticinco", 1, 5],
+  "total": ["total,", 1, 6], "t47": ["cuarenta", 1, 6], "brutos": ["brutos", 1, 6], "t44": ["cuarenta", 2, 6], "granada2": ["Granada.", 1, 6],
+  "parece": ["Parece", 1, 7], "horas": ["horas:", 1, 7], "trabajan": ["trabajan", 1, 7], "cinco": ["cinco", 1, 7], "guardias": ["guardias", 1, 7],
+  "porhora": ["hora:", 1, 8], "h31": ["treinta", 1, 8], "h27": ["Veintisiete", 1, 8],
+  "ypq": ["¿Y", 1, 9], "paga": ["paga", 1, 9], "presupuesto": ["presupuesto…", 1, 9], "negocia": ["negocia", 1, 9], "subio": ["subió", 1, 9], "diez": ["diez", 1, 9], "anio": ["2024.", 1, 9],
+  "justo": ["justo?", 1, 10], "escribe": ["Escribe", 1, 10], "madrid3": ["¿Madrid", 1, 10], "granada3": ["Granada?", 1, 10],
+  "compartir": ["¡Mándaselo", 1, 11],
+  "descripcion": ["¿Opositas", 1, 12], "marca": ["¡Bomberados!", 1, 12], "prueba": ["¡Pruébala", 1, 12]
+ }
+}

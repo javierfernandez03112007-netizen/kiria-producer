@@ -1,0 +1,906 @@
+[
+ {
+  "text": "Mismo casco, mismo fuego y la misma oposición… pero no cobran lo mismo.",
+  "start": 0.06,
+  "end": 5.053,
+  "words": [
+   {
+    "w": "Mismo",
+    "start": 0.06,
+    "end": 0.459
+   },
+   {
+    "w": "casco,",
+    "start": 0.459,
+    "end": 1.098
+   },
+   {
+    "w": "mismo",
+    "start": 1.098,
+    "end": 1.498
+   },
+   {
+    "w": "fuego",
+    "start": 1.498,
+    "end": 2.017
+   },
+   {
+    "w": "y",
+    "start": 2.017,
+    "end": 2.137
+   },
+   {
+    "w": "la",
+    "start": 2.137,
+    "end": 2.297
+   },
+   {
+    "w": "misma",
+    "start": 2.297,
+    "end": 2.616
+   },
+   {
+    "w": "oposición…",
+    "start": 2.616,
+    "end": 3.735
+   },
+   {
+    "w": "pero",
+    "start": 3.735,
+    "end": 3.894
+   },
+   {
+    "w": "no",
+    "start": 3.894,
+    "end": 4.134
+   },
+   {
+    "w": "cobran",
+    "start": 4.134,
+    "end": 4.613
+   },
+   {
+    "w": "lo",
+    "start": 4.613,
+    "end": 4.773
+   },
+   {
+    "w": "mismo.",
+    "start": 4.773,
+    "end": 5.053
+   }
+  ]
+ },
+ {
+  "text": "¿Cuánto gana un bombero en Madrid… y cuánto en Granada?",
+  "start": 5.492,
+  "end": 8.498,
+  "words": [
+   {
+    "w": "¿Cuánto",
+    "start": 5.492,
+    "end": 5.732
+   },
+   {
+    "w": "gana",
+    "start": 5.732,
+    "end": 6.051
+   },
+   {
+    "w": "un",
+    "start": 6.051,
+    "end": 6.211
+   },
+   {
+    "w": "bombero",
+    "start": 6.211,
+    "end": 6.611
+   },
+   {
+    "w": "en",
+    "start": 6.611,
+    "end": 6.77
+   },
+   {
+    "w": "Madrid…",
+    "start": 6.77,
+    "end": 7.379
+   },
+   {
+    "w": "y",
+    "start": 7.379,
+    "end": 7.489
+   },
+   {
+    "w": "cuánto",
+    "start": 7.489,
+    "end": 7.889
+   },
+   {
+    "w": "en",
+    "start": 7.889,
+    "end": 8.049
+   },
+   {
+    "w": "Granada?",
+    "start": 8.049,
+    "end": 8.498
+   }
+  ]
+ },
+ {
+  "text": "Lo primero es igual: el sueldo base lo fija el Estado. Unos novecientos euros al mes, en toda España.",
+  "start": 8.907,
+  "end": 14.859,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 8.907,
+    "end": 9.007
+   },
+   {
+    "w": "primero",
+    "start": 9.007,
+    "end": 9.407
+   },
+   {
+    "w": "es",
+    "start": 9.407,
+    "end": 9.566
+   },
+   {
+    "w": "igual:",
+    "start": 9.566,
+    "end": 10.265
+   },
+   {
+    "w": "el",
+    "start": 10.265,
+    "end": 10.367
+   },
+   {
+    "w": "sueldo",
+    "start": 10.367,
+    "end": 10.605
+   },
+   {
+    "w": "base",
+    "start": 10.605,
+    "end": 10.924
+   },
+   {
+    "w": "lo",
+    "start": 10.924,
+    "end": 11.164
+   },
+   {
+    "w": "fija",
+    "start": 11.164,
+    "end": 11.484
+   },
+   {
+    "w": "el",
+    "start": 11.484,
+    "end": 11.723
+   },
+   {
+    "w": "Estado.",
+    "start": 11.723,
+    "end": 12.362
+   },
+   {
+    "w": "Unos",
+    "start": 12.362,
+    "end": 12.602
+   },
+   {
+    "w": "novecientos",
+    "start": 12.602,
+    "end": 13.161
+   },
+   {
+    "w": "euros",
+    "start": 13.161,
+    "end": 13.481
+   },
+   {
+    "w": "al",
+    "start": 13.481,
+    "end": 13.641
+   },
+   {
+    "w": "mes,",
+    "start": 13.641,
+    "end": 14.04
+   },
+   {
+    "w": "en",
+    "start": 14.04,
+    "end": 14.2
+   },
+   {
+    "w": "toda",
+    "start": 14.2,
+    "end": 14.519
+   },
+   {
+    "w": "España.",
+    "start": 14.519,
+    "end": 14.859
+   }
+  ]
+ },
+ {
+  "text": "La diferencia está en un complemento que pone cada ayuntamiento: el específico.",
+  "start": 15.398,
+  "end": 20.161,
+  "words": [
+   {
+    "w": "La",
+    "start": 15.398,
+    "end": 15.478
+   },
+   {
+    "w": "diferencia",
+    "start": 15.478,
+    "end": 16.117
+   },
+   {
+    "w": "está",
+    "start": 16.117,
+    "end": 16.277
+   },
+   {
+    "w": "en",
+    "start": 16.277,
+    "end": 16.437
+   },
+   {
+    "w": "un",
+    "start": 16.437,
+    "end": 16.596
+   },
+   {
+    "w": "complemento",
+    "start": 16.596,
+    "end": 17.235
+   },
+   {
+    "w": "que",
+    "start": 17.235,
+    "end": 17.395
+   },
+   {
+    "w": "pone",
+    "start": 17.395,
+    "end": 17.715
+   },
+   {
+    "w": "cada",
+    "start": 17.715,
+    "end": 17.954
+   },
+   {
+    "w": "ayuntamiento:",
+    "start": 17.954,
+    "end": 19.083
+   },
+   {
+    "w": "el",
+    "start": 19.083,
+    "end": 19.392
+   },
+   {
+    "w": "específico.",
+    "start": 19.392,
+    "end": 20.161
+   }
+  ]
+ },
+ {
+  "text": "Madrid: veintisiete mil ochocientos euros al año. Granada: veinticinco mil cuatrocientos.",
+  "start": 20.661,
+  "end": 26.502,
+  "words": [
+   {
+    "w": "Madrid:",
+    "start": 20.661,
+    "end": 21.39
+   },
+   {
+    "w": "veintisiete",
+    "start": 21.39,
+    "end": 21.997
+   },
+   {
+    "w": "mil",
+    "start": 21.997,
+    "end": 22.148
+   },
+   {
+    "w": "ochocientos",
+    "start": 22.148,
+    "end": 22.907
+   },
+   {
+    "w": "euros",
+    "start": 22.907,
+    "end": 23.227
+   },
+   {
+    "w": "al",
+    "start": 23.227,
+    "end": 23.387
+   },
+   {
+    "w": "año.",
+    "start": 23.387,
+    "end": 24.046
+   },
+   {
+    "w": "Granada:",
+    "start": 24.046,
+    "end": 24.905
+   },
+   {
+    "w": "veinticinco",
+    "start": 24.905,
+    "end": 25.671
+   },
+   {
+    "w": "mil",
+    "start": 25.671,
+    "end": 25.863
+   },
+   {
+    "w": "cuatrocientos.",
+    "start": 25.863,
+    "end": 26.502
+   }
+  ]
+ },
+ {
+  "text": "En total, unos cuarenta y siete mil euros brutos en Madrid… y cuarenta y cuatro mil setecientos en Granada.",
+  "start": 26.952,
+  "end": 32.484,
+  "words": [
+   {
+    "w": "En",
+    "start": 26.952,
+    "end": 27.104
+   },
+   {
+    "w": "total,",
+    "start": 27.104,
+    "end": 27.461
+   },
+   {
+    "w": "unos",
+    "start": 27.461,
+    "end": 27.86
+   },
+   {
+    "w": "cuarenta",
+    "start": 27.86,
+    "end": 28.199
+   },
+   {
+    "w": "y",
+    "start": 28.199,
+    "end": 28.312
+   },
+   {
+    "w": "siete",
+    "start": 28.312,
+    "end": 28.538
+   },
+   {
+    "w": "mil",
+    "start": 28.538,
+    "end": 28.739
+   },
+   {
+    "w": "euros",
+    "start": 28.739,
+    "end": 28.979
+   },
+   {
+    "w": "brutos",
+    "start": 28.979,
+    "end": 29.458
+   },
+   {
+    "w": "en",
+    "start": 29.458,
+    "end": 29.538
+   },
+   {
+    "w": "Madrid…",
+    "start": 29.538,
+    "end": 30.177
+   },
+   {
+    "w": "y",
+    "start": 30.177,
+    "end": 30.337
+   },
+   {
+    "w": "cuarenta",
+    "start": 30.337,
+    "end": 30.729
+   },
+   {
+    "w": "y",
+    "start": 30.729,
+    "end": 30.86
+   },
+   {
+    "w": "cuatro",
+    "start": 30.86,
+    "end": 31.121
+   },
+   {
+    "w": "mil",
+    "start": 31.121,
+    "end": 31.252
+   },
+   {
+    "w": "setecientos",
+    "start": 31.252,
+    "end": 31.935
+   },
+   {
+    "w": "en",
+    "start": 31.935,
+    "end": 32.014
+   },
+   {
+    "w": "Granada.",
+    "start": 32.014,
+    "end": 32.484
+   }
+  ]
+ },
+ {
+  "text": "Parece poca diferencia… hasta que miras las horas: en Granada trabajan casi cinco guardias más al año.",
+  "start": 32.933,
+  "end": 39.344,
+  "words": [
+   {
+    "w": "Parece",
+    "start": 32.933,
+    "end": 33.372
+   },
+   {
+    "w": "poca",
+    "start": 33.372,
+    "end": 33.692
+   },
+   {
+    "w": "diferencia…",
+    "start": 33.692,
+    "end": 34.701
+   },
+   {
+    "w": "hasta",
+    "start": 34.701,
+    "end": 34.97
+   },
+   {
+    "w": "que",
+    "start": 34.97,
+    "end": 35.13
+   },
+   {
+    "w": "miras",
+    "start": 35.13,
+    "end": 35.609
+   },
+   {
+    "w": "las",
+    "start": 35.609,
+    "end": 35.769
+   },
+   {
+    "w": "horas:",
+    "start": 35.769,
+    "end": 36.498
+   },
+   {
+    "w": "en",
+    "start": 36.498,
+    "end": 36.568
+   },
+   {
+    "w": "Granada",
+    "start": 36.568,
+    "end": 37.127
+   },
+   {
+    "w": "trabajan",
+    "start": 37.127,
+    "end": 37.606
+   },
+   {
+    "w": "casi",
+    "start": 37.606,
+    "end": 37.846
+   },
+   {
+    "w": "cinco",
+    "start": 37.846,
+    "end": 38.166
+   },
+   {
+    "w": "guardias",
+    "start": 38.166,
+    "end": 38.725
+   },
+   {
+    "w": "más",
+    "start": 38.725,
+    "end": 38.965
+   },
+   {
+    "w": "al",
+    "start": 38.965,
+    "end": 39.124
+   },
+   {
+    "w": "año.",
+    "start": 39.124,
+    "end": 39.344
+   }
+  ]
+ },
+ {
+  "text": "Por hora: treinta y un euros en Madrid. Veintisiete en Granada.",
+  "start": 39.803,
+  "end": 43.927,
+  "words": [
+   {
+    "w": "Por",
+    "start": 39.803,
+    "end": 40.003
+   },
+   {
+    "w": "hora:",
+    "start": 40.003,
+    "end": 40.602
+   },
+   {
+    "w": "treinta",
+    "start": 40.602,
+    "end": 40.886
+   },
+   {
+    "w": "y",
+    "start": 40.886,
+    "end": 41.048
+   },
+   {
+    "w": "un",
+    "start": 41.048,
+    "end": 41.281
+   },
+   {
+    "w": "euros",
+    "start": 41.281,
+    "end": 41.601
+   },
+   {
+    "w": "en",
+    "start": 41.601,
+    "end": 41.761
+   },
+   {
+    "w": "Madrid.",
+    "start": 41.761,
+    "end": 42.559
+   },
+   {
+    "w": "Veintisiete",
+    "start": 42.559,
+    "end": 43.358
+   },
+   {
+    "w": "en",
+    "start": 43.358,
+    "end": 43.518
+   },
+   {
+    "w": "Granada.",
+    "start": 43.518,
+    "end": 43.927
+   }
+  ]
+ },
+ {
+  "text": "¿Y por qué? Porque los complementos los paga cada ayuntamiento con su presupuesto… y los negocia con sus bomberos. Madrid les subió el específico un diez por ciento en 2024.",
+  "start": 44.357,
+  "end": 54.722,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 44.357,
+    "end": 44.557
+   },
+   {
+    "w": "por",
+    "start": 44.557,
+    "end": 44.796
+   },
+   {
+    "w": "qué?",
+    "start": 44.796,
+    "end": 45.335
+   },
+   {
+    "w": "Porque",
+    "start": 45.335,
+    "end": 45.515
+   },
+   {
+    "w": "los",
+    "start": 45.515,
+    "end": 45.675
+   },
+   {
+    "w": "complementos",
+    "start": 45.675,
+    "end": 46.314
+   },
+   {
+    "w": "los",
+    "start": 46.314,
+    "end": 46.474
+   },
+   {
+    "w": "paga",
+    "start": 46.474,
+    "end": 46.873
+   },
+   {
+    "w": "cada",
+    "start": 46.873,
+    "end": 47.113
+   },
+   {
+    "w": "ayuntamiento",
+    "start": 47.113,
+    "end": 47.752
+   },
+   {
+    "w": "con",
+    "start": 47.752,
+    "end": 47.912
+   },
+   {
+    "w": "su",
+    "start": 47.912,
+    "end": 48.072
+   },
+   {
+    "w": "presupuesto…",
+    "start": 48.072,
+    "end": 49.03
+   },
+   {
+    "w": "y",
+    "start": 49.03,
+    "end": 49.11
+   },
+   {
+    "w": "los",
+    "start": 49.11,
+    "end": 49.27
+   },
+   {
+    "w": "negocia",
+    "start": 49.27,
+    "end": 49.829
+   },
+   {
+    "w": "con",
+    "start": 49.829,
+    "end": 49.909
+   },
+   {
+    "w": "sus",
+    "start": 49.909,
+    "end": 50.069
+   },
+   {
+    "w": "bomberos.",
+    "start": 50.069,
+    "end": 51.027
+   },
+   {
+    "w": "Madrid",
+    "start": 51.027,
+    "end": 51.347
+   },
+   {
+    "w": "les",
+    "start": 51.347,
+    "end": 51.587
+   },
+   {
+    "w": "subió",
+    "start": 51.587,
+    "end": 51.906
+   },
+   {
+    "w": "el",
+    "start": 51.906,
+    "end": 52.066
+   },
+   {
+    "w": "específico",
+    "start": 52.066,
+    "end": 52.705
+   },
+   {
+    "w": "un",
+    "start": 52.705,
+    "end": 52.865
+   },
+   {
+    "w": "diez",
+    "start": 52.865,
+    "end": 53.224
+   },
+   {
+    "w": "por",
+    "start": 53.224,
+    "end": 53.404
+   },
+   {
+    "w": "ciento",
+    "start": 53.404,
+    "end": 53.584
+   },
+   {
+    "w": "en",
+    "start": 53.584,
+    "end": 53.744
+   },
+   {
+    "w": "2024.",
+    "start": 53.744,
+    "end": 54.722
+   }
+  ]
+ },
+ {
+  "text": "¿Te parece justo? Escribe en comentarios: ¿Madrid o Granada?",
+  "start": 55.171,
+  "end": 59.086,
+  "words": [
+   {
+    "w": "¿Te",
+    "start": 55.171,
+    "end": 55.261
+   },
+   {
+    "w": "parece",
+    "start": 55.261,
+    "end": 55.661
+   },
+   {
+    "w": "justo?",
+    "start": 55.661,
+    "end": 56.4
+   },
+   {
+    "w": "Escribe",
+    "start": 56.4,
+    "end": 56.859
+   },
+   {
+    "w": "en",
+    "start": 56.859,
+    "end": 57.019
+   },
+   {
+    "w": "comentarios:",
+    "start": 57.019,
+    "end": 57.878
+   },
+   {
+    "w": "¿Madrid",
+    "start": 57.878,
+    "end": 58.547
+   },
+   {
+    "w": "o",
+    "start": 58.547,
+    "end": 58.617
+   },
+   {
+    "w": "Granada?",
+    "start": 58.617,
+    "end": 59.086
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo!",
+  "start": 59.445,
+  "end": 61.353,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 59.445,
+    "end": 60.055
+   },
+   {
+    "w": "a",
+    "start": 60.055,
+    "end": 60.134
+   },
+   {
+    "w": "quien",
+    "start": 60.134,
+    "end": 60.374
+   },
+   {
+    "w": "oposite",
+    "start": 60.374,
+    "end": 61.013
+   },
+   {
+    "w": "contigo!",
+    "start": 61.013,
+    "end": 61.353
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 61.692,
+  "end": 65.846,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 61.692,
+    "end": 62.291
+   },
+   {
+    "w": "a",
+    "start": 62.291,
+    "end": 62.371
+   },
+   {
+    "w": "bombero?",
+    "start": 62.371,
+    "end": 63.01
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 63.01,
+    "end": 64.169
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 64.169,
+    "end": 64.608
+   },
+   {
+    "w": "gratis",
+    "start": 64.608,
+    "end": 65.087
+   },
+   {
+    "w": "cinco",
+    "start": 65.087,
+    "end": 65.407
+   },
+   {
+    "w": "días!",
+    "start": 65.407,
+    "end": 65.846
+   }
+  ]
+ }
+]
