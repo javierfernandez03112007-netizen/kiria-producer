@@ -37,8 +37,18 @@ const failed = await page.evaluate(() => window.failed);
 if (failed) { console.log('FAILED', failed); process.exit(1); }
 const t0 = Date.now();
 if (process.env.COVER) { await page.evaluate(() => window.renderCover()); await page.screenshot({ path: path.join(outDir, 'cover3d.png') }); frames = []; }
+const LISTA = rest[0] !== '--range';
+let primero = true;
 for (const f of frames) {
   if (process.env.SKIP && fs.existsSync(path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`))) continue;
+  // la capa 2D (canvas) a veces se presenta con 1–2 fotogramas de retraso respecto al 3D: en las pruebas sueltas
+  // (tiempos salteados) salían rótulos de otro segundo. Se pinta dos veces el primer fotograma de cada trozo y,
+  // en las pruebas sueltas, todos.
+  if (LISTA || primero) {
+    await page.evaluate(t => window.renderAt(t), f / FPS);
+    await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  }
+  primero = false;
   await page.evaluate(t => window.renderAt(t), f / FPS);
   await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));   // que se pinten las dos capas
   await page.screenshot({ path: path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 93 });

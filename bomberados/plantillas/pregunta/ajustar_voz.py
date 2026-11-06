@@ -60,6 +60,10 @@ def main():
         if tag == "equal":
             for k in range(i2 - i1):
                 st[i1 + k] = asr[j1 + k]["start"]
+        elif tag == "replace" and i2 - i1 == j2 - j1:     # mismo nº de palabras («veinte» ↔ «2», «cuarenta» ↔ «40»): una a una
+            for k in range(i2 - i1):
+                st[i1 + k] = asr[j1 + k]["start"]
+            print("  una a una:", " ".join(sw[i][1] for i in range(i1, i2)), "≈", " ".join(asr[j]["w"] for j in range(j1, j2)))
         elif tag == "replace" and i2 - i1 >= 1:
             t0, t1 = asr[j1]["start"], (asr[j2]["start"] if j2 < len(asr) else asr[j2 - 1]["end"])
             ws = np.array([syl(sw[i][1]) for i in range(i1, i2)], float)

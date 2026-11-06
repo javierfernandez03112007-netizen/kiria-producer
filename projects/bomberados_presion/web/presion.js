@@ -579,7 +579,7 @@ function buildWorld() {
   world.add(new THREE.HemisphereLight(0x6f8ab8, 0x15100c, 0.55));
   const moon = new THREE.DirectionalLight(0x9db8ff, 0.45); moon.position.set(30, 70, 40); moon.castShadow = true; moon.shadow.mapSize.set(2048, 2048);
   Object.assign(moon.shadow.camera, { left: -30, right: 30, top: 60, bottom: -10, near: 1, far: 160 }); moon.shadow.bias = -0.0005; world.add(moon);
-  for (const [x, z] of [[14, 12], [-10, 12], [26, 3]]) {
+  for (const [x, z] of [[3, 14], [-10, 12], [26, 3]]) {
     const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 6, 12), M.steel); pole.position.set(x, 3, z); world.add(pole);
     const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 12), new THREE.MeshBasicMaterial({ color: 0xffc98a })); lamp.material.color.setScalar(3); lamp.position.set(x, 6.05, z); world.add(lamp);
     const l = new THREE.PointLight(0xffb070, 50, 0, 2); l.position.set(x, 5.9, z); world.add(l);
@@ -632,8 +632,8 @@ function setupTimes() {
 }
 function camKeys() {
   const K = [
-    [0, [19, 2.6, 22, 5.5, 4.5, 3, 40]],
-    [T.bomba0, [17, 2.8, 19.5, 7.0, 3.6, 4.6, 40]],
+    [0, [21, 1.5, 25, 6.4, 5.4, 4.2, 40]],
+    [T.bomba0, [18.5, 1.6, 21.5, 7.6, 4.8, 5.0, 40]],
     [T.companero, [14, 9, 24, 3, 14, 0, 40]],
     [T.cincuenta0, [12, 30, 28, 2.2, 34, 0, 40]],
     [T.arriba, [8.5, 52.5, 14.5, 1.8, 49.8, 0.5, 40]],
@@ -654,10 +654,8 @@ function camKeys() {
     [T.menos5 + 0.2, [6, 52, 12.5, 2.0, 50, 0.6, 40]],
     [T.corre, [5.4, 46.5, 7.4, 2.2, 45.4, 0.15, 40]],
     [T.rozamiento, [6.2, 49.2, 9.4, 2.3, 48.6, 0.4, 40]],
-    [T.ocho2, [7.8, 52.4, 11.6, 2.8, 50.5, 0.8, 40]],
-    [T.tres, [7.5, 52.6, 11.0, 2.9, 50.7, 0.9, 40]],
-    [T.esla, [8.6, 51.6, 13.4, 2.6, 50.2, 0.6, 40]],
-    [T.fin, [8.8, 51.8, 13.8, 2.6, 50.2, 0.6, 40]],
+    [T.escribe, [9.5, 50.6, 15.5, 2.4, 49.2, 0.4, 41]],
+    [T.fin, [16, 47.5, 27, 2.4, 46.5, 0.2, 42]],
     [T.compartir + 0.6, [30, 42, 46, 2, 31, 0, 42]],
     [T.end, [42, 32, 58, 2, 26, 0, 44]],
   ];
@@ -685,7 +683,6 @@ function camAt(t) {
 }
 
 // ------------------------------------------------------------------ estado de la escena en t
-function lanceP(t) { return t < T.tres - 0.05 ? 0 : 3 * e3(pr(t, T.tres - 0.05, 0.55)); }
 function heightNow(t) {           // altura (m) a la que va la cámara en la subida del «diez, veinte…»
   const ks = [[T.cada, 0], [T.d10, 10], [T.d20, 20], [T.d30, 30], [T.d40, 40], [T.d50, 50]];
   if (t <= ks[0][0]) return 0;
@@ -708,16 +705,16 @@ function update(t) {
   const still = Math.exp(-Math.pow((t - T.corre - 0.3) / 0.5, 2));
   hose.fu.uI.value = 0.9 + 0.9 * still;
   // regla de altura
-  const rOn = sm(T.cincuenta0 - 0.3, T.cincuenta0 + 0.2, t) * (1 - sm(T.marcab - 0.4, T.marcab, t)) + sm(T.ocho1 - 0.3, T.ocho1, t) * (1 - sm(T.ocho2 - 0.3, T.ocho2, t));
+  const rOn = sm(T.cincuenta0 - 0.3, T.cincuenta0 + 0.2, t) * (1 - sm(T.marcab - 0.4, T.marcab, t)) + sm(T.ocho1 - 0.3, T.ocho1, t) * (1 - sm(T.escribe - 0.3, T.escribe, t));
   ruler.material.opacity = 0.75 * cl(rOn);
   rulerTicks.forEach((tk, k) => { const hit = k === 0 ? 0 : Math.exp(-Math.pow((t - [0, T.d10, T.d20, T.d30, T.d40, T.d50][k] - 0.1) / 0.18, 2)); tk.material.opacity = cl(rOn) * (0.7 + 0.3 * hit); tk.scale.x = 1 + 1.2 * hit; });
   // manómetros gigantes
-  const gpIn = bk(pr(t, T.marcab - 0.1, 0.5)) * (1 - sm(T.lanza - 0.3, T.lanza, t)) + bk(pr(t, T.ocho2 - 0.25, 0.45)) * 0 ;
+  const gpIn = bk(pr(t, T.marcab - 0.1, 0.5)) * (1 - sm(T.lanza - 0.3, T.lanza, t));
   gPump.scale.setScalar(Math.max(0.001, gpIn * gPump.userData.sc)); gPump.visible = gpIn > 0.01; gPump.quaternion.copy(cam.quaternion);
   nPump.rotation.z = -angP(8 * e3(pr(t, T.marcab + 0.1, 0.6)) + 0.08 * Math.sin(t * 9));
-  const glIn = bk(pr(t, T.presion - 0.1, 0.5)) * (1 - sm(T.l1e + 0.1, T.l1e + 0.4, t)) + bk(pr(t, T.ocho2 - 0.2, 0.45)) * (1 - sm(T.fin - 0.3, T.fin, t));
+  const glIn = bk(pr(t, T.presion - 0.1, 0.5)) * (1 - sm(T.l1e + 0.1, T.l1e + 0.4, t));
   gLance.scale.setScalar(Math.max(0.001, glIn * gLance.userData.sc)); gLance.visible = glIn > 0.01; gLance.quaternion.copy(cam.quaternion);
-  nLance.rotation.z = -angP(lanceP(t) + (t > T.tres ? 0.04 * Math.sin(t * 9) : 0));
+  nLance.rotation.z = -angP(4 + 3.4 * Math.sin((t - T.presion) * 2.4 - 1.57));     // la aguja «duda»: ¿cuánto marca?
   // lanza cerrada: el aro rojo late
   lanceRing.material.color.setRGB(3 * (0.6 + 0.4 * Math.sin(t * 8)), 0.4, 0.25);
   lanceRing.scale.setScalar(1 + 0.6 * Math.exp(-Math.pow((t - T.cerrada - 0.1) / 0.2, 2)) + 0.6 * Math.exp(-Math.pow((t - T.como - 0.1) / 0.2, 2)));
@@ -752,17 +749,18 @@ function stamp(text, y, col, a, px = 170, rot = -0.06) {
   g.restore();
 }
 const OPTS = [['A', '1,5 BAR', '#FF7A1A'], ['B', '2 BAR', '#2DD4BF'], ['C', '3 BAR', '#F0457A'], ['D', '8 BAR', '#8B7CF6']];
-function cards(t) {               // 2 × 2 tarjetas (en pantalla), D en rojo tras «¡Tiempo!», C en verde con «Es la C»
+function cards(t) {               // 2 × 2 tarjetas (en pantalla), D en rojo tras «¡Tiempo!»; vuelven con «Escribe en comentarios…» (sin dar la respuesta)
   const first = (i) => bk(pr(t, T.l1e - 0.35 + i * 0.08, 0.45)) * (1 - sm(T.tiempo + 1.0, T.tiempo + 1.45, t));
-  const second = (i) => bk(pr(t, T.esla - 0.2 + i * 0.05, 0.4)) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
+  const second = (i) => bk(pr(t, T.comentarios - 0.25 + i * 0.07, 0.4)) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
   OPTS.forEach(([L, s, col], i) => {
     const k = Math.max(first(i), second(i));
     if (k <= 0.005) return;
-    const bad = i === 3 && t > T.tiempo - 0.05 && t < T.esla - 0.5, ok = i === 2 && t > T.esla + 0.05;
-    const dim = t > T.esla + 0.05 && !ok ? 1 - 0.6 * sm(T.esla + 0.05, T.esla + 0.35, t) : 1;
+    const bad = i === 3 && t > T.tiempo - 0.05, ok = false;
+    const dim = bad && t > T.escribe - 0.5 ? 0.5 : 1;
     const cx = 290 + (i % 2) * 500, cy = 640 + (i >> 1) * 170, side = i % 2 ? 1 : -1;
     const shake = bad ? 10 * Math.sin(t * 80) * Math.exp(-Math.pow((t - T.tiempo - 0.15) / 0.2, 2)) : 0;
-    g.save(); g.globalAlpha = cl(k * 1.3) * dim; g.translate(cx + side * (1 - cl(k)) * 600 + shake, cy); const sc = ok ? 1 + 0.08 * sm(T.esla + 0.05, T.esla + 0.35, t) : 1; g.scale(sc, sc);
+    const pulse = !bad && t > T.cual ? 1 + 0.035 * Math.max(0, Math.sin((t - T.cual) * 7 - i * 1.3)) : 1;
+    g.save(); g.globalAlpha = cl(k * 1.3) * dim; g.translate(cx + side * (1 - cl(k)) * 600 + shake, cy); g.scale(pulse, pulse);
     rr(-230, -66, 460, 132, 40); g.fillStyle = ok ? 'rgba(10,44,28,0.94)' : bad ? 'rgba(58,8,8,0.94)' : 'rgba(9,12,17,0.88)'; g.fill();
     g.lineWidth = ok || bad ? 7 : 3; g.strokeStyle = ok ? GREEN2 : bad ? RED2 : 'rgba(255,255,255,0.3)'; g.stroke();
     g.beginPath(); g.arc(-160, 0, 44, 0, 7); g.fillStyle = ok ? GREEN2 : bad ? RED2 : col; g.fill();
@@ -778,12 +776,12 @@ function overlay(t) {
   const r50 = proj(V(HX + 0.65, 50, 0.2));
   chip(r50.x + 140, r50.y, '50 METROS', CYAN2, sm(T.cincuenta0 - 0.1, T.cincuenta0 + 0.2, t) * (1 - sm(T.marcab - 0.4, T.marcab - 0.1, t)), 1.1, 'h', 62);
   // sello del examen (dato de Adrián: CONFIRMAR) y los datos
-  const ex = sm(T.marcab - 0.3, T.marcab, t) * (1 - sm(T.l1e - 0.2, T.l1e + 0.1, t));
+  const ex = sm(T.marcab - 0.3, T.marcab, t) * (1 - sm(T.presion - 0.35, T.presion - 0.05, t));
   if (ex > 0) { g.save(); g.globalAlpha = ex; g.translate(540, 520); rr(-420, -42, 840, 84, 42); g.fillStyle = 'rgba(8,10,14,0.8)'; g.fill(); g.strokeStyle = GOLD2; g.lineWidth = 3; g.stroke();
     txt('EXAMEN · AYTO. DE SANTIAGO DE COMPOSTELA', 0, 16, 46, GOLD2, 400, 'center', 'Bebas'); g.restore(); }
   chip(pp.x, pp.y + 300, '8 BAR EN LA BOMBA', BLUE2, sm(T.ocho0 - 0.15, T.ocho0 + 0.15, t) * (1 - sm(T.lanza - 0.3, T.lanza, t)), 1.1, 'p', 60);
   chip(lt.x + 60, lt.y + 170, 'LANZA CERRADA', RED2, sm(T.cerrada - 0.2, T.cerrada + 0.1, t) * (1 - sm(T.l1e - 0.2, T.l1e + 0.1, t)), 1.1, 'l', 60);
-  chip(pl.x, pl.y - 320, '¿ ? BAR', GOLD2, sm(T.presion - 0.1, T.presion + 0.2, t) * (1 - sm(T.l1e - 0.2, T.l1e + 0.1, t)), 1.25, 'p', 66);
+  chip(pl.x + 20, pl.y + 300, '¿ ? BAR', GOLD2, sm(T.presion - 0.1, T.presion + 0.2, t) * (1 - sm(T.l1e - 0.2, T.l1e + 0.1, t)), 1.25, 'p', 66);
   // tarjetas, comenta y cuenta 1 → 5
   cards(t);
   const ca = sm(T.comenta - 0.1, T.comenta + 0.25, t) * (1 - sm(T.count1 - 0.05, T.count1 + 0.2, t));
@@ -806,33 +804,53 @@ function overlay(t) {
     [T.d10, T.d20, T.d30, T.d40, T.d50].forEach((tc, k) => {
       const mk = proj(V(HX + 0.65, (k + 1) * 10, 0.2));
       const a = up * sm(tc - 0.12, tc + 0.1, t) * (1 - sm(tc + 1.3, tc + 1.7, t)) * (1 - sm(T.menos5 - 0.25, T.menos5, t));
-      chip(mk.x + 170, mk.y, `${(k + 1) * 10} m · −1 BAR`, CYAN2, a, 1.0 + 0.2 * Math.exp(-Math.pow((t - tc - 0.1) / 0.12, 2)), 'h', 56);
+      chip(mk.x + 200, mk.y, `${(k + 1) * 10} m`, CYAN2, a, 1.0 + 0.25 * Math.exp(-Math.pow((t - tc - 0.1) / 0.12, 2)), 'h', 58);
     });
-    const hh = heightNow(t), pNow = 8 - hh / 10;
-    const hp = proj(V(HX, Math.max(1.5, hh), HZ));
-    chip(hp.x - 190, hp.y, `${pNow.toFixed(pNow % 1 ? 1 : 0).replace('.', ',')} BAR`, '#F4F6F8', up * sm(T.cada + 0.2, T.pierde, t) * (1 - sm(T.d50 - 0.15, T.d50 + 0.1, t)), 1.25, 'p', 66);
+    const marks = [T.d10, T.d20, T.d30, T.d40, T.d50], n = marks.filter(tc => t >= tc - 0.05).length;
+    if (n > 0) {
+      const hh = heightNow(t), hp = proj(V(HX, Math.max(1.5, hh), HZ)), pop = Math.exp(-Math.pow((t - marks[n - 1] - 0.08) / 0.13, 2));
+      chip(hp.x - 200, hp.y, `−${n} BAR`, '#FF8A3D', up * sm(T.d10 - 0.1, T.d10 + 0.08, t) * (1 - sm(T.menos5 - 0.25, T.menos5, t)), 1.2 + 0.3 * pop, 'p', 70);
+    }
     chip(540, 1600, 'CADA 10 m DE SUBIDA: −1 BAR', CYAN2, up * sm(T.pierde - 0.2, T.pierde + 0.1, t) * (1 - sm(T.d10 - 0.3, T.d10, t)), 1.05, 'h', 56);
   }
   stamp('−5 BAR', 980, CYAN2, sm(T.menos5 - 0.1, T.menos5 + 0.2, t) * (1 - sm(T.como - 0.35, T.como - 0.05, t)), 190, -0.04);
   // lanza cerrada: el agua no corre → rozamiento 0
   const hq = proj(V(HX, 45.2, HZ));
-  chip(hq.x + 230, hq.y - 40, 'AGUA QUIETA', BLUE2, sm(T.corre - 0.2, T.corre + 0.1, t) * (1 - sm(T.ocho2 - 0.3, T.ocho2, t)), 1.1, null, 60);
-  chip(540, 1560, 'ROZAMIENTO = 0 (LANZA CERRADA)', GREEN2, sm(T.rozamiento - 0.25, T.rozamiento + 0.05, t) * (1 - sm(T.ocho2 - 0.3, T.ocho2, t)), 1.05, 'z', 56);
-  // 8 − 5 = 3 BAR
-  const eq = sm(T.ocho2 - 0.15, T.ocho2 + 0.1, t) * (1 - sm(T.esla - 0.4, T.esla - 0.15, t));
+  chip(hq.x + 230, hq.y - 40, 'AGUA QUIETA', BLUE2, sm(T.corre - 0.2, T.corre + 0.1, t) * (1 - sm(T.escribe - 0.3, T.escribe, t)), 1.1, null, 60);
+  chip(540, 1560, 'ROZAMIENTO = 0 (LANZA CERRADA)', GREEN2, sm(T.rozamiento - 0.25, T.rozamiento + 0.05, t) * (1 - sm(T.escribe - 0.3, T.escribe, t)), 1.05, 'z', 56);
+  // repaso para que el espectador haga la cuenta: 8 − 5 − 0 = ?  (la respuesta NO se dice: la escribe él en comentarios)
+  const eq = sm(T.escribe - 0.15, T.escribe + 0.1, t) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
   if (eq > 0) {
-    g.save(); g.globalAlpha = eq; g.translate(540, 1580);
-    rr(-400, -80, 800, 160, 40); g.fillStyle = 'rgba(8,10,14,0.86)'; g.fill(); g.strokeStyle = BLUE2; g.lineWidth = 4; g.stroke();
-    g.font = '400 110px Bebas';
-    const parts = [['8', T.ocho2, '#F4F6F8'], [' − 5', T.menos, '#F4F6F8'], [' = 3 BAR', T.tres, GOLD2]];
+    g.save(); g.globalAlpha = eq; g.translate(540, 1075);
+    rr(-430, -92, 860, 200, 44); g.fillStyle = 'rgba(8,10,14,0.88)'; g.fill(); g.strokeStyle = BLUE2; g.lineWidth = 4; g.stroke();
+    g.font = '400 112px Bebas';
+    const parts = [['8', T.escribe, '#F4F6F8', 'BOMBA'], [' − 5', T.escribe + 0.3, CYAN2, '50 m'], [' − 0', T.comentarios + 0.05, GREEN2, 'ROZAM.'], [' = ?', T.cual, GOLD2, '']];
     const tw = parts.reduce((a, [s2]) => a + g.measureText(s2).width, 0); let x = -tw / 2;
-    for (const [s2, tc, col] of parts) { const w = g.measureText(s2).width, a = sm(tc - 0.12, tc + 0.12, t); if (a > 0) { g.globalAlpha = eq * a; txt(s2, x, 38, 110, col, 400, 'left', 'Bebas'); } x += w; }
+    for (const [s2, tc, col, lab] of parts) {
+      g.font = '400 112px Bebas'; const w = g.measureText(s2).width, a = sm(tc - 0.12, tc + 0.12, t);
+      if (a > 0) {
+        const q = s2.includes('?'), sc = q ? 1 + 0.12 * Math.max(0, Math.sin((t - tc) * 6)) : 1;
+        g.globalAlpha = eq * a; g.save(); g.translate(x + w / 2, 0); g.scale(sc, sc);
+        if (q) { g.shadowColor = GOLD2; g.shadowBlur = 30; }
+        txt(s2, 0, 30, 112, col, 400, 'center', 'Bebas'); g.shadowBlur = 0; g.restore();
+        g.font = '400 112px Bebas'; const wn = g.measureText(s2.trim().split(' ').pop()).width;     // la etiqueta, bajo la cifra
+        if (lab) txt(lab, x + w - wn / 2, 86, 40, 'rgba(242,245,248,0.75)', 400, 'center', 'Bebas');
+      }
+      x += w;
+    }
     g.restore();
   }
-  stamp('3 BAR', 1040, GOLD2, sm(T.tres - 0.05, T.tres + 0.2, t) * (1 - sm(T.esla - 0.45, T.esla - 0.2, t)), 210, -0.04);
-  chip(540, 1600, '✓ ES LA C', GREEN2, sm(T.esla - 0.05, T.esla + 0.25, t) * (1 - sm(T.fin - 0.3, T.fin, t)), 1.3, null, 70);
+  const ce = sm(T.comentarios - 0.1, T.comentarios + 0.2, t) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
+  if (ce > 0) {
+    const b = 1 + 0.05 * Math.max(0, Math.sin((t - T.comentarios) * 6));
+    g.save(); g.globalAlpha = ce; g.translate(540, 1560); g.scale(b, b); rr(-390, -56, 780, 112, 56); g.fillStyle = 'rgba(8,10,14,0.84)'; g.fill(); g.strokeStyle = GOLD2; g.lineWidth = 5; g.stroke();
+    txt('💬  ESCRIBE TU LETRA EN COMENTARIOS', 0, 20, 54, '#F2F5F8', 400, 'center', 'Bebas'); g.restore();
+  }
   share(t);
   closing(t);
+  // un punto casi invisible: si la capa solo se borra, Chrome no la vuelve a presentar y se quedan los rótulos del
+  // fotograma anterior (se veía en las pruebas con tiempos salteados)
+  g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.fillStyle = 'rgba(0,0,0,0.01)'; g.fillRect(0, 0, 2, 2);
 }
 
 // ------------------------------------------------------------------ fotograma
