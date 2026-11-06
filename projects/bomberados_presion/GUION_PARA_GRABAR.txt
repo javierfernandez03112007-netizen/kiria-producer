@@ -1,0 +1,51 @@
+«¿QUÉ PRESIÓN LLEGA A LA LANZA?» — Presión en punta con la manguera subiendo 50 m (Pregunta del día cinematográfica; pregunta e idea de Adrián)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 36 s + 4 s de cuenta). Como en el de la botella: lo pongo un poco más despacio y respeto
+todas tus pausas. El gancho, bajo y tenso; «¡Tiempo!», de golpe; «Diez, veinte, treinta, cuarenta… ¡cincuenta!»,
+subiendo de intensidad. La cuenta 1-2-3-4-5 NO se graba: la meto yo (empieza ya en 1, como la de la botella).
+Lo más fuerte tiene que ser el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!», algo más despacio.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[tense, low voice] Estás abajo, en la bomba. [mysterious] Tu compañero, cincuenta metros más arriba.
+[urgent] La bomba marca ocho bares y la lanza está CERRADA. [curious] ¿Qué presión tiene él en la punta?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! Si has dicho ocho… [grave] te has olvidado de la ALTURA.
+[explaining, confident] Por cada diez metros que sube, el agua pierde un bar.
+[building up] Diez, veinte, treinta, cuarenta… ¡cincuenta! [impressed] Cinco bares menos.
+[serious, warning] Y como la lanza está cerrada, el agua no corre… así que no se pierde nada por rozamiento.
+[triumphant] Ocho menos cinco: ¡TRES bares! Es la C.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con planos ABIERTOS y la cámara siempre en movimiento:
+una autobomba al pie de un edificio alto en llamas y la manguera subiendo por la fachada hasta 50 m (el agua de dentro
+se ve como luz azul). Arriba, en una ventana, el compañero con la lanza.
+1. «Estás abajo, en la bomba.» — primer fotograma: la autobomba con los rotativos, el bombero en el cuadro de mando y
+   el manómetro de la bomba en primer término. «Tu compañero, cincuenta metros más arriba.» — la cámara sube por la
+   fachada siguiendo la manguera hasta el compañero; regla de altura en la fachada: «50 m».
+2. «La bomba marca ocho bares y la lanza está cerrada.» — manómetro gigante de la bomba: 8 BAR; arriba, la lanza con un
+   candado rojo: CERRADA. «¿Qué presión tiene él en la punta?» — manómetro de la lanza con «?».
+   En pantalla, sello: «EXAMEN · AYTO. DE SANTIAGO DE COMPOSTELA» (dato de Adrián: CONFÍRMAMELO).
+3. «Comenta tu letra. Tienes cinco segundos.» — cuatro tarjetas de cristal: A · 1,5 BAR  B · 2 BAR  C · 3 BAR  D · 8 BAR
+   y el contador 1-2-3-4-5 que arranca ya en 1 (bocina en el 5).
+4. «¡Tiempo! Si has dicho ocho… te has olvidado de la altura.» — bocina; la tarjeta D se pone roja; barrido hacia arriba.
+5. «Por cada diez metros que sube, el agua pierde un bar.» — la regla de la fachada: 0 → 10 m y el chip «−1 BAR».
+6. «Diez, veinte, treinta, cuarenta… ¡cincuenta! Cinco bares menos.» — la cámara sube planta a planta: en cada marca de
+   10 m salta «−1 BAR» y el marcador junto a la manguera baja 8 → 7 → 6 → 5 → 4 → 3.
+7. «Y como la lanza está cerrada, el agua no corre… así que no se pierde nada por rozamiento.» — la luz del agua se para
+   dentro de la manguera; icono de rozamiento tachado: «ROZAMIENTO = 0 (lanza cerrada)».
+8. «Ocho menos cinco: ¡tres bares! Es la C.» — el manómetro de la lanza se clava en 3; «8 − 5 = 3 BAR»; la C en verde.
+9. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+10. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS entre brasas.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta: C) 3 bar. Presión estática: 50 m de columna de agua ≈ 5 bar (1 bar ≈ 10 m; exactamente 4,9 bar).
+Con la lanza cerrada no hay caudal, así que no hay pérdidas por rozamiento: 8 − 5 = 3 bar. Las trampas: la D (8 bar,
+olvidar la altura) y la A y la B (restar también rozamiento, que con la lanza cerrada no hay). Ver FUENTES.md.
+PENDIENTE: que Adrián confirme que es del examen del Ayto. de Santiago de Compostela (2017) para dejar el sello.

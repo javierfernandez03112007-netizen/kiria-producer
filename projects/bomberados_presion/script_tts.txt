@@ -1,0 +1,10 @@
+[tense, low voice] Estás abajo, en la bomba. [mysterious] Tu compañero, cincuenta metros más arriba.
+[urgent] La bomba marca ocho bares y la lanza está CERRADA. [curious] ¿Qué presión tiene él en la punta?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! Si has dicho ocho… [grave] te has olvidado de la ALTURA.
+[explaining, confident] Por cada diez metros que sube, el agua pierde un bar.
+[building up] Diez, veinte, treinta, cuarenta… ¡cincuenta! [impressed] Cinco bares menos.
+[serious, warning] Y como la lanza está cerrada, el agua no corre… así que no se pierde nada por rozamiento.
+[triumphant] Ocho menos cinco: ¡TRES bares! Es la C.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

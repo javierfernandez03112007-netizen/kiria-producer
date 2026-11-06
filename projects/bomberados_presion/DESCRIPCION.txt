@@ -1,0 +1,40 @@
+🚒 Estás abajo, en la bomba. Tu compañero, 50 metros más arriba… y la lanza está cerrada.
+
+❓ En un tendido de mangueras que sube 50 m sobre la bomba, ¿qué presión hay en punta de lanza si está cerrada y el manómetro de la bomba marca 8 bar?
+a) 1,5 bar
+b) 2 bar
+c) 3 bar
+d) 8 bar
+
+⚠️ Dos trampas: si has dicho 8, te has olvidado de la altura… y si has dicho 1,5 o 2, has restado un rozamiento que con la lanza cerrada no existe.
+
+👇 Comenta tu letra y mándaselo a quien oposite contigo: ¿la acertará?
+📌 Guárdalo para repasar hidráulica.
+
+🚒 BOMBERADOS — la app para preparar la oposición a bombero
+Estudia solo, reta a otro opositor en un 1 vs 1 o compite en un Battle Royale de hasta 6 jugadores. Falla en casa, no en el examen.
+🎁 Pruébala GRATIS 5 días: enlace en la bio.
+
+#bomberos #oposicionesbombero #opositores #oposiciones #bombero #testoposiciones #hidraulica #bomberados
+
+.
+.
+.
+✅ Respuesta: C) 3 bar.
+Por cada 10 m de altura el agua pierde ≈ 1 bar (presión estática): 50 m ≈ 5 bar. Con la lanza cerrada el agua no se mueve, así que no hay pérdidas por rozamiento: 8 − 5 = 3 bar.
+
+---
+
+Versión corta (TikTok):
+
+🚒 La bomba marca 8 bar, la manguera sube 50 m y la lanza está cerrada: ¿qué presión hay en la punta? Si has dicho 8… te has olvidado de la altura 😉 Comenta tu letra 👇 Bomberados: pruébala GRATIS 5 días 👉 bio.
+
+#bomberos #oposicionesbombero #hidraulica #bomberados
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Comentario fijado: «📌 ¿1,5, 2, 3 u 8? La explicación está en la descripción 👇».
+- Pregunta e idea de Adrián (Élite Bomberos). PENDIENTE: que confirme que es del examen del Ayto. de Santiago de Compostela (2017); si lo confirma, se puede añadir «Pregunta de examen de Santiago de Compostela» al principio de la descripción.
+- PENDIENTE: la página del manual de hidráulica que uséis para citarla en FUENTES.md.
+- CONFIRMAR la prueba gratis de 5 días.
