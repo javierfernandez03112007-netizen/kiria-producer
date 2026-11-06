@@ -74,3 +74,4 @@ no se encuentra fuente, la idea no se hace. El formato es el número de `FORMATO
 | 💡 «El gas natural no es tóxico… pero te puede matar» | 6 | asfixia con O2 < 19,5 % | Manual del Ayto. de Madrid, pág. 2 |
 | 💡 «¿Por qué tu cocina de butano no vale para gas natural?» | 9 | familias de gases, índice de Wobbe (UNE-EN 437) | ídem |
 | 💡 «¿Por qué si se rompe una farola no se apagan todas?» | 9 | farolas en fases alternas | manual de control de emergencias, pág. 226 |
+| ✍️ **Idea de Javi (6 nov; guion enviado el 6 nov, `projects/bomberados_sueldos/`): «¿Cuánto gana un bombero en Madrid y en Granada… y por qué?»** Tema polémico, 1 minuto, 3D de noche con dron (estilo del acoplamiento) | 2 (dato de la oposición: lo que más se comparte) | Ayto. de Madrid 27.803,72 € de específico frente a 25.389,34 € en Granada; mismo sueldo base del Estado; Granada, casi 5 guardias más al año | acuerdo del Ayto. de Madrid (31-7-2024), presupuesto de Granada 2026, BOCM 9-2-2026 y 1-8-2025 |

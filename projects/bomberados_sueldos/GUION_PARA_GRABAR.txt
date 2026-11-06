@@ -1,0 +1,54 @@
+«¿CUÁNTO GANA UN BOMBERO EN MADRID Y EN GRANADA?» (dato de la oposición, polémico; 1 minuto; idea de Javi, 6 nov)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 1 minuto con tu ritmo: lo pongo un poco más despacio y respeto todas tus pausas). Sin cuenta atrás.
+El gancho, bajo y con intriga; las cifras, claras y despacio (que se entiendan los números); «cinco guardias más», con
+sorpresa. Lo más fuerte tiene que ser el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!», algo más despacio.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[intrigued, low voice] Mismo casco, mismo fuego y la misma oposición… [serious] pero NO cobran lo mismo.
+[curious] ¿Cuánto gana un bombero en Madrid… y cuánto en Granada?
+[explaining, confident] Lo primero es igual: el sueldo base lo fija el Estado. Unos novecientos euros al mes, en toda España.
+[mysterious] La diferencia está en un complemento que pone cada ayuntamiento: [emphatic] el ESPECÍFICO.
+[building up] Madrid: veintisiete mil ochocientos euros al año. Granada: veinticinco mil cuatrocientos.
+[serious] En total, unos cuarenta y siete mil euros brutos en Madrid… y cuarenta y cuatro mil setecientos en Granada.
+[intrigued] Parece poca diferencia… [shocked] hasta que miras las HORAS: en Granada trabajan casi CINCO guardias más al año.
+[slow, emphatic] Por hora: treinta y un euros en Madrid. Veintisiete en Granada.
+[curious] ¿Y por qué? [explaining] Porque los complementos los paga cada ayuntamiento con su presupuesto… y los negocia con sus bomberos. [serious] Madrid les subió el específico un DIEZ por ciento en dos mil veinticuatro.
+[challenging] ¿Te parece justo? Escribe en comentarios: ¿MADRID o GRANADA?
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — 3D cinematográfico de noche con planos de dron ABIERTOS, como el del acoplamiento (el
+estándar de los vídeos medios según el plan de cada mañana). La calle partida en dos ciudades: a la izquierda MADRID (torres
+y avenidas), a la derecha GRANADA (casas blancas y la colina); sin escudos ni logotipos reales.
+1. «Mismo casco, mismo fuego y la misma oposición… pero no cobran lo mismo.» — primer fotograma: dos bomberos IDÉNTICOS
+   espalda con espalda en la raya que parte la calle, delante del mismo incendio; el dron gira a su alrededor. «pero no
+   cobran lo mismo»: sobre cada uno cae una nómina de papel que se enciende; la de Madrid brilla más.
+2. «¿Cuánto gana un bombero en Madrid… y cuánto en Granada?» — MADRID y GRANADA escritos en el asfalto; «¿ € ?» encima.
+3. «El sueldo base lo fija el Estado. Unos novecientos euros al mes, en toda España.» — un sello «ESTADO» golpea y deja dos
+   bloques de oro IGUALES (900 €/MES); chip «IGUAL EN TODA ESPAÑA».
+4. «Un complemento que pone cada ayuntamiento: el específico.» — dos ayuntamientos (edificios genéricos con bandera sin
+   escudo) levantan otra columna de oro encima de cada bloque.
+5. «Madrid: 27.800 € al año. Granada: 25.400.» — las columnas crecen con contador; la de Madrid, más alta.
+6. «En total, 47.000 € brutos en Madrid… y 44.700 en Granada.» — las columnas completas (sueldo + destino + específico)
+   con el total; letra pequeña: «Importes de 2024 · sin antigüedad ni horas extra».
+7. «Hasta que miras las horas: en Granada trabajan casi cinco guardias más al año.» — re-gancho: dos relojes de 24 h; en
+   Granada se encienden 5 guardias más: «+118 H/AÑO».
+8. «Por hora: 31 € en Madrid. 27 en Granada.» — las columnas se cortan en horas: «31 €/H» frente a «27 €/H».
+9. «Los complementos los paga cada ayuntamiento con su presupuesto… y los negocia con sus bomberos. Madrid les subió el
+   específico un 10 % en 2024.» — mesa de negociación con el presupuesto; sello «+10 % (2024)» sobre la columna de Madrid.
+10. «¿Te parece justo? Escribe en comentarios: ¿Madrid o Granada?» — dos botones gigantes MADRID | GRANADA y «💬 COMENTA».
+11. ★ «¡Mándaselo a quien oposite contigo!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+12. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS entre brasas.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Datos (ver FUENTES.md): Ayuntamiento de Madrid (acuerdo de 31-7-2024) frente a Ayuntamiento de Granada (presupuesto de 2026),
+los dos subgrupo C1 y nivel 20. Totales y €/hora con los importes de 2024 (los últimos publicados para los dos), sin
+trienios ni horas extra. La Comunidad de Madrid (otro cuerpo) solo publica la SUBIDA de 2026 (+437,73 €/mes): va en la
+descripción. PENDIENTE: confirmar las cifras de Granada en el PDF del presupuesto (su web bloquea las descargas automáticas).
