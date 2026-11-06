@@ -30,7 +30,10 @@ cuenta. La sesión de producción lee `bomberados/ANALISIS.md` antes de cada ví
 3. Analiza: qué ha cambiado desde ayer; ranking por vistas y por cada 1.000 vistas (me gusta, comentarios, compartidos);
    qué funciona y qué no por formato, gancho, tema, duración, día y hora; y el crecimiento de seguidores de las dos
    cuentas. Lo que tenga pocos datos, «provisional». **No inventes cifras.**
-4. Cambia el plan si hace falta:
+4. Cambia el plan si hace falta. **Regla de Javi (6 nov): cambia solo para mejorar.** Los requisitos de los vídeos
+   (sección «🎬 Requisitos» de `ANALISIS.md` y de la página de análisis) solo se actualizan cuando un vídeo supera al
+   estándar actual en vistas o en las métricas por 1.000; entonces se incorpora lo que le ha funcionado, mezclando estilos
+   si hace falta (p. ej., otro formato que supere al 3D con dron → se combina con el dron). Si nada lo supera, se mantienen.
    - Página **📈 Análisis de contenido de Bomberados** (`40fd785b-2d75-8178-a380-df98f5fb42bb`): reescribe solo la parte del
      análisis (de «## Última actualización» hacia abajo). Conserva tal cual, arriba: «## 👥 Seguidores totales», la base
      «👥 Seguidores de las cuentas» (database `166e5e8690984daf8eaf15610ada0d6b`), el aviso azul, la base

@@ -14,7 +14,15 @@ Cómo se mide (desde el 6 nov, solo lo que se ve como espectador; siempre por ca
 - **Crecimiento**: seguidores de Bomberados y de Élite cada 3 días.
 - No sacar conclusiones con 1–2 vídeos por grupo: se marcan como «provisional».
 
-## 📌 Para los próximos vídeos (plan del 6 nov) — BORRADOR, pendiente del OK de Javi
+## 🎬 Requisitos de los vídeos (solo cambian para mejorar)
+
+Regla de Javi (6 nov): los requisitos solo cambian cuando un vídeo lo hace **mejor** que el estándar actual (más vistas,
+me gusta, comentarios o compartidos por 1.000). Entonces se incorpora lo que ha funcionado y, si hace falta, se **mezclan**
+los dos estilos (p. ej., si otro formato supera al 3D con dron, se toma lo suyo y se combina con el dron). Nunca se quita
+algo que funciona sin datos que lo justifiquen. Estándar actual de los medios: el del **acoplamiento** (3D cinematográfico de
+noche, planos de dron abiertos, maniobra real que se ve, dilema «¿A o B?»).
+
+## 📌 Para los próximos vídeos (plan del 6 nov)
 
 1. **Prioridad n.º 1: «Explicado» en 3D cinematográfico con planos de dron abiertos** (como el acoplamiento): 73.000 vistas,
    el triple que cualquier otro, y 55 me gusta/1.000. Hacer 1–2 a la semana sobre maniobras que se ven (tendidos, escaleras,
@@ -28,6 +36,8 @@ Cómo se mide (desde el 6 nov, solo lo que se ve como espectador; siempre por ca
    el del País Vasco (75 %), con fuente oficial y una pregunta al final para comentar (es el que menos comenta: 0,5/1.000).
 5. **Cierre para comentar en todos**: «Escribe tu letra / qué harías tú en comentarios» (a menos de 0,5/1.000 nadie conversa:
    acoplamiento, Ocho y abuelos).
+8. **Siguiente medio: «Si echas agua a una sartén con aceite ardiendo»** con el estilo del acoplamiento (en Notion, prioridad
+   alta); después, flashover o backdraft con el mismo estilo.
 6. **Duración**: el mejor dura 46,8 s; de momento no hay que recortar a 25 s si el vídeo es visual. Provisional (un solo caso).
 7. **Horas: aún no se pueden comparar.** Javi, apunta en «Publicación (día y hora)» la hora real de cada vídeo que subas.
 
