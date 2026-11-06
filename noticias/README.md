@@ -17,12 +17,18 @@ Esta sesión (`session_014gBm8Nojm4JMj7MbLpxerp`) tiene la tarea «Noticias mund
 `CRON_TZ=Europe/Madrid 35 6,14,22 * * *` (06:35, 14:35 y 22:35, hora de España).
 
 ## Cómo se elige una noticia
+**Prioridad: tecnología** (Javi, 6 nov: «no tiene por qué ser todo economía, también cosas tecnológicas sobre todo, robots,
+etc.»). En cada captura, al menos la mitad de las noticias son de tecnología: robots (humanoides, fábricas, reparto, casa),
+inteligencia artificial, inventos y aparatos nuevos, móviles e internet, coches y transporte, espacio, ciencia y medicina
+con tecnología detrás (implantes, interfaces cerebro-máquina…). Economía, clima o salud, solo si son enormes.
+
 1. **Le importa a más del 90 % de la gente**: toca su dinero (precios, gasolina, bancos, bolsa, pensiones), su salud, su
    comida, su móvil o internet, el clima que vive, su seguridad, o es un hecho histórico que todo el mundo comentará.
    Fuera: política interna de un país, fichajes y cotilleos, sucesos locales, notas de prensa de empresas.
 2. **Confirmada**: al menos dos fuentes fiables (agencias, organismos oficiales, medios de referencia) o una oficial.
    Lo que solo diga una parte (p. ej. un ejército) se escribe atribuido («según…») y lo dudoso con «CONFIRMAR».
-   Si el titular solo sale en agregadores sin confirmar (6 nov: «Cristiano Ronaldo se retira de la selección»), no entra.
+   Si el titular solo sale en agregadores sin confirmar (6 nov: «Cristiano Ronaldo se retira de la selección», «Xinhua
+   estrena presentadores robot»), no entra. Rumores de producto (p. ej. de The Information o Bloomberg) sí, pero como rumor.
 3. **Da para un vídeo de kiria.ai**: tiene un dato que sorprende y se puede explicar en 60 s con objetos (ver
    `engine/REGLAS.md` y `engine/HOOKS.md`). Sin causas políticas: atribuir; nada de culpar a países.
 4. **Nueva**: antes de escribir, consultar las noticias de los últimos 3 días en la base; si es la misma historia con
@@ -30,8 +36,10 @@ Esta sesión (`session_014gBm8Nojm4JMj7MbLpxerp`) tiene la tarea «Noticias mund
 5. Entre 3 y 6 por captura, de más a menos impacto. Si no hay nada a la altura, no se rellena por rellenar.
 
 ## Pasos de cada captura
-1. `WebSearch` (modo `extended`) en inglés y en español: titulares del día (agencias, Euronews, Anadolu, EFE/Infobae),
-   mercados y precios (petróleo, bolsa, inflación), salud (OMS), ciencia y espacio, tecnología, clima y desastres.
+1. `WebSearch` (modo `extended`) en inglés y en español. Primero tecnología: robots y humanoides, IA, inventos y aparatos,
+   espacio, ciencia y medicina con tecnología (p. ej. «humanoid robot news <fecha>», «AI news this week», «robots noticias»,
+   Infobae Tecno, Electrek, The Verge, Humanoids Daily, ScienceAlert). Después, los titulares mundiales del día (agencias,
+   Euronews, Anadolu, EFE/Infobae) por si hay algo enorme de economía, clima o salud.
 2. Contrastar cada candidata con otra búsqueda. `WebFetch` no llega a la mayoría de medios desde esta máquina (red del
    entorno), así que se contrasta con varias búsquedas y se pone la URL de la fuente más fiable.
 3. Notion SQL: `SELECT "Noticia", url, "date:Recopilada:start" FROM "collection://a031950f-1e17-44bf-9025-b88c7bbc1552"
