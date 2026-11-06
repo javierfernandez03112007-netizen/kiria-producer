@@ -60,6 +60,7 @@ de Bomberados de las 08:43/20:43, que hace otra sesión; ver `bomberados/MEMORIA
 - 6 nov: los datos del día 5 llegaron más tarde (hacia las 09:50, hora de Madrid, ya estaban: 4.861 seguidores): un día a 0 por la mañana
   puede ser solo retraso de Metricool; volver a mirarlo antes de pedir a Javi que reconecte.
 - Lo que ya se publicó de Bomberados en @kiria.ai (p. ej. «Aceite en la sartén», 28 oct) se marca con Sección «Bomberados».
-- Pendiente cuando esté conectada: copiar también los últimos datos a la BD «Vídeos de Bomberados»
-  (`collection://5422fb68-0692-456e-8aac-49a9c79151c9`: Vistas, Comentarios, Compartidos, Guardados, Retención 3 s) para que
-  el análisis de las 08:43/20:43 no dependa de que Javi los copie a mano.
+- Pendiente cuando esté conectada: copiar también los últimos datos a la BD «📊 Métricas por vídeo» de Bomberados
+  (`collection://29d4dd57-c184-41eb-8063-541ee3e9d240`: Vistas, Me gusta, Comentarios, Compartidos, Guardados, Retención 3 s;
+  una fila por vídeo con la relación «Vídeo de Bomberados») para que el análisis de las 08:43/20:43 no dependa de que Javi
+  los copie a mano. Desde el 6 nov «Vídeos de Bomberados» ya no tiene columnas de métricas (lo pidió Javi).

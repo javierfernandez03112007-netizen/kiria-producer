@@ -134,13 +134,25 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
 ### Análisis de la cuenta cada 12 h (Javi, 5 nov: «analiza lo que funciona y lo que no y vamos a escalar la cuenta»)
 - Javi actualiza en Notion las métricas de cada vídeo cada 12 h. Tarea programada en ESTA sesión, 8:43 y 20:43 (Madrid):
-  leer la BD, rehacer `bomberados/ANALISIS.md` y la página de Notion «📈 Análisis de la cuenta»
+  leer las métricas, rehacer `bomberados/ANALISIS.md` y la página de Notion «📈 Análisis de contenido de Bomberados»
   (40fd785b-2d75-8178-a380-df98f5fb42bb, dentro del Centro de trabajo), rellenar «Conclusión» de cada vídeo, commit y push,
   y mandar a Javi un resumen corto. Todo por cada 1.000 vistas (envíos, comentarios, guardados, seguidores) + alcance.
+- **6 nov (Javi: «quita de Vídeos de Bomberados todo lo que sea de análisis… y las analíticas en una página que sea
+  análisis de contenido de Bomberados»)**: las métricas ya NO están en «Vídeos de Bomberados». Están en la BD
+  **«📊 Métricas por vídeo»** (collection://29d4dd57-c184-41eb-8063-541ee3e9d240; database c0f6e2b7fcf24b308302d0bcb538285d),
+  en línea dentro de la página de análisis (renombrada de «Análisis de la cuenta» a «Análisis de contenido de Bomberados»).
+  Una fila por vídeo publicado, con relación «Vídeo de Bomberados» (de un solo sentido), rollups «Publicado» y «Formato»,
+  Vistas, Me gusta, Comentarios, Compartidos, Guardados, Seguidores ganados, Visitas al perfil, Retención 3 s (%), Visto
+  entero (%), fórmulas «Compartidos/Comentarios/Guardados por 1.000» (no se pueden leer desde el MCP: los cocientes se
+  calculan aparte), «Conclusión» y «Actualizado». Vistas: «Todos» (por fecha) y «🏆 Ranking: los que más se comparten».
+  Ahí se copiaron las cifras y conclusiones de los 4 vídeos publicados.
+  La guía «📊 Cómo analizar los vídeos» se movió dentro de esa página. Si un vídeo pasa a «Publicado» sin fila en
+  Métricas, la tarea de 12 h se la crea.
 - Primer análisis (5 nov, 4 vídeos con datos): lo que habla de la propia oposición se comparte muchísimo («Ocho de cada
   diez»: 24.800 vistas, 394 envíos); las trampas se comparten (aceite 17/1.000) pero ese tuvo poco alcance; las Preguntas
   del día traen el doble de comentarios. Faltan guardados, seguidores y retención 3 s.
-- Métricas automáticas con Metricool (5 nov): **paradas el 6 nov por Javi**; ver `metricas/README.md`.
+- Métricas automáticas con Metricool (5 nov, la otra sesión): **paradas el 6 nov por Javi**; ver `metricas/README.md`.
+  El análisis de Bomberados de cada 12 h (esta sesión) sigue: Javi apunta las cifras a mano en «📊 Métricas por vídeo».
   (6 nov: una segunda marca es de pago, así que @elitebomberos va como competidor: punto siguiente.)
 - **Metricool** (MCP; 6 nov): una sola marca, kiria.ai (id 7793103); el plan gratis no deja una segunda marca, así que Javi
   eligió meter la cuenta de Bomberados, **@elitebomberos**, como **competidor** de kiria.ai. Javi: «no me deja conectar nada
@@ -159,9 +171,23 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   red permitida): usar el buscador.
 
 ## Notion (centro de trabajo de Javi; MCP de Notion)
-- Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).
-- BD **Vídeos de Bomberados**: collection://5422fb68-0692-456e-8aac-49a9c79151c9 (vista principal ordenada por «Publicación (día y
-  hora)»; estados: Idea, Guion, Voz grabada, En producción, Listo para subir, Programado, Publicado, Descartado; horas en CET = UTC+1).
+- Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios; la de
+  «Cómo analizar» está dentro de «📈 Análisis de contenido de Bomberados»).
+- BD **Vídeos de Bomberados**: collection://5422fb68-0692-456e-8aac-49a9c79151c9 (vista «🎬 Todos los vídeos» ordenada por
+  «Publicación (día y hora)»; estados: Idea, Guion, Voz grabada, En producción, Listo para subir, Programado, Publicado,
+  Descartado; horas en CET = UTC+1). Desde el 6 nov **sin métricas** (pidió Javi): Vídeo, Publicación (fórmula), Publicación
+  (día y hora), Estado, Formato, Nivel, **Descripción** (el texto para pegar al subir = la parte de `DESCRIPCION.txt` antes del
+  primer «---»; rellenada en los 14 vídeos hechos: al terminar uno nuevo, rellenarla), Plataformas, Descripción lista,
+  Miniatura lista, Fuente oficial y Notas. Las métricas, en «📊 Métricas por vídeo» (ver «Análisis de la cuenta» arriba).
+- **Adrián** (Adrián Luna, de Élite Bomberos; invitado en Notion, user://437aba8b-31f4-4c21-ab9c-bafe78ac64d1) escribe ideas
+  con guion en el cuerpo de la fila: «AUTONOMIA DE BOTELLA» (5 nov, 40fd785b2d758003b5bbfd81f16a3df6) y «PRESION EN BOMBA»
+  (6 nov, 410d785b2d758023b974c49bb6c2008a). Ver `IDEAS.md`. Para ver lo último que ha tocado alguien:
+  `notion-get-version-changes` sobre la BD (el historial del plan solo llega a unos días atrás).
+- Filas vacías «Nueva página» creadas por Javi (6 nov 09:42–09:54 y antes): 410d785b2d75808eaf56f117a1bd0dde,
+  410d785b2d7580e5a4deef3b3fca4710, 410d785b2d7580e9bb8fe08c35427ded, 40ad785b2d758002926cc0ab2b09f704,
+  40ad785b2d7580088025c2ebe0d08220. No borrarlas sin que Javi lo diga.
+- Permisos: crear `.claude/settings.json` con reglas allow para Notion/Metricool lo bloquea el clasificador del modo auto
+  (darse permisos a sí mismo): no reintentarlo; el modo lo elige Javi en el desplegable junto a la caja de texto.
   Filas: ADR 409d785b-2d75-817b-b6c9-ded54b8406f2 (Listo para subir); Simulacro 40ad785b-2d75-8161-bf9f-e950f0e762a1 (Listo para subir);
   PAS: 409d785b-2d75-818c-be6c-cc95d13f2993 (Listo para subir; fecha por decidir, después de la ADR). Hay una fila duplicada de bradipnea creada por Javi
   (40ad785b2d7580e48f2fef57fe507f62): no borrarla sin su permiso.

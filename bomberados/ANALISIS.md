@@ -1,8 +1,8 @@
 # Bomberados — análisis de la cuenta (se actualiza cada 12 h)
 
-Javi actualiza en Notion (BD «Vídeos de Bomberados», `collection://5422fb68-0692-456e-8aac-49a9c79151c9`) las métricas de
-cada vídeo cada 12 h. Cada 12 h (tarea programada de esta sesión) se lee la BD, se rehace este análisis, se copia a la
-página de Notion «📈 Análisis de la cuenta» y se rellena la columna «Conclusión» de cada vídeo.
+Javi actualiza en Notion las métricas de cada vídeo (BD «📊 Métricas por vídeo», `collection://29d4dd57-c184-41eb-8063-541ee3e9d240`,
+dentro de la página «📈 Análisis de contenido de Bomberados»; desde el 6 nov ya no están en «Vídeos de Bomberados»). Cada 12 h
+(tarea programada de esta sesión) se leen, se rehace este análisis, se copia a esa página y se rellena la «Conclusión» de cada vídeo.
 
 Cómo se mide (siempre por cada 1.000 visualizaciones, para comparar vídeos con distinto alcance):
 - **Alcance**: visualizaciones (y seguidores ganados).
