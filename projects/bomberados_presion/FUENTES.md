@@ -10,7 +10,7 @@
   ([BOE-A-2018-13798, 10 oct 2018](https://boe.es/boe/dias/2018/10/10/pdfs/BOE-A-2018-13798.pdf)). Hasta confirmarlo, la
   voz NO dice «oficial» y el sello de pantalla («EXAMEN · AYTO. DE SANTIAGO DE COMPOSTELA») se puede quitar sin regrabar.
 
-## La respuesta: C) 3 bar
+## La respuesta: C) 3 bar (no se dice en el vídeo: se pide en comentarios; está al final de la descripción)
 - Presión hidrostática: p = ρ·g·h. Con agua (ρ ≈ 1.000 kg/m³, g = 9,81 m/s²), 10 m de altura son ≈ 0,98 bar: la regla
   de «1 bar por cada 10 m» (1 bar ≈ 10 m de columna de agua). 50 m → 4,9 bar ≈ 5 bar. Equivalencia 1 bar = 10 m.c.a. en
   [PCPI, tema 7 «Presión y caudal»](https://paulinoposada.github.io/web/websites/fp_basica/temas_pcpi/PCPI_tema_7_presion_y_caudal.pdf)

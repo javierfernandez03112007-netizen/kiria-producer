@@ -6,9 +6,9 @@ b) 2 bar
 c) 3 bar
 d) 8 bar
 
-⚠️ Dos trampas: si has dicho 8, te has olvidado de la altura… y si has dicho 1,5 o 2, has restado un rozamiento que con la lanza cerrada no existe.
+⚠️ Hay dos trampas entre las opciones. En el vídeo tienes todo lo que necesitas: haz la cuenta y escribe tu letra.
 
-👇 Comenta tu letra y mándaselo a quien oposite contigo: ¿la acertará?
+👇 Escribe tu letra en comentarios y mándaselo a quien oposite contigo: ¿la acertará?
 📌 Guárdalo para repasar hidráulica.
 
 🚒 BOMBERADOS — la app para preparar la oposición a bombero
@@ -21,7 +21,8 @@ Estudia solo, reta a otro opositor en un 1 vs 1 o compite en un Battle Royale de
 .
 .
 ✅ Respuesta: C) 3 bar.
-Por cada 10 m de altura el agua pierde ≈ 1 bar (presión estática): 50 m ≈ 5 bar. Con la lanza cerrada el agua no se mueve, así que no hay pérdidas por rozamiento: 8 − 5 = 3 bar.
+Por cada 10 m de altura el agua pierde ≈ 1 bar (presión estática): 50 m ≈ 5 bar. Con la lanza cerrada el agua no se mueve, así que no hay pérdidas por rozamiento: 8 − 5 − 0 = 3 bar.
+Las trampas: la D (8 bar) es olvidarse de la altura; la A y la B (1,5 y 2 bar) son restar además un rozamiento que, con la lanza cerrada, no existe.
 
 ---
 
@@ -34,7 +35,8 @@ Versión corta (TikTok):
 ---
 
 NOTAS PARA LA ENTREGA (no publicar):
-- Comentario fijado: «📌 ¿1,5, 2, 3 u 8? La explicación está en la descripción 👇».
+- El vídeo NO dice la respuesta (Javi cambió al grabar «Ocho menos cinco: ¡tres bares! Es la C» por «Escribe en comentarios cuál crees que es la correcta»): en pantalla queda «8 − 5 − 0 = ?» y la respuesta solo está al final de la descripción.
+- Comentario fijado: «📌 ¿Cuál es la correcta? Escribe tu letra 👇 (la respuesta, al final de la descripción)».
 - Pregunta e idea de Adrián (Élite Bomberos). PENDIENTE: que confirme que es del examen del Ayto. de Santiago de Compostela (2017); si lo confirma, se puede añadir «Pregunta de examen de Santiago de Compostela» al principio de la descripción.
 - PENDIENTE: la página del manual de hidráulica que uséis para citarla en FUENTES.md.
 - CONFIRMAR la prueba gratis de 5 días.

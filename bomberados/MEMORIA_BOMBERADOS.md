@@ -269,6 +269,14 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   entorno. Javi pegó la clave de Higgsfield en el chat: no se ha guardado en ningún sitio; se le recomendó crear otra.
 - Render del tetraedro: ≈ 1,4 fotogramas/s con 4 procesos (36 s → ≈ 26 min). Ojo: un bucle de espera con
   `pgrep -f "capture.mjs …"` se encuentra a sí mismo y no acaba nunca; contar fotogramas en vez de buscar el proceso.
+- 6 nov (presión): en las escenas 3D con capa 2D propia (`overlay(t)` de botella.js, presion.js…), si en un fotograma la
+  capa solo se borra (ningún rótulo), Chrome no la vuelve a presentar y la captura sale con los rótulos del fotograma
+  anterior. En el render seguido apenas se nota (rótulos ya casi transparentes), pero en las pruebas sueltas engaña:
+  presion.js pinta siempre un punto casi invisible al final de `overlay` y `capture.mjs` pinta dos veces el primer
+  fotograma de cada trozo (y todos en las pruebas sueltas). Hacer lo mismo en las escenas nuevas.
+- 6 nov: `ajustar_voz.py` casa una a una las palabras cuando el reconocedor da tantas como el guion aunque no coincidan
+  («veinte, treinta, cuarenta» ↔ «2, 3, 40»); antes las repartía por sílabas y los cues de la cuenta 10-20-30-40-50 caían
+  hasta 0,35 s fuera.
 
 ### «Tus abuelos tenían media hora» — 3 nov
 - Javi eligió la idea 4 de la lista («hazme el vídeo de mi casa y la de mis abuelos… lo más profesional posible, con un
