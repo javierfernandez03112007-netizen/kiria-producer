@@ -1,0 +1,57 @@
+«¿CUÁNTO AIRE TE QUEDA?» — Autonomía de la botella del ERA (Pregunta del día cinematográfica; pregunta e idea de Adrián)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 38 s + 4 s de cuenta = ≈ 42 s). Ritmo RÁPIDO y con tensión, como dentro de un incendio:
+el gancho bajo y tenso; los datos, claros y seguidos; «¡Tiempo!», de golpe. La cuenta 1-2-3-4-5 NO se graba: la meto yo.
+Lo más fuerte tiene que ser el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!», algo más despacio.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[tense, low voice] Entras en un incendio con esta botella a la espalda.
+[urgent] ¿Cuántos minutos de aire tienes?
+[focused, clear] Doscientos treinta bares. Siete litros. Reserva de sesenta. Y gastas treinta y cinco litros por minuto.
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! Si te ha salido cuarenta y seis… [grave] te has quedado sin aire DENTRO.
+[firm] Porque la reserva no se toca: es el aire para SALIR.
+[explaining, confident] Doscientos treinta menos sesenta: ciento setenta bares. Por siete litros: mil ciento noventa litros de aire.
+[building up] Entre treinta y cinco por minuto… [triumphant] ¡TREINTA Y CUATRO minutos! Es la C.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+LA CUENTA (como pediste): la voz dice «Tienes cinco segundos» y el contador arranca YA en 1 (nunca sale el 0):
+1 → 2 → 3 → 4 → 5 y en el 5 suena la bocina. Son 4 segundos reales: un segundo menos de lo prometido, para que apriete.
+Mientras cuenta: tic-tac, la respiración del regulador se acelera y la aguja del manómetro va bajando.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con planos ABIERTOS (se ve el bombero entero y el fuego), la cámara
+no se para nunca (barridos con desenfoque de movimiento, cámara lenta que se acelera) y el aire que hay dentro de la
+botella se ve como luz azul que se mueve.
+1. «Entras en un incendio con esta botella a la espalda.» — Primer fotograma: un bombero de espaldas (sin escudos ni
+   marcas) en la puerta de una nave en llamas, entre humo; la botella del equipo es de CRISTAL y dentro se ve el aire como
+   luz azul que gira. Se oye la respiración del regulador (inspira… espira). La cámara lo rodea.
+2. «¿Cuántos minutos de aire tienes?» — barrido hasta el manómetro del hombro; la aguja tiembla; rótulo «¿? MIN».
+3. «Doscientos treinta bares.» → la aguja se clava en 230 · «Siete litros.» → la botella se dibuja con su cota «7 L» ·
+   «Reserva de sesenta.» → la franja de 0 a 60 del manómetro se pone roja con un candado: «RESERVA 60 BAR» ·
+   «Y gastas treinta y cinco litros por minuto.» → cada respiración echa una bocanada: «−35 L/min».
+4. «Comenta tu letra. Tienes cinco segundos.» — plano abierto: alrededor del bombero, cuatro tarjetas de cristal:
+   A · 46 MIN   B · 40 MIN   C · 34 MIN   D · 30 MIN   y el contador gigante 1-2-3-4-5 (empieza ya en 1).
+5. «¡Tiempo! Si te ha salido cuarenta y seis… te has quedado sin aire dentro.» — bocina; la tarjeta A se pone roja y
+   estalla; la aguja cae hasta el 0, suena el silbato de alarma y la luz azul de la botella se apaga (todo rojo).
+6. «Porque la reserva no se toca: es el aire para salir.» — rebobinado: la botella se vuelve a llenar; la franja roja
+   se cierra con el candado y al fondo se enciende un cartel verde «SALIDA»; el bombero gira hacia la salida.
+7. «Doscientos treinta menos sesenta: ciento setenta bares. Por siete litros: mil ciento noventa litros de aire.» —
+   la cuenta se escribe en el aire: «230 − 60 = 170 BAR» (el tramo útil de la aguja se ilumina en azul); «170 × 7 L =
+   1.190 L»: el aire útil sale de la botella y forma, al lado del bombero, un CUBO de aire de más de un metro de lado
+   (1.190 litros) con su cota.
+8. «Entre treinta y cinco por minuto… ¡treinta y cuatro minutos! Es la C.» — el cubo se va vaciando a bocanadas mientras
+   un reloj corre hasta 34:00; la tarjeta C se enciende en verde: «34 MIN ✓».
+9. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+10. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS entre brasas.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta: C) 34 minutos. Autonomía = (presión de la botella − presión de reserva) × volumen ÷ consumo
+= (230 − 60) × 7 ÷ 35 = 1.190 L ÷ 35 L/min = 34 min. La trampa es la A (46 min): sale si te gastas también la reserva
+(230 × 7 ÷ 35). Ver FUENTES.md. PENDIENTE: ¿de qué examen es la pregunta? (Adrián no lo puso; pídeselo y lo cito).

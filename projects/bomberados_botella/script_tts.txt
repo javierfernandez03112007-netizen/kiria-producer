@@ -1,0 +1,10 @@
+[tense, low voice] Entras en un incendio con esta botella a la espalda.
+[urgent] ¿Cuántos minutos de aire tienes?
+[focused, clear] Doscientos treinta bares. Siete litros. Reserva de sesenta. Y gastas treinta y cinco litros por minuto.
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! Si te ha salido cuarenta y seis… [grave] te has quedado sin aire DENTRO.
+[firm] Porque la reserva no se toca: es el aire para SALIR.
+[explaining, confident] Doscientos treinta menos sesenta: ciento setenta bares. Por siete litros: mil ciento noventa litros de aire.
+[building up] Entre treinta y cinco por minuto… [triumphant] ¡TREINTA Y CUATRO minutos! Es la C.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

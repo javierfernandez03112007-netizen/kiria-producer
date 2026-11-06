@@ -1,0 +1,41 @@
+🫁 Entras en un incendio con esta botella a la espalda… ¿cuántos minutos de aire tienes?
+
+❓ Botella de 230 bar y 7 litros, reserva de 60 bar y un consumo de 35 litros por minuto. ¿Cuánto tiempo puedes trabajar?
+a) 46 minutos
+b) 40 minutos
+c) 34 minutos
+d) 30 minutos
+
+⚠️ La trampa: si te ha salido 46, te has gastado también la reserva… y la reserva es el aire para salir.
+
+👇 Comenta tu letra y mándaselo a quien oposite contigo: ¿la acertará?
+📌 Guárdalo para repasar la fórmula.
+
+🚒 BOMBERADOS — la app para preparar la oposición a bombero
+Estudia solo, reta a otro opositor en un 1 vs 1 o compite en un Battle Royale de hasta 6 jugadores. Falla en casa, no en el examen.
+🎁 Pruébala GRATIS 5 días: enlace en la bio.
+
+#bomberos #oposicionesbombero #opositores #oposiciones #bombero #testoposiciones #ERA #equipoderespiracion #bomberados
+
+.
+.
+.
+✅ Respuesta: C) 34 minutos.
+Autonomía = (presión de la botella − presión de reserva) × volumen ÷ consumo
+(230 − 60) × 7 = 1.190 litros de aire ÷ 35 L/min = 34 minutos.
+
+---
+
+Versión corta (TikTok):
+
+🫁 Botella de 230 bar y 7 L, reserva de 60 bar y gastas 35 L/min: ¿cuántos minutos de aire tienes? Si te sale 46… te has quedado sin aire dentro 😬 Comenta tu letra 👇 Bomberados: pruébala GRATIS 5 días 👉 bio.
+
+#bomberos #oposicionesbombero #ERA #bomberados
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Comentario fijado: «📌 ¿Qué letra te ha salido? La fórmula está en la descripción 👇».
+- Pregunta e idea de Adrián (Élite Bomberos). PENDIENTE: de qué examen sale, para poder decir «pregunta oficial».
+- PENDIENTE: la página del manual de ERA que uséis para citar la fórmula en FUENTES.md.
+- CONFIRMAR la prueba gratis de 5 días.
