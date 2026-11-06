@@ -143,6 +143,22 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - **Métricas automáticas (5 nov)**: otra sesión (session_014gBm8Nojm4JMj7MbLpxerp) captura cada 12 h (08:33 y 20:33) las métricas
   de Metricool en Notion (`metricas/README.md`). Hoy Metricool solo tiene @kiria.ai: **falta que Javi conecte @elitebomberos** en
   una marca nueva de Metricool; entonces esa tarea también copiará los datos a «Vídeos de Bomberados» antes del análisis de las 08:43/20:43.
+  (6 nov: una segunda marca es de pago, así que @elitebomberos va como competidor: punto siguiente.)
+- **Metricool** (MCP; 6 nov): una sola marca, kiria.ai (id 7793103); el plan gratis no deja una segunda marca, así que Javi
+  eligió meter la cuenta de Bomberados, **@elitebomberos**, como **competidor** de kiria.ai. Javi: «no me deja conectar nada
+  de competidores». Motivo: el Instagram de kiria.ai está conectado con el login directo de Instagram (en la marca solo hay
+  `instagramData`, sin Facebook) y con esa conexión Metricool no deja analizar competidores. Hace falta la conexión **a
+  través de Facebook** (Instagram vinculado a una página de Facebook de la que Javi sea administrador). Pasos que le di:
+  1) Instagram → Editar perfil → Página → conectar o crear la página; 2) Metricool → Analítica → Instagram → botón
+  «Conectar una cuenta de Facebook» del aviso de limitaciones (o el «+» de Facebook), aceptando todos los permisos;
+  3) menú lateral → Analítica → Competidores → Añadir → «elitebomberos». Al cambiar de tipo de conexión Metricool no
+  conserva el historial anterior y la nueva solo trae los últimos 30 días: como kiria.ai se conectó el 1 nov, ahora no se
+  pierde nada (más adelante sí). Un competidor solo da datos públicos (me gusta, comentarios, seguidores, publicaciones:
+  IGCO01–12, IGCR01–10), **no** vistas, envíos, guardados ni retención: eso sigue saliendo de Notion. La tarea de 12 h
+  (trig_01FxviRRusU6fcSmaKLEio9p) ya mira IGCO/IGCR y los usa en cuanto salgan (6 nov: vacío).
+  Los ceros de la pantalla de Javi no eran desconexión: Metricool tenía datos de kiria.ai hasta el 5 nov (4.861 seguidores,
+  92.758 visualizaciones ese día; IGEV01/05/23). La web de ayuda de Metricool no se abre desde esta sesión (no está en la
+  red permitida): usar el buscador.
 
 ## Notion (centro de trabajo de Javi; MCP de Notion)
 - Página «🚒 Bomberados — Centro de trabajo»: 409d785b-2d75-8116-bfcf-c9cf65d9f2ed (guías: Plan y formatos, Horarios, Cómo analizar).
