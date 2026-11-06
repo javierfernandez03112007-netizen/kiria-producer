@@ -135,6 +135,22 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 
 
 ### Análisis de la cuenta cada 12 h (Javi, 5 nov: «analiza lo que funciona y lo que no y vamos a escalar la cuenta»)
+- **Desde el 6 nov (tarde) lo hace otro chat**: «Bomberados · plan de cada mañana» (`session_014gBm8NkEfj7WbrRssD8aUb`,
+  creado desde aquí) con la tarea `trig_01DJ3q2TJsCXzx4sUysViCVQ` a las **6:33 (Madrid)**, para que a las 7 esté listo
+  (Javi: «cada mañana a las 7 recopila toda la información de Notion, cambia cosas si es necesario […] y lo tenemos en
+  cuenta para hacer los demás vídeos»; «acepto todo lo que me pidas de Notion»). Instrucciones: `bomberados/PLAN_DIARIO.md`.
+  Deja arriba de `bomberados/ANALISIS.md` «📌 Para los próximos vídeos»: **leerlo antes de cada vídeo** (está en CLAUDE.md).
+  La tarea de 12 h de esta sesión (`trig_01FxviRRusU6fcSmaKLEio9p`) quedó **desactivada** (no borrada). Ojo: «disparar ya»
+  (fire_trigger) una tarea de sesión fija no entra en esa sesión, crea otra nueva sin repositorio («⚡ …», 6 nov); para
+  probar, mejor `send_message` a la sesión.
+- **6 nov, Javi reorganizó la página de análisis**: arriba «## 👥 Seguidores totales» con la BD **«👥 Seguidores de las
+  cuentas»** (collection://1b778735-44d1-4848-a376-b7c608b6239a; database 166e5e8690984daf8eaf15610ada0d6b; vista «Seguidores
+  cada 3 días»): filas «Seguidores Bomberados» y «Seguidores Élite», una columna numérica cada 3 días («6 nov» … «30 dic»);
+  Javi apunta el número. En «📊 Métricas por vídeo» solo queda **lo que se ve como espectador** (Javi no tiene acceso a las
+  estadísticas de la cuenta): Vistas, Me gusta, Comentarios, Compartidos y sus «por 1.000» (nueva «Me gusta por 1.000»);
+  se quitaron Guardados, Seguidores ganados, Visitas al perfil, Retención 3 s y Visto entero. Se añadieron 6 vídeos (ADR,
+  PAS, ley de Protección Civil, abuelos, «Fuga de gas licuado» —sin relación: no está en «Vídeos de Bomberados»— y
+  acoplamiento), con las cifras vacías. Sus estados en «Vídeos de Bomberados» no se tocaron.
 - Javi actualiza en Notion las métricas de cada vídeo cada 12 h. Tarea programada en ESTA sesión, 8:43 y 20:43 (Madrid):
   leer las métricas, rehacer `bomberados/ANALISIS.md` y la página de Notion «📈 Análisis de contenido de Bomberados»
   (40fd785b-2d75-8178-a380-df98f5fb42bb, dentro del Centro de trabajo), rellenar «Conclusión» de cada vídeo, commit y push,
