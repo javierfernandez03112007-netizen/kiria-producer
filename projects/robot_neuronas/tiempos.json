@@ -1,0 +1,806 @@
+[
+ {
+  "text": "Este perro robot no tiene cerebro… pero lo guían neuronas humanas vivas.",
+  "start": 0.056,
+  "end": 4.241,
+  "words": [
+   {
+    "w": "Este",
+    "start": 0.056,
+    "end": 0.315
+   },
+   {
+    "w": "perro",
+    "start": 0.315,
+    "end": 0.574
+   },
+   {
+    "w": "robot",
+    "start": 0.574,
+    "end": 1.111
+   },
+   {
+    "w": "no",
+    "start": 1.111,
+    "end": 1.259
+   },
+   {
+    "w": "tiene",
+    "start": 1.259,
+    "end": 1.519
+   },
+   {
+    "w": "cerebro…",
+    "start": 1.519,
+    "end": 2.222
+   },
+   {
+    "w": "pero",
+    "start": 2.222,
+    "end": 2.407
+   },
+   {
+    "w": "lo",
+    "start": 2.407,
+    "end": 2.518
+   },
+   {
+    "w": "guían",
+    "start": 2.518,
+    "end": 2.852
+   },
+   {
+    "w": "neuronas",
+    "start": 2.852,
+    "end": 3.37
+   },
+   {
+    "w": "humanas",
+    "start": 3.37,
+    "end": 3.852
+   },
+   {
+    "w": "vivas.",
+    "start": 3.852,
+    "end": 4.241
+   }
+  ]
+ },
+ {
+  "text": "¿Y sabes qué habían aprendido antes neuronas como estas? Al final te lo digo.",
+  "start": 4.519,
+  "end": 8.176,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 4.519,
+    "end": 4.667
+   },
+   {
+    "w": "sabes",
+    "start": 4.667,
+    "end": 4.963
+   },
+   {
+    "w": "qué",
+    "start": 4.963,
+    "end": 5.056
+   },
+   {
+    "w": "habían",
+    "start": 5.056,
+    "end": 5.352
+   },
+   {
+    "w": "aprendido",
+    "start": 5.352,
+    "end": 5.833
+   },
+   {
+    "w": "antes",
+    "start": 5.833,
+    "end": 6.222
+   },
+   {
+    "w": "neuronas",
+    "start": 6.222,
+    "end": 6.667
+   },
+   {
+    "w": "como",
+    "start": 6.667,
+    "end": 6.889
+   },
+   {
+    "w": "estas?",
+    "start": 6.889,
+    "end": 7.38
+   },
+   {
+    "w": "Al",
+    "start": 7.38,
+    "end": 7.491
+   },
+   {
+    "w": "final",
+    "start": 7.491,
+    "end": 7.75
+   },
+   {
+    "w": "te",
+    "start": 7.75,
+    "end": 7.824
+   },
+   {
+    "w": "lo",
+    "start": 7.824,
+    "end": 7.935
+   },
+   {
+    "w": "digo.",
+    "start": 7.935,
+    "end": 8.176
+   }
+  ]
+ },
+ {
+  "text": "Lo ha hecho Cortical Labs, una empresa de Australia.",
+  "start": 8.509,
+  "end": 11.296,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 8.509,
+    "end": 8.583
+   },
+   {
+    "w": "ha",
+    "start": 8.583,
+    "end": 8.676
+   },
+   {
+    "w": "hecho",
+    "start": 8.676,
+    "end": 9.083
+   },
+   {
+    "w": "Cortical",
+    "start": 9.083,
+    "end": 9.583
+   },
+   {
+    "w": "Labs,",
+    "start": 9.583,
+    "end": 10.194
+   },
+   {
+    "w": "una",
+    "start": 10.194,
+    "end": 10.324
+   },
+   {
+    "w": "empresa",
+    "start": 10.324,
+    "end": 10.713
+   },
+   {
+    "w": "de",
+    "start": 10.713,
+    "end": 10.806
+   },
+   {
+    "w": "Australia.",
+    "start": 10.806,
+    "end": 11.296
+   }
+  ]
+ },
+ {
+  "text": "En un chip lleno de electrodos crecen neuronas humanas, cultivadas en laboratorio.",
+  "start": 11.528,
+  "end": 15.648,
+  "words": [
+   {
+    "w": "En",
+    "start": 11.528,
+    "end": 11.639
+   },
+   {
+    "w": "un",
+    "start": 11.639,
+    "end": 11.769
+   },
+   {
+    "w": "chip",
+    "start": 11.769,
+    "end": 12.009
+   },
+   {
+    "w": "lleno",
+    "start": 12.009,
+    "end": 12.25
+   },
+   {
+    "w": "de",
+    "start": 12.25,
+    "end": 12.361
+   },
+   {
+    "w": "electrodos",
+    "start": 12.361,
+    "end": 13.009
+   },
+   {
+    "w": "crecen",
+    "start": 13.009,
+    "end": 13.379
+   },
+   {
+    "w": "neuronas",
+    "start": 13.379,
+    "end": 13.843
+   },
+   {
+    "w": "humanas,",
+    "start": 13.843,
+    "end": 14.454
+   },
+   {
+    "w": "cultivadas",
+    "start": 14.454,
+    "end": 14.991
+   },
+   {
+    "w": "en",
+    "start": 14.991,
+    "end": 15.083
+   },
+   {
+    "w": "laboratorio.",
+    "start": 15.083,
+    "end": 15.648
+   }
+  ]
+ },
+ {
+  "text": "El chip les manda pequeñas señales eléctricas… y escucha lo que responden.",
+  "start": 15.87,
+  "end": 19.815,
+  "words": [
+   {
+    "w": "El",
+    "start": 15.87,
+    "end": 16.0
+   },
+   {
+    "w": "chip",
+    "start": 16.0,
+    "end": 16.296
+   },
+   {
+    "w": "les",
+    "start": 16.296,
+    "end": 16.481
+   },
+   {
+    "w": "manda",
+    "start": 16.481,
+    "end": 16.778
+   },
+   {
+    "w": "pequeñas",
+    "start": 16.778,
+    "end": 17.259
+   },
+   {
+    "w": "señales",
+    "start": 17.259,
+    "end": 17.685
+   },
+   {
+    "w": "eléctricas…",
+    "start": 17.685,
+    "end": 18.565
+   },
+   {
+    "w": "y",
+    "start": 18.565,
+    "end": 18.657
+   },
+   {
+    "w": "escucha",
+    "start": 18.657,
+    "end": 19.102
+   },
+   {
+    "w": "lo",
+    "start": 19.102,
+    "end": 19.194
+   },
+   {
+    "w": "que",
+    "start": 19.194,
+    "end": 19.324
+   },
+   {
+    "w": "responden.",
+    "start": 19.324,
+    "end": 19.815
+   }
+  ]
+ },
+ {
+  "text": "Un programa convierte esa respuesta en pasos: izquierda, derecha, adelante.",
+  "start": 20.037,
+  "end": 24.528,
+  "words": [
+   {
+    "w": "Un",
+    "start": 20.037,
+    "end": 20.148
+   },
+   {
+    "w": "programa",
+    "start": 20.148,
+    "end": 20.611
+   },
+   {
+    "w": "convierte",
+    "start": 20.611,
+    "end": 21.056
+   },
+   {
+    "w": "esa",
+    "start": 21.056,
+    "end": 21.259
+   },
+   {
+    "w": "respuesta",
+    "start": 21.259,
+    "end": 21.759
+   },
+   {
+    "w": "en",
+    "start": 21.759,
+    "end": 21.907
+   },
+   {
+    "w": "pasos:",
+    "start": 21.907,
+    "end": 22.463
+   },
+   {
+    "w": "izquierda,",
+    "start": 22.463,
+    "end": 23.278
+   },
+   {
+    "w": "derecha,",
+    "start": 23.278,
+    "end": 24.0
+   },
+   {
+    "w": "adelante.",
+    "start": 24.0,
+    "end": 24.528
+   }
+  ]
+ },
+ {
+  "text": "Y el perro llega solo hasta un objetivo marcado en un mapa.",
+  "start": 24.741,
+  "end": 27.694,
+  "words": [
+   {
+    "w": "Y",
+    "start": 24.741,
+    "end": 24.815
+   },
+   {
+    "w": "el",
+    "start": 24.815,
+    "end": 24.944
+   },
+   {
+    "w": "perro",
+    "start": 24.944,
+    "end": 25.278
+   },
+   {
+    "w": "llega",
+    "start": 25.278,
+    "end": 25.63
+   },
+   {
+    "w": "solo",
+    "start": 25.63,
+    "end": 25.87
+   },
+   {
+    "w": "hasta",
+    "start": 25.87,
+    "end": 26.167
+   },
+   {
+    "w": "un",
+    "start": 26.167,
+    "end": 26.259
+   },
+   {
+    "w": "objetivo",
+    "start": 26.259,
+    "end": 26.759
+   },
+   {
+    "w": "marcado",
+    "start": 26.759,
+    "end": 27.166
+   },
+   {
+    "w": "en",
+    "start": 27.166,
+    "end": 27.278
+   },
+   {
+    "w": "un",
+    "start": 27.278,
+    "end": 27.407
+   },
+   {
+    "w": "mapa.",
+    "start": 27.407,
+    "end": 27.694
+   }
+  ]
+ },
+ {
+  "text": "Ojo: no es un cerebro. El tuyo tiene unos 86.000 millones de neuronas; aquí hay un puñado.",
+  "start": 27.972,
+  "end": 33.75,
+  "words": [
+   {
+    "w": "Ojo:",
+    "start": 27.972,
+    "end": 28.537
+   },
+   {
+    "w": "no",
+    "start": 28.537,
+    "end": 28.759
+   },
+   {
+    "w": "es",
+    "start": 28.759,
+    "end": 28.926
+   },
+   {
+    "w": "un",
+    "start": 28.926,
+    "end": 29.056
+   },
+   {
+    "w": "cerebro.",
+    "start": 29.056,
+    "end": 29.611
+   },
+   {
+    "w": "El",
+    "start": 29.611,
+    "end": 29.759
+   },
+   {
+    "w": "tuyo",
+    "start": 29.759,
+    "end": 30.074
+   },
+   {
+    "w": "tiene",
+    "start": 30.074,
+    "end": 30.315
+   },
+   {
+    "w": "unos",
+    "start": 30.315,
+    "end": 30.519
+   },
+   {
+    "w": "86.000",
+    "start": 30.519,
+    "end": 31.556
+   },
+   {
+    "w": "millones",
+    "start": 31.556,
+    "end": 32.0
+   },
+   {
+    "w": "de",
+    "start": 32.0,
+    "end": 32.093
+   },
+   {
+    "w": "neuronas;",
+    "start": 32.093,
+    "end": 32.796
+   },
+   {
+    "w": "aquí",
+    "start": 32.796,
+    "end": 33.074
+   },
+   {
+    "w": "hay",
+    "start": 33.074,
+    "end": 33.259
+   },
+   {
+    "w": "un",
+    "start": 33.259,
+    "end": 33.37
+   },
+   {
+    "w": "puñado.",
+    "start": 33.37,
+    "end": 33.75
+   }
+  ]
+ },
+ {
+  "text": "Y el chip, el programa y los motores siguen siendo máquina.",
+  "start": 34.019,
+  "end": 37.185,
+  "words": [
+   {
+    "w": "Y",
+    "start": 34.019,
+    "end": 34.093
+   },
+   {
+    "w": "el",
+    "start": 34.093,
+    "end": 34.241
+   },
+   {
+    "w": "chip,",
+    "start": 34.241,
+    "end": 34.704
+   },
+   {
+    "w": "el",
+    "start": 34.704,
+    "end": 34.833
+   },
+   {
+    "w": "programa",
+    "start": 34.833,
+    "end": 35.296
+   },
+   {
+    "w": "y",
+    "start": 35.296,
+    "end": 35.37
+   },
+   {
+    "w": "los",
+    "start": 35.37,
+    "end": 35.537
+   },
+   {
+    "w": "motores",
+    "start": 35.537,
+    "end": 36.148
+   },
+   {
+    "w": "siguen",
+    "start": 36.148,
+    "end": 36.5
+   },
+   {
+    "w": "siendo",
+    "start": 36.5,
+    "end": 36.833
+   },
+   {
+    "w": "máquina.",
+    "start": 36.833,
+    "end": 37.185
+   }
+  ]
+ },
+ {
+  "text": "Todavía no lo han revisado otros científicos.",
+  "start": 37.37,
+  "end": 39.472,
+  "words": [
+   {
+    "w": "Todavía",
+    "start": 37.37,
+    "end": 37.796
+   },
+   {
+    "w": "no",
+    "start": 37.796,
+    "end": 37.907
+   },
+   {
+    "w": "lo",
+    "start": 37.907,
+    "end": 38.0
+   },
+   {
+    "w": "han",
+    "start": 38.0,
+    "end": 38.167
+   },
+   {
+    "w": "revisado",
+    "start": 38.167,
+    "end": 38.593
+   },
+   {
+    "w": "otros",
+    "start": 38.593,
+    "end": 38.833
+   },
+   {
+    "w": "científicos.",
+    "start": 38.833,
+    "end": 39.472
+   }
+  ]
+ },
+ {
+  "text": "¿Y lo que habían aprendido antes? Según la empresa, neuronas como estas ya jugaron al Pong… y al Doom.",
+  "start": 39.759,
+  "end": 45.278,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 39.759,
+    "end": 39.926
+   },
+   {
+    "w": "lo",
+    "start": 39.926,
+    "end": 40.056
+   },
+   {
+    "w": "que",
+    "start": 40.056,
+    "end": 40.148
+   },
+   {
+    "w": "habían",
+    "start": 40.148,
+    "end": 40.426
+   },
+   {
+    "w": "aprendido",
+    "start": 40.426,
+    "end": 40.852
+   },
+   {
+    "w": "antes?",
+    "start": 40.852,
+    "end": 41.407
+   },
+   {
+    "w": "Según",
+    "start": 41.407,
+    "end": 41.63
+   },
+   {
+    "w": "la",
+    "start": 41.63,
+    "end": 41.722
+   },
+   {
+    "w": "empresa,",
+    "start": 41.722,
+    "end": 42.407
+   },
+   {
+    "w": "neuronas",
+    "start": 42.407,
+    "end": 42.833
+   },
+   {
+    "w": "como",
+    "start": 42.833,
+    "end": 43.037
+   },
+   {
+    "w": "estas",
+    "start": 43.037,
+    "end": 43.444
+   },
+   {
+    "w": "ya",
+    "start": 43.444,
+    "end": 43.611
+   },
+   {
+    "w": "jugaron",
+    "start": 43.611,
+    "end": 44.0
+   },
+   {
+    "w": "al",
+    "start": 44.0,
+    "end": 44.185
+   },
+   {
+    "w": "Pong…",
+    "start": 44.185,
+    "end": 44.75
+   },
+   {
+    "w": "y",
+    "start": 44.75,
+    "end": 44.861
+   },
+   {
+    "w": "al",
+    "start": 44.861,
+    "end": 44.991
+   },
+   {
+    "w": "Doom.",
+    "start": 44.991,
+    "end": 45.278
+   }
+  ]
+ },
+ {
+  "text": "¿Le darías derechos a una máquina con neuronas humanas?",
+  "start": 45.599,
+  "end": 48.169,
+  "words": [
+   {
+    "w": "¿Le",
+    "start": 45.599,
+    "end": 45.753
+   },
+   {
+    "w": "darías",
+    "start": 45.753,
+    "end": 46.08
+   },
+   {
+    "w": "derechos",
+    "start": 46.08,
+    "end": 46.516
+   },
+   {
+    "w": "a",
+    "start": 46.516,
+    "end": 46.607
+   },
+   {
+    "w": "una",
+    "start": 46.607,
+    "end": 46.77
+   },
+   {
+    "w": "máquina",
+    "start": 46.77,
+    "end": 47.17
+   },
+   {
+    "w": "con",
+    "start": 47.17,
+    "end": 47.333
+   },
+   {
+    "w": "neuronas",
+    "start": 47.333,
+    "end": 47.769
+   },
+   {
+    "w": "humanas?",
+    "start": 47.769,
+    "end": 48.169
+   }
+  ]
+ }
+]
