@@ -1152,7 +1152,107 @@ def sfx_track_presion(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_sueldos(path):
+    """«¿Cuánto gana un bombero en Madrid y en Granada?»: noche con fuego y rotativos, nóminas que caen, sellos, monedas
+    cuando crecen las columnas de oro, reloj de las horas, cinco golpes de las guardias de Granada, €/hora, la columna de
+    Madrid que baja y vuelve a subir (+10 % en 2024) y el cierre de venta."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["antes"] = c["subio"] - 0.75
+    fuego, bub, nota, toque = _load("fuego"), _onset(_load("burbuja")), _onset(_load("nota")), _onset(_load("toque"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    # noche: fuego al fondo todo el vídeo, rotativos al principio
+    put(burn, 0.0, -31, END, 0.4, 0.6, track=amb)
+    put("rotativo", 0.0, -33, c["igual"], 0.1, 1.2, track=amb)
+    put("latido", 0.1, -29, 0.6)
+    put("destello", 0.05, -31, 0.8, 0.005, 0.3)
+    put(toque, c["casco"] - 0.03, -31, 0.3)
+    put(fuego[int(0.3 * sfx.SR):], c["fuego"] - 0.15, -27, 1.1, 0.05, 0.4)
+    put(_pitch(toque, 1.1), c["oposicion"] - 0.03, -31, 0.3)
+    # «pero no cobran lo mismo»: caen las nóminas y el sello
+    put("papeles", c["cobran"] - 0.2, -27, 0.8, 0.01, 0.2)
+    put("sello", c["mismo3"] - 0.25, -24, 0.7, 0.002, 0.2)
+    put(_pitch(nota, 1.0), c["madrid0"] - 0.03, -29, 0.8)
+    put(_pitch(nota, 1.12), c["granada0"] - 0.03, -29, 0.8)
+    # sueldo base: las dos columnas crecen igual; sello del Estado; 900 €/mes
+    put("whoosh2", c["base"] - 0.3, -29, 0.7)
+    put("monedas", c["base"] - 0.1, -25, 1.0, 0.01, 0.2)
+    put("sello", c["estado"] - 0.2, -24, 0.7, 0.002, 0.2)
+    put("moneda", c["novecientos"] - 0.03, -25, 0.6)
+    put(toque, c["espana"] - 0.03, -30, 0.3)
+    # complemento específico: Madrid 27.800, Granada 25.400
+    put("whoosh2", c["especifico"] - 0.25, -28, 0.7)
+    put("destello", c["especifico"] - 0.1, -30, 0.7)
+    put("monedas", c["madrid1"] - 0.05, -24, 1.4, 0.01, 0.25)
+    put(_pitch(nota, 1.26), c["madrid1"] + 1.25, -29, 0.8)
+    put("monedas", c["granada1"] - 0.05, -25, 1.4, 0.01, 0.25)
+    put(_pitch(nota, 1.12), c["granada1"] + 1.25, -29, 0.8)
+    # el total
+    put("whoosh", c["total"] - 0.35, -29, 0.6)
+    put("golpe", c["t47"] - 0.06, -27, 0.6, 0.005, 0.3)
+    put(_pitch(_onset(_load("golpe")), 0.9), c["t44"] - 0.06, -28, 0.6, 0.005, 0.3)
+    put(toque, c["parece"] - 0.03, -30, 0.3)
+    # las horas: reloj; cinco guardias que caen en Granada
+    put("reloj", c["horas"] - 0.1, -28, max(0.6, c["cinco"] - c["horas"]), 0.02, 0.1)
+    put(toque, c["trabajan"] - 0.03, -30, 0.3)
+    for i in range(5):
+        put(_pitch(_onset(_load("golpe")), 1.05 + 0.04 * i), c["cinco"] - 0.1 + i * 0.14 + 0.43, -24, 0.45, 0.002, 0.2)
+    put("sello", c["guardias"] - 0.15, -25, 0.7, 0.002, 0.2)
+    # por hora
+    put("moneda", c["h31"] - 0.05, -25, 0.6)
+    put(_pitch(nota, 1.12), c["h31"] - 0.03, -30, 0.8)
+    put(_pitch(nota, 0.84), c["h27"] - 0.03, -28, 0.9)
+    # por qué: cada ayuntamiento, su presupuesto y su negociación; Madrid baja a lo de antes y sube un 10 %
+    put("whoosh", c["ypq"] - 0.35, -29, 0.6)
+    put(toque, c["paga"] - 0.03, -30, 0.3)
+    put("papeles", c["presupuesto"] - 0.1, -31, 0.6, 0.01, 0.2)
+    put(_pitch(toque, 1.15), c["negocia"] - 0.03, -30, 0.3)
+    put(_pitch(_onset(_load("caida")), 0.9), T["antes"] - 0.05, -28, 0.6, 0.01, 0.2)
+    put("monedas", c["subio"] - 0.05, -24, 0.9, 0.01, 0.2)
+    put("sello", c["diez"] - 0.15, -23, 0.7, 0.002, 0.2)
+    put("destello", c["diez"] - 0.1, -28, 0.7)
+    # ¿Madrid o Granada?
+    put("tension", c["justo"] - 0.2, -31, T["fin"] - c["justo"] + 0.2, 0.2, 0.25)
+    put("whoosh", c["justo"] - 0.3, -29, 0.6)
+    put(bub, c["madrid3"] - 0.02, -26, 0.25)
+    put(_pitch(bub, 1.12), c["granada3"] - 0.02, -26, 0.25)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "sueldos":
+        return sfx_track_sueldos(path)
     if Q.get("formato") == "presion":
         return sfx_track_presion(path)
     if Q.get("formato") == "botella":
