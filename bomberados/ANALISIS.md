@@ -1,15 +1,17 @@
-# Bomberados — análisis de la cuenta (se actualiza cada 12 h)
+# Bomberados — análisis de la cuenta (lo rehace cada mañana el chat «Bomberados · plan de cada mañana»)
 
-Javi actualiza en Notion las métricas de cada vídeo (BD «📊 Métricas por vídeo», `collection://29d4dd57-c184-41eb-8063-541ee3e9d240`,
-dentro de la página «📈 Análisis de contenido de Bomberados»; desde el 6 nov ya no están en «Vídeos de Bomberados»). Cada 12 h
-(tarea programada de esta sesión) se leen, se rehace este análisis, se copia a esa página y se rellena la «Conclusión» de cada vídeo.
+Javi actualiza a diario en Notion los números de cada vídeo (BD «📊 Métricas por vídeo», `collection://29d4dd57-c184-41eb-8063-541ee3e9d240`)
+y, cada 3 días, los seguidores totales de las dos cuentas (BD «👥 Seguidores de las cuentas», `collection://1b778735-44d1-4848-a376-b7c608b6239a`),
+las dos en la página «📈 Análisis de contenido de Bomberados». Cada mañana (6:33, hora de Madrid) el chat del plan diario
+lo lee todo, rehace este análisis, ajusta el plan en Notion y escribe arriba lo que hay que tener en cuenta en los próximos
+vídeos (instrucciones: `bomberados/PLAN_DIARIO.md`). **La sesión de producción lo lee antes de cada vídeo.**
 
-Cómo se mide (siempre por cada 1.000 visualizaciones, para comparar vídeos con distinto alcance):
-- **Alcance**: visualizaciones (y seguidores ganados).
-- **Se comparte**: envíos/1.000 → lo que más hace crecer la cuenta (cada envío trae gente nueva).
+Cómo se mide (desde el 6 nov, solo lo que se ve como espectador; siempre por cada 1.000 vistas para comparar vídeos):
+- **Alcance**: vistas.
+- **Gusta**: me gusta/1.000.
 - **Conversación**: comentarios/1.000.
-- **Valor**: guardados/1.000.
-- **Gancho**: retención a los 3 s (%) y % que lo ve entero.
+- **Se comparte**: compartidos/1.000 → lo que más hace crecer la cuenta (cada envío trae gente nueva).
+- **Crecimiento**: seguidores de Bomberados y de Élite cada 3 días.
 - No sacar conclusiones con 1–2 vídeos por grupo: se marcan como «provisional».
 
 ## Última actualización: 5 nov 2026 (primer análisis)
@@ -22,7 +24,8 @@ Cómo se mide (siempre por cada 1.000 visualizaciones, para comparar vídeos con
 | PD #2 Bradipnea (examen Albacete 2026) | Pregunta del día | 30 oct | 12.900 | 8,4 | 1,1 |
 | Aceite en la sartén (V o F) | V o F con trampa | 29 oct | 6.604 | 17,0 | 1,1 |
 
-Faltan en Notion: guardados, seguidores ganados, retención a los 3 s y % visto entero (las columnas ya existen).
+Desde el 6 nov la tabla solo lleva lo que se ve como espectador (vistas, me gusta, comentarios y compartidos); se
+añadieron 6 vídeos más (ADR, PAS, ley de Protección Civil, abuelos, gas licuado y acoplamiento), a falta de sus números.
 
 ### Lo que funciona (provisional)
 1. **Lo que habla de la propia oposición se comparte muchísimo.** «Ocho de cada diez» es el de más alcance (24.800) y más
