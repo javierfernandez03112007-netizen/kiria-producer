@@ -37,7 +37,9 @@ de Bomberados de las 08:43/20:43, que hace otra sesión; ver `bomberados/MEMORIA
    (título corto como los demás, Sección según el contenido, Cuenta, Red Instagram, Publicado con hora de Madrid, Enlace,
    ID) y volver a ejecutar el script.
    Si avisa «SIN CAMBIOS» (Metricool aún no ha refrescado y todo da igual que en la captura anterior), no se crean filas:
-   se dice en el resumen y se espera a la siguiente captura.
+   se dice en el resumen y se espera a la siguiente captura. Si se repite, comprobar si Metricool sincroniza: pedir
+   `IGEV01 IGEV05 IGEV23` (seguidores, visualizaciones, visualizaciones de reels) de un solo día; si el día anterior sale
+   todo a 0, Metricool ha perdido la conexión con Instagram y Javi tiene que reconectarla (6 nov: último día con datos, el 4).
 5. `notion-create-pages` con `paginas.json` en el historial (`data_source_id` c8ba2abc-2a70-4b2d-975f-b6f8b67b6f0d,
    hasta 100 páginas por llamada).
 6. Resumen corto a Javi: vídeos capturados, el que más visitas ha ganado en 12 h, errores. Nunca inventar datos ni dejar
