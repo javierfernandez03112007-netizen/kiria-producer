@@ -140,9 +140,7 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
 - Primer análisis (5 nov, 4 vídeos con datos): lo que habla de la propia oposición se comparte muchísimo («Ocho de cada
   diez»: 24.800 vistas, 394 envíos); las trampas se comparten (aceite 17/1.000) pero ese tuvo poco alcance; las Preguntas
   del día traen el doble de comentarios. Faltan guardados, seguidores y retención 3 s.
-- **Métricas automáticas (5 nov)**: otra sesión (session_014gBm8Nojm4JMj7MbLpxerp) captura cada 12 h (08:33 y 20:33) las métricas
-  de Metricool en Notion (`metricas/README.md`). Hoy Metricool solo tiene @kiria.ai: **falta que Javi conecte @elitebomberos** en
-  una marca nueva de Metricool; entonces esa tarea también copiará los datos a «Vídeos de Bomberados» antes del análisis de las 08:43/20:43.
+- Métricas automáticas con Metricool (5 nov): **paradas el 6 nov por Javi**; ver `metricas/README.md`.
   (6 nov: una segunda marca es de pago, así que @elitebomberos va como competidor: punto siguiente.)
 - **Metricool** (MCP; 6 nov): una sola marca, kiria.ai (id 7793103); el plan gratis no deja una segunda marca, así que Javi
   eligió meter la cuenta de Bomberados, **@elitebomberos**, como **competidor** de kiria.ai. Javi: «no me deja conectar nada

@@ -78,10 +78,11 @@ Todo lo de la marca, el estado de cada vídeo, Notion y la siguiente tarea (Preg
   - Base «Calendario de contenido» (collection://c194bf8b-4e4a-46b8-b6ad-c1953f4d0f2b): cada vídeo con estado, formato, gancho,
     fecha y métricas. Al terminar un vídeo o recibir datos, actualizarla.
   - Base «Clientes y marcas» (collection://2bea0963-17fa-474e-b9e2-42839b86e428): empresas, qué se hizo, permisos, logo, precio.
-  - **Métricas automáticas cada 12 h** (Javi, 5 nov): BD «📊 Métricas por vídeo» (collection://e7139401-c71c-4076-af0b-95353fb25eb0)
-    y «🕒 Historial de métricas (cada 12 h)» (collection://c8ba2abc-2a70-4b2d-975f-b6f8b67b6f0d), rellenadas desde Metricool a las
-    08:33 y 20:33 por la tarea programada de la sesión session_014gBm8Nojm4JMj7MbLpxerp. Cómo funciona: `metricas/README.md`.
-    En Metricool solo está @kiria.ai (brandId 7793103); falta conectar @elitebomberos (Bomberados).
+  - **📰 Noticias** (desde el 6 nov, petición de Javi): cada 8 h (06:35, 14:35, 22:35) la sesión session_014gBm8Nojm4JMj7MbLpxerp
+    apunta en la base «Noticias del mundo» (collection://a031950f-1e17-44bf-9025-b88c7bbc1552) las noticias mundiales que le
+    importan a más del 90 % de la gente, con dato clave e idea de vídeo. De ahí salen vídeos nuevos. Cómo: `noticias/README.md`.
+  - Métricas automáticas (Metricool → «📊 Métricas por vídeo» e «🕒 Historial de métricas»): **paradas el 6 nov por Javi**; las
+    bases siguen en Notion con la captura del 5 nov. Cómo era: `metricas/README.md`.
 
 ## Canal de YouTube
 Kit hecho en `projects/canal/`: `perfil.png`, `banner.jpg`, `DESCRIPCION_CANAL.txt` («Las carreras, por dentro»).

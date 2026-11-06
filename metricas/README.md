@@ -1,4 +1,7 @@
-# Métricas cada 12 h (Metricool → Notion)
+# Métricas cada 12 h (Metricool → Notion) — PARADO
+
+**6 nov 2026: Javi mandó parar esta tarea** («olvídate de todo lo que teníamos») y la sustituyó por `noticias/`.
+La tarea programada está borrada; las bases de Notion se quedan con la captura del 5 nov. Esto queda como referencia.
 
 Petición de Javi (5 nov 2026): recopilar cada 12 h los datos de cada vídeo de las cuentas de kiria.ai y Bomberados
 (visitas, me gusta, comentarios…) con Metricool e ir guardándolos en Notion.
