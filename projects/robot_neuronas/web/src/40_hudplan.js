@@ -84,7 +84,7 @@ function hudAt(t) {
   const headP = D.head.localToWorld(v3(0, 0.03, 0.12)), domeP = D.dome.localToWorld(v3(0, 0.13, 0));
   // 1: «no tiene cerebro» (la cabeza) · «neuronas humanas vivas» (la cúpula)
   { const k = cw(t, K.cerebro1 - 0.05, K.pero1 + 0.15); if (k > 0.01) { const P = proj(headP); brackets(P, 210, 190, k, HC.red, 3); lab(headP, 'SIN CEREBRO', null, k, { dx: -150, dy: -170, color: HC.red }); } }
-  lab(domeP, 'NEURONAS HUMANAS', t > K.vivas1 - 0.03 ? 'VIVAS' : null, cw(t, K.neuronas1 - 0.03, K.y2 + 0.25), { dx: 150, dy: -210, color: HP, subCol: HC.white });
+  lab(chipPt(U.cells[6]), 'NEURONAS HUMANAS', t > K.vivas1 - 0.03 ? 'VIVAS' : null, cw(t, K.neuronas1 - 0.03, K.y2 + 0.25), { dx: -150, dy: -190, color: HP, subCol: HC.white });      // (más abajo que los subtítulos de dos líneas)
   // 3: Cortical Labs · Australia · Melbourne
   { const k = cw(t, K.cortical3 - 0.03, TT.ausOff - 0.15); if (k > 0.01) { bigText('CORTICAL LABS', W / 2, 1450, 66, HC.white, k, { glow: 12, dark: 24 }); bigText('EMPRESA · AUSTRALIA', W / 2, 1530, 30, '#62E3D4', win(t, K.empresa3 - 0.03, 0.2) * k, { dark: 16, ls: 6 }); } }
   lab(v3(dogXZ(t)[0], 0.3, 0), 'MELBOURNE', null, cw(t, K.australia3 + 0.2, TT.ausOff - 0.2), { dx: 110, dy: -120, color: '#62E3D4' });
