@@ -17,6 +17,16 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
   (4:5) y `DESCRIPCION.txt` (versión larga + corta para TikTok + notas de entrega).
 - Nada de aviones en vídeos que no sean de aeronáutica; nada cortado por los lados; sin logos reales; sin la marca kiria.ai en los vídeos.
 
+## Sistema de 3 chats (Javi, 6-11-2026)
+1. **Producción** (este tipo de chat): guion → voz de Javi → vídeo, portada, descripción (y TikTok: `projects/canal/TIKTOK.md`).
+2. **Métricas** (chat «Recopilación de métricas de vídeos en Notion», `session_014gBm8Nojm4JMj7MbLpxerp`): tarea programada «kiria.ai ·
+   métricas de los vídeos a Notion» a las 08:33 y 20:33 (Metricool → «🕒 Historial de métricas» y «📊 Métricas por vídeo»). Se había
+   parado el 6-11 por la mañana (el chat pasó a recoger noticias cada 8 h, que sigue); reactivada ese día.
+3. **Análisis y plan** (chat «Análisis y plan · kiria.ai», `session_014gBm8SaSv1G456NUVzrJKf`): tarea programada diaria a las 09:47 que
+   sigue `projects/canal/ANALISIS_DIARIO.md`: rellena las fichas de cada vídeo (formato, tema, gancho, duración, voz, letra, efectos,
+   estilo visual), analiza qué funciona, escribe la página de Notion «📈 Análisis de contenido · kiria.ai» y `projects/canal/ANALISIS.md`
+   y deja el siguiente vídeo con el guion listo en el Calendario (Estado «Guion»). Javi elige y el chat de producción lo hace.
+
 ## Render en varias máquinas (cuando Javi lo aprueba en ese vídeo)
 - Plantilla completa: `projects/derecho/` (escena en `web/src/*.js` → `web/build.sh` → `web/scene.js`; `render_local.sh`, `fetch_compose.sh`,
   `compose_der.py`, `portada.py`).
