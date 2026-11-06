@@ -1,0 +1,12 @@
+Este perro robot no tiene cerebro… pero lo guían neuronas humanas vivas.
+¿Y sabes qué habían aprendido antes neuronas como estas? Al final te lo digo.
+Lo ha hecho Cortical Labs, una empresa de Australia.
+En un chip lleno de electrodos crecen neuronas humanas, cultivadas en laboratorio.
+El chip les manda pequeñas señales eléctricas… y escucha lo que responden.
+Un programa convierte esa respuesta en pasos: izquierda, derecha, adelante.
+Y el perro llega solo hasta un objetivo marcado en un mapa.
+Ojo: no es un cerebro. El tuyo tiene unos 86.000 millones de neuronas; aquí hay un puñado.
+Y el chip, el programa y los motores siguen siendo máquina.
+Todavía no lo han revisado otros científicos.
+¿Y lo que habían aprendido antes? Según la empresa, neuronas como estas ya jugaron al Pong… y al Doom.
+¿Le darías derechos a una máquina con neuronas humanas?
