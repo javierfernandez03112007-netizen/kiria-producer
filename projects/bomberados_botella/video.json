@@ -1,0 +1,265 @@
+{
+ "formato": "botella",
+ "estilo": "app",
+ "voz": {
+  "tempo": 0.93,
+  "count": 4.05,
+  "count_line": 3,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿LA ACERTARÁ?",
+ "portada": {
+  "titulo": "¿CUÁNTO AIRE TE QUEDA?",
+  "etiqueta": "AUTONOMÍA DE LA BOTELLA · ERA",
+  "t": 9.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "entras": [
+   "Entras",
+   1,
+   1
+  ],
+  "incendio": [
+   "incendio",
+   1,
+   1
+  ],
+  "botella": [
+   "botella",
+   1,
+   1
+  ],
+  "espalda": [
+   "espalda.",
+   1,
+   1
+  ],
+  "cuantos": [
+   "¿Cuántos",
+   1,
+   2
+  ],
+  "minutos": [
+   "minutos",
+   1,
+   2
+  ],
+  "aire1": [
+   "aire",
+   1,
+   2
+  ],
+  "d230": [
+   "Doscientos",
+   1,
+   3
+  ],
+  "bares": [
+   "bares.",
+   1,
+   3
+  ],
+  "siete": [
+   "Siete",
+   1,
+   3
+  ],
+  "litros": [
+   "litros.",
+   1,
+   3
+  ],
+  "reserva": [
+   "Reserva",
+   1,
+   3
+  ],
+  "sesenta": [
+   "sesenta.",
+   1,
+   3
+  ],
+  "gastas": [
+   "gastas",
+   1,
+   3
+  ],
+  "t35": [
+   "treinta",
+   2,
+   3
+  ],
+  "porminuto": [
+   "minuto.",
+   1,
+   3
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   4
+  ],
+  "tienes": [
+   "Tienes",
+   1,
+   4
+  ],
+  "cinco": [
+   "cinco",
+   1,
+   4
+  ],
+  "segundos": [
+   "segundos.",
+   1,
+   4
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   5
+  ],
+  "cuarenta": [
+   "cuarenta",
+   1,
+   5
+  ],
+  "sin": [
+   "sin",
+   1,
+   5
+  ],
+  "dentro": [
+   "dentro.",
+   1,
+   5
+  ],
+  "reserva2": [
+   "reserva",
+   1,
+   6
+  ],
+  "toca": [
+   "toca:",
+   1,
+   6
+  ],
+  "aire3": [
+   "aire",
+   1,
+   6
+  ],
+  "salir": [
+   "salir.",
+   1,
+   6
+  ],
+  "d230b": [
+   "Doscientos",
+   1,
+   7
+  ],
+  "menos": [
+   "menos",
+   1,
+   7
+  ],
+  "ciento": [
+   "ciento",
+   1,
+   7
+  ],
+  "bares2": [
+   "bares.",
+   1,
+   7
+  ],
+  "por7": [
+   "Por",
+   1,
+   7
+  ],
+  "siete2": [
+   "siete",
+   1,
+   7
+  ],
+  "mil": [
+   "mil",
+   1,
+   7
+  ],
+  "aire2": [
+   "aire.",
+   1,
+   7
+  ],
+  "entre": [
+   "Entre",
+   1,
+   8
+  ],
+  "t35b": [
+   "treinta",
+   1,
+   8
+  ],
+  "t34": [
+   "treinta",
+   2,
+   8
+  ],
+  "minutos2": [
+   "minutos!",
+   1,
+   8
+  ],
+  "esla": [
+   "Es",
+   1,
+   8
+  ],
+  "lac": [
+   "C.",
+   1,
+   8
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   9
+  ],
+  "acierta": [
+   "acierta!",
+   1,
+   9
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   10
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   10
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   10
+  ]
+ }
+}

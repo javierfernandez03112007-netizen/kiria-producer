@@ -3,7 +3,7 @@ acorta pausas, mete el silencio de la cuenta atrás, acelera un poco (atempo) y 
 Uso: python3 bomberados/plantillas/pregunta/ajustar_voz.py projects/<p>
 (assets/voz_original.mp3 + asr_original.json + script.txt → assets/voz.mp3 + tiempos.json)
 Parámetros en pregunta.json (o video.json) → "voz": tempo, count_line (frase tras la que va la cuenta atrás, desde 0), count (s; 0 = sin cuenta atrás),
-pause ({nº de frase: pausa tras ella}), pause_def."""
+pause ({nº de frase: pausa tras ella}), pause_def, cortar (false = no acortar ninguna pausa de la toma)."""
 import difflib
 import json
 import os
@@ -27,6 +27,7 @@ COUNT = V.get("count", 4.2)            # silencio de la cuenta atrás (lo llenan
 COUNT_LINE = V.get("count_line", 2)    # frase tras la que va la cuenta atrás
 PAUSE = {int(k): v for k, v in V.get("pause", {}).items()}   # pausa tras la frase i (antes del atempo)
 PAUSE_DEF = V.get("pause_def", 0.24)
+CORTAR = V.get("cortar", True)        # false = respetar todas las pausas de la toma (Javi, 6 nov: «respeta los tiempos e intervalos»)
 INNER_MAX = 0.17      # silencios internos (comas, puntos dentro de la frase) como máximo
 INNER_LONG = 0.3      # … y el «¿Verdadero o falso?» del gancho: pausa dramática dentro de la frase
 
@@ -110,7 +111,7 @@ def main():
             k = max((i for i in range(len(st)) if st[i] < a), default=None)
             if k is not None and sw[k][1].endswith("…"):
                 want = INNER_LONG
-        if b - a > want:
+        if CORTAR and b - a > want:
             cuts.append((a, b, want))
     s0 = max(0, int(lstart[0] * SR) - int(0.06 * SR))
     s1 = int(sp1 * SR)

@@ -945,7 +945,108 @@ def sfx_track_acoplamiento(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype(np.int16).tobytes())
 
 
+def sfx_track_botella(path):
+    """«¿Cuánto aire te queda?»: respiración del ERA sincronizada con las bocanadas (normal → rápida en la cuenta y la alarma
+    → normal tras el rebobinado), fuego de fondo, cuenta 1→5 con bocina en el 5, silbato de reserva, relleno de aire, reloj."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["l2e"], T["l3e"] = LINES[2]["end"], LINES[3]["end"]
+    T["count0"] = T["l3e"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["cardsIn"] = T["l2e"] - 0.55; T["fin"] = c["compartir"] - 0.25
+    fuego, vapor, bub = _load("fuego"), _load("vapor"), _onset(_load("burbuja"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    # respiración: cada ciclo en su sitio exacto (como las bocanadas de la escena)
+    rn, rf = _load("respiracion"), _load("respiracion_rapida")
+    cyc_n, cyc_f = _to(rn[: int(3.0 * sfx.SR)], -27), _to(rf[: int(1.55 * sfx.SR)], -25)
+    for a, b, cyc, per in ((0.0, T["count0"], cyc_n, 3.0), (T["count0"], c["dentro"], cyc_f, 1.55), (c["reserva2"], T["fin"], cyc_n, 3.0)):
+        k = 0
+        while a + k * per < b - 0.3:
+            seg = cyc[: int(min(per, b - (a + k * per)) * sfx.SR)].copy()
+            n = min(len(seg), int(0.03 * sfx.SR)); seg[-n:] *= np.linspace(1, 0, n)[:, None]
+            _put(amb, seg, a + k * per)
+            k += 1
+    # fuego de fondo todo el vídeo; latido y destello en el gancho
+    put(burn, 0.0, -30, END, 0.4, 0.6, track=amb)
+    put("latido", 0.1, -29, 0.6)
+    put("destello", 0.05, -31, 0.8, 0.005, 0.3)
+    put("whoosh", c["botella"] - 0.3, -31, 0.6)
+    # el manómetro sale del hombro; los datos con su golpe
+    put("whoosh2", c["cuantos"] - 0.15, -26, 0.7)
+    put("toque", c["cuantos"] + 0.15, -27, 0.35)
+    put("golpe", c["bares"] - 0.08, -27, 0.6, 0.005, 0.3)
+    put(bub, c["litros"] - 0.05, -26, 0.25)
+    put(_pitch(_onset(_load("nota")), 0.7), c["sesenta"] - 0.05, -28, 0.9)
+    put(_pitch(_onset(_load("rele")), 0.9), c["sesenta"] + 0.05, -27, 0.2)
+    put(vapor, c["t35"] - 0.05, -33, 0.7, 0.05, 0.3)
+    # tarjetas, comenta y la cuenta 1 → 5 (bocina en el 5)
+    put("whoosh", T["cardsIn"] - 0.1, -29, 0.6)
+    for i in range(4):
+        put(_pitch(bub, 1 + 0.06 * i), T["cardsIn"] + 0.1 * i + 0.1, -27, 0.25)
+    put("toque", c["comenta"] - 0.05, -27, 0.35)
+    put("tension", T["count0"] - 0.2, -27, c["tiempo"] - T["count0"] + 0.4, 0.3, 0.15)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    # «¡Tiempo!»: la A en rojo; la aguja cae a 0, silbato de reserva y «SIN AIRE»
+    put("fallo", c["tiempo"] + 0.12, -25, 0.5)
+    put(_pitch(_onset(_load("caida")), 0.85), c["cuarenta"] - 0.1, -28, c["dentro"] - c["cuarenta"] + 0.3, 0.02, 0.2)
+    put("silbato", c["sin"] - 0.35, -25, c["reserva2"] - c["sin"] + 0.1, 0.05, 0.25, track=amb)
+    put("golpe", c["dentro"] - 0.08, -23, 0.9, 0.005, 0.4)
+    # rebobinado: la botella se rellena; candado de la reserva; la SALIDA se enciende
+    put(_pitch(_onset(_load("whoosh2")), 1.3), c["reserva2"] - 0.25, -27, 0.6)
+    put("aire", c["reserva2"] - 0.2, -29, 0.8, 0.02, 0.3)
+    put(_pitch(_onset(_load("rele")), 0.8), c["toca"] - 0.03, -25, 0.25)
+    put("acierto", c["salir"] - 0.1, -27, 0.7)
+    put("destello", c["salir"] - 0.15, -30, 0.7)
+    # la cuenta: golpes en cada resultado, el aire llena el cubo, el reloj corre hasta 34:00
+    put("toque", c["d230b"] - 0.05, -28, 0.35); put(_pitch(_onset(_load("toque")), 0.85), c["menos"] - 0.05, -28, 0.35)
+    put("golpe", c["ciento"] - 0.08, -26, 0.7, 0.005, 0.3)
+    put("toque", c["por7"] - 0.05, -28, 0.35); put(_pitch(_onset(_load("toque")), 1.15), c["siete2"] - 0.05, -28, 0.35)
+    put("aire", c["mil"] - 0.3, -24, max(1.0, c["aire2"] + 0.4 - c["mil"]), 0.02, 0.35)
+    put("golpe", c["mil"] + 0.25, -26, 0.7, 0.005, 0.3)
+    put("toque", c["entre"] - 0.05, -28, 0.35)
+    put("reloj", c["t35b"], -25, max(0.6, c["t34"] - c["t35b"]), 0.01, 0.05)
+    put("golpe", c["t34"] - 0.05, -21, 1.0, 0.005, 0.4)
+    put("destello", c["t34"] - 0.05, -26, 0.7)
+    put("whoosh2", c["esla"] - 0.25, -28, 0.6)
+    put("acierto", c["esla"] - 0.02, -22, 0.8, 0.002, 0.3)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "botella":
+        return sfx_track_botella(path)
     if Q.get("formato") == "acoplamiento":
         return sfx_track_acoplamiento(path)
     if Q.get("formato") == "extintor":

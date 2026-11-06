@@ -1,0 +1,617 @@
+[
+ {
+  "text": "Entras en un incendio con esta botella a la espalda.",
+  "start": 0.064,
+  "end": 2.937,
+  "words": [
+   {
+    "w": "Entras",
+    "start": 0.064,
+    "end": 0.579
+   },
+   {
+    "w": "en",
+    "start": 0.579,
+    "end": 0.75
+   },
+   {
+    "w": "un",
+    "start": 0.75,
+    "end": 0.922
+   },
+   {
+    "w": "incendio",
+    "start": 0.922,
+    "end": 1.351
+   },
+   {
+    "w": "con",
+    "start": 1.351,
+    "end": 1.522
+   },
+   {
+    "w": "esta",
+    "start": 1.522,
+    "end": 1.78
+   },
+   {
+    "w": "botella",
+    "start": 1.78,
+    "end": 2.294
+   },
+   {
+    "w": "a",
+    "start": 2.294,
+    "end": 2.38
+   },
+   {
+    "w": "la",
+    "start": 2.38,
+    "end": 2.466
+   },
+   {
+    "w": "espalda.",
+    "start": 2.466,
+    "end": 2.937
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántos minutos de aire tienes?",
+  "start": 3.42,
+  "end": 4.921,
+  "words": [
+   {
+    "w": "¿Cuántos",
+    "start": 3.42,
+    "end": 3.666
+   },
+   {
+    "w": "minutos",
+    "start": 3.666,
+    "end": 4.01
+   },
+   {
+    "w": "de",
+    "start": 4.01,
+    "end": 4.181
+   },
+   {
+    "w": "aire",
+    "start": 4.181,
+    "end": 4.61
+   },
+   {
+    "w": "tienes?",
+    "start": 4.61,
+    "end": 4.921
+   }
+  ]
+ },
+ {
+  "text": "Doscientos treinta bares. Siete litros. Reserva de sesenta. Y gastas treinta y cinco litros por minuto.",
+  "start": 5.232,
+  "end": 11.418,
+  "words": [
+   {
+    "w": "Doscientos",
+    "start": 5.232,
+    "end": 5.72
+   },
+   {
+    "w": "treinta",
+    "start": 5.72,
+    "end": 6.154
+   },
+   {
+    "w": "bares.",
+    "start": 6.154,
+    "end": 6.786
+   },
+   {
+    "w": "Siete",
+    "start": 6.786,
+    "end": 7.183
+   },
+   {
+    "w": "litros.",
+    "start": 7.183,
+    "end": 7.794
+   },
+   {
+    "w": "Reserva",
+    "start": 7.794,
+    "end": 8.298
+   },
+   {
+    "w": "de",
+    "start": 8.298,
+    "end": 8.469
+   },
+   {
+    "w": "sesenta.",
+    "start": 8.469,
+    "end": 9.198
+   },
+   {
+    "w": "Y",
+    "start": 9.198,
+    "end": 9.391
+   },
+   {
+    "w": "gastas",
+    "start": 9.391,
+    "end": 9.842
+   },
+   {
+    "w": "treinta",
+    "start": 9.842,
+    "end": 10.058
+   },
+   {
+    "w": "y",
+    "start": 10.058,
+    "end": 10.166
+   },
+   {
+    "w": "cinco",
+    "start": 10.166,
+    "end": 10.442
+   },
+   {
+    "w": "litros",
+    "start": 10.442,
+    "end": 10.871
+   },
+   {
+    "w": "por",
+    "start": 10.871,
+    "end": 11.042
+   },
+   {
+    "w": "minuto.",
+    "start": 11.042,
+    "end": 11.418
+   }
+  ]
+ },
+ {
+  "text": "Comenta tu letra. Tienes cinco segundos.",
+  "start": 11.804,
+  "end": 14.184,
+  "words": [
+   {
+    "w": "Comenta",
+    "start": 11.804,
+    "end": 12.157
+   },
+   {
+    "w": "tu",
+    "start": 12.157,
+    "end": 12.329
+   },
+   {
+    "w": "letra.",
+    "start": 12.329,
+    "end": 12.918
+   },
+   {
+    "w": "Tienes",
+    "start": 12.918,
+    "end": 13.272
+   },
+   {
+    "w": "cinco",
+    "start": 13.272,
+    "end": 13.701
+   },
+   {
+    "w": "segundos.",
+    "start": 13.701,
+    "end": 14.184
+   }
+  ]
+ },
+ {
+  "text": "¡Tiempo! Si te ha salido cuarenta y seis… te has quedado sin aire dentro.",
+  "start": 18.48,
+  "end": 22.801,
+  "words": [
+   {
+    "w": "¡Tiempo!",
+    "start": 18.48,
+    "end": 19.166
+   },
+   {
+    "w": "Si",
+    "start": 19.166,
+    "end": 19.263
+   },
+   {
+    "w": "te",
+    "start": 19.263,
+    "end": 19.381
+   },
+   {
+    "w": "ha",
+    "start": 19.381,
+    "end": 19.552
+   },
+   {
+    "w": "salido",
+    "start": 19.552,
+    "end": 19.981
+   },
+   {
+    "w": "cuarenta",
+    "start": 19.981,
+    "end": 20.49
+   },
+   {
+    "w": "y",
+    "start": 20.49,
+    "end": 20.66
+   },
+   {
+    "w": "seis…",
+    "start": 20.66,
+    "end": 21.021
+   },
+   {
+    "w": "te",
+    "start": 21.021,
+    "end": 21.096
+   },
+   {
+    "w": "has",
+    "start": 21.096,
+    "end": 21.353
+   },
+   {
+    "w": "quedado",
+    "start": 21.353,
+    "end": 21.782
+   },
+   {
+    "w": "sin",
+    "start": 21.782,
+    "end": 21.954
+   },
+   {
+    "w": "aire",
+    "start": 21.954,
+    "end": 22.468
+   },
+   {
+    "w": "dentro.",
+    "start": 22.468,
+    "end": 22.801
+   }
+  ]
+ },
+ {
+  "text": "Porque la reserva no se toca: es el aire para salir.",
+  "start": 23.229,
+  "end": 26.553,
+  "words": [
+   {
+    "w": "Porque",
+    "start": 23.229,
+    "end": 23.497
+   },
+   {
+    "w": "la",
+    "start": 23.497,
+    "end": 23.669
+   },
+   {
+    "w": "reserva",
+    "start": 23.669,
+    "end": 24.269
+   },
+   {
+    "w": "no",
+    "start": 24.269,
+    "end": 24.441
+   },
+   {
+    "w": "se",
+    "start": 24.441,
+    "end": 24.612
+   },
+   {
+    "w": "toca:",
+    "start": 24.612,
+    "end": 25.277
+   },
+   {
+    "w": "es",
+    "start": 25.277,
+    "end": 25.384
+   },
+   {
+    "w": "el",
+    "start": 25.384,
+    "end": 25.642
+   },
+   {
+    "w": "aire",
+    "start": 25.642,
+    "end": 25.985
+   },
+   {
+    "w": "para",
+    "start": 25.985,
+    "end": 26.242
+   },
+   {
+    "w": "salir.",
+    "start": 26.242,
+    "end": 26.553
+   }
+  ]
+ },
+ {
+  "text": "Doscientos treinta menos sesenta: ciento setenta bares. Por siete litros: mil ciento noventa litros de aire.",
+  "start": 26.949,
+  "end": 33.511,
+  "words": [
+   {
+    "w": "Doscientos",
+    "start": 26.949,
+    "end": 27.484
+   },
+   {
+    "w": "treinta",
+    "start": 27.484,
+    "end": 27.957
+   },
+   {
+    "w": "menos",
+    "start": 27.957,
+    "end": 28.3
+   },
+   {
+    "w": "sesenta:",
+    "start": 28.3,
+    "end": 28.911
+   },
+   {
+    "w": "ciento",
+    "start": 28.911,
+    "end": 29.169
+   },
+   {
+    "w": "setenta",
+    "start": 29.169,
+    "end": 29.844
+   },
+   {
+    "w": "bares.",
+    "start": 29.844,
+    "end": 30.498
+   },
+   {
+    "w": "Por",
+    "start": 30.498,
+    "end": 30.616
+   },
+   {
+    "w": "siete",
+    "start": 30.616,
+    "end": 30.959
+   },
+   {
+    "w": "litros:",
+    "start": 30.959,
+    "end": 31.559
+   },
+   {
+    "w": "mil",
+    "start": 31.559,
+    "end": 31.727
+   },
+   {
+    "w": "ciento",
+    "start": 31.727,
+    "end": 32.061
+   },
+   {
+    "w": "noventa",
+    "start": 32.061,
+    "end": 32.674
+   },
+   {
+    "w": "litros",
+    "start": 32.674,
+    "end": 33.103
+   },
+   {
+    "w": "de",
+    "start": 33.103,
+    "end": 33.189
+   },
+   {
+    "w": "aire.",
+    "start": 33.189,
+    "end": 33.511
+   }
+  ]
+ },
+ {
+  "text": "Entre treinta y cinco por minuto… ¡treinta y cuatro minutos! Es la C.",
+  "start": 33.843,
+  "end": 38.185,
+  "words": [
+   {
+    "w": "Entre",
+    "start": 33.843,
+    "end": 34.218
+   },
+   {
+    "w": "treinta",
+    "start": 34.218,
+    "end": 34.465
+   },
+   {
+    "w": "y",
+    "start": 34.465,
+    "end": 34.589
+   },
+   {
+    "w": "cinco",
+    "start": 34.589,
+    "end": 34.904
+   },
+   {
+    "w": "por",
+    "start": 34.904,
+    "end": 35.076
+   },
+   {
+    "w": "minuto…",
+    "start": 35.076,
+    "end": 35.848
+   },
+   {
+    "w": "¡treinta",
+    "start": 35.848,
+    "end": 36.156
+   },
+   {
+    "w": "y",
+    "start": 36.156,
+    "end": 36.311
+   },
+   {
+    "w": "cuatro",
+    "start": 36.311,
+    "end": 36.705
+   },
+   {
+    "w": "minutos!",
+    "start": 36.705,
+    "end": 37.488
+   },
+   {
+    "w": "Es",
+    "start": 37.488,
+    "end": 37.649
+   },
+   {
+    "w": "la",
+    "start": 37.649,
+    "end": 37.906
+   },
+   {
+    "w": "C.",
+    "start": 37.906,
+    "end": 38.185
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
+  "start": 38.506,
+  "end": 41.508,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 38.506,
+    "end": 39.107
+   },
+   {
+    "w": "a",
+    "start": 39.107,
+    "end": 39.193
+   },
+   {
+    "w": "quien",
+    "start": 39.193,
+    "end": 39.45
+   },
+   {
+    "w": "oposite",
+    "start": 39.45,
+    "end": 40.05
+   },
+   {
+    "w": "contigo,",
+    "start": 40.05,
+    "end": 40.393
+   },
+   {
+    "w": "a",
+    "start": 40.393,
+    "end": 40.565
+   },
+   {
+    "w": "ver",
+    "start": 40.565,
+    "end": 40.736
+   },
+   {
+    "w": "si",
+    "start": 40.736,
+    "end": 40.822
+   },
+   {
+    "w": "la",
+    "start": 40.822,
+    "end": 40.994
+   },
+   {
+    "w": "acierta!",
+    "start": 40.994,
+    "end": 41.508
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 41.841,
+  "end": 46.118,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 41.841,
+    "end": 42.452
+   },
+   {
+    "w": "a",
+    "start": 42.452,
+    "end": 42.537
+   },
+   {
+    "w": "bombero?",
+    "start": 42.537,
+    "end": 43.149
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 43.149,
+    "end": 44.456
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 44.456,
+    "end": 44.939
+   },
+   {
+    "w": "gratis",
+    "start": 44.939,
+    "end": 45.368
+   },
+   {
+    "w": "cinco",
+    "start": 45.368,
+    "end": 45.711
+   },
+   {
+    "w": "días!",
+    "start": 45.711,
+    "end": 46.118
+   }
+  ]
+ }
+]
