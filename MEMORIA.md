@@ -83,6 +83,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **Anuncio de la web «¿Qué hace que alguien se pare?»** (`projects/promo_web/`, 6-11-2026): Javi: «vamos a hacer un video para
+  promocionar la pagina de kiria […] algo muy profesional». Guion primero → su MP3 (34 s) → `engine/alinear.py` + `ajustar_voz.py` ×1,06
+  (29,9 s, vídeo de 33 s). Escena: un móvil gigante tumbado es el escenario; publicaciones con productos «TU MARCA» (los de la web) que caen
+  al vacío por el borde; la cinta se para en «pare»; foto → se sube → el tarro sale en 3D a la peana con focos, vuelta y onda de la voz;
+  portadas reales de nuestros vídeos; cámara de cine que se deshace («0 CÁMARAS»); contador 3.200.000 y «3,2 M» en 3D; la barra del vídeo
+  con el primer segundo; **rebobinado** de toda la escena hasta el primer fotograma (dos relojes: `t` del vídeo y `sceneT` de la escena,
+  `20_anim.js`); cierre con la web real («Vídeos que paran el scroll.», «Pedir propuesta») y el perfil con el enlace en la bio. Sin precios.
+  Ojo: (1) el reconocedor de ElevenLabs puede poner el inicio de una palabra en el silencio de antes (y `ajustar_voz.py` metía la pausa
+  dentro de la palabra anterior): `alinear.py` ya lo corrige; (2) **`fetch_compose.sh` mata TODOS los `render_local.sh` y capturas de la
+  máquina al reunir los fotogramas**: no renderizar dos vídeos a la vez aquí (mató el render del anuncio al acabar Derecho); (3) para
+  rehacer un vídeo antiguo, `out/` no está en git: los trozos siguen en sus ramas `render-*` y solo falta el trozo que se hizo aquí.
+- **Derecho, reenviado el 6-11-2026** (Javi: «pásame de nuevo el vídeo de derecho con la miniatura y la descripción», más descripción para
+  TikTok y la foto de perfil): faltaba el trozo 0–726 (hecho en las 6 máquinas, ramas `render-der-g1…g6`, con `projects/derecho/render_chunk.sh`);
+  además el trozo antiguo `render-der-e` tenía el suelo naranja liso de 3455 a 3645 (58–60,8 s, la textura de madera no salió) y daba un
+  salto al pasar al siguiente: rehechos aquí. Foto de perfil de TikTok = la de Instagram (`projects/lanzamiento/whatsapp/foto_canal.png`).
 - **El mayor robo cripto · hackeo a Binance** (`projects/cripto/`, 5-11-2026): de la lista de noticias virales (Javi: «Vamos a hacer el
   video de las criptomonedas»). 15 frases, 60 s, un solo plano en bucle: el portátil del ingeniero con la videollamada y las monedas ₿
   metiéndose en la pantalla; la cartera caliente de cristal detrás; el programa espía (bicho negro de ojos rojos) baja por el cable, espera
