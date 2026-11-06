@@ -95,5 +95,11 @@ todo lo necesario para profesionalizarla».
 
     #marketingdigital #emprendedores #negocios #ia #publicidad
     ```
+11. **El perro robot con neuronas humanas**
+    ```
+    🤖 Este perro robot no tiene cerebro… lo guían neuronas humanas vivas que crecen en un chip. Y antes, según la empresa, jugaron al Pong y al Doom 🎮 ¿Le darías derechos? 👇
+
+    #robots #ciencia #neurociencia #inteligenciaartificial #curiosidades
+    ```
 No subir a TikTok los dos vídeos de lanzamiento («Ni una sola cámara» y «Tu producto, en 3D»): dicen «comenta KIRIA» y «el domingo»,
 que ya no valen.

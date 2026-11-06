@@ -1,7 +1,7 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) del anuncio de kiriaai.com («¿Qué hace que alguien se pare?»).
-Base: el primer fotograma (el tarro cae por el borde del móvil gigante), sin HUD:
-    COVER=1 COVER_T=0.02 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
-Título en Impact con contorno, como los subtítulos («SE PARE» en dorado). Sin precios."""
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «El perro robot con neuronas humanas».
+Base: el perro quieto (t = 5 s) visto de frente y algo de lado, sin HUD:
+    COVER=1 COVER_T=5.0 COVER_CAM=2.2,0.75,0.92,0.22,0.56,0,34 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Título en Impact con contorno, como los subtítulos («CEREBRO» en rosa, el color de las neuronas). Sin precios."""
 import os
 import sys
 
@@ -15,7 +15,7 @@ from engine.subs import word_sprite  # noqa: E402
 from engine import post  # noqa: E402
 
 W, H = 1080, 1920
-GOLD = "#FFC24A"
+PINK = "#FF5FA8"
 
 
 def row(img, parts, cy, size, stroke):
@@ -29,9 +29,9 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("¿QUÉ", None), ("HACE", None), ("QUE", None)], y + 80 * k, int(118 * k), int(10 * k))
-    row(img, [("ALGUIEN", None), ("SE", GOLD), ("PARE?", GOLD)], y + 215 * k, int(128 * k), int(10 * k))
-    paste(img, chip("tu producto, en vídeo · sin cámaras", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 350 * k)
+    row(img, [("ESTE", None), ("PERRO", None), ("ROBOT", None)], y + 80 * k, int(122 * k), int(10 * k))
+    row(img, [("NO", None), ("TIENE", None), ("CEREBRO", PINK)], y + 218 * k, int(132 * k), int(10 * k))
+    paste(img, chip("lo guían neuronas humanas vivas", int(44 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 358 * k)
 
 
 def main():
@@ -39,10 +39,10 @@ def main():
     img = base.copy()
     g = np.clip(1 - np.arange(H) / 760.0, 0, 1)[:, None, None] ** 1.5      # oscurece arriba para que se lea el título
     img *= 1 - 0.6 * g
-    title(img, 110)
+    title(img, 150)
     post.grain(img, 0, 0.008)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
-    m = base[200:200 + 1350].copy()
+    m = base[330:330 + 1350].copy()
     g = np.clip(1 - np.arange(1350) / 560.0, 0, 1)[:, None, None] ** 1.5
     m *= 1 - 0.6 * g
     title(m, 20, 0.8)

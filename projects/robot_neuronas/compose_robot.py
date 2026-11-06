@@ -1,6 +1,6 @@
 """Compone «El perro robot con neuronas humanas»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos
 palabra a palabra en Impact + la voz de Javi (su MP3 de ElevenLabs, ajustada con ajustar_voz.py) + efectos SOLO de ElevenLabs
-(assets/sfx de este proyecto y los de projects/lanzamiento/assets/sfx), uno por suceso y cortados cuando el suceso termina. Sin precios.
+(assets/sfx de este proyecto, sfx_eleven.py, y algunos de otros vídeos del canal), uno por suceso y cortados cuando el suceso termina. Sin precios.
 
     python3 ajustar_voz.py && python3 env_voz.py
     WK=3 ./render_local.sh 0 N
@@ -27,7 +27,7 @@ LINES = json.load(open(os.path.join(ROOT, "tiempos.json")))
 END = float(math.ceil(LINES[-1]["end"] + 2.6))          # como en web/src/90_tail.js: Math.ceil(fin + 2,6)
 N = int(END * FPS)
 FRAMES = os.path.join(ROOT, "out", "frames")
-SFX_DIRS = [os.path.join(ROOT, "assets", "sfx"), os.path.join(ROOT, "..", "lanzamiento", "assets", "sfx"), os.path.join(ROOT, "..", "cripto", "assets", "sfx")]
+SFX_DIRS = [os.path.join(ROOT, "assets", "sfx")] + [os.path.join(ROOT, "..", p, "assets", "sfx") for p in ("lanzamiento", "cripto", "medicina", "gafas", "cerradura", "promo_web")]
 AUDIO = os.path.join(ROOT, "assets", "voz.mp3")
 WORDS = [dict(w, n=norm(w["w"]), line=i + 1) for i, l in enumerate(LINES) for w in l["words"]]
 
@@ -44,16 +44,19 @@ def at(word, k=1, line=None):
 
 # ---------------------------------------------------------------- subtítulos
 GO, R, WH = "#FFC24A", "#FF5A4E", "#EEF2F6"
-BL, GR = "#8FE6FF", "#7CF0A9"
-_K = {1: {"empresa": WH, "producto": WH, "gente": GO},
-      2: {"pare": GO, "final": WH},
-      3: {"foto": GO, "producto": WH},
-      4: {"3D": GO, "luz": WH, "movimiento": WH, "voz": BL},
-      5: {"todos": WH, "canal": WH, "cámara": R},
-      6: {"7": WH, "días": WH, "3,2": GO, "millones": GO},
-      7: {"secreto": WH, "primer": GO, "segundo": GO, "inesperado": GO},
-      8: {"este": GO},
-      9: {"negocio": WH, "kiriaai.com:": GO, "bio": BL}}
+BL, PK, TE = "#8FC8FF", "#FF5FA8", "#62E3D4"
+_K = {1: {"robot": WH, "cerebro": R, "neuronas": PK, "humanas": PK, "vivas": PK},
+      2: {"aprendido": GO, "final": WH},
+      3: {"cortical": WH, "labs": WH, "australia": TE},
+      4: {"chip": WH, "electrodos": BL, "crecen": PK, "neuronas": PK, "laboratorio": WH},
+      5: {"señales": BL, "eléctricas": BL, "responden": PK},
+      6: {"programa": TE, "pasos": GO, "izquierda": GO, "derecha": GO, "adelante": GO},
+      7: {"solo": WH, "objetivo": R, "mapa": TE},
+      8: {"ojo": GO, "cerebro": R, "86000": PK, "millones": PK, "puñado": PK},
+      9: {"chip": WH, "programa": TE, "motores": GO, "máquina": WH},
+      10: {"revisado": R},
+      11: {"aprendido": GO, "pong": GO, "doom": GO},
+      12: {"derechos": GO, "máquina": WH, "humanas": PK}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -97,54 +100,71 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    # mismos instantes que web/src/20_anim.js (buildTimes)
-    stop = at("pare") + 0.04
-    rw0, rw1 = at("como") - 0.03, at("este", 1, 8) + 0.08
-    cta0, web, bio = at("quieres") - 0.05, at("entra") - 0.12, at("bio") - 0.25
-    # 1: la cinta corre a tirones (cada 0,66 s) y los productos caen al vacío por el borde
-    for k in range(int(stop / 0.66) + 1):
-        if k * 0.66 < stop - 0.4:
-            put("scroll", k * 0.66, 0.4, 0.2, 0.15)
-    for t0, g in [(0.0, 0.42), (0.55, 0.3), (1.95, 0.3), (3.35, 0.26)]:
-        put("caida", t0, 0.9, g, 0.4, start=0.12 if t0 == 0 else 0.0)
-    # 2: se para en seco
-    put("frenazo", stop - 0.02, 0.55, 0.5, 0.2)
-    # 3: cae la foto, se sube
-    put("tarjeta", at("mándanos") - 0.1, 0.45, 0.4, 0.15)
-    put("papel", at("foto", 1, 3) + 0.1, 0.45, 0.42, 0.2)
-    put("ping", at("producto", 1, 3) + 0.2, 0.45, 0.32, 0.2)
-    # 4: la foto se pone de pie, sale la peana, el tarro se hincha y salta; focos; vuelta; voz
-    put("voltea", at("convertimos") - 0.05, 0.45, 0.35, 0.15)
-    put("sale", at("en", 1, 4) - 0.05, 0.4, 0.35, 0.15)
-    put("estira", at("en", 1, 4), 0.6, 0.38, 0.2)
-    put("whoosh", at("3D") + 0.18, 0.45, 0.3, 0.15)
-    put("solido", at("con", 1, 4) + 0.02, 0.45, 0.45, 0.2)
-    put("focos", at("luz") - 0.05, 0.85, 0.5, 0.3)
-    put("whoosh", at("movimiento") - 0.02, 0.7, 0.36, 0.25)
-    put("onda", at("voz") - 0.03, 0.6, 0.25, 0.25)
-    # 5: el estudio se recoge; los vídeos del canal; la cámara aparece y se deshace
-    put("absorbe", at("así") - 0.1, 0.5, 0.35, 0.2)
-    put("pantalla", at("así") + 0.15, 0.5, 0.3, 0.2)
-    put("sale", at("sin") - 0.08, 0.4, 0.35, 0.15)
-    put("absorbe", at("cámara") + 0.02, 0.5, 0.4, 0.2)
-    put("sello", at("cámara") + 0.07, 0.45, 0.42, 0.15)
-    # 6: el contador sube y salen los «3,2 M»
-    put("cuenta", at("sumado"), max(0.3, at("millones") + 0.05 - at("sumado")), 0.32, 0.2)
-    put("cifra", at("3,2") - 0.03, 0.6, 0.45, 0.25)
-    # 7: la barra del vídeo vuelve al primer segundo; la imagen se enciende
-    put("tap", at("primer") - 0.02, 0.3, 0.4)
-    put("ping", at("primer") + 0.1, 0.45, 0.32, 0.2)
-    put("ping", at("inesperado") - 0.03, 0.45, 0.25, 0.2)
-    # 8: rebobinado y otra vez el primer segundo (el tarro cae)
-    put("rebobina", rw0 - 0.02, rw1 - rw0 + 0.15, 0.55, 0.12)
-    put("caida", rw1 + 0.15, 0.8, 0.4, 0.35)
-    # 9: la cámara sube; la web; el botón; el enlace de la bio; vuelta al principio (bucle)
-    put("whoosh", cta0 + 0.1, 0.7, 0.32, 0.25)
-    put("pantalla", web, 0.5, 0.32, 0.2)
-    put("tap", web + 0.6, 0.3, 0.35)
-    put("ping", bio + 0.25, 0.45, 0.35, 0.2)
-    put("whoosh", END - 0.95, 0.7, 0.3, 0.25)
-    put("scroll", END - 0.66, 0.4, 0.2, 0.15)
+    def loop(name, t0, dur, g, xf=0.3):          # un efecto largo hecho a trozos que se funden
+        x = sample(name, sr); L = len(x) / sr - 0.15; t = t0
+        while t < t0 + dur - 0.05:
+            d = min(L, t0 + dur - t)
+            put(name, t, d + (xf if t + d < t0 + dur - 0.01 else 0), g, fade=xf if t + d < t0 + dur - 0.01 else 0.12, start=0.05)
+            t += L - xf
+
+    # mismos instantes que web/src/20_anim.js (buildTimes) y 30_camera.js
+    K = lambda w, li, k=1: at(w, k, li)
+    w0, fb = K("neuronas", 12) + 0.05, K("mapa", 7) - 0.08
+    # 1: el perro anda hacia ti (y al final vuelve a andar: el mismo paseo); «no tiene cerebro»; las neuronas se encienden
+    loop("pasos", 0.0, 4.3, 0.2)
+    put("denegado", K("cerebro", 1) + 0.02, 0.5, 0.22, 0.2)
+    put("zumbido", K("neuronas", 1) - 0.05, 1.6, 0.3, 0.5)
+    # 2: la pantalla con la pregunta; el candado («al final te lo digo»)
+    put("estatica", K("aprendido", 2) - 0.05, 0.5, 0.3, 0.2)
+    put("pantalla", K("aprendido", 2) - 0.02, 0.5, 0.22, 0.2)
+    put("candado", K("final", 2) - 0.03, 0.6, 0.35, 0.2)
+    put("whoosh", K("digo", 2) + 0.15, 0.5, 0.22, 0.2)
+    # 3: la cámara sube; Australia se dibuja; Melbourne
+    put("sube", K("cortical", 3) - 0.45, 1.0, 0.3, 0.3)
+    put("dibujo", K("empresa", 3) - 0.05, 1.1, 0.32, 0.3)
+    put("ping", K("australia", 3) + 0.22, 0.45, 0.28, 0.2)
+    # 4: en picado al chip; los electrodos se encienden; crecen las neuronas; el medio de cultivo
+    put("picado", K("en", 4) - 0.1, 0.8, 0.38, 0.25)
+    put("barrido", K("electrodos", 4) + 0.02, 0.7, 0.3, 0.25)
+    put("crecen", K("crecen", 4), 1.4, 0.36, 0.4)
+    put("petri", K("cultivadas", 4) - 0.02, 0.7, 0.28, 0.25)
+    # 5: el chip estimula; las neuronas responden
+    put("estimulo", K("manda", 5) + 0.1, K("escucha", 5) + 0.1 - K("manda", 5), 0.3, 0.25)
+    put("respuesta", K("responden", 5) - 0.02, 1.1, 0.38, 0.35)
+    # 6: el programa; los motores; izquierda, derecha, adelante (con sus pasos)
+    put("programa", K("programa", 6) + 0.12, 1.0, 0.26, 0.3)
+    put("servo", K("pasos", 6) - 0.02, 0.6, 0.32, 0.2)
+    for w in ("izquierda", "derecha", "adelante"):
+        put("flecha", K(w, 6) - 0.02, 0.45, 0.3, 0.15)
+        put("servo", K(w, 6) + 0.05, 0.5, 0.2, 0.2)
+    loop("pasos", K("izquierda", 6) + 0.05, fb - K("izquierda", 6) + 0.1, 0.18)
+    # 7: el objetivo; llega; la cámara sube a ver el mapa
+    put("objetivo", K("objetivo", 7) - 0.03, 1.0, 0.3, 0.3)
+    put("llegada", fb, 0.8, 0.34, 0.3)
+    put("sube", K("mapa", 7) + 0.02, 0.9, 0.22, 0.3)
+    # 8: «ojo»; el cerebro; los 86.000 millones; baja en picado a «un puñado»
+    put("ojo", K("ojo", 8) - 0.02, 0.8, 0.42, 0.3)
+    put("cerebro", K("cerebro", 8) - 0.05, 1.8, 0.36, 0.5)
+    put("cuenta", K("86000", 8) - 0.1, K("millones", 8) + 0.25 - K("86000", 8), 0.28, 0.2)
+    put("picado", K("aquí", 8) - 0.12, 0.7, 0.3, 0.25)
+    put("zumbido", K("puñado", 8) - 0.05, 0.9, 0.28, 0.4)
+    # 9: el despiece: chip, programa, motores; se vuelve a montar
+    put("despiece", K("chip", 9) - 0.15, 1.0, 0.36, 0.3)
+    put("programa", K("programa", 9) - 0.02, 0.6, 0.2, 0.2)
+    put("servo", K("motores", 9) - 0.02, 0.6, 0.34, 0.2)
+    put("monta", K("máquina", 9) + 0.75, 0.6, 0.38, 0.2)
+    # 10: sin revisar
+    put("sello", K("revisado", 10) - 0.02, 0.5, 0.42, 0.15)
+    # 11: la pantalla vuelve; Pong; el pasillo (dos disparos)
+    put("estatica", K("aprendido", 11) - 0.08, 0.5, 0.28, 0.2)
+    put("pantalla", K("aprendido", 11) - 0.05, 0.5, 0.2, 0.2)
+    put("pong", K("jugaron", 11), K("doom", 11) - 0.05 - K("jugaron", 11), 0.3, 0.12)
+    put("disparo", K("doom", 11), 0.6, 0.32, 0.25)
+    put("disparo", K("doom", 11) + 0.5, 0.5, 0.22, 0.25)
+    put("whoosh", K("le", 12) - 0.02, 0.6, 0.22, 0.25)
+    # 12: gira la cabeza hacia ti; vuelve a andar (el paseo del principio: bucle)
+    put("mira", K("derechos", 12) - 0.12, 0.9, 0.34, 0.3)
+    loop("pasos", w0, END - w0 + 0.05, 0.2)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 

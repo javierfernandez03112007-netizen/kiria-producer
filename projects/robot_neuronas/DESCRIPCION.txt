@@ -1,0 +1,35 @@
+«ESTE PERRO ROBOT NO TIENE CEREBRO» · el perro robot con neuronas humanas (Cortical Labs) · 51 s · voz de Javi
+
+DESCRIPCIÓN (Instagram):
+🧠 Este perro robot no tiene cerebro… pero lo guían neuronas humanas vivas.
+
+🔬 Lo ha hecho Cortical Labs, una empresa de Australia: neuronas humanas cultivadas en laboratorio (a partir de células madre) que crecen sobre un chip lleno de electrodos.
+⚡ El chip les manda pequeñas señales eléctricas y escucha lo que responden.
+🦿 Un programa convierte esa respuesta en pasos: izquierda, derecha, adelante… y el perro llega solo hasta un objetivo marcado en un mapa.
+
+⚠️ Ojo: no es un cerebro. El tuyo tiene unos 86.000 millones de neuronas; aquí hay un puñado. El chip, el programa y los motores siguen siendo máquina. Y todavía no lo han revisado otros científicos.
+
+🎮 ¿Y lo que habían aprendido antes? Según la empresa, neuronas como estas ya jugaron al Pong… y al Doom.
+
+🤔 ¿Le darías derechos a una máquina con neuronas humanas? Te leo 👇
+
+#robots #inteligenciaartificial #neurociencia #ciencia #tecnologia #biotecnologia #cerebro #curiosidades
+
+---
+
+COMENTARIO FIJADO:
+📚 Fuentes: Cortical Labs y prensa científica (noviembre de 2026); 86.000 millones de neuronas: Azevedo et al. (2009); Pong: Kagan et al., Neuron (2022). Es una demostración temprana, aún sin revisión de otros científicos. ¿Derechos: sí o no? 👇
+
+---
+
+VERSIÓN CORTA (TikTok):
+🤖 Este perro robot no tiene cerebro… lo guían neuronas humanas vivas que crecen en un chip. Y antes, según la empresa, jugaron al Pong y al Doom 🎮 ¿Le darías derechos? 👇
+
+#robots #ciencia #neurociencia #inteligenciaartificial #curiosidades
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: la de Javi (su MP3 de ElevenLabs: Danny, v4, estabilidad 0,50, similitud 0,75, 57,9 s), tiempos con engine/alinear.py, pausas recortadas y ×1,08 → 48,2 s; vídeo de 51 s en bucle.
+- Datos: ver FUENTES.md. El mapa, el objetivo, el aspecto del perro y del chip y el programa de la pantalla son una recreación (EJEMPLO). Sin logotipos ni precios.
+- Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5); TikTok: projects/canal/tiktok/portadas/robot_neuronas.jpg.
