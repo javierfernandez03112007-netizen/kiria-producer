@@ -49,6 +49,13 @@ de Bomberados de las 08:43/20:43, que hace otra sesión; ver `bomberados/MEMORIA
 - El Instagram **@elitebomberos** no está en Metricool (5 nov): solo está la marca kiria.ai. Para que entre, Javi tiene que
   crear una marca nueva en Metricool y conectar ahí @elitebomberos (cuenta profesional; hace falta acceso de administrador).
   En cuanto aparezca en `getBrandSettings`, la tarea la incluye con Cuenta «@elitebomberos» y Sección «Bomberados».
+- 6 nov: una segunda marca en Metricool es de pago, así que Javi va a añadir @elitebomberos como **competidor** de
+  kiria.ai (para eso tiene que reconectar el Instagram de kiria.ai por Facebook; ver `bomberados/MEMORIA_BOMBERADOS.md`).
+  Un competidor no sale en `getBrandSettings` ni da visitas, guardados o compartidos: solo me gusta, comentarios y
+  seguidores (IGCO/IGCR). Esos los usa el análisis de Bomberados de las 08:43/20:43; las visitas siguen viniendo de Notion.
+  Ojo: al cambiar el tipo de conexión de Instagram, Metricool solo trae los últimos 30 días de la conexión nueva.
+- 6 nov: los datos del día 5 llegaron más tarde (hacia las 09:50, hora de Madrid, ya estaban: 4.861 seguidores): un día a 0 por la mañana
+  puede ser solo retraso de Metricool; volver a mirarlo antes de pedir a Javi que reconecte.
 - Lo que ya se publicó de Bomberados en @kiria.ai (p. ej. «Aceite en la sartén», 28 oct) se marca con Sección «Bomberados».
 - Pendiente cuando esté conectada: copiar también los últimos datos a la BD «Vídeos de Bomberados»
   (`collection://5422fb68-0692-456e-8aac-49a9c79151c9`: Vistas, Comentarios, Compartidos, Guardados, Retención 3 s) para que
