@@ -1,0 +1,230 @@
+{
+ "formato": "presion",
+ "estilo": "app",
+ "voz": {
+  "tempo": 0.93,
+  "count": 4.05,
+  "count_line": 2,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿LA ACERTARÁ?",
+ "portada": {
+  "titulo": "¿QUÉ PRESIÓN LLEGA A LA LANZA?",
+  "etiqueta": "LANZA CERRADA · 50 m · 8 BAR",
+  "t": 4.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "abajo": [
+   "abajo,",
+   1,
+   1
+  ],
+  "bomba0": [
+   "bomba.",
+   1,
+   1
+  ],
+  "companero": [
+   "compañero,",
+   1,
+   1
+  ],
+  "cincuenta0": [
+   "cincuenta",
+   1,
+   1
+  ],
+  "arriba": [
+   "arriba.",
+   1,
+   1
+  ],
+  "marcab": [
+   "marca",
+   1,
+   2
+  ],
+  "ocho0": [
+   "ocho",
+   1,
+   2
+  ],
+  "lanza": [
+   "lanza",
+   1,
+   2
+  ],
+  "cerrada": [
+   "cerrada.",
+   1,
+   2
+  ],
+  "presion": [
+   "presión",
+   1,
+   2
+  ],
+  "punta": [
+   "punta?",
+   1,
+   2
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   3
+  ],
+  "cinco": [
+   "cinco",
+   1,
+   3
+  ],
+  "segundos": [
+   "segundos.",
+   1,
+   3
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   4
+  ],
+  "ocho1": [
+   "ocho…",
+   1,
+   4
+  ],
+  "altura": [
+   "altura.",
+   1,
+   4
+  ],
+  "cada": [
+   "cada",
+   1,
+   5
+  ],
+  "diez0": [
+   "diez",
+   1,
+   5
+  ],
+  "pierde": [
+   "pierde",
+   1,
+   5
+  ],
+  "bar": [
+   "bar.",
+   1,
+   5
+  ],
+  "d10": [
+   "Diez,",
+   1,
+   6
+  ],
+  "d20": [
+   "veinte,",
+   1,
+   6
+  ],
+  "d30": [
+   "treinta,",
+   1,
+   6
+  ],
+  "d40": [
+   "cuarenta…",
+   1,
+   6
+  ],
+  "d50": [
+   "¡cincuenta!",
+   1,
+   6
+  ],
+  "menos5": [
+   "Cinco",
+   1,
+   6
+  ],
+  "como": [
+   "como",
+   1,
+   7
+  ],
+  "corre": [
+   "corre…",
+   1,
+   7
+  ],
+  "rozamiento": [
+   "rozamiento.",
+   1,
+   7
+  ],
+  "ocho2": [
+   "Ocho",
+   1,
+   8
+  ],
+  "menos": [
+   "menos",
+   1,
+   8
+  ],
+  "tres": [
+   "¡tres",
+   1,
+   8
+  ],
+  "esla": [
+   "Es",
+   1,
+   8
+  ],
+  "lac": [
+   "C.",
+   1,
+   8
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   9
+  ],
+  "acierta": [
+   "acierta!",
+   1,
+   9
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   10
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   10
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   10
+  ]
+ }
+}

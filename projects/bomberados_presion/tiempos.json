@@ -1,0 +1,612 @@
+[
+ {
+  "text": "Estás abajo, en la bomba. Tu compañero, cincuenta metros más arriba.",
+  "start": 0.0,
+  "end": 4.638,
+  "words": [
+   {
+    "w": "Estás",
+    "start": 0.0,
+    "end": 0.379
+   },
+   {
+    "w": "abajo,",
+    "start": 0.379,
+    "end": 0.927
+   },
+   {
+    "w": "en",
+    "start": 1.027,
+    "end": 1.237
+   },
+   {
+    "w": "la",
+    "start": 1.237,
+    "end": 1.446
+   },
+   {
+    "w": "bomba.",
+    "start": 1.446,
+    "end": 1.825
+   },
+   {
+    "w": "Tu",
+    "start": 1.925,
+    "end": 2.135
+   },
+   {
+    "w": "compañero,",
+    "start": 2.135,
+    "end": 2.853
+   },
+   {
+    "w": "cincuenta",
+    "start": 2.953,
+    "end": 3.501
+   },
+   {
+    "w": "metros",
+    "start": 3.501,
+    "end": 3.88
+   },
+   {
+    "w": "más",
+    "start": 3.88,
+    "end": 4.09
+   },
+   {
+    "w": "arriba.",
+    "start": 4.09,
+    "end": 4.638
+   }
+  ]
+ },
+ {
+  "text": "La bomba marca ocho bares y la lanza está cerrada. ¿Qué presión tiene él en la punta?",
+  "start": 4.938,
+  "end": 10.464,
+  "words": [
+   {
+    "w": "La",
+    "start": 4.938,
+    "end": 5.147
+   },
+   {
+    "w": "bomba",
+    "start": 5.147,
+    "end": 5.526
+   },
+   {
+    "w": "marca",
+    "start": 5.526,
+    "end": 5.905
+   },
+   {
+    "w": "ocho",
+    "start": 5.905,
+    "end": 6.284
+   },
+   {
+    "w": "bares",
+    "start": 6.284,
+    "end": 6.663
+   },
+   {
+    "w": "y",
+    "start": 6.663,
+    "end": 6.873
+   },
+   {
+    "w": "la",
+    "start": 6.873,
+    "end": 7.082
+   },
+   {
+    "w": "lanza",
+    "start": 7.082,
+    "end": 7.461
+   },
+   {
+    "w": "está",
+    "start": 7.461,
+    "end": 7.84
+   },
+   {
+    "w": "cerrada.",
+    "start": 7.84,
+    "end": 8.389
+   },
+   {
+    "w": "¿Qué",
+    "start": 8.489,
+    "end": 8.698
+   },
+   {
+    "w": "presión",
+    "start": 8.698,
+    "end": 9.077
+   },
+   {
+    "w": "tiene",
+    "start": 9.077,
+    "end": 9.456
+   },
+   {
+    "w": "él",
+    "start": 9.456,
+    "end": 9.666
+   },
+   {
+    "w": "en",
+    "start": 9.666,
+    "end": 9.875
+   },
+   {
+    "w": "la",
+    "start": 9.875,
+    "end": 10.085
+   },
+   {
+    "w": "punta?",
+    "start": 10.085,
+    "end": 10.464
+   }
+  ]
+ },
+ {
+  "text": "Comenta tu letra. Tienes cinco segundos.",
+  "start": 10.764,
+  "end": 13.307,
+  "words": [
+   {
+    "w": "Comenta",
+    "start": 10.764,
+    "end": 11.312
+   },
+   {
+    "w": "tu",
+    "start": 11.312,
+    "end": 11.522
+   },
+   {
+    "w": "letra.",
+    "start": 11.522,
+    "end": 11.901
+   },
+   {
+    "w": "Tienes",
+    "start": 12.001,
+    "end": 12.38
+   },
+   {
+    "w": "cinco",
+    "start": 12.38,
+    "end": 12.759
+   },
+   {
+    "w": "segundos.",
+    "start": 12.759,
+    "end": 13.307
+   }
+  ]
+ },
+ {
+  "text": "¡Tiempo! Si has dicho ocho… te has olvidado de la altura.",
+  "start": 17.657,
+  "end": 21.717,
+  "words": [
+   {
+    "w": "¡Tiempo!",
+    "start": 17.657,
+    "end": 18.036
+   },
+   {
+    "w": "Si",
+    "start": 18.136,
+    "end": 18.345
+   },
+   {
+    "w": "has",
+    "start": 18.345,
+    "end": 18.555
+   },
+   {
+    "w": "dicho",
+    "start": 18.555,
+    "end": 18.934
+   },
+   {
+    "w": "ocho…",
+    "start": 18.934,
+    "end": 19.313
+   },
+   {
+    "w": "te",
+    "start": 19.613,
+    "end": 19.822
+   },
+   {
+    "w": "has",
+    "start": 19.822,
+    "end": 20.032
+   },
+   {
+    "w": "olvidado",
+    "start": 20.032,
+    "end": 20.75
+   },
+   {
+    "w": "de",
+    "start": 20.75,
+    "end": 20.959
+   },
+   {
+    "w": "la",
+    "start": 20.959,
+    "end": 21.169
+   },
+   {
+    "w": "altura.",
+    "start": 21.169,
+    "end": 21.717
+   }
+  ]
+ },
+ {
+  "text": "Por cada diez metros que sube, el agua pierde un bar.",
+  "start": 22.017,
+  "end": 25.269,
+  "words": [
+   {
+    "w": "Por",
+    "start": 22.017,
+    "end": 22.226
+   },
+   {
+    "w": "cada",
+    "start": 22.226,
+    "end": 22.605
+   },
+   {
+    "w": "diez",
+    "start": 22.605,
+    "end": 22.815
+   },
+   {
+    "w": "metros",
+    "start": 22.815,
+    "end": 23.194
+   },
+   {
+    "w": "que",
+    "start": 23.194,
+    "end": 23.403
+   },
+   {
+    "w": "sube,",
+    "start": 23.403,
+    "end": 23.782
+   },
+   {
+    "w": "el",
+    "start": 23.882,
+    "end": 24.092
+   },
+   {
+    "w": "agua",
+    "start": 24.092,
+    "end": 24.471
+   },
+   {
+    "w": "pierde",
+    "start": 24.471,
+    "end": 24.85
+   },
+   {
+    "w": "un",
+    "start": 24.85,
+    "end": 25.059
+   },
+   {
+    "w": "bar.",
+    "start": 25.059,
+    "end": 25.269
+   }
+  ]
+ },
+ {
+  "text": "Diez, veinte, treinta, cuarenta… ¡cincuenta! Cinco bares menos.",
+  "start": 25.569,
+  "end": 29.47,
+  "words": [
+   {
+    "w": "Diez,",
+    "start": 25.569,
+    "end": 25.778
+   },
+   {
+    "w": "veinte,",
+    "start": 25.878,
+    "end": 26.257
+   },
+   {
+    "w": "treinta,",
+    "start": 26.357,
+    "end": 26.736
+   },
+   {
+    "w": "cuarenta…",
+    "start": 26.836,
+    "end": 27.385
+   },
+   {
+    "w": "¡cincuenta!",
+    "start": 27.685,
+    "end": 28.233
+   },
+   {
+    "w": "Cinco",
+    "start": 28.333,
+    "end": 28.712
+   },
+   {
+    "w": "bares",
+    "start": 28.712,
+    "end": 29.091
+   },
+   {
+    "w": "menos.",
+    "start": 29.091,
+    "end": 29.47
+   }
+  ]
+ },
+ {
+  "text": "Y como la lanza está cerrada, el agua no corre… así que no se pierde nada por rozamiento.",
+  "start": 29.77,
+  "end": 36.144,
+  "words": [
+   {
+    "w": "Y",
+    "start": 29.77,
+    "end": 29.979
+   },
+   {
+    "w": "como",
+    "start": 29.979,
+    "end": 30.358
+   },
+   {
+    "w": "la",
+    "start": 30.358,
+    "end": 30.568
+   },
+   {
+    "w": "lanza",
+    "start": 30.568,
+    "end": 30.947
+   },
+   {
+    "w": "está",
+    "start": 30.947,
+    "end": 31.326
+   },
+   {
+    "w": "cerrada,",
+    "start": 31.326,
+    "end": 31.874
+   },
+   {
+    "w": "el",
+    "start": 31.974,
+    "end": 32.184
+   },
+   {
+    "w": "agua",
+    "start": 32.184,
+    "end": 32.563
+   },
+   {
+    "w": "no",
+    "start": 32.563,
+    "end": 32.772
+   },
+   {
+    "w": "corre…",
+    "start": 32.772,
+    "end": 33.151
+   },
+   {
+    "w": "así",
+    "start": 33.451,
+    "end": 33.83
+   },
+   {
+    "w": "que",
+    "start": 33.83,
+    "end": 34.04
+   },
+   {
+    "w": "no",
+    "start": 34.04,
+    "end": 34.249
+   },
+   {
+    "w": "se",
+    "start": 34.249,
+    "end": 34.459
+   },
+   {
+    "w": "pierde",
+    "start": 34.459,
+    "end": 34.838
+   },
+   {
+    "w": "nada",
+    "start": 34.838,
+    "end": 35.217
+   },
+   {
+    "w": "por",
+    "start": 35.217,
+    "end": 35.426
+   },
+   {
+    "w": "rozamiento.",
+    "start": 35.426,
+    "end": 36.144
+   }
+  ]
+ },
+ {
+  "text": "Ocho menos cinco: ¡tres bares! Es la C.",
+  "start": 36.444,
+  "end": 39.078,
+  "words": [
+   {
+    "w": "Ocho",
+    "start": 36.444,
+    "end": 36.823
+   },
+   {
+    "w": "menos",
+    "start": 36.823,
+    "end": 37.202
+   },
+   {
+    "w": "cinco:",
+    "start": 37.202,
+    "end": 37.581
+   },
+   {
+    "w": "¡tres",
+    "start": 37.761,
+    "end": 37.97
+   },
+   {
+    "w": "bares!",
+    "start": 37.97,
+    "end": 38.349
+   },
+   {
+    "w": "Es",
+    "start": 38.449,
+    "end": 38.659
+   },
+   {
+    "w": "la",
+    "start": 38.659,
+    "end": 38.868
+   },
+   {
+    "w": "C.",
+    "start": 38.868,
+    "end": 39.078
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
+  "start": 39.378,
+  "end": 43.878,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 39.378,
+    "end": 40.218
+   },
+   {
+    "w": "a",
+    "start": 40.218,
+    "end": 40.458
+   },
+   {
+    "w": "quien",
+    "start": 40.458,
+    "end": 40.698
+   },
+   {
+    "w": "oposite",
+    "start": 40.698,
+    "end": 41.538
+   },
+   {
+    "w": "contigo,",
+    "start": 41.538,
+    "end": 42.178
+   },
+   {
+    "w": "a",
+    "start": 42.278,
+    "end": 42.518
+   },
+   {
+    "w": "ver",
+    "start": 42.518,
+    "end": 42.758
+   },
+   {
+    "w": "si",
+    "start": 42.758,
+    "end": 42.998
+   },
+   {
+    "w": "la",
+    "start": 42.998,
+    "end": 43.238
+   },
+   {
+    "w": "acierta!",
+    "start": 43.238,
+    "end": 43.878
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 44.178,
+  "end": 48.698,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 44.178,
+    "end": 45.018
+   },
+   {
+    "w": "a",
+    "start": 45.018,
+    "end": 45.258
+   },
+   {
+    "w": "bombero?",
+    "start": 45.258,
+    "end": 45.898
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 45.998,
+    "end": 46.838
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 46.938,
+    "end": 47.578
+   },
+   {
+    "w": "gratis",
+    "start": 47.578,
+    "end": 48.018
+   },
+   {
+    "w": "cinco",
+    "start": 48.018,
+    "end": 48.458
+   },
+   {
+    "w": "días!",
+    "start": 48.458,
+    "end": 48.698
+   }
+  ]
+ }
+]
