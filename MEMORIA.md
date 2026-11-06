@@ -93,6 +93,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **El perro robot con neuronas humanas** (`projects/robot_neuronas/`, 6-11-2026): Javi: «otro que no sea de publicidad sino de contenido,
+  algo muy muy fuerte, por ejemplo algo de robots». Noticia de Cortical Labs (Australia). Guion primero → su MP3 (57,9 s) → ×1,08 y pausas
+  recortadas (48,2 s; vídeo de 51 s). Escena (un solo plano que sigue al perro): perro robot blanco con cúpula de cristal y un chip de
+  electrodos con neuronas rosas → «SIN CEREBRO» en la cabeza → pantalla «?» y candado «AL FINAL» → Australia dibujada en el suelo (contorno
+  real de `engine/geo/countries-50m.json`) con el perro en Melbourne → picado al chip: electrodos, las neuronas se recogen y vuelven a crecer,
+  medio de cultivo → estímulo/respuesta con osciloscopio → «PROGRAMA · EJEMPLO» → «izquierda, derecha, adelante» con la cámara DETRÁS (para
+  que izquierda sea izquierda) → objetivo y ruta → cerebro holograma con el contador hasta 86.000.000.000 → «UN PUÑADO» → despiece → «SIN
+  REVISAR» → Pong y un pasillo de videojuego genérico → «¿DERECHOS?» (gira la cabeza hacia ti). 21 efectos nuevos de ElevenLabs.
+  Trucos que sirven para otros vídeos: (1) **bucle exacto con algo que anda**: el mapa y el polvo se repiten cada 3,6 m y el perro acaba
+  3,6 m más allá (la cámara va pegada a él), con la semilla del polvo por baldosa (`seedOf`) y sin deriva; (2) el paso sale de la distancia
+  recorrida (+ lo girado) y la zancada se ajusta para que quepa un número exacto de pasos; patas con IK de dos huesos; (3) una cúpula de
+  cristal delante de la cámara lo llena todo de neblina: su opacidad baja al acercarse; (4) `clearcoat` sin rugosidad hace un punto
+  brillante con cada luz puntual (el marco de la pantalla): sin clearcoat; (5) **al unir los módulos chocan los nombres** (`PR` es la
+  resolución, `PL` los colores, `burst`, `TEAL` ya existen): comprobar duplicados antes de probar; (6) el cerebro se lee como cerebro visto
+  desde arriba: dos hemisferios con la cara de dentro plana y un sombreador que brilla en los surcos (donde el ruido cruza 0) y en el borde.
 - **Anuncio de la web «¿Qué hace que alguien se pare?»** (`projects/promo_web/`, 6-11-2026): Javi: «vamos a hacer un video para
   promocionar la pagina de kiria […] algo muy profesional». Guion primero → su MP3 (34 s) → `engine/alinear.py` + `ajustar_voz.py` ×1,06
   (29,9 s, vídeo de 33 s). Escena: un móvil gigante tumbado es el escenario; publicaciones con productos «TU MARCA» (los de la web) que caen
