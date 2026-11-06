@@ -24,6 +24,6 @@ n=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_r
 cd ../..
 git checkout -q -B $PFX-$X
 git add -f projects/derecho/$F
-git commit -qm "Lanzamiento 2: trozo $A-$B renderizado (máquina de ayuda $X)"
+git commit -qm "Derecho: trozo $A-$B renderizado (máquina de ayuda $X)"
 for i in 1 2 3 4 5; do git push -q -f -u origin $PFX-$X && break; sleep $((2 ** i)); done
 echo "SUBIDO $PFX-$X $F ($(du -h projects/derecho/$F | cut -f1))"
