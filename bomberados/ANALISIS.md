@@ -14,40 +14,55 @@ Cómo se mide (desde el 6 nov, solo lo que se ve como espectador; siempre por ca
 - **Crecimiento**: seguidores de Bomberados y de Élite cada 3 días.
 - No sacar conclusiones con 1–2 vídeos por grupo: se marcan como «provisional».
 
-## Última actualización: 5 nov 2026 (primer análisis)
+## 📌 Para los próximos vídeos (plan del 6 nov) — BORRADOR, pendiente del OK de Javi
 
-### Datos (4 vídeos publicados con métricas)
-| Vídeo | Formato | Publicado | Vistas | Envíos/1.000 | Coment./1.000 |
+1. **Prioridad n.º 1: «Explicado» en 3D cinematográfico con planos de dron abiertos** (como el acoplamiento): 73.000 vistas,
+   el triple que cualquier otro, y 55 me gusta/1.000. Hacer 1–2 a la semana sobre maniobras que se ven (tendidos, escaleras,
+   rescates, ventilación), con la pregunta «¿A o B?» dentro.
+2. **Lo que entiende todo el mundo se comparte el doble**: acoplamiento 12,6, «Ocho de cada diez» 14,4, abuelos 12,4 y aceite 13,3
+   compartidos/1.000, frente a 5–8 en las Preguntas del día de temario. En los medios, gancho para el público general, no solo para el opositor.
+3. **Pregunta del día: seguir, pero con escena visual o examen oficial.** Traen más comentarios (PAS 1,9; ADR 1,3; Reducción 1,1
+   por 1.000), pero las de ley pura funcionan peor (Protección Civil: 6.400 vistas, 0,6 coment./1.000). Evitar las preguntas de
+   «qué ley/qué artículo» sin una imagen fuerte; si hay que hacerlas, como Test relámpago.
+4. **Un dato de la oposición a la semana** («Ocho de cada diez» sigue creciendo: 34.400 vistas): toca el de Navarra (14 %) o
+   el del País Vasco (75 %), con fuente oficial y una pregunta al final para comentar (es el que menos comenta: 0,5/1.000).
+5. **Cierre para comentar en todos**: «Escribe tu letra / qué harías tú en comentarios» (a menos de 0,5/1.000 nadie conversa:
+   acoplamiento, Ocho y abuelos).
+6. **Duración**: el mejor dura 46,8 s; de momento no hay que recortar a 25 s si el vídeo es visual. Provisional (un solo caso).
+7. **Horas: aún no se pueden comparar.** Javi, apunta en «Publicación (día y hora)» la hora real de cada vídeo que subas.
+
+## Última actualización: 6 nov 2026, 15:45 (cifras de Javi de hoy, 15:18–15:35)
+
+### Datos (10 filas en Métricas; 9 válidas)
+| Vídeo | Formato | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
 |---|---|---|---|---|---|
-| «Ocho de cada diez opositores… sin plaza» | Dato a pelo (sobre la oposición) | 28 oct | 24.800 | 15,9 | 0,5 |
-| PD #1 Reducción 45→25 mm | Pregunta del día | 29 oct | 19.800 | 6,5 | 1,1 |
-| PD #2 Bradipnea (examen Albacete 2026) | Pregunta del día | 30 oct | 12.900 | 8,4 | 1,1 |
-| Aceite en la sartén (V o F) | V o F con trampa | 29 oct | 6.604 | 17,0 | 1,1 |
+| Acoplamiento ¿serie o paralelo? (3D) | Explicado | **73.000** | **55,1** | 0,5 | 12,6 |
+| «Ocho de cada diez… sin plaza» | Dato a pelo | 34.400 | 38,8 | 0,5 | **14,4** |
+| PD #2 Bradipnea (Albacete 2026) | Pregunta del día | 25.600 | 16,5 | 0,9 | 5,4 |
+| PD #1 Reducción 45→25 | Pregunta del día | 25.300 | 19,8 | 1,1 | 6,2 |
+| PD ADR panel naranja | Pregunta del día | 13.500 | 21,1 | 1,3 | 6,7 |
+| PD #4 PAS | Pregunta del día | 11.000 | 17,0 | **1,9** | 6,6 |
+| Abuelos (salón de antes / hoy) | Dato a pelo | 10.300 | 25,5 | 0,4 | 12,4 |
+| Aceite en la sartén (V o F) | V o F con trampa | 8.678 | 20,6 | 0,9 | 13,3 |
+| PD #5 Protección Civil (ley) | Pregunta del día | 6.424 | 14,2 | 0,6 | 8,1 |
 
-Desde el 6 nov la tabla solo lleva lo que se ve como espectador (vistas, me gusta, comentarios y compartidos); se
-añadieron 6 vídeos más (ADR, PAS, ley de Protección Civil, abuelos, gas licuado y acoplamiento), a falta de sus números.
+Desde el 5 nov: Bradipnea casi duplica (12.900 → 25.600), Ocho +9.600, Reducción +5.500, Aceite +2.100: las Preguntas del
+día siguen sumando días después.
+
+### Seguidores (primer dato, 6 nov 15:36)
+- Élite Bomberos: **7.862** · Bomberados: **1.623**. El crecimiento se podrá calcular el 9 nov.
+
+### Avisos sobre los datos
+- **«Fuga de gas licuado»** tiene exactamente las mismas cifras que la PD #5 (6.424 / 91 / 4 / 52) y no está enlazada a ningún
+  vídeo: parece un copia-pega. No la cuento hasta que Javi la corrija.
+- ADR, PAS, PD #5, abuelos y acoplamiento ya tienen cifras, pero en «Vídeos de Bomberados» siguen en «Listo para subir» y sin
+  fecha y hora reales: así no se puede comparar por día ni por hora.
+- Sin cifras todavía (o sin publicar): tetraedro, 21A-113B, botella del ERA, presión en bomba, dominadas y Profe IA.
 
 ### Lo que funciona (provisional)
-1. **Lo que habla de la propia oposición se comparte muchísimo.** «Ocho de cada diez» es el de más alcance (24.800) y más
-   envíos (394). → Un vídeo a la semana de **datos de la oposición** con fuente oficial (plazas, aspirantes por plaza,
-   notas de corte, pruebas físicas de una convocatoria concreta).
-2. **Las preguntas con trampa se comparten** (Aceite: 17 envíos/1.000, el mejor ratio), pero ese tuvo poco alcance (6.600):
-   o el gancho no retuvo o salió a peor hora (salió el mismo día que la PD #1). → Repetir «V o F con trampa» con un gancho
-   más fuerte y en un día sin otro vídeo.
-3. **Las Preguntas del día traen el doble de comentarios** (≈ 1,1/1.000 frente a 0,5 del dato): «comenta tu letra»
-   funciona. Alcance bueno (13–20 mil). → Mantenerlas a diario.
-
-### Lo que no sabemos aún
-- **Gancho**: sin retención a los 3 s no sabemos si se van en el primer segundo (clave para los 3D nuevos).
-- **Horas**: casi todo a las 14:00; no hay comparación.
-- **Vídeos nuevos (formatos 3D, para todo el mundo)**: abuelos, tetraedro, 21A-113B, acoplamiento, Profe IA, dominadas: aún
-  sin datos.
-
-### Qué hacer para escalar (ahora)
-- **Ritmo**: 1 Pregunta del día diaria (14:00) + 3 vídeos medios a la semana (20:30) + 1 vídeo de datos de la oposición
-  a la semana. Hay 9 vídeos «listos para subir»: con eso hay calendario para unos 7–10 días.
-- **Prueba A/B de esta semana**: la misma franja contra otra (14:00 frente a 20:30) con dos vídeos del mismo formato.
-- **Más alcance sin coste**: subir cada vídeo también a TikTok y YouTube Shorts (la columna «Plataformas» ya lo prevé).
-- **Conversación**: comentario fijado con la pregunta y responder los primeros comentarios en la primera hora.
-- **Datos que necesito cada 12 h**: vistas, comentarios, compartidos, **guardados**, **seguidores ganados**,
-  **retención 3 s** y, si se puede, % visto entero y la hora de publicación real.
+1. **3D cinematográfico + algo que se ve**: el acoplamiento gana con mucha diferencia en vistas y me gusta (un solo vídeo; hay que confirmarlo con el
+   tetraedro, el 21A-113B, la botella y la presión).
+2. **Público general > temario puro para compartir**: los cuatro con más compartidos/1.000 (Ocho, Aceite, Acoplamiento, Abuelos)
+   los entiende cualquiera.
+3. **Preguntas del día = conversación**: entre 0,9 y 1,9 comentarios/1.000, el doble o el triple que el resto. La más floja, la de
+   ley sin imagen (PD #5).
