@@ -47,6 +47,11 @@ mejorando»):
      crear otra.
    - Repositorio: `projects/canal/ANALISIS.md` (el mismo análisis), commit y push a `claude/stoic-newton-ja94mt` (si ha cambiado, rebase;
      nunca force push). Mensaje de commit en español, sin identificadores de modelo, con las líneas de atribución que indique el sistema.
+5b. **La receta** («🏆 La receta de kiria.ai · lo mejor en cada vídeo», Notion `410d785b-2d75-81f0-ab28-dea7f6c2104f`, y
+   `projects/canal/RECETA.md`): con lo aprendido hoy, actualiza lo mejor de cada apartado (tema, texto/gancho/cierre, duración, primer
+   segundo e imagen, letra, voz y sonido, publicación, lo que no hacer). Cada punto con su prueba y ✅ / 🧪 / 👤; un punto pasa de 🧪 a ✅
+   con 3 vídeos o una prueba A/B. Las decisiones de Javi (👤) no se cambian con datos: si los datos las contradicen, se dice en el resumen.
+   El guion recomendado tiene que cumplir la receta.
 6. **Resumen** al final (3–5 líneas): lo más importante de los datos y el vídeo recomendado (título, gancho y hora de subida).
 
 Nunca publiques ni programes nada (ni en Metricool ni en redes), ni cambies estados o fechas de vídeos ya publicados. Si no hay datos nuevos

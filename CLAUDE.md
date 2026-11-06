@@ -6,6 +6,8 @@ ideas pendientes, accesos (ElevenLabs, dominios) y el negocio de la web.
 Productor de reels para el canal kiria.ai (economía, España). Antes de hacer o tocar cualquier vídeo, lee y
 cumple `engine/REGLAS.md` (retención: primer segundo rarísimo, cada frase visible al oírla con objetos que se
 transforman, respuesta al final; honestidad y estilo) y usa `engine/GUION.md` para el guion y `engine/HOOKS.md` para la primera frase (hook).
+Aplica también **`projects/canal/RECETA.md`** (o Notion «🏆 La receta de kiria.ai»): lo que mejor funciona según los datos del canal
+(tema, gancho, cierre, duración, primer segundo, letra, voz, efectos, hora de subida); la actualiza cada día el chat de análisis.
 
 Motor: `engine/` (Python: audio, subtítulos, marioneta, dibujo 2D) y `engine/web/` (three.js: `morph.js`,
 `cues.js`). Cada vídeo vive en `projects/<nombre>/` con `web/` (escena 3D renderizada con Playwright),
