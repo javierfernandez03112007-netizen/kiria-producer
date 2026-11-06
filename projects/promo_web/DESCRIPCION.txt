@@ -1,0 +1,35 @@
+«¿QUÉ HACE QUE ALGUIEN SE PARE?» · anuncio de kiriaai.com · 33 s · voz de Javi
+
+DESCRIPCIÓN (Instagram):
+🛑 ¿Tienes una empresa o un producto… y la gente pasa de largo?
+
+En redes, tu producto compite con miles de vídeos. ¿Qué hace que alguien se pare a mirarlo? La respuesta está en este mismo vídeo 👀
+
+📸 Nos mandas una foto de tu producto.
+🧊 La convertimos en 3D, con luz, movimiento y voz.
+🎬 Y sale un vídeo como este: sin una sola cámara.
+
+📊 Así hacemos todos los vídeos de este canal: 3,2 millones de visualizaciones en 7 días.
+
+🔑 El secreto: que el primer segundo sea lo más inesperado del vídeo (vuelve a verlo 😉).
+
+👉 ¿Quieres uno así para tu negocio? Entra en kiriaai.com (enlace en la bio).
+
+#marketingdigital #emprendedores #negocios #publicidad #videomarketing #inteligenciaartificial #pymes #kiriaai
+
+---
+
+COMENTARIO FIJADO:
+🎬 ¿Quieres un vídeo así para tu negocio? → kiriaai.com (enlace en la bio). Cuéntanos qué vendes y te decimos cómo lo haríamos 👇
+
+---
+
+VERSIÓN CORTA (TikTok):
+¿Qué hace que alguien se pare a mirar tu producto? 👀 La respuesta está en el primer segundo… míralo otra vez. 🎬 Vídeos para tu negocio, hechos con IA y sin cámaras: kiriaai.com
+#marketingdigital #emprendedores #negocios #ia #publicidad
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: la de Javi (su MP3 de ElevenLabs: Danny, v4, estabilidad 0,50, similitud 0,75, 34 s), tiempos con engine/alinear.py, ×1,06 → 29,9 s; vídeo de 33 s.
+- Datos: ver FUENTES.md (el 3,2 M en 7 días, confirmar con la captura de Instagram). Productos y publicaciones: EJEMPLO. Sin precios.

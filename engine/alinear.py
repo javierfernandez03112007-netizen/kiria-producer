@@ -37,6 +37,28 @@ def main():
             sys.exit(f"ElevenLabs {r.status_code}: {r.text[:300]}")
         ws, como = [w for w in r.json()["words"] if w.get("type", "word") == "word"], "reconocedor de voz"
     out = [{"w": w["text"].strip(), "start": round(w["start"], 3), "end": round(w["end"], 3)} for w in ws if w["text"].strip()]
+    # el reconocedor a veces pone el inicio de una palabra en el silencio que la precede (6-11-2026: «¿Qué» 0,6 s antes de tiempo, y
+    # ajustar_voz.py metía la pausa dentro de «gente»): si al empezar la palabra no suena nada, se lleva su inicio a donde vuelve la voz
+    import subprocess
+    import numpy as np
+    sr, hop = 16000, 160
+    x = np.frombuffer(subprocess.run(["ffmpeg", "-v", "quiet", "-i", mp3, "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"],
+                                     capture_output=True, check=True).stdout, np.float32)
+    n = len(x) // hop
+    db = 20 * np.log10(np.sqrt((x[:n * hop].reshape(n, hop) ** 2).mean(1)) + 1e-9)
+    for i, w in enumerate(out):
+        a = int(w["start"] * 100)
+        k = a                                   # ¿empieza un silencio (≥ 0,15 s) en los primeros 0,1 s de la palabra?
+        while k < min(n, a + 10) and db[k] > -50:
+            k += 1
+        if k >= min(n, a + 10):
+            continue
+        e = k
+        while e < n and db[e] <= -42:
+            e += 1
+        if e - k >= 15 and e / 100 < w["end"] - 0.04:
+            print(f"  «{w['w']}» empezaba en silencio: {w['start']:.2f} → {e / 100:.2f} s")
+            w["start"] = round(e / 100, 3)
     json.dump(out, open(os.path.join(p, "asr_original.json"), "w"), ensure_ascii=False)
     print(f"{como}: {len(out)} palabras (el texto tiene {len(texto.split())}); última: {out[-1]}")
 

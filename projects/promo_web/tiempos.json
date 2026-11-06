@@ -1,0 +1,560 @@
+[
+ {
+  "text": "¿Tienes una empresa o un producto… y no sabes cómo enseñárselo a más gente?",
+  "start": 0.057,
+  "end": 4.217,
+  "words": [
+   {
+    "w": "¿Tienes",
+    "start": 0.057,
+    "end": 0.377
+   },
+   {
+    "w": "una",
+    "start": 0.377,
+    "end": 0.491
+   },
+   {
+    "w": "empresa",
+    "start": 0.491,
+    "end": 1.113
+   },
+   {
+    "w": "o",
+    "start": 1.113,
+    "end": 1.245
+   },
+   {
+    "w": "un",
+    "start": 1.245,
+    "end": 1.377
+   },
+   {
+    "w": "producto…",
+    "start": 1.377,
+    "end": 2.302
+   },
+   {
+    "w": "y",
+    "start": 2.302,
+    "end": 2.415
+   },
+   {
+    "w": "no",
+    "start": 2.415,
+    "end": 2.623
+   },
+   {
+    "w": "sabes",
+    "start": 2.623,
+    "end": 2.943
+   },
+   {
+    "w": "cómo",
+    "start": 2.943,
+    "end": 3.113
+   },
+   {
+    "w": "enseñárselo",
+    "start": 3.113,
+    "end": 3.679
+   },
+   {
+    "w": "a",
+    "start": 3.679,
+    "end": 3.755
+   },
+   {
+    "w": "más",
+    "start": 3.755,
+    "end": 3.943
+   },
+   {
+    "w": "gente?",
+    "start": 3.943,
+    "end": 4.217
+   }
+  ]
+ },
+ {
+  "text": "¿Qué hace que alguien se pare a mirarlo? Te lo digo al final.",
+  "start": 4.509,
+  "end": 7.16,
+  "words": [
+   {
+    "w": "¿Qué",
+    "start": 4.509,
+    "end": 4.689
+   },
+   {
+    "w": "hace",
+    "start": 4.689,
+    "end": 4.934
+   },
+   {
+    "w": "que",
+    "start": 4.934,
+    "end": 5.066
+   },
+   {
+    "w": "alguien",
+    "start": 5.066,
+    "end": 5.368
+   },
+   {
+    "w": "se",
+    "start": 5.368,
+    "end": 5.538
+   },
+   {
+    "w": "pare",
+    "start": 5.538,
+    "end": 5.726
+   },
+   {
+    "w": "a",
+    "start": 5.726,
+    "end": 5.951
+   },
+   {
+    "w": "mirarlo?",
+    "start": 5.951,
+    "end": 6.34
+   },
+   {
+    "w": "Te",
+    "start": 6.34,
+    "end": 6.453
+   },
+   {
+    "w": "lo",
+    "start": 6.453,
+    "end": 6.547
+   },
+   {
+    "w": "digo",
+    "start": 6.547,
+    "end": 6.755
+   },
+   {
+    "w": "al",
+    "start": 6.755,
+    "end": 6.868
+   },
+   {
+    "w": "final.",
+    "start": 6.868,
+    "end": 7.16
+   }
+  ]
+ },
+ {
+  "text": "Mándanos una foto de tu producto.",
+  "start": 7.547,
+  "end": 9.019,
+  "words": [
+   {
+    "w": "Mándanos",
+    "start": 7.547,
+    "end": 7.943
+   },
+   {
+    "w": "una",
+    "start": 7.943,
+    "end": 8.132
+   },
+   {
+    "w": "foto",
+    "start": 8.132,
+    "end": 8.34
+   },
+   {
+    "w": "de",
+    "start": 8.34,
+    "end": 8.453
+   },
+   {
+    "w": "tu",
+    "start": 8.453,
+    "end": 8.566
+   },
+   {
+    "w": "producto.",
+    "start": 8.566,
+    "end": 9.019
+   }
+  ]
+ },
+ {
+  "text": "La convertimos en 3D, con luz, movimiento y voz.",
+  "start": 9.245,
+  "end": 12.443,
+  "words": [
+   {
+    "w": "La",
+    "start": 9.245,
+    "end": 9.34
+   },
+   {
+    "w": "convertimos",
+    "start": 9.34,
+    "end": 9.906
+   },
+   {
+    "w": "en",
+    "start": 9.906,
+    "end": 10.208
+   },
+   {
+    "w": "3D,",
+    "start": 10.208,
+    "end": 10.66
+   },
+   {
+    "w": "con",
+    "start": 10.66,
+    "end": 10.849
+   },
+   {
+    "w": "luz,",
+    "start": 10.849,
+    "end": 11.302
+   },
+   {
+    "w": "movimiento",
+    "start": 11.302,
+    "end": 12.057
+   },
+   {
+    "w": "y",
+    "start": 12.057,
+    "end": 12.151
+   },
+   {
+    "w": "voz.",
+    "start": 12.151,
+    "end": 12.443
+   }
+  ]
+ },
+ {
+  "text": "Así hacemos todos los vídeos de este canal: sin una sola cámara.",
+  "start": 12.764,
+  "end": 16.123,
+  "words": [
+   {
+    "w": "Así",
+    "start": 12.764,
+    "end": 12.972
+   },
+   {
+    "w": "hacemos",
+    "start": 12.972,
+    "end": 13.406
+   },
+   {
+    "w": "todos",
+    "start": 13.406,
+    "end": 13.689
+   },
+   {
+    "w": "los",
+    "start": 13.689,
+    "end": 13.84
+   },
+   {
+    "w": "vídeos",
+    "start": 13.84,
+    "end": 14.142
+   },
+   {
+    "w": "de",
+    "start": 14.142,
+    "end": 14.255
+   },
+   {
+    "w": "este",
+    "start": 14.255,
+    "end": 14.462
+   },
+   {
+    "w": "canal:",
+    "start": 14.462,
+    "end": 15.0
+   },
+   {
+    "w": "sin",
+    "start": 15.0,
+    "end": 15.245
+   },
+   {
+    "w": "una",
+    "start": 15.245,
+    "end": 15.509
+   },
+   {
+    "w": "sola",
+    "start": 15.509,
+    "end": 15.792
+   },
+   {
+    "w": "cámara.",
+    "start": 15.792,
+    "end": 16.123
+   }
+  ]
+ },
+ {
+  "text": "Y en 7 días han sumado 3,2 millones de visualizaciones.",
+  "start": 16.34,
+  "end": 19.792,
+  "words": [
+   {
+    "w": "Y",
+    "start": 16.34,
+    "end": 16.415
+   },
+   {
+    "w": "en",
+    "start": 16.415,
+    "end": 16.547
+   },
+   {
+    "w": "7",
+    "start": 16.547,
+    "end": 16.792
+   },
+   {
+    "w": "días",
+    "start": 16.792,
+    "end": 17.151
+   },
+   {
+    "w": "han",
+    "start": 17.151,
+    "end": 17.321
+   },
+   {
+    "w": "sumado",
+    "start": 17.321,
+    "end": 17.717
+   },
+   {
+    "w": "3,2",
+    "start": 17.717,
+    "end": 18.434
+   },
+   {
+    "w": "millones",
+    "start": 18.434,
+    "end": 18.887
+   },
+   {
+    "w": "de",
+    "start": 18.887,
+    "end": 18.981
+   },
+   {
+    "w": "visualizaciones.",
+    "start": 18.981,
+    "end": 19.792
+   }
+  ]
+ },
+ {
+  "text": "¿El secreto para que se paren? Que el primer segundo sea lo más inesperado del vídeo.",
+  "start": 20.075,
+  "end": 24.113,
+  "words": [
+   {
+    "w": "¿El",
+    "start": 20.075,
+    "end": 20.245
+   },
+   {
+    "w": "secreto",
+    "start": 20.245,
+    "end": 20.66
+   },
+   {
+    "w": "para",
+    "start": 20.66,
+    "end": 20.83
+   },
+   {
+    "w": "que",
+    "start": 20.83,
+    "end": 20.943
+   },
+   {
+    "w": "se",
+    "start": 20.943,
+    "end": 21.075
+   },
+   {
+    "w": "paren?",
+    "start": 21.075,
+    "end": 21.5
+   },
+   {
+    "w": "Que",
+    "start": 21.5,
+    "end": 21.575
+   },
+   {
+    "w": "el",
+    "start": 21.575,
+    "end": 21.708
+   },
+   {
+    "w": "primer",
+    "start": 21.708,
+    "end": 22.009
+   },
+   {
+    "w": "segundo",
+    "start": 22.009,
+    "end": 22.443
+   },
+   {
+    "w": "sea",
+    "start": 22.443,
+    "end": 22.689
+   },
+   {
+    "w": "lo",
+    "start": 22.689,
+    "end": 22.915
+   },
+   {
+    "w": "más",
+    "start": 22.915,
+    "end": 23.123
+   },
+   {
+    "w": "inesperado",
+    "start": 23.123,
+    "end": 23.67
+   },
+   {
+    "w": "del",
+    "start": 23.67,
+    "end": 23.821
+   },
+   {
+    "w": "vídeo.",
+    "start": 23.821,
+    "end": 24.113
+   }
+  ]
+ },
+ {
+  "text": "Como el de este.",
+  "start": 24.396,
+  "end": 25.085,
+  "words": [
+   {
+    "w": "Como",
+    "start": 24.396,
+    "end": 24.566
+   },
+   {
+    "w": "el",
+    "start": 24.566,
+    "end": 24.66
+   },
+   {
+    "w": "de",
+    "start": 24.66,
+    "end": 24.755
+   },
+   {
+    "w": "este.",
+    "start": 24.755,
+    "end": 25.085
+   }
+  ]
+ },
+ {
+  "text": "¿Quieres uno así para tu negocio? Entra en kiriaai.com: tienes el enlace en la bio.",
+  "start": 25.557,
+  "end": 29.88,
+  "words": [
+   {
+    "w": "¿Quieres",
+    "start": 25.557,
+    "end": 25.868
+   },
+   {
+    "w": "uno",
+    "start": 25.868,
+    "end": 26.038
+   },
+   {
+    "w": "así",
+    "start": 26.038,
+    "end": 26.283
+   },
+   {
+    "w": "para",
+    "start": 26.283,
+    "end": 26.453
+   },
+   {
+    "w": "tu",
+    "start": 26.453,
+    "end": 26.547
+   },
+   {
+    "w": "negocio?",
+    "start": 26.547,
+    "end": 27.141
+   },
+   {
+    "w": "Entra",
+    "start": 27.141,
+    "end": 27.406
+   },
+   {
+    "w": "en",
+    "start": 27.406,
+    "end": 27.594
+   },
+   {
+    "w": "kiriaai.com:",
+    "start": 27.594,
+    "end": 28.827
+   },
+   {
+    "w": "tienes",
+    "start": 28.827,
+    "end": 29.097
+   },
+   {
+    "w": "el",
+    "start": 29.097,
+    "end": 29.187
+   },
+   {
+    "w": "enlace",
+    "start": 29.187,
+    "end": 29.493
+   },
+   {
+    "w": "en",
+    "start": 29.493,
+    "end": 29.583
+   },
+   {
+    "w": "la",
+    "start": 29.583,
+    "end": 29.673
+   },
+   {
+    "w": "bio.",
+    "start": 29.673,
+    "end": 29.88
+   }
+  ]
+ }
+]
