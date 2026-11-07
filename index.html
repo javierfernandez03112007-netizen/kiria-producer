@@ -576,6 +576,10 @@ section[id], main [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) +
 .add-in .btn { justify-self: start; }
 .co-sel.one { grid-template-columns: minmax(0, 1fr); }
 .paywith { font-size: 14px; color: var(--ink2); }
+/* código de descuento (KIRIA10, hasta el 30-11-2026): se enseña solo mientras vale (ver PROMO en el script) */
+.promo { display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; margin: 0 0 22px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 77, 97, 0.08); color: var(--ink2); font-size: 15px; }
+.promo .pct { color: var(--red); font-weight: 700; }
+.promo code, .paywith code { font-family: var(--mono); font-weight: 700; color: var(--ink); letter-spacing: 0.06em; padding: 1px 8px; border-radius: 6px; border: 1px dashed var(--red); }
 .co-err { order: 9; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
 .paywith b { color: var(--ink); }
 @media (max-width: 900px) { .co-grid { grid-template-columns: 1fr; } }
@@ -1076,6 +1080,7 @@ footer a:hover { color: var(--nightfg); }
   <section class="band" id="precios">
     <div class="wrap">
       <div class="head rv"><div><p class="mono">Precios</p><h2>Precios claros, <span class="key">desde 6,99 €</span></h2></div><p class="sub">Elige el tipo de vídeo y cuántos quieres al mes. Cuantos más vídeos, menos pagas por cada uno.</p></div>
+      <p class="promo" id="promo" hidden><span class="pct">−10 %</span><span>con el código <code>KIRIA10</code> hasta el 30 de noviembre. Lo escribes en la página de pago.</span></p>
       <div class="types rv" id="types" role="tablist" aria-label="Tipo de vídeo">
         <button type="button" role="tab" aria-selected="true" data-t="0"><b>Básico</b><span>15–30 s</span><em>6,99 €</em></button>
         <button type="button" role="tab" aria-selected="false" data-t="1"><b>Publicidad</b><span>30–45 s</span><em>9,99 €</em></button>
@@ -1203,6 +1208,7 @@ footer a:hover { color: var(--nightfg); }
         </div>
         <label for="coCompany">Empresa (opcional)<input id="coCompany" name="empresa" autocomplete="organization"></label>
         <p class="paywith">Pagas con <b>tarjeta, Apple Pay o Google Pay</b> en la página segura de Stripe. ¿Tienes un código de descuento? Lo añades allí.</p>
+        <p class="paywith" id="coPromo" hidden>Hasta el 30 de noviembre, un <b>10 % menos</b> con el código <code>KIRIA10</code>: escríbelo en «Añadir código promocional» al pagar.</p>
         <button class="btn dark pay-btn" type="submit" id="coPay">Pagar 6,99 €</button>
         <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Pago seguro con Stripe: los datos de tu tarjeta los gestiona Stripe y nosotros nunca los vemos.</span></p>
         <div class="co-note" id="coNote" hidden>
@@ -2368,6 +2374,9 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     '0-1-0': 'https://buy.stripe.com/3cI8wPf004QlgT7gSpcZa00',      // Vídeo Básico · 1 vídeo · 6,99 € (Javi, 4-11-2026)
   };
   const KEY = 'kiria_carrito', MAXQ = 10, $ = id => document.getElementById(id);
+  // Código de descuento (Javi, 7-11-2026): KIRIA10, 10 %, hasta el 30-11-2026 (hora de Madrid). Se crea en Stripe (cupón + código promocional).
+  const PROMO = { code: 'KIRIA10', until: Date.parse('2026-12-01T00:00:00+01:00') }, promoOn = Date.now() < PROMO.until;
+  if (promoOn) { ['promo', 'coPromo'].forEach(id => { const e = $(id); if (e) e.hidden = false; }); }
   const list = $('coCart'), empty = $('coEmpty'), lines = $('coLines'), renew = $('coRenew'), btn = $('coPay'), note = $('coNote'), go = $('coGo'), form = $('coForm');
   const selT = $('coT'), selP = $('coP'), chk = $('coDif'), selW = $('coW'), badge = $('cartBtn'), badgeN = $('cartN');
   const okLine = l => !!l && ((l.k === 'v' && !!KT[l.t] && !!KP[l.pi]) || (l.k === 'w' && !!KW[l.w]));
@@ -2431,12 +2440,12 @@ const kCalc = (t, pi, dif) => { const p = KP[pi], full = p.n * KT[t].c, net = Ma
     if (!/^\S+@\S+\.\S+$/.test(em)) { mail.focus(); return; }
     try { localStorage.setItem('kiria_correo', em); const l0 = cart[0]; localStorage.setItem('kiria_compra', l0.k === 'w' ? 'Página web' : isPack(l0) ? 'Plan mensual de vídeos' : 'Vídeo ' + KT[l0.t].n); } catch (err) {}
     const tt = totals(), res = cart.map(l => { const x = info(l); return `${x.q > 1 ? x.q + ' × ' : ''}${x.name} (${x.det}): ${eurK(x.each * x.q)} €${x.month ? ' al mes' : ''}`; });
-    pedido = `Hola, soy ${nm}${emp ? ' de ' + emp : ''}. Mi pedido:\n- ${res.join('\n- ')}\nHoy: ${eurK(tt.hoy)} €${tt.mes ? ` · después, ${eurK(tt.mes)} € al mes` : ''}. Mi correo: ${em}`;
+    pedido = `Hola, soy ${nm}${emp ? ' de ' + emp : ''}. Mi pedido:\n- ${res.join('\n- ')}\nHoy: ${eurK(tt.hoy)} €${tt.mes ? ` · después, ${eurK(tt.mes)} € al mes` : ''}${promoOn ? ` (sin el 10 % del código ${PROMO.code})` : ''}. Mi correo: ${em}`;
     pedidoInfo = { subject: `Pedido (${eurK(tt.hoy)} €): ` + cart.map(l => info(l).name).join(' + '), message: pedido, name: nm, email: em };
     const fallback = code => {
       const ce = $('coErr'); ce.hidden = !code; ce.textContent = code ? 'Código: ' + code : '';
       const l = cart.length === 1 ? cart[0] : null, k = !l ? '' : l.k === 'w' ? 'web-' + l.w : `${l.t}-${KP[l.pi].n}-${l.dif ? 1 : 0}`;
-      if (!KPREVIEW && k && PAY_LINKS[k] && info(l).q === 1) { kiriaNotify(pedidoInfo); location.href = PAY_LINKS[k] + '?prefilled_email=' + encodeURIComponent(em); return; }
+      if (!KPREVIEW && k && PAY_LINKS[k] && info(l).q === 1) { kiriaNotify(pedidoInfo); location.href = PAY_LINKS[k] + '?prefilled_email=' + encodeURIComponent(em) + (promoOn ? '&prefilled_promo_code=' + PROMO.code : ''); return; }
       render(); note.hidden = false; note.scrollIntoView({ block: 'nearest', behavior: RM ? 'auto' : 'smooth' });
     };
     if (KPREVIEW) { fallback(); return; }
