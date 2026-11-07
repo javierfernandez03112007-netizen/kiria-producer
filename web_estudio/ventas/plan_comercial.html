@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Plan comercial · kiria.ai</title>
+<!-- Plan comercial de kiria.ai en PDF (7-11-2026). Mismo contenido que las páginas de Notion «🧭 Plan comercial · de la calle al cliente» y
+     «🤝 Visitas a empresas · guion y plan de clientes». PDF: node web_estudio/ventas/hacer_pdf.mjs → web_estudio/ventas/plan_comercial_kiria.pdf -->
+<style>
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Medium.otf'); font-weight: 400 500; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-SemiBold.otf'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Bold.otf'); font-weight: 700; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Black.otf'); font-weight: 800 900; }
+@font-face { font-family: 'Bebas'; src: url('../../engine/fonts/BebasNeue-Regular.ttf'); }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Regular.ttf'); font-weight: 400; }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Bold.ttf'); font-weight: 700; }
+:root { --ink: #0c0e12; --ink2: #3a404a; --muted: #6c737e; --line: #e2e3e6; --soft: #f5f6f8; --red: #e5243f; --violet: #8a4dff; --blue: #2f5bff;
+  --grad: linear-gradient(90deg, #ff4d61, #b45cff 55%, #4f7dff); }
+@page { size: A4; margin: 16mm 15mm 18mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.6pt; line-height: 1.5; color: var(--ink2); }
+h1, h2, h3 { color: var(--ink); margin: 0; }
+h2 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 25pt; letter-spacing: .4pt; line-height: 1; margin: 0 0 3mm; break-after: avoid; }
+h2 .n { color: var(--red); margin-right: 2.5mm; }
+h2::after { content: ''; display: block; width: 18mm; height: 1mm; border-radius: 1mm; background: var(--grad); margin-top: 2.2mm; }
+h3 { font-weight: 800; font-size: 11.5pt; margin: 4.5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.4mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 5.5mm; }
+li { margin: 0 0 1.3mm; }
+b, strong { color: var(--ink); font-weight: 700; }
+section { margin: 0 0 8mm; }
+section.page { break-before: auto; }
+section.cheatpage { break-before: page; }
+.cover { break-after: page; }
+.lab { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--muted); }
+.say { position: relative; margin: 1.5mm 0 3mm; padding: 3mm 4mm 3mm 6mm; background: var(--soft); border-radius: 2mm; color: var(--ink); break-inside: avoid; }
+.say::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1.3mm; border-radius: 2mm 0 0 2mm; background: var(--grad); }
+.say .who { display: block; font-family: 'Mono', monospace; font-size: 7pt; letter-spacing: 1pt; text-transform: uppercase; color: var(--red); margin-bottom: .8mm; }
+.note { margin: 2mm 0 3mm; padding: 2.5mm 4mm; border: .3mm dashed #c9ccd2; border-radius: 2mm; font-size: 9.6pt; break-inside: avoid; }
+.warn { border-color: var(--red); color: var(--ink); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.card { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4mm; break-inside: avoid; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 1mm 0 4mm; font-size: 9.6pt; break-inside: avoid; }
+th, td { text-align: left; padding: 1.8mm 2.5mm; border-bottom: .3mm solid var(--line); vertical-align: top; }
+th { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: .8pt; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+td b { white-space: nowrap; }
+.funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5mm; margin: 3mm 0 4mm; }
+.funnel div { padding: 2.5mm 2mm; border-radius: 2mm; color: #fff; font-weight: 700; font-size: 8.6pt; line-height: 1.25; text-align: center; min-height: 15mm; display: flex; flex-direction: column; justify-content: center; }
+.funnel small { display: block; font-weight: 500; opacity: .85; font-size: 7.2pt; margin-top: .8mm; }
+.check li { list-style: none; position: relative; padding-left: 1mm; }
+.check li::before { content: ''; position: absolute; left: -5mm; top: 1.2mm; width: 3mm; height: 3mm; border: .35mm solid var(--ink2); border-radius: .6mm; }
+.week td:first-child { width: 30mm; font-weight: 700; color: var(--ink); }
+/* portada */
+.cover { height: 263mm; display: flex; flex-direction: column; justify-content: space-between; padding: 6mm 2mm 2mm; }
+.brand { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); letter-spacing: .5pt; }
+.brand i { font-style: normal; color: var(--red); }
+.cover h1 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 66pt; line-height: .92; letter-spacing: .5pt; }
+.cover h1 span { color: var(--red); }
+.cover .bar { width: 34mm; height: 1.6mm; border-radius: 1mm; background: var(--grad); margin: 7mm 0 6mm; }
+.cover .sub { font-size: 13pt; max-width: 135mm; color: var(--ink2); }
+.toc { columns: 2; column-gap: 10mm; font-size: 10pt; padding: 0; list-style: none; }
+.toc li { break-inside: avoid; padding: 1.2mm 0; border-bottom: .3mm solid var(--line); }
+.toc li span { color: var(--red); font-weight: 700; margin-right: 2mm; }
+.foot { display: flex; justify-content: space-between; align-items: end; font-size: 9pt; color: var(--muted); }
+/* chuleta */
+.cheat { border: .5mm solid var(--ink); border-radius: 3mm; padding: 6mm 7mm; }
+.cheat h2 { font-size: 30pt; }
+.cheat ol > li { margin-bottom: 3mm; }
+.cheat .say { margin: 1mm 0 0; padding: 2mm 3mm 2mm 5mm; font-size: 9.8pt; }
+</style></head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <div class="brand">kiria<i>.</i>ai</div>
+  <div>
+    <p class="lab">Plan comercial · Motril, Granada y la costa</p>
+    <h1>De la calle<br>al <span>cliente</span></h1>
+    <div class="bar"></div>
+    <p class="sub">Paso a paso: a qué negocios ir, cómo preparar cada visita, qué decir en persona, por teléfono y por mensaje, cómo cerrar, cómo entregar y cómo hacer que repitan y te recomienden.</p>
+  </div>
+  <div>
+    <ol class="toc">
+      <li><span>0</span>El camino del cliente</li><li><span>1</span>A qué negocios ir</li><li><span>2</span>La noche antes</li>
+      <li><span>3</span>Lo que llevas y antes de salir</li><li><span>4</span>Cómo explicarlo</li><li><span>5</span>La visita en persona</li>
+      <li><span>6</span>Objeciones</li><li><span>7</span>Llamadas por teléfono</li><li><span>8</span>Mensajes</li>
+      <li><span>9</span>La propuesta por escrito</li><li><span>10</span>Cierre y cobro</li><li><span>11</span>Entrega, repetir y recomendar</li>
+      <li><span>12</span>Los números (KPI)</li><li><span>13</span>Lo que decides tú</li><li><span>14</span>Tu semana</li>
+      <li><span>★</span>Chuleta de una página</li>
+    </ol>
+    <div class="foot"><span>kiriaai.com · @kiria.ai · kiriaai2026@gmail.com</span><span>7 de noviembre de 2026</span></div>
+  </div>
+</div>
+
+<!-- 0 -->
+<section class="page">
+  <h2><span class="n">0</span>El camino del cliente</h2>
+  <p>Una venta pasa por 6 escalones. Cada uno es un estado en la tabla <b>«🎯 Empresas · leads»</b> de Notion: así sabes en qué punto está cada negocio y dónde se pierde la gente.</p>
+  <div class="funnel">
+    <div style="background:#9aa0a8">Por visitar<small>lista hecha</small></div>
+    <div style="background:#6c737e">Visitada<small>habló contigo</small></div>
+    <div style="background:#2f5bff">Probó la web<small>vio su producto en 3D</small></div>
+    <div style="background:#8a4dff">Propuesta enviada<small>idea + precio</small></div>
+    <div style="background:#e5243f">Cliente<small>pagó</small></div>
+    <div style="background:#0c0e12">Repite<small>plan o 2.ª compra</small></div>
+  </div>
+  <p>Además de cada estado, se apunta la <b>temperatura</b>:</p>
+  <ul>
+    <li><b>Frío:</b> no nos conoce o no ha mostrado interés.</li>
+    <li><b>Templado:</b> nos conoce, ha visto la web y necesita más información.</li>
+    <li><b>Caliente:</b> quiere el vídeo y solo falta cerrarlo.</li>
+  </ul>
+  <p>El trabajo consiste en subir la temperatura educando: datos, ejemplos y una idea concreta para su negocio, nunca con presión.</p>
+  <h3>Objetivo orientativo de la primera semana</h3>
+  <p><b>100 tarjetas → 60 conversaciones → 20 cualificados → 8 prueban la web → 2–4 clientes.</b> Es una referencia para empezar; con tus datos reales se ajusta. Lo importante es apuntarlo todo, también los «no».</p>
+
+  <h2 style="margin-top:8mm"><span class="n">1</span>A qué negocios ir</h2>
+  <div class="card"><h3>El cliente ideal tiene estas 4 cosas</h3>
+  <ol>
+    <li>Vende algo que <b>se ve</b>: un producto, un plato, un local bonito o un antes y después.</li>
+    <li>Ya tiene Instagram, pero <b>publica poco</b> o con fotos y vídeos flojos.</li>
+    <li>El <b>dueño está</b> en el negocio: es pequeño y no es una franquicia.</li>
+    <li>Puede gastar <b>entre 7 y 100 € al mes</b> en darse a conocer.</li>
+  </ol></div>
+  <div class="cols" style="margin-top:4mm">
+    <div class="card"><h3>Prioridad A · empieza por aquí</h3><ul>
+      <li><b>Pastelerías, panaderías y obradores.</b> Navidad es su mejor momento: roscones, dulces, cajas regalo.</li>
+      <li><b>Restaurantes y bares con cocina propia.</b> Un plato en 3D llama muchísimo la atención.</li>
+      <li><b>Tiendas locales</b> de regalo, moda, decoración, joyería o vinos. Black Friday (27 de noviembre) y Navidad.</li>
+      <li><b>Clínicas estéticas, dentales y fisios; peluquerías y barberías.</b> Viven de Instagram.</li>
+      <li><b>Inmobiliarias.</b> Un piso en 3D se ve mejor que diez fotos.</li>
+      <li><b>Gimnasios, pilates o yoga, academias y autoescuelas.</b> En Granada hay muchísimos estudiantes, justo nuestro público.</li>
+    </ul></div>
+    <div class="card"><h3>Prioridad B</h3><ul>
+      <li>Hoteles y apartamentos turísticos de la costa.</li>
+      <li>Ópticas, floristerías, talleres y concesionarios.</li>
+      <li>Productores de la Costa Tropical (aguacate, chirimoya, mango) y almazaras: venden fuera y necesitan vídeo de producto.</li>
+    </ul>
+    <h3>Al principio, mejor no</h3><ul>
+      <li>Franquicias y cadenas: la publicidad la deciden en su central.</li>
+      <li>Bancos y organismos públicos.</li>
+      <li>Negocios sin Instagram que no quieren tenerlo.</li>
+    </ul></div>
+  </div>
+  <h3>Dónde</h3>
+  <p>En cada ciudad, las calles de tiendas del centro y las zonas de bares.</p>
+  <ul>
+    <li><b>Granada:</b> por ejemplo Recogidas, Mesones, Puentezuelas, Gran Vía, el Realejo, el Zaidín y la zona de estudiantes (Pedro Antonio de Alarcón y Camino de Ronda).</li>
+    <li><b>Motril:</b> el centro y la zona de playa (Playa Granada, Poniente).</li>
+  </ul>
+  <p>Agrupa las visitas por calle para hacer 8–10 por hora.</p>
+</section>
+
+<!-- 2 y 3 -->
+<section class="page">
+  <h2><span class="n">2</span>La noche antes · 30 minutos</h2>
+  <ol>
+    <li>Elige una zona y apunta en la tabla <b>20–30 negocios</b> con estado <b>Por visitar</b>: nombre, sector, zona, prioridad, su Instagram y el teléfono del negocio (sale en Google Maps).</li>
+    <li>Mira su Instagram un minuto: ¿cuándo publicó por última vez? ¿tiene vídeos? ¿qué es lo que más vende?</li>
+    <li>Escribe en <b>«Idea de vídeo»</b> una frase con lo que harías. Por ejemplo: «el roscón se abre en capas y sale la sorpresa» o «la puerta del piso se abre y la cámara entra volando». Con esa frase la visita deja de ser genérica. Si me pasas la lista, te escribo yo las ideas.</li>
+    <li>Ordena la ruta para no volver sobre tus pasos y empieza por los de prioridad A.</li>
+  </ol>
+
+  <h2 style="break-before:page"><span class="n">3</span>Lo que llevas y antes de salir</h2>
+  <div class="cols">
+    <div class="card"><h3>En el bolsillo</h3><ul>
+      <li>Tarjetas (el QR abre kiriaai.com) y un bolígrafo.</li>
+      <li>Móvil cargado y una batería.</li>
+      <li>En la galería, 3 vídeos para enseñarlos sin cobertura: <b>Derecho</b> (887.817 visualizaciones), <b>el perro robot</b> y <b>«Producto en 3D»</b> (nuestro anuncio, unas 2.300).</li>
+      <li>Tu frase de presentación aprendida de memoria.</li>
+      <li>Ropa sencilla y cuidada. Sonríe, ve al grano y respeta su tiempo: si hay clientes esperando, «vuelvo en diez minutos».</li>
+    </ul></div>
+    <div class="card"><h3>Comprobado antes de salir</h3><ul class="check">
+      <li>Escaneo el QR de una tarjeta y abre kiriaai.com.</li>
+      <li>He probado en mi móvil «¿Vendes productos?» (subes una foto y sale en 3D) e «Imagina la tuya».</li>
+      <li>He mandado un mensaje de prueba con el formulario de la web. Si llegó un correo de FormSubmit, pulsé «Activate Form».</li>
+      <li>KIRIA10 está creado en Stripe como <b>código de promoción</b> y lo he probado en la página de pago.</li>
+      <li>La lista del día está en la tabla, con su idea de vídeo.</li>
+    </ul></div>
+  </div>
+  <h3>Horas</h3>
+  <ul>
+    <li><b>Tiendas y servicios:</b> de 10:30 a 13:00 y de 17:00 a 19:30.</li>
+    <li><b>Bares y restaurantes:</b> de 11:00 a 12:30 y de 16:30 a 19:00.</li>
+    <li>Nunca a la hora de comer ni de cenar.</li>
+    <li>El sábado por la tarde muchas tiendas cierran: mejor por la mañana.</li>
+  </ul>
+
+  <h2 style="margin-top:8mm"><span class="n">4</span>Cómo explicarlo</h2>
+  <p class="lab">En una frase</p>
+  <div class="say">«Hacemos vídeos en 3D para las redes de tu negocio, con inteligencia artificial y sin tener que grabar nada.»</div>
+  <p class="lab">En tres frases</p>
+  <div class="say">«Nos mandas una foto de tu producto o de tu local, o nos cuentas qué quieres anunciar. En un plazo de 12 a 72 horas te mandamos el vídeo listo para subirlo a Instagram, TikTok o WhatsApp. Lo diseñamos para que la gente se pare a verlo, no para que parezca un anuncio más.»</div>
+  <p class="lab">Cómo funciona, en 3 pasos</p>
+  <ol>
+    <li>Eliges el vídeo en kiriaai.com y lo pagas, o te mando el enlace de pago.</li>
+    <li>Me mandas las fotos y me dices qué quieres contar.</li>
+    <li>En 12–72 horas tienes el vídeo y lo subes tú. Si quieres más alcance, también lo publicamos en kiria.ai (difusión: +2 € por vídeo, identificado como publicidad).</li>
+  </ol>
+</section>
+
+<!-- precios y preguntas -->
+<section>
+  <h3>Precios (por si preguntan)</h3>
+  <table>
+    <tr><th>Vídeo</th><th>Duración</th><th>Suelto</th><th>4 al mes (−10 %)</th><th>10 al mes (−12 %)</th><th>1 al día (−15 %)</th></tr>
+    <tr><td><b>Básico</b></td><td>15–30 s</td><td>6,99 €</td><td>25,16 €/mes</td><td>61,51 €/mes</td><td>178,25 €/mes</td></tr>
+    <tr><td><b>Publicidad</b></td><td>30–45 s</td><td>9,99 €</td><td>35,96 €/mes</td><td>87,91 €/mes</td><td>254,75 €/mes</td></tr>
+    <tr><td><b>Completo</b></td><td>45 s – 1 min</td><td>13,99 €</td><td>50,36 €/mes</td><td>123,11 €/mes</td><td>356,75 €/mes</td></tr>
+    <tr><td><b>Pro</b></td><td>más de 1 min</td><td>16,99 €</td><td>61,16 €/mes</td><td>149,51 €/mes</td><td>433,25 €/mes</td></tr>
+  </table>
+  <p>Hay otros dos servicios:</p>
+  <ul>
+    <li><b>Difusión en kiria.ai:</b> +2 € por vídeo.</li>
+    <li><b>Webs:</b> 250 € con sus fotos o 350 € con fotos nuestras.</li>
+  </ul>
+  <p>Hasta el 30 de noviembre, el código <b>KIRIA10</b> da un 10 % menos en la página de pago, a todo el carrito.</p>
+  <h3>Preguntas típicas</h3>
+  <table>
+    <tr><td style="width:46mm"><b>«¿Qué es un vídeo en 3D?»</b></td><td>«Tu producto o tu local con movimiento de cámara, luz y efectos, como en un anuncio de la tele. Mira [enseñas el del robot].»</td></tr>
+    <tr><td><b>«¿Tengo que grabar algo?»</b></td><td>«No. Con una foto basta.»</td></tr>
+    <tr><td><b>«¿Lo subís a mi cuenta?»</b></td><td>«Te lo damos listo para subir. Si quieres más alcance, lo publicamos también en kiria.ai.»</td></tr>
+    <tr><td><b>«¿Se nota que es IA?»</b></td><td>«Se hace con IA, pero el diseño lo hacemos a mano, con tu producto real.»</td></tr>
+    <tr><td><b>«¿Cuánto tarda?»</b></td><td>«Entre 12 y 72 horas desde que lo pides.»</td></tr>
+    <tr><td><b>«¿Y si no me gusta?»</b></td><td>Depende de la garantía que decidas (apartado 13).</td></tr>
+  </table>
+</section>
+
+<!-- 5 -->
+<section class="page">
+  <h2><span class="n">5</span>La visita en persona · 3 a 5 minutos</h2>
+  <h3>1 · Entrada (10 segundos)</h3>
+  <div class="say"><span class="who">Tú</span>«Hola, ¿está el dueño o quien lleva el Instagram? Soy Javi, de kiria.ai, un estudio de vídeo de aquí. He visto vuestro Instagram y tengo una idea para un vídeo de [producto]. Te robo dos minutos.»</div>
+  <p>Si no está quien decide: «¿Cuándo le puedo pillar?». Dejas la tarjeta y lo apuntas como <b>Visitada · Frío</b>, con la fecha para volver.</p>
+  <h3>2 · Cualificar (3 preguntas)</h3>
+  <div class="say"><span class="who">Tú</span>«¿Quién os lleva las redes?» · «¿Os llega gente por Instagram?» · «¿Habéis pagado alguna vez publicidad o a alguien para las redes?»</div>
+  <p>Si decide, vende algo visual y le importa conseguir clientes por redes: <b>Cualificado: Sí</b>. Si no, tarjeta, una sonrisa y <b>No por ahora</b>. Aunque no compre, puede recomendarte.</p>
+  <h3>3 · Educar con datos (30 segundos, con el móvil en la mano)</h3>
+  <div class="say"><span class="who">Tú</span>«Mira: este vídeo lo hicimos nosotros y tiene casi 900.000 visualizaciones. Este otro, el anuncio de nuestra propia empresa, poco más de 2.000. La diferencia es el primer segundo: si no sorprende, la gente pasa e Instagram deja de enseñarlo. A casi todos los negocios les pasa con sus vídeos. En total, nuestros vídeos suman más de 3 millones de visualizaciones.»</div>
+  <p class="note">Datos de Metricool del 6 de noviembre:</p>
+  <ul>
+    <li><b>Derecho:</b> 887.817 visualizaciones. El 75 % de la gente se queda más de 3 segundos.</li>
+    <li><b>Nuestro anuncio:</b> 2.325 visualizaciones. Se queda el 38 %.</li>
+    <li><b>Toda la cuenta:</b> 3,2 millones de visualizaciones.</li>
+  </ul>
+  <p>Di siempre <b>«visualizaciones»</b>, no «personas».</p>
+  <h3>4 · Demostración en SU móvil (1 minuto)</h3>
+  <div class="say"><span class="who">Tú</span>«Escanea el código. Entra en "¿Vendes productos?", hazle una foto a [producto] y mira.»</div>
+  <p>Lo verá en 3D: en caja, bolsa, bote, botella, lata o taza. Si no vende productos, usa «Imagina la tuya»: escribe el nombre de su negocio. Mientras lo mira, dile: «Esto, en vídeo, es lo que haríamos para ti». La web le queda guardada en el móvil y luego vuelve a ella.</p>
+  <h3>5 · Propuesta y cierre</h3>
+  <p>La propuesta, con tus 5 puntos:</p>
+  <ul>
+    <li><b>Por qué:</b> un vídeo en 3D que para el dedo.</li>
+    <li><b>A quién va:</b> a sus clientes de redes, WhatsApp y web.</li>
+    <li><b>Qué consigue:</b> que la gente se pare a verlo. No prometas visitas ni ventas.</li>
+    <li><b>En cuánto tiempo:</b> de 12 a 72 horas.</li>
+    <li><b>Garantía:</b> la que decidas.</li>
+  </ul>
+  <div class="say"><span class="who">Tú</span>«Para [negocio] haría un vídeo de 30 segundos que empiece con [tu idea de vídeo]. Lo tienes en 12 a 72 horas, cuesta 9,99 € y hasta el día 30 tienes un 10 % con el código KIRIA10. ¿Lo dejamos en marcha? Lo pides ahora en la web, en "Precios".»</div>
+  <p><b>Si duda:</b> «Sin prisa. Dame tu Instagram o tu correo y te mando la idea por escrito». Apunta <b>Probó la web · Templado</b> y la fecha del siguiente paso.</p>
+  <p><b>Si no:</b> «Quédate la tarjeta por si alguien que conozcas lo necesita». Y te vas con buena cara.</p>
+  <p><b>Gancho de temporada:</b> «¿Tenéis vídeo para Black Friday (27 de noviembre) o para Navidad?»</p>
+</section>
+
+<!-- 6 y 7 -->
+<section class="page">
+  <h2><span class="n">6</span>Objeciones</h2>
+  <table>
+    <tr><th style="width:52mm">Si te dice…</th><th>Respondes…</th></tr>
+    <tr><td><b>«No tengo tiempo para redes»</b></td><td>«Por eso mismo: tú me mandas una foto y yo te lo hago. Tú solo lo subes.»</td></tr>
+    <tr><td><b>«Ya lo lleva alguien»</b></td><td>«Genial, esto se suma: un vídeo en 3D que no se puede grabar con el móvil.»</td></tr>
+    <tr><td><b>«Es caro» / «No sé si funcionará»</b></td><td>«Empieza con uno: 9,99 €, y con KIRIA10 menos. Si funciona, seguimos.»</td></tr>
+    <tr><td><b>«Ahora no es buen momento»</b></td><td>«¿Te viene mejor para Navidad? Ese vídeo hay que tenerlo antes del día 15.»</td></tr>
+    <tr><td><b>«Mándamelo por WhatsApp»</b></td><td>Mejor por su Instagram desde @kiria.ai o por correo. Así no das tu número personal.</td></tr>
+    <tr><td><b>«Lo hablo con mi socio»</b></td><td>«Perfecto. ¿Os mando la idea por escrito para que la veáis juntos? ¿Os llamo el jueves?»</td></tr>
+    <tr><td><b>«¿Es inteligencia artificial? Que no parezca falso»</b></td><td>«Se hace con IA, pero lo diseñamos a mano con tu producto real. Mira este.»</td></tr>
+  </table>
+
+  <h2 style="margin-top:8mm"><span class="n">7</span>Llamadas por teléfono</h2>
+  <p><b>Cuándo llamar:</b> de 10:00 a 12:30 y de 16:30 a 18:30, nunca a la hora de comer.</p>
+  <p><b>Si no contesta:</b> como mucho 2 llamadas y un mensaje. Después, <b>No por ahora</b>.</p>
+  <h3>A · Llamada en frío (negocios a los que no llegas en persona)</h3>
+  <p>El objetivo no es vender, sino conseguir permiso para mandar un ejemplo.</p>
+  <div class="say"><span class="who">Tú</span>«Hola, ¿hablo con [negocio]? Soy Javi, de kiria.ai, un estudio de vídeo de Motril. Te llamo un minuto: he visto vuestro Instagram y tengo una idea para un vídeo de [producto]. ¿Eres tú quien lleva las redes? … Hacemos vídeos en 3D con inteligencia artificial a partir de una foto, sin grabar nada. ¿Te mando un ejemplo por Instagram o por correo y lo ves con calma? … Perfecto, te lo mando hoy. ¿A qué nombre?»</div>
+  <p>Apunta: canal «Otro», <b>Templado</b>, el contacto y «mandar ejemplo hoy».</p>
+  <h3>B · Llamada de seguimiento (2–5 días después de la visita)</h3>
+  <div class="say"><span class="who">Tú</span>«Hola [nombre], soy Javi, de kiria.ai, el que pasó el sábado con las tarjetas. ¿Pudiste ver tu producto en 3D en la web? … Te he preparado la idea: [idea]. Son 30 segundos, lo tienes en 72 horas y hasta el día 30 tienes un 10 % con KIRIA10. ¿Lo dejamos en marcha? Te mando ahora el enlace y lo pagas cuando quieras.»</div>
+  <h3>C · Llamada después de entregar (a los 7 días)</h3>
+  <div class="say"><span class="who">Tú</span>«¿Qué tal ha funcionado el vídeo? ¿Lo has subido? … Si quieres, te preparo uno a la semana: con el plan de 4 vídeos al mes cada uno te sale más barato y no tienes que pensar qué publicar.»</div>
+</section>
+
+<!-- 8 y 9 -->
+<section class="page">
+  <h2><span class="n">8</span>Mensajes (Instagram @kiria.ai o correo)</h2>
+  <table>
+    <tr><th style="width:32mm">Cuándo</th><th>Mensaje</th></tr>
+    <tr><td><b>Antes de la visita</b> (opcional)</td><td>«Hola, soy Javi, de kiria.ai, un estudio de vídeo de [Motril/Granada]. Me encanta vuestro [producto]. Tengo una idea para un vídeo en 3D; ¿os paso a enseñárosla esta semana?»</td></tr>
+    <tr><td><b>El mismo día</b></td><td>«Encantado de conocerte hoy en [negocio]. Te dejo la web: kiriaai.com. En "¿Vendes productos?" ves tu producto en 3D con una foto.»</td></tr>
+    <tr><td><b>A los 2 días</b></td><td>«He pensado cómo empezaría el vídeo de [negocio]: [idea]. ¿Te lo preparo?»</td></tr>
+    <tr><td><b>A los 5 días</b></td><td>La propuesta por escrito (apartado 9). Estado: <b>Propuesta enviada</b>.</td></tr>
+    <tr><td><b>A los 10 días</b></td><td>«Lo dejo aquí para no molestarte. Cuando quieras probar, la web es kiriaai.com.» Si no contesta: <b>No por ahora</b>.</td></tr>
+  </table>
+
+  <h2 style="break-before:page"><span class="n">9</span>La propuesta por escrito</h2>
+  <p>La mandas a los templados y a los calientes. Si se lo pides, Claude te la prepara para cada negocio.</p>
+  <div class="card">
+    <p class="lab">Propuesta para [negocio]</p>
+    <table style="margin:0">
+      <tr><td style="width:34mm"><b>Qué</b></td><td>Un vídeo en 3D de [producto o local], de [30] segundos, que empieza con [idea].</td></tr>
+      <tr><td><b>Por qué</b></td><td>Los vídeos que sorprenden en el primer segundo son los que Instagram enseña. Los que parecen anuncio, la gente los pasa.</td></tr>
+      <tr><td><b>Para quién</b></td><td>Tus clientes de Instagram, TikTok y WhatsApp. Te vale también para tu web.</td></tr>
+      <tr><td><b>Qué consigues</b></td><td>Un vídeo profesional para enseñar [lo que vende] sin grabar nada.</td></tr>
+      <tr><td><b>Plazo</b></td><td>De 12 a 72 horas desde el pedido.</td></tr>
+      <tr><td><b>Precio</b></td><td>[9,99 €]. Con KIRIA10, un 10 % menos hasta el 30 de noviembre.</td></tr>
+      <tr><td><b>Garantía</b></td><td>[La que decidas].</td></tr>
+      <tr><td><b>Cómo empezar</b></td><td>kiriaai.com → Precios → [tipo de vídeo] → Pagar. O dime «adelante» y te mando el enlace.</td></tr>
+    </table>
+  </div>
+
+  <h2 style="margin-top:8mm"><span class="n">10</span>Cierre y cobro</h2>
+  <ul>
+    <li>El cliente paga en kiriaai.com (Precios → carrito → Pagar) y escribe <b>KIRIA10</b> en la página de Stripe («Añadir código promocional»).</li>
+    <li>Si lo prefiere, le mandas el enlace de pago. O te manda el pedido por correo desde la web y le contestas con el enlace.</li>
+    <li>Nada más pagar, pídele:
+      <ul>
+        <li>fotos del producto o del local (varias y con buena luz);</li>
+        <li>el logo;</li>
+        <li>qué quiere contar;</li>
+        <li>la oferta, si la hay;</li>
+        <li>dónde lo va a publicar.</li>
+      </ul></li>
+    <li>En la tabla: <b>Cliente</b>, el producto y el importe en «Ingresos (€)».</li>
+  </ul>
+</section>
+
+<!-- 11 y 12 -->
+<section class="page">
+  <h2><span class="n">11</span>Entrega, que repita y que te recomiende</h2>
+  <ul>
+    <li><b>Entrega en plazo</b> (de 12 a 72 horas). Con el vídeo, mándale el enlace para valorar: <b>kiriaai.com/#valorar</b>.</li>
+    <li><b>A la semana</b>, la llamada C. Si le ha ido bien, ofrécele el plan mensual: es el paso del ticket bajo al medio.</li>
+    <li><b>Recomendaciones</b>, en el mejor momento, cuando le gusta el vídeo: «¿Conoces otro negocio al que le vendría bien? Si compra, te regalo [premio]». En la tabla: canal <b>Recomendación</b> y «Recomendado por».</li>
+    <li><b>Impactos:</b> en cada fecha importante (Black Friday, Navidad, rebajas, temporada de playa), un mensaje con una idea de vídeo para su negocio.</li>
+  </ul>
+  <div class="funnel" style="grid-template-columns: repeat(3, 1fr)">
+    <div style="background:#2f5bff">Ticket bajo<small>un vídeo suelto · de 6,99 a 16,99 €</small></div>
+    <div style="background:#8a4dff">Ticket medio<small>plan mensual (+ difusión en kiria.ai)</small></div>
+    <div style="background:#e5243f">Ticket alto<small>web del negocio (250–350 €) o web con sus productos en 3D (a medida)</small></div>
+  </div>
+
+  <h2 style="margin-top:8mm"><span class="n">12</span>Los números (KPI)</h2>
+  <p>Cada lunes, una fila en <b>«📊 KPI semanales · ventas»</b> de Notion. La conversión, el coste por cliente y el ticket medio se calculan solos.</p>
+  <table>
+    <tr><th style="width:46mm">Número</th><th>Qué es y de dónde sale</th></tr>
+    <tr><td><b>Leads</b></td><td>Negocios nuevos en la tabla de empresas, por canal y por zona.</td></tr>
+    <tr><td><b>Cualificados</b></td><td>Los que tienen «Cualificado: Sí».</td></tr>
+    <tr><td><b>Conversión</b></td><td>Clientes nuevos ÷ leads.</td></tr>
+    <tr><td><b>Coste por cliente (CAC)</b></td><td>Lo gastado en conseguirlos (tarjetas, gasolina, publicidad) ÷ clientes nuevos.</td></tr>
+    <tr><td><b>Ticket medio</b></td><td>Ingresos ÷ clientes nuevos.</td></tr>
+    <tr><td><b>Lo que deja cada cliente</b></td><td>La suma de todo lo que te ha comprado (columna «Ingresos»).</td></tr>
+    <tr><td><b>Suscripciones y bajas</b></td><td>En Stripe, en la parte de facturación y suscripciones: cuántos planes mensuales hay activos y cuántos se han dado de baja.</td></tr>
+    <tr><td><b>Visitas a la web</b></td><td>Activar «Web Analytics» de Cloudflare en el proyecto kiriaai. Es gratis y no usa cookies. Hoy todavía no lo medimos.</td></tr>
+  </table>
+
+  <h2 style="margin-top:8mm"><span class="n">13</span>Lo que decides tú</h2>
+  <ol>
+    <li><b>Garantía.</b> Propuesta: «si no te convence, lo cambiamos una vez sin coste».</li>
+    <li><b>Premio por recomendar.</b> Propuesta: un vídeo Básico gratis por cada negocio que compre.</li>
+    <li><b>Muestras.</b> Propuesta: para todos, la demo de la web (gratis y al momento). Un vídeo a medida de prueba, solo para los muy interesados.</li>
+  </ol>
+  <p class="note warn">Hasta que lo decidas, no prometas garantía ni premio a nadie.</p>
+
+  <h2 style="break-before:page"><span class="n">14</span>Tu semana</h2>
+  <table class="week">
+    <tr><td>Lunes</td><td>Una fila en KPI semanales y la lista de la semana: 20–30 negocios por zona, con su idea de vídeo.</td></tr>
+    <tr><td>Martes a sábado</td><td>Dos salidas al día (de 10:30 a 13:00 y de 16:30 a 19:30) y 30 minutos de llamadas y mensajes de seguimiento.</td></tr>
+    <tr><td>Cada noche</td><td>10 minutos: actualizas la tabla y filtras por «Próximo paso el = mañana». Ya sabes a quién llamar.</td></tr>
+    <tr><td>Cada viernes</td><td>Miras dónde se pierde la gente (¿visitan pero no prueban la web? ¿prueban pero no compran?) y la semana siguiente cambias solo una cosa.</td></tr>
+  </table>
+</section>
+
+<!-- CHULETA -->
+<section class="cheatpage">
+  <div class="cheat">
+    <p class="lab">Chuleta · para llevar en la mano</p>
+    <h2>La visita en 5 pasos</h2>
+    <ol>
+      <li><b>Entrada.</b><div class="say">«¿Está el dueño o quien lleva el Instagram? Soy Javi, de kiria.ai. He visto vuestro Instagram y tengo una idea para un vídeo de [producto]. Dos minutos.»</div></li>
+      <li><b>Tres preguntas.</b><div class="say">¿Quién os lleva las redes? · ¿Os llega gente por Instagram? · ¿Habéis pagado alguna vez publicidad?</div></li>
+      <li><b>Datos con el móvil.</b><div class="say">Derecho: casi 900.000 visualizaciones. Nuestro anuncio: poco más de 2.000. «La diferencia es el primer segundo.»</div></li>
+      <li><b>Demo en su móvil.</b><div class="say">QR → «¿Vendes productos?» → foto de su producto → lo ve en 3D. Sin productos: «Imagina la tuya».</div></li>
+      <li><b>Propuesta y cierre.</b><div class="say">«Un vídeo de 30 s que empieza con [idea], en 12–72 h, 9,99 € y con KIRIA10 un 10 % menos hasta el día 30. ¿Lo dejamos en marcha?» Si duda: su Instagram o correo y la idea por escrito.</div></li>
+    </ol>
+    <div class="cols" style="margin-top:4mm">
+      <div><p class="lab">Apuntar siempre</p><p>Empresa · estado · temperatura · cualificado · contacto · próximo paso y su fecha. También los «no».</p></div>
+      <div><p class="lab">Seguimiento</p><p>El mismo día: web. A los 2 días: idea. A los 5: propuesta. A los 10: cierre amable. Como mucho 2 llamadas.</p></div>
+    </div>
+  </div>
+</section>
+
+</body></html>
