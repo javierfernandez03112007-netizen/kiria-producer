@@ -239,6 +239,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   publicación vía Metricool **solo tras revisión de Javi** al principio. Conectores sugeridos: Metricool y vidIQ (claude.ai → conectores).
 
 ## Negocio (vender vídeos a empresas)
+- **Cambio de plan (Javi, 6/7-11-2026)**: el público de la cuenta son jóvenes y estudiantes (69 % Latinoamérica) y así no llegan
+  empresas; el contenido debe atraer a dueños de pequeños negocios (lo que funciona en redes con nuestros datos, negocios por dentro,
+  noticias que les afectan, casos reales de la zona). Sus 6 pasos para escalar: adquisición (orgánico, colaboraciones, puerta a puerta,
+  publicidad; audiencia fría → templada con educación), autoridad (discurso, lo que dicen otros, casos de éxito), conversión
+  (cualificar, educar, propuesta: por qué, a quién, qué consigue, en cuánto tiempo y garantía; cierre como consecuencia natural),
+  entrega y retención (low → mid → high ticket), recomendaciones con premio y números (leads, coste por cliente, lo que deja cada
+  cliente, suscripciones y bajas: «MUY IMPORTANTE»). Javi reparte ≈ 100 tarjetas en Motril y Granada desde el 7-11.
+  En Notion (Centro de producción): «🤝 Visitas a empresas · guion y plan de clientes» (guion de 5 pasos con la demo de la web en el
+  móvil del cliente, objeciones, mensajes de seguimiento a los 0/2/5/10 días, escalera de precios, recomendaciones y KPI),
+  «🎯 Empresas · leads» (`collection://6e34e876-1fb1-4d5f-bc2c-7a87fd7e0791`) y «📊 KPI semanales · ventas»
+  (`collection://7b8bc88a-bf52-436b-bf42-ba1207508d5a`). Pendiente de Javi: la garantía, el premio por recomendar y si hay muestras gratis.
+  Decir siempre «visualizaciones», no «personas» (Derecho: 887.817 visualizaciones, 733.000 personas).
 - Web del estudio: `web_estudio/` (ver su `README.md`; v1 oscura en la rama `web-estudio-v1`). Vista previa privada:
   https://claude.ai/artifact/31hjcpiCg4H1Wdvx2Qb8vy. **v2 (1-11-2026, noche)**: portada blanca con cabeza humana (cerebro
   rojo) y cabeza de IA (azul) que se juntan y explotan al deslizar; globo 3D con arcos desde España («De España, para todo
