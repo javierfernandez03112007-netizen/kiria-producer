@@ -101,5 +101,11 @@ todo lo necesario para profesionalizarla».
 
     #robots #ciencia #neurociencia #inteligenciaartificial #curiosidades
     ```
+12. **ADE «no tiene salidas»**
+    ```
+    🎓 ADE es la carrera que más piden las empresas… y aun así, de los que trabajan, solo 4 de cada 10 tienen un puesto de universitario. La trampa: muchas salidas tienen su propia cerradura 🔐 ¿Auditoría o banca? 👇
+
+    #ADE #carreras #universidad #empleo #estudiantes
+    ```
 No subir a TikTok los dos vídeos de lanzamiento («Ni una sola cámara» y «Tu producto, en 3D»): dicen «comenta KIRIA» y «el domingo»,
 que ya no valen.

@@ -108,6 +108,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   brillante con cada luz puntual (el marco de la pantalla): sin clearcoat; (5) **al unir los módulos chocan los nombres** (`PR` es la
   resolución, `PL` los colores, `burst`, `TEAL` ya existen): comprobar duplicados antes de probar; (6) el cerebro se lee como cerebro visto
   desde arriba: dos hemisferios con la cara de dentro plana y un sombreador que brilla en los surcos (donde el ruido cruza 0) y en el borde.
+- **ADE «no tiene salidas»** (`projects/ade/`, 7-11-2026): Javi: «un vídeo potencial muy potencial […] algo muy controversial como ADE,
+  el falso humo de que ADE no tiene salidas». Guion primero (159 palabras) → su MP3 (63,7 s) → Parakeet + `ajustar_voz.py` solo con las
+  pausas recortadas, sin acelerar: 58,0 s (vídeo de 59 s en bucle exacto). Datos: Infoempleo Adecco (ADE 3,67 % de las ofertas frente a
+  1,57 % de la segunda), U-Ranking 2026 (80,3 % trabajando, 42,1 % con puesto de universitario, 32.427 €, 14.988 graduados), Ley 22/2015,
+  CNMV GT 4/2017 y la oposición de Inspector de Hacienda (CONFIRMAR U-Ranking y que no hay ranking de Infoempleo de 2026 con otro orden).
+  Escena: maqueta de un edificio de oficinas cuya fachada se abre con «Ahora, lo feo»; lluvia de ofertas «ADE» desde el primer fotograma y
+  la señal verde de SALIDA que se apaga («no tiene salidas») y se enciende («Salidas tiene»); torres de folios con una torre fantasma («el
+  doble… y no llega»); 100 figuritas (entran 80; 34 suben en un ascensor de cristal a despachos dorados; a 46 se les cae el birrete);
+  700 graduados nuevos; tres despachos con su cerradura (calendario de 3 años y examen, certificado, temario); la llave «ADE» que no gira
+  en ninguna y abre el portal; candados en cascada; escalera «ATAJO» que se tacha y se cae; pregunta «¿Auditoría o banca?».
+  Render: 0–420 aquí + las 6 máquinas del robot (ramas `render-ade-1…6`). Lecciones: (1) **un reinicio del proceso de la sesión mata
+  los renders en segundo plano**: lanzarlos con `setsid nohup …`, comprobar con `pgrep` al volver y relanzar (`SKIP=1` reanuda);
+  (2) bucle con lluvia: la lluvia empieza antes del 0 (inicios entre −1,6 y 1,8 s) y al final los folios pasan de las torres a la lluvia
+  cuando la cámara ya no ve las torres; (3) en vertical no cabe un edificio con 4 despachos por planta: 3 por planta (0,78 de ancho) y la
+  cámara a ≈ 2,4; (4) una llave vista a lo largo de su eje se ve de canto: el ojo se gira hacia la cámara en cada fotograma.
 - **Anuncio de la web «¿Qué hace que alguien se pare?»** (`projects/promo_web/`, 6-11-2026): Javi: «vamos a hacer un video para
   promocionar la pagina de kiria […] algo muy profesional». Guion primero → su MP3 (34 s) → `engine/alinear.py` + `ajustar_voz.py` ×1,06
   (29,9 s, vídeo de 33 s). Escena: un móvil gigante tumbado es el escenario; publicaciones con productos «TU MARCA» (los de la web) que caen
