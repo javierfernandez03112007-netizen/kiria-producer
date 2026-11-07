@@ -5,15 +5,17 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 6-11-2026 (primer análisis: 20 vídeos de Instagram, una sola captura de Metricool).
+Última actualización: 7-11-2026 (21 vídeos de Instagram, dos capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
   Derecho 880 mil, Industrial 522 mil, Mecánica 330 mil, Magisterio 309 mil, Informática 271 mil, Aeroespacial 201 mil. Media de los
   «por dentro» de carreras: 287 mil visitas; duelos: 59 mil; curiosidades: 71 mil.
 - ✅ Carreras con mucha gente estudiándolas o con un bulo popular («Magisterio = macarrones»): más gente a quien mandárselo.
-- 🧪 Historias reales contadas en orden (el túnel de Brasil): la mejor retención del canal (79 % del vídeo visto). Buen formato para
-  alternar, pero se guarda poco.
+- 🧪 **Historias reales contadas en orden** (el túnel de Brasil): la mejor retención del canal (79 % del vídeo visto) y el que más
+  crece (+13.928 en un día, 7-11). Alternarlas con las carreras; se guardan poco.
+- 👤 **Público nuevo (Javi, 6/7-11)**: además de estudiantes, atraer a dueños de pequeños negocios (noticias que les afectan, negocios por
+  dentro, lo que funciona en redes). Mezclar: lo que da visitas + uno de negocios con cierre para ellos.
 - 🧪 Dinero y bolsa (Economía 8,6 mil) y curiosidades sin «tú» (La cerradura, 2 guardados por cada 1.000) rinden menos. Si se hace dinero,
   que sea con una persona afectada («casi la mitad de un país sin poder sacar su dinero»), no con conceptos.
 - 🧪 El público es 69 % latinoamericano y 31 % España (Metricool, 5-11): los temas que se entienden fuera de España suman.
@@ -26,6 +28,8 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - ✅ **Re-hook hacia los 20 s** con un número que choca (plazas, nota de corte, «6 frente a 18»).
 - ✅ **Cierre con envío a una persona concreta**: «Mándaselo a quien te dijo que Magisterio era fácil» hizo de Magisterio el vídeo más
   compartido (18 por cada 1.000) y lo llevó a 309 mil con el peor arranque. Siempre: «mándaselo a [persona que se pica o que lo necesita]».
+- 🧪 **Duelo con creencia rota** («Crees que Química e Ingeniería Química son la misma carrera») + «¿cuál cobra más? te lo digo al
+  final»: Química, 20,4 guardados por cada 1.000 (casi como Derecho) en su primer día.
 - 🧪 **Pregunta de bando al final** («¿máster o PIR?», «¿abogado o juez?») + «guárdalo si estás eligiendo carrera». Los comentarios
   son el punto flojo de todo el canal (0,1–1,4 por cada 1.000): la pregunta debe ser una pelea real de la profesión, no de gustos.
 - ✅ Datos reales con fuente en `FUENTES.md`, números escritos como se dicen en el guion de ElevenLabs.
@@ -40,7 +44,9 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
   3 s) y Medicina (74,3 %). Nada de título ni logo.
 - ✅ Un solo escenario que cuenta la carrera (aula de Infantil, sala de bolsa, maqueta en corte) y la cámara siempre en movimiento.
 - ✅ Cada frase se ve cuando se oye y los objetos se transforman (`REGLAS.md`, regla 2).
-- 🧪 Maqueta en corte / rayos X (Brasil, cerradura): muy buen arranque (79,5 % y 69,8 % pasan de 3 s).
+- 🧪 Maqueta en corte / rayos X (Brasil, cerradura): muy buen arranque (80 % y 70 % pasan de 3 s).
+- 🧪 Objetos en miniatura que crecen (Química, tubo de ensayo con la fábrica) paran menos el dedo (60,6 %) que un golpe con el dato
+  dentro (mazo sobre figuritas, 75 %).
 
 ## 5. Letra y subtítulos
 - 👤 Impact, ≈ 96, contorno 8, palabra clave en recuadro (`REGLAS.md`). 🧪 Aún no se puede comparar con la letra antigua: los vídeos sin
@@ -59,6 +65,7 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 
 ## 8. Lo que NO hacer
 - Ganchos de pura curiosidad sin tensión (la carga sin cable, «Tu móvil habla con el cargador…»).
+- Anuncios del estudio como reel normal: Producto en 3D, 37,6 % pasa de 3 s y 6,9 s de media.
 - Vídeos de más de 65 s; dos vídeos informativos el mismo día; anuncios como contenido principal.
 - Precios, logos reales, la marca kiria.ai en los vídeos informativos 👤; cifras sin fuente.
 
