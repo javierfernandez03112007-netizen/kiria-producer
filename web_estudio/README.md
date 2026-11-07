@@ -38,6 +38,11 @@ países de todo el mundo y el mensaje «de España a todo el mundo».
   iguales que la web en las 34 combinaciones) y carrito con Playwright. Portal de clientes de Stripe (bajas y tarjeta; Javi lo comprobó:
   pide el correo y manda un enlace de acceso): https://billing.stripe.com/p/login/3cI8wPf004QlgT7gSpcZa00 → «Mi suscripción» al pie,
   en el carrito y en el aviso de pago. Falta: las condiciones de suscripción en las condiciones de compra.
+- **Código de descuento KIRIA10 (Javi, 7-11-2026)**: 10 % hasta el 30-11-2026. La web lo anuncia (aviso `#promo` en Precios y `#coPromo`
+  en el carrito) solo hasta el 1-12-2026 00:00 (hora de Madrid; `PROMO` en el script del carrito), lo rellena solo en el enlace de pago de
+  reserva (`prefilled_promo_code`) y en los pedidos por correo pone «sin el 10 % del código». **El código se crea en Stripe (lo hace Javi)**:
+  Catálogo de productos → Cupones → Nuevo: 10 %, «Una vez», canjeable hasta el 30-11-2026 → código promocional `KIRIA10`; y en el enlace
+  de pago de 6,99 € activar «Permitir códigos promocionales». Stripe Checkout ya acepta códigos (`allow_promotion_codes`).
 - **Valoraciones y reseñas (4-11-2026, Javi)**: ventana «Valóranos» a los 3 min en la web (una vez cada 60 días; nunca durante el pago
   ni con otra ventana o el aviso de cookies abiertos), a los 3,5 s de volver de pagar (#pagado, con el correo y el producto de la compra
   ya puestos: `kiria_correo`, `kiria_compra`) y con **kiriaai.com/#valorar** (Javi lo manda con cada vídeo entregado). Dos notas: la
