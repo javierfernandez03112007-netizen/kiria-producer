@@ -251,6 +251,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   «🎯 Empresas · leads» (`collection://6e34e876-1fb1-4d5f-bc2c-7a87fd7e0791`) y «📊 KPI semanales · ventas»
   (`collection://7b8bc88a-bf52-436b-bf42-ba1207508d5a`). Pendiente de Javi: la garantía, el premio por recomendar y si hay muestras gratis.
   Decir siempre «visualizaciones», no «personas» (Derecho: 887.817 visualizaciones, 733.000 personas).
+  **Plan comercial completo** (7-11-2026): Notion «🧭 Plan comercial · de la calle al cliente» (embudo de 6 estados, negocios A/B,
+  lista de la noche antes con «Idea de vídeo», explicaciones, visita, objeciones, llamadas en frío, de seguimiento y tras la entrega, mensajes,
+  propuesta escrita, cobro, entrega, recomendaciones y rutina semanal). La tabla de leads ganó «Por visitar», Prioridad, Instagram,
+  Idea de vídeo y Teléfono del negocio.
   **Código KIRIA10** (Javi, 7-11-2026): 10 % hasta el 30-11-2026, anunciado en la web (se quita solo el 1-12); el código lo crea Javi en
   Stripe (pasos en `web_estudio/README.md`). Javi lo pidió como «KORIA10» y confirmó que era KIRIA10.
 - Web del estudio: `web_estudio/` (ver su `README.md`; v1 oscura en la rama `web-estudio-v1`). Vista previa privada:
