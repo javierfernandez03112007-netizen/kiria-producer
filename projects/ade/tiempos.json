@@ -1,0 +1,896 @@
+[
+ {
+  "text": "Te dijeron que ADE no tiene salidas.",
+  "start": 0.0,
+  "end": 2.7,
+  "words": [
+   {
+    "w": "Te",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "dijeron",
+    "start": 0.24,
+    "end": 0.72
+   },
+   {
+    "w": "que",
+    "start": 0.72,
+    "end": 0.96
+   },
+   {
+    "w": "ADE",
+    "start": 0.96,
+    "end": 1.68
+   },
+   {
+    "w": "no",
+    "start": 1.68,
+    "end": 1.84
+   },
+   {
+    "w": "tiene",
+    "start": 1.84,
+    "end": 2.24
+   },
+   {
+    "w": "salidas.",
+    "start": 2.24,
+    "end": 2.7
+   }
+  ]
+ },
+ {
+  "text": "Y es la carrera que más piden las empresas.",
+  "start": 2.95,
+  "end": 5.31,
+  "words": [
+   {
+    "w": "Y",
+    "start": 2.95,
+    "end": 3.02
+   },
+   {
+    "w": "es",
+    "start": 3.02,
+    "end": 3.18
+   },
+   {
+    "w": "la",
+    "start": 3.18,
+    "end": 3.34
+   },
+   {
+    "w": "carrera",
+    "start": 3.34,
+    "end": 3.74
+   },
+   {
+    "w": "que",
+    "start": 3.74,
+    "end": 3.9
+   },
+   {
+    "w": "más",
+    "start": 3.9,
+    "end": 4.14
+   },
+   {
+    "w": "piden",
+    "start": 4.14,
+    "end": 4.62
+   },
+   {
+    "w": "las",
+    "start": 4.62,
+    "end": 4.86
+   },
+   {
+    "w": "empresas.",
+    "start": 4.86,
+    "end": 5.31
+   }
+  ]
+ },
+ {
+  "text": "Tiene trampa. Al final te la cuento.",
+  "start": 5.61,
+  "end": 7.51,
+  "words": [
+   {
+    "w": "Tiene",
+    "start": 5.61,
+    "end": 5.96
+   },
+   {
+    "w": "trampa.",
+    "start": 5.96,
+    "end": 6.56
+   },
+   {
+    "w": "Al",
+    "start": 6.56,
+    "end": 6.65
+   },
+   {
+    "w": "final",
+    "start": 6.65,
+    "end": 6.89
+   },
+   {
+    "w": "te",
+    "start": 6.89,
+    "end": 7.05
+   },
+   {
+    "w": "la",
+    "start": 7.05,
+    "end": 7.21
+   },
+   {
+    "w": "cuento.",
+    "start": 7.21,
+    "end": 7.51
+   }
+  ]
+ },
+ {
+  "text": "ADE aparece en más del doble de ofertas que la segunda carrera.",
+  "start": 7.81,
+  "end": 11.49,
+  "words": [
+   {
+    "w": "ADE",
+    "start": 7.81,
+    "end": 8.48
+   },
+   {
+    "w": "aparece",
+    "start": 8.48,
+    "end": 9.0
+   },
+   {
+    "w": "en",
+    "start": 9.0,
+    "end": 9.16
+   },
+   {
+    "w": "más",
+    "start": 9.16,
+    "end": 9.32
+   },
+   {
+    "w": "del",
+    "start": 9.32,
+    "end": 9.48
+   },
+   {
+    "w": "doble",
+    "start": 9.48,
+    "end": 9.8
+   },
+   {
+    "w": "de",
+    "start": 9.8,
+    "end": 9.96
+   },
+   {
+    "w": "ofertas",
+    "start": 9.96,
+    "end": 10.44
+   },
+   {
+    "w": "que",
+    "start": 10.44,
+    "end": 10.6
+   },
+   {
+    "w": "la",
+    "start": 10.6,
+    "end": 10.76
+   },
+   {
+    "w": "segunda",
+    "start": 10.76,
+    "end": 11.08
+   },
+   {
+    "w": "carrera.",
+    "start": 11.08,
+    "end": 11.49
+   }
+  ]
+ },
+ {
+  "text": "4 años después de acabar, 8 de cada 10 están trabajando.",
+  "start": 11.69,
+  "end": 15.35,
+  "words": [
+   {
+    "w": "4",
+    "start": 11.69,
+    "end": 12.0
+   },
+   {
+    "w": "años",
+    "start": 12.0,
+    "end": 12.24
+   },
+   {
+    "w": "después",
+    "start": 12.24,
+    "end": 12.56
+   },
+   {
+    "w": "de",
+    "start": 12.56,
+    "end": 12.72
+   },
+   {
+    "w": "acabar,",
+    "start": 12.72,
+    "end": 13.32
+   },
+   {
+    "w": "8",
+    "start": 13.32,
+    "end": 13.65
+   },
+   {
+    "w": "de",
+    "start": 13.65,
+    "end": 13.73
+   },
+   {
+    "w": "cada",
+    "start": 13.73,
+    "end": 13.97
+   },
+   {
+    "w": "10",
+    "start": 13.97,
+    "end": 14.45
+   },
+   {
+    "w": "están",
+    "start": 14.45,
+    "end": 14.77
+   },
+   {
+    "w": "trabajando.",
+    "start": 14.77,
+    "end": 15.35
+   }
+  ]
+ },
+ {
+  "text": "Y cobran de media 32.000 euros al año.",
+  "start": 15.55,
+  "end": 18.09,
+  "words": [
+   {
+    "w": "Y",
+    "start": 15.55,
+    "end": 15.685
+   },
+   {
+    "w": "cobran",
+    "start": 15.685,
+    "end": 16.0
+   },
+   {
+    "w": "de",
+    "start": 16.0,
+    "end": 16.16
+   },
+   {
+    "w": "media",
+    "start": 16.16,
+    "end": 16.56
+   },
+   {
+    "w": "32.000",
+    "start": 16.56,
+    "end": 17.44
+   },
+   {
+    "w": "euros",
+    "start": 17.44,
+    "end": 17.76
+   },
+   {
+    "w": "al",
+    "start": 17.76,
+    "end": 17.92
+   },
+   {
+    "w": "año.",
+    "start": 17.92,
+    "end": 18.09
+   }
+  ]
+ },
+ {
+  "text": "Ahora, lo feo: de los que trabajan, solo 4 de cada 10 tienen un puesto de universitario.",
+  "start": 18.44,
+  "end": 24.0,
+  "words": [
+   {
+    "w": "Ahora,",
+    "start": 18.44,
+    "end": 18.89
+   },
+   {
+    "w": "lo",
+    "start": 18.89,
+    "end": 19.13
+   },
+   {
+    "w": "feo:",
+    "start": 19.13,
+    "end": 19.68
+   },
+   {
+    "w": "de",
+    "start": 19.68,
+    "end": 19.82
+   },
+   {
+    "w": "los",
+    "start": 19.82,
+    "end": 19.98
+   },
+   {
+    "w": "que",
+    "start": 19.98,
+    "end": 20.14
+   },
+   {
+    "w": "trabajan,",
+    "start": 20.14,
+    "end": 20.78
+   },
+   {
+    "w": "solo",
+    "start": 20.78,
+    "end": 21.21
+   },
+   {
+    "w": "4",
+    "start": 21.21,
+    "end": 21.58
+   },
+   {
+    "w": "de",
+    "start": 21.58,
+    "end": 21.66
+   },
+   {
+    "w": "cada",
+    "start": 21.66,
+    "end": 21.98
+   },
+   {
+    "w": "10",
+    "start": 21.98,
+    "end": 22.44
+   },
+   {
+    "w": "tienen",
+    "start": 22.44,
+    "end": 22.68
+   },
+   {
+    "w": "un",
+    "start": 22.68,
+    "end": 22.84
+   },
+   {
+    "w": "puesto",
+    "start": 22.84,
+    "end": 23.16
+   },
+   {
+    "w": "de",
+    "start": 23.16,
+    "end": 23.32
+   },
+   {
+    "w": "universitario.",
+    "start": 23.32,
+    "end": 24.0
+   }
+  ]
+ },
+ {
+  "text": "El resto, en trabajos que no pedían carrera.",
+  "start": 24.2,
+  "end": 26.79,
+  "words": [
+   {
+    "w": "El",
+    "start": 24.2,
+    "end": 24.29
+   },
+   {
+    "w": "resto,",
+    "start": 24.29,
+    "end": 24.91
+   },
+   {
+    "w": "en",
+    "start": 24.91,
+    "end": 25.04
+   },
+   {
+    "w": "trabajos",
+    "start": 25.04,
+    "end": 25.52
+   },
+   {
+    "w": "que",
+    "start": 25.52,
+    "end": 25.68
+   },
+   {
+    "w": "no",
+    "start": 25.68,
+    "end": 25.84
+   },
+   {
+    "w": "pedían",
+    "start": 25.84,
+    "end": 26.4
+   },
+   {
+    "w": "carrera.",
+    "start": 26.4,
+    "end": 26.79
+   }
+  ]
+ },
+ {
+  "text": "Y cada año salen casi 15.000 graduados nuevos.",
+  "start": 26.99,
+  "end": 30.12,
+  "words": [
+   {
+    "w": "Y",
+    "start": 26.99,
+    "end": 27.13
+   },
+   {
+    "w": "cada",
+    "start": 27.13,
+    "end": 27.37
+   },
+   {
+    "w": "año",
+    "start": 27.37,
+    "end": 27.69
+   },
+   {
+    "w": "salen",
+    "start": 27.69,
+    "end": 28.17
+   },
+   {
+    "w": "casi",
+    "start": 28.17,
+    "end": 28.41
+   },
+   {
+    "w": "15.000",
+    "start": 28.41,
+    "end": 29.13
+   },
+   {
+    "w": "graduados",
+    "start": 29.13,
+    "end": 29.69
+   },
+   {
+    "w": "nuevos.",
+    "start": 29.69,
+    "end": 30.12
+   }
+  ]
+ },
+ {
+  "text": "Fíjate en tres salidas típicas.",
+  "start": 30.42,
+  "end": 32.19,
+  "words": [
+   {
+    "w": "Fíjate",
+    "start": 30.42,
+    "end": 30.82
+   },
+   {
+    "w": "en",
+    "start": 30.82,
+    "end": 30.98
+   },
+   {
+    "w": "tres",
+    "start": 30.98,
+    "end": 31.22
+   },
+   {
+    "w": "salidas",
+    "start": 31.22,
+    "end": 31.7
+   },
+   {
+    "w": "típicas.",
+    "start": 31.7,
+    "end": 32.19
+   }
+  ]
+ },
+ {
+  "text": "¿Firmar auditorías? 3 años de experiencia y un examen del Estado.",
+  "start": 32.39,
+  "end": 36.22,
+  "words": [
+   {
+    "w": "¿Firmar",
+    "start": 32.39,
+    "end": 32.79
+   },
+   {
+    "w": "auditorías?",
+    "start": 32.79,
+    "end": 33.6
+   },
+   {
+    "w": "3",
+    "start": 33.6,
+    "end": 33.82
+   },
+   {
+    "w": "años",
+    "start": 33.82,
+    "end": 34.14
+   },
+   {
+    "w": "de",
+    "start": 34.14,
+    "end": 34.3
+   },
+   {
+    "w": "experiencia",
+    "start": 34.3,
+    "end": 34.94
+   },
+   {
+    "w": "y",
+    "start": 34.94,
+    "end": 35.1
+   },
+   {
+    "w": "un",
+    "start": 35.1,
+    "end": 35.26
+   },
+   {
+    "w": "examen",
+    "start": 35.26,
+    "end": 35.66
+   },
+   {
+    "w": "del",
+    "start": 35.66,
+    "end": 35.9
+   },
+   {
+    "w": "Estado.",
+    "start": 35.9,
+    "end": 36.22
+   }
+  ]
+ },
+ {
+  "text": "¿Asesorar inversiones en un banco? Un certificado aparte.",
+  "start": 36.42,
+  "end": 39.47,
+  "words": [
+   {
+    "w": "¿Asesorar",
+    "start": 36.42,
+    "end": 37.05
+   },
+   {
+    "w": "inversiones",
+    "start": 37.05,
+    "end": 37.53
+   },
+   {
+    "w": "en",
+    "start": 37.53,
+    "end": 37.69
+   },
+   {
+    "w": "un",
+    "start": 37.69,
+    "end": 37.85
+   },
+   {
+    "w": "banco?",
+    "start": 37.85,
+    "end": 38.27
+   },
+   {
+    "w": "Un",
+    "start": 38.27,
+    "end": 38.43
+   },
+   {
+    "w": "certificado",
+    "start": 38.43,
+    "end": 39.07
+   },
+   {
+    "w": "aparte.",
+    "start": 39.07,
+    "end": 39.47
+   }
+  ]
+ },
+ {
+  "text": "¿Inspector de Hacienda? Oposición.",
+  "start": 39.67,
+  "end": 41.57,
+  "words": [
+   {
+    "w": "¿Inspector",
+    "start": 39.67,
+    "end": 40.14
+   },
+   {
+    "w": "de",
+    "start": 40.14,
+    "end": 40.3
+   },
+   {
+    "w": "Hacienda?",
+    "start": 40.3,
+    "end": 40.82
+   },
+   {
+    "w": "Oposición.",
+    "start": 40.82,
+    "end": 41.57
+   }
+  ]
+ },
+ {
+  "text": "Ninguna se abre solo con ADE.",
+  "start": 41.87,
+  "end": 43.99,
+  "words": [
+   {
+    "w": "Ninguna",
+    "start": 41.87,
+    "end": 42.41
+   },
+   {
+    "w": "se",
+    "start": 42.41,
+    "end": 42.57
+   },
+   {
+    "w": "abre",
+    "start": 42.57,
+    "end": 42.97
+   },
+   {
+    "w": "solo",
+    "start": 42.97,
+    "end": 43.21
+   },
+   {
+    "w": "con",
+    "start": 43.21,
+    "end": 43.45
+   },
+   {
+    "w": "ADE.",
+    "start": 43.45,
+    "end": 43.99
+   }
+  ]
+ },
+ {
+  "text": "Esa es la trampa: ADE es la llave del portal… pero muchos despachos tienen su propia cerradura.",
+  "start": 44.34,
+  "end": 50.18,
+  "words": [
+   {
+    "w": "Esa",
+    "start": 44.34,
+    "end": 44.59
+   },
+   {
+    "w": "es",
+    "start": 44.59,
+    "end": 44.75
+   },
+   {
+    "w": "la",
+    "start": 44.75,
+    "end": 44.91
+   },
+   {
+    "w": "trampa:",
+    "start": 44.91,
+    "end": 45.51
+   },
+   {
+    "w": "ADE",
+    "start": 45.51,
+    "end": 46.13
+   },
+   {
+    "w": "es",
+    "start": 46.13,
+    "end": 46.29
+   },
+   {
+    "w": "la",
+    "start": 46.29,
+    "end": 46.45
+   },
+   {
+    "w": "llave",
+    "start": 46.45,
+    "end": 46.77
+   },
+   {
+    "w": "del",
+    "start": 46.77,
+    "end": 46.93
+   },
+   {
+    "w": "portal…",
+    "start": 46.93,
+    "end": 47.7
+   },
+   {
+    "w": "pero",
+    "start": 47.7,
+    "end": 47.82
+   },
+   {
+    "w": "muchos",
+    "start": 47.82,
+    "end": 48.22
+   },
+   {
+    "w": "despachos",
+    "start": 48.22,
+    "end": 48.94
+   },
+   {
+    "w": "tienen",
+    "start": 48.94,
+    "end": 49.18
+   },
+   {
+    "w": "su",
+    "start": 49.18,
+    "end": 49.34
+   },
+   {
+    "w": "propia",
+    "start": 49.34,
+    "end": 49.66
+   },
+   {
+    "w": "cerradura.",
+    "start": 49.66,
+    "end": 50.18
+   }
+  ]
+ },
+ {
+  "text": "Salidas tiene. Atajos, ninguno.",
+  "start": 50.48,
+  "end": 52.88,
+  "words": [
+   {
+    "w": "Salidas",
+    "start": 50.48,
+    "end": 51.07
+   },
+   {
+    "w": "tiene.",
+    "start": 51.07,
+    "end": 51.54
+   },
+   {
+    "w": "Atajos,",
+    "start": 51.54,
+    "end": 52.28
+   },
+   {
+    "w": "ninguno.",
+    "start": 52.28,
+    "end": 52.88
+   }
+  ]
+ },
+ {
+  "text": "Mándaselo a quien te dijo que ADE no tiene salidas. ¿Auditoría o banca?",
+  "start": 53.18,
+  "end": 57.713,
+  "words": [
+   {
+    "w": "Mándaselo",
+    "start": 53.18,
+    "end": 53.74
+   },
+   {
+    "w": "a",
+    "start": 53.74,
+    "end": 53.82
+   },
+   {
+    "w": "quien",
+    "start": 53.82,
+    "end": 53.98
+   },
+   {
+    "w": "te",
+    "start": 53.98,
+    "end": 54.14
+   },
+   {
+    "w": "dijo",
+    "start": 54.14,
+    "end": 54.38
+   },
+   {
+    "w": "que",
+    "start": 54.38,
+    "end": 54.62
+   },
+   {
+    "w": "ADE",
+    "start": 54.62,
+    "end": 55.26
+   },
+   {
+    "w": "no",
+    "start": 55.26,
+    "end": 55.42
+   },
+   {
+    "w": "tiene",
+    "start": 55.42,
+    "end": 55.74
+   },
+   {
+    "w": "salidas.",
+    "start": 55.74,
+    "end": 56.379
+   },
+   {
+    "w": "¿Auditoría",
+    "start": 56.379,
+    "end": 57.183
+   },
+   {
+    "w": "o",
+    "start": 57.183,
+    "end": 57.35
+   },
+   {
+    "w": "banca?",
+    "start": 57.35,
+    "end": 57.713
+   }
+  ]
+ }
+]
