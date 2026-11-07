@@ -118,7 +118,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   doble… y no llega»); 100 figuritas (entran 80; 34 suben en un ascensor de cristal a despachos dorados; a 46 se les cae el birrete);
   700 graduados nuevos; tres despachos con su cerradura (calendario de 3 años y examen, certificado, temario); la llave «ADE» que no gira
   en ninguna y abre el portal; candados en cascada; escalera «ATAJO» que se tacha y se cae; pregunta «¿Auditoría o banca?».
-  Render: 0–420 aquí + las 6 máquinas del robot (ramas `render-ade-1…6`). Lecciones: (1) **un reinicio del proceso de la sesión mata
+  **Entregado el 7-11-2026** (`out/ade.mp4`, 59 s, 60 fps, 51 MB, −15,0 LUFS, uniones y bucle limpios; subida propuesta mar 10 a las 10:00).
+  Render: 0–204 aquí + las 6 máquinas del robot (ramas `render-ade-1…7`; la 3 hizo también 204–420 porque esta sesión se reinició tres veces). Lecciones: (1) **un reinicio del proceso de la sesión mata
   los renders en segundo plano**: lanzarlos con `setsid nohup …`, comprobar con `pgrep` al volver y relanzar (`SKIP=1` reanuda);
   (2) bucle con lluvia: la lluvia empieza antes del 0 (inicios entre −1,6 y 1,8 s) y al final los folios pasan de las torres a la lluvia
   cuando la cámara ya no ve las torres; (3) en vertical no cabe un edificio con 4 despachos por planta: 3 por planta (0,78 de ancho) y la
