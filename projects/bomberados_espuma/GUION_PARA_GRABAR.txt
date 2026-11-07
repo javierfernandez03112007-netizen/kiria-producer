@@ -1,0 +1,52 @@
+«¿CUÁNTA AGUA NECESITAS?» — Problema de espuma (Pregunta del día cinematográfica; pregunta de Adrián, 7 nov)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 50 s + 4 s de cuenta). Las cifras, claras y sin prisa. La cuenta 1-2-3-4-5 NO se graba: la meto
+yo (empieza ya en 1). «¡Tiempo!», de golpe. Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+Como en el de la presión, el vídeo NO dice la respuesta: da todos los datos y pide que la escriban en comentarios (la
+respuesta va al final de la descripción). Si prefieres decirla, cambia la frase de «Entonces…» por «Seiscientos menos nueve:
+¡quinientos noventa y un litros! Es la B.»
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[tense, low voice] Hay que inundar este local de espuma… [dramatic] hasta el TECHO.
+[urgent] Treinta metros cuadrados y tres de alto. Espumógeno al uno coma cinco por ciento. Expansión: ciento cincuenta. [curious] ¿Cuánta AGUA necesitas?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! Si has dicho seiscientos… [grave] te has olvidado del ESPUMÓGENO.
+[explaining, confident] Primero, el volumen: treinta por tres, noventa metros cúbicos de espuma.
+[explaining] Expansión ciento cincuenta: cada litro de espumante da CIENTO CINCUENTA litros de espuma.
+[building up] Noventa mil litros entre ciento cincuenta… [impressed] seiscientos litros de espumante.
+[serious, warning] Pero el espumante es agua MÁS espumógeno. Y el uno coma cinco por ciento de seiscientos… son NUEVE litros de espumógeno.
+[challenging] Entonces, ¿cuánta AGUA necesitas? Escribe en comentarios cuál es la correcta.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — 3D de noche con planos de dron abiertos, como el acoplamiento: un local (nave) a pie de
+calle con la persiana subida, humo dentro, la autobomba fuera y un bombero con el generador de espuma en la puerta.
+1. «Hay que inundar este local de espuma… hasta el techo.» — primer fotograma: la espuma blanca entra a chorro por la
+   puerta y sube por dentro del local oscuro; el dron entra con ella.
+2. «Treinta metros cuadrados y tres de alto. Espumógeno al 1,5 %. Expansión: 150. ¿Cuánta agua necesitas?» — cotas en el
+   suelo y la pared (30 m² · 3 m), un bidón amarillo «ESPUMÓGENO 1,5 %», el chip «EXPANSIÓN ×150» y cuatro tarjetas:
+   A · 9 L  B · 591 L  C · 600 L  D · 609 L.
+3. «Comenta tu letra. Tienes cinco segundos.» — contador 1-2-3-4-5 que arranca ya en 1 (bocina en el 5).
+4. «¡Tiempo! Si has dicho seiscientos… te has olvidado del espumógeno.» — la C se pone roja; el bidón amarillo se ilumina.
+5. «El volumen: treinta por tres, noventa metros cúbicos de espuma.» — el local se rellena de un bloque de espuma: «90 m³».
+6. «Cada litro de espumante da ciento cincuenta litros de espuma.» — una gota de espumante se hincha ×150.
+7. «Noventa mil litros entre ciento cincuenta… seiscientos litros de espumante.» — el bloque de espuma se encoge hasta
+   un depósito de 600 L.
+8. «El espumante es agua más espumógeno. El 1,5 % de 600 son 9 litros de espumógeno.» — el depósito se parte: una
+   franja amarilla de 9 L y el resto azul, con «¿ ? L DE AGUA».
+9. «Entonces, ¿cuánta agua necesitas? Escribe en comentarios cuál es la correcta.» — «600 − 9 = ?» y vuelven las
+   tarjetas (la C tachada); «💬 ESCRIBE TU LETRA EN COMENTARIOS».
+10. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+11. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS entre brasas.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta: B) 591 L. Volumen: 30 m² × 3 m = 90 m³ = 90.000 L de espuma. Expansión 150: 90.000 ÷ 150 = 600 L de espumante
+(agua + espumógeno). Espumógeno: 1,5 % de 600 = 9 L. Agua: 600 − 9 = 591 L. Trampas: A (9 L, el espumógeno), C (600 L, el
+espumante entero) y D (609 L, sumar en vez de restar). Ver FUENTES.md.
+PENDIENTE: que Adrián diga de qué examen es la pregunta.
