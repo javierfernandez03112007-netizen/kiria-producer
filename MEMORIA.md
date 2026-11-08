@@ -278,6 +278,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   del motor local: visitas, colaboraciones de Instagram con cada negocio, Perfil de Empresa de Google, Facebook y grupos de comercios,
   asociaciones y prensa local. Servicio nuevo propuesto: «Grábalo tú, lo editamos con IA» (precio de Javi). Metas a 30 y 90 días
   (9.000 y 20.000 seguidores; 5 y 20 clientes). Partida: 5.011 seguidores (6-11), ≈ 2 seguidores por cada 1.000 visualizaciones.
+  **Chat «Plan escalabilidad Kiria»** (`session_014gBm8SfARWLK3AmTNFKY9M`, creado el 8-11-2026 a petición de Javi): es el sitio del plan de
+  crecimiento. Allí se le pasa toda la información del plan, **siempre que se pueda en PDF** (`web_estudio/ventas/plan_crecimiento_kiria.pdf`,
+  se regenera con `node web_estudio/ventas/hacer_pdf.mjs plan_crecimiento.html plan_crecimiento_kiria.pdf "Plan de crecimiento · de visitas a clientes"`;
+  sin emojis en el PDF: salen como cuadrados).
   **Código KIRIA10** (Javi, 7-11-2026): 10 % hasta el 30-11-2026, anunciado en la web (se quita solo el 1-12); el código lo crea Javi en
   Stripe (pasos en `web_estudio/README.md`). Javi lo pidió como «KORIA10» y confirmó que era KIRIA10.
 - Web del estudio: `web_estudio/` (ver su `README.md`; v1 oscura en la rama `web-estudio-v1`). Vista previa privada:
