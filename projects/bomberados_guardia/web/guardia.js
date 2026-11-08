@@ -1131,9 +1131,9 @@ function overlay(t) {
     txt('24 H', 0, 120, 360, GOLD2, 400, 'center', 'Bebas'); g.shadowBlur = 0; txt('SEGUIDAS DE GUARDIA', 0, 235, 92, WHITE, 400, 'center', 'Bebas'); g.restore(); }
   clock(t);
   // salidas de la guardia (contador) y guardia cumplida
-  if (t > T.salida - 0.05 && t < T.ocho2) {
+  if (t > T.salida - 0.05 && t < T.ocho2 && tag !== 'estudiar') {
     const ts = [T.salida, T.accidente, T.arde], n = ts.filter(x => t >= x).length, last = ts[Math.max(0, n - 1)];
-    chip(540, 748, `SALIDAS HOY: ${Math.max(1, n)}`, RED2, sm(T.salida - 0.05, T.salida + 0.15, t), 0.8 * (1 + 0.28 * Math.exp(-Math.pow((t - last - 0.1) / 0.12, 2))), 50);
+    chip(540, 748, `SALIDAS HOY: ${Math.max(1, n)}`, RED2, sm(T.salida - 0.05, T.salida + 0.15, t), 0.88 * (1 + 0.28 * Math.exp(-Math.pow((t - last - 0.1) / 0.12, 2))), 50);
   }
   chip(540, 748, 'GUARDIA CUMPLIDA: 24 H', GREEN2, sm(T.relevo2 - 0.2, T.relevo2 + 0.1, t) * (1 - sm(T.cuatro - 0.4, T.cuatro - 0.1, t)), 0.8, 50);
   chip(540, 1700, 'GUARDIA DE EJEMPLO', 'rgba(255,255,255,0.4)', tag === 'relevo' ? sm(T.l2, T.l2 + 0.3, t) : 0, 0.8, 42);
