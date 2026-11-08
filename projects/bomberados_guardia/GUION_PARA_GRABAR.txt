@@ -1,0 +1,53 @@
+«UN DÍA DE BOMBERO: 24 HORAS DE GUARDIA» (idea de Adrián, Notion: «Un día como bombero versión IA — LUNES 9»)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Todo el vídeo lleva voz (≈ 50 s). Ritmo de documental: frases cortas, cada una es un corte de escena. «¡Salida!», de golpe.
+La madrugada, baja y tranquila. Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[intrigued, low voice] Lo que nunca ves de un bombero: [dramatic] VEINTICUATRO horas seguidas de guardia.
+[energetic] Ocho de la mañana: relevo.
+[focused] Revisión: camiones, mangueras… y el aire de cada botella.
+[warm] Desayuno con los compañeros… [energetic] y a entrenar.
+[calm] Mediodía: reconocimiento de la ciudad.
+[urgent, shouting] ¡Salida! [tense] Incendio en una vivienda.
+[serious] Por la tarde, accidente de tráfico.
+[tired, warm] Vuelta al parque: limpiar el material, entrenar, estudiar… y cenar.
+[urgent] Once de la noche: arde un contenedor.
+[soft, low voice] De madrugada, el parque en silencio… [serious] y los camiones listos.
+[relieved] Ocho de la mañana: relevo. Veinticuatro horas después, a casa… [warm] y, según el servicio, cuatro o cinco días de descanso.
+[proud] Ser bombero no es solo apagar fuegos.
+[challenging] ¿Te ves haciendo esta guardia? Escríbelo en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — 3D cinematográfico con planos de dron, y un RELOJ DE 24 H grande que corre durante todo
+el vídeo (08:00 → 08:00): la luz cambia con la hora (mañana, mediodía, tarde dorada, noche, amanecer). Cortes rápidos.
+1. «Lo que nunca ves de un bombero: 24 horas seguidas de guardia.» — primer fotograma: el reloj «24:00:00» que empieza
+   a correr hacia atrás sobre el parque de bomberos de noche, con los rotativos encendidos.
+2. «Ocho de la mañana: relevo.» — 08:00, amanece: el parque con los camiones; el turno que sale y el que entra.
+3. «Revisión: camiones, mangueras… y el aire de cada botella.» — persianas del camión subiendo, mangueras, el manómetro
+   de la botella a 300 bar ✓.
+4. «Desayuno con los compañeros… y a entrenar.» — mesa con tazas; corte: prácticas con la lanza en la explanada.
+5. «Mediodía: reconocimiento de la ciudad.» — 12:00: el camión recorriendo las calles; chip «hidrantes · accesos».
+6. «¡Salida! Incendio en una vivienda.» — 13:47: sirena, rotativos, la autobomba llega a un edificio con fuego.
+7. «Por la tarde, accidente de tráfico.» — 17:20: dos coches chocados en un cruce y la autobomba detrás.
+8. «Vuelta al parque: limpiar el material, entrenar, estudiar… y cenar.» — 19:30: cuatro cortes rápidos (mangueras,
+   pesas, libros, cena).
+9. «Once de la noche: arde un contenedor.» — 23:10: contenedor en llamas en una calle de noche.
+10. «De madrugada, el parque en silencio… y los camiones listos.» — 03:30: el parque de noche, quieto.
+11. «Ocho de la mañana: relevo. 24 horas después, a casa… y, según el servicio, 4 o 5 días de descanso.» — 08:00:
+   el reloj se para en «24 H»; un calendario con la guardia y 4–5 días libres.
+12. «Ser bombero no es solo apagar fuegos.» — rótulo: PREPARACIÓN · FORMACIÓN · COMPAÑERISMO.
+13. «¿Te ves haciendo esta guardia? Escríbelo en comentarios.» — «💬 ¿TE VES? COMENTA».
+14. ★ «¡Mándaselo a quien oposite contigo!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+15. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS entre brasas.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Las horas de las salidas son una GUARDIA DE EJEMPLO (va escrito en pantalla). Lo de 24 h y 4–5 días de descanso sale de
+documentos oficiales (ver FUENTES.md).
