@@ -124,6 +124,24 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (2) bucle con lluvia: la lluvia empieza antes del 0 (inicios entre −1,6 y 1,8 s) y al final los folios pasan de las torres a la lluvia
   cuando la cámara ya no ve las torres; (3) en vertical no cabe un edificio con 4 despachos por planta: 3 por planta (0,78 de ancho) y la
   cámara a ≈ 2,4; (4) una llave vista a lo largo de su eje se ve de canto: el ojo se gira hacia la cámara en cada fotograma.
+- **«La tapa gratis no existe»** (`projects/tapas/`, 8-11-2026): primer vídeo **puente** del plan de crecimiento (negocios por
+  dentro: gusta a todos y además a los dueños de negocios). Javi: «cómo es posible que los bares que sirven tapas gratis obtengan beneficio,
+  no lo digas así, dilo de la manera más profesional y enganchante posible». Guion primero (156 palabras) → su MP3 (55,8 s) → Parakeet +
+  `ajustar_voz.py` solo con pausas recortadas: 50,5 s (vídeo de 52 s en bucle exacto). Datos: guías de Granada (caña con tapa 2,50–3,20 €),
+  Ley del IVA (hostelería al 10 %: 0,27 € de 3 €), coste de la cerveza ≈ 0,50 € (estimación del sector, Qamarero: barril de 30 l, ≈ 150
+  cañas), la sal y la sed (Unión de Mutuas). Escena: un bar de Granada de noche, de una planta para que se vea la Alhambra encima (fondo
+  pintado en un lienzo lejano, sin niebla, con las luces de la ciudad en la colina); la etiqueta «GRATIS» que se raja; la caña convertida en
+  un vaso gigante con capas (IVA gris, cerveza dorada, «lo que queda» verde con iconos de tapa, local, sueldos y moneda); picado a la bodega
+  (barril y tubo por el que sube la cerveza); las rondas con tapas cada vez mejores; la sal y el medidor de sed; la tapa que vuela y se
+  queda como el letrero del bar (con aro de luz) y la gente que entra; un cartel de publicidad de pago que se apaga con «ellos te la
+  sirven…»; las otras tiendas de la calle con un plato vacío y «?»; el camarero pone otra tapa con su etiqueta (bucle). 15 efectos nuevos
+  de ElevenLabs. **Entregado el 8-11-2026** (`out/tapas.mp4`, 52 s, 60 fps, 38,9 MB, −15,3 LUFS, uniones y bucle limpios; subida propuesta
+  vie 13 a las 10:00). Render entero en las 6 máquinas de ayuda (ramas `render-tapa-1…6`, ≈ 20 min). Lecciones: (1) **un nombre del
+  objeto `S` puede estar ya cogido** (`S.flow` era el polvo: la cerveza del tubo es `S.beerFlow`); (2) al renderizar por trozos, el orden
+  dentro del fotograma importa: colocar la tapa nueva ANTES de la etiqueta que la sigue (si no, en el primer fotograma de un trozo la
+  etiqueta lee la posición vieja); (3) la palabra que se dice tiene que verse entera cuando se oye: la cámara llega al cartel con
+  «publicidad», no después; (4) `srcLine` mide el texto y lo encoge si no cabe; (5) un cielo de noche no puede ser un negro plano:
+  degradado y miles de luces; (6) `sfx_eleven.py nombre…` regenera solo esos efectos (los muy flojos, como un pico de 0,03, se repiten).
 - **Anuncio de la web «¿Qué hace que alguien se pare?»** (`projects/promo_web/`, 6-11-2026): Javi: «vamos a hacer un video para
   promocionar la pagina de kiria […] algo muy profesional». Guion primero → su MP3 (34 s) → `engine/alinear.py` + `ajustar_voz.py` ×1,06
   (29,9 s, vídeo de 33 s). Escena: un móvil gigante tumbado es el escenario; publicaciones con productos «TU MARCA» (los de la web) que caen
