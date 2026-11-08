@@ -1,0 +1,45 @@
+{
+ "formato": "guardia",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "count_line": 1,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿AGUANTARÍA LA GUARDIA?",
+ "portada": {
+  "titulo": "24 HORAS DE GUARDIA",
+  "etiqueta": "UN DÍA DE BOMBERO EN ESPAÑA",
+  "t": 2.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "nunca": ["nunca", 1, 1], "veinti0": ["veinticuatro", 1, 1], "guardia0": ["guardia.", 1, 1],
+  "l2": ["Ocho", 1, 2], "relevo1": ["relevo.", 1, 2],
+  "revision": ["Revisión:", 1, 3], "camiones": ["camiones,", 1, 3], "mangueras": ["mangueras…", 1, 3], "botella": ["botella.", 1, 3], "aire": ["aire", 1, 3],
+  "desayuno": ["Desayuno", 1, 4], "entrenar": ["entrenar.", 1, 4],
+  "mediodia": ["Mediodía:", 1, 5], "ciudad": ["ciudad.", 1, 5],
+  "salida": ["¡Salida!", 1, 6], "vivienda": ["vivienda.", 1, 6], "incendio": ["Incendio", 1, 6],
+  "tarde": ["tarde,", 1, 7], "accidente": ["accidente", 1, 7],
+  "vuelta": ["Vuelta", 1, 8], "limpiar": ["limpiar", 1, 8], "entrenar2": ["entrenar,", 1, 8], "estudiar": ["estudiar…", 1, 8], "cenar": ["cenar.", 1, 8],
+  "once": ["Once", 1, 9], "contenedor": ["contenedor.", 1, 9], "arde": ["arde", 1, 9],
+  "madrugada": ["madrugada,", 1, 10], "listos": ["listos.", 1, 10], "camiones2": ["camiones", 1, 10],
+  "ocho2": ["Ocho", 1, 11], "relevo2": ["relevo.", 1, 11], "casa": ["casa…", 1, 11], "cuatro": ["cuatro", 1, 11], "descanso": ["descanso.", 1, 11], "veinti2": ["Veinticuatro", 1, 11], "servicio": ["servicio,", 1, 11],
+  "ser": ["Ser", 1, 12], "fuegos": ["fuegos.", 1, 12],
+  "teves": ["¿Te", 1, 13], "escribelo": ["Escríbelo", 1, 13],
+  "compartir": ["¡Mándaselo", 1, 14],
+  "descripcion": ["¿Opositas", 1, 15], "marca": ["¡Bomberados!", 1, 15], "prueba": ["¡Pruébala", 1, 15]
+ }
+}

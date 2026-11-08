@@ -1339,7 +1339,138 @@ def sfx_track_espuma(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_guardia(path):
+    """«Un día de bombero: 24 h de guardia»: reloj acelerado del «time-lapse» (autobombas que salen con la sirena), relevo,
+    revisión con su lista (✓), tazas, prácticas con agua, ciudad y motor, timbre + radio + sirena de la salida, fuego y agua,
+    accidente (cristales, vapor), marcha atrás al volver, pesas, páginas, cena, contenedor, grillos de madrugada, pasos a
+    casa, el calendario de descanso y la venta. Los planos empiezan en los mismos instantes que en guardia.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    S = dict(relevo=c["l2"] - 0.15, rev=c["revision"] - 0.1, mang=c["mangueras"] - 0.12, bot=c["aire"] - 0.3, desayuno=c["desayuno"] - 0.1,
+             pract=c["entrenar"] - 0.45, recon=c["mediodia"] - 0.1, salida=c["salida"] - 0.08, casa=c["incendio"] - 0.1, acc=c["tarde"] - 0.1,
+             vuelta=c["vuelta"] - 0.1, limpiar=c["limpiar"] - 0.1, pesas=c["entrenar2"] - 0.1, estudiar=c["estudiar"] - 0.12, cenar=c["cenar"] - 0.1,
+             cont=c["once"] - 0.1, noche=c["madrugada"] - 0.1, listos=c["camiones2"] - 0.2, relevo2=c["ocho2"] - 0.1, casa2=c["veinti2"] - 0.1,
+             ser=c["ser"] - 0.1, fin=c["compartir"] - 0.3)
+    order = sorted(S.items(), key=lambda kv: kv[1])
+    E = {k: (order[i + 1][1] if i + 1 < len(order) else END) for i, (k, _) in enumerate(order)}
+    fuego, bub, toque, agua = _load("fuego"), _onset(_load("burbuja")), _onset(_load("toque")), _load("agua")
+    sirena, motor = _load("sirena"), _load("motor")
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    def cut(k, db=-31):                                   # golpecito suave en cada corte de plano
+        put(_pitch(toque, 0.9 + 0.2 * (sum(map(ord, k)) % 5) / 4), S[k] - 0.01, db, 0.3)
+
+    # gancho: el día entero en 5 s (tic-tac rápido); las autobombas salen con la sirena; de noche, grillos; «24 H»
+    H = S["relevo"]
+    th = lambda h: (h - 8) / 24 * H
+    put("reloj_rapido", 0.0, -27, H, 0.02, 0.25)
+    put("whoosh2", 0.0, -30, 0.8)
+    for h0, db in [(9.2, -27), (16.2, -28), (23.0, -27)]:
+        put(_pitch(sirena, 1.25), th(h0) - 0.05, db, 0.55, 0.01, 0.2)
+        put(_pitch(motor, 1.5), th(h0) - 0.1, -30, 0.5, 0.02, 0.2)
+    put("grillos", th(20.5), -36, th(30.5) - th(20.5), 0.3, 0.3, track=amb)
+    put("golpe", c["veinti0"] - 0.06, -24, 0.7, 0.002, 0.3)
+    put("destello", c["veinti0"] - 0.1, -28, 0.8)
+    put("ciudad", 0.0, -40, END, 0.5, 0.5, track=amb)
+    # relevo y revisión: lista con ✓
+    cut("relevo")
+    put(_pitch(_onset(_load("nota")), 1.0), c["relevo1"] - 0.03, -31, 0.8)
+    cut("rev"); put("rele", S["rev"], -32, E["rev"] - S["rev"], 0.01, 0.1)
+    for k in ("camiones", "mangueras", "botella"):
+        put("acierto", c[k] - 0.03, -27, 0.6)
+    cut("mang", -33)
+    put("aire", c["aire"] - 0.05, -31, 1.0, 0.05, 0.3)
+    put("llave", S["bot"] + 0.05, -30, 0.5)
+    # desayuno y prácticas
+    cut("desayuno"); put("tazas", S["desayuno"] + 0.05, -29, E["desayuno"] - S["desayuno"], 0.01, 0.2)
+    cut("pract"); put(agua, S["pract"] + 0.05, -28, E["pract"] - S["pract"], 0.05, 0.2)
+    put("silbato", S["pract"] + 0.1, -33, 0.5, 0.01, 0.2)
+    # reconocimiento: motor de la autobomba por la calle, ciudad, el aro del hidrante
+    cut("recon"); put(motor, S["recon"], -29, E["recon"] - S["recon"], 0.1, 0.15)
+    put("ciudad", S["recon"], -31, E["recon"] - S["recon"], 0.2, 0.15)
+    put(_pitch(bub, 0.8), c["ciudad"] - 0.25, -28, 0.3)
+    put("destello", c["ciudad"] - 0.1, -31, 0.6)
+    # ¡salida!: timbre, radio, sirena y motor; contador de salidas
+    put("alarma", S["salida"] - 0.3, -26, 1.0, 0.005, 0.2)
+    put("radio", c["salida"] + 0.1, -31, 0.9)
+    put(sirena, c["salida"] + 0.12, -28, E["casa"] - c["salida"] - 0.1, 0.05, 1.2)
+    put(_pitch(motor, 1.2), S["salida"], -27, E["salida"] - S["salida"] + 0.3, 0.02, 0.3)
+    for k in ("salida", "accidente", "arde"):
+        put(_pitch(_onset(_load("golpe")), 1.15), c[k] - 0.02, -30, 0.4, 0.002, 0.2)
+    # vivienda: fuego y agua
+    cut("casa"); put(fuego, S["casa"], -26, E["casa"] - S["casa"], 0.05, 0.3)
+    put(agua, S["casa"] + 0.2, -29, E["casa"] - S["casa"] - 0.2, 0.1, 0.3)
+    # accidente: cristales, vapor del motor, sirena lejana
+    cut("acc"); put("cristales", S["acc"] + 0.05, -29, 1.0)
+    put("vapor", S["acc"], -33, E["acc"] - S["acc"], 0.05, 0.2)
+    put("rotativo", S["acc"], -35, E["acc"] - S["acc"], 0.1, 0.3)
+    # vuelta al parque (marcha atrás), limpiar, pesas, estudiar, cenar
+    cut("vuelta"); put("marcha_atras", S["vuelta"], -31, E["vuelta"] - S["vuelta"], 0.01, 0.1)
+    put(_pitch(motor, 0.85), S["vuelta"], -31, E["vuelta"] - S["vuelta"], 0.05, 0.15)
+    put("vapor", E["vuelta"] - 0.35, -30, 0.5, 0.01, 0.2)
+    cut("limpiar"); put(_pitch(agua, 1.25), S["limpiar"], -30, E["limpiar"] - S["limpiar"], 0.03, 0.15)
+    cut("pesas"); put("pesas", S["pesas"] + 0.05, -27, E["pesas"] - S["pesas"], 0.005, 0.15)
+    cut("estudiar"); put("papeles", S["estudiar"] + 0.05, -29, E["estudiar"] - S["estudiar"], 0.01, 0.15)
+    cut("cenar"); put(_pitch(_load("tazas"), 0.9), S["cenar"], -29, E["cenar"] - S["cenar"], 0.01, 0.15)
+    # contenedor: sirena que llega, fuego y agua
+    put(_pitch(sirena, 0.95), S["cont"] - 0.2, -32, 1.2, 0.05, 0.6)
+    cut("cont"); put(fuego, S["cont"], -26, E["cont"] - S["cont"], 0.05, 0.3)
+    put(agua, S["cont"] + 0.3, -30, E["cont"] - S["cont"] - 0.3, 0.1, 0.3)
+    # madrugada: el parque en silencio (grillos y un reloj lento)
+    cut("noche", -34)
+    put("grillos", S["noche"], -30, E["listos"] - S["noche"], 0.4, 0.4)
+    put("reloj", S["noche"] + 0.2, -36, E["noche"] - S["noche"], 0.2, 0.3)
+    cut("listos", -33)
+    # relevo: guardia cumplida; a casa (pasos); calendario de descanso
+    cut("relevo2")
+    put("acierto", c["relevo2"] - 0.03, -26, 0.6)
+    put("destello", c["relevo2"] - 0.08, -30, 0.7)
+    cut("casa2"); put("pasos", S["casa2"] + 0.1, -29, E["casa2"] - S["casa2"] - 0.1, 0.05, 0.3)
+    for i in range(6):
+        put(_pitch(toque, 1.0 + 0.06 * i), c["cuatro"] - 0.1 + i * 0.08, -29, 0.25)
+    put(_pitch(_onset(_load("nota")), 1.12), c["servicio"] - 0.03, -30, 0.8)
+    # «Ser bombero no es solo apagar fuegos»
+    put("whoosh", S["ser"] - 0.25, -29, 0.6)
+    for i in range(3):
+        put(_pitch(_onset(_load("golpe")), 1.0 + 0.08 * i), c["ser"] + i * 0.25 - 0.02, -28, 0.45, 0.002, 0.2)
+    put("tension", c["ser"], -33, T["fin"] - c["ser"], 0.3, 0.3)
+    put(toque, c["teves"] - 0.03, -29, 0.3)
+    put(_pitch(toque, 1.15), c["escribelo"] - 0.03, -29, 0.3)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "guardia":
+        return sfx_track_guardia(path)
     if Q.get("formato") == "espuma":
         return sfx_track_espuma(path)
     if Q.get("formato") == "sueldos":

@@ -1,0 +1,727 @@
+[
+ {
+  "text": "Lo que nunca ves de un bombero: veinticuatro horas seguidas de guardia.",
+  "start": 0.0,
+  "end": 4.811,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 0.0,
+    "end": 0.229
+   },
+   {
+    "w": "que",
+    "start": 0.229,
+    "end": 0.457
+   },
+   {
+    "w": "nunca",
+    "start": 0.457,
+    "end": 0.875
+   },
+   {
+    "w": "ves",
+    "start": 0.875,
+    "end": 1.103
+   },
+   {
+    "w": "de",
+    "start": 1.103,
+    "end": 1.332
+   },
+   {
+    "w": "un",
+    "start": 1.332,
+    "end": 1.561
+   },
+   {
+    "w": "bombero:",
+    "start": 1.561,
+    "end": 2.167
+   },
+   {
+    "w": "veinticuatro",
+    "start": 2.347,
+    "end": 3.142
+   },
+   {
+    "w": "horas",
+    "start": 3.142,
+    "end": 3.559
+   },
+   {
+    "w": "seguidas",
+    "start": 3.559,
+    "end": 4.165
+   },
+   {
+    "w": "de",
+    "start": 4.165,
+    "end": 4.394
+   },
+   {
+    "w": "guardia.",
+    "start": 4.394,
+    "end": 4.811
+   }
+  ]
+ },
+ {
+  "text": "Ocho de la mañana: relevo.",
+  "start": 5.111,
+  "end": 7.378,
+  "words": [
+   {
+    "w": "Ocho",
+    "start": 5.111,
+    "end": 5.528
+   },
+   {
+    "w": "de",
+    "start": 5.528,
+    "end": 5.757
+   },
+   {
+    "w": "la",
+    "start": 5.757,
+    "end": 5.986
+   },
+   {
+    "w": "mañana:",
+    "start": 5.986,
+    "end": 6.592
+   },
+   {
+    "w": "relevo.",
+    "start": 6.772,
+    "end": 7.378
+   }
+  ]
+ },
+ {
+  "text": "Revisión: camiones, mangueras… y el aire de cada botella.",
+  "start": 7.678,
+  "end": 12.203,
+  "words": [
+   {
+    "w": "Revisión:",
+    "start": 7.678,
+    "end": 8.284
+   },
+   {
+    "w": "camiones,",
+    "start": 8.464,
+    "end": 9.07
+   },
+   {
+    "w": "mangueras…",
+    "start": 9.17,
+    "end": 9.776
+   },
+   {
+    "w": "y",
+    "start": 10.076,
+    "end": 10.305
+   },
+   {
+    "w": "el",
+    "start": 10.305,
+    "end": 10.533
+   },
+   {
+    "w": "aire",
+    "start": 10.533,
+    "end": 10.951
+   },
+   {
+    "w": "de",
+    "start": 10.951,
+    "end": 11.18
+   },
+   {
+    "w": "cada",
+    "start": 11.18,
+    "end": 11.597
+   },
+   {
+    "w": "botella.",
+    "start": 11.597,
+    "end": 12.203
+   }
+  ]
+ },
+ {
+  "text": "Desayuno con los compañeros… y a entrenar.",
+  "start": 12.503,
+  "end": 15.913,
+  "words": [
+   {
+    "w": "Desayuno",
+    "start": 12.503,
+    "end": 13.298
+   },
+   {
+    "w": "con",
+    "start": 13.298,
+    "end": 13.526
+   },
+   {
+    "w": "los",
+    "start": 13.526,
+    "end": 13.755
+   },
+   {
+    "w": "compañeros…",
+    "start": 13.755,
+    "end": 14.55
+   },
+   {
+    "w": "y",
+    "start": 14.85,
+    "end": 15.078
+   },
+   {
+    "w": "a",
+    "start": 15.078,
+    "end": 15.307
+   },
+   {
+    "w": "entrenar.",
+    "start": 15.307,
+    "end": 15.913
+   }
+  ]
+ },
+ {
+  "text": "Mediodía: reconocimiento de la ciudad.",
+  "start": 16.213,
+  "end": 19.046,
+  "words": [
+   {
+    "w": "Mediodía:",
+    "start": 16.213,
+    "end": 16.819
+   },
+   {
+    "w": "reconocimiento",
+    "start": 16.999,
+    "end": 18.171
+   },
+   {
+    "w": "de",
+    "start": 18.171,
+    "end": 18.4
+   },
+   {
+    "w": "la",
+    "start": 18.4,
+    "end": 18.628
+   },
+   {
+    "w": "ciudad.",
+    "start": 18.628,
+    "end": 19.046
+   }
+  ]
+ },
+ {
+  "text": "¡Salida! Incendio en una vivienda.",
+  "start": 19.346,
+  "end": 21.91,
+  "words": [
+   {
+    "w": "¡Salida!",
+    "start": 19.346,
+    "end": 19.952
+   },
+   {
+    "w": "Incendio",
+    "start": 20.052,
+    "end": 20.658
+   },
+   {
+    "w": "en",
+    "start": 20.658,
+    "end": 20.887
+   },
+   {
+    "w": "una",
+    "start": 20.887,
+    "end": 21.304
+   },
+   {
+    "w": "vivienda.",
+    "start": 21.304,
+    "end": 21.91
+   }
+  ]
+ },
+ {
+  "text": "Por la tarde, accidente de tráfico.",
+  "start": 22.21,
+  "end": 24.814,
+  "words": [
+   {
+    "w": "Por",
+    "start": 22.21,
+    "end": 22.439
+   },
+   {
+    "w": "la",
+    "start": 22.439,
+    "end": 22.667
+   },
+   {
+    "w": "tarde,",
+    "start": 22.667,
+    "end": 23.085
+   },
+   {
+    "w": "accidente",
+    "start": 23.185,
+    "end": 23.979
+   },
+   {
+    "w": "de",
+    "start": 23.979,
+    "end": 24.208
+   },
+   {
+    "w": "tráfico.",
+    "start": 24.208,
+    "end": 24.814
+   }
+  ]
+ },
+ {
+  "text": "Vuelta al parque: limpiar el material, entrenar, estudiar… y cenar.",
+  "start": 25.114,
+  "end": 29.968,
+  "words": [
+   {
+    "w": "Vuelta",
+    "start": 25.114,
+    "end": 25.531
+   },
+   {
+    "w": "al",
+    "start": 25.531,
+    "end": 25.76
+   },
+   {
+    "w": "parque:",
+    "start": 25.76,
+    "end": 26.177
+   },
+   {
+    "w": "limpiar",
+    "start": 26.357,
+    "end": 26.775
+   },
+   {
+    "w": "el",
+    "start": 26.775,
+    "end": 27.003
+   },
+   {
+    "w": "material,",
+    "start": 27.003,
+    "end": 27.609
+   },
+   {
+    "w": "entrenar,",
+    "start": 27.709,
+    "end": 28.316
+   },
+   {
+    "w": "estudiar…",
+    "start": 28.416,
+    "end": 29.022
+   },
+   {
+    "w": "y",
+    "start": 29.322,
+    "end": 29.55
+   },
+   {
+    "w": "cenar.",
+    "start": 29.55,
+    "end": 29.968
+   }
+  ]
+ },
+ {
+  "text": "Once de la noche: arde un contenedor.",
+  "start": 30.268,
+  "end": 33.181,
+  "words": [
+   {
+    "w": "Once",
+    "start": 30.268,
+    "end": 30.685
+   },
+   {
+    "w": "de",
+    "start": 30.685,
+    "end": 30.914
+   },
+   {
+    "w": "la",
+    "start": 30.914,
+    "end": 31.143
+   },
+   {
+    "w": "noche:",
+    "start": 31.143,
+    "end": 31.56
+   },
+   {
+    "w": "arde",
+    "start": 31.74,
+    "end": 32.157
+   },
+   {
+    "w": "un",
+    "start": 32.157,
+    "end": 32.386
+   },
+   {
+    "w": "contenedor.",
+    "start": 32.386,
+    "end": 33.181
+   }
+  ]
+ },
+ {
+  "text": "De madrugada, el parque en silencio… y los camiones listos.",
+  "start": 33.481,
+  "end": 37.866,
+  "words": [
+   {
+    "w": "De",
+    "start": 33.481,
+    "end": 33.71
+   },
+   {
+    "w": "madrugada,",
+    "start": 33.71,
+    "end": 34.504
+   },
+   {
+    "w": "el",
+    "start": 34.604,
+    "end": 34.833
+   },
+   {
+    "w": "parque",
+    "start": 34.833,
+    "end": 35.25
+   },
+   {
+    "w": "en",
+    "start": 35.25,
+    "end": 35.479
+   },
+   {
+    "w": "silencio…",
+    "start": 35.479,
+    "end": 36.085
+   },
+   {
+    "w": "y",
+    "start": 36.385,
+    "end": 36.614
+   },
+   {
+    "w": "los",
+    "start": 36.614,
+    "end": 36.843
+   },
+   {
+    "w": "camiones",
+    "start": 36.843,
+    "end": 37.449
+   },
+   {
+    "w": "listos.",
+    "start": 37.449,
+    "end": 37.866
+   }
+  ]
+ },
+ {
+  "text": "Ocho de la mañana: relevo. Veinticuatro horas después, a casa… y, según el servicio, cuatro o cinco días de descanso.",
+  "start": 38.166,
+  "end": 47.016,
+  "words": [
+   {
+    "w": "Ocho",
+    "start": 38.166,
+    "end": 38.583
+   },
+   {
+    "w": "de",
+    "start": 38.583,
+    "end": 38.812
+   },
+   {
+    "w": "la",
+    "start": 38.812,
+    "end": 39.041
+   },
+   {
+    "w": "mañana:",
+    "start": 39.041,
+    "end": 39.647
+   },
+   {
+    "w": "relevo.",
+    "start": 39.827,
+    "end": 40.433
+   },
+   {
+    "w": "Veinticuatro",
+    "start": 40.533,
+    "end": 41.328
+   },
+   {
+    "w": "horas",
+    "start": 41.328,
+    "end": 41.745
+   },
+   {
+    "w": "después,",
+    "start": 41.745,
+    "end": 42.162
+   },
+   {
+    "w": "a",
+    "start": 42.262,
+    "end": 42.491
+   },
+   {
+    "w": "casa…",
+    "start": 42.491,
+    "end": 42.908
+   },
+   {
+    "w": "y,",
+    "start": 43.208,
+    "end": 43.437
+   },
+   {
+    "w": "según",
+    "start": 43.537,
+    "end": 43.954
+   },
+   {
+    "w": "el",
+    "start": 43.954,
+    "end": 44.183
+   },
+   {
+    "w": "servicio,",
+    "start": 44.183,
+    "end": 44.789
+   },
+   {
+    "w": "cuatro",
+    "start": 44.889,
+    "end": 45.306
+   },
+   {
+    "w": "o",
+    "start": 45.306,
+    "end": 45.535
+   },
+   {
+    "w": "cinco",
+    "start": 45.535,
+    "end": 45.952
+   },
+   {
+    "w": "días",
+    "start": 45.952,
+    "end": 46.181
+   },
+   {
+    "w": "de",
+    "start": 46.181,
+    "end": 46.41
+   },
+   {
+    "w": "descanso.",
+    "start": 46.41,
+    "end": 47.016
+   }
+  ]
+ },
+ {
+  "text": "Ser bombero no es solo apagar fuegos.",
+  "start": 47.316,
+  "end": 50.049,
+  "words": [
+   {
+    "w": "Ser",
+    "start": 47.316,
+    "end": 47.545
+   },
+   {
+    "w": "bombero",
+    "start": 47.545,
+    "end": 48.151
+   },
+   {
+    "w": "no",
+    "start": 48.151,
+    "end": 48.379
+   },
+   {
+    "w": "es",
+    "start": 48.379,
+    "end": 48.608
+   },
+   {
+    "w": "solo",
+    "start": 48.608,
+    "end": 49.025
+   },
+   {
+    "w": "apagar",
+    "start": 49.025,
+    "end": 49.631
+   },
+   {
+    "w": "fuegos.",
+    "start": 49.631,
+    "end": 50.049
+   }
+  ]
+ },
+ {
+  "text": "¿Te ves haciendo esta guardia? Escríbelo en comentarios.",
+  "start": 50.349,
+  "end": 54.165,
+  "words": [
+   {
+    "w": "¿Te",
+    "start": 50.349,
+    "end": 50.578
+   },
+   {
+    "w": "ves",
+    "start": 50.578,
+    "end": 50.806
+   },
+   {
+    "w": "haciendo",
+    "start": 50.806,
+    "end": 51.412
+   },
+   {
+    "w": "esta",
+    "start": 51.412,
+    "end": 51.83
+   },
+   {
+    "w": "guardia?",
+    "start": 51.83,
+    "end": 52.247
+   },
+   {
+    "w": "Escríbelo",
+    "start": 52.347,
+    "end": 53.142
+   },
+   {
+    "w": "en",
+    "start": 53.142,
+    "end": 53.371
+   },
+   {
+    "w": "comentarios.",
+    "start": 53.371,
+    "end": 54.165
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo!",
+  "start": 54.465,
+  "end": 57.265,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 54.465,
+    "end": 55.305
+   },
+   {
+    "w": "a",
+    "start": 55.305,
+    "end": 55.545
+   },
+   {
+    "w": "quien",
+    "start": 55.545,
+    "end": 55.785
+   },
+   {
+    "w": "oposite",
+    "start": 55.785,
+    "end": 56.625
+   },
+   {
+    "w": "contigo!",
+    "start": 56.625,
+    "end": 57.265
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 57.565,
+  "end": 62.085,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 57.565,
+    "end": 58.405
+   },
+   {
+    "w": "a",
+    "start": 58.405,
+    "end": 58.645
+   },
+   {
+    "w": "bombero?",
+    "start": 58.645,
+    "end": 59.285
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 59.385,
+    "end": 60.225
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 60.325,
+    "end": 60.965
+   },
+   {
+    "w": "gratis",
+    "start": 60.965,
+    "end": 61.405
+   },
+   {
+    "w": "cinco",
+    "start": 61.405,
+    "end": 61.845
+   },
+   {
+    "w": "días!",
+    "start": 61.845,
+    "end": 62.085
+   }
+  ]
+ }
+]
