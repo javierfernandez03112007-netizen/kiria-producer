@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Plan de crecimiento · kiria.ai</title>
+<!-- Plan de crecimiento de kiria.ai en PDF (8-11-2026). Mismo contenido que la página de Notion «📈 Plan de crecimiento · de visitas a clientes»,
+     con ideas de vídeos y el guion de la serie. PDF: node web_estudio/ventas/hacer_pdf.mjs plan_crecimiento.html plan_crecimiento_kiria.pdf "Plan de crecimiento · de visitas a clientes" -->
+<style>
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Medium.otf'); font-weight: 400 500; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-SemiBold.otf'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Bold.otf'); font-weight: 700; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Black.otf'); font-weight: 800 900; }
+@font-face { font-family: 'Bebas'; src: url('../../engine/fonts/BebasNeue-Regular.ttf'); }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Regular.ttf'); font-weight: 400; }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Bold.ttf'); font-weight: 700; }
+:root { --ink: #0c0e12; --ink2: #3a404a; --muted: #6c737e; --line: #e2e3e6; --soft: #f5f6f8; --red: #e5243f; --violet: #8a4dff; --blue: #2f5bff;
+  --grad: linear-gradient(90deg, #ff4d61, #b45cff 55%, #4f7dff); }
+@page { size: A4; margin: 16mm 15mm 18mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.6pt; line-height: 1.5; color: var(--ink2); }
+h1, h2, h3 { color: var(--ink); margin: 0; }
+h2 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 25pt; letter-spacing: .4pt; line-height: 1; margin: 0 0 3mm; break-after: avoid; }
+h2 .n { color: var(--red); margin-right: 2.5mm; }
+h2::after { content: ''; display: block; width: 18mm; height: 1mm; border-radius: 1mm; background: var(--grad); margin-top: 2.2mm; }
+h3 { font-weight: 800; font-size: 11.5pt; margin: 4.5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.4mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 5.5mm; }
+li { margin: 0 0 1.3mm; }
+b, strong { color: var(--ink); font-weight: 700; }
+section { margin: 0 0 8mm; }
+section.page { break-before: auto; }
+section.cheatpage { break-before: page; }
+.cover { break-after: page; }
+.lab { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--muted); }
+.say { position: relative; margin: 1.5mm 0 3mm; padding: 3mm 4mm 3mm 6mm; background: var(--soft); border-radius: 2mm; color: var(--ink); break-inside: avoid; }
+.say::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1.3mm; border-radius: 2mm 0 0 2mm; background: var(--grad); }
+.say .who { display: block; font-family: 'Mono', monospace; font-size: 7pt; letter-spacing: 1pt; text-transform: uppercase; color: var(--red); margin-bottom: .8mm; }
+.note { margin: 2mm 0 3mm; padding: 2.5mm 4mm; border: .3mm dashed #c9ccd2; border-radius: 2mm; font-size: 9.6pt; break-inside: avoid; }
+.warn { border-color: var(--red); color: var(--ink); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.card { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4mm; break-inside: avoid; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 1mm 0 4mm; font-size: 9.6pt; break-inside: avoid; }
+th, td { text-align: left; padding: 1.8mm 2.5mm; border-bottom: .3mm solid var(--line); vertical-align: top; }
+th { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: .8pt; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+td b { white-space: nowrap; }
+.funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5mm; margin: 3mm 0 4mm; }
+.funnel div { padding: 2.5mm 2mm; border-radius: 2mm; color: #fff; font-weight: 700; font-size: 8.6pt; line-height: 1.25; text-align: center; min-height: 15mm; display: flex; flex-direction: column; justify-content: center; }
+.funnel small { display: block; font-weight: 500; opacity: .85; font-size: 7.2pt; margin-top: .8mm; }
+.check li { list-style: none; position: relative; padding-left: 1mm; }
+.check li::before { content: ''; position: absolute; left: -5mm; top: 1.2mm; width: 3mm; height: 3mm; border: .35mm solid var(--ink2); border-radius: .6mm; }
+.week td:first-child { width: 30mm; font-weight: 700; color: var(--ink); }
+/* portada */
+.cover { height: 263mm; display: flex; flex-direction: column; justify-content: space-between; padding: 6mm 2mm 2mm; }
+.brand { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); letter-spacing: .5pt; }
+.brand i { font-style: normal; color: var(--red); }
+.cover h1 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 66pt; line-height: .92; letter-spacing: .5pt; }
+.cover h1 span { color: var(--red); }
+.cover .bar { width: 34mm; height: 1.6mm; border-radius: 1mm; background: var(--grad); margin: 7mm 0 6mm; }
+.cover .sub { font-size: 13pt; max-width: 135mm; color: var(--ink2); }
+.toc { columns: 2; column-gap: 10mm; font-size: 10pt; padding: 0; list-style: none; }
+.toc li { break-inside: avoid; padding: 1.2mm 0; border-bottom: .3mm solid var(--line); }
+.toc li span { color: var(--red); font-weight: 700; margin-right: 2mm; }
+.foot { display: flex; justify-content: space-between; align-items: end; font-size: 9pt; color: var(--muted); }
+/* chuleta */
+.cheat { border: .5mm solid var(--ink); border-radius: 3mm; padding: 6mm 7mm; }
+.cheat h2 { font-size: 30pt; }
+.cheat ol > li { margin-bottom: 3mm; }
+.cheat .say { margin: 1mm 0 0; padding: 2mm 3mm 2mm 5mm; font-size: 9.8pt; }
+.big { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); line-height: 1; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 2mm 0 4mm; }
+.kpis div { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3mm; break-inside: avoid; }
+.kpis small { display: block; font-size: 8pt; color: var(--muted); margin-top: 1mm; line-height: 1.3; }
+.mix { display: flex; height: 9mm; border-radius: 2mm; overflow: hidden; margin: 2mm 0 1.5mm; }
+.mix div { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 8.6pt; }
+.motor { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4.5mm; margin: 0 0 4mm; break-inside: avoid; }
+.motor h3 { margin-top: 0; }
+.motor .lab { margin-bottom: 1mm; }
+.yes { color: #138a4a; font-weight: 800; } .no { color: var(--red); font-weight: 800; }
+</style></head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <div class="brand">kiria<i>.</i>ai</div>
+  <div>
+    <p class="lab">Plan de crecimiento y escalabilidad · redes y clientes</p>
+    <h1>De visitas<br>a <span>clientes</span></h1>
+    <div class="bar"></div>
+    <p class="sub">Qué contenido publicar para seguir creciendo, cómo llegar a los negocios de Motril y Granada, cómo convertir las visualizaciones en clientes y qué números mirar cada semana.</p>
+  </div>
+  <div>
+    <ol class="toc">
+      <li><span>1</span>Dónde estamos</li><li><span>2</span>La decisión</li><li><span>3</span>Los cuatro motores</li>
+      <li><span>4</span>Ideas de vídeos puente</li><li><span>5</span>Tu serie, capítulo a capítulo</li><li><span>6</span>Servicio nuevo</li>
+      <li><span>7</span>Un perfil que convierte</li><li><span>8</span>Semana tipo</li><li><span>9</span>Números y metas</li>
+      <li><span>10</span>Los primeros 30 días</li><li><span>11</span>Lo que no vamos a hacer</li><li><span>12</span>Lo que decides tú</li>
+      <li><span>★</span>Chuleta de una página</li>
+    </ol>
+    <div class="foot"><span>kiriaai.com · @kiria.ai · kiriaai2026@gmail.com</span><span>8 de noviembre de 2026</span></div>
+  </div>
+</div>
+
+<!-- 1 -->
+<section class="page">
+  <h2><span class="n">1</span>Dónde estamos</h2>
+  <p class="lab">Datos de Metricool del 6-11-2026</p>
+  <div class="kpis">
+    <div><div class="big">5.011</div><small>seguidores en Instagram</small></div>
+    <div><div class="big">3,2 M</div><small>visualizaciones en 14 días</small></div>
+    <div><div class="big">≈ 2</div><small>seguidores nuevos por cada 1.000 visualizaciones</small></div>
+    <div><div class="big">69 %</div><small>del público, de Latinoamérica (jóvenes y estudiantes)</small></div>
+  </div>
+  <ul>
+    <li><b>Lo que más se ve:</b> carreras «por dentro» (Derecho 887.817, Industrial 525.972, Mecánica 333.979, Magisterio 316.643) e historias reales (Brasil: +13.928 en un solo día).</li>
+    <li><b>Lo que no:</b> los anuncios. «Producto en 3D» se quedó en 2.325 visualizaciones y solo el 37,6 % pasó de 3 segundos; Bomberados, 8.563.</li>
+    <li><b>El problema:</b> quien ve los vídeos no es quien compra. Y a los negocios de Motril y Granada el algoritmo no los trae por mucho que publiques: Instagram enseña los vídeos por gustos, no por barrio.</li>
+  </ul>
+</section>
+
+<!-- 2 -->
+<section class="page">
+  <h2><span class="n">2</span>La decisión: dos públicos, una marca</h2>
+  <table>
+    <tr><th>Opción</th><th>Qué pasa</th><th>Veredicto</th></tr>
+    <tr><td>Cambiar todo a contenido para empresas</td><td>Las visitas se hunden (el anuncio: 2.325), pierdes el argumento de los 3 millones y el algoritmo sigue sin enseñarte por zona.</td><td class="no">No</td></tr>
+    <tr><td>Seguir igual y meter anuncios de kiria</td><td>Muchas visitas y casi ningún cliente: el anuncio no retiene.</td><td class="no">No</td></tr>
+    <tr><td><b>Dos públicos, una marca</b></td><td>El nicho trae alcance y autoridad; el contenido puente y tu serie traen dueños de negocios; la venta local la haces tú, con pruebas.</td><td class="yes">Sí</td></tr>
+  </table>
+  <div class="say"><span class="who">La idea clave</span>El dueño de un bar de Motril no te va a encontrar por un vídeo de Derecho. Pero si le enseñas en tu móvil un vídeo con 880.000 visualizaciones hecho por ti, te escucha. <b>Las visitas no venden solas: son tu mejor argumento de venta.</b></div>
+  <p class="lab">Reparto de los vídeos de la semana</p>
+  <div class="mix"><div style="width:60%;background:#2f5bff">Alcance ≈ 60 %</div><div style="width:30%;background:#b45cff">Puente ≈ 30 %</div><div style="width:10%;background:#e5243f">Tú 10 %</div></div>
+  <p style="font-size:9.4pt">Nunca anuncios puros. Un solo vídeo informativo al día, como pide la receta del canal.</p>
+</section>
+
+<!-- 3 -->
+<section class="page">
+  <h2><span class="n">3</span>Los cuatro motores</h2>
+  <div class="motor"><p class="lab">Motor 1 · Alcance</p><h3>La cuenta de siempre</h3>
+    <ul><li>3 o 4 vídeos a la semana de carreras «por dentro» e historias reales, con la receta del canal.</li>
+    <li>Objetivo: seguidores y la cifra total de visualizaciones, que es tu prueba ante los negocios.</li>
+    <li>En todos, el comentario fijado: «Este vídeo lo hemos hecho con IA en kiria. ¿Quieres uno así para tu negocio? → kiriaai.com».</li></ul></div>
+  <div class="motor"><p class="lab">Motor 2 · Puente</p><h3>Gusta a todos y además a los negocios</h3>
+    <ul><li><b>Negocios por dentro</b>: cuánto gana un bar con cada café, por qué la tapa es gratis en Granada, el negocio de las máquinas de vending.</li>
+    <li><b>Historias reales de negocios</b>: robos, hackeos (como las neveras), estafas a tiendas, negocios pequeños que se hicieron virales.</li>
+    <li><b>Cómo hacemos un vídeo de 880.000 visualizaciones</b>: del guion a la escena 3D, por dentro.</li>
+    <li><b>Antes y después con un negocio real de la zona</b> (con su permiso), con los números reales.</li>
+    <li>Cierre: «Si tienes un negocio, mándaselo a…» o «comenta NEGOCIO y te digo qué vídeo le haría al tuyo».</li>
+    <li>Truco: publícalos como <b>«Reel de prueba»</b> (Instagram lo enseña primero solo a quien no te sigue) y deja en el perfil los que funcionen.</li></ul></div>
+  <div class="motor"><p class="lab">Motor 3 · Tú en primera persona</p><h3>La serie «Vendo vídeos con IA a los negocios de mi pueblo»</h3>
+    <ul><li>Lo grabas con el móvil y yo lo edito con IA: cortes, subtítulos, zooms, efectos, cambios de plano y el vídeo del negocio metido dentro.</li>
+    <li>A los jóvenes les engancha seguir a alguien que emprende (vuelven por el siguiente capítulo) y a los negocios de la zona les salen gente y sitios que conocen.</li>
+    <li>Reglas: permiso para grabar y publicar a cualquier persona o negocio; si no, sin caras ni nombres. Los «no» también se cuentan: dan credibilidad.</li></ul></div>
+  <div class="motor"><p class="lab">Motor 4 · Local</p><h3>Donde salen los clientes</h3>
+    <ul><li><b>Visitas</b>: 2 mañanas a la semana, 10 negocios por mañana, con la tarjeta y la demo en el móvil (guion del plan comercial).</li>
+    <li><b>Colaboraciones</b>: cada vídeo para un negocio se publica como «Colaboración» en las dos cuentas; lo ven sus seguidores, que son de la zona.</li>
+    <li><b>Muestras</b> (si decides darlas): 5 vídeos cortos para negocios conocidos, a cambio de la colaboración y una opinión real.</li>
+    <li><b>Perfil de Empresa de Google</b> en Motril, como negocio de servicios sin local, con reseñas reales de clientes.</li>
+    <li><b>Facebook</b>: los vídeos puente y los casos, también en la página de kiria y en grupos de comercios de Motril y Granada (muchos dueños de 35 a 60 años están allí).</li>
+    <li><b>Asociaciones y prensa</b>: asociaciones de comerciantes, Cámara de Comercio, coworkings y una nota corta a la prensa y las radios de la zona.</li>
+    <li><b>Recomendaciones</b>: un premio por cada cliente que traiga otro.</li></ul></div>
+  <div class="note"><b>Extra · vende también al público que ya tienes.</b> Entre los jóvenes que te ven hay tiendas online, creadores, autónomos e hijos de familias con negocio, y Latinoamérica puede pagar con tarjeta en la web. En la bio y en los comentarios fijados: «tu vídeo para tu negocio o tu marca».</div>
+</section>
+
+<!-- 4 -->
+<section class="page">
+  <h2><span class="n">4</span>Ideas de vídeos puente</h2>
+  <p>Diez primeras ideas. Cada dato se busca y se apunta con su fuente antes de grabar, como en todos los vídeos.</p>
+  <table>
+    <tr><th>Vídeo</th><th>Gancho (primera frase)</th></tr>
+    <tr><td><b>La tapa gratis de Granada</b></td><td>«En Granada la tapa es gratis… y aun así el bar gana dinero. ¿Cómo? Te lo digo al final.»</td></tr>
+    <tr><td><b>El café por dentro</b></td><td>«Pagas un café en el bar. ¿Cuánto de ese dinero se queda el bar? Menos de lo que crees.»</td></tr>
+    <tr><td><b>Neveras hackeadas</b> (ya en el calendario)</td><td>Historia real contada en orden, con cierre para quien tiene una tienda.</td></tr>
+    <tr><td><b>Cómo se hace un vídeo de 880.000 visualizaciones</b></td><td>«Este vídeo tiene 880.000 visualizaciones… y no tiene ni una sola cámara.»</td></tr>
+    <tr><td><b>Los precios acabados en ,99</b></td><td>«El truco del ,99 funciona contigo cada vez que compras algo.»</td></tr>
+    <tr><td><b>Lo que cuesta abrir una cafetería</b></td><td>«Abrir una cafetería cuesta mucho más que la máquina de café.»</td></tr>
+    <tr><td><b>Las máquinas de vending</b></td><td>«Esa máquina de la esquina es un negocio. ¿Cuánto deja?»</td></tr>
+    <tr><td><b>El robo más tonto a una tienda</b></td><td>Historia real contada en orden (como el túnel de Brasil, que es lo que más crece).</td></tr>
+    <tr><td><b>Antes y después: un negocio de Motril</b></td><td>«Le hicimos este vídeo a un bar de Motril. Mira lo que pasó.» (solo con números reales)</td></tr>
+    <tr><td><b>¿Por qué este bar siempre está lleno?</b></td><td>Lo que hace distinto un negocio de la zona (con su permiso).</td></tr>
+  </table>
+</section>
+
+<!-- 5 -->
+<section class="page">
+  <h2><span class="n">5</span>Tu serie, capítulo a capítulo</h2>
+  <table class="week">
+    <tr><th>Capítulo</th><th>De qué va</th></tr>
+    <tr><td>1 · El reto</td><td>«Mis vídeos tienen más de 3 millones de visualizaciones… y hoy voy a intentar vendérselos a los bares de mi pueblo.» Sales a la calle con las tarjetas; cuentas los «sí», los «no» y los «ya veremos».</td></tr>
+    <tr><td>2 · La primera muestra</td><td>Enseñas el vídeo que le has hecho a un negocio y grabas su reacción (con permiso).</td></tr>
+    <tr><td>3 · El primer cliente</td><td>El primer negocio que paga: qué le convenció.</td></tr>
+    <tr><td>4 · Los números</td><td>Qué ha pasado con su vídeo: visualizaciones, clientes, mensajes. Solo datos reales.</td></tr>
+    <tr><td>5 · El que dijo que no</td><td>Por qué te dijo que no y qué cambiaste. Engancha y da credibilidad.</td></tr>
+  </table>
+  <h3>Cómo grabar cada capítulo</h3>
+  <ul class="check"><li>En vertical, con luz de cara y el móvil a la altura de los ojos.</li>
+    <li>Frases cortas, mirando a cámara; la primera frase, la más fuerte.</li>
+    <li>Graba también planos sin hablar: la calle, la tarjeta, el escaparate, tu móvil enseñando el vídeo.</li>
+    <li>Mándame los archivos tal cual salen del móvil y una línea con lo que pasó. Yo hago el resto.</li></ul>
+</section>
+
+<!-- 6 · 7 -->
+<section class="page">
+  <h2><span class="n">6</span>Servicio nuevo: «Grábalo tú, lo editamos con IA»</h2>
+  <p>Lo mismo que haremos con tu serie, como producto: el negocio graba con el móvil y nosotros lo editamos con IA (cortes, subtítulos, efectos, sonido, cambios de plano y su producto en 3D dentro). Es fácil de vender en persona: salen ellos, no hace falta grabar nada caro y la entrega es rápida. <b>Precio y plazo los decides tú</b>; lo añadimos a la web cuando digas.</p>
+  <h2 style="margin-top:7mm"><span class="n">7</span>Un perfil que convierte</h2>
+  <ul><li><b>Bio</b> (propuesta): «Vídeos con IA que se hacen virales · más de 3 M de visualizaciones · ¿Uno para tu negocio? ↓», con el enlace etiquetado para saber de dónde viene cada visita.</li>
+    <li><b>Historias destacadas</b>: «Negocios» (antes y después), «Cómo lo hacemos», «Opiniones» (solo reales) y «Pide el tuyo».</li>
+    <li><b>3 vídeos fijados</b>: el más visto (Derecho), «cómo lo hacemos» y el primer caso de un negocio.</li>
+    <li><b>Mensajes</b>: contestar en menos de 1 hora, con respuestas rápidas guardadas.</li></ul>
+</section>
+
+<!-- 8 -->
+<section class="page">
+  <h2><span class="n">8</span>Semana tipo</h2>
+  <table class="week">
+    <tr><th>Día</th><th>Vídeo del día (10:00)</th><th>Tú</th><th>Yo</th></tr>
+    <tr><td>Lunes</td><td>Alcance (carrera)</td><td>Repaso de números (15 min)</td><td>Vídeo y análisis</td></tr>
+    <tr><td>Martes</td><td>Puente (negocio por dentro)</td><td>Mañana de visitas (10 negocios) y grabar</td><td>Vídeo</td></tr>
+    <tr><td>Miércoles</td><td>Alcance</td><td>Seguimiento de las visitas del martes</td><td>Vídeo y edición de tu capítulo</td></tr>
+    <tr><td>Jueves</td><td>Tu serie (capítulo)</td><td>Mañana de visitas (10 negocios) y grabar</td><td>Vídeo</td></tr>
+    <tr><td>Viernes</td><td>Puente (caso real o antes y después)</td><td>Llamadas y propuestas</td><td>Vídeo y muestras</td></tr>
+    <tr><td>Sábado</td><td>Alcance (historia real)</td><td>Historias del día</td><td>Vídeo</td></tr>
+    <tr><td>Domingo</td><td>Descanso</td><td>—</td><td>Resumen de la semana</td></tr>
+  </table>
+  <p style="font-size:9.4pt">Historias (stories) cada día con lo que haces: visitas, rodajes y entregas.</p>
+</section>
+
+<!-- 9 -->
+<section class="page">
+  <h2><span class="n">9</span>Números que miramos cada semana</h2>
+  <table>
+    <tr><th>Paso</th><th>Dónde se mira</th><th>Meta a 30 días</th><th>Meta a 90 días</th></tr>
+    <tr><td>Visualizaciones por semana</td><td>Metricool</td><td>1 millón</td><td>2 millones</td></tr>
+    <tr><td>Seguidores</td><td>Metricool</td><td>9.000</td><td>20.000</td></tr>
+    <tr><td>Visitas al perfil y toques en el enlace</td><td>Estadísticas de Instagram</td><td>+50 %</td><td>×3</td></tr>
+    <tr><td>Visitas a la web</td><td>Cloudflare Web Analytics (hay que activarlo)</td><td>1.000</td><td>5.000</td></tr>
+    <tr><td>Negocios visitados</td><td>Notion · Empresas · leads</td><td>80</td><td>250</td></tr>
+    <tr><td>Muestras y propuestas enviadas</td><td>Notion · Empresas · leads</td><td>10</td><td>40</td></tr>
+    <tr><td>Clientes que pagan</td><td>Stripe y Notion</td><td>5</td><td>20</td></tr>
+    <tr><td>Clientes con pack mensual</td><td>Stripe</td><td>1</td><td>5</td></tr>
+    <tr><td>Colaboraciones publicadas</td><td>Instagram</td><td>3</td><td>12</td></tr>
+  </table>
+  <div class="note">Son metas orientativas: cada lunes se ajustan con los datos reales. El chat de análisis puede añadir cada día un bloque «Negocio» con estos números, y la tabla «KPI semanales · ventas» de Notion guarda el resumen.</div>
+</section>
+
+<!-- 10 -->
+<section class="page">
+  <h2><span class="n">10</span>Los primeros 30 días</h2>
+  <div class="cols">
+    <div class="card"><h3>Semana 1 · 9–15 nov</h3><ul class="check">
+      <li>Tú: decidir muestras gratis, garantía y premio por recomendar.</li>
+      <li>Tú: crear el código de promoción KIRIA10 en Stripe.</li>
+      <li>Tú: grabar el capítulo 1 y mandármelo.</li>
+      <li>Tú: 2 mañanas de visitas (20 negocios) apuntadas en Notion.</li>
+      <li>Yo: editar el capítulo 1 y los vídeos de la semana.</li>
+      <li>Yo: textos de la bio, destacadas, respuestas rápidas y el enlace etiquetado.</li></ul></div>
+    <div class="card"><h3>Semana 2</h3><ul class="check">
+      <li>Primeras colaboraciones publicadas con negocios.</li>
+      <li>Perfil de Empresa de Google y página de Facebook al día.</li>
+      <li>Nota a la prensa local.</li>
+      <li>Capítulos 2 y 3 de la serie.</li></ul></div>
+    <div class="card"><h3>Semana 3</h3><ul class="check">
+      <li>Primer caso real con números (antes y después).</li>
+      <li>Segunda ronda de visitas a los que dijeron «más adelante».</li></ul></div>
+    <div class="card"><h3>Semana 4</h3><ul class="check">
+      <li>Revisión del mes: qué puente funcionó, cuántos clientes y de dónde vino cada uno.</li>
+      <li>Más de lo que funciona y fuera lo que no.</li></ul></div>
+  </div>
+</section>
+
+<!-- 11 · 12 -->
+<section class="page">
+  <h2><span class="n">11</span>Lo que no vamos a hacer</h2>
+  <ul><li>Anuncios de kiria como vídeo normal: ya se ha visto que no retienen.</li>
+    <li>Comprar seguidores, sorteos para ganar seguidores o reseñas falsas.</li>
+    <li>Dos vídeos informativos el mismo día.</li>
+    <li>Precios dentro de los vídeos.</li>
+    <li>Cambiar toda la cuenta a contenido de empresas.</li></ul>
+  <h2 style="margin-top:7mm"><span class="n">12</span>Lo que decides tú</h2>
+  <ul class="check"><li>¿Muestras gratis? ¿Cuántas y para quién?</li>
+    <li>La garantía (por ejemplo: «si no te gusta, lo rehacemos»).</li>
+    <li>El premio por recomendar a otro negocio.</li>
+    <li>Precio y plazo de «Grábalo tú, lo editamos con IA».</li>
+    <li>Si los vídeos puente y tu serie van en la cuenta principal (lo propuesto) o en una cuenta aparte.</li></ul>
+</section>
+
+<!-- CHULETA -->
+<section class="cheatpage">
+  <div class="cheat">
+    <h2>Chuleta de una página</h2>
+    <ol>
+      <li><b>No cambies de nicho.</b> Las carreras y las historias dan las visitas, y las visitas son tu prueba ante los negocios.</li>
+      <li><b>Dos vídeos puente a la semana</b>: negocios por dentro, historias de negocios, cómo hacemos los vídeos, antes y después reales.</li>
+      <li><b>Tu serie</b>, «Vendo vídeos con IA a los negocios de mi pueblo»: grabas con el móvil y yo la edito.</li>
+      <li><b>Los clientes salen de la calle</b>: 2 mañanas de visitas, colaboraciones con cada negocio, Google, Facebook, asociaciones y prensa local.</li>
+      <li><b>Servicio nuevo</b>: «Grábalo tú, lo editamos con IA».</li>
+      <li><b>Perfil</b>: bio para negocios, destacadas, 3 fijados y respuesta en menos de 1 hora.</li>
+      <li><b>Cada lunes, números</b>: visualizaciones, seguidores, visitas a la web, negocios visitados, muestras, clientes.</li>
+      <li><b>Nunca</b>: anuncios como vídeo normal, seguidores comprados, reseñas falsas ni precios en los vídeos.</li>
+    </ol>
+    <div class="say"><span class="who">Frase para la visita</span>«Estos vídeos los hago yo con IA. El de Derecho tiene 880.000 visualizaciones. ¿Te enseño cómo quedaría uno de tu negocio?»</div>
+  </div>
+</section>
+
+</body></html>
