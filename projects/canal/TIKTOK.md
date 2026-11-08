@@ -107,5 +107,11 @@ todo lo necesario para profesionalizarla».
 
     #ADE #carreras #universidad #empleo #estudiantes
     ```
+13. **La tapa gratis no existe** (vídeo puente: negocios por dentro)
+    ```
+    🍺 En Granada la tapa va «gratis» con cada caña… y aun así el bar gana dinero. De 3 €, 0,27 son de IVA y unos 0,50 de cerveza. El truco está en la segunda caña 🧂 ¿Granada o Jaén? 👇
+
+    #tapas #Granada #bares #negocios #economia
+    ```
 No subir a TikTok los dos vídeos de lanzamiento («Ni una sola cámara» y «Tu producto, en 3D»): dicen «comenta KIRIA» y «el domingo»,
 que ya no valen.
