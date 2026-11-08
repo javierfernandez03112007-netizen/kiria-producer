@@ -5,7 +5,7 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 7-11-2026 (21 vídeos de Instagram, dos capturas de Metricool).
+Última actualización: 8-11-2026 (23 vídeos de Instagram, tres capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
@@ -29,7 +29,7 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - ✅ **Cierre con envío a una persona concreta**: «Mándaselo a quien te dijo que Magisterio era fácil» hizo de Magisterio el vídeo más
   compartido (18 por cada 1.000) y lo llevó a 309 mil con el peor arranque. Siempre: «mándaselo a [persona que se pica o que lo necesita]».
 - 🧪 **Duelo con creencia rota** («Crees que Química e Ingeniería Química son la misma carrera») + «¿cuál cobra más? te lo digo al
-  final»: Química, 20,4 guardados por cada 1.000 (casi como Derecho) en su primer día.
+  final»: Química, +40.931 en su segundo día (79.870 en 51 h) y 19,5 guardados por cada 1.000, casi como Derecho.
 - 🧪 **Pregunta de bando al final** («¿máster o PIR?», «¿abogado o juez?») + «guárdalo si estás eligiendo carrera». Los comentarios
   son el punto flojo de todo el canal (0,1–1,4 por cada 1.000): la pregunta debe ser una pelea real de la profesión, no de gustos.
 - ✅ Datos reales con fuente en `FUENTES.md`, números escritos como se dicen en el guion de ElevenLabs.
@@ -59,12 +59,13 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 
 ## 7. Publicación
 - 🧪 **Hora: 10:00 de lunes a viernes** (Metricool: vie, mié y jue 10:00 las mejores; segundo pico a las 18:00 de mar a jue).
-  Los dos mejores vídeos salieron en fin de semana a media mañana (sáb 10:39, dom 12:47). Prueba A/B en curso: 10:00 frente a 18:00.
+  Los dos mejores vídeos salieron en fin de semana a media mañana (sáb 10:39, dom 12:47). Prueba A/B en curso: 10:00 frente a 18:00 (señal en contra: Química salió a las 17:55 y es el que más crece).
 - 🧪 **Un solo vídeo informativo al día**: el 2 y 3 de noviembre salieron 4 y Medicina y Economía se quedaron cortos.
 - Portada con la frase del gancho en grande; descripción con las fuentes. Hashtags y descripción: sin datos todavía para compararlos.
 
 ## 8. Lo que NO hacer
 - Ganchos de pura curiosidad sin tensión (la carga sin cable, «Tu móvil habla con el cargador…»).
+- 🧪 Noticias de ciencia lejana sin nada que toque al que mira (perro robot: 1.441 en 11 h y 0 compartidos). Meter siempre un «tú».
 - Anuncios del estudio como reel normal: Producto en 3D, 37,6 % pasa de 3 s y 6,9 s de media.
 - Vídeos de más de 65 s; dos vídeos informativos el mismo día; anuncios como contenido principal.
 - Precios, logos reales, la marca kiria.ai en los vídeos informativos 👤; cifras sin fuente.
