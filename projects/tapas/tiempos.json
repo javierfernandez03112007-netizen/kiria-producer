@@ -1,0 +1,887 @@
+[
+ {
+  "text": "La tapa gratis no existe.",
+  "start": 0.06,
+  "end": 1.72,
+  "words": [
+   {
+    "w": "La",
+    "start": 0.06,
+    "end": 0.22
+   },
+   {
+    "w": "tapa",
+    "start": 0.22,
+    "end": 0.54
+   },
+   {
+    "w": "gratis",
+    "start": 0.54,
+    "end": 1.1
+   },
+   {
+    "w": "no",
+    "start": 1.1,
+    "end": 1.26
+   },
+   {
+    "w": "existe.",
+    "start": 1.26,
+    "end": 1.72
+   }
+  ]
+ },
+ {
+  "text": "En Granada te la ponen con cada caña… y aun así, el bar gana dinero.",
+  "start": 2.07,
+  "end": 6.28,
+  "words": [
+   {
+    "w": "En",
+    "start": 2.07,
+    "end": 2.196
+   },
+   {
+    "w": "Granada",
+    "start": 2.196,
+    "end": 2.63
+   },
+   {
+    "w": "te",
+    "start": 2.63,
+    "end": 2.79
+   },
+   {
+    "w": "la",
+    "start": 2.79,
+    "end": 2.87
+   },
+   {
+    "w": "ponen",
+    "start": 2.87,
+    "end": 3.27
+   },
+   {
+    "w": "con",
+    "start": 3.27,
+    "end": 3.43
+   },
+   {
+    "w": "cada",
+    "start": 3.43,
+    "end": 3.75
+   },
+   {
+    "w": "caña…",
+    "start": 3.75,
+    "end": 4.46
+   },
+   {
+    "w": "y",
+    "start": 4.46,
+    "end": 4.617
+   },
+   {
+    "w": "aun",
+    "start": 4.617,
+    "end": 4.81
+   },
+   {
+    "w": "así,",
+    "start": 4.81,
+    "end": 5.23
+   },
+   {
+    "w": "el",
+    "start": 5.23,
+    "end": 5.34
+   },
+   {
+    "w": "bar",
+    "start": 5.34,
+    "end": 5.66
+   },
+   {
+    "w": "gana",
+    "start": 5.66,
+    "end": 5.98
+   },
+   {
+    "w": "dinero.",
+    "start": 5.98,
+    "end": 6.28
+   }
+  ]
+ },
+ {
+  "text": "¿Cómo? Te lo enseño por dentro. Y al final, el truco que no ves.",
+  "start": 6.58,
+  "end": 10.27,
+  "words": [
+   {
+    "w": "¿Cómo?",
+    "start": 6.58,
+    "end": 6.99
+   },
+   {
+    "w": "Te",
+    "start": 6.99,
+    "end": 7.062
+   },
+   {
+    "w": "lo",
+    "start": 7.062,
+    "end": 7.15
+   },
+   {
+    "w": "enseño",
+    "start": 7.15,
+    "end": 7.63
+   },
+   {
+    "w": "por",
+    "start": 7.63,
+    "end": 7.79
+   },
+   {
+    "w": "dentro.",
+    "start": 7.79,
+    "end": 8.24
+   },
+   {
+    "w": "Y",
+    "start": 8.24,
+    "end": 8.361
+   },
+   {
+    "w": "al",
+    "start": 8.361,
+    "end": 8.51
+   },
+   {
+    "w": "final,",
+    "start": 8.51,
+    "end": 9.0
+   },
+   {
+    "w": "el",
+    "start": 9.0,
+    "end": 9.1
+   },
+   {
+    "w": "truco",
+    "start": 9.1,
+    "end": 9.5
+   },
+   {
+    "w": "que",
+    "start": 9.5,
+    "end": 9.74
+   },
+   {
+    "w": "no",
+    "start": 9.74,
+    "end": 9.98
+   },
+   {
+    "w": "ves.",
+    "start": 9.98,
+    "end": 10.27
+   }
+  ]
+ },
+ {
+  "text": "Haz la cuenta: una caña con tapa, unos 3 euros.",
+  "start": 10.62,
+  "end": 13.67,
+  "words": [
+   {
+    "w": "Haz",
+    "start": 10.62,
+    "end": 10.83
+   },
+   {
+    "w": "la",
+    "start": 10.83,
+    "end": 10.99
+   },
+   {
+    "w": "cuenta:",
+    "start": 10.99,
+    "end": 11.45
+   },
+   {
+    "w": "una",
+    "start": 11.45,
+    "end": 11.55
+   },
+   {
+    "w": "caña",
+    "start": 11.55,
+    "end": 11.95
+   },
+   {
+    "w": "con",
+    "start": 11.95,
+    "end": 12.11
+   },
+   {
+    "w": "tapa,",
+    "start": 12.11,
+    "end": 12.67
+   },
+   {
+    "w": "unos",
+    "start": 12.67,
+    "end": 12.99
+   },
+   {
+    "w": "3",
+    "start": 12.99,
+    "end": 13.31
+   },
+   {
+    "w": "euros.",
+    "start": 13.31,
+    "end": 13.67
+   }
+  ]
+ },
+ {
+  "text": "27 céntimos son de IVA.",
+  "start": 13.87,
+  "end": 15.63,
+  "words": [
+   {
+    "w": "27",
+    "start": 13.87,
+    "end": 14.48
+   },
+   {
+    "w": "céntimos",
+    "start": 14.48,
+    "end": 14.96
+   },
+   {
+    "w": "son",
+    "start": 14.96,
+    "end": 15.12
+   },
+   {
+    "w": "de",
+    "start": 15.12,
+    "end": 15.36
+   },
+   {
+    "w": "IVA.",
+    "start": 15.36,
+    "end": 15.63
+   }
+  ]
+ },
+ {
+  "text": "La cerveza le cuesta unos 50 céntimos.",
+  "start": 15.83,
+  "end": 18.18,
+  "words": [
+   {
+    "w": "La",
+    "start": 15.83,
+    "end": 15.958
+   },
+   {
+    "w": "cerveza",
+    "start": 15.958,
+    "end": 16.4
+   },
+   {
+    "w": "le",
+    "start": 16.4,
+    "end": 16.56
+   },
+   {
+    "w": "cuesta",
+    "start": 16.56,
+    "end": 16.88
+   },
+   {
+    "w": "unos",
+    "start": 16.88,
+    "end": 17.2
+   },
+   {
+    "w": "50",
+    "start": 17.2,
+    "end": 17.68
+   },
+   {
+    "w": "céntimos.",
+    "start": 17.68,
+    "end": 18.18
+   }
+  ]
+ },
+ {
+  "text": "Le quedan más de 2 euros para la tapa, el local, los sueldos… y ganar.",
+  "start": 18.38,
+  "end": 23.04,
+  "words": [
+   {
+    "w": "Le",
+    "start": 18.38,
+    "end": 18.5
+   },
+   {
+    "w": "quedan",
+    "start": 18.5,
+    "end": 18.9
+   },
+   {
+    "w": "más",
+    "start": 18.9,
+    "end": 19.06
+   },
+   {
+    "w": "de",
+    "start": 19.06,
+    "end": 19.22
+   },
+   {
+    "w": "2",
+    "start": 19.22,
+    "end": 19.46
+   },
+   {
+    "w": "euros",
+    "start": 19.46,
+    "end": 19.86
+   },
+   {
+    "w": "para",
+    "start": 19.86,
+    "end": 20.02
+   },
+   {
+    "w": "la",
+    "start": 20.02,
+    "end": 20.18
+   },
+   {
+    "w": "tapa,",
+    "start": 20.18,
+    "end": 20.66
+   },
+   {
+    "w": "el",
+    "start": 20.66,
+    "end": 20.9
+   },
+   {
+    "w": "local,",
+    "start": 20.9,
+    "end": 21.46
+   },
+   {
+    "w": "los",
+    "start": 21.46,
+    "end": 21.7
+   },
+   {
+    "w": "sueldos…",
+    "start": 21.7,
+    "end": 22.52
+   },
+   {
+    "w": "y",
+    "start": 22.52,
+    "end": 22.844
+   },
+   {
+    "w": "ganar.",
+    "start": 22.844,
+    "end": 23.04
+   }
+  ]
+ },
+ {
+  "text": "Pero el negocio no está en la primera caña. Está en la segunda.",
+  "start": 23.44,
+  "end": 26.89,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 23.44,
+    "end": 23.572
+   },
+   {
+    "w": "el",
+    "start": 23.572,
+    "end": 23.66
+   },
+   {
+    "w": "negocio",
+    "start": 23.66,
+    "end": 24.22
+   },
+   {
+    "w": "no",
+    "start": 24.22,
+    "end": 24.46
+   },
+   {
+    "w": "está",
+    "start": 24.46,
+    "end": 24.62
+   },
+   {
+    "w": "en",
+    "start": 24.62,
+    "end": 24.7
+   },
+   {
+    "w": "la",
+    "start": 24.7,
+    "end": 24.86
+   },
+   {
+    "w": "primera",
+    "start": 24.86,
+    "end": 25.18
+   },
+   {
+    "w": "caña.",
+    "start": 25.18,
+    "end": 25.77
+   },
+   {
+    "w": "Está",
+    "start": 25.77,
+    "end": 26.09
+   },
+   {
+    "w": "en",
+    "start": 26.09,
+    "end": 26.25
+   },
+   {
+    "w": "la",
+    "start": 26.25,
+    "end": 26.41
+   },
+   {
+    "w": "segunda.",
+    "start": 26.41,
+    "end": 26.89
+   }
+  ]
+ },
+ {
+  "text": "La tapa cambia con cada ronda… y la siguiente suele ser mejor.",
+  "start": 27.14,
+  "end": 30.79,
+  "words": [
+   {
+    "w": "La",
+    "start": 27.14,
+    "end": 27.22
+   },
+   {
+    "w": "tapa",
+    "start": 27.22,
+    "end": 27.62
+   },
+   {
+    "w": "cambia",
+    "start": 27.62,
+    "end": 28.02
+   },
+   {
+    "w": "con",
+    "start": 28.02,
+    "end": 28.26
+   },
+   {
+    "w": "cada",
+    "start": 28.26,
+    "end": 28.5
+   },
+   {
+    "w": "ronda…",
+    "start": 28.5,
+    "end": 29.12
+   },
+   {
+    "w": "y",
+    "start": 29.12,
+    "end": 29.19
+   },
+   {
+    "w": "la",
+    "start": 29.19,
+    "end": 29.35
+   },
+   {
+    "w": "siguiente",
+    "start": 29.35,
+    "end": 29.83
+   },
+   {
+    "w": "suele",
+    "start": 29.83,
+    "end": 30.23
+   },
+   {
+    "w": "ser",
+    "start": 30.23,
+    "end": 30.47
+   },
+   {
+    "w": "mejor.",
+    "start": 30.47,
+    "end": 30.79
+   }
+  ]
+ },
+ {
+  "text": "Y muchas son saladas: la sal da sed… y la sed se paga en cañas.",
+  "start": 31.04,
+  "end": 35.48,
+  "words": [
+   {
+    "w": "Y",
+    "start": 31.04,
+    "end": 31.12
+   },
+   {
+    "w": "muchas",
+    "start": 31.12,
+    "end": 31.52
+   },
+   {
+    "w": "son",
+    "start": 31.52,
+    "end": 31.76
+   },
+   {
+    "w": "saladas:",
+    "start": 31.76,
+    "end": 32.44
+   },
+   {
+    "w": "la",
+    "start": 32.44,
+    "end": 32.52
+   },
+   {
+    "w": "sal",
+    "start": 32.52,
+    "end": 32.84
+   },
+   {
+    "w": "da",
+    "start": 32.84,
+    "end": 33.16
+   },
+   {
+    "w": "sed…",
+    "start": 33.16,
+    "end": 33.74
+   },
+   {
+    "w": "y",
+    "start": 33.74,
+    "end": 33.866
+   },
+   {
+    "w": "la",
+    "start": 33.866,
+    "end": 34.02
+   },
+   {
+    "w": "sed",
+    "start": 34.02,
+    "end": 34.42
+   },
+   {
+    "w": "se",
+    "start": 34.42,
+    "end": 34.58
+   },
+   {
+    "w": "paga",
+    "start": 34.58,
+    "end": 34.9
+   },
+   {
+    "w": "en",
+    "start": 34.9,
+    "end": 35.06
+   },
+   {
+    "w": "cañas.",
+    "start": 35.06,
+    "end": 35.48
+   }
+  ]
+ },
+ {
+  "text": "Pero el verdadero truco es otro.",
+  "start": 35.88,
+  "end": 37.47,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 35.88,
+    "end": 35.99
+   },
+   {
+    "w": "el",
+    "start": 35.99,
+    "end": 36.15
+   },
+   {
+    "w": "verdadero",
+    "start": 36.15,
+    "end": 36.63
+   },
+   {
+    "w": "truco",
+    "start": 36.63,
+    "end": 37.03
+   },
+   {
+    "w": "es",
+    "start": 37.03,
+    "end": 37.19
+   },
+   {
+    "w": "otro.",
+    "start": 37.19,
+    "end": 37.47
+   }
+  ]
+ },
+ {
+  "text": "La tapa no es un regalo. Es el anuncio del bar.",
+  "start": 37.92,
+  "end": 40.95,
+  "words": [
+   {
+    "w": "La",
+    "start": 37.92,
+    "end": 38.04
+   },
+   {
+    "w": "tapa",
+    "start": 38.04,
+    "end": 38.52
+   },
+   {
+    "w": "no",
+    "start": 38.52,
+    "end": 38.76
+   },
+   {
+    "w": "es",
+    "start": 38.76,
+    "end": 38.92
+   },
+   {
+    "w": "un",
+    "start": 38.92,
+    "end": 39.08
+   },
+   {
+    "w": "regalo.",
+    "start": 39.08,
+    "end": 39.66
+   },
+   {
+    "w": "Es",
+    "start": 39.66,
+    "end": 39.79
+   },
+   {
+    "w": "el",
+    "start": 39.79,
+    "end": 40.03
+   },
+   {
+    "w": "anuncio",
+    "start": 40.03,
+    "end": 40.43
+   },
+   {
+    "w": "del",
+    "start": 40.43,
+    "end": 40.75
+   },
+   {
+    "w": "bar.",
+    "start": 40.75,
+    "end": 40.95
+   }
+  ]
+ },
+ {
+  "text": "Mientras otros pagan publicidad, ellos te la sirven en un plato.",
+  "start": 41.25,
+  "end": 44.62,
+  "words": [
+   {
+    "w": "Mientras",
+    "start": 41.25,
+    "end": 41.6
+   },
+   {
+    "w": "otros",
+    "start": 41.6,
+    "end": 41.92
+   },
+   {
+    "w": "pagan",
+    "start": 41.92,
+    "end": 42.32
+   },
+   {
+    "w": "publicidad,",
+    "start": 42.32,
+    "end": 43.01
+   },
+   {
+    "w": "ellos",
+    "start": 43.01,
+    "end": 43.34
+   },
+   {
+    "w": "te",
+    "start": 43.34,
+    "end": 43.5
+   },
+   {
+    "w": "la",
+    "start": 43.5,
+    "end": 43.66
+   },
+   {
+    "w": "sirven",
+    "start": 43.66,
+    "end": 44.06
+   },
+   {
+    "w": "en",
+    "start": 44.06,
+    "end": 44.22
+   },
+   {
+    "w": "un",
+    "start": 44.22,
+    "end": 44.3
+   },
+   {
+    "w": "plato.",
+    "start": 44.3,
+    "end": 44.62
+   }
+  ]
+ },
+ {
+  "text": "Y tu negocio, ¿cuál es su tapa?",
+  "start": 45.02,
+  "end": 46.71,
+  "words": [
+   {
+    "w": "Y",
+    "start": 45.02,
+    "end": 45.141
+   },
+   {
+    "w": "tu",
+    "start": 45.141,
+    "end": 45.29
+   },
+   {
+    "w": "negocio,",
+    "start": 45.29,
+    "end": 45.85
+   },
+   {
+    "w": "¿cuál",
+    "start": 45.85,
+    "end": 45.98
+   },
+   {
+    "w": "es",
+    "start": 45.98,
+    "end": 46.14
+   },
+   {
+    "w": "su",
+    "start": 46.14,
+    "end": 46.3
+   },
+   {
+    "w": "tapa?",
+    "start": 46.3,
+    "end": 46.71
+   }
+  ]
+ },
+ {
+  "text": "Mándaselo a quien cree que es gratis. ¿Granada o Jaén?",
+  "start": 47.06,
+  "end": 50.285,
+  "words": [
+   {
+    "w": "Mándaselo",
+    "start": 47.06,
+    "end": 47.69
+   },
+   {
+    "w": "a",
+    "start": 47.69,
+    "end": 47.77
+   },
+   {
+    "w": "quien",
+    "start": 47.77,
+    "end": 47.93
+   },
+   {
+    "w": "cree",
+    "start": 47.93,
+    "end": 48.25
+   },
+   {
+    "w": "que",
+    "start": 48.25,
+    "end": 48.41
+   },
+   {
+    "w": "es",
+    "start": 48.41,
+    "end": 48.57
+   },
+   {
+    "w": "gratis.",
+    "start": 48.57,
+    "end": 49.1
+   },
+   {
+    "w": "¿Granada",
+    "start": 49.1,
+    "end": 49.745
+   },
+   {
+    "w": "o",
+    "start": 49.745,
+    "end": 49.81
+   },
+   {
+    "w": "Jaén?",
+    "start": 49.81,
+    "end": 50.285
+   }
+  ]
+ }
+]
