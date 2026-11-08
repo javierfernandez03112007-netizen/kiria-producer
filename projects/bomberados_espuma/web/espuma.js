@@ -748,7 +748,7 @@ function update(t) {
   const gl = Math.exp(-Math.pow((t - T.espumogeno0 - 0.2) / 0.5, 2)) + Math.exp(-Math.pow((t - T.espumogeno1 - 0.2) / 0.5, 2)) + sm(T.nueve - 0.3, T.nueve, t) * (1 - sm(T.entonces, T.entonces + 0.5, t));
   bidonGlow.intensity = 25 * cl(gl);
   // cubo de 1 L → 150 L (×150 en volumen: ×5,31 de lado)
-  const cIn = sm(T.litro - 0.3, T.litro, t) * (1 - sm(T.noventa1 - 0.2, T.noventa1 + 0.2, t));
+  const cIn = sm(T.expansion1 + 0.1, T.expansion1 + 0.45, t) * (1 - sm(T.noventa1 - 0.2, T.noventa1 + 0.2, t));
   cube1.visible = cIn > 0.01; const grow = e3(pr(t, T.ciento1 - 0.1, 0.9));
   const side = 0.1 * mx(1, 5.313, grow) * cIn;
   cube1.scale.setScalar(Math.max(0.001, side)); cube1.material.color.setRGB(mx(0.56, 0.95, grow), mx(0.84, 0.97, grow), mx(1.0, 1.0, grow));
@@ -862,7 +862,7 @@ function overlay(t) {
   chip(540, 1640, '= 90.000 LITROS DE ESPUMA', CYAN2, sm(T.espuma1 - 0.25, T.espuma1 + 0.05, t) * (1 - sm(T.expansion1 - 0.3, T.expansion1, t)), 1.05, null, 56);
   // ×150
   const pc = proj(V(CUBE.x, CUBE.y + 0.55, CUBE.z));
-  chip(pc.x, pc.y - 120, '1 L DE ESPUMANTE', BLUE2, sm(T.litro - 0.1, T.litro + 0.2, t) * (1 - sm(T.ciento1 - 0.2, T.ciento1 + 0.1, t)), 1.05, 'd', 56);
+  chip(pc.x, pc.y - 120, '1 L DE ESPUMANTE', BLUE2, sm(T.expansion1 + 0.2, T.expansion1 + 0.5, t) * (1 - sm(T.ciento1 - 0.2, T.ciento1 + 0.1, t)), 1.05, 'd', 56);
   chip(pc.x, pc.y - 160, '150 L DE ESPUMA', '#F2F5F8', sm(T.ciento1 + 0.2, T.ciento1 + 0.5, t) * (1 - sm(T.noventa1 - 0.3, T.noventa1, t)), 1.15, 'x', 60);
   // 90.000 ÷ 150 = 600 L
   equation(t, 1420, [['90.000', T.noventa1, '#F4F6F8', 'L DE ESPUMA'], [' ÷ 150', T.entre, '#F4F6F8', ''], [' = 600 L', T.seiscientos1, BLUE2, 'ESPUMANTE']], sm(T.noventa1 - 0.15, T.noventa1 + 0.1, t) * (1 - sm(T.pero - 0.3, T.pero, t)), 96);
