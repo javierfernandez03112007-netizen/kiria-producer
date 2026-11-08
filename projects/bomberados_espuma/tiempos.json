@@ -1,0 +1,729 @@
+[
+ {
+  "text": "Hay que inundar este local de espuma… hasta el techo.",
+  "start": 0.0,
+  "end": 3.751,
+  "words": [
+   {
+    "w": "Hay",
+    "start": 0.0,
+    "end": 0.209
+   },
+   {
+    "w": "que",
+    "start": 0.209,
+    "end": 0.419
+   },
+   {
+    "w": "inundar",
+    "start": 0.419,
+    "end": 0.967
+   },
+   {
+    "w": "este",
+    "start": 0.967,
+    "end": 1.346
+   },
+   {
+    "w": "local",
+    "start": 1.346,
+    "end": 1.725
+   },
+   {
+    "w": "de",
+    "start": 1.725,
+    "end": 1.935
+   },
+   {
+    "w": "espuma…",
+    "start": 1.935,
+    "end": 2.483
+   },
+   {
+    "w": "hasta",
+    "start": 2.783,
+    "end": 3.162
+   },
+   {
+    "w": "el",
+    "start": 3.162,
+    "end": 3.372
+   },
+   {
+    "w": "techo.",
+    "start": 3.372,
+    "end": 3.751
+   }
+  ]
+ },
+ {
+  "text": "Treinta metros cuadrados y tres de alto. Espumógeno al uno coma cinco por ciento. Expansión: ciento cincuenta. ¿Cuánta agua necesitas?",
+  "start": 4.051,
+  "end": 12.619,
+  "words": [
+   {
+    "w": "Treinta",
+    "start": 4.051,
+    "end": 4.43
+   },
+   {
+    "w": "metros",
+    "start": 4.43,
+    "end": 4.809
+   },
+   {
+    "w": "cuadrados",
+    "start": 4.809,
+    "end": 5.357
+   },
+   {
+    "w": "y",
+    "start": 5.357,
+    "end": 5.567
+   },
+   {
+    "w": "tres",
+    "start": 5.567,
+    "end": 5.776
+   },
+   {
+    "w": "de",
+    "start": 5.776,
+    "end": 5.986
+   },
+   {
+    "w": "alto.",
+    "start": 5.986,
+    "end": 6.365
+   },
+   {
+    "w": "Espumógeno",
+    "start": 6.465,
+    "end": 7.352
+   },
+   {
+    "w": "al",
+    "start": 7.352,
+    "end": 7.562
+   },
+   {
+    "w": "uno",
+    "start": 7.562,
+    "end": 7.941
+   },
+   {
+    "w": "coma",
+    "start": 7.941,
+    "end": 8.32
+   },
+   {
+    "w": "cinco",
+    "start": 8.32,
+    "end": 8.699
+   },
+   {
+    "w": "por",
+    "start": 8.699,
+    "end": 8.908
+   },
+   {
+    "w": "ciento.",
+    "start": 8.908,
+    "end": 9.287
+   },
+   {
+    "w": "Expansión:",
+    "start": 9.387,
+    "end": 9.936
+   },
+   {
+    "w": "ciento",
+    "start": 10.116,
+    "end": 10.495
+   },
+   {
+    "w": "cincuenta.",
+    "start": 10.495,
+    "end": 11.043
+   },
+   {
+    "w": "¿Cuánta",
+    "start": 11.143,
+    "end": 11.522
+   },
+   {
+    "w": "agua",
+    "start": 11.522,
+    "end": 11.901
+   },
+   {
+    "w": "necesitas?",
+    "start": 11.901,
+    "end": 12.619
+   }
+  ]
+ },
+ {
+  "text": "Comenta tu letra. Tienes cinco segundos.",
+  "start": 12.919,
+  "end": 15.462,
+  "words": [
+   {
+    "w": "Comenta",
+    "start": 12.919,
+    "end": 13.467
+   },
+   {
+    "w": "tu",
+    "start": 13.467,
+    "end": 13.677
+   },
+   {
+    "w": "letra.",
+    "start": 13.677,
+    "end": 14.056
+   },
+   {
+    "w": "Tienes",
+    "start": 14.156,
+    "end": 14.535
+   },
+   {
+    "w": "cinco",
+    "start": 14.535,
+    "end": 14.914
+   },
+   {
+    "w": "segundos.",
+    "start": 14.914,
+    "end": 15.462
+   }
+  ]
+ },
+ {
+  "text": "¡Tiempo! Si has dicho seiscientos… te has olvidado del espumógeno.",
+  "start": 19.812,
+  "end": 24.171,
+  "words": [
+   {
+    "w": "¡Tiempo!",
+    "start": 19.812,
+    "end": 20.191
+   },
+   {
+    "w": "Si",
+    "start": 20.291,
+    "end": 20.5
+   },
+   {
+    "w": "has",
+    "start": 20.5,
+    "end": 20.71
+   },
+   {
+    "w": "dicho",
+    "start": 20.71,
+    "end": 21.089
+   },
+   {
+    "w": "seiscientos…",
+    "start": 21.089,
+    "end": 21.637
+   },
+   {
+    "w": "te",
+    "start": 21.937,
+    "end": 22.147
+   },
+   {
+    "w": "has",
+    "start": 22.147,
+    "end": 22.356
+   },
+   {
+    "w": "olvidado",
+    "start": 22.356,
+    "end": 23.074
+   },
+   {
+    "w": "del",
+    "start": 23.074,
+    "end": 23.284
+   },
+   {
+    "w": "espumógeno.",
+    "start": 23.284,
+    "end": 24.171
+   }
+  ]
+ },
+ {
+  "text": "Primero, el volumen: treinta por tres, noventa metros cúbicos de espuma.",
+  "start": 24.471,
+  "end": 29.189,
+  "words": [
+   {
+    "w": "Primero,",
+    "start": 24.471,
+    "end": 25.019
+   },
+   {
+    "w": "el",
+    "start": 25.119,
+    "end": 25.329
+   },
+   {
+    "w": "volumen:",
+    "start": 25.329,
+    "end": 25.877
+   },
+   {
+    "w": "treinta",
+    "start": 26.057,
+    "end": 26.436
+   },
+   {
+    "w": "por",
+    "start": 26.436,
+    "end": 26.646
+   },
+   {
+    "w": "tres,",
+    "start": 26.646,
+    "end": 26.855
+   },
+   {
+    "w": "noventa",
+    "start": 26.955,
+    "end": 27.504
+   },
+   {
+    "w": "metros",
+    "start": 27.504,
+    "end": 27.883
+   },
+   {
+    "w": "cúbicos",
+    "start": 27.883,
+    "end": 28.431
+   },
+   {
+    "w": "de",
+    "start": 28.431,
+    "end": 28.641
+   },
+   {
+    "w": "espuma.",
+    "start": 28.641,
+    "end": 29.189
+   }
+  ]
+ },
+ {
+  "text": "Expansión ciento cincuenta: cada litro de espumante da ciento cincuenta litros de espuma.",
+  "start": 29.489,
+  "end": 35.104,
+  "words": [
+   {
+    "w": "Expansión",
+    "start": 29.489,
+    "end": 30.037
+   },
+   {
+    "w": "ciento",
+    "start": 30.037,
+    "end": 30.416
+   },
+   {
+    "w": "cincuenta:",
+    "start": 30.416,
+    "end": 30.965
+   },
+   {
+    "w": "cada",
+    "start": 31.145,
+    "end": 31.524
+   },
+   {
+    "w": "litro",
+    "start": 31.524,
+    "end": 31.903
+   },
+   {
+    "w": "de",
+    "start": 31.903,
+    "end": 32.112
+   },
+   {
+    "w": "espumante",
+    "start": 32.112,
+    "end": 32.83
+   },
+   {
+    "w": "da",
+    "start": 32.83,
+    "end": 33.04
+   },
+   {
+    "w": "ciento",
+    "start": 33.04,
+    "end": 33.419
+   },
+   {
+    "w": "cincuenta",
+    "start": 33.419,
+    "end": 33.967
+   },
+   {
+    "w": "litros",
+    "start": 33.967,
+    "end": 34.346
+   },
+   {
+    "w": "de",
+    "start": 34.346,
+    "end": 34.556
+   },
+   {
+    "w": "espuma.",
+    "start": 34.556,
+    "end": 35.104
+   }
+  ]
+ },
+ {
+  "text": "Noventa mil litros entre ciento cincuenta… seiscientos litros de espumante.",
+  "start": 35.404,
+  "end": 40.002,
+  "words": [
+   {
+    "w": "Noventa",
+    "start": 35.404,
+    "end": 35.952
+   },
+   {
+    "w": "mil",
+    "start": 35.952,
+    "end": 36.162
+   },
+   {
+    "w": "litros",
+    "start": 36.162,
+    "end": 36.541
+   },
+   {
+    "w": "entre",
+    "start": 36.541,
+    "end": 36.92
+   },
+   {
+    "w": "ciento",
+    "start": 36.92,
+    "end": 37.299
+   },
+   {
+    "w": "cincuenta…",
+    "start": 37.299,
+    "end": 37.847
+   },
+   {
+    "w": "seiscientos",
+    "start": 38.147,
+    "end": 38.696
+   },
+   {
+    "w": "litros",
+    "start": 38.696,
+    "end": 39.075
+   },
+   {
+    "w": "de",
+    "start": 39.075,
+    "end": 39.284
+   },
+   {
+    "w": "espumante.",
+    "start": 39.284,
+    "end": 40.002
+   }
+  ]
+ },
+ {
+  "text": "Pero el espumante es agua más espumógeno. Y el uno coma cinco por ciento de seiscientos son nueve litros de espumógeno.",
+  "start": 40.302,
+  "end": 48.361,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 40.302,
+    "end": 40.681
+   },
+   {
+    "w": "el",
+    "start": 40.681,
+    "end": 40.89
+   },
+   {
+    "w": "espumante",
+    "start": 40.89,
+    "end": 41.608
+   },
+   {
+    "w": "es",
+    "start": 41.608,
+    "end": 41.818
+   },
+   {
+    "w": "agua",
+    "start": 41.818,
+    "end": 42.197
+   },
+   {
+    "w": "más",
+    "start": 42.197,
+    "end": 42.406
+   },
+   {
+    "w": "espumógeno.",
+    "start": 42.406,
+    "end": 43.294
+   },
+   {
+    "w": "Y",
+    "start": 43.394,
+    "end": 43.603
+   },
+   {
+    "w": "el",
+    "start": 43.603,
+    "end": 43.813
+   },
+   {
+    "w": "uno",
+    "start": 43.813,
+    "end": 44.192
+   },
+   {
+    "w": "coma",
+    "start": 44.192,
+    "end": 44.571
+   },
+   {
+    "w": "cinco",
+    "start": 44.571,
+    "end": 44.95
+   },
+   {
+    "w": "por",
+    "start": 44.95,
+    "end": 45.159
+   },
+   {
+    "w": "ciento",
+    "start": 45.159,
+    "end": 45.538
+   },
+   {
+    "w": "de",
+    "start": 45.538,
+    "end": 45.748
+   },
+   {
+    "w": "seiscientos",
+    "start": 45.748,
+    "end": 46.296
+   },
+   {
+    "w": "son",
+    "start": 46.296,
+    "end": 46.506
+   },
+   {
+    "w": "nueve",
+    "start": 46.506,
+    "end": 46.885
+   },
+   {
+    "w": "litros",
+    "start": 46.885,
+    "end": 47.264
+   },
+   {
+    "w": "de",
+    "start": 47.264,
+    "end": 47.473
+   },
+   {
+    "w": "espumógeno.",
+    "start": 47.473,
+    "end": 48.361
+   }
+  ]
+ },
+ {
+  "text": "Entonces, ¿cuánta agua necesitas? Escribe en comentarios cuál es la correcta.",
+  "start": 48.661,
+  "end": 53.538,
+  "words": [
+   {
+    "w": "Entonces,",
+    "start": 48.661,
+    "end": 49.209
+   },
+   {
+    "w": "¿cuánta",
+    "start": 49.309,
+    "end": 49.688
+   },
+   {
+    "w": "agua",
+    "start": 49.688,
+    "end": 50.067
+   },
+   {
+    "w": "necesitas?",
+    "start": 50.067,
+    "end": 50.785
+   },
+   {
+    "w": "Escribe",
+    "start": 50.885,
+    "end": 51.434
+   },
+   {
+    "w": "en",
+    "start": 51.434,
+    "end": 51.643
+   },
+   {
+    "w": "comentarios",
+    "start": 51.643,
+    "end": 52.361
+   },
+   {
+    "w": "cuál",
+    "start": 52.361,
+    "end": 52.571
+   },
+   {
+    "w": "es",
+    "start": 52.571,
+    "end": 52.78
+   },
+   {
+    "w": "la",
+    "start": 52.78,
+    "end": 52.99
+   },
+   {
+    "w": "correcta.",
+    "start": 52.99,
+    "end": 53.538
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
+  "start": 53.838,
+  "end": 58.338,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 53.838,
+    "end": 54.678
+   },
+   {
+    "w": "a",
+    "start": 54.678,
+    "end": 54.918
+   },
+   {
+    "w": "quien",
+    "start": 54.918,
+    "end": 55.158
+   },
+   {
+    "w": "oposite",
+    "start": 55.158,
+    "end": 55.998
+   },
+   {
+    "w": "contigo,",
+    "start": 55.998,
+    "end": 56.638
+   },
+   {
+    "w": "a",
+    "start": 56.738,
+    "end": 56.978
+   },
+   {
+    "w": "ver",
+    "start": 56.978,
+    "end": 57.218
+   },
+   {
+    "w": "si",
+    "start": 57.218,
+    "end": 57.458
+   },
+   {
+    "w": "la",
+    "start": 57.458,
+    "end": 57.698
+   },
+   {
+    "w": "acierta!",
+    "start": 57.698,
+    "end": 58.338
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 58.638,
+  "end": 63.158,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 58.638,
+    "end": 59.478
+   },
+   {
+    "w": "a",
+    "start": 59.478,
+    "end": 59.718
+   },
+   {
+    "w": "bombero?",
+    "start": 59.718,
+    "end": 60.358
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 60.458,
+    "end": 61.298
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 61.398,
+    "end": 62.038
+   },
+   {
+    "w": "gratis",
+    "start": 62.038,
+    "end": 62.478
+   },
+   {
+    "w": "cinco",
+    "start": 62.478,
+    "end": 62.918
+   },
+   {
+    "w": "días!",
+    "start": 62.918,
+    "end": 63.158
+   }
+  ]
+ }
+]

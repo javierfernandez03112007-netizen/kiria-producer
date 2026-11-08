@@ -1250,7 +1250,98 @@ def sfx_track_sueldos(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_espuma(path):
+    """«¿Cuánta agua necesitas?» (espuma): fuego dentro del local que la espuma tapa, rugido del generador mientras sube
+    hasta el techo, datos con su golpe, cuenta 1→5 con bocina, «¡Tiempo!», cuentas (90 m³, ×150, ÷150 = 600 L, 9 L) y venta."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["l1e"], T["l2e"] = LINES[1]["end"], LINES[2]["end"]
+    T["count0"] = T["l2e"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["fin"] = c["compartir"] - 0.25
+    fuego, bub, nota, toque = _load("fuego"), _onset(_load("burbuja")), _onset(_load("nota")), _onset(_load("toque"))
+    burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    # dentro: el fuego (lo tapa la espuma) y el generador rugiendo mientras sube hasta el techo
+    put(burn, 0.0, -27, c["techo"] - 0.2, 0.05, 0.8, track=amb)
+    put("generador", 0.0, -23, c["techo"] + 1.2, 0.05, 1.0, track=amb)
+    put("burbujeo", 0.3, -29, c["techo"] + 0.6, 0.2, 0.6, track=amb)
+    put("rotativo", c["techo"], -35, T["count0"] - c["techo"], 0.4, 0.8, track=amb)
+    put("latido", 0.1, -29, 0.6)
+    put("destello", 0.05, -31, 0.8, 0.005, 0.3)
+    put("golpe", c["techo"] - 0.08, -27, 0.7, 0.005, 0.3)
+    # los datos
+    put(toque, c["cuadrados"] - 0.03, -29, 0.3)
+    put(_pitch(toque, 1.12), c["alto"] - 0.03, -29, 0.3)
+    put(_pitch(bub, 0.8), c["espumogeno0"] - 0.02, -27, 0.3)
+    put("whoosh2", c["expansion0"] - 0.2, -28, 0.7)
+    put(_pitch(nota, 1.2), c["cuanta0"] - 0.03, -28, 0.8)
+    # tarjetas, comenta y la cuenta 1 → 5 (bocina en el 5)
+    put("whoosh", T["l1e"] - 0.45, -29, 0.6)
+    for i in range(4):
+        put(_pitch(bub, 1 + 0.06 * i), T["l1e"] - 0.3 + 0.08 * i, -27, 0.25)
+    put(toque, c["comenta"] - 0.05, -28, 0.35)
+    put("tension", T["count0"] - 0.2, -27, c["tiempo"] - T["count0"] + 0.4, 0.3, 0.15)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    # «¡Tiempo! Si has dicho seiscientos… te has olvidado del espumógeno»
+    put("fallo", c["seiscientos0"] + 0.05, -26, 0.5)
+    put(_pitch(_onset(_load("rele")), 0.9), c["espumogeno1"] - 0.03, -27, 0.25)
+    put("destello", c["espumogeno1"] - 0.05, -30, 0.7)
+    # las cuentas
+    put(toque, c["treinta1"] - 0.03, -29, 0.3); put(_pitch(toque, 1.1), c["tres1"] - 0.03, -29, 0.3)
+    put("golpe", c["noventa0"] - 0.06, -27, 0.6, 0.005, 0.3)
+    put(bub, c["litro"] - 0.02, -26, 0.3)
+    put("whoosh2", c["ciento1"] - 0.15, -27, 0.8)
+    put("burbujeo", c["ciento1"], -28, 0.9, 0.05, 0.3)
+    put("whoosh", c["noventa1"] - 0.2, -28, 0.7)
+    put(toque, c["entre"] - 0.03, -29, 0.3)
+    put("agua", c["seiscientos1"] - 0.3, -27, 1.0, 0.02, 0.3)
+    put("golpe", c["seiscientos1"] - 0.06, -27, 0.6, 0.005, 0.3)
+    put(toque, c["agua1"] - 0.03, -29, 0.3); put(_pitch(toque, 1.15), c["espumogeno2"] - 0.03, -29, 0.3)
+    put(_pitch(nota, 1.12), c["nueve"] - 0.03, -27, 0.8)
+    put("destello", c["nueve"] - 0.05, -30, 0.7)
+    # ¿cuánta agua? (no se dice: se pide en comentarios)
+    put("whoosh", c["entonces"] - 0.3, -29, 0.6)
+    put(_pitch(nota, 1.5), c["agua2"] - 0.03, -27, 0.9)
+    put(bub, c["escribe"] - 0.02, -27, 0.25)
+    put("tension", c["agua2"] - 0.1, -31, T["fin"] - c["agua2"] + 0.1, 0.2, 0.25)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "espuma":
+        return sfx_track_espuma(path)
     if Q.get("formato") == "sueldos":
         return sfx_track_sueldos(path)
     if Q.get("formato") == "presion":

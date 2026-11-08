@@ -1,0 +1,23 @@
+{
+ "formato": "espuma",
+ "estilo": "app",
+ "voz": {"tempo": 0.93, "count": 4.05, "count_line": 2, "cortar": false, "pause_def": 0.3},
+ "realce": ["compartir", "marca", "prueba"],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿LA ACERTARÁ?",
+ "portada": {"titulo": "¿CUÁNTA AGUA NECESITAS?", "etiqueta": "ESPUMA · 30 m² · 3 m · 1,5 % · ×150", "t": 3.0, "oscurecer": true},
+ "mezcla": {"sfx": 1.0, "ganancia": 0.0},
+ "cues": {
+  "inundar": ["inundar", 1, 1], "local": ["local", 1, 1], "espuma0": ["espuma…", 1, 1], "techo": ["techo.", 1, 1],
+  "treinta0": ["Treinta", 1, 2], "cuadrados": ["cuadrados", 1, 2], "tres0": ["tres", 1, 2], "alto": ["alto.", 1, 2], "espumogeno0": ["Espumógeno", 1, 2], "uno0": ["uno", 1, 2], "expansion0": ["Expansión:", 1, 2], "ciento0": ["ciento", 1, 2], "cuanta0": ["¿Cuánta", 1, 2], "agua0": ["agua", 1, 2],
+  "comenta": ["Comenta", 1, 3], "cinco": ["cinco", 1, 3], "segundos": ["segundos.", 1, 3],
+  "tiempo": ["¡Tiempo!", 1, 4], "seiscientos0": ["seiscientos…", 1, 4], "olvidado": ["olvidado", 1, 4], "espumogeno1": ["espumógeno.", 1, 4],
+  "volumen": ["volumen:", 1, 5], "treinta1": ["treinta", 1, 5], "tres1": ["tres,", 1, 5], "noventa0": ["noventa", 1, 5], "cubicos": ["cúbicos", 1, 5], "espuma1": ["espuma.", 1, 5],
+  "expansion1": ["Expansión", 1, 6], "litro": ["litro", 1, 6], "espumante0": ["espumante", 1, 6], "da": ["da", 1, 6], "ciento1": ["ciento", 1, 6], "espuma2": ["espuma.", 1, 6],
+  "noventa1": ["Noventa", 1, 7], "entre": ["entre", 1, 7], "seiscientos1": ["seiscientos", 1, 7], "espumante1": ["espumante.", 1, 7],
+  "pero": ["Pero", 1, 8], "agua1": ["agua", 1, 8], "mas": ["más", 1, 8], "espumogeno2": ["espumógeno.", 1, 8], "uno1": ["uno", 1, 8], "seiscientos2": ["seiscientos", 1, 8], "nueve": ["nueve", 1, 8], "espumogeno3": ["espumógeno.", 2, 8],
+  "entonces": ["Entonces,", 1, 9], "agua2": ["agua", 1, 9], "escribe": ["Escribe", 1, 9], "correcta": ["correcta.", 1, 9],
+  "compartir": ["¡Mándaselo", 1, 10], "acierta": ["acierta!", 1, 10],
+  "descripcion": ["¿Opositas", 1, 11], "marca": ["¡Bomberados!", 1, 11], "prueba": ["¡Pruébala", 1, 11]
+ }
+}
