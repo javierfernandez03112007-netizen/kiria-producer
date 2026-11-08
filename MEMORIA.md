@@ -271,6 +271,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   lista de la noche antes con «Idea de vídeo», explicaciones, visita, objeciones, llamadas en frío, de seguimiento y tras la entrega, mensajes,
   propuesta escrita, cobro, entrega, recomendaciones y rutina semanal). La tabla de leads ganó «Por visitar», Prioridad, Instagram,
   Idea de vídeo y Teléfono del negocio.
+  **Plan de crecimiento** (Javi, 8-11-2026: «¿cambiamos de contenido o seguimos con el nicho y vendo yo en persona?»): Notion
+  «📈 Plan de crecimiento · de visitas a clientes». Decisión: **dos públicos, una marca** (≈ 60 % alcance con carreras e historias,
+  ≈ 30 % puente —negocios por dentro, historias de negocios, cómo hacemos un vídeo viral, antes y después con negocios reales— y ≈ 10 %
+  Javi en primera persona: serie «Vendo vídeos con IA a los negocios de mi pueblo», grabada por él y editada por mí). Los clientes salen
+  del motor local: visitas, colaboraciones de Instagram con cada negocio, Perfil de Empresa de Google, Facebook y grupos de comercios,
+  asociaciones y prensa local. Servicio nuevo propuesto: «Grábalo tú, lo editamos con IA» (precio de Javi). Metas a 30 y 90 días
+  (9.000 y 20.000 seguidores; 5 y 20 clientes). Partida: 5.011 seguidores (6-11), ≈ 2 seguidores por cada 1.000 visualizaciones.
   **Código KIRIA10** (Javi, 7-11-2026): 10 % hasta el 30-11-2026, anunciado en la web (se quita solo el 1-12); el código lo crea Javi en
   Stripe (pasos en `web_estudio/README.md`). Javi lo pidió como «KORIA10» y confirmó que era KIRIA10.
 - Web del estudio: `web_estudio/` (ver su `README.md`; v1 oscura en la rama `web-estudio-v1`). Vista previa privada:
