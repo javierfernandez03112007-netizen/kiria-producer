@@ -1,0 +1,622 @@
+[
+ {
+  "w": "Lo",
+  "start": 0.0,
+  "end": 0.24
+ },
+ {
+  "w": "que",
+  "start": 0.24,
+  "end": 0.4
+ },
+ {
+  "w": "nunca",
+  "start": 0.4,
+  "end": 0.72
+ },
+ {
+  "w": "ves",
+  "start": 0.72,
+  "end": 1.04
+ },
+ {
+  "w": "de",
+  "start": 1.04,
+  "end": 1.2
+ },
+ {
+  "w": "un",
+  "start": 1.2,
+  "end": 1.36
+ },
+ {
+  "w": "bombero.",
+  "start": 1.36,
+  "end": 2.32
+ },
+ {
+  "w": "24",
+  "start": 2.32,
+  "end": 3.12
+ },
+ {
+  "w": "horas",
+  "start": 3.12,
+  "end": 3.36
+ },
+ {
+  "w": "seguidas",
+  "start": 3.36,
+  "end": 3.92
+ },
+ {
+  "w": "de",
+  "start": 3.92,
+  "end": 4.0
+ },
+ {
+  "w": "guardia.",
+  "start": 4.0,
+  "end": 4.8
+ },
+ {
+  "w": "8",
+  "start": 4.8,
+  "end": 5.2
+ },
+ {
+  "w": "de",
+  "start": 5.2,
+  "end": 5.36
+ },
+ {
+  "w": "la",
+  "start": 5.36,
+  "end": 5.44
+ },
+ {
+  "w": "mañana.",
+  "start": 5.44,
+  "end": 6.16
+ },
+ {
+  "w": "Relevo.",
+  "start": 6.16,
+  "end": 7.04
+ },
+ {
+  "w": "Revisión.",
+  "start": 7.04,
+  "end": 7.92
+ },
+ {
+  "w": "Camiones,",
+  "start": 7.92,
+  "end": 8.72
+ },
+ {
+  "w": "mangueras",
+  "start": 8.72,
+  "end": 9.6
+ },
+ {
+  "w": "y",
+  "start": 9.6,
+  "end": 9.84
+ },
+ {
+  "w": "el",
+  "start": 9.84,
+  "end": 10.08
+ },
+ {
+  "w": "aire",
+  "start": 10.08,
+  "end": 10.4
+ },
+ {
+  "w": "de",
+  "start": 10.4,
+  "end": 10.56
+ },
+ {
+  "w": "cada",
+  "start": 10.56,
+  "end": 10.8
+ },
+ {
+  "w": "botella.",
+  "start": 10.8,
+  "end": 11.6
+ },
+ {
+  "w": "Desayuno",
+  "start": 11.6,
+  "end": 12.32
+ },
+ {
+  "w": "con",
+  "start": 12.32,
+  "end": 12.48
+ },
+ {
+  "w": "los",
+  "start": 12.48,
+  "end": 12.56
+ },
+ {
+  "w": "compañeros.",
+  "start": 12.56,
+  "end": 13.44
+ },
+ {
+  "w": "Y",
+  "start": 13.44,
+  "end": 13.6
+ },
+ {
+  "w": "a",
+  "start": 13.6,
+  "end": 13.76
+ },
+ {
+  "w": "entrenar.",
+  "start": 13.76,
+  "end": 14.64
+ },
+ {
+  "w": "Mediodía.",
+  "start": 14.64,
+  "end": 15.68
+ },
+ {
+  "w": "Reconocimiento",
+  "start": 15.68,
+  "end": 16.56
+ },
+ {
+  "w": "de",
+  "start": 16.56,
+  "end": 16.64
+ },
+ {
+  "w": "la",
+  "start": 16.64,
+  "end": 16.8
+ },
+ {
+  "w": "ciudad.",
+  "start": 16.8,
+  "end": 17.28
+ },
+ {
+  "w": "¡Salida!",
+  "start": 17.28,
+  "end": 18.32
+ },
+ {
+  "w": "Incendio",
+  "start": 18.32,
+  "end": 18.88
+ },
+ {
+  "w": "en",
+  "start": 18.88,
+  "end": 19.04
+ },
+ {
+  "w": "una",
+  "start": 19.04,
+  "end": 19.2
+ },
+ {
+  "w": "vivienda.",
+  "start": 19.2,
+  "end": 19.92
+ },
+ {
+  "w": "Por",
+  "start": 19.92,
+  "end": 20.16
+ },
+ {
+  "w": "la",
+  "start": 20.16,
+  "end": 20.32
+ },
+ {
+  "w": "tarde,",
+  "start": 20.32,
+  "end": 20.88
+ },
+ {
+  "w": "accidente",
+  "start": 20.88,
+  "end": 21.44
+ },
+ {
+  "w": "de",
+  "start": 21.44,
+  "end": 21.6
+ },
+ {
+  "w": "tráfico.",
+  "start": 21.6,
+  "end": 22.32
+ },
+ {
+  "w": "Vuelta",
+  "start": 22.32,
+  "end": 22.8
+ },
+ {
+  "w": "al",
+  "start": 22.8,
+  "end": 22.96
+ },
+ {
+  "w": "parque.",
+  "start": 22.96,
+  "end": 23.44
+ },
+ {
+  "w": "Limpiar",
+  "start": 23.44,
+  "end": 24.0
+ },
+ {
+  "w": "el",
+  "start": 24.0,
+  "end": 24.08
+ },
+ {
+  "w": "material,",
+  "start": 24.08,
+  "end": 24.8
+ },
+ {
+  "w": "entrenar,",
+  "start": 24.8,
+  "end": 25.68
+ },
+ {
+  "w": "estudiar.",
+  "start": 25.68,
+  "end": 26.48
+ },
+ {
+  "w": "Y",
+  "start": 26.48,
+  "end": 26.72
+ },
+ {
+  "w": "cenar.",
+  "start": 26.72,
+  "end": 27.44
+ },
+ {
+  "w": "11",
+  "start": 27.44,
+  "end": 27.84
+ },
+ {
+  "w": "de",
+  "start": 27.84,
+  "end": 28.0
+ },
+ {
+  "w": "la",
+  "start": 28.0,
+  "end": 28.08
+ },
+ {
+  "w": "noche.",
+  "start": 28.08,
+  "end": 28.48
+ },
+ {
+  "w": "Arde",
+  "start": 28.48,
+  "end": 28.96
+ },
+ {
+  "w": "un",
+  "start": 28.96,
+  "end": 29.04
+ },
+ {
+  "w": "contenedor.",
+  "start": 29.04,
+  "end": 29.84
+ },
+ {
+  "w": "De",
+  "start": 29.84,
+  "end": 30.08
+ },
+ {
+  "w": "madrugada.",
+  "start": 30.08,
+  "end": 31.04
+ },
+ {
+  "w": "El",
+  "start": 31.04,
+  "end": 31.2
+ },
+ {
+  "w": "parque",
+  "start": 31.2,
+  "end": 31.6
+ },
+ {
+  "w": "en",
+  "start": 31.6,
+  "end": 31.76
+ },
+ {
+  "w": "silencio.",
+  "start": 31.76,
+  "end": 32.64
+ },
+ {
+  "w": "Y",
+  "start": 32.64,
+  "end": 32.88
+ },
+ {
+  "w": "los",
+  "start": 32.88,
+  "end": 33.04
+ },
+ {
+  "w": "camiones",
+  "start": 33.04,
+  "end": 33.68
+ },
+ {
+  "w": "listos.",
+  "start": 33.68,
+  "end": 34.48
+ },
+ {
+  "w": "8",
+  "start": 34.48,
+  "end": 34.88
+ },
+ {
+  "w": "de",
+  "start": 34.88,
+  "end": 35.04
+ },
+ {
+  "w": "la",
+  "start": 35.04,
+  "end": 35.12
+ },
+ {
+  "w": "mañana.",
+  "start": 35.12,
+  "end": 35.76
+ },
+ {
+  "w": "Relevo.",
+  "start": 35.76,
+  "end": 36.64
+ },
+ {
+  "w": "24",
+  "start": 36.64,
+  "end": 37.36
+ },
+ {
+  "w": "horas",
+  "start": 37.36,
+  "end": 37.6
+ },
+ {
+  "w": "después,",
+  "start": 37.6,
+  "end": 38.32
+ },
+ {
+  "w": "a",
+  "start": 38.32,
+  "end": 38.56
+ },
+ {
+  "w": "casa.",
+  "start": 38.56,
+  "end": 39.2
+ },
+ {
+  "w": "Y",
+  "start": 39.2,
+  "end": 39.44
+ },
+ {
+  "w": "según",
+  "start": 39.44,
+  "end": 39.84
+ },
+ {
+  "w": "el",
+  "start": 39.84,
+  "end": 40.0
+ },
+ {
+  "w": "servicio,",
+  "start": 40.0,
+  "end": 40.64
+ },
+ {
+  "w": "4",
+  "start": 40.64,
+  "end": 41.04
+ },
+ {
+  "w": "o",
+  "start": 41.04,
+  "end": 41.2
+ },
+ {
+  "w": "5",
+  "start": 41.2,
+  "end": 41.52
+ },
+ {
+  "w": "días",
+  "start": 41.52,
+  "end": 41.84
+ },
+ {
+  "w": "de",
+  "start": 41.84,
+  "end": 42.0
+ },
+ {
+  "w": "descanso.",
+  "start": 42.0,
+  "end": 42.8
+ },
+ {
+  "w": "Ser",
+  "start": 42.8,
+  "end": 43.12
+ },
+ {
+  "w": "bombero",
+  "start": 43.12,
+  "end": 43.68
+ },
+ {
+  "w": "no",
+  "start": 43.68,
+  "end": 43.84
+ },
+ {
+  "w": "es",
+  "start": 43.84,
+  "end": 44.0
+ },
+ {
+  "w": "solo",
+  "start": 44.0,
+  "end": 44.24
+ },
+ {
+  "w": "apagar",
+  "start": 44.24,
+  "end": 44.64
+ },
+ {
+  "w": "fuegos.",
+  "start": 44.64,
+  "end": 45.2
+ },
+ {
+  "w": "¿Te",
+  "start": 45.2,
+  "end": 45.6
+ },
+ {
+  "w": "ves",
+  "start": 45.6,
+  "end": 45.84
+ },
+ {
+  "w": "haciendo",
+  "start": 45.84,
+  "end": 46.16
+ },
+ {
+  "w": "esta",
+  "start": 46.16,
+  "end": 46.4
+ },
+ {
+  "w": "guardia?",
+  "start": 46.4,
+  "end": 47.04
+ },
+ {
+  "w": "Escríbelo",
+  "start": 47.04,
+  "end": 47.68
+ },
+ {
+  "w": "en",
+  "start": 47.68,
+  "end": 47.84
+ },
+ {
+  "w": "comentarios.",
+  "start": 47.84,
+  "end": 48.56
+ },
+ {
+  "w": "¡Mándaselo",
+  "start": 48.56,
+  "end": 49.44
+ },
+ {
+  "w": "a",
+  "start": 49.44,
+  "end": 49.52
+ },
+ {
+  "w": "quien",
+  "start": 49.52,
+  "end": 49.76
+ },
+ {
+  "w": "oposite",
+  "start": 49.76,
+  "end": 50.32
+ },
+ {
+  "w": "contigo!",
+  "start": 50.32,
+  "end": 50.88
+ },
+ {
+  "w": "¡Opositas",
+  "start": 50.88,
+  "end": 51.68
+ },
+ {
+  "w": "a",
+  "start": 51.68,
+  "end": 51.84
+ },
+ {
+  "w": "bombero?",
+  "start": 51.84,
+  "end": 52.32
+ },
+ {
+  "w": "¡Bomberados!",
+  "start": 52.32,
+  "end": 53.6
+ },
+ {
+  "w": "Pruébala",
+  "start": 53.6,
+  "end": 54.24
+ },
+ {
+  "w": "gratis",
+  "start": 54.24,
+  "end": 54.8
+ },
+ {
+  "w": "5",
+  "start": 54.8,
+  "end": 55.12
+ },
+ {
+  "w": "días.",
+  "start": 55.12,
+  "end": 55.798
+ }
+]

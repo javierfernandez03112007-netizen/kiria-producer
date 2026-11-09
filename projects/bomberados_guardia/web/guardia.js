@@ -986,8 +986,8 @@ function setupTimes() {
   shot(T.camiones2 - 0.2, [2.3, 1.55, 1.2, 2.2, 1.25, -5.6, 44], [2.4, 1.45, 0.4, 2.2, 1.2, -5.8, 42], 3.6, 3.65, 'listos');
   shot(T.ocho2 - 0.1, [9.2, 1.45, 15.2, 0.2, 1.5, 7.1, 40], [6.9, 1.55, 13.6, 0, 1.4, 7.2, 40], 8.0, 8.02, 'relevo2');
   shot(T.veinti2 - 0.1, [0.7, 1.55, -3.4, 0, 1.2, 4, 46], [0.8, 1.6, -3.6, 0, 1.25, 4, 46], 8.05, 8.12, 'casa2', { fol: (s, t) => walkP(s, t) });
-  shot(T.ser - 0.1, [0, 2.2, 27, 0, 3.5, 4, 46], [0, 12, 42, 0, 3.0, 0, 46], 8.15, 8.2, 'ser');
-  shot(T.compartir - 0.3, [0, 12, 42, 0, 3.0, 0, 46], [0, 18, 54, 0, 3.0, -2, 46], 8.2, 8.25, 'fin');
+  shot(T.ser - 0.1, [0, 2.2, 27, 0, 3.5, 4, 46], [0, 11, 36.5, 0, 3.0, 0, 48], 8.15, 8.2, 'ser');        // la fila de enfrente empieza en z = 39
+  shot(T.compartir - 0.3, [0, 11, 36.5, 0, 3.0, 0, 48], [0, 15, 37.5, 0, 3.0, -2, 50], 8.2, 8.25, 'fin');
 }
 function curShot(t) { let s = SH[0]; for (const x of SH) if (t >= x.t0) s = x; return s; }
 function shotEnd(s) { const i = SH.indexOf(s); return i + 1 < SH.length ? SH[i + 1].t0 : T.end; }
@@ -1175,7 +1175,7 @@ function overlay(t) {
 function subframes(t) {
   const s = curShot(t);
   if (Math.abs(t - s.t0) < 1 / 50) return 1;               // en el corte, sin mezclar planos
-  if (s.tag === 'hook') return 3;                           // «time-lapse»: la autobomba deja estela
+  if (s.tag === 'hook') return 2;                           // «time-lapse»: la autobomba deja estela
   const a = camAt(Math.max(s.t0, t - 1 / 240)), b = camAt(t + 1 / 240);
   const ang2 = a.q.angleTo(b.q), mv = a.p.distanceTo(b.p) / Math.max(0.5, (a.focus + b.focus) / 2);
   return Math.max(1, Math.min(4, Math.ceil((ang2 + mv) * H2 / (a.fov * Math.PI / 180) / 22)));
