@@ -1468,7 +1468,104 @@ def sfx_track_guardia(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_autobus(path):
+    """«Cada minuto cuenta» (el opositor en la parada): reloj acelerado y coches que pasan zumbando en el gancho, ciudad de
+    fondo, el móvil que sube y baja, toque en «Flashcards», tarjetas que giran, reto diario (tic por pregunta, monedas y
+    fanfarria), la ruleta del 1 vs 1 y su cuenta atrás, el autobús que llega (motor, frenos, puertas) y se va, y la venta.
+    Los planos empiezan en los mismos instantes que en autobus.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    S = dict(saca=c["l2"] - 0.1, menu=c["abres"] - 0.15, flash1=c["cuantos"] - 0.1, flash2=c["tetraedro"] - 0.1, espera=c["l6"] - 0.1,
+             reto=c["reto"] - 0.25, duelo=c["l7"] - 0.1, bus=c["llega"] - 0.1, sube=c["l9"] - 0.1, vacia=c["esperas"] - 0.1, fin=c["compartir"] - 0.3)
+    order = sorted(S.items(), key=lambda kv: kv[1])
+    E = {k: (order[i + 1][1] if i + 1 < len(order) else END) for i, (k, _) in enumerate(order)}
+    bub, toque, motor = _onset(_load("burbuja")), _onset(_load("toque")), _load("motor")
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), t0, g)
+
+    # gancho: el tiempo se escapa (reloj rápido) y los coches pasan zumbando por delante
+    put("reloj_rapido", 0.0, -29, S["saca"], 0.02, 0.25)
+    for i, tc in enumerate([0.35, 0.8, 1.25, 1.7, 2.3, 2.75, 3.3, 3.8]):
+        if tc < S["saca"] - 0.2:
+            put(_pitch(_load("coche_pasa"), 0.92 + 0.06 * (i % 3)), tc - 0.65, -27, 1.3, 0.01, 0.2)
+    put("ciudad", 0.0, -33, END, 0.4, 0.5, track=amb)
+    put("golpe", c["minutos"] - 0.06, -27, 0.6, 0.002, 0.3)
+    # el móvil sube y baja
+    for t0 in (S["menu"], S["reto"]):
+        put("whoosh2", t0 - 0.05, -28, 0.6)
+    for t0 in (c["l6"] - 0.35, c["llega"] - 0.35):
+        put(_pitch(_onset(_load("whoosh")), 0.85), t0, -30, 0.5)
+    put(toque, S["menu"] + 0.7 * (E["menu"] - S["menu"]), -25, 0.3)
+    # flashcards: giran y salen las respuestas
+    put("flip", c["ciento"] - 0.14, -24, 0.4)
+    put("acierto", c["ciento"] + 0.2, -29, 0.6)
+    put("flip", c["combustible"] - 0.14, -24, 0.4)
+    for i, k in enumerate(("combustible", "comburente", "calor", "reaccion")):
+        put(_pitch(toque, 1.0 + 0.1 * i), c[k] - 0.03, -28, 0.3)
+    # «el autobús no llega»: reloj lento
+    put("reloj", S["espera"], -31, E["espera"] - S["espera"], 0.05, 0.1)
+    # reto diario: un tic por pregunta, monedas y fanfarria
+    d = E["reto"] - S["reto"]
+    for q in range(10):
+        put(_pitch(_onset(_load("tic")), 1.0 + 0.04 * q), S["reto"] + 0.2 + d * 0.62 * (q + 1) / 10, -29, 0.2)
+    put("monedas", S["reto"] + 0.3, -32, d * 0.55, 0.05, 0.2)
+    put("logro", S["reto"] + 0.2 + d * 0.66, -24, 1.3)
+    # 1 vs 1: la ruleta gira y frena; luego la cuenta atrás
+    d = E["duelo"] - S["duelo"]
+    put("ruleta", S["duelo"] + 0.05, -26, d * 0.55, 0.01, 0.08)
+    put(_pitch(toque, 1.2), S["duelo"] + d * 0.55, -26, 0.3)
+    for k in range(4):
+        put(_pitch(_onset(_load("tic")), 0.8), S["duelo"] + d * 0.58 + k * d * 0.1, -27, 0.2)
+    # llega el autobús: motor, frenos y puertas; sube; se cierran; se va
+    stop = c["llega"] - 0.3 + 1.7
+    put(_pitch(motor, 0.8), c["llega"] - 0.5, -26, stop - c["llega"] + 0.6, 0.3, 0.4)
+    put("vapor", stop - 0.15, -27, 0.7, 0.01, 0.3)
+    put("puertas", stop + 0.02, -25, 1.4)
+    for k, w_ in enumerate((c["estudiado"] - 0.25, c["estudiado"] - 0.05, c["estudiado"] + 0.15)):
+        put("acierto", w_ - 0.03, -28, 0.6)
+    put("pasos", c["l9"] + 0.05, -29, 0.75, 0.01, 0.1)
+    put(_pitch(_load("puertas"), 1.15), c["l9"] + 0.8, -27, 1.0)
+    put(_pitch(motor, 1.0), c["l9"] + 1.4, -25, 2.2, 0.2, 0.8)
+    put("golpe", c["l9"] + 0.55, -28, 0.6, 0.002, 0.3)
+    # parada vacía: el panel vuelve a «14 MIN»
+    put(_pitch(_onset(_load("nota")), 1.0), S["vacia"] + 0.1, -31, 0.8)
+    put(toque, c["esperas"] - 0.03, -29, 0.3)
+    put(_pitch(toque, 1.15), c["escribelo"] - 0.03, -29, 0.3)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "autobus":
+        return sfx_track_autobus(path)
     if Q.get("formato") == "guardia":
         return sfx_track_guardia(path)
     if Q.get("formato") == "espuma":

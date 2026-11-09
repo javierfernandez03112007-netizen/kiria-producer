@@ -1,0 +1,24 @@
+{
+ "formato": "autobus",
+ "estilo": "app",
+ "voz": {"tempo": 1.0, "count": 0, "count_line": 1, "cortar": false, "pause_def": 0.3},
+ "realce": ["compartir", "marca", "prueba"],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿CUÁNTO ESPERAS TÚ?",
+ "portada": {"titulo": "CADA MINUTO CUENTA", "etiqueta": "ESTUDIA MIENTRAS ESPERAS", "t": 9.0, "oscurecer": true},
+ "mezcla": {"sfx": 1.0, "ganancia": 0.0},
+ "cues": {
+  "cuanto": ["¿Cuánto", 1, 1], "pierdes": ["pierdes", 1, 1], "esperando": ["esperando", 1, 1], "autobus0": ["autobús?", 1, 1],
+  "l2": ["¿Y", 1, 2], "minutos": ["minutos", 1, 2], "plaza": ["plaza", 1, 2],
+  "abres": ["Abres", 1, 3], "marca0": ["Bomberados…", 1, 3], "flashcards": ["flashcards.", 1, 3],
+  "cuantos": ["¿Cuántos", 1, 4], "constitucion": ["Constitución?", 1, 4], "ciento": ["Ciento", 1, 4],
+  "tetraedro": ["¿El", 1, 5], "combustible": ["Combustible,", 1, 5], "comburente": ["comburente,", 1, 5], "calor": ["calor", 1, 5], "reaccion": ["reacción", 1, 5],
+  "l6": ["El", 1, 6], "nollega": ["llega:", 1, 6], "reto": ["reto", 1, 6], "diario": ["diario.", 1, 6],
+  "l7": ["Y", 1, 7], "retar": ["retar", 1, 7], "uno1": ["uno", 1, 7], "contra": ["contra", 1, 7],
+  "llega": ["Llega", 1, 8], "estudiado": ["estudiado.", 1, 8],
+  "l9": ["No", 1, 9], "mas": ["más", 1, 9], "aprovechar": ["aprovechar", 1, 9],
+  "esperas": ["¿Cuánto", 1, 10], "escribelo": ["Escríbelo", 1, 10],
+  "compartir": ["¡Mándaselo", 1, 11],
+  "descripcion": ["¿Opositas", 1, 12], "marca": ["¡Bomberados!", 1, 12], "prueba": ["¡Pruébala", 1, 12]
+ }
+}

@@ -1,0 +1,616 @@
+[
+ {
+  "text": "¿Cuánto tiempo pierdes al día esperando el autobús?",
+  "start": 0.0,
+  "end": 2.86,
+  "words": [
+   {
+    "w": "¿Cuánto",
+    "start": 0.0,
+    "end": 0.357
+   },
+   {
+    "w": "tiempo",
+    "start": 0.357,
+    "end": 0.715
+   },
+   {
+    "w": "pierdes",
+    "start": 0.715,
+    "end": 1.072
+   },
+   {
+    "w": "al",
+    "start": 1.072,
+    "end": 1.271
+   },
+   {
+    "w": "día",
+    "start": 1.271,
+    "end": 1.47
+   },
+   {
+    "w": "esperando",
+    "start": 1.47,
+    "end": 2.145
+   },
+   {
+    "w": "el",
+    "start": 2.145,
+    "end": 2.343
+   },
+   {
+    "w": "autobús?",
+    "start": 2.343,
+    "end": 2.86
+   }
+  ]
+ },
+ {
+  "text": "¿Y si esos minutos te acercaran a tu plaza de bombero?",
+  "start": 3.16,
+  "end": 6.775,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 3.16,
+    "end": 3.359
+   },
+   {
+    "w": "si",
+    "start": 3.359,
+    "end": 3.557
+   },
+   {
+    "w": "esos",
+    "start": 3.557,
+    "end": 3.915
+   },
+   {
+    "w": "minutos",
+    "start": 3.915,
+    "end": 4.431
+   },
+   {
+    "w": "te",
+    "start": 4.431,
+    "end": 4.63
+   },
+   {
+    "w": "acercaran",
+    "start": 4.63,
+    "end": 5.305
+   },
+   {
+    "w": "a",
+    "start": 5.305,
+    "end": 5.503
+   },
+   {
+    "w": "tu",
+    "start": 5.503,
+    "end": 5.702
+   },
+   {
+    "w": "plaza",
+    "start": 5.702,
+    "end": 6.06
+   },
+   {
+    "w": "de",
+    "start": 6.06,
+    "end": 6.258
+   },
+   {
+    "w": "bombero?",
+    "start": 6.258,
+    "end": 6.775
+   }
+  ]
+ },
+ {
+  "text": "Abres Bomberados… y repasas con flashcards.",
+  "start": 7.075,
+  "end": 9.678,
+  "words": [
+   {
+    "w": "Abres",
+    "start": 7.075,
+    "end": 7.432
+   },
+   {
+    "w": "Bomberados…",
+    "start": 7.432,
+    "end": 8.107
+   },
+   {
+    "w": "y",
+    "start": 8.407,
+    "end": 8.606
+   },
+   {
+    "w": "repasas",
+    "start": 8.606,
+    "end": 9.122
+   },
+   {
+    "w": "con",
+    "start": 9.122,
+    "end": 9.321
+   },
+   {
+    "w": "flashcards.",
+    "start": 9.321,
+    "end": 9.678
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántos artículos tiene la Constitución? Ciento sesenta y nueve.",
+  "start": 9.978,
+  "end": 13.771,
+  "words": [
+   {
+    "w": "¿Cuántos",
+    "start": 9.978,
+    "end": 10.335
+   },
+   {
+    "w": "artículos",
+    "start": 10.335,
+    "end": 11.01
+   },
+   {
+    "w": "tiene",
+    "start": 11.01,
+    "end": 11.368
+   },
+   {
+    "w": "la",
+    "start": 11.368,
+    "end": 11.567
+   },
+   {
+    "w": "Constitución?",
+    "start": 11.567,
+    "end": 12.241
+   },
+   {
+    "w": "Ciento",
+    "start": 12.341,
+    "end": 12.699
+   },
+   {
+    "w": "sesenta",
+    "start": 12.699,
+    "end": 13.215
+   },
+   {
+    "w": "y",
+    "start": 13.215,
+    "end": 13.414
+   },
+   {
+    "w": "nueve.",
+    "start": 13.414,
+    "end": 13.771
+   }
+  ]
+ },
+ {
+  "text": "¿El tetraedro del fuego? Combustible, comburente, calor y reacción en cadena.",
+  "start": 14.071,
+  "end": 18.621,
+  "words": [
+   {
+    "w": "¿El",
+    "start": 14.071,
+    "end": 14.27
+   },
+   {
+    "w": "tetraedro",
+    "start": 14.27,
+    "end": 14.786
+   },
+   {
+    "w": "del",
+    "start": 14.786,
+    "end": 14.985
+   },
+   {
+    "w": "fuego?",
+    "start": 14.985,
+    "end": 15.342
+   },
+   {
+    "w": "Combustible,",
+    "start": 15.442,
+    "end": 16.117
+   },
+   {
+    "w": "comburente,",
+    "start": 16.217,
+    "end": 16.892
+   },
+   {
+    "w": "calor",
+    "start": 16.992,
+    "end": 17.349
+   },
+   {
+    "w": "y",
+    "start": 17.349,
+    "end": 17.548
+   },
+   {
+    "w": "reacción",
+    "start": 17.548,
+    "end": 17.906
+   },
+   {
+    "w": "en",
+    "start": 17.906,
+    "end": 18.104
+   },
+   {
+    "w": "cadena.",
+    "start": 18.104,
+    "end": 18.621
+   }
+  ]
+ },
+ {
+  "text": "El autobús no llega: completas el reto diario.",
+  "start": 18.921,
+  "end": 21.802,
+  "words": [
+   {
+    "w": "El",
+    "start": 18.921,
+    "end": 19.12
+   },
+   {
+    "w": "autobús",
+    "start": 19.12,
+    "end": 19.636
+   },
+   {
+    "w": "no",
+    "start": 19.636,
+    "end": 19.835
+   },
+   {
+    "w": "llega:",
+    "start": 19.835,
+    "end": 20.192
+   },
+   {
+    "w": "completas",
+    "start": 20.372,
+    "end": 20.888
+   },
+   {
+    "w": "el",
+    "start": 20.888,
+    "end": 21.087
+   },
+   {
+    "w": "reto",
+    "start": 21.087,
+    "end": 21.444
+   },
+   {
+    "w": "diario.",
+    "start": 21.444,
+    "end": 21.802
+   }
+  ]
+ },
+ {
+  "text": "Y aún te da tiempo a retar a otro opositor en un uno contra uno.",
+  "start": 22.102,
+  "end": 26.512,
+  "words": [
+   {
+    "w": "Y",
+    "start": 22.102,
+    "end": 22.301
+   },
+   {
+    "w": "aún",
+    "start": 22.301,
+    "end": 22.499
+   },
+   {
+    "w": "te",
+    "start": 22.499,
+    "end": 22.698
+   },
+   {
+    "w": "da",
+    "start": 22.698,
+    "end": 22.897
+   },
+   {
+    "w": "tiempo",
+    "start": 22.897,
+    "end": 23.254
+   },
+   {
+    "w": "a",
+    "start": 23.254,
+    "end": 23.453
+   },
+   {
+    "w": "retar",
+    "start": 23.453,
+    "end": 23.811
+   },
+   {
+    "w": "a",
+    "start": 23.811,
+    "end": 24.009
+   },
+   {
+    "w": "otro",
+    "start": 24.009,
+    "end": 24.367
+   },
+   {
+    "w": "opositor",
+    "start": 24.367,
+    "end": 25.042
+   },
+   {
+    "w": "en",
+    "start": 25.042,
+    "end": 25.24
+   },
+   {
+    "w": "un",
+    "start": 25.24,
+    "end": 25.439
+   },
+   {
+    "w": "uno",
+    "start": 25.439,
+    "end": 25.797
+   },
+   {
+    "w": "contra",
+    "start": 25.797,
+    "end": 26.154
+   },
+   {
+    "w": "uno.",
+    "start": 26.154,
+    "end": 26.512
+   }
+  ]
+ },
+ {
+  "text": "Llega el autobús… y tú ya has estudiado.",
+  "start": 26.812,
+  "end": 29.654,
+  "words": [
+   {
+    "w": "Llega",
+    "start": 26.812,
+    "end": 27.169
+   },
+   {
+    "w": "el",
+    "start": 27.169,
+    "end": 27.368
+   },
+   {
+    "w": "autobús…",
+    "start": 27.368,
+    "end": 27.884
+   },
+   {
+    "w": "y",
+    "start": 28.184,
+    "end": 28.383
+   },
+   {
+    "w": "tú",
+    "start": 28.383,
+    "end": 28.582
+   },
+   {
+    "w": "ya",
+    "start": 28.582,
+    "end": 28.781
+   },
+   {
+    "w": "has",
+    "start": 28.781,
+    "end": 28.979
+   },
+   {
+    "w": "estudiado.",
+    "start": 28.979,
+    "end": 29.654
+   }
+  ]
+ },
+ {
+  "text": "No necesitas más tiempo: necesitas aprovechar el que tienes.",
+  "start": 29.954,
+  "end": 33.669,
+  "words": [
+   {
+    "w": "No",
+    "start": 29.954,
+    "end": 30.153
+   },
+   {
+    "w": "necesitas",
+    "start": 30.153,
+    "end": 30.828
+   },
+   {
+    "w": "más",
+    "start": 30.828,
+    "end": 31.026
+   },
+   {
+    "w": "tiempo:",
+    "start": 31.026,
+    "end": 31.384
+   },
+   {
+    "w": "necesitas",
+    "start": 31.564,
+    "end": 32.239
+   },
+   {
+    "w": "aprovechar",
+    "start": 32.239,
+    "end": 32.914
+   },
+   {
+    "w": "el",
+    "start": 32.914,
+    "end": 33.112
+   },
+   {
+    "w": "que",
+    "start": 33.112,
+    "end": 33.311
+   },
+   {
+    "w": "tienes.",
+    "start": 33.311,
+    "end": 33.669
+   }
+  ]
+ },
+ {
+  "text": "¿Cuánto esperas tú al día? Escríbelo en comentarios.",
+  "start": 33.969,
+  "end": 37.087,
+  "words": [
+   {
+    "w": "¿Cuánto",
+    "start": 33.969,
+    "end": 34.326
+   },
+   {
+    "w": "esperas",
+    "start": 34.326,
+    "end": 34.843
+   },
+   {
+    "w": "tú",
+    "start": 34.843,
+    "end": 35.041
+   },
+   {
+    "w": "al",
+    "start": 35.041,
+    "end": 35.24
+   },
+   {
+    "w": "día?",
+    "start": 35.24,
+    "end": 35.439
+   },
+   {
+    "w": "Escríbelo",
+    "start": 35.539,
+    "end": 36.214
+   },
+   {
+    "w": "en",
+    "start": 36.214,
+    "end": 36.412
+   },
+   {
+    "w": "comentarios.",
+    "start": 36.412,
+    "end": 37.087
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo!",
+  "start": 37.387,
+  "end": 40.187,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 37.387,
+    "end": 38.227
+   },
+   {
+    "w": "a",
+    "start": 38.227,
+    "end": 38.467
+   },
+   {
+    "w": "quien",
+    "start": 38.467,
+    "end": 38.707
+   },
+   {
+    "w": "oposite",
+    "start": 38.707,
+    "end": 39.547
+   },
+   {
+    "w": "contigo!",
+    "start": 39.547,
+    "end": 40.187
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 40.487,
+  "end": 45.007,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 40.487,
+    "end": 41.327
+   },
+   {
+    "w": "a",
+    "start": 41.327,
+    "end": 41.567
+   },
+   {
+    "w": "bombero?",
+    "start": 41.567,
+    "end": 42.207
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 42.307,
+    "end": 43.147
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 43.247,
+    "end": 43.887
+   },
+   {
+    "w": "gratis",
+    "start": 43.887,
+    "end": 44.327
+   },
+   {
+    "w": "cinco",
+    "start": 44.327,
+    "end": 44.767
+   },
+   {
+    "w": "días!",
+    "start": 44.767,
+    "end": 45.007
+   }
+  ]
+ }
+]
