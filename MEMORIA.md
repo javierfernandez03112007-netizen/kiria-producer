@@ -146,8 +146,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 - **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
   vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
   tipo y con 6 h o más entre ellos; 10:00 y las noticias cuanto antes), las dos semanas día a día, lo que necesita Javi con fecha y la
-  lista para cada publicación. Fechas pasadas al calendario de Notion (GTA lun 9 18:00, Tapas mar 10, Psicología mié 11, Neveras sáb 14)
-  y PDF avisado al chat «Plan escalabilidad Kiria».
+  lista para cada publicación. **Versión 2 (mismo día, a petición de Javi)**: Javi no tiene Facebook (fuera), Tapas ya está subido y
+  Psicología no se sube; empieza con GTA el lunes 9 a las 18:00, martes sin vídeo nuevo, miércoles carrera con creencia rota (tema del
+  análisis), jueves capítulo 1 de su serie, viernes «Cómo se hace un vídeo de 900.000», sábado historia real (reserva: Neveras). PDF avisado
+  al chat «Plan escalabilidad Kiria».
 - **«La tapa gratis no existe»** (`projects/tapas/`, 8-11-2026): primer vídeo **puente** del plan de crecimiento (negocios por
   dentro: gusta a todos y además a los dueños de negocios). Javi: «cómo es posible que los bares que sirven tapas gratis obtengan beneficio,
   no lo digas así, dilo de la manera más profesional y enganchante posible». Guion primero (156 palabras) → su MP3 (55,8 s) → Parakeet +
