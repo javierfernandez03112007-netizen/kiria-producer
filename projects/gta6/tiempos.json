@@ -1,0 +1,896 @@
+[
+ {
+  "text": "GTA 6 todavía no ha salido… y ya no te cabría en el móvil.",
+  "start": 0.06,
+  "end": 3.93,
+  "words": [
+   {
+    "w": "GTA",
+    "start": 0.06,
+    "end": 0.7
+   },
+   {
+    "w": "6",
+    "start": 0.7,
+    "end": 1.1
+   },
+   {
+    "w": "todavía",
+    "start": 1.1,
+    "end": 1.42
+   },
+   {
+    "w": "no",
+    "start": 1.42,
+    "end": 1.58
+   },
+   {
+    "w": "ha",
+    "start": 1.58,
+    "end": 1.74
+   },
+   {
+    "w": "salido…",
+    "start": 1.74,
+    "end": 2.42
+   },
+   {
+    "w": "y",
+    "start": 2.42,
+    "end": 2.51
+   },
+   {
+    "w": "ya",
+    "start": 2.51,
+    "end": 2.67
+   },
+   {
+    "w": "no",
+    "start": 2.67,
+    "end": 2.75
+   },
+   {
+    "w": "te",
+    "start": 2.75,
+    "end": 2.91
+   },
+   {
+    "w": "cabría",
+    "start": 2.91,
+    "end": 3.47
+   },
+   {
+    "w": "en",
+    "start": 3.47,
+    "end": 3.55
+   },
+   {
+    "w": "el",
+    "start": 3.55,
+    "end": 3.63
+   },
+   {
+    "w": "móvil.",
+    "start": 3.63,
+    "end": 3.93
+   }
+  ]
+ },
+ {
+  "text": "¿Por qué pesa tanto? Vamos a abrirlo. Y al final, lo que de verdad ocupa.",
+  "start": 4.28,
+  "end": 8.32,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 4.28,
+    "end": 4.39
+   },
+   {
+    "w": "qué",
+    "start": 4.39,
+    "end": 4.55
+   },
+   {
+    "w": "pesa",
+    "start": 4.55,
+    "end": 5.03
+   },
+   {
+    "w": "tanto?",
+    "start": 5.03,
+    "end": 5.45
+   },
+   {
+    "w": "Vamos",
+    "start": 5.45,
+    "end": 5.66
+   },
+   {
+    "w": "a",
+    "start": 5.66,
+    "end": 5.82
+   },
+   {
+    "w": "abrirlo.",
+    "start": 5.82,
+    "end": 6.31
+   },
+   {
+    "w": "Y",
+    "start": 6.31,
+    "end": 6.441
+   },
+   {
+    "w": "al",
+    "start": 6.441,
+    "end": 6.6
+   },
+   {
+    "w": "final,",
+    "start": 6.6,
+    "end": 7.09
+   },
+   {
+    "w": "lo",
+    "start": 7.09,
+    "end": 7.2
+   },
+   {
+    "w": "que",
+    "start": 7.2,
+    "end": 7.36
+   },
+   {
+    "w": "de",
+    "start": 7.36,
+    "end": 7.52
+   },
+   {
+    "w": "verdad",
+    "start": 7.52,
+    "end": 7.84
+   },
+   {
+    "w": "ocupa.",
+    "start": 7.84,
+    "end": 8.32
+   }
+  ]
+ },
+ {
+  "text": "Rockstar lo ha confirmado: hasta 212 gigas.",
+  "start": 8.67,
+  "end": 12.23,
+  "words": [
+   {
+    "w": "Rockstar",
+    "start": 8.67,
+    "end": 9.26
+   },
+   {
+    "w": "lo",
+    "start": 9.26,
+    "end": 9.42
+   },
+   {
+    "w": "ha",
+    "start": 9.42,
+    "end": 9.58
+   },
+   {
+    "w": "confirmado:",
+    "start": 9.58,
+    "end": 10.25
+   },
+   {
+    "w": "hasta",
+    "start": 10.25,
+    "end": 10.65
+   },
+   {
+    "w": "212",
+    "start": 10.65,
+    "end": 11.69
+   },
+   {
+    "w": "gigas.",
+    "start": 11.69,
+    "end": 12.23
+   }
+  ]
+ },
+ {
+  "text": "Más que 50.000 canciones. El doble que Red Dead 2.",
+  "start": 12.49,
+  "end": 16.03,
+  "words": [
+   {
+    "w": "Más",
+    "start": 12.49,
+    "end": 12.73
+   },
+   {
+    "w": "que",
+    "start": 12.73,
+    "end": 12.89
+   },
+   {
+    "w": "50.000",
+    "start": 12.89,
+    "end": 13.77
+   },
+   {
+    "w": "canciones.",
+    "start": 13.77,
+    "end": 14.51
+   },
+   {
+    "w": "El",
+    "start": 14.51,
+    "end": 14.61
+   },
+   {
+    "w": "doble",
+    "start": 14.61,
+    "end": 15.01
+   },
+   {
+    "w": "que",
+    "start": 15.01,
+    "end": 15.17
+   },
+   {
+    "w": "Red",
+    "start": 15.17,
+    "end": 15.49
+   },
+   {
+    "w": "Dead",
+    "start": 15.49,
+    "end": 15.81
+   },
+   {
+    "w": "2.",
+    "start": 15.81,
+    "end": 16.03
+   }
+  ]
+ },
+ {
+  "text": "Con una fibra de 300 megas, y todo perfecto, tardarías más de hora y media.",
+  "start": 16.28,
+  "end": 20.79,
+  "words": [
+   {
+    "w": "Con",
+    "start": 16.28,
+    "end": 16.367
+   },
+   {
+    "w": "una",
+    "start": 16.367,
+    "end": 16.57
+   },
+   {
+    "w": "fibra",
+    "start": 16.57,
+    "end": 16.89
+   },
+   {
+    "w": "de",
+    "start": 16.89,
+    "end": 17.05
+   },
+   {
+    "w": "300",
+    "start": 17.05,
+    "end": 17.61
+   },
+   {
+    "w": "megas,",
+    "start": 17.61,
+    "end": 18.13
+   },
+   {
+    "w": "y",
+    "start": 18.13,
+    "end": 18.25
+   },
+   {
+    "w": "todo",
+    "start": 18.25,
+    "end": 18.57
+   },
+   {
+    "w": "perfecto,",
+    "start": 18.57,
+    "end": 19.27
+   },
+   {
+    "w": "tardarías",
+    "start": 19.27,
+    "end": 19.83
+   },
+   {
+    "w": "más",
+    "start": 19.83,
+    "end": 19.99
+   },
+   {
+    "w": "de",
+    "start": 19.99,
+    "end": 20.23
+   },
+   {
+    "w": "hora",
+    "start": 20.23,
+    "end": 20.47
+   },
+   {
+    "w": "y",
+    "start": 20.47,
+    "end": 20.55
+   },
+   {
+    "w": "media.",
+    "start": 20.55,
+    "end": 20.79
+   }
+  ]
+ },
+ {
+  "text": "Crees que lo que pesa es el código. En realidad, el programa es lo de menos.",
+  "start": 21.19,
+  "end": 25.11,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 21.19,
+    "end": 21.4
+   },
+   {
+    "w": "que",
+    "start": 21.4,
+    "end": 21.56
+   },
+   {
+    "w": "lo",
+    "start": 21.56,
+    "end": 21.64
+   },
+   {
+    "w": "que",
+    "start": 21.64,
+    "end": 21.8
+   },
+   {
+    "w": "pesa",
+    "start": 21.8,
+    "end": 22.2
+   },
+   {
+    "w": "es",
+    "start": 22.2,
+    "end": 22.36
+   },
+   {
+    "w": "el",
+    "start": 22.36,
+    "end": 22.44
+   },
+   {
+    "w": "código.",
+    "start": 22.44,
+    "end": 23.02
+   },
+   {
+    "w": "En",
+    "start": 23.02,
+    "end": 23.13
+   },
+   {
+    "w": "realidad,",
+    "start": 23.13,
+    "end": 23.77
+   },
+   {
+    "w": "el",
+    "start": 23.77,
+    "end": 23.93
+   },
+   {
+    "w": "programa",
+    "start": 23.93,
+    "end": 24.33
+   },
+   {
+    "w": "es",
+    "start": 24.33,
+    "end": 24.49
+   },
+   {
+    "w": "lo",
+    "start": 24.49,
+    "end": 24.65
+   },
+   {
+    "w": "de",
+    "start": 24.65,
+    "end": 24.89
+   },
+   {
+    "w": "menos.",
+    "start": 24.89,
+    "end": 25.11
+   }
+  ]
+ },
+ {
+  "text": "Lo que pesa es todo lo que ves… y todo lo que oyes.",
+  "start": 25.41,
+  "end": 28.89,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 25.41,
+    "end": 25.48
+   },
+   {
+    "w": "que",
+    "start": 25.48,
+    "end": 25.64
+   },
+   {
+    "w": "pesa",
+    "start": 25.64,
+    "end": 26.27
+   },
+   {
+    "w": "es",
+    "start": 26.27,
+    "end": 26.55
+   },
+   {
+    "w": "todo",
+    "start": 26.55,
+    "end": 26.74
+   },
+   {
+    "w": "lo",
+    "start": 26.74,
+    "end": 26.9
+   },
+   {
+    "w": "que",
+    "start": 26.9,
+    "end": 27.14
+   },
+   {
+    "w": "ves…",
+    "start": 27.14,
+    "end": 27.66
+   },
+   {
+    "w": "y",
+    "start": 27.66,
+    "end": 27.92
+   },
+   {
+    "w": "todo",
+    "start": 27.92,
+    "end": 28.13
+   },
+   {
+    "w": "lo",
+    "start": 28.13,
+    "end": 28.29
+   },
+   {
+    "w": "que",
+    "start": 28.29,
+    "end": 28.45
+   },
+   {
+    "w": "oyes.",
+    "start": 28.45,
+    "end": 28.89
+   }
+  ]
+ },
+ {
+  "text": "Cada pared, cada coche, cada cara va forrada de imágenes enormes, para que de cerca no se vea borrosa.",
+  "start": 29.19,
+  "end": 35.49,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 29.19,
+    "end": 29.48
+   },
+   {
+    "w": "pared,",
+    "start": 29.48,
+    "end": 30.03
+   },
+   {
+    "w": "cada",
+    "start": 30.03,
+    "end": 30.32
+   },
+   {
+    "w": "coche,",
+    "start": 30.32,
+    "end": 30.9
+   },
+   {
+    "w": "cada",
+    "start": 30.9,
+    "end": 31.16
+   },
+   {
+    "w": "cara",
+    "start": 31.16,
+    "end": 31.68
+   },
+   {
+    "w": "va",
+    "start": 31.68,
+    "end": 31.87
+   },
+   {
+    "w": "forrada",
+    "start": 31.87,
+    "end": 32.43
+   },
+   {
+    "w": "de",
+    "start": 32.43,
+    "end": 32.59
+   },
+   {
+    "w": "imágenes",
+    "start": 32.59,
+    "end": 33.07
+   },
+   {
+    "w": "enormes,",
+    "start": 33.07,
+    "end": 33.71
+   },
+   {
+    "w": "para",
+    "start": 33.71,
+    "end": 33.79
+   },
+   {
+    "w": "que",
+    "start": 33.79,
+    "end": 33.95
+   },
+   {
+    "w": "de",
+    "start": 33.95,
+    "end": 34.11
+   },
+   {
+    "w": "cerca",
+    "start": 34.11,
+    "end": 34.43
+   },
+   {
+    "w": "no",
+    "start": 34.43,
+    "end": 34.59
+   },
+   {
+    "w": "se",
+    "start": 34.59,
+    "end": 34.67
+   },
+   {
+    "w": "vea",
+    "start": 34.67,
+    "end": 35.07
+   },
+   {
+    "w": "borrosa.",
+    "start": 35.07,
+    "end": 35.49
+   }
+  ]
+ },
+ {
+  "text": "Cada voz, cada canción, cada ruido de la calle… es sonido guardado.",
+  "start": 35.74,
+  "end": 40.18,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 35.74,
+    "end": 35.99
+   },
+   {
+    "w": "voz,",
+    "start": 35.99,
+    "end": 36.47
+   },
+   {
+    "w": "cada",
+    "start": 36.47,
+    "end": 36.79
+   },
+   {
+    "w": "canción,",
+    "start": 36.79,
+    "end": 37.48
+   },
+   {
+    "w": "cada",
+    "start": 37.48,
+    "end": 37.72
+   },
+   {
+    "w": "ruido",
+    "start": 37.72,
+    "end": 38.2
+   },
+   {
+    "w": "de",
+    "start": 38.2,
+    "end": 38.28
+   },
+   {
+    "w": "la",
+    "start": 38.28,
+    "end": 38.36
+   },
+   {
+    "w": "calle…",
+    "start": 38.36,
+    "end": 38.97
+   },
+   {
+    "w": "es",
+    "start": 38.97,
+    "end": 39.16
+   },
+   {
+    "w": "sonido",
+    "start": 39.16,
+    "end": 39.64
+   },
+   {
+    "w": "guardado.",
+    "start": 39.64,
+    "end": 40.18
+   }
+  ]
+ },
+ {
+  "text": "Y una ciudad entera, lista para que vayas a cualquier sitio sin esperar.",
+  "start": 40.43,
+  "end": 44.43,
+  "words": [
+   {
+    "w": "Y",
+    "start": 40.43,
+    "end": 40.58
+   },
+   {
+    "w": "una",
+    "start": 40.58,
+    "end": 40.74
+   },
+   {
+    "w": "ciudad",
+    "start": 40.74,
+    "end": 41.22
+   },
+   {
+    "w": "entera,",
+    "start": 41.22,
+    "end": 41.79
+   },
+   {
+    "w": "lista",
+    "start": 41.79,
+    "end": 42.12
+   },
+   {
+    "w": "para",
+    "start": 42.12,
+    "end": 42.36
+   },
+   {
+    "w": "que",
+    "start": 42.36,
+    "end": 42.52
+   },
+   {
+    "w": "vayas",
+    "start": 42.52,
+    "end": 42.92
+   },
+   {
+    "w": "a",
+    "start": 42.92,
+    "end": 43.0
+   },
+   {
+    "w": "cualquier",
+    "start": 43.0,
+    "end": 43.48
+   },
+   {
+    "w": "sitio",
+    "start": 43.48,
+    "end": 43.8
+   },
+   {
+    "w": "sin",
+    "start": 43.8,
+    "end": 44.04
+   },
+   {
+    "w": "esperar.",
+    "start": 44.04,
+    "end": 44.43
+   }
+  ]
+ },
+ {
+  "text": "La respuesta: no te estás descargando un juego. Te estás descargando una ciudad… con cada ladrillo ya pintado.",
+  "start": 44.88,
+  "end": 51.4,
+  "words": [
+   {
+    "w": "La",
+    "start": 44.88,
+    "end": 45.02
+   },
+   {
+    "w": "respuesta:",
+    "start": 45.02,
+    "end": 45.7
+   },
+   {
+    "w": "no",
+    "start": 45.7,
+    "end": 45.86
+   },
+   {
+    "w": "te",
+    "start": 45.86,
+    "end": 46.02
+   },
+   {
+    "w": "estás",
+    "start": 46.02,
+    "end": 46.26
+   },
+   {
+    "w": "descargando",
+    "start": 46.26,
+    "end": 46.98
+   },
+   {
+    "w": "un",
+    "start": 46.98,
+    "end": 47.06
+   },
+   {
+    "w": "juego.",
+    "start": 47.06,
+    "end": 47.49
+   },
+   {
+    "w": "Te",
+    "start": 47.49,
+    "end": 47.56
+   },
+   {
+    "w": "estás",
+    "start": 47.56,
+    "end": 47.88
+   },
+   {
+    "w": "descargando",
+    "start": 47.88,
+    "end": 48.68
+   },
+   {
+    "w": "una",
+    "start": 48.68,
+    "end": 48.92
+   },
+   {
+    "w": "ciudad…",
+    "start": 48.92,
+    "end": 49.62
+   },
+   {
+    "w": "con",
+    "start": 49.62,
+    "end": 49.76
+   },
+   {
+    "w": "cada",
+    "start": 49.76,
+    "end": 50.08
+   },
+   {
+    "w": "ladrillo",
+    "start": 50.08,
+    "end": 50.72
+   },
+   {
+    "w": "ya",
+    "start": 50.72,
+    "end": 50.96
+   },
+   {
+    "w": "pintado.",
+    "start": 50.96,
+    "end": 51.4
+   }
+  ]
+ },
+ {
+  "text": "¿PlayStation o Xbox? Mándaselo a quien ya está haciendo hueco.",
+  "start": 51.8,
+  "end": 55.37,
+  "words": [
+   {
+    "w": "¿PlayStation",
+    "start": 51.8,
+    "end": 52.5
+   },
+   {
+    "w": "o",
+    "start": 52.5,
+    "end": 52.74
+   },
+   {
+    "w": "Xbox?",
+    "start": 52.74,
+    "end": 53.548
+   },
+   {
+    "w": "Mándaselo",
+    "start": 53.548,
+    "end": 54.143
+   },
+   {
+    "w": "a",
+    "start": 54.143,
+    "end": 54.22
+   },
+   {
+    "w": "quien",
+    "start": 54.22,
+    "end": 54.376
+   },
+   {
+    "w": "ya",
+    "start": 54.376,
+    "end": 54.532
+   },
+   {
+    "w": "está",
+    "start": 54.532,
+    "end": 54.688
+   },
+   {
+    "w": "haciendo",
+    "start": 54.688,
+    "end": 55.0
+   },
+   {
+    "w": "hueco.",
+    "start": 55.0,
+    "end": 55.37
+   }
+  ]
+ }
+]
