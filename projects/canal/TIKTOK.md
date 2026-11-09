@@ -113,5 +113,11 @@ todo lo necesario para profesionalizarla».
 
     #tapas #Granada #bares #negocios #economia
     ```
+14. **GTA 6 ocupa 212 gigas** (subir antes del 19-11, cuando sale el juego)
+    ```
+    🎮 GTA 6 todavía no ha salido… y ya no te cabría en el móvil: hasta 212 GB según Rockstar. El doble que Red Dead 2 🤯 ¿Por qué pesa tanto? No te descargas un juego: te descargas una ciudad. ¿PlayStation o Xbox? 👇
+
+    #GTA6 #gaming #videojuegos #PS5 #Xbox
+    ```
 No subir a TikTok los dos vídeos de lanzamiento («Ni una sola cámara» y «Tu producto, en 3D»): dicen «comenta KIRIA» y «el domingo»,
 que ya no valen.
