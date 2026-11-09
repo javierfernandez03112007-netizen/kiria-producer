@@ -5,7 +5,7 @@
  "realce": ["compartir", "marca", "prueba"],
  "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
  "compartir_titulo": "¿CUÁNTO ESPERAS TÚ?",
- "portada": {"titulo": "CADA MINUTO CUENTA", "etiqueta": "ESTUDIA MIENTRAS ESPERAS", "t": 9.0, "oscurecer": true},
+ "portada": {"titulo": "CADA MINUTO CUENTA", "etiqueta": "ESTUDIA MIENTRAS ESPERAS", "t": 12.4, "oscurecer": true},
  "mezcla": {"sfx": 1.0, "ganancia": 0.0},
  "cues": {
   "cuanto": ["¿Cuánto", 1, 1], "pierdes": ["pierdes", 1, 1], "esperando": ["esperando", 1, 1], "autobus0": ["autobús?", 1, 1],
