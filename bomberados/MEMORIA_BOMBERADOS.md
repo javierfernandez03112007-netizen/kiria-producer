@@ -203,7 +203,10 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   Miniatura lista, Fuente oficial y Notas. Las métricas, en «📊 Métricas por vídeo» (ver «Análisis de la cuenta» arriba).
 - **Adrián** (Adrián Luna, de Élite Bomberos; invitado en Notion, user://437aba8b-31f4-4c21-ab9c-bafe78ac64d1) escribe ideas
   con guion en el cuerpo de la fila: «AUTONOMIA DE BOTELLA» (5 nov, 40fd785b2d758003b5bbfd81f16a3df6) y «PRESION EN BOMBA»
-  (6 nov, 410d785b2d758023b974c49bb6c2008a). Ver `IDEAS.md`. Para ver lo último que ha tocado alguien:
+  (6 nov, 410d785b2d758023b974c49bb6c2008a). Ver `IDEAS.md`. **9 nov (Javi): sus filas van al FINAL de «Vídeos de Bomberados»**:
+  casilla nueva «Adrián Luna» (marcada en sus 11 filas: botella, presión, espuma y el calendario del 9 al 15 nov) y la vista
+  «Todos los vídeos» ordena por esa casilla ↑, Publicación ↑, Nivel ↓ y la nueva columna «Creado» ↑ (lo último que escribe,
+  abajo del todo). Sus filas se encuentran con `notion-search` + `created_by_user_ids` = su usuario. Para ver lo último que ha tocado alguien:
   `notion-get-version-changes` sobre la BD (el historial del plan solo llega a unos días atrás).
 - Filas vacías «Nueva página» creadas por Javi (6 nov 09:42–09:54 y antes): 410d785b2d75808eaf56f117a1bd0dde,
   410d785b2d7580e5a4deef3b3fca4710, 410d785b2d7580e9bb8fe08c35427ded, 40ad785b2d758002926cc0ab2b09f704,

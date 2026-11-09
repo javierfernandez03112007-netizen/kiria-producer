@@ -23,7 +23,10 @@ cuenta. La sesión de producción lee `bomberados/ANALISIS.md` antes de cada ví
      no pidas guardados, retención, alcance ni seguidores ganados por vídeo.
    - **Vídeos de Bomberados** (`collection://5422fb68-0692-456e-8aac-49a9c79151c9`): estado, formato, nivel, fecha y hora
      de publicación, descripción, fuente y notas. Fíjate en lo nuevo o cambiado, sobre todo lo que escriba **Adrián Luna**
-     (Élite Bomberos): ideas, guiones y preguntas de examen.
+     (Élite Bomberos): ideas, guiones y preguntas de examen. **Marca la casilla «Adrián Luna»** en cada fila nueva suya (Javi,
+     9 nov: sus vídeos van al final de la tabla, los últimos que escribe abajo del todo; la vista «Todos los vídeos» ordena
+     por esa casilla, luego por fecha, nivel y «Creado»). Para encontrarlas: `notion-search` en la base con el filtro
+     `created_by_user_ids: ["437aba8b-31f4-4c21-ab9c-bafe78ac64d1"]` (su usuario de invitado).
    - Lo demás del centro de trabajo (agenda, temarios que manda Javi, comentarios nuevos): `notion-search` dentro de la
      página y, si hace falta, `notion-get-version-changes` de las páginas tocadas en las últimas 24 h.
    - Si un vídeo está «Publicado» y no tiene fila en Métricas, créasela (mismo título y la relación) con las cifras vacías.
