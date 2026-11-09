@@ -1563,7 +1563,93 @@ def sfx_track_autobus(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_fomo(path):
+    """«FOMO Bomberados»: cuarto en silencio (reloj, página), chispazos y encendido de la arena, ruleta, golpes de los modos,
+    el mapa que se enciende (pops y barridos), convocatorias/callejero, Profe IA, menú y ranking (fanfarria), el FOMO (se
+    apaga todo y suenan avisos de móviles), la ruleta que frena en «TU PLAZA» y la venta. Planos como en fomo.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    bub, toque = _onset(_load("burbuja")), _onset(_load("toque"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # el cuarto: silencio, reloj y una página; dos chispazos; la arena se enciende en «así»
+    put("reloj", 0.0, -31, c["asi"] - 0.1, 0.05, 0.1)
+    put("papeles", 0.1, -32, 0.7, 0.01, 0.2)
+    for t0 in (0.55, 0.72):
+        put("glitch", t0, -27, 0.12, 0.002, 0.02)
+    put("encendido", c["asi"] - 0.55, -22, 1.6, 0.005, 0.3)
+    put("destello", c["asi"] - 0.05, -27, 0.8)
+    put("tension", c["asi"], -33, c["mientras"] - c["asi"], 0.3, 0.2, track=amb)
+    # ruleta del temario
+    put("ruleta", c["giras"], -27, 3.0, 0.01, 0.2)
+    put(_pitch(toque, 1.2), c["temario"] - 0.03, -28, 0.3)
+    # modos y mapa de España
+    for i, k in enumerate(("solo", "uno1", "directo")):
+        put(_pitch(_onset(_load("golpe")), 1.0 + 0.1 * i), c[k] - 0.02, -26, 0.45, 0.002, 0.2)
+    for i in range(12):
+        put(_pitch(bub, 0.9 + 0.05 * (i % 5)), c["directo"] - 0.3 + i * 0.08, -32, 0.2)
+    put("whoosh", c["directo"] + 0.1, -30, 0.6)
+    put("destello", c["espana"] - 0.05, -28, 0.7)
+    # convocatorias, callejero, Profe IA
+    put("whoosh2", c["preguntas"] - 0.15, -29, 0.6)
+    put(toque, c["convocatorias"] - 0.03, -28, 0.3)
+    put("acierto", c["callejero"] - 0.03, -27, 0.6)
+    put(_pitch(_onset(_load("nota")), 1.0), c["profe"] - 0.03, -29, 0.8)
+    put("papeles", c["manual"] - 0.1, -30, 0.7, 0.01, 0.2)
+    # herramientas y ranking
+    put(toque, c["flashcards"] - 0.03, -28, 0.3)
+    put(_pitch(toque, 1.15), c["simulacros"] - 0.03, -28, 0.3)
+    put("logro", c["ranking"] - 0.05, -25, 1.3)
+    # FOMO: se apaga la arena, reloj lento y avisos de móviles que se encienden
+    put(_pitch(_onset(_load("glitch")), 0.6), c["mientras"] - 0.12, -28, 0.12, 0.002, 0.02)
+    put("reloj", c["mientras"], -29, c["nojuego"] - c["mientras"] - 0.1, 0.05, 0.2)
+    for i in range(14):
+        put(_pitch(bub, 1.1 + 0.07 * (i % 6)), c["otros2"] - 0.3 + i * 0.09, -30, 0.18)
+    # lema: la ruleta frena y cae en «TU PLAZA»
+    put("encendido", c["nojuego"] - 0.6, -26, 1.4, 0.005, 0.3)
+    put("tension", c["nojuego"], -33, T["fin"] - c["nojuego"], 0.3, 0.3, track=amb)
+    d = c["plaza"] + 0.1 - (c["nojuego"] - 0.1)
+    put(_pitch(_load("ruleta"), 3.2 / max(1.0, d)), c["nojuego"] - 0.1, -27, d, 0.01, 0.05)
+    put("golpe", c["plaza"] + 0.05, -24, 0.7, 0.002, 0.3)
+    put("logro", c["plaza"] + 0.08, -25, 1.3)
+    put(toque, c["retarias"] - 0.03, -29, 0.3)
+    put(_pitch(toque, 1.15), c["escribelo"] - 0.03, -29, 0.3)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "fomo":
+        return sfx_track_fomo(path)
     if Q.get("formato") == "autobus":
         return sfx_track_autobus(path)
     if Q.get("formato") == "guardia":

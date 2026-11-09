@@ -1,0 +1,629 @@
+[
+ {
+  "text": "¿Y si preparar tu oposición fuera así?",
+  "start": 0.0,
+  "end": 3.101,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 0.0,
+    "end": 0.343
+   },
+   {
+    "w": "si",
+    "start": 0.343,
+    "end": 0.515
+   },
+   {
+    "w": "preparar",
+    "start": 0.515,
+    "end": 1.03
+   },
+   {
+    "w": "tu",
+    "start": 1.03,
+    "end": 1.202
+   },
+   {
+    "w": "oposición",
+    "start": 1.202,
+    "end": 2.297
+   },
+   {
+    "w": "fuera",
+    "start": 2.297,
+    "end": 2.833
+   },
+   {
+    "w": "así?",
+    "start": 2.833,
+    "end": 3.101
+   }
+  ]
+ },
+ {
+  "text": "Giras la ruleta… y te juegas el temario contra otros opositores.",
+  "start": 3.52,
+  "end": 7.437,
+  "words": [
+   {
+    "w": "Giras",
+    "start": 3.52,
+    "end": 3.863
+   },
+   {
+    "w": "la",
+    "start": 3.863,
+    "end": 4.035
+   },
+   {
+    "w": "ruleta…",
+    "start": 4.035,
+    "end": 4.797
+   },
+   {
+    "w": "y",
+    "start": 4.797,
+    "end": 4.879
+   },
+   {
+    "w": "te",
+    "start": 4.879,
+    "end": 4.979
+   },
+   {
+    "w": "juegas",
+    "start": 4.979,
+    "end": 5.323
+   },
+   {
+    "w": "el",
+    "start": 5.323,
+    "end": 5.495
+   },
+   {
+    "w": "temario",
+    "start": 5.495,
+    "end": 6.096
+   },
+   {
+    "w": "contra",
+    "start": 6.096,
+    "end": 6.353
+   },
+   {
+    "w": "otros",
+    "start": 6.353,
+    "end": 6.696
+   },
+   {
+    "w": "opositores.",
+    "start": 6.696,
+    "end": 7.437
+   }
+  ]
+ },
+ {
+  "text": "Solo, en un uno contra uno… o en directo contra opositores de toda España.",
+  "start": 7.662,
+  "end": 12.255,
+  "words": [
+   {
+    "w": "Solo,",
+    "start": 7.662,
+    "end": 8.156
+   },
+   {
+    "w": "en",
+    "start": 8.156,
+    "end": 8.328
+   },
+   {
+    "w": "un",
+    "start": 8.328,
+    "end": 8.499
+   },
+   {
+    "w": "uno",
+    "start": 8.499,
+    "end": 8.843
+   },
+   {
+    "w": "contra",
+    "start": 8.843,
+    "end": 9.186
+   },
+   {
+    "w": "uno…",
+    "start": 9.186,
+    "end": 9.648
+   },
+   {
+    "w": "o",
+    "start": 9.648,
+    "end": 9.749
+   },
+   {
+    "w": "en",
+    "start": 9.749,
+    "end": 9.873
+   },
+   {
+    "w": "directo",
+    "start": 9.873,
+    "end": 10.302
+   },
+   {
+    "w": "contra",
+    "start": 10.302,
+    "end": 10.646
+   },
+   {
+    "w": "opositores",
+    "start": 10.646,
+    "end": 11.333
+   },
+   {
+    "w": "de",
+    "start": 11.333,
+    "end": 11.504
+   },
+   {
+    "w": "toda",
+    "start": 11.504,
+    "end": 11.762
+   },
+   {
+    "w": "España.",
+    "start": 11.762,
+    "end": 12.255
+   }
+  ]
+ },
+ {
+  "text": "Preguntas de convocatorias reales… y hasta del callejero de tu zona.",
+  "start": 12.577,
+  "end": 16.333,
+  "words": [
+   {
+    "w": "Preguntas",
+    "start": 12.577,
+    "end": 12.964
+   },
+   {
+    "w": "de",
+    "start": 12.964,
+    "end": 13.135
+   },
+   {
+    "w": "convocatorias",
+    "start": 13.135,
+    "end": 13.994
+   },
+   {
+    "w": "reales…",
+    "start": 13.994,
+    "end": 14.616
+   },
+   {
+    "w": "y",
+    "start": 14.616,
+    "end": 14.713
+   },
+   {
+    "w": "hasta",
+    "start": 14.713,
+    "end": 14.938
+   },
+   {
+    "w": "del",
+    "start": 14.938,
+    "end": 15.11
+   },
+   {
+    "w": "callejero",
+    "start": 15.11,
+    "end": 15.797
+   },
+   {
+    "w": "de",
+    "start": 15.797,
+    "end": 15.883
+   },
+   {
+    "w": "tu",
+    "start": 15.883,
+    "end": 16.054
+   },
+   {
+    "w": "zona.",
+    "start": 16.054,
+    "end": 16.333
+   }
+  ]
+ },
+ {
+  "text": "¿Fallas? El Profe IA te explica por qué… y en qué manual está.",
+  "start": 16.688,
+  "end": 20.712,
+  "words": [
+   {
+    "w": "¿Fallas?",
+    "start": 16.688,
+    "end": 17.546
+   },
+   {
+    "w": "El",
+    "start": 17.546,
+    "end": 17.665
+   },
+   {
+    "w": "Profe",
+    "start": 17.665,
+    "end": 17.943
+   },
+   {
+    "w": "IA",
+    "start": 17.943,
+    "end": 18.372
+   },
+   {
+    "w": "te",
+    "start": 18.372,
+    "end": 18.544
+   },
+   {
+    "w": "explica",
+    "start": 18.544,
+    "end": 18.973
+   },
+   {
+    "w": "por",
+    "start": 18.973,
+    "end": 19.145
+   },
+   {
+    "w": "qué…",
+    "start": 19.145,
+    "end": 19.51
+   },
+   {
+    "w": "y",
+    "start": 19.51,
+    "end": 19.616
+   },
+   {
+    "w": "en",
+    "start": 19.616,
+    "end": 19.746
+   },
+   {
+    "w": "qué",
+    "start": 19.746,
+    "end": 20.004
+   },
+   {
+    "w": "manual",
+    "start": 20.004,
+    "end": 20.519
+   },
+   {
+    "w": "está.",
+    "start": 20.519,
+    "end": 20.712
+   }
+  ]
+ },
+ {
+  "text": "Flashcards, simulacros de examen… y un ranking nacional y de tu provincia.",
+  "start": 21.045,
+  "end": 25.219,
+  "words": [
+   {
+    "w": "Flashcards,",
+    "start": 21.045,
+    "end": 21.807
+   },
+   {
+    "w": "simulacros",
+    "start": 21.807,
+    "end": 22.493
+   },
+   {
+    "w": "de",
+    "start": 22.493,
+    "end": 22.579
+   },
+   {
+    "w": "examen…",
+    "start": 22.579,
+    "end": 23.18
+   },
+   {
+    "w": "y",
+    "start": 23.18,
+    "end": 23.266
+   },
+   {
+    "w": "un",
+    "start": 23.266,
+    "end": 23.438
+   },
+   {
+    "w": "ranking",
+    "start": 23.438,
+    "end": 23.867
+   },
+   {
+    "w": "nacional",
+    "start": 23.867,
+    "end": 24.296
+   },
+   {
+    "w": "y",
+    "start": 24.296,
+    "end": 24.468
+   },
+   {
+    "w": "de",
+    "start": 24.468,
+    "end": 24.554
+   },
+   {
+    "w": "tu",
+    "start": 24.554,
+    "end": 24.726
+   },
+   {
+    "w": "provincia.",
+    "start": 24.726,
+    "end": 25.219
+   }
+  ]
+ },
+ {
+  "text": "Mientras tú estudias solo… otros ya están entrenando así.",
+  "start": 25.584,
+  "end": 29.512,
+  "words": [
+   {
+    "w": "Mientras",
+    "start": 25.584,
+    "end": 26.013
+   },
+   {
+    "w": "tú",
+    "start": 26.013,
+    "end": 26.271
+   },
+   {
+    "w": "estudias",
+    "start": 26.271,
+    "end": 26.872
+   },
+   {
+    "w": "solo…",
+    "start": 26.872,
+    "end": 27.602
+   },
+   {
+    "w": "otros",
+    "start": 27.602,
+    "end": 27.988
+   },
+   {
+    "w": "ya",
+    "start": 27.988,
+    "end": 28.331
+   },
+   {
+    "w": "están",
+    "start": 28.331,
+    "end": 28.589
+   },
+   {
+    "w": "entrenando",
+    "start": 28.589,
+    "end": 29.276
+   },
+   {
+    "w": "así.",
+    "start": 29.276,
+    "end": 29.512
+   }
+  ]
+ },
+ {
+  "text": "No es un juego: es lo que te va a dar la plaza.",
+  "start": 29.963,
+  "end": 33.536,
+  "words": [
+   {
+    "w": "No",
+    "start": 29.963,
+    "end": 30.306
+   },
+   {
+    "w": "es",
+    "start": 30.306,
+    "end": 30.564
+   },
+   {
+    "w": "un",
+    "start": 30.564,
+    "end": 30.821
+   },
+   {
+    "w": "juego:",
+    "start": 30.821,
+    "end": 31.626
+   },
+   {
+    "w": "es",
+    "start": 31.626,
+    "end": 31.851
+   },
+   {
+    "w": "lo",
+    "start": 31.851,
+    "end": 32.023
+   },
+   {
+    "w": "que",
+    "start": 32.023,
+    "end": 32.195
+   },
+   {
+    "w": "te",
+    "start": 32.195,
+    "end": 32.366
+   },
+   {
+    "w": "va",
+    "start": 32.366,
+    "end": 32.624
+   },
+   {
+    "w": "a",
+    "start": 32.624,
+    "end": 32.71
+   },
+   {
+    "w": "dar",
+    "start": 32.71,
+    "end": 32.967
+   },
+   {
+    "w": "la",
+    "start": 32.967,
+    "end": 33.139
+   },
+   {
+    "w": "plaza.",
+    "start": 33.139,
+    "end": 33.536
+   }
+  ]
+ },
+ {
+  "text": "¿A quién retarías primero? Escríbelo en comentarios.",
+  "start": 33.998,
+  "end": 36.96,
+  "words": [
+   {
+    "w": "¿A",
+    "start": 33.998,
+    "end": 34.114
+   },
+   {
+    "w": "quién",
+    "start": 34.114,
+    "end": 34.255
+   },
+   {
+    "w": "retarías",
+    "start": 34.255,
+    "end": 34.942
+   },
+   {
+    "w": "primero?",
+    "start": 34.942,
+    "end": 35.65
+   },
+   {
+    "w": "Escríbelo",
+    "start": 35.65,
+    "end": 36.23
+   },
+   {
+    "w": "en",
+    "start": 36.23,
+    "end": 36.401
+   },
+   {
+    "w": "comentarios.",
+    "start": 36.401,
+    "end": 36.96
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo!",
+  "start": 37.249,
+  "end": 39.32,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 37.249,
+    "end": 37.947
+   },
+   {
+    "w": "a",
+    "start": 37.947,
+    "end": 38.033
+   },
+   {
+    "w": "quien",
+    "start": 38.033,
+    "end": 38.29
+   },
+   {
+    "w": "oposite",
+    "start": 38.29,
+    "end": 38.891
+   },
+   {
+    "w": "contigo!",
+    "start": 38.891,
+    "end": 39.32
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 39.61,
+  "end": 43.999,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 39.61,
+    "end": 40.179
+   },
+   {
+    "w": "a",
+    "start": 40.179,
+    "end": 40.265
+   },
+   {
+    "w": "bombero?",
+    "start": 40.265,
+    "end": 40.962
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 40.962,
+    "end": 42.272
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 42.272,
+    "end": 42.755
+   },
+   {
+    "w": "gratis",
+    "start": 42.755,
+    "end": 43.27
+   },
+   {
+    "w": "cinco",
+    "start": 43.27,
+    "end": 43.613
+   },
+   {
+    "w": "días!",
+    "start": 43.613,
+    "end": 43.999
+   }
+  ]
+ }
+]

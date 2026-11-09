@@ -1,0 +1,552 @@
+[
+ {
+  "w": "¿Y",
+  "start": 0.0,
+  "end": 0.32
+ },
+ {
+  "w": "si",
+  "start": 0.32,
+  "end": 0.48
+ },
+ {
+  "w": "preparar",
+  "start": 0.48,
+  "end": 0.96
+ },
+ {
+  "w": "tu",
+  "start": 0.96,
+  "end": 1.12
+ },
+ {
+  "w": "oposición?",
+  "start": 1.12,
+  "end": 1.92
+ },
+ {
+  "w": "¿Fuera",
+  "start": 1.92,
+  "end": 2.64
+ },
+ {
+  "w": "así?",
+  "start": 2.64,
+  "end": 3.12
+ },
+ {
+  "w": "Giras",
+  "start": 3.12,
+  "end": 3.6
+ },
+ {
+  "w": "la",
+  "start": 3.6,
+  "end": 3.76
+ },
+ {
+  "w": "ruleta",
+  "start": 3.76,
+  "end": 4.32
+ },
+ {
+  "w": "y",
+  "start": 4.32,
+  "end": 4.48
+ },
+ {
+  "w": "te",
+  "start": 4.48,
+  "end": 4.64
+ },
+ {
+  "w": "juegas",
+  "start": 4.64,
+  "end": 4.96
+ },
+ {
+  "w": "el",
+  "start": 4.96,
+  "end": 5.12
+ },
+ {
+  "w": "temario",
+  "start": 5.12,
+  "end": 5.68
+ },
+ {
+  "w": "contra",
+  "start": 5.68,
+  "end": 5.92
+ },
+ {
+  "w": "otros",
+  "start": 5.92,
+  "end": 6.24
+ },
+ {
+  "w": "opositores.",
+  "start": 6.24,
+  "end": 7.12
+ },
+ {
+  "w": "Solo,",
+  "start": 7.12,
+  "end": 7.6
+ },
+ {
+  "w": "en",
+  "start": 7.6,
+  "end": 7.76
+ },
+ {
+  "w": "un",
+  "start": 7.76,
+  "end": 7.92
+ },
+ {
+  "w": "uno",
+  "start": 7.92,
+  "end": 8.24
+ },
+ {
+  "w": "contra",
+  "start": 8.24,
+  "end": 8.56
+ },
+ {
+  "w": "uno",
+  "start": 8.56,
+  "end": 8.88
+ },
+ {
+  "w": "o",
+  "start": 8.88,
+  "end": 9.04
+ },
+ {
+  "w": "en",
+  "start": 9.04,
+  "end": 9.2
+ },
+ {
+  "w": "directo",
+  "start": 9.2,
+  "end": 9.6
+ },
+ {
+  "w": "contra",
+  "start": 9.6,
+  "end": 9.92
+ },
+ {
+  "w": "opositores",
+  "start": 9.92,
+  "end": 10.56
+ },
+ {
+  "w": "de",
+  "start": 10.56,
+  "end": 10.72
+ },
+ {
+  "w": "toda",
+  "start": 10.72,
+  "end": 10.96
+ },
+ {
+  "w": "España.",
+  "start": 10.96,
+  "end": 11.6
+ },
+ {
+  "w": "Preguntas",
+  "start": 11.6,
+  "end": 12.08
+ },
+ {
+  "w": "de",
+  "start": 12.08,
+  "end": 12.24
+ },
+ {
+  "w": "convocatoria",
+  "start": 12.24,
+  "end": 13.04
+ },
+ {
+  "w": "reales",
+  "start": 13.04,
+  "end": 13.52
+ },
+ {
+  "w": "y",
+  "start": 13.52,
+  "end": 13.68
+ },
+ {
+  "w": "hasta",
+  "start": 13.68,
+  "end": 13.92
+ },
+ {
+  "w": "del",
+  "start": 13.92,
+  "end": 14.08
+ },
+ {
+  "w": "callejero",
+  "start": 14.08,
+  "end": 14.72
+ },
+ {
+  "w": "de",
+  "start": 14.72,
+  "end": 14.8
+ },
+ {
+  "w": "tu",
+  "start": 14.8,
+  "end": 14.96
+ },
+ {
+  "w": "zona.",
+  "start": 14.96,
+  "end": 15.28
+ },
+ {
+  "w": "¿Fallas?",
+  "start": 15.28,
+  "end": 16.16
+ },
+ {
+  "w": "El",
+  "start": 16.16,
+  "end": 16.32
+ },
+ {
+  "w": "profe",
+  "start": 16.32,
+  "end": 16.72
+ },
+ {
+  "w": "IA",
+  "start": 16.72,
+  "end": 17.12
+ },
+ {
+  "w": "te",
+  "start": 17.12,
+  "end": 17.28
+ },
+ {
+  "w": "explica",
+  "start": 17.28,
+  "end": 17.68
+ },
+ {
+  "w": "por",
+  "start": 17.68,
+  "end": 17.84
+ },
+ {
+  "w": "qué",
+  "start": 17.84,
+  "end": 18.08
+ },
+ {
+  "w": "y",
+  "start": 18.08,
+  "end": 18.24
+ },
+ {
+  "w": "en",
+  "start": 18.24,
+  "end": 18.4
+ },
+ {
+  "w": "qué",
+  "start": 18.4,
+  "end": 18.64
+ },
+ {
+  "w": "manual",
+  "start": 18.64,
+  "end": 19.12
+ },
+ {
+  "w": "está.",
+  "start": 19.12,
+  "end": 19.52
+ },
+ {
+  "w": "Flashcards,",
+  "start": 19.52,
+  "end": 20.32
+ },
+ {
+  "w": "simulacros",
+  "start": 20.32,
+  "end": 20.96
+ },
+ {
+  "w": "de",
+  "start": 20.96,
+  "end": 21.04
+ },
+ {
+  "w": "examen",
+  "start": 21.04,
+  "end": 21.52
+ },
+ {
+  "w": "y",
+  "start": 21.52,
+  "end": 21.68
+ },
+ {
+  "w": "un",
+  "start": 21.68,
+  "end": 21.84
+ },
+ {
+  "w": "ranking",
+  "start": 21.84,
+  "end": 22.24
+ },
+ {
+  "w": "nacional",
+  "start": 22.24,
+  "end": 22.64
+ },
+ {
+  "w": "y",
+  "start": 22.64,
+  "end": 22.8
+ },
+ {
+  "w": "de",
+  "start": 22.8,
+  "end": 22.88
+ },
+ {
+  "w": "tu",
+  "start": 22.88,
+  "end": 23.04
+ },
+ {
+  "w": "provincia.",
+  "start": 23.04,
+  "end": 23.84
+ },
+ {
+  "w": "Mientras",
+  "start": 23.84,
+  "end": 24.24
+ },
+ {
+  "w": "tú",
+  "start": 24.24,
+  "end": 24.48
+ },
+ {
+  "w": "estudias",
+  "start": 24.48,
+  "end": 25.04
+ },
+ {
+  "w": "solo,",
+  "start": 25.04,
+  "end": 25.68
+ },
+ {
+  "w": "otros",
+  "start": 25.68,
+  "end": 26.08
+ },
+ {
+  "w": "ya",
+  "start": 26.08,
+  "end": 26.4
+ },
+ {
+  "w": "están",
+  "start": 26.4,
+  "end": 26.64
+ },
+ {
+  "w": "entrenando",
+  "start": 26.64,
+  "end": 27.28
+ },
+ {
+  "w": "así.",
+  "start": 27.28,
+  "end": 27.92
+ },
+ {
+  "w": "No",
+  "start": 27.92,
+  "end": 28.24
+ },
+ {
+  "w": "es",
+  "start": 28.24,
+  "end": 28.48
+ },
+ {
+  "w": "un",
+  "start": 28.48,
+  "end": 28.72
+ },
+ {
+  "w": "juego.",
+  "start": 28.72,
+  "end": 29.44
+ },
+ {
+  "w": "Es",
+  "start": 29.44,
+  "end": 29.68
+ },
+ {
+  "w": "lo",
+  "start": 29.68,
+  "end": 29.84
+ },
+ {
+  "w": "que",
+  "start": 29.84,
+  "end": 30.0
+ },
+ {
+  "w": "te",
+  "start": 30.0,
+  "end": 30.16
+ },
+ {
+  "w": "va",
+  "start": 30.16,
+  "end": 30.4
+ },
+ {
+  "w": "a",
+  "start": 30.4,
+  "end": 30.48
+ },
+ {
+  "w": "dar",
+  "start": 30.48,
+  "end": 30.72
+ },
+ {
+  "w": "la",
+  "start": 30.72,
+  "end": 30.88
+ },
+ {
+  "w": "plaza.",
+  "start": 30.88,
+  "end": 31.44
+ },
+ {
+  "w": "¿A",
+  "start": 31.44,
+  "end": 31.68
+ },
+ {
+  "w": "quién",
+  "start": 31.68,
+  "end": 31.92
+ },
+ {
+  "w": "retarías",
+  "start": 31.92,
+  "end": 32.56
+ },
+ {
+  "w": "primero?",
+  "start": 32.56,
+  "end": 33.12
+ },
+ {
+  "w": "Escríbelo",
+  "start": 33.12,
+  "end": 33.76
+ },
+ {
+  "w": "en",
+  "start": 33.76,
+  "end": 33.92
+ },
+ {
+  "w": "comentarios.",
+  "start": 33.92,
+  "end": 34.56
+ },
+ {
+  "w": "¡Mándaselo",
+  "start": 34.56,
+  "end": 35.36
+ },
+ {
+  "w": "a",
+  "start": 35.36,
+  "end": 35.44
+ },
+ {
+  "w": "quien",
+  "start": 35.44,
+  "end": 35.68
+ },
+ {
+  "w": "oposite",
+  "start": 35.68,
+  "end": 36.24
+ },
+ {
+  "w": "contigo!",
+  "start": 36.24,
+  "end": 36.64
+ },
+ {
+  "w": "¿Opositas",
+  "start": 36.64,
+  "end": 37.44
+ },
+ {
+  "w": "a",
+  "start": 37.44,
+  "end": 37.52
+ },
+ {
+  "w": "bombero?",
+  "start": 37.52,
+  "end": 38.08
+ },
+ {
+  "w": "¡Bomberados!",
+  "start": 38.08,
+  "end": 39.28
+ },
+ {
+  "w": "Pruébala",
+  "start": 39.28,
+  "end": 39.84
+ },
+ {
+  "w": "gratis",
+  "start": 39.84,
+  "end": 40.32
+ },
+ {
+  "w": "cinco",
+  "start": 40.32,
+  "end": 40.64
+ },
+ {
+  "w": "días.",
+  "start": 40.64,
+  "end": 41.169
+ }
+]

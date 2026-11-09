@@ -1,0 +1,23 @@
+{
+ "formato": "fomo",
+ "estilo": "app",
+ "voz": {"tempo": 0.93, "count": 0, "count_line": 1, "cortar": false, "pause_def": 0.3},
+ "realce": ["compartir", "marca", "prueba"],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿A QUIÉN RETARÍAS?",
+ "portada": {"titulo": "¿Y SI OPOSITAR FUERA ASÍ?", "etiqueta": "NO ES UN JUEGO", "t": 3.0, "oscurecer": true},
+ "mezcla": {"sfx": 1.0, "ganancia": 0.0},
+ "cues": {
+  "y0": ["¿Y", 1, 1], "preparar": ["preparar", 1, 1], "oposicion": ["oposición…", 1, 1], "asi": ["así?", 1, 1],
+  "giras": ["Giras", 1, 2], "ruleta": ["ruleta…", 1, 2], "juegas": ["juegas", 1, 2], "temario": ["temario", 1, 2], "otros": ["otros", 1, 2],
+  "solo": ["Solo,", 1, 3], "uno1": ["uno", 1, 3], "contra2": ["contra", 2, 3], "directo": ["directo", 1, 3], "espana": ["España.", 1, 3],
+  "preguntas": ["Preguntas", 1, 4], "convocatorias": ["convocatorias", 1, 4], "callejero": ["callejero", 1, 4], "zona": ["zona.", 1, 4],
+  "fallas": ["¿Fallas?", 1, 5], "profe": ["Profe", 1, 5], "explica": ["explica", 1, 5], "manual": ["manual", 1, 5],
+  "flashcards": ["Flashcards,", 1, 6], "simulacros": ["simulacros", 1, 6], "ranking": ["ranking", 1, 6], "provincia": ["provincia.", 1, 6],
+  "mientras": ["Mientras", 1, 7], "otros2": ["otros", 1, 7], "entrenando": ["entrenando", 1, 7],
+  "nojuego": ["No", 1, 8], "dar": ["dar", 1, 8], "plaza": ["plaza.", 1, 8],
+  "retarias": ["¿A", 1, 9], "escribelo": ["Escríbelo", 1, 9],
+  "compartir": ["¡Mándaselo", 1, 10],
+  "descripcion": ["¿Opositas", 1, 11], "marca": ["¡Bomberados!", 1, 11], "prueba": ["¡Pruébala", 1, 11]
+ }
+}
