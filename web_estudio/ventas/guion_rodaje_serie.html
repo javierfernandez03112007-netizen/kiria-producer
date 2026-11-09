@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Tu serie · guion de rodaje · kiria.ai</title>
+<!-- Guion de rodaje de la serie de Javi (9-11-2026): «Reto: 10 clientes en 30 días», todo grabable en casa (sin bares).
+     PDF: node web_estudio/ventas/hacer_pdf.mjs guion_rodaje_serie.html guion_rodaje_serie_kiria.pdf "Tu serie · guion de rodaje" -->
+<style>
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Medium.otf'); font-weight: 400 500; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-SemiBold.otf'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Bold.otf'); font-weight: 700; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Black.otf'); font-weight: 800 900; }
+@font-face { font-family: 'Bebas'; src: url('../../engine/fonts/BebasNeue-Regular.ttf'); }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Regular.ttf'); font-weight: 400; }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Bold.ttf'); font-weight: 700; }
+:root { --ink: #0c0e12; --ink2: #3a404a; --muted: #6c737e; --line: #e2e3e6; --soft: #f5f6f8; --red: #e5243f; --violet: #8a4dff; --blue: #2f5bff;
+  --grad: linear-gradient(90deg, #ff4d61, #b45cff 55%, #4f7dff); }
+@page { size: A4; margin: 16mm 15mm 18mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.6pt; line-height: 1.5; color: var(--ink2); }
+h1, h2, h3 { color: var(--ink); margin: 0; }
+h2 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 25pt; letter-spacing: .4pt; line-height: 1; margin: 0 0 3mm; break-after: avoid; }
+h2 .n { color: var(--red); margin-right: 2.5mm; }
+h2::after { content: ''; display: block; width: 18mm; height: 1mm; border-radius: 1mm; background: var(--grad); margin-top: 2.2mm; }
+h3 { font-weight: 800; font-size: 11.5pt; margin: 4.5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.4mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 5.5mm; }
+li { margin: 0 0 1.3mm; }
+b, strong { color: var(--ink); font-weight: 700; }
+section { margin: 0 0 8mm; }
+section.page { break-before: auto; }
+section.cheatpage { break-before: page; }
+.cover { break-after: page; }
+.lab { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--muted); }
+.say { position: relative; margin: 1.5mm 0 3mm; padding: 3mm 4mm 3mm 6mm; background: var(--soft); border-radius: 2mm; color: var(--ink); break-inside: avoid; }
+.say::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1.3mm; border-radius: 2mm 0 0 2mm; background: var(--grad); }
+.say .who { display: block; font-family: 'Mono', monospace; font-size: 7pt; letter-spacing: 1pt; text-transform: uppercase; color: var(--red); margin-bottom: .8mm; }
+.note { margin: 2mm 0 3mm; padding: 2.5mm 4mm; border: .3mm dashed #c9ccd2; border-radius: 2mm; font-size: 9.6pt; break-inside: avoid; }
+.warn { border-color: var(--red); color: var(--ink); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.card { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4mm; break-inside: avoid; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 1mm 0 4mm; font-size: 9.6pt; break-inside: avoid; }
+th, td { text-align: left; padding: 1.8mm 2.5mm; border-bottom: .3mm solid var(--line); vertical-align: top; }
+th { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: .8pt; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+td b { white-space: nowrap; }
+.funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5mm; margin: 3mm 0 4mm; }
+.funnel div { padding: 2.5mm 2mm; border-radius: 2mm; color: #fff; font-weight: 700; font-size: 8.6pt; line-height: 1.25; text-align: center; min-height: 15mm; display: flex; flex-direction: column; justify-content: center; }
+.funnel small { display: block; font-weight: 500; opacity: .85; font-size: 7.2pt; margin-top: .8mm; }
+.check li { list-style: none; position: relative; padding-left: 1mm; }
+.check li::before { content: ''; position: absolute; left: -5mm; top: 1.2mm; width: 3mm; height: 3mm; border: .35mm solid var(--ink2); border-radius: .6mm; }
+.week td:first-child { width: 30mm; font-weight: 700; color: var(--ink); }
+/* portada */
+.cover { height: 263mm; display: flex; flex-direction: column; justify-content: space-between; padding: 6mm 2mm 2mm; }
+.brand { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); letter-spacing: .5pt; }
+.brand i { font-style: normal; color: var(--red); }
+.cover h1 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 66pt; line-height: .92; letter-spacing: .5pt; }
+.cover h1 span { color: var(--red); }
+.cover .bar { width: 34mm; height: 1.6mm; border-radius: 1mm; background: var(--grad); margin: 7mm 0 6mm; }
+.cover .sub { font-size: 13pt; max-width: 135mm; color: var(--ink2); }
+.toc { columns: 2; column-gap: 10mm; font-size: 10pt; padding: 0; list-style: none; }
+.toc li { break-inside: avoid; padding: 1.2mm 0; border-bottom: .3mm solid var(--line); }
+.toc li span { color: var(--red); font-weight: 700; margin-right: 2mm; }
+.foot { display: flex; justify-content: space-between; align-items: end; font-size: 9pt; color: var(--muted); }
+/* chuleta */
+.cheat { border: .5mm solid var(--ink); border-radius: 3mm; padding: 6mm 7mm; }
+.cheat h2 { font-size: 30pt; }
+.cheat ol > li { margin-bottom: 3mm; }
+.cheat .say { margin: 1mm 0 0; padding: 2mm 3mm 2mm 5mm; font-size: 9.8pt; }
+.big { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); line-height: 1; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 2mm 0 4mm; }
+.kpis div { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3mm; break-inside: avoid; }
+.kpis small { display: block; font-size: 8pt; color: var(--muted); margin-top: 1mm; line-height: 1.3; }
+.mix { display: flex; height: 9mm; border-radius: 2mm; overflow: hidden; margin: 2mm 0 1.5mm; }
+.mix div { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 8.6pt; }
+.motor { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4.5mm; margin: 0 0 4mm; break-inside: avoid; }
+.motor h3 { margin-top: 0; }
+.motor .lab { margin-bottom: 1mm; }
+.yes { color: #138a4a; font-weight: 800; } .no { color: var(--red); font-weight: 800; }
+</style>
+<style>
+.day { width: 22mm; font-weight: 800; color: var(--ink); white-space: nowrap; }
+.hr { width: 13mm; font-family: 'Mono', monospace; font-size: 8.6pt; color: var(--ink); white-space: nowrap; }
+.net { width: 20mm; white-space: nowrap; }
+.tag { display: inline-block; padding: .4mm 1.8mm; border-radius: 1.2mm; font-size: 7.4pt; font-weight: 700; color: #fff; white-space: nowrap; }
+.t-al { background: #2f5bff; } .t-pu { background: #b45cff; } .t-yo { background: #e5243f; } .t-hi { background: #6c737e; } .t-no { background: #0c0e12; }
+.ok { color: #138a4a; font-weight: 800; } .wait { color: #c26a00; font-weight: 800; }
+tr.rest td { color: var(--muted); }
+tr.sep td { border-bottom: .5mm solid var(--ink); }
+table.plan td:last-child, table.plan th:last-child { width: 36mm; }
+.legend { display: flex; gap: 3mm; flex-wrap: wrap; margin: 1mm 0 3mm; font-size: 8.6pt; }
+</style></head>
+<style>
+table.shots td:nth-child(1) { width: 7mm; font-weight: 800; color: var(--ink); }
+table.shots td:nth-child(2) { width: 38mm; }
+table.shots td:nth-child(4) { width: 13mm; font-family: 'Mono', monospace; font-size: 8.6pt; color: var(--ink); white-space: nowrap; }
+table.shots td:nth-child(5) { width: 40mm; font-size: 8.8pt; }
+.line { color: var(--ink); font-weight: 700; }
+.mute { color: var(--muted); font-style: italic; }
+.ph { background: #fff3c4; padding: 0 1mm; border-radius: .8mm; }
+.meta { display: flex; gap: 6mm; flex-wrap: wrap; margin: 0 0 3mm; font-size: 9.4pt; }
+.meta b { color: var(--ink); }
+</style></head>
+<body>
+
+<div class="cover">
+  <div class="brand">kiria<i>.</i>ai</div>
+  <div>
+    <p class="lab">Tu serie · guion de rodaje frase a frase</p>
+    <h1>Reto: 10 clientes<br><span>en 30 días</span></h1>
+    <div class="bar"></div>
+    <p class="sub">Una serie en primera persona que puedes grabar en casa, con el móvil: sin entrar a grabar en los bares. Para cada capítulo, qué dices, con qué plano y cuánto dura cada trozo.</p>
+  </div>
+  <div>
+    <ol class="toc">
+      <li><span>1</span>La idea y el calendario</li><li><span>2</span>Cómo grabar y mandarme los archivos</li>
+      <li><span>3</span>Capítulo 1 · El reto</li><li><span>4</span>Capítulo 2 · Lo que me han dicho</li>
+      <li><span>5</span>Capítulos 3 a 5</li><li><span>6</span>Otras cosas tuyas</li>
+    </ol>
+    <div class="foot"><span>Lunes 9-11-2026</span><span>Tú grabas; yo edito con IA (cortes, subtítulos, efectos y sonido)</span></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="n">1</span>La idea y el calendario</h2>
+  <p>Sin las gafas que graban, entrar con el móvil en los bares no sale bien. Así que la serie se cuenta <b>desde tu mesa</b>: tú a cámara, tu móvil, tu ordenador y los mensajes que te contestan los negocios (con los nombres tapados). Engancha por lo mismo: alguien joven intentando convertir 3 millones de visualizaciones en clientes, con un marcador que se ve en cada capítulo.</p>
+  <div class="cols">
+    <div class="card"><h3>Por qué funciona</h3><ul>
+      <li>Hay un marcador («0/10») y una fecha: la gente vuelve para ver si lo consigues.</li>
+      <li>Los «no» también se cuentan: dan credibilidad.</li>
+      <li>Los negocios ven cómo trabajas y qué les harías.</li></ul></div>
+    <div class="card"><h3>Reglas</h3><ul>
+      <li>Solo cifras reales: si llevas 0, se dice 0.</li>
+      <li>Nombres y caras de otros, solo con permiso; si no, los tapo yo.</li>
+      <li>Sin precios en los vídeos.</li></ul></div>
+  </div>
+  <table>
+    <tr><th>Capítulo</th><th>Se publica</th><th>Lo grabas</th></tr>
+    <tr><td><b>1 · El reto</b></td><td>Jueves 12, 10:00</td><td>Antes del miércoles 11 a las 13:00</td></tr>
+    <tr><td><b>2 · Lo que me han dicho</b></td><td>Jueves 19, 10:00</td><td>Martes 17</td></tr>
+    <tr><td><b>3 · Le hago un vídeo a un negocio</b></td><td>Jueves 26, 10:00</td><td>Martes 24</td></tr>
+    <tr><td><b>4 · Mi primer cliente</b></td><td>Cuando lo haya</td><td>Ese mismo día o el siguiente</td></tr>
+    <tr><td><b>5 · Los números del reto</b></td><td>Al cumplirse los 30 días</td><td>El día 30</td></tr>
+  </table>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">2</span>Cómo grabar y mandarme los archivos</h2>
+  <div class="cols">
+    <div class="card"><h3>El sitio</h3><ul>
+      <li>Tu mesa, con una ventana <b>delante de ti</b> (luz en la cara, nunca detrás).</li>
+      <li>Fondo ordenado: el ordenador encendido y algo tuyo (las tarjetas, una planta).</li>
+      <li>Habitación callada: sin tele ni música.</li></ul></div>
+    <div class="card"><h3>El móvil</h3><ul>
+      <li>En <b>vertical</b>, a la altura de los ojos (trípode o apoyado en libros), a un brazo de distancia.</li>
+      <li>Cámara trasera si puedes; si no, la delantera con buena luz.</li>
+      <li>1080p, 30 o 60 fps. Toca tu cara y mantén el dedo para fijar el enfoque.</li></ul></div>
+    <div class="card"><h3>Al grabar</h3><ul>
+      <li>Un archivo por plano: graba cada plano 2 o 3 veces y quédate con la que te guste (o mándamelas todas).</li>
+      <li>Deja 1 segundo en silencio antes y después de hablar.</li>
+      <li>Frases cortas y mirando al objetivo, no a la pantalla.</li>
+      <li>Los planos sin hablar: despacio y sin mover el móvil.</li></ul></div>
+    <div class="card"><h3>Mandármelos</h3><ul>
+      <li>Tal cual salen del móvil, sin editar.</li>
+      <li>Por Google Drive o por WhatsApp <b>como documento</b> (si no, los comprime).</li>
+      <li>Con una línea: qué ha pasado esa semana y tus números reales.</li></ul></div>
+  </div>
+  <div class="note">Las grabaciones de pantalla, con la función del propio ordenador o del móvil. Si sale un mensaje con nombres, no pasa nada: yo los tapo.</div>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">3</span>Capítulo 1 · El reto</h2>
+  <div class="meta"><span><b>Se publica:</b> jueves 12, 10:00</span><span><b>Duración:</b> ≈ 38 s</span><span><b>Grábalo:</b> antes del miércoles 11 a las 13:00</span></div>
+  <p><b>Objetivo:</b> presentar el reto, que la gente vuelva el jueves siguiente y que los negocios comenten «NEGOCIO».</p>
+  <table class="shots">
+    <tr><th>#</th><th>Plano</th><th>Qué dices</th><th>Dura</th><th>Cómo</th></tr>
+    <tr><td>1</td><td>Plano medio (de la cintura para arriba), mirando a cámara, con el móvil en la mano enseñando tu perfil</td><td class="line">«Mis vídeos hechos con inteligencia artificial ya tienen más de 3 millones de visualizaciones.»</td><td>4 s</td><td>Empieza ya hablando: ni «hola» ni presentación. Es la frase más fuerte.</td></tr>
+    <tr><td>2</td><td>Detalle de la pantalla del móvil</td><td class="mute">Sin hablar</td><td>3 s</td><td>Bajas despacio por la cuadrícula de vídeos de @kiria.ai.</td></tr>
+    <tr><td>3</td><td>Primer plano (la cara)</td><td class="line">«Y hoy empiezo un reto: conseguir 10 clientes en 30 días.»</td><td>4 s</td><td>Al decir «10», enseña los diez dedos.</td></tr>
+    <tr><td>4</td><td>Detalle de tus manos</td><td class="mute">Sin hablar</td><td>4 s</td><td>Escribes «0/10» con un rotulador gordo en un pósit y lo pegas en el borde del ordenador.</td></tr>
+    <tr><td>5</td><td>Plano medio</td><td class="line">«Lo que vendo es esto: vídeos como los de este canal, pero para negocios. Un bar, una peluquería, una tienda.»</td><td>6 s</td><td>En «esto», señala la pantalla del ordenador.</td></tr>
+    <tr><td>6</td><td>Grabación de la pantalla del ordenador</td><td class="mute">Sin hablar</td><td>4 s</td><td>Uno de los vídeos del canal reproduciéndose a pantalla completa (Tapas o GTA).</td></tr>
+    <tr><td>7</td><td>Primer plano</td><td class="line">«Cada jueves os cuento cuántos llevo: los síes, los noes… y los que me dejan en visto.»</td><td>5 s</td><td>Sonríe en «en visto».</td></tr>
+    <tr><td>8</td><td>Plano medio</td><td class="line">«Si tienes un negocio, comenta NEGOCIO y te digo qué vídeo le haría al tuyo.»</td><td>5 s</td><td>Al final, acércate un poco al móvil.</td></tr>
+    <tr><td>9</td><td>Primer plano, cerca</td><td class="line">«Día 1. Vamos.»</td><td>2 s</td><td>Corte seco: enlaza con el principio (bucle).</td></tr>
+  </table>
+  <p><b>Planos de recurso</b> (sin hablar, 5 s cada uno; los uso entre frases): tus manos escribiendo en el ordenador · las tarjetas de kiria encima de la mesa · la calle desde tu ventana.</p>
+  <div class="note"><b>Yo añado:</b> subtítulos palabra a palabra, el marcador «0/10» animado en una esquina, efectos de sonido, zoom suaves y la cuadrícula de vídeos en 3D detrás de ti en el plano 5. Texto, portada y comentario fijado, listos para copiar.</div>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">4</span>Capítulo 2 · Lo que me han dicho</h2>
+  <div class="meta"><span><b>Se publica:</b> jueves 19, 10:00</span><span><b>Duración:</b> ≈ 42 s</span><span><b>Grábalo:</b> martes 17</span></div>
+  <p><b>Objetivo:</b> enseñar el reto en marcha con números reales y las respuestas de los negocios. Lo <span class="ph">resaltado</span> lo cambias por lo que te haya pasado de verdad.</p>
+  <table class="shots">
+    <tr><th>#</th><th>Plano</th><th>Qué dices</th><th>Dura</th><th>Cómo</th></tr>
+    <tr><td>1</td><td>Primer plano, mirando a cámara</td><td class="line">«Semana 1 del reto: he hablado con <span class="ph">30</span> negocios… y me han dicho que sí <span class="ph">1</span>.»</td><td>5 s</td><td>Empieza ya hablando. Si son 0, dilo igual: engancha más.</td></tr>
+    <tr><td>2</td><td>Detalle de tus manos y el pósit</td><td class="mute">Sin hablar</td><td>3 s</td><td>Tachas «0/10» y escribes el número que lleves.</td></tr>
+    <tr><td>3</td><td>Plano medio</td><td class="line">«<span class="ph">12</span> me han dicho que no. <span class="ph">8</span>, que ya veremos. Y el resto… me ha dejado en visto.»</td><td>6 s</td><td>Cuenta con los dedos.</td></tr>
+    <tr><td>4</td><td>Grabación de la pantalla del móvil</td><td class="mute">Sin hablar</td><td>4 s</td><td>Los mensajes o correos que te han contestado. Los nombres los tapo yo.</td></tr>
+    <tr><td>5</td><td>Primer plano</td><td class="line">«El no más rápido: <span class="ph">“no nos interesa, gracias”</span>. En <span class="ph">3</span> minutos.»</td><td>5 s</td><td>Léelo con gracia: es el momento divertido.</td></tr>
+    <tr><td>6</td><td>Plano medio</td><td class="line">«Lo que he aprendido: <span class="ph">a los negocios no les vendes un vídeo; les vendes que entre gente</span>.»</td><td>6 s</td><td>Una sola idea, la tuya de verdad.</td></tr>
+    <tr><td>7</td><td>Plano medio</td><td class="line">«Esta semana cambio esto: <span class="ph">les mando el vídeo ya hecho, con su negocio dentro</span>.»</td><td>5 s</td><td>Lo que vas a probar en la semana 2.</td></tr>
+    <tr><td>8</td><td>Plano medio</td><td class="line">«Si tienes un negocio, comenta NEGOCIO y te digo qué vídeo le haría al tuyo.»</td><td>5 s</td><td>Igual que en el capítulo 1: es la llamada de la serie.</td></tr>
+    <tr><td>9</td><td>Primer plano, cerca</td><td class="line">«<span class="ph">1</span> de 10. Seguimos.»</td><td>2 s</td><td>Corte seco (bucle).</td></tr>
+  </table>
+  <div class="note"><b>Yo añado:</b> el marcador que sube (o no), los mensajes con los nombres tapados, contadores de «sí / no / ya veremos», subtítulos, efectos y sonido.</div>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">5</span>Capítulos 3 a 5</h2>
+  <p>El guion completo, frase a frase, te lo paso la semana antes de cada uno.</p>
+  <table>
+    <tr><th>Capítulo</th><th>Qué pasa</th><th>Planos tuyos</th></tr>
+    <tr><td><b>3 · Le hago un vídeo a un negocio</b></td><td>Eliges un negocio que haya comentado «NEGOCIO» y que te dé permiso; enseñas cómo nace su vídeo. Primera frase: «Este negocio comentó NEGOCIO. Esto es lo que le he hecho.»</td><td>4 frases a cámara (≈ 4–6 s cada una), tu pantalla mientras revisas el vídeo, y tu cara viendo el resultado (5 s, sin hablar).</td></tr>
+    <tr><td><b>4 · Mi primer cliente</b></td><td>Qué le convenció y qué vídeo le hiciste (con su permiso). Primera frase: «Tengo mi primer cliente. Y no es quien yo esperaba.»</td><td>5 frases a cámara, el pósit que sube, el mensaje del cliente en pantalla.</td></tr>
+    <tr><td><b>5 · Los números del reto</b></td><td>Día 30: cuántos mensajes, cuántos sí y no, cuántos clientes, qué funcionó. Solo datos reales. Primera frase: «30 días, <span class="ph">X</span> mensajes, <span class="ph">Y</span> clientes. Esto es lo que ha pasado.»</td><td>6 frases a cámara y el pósit final; cierre con lo que viene después.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">6</span>Otras cosas tuyas (sin grabar en la calle)</h2>
+  <div class="cols">
+    <div class="card"><h3>Historias, cada día (5–10 s)</h3><ul>
+      <li>Tu mesa trabajando: «preparando el vídeo de mañana».</li>
+      <li>Una captura de un mensaje bonito o de un número del canal.</li>
+      <li>Una encuesta: «¿Qué carrera hacemos la semana que viene?».</li></ul></div>
+    <div class="card"><h3>Respuestas en vídeo (TikTok, 15–20 s)</h3><ul>
+      <li>Eliges un comentario y lo contestas a cámara: un plano medio y una idea.</li>
+      <li>Por ejemplo: «¿Cómo haces los vídeos?» o «¿Esto es real?».</li></ul></div>
+    <div class="card"><h3>Detrás de las cámaras (sin grabar tú)</h3><ul>
+      <li>Te paso clips de 10 s de cómo se construye cada escena 3D para historias y TikTok.</li>
+      <li>Tú solo pones tu voz encima (10 s) si quieres.</li></ul></div>
+    <div class="card"><h3>Tu voz para los vídeos del canal</h3><ul>
+      <li>Sigue igual: te paso el guion en un bloque y me mandas el MP3 de ElevenLabs.</li>
+      <li>Esta semana: el miércoles 11, el viernes 13 y el sábado 14 (ver la parrilla).</li></ul></div>
+  </div>
+</section>
+
+</body></html>

@@ -149,7 +149,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   lista para cada publicación. **Versión 2 (mismo día, a petición de Javi)**: Javi no tiene Facebook (fuera), Tapas ya está subido y
   Psicología no se sube; empieza con GTA el lunes 9 a las 18:00, martes sin vídeo nuevo, miércoles carrera con creencia rota (tema del
   análisis), jueves capítulo 1 de su serie, viernes «Cómo se hace un vídeo de 900.000», sábado historia real (reserva: Neveras). PDF avisado
-  al chat «Plan escalabilidad Kiria».
+  al chat «Plan escalabilidad Kiria». **Versión 3 + serie nueva (9-11)**: Javi no puede grabar bien dentro de los bares (no tiene gafas que
+  graben), así que su serie pasa a «Reto: 10 clientes en 30 días», grabada en su mesa (a cámara, su móvil, su ordenador y los mensajes de
+  los negocios con los nombres tapados), con marcador «0/10». Guion de rodaje frase a frase (plano y duración de cada trozo):
+  `web_estudio/ventas/guion_rodaje_serie_kiria.pdf` (capítulo 1 «El reto» jue 12, capítulo 2 «Lo que me han dicho» jue 19 con huecos para
+  sus números reales; 3–5 en resumen; cómo grabar y mandar los archivos; otras cosas suyas sin salir a la calle).
 - **«La tapa gratis no existe»** (`projects/tapas/`, 8-11-2026): primer vídeo **puente** del plan de crecimiento (negocios por
   dentro: gusta a todos y además a los dueños de negocios). Javi: «cómo es posible que los bares que sirven tapas gratis obtengan beneficio,
   no lo digas así, dilo de la manera más profesional y enganchante posible». Guion primero (156 palabras) → su MP3 (55,8 s) → Parakeet +
