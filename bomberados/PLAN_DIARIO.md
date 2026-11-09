@@ -29,7 +29,8 @@ cuenta. La sesión de producción lee `bomberados/ANALISIS.md` antes de cada ví
      `created_by_user_ids: ["437aba8b-31f4-4c21-ab9c-bafe78ac64d1"]` (su usuario de invitado).
    - Lo demás del centro de trabajo (agenda, temarios que manda Javi, comentarios nuevos): `notion-search` dentro de la
      página y, si hace falta, `notion-get-version-changes` de las páginas tocadas en las últimas 24 h.
-   - Si un vídeo está «Publicado» y no tiene fila en Métricas, créasela (mismo título y la relación) con las cifras vacías.
+   - Cada vídeo entregado ya tiene su fila en Métricas (la crea quien lo entrega, desde el 9 nov). Si aun así uno
+     «Listo para subir», «Programado» o «Publicado» no la tiene, créasela (mismo título y la relación) con las cifras vacías.
 3. Analiza: qué ha cambiado desde ayer; ranking por vistas y por cada 1.000 vistas (me gusta, comentarios, compartidos);
    qué funciona y qué no por formato, gancho, tema, duración, día y hora; y el crecimiento de seguidores de las dos
    cuentas. Lo que tenga pocos datos, «provisional». **No inventes cifras.**

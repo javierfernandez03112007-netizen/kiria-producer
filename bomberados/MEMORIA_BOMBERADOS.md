@@ -46,7 +46,11 @@ Todo lo hablado con Javi en la conversación de octubre–noviembre 2026 sobre B
    `python3 bomberados/plantillas/pregunta/compose.py projects/<p> --test 1 5 9` (subtítulos encima, en `out/ctest`).
 4. `bomberados/plantillas/pregunta/render.sh projects/<p>` (4 procesos, ≈ 10 min para 27 s) → `compose.py projects/<p>` (≈ 1,5 min) →
    `portada.py projects/<p>` (fotograma de `opciones` + 1,3 s; textos en `pregunta.json` → `portada`).
-5. Entregar `out/<p>.mp4`, `out/portada.jpg`, `out/portada_grid.jpg` y `DESCRIPCION.txt` con `SendUserFile`; actualizar Notion.
+5. Entregar `out/<p>.mp4`, `out/portada.jpg`, `out/portada_grid.jpg` y `DESCRIPCION.txt` con `SendUserFile`; actualizar Notion:
+   su fila de «Vídeos de Bomberados» → «Listo para subir» con Descripción, y **crear YA su fila en «📊 Métricas por vídeo»**
+   (collection://29d4dd57-c184-41eb-8063-541ee3e9d240: título + relación «Vídeo de Bomberados»; Vistas, Me gusta,
+   Comentarios y Compartidos vacíos: los rellena Javi. Lo pidió el 9 nov: «cuando hagas un vídeo, añádelo a la parte de
+   análisis… así luego yo relleno lo demás»).
 - Estilo «app» (`"estilo": "app"`): Bebas, tarjetas oscuras, rejilla de puntos, chispas, cámara que empuja, estelas en cada bloque,
   barra de progreso. Intros propias por vídeo (`"intro"`: `reduccion`, `respiracion`, `adr`). Impact: `python3 engine/fonts/get_impact.py`
   (necesita cabextract; no se sube). Si faltan: `pip install opencv-python-headless`; three en `fp_carrera/web` con
@@ -170,7 +174,10 @@ Aceite 17,0, Reducción 6,5, Bradipnea 8,4).
   calculan aparte), «Conclusión» y «Actualizado». Vistas: «Todos» (por fecha) y «🏆 Ranking: los que más se comparten».
   Ahí se copiaron las cifras y conclusiones de los 4 vídeos publicados.
   La guía «📊 Cómo analizar los vídeos» se movió dentro de esa página. Si un vídeo pasa a «Publicado» sin fila en
-  Métricas, la tarea de 12 h se la crea.
+  Métricas, la tarea de 12 h se la crea. **Desde el 9 nov la fila se crea al ENTREGAR cada vídeo** (paso 5 de arriba), sin
+  esperar a que se publique; ese día se añadieron las que faltaban: 21A-113B, tetraedro, sueldos Madrid/Granada, dominadas,
+  guardia, autobús y FOMO (no la promo del simulacro, que era para @elitebomberos, ni el Profe IA: «Fuga de gas licuado»,
+  sin relación, puede ser ese vídeo; que lo enlace Javi).
 - Primer análisis (5 nov, 4 vídeos con datos): lo que habla de la propia oposición se comparte muchísimo («Ocho de cada
   diez»: 24.800 vistas, 394 envíos); las trampas se comparten (aceite 17/1.000) pero ese tuvo poco alcance; las Preguntas
   del día traen el doble de comentarios. Faltan guardados, seguidores y retención 3 s.
