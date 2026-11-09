@@ -124,6 +124,30 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (2) bucle con lluvia: la lluvia empieza antes del 0 (inicios entre −1,6 y 1,8 s) y al final los folios pasan de las torres a la lluvia
   cuando la cámara ya no ve las torres; (3) en vertical no cabe un edificio con 4 despachos por planta: 3 por planta (0,78 de ancho) y la
   cámara a ≈ 2,4; (4) una llave vista a lo largo de su eje se ve de canto: el ojo se gira hacia la cámara en cada fotograma.
+- **«GTA 6 ocupa 212 gigas»** (`projects/gta6/`, 9-11-2026): Javi: «vamos a hacer el del GTA porque ocupa 212 gigas, pero de la mejor
+  manera posible y que sea una barbaridad de vídeo muy muy enganchador». Guion reescrito sobre la propuesta del análisis (164 palabras):
+  gancho «GTA 6 todavía no ha salido… y ya no te cabría en el móvil», escala (212 GB según Rockstar, más que 50.000 canciones, el doble
+  que Red Dead 2, hora y media con 300 megas), reenganche «el programa es lo de menos», respuesta «no te estás descargando un juego: te
+  estás descargando una ciudad… con cada ladrillo ya pintado», cierre «¿PlayStation o Xbox?» + «mándaselo a quien ya está haciendo hueco».
+  Su MP3 (60,3 s) → 55,6 s con pausas recortadas (vídeo de 57 s). Escena (nada del juego): un móvil en una mesa del que brota una columna
+  de cristal con datos y, encima, una ciudad tropical en miniatura (hoteles pastel, torres, palmeras instanciadas, playa, noria, coches
+  en bucle exacto); caja de 128 GB que revienta; regla 0–200 GB; discos que caen; columna de Red Dead 2; fibra con pulsos; cubito de
+  código en un césped (enorme → diminuto); la fachada, el coche y la cara se despegan como pegatinas (debajo, la forma gris), suben al
+  cielo con su cuadrícula de píxeles y vuelven; pared mitad borrosa / mitad nítida; ondas de sonido que se guardan en la columna; la
+  ciudad entra en el móvil (plano de recorte en la pantalla: todo lo de la ciudad solo se ve por encima); un ladrillo pintado; iconos
+  que salen del móvil («haciendo hueco»). **Entregado el 9-11-2026** (`out/gta6.mp4`, 57 s, 60 fps, 50 MB, −15,3 LUFS, uniones y bucle
+  limpios; subida hoy a las 18:00). Render entero en las 6 máquinas (ramas `render-gta-1…6`, ≈ 25 min). **El saldo de efectos de
+  ElevenLabs se agotó** (quedan 3 créditos; la clave no tiene permiso para ver cuándo se renueva): 10 efectos nuevos + reutilizados.
+  Lecciones: (1) en vertical, una columna ancha tapa todo: columna estrecha y cámara lejos (≈ 8 para la torre entera); (2) la cámara no
+  puede ir en línea recta entre dos puntos de la ciudad: pasar por arriba de los edificios; (3) las palmeras tapan calles vistas desde
+  arriba: el coche que corre va por una avenida sin palmeras; (4) bucle exacto con texturas que corren: desplazamientos con vueltas
+  enteras (`k · t / END`) y las luces de la ciudad se apagan al volver al móvil; (5) la hoja de un objeto que se despega tiene que separarse
+  hacia la cámara e inclinarse: si solo gira sobre su borde, no se ve.
+- **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
+  vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
+  tipo y con 6 h o más entre ellos; 10:00 y las noticias cuanto antes), las dos semanas día a día, lo que necesita Javi con fecha y la
+  lista para cada publicación. Fechas pasadas al calendario de Notion (GTA lun 9 18:00, Tapas mar 10, Psicología mié 11, Neveras sáb 14)
+  y PDF avisado al chat «Plan escalabilidad Kiria».
 - **«La tapa gratis no existe»** (`projects/tapas/`, 8-11-2026): primer vídeo **puente** del plan de crecimiento (negocios por
   dentro: gusta a todos y además a los dueños de negocios). Javi: «cómo es posible que los bares que sirven tapas gratis obtengan beneficio,
   no lo digas así, dilo de la manera más profesional y enganchante posible». Guion primero (156 palabras) → su MP3 (55,8 s) → Parakeet +
