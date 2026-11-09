@@ -1117,9 +1117,9 @@ async function overlay(t) {
   if (tag === 'espera') chip(540, 1500, 'EL AUTOBÚS NO LLEGA…', AMBER, sm(s.t0 + 0.05, s.t0 + 0.3, t), 1.1, 62);
   // llega el autobús: lo que has hecho
   if (tag === 'bus' || tag === 'sube') [['✓ FLASHCARDS', T.estudiado - 0.25], ['✓ RETO DIARIO', T.estudiado - 0.05], ['✓ 1 VS 1', T.estudiado + 0.15]].forEach(([w, tt], i) =>
-    chip(540, 1240 + i * 120, w, GREEN2, sm(tt - 0.1, tt + 0.15, t) * (1 - sm(T.l9 + 0.6, T.l9 + 0.9, t)), 1.0 + 0.2 * Math.exp(-Math.pow((t - tt - 0.05) / 0.1, 2)), 56));
+    chip(540, 1240 + i * 120, w, GREEN2, sm(tt - 0.1, tt + 0.15, t) * (1 - sm(T.l9 + 0.15, T.l9 + 0.4, t)), 1.0 + 0.2 * Math.exp(-Math.pow((t - tt - 0.05) / 0.1, 2)), 56));
   // cierre: «no necesitas más tiempo…»
-  const nm = sm(T.l9 + 0.6, T.l9 + 0.9, t) * (1 - sm(T.esperas - 0.3, T.esperas - 0.05, t));
+  const nm = sm(T.l9 + 0.45, T.l9 + 0.75, t) * (1 - sm(T.esperas - 0.3, T.esperas - 0.05, t));
   if (nm > 0) { g.save(); g.globalAlpha = nm; g.translate(540, 1300); g.shadowColor = 'rgba(0,0,0,0.7)'; g.shadowBlur = 40;
     txt('CADA MINUTO', 0, 0, 130, WHITE, 400, 'center', 'Bebas'); txt('CUENTA', 0, 140, 150, GOLD2, 400, 'center', 'Bebas'); g.restore(); }
   const tv = sm(T.esperas - 0.1, T.esperas + 0.2, t) * (1 - sm(T.fin - 0.3, T.fin, t));
