@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Parrilla de publicación · kiria.ai</title>
+<!-- Parrilla de publicación de kiria.ai (9-11-2026): qué subir cada día, a qué hora y en qué red, del 9 al 22 de noviembre.
+     PDF: node web_estudio/ventas/hacer_pdf.mjs parrilla_publicacion.html parrilla_publicacion_kiria.pdf "Parrilla de publicación · 9-22 de noviembre" -->
+<style>
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Medium.otf'); font-weight: 400 500; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-SemiBold.otf'); font-weight: 600; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Bold.otf'); font-weight: 700; }
+@font-face { font-family: 'Inter'; src: url('../../engine/fonts/Inter-Black.otf'); font-weight: 800 900; }
+@font-face { font-family: 'Bebas'; src: url('../../engine/fonts/BebasNeue-Regular.ttf'); }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Regular.ttf'); font-weight: 400; }
+@font-face { font-family: 'Mono'; src: url('../../engine/fonts/SpaceMono-Bold.ttf'); font-weight: 700; }
+:root { --ink: #0c0e12; --ink2: #3a404a; --muted: #6c737e; --line: #e2e3e6; --soft: #f5f6f8; --red: #e5243f; --violet: #8a4dff; --blue: #2f5bff;
+  --grad: linear-gradient(90deg, #ff4d61, #b45cff 55%, #4f7dff); }
+@page { size: A4; margin: 16mm 15mm 18mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.6pt; line-height: 1.5; color: var(--ink2); }
+h1, h2, h3 { color: var(--ink); margin: 0; }
+h2 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 25pt; letter-spacing: .4pt; line-height: 1; margin: 0 0 3mm; break-after: avoid; }
+h2 .n { color: var(--red); margin-right: 2.5mm; }
+h2::after { content: ''; display: block; width: 18mm; height: 1mm; border-radius: 1mm; background: var(--grad); margin-top: 2.2mm; }
+h3 { font-weight: 800; font-size: 11.5pt; margin: 4.5mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.4mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 5.5mm; }
+li { margin: 0 0 1.3mm; }
+b, strong { color: var(--ink); font-weight: 700; }
+section { margin: 0 0 8mm; }
+section.page { break-before: auto; }
+section.cheatpage { break-before: page; }
+.cover { break-after: page; }
+.lab { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--muted); }
+.say { position: relative; margin: 1.5mm 0 3mm; padding: 3mm 4mm 3mm 6mm; background: var(--soft); border-radius: 2mm; color: var(--ink); break-inside: avoid; }
+.say::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1.3mm; border-radius: 2mm 0 0 2mm; background: var(--grad); }
+.say .who { display: block; font-family: 'Mono', monospace; font-size: 7pt; letter-spacing: 1pt; text-transform: uppercase; color: var(--red); margin-bottom: .8mm; }
+.note { margin: 2mm 0 3mm; padding: 2.5mm 4mm; border: .3mm dashed #c9ccd2; border-radius: 2mm; font-size: 9.6pt; break-inside: avoid; }
+.warn { border-color: var(--red); color: var(--ink); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.card { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4mm; break-inside: avoid; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 1mm 0 4mm; font-size: 9.6pt; break-inside: avoid; }
+th, td { text-align: left; padding: 1.8mm 2.5mm; border-bottom: .3mm solid var(--line); vertical-align: top; }
+th { font-family: 'Mono', monospace; font-size: 7.5pt; letter-spacing: .8pt; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+td b { white-space: nowrap; }
+.funnel { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5mm; margin: 3mm 0 4mm; }
+.funnel div { padding: 2.5mm 2mm; border-radius: 2mm; color: #fff; font-weight: 700; font-size: 8.6pt; line-height: 1.25; text-align: center; min-height: 15mm; display: flex; flex-direction: column; justify-content: center; }
+.funnel small { display: block; font-weight: 500; opacity: .85; font-size: 7.2pt; margin-top: .8mm; }
+.check li { list-style: none; position: relative; padding-left: 1mm; }
+.check li::before { content: ''; position: absolute; left: -5mm; top: 1.2mm; width: 3mm; height: 3mm; border: .35mm solid var(--ink2); border-radius: .6mm; }
+.week td:first-child { width: 30mm; font-weight: 700; color: var(--ink); }
+/* portada */
+.cover { height: 263mm; display: flex; flex-direction: column; justify-content: space-between; padding: 6mm 2mm 2mm; }
+.brand { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); letter-spacing: .5pt; }
+.brand i { font-style: normal; color: var(--red); }
+.cover h1 { font-family: 'Bebas', sans-serif; font-weight: 400; font-size: 66pt; line-height: .92; letter-spacing: .5pt; }
+.cover h1 span { color: var(--red); }
+.cover .bar { width: 34mm; height: 1.6mm; border-radius: 1mm; background: var(--grad); margin: 7mm 0 6mm; }
+.cover .sub { font-size: 13pt; max-width: 135mm; color: var(--ink2); }
+.toc { columns: 2; column-gap: 10mm; font-size: 10pt; padding: 0; list-style: none; }
+.toc li { break-inside: avoid; padding: 1.2mm 0; border-bottom: .3mm solid var(--line); }
+.toc li span { color: var(--red); font-weight: 700; margin-right: 2mm; }
+.foot { display: flex; justify-content: space-between; align-items: end; font-size: 9pt; color: var(--muted); }
+/* chuleta */
+.cheat { border: .5mm solid var(--ink); border-radius: 3mm; padding: 6mm 7mm; }
+.cheat h2 { font-size: 30pt; }
+.cheat ol > li { margin-bottom: 3mm; }
+.cheat .say { margin: 1mm 0 0; padding: 2mm 3mm 2mm 5mm; font-size: 9.8pt; }
+.big { font-family: 'Bebas', sans-serif; font-size: 30pt; color: var(--ink); line-height: 1; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 2mm 0 4mm; }
+.kpis div { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3mm; break-inside: avoid; }
+.kpis small { display: block; font-size: 8pt; color: var(--muted); margin-top: 1mm; line-height: 1.3; }
+.mix { display: flex; height: 9mm; border-radius: 2mm; overflow: hidden; margin: 2mm 0 1.5mm; }
+.mix div { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 8.6pt; }
+.motor { border: .3mm solid var(--line); border-radius: 2.5mm; padding: 3.5mm 4.5mm; margin: 0 0 4mm; break-inside: avoid; }
+.motor h3 { margin-top: 0; }
+.motor .lab { margin-bottom: 1mm; }
+.yes { color: #138a4a; font-weight: 800; } .no { color: var(--red); font-weight: 800; }
+</style>
+<style>
+.day { width: 22mm; font-weight: 800; color: var(--ink); white-space: nowrap; }
+.hr { width: 13mm; font-family: 'Mono', monospace; font-size: 8.6pt; color: var(--ink); white-space: nowrap; }
+.net { width: 20mm; white-space: nowrap; }
+.tag { display: inline-block; padding: .4mm 1.8mm; border-radius: 1.2mm; font-size: 7.4pt; font-weight: 700; color: #fff; white-space: nowrap; }
+.t-al { background: #2f5bff; } .t-pu { background: #b45cff; } .t-yo { background: #e5243f; } .t-hi { background: #6c737e; } .t-no { background: #0c0e12; }
+.ok { color: #138a4a; font-weight: 800; } .wait { color: #c26a00; font-weight: 800; }
+tr.rest td { color: var(--muted); }
+tr.sep td { border-bottom: .5mm solid var(--ink); }
+table.plan td:last-child, table.plan th:last-child { width: 36mm; }
+.legend { display: flex; gap: 3mm; flex-wrap: wrap; margin: 1mm 0 3mm; font-size: 8.6pt; }
+</style></head>
+<body>
+
+<div class="cover">
+  <div class="brand">kiria<i>.</i>ai</div>
+  <div>
+    <p class="lab">Parrilla de publicación · Instagram, TikTok, historias y Facebook</p>
+    <h1>Qué subir<br><span>cada día</span></h1>
+    <div class="bar"></div>
+    <p class="sub">Del lunes 9 al domingo 22 de noviembre de 2026: qué vídeo va cada día, a qué hora y en qué red; cuándo se suben dos en el mismo día; qué falta para cada uno y qué necesito de ti, con fecha.</p>
+  </div>
+  <div>
+    <ol class="toc">
+      <li><span>1</span>Reglas para publicar</li><li><span>2</span>Semana 1 · 9 al 15</li>
+      <li><span>3</span>Semana 2 · 16 al 22</li><li><span>4</span>Lo que necesito de ti</li>
+      <li><span>5</span>TikTok, historias y Facebook</li><li><span>6</span>Lista para cada publicación</li>
+    </ol>
+    <div class="foot"><span>Preparado el lunes 9-11-2026</span><span>Publica Javi, después de revisar cada vídeo</span></div>
+  </div>
+</div>
+
+<section>
+  <h2><span class="n">1</span>Reglas para publicar</h2>
+  <p>Salen de los datos del canal (24 vídeos en Instagram) y del plan de crecimiento.</p>
+  <table>
+    <tr><th>Regla</th><th>Por qué</th></tr>
+    <tr><td><b>Un vídeo informativo al día</b> en Instagram</td><td>El 2 y el 3 de noviembre salieron cuatro y Medicina y Economía se quedaron cortos: se quitan visitas entre ellos.</td></tr>
+    <tr><td><b>Dos al día, solo si son de distinto tipo</b> y con 6 horas o más entre uno y otro</td><td>Por ejemplo, uno de alcance a las 10:00 y tu serie o un vídeo puente a las 18:00. Dos de carreras el mismo día, no.</td></tr>
+    <tr><td><b>Hora: 10:00</b>; las noticias, cuanto antes (18:00)</td><td>La hora casi no cambia los números (ADE, domingo a las 9; Química, jueves a las 18): lo que manda es el tema y la primera frase.</td></tr>
+    <tr><td><b>Mezcla de la semana</b>: alcance, puente y tú</td><td>Alcance (carreras e historias) trae seguidores; puente (negocios por dentro) y tu serie traen dueños de negocios.</td></tr>
+    <tr><td><b>Siempre</b>: portada, texto, comentario fijado y historia con encuesta</td><td>Los comentarios son lo más flojo del canal; la encuesta de la historia sube las respuestas.</td></tr>
+    <tr><td><b>Nunca</b> borrar un vídeo que vaya flojo, ni programar sin revisarlo</td><td>Borrar penaliza la cuenta. Yo preparo todo; publicas tú.</td></tr>
+  </table>
+  <div class="legend"><span class="tag t-al">ALCANCE</span><span class="tag t-pu">PUENTE</span><span class="tag t-yo">TU SERIE</span><span class="tag t-hi">HISTORIAS</span></div>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">2</span>Semana 1 · del 9 al 15 de noviembre</h2>
+  <table class="plan">
+    <tr><th>Día</th><th>Hora</th><th>Red</th><th>Vídeo</th><th>Estado</th></tr>
+    <tr><td class="day">Lun 9 (hoy)</td><td class="hr">18:00</td><td class="net">Instagram</td><td><span class="tag t-al">ALCANCE</span> <b>GTA 6 ocupa 212 gigas</b><br>La predescarga abre mañana y el juego sale el 19: cuanto antes, mejor.</td><td><span class="ok">Listo hoy</span><br>hacia las 17:00</td></tr>
+    <tr><td class="day"></td><td class="hr">18:15</td><td class="net">Historias</td><td><span class="tag t-hi">HISTORIA</span> El reel de GTA con encuesta «¿PlayStation o Xbox?»</td><td></td></tr>
+    <tr class="sep"><td class="day"></td><td class="hr">21:00</td><td class="net">TikTok</td><td>GTA 6 (se adelanta en la lista: es noticia)</td><td></td></tr>
+    <tr><td class="day">Mar 10</td><td class="hr">10:00</td><td class="net">Instagram</td><td><span class="tag t-pu">PUENTE</span> <b>La tapa gratis no existe</b> (negocios por dentro)</td><td><span class="ok">Listo</span></td></tr>
+    <tr><td class="day"></td><td class="hr">10:30</td><td class="net">Facebook</td><td>Tapas en la página de kiria y en 2 o 3 grupos de comercios de Motril y Granada</td><td></td></tr>
+    <tr><td class="day"></td><td class="hr">10:15</td><td class="net">Historias</td><td><span class="tag t-hi">HISTORIA</span> Tapas con encuesta «¿Granada o Jaén?»</td><td></td></tr>
+    <tr class="sep"><td class="day"></td><td class="hr">13:00 · 19:00</td><td class="net">TikTok</td><td>Tapas y el siguiente de la lista</td><td></td></tr>
+    <tr><td class="day">Mié 11</td><td class="hr">10:00</td><td class="net">Instagram</td><td><span class="tag t-al">ALCANCE</span> <b>Psicología por dentro</b> (carrera + creencia rota: la fórmula de ADE y Química)</td><td><span class="wait">Falta tu voz</span><br>antes del martes a las 12:00</td></tr>
+    <tr class="sep"><td class="day"></td><td class="hr">13:00 · 19:00</td><td class="net">TikTok</td><td>Dos de la lista</td><td></td></tr>
+    <tr><td class="day">Jue 12</td><td class="hr">10:00</td><td class="net">Instagram</td><td><span class="tag t-yo">TU SERIE</span> <b>Capítulo 1 · El reto</b>: «Mis vídeos tienen más de 3 millones de visualizaciones… y hoy voy a intentar vendérselos a los bares de mi pueblo»</td><td><span class="wait">Falta que lo grabes</span><br>mándamelo el miércoles antes de las 13:00</td></tr>
+    <tr class="sep"><td class="day"></td><td class="hr">13:00 · 19:00</td><td class="net">TikTok</td><td>Dos de la lista. Plan B del jueves si no hay capítulo: la carrera que proponga el análisis</td><td></td></tr>
+    <tr><td class="day">Vie 13</td><td class="hr">10:00</td><td class="net">Instagram</td><td><span class="tag t-pu">PUENTE</span> <b>Cómo se hace un vídeo de 900.000 visualizaciones</b> (Derecho, por dentro: del guion a la escena 3D; vende el servicio sin anunciarlo)</td><td><span class="wait">Guion el martes</span><br>tu voz el miércoles</td></tr>
+    <tr class="sep"><td class="day"></td><td class="hr">10:30 · 13:00 · 19:00</td><td class="net">Facebook · TikTok</td><td>El puente en Facebook; dos de la lista en TikTok</td><td></td></tr>
+    <tr><td class="day">Sáb 14</td><td class="hr">10:30</td><td class="net">Instagram</td><td><span class="tag t-al">ALCANCE</span> <b>Historia real</b> (la que proponga el análisis; reserva: Neveras hackeadas, si sigue de actualidad)</td><td><span class="wait">Guion listo (Neveras)</span><br>falta tu voz</td></tr>
+    <tr class="sep"><td class="day"></td><td class="hr">12:00 · 18:00</td><td class="net">TikTok</td><td>Dos de la lista</td><td></td></tr>
+    <tr class="rest"><td class="day">Dom 15</td><td class="hr">—</td><td class="net">Historias</td><td>Descanso de vídeos. Historias con el resumen de la semana. Si hay un vídeo fuerte de sobra, el domingo a las 10:00 también funciona (ADE).</td><td></td></tr>
+  </table>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">3</span>Semana 2 · del 16 al 22 de noviembre</h2>
+  <table class="plan">
+    <tr><th>Día</th><th>Hora</th><th>Red</th><th>Vídeo</th><th>Qué falta</th></tr>
+    <tr><td class="day">Lun 16</td><td class="hr">10:00</td><td class="net">Instagram</td><td><span class="tag t-al">ALCANCE</span> Carrera con creencia rota (la que elija el análisis)</td><td>Guion el viernes 13; voz el fin de semana</td></tr>
+    <tr><td class="day">Mar 17</td><td class="hr">10:00</td><td class="net">Instagram · Facebook</td><td><span class="tag t-pu">PUENTE</span> «El truco del ,99» o «Las máquinas de vending»</td><td>Guion el lunes 16 por la mañana</td></tr>
+    <tr><td class="day">Mié 18</td><td class="hr">10:00</td><td class="net">Instagram</td><td><span class="tag t-al">ALCANCE</span> Carrera o duelo</td><td>Guion el lunes 16</td></tr>
+    <tr><td class="day">Jue 19</td><td class="hr">10:00 · 18:00</td><td class="net">Instagram · Historias</td><td><span class="tag t-yo">TU SERIE</span> Capítulo 2 · La primera muestra. <b>Sale GTA 6</b>: a las 18:00, historia con el reel de GTA («hoy sale»)</td><td>Grabación el martes 17</td></tr>
+    <tr><td class="day">Vie 20</td><td class="hr">10:00</td><td class="net">Instagram · Facebook</td><td><span class="tag t-pu">PUENTE</span> Caso real o antes y después de un negocio de la zona (solo con sus números reales y su permiso). Plan B: «Lo que cuesta abrir una cafetería»</td><td>Un negocio que acepte</td></tr>
+    <tr><td class="day">Sáb 21</td><td class="hr">10:30</td><td class="net">Instagram</td><td><span class="tag t-al">ALCANCE</span> Historia real contada en orden</td><td>Guion el jueves 19</td></tr>
+    <tr class="rest"><td class="day">Dom 22</td><td class="hr">—</td><td class="net">—</td><td>Descanso. Repaso de números (15 minutos) y plan de la semana siguiente.</td><td></td></tr>
+  </table>
+  <div class="note">Todos los días: <b>TikTok</b> 2 vídeos de la lista (13:00 y 19:00) y <b>historias</b> con lo que haces (visitas, rodajes, entregas). Los días de puente y de tu serie, también en <b>Facebook</b>.</div>
+</section>
+
+<section>
+  <h2><span class="n">4</span>Lo que necesito de ti, con fecha</h2>
+  <table>
+    <tr><th>Cuándo</th><th>Qué</th><th>Para</th></tr>
+    <tr><td><b>Hoy, lunes 9</b></td><td>Revisar GTA 6 y publicarlo a las 18:00. Ampliar el saldo de efectos de ElevenLabs (se agotó hoy: quedan 3 créditos).</td><td>GTA hoy; efectos de los próximos vídeos</td></tr>
+    <tr><td><b>Martes 10, antes de las 12:00</b></td><td>La voz de Psicología (el guion está en el análisis del 9-11). Confirmar con 2 o 3 bares el precio de la caña con tapa, si quieres afinarlo.</td><td>Psicología el miércoles</td></tr>
+    <tr><td><b>Miércoles 11, antes de las 13:00</b></td><td>Grabar el capítulo 1 de tu serie (vertical, luz de cara, frases cortas y planos de calle) y mandármelo tal cual. La voz del puente del viernes (te paso el guion el martes).</td><td>Capítulo 1 el jueves; puente el viernes</td></tr>
+    <tr><td><b>Viernes 13</b></td><td>La voz de la historia real del sábado.</td><td>Sábado 14</td></tr>
+    <tr><td><b>Esta semana</b></td><td>Decidir: si abrimos ya el canal de YouTube (Shorts), quién publica en los grupos de Facebook y el precio de «Grábalo tú, lo editamos con IA».</td><td>Semana 2</td></tr>
+  </table>
+  <p>Yo: GTA hoy; Psicología el martes por la tarde (en cuanto llegue tu voz); tu capítulo 1 el miércoles por la tarde; el puente del viernes el jueves; y cada día, portada, textos y comentario fijado listos para copiar.</p>
+</section>
+
+<section class="cheatpage">
+  <h2><span class="n">5</span>TikTok, historias y Facebook</h2>
+  <div class="cols">
+    <div class="card"><h3>TikTok</h3><ul>
+      <li>Dos al día (13:00 y 19:00), en el orden de la lista (<b>TIKTOK.md</b>, del 1 al 14).</li>
+      <li>Las noticias se adelantan (GTA hoy).</li>
+      <li>El MP4 original, la portada de TikTok y «Contenido generado por IA» activado.</li>
+      <li>Fijados: Derecho, el anuncio de la web y el que mejor vaya.</li></ul></div>
+    <div class="card"><h3>Historias</h3><ul>
+      <li>Cada reel, a historias 15 minutos después, con la encuesta de su pregunta final.</li>
+      <li>Cada día, algo tuyo: visitas, rodajes, entregas.</li>
+      <li>Destacadas: «Negocios», «Cómo lo hacemos», «Opiniones» (solo reales) y «Pide el tuyo».</li></ul></div>
+    <div class="card"><h3>Facebook</h3><ul>
+      <li>Solo los vídeos puente y tu serie.</li>
+      <li>En la página de kiria y en 2 o 3 grupos de comercios de Motril y Granada.</li>
+      <li>Texto corto, sin precios, con el enlace a kiriaai.com.</li></ul></div>
+    <div class="card"><h3>YouTube Shorts (cuando lo abras)</h3><ul>
+      <li>El vídeo del día a las 17:00.</li>
+      <li>Título: la primera frase; descripción: las fuentes.</li>
+      <li>El kit ya está hecho (foto, cabecera y descripción del canal).</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">6</span>Lista para cada publicación</h2>
+  <div class="cols">
+    <div class="card"><h3>Antes de publicar</h3><ul class="check">
+      <li>Ver el vídeo entero con sonido.</li>
+      <li>Mirar lo marcado CONFIRMAR en sus notas.</li>
+      <li>Tener a mano: MP4, portada y DESCRIPCION.txt.</li></ul></div>
+    <div class="card"><h3>Al publicar</h3><ul class="check">
+      <li>Subir la portada (no un fotograma).</li>
+      <li>Texto de la descripción y hashtags.</li>
+      <li>Comentario fijado con las fuentes y la línea de kiria.</li>
+      <li>Puente o serie: ubicación (Motril o Granada) y colaboración si sale un negocio.</li></ul></div>
+    <div class="card"><h3>Primera hora</h3><ul class="check">
+      <li>Contestar todos los comentarios con otra pregunta.</li>
+      <li>Compartir en historias con la encuesta.</li>
+      <li>Contestar los mensajes en menos de 1 hora.</li></ul></div>
+    <div class="card"><h3>A las 24 horas</h3><ul class="check">
+      <li>Captura de Metricool para el análisis.</li>
+      <li>Pasar el vídeo a «Publicado» en Notion.</li>
+      <li>Apuntar de dónde vino cada mensaje de un negocio.</li></ul></div>
+  </div>
+</section>
+
+</body></html>
