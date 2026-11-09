@@ -5,7 +5,7 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 8-11-2026 (23 vídeos de Instagram, tres capturas de Metricool).
+Última actualización: 9-11-2026 (24 vídeos de Instagram, cinco capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
@@ -29,9 +29,11 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - ✅ **Cierre con envío a una persona concreta**: «Mándaselo a quien te dijo que Magisterio era fácil» hizo de Magisterio el vídeo más
   compartido (18 por cada 1.000) y lo llevó a 309 mil con el peor arranque. Siempre: «mándaselo a [persona que se pica o que lo necesita]».
 - 🧪 **Duelo con creencia rota** («Crees que Química e Ingeniería Química son la misma carrera») + «¿cuál cobra más? te lo digo al
-  final»: Química, +40.931 en su segundo día (79.870 en 51 h) y 19,5 guardados por cada 1.000, casi como Derecho.
+  final»: Química, +40.931 en su segundo día (79.870 en 51 h) y 19,5 guardados por cada 1.000, casi como Derecho. ADE (9-11),
+  «Te dijeron que ADE no tiene salidas…»: 21.586 en 24 h (+19.206 en su primera noche). Dos de dos: falta un tercero para ✅.
 - 🧪 **Pregunta de bando al final** («¿máster o PIR?», «¿abogado o juez?») + «guárdalo si estás eligiendo carrera». Los comentarios
   son el punto flojo de todo el canal (0,1–1,4 por cada 1.000): la pregunta debe ser una pelea real de la profesión, no de gustos.
+  «¿Auditoría o banca?» (ADE) no provocó: 0,23 por cada 1.000. Que divida al que mira, no dos opciones que no conoce.
 - ✅ Datos reales con fuente en `FUENTES.md`, números escritos como se dicen en el guion de ElevenLabs.
 
 ## 3. Duración y ritmo
@@ -59,7 +61,7 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 
 ## 7. Publicación
 - 🧪 **Hora: 10:00 de lunes a viernes** (Metricool: vie, mié y jue 10:00 las mejores; segundo pico a las 18:00 de mar a jue).
-  Los dos mejores vídeos salieron en fin de semana a media mañana (sáb 10:39, dom 12:47). Prueba A/B en curso: 10:00 frente a 18:00 (señal en contra: Química salió a las 17:55 y es el que más crece).
+  Los dos mejores vídeos salieron en fin de semana a media mañana (sáb 10:39, dom 12:47). Prueba A/B en curso: 10:00 frente a 18:00 (sin resultado: Química salió a las 17:55 de un jueves y ADE a las 08:55 de un domingo, y los dos despegan; pesa más el tema y el gancho que la hora).
 - 🧪 **Un solo vídeo informativo al día**: el 2 y 3 de noviembre salieron 4 y Medicina y Economía se quedaron cortos.
 - Portada con la frase del gancho en grande; descripción con las fuentes. Hashtags y descripción: sin datos todavía para compararlos.
 
