@@ -34,7 +34,8 @@ NOTAS DE ENTREGA:
 - Voz: la de Javi (su MP3 de ElevenLabs: Danny, v4, estabilidad 0,50, similitud 0,75, 62,1 s); tiempos con Parakeet y pausas recortadas: 55,4 s sin acelerar; vídeo de 56,5 s en bucle exacto.
 - Datos: ver FUENTES.md. Antes de publicar, CONFIRMAR que la página de la NASA («Incorrect Lift Theory #1») sigue en línea.
 - El flujo del túnel está CALCULADO (ala de Joukowski con la condición de Kutta): la carrera de las bolitas, el humo, la inclinación, la flecha del aire hacia abajo y los colores de presión son de verdad para esa ala, no dibujados a ojo.
-- Recreación: el aula, el avión (genérico, sin aerolínea ni logotipos) y la avioneta son inventados.
-- Efectos: todos reutilizados de otros vídeos del canal (ElevenLabs; el saldo de efectos se agotó el 9-11 y se renueva el 30-11). «jet» y «helice» son mezclas más graves/agudas de efectos de la biblioteca.
+- Recreación: todo es 3D inventado: el valle (montañas, campos, río y pueblos), las nubes, los pájaros, el avión (genérico, sin aerolínea ni
+  logotipos), el aula y la avioneta. Empieza con un único plano de dron que sigue al avión (con su sombra en el valle).
+- Efectos: todos reutilizados de otros vídeos del canal (ElevenLabs; el saldo de efectos se agotó el 9-11 y se renueva el 30-11). «motor» y «helice» son mezclas de efectos de la biblioteca (el rugido del avión y la hélice).
 - Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
 - Subida: hoy martes 10 a las 20:00.

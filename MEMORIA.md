@@ -161,6 +161,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   recorta con una esfera vieja y desaparecen el humo o los bloques); (3) un cristal transparente con color, aunque sea al 12 %, aclara a
   gris un fondo negro detrás: opacidad ≈ 3 %; (4) un cielo azul fuerte hace que se vea todo lo blanco (avión, humo, estela); (5) los
   subtítulos cambian de altura por plano (entre el avión y la pizarra al principio y al final; arriba en el resto).
+  **Versión 2 realista (mismo día, a petición de Javi**: «que sea muy muy realista, con nubes, pájaros volando, sombras, la proyección de
+  sombras, algunas nubes de fondo grises, que se vea el suelo como montañas debajo… y los primeros segundos con la imagen del avión volando»;
+  luego: «no pongas corte de pizarra y avión, empezamos con una escena única de avión volando de forma realista, con una cámara dron desde
+  arriba atrás… la explicación con la pizarra es perfecta; la avioneta, cámara única»). `web/src/13_world.js`: valle de 22 km con montañas
+  (ruido «ridged»), parcelas de campos giradas, río (cauce tallado), 9 pueblos (casas instanciadas), nubes de 7-12 sprites por grupo a la
+  altura del avión y lejos del pasillo de la cámara (vistas desde arriba parecen charcos grises), nubes grises al fondo sin niebla, sombras
+  de las nubes cocidas en los colores del suelo, sombra del avión con el sol (la cámara de sombra sigue al avión), dos bandadas de ánsares
+  en uve con aleteo, cielo con bruma y halo del sol, reflejos del cielo (PMREM de una escena con el cielo). Mallas de suelo: fina de 16 m
+  donde mira el dron, media de 42 m y lejana de 600 m (cada una hundida bajo la más fina). Planos «big»/«acro»: cámara pegada al avión o a
+  la avioneta (claves relativas) y desenfoque de movimiento solo del movimiento relativo (si no, todo sale borroso). Render: ramas
+  `render-avion2-1…6`. Lecciones: (6) en el suelo, cualquier color por altura baja (grava del río) pinta charcos en las hondonadas: atarlo a
+  la distancia al río; (7) sprites de nube vistos desde arriba = manchas grises: ponerlas a la altura de la cámara.
 - **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
   vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
   tipo y con 6 h o más entre ellos; 10:00 y las noticias cuanto antes), las dos semanas día a día, lo que necesita Javi con fecha y la
