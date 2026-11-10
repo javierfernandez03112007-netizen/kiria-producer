@@ -326,8 +326,15 @@ def main():
         lst = os.path.join(OUT, 'trozos.txt'); open(lst, 'w').write(''.join(f"file '{os.path.join(OUT, p)}'\n" for p in parts))
         audio = os.path.join(OUT, 'audio_final.wav'); mix_audio(audio)
         dst = os.path.join(OUT, 'serie_cap1.mp4')
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-i', audio, '-map', '0:v', '-map', '1:a',
-                        '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-shortest', '-movflags', '+faststart', dst], check=True)
+        # se unen descodificando (el «concat» sin recodificar perdía 2 fotogramas en cada unión) y se codifica una sola vez para entregar
+        ins = []
+        for p in parts: ins += ['-i', os.path.join(OUT, p)]
+        n = len(parts)
+        fc = ''.join(f'[{i}:v]' for i in range(n)) + f'concat=n={n}:v=1:a=0[v]'
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', *ins, '-i', audio, '-filter_complex', fc, '-map', '[v]', '-map', f'{n}:a',
+                        '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-maxrate', '14M', '-bufsize', '28M', '-profile:v', 'high',
+                        '-pix_fmt', 'yuv420p', '-r', str(FPS), '-g', '120', '-c:a', 'aac', '-b:a', '256k', '-ar', '48000',
+                        '-movflags', '+faststart', dst], check=True)
         print('listo', dst); return
     if len(sys.argv) > 3:
         f0, f1 = int(sys.argv[2]), min(nfr, int(sys.argv[3]))

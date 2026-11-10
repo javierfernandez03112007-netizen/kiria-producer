@@ -39,5 +39,5 @@ NOTAS DE ENTREGA:
 - PENDIENTE DE JAVI: en la toma dice «3,7 millones… en tan solo 7 días», pero su captura dice 3,6 M en 30 días. En pantalla va 3,6M.
   Si regraba esa frase («He generado vídeos con más de 3,6 millones de visualizaciones en 30 días»), se cambia. Dice «Kiria.com»: en
   pantalla va kiriaai.com. «Te explico el método Kiria»: el cierre lo resuelve con «El método Kiria, cada jueves».
-- Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
+- Entregado el 10-11-2026: out/serie_cap1.mp4 (55,2 s, 60 fps, −15,3 LUFS). Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
 - Subida prevista: jueves 12 a las 10:00.

@@ -194,7 +194,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   cabeza (Anton + palabra clave en Instrument Serif cursiva amarilla), marcador «RETO 0/10 · DÍA 1/30», tarjetas de cristal por frase (el
   desenfoque de debajo lo hace `montaje.py` con los rectángulos que da la página), cupón KIRIA10 y cierre «El método Kiria, cada jueves»;
   (5) `montaje.py`: tomas al 106 % (rubberband), zoom distinto en cada corte con un «punch» al entrar, color, viñeta y grano; `sonido.py`:
-  49 efectos de la biblioteca de ElevenLabs. Pendiente de Javi: dice «3,7 millones… en tan solo 7 días» y su captura dice 3,6 M en 30
+  49 efectos de la biblioteca de ElevenLabs. **Entregado el 10-11-2026 (21:05)**: `out/serie_cap1.mp4`, 55,2 s, 60 fps, 3.310 fotogramas,
+  −15,3 LUFS, portada y miniatura 4:5. Render en 3 trozos a la vez aquí (`montaje.py final f0 f1` y `montaje.py junta`; la unión se hace
+  descodificando: el concat sin recodificar perdía 2 fotogramas en cada unión). El «3,6M» va delante de Javi (si no, su pelo lo tapaba)
+  y las tarjetas de la izquierda no pasan de x = 480 (no tapan la cara). Pendiente de Javi: dice «3,7 millones… en tan solo 7 días» y su captura dice 3,6 M en 30
   días (en pantalla va 3,6M); dice «Kiria.com» (en pantalla kiriaai.com).
 - **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
   vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
