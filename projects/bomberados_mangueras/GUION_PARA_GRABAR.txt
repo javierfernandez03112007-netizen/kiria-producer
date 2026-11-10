@@ -1,24 +1,26 @@
-«¿QUÉ MANGUERA PIERDE MÁS PRESIÓN?» — pérdida de carga en mangueras de 25, 45 y 70 mm (Pregunta del día cinematográfica;
-pregunta de Adrián, Notion: «SÁBADO 14 PREGUNTA EXPLICADA», examen del Ayto. de Pontevedra 2022)
+«¿QUÉ MANGUERA PIERDE MÁS PRESIÓN?» — VERSIÓN 2 (pérdida de carga en mangueras de 25, 45 y 70 mm; pregunta de Adrián,
+examen del Ayto. de Pontevedra 2022)
 
-Elegido con los datos de Notion del 10 nov: lo que más se pega es el 3D con dron de mangueras y presión (acoplamiento
-106.000 vistas, presión 63.400) y lo que menos, los anuncios de la app (FOMO 3.899, autobús 5.100). Va en el molde de la
-presión y con lo que pide el plan del 10 nov: letras A/B/C/D en pantalla al final y «comenta tu letra»; la respuesta, solo
-en la descripción.
+Rehecho con lo que pidió Javi el 10 nov y el molde de los dos más virales (acoplamiento y presión): gancho que ALARMA
+(el fuego avanza y la lanza se queda sin fuerza), más rápido, la cuenta de 5 segundos para que respondan, «¡Tiempo!» con la
+trampa, y un dron que no para de moverse con planos ABIERTOS (las mangueras enteras, nada cortado).
 
 Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
 Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
-Todo el vídeo lleva voz (≈ 48 s; con las letras quietas al final, ≈ 52 s). El arranque, bajo y tenso; la explicación,
-segura y con ritmo; «casi OCHO veces más», con sorpresa. Detrás de «Comenta tu letra» dejo 2 s de silencio con las letras
-quietas en pantalla (lo pongo yo). Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+Todo el vídeo lleva voz (≈ 45 s + 4 s de cuenta). RÁPIDO y con urgencia: no la voy a ralentizar. El gancho, alarmado; el
+resto, con ritmo. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en el 5). «¡Tiempo!», de golpe.
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
 
 ----- COPIAR DESDE AQUÍ (Eleven v3) -----
-[tense, low voice] Tres mangueras, la misma bomba y la MISMA agua. [challenging] ¿Cuál pierde más presión?
-[quick] ¿La de veinticinco milímetros, la de cuarenta y cinco, la de setenta… [teasing] o las tres por igual?
-[explaining, confident] Dentro, el agua va rozando contra la manguera… [serious] y en cada metro pierde presión.
-[emphatic] Es la PÉRDIDA DE CARGA, [building up] y depende sobre todo de lo larga que es, del agua que pasa… [emphatic] y de lo ANCHA que es.
-[intrigued] Si la estrechas, la misma agua tiene que correr más rápido. [surprised] En la de veinticinco, casi OCHO veces más que en la de setenta.
-[challenging, slow] Entonces… ¿cuál pierde más? [challenging] Comenta tu letra.
+[urgent, alarmed] ¡El fuego avanza… y la lanza de tu compañero se queda SIN FUERZA!
+[tense, fast] Tres mangueras, la misma bomba, la misma agua: ¿cuál pierde más presión?
+[quick] ¿La de veinticinco, cuarenta y cinco, setenta… [teasing] o las tres igual?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [intrigued] Si has dicho «las tres igual»… [grave] has caído en la trampa.
+[explaining, fast] Dentro, el agua roza con la manguera y pierde presión a cada metro: es la PÉRDIDA DE CARGA.
+[building up] En la más estrecha, la misma agua corre más deprisa: [surprised] en la de veinticinco, casi OCHO veces más que en la de setenta.
+[serious, warning] Y cuanto más corre… más roza.
+[challenging] Escribe en comentarios cuál crees que es la correcta.
 [excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
 [energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
 ----- HASTA AQUÍ -----
@@ -26,32 +28,32 @@ quietas en pantalla (lo pongo yo). Lo más fuerte, el final: «¡MÁNDASELO…!�
 Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
 («oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
 
-GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con planos ABIERTOS de dron y la cámara siempre en movimiento:
-una autobomba en una plaza mojada con los rotativos encendidos y tres líneas de manguera que salen de la misma bomba
-(25, 45 y 70 mm, con su grosor real) hacia tres lanzas. El agua de dentro se ve como luz azul que corre.
-1. «Tres mangueras, la misma bomba y la misma agua.» — primer fotograma: dron cenital sobre la autobomba y, de golpe, las
-   tres mangueras se desenrollan a la vez por la plaza como tres latigazos. Sobre las salidas de la bomba: MISMO CAUDAL.
-   «¿Cuál pierde más presión?» — al final de cada línea, un manómetro con «?». Sello: EXAMEN · AYTO. DE PONTEVEDRA 2022.
-2. «¿La de 25 mm, la de 45, la de 70… o las tres por igual?» — la cámara vuela bajo a lo largo de las líneas y cada una se
-   enciende con su etiqueta y su sección a escala (anillos de 25, 45 y 70 mm); salen las tarjetas A · 25 mm  B · 45 mm
-   C · 70 mm  D · LAS TRES IGUAL.
-3. «Dentro, el agua va rozando contra la manguera… y en cada metro pierde presión.» — la manguera se vuelve transparente
-   (rayos X): el agua corre y, donde toca la pared, saltan chispas de roce; una barra de presión a lo largo de la manguera
-   se va vaciando metro a metro.
-4. «Es la pérdida de carga…» — título 3D: PÉRDIDA DE CARGA. «…depende sobre todo de lo larga que es» — la manguera se
-   estira con una regla (20 m → 40 m → 60 m); «del agua que pasa» — entra más agua (más luz); «y de lo ANCHA que es» — el
-   anillo de la sección crece y encoge.
-5. «Si la estrechas, la misma agua tiene que correr más rápido.» — un tramo de 70 mm se estrecha hasta 25 mm y la misma
-   agua acelera (estelas). «En la de 25, casi OCHO veces más que en la de 70.» — dos velocímetros lado a lado, el de 25 mm
-   se dispara: «×8» gigante y «a igual caudal».
-6. «Entonces… ¿cuál pierde más? Comenta tu letra.» — el dron se aleja sobre las tres líneas y vuelven las cuatro tarjetas
-   A / B / C / D, QUIETAS 2 s, con «💬 COMENTA TU LETRA».
-7. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
-8. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con UN DRON QUE NO PARA: vuela de un sitio a otro sin cortes
+negros, con planos abiertos donde se ven las tres mangueras enteras (la autobomba abajo, las lanzas y el fuego arriba).
+1. «¡El fuego avanza… y la lanza de tu compañero se queda SIN FUERZA!» — primer fotograma: el dron llega rasante hasta un
+   bombero frente al edificio en llamas; su chorro se desploma hasta casi nada mientras las llamas crecen hacia él;
+   manómetro de la lanza cayendo en rojo y rótulo «¡SIN PRESIÓN!».
+2. «Tres mangueras, la misma bomba, la misma agua: ¿cuál pierde más presión?» — el dron sube y vuela hacia atrás hasta la
+   autobomba: se ven las tres líneas enteras saliendo del mismo colector; MISMA BOMBA · MISMO CAUDAL; manómetros «?» en
+   las tres lanzas. Sello: EXAMEN · AYTO. DE PONTEVEDRA 2022.
+3. «¿La de 25, 45, 70… o las tres igual?» — el dron pasa por encima de las tres líneas: cada una se enciende con su grosor
+   (A · 25 mm, B · 45 mm, C · 70 mm) y salen las tarjetas A / B / C / D.
+4. «Comenta tu letra. Tienes cinco segundos.» — cuenta 1-2-3-4-5 (tic-tac y bocina) mientras el dron gira alrededor de los
+   tres bomberos con sus manómetros «?».
+5. «¡Tiempo! Si has dicho “las tres igual”… has caído en la trampa.» — bocina; la D se pone roja y tachada.
+6. «Dentro, el agua roza con la manguera y pierde presión a cada metro: es la pérdida de carga.» — sobre cada línea se
+   enciende su «rayos X» (la manguera por dentro, grande, flotando encima): el agua corre, roza la pared (chispas) y la
+   presión baja metro a metro; rótulo 3D PÉRDIDA DE CARGA.
+7. «En la más estrecha, la misma agua corre más deprisa: en la de 25, casi OCHO veces más que en la de 70.» — el dron vuela
+   a lo largo de los tres «rayos X»: velocidad ×1 (70), ×2,4 (45) y ×7,8 (25), con el «×7,8» gigante.
+8. «Y cuanto más corre… más roza.» — en la de 25 saltan muchas más chispas.
+9. «Escribe en comentarios cuál crees que es la correcta.» — el dron se aleja muy alto; las cuatro tarjetas (la D tachada)
+   y «💬 ESCRIBE TU LETRA EN COMENTARIOS».
+10. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+11. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
 ★ = momentos de venta: los más fuertes del vídeo.
 
-Respuesta (solo en la descripción): A) la de 25 mm. Con el mismo caudal, en la manguera estrecha el agua va mucho más
-rápida (en la de 25 mm, (70/25)² ≈ 7,8 veces más que en la de 70) y la pérdida de carga crece con la velocidad: con la
-misma longitud, la de 25 pierde decenas de veces más que la de 45 y más de cien veces más que la de 70. La trampa: la D
-(«las tres igual»: pensar que solo cuenta la longitud). Ver FUENTES.md.
+Respuesta (solo en la descripción): A) la de 25 mm. Con el mismo caudal, en la de 25 el agua va (70/25)² ≈ 7,8 veces más
+rápida que en la de 70 y el rozamiento crece con la velocidad: con la misma longitud, la de 25 pierde decenas de veces más
+que la de 45 y más de cien veces más que la de 70. La trampa: la D («las tres igual»). Ver FUENTES.md.
 CONFIRMAR con Adrián: que es del examen del Ayto. de Pontevedra (2022), para dejar el sello.

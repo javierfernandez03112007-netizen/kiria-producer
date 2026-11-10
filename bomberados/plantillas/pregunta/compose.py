@@ -1648,18 +1648,17 @@ def sfx_track_fomo(path):
 
 
 def sfx_track_mangueras(path):
-    """«¿Qué manguera pierde más presión?»: las tres mangueras salen disparadas del colector (latigazos), motor de la bomba y
-    rotativos, el agua que entra, el fuego al fondo, los manómetros «?», las etiquetas 25/45/70 y las tarjetas; dentro de la
-    manguera (rayos X): el agua corriendo, el roce con la pared, un tic por cada columna de presión, el golpe de «pérdida de
-    carga», el estrechamiento (el agua sube de tono) y el «×7,8»; vuelta a la plaza, letras quietas y la venta.
-    Planos como en mangueras.js."""
+    """«¿Qué manguera pierde más presión?» (versión 2): gancho de alarma (fuego que ruge, el chorro que silba y se ahoga,
+    latido y alarma), el dron que vuela (barridos), motor de la bomba y rotativos, los manómetros «?», las tres líneas y las
+    tarjetas, la cuenta 1 → 5 con bocina, «¡Tiempo!» con la D tachada, los «rayos X» (el agua corriendo, el roce que
+    chisporrotea más en la de 25, el «×7,8»), las letras finales y la venta. Cámara como en mangueras.js."""
     N2 = int((END + 1) * sfx.SR)
     out = np.zeros((N2, 2))
     amb = np.zeros((N2, 2))
     c = {k: at(v) for k, v in Q["cues"].items()}
     T = dict(c)
     T["fin"] = c["compartir"] - 0.25
-    T["lab0"], T["back"] = c["dentro"] - 0.18, c["entonces"] - 0.15
+    T["count0"] = LINES[3]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
     fuego, bub, nota, toque = _load("fuego"), _onset(_load("burbuja")), _onset(_load("nota")), _onset(_load("toque"))
     burn = fuego[int(1.2 * sfx.SR):int(2.6 * sfx.SR)]
     motor, agua = _load("motor"), _load("agua")
@@ -1668,60 +1667,59 @@ def sfx_track_mangueras(path):
         x = _onset(_load(x)) if isinstance(x, str) else x
         _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
 
-    # plaza: motor de la bomba y rotativos; el fuego al fondo (se oye más cuando se ve)
-    put(motor, 0.0, -25, T["lab0"] + 0.2, 0.02, 0.3, track=amb)
-    put("rotativo", 0.0, -32, T["lab0"] + 0.2, 0.02, 0.3, track=amb)
-    put(burn, c["cual"] - 0.3, -30, T["lab0"] - c["cual"] + 0.5, 0.3, 0.3, track=amb)
-    put(motor, T["back"] - 0.05, -30, END - T["back"], 0.2, 0.8, track=amb)
-    put(burn, T["back"] - 0.05, -30, END - T["back"], 0.2, 0.6, track=amb)
-    # gancho: destello y tres latigazos (las mangueras salen disparadas del colector)
-    put("destello", 0.02, -27, 0.8, 0.002, 0.3)
-    put("latido", 0.05, -28, 0.6)
-    for i in range(3):
-        put(_pitch(_onset(_load("whoosh2")), 1.25 + 0.12 * i), 0.04 + 0.07 * i, -24, 0.45, 0.002, 0.15)
-        put(_pitch(_onset(_load("golpe")), 1.6 - 0.2 * i), 0.55 + 0.07 * i, -31, 0.25)
+    # gancho: el fuego ruge cerca, el chorro silba fuerte y se ahoga; latido y golpe en «SIN FUERZA»
+    put(burn, 0.0, -22, c["tres"] + 0.4, 0.01, 0.5, track=amb)
+    put(agua, 0.0, -21, c["fuerza"] + 0.1, 0.01, 0.25)
+    put(_pitch(agua, 0.7), c["fuerza"] - 0.1, -27, 1.0, 0.1, 0.5)
+    put(_pitch(_onset(_load("caida")), 0.8), c["avanza"], -26, 1.2, 0.02, 0.3)
+    put("latido", 0.05, -24, 0.7)
+    put("latido", c["fuerza"] - 0.1, -24, 0.7)
+    put("golpe", c["fuerza"] - 0.05, -22, 0.8, 0.005, 0.35)
+    put("fallo", c["fuerza"] + 0.05, -27, 0.5)
+    # el dron sube a la plaza: motor de la bomba, rotativos y el fuego de fondo hasta el final
+    put("whoosh2", c["tres"] - 0.4, -24, 1.0)
+    put(motor, c["tres"] - 0.3, -27, END - c["tres"], 0.3, 0.8, track=amb)
+    put("rotativo", c["tres"] - 0.3, -33, c["dentro"] - c["tres"] + 0.3, 0.3, 0.4, track=amb)
+    put(burn, c["tres"] + 0.3, -32, END - c["tres"], 0.4, 0.6, track=amb)
     put("llave", c["bomba"] - 0.05, -28, 0.5, 0.001, 0.1)
-    put(agua, c["agua"] - 0.2, -26, 2.2, 0.05, 0.6)
-    # «¿Cuál pierde más presión?»: el dron sube; los tres manómetros «?» y el sello del examen
-    put("whoosh2", c["cual"] - 0.3, -28, 0.8)
+    put(_pitch(agua, 1.0), c["agua"] - 0.2, -29, 1.4, 0.05, 0.5)
+    put("whoosh", c["cual"] - 0.35, -28, 0.7)
     for i in range(3):
         put(_pitch(toque, 1.0 + 0.12 * i), c["cual"] + 0.08 + 0.09 * i, -28, 0.3)
     put(_pitch(nota, 1.3), c["presion"] - 0.03, -30, 0.9)
-    # a ras de suelo: 25 · 45 · 70 (una nota por línea) y las cuatro tarjetas
-    put("whoosh", c["v25"] - 0.3, -28, 0.6)
-    for k, key in enumerate(("v25", "v45", "v70")):
+    # las tres líneas y sus tarjetas (una nota por opción)
+    put("whoosh2", c["v25"] - 0.35, -29, 0.8)
+    for k, key in enumerate(("v25", "v45", "v70", "igual")):
         put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
-        put(_pitch(bub, 1.0 + 0.1 * k), c[key] + 0.02, -28, 0.2)
-    put("whoosh", c["tres2"] - 0.5, -29, 0.6)
-    for i in range(4):
-        put(_pitch(bub, 1 + 0.06 * i), c["tres2"] - 0.35 + 0.08 * i, -27, 0.25)
-    # dentro de la manguera: el agua corriendo (más aguda cuando se estrecha), el roce y una columna por metro
-    put("whoosh2", T["lab0"] - 0.2, -25, 0.8)
-    put(_pitch(bub, 0.6), T["lab0"] + 0.05, -26, 0.5)
-    put(agua, T["lab0"], -29, c["estrechas"] - T["lab0"] + 0.1, 0.15, 0.2, track=amb)
-    put(_pitch(agua, 1.6), c["estrechas"] + 0.05, -29, T["back"] - c["estrechas"], 0.6, 0.15, track=amb)
-    put("vapor", c["rozando"] - 0.1, -33, c["perdida"] - c["rozando"], 0.3, 0.4, track=amb)
-    for k in range(12):
-        put(_pitch(_onset(_load("tic")), 1.0 + 0.04 * k), c["metro"] - 0.15 + k * 1.6 / 12, -31 + 0.2 * k, 0.15)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    # cuenta 1 → 5 con bocina; «¡Tiempo!»: la D roja y tachada
+    put(toque, c["comenta"] - 0.05, -28, 0.35)
+    put("tension", T["count0"] - 0.2, -27, c["tiempo"] - T["count0"] + 0.4, 0.3, 0.15)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    put("fallo", c["tiempo"] + 0.12, -26, 0.5)
+    put("whoosh2", c["tiempo"] + 0.2, -29, 0.8)
+    put(toque, c["trampa"] - 0.05, -28, 0.35)
+    # los «rayos X»: aparecen, el agua corre (más aguda cuanto más rápido), el roce chisporrotea; «×7,8»
+    put("destello", c["dentro"] - 0.15, -26, 0.7)
+    put(_pitch(bub, 0.6), c["dentro"], -26, 0.5)
+    put(agua, c["dentro"], -30, c["escribe"] - c["dentro"], 0.3, 0.4, track=amb)
+    put(_pitch(agua, 1.7), c["deprisa"] - 0.1, -31, c["escribe"] - c["deprisa"], 0.4, 0.4, track=amb)
+    put("vapor", c["roza"] - 0.1, -33, c["perdida"] - c["roza"] + 0.4, 0.3, 0.4, track=amb)
     put("golpe", c["perdida"] - 0.06, -24, 0.8, 0.005, 0.35)
     put("destello", c["perdida"] - 0.05, -28, 0.6)
-    for k, key in enumerate(("larga", "pasa", "ancha")):
-        put(_pitch(toque, 1.0 + 0.12 * k), c[key] - 0.03, -28, 0.35)
-    put("whoosh", c["larga"] - 0.1, -31, 0.8)
-    put("tension", c["estrechas"] - 0.1, -29, c["ocho"] - c["estrechas"] + 0.4, 0.3, 0.2)
-    put(_pitch(_onset(_load("whoosh2")), 0.8), c["estrechas"] - 0.05, -27, 1.0)
-    put("whoosh", c["v25b"] - 0.4, -28, 0.6)
+    put("tension", c["estrecha"] - 0.1, -29, c["ocho"] - c["estrecha"] + 0.4, 0.3, 0.2)
     put("golpe", c["ocho"] - 0.05, -22, 0.9, 0.005, 0.4)
     put("destello", c["ocho"] - 0.08, -26, 0.7)
-    # vuelta a la plaza: «¿cuál pierde más?», las letras quietas y «comenta tu letra»
-    put("whoosh2", T["back"] - 0.2, -27, 0.8)
-    put("whoosh", c["cual2"] - 0.35, -29, 0.6)
+    put("vapor", c["corre"] - 0.1, -27, c["escribe"] - c["corre"], 0.2, 0.3)
+    put(_pitch(_onset(_load("rele")), 1.3), c["roza2"] - 0.05, -27, 0.3)
+    # «Escribe en comentarios…»: el dron sube y vuelven las letras
+    put("whoosh2", c["escribe"] - 0.3, -27, 0.8)
     for i in range(4):
-        put(_pitch(bub, 1 + 0.06 * i), c["cual2"] - 0.2 + 0.07 * i, -27, 0.25)
-    put(toque, c["comenta"] - 0.05, -27, 0.35)
-    put(_pitch(nota, 1.5), c["comenta"] + 0.5, -30, 0.9)
-    for k in range(2):
-        put("tic", c["comenta"] + 1.0 + k * 0.7, -30, 0.25)
+        put(_pitch(bub, 1 + 0.06 * i), c["escribe"] - 0.2 + 0.07 * i, -27, 0.25)
+    put(_pitch(nota, 1.5), c["correcta"] - 0.03, -29, 0.9)
     # venta
     for k in ("compartir", "marca", "prueba"):
         put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)

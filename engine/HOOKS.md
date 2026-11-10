@@ -15,6 +15,7 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 6. **Re-hook a mitad de vídeo** (≈ 15–30 s): una segunda plantilla corta para reenganchar (16 y 35 funcionan muy bien).
 7. No repetir la misma fórmula en vídeos seguidos (ver «Hooks ya usados»).
 8. **Tensión antes que curiosidad**: un hook que enfrenta a dos bandos o rompe una creencia retiene más que uno que solo
+9. **Bomberados (Javi, 10 nov): el gancho tiene que ALARMAR** — una situación de peligro que se ve en el primer segundo (el fuego que avanza, el chorro que se desploma, el compañero sin presión, el aire que se acaba), dicha con urgencia. Nada de presentar el tema («Tres mangueras, la misma bomba…» fue el gancho de la v1 rechazada).
    despierta curiosidad (lección del vídeo de la carga sin cable).
 
 ## Las 45 plantillas

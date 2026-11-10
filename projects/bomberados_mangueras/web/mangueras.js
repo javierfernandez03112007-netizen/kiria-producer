@@ -1,9 +1,8 @@
 // «¿Qué manguera pierde más presión?» — pérdida de carga en mangueras de 25, 45 y 70 mm (Bomberados, Pregunta del día
-// cinematográfica; pregunta de Adrián, examen del Ayto. de Pontevedra 2022). Motor de projects/bomberados_presion/web/presion.js
-// (luz, resplandor, desenfoque de movimiento, llamas, partículas, autobomba, manguera con agua que corre, bombero, manómetros)
-// y mundo propio: plaza mojada de noche, la autobomba y tres líneas (25, 45 y 70 mm) desde el mismo colector hasta tres
-// lanzas frente a un edificio en llamas; y el «laboratorio» (rayos X): la manguera por dentro, el agua que corre y roza
-// contra la pared, la barra de presión que baja metro a metro y los dos tubos (70 y 25 mm) con la misma agua.
+// cinematográfica; pregunta de Adrián, examen del Ayto. de Pontevedra 2022). VERSIÓN 2 (pedida por Javi el 10 nov): gancho que
+// alarma (el fuego avanza y el chorro de la lanza se desploma), cuenta de 5 s para responder, «¡Tiempo!» con la trampa y un DRON
+// que no para (una sola trayectoria suave, sin cortes) con planos abiertos donde se ven las tres mangueras enteras.
+// Motor de projects/bomberados_presion/web/presion.js; el «rayos X» de cada manguera flota encima de su línea, en la plaza.
 import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -535,104 +534,8 @@ function makeFirefighter() {
 
 
 
-// ================================================================== MUNDO: plaza de noche, autobomba y tres líneas
-const world = new THREE.Group(); scene.add(world);
-const LABX = 400;                                        // el «laboratorio» (rayos X), lejos de la plaza
-const lab = new THREE.Group(); lab.position.set(LABX, 0, 0); scene.add(lab);
-scene.background.set(0x04060b); scene.fog.color.set(0x04060b); scene.fog.density = 0.011;
-scene.environmentIntensity = 0.22;
-const LANES = [-2.6, 0, 2.6];                            // A · 25 mm (izquierda), B · 45 mm, C · 70 mm (derecha)
-const DMM = [25, 45, 70];
-const HRAD = DMM.map(d => d / 1000);                     // radio ×2 para que se vea (25 mm → 0,025 m); las proporciones, reales
-const OUTX = [-0.75, 0, 0.75];
-const ZFF = -25.9;                                       // bomberos con las lanzas
-const GY = 2.75, GZ = -25.3;                             // manómetros «?» encima de cada lanza
-let truck, beacons = [], hoses = [], gauges = [], needles = [], ffs = [], fire1, fire2, fireL1, fireL2;
-const COLS = ['#FF7A1A', '#2DD4BF', '#F0457A', '#8B7CF6'];
 
-// manómetros (de presion.js): esfera 0–16 bar, aguja que «duda»
-const PMAX = 16, G_D = 1.15;
-const angP = v => Math.PI * 0.75 + Math.PI * 1.5 * v / PMAX;
-function gaugeFaceP() {
-  return canvasTex(1024, 1024, (x) => {
-    const c = 512, R = 488;
-    const bg = x.createRadialGradient(c, c - 120, 40, c, c, R); bg.addColorStop(0, '#fbf8f1'); bg.addColorStop(1, '#d6d0c3');
-    x.beginPath(); x.arc(c, c, R, 0, 7); x.fillStyle = bg; x.fill();
-    for (let v = 0; v <= PMAX; v += 0.5) {
-      const a = angP(v), big = v % 2 === 0, mid = v % 1 === 0, r1 = R - 30, r2 = R - (big ? 120 : mid ? 84 : 62);
-      x.beginPath(); x.moveTo(c + Math.cos(a) * r1, c + Math.sin(a) * r1); x.lineTo(c + Math.cos(a) * r2, c + Math.sin(a) * r2);
-      x.lineWidth = big ? 13 : mid ? 7 : 4; x.strokeStyle = '#121418'; x.stroke();
-    }
-    x.fillStyle = '#121418'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '400 112px Bebas';
-    for (let v = 0; v <= PMAX; v += 2) { const a = angP(v); x.fillText(String(v), c + Math.cos(a) * (R - 192), c + Math.sin(a) * (R - 192)); }
-    x.font = '400 120px Bebas'; x.fillText('BAR', c, c + 210);
-  }, { aniso: 4 });
-}
-function makeGaugeP(pos, sc = 1) {
-  const G = new THREE.Group(); G.position.copy(pos);
-  const face = new THREE.Mesh(new THREE.CircleGeometry(G_D / 2, 64), new THREE.MeshBasicMaterial({ map: gaugeFaceP(), transparent: true, fog: false }));
-  face.material.color.setScalar(1.05); face.renderOrder = 21; G.add(face);
-  const bez = new THREE.Mesh(new THREE.TorusGeometry(G_D / 2 + 0.02, 0.045, 16, 72), M.chrome); bez.renderOrder = 21; G.add(bez);
-  const backp = new THREE.Mesh(new THREE.CylinderGeometry(G_D / 2 + 0.04, G_D / 2 + 0.04, 0.1, 64), M.black); backp.rotation.x = Math.PI / 2; backp.position.z = -0.06; G.add(backp);
-  const ng = new THREE.PlaneGeometry(G_D * 0.46, G_D * 0.035); ng.translate(G_D * 0.17, 0, 0);
-  const n = new THREE.Mesh(ng, new THREE.MeshBasicMaterial({ color: 0xff3a1a, fog: false, side: THREE.DoubleSide })); n.material.color.setRGB(3.4, 0.55, 0.18);
-  n.position.z = 0.012; n.renderOrder = 23; G.add(n);
-  const cap = new THREE.Mesh(new THREE.CircleGeometry(G_D * 0.045, 24), new THREE.MeshBasicMaterial({ color: 0x15171b, fog: false })); cap.position.z = 0.016; cap.renderOrder = 24; G.add(cap);
-  G.scale.setScalar(0.001); G.userData.sc = sc; world.add(G); return [G, n];
-}
-
-function buildWorld() {
-  // suelo mojado (brilla con las farolas y los rotativos)
-  const asph = canvasTex(512, 512, (x) => { x.fillStyle = '#141518'; x.fillRect(0, 0, 512, 512); for (let i = 0; i < 12000; i++) { const v = 16 + rnd(i) * 26; x.fillStyle = `rgba(${v},${v},${v + 3},0.6)`; x.fillRect(rnd(i * 3.1) * 512, rnd(i * 5.3) * 512, 2, 2); } }, { aniso: 4 });
-  asph.wrapS = asph.wrapT = THREE.RepeatWrapping; asph.repeat.set(40, 40);
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(220, 220), new THREE.MeshStandardMaterial({ map: asph, color: 0x8a8a8a, roughness: 0.3, metalness: 0.25 }));
-  ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; world.add(ground);
-  // charcos (más brillo)
-  world.add(new THREE.HemisphereLight(0x6f8ab8, 0x15100c, 0.5));
-  const moon = new THREE.DirectionalLight(0x9db8ff, 0.42); moon.position.set(25, 60, 30); moon.castShadow = true; moon.shadow.mapSize.set(2048, 2048);
-  Object.assign(moon.shadow.camera, { left: -30, right: 30, top: 30, bottom: -40, near: 1, far: 160 }); moon.shadow.bias = -0.0005; world.add(moon);
-  for (const [x, z] of [[-7, -8], [7, -16], [-7, 6], [7, 8], [-7, -22]]) {
-    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 6, 12), M.steel); pole.position.set(x, 3, z); world.add(pole);
-    const arm = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.07, 0.07), M.steel); arm.position.set(x - Math.sign(x) * 0.5, 5.95, z); world.add(arm);
-    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.13, 16, 12), new THREE.MeshBasicMaterial({ color: 0xffc98a })); lamp.material.color.setScalar(2.2); lamp.position.set(x - Math.sign(x) * 1.0, 5.85, z); world.add(lamp);
-    const l = new THREE.PointLight(0xffb070, 42, 0, 2); l.position.set(x - Math.sign(x) * 1.0, 5.6, z); world.add(l);
-  }
-  // el edificio en llamas al fondo (fachada en z = −30) y los de alrededor de la plaza
-  const bF = building(20, 15, 10, 10, 5, 7, (r, c) => (r === 0 && (c === 3 || c === 4)) || (r === 1 && c === 6)); bF.position.set(0, 0, -35); world.add(bF);
-  for (const [x, h, z, w] of [[-17, 18, -24, 12], [17, 22, -22, 12], [-17, 14, -6, 12], [17, 16, -4, 12], [-17, 20, 12, 12], [17, 12, 14, 12], [0, 24, 26, 26], [-30, 30, -40, 14], [28, 26, -44, 14]]) {
-    const b = building(w, h, 10, 6, Math.round(h / 3), 11 + x + z, null); b.position.set(x, 0, z);
-    b.rotation.y = x < -10 ? Math.PI / 2 : x > 10 ? -Math.PI / 2 : z > 0 ? Math.PI : 0; world.add(b);
-  }
-  fire1 = fireSet(world, V(-3.5, 0.25, -29.85), tongues(7, 31, (i, r) => [-3.5 - 1.3 + i * 0.42 + (r(1) - 0.5) * 0.15, 0.25, -29.75, 0.7 + 0.4 * r(3), 1.9 + 1.4 * r(4)]),
-    { seed: 31, extent: [1.3, 0.1, 0.3], smokeN: 34, smokeSize: 1.4, smokeY: 3.0, emberN: 50, bright: 1.35 });
-  fire2 = fireSet(world, V(4.0, 3.3, -29.85), tongues(5, 41, (i, r) => [4.0 - 0.8 + i * 0.4 + (r(1) - 0.5) * 0.12, 3.3, -29.75, 0.55 + 0.3 * r(3), 1.4 + 1.0 * r(4)]),
-    { seed: 41, extent: [0.8, 0.1, 0.25], smokeN: 26, smokeSize: 1.2, smokeY: 2.6, emberN: 34, bright: 1.3 });
-  fireL1 = new THREE.PointLight(0xff6a1a, 70, 0, 2); fireL1.position.set(-3.5, 1.8, -28.2); world.add(fireL1);
-  fireL2 = new THREE.PointLight(0xff6a1a, 45, 0, 2); fireL2.position.set(4.0, 4.6, -28.4); world.add(fireL2);
-  // la autobomba: de culo a la plaza; el cuadro de la bomba y el colector con las tres salidas, en z ≈ 0
-  truck = makeTruck(); truck.position.set(0, 0, 4.0); truck.rotation.y = -Math.PI / 2; world.add(truck); truck.updateMatrixWorld(true);
-  beacons = truck.userData.lbar;
-  const col = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.14, 0.16), M.steel); col.position.set(0, 0.9, 0.05); world.add(col);
-  OUTX.forEach((x, i) => {
-    const r = new THREE.Mesh(new THREE.CylinderGeometry(HRAD[i] * 1.6 + 0.02, HRAD[i] * 1.6 + 0.02, 0.22, 24), M.chrome); r.rotation.x = Math.PI / 2; r.position.set(x, 0.9, -0.08); world.add(r);
-    const v = new THREE.Mesh(new THREE.TorusGeometry(0.08, 0.018, 8, 20), new THREE.MeshStandardMaterial({ color: 0xd61f26, roughness: 0.4 })); v.position.set(x, 1.08, 0.0); world.add(v);   // volante de la válvula
-  });
-  // las tres líneas: del colector al suelo, por la plaza (con alguna curva) y hasta la lanza de cada bombero
-  LANES.forEach((x, i) => {
-    const r = HRAD[i], ox = OUTX[i], w = k => (rnd(i * 17.3 + k * 3.1) - 0.5) * 0.5;
-    const pts = [V(ox, 0.9, -0.2), V(ox, 0.55, -0.6), V(mx(ox, x, 0.55), r + 0.01, -1.6), V(x, r, -3.4), V(x + w(1), r, -8), V(x + w(2), r, -12.5), V(x + w(3), r, -17),
-      V(x + w(4) * 0.5, r, -21.5), V(x + 0.38, r, -24.4), V(x + 0.4, 0.45, -25.4), V(x + 0.25, 0.95, -25.95), V(x + 0.06, 1.0, -26.2)];
-    const h = hoseMesh(pts, r, i === 0 ? 0xb3232a : 0xe9e3d3);
-    world.add(h.mesh, h.flow); h.grow(1); hoses.push(h);
-    // el bombero con la lanza (esperando: la lanza aún cerrada)
-    const ff = makeFirefighter(); ff.position.set(x, 0, ZFF); world.add(ff); ffs.push(ff);
-    const lance = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.07, 0.7, 18), M.chrome);
-    lance.position.set(x + 0.03, 1.02, -26.55); lance.quaternion.setFromUnitVectors(V(0, 1, 0), V(0, 0.08, -1).normalize()); world.add(lance);
-    const [gg, nn] = makeGaugeP(V(x, GY, GZ), 1.15); gauges.push(gg); needles.push(nn);
-  });
-}
-
-// ================================================================== LABORATORIO: la manguera por dentro (rayos X)
+// ================================================================== «RAYOS X»: la manguera por dentro (tubo transparente que flota sobre cada línea)
 const LMAX = 26;                                          // largo máximo del tubo (m); las partículas viven en [0, LMAX)
 const SHELL_V = `uniform float uL, uR; varying vec3 vN; varying vec3 vV; varying float vX;
 void main(){ vec3 p = vec3(position.x * uL, position.y * uR, position.z * uR); vX = p.x;
@@ -697,153 +600,249 @@ function makeLabTube(seed) {
   // tapas de luz en los extremos (entrada y salida del agua)
   const capM = new THREE.MeshBasicMaterial({ color: 0x3fb6ff, transparent: true, opacity: 0.0, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
   const cap = new THREE.Mesh(new THREE.RingGeometry(0.96, 1.0, 64), capM); cap.rotation.y = Math.PI / 2; G.add(cap);
-  lab.add(G);
+  world.add(G);
   return { G, su, wu, ku, cap };
 }
-// la barra de presión: una columna por metro bajo el tubo principal (baja metro a metro)
-let tubeA, tubeW, bars, title, labGrid;
-const NB = LMAX, _o = new THREE.Object3D(), _c = new THREE.Color();
-function buildLab() {
-  tubeA = makeLabTube(3); tubeW = makeLabTube(9); tubeW.G.visible = false;
-  const bg = new RoundedBoxGeometry(0.7, 1, 0.42, 2, 0.05); bg.translate(0, 0.5, 0);
-  bars = new THREE.InstancedMesh(bg, new THREE.MeshBasicMaterial({ color: 0xffffff }), NB);
-  bars.frustumCulled = false; bars.renderOrder = 7; lab.add(bars);
-  for (let i = 0; i < NB; i++) bars.setColorAt(i, _c.setRGB(0, 0, 0));
-  title = titleMesh([['PÉRDIDA DE CARGA', 200, 'Bebas', 'fire']], 3.6, { h: 300 }); lab.add(title);
-  labGrid = new THREE.GridHelper(120, 120, 0x123049, 0x0b1a28); labGrid.position.y = -3.35; lab.add(labGrid);
-  const lp = new THREE.PointLight(0x3fb6ff, 30, 0, 2); lp.position.set(0, 4, 6); lab.add(lp);
+// ================================================================== MUNDO: plaza de noche, autobomba y tres líneas (versión 2)
+const world = new THREE.Group(); scene.add(world);
+scene.background.set(0x04060b); scene.fog.color.set(0x04060b); scene.fog.density = 0.009;
+scene.environmentIntensity = 0.22;
+const LANES = [-1.8, 0, 1.8];                            // A · 25 mm (izquierda), B · 45 mm, C · 70 mm (derecha)
+const DMM = [25, 45, 70];
+const HRAD = DMM.map(d => d / 1000);                     // radio ×2 para que se vea (25 mm → 0,025 m); las proporciones, reales
+const OUTX = [-0.6, 0, 0.6];
+const ZFF = -25.9;                                       // bomberos con las lanzas
+const GY = 2.75, GZ = -25.3;                             // manómetros «?» encima de cada lanza
+const HY = 2.7, HZ0 = -6.5, HL = 9.5;                    // «rayos X» flotando sobre cada línea (de z = −6,5 a −16)
+const HR = DMM.map(d => d / 1000 * 9);                   // radio del «rayos X» (×9 del real; proporciones reales)
+const COLS = ['#FF7A1A', '#2DD4BF', '#F0457A', '#8B7CF6'];
+let truck, beacons = [], hoses = [], gauges = [], needles = [], ffs = [], fire1, fire2, fireL1, fireL2, jetA, xr = [];
+
+// manómetros (de presion.js): esfera 0–16 bar
+const PMAX = 16, G_D = 1.15;
+const angP = v => Math.PI * 0.75 + Math.PI * 1.5 * v / PMAX;
+function gaugeFaceP() {
+  return canvasTex(1024, 1024, (x) => {
+    const c = 512, R = 488;
+    const bg = x.createRadialGradient(c, c - 120, 40, c, c, R); bg.addColorStop(0, '#fbf8f1'); bg.addColorStop(1, '#d6d0c3');
+    x.beginPath(); x.arc(c, c, R, 0, 7); x.fillStyle = bg; x.fill();
+    for (let v = 0; v <= PMAX; v += 0.5) {
+      const a = angP(v), big = v % 2 === 0, mid = v % 1 === 0, r1 = R - 30, r2 = R - (big ? 120 : mid ? 84 : 62);
+      x.beginPath(); x.moveTo(c + Math.cos(a) * r1, c + Math.sin(a) * r1); x.lineTo(c + Math.cos(a) * r2, c + Math.sin(a) * r2);
+      x.lineWidth = big ? 13 : mid ? 7 : 4; x.strokeStyle = '#121418'; x.stroke();
+    }
+    x.fillStyle = '#121418'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.font = '400 112px Bebas';
+    for (let v = 0; v <= PMAX; v += 2) { const a = angP(v); x.fillText(String(v), c + Math.cos(a) * (R - 192), c + Math.sin(a) * (R - 192)); }
+    x.font = '400 120px Bebas'; x.fillText('BAR', c, c + 210);
+  }, { aniso: 4 });
+}
+function makeGaugeP(pos, sc = 1) {
+  const G = new THREE.Group(); G.position.copy(pos);
+  const face = new THREE.Mesh(new THREE.CircleGeometry(G_D / 2, 64), new THREE.MeshBasicMaterial({ map: gaugeFaceP(), transparent: true, fog: false }));
+  face.material.color.setScalar(1.05); face.renderOrder = 21; G.add(face);
+  const bez = new THREE.Mesh(new THREE.TorusGeometry(G_D / 2 + 0.02, 0.045, 16, 72), M.chrome); bez.renderOrder = 21; G.add(bez);
+  const backp = new THREE.Mesh(new THREE.CylinderGeometry(G_D / 2 + 0.04, G_D / 2 + 0.04, 0.1, 64), M.black); backp.rotation.x = Math.PI / 2; backp.position.z = -0.06; G.add(backp);
+  const ng = new THREE.PlaneGeometry(G_D * 0.46, G_D * 0.035); ng.translate(G_D * 0.17, 0, 0);
+  const n = new THREE.Mesh(ng, new THREE.MeshBasicMaterial({ color: 0xff3a1a, fog: false, side: THREE.DoubleSide })); n.material.color.setRGB(3.4, 0.55, 0.18);
+  n.position.z = 0.012; n.renderOrder = 23; G.add(n);
+  const cap = new THREE.Mesh(new THREE.CircleGeometry(G_D * 0.045, 24), new THREE.MeshBasicMaterial({ color: 0x15171b, fog: false })); cap.position.z = 0.016; cap.renderOrder = 24; G.add(cap);
+  G.scale.setScalar(0.001); G.userData.sc = sc; world.add(G); return [G, n];
 }
 
-// ------------------------------------------------------------------ tiempos y planos (cortes secos entre planos)
-let T = {}, SH = [];
-function shot(t0, a, b, o = {}) { SH.push({ t0, a, b, ...o }); }
+function buildWorld() {
+  const asph = canvasTex(512, 512, (x) => { x.fillStyle = '#141518'; x.fillRect(0, 0, 512, 512); for (let i = 0; i < 12000; i++) { const v = 16 + rnd(i) * 26; x.fillStyle = `rgba(${v},${v},${v + 3},0.6)`; x.fillRect(rnd(i * 3.1) * 512, rnd(i * 5.3) * 512, 2, 2); } }, { aniso: 4 });
+  asph.wrapS = asph.wrapT = THREE.RepeatWrapping; asph.repeat.set(40, 40);
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(220, 220), new THREE.MeshStandardMaterial({ map: asph, color: 0x8a8a8a, roughness: 0.3, metalness: 0.25 }));
+  ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; world.add(ground);
+  world.add(new THREE.HemisphereLight(0x6f8ab8, 0x15100c, 0.55));
+  const moon = new THREE.DirectionalLight(0x9db8ff, 0.42); moon.position.set(25, 60, 30); moon.castShadow = true; moon.shadow.mapSize.set(2048, 2048);
+  Object.assign(moon.shadow.camera, { left: -30, right: 30, top: 30, bottom: -40, near: 1, far: 160 }); moon.shadow.bias = -0.0005; world.add(moon);
+  for (const [x, z] of [[-6.5, -8], [6.5, -16], [-6.5, 6], [6.5, 8], [-6.5, -22]]) {
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 6, 12), M.steel); pole.position.set(x, 3, z); world.add(pole);
+    const arm = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.07, 0.07), M.steel); arm.position.set(x - Math.sign(x) * 0.5, 5.95, z); world.add(arm);
+    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.13, 16, 12), new THREE.MeshBasicMaterial({ color: 0xffc98a })); lamp.material.color.setScalar(2.2); lamp.position.set(x - Math.sign(x) * 1.0, 5.85, z); world.add(lamp);
+    const l = new THREE.PointLight(0xffb070, 42, 0, 2); l.position.set(x - Math.sign(x) * 1.0, 5.6, z); world.add(l);
+  }
+  // el edificio en llamas al fondo (fachada en z = −30) y los de alrededor de la plaza
+  const bF = building(20, 15, 10, 10, 5, 7, (r, c) => (r === 0 && (c === 3 || c === 4)) || (r === 1 && c === 6)); bF.position.set(0, 0, -35); world.add(bF);
+  for (const [x, h, z, w] of [[-16, 18, -24, 12], [16, 22, -22, 12], [-16, 14, -6, 12], [16, 16, -4, 12], [-16, 20, 12, 12], [16, 12, 14, 12], [0, 24, 28, 26], [-30, 30, -40, 14], [28, 26, -44, 14]]) {
+    const b = building(w, h, 10, 6, Math.round(h / 3), 11 + x + z, null); b.position.set(x, 0, z);
+    b.rotation.y = x < -10 ? Math.PI / 2 : x > 10 ? -Math.PI / 2 : z > 0 ? Math.PI : 0; world.add(b);
+  }
+  // fuego: planta baja delante del bombero A (el gancho) y una ventana del primer piso
+  fire1 = fireSet(world, V(-2.6, 0.25, -29.85), tongues(8, 31, (i, r) => [-2.6 - 1.5 + i * 0.42 + (r(1) - 0.5) * 0.15, 0.25, -29.75, 0.7 + 0.4 * r(3), 2.0 + 1.5 * r(4)]),
+    { seed: 31, extent: [1.5, 0.1, 0.3], smokeN: 36, smokeSize: 1.4, smokeY: 3.0, emberN: 60, bright: 1.35 });
+  fire2 = fireSet(world, V(3.6, 3.3, -29.85), tongues(5, 41, (i, r) => [3.6 - 0.8 + i * 0.4 + (r(1) - 0.5) * 0.12, 3.3, -29.75, 0.55 + 0.3 * r(3), 1.4 + 1.0 * r(4)]),
+    { seed: 41, extent: [0.8, 0.1, 0.25], smokeN: 26, smokeSize: 1.2, smokeY: 2.6, emberN: 34, bright: 1.3 });
+  fireL1 = new THREE.PointLight(0xff6a1a, 70, 0, 2); fireL1.position.set(-2.6, 1.8, -28.2); world.add(fireL1);
+  fireL2 = new THREE.PointLight(0xff6a1a, 45, 0, 2); fireL2.position.set(3.6, 4.6, -28.4); world.add(fireL2);
+  // la autobomba: de culo a la plaza; el colector con las tres salidas en z ≈ 0
+  truck = makeTruck(); truck.position.set(0, 0, 4.0); truck.rotation.y = -Math.PI / 2; world.add(truck); truck.updateMatrixWorld(true);
+  beacons = truck.userData.lbar;
+  const col = new THREE.Mesh(new THREE.BoxGeometry(1.7, 0.14, 0.16), M.steel); col.position.set(0, 0.9, 0.05); world.add(col);
+  OUTX.forEach((x, i) => {
+    const r = new THREE.Mesh(new THREE.CylinderGeometry(HRAD[i] * 1.6 + 0.02, HRAD[i] * 1.6 + 0.02, 0.22, 24), M.chrome); r.rotation.x = Math.PI / 2; r.position.set(x, 0.9, -0.08); world.add(r);
+    const v = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.016, 8, 20), new THREE.MeshStandardMaterial({ color: 0xd61f26, roughness: 0.4 })); v.position.set(x, 1.06, 0.0); world.add(v);
+  });
+  // las tres líneas, rectas y enteras: del colector a la lanza de cada bombero
+  LANES.forEach((x, i) => {
+    const r = HRAD[i], ox = OUTX[i], w = k => (rnd(i * 17.3 + k * 3.1) - 0.5) * 0.22;
+    const pts = [V(ox, 0.9, -0.2), V(ox, 0.55, -0.6), V(mx(ox, x, 0.6), r + 0.01, -1.8), V(x, r, -3.6), V(x + w(1), r, -10), V(x + w(2), r, -17),
+      V(x, r, -22.6), V(x + 0.3, r, -24.6), V(x + 0.35, 0.45, -25.4), V(x + 0.22, 0.95, -25.95), V(x + 0.06, 1.0, -26.2)];
+    const h = hoseMesh(pts, r, i === 0 ? 0xb3232a : 0xe9e3d3);
+    world.add(h.mesh, h.flow); h.grow(1); hoses.push(h);
+    const ff = makeFirefighter(); ff.position.set(x, 0, ZFF); world.add(ff); ffs.push(ff);
+    const lance = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.07, 0.7, 18), M.chrome);
+    lance.position.set(x + 0.03, 1.02, -26.55); lance.quaternion.setFromUnitVectors(V(0, 1, 0), V(0, 0.08, -1).normalize()); world.add(lance);
+    const [gg, nn] = makeGaugeP(V(x, GY, GZ), 1.0); gauges.push(gg); needles.push(nn);
+    // el «rayos X» de esta línea, flotando encima (aparece con «Dentro…»)
+    const tb = makeLabTube(3 + i * 7); tb.G.rotation.y = Math.PI / 2; tb.G.position.set(x, HY, HZ0); tb.su.uL.value = HL; tb.su.uR.value = HR[i];
+    tb.G.visible = false; xr.push(tb);
+  });
+  // el chorro de la lanza de A (gancho): fuerte y se desploma
+  jetA = waterJet(520, { v0: 9, seed: 5, life: 1.6, size: 0.13, grow: 0.4, spreadA: 0.05, spreadB: 0.08, grav: 4.9, opacity: 0.8 });
+  jetA.at(LANES[0] + 0.0, 1.06, -26.95); jetA.u.uDir.value.set(0, 0.22, -1).normalize(); world.add(jetA.mesh);
+  const arcM = makeArc(); arcU.uO.value.set(LANES[0] + 0.02, 1.08, -26.92); world.add(arcM); jetA.arc = arcM;
+}
+
+
+// el chorro de la lanza como un ARCO de agua (tubo que sigue la parábola): se acorta cuando cae la presión
+const ARC_V = `uniform vec3 uO, uDir; uniform float uV, uTh, uTf, uR0, uR1; varying float vU; varying vec3 vN; varying vec3 vV;
+void main(){
+  float u = position.x; float tt = u * uTf;
+  float vh = uV * cos(uTh), vv = uV * sin(uTh);
+  vec3 up = vec3(0.0, 1.0, 0.0), side = normalize(cross(uDir, up));
+  vec3 c = uO + uDir * (vh * tt) + up * (vv * tt - 4.9 * tt * tt);
+  vec3 tg = normalize(uDir * vh + up * (vv - 9.8 * tt)); vec3 nrm = normalize(cross(side, tg));
+  float r = mix(uR0, uR1, pow(u, 0.8));
+  vec3 p = c + side * position.z * r + nrm * position.y * r;
+  vec4 mv = modelViewMatrix * vec4(p, 1.0); vV = -mv.xyz; vN = normalize(normalMatrix * (side * position.z + nrm * position.y)); vU = u;
+  gl_Position = projectionMatrix * mv;
+}`;
+const ARC_F = `uniform float uT, uI; varying float vU; varying vec3 vN; varying vec3 vV;
+void main(){
+  float f = pow(1.0 - abs(dot(normalize(vN), normalize(vV))), 1.6);
+  float st = 0.65 + 0.35 * sin(vU * 46.0 - uT * 38.0) * sin(vU * 17.0 - uT * 21.0);
+  float a = (0.35 + 0.65 * f) * st * smoothstep(1.0, 0.82, vU) * smoothstep(0.0, 0.03, vU) * uI;
+  if (a < 0.01) discard;
+  gl_FragColor = vec4(vec3(0.75, 0.9, 1.15) * a * 1.25, a);
+}`;
+let arcU;
+function makeArc() {
+  const geo = new THREE.CylinderGeometry(1, 1, 1, 14, 60, true); geo.rotateZ(-Math.PI / 2); geo.translate(0.5, 0, 0);
+  arcU = { uO: { value: V(0, 0, 0) }, uDir: { value: V(0, 0, -1) }, uV: { value: 14 }, uTh: { value: 0.2 }, uTf: { value: 1 }, uR0: { value: 0.03 }, uR1: { value: 0.22 }, uT: { value: 0 }, uI: { value: 1 } };
+  const m = new THREE.Mesh(geo, new THREE.ShaderMaterial({ uniforms: arcU, vertexShader: ARC_V, fragmentShader: ARC_F, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor }));
+  m.frustumCulled = false; m.renderOrder = 15; return m;
+}
+
+// ------------------------------------------------------------------ tiempos y cámara: un dron que no para (sin cortes)
+let T = {}, KEYS = null;
 function setupTimes() {
   T = { ...CUE, end: END };
   const L = window.LINES_;
-  T.l1e = L[1].end; T.l5e = L[5].end;
+  T.count0 = L[3].end + 0.05; T.count1 = T.count0 + 4.0;
   T.fin = T.compartir - 0.25;
-  T.lab0 = T.dentro - 0.18; T.side = T.metro - 0.35; T.back = T.entonces - 0.15;
-  SH = [];
-  // 1a · gancho: pegados al colector de la autobomba; las tres mangueras salen disparadas hacia la cámara
-  shot(0, [1.2, 1.0, -1.8, -0.1, 0.9, 0.4, 50], [3.2, 3.1, -7.4, -0.3, 0.6, -1.2, 44], { ease: 'out' });
-  // 1b · «¿Cuál pierde más presión?»: dron sobre las tres líneas hasta las lanzas (manómetros «?»)
-  shot(T.cual - 0.1, [4.5, 9.5, -10, 0.6, 1.6, -24.5, 40], [5.2, 6.4, -14.5, 0.6, 1.8, -25, 40]);
-  // 2 · a ras de suelo, detrás del colector: las tres líneas en abanico hacia el fuego (25 · 45 · 70)
-  shot(T.v25 - 0.12, [0.0, 1.05, -1.2, 0, 0.45, -24, 38], [0.0, 1.6, -5.0, 0, 0.6, -25, 38]);
-  // 3 · rayos X: el tubo por dentro, desde la entrada del agua
-  shot(T.lab0, [-2.2, 1.0, 3.6, 5, -0.1, -0.4, 46], [0.4, 0.9, 3.4, 7, -0.1, -0.4, 46], { lab: true });
-  // 3b · el tubo y las columnas de presión, una por metro
-  shot(T.side, [-3.2, 2.2, 6.8, 5.5, -1.5, -0.5, 44], [-3.6, 2.6, 7.6, 6.0, -1.6, -0.5, 44], { lab: true });
-  // 4 · «pérdida de carga»: se aleja mientras el tubo se alarga
-  shot(T.perdida - 0.15, [-3.6, 2.8, 7.8, 6.0, -1.2, -0.5, 44], [-5.4, 4.0, 11.0, 8.0, -1.4, -0.5, 44], { lab: true, lin: true });
-  // 5 · «si la estrechas»: el tubo se estrecha; luego, los dos tubos (70 arriba, 25 abajo)
-  shot(T.estrechas - 0.15, [-2.8, 1.3, 7.2, 5.0, 0.0, -0.3, 44], [-3.4, 1.0, 9.2, 5.5, 0.0, -0.3, 44], { lab: true });
-  // 6 · vuelta a la plaza: el dron sube y se aleja sobre las tres líneas; letras quietas
-  shot(T.back, [7.5, 5.2, -10, 0, 1.0, -24, 42], [9.5, 12, 1.0, 0, 0.6, -19, 42]);
-  // 7 · venta: más arriba
-  shot(T.fin, [9.5, 12, 1.0, 0, 0.6, -19, 42], [12, 26, 13, 0, 0, -14, 44], { lin: true });
+  KEYS = camKeys();
 }
-function curShot(t) { let i = 0; while (i < SH.length - 1 && t >= SH[i + 1].t0) i++; return i; }
-function shotEnd(i) { return i < SH.length - 1 ? SH[i + 1].t0 : T.end + 1; }
+function camKeys() {          // planos ABIERTOS: las tres líneas enteras (autobomba abajo, lanzas y fuego arriba)
+  const K = [
+    [0, [1.4, 2.4, -19.8, -2.4, 1.3, -30, 46]],                   // detrás del bombero A (3/4 a la derecha): el chorro entero hacia el fuego
+    [T.lanza, [0.6, 2.2, -21.4, -2.4, 1.2, -30, 44]],
+    [T.fuerza + 0.15, [-0.4, 4.4, -18.6, -2.0, 0.8, -29, 44]],
+    [T.tres, [1.4, 10.5, -6.5, 0, 0.4, -19, 42]],                 // sube y vuela hacia atrás
+    [T.bomba, [1.6, 12.5, 6.0, 0, 0.3, -7, 42]],                   // sobre la autobomba: colector y las tres líneas
+    [T.cual, [0.6, 21, 11.5, 0, 0, -14, 40]],                      // plano abierto: todo
+    [T.v25 - 0.15, [0.0, 13.5, -5.5, 0, 0, -13.5, 40]],            // por encima de las tres líneas
+    [T.igual + 0.2, [0.0, 12.5, -9.0, 0, 0, -17, 40]],
+    [T.count0, [6.0, 7.5, -16.5, 0, 3.6, -26, 42]],                // órbita sobre los tres bomberos y sus manómetros «?»
+    [T.count0 + 2.0, [0.0, 8.0, -15.0, 0, 3.6, -26, 42]],
+    [T.count1, [-6.0, 7.5, -16.5, 0, 3.6, -26, 42]],
+    [T.tiempo + 0.35, [-1.5, 17, 6.0, 0, 0, -14, 40]],             // ¡Tiempo!: arriba del todo
+    [T.dentro + 0.1, [1.8, 12.5, 2.5, 0, 2.2, -11.5, 42]],         // baja a los «rayos X»: los tres enteros, uno al lado del otro
+    [T.perdida, [1.2, 12.0, 2.0, 0, 2.2, -11.5, 42]],
+    [T.estrecha, [0.6, 11.8, 1.6, 0, 2.2, -11.5, 42]],
+    [T.ocho, [0.0, 11.5, 1.2, 0, 2.2, -11.5, 42]],
+    [T.corre, [-0.5, 10.8, 0.4, -0.5, 2.2, -11.5, 42]],             // se inclina hacia la de 25 (sin cortar las otras)
+    [T.roza2 + 0.4, [-0.7, 10.5, 0.0, -0.6, 2.2, -11.5, 42]],
+    [T.escribe, [0.8, 19.5, 9.5, 0, 0, -14, 40]],                  // muy arriba: todo
+    [T.fin, [0.6, 22.5, 12.0, 0, 0, -14, 40]],
+    [T.end, [0.4, 29, 18.0, 0, 0, -14, 42]],
+  ];
+  for (let i = 1; i < K.length; i++) K[i][0] = Math.max(K[i][0], K[i - 1][0] + 0.25);
+  return K;
+}
+function hermite(keys, t) {
+  const n = keys.length;
+  if (t <= keys[0][0]) return keys[0][1].slice();
+  if (t >= keys[n - 1][0]) return keys[n - 1][1].slice();
+  let i = 0; while (i < n - 2 && t > keys[i + 1][0]) i++;
+  const D = keys[0][1].length, out = [];
+  const slope = (j, c) => (keys[j + 1][1][c] - keys[j][1][c]) / (keys[j + 1][0] - keys[j][0]);
+  const tang = (j, c) => { if (j === 0 || j === n - 1) return 0; const a = slope(j - 1, c), b = slope(j, c); if (a * b <= 0) return 0; const m = (a + b) / 2, lim = 3 * Math.min(Math.abs(a), Math.abs(b)); return Math.sign(m) * Math.min(Math.abs(m), lim); };
+  const t0 = keys[i][0], h = keys[i + 1][0] - t0, u = (t - t0) / h, u2 = u * u, u3 = u2 * u;
+  for (let c = 0; c < D; c++) { const v0 = keys[i][1][c], v1 = keys[i + 1][1][c]; out.push((2 * u3 - 3 * u2 + 1) * v0 + (u3 - 2 * u2 + u) * h * tang(i, c) + (-2 * u3 + 3 * u2) * v1 + (u3 - u2) * h * tang(i + 1, c)); }
+  return out;
+}
 const _m = new THREE.Matrix4();
 function pose(p, tgt, fov) { _m.lookAt(p, tgt, V(0, 1, 0)); return { p: p.clone(), q: new THREE.Quaternion().setFromRotationMatrix(_m), fov, focus: p.distanceTo(tgt), ap: 0 }; }
 function camAt(t) {
-  const i = curShot(t), s = SH[i], t1 = shotEnd(i);
-  const k0 = cl((t - s.t0) / Math.max(0.1, t1 - s.t0));
-  const k = s.lin ? k0 : s.ease === 'io' ? e3(k0) * 0.75 + k0 * 0.25 : s.ease === 'out' ? 1 - Math.pow(1 - k0, 2.2) : mx(k0, 0.5 - 0.5 * Math.cos(Math.PI * k0), 0.6);
-  const v = s.a.map((x, j) => mx(x, s.b[j], k));
-  const off = s.lab ? LABX : 0;
-  const sh = Math.exp(-Math.pow((t - T.ocho - 0.05) / 0.12, 2)) * 0.06 * (s.lab ? 1 : 0);
-  return pose(V(v[0] + off + sh * Math.sin(t * 91), v[1] + sh * Math.cos(t * 77), v[2]), V(v[3] + off, v[4], v[5]), v[6]);
+  const v = hermite(KEYS, t);
+  const sh = Math.exp(-Math.pow((t - T.tiempo - 0.05) / 0.12, 2)) * 0.18 + Math.exp(-Math.pow((t - T.fuerza - 0.05) / 0.15, 2)) * 0.08;
+  return pose(V(v[0] + sh * Math.sin(t * 91), v[1] + sh * Math.cos(t * 77), v[2]), V(v[3], v[4], v[5]), v[6]);
 }
 
 // ------------------------------------------------------------------ estado de la escena en t
-function integ(t, t0, f) { let s = 0; const dt = 1 / 120; for (let u = t0; u < t; u += dt) s += f(Math.min(t, u + dt / 2)) * Math.min(dt, t - u); return s; }
-function labState(t) {
-  // radio del tubo principal (A), largo, caudal; en S5 se estrecha de «70» a «25»
-  const R0 = 0.9, R25 = 0.9 * 25 / 70;
-  const narrow = e3(pr(t, T.estrechas + 0.05, 1.1));
-  const pulse = Math.sin(Math.PI * cl((t - T.ancha + 0.05) / 0.9)) * (t > T.ancha - 0.05 && t < T.ancha + 0.85 ? 1 : 0);
-  const R = mx(R0, R25, narrow) * (1 + 0.38 * pulse);
-  const L = mx(12, 19, e3(pr(t, T.larga - 0.05, 0.8))) * (1 - narrow) + 12 * narrow;
-  const flow = 1 + 0.75 * e3(pr(t, T.pasa - 0.25, 0.6)) * (1 - sm(T.ancha - 0.3, T.ancha + 0.1, t));
-  return { R, L, flow, narrow, R0, R25 };
-}
-const VB = 2.3;                                           // velocidad del agua «de base» (m/s, visual)
-function speedA(t) { const s = labState(t); return VB * s.flow * Math.pow(s.R0 / Math.max(0.2, s.R), 2) * (1 - 0.0 * s.narrow); }
-function updateWorld(t) {
-  FLAMES.forEach(f => f.u.uCam.value.copy(cam.position));
-  for (const f of [fire1, fire2]) { f.F.u.uTime.value = t; f.s.u.uTime.value = t; f.e.u.uTime.value = t; }
-  fireL1.intensity = 62 + 22 * Math.sin(t * 15) * Math.sin(t * 4.3); fireL2.intensity = 40 + 14 * Math.sin(t * 13 + 1) * Math.sin(t * 3.7);
-  const ph = (t * 2.6) % 1, on = (ph < 0.12 || (ph > 0.24 && ph < 0.36)) ? 1 : 0;
-  beacons.forEach((m, j) => m.material.color.setRGB(0.25 * (1 + 4 * on * (j === 0 ? 1 : 0.4)), 0.5 * (1 + 4 * on), 2.4 * (0.4 + 2.2 * on)));
-  truck.userData.pl.intensity = 6 + 40 * on;
-  // las mangueras salen disparadas (0,1–0,9 s) y el agua las llena; luego corre (la misma velocidad de luz en las tres)
-  hoses.forEach((h, i) => {
-    h.grow(eO(pr(t, 0.06 + i * 0.07, 0.62)));
-    h.fu.uTime.value = t; h.fu.uSpeed.value = 1.6;
-    h.fu.uHead.value = e3(pr(t, 0.55 + i * 0.05, 1.35));
-    const tl = [T.v25, T.v45, T.v70][i];
-    h.fu.uI.value = 1.0 + 0.5 * Math.exp(-Math.pow((t - T.agua - 0.1) / 0.3, 2)) + 1.1 * Math.exp(-Math.pow((t - tl - 0.15) / 0.28, 2));
-  });
-  // manómetros «?» encima de las lanzas: al preguntar (gancho) y al volver a la plaza
-  const gIn = bk(pr(t, T.cual - 0.05, 0.5)) * (1 - sm(T.v25 - 0.35, T.v25 - 0.1, t));
-  gauges.forEach((gg, i) => { gg.scale.setScalar(Math.max(0.001, gIn * gg.userData.sc)); gg.visible = gIn > 0.01; gg.quaternion.copy(cam.quaternion); });
-  needles.forEach((n, i) => { n.rotation.z = -angP(5 + 3.2 * Math.sin((t - T.cual) * (2.1 + 0.4 * i) - 1.57 + i * 1.9)); });
-  ffs.forEach((f, i) => { f.position.y = 0.004 * Math.sin(t * 2.1 + i); });
-}
-function updateLab(t) {
-  const s = labState(t);
-  const t0 = T.lab0;
-  // tubo A (el principal): en S5 pasa a ser el de 25 mm (abajo); el W (70 mm) aparece arriba
-  const two = e3(pr(t, T.v25b - 0.35, 0.7));
-  tubeA.su.uR.value = s.R; tubeA.su.uL.value = s.L;
-  tubeA.G.position.set(0, mx(0, -1.15, two), 0);
-  tubeA.wu.uD.value = integ(t, t0, speedA);
-  tubeA.wu.uStreak.value = 0.05 + 0.032 * speedA(t);
-  tubeA.wu.uSize.value = mx(0.045, 0.032, s.narrow); tubeA.wu.uI.value = 0.62; tubeA.wu.uTime.value = t;
-  tubeA.wu.uN.value = mx(0.55, 1.0, cl((s.flow - 1) / 0.75)) * mx(1, 0.75, s.narrow);
-  tubeA.wu.uRub.value = sm(T.rozando - 0.2, T.rozando + 0.4, t);
-  tubeA.ku.uD.value = tubeA.wu.uD.value; tubeA.ku.uTime.value = t;
-  const vA = speedA(t) / VB;
-  tubeA.ku.uI.value = sm(T.rozando - 0.25, T.rozando + 0.3, t) * cl(0.25 + 0.35 * vA, 0, 2.2) * (0.6 + 0.4 * Math.sin(t * 23));
-  tubeA.ku.uN.value = cl(0.25 + 0.12 * vA, 0, 1);
-  tubeA.su.uRing.value = sm(T.metro - 0.5, T.metro - 0.1, t) * (1 - sm(T.perdida + 0.5, T.perdida + 1.0, t)) + 0.15;
-  tubeA.su.uHot.value = tubeA.ku.uI.value * 0.35;
-  tubeA.su.uI.value = 1;
-  // columnas de presión: salen una por metro con «en cada metro…»; con más largo, más columnas; con más agua, bajan más deprisa
-  const show = (t - T.metro + 0.15) / 1.6 * 12, drop = 0.064 * s.flow;
-  const barI = sm(T.metro - 0.3, T.metro, t) * (1 - sm(T.ancha - 0.4, T.ancha - 0.05, t));
-  for (let i = 0; i < NB; i++) {
-    const vis = cl(show - i) * (i + 0.5 < s.L ? 1 : 0) * barI;
-    const h = Math.max(0.06, 1 - (i + 0.5) * drop) * 1.5;
-    _o.position.set(i + 0.5, -s.R - 2.4, 0); _o.scale.set(1, Math.max(0.001, h * eO(vis)), 1); _o.updateMatrix();
-    bars.setMatrixAt(i, _o.matrix);
-    const k = cl(h / 1.5);
-    bars.setColorAt(i, _c.setRGB(mx(0.62, 0.035, k), mx(0.06, 0.2, k), mx(0.02, 0.62, k)).multiplyScalar(vis));
-  }
-  bars.instanceMatrix.needsUpdate = true; bars.instanceColor.needsUpdate = true;
-  // título 3D
-  const ti = bk(pr(t, T.perdida - 0.1, 0.5)) * (1 - sm(T.depende + 0.2, T.depende + 0.5, t));
-  title.visible = ti > 0.01; title.scale.setScalar(Math.max(0.001, ti)); title.quaternion.copy(cam.quaternion);
-  title.position.copy(cam.position).add(V(0, 0, -9).applyQuaternion(cam.quaternion)).add(V(0, 1.55, 0).applyQuaternion(cam.quaternion)).sub(lab.position);
-  // tubo W (70 mm, arriba) con su propia agua, a la velocidad «de base»
-  tubeW.G.visible = two > 0.01;
-  tubeW.su.uR.value = 0.9; tubeW.su.uL.value = 12; tubeW.su.uI.value = two; tubeW.su.uRing.value = 0.15;
-  tubeW.G.position.set(0, mx(2.4, 1.35, two), 0);
-  tubeW.wu.uD.value = VB * (t - T.v25b); tubeW.wu.uStreak.value = 0.05 + 0.032 * VB; tubeW.wu.uI.value = two * 0.62; tubeW.wu.uN.value = 0.85; tubeW.wu.uSize.value = 0.045;
-  tubeW.ku.uD.value = tubeW.wu.uD.value; tubeW.ku.uI.value = two * 0.32 * (0.6 + 0.4 * Math.sin(t * 19)); tubeW.ku.uN.value = 0.37; tubeW.ku.uTime.value = t;
-  // tapas de luz
-  for (const tb of [tubeA, tubeW]) { tb.cap.scale.setScalar(tb.su.uR.value); tb.cap.material.opacity = 0.22 * tb.su.uI.value; }
-}
+const VB = 1.6;                                           // velocidad del agua en la de 70 (visual); 45 → ×2,4; 25 → ×7,8
 function update(t) {
   const P = camAt(t);
   cam.position.copy(P.p); cam.quaternion.copy(P.q); cam.fov = P.fov; cam.updateProjectionMatrix(); cam.updateMatrixWorld();
   dof.enabled = false;
-  const inLab = !!SH[curShot(t)].lab;
-  world.visible = !inLab; lab.visible = inLab;
-  scene.fog.density = inLab ? 0.018 : 0.011;
-  if (inLab) updateLab(t); else updateWorld(t);
+  FLAMES.forEach(f => f.u.uCam.value.copy(cam.position));
+  // gancho: el fuego crece mientras el chorro de A se desploma
+  const flare = sm(T.avanza - 0.4, T.avanza + 0.5, t) * (1 - sm(T.tres + 0.5, T.tres + 1.6, t));
+  for (const f of [fire1, fire2]) { f.F.u.uTime.value = t; f.s.u.uTime.value = t; f.e.u.uTime.value = t; }
+  fire1.F.u.uSH.value = 1 + 0.45 * flare; fire1.F.u.uSX.value = 1 + 0.25 * flare;
+  fireL1.intensity = (62 + 22 * Math.sin(t * 15) * Math.sin(t * 4.3)) * (1 + 0.8 * flare); fireL2.intensity = 40 + 14 * Math.sin(t * 13 + 1) * Math.sin(t * 3.7);
+  const fall = e3(pr(t, T.avanza - 0.1, T.fuerza - T.avanza + 0.5));
+  jetA.u.uTime.value = t; jetA.u.uV0.value = mx(9.5, 1.3, fall) + 0.25 * Math.sin(t * 31) * fall; jetA.u.uSpreadA.value = mx(0.05, 0.18, fall);
+  jetA.u.uOpacity.value = 0.85 * (1 - sm(T.tres - 0.2, T.tres + 0.6, t));
+  jetA.mesh.visible = t < T.tres + 0.7;
+  const vArc = mx(14.5, 3.2, fall) + 0.6 * Math.sin(t * 27) * fall;
+  arcU.uV.value = vArc; arcU.uTh.value = mx(0.2, 0.05, fall); arcU.uTf.value = mx(0.95, 0.42, fall); arcU.uT.value = t;
+  arcU.uR1.value = mx(0.22, 0.12, fall); arcU.uI.value = 1 - sm(T.tres - 0.2, T.tres + 0.6, t); jetA.arc.visible = t < T.tres + 0.7;
+  const ph = (t * 2.6) % 1, on = (ph < 0.12 || (ph > 0.24 && ph < 0.36)) ? 1 : 0;
+  beacons.forEach((m, j) => m.material.color.setRGB(0.25 * (1 + 4 * on * (j === 0 ? 1 : 0.4)), 0.5 * (1 + 4 * on), 2.4 * (0.4 + 2.2 * on)));
+  truck.userData.pl.intensity = 6 + 40 * on;
+  // el agua de las mangueras (igual en las tres) y el destello al nombrar cada una
+  hoses.forEach((h, i) => {
+    h.fu.uTime.value = t; h.fu.uSpeed.value = 1.6; h.fu.uHead.value = 1.0;
+    const tl = [T.v25, T.v45, T.v70][i];
+    h.fu.uI.value = 0.9 + 0.5 * Math.exp(-Math.pow((t - T.agua - 0.1) / 0.3, 2)) + 1.3 * Math.exp(-Math.pow((t - tl - 0.15) / 0.3, 2));
+  });
+  // manómetros «?»: desde la pregunta hasta «¡Tiempo!»
+  const gIn = bk(pr(t, T.cual - 0.05, 0.5)) * (1 - sm(T.tiempo + 0.2, T.tiempo + 0.6, t));
+  gauges.forEach(gg => { gg.scale.setScalar(Math.max(0.001, gIn * gg.userData.sc)); gg.visible = gIn > 0.01; gg.quaternion.copy(cam.quaternion); });
+  needles.forEach((n, i) => { n.rotation.z = -angP(5 + 3.2 * Math.sin((t - T.cual) * (2.1 + 0.4 * i) - 1.57 + i * 1.9)); });
+  ffs.forEach((f, i) => { f.position.y = 0.004 * Math.sin(t * 2.1 + i); });
+  // los «rayos X» de las tres líneas: el agua corre (×1 / ×2,4 / ×7,8) y roza la pared
+  const xin = bk(pr(t, T.dentro - 0.15, 0.6)) * (1 - sm(T.escribe - 0.3, T.escribe + 0.3, t));
+  const rub = sm(T.roza - 0.2, T.roza + 0.4, t), more = sm(T.corre - 0.1, T.roza2 + 0.2, t);
+  xr.forEach((tb, i) => {
+    tb.G.visible = xin > 0.01;
+    if (!tb.G.visible) return;
+    const k = Math.pow(70 / DMM[i], 2);                      // 70 → 1; 45 → 2,42; 25 → 7,84
+    tb.su.uR.value = HR[i] * Math.max(0.001, xin); tb.su.uI.value = cl(xin);
+    tb.su.uRing.value = 0.2 + 0.5 * sm(T.metro - 0.4, T.metro, t) * (1 - sm(T.estrecha - 0.3, T.estrecha, t));
+    tb.wu.uD.value = VB * k * Math.max(0, t - T.dentro + 0.15); tb.wu.uStreak.value = 0.04 + 0.045 * VB * k * 0.5;
+    tb.wu.uSize.value = 0.03 + 0.02 * HR[i]; tb.wu.uI.value = 0.62 * cl(xin); tb.wu.uN.value = 0.35 + 0.6 * HR[i] / HR[2]; tb.wu.uTime.value = t;
+    tb.wu.uRub.value = rub;
+    tb.ku.uD.value = tb.wu.uD.value; tb.ku.uTime.value = t;
+    tb.ku.uI.value = rub * cl(0.18 + 0.12 * k + (i === 0 ? 1.4 * more : 0), 0, 2.4) * cl(xin);
+    tb.ku.uN.value = cl(0.15 + 0.06 * k + (i === 0 ? 0.35 * more : 0), 0, 1);
+    tb.su.uHot.value = tb.ku.uI.value * 0.3;
+    tb.cap.scale.setScalar(tb.su.uR.value); tb.cap.material.opacity = 0.22 * cl(xin);
+  });
 }
 
 // ------------------------------------------------------------------ capa 2D
@@ -856,7 +855,6 @@ function chip(x, y, text, col, a, s = 1, icon = null, px = 56) {
   rr(-w / 2, -h / 2, w, h, h / 2); g.fillStyle = 'rgba(8,10,14,0.84)'; g.fill(); g.strokeStyle = col; g.lineWidth = 4; g.stroke();
   const cx = -w / 2 + 46;
   if (icon === 'o') { g.beginPath(); g.arc(cx, 0, 20, 0, 7); g.strokeStyle = col; g.lineWidth = 6; g.stroke(); }
-  else if (icon === 'r') { g.beginPath(); g.moveTo(cx - 22, 0); g.lineTo(cx + 22, 0); g.moveTo(cx - 22, -12); g.lineTo(cx - 22, 12); g.moveTo(cx + 22, -12); g.lineTo(cx + 22, 12); g.strokeStyle = col; g.lineWidth = 5; g.stroke(); }
   else if (icon === 'w') { for (let k = 0; k < 3; k++) { g.beginPath(); g.moveTo(cx - 22, -12 + k * 12); g.bezierCurveTo(cx - 8, -20 + k * 12, cx + 6, -4 + k * 12, cx + 22, -12 + k * 12); g.strokeStyle = col; g.lineWidth = 4; g.stroke(); } }
   else if (icon === 'z') { g.beginPath(); g.moveTo(cx - 20, 8); for (let k = 0; k < 5; k++) g.lineTo(cx - 20 + (k + 0.5) * 8, k % 2 ? 8 : -8); g.strokeStyle = col; g.lineWidth = 4; g.stroke(); }
   else if (icon === 'p') { g.beginPath(); g.arc(cx, 0, 22, 0, 7); g.strokeStyle = col; g.lineWidth = 4; g.stroke(); g.beginPath(); g.moveTo(cx, 0); g.lineTo(cx + 14, -10); g.stroke(); }
@@ -873,96 +871,112 @@ function stamp(text, y, col, a, px = 170, rot = -0.06) {
   g.restore();
 }
 const OPTS = [['A', '25 mm'], ['B', '45 mm'], ['C', '70 mm'], ['D', 'LAS TRES IGUAL']];
-function cards(t) {               // 2 × 2 tarjetas: al nombrar las opciones y al final (quietas, «comenta tu letra»); sin dar la respuesta
-  const first = (i) => bk(pr(t, T.tres2 - 0.45 + i * 0.08, 0.45)) * (1 - sm(T.lab0 - 0.35, T.lab0 - 0.05, t));
-  const second = (i) => bk(pr(t, T.cual2 - 0.3 + i * 0.07, 0.4)) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
+function cards(t) {               // 2 × 2 tarjetas: salen una a una al nombrarlas; D roja y tachada tras «¡Tiempo!»; vuelven al final (sin dar la respuesta)
+  const tIn = [T.v25, T.v45, T.v70, T.igual - 0.25];
   OPTS.forEach(([L, s], i) => {
-    const k = Math.max(first(i), second(i));
+    const k = Math.max(bk(pr(t, tIn[i] - 0.2, 0.4)) * (1 - sm(T.dentro - 0.35, T.dentro - 0.05, t)), bk(pr(t, T.escribe - 0.25 + i * 0.07, 0.4)) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t)));
     if (k <= 0.005) return;
+    const bad = i === 3 && t > T.tiempo - 0.05;
     const cx = 290 + (i % 2) * 500, cy = 640 + (i >> 1) * 170, side = i % 2 ? 1 : -1;
-    const pulse = t > T.comenta - 0.1 && t < T.fin ? 1 + 0.03 * Math.max(0, Math.sin((t - T.comenta) * 6 - i * 1.3)) : 1;
-    g.save(); g.globalAlpha = cl(k * 1.3); g.translate(cx + side * (1 - cl(k)) * 600, cy); g.scale(pulse, pulse);
-    rr(-230, -66, 460, 132, 40); g.fillStyle = 'rgba(9,12,17,0.88)'; g.fill(); g.lineWidth = 3; g.strokeStyle = 'rgba(255,255,255,0.3)'; g.stroke();
-    g.beginPath(); g.arc(-160, 0, 44, 0, 7); g.fillStyle = COLS[i]; g.fill();
-    txt(L, -160, 22, 64, '#0b0d10', 400, 'center', 'Bebas');
+    const shake = bad ? 10 * Math.sin(t * 80) * Math.exp(-Math.pow((t - T.tiempo - 0.15) / 0.2, 2)) : 0;
+    const pulse = !bad && t > T.comenta - 0.1 && t < T.tiempo ? 1 + 0.035 * Math.max(0, Math.sin((t - T.comenta) * 7 - i * 1.3)) : 1;
+    g.save(); g.globalAlpha = cl(k * 1.3) * (bad && t > T.escribe - 0.5 ? 0.55 : 1); g.translate(cx + side * (1 - cl(k)) * 600 + shake, cy); g.scale(pulse, pulse);
+    rr(-230, -66, 460, 132, 40); g.fillStyle = bad ? 'rgba(58,8,8,0.94)' : 'rgba(9,12,17,0.88)'; g.fill(); g.lineWidth = bad ? 7 : 3; g.strokeStyle = bad ? RED2 : 'rgba(255,255,255,0.3)'; g.stroke();
+    g.beginPath(); g.arc(-160, 0, 44, 0, 7); g.fillStyle = bad ? RED2 : COLS[i]; g.fill();
+    txt(bad ? '✗' : L, -160, 22, 64, '#0b0d10', 400, 'center', 'Bebas');
     g.font = '400 96px Bebas'; let px = 96; while (g.measureText(s).width > 300 && px > 40) { px -= 4; g.font = `400 ${px}px Bebas`; }
     txt(s, 40, px * 0.33, px, '#F2F5F8', 400, 'center', 'Bebas');
+    if (bad) { g.strokeStyle = RED2; g.lineWidth = 8; g.beginPath(); g.moveTo(-100, 4); g.lineTo(200, 4); g.stroke(); }
     g.restore();
   });
 }
-function hoseTag(x, y, i, a) {    // etiqueta de cada línea: su sección a escala (círculo) y los milímetros
+function dial(x, y, v, a) {       // manómetro 2D del gancho (cae a casi 0)
   if (a <= 0.005) return;
-  const k = bk(cl(a));
-  g.save(); g.globalAlpha = cl(a * 1.4); g.translate(cl(x, 170, W2 - 170), cl(y, 520, H2 - 260)); g.scale(0.6 + 0.4 * k, 0.6 + 0.4 * k);
-  const rad = DMM[i] * 0.62;
-  rr(-150, -rad - 76, 300, rad * 2 + 150, 34); g.fillStyle = 'rgba(8,10,14,0.82)'; g.fill(); g.strokeStyle = COLS[i]; g.lineWidth = 4; g.stroke();
-  g.beginPath(); g.arc(0, -16, rad, 0, 7); g.fillStyle = 'rgba(63,182,255,0.25)'; g.fill(); g.strokeStyle = '#EAF6FF'; g.lineWidth = 6; g.stroke();
-  txt(`${DMM[i]} mm`, 0, rad + 46, 64, '#F4F6F8', 400, 'center', 'Bebas');
-  g.beginPath(); g.arc(-112, -rad - 40, 26, 0, 7); g.fillStyle = COLS[i]; g.fill(); txt('ABC'[i], -112, -rad - 28, 36, '#0b0d10', 400, 'center', 'Bebas');
+  g.save(); g.globalAlpha = cl(a); g.translate(x, y);
+  g.beginPath(); g.arc(0, 0, 118, 0, 7); g.fillStyle = 'rgba(8,10,14,0.86)'; g.fill(); g.strokeStyle = v < 3 ? RED2 : '#E8EEF4'; g.lineWidth = 6; g.stroke();
+  for (let k = 0; k <= 10; k++) { const an = Math.PI * 0.75 + Math.PI * 1.5 * k / 10; g.beginPath(); g.moveTo(Math.cos(an) * 96, Math.sin(an) * 96); g.lineTo(Math.cos(an) * (k % 5 ? 84 : 74), Math.sin(an) * (k % 5 ? 84 : 74)); g.strokeStyle = k < 3 ? RED2 : '#E8EEF4'; g.lineWidth = k % 5 ? 3 : 6; g.stroke(); }
+  const an = Math.PI * 0.75 + Math.PI * 1.5 * v / 10;
+  g.beginPath(); g.moveTo(0, 0); g.lineTo(Math.cos(an) * 86, Math.sin(an) * 86); g.strokeStyle = '#FF5A3C'; g.lineWidth = 8; g.lineCap = 'round'; g.stroke();
+  g.beginPath(); g.arc(0, 0, 12, 0, 7); g.fillStyle = '#FF5A3C'; g.fill();
+  txt('BAR', 0, 60, 40, '#E8EEF4', 400, 'center', 'Bebas');
   g.restore();
 }
 function overlay(t) {
   g.setTransform(PRX, 0, 0, PRX, 0, 0); g.clearRect(0, 0, W2, H2);
-  const si = curShot(t), inLab = !!SH[si].lab;
-  if (!inLab) {
-    // gancho: misma bomba, mismo caudal; manómetros «?»
-    const pump = proj(V(0, 1.85, 0.1)), outl = proj(V(0, 0.9, -0.3));
-    chip(pump.x, pump.y - 150, 'LA MISMA BOMBA', BLUE2, sm(T.bomba - 0.15, T.bomba + 0.1, t) * (1 - sm(T.cual - 0.3, T.cual, t)), 1.05, 'p', 58);
-    chip(outl.x, outl.y + 110, 'MISMO CAUDAL', CYAN2, sm(T.agua - 0.15, T.agua + 0.1, t) * (1 - sm(T.cual - 0.1, T.cual + 0.2, t)), 1.05, 'w', 58);
-    const gIn = sm(T.cual + 0.05, T.cual + 0.3, t) * (1 - sm(T.v25 - 0.35, T.v25 - 0.1, t));
-    if (gIn > 0.01 && si === 1) LANES.forEach((x, i) => {
-      const p = proj(V(x + 0.5, GY + 0.5, GZ)); if (!p.ok) return;
-      const b = 1 + 0.12 * Math.max(0, Math.sin((t - T.cual) * 5 + i));
-      g.save(); g.globalAlpha = gIn; g.translate(p.x, p.y); g.scale(b, b); g.beginPath(); g.arc(0, 0, 34, 0, 7); g.fillStyle = GOLD2; g.fill();
-      txt('?', 0, 18, 56, '#14100a', 400, 'center', 'Bebas'); g.restore();
-    });
-    // sello del examen (dato de Adrián: CONFIRMAR)
-    const ex = Math.max(sm(T.cual - 0.25, T.cual + 0.05, t) * (1 - sm(T.v25 - 0.35, T.v25 - 0.1, t)), sm(T.back + 0.2, T.back + 0.5, t) * (1 - sm(T.fin - 0.3, T.fin, t)));
-    if (ex > 0) { g.save(); g.globalAlpha = ex; g.translate(540, 520); rr(-400, -42, 800, 84, 42); g.fillStyle = 'rgba(8,10,14,0.8)'; g.fill(); g.strokeStyle = GOLD2; g.lineWidth = 3; g.stroke();
-      txt('EXAMEN · AYTO. DE PONTEVEDRA 2022', 0, 16, 46, GOLD2, 400, 'center', 'Bebas'); g.restore(); }
-    // las tres líneas con su sección a escala (plano a ras de suelo)
-    if (si === 2) LANES.forEach((x, i) => {
-      const tc = [T.v25, T.v45, T.v70][i], a = sm(tc - 0.15, tc + 0.15, t) * (1 - sm(T.lab0 - 0.4, T.lab0 - 0.1, t));
-      if (a <= 0.005) return;
-      const tx = 210 + i * 330, ty = 1430, p = proj(V(x + (i - 1) * 0.15, HRAD[i], -9));
-      g.save(); g.globalAlpha = a * 0.8; g.strokeStyle = COLS[i]; g.lineWidth = 3; g.setLineDash([10, 8]);
-      g.beginPath(); g.moveTo(tx, ty - DMM[i] * 0.62 - 80); g.lineTo(p.x, p.y); g.stroke(); g.setLineDash([]);
-      g.beginPath(); g.arc(p.x, p.y, 9, 0, 7); g.fillStyle = COLS[i]; g.fill(); g.restore();
-      hoseTag(tx, ty, i, a);
-    });
-  } else {
-    // dentro de la manguera
-    chip(540, 1500, 'EL AGUA ROZA CON LA PARED', ORANGE2, sm(T.rozando - 0.15, T.rozando + 0.15, t) * (1 - sm(T.side - 0.25, T.side, t)), 1.05, 'z', 56);
-    const bp = proj(V(LABX + 4.0, -3.5, 0));
-    chip(bp.x + 60, bp.y + 90, 'CADA METRO: − PRESIÓN', CYAN2, sm(T.metro - 0.1, T.metro + 0.2, t) * (1 - sm(T.perdida - 0.3, T.perdida, t)), 1.05, 'p', 56);
-    // de qué depende: largo, caudal, ancho
-    const row = [['LONGITUD', 'r', T.larga], ['CAUDAL', 'w', T.pasa], ['DIÁMETRO', 'o', T.ancha]];
-    row.forEach(([s, ic, tc], j) => {
-      const a = sm(tc - 0.15, tc + 0.1, t) * (1 - sm(T.estrechas - 0.3, T.estrechas, t));
-      const hot = Math.exp(-Math.pow((t - tc - 0.25) / 0.45, 2));
-      chip(200 + j * 340, 1530, s, [CYAN2, BLUE2, GOLD2][j], a, 0.92 + 0.22 * hot, ic, 54);
-    });
-    // los dos tubos: 70 arriba, 25 abajo, y cuánto más rápido va el agua en el de 25
-    const two = sm(T.v25b - 0.3, T.v25b + 0.2, t);
-    if (two > 0.01) {
-      const pw = proj(V(LABX - 0.2, 1.35 + 0.9 + 0.25, 0)), pn = proj(V(LABX - 0.2, -1.15 + 0.33 + 0.25, 0));
-      chip(pw.x + 120, pw.y - 40, '70 mm', COLS[2], two, 1.0, 'o', 58);
-      chip(pn.x + 120, pn.y - 40, '25 mm', COLS[0], two, 1.0, 'o', 58);
-      const sp = sm(T.ocho - 0.1, T.ocho + 0.2, t);
-      const qw = proj(V(LABX + 6, 1.35 + 0.9, 0)), qn = proj(V(LABX + 6, -1.15 - 0.33, 0));
-      chip(qw.x, qw.y - 90, 'VELOCIDAD ×1', CYAN2, sp, 1.0, 'w', 52);
-      chip(qn.x, qn.y + 110, 'VELOCIDAD ×7,8', ORANGE2, sp, 1.0 + 0.2 * Math.exp(-Math.pow((t - T.ocho - 0.2) / 0.25, 2)), 'w', 52);
-      chip(540, 1640, 'A IGUAL CAUDAL · (70 / 25)² ≈ 7,8', GOLD2, sm(T.v25b + 0.1, T.v25b + 0.4, t), 0.95, null, 50);
-    }
-    stamp('×7,8', 1000, ORANGE2, Math.exp(-Math.pow((t - T.ocho - 0.45) / 0.55, 4)), 230, -0.05);
-  }
-  // tarjetas y «comenta tu letra»
+  // gancho: el manómetro de la lanza cae y «¡SIN PRESIÓN!»
+  const fall = e3(pr(t, T.avanza - 0.1, T.fuerza - T.avanza + 0.5));
+  const da = sm(0.15, 0.4, t) * (1 - sm(T.tres - 0.2, T.tres + 0.1, t));
+  dial(860, 660, mx(7.5, 0.6, fall) + 0.25 * Math.sin(t * 23) * fall, da);
+  const sp = sm(T.fuerza - 0.25, T.fuerza, t) * (1 - sm(T.tres - 0.2, T.tres + 0.1, t));
+  stamp('¡SIN PRESIÓN!', 1460, RED2, sp, 130, -0.05);
+  // misma bomba, mismo caudal (sobre el colector)
+  const outl = proj(V(0, 0.9, -0.2));
+  chip(outl.x, outl.y - 170, 'LA MISMA BOMBA', BLUE2, sm(T.bomba - 0.15, T.bomba + 0.1, t) * (1 - sm(T.cual - 0.1, T.cual + 0.2, t)), 1.05, 'p', 58);
+  chip(outl.x, outl.y + 120, 'MISMO CAUDAL', CYAN2, sm(T.agua - 0.15, T.agua + 0.1, t) * (1 - sm(T.cual + 0.1, T.cual + 0.4, t)), 1.05, 'w', 58);
+  // sello del examen (dato de Adrián: CONFIRMAR)
+  const ex = sm(T.cual - 0.25, T.cual + 0.05, t) * (1 - sm(T.v25 - 0.35, T.v25 - 0.1, t));
+  if (ex > 0) { g.save(); g.globalAlpha = ex; g.translate(540, 520); rr(-400, -42, 800, 84, 42); g.fillStyle = 'rgba(8,10,14,0.8)'; g.fill(); g.strokeStyle = GOLD2; g.lineWidth = 3; g.stroke();
+    txt('EXAMEN · AYTO. DE PONTEVEDRA 2022', 0, 16, 46, GOLD2, 400, 'center', 'Bebas'); g.restore(); }
+  // «?» sobre los manómetros de las lanzas
+  const gq = sm(T.cual + 0.05, T.cual + 0.3, t) * (1 - sm(T.tiempo + 0.1, T.tiempo + 0.4, t));
+  if (gq > 0.01) LANES.forEach((x, i) => {
+    const p = proj(V(x + 0.45, GY + 0.45, GZ)); if (!p.ok) return;
+    const b = 1 + 0.12 * Math.max(0, Math.sin((t - T.cual) * 5 + i));
+    g.save(); g.globalAlpha = gq; g.translate(p.x, p.y); g.scale(b, b); g.beginPath(); g.arc(0, 0, 30, 0, 7); g.fillStyle = GOLD2; g.fill();
+    txt('?', 0, 16, 50, '#14100a', 400, 'center', 'Bebas'); g.restore();
+  });
+  // etiquetas de las tres líneas al nombrarlas (con su sección a escala)
+  LANES.forEach((x, i) => {
+    const tc = [T.v25, T.v45, T.v70][i], a = sm(tc - 0.15, tc + 0.15, t) * (1 - sm(T.comenta - 0.3, T.comenta, t));
+    if (a <= 0.005) return;
+    const p = proj(V(x, 0.05, -12.5));
+    const rad = DMM[i] * 0.5, k = bk(cl(a));
+    g.save(); g.globalAlpha = cl(a * 1.4); g.translate(cl(p.x, 150, W2 - 150), cl(p.y + 170, 520, H2 - 260)); g.scale(0.6 + 0.4 * k, 0.6 + 0.4 * k);
+    rr(-120, -rad - 40, 240, rad * 2 + 120, 30); g.fillStyle = 'rgba(8,10,14,0.82)'; g.fill(); g.strokeStyle = COLS[i]; g.lineWidth = 4; g.stroke();
+    g.beginPath(); g.arc(0, -4, rad, 0, 7); g.fillStyle = 'rgba(63,182,255,0.25)'; g.fill(); g.strokeStyle = '#EAF6FF'; g.lineWidth = 5; g.stroke();
+    txt(`${DMM[i]} mm`, 0, rad + 56, 56, '#F4F6F8', 400, 'center', 'Bebas');
+    g.restore();
+  });
+  // tarjetas, «comenta tu letra», cuenta 1 → 5 y «¡TIEMPO!»
   cards(t);
-  const ce = sm(T.comenta - 0.12, T.comenta + 0.15, t) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
+  const ca = sm(T.comenta - 0.1, T.comenta + 0.25, t) * (1 - sm(T.count1 - 0.05, T.count1 + 0.2, t));
+  if (ca > 0) { g.save(); g.globalAlpha = ca; g.translate(540, 1555); rr(-260, -50, 520, 100, 50); g.fillStyle = 'rgba(8,10,14,0.74)'; g.fill(); g.strokeStyle = 'rgba(255,255,255,0.26)'; g.lineWidth = 3; g.stroke(); txt('💬  COMENTA TU LETRA', 0, 18, 50, '#F2F5F8', 400, 'center', 'Bebas'); g.restore(); }
+  if (t > T.count0 - 0.02 && t < T.tiempo + 0.25) {
+    const e = t - T.count0, n = Math.min(5, 1 + Math.floor(Math.max(0, e))), f = Math.max(0, e) % 1, k = cl(e / 4.0), out = 1 - sm(T.tiempo, T.tiempo + 0.25, t);
+    g.save(); g.globalAlpha = out; g.translate(540, 1735);
+    g.beginPath(); g.arc(0, 0, 84, 0, 7); g.fillStyle = 'rgba(8,10,14,0.78)'; g.fill();
+    g.beginPath(); g.arc(0, 0, 84, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * k); g.strokeStyle = n >= 5 ? RED2 : '#FF7A1A'; g.lineWidth = 10; g.lineCap = 'round'; g.stroke();
+    const s = 1 + 0.4 * Math.pow(1 - (n >= 5 ? Math.min(1, (e - 4) * 3) : f), 5); g.scale(s, s);
+    txt(String(n), 0, 38, 116, n >= 5 ? '#FF6B5E' : '#FFFFFF', 400, 'center', 'Bebas'); g.restore();
+  }
+  stamp('¡TIEMPO!', 1080, RED2, Math.exp(-Math.pow((t - T.tiempo - 0.35) / 0.32, 4)), 180);
+  // rayos X: título, etiquetas, roce, velocidades
+  const xin = sm(T.dentro - 0.1, T.dentro + 0.3, t) * (1 - sm(T.escribe - 0.4, T.escribe, t));
+  if (xin > 0.01) {
+    const tt = sm(T.perdida - 0.1, T.perdida + 0.15, t) * (1 - sm(T.estrecha - 0.3, T.estrecha, t));
+    if (tt > 0) { g.save(); g.globalAlpha = tt; const sc = 0.85 + 0.15 * bk(cl(tt)); g.translate(540, 560); g.scale(sc, sc);
+      const gg = g.createLinearGradient(0, -60, 0, 20); gg.addColorStop(0, '#fff3b0'); gg.addColorStop(0.55, '#ffb52e'); gg.addColorStop(1, '#ff5a1f');
+      g.font = '400 128px Bebas'; g.textAlign = 'center'; g.shadowColor = 'rgba(0,0,0,0.8)'; g.shadowBlur = 24; g.fillStyle = gg; g.fillText('PÉRDIDA DE CARGA', 0, 40); g.shadowBlur = 0; g.restore(); }
+    chip(540, 1520, 'EL AGUA ROZA CON LA PARED', ORANGE2, sm(T.roza - 0.15, T.roza + 0.15, t) * (1 - sm(T.perdida - 0.3, T.perdida, t)), 1.0, 'z', 54);
+    chip(540, 1640, 'CADA METRO: − PRESIÓN', CYAN2, sm(T.metro - 0.15, T.metro + 0.15, t) * (1 - sm(T.estrecha - 0.3, T.estrecha, t)), 1.0, 'p', 54);
+    const vv = sm(T.ocho - 0.15, T.ocho + 0.15, t), lab = sm(T.dentro + 0.2, T.dentro + 0.5, t);
+    LANES.forEach((x, i) => {
+      const p = proj(V(x, HY + HR[i], HZ0 - HL - 0.6));
+      chip(p.x, p.y - 40, `${DMM[i]} mm`, COLS[i], lab * xin, 0.8, 'o', 50);
+      const q = proj(V(x, HY, HZ0 + 0.4));
+      const sv = ['×7,8', '×2,4', '×1'][i];
+      chip(q.x, q.y + 70, sv, i === 0 ? ORANGE2 : CYAN2, vv * xin, i === 0 ? 1.0 + 0.25 * Math.exp(-Math.pow((t - T.ocho - 0.2) / 0.25, 2)) : 0.85, 'w', 54);
+    });
+    chip(540, 1480, 'A IGUAL CAUDAL · (70 / 25)² ≈ 7,8', GOLD2, sm(T.v25b - 0.1, T.v25b + 0.2, t) * (1 - sm(T.corre - 0.3, T.corre, t)), 0.95, null, 48);
+    stamp('×7,8', 1020, ORANGE2, Math.exp(-Math.pow((t - T.ocho - 0.45) / 0.55, 4)), 230, -0.05);
+    chip(540, 1480, 'MÁS VELOCIDAD = MÁS ROCE', RED2, sm(T.corre - 0.1, T.corre + 0.2, t) * (1 - sm(T.escribe - 0.4, T.escribe - 0.1, t)), 1.05, 'z', 56);
+  }
+  // final: escribe tu letra en comentarios (sin dar la respuesta)
+  const ce = sm(T.comentarios - 0.1, T.comentarios + 0.2, t) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
   if (ce > 0) {
-    const b = 1 + 0.05 * Math.max(0, Math.sin((t - T.comenta) * 6));
-    g.save(); g.globalAlpha = ce; g.translate(540, 1560); g.scale(b, b); rr(-330, -56, 660, 112, 56); g.fillStyle = 'rgba(8,10,14,0.84)'; g.fill(); g.strokeStyle = GOLD2; g.lineWidth = 5; g.stroke();
-    txt('💬  COMENTA TU LETRA', 0, 20, 58, '#F2F5F8', 400, 'center', 'Bebas'); g.restore();
+    const b = 1 + 0.05 * Math.max(0, Math.sin((t - T.comentarios) * 6));
+    g.save(); g.globalAlpha = ce; g.translate(540, 1560); g.scale(b, b); rr(-390, -56, 780, 112, 56); g.fillStyle = 'rgba(8,10,14,0.84)'; g.fill(); g.strokeStyle = GOLD2; g.lineWidth = 5; g.stroke();
+    txt('💬  ESCRIBE TU LETRA EN COMENTARIOS', 0, 20, 54, '#F2F5F8', 400, 'center', 'Bebas'); g.restore();
   }
   share(t);
   closing(t);
@@ -970,28 +984,26 @@ function overlay(t) {
   g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.fillStyle = 'rgba(0,0,0,0.01)'; g.fillRect(0, 0, 2, 2);
 }
 
-// ------------------------------------------------------------------ fotograma (los subfotogramas no mezclan planos)
+// ------------------------------------------------------------------ fotograma
 function subframes(t) {
-  const i = curShot(t), lo = SH[i].t0, hi = shotEnd(i) - 1e-4;
-  const a = camAt(cl(t - 1 / 240, lo, hi)), b = camAt(cl(t + 1 / 240, lo, hi));
+  const a = camAt(t - 1 / 240), b = camAt(t + 1 / 240);
   const ang2 = a.q.angleTo(b.q), mv = a.p.distanceTo(b.p) / Math.max(0.5, (a.focus + b.focus) / 2);
   return Math.max(1, Math.min(4, Math.ceil((ang2 + mv) * H2 / (a.fov * Math.PI / 180) / 22)));
 }
 window.renderAt = t => {
   const N = window.FAST ? 1 : subframes(t);
-  const i = curShot(t), lo = SH[i].t0, hi = shotEnd(i) - 1e-4;
   renderer.setRenderTarget(accRT); renderer.setClearColor(0x000000, 1); renderer.clear();
   for (let k = 0; k < N; k++) {
-    update(N === 1 ? t : cl(t + (k / (N - 1) - 0.5) / 120, lo, hi));
+    update(N === 1 ? t : t + (k / (N - 1) - 0.5) / 120);
     composer.render();
     accMat.uniforms.tSrc.value = composer.readBuffer.texture; accMat.uniforms.uW.value = 1 / N;
     renderer.setRenderTarget(accRT); renderer.autoClear = false; renderer.render(accScene, quadCam); renderer.autoClear = true;
   }
   if (N > 1) update(t);
   finMat.uniforms.tSrc.value = accRT.texture; finMat.uniforms.uTime.value = t;
-  const fl1 = Math.exp(-Math.pow((t - T.lab0 - 0.02) / 0.08, 2)) * 0.55, fl2 = Math.exp(-Math.pow((t - T.back - 0.02) / 0.08, 2)) * 0.35, fl0 = Math.exp(-Math.pow((t - 0.05) / 0.08, 2)) * 0.3;
-  finMat.uniforms.uFlash.value = Math.max(fl0, fl1, fl2); finMat.uniforms.uFlashCol.value.setRGB(0.55, 0.85, 1.0);
-  finMat.uniforms.uExp.value = SH[i].lab ? 1.05 : 1.0;
+  const fl0 = Math.exp(-Math.pow((t - 0.02) / 0.05, 2)) * 0.1, fl1 = Math.exp(-Math.pow((t - T.tiempo - 0.03) / 0.07, 2)) * 0.35, fl2 = Math.exp(-Math.pow((t - T.dentro + 0.05) / 0.08, 2)) * 0.3;
+  finMat.uniforms.uFlash.value = Math.max(fl0, fl1, fl2);
+  if (fl1 >= Math.max(fl0, fl2)) finMat.uniforms.uFlashCol.value.setRGB(1, 0.35, 0.3); else finMat.uniforms.uFlashCol.value.setRGB(0.55, 0.85, 1.0);
   finMat.uniforms.uDim.value = (t >= T.fin ? mx(1, 0.5, sm(T.compartir - 0.2, T.compartir + 0.3, t)) : 1) * (1 - sm(T.end - 0.3, T.end, t));
   finMat.uniforms.uCA.value = 0.0025 + 0.002 * (N > 2 ? 1 : 0);
   renderer.setRenderTarget(null); renderer.render(finScene, quadCam);
@@ -1006,7 +1018,7 @@ window.renderCover = () => window.renderAt(window.COVER_T ?? 6.0);
     while (!_r2d) await new Promise(r => setTimeout(r, 30));
     await document.fonts.ready;
     NOISE = noiseTex(); mats();
-    setupTimes(); buildWorld(); buildLab();
+    setupTimes(); buildWorld();
     renderer.compile(scene, cam);
     window.READY3D = true;
   } catch (e) { window.failed = 'mangueras: ' + (e.stack || e); console.log('ERROR', e.stack || e); }

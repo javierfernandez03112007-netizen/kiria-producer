@@ -1,8 +1,11 @@
-[tense, low voice] Tres mangueras, la misma bomba y la MISMA agua. [challenging] ¿Cuál pierde más presión?
-[quick] ¿La de veinticinco milímetros, la de cuarenta y cinco, la de setenta… [teasing] o las tres por igual?
-[explaining, confident] Dentro, el agua va rozando contra la manguera… [serious] y en cada metro pierde presión.
-[emphatic] Es la PÉRDIDA DE CARGA, [building up] y depende sobre todo de lo larga que es, del agua que pasa… [emphatic] y de lo ANCHA que es.
-[intrigued] Si la estrechas, la misma agua tiene que correr más rápido. [surprised] En la de veinticinco, casi OCHO veces más que en la de setenta.
-[challenging, slow] Entonces… ¿cuál pierde más? [challenging] Comenta tu letra.
+[urgent, alarmed] ¡El fuego avanza… y la lanza de tu compañero se queda SIN FUERZA!
+[tense, fast] Tres mangueras, la misma bomba, la misma agua: ¿cuál pierde más presión?
+[quick] ¿La de veinticinco, cuarenta y cinco, setenta… [teasing] o las tres igual?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [intrigued] Si has dicho «las tres igual»… [grave] has caído en la trampa.
+[explaining, fast] Dentro, el agua roza con la manguera y pierde presión a cada metro: es la PÉRDIDA DE CARGA.
+[building up] En la más estrecha, la misma agua corre más deprisa: [surprised] en la de veinticinco, casi OCHO veces más que en la de setenta.
+[serious, warning] Y cuanto más corre… más roza.
+[challenging] Escribe en comentarios cuál crees que es la correcta.
 [excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
 [energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
