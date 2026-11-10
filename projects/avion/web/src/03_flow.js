@@ -48,7 +48,8 @@ function flowCloud(N, gen, o = {}) {
 const gauss = i => { const u = Math.max(1e-6, hash(i * 1.37)), v = hash(i * 2.91); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
 function buildFlow() {
   // polvo fino en suspensión: alrededor del edificio y de la plaza (cálido cerca, frío lejos)
-  S.flow = [
+  S.flow = [];      // (sin polvo en suspensión: el aula está al aire libre)
+  if (false) S.flow = [
     flowCloud(9000, i => [gauss(i) * 1.3, 0.02 + Math.pow(hash(i * 5.7), 1.3) * 1.6, 0.4 + gauss(i + 2e4) * 1.1], { size: 1.3, bright: 0.5, seed: 1, nearF: 0.06, farF: 0.06, col: 0xfff0d8 }),
     flowCloud(6000, i => { const r = 2.2 + Math.sqrt(hash(i * 3.1)) * 7, a = hash(i * 8.3) * 6.2832; return [r * Math.sin(a), 0.03 + Math.pow(hash(i * 5.7), 1.4) * 3.2, r * Math.cos(a)]; }, { size: 1.5, bright: 0.55, farF: 0.03, seed: 2, col: 0xd8e6ff }),
   ];

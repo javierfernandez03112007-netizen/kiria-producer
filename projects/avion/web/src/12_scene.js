@@ -49,14 +49,23 @@ function zWorld(z, al, out = new THREE.Vector3()) { const c = Math.cos(-al), s =
 function airfoilPts(n = 160) { const pts = []; for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2; pts.push(jk({ x: JK.mu.x + JK.R * Math.cos(a), y: JK.mu.y + JK.R * Math.sin(a) })); } return pts; }
 
 // ---------------------------------------------------------------- texturas
-function boardTex() {                                       // la pizarra con el dibujo de siempre, a tiza
-  return canvasTex(2048, 732, (g, w, h) => {
+// la pizarra en dos capas: el fondo (con el título, siempre) y el dibujo de tiza (el ala, los caminos, los rótulos), que se despega
+// cuando el ala sale de la pizarra y vuelve a aparecer al final (bucle)
+const BD = { cx: 1000, cy: 420, sc: 240, W: 2048, H: 732 };
+BD.x0 = (BD.cx / BD.W - 0.5) * BOARD.w; BD.y0 = BOARD.y + (0.5 - BD.cy / BD.H) * BOARD.h; BD.k = BD.sc * BOARD.w / BD.W / JS;   // dónde está el ala de tiza y a qué escala
+function boardBaseTex() {
+  return canvasTex(BD.W, BD.H, (g, w, h) => {
     const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#1e3a2b'); gr.addColorStop(1, '#183126'); g.fillStyle = gr; g.fillRect(0, 0, w, h);
     for (let i = 0; i < 90; i++) { g.fillStyle = `rgba(255,255,255,${0.012 + hash(i) * 0.03})`; g.beginPath(); g.ellipse(hash(i * 2.1) * w, hash(i * 3.7) * h, 60 + hash(i * 5.3) * 200, 20 + hash(i * 7.1) * 60, hash(i) * 3, 0, 7); g.fill(); }
-    const chalk = (draw, lw = 6, col = 'rgba(245,245,238,') => { for (let k = 0; k < 3; k++) { g.strokeStyle = col + (0.35 + k * 0.2) + ')'; g.lineWidth = lw - k * 1.5; g.lineCap = 'round'; g.lineJoin = 'round'; g.save(); g.translate((hash(k * 3.3) - 0.5) * 2.5, (hash(k * 5.1) - 0.5) * 2.5); draw(); g.restore(); } };
     g.font = '700 70px "Bebas"'; g.fillStyle = 'rgba(245,245,238,.85)'; g.fillText('¿POR QUÉ VUELA UN AVIÓN?', 90, 110);
+  });
+}
+function boardDrawTex() {
+  return canvasTex(BD.W, BD.H, (g, w, h) => {
+    g.clearRect(0, 0, w, h);
+    const chalk = (draw, lw = 6, col = 'rgba(245,245,238,') => { for (let k = 0; k < 3; k++) { g.strokeStyle = col + (0.35 + k * 0.2) + ')'; g.lineWidth = lw - k * 1.5; g.lineCap = 'round'; g.lineJoin = 'round'; g.save(); g.translate((hash(k * 3.3) - 0.5) * 2.5, (hash(k * 5.1) - 0.5) * 2.5); draw(); g.restore(); } };
     // el perfil del ala
-    const P = airfoilPts(120), cx = 1000, cy = 420, sc = 240;
+    const P = airfoilPts(120), cx = BD.cx, cy = BD.cy, sc = BD.sc;
     chalk(() => { g.beginPath(); P.forEach((p, i) => { const x = cx + p.x * sc, y = cy - p.y * sc; i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.closePath(); g.stroke(); }, 7);
     // los dos caminos «a la vez»
     g.setLineDash([22, 18]);
@@ -76,7 +85,7 @@ function crossTex() {                                       // la equis roja de 
 function skyDome() {
   const m = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, fog: false, uniforms: {},
     vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }',
-    fragmentShader: 'varying vec3 vP; void main(){ float h = clamp(vP.y, -0.2, 1.0); vec3 top = vec3(0.16, 0.42, 0.86), hor = vec3(0.78, 0.89, 1.0), low = vec3(0.62, 0.74, 0.86); vec3 c = h > 0. ? mix(hor, top, pow(h, 0.55)) : mix(hor, low, -h * 5.); gl_FragColor = vec4(c * 1.15, 1.); }' });
+    fragmentShader: 'varying vec3 vP; void main(){ float h = clamp(vP.y, -0.2, 1.0); vec3 top = vec3(0.07, 0.27, 0.74), hor = vec3(0.70, 0.84, 1.0), low = vec3(0.62, 0.74, 0.86); vec3 c = h > 0. ? mix(hor, top, pow(h, 0.42)) : mix(hor, low, -h * 5.); gl_FragColor = vec4(c * 1.08, 1.); }' });
   const s = new THREE.Mesh(new THREE.SphereGeometry(380, 32, 16), m); s.renderOrder = -2; return s;
 }
 function cloudTex(seed) {
@@ -98,7 +107,7 @@ function pressureTex(al) {                                  // presión alrededo
       const c = Math.cos(al), s = Math.sin(al), zx = (X * c - Y * s) / JS, zy = (X * s + Y * c) / JS;      // deshace el giro -α
       let inside = false; for (let a = 0, b = poly.length - 1; a < poly.length; b = a++) { const pa = poly[a], pb = poly[b]; if ((pa.y > zy) !== (pb.y > zy) && zx < (pb.x - pa.x) * (zy - pa.y) / (pb.y - pa.y) + pa.x) inside = !inside; }
       const k = (j * W2 + i) * 4; if (inside) { img.data[k + 3] = 0; continue; }
-      const v = velZ({ x: zx, y: zy }, al), cp = 1 - (v.x * v.x + v.y * v.y), q = Math.max(-1, Math.min(1, cp / 1.6));
+      const v = velZ({ x: zx, y: zy }, al), cp = 1 - (v.x * v.x + v.y * v.y), q = cp > 0 ? Math.min(1, cp / 0.55) : Math.max(-1, cp / 1.6);
       const r = q > 0 ? 255 : 255 * (1 + q * 0.75), gg = q > 0 ? 255 * (1 - q * 0.75) : 255 * (1 + q * 0.45), bb = q > 0 ? 255 * (1 - q * 0.85) : 255;
       const fall = Math.min(1, Math.max(0, 1.25 - Math.hypot(X / 2.2, Y / 1.1)));
       img.data[k] = r; img.data[k + 1] = gg; img.data[k + 2] = bb; img.data[k + 3] = 255 * Math.min(1, Math.abs(q) * 1.4) * fall * 0.85;
@@ -111,7 +120,8 @@ function pressureTex(al) {                                  // presión alrededo
 function buildSceneMats() {
   M.wall = new THREE.MeshStandardMaterial({ color: 0xf1e9da, roughness: 0.9 });
   M.wall2 = new THREE.MeshStandardMaterial({ color: 0xcfe1d8, roughness: 0.9 });
-  M.board = new THREE.MeshStandardMaterial({ map: boardTex(), roughness: 0.95 });
+  M.board = new THREE.MeshStandardMaterial({ map: boardBaseTex(), roughness: 0.95 });
+  M.boardDraw = new THREE.MeshStandardMaterial({ map: boardDrawTex(), roughness: 0.95, transparent: true, depthWrite: false });
   M.boardFrame = new THREE.MeshStandardMaterial({ color: 0x8a6a48, roughness: 0.6 });
   M.cross = new THREE.MeshBasicMaterial({ map: crossTex(), transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
   M.deskTop = M.wood; M.leg = metal(0x9aa3ad, 0.4); M.chair = plastic(0x3c7bd6, 0.4);
@@ -121,11 +131,13 @@ function buildSceneMats() {
   M.win = new THREE.MeshStandardMaterial({ color: 0x0f1724, roughness: 0.15, metalness: 0.5 });
   M.acro = paint(0xe8322f, 0.25); M.acro2 = paint(0xf6f6f6, 0.25);
   M.foil = new THREE.MeshPhysicalMaterial({ color: 0xe9edf2, roughness: 0.25, metalness: 0.3, clearcoat: 1 });
-  M.glass = new THREE.MeshPhysicalMaterial({ color: 0xcfe9ff, transparent: true, opacity: 0.12, roughness: 0.05, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+  M.glass = new THREE.MeshPhysicalMaterial({ color: 0xcfe9ff, transparent: true, opacity: 0.035, roughness: 0.05, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+  M.tunBack = new THREE.MeshBasicMaterial({ color: 0x040507, transparent: true, opacity: 1, toneMapped: false });
   M.smoke = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffffff).multiplyScalar(1.2), transparent: true, opacity: 0.9, toneMapped: false });
   M.balA = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffb13b).multiplyScalar(1.6), toneMapped: false });
   M.balB = new THREE.MeshBasicMaterial({ color: new THREE.Color(0x46b8ff).multiplyScalar(1.6), toneMapped: false });
-  M.block = new THREE.MeshPhysicalMaterial({ color: 0xdff3ff, transparent: true, opacity: 0.35, roughness: 0.1, clearcoat: 1, depthWrite: false });
+  M.block = new THREE.MeshBasicMaterial({ map: canvasTex(128, 128, (g, w, h) => { g.fillStyle = 'rgba(190,232,255,.38)'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(40,130,255,1)'; g.lineWidth = 12; g.strokeRect(6, 6, w - 12, h - 12); g.strokeStyle = 'rgba(255,255,255,1)'; g.lineWidth = 4; g.strokeRect(13, 13, w - 26, h - 26); }),
+    transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false });
   M.wake = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xd8f2ff).multiplyScalar(1.3), transparent: true, opacity: 0.8, depthWrite: false, toneMapped: false });
   M.arrUp = new THREE.MeshPhysicalMaterial({ color: 0xff9a2e, roughness: 0.3, clearcoat: 1, emissive: 0x6a2a00, emissiveIntensity: 0.6 });
   M.arrDn = new THREE.MeshPhysicalMaterial({ color: 0x3aa8ff, roughness: 0.3, clearcoat: 1, emissive: 0x00305a, emissiveIntensity: 0.6 });
@@ -159,13 +171,13 @@ function airliner() {                                       // avión de pasajer
   // alas en flecha (planta extruida, con diedro)
   const wing = (side) => { const s = new THREE.Shape(); s.moveTo(0, 0); s.lineTo(9.5, 28); s.lineTo(13, 28); s.lineTo(14.5, 0); s.lineTo(0, 0);
     const geo = new THREE.ExtrudeGeometry(s, { depth: 0.55, bevelEnabled: true, bevelSize: 0.25, bevelThickness: 0.25, bevelSegments: 2 }); geo.rotateX(Math.PI / 2); geo.translate(0, 0.27, 0);
-    const m = new THREE.Mesh(geo, M.plane); m.castShadow = true; m.scale.z = side; m.position.set(-5, -1.6, 0); m.rotation.x = side * 0.09; return m; };
+    const m = new THREE.Mesh(geo, M.plane); m.castShadow = true; m.scale.z = side; m.position.set(-5, -1.6, 0); m.rotation.x = -side * 0.09; return m; };
   S.wings = [wing(1), wing(-1)]; S.wings.forEach(w => g.add(w));
   // motores
   for (const side of [-1, 1]) for (const f of [0.33, 0.64]) { const z = side * 28 * f, x = -5 + 9.5 * f - 1.0;
-    const n = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.05, 5.2, 28), M.engine); n.rotation.z = Math.PI / 2; n.position.set(x - 1.5, -3.0 + 0.09 * Math.abs(z) * 0.4, z); n.castShadow = true; g.add(n);
+    const n = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.05, 5.2, 28), M.engine); n.rotation.z = Math.PI / 2; n.position.set(x - 1.5, -3.75 + 0.0899 * Math.abs(z), z); n.castShadow = true; g.add(n);
     const fan = new THREE.Mesh(new THREE.CircleGeometry(1.15, 28), M.fan); fan.rotation.y = -Math.PI / 2; fan.position.set(x - 4.12, n.position.y, z); g.add(fan); fan.position.x = n.position.x - 2.62;
-    const py = new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.0, 0.3), M.plane); py.position.set(x - 0.4, n.position.y + 1.1, z); g.add(py); }
+    const py = new THREE.Mesh(new THREE.BoxGeometry(2.6, 1.3, 0.3), M.plane); py.position.set(x - 0.4, n.position.y + 1.3, z); g.add(py); }
   // cola: deriva y estabilizadores
   const fin = new THREE.Shape(); fin.moveTo(0, 0); fin.lineTo(6.5, 10.5); fin.lineTo(10, 10.5); fin.lineTo(10.5, 0); fin.lineTo(0, 0);
   const fg = new THREE.ExtrudeGeometry(fin, { depth: 0.45, bevelEnabled: true, bevelSize: 0.15, bevelThickness: 0.15, bevelSegments: 2 }); fg.translate(0, 0, -0.22);
@@ -183,6 +195,9 @@ function acroPlane() {                                      // avioneta acrobát
   g.add(at(mesh(new THREE.BoxGeometry(0.9, 0.08, 3.0), M.acro2), 3.0, 0.2, 0));
   g.add(at(mesh(new THREE.BoxGeometry(1.2, 1.3, 0.08), M.acro), 3.2, 0.75, 0));
   const can = new THREE.Mesh(new THREE.SphereGeometry(0.45, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), M.win); can.scale.set(1.6, 0.8, 0.8); can.position.set(-0.6, 0.35, 0); g.add(can);
+  for (const z of [-0.95, 0.95]) { g.add(bar(v3(-1.6, -0.2, z * 0.35), v3(-1.75, -1.25, z), 0.06, M.leg)); const wh = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.22, 20), MAT.rubber); wh.rotation.x = Math.PI / 2; wh.position.set(-1.75, -1.3, z); g.add(wh); }
+  g.add(bar(v3(3.2, 0.0, 0), v3(3.45, -0.45, 0), 0.04, M.leg)); { const tw = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.1, 14), MAT.rubber); tw.rotation.x = Math.PI / 2; tw.position.set(3.45, -0.5, 0); g.add(tw); }
+  g.add(at(mesh(new THREE.BoxGeometry(1.52, 0.02, 8.52), M.acro), -1.2, -0.07, 0));      // franja roja por encima del ala blanca
   S.prop = new THREE.Mesh(new THREE.CircleGeometry(1.1, 24), new THREE.MeshBasicMaterial({ color: 0x222222, transparent: true, opacity: 0.25, side: THREE.DoubleSide, depthWrite: false })); S.prop.rotation.y = Math.PI / 2; S.prop.position.x = -3.6; g.add(S.prop);
   return g;
 }
@@ -192,8 +207,8 @@ function buildWorld() {
   scene.add(skyDome());
   const grd = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), M.grass); grd.rotation.x = -Math.PI / 2; grd.position.y = -0.01; grd.receiveShadow = true; scene.add(grd);
   S.clouds = [];
-  for (let i = 0; i < 14; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.5), new THREE.MeshBasicMaterial({ map: cloudTex(i + 1), transparent: true, depthWrite: false, fog: false, opacity: 0.9 }));
-    const a = hash(i * 3.3) * Math.PI * 2 * 0.5 + Math.PI * 0.75, r = 120 + hash(i * 5.1) * 120; m.position.set(Math.cos(a) * r, 35 + hash(i * 7.3) * 55, Math.sin(a) * r); m.scale.setScalar(60 + hash(i * 2.2) * 50); scene.add(m); S.clouds.push(m); }
+  for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.5), new THREE.MeshBasicMaterial({ map: cloudTex(i + 1), transparent: true, depthWrite: false, fog: false, opacity: 0.7 }));
+    const a = hash(i * 3.3) * Math.PI * 2 * 0.5 + Math.PI * 0.75, r = 230 + hash(i * 5.1) * 90; m.position.set(Math.cos(a) * r, 22 + hash(i * 7.3) * 40, Math.sin(a) * r); m.scale.setScalar(70 + hash(i * 2.2) * 50); m.lookAt(0, m.position.y, 0); scene.add(m); S.clouds.push(m); }
   // el aula
   const C = new THREE.Group(); scene.add(C); S.room = C;
   const fl = mesh(new THREE.BoxGeometry(ROOM.w, 0.12, ROOM.d), M.wood); fl.position.y = -0.06; C.add(fl);
@@ -208,6 +223,7 @@ function buildWorld() {
   C.add(win);
   // la pizarra, su marco, la tiza y la equis roja
   const bd = mesh(new THREE.PlaneGeometry(BOARD.w, BOARD.h), M.board); bd.position.set(0, BOARD.y, BOARD.z); C.add(bd); S.board = bd;
+  S.boardDraw = new THREE.Mesh(new THREE.PlaneGeometry(BOARD.w, BOARD.h), M.boardDraw); S.boardDraw.position.set(0, BOARD.y, BOARD.z + 0.006); S.boardDraw.renderOrder = 3; C.add(S.boardDraw);
   for (const [w2, h2, x, y] of [[BOARD.w + 0.16, 0.08, 0, BOARD.y + BOARD.h / 2 + 0.04], [BOARD.w + 0.16, 0.08, 0, BOARD.y - BOARD.h / 2 - 0.04], [0.08, BOARD.h, -BOARD.w / 2 - 0.04, BOARD.y], [0.08, BOARD.h, BOARD.w / 2 + 0.04, BOARD.y]])
     C.add(at(mesh(new THREE.BoxGeometry(w2, h2, 0.05), M.boardFrame), x, y, BOARD.z + 0.01));
   C.add(at(mesh(new THREE.BoxGeometry(BOARD.w, 0.04, 0.1), M.boardFrame), 0, BOARD.y - BOARD.h / 2 - 0.08, BOARD.z + 0.06));
@@ -226,18 +242,26 @@ function buildWorld() {
   // el avión gigante y la avioneta
   S.big = airliner(); scene.add(S.big);
   S.acro = acroPlane(); scene.add(S.acro);
+  S.acroSmoke = new THREE.InstancedMesh(new THREE.SphereGeometry(0.7, 10, 8), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0.85, depthWrite: false }), 260); scene.add(S.acroSmoke);
   // los efectos del cielo: bloques de aire, estela, presión alrededor del avión
-  S.blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(1.6, 1.6, 1.6), M.block, 90); scene.add(S.blocks);
-  S.wake = new THREE.InstancedMesh(new THREE.SphereGeometry(0.22, 8, 6), M.wake, 900); scene.add(S.wake);
-  S.lowP = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), basicGlow(0x3aa8ff, 0.9)); S.highP = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), basicGlow(0xff5a3a, 0.9));
-  for (const p of [S.lowP, S.highP]) { p.rotation.x = -Math.PI / 2; p.material.side = THREE.DoubleSide; p.material.map = canvasTex(256, 256, (g, w, h) => { const gr = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,.9)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); }); scene.add(p); }
+  S.blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(7, 7, 7), M.block, 140); S.blocks.renderOrder = 2; scene.add(S.blocks);
+  // «la diferencia lo levanta»: flechas naranjas debajo del avión
+  S.liftArrows = [0, 1, 2].map(() => { const a = arrow3(14, M.arrUp, 0.9); scene.add(a); return a; });
+  S.wake = new THREE.InstancedMesh(new THREE.SphereGeometry(0.5, 8, 6), M.wake, 1400); scene.add(S.wake);
+  // presión alrededor del avión: halo azul encima de las alas (baja) y rojo debajo (alta), siempre de cara a la cámara
+  const halo = canvasTex(256, 256, (g, w, h) => { const gr = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.45, 'rgba(255,255,255,.55)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+  S.lowP = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo, color: 0x1f6dff, transparent: true, depthWrite: false, opacity: 0, fog: false }));
+  S.highP = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo, color: 0xff3d1f, transparent: true, depthWrite: false, opacity: 0, fog: false }));
+  S.lowP.material.blending = THREE.AdditiveBlending; scene.add(S.lowP, S.highP);
 }
 function buildTunnel() {
   const T = new THREE.Group(); scene.add(T); S.tunnel = T;
   // mesas debajo y la caja de cristal con sus aristas
   T.add(at(mesh(new THREE.BoxGeometry(TUN.L + 0.3, 0.06, TUN.D + 0.3), M.wood), TUN.x + 0.2, TUN.y - TUN.H / 2 - 0.04, TUN.z));
   for (const [x, z] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) T.add(at(mesh(new THREE.BoxGeometry(0.06, TUN.y - TUN.H / 2 - 0.07, 0.06), M.leg), TUN.x + 0.2 + x * (TUN.L / 2 - 0.05), (TUN.y - TUN.H / 2 - 0.07) / 2, TUN.z + z * (TUN.D / 2 - 0.05)));
-  const box = new THREE.Mesh(new THREE.BoxGeometry(TUN.L, TUN.H, TUN.D), M.glass); box.position.set(TUN.x + 0.2, TUN.y, TUN.z); T.add(box); edges(box, 0xcfefff, 1.6, 28, 0.9);
+  const box = new THREE.Mesh(new THREE.BoxGeometry(TUN.L, TUN.H, TUN.D), M.glass); box.position.set(TUN.x + 0.2, TUN.y, TUN.z); T.add(box); edges(box, 0xcfefff, 1.6, 28, 0.9); S.tunBox = box;
+  S.tunBack = new THREE.Mesh(new THREE.PlaneGeometry(TUN.L - 0.02, TUN.H - 0.02), M.tunBack); S.tunBack.position.set(TUN.x + 0.2, TUN.y, TUN.z - TUN.D / 2 + 0.012); T.add(S.tunBack);
+  S.tunFloor = new THREE.Mesh(new THREE.PlaneGeometry(TUN.L - 0.02, TUN.D - 0.02), M.tunBack); S.tunFloor.rotation.x = -Math.PI / 2; S.tunFloor.position.set(TUN.x + 0.2, TUN.y - TUN.H / 2 + 0.012, TUN.z); T.add(S.tunFloor);
   const fanG = new THREE.Group(); fanG.position.set(TUN.x + 0.2 - TUN.L / 2 - 0.05, TUN.y, TUN.z); T.add(fanG);
   fanG.add(at(new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.05, 10, 40), M.leg), 0, 0, 0, Math.PI / 2));
   S.fanBlades = new THREE.Group(); fanG.add(S.fanBlades);
@@ -259,6 +283,8 @@ function buildTunnel() {
   S.pulseN = 34; S.pulses = [];
   for (let k = 0; k < 4; k++) for (let i = 0; i < S.pulseN; i++) { const y0 = -1.5 + 3.0 * i / (S.pulseN - 1); S.pulses.push({ k, y0, path: jkPath({ x: -4.2, y: y0 }, S.AL0, 12, 0.03) }); }
   S.smoke = new THREE.InstancedMesh(new THREE.SphereGeometry(0.014, 8, 6), M.smoke, S.pulses.length); T.add(S.smoke);
+  S.pulses1 = []; for (let k = 0; k < 4; k++) for (let i = 0; i < S.pulseN; i++) { const y0 = -1.5 + 3.0 * i / (S.pulseN - 1); S.pulses1.push({ k, y0, path: jkPath({ x: -4.2, y: y0 }, S.AL1, 12, 0.03) }); }
+  S.smoke1 = new THREE.InstancedMesh(new THREE.SphereGeometry(0.014, 8, 6), M.smoke, S.pulses1.length); T.add(S.smoke1);
   // las dos bolitas: la de arriba y la de abajo de la línea que se divide en el borde de ataque
   const Y0 = -0.5197;                                                   // línea que se divide en el borde de ataque (calculada con 3°)
   S.pA = jkPath({ x: -4.2, y: Y0 + 0.04 }, S.AL0, 12, 0.03); S.pB = jkPath({ x: -4.2, y: Y0 - 0.04 }, S.AL0, 12, 0.03);
@@ -267,9 +293,24 @@ function buildTunnel() {
   const n = P.length, iTE = P.reduce((b, p, i) => p.x > P[b].x ? i : b, 0), iLE = P.reduce((b, p, i) => p.x < P[b].x ? i : b, 0);
   const walk = (a, b, dir) => { const o = []; for (let i = a; ; i = (i + dir + n) % n) { o.push(P[i]); if (i === b) break; } return o; };
   const up = walk(iLE, iTE, -1), dn = walk(iLE, iTE, 1); S.upPath = up.reduce((s, p) => s + (p.y > JK.mu.y ? 1 : 0), 0) > up.length / 2 ? up : dn; S.dnPath = S.upPath === up ? dn : up;
+  // la cara de arriba, para iluminarla en «curva por arriba»
+  S.upPts = S.upPath.map(p => zWorld(p, S.AL0).add(v3(0, 0, TUN.D * 0.485))); S.upLineMat = lineMat(0xffc24a, 6, 1); S.upLine = polyline(S.upPts, S.upLineMat); S.upLine.renderOrder = 6; T.add(S.upLine);
   // la presión (con 9°) en un panel delante del ala, y las flechas
   S.press = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 2.3), new THREE.MeshBasicMaterial({ map: pressureTex(S.AL1), transparent: true, opacity: 0, depthWrite: false, toneMapped: false }));
   S.press.position.set(TUN.x + 0.1, TUN.y, TUN.z + TUN.D * 0.49); S.press.renderOrder = 5; T.add(S.press);
-  S.arrUp = arrow3(0.7, M.arrUp, 0.035); S.arrDn = arrow3(0.7, M.arrDn, 0.035); S.arrDn.rotation.z = Math.PI; T.add(S.arrUp, S.arrDn);
-  S.arrUp.position.set(TUN.x - 0.05, TUN.y + 0.12, TUN.z + 0.1); S.arrDn.position.set(TUN.x + 0.95, TUN.y - 0.05, TUN.z + 0.1);
+  S.arrUp = arrow3(0.5, M.arrUp, 0.055); S.arrDn = arrow3(0.5, M.arrDn, 0.055); S.arrDn.rotation.z = Math.PI; T.add(S.arrUp, S.arrDn);
+  S.arrUp.position.set(TUN.x - 0.05, TUN.y + 0.1, TUN.z + 0.25); S.arrDn.position.set(TUN.x + 1.12, TUN.y + 0.02, TUN.z + 0.25);
+  // la carrera: la línea de meta en el borde de salida y el rastro de cada bolita
+  const TEz = S.upPath[S.upPath.length - 1]; S.teX = zWorld(TEz, S.AL0).x; S.teY = zWorld(TEz, S.AL0).y;
+  S.finMat = lineMat(0xffffff, 3, 0.9, true); S.finMat.dashSize = 0.045; S.finMat.gapSize = 0.035;
+  S.finish = polyline([v3(S.teX, TUN.y - 0.6, TUN.z + TUN.D * 0.5 + 0.01), v3(S.teX, TUN.y + 0.6, TUN.z + TUN.D * 0.5 + 0.01)], S.finMat); S.finish.renderOrder = 6; T.add(S.finish);
+  const endX = TUN.x + 0.2 + TUN.L / 2 - 0.05, trail = (path, col) => { const pts = []; for (const z of path) { const p = zWorld(z, S.AL0).add(v3(0, 0, TUN.D * 0.5)); if (p.x > endX) break; pts.push(p); } const m = lineMat(col, 3.5, 0.75); const l = polyline(pts, m); l.renderOrder = 5; T.add(l); l.userData.n = pts.length; l.userData.m = m; return l; };
+  S.trailA = trail(S.pA, 0xffb13b); S.trailB = trail(S.pB, 0x46b8ff);
+  const cross = path => { for (let i = 1; i < path.length; i++) { const a = zWorld(path[i - 1], S.AL0).x, b = zWorld(path[i], S.AL0).x; if (a < S.teX && b >= S.teX) return (i - 1 + (S.teX - a) / (b - a)) * 0.03; } return 99; };
+  S.tauA = cross(S.pA); S.tauB = cross(S.pB);
+  // la corriente que sale del borde de salida con el ala inclinada (9°): hacia abajo (para la flecha «aire hacia abajo»)
+  { const al = S.AL1, c = Math.cos(al), sn = Math.sin(al), rot = (p, a) => ({ x: p.x * Math.cos(a) - p.y * Math.sin(a), y: p.x * Math.sin(a) + p.y * Math.cos(a) });
+    let Wp = rot(TEz, -al); Wp = { x: Wp.x + 0.1, y: Wp.y - 0.02 }; S.dnFlow = [];
+    for (let i = 0; i < 80; i++) { S.dnFlow.push(v3(TUN.x + JS * Wp.x, TUN.y + JS * Wp.y, TUN.z + TUN.D * 0.5 + 0.02));
+      const v = velZ(rot(Wp, al), al), w = rot(v, -al), L = Math.hypot(w.x, w.y) || 1; Wp = { x: Wp.x + w.x / L * 0.05, y: Wp.y + w.y / L * 0.05 }; } }
 }
