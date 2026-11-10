@@ -3,19 +3,23 @@
 // propia cámara; C) y E) el túnel; D) y F) el avión en el cielo; G) vuelta al plano del dron (bucle: el último fotograma enlaza con el primero).
 // Un plano «big» o «acro» lleva la cámara pegada al avión o a la avioneta (las claves son posiciones relativas).
 let SHOTS = [], CUTS = [];
-const K0C = [[96, 50, 30], [-12, 6, 0], 54];                      // dron: detrás, arriba y a la izquierda del avión (se ven las alas por encima)
+const K0C = [[94, 50, 34], [-12, 5, 0], 54];                      // dron: detrás, arriba y a la izquierda del avión (se ven las alas por encima)
+// el dron no se queda quieto: barre de izquierda a derecha y baja. Las claves de antes del 0 y de después de END son las mismas, así la
+// cámara ya viene moviéndose en el primer fotograma y el bucle no se nota (misma posición y misma velocidad).
+const LOOPK = [[-1.6, [104, 58, 62], [-13, 6, 0], 54], [0, ...K0C], [1.5, [82, 41, -6], [-10, 3, 0], 52], [3.0, [70, 31, -42], [-7, 1, 0], 50]];
 function buildCam() {
   const TX = TUN.x, TY = TUN.y, TZ = TUN.z, SK = (a, l, f) => [a, l, f];
   SHOTS = [
-    [0, [                                                                                     // A: el avión vuela sobre el valle (un solo plano)
-      [0, ...K0C],
-      [K.mal1, [89, 46, 34], [-11, 5, 0], 54],
-      [K.n575_2 - 0.1, [78, 40, 38], [-9, 4, 0], 53],                                          //    575 t: más cerca
-      [K.contaron3 - 0.4, [72, 37, 40], [-8, 3.5, 0], 53],
-    ], 'big'],
-    [K.contaron3 - 0.4, [                                                                     // B: la pizarra; el ala sale de ella; el «mito»; el túnel de viento
-      [K.contaron3 - 0.4, [0.28, 1.66, 4.35], [0.02, 1.62, -3.0], 34],
-      [K.ala3 + 0.05, [0.3, 1.66, 4.2], [0.02, 1.6, -3.0], 34],
+    [0, LOOPK.map(k => [k[0], k[1], k[2], k[3]]), 'big'],                                     // A: el avión vuela sobre el valle (3 s, cámara en movimiento)
+    [TT.cut0, [                                                                               // B: «…y esa explicación»: la pizarra; la equis; la NASA; 575 t; el ala sale
+      [TT.cut0, [1.15, 1.5, 6.6], [0.15, 1.85, -3.0], 37],
+      [K.mal1 - 0.12, [0.36, 1.62, 4.15], [0.13, 1.62, -3.0], 34],                                 //    «está mal»: la equis
+      [K.nasa2 + 0.35, [0.22, 1.63, 3.85], [0.12, 1.62, -3.0], 34],                               //    «lo dice la NASA»: el sello
+      [K.aire2, [-1.5, 1.8, 4.6], [0.05, 1.72, -3.0], 35],                                         //    la cámara rodea la pizarra
+      [K.n575_2 + 0.3, [-0.2, 2.15, 5.6], [0.0, 1.55, -3.0], 36],
+      [K.final2, [1.45, 1.75, 4.9], [0.15, 1.62, -3.0], 35],
+      [K.ala3 - 0.25, [0.42, 1.66, 4.25], [0.04, 1.6, -3.0], 34],                                 //    «el ala»: sale de la pizarra
+      [K.ala3 + 0.05, [0.32, 1.66, 4.2], [0.02, 1.6, -3.0], 34],
       [TT.fly1 + 0.05, [0.5, 1.82, 6.3], [0.42, 1.6, TZ], 34],
       [K.camino3, [0.5, 1.77, 5.8], [0.45, 1.56, TZ], 34],
       [K.vez3, [0.7, 1.71, 5.5], [0.7, TY, TZ], 34],                                               //    «a la vez»
@@ -37,8 +41,8 @@ function buildCam() {
       [K.cientos7 - 0.03, [1.12, 1.6, 6.6], [1.1, TY - 0.12, TZ], 34],
     ]],
     [K.cientos7 - 0.03, [                                                                     // D: el avión en el cielo (desde detrás y abajo): los bloques de aire caen de las alas
-      [K.cientos7 - 0.03, [26, -20, 96], [2, -12, 0], 52],
-      [K.si8 - 0.03, [22, -19, 92], [2, -13, 0], 51],
+      [K.cientos7 - 0.03, [34, -17, 94], [2, -12, 0], 52],
+      [K.si8 - 0.03, [4, -23, 97], [2, -13, 0], 51],
     ], 'big'],
     [K.si8 - 0.03, [                                                                          // E: acción y reacción; la presión
       [K.si8 - 0.03, [0.78, 1.75, 7.3], [0.78, TY - 0.05, TZ], 34],
@@ -49,15 +53,15 @@ function buildCam() {
       [K.levanta9 - 0.05, [0.45, 1.64, 6.2], [0.45, TY, TZ], 34],
     ]],
     [K.levanta9 - 0.05, [                                                                     // F: el avión sube (la cámara no sube con él); no flota: la estela
-      [K.levanta9 - 0.05, [26, -20, 96], [2, -12, 0], 52],
+      [K.levanta9 - 0.05, [18, -20, 98], [2, -12, 0], 52],
       [K.respuesta10, [36, -21, 92], [2, -12, 0], 52],
       [K.flota10, [62, -24, 82], [0, -15, 0], 53],
-      [K.rato10, [70, -25, 80], [0, -16, 0], 53],
-      [K.ventanilla11 - 0.03, [72, -25, 79], [0, -16, 0], 53],
+      [K.rato10, [84, -30, 58], [0, -16, 0], 53],
+      [K.ventanilla11 - 0.03, [88, -31, 52], [0, -16, 0], 53],
     ], 'big'],
     [K.ventanilla11 - 0.03, [                                                                 // G: vuelta al dron del principio (bucle)
-      [K.ventanilla11 - 0.03, [116, 60, 16], [-14, -40, 0], 54],                                  //    (el avión arriba: la encuesta va debajo)
-      [END, ...K0C],
+      [K.ventanilla11 - 0.03, [128, 66, -20], [-14, -40, 0], 54],                                 //    (el avión arriba: la encuesta va debajo)
+      ...LOOPK.map(k => [k[0] + END, k[1], k[2], k[3]]),                                       //    y enlaza con el principio (misma velocidad)
     ], 'big'],
   ];
   CUTS = SHOTS.slice(1).map(s => s[0]);

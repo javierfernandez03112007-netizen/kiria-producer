@@ -32,7 +32,7 @@ function cross(P, k, s = 34) {
 }
 function pollPills(t, k) {
   if (k <= 0.01) return;
-  const items = [['VENTANILLA', '#62E3D4', 290], ['PASILLO', '#FFC24A', 790]], y = 1370;
+  const items = [['VENTANILLA', '#62E3D4', 290], ['PASILLO', '#FFC24A', 790]], y = 1515;
   hg.save(); hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '5px';
   items.forEach(([txt, col, x], i) => {
     const kk = backOut(clamp((k - i * 0.15) / 0.5)), pulse = 1 + 0.03 * Math.sin(t * 7 + i * Math.PI);
@@ -61,7 +61,7 @@ function stamp2(P, k, k2 = 1) {
 }
 // los asientos de una fila: ventanilla y pasillo
 function seats(t, k) {
-  if (k <= 0.01) return; const y = 1150, sw = 92, sh = 104, gap = 14, aisle = 70, n = 6, total = n * sw + (n - 2) * gap + aisle, x0 = 540 - total / 2;
+  if (k <= 0.01) return; const y = 1290, sw = 92, sh = 104, gap = 14, aisle = 70, n = 6, total = n * sw + (n - 2) * gap + aisle, x0 = 540 - total / 2;
   hg.save(); hg.globalAlpha = clamp(k * 2);
   hg.fillStyle = 'rgba(0,0,0,.55)'; rr(hg, x0 - 40, y - 90, total + 80, sh + 150, 28); hg.fill();
   for (let i = 0; i < n; i++) { const left = i < 3, j = left ? i : i - 3, x = x0 + (left ? 0 : 3 * sw + 2 * gap + aisle) + j * (sw + gap);
@@ -103,7 +103,7 @@ function hudAt(t) {
   bracketMsg(t, 'LO QUE LO SOSTIENE · ???', HC.amber, cw2(K.final2, K.respuesta10, 0.3, 0.12), true);
   bracketMsg(t, 'LO QUE LO SOSTIENE ↓', HGr, cw2(K.respuesta10, K.rato10 + 0.6, 0.12, 0.3), false);
   // 1-2: la NASA y las 575 toneladas
-  stamp2({ x: 540, y: 1250, ok: true }, cw2(K.mal1 - 0.03, K.sostiene2, 0.15, 0.25), cw2(K.nasa2 - 0.05, K.sostiene2, 0.2, 0.25));      // «está mal… lo dice la NASA»
+  { _hv.set(0.2, BOARD.y, BOARD.z); stamp2(proj(_hv), cw2(K.nasa2 - 0.05, K.sostiene2 + 0.5, 0.15, 0.3), 1); }      // «lo dice la NASA», sobre el dibujo tachado
   bigFig('575 t', 'AIRBUS A380 · PESO MÁXIMO AL DESPEGAR', HC.white, cw2(K.n575_2 - 0.05, K.final2 + 0.05, 0.2, 0.25), 1300);
   srcLine('NASA GLENN · UNIVERSIDAD DE CAMBRIDGE · AIRBUS · «CIENTOS DE TONELADAS»: CÁLCULO DE EJEMPLO', cw2(K.nasa2, K.rato10, 0.3, 0.3));
   // 3-4: las bolitas: el «mito» y el humo de verdad
@@ -132,6 +132,6 @@ function hudAt(t) {
   // 10: la respuesta
   bigFig('NO FLOTA', 'SE SUJETA EMPUJANDO EL AIRE HACIA ABAJO', HC.amber, cw2(K.flota10 - 0.05, K.rato10 + 0.4, 0.2, 0.25), 1290);
   // 11: ¿ventanilla o pasillo?
-  seats(t, cw2(K.ventanilla11 - 0.1, END - 0.35, 0.35, 0.3));
-  pollPills(t, cw2(K.ventanilla11 - 0.05, END - 0.35, 0.35, 0.3));
+  seats(t, cw2(K.ventanilla11 - 0.1, K.profe11 + 0.25, 0.35, 0.3));            // se quita antes de que el avión baje al centro (bucle)
+  pollPills(t, cw2(K.ventanilla11 - 0.05, K.profe11 + 0.25, 0.35, 0.3));
 }

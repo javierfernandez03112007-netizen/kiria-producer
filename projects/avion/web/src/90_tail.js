@@ -62,8 +62,8 @@ window.renderCover = function () {
   END = Math.ceil((lines[lines.length - 1].end + 1.25) * 2) / 2;          // ≈ 1,3 s de cola tras la última palabra
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
   K = {
-    explicaron1: atL(1, 'explicaron'), colegio1: atL(1, 'colegio'), avion1: atL(1, 'avion'), mal1: atL(1, 'mal'),
-    nasa2: atL(2, 'nasa'), sostiene2: atL(2, 'sostiene'), avion2: atL(2, 'avion'), n575_2: atL(2, '=575'), toneladas2: atL(2, 'toneladas'), final2: atL(2, 'final'),
+    explicaron1: atL(1, 'explicaron'), esa1: atL(1, 'esa'), colegio1: atL(1, 'colegio'), avion1: atL(1, 'avion'), mal1: atL(1, 'mal'),
+    nasa2: atL(2, 'nasa'), sostiene2: atL(2, 'sostiene'), aire2: atL(2, 'aire'), avion2: atL(2, 'avion'), n575_2: atL(2, '=575'), toneladas2: atL(2, 'toneladas'), final2: atL(2, 'final'),
     contaron3: atL(3, 'contaron'), ala3: atL(3, 'ala'), aire3: atL(3, 'aire'), curva3: atL(3, 'curva'), arriba3: atL(3, 'arriba'), camino3: atL(3, 'camino'), corre3: atL(3, 'corre'), vez3: atL(3, 'vez'),
     pero4: atL(4, 'pero'), cita4: atL(4, 'cita'), tunel4: atL(4, 'tunel'), viento4: atL(4, 'viento'), llega4: atL(4, 'llega'), antes4: atL(4, 'antes'), mucho4: atL(4, 'mucho'), antes4b: atL(4, 'antes', 2),
     si5: atL(5, '=si'), curva5: atL(5, 'curva'), boca5: atL(5, 'boca'), abajo5: atL(5, 'abajo'),
@@ -72,7 +72,7 @@ window.renderCover = function () {
     si8: atL(8, '=si'), abajo8: atL(8, 'abajo'), empuja8b: atL(8, 'empuja', 2), arriba8: atL(8, 'arriba'),
     arriba9: atL(9, 'arriba'), baja9: atL(9, 'baja'), sube9: atL(9, 'sube'), diferencia9: atL(9, 'diferencia'), levanta9: atL(9, 'levanta'), entero9: atL(9, 'entero'),
     respuesta10: atL(10, 'respuesta'), flota10: atL(10, 'flota'), rato10: atL(10, 'rato'),
-    ventanilla11: atL(11, 'ventanilla'), pasillo11: atL(11, 'pasillo'), mandaselo11: atL(11, 'mandaselo'),
+    ventanilla11: atL(11, 'ventanilla'), pasillo11: atL(11, 'pasillo'), mandaselo11: atL(11, 'mandaselo'), profe11: atL(11, 'profe'),
   };
   mats(); buildMats(); buildSceneMats(); buildRig();
   { const pm = new THREE.PMREMGenerator(renderer), es = new THREE.Scene(), sk = skyLand(); es.add(sk);                 // el reflejo del cielo y del valle

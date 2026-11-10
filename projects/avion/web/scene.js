@@ -1307,17 +1307,21 @@ function buildTimes() {
     wake: K.respuesta10, poll: K.ventanilla11,                            // 10-11
     back: K.ventanilla11 + 0.3,                                           // el ala vuelve a la pizarra (bucle)
   };
+  TT.cut0 = K.esa1 - 0.05;                                               // del avión a la pizarra
   TT.fly0 = TT.emerge + 0.22; TT.fly1 = TT.fly0 + 0.85; TT.curva = TT.fly1 - 0.05; TT.balls = TT.fly1 + 0.15;   // el ala vuela de la pizarra a su sitio
 }
 // ---------------------------------------------------------------- el avión gigante: vuela de verdad (35 m/s) a 2.100 m por encima del valle; el mismo pasillo al
 // principio, con los bloques de aire y al final (bucle: u = t al principio, u = t - END al final)
 const BIG = { v: 35, psi: 0, x0: 0, y0: 1500, z0: 350 };
-function bigU(t) { return t < 12.2 ? t : ((t >= 32.4 && t < 36.6) || t >= 43.2) ? t - END : null; }
+function bigU(t) { return t < TT.cut0 + 0.3 ? t : ((t >= 32.4 && t < 36.6) || t >= 43.2) ? t - END : null; }
 function bigBase(t) { const u = bigU(t) ?? 0, d = BIG.v * u; return { x: BIG.x0 - Math.cos(BIG.psi) * d, y: BIG.y0, z: BIG.z0 + Math.sin(BIG.psi) * d }; }
+const MAN = { az: 9, wz: 2 * Math.PI / 6.4, ay: 5, wy: 2 * Math.PI / 4.7 };
 function bigPose(t) {
-  const u = bigU(t); if (u === null) return { on: false, x: 0, y: -900, z: 0, lift: 0 };
+  const u = bigU(t); if (u === null) return { on: false, x: 0, y: -900, z: 0, lift: 0, yaw: 0, roll: 0, pitch: 0 };
   const B = bigBase(t), lift = t > 40 ? 5 * eio(clamp((t - TT.lift) / 1.4)) * (1 - eio(clamp((t - 52.4) / 3.2))) : 0;
-  return { on: true, x: B.x, y: B.y + lift, z: B.z, lift };
+  const dz = MAN.az * Math.sin(MAN.wz * u), vz = MAN.az * MAN.wz * Math.cos(MAN.wz * u), az = -MAN.az * MAN.wz * MAN.wz * Math.sin(MAN.wz * u);
+  const dy = MAN.ay * Math.sin(MAN.wy * u + 1.0), vy = MAN.ay * MAN.wy * Math.cos(MAN.wy * u + 1.0);
+  return { on: true, x: B.x, y: B.y + lift + dy, z: B.z + dz, lift, yaw: Math.atan2(vz, BIG.v), roll: 0.036 * az, pitch: Math.atan2(vy, BIG.v) * 0.8 };
 }
 // un punto del avión (coordenadas propias: morro en -x, alas en ±z) en el mundo
 function bigLocal(P, lx, ly, lz, out) { const c = Math.cos(BIG.psi), s = Math.sin(BIG.psi); return out.set(P.x + lx * c + lz * s, P.y + ly, P.z - lx * s + lz * c); }
@@ -1325,7 +1329,7 @@ function bigLocal(P, lx, ly, lz, out) { const c = Math.cos(BIG.psi), s = Math.si
 function acroPose(t) { const k = t - TT.acro; return { k, x: -2600 - 40 * k, y: 520 + Math.sin(k * 1.1) * 2.5, z: -650, roll: Math.PI * eio(clamp((t - TT.inv + 0.85) / 0.75)) }; }
 function skyAt(t) {
   const P = bigPose(t), B = S.big; B.visible = P.on; B.position.set(P.x, P.y, P.z);
-  _e3.set(Math.sin(2 * Math.PI * 4 * t / END) * 0.02, BIG.psi, Math.sin(2 * Math.PI * 3 * t / END) * 0.008 + (P.lift ? 0.02 * Math.sin(clamp((t - TT.lift) / 1.4) * Math.PI) : 0), 'YXZ'); B.quaternion.setFromEuler(_e3);
+  _e3.set(P.roll || 0, BIG.psi + (P.yaw || 0), -(P.pitch || 0) - (P.lift ? 0.03 * Math.sin(clamp((t - TT.lift) / 1.4) * Math.PI) : 0), 'YZX'); B.quaternion.setFromEuler(_e3);      // rumbo, cabeceo y alabeo
   // la avioneta y su humo de exhibición
   const A = acroPose(t); S.acro.visible = A.k > 0 && A.k < 4.0;
   if (S.acro.visible) { S.acro.position.set(A.x, A.y, A.z); S.acro.rotation.set(A.roll, 0, 0.05); S.prop.rotation.x = t * 40; }
@@ -1364,7 +1368,7 @@ function skyAt(t) {
 // ---------------------------------------------------------------- el aula: la equis, el reloj, el dibujo de tiza (se despega con el ala y vuelve al final)
 function drawAt(t) { return 1 - win(t, TT.emerge + 0.15, 0.7) + win(t, TT.back + 0.2, 1.0); }
 function roomAt(t) {
-  const ck = 0; M.cross.opacity = 0; S.cross.visible = false; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
+  const ck = cwin(t, TT.crack, TT.emerge - 0.2, 0.12, 0.3); M.cross.opacity = ck * 0.95; S.cross.visible = ck > 0.01; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
   S.clockM.rotation.z = -Math.PI * 2 * 4 * t / END; S.clockH.rotation.z = -Math.PI * 2 * t / END;
   const dk = drawAt(t); M.boardDraw.opacity = dk; S.boardDraw.visible = dk > 0.005;
 }
@@ -1431,19 +1435,23 @@ function sceneAt(t) { skyAt(t); roomAt(t); tunnelAt(t); birdsAt(t); }
 // propia cámara; C) y E) el túnel; D) y F) el avión en el cielo; G) vuelta al plano del dron (bucle: el último fotograma enlaza con el primero).
 // Un plano «big» o «acro» lleva la cámara pegada al avión o a la avioneta (las claves son posiciones relativas).
 let SHOTS = [], CUTS = [];
-const K0C = [[96, 50, 30], [-12, 6, 0], 54];                      // dron: detrás, arriba y a la izquierda del avión (se ven las alas por encima)
+const K0C = [[94, 50, 34], [-12, 5, 0], 54];                      // dron: detrás, arriba y a la izquierda del avión (se ven las alas por encima)
+// el dron no se queda quieto: barre de izquierda a derecha y baja. Las claves de antes del 0 y de después de END son las mismas, así la
+// cámara ya viene moviéndose en el primer fotograma y el bucle no se nota (misma posición y misma velocidad).
+const LOOPK = [[-1.6, [104, 58, 62], [-13, 6, 0], 54], [0, ...K0C], [1.5, [82, 41, -6], [-10, 3, 0], 52], [3.0, [70, 31, -42], [-7, 1, 0], 50]];
 function buildCam() {
   const TX = TUN.x, TY = TUN.y, TZ = TUN.z, SK = (a, l, f) => [a, l, f];
   SHOTS = [
-    [0, [                                                                                     // A: el avión vuela sobre el valle (un solo plano)
-      [0, ...K0C],
-      [K.mal1, [89, 46, 34], [-11, 5, 0], 54],
-      [K.n575_2 - 0.1, [78, 40, 38], [-9, 4, 0], 53],                                          //    575 t: más cerca
-      [K.contaron3 - 0.4, [72, 37, 40], [-8, 3.5, 0], 53],
-    ], 'big'],
-    [K.contaron3 - 0.4, [                                                                     // B: la pizarra; el ala sale de ella; el «mito»; el túnel de viento
-      [K.contaron3 - 0.4, [0.28, 1.66, 4.35], [0.02, 1.62, -3.0], 34],
-      [K.ala3 + 0.05, [0.3, 1.66, 4.2], [0.02, 1.6, -3.0], 34],
+    [0, LOOPK.map(k => [k[0], k[1], k[2], k[3]]), 'big'],                                     // A: el avión vuela sobre el valle (3 s, cámara en movimiento)
+    [TT.cut0, [                                                                               // B: «…y esa explicación»: la pizarra; la equis; la NASA; 575 t; el ala sale
+      [TT.cut0, [1.15, 1.5, 6.6], [0.15, 1.85, -3.0], 37],
+      [K.mal1 - 0.12, [0.36, 1.62, 4.15], [0.13, 1.62, -3.0], 34],                                 //    «está mal»: la equis
+      [K.nasa2 + 0.35, [0.22, 1.63, 3.85], [0.12, 1.62, -3.0], 34],                               //    «lo dice la NASA»: el sello
+      [K.aire2, [-1.5, 1.8, 4.6], [0.05, 1.72, -3.0], 35],                                         //    la cámara rodea la pizarra
+      [K.n575_2 + 0.3, [-0.2, 2.15, 5.6], [0.0, 1.55, -3.0], 36],
+      [K.final2, [1.45, 1.75, 4.9], [0.15, 1.62, -3.0], 35],
+      [K.ala3 - 0.25, [0.42, 1.66, 4.25], [0.04, 1.6, -3.0], 34],                                 //    «el ala»: sale de la pizarra
+      [K.ala3 + 0.05, [0.32, 1.66, 4.2], [0.02, 1.6, -3.0], 34],
       [TT.fly1 + 0.05, [0.5, 1.82, 6.3], [0.42, 1.6, TZ], 34],
       [K.camino3, [0.5, 1.77, 5.8], [0.45, 1.56, TZ], 34],
       [K.vez3, [0.7, 1.71, 5.5], [0.7, TY, TZ], 34],                                               //    «a la vez»
@@ -1465,8 +1473,8 @@ function buildCam() {
       [K.cientos7 - 0.03, [1.12, 1.6, 6.6], [1.1, TY - 0.12, TZ], 34],
     ]],
     [K.cientos7 - 0.03, [                                                                     // D: el avión en el cielo (desde detrás y abajo): los bloques de aire caen de las alas
-      [K.cientos7 - 0.03, [26, -20, 96], [2, -12, 0], 52],
-      [K.si8 - 0.03, [22, -19, 92], [2, -13, 0], 51],
+      [K.cientos7 - 0.03, [34, -17, 94], [2, -12, 0], 52],
+      [K.si8 - 0.03, [4, -23, 97], [2, -13, 0], 51],
     ], 'big'],
     [K.si8 - 0.03, [                                                                          // E: acción y reacción; la presión
       [K.si8 - 0.03, [0.78, 1.75, 7.3], [0.78, TY - 0.05, TZ], 34],
@@ -1477,15 +1485,15 @@ function buildCam() {
       [K.levanta9 - 0.05, [0.45, 1.64, 6.2], [0.45, TY, TZ], 34],
     ]],
     [K.levanta9 - 0.05, [                                                                     // F: el avión sube (la cámara no sube con él); no flota: la estela
-      [K.levanta9 - 0.05, [26, -20, 96], [2, -12, 0], 52],
+      [K.levanta9 - 0.05, [18, -20, 98], [2, -12, 0], 52],
       [K.respuesta10, [36, -21, 92], [2, -12, 0], 52],
       [K.flota10, [62, -24, 82], [0, -15, 0], 53],
-      [K.rato10, [70, -25, 80], [0, -16, 0], 53],
-      [K.ventanilla11 - 0.03, [72, -25, 79], [0, -16, 0], 53],
+      [K.rato10, [84, -30, 58], [0, -16, 0], 53],
+      [K.ventanilla11 - 0.03, [88, -31, 52], [0, -16, 0], 53],
     ], 'big'],
     [K.ventanilla11 - 0.03, [                                                                 // G: vuelta al dron del principio (bucle)
-      [K.ventanilla11 - 0.03, [116, 60, 16], [-14, -40, 0], 54],                                  //    (el avión arriba: la encuesta va debajo)
-      [END, ...K0C],
+      [K.ventanilla11 - 0.03, [128, 66, -20], [-14, -40, 0], 54],                                 //    (el avión arriba: la encuesta va debajo)
+      ...LOOPK.map(k => [k[0] + END, k[1], k[2], k[3]]),                                       //    y enlaza con el principio (misma velocidad)
     ], 'big'],
   ];
   CUTS = SHOTS.slice(1).map(s => s[0]);
@@ -1547,7 +1555,7 @@ function cross(P, k, s = 34) {
 }
 function pollPills(t, k) {
   if (k <= 0.01) return;
-  const items = [['VENTANILLA', '#62E3D4', 290], ['PASILLO', '#FFC24A', 790]], y = 1370;
+  const items = [['VENTANILLA', '#62E3D4', 290], ['PASILLO', '#FFC24A', 790]], y = 1515;
   hg.save(); hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '5px';
   items.forEach(([txt, col, x], i) => {
     const kk = backOut(clamp((k - i * 0.15) / 0.5)), pulse = 1 + 0.03 * Math.sin(t * 7 + i * Math.PI);
@@ -1576,7 +1584,7 @@ function stamp2(P, k, k2 = 1) {
 }
 // los asientos de una fila: ventanilla y pasillo
 function seats(t, k) {
-  if (k <= 0.01) return; const y = 1150, sw = 92, sh = 104, gap = 14, aisle = 70, n = 6, total = n * sw + (n - 2) * gap + aisle, x0 = 540 - total / 2;
+  if (k <= 0.01) return; const y = 1290, sw = 92, sh = 104, gap = 14, aisle = 70, n = 6, total = n * sw + (n - 2) * gap + aisle, x0 = 540 - total / 2;
   hg.save(); hg.globalAlpha = clamp(k * 2);
   hg.fillStyle = 'rgba(0,0,0,.55)'; rr(hg, x0 - 40, y - 90, total + 80, sh + 150, 28); hg.fill();
   for (let i = 0; i < n; i++) { const left = i < 3, j = left ? i : i - 3, x = x0 + (left ? 0 : 3 * sw + 2 * gap + aisle) + j * (sw + gap);
@@ -1618,7 +1626,7 @@ function hudAt(t) {
   bracketMsg(t, 'LO QUE LO SOSTIENE · ???', HC.amber, cw2(K.final2, K.respuesta10, 0.3, 0.12), true);
   bracketMsg(t, 'LO QUE LO SOSTIENE ↓', HGr, cw2(K.respuesta10, K.rato10 + 0.6, 0.12, 0.3), false);
   // 1-2: la NASA y las 575 toneladas
-  stamp2({ x: 540, y: 1250, ok: true }, cw2(K.mal1 - 0.03, K.sostiene2, 0.15, 0.25), cw2(K.nasa2 - 0.05, K.sostiene2, 0.2, 0.25));      // «está mal… lo dice la NASA»
+  { _hv.set(0.2, BOARD.y, BOARD.z); stamp2(proj(_hv), cw2(K.nasa2 - 0.05, K.sostiene2 + 0.5, 0.15, 0.3), 1); }      // «lo dice la NASA», sobre el dibujo tachado
   bigFig('575 t', 'AIRBUS A380 · PESO MÁXIMO AL DESPEGAR', HC.white, cw2(K.n575_2 - 0.05, K.final2 + 0.05, 0.2, 0.25), 1300);
   srcLine('NASA GLENN · UNIVERSIDAD DE CAMBRIDGE · AIRBUS · «CIENTOS DE TONELADAS»: CÁLCULO DE EJEMPLO', cw2(K.nasa2, K.rato10, 0.3, 0.3));
   // 3-4: las bolitas: el «mito» y el humo de verdad
@@ -1647,8 +1655,8 @@ function hudAt(t) {
   // 10: la respuesta
   bigFig('NO FLOTA', 'SE SUJETA EMPUJANDO EL AIRE HACIA ABAJO', HC.amber, cw2(K.flota10 - 0.05, K.rato10 + 0.4, 0.2, 0.25), 1290);
   // 11: ¿ventanilla o pasillo?
-  seats(t, cw2(K.ventanilla11 - 0.1, END - 0.35, 0.35, 0.3));
-  pollPills(t, cw2(K.ventanilla11 - 0.05, END - 0.35, 0.35, 0.3));
+  seats(t, cw2(K.ventanilla11 - 0.1, K.profe11 + 0.25, 0.35, 0.3));            // se quita antes de que el avión baje al centro (bucle)
+  pollPills(t, cw2(K.ventanilla11 - 0.05, K.profe11 + 0.25, 0.35, 0.3));
 }
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
@@ -1714,8 +1722,8 @@ window.renderCover = function () {
   END = Math.ceil((lines[lines.length - 1].end + 1.25) * 2) / 2;          // ≈ 1,3 s de cola tras la última palabra
   const atL = (li, word, k = 1) => { const exact = word.startsWith('='), key = norm(word); let c = 0; for (const w of WORDS) if (w.li === li && (exact ? w.n === key : w.n.startsWith(key)) && ++c === k) return w.start - 0.03; console.error('ERROR sin palabra ' + li + ' ' + word); return 1e9; };
   K = {
-    explicaron1: atL(1, 'explicaron'), colegio1: atL(1, 'colegio'), avion1: atL(1, 'avion'), mal1: atL(1, 'mal'),
-    nasa2: atL(2, 'nasa'), sostiene2: atL(2, 'sostiene'), avion2: atL(2, 'avion'), n575_2: atL(2, '=575'), toneladas2: atL(2, 'toneladas'), final2: atL(2, 'final'),
+    explicaron1: atL(1, 'explicaron'), esa1: atL(1, 'esa'), colegio1: atL(1, 'colegio'), avion1: atL(1, 'avion'), mal1: atL(1, 'mal'),
+    nasa2: atL(2, 'nasa'), sostiene2: atL(2, 'sostiene'), aire2: atL(2, 'aire'), avion2: atL(2, 'avion'), n575_2: atL(2, '=575'), toneladas2: atL(2, 'toneladas'), final2: atL(2, 'final'),
     contaron3: atL(3, 'contaron'), ala3: atL(3, 'ala'), aire3: atL(3, 'aire'), curva3: atL(3, 'curva'), arriba3: atL(3, 'arriba'), camino3: atL(3, 'camino'), corre3: atL(3, 'corre'), vez3: atL(3, 'vez'),
     pero4: atL(4, 'pero'), cita4: atL(4, 'cita'), tunel4: atL(4, 'tunel'), viento4: atL(4, 'viento'), llega4: atL(4, 'llega'), antes4: atL(4, 'antes'), mucho4: atL(4, 'mucho'), antes4b: atL(4, 'antes', 2),
     si5: atL(5, '=si'), curva5: atL(5, 'curva'), boca5: atL(5, 'boca'), abajo5: atL(5, 'abajo'),
@@ -1724,7 +1732,7 @@ window.renderCover = function () {
     si8: atL(8, '=si'), abajo8: atL(8, 'abajo'), empuja8b: atL(8, 'empuja', 2), arriba8: atL(8, 'arriba'),
     arriba9: atL(9, 'arriba'), baja9: atL(9, 'baja'), sube9: atL(9, 'sube'), diferencia9: atL(9, 'diferencia'), levanta9: atL(9, 'levanta'), entero9: atL(9, 'entero'),
     respuesta10: atL(10, 'respuesta'), flota10: atL(10, 'flota'), rato10: atL(10, 'rato'),
-    ventanilla11: atL(11, 'ventanilla'), pasillo11: atL(11, 'pasillo'), mandaselo11: atL(11, 'mandaselo'),
+    ventanilla11: atL(11, 'ventanilla'), pasillo11: atL(11, 'pasillo'), mandaselo11: atL(11, 'mandaselo'), profe11: atL(11, 'profe'),
   };
   mats(); buildMats(); buildSceneMats(); buildRig();
   { const pm = new THREE.PMREMGenerator(renderer), es = new THREE.Scene(), sk = skyLand(); es.add(sk);                 // el reflejo del cielo y del valle

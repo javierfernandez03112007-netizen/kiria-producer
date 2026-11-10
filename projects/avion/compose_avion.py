@@ -112,17 +112,19 @@ def sfx_track(path):
     K = lambda w, li, k=1: at(w, k, li)
     tilt, back, pulse = K("inclinada", 6) - 0.2, K("ventanilla", 11) + 0.3, K("túnel", 4) + 0.3
     # 1: el dron sigue al avión (motor y viento todo el plano; al final vuelve el mismo plano → bucle); el sello «INCORRECTA»
-    cut = K("te", 3) - 0.23
+    cut = K("esa", 1) - 0.05                                     # del avión a la pizarra («…y esa explicación»)
     loop("motor", 0.0, cut + 0.1, 0.26, 0.35)
     loop("nubes", 0.0, cut + 0.1, 0.08, 0.35)
     loop("motor", K("ventanilla", 11) - 0.03, END - K("ventanilla", 11) + 0.05, 0.26, 0.35)
-    put("sello", K("mal", 1), 0.5, 0.55, 0.15)
+    put("whoosh", cut - 0.18, 0.6, 0.3, 0.2)
+    put("tiza_tachar", K("mal", 1), 0.9, 0.5, 0.3)
     put("impacto", K("mal", 1), 0.7, 0.24, 0.3)
     # 2: el sello de la NASA; arriba, al avión; las 575 t; la pregunta pendiente; vuelta a la pizarra
-    put("tap", K("nasa", 2), 0.4, 0.24, 0.12)
+    put("sello", K("nasa", 2), 0.5, 0.5, 0.15)
+    put("whoosh", K("aire", 2) - 0.6, 0.6, 0.16, 0.2)
+    put("whoosh", K("575", 2) - 0.2, 0.6, 0.14, 0.2)
     put("cifra", K("575", 2), 0.5, 0.4, 0.15)
     put("pregunta", K("final", 2), 0.9, 0.18, 0.3)
-    put("whoosh", cut - 0.12, 0.6, 0.26, 0.2)
     # 3: el dibujo de tiza se vuelve sólido y sale volando; «curva por arriba»; las dos bolitas; «a la vez»
     fly1 = K("ala", 3) + 0.22 + 0.85
     put("solido", K("ala", 3), 0.6, 0.42, 0.2)

@@ -17,17 +17,21 @@ function buildTimes() {
     wake: K.respuesta10, poll: K.ventanilla11,                            // 10-11
     back: K.ventanilla11 + 0.3,                                           // el ala vuelve a la pizarra (bucle)
   };
+  TT.cut0 = K.esa1 - 0.05;                                               // del avión a la pizarra
   TT.fly0 = TT.emerge + 0.22; TT.fly1 = TT.fly0 + 0.85; TT.curva = TT.fly1 - 0.05; TT.balls = TT.fly1 + 0.15;   // el ala vuela de la pizarra a su sitio
 }
 // ---------------------------------------------------------------- el avión gigante: vuela de verdad (35 m/s) a 2.100 m por encima del valle; el mismo pasillo al
 // principio, con los bloques de aire y al final (bucle: u = t al principio, u = t - END al final)
 const BIG = { v: 35, psi: 0, x0: 0, y0: 1500, z0: 350 };
-function bigU(t) { return t < 12.2 ? t : ((t >= 32.4 && t < 36.6) || t >= 43.2) ? t - END : null; }
+function bigU(t) { return t < TT.cut0 + 0.3 ? t : ((t >= 32.4 && t < 36.6) || t >= 43.2) ? t - END : null; }
 function bigBase(t) { const u = bigU(t) ?? 0, d = BIG.v * u; return { x: BIG.x0 - Math.cos(BIG.psi) * d, y: BIG.y0, z: BIG.z0 + Math.sin(BIG.psi) * d }; }
+const MAN = { az: 9, wz: 2 * Math.PI / 6.4, ay: 5, wy: 2 * Math.PI / 4.7 };
 function bigPose(t) {
-  const u = bigU(t); if (u === null) return { on: false, x: 0, y: -900, z: 0, lift: 0 };
+  const u = bigU(t); if (u === null) return { on: false, x: 0, y: -900, z: 0, lift: 0, yaw: 0, roll: 0, pitch: 0 };
   const B = bigBase(t), lift = t > 40 ? 5 * eio(clamp((t - TT.lift) / 1.4)) * (1 - eio(clamp((t - 52.4) / 3.2))) : 0;
-  return { on: true, x: B.x, y: B.y + lift, z: B.z, lift };
+  const dz = MAN.az * Math.sin(MAN.wz * u), vz = MAN.az * MAN.wz * Math.cos(MAN.wz * u), az = -MAN.az * MAN.wz * MAN.wz * Math.sin(MAN.wz * u);
+  const dy = MAN.ay * Math.sin(MAN.wy * u + 1.0), vy = MAN.ay * MAN.wy * Math.cos(MAN.wy * u + 1.0);
+  return { on: true, x: B.x, y: B.y + lift + dy, z: B.z + dz, lift, yaw: Math.atan2(vz, BIG.v), roll: 0.036 * az, pitch: Math.atan2(vy, BIG.v) * 0.8 };
 }
 // un punto del avión (coordenadas propias: morro en -x, alas en ±z) en el mundo
 function bigLocal(P, lx, ly, lz, out) { const c = Math.cos(BIG.psi), s = Math.sin(BIG.psi); return out.set(P.x + lx * c + lz * s, P.y + ly, P.z - lx * s + lz * c); }
@@ -35,7 +39,7 @@ function bigLocal(P, lx, ly, lz, out) { const c = Math.cos(BIG.psi), s = Math.si
 function acroPose(t) { const k = t - TT.acro; return { k, x: -2600 - 40 * k, y: 520 + Math.sin(k * 1.1) * 2.5, z: -650, roll: Math.PI * eio(clamp((t - TT.inv + 0.85) / 0.75)) }; }
 function skyAt(t) {
   const P = bigPose(t), B = S.big; B.visible = P.on; B.position.set(P.x, P.y, P.z);
-  _e3.set(Math.sin(2 * Math.PI * 4 * t / END) * 0.02, BIG.psi, Math.sin(2 * Math.PI * 3 * t / END) * 0.008 + (P.lift ? 0.02 * Math.sin(clamp((t - TT.lift) / 1.4) * Math.PI) : 0), 'YXZ'); B.quaternion.setFromEuler(_e3);
+  _e3.set(P.roll || 0, BIG.psi + (P.yaw || 0), -(P.pitch || 0) - (P.lift ? 0.03 * Math.sin(clamp((t - TT.lift) / 1.4) * Math.PI) : 0), 'YZX'); B.quaternion.setFromEuler(_e3);      // rumbo, cabeceo y alabeo
   // la avioneta y su humo de exhibición
   const A = acroPose(t); S.acro.visible = A.k > 0 && A.k < 4.0;
   if (S.acro.visible) { S.acro.position.set(A.x, A.y, A.z); S.acro.rotation.set(A.roll, 0, 0.05); S.prop.rotation.x = t * 40; }
@@ -74,7 +78,7 @@ function skyAt(t) {
 // ---------------------------------------------------------------- el aula: la equis, el reloj, el dibujo de tiza (se despega con el ala y vuelve al final)
 function drawAt(t) { return 1 - win(t, TT.emerge + 0.15, 0.7) + win(t, TT.back + 0.2, 1.0); }
 function roomAt(t) {
-  const ck = 0; M.cross.opacity = 0; S.cross.visible = false; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
+  const ck = cwin(t, TT.crack, TT.emerge - 0.2, 0.12, 0.3); M.cross.opacity = ck * 0.95; S.cross.visible = ck > 0.01; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
   S.clockM.rotation.z = -Math.PI * 2 * 4 * t / END; S.clockH.rotation.z = -Math.PI * 2 * t / END;
   const dk = drawAt(t); M.boardDraw.opacity = dk; S.boardDraw.visible = dk > 0.005;
 }
