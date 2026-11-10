@@ -173,6 +173,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   la avioneta (claves relativas) y desenfoque de movimiento solo del movimiento relativo (si no, todo sale borroso). Render: ramas
   `render-avion2-1…6`. Lecciones: (6) en el suelo, cualquier color por altura baja (grava del río) pinta charcos en las hondonadas: atarlo a
   la distancia al río; (7) sprites de nube vistos desde arriba = manchas grises: ponerlas a la altura de la cámara.
+  **Versión 3 (mismo día; Javi: «está un poco lento, al principio es una imagen monótona, que se pase antes del avión a la pizarra y se
+  mueva la cámara… y el avión que se vaya moviendo a los lados, arriba, abajo»)**: el dron dura solo hasta «…y esa explicación» (3 s) y
+  barre alrededor del avión bajando; el avión hace eses (±9 m a los lados, ±5 m arriba y abajo, con alabeo y cabeceo, todo función de u:
+  vale el bucle); la pizarra entra en «esa explicación» con la cámara rodeándola (equis en «mal», sello en «NASA», 575 t); en el cielo la
+  cámara también gira. Bucle con velocidad: las claves del dron de antes del 0 y de después de END son las mismas (`LOOPK`), así el
+  primer fotograma ya se mueve. Ramas `render-avion3-1…6`.
 - **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
   vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
   tipo y con 6 h o más entre ellos; 10:00 y las noticias cuanto antes), las dos semanas día a día, lo que necesita Javi con fecha y la

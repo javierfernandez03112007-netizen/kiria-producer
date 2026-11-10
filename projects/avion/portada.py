@@ -1,6 +1,6 @@
 """Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Por qué vuela un avión».
 Base: el plano del dron: el avión sobre el valle (sin HUD):
-    COVER=1 COVER_T=1.3 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+    COVER=1 COVER_T=0.05 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos («MAL» en rojo). Sin precios."""
 import os
 import sys
