@@ -3,7 +3,57 @@
 Lo escribe cada día el chat «Análisis y plan · kiria.ai» (instrucciones en `ANALISIS_DIARIO.md`). La misma versión está en Notion,
 página «📈 Análisis de contenido · kiria.ai».
 
-## Última actualización: lunes 9-11-2026, 10:00
+## Última actualización: martes 10-11-2026, 10:00
+
+**Sin datos nuevos de Instagram:** la última captura es la de ayer a las 08:34 (≈ 26 h). Faltan la de ayer a las 20:33 y la de hoy a las
+08:33: **el chat de métricas se ha vuelto a parar.** Lo único nuevo es el primer dato de TikTok: **ADE en TikTok, 27.972 visualizaciones
+en 45 h** (239 compartidos, 7 comentarios; sin tiempo visto ni guardados), más que en Instagram en su primer día. El análisis de ayer
+(abajo) sigue valiendo.
+
+### Lo que pide hoy la parrilla (v3 del chat de producción)
+- Lun 9: GTA 6 (18:00). Mar 10: sin vídeo nuevo. Mié 11: carrera o creencia rota: **el chat de producción ya está haciendo «Por qué
+  vuela un avión… la explicación del colegio está mal»** (creencia rota con autoridad, la fórmula de ADE y Química), así que el
+  miércoles está cubierto. Jue 12: capítulo 1 de la serie de Javi. Vie 13: «Cómo se hace un vídeo de 900.000». **Sáb 14: historia real
+  contada en orden, «la que proponga el análisis»** → es la propuesta de hoy.
+- Psicología queda fuera de la parrilla (decisión de Javi). Neveras, de reserva para el sábado.
+
+### Vídeo recomendado: «El hombre que vendió la Torre Eiffel» (sábado 14 a las 10:30)
+- **Por qué**: historia real contada en orden, el formato con la mejor retención del canal (Brasil: 80 % pasa de 3 s, 48 s de media) y
+  que tira de alcance (+13.928 en un día). Además sirve al público de negocios: es una estafa de manual (secreto, prisa y un soborno que
+  la hace creíble). Gancho con giro («y el que la compró ni siquiera lo denunció»), pregunta al principio, respuesta al final y envío
+  («mándaselo a quien se fía de todo»). Es universal (vale para España y Latinoamérica).
+- **Formato**: Así es por dentro (historia). **Gancho**: 21 + 16 (un hecho imposible + giro). **Duración**: 170 palabras ≈ 57 s.
+- **Primer segundo**: la Torre Eiffel en maqueta con una etiqueta de precio «VENDIDA» colgada de la punta y una grúa que empieza a
+  desmontar la primera viga.
+- **Cada frase**: periódico de 1925 que cae y se abre («deteriorada», «una fortuna») · un hombre con sombrero que lo lee y se le ilumina
+  un bombillo · tarjeta «ALTO CARGO DEL GOBIERNO» (inventada, sin escudo real) · mesa de hotel con cinco chatarreros en sillas · la torre
+  convertida en un montón de chatarra con báscula · un dedo en los labios «SECRETO» · foco sobre la silla del más inseguro · un sobre
+  que pasa por debajo de la mesa («SOBORNO») · la duda se convierte en apretón de manos · maletín que se va por la puerta · un buzón y un
+  periódico que nunca llega · la cara del comprador que se pone roja («VERGÜENZA») · la etiqueta «VENDIDA» vuelve a la torre (bucle).
+- **Datos y fuentes**: Victor Lustig, París, 1925; un artículo de prensa sobre el mal estado y el coste de la torre; se hizo pasar por
+  funcionario, reunió a chatarreros, eligió a André Poisson, le pidió un soborno, Poisson no lo denunció por vergüenza y Lustig volvió a
+  intentarlo (Smithsonian / Mental Floss / Ripley's / Wikipedia, «Victor Lustig»). **CONFIRMAR**: el hotel (se suele citar el Hôtel de
+  Crillon: en el guion solo «un hotel de lujo»), las cantidades (varían según la fuente: no se dicen) y cómo acabó el segundo intento (se
+  cuenta que esa vez el comprador fue a la policía: en el guion solo «volvió a intentarlo»). Sin logos.
+
+**Guion para pegar en ElevenLabs:**
+
+```
+Un hombre vendió la Torre Eiffel… y el que la compró ni siquiera lo denunció. ¿Por qué? Te lo digo al final. París, mil novecientos veinticinco. Un periódico cuenta que la torre está muy deteriorada y que mantenerla cuesta una fortuna. Victor Lustig lo lee… y tiene una idea. Se hace pasar por un alto cargo del Gobierno. Cita en secreto a varios chatarreros en un hotel de lujo y les dice: la torre se desmonta y se vende como chatarra. Pero ni una palabra: si se entera la gente, habrá escándalo. Elige al más inseguro, André Poisson. Y cuando lo ve dudar, Lustig hace algo genial: le pide un soborno. Y Poisson se lo cree todo: si pide dinero bajo mano, tiene que ser un funcionario de verdad. Paga. Lustig desaparece con el dinero… y espera la noticia. Nunca llega. La respuesta: a Poisson le dio tanta vergüenza haber picado… que prefirió callarse. Así que Lustig volvió a intentarlo. ¿Tú habrías picado? Mándaselo a quien se fía de todo.
+```
+
+### Alternativas
+1. **Neveras hackeadas** (reserva del sábado; guion en el calendario).
+2. **Matemáticas vs Física** (duelo para el lunes 16, «carrera con creencia rota» de la semana 2): falta el dato de empleo por titulación.
+
+### Avisos
+- El chat de métricas no ha capturado Instagram desde ayer a las 08:34.
+- **ElevenLabs sin saldo de efectos** (quedan 3 créditos, MEMORIA 9-11): el vídeo del sábado necesita efectos nuevos (torre, grúa, chatarra,
+  sobre, puerta). O se amplía el saldo o se reutilizan efectos del canal.
+
+---
+
+## Análisis del lunes 9-11-2026, 10:00
 
 **Datos:** captura de Metricool de hoy a las 08:34 (**vuelve la captura de la mañana**) y la de ayer a las 20:34. 24 vídeos de @kiria.ai
 en Instagram. **Economía (8.618) y el perro robot (1.441) no cambian desde hace días**: parece que Metricool ha dejado de actualizarlos
