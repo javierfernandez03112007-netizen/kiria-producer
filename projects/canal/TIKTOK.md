@@ -119,5 +119,11 @@ todo lo necesario para profesionalizarla».
 
     #GTA6 #gaming #videojuegos #PS5 #Xbox
     ```
+15. **Te explicaron mal por qué vuela un avión** (ciencia: creencia rota)
+    ```
+    ✈️ Te explicaron mal por qué vuela un avión (lo dice la NASA). El aire de arriba no «llega a la vez»: llega antes. Lo que lo sujeta es otra cosa 👀 ¿Ventanilla o pasillo? Mándaselo a tu profe de física 👇
+
+    #aviones #física #ciencia #curiosidades #NASA
+    ```
 No subir a TikTok los dos vídeos de lanzamiento («Ni una sola cámara» y «Tu producto, en 3D»): dicen «comenta KIRIA» y «el domingo»,
 que ya no valen.

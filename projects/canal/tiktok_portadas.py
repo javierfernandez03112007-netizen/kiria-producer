@@ -9,7 +9,7 @@ import numpy as np
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 P = os.path.join(ROOT, "..")
-VIDEOS = ["derecho", "cripto", "medicina", "quimica", "cerradura", "robo_banco", "economia", "magisterio", "gafas", "promo_web", "robot_neuronas", "ade", "tapas", "gta6"]
+VIDEOS = ["derecho", "cripto", "medicina", "quimica", "cerradura", "robo_banco", "economia", "magisterio", "gafas", "promo_web", "robot_neuronas", "ade", "tapas", "gta6", "avion"]
 SHIFT = 270
 out = os.path.join(ROOT, "tiktok", "portadas")
 os.makedirs(out, exist_ok=True)

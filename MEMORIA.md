@@ -143,6 +143,24 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   arriba: el coche que corre va por una avenida sin palmeras; (4) bucle exacto con texturas que corren: desplazamientos con vueltas
   enteras (`k · t / END`) y las luces de la ciudad se apagan al volver al móvil; (5) la hoja de un objeto que se despega tiene que separarse
   hacia la cámara e inclinarse: si solo gira sobre su borde, no se ve.
+- **«Te lo explicaron mal: por qué vuela un avión»** (`projects/avion/`, 10-11-2026): Javi: «vamos a hacer otro vídeo para hoy, sobre por
+  qué los aviones se mantienen en el aire». Guion (170 palabras): creencia rota con autoridad («te explicaron en el colegio… y esa
+  explicación está mal. Lo dice la NASA»), cifra (575 t, A380), reenganche «¿cómo vuela un avión boca abajo?», respuesta «un avión no
+  flota: se sujeta empujando el aire hacia abajo… todo el rato», cierre «¿ventanilla o pasillo?» + «mándaselo a tu profe de física». Su MP3
+  (62,1 s) → 55,4 s sin acelerar (vídeo de 56,5 s). Escena: aula sin techo en un campo; un A380 genérico en el cielo detrás de la pizarra
+  (teleobjetivo: a 135 m y 50 m de alto se lee entero en vertical); la pizarra en dos capas (el dibujo de tiza se despega: el ala de tiza se
+  rellena y sale volando en 3D); el «mito» con dos bolitas pegadas al ala y una línea de meta en el borde de salida; túnel de viento con
+  fondo NEGRO (como el de Cambridge) y flujo CALCULADO (ala de Joukowski con la condición de Kutta: líneas de corriente, pulsos de humo,
+  la bolita de arriba cruza la meta 0,5 s antes, la corriente que sale hacia abajo con 9°, colores de presión Cp); avioneta roja con tren
+  fijo y humo que se da la vuelta; el avión visto de frente y desde abajo (alas a lo ancho) con bloques de aire que caen, flechas que lo
+  levantan y la estela «todo el rato», que sigue cayendo en el plano final del aula. **Entregado el 10-11-2026** (`out/avion.mp4`,
+  56,5 s, 60 fps, 39 MB, −14,9 LUFS, uniones y bucle limpios; subida hoy a las 20:00). Render en las 6 máquinas (`render-avion-1…6`,
+  ≈ 15 min). Efectos: todos reutilizados de la biblioteca (sin saldo de ElevenLabs); «jet» y «helice» son mezclas más graves/agudas de
+  efectos del canal. Lecciones: (1) en 9:16 con fov 34 el encuadre solo tiene 19,5° de ancho: un avión de 46 m necesita ≈ 150 m de
+  distancia (o fov 50 en el cielo); (2) un InstancedMesh cuyas instancias se mueven necesita `frustumCulled = false` (si no, three.js lo
+  recorta con una esfera vieja y desaparecen el humo o los bloques); (3) un cristal transparente con color, aunque sea al 12 %, aclara a
+  gris un fondo negro detrás: opacidad ≈ 3 %; (4) un cielo azul fuerte hace que se vea todo lo blanco (avión, humo, estela); (5) los
+  subtítulos cambian de altura por plano (entre el avión y la pizarra al principio y al final; arriba en el resto).
 - **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
   vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
   tipo y con 6 h o más entre ellos; 10:00 y las noticias cuanto antes), las dos semanas día a día, lo que necesita Javi con fecha y la
