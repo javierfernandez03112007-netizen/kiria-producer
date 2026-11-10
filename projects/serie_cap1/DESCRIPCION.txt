@@ -1,0 +1,43 @@
+«RETO: 10 CLIENTES EN 30 DÍAS» · Capítulo 1 · El reto · 55 s · Javi a cámara (sus 7 tomas)
+
+DESCRIPCIÓN (Instagram):
+🎯 Capítulo 1: hoy empieza el reto. 10 clientes en 30 días.
+
+Busco 10 negocios —pequeños negocios, empresas o ideas de proyecto con un buen producto o servicio— para hacer crecer sus clientes, sus ventas o sus visualizaciones con Kiria: vídeos con inteligencia artificial, una web para su negocio y su producto en 3D.
+
+📅 Cada jueves, un capítulo nuevo: lo que va pasando con cada negocio, los sí y los no.
+📊 Marcador: 0/10.
+
+💬 ¿Tienes un negocio? Comenta NEGOCIO 👇
+🏷️ −10 % con el código KIRIA10 hasta el 30 de noviembre en kiriaai.com (enlace en la bio).
+
+#reto #emprendimiento #negocios #pymes #marketingdigital #inteligenciaartificial #videosconia #emprendedores #kiria
+
+---
+
+COMENTARIO FIJADO:
+📊 Las 3,6 M son las reproducciones de @kiria.ai en los últimos 30 días (panel de Instagram: 3.616.576).
+🎬 Este vídeo lo hemos editado con IA en kiria. ¿Quieres uno así para tu negocio? → kiriaai.com (enlace en la bio). Capítulo 2: jueves 19.
+
+---
+
+VERSIÓN CORTA (TikTok):
+🎯 Reto: 10 clientes en 30 días. Capítulo 1. Cada jueves te cuento cómo va (los sí y los no). ¿Tienes un negocio? Comenta NEGOCIO 👇 −10 % con KIRIA10 hasta el 30-11 en kiriaai.com
+
+#reto #emprendimiento #negocios #inteligenciaartificial #kiria
+
+---
+
+NOTAS DE ENTREGA:
+- Montaje con las 7 tomas de Javi (a8695 → a8699 → 8707 en 3 trozos → 8709 → 8712), al 106 % de velocidad (rubberband, sin cambiar el tono).
+- Fondo: la pared gris se ha cambiado por listones de nogal (recorte de Javi con Robust Video Matting, bordes descontaminados con el
+  fondo limpio de cada toma); neón «kiria.ai», luz LED detrás del monitor y cuadro con el render del perro robot. El monitor, la mesa y
+  la silla son los de verdad.
+- 3D: la pared se agrieta y revienta y sale «3,6M» (three.js, `web3d/`), que se queda al lado de Javi.
+- Subtítulos por detrás de la cabeza (a petición de Javi; no es la letra Impact de los vídeos del canal) y tarjetas de cristal con lo que dice.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Voz a −15 LUFS.
+- PENDIENTE DE JAVI: en la toma dice «3,7 millones… en tan solo 7 días», pero su captura dice 3,6 M en 30 días. En pantalla va 3,6M.
+  Si regraba esa frase («He generado vídeos con más de 3,6 millones de visualizaciones en 30 días»), se cambia. Dice «Kiria.com»: en
+  pantalla va kiriaai.com. «Te explico el método Kiria»: el cierre lo resuelve con «El método Kiria, cada jueves».
+- Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
+- Subida prevista: jueves 12 a las 10:00.

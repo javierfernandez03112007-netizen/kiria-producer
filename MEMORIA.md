@@ -179,6 +179,23 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   vale el bucle); la pizarra entra en «esa explicación» con la cámara rodeándola (equis en «mal», sello en «NASA», 575 t); en el cielo la
   cámara también gira. Bucle con velocidad: las claves del dron de antes del 0 y de después de END son las mismas (`LOOPK`), así el
   primer fotograma ya se mueve. Ramas `render-avion3-1…6`.
+- **Serie «Reto: 10 clientes en 30 días», capítulo 1** (`projects/serie_cap1/`, 10-11-2026; sube el jueves 12 a las 10:00): Javi grabó 7
+  tomas a cámara en su mesa (IMG_8695, 8699, tres trozos de 8707 que son una sola toma, 8709, 8712; los .mov están en la carpeta de trabajo
+  de la sesión, no en git). Pidió: «profesionaliza la grabación… subtítulos que salgan por detrás de mi cabeza… cambios de plano… que en
+  la pantalla aparezcan las cosas que voy comentando… cuando diga 3,6M de visualizaciones que aparezca ese número de la pared rompiéndola y
+  poniéndose a mi lado… decoración importante en la pared… cambia el fondo para que sea mucho mucho más profesional», con 5 referencias de
+  tarjetas de cristal (@brunomedia_) «adaptadas a Kiria y a lo que voy diciendo». Cómo está hecho: (1) recorte de Javi con Robust Video
+  Matting (ONNX en CPU, `matte.py`, 8,6 fps); (2) `fondo.py`: fondo limpio por toma (mediana con Javi tapado), máscara de pared (claro y liso
+  + geometría: por encima de la mesa y fuera del monitor), pared nueva de listones de nogal sobre fieltro negro iluminada con la luz real de
+  la toma, neón «kiria.ai» (tubo con el degradado de Kiria), LED detrás del monitor y cuadro con el perro robot; la decoración se diseña una
+  vez en la toma maestra a8695 y se lleva a cada toma con su semejanza (SIFT sobre monitor y teclado); bordes de Javi descontaminados con el
+  fondo viejo, F = (I − (1−α)·B)/α; (3) `web3d/`: la pared se agrieta dos veces y revienta (Voronoi extruido con la misma textura, polvo,
+  astillas) y sale «3,6M» (Anton pasado a typeface con `fuente_typeface.py`); (4) `web/overlay.html`: subtítulos de una línea detrás de la
+  cabeza (Anton + palabra clave en Instrument Serif cursiva amarilla), marcador «RETO 0/10 · DÍA 1/30», tarjetas de cristal por frase (el
+  desenfoque de debajo lo hace `montaje.py` con los rectángulos que da la página), cupón KIRIA10 y cierre «El método Kiria, cada jueves»;
+  (5) `montaje.py`: tomas al 106 % (rubberband), zoom distinto en cada corte con un «punch» al entrar, color, viñeta y grano; `sonido.py`:
+  49 efectos de la biblioteca de ElevenLabs. Pendiente de Javi: dice «3,7 millones… en tan solo 7 días» y su captura dice 3,6 M en 30
+  días (en pantalla va 3,6M); dice «Kiria.com» (en pantalla kiriaai.com).
 - **Parrilla de publicación del 9 al 22-11** (`web_estudio/ventas/parrilla_publicacion_kiria.pdf`, 9-11-2026): Javi pidió «un guion de los
   vídeos que tenemos que subir a cada día, incluso si subimos varios, profesional». Reglas (1 informativo al día; 2 solo si son de distinto
   tipo y con 6 h o más entre ellos; 10:00 y las noticias cuanto antes), las dos semanas día a día, lo que necesita Javi con fecha y la
