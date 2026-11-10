@@ -1,0 +1,643 @@
+[
+ {
+  "text": "Tres mangueras, la misma bomba y la misma agua. ¿Cuál pierde más presión?",
+  "start": 0.0,
+  "end": 4.92,
+  "words": [
+   {
+    "w": "Tres",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "mangueras,",
+    "start": 0.24,
+    "end": 0.88
+   },
+   {
+    "w": "la",
+    "start": 0.98,
+    "end": 1.22
+   },
+   {
+    "w": "misma",
+    "start": 1.22,
+    "end": 1.66
+   },
+   {
+    "w": "bomba",
+    "start": 1.66,
+    "end": 2.1
+   },
+   {
+    "w": "y",
+    "start": 2.1,
+    "end": 2.34
+   },
+   {
+    "w": "la",
+    "start": 2.34,
+    "end": 2.58
+   },
+   {
+    "w": "misma",
+    "start": 2.58,
+    "end": 3.02
+   },
+   {
+    "w": "agua.",
+    "start": 3.02,
+    "end": 3.46
+   },
+   {
+    "w": "¿Cuál",
+    "start": 3.56,
+    "end": 3.8
+   },
+   {
+    "w": "pierde",
+    "start": 3.8,
+    "end": 4.24
+   },
+   {
+    "w": "más",
+    "start": 4.24,
+    "end": 4.48
+   },
+   {
+    "w": "presión?",
+    "start": 4.48,
+    "end": 4.92
+   }
+  ]
+ },
+ {
+  "text": "¿La de veinticinco milímetros, la de cuarenta y cinco, la de setenta… o las tres por igual?",
+  "start": 5.22,
+  "end": 11.003,
+  "words": [
+   {
+    "w": "¿La",
+    "start": 5.22,
+    "end": 5.419
+   },
+   {
+    "w": "de",
+    "start": 5.419,
+    "end": 5.617
+   },
+   {
+    "w": "veinticinco",
+    "start": 5.617,
+    "end": 6.292
+   },
+   {
+    "w": "milímetros,",
+    "start": 6.292,
+    "end": 6.967
+   },
+   {
+    "w": "la",
+    "start": 7.067,
+    "end": 7.266
+   },
+   {
+    "w": "de",
+    "start": 7.266,
+    "end": 7.465
+   },
+   {
+    "w": "cuarenta",
+    "start": 7.465,
+    "end": 7.981
+   },
+   {
+    "w": "y",
+    "start": 7.981,
+    "end": 8.18
+   },
+   {
+    "w": "cinco,",
+    "start": 8.18,
+    "end": 8.537
+   },
+   {
+    "w": "la",
+    "start": 8.637,
+    "end": 8.836
+   },
+   {
+    "w": "de",
+    "start": 8.836,
+    "end": 9.035
+   },
+   {
+    "w": "setenta…",
+    "start": 9.035,
+    "end": 9.551
+   },
+   {
+    "w": "o",
+    "start": 9.851,
+    "end": 10.05
+   },
+   {
+    "w": "las",
+    "start": 10.05,
+    "end": 10.248
+   },
+   {
+    "w": "tres",
+    "start": 10.248,
+    "end": 10.447
+   },
+   {
+    "w": "por",
+    "start": 10.447,
+    "end": 10.646
+   },
+   {
+    "w": "igual?",
+    "start": 10.646,
+    "end": 11.003
+   }
+  ]
+ },
+ {
+  "text": "Dentro, el agua va rozando contra la manguera… y en cada metro pierde presión.",
+  "start": 11.303,
+  "end": 16.231,
+  "words": [
+   {
+    "w": "Dentro,",
+    "start": 11.303,
+    "end": 11.66
+   },
+   {
+    "w": "el",
+    "start": 11.76,
+    "end": 11.959
+   },
+   {
+    "w": "agua",
+    "start": 11.959,
+    "end": 12.317
+   },
+   {
+    "w": "va",
+    "start": 12.317,
+    "end": 12.515
+   },
+   {
+    "w": "rozando",
+    "start": 12.515,
+    "end": 13.032
+   },
+   {
+    "w": "contra",
+    "start": 13.032,
+    "end": 13.389
+   },
+   {
+    "w": "la",
+    "start": 13.389,
+    "end": 13.588
+   },
+   {
+    "w": "manguera…",
+    "start": 13.588,
+    "end": 14.104
+   },
+   {
+    "w": "y",
+    "start": 14.404,
+    "end": 14.603
+   },
+   {
+    "w": "en",
+    "start": 14.603,
+    "end": 14.801
+   },
+   {
+    "w": "cada",
+    "start": 14.801,
+    "end": 15.159
+   },
+   {
+    "w": "metro",
+    "start": 15.159,
+    "end": 15.516
+   },
+   {
+    "w": "pierde",
+    "start": 15.516,
+    "end": 15.874
+   },
+   {
+    "w": "presión.",
+    "start": 15.874,
+    "end": 16.231
+   }
+  ]
+ },
+ {
+  "text": "Es la pérdida de carga, y depende sobre todo de lo larga que es, del agua que pasa… y de lo ancha que es.",
+  "start": 16.531,
+  "end": 23.547,
+  "words": [
+   {
+    "w": "Es",
+    "start": 16.531,
+    "end": 16.73
+   },
+   {
+    "w": "la",
+    "start": 16.73,
+    "end": 16.928
+   },
+   {
+    "w": "pérdida",
+    "start": 16.928,
+    "end": 17.445
+   },
+   {
+    "w": "de",
+    "start": 17.445,
+    "end": 17.643
+   },
+   {
+    "w": "carga,",
+    "start": 17.643,
+    "end": 18.001
+   },
+   {
+    "w": "y",
+    "start": 18.101,
+    "end": 18.3
+   },
+   {
+    "w": "depende",
+    "start": 18.3,
+    "end": 18.816
+   },
+   {
+    "w": "sobre",
+    "start": 18.816,
+    "end": 19.173
+   },
+   {
+    "w": "todo",
+    "start": 19.173,
+    "end": 19.531
+   },
+   {
+    "w": "de",
+    "start": 19.531,
+    "end": 19.729
+   },
+   {
+    "w": "lo",
+    "start": 19.729,
+    "end": 19.928
+   },
+   {
+    "w": "larga",
+    "start": 19.928,
+    "end": 20.286
+   },
+   {
+    "w": "que",
+    "start": 20.286,
+    "end": 20.484
+   },
+   {
+    "w": "es,",
+    "start": 20.484,
+    "end": 20.683
+   },
+   {
+    "w": "del",
+    "start": 20.783,
+    "end": 20.982
+   },
+   {
+    "w": "agua",
+    "start": 20.982,
+    "end": 21.339
+   },
+   {
+    "w": "que",
+    "start": 21.339,
+    "end": 21.538
+   },
+   {
+    "w": "pasa…",
+    "start": 21.538,
+    "end": 21.895
+   },
+   {
+    "w": "y",
+    "start": 22.195,
+    "end": 22.394
+   },
+   {
+    "w": "de",
+    "start": 22.394,
+    "end": 22.593
+   },
+   {
+    "w": "lo",
+    "start": 22.593,
+    "end": 22.792
+   },
+   {
+    "w": "ancha",
+    "start": 22.792,
+    "end": 23.149
+   },
+   {
+    "w": "que",
+    "start": 23.149,
+    "end": 23.348
+   },
+   {
+    "w": "es.",
+    "start": 23.348,
+    "end": 23.547
+   }
+  ]
+ },
+ {
+  "text": "Si la estrechas, la misma agua tiene que correr más rápido. En la de veinticinco, casi ocho veces más que en la de setenta.",
+  "start": 23.847,
+  "end": 31.456,
+  "words": [
+   {
+    "w": "Si",
+    "start": 23.847,
+    "end": 24.046
+   },
+   {
+    "w": "la",
+    "start": 24.046,
+    "end": 24.244
+   },
+   {
+    "w": "estrechas,",
+    "start": 24.244,
+    "end": 24.761
+   },
+   {
+    "w": "la",
+    "start": 24.861,
+    "end": 25.059
+   },
+   {
+    "w": "misma",
+    "start": 25.059,
+    "end": 25.417
+   },
+   {
+    "w": "agua",
+    "start": 25.417,
+    "end": 25.774
+   },
+   {
+    "w": "tiene",
+    "start": 25.774,
+    "end": 26.132
+   },
+   {
+    "w": "que",
+    "start": 26.132,
+    "end": 26.33
+   },
+   {
+    "w": "correr",
+    "start": 26.33,
+    "end": 26.688
+   },
+   {
+    "w": "más",
+    "start": 26.688,
+    "end": 26.887
+   },
+   {
+    "w": "rápido.",
+    "start": 26.887,
+    "end": 27.403
+   },
+   {
+    "w": "En",
+    "start": 27.503,
+    "end": 27.702
+   },
+   {
+    "w": "la",
+    "start": 27.702,
+    "end": 27.9
+   },
+   {
+    "w": "de",
+    "start": 27.9,
+    "end": 28.099
+   },
+   {
+    "w": "veinticinco,",
+    "start": 28.099,
+    "end": 28.774
+   },
+   {
+    "w": "casi",
+    "start": 28.874,
+    "end": 29.231
+   },
+   {
+    "w": "ocho",
+    "start": 29.231,
+    "end": 29.589
+   },
+   {
+    "w": "veces",
+    "start": 29.589,
+    "end": 29.946
+   },
+   {
+    "w": "más",
+    "start": 29.946,
+    "end": 30.145
+   },
+   {
+    "w": "que",
+    "start": 30.145,
+    "end": 30.344
+   },
+   {
+    "w": "en",
+    "start": 30.344,
+    "end": 30.543
+   },
+   {
+    "w": "la",
+    "start": 30.543,
+    "end": 30.741
+   },
+   {
+    "w": "de",
+    "start": 30.741,
+    "end": 30.94
+   },
+   {
+    "w": "setenta.",
+    "start": 30.94,
+    "end": 31.456
+   }
+  ]
+ },
+ {
+  "text": "Entonces… ¿cuál pierde más? Comenta tu letra.",
+  "start": 31.756,
+  "end": 34.499,
+  "words": [
+   {
+    "w": "Entonces…",
+    "start": 31.756,
+    "end": 32.272
+   },
+   {
+    "w": "¿cuál",
+    "start": 32.572,
+    "end": 32.771
+   },
+   {
+    "w": "pierde",
+    "start": 32.771,
+    "end": 33.128
+   },
+   {
+    "w": "más?",
+    "start": 33.128,
+    "end": 33.327
+   },
+   {
+    "w": "Comenta",
+    "start": 33.427,
+    "end": 33.943
+   },
+   {
+    "w": "tu",
+    "start": 33.943,
+    "end": 34.142
+   },
+   {
+    "w": "letra.",
+    "start": 34.142,
+    "end": 34.499
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
+  "start": 36.799,
+  "end": 40.474,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 36.799,
+    "end": 37.474
+   },
+   {
+    "w": "a",
+    "start": 37.474,
+    "end": 37.673
+   },
+   {
+    "w": "quien",
+    "start": 37.673,
+    "end": 37.871
+   },
+   {
+    "w": "oposite",
+    "start": 37.871,
+    "end": 38.546
+   },
+   {
+    "w": "contigo,",
+    "start": 38.546,
+    "end": 39.062
+   },
+   {
+    "w": "a",
+    "start": 39.162,
+    "end": 39.361
+   },
+   {
+    "w": "ver",
+    "start": 39.361,
+    "end": 39.56
+   },
+   {
+    "w": "si",
+    "start": 39.56,
+    "end": 39.759
+   },
+   {
+    "w": "la",
+    "start": 39.759,
+    "end": 39.957
+   },
+   {
+    "w": "acierta!",
+    "start": 39.957,
+    "end": 40.474
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 40.774,
+  "end": 44.469,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 40.774,
+    "end": 41.449
+   },
+   {
+    "w": "a",
+    "start": 41.449,
+    "end": 41.648
+   },
+   {
+    "w": "bombero?",
+    "start": 41.648,
+    "end": 42.164
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 42.264,
+    "end": 42.939
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 43.039,
+    "end": 43.555
+   },
+   {
+    "w": "gratis",
+    "start": 43.555,
+    "end": 43.912
+   },
+   {
+    "w": "cinco",
+    "start": 43.912,
+    "end": 44.27
+   },
+   {
+    "w": "días!",
+    "start": 44.27,
+    "end": 44.469
+   }
+  ]
+ }
+]

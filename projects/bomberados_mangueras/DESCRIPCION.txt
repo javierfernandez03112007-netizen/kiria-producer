@@ -1,0 +1,42 @@
+🚒 Tres mangueras, la misma bomba y la misma agua… ¿cuál pierde más presión?
+
+❓ ¿Qué tipo de manguera ocasionará mayor pérdida de carga?
+a) La de 25 mm
+b) La de 45 mm
+c) La de 70 mm
+d) Las tres por igual
+
+💧 En el vídeo tienes la pista: dentro de la manguera el agua roza con la pared… y no en todas va igual de rápida.
+
+👇 Escribe tu letra en comentarios y mándaselo a quien oposite contigo: ¿la acertará?
+📌 Guárdalo para repasar hidráulica.
+
+🚒 BOMBERADOS — la app para preparar la oposición a bombero
+Estudia solo, reta a otro opositor en un 1 vs 1 o compite en un Battle Royale de hasta 6 jugadores. Falla en casa, no en el examen.
+🎁 Pruébala GRATIS 5 días: enlace en la bio.
+
+#bomberos #oposicionesbombero #opositores #oposiciones #bombero #testoposiciones #hidraulica #bomberados
+
+.
+.
+.
+✅ Respuesta: A) la de 25 mm.
+La pérdida de carga es la presión que pierde el agua al rozar con la manguera. Con el mismo caudal, en la de 25 mm el agua va casi 8 veces más rápida que en la de 70 [(70/25)² ≈ 7,8] y el rozamiento crece con la velocidad: con la misma longitud, la de 25 pierde decenas de veces más que la de 45 y más de cien veces más que la de 70.
+La trampa: la D («las tres igual»), pensar que la pérdida solo depende de lo larga que es la manguera.
+
+---
+
+Versión corta (TikTok):
+
+🚒 Tres mangueras (25, 45 y 70 mm), la misma bomba y la misma agua: ¿cuál pierde más presión? ¿O las tres igual? 🤔 Comenta tu letra 👇 Bomberados: pruébala GRATIS 5 días 👉 bio.
+
+#bomberos #oposicionesbombero #hidraulica #bomberados
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- El vídeo NO dice la respuesta: en pantalla quedan las cuatro letras quietas y «comenta tu letra»; la respuesta, solo al final de la descripción.
+- Comentario fijado: «📌 ¿Cuál pierde más? Escribe tu letra 👇 (la respuesta, al final de la descripción)».
+- Pregunta de Adrián (Élite Bomberos). PENDIENTE: que confirme que es del examen del Ayto. de Pontevedra (2022); si lo confirma, se puede añadir «Pregunta de examen de Pontevedra» al principio de la descripción.
+- PENDIENTE: la página del manual de hidráulica que uséis para citarla en FUENTES.md.
+- CONFIRMAR la prueba gratis de 5 días.
