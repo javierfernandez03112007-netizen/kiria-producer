@@ -1,4 +1,5 @@
-🚒 Tres mangueras, la misma bomba y la misma agua… ¿cuál pierde más presión?
+🔥 El fuego avanza… y la lanza de tu compañero se queda SIN FUERZA.
+🚒 Tres mangueras, la misma bomba y la misma agua: ¿cuál pierde más presión?
 
 ❓ ¿Qué tipo de manguera ocasionará mayor pérdida de carga?
 a) La de 25 mm
@@ -6,6 +7,7 @@ b) La de 45 mm
 c) La de 70 mm
 d) Las tres por igual
 
+⏱️ Tienes 5 segundos… y cuidado con la trampa.
 💧 En el vídeo tienes la pista: dentro de la manguera el agua roza con la pared… y no en todas va igual de rápida.
 
 👇 Escribe tu letra en comentarios y mándaselo a quien oposite contigo: ¿la acertará?
@@ -28,14 +30,14 @@ La trampa: la D («las tres igual»), pensar que la pérdida solo depende de lo 
 
 Versión corta (TikTok):
 
-🚒 Tres mangueras (25, 45 y 70 mm), la misma bomba y la misma agua: ¿cuál pierde más presión? ¿O las tres igual? 🤔 Comenta tu letra 👇 Bomberados: pruébala GRATIS 5 días 👉 bio.
+🔥 El fuego avanza y la lanza se queda sin fuerza… Tres mangueras (25, 45 y 70 mm), la misma bomba y la misma agua: ¿cuál pierde más presión? ¿O las tres igual? 🤔 Comenta tu letra 👇 Bomberados: pruébala GRATIS 5 días 👉 bio.
 
 #bomberos #oposicionesbombero #hidraulica #bomberados
 
 ---
 
 NOTAS PARA LA ENTREGA (no publicar):
-- El vídeo NO dice la respuesta: en pantalla quedan las cuatro letras quietas y «comenta tu letra»; la respuesta, solo al final de la descripción.
+- Versión 2 (la que vale): gancho de alarma, cuenta de 5 s y «¡Tiempo!» (la D tachada). El vídeo NO dice la respuesta: al final, las letras y «escribe en comentarios cuál crees que es la correcta»; la respuesta, solo al final de la descripción.
 - Comentario fijado: «📌 ¿Cuál pierde más? Escribe tu letra 👇 (la respuesta, al final de la descripción)».
 - Pregunta de Adrián (Élite Bomberos). PENDIENTE: que confirme que es del examen del Ayto. de Pontevedra (2022); si lo confirma, se puede añadir «Pregunta de examen de Pontevedra» al principio de la descripción.
 - PENDIENTE: la página del manual de hidráulica que uséis para citarla en FUENTES.md.
