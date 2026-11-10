@@ -826,7 +826,7 @@ function updateLab(t) {
   // título 3D
   const ti = bk(pr(t, T.perdida - 0.1, 0.5)) * (1 - sm(T.depende + 0.2, T.depende + 0.5, t));
   title.visible = ti > 0.01; title.scale.setScalar(Math.max(0.001, ti)); title.quaternion.copy(cam.quaternion);
-  title.position.copy(cam.position).add(V(0, 0, -9).applyQuaternion(cam.quaternion)).add(V(0, 2.1, 0).applyQuaternion(cam.quaternion)).sub(lab.position);
+  title.position.copy(cam.position).add(V(0, 0, -9).applyQuaternion(cam.quaternion)).add(V(0, 1.55, 0).applyQuaternion(cam.quaternion)).sub(lab.position);
   // tubo W (70 mm, arriba) con su propia agua, a la velocidad «de base»
   tubeW.G.visible = two > 0.01;
   tubeW.su.uR.value = 0.9; tubeW.su.uL.value = 12; tubeW.su.uI.value = two; tubeW.su.uRing.value = 0.15;
