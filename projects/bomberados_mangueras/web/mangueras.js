@@ -628,7 +628,7 @@ function buildWorld() {
     const ff = makeFirefighter(); ff.position.set(x, 0, ZFF); world.add(ff); ffs.push(ff);
     const lance = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.07, 0.7, 18), M.chrome);
     lance.position.set(x + 0.03, 1.02, -26.55); lance.quaternion.setFromUnitVectors(V(0, 1, 0), V(0, 0.08, -1).normalize()); world.add(lance);
-    const [gg, nn] = makeGaugeP(V(x, GY, GZ), 0.85); gauges.push(gg); needles.push(nn);
+    const [gg, nn] = makeGaugeP(V(x, GY, GZ), 1.15); gauges.push(gg); needles.push(nn);
   });
 }
 
@@ -727,7 +727,7 @@ function setupTimes() {
   // 1a · gancho: pegados al colector de la autobomba; las tres mangueras salen disparadas hacia la cámara
   shot(0, [1.2, 1.0, -1.8, -0.1, 0.9, 0.4, 50], [3.2, 3.1, -7.4, -0.3, 0.6, -1.2, 44], { ease: 'out' });
   // 1b · «¿Cuál pierde más presión?»: dron sobre las tres líneas hasta las lanzas (manómetros «?»)
-  shot(T.cual - 0.1, [5.5, 13, -6, 0, 1.2, -24, 42], [6.5, 8.6, -12, 0, 1.4, -25, 42]);
+  shot(T.cual - 0.1, [4.5, 9.5, -10, 0.6, 1.6, -24.5, 40], [5.2, 6.4, -14.5, 0.6, 1.8, -25, 40]);
   // 2 · a ras de suelo, detrás del colector: las tres líneas en abanico hacia el fuego (25 · 45 · 70)
   shot(T.v25 - 0.12, [0.0, 1.05, -1.2, 0, 0.45, -24, 38], [0.0, 1.6, -5.0, 0, 0.6, -25, 38]);
   // 3 · rayos X: el tubo por dentro, desde la entrada del agua
