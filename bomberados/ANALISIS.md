@@ -18,61 +18,62 @@ Cómo se mide (desde el 6 nov, solo lo que se ve como espectador; siempre por ca
 
 Regla de Javi (6 nov): los requisitos solo cambian cuando un vídeo lo hace **mejor** que el estándar actual (más vistas,
 me gusta, comentarios o compartidos por 1.000). Entonces se incorpora lo que ha funcionado y, si hace falta, se **mezclan**
-los dos estilos (p. ej., si otro formato supera al 3D con dron, se toma lo suyo y se combina con el dron). Nunca se quita
-algo que funciona sin datos que lo justifiquen. Estándar actual de los medios: el del **acoplamiento** (3D cinematográfico de
-noche, planos de dron abiertos, maniobra real que se ve, dilema «¿A o B?»).
+los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 
-## 📌 Para los próximos vídeos (plan del 6 nov)
+**Estándar desde el 10 nov (mezcla):** 3D cinematográfico con planos de dron abiertos (acoplamiento, presión, espuma, botella:
+21.000–103.000 vistas y 36–56 me gusta/1.000) **+** el cierre de las Preguntas del día antiguas, que son las que más comentan
+(PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
+Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
-1. **Prioridad n.º 1: «Explicado» en 3D cinematográfico con planos de dron abiertos** (como el acoplamiento): 73.000 vistas,
-   el triple que cualquier otro, y 55 me gusta/1.000. Hacer 1–2 a la semana sobre maniobras que se ven (tendidos, escaleras,
-   rescates, ventilación), con la pregunta «¿A o B?» dentro.
-2. **Lo que entiende todo el mundo se comparte el doble**: acoplamiento 12,6, «Ocho de cada diez» 14,4, abuelos 12,4 y aceite 13,3
-   compartidos/1.000, frente a 5–8 en las Preguntas del día de temario. En los medios, gancho para el público general, no solo para el opositor.
-3. **Pregunta del día: seguir, pero con escena visual o examen oficial.** Traen más comentarios (PAS 1,9; ADR 1,3; Reducción 1,1
-   por 1.000), pero las de ley pura funcionan peor (Protección Civil: 6.400 vistas, 0,6 coment./1.000). Evitar las preguntas de
-   «qué ley/qué artículo» sin una imagen fuerte; si hay que hacerlas, como Test relámpago.
-4. **Un dato de la oposición a la semana** («Ocho de cada diez» sigue creciendo: 34.400 vistas): toca el de Navarra (14 %) o
-   el del País Vasco (75 %), con fuente oficial y una pregunta al final para comentar (es el que menos comenta: 0,5/1.000).
-5. **Cierre para comentar en todos**: «Escribe tu letra / qué harías tú en comentarios» (a menos de 0,5/1.000 nadie conversa:
-   acoplamiento, Ocho y abuelos).
-8. **Siguiente medio: «Si echas agua a una sartén con aceite ardiendo»** con el estilo del acoplamiento (en Notion, prioridad
-   alta); después, flashover o backdraft con el mismo estilo.
-6. **Duración**: el mejor dura 46,8 s; de momento no hay que recortar a 25 s si el vídeo es visual. Provisional (un solo caso).
-7. **Horas: aún no se pueden comparar.** Javi, apunta en «Publicación (día y hora)» la hora real de cada vídeo que subas.
+## 📌 Para los próximos vídeos (plan del 10 nov)
 
-## Última actualización: 6 nov 2026, 15:45 (cifras de Javi de hoy, 15:18–15:35)
+1. **Todo en 3D cinematográfico con dron**, también las Preguntas del día (las de Adrián en 3D doblan a las de estilo app).
+2. **Cierre obligatorio con las letras A/B/C/D en pantalla** (2–3 s quietas) y la voz «comenta tu letra»; en los que no son
+   pregunta, una pregunta cerrada con opciones («¿serie o paralelo? escribe S o P»).
+3. **Duración: 45–55 s.** Presión (51 s) se comparte 8,3/1.000 y espuma (61,5 s) 4,9/1.000; provisional, pero no pasar de 55 s.
+4. **Temas que entiende cualquiera** (maniobras, presión, aire, sueldos, la oposición): se comparten 9–14/1.000 frente a 5–6
+   de las preguntas de temario puro.
+5. **Pregunta explicada de Adrián (vie 13, sáb 14, dom 15):** mismo molde que presión (situación real → números grandes en
+   pantalla → letras al final; la respuesta, solo en la descripción).
+6. **Pasapalabra (jue 12) y FOMO jugador (mié 11):** planos 3D con dron y cierre con letras; funciones de la app, CONFIRMAR.
+7. **Un dato de la oposición a la semana** («Ocho de cada diez» sigue sumando: 36.600 y 13,5 compartidos/1.000).
 
-### Datos (10 filas en Métricas; 9 válidas)
+## Última actualización: 10 nov 2026 (cifras de Javi del 9 nov, 12:26–12:30; seguidores del 9 nov 13:24)
+
+### Seguidores (primer periodo: 6 nov 15:36 → 9 nov 13:24, ≈ 2,9 días)
+| Cuenta | 6 nov | 9 nov | Crecimiento | Por día |
+|---|---|---|---|---|
+| Bomberados | 1.623 | **2.656** | **+1.033 (+64 %)** | ≈ 355 |
+| Élite Bomberos | 7.862 | 8.838 | +976 (+12 %) | ≈ 335 |
+
+En ese periodo crecieron sobre todo el acoplamiento (+30.000 vistas) y las tres Preguntas del día en 3D de Adrián
+(botella, presión, espuma: ≈ 116.000 vistas entre las tres).
+
+### Datos (13 vídeos con cifras)
 | Vídeo | Formato | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
 |---|---|---|---|---|---|
-| Acoplamiento ¿serie o paralelo? (3D) | Explicado | **73.000** | **55,1** | 0,5 | 12,6 |
-| «Ocho de cada diez… sin plaza» | Dato a pelo | 34.400 | 38,8 | 0,5 | **14,4** |
-| PD #2 Bradipnea (Albacete 2026) | Pregunta del día | 25.600 | 16,5 | 0,9 | 5,4 |
-| PD #1 Reducción 45→25 | Pregunta del día | 25.300 | 19,8 | 1,1 | 6,2 |
-| PD ADR panel naranja | Pregunta del día | 13.500 | 21,1 | 1,3 | 6,7 |
-| PD #4 PAS | Pregunta del día | 11.000 | 17,0 | **1,9** | 6,6 |
-| Abuelos (salón de antes / hoy) | Dato a pelo | 10.300 | 25,5 | 0,4 | 12,4 |
-| Aceite en la sartén (V o F) | V o F con trampa | 8.678 | 20,6 | 0,9 | 13,3 |
-| PD #5 Protección Civil (ley) | Pregunta del día | 6.424 | 14,2 | 0,6 | 8,1 |
+| Acoplamiento (3D, dron) | Explicado | **103.000** | **55,6** | 0,6 | 12,9 |
+| Presión en bomba (3D, Adrián) | Pregunta del día | 58.900 | 42,9 | 0,4 | 8,3 |
+| Espuma (3D, Adrián, 61,5 s) | Pregunta del día | 36.700 | 35,8 | 0,3 | 4,9 |
+| «Ocho de cada diez» | Dato a pelo | 36.600 | 38,6 | 0,4 | **13,5** |
+| PD #1 Reducción | Pregunta del día (app) | 28.200 | 20,4 | 1,0 | 5,5 |
+| PD #2 Bradipnea | Pregunta del día (app) | 27.800 | 17,3 | 0,9 | 4,9 |
+| Botella del ERA (3D, Adrián) | Pregunta del día | 20.900 | 48,3 | 0,7 | 8,7 |
+| ADR | Pregunta del día (app) | 15.900 | 21,9 | 1,1 | 5,7 |
+| PAS | Pregunta del día | 13.000 | 17,8 | **1,6** | 5,6 |
+| Abuelos | Dato a pelo | 11.800 | 26,5 | 0,3 | 10,8 |
+| Aceite (V o F) | V o F con trampa | 9.500 | 20,5 | 0,8 | 12,1 |
+| «Fuga de gas licuado» (¿Profe IA?) | — | 7.598 | 13,8 | 0,5 | 6,8 |
+| PD #5 Protección Civil | Pregunta del día | 5.381 | 14,9 | 0,7 | 9,7 |
 
-Desde el 5 nov: Bradipnea casi duplica (12.900 → 25.600), Ocho +9.600, Reducción +5.500, Aceite +2.100: las Preguntas del
-día siguen sumando días después.
+### Lo que funciona (con datos ya suficientes)
+1. **3D cinematográfico gana en alcance y me gusta** (4 de 4 vídeos 3D por encima de 20.000 y 36–56 me gusta/1.000; los de estilo
+   app, 17–22). Confirmado.
+2. **Las PD antiguas comentan más** (1,0–1,6/1.000) gracias a la tarjeta con letras; los 3D, 0,3–0,7. → Mezcla (requisitos).
+3. **Lo general se comparte más** (9–14/1.000) que el temario puro (5–6).
+4. Provisional: los de más de 55 s se comparten menos (espuma).
 
-### Seguidores (primer dato, 6 nov 15:36)
-- Élite Bomberos: **7.862** · Bomberados: **1.623**. El crecimiento se podrá calcular el 9 nov.
-
-### Avisos sobre los datos
-- **«Fuga de gas licuado»** tiene exactamente las mismas cifras que la PD #5 (6.424 / 91 / 4 / 52) y no está enlazada a ningún
-  vídeo: parece un copia-pega. No la cuento hasta que Javi la corrija.
-- ADR, PAS, PD #5, abuelos y acoplamiento ya tienen cifras, pero en «Vídeos de Bomberados» siguen en «Listo para subir» y sin
-  fecha y hora reales: así no se puede comparar por día ni por hora.
-- Sin cifras todavía (o sin publicar): tetraedro, 21A-113B, botella del ERA, presión en bomba, dominadas y Profe IA.
-
-### Lo que funciona (provisional)
-1. **3D cinematográfico + algo que se ve**: el acoplamiento gana con mucha diferencia en vistas y me gusta (un solo vídeo; hay que confirmarlo con el
-   tetraedro, el 21A-113B, la botella y la presión).
-2. **Público general > temario puro para compartir**: los cuatro con más compartidos/1.000 (Ocho, Aceite, Acoplamiento, Abuelos)
-   los entiende cualquiera.
-3. **Preguntas del día = conversación**: entre 0,9 y 1,9 comentarios/1.000, el doble o el triple que el resto. La más floja, la de
-   ley sin imagen (PD #5).
+### Revisar
+- «Fuga de gas licuado» ya tiene cifras propias, pero sigue sin enlazar a ningún vídeo (¿es el «Profe IA»?). La PD #5 bajó de
+  6.424 a 5.381: el 6.424 era el copia-pega.
+- Los vídeos con cifras siguen en «Listo para subir» y sin la hora real: no se puede comparar por hora.
