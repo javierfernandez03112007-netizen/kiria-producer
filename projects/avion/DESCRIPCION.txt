@@ -1,0 +1,40 @@
+«TE LO EXPLICARON MAL» · por qué vuela de verdad un avión · 56,5 s · voz de Javi
+
+DESCRIPCIÓN (Instagram):
+✈️ Te explicaron en el colegio por qué vuela un avión… y esa explicación está mal. Lo dice la NASA.
+
+❌ El cuento de siempre: el ala es curva por arriba, el aire de arriba hace más camino y «corre más para llegar a la vez».
+💨 Pero el aire no tiene ninguna cita: en un túnel de viento, el de arriba llega antes. Mucho antes.
+🙃 Y si fuera por la curva… ¿cómo vuela un avión boca abajo?
+
+✅ Lo que pasa de verdad: el ala va un poco inclinada y empuja el aire hacia abajo. Cientos de toneladas cada segundo. Y si el ala empuja el aire hacia abajo, el aire empuja el ala hacia arriba: arriba la presión baja, abajo sube, y esa diferencia levanta el avión entero.
+
+💡 Un avión no flota: se sujeta empujando el aire hacia abajo… todo el rato.
+
+👇 ¿Ventanilla o pasillo? Mándaselo a tu profe de física.
+
+#aviones #física #ciencia #curiosidades #aeronáutica #NASA #avion #profesor #colegio #sabiasque
+
+---
+
+COMENTARIO FIJADO:
+📚 Fuentes: NASA Glenn Research Center, «Incorrect Lift Theory #1» (la del «mismo tiempo de tránsito» es falsa) · Universidad de Cambridge (H. Babinsky, Physics Education 2003, y vídeo «How wings really work», 2012: humo en un túnel de viento; el aire de arriba llega antes) · Airbus (A380: hasta 575 t al despegar). «Cientos de toneladas de aire por segundo»: cálculo de ejemplo para un A380 en crucero (≈ 480 t/s). Ojo: Bernoulli no está mal; lo que falla es el cuento de «llegar a la vez». ¿Ventanilla o pasillo? 👇
+🎬 Este vídeo lo hemos hecho con IA en kiria. ¿Quieres uno así para tu negocio? → kiriaai.com (enlace en la bio)
+
+---
+
+VERSIÓN CORTA (TikTok):
+✈️ Te explicaron mal por qué vuela un avión (lo dice la NASA). El aire de arriba no «llega a la vez»: llega antes. Lo que lo sujeta es otra cosa 👀 ¿Ventanilla o pasillo? Mándaselo a tu profe de física 👇
+
+#aviones #física #ciencia #curiosidades #NASA
+
+---
+
+NOTAS DE ENTREGA:
+- Voz: la de Javi (su MP3 de ElevenLabs: Danny, v4, estabilidad 0,50, similitud 0,75, 62,1 s); tiempos con Parakeet y pausas recortadas: 55,4 s sin acelerar; vídeo de 56,5 s en bucle exacto.
+- Datos: ver FUENTES.md. Antes de publicar, CONFIRMAR que la página de la NASA («Incorrect Lift Theory #1») sigue en línea.
+- El flujo del túnel está CALCULADO (ala de Joukowski con la condición de Kutta): la carrera de las bolitas, el humo, la inclinación, la flecha del aire hacia abajo y los colores de presión son de verdad para esa ala, no dibujados a ojo.
+- Recreación: el aula, el avión (genérico, sin aerolínea ni logotipos) y la avioneta son inventados.
+- Efectos: todos reutilizados de otros vídeos del canal (ElevenLabs; el saldo de efectos se agotó el 9-11 y se renueva el 30-11). «jet» y «helice» son mezclas más graves/agudas de efectos de la biblioteca.
+- Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
+- Subida: hoy martes 10 a las 20:00.
