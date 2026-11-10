@@ -2,717 +2,717 @@
  {
   "text": "¡El fuego avanza… y la lanza de tu compañero se queda sin fuerza!",
   "start": 0.0,
-  "end": 3.963,
+  "end": 3.892,
   "words": [
    {
     "w": "¡El",
     "start": 0.0,
-    "end": 0.183
+    "end": 0.239
    },
    {
     "w": "fuego",
-    "start": 0.183,
-    "end": 0.509
+    "start": 0.239,
+    "end": 0.639
    },
    {
     "w": "avanza…",
-    "start": 0.509,
-    "end": 0.977
+    "start": 0.639,
+    "end": 1.487
    },
    {
     "w": "y",
-    "start": 1.277,
-    "end": 1.46
+    "start": 1.487,
+    "end": 1.572
    },
    {
     "w": "la",
-    "start": 1.46,
-    "end": 1.643
+    "start": 1.572,
+    "end": 1.676
    },
    {
     "w": "lanza",
-    "start": 1.643,
-    "end": 1.969
+    "start": 1.676,
+    "end": 1.996
    },
    {
     "w": "de",
-    "start": 1.969,
-    "end": 2.151
+    "start": 1.996,
+    "end": 2.076
    },
    {
     "w": "tu",
-    "start": 2.151,
-    "end": 2.334
+    "start": 2.076,
+    "end": 2.235
    },
    {
     "w": "compañero",
-    "start": 2.334,
-    "end": 2.946
+    "start": 2.235,
+    "end": 2.794
    },
    {
     "w": "se",
-    "start": 2.946,
-    "end": 3.129
+    "start": 2.794,
+    "end": 2.954
    },
    {
     "w": "queda",
-    "start": 3.129,
-    "end": 3.454
+    "start": 2.954,
+    "end": 3.273
    },
    {
     "w": "sin",
-    "start": 3.454,
-    "end": 3.637
+    "start": 3.273,
+    "end": 3.513
    },
    {
     "w": "fuerza!",
-    "start": 3.637,
-    "end": 3.963
+    "start": 3.513,
+    "end": 3.892
    }
   ]
  },
  {
   "text": "Tres mangueras, la misma bomba, la misma agua: ¿cuál pierde más presión?",
-  "start": 4.263,
-  "end": 7.98,
+  "start": 4.271,
+  "end": 8.153,
   "words": [
    {
     "w": "Tres",
-    "start": 4.263,
-    "end": 4.446
+    "start": 4.271,
+    "end": 4.391
    },
    {
     "w": "mangueras,",
-    "start": 4.446,
-    "end": 4.914
+    "start": 4.391,
+    "end": 5.109
    },
    {
     "w": "la",
-    "start": 5.014,
-    "end": 5.197
+    "start": 5.109,
+    "end": 5.269
    },
    {
     "w": "misma",
-    "start": 5.197,
-    "end": 5.523
+    "start": 5.269,
+    "end": 5.588
    },
    {
     "w": "bomba,",
-    "start": 5.523,
-    "end": 5.849
+    "start": 5.588,
+    "end": 6.067
    },
    {
     "w": "la",
-    "start": 5.949,
-    "end": 6.132
+    "start": 6.067,
+    "end": 6.227
    },
    {
     "w": "misma",
-    "start": 6.132,
-    "end": 6.457
+    "start": 6.227,
+    "end": 6.466
    },
    {
     "w": "agua:",
-    "start": 6.457,
-    "end": 6.783
+    "start": 6.466,
+    "end": 7.115
    },
    {
     "w": "¿cuál",
-    "start": 6.963,
-    "end": 7.146
+    "start": 7.115,
+    "end": 7.265
    },
    {
     "w": "pierde",
-    "start": 7.146,
-    "end": 7.472
+    "start": 7.265,
+    "end": 7.664
    },
    {
     "w": "más",
-    "start": 7.472,
-    "end": 7.654
+    "start": 7.664,
+    "end": 7.824
    },
    {
     "w": "presión?",
-    "start": 7.654,
-    "end": 7.98
+    "start": 7.824,
+    "end": 8.153
    }
   ]
  },
  {
   "text": "¿La de veinticinco, cuarenta y cinco, setenta… o las tres igual?",
-  "start": 8.28,
-  "end": 12.077,
+  "start": 8.542,
+  "end": 12.234,
   "words": [
    {
     "w": "¿La",
-    "start": 8.28,
-    "end": 8.463
+    "start": 8.542,
+    "end": 8.622
    },
    {
     "w": "de",
-    "start": 8.463,
-    "end": 8.646
+    "start": 8.622,
+    "end": 8.782
    },
    {
     "w": "veinticinco,",
-    "start": 8.646,
-    "end": 9.257
+    "start": 8.782,
+    "end": 9.445
    },
    {
     "w": "cuarenta",
-    "start": 9.357,
-    "end": 9.826
+    "start": 9.445,
+    "end": 9.942
    },
    {
     "w": "y",
-    "start": 9.826,
-    "end": 10.009
+    "start": 9.942,
+    "end": 10.108
    },
    {
     "w": "cinco,",
-    "start": 10.009,
-    "end": 10.334
+    "start": 10.108,
+    "end": 10.44
    },
    {
     "w": "setenta…",
-    "start": 10.434,
-    "end": 10.903
+    "start": 10.44,
+    "end": 11.246
    },
    {
     "w": "o",
-    "start": 11.203,
-    "end": 11.386
+    "start": 11.246,
+    "end": 11.416
    },
    {
     "w": "las",
-    "start": 11.386,
-    "end": 11.569
+    "start": 11.416,
+    "end": 11.576
    },
    {
     "w": "tres",
-    "start": 11.569,
-    "end": 11.751
+    "start": 11.576,
+    "end": 11.895
    },
    {
     "w": "igual?",
-    "start": 11.751,
-    "end": 12.077
+    "start": 11.895,
+    "end": 12.234
    }
   ]
  },
  {
   "text": "Comenta tu letra. Tienes cinco segundos.",
-  "start": 12.377,
-  "end": 14.574,
+  "start": 12.624,
+  "end": 14.869,
   "words": [
    {
     "w": "Comenta",
-    "start": 12.377,
-    "end": 12.846
+    "start": 12.624,
+    "end": 12.933
    },
    {
     "w": "tu",
-    "start": 12.846,
-    "end": 13.028
+    "start": 12.933,
+    "end": 13.093
    },
    {
     "w": "letra.",
-    "start": 13.028,
-    "end": 13.354
+    "start": 13.093,
+    "end": 13.641
    },
    {
     "w": "Tienes",
-    "start": 13.454,
-    "end": 13.78
+    "start": 13.641,
+    "end": 14.051
    },
    {
     "w": "cinco",
-    "start": 13.78,
-    "end": 14.106
+    "start": 14.051,
+    "end": 14.37
    },
    {
     "w": "segundos.",
-    "start": 14.106,
-    "end": 14.574
+    "start": 14.37,
+    "end": 14.869
    }
   ]
  },
  {
   "text": "¡Tiempo! Si has dicho «las tres igual»… has caído en la trampa.",
-  "start": 18.924,
-  "end": 22.233,
+  "start": 19.098,
+  "end": 23.659,
   "words": [
    {
     "w": "¡Tiempo!",
-    "start": 18.924,
-    "end": 19.25
+    "start": 19.098,
+    "end": 19.877
    },
    {
     "w": "Si",
-    "start": 19.35,
-    "end": 19.533
+    "start": 19.877,
+    "end": 20.017
    },
    {
     "w": "has",
-    "start": 19.533,
-    "end": 19.715
+    "start": 20.017,
+    "end": 20.256
    },
    {
     "w": "dicho",
-    "start": 19.715,
-    "end": 20.041
+    "start": 20.256,
+    "end": 20.815
    },
    {
     "w": "«las",
-    "start": 20.041,
-    "end": 20.224
+    "start": 20.815,
+    "end": 21.054
    },
    {
     "w": "tres",
-    "start": 20.224,
-    "end": 20.407
+    "start": 21.054,
+    "end": 21.454
    },
    {
     "w": "igual»…",
-    "start": 20.407,
-    "end": 20.733
+    "start": 21.454,
+    "end": 22.312
    },
    {
     "w": "has",
-    "start": 21.033,
-    "end": 21.215
+    "start": 22.312,
+    "end": 22.491
    },
    {
     "w": "caído",
-    "start": 21.215,
-    "end": 21.541
+    "start": 22.491,
+    "end": 22.97
    },
    {
     "w": "en",
-    "start": 21.541,
-    "end": 21.724
+    "start": 22.97,
+    "end": 23.13
    },
    {
     "w": "la",
-    "start": 21.724,
-    "end": 21.907
+    "start": 23.13,
+    "end": 23.21
    },
    {
     "w": "trampa.",
-    "start": 21.907,
-    "end": 22.233
+    "start": 23.21,
+    "end": 23.659
    }
   ]
  },
  {
   "text": "Dentro, el agua roza con la manguera y pierde presión a cada metro: es la pérdida de carga.",
-  "start": 22.533,
-  "end": 27.819,
+  "start": 24.028,
+  "end": 29.537,
   "words": [
    {
     "w": "Dentro,",
-    "start": 22.533,
-    "end": 22.859
+    "start": 24.028,
+    "end": 24.707
    },
    {
     "w": "el",
-    "start": 22.959,
-    "end": 23.142
+    "start": 24.707,
+    "end": 24.809
    },
    {
     "w": "agua",
-    "start": 23.142,
-    "end": 23.467
+    "start": 24.809,
+    "end": 25.046
    },
    {
     "w": "roza",
-    "start": 23.467,
-    "end": 23.793
+    "start": 25.046,
+    "end": 25.525
    },
    {
     "w": "con",
-    "start": 23.793,
-    "end": 23.976
+    "start": 25.525,
+    "end": 25.605
    },
    {
     "w": "la",
-    "start": 23.976,
-    "end": 24.159
+    "start": 25.605,
+    "end": 25.685
    },
    {
     "w": "manguera",
-    "start": 24.159,
-    "end": 24.627
+    "start": 25.685,
+    "end": 26.244
    },
    {
     "w": "y",
-    "start": 24.627,
-    "end": 24.81
+    "start": 26.244,
+    "end": 26.323
    },
    {
     "w": "pierde",
-    "start": 24.81,
-    "end": 25.136
+    "start": 26.323,
+    "end": 26.723
    },
    {
     "w": "presión",
-    "start": 25.136,
-    "end": 25.462
+    "start": 26.723,
+    "end": 27.042
    },
    {
     "w": "a",
-    "start": 25.462,
-    "end": 25.644
+    "start": 27.042,
+    "end": 27.202
    },
    {
     "w": "cada",
-    "start": 25.644,
-    "end": 25.97
+    "start": 27.202,
+    "end": 27.441
    },
    {
     "w": "metro:",
-    "start": 25.97,
-    "end": 26.296
+    "start": 27.441,
+    "end": 28.16
    },
    {
     "w": "es",
-    "start": 26.476,
-    "end": 26.659
+    "start": 28.16,
+    "end": 28.399
    },
    {
     "w": "la",
-    "start": 26.659,
-    "end": 26.842
+    "start": 28.399,
+    "end": 28.559
    },
    {
     "w": "pérdida",
-    "start": 26.842,
-    "end": 27.31
+    "start": 28.559,
+    "end": 29.038
    },
    {
     "w": "de",
-    "start": 27.31,
-    "end": 27.493
+    "start": 29.038,
+    "end": 29.197
    },
    {
     "w": "carga.",
-    "start": 27.493,
-    "end": 27.819
+    "start": 29.197,
+    "end": 29.537
    }
   ]
  },
  {
   "text": "En la más estrecha, la misma agua corre más deprisa: en la de veinticinco, casi ocho veces más que en la de setenta.",
-  "start": 28.119,
-  "end": 34.848,
+  "start": 29.916,
+  "end": 36.342,
   "words": [
    {
     "w": "En",
-    "start": 28.119,
-    "end": 28.302
+    "start": 29.916,
+    "end": 29.988
    },
    {
     "w": "la",
-    "start": 28.302,
-    "end": 28.485
+    "start": 29.988,
+    "end": 30.076
    },
    {
     "w": "más",
-    "start": 28.485,
-    "end": 28.668
+    "start": 30.076,
+    "end": 30.315
    },
    {
     "w": "estrecha,",
-    "start": 28.668,
-    "end": 29.136
+    "start": 30.315,
+    "end": 31.034
    },
    {
     "w": "la",
-    "start": 29.236,
-    "end": 29.419
+    "start": 31.034,
+    "end": 31.193
    },
    {
     "w": "misma",
-    "start": 29.419,
-    "end": 29.745
+    "start": 31.193,
+    "end": 31.433
    },
    {
     "w": "agua",
-    "start": 29.745,
-    "end": 30.07
+    "start": 31.433,
+    "end": 31.752
    },
    {
     "w": "corre",
-    "start": 30.07,
-    "end": 30.396
+    "start": 31.752,
+    "end": 32.151
    },
    {
     "w": "más",
-    "start": 30.396,
-    "end": 30.579
+    "start": 32.151,
+    "end": 32.311
    },
    {
     "w": "deprisa:",
-    "start": 30.579,
-    "end": 31.048
+    "start": 32.311,
+    "end": 33.159
    },
    {
     "w": "en",
-    "start": 31.228,
-    "end": 31.41
+    "start": 33.159,
+    "end": 33.244
    },
    {
     "w": "la",
-    "start": 31.41,
-    "end": 31.593
+    "start": 33.244,
+    "end": 33.349
    },
    {
     "w": "de",
-    "start": 31.593,
-    "end": 31.776
+    "start": 33.349,
+    "end": 33.508
    },
    {
     "w": "veinticinco,",
-    "start": 31.776,
-    "end": 32.388
+    "start": 33.508,
+    "end": 34.277
    },
    {
     "w": "casi",
-    "start": 32.488,
-    "end": 32.813
+    "start": 34.277,
+    "end": 34.546
    },
    {
     "w": "ocho",
-    "start": 32.813,
-    "end": 33.139
+    "start": 34.546,
+    "end": 34.865
    },
    {
     "w": "veces",
-    "start": 33.139,
-    "end": 33.465
+    "start": 34.865,
+    "end": 35.185
    },
    {
     "w": "más",
-    "start": 33.465,
-    "end": 33.648
+    "start": 35.185,
+    "end": 35.344
    },
    {
     "w": "que",
-    "start": 33.648,
-    "end": 33.83
+    "start": 35.344,
+    "end": 35.504
    },
    {
     "w": "en",
-    "start": 33.83,
-    "end": 34.013
+    "start": 35.504,
+    "end": 35.664
    },
    {
     "w": "la",
-    "start": 34.013,
-    "end": 34.196
+    "start": 35.664,
+    "end": 35.823
    },
    {
     "w": "de",
-    "start": 34.196,
-    "end": 34.379
+    "start": 35.823,
+    "end": 35.903
    },
    {
     "w": "setenta.",
-    "start": 34.379,
-    "end": 34.848
+    "start": 35.903,
+    "end": 36.342
    }
   ]
  },
  {
   "text": "Y cuanto más corre… más roza.",
-  "start": 35.148,
-  "end": 36.974,
+  "start": 36.742,
+  "end": 38.937,
   "words": [
    {
     "w": "Y",
-    "start": 35.148,
-    "end": 35.331
+    "start": 36.742,
+    "end": 36.861
    },
    {
     "w": "cuanto",
-    "start": 35.331,
-    "end": 35.657
+    "start": 36.861,
+    "end": 37.181
    },
    {
     "w": "más",
-    "start": 35.657,
-    "end": 35.839
+    "start": 37.181,
+    "end": 37.5
    },
    {
     "w": "corre…",
-    "start": 35.839,
-    "end": 36.165
+    "start": 37.5,
+    "end": 38.218
    },
    {
     "w": "más",
-    "start": 36.465,
-    "end": 36.648
+    "start": 38.218,
+    "end": 38.538
    },
    {
     "w": "roza.",
-    "start": 36.648,
-    "end": 36.974
+    "start": 38.538,
+    "end": 38.937
    }
   ]
  },
  {
   "text": "Escribe en comentarios cuál crees que es la correcta.",
-  "start": 37.274,
-  "end": 39.92,
+  "start": 39.386,
+  "end": 41.961,
   "words": [
    {
     "w": "Escribe",
-    "start": 37.274,
-    "end": 37.743
+    "start": 39.386,
+    "end": 39.815
    },
    {
     "w": "en",
-    "start": 37.743,
-    "end": 37.925
+    "start": 39.815,
+    "end": 39.975
    },
    {
     "w": "comentarios",
-    "start": 37.925,
-    "end": 38.537
+    "start": 39.975,
+    "end": 40.454
    },
    {
     "w": "cuál",
-    "start": 38.537,
-    "end": 38.72
+    "start": 40.454,
+    "end": 40.773
    },
    {
     "w": "crees",
-    "start": 38.72,
-    "end": 38.903
+    "start": 40.773,
+    "end": 41.092
    },
    {
     "w": "que",
-    "start": 38.903,
-    "end": 39.085
+    "start": 41.092,
+    "end": 41.252
    },
    {
     "w": "es",
-    "start": 39.085,
-    "end": 39.268
+    "start": 41.252,
+    "end": 41.412
    },
    {
     "w": "la",
-    "start": 39.268,
-    "end": 39.451
+    "start": 41.412,
+    "end": 41.492
    },
    {
     "w": "correcta.",
-    "start": 39.451,
-    "end": 39.92
+    "start": 41.492,
+    "end": 41.961
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
-  "start": 40.22,
-  "end": 44.72,
+  "start": 42.28,
+  "end": 44.944,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 40.22,
-    "end": 41.06
+    "start": 42.28,
+    "end": 42.769
    },
    {
     "w": "a",
-    "start": 41.06,
-    "end": 41.3
+    "start": 42.769,
+    "end": 42.849
    },
    {
     "w": "quien",
-    "start": 41.3,
-    "end": 41.54
+    "start": 42.849,
+    "end": 43.088
    },
    {
     "w": "oposite",
-    "start": 41.54,
-    "end": 42.38
+    "start": 43.088,
+    "end": 43.647
    },
    {
     "w": "contigo,",
-    "start": 42.38,
-    "end": 43.02
+    "start": 43.647,
+    "end": 43.966
    },
    {
     "w": "a",
-    "start": 43.12,
-    "end": 43.36
+    "start": 43.966,
+    "end": 44.126
    },
    {
     "w": "ver",
-    "start": 43.36,
-    "end": 43.6
+    "start": 44.126,
+    "end": 44.286
    },
    {
     "w": "si",
-    "start": 43.6,
-    "end": 43.84
+    "start": 44.286,
+    "end": 44.366
    },
    {
     "w": "la",
-    "start": 43.84,
-    "end": 44.08
+    "start": 44.366,
+    "end": 44.525
    },
    {
     "w": "acierta!",
-    "start": 44.08,
-    "end": 44.72
+    "start": 44.525,
+    "end": 44.944
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 45.02,
-  "end": 49.54,
+  "start": 45.304,
+  "end": 49.515,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 45.02,
-    "end": 45.86
+    "start": 45.304,
+    "end": 45.882
    },
    {
     "w": "a",
-    "start": 45.86,
-    "end": 46.1
+    "start": 45.882,
+    "end": 45.962
    },
    {
     "w": "bombero?",
-    "start": 46.1,
-    "end": 46.74
+    "start": 45.962,
+    "end": 46.631
    },
    {
     "w": "¡Bomberados!",
-    "start": 46.84,
-    "end": 47.68
+    "start": 46.631,
+    "end": 47.818
    },
    {
     "w": "¡Pruébala",
-    "start": 47.78,
-    "end": 48.42
+    "start": 47.818,
+    "end": 48.277
    },
    {
     "w": "gratis",
-    "start": 48.42,
-    "end": 48.86
+    "start": 48.277,
+    "end": 48.756
    },
    {
     "w": "cinco",
-    "start": 48.86,
-    "end": 49.3
+    "start": 48.756,
+    "end": 49.076
    },
    {
     "w": "días!",
-    "start": 49.3,
-    "end": 49.54
+    "start": 49.076,
+    "end": 49.515
    }
   ]
  }

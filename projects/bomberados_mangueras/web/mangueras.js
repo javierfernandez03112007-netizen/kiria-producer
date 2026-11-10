@@ -763,8 +763,8 @@ function camKeys() {          // planos ABIERTOS: las tres líneas enteras (auto
     [T.perdida, [1.2, 12.0, 2.0, 0, 2.2, -11.5, 42]],
     [T.estrecha, [0.6, 11.8, 1.6, 0, 2.2, -11.5, 42]],
     [T.ocho, [0.0, 11.5, 1.2, 0, 2.2, -11.5, 42]],
-    [T.corre, [-0.5, 10.8, 0.4, -0.5, 2.2, -11.5, 42]],             // se inclina hacia la de 25 (sin cortar las otras)
-    [T.roza2 + 0.4, [-0.7, 10.5, 0.0, -0.6, 2.2, -11.5, 42]],
+    [T.corre, [-0.25, 11.2, 0.9, -0.15, 2.2, -11.5, 42]],           // apenas se inclina hacia la de 25 (las tres enteras)
+    [T.roza2 + 0.4, [-0.35, 11.0, 0.6, -0.2, 2.2, -11.5, 42]],
     [T.escribe, [0.8, 19.5, 9.5, 0, 0, -14, 40]],                  // muy arriba: todo
     [T.fin, [0.6, 22.5, 12.0, 0, 0, -14, 40]],
     [T.end, [0.4, 29, 18.0, 0, 0, -14, 42]],
