@@ -82,7 +82,7 @@ async function main() {
     const ax = new THREE.Vector3(R() - .5, R() - .5, (R() - .5) * .6).normalize();
     const radial = new THREE.Vector2(cx - bx, cy - by).normalize();
     cells.push({ m, cx, cy, dist, rin, fly: dist < 0.72 || (dist < 0.85 && R() < 0.4), tc: dist < 0.42 ? TH1 + dist * 0.15 : TH2 + (dist - 0.42) * 0.25,
-      gap: (dist < 0.42 ? 0.0046 : 0.0034), delay: dist * 0.05, vx: radial.x * (0.35 + 0.9 * R()) + (R() - .5) * .3, vy: radial.y * (0.35 + 0.9 * R()) + 0.25 + 0.5 * R(),
+      gap: (dist < 0.42 ? 0.0064 : 0.0046), delay: dist * 0.05, vx: radial.x * (0.35 + 0.9 * R()) + (R() - .5) * .3, vy: radial.y * (0.35 + 0.9 * R()) + 0.25 + 0.5 * R(),
       vz: 1.1 + 1.7 * R() * (1 - dist * .4), ax, w: 5 + 9 * R(), jolt: [(R() - .5) * 0.05, (R() - .5) * 0.05, 0.002 + 0.004 * R()] });
     scene.add(m);
   });
@@ -112,15 +112,15 @@ async function main() {
     const m = new THREE.Mesh(g, crackMat); m.position.z = -D + 0.0004; m.renderOrder = 2; scene.add(m); cracks.push({ m, segs });
   }
   // ---- polvo (puntos con tamaño y transparencia por partícula; todo función del tiempo)
-  const NP = 1100; const pg = new THREE.BufferGeometry();
+  const NP = 1200; const pg = new THREE.BufferGeometry();
   const pp = new Float32Array(NP * 3), ps = new Float32Array(NP), pa = new Float32Array(NP);
   pg.setAttribute('position', new THREE.BufferAttribute(pp, 3)); pg.setAttribute('aSize', new THREE.BufferAttribute(ps, 1)); pg.setAttribute('aAlpha', new THREE.BufferAttribute(pa, 1));
   const dust = [];
   for (let i = 0; i < NP; i++) {
-    const te = i < 140 ? TH1 : i < 330 ? TH2 : TB + R() * 0.12; const big = te >= TB;
+    const te = i < 220 ? TH1 : i < 400 ? TH2 : TB + R() * 0.12; const big = te >= TB;
     const a = R() * Math.PI * 2, r = br * (big ? 0.75 : 0.45) * Math.sqrt(R());
     dust.push({ te, x: bx + Math.cos(a) * r, y: by + Math.sin(a) * r, vx: Math.cos(a) * (big ? .15 + .55 * R() : .05 + .15 * R()), vy: Math.sin(a) * (big ? .15 + .55 * R() : .05 + .15 * R()) + (big ? .1 * R() : 0),
-      vz: big ? .15 + 1.3 * R() : .03 + .12 * R(), life: (big ? 1.4 : 0.9) + 1.6 * R(), s0: 4 + 6 * R(), s1: (big ? 26 : 14) + 30 * R(), al: (big ? .38 : .3) * (0.5 + .5 * R()) });
+      vz: big ? .15 + 1.3 * R() : .03 + .12 * R(), life: (big ? 1.4 : 0.9) + 1.6 * R(), s0: 4 + 6 * R(), s1: (big ? 26 : 18) + 30 * R(), al: (big ? .38 : .42) * (0.5 + .5 * R()) });
   }
   const dustMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false,
     uniforms: { scale: { value: H / (2 * TF) } },
@@ -159,8 +159,8 @@ async function main() {
   const fill = new THREE.DirectionalLight(0x4f7dff, 0.8); fill.position.set(-0.6, -0.4, 0.8); scene.add(fill);
   scene.add(new THREE.AmbientLight(0xffffff, 0.25));
   // trayectoria del número: sale del hueco, se acerca y se queda a la izquierda de la cara (pantalla ~270,650)
-  const FIN_D = 0.86, FIN = at(272, 652, FIN_D), OUTP = at(318, 470, 1.12), HOLE = new THREE.Vector3(bx, by, -D - 0.06);
-  const finW = 440 / (H / (2 * FIN_D * TF));                                // 440 px de ancho al final
+  const FIN_D = 0.86, FIN = at(258, 640, FIN_D), OUTP = at(318, 470, 1.12), HOLE = new THREE.Vector3(bx, by, -D - 0.06);
+  const finW = 400 / (H / (2 * FIN_D * TF));                                // 400 px de ancho al final
   const S_FIN = finW / numW;
 
   const q = new THREE.Quaternion(), e = new THREE.Euler(), m4 = new THREE.Matrix4(), v3 = new THREE.Vector3(), sc3 = new THREE.Vector3();
@@ -184,7 +184,7 @@ async function main() {
       c.m.position.set(x, y, z); c.m.scale.set(s, s, 1);
     }
     // grietas de fuera
-    for (const k of cracks) { const p = 0.45 * eOut(lin(ts, TH2, TH2 + .1)) + 0.55 * eOut(lin(ts, TB, TB + .08)); k.m.geometry.setDrawRange(0, Math.round(k.segs * p) * 6); }
+    for (const k of cracks) { const p = 0.3 * eOut(lin(ts, TH1, TH1 + .05)) + 0.3 * eOut(lin(ts, TH2, TH2 + .1)) + 0.4 * eOut(lin(ts, TB, TB + .08)); k.m.geometry.setDrawRange(0, Math.round(k.segs * p) * 6); }
     // polvo
     for (let i = 0; i < NP; i++) { const d = dust[i]; const dt = ts - d.te;
       if (dt < 0 || dt > d.life) { pa[i] = 0; ps[i] = 0; pp[i * 3] = d.x; pp[i * 3 + 1] = d.y; pp[i * 3 + 2] = -D; continue; }

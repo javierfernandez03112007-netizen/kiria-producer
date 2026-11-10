@@ -169,6 +169,7 @@ def glass_mask(rects):
 # ---------------------------------------------------------------- la pared que se rompe (primera toma), de web3d/
 P3D = os.environ.get('P3D', os.path.join(WORK, 'pared3d'))
 def _rgba(p):
+    if not os.path.exists(p): return None
     im = cv2.imread(p, cv2.IMREAD_UNCHANGED)
     if im is None: return None
     return cv2.cvtColor(im[..., :3], cv2.COLOR_BGR2RGB).astype(np.float32) / 255, im[..., 3].astype(np.float32) / 255
@@ -179,11 +180,13 @@ def pared3d(f, clip, bg, blur=2.6):
     if b is None: return None
     rgb, a = b
     P = cv2.GaussianBlur(rgb * a[..., None], (0, 0), blur); A = cv2.GaussianBlur(a, (0, 0), blur)[..., None]
-    out = P + bg * (1 - A)
-    n = _rgba(os.path.join(P3D, 'num', 'f%05d.png' % f))
-    if n is not None:
-        out = out * (1 - n[1][..., None]) + n[0] * n[1][..., None]
-    return out
+    return P + bg * (1 - A)
+
+def numero3d(f, clip):
+    """el «3,6M» (capa aparte: va delante de Javi, que está a su lado)."""
+    if clip != 'a8695': return None
+    p = os.path.join(P3D, 'num', 'f%05d.png' % f)
+    return _rgba(p) if os.path.exists(p) else None
 
 def shake(f):
     """pequeña sacudida de la cámara en los golpes y en el reventón (solo en la primera toma)."""
@@ -235,6 +238,11 @@ def frame_at(f, readers, fx=None):
     # «light wrap»
     er = cv2.erode(az[..., 0], np.ones((7, 7), np.uint8)); rim = np.clip(az[..., 0] - er, 0, 1)[..., None]
     out = out * (1 - rim * 0.22) + cv2.GaussianBlur(bgz, (0, 0), 6) * rim * 0.22
+    # el número 3D, delante de Javi (con el mismo encuadre)
+    nm = numero3d(f, clip)
+    if nm is not None:
+        na = warp(nm[1], cv2.INTER_LINEAR)[..., None]; nc = warp(nm[0])
+        out = out * (1 - na) + nc * na
     # cristal + tarjetas
     rects = glass_rects(f)
     if rects:

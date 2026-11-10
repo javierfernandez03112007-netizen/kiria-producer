@@ -111,7 +111,7 @@ def main():
                          headX=round(Mz[0, 0] * hx + Mz[0, 2]), headTop=round(Mz[1, 1] * (hy - 150) + Mz[1, 2])))
     # cada trozo dura hasta que empieza el siguiente de la misma toma (como mucho 0,35 s después de su última palabra)
     for a, b in zip(subs, subs[1:]):
-        if a['seg'] == b['seg']: a['t1'] = round(min(b['t0'] - 0.02, a['t1'] + 0.35), 3)
+        if a['seg'] == b['seg']: a['t1'] = round(min(b['t0'] - 0.1, a['t1'] + 0.35), 3)
         else: a['t1'] = round(min(segs[a['seg']]['T1'] - 0.02, a['t1'] + 0.35), 3)
     subs[-1]['t1'] = round(min(segs[subs[-1]['seg']]['T1'] - 0.02, subs[-1]['t1'] + 0.4), 3)
     out = dict(total=round(total, 3), fps=MJ.FPS, segs=segs, words={str(k): v for k, v in W.items()}, subs=subs)

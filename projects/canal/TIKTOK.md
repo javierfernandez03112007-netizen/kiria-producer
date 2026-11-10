@@ -125,5 +125,11 @@ todo lo necesario para profesionalizarla».
 
     #aviones #física #ciencia #curiosidades #NASA
     ```
+16. **Reto: 10 clientes en 30 días · Capítulo 1** (tu serie; subir en TikTok el mismo jueves 12, a las 19:00)
+    ```
+    🎯 Reto: 10 clientes en 30 días. Capítulo 1. Cada jueves te cuento cómo va (los sí y los no). ¿Tienes un negocio? Comenta NEGOCIO 👇 −10 % con KIRIA10 hasta el 30-11 en kiriaai.com
+
+    #reto #emprendimiento #negocios #inteligenciaartificial #kiria
+    ```
 No subir a TikTok los dos vídeos de lanzamiento («Ni una sola cámara» y «Tu producto, en 3D»): dicen «comenta KIRIA» y «el domingo»,
 que ya no valen.

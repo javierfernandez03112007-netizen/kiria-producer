@@ -119,7 +119,7 @@ function buildSubs() {
       }
       el.appendChild(ln);
     }
-    const c = add('behind', S.t0 - .05, S.t1 + .03, el, null);
+    const c = add('behind', S.t0 - .05, S.t1 + .01, el, null);
     c.toks = toks; c.seg = seg; c.S = S;
     c.upd = (t) => {
       // tamaño: que la línea más larga quepa en 980 px
@@ -136,7 +136,7 @@ function buildSubs() {
         c.x = cx - c.w / 2; c.y = c.S.headTop + 36 - c.h;
         el.style.transformOrigin = '0 0';
       }
-      const ko = eIn(lin(t, c.S.t1 - .1, c.S.t1 + .02));
+      const ko = eIn(lin(t, c.S.t1 - .12, c.S.t1));
       let sig = '';
       for (const tk of toks) {
         const k = eOut(lin(t, tk.t - .04, tk.t + .16));
@@ -249,14 +249,14 @@ function buildCards() {
     const t0 = wt(S1, 14) - .1, t1 = wt(S1, 22) - .05;
     const c = card(t0, t1, `
       <div class="abs row" style="left:32px;top:30px;gap:12px">${ico('up', '#3ee08f', 3.6).replace('class="ico"', 'class="ico" style="width:34px;height:34px"')}<span class="lab" style="color:var(--ink)">Visualizaciones</span></div>
-      <svg class="abs" style="left:24px;top:84px" width="430" height="250" viewBox="0 0 430 250">
+      <svg class="abs" style="left:20px;top:84px" width="400" height="236" viewBox="0 0 430 250" preserveAspectRatio="none">
         <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff4d61"/><stop offset=".5" stop-color="#b45cff"/><stop offset="1" stop-color="#4f7dff"/></linearGradient>
         <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b45cff" stop-opacity=".35"/><stop offset="1" stop-color="#b45cff" stop-opacity="0"/></linearGradient></defs>
         <g stroke="rgba(255,255,255,.08)" stroke-width="1.5"><path d="M0 50H430M0 110H430M0 170H430M0 230H430"/></g>
         <path class="area" fill="url(#g2)" d=""/>
         <path class="ln" fill="none" stroke="url(#g1)" stroke-width="7" stroke-linecap="round" d=""/>
         <circle class="tip" r="10" fill="#fff"/>
-      </svg>`, 44, 900, 476, 350);
+      </svg>`, 40, 920, 440, 340);
     const pth = c.el.querySelector('.ln'), area = c.el.querySelector('.area'), tip = c.el.querySelector('.tip');
     const f = x => 232 - 200 * (Math.exp(4.2 * x) - 1) / (Math.exp(4.2) - 1) - 6 * Math.sin(x * 14) * (1 - x);
     const ta = wt(S1, 15), tb = we(S1, 21);
@@ -307,7 +307,7 @@ function buildCards() {
   {
     const items = [['shop', 'Pequeños negocios', 7], ['building', 'Empresas', 9], ['bulb', 'Ideas y proyectos', 11]];
     items.forEach(([ic, txt, wi], k) => {
-      const c = add('front', wt(S2, wi) - .08, wt(S2, 16), $(`<div class="glass" style="left:44px;top:${930 + k * 128}px;width:470px;height:104px;border-radius:30px">
+      const c = add('front', wt(S2, wi) - .08, wt(S2, 16), $(`<div class="glass" style="left:40px;top:${930 + k * 128}px;width:440px;height:104px;border-radius:30px">
         <div class="row" style="height:100%;padding:0 26px;gap:20px;color:var(--yel)">${ico(ic, '#ffc83d', 3)}<span style="font:600 38px/1 ISans;color:var(--ink)">${txt}</span></div></div>`), null);
       c.upd = t => cardAnim(c, t, { dy: 0, s0: .7 }) + (() => { const kx = eOut(lin(t, c.t0, c.t0 + .35)); c.el.style.transform += ` translateX(${r2(-(1 - kx) * 80)}px)`; return r2(kx); })();
     });
@@ -361,11 +361,11 @@ function buildCards() {
       <span class="tx" style="font:600 33px/1 ISans">${s}</span><span class="sp"></span><span class="pct" style="font:500 22px JMono;color:var(--mut)"></span></div>`);
     const c = card(t0, t1, `
       <div class="abs row" style="left:30px;top:30px;gap:14px"><div class="spin" style="width:30px;height:30px;border-radius:50%;border:4px solid rgba(255,255,255,.18);border-top-color:#ffc83d"></div>
-        <span style="font:700 31px/1 ISans">Kiria está creando tu vídeo</span></div>
+        <span style="font:700 27px/1 ISans">Kiria está creando tu vídeo</span></div>
       <div class="abs lab cnt" style="left:30px;top:76px"></div>
       ${rows}
       <div class="abs" style="left:30px;right:30px;bottom:30px;height:10px;border-radius:5px;background:rgba(255,255,255,.12)"></div>
-      <div class="abs bar" style="left:30px;bottom:30px;height:10px;border-radius:5px;background:var(--grad)"></div>`, 44, 880, 520, 480);
+      <div class="abs bar" style="left:30px;bottom:30px;height:10px;border-radius:5px;background:var(--grad)"></div>`, 40, 900, 440, 470);
     const st = [...c.el.querySelectorAll('.st')], bar = c.el.querySelector('.bar'), cnt = c.el.querySelector('.cnt'), spin = c.el.querySelector('.spin');
     const tt = [wt(S3, 8), wt(S3, 10), wt(S3, 12), wt(S3, 14), wt(S3, 16)];
     c.upd = (t) => {
@@ -380,7 +380,7 @@ function buildCards() {
         sg += r2(k);
       });
       cnt.textContent = `Paso ${Math.min(5, done + 1)} de 5`;
-      const p = clamp(lin(t, tt[0], tt[4] + .4)); bar.style.width = r2(460 * p) + 'px';
+      const p = clamp(lin(t, tt[0], tt[4] + .4)); bar.style.width = r2(380 * p) + 'px';
       spin.style.transform = `rotate(${Math.round((t - t0) * 420)}deg)`;
       return sg + done + r2(p) + Math.round((t - t0) * 420);
     };
@@ -389,12 +389,12 @@ function buildCards() {
   {
     const t0 = wt(S3, 19) - .1, t1 = segT(S3)[1] - .02;
     const c = card(t0, t1, `
-      <div class="abs row" style="left:0;right:0;top:0;height:58px;padding:0 22px;gap:10px;background:rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.1)">
+      <div class="abs row" style="left:0;right:0;top:0;height:48px;padding:0 18px;gap:9px;background:rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.1)">
         <i style="width:15px;height:15px;border-radius:50%;background:#ff5f57"></i><i style="width:15px;height:15px;border-radius:50%;background:#febc2e"></i><i style="width:15px;height:15px;border-radius:50%;background:#28c840"></i>
-        <div class="row" style="margin-left:18px;height:36px;padding:0 18px;border-radius:18px;background:rgba(0,0,0,.35);font:500 22px/1 JMono;color:var(--mut);gap:8px">🔒 kiriaai.com</div></div>
-      <img src="img/web.png" class="abs" style="left:0;top:58px;width:640px;height:400px;object-fit:cover;object-position:top">
-      <div class="abs tag row" style="left:24px;bottom:22px;height:62px;padding:0 24px;border-radius:31px;background:#ffc83d;color:#111;gap:12px;font:700 28px/1 ISans">${ico('shop', '#111', 3.4).replace('class="ico"', 'class="ico" style="width:32px;height:32px"')}Para tu pequeño negocio</div>`,
-      44, 900, 640, 458, { radius: 26 });
+        <div class="row" style="margin-left:12px;height:30px;padding:0 16px;border-radius:15px;background:rgba(0,0,0,.35);font:500 19px/1 JMono;color:var(--mut);gap:8px">🔒 kiriaai.com</div></div>
+      <img src="img/web.png" class="abs" style="left:0;top:48px;width:440px;height:275px;object-fit:cover;object-position:top">
+      <div class="abs tag row" style="left:18px;bottom:18px;height:54px;padding:0 20px;border-radius:27px;background:#ffc83d;color:#111;gap:10px;font:700 24px/1 ISans">${ico('shop', '#111', 3.4).replace('class="ico"', 'class="ico" style="width:28px;height:28px"')}Para tu pequeño negocio</div>`,
+      40, 920, 440, 323, { radius: 24 });
     const tag = c.el.querySelector('.tag');
     c.upd = t => { const sg = cardAnim(c, t); const k = eBack(lin(t, wt(S3, 24) - .05, wt(S3, 24) + .3)); tag.style.opacity = r2(clamp(k)); tag.style.transform = `scale(${r2(.7 + .3 * k)})`; return sg + r2(k); };
   }
@@ -416,7 +416,7 @@ function buildCards() {
         </div>
         <div style="position:absolute;left:50%;top:252px;width:260px;height:30px;margin-left:-130px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.55),transparent 70%)"></div>
       </div>
-      <div class="abs" style="left:30px;bottom:26px;font:italic 56px/1 ISerif">en <span style="color:var(--yel)">3D</span></div>`, 44, 880, 476, 470);
+      <div class="abs" style="left:30px;bottom:26px;font:italic 56px/1 ISerif">en <span style="color:var(--yel)">3D</span></div>`, 40, 900, 440, 450);
     const cube = c.el.querySelector('.cube');
     c.upd = t => { const sg = cardAnim(c, t, { dy: 0, s0: .8 }); const a = (t - t0) * 95 - 30; cube.style.transform = `rotateX(-16deg) rotateY(${r2(a)}deg)`; return sg + r2(a); };
   }
@@ -425,8 +425,8 @@ function buildCards() {
     const t0 = wt(S4, 5) - .08, t1 = wt(S4, 10) + .05;
     const c = card(t0, t1, `
       <div class="abs row" style="left:30px;top:30px;gap:12px"><div class="dot pulse"></div><span style="font:700 26px/1 JMono;letter-spacing:.1em;color:var(--red)">EN DIRECTO</span></div>
-      <svg class="abs" style="left:20px;top:86px" width="436" height="170" viewBox="0 0 436 170"><path class="wv" fill="none" stroke="#ff4d61" stroke-width="5" stroke-linecap="round" d=""/></svg>
-      <div class="abs" style="left:30px;bottom:28px;font:italic 60px/1 ISerif">tiempo <span style="color:var(--yel)">real</span></div>`, 44, 880, 476, 360);
+      <svg class="abs" style="left:18px;top:86px" width="404" height="158" viewBox="0 0 436 170" preserveAspectRatio="none"><path class="wv" fill="none" stroke="#ff4d61" stroke-width="5" stroke-linecap="round" d=""/></svg>
+      <div class="abs" style="left:30px;bottom:28px;font:italic 60px/1 ISerif">tiempo <span style="color:var(--yel)">real</span></div>`, 40, 900, 440, 340);
     const wv = c.el.querySelector('.wv'), pd = c.el.querySelector('.pulse');
     c.upd = t => {
       const sg = cardAnim(c, t, { dy: 0, s0: .85 });
@@ -462,14 +462,14 @@ function buildCards() {
     const t0 = wt(S5, 0) - .1, t1 = wt(S5, 22) - .05;
     let cells = '';
     const days = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
-    days.forEach((d, i) => cells += `<div class="abs lab" style="left:${30 + i * 60}px;top:96px;width:52px;text-align:center;color:${i === 3 ? 'var(--yel)' : 'var(--dim)'}">${d}</div>`);
+    days.forEach((d, i) => cells += `<div class="abs lab" style="left:${24 + i * 56}px;top:96px;width:50px;text-align:center;color:${i === 3 ? 'var(--yel)' : 'var(--dim)'}">${d}</div>`);
     // noviembre de 2026: el 1 es domingo
     for (let d = 1; d <= 30; d++) { const idx = d + 5; const col = idx % 7, row = Math.floor(idx / 7);
-      const th = col === 3 && d >= 12; cells += `<div class="abs ${th ? 'th' : ''}" style="left:${30 + col * 60}px;top:${136 + row * 50}px;width:52px;height:42px;border-radius:12px;text-align:center;font:${th ? 700 : 500} 25px/42px JMono;color:${th ? '#111' : 'var(--mut)'}">${d}</div>`; }
+      const th = col === 3 && d >= 12; cells += `<div class="abs ${th ? 'th' : ''}" style="left:${24 + col * 56}px;top:${136 + row * 50}px;width:50px;height:42px;border-radius:12px;text-align:center;font:${th ? 700 : 500} 25px/42px JMono;color:${th ? '#111' : 'var(--mut)'}">${d}</div>`; }
     const c = card(t0, t1, `
       <div class="abs" style="left:30px;top:28px;font:italic 50px/1 ISerif">Cada <span style="color:var(--yel)">jueves</span></div>
       <div class="abs lab" style="right:30px;top:42px">Nov 2026</div>
-      ${cells}`, 44, 880, 476, 452);
+      ${cells}`, 40, 900, 440, 452);
     const th = [...c.el.querySelectorAll('.th')];
     c.upd = t => { const sg = cardAnim(c, t, { dy: 0, s0: .85 }); let s = '';
       th.forEach((e, i) => { const k = eBack(lin(t, wt(S5, 2) + i * .12, wt(S5, 2) + .3 + i * .12)); e.style.background = `rgba(255,200,61,${r2(k)})`; e.style.color = k > .5 ? '#111' : 'var(--mut)'; e.style.transform = `scale(${r2(.8 + .2 * k)})`; s += r2(k); });
@@ -481,7 +481,7 @@ function buildCards() {
         <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.12);flex:none"></div>
         <span style="font:600 30px/1 ISans">${n}</span><span style="width:150px;height:16px;border-radius:8px;background:rgba(255,255,255,.14);filter:blur(1px)"></span><span class="sp"></span>
         <span class="stt" style="font:700 24px/1 JMono;padding:10px 16px;border-radius:12px;background:rgba(255,255,255,.08);color:var(--mut)">PENDIENTE</span></div>`);
-    const f = card(wt(S5, 3) - .1, wt(S5, 22) - .05, html, 110, 1330, 860, 280 - 50);
+    const f = card(wt(S5, 3) - .1, wt(S5, 22) - .05, html, 110, 1300, 860, 290);
     const st = [...f.el.querySelectorAll('.stt')];
     f.upd = t => { let sg = cardAnim(f, t);
       rows.forEach((r, i) => { if (r[1] === null) return; const k = eBack(lin(t, wt(S5, r[1]) - .05, wt(S5, r[1]) + .25)); const e = st[i];
@@ -516,10 +516,10 @@ function buildCards() {
     const t0 = wt(S5, 32) - .08, t1 = segT(S5)[1] - .02;
     const c = card(t0, t1, `
       <div class="abs row" style="left:32px;top:30px;gap:12px">${ico('user', '#3ee08f', 3.4).replace('class="ico"', 'class="ico" style="width:34px;height:34px"')}<span class="lab" style="color:var(--ink)">Tus clientes</span></div>
-      <svg class="abs" style="left:24px;top:84px" width="430" height="250" viewBox="0 0 430 250">
+      <svg class="abs" style="left:20px;top:84px" width="400" height="236" viewBox="0 0 430 250" preserveAspectRatio="none">
         <g stroke="rgba(255,255,255,.08)" stroke-width="1.5"><path d="M0 50H430M0 110H430M0 170H430M0 230H430"/></g>
         <path class="ln" fill="none" stroke="#3ee08f" stroke-width="7" stroke-linecap="round" d=""/><circle class="tip" r="10" fill="#fff"/></svg>
-      <div class="abs" style="right:30px;top:24px;font:italic 46px/1 ISerif;color:var(--yel)">exponencial</div>`, 44, 880, 476, 350);
+      <div class="abs" style="right:28px;bottom:20px;font:italic 46px/1 ISerif;color:var(--yel)">exponencial</div>`, 40, 900, 440, 340);
     const pth = c.el.querySelector('.ln'), tip = c.el.querySelector('.tip');
     const f = x => 232 - 210 * (Math.exp(4.4 * x) - 1) / (Math.exp(4.4) - 1);
     const ta = wt(S5, 34), tb = we(S5, 39);
