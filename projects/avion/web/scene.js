@@ -1484,7 +1484,7 @@ function buildCam() {
       [K.ventanilla11 - 0.03, [72, -25, 79], [0, -16, 0], 53],
     ], 'big'],
     [K.ventanilla11 - 0.03, [                                                                 // G: vuelta al dron del principio (bucle)
-      [K.ventanilla11 - 0.03, [116, 60, 16], [-14, 8, 0], 54],
+      [K.ventanilla11 - 0.03, [116, 60, 16], [-14, -40, 0], 54],                                  //    (el avión arriba: la encuesta va debajo)
       [END, ...K0C],
     ], 'big'],
   ];
