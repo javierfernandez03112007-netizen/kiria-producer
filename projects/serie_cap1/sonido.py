@@ -54,8 +54,8 @@ EVENTS = [
     ('lanzamiento/tarjeta', wt(5, 22) - 0.08, 0.24), ('lanzamiento/teclea', wt(5, 26), 0.32), ('lanzamiento/enviado', we(5, 27), 0.34),
     ('lanzamiento/ping', wt(5, 29) - 0.06, 0.28), ('quimica/crece', wt(5, 34), 0.26),
     # 7 · el descuento y el cierre
-    ('lanzamiento/tarjeta', wt(6, 0) - 0.08, 0.28), ('magisterio/sello', wt(6, 10) - 0.08, 0.5), ('lanzamiento/marcador', wt(6, 11), 0.24),
-    ('avion/brillo', wt(6, 12) - 0.02, 0.28), ('medicina/dorado', TL['clips']['e8712'][1] + 0.45, 0.34),
+    ('lanzamiento/tarjeta', wt(6, 0) - 0.08, 0.28), ('magisterio/sello', wt(6, 10) - 0.08, 0.5), ('lanzamiento/marcador', wt(6, 12), 0.24),
+    ('avion/brillo', wt(6, 15) - 0.04, 0.28), ('medicina/dorado', TL['clips']['e8712'][1] + 0.45, 0.34),
 ]
 
 def build(path):

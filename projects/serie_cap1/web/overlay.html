@@ -541,7 +541,7 @@ function buildCards() {
     const pc = c.el.querySelector('.pc'), dt = c.el.querySelector('.dt'), cd = c.el.querySelector('.cd'), ws = c.el.querySelector('.ws');
     const pop = (e, ta) => { const k = eBack(lin(ta === null ? -1 : 0, 0, 1)); };
     c.upd = t => { const sg = cardAnim(c, t);
-      const a = eBack(lin(t, wt(S6, 4) - .05, wt(S6, 4) + .3)), b = eBack(lin(t, wt(S6, 10) - .1, wt(S6, 10) + .3)), d = eBack(lin(t, wt(S6, 11), wt(S6, 11) + .3)), e = eBack(lin(t, wt(S6, 12), wt(S6, 12) + .3));
+      const a = eBack(lin(t, wt(S6, 4) - .05, wt(S6, 4) + .3)), b = eBack(lin(t, wt(S6, 10) - .1, wt(S6, 10) + .3)), d = eBack(lin(t, wt(S6, 12), wt(S6, 12) + .3)), e = eBack(lin(t, wt(S6, 15) - .05, wt(S6, 15) + .3));
       dt.style.opacity = r2(clamp(a)); dt.style.transform = `translateY(${r2((1 - a) * 20)}px)`;
       pc.style.opacity = r2(clamp(b)); pc.style.transform = `scale(${r2(.6 + .4 * b)})`; pc.style.transformOrigin = '30% 60%';
       cd.style.opacity = r2(clamp(d)); cd.style.transform = `translateY(${r2((1 - d) * 20)}px)`;

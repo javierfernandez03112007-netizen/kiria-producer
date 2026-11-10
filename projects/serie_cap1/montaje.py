@@ -33,7 +33,7 @@ SEGS = [   # trozos (una toma puede salir en varios trozos: así se quitan tropi
     dict(clip='a8699', a=0.84, b=8.905, z=(1.08, 1.12)),                      # el reto … llegar a alcanzar sus |
     dict(clip='a8699', a=9.315, b=9.85, z=(1.26, 1.28)),                      # objetivos (fuera el «metas» que se le escapó)
     dict(clip='d8709', a=0.12, b=10.61, z=(1.12, 1.18), punch=[(5.80, 1.30)]),
-    dict(clip='e8712', a=0.36, b=4.01, z=(1.00, 1.04)),                       # el descuento (sin «en la página Kiria.com»: la web es kiriaai.com)
+    dict(clip='e8712', a=0.36, b=5.46, z=(1.00, 1.04)),                       # el descuento, entero: «…en la página kiria.com» (Javi lo quiere)
 ]
 END_HOLD = 2.2                                                  # cierre (tarjeta final) después de la última palabra
 
