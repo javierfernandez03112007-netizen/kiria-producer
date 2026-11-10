@@ -63,7 +63,6 @@ SUBS = [
     (4, 10, 13, 'Y CAPTACIÓN DE CLIENTES'),
     (4, 14, 14, '*automatizada*'),
     (4, 15, 17, '¿CÓMO HACEMOS *eso*?'),
-    (4, 18, 20, 'QUÉDATE HASTA EL *final*'),
     (5, 0, 2, 'TODOS LOS *jueves*'),
     (5, 3, 6, 'IREMOS ACTUALIZANDO LAS *noticias*'),
     (5, 7, 12, 'DE ESTAS PEQUEÑAS EMPRESAS'),
@@ -79,49 +78,57 @@ SUBS = [
 
 def main():
     total = MJ.timeline()
-    segs = []
-    W = {}
     hp_cache = os.path.join(fondo.BG, 'heads.json')
     heads = json.load(open(hp_cache)) if os.path.exists(hp_cache) else {}
+    segs = []
     for k, s in enumerate(MJ.SEGS):
         c = s['clip']
         if c not in heads: heads[c] = [float(v) for v in fondo.head_pos(c)]
         hx, hy = heads[c]; top = hy - 150
-        # cabeza en la pantalla (con el zoom medio de la toma)
         z = sum(s['z']) / 2; Mz = MJ.zoom_mat(z, hx, hy + 120)
-        sx = Mz[0, 0] * hx + Mz[0, 2]; sy = Mz[1, 1] * top + Mz[1, 2]
-        ws = words(c)
-        tw = []
-        for w in ws:
-            t0 = s['T0'] + (w['start'] - s['a']) / MJ.SPEED; t1 = s['T0'] + (w['end'] - s['a']) / MJ.SPEED
-            tw.append([round(max(s['T0'], t0), 3), round(min(s['T0'] + s['dur'], max(t0 + 0.05, t1)), 3), w['w']])
-        W[k] = tw
-        segs.append(dict(clip=c, T0=round(s['T0'], 3), T1=round(s['T0'] + s['dur'], 3), headX=round(sx), headTop=round(sy), zoom=z))
+        segs.append(dict(clip=c, T0=round(s['T0'], 3), T1=round(s['T0'] + s['dur'], 3), headX=round(Mz[0, 0] * hx + Mz[0, 2]),
+                         headTop=round(Mz[1, 1] * top + Mz[1, 2]), zoom=z))
     json.dump(heads, open(hp_cache, 'w'))
+    clips = {}
+    for s in segs: clips.setdefault(s['clip'], [s['T0'], s['T1']]); clips[s['clip']][1] = s['T1']
+    # palabras de cada toma → tiempo del vídeo (las que caen en un trozo quitado se marcan y se pegan al corte)
+    W = {}; WK = {}
+    for c in clips:
+        ps = [(k, s) for k, s in enumerate(MJ.SEGS) if s['clip'] == c]
+        out = []; ks = []
+        for w in words(c):
+            hit = next(((k, s) for k, s in ps if s['a'] - 0.06 <= w['start'] <= s['b']), None)
+            if hit:
+                k, s = hit
+                t0 = s['T0'] + (max(w['start'], s['a']) - s['a']) / MJ.SPEED; t1 = s['T0'] + (min(w['end'], s['b']) - s['a']) / MJ.SPEED
+                out.append([round(t0, 3), round(max(t0 + 0.05, t1), 3), w['w'], 1]); ks.append(k)
+            else:
+                nxt = next(((k, s) for k, s in ps if s['a'] > w['start']), None)
+                if nxt: k, s = nxt; tt = s['T0']
+                else: k, s = ps[-1]; tt = s['T0'] + s['dur']
+                out.append([round(tt, 3), round(tt, 3), w['w'], 0]); ks.append(k)
+        W[c] = out; WK[c] = ks
     subs = []
-    order = [s['clip'] for s in MJ.SEGS]
     for (k0, i0, i1, txt) in SUBS:
-        k = order.index(OLD[k0])
-        tw = W[k]
+        c = OLD[k0]; tw = W[c]
         lines = [l.split(' ') for l in txt.split('|')]
         ntok = sum(len(l) for l in lines)
         times = [tw[min(i1, i0 + int(round(j * (i1 - i0) / max(1, ntok - 1))))][0] if ntok > 1 else tw[i0][0] for j in range(ntok)]
-        # la palabra j del texto aparece cuando se dice la palabra proporcional del trozo
-        seg = MJ.SEGS[k]; tm = (tw[i0][0] + tw[i1][1]) / 2 - seg['T0']
-        z, cx, cy = MJ.zoom_at(seg, tm); hx, hy = heads[seg['clip']]
+        k = WK[c][i0]; seg = MJ.SEGS[k]; tm = (tw[i0][0] + tw[i1][1]) / 2 - seg['T0']
+        z, cx, cy = MJ.zoom_at(seg, max(0, min(seg['dur'], tm))); hx, hy = heads[c]
         Mz = MJ.zoom_mat(z, cx, cy)
-        subs.append(dict(seg=k, t0=tw[i0][0], t1=tw[i1][1], lines=lines, times=times,
+        subs.append(dict(seg=k, clip=c, t0=tw[i0][0], t1=tw[i1][1], lines=lines, times=times,
                          headX=round(Mz[0, 0] * hx + Mz[0, 2]), headTop=round(Mz[1, 1] * (hy - 150) + Mz[1, 2])))
-    # cada trozo dura hasta que empieza el siguiente de la misma toma (como mucho 0,35 s después de su última palabra)
     for a, b in zip(subs, subs[1:]):
-        if a['seg'] == b['seg']: a['t1'] = round(min(b['t0'] - 0.1, a['t1'] + 0.35), 3)
-        else: a['t1'] = round(min(segs[a['seg']]['T1'] - 0.02, a['t1'] + 0.35), 3)
-    subs[-1]['t1'] = round(min(segs[subs[-1]['seg']]['T1'] - 0.02, subs[-1]['t1'] + 0.4), 3)
-    out = dict(total=round(total, 3), fps=MJ.FPS, segs=segs, words={str(k): v for k, v in W.items()}, subs=subs)
+        if a['clip'] == b['clip']: a['t1'] = round(min(b['t0'] - 0.1, a['t1'] + 0.35), 3)
+        else: a['t1'] = round(min(clips[a['clip']][1] - 0.02, a['t1'] + 0.35), 3)
+    subs[-1]['t1'] = round(min(clips[subs[-1]['clip']][1] - 0.02, subs[-1]['t1'] + 0.4), 3)
+    out = dict(total=round(total, 3), fps=MJ.FPS, segs=segs, clips=clips, words=W, subs=subs)
     os.makedirs(os.path.join(HERE, 'web'), exist_ok=True)
     json.dump(out, open(os.path.join(HERE, 'web', 'timeline.json'), 'w'), ensure_ascii=False, indent=1)
     for s in segs: print(s)
-    print('trozos', len(subs), 'duración', out['total'])
+    print('trozos de subtítulo', len(subs), 'duración', out['total'])
+    print('palabras quitadas:', {c: [w[2] for w in W[c] if not w[3]] for c in W})
 
 if __name__ == '__main__':
     main()

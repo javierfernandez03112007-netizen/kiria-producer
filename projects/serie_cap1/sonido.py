@@ -9,12 +9,11 @@ from engine import sfx
 
 SR = sfx.SR
 TL = json.load(open(os.path.join(HERE, 'web', 'timeline.json')))
-WD = {int(k): v for k, v in TL['words'].items()}
+WD = TL['words']                                      # palabras por toma (nombre)
 SEGS = TL['segs']
 OLD = ['a8695', 'a8699', 'c8707b', 'c8707a', 'c8707c', 'd8709', 'e8712']      # los números de abajo son la toma en este orden
-IX = {s['clip']: k for k, s in enumerate(SEGS)}
-wt = lambda s, i: WD[IX[OLD[s]]][i][0]
-we = lambda s, i: WD[IX[OLD[s]]][i][1]
+wt = lambda s, i: WD[OLD[s]][i][0]
+we = lambda s, i: WD[OLD[s]][i][1]
 A0, SPEED = 0.68, 1.06
 src = lambda ts: (ts - A0) / SPEED                     # segundo de la grabación a8695 → segundo del vídeo
 
@@ -49,15 +48,14 @@ EVENTS = [
     ('promo_web/scroll', wt(3, 19) - 0.08, 0.32), ('lanzamiento/tap', wt(3, 24) - 0.04, 0.28),
     # 5 · 3D, tiempo real, captación; «quédate…»
     ('avion/giro', wt(4, 2) - 0.1, 0.32), ('cripto/internet', wt(4, 5) - 0.06, 0.26), ('economia/embudo', wt(4, 11) - 0.08, 0.36),
-    ('avion/whoosh', wt(4, 18) - 0.12, 0.26),
     # 6 · cada jueves; sí / no; comenta NEGOCIO; la web; exponencial
     ('robo_banco/calendario', wt(5, 0) - 0.08, 0.38), ('lanzamiento/mensaje', wt(5, 3) - 0.08, 0.26),
     ('quimica/ok', wt(5, 18), 0.36), ('cerradura/denegado', wt(5, 21), 0.32),
     ('lanzamiento/tarjeta', wt(5, 22) - 0.08, 0.24), ('lanzamiento/teclea', wt(5, 26), 0.32), ('lanzamiento/enviado', we(5, 27), 0.34),
     ('lanzamiento/ping', wt(5, 29) - 0.06, 0.28), ('quimica/crece', wt(5, 34), 0.26),
     # 7 · el descuento y el cierre
-    ('lanzamiento/tarjeta', wt(6, 0) - 0.08, 0.28), ('magisterio/sello', wt(6, 10) - 0.08, 0.5), ('lanzamiento/marcador', wt(6, 12), 0.24),
-    ('avion/brillo', wt(6, 15) - 0.04, 0.28), ('medicina/dorado', SEGS[IX['e8712']]['T1'] + 0.12, 0.34),
+    ('lanzamiento/tarjeta', wt(6, 0) - 0.08, 0.28), ('magisterio/sello', wt(6, 10) - 0.08, 0.5), ('lanzamiento/marcador', wt(6, 11), 0.24),
+    ('avion/brillo', wt(6, 12) - 0.02, 0.28), ('medicina/dorado', TL['clips']['e8712'][1] + 0.45, 0.34),
 ]
 
 def build(path):

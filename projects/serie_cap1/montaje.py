@@ -24,16 +24,18 @@ SRC_FPS = 60000 / 1001
 SPEED = 1.06                                                    # un 6 % más rápido (ritmo)
 
 # toma, inicio, fin (segundos de la grabación), zoom al empezar → al acabar, centro del zoom (x, y) en la toma
-SEGS = [
+SEGS = [   # trozos (una toma puede salir en varios trozos: así se quitan tropiezos; cada corte interior lleva un cambio de zoom)
     dict(clip='a8695', a=0.68, b=8.93, z=(1.00, 1.07)),                       # gancho: 3,7M rompiendo la pared
-    dict(clip='c8707b', a=0.52, b=7.37, z=(1.00, 1.05)),                      # Kiria como herramienta (una sola toma en 3 trozos)
+    dict(clip='c8707b', a=0.52, b=7.37, z=(1.00, 1.05)),                      # Kiria como herramienta (una sola toma en 3 archivos)
     dict(clip='c8707a', a=0.00, b=8.96, z=(1.18, 1.22)),
-    dict(clip='c8707c', a=0.00, b=8.12, z=(1.02, 1.07)),
-    dict(clip='a8699', a=0.84, b=9.85, z=(1.16, 1.20)),                       # el reto (penúltimo, con el de los jueves)
+    dict(clip='c8707c', a=0.00, b=5.06, z=(1.02, 1.06)),                      # …captación de cliente | (pausa fuera)
+    dict(clip='c8707c', a=5.24, b=7.06, z=(1.16, 1.20)),                      # automatizado. ¿Cómo hacemos eso? (sin el 2.º «quédate…»)
+    dict(clip='a8699', a=0.84, b=8.905, z=(1.08, 1.12)),                      # el reto … llegar a alcanzar sus |
+    dict(clip='a8699', a=9.315, b=9.85, z=(1.26, 1.28)),                      # objetivos (fuera el «metas» que se le escapó)
     dict(clip='d8709', a=0.12, b=10.61, z=(1.12, 1.18), punch=[(5.80, 1.30)]),
-    dict(clip='e8712', a=0.36, b=5.46, z=(1.00, 1.04)),                       # el descuento (último)
+    dict(clip='e8712', a=0.36, b=4.01, z=(1.00, 1.04)),                       # el descuento (sin «en la página Kiria.com»: la web es kiriaai.com)
 ]
-END_HOLD = 1.6                                                  # cierre (tarjeta final) después de la última palabra
+END_HOLD = 2.2                                                  # cierre (tarjeta final) después de la última palabra
 
 def timeline():
     t = 0.0
@@ -237,7 +239,8 @@ def frame_at(f, readers, fx=None):
     out = Fz * az + bgz * (1 - az)
     # «light wrap»
     er = cv2.erode(az[..., 0], np.ones((7, 7), np.uint8)); rim = np.clip(az[..., 0] - er, 0, 1)[..., None]
-    out = out * (1 - rim * 0.22) + cv2.GaussianBlur(bgz, (0, 0), 6) * rim * 0.22
+    bgs = cv2.resize(cv2.GaussianBlur(cv2.resize(bgz, (W // 2, H // 2), interpolation=cv2.INTER_AREA), (0, 0), 3), (W, H))
+    out = out * (1 - rim * 0.22) + bgs * rim * 0.22
     # el número 3D, delante de Javi (con el mismo encuadre)
     nm = numero3d(f, clip)
     if nm is not None:
@@ -249,12 +252,13 @@ def frame_at(f, readers, fx=None):
         gm2 = glass_mask(rects)
         if gm2.max() > 0:
             gm = gm2[..., None]
-            blur = cv2.GaussianBlur(out, (0, 0), 22)
+            sm = cv2.resize(out, (W // 2, H // 2), interpolation=cv2.INTER_AREA)            # desenfoque del cristal a media resolución
+            blur = cv2.resize(cv2.GaussianBlur(sm, (0, 0), 11), (W, H), interpolation=cv2.INTER_LINEAR)
             sh = cv2.GaussianBlur(np.roll(gm2, 18, 0), (0, 0), 26)[..., None] * 0.45              # sombra de la tarjeta
             out = out * (1 - sh * (1 - gm))
             out = out * (1 - gm) + (blur * 0.78 + 0.035) * gm
     if t >= SEGS[-1]['T0'] + SEGS[-1]['dur']:                   # cierre: la imagen se desenfoca y oscurece detrás de la tarjeta final
-        k = min(1, (t - SEGS[-1]['T0'] - SEGS[-1]['dur']) / 0.45); k = k * k * (3 - 2 * k)
+        k = min(1, (t - SEGS[-1]['T0'] - SEGS[-1]['dur'] - 0.3) / 0.5); k = max(0, k); k = k * k * (3 - 2 * k)
         out = out * (1 - k) + cv2.GaussianBlur(out, (0, 0), 1 + 24 * k) * (1 - 0.45 * k) * k
     fro = overlay('front', f)
     if fro is not None:

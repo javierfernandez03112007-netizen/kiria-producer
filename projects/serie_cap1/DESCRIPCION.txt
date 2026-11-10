@@ -1,4 +1,4 @@
-«RETO: 10 CLIENTES EN 30 DÍAS» · Capítulo 1 · El reto · 55 s · Javi a cámara (sus 7 tomas)
+«RETO: 10 CLIENTES EN 30 DÍAS» · Capítulo 1 · El reto · 53 s · Javi a cámara (sus 7 tomas)
 
 DESCRIPCIÓN (Instagram):
 🎯 Capítulo 1: hoy empieza el reto. 10 clientes en 30 días.
@@ -37,7 +37,10 @@ NOTAS DE ENTREGA:
 - 3D: la pared se agrieta y revienta y sale «3,7M» (three.js, `web3d/`), que se queda al lado de Javi (delante de él).
 - Subtítulos por detrás de la cabeza (a petición de Javi; no es la letra Impact de los vídeos del canal) y tarjetas de cristal con lo que dice.
 - Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Voz a −15 LUFS.
-- Cifra: 3,7M (Javi, 10-11: «hemos llegado a 3,7 millones de views»). Dice «Kiria.com»: en pantalla va kiriaai.com.
-  «Te explico el método Kiria»: el cierre lo resuelve con «El método Kiria, cada jueves».
+- Cifra: 3,7M (Javi, 10-11: «hemos llegado a 3,7 millones de views»).
+- Cortes pedidos por Javi (10-11, noche: «las partes que no son correctas elimínalas»): fuera el segundo «quédate hasta el final»
+  (y con él el momento en que se empieza a levantar de la silla), el «metas» que se le escapa antes de «objetivos», una pausa de duda
+  («cliente… automatizado») y «en la página Kiria.com» (dirección equivocada; en pantalla sale kiriaai.com). Cada corte interior lleva un
+  cambio de zoom. Queda en 52,8 s.
 - Entregado el 10-11-2026: out/serie_cap1.mp4 (55,2 s, 60 fps, −15,3 LUFS). Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
 - Subida prevista: jueves 12 a las 10:00.

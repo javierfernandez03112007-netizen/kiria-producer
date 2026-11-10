@@ -78,7 +78,7 @@ const ico = (n, c = 'currentColor', w = 3) => `<div class="ico"><svg viewBox="0 
 let TL, SEGS, WD;
 const wt = (s, i) => WD[s][i][0];       // la palabra i de la toma s empieza
 const we = (s, i) => WD[s][i][1];       // … y acaba
-const segT = s => [SEGS[s].T0, SEGS[s].T1];
+const segT = s => TL.clips[s];                 // inicio y final de una toma (por su nombre) en el vídeo
 
 // ------------------------------------------------------------------ componentes
 const COMPS = [];
@@ -161,10 +161,9 @@ function card(t0, t1, html, x, y, w, h, extra = {}) {
 }
 
 function buildCards() {
-  const IX = c => SEGS.findIndex(s => s.clip === c);
-  const S0 = IX('a8695'), S1 = IX('a8699'), S2 = IX('c8707b'), S3 = IX('c8707a'), S4 = IX('c8707c'), S5 = IX('d8709'), S6 = IX('e8712');
+  const S0 = 'a8695', S1 = 'a8699', S2 = 'c8707b', S3 = 'c8707a', S4 = 'c8707c', S5 = 'd8709', S6 = 'e8712';
   // ===== 1 · «quédate hasta el final» (barra de progreso) + «el método Kiria» =====
-  for (const [s, i0, iEnd, iLock] of [[S0, 20, 23, 28], [S4, 18, 20, null]]) {
+  for (const [s, i0, iEnd, iLock] of [[S0, 20, 23, 28]]) {
     const t0 = wt(s, i0) - .1, t1 = segT(s)[1] - .02;
     const c = card(t0, t1, `
       <div class="abs" style="left:34px;top:28px" class="lab"><span class="lab">Quédate hasta el final</span></div>
@@ -530,7 +529,7 @@ function buildCards() {
   }
   // ===== 18 · cupón: −10 % hasta el 30 de noviembre · KIRIA10 · kiriaai.com =====
   {
-    const t0 = wt(S6, 0) - .1, t1 = SEGS[S6].T1 + .3;
+    const t0 = wt(S6, 0) - .1, t1 = segT(S6)[1] + .6;
     const c = card(t0, t1, `
       <div class="abs lab" style="left:40px;top:34px;color:var(--yel)">Y recuerda…</div>
       <div class="abs pc big gradtxt" style="left:34px;top:76px;font-size:200px">−10%</div>
@@ -542,7 +541,7 @@ function buildCards() {
     const pc = c.el.querySelector('.pc'), dt = c.el.querySelector('.dt'), cd = c.el.querySelector('.cd'), ws = c.el.querySelector('.ws');
     const pop = (e, ta) => { const k = eBack(lin(ta === null ? -1 : 0, 0, 1)); };
     c.upd = t => { const sg = cardAnim(c, t);
-      const a = eBack(lin(t, wt(S6, 4) - .05, wt(S6, 4) + .3)), b = eBack(lin(t, wt(S6, 10) - .1, wt(S6, 10) + .3)), d = eBack(lin(t, wt(S6, 12), wt(S6, 12) + .3)), e = eBack(lin(t, wt(S6, 15) - .05, wt(S6, 15) + .3));
+      const a = eBack(lin(t, wt(S6, 4) - .05, wt(S6, 4) + .3)), b = eBack(lin(t, wt(S6, 10) - .1, wt(S6, 10) + .3)), d = eBack(lin(t, wt(S6, 11), wt(S6, 11) + .3)), e = eBack(lin(t, wt(S6, 12), wt(S6, 12) + .3));
       dt.style.opacity = r2(clamp(a)); dt.style.transform = `translateY(${r2((1 - a) * 20)}px)`;
       pc.style.opacity = r2(clamp(b)); pc.style.transform = `scale(${r2(.6 + .4 * b)})`; pc.style.transformOrigin = '30% 60%';
       cd.style.opacity = r2(clamp(d)); cd.style.transform = `translateY(${r2((1 - d) * 20)}px)`;
@@ -551,7 +550,7 @@ function buildCards() {
   }
   // ===== 19 · cierre: el método Kiria, cada jueves =====
   {
-    const t0 = SEGS[S6].T1 + .12, t1 = TL.total + 1;
+    const t0 = segT(S6)[1] + .45, t1 = TL.total + 1;
     const c = card(t0, t1, `
       <div class="abs lab" style="left:0;right:0;top:44px;text-align:center">Reto · 0/10 clientes</div>
       <div class="abs" style="left:0;right:0;top:92px;text-align:center;font:italic 92px/1 ISerif">El método <span style="color:var(--yel)">Kiria</span>,</div>
