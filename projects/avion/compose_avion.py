@@ -64,7 +64,7 @@ Y_LOW = (at("está", 1, 1) - 0.08, at("ventanilla", 1, 11) - 0.12)     # al prin
 def compose(fi):
     t = fi / FPS
     img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
-    SUBS.y = 760 if (t < Y_LOW[0] or t >= Y_LOW[1]) else 330
+    SUBS.y = 330
     SUBS.draw(img, t, 1 - prog(t, END - 0.5, 0.3))
     return (np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes()
 
@@ -111,24 +111,25 @@ def sfx_track(path):
     # mismos instantes que web/src/20_anim.js (buildTimes) y la cámara (30_camera.js): un efecto por suceso, cortado al terminar
     K = lambda w, li, k=1: at(w, k, li)
     tilt, back, pulse = K("inclinada", 6) - 0.2, K("ventanilla", 11) + 0.3, K("túnel", 4) + 0.3
-    # 1: el avión gigante encima del aula (empieza fuerte; al final vuelve a entrar → bucle); la equis en la pizarra
-    put("jet", 0.0, 2.2, 0.34, 0.9, start=0.9)
-    put("jet", END - 0.9, 0.9, 0.34, 0.01, start=0.0)
-    put("tiza_tachar", K("mal", 1), 0.9, 0.5, 0.3)
-    put("impacto", K("mal", 1), 0.7, 0.22, 0.3)
+    # 1: el dron sigue al avión (motor y viento todo el plano; al final vuelve el mismo plano → bucle); el sello «INCORRECTA»
+    cut = K("te", 3) - 0.23
+    loop("motor", 0.0, cut + 0.1, 0.26, 0.35)
+    loop("nubes", 0.0, cut + 0.1, 0.08, 0.35)
+    loop("motor", K("ventanilla", 11) - 0.03, END - K("ventanilla", 11) + 0.05, 0.26, 0.35)
+    put("sello", K("mal", 1), 0.5, 0.55, 0.15)
+    put("impacto", K("mal", 1), 0.7, 0.24, 0.3)
     # 2: el sello de la NASA; arriba, al avión; las 575 t; la pregunta pendiente; vuelta a la pizarra
-    put("sello", K("nasa", 2), 0.5, 0.5, 0.15)
-    put("whoosh", K("sostiene", 2), 0.6, 0.2, 0.2)
-    put("jet", K("sostiene", 2) + 0.3, 2.4, 0.2, 0.9, start=0.3)
+    put("tap", K("nasa", 2), 0.4, 0.24, 0.12)
     put("cifra", K("575", 2), 0.5, 0.4, 0.15)
     put("pregunta", K("final", 2), 0.9, 0.18, 0.3)
-    put("whoosh", K("final", 2) + 0.1, 0.6, 0.24, 0.2)
+    put("whoosh", cut - 0.12, 0.6, 0.26, 0.2)
     # 3: el dibujo de tiza se vuelve sólido y sale volando; «curva por arriba»; las dos bolitas; «a la vez»
-    put("solido", K("contaron", 3), 0.6, 0.42, 0.2)
-    put("sale", K("contaron", 3) + 0.3, 0.5, 0.3, 0.15)
-    put("brillo", K("curva", 3) - 0.05, 0.9, 0.3, 0.3)
-    put("pop", K("arriba", 3) - 0.5, 0.4, 0.3, 0.12)
-    put("pop", K("arriba", 3) - 0.42, 0.4, 0.24, 0.12)
+    fly1 = K("ala", 3) + 0.22 + 0.85
+    put("solido", K("ala", 3), 0.6, 0.42, 0.2)
+    put("sale", K("ala", 3) + 0.22, 0.5, 0.3, 0.15)
+    put("brillo", fly1 - 0.08, 0.9, 0.3, 0.3)
+    put("pop", fly1 + 0.15, 0.4, 0.3, 0.12)
+    put("pop", fly1 + 0.23, 0.4, 0.24, 0.12)
     put("tap", K("camino", 3) - 0.1, 0.4, 0.22, 0.12)
     put("ding", K("vez", 3) - 0.05, 0.8, 0.32, 0.4)
     # 4: «cita» tachada; el túnel se monta y el ventilador arranca; el humo; la carrera: A llega antes, B después
@@ -139,10 +140,10 @@ def sfx_track(path):
     put("humo", pulse - 0.05, 0.9, 0.24, 0.3)
     put("llegada", K("antes", 4) + 0.03, 0.8, 0.38, 0.3)
     put("cronometro", K("mucho", 4) - 0.05, 0.5, 0.36, 0.15)
-    # 5: arriba, la avioneta; se da la vuelta
-    put("sube", K("si", 5) + 0.1, 0.9, 0.24, 0.3)
-    loop("helice", K("curva", 5) - 0.5, 3.4, 0.2, 0.15)
-    put("whoosh_largo", K("curva", 5) - 0.4, 1.2, 0.16, 0.4)
+    # 5: la avioneta, con su propia cámara; se da la vuelta
+    put("whoosh", K("si", 5) - 0.1, 0.6, 0.22, 0.2)
+    loop("helice", K("si", 5) - 0.05, K("clave", 6) - K("si", 5) + 0.02, 0.22, 0.15)
+    put("whoosh_largo", K("si", 5), 1.2, 0.14, 0.4)
     put("giro", K("boca", 5) - 0.85, 0.5, 0.34, 0.15)
     put("pop", K("boca", 5) - 0.05, 0.4, 0.22, 0.12)
     # 6: el ala se inclina (motor), el ángulo; el humo con el ala inclinada; el aire sale hacia abajo
@@ -154,6 +155,7 @@ def sfx_track(path):
     put("flecha", K("empuja", 6) + 0.05, 0.5, 0.2, 0.15)
     # 7: el cielo: los bloques de aire caen de las alas
     put("nubes", K("cientos", 7) - 0.03, 1.4, 0.3, 0.5)
+    loop("motor", K("cientos", 7) - 0.03, K("si", 8) - K("cientos", 7), 0.14, 0.3)
     put("cae", K("cientos", 7) + 0.1, 0.9, 0.3, 0.3)
     put("cae", K("toneladas", 7) + 0.1, 0.9, 0.26, 0.3)
     put("cae", K("aire", 7) + 0.1, 0.9, 0.24, 0.3)
@@ -169,13 +171,13 @@ def sfx_track(path):
     put("tap", K("baja", 9), 0.4, 0.2, 0.12)
     put("tap", K("sube", 9), 0.4, 0.2, 0.12)
     put("subida", K("levanta", 9) - 0.05, 2.0, 0.36, 0.6)
+    loop("motor", K("levanta", 9) - 0.05, K("ventanilla", 11) - K("levanta", 9), 0.14, 0.3)
     # 10: «no flota»; la estela, todo el rato
     put("impacto", K("flota", 10), 0.7, 0.3, 0.3)
     loop("nubes", K("respuesta", 10), K("ventanilla", 11) - K("respuesta", 10), 0.2, 0.35)
     # 11: ¿ventanilla o pasillo?; todo vuelve a la pizarra (bucle)
     put("pop", K("ventanilla", 11), 0.4, 0.26, 0.12)
     put("pop", K("pasillo", 11), 0.4, 0.26, 0.12)
-    put("vuelve", back, 0.8, 0.28, 0.3)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 

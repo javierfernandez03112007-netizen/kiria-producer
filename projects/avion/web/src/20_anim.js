@@ -7,9 +7,9 @@ let TT = {};
 function buildTimes() {
   TT = {
     crack: K.mal1, nasa: K.nasa2, n575: K.n575_2,                         // 1-2: la equis en la pizarra, la NASA, 575 t
-    emerge: K.contaron3, curva: K.curva3, split: K.arriba3, meet: K.vez3, // 3: el ala sale de la pizarra; el «mito»: llegan a la vez
+    emerge: K.ala3, split: K.aire3, meet: K.vez3,                         // 3: el ala sale de la pizarra («el ala»); el «mito»: llegan a la vez
     cita: K.cita4, tunnel: K.tunel4, pulse: K.tunel4 + 0.3, first: K.antes4,   // 4: el túnel de viento; el de arriba llega antes
-    acro: K.curva5 - 0.5, inv: K.boca5,                                   // 5: boca abajo
+    acro: K.si5 - 0.4, inv: K.boca5,                                      // 5: la avioneta (su propio plano), boca abajo
     tilt: K.inclinada6 - 0.2, push: K.empuja6,                            // 6: el ala se inclina y empuja el aire hacia abajo
     blocks: K.cientos7,                                                   // 7: cientos de toneladas de aire
     arrDn: K.abajo8, arrUp: K.empuja8b,                                   // 8: acción y reacción
@@ -17,56 +17,55 @@ function buildTimes() {
     wake: K.respuesta10, poll: K.ventanilla11,                            // 10-11
     back: K.ventanilla11 + 0.3,                                           // el ala vuelve a la pizarra (bucle)
   };
-  TT.fly0 = TT.emerge + 0.3; TT.fly1 = TT.split - 0.55;                   // el ala vuela de la pizarra a su sitio
+  TT.fly0 = TT.emerge + 0.22; TT.fly1 = TT.fly0 + 0.85; TT.curva = TT.fly1 - 0.05; TT.balls = TT.fly1 + 0.15;   // el ala vuela de la pizarra a su sitio
 }
-// ---------------------------------------------------------------- el avión gigante: un único pasillo en el cielo, detrás del aula (teleobjetivo: se ve enorme
-// encima de la pizarra). Vuela despacio hacia la izquierda; visible al principio (y al final, en bucle), con los bloques de aire y con la estela.
-const BIG = { v: 2.5, psi: 0.30, x0: -5, y0: 50, z0: -128 };
+// ---------------------------------------------------------------- el avión gigante: vuela de verdad (35 m/s) a 2.100 m por encima del valle; el mismo pasillo al
+// principio, con los bloques de aire y al final (bucle: u = t al principio, u = t - END al final)
+const BIG = { v: 35, psi: 0, x0: 0, y0: 1500, z0: 350 };
+function bigU(t) { return t < 12.2 ? t : ((t >= 32.4 && t < 36.6) || t >= 43.2) ? t - END : null; }
+function bigBase(t) { const u = bigU(t) ?? 0, d = BIG.v * u; return { x: BIG.x0 - Math.cos(BIG.psi) * d, y: BIG.y0, z: BIG.z0 + Math.sin(BIG.psi) * d }; }
 function bigPose(t) {
-  let u = null;
-  if (t < 12.6) u = t; else if ((t >= 32.4 && t < 36.6) || t >= 43.2) u = t - END;
-  if (u === null) return { on: false, x: 0, y: -80, z: 0, lift: 0 };
-  const c = Math.cos(BIG.psi), s = Math.sin(BIG.psi), d = BIG.v * u;
-  const lift = t > 40 ? 5 * eio(clamp((t - TT.lift) / 1.4)) * (1 - eio(clamp((t - 52.4) / 3.2))) : 0;
-  return { on: true, x: BIG.x0 - c * d, y: BIG.y0 + lift, z: BIG.z0 + s * d, lift };
+  const u = bigU(t); if (u === null) return { on: false, x: 0, y: -900, z: 0, lift: 0 };
+  const B = bigBase(t), lift = t > 40 ? 5 * eio(clamp((t - TT.lift) / 1.4)) * (1 - eio(clamp((t - 52.4) / 3.2))) : 0;
+  return { on: true, x: B.x, y: B.y + lift, z: B.z, lift };
 }
 // un punto del avión (coordenadas propias: morro en -x, alas en ±z) en el mundo
 function bigLocal(P, lx, ly, lz, out) { const c = Math.cos(BIG.psi), s = Math.sin(BIG.psi); return out.set(P.x + lx * c + lz * s, P.y + ly, P.z - lx * s + lz * c); }
-// la avioneta: cruza por encima del aula, se da la vuelta y sigue boca abajo
-function acroPose(t) { const k = t - TT.acro; return { k, x: 9 - 4.2 * k, y: 14 + Math.sin(k * 1.1) * 0.4, z: -22, roll: Math.PI * eio(clamp((t - TT.inv + 0.85) / 0.75)) }; }
+// la avioneta: en su propio sitio del valle, a 520 m; se da la vuelta y sigue boca abajo
+function acroPose(t) { const k = t - TT.acro; return { k, x: -2600 - 40 * k, y: 520 + Math.sin(k * 1.1) * 2.5, z: -650, roll: Math.PI * eio(clamp((t - TT.inv + 0.85) / 0.75)) }; }
 function skyAt(t) {
   const P = bigPose(t), B = S.big; B.visible = P.on; B.position.set(P.x, P.y, P.z);
   _e3.set(Math.sin(2 * Math.PI * 4 * t / END) * 0.02, BIG.psi, Math.sin(2 * Math.PI * 3 * t / END) * 0.008 + (P.lift ? 0.02 * Math.sin(clamp((t - TT.lift) / 1.4) * Math.PI) : 0), 'YXZ'); B.quaternion.setFromEuler(_e3);
   // la avioneta y su humo de exhibición
-  const A = acroPose(t); S.acro.visible = A.k > 0 && A.k < 4.4;
+  const A = acroPose(t); S.acro.visible = A.k > 0 && A.k < 4.0;
   if (S.acro.visible) { S.acro.position.set(A.x, A.y, A.z); S.acro.rotation.set(A.roll, 0, 0.05); S.prop.rotation.x = t * 40; }
-  S.acroSmoke.visible = A.k > 0 && A.k < 4.6;
-  if (S.acroSmoke.visible) { const N = 260;
-    for (let i = 0; i < N; i++) { const age = i * 0.018, Q = acroPose(t - age); let s = 0;
-      if (Q.k > 0.05) { s = Math.min(1, age * 6) * (1 - clamp((age - 3.2) / 1.4)) * (0.55 + age * 0.35); _o.position.set(Q.x + 3.7, Q.y + 0.05 - age * 0.25 + (hash(i * 3.1) - 0.5) * age * 0.3, Q.z + (hash(i * 5.3) - 0.5) * age * 0.3); }
-      _o.rotation.set(0, 0, 0); _o.scale.setScalar(Math.max(0.0001, s)); _o.updateMatrix(); S.acroSmoke.setMatrixAt(i, _o.matrix); }
+  S.acroSmoke.visible = A.k > 0 && A.k < 4.0;
+  if (S.acroSmoke.visible) { const N = 420;
+    for (let i = 0; i < N; i++) { const age = i * 0.0095, Q = acroPose(t - age); let s = 0;
+      if (Q.k > 0.05) { s = Math.min(1, age * 6) * (1 - clamp((age - 3.2) / 1.4)) * (0.55 + age * 0.35); _o.position.set(Q.x + 3.7, Q.y + 0.05 - age * 0.6 + (hash(i * 3.1) - 0.5) * age * 0.8, Q.z + (hash(i * 5.3) - 0.5) * age * 0.8); _o.scale.setScalar(Math.max(0.0001, s * (1.25 + age * 1.3))); }
+      else _o.scale.setScalar(0.0001); _o.rotation.set(0, 0, 0); _o.updateMatrix(); S.acroSmoke.setMatrixAt(i, _o.matrix); }
     S.acroSmoke.instanceMatrix.needsUpdate = true; }
   // bloques de aire que el ala echa hacia abajo (cientos de toneladas por segundo)
   const bk = cwin(t, TT.blocks - 0.35, 36.4, 0.3, 0.3); S.blocks.visible = bk > 0.01 && P.on;
   if (S.blocks.visible) { const N = 140;
     for (let i = 0; i < N; i++) { const te = 32.0 + (i / N) * 4.4, u = t - te; let s = 0;
-      if (u > 0 && u < 2.8) { const Q = bigPose(Math.max(32.45, te)), zs = (hash(i * 3.1) * 2 - 1) * 26, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 3 + hash(i * 1.7) * 3;
-        s = Math.min(1, u * 4) * (1 - clamp((u - 2.2) / 0.6)); bigLocal(Q, xs + u * 2.5, -4 - 6 * u - 4.5 * u * u, zs, _o.position); _o.rotation.set(u * 0.6 * hash(i), u * 0.5 + hash(i * 2.2), 0); }
+      if (u > 0 && u < 2.8) { const zs = (hash(i * 3.1) * 2 - 1) * 26, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 3 + hash(i * 1.7) * 3;
+        s = Math.min(1, u * 4) * (1 - clamp((u - 2.2) / 0.6)); bigLocal(P, xs + u * 7, -4 - 6 * u - 4.5 * u * u, zs, _o.position); _o.rotation.set(u * 0.6 * hash(i), u * 0.5 + hash(i * 2.2), 0); }
       _o.scale.setScalar(Math.max(0.0001, s * bk)); _o.updateMatrix(); S.blocks.setMatrixAt(i, _o.matrix); }
     S.blocks.instanceMatrix.needsUpdate = true; }
   // la estela: el aire que el ala va dejando hacia abajo, todo el rato
-  const wk = cwin(t, TT.wake - 0.5, END - 2.6, 0.6, 1.0); S.wake.visible = wk > 0.01 && P.on;      // sigue cayendo «todo el rato» (también desde el aula) y se apaga antes del bucle
+  const wk = cwin(t, TT.wake - 0.5, K.ventanilla11 - 0.25, 0.6, 0.22); S.wake.visible = wk > 0.01 && P.on;      // «todo el rato»; se apaga al cambiar de plano
   if (S.wake.visible) { const N = 1400;
     for (let i = 0; i < N; i++) { const te = 44.5 + (i / N) * 10.5, u = t - te; let s = 0;
-      if (u > 0 && u < 4.0) { const Q = bigPose(te), zs = (hash(i * 7.3) * 2 - 1) * 27, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 1.5 + hash(i * 1.3) * 2;
-        s = (1 - clamp((u - 3.0) / 1.0)) * Math.min(1, u * 4); bigLocal(Q, xs + u * 1.5, -2.5 - 7 * u - 2.2 * u * u - hash(i * 2.9) * 1.5, zs, _o.position); }
-      _o.rotation.set(0, 0, 0); _o.scale.set(s * wk * 0.8, s * wk * 4.5, s * wk * 0.8); _o.updateMatrix(); S.wake.setMatrixAt(i, _o.matrix); }
+      if (u > 0 && u < 4.0) { const zs = (hash(i * 7.3) * 2 - 1) * 27, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 1.5 + hash(i * 1.3) * 2;
+        s = (1 - clamp((u - 3.0) / 1.0)) * Math.min(1, u * 4); bigLocal(P, xs + u * 6, -2.5 - 7 * u - 2.2 * u * u - hash(i * 2.9) * 1.5, zs, _o.position); }
+      _o.rotation.set(0, 0, 0); _o.scale.set(s * wk * 0.6, s * wk * 3.6, s * wk * 0.6); _o.updateMatrix(); S.wake.setMatrixAt(i, _o.matrix); }
     S.wake.instanceMatrix.needsUpdate = true; }
   // presión alrededor del avión: azul encima de las alas, rojo debajo
   const pk = cwin(t, TT.lift - 0.3, K.flota10, 0.4, 0.6) * (P.on ? 1 : 0);
   S.lowP.visible = S.highP.visible = pk > 0.01;
-  if (pk > 0.01) { bigLocal(P, 3, 7, 0, S.lowP.position); S.lowP.scale.set(80, 30, 1); S.lowP.material.opacity = pk * 0.95;
-    bigLocal(P, 3, -10, 0, S.highP.position); S.highP.scale.set(80, 30, 1); S.highP.material.opacity = pk * 0.8; }
+  if (pk > 0.01) { bigLocal(P, 3, 13, 0, S.lowP.position); S.lowP.scale.set(70, 22, 1); S.lowP.material.opacity = pk * 0.8;
+    bigLocal(P, 3, -14, 0, S.highP.position); S.highP.scale.set(80, 26, 1); S.highP.material.opacity = pk * 0.8; }
   // y la diferencia lo levanta: tres flechas que empujan desde abajo
   const lk = cwin(t, TT.lift - 0.1, K.flota10 - 0.2, 0.45, 0.4) * (P.on ? 1 : 0);
   S.liftArrows.forEach((a, i) => { a.visible = lk > 0.01; if (!a.visible) return; const z = (i - 1) * 17, x = i === 1 ? 2 : 8;
@@ -75,7 +74,7 @@ function skyAt(t) {
 // ---------------------------------------------------------------- el aula: la equis, el reloj, el dibujo de tiza (se despega con el ala y vuelve al final)
 function drawAt(t) { return 1 - win(t, TT.emerge + 0.15, 0.7) + win(t, TT.back + 0.2, 1.0); }
 function roomAt(t) {
-  const ck = cwin(t, TT.crack, TT.emerge + 0.3, 0.12, 0.35); M.cross.opacity = ck * 0.95; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
+  const ck = 0; M.cross.opacity = 0; S.cross.visible = false; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
   S.clockM.rotation.z = -Math.PI * 2 * 4 * t / END; S.clockH.rotation.z = -Math.PI * 2 * t / END;
   const dk = drawAt(t); M.boardDraw.opacity = dk; S.boardDraw.visible = dk > 0.005;
 }
@@ -109,13 +108,13 @@ function tunnelAt(t) {
   puff(S.smoke, S.pulses, S.AL0, cwin(t, TT.pulse - 0.05, TT.acro + 0.3, 0.1, 0.4), (t - TT.pulse) * 3.2);
   puff(S.smoke1, S.pulses1, S.AL1, cwin(t, TT.tilt + 0.6, TT.blocks + 0.2, 0.15, 0.3), 2.5 + (t - TT.tilt - 0.6) * 4.2);
   // las dos bolitas: el «mito» (pegadas al ala, llegan a la vez) y luego el humo de verdad (la de arriba llega antes)
-  const bv = (t > TT.split - 0.5 && t < TT.acro + 0.3); S.ballA.visible = S.ballB.visible = bv;
+  const bv = (t > TT.balls && t < TT.acro + 0.3); S.ballA.visible = S.ballB.visible = bv;
   if (bv) {
     if (t < TT.tunnel + 0.25) {
       const f = eio(clamp((t - TT.split) / (TT.meet - TT.split)));
       const pa = surfAt(S.upPath, f, 0.13), pb = surfAt(S.dnPath, f, -0.13);
       zWorld(pa, al, S.ballA.position).add(v3(0, 0, TUN.D * 0.5)); zWorld(pb, al, S.ballB.position).add(v3(0, 0, TUN.D * 0.5));
-      const sc = backOut(clamp((t - TT.split + 0.5) / 0.4)) * (1 - clamp((t - TT.tunnel + 0.05) / 0.25)); S.ballA.scale.setScalar(Math.max(0.001, sc)); S.ballB.scale.setScalar(Math.max(0.001, sc));
+      const sc = backOut(clamp((t - TT.balls) / 0.4)) * (1 - clamp((t - TT.tunnel + 0.05) / 0.25)); S.ballA.scale.setScalar(Math.max(0.001, sc)); S.ballB.scale.setScalar(Math.max(0.001, sc));
     } else {
       const tau = (t - TT.pulse) * 3.2; zWorld(pathAt(S.pA, tau, 0.03), S.AL0, S.ballA.position).add(v3(0, 0, TUN.D * 0.5)); zWorld(pathAt(S.pB, tau, 0.03), S.AL0, S.ballB.position).add(v3(0, 0, TUN.D * 0.5));
       const sc = 1.15 * backOut(clamp((t - TT.tunnel - 0.25) / 0.35)), end = TUN.x + 0.2 + TUN.L / 2 - 0.05;
@@ -136,4 +135,4 @@ function tunnelAt(t) {
 }
 function pathAt(path, tau, dt) { if (tau <= 0) return path[0]; const f = tau / dt, i = Math.min(path.length - 2, Math.floor(f)), u = Math.min(1, f - i); return { x: lerp(path[i].x, path[i + 1].x, u), y: lerp(path[i].y, path[i + 1].y, u) }; }
 function surfAt(path, f, dy) { const i = Math.min(path.length - 2, Math.floor(f * (path.length - 1))), u = f * (path.length - 1) - i; return { x: lerp(path[i].x, path[i + 1].x, u), y: lerp(path[i].y, path[i + 1].y, u) + dy }; }
-function sceneAt(t) { skyAt(t); roomAt(t); tunnelAt(t); }
+function sceneAt(t) { skyAt(t); roomAt(t); tunnelAt(t); birdsAt(t); }

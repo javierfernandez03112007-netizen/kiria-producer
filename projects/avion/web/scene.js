@@ -953,6 +953,9 @@ function buildSceneMats() {
   M.cross = new THREE.MeshBasicMaterial({ map: crossTex(), transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
   M.deskTop = M.wood; M.leg = metal(0x9aa3ad, 0.4); M.chair = plastic(0x3c7bd6, 0.4);
   M.grass = new THREE.MeshStandardMaterial({ map: grassTex(), roughness: 0.95 });
+  { const t = canvasTex(1024, 1024, (g, w, h) => { const img = g.createImageData(w, h); for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) { const n = 0.55 * fbm(i / 22, j / 22, 4) + 0.45 * vnoise(i / 3.5, j / 3.5), v = 255 * (0.74 + 0.26 * n), k = (j * w + i) * 4; img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255; } g.putImageData(img, 0, 0); });
+    t.colorSpace = THREE.NoColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 16;
+    M.land = new THREE.MeshStandardMaterial({ vertexColors: true, map: t, roughness: 0.97, metalness: 0, envMapIntensity: 0.6 }); }
   M.plane = paint(0xf4f6f9, 0.28); M.belly = paint(0xdfe5ec, 0.32); M.tail = paint(0x1b3a6b, 0.3); M.stripe = paint(0x24b3c4, 0.3);
   M.engine = metal(0xb9c0c8, 0.3); M.fan = new THREE.MeshStandardMaterial({ color: 0x16181d, roughness: 0.4, metalness: 0.6 });
   M.win = new THREE.MeshStandardMaterial({ color: 0x0f1724, roughness: 0.15, metalness: 0.5 });
@@ -965,7 +968,7 @@ function buildSceneMats() {
   M.balB = new THREE.MeshBasicMaterial({ color: new THREE.Color(0x46b8ff).multiplyScalar(1.6), toneMapped: false });
   M.block = new THREE.MeshBasicMaterial({ map: canvasTex(128, 128, (g, w, h) => { g.fillStyle = 'rgba(190,232,255,.38)'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(40,130,255,1)'; g.lineWidth = 12; g.strokeRect(6, 6, w - 12, h - 12); g.strokeStyle = 'rgba(255,255,255,1)'; g.lineWidth = 4; g.strokeRect(13, 13, w - 26, h - 26); }),
     transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false });
-  M.wake = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xd8f2ff).multiplyScalar(1.3), transparent: true, opacity: 0.8, depthWrite: false, toneMapped: false });
+  M.wake = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xd8f2ff).multiplyScalar(1.3), transparent: true, opacity: 0.5, depthWrite: false, toneMapped: false });
   M.arrUp = new THREE.MeshPhysicalMaterial({ color: 0xff9a2e, roughness: 0.3, clearcoat: 1, emissive: 0x6a2a00, emissiveIntensity: 0.6 });
   M.arrDn = new THREE.MeshPhysicalMaterial({ color: 0x3aa8ff, roughness: 0.3, clearcoat: 1, emissive: 0x00305a, emissiveIntensity: 0.6 });
 }
@@ -1011,6 +1014,13 @@ function airliner() {                                       // avión de pasajer
   const fm = new THREE.Mesh(fg, M.tail); fm.position.set(L / 2 - 12, 2.2, 0); fm.castShadow = true; g.add(fm);
   for (const side of [-1, 1]) { const hs = new THREE.Shape(); hs.moveTo(0, 0); hs.lineTo(4.5, 9); hs.lineTo(6.8, 9); hs.lineTo(7.5, 0);
     const hg2 = new THREE.ExtrudeGeometry(hs, { depth: 0.35, bevelEnabled: false }); hg2.rotateX(Math.PI / 2); const h = new THREE.Mesh(hg2, M.plane); h.scale.z = side; h.position.set(L / 2 - 9.5, 1.1, 0); h.castShadow = true; g.add(h); }
+  // puntas de ala (aletas arriba y abajo), carenado de la panza, carenados de los flaps y toberas de los motores
+  for (const side of [-1, 1]) { const tip = new THREE.Shape(); tip.moveTo(0, -1.0); tip.lineTo(2.6, -0.4); tip.lineTo(3.4, 2.4); tip.lineTo(2.4, 2.4); tip.lineTo(0.2, 0.3); tip.lineTo(0, -1.0);
+    const tg = new THREE.ExtrudeGeometry(tip, { depth: 0.12, bevelEnabled: false }); const tm = new THREE.Mesh(tg, M.plane); tm.position.set(-5 + 9.6, -1.6 + 28 * Math.sin(0.09), side * 28.05); g.add(tm);
+    for (const f of [0.22, 0.45, 0.68]) { const fz = side * 28 * f, fx = -5 + 9.5 * f + lerp(14.5, 3.5, f) * 0.78; const ft = new THREE.Mesh(new THREE.CapsuleGeometry(0.32, 3.6, 4, 10), M.belly); ft.rotation.z = Math.PI / 2; ft.position.set(fx, -1.95 + 0.0899 * Math.abs(fz), fz); g.add(ft); } }
+  { const bf = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 12), M.belly); bf.scale.set(13, 1.6, 3.4); bf.position.set(1.8, -3.0, 0); g.add(bf); }
+  g.children.slice().forEach(o => { if (o.isMesh && o.material === M.engine) { const nz = new THREE.Mesh(new THREE.ConeGeometry(0.62, 1.6, 20), M.fan); nz.rotation.z = Math.PI / 2; nz.position.set(o.position.x + 3.2, o.position.y, o.position.z); g.add(nz); } });
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; });
   g.userData.L = L; return g;
 }
 function acroPlane() {                                      // avioneta acrobática roja (genérica)
@@ -1031,11 +1041,9 @@ function acroPlane() {                                      // avioneta acrobát
 
 // ---------------------------------------------------------------- montaje
 function buildWorld() {
-  scene.add(skyDome());
-  const grd = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), M.grass); grd.rotation.x = -Math.PI / 2; grd.position.y = -0.01; grd.receiveShadow = true; scene.add(grd);
+  S.sky = skyLand(); scene.add(S.sky);
+  const grd = new THREE.Mesh(new THREE.PlaneGeometry(440, 440), M.grass); grd.rotation.x = -Math.PI / 2; grd.position.y = -0.01; grd.receiveShadow = true; scene.add(grd);
   S.clouds = [];
-  for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.5), new THREE.MeshBasicMaterial({ map: cloudTex(i + 1), transparent: true, depthWrite: false, fog: false, opacity: 0.7 }));
-    const a = hash(i * 3.3) * Math.PI * 2 * 0.5 + Math.PI * 0.75, r = 230 + hash(i * 5.1) * 90; m.position.set(Math.cos(a) * r, 22 + hash(i * 7.3) * 40, Math.sin(a) * r); m.scale.setScalar(70 + hash(i * 2.2) * 50); m.lookAt(0, m.position.y, 0); scene.add(m); S.clouds.push(m); }
   // el aula
   const C = new THREE.Group(); scene.add(C); S.room = C;
   const fl = mesh(new THREE.BoxGeometry(ROOM.w, 0.12, ROOM.d), M.wood); fl.position.y = -0.06; C.add(fl);
@@ -1071,7 +1079,7 @@ function buildWorld() {
   S.acro = acroPlane(); scene.add(S.acro);
   S.acroSmoke = new THREE.InstancedMesh(new THREE.SphereGeometry(0.7, 10, 8), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0.85, depthWrite: false }), 260); scene.add(S.acroSmoke);
   // los efectos del cielo: bloques de aire, estela, presión alrededor del avión
-  S.blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(7, 7, 7), M.block, 140); S.blocks.renderOrder = 2; scene.add(S.blocks);
+  S.blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(5.5, 5.5, 5.5), M.block, 140); S.blocks.renderOrder = 2; scene.add(S.blocks);
   // «la diferencia lo levanta»: flechas naranjas debajo del avión
   S.liftArrows = [0, 1, 2].map(() => { const a = arrow3(14, M.arrUp, 0.9); scene.add(a); return a; });
   S.wake = new THREE.InstancedMesh(new THREE.SphereGeometry(0.5, 8, 6), M.wake, 1400); scene.add(S.wake);
@@ -1141,6 +1149,145 @@ function buildTunnel() {
     for (let i = 0; i < 80; i++) { S.dnFlow.push(v3(TUN.x + JS * Wp.x, TUN.y + JS * Wp.y, TUN.z + TUN.D * 0.5 + 0.02));
       const v = velZ(rot(Wp, al), al), w = rot(v, -al), L = Math.hypot(w.x, w.y) || 1; Wp = { x: Wp.x + w.x / L * 0.05, y: Wp.y + w.y / L * 0.05 }; } }
 }
+// ---------------------------------------------------------------- el mundo realista: un valle verde con montañas, río y pueblos; nubes (con su sombra en el
+// suelo), nubes grises al fondo, pájaros y el cielo. El aula está en el prado del fondo del valle (el origen); el avión vuela muy por encima.
+const SUN = new THREE.Vector3(0.76, 0.63, 0.15).normalize();     // hacia el sol: ≈ 39° de altura, por detrás del avión (su sombra cae delante)
+const HAZE = new THREE.Color().setRGB(0.72, 0.82, 0.95);          // color de la bruma del horizonte (lineal): cielo y niebla iguales
+const LAND = { cx: -3500, cz: 0, size: 22000, n: 520, outer: 90000, no: 150 };
+function _h2(i, j) { let h = Math.imul(i, 374761393) + Math.imul(j, 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; }
+function vnoise(x, y) { const i = Math.floor(x), j = Math.floor(y), fx = x - i, fy = y - j, u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy);
+  const a = _h2(i, j), b = _h2(i + 1, j), c = _h2(i, j + 1), d = _h2(i + 1, j + 1); return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v; }
+function fbm(x, y, o = 5) { let s = 0, a = 0.5, f = 1, n = 0; for (let k = 0; k < o; k++) { s += a * vnoise(x * f + k * 17.3, y * f - k * 9.1); n += a; a *= 0.5; f *= 2.03; } return s / n; }
+function ridged(x, y, o = 6) { let s = 0, a = 0.5, f = 1, n = 0, w = 1; for (let k = 0; k < o; k++) { let r = 1 - Math.abs(vnoise(x * f + k * 31.7, y * f + k * 11.3) * 2 - 1); r *= r; s += a * r * w; w = clamp(r * 1.7); n += a; a *= 0.5; f *= 2.1; } return s / n; }
+const sstep = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+function valleyZ(x) { return 900 * Math.sin(x / 4200) + 480 * Math.sin(x / 1700 + 1.3); }
+function landH(x, z) {
+  const zc = valleyZ(x), d = Math.abs(z - zc), dr = Math.abs(z - zc - 18 * Math.sin(x / 230)), wall = sstep(650, 4300, d);
+  const mtn = 1500 * ridged(x / 4600, z / 4600) + 420 * fbm(x / 1700 + 7, z / 1700, 4);
+  const hills = 46 * fbm(x / 900, z / 900, 3);                        // el fondo del valle: lomas suaves (nunca por debajo del río)
+  let h = wall * (mtn + 150 * wall) + (1 - wall) * hills;
+  h = Math.min(h, -7 + 24 * Math.pow(dr / 70, 2));                   // el cauce del río
+  const r = Math.hypot(x, z), flat = sstep(230, 900, r);              // el prado del colegio: llano
+  return h * flat - 0.06 * (1 - flat);
+}
+const _lin = (r, g, b) => [Math.pow(r, 2.2), Math.pow(g, 2.2), Math.pow(b, 2.2)];
+const LC = { f1: _lin(0.37, 0.52, 0.22), f2: _lin(0.45, 0.56, 0.27), f3: _lin(0.56, 0.56, 0.33), f4: _lin(0.30, 0.45, 0.19), f5: _lin(0.47, 0.43, 0.30), forest: _lin(0.13, 0.27, 0.11), forest2: _lin(0.19, 0.33, 0.13),
+  meadow: _lin(0.42, 0.52, 0.24), rock: _lin(0.47, 0.45, 0.42), rock2: _lin(0.36, 0.34, 0.32), snow: _lin(0.95, 0.96, 0.99), gravel: _lin(0.58, 0.56, 0.50) };
+const mix3 = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
+function landCol(x, z, h, ny) {
+  const n1 = fbm(x / 340, z / 340, 3), n2 = vnoise(x / 150 + 50, z / 150 - 20), n3 = fbm(x / 60, z / 60, 2);
+  const fa = 0.35 + 0.9 * (vnoise(x / 2500, z / 2500) - 0.5), fu = x * Math.cos(fa) + z * Math.sin(fa) + 40 * vnoise(x / 300, z / 300), fv = -x * Math.sin(fa) + z * Math.cos(fa);
+  const fi = Math.floor(fu / (70 + 50 * vnoise(x / 900, z / 900))), fj = Math.floor(fv / (110 + 90 * _h2(fi, 7))), fh = _h2(fi, fj);
+  let c = fh > 0.86 ? LC.f5 : fh > 0.72 ? LC.f3 : fh > 0.5 ? LC.f2 : fh > 0.25 ? LC.f1 : LC.f4; c = mix3(c, LC.f1, 0.3 + 0.3 * n2);   // parcelas de campos (poco contraste: sin escalones)
+  c = mix3(c, mix3(LC.forest, LC.forest2, n3), sstep(18, 110, h + 70 * (n1 - 0.5)));     // bosque en las laderas
+  c = mix3(c, LC.meadow, sstep(950, 1150, h + 150 * (n1 - 0.5)));                         // prados de alta montaña
+  c = mix3(c, mix3(LC.rock, LC.rock2, n3), Math.max(sstep(0.84, 0.62, ny) * sstep(150, 500, h), sstep(1250, 1450, h + 120 * (n1 - 0.5))));
+  c = mix3(c, LC.snow, sstep(1500, 1650, h + 180 * (n1 - 0.5)) * sstep(0.55, 0.78, ny));
+  const dr = Math.abs(z - valleyZ(x) - 18 * Math.sin(x / 230)); c = mix3(c, LC.gravel, sstep(48, 26, dr) * 0.55);   // orillas del río
+  const k = 0.9 + 0.2 * n3; return [c[0] * k, c[1] * k, c[2] * k];
+}
+// ---------------------------------------------------------------- nubes: grupos de cúmulos (sprites con textura propia: arriba al sol, abajo gris) y nubes grises al fondo
+function cloudPuffTex(seed, gray = 0) {
+  const W2 = 512, H2 = 384;
+  return canvasTex(W2, H2, (g) => {
+    const m = document.createElement('canvas'); m.width = W2; m.height = H2; const q = m.getContext('2d');
+    for (let i = 0; i < 34; i++) { const x = W2 * (0.16 + 0.68 * hash(i * 3.1 + seed)), y = H2 * (0.38 + 0.36 * Math.pow(hash(i * 5.3 + seed), 0.7)), r = 46 + 96 * hash(i * 7.7 + seed) * (1 - 0.4 * Math.abs(x / W2 - 0.5) * 2);
+      const gr = q.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.55, 'rgba(255,255,255,.75)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); q.fillStyle = gr; q.fillRect(x - r, y - r, 2 * r, 2 * r); }
+    const A = q.getImageData(0, 0, W2, H2).data, img = g.createImageData(W2, H2), D = img.data;
+    for (let j = 0; j < H2; j++) for (let i = 0; i < W2; i++) {
+      const k = (j * W2 + i) * 4, a0 = A[k + 3] / 255; if (a0 < 0.01) { D[k + 3] = 0; continue; }
+      const n = fbm(i / 38 + seed * 7, j / 38, 4), y = j / H2, bottom = sstep(0.86, 0.7, y);
+      const a = clamp((a0 * 1.55 - 0.16) * (0.72 + 0.56 * n)) * bottom;
+      const up = j > 6 ? A[((j - 6) * W2 + i) * 4 + 3] / 255 : 0, edge = clamp(1 - up);                // más claro donde no hay nube encima (al sol)
+      let b = 0.74 + 0.22 * sstep(0.8, 0.3, y) + 0.16 * edge + 0.1 * (n - 0.5); b = clamp(b * (gray ? 0.86 : 1));
+      D[k] = 255 * clamp(b * 0.985); D[k + 1] = 255 * clamp(b * 0.99); D[k + 2] = 255 * clamp(b * 1.0 + (1 - b) * 0.12); D[k + 3] = 255 * a;
+    }
+    g.putImageData(img, 0, 0);
+  });
+}
+function buildLand() {
+  // el suelo: una malla fina alrededor del vuelo y otra gruesa hasta el horizonte (un poco más baja donde se pisan)
+  S.cloudList = [];
+  for (let i = 0; i < 90; i++) { const x = -14000 + 19000 * hash(i * 2.71), z = -7000 + 14000 * hash(i * 6.13), s = 220 + 380 * hash(i * 9.7);
+    if (Math.abs(z - 380) < 1700 + 0.12 * Math.max(0, -x) && x > -6500) continue;       // lejos del pasillo de la cámara: se ven de lado, en el horizonte
+    S.cloudList.push({ x, y: 1380 + 380 * hash(i * 4.4), z, s }); }
+  for (const c of S.cloudList) { const t = (c.y - Math.max(0, landH(c.x, c.z))) / SUN.y; c.gx = c.x - SUN.x * t; c.gz = c.z - SUN.z * t; }      // dónde cae la sombra de cada nube
+  const shade = (x, z) => { let f = 1; for (const c of S.cloudList) { const d2 = ((x - c.gx) ** 2 + (z - c.gz) ** 2) / (c.s * c.s * 0.75); if (d2 < 9) f *= 1 - 0.5 * Math.exp(-d2); } return f; };
+  const grid = (cx, cz, size, n, lower) => {
+    const geo = new THREE.PlaneGeometry(size, size, n, n); geo.rotateX(-Math.PI / 2);
+    const P = geo.attributes.position, N = P.count, col = new Float32Array(N * 3), uv = new Float32Array(N * 2);
+    for (let i = 0; i < N; i++) { const x = P.getX(i) + cx, z = P.getZ(i) + cz; let h = landH(x, z); if (lower) h -= lower(x, z); P.setXYZ(i, x, h, z); uv[i * 2] = x / 140; uv[i * 2 + 1] = z / 140; }
+    geo.setAttribute('uv', new THREE.BufferAttribute(uv, 2)); geo.computeVertexNormals();
+    const NO = geo.attributes.normal;
+    for (let i = 0; i < N; i++) { const x = P.getX(i), z = P.getZ(i), c = landCol(x, z, P.getY(i), NO.getY(i)), f = shade(x, z) * 1.15; col[i * 3] = c[0] * f; col[i * 3 + 1] = c[1] * f; col[i * 3 + 2] = c[2] * f; }
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const m = new THREE.Mesh(geo, M.land); m.receiveShadow = true; m.frustumCulled = false; scene.add(m); return m;
+  };
+  const half = LAND.size / 2;
+  S.landNear = grid(-2600, -700, 9200, 560, null);                                        // fina (16 m) donde miran el dron y la avioneta
+  S.land = grid(LAND.cx, LAND.cz, LAND.size, LAND.n, (x, z) => { const e = Math.min(x + 7200, 2000 - x, z + 5300, 3900 - z); return e <= 0 ? 0 : 14 * Math.min(1, e / 300); });
+  S.landFar = grid(LAND.cx, LAND.cz, LAND.outer, LAND.no, (x, z) => { const dx = Math.abs(x - LAND.cx) - half, dz = Math.abs(z - LAND.cz) - half, e = Math.max(dx, dz); return e < -1500 ? 90 : e < 0 ? 90 * (-e / 1500) : 0; });
+  // el río (cinta brillante por el fondo del valle)
+  { const pts = [], wid = []; for (let x = -26000; x <= 12000; x += 60) { const z = valleyZ(x) + 18 * Math.sin(x / 230); pts.push([x, z]); wid.push(34 + 10 * Math.sin(x / 900)); }
+    const pos = new Float32Array(pts.length * 6), idx = [];
+    pts.forEach(([x, z], i) => { const [x2, z2] = pts[Math.min(pts.length - 1, i + 1)], [x0, z0] = pts[Math.max(0, i - 1)], tx = x2 - x0, tz = z2 - z0, L = Math.hypot(tx, tz), nx = -tz / L, nz = tx / L, w = wid[i] / 2;
+      pos.set([x + nx * w, -5.2, z + nz * w, x - nx * w, -5.2, z - nz * w], i * 6); if (i) idx.push(i * 2 - 2, i * 2 - 1, i * 2, i * 2 - 1, i * 2 + 1, i * 2); });
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
+    S.river = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: 0x1f5a70, roughness: 0.3, metalness: 0.05, envMapIntensity: 0.4 })); S.river.receiveShadow = true; S.river.frustumCulled = false; scene.add(S.river); }
+  // pueblos: casas blancas con tejado rojo junto al río
+  { const NH = 520, walls = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color: 0xeee6da, roughness: 0.9 }), NH);
+    const rg = new THREE.CylinderGeometry(0.0001, 0.72, 1, 4, 1); rg.rotateY(Math.PI / 4); const roofs = new THREE.InstancedMesh(rg, new THREE.MeshStandardMaterial({ color: 0x6b3a2c, roughness: 0.9 }), NH);
+    let k = 0; const towns = [-11800, -9300, -6900, -4600, -2600, -1100, 1600, 3900, 6200];
+    towns.forEach((tx, ti) => { const n = 40 + Math.floor(30 * hash(ti * 3.3)), side = hash(ti * 7.1) > 0.5 ? 1 : -1, cz = valleyZ(tx) + side * (150 + 120 * hash(ti));
+      for (let j = 0; j < n && k < NH; j++) { const a = hash(ti * 100 + j * 1.7) * 6.283, r = 25 + 170 * Math.sqrt(hash(ti * 100 + j * 2.9)), x = tx + Math.cos(a) * r * 1.4, z = cz + Math.sin(a) * r * 0.8;
+        if (Math.abs(z - valleyZ(x)) < 45 || Math.hypot(x, z) < 400) continue;
+        const w = 8 + 6 * hash(j * 3.7 + ti), d = 9 + 7 * hash(j * 5.1 + ti), hh = 5 + 4 * hash(j * 2.3 + ti), y = landH(x, z), yaw = hash(j * 9.1 + ti) * 3.14;
+        _o.position.set(x, y + hh / 2 - 0.5, z); _o.rotation.set(0, yaw, 0); _o.scale.set(w, hh, d); _o.updateMatrix(); walls.setMatrixAt(k, _o.matrix);
+        _o.position.set(x, y + hh - 0.5 + 1.6, z); _o.scale.set(w * 1.45, 3.2, d * 1.45); _o.updateMatrix(); roofs.setMatrixAt(k, _o.matrix); k++; } });
+    walls.count = roofs.count = k; walls.receiveShadow = roofs.receiveShadow = true; walls.frustumCulled = roofs.frustumCulled = false; scene.add(walls, roofs); }
+  // las nubes: cada grupo, 7-12 sprites (base plana, más grandes abajo)
+  const texW = [1, 2, 3, 4, 5, 6].map(s => cloudPuffTex(s)), texG = [7, 8, 9].map(s => cloudPuffTex(s, 1));
+  S.cloudSprites = [];
+  S.cloudList.forEach((c, ci) => { const n = 7 + Math.floor(6 * hash(ci * 1.9));
+    for (let j = 0; j < n; j++) { const a = hash(ci * 31 + j * 2.3) * 6.283, r = c.s * 0.55 * Math.sqrt(hash(ci * 17 + j * 4.1)), up = c.s * 0.28 * hash(ci * 11 + j * 6.7) * (1 - r / (c.s * 0.6)), sz = c.s * (0.5 + 0.45 * hash(ci * 13 + j * 8.9));
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: texW[(ci + j) % texW.length], transparent: true, depthWrite: false, fog: true })); sp.material.color.setScalar(1.75);
+      sp.position.set(c.x + Math.cos(a) * r * 1.2, c.y + up + sz * 0.22, c.z + Math.sin(a) * r * 0.9); sp.scale.set(sz * 1.35, sz, 1); scene.add(sp); S.cloudSprites.push(sp); } });
+  // nubes grises al fondo, cerca del horizonte (sin niebla: ya llevan su color de lejos)
+  S.farClouds = [];
+  for (let i = 0; i < 22; i++) { const a = -Math.PI * 0.45 + Math.PI * 0.9 * hash(i * 3.9) + (i % 2 ? Math.PI : 0), r = 15000 + 12000 * hash(i * 5.5), w = 2600 + 3400 * hash(i * 2.2);
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: texG[i % texG.length], transparent: true, depthWrite: false, fog: false, opacity: 0.85 }));
+    const gcol = 0.86 + 0.16 * hash(i * 8.1); sp.material.color.setRGB(gcol * 0.95, gcol * 0.98, gcol * 1.04);
+    sp.position.set(-3500 + Math.cos(a) * r, 1800 + 1800 * hash(i * 6.6), Math.sin(a) * r * 0.8); sp.scale.set(w * 1.5, w * 0.55, 1); scene.add(sp); S.farClouds.push(sp); }
+  // pájaros: dos bandadas en uve (ánsares), con aleteo
+  const bm = new THREE.MeshStandardMaterial({ color: 0x5b554b, roughness: 0.85 }), wingGeo = new THREE.BufferGeometry();
+  wingGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array([-0.18, 0, 0, 0.22, 0, 0, 0.12, 0, 0.55, -0.18, 0, 0, 0.12, 0, 0.55, -0.02, 0, 0.92, -0.02, 0, 0.92, 0.12, 0, 0.55, 0.16, 0, 0.98]), 3)); wingGeo.computeVertexNormals();
+  const makeBird = () => { const g = new THREE.Group(); const body = new THREE.Mesh(new THREE.SphereGeometry(0.5, 10, 8), bm); body.scale.set(0.95, 0.2, 0.22); g.add(body);
+    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.06, 0.45, 6), bm); neck.rotation.z = Math.PI / 2 + 0.15; neck.position.set(-0.62, 0.04, 0); g.add(neck);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.075, 8, 6), bm); head.position.set(-0.86, 0.08, 0); g.add(head);
+    const wl = new THREE.Mesh(wingGeo, bm), wr = new THREE.Mesh(wingGeo, bm); wr.scale.z = -1; wl.material.side = THREE.DoubleSide; g.add(wl, wr); g.userData.w = [wl, wr];
+    g.traverse(o => { if (o.isMesh) o.castShadow = true; }); g.scale.setScalar(1.9); scene.add(g); return g; };
+  S.flocks = [{ n: 9, f0: 25, y: 1532, z: 393, sp: 16 }, { n: 13, f0: -159, y: 1518, z: 326, sp: 16 }].map(F => ({ ...F, birds: Array.from({ length: F.n }, makeBird) }));
+}
+// el cielo: degradado de bruma a azul, con el sol y su halo (sigue a la cámara)
+function skyLand() {
+  const m = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, depthTest: false, fog: false, uniforms: { sunDir: { value: SUN }, haze: { value: HAZE } },
+    vertexShader: 'varying vec3 vD; void main(){ vD = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }',
+    fragmentShader: `uniform vec3 sunDir, haze; varying vec3 vD;
+      void main(){ vec3 d = normalize(vD); float h = d.y;
+        vec3 zen = vec3(0.075, 0.22, 0.60), hor = haze, gnd = haze * vec3(0.86, 0.9, 0.92);
+        vec3 c = h > 0. ? mix(hor, zen, pow(clamp(h * 1.05, 0., 1.), 0.48)) : mix(hor, gnd, clamp(-h * 6., 0., 1.));
+        float s = max(dot(d, sunDir), 0.); c += vec3(1.0, 0.9, 0.72) * (pow(s, 1800.) * 30. + pow(s, 40.) * 0.35 + pow(s, 6.) * 0.12);
+        gl_FragColor = vec4(c, 1.); }` });
+  const s = new THREE.Mesh(new THREE.SphereGeometry(1000, 48, 24), m); s.renderOrder = -10; s.frustumCulled = false; return s;
+}
+function birdsAt(t) {
+  const u = t < 13 ? t : (t >= 43 ? t - END : null);
+  for (const F of S.flocks) F.birds.forEach((b, i) => { b.visible = u !== null; if (!b.visible) return;
+    const row = Math.ceil(i / 2), side = i === 0 ? 0 : (i % 2 ? 1 : -1), P = bigBase(0);
+    b.position.set(P.x + F.f0 - F.sp * u + row * 6.5 + 0.6 * Math.sin(u * 0.9 + i), F.y + 0.4 * Math.sin(u * 1.3 + i * 1.7) + row * 0.3, F.z + side * row * 5);
+    b.rotation.set(0, 0, 0.04 * Math.sin(u * 0.8 + i));
+    const fl = 0.62 * Math.sin(2 * Math.PI * 2.6 * u + i * 0.9); b.userData.w[0].rotation.x = -fl; b.userData.w[1].rotation.x = fl; });
+}
 // ---------------------------------------------------------------- tiempos y animación (todo depende solo del instante t)
 const cwin = (t, t0, t1, fi = 0.25, fo = 0.25) => win(t, t0, fi) * (1 - win(t, t1, fo));
 const backOut = x => { x = clamp(x); return 1 + 2.70158 * Math.pow(x - 1, 3) + 1.70158 * Math.pow(x - 1, 2); };
@@ -1150,9 +1297,9 @@ let TT = {};
 function buildTimes() {
   TT = {
     crack: K.mal1, nasa: K.nasa2, n575: K.n575_2,                         // 1-2: la equis en la pizarra, la NASA, 575 t
-    emerge: K.contaron3, curva: K.curva3, split: K.arriba3, meet: K.vez3, // 3: el ala sale de la pizarra; el «mito»: llegan a la vez
+    emerge: K.ala3, split: K.aire3, meet: K.vez3,                         // 3: el ala sale de la pizarra («el ala»); el «mito»: llegan a la vez
     cita: K.cita4, tunnel: K.tunel4, pulse: K.tunel4 + 0.3, first: K.antes4,   // 4: el túnel de viento; el de arriba llega antes
-    acro: K.curva5 - 0.5, inv: K.boca5,                                   // 5: boca abajo
+    acro: K.si5 - 0.4, inv: K.boca5,                                      // 5: la avioneta (su propio plano), boca abajo
     tilt: K.inclinada6 - 0.2, push: K.empuja6,                            // 6: el ala se inclina y empuja el aire hacia abajo
     blocks: K.cientos7,                                                   // 7: cientos de toneladas de aire
     arrDn: K.abajo8, arrUp: K.empuja8b,                                   // 8: acción y reacción
@@ -1160,56 +1307,55 @@ function buildTimes() {
     wake: K.respuesta10, poll: K.ventanilla11,                            // 10-11
     back: K.ventanilla11 + 0.3,                                           // el ala vuelve a la pizarra (bucle)
   };
-  TT.fly0 = TT.emerge + 0.3; TT.fly1 = TT.split - 0.55;                   // el ala vuela de la pizarra a su sitio
+  TT.fly0 = TT.emerge + 0.22; TT.fly1 = TT.fly0 + 0.85; TT.curva = TT.fly1 - 0.05; TT.balls = TT.fly1 + 0.15;   // el ala vuela de la pizarra a su sitio
 }
-// ---------------------------------------------------------------- el avión gigante: un único pasillo en el cielo, detrás del aula (teleobjetivo: se ve enorme
-// encima de la pizarra). Vuela despacio hacia la izquierda; visible al principio (y al final, en bucle), con los bloques de aire y con la estela.
-const BIG = { v: 2.5, psi: 0.30, x0: -5, y0: 50, z0: -128 };
+// ---------------------------------------------------------------- el avión gigante: vuela de verdad (35 m/s) a 2.100 m por encima del valle; el mismo pasillo al
+// principio, con los bloques de aire y al final (bucle: u = t al principio, u = t - END al final)
+const BIG = { v: 35, psi: 0, x0: 0, y0: 1500, z0: 350 };
+function bigU(t) { return t < 12.2 ? t : ((t >= 32.4 && t < 36.6) || t >= 43.2) ? t - END : null; }
+function bigBase(t) { const u = bigU(t) ?? 0, d = BIG.v * u; return { x: BIG.x0 - Math.cos(BIG.psi) * d, y: BIG.y0, z: BIG.z0 + Math.sin(BIG.psi) * d }; }
 function bigPose(t) {
-  let u = null;
-  if (t < 12.6) u = t; else if ((t >= 32.4 && t < 36.6) || t >= 43.2) u = t - END;
-  if (u === null) return { on: false, x: 0, y: -80, z: 0, lift: 0 };
-  const c = Math.cos(BIG.psi), s = Math.sin(BIG.psi), d = BIG.v * u;
-  const lift = t > 40 ? 5 * eio(clamp((t - TT.lift) / 1.4)) * (1 - eio(clamp((t - 52.4) / 3.2))) : 0;
-  return { on: true, x: BIG.x0 - c * d, y: BIG.y0 + lift, z: BIG.z0 + s * d, lift };
+  const u = bigU(t); if (u === null) return { on: false, x: 0, y: -900, z: 0, lift: 0 };
+  const B = bigBase(t), lift = t > 40 ? 5 * eio(clamp((t - TT.lift) / 1.4)) * (1 - eio(clamp((t - 52.4) / 3.2))) : 0;
+  return { on: true, x: B.x, y: B.y + lift, z: B.z, lift };
 }
 // un punto del avión (coordenadas propias: morro en -x, alas en ±z) en el mundo
 function bigLocal(P, lx, ly, lz, out) { const c = Math.cos(BIG.psi), s = Math.sin(BIG.psi); return out.set(P.x + lx * c + lz * s, P.y + ly, P.z - lx * s + lz * c); }
-// la avioneta: cruza por encima del aula, se da la vuelta y sigue boca abajo
-function acroPose(t) { const k = t - TT.acro; return { k, x: 9 - 4.2 * k, y: 14 + Math.sin(k * 1.1) * 0.4, z: -22, roll: Math.PI * eio(clamp((t - TT.inv + 0.85) / 0.75)) }; }
+// la avioneta: en su propio sitio del valle, a 520 m; se da la vuelta y sigue boca abajo
+function acroPose(t) { const k = t - TT.acro; return { k, x: -2600 - 40 * k, y: 520 + Math.sin(k * 1.1) * 2.5, z: -650, roll: Math.PI * eio(clamp((t - TT.inv + 0.85) / 0.75)) }; }
 function skyAt(t) {
   const P = bigPose(t), B = S.big; B.visible = P.on; B.position.set(P.x, P.y, P.z);
   _e3.set(Math.sin(2 * Math.PI * 4 * t / END) * 0.02, BIG.psi, Math.sin(2 * Math.PI * 3 * t / END) * 0.008 + (P.lift ? 0.02 * Math.sin(clamp((t - TT.lift) / 1.4) * Math.PI) : 0), 'YXZ'); B.quaternion.setFromEuler(_e3);
   // la avioneta y su humo de exhibición
-  const A = acroPose(t); S.acro.visible = A.k > 0 && A.k < 4.4;
+  const A = acroPose(t); S.acro.visible = A.k > 0 && A.k < 4.0;
   if (S.acro.visible) { S.acro.position.set(A.x, A.y, A.z); S.acro.rotation.set(A.roll, 0, 0.05); S.prop.rotation.x = t * 40; }
-  S.acroSmoke.visible = A.k > 0 && A.k < 4.6;
-  if (S.acroSmoke.visible) { const N = 260;
-    for (let i = 0; i < N; i++) { const age = i * 0.018, Q = acroPose(t - age); let s = 0;
-      if (Q.k > 0.05) { s = Math.min(1, age * 6) * (1 - clamp((age - 3.2) / 1.4)) * (0.55 + age * 0.35); _o.position.set(Q.x + 3.7, Q.y + 0.05 - age * 0.25 + (hash(i * 3.1) - 0.5) * age * 0.3, Q.z + (hash(i * 5.3) - 0.5) * age * 0.3); }
-      _o.rotation.set(0, 0, 0); _o.scale.setScalar(Math.max(0.0001, s)); _o.updateMatrix(); S.acroSmoke.setMatrixAt(i, _o.matrix); }
+  S.acroSmoke.visible = A.k > 0 && A.k < 4.0;
+  if (S.acroSmoke.visible) { const N = 420;
+    for (let i = 0; i < N; i++) { const age = i * 0.0095, Q = acroPose(t - age); let s = 0;
+      if (Q.k > 0.05) { s = Math.min(1, age * 6) * (1 - clamp((age - 3.2) / 1.4)) * (0.55 + age * 0.35); _o.position.set(Q.x + 3.7, Q.y + 0.05 - age * 0.6 + (hash(i * 3.1) - 0.5) * age * 0.8, Q.z + (hash(i * 5.3) - 0.5) * age * 0.8); _o.scale.setScalar(Math.max(0.0001, s * (1.25 + age * 1.3))); }
+      else _o.scale.setScalar(0.0001); _o.rotation.set(0, 0, 0); _o.updateMatrix(); S.acroSmoke.setMatrixAt(i, _o.matrix); }
     S.acroSmoke.instanceMatrix.needsUpdate = true; }
   // bloques de aire que el ala echa hacia abajo (cientos de toneladas por segundo)
   const bk = cwin(t, TT.blocks - 0.35, 36.4, 0.3, 0.3); S.blocks.visible = bk > 0.01 && P.on;
   if (S.blocks.visible) { const N = 140;
     for (let i = 0; i < N; i++) { const te = 32.0 + (i / N) * 4.4, u = t - te; let s = 0;
-      if (u > 0 && u < 2.8) { const Q = bigPose(Math.max(32.45, te)), zs = (hash(i * 3.1) * 2 - 1) * 26, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 3 + hash(i * 1.7) * 3;
-        s = Math.min(1, u * 4) * (1 - clamp((u - 2.2) / 0.6)); bigLocal(Q, xs + u * 2.5, -4 - 6 * u - 4.5 * u * u, zs, _o.position); _o.rotation.set(u * 0.6 * hash(i), u * 0.5 + hash(i * 2.2), 0); }
+      if (u > 0 && u < 2.8) { const zs = (hash(i * 3.1) * 2 - 1) * 26, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 3 + hash(i * 1.7) * 3;
+        s = Math.min(1, u * 4) * (1 - clamp((u - 2.2) / 0.6)); bigLocal(P, xs + u * 7, -4 - 6 * u - 4.5 * u * u, zs, _o.position); _o.rotation.set(u * 0.6 * hash(i), u * 0.5 + hash(i * 2.2), 0); }
       _o.scale.setScalar(Math.max(0.0001, s * bk)); _o.updateMatrix(); S.blocks.setMatrixAt(i, _o.matrix); }
     S.blocks.instanceMatrix.needsUpdate = true; }
   // la estela: el aire que el ala va dejando hacia abajo, todo el rato
-  const wk = cwin(t, TT.wake - 0.5, END - 2.6, 0.6, 1.0); S.wake.visible = wk > 0.01 && P.on;      // sigue cayendo «todo el rato» (también desde el aula) y se apaga antes del bucle
+  const wk = cwin(t, TT.wake - 0.5, K.ventanilla11 - 0.25, 0.6, 0.22); S.wake.visible = wk > 0.01 && P.on;      // «todo el rato»; se apaga al cambiar de plano
   if (S.wake.visible) { const N = 1400;
     for (let i = 0; i < N; i++) { const te = 44.5 + (i / N) * 10.5, u = t - te; let s = 0;
-      if (u > 0 && u < 4.0) { const Q = bigPose(te), zs = (hash(i * 7.3) * 2 - 1) * 27, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 1.5 + hash(i * 1.3) * 2;
-        s = (1 - clamp((u - 3.0) / 1.0)) * Math.min(1, u * 4); bigLocal(Q, xs + u * 1.5, -2.5 - 7 * u - 2.2 * u * u - hash(i * 2.9) * 1.5, zs, _o.position); }
-      _o.rotation.set(0, 0, 0); _o.scale.set(s * wk * 0.8, s * wk * 4.5, s * wk * 0.8); _o.updateMatrix(); S.wake.setMatrixAt(i, _o.matrix); }
+      if (u > 0 && u < 4.0) { const zs = (hash(i * 7.3) * 2 - 1) * 27, xs = lerp(9.5, 8, Math.abs(zs) / 28) + 1.5 + hash(i * 1.3) * 2;
+        s = (1 - clamp((u - 3.0) / 1.0)) * Math.min(1, u * 4); bigLocal(P, xs + u * 6, -2.5 - 7 * u - 2.2 * u * u - hash(i * 2.9) * 1.5, zs, _o.position); }
+      _o.rotation.set(0, 0, 0); _o.scale.set(s * wk * 0.6, s * wk * 3.6, s * wk * 0.6); _o.updateMatrix(); S.wake.setMatrixAt(i, _o.matrix); }
     S.wake.instanceMatrix.needsUpdate = true; }
   // presión alrededor del avión: azul encima de las alas, rojo debajo
   const pk = cwin(t, TT.lift - 0.3, K.flota10, 0.4, 0.6) * (P.on ? 1 : 0);
   S.lowP.visible = S.highP.visible = pk > 0.01;
-  if (pk > 0.01) { bigLocal(P, 3, 7, 0, S.lowP.position); S.lowP.scale.set(80, 30, 1); S.lowP.material.opacity = pk * 0.95;
-    bigLocal(P, 3, -10, 0, S.highP.position); S.highP.scale.set(80, 30, 1); S.highP.material.opacity = pk * 0.8; }
+  if (pk > 0.01) { bigLocal(P, 3, 13, 0, S.lowP.position); S.lowP.scale.set(70, 22, 1); S.lowP.material.opacity = pk * 0.8;
+    bigLocal(P, 3, -14, 0, S.highP.position); S.highP.scale.set(80, 26, 1); S.highP.material.opacity = pk * 0.8; }
   // y la diferencia lo levanta: tres flechas que empujan desde abajo
   const lk = cwin(t, TT.lift - 0.1, K.flota10 - 0.2, 0.45, 0.4) * (P.on ? 1 : 0);
   S.liftArrows.forEach((a, i) => { a.visible = lk > 0.01; if (!a.visible) return; const z = (i - 1) * 17, x = i === 1 ? 2 : 8;
@@ -1218,7 +1364,7 @@ function skyAt(t) {
 // ---------------------------------------------------------------- el aula: la equis, el reloj, el dibujo de tiza (se despega con el ala y vuelve al final)
 function drawAt(t) { return 1 - win(t, TT.emerge + 0.15, 0.7) + win(t, TT.back + 0.2, 1.0); }
 function roomAt(t) {
-  const ck = cwin(t, TT.crack, TT.emerge + 0.3, 0.12, 0.35); M.cross.opacity = ck * 0.95; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
+  const ck = 0; M.cross.opacity = 0; S.cross.visible = false; S.cross.scale.setScalar(0.85 + 0.15 * backOut(clamp((t - TT.crack) / 0.3)));
   S.clockM.rotation.z = -Math.PI * 2 * 4 * t / END; S.clockH.rotation.z = -Math.PI * 2 * t / END;
   const dk = drawAt(t); M.boardDraw.opacity = dk; S.boardDraw.visible = dk > 0.005;
 }
@@ -1252,13 +1398,13 @@ function tunnelAt(t) {
   puff(S.smoke, S.pulses, S.AL0, cwin(t, TT.pulse - 0.05, TT.acro + 0.3, 0.1, 0.4), (t - TT.pulse) * 3.2);
   puff(S.smoke1, S.pulses1, S.AL1, cwin(t, TT.tilt + 0.6, TT.blocks + 0.2, 0.15, 0.3), 2.5 + (t - TT.tilt - 0.6) * 4.2);
   // las dos bolitas: el «mito» (pegadas al ala, llegan a la vez) y luego el humo de verdad (la de arriba llega antes)
-  const bv = (t > TT.split - 0.5 && t < TT.acro + 0.3); S.ballA.visible = S.ballB.visible = bv;
+  const bv = (t > TT.balls && t < TT.acro + 0.3); S.ballA.visible = S.ballB.visible = bv;
   if (bv) {
     if (t < TT.tunnel + 0.25) {
       const f = eio(clamp((t - TT.split) / (TT.meet - TT.split)));
       const pa = surfAt(S.upPath, f, 0.13), pb = surfAt(S.dnPath, f, -0.13);
       zWorld(pa, al, S.ballA.position).add(v3(0, 0, TUN.D * 0.5)); zWorld(pb, al, S.ballB.position).add(v3(0, 0, TUN.D * 0.5));
-      const sc = backOut(clamp((t - TT.split + 0.5) / 0.4)) * (1 - clamp((t - TT.tunnel + 0.05) / 0.25)); S.ballA.scale.setScalar(Math.max(0.001, sc)); S.ballB.scale.setScalar(Math.max(0.001, sc));
+      const sc = backOut(clamp((t - TT.balls) / 0.4)) * (1 - clamp((t - TT.tunnel + 0.05) / 0.25)); S.ballA.scale.setScalar(Math.max(0.001, sc)); S.ballB.scale.setScalar(Math.max(0.001, sc));
     } else {
       const tau = (t - TT.pulse) * 3.2; zWorld(pathAt(S.pA, tau, 0.03), S.AL0, S.ballA.position).add(v3(0, 0, TUN.D * 0.5)); zWorld(pathAt(S.pB, tau, 0.03), S.AL0, S.ballB.position).add(v3(0, 0, TUN.D * 0.5));
       const sc = 1.15 * backOut(clamp((t - TT.tunnel - 0.25) / 0.35)), end = TUN.x + 0.2 + TUN.L / 2 - 0.05;
@@ -1279,28 +1425,25 @@ function tunnelAt(t) {
 }
 function pathAt(path, tau, dt) { if (tau <= 0) return path[0]; const f = tau / dt, i = Math.min(path.length - 2, Math.floor(f)), u = Math.min(1, f - i); return { x: lerp(path[i].x, path[i + 1].x, u), y: lerp(path[i].y, path[i + 1].y, u) }; }
 function surfAt(path, f, dy) { const i = Math.min(path.length - 2, Math.floor(f * (path.length - 1))), u = f * (path.length - 1) - i; return { x: lerp(path[i].x, path[i + 1].x, u), y: lerp(path[i].y, path[i + 1].y, u) + dy }; }
-function sceneAt(t) { skyAt(t); roomAt(t); tunnelAt(t); }
-// ---------------------------------------------------------------- cámara: planos con cortes limpios. Empieza en el aula mirando la pizarra con el avión
-// gigante en el cielo, detrás (teleobjetivo), y acaba igual: el último fotograma enlaza con el primero.
+function sceneAt(t) { skyAt(t); roomAt(t); tunnelAt(t); birdsAt(t); }
+// ---------------------------------------------------------------- cámara. Planos: A) un único plano de dron, desde arriba y detrás, siguiendo al avión que
+// vuela sobre el valle (del principio a «te lo enseño al final»); B) la pizarra y la explicación (como estaba); la avioneta, con su
+// propia cámara; C) y E) el túnel; D) y F) el avión en el cielo; G) vuelta al plano del dron (bucle: el último fotograma enlaza con el primero).
+// Un plano «big» o «acro» lleva la cámara pegada al avión o a la avioneta (las claves son posiciones relativas).
 let SHOTS = [], CUTS = [];
-const K0C = [[0.9, 1.25, 6.8], [0.47, 2.63, -3.0], 36];
-const bigAt = (t, dy = 0) => { const P = bigPose(t); return [P.x, P.y + dy, P.z]; };
-// cámara del cielo: delante del avión, a un lado y por debajo (las alas abiertas a lo ancho y el aire que cae debajo, sobre cielo azul)
-const SKY = [-73.7, -43.7, 60.8], skyCam = (t, k, y) => { const P = bigPose(t); return [P.x + SKY[0] * k, y - 57 + BIG.y0, P.z + SKY[2] * k]; }, bigLook = (t, y) => { const P = bigPose(t); return [P.x, y - 57 + BIG.y0, P.z]; };
+const K0C = [[96, 50, 30], [-12, 6, 0], 54];                      // dron: detrás, arriba y a la izquierda del avión (se ven las alas por encima)
 function buildCam() {
-  const TX = TUN.x, TY = TUN.y, TZ = TUN.z, ac = (t, dx = 0) => { const A = acroPose(t); return [A.x + dx, 14, -22]; };
+  const TX = TUN.x, TY = TUN.y, TZ = TUN.z, SK = (a, l, f) => [a, l, f];
   SHOTS = [
-    [0, [                                                                                     // A: el aula, la pizarra, el avión; el ala sale de la pizarra; el túnel; la avioneta
+    [0, [                                                                                     // A: el avión vuela sobre el valle (un solo plano)
       [0, ...K0C],
-      [K.avion1, [0.72, 1.32, 6.0], [0.4, 2.45, -3.0], 35.5],
-      [K.mal1 - 0.15, [0.32, 1.62, 4.1], [0.14, 1.62, -3.0], 34],                                  // 1: la equis
-      [K.nasa2 - 0.45, [0.28, 1.62, 3.95], [0.13, 1.61, -3.0], 34],
-      [K.nasa2 + 0.6, [0.22, 1.63, 3.75], [0.12, 1.62, -3.0], 34],                                 // 2: «INCORRECTA según la NASA»
-      [K.sostiene2 + 0.1, [0.24, 1.66, 3.8], [0.0, 2.3, -3.0], 34],
-      [K.avion2 + 0.1, [0.4, 1.5, 4.2], bigAt(K.avion2 + 0.1), 36],                                //    el avión de 575 t, en el cielo
-      [K.toneladas2 + 0.3, [0.4, 1.5, 4.2], bigAt(K.toneladas2 + 0.3), 35.5],
-      [K.final2 + 0.05, [0.4, 1.5, 4.2], bigAt(K.final2 + 0.05), 35],
-      [K.contaron3 + 0.1, [0.3, 1.66, 4.4], [0.0, 1.58, -3.0], 34],                                // 3: vuelta a la pizarra: el ala sale de ella
+      [K.mal1, [89, 46, 34], [-11, 5, 0], 54],
+      [K.n575_2 - 0.1, [78, 40, 38], [-9, 4, 0], 53],                                          //    575 t: más cerca
+      [K.contaron3 - 0.4, [72, 37, 40], [-8, 3.5, 0], 53],
+    ], 'big'],
+    [K.contaron3 - 0.4, [                                                                     // B: la pizarra; el ala sale de ella; el «mito»; el túnel de viento
+      [K.contaron3 - 0.4, [0.28, 1.66, 4.35], [0.02, 1.62, -3.0], 34],
+      [K.ala3 + 0.05, [0.3, 1.66, 4.2], [0.02, 1.6, -3.0], 34],
       [TT.fly1 + 0.05, [0.5, 1.82, 6.3], [0.42, 1.6, TZ], 34],
       [K.camino3, [0.5, 1.77, 5.8], [0.45, 1.56, TZ], 34],
       [K.vez3, [0.7, 1.71, 5.5], [0.7, TY, TZ], 34],                                               //    «a la vez»
@@ -1308,21 +1451,23 @@ function buildCam() {
       [K.viento4, [0.55, 1.8, 7.9], [0.55, TY, TZ], 34],                                           // 4: el túnel de viento
       [K.llega4, [0.6, 1.74, 6.9], [0.62, TY, TZ], 34],
       [K.antes4b + 0.2, [0.75, 1.7, 6.6], [0.78, TY - 0.03, TZ], 34],                              //    el de arriba llega antes
-      [K.si5 + 0.1, [0.85, 1.6, 6.9], [0.7, 3.5, 0.0], 34],                                        // 5: arriba, la avioneta
-      [K.curva5 + 0.05, [0.6, 1.3, 6.5], ac(K.curva5 + 0.05), 36],
-      [K.boca5, [0.6, 1.3, 6.5], ac(K.boca5, 0.3), 36],
-      [K.clave6 - 0.08, [0.6, 1.3, 6.5], ac(K.clave6 - 0.08, 1.2), 36],
+      [K.si5 - 0.05, [0.78, 1.7, 6.55], [0.8, TY - 0.03, TZ], 34],
     ]],
+    [K.si5 - 0.05, [                                                                          // 5: la avioneta, con su propia cámara: se da la vuelta
+      [K.si5 - 0.05, [20, 5, 32], [-1, 0, 0], 44],
+      [K.boca5, [13, 5.5, 29], [0, 0, 0], 44],
+      [K.clave6 - 0.08, [9, 5.5, 27], [-1, 0, 0], 44],
+    ], 'acro'],
     [K.clave6 - 0.08, [                                                                       // C: el ala se inclina y empuja el aire hacia abajo
       [K.clave6 - 0.08, [0.55, 1.78, 7.2], [0.5, TY, TZ], 34],
       [K.inclinada6, [0.62, 1.72, 6.5], [0.6, TY - 0.04, TZ], 34],
       [K.empuja6 + 0.2, [0.95, 1.62, 6.3], [0.95, TY - 0.08, TZ], 34],
       [K.cientos7 - 0.03, [1.12, 1.6, 6.6], [1.1, TY - 0.12, TZ], 34],
     ]],
-    [K.cientos7 - 0.03, [                                                                     // D: el avión en el cielo, de frente y desde abajo: los bloques de aire caen de las alas
-      [K.cientos7 - 0.03, skyCam(K.cientos7, 1, 13.3), bigLook(K.cientos7, 60), 50],
-      [K.si8 - 0.03, skyCam(K.si8, 0.95, 14), bigLook(K.si8, 59.5), 48],
-    ]],
+    [K.cientos7 - 0.03, [                                                                     // D: el avión en el cielo (desde detrás y abajo): los bloques de aire caen de las alas
+      [K.cientos7 - 0.03, [26, -20, 96], [2, -12, 0], 52],
+      [K.si8 - 0.03, [22, -19, 92], [2, -13, 0], 51],
+    ], 'big'],
     [K.si8 - 0.03, [                                                                          // E: acción y reacción; la presión
       [K.si8 - 0.03, [0.78, 1.75, 7.3], [0.78, TY - 0.05, TZ], 34],
       [K.abajo8, [0.82, 1.7, 7.0], [0.8, TY - 0.05, TZ], 34],
@@ -1331,34 +1476,40 @@ function buildCam() {
       [K.sube9 + 0.3, [0.45, 1.66, 6.4], [0.45, TY, TZ], 34],
       [K.levanta9 - 0.05, [0.45, 1.64, 6.2], [0.45, TY, TZ], 34],
     ]],
-    [K.levanta9 - 0.05, [                                                                     // F: el avión sube (cámara quieta); no flota: la estela, todo el rato
-      [K.levanta9 - 0.05, skyCam(K.levanta9, 1, 13.3), bigLook(K.levanta9, 59), 50],
-      [K.respuesta10, skyCam(K.respuesta10, 1, 13.5), bigLook(K.respuesta10, 59.5), 50],
-      [K.flota10, skyCam(K.flota10, 1.02, 14), bigLook(K.flota10, 61), 50],
-      [K.rato10, skyCam(K.rato10, 1.05, 14.5), bigLook(K.rato10, 61), 51],
-      [K.ventanilla11 - 0.03, skyCam(K.ventanilla11, 1.06, 14.6), bigLook(K.ventanilla11, 61), 51],
-    ]],
-    [K.ventanilla11 - 0.03, [                                                                 // G: vuelta al aula (bucle)
-      [K.ventanilla11 - 0.03, [1.25, 1.35, 8.6], [0.35, 2.9, -3.0], 37],
+    [K.levanta9 - 0.05, [                                                                     // F: el avión sube (la cámara no sube con él); no flota: la estela
+      [K.levanta9 - 0.05, [26, -20, 96], [2, -12, 0], 52],
+      [K.respuesta10, [36, -21, 92], [2, -12, 0], 52],
+      [K.flota10, [62, -24, 82], [0, -15, 0], 53],
+      [K.rato10, [70, -25, 80], [0, -16, 0], 53],
+      [K.ventanilla11 - 0.03, [72, -25, 79], [0, -16, 0], 53],
+    ], 'big'],
+    [K.ventanilla11 - 0.03, [                                                                 // G: vuelta al dron del principio (bucle)
+      [K.ventanilla11 - 0.03, [116, 60, 16], [-14, 8, 0], 54],
       [END, ...K0C],
-    ]],
+    ], 'big'],
   ];
   CUTS = SHOTS.slice(1).map(s => s[0]);
 }
-function camAt(t) { let S0 = SHOTS[0]; for (const s of SHOTS) if (t >= s[0]) S0 = s; const c = camKeys(t, S0[1]);
-  // golpe de la equis: un pequeño temblor
-  const sh = Math.max(0, 1 - (t - TT.crack) / 0.35) * (t > TT.crack ? 1 : 0); if (sh > 0) { c.l.x += Math.sin(t * 90) * 0.035 * sh; c.l.y += Math.cos(t * 77) * 0.03 * sh; }
+function camAt(t, tb = t) { let S0 = SHOTS[0]; for (const s of SHOTS) if (t >= s[0]) S0 = s; const c = camKeys(t, S0[1]); c.kind = S0[2] || 'room';
+  if (c.kind !== 'room') { const B = c.kind === 'big' ? bigBase(tb) : acroPose(tb); c.p.x += B.x; c.p.y += B.y; c.p.z += B.z; c.l.x += B.x; c.l.y += B.y; c.l.z += B.z; }
   return c; }
 function prevT(t, dt) { for (const c of CUTS) if (t >= c && t - dt < c) return c; return t - dt; }
-function flashAt(t) { let f = 0; for (const [t0, k] of [[TT.crack + 0.02, 0.04], [TT.nasa + 0.05, 0.02]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.09); return f; }
+function flashAt(t) { let f = 0; for (const [t0, k] of [[TT.crack + 0.02, 0.025], [TT.nasa + 0.05, 0.02]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.09); return f; }
 function whiteAt(t) { return 0; }
 function stageAt(t, st0) {
   NOW = t;
-  const c = st0.l, d = st0.p.distanceTo(c), yaw = Math.atan2(st0.p.x - c.x, st0.p.z - c.z), k = clamp(d / 3.0, 0.3, 4.0);
-  rigAt(c, yaw, k, 0.35, 0.7);
-  const R = S.rig; R.sun.intensity = 2.4; R.hemi.intensity = 0.95; R.hemi.color.setHex(0xbfdcff); R.hemi.groundColor.setHex(0x6a8a4a);
+  const R = S.rig, sun = R.sun, room = st0.kind === 'room';
+  if (room) { const c = st0.l, d = st0.p.distanceTo(c), yaw = Math.atan2(st0.p.x - c.x, st0.p.z - c.z), k = clamp(d / 3.0, 0.3, 4.0); rigAt(c, yaw, k, 0.35, 0.7); }
+  else { R.key.intensity = R.a.intensity = R.b.intensity = R.f.intensity = 0; }        // en el cielo, solo el sol y el cielo
+  R.sun.intensity = room ? 2.4 : 2.9; R.hemi.intensity = room ? 0.95 : 0.75; R.hemi.color.setHex(0xbfdcff); R.hemi.groundColor.setHex(room ? 0x6a8a4a : 0x7b8270);
   R.key.color.setHex(0xfff1dc); R.a.color.setHex(0xcfe6ff); R.b.color.setHex(0xffe2c4); R.f.color.setHex(0xffffff);
-  scene.fog.density = 0.0035;
+  // la sombra del sol: en el aula, alrededor del aula; en el cielo, alrededor del avión (su sombra cae en el valle) o de la avioneta
+  const T0 = room ? _p2.set(0, 0, 0) : (st0.kind === 'big' ? _p2.copy(bigPose(t)) : _p2.set(acroPose(t).x, acroPose(t).y, acroPose(t).z));
+  if (st0.kind === 'big' && !bigPose(t).on) T0.copy(bigBase(t));
+  const sc = sun.shadow.camera, half = room ? 9 : st0.kind === 'big' ? 46 : 12, dist = room ? 60 : 400;
+  sun.target.position.copy(T0); sun.position.copy(T0).addScaledVector(SUN, dist); sun.target.updateMatrixWorld();
+  if (sc.right !== half || sc.far !== (room ? 120 : 4500)) { sc.left = sc.bottom = -half; sc.right = sc.top = half; sc.near = 1; sc.far = room ? 120 : 4500; sc.updateProjectionMatrix(); }
+  scene.fog.density = 0.00009; S.sky.position.copy(st0.p);
   sceneAt(t);
   post.uniforms.fade.value = 0;
 }
@@ -1416,12 +1567,12 @@ function smallTag(P, txt, k, col = HC.white, size = 24) {
   hg.fillStyle = col; hg.fillText(txt, x, P.y + 1); hg.restore();
 }
 // el sello rojo de «INCORRECTA»
-function stamp2(P, k) {
+function stamp2(P, k, k2 = 1) {
   if (k <= 0.01 || !P || !P.ok) return; const e = backOut(clamp(k / 0.35)), s = lerp(2.1, 1.35, e);
   hg.save(); hg.globalAlpha = clamp(k * 3); hg.translate(P.x, P.y); hg.rotate(-0.14); hg.scale(s, s);
   hfont(58); hg.letterSpacing = '6px'; hg.textAlign = 'center'; hg.textBaseline = 'middle'; const w = hg.measureText('INCORRECTA').width + 70;
   glowStroke(HRd, 7, 10); rr(hg, -w / 2, -62, w, 124, 14); hg.stroke(); noGlow(); hg.fillStyle = HRd; hg.fillText('INCORRECTA', 0, -14);
-  hfont(26, false); hg.letterSpacing = '5px'; hg.fillText('SEGÚN LA NASA', 0, 34); hg.restore();
+  hfont(26, false); hg.letterSpacing = '5px'; hg.globalAlpha = clamp(k * 3) * clamp(k2 * 2); hg.fillText(typed('SEGÚN LA NASA', clamp(k2 * 1.5)), 0, 34); hg.restore();
 }
 // los asientos de una fila: ventanilla y pasillo
 function seats(t, k) {
@@ -1467,7 +1618,7 @@ function hudAt(t) {
   bracketMsg(t, 'LO QUE LO SOSTIENE · ???', HC.amber, cw2(K.final2, K.respuesta10, 0.3, 0.12), true);
   bracketMsg(t, 'LO QUE LO SOSTIENE ↓', HGr, cw2(K.respuesta10, K.rato10 + 0.6, 0.12, 0.3), false);
   // 1-2: la NASA y las 575 toneladas
-  { _hv.set(0.2, BOARD.y, BOARD.z); stamp2(proj(_hv), cw2(K.nasa2 - 0.05, K.sostiene2, 0.15, 0.25)); }
+  stamp2({ x: 540, y: 1250, ok: true }, cw2(K.mal1 - 0.03, K.sostiene2, 0.15, 0.25), cw2(K.nasa2 - 0.05, K.sostiene2, 0.2, 0.25));      // «está mal… lo dice la NASA»
   bigFig('575 t', 'AIRBUS A380 · PESO MÁXIMO AL DESPEGAR', HC.white, cw2(K.n575_2 - 0.05, K.final2 + 0.05, 0.2, 0.25), 1300);
   srcLine('NASA GLENN · UNIVERSIDAD DE CAMBRIDGE · AIRBUS · «CIENTOS DE TONELADAS»: CÁLCULO DE EJEMPLO', cw2(K.nasa2, K.rato10, 0.3, 0.3));
   // 3-4: las bolitas: el «mito» y el humo de verdad
@@ -1504,8 +1655,8 @@ function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjec
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
 const _fw = new THREE.Vector3(), _rt = new THREE.Vector3(), _up2 = new THREE.Vector3();
 function frame(t) {
-  placeCam(camAt(prevT(t, 1 / 60))); const prevVP = vpOf();
-  placeCam(camAt(prevT(t, 1 / 36))); const PVP = vpOf();
+  placeCam(camAt(prevT(t, 1 / 60), t)); const prevVP = vpOf();
+  placeCam(camAt(prevT(t, 1 / 36), t)); const PVP = vpOf();
   const st = camAt(t); placeCam(st); const VP = vpOf();
   stageAt(t, st); flowUpdate(t, VP, PVP); fxUpdate(t, VP, PVP);
   const d = Math.max(0.05, st.p.distanceTo(st.l)); cam.getWorldDirection(_fw); _rt.setFromMatrixColumn(cam.matrixWorld, 0); _up2.setFromMatrixColumn(cam.matrixWorld, 1);
@@ -1565,7 +1716,7 @@ window.renderCover = function () {
   K = {
     explicaron1: atL(1, 'explicaron'), colegio1: atL(1, 'colegio'), avion1: atL(1, 'avion'), mal1: atL(1, 'mal'),
     nasa2: atL(2, 'nasa'), sostiene2: atL(2, 'sostiene'), avion2: atL(2, 'avion'), n575_2: atL(2, '=575'), toneladas2: atL(2, 'toneladas'), final2: atL(2, 'final'),
-    contaron3: atL(3, 'contaron'), curva3: atL(3, 'curva'), arriba3: atL(3, 'arriba'), camino3: atL(3, 'camino'), corre3: atL(3, 'corre'), vez3: atL(3, 'vez'),
+    contaron3: atL(3, 'contaron'), ala3: atL(3, 'ala'), aire3: atL(3, 'aire'), curva3: atL(3, 'curva'), arriba3: atL(3, 'arriba'), camino3: atL(3, 'camino'), corre3: atL(3, 'corre'), vez3: atL(3, 'vez'),
     pero4: atL(4, 'pero'), cita4: atL(4, 'cita'), tunel4: atL(4, 'tunel'), viento4: atL(4, 'viento'), llega4: atL(4, 'llega'), antes4: atL(4, 'antes'), mucho4: atL(4, 'mucho'), antes4b: atL(4, 'antes', 2),
     si5: atL(5, '=si'), curva5: atL(5, 'curva'), boca5: atL(5, 'boca'), abajo5: atL(5, 'abajo'),
     clave6: atL(6, 'clave'), inclinada6: atL(6, 'inclinada'), empuja6: atL(6, 'empuja'), abajo6: atL(6, 'abajo'),
@@ -1576,9 +1727,11 @@ window.renderCover = function () {
     ventanilla11: atL(11, 'ventanilla'), pasillo11: atL(11, 'pasillo'), mandaselo11: atL(11, 'mandaselo'),
   };
   mats(); buildMats(); buildSceneMats(); buildRig();
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.42; }
-  scene.fog = new THREE.FogExp2(0xcfe4ff, 0.0035);
-  buildFlow(); buildWorld(); buildTunnel();
+  { const pm = new THREE.PMREMGenerator(renderer), es = new THREE.Scene(), sk = skyLand(); es.add(sk);                 // el reflejo del cielo y del valle
+    const gr = new THREE.Mesh(new THREE.CircleGeometry(950, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color().setRGB(0.12, 0.13, 0.11) })); gr.rotation.x = -Math.PI / 2; gr.position.y = -70; es.add(gr);
+    scene.environment = pm.fromScene(es, 0.02, 0.1, 3000).texture; scene.environmentIntensity = 0.75; }
+  scene.fog = new THREE.FogExp2(HAZE.clone(), 0.00009); cam.near = 0.05; cam.far = 160000; cam.updateProjectionMatrix();
+  buildFlow(); buildWorld(); buildTunnel(); buildLand();
   scene.traverse(o => { if (o.isInstancedMesh) o.frustumCulled = false; });      // las instancias se mueven: que nunca se recorten por una esfera vieja
   { const sun = S.rig.sun; sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048); sun.position.set(-18, 30, 22); sun.target.position.set(0, 0, 0); const c = sun.shadow.camera; c.left = c.bottom = -9; c.right = c.top = 9; c.near = 1; c.far = 90; sun.shadow.bias = -0.0004; }
   buildTimes();

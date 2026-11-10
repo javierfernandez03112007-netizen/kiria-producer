@@ -3,8 +3,8 @@ function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjec
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
 const _fw = new THREE.Vector3(), _rt = new THREE.Vector3(), _up2 = new THREE.Vector3();
 function frame(t) {
-  placeCam(camAt(prevT(t, 1 / 60))); const prevVP = vpOf();
-  placeCam(camAt(prevT(t, 1 / 36))); const PVP = vpOf();
+  placeCam(camAt(prevT(t, 1 / 60), t)); const prevVP = vpOf();
+  placeCam(camAt(prevT(t, 1 / 36), t)); const PVP = vpOf();
   const st = camAt(t); placeCam(st); const VP = vpOf();
   stageAt(t, st); flowUpdate(t, VP, PVP); fxUpdate(t, VP, PVP);
   const d = Math.max(0.05, st.p.distanceTo(st.l)); cam.getWorldDirection(_fw); _rt.setFromMatrixColumn(cam.matrixWorld, 0); _up2.setFromMatrixColumn(cam.matrixWorld, 1);
@@ -64,7 +64,7 @@ window.renderCover = function () {
   K = {
     explicaron1: atL(1, 'explicaron'), colegio1: atL(1, 'colegio'), avion1: atL(1, 'avion'), mal1: atL(1, 'mal'),
     nasa2: atL(2, 'nasa'), sostiene2: atL(2, 'sostiene'), avion2: atL(2, 'avion'), n575_2: atL(2, '=575'), toneladas2: atL(2, 'toneladas'), final2: atL(2, 'final'),
-    contaron3: atL(3, 'contaron'), curva3: atL(3, 'curva'), arriba3: atL(3, 'arriba'), camino3: atL(3, 'camino'), corre3: atL(3, 'corre'), vez3: atL(3, 'vez'),
+    contaron3: atL(3, 'contaron'), ala3: atL(3, 'ala'), aire3: atL(3, 'aire'), curva3: atL(3, 'curva'), arriba3: atL(3, 'arriba'), camino3: atL(3, 'camino'), corre3: atL(3, 'corre'), vez3: atL(3, 'vez'),
     pero4: atL(4, 'pero'), cita4: atL(4, 'cita'), tunel4: atL(4, 'tunel'), viento4: atL(4, 'viento'), llega4: atL(4, 'llega'), antes4: atL(4, 'antes'), mucho4: atL(4, 'mucho'), antes4b: atL(4, 'antes', 2),
     si5: atL(5, '=si'), curva5: atL(5, 'curva'), boca5: atL(5, 'boca'), abajo5: atL(5, 'abajo'),
     clave6: atL(6, 'clave'), inclinada6: atL(6, 'inclinada'), empuja6: atL(6, 'empuja'), abajo6: atL(6, 'abajo'),
@@ -75,9 +75,11 @@ window.renderCover = function () {
     ventanilla11: atL(11, 'ventanilla'), pasillo11: atL(11, 'pasillo'), mandaselo11: atL(11, 'mandaselo'),
   };
   mats(); buildMats(); buildSceneMats(); buildRig();
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.42; }
-  scene.fog = new THREE.FogExp2(0xcfe4ff, 0.0035);
-  buildFlow(); buildWorld(); buildTunnel();
+  { const pm = new THREE.PMREMGenerator(renderer), es = new THREE.Scene(), sk = skyLand(); es.add(sk);                 // el reflejo del cielo y del valle
+    const gr = new THREE.Mesh(new THREE.CircleGeometry(950, 48), new THREE.MeshBasicMaterial({ color: new THREE.Color().setRGB(0.12, 0.13, 0.11) })); gr.rotation.x = -Math.PI / 2; gr.position.y = -70; es.add(gr);
+    scene.environment = pm.fromScene(es, 0.02, 0.1, 3000).texture; scene.environmentIntensity = 0.75; }
+  scene.fog = new THREE.FogExp2(HAZE.clone(), 0.00009); cam.near = 0.05; cam.far = 160000; cam.updateProjectionMatrix();
+  buildFlow(); buildWorld(); buildTunnel(); buildLand();
   scene.traverse(o => { if (o.isInstancedMesh) o.frustumCulled = false; });      // las instancias se mueven: que nunca se recorten por una esfera vieja
   { const sun = S.rig.sun; sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048); sun.position.set(-18, 30, 22); sun.target.position.set(0, 0, 0); const c = sun.shadow.camera; c.left = c.bottom = -9; c.right = c.top = 9; c.near = 1; c.far = 90; sun.shadow.bias = -0.0004; }
   buildTimes();

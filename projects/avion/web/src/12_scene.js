@@ -126,6 +126,9 @@ function buildSceneMats() {
   M.cross = new THREE.MeshBasicMaterial({ map: crossTex(), transparent: true, opacity: 0, depthWrite: false, toneMapped: false });
   M.deskTop = M.wood; M.leg = metal(0x9aa3ad, 0.4); M.chair = plastic(0x3c7bd6, 0.4);
   M.grass = new THREE.MeshStandardMaterial({ map: grassTex(), roughness: 0.95 });
+  { const t = canvasTex(1024, 1024, (g, w, h) => { const img = g.createImageData(w, h); for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) { const n = 0.55 * fbm(i / 22, j / 22, 4) + 0.45 * vnoise(i / 3.5, j / 3.5), v = 255 * (0.74 + 0.26 * n), k = (j * w + i) * 4; img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255; } g.putImageData(img, 0, 0); });
+    t.colorSpace = THREE.NoColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 16;
+    M.land = new THREE.MeshStandardMaterial({ vertexColors: true, map: t, roughness: 0.97, metalness: 0, envMapIntensity: 0.6 }); }
   M.plane = paint(0xf4f6f9, 0.28); M.belly = paint(0xdfe5ec, 0.32); M.tail = paint(0x1b3a6b, 0.3); M.stripe = paint(0x24b3c4, 0.3);
   M.engine = metal(0xb9c0c8, 0.3); M.fan = new THREE.MeshStandardMaterial({ color: 0x16181d, roughness: 0.4, metalness: 0.6 });
   M.win = new THREE.MeshStandardMaterial({ color: 0x0f1724, roughness: 0.15, metalness: 0.5 });
@@ -138,7 +141,7 @@ function buildSceneMats() {
   M.balB = new THREE.MeshBasicMaterial({ color: new THREE.Color(0x46b8ff).multiplyScalar(1.6), toneMapped: false });
   M.block = new THREE.MeshBasicMaterial({ map: canvasTex(128, 128, (g, w, h) => { g.fillStyle = 'rgba(190,232,255,.38)'; g.fillRect(0, 0, w, h); g.strokeStyle = 'rgba(40,130,255,1)'; g.lineWidth = 12; g.strokeRect(6, 6, w - 12, h - 12); g.strokeStyle = 'rgba(255,255,255,1)'; g.lineWidth = 4; g.strokeRect(13, 13, w - 26, h - 26); }),
     transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false });
-  M.wake = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xd8f2ff).multiplyScalar(1.3), transparent: true, opacity: 0.8, depthWrite: false, toneMapped: false });
+  M.wake = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xd8f2ff).multiplyScalar(1.3), transparent: true, opacity: 0.5, depthWrite: false, toneMapped: false });
   M.arrUp = new THREE.MeshPhysicalMaterial({ color: 0xff9a2e, roughness: 0.3, clearcoat: 1, emissive: 0x6a2a00, emissiveIntensity: 0.6 });
   M.arrDn = new THREE.MeshPhysicalMaterial({ color: 0x3aa8ff, roughness: 0.3, clearcoat: 1, emissive: 0x00305a, emissiveIntensity: 0.6 });
 }
@@ -184,6 +187,13 @@ function airliner() {                                       // avión de pasajer
   const fm = new THREE.Mesh(fg, M.tail); fm.position.set(L / 2 - 12, 2.2, 0); fm.castShadow = true; g.add(fm);
   for (const side of [-1, 1]) { const hs = new THREE.Shape(); hs.moveTo(0, 0); hs.lineTo(4.5, 9); hs.lineTo(6.8, 9); hs.lineTo(7.5, 0);
     const hg2 = new THREE.ExtrudeGeometry(hs, { depth: 0.35, bevelEnabled: false }); hg2.rotateX(Math.PI / 2); const h = new THREE.Mesh(hg2, M.plane); h.scale.z = side; h.position.set(L / 2 - 9.5, 1.1, 0); h.castShadow = true; g.add(h); }
+  // puntas de ala (aletas arriba y abajo), carenado de la panza, carenados de los flaps y toberas de los motores
+  for (const side of [-1, 1]) { const tip = new THREE.Shape(); tip.moveTo(0, -1.0); tip.lineTo(2.6, -0.4); tip.lineTo(3.4, 2.4); tip.lineTo(2.4, 2.4); tip.lineTo(0.2, 0.3); tip.lineTo(0, -1.0);
+    const tg = new THREE.ExtrudeGeometry(tip, { depth: 0.12, bevelEnabled: false }); const tm = new THREE.Mesh(tg, M.plane); tm.position.set(-5 + 9.6, -1.6 + 28 * Math.sin(0.09), side * 28.05); g.add(tm);
+    for (const f of [0.22, 0.45, 0.68]) { const fz = side * 28 * f, fx = -5 + 9.5 * f + lerp(14.5, 3.5, f) * 0.78; const ft = new THREE.Mesh(new THREE.CapsuleGeometry(0.32, 3.6, 4, 10), M.belly); ft.rotation.z = Math.PI / 2; ft.position.set(fx, -1.95 + 0.0899 * Math.abs(fz), fz); g.add(ft); } }
+  { const bf = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 12), M.belly); bf.scale.set(13, 1.6, 3.4); bf.position.set(1.8, -3.0, 0); g.add(bf); }
+  g.children.slice().forEach(o => { if (o.isMesh && o.material === M.engine) { const nz = new THREE.Mesh(new THREE.ConeGeometry(0.62, 1.6, 20), M.fan); nz.rotation.z = Math.PI / 2; nz.position.set(o.position.x + 3.2, o.position.y, o.position.z); g.add(nz); } });
+  g.traverse(o => { if (o.isMesh) o.castShadow = true; });
   g.userData.L = L; return g;
 }
 function acroPlane() {                                      // avioneta acrobática roja (genérica)
@@ -204,11 +214,9 @@ function acroPlane() {                                      // avioneta acrobát
 
 // ---------------------------------------------------------------- montaje
 function buildWorld() {
-  scene.add(skyDome());
-  const grd = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), M.grass); grd.rotation.x = -Math.PI / 2; grd.position.y = -0.01; grd.receiveShadow = true; scene.add(grd);
+  S.sky = skyLand(); scene.add(S.sky);
+  const grd = new THREE.Mesh(new THREE.PlaneGeometry(440, 440), M.grass); grd.rotation.x = -Math.PI / 2; grd.position.y = -0.01; grd.receiveShadow = true; scene.add(grd);
   S.clouds = [];
-  for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 0.5), new THREE.MeshBasicMaterial({ map: cloudTex(i + 1), transparent: true, depthWrite: false, fog: false, opacity: 0.7 }));
-    const a = hash(i * 3.3) * Math.PI * 2 * 0.5 + Math.PI * 0.75, r = 230 + hash(i * 5.1) * 90; m.position.set(Math.cos(a) * r, 22 + hash(i * 7.3) * 40, Math.sin(a) * r); m.scale.setScalar(70 + hash(i * 2.2) * 50); m.lookAt(0, m.position.y, 0); scene.add(m); S.clouds.push(m); }
   // el aula
   const C = new THREE.Group(); scene.add(C); S.room = C;
   const fl = mesh(new THREE.BoxGeometry(ROOM.w, 0.12, ROOM.d), M.wood); fl.position.y = -0.06; C.add(fl);
@@ -244,7 +252,7 @@ function buildWorld() {
   S.acro = acroPlane(); scene.add(S.acro);
   S.acroSmoke = new THREE.InstancedMesh(new THREE.SphereGeometry(0.7, 10, 8), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0.85, depthWrite: false }), 260); scene.add(S.acroSmoke);
   // los efectos del cielo: bloques de aire, estela, presión alrededor del avión
-  S.blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(7, 7, 7), M.block, 140); S.blocks.renderOrder = 2; scene.add(S.blocks);
+  S.blocks = new THREE.InstancedMesh(new THREE.BoxGeometry(5.5, 5.5, 5.5), M.block, 140); S.blocks.renderOrder = 2; scene.add(S.blocks);
   // «la diferencia lo levanta»: flechas naranjas debajo del avión
   S.liftArrows = [0, 1, 2].map(() => { const a = arrow3(14, M.arrUp, 0.9); scene.add(a); return a; });
   S.wake = new THREE.InstancedMesh(new THREE.SphereGeometry(0.5, 8, 6), M.wake, 1400); scene.add(S.wake);

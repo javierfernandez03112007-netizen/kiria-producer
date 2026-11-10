@@ -52,12 +52,12 @@ function smallTag(P, txt, k, col = HC.white, size = 24) {
   hg.fillStyle = col; hg.fillText(txt, x, P.y + 1); hg.restore();
 }
 // el sello rojo de «INCORRECTA»
-function stamp2(P, k) {
+function stamp2(P, k, k2 = 1) {
   if (k <= 0.01 || !P || !P.ok) return; const e = backOut(clamp(k / 0.35)), s = lerp(2.1, 1.35, e);
   hg.save(); hg.globalAlpha = clamp(k * 3); hg.translate(P.x, P.y); hg.rotate(-0.14); hg.scale(s, s);
   hfont(58); hg.letterSpacing = '6px'; hg.textAlign = 'center'; hg.textBaseline = 'middle'; const w = hg.measureText('INCORRECTA').width + 70;
   glowStroke(HRd, 7, 10); rr(hg, -w / 2, -62, w, 124, 14); hg.stroke(); noGlow(); hg.fillStyle = HRd; hg.fillText('INCORRECTA', 0, -14);
-  hfont(26, false); hg.letterSpacing = '5px'; hg.fillText('SEGÚN LA NASA', 0, 34); hg.restore();
+  hfont(26, false); hg.letterSpacing = '5px'; hg.globalAlpha = clamp(k * 3) * clamp(k2 * 2); hg.fillText(typed('SEGÚN LA NASA', clamp(k2 * 1.5)), 0, 34); hg.restore();
 }
 // los asientos de una fila: ventanilla y pasillo
 function seats(t, k) {
@@ -103,7 +103,7 @@ function hudAt(t) {
   bracketMsg(t, 'LO QUE LO SOSTIENE · ???', HC.amber, cw2(K.final2, K.respuesta10, 0.3, 0.12), true);
   bracketMsg(t, 'LO QUE LO SOSTIENE ↓', HGr, cw2(K.respuesta10, K.rato10 + 0.6, 0.12, 0.3), false);
   // 1-2: la NASA y las 575 toneladas
-  { _hv.set(0.2, BOARD.y, BOARD.z); stamp2(proj(_hv), cw2(K.nasa2 - 0.05, K.sostiene2, 0.15, 0.25)); }
+  stamp2({ x: 540, y: 1250, ok: true }, cw2(K.mal1 - 0.03, K.sostiene2, 0.15, 0.25), cw2(K.nasa2 - 0.05, K.sostiene2, 0.2, 0.25));      // «está mal… lo dice la NASA»
   bigFig('575 t', 'AIRBUS A380 · PESO MÁXIMO AL DESPEGAR', HC.white, cw2(K.n575_2 - 0.05, K.final2 + 0.05, 0.2, 0.25), 1300);
   srcLine('NASA GLENN · UNIVERSIDAD DE CAMBRIDGE · AIRBUS · «CIENTOS DE TONELADAS»: CÁLCULO DE EJEMPLO', cw2(K.nasa2, K.rato10, 0.3, 0.3));
   // 3-4: las bolitas: el «mito» y el humo de verdad
