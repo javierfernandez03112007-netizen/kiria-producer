@@ -11,7 +11,7 @@ const TF = Math.tan(FOV / 2 * Math.PI / 180);
 const HP = 2 * D * TF, WP = HP * W / H, PXM = H / HP;
 // tiempos (segundos de la grabación a8695): golpes y reventón (la palabra «3,7» empieza en 2,40)
 const TH1 = 0.62, TH2 = 1.56, TB = 2.36;
-const NUM_TXT = window.NUM_TXT || '3,6M';
+const NUM_TXT = window.NUM_TXT || '3,7M';
 // dónde se rompe (píxeles de pantalla) y radio
 const BX = 300, BY = 392, BR = 196;
 const wx = px => (px / W - 0.5) * WP, wy = py => (0.5 - py / H) * HP;

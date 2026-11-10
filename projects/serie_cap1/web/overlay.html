@@ -161,7 +161,8 @@ function card(t0, t1, html, x, y, w, h, extra = {}) {
 }
 
 function buildCards() {
-  const S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6;
+  const IX = c => SEGS.findIndex(s => s.clip === c);
+  const S0 = IX('a8695'), S1 = IX('a8699'), S2 = IX('c8707b'), S3 = IX('c8707a'), S4 = IX('c8707c'), S5 = IX('d8709'), S6 = IX('e8712');
   // ===== 1 · «quédate hasta el final» (barra de progreso) + «el método Kiria» =====
   for (const [s, i0, iEnd, iLock] of [[S0, 20, 23, 28], [S4, 18, 20, null]]) {
     const t0 = wt(s, i0) - .1, t1 = segT(s)[1] - .02;
@@ -529,7 +530,7 @@ function buildCards() {
   }
   // ===== 18 · cupón: −10 % hasta el 30 de noviembre · KIRIA10 · kiriaai.com =====
   {
-    const t0 = wt(S6, 0) - .1, t1 = SEGS[6].T1 + .3;
+    const t0 = wt(S6, 0) - .1, t1 = SEGS[S6].T1 + .3;
     const c = card(t0, t1, `
       <div class="abs lab" style="left:40px;top:34px;color:var(--yel)">Y recuerda…</div>
       <div class="abs pc big gradtxt" style="left:34px;top:76px;font-size:200px">−10%</div>
@@ -550,7 +551,7 @@ function buildCards() {
   }
   // ===== 19 · cierre: el método Kiria, cada jueves =====
   {
-    const t0 = SEGS[6].T1 + .12, t1 = TL.total + 1;
+    const t0 = SEGS[S6].T1 + .12, t1 = TL.total + 1;
     const c = card(t0, t1, `
       <div class="abs lab" style="left:0;right:0;top:44px;text-align:center">Reto · 0/10 clientes</div>
       <div class="abs" style="left:0;right:0;top:92px;text-align:center;font:italic 92px/1 ISerif">El método <span style="color:var(--yel)">Kiria</span>,</div>

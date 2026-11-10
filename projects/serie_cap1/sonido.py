@@ -11,8 +11,10 @@ SR = sfx.SR
 TL = json.load(open(os.path.join(HERE, 'web', 'timeline.json')))
 WD = {int(k): v for k, v in TL['words'].items()}
 SEGS = TL['segs']
-wt = lambda s, i: WD[s][i][0]
-we = lambda s, i: WD[s][i][1]
+OLD = ['a8695', 'a8699', 'c8707b', 'c8707a', 'c8707c', 'd8709', 'e8712']      # los números de abajo son la toma en este orden
+IX = {s['clip']: k for k, s in enumerate(SEGS)}
+wt = lambda s, i: WD[IX[OLD[s]]][i][0]
+we = lambda s, i: WD[IX[OLD[s]]][i][1]
 A0, SPEED = 0.68, 1.06
 src = lambda ts: (ts - A0) / SPEED                     # segundo de la grabación a8695 → segundo del vídeo
 
@@ -55,7 +57,7 @@ EVENTS = [
     ('lanzamiento/ping', wt(5, 29) - 0.06, 0.28), ('quimica/crece', wt(5, 34), 0.26),
     # 7 · el descuento y el cierre
     ('lanzamiento/tarjeta', wt(6, 0) - 0.08, 0.28), ('magisterio/sello', wt(6, 10) - 0.08, 0.5), ('lanzamiento/marcador', wt(6, 12), 0.24),
-    ('avion/brillo', wt(6, 15) - 0.04, 0.28), ('medicina/dorado', SEGS[6]['T1'] + 0.12, 0.34),
+    ('avion/brillo', wt(6, 15) - 0.04, 0.28), ('medicina/dorado', SEGS[IX['e8712']]['T1'] + 0.12, 0.34),
 ]
 
 def build(path):

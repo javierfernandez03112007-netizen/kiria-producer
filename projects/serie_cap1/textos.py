@@ -17,6 +17,7 @@ def words(clip):
     return ws['words'] if isinstance(ws, dict) else ws
 
 # trozos de subtítulo: (toma, primera palabra, última palabra, texto con | para el salto de línea y *destacado*)
+OLD = ['a8695', 'a8699', 'c8707b', 'c8707a', 'c8707c', 'd8709', 'e8712']    # el número de cada trozo es la toma en este orden
 SUBS = [
     (0, 0, 2, 'HE GENERADO *vídeos*'),
     (0, 3, 5, 'CON MÁS DE'),
@@ -98,7 +99,9 @@ def main():
         segs.append(dict(clip=c, T0=round(s['T0'], 3), T1=round(s['T0'] + s['dur'], 3), headX=round(sx), headTop=round(sy), zoom=z))
     json.dump(heads, open(hp_cache, 'w'))
     subs = []
-    for (k, i0, i1, txt) in SUBS:
+    order = [s['clip'] for s in MJ.SEGS]
+    for (k0, i0, i1, txt) in SUBS:
+        k = order.index(OLD[k0])
         tw = W[k]
         lines = [l.split(' ') for l in txt.split('|')]
         ntok = sum(len(l) for l in lines)

@@ -25,13 +25,13 @@ SPEED = 1.06                                                    # un 6 % más r�
 
 # toma, inicio, fin (segundos de la grabación), zoom al empezar → al acabar, centro del zoom (x, y) en la toma
 SEGS = [
-    dict(clip='a8695', a=0.68, b=8.93, z=(1.00, 1.07)),
-    dict(clip='a8699', a=0.84, b=9.85, z=(1.16, 1.20)),
-    dict(clip='c8707b', a=0.52, b=7.37, z=(1.00, 1.05)),
+    dict(clip='a8695', a=0.68, b=8.93, z=(1.00, 1.07)),                       # gancho: 3,7M rompiendo la pared
+    dict(clip='c8707b', a=0.52, b=7.37, z=(1.00, 1.05)),                      # Kiria como herramienta (una sola toma en 3 trozos)
     dict(clip='c8707a', a=0.00, b=8.96, z=(1.18, 1.22)),
     dict(clip='c8707c', a=0.00, b=8.12, z=(1.02, 1.07)),
+    dict(clip='a8699', a=0.84, b=9.85, z=(1.16, 1.20)),                       # el reto (penúltimo, con el de los jueves)
     dict(clip='d8709', a=0.12, b=10.61, z=(1.12, 1.18), punch=[(5.80, 1.30)]),
-    dict(clip='e8712', a=0.36, b=5.46, z=(1.00, 1.04)),
+    dict(clip='e8712', a=0.36, b=5.46, z=(1.00, 1.04)),                       # el descuento (último)
 ]
 END_HOLD = 1.6                                                  # cierre (tarjeta final) después de la última palabra
 

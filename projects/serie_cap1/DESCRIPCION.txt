@@ -16,7 +16,7 @@ Busco 10 negocios —pequeños negocios, empresas o ideas de proyecto con un bue
 ---
 
 COMENTARIO FIJADO:
-📊 Las 3,6 M son las reproducciones de @kiria.ai en los últimos 30 días (panel de Instagram: 3.616.576).
+📊 3,7 millones de reproducciones de @kiria.ai (panel de Instagram).
 🎬 Este vídeo lo hemos editado con IA en kiria. ¿Quieres uno así para tu negocio? → kiriaai.com (enlace en la bio). Capítulo 2: jueves 19.
 
 ---
@@ -29,15 +29,15 @@ VERSIÓN CORTA (TikTok):
 ---
 
 NOTAS DE ENTREGA:
-- Montaje con las 7 tomas de Javi (a8695 → a8699 → 8707 en 3 trozos → 8709 → 8712), al 106 % de velocidad (rubberband, sin cambiar el tono).
+- Montaje con las 7 tomas de Javi, en el orden que pidió (10-11, noche): gancho (8695) → Kiria como herramienta (8707 en 3 trozos) →
+  el reto (8699 y 8709) → el descuento (8712). Al 106 % de velocidad (rubberband, sin cambiar el tono).
 - Fondo: la pared gris se ha cambiado por listones de nogal (recorte de Javi con Robust Video Matting, bordes descontaminados con el
   fondo limpio de cada toma); neón «kiria.ai», luz LED detrás del monitor y cuadro con el render del perro robot. El monitor, la mesa y
   la silla son los de verdad.
-- 3D: la pared se agrieta y revienta y sale «3,6M» (three.js, `web3d/`), que se queda al lado de Javi.
+- 3D: la pared se agrieta y revienta y sale «3,7M» (three.js, `web3d/`), que se queda al lado de Javi (delante de él).
 - Subtítulos por detrás de la cabeza (a petición de Javi; no es la letra Impact de los vídeos del canal) y tarjetas de cristal con lo que dice.
 - Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Voz a −15 LUFS.
-- PENDIENTE DE JAVI: en la toma dice «3,7 millones… en tan solo 7 días», pero su captura dice 3,6 M en 30 días. En pantalla va 3,6M.
-  Si regraba esa frase («He generado vídeos con más de 3,6 millones de visualizaciones en 30 días»), se cambia. Dice «Kiria.com»: en
-  pantalla va kiriaai.com. «Te explico el método Kiria»: el cierre lo resuelve con «El método Kiria, cada jueves».
+- Cifra: 3,7M (Javi, 10-11: «hemos llegado a 3,7 millones de views»). Dice «Kiria.com»: en pantalla va kiriaai.com.
+  «Te explico el método Kiria»: el cierre lo resuelve con «El método Kiria, cada jueves».
 - Entregado el 10-11-2026: out/serie_cap1.mp4 (55,2 s, 60 fps, −15,3 LUFS). Portada: out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
 - Subida prevista: jueves 12 a las 10:00.
