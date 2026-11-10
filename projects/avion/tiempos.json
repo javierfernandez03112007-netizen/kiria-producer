@@ -1,0 +1,914 @@
+[
+ {
+  "text": "Te explicaron en el colegio por qué vuela un avión… y esa explicación está mal.",
+  "start": 0.0,
+  "end": 4.88,
+  "words": [
+   {
+    "w": "Te",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "explicaron",
+    "start": 0.24,
+    "end": 0.8
+   },
+   {
+    "w": "en",
+    "start": 0.8,
+    "end": 0.88
+   },
+   {
+    "w": "el",
+    "start": 0.88,
+    "end": 0.96
+   },
+   {
+    "w": "colegio",
+    "start": 0.96,
+    "end": 1.52
+   },
+   {
+    "w": "por",
+    "start": 1.52,
+    "end": 1.68
+   },
+   {
+    "w": "qué",
+    "start": 1.68,
+    "end": 1.84
+   },
+   {
+    "w": "vuela",
+    "start": 1.84,
+    "end": 2.32
+   },
+   {
+    "w": "un",
+    "start": 2.32,
+    "end": 2.48
+   },
+   {
+    "w": "avión…",
+    "start": 2.48,
+    "end": 3.0
+   },
+   {
+    "w": "y",
+    "start": 3.0,
+    "end": 3.08
+   },
+   {
+    "w": "esa",
+    "start": 3.08,
+    "end": 3.4
+   },
+   {
+    "w": "explicación",
+    "start": 3.4,
+    "end": 4.2
+   },
+   {
+    "w": "está",
+    "start": 4.2,
+    "end": 4.68
+   },
+   {
+    "w": "mal.",
+    "start": 4.68,
+    "end": 4.88
+   }
+  ]
+ },
+ {
+  "text": "Lo dice la NASA. ¿Entonces qué sostiene en el aire un avión de 575 toneladas? Te lo enseño al final.",
+  "start": 5.23,
+  "end": 11.73,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 5.23,
+    "end": 5.314
+   },
+   {
+    "w": "dice",
+    "start": 5.314,
+    "end": 5.51
+   },
+   {
+    "w": "la",
+    "start": 5.51,
+    "end": 5.75
+   },
+   {
+    "w": "NASA.",
+    "start": 5.75,
+    "end": 6.22
+   },
+   {
+    "w": "¿Entonces",
+    "start": 6.22,
+    "end": 6.62
+   },
+   {
+    "w": "qué",
+    "start": 6.62,
+    "end": 7.03
+   },
+   {
+    "w": "sostiene",
+    "start": 7.03,
+    "end": 7.51
+   },
+   {
+    "w": "en",
+    "start": 7.51,
+    "end": 7.59
+   },
+   {
+    "w": "el",
+    "start": 7.59,
+    "end": 7.75
+   },
+   {
+    "w": "aire",
+    "start": 7.75,
+    "end": 8.07
+   },
+   {
+    "w": "un",
+    "start": 8.07,
+    "end": 8.23
+   },
+   {
+    "w": "avión",
+    "start": 8.23,
+    "end": 8.55
+   },
+   {
+    "w": "de",
+    "start": 8.55,
+    "end": 8.71
+   },
+   {
+    "w": "575",
+    "start": 8.71,
+    "end": 9.91
+   },
+   {
+    "w": "toneladas?",
+    "start": 9.91,
+    "end": 10.77
+   },
+   {
+    "w": "Te",
+    "start": 10.77,
+    "end": 10.838
+   },
+   {
+    "w": "lo",
+    "start": 10.838,
+    "end": 10.92
+   },
+   {
+    "w": "enseño",
+    "start": 10.92,
+    "end": 11.4
+   },
+   {
+    "w": "al",
+    "start": 11.4,
+    "end": 11.56
+   },
+   {
+    "w": "final.",
+    "start": 11.56,
+    "end": 11.73
+   }
+  ]
+ },
+ {
+  "text": "Te contaron que el ala es curva por arriba, que el aire de arriba hace más camino… y corre más para llegar a la vez.",
+  "start": 12.08,
+  "end": 18.3,
+  "words": [
+   {
+    "w": "Te",
+    "start": 12.08,
+    "end": 12.197
+   },
+   {
+    "w": "contaron",
+    "start": 12.197,
+    "end": 12.6
+   },
+   {
+    "w": "que",
+    "start": 12.6,
+    "end": 12.76
+   },
+   {
+    "w": "el",
+    "start": 12.76,
+    "end": 12.92
+   },
+   {
+    "w": "ala",
+    "start": 12.92,
+    "end": 13.32
+   },
+   {
+    "w": "es",
+    "start": 13.32,
+    "end": 13.48
+   },
+   {
+    "w": "curva",
+    "start": 13.48,
+    "end": 13.88
+   },
+   {
+    "w": "por",
+    "start": 13.88,
+    "end": 14.04
+   },
+   {
+    "w": "arriba,",
+    "start": 14.04,
+    "end": 14.53
+   },
+   {
+    "w": "que",
+    "start": 14.53,
+    "end": 14.6
+   },
+   {
+    "w": "el",
+    "start": 14.6,
+    "end": 14.76
+   },
+   {
+    "w": "aire",
+    "start": 14.76,
+    "end": 15.08
+   },
+   {
+    "w": "de",
+    "start": 15.08,
+    "end": 15.16
+   },
+   {
+    "w": "arriba",
+    "start": 15.16,
+    "end": 15.56
+   },
+   {
+    "w": "hace",
+    "start": 15.56,
+    "end": 15.88
+   },
+   {
+    "w": "más",
+    "start": 15.88,
+    "end": 16.04
+   },
+   {
+    "w": "camino…",
+    "start": 16.04,
+    "end": 16.74
+   },
+   {
+    "w": "y",
+    "start": 16.74,
+    "end": 16.884
+   },
+   {
+    "w": "corre",
+    "start": 16.884,
+    "end": 17.22
+   },
+   {
+    "w": "más",
+    "start": 17.22,
+    "end": 17.38
+   },
+   {
+    "w": "para",
+    "start": 17.38,
+    "end": 17.54
+   },
+   {
+    "w": "llegar",
+    "start": 17.54,
+    "end": 17.86
+   },
+   {
+    "w": "a",
+    "start": 17.86,
+    "end": 17.94
+   },
+   {
+    "w": "la",
+    "start": 17.94,
+    "end": 18.18
+   },
+   {
+    "w": "vez.",
+    "start": 18.18,
+    "end": 18.3
+   }
+  ]
+ },
+ {
+  "text": "Pero el aire no tiene ninguna cita. En un túnel de viento, el de arriba llega antes. Mucho antes.",
+  "start": 18.55,
+  "end": 24.29,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 18.55,
+    "end": 18.706
+   },
+   {
+    "w": "el",
+    "start": 18.706,
+    "end": 18.81
+   },
+   {
+    "w": "aire",
+    "start": 18.81,
+    "end": 19.21
+   },
+   {
+    "w": "no",
+    "start": 19.21,
+    "end": 19.37
+   },
+   {
+    "w": "tiene",
+    "start": 19.37,
+    "end": 19.61
+   },
+   {
+    "w": "ninguna",
+    "start": 19.61,
+    "end": 20.09
+   },
+   {
+    "w": "cita.",
+    "start": 20.09,
+    "end": 20.52
+   },
+   {
+    "w": "En",
+    "start": 20.52,
+    "end": 20.614
+   },
+   {
+    "w": "un",
+    "start": 20.614,
+    "end": 20.73
+   },
+   {
+    "w": "túnel",
+    "start": 20.73,
+    "end": 21.13
+   },
+   {
+    "w": "de",
+    "start": 21.13,
+    "end": 21.29
+   },
+   {
+    "w": "viento,",
+    "start": 21.29,
+    "end": 21.77
+   },
+   {
+    "w": "el",
+    "start": 21.77,
+    "end": 21.88
+   },
+   {
+    "w": "de",
+    "start": 21.88,
+    "end": 22.04
+   },
+   {
+    "w": "arriba",
+    "start": 22.04,
+    "end": 22.36
+   },
+   {
+    "w": "llega",
+    "start": 22.36,
+    "end": 22.76
+   },
+   {
+    "w": "antes.",
+    "start": 22.76,
+    "end": 23.37
+   },
+   {
+    "w": "Mucho",
+    "start": 23.37,
+    "end": 23.93
+   },
+   {
+    "w": "antes.",
+    "start": 23.93,
+    "end": 24.29
+   }
+  ]
+ },
+ {
+  "text": "Y si fuera por la curva, ¿cómo vuela un avión boca abajo?",
+  "start": 24.59,
+  "end": 27.6,
+  "words": [
+   {
+    "w": "Y",
+    "start": 24.59,
+    "end": 24.68
+   },
+   {
+    "w": "si",
+    "start": 24.68,
+    "end": 24.84
+   },
+   {
+    "w": "fuera",
+    "start": 24.84,
+    "end": 25.16
+   },
+   {
+    "w": "por",
+    "start": 25.16,
+    "end": 25.32
+   },
+   {
+    "w": "la",
+    "start": 25.32,
+    "end": 25.48
+   },
+   {
+    "w": "curva,",
+    "start": 25.48,
+    "end": 25.97
+   },
+   {
+    "w": "¿cómo",
+    "start": 25.97,
+    "end": 26.05
+   },
+   {
+    "w": "vuela",
+    "start": 26.05,
+    "end": 26.53
+   },
+   {
+    "w": "un",
+    "start": 26.53,
+    "end": 26.69
+   },
+   {
+    "w": "avión",
+    "start": 26.69,
+    "end": 26.978
+   },
+   {
+    "w": "boca",
+    "start": 26.978,
+    "end": 27.33
+   },
+   {
+    "w": "abajo?",
+    "start": 27.33,
+    "end": 27.6
+   }
+  ]
+ },
+ {
+  "text": "La clave es otra: el ala va un poco inclinada… y empuja el aire hacia abajo.",
+  "start": 27.95,
+  "end": 32.91,
+  "words": [
+   {
+    "w": "La",
+    "start": 27.95,
+    "end": 28.06
+   },
+   {
+    "w": "clave",
+    "start": 28.06,
+    "end": 28.54
+   },
+   {
+    "w": "es",
+    "start": 28.54,
+    "end": 28.78
+   },
+   {
+    "w": "otra:",
+    "start": 28.78,
+    "end": 29.22
+   },
+   {
+    "w": "el",
+    "start": 29.22,
+    "end": 29.3
+   },
+   {
+    "w": "ala",
+    "start": 29.3,
+    "end": 29.7
+   },
+   {
+    "w": "va",
+    "start": 29.7,
+    "end": 30.02
+   },
+   {
+    "w": "un",
+    "start": 30.02,
+    "end": 30.1
+   },
+   {
+    "w": "poco",
+    "start": 30.1,
+    "end": 30.34
+   },
+   {
+    "w": "inclinada…",
+    "start": 30.34,
+    "end": 31.22
+   },
+   {
+    "w": "y",
+    "start": 31.22,
+    "end": 31.35
+   },
+   {
+    "w": "empuja",
+    "start": 31.35,
+    "end": 31.8
+   },
+   {
+    "w": "el",
+    "start": 31.8,
+    "end": 31.96
+   },
+   {
+    "w": "aire",
+    "start": 31.96,
+    "end": 32.28
+   },
+   {
+    "w": "hacia",
+    "start": 32.28,
+    "end": 32.6
+   },
+   {
+    "w": "abajo.",
+    "start": 32.6,
+    "end": 32.91
+   }
+  ]
+ },
+ {
+  "text": "Cientos de toneladas de aire, cada segundo.",
+  "start": 33.16,
+  "end": 35.84,
+  "words": [
+   {
+    "w": "Cientos",
+    "start": 33.16,
+    "end": 33.61
+   },
+   {
+    "w": "de",
+    "start": 33.61,
+    "end": 33.77
+   },
+   {
+    "w": "toneladas",
+    "start": 33.77,
+    "end": 34.49
+   },
+   {
+    "w": "de",
+    "start": 34.49,
+    "end": 34.65
+   },
+   {
+    "w": "aire,",
+    "start": 34.65,
+    "end": 35.03
+   },
+   {
+    "w": "cada",
+    "start": 35.03,
+    "end": 35.38
+   },
+   {
+    "w": "segundo.",
+    "start": 35.38,
+    "end": 35.84
+   }
+  ]
+ },
+ {
+  "text": "Si el ala empuja el aire hacia abajo, el aire empuja el ala hacia arriba.",
+  "start": 36.09,
+  "end": 40.27,
+  "words": [
+   {
+    "w": "Si",
+    "start": 36.09,
+    "end": 36.158
+   },
+   {
+    "w": "el",
+    "start": 36.158,
+    "end": 36.24
+   },
+   {
+    "w": "ala",
+    "start": 36.24,
+    "end": 36.56
+   },
+   {
+    "w": "empuja",
+    "start": 36.56,
+    "end": 37.04
+   },
+   {
+    "w": "el",
+    "start": 37.04,
+    "end": 37.18
+   },
+   {
+    "w": "aire",
+    "start": 37.18,
+    "end": 37.42
+   },
+   {
+    "w": "hacia",
+    "start": 37.42,
+    "end": 37.66
+   },
+   {
+    "w": "abajo,",
+    "start": 37.66,
+    "end": 38.2
+   },
+   {
+    "w": "el",
+    "start": 38.2,
+    "end": 38.36
+   },
+   {
+    "w": "aire",
+    "start": 38.36,
+    "end": 38.68
+   },
+   {
+    "w": "empuja",
+    "start": 38.68,
+    "end": 39.24
+   },
+   {
+    "w": "el",
+    "start": 39.24,
+    "end": 39.4
+   },
+   {
+    "w": "ala",
+    "start": 39.4,
+    "end": 39.72
+   },
+   {
+    "w": "hacia",
+    "start": 39.72,
+    "end": 39.96
+   },
+   {
+    "w": "arriba.",
+    "start": 39.96,
+    "end": 40.27
+   }
+  ]
+ },
+ {
+  "text": "Arriba, la presión baja; abajo, sube. Y esa diferencia levanta el avión entero.",
+  "start": 40.52,
+  "end": 45.57,
+  "words": [
+   {
+    "w": "Arriba,",
+    "start": 40.52,
+    "end": 41.09
+   },
+   {
+    "w": "la",
+    "start": 41.09,
+    "end": 41.25
+   },
+   {
+    "w": "presión",
+    "start": 41.25,
+    "end": 41.65
+   },
+   {
+    "w": "baja;",
+    "start": 41.65,
+    "end": 42.13
+   },
+   {
+    "w": "abajo,",
+    "start": 42.13,
+    "end": 42.77
+   },
+   {
+    "w": "sube.",
+    "start": 42.77,
+    "end": 43.28
+   },
+   {
+    "w": "Y",
+    "start": 43.28,
+    "end": 43.38
+   },
+   {
+    "w": "esa",
+    "start": 43.38,
+    "end": 43.62
+   },
+   {
+    "w": "diferencia",
+    "start": 43.62,
+    "end": 44.18
+   },
+   {
+    "w": "levanta",
+    "start": 44.18,
+    "end": 44.66
+   },
+   {
+    "w": "el",
+    "start": 44.66,
+    "end": 44.82
+   },
+   {
+    "w": "avión",
+    "start": 44.82,
+    "end": 45.14
+   },
+   {
+    "w": "entero.",
+    "start": 45.14,
+    "end": 45.57
+   }
+  ]
+ },
+ {
+  "text": "La respuesta: un avión no flota. Se sujeta empujando el aire hacia abajo… todo el rato.",
+  "start": 46.02,
+  "end": 51.7,
+  "words": [
+   {
+    "w": "La",
+    "start": 46.02,
+    "end": 46.09
+   },
+   {
+    "w": "respuesta:",
+    "start": 46.09,
+    "end": 46.87
+   },
+   {
+    "w": "un",
+    "start": 46.87,
+    "end": 47.02
+   },
+   {
+    "w": "avión",
+    "start": 47.02,
+    "end": 47.5
+   },
+   {
+    "w": "no",
+    "start": 47.5,
+    "end": 47.74
+   },
+   {
+    "w": "flota.",
+    "start": 47.74,
+    "end": 48.4
+   },
+   {
+    "w": "Se",
+    "start": 48.4,
+    "end": 48.48
+   },
+   {
+    "w": "sujeta",
+    "start": 48.48,
+    "end": 49.04
+   },
+   {
+    "w": "empujando",
+    "start": 49.04,
+    "end": 49.6
+   },
+   {
+    "w": "el",
+    "start": 49.6,
+    "end": 49.76
+   },
+   {
+    "w": "aire",
+    "start": 49.76,
+    "end": 50.08
+   },
+   {
+    "w": "hacia",
+    "start": 50.08,
+    "end": 50.32
+   },
+   {
+    "w": "abajo…",
+    "start": 50.32,
+    "end": 50.93
+   },
+   {
+    "w": "todo",
+    "start": 50.93,
+    "end": 51.15
+   },
+   {
+    "w": "el",
+    "start": 51.15,
+    "end": 51.31
+   },
+   {
+    "w": "rato.",
+    "start": 51.31,
+    "end": 51.7
+   }
+  ]
+ },
+ {
+  "text": "¿Ventanilla o pasillo? Mándaselo a tu profe de física.",
+  "start": 52.1,
+  "end": 55.179,
+  "words": [
+   {
+    "w": "¿Ventanilla",
+    "start": 52.1,
+    "end": 52.76
+   },
+   {
+    "w": "o",
+    "start": 52.76,
+    "end": 53.0
+   },
+   {
+    "w": "pasillo?",
+    "start": 53.0,
+    "end": 53.63
+   },
+   {
+    "w": "Mándaselo",
+    "start": 53.63,
+    "end": 54.19
+   },
+   {
+    "w": "a",
+    "start": 54.19,
+    "end": 54.27
+   },
+   {
+    "w": "tu",
+    "start": 54.27,
+    "end": 54.43
+   },
+   {
+    "w": "profe",
+    "start": 54.43,
+    "end": 54.749
+   },
+   {
+    "w": "de",
+    "start": 54.749,
+    "end": 54.829
+   },
+   {
+    "w": "física.",
+    "start": 54.829,
+    "end": 55.179
+   }
+  ]
+ }
+]
