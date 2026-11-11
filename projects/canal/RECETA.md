@@ -5,7 +5,7 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 9-11-2026 (24 vídeos de Instagram, cinco capturas de Metricool).
+Última actualización: 11-11-2026 (26 vídeos de Instagram + TikTok, siete capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
@@ -62,6 +62,7 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 ## 7. Publicación
 - 🧪 **Hora: 10:00 de lunes a viernes** (Metricool: vie, mié y jue 10:00 las mejores; segundo pico a las 18:00 de mar a jue).
   Los dos mejores vídeos salieron en fin de semana a media mañana (sáb 10:39, dom 12:47). Prueba A/B en curso: 10:00 frente a 18:00 (sin resultado: Química salió a las 17:55 de un jueves y ADE a las 08:55 de un domingo, y los dos despegan; pesa más el tema y el gancho que la hora).
+- 🧪 **Dos al día solo si son de distinto tipo y con 6 h o más** (Tapas 10:35 + GTA 18:11 el 9-11: los dos rindieron).
 - 🧪 **Un solo vídeo informativo al día**: el 2 y 3 de noviembre salieron 4 y Medicina y Economía se quedaron cortos.
 - Portada con la frase del gancho en grande; descripción con las fuentes. Hashtags y descripción: sin datos todavía para compararlos.
 
