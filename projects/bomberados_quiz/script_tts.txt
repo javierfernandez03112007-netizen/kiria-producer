@@ -1,0 +1,16 @@
+[urgent, alarmed] ¡Suena la ALARMA! [fast, challenging] Seis preguntas de bombero, TRES segundos cada una… ¿cuántas aciertas?
+[quick] ¿Cuántos artículos tiene la Constitución?
+[confident] ¡Ciento sesenta y nueve!
+[quick] ¿El teléfono de emergencias?
+[confident] ¡Uno, uno, dos!
+[quick] ¿Cuántos elementos tiene el tetraedro del fuego?
+[confident] ¡Cuatro!
+[quick] ¿La fórmula química del agua?
+[confident] ¡Hache dos O!
+[quick] ¿Qué significa EPI?
+[confident] ¡Equipo de Protección Individual!
+[tense] La difícil: ¿qué ley regula la prevención de riesgos laborales?
+[triumphant] ¡La treinta y uno del noventa y cinco!
+[challenging] ¿Cuántas has acertado de SEIS? Comenta tu número.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver cuántas saca!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

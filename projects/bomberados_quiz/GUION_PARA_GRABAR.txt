@@ -1,0 +1,56 @@
+«¿CUÁNTAS ACIERTAS?» — 6 preguntas de bombero, 3 segundos cada una (idea de Adrián, Notion: «PASAPALABRA JUEVES 12»;
+concurso a contrarreloj con estética propia, sin copiar la de ningún programa de la tele)
+
+Hecho con las reglas de Javi del 10 nov: gancho que ALARMA (suena la alarma del parque), ritmo rápido, una cuenta de
+3 segundos para responder cada pregunta, un dron que no para por el parque con planos abiertos (nada cortado) y cierre
+personal para comentar (como la guardia, que es el 3D que más comenta): «¿Cuántas has acertado de seis? Comenta tu número».
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 34 s de voz + 6 cuentas de 3 s que meto yo (≈ 52 s). MUY RÁPIDO: las preguntas, de un tirón; las respuestas, seguras y
+con fuerza, como en un concurso. Las cuentas 3-2-1 NO se graban: las meto yo con su tic-tac.
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Suena la ALARMA! [fast, challenging] Seis preguntas de bombero, TRES segundos cada una… ¿cuántas aciertas?
+[quick] ¿Cuántos artículos tiene la Constitución?
+[confident] ¡Ciento sesenta y nueve!
+[quick] ¿El teléfono de emergencias?
+[confident] ¡Uno, uno, dos!
+[quick] ¿Cuántos elementos tiene el tetraedro del fuego?
+[confident] ¡Cuatro!
+[quick] ¿La fórmula química del agua?
+[confident] ¡Hache dos O!
+[quick] ¿Qué significa EPI?
+[confident] ¡Equipo de Protección Individual!
+[tense] La difícil: ¿qué ley regula la prevención de riesgos laborales?
+[triumphant] ¡La treinta y uno del noventa y cinco!
+[challenging] ¿Cuántas has acertado de SEIS? Comenta tu número.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver cuántas saca!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, en un parque de bomberos con UN DRON QUE NO PARA (sin cortes) y
+planos abiertos. Cada pregunta aparece en un panel gigante con su cuenta 3-2-1 y, al responder, la respuesta estalla en
+verde y en la plaza se enciende su objeto en 3D.
+1. «¡Suena la alarma!» — primer fotograma: el parque de noche con las luces de alarma rojas girando, el timbre y las
+   puertas del garaje subiendo; el dron entra rasante. «Seis preguntas… tres segundos cada una… ¿cuántas aciertas?» —
+   marcador 0/6 y las 6 casillas vacías.
+2. «¿Cuántos artículos tiene la Constitución?» — 3-2-1 → «¡169!» (un libro gigante de la Constitución se abre en la plaza).
+3. «¿El teléfono de emergencias?» — 3-2-1 → «¡112!» (un 112 de neón enorme sobre el parque).
+4. «¿Cuántos elementos tiene el tetraedro del fuego?» — 3-2-1 → «¡4!» (el tetraedro del fuego con sus 4 caras encendidas).
+5. «¿La fórmula química del agua?» — 3-2-1 → «¡H₂O!» (la molécula de agua gigante, y el agua de la manguera).
+6. «¿Qué significa EPI?» — 3-2-1 → «¡Equipo de Protección Individual!» (un bombero con su EPI: casco, chaquetón, guantes).
+7. «La difícil: ¿qué ley regula la prevención de riesgos laborales?» — 3-2-1 → «¡Ley 31/1995!» (un sello sobre el BOE).
+8. «¿Cuántas has acertado de seis? Comenta tu número.» — el dron sube y salen las notas: 0–2 ¡TOCA ESTUDIAR! ·
+   3–4 ¡VAS POR BUEN CAMINO! · 5–6 ¡NIVEL BOMBERO! y «💬 COMENTA TU NÚMERO».
+9. ★ «¡Mándaselo a quien oposite contigo, a ver cuántas saca!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
+10. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Fuentes (en FUENTES.md): Constitución Española de 1978 (169 artículos, BOE); 112 (Real Decreto 903/1997); tetraedro del
+fuego (4 elementos, ver projects/bomberados_tetraedro/FUENTES.md); EPI (Real Decreto 773/1997); Ley 31/1995, de 8 de
+noviembre, de Prevención de Riesgos Laborales (BOE).

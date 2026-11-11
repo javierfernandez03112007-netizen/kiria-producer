@@ -1,0 +1,589 @@
+[
+ {
+  "text": "¡Suena la alarma! Seis preguntas de bombero, tres segundos cada una… ¿cuántas aciertas?",
+  "start": 0.0,
+  "end": 4.51,
+  "words": [
+   {
+    "w": "¡Suena",
+    "start": 0.0,
+    "end": 0.479
+   },
+   {
+    "w": "la",
+    "start": 0.479,
+    "end": 0.559
+   },
+   {
+    "w": "alarma!",
+    "start": 0.559,
+    "end": 1.207
+   },
+   {
+    "w": "Seis",
+    "start": 1.207,
+    "end": 1.437
+   },
+   {
+    "w": "preguntas",
+    "start": 1.437,
+    "end": 1.756
+   },
+   {
+    "w": "de",
+    "start": 1.756,
+    "end": 1.916
+   },
+   {
+    "w": "bombero,",
+    "start": 1.916,
+    "end": 2.475
+   },
+   {
+    "w": "tres",
+    "start": 2.475,
+    "end": 2.714
+   },
+   {
+    "w": "segundos",
+    "start": 2.714,
+    "end": 3.113
+   },
+   {
+    "w": "cada",
+    "start": 3.113,
+    "end": 3.273
+   },
+   {
+    "w": "una…",
+    "start": 3.273,
+    "end": 3.712
+   },
+   {
+    "w": "¿cuántas",
+    "start": 3.712,
+    "end": 3.991
+   },
+   {
+    "w": "aciertas?",
+    "start": 3.991,
+    "end": 4.51
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántos artículos tiene la Constitución?",
+  "start": 4.879,
+  "end": 6.595,
+  "words": [
+   {
+    "w": "¿Cuántos",
+    "start": 4.879,
+    "end": 5.189
+   },
+   {
+    "w": "artículos",
+    "start": 5.189,
+    "end": 5.588
+   },
+   {
+    "w": "tiene",
+    "start": 5.588,
+    "end": 5.907
+   },
+   {
+    "w": "la",
+    "start": 5.907,
+    "end": 5.987
+   },
+   {
+    "w": "Constitución?",
+    "start": 5.987,
+    "end": 6.595
+   }
+  ]
+ },
+ {
+  "text": "¡Ciento sesenta y nueve!",
+  "start": 9.795,
+  "end": 10.992,
+  "words": [
+   {
+    "w": "¡Ciento",
+    "start": 9.795,
+    "end": 10.072
+   },
+   {
+    "w": "sesenta",
+    "start": 10.072,
+    "end": 10.503
+   },
+   {
+    "w": "y",
+    "start": 10.503,
+    "end": 10.647
+   },
+   {
+    "w": "nueve!",
+    "start": 10.647,
+    "end": 10.992
+   }
+  ]
+ },
+ {
+  "text": "¿El teléfono de emergencias?",
+  "start": 11.282,
+  "end": 12.539,
+  "words": [
+   {
+    "w": "¿El",
+    "start": 11.282,
+    "end": 11.372
+   },
+   {
+    "w": "teléfono",
+    "start": 11.372,
+    "end": 11.781
+   },
+   {
+    "w": "de",
+    "start": 11.781,
+    "end": 11.94
+   },
+   {
+    "w": "emergencias?",
+    "start": 11.94,
+    "end": 12.539
+   }
+  ]
+ },
+ {
+  "text": "¡Uno, uno, dos!",
+  "start": 15.719,
+  "end": 16.547,
+  "words": [
+   {
+    "w": "¡Uno,",
+    "start": 15.719,
+    "end": 16.032
+   },
+   {
+    "w": "uno,",
+    "start": 16.032,
+    "end": 16.406
+   },
+   {
+    "w": "dos!",
+    "start": 16.406,
+    "end": 16.547
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántos elementos tiene el tetraedro del fuego?",
+  "start": 16.846,
+  "end": 18.902,
+  "words": [
+   {
+    "w": "¿Cuántos",
+    "start": 16.846,
+    "end": 17.096
+   },
+   {
+    "w": "elementos",
+    "start": 17.096,
+    "end": 17.495
+   },
+   {
+    "w": "tiene",
+    "start": 17.495,
+    "end": 17.734
+   },
+   {
+    "w": "el",
+    "start": 17.734,
+    "end": 17.814
+   },
+   {
+    "w": "tetraedro",
+    "start": 17.814,
+    "end": 18.532
+   },
+   {
+    "w": "del",
+    "start": 18.532,
+    "end": 18.692
+   },
+   {
+    "w": "fuego?",
+    "start": 18.692,
+    "end": 18.902
+   }
+  ]
+ },
+ {
+  "text": "¡Cuatro!",
+  "start": 22.171,
+  "end": 22.51,
+  "words": [
+   {
+    "w": "¡Cuatro!",
+    "start": 22.171,
+    "end": 22.51
+   }
+  ]
+ },
+ {
+  "text": "¿La fórmula química del agua?",
+  "start": 22.839,
+  "end": 24.097,
+  "words": [
+   {
+    "w": "¿La",
+    "start": 22.839,
+    "end": 22.969
+   },
+   {
+    "w": "fórmula",
+    "start": 22.969,
+    "end": 23.368
+   },
+   {
+    "w": "química",
+    "start": 23.368,
+    "end": 23.688
+   },
+   {
+    "w": "del",
+    "start": 23.688,
+    "end": 23.847
+   },
+   {
+    "w": "agua?",
+    "start": 23.847,
+    "end": 24.097
+   }
+  ]
+ },
+ {
+  "text": "¡Hache dos O!",
+  "start": 27.306,
+  "end": 28.035,
+  "words": [
+   {
+    "w": "¡Hache",
+    "start": 27.306,
+    "end": 27.713
+   },
+   {
+    "w": "dos",
+    "start": 27.713,
+    "end": 27.947
+   },
+   {
+    "w": "O!",
+    "start": 27.947,
+    "end": 28.035
+   }
+  ]
+ },
+ {
+  "text": "¿Qué significa EPI?",
+  "start": 28.344,
+  "end": 29.432,
+  "words": [
+   {
+    "w": "¿Qué",
+    "start": 28.344,
+    "end": 28.524
+   },
+   {
+    "w": "significa",
+    "start": 28.524,
+    "end": 29.002
+   },
+   {
+    "w": "EPI?",
+    "start": 29.002,
+    "end": 29.432
+   }
+  ]
+ },
+ {
+  "text": "¡Equipo de Protección Individual!",
+  "start": 32.721,
+  "end": 34.297,
+  "words": [
+   {
+    "w": "¡Equipo",
+    "start": 32.721,
+    "end": 33.12
+   },
+   {
+    "w": "de",
+    "start": 33.12,
+    "end": 33.28
+   },
+   {
+    "w": "Protección",
+    "start": 33.28,
+    "end": 33.759
+   },
+   {
+    "w": "Individual!",
+    "start": 33.759,
+    "end": 34.297
+   }
+  ]
+ },
+ {
+  "text": "La difícil: ¿qué ley regula la prevención de riesgos laborales?",
+  "start": 34.677,
+  "end": 38.348,
+  "words": [
+   {
+    "w": "La",
+    "start": 34.677,
+    "end": 34.796
+   },
+   {
+    "w": "difícil:",
+    "start": 34.796,
+    "end": 35.814
+   },
+   {
+    "w": "¿qué",
+    "start": 35.814,
+    "end": 35.914
+   },
+   {
+    "w": "ley",
+    "start": 35.914,
+    "end": 36.233
+   },
+   {
+    "w": "regula",
+    "start": 36.233,
+    "end": 36.712
+   },
+   {
+    "w": "la",
+    "start": 36.712,
+    "end": 36.792
+   },
+   {
+    "w": "prevención",
+    "start": 36.792,
+    "end": 37.271
+   },
+   {
+    "w": "de",
+    "start": 37.271,
+    "end": 37.351
+   },
+   {
+    "w": "riesgos",
+    "start": 37.351,
+    "end": 37.83
+   },
+   {
+    "w": "laborales?",
+    "start": 37.83,
+    "end": 38.348
+   }
+  ]
+ },
+ {
+  "text": "¡La treinta y uno del noventa y cinco!",
+  "start": 41.588,
+  "end": 43.324,
+  "words": [
+   {
+    "w": "¡La",
+    "start": 41.588,
+    "end": 41.787
+   },
+   {
+    "w": "treinta",
+    "start": 41.787,
+    "end": 42.017
+   },
+   {
+    "w": "y",
+    "start": 42.017,
+    "end": 42.132
+   },
+   {
+    "w": "uno",
+    "start": 42.132,
+    "end": 42.426
+   },
+   {
+    "w": "del",
+    "start": 42.426,
+    "end": 42.586
+   },
+   {
+    "w": "noventa",
+    "start": 42.586,
+    "end": 42.981
+   },
+   {
+    "w": "y",
+    "start": 42.981,
+    "end": 43.113
+   },
+   {
+    "w": "cinco!",
+    "start": 43.113,
+    "end": 43.324
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántas has acertado de seis? Comenta tu número.",
+  "start": 43.703,
+  "end": 46.188,
+  "words": [
+   {
+    "w": "¿Cuántas",
+    "start": 43.703,
+    "end": 43.943
+   },
+   {
+    "w": "has",
+    "start": 43.943,
+    "end": 44.182
+   },
+   {
+    "w": "acertado",
+    "start": 44.182,
+    "end": 44.661
+   },
+   {
+    "w": "de",
+    "start": 44.661,
+    "end": 44.821
+   },
+   {
+    "w": "seis?",
+    "start": 44.821,
+    "end": 45.4
+   },
+   {
+    "w": "Comenta",
+    "start": 45.4,
+    "end": 45.779
+   },
+   {
+    "w": "tu",
+    "start": 45.779,
+    "end": 45.938
+   },
+   {
+    "w": "número.",
+    "start": 45.938,
+    "end": 46.188
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo, a ver cuántas saca!",
+  "start": 46.447,
+  "end": 49.371,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 46.447,
+    "end": 47.056
+   },
+   {
+    "w": "a",
+    "start": 47.056,
+    "end": 47.136
+   },
+   {
+    "w": "quien",
+    "start": 47.136,
+    "end": 47.375
+   },
+   {
+    "w": "oposite",
+    "start": 47.375,
+    "end": 47.934
+   },
+   {
+    "w": "contigo,",
+    "start": 47.934,
+    "end": 48.333
+   },
+   {
+    "w": "a",
+    "start": 48.333,
+    "end": 48.413
+   },
+   {
+    "w": "ver",
+    "start": 48.413,
+    "end": 48.652
+   },
+   {
+    "w": "cuántas",
+    "start": 48.652,
+    "end": 49.051
+   },
+   {
+    "w": "saca!",
+    "start": 49.051,
+    "end": 49.371
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 49.69,
+  "end": 53.721,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 49.69,
+    "end": 50.249
+   },
+   {
+    "w": "a",
+    "start": 50.249,
+    "end": 50.329
+   },
+   {
+    "w": "bombero?",
+    "start": 50.329,
+    "end": 50.848
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 50.848,
+    "end": 52.045
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 52.045,
+    "end": 52.484
+   },
+   {
+    "w": "gratis",
+    "start": 52.484,
+    "end": 52.963
+   },
+   {
+    "w": "cinco",
+    "start": 52.963,
+    "end": 53.282
+   },
+   {
+    "w": "días!",
+    "start": 53.282,
+    "end": 53.721
+   }
+  ]
+ }
+]

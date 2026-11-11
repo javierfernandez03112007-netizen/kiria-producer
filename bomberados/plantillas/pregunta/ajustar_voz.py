@@ -3,6 +3,7 @@ acorta pausas, mete el silencio de la cuenta atrás, acelera un poco (atempo) y 
 Uso: python3 bomberados/plantillas/pregunta/ajustar_voz.py projects/<p>
 (assets/voz_original.mp3 + asr_original.json + script.txt → assets/voz.mp3 + tiempos.json)
 Parámetros en pregunta.json (o video.json) → "voz": tempo, count_line (frase tras la que va la cuenta atrás, desde 0), count (s; 0 = sin cuenta atrás),
+counts ({nº de frase: s}, varias cuentas: el concurso de 6 preguntas),
 pause ({nº de frase: pausa tras ella}), pause_def, cortar (false = no acortar ninguna pausa de la toma)."""
 import difflib
 import json
@@ -132,14 +133,17 @@ def main():
     kp += [((s1 + int(0.25 * SR)) / SR, len(y) / SR)]
     # hueco de la cuenta atrás: después de la frase COUNT_LINE (con un punto de anclaje a cada lado del hueco, para que
     # la interpolación no reparta el desplazamiento entre las palabras de antes)
-    tc = lend[COUNT_LINE] + 0.05
+    # «counts» ({nº de frase: s}): varias cuentas (p. ej. un concurso con 3 s tras cada pregunta); se meten en orden
     ko, kn = np.array(kp).T
-    nc = float(np.interp(tc, ko, kn))
-    ic = int(nc * SR)
-    y = np.concatenate([y[:ic], np.zeros(int(COUNT * TEMPO * SR), np.float32), y[ic:]])
-    keep = ko < tc
-    ko = np.concatenate([ko[keep], [tc, tc + 1e-6], ko[~keep]])
-    kn = np.concatenate([kn[keep], [nc, nc + COUNT * TEMPO], kn[~keep] + COUNT * TEMPO])
+    huecos = sorted(([(COUNT_LINE, COUNT)] if COUNT else []) + [(int(k), float(v)) for k, v in V.get("counts", {}).items()])
+    for L, secs in huecos:
+        tc = lend[L] + 0.05
+        nc = float(np.interp(tc, ko, kn))
+        ic = int(nc * SR)
+        y = np.concatenate([y[:ic], np.zeros(int(secs * TEMPO * SR), np.float32), y[ic:]])
+        keep = ko < tc
+        ko = np.concatenate([ko[keep], [tc, tc + 1e-6], ko[~keep]])
+        kn = np.concatenate([kn[keep], [nc, nc + secs * TEMPO], kn[~keep] + secs * TEMPO])
 
     def remap(t):
         return float(np.interp(t, ko, kn)) / TEMPO

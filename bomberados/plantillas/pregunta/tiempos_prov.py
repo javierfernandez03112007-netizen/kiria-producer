@@ -42,5 +42,6 @@ for i, l in enumerate(lines):
     t = ws[-1]["end"] + pause.get(i, V.get("pause_def", 0.24))
     if V.get("count") and i == V.get("count_line", -1):
         t += V["count"]
+    t += float(V.get("counts", {}).get(str(i), 0))
 json.dump(out, open(os.path.join(ROOT, "tiempos.json"), "w"), ensure_ascii=False, indent=1)
 print(f"tiempos provisionales → {os.path.join(ROOT, 'tiempos.json')} ({out[-1]['end']:.2f} s)")
