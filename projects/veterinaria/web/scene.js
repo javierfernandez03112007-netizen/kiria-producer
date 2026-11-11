@@ -1809,9 +1809,11 @@ function burstU(t) { const r0 = END - 1.25; if (t < r0) return t - T_HIT; return
 function shardAt(m, u) {
   const d = m.userData, c = d.c, R = HOLE, w = R.x1 - R.x0, h = R.y1 - R.y0;
   if (u <= 0) { const b = Math.max(0, 1 - d.r * 0.8) * (0.022 + 0.006 * Math.sin(NOW * 40 + d.k * 9) * (u > -0.25 ? 1 : 0)); m.position.set(c.x, c.y, b); m.rotation.set((d.k - 0.5) * 0.06, (d.k2 - 0.5) * 0.06, 0); return; }
-  const vx = c.x / (w / 2) * 0.9 + (d.k - 0.5) * 0.8, vy = 0.5 + d.k2 * 1.1, vz = 1.1 + d.k * 1.6 + (1 - d.r) * 0.8;
-  const yFloor = FLOOR_Y + 0.02 - (R.y0 + R.y1) / 2, y0 = c.y;
-  const tHit = (vy + Math.sqrt(vy * vy + 2 * SHARD_G * (y0 - yFloor))) / SHARD_G, ut = Math.min(u, tHit);
+  const vy = 0.5 + d.k2 * 1.1, yFloor = FLOOR_Y + 0.02 - (R.y0 + R.y1) / 2, y0 = c.y;
+  const tHit = (vy + Math.sqrt(vy * vy + 2 * SHARD_G * (y0 - yFloor))) / SHARD_G, ut = Math.min(u, tHit), tt = tHit + 0.12;
+  // los trozos caen DENTRO de la clínica (entre 0,2 y 0,9 m de la pared y sin salirse por los lados): así ninguno pasa por delante de la cámara
+  const wx = (R.x0 + R.x1) / 2, vz = Math.min(1.1 + d.k * 1.6 + (1 - d.r) * 0.8, (0.2 + 0.7 * d.k) / tt);
+  const vx = clamp(c.x / (w / 2) * 0.9 + (d.k - 0.5) * 0.8, (-0.66 - wx - c.x) / tt, (0.66 - wx - c.x) / tt);
   const slide = u > tHit ? (1 - Math.exp(-(u - tHit) * 6)) * 0.12 : 0;
   m.position.set(c.x + vx * ut + vx * slide, y0 + vy * ut - 0.5 * SHARD_G * ut * ut, vz * ut + vz * slide);
   const sp = ut + slide * 2; m.rotation.set(-(1.2 + d.k * 4) * sp, (d.k2 - 0.5) * 5 * sp, (d.k - 0.5) * 6 * sp);
