@@ -1,0 +1,956 @@
+[
+ {
+  "text": "Te imaginas en Veterinaria curando perros y gatos… y un día vas a meter el brazo entero dentro de una vaca.",
+  "start": 0.0,
+  "end": 5.662,
+  "words": [
+   {
+    "w": "Te",
+    "start": 0.0,
+    "end": 0.142
+   },
+   {
+    "w": "imaginas",
+    "start": 0.142,
+    "end": 0.569
+   },
+   {
+    "w": "en",
+    "start": 0.569,
+    "end": 0.711
+   },
+   {
+    "w": "Veterinaria",
+    "start": 0.711,
+    "end": 1.351
+   },
+   {
+    "w": "curando",
+    "start": 1.351,
+    "end": 1.707
+   },
+   {
+    "w": "perros",
+    "start": 1.707,
+    "end": 2.062
+   },
+   {
+    "w": "y",
+    "start": 2.062,
+    "end": 2.204
+   },
+   {
+    "w": "gatos…",
+    "start": 2.204,
+    "end": 2.782
+   },
+   {
+    "w": "y",
+    "start": 2.782,
+    "end": 2.902
+   },
+   {
+    "w": "un",
+    "start": 2.902,
+    "end": 3.049
+   },
+   {
+    "w": "día",
+    "start": 3.049,
+    "end": 3.333
+   },
+   {
+    "w": "vas",
+    "start": 3.333,
+    "end": 3.547
+   },
+   {
+    "w": "a",
+    "start": 3.547,
+    "end": 3.689
+   },
+   {
+    "w": "meter",
+    "start": 3.689,
+    "end": 3.902
+   },
+   {
+    "w": "el",
+    "start": 3.902,
+    "end": 4.044
+   },
+   {
+    "w": "brazo",
+    "start": 4.044,
+    "end": 4.4
+   },
+   {
+    "w": "entero",
+    "start": 4.4,
+    "end": 4.756
+   },
+   {
+    "w": "dentro",
+    "start": 4.756,
+    "end": 5.04
+   },
+   {
+    "w": "de",
+    "start": 5.04,
+    "end": 5.182
+   },
+   {
+    "w": "una",
+    "start": 5.182,
+    "end": 5.396
+   },
+   {
+    "w": "vaca.",
+    "start": 5.396,
+    "end": 5.662
+   }
+  ]
+ },
+ {
+  "text": "¿Por qué? Te lo digo al final.",
+  "start": 5.876,
+  "end": 7.404,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 5.876,
+    "end": 6.16
+   },
+   {
+    "w": "qué?",
+    "start": 6.16,
+    "end": 6.684
+   },
+   {
+    "w": "Te",
+    "start": 6.684,
+    "end": 6.752
+   },
+   {
+    "w": "lo",
+    "start": 6.752,
+    "end": 6.836
+   },
+   {
+    "w": "digo",
+    "start": 6.836,
+    "end": 7.12
+   },
+   {
+    "w": "al",
+    "start": 7.12,
+    "end": 7.262
+   },
+   {
+    "w": "final.",
+    "start": 7.262,
+    "end": 7.404
+   }
+  ]
+ },
+ {
+  "text": "Crees que la carrera va de mascotas. En realidad, estudias muchos animales a la vez.",
+  "start": 7.733,
+  "end": 11.858,
+  "words": [
+   {
+    "w": "Crees",
+    "start": 7.733,
+    "end": 7.92
+   },
+   {
+    "w": "que",
+    "start": 7.92,
+    "end": 8.062
+   },
+   {
+    "w": "la",
+    "start": 8.062,
+    "end": 8.133
+   },
+   {
+    "w": "carrera",
+    "start": 8.133,
+    "end": 8.418
+   },
+   {
+    "w": "va",
+    "start": 8.418,
+    "end": 8.631
+   },
+   {
+    "w": "de",
+    "start": 8.631,
+    "end": 8.773
+   },
+   {
+    "w": "mascotas.",
+    "start": 8.773,
+    "end": 9.493
+   },
+   {
+    "w": "En",
+    "start": 9.493,
+    "end": 9.591
+   },
+   {
+    "w": "realidad,",
+    "start": 9.591,
+    "end": 10.107
+   },
+   {
+    "w": "estudias",
+    "start": 10.107,
+    "end": 10.693
+   },
+   {
+    "w": "muchos",
+    "start": 10.693,
+    "end": 11.049
+   },
+   {
+    "w": "animales",
+    "start": 11.049,
+    "end": 11.476
+   },
+   {
+    "w": "a",
+    "start": 11.476,
+    "end": 11.618
+   },
+   {
+    "w": "la",
+    "start": 11.618,
+    "end": 11.76
+   },
+   {
+    "w": "vez.",
+    "start": 11.76,
+    "end": 11.858
+   }
+  ]
+ },
+ {
+  "text": "Anatomía: no de un cuerpo, sino de muchos. Perro, gato, caballo, vaca, cerdo y gallina.",
+  "start": 12.213,
+  "end": 18.204,
+  "words": [
+   {
+    "w": "Anatomía:",
+    "start": 12.213,
+    "end": 13.049
+   },
+   {
+    "w": "no",
+    "start": 13.049,
+    "end": 13.164
+   },
+   {
+    "w": "de",
+    "start": 13.164,
+    "end": 13.378
+   },
+   {
+    "w": "un",
+    "start": 13.378,
+    "end": 13.52
+   },
+   {
+    "w": "cuerpo,",
+    "start": 13.52,
+    "end": 13.867
+   },
+   {
+    "w": "sino",
+    "start": 13.867,
+    "end": 14.124
+   },
+   {
+    "w": "de",
+    "start": 14.124,
+    "end": 14.267
+   },
+   {
+    "w": "muchos.",
+    "start": 14.267,
+    "end": 14.907
+   },
+   {
+    "w": "Perro,",
+    "start": 14.907,
+    "end": 15.44
+   },
+   {
+    "w": "gato,",
+    "start": 15.44,
+    "end": 15.938
+   },
+   {
+    "w": "caballo,",
+    "start": 15.938,
+    "end": 16.578
+   },
+   {
+    "w": "vaca,",
+    "start": 16.578,
+    "end": 17.147
+   },
+   {
+    "w": "cerdo",
+    "start": 17.147,
+    "end": 17.644
+   },
+   {
+    "w": "y",
+    "start": 17.644,
+    "end": 17.787
+   },
+   {
+    "w": "gallina.",
+    "start": 17.787,
+    "end": 18.204
+   }
+  ]
+ },
+ {
+  "text": "Farmacología: el mismo medicamento, otra dosis para cada especie.",
+  "start": 18.533,
+  "end": 22.089,
+  "words": [
+   {
+    "w": "Farmacología:",
+    "start": 18.533,
+    "end": 19.6
+   },
+   {
+    "w": "el",
+    "start": 19.6,
+    "end": 19.701
+   },
+   {
+    "w": "mismo",
+    "start": 19.701,
+    "end": 19.938
+   },
+   {
+    "w": "medicamento,",
+    "start": 19.938,
+    "end": 20.693
+   },
+   {
+    "w": "otra",
+    "start": 20.693,
+    "end": 20.942
+   },
+   {
+    "w": "dosis",
+    "start": 20.942,
+    "end": 21.369
+   },
+   {
+    "w": "para",
+    "start": 21.369,
+    "end": 21.511
+   },
+   {
+    "w": "cada",
+    "start": 21.511,
+    "end": 21.724
+   },
+   {
+    "w": "especie.",
+    "start": 21.724,
+    "end": 22.089
+   }
+  ]
+ },
+ {
+  "text": "Microbiología y parásitos: lo que enferma a un animal… y lo que puede pasarte a ti.",
+  "start": 22.409,
+  "end": 27.218,
+  "words": [
+   {
+    "w": "Microbiología",
+    "start": 22.409,
+    "end": 23.2
+   },
+   {
+    "w": "y",
+    "start": 23.2,
+    "end": 23.342
+   },
+   {
+    "w": "parásitos:",
+    "start": 23.342,
+    "end": 24.107
+   },
+   {
+    "w": "lo",
+    "start": 24.107,
+    "end": 24.195
+   },
+   {
+    "w": "que",
+    "start": 24.195,
+    "end": 24.302
+   },
+   {
+    "w": "enferma",
+    "start": 24.302,
+    "end": 24.8
+   },
+   {
+    "w": "a",
+    "start": 24.8,
+    "end": 24.871
+   },
+   {
+    "w": "un",
+    "start": 24.871,
+    "end": 25.013
+   },
+   {
+    "w": "animal…",
+    "start": 25.013,
+    "end": 25.502
+   },
+   {
+    "w": "y",
+    "start": 25.502,
+    "end": 25.598
+   },
+   {
+    "w": "lo",
+    "start": 25.598,
+    "end": 25.716
+   },
+   {
+    "w": "que",
+    "start": 25.716,
+    "end": 25.858
+   },
+   {
+    "w": "puede",
+    "start": 25.858,
+    "end": 26.142
+   },
+   {
+    "w": "pasarte",
+    "start": 26.142,
+    "end": 26.64
+   },
+   {
+    "w": "a",
+    "start": 26.64,
+    "end": 26.782
+   },
+   {
+    "w": "ti.",
+    "start": 26.782,
+    "end": 27.218
+   }
+  ]
+ },
+ {
+  "text": "Producción animal: granjas, alimentación y genética.",
+  "start": 27.218,
+  "end": 30.356,
+  "words": [
+   {
+    "w": "Producción",
+    "start": 27.218,
+    "end": 27.742
+   },
+   {
+    "w": "animal:",
+    "start": 27.742,
+    "end": 28.338
+   },
+   {
+    "w": "granjas,",
+    "start": 28.338,
+    "end": 29.058
+   },
+   {
+    "w": "alimentación",
+    "start": 29.058,
+    "end": 29.698
+   },
+   {
+    "w": "y",
+    "start": 29.698,
+    "end": 29.804
+   },
+   {
+    "w": "genética.",
+    "start": 29.804,
+    "end": 30.356
+   }
+  ]
+ },
+ {
+  "text": "Cirugía: quirófano, anestesia y puntos.",
+  "start": 30.693,
+  "end": 33.449,
+  "words": [
+   {
+    "w": "Cirugía:",
+    "start": 30.693,
+    "end": 31.547
+   },
+   {
+    "w": "quirófano,",
+    "start": 31.547,
+    "end": 32.169
+   },
+   {
+    "w": "anestesia",
+    "start": 32.169,
+    "end": 32.88
+   },
+   {
+    "w": "y",
+    "start": 32.88,
+    "end": 33.058
+   },
+   {
+    "w": "puntos.",
+    "start": 33.058,
+    "end": 33.449
+   }
+  ]
+ },
+ {
+  "text": "Y lo que casi nadie sabe: también vigilas lo que comes. En España, ningún matadero puede funcionar sin un veterinario oficial dentro, revisando cada animal antes y después.",
+  "start": 33.618,
+  "end": 42.942,
+  "words": [
+   {
+    "w": "Y",
+    "start": 33.618,
+    "end": 33.694
+   },
+   {
+    "w": "lo",
+    "start": 33.694,
+    "end": 33.787
+   },
+   {
+    "w": "que",
+    "start": 33.787,
+    "end": 33.929
+   },
+   {
+    "w": "casi",
+    "start": 33.929,
+    "end": 34.213
+   },
+   {
+    "w": "nadie",
+    "start": 34.213,
+    "end": 34.498
+   },
+   {
+    "w": "sabe:",
+    "start": 34.498,
+    "end": 35.004
+   },
+   {
+    "w": "también",
+    "start": 35.004,
+    "end": 35.316
+   },
+   {
+    "w": "vigilas",
+    "start": 35.316,
+    "end": 35.884
+   },
+   {
+    "w": "lo",
+    "start": 35.884,
+    "end": 36.027
+   },
+   {
+    "w": "que",
+    "start": 36.027,
+    "end": 36.169
+   },
+   {
+    "w": "comes.",
+    "start": 36.169,
+    "end": 36.809
+   },
+   {
+    "w": "En",
+    "start": 36.809,
+    "end": 36.916
+   },
+   {
+    "w": "España,",
+    "start": 36.916,
+    "end": 37.413
+   },
+   {
+    "w": "ningún",
+    "start": 37.413,
+    "end": 37.769
+   },
+   {
+    "w": "matadero",
+    "start": 37.769,
+    "end": 38.409
+   },
+   {
+    "w": "puede",
+    "start": 38.409,
+    "end": 38.622
+   },
+   {
+    "w": "funcionar",
+    "start": 38.622,
+    "end": 38.978
+   },
+   {
+    "w": "sin",
+    "start": 38.978,
+    "end": 39.12
+   },
+   {
+    "w": "un",
+    "start": 39.12,
+    "end": 39.262
+   },
+   {
+    "w": "veterinario",
+    "start": 39.262,
+    "end": 39.902
+   },
+   {
+    "w": "oficial",
+    "start": 39.902,
+    "end": 40.329
+   },
+   {
+    "w": "dentro,",
+    "start": 40.329,
+    "end": 40.72
+   },
+   {
+    "w": "revisando",
+    "start": 40.72,
+    "end": 41.147
+   },
+   {
+    "w": "cada",
+    "start": 41.147,
+    "end": 41.36
+   },
+   {
+    "w": "animal",
+    "start": 41.36,
+    "end": 41.982
+   },
+   {
+    "w": "antes",
+    "start": 41.982,
+    "end": 42.338
+   },
+   {
+    "w": "y",
+    "start": 42.338,
+    "end": 42.551
+   },
+   {
+    "w": "después.",
+    "start": 42.551,
+    "end": 42.942
+   }
+  ]
+ },
+ {
+  "text": "¿Y lo del brazo? Reproducción. Para saber si una vaca está preñada, se le palpa el útero desde dentro… con el brazo metido.",
+  "start": 43.182,
+  "end": 49.822,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 43.182,
+    "end": 43.316
+   },
+   {
+    "w": "lo",
+    "start": 43.316,
+    "end": 43.529
+   },
+   {
+    "w": "del",
+    "start": 43.529,
+    "end": 43.742
+   },
+   {
+    "w": "brazo?",
+    "start": 43.742,
+    "end": 44.329
+   },
+   {
+    "w": "Reproducción.",
+    "start": 44.329,
+    "end": 45.351
+   },
+   {
+    "w": "Para",
+    "start": 45.351,
+    "end": 45.449
+   },
+   {
+    "w": "saber",
+    "start": 45.449,
+    "end": 45.662
+   },
+   {
+    "w": "si",
+    "start": 45.662,
+    "end": 45.804
+   },
+   {
+    "w": "una",
+    "start": 45.804,
+    "end": 46.018
+   },
+   {
+    "w": "vaca",
+    "start": 46.018,
+    "end": 46.302
+   },
+   {
+    "w": "está",
+    "start": 46.302,
+    "end": 46.516
+   },
+   {
+    "w": "preñada,",
+    "start": 46.516,
+    "end": 47.013
+   },
+   {
+    "w": "se",
+    "start": 47.013,
+    "end": 47.156
+   },
+   {
+    "w": "le",
+    "start": 47.156,
+    "end": 47.298
+   },
+   {
+    "w": "palpa",
+    "start": 47.298,
+    "end": 47.653
+   },
+   {
+    "w": "el",
+    "start": 47.653,
+    "end": 47.724
+   },
+   {
+    "w": "útero",
+    "start": 47.724,
+    "end": 48.151
+   },
+   {
+    "w": "desde",
+    "start": 48.151,
+    "end": 48.364
+   },
+   {
+    "w": "dentro…",
+    "start": 48.364,
+    "end": 48.836
+   },
+   {
+    "w": "con",
+    "start": 48.836,
+    "end": 48.924
+   },
+   {
+    "w": "el",
+    "start": 48.924,
+    "end": 49.067
+   },
+   {
+    "w": "brazo",
+    "start": 49.067,
+    "end": 49.493
+   },
+   {
+    "w": "metido.",
+    "start": 49.493,
+    "end": 49.822
+   }
+  ]
+ },
+ {
+  "text": "Así que sí: vas a curar perros y gatos. Pero antes, la vaca.",
+  "start": 50.027,
+  "end": 53.609,
+  "words": [
+   {
+    "w": "Así",
+    "start": 50.027,
+    "end": 50.204
+   },
+   {
+    "w": "que",
+    "start": 50.204,
+    "end": 50.347
+   },
+   {
+    "w": "sí:",
+    "start": 50.347,
+    "end": 50.764
+   },
+   {
+    "w": "vas",
+    "start": 50.764,
+    "end": 50.88
+   },
+   {
+    "w": "a",
+    "start": 50.88,
+    "end": 51.022
+   },
+   {
+    "w": "curar",
+    "start": 51.022,
+    "end": 51.378
+   },
+   {
+    "w": "perros",
+    "start": 51.378,
+    "end": 51.733
+   },
+   {
+    "w": "y",
+    "start": 51.733,
+    "end": 51.876
+   },
+   {
+    "w": "gatos.",
+    "start": 51.876,
+    "end": 52.436
+   },
+   {
+    "w": "Pero",
+    "start": 52.436,
+    "end": 52.693
+   },
+   {
+    "w": "antes,",
+    "start": 52.693,
+    "end": 53.138
+   },
+   {
+    "w": "la",
+    "start": 53.138,
+    "end": 53.298
+   },
+   {
+    "w": "vaca.",
+    "start": 53.298,
+    "end": 53.609
+   }
+  ]
+ },
+ {
+  "text": "¿Perros y gatos, o vacas y caballos? Te leo. Y mándaselo a quien quiere ser veterinario.",
+  "start": 53.867,
+  "end": 58.644,
+  "words": [
+   {
+    "w": "¿Perros",
+    "start": 53.867,
+    "end": 54.169
+   },
+   {
+    "w": "y",
+    "start": 54.169,
+    "end": 54.311
+   },
+   {
+    "w": "gatos,",
+    "start": 54.311,
+    "end": 54.773
+   },
+   {
+    "w": "o",
+    "start": 54.773,
+    "end": 54.844
+   },
+   {
+    "w": "vacas",
+    "start": 54.844,
+    "end": 55.271
+   },
+   {
+    "w": "y",
+    "start": 55.271,
+    "end": 55.413
+   },
+   {
+    "w": "caballos?",
+    "start": 55.413,
+    "end": 56.276
+   },
+   {
+    "w": "Te",
+    "start": 56.276,
+    "end": 56.373
+   },
+   {
+    "w": "leo.",
+    "start": 56.373,
+    "end": 56.861
+   },
+   {
+    "w": "Y",
+    "start": 56.861,
+    "end": 56.957
+   },
+   {
+    "w": "mándaselo",
+    "start": 56.957,
+    "end": 57.396
+   },
+   {
+    "w": "a",
+    "start": 57.396,
+    "end": 57.537
+   },
+   {
+    "w": "quien",
+    "start": 57.537,
+    "end": 57.678
+   },
+   {
+    "w": "quiere",
+    "start": 57.678,
+    "end": 57.959
+   },
+   {
+    "w": "ser",
+    "start": 57.959,
+    "end": 58.099
+   },
+   {
+    "w": "veterinario.",
+    "start": 58.099,
+    "end": 58.644
+   }
+  ]
+ }
+]

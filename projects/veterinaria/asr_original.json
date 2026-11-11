@@ -1,0 +1,887 @@
+[
+{
+"w": "Te",
+"start": 0.0,
+"end": 0.08
+},
+{
+"w": "imaginas",
+"start": 0.16,
+"end": 0.48
+},
+{
+"w": "en",
+"start": 0.64,
+"end": 0.72
+},
+{
+"w": "veterinaria",
+"start": 0.8,
+"end": 1.36
+},
+{
+"w": "curando",
+"start": 1.52,
+"end": 1.84
+},
+{
+"w": "perros",
+"start": 1.92,
+"end": 2.32
+},
+{
+"w": "y",
+"start": 2.32,
+"end": 2.4
+},
+{
+"w": "gatos.",
+"start": 2.48,
+"end": 3.12
+},
+{
+"w": "Y",
+"start": 3.2,
+"end": 3.28
+},
+{
+"w": "un",
+"start": 3.44,
+"end": 3.52
+},
+{
+"w": "día",
+"start": 3.68,
+"end": 3.92
+},
+{
+"w": "vas",
+"start": 4.0,
+"end": 4.08
+},
+{
+"w": "a",
+"start": 4.24,
+"end": 4.32
+},
+{
+"w": "meter",
+"start": 4.4,
+"end": 4.64
+},
+{
+"w": "el",
+"start": 4.64,
+"end": 4.72
+},
+{
+"w": "brazo",
+"start": 4.8,
+"end": 5.2
+},
+{
+"w": "entero",
+"start": 5.2,
+"end": 5.44
+},
+{
+"w": "dentro",
+"start": 5.6,
+"end": 5.92
+},
+{
+"w": "de",
+"start": 5.92,
+"end": 6.0
+},
+{
+"w": "una",
+"start": 6.08,
+"end": 6.16
+},
+{
+"w": "vaca.",
+"start": 6.32,
+"end": 6.88
+},
+{
+"w": "¿Por",
+"start": 7.04,
+"end": 7.36
+},
+{
+"w": "qué?",
+"start": 7.52,
+"end": 7.84
+},
+{
+"w": "Te",
+"start": 8.0,
+"end": 8.08
+},
+{
+"w": "lo",
+"start": 8.24,
+"end": 8.32
+},
+{
+"w": "digo",
+"start": 8.4,
+"end": 8.64
+},
+{
+"w": "al",
+"start": 8.72,
+"end": 8.8
+},
+{
+"w": "final.",
+"start": 8.88,
+"end": 9.28
+},
+{
+"w": "Crees",
+"start": 9.44,
+"end": 9.76
+},
+{
+"w": "que",
+"start": 9.92,
+"end": 10.0
+},
+{
+"w": "la",
+"start": 10.08,
+"end": 10.16
+},
+{
+"w": "carrera",
+"start": 10.16,
+"end": 10.48
+},
+{
+"w": "va",
+"start": 10.48,
+"end": 10.56
+},
+{
+"w": "de",
+"start": 10.72,
+"end": 10.8
+},
+{
+"w": "mascotas.",
+"start": 10.88,
+"end": 11.6
+},
+{
+"w": "En",
+"start": 11.76,
+"end": 11.84
+},
+{
+"w": "realidad,",
+"start": 11.92,
+"end": 12.48
+},
+{
+"w": "estudias",
+"start": 12.56,
+"end": 13.04
+},
+{
+"w": "muchos",
+"start": 13.28,
+"end": 13.6
+},
+{
+"w": "animales",
+"start": 13.68,
+"end": 14.08
+},
+{
+"w": "a",
+"start": 14.16,
+"end": 14.24
+},
+{
+"w": "la",
+"start": 14.32,
+"end": 14.4
+},
+{
+"w": "vez.",
+"start": 14.48,
+"end": 14.88
+},
+{
+"w": "Anatomía,",
+"start": 15.12,
+"end": 16.0
+},
+{
+"w": "no",
+"start": 16.16,
+"end": 16.24
+},
+{
+"w": "de",
+"start": 16.4,
+"end": 16.48
+},
+{
+"w": "un",
+"start": 16.64,
+"end": 16.72
+},
+{
+"w": "cuerpo,",
+"start": 16.8,
+"end": 17.2
+},
+{
+"w": "sino",
+"start": 17.28,
+"end": 17.52
+},
+{
+"w": "de",
+"start": 17.6,
+"end": 17.68
+},
+{
+"w": "muchos.",
+"start": 17.76,
+"end": 18.32
+},
+{
+"w": "Perro,",
+"start": 18.56,
+"end": 19.04
+},
+{
+"w": "gato,",
+"start": 19.2,
+"end": 19.68
+},
+{
+"w": "caballo,",
+"start": 19.76,
+"end": 20.4
+},
+{
+"w": "vaca,",
+"start": 20.48,
+"end": 21.04
+},
+{
+"w": "cerdo",
+"start": 21.12,
+"end": 21.52
+},
+{
+"w": "y",
+"start": 21.68,
+"end": 21.76
+},
+{
+"w": "gallina.",
+"start": 21.84,
+"end": 22.56
+},
+{
+"w": "Farmacología,",
+"start": 22.8,
+"end": 23.84
+},
+{
+"w": "el",
+"start": 24.08,
+"end": 24.16
+},
+{
+"w": "mismo",
+"start": 24.24,
+"end": 24.48
+},
+{
+"w": "medicamento.",
+"start": 24.56,
+"end": 25.04
+},
+{
+"w": "Otra",
+"start": 25.41,
+"end": 25.65
+},
+{
+"w": "dosis",
+"start": 25.81,
+"end": 26.13
+},
+{
+"w": "para",
+"start": 26.29,
+"end": 26.37
+},
+{
+"w": "cada",
+"start": 26.45,
+"end": 26.53
+},
+{
+"w": "especie.",
+"start": 26.69,
+"end": 27.25
+},
+{
+"w": "Microbiología",
+"start": 27.49,
+"end": 28.45
+},
+{
+"w": "y",
+"start": 28.53,
+"end": 28.61
+},
+{
+"w": "parásitos.",
+"start": 28.69,
+"end": 29.41
+},
+{
+"w": "Lo",
+"start": 29.57,
+"end": 29.65
+},
+{
+"w": "que",
+"start": 29.73,
+"end": 29.81
+},
+{
+"w": "enferma",
+"start": 29.89,
+"end": 30.37
+},
+{
+"w": "a",
+"start": 30.45,
+"end": 30.53
+},
+{
+"w": "un",
+"start": 30.53,
+"end": 30.61
+},
+{
+"w": "animal",
+"start": 30.69,
+"end": 31.09
+},
+{
+"w": "y",
+"start": 31.33,
+"end": 31.41
+},
+{
+"w": "lo",
+"start": 31.49,
+"end": 31.57
+},
+{
+"w": "que",
+"start": 31.73,
+"end": 31.81
+},
+{
+"w": "puede",
+"start": 31.89,
+"end": 31.97
+},
+{
+"w": "pasarte",
+"start": 32.21,
+"end": 32.53
+},
+{
+"w": "a",
+"start": 32.77,
+"end": 32.85
+},
+{
+"w": "ti.",
+"start": 32.93,
+"end": 33.25
+},
+{
+"w": "Producción",
+"start": 33.41,
+"end": 33.97
+},
+{
+"w": "animal,",
+"start": 34.13,
+"end": 34.69
+},
+{
+"w": "granjas,",
+"start": 34.85,
+"end": 35.57
+},
+{
+"w": "alimentación",
+"start": 35.73,
+"end": 36.37
+},
+{
+"w": "y",
+"start": 36.45,
+"end": 36.53
+},
+{
+"w": "genética.",
+"start": 36.69,
+"end": 37.57
+},
+{
+"w": "Cirugía,",
+"start": 37.81,
+"end": 38.61
+},
+{
+"w": "quirófano,",
+"start": 38.77,
+"end": 39.65
+},
+{
+"w": "anestesia",
+"start": 39.65,
+"end": 40.37
+},
+{
+"w": "y",
+"start": 40.53,
+"end": 40.61
+},
+{
+"w": "puntos.",
+"start": 40.77,
+"end": 41.33
+},
+{
+"w": "Y",
+"start": 41.49,
+"end": 41.57
+},
+{
+"w": "lo",
+"start": 41.73,
+"end": 41.81
+},
+{
+"w": "que",
+"start": 41.89,
+"end": 41.97
+},
+{
+"w": "casi",
+"start": 42.05,
+"end": 42.29
+},
+{
+"w": "nadie",
+"start": 42.37,
+"end": 42.61
+},
+{
+"w": "sabe,",
+"start": 42.69,
+"end": 43.09
+},
+{
+"w": "también",
+"start": 43.33,
+"end": 43.41
+},
+{
+"w": "vigilas",
+"start": 43.73,
+"end": 44.29
+},
+{
+"w": "lo",
+"start": 44.37,
+"end": 44.45
+},
+{
+"w": "que",
+"start": 44.53,
+"end": 44.61
+},
+{
+"w": "comes.",
+"start": 44.69,
+"end": 45.25
+},
+{
+"w": "En",
+"start": 45.41,
+"end": 45.49
+},
+{
+"w": "España,",
+"start": 45.65,
+"end": 46.13
+},
+{
+"w": "ningún",
+"start": 46.21,
+"end": 46.53
+},
+{
+"w": "matadero",
+"start": 46.61,
+"end": 47.25
+},
+{
+"w": "puede",
+"start": 47.33,
+"end": 47.41
+},
+{
+"w": "funcionar",
+"start": 47.57,
+"end": 47.89
+},
+{
+"w": "sin",
+"start": 47.97,
+"end": 48.05
+},
+{
+"w": "un",
+"start": 48.13,
+"end": 48.21
+},
+{
+"w": "veterinario",
+"start": 48.29,
+"end": 48.85
+},
+{
+"w": "oficial",
+"start": 49.01,
+"end": 49.41
+},
+{
+"w": "dentro,",
+"start": 49.49,
+"end": 49.97
+},
+{
+"w": "revisando",
+"start": 50.05,
+"end": 50.45
+},
+{
+"w": "cada",
+"start": 50.53,
+"end": 50.61
+},
+{
+"w": "animal",
+"start": 50.77,
+"end": 51.01
+},
+{
+"w": "a",
+"start": 51.01,
+"end": 51.09
+},
+{
+"w": "la",
+"start": 51.17,
+"end": 51.25
+},
+{
+"w": "anterior.",
+"start": 51.33,
+"end": 51.41
+},
+{
+"w": "Antes",
+"start": 51.59,
+"end": 51.91
+},
+{
+"w": "y",
+"start": 51.99,
+"end": 52.07
+},
+{
+"w": "después.",
+"start": 52.23,
+"end": 52.87
+},
+{
+"w": "¿Y",
+"start": 53.11,
+"end": 53.27
+},
+{
+"w": "lo",
+"start": 53.43,
+"end": 53.51
+},
+{
+"w": "del",
+"start": 53.67,
+"end": 53.75
+},
+{
+"w": "brazo?",
+"start": 53.91,
+"end": 54.47
+},
+{
+"w": "Reproducción.",
+"start": 54.63,
+"end": 55.67
+},
+{
+"w": "Para",
+"start": 55.83,
+"end": 55.91
+},
+{
+"w": "saber",
+"start": 56.07,
+"end": 56.23
+},
+{
+"w": "si",
+"start": 56.31,
+"end": 56.39
+},
+{
+"w": "una",
+"start": 56.47,
+"end": 56.55
+},
+{
+"w": "vaca",
+"start": 56.71,
+"end": 57.03
+},
+{
+"w": "está",
+"start": 57.03,
+"end": 57.11
+},
+{
+"w": "preñada,",
+"start": 57.27,
+"end": 57.83
+},
+{
+"w": "se",
+"start": 57.83,
+"end": 57.91
+},
+{
+"w": "le",
+"start": 57.99,
+"end": 58.07
+},
+{
+"w": "palpa",
+"start": 58.15,
+"end": 58.47
+},
+{
+"w": "el",
+"start": 58.55,
+"end": 58.63
+},
+{
+"w": "útero",
+"start": 58.63,
+"end": 59.03
+},
+{
+"w": "desde",
+"start": 59.11,
+"end": 59.19
+},
+{
+"w": "dentro.",
+"start": 59.35,
+"end": 59.83
+},
+{
+"w": "Con",
+"start": 60.07,
+"end": 60.15
+},
+{
+"w": "el",
+"start": 60.23,
+"end": 60.31
+},
+{
+"w": "brazo",
+"start": 60.39,
+"end": 60.79
+},
+{
+"w": "metido.",
+"start": 60.87,
+"end": 61.51
+},
+{
+"w": "Así",
+"start": 61.67,
+"end": 61.75
+},
+{
+"w": "que",
+"start": 61.99,
+"end": 62.07
+},
+{
+"w": "sí,",
+"start": 62.15,
+"end": 62.47
+},
+{
+"w": "vas",
+"start": 62.63,
+"end": 62.71
+},
+{
+"w": "a",
+"start": 62.87,
+"end": 62.95
+},
+{
+"w": "curar",
+"start": 63.03,
+"end": 63.35
+},
+{
+"w": "perros",
+"start": 63.43,
+"end": 63.75
+},
+{
+"w": "y",
+"start": 63.83,
+"end": 63.91
+},
+{
+"w": "gatos.",
+"start": 63.99,
+"end": 64.55
+},
+{
+"w": "Pero",
+"start": 64.71,
+"end": 64.79
+},
+{
+"w": "antes,",
+"start": 65.03,
+"end": 65.43
+},
+{
+"w": "la",
+"start": 65.59,
+"end": 65.67
+},
+{
+"w": "vaca.",
+"start": 65.83,
+"end": 66.39
+},
+{
+"w": "¿Perros",
+"start": 66.47,
+"end": 67.03
+},
+{
+"w": "y",
+"start": 67.11,
+"end": 67.19
+},
+{
+"w": "gatos",
+"start": 67.27,
+"end": 67.59
+},
+{
+"w": "o",
+"start": 67.75,
+"end": 67.83
+},
+{
+"w": "vacas",
+"start": 67.99,
+"end": 68.39
+},
+{
+"w": "y",
+"start": 68.47,
+"end": 68.55
+},
+{
+"w": "caballos?",
+"start": 68.63,
+"end": 69.27
+},
+{
+"w": "Te",
+"start": 69.51,
+"end": 69.59
+},
+{
+"w": "leo.",
+"start": 69.83,
+"end": 70.23
+},
+{
+"w": "Y",
+"start": 70.31,
+"end": 70.39
+},
+{
+"w": "mándaselo",
+"start": 70.47,
+"end": 70.95
+},
+{
+"w": "a",
+"start": 71.11,
+"end": 71.19
+},
+{
+"w": "quien",
+"start": 71.27,
+"end": 71.43
+},
+{
+"w": "quiere",
+"start": 71.43,
+"end": 71.67
+},
+{
+"w": "ser",
+"start": 71.75,
+"end": 71.83
+},
+{
+"w": "veterinario.",
+"start": 71.91,
+"end": 72.63
+}
+]
