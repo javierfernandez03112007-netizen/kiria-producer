@@ -34,4 +34,6 @@ NOTAS PARA LA ENTREGA (no publicar):
 - La respuesta («¿te pueden despedir?») llega al final, con la Constitución (art. 28.2), el escudo y la nómina del día 11 a cero.
 - Atribuido: «dicen que el sueldo ya no llega» (los sindicatos), el coste (Conpymes), «electoral» (la CEOE). Sin culpar a ningún partido.
 - Efectos: solo de la biblioteca de ElevenLabs del canal, uno por suceso; sin música.
+- Entregado el 11-11-2026 (18:05): out/huelga.mp4 (56,6 s, 60 fps, −15,2 LUFS), out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
+- Revisión: las uniones de los 7 trozos encajan y el último fotograma enlaza con el primero.
 - SUBIR HOY, cuanto antes (la huelga es hoy).

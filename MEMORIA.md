@@ -108,7 +108,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   gigante en una fachada (2012 → 2026); la plaza con objetos gigantes que se van transformando (monedas, casa con alquiler, balanza,
   torres de billetes, calendario, urna, Constitución, nómina); reloj de fachada a las 00:00, autobús de «servicios mínimos» y el cruce
   final. Cámara siempre en movimiento (vuelos, picados, giros de 180°) y al final rebobina por la avenida hasta el primer fotograma.
-  Render: ≈ 10 s por fotograma en una sola máquina (14–16 s con 3–4 a la vez); 6 máquinas de ayuda (`render-hue-*`) + esta sesión.
+  Render: ≈ 10 s por fotograma en esta sesión (14–16 s con 3–4 a la vez); las máquinas de ayuda van más rápido (485 fotogramas en
+  17–30 min). 6 máquinas (`render-hue-*`, 485 fotogramas cada una) + esta sesión (los 483 últimos). **Entregado el 11-11 (18:05)**:
+  `out/huelga.mp4` (56,6 s, 60 fps, −15,2 LUFS), portada y miniatura; subir ese mismo día.
   **Lección**: Javi quiere este estilo de maqueta de día, vistoso y con gente, con muchísimo movimiento de cámara (mejor que los
   fondos oscuros de estudio de los vídeos anteriores) para los temas de actualidad.
 - **«Veterinaria por dentro»** (`projects/veterinaria/`, 11-11-2026): Javi pidió un vídeo «que vuelva a optar por miles de miles de
