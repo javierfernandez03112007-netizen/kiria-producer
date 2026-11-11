@@ -3,9 +3,11 @@ Tres mangueras, la misma bomba, la misma agua: ¿cuál pierde más presión?
 ¿La de veinticinco, cuarenta y cinco, setenta… o las tres igual?
 Comenta tu letra. Tienes cinco segundos.
 ¡Tiempo! Si has dicho «las tres igual»… has caído en la trampa.
-Dentro, el agua roza con la manguera y pierde presión a cada metro: es la pérdida de carga.
-En la más estrecha, la misma agua corre más deprisa: en la de veinticinco, casi ocho veces más que en la de setenta.
-Y cuanto más corre… más roza.
+Es la pérdida de carga: presión que se pierde porque el agua roza consigo misma y con las paredes.
+¿Qué la aumenta? Más longitud, más caudal: el doble de velocidad, cuatro veces más pérdida…
+Y menos diámetro: a la quinta potencia.
+Y suman los codos, las válvulas, la rugosidad y la viscosidad.
+Y ojo: no depende de la presión.
 Escribe en comentarios cuál crees que es la correcta.
 ¡Mándaselo a quien oposite contigo, a ver si la acierta!
 ¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!

@@ -597,11 +597,15 @@ function makeLabTube(seed) {
   const sparks = new THREE.Mesh(instQuads(420, seed + 50), new THREE.ShaderMaterial({ uniforms: ku, vertexShader: WAT_V, fragmentShader: SPK_F, transparent: true, depthWrite: false,
     blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneFactor }));
   sparks.frustumCulled = false; sparks.renderOrder = 9; G.add(sparks);
+  const kiu = { uL: su.uL, uR: su.uR, uD: { value: 0 }, uSize: { value: 0.05 }, uStreak: { value: 0.0 }, uN: { value: 1 }, uWall: { value: 0 }, uI: { value: 0 }, uTime: { value: 0 } };
+  const sparksIn = new THREE.Mesh(instQuads(700, seed + 90), new THREE.ShaderMaterial({ uniforms: kiu, vertexShader: WAT_V, fragmentShader: SPK_F, transparent: true, depthWrite: false,
+    blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneFactor }));
+  sparksIn.frustumCulled = false; sparksIn.renderOrder = 9; G.add(sparksIn);
   // tapas de luz en los extremos (entrada y salida del agua)
   const capM = new THREE.MeshBasicMaterial({ color: 0x3fb6ff, transparent: true, opacity: 0.0, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
   const cap = new THREE.Mesh(new THREE.RingGeometry(0.96, 1.0, 64), capM); cap.rotation.y = Math.PI / 2; G.add(cap);
   world.add(G);
-  return { G, su, wu, ku, cap };
+  return { G, su, wu, ku, ki: kiu, cap };
 }
 // ================================================================== MUNDO: plaza de noche, autobomba y tres líneas (versión 2)
 const world = new THREE.Group(); scene.add(world);
@@ -759,12 +763,12 @@ function camKeys() {          // planos ABIERTOS: las tres líneas enteras (auto
     [T.count0 + 2.0, [0.0, 8.0, -15.0, 0, 3.6, -26, 42]],
     [T.count1, [-6.0, 7.5, -16.5, 0, 3.6, -26, 42]],
     [T.tiempo + 0.35, [-1.5, 17, 6.0, 0, 0, -14, 40]],             // ¡Tiempo!: arriba del todo
-    [T.dentro + 0.1, [1.8, 12.5, 2.5, 0, 2.2, -11.5, 42]],         // baja a los «rayos X»: los tres enteros, uno al lado del otro
-    [T.perdida, [1.2, 12.0, 2.0, 0, 2.2, -11.5, 42]],
-    [T.estrecha, [0.6, 11.8, 1.6, 0, 2.2, -11.5, 42]],
-    [T.ocho, [0.0, 11.5, 1.2, 0, 2.2, -11.5, 42]],
-    [T.corre, [-0.25, 11.2, 0.9, -0.15, 2.2, -11.5, 42]],           // apenas se inclina hacia la de 25 (las tres enteras)
-    [T.roza2 + 0.4, [-0.35, 11.0, 0.6, -0.2, 2.2, -11.5, 42]],
+    [T.perdida + 0.1, [1.8, 12.5, 2.5, 0, 2.2, -11.5, 42]],        // baja a los «rayos X»: los tres enteros, uno al lado del otro
+    [T.aumenta, [1.2, 12.2, 2.2, 0, 2.2, -12.0, 42]],
+    [T.longitud + 0.6, [0.8, 13.6, 5.0, 0, 2.2, -14.0, 42]],        // los tubos se alargan: el dron sube
+    [T.diametro, [0.2, 13.0, 4.0, 0, 2.2, -13.5, 42]],
+    [T.codos, [-0.3, 13.2, 4.4, 0, 2.2, -13.5, 42]],
+    [T.ojo, [0.0, 14.0, 5.5, 0, 2.0, -13.0, 42]],
     [T.escribe, [0.8, 19.5, 9.5, 0, 0, -14, 40]],                  // muy arriba: todo
     [T.fin, [0.6, 22.5, 12.0, 0, 0, -14, 40]],
     [T.end, [0.4, 29, 18.0, 0, 0, -14, 42]],
@@ -793,6 +797,7 @@ function camAt(t) {
 }
 
 // ------------------------------------------------------------------ estado de la escena en t
+function tbLen() { return xr.length ? xr[0].su.uL.value : HL; }
 const VB = 1.6;                                           // velocidad del agua en la de 70 (visual); 45 → ×2,4; 25 → ×7,8
 function update(t) {
   const P = camAt(t);
@@ -825,21 +830,28 @@ function update(t) {
   gauges.forEach(gg => { gg.scale.setScalar(Math.max(0.001, gIn * gg.userData.sc)); gg.visible = gIn > 0.01; gg.quaternion.copy(cam.quaternion); });
   needles.forEach((n, i) => { n.rotation.z = -angP(5 + 3.2 * Math.sin((t - T.cual) * (2.1 + 0.4 * i) - 1.57 + i * 1.9)); });
   ffs.forEach((f, i) => { f.position.y = 0.004 * Math.sin(t * 2.1 + i); });
-  // los «rayos X» de las tres líneas: el agua corre (×1 / ×2,4 / ×7,8) y roza la pared
-  const xin = bk(pr(t, T.dentro - 0.15, 0.6)) * (1 - sm(T.escribe - 0.3, T.escribe + 0.3, t));
-  const rub = sm(T.roza - 0.2, T.roza + 0.4, t), more = sm(T.corre - 0.1, T.roza2 + 0.2, t);
+  // los «rayos X» de las tres líneas (explicación de Adrián): el agua roza consigo misma (chispas dentro) y con las paredes
+  // (chispas en la pared); más longitud (se alargan), el doble de velocidad (el agua corre el doble) y el diámetro
+  const xin = bk(pr(t, T.perdida - 0.15, 0.6)) * (1 - sm(T.escribe - 0.3, T.escribe + 0.3, t));
+  const rub = sm(T.paredes - 0.25, T.paredes + 0.3, t), inner = sm(T.misma - 0.25, T.misma + 0.3, t);
+  const len = mx(HL, HL + 4.0, e3(pr(t, T.longitud - 0.05, 0.8)));
+  const fastK = 1 + e3(pr(t, T.doble - 0.1, 0.6));
+  const a0 = T.doble - 0.1; let extra = 0; if (t > a0) { const n = 24, h = (t - a0) / n; for (let j = 0; j < n; j++) extra += e3(pr(a0 + (j + 0.5) * h, a0, 0.6)) * h; }
+  const thin = sm(T.quinta - 0.1, T.quinta + 0.3, t) * (1 - sm(T.codos - 0.2, T.codos + 0.3, t));
   xr.forEach((tb, i) => {
     tb.G.visible = xin > 0.01;
     if (!tb.G.visible) return;
-    const k = Math.pow(70 / DMM[i], 2);                      // 70 → 1; 45 → 2,42; 25 → 7,84
-    tb.su.uR.value = HR[i] * Math.max(0.001, xin); tb.su.uI.value = cl(xin);
-    tb.su.uRing.value = 0.2 + 0.5 * sm(T.metro - 0.4, T.metro, t) * (1 - sm(T.estrecha - 0.3, T.estrecha, t));
-    tb.wu.uD.value = VB * k * Math.max(0, t - T.dentro + 0.15); tb.wu.uStreak.value = 0.04 + 0.045 * VB * k * 0.5;
+    const k = Math.pow(70 / DMM[i], 2);                      // a igual caudal: 70 → 1; 45 → 2,42; 25 → 7,84
+    tb.su.uR.value = HR[i] * Math.max(0.001, xin); tb.su.uI.value = cl(xin); tb.su.uL.value = len;
+    tb.su.uRing.value = 0.2 + 0.5 * sm(T.longitud - 0.3, T.longitud, t) * (1 - sm(T.caudal - 0.2, T.caudal + 0.2, t));
+    tb.wu.uD.value = VB * k * (Math.max(0, t - T.perdida + 0.15) + extra); tb.wu.uStreak.value = 0.04 + 0.045 * VB * k * 0.5 * fastK;
     tb.wu.uSize.value = 0.03 + 0.02 * HR[i]; tb.wu.uI.value = 0.62 * cl(xin); tb.wu.uN.value = 0.35 + 0.6 * HR[i] / HR[2]; tb.wu.uTime.value = t;
     tb.wu.uRub.value = rub;
     tb.ku.uD.value = tb.wu.uD.value; tb.ku.uTime.value = t;
-    tb.ku.uI.value = rub * cl(0.18 + 0.12 * k + (i === 0 ? 1.4 * more : 0), 0, 2.4) * cl(xin);
-    tb.ku.uN.value = cl(0.15 + 0.06 * k + (i === 0 ? 0.35 * more : 0), 0, 1);
+    tb.ku.uI.value = rub * cl(0.16 + 0.08 * k + (i === 0 ? 1.1 * thin : 0), 0, 2.2) * cl(xin);
+    tb.ku.uN.value = cl(0.12 + 0.04 * k + (i === 0 ? 0.3 * thin : 0), 0, 1);
+    tb.ki.uD.value = tb.wu.uD.value * 0.8; tb.ki.uTime.value = t * 1.3;
+    tb.ki.uI.value = inner * cl(0.45 + 0.08 * k, 0, 1.6) * cl(xin) * (0.75 + 0.25 * fastK); tb.ki.uN.value = cl(0.45 + 0.05 * k, 0, 1);
     tb.su.uHot.value = tb.ku.uI.value * 0.3;
     tb.cap.scale.setScalar(tb.su.uR.value); tb.cap.material.opacity = 0.22 * cl(xin);
   });
@@ -874,7 +886,7 @@ const OPTS = [['A', '25 mm'], ['B', '45 mm'], ['C', '70 mm'], ['D', 'LAS TRES IG
 function cards(t) {               // 2 × 2 tarjetas: salen una a una al nombrarlas; D roja y tachada tras «¡Tiempo!»; vuelven al final (sin dar la respuesta)
   const tIn = [T.v25, T.v45, T.v70, T.igual - 0.25];
   OPTS.forEach(([L, s], i) => {
-    const k = Math.max(bk(pr(t, tIn[i] - 0.2, 0.4)) * (1 - sm(T.dentro - 0.35, T.dentro - 0.05, t)), bk(pr(t, T.escribe - 0.25 + i * 0.07, 0.4)) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t)));
+    const k = Math.max(bk(pr(t, tIn[i] - 0.2, 0.4)) * (1 - sm(T.perdida - 0.35, T.perdida - 0.05, t)), bk(pr(t, T.escribe - 0.25 + i * 0.07, 0.4)) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t)));
     if (k <= 0.005) return;
     const bad = i === 3 && t > T.tiempo - 0.05;
     const cx = 290 + (i % 2) * 500, cy = 640 + (i >> 1) * 170, side = i % 2 ? 1 : -1;
@@ -950,26 +962,29 @@ function overlay(t) {
     txt(String(n), 0, 38, 116, n >= 5 ? '#FF6B5E' : '#FFFFFF', 400, 'center', 'Bebas'); g.restore();
   }
   stamp('¡TIEMPO!', 1080, RED2, Math.exp(-Math.pow((t - T.tiempo - 0.35) / 0.32, 4)), 180);
-  // rayos X: título, etiquetas, roce, velocidades
-  const xin = sm(T.dentro - 0.1, T.dentro + 0.3, t) * (1 - sm(T.escribe - 0.4, T.escribe, t));
+  // rayos X (explicación de Adrián): qué es la pérdida de carga y qué la aumenta
+  const xin = sm(T.perdida - 0.1, T.perdida + 0.3, t) * (1 - sm(T.escribe - 0.4, T.escribe, t));
   if (xin > 0.01) {
-    const tt = sm(T.perdida - 0.1, T.perdida + 0.15, t) * (1 - sm(T.estrecha - 0.3, T.estrecha, t));
-    if (tt > 0) { g.save(); g.globalAlpha = tt; const sc = 0.85 + 0.15 * bk(cl(tt)); g.translate(540, 560); g.scale(sc, sc);
+    const big = (s1, a, y = 560, px = 128) => { if (a <= 0.005) return; g.save(); g.globalAlpha = a; const sc = 0.85 + 0.15 * bk(cl(a)); g.translate(540, y); g.scale(sc, sc);
       const gg = g.createLinearGradient(0, -60, 0, 20); gg.addColorStop(0, '#fff3b0'); gg.addColorStop(0.55, '#ffb52e'); gg.addColorStop(1, '#ff5a1f');
-      g.font = '400 128px Bebas'; g.textAlign = 'center'; g.shadowColor = 'rgba(0,0,0,0.8)'; g.shadowBlur = 24; g.fillStyle = gg; g.fillText('PÉRDIDA DE CARGA', 0, 40); g.shadowBlur = 0; g.restore(); }
-    chip(540, 1520, 'EL AGUA ROZA CON LA PARED', ORANGE2, sm(T.roza - 0.15, T.roza + 0.15, t) * (1 - sm(T.perdida - 0.3, T.perdida, t)), 1.0, 'z', 54);
-    chip(540, 1640, 'CADA METRO: − PRESIÓN', CYAN2, sm(T.metro - 0.15, T.metro + 0.15, t) * (1 - sm(T.estrecha - 0.3, T.estrecha, t)), 1.0, 'p', 54);
-    const vv = sm(T.ocho - 0.15, T.ocho + 0.15, t), lab = sm(T.dentro + 0.2, T.dentro + 0.5, t);
-    LANES.forEach((x, i) => {
-      const p = proj(V(x, HY + HR[i], HZ0 - HL - 0.6));
-      chip(p.x, p.y - 40, `${DMM[i]} mm`, COLS[i], lab * xin, 0.8, 'o', 50);
-      const q = proj(V(x, HY, HZ0 + 0.4));
-      const sv = ['×7,8', '×2,4', '×1'][i];
-      chip(q.x, q.y + 70, sv, i === 0 ? ORANGE2 : CYAN2, vv * xin, i === 0 ? 1.0 + 0.25 * Math.exp(-Math.pow((t - T.ocho - 0.2) / 0.25, 2)) : 0.85, 'w', 54);
+      g.font = `400 ${px}px Bebas`; g.textAlign = 'center'; g.shadowColor = 'rgba(0,0,0,0.8)'; g.shadowBlur = 24; g.fillStyle = gg; g.fillText(s1, 0, 40); g.shadowBlur = 0; g.restore(); };
+    big('PÉRDIDA DE CARGA', sm(T.perdida - 0.1, T.perdida + 0.15, t) * (1 - sm(T.aumenta - 0.3, T.aumenta, t)));
+    chip(540, 690, '= PRESIÓN AL PRINCIPIO − PRESIÓN AL FINAL', CYAN2, sm(T.perdida + 0.4, T.perdida + 0.7, t) * (1 - sm(T.aumenta - 0.3, T.aumenta, t)), 0.9, 'p', 48);
+    chip(540, 1520, 'ROCE DEL AGUA CONSIGO MISMA · 90 %', ORANGE2, sm(T.misma - 0.15, T.misma + 0.15, t) * (1 - sm(T.aumenta + 0.5, T.aumenta + 0.9, t)), 1.0, 'z', 52);
+    chip(540, 1630, 'ROCE CON LAS PAREDES · 10 %', RED2, sm(T.paredes - 0.15, T.paredes + 0.15, t) * (1 - sm(T.aumenta + 0.5, T.aumenta + 0.9, t)), 1.0, 'z', 52);
+    const tm = sm(T.misma + 0.3, T.misma + 0.6, t) * (1 - sm(T.aumenta + 0.5, T.aumenta + 0.9, t));
+    if (tm > 0.01) txt('(según el temario)', 540, 1720, 34, `rgba(242,245,248,${(0.7 * tm).toFixed(3)})`, 600, 'center');
+    big('¿QUÉ LA AUMENTA?', sm(T.aumenta - 0.1, T.aumenta + 0.15, t) * (1 - sm(T.diametro - 0.45, T.diametro - 0.15, t)));
+    const F = [['+ LONGITUD', T.longitud], ['+ CAUDAL', T.caudal], ['− DIÁMETRO', T.diametro], ['CODOS', T.codos], ['VÁLVULAS', T.valvulas], ['RUGOSIDAD', T.rugosidad], ['+ VISCOSIDAD', T.viscosidad]];
+    F.forEach(([s1, tc], j) => {
+      const a = sm(tc - 0.12, tc + 0.12, t) * (1 - sm(T.escribe - 0.4, T.escribe - 0.1, t)), hot = Math.exp(-Math.pow((t - tc - 0.25) / 0.4, 2));
+      chip(300 + (j % 2) * 480, 1430 + Math.floor(j / 2) * 105, s1, j < 3 ? GOLD2 : CYAN2, a, 0.9 + 0.2 * hot, null, 50);
     });
-    chip(540, 1480, 'A IGUAL CAUDAL · (70 / 25)² ≈ 7,8', GOLD2, sm(T.v25b - 0.1, T.v25b + 0.2, t) * (1 - sm(T.corre - 0.3, T.corre, t)), 0.95, null, 48);
-    stamp('×7,8', 1020, ORANGE2, Math.exp(-Math.pow((t - T.ocho - 0.45) / 0.55, 4)), 230, -0.05);
-    chip(540, 1480, 'MÁS VELOCIDAD = MÁS ROCE', RED2, sm(T.corre - 0.1, T.corre + 0.2, t) * (1 - sm(T.escribe - 0.4, T.escribe - 0.1, t)), 1.05, 'z', 56);
+    stamp('×2 VELOCIDAD = ×4 PÉRDIDA', 1020, ORANGE2, Math.exp(-Math.pow((t - T.cuatro - 0.35) / 0.6, 4)), 104, -0.04);
+    stamp('PÉRDIDA ∝ 1 / D⁵', 1020, GOLD2, Math.exp(-Math.pow((t - T.quinta - 0.35) / 0.6, 4)), 150, -0.04);
+    stamp('NO DEPENDE DE LA PRESIÓN', 1020, RED2, sm(T.depende - 0.2, T.depende + 0.1, t) * (1 - sm(T.escribe - 0.4, T.escribe - 0.1, t)), 104, -0.05);
+    const lab = sm(T.diametro - 0.2, T.diametro + 0.1, t) * (1 - sm(T.codos + 0.2, T.codos + 0.5, t));
+    LANES.forEach((x, i) => { const p = proj(V(x, HY + HR[i], HZ0 - (tbLen()) - 0.6)); chip(p.x, p.y - 40, `${DMM[i]} mm`, COLS[i], lab * xin, 0.8, 'o', 50); });
   }
   // final: escribe tu letra en comentarios (sin dar la respuesta)
   const ce = sm(T.comentarios - 0.1, T.comentarios + 0.2, t) * (1 - sm(T.fin - 0.3, T.fin + 0.05, t));
@@ -1001,7 +1016,7 @@ window.renderAt = t => {
   }
   if (N > 1) update(t);
   finMat.uniforms.tSrc.value = accRT.texture; finMat.uniforms.uTime.value = t;
-  const fl0 = Math.exp(-Math.pow((t - 0.02) / 0.05, 2)) * 0.1, fl1 = Math.exp(-Math.pow((t - T.tiempo - 0.03) / 0.07, 2)) * 0.35, fl2 = Math.exp(-Math.pow((t - T.dentro + 0.05) / 0.08, 2)) * 0.3;
+  const fl0 = Math.exp(-Math.pow((t - 0.02) / 0.05, 2)) * 0.1, fl1 = Math.exp(-Math.pow((t - T.tiempo - 0.03) / 0.07, 2)) * 0.35, fl2 = Math.exp(-Math.pow((t - T.perdida + 0.05) / 0.08, 2)) * 0.3;
   finMat.uniforms.uFlash.value = Math.max(fl0, fl1, fl2);
   if (fl1 >= Math.max(fl0, fl2)) finMat.uniforms.uFlashCol.value.setRGB(1, 0.35, 0.3); else finMat.uniforms.uFlashCol.value.setRGB(0.55, 0.85, 1.0);
   finMat.uniforms.uDim.value = (t >= T.fin ? mx(1, 0.5, sm(T.compartir - 0.2, T.compartir + 0.3, t)) : 1) * (1 - sm(T.end - 0.3, T.end, t));

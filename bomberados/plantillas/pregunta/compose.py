@@ -1679,7 +1679,7 @@ def sfx_track_mangueras(path):
     # el dron sube a la plaza: motor de la bomba, rotativos y el fuego de fondo hasta el final
     put("whoosh2", c["tres"] - 0.4, -24, 1.0)
     put(motor, c["tres"] - 0.3, -27, END - c["tres"], 0.3, 0.8, track=amb)
-    put("rotativo", c["tres"] - 0.3, -33, c["dentro"] - c["tres"] + 0.3, 0.3, 0.4, track=amb)
+    put("rotativo", c["tres"] - 0.3, -33, c["perdida"] - c["tres"] + 0.3, 0.3, 0.4, track=amb)
     put(burn, c["tres"] + 0.3, -32, END - c["tres"], 0.4, 0.6, track=amb)
     put("llave", c["bomba"] - 0.05, -28, 0.5, 0.001, 0.1)
     put(_pitch(agua, 1.0), c["agua"] - 0.2, -29, 1.4, 0.05, 0.5)
@@ -1702,19 +1702,24 @@ def sfx_track_mangueras(path):
     put("fallo", c["tiempo"] + 0.12, -26, 0.5)
     put("whoosh2", c["tiempo"] + 0.2, -29, 0.8)
     put(toque, c["trampa"] - 0.05, -28, 0.35)
-    # los «rayos X»: aparecen, el agua corre (más aguda cuanto más rápido), el roce chisporrotea; «×7,8»
-    put("destello", c["dentro"] - 0.15, -26, 0.7)
-    put(_pitch(bub, 0.6), c["dentro"], -26, 0.5)
-    put(agua, c["dentro"], -30, c["escribe"] - c["dentro"], 0.3, 0.4, track=amb)
-    put(_pitch(agua, 1.7), c["deprisa"] - 0.1, -31, c["escribe"] - c["deprisa"], 0.4, 0.4, track=amb)
-    put("vapor", c["roza"] - 0.1, -33, c["perdida"] - c["roza"] + 0.4, 0.3, 0.4, track=amb)
+    # los «rayos X» (explicación de Adrián): aparecen, el agua corre y roza (consigo misma y con las paredes); cada factor que
+    # la aumenta, un toque; el doble de velocidad (el agua sube de tono), «1/D⁵» y «no depende de la presión»
+    put("destello", c["perdida"] - 0.15, -26, 0.7)
+    put(_pitch(bub, 0.6), c["perdida"], -26, 0.5)
+    put(agua, c["perdida"], -30, c["doble"] - c["perdida"], 0.3, 0.3, track=amb)
+    put(_pitch(agua, 1.5), c["doble"] - 0.1, -30, c["escribe"] - c["doble"], 0.4, 0.4, track=amb)
+    put("vapor", c["roza"] - 0.1, -32, c["aumenta"] - c["roza"] + 0.3, 0.3, 0.4, track=amb)
     put("golpe", c["perdida"] - 0.06, -24, 0.8, 0.005, 0.35)
-    put("destello", c["perdida"] - 0.05, -28, 0.6)
-    put("tension", c["estrecha"] - 0.1, -29, c["ocho"] - c["estrecha"] + 0.4, 0.3, 0.2)
-    put("golpe", c["ocho"] - 0.05, -22, 0.9, 0.005, 0.4)
-    put("destello", c["ocho"] - 0.08, -26, 0.7)
-    put("vapor", c["corre"] - 0.1, -27, c["escribe"] - c["corre"], 0.2, 0.3)
-    put(_pitch(_onset(_load("rele")), 1.3), c["roza2"] - 0.05, -27, 0.3)
+    put("whoosh", c["aumenta"] - 0.3, -28, 0.6)
+    for k, key in enumerate(("longitud", "caudal", "diametro", "codos", "valvulas", "rugosidad", "viscosidad")):
+        put(_pitch(toque, 1.0 + 0.07 * k), c[key] - 0.03, -28, 0.35)
+    put(_pitch(_onset(_load("whoosh2")), 0.8), c["longitud"] - 0.05, -30, 0.9)
+    put("golpe", c["cuatro"] - 0.05, -23, 0.8, 0.005, 0.35)
+    put("destello", c["cuatro"] - 0.08, -27, 0.6)
+    put("golpe", c["quinta"] - 0.05, -22, 0.9, 0.005, 0.4)
+    put("destello", c["quinta"] - 0.08, -26, 0.7)
+    put("fallo", c["depende"] - 0.05, -27, 0.5)
+    put("golpe", c["depende"] + 0.05, -25, 0.7, 0.005, 0.3)
     # «Escribe en comentarios…»: el dron sube y vuelven las letras
     put("whoosh2", c["escribe"] - 0.3, -27, 0.8)
     for i in range(4):

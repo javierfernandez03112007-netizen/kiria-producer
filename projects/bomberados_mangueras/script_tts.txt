@@ -3,9 +3,11 @@
 [quick] ¿La de veinticinco, cuarenta y cinco, setenta… [teasing] o las tres igual?
 [challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
 [alarmed] ¡Tiempo! [intrigued] Si has dicho «las tres igual»… [grave] has caído en la trampa.
-[explaining, fast] Dentro, el agua roza con la manguera y pierde presión a cada metro: es la PÉRDIDA DE CARGA.
-[building up] En la más estrecha, la misma agua corre más deprisa: [surprised] en la de veinticinco, casi OCHO veces más que en la de setenta.
-[serious, warning] Y cuanto más corre… más roza.
+[explaining, fast] Es la PÉRDIDA DE CARGA: presión que se pierde porque el agua roza consigo misma y con las paredes.
+[building up] ¿Qué la aumenta? Más longitud, más caudal: [impressed] el doble de velocidad, CUATRO veces más pérdida…
+[emphatic] Y menos diámetro: a la QUINTA potencia.
+[quick] Y suman los codos, las válvulas, la rugosidad y la viscosidad.
+[serious, warning] Y ojo: NO depende de la presión.
 [challenging] Escribe en comentarios cuál crees que es la correcta.
 [excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
 [energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

@@ -1,14 +1,15 @@
-«¿QUÉ MANGUERA PIERDE MÁS PRESIÓN?» — VERSIÓN 2 (pérdida de carga en mangueras de 25, 45 y 70 mm; pregunta de Adrián,
-examen del Ayto. de Pontevedra 2022)
+«¿QUÉ MANGUERA PIERDE MÁS PRESIÓN?» — VERSIÓN 3 (explicación de ADRIÁN, 11 nov) — pérdida de carga en mangueras de 25,
+45 y 70 mm; examen del Ayto. de Pontevedra 2022
 
-Rehecho con lo que pidió Javi el 10 nov y el molde de los dos más virales (acoplamiento y presión): gancho que ALARMA
-(el fuego avanza y la lanza se queda sin fuerza), más rápido, la cuenta de 5 segundos para que respondan, «¡Tiempo!» con la
-trampa, y un dron que no para de moverse con planos ABIERTOS (las mangueras enteras, nada cortado).
+Igual que la versión 2 en lo que funciona (gancho de alarma, cuenta de 5 s, «¡Tiempo!», dron que no para, planos abiertos,
+cierre con letras), pero la explicación es la de Adrián: qué es la pérdida de carga (el agua roza consigo misma y con las
+paredes; 90 % / 10 % según el temario) y qué la AUMENTA (longitud, caudal —doble velocidad = cuádruple pérdida—, menor
+diámetro —a la quinta potencia—, codos, válvulas, rugosidad, viscosidad), y que NO depende de la presión.
 
 Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
 Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
-Todo el vídeo lleva voz (≈ 45 s + 4 s de cuenta). RÁPIDO y con urgencia: no la voy a ralentizar. El gancho, alarmado; el
-resto, con ritmo. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en el 5). «¡Tiempo!», de golpe.
+≈ 49 s de voz + 4 s de cuenta. RÁPIDO y con urgencia (no la voy a ralentizar). La lista de factores, enumerando con ritmo.
+La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en el 5). «¡Tiempo!», de golpe.
 Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
 
 ----- COPIAR DESDE AQUÍ (Eleven v3) -----
@@ -17,9 +18,11 @@ Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébal
 [quick] ¿La de veinticinco, cuarenta y cinco, setenta… [teasing] o las tres igual?
 [challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
 [alarmed] ¡Tiempo! [intrigued] Si has dicho «las tres igual»… [grave] has caído en la trampa.
-[explaining, fast] Dentro, el agua roza con la manguera y pierde presión a cada metro: es la PÉRDIDA DE CARGA.
-[building up] En la más estrecha, la misma agua corre más deprisa: [surprised] en la de veinticinco, casi OCHO veces más que en la de setenta.
-[serious, warning] Y cuanto más corre… más roza.
+[explaining, fast] Es la PÉRDIDA DE CARGA: presión que se pierde porque el agua roza consigo misma y con las paredes.
+[building up] ¿Qué la aumenta? Más longitud, más caudal: [impressed] el doble de velocidad, CUATRO veces más pérdida…
+[emphatic] Y menos diámetro: a la QUINTA potencia.
+[quick] Y suman los codos, las válvulas, la rugosidad y la viscosidad.
+[serious, warning] Y ojo: NO depende de la presión.
 [challenging] Escribe en comentarios cuál crees que es la correcta.
 [excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
 [energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
@@ -28,32 +31,28 @@ Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébal
 Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
 («oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
 
-GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con UN DRON QUE NO PARA: vuela de un sitio a otro sin cortes
-negros, con planos abiertos donde se ven las tres mangueras enteras (la autobomba abajo, las lanzas y el fuego arriba).
-1. «¡El fuego avanza… y la lanza de tu compañero se queda SIN FUERZA!» — primer fotograma: el dron llega rasante hasta un
-   bombero frente al edificio en llamas; su chorro se desploma hasta casi nada mientras las llamas crecen hacia él;
-   manómetro de la lanza cayendo en rojo y rótulo «¡SIN PRESIÓN!».
-2. «Tres mangueras, la misma bomba, la misma agua: ¿cuál pierde más presión?» — el dron sube y vuela hacia atrás hasta la
-   autobomba: se ven las tres líneas enteras saliendo del mismo colector; MISMA BOMBA · MISMO CAUDAL; manómetros «?» en
-   las tres lanzas. Sello: EXAMEN · AYTO. DE PONTEVEDRA 2022.
-3. «¿La de 25, 45, 70… o las tres igual?» — el dron pasa por encima de las tres líneas: cada una se enciende con su grosor
-   (A · 25 mm, B · 45 mm, C · 70 mm) y salen las tarjetas A / B / C / D.
-4. «Comenta tu letra. Tienes cinco segundos.» — cuenta 1-2-3-4-5 (tic-tac y bocina) mientras el dron gira alrededor de los
-   tres bomberos con sus manómetros «?».
-5. «¡Tiempo! Si has dicho “las tres igual”… has caído en la trampa.» — bocina; la D se pone roja y tachada.
-6. «Dentro, el agua roza con la manguera y pierde presión a cada metro: es la pérdida de carga.» — sobre cada línea se
-   enciende su «rayos X» (la manguera por dentro, grande, flotando encima): el agua corre, roza la pared (chispas) y la
-   presión baja metro a metro; rótulo 3D PÉRDIDA DE CARGA.
-7. «En la más estrecha, la misma agua corre más deprisa: en la de 25, casi OCHO veces más que en la de 70.» — el dron vuela
-   a lo largo de los tres «rayos X»: velocidad ×1 (70), ×2,4 (45) y ×7,8 (25), con el «×7,8» gigante.
-8. «Y cuanto más corre… más roza.» — en la de 25 saltan muchas más chispas.
-9. «Escribe en comentarios cuál crees que es la correcta.» — el dron se aleja muy alto; las cuatro tarjetas (la D tachada)
-   y «💬 ESCRIBE TU LETRA EN COMENTARIOS».
-10. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel TÚ → TU COMPAÑERO DE OPOSICIÓN.
-11. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con UN DRON QUE NO PARA y planos abiertos (las tres mangueras
+enteras):
+1. «¡El fuego avanza… y la lanza de tu compañero se queda SIN FUERZA!» — el chorro se desploma delante de las llamas;
+   manómetro en rojo y «¡SIN PRESIÓN!» (igual que la versión 2).
+2. «Tres mangueras… ¿cuál pierde más presión?» — el dron vuela a la autobomba: misma bomba, mismo caudal, las tres líneas
+   enteras y los manómetros «?». Sello: EXAMEN · AYTO. DE PONTEVEDRA 2022.
+3. «¿La de 25, 45, 70… o las tres igual?» — cada línea se enciende con su grosor y salen las tarjetas A / B / C / D.
+4. «Comenta tu letra. Tienes cinco segundos.» — cuenta 1-2-3-4-5 con bocina; el dron gira alrededor de las lanzas.
+5. «¡Tiempo! Si has dicho “las tres igual”… has caído en la trampa.» — la D roja y tachada.
+6. «Es la pérdida de carga: presión que se pierde porque el agua roza consigo misma y con las paredes.» — sobre cada línea,
+   su «rayos X»: el agua choca consigo misma y roza las paredes (chispas); rótulo PÉRDIDA DE CARGA y «= PRESIÓN AL PRINCIPIO
+   − PRESIÓN AL FINAL»; «ROCE DEL AGUA CONSIGO MISMA 90 % · CON LAS PAREDES 10 % (temario)».
+7. «¿Qué la aumenta? Más longitud…» — los tubos se alargan: «+ LONGITUD = + PÉRDIDA». «…más caudal: el doble de velocidad,
+   cuatro veces más pérdida…» — el agua va el doble de rápido: «×2 VELOCIDAD = ×4 PÉRDIDA».
+8. «Y menos diámetro: a la quinta potencia.» — «PÉRDIDA ∝ 1 / D⁵» gigante sobre los tres tubos (25, 45 y 70 mm).
+9. «Y suman los codos, las válvulas, la rugosidad y la viscosidad.» — salen uno a uno: CODOS · VÁLVULAS · RUGOSIDAD ·
+   VISCOSIDAD.
+10. «Y ojo: no depende de la presión.» — sello: NO DEPENDE DE LA PRESIÓN (manómetro tachado).
+11. «Escribe en comentarios cuál crees que es la correcta.» — el dron sube; las cuatro tarjetas (la D tachada) y «💬 ESCRIBE
+    TU LETRA EN COMENTARIOS».
+12. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel.
+13. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
 ★ = momentos de venta: los más fuertes del vídeo.
 
-Respuesta (solo en la descripción): A) la de 25 mm. Con el mismo caudal, en la de 25 el agua va (70/25)² ≈ 7,8 veces más
-rápida que en la de 70 y el rozamiento crece con la velocidad: con la misma longitud, la de 25 pierde decenas de veces más
-que la de 45 y más de cien veces más que la de 70. La trampa: la D («las tres igual»). Ver FUENTES.md.
-CONFIRMAR con Adrián: que es del examen del Ayto. de Pontevedra (2022), para dejar el sello.
+Respuesta (solo en la descripción): A) la de 25 mm (a igual caudal, la pérdida va con 1/D⁵).

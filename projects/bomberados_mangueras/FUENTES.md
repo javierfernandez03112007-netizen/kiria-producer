@@ -40,3 +40,15 @@
   columnas son ilustrativas (no hay escala en pantalla).
 - Voz: Danny (ElevenLabs, Eleven v3), grabada por Javi. Efectos: biblioteca de vídeos anteriores (presión, botella,
   autobús) y sintetizados.
+
+## Versión 3 (11 nov): la explicación que pidió Adrián
+Adrián (cliente, por WhatsApp a Javi) pidió que el vídeo explique así la pérdida de carga (temario de Élite Bomberos):
+«La caída de presión ocasionada por la resistencia a fluir se denomina pérdida de carga: pérdida de presión que sufre un
+líquido por el rozamiento consigo mismo y con las paredes. Se deben a la fricción de las partículas entre sí (90 %) y contra
+las paredes de la tubería (10 %). Es la diferencia de presión entre el principio y el final de un conducto. Factores que las
+AUMENTAN: mayor longitud (directamente proporcional); mayor caudal o velocidad (proporcional al cuadrado: doble velocidad =
+cuádruple pérdida); menor diámetro (inversamente proporcional a su quinta potencia); los elementos de la instalación
+(rugosidad, codos, bifurcaciones, válvulas…); mayor viscosidad. Las pérdidas de carga son independientes de la presión.»
+- En pantalla, el 90 % / 10 % va con «(según el temario)»: es el dato del temario de la academia; no lo hemos encontrado en
+  una fuente técnica pública. **Pendiente:** la página del manual de donde sale.
+- Lo demás coincide con la física: Darcy-Weisbach h = f·(L/D)·v²/2g (∝ L, ∝ v², y a igual caudal ∝ 1/D⁵ porque v ∝ 1/D²).

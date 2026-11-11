@@ -8,7 +8,7 @@ c) La de 70 mm
 d) Las tres por igual
 
 ⏱️ Tienes 5 segundos… y cuidado con la trampa.
-💧 En el vídeo tienes la pista: dentro de la manguera el agua roza con la pared… y no en todas va igual de rápida.
+💧 En el vídeo tienes la pista: qué es la pérdida de carga y qué la aumenta.
 
 👇 Escribe tu letra en comentarios y mándaselo a quien oposite contigo: ¿la acertará?
 📌 Guárdalo para repasar hidráulica.
@@ -23,7 +23,7 @@ Estudia solo, reta a otro opositor en un 1 vs 1 o compite en un Battle Royale de
 .
 .
 ✅ Respuesta: A) la de 25 mm.
-La pérdida de carga es la presión que pierde el agua al rozar con la manguera. Con el mismo caudal, en la de 25 mm el agua va casi 8 veces más rápida que en la de 70 [(70/25)² ≈ 7,8] y el rozamiento crece con la velocidad: con la misma longitud, la de 25 pierde decenas de veces más que la de 45 y más de cien veces más que la de 70.
+La pérdida de carga es la presión que pierde el agua por el rozamiento consigo misma y con las paredes (la diferencia de presión entre el principio y el final de la manguera). Aumenta con la longitud, con el caudal (doble velocidad = cuádruple pérdida), con los codos, válvulas, rugosidad y viscosidad… y con MENOS diámetro: es inversamente proporcional a la quinta potencia del diámetro. Por eso, con el mismo caudal, la de 25 mm es la que más pierde. Y no depende de la presión.
 La trampa: la D («las tres igual»), pensar que la pérdida solo depende de lo larga que es la manguera.
 
 ---
@@ -37,7 +37,7 @@ Versión corta (TikTok):
 ---
 
 NOTAS PARA LA ENTREGA (no publicar):
-- Versión 2 (la que vale): gancho de alarma, cuenta de 5 s y «¡Tiempo!» (la D tachada). El vídeo NO dice la respuesta: al final, las letras y «escribe en comentarios cuál crees que es la correcta»; la respuesta, solo al final de la descripción.
+- Versión 3 (la que vale): la explicación de Adrián (qué es la pérdida de carga y qué la aumenta), con el gancho de alarma, la cuenta de 5 s y «¡Tiempo!» (la D tachada). El vídeo NO dice la respuesta: al final, las letras y «escribe en comentarios cuál crees que es la correcta»; la respuesta, solo al final de la descripción.
 - Comentario fijado: «📌 ¿Cuál pierde más? Escribe tu letra 👇 (la respuesta, al final de la descripción)».
 - Pregunta de Adrián (Élite Bomberos). PENDIENTE: que confirme que es del examen del Ayto. de Pontevedra (2022); si lo confirma, se puede añadir «Pregunta de examen de Pontevedra» al principio de la descripción.
 - PENDIENTE: la página del manual de hidráulica que uséis para citarla en FUENTES.md.
