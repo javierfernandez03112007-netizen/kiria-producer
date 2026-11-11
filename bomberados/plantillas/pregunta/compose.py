@@ -1745,7 +1745,84 @@ def sfx_track_mangueras(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_quiz(path):
+    """«¿Cuántas aciertas?» (6 preguntas, 3 s): la alarma del parque (timbre, sirena, luces) y las puertas que suben; el dron
+    que vuela de un objeto a otro (barridos); en cada pregunta, un golpe y la cuenta 3-2-1 con tic-tac y tensión; en cada
+    respuesta, el acierto y el sonido de su objeto (libro, neón, fuego, agua, equipo, sello); las notas finales y la venta."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    qi, ai = [1, 3, 5, 7, 9, 11], [2, 4, 6, 8, 10, 12]
+    Tq = [LINES[i]["start"] for i in qi]; Tc = [LINES[i]["end"] + 0.05 for i in qi]; Ta = [LINES[i]["start"] for i in ai]
+    tclose = LINES[13]["start"]
+    bub, nota, toque = _onset(_load("burbuja")), _onset(_load("nota")), _onset(_load("toque"))
+    fuego = _load("fuego")
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # la alarma: timbre y sirena del parque, motor y rotativos; las puertas suben
+    alarma = _load("alarma")
+    put(alarma, 0.0, -20, 0.9, 0.005, 0.15)
+    put(alarma[int(0.9 * sfx.SR):], 0.9, -22, LINES[0]["end"] - 0.3, 0.05, 0.5, track=amb)
+    put("sirena", 0.3, -27, LINES[0]["end"] + 0.4, 0.2, 0.6, track=amb)
+    put("latido", 0.05, -24, 0.7)
+    put("destello", 0.02, -26, 0.7)
+    for k in range(3):
+        put(_pitch(_onset(_load("caida")), 0.7)[::-1].copy(), 0.35 + 0.12 * k, -31, 1.2, 0.05, 0.3)
+    put("motor", 0.5, -33, END - 0.5, 0.6, 0.8, track=amb)
+    put("rotativo", 0.5, -36, END - 0.5, 0.6, 0.8, track=amb)
+    sounds = [("golpe", -24), ("rele", -26), (fuego[int(0.3 * sfx.SR):], -26), ("burbuja", -24), ("llave", -25), ("golpe", -19)]
+    for i in range(6):
+        # vuela al siguiente objeto; golpe de pregunta; cuenta 3-2-1 con tensión
+        put("whoosh2", Tq[i] - 0.35, -27, 0.8)
+        put(_pitch(toque, 1.0 + 0.06 * i), Tq[i] - 0.02, -27, 0.35)
+        put("tension", Tc[i] - 0.1, -29, 3.2, 0.2, 0.1)
+        for k in range(3):
+            put("tic", Tc[i] + k, -21 + 1.5 * k, 0.3)
+        # respuesta: acierto + destello + su objeto
+        put("acierto", Ta[i] - 0.03, -22, 0.9, 0.003, 0.3)
+        put("destello", Ta[i] - 0.05, -26, 0.6)
+        x, db = sounds[i]
+        put(x, Ta[i] + 0.05, db, 0.9, 0.005, 0.3)
+    put("fallo", Tq[5] - 0.1, -30, 0.5)                    # «La difícil»
+    # notas finales y «comenta tu número»
+    put("whoosh2", tclose - 0.3, -27, 0.8)
+    for k in range(3):
+        put(_pitch(nota, 1.0 * 1.122 ** k), tclose + 0.3 + 0.25 * k, -28, 0.7)
+    put(toque, c["comenta"] - 0.05, -27, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "quiz":
+        return sfx_track_quiz(path)
     if Q.get("formato") == "mangueras":
         return sfx_track_mangueras(path)
     if Q.get("formato") == "fomo":
