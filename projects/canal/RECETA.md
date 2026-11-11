@@ -12,6 +12,8 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
   Derecho 880 mil, Industrial 522 mil, Mecánica 330 mil, Magisterio 309 mil, Informática 271 mil, Aeroespacial 201 mil. Media de los
   «por dentro» de carreras: 287 mil visitas; duelos: 59 mil; curiosidades: 71 mil.
 - ✅ Carreras con mucha gente estudiándolas o con un bulo popular («Magisterio = macarrones»): más gente a quien mandárselo.
+- 🧪 **Actualidad con fecha + «tú» + por dentro** (GTA 6, 11-11): 125.658 en 27 h y 77,8 % pasa de 3 s, el mejor arranque desde
+  Derecho. Trae gente nueva, pero se guarda poco (2,4 por cada 1.000).
 - 🧪 **Historias reales contadas en orden** (el túnel de Brasil): la mejor retención del canal (79 % del vídeo visto) y el que más
   crece (+13.928 en un día, 7-11). Alternarlas con las carreras; se guardan poco.
 - 👤 **Público nuevo (Javi, 6/7-11)**: además de estudiantes, atraer a dueños de pequeños negocios (noticias que les afectan, negocios por
