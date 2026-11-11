@@ -53,6 +53,19 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
 Lo que funciona: carreras «por dentro» con un giro verdadero («acabas la carrera… y todavía no eres…», «menos de 3 de cada 100»),
 datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o juez?»). Los duelos generan comentarios.
 
+## Plan para despegar (Javi lo aprobó el 11-11-2026: «hazlo»)
+- **Diagnóstico (Metricool, 27 reels)**: las carreras «por dentro» hasta el 1-11 tuvieron una mediana de 344.000 visualizaciones; desde el 2-11
+  (Economía, Medicina, ADE), 21.000, **con las mismas señales** (≈ 18 compartidos y 15 guardados por cada 1.000; 63–74 % pasa de 3 s): no es el vídeo,
+  es el empujón inicial. Desde el 2-11: varios vídeos al día, temas muy distintos y 4 anuncios en el feed (37–43 % pasa de 3 s, 7 s de media).
+  La huelga (11-11, 18:00) se frenó: Instagram, por defecto, no recomienda a quien no te sigue temas de «gobiernos, elecciones o temas sociales».
+- **Plan**: (1) una carrera «por dentro» con giro al día, a las 10:00, y nada más ese día; (2) anuncios y el reto fuera del feed (historias, otra
+  cuenta o anuncio pagado); venta con una frase suave al final + enlace de la bio; (3) lo experimental (actualidad, curiosidades, otro gancho) como
+  **reel de prueba** (solo lo ven quienes no te siguen, 72 h, fuera del perfil); (4) cada vídeo también en TikTok y YouTube Shorts; (5) guiones de
+  ≤ 145 palabras en lotes de 5 (Javi graba los 5 de una vez) y plantilla de escena reutilizable; (6) colaboraciones con cuentas de academias
+  de selectividad y de estudiantes. Nada de política ni temas sociales en el feed.
+- **Primer lote (11-11)**: Veterinaria (jue 12, 10:00, ya hecho), Odontología (vie 13), Enfermería (sáb 14), Farmacia (dom 15), Biología (lun 16),
+  Periodismo (mar 17). Guiones y fuentes en `projects/<carrera>/` (`script.txt`, `script_tts.txt`, `FUENTES.md`) y en el Calendario de Notion (Estado «Guion»).
+
 ## Próximas ideas
 1. **Psicología** (elegida el 1-11-2026; plan y datos en `projects/psicologia/IDEA.md` y `FUENTES.md`): «Estudias cuatro años de Psicología… y la ley no te deja tratar ni a un solo paciente» → Máster en Psicología General
    Sanitaria o PIR. (Comprobar Ley 33/2011, créditos del máster, plazas PIR y nota de corte antes del guion.)

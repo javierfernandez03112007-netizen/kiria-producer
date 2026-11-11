@@ -68,6 +68,13 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - 🧪 **Un solo vídeo informativo al día**: el 2 y 3 de noviembre salieron 4 y Medicina y Economía se quedaron cortos.
 - Portada con la frase del gancho en grande; descripción con las fuentes. Hashtags y descripción: sin datos todavía para compararlos.
 
+## 7 bis. Plan del 11-11 (👤 Javi lo aprobó)
+- 👤 **Un vídeo al día, a las 10:00, de carreras «por dentro» con giro**; nada más ese día en el feed. Lo experimental, como **reel de prueba**.
+- 👤 Anuncios y el reto, fuera del feed principal (historias, otra cuenta o anuncio pagado).
+- 🧪 **Desde el 2-11 las carreras tienen las mismas señales que Derecho o Industrial (≈ 18 compartidos y 15 guardados por cada 1.000) pero 15 veces
+  menos alcance**: el freno es el empujón inicial de la cuenta (mezcla de temas, varios vídeos al día y anuncios con 37–43 % a los 3 s), no el vídeo.
+- 🧪 **Política y temas sociales** (huelga, elecciones, sindicatos, protestas): Instagram, por defecto, no los recomienda a quien no te sigue. Fuera del feed.
+
 ## 8. Lo que NO hacer
 - Ganchos de pura curiosidad sin tensión (la carga sin cable, «Tu móvil habla con el cargador…»).
 - 🧪 Noticias de ciencia lejana sin nada que toque al que mira (perro robot: 1.441 en 11 h y 0 compartidos). Meter siempre un «tú».
