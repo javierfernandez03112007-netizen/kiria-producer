@@ -107,7 +107,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   del principio. Efectos: biblioteca del canal (`compose_vet.py`). Render en las 6 máquinas «Lanzamiento · render 1–6» (`render-vet-1…6`).
   Lecciones: (1) en 9:16 no caben 6 animales de lado: plataforma giratoria, uno en el centro; (2) un plano de recorte fijo que corta a
   todos los animales de una plataforma que gira vuelve sólidos a los de atrás: barrido por animal y por tiempo; (3) un perro con manchas
-  negras se confunde con la vaca: perro canela.
+  negras se confunde con la vaca: perro canela; (4) **comprobar que ningún trozo que sale volando pasa pegado a la cámara**
+  (`debug/trozos_camara.js`): en la primera versión un cascote tapó la pantalla 3 fotogramas en el segundo 0,6; ahora caen dentro de la
+  clínica y se repitieron solo los fotogramas de la clínica (ramas `render-vet2-1…6`, ≈ 10 min). **Entregado el 11-11-2026 (13:20)**:
+  `out/veterinaria.mp4` (59,8 s, 60 fps, 52 MB, −15,5 LUFS, uniones y bucle limpios), portada y miniatura; Notion «Listo»; subida
+  propuesta vie 13 a las 18:00. Pendiente de permiso: borrar las ramas `render-vet-*` y `render-vet2-*`.
 - **El perro robot con neuronas humanas** (`projects/robot_neuronas/`, 6-11-2026): Javi: «otro que no sea de publicidad sino de contenido,
   algo muy muy fuerte, por ejemplo algo de robots». Noticia de Cortical Labs (Australia). Guion primero → su MP3 (57,9 s) → ×1,08 y pausas
   recortadas (48,2 s; vídeo de 51 s). Escena (un solo plano que sigue al perro): perro robot blanco con cúpula de cristal y un chip de

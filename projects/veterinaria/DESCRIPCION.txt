@@ -28,4 +28,7 @@ NOTAS PARA LA ENTREGA (no publicar):
 - Primer segundo: la pared de la clínica ya está saltando y entra la cabeza de una vaca de tamaño real encima del cachorro (lo más raro del vídeo). Al final la pared se rebobina: el último fotograma enlaza con el primero.
 - La respuesta («lo del brazo») llega al final, en rayos X: el útero, el ternero y el brazo con el guante largo.
 - Rótulos de EJEMPLO: «FÁRMACO · mg/kg», «TERNERA». El sello «INSPECCIONADO» es ilustrativo (la marca sanitaria real es un óvalo con códigos).
+- Arreglo antes de entregar: en el segundo 0,6 un cascote pasaba pegado a la cámara y tapaba la pantalla; ahora los cascotes caen dentro de la clínica
+  (se repitieron solo los fotogramas de la clínica).
+- Entregado el 11-11-2026 (13:20): out/veterinaria.mp4 (59,8 s, 60 fps, −15,5 LUFS), out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
 - Subida recomendada: viernes 13 a las 18:00 (o el día que encaje en la parrilla), con la portada `out/portada.jpg`.
