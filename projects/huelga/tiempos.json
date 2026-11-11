@@ -1,0 +1,917 @@
+[
+ {
+  "text": "Hoy hay huelga general en toda España… y no es solo por los sueldos.",
+  "start": 0.0,
+  "end": 3.733,
+  "words": [
+   {
+    "w": "Hoy",
+    "start": 0.0,
+    "end": 0.284
+   },
+   {
+    "w": "hay",
+    "start": 0.284,
+    "end": 0.498
+   },
+   {
+    "w": "huelga",
+    "start": 0.498,
+    "end": 0.924
+   },
+   {
+    "w": "general",
+    "start": 0.924,
+    "end": 1.351
+   },
+   {
+    "w": "en",
+    "start": 1.351,
+    "end": 1.493
+   },
+   {
+    "w": "toda",
+    "start": 1.493,
+    "end": 1.707
+   },
+   {
+    "w": "España…",
+    "start": 1.707,
+    "end": 2.293
+   },
+   {
+    "w": "y",
+    "start": 2.293,
+    "end": 2.409
+   },
+   {
+    "w": "no",
+    "start": 2.409,
+    "end": 2.622
+   },
+   {
+    "w": "es",
+    "start": 2.622,
+    "end": 2.764
+   },
+   {
+    "w": "solo",
+    "start": 2.764,
+    "end": 3.049
+   },
+   {
+    "w": "por",
+    "start": 3.049,
+    "end": 3.191
+   },
+   {
+    "w": "los",
+    "start": 3.191,
+    "end": 3.333
+   },
+   {
+    "w": "sueldos.",
+    "start": 3.333,
+    "end": 3.733
+   }
+  ]
+ },
+ {
+  "text": "¿Y si la haces, te pueden despedir? Te lo digo al final.",
+  "start": 4.0,
+  "end": 6.649,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 4.0,
+    "end": 4.092
+   },
+   {
+    "w": "si",
+    "start": 4.092,
+    "end": 4.204
+   },
+   {
+    "w": "la",
+    "start": 4.204,
+    "end": 4.347
+   },
+   {
+    "w": "haces,",
+    "start": 4.347,
+    "end": 4.818
+   },
+   {
+    "w": "te",
+    "start": 4.818,
+    "end": 4.88
+   },
+   {
+    "w": "pueden",
+    "start": 4.88,
+    "end": 5.164
+   },
+   {
+    "w": "despedir?",
+    "start": 5.164,
+    "end": 5.956
+   },
+   {
+    "w": "Te",
+    "start": 5.956,
+    "end": 6.032
+   },
+   {
+    "w": "lo",
+    "start": 6.032,
+    "end": 6.124
+   },
+   {
+    "w": "digo",
+    "start": 6.124,
+    "end": 6.338
+   },
+   {
+    "w": "al",
+    "start": 6.338,
+    "end": 6.551
+   },
+   {
+    "w": "final.",
+    "start": 6.551,
+    "end": 6.649
+   }
+  ]
+ },
+ {
+  "text": "Es la primera de CCOO y UGT en catorce años, con otros sindicatos y el de inquilinas. Su lema: salarios, vivienda y precios.",
+  "start": 7.004,
+  "end": 15.076,
+  "words": [
+   {
+    "w": "Es",
+    "start": 7.004,
+    "end": 7.096
+   },
+   {
+    "w": "la",
+    "start": 7.096,
+    "end": 7.209
+   },
+   {
+    "w": "primera",
+    "start": 7.209,
+    "end": 7.493
+   },
+   {
+    "w": "de",
+    "start": 7.493,
+    "end": 7.636
+   },
+   {
+    "w": "CCOO",
+    "start": 7.636,
+    "end": 8.56
+   },
+   {
+    "w": "y",
+    "start": 8.56,
+    "end": 8.702
+   },
+   {
+    "w": "UGT",
+    "start": 8.702,
+    "end": 9.271
+   },
+   {
+    "w": "en",
+    "start": 9.271,
+    "end": 9.413
+   },
+   {
+    "w": "catorce",
+    "start": 9.413,
+    "end": 9.84
+   },
+   {
+    "w": "años,",
+    "start": 9.84,
+    "end": 10.382
+   },
+   {
+    "w": "con",
+    "start": 10.382,
+    "end": 10.444
+   },
+   {
+    "w": "otros",
+    "start": 10.444,
+    "end": 10.729
+   },
+   {
+    "w": "sindicatos",
+    "start": 10.729,
+    "end": 11.227
+   },
+   {
+    "w": "y",
+    "start": 11.227,
+    "end": 11.369
+   },
+   {
+    "w": "el",
+    "start": 11.369,
+    "end": 11.511
+   },
+   {
+    "w": "de",
+    "start": 11.511,
+    "end": 11.653
+   },
+   {
+    "w": "inquilinas.",
+    "start": 11.653,
+    "end": 12.631
+   },
+   {
+    "w": "Su",
+    "start": 12.631,
+    "end": 12.756
+   },
+   {
+    "w": "lema:",
+    "start": 12.756,
+    "end": 13.253
+   },
+   {
+    "w": "salarios,",
+    "start": 13.253,
+    "end": 14.0
+   },
+   {
+    "w": "vivienda",
+    "start": 14.0,
+    "end": 14.516
+   },
+   {
+    "w": "y",
+    "start": 14.516,
+    "end": 14.604
+   },
+   {
+    "w": "precios.",
+    "start": 14.604,
+    "end": 15.076
+   }
+  ]
+ },
+ {
+  "text": "Piden subir los sueldos hasta un 7%, bajar los alquileres y ningún desahucio sin alternativa.",
+  "start": 15.387,
+  "end": 20.649,
+  "words": [
+   {
+    "w": "Piden",
+    "start": 15.387,
+    "end": 15.564
+   },
+   {
+    "w": "subir",
+    "start": 15.564,
+    "end": 15.92
+   },
+   {
+    "w": "los",
+    "start": 15.92,
+    "end": 16.062
+   },
+   {
+    "w": "sueldos",
+    "start": 16.062,
+    "end": 16.418
+   },
+   {
+    "w": "hasta",
+    "start": 16.418,
+    "end": 16.631
+   },
+   {
+    "w": "un",
+    "start": 16.631,
+    "end": 16.773
+   },
+   {
+    "w": "7%,",
+    "start": 16.773,
+    "end": 17.787
+   },
+   {
+    "w": "bajar",
+    "start": 17.787,
+    "end": 18.018
+   },
+   {
+    "w": "los",
+    "start": 18.018,
+    "end": 18.231
+   },
+   {
+    "w": "alquileres",
+    "start": 18.231,
+    "end": 18.889
+   },
+   {
+    "w": "y",
+    "start": 18.889,
+    "end": 18.978
+   },
+   {
+    "w": "ningún",
+    "start": 18.978,
+    "end": 19.262
+   },
+   {
+    "w": "desahucio",
+    "start": 19.262,
+    "end": 19.902
+   },
+   {
+    "w": "sin",
+    "start": 19.902,
+    "end": 20.116
+   },
+   {
+    "w": "alternativa.",
+    "start": 20.116,
+    "end": 20.649
+   }
+  ]
+ },
+ {
+  "text": "¿Vivienda en una huelga laboral? Dicen que el sueldo ya no llega para el alquiler.",
+  "start": 20.951,
+  "end": 24.907,
+  "words": [
+   {
+    "w": "¿Vivienda",
+    "start": 20.951,
+    "end": 21.476
+   },
+   {
+    "w": "en",
+    "start": 21.476,
+    "end": 21.547
+   },
+   {
+    "w": "una",
+    "start": 21.547,
+    "end": 21.76
+   },
+   {
+    "w": "huelga",
+    "start": 21.76,
+    "end": 22.187
+   },
+   {
+    "w": "laboral?",
+    "start": 22.187,
+    "end": 22.818
+   },
+   {
+    "w": "Dicen",
+    "start": 22.818,
+    "end": 23.076
+   },
+   {
+    "w": "que",
+    "start": 23.076,
+    "end": 23.218
+   },
+   {
+    "w": "el",
+    "start": 23.218,
+    "end": 23.289
+   },
+   {
+    "w": "sueldo",
+    "start": 23.289,
+    "end": 23.644
+   },
+   {
+    "w": "ya",
+    "start": 23.644,
+    "end": 23.787
+   },
+   {
+    "w": "no",
+    "start": 23.787,
+    "end": 23.929
+   },
+   {
+    "w": "llega",
+    "start": 23.929,
+    "end": 24.142
+   },
+   {
+    "w": "para",
+    "start": 24.142,
+    "end": 24.284
+   },
+   {
+    "w": "el",
+    "start": 24.284,
+    "end": 24.498
+   },
+   {
+    "w": "alquiler.",
+    "start": 24.498,
+    "end": 24.907
+   }
+  ]
+ },
+ {
+  "text": "Una asociación de pymes calcula que hoy costará entre 1.850 y 4.560 millones de euros.",
+  "start": 25.173,
+  "end": 31.484,
+  "words": [
+   {
+    "w": "Una",
+    "start": 25.173,
+    "end": 25.316
+   },
+   {
+    "w": "asociación",
+    "start": 25.316,
+    "end": 25.671
+   },
+   {
+    "w": "de",
+    "start": 25.671,
+    "end": 25.813
+   },
+   {
+    "w": "pymes",
+    "start": 25.813,
+    "end": 26.311
+   },
+   {
+    "w": "calcula",
+    "start": 26.311,
+    "end": 26.667
+   },
+   {
+    "w": "que",
+    "start": 26.667,
+    "end": 26.809
+   },
+   {
+    "w": "hoy",
+    "start": 26.809,
+    "end": 27.022
+   },
+   {
+    "w": "costará",
+    "start": 27.022,
+    "end": 27.449
+   },
+   {
+    "w": "entre",
+    "start": 27.449,
+    "end": 27.662
+   },
+   {
+    "w": "1.850",
+    "start": 27.662,
+    "end": 29.013
+   },
+   {
+    "w": "y",
+    "start": 29.013,
+    "end": 29.289
+   },
+   {
+    "w": "4.560",
+    "start": 29.289,
+    "end": 30.542
+   },
+   {
+    "w": "millones",
+    "start": 30.542,
+    "end": 30.969
+   },
+   {
+    "w": "de",
+    "start": 30.969,
+    "end": 31.111
+   },
+   {
+    "w": "euros.",
+    "start": 31.111,
+    "end": 31.484
+   }
+  ]
+ },
+ {
+  "text": "Y la patronal la llama «electoral»: llega dos días antes de la campaña de las generales del 29 de noviembre.",
+  "start": 31.742,
+  "end": 37.36,
+  "words": [
+   {
+    "w": "Y",
+    "start": 31.742,
+    "end": 31.862
+   },
+   {
+    "w": "la",
+    "start": 31.862,
+    "end": 31.982
+   },
+   {
+    "w": "patronal",
+    "start": 31.982,
+    "end": 32.409
+   },
+   {
+    "w": "la",
+    "start": 32.409,
+    "end": 32.551
+   },
+   {
+    "w": "llama",
+    "start": 32.551,
+    "end": 32.978
+   },
+   {
+    "w": "«electoral»:",
+    "start": 32.978,
+    "end": 33.831
+   },
+   {
+    "w": "llega",
+    "start": 33.831,
+    "end": 34.151
+   },
+   {
+    "w": "dos",
+    "start": 34.151,
+    "end": 34.364
+   },
+   {
+    "w": "días",
+    "start": 34.364,
+    "end": 34.649
+   },
+   {
+    "w": "antes",
+    "start": 34.649,
+    "end": 34.862
+   },
+   {
+    "w": "de",
+    "start": 34.862,
+    "end": 35.004
+   },
+   {
+    "w": "la",
+    "start": 35.004,
+    "end": 35.076
+   },
+   {
+    "w": "campaña",
+    "start": 35.076,
+    "end": 35.431
+   },
+   {
+    "w": "de",
+    "start": 35.431,
+    "end": 35.573
+   },
+   {
+    "w": "las",
+    "start": 35.573,
+    "end": 35.716
+   },
+   {
+    "w": "generales",
+    "start": 35.716,
+    "end": 36.213
+   },
+   {
+    "w": "del",
+    "start": 36.213,
+    "end": 36.356
+   },
+   {
+    "w": "29",
+    "start": 36.356,
+    "end": 36.924
+   },
+   {
+    "w": "de",
+    "start": 36.924,
+    "end": 36.996
+   },
+   {
+    "w": "noviembre.",
+    "start": 36.996,
+    "end": 37.36
+   }
+  ]
+ },
+ {
+  "text": "Hoy: paros desde medianoche, servicios mínimos y manifestaciones en muchas ciudades.",
+  "start": 37.653,
+  "end": 42.16,
+  "words": [
+   {
+    "w": "Hoy:",
+    "start": 37.653,
+    "end": 38.151
+   },
+   {
+    "w": "paros",
+    "start": 38.151,
+    "end": 38.4
+   },
+   {
+    "w": "desde",
+    "start": 38.4,
+    "end": 38.684
+   },
+   {
+    "w": "medianoche,",
+    "start": 38.684,
+    "end": 39.431
+   },
+   {
+    "w": "servicios",
+    "start": 39.431,
+    "end": 39.858
+   },
+   {
+    "w": "mínimos",
+    "start": 39.858,
+    "end": 40.356
+   },
+   {
+    "w": "y",
+    "start": 40.356,
+    "end": 40.498
+   },
+   {
+    "w": "manifestaciones",
+    "start": 40.498,
+    "end": 41.209
+   },
+   {
+    "w": "en",
+    "start": 41.209,
+    "end": 41.351
+   },
+   {
+    "w": "muchas",
+    "start": 41.351,
+    "end": 41.636
+   },
+   {
+    "w": "ciudades.",
+    "start": 41.636,
+    "end": 42.16
+   }
+  ]
+ },
+ {
+  "text": "¿Y el despido? No te pueden despedir ni sancionar: es un derecho fundamental. No tienes que avisar y no pueden sustituirte… pero ese día no cobras.",
+  "start": 42.382,
+  "end": 50.498,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 42.382,
+    "end": 42.45
+   },
+   {
+    "w": "el",
+    "start": 42.45,
+    "end": 42.533
+   },
+   {
+    "w": "despido?",
+    "start": 42.533,
+    "end": 43.253
+   },
+   {
+    "w": "No",
+    "start": 43.253,
+    "end": 43.351
+   },
+   {
+    "w": "te",
+    "start": 43.351,
+    "end": 43.493
+   },
+   {
+    "w": "pueden",
+    "start": 43.493,
+    "end": 43.778
+   },
+   {
+    "w": "despedir",
+    "start": 43.778,
+    "end": 44.276
+   },
+   {
+    "w": "ni",
+    "start": 44.276,
+    "end": 44.489
+   },
+   {
+    "w": "sancionar:",
+    "start": 44.489,
+    "end": 45.138
+   },
+   {
+    "w": "es",
+    "start": 45.138,
+    "end": 45.236
+   },
+   {
+    "w": "un",
+    "start": 45.236,
+    "end": 45.378
+   },
+   {
+    "w": "derecho",
+    "start": 45.378,
+    "end": 45.804
+   },
+   {
+    "w": "fundamental.",
+    "start": 45.804,
+    "end": 46.622
+   },
+   {
+    "w": "No",
+    "start": 46.622,
+    "end": 46.693
+   },
+   {
+    "w": "tienes",
+    "start": 46.693,
+    "end": 46.978
+   },
+   {
+    "w": "que",
+    "start": 46.978,
+    "end": 47.191
+   },
+   {
+    "w": "avisar",
+    "start": 47.191,
+    "end": 47.707
+   },
+   {
+    "w": "y",
+    "start": 47.707,
+    "end": 47.796
+   },
+   {
+    "w": "no",
+    "start": 47.796,
+    "end": 48.009
+   },
+   {
+    "w": "pueden",
+    "start": 48.009,
+    "end": 48.293
+   },
+   {
+    "w": "sustituirte…",
+    "start": 48.293,
+    "end": 49.2
+   },
+   {
+    "w": "pero",
+    "start": 49.2,
+    "end": 49.351
+   },
+   {
+    "w": "ese",
+    "start": 49.351,
+    "end": 49.564
+   },
+   {
+    "w": "día",
+    "start": 49.564,
+    "end": 49.849
+   },
+   {
+    "w": "no",
+    "start": 49.849,
+    "end": 50.062
+   },
+   {
+    "w": "cobras.",
+    "start": 50.062,
+    "end": 50.498
+   }
+  ]
+ },
+ {
+  "text": "¿Tú la haces o vas a trabajar? Te leo. Y mándaselo a quien no sabe si puede hacerla.",
+  "start": 50.729,
+  "end": 55.362,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 50.729,
+    "end": 50.791
+   },
+   {
+    "w": "la",
+    "start": 50.791,
+    "end": 51.004
+   },
+   {
+    "w": "haces",
+    "start": 51.004,
+    "end": 51.476
+   },
+   {
+    "w": "o",
+    "start": 51.476,
+    "end": 51.6
+   },
+   {
+    "w": "vas",
+    "start": 51.6,
+    "end": 51.751
+   },
+   {
+    "w": "a",
+    "start": 51.751,
+    "end": 51.822
+   },
+   {
+    "w": "trabajar?",
+    "start": 51.822,
+    "end": 52.622
+   },
+   {
+    "w": "Te",
+    "start": 52.622,
+    "end": 52.711
+   },
+   {
+    "w": "leo.",
+    "start": 52.711,
+    "end": 53.297
+   },
+   {
+    "w": "Y",
+    "start": 53.297,
+    "end": 53.402
+   },
+   {
+    "w": "mándaselo",
+    "start": 53.402,
+    "end": 53.879
+   },
+   {
+    "w": "a",
+    "start": 53.879,
+    "end": 54.021
+   },
+   {
+    "w": "quien",
+    "start": 54.021,
+    "end": 54.232
+   },
+   {
+    "w": "no",
+    "start": 54.232,
+    "end": 54.374
+   },
+   {
+    "w": "sabe",
+    "start": 54.374,
+    "end": 54.656
+   },
+   {
+    "w": "si",
+    "start": 54.656,
+    "end": 54.797
+   },
+   {
+    "w": "puede",
+    "start": 54.797,
+    "end": 55.009
+   },
+   {
+    "w": "hacerla.",
+    "start": 55.009,
+    "end": 55.362
+   }
+  ]
+ }
+]

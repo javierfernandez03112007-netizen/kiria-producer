@@ -1,0 +1,852 @@
+[
+{
+"w": "Hoy",
+"start": 0.0,
+"end": 0.24
+},
+{
+"w": "hay",
+"start": 0.32,
+"end": 0.4
+},
+{
+"w": "huelga",
+"start": 0.56,
+"end": 0.96
+},
+{
+"w": "general",
+"start": 1.04,
+"end": 1.44
+},
+{
+"w": "en",
+"start": 1.52,
+"end": 1.6
+},
+{
+"w": "toda",
+"start": 1.68,
+"end": 1.76
+},
+{
+"w": "España.",
+"start": 1.92,
+"end": 2.56
+},
+{
+"w": "Y",
+"start": 2.72,
+"end": 2.8
+},
+{
+"w": "no",
+"start": 2.96,
+"end": 3.04
+},
+{
+"w": "es",
+"start": 3.2,
+"end": 3.28
+},
+{
+"w": "solo",
+"start": 3.36,
+"end": 3.44
+},
+{
+"w": "por",
+"start": 3.68,
+"end": 3.76
+},
+{
+"w": "los",
+"start": 3.84,
+"end": 3.92
+},
+{
+"w": "sueldos.",
+"start": 4.0,
+"end": 4.64
+},
+{
+"w": "¿Y",
+"start": 4.8,
+"end": 4.96
+},
+{
+"w": "si",
+"start": 5.04,
+"end": 5.12
+},
+{
+"w": "la",
+"start": 5.28,
+"end": 5.36
+},
+{
+"w": "haces,",
+"start": 5.44,
+"end": 5.84
+},
+{
+"w": "te",
+"start": 5.92,
+"end": 6.0
+},
+{
+"w": "pueden",
+"start": 6.16,
+"end": 6.4
+},
+{
+"w": "despedir?",
+"start": 6.48,
+"end": 7.12
+},
+{
+"w": "Te",
+"start": 7.28,
+"end": 7.36
+},
+{
+"w": "lo",
+"start": 7.52,
+"end": 7.6
+},
+{
+"w": "digo",
+"start": 7.68,
+"end": 7.84
+},
+{
+"w": "al",
+"start": 7.92,
+"end": 8.0
+},
+{
+"w": "final.",
+"start": 8.16,
+"end": 8.56
+},
+{
+"w": "Es",
+"start": 8.8,
+"end": 8.88
+},
+{
+"w": "la",
+"start": 9.04,
+"end": 9.12
+},
+{
+"w": "primera",
+"start": 9.2,
+"end": 9.44
+},
+{
+"w": "de",
+"start": 9.52,
+"end": 9.6
+},
+{
+"w": "comisiones",
+"start": 9.68,
+"end": 10.08
+},
+{
+"w": "obreras",
+"start": 10.16,
+"end": 10.72
+},
+{
+"w": "y",
+"start": 10.72,
+"end": 10.8
+},
+{
+"w": "UGT",
+"start": 10.88,
+"end": 11.36
+},
+{
+"w": "en",
+"start": 11.52,
+"end": 11.6
+},
+{
+"w": "14",
+"start": 11.68,
+"end": 12.08
+},
+{
+"w": "años,",
+"start": 12.16,
+"end": 12.64
+},
+{
+"w": "con",
+"start": 12.72,
+"end": 12.8
+},
+{
+"w": "otros",
+"start": 12.96,
+"end": 13.2
+},
+{
+"w": "sindicatos",
+"start": 13.28,
+"end": 13.68
+},
+{
+"w": "y",
+"start": 13.84,
+"end": 13.92
+},
+{
+"w": "el",
+"start": 14.0,
+"end": 14.08
+},
+{
+"w": "de",
+"start": 14.16,
+"end": 14.24
+},
+{
+"w": "inquilinas.",
+"start": 14.32,
+"end": 15.28
+},
+{
+"w": "Su",
+"start": 15.44,
+"end": 15.52
+},
+{
+"w": "lema",
+"start": 15.68,
+"end": 15.92
+},
+{
+"w": "Salarios,",
+"start": 16.32,
+"end": 17.04
+},
+{
+"w": "vivienda",
+"start": 17.2,
+"end": 17.68
+},
+{
+"w": "y",
+"start": 17.84,
+"end": 17.92
+},
+{
+"w": "precios.",
+"start": 18.0,
+"end": 18.64
+},
+{
+"w": "Piden",
+"start": 18.8,
+"end": 19.04
+},
+{
+"w": "subir",
+"start": 19.28,
+"end": 19.6
+},
+{
+"w": "los",
+"start": 19.68,
+"end": 19.76
+},
+{
+"w": "sueldos",
+"start": 19.84,
+"end": 20.16
+},
+{
+"w": "hasta",
+"start": 20.24,
+"end": 20.4
+},
+{
+"w": "un",
+"start": 20.48,
+"end": 20.56
+},
+{
+"w": "7%,",
+"start": 20.64,
+"end": 21.6
+},
+{
+"w": "bajar",
+"start": 21.76,
+"end": 22.08
+},
+{
+"w": "los",
+"start": 22.16,
+"end": 22.24
+},
+{
+"w": "alquileres",
+"start": 22.4,
+"end": 23.04
+},
+{
+"w": "y",
+"start": 23.2,
+"end": 23.28
+},
+{
+"w": "ningún",
+"start": 23.36,
+"end": 23.6
+},
+{
+"w": "desahucio",
+"start": 23.68,
+"end": 24.32
+},
+{
+"w": "sin",
+"start": 24.4,
+"end": 24.48
+},
+{
+"w": "alternativa.",
+"start": 24.64,
+"end": 25.28
+},
+{
+"w": "¿Vivienda",
+"start": 25.47,
+"end": 26.19
+},
+{
+"w": "en",
+"start": 26.35,
+"end": 26.43
+},
+{
+"w": "una",
+"start": 26.43,
+"end": 26.51
+},
+{
+"w": "huelga",
+"start": 26.67,
+"end": 27.07
+},
+{
+"w": "laboral?",
+"start": 27.15,
+"end": 27.71
+},
+{
+"w": "Dicen",
+"start": 27.87,
+"end": 28.35
+},
+{
+"w": "que",
+"start": 28.27,
+"end": 28.35
+},
+{
+"w": "el",
+"start": 28.43,
+"end": 28.51
+},
+{
+"w": "sueldo",
+"start": 28.51,
+"end": 28.91
+},
+{
+"w": "ya",
+"start": 28.91,
+"end": 28.99
+},
+{
+"w": "no",
+"start": 29.07,
+"end": 29.15
+},
+{
+"w": "lleva",
+"start": 29.23,
+"end": 29.55
+},
+{
+"w": "para",
+"start": 29.47,
+"end": 29.55
+},
+{
+"w": "el",
+"start": 29.63,
+"end": 29.71
+},
+{
+"w": "alquiler.",
+"start": 29.87,
+"end": 30.59
+},
+{
+"w": "Una",
+"start": 30.75,
+"end": 30.99
+},
+{
+"w": "asociación",
+"start": 30.99,
+"end": 31.39
+},
+{
+"w": "de",
+"start": 31.39,
+"end": 31.47
+},
+{
+"w": "pymes",
+"start": 31.55,
+"end": 31.95
+},
+{
+"w": "calcula",
+"start": 32.11,
+"end": 32.51
+},
+{
+"w": "que",
+"start": 32.51,
+"end": 32.59
+},
+{
+"w": "hoy",
+"start": 32.67,
+"end": 32.83
+},
+{
+"w": "costará",
+"start": 32.91,
+"end": 33.23
+},
+{
+"w": "entre",
+"start": 33.39,
+"end": 33.47
+},
+{
+"w": "1850",
+"start": 33.63,
+"end": 34.91
+},
+{
+"w": "y",
+"start": 35.15,
+"end": 35.23
+},
+{
+"w": "4.560",
+"start": 35.31,
+"end": 36.83
+},
+{
+"w": "millones",
+"start": 36.99,
+"end": 37.39
+},
+{
+"w": "de",
+"start": 37.47,
+"end": 37.55
+},
+{
+"w": "euros.",
+"start": 37.63,
+"end": 38.19
+},
+{
+"w": "Y",
+"start": 38.35,
+"end": 38.43
+},
+{
+"w": "la",
+"start": 38.51,
+"end": 38.59
+},
+{
+"w": "patronal",
+"start": 38.67,
+"end": 39.15
+},
+{
+"w": "la",
+"start": 39.31,
+"end": 39.39
+},
+{
+"w": "llama",
+"start": 39.47,
+"end": 39.79
+},
+{
+"w": "electoral.",
+"start": 39.95,
+"end": 40.75
+},
+{
+"w": "Llega",
+"start": 40.91,
+"end": 41.31
+},
+{
+"w": "dos",
+"start": 41.39,
+"end": 41.47
+},
+{
+"w": "días",
+"start": 41.63,
+"end": 41.95
+},
+{
+"w": "antes",
+"start": 41.95,
+"end": 42.03
+},
+{
+"w": "de",
+"start": 42.19,
+"end": 42.27
+},
+{
+"w": "la",
+"start": 42.35,
+"end": 42.43
+},
+{
+"w": "campaña",
+"start": 42.43,
+"end": 42.83
+},
+{
+"w": "de",
+"start": 42.83,
+"end": 42.91
+},
+{
+"w": "las",
+"start": 42.99,
+"end": 43.07
+},
+{
+"w": "generales",
+"start": 43.15,
+"end": 43.55
+},
+{
+"w": "del",
+"start": 43.71,
+"end": 43.79
+},
+{
+"w": "29",
+"start": 43.87,
+"end": 44.27
+},
+{
+"w": "de",
+"start": 44.51,
+"end": 44.59
+},
+{
+"w": "noviembre.",
+"start": 44.59,
+"end": 45.23
+},
+{
+"w": "Hoy,",
+"start": 45.47,
+"end": 45.87
+},
+{
+"w": "paros",
+"start": 46.03,
+"end": 46.35
+},
+{
+"w": "desde",
+"start": 46.51,
+"end": 46.59
+},
+{
+"w": "medianoche,",
+"start": 46.83,
+"end": 47.55
+},
+{
+"w": "servicios",
+"start": 47.79,
+"end": 48.11
+},
+{
+"w": "mínimos",
+"start": 48.27,
+"end": 48.67
+},
+{
+"w": "y",
+"start": 48.83,
+"end": 48.91
+},
+{
+"w": "manifestaciones",
+"start": 48.99,
+"end": 49.55
+},
+{
+"w": "en",
+"start": 49.79,
+"end": 49.87
+},
+{
+"w": "muchas",
+"start": 49.95,
+"end": 50.27
+},
+{
+"w": "ciudades.",
+"start": 50.27,
+"end": 50.83
+},
+{
+"w": "¿Y",
+"start": 51.08,
+"end": 51.24
+},
+{
+"w": "el",
+"start": 51.4,
+"end": 51.48
+},
+{
+"w": "despido?",
+"start": 51.56,
+"end": 52.2
+},
+{
+"w": "No",
+"start": 52.36,
+"end": 52.44
+},
+{
+"w": "te",
+"start": 52.6,
+"end": 52.68
+},
+{
+"w": "pueden",
+"start": 52.76,
+"end": 53.0
+},
+{
+"w": "despedir",
+"start": 53.08,
+"end": 53.56
+},
+{
+"w": "ni",
+"start": 53.64,
+"end": 53.72
+},
+{
+"w": "sancionar.",
+"start": 53.88,
+"end": 54.52
+},
+{
+"w": "Es",
+"start": 54.68,
+"end": 54.76
+},
+{
+"w": "un",
+"start": 54.84,
+"end": 54.92
+},
+{
+"w": "derecho",
+"start": 55.0,
+"end": 55.4
+},
+{
+"w": "fundamental.",
+"start": 55.48,
+"end": 56.2
+},
+{
+"w": "No",
+"start": 56.36,
+"end": 56.44
+},
+{
+"w": "tienes",
+"start": 56.6,
+"end": 56.84
+},
+{
+"w": "que",
+"start": 56.92,
+"end": 57.0
+},
+{
+"w": "avisar",
+"start": 57.16,
+"end": 57.56
+},
+{
+"w": "y",
+"start": 57.8,
+"end": 57.88
+},
+{
+"w": "no",
+"start": 57.96,
+"end": 58.04
+},
+{
+"w": "pueden",
+"start": 58.2,
+"end": 58.44
+},
+{
+"w": "sustituirte.",
+"start": 58.52,
+"end": 59.48
+},
+{
+"w": "Pero",
+"start": 59.64,
+"end": 59.72
+},
+{
+"w": "ese",
+"start": 59.96,
+"end": 60.04
+},
+{
+"w": "día",
+"start": 60.2,
+"end": 60.44
+},
+{
+"w": "no",
+"start": 60.52,
+"end": 60.6
+},
+{
+"w": "cobras.",
+"start": 60.76,
+"end": 61.48
+},
+{
+"w": "¿Tú",
+"start": 61.56,
+"end": 61.8
+},
+{
+"w": "la",
+"start": 61.88,
+"end": 61.96
+},
+{
+"w": "haces",
+"start": 62.12,
+"end": 62.44
+},
+{
+"w": "o",
+"start": 62.52,
+"end": 62.6
+},
+{
+"w": "vas",
+"start": 62.76,
+"end": 62.84
+},
+{
+"w": "a",
+"start": 63.08,
+"end": 63.16
+},
+{
+"w": "trabajar?",
+"start": 63.16,
+"end": 63.8
+},
+{
+"w": "Te",
+"start": 63.96,
+"end": 64.04
+},
+{
+"w": "leo.",
+"start": 64.28,
+"end": 64.76
+},
+{
+"w": "Y",
+"start": 64.84,
+"end": 64.92
+},
+{
+"w": "mándaselo",
+"start": 65.0,
+"end": 65.56
+},
+{
+"w": "a",
+"start": 65.72,
+"end": 65.8
+},
+{
+"w": "quien",
+"start": 65.88,
+"end": 66.04
+},
+{
+"w": "no",
+"start": 66.12,
+"end": 66.2
+},
+{
+"w": "sabe",
+"start": 66.28,
+"end": 66.36
+},
+{
+"w": "si",
+"start": 66.6,
+"end": 66.68
+},
+{
+"w": "puede",
+"start": 66.76,
+"end": 66.84
+},
+{
+"w": "hacerla.",
+"start": 67.0,
+"end": 67.48
+}
+]
