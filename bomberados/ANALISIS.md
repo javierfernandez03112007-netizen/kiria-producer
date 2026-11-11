@@ -25,18 +25,28 @@ los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 (PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
 Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
-## 📌 Para los próximos vídeos (plan del 10 nov)
+## 📌 Para los próximos vídeos (plan del 11 nov)
 
-1. **Todo en 3D cinematográfico con dron**, también las Preguntas del día (las de Adrián en 3D doblan a las de estilo app).
-2. **Cierre obligatorio con las letras A/B/C/D en pantalla** (2–3 s quietas) y la voz «comenta tu letra»; en los que no son
-   pregunta, una pregunta cerrada con opciones («¿serie o paralelo? escribe S o P»).
-3. **Duración: 45–55 s.** Presión (51 s) se comparte 8,3/1.000 y espuma (61,5 s) 4,9/1.000; provisional, pero no pasar de 55 s.
-4. **Temas que entiende cualquiera** (maniobras, presión, aire, sueldos, la oposición): se comparten 9–14/1.000 frente a 5–6
-   de las preguntas de temario puro.
-5. **Pregunta explicada de Adrián (vie 13, sáb 14, dom 15):** mismo molde que presión (situación real → números grandes en
-   pantalla → letras al final; la respuesta, solo en la descripción).
-6. **Pasapalabra (jue 12) y FOMO jugador (mié 11):** planos 3D con dron y cierre con letras; funciones de la app, CONFIRMAR.
-7. **Un dato de la oposición a la semana** («Ocho de cada diez» sigue sumando: 36.600 y 13,5 compartidos/1.000).
+1. **Bomberos en acción en 3D cinematográfico con dron, siempre.** «Un día de bombero» (3D, Adrián): 78.800 vistas en un día.
+2. **La app nunca es el gancho ni el protagonista.** Los dos que la venden (autobús 5.100 y FOMO 3.899 vistas) llegan 15 veces
+   menos (provisional, 1 día). La app, solo en los últimos segundos; el FOMO del miércoles, con bomberos en acción.
+3. **Cierre para comentar (uno de los dos):** tarjeta con las letras A/B/C/D en pantalla y «comenta tu letra», **o** pregunta
+   personal al espectador («¿Te ves haciendo esta guardia?»: 84 comentarios, el récord de la cuenta).
+4. **Duración: 45–57 s.** La espuma (61,5 s) es el 3D que menos se comparte (4,9/1.000).
+5. **Temas que entiende cualquiera** (la vida del bombero, maniobras, presión, aire, sueldos): se comparten más.
+6. **Pasapalabra (jue 12) y Preguntas explicadas (vie 13–dom 15):** 3D con dron, molde de presión y cierre con letras.
+7. **Un dato de la oposición a la semana**, en 3D.
+
+### Lo nuevo del 11 nov (cifras del 10 nov)
+| Vídeo | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
+|---|---|---|---|---|
+| Un día de bombero (3D, Adrián) | **78.800** en 1 día | 51,7 | **1,1** (84) | 5,1 |
+| Acoplamiento | 106.000 | 55,5 | 0,7 | 12,8 |
+| Presión en bomba | 63.400 | 43,7 | 0,4 | 8,1 |
+| Espuma | 45.200 | 37,1 | 0,3 | 4,9 |
+| Botella del ERA | 22.400 | 49,2 | 0,6 | 8,4 |
+| Autobús (vende la app) | 5.100 | 15,9 | 0,8 | 10,8 |
+| FOMO (vende la app) | 3.899 | 19,7 | 1,3 | 13,6 |
 
 ## Última actualización: 10 nov 2026 (cifras de Javi del 9 nov, 12:26–12:30; seguidores del 9 nov 13:24)
 
