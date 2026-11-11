@@ -106,7 +106,6 @@ def sfx_track(path):
     put("robo_banco/persiana", -0.2, 0.9, 0.7, 0.3)
     put("ade/multitud", 0.0, 1.5, 0.32, 0.5)
     put("avion/whoosh_largo", at("toda", 1, 1) - 0.3, 0.9, 0.3, 0.25)
-    put("gafas/onda", at("españa", 1, 1) - 0.15, 0.6, 0.3, 0.2)
     put("economia/monedas_caen", at("solo", 1, 1) - 0.12, 0.7, 0.4, 0.2)
     put("tapas/pop", at("sueldos", 1, 1) - 0.08, 0.35, 0.45)
     # 2: picado hasta «tú»; la interrogación; «???» en la cabecera

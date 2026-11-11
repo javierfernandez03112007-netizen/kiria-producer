@@ -93,6 +93,24 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **«Huelga general 11-N»** (`projects/huelga/`, 11-11-2026, el mismo día de la huelga): Javi: «hazlo lo mejor, más enganchante y
+  profesional que puedas… que con este vídeo despeguemos la cuenta». Guion v2 de 169 palabras (gancho «Hoy hay huelga general en toda
+  España… y no es solo por los sueldos»; promesa «¿Y si la haces, te pueden despedir? Te lo digo al final»; re-gancho con el coste de
+  Conpymes; respuesta al final con el art. 28.2 de la Constitución y el art. 6 del RDL 17/1977; «¿Tú la haces o vas a trabajar?»).
+  Voz: su MP3 (67,4 s) → Parakeet + `ajustar_voz.py` al 112,5 % → 55,6 s; vídeo de 56,6 s (3.393 fotogramas). **Cambio de estilo pedido por
+  Javi** con una captura de referencia (un reel de 1,5 M de «me gusta» de una maqueta 3D low-poly de colores vivos, de día, con cielo,
+  nubes y tierra en corte): «toma referencias como esta y hazlo lo más realista posible con gente por la calle en huelga, todo muy vistoso,
+  el mayor flujo óptico posible». Escena (`16_city.js`): avenida de día con edificios de balcones y persianas, comercios cuyas persianas
+  metálicas bajan de golpe en cadena (primer segundo), árboles, farolas y nubes low-poly; ≈ 5.000 personas instanciadas por piezas
+  (piernas, cuerpo, brazos, cabeza, pelo) que andan con frecuencias de ciclos enteros en todo el vídeo (bucle perfecto), con pancartas,
+  banderas de los convocantes (solo el nombre, sin logos) que ondean y bengalas de humo rojo (puntos con tamaño propio y log depth);
+  el mapa de España flotando como un globo (`15_map.js`, en corte con capas de tierra, onda roja desde Madrid y chinchetas); una pantalla
+  gigante en una fachada (2012 → 2026); la plaza con objetos gigantes que se van transformando (monedas, casa con alquiler, balanza,
+  torres de billetes, calendario, urna, Constitución, nómina); reloj de fachada a las 00:00, autobús de «servicios mínimos» y el cruce
+  final. Cámara siempre en movimiento (vuelos, picados, giros de 180°) y al final rebobina por la avenida hasta el primer fotograma.
+  Render: ≈ 10 s por fotograma en una sola máquina (14–16 s con 3–4 a la vez); 6 máquinas de ayuda (`render-hue-*`) + esta sesión.
+  **Lección**: Javi quiere este estilo de maqueta de día, vistoso y con gente, con muchísimo movimiento de cámara (mejor que los
+  fondos oscuros de estudio de los vídeos anteriores) para los temas de actualidad.
 - **«Veterinaria por dentro»** (`projects/veterinaria/`, 11-11-2026): Javi pidió un vídeo «que vuelva a optar por miles de miles de
   visualizaciones»; **Arquitectura y Psicología, NO** (Javi: «eso ya lo hemos hecho… lo quité porque no sirvió»: mirar siempre Metricool,
   `projects/` y Notion antes de proponer un tema). Guion de 174 palabras («…y un día vas a meter el brazo entero dentro de una vaca»;
