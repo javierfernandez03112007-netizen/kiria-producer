@@ -93,6 +93,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **«Veterinaria por dentro»** (`projects/veterinaria/`, 11-11-2026): Javi pidió un vídeo «que vuelva a optar por miles de miles de
+  visualizaciones»; **Arquitectura y Psicología, NO** (Javi: «eso ya lo hemos hecho… lo quité porque no sirvió»: mirar siempre Metricool,
+  `projects/` y Notion antes de proponer un tema). Guion de 174 palabras («…y un día vas a meter el brazo entero dentro de una vaca»;
+  respuesta al final: palpación rectal en Reproducción). Voz: su MP3 al **112,5 %** (Javi: «solo 12,5 % más rápida, no 15 %») → 58,9 s;
+  vídeo de 59,8 s (3.590 fotogramas). Escena: clínica en miniatura y una vaca de tamaño real que revienta la pared (el primer fotograma
+  ya es la pared saltando: `T_HIT` negativo); animales de plástico hechos con secciones (`13_animals.js`: vaca, ternero, perro canela,
+  gato atigrado, caballo, cerdo, gallina) con manchas de ruido 3D en el sombreador (atributo `aop`, sin costuras), rayos X con dos planos
+  de recorte por animal y esqueletos generados con las mismas medidas; Anatomía en una plataforma giratoria (cada animal llega al centro
+  y el escáner lo barre cuando se nombra); Farmacología, Microbiología (garrapata, microbios que saltan a una persona: zoonosis),
+  Producción (granja, pienso, ADN), Cirugía, lo que comes (supermercado y matadero con veterinario oficial y sello) y Reproducción (vaca
+  en rayos X con útero, ternero y el brazo con guante largo). Bucle: la pared se rebobina y las poses de los animales se funden con las
+  del principio. Efectos: biblioteca del canal (`compose_vet.py`). Render en las 6 máquinas «Lanzamiento · render 1–6» (`render-vet-1…6`).
+  Lecciones: (1) en 9:16 no caben 6 animales de lado: plataforma giratoria, uno en el centro; (2) un plano de recorte fijo que corta a
+  todos los animales de una plataforma que gira vuelve sólidos a los de atrás: barrido por animal y por tiempo; (3) un perro con manchas
+  negras se confunde con la vaca: perro canela.
 - **El perro robot con neuronas humanas** (`projects/robot_neuronas/`, 6-11-2026): Javi: «otro que no sea de publicidad sino de contenido,
   algo muy muy fuerte, por ejemplo algo de robots». Noticia de Cortical Labs (Australia). Guion primero → su MP3 (57,9 s) → ×1,08 y pausas
   recortadas (48,2 s; vídeo de 51 s). Escena (un solo plano que sigue al perro): perro robot blanco con cúpula de cristal y un chip de
