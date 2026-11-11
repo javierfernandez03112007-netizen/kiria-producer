@@ -21,4 +21,12 @@ Guion para la voz de Javi en `script.txt` (≈ 174 palabras, ≈ 58 s). La respu
 |---|---|
 | Palpación rectal en las prácticas de Reproducción y Obstetricia | Plan docente 2025-26, Universidad de Extremadura (Facultad de Veterinaria). |
 | Ningún matadero funciona sin veterinario oficial; inspección antes y después del sacrificio | Comunidad de Madrid («Papel de los mataderos»); Gobierno Vasco (control oficial en mataderos). |
-| Asignaturas (anatomía de las especies domésticas, farmacología, microbiología y parasitología, producción animal, cirugía, reproducción, higiene e inspección de alimentos) | Orden ECI/333/2008 (requisitos del título de Veterinario). **CONFIRMAR en el BOE.** |
+| Asignaturas (anatomía de las especies domésticas, farmacología, microbiología y parasitología, producción animal, cirugía, reproducción, higiene e inspección de alimentos) | Orden ECI/333/2008 (requisitos del título de Veterinario, BOE-A-2008-2675): 300 créditos europeos. Confirmado por el buscador del BOE (11-11); detalle en `FUENTES.md`. |
+
+## Lo que se hizo (11-11-2026)
+- Voz de Javi al 112,5 % (58,9 s) → vídeo de 59,8 s (3.590 fotogramas a 60 fps).
+- Primer segundo: la pared de la clínica ya está saltando y entra la cabeza de una vaca de tamaño real encima del cachorro; al final la pared
+  se rebobina (el último fotograma enlaza con el primero).
+- Anatomía: plataforma giratoria con los seis animales; cada uno llega al centro y el escáner lo pasa a rayos X (esqueleto) cuando se nombra.
+- Reproducción: la vaca en rayos X con el útero, el ternero y el brazo del veterinario con el guante largo.
+- Detalle de cada plano en `web/src/` (15_center.js, 20_stations.js, 30_camera.js, 40_hudplan.js).

@@ -26,7 +26,7 @@ FPS, W, H = 60, 1080, 1920
 LINES = json.load(open(os.path.join(ROOT, "tiempos.json")))
 END = LINES[-1]["end"] + 1.2
 N = int(END * FPS)
-FRAMES = os.path.join(ROOT, "out", "frames")
+FRAMES = os.environ.get("FRAMES_DIR", os.path.join(ROOT, "out", "frames"))
 AUDIO = os.path.join(ROOT, "assets", "voz.mp3")
 WORDS = [dict(w, n=norm(w["w"]), line=i + 1) for i, l in enumerate(LINES) for w in l["words"]]
 
