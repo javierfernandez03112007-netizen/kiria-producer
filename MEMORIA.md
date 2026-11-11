@@ -11,6 +11,10 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
   1) le doy el guion en un solo bloque para pegarlo en ElevenLabs, 2) **espero su MP3 (voz Danny)**, 3) monto y renderizo el vídeo con su
   voz (se sincroniza con el texto conocido). Mientras llega su audio se puede preparar la escena, pero no generar yo la voz ni renderizar
   el vídeo final con una voz provisional, salvo que él lo pida.
+- **Duración y velocidad (Javi, 11-11-2026: «para los próximos vídeos ten en cuenta recortar el guion a un minuto y no variar la velocidad
+  de reproducción»)**: el guion tiene que caber en 60 s con la voz de Danny **a su velocidad natural** (≈ 2,7 palabras/s: **máximo ≈ 145
+  palabras**; Huelga: 169 palabras = 62,5 s sin pausas largas; Veterinaria: 174 = 66,2 s). En `ajustar_voz.py`, **`TEMPO = 1.0`**: solo se
+  recortan los silencios largos, la voz nunca se acelera (nada de 112,5 % ni atempo). Si su MP3 pasa de ≈ 58,5 s, se recorta el guion, no la voz.
 - Guion: lo escribo yo siguiendo `engine/REGLAS.md`, `engine/GUION.md` y `engine/HOOKS.md`; se lo doy **todo junto en un solo bloque**
   para pegarlo en ElevenLabs. Datos siempre reales y con fuente en `FUENTES.md` (lo dudoso, «CONFIRMAR»).
 - Entrega de cada vídeo: `out/<nombre>.mp4` (1080x1920, 60 fps, 20–60 MB, ≈ −15/−16 LUFS), `out/portada.jpg` (9:16), `out/miniatura.jpg`

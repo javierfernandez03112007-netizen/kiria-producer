@@ -1,5 +1,9 @@
 # Plantilla de guion (bucle abierto)
 
+**Longitud (Javi, 11-11-2026): máximo ≈ 145 palabras.** El vídeo dura 60 s como mucho y la voz va a su velocidad natural
+(Danny ≈ 2,7 palabras/s), sin acelerarla: si no cabe, se recorta el guion.
+
+
 | Momento | Qué pasa | Regla |
 |---|---|---|
 | 0–1 s | Imagen rarísima, sin texto ni saludo. La voz empieza ya con el hook (`engine/HOOKS.md`). | 1 |
