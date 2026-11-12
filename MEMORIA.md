@@ -127,7 +127,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   junto al pedestal → la cámara **retrocede en línea recta mirando siempre al centro**, sube, pasa por encima del pedestal y baja delante (la
   vitrina y el centro se alejan y el pedestal entra desde abajo); de la balanza al centro vuelve por el hueco de 205°; los haces de luz se apagan
   solo mientras la cámara los atraviesa (`coneFade` en `30_camera.js`); destellos de un fotograma en las bobinas al levantarse → `capGlint`
-  (`14_objects.js`). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
+  (`14_objects.js`); en «más que cualquier película» la bobina de la película más cara quedaba justo detrás de la caja de GTA 6 y su rótulo
+  parecía señalar la caja → la bobina, delante de su columna (26 capas = 659 M$; tenía 30) y el plano un poco a la izquierda (`render-gtdh-1…6`
+  para 1749–2222). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
   (`console.error("ERROR …")` sale en el registro): los vuelos que pasan a menos de ≈ 3 unidades de un objeto gigante llenan la pantalla;
   (2) los rótulos 3D, en la zona segura (entre ≈ 480 y 1.250 px de alto) y lejos de los titulares del HUD (≈ 1.330–1.600 px); (3) bucle
   suave: claves de cámara simétricas en −0,4 / 0 / 0,5 y END−0,4 / END / END+0,5, y lo que sale en el primer segundo rebobina en el último
@@ -135,7 +137,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   metálicas planas y pulidas que giran reflejan el foco en un fotograma suelto (valor ≈ 30) y el resplandor lo vuelve una mancha blanca:
   limitar su brillo por debajo del umbral del resplandor (1,7) con `capGlint`; buscarlos contando píxeles casi blancos fotograma a fotograma;
   (6) para pasar a un objeto que queda detrás de la cámara, mejor retroceder sin girar (como un travelling hacia atrás) que girar y volar: no
-  hay barridos ni fotogramas vacíos, y el objeto nuevo entra por abajo o por un lado.
+  hay barridos ni fotogramas vacíos, y el objeto nuevo entra por abajo o por un lado; (7) en el QC, mirar cada rótulo con su objeto: que nada
+  lo tape desde la cámara y que el rótulo no caiga encima de otro objeto (si no cabe por un lado, `callout` le da la vuelta).
 - **«Odontología por dentro»** (`projects/odontologia/`, 12-11-2026): primer vídeo del plan del 11-11 (carreras, una al día a las 10:00) y
   primero con **la voz a su velocidad natural** (TEMPO 1.0: 54,0 s → 50,4 s solo quitando silencios largos; vídeo de 51,3 s). Javi: «hazlo muy
   profesional con mucho flujo óptico y lo más realista posible» → el estilo de la huelga (ciudad de día con gente) reutilizado: `16_city.js`
