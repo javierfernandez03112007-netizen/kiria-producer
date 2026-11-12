@@ -114,11 +114,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   con otro enfoque: lo que va a ser GTA 6, el dinero… cosas de mucho interés para la gran parte de la población». Guion de 141 palabras
   (gancho 16: «Ninguna película de la historia ha ganado tanto dinero como este videojuego»; respuesta: 3.200 M$ el primer año según los
   analistas, más que la película más taquillera; cierre «¿Pagarías 80 € por un videojuego?» + «mándaselo a quien dice que jugar es tirar el
-  dinero»). Voz a su velocidad natural (51,2 s). **Contra el caos: un solo sitio y una sola idea**: un paseo marítimo de día (hoteles art déco
-  pastel, palmeras, coches, playa, mar; `16_city.js` nuevo) y cada cifra es una torre de fajos de billetes a la misma escala junto a su rival
-  (`17_money.js`: bobinas de cine, torre de cristal de GTA 6, calendario de taco, cartel de días con medalla, torre de cajas frente a una
-  pirámide de gente de Brasil, superrascacielos con sello «NO», etiqueta de precio). Un objeto nuevo por frase. Render en las 6 máquinas
-  (`render-gtd-1…6`) + esta sesión (2820–3126). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
+  dinero»). Voz a su velocidad natural (51,2 s). Primera versión: un paseo marítimo de día con torres de billetes (en `web/src_playa/`); **Javi la
+  rechazó: «no quiero este tipo de cinematográfica ya que no es muy realista o formal, lo hacemos como el de Derecho, que fue un arrollo de
+  visitas»** → **regla: para los vídeos informativos, el estilo de Derecho** (sala oscura de museo, pedestales de madera con haz de luz, objetos
+  reales de madera, latón, cristal y papel, HUD de Derecho), no la maqueta low-poly de colores. Versión 2 sobre el código de Derecho
+  (`10_parts.js`, `03_flow.js`): la caja de GTA 5 cae como el mazo sobre cien bobinas (`15_center.js`), vitrina de GTA 6, pedestales con fajos y
+  medalla, copias frente a Brasil, sello «NO» y maqueta del rascacielos, precio con tique y la balanza (`14_objects.js`, `20_stations.js`).
+  Arreglado en `vitrine()` de Derecho: la peana y la tapa salían como bloques altos (`rbox` con los lados cambiados). Render en las 6 máquinas
+  (`render-gtdd-1…6`; las ramas `render-gtd-*` son de la versión de la playa) + esta sesión (2820–3126). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
   (`console.error("ERROR …")` sale en el registro): los vuelos que pasan a menos de ≈ 3 unidades de un objeto gigante llenan la pantalla;
   (2) los rótulos 3D, en la zona segura (entre ≈ 480 y 1.250 px de alto) y lejos de los titulares del HUD (≈ 1.330–1.600 px); (3) bucle
   suave: claves de cámara simétricas en −0,4 / 0 / 0,5 y END−0,4 / END / END+0,5, y lo que sale en el primer segundo rebobina en el último

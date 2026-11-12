@@ -1,27 +1,23 @@
 # «GTA 6: el dinero» · guion y escena (12-11-2026)
 
 Voz: Javi (ElevenLabs, Danny v4), a su velocidad natural (51,2 s de voz; vídeo de 52,1 s, 60 fps).
-Lección de Odontología (Javi: «un completo caos»): **un solo sitio y una sola idea visual**, un objeto nuevo por frase y nada más a la vez.
-
-**Sitio:** un paseo marítimo de día en una ciudad tropical inventada: hoteles art déco de colores pastel con toldos y terrazas, palmeras,
-coches, la playa con casetas de socorrista y sombrillas, gente paseando y el mar turquesa. Sin logos ni nada copiado del juego.
-**Idea:** cada cifra es una **torre de fajos de billetes** que sale de la arena, siempre a la misma escala (1,2 unidades por cada 1.000 M$).
-Al lado, a la misma escala, su rival: la bobina de la película n.º 1, el rascacielos, la pirámide de gente de Brasil, la etiqueta del precio.
+**Versión 2 (12-11, 22:00): estilo del vídeo de Derecho** (Javi: la versión de la playa «no es muy realista o formal»; «lo hacemos como el de
+Derecho, que fue un arrollo de visitas»). Sala oscura de museo con suelo de piedra pulida, polvo en el aire, pedestales de madera con canto de latón
+y su haz de luz, objetos reales (cajas de videojuego con portadas inventadas, bobinas de aluminio, fajos de billetes inventados, latón, cristal) y
+el HUD de Derecho (cifras grandes, rótulos con línea guía y la pregunta pendiente en la cabecera). La versión de la playa queda en `web/src_playa/`.
 
 | # | Frase | Lo que se ve |
 |---|-------|--------------|
-| 1 | Ninguna película de la historia ha ganado tanto dinero como este videojuego. | Primer fotograma: la torre de billetes de GTA 5 revienta la arena junto a una bobina de cine gigante («PELÍCULA N.º 1 · 2.925 M$») y la deja pequeña; vuelan billetes y arena y la gente levanta los brazos. |
-| 2 | Es GTA 5. Y el 19 de noviembre sale GTA 6. ¿Cuánto va a ganar? Te lo digo al final. | Rótulo «GTA 5 · MÁS DE 6.000 M$». Cae un calendario de taco gigante «19 NOVIEMBRE» y la cámara pasa a la torre de cristal vacía de GTA 6 con una interrogación dentro. |
-| 3 | El primer día, GTA 5 hizo 800 millones de dólares. En 3 días, 1.000 millones: récord Guinness. | Vuelo por el paseo hasta un cartel «DÍA 1» y una torre que sube a 800 M$; el cartel pasa a «DÍA 3», la torre llega a 1.000 M$ y sale la medalla «RÉCORD MUNDIAL». Detrás, los hoteles. |
-| 4 | Lleva más de 230 millones de copias: más que habitantes tiene Brasil. | Una torre de cajas de juego que se apila capa a capa («COPIAS DE GTA 5 · 230 M») junto a una pirámide de gradas verdes y amarillas llena de gente con la bandera de Brasil («213 M»). |
-| 5 | ¿Y GTA 6? Rockstar ha tenido que negar que costara más que el edificio más alto del mundo. | Giro hacia el mar: sale una torre «COSTE DE GTA 6 · ¿?»; a su lado sube un superrascacielos («EL EDIFICIO MÁS ALTO · 1.500 M$») y cae un sello rojo «NO». |
-| 6 | Los analistas calculan entre 1.000 y 1.500 millones de dólares. Más que cualquier película. | La torre del coste se queda en 1.000 M$ con una franja de billetes transparentes hasta 1.500 («1.000–1.500 M$»); aparece al lado una bobina pequeña: «LA PELÍCULA MÁS CARA · 659 M$». |
-| 7 | Y a ti te costará casi 80 euros. | Una etiqueta de precio gigante «79,99 €» baja balanceándose delante de la cámara. |
-| 8 | La respuesta: según los analistas, 3.200 millones solo el primer año. Más que la película más taquillera de la historia. | Vuelo a la plaza: la torre de cristal de GTA 6 se llena de billetes hasta «3.200 M$ · 1.ER AÑO» y pasa por encima de la bobina de la película n.º 1 (línea dorada a su altura); estallan billetes y la gente lo celebra. Detrás, la torre de GTA 5. |
-| 9 | ¿Pagarías 80 euros por un videojuego? Mándaselo a quien dice que jugar es tirar el dinero. | La etiqueta vuelve con «¿80 €?» mientras la cámara rodea la plaza; termina en el primer plano y la torre de GTA 5 rebobina hacia la arena (bucle). |
+| 1 | Ninguna película de la historia ha ganado tanto dinero como este videojuego. | Primer fotograma: cien bobinas de cine en el suelo (una dorada: la película n.º 1) y una caja de GTA 5 gigante cayendo encima como el mazo de Derecho; golpe, onda y caen todas, la dorada la última. «0 / 100 · PELÍCULAS HAN GANADO TANTO». |
+| 2 | Es GTA 5. Y el 19 de noviembre sale GTA 6. ¿Cuánto va a ganar? Te lo digo al final. | La portada de GTA 5 («MÁS DE 6.000 M$»); sube una vitrina de cristal con la caja de GTA 6 y sale el calendario de mesa «19 NOVIEMBRE»; la luz roja de la cerradura parpadea y aparece una «?» roja. |
+| 3 | El primer día, GTA 5 hizo 800 millones de dólares. En 3 días, 1.000 millones: récord Guinness. | Primer pedestal: calendario de taco «DÍA 1» → «DÍA 3» y una columna de fajos que sube (contador 800.000.000 $ → 1.000.000.000 $); la medalla dorada del récord. |
+| 4 | Lleva más de 230 millones de copias: más que habitantes tiene Brasil. | 230 cajas pequeñas (una por millón de copias) y, encima, 213 figuritas verdes, amarillas y azules (Brasil); sobran 17 cajas, que brillan en dorado: «17 M DE COPIAS MÁS». |
+| 5 | ¿Y GTA 6? Rockstar ha tenido que negar que costara más que el edificio más alto del mundo. | Pedestal del coste: la caja de GTA 6; un documento «¿COSTÓ GTA 6 MÁS QUE EL BURJ KHALIFA?» y el sello que estampa «NO · ROCKSTAR GAMES»; sube la maqueta blanca del rascacielos («1.500 M$»). |
+| 6 | Los analistas calculan entre 1.000 y 1.500 millones de dólares. Más que cualquier película. | Una columna de fajos sube junto a la maqueta («COSTE DE GTA 6 · ANALISTAS: 1.000–1.500 M$») y, al lado, una bobina con su columna más baja: «LA PELÍCULA MÁS CARA · 659 M$». |
+| 7 | Y a ti te costará casi 80 euros. | La caja de GTA 6 en su atril con una etiqueta colgando «79,99 €» y el tique de compra (tienda de ejemplo). |
+| 8 | La respuesta: según los analistas, 3.200 millones solo el primer año. Más que la película más taquillera de la historia. | Una balanza de latón: a la izquierda la bobina dorada de la película n.º 1 (2.925 M$) con sus fajos; a la derecha GTA 6, y van cayendo sus fajos (3.200 M$); con «más que la película» su platillo baja. |
+| 9 | ¿Pagarías 80 euros por un videojuego? Mándaselo a quien dice que jugar es tirar el dinero. | La etiqueta «¿80 €?» cuelga del platillo de GTA 6; la cámara vuelve al centro: las bobinas se levantan y la caja sube hasta la pose del primer fotograma (bucle). |
 
-Gancho: 16 (creencia rota: «lo que más dinero gana es el cine») + dato. Pregunta a los 9 s; reenganche hacia el 24 («¿Y GTA 6?» y el rascacielos);
-respuesta a los 38–45 s; cierre con pregunta de bando que divide (el precio) y envío a quien se pica.
-
-Cabecera: «GTA 6 · EL DINERO» y «SALE EL 19 NOV»; la pregunta pendiente «¿CUÁNTO VA A GANAR? · ???» pasa a «3.200 M$ EL 1.ER AÑO (ANALISTAS) ✓».
-Efectos: 30, todos de la biblioteca de ElevenLabs del canal (`compose_gtd.py`), uno por suceso y sin música.
+Gancho: 16 (creencia rota: «lo que más dinero gana es el cine») + la fórmula de Derecho (objeto gigante sobre cien figuritas + «X / 100»).
+Pregunta a los 9 s; reenganche hacia el 24 («¿Y GTA 6?» y el sello); respuesta a los 38–45 s; cierre con pregunta de bando y envío.
+Efectos: de la biblioteca de ElevenLabs del canal (`compose_gtd.py`), uno por suceso y sin música.
