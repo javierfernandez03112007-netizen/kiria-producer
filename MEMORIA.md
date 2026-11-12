@@ -121,11 +121,17 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (`10_parts.js`, `03_flow.js`): la caja de GTA 5 cae como el mazo sobre cien bobinas (`15_center.js`), vitrina de GTA 6, pedestales con fajos y
   medalla, copias frente a Brasil, sello «NO» y maqueta del rascacielos, precio con tique y la balanza (`14_objects.js`, `20_stations.js`).
   Arreglado en `vitrine()` de Derecho: la peana y la tapa salían como bloques altos (`rbox` con los lados cambiados). Render en las 6 máquinas
-  (`render-gtdd-1…6`; las ramas `render-gtd-*` son de la versión de la playa) + esta sesión (2820–3126). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
+  (`render-gtdd-1…6`; las ramas `render-gtd-*` son de la versión de la playa) + esta sesión (2820–3126). Arreglos tras el QC, con re-render
+  solo de los trozos tocados (`render-gtdf-1…6` + 2905–2975 aquí): fogonazo blanco a 11,4 s (al girar, el punto al que mira la cámara pasaba a
+  0,36 m de ella) → clave de giro lateral; la cámara cruzaba el primer pedestal y la balanza → los rodea, y los haces de luz se apagan solo
+  mientras la cámara los atraviesa (`coneFade` en `30_camera.js`); destellos de un fotograma en las bobinas al levantarse → `capGlint`
+  (`14_objects.js`). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
   (`console.error("ERROR …")` sale en el registro): los vuelos que pasan a menos de ≈ 3 unidades de un objeto gigante llenan la pantalla;
   (2) los rótulos 3D, en la zona segura (entre ≈ 480 y 1.250 px de alto) y lejos de los titulares del HUD (≈ 1.330–1.600 px); (3) bucle
   suave: claves de cámara simétricas en −0,4 / 0 / 0,5 y END−0,4 / END / END+0,5, y lo que sale en el primer segundo rebobina en el último
-  medio segundo; (4) para comparar dos objetos, mirarlos en perpendicular a la línea que los une (si no, uno tapa al otro).
+  medio segundo; (4) para comparar dos objetos, mirarlos en perpendicular a la línea que los une (si no, uno tapa al otro); (5) las caras
+  metálicas planas y pulidas que giran reflejan el foco en un fotograma suelto (valor ≈ 30) y el resplandor lo vuelve una mancha blanca:
+  limitar su brillo por debajo del umbral del resplandor (1,7) con `capGlint`; buscarlos contando píxeles casi blancos fotograma a fotograma.
 - **«Odontología por dentro»** (`projects/odontologia/`, 12-11-2026): primer vídeo del plan del 11-11 (carreras, una al día a las 10:00) y
   primero con **la voz a su velocidad natural** (TEMPO 1.0: 54,0 s → 50,4 s solo quitando silencios largos; vídeo de 51,3 s). Javi: «hazlo muy
   profesional con mucho flujo óptico y lo más realista posible» → el estilo de la huelga (ciudad de día con gente) reutilizado: `16_city.js`
