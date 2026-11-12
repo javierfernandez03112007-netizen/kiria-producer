@@ -1,0 +1,627 @@
+[
+{
+"w": "Tu",
+"start": 0.0,
+"end": 0.08
+},
+{
+"w": "ortodoncista",
+"start": 0.24,
+"end": 1.04
+},
+{
+"w": "no",
+"start": 1.12,
+"end": 1.2
+},
+{
+"w": "es",
+"start": 1.28,
+"end": 1.36
+},
+{
+"w": "especialista",
+"start": 1.44,
+"end": 1.92
+},
+{
+"w": "en",
+"start": 2.0,
+"end": 2.08
+},
+{
+"w": "ortodoncia,",
+"start": 2.16,
+"end": 3.04
+},
+{
+"w": "porque",
+"start": 3.2,
+"end": 3.28
+},
+{
+"w": "en",
+"start": 3.6,
+"end": 3.68
+},
+{
+"w": "España",
+"start": 3.76,
+"end": 4.16
+},
+{
+"w": "esa",
+"start": 4.24,
+"end": 4.48
+},
+{
+"w": "especialidad",
+"start": 4.48,
+"end": 5.04
+},
+{
+"w": "no",
+"start": 5.2,
+"end": 5.28
+},
+{
+"w": "existe.",
+"start": 5.36,
+"end": 6.08
+},
+{
+"w": "Entonces,",
+"start": 6.32,
+"end": 6.8
+},
+{
+"w": "¿qué",
+"start": 6.88,
+"end": 7.36
+},
+{
+"w": "es?",
+"start": 7.28,
+"end": 7.6
+},
+{
+"w": "Te",
+"start": 7.76,
+"end": 7.84
+},
+{
+"w": "lo",
+"start": 7.92,
+"end": 8.0
+},
+{
+"w": "digo",
+"start": 8.08,
+"end": 8.32
+},
+{
+"w": "al",
+"start": 8.4,
+"end": 8.48
+},
+{
+"w": "final.",
+"start": 8.56,
+"end": 8.96
+},
+{
+"w": "Odontología",
+"start": 9.2,
+"end": 10.08
+},
+{
+"w": "son",
+"start": 10.24,
+"end": 10.32
+},
+{
+"w": "cinco",
+"start": 10.48,
+"end": 10.72
+},
+{
+"w": "años.",
+"start": 10.88,
+"end": 11.36
+},
+{
+"w": "Anatomía,",
+"start": 11.52,
+"end": 12.32
+},
+{
+"w": "materiales,",
+"start": 12.48,
+"end": 13.2
+},
+{
+"w": "prótesis,",
+"start": 13.36,
+"end": 14.08
+},
+{
+"w": "cirugía",
+"start": 14.16,
+"end": 14.72
+},
+{
+"w": "y",
+"start": 15.12,
+"end": 15.2
+},
+{
+"w": "muchas",
+"start": 15.36,
+"end": 15.68
+},
+{
+"w": "horas",
+"start": 15.76,
+"end": 16.08
+},
+{
+"w": "con",
+"start": 16.16,
+"end": 16.24
+},
+{
+"w": "pacientes",
+"start": 16.4,
+"end": 16.8
+},
+{
+"w": "de",
+"start": 16.96,
+"end": 17.04
+},
+{
+"w": "verdad.",
+"start": 17.12,
+"end": 17.6
+},
+{
+"w": "Al",
+"start": 17.76,
+"end": 17.84
+},
+{
+"w": "acabar",
+"start": 18.0,
+"end": 18.24
+},
+{
+"w": "ya",
+"start": 18.48,
+"end": 18.56
+},
+{
+"w": "puedes",
+"start": 18.64,
+"end": 18.88
+},
+{
+"w": "empastar,",
+"start": 18.96,
+"end": 19.6
+},
+{
+"w": "sacar",
+"start": 19.68,
+"end": 19.92
+},
+{
+"w": "muelas",
+"start": 20.0,
+"end": 20.4
+},
+{
+"w": "y",
+"start": 20.48,
+"end": 20.56
+},
+{
+"w": "poner",
+"start": 20.64,
+"end": 20.88
+},
+{
+"w": "brackets.",
+"start": 20.96,
+"end": 21.6
+},
+{
+"w": "Todo.",
+"start": 21.76,
+"end": 22.32
+},
+{
+"w": "Y",
+"start": 22.48,
+"end": 22.56
+},
+{
+"w": "cada",
+"start": 22.72,
+"end": 22.8
+},
+{
+"w": "año",
+"start": 23.04,
+"end": 23.28
+},
+{
+"w": "salen",
+"start": 23.36,
+"end": 23.68
+},
+{
+"w": "unos",
+"start": 23.76,
+"end": 23.92
+},
+{
+"w": "1700",
+"start": 24.0,
+"end": 24.8
+},
+{
+"w": "dentistas",
+"start": 24.88,
+"end": 25.36
+},
+{
+"w": "nuevos.",
+"start": 25.52,
+"end": 25.84
+},
+{
+"w": "En",
+"start": 26.12,
+"end": 26.2
+},
+{
+"w": "un",
+"start": 26.36,
+"end": 26.44
+},
+{
+"w": "país",
+"start": 26.52,
+"end": 26.6
+},
+{
+"w": "que",
+"start": 26.76,
+"end": 26.84
+},
+{
+"w": "ya",
+"start": 26.92,
+"end": 27.0
+},
+{
+"w": "tiene",
+"start": 27.08,
+"end": 27.16
+},
+{
+"w": "más",
+"start": 27.4,
+"end": 27.48
+},
+{
+"w": "de",
+"start": 27.64,
+"end": 27.72
+},
+{
+"w": "43.000.",
+"start": 27.8,
+"end": 29.0
+},
+{
+"w": "Según",
+"start": 29.16,
+"end": 29.48
+},
+{
+"w": "el",
+"start": 29.56,
+"end": 29.64
+},
+{
+"w": "Consejo",
+"start": 29.72,
+"end": 30.12
+},
+{
+"w": "de",
+"start": 30.2,
+"end": 30.28
+},
+{
+"w": "Dentistas,",
+"start": 30.28,
+"end": 31.08
+},
+{
+"w": "España",
+"start": 31.16,
+"end": 31.64
+},
+{
+"w": "es",
+"start": 31.64,
+"end": 31.72
+},
+{
+"w": "el",
+"start": 31.88,
+"end": 31.96
+},
+{
+"w": "único",
+"start": 32.04,
+"end": 32.28
+},
+{
+"w": "país",
+"start": 32.36,
+"end": 32.44
+},
+{
+"w": "de",
+"start": 32.6,
+"end": 32.68
+},
+{
+"w": "la",
+"start": 32.68,
+"end": 32.76
+},
+{
+"w": "Unión",
+"start": 32.84,
+"end": 33.08
+},
+{
+"w": "Europea",
+"start": 33.16,
+"end": 33.48
+},
+{
+"w": "sin",
+"start": 33.56,
+"end": 33.64
+},
+{
+"w": "especialidades",
+"start": 33.8,
+"end": 34.36
+},
+{
+"w": "oficiales",
+"start": 34.52,
+"end": 34.92
+},
+{
+"w": "de",
+"start": 35.0,
+"end": 35.08
+},
+{
+"w": "odontología.",
+"start": 35.16,
+"end": 36.2
+},
+{
+"w": "Y",
+"start": 36.28,
+"end": 36.36
+},
+{
+"w": "en",
+"start": 36.44,
+"end": 36.52
+},
+{
+"w": "julio,",
+"start": 36.6,
+"end": 37.08
+},
+{
+"w": "Sanidad",
+"start": 37.16,
+"end": 37.56
+},
+{
+"w": "rechazó",
+"start": 37.72,
+"end": 38.28
+},
+{
+"w": "empezar",
+"start": 38.36,
+"end": 38.76
+},
+{
+"w": "a",
+"start": 38.76,
+"end": 38.84
+},
+{
+"w": "crear",
+"start": 38.84,
+"end": 39.08
+},
+{
+"w": "seis,",
+"start": 39.16,
+"end": 39.64
+},
+{
+"w": "entre",
+"start": 39.8,
+"end": 39.88
+},
+{
+"w": "ellas",
+"start": 40.12,
+"end": 40.36
+},
+{
+"w": "ortodoncia.",
+"start": 40.52,
+"end": 41.48
+},
+{
+"w": "Así",
+"start": 41.64,
+"end": 41.72
+},
+{
+"w": "que",
+"start": 41.96,
+"end": 42.04
+},
+{
+"w": "tu",
+"start": 42.12,
+"end": 42.2
+},
+{
+"w": "ortodoncista",
+"start": 42.36,
+"end": 43.24
+},
+{
+"w": "es",
+"start": 43.32,
+"end": 43.4
+},
+{
+"w": "un",
+"start": 43.48,
+"end": 43.56
+},
+{
+"w": "dentista",
+"start": 43.64,
+"end": 44.04
+},
+{
+"w": "que",
+"start": 44.12,
+"end": 44.2
+},
+{
+"w": "hizo",
+"start": 44.28,
+"end": 44.6
+},
+{
+"w": "un",
+"start": 44.52,
+"end": 44.6
+},
+{
+"w": "máster",
+"start": 44.68,
+"end": 44.92
+},
+{
+"w": "aparte.",
+"start": 45.08,
+"end": 45.72
+},
+{
+"w": "Puede",
+"start": 45.88,
+"end": 46.12
+},
+{
+"w": "ser",
+"start": 46.2,
+"end": 46.28
+},
+{
+"w": "buenísimo,",
+"start": 46.44,
+"end": 47.24
+},
+{
+"w": "pero",
+"start": 47.32,
+"end": 47.4
+},
+{
+"w": "especialista",
+"start": 47.64,
+"end": 48.2
+},
+{
+"w": "oficial",
+"start": 48.36,
+"end": 48.76
+},
+{
+"w": "no",
+"start": 49.0,
+"end": 49.08
+},
+{
+"w": "puede",
+"start": 49.24,
+"end": 49.32
+},
+{
+"w": "serlo.",
+"start": 49.56,
+"end": 50.12
+},
+{
+"w": "Brackets",
+"start": 50.36,
+"end": 50.92
+},
+{
+"w": "o",
+"start": 51.0,
+"end": 51.08
+},
+{
+"w": "invisibles.",
+"start": 51.24,
+"end": 51.8
+},
+{
+"w": "Mándaselo",
+"start": 52.01,
+"end": 52.81
+},
+{
+"w": "a",
+"start": 52.97,
+"end": 53.05
+},
+{
+"w": "quien",
+"start": 53.05,
+"end": 53.21
+},
+{
+"w": "lleva",
+"start": 53.21,
+"end": 53.53
+},
+{
+"w": "aparato.",
+"start": 53.61,
+"end": 54.17
+}
+]
