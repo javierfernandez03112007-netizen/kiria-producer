@@ -1948,7 +1948,105 @@ def sfx_track_seguridad(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_escala(path):
+    """«¿A qué escala está el plano?»: ciudad de noche, el fuego y la tensión del gancho (alguien atrapado arriba), el plano que
+    se despliega y la cota que sube, las 4 tarjetas, la cuenta 1 → 5 con bocina, «¡Tiempo!» con la A tachada y el edificio que
+    encoge (y vuelve), cada planta que se enciende con su nota mientras la autoescala sube (hidráulica) y llega, el último paso
+    («¿? cm»), las letras y la venta. Tiempos como en escala.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["count0"] = LINES[3]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["shrink0"] = c["treinta5"] - 0.05; T["shrink1"] = c["mira"] - 0.35
+    fl = [c["uno7"], c["dos7"], c["tres7"]]
+    a, b = c["tres7"] + 0.35, max(c["tres7"] + 1.15, c["pisos7"] + 0.1)
+    fl += [a + k * (b - a) / 4 for k in range(4)]
+    nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
+    fuego, motor = _load("fuego"), _load("motor")
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # ciudad de noche todo el vídeo; el fuego crepita hasta que se aclara el humo
+    put(_loop(_load("ciudad"), END + 0.5), 0.0, -31, END + 0.5, 0.01, 0.6, track=amb)
+    put(_loop(fuego, c["mira"] + 1.0), 0.0, -27, c["mira"], 0.01, 1.2, track=amb)
+    put("rotativo", 0.0, -33, c["escala"], 0.3, 0.8, track=amb)
+    # gancho: golpe, latido y tensión
+    put("golpe", c["hay"] - 0.02, -24, 0.8, 0.003, 0.35)
+    put("latido", 0.05, -24, 0.7)
+    put("latido", c["humo"] - 0.05, -24, 0.7)
+    put("tension", c["hay"] + 0.3, -31, c["tiempo"] - c["hay"], 0.6, 0.2, track=amb)
+    # el plano y la cota de 21 m
+    put("papeles", c["plano"] - 0.12, -23, 0.8)
+    put(_pitch(toque, 1.2), c["siete"] - 0.02, -27, 0.3)
+    put("whoosh", c["veintiun"] - 0.25, -28, 0.7)
+    put(_pitch(nota, 1.3), c["metros"] - 0.03, -30, 0.9)
+    # las cuatro tarjetas, la cuenta con bocina y «¡Tiempo!»
+    put("whoosh2", c["escala"] - 0.3, -29, 0.8)
+    for k, key in enumerate(("o30", "o300", "o3000", "o150")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    put(toque, c["comenta"] - 0.05, -28, 0.35)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    put("fallo", c["tiempo"] + 0.12, -26, 0.5)
+    # con 1:30, el edificio encoge hasta una caseta (y vuelve)
+    put(_pitch(_onset(_load("whoosh2")), 1.6), T["shrink0"], -25, 0.6)
+    put(_pitch(_onset(_load("caida")), 1.3), T["shrink0"] + 0.05, -27, 0.6)
+    put(_pitch(bub, 0.7), T["shrink0"] + 0.45, -24, 0.25)
+    put(_pitch(_onset(_load("whoosh2")), 0.8), T["shrink1"], -27, 0.7)
+    # la explicación: cada planta con su nota (sube) y la autoescala hidráulica hasta la ventana
+    put("papeles", c["mira"] - 0.1, -25, 0.7)
+    put(toque, c["centimetro"] - 0.02, -27, 0.35)
+    put(_loop(_pitch(motor, 1.5), 8.0), c["uno7"] - 0.25, -29, c["llega"] - c["uno7"] + 0.2, 0.3, 0.3)
+    for k, t0 in enumerate(fl):
+        put(_pitch(nota, 1.0 * 1.06 ** k), t0 - 0.02, -27, 0.5)
+    put("destello", c["veintiun7"] - 0.06, -25, 0.6)
+    put("golpe", c["veintiun7"] - 0.02, -25, 0.6, 0.003, 0.3)
+    put("acierto", c["llega"] - 0.02, -24, 0.9)
+    put("llave", c["llega"] + 0.1, -27, 0.4)
+    # el último paso, para el que lo ve
+    put(_pitch(nota, 1.5), c["centimetros8"] - 0.03, -29, 0.8)
+    put("destello", c["escala8"] - 0.08, -26, 0.6)
+    # final: vuelven las letras y «¿te has comido algún cero?»
+    put("whoosh2", c["escribe"] - 0.3, -27, 0.8)
+    for i in range(4):
+        put(_pitch(bub, 1 + 0.06 * i), c["escribe"] - 0.2 + 0.07 * i, -27, 0.25)
+    put(_pitch(toque, 1.3), c["cero"] - 0.03, -27, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "escala":
+        return sfx_track_escala(path)
     if Q.get("formato") == "seguridad":
         return sfx_track_seguridad(path)
     if Q.get("formato") == "quiz":

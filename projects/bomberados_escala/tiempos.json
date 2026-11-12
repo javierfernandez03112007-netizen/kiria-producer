@@ -2,667 +2,667 @@
  {
   "text": "¡Alguien atrapado en el último piso… y el humo tapa el edificio!",
   "start": 0.0,
-  "end": 4.209,
+  "end": 3.863,
   "words": [
    {
     "w": "¡Alguien",
     "start": 0.0,
-    "end": 0.326
+    "end": 0.399
    },
    {
     "w": "atrapado",
-    "start": 0.326,
-    "end": 0.937
+    "start": 0.399,
+    "end": 0.878
    },
    {
     "w": "en",
-    "start": 0.937,
-    "end": 1.12
+    "start": 0.878,
+    "end": 1.038
    },
    {
     "w": "el",
-    "start": 1.12,
-    "end": 1.303
+    "start": 1.038,
+    "end": 1.118
    },
    {
     "w": "último",
-    "start": 1.303,
-    "end": 1.771
+    "start": 1.118,
+    "end": 1.437
    },
    {
     "w": "piso…",
-    "start": 1.771,
-    "end": 2.097
+    "start": 1.437,
+    "end": 2.206
    },
    {
     "w": "y",
-    "start": 2.397,
-    "end": 2.58
+    "start": 2.206,
+    "end": 2.291
    },
    {
     "w": "el",
-    "start": 2.58,
-    "end": 2.763
+    "start": 2.291,
+    "end": 2.395
    },
    {
     "w": "humo",
-    "start": 2.763,
-    "end": 3.089
+    "start": 2.395,
+    "end": 2.795
    },
    {
     "w": "tapa",
-    "start": 3.089,
-    "end": 3.414
+    "start": 2.795,
+    "end": 3.114
    },
    {
     "w": "el",
-    "start": 3.414,
-    "end": 3.597
+    "start": 3.114,
+    "end": 3.274
    },
    {
     "w": "edificio!",
-    "start": 3.597,
-    "end": 4.209
+    "start": 3.274,
+    "end": 3.863
    }
   ]
  },
  {
   "text": "Solo tienes el plano: ahí mide siete centímetros. De verdad, veintiún metros.",
-  "start": 4.509,
-  "end": 8.798,
+  "start": 4.212,
+  "end": 8.833,
   "words": [
    {
     "w": "Solo",
-    "start": 4.509,
-    "end": 4.835
+    "start": 4.212,
+    "end": 4.392
    },
    {
     "w": "tienes",
-    "start": 4.835,
-    "end": 5.16
+    "start": 4.392,
+    "end": 4.791
    },
    {
     "w": "el",
-    "start": 5.16,
-    "end": 5.343
+    "start": 4.791,
+    "end": 4.871
    },
    {
     "w": "plano:",
-    "start": 5.343,
-    "end": 5.669
+    "start": 4.871,
+    "end": 5.479
    },
    {
     "w": "ahí",
-    "start": 5.849,
-    "end": 6.175
+    "start": 5.479,
+    "end": 5.589
    },
    {
     "w": "mide",
-    "start": 6.175,
-    "end": 6.5
+    "start": 5.589,
+    "end": 6.068
    },
    {
     "w": "siete",
-    "start": 6.5,
-    "end": 6.826
+    "start": 6.068,
+    "end": 6.388
    },
    {
     "w": "centímetros.",
-    "start": 6.826,
-    "end": 7.438
+    "start": 6.388,
+    "end": 7.206
    },
    {
     "w": "De",
-    "start": 7.538,
-    "end": 7.72
+    "start": 7.206,
+    "end": 7.346
    },
    {
     "w": "verdad,",
-    "start": 7.72,
-    "end": 8.046
+    "start": 7.346,
+    "end": 7.825
    },
    {
     "w": "veintiún",
-    "start": 8.146,
-    "end": 8.472
+    "start": 7.825,
+    "end": 8.464
    },
    {
     "w": "metros.",
-    "start": 8.472,
-    "end": 8.798
+    "start": 8.464,
+    "end": 8.833
    }
   ]
  },
  {
   "text": "¿A qué escala está? ¿Uno entre treinta, trescientos, tres mil… o ciento cincuenta?",
-  "start": 9.098,
-  "end": 13.647,
+  "start": 9.162,
+  "end": 14.183,
   "words": [
    {
     "w": "¿A",
-    "start": 9.098,
-    "end": 9.281
+    "start": 9.162,
+    "end": 9.262
    },
    {
     "w": "qué",
-    "start": 9.281,
-    "end": 9.464
+    "start": 9.262,
+    "end": 9.422
    },
    {
     "w": "escala",
-    "start": 9.464,
-    "end": 9.932
+    "start": 9.422,
+    "end": 9.821
    },
    {
     "w": "está?",
-    "start": 9.932,
-    "end": 10.258
+    "start": 9.821,
+    "end": 10.25
    },
    {
     "w": "¿Uno",
-    "start": 10.358,
-    "end": 10.684
+    "start": 10.25,
+    "end": 10.54
    },
    {
     "w": "entre",
-    "start": 10.684,
-    "end": 11.009
+    "start": 10.54,
+    "end": 10.859
    },
    {
     "w": "treinta,",
-    "start": 11.009,
-    "end": 11.335
+    "start": 10.859,
+    "end": 11.418
    },
    {
     "w": "trescientos,",
-    "start": 11.435,
-    "end": 11.904
+    "start": 11.418,
+    "end": 12.217
    },
    {
     "w": "tres",
-    "start": 12.004,
-    "end": 12.187
+    "start": 12.217,
+    "end": 12.576
    },
    {
     "w": "mil…",
-    "start": 12.187,
-    "end": 12.369
+    "start": 12.576,
+    "end": 12.985
    },
    {
     "w": "o",
-    "start": 12.669,
-    "end": 12.852
+    "start": 12.985,
+    "end": 13.255
    },
    {
     "w": "ciento",
-    "start": 12.852,
-    "end": 13.178
+    "start": 13.255,
+    "end": 13.657
    },
    {
     "w": "cincuenta?",
-    "start": 13.178,
-    "end": 13.647
+    "start": 13.657,
+    "end": 14.183
    }
   ]
  },
  {
   "text": "Comenta tu letra. Tienes cinco segundos.",
-  "start": 13.947,
-  "end": 16.144,
+  "start": 14.532,
+  "end": 16.888,
   "words": [
    {
     "w": "Comenta",
-    "start": 13.947,
-    "end": 14.416
+    "start": 14.532,
+    "end": 14.931
    },
    {
     "w": "tu",
-    "start": 14.416,
-    "end": 14.598
+    "start": 14.931,
+    "end": 15.091
    },
    {
     "w": "letra.",
-    "start": 14.598,
-    "end": 14.924
+    "start": 15.091,
+    "end": 15.61
    },
    {
     "w": "Tienes",
-    "start": 15.024,
-    "end": 15.35
+    "start": 15.61,
+    "end": 15.969
    },
    {
     "w": "cinco",
-    "start": 15.35,
-    "end": 15.676
+    "start": 15.969,
+    "end": 16.369
    },
    {
     "w": "segundos.",
-    "start": 15.676,
-    "end": 16.144
+    "start": 16.369,
+    "end": 16.888
    }
   ]
  },
  {
   "text": "¡Tiempo! Con uno entre treinta… ¡el edificio sería una caseta de dos metros!",
-  "start": 20.494,
-  "end": 24.985,
+  "start": 21.177,
+  "end": 25.569,
   "words": [
    {
     "w": "¡Tiempo!",
-    "start": 20.494,
-    "end": 20.82
+    "start": 21.177,
+    "end": 21.886
    },
    {
     "w": "Con",
-    "start": 20.92,
-    "end": 21.103
+    "start": 21.886,
+    "end": 22.016
    },
    {
     "w": "uno",
-    "start": 21.103,
-    "end": 21.428
+    "start": 22.016,
+    "end": 22.335
    },
    {
     "w": "entre",
-    "start": 21.428,
-    "end": 21.754
+    "start": 22.335,
+    "end": 22.654
    },
    {
     "w": "treinta…",
-    "start": 21.754,
-    "end": 22.08
+    "start": 22.654,
+    "end": 23.133
    },
    {
     "w": "¡el",
-    "start": 22.38,
-    "end": 22.563
+    "start": 23.133,
+    "end": 23.373
    },
    {
     "w": "edificio",
-    "start": 22.563,
-    "end": 23.174
+    "start": 23.373,
+    "end": 23.852
    },
    {
     "w": "sería",
-    "start": 23.174,
-    "end": 23.5
+    "start": 23.852,
+    "end": 24.171
    },
    {
     "w": "una",
-    "start": 23.5,
-    "end": 23.825
+    "start": 24.171,
+    "end": 24.331
    },
    {
     "w": "caseta",
-    "start": 23.825,
-    "end": 24.294
+    "start": 24.331,
+    "end": 24.81
    },
    {
     "w": "de",
-    "start": 24.294,
-    "end": 24.477
+    "start": 24.81,
+    "end": 24.89
    },
    {
     "w": "dos",
-    "start": 24.477,
-    "end": 24.66
+    "start": 24.89,
+    "end": 25.13
    },
    {
     "w": "metros!",
-    "start": 24.66,
-    "end": 24.985
+    "start": 25.13,
+    "end": 25.569
    }
   ]
  },
  {
   "text": "Mira el plano: cada centímetro es un piso.",
-  "start": 25.285,
-  "end": 27.928,
+  "start": 25.828,
+  "end": 28.383,
   "words": [
    {
     "w": "Mira",
-    "start": 25.285,
-    "end": 25.611
+    "start": 25.828,
+    "end": 26.168
    },
    {
     "w": "el",
-    "start": 25.611,
-    "end": 25.794
+    "start": 26.168,
+    "end": 26.247
    },
    {
     "w": "plano:",
-    "start": 25.794,
-    "end": 26.119
+    "start": 26.247,
+    "end": 26.756
    },
    {
     "w": "cada",
-    "start": 26.299,
-    "end": 26.625
+    "start": 26.756,
+    "end": 27.046
    },
    {
     "w": "centímetro",
-    "start": 26.625,
-    "end": 27.236
+    "start": 27.046,
+    "end": 27.685
    },
    {
     "w": "es",
-    "start": 27.236,
-    "end": 27.419
+    "start": 27.685,
+    "end": 27.924
    },
    {
     "w": "un",
-    "start": 27.419,
-    "end": 27.602
+    "start": 27.924,
+    "end": 28.084
    },
    {
     "w": "piso.",
-    "start": 27.602,
-    "end": 27.928
+    "start": 28.084,
+    "end": 28.383
    }
   ]
  },
  {
   "text": "Uno, dos, tres… ¡siete pisos de tres metros: veintiún metros! Y tu escalera llega.",
-  "start": 28.228,
-  "end": 32.997,
+  "start": 28.743,
+  "end": 35.11,
   "words": [
    {
     "w": "Uno,",
-    "start": 28.228,
-    "end": 28.554
+    "start": 28.743,
+    "end": 29.282
    },
    {
     "w": "dos,",
-    "start": 28.654,
-    "end": 28.837
+    "start": 29.282,
+    "end": 30.11
    },
    {
     "w": "tres…",
-    "start": 28.937,
-    "end": 29.119
+    "start": 30.11,
+    "end": 30.849
    },
    {
     "w": "¡siete",
-    "start": 29.419,
-    "end": 29.745
+    "start": 30.849,
+    "end": 31.278
    },
    {
     "w": "pisos",
-    "start": 29.745,
-    "end": 30.071
+    "start": 31.278,
+    "end": 31.677
    },
    {
     "w": "de",
-    "start": 30.071,
-    "end": 30.254
+    "start": 31.677,
+    "end": 31.837
    },
    {
     "w": "tres",
-    "start": 30.254,
-    "end": 30.437
+    "start": 31.837,
+    "end": 32.156
    },
    {
     "w": "metros:",
-    "start": 30.437,
-    "end": 30.762
+    "start": 32.156,
+    "end": 32.655
    },
    {
     "w": "veintiún",
-    "start": 30.942,
-    "end": 31.268
+    "start": 32.655,
+    "end": 33.354
    },
    {
     "w": "metros!",
-    "start": 31.268,
-    "end": 31.594
+    "start": 33.354,
+    "end": 34.042
    },
    {
     "w": "Y",
-    "start": 31.694,
-    "end": 31.877
+    "start": 34.042,
+    "end": 34.128
    },
    {
     "w": "tu",
-    "start": 31.877,
-    "end": 32.059
+    "start": 34.128,
+    "end": 34.232
    },
    {
     "w": "escalera",
-    "start": 32.059,
-    "end": 32.671
+    "start": 34.232,
+    "end": 34.791
    },
    {
     "w": "llega.",
-    "start": 32.671,
-    "end": 32.997
+    "start": 34.791,
+    "end": 35.11
    }
   ]
  },
  {
   "text": "Ahora pasa esos tres metros a centímetros… y tendrás la escala.",
-  "start": 33.297,
-  "end": 37.18,
+  "start": 35.39,
+  "end": 38.773,
   "words": [
    {
     "w": "Ahora",
-    "start": 33.297,
-    "end": 33.766
+    "start": 35.39,
+    "end": 35.589
    },
    {
     "w": "pasa",
-    "start": 33.766,
-    "end": 34.091
+    "start": 35.589,
+    "end": 35.989
    },
    {
     "w": "esos",
-    "start": 34.091,
-    "end": 34.417
+    "start": 35.989,
+    "end": 36.228
    },
    {
     "w": "tres",
-    "start": 34.417,
-    "end": 34.6
+    "start": 36.228,
+    "end": 36.468
    },
    {
     "w": "metros",
-    "start": 34.6,
-    "end": 34.926
+    "start": 36.468,
+    "end": 36.867
    },
    {
     "w": "a",
-    "start": 34.926,
-    "end": 35.108
+    "start": 36.867,
+    "end": 37.027
    },
    {
     "w": "centímetros…",
-    "start": 35.108,
-    "end": 35.72
+    "start": 37.027,
+    "end": 37.815
    },
    {
     "w": "y",
-    "start": 36.02,
-    "end": 36.203
+    "start": 37.815,
+    "end": 37.905
    },
    {
     "w": "tendrás",
-    "start": 36.203,
-    "end": 36.528
+    "start": 37.905,
+    "end": 38.304
    },
    {
     "w": "la",
-    "start": 36.528,
-    "end": 36.711
+    "start": 38.304,
+    "end": 38.464
    },
    {
     "w": "escala.",
-    "start": 36.711,
-    "end": 37.18
+    "start": 38.464,
+    "end": 38.773
    }
   ]
  },
  {
   "text": "Escribe tu letra… y si te has comido algún cero, confiésalo.",
-  "start": 37.48,
-  "end": 41.32,
+  "start": 39.103,
+  "end": 42.466,
   "words": [
    {
     "w": "Escribe",
-    "start": 37.48,
-    "end": 37.949
+    "start": 39.103,
+    "end": 39.582
    },
    {
     "w": "tu",
-    "start": 37.949,
-    "end": 38.131
+    "start": 39.582,
+    "end": 39.742
    },
    {
     "w": "letra…",
-    "start": 38.131,
-    "end": 38.457
+    "start": 39.742,
+    "end": 40.251
    },
    {
     "w": "y",
-    "start": 38.757,
-    "end": 38.94
+    "start": 40.251,
+    "end": 40.345
    },
    {
     "w": "si",
-    "start": 38.94,
-    "end": 39.123
+    "start": 40.345,
+    "end": 40.46
    },
    {
     "w": "te",
-    "start": 39.123,
-    "end": 39.306
+    "start": 40.46,
+    "end": 40.54
    },
    {
     "w": "has",
-    "start": 39.306,
-    "end": 39.489
+    "start": 40.54,
+    "end": 40.7
    },
    {
     "w": "comido",
-    "start": 39.489,
-    "end": 39.957
+    "start": 40.7,
+    "end": 41.099
    },
    {
     "w": "algún",
-    "start": 39.957,
-    "end": 40.283
+    "start": 41.099,
+    "end": 41.338
    },
    {
     "w": "cero,",
-    "start": 40.283,
-    "end": 40.609
+    "start": 41.338,
+    "end": 41.818
    },
    {
     "w": "confiésalo.",
-    "start": 40.709,
-    "end": 41.32
+    "start": 41.818,
+    "end": 42.466
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
-  "start": 41.62,
-  "end": 46.12,
+  "start": 42.716,
+  "end": 45.49,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 41.62,
-    "end": 42.46
+    "start": 42.716,
+    "end": 43.335
    },
    {
     "w": "a",
-    "start": 42.46,
-    "end": 42.7
+    "start": 43.335,
+    "end": 43.414
    },
    {
     "w": "quien",
-    "start": 42.7,
-    "end": 42.94
+    "start": 43.414,
+    "end": 43.654
    },
    {
     "w": "oposite",
-    "start": 42.94,
-    "end": 43.78
+    "start": 43.654,
+    "end": 44.213
    },
    {
     "w": "contigo,",
-    "start": 43.78,
-    "end": 44.42
+    "start": 44.213,
+    "end": 44.612
    },
    {
     "w": "a",
-    "start": 44.52,
-    "end": 44.76
+    "start": 44.612,
+    "end": 44.692
    },
    {
     "w": "ver",
-    "start": 44.76,
-    "end": 45.0
+    "start": 44.692,
+    "end": 44.852
    },
    {
     "w": "si",
-    "start": 45.0,
-    "end": 45.24
+    "start": 44.852,
+    "end": 44.932
    },
    {
     "w": "la",
-    "start": 45.24,
-    "end": 45.48
+    "start": 44.932,
+    "end": 45.091
    },
    {
     "w": "acierta!",
-    "start": 45.48,
-    "end": 46.12
+    "start": 45.091,
+    "end": 45.49
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 46.42,
-  "end": 50.94,
+  "start": 45.49,
+  "end": 49.962,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 46.42,
-    "end": 47.26
+    "start": 45.49,
+    "end": 46.209
    },
    {
     "w": "a",
-    "start": 47.26,
-    "end": 47.5
+    "start": 46.209,
+    "end": 46.369
    },
    {
     "w": "bombero?",
-    "start": 47.5,
-    "end": 48.14
+    "start": 46.369,
+    "end": 47.038
    },
    {
     "w": "¡Bomberados!",
-    "start": 48.24,
-    "end": 49.08
+    "start": 47.038,
+    "end": 48.295
    },
    {
     "w": "¡Pruébala",
-    "start": 49.18,
-    "end": 49.82
+    "start": 48.295,
+    "end": 48.764
    },
    {
     "w": "gratis",
-    "start": 49.82,
-    "end": 50.26
+    "start": 48.764,
+    "end": 49.243
    },
    {
     "w": "cinco",
-    "start": 50.26,
-    "end": 50.7
+    "start": 49.243,
+    "end": 49.563
    },
    {
     "w": "días!",
-    "start": 50.7,
-    "end": 50.94
+    "start": 49.563,
+    "end": 49.962
    }
   ]
  }
