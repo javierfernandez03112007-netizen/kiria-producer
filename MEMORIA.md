@@ -110,6 +110,19 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **«GTA 6: el dinero»** (`projects/gta6_dinero/`, 12-11-2026): Javi: «el de odontología ha sido un completo caos, vamos a hacer otro de GTA…
+  con otro enfoque: lo que va a ser GTA 6, el dinero… cosas de mucho interés para la gran parte de la población». Guion de 141 palabras
+  (gancho 16: «Ninguna película de la historia ha ganado tanto dinero como este videojuego»; respuesta: 3.200 M$ el primer año según los
+  analistas, más que la película más taquillera; cierre «¿Pagarías 80 € por un videojuego?» + «mándaselo a quien dice que jugar es tirar el
+  dinero»). Voz a su velocidad natural (51,2 s). **Contra el caos: un solo sitio y una sola idea**: un paseo marítimo de día (hoteles art déco
+  pastel, palmeras, coches, playa, mar; `16_city.js` nuevo) y cada cifra es una torre de fajos de billetes a la misma escala junto a su rival
+  (`17_money.js`: bobinas de cine, torre de cristal de GTA 6, calendario de taco, cartel de días con medalla, torre de cajas frente a una
+  pirámide de gente de Brasil, superrascacielos con sello «NO», etiqueta de precio). Un objeto nuevo por frase. Render en las 6 máquinas
+  (`render-gtd-1…6`) + esta sesión (2820–3126). Lecciones: (1) para depurar la cámara, imprimir `camAt(t)` con `EVAL` en `capture.mjs`
+  (`console.error("ERROR …")` sale en el registro): los vuelos que pasan a menos de ≈ 3 unidades de un objeto gigante llenan la pantalla;
+  (2) los rótulos 3D, en la zona segura (entre ≈ 480 y 1.250 px de alto) y lejos de los titulares del HUD (≈ 1.330–1.600 px); (3) bucle
+  suave: claves de cámara simétricas en −0,4 / 0 / 0,5 y END−0,4 / END / END+0,5, y lo que sale en el primer segundo rebobina en el último
+  medio segundo; (4) para comparar dos objetos, mirarlos en perpendicular a la línea que los une (si no, uno tapa al otro).
 - **«Odontología por dentro»** (`projects/odontologia/`, 12-11-2026): primer vídeo del plan del 11-11 (carreras, una al día a las 10:00) y
   primero con **la voz a su velocidad natural** (TEMPO 1.0: 54,0 s → 50,4 s solo quitando silencios largos; vídeo de 51,3 s). Javi: «hazlo muy
   profesional con mucho flujo óptico y lo más realista posible» → el estilo de la huelga (ciudad de día con gente) reutilizado: `16_city.js`
