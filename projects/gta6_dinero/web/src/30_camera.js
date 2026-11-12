@@ -13,7 +13,10 @@ function buildCam() {
     [K.historia1, [0.68, 0.46, 1.15], [0, 0.14, 0], 40], [K.dinero1, [0.45, 0.55, 1.25], [0, 0.18, 0], 38], [K.videojuego1, [0.32, 0.36, 1.3], [0, 0.3, 0], 37],
     [K.es2 + 0.2, [0.08, 0.33, 1.12], [0, 0.3, 0], 36], [K.y2, [0.8, 0.58, 1.3], [0.38, 0.36, -0.4], 38], [K.sale2, [1.3, 0.6, 0.75], [0.56, 0.38, -0.5], 37],
     [K.cuanto2, [1.28, 0.56, 0.5], [0.57, 0.38, -0.5], 35], [K.final2 + 0.25, [1.26, 0.55, 0.42], [0.57, 0.38, -0.5], 34],
-    [K.el3 - 0.05, [1.4, 0.7, 0.75], [3.4, 0.55, -0.6], 40], [K.el3 + 0.45, [2.2, 1.15, 2.6], [3.6, 0.8, 6.0], 40], [K.el3 + 0.66, stCam(D, 9.2, 1.25, -1.8), stLook(D, 0.72, -0.1), 39], [K.gta3 + 0.08, stCam(D, 9.9, 1.1, -0.2), stLook(D, 0.75, -0.05), 37],
+    // de la vitrina al pedestal D sin girar: la cámara retrocede en línea recta (la vitrina y el centro se alejan), sube, pasa por encima
+    // del pedestal y baja delante de él; mira siempre hacia el centro (rumbo 217° → 206°), así que no hay barrido ni fotogramas vacíos
+    [K.el3 + 0.2, [2.14, 0.95, 2.48], [0.35, 0.42, -0.3], 38], [K.gta3, [3.2, 1.55, 4.96], [0.3, 0.42, -0.2], 40],
+    [K.gta3 + 0.4, [4.25, 1.75, 7.43], [2.5, 0.5, 3.83], 40], [K.gta3 + 0.85, stCam(D, 10.3, 1.35, -0.15), stLook(D, 0.72, -0.05), 38],
     [K.n800, stCam(D, 9.55, 1.0, -0.03), stLook(D, 0.8, -0.03), 36], [K.en3, stCam(D, 9.45, 0.92, -0.12), stLook(D, 0.72, -0.1, R_ST + 0.08), 35],
     [K.n1000, stCam(D, 9.55, 1.02, 0.04), stLook(D, 0.86, 0.04), 36], [K.record3, stCam(D, 9.7, 1.15, 0.06), stLook(D, 1.02, 0.06), 37], hold(K.lleva4 - 0.25, D, 9.72, 1.17, 0.07, 1.04, 0.07, R_ST, 37),
     [K.lleva4 + 0.35, stCam(C, 9.8, 1.55, -0.25), stLook(C, 0.56, -0.05), 40], [K.n230, stCam(C, 9.4, 1.3, -0.1), stLook(C, 0.56, -0.04), 38],
@@ -46,14 +49,15 @@ function flashAt(t) {
   return f;
 }
 function whiteAt(t) { return 0; }
-function coneFade(cone, base, t, st) {        // el haz se apaga solo mientras la cámara atraviesa su superficie (si no, la pantalla se pone blanca)
+function coneFade(cone, base, t, st, k = 1) {        // el haz se apaga solo mientras la cámara atraviesa su superficie (si no, la pantalla se pone blanca); k: cuánto se aplica
   const w = new THREE.Vector3(); cone.getWorldPosition(w); const R0 = cone.geometry.parameters.radiusBottom, H = cone.geometry.parameters.height, y = st.p.y - (w.y - H / 2);
-  const r = R0 + (0.06 - R0) * clamp(y / H), d = Math.hypot(st.p.x - w.x, st.p.z - w.z); cone.material.uniforms.op.value = base * clamp((Math.abs(d - r) - 0.05) / 0.2);
+  const r = R0 + (0.06 - R0) * clamp(y / H), d = Math.hypot(st.p.x - w.x, st.p.z - w.z); cone.material.uniforms.op.value = base * (1 - k + k * clamp((Math.abs(d - r) - 0.05) / 0.2));
 }
 function stageAt(t, st) {
   NOW = t; centerAt(t, st); stationsAt(t);
-  const fly = (t > K.el3 && t < K.gta3 + 0.3) || (t > K.videojuego9 && t < END - 1.3);
-  if (fly) { coneFade(S.ctrCone, 0.05, t, st); for (const k in ST) if (ST[k].Z.visible) coneFade(ST[k].cone, 0.055, t, st); }
+  // vuelos que cruzan haces: de la vitrina al pedestal D (entra y sale suave) y de la balanza al centro; fuera de ellos, el haz a su valor
+  const fk = t > K.videojuego9 && t < END - 1.3 ? 1 : win(t, K.final2 + 0.25, 0.3) * (1 - win(t, K.gta3 + 0.9, 0.3));
+  coneFade(S.ctrCone, 0.05, t, st, fk); for (const k in ST) if (ST[k].Z.visible) coneFade(ST[k].cone, 0.055, t, st, fk);
   const c = st.l, d = st.p.distanceTo(c), yaw = Math.atan2(st.p.x - c.x, st.p.z - c.z), k = clamp(d / 5, 0.2, 1.2);
   rigAt(c, yaw, k, 1.15, 0.6);
   const R = S.rig; R.sun.intensity = 0.0; R.hemi.intensity = 0.12;
