@@ -1851,12 +1851,12 @@ def sfx_track_seguridad(path):
 
     # lluvia todo el vídeo (más fuerte en el gancho); motor a 90 km/h hasta que frena, y grave en la cámara lenta
     put(_loop(lluvia, END + 0.5), 0.0, -27, END + 0.5, 0.01, 0.6, track=amb)
-    put(_loop(lluvia, 4.0), 0.0, -26, c["como"], 0.01, 0.8)
-    put(_loop(motor, 4.0), 0.0, -25, T["tb"] + 0.4, 0.01, 0.3)
+    put(_loop(lluvia, 4.0), 0.0, -29, c["como"], 0.01, 0.8)
+    put(_loop(motor, 4.0), 0.0, -28, T["tb"] + 0.4, 0.01, 0.3)
     put(_loop(_pitch(motor, 0.55), T["stop"] - T["tb"] + 1.0), T["tb"] + 0.2, -31, T["stop"] - T["tb"], 0.4, 0.5, track=amb)
     # ¡FRENA!: frenazo (y luego estirado y grave: cámara lenta), latido y tensión
-    put(fren, T["tb"] - 0.06, -19, 1.3, 0.003, 0.4)
-    put("golpe", T["tb"] - 0.04, -24, 0.7, 0.003, 0.3)
+    put(fren, T["tb"] - 0.06, -22, 1.3, 0.003, 0.4)
+    put("golpe", T["tb"] - 0.04, -26, 0.7, 0.003, 0.3)
     slow = _pitch(fren, 0.5)
     put(slow, c["coche"] + 0.4, -27, min(3.0, c["como"] - c["coche"]), 0.2, 0.8)
     t = c["coche"] + 0.3
