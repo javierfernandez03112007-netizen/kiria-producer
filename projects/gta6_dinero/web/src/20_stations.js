@@ -36,7 +36,8 @@ function buildStations() {
     s.stp = rubberStamp('NO'); s.top.add(s.stp);
     s.sky = supertall(0.85); s.sky.position.set(0.32, 0, -0.3); s.top.add(s.sky);
     s.col = bundleColumn(72, 1.0); s.col.g.position.set(0.0, 0, -0.3); s.top.add(s.col.g);
-    s.reel = reelBig(0.085); s.reel.position.set(-0.5, 0, -0.18); s.reel.rotation.y = 0.35; s.top.add(s.reel);
+    // la bobina (la película más cara), de pie delante de su columna de fajos (659 M$): antes quedaba justo detrás de la caja de GTA 6
+    s.reel = reelBig(0.085); s.reel.position.set(-0.3, 0, -0.11); s.reel.rotation.y = 0.15; s.top.add(s.reel);
     s.col2 = bundleColumn(32, 1.0); s.col2.g.position.set(-0.3, 0, -0.3); s.top.add(s.col2.g);
   }
   // ---------- L7: el precio. La caja de GTA 6 en su atril, la etiqueta de 79,99 € y el tique
@@ -83,7 +84,7 @@ function stationsAt(t) {
     const dk = sd > 0.1 ? 1 : 0; if (dk !== s.doc.userData.k) { const T = s.doc.userData.tex; s.doc.userData.draw(T.userData.g, T.userData.c.width, T.userData.c.height, dk); T.needsUpdate = true; s.doc.userData.k = dk; }
     const kk = win(t, K.edificio5 - 0.3, 0.9); s.sky.visible = kk > 0.01; s.sky.scale.set(1, Math.max(0.001, kk), 1);
     const ck = keyed(t, [[0, 0], [K.los6, 0], [K.n1000b + 0.2, 46], [K.n1500 - 0.1, 48], [K.n1500 + 0.35, 58]]); s.col.setN(ck, 0.08);
-    show(s.reel, pop(t, K.cualquier6 - 0.2, 0.45)); s.col2.setN(keyed(t, [[0, 0], [K.cualquier6 - 0.1, 0], [K.pelicula6 + 0.3, 30]]), 0.08);
+    show(s.reel, pop(t, K.cualquier6 - 0.2, 0.45)); s.col2.setN(keyed(t, [[0, 0], [K.cualquier6 - 0.1, 0], [K.pelicula6 + 0.3, Math.round(lay(659))]]), 0.08);   // 659 M$ = 26 capas de 25 M$
   } }
   // L7
   { const s = ST.P; if (vis(s, K.mas6 - 0.2, K.respuesta8 + 0.8)) {

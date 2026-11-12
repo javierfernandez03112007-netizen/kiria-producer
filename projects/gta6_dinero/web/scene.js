@@ -1116,7 +1116,8 @@ function buildStations() {
     s.stp = rubberStamp('NO'); s.top.add(s.stp);
     s.sky = supertall(0.85); s.sky.position.set(0.32, 0, -0.3); s.top.add(s.sky);
     s.col = bundleColumn(72, 1.0); s.col.g.position.set(0.0, 0, -0.3); s.top.add(s.col.g);
-    s.reel = reelBig(0.085); s.reel.position.set(-0.5, 0, -0.18); s.reel.rotation.y = 0.35; s.top.add(s.reel);
+    // la bobina (la película más cara), de pie delante de su columna de fajos (659 M$): antes quedaba justo detrás de la caja de GTA 6
+    s.reel = reelBig(0.085); s.reel.position.set(-0.3, 0, -0.11); s.reel.rotation.y = 0.15; s.top.add(s.reel);
     s.col2 = bundleColumn(32, 1.0); s.col2.g.position.set(-0.3, 0, -0.3); s.top.add(s.col2.g);
   }
   // ---------- L7: el precio. La caja de GTA 6 en su atril, la etiqueta de 79,99 € y el tique
@@ -1163,7 +1164,7 @@ function stationsAt(t) {
     const dk = sd > 0.1 ? 1 : 0; if (dk !== s.doc.userData.k) { const T = s.doc.userData.tex; s.doc.userData.draw(T.userData.g, T.userData.c.width, T.userData.c.height, dk); T.needsUpdate = true; s.doc.userData.k = dk; }
     const kk = win(t, K.edificio5 - 0.3, 0.9); s.sky.visible = kk > 0.01; s.sky.scale.set(1, Math.max(0.001, kk), 1);
     const ck = keyed(t, [[0, 0], [K.los6, 0], [K.n1000b + 0.2, 46], [K.n1500 - 0.1, 48], [K.n1500 + 0.35, 58]]); s.col.setN(ck, 0.08);
-    show(s.reel, pop(t, K.cualquier6 - 0.2, 0.45)); s.col2.setN(keyed(t, [[0, 0], [K.cualquier6 - 0.1, 0], [K.pelicula6 + 0.3, 30]]), 0.08);
+    show(s.reel, pop(t, K.cualquier6 - 0.2, 0.45)); s.col2.setN(keyed(t, [[0, 0], [K.cualquier6 - 0.1, 0], [K.pelicula6 + 0.3, Math.round(lay(659))]]), 0.08);   // 659 M$ = 26 capas de 25 M$
   } }
   // L7
   { const s = ST.P; if (vis(s, K.mas6 - 0.2, K.respuesta8 + 0.8)) {
@@ -1214,7 +1215,7 @@ function buildCam() {
     [K.y5 + 0.45, stCam(KK, 9.85, 1.02, -0.42), stLook(KK, 0.68, -0.45, R_ST + 0.2), 36], [K.rockstar5, stCam(KK, 9.3, 1.08, -0.1), stLook(KK, 0.6, -0.06, R_ST + 0.2), 35],
     [K.negar5, stCam(KK, 9.15, 0.95, -0.05), stLook(KK, 0.58, -0.05, R_ST + 0.26), 33], [K.costara5 + 0.3, stCam(KK, 9.2, 0.97, -0.02), stLook(KK, 0.58, -0.04, R_ST + 0.26), 33],
     [K.edificio5, stCam(KK, 9.6, 1.02, 0.22), stLook(KK, 0.95, 0.26, R_ST - 0.3), 36], [K.mundo5, stCam(KK, 9.7, 1.15, 0.2), stLook(KK, 1.02, 0.24, R_ST - 0.3), 37],
-    [K.entre6, stCam(KK, 9.85, 1.08, 0.08), stLook(KK, 0.92, 0.06, R_ST - 0.3), 38], [K.cualquier6, stCam(KK, 9.95, 1.02, -0.16), stLook(KK, 0.85, -0.14, R_ST - 0.3), 39], hold(K.y7 - 0.2, KK, 9.97, 1.02, -0.17, 0.85, -0.15, R_ST - 0.3, 39),
+    [K.entre6, stCam(KK, 9.85, 1.08, 0.08), stLook(KK, 0.92, 0.06, R_ST - 0.3), 38], [K.cualquier6, stCam(KK, 9.95, 1.02, -0.34), stLook(KK, 0.85, -0.32, R_ST - 0.3), 39], hold(K.y7 - 0.2, KK, 9.97, 1.02, -0.35, 0.85, -0.33, R_ST - 0.3, 39),
     [K.y7 + 0.35, stCam(P, 9.95, 0.98, -0.02), stLook(P, 0.8, 0.0), 36], [K.n80, stCam(P, 9.85, 0.96, 0.0), stLook(P, 0.82, 0.02, R_ST + 0.05), 35], hold(K.euros7 + 0.35, P, 9.83, 0.96, 0.01, 0.82, 0.02, R_ST + 0.05, 35),
     [K.respuesta8 + 0.35, stCam(B, 10.6, 1.36, 0.0), stLook(B, 1.02, 0.0), 36], [K.tres8, stCam(B, 10.4, 1.3, 0.05), stLook(B, 1.0, 0.04), 35], [K.ano8, stCam(B, 10.32, 1.26, 0.08), stLook(B, 0.99, 0.07), 34],
     [K.mas8, stCam(B, 10.45, 1.28, 0.0), stLook(B, 1.01, 0.0), 35], [K.historia8 + 0.3, stCam(B, 10.6, 1.32, 0.0), stLook(B, 1.02, 0.0), 36],
@@ -1305,7 +1306,7 @@ function hudAt(t) {
   { const Kk = ST.K; if (Kk.Z.visible) { lab(Kk.doc, 0, 0.0, 0.0, 'ROCKSTAR LO NIEGA', null, cw(t, K.negar5 + 0.25, K.edificio5 - 0.1), { dx: -110, dy: -220, color: HC.red });
       lab(Kk.sky, 0, 0.86, 0, 'BURJ KHALIFA', 'EL MÁS ALTO · 1.500 M$', cw(t, K.edificio5 + 0.2, K.entre6 - 0.1), { dx: 120, dy: -110, color: HC.teal });
       lab(Kk.col.g, 0, 0.62, 0, 'COSTE DE GTA 6', 'ANALISTAS: 1.000–1.500 M$', cw(t, K.n1000b, K.cualquier6 - 0.1), { dx: -130, dy: -120, color: HG });
-      lab(Kk.reel, 0, 0.19, 0, 'LA PELÍCULA MÁS CARA', '659 M$', cw(t, K.cualquier6 + 0.1, K.y7 - 0.1), { dx: 110, dy: -170, color: HC.white }); }
+      lab(Kk.reel, 0, 0.17, 0, 'LA PELÍCULA MÁS CARA', '659 M$', cw(t, K.cualquier6 + 0.1, K.y7 - 0.1), { dx: -80, dy: -190, color: HC.white }); }
     const a = cw(t, K.n1000b - 0.1, K.mas6 - 0.05); if (a > 0.01) bigText('1.000–1.500 M$', W / 2, Y, 86, HG, a, { glow: 18, type: false, dark: 30 });
     const b = cw(t, K.mas6 - 0.05, K.y7 - 0.1); if (b > 0.01) bigText('MÁS QUE CUALQUIER PELÍCULA', W / 2, Y, 46, HC.white, b, { dark: 24 }); }
   // L7: 79,99 €

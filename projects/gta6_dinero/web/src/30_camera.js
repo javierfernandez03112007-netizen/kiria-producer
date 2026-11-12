@@ -25,7 +25,7 @@ function buildCam() {
     [K.y5 + 0.45, stCam(KK, 9.85, 1.02, -0.42), stLook(KK, 0.68, -0.45, R_ST + 0.2), 36], [K.rockstar5, stCam(KK, 9.3, 1.08, -0.1), stLook(KK, 0.6, -0.06, R_ST + 0.2), 35],
     [K.negar5, stCam(KK, 9.15, 0.95, -0.05), stLook(KK, 0.58, -0.05, R_ST + 0.26), 33], [K.costara5 + 0.3, stCam(KK, 9.2, 0.97, -0.02), stLook(KK, 0.58, -0.04, R_ST + 0.26), 33],
     [K.edificio5, stCam(KK, 9.6, 1.02, 0.22), stLook(KK, 0.95, 0.26, R_ST - 0.3), 36], [K.mundo5, stCam(KK, 9.7, 1.15, 0.2), stLook(KK, 1.02, 0.24, R_ST - 0.3), 37],
-    [K.entre6, stCam(KK, 9.85, 1.08, 0.08), stLook(KK, 0.92, 0.06, R_ST - 0.3), 38], [K.cualquier6, stCam(KK, 9.95, 1.02, -0.16), stLook(KK, 0.85, -0.14, R_ST - 0.3), 39], hold(K.y7 - 0.2, KK, 9.97, 1.02, -0.17, 0.85, -0.15, R_ST - 0.3, 39),
+    [K.entre6, stCam(KK, 9.85, 1.08, 0.08), stLook(KK, 0.92, 0.06, R_ST - 0.3), 38], [K.cualquier6, stCam(KK, 9.95, 1.02, -0.34), stLook(KK, 0.85, -0.32, R_ST - 0.3), 39], hold(K.y7 - 0.2, KK, 9.97, 1.02, -0.35, 0.85, -0.33, R_ST - 0.3, 39),
     [K.y7 + 0.35, stCam(P, 9.95, 0.98, -0.02), stLook(P, 0.8, 0.0), 36], [K.n80, stCam(P, 9.85, 0.96, 0.0), stLook(P, 0.82, 0.02, R_ST + 0.05), 35], hold(K.euros7 + 0.35, P, 9.83, 0.96, 0.01, 0.82, 0.02, R_ST + 0.05, 35),
     [K.respuesta8 + 0.35, stCam(B, 10.6, 1.36, 0.0), stLook(B, 1.02, 0.0), 36], [K.tres8, stCam(B, 10.4, 1.3, 0.05), stLook(B, 1.0, 0.04), 35], [K.ano8, stCam(B, 10.32, 1.26, 0.08), stLook(B, 0.99, 0.07), 34],
     [K.mas8, stCam(B, 10.45, 1.28, 0.0), stLook(B, 1.01, 0.0), 35], [K.historia8 + 0.3, stCam(B, 10.6, 1.32, 0.0), stLook(B, 1.02, 0.0), 36],

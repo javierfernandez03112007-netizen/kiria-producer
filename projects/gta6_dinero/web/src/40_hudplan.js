@@ -52,7 +52,7 @@ function hudAt(t) {
   { const Kk = ST.K; if (Kk.Z.visible) { lab(Kk.doc, 0, 0.0, 0.0, 'ROCKSTAR LO NIEGA', null, cw(t, K.negar5 + 0.25, K.edificio5 - 0.1), { dx: -110, dy: -220, color: HC.red });
       lab(Kk.sky, 0, 0.86, 0, 'BURJ KHALIFA', 'EL MÁS ALTO · 1.500 M$', cw(t, K.edificio5 + 0.2, K.entre6 - 0.1), { dx: 120, dy: -110, color: HC.teal });
       lab(Kk.col.g, 0, 0.62, 0, 'COSTE DE GTA 6', 'ANALISTAS: 1.000–1.500 M$', cw(t, K.n1000b, K.cualquier6 - 0.1), { dx: -130, dy: -120, color: HG });
-      lab(Kk.reel, 0, 0.19, 0, 'LA PELÍCULA MÁS CARA', '659 M$', cw(t, K.cualquier6 + 0.1, K.y7 - 0.1), { dx: 110, dy: -170, color: HC.white }); }
+      lab(Kk.reel, 0, 0.17, 0, 'LA PELÍCULA MÁS CARA', '659 M$', cw(t, K.cualquier6 + 0.1, K.y7 - 0.1), { dx: -80, dy: -190, color: HC.white }); }
     const a = cw(t, K.n1000b - 0.1, K.mas6 - 0.05); if (a > 0.01) bigText('1.000–1.500 M$', W / 2, Y, 86, HG, a, { glow: 18, type: false, dark: 30 });
     const b = cw(t, K.mas6 - 0.05, K.y7 - 0.1); if (b > 0.01) bigText('MÁS QUE CUALQUIER PELÍCULA', W / 2, Y, 46, HC.white, b, { dark: 24 }); }
   // L7: 79,99 €
