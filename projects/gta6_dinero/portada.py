@@ -1,6 +1,6 @@
 """Portada (1080x1920) y miniatura 4:5 (1080x1350) de «GTA 6: el dinero».
-Base: la torre de billetes de GTA 5 saliendo de la arena junto a la bobina de la película n.º 1 (sin HUD):
-    COVER=1 COVER_T=1.4 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Base: la caja de GTA 5 en pie entre las cien bobinas caídas (estilo del vídeo de Derecho, sin HUD):
+    COVER=1 COVER_T=2.6 COVER_CAM="0.2,0.34,1.6,0,0.44,0,40" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos («ha ganado tanto» en dorado)."""
 import os
 import sys

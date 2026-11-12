@@ -1,48 +1,53 @@
-// ---------------------------------------------------------------- cámara: siempre en movimiento. Desde el paseo, la torre de GTA 5 revienta la arena junto a la bobina gigante →
-// barrido a la torre de cristal de GTA 6 (calendario e interrogación) → vuelo por el paseo hasta el contador de días (800 → 1.000 M$, la medalla) → la torre de
-// cajas frente a la pirámide de Brasil → giro y vuelo por la orilla hasta el coste (el rascacielos, el «NO», la película más cara) → la etiqueta del precio →
-// GTA 6 se llena y pasa a la película n.º 1 (grúa) → vuelta por encima de la plaza hasta el primer plano (bucle)
+// ---------------------------------------------------------------- cámara (como en Derecho): entre las bobinas cuando cae la caja → la portada de GTA 5 → la vitrina de
+// GTA 6 → vuela al círculo de pedestales: los fajos y la medalla, las copias frente a Brasil, el coste (sello, maqueta, columna de los analistas), el precio y la
+// balanza → vuelve al centro: las bobinas se levantan y la caja sube hasta la pose del primer fotograma (bucle).
 let CKS = [], CUTS = [];
-const H0 = [0.6, 0.42, 8.2], L0 = [3.6, 2.75, -1.1], H1 = [0.65, 0.44, 7.85], L1 = [3.62, 2.78, -1.1], Hm = [0.63, 0.5, 8.75], Lm = [3.58, 2.72, -1.1];
+const stCam = (a, dist, h, dx = 0) => { const p = stP(a, dist, h).add(stT(a).multiplyScalar(dx)); return [p.x, p.y, p.z]; };
+const stLook = (a, y, dx = 0, r = R_ST) => { const p = stP(a, r, y).add(stT(a).multiplyScalar(dx)); return [p.x, p.y, p.z]; };
+const T0 = [0.5, 0.16, 1.1], L0 = [0, 0.42, 0], T1 = [0.485, 0.163, 1.07], L1 = [0, 0.415, 0], Tm = [0.52, 0.156, 1.14], Lm = [0, 0.425, 0];
 function buildCam() {
+  const { D, C, K: KK, P, B } = ANG;
+  const hold = (t, a, d, h, dx, ly, ldx, lr = R_ST, f = 34) => [t, stCam(a, d, h, dx), stLook(a, ly, ldx, lr), f];
   const A = [
-    [-0.4, Hm, Lm, 48], [0.0, H0, L0, 48], [0.5, H1, L1, 48], [K.videojuego1 + 0.3, [0.8, 0.52, 7.3], [3.7, 2.95, -1.1], 47],
-    [K.gta2, [0.9, 0.62, 9.2], [3.3, 3.0, -1.0], 47], [K.y2, [2.3, 1.2, 9.6], [5.3, 2.3, -0.6], 46],
-    [K.sale2, [3.6, 1.55, 8.6], [6.5, 2.3, -0.4], 44], [K.cuanto2, [4.6, 1.5, 6.4], [6.85, 2.15, -0.5], 42], [K.final2 + 0.25, [4.9, 1.45, 5.7], [6.9, 2.05, -0.5], 42],
-    [K.el3 + 0.3, [2.4, 1.0, 3.4], [1.3, 0.85, -6.0], 48], [K.el3 + 0.62, [0.72, 0.6, -0.8], [1.8, 0.7, -9.0], 48], [K.gta3 + 0.05, [0.95, 0.68, -3.2], [2.3, 0.75, -12.0], 48],
-    [K.n800, [3.9, 0.92, -7.9], [2.3, 0.85, -12.4], 46], [K.en3, [4.05, 0.9, -8.15], [2.3, 0.88, -12.4], 46], [K.n1000, [4.12, 0.92, -8.3], [2.32, 0.98, -12.45], 46],
-    [K.record3, [4.2, 1.05, -8.45], [2.4, 1.22, -12.5], 46], [K.lleva4 - 0.1, [4.25, 1.1, -8.55], [2.42, 1.28, -12.5], 46],
-    [K.n230, [3.82, 1.35, -13.6], [3.85, 1.0, -20.6], 46], [K.copias4, [3.82, 1.42, -13.8], [3.88, 1.1, -20.65], 46], [K.brasil4, [3.82, 1.48, -14.0], [3.9, 1.18, -20.7], 46],
-    [K.y5, [3.65, 1.5, -14.3], [4.4, 1.2, -20.4], 46], [K.y5 + 0.65, [1.6, 1.4, -16.0], [7.4, 1.0, -17.2], 47],
-    [K.rockstar5, [1.15, 1.3, -16.35], [7.4, 1.0, -16.45], 46], [K.negar5, [1.05, 1.25, -16.38], [7.4, 1.05, -16.4], 45], [K.edificio5, [1.0, 1.3, -16.3], [7.4, 1.15, -16.25], 45],
-    [K.mundo5, [1.0, 1.38, -16.3], [7.4, 1.25, -16.2], 45], [K.entre6, [1.05, 1.32, -16.45], [7.4, 1.15, -16.4], 45],
-    [K.cualquier6, [1.25, 1.05, -16.7], [7.4, 0.85, -16.8], 45], [K.y7 - 0.1, [1.35, 1.05, -16.6], [7.4, 0.85, -16.8], 45],
-    [K.ti7 + 0.25, [2.5, 1.25, -15.7], [7.0, 1.5, -8.0], 46], [K.euros7 + 0.2, [3.3, 1.3, -14.4], [6.5, 1.8, -4.0], 46],
-    [K.respuesta8 + 0.15, [8.8, 1.7, -12.6], [6.0, 2.2, -1.0], 46], [K.segun8, [11.9, 1.9, -11.4], [5.8, 2.3, -1.0], 46], [K.tres8, [12.4, 2.0, -10.6], [5.8, 2.4, -1.0], 46],
-    [K.ano8, [12.2, 2.3, -10.2], [5.8, 2.7, -1.0], 46], [K.pelicula8, [12.1, 3.0, -10.0], [5.8, 3.2, -1.0], 46], [K.historia8 + 0.3, [12.0, 3.8, -9.8], [5.7, 3.4, -1.0], 46],
-    [K.pagarias9 + 0.3, [12.4, 3.4, -4.5], [5.2, 2.9, -1.0], 47], [K.videojuego9, [11.2, 2.8, 4.0], [4.6, 2.7, -1.0], 48],
-    [K.mandaselo9, [7.4, 2.0, 9.4], [4.0, 2.7, -1.1], 48], [END - 1.2, [2.2, 0.9, 10.2], [3.7, 2.7, -1.1], 48], [END - 0.4, Hm, Lm, 48],
-    [END, H0, L0, 48], [END + 0.5, H1, L1, 48],
+    [-0.4, Tm, Lm, 42], [0.0, T0, L0, 42], [0.5, T1, L1, 42], [T_HIT + 0.35, [0.5, 0.18, 1.05], [0, 0.32, 0], 41],
+    [K.historia1, [0.68, 0.46, 1.15], [0, 0.14, 0], 40], [K.dinero1, [0.45, 0.55, 1.25], [0, 0.18, 0], 38], [K.videojuego1, [0.32, 0.36, 1.3], [0, 0.3, 0], 37],
+    [K.es2 + 0.2, [0.08, 0.33, 1.12], [0, 0.3, 0], 36], [K.y2, [0.8, 0.58, 1.3], [0.38, 0.36, -0.4], 38], [K.sale2, [1.3, 0.6, 0.75], [0.56, 0.38, -0.5], 37],
+    [K.cuanto2, [1.28, 0.56, 0.5], [0.57, 0.38, -0.5], 35], [K.final2 + 0.25, [1.26, 0.55, 0.42], [0.57, 0.38, -0.5], 34],
+    [K.el3 + 0.45, [2.2, 1.15, 2.6], [3.6, 0.8, 6.0], 40], [K.gta3, stCam(D, 9.9, 1.1, -0.2), stLook(D, 0.75, -0.05), 37],
+    [K.n800, stCam(D, 9.55, 1.0, -0.03), stLook(D, 0.8, -0.03), 36], [K.en3, stCam(D, 9.45, 0.92, -0.12), stLook(D, 0.72, -0.1, R_ST + 0.08), 35],
+    [K.n1000, stCam(D, 9.55, 1.02, 0.04), stLook(D, 0.86, 0.04), 36], [K.record3, stCam(D, 9.7, 1.15, 0.06), stLook(D, 1.02, 0.06), 37], hold(K.lleva4 - 0.25, D, 9.72, 1.17, 0.07, 1.04, 0.07, R_ST, 37),
+    [K.lleva4 + 0.35, stCam(C, 9.8, 1.55, -0.25), stLook(C, 0.56, -0.05), 40], [K.n230, stCam(C, 9.4, 1.3, -0.1), stLook(C, 0.56, -0.04), 38],
+    [K.copias4, stCam(C, 9.28, 1.15, 0.04), stLook(C, 0.56, 0.0), 37], [K.mas4b, stCam(C, 9.22, 1.02, 0.14), stLook(C, 0.57, 0.1, R_ST + 0.02), 36],
+    [K.brasil4, stCam(C, 9.15, 0.92, 0.28), stLook(C, 0.57, 0.28, R_ST + 0.05), 34], hold(K.y5 - 0.1, C, 9.14, 0.9, 0.3, 0.57, 0.3, R_ST + 0.05, 34),
+    [K.y5 + 0.45, stCam(KK, 9.85, 1.02, -0.42), stLook(KK, 0.68, -0.45, R_ST + 0.2), 36], [K.rockstar5, stCam(KK, 9.3, 1.08, -0.1), stLook(KK, 0.6, -0.06, R_ST + 0.2), 35],
+    [K.negar5, stCam(KK, 9.15, 0.95, -0.05), stLook(KK, 0.58, -0.05, R_ST + 0.26), 33], [K.costara5 + 0.3, stCam(KK, 9.2, 0.97, -0.02), stLook(KK, 0.58, -0.04, R_ST + 0.26), 33],
+    [K.edificio5, stCam(KK, 9.6, 1.02, 0.22), stLook(KK, 0.95, 0.26, R_ST - 0.3), 36], [K.mundo5, stCam(KK, 9.7, 1.15, 0.2), stLook(KK, 1.02, 0.24, R_ST - 0.3), 37],
+    [K.entre6, stCam(KK, 9.85, 1.08, 0.08), stLook(KK, 0.92, 0.06, R_ST - 0.3), 38], [K.cualquier6, stCam(KK, 9.95, 1.02, -0.16), stLook(KK, 0.85, -0.14, R_ST - 0.3), 39], hold(K.y7 - 0.2, KK, 9.97, 1.02, -0.17, 0.85, -0.15, R_ST - 0.3, 39),
+    [K.y7 + 0.35, stCam(P, 9.95, 0.98, -0.02), stLook(P, 0.8, 0.0), 36], [K.n80, stCam(P, 9.85, 0.96, 0.0), stLook(P, 0.82, 0.02, R_ST + 0.05), 35], hold(K.euros7 + 0.35, P, 9.83, 0.96, 0.01, 0.82, 0.02, R_ST + 0.05, 35),
+    [K.respuesta8 + 0.35, stCam(B, 10.6, 1.36, 0.0), stLook(B, 1.02, 0.0), 36], [K.tres8, stCam(B, 10.4, 1.3, 0.05), stLook(B, 1.0, 0.04), 35], [K.ano8, stCam(B, 10.32, 1.26, 0.08), stLook(B, 0.99, 0.07), 34],
+    [K.mas8, stCam(B, 10.45, 1.28, 0.0), stLook(B, 1.01, 0.0), 35], [K.historia8 + 0.3, stCam(B, 10.6, 1.32, 0.0), stLook(B, 1.02, 0.0), 36],
+    [K.pagarias9 + 0.3, stCam(B, 9.75, 1.12, 0.28), stLook(B, 1.0, 0.3, R_ST + 0.05), 34], [K.videojuego9, stCam(B, 9.7, 1.12, 0.32), stLook(B, 1.02, 0.34, R_ST + 0.05), 33],
+    [K.mandaselo9 + 0.5, [-2.6, 1.3, -1.2], [0, 0.25, 0], 44], [END - 1.4, [0.85, 0.34, 1.6], [0, 0.3, 0], 42], [END - 0.4, Tm, Lm, 42],
+    [END, T0, L0, 42], [END + 0.5, T1, L1, 42],
   ];
   CKS = [A];
-  { const st = camKeys(K.diecinueve2 + 0.4, A); S.cal.rotation.y = Math.atan2(st.p.x - PZ.cal.x, st.p.z - PZ.cal.z); }
-  { const st = camKeys(K.n800, A); S.dayBoard.rotation.y = Math.atan2(st.p.x - ST1.sign.x, st.p.z - ST1.sign.z); }
 }
 function camAt(t) {
   const st = camKeys(t, CKS[0]);
-  const te = eruptT(t), sh = 0.012 * Math.exp(-Math.max(0, te - ERUPT0) * 3.5) * (te < 1.6 ? 1 : 0);      // la arena tiembla cuando sale la torre
-  st.p.x += Math.sin(t * 41) * sh + 0.004 * Math.sin(t * 1.3); st.p.y += Math.sin(t * 33 + 1) * sh + 0.003 * Math.sin(t * 1.7 + 2);
+  const u = t - T_HIT; if (u > 0 && u < 0.45) { const a = 0.012 * Math.exp(-u * 9); st.p.x += Math.sin(u * 91) * a; st.p.y += Math.sin(u * 77 + 1) * a; st.l.y += Math.sin(u * 83 + 2) * a * 0.6; }
   return st;
 }
 function prevT(t, dt) { return t - dt; }
 function flashAt(t) {
   let f = 0;
-  for (const [t0, k] of [[K.n1000 + 0.3, 0.03], [K.record3, 0.04], [K.brasil4, 0.03], [K.mundo5 - 0.05, 0.04], [K.euros7, 0.03], [K.pelicula8, 0.05]])
+  for (const [t0, k] of [[T_HIT, 0.16], [K.historia1, 0.04], [K.n1000, 0.04], [K.record3, 0.06], [K.brasil4, 0.05], [K.negar5 + 0.15, 0.07], [K.n80, 0.04], [K.mas8 + 0.3, 0.08]])
     if (t > t0) f += k * Math.exp(-(t - t0) / 0.08);
   return f;
 }
 function whiteAt(t) { return 0; }
 function stageAt(t, st) {
-  NOW = t; cityAt(t, st); moneyAt(t);
-  const c = st.l, d = st.p.distanceTo(c); sunAt(v3(c.x, 0, c.z).lerp(st.p, 0.25), clamp(d * 0.8 + 2.4, 3.5, 13));
+  NOW = t; centerAt(t, st); stationsAt(t);
+  const c = st.l, d = st.p.distanceTo(c), yaw = Math.atan2(st.p.x - c.x, st.p.z - c.z), k = clamp(d / 5, 0.2, 1.2);
+  rigAt(c, yaw, k, 1.15, 0.6);
+  const R = S.rig; R.sun.intensity = 0.0; R.hemi.intensity = 0.12;
 }

@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------- un fotograma (renderAt), portada y arranque: tipos de letra, tiempos de la voz y escena
+// ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
 const _fw = new THREE.Vector3(), _rt = new THREE.Vector3(), _up2 = new THREE.Vector3();
@@ -38,11 +38,12 @@ window.renderAt = function (t) {
 };
 // portada (sin HUD)
 window.renderCover = function () {
-  const t = window.COVER_T ? Number(window.COVER_T) : 1.2; frame(t);
+  const t = window.COVER_T ? Number(window.COVER_T) : 0.6; frame(t);
   if (window.COVER_CAM) { const C = window.COVER_CAM; cam.fov = C[6]; cam.updateProjectionMatrix(); cam.position.set(C[0], C[1], C[2]); cam.up.set(0, 1, 0); cam.lookAt(C[3], C[4], C[5]); cam.updateMatrixWorld(); }
   if (window.camOverride) window.camOverride(cam, v3);
   const VP = vpOf(); flowUpdate(t, VP, VP); fxUpdate(t, VP, VP);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0; post.uniforms.white.value = 0;
+  if (S.ctrCone) S.ctrCone.visible = false;      // en la portada, sin el haz del centro (de frente se ve como columnas)
   hudBegin(); drawFrame(t);
   return true;
 };
@@ -69,10 +70,11 @@ window.renderCover = function () {
     respuesta8: atL(8, 'respuesta'), segun8: atL(8, 'segun'), tres8: atL(8, '=3200'), millones8: atL(8, 'millones'), solo8: atL(8, 'solo'), ano8: atL(8, 'ano'), mas8: atL(8, '=mas'), pelicula8: atL(8, 'pelicula'), taquillera8: atL(8, 'taquillera'), historia8: atL(8, 'historia'),
     pagarias9: atL(9, 'pagarias'), n80b: atL(9, '=80'), videojuego9: atL(9, 'videojuego'), mandaselo9: atL(9, 'mandaselo'), jugar9: atL(9, 'jugar'), dinero9: atL(9, 'dinero'),
   };
-  mats(); buildMats(); buildRig(); S.flow = [];
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.35; }
-  buildDay(); buildCity();
-  post.uniforms.ca.value = 0.35; post.uniforms.vig.value = 0.2;
+  mats(); buildMats(); buildRig(); buildFloor(); buildFlow();
+  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5; }
+  scene.fog = new THREE.FogExp2(0x000000, 0.035);
+  buildCenter(); buildStations();
+  post.uniforms.ca.value = 0.4;
   buildCam(); buildHudPlan();
   for (const m of LMS) m.resolution.set(W * PR, H * PR);
   window.K = K; window.END = END; window.dbgEval = s => eval(s);

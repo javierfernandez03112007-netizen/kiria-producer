@@ -2,7 +2,7 @@
 # Máquina de ayuda: renderiza los fotogramas A..B-1 de «GTA 6: el dinero», los codifica en chunks/chunk_A_B.mp4 y los sube a la
 # rama <PFX>-X (por defecto render-gtd). Uso (desde la raíz del repo): bash projects/gta6_dinero/render_chunk.sh A B X [PFX]
 set -u
-A=$1; B=$2; X=$3; PFX=${4:-render-gtd}
+A=$1; B=$2; X=$3; PFX=${4:-render-gtdd}
 cd "$(dirname "$0")"
 (cd web && npm install --silent >/dev/null 2>&1; ./build.sh)
 mkdir -p out/frames chunks

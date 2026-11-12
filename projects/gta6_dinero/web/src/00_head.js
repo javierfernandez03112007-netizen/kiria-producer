@@ -1,6 +1,6 @@
-// «GTA 6: el dinero»: un paseo marítimo de día con torres de billetes que salen de la arena (la altura es el dinero) frente a la bobina de la película más
-// taquillera, la torre de cristal de GTA 6 que se llena al final, el contador de días de GTA 5, las copias frente a Brasil, el rascacielos y el precio.
-// window.renderAt(t) dibuja el instante t (60 fps).
+// «GTA 6: el dinero» (estilo del vídeo de Derecho: sala oscura de museo, pedestales de madera con su haz de luz y objetos reales): una caja de
+// GTA 5 gigante cae sobre cien bobinas de cine, la vitrina de GTA 6 con el calendario, los fajos del primer día, las copias frente a Brasil,
+// el coste con la maqueta del rascacielos y el sello, el precio y la balanza de la respuesta. window.renderAt(t) dibuja el instante t (60 fps).
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { Reflector } from 'three/addons/objects/Reflector.js';

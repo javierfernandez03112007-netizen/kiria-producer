@@ -2,7 +2,7 @@
 # Recoge los trozos de TODAS las ramas render-gtd-* (chunks/chunk_A_B.mp4), mete los fotogramas que falten y, con los N,
 # compone el vídeo (out/gta6_dinero.mp4) y escribe out/DONE. Uso: nohup ./fetch_compose.sh > out/fetch.log 2>&1 &
 cd /home/user/kiria-producer/projects/gta6_dinero
-PFX=${PFX:-render-gtd}
+PFX=${PFX:-render-gtdd}
 N=$(python3 -c "import json; L=json.load(open('tiempos.json')); print(int((L[-1]['end'] + 1.2) * 60))")
 missing() { python3 -c "import os; print(sum(1 for i in range($N) if not os.path.exists('out/frames/f%05d.jpg'%i)))"; }
 while true; do

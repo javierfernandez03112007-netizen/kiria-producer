@@ -1,6 +1,6 @@
-// «GTA 6: el dinero»: un paseo marítimo de día con torres de billetes que salen de la arena (la altura es el dinero) frente a la bobina de la película más
-// taquillera, la torre de cristal de GTA 6 que se llena al final, el contador de días de GTA 5, las copias frente a Brasil, el rascacielos y el precio.
-// window.renderAt(t) dibuja el instante t (60 fps).
+// «GTA 6: el dinero» (estilo del vídeo de Derecho: sala oscura de museo, pedestales de madera con su haz de luz y objetos reales): una caja de
+// GTA 5 gigante cae sobre cien bobinas de cine, la vitrina de GTA 6 con el calendario, los fajos del primer día, las copias frente a Brasil,
+// el coste con la maqueta del rascacielos y el sello, el precio y la balanza de la respuesta. window.renderAt(t) dibuja el instante t (60 fps).
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { Reflector } from 'three/addons/objects/Reflector.js';
@@ -626,10 +626,10 @@ function shockDiamonds(n = 6) {
     m.userData.i = i; g.add(m); }
   return g;
 }
-// ---------------------------------------------------------------- «Derecho por dentro»: materiales realistas (madera, latón, mármol, piel, papel, tela)
-// y las piezas de cada estación. Escala: las figuritas de los estudiantes miden ≈ 0,05; las estaciones están en un círculo de radio R_ST.
-const R_ST = 11.0, R_CAM = 13.6;
-const ANG = { CO: 30, PI: 78, BA: 126, CU: 174, PA: 222, DE: 300 };
+// ---------------------------------------------------------------- materiales realistas (madera, latón, mármol, piel, papel, tela) y piezas de museo (del vídeo de Derecho)
+// para «GTA 6: el dinero». Escala: las figuritas de los estudiantes miden ≈ 0,05; las estaciones están en un círculo de radio R_ST.
+const R_ST = 8.0, R_CAM = 10.6;
+const ANG = { D: 30, C: 78, K: 128, P: 178, B: 232 };       // estaciones: días (L3), copias y Brasil (L4), el coste (L5–L6), el precio (L7), la balanza (L8–L9)
 const D2 = Math.PI / 180;
 const stP = (a, r = R_ST, y = 0) => v3(r * Math.sin(a * D2), y, r * Math.cos(a * D2));
 const stT = a => v3(Math.cos(a * D2), 0, -Math.sin(a * D2));      // tangente (derecha mirando hacia el centro desde fuera)
@@ -847,10 +847,10 @@ function star5(r = 0.05, m = M.gold) { const s = new THREE.Shape(); for (let i =
 function medal() { const g = new THREE.Group(); const d = cyl(0.05, 0.05, 0.01, M.gold, 40); d.rotation.x = Math.PI / 2; g.add(d); const r = new THREE.Mesh(new THREE.TorusGeometry(0.05, 0.005, 8, 40), M.brass); g.add(r);
   const rib = mesh(new THREE.BoxGeometry(0.035, 0.09, 0.003), plastic(0x8e1418, 0.5)); rib.position.y = 0.09; g.add(rib); const st = star5(0.025); st.position.z = 0.008; g.add(st); return g; }
 function vitrine(w = 0.36, h = 0.7) {      // vitrina de cristal con peana de madera y cerradura
-  const g = new THREE.Group(); const base = rbox(w + 0.06, 0.08, w + 0.06, M.wood, 0.01); base.rotation.x = Math.PI / 2; base.position.y = 0.04; g.add(base);
+  const g = new THREE.Group(); const base = rbox(w + 0.06, w + 0.06, 0.08, M.wood, 0.01); base.rotation.x = Math.PI / 2; base.position.y = 0.04; g.add(base);
   const glass = mesh(new THREE.BoxGeometry(w, h, w), M.glass, false); glass.position.y = 0.08 + h / 2; glass.renderOrder = 7; g.add(glass);
   const frame = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w, h, w)), new THREE.LineBasicMaterial({ color: 0xcfa860 })); frame.position.copy(glass.position); g.add(frame);
-  const cap = rbox(w + 0.04, 0.03, w + 0.04, M.wood, 0.008); cap.rotation.x = Math.PI / 2; cap.position.y = 0.08 + h + 0.015; g.add(cap);
+  const cap = rbox(w + 0.04, w + 0.04, 0.03, M.wood, 0.008); cap.rotation.x = Math.PI / 2; cap.position.y = 0.08 + h + 0.015; g.add(cap);
   const lock = rbox(0.05, 0.065, 0.02, M.brass, 0.006); lock.position.set(0, 0.08 + h * 0.45, w / 2 + 0.012); g.add(lock);
   const led = sph(0.008, M.redLed); led.position.set(0, 0.08 + h * 0.45 + 0.018, w / 2 + 0.024); g.add(led);
   const hole = cyl(0.006, 0.006, 0.01, M.black, 12); hole.rotation.x = Math.PI / 2; hole.position.set(0, 0.08 + h * 0.45 - 0.008, w / 2 + 0.023); g.add(hole);
@@ -878,620 +878,385 @@ function studentGeo(lo = false) {
   return mergeGeometries(parts);
 }
 function capGeo() { const b = new THREE.BoxGeometry(0.022, 0.003, 0.022); b.translate(0, 0.062, 0); const c = new THREE.CylinderGeometry(0.008, 0.009, 0.006, 10); c.translate(0, 0.0585, 0); return mergeGeometries([b.toNonIndexed(), c.toNonIndexed()].map(g => { for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv'].includes(k)) g.deleteAttribute(k); return g; })); }
-// ---------------------------------------------------------------- el paseo marítimo de día (maqueta low-poly de colores vivos): hoteles art déco de colores pastel con toldos y
-// terrazas, la avenida con coches, el paseo con palmeras y farolas, la playa con casetas de socorrista, sombrillas y gente, y el mar turquesa.
-// Escala: 1 unidad = 10 m (una persona mide 0,175). La avenida va a lo largo de z; el mar queda a +x.
-const BV = { HX: -3.2, R0: -2.6, R1: -0.6, P1: 0.9, SEA: 10.6, Z0: 18, Z1: -50 };
-const BW = 0.28, FH = 0.3, GH = 0.42;                 // ancho de un hueco de ventana, alto de un piso, alto del bajo comercial
-const GAPS = [-8.6, -27.5];                     // calles que cruzan hacia el interior
-const flatM = (c, r = 0.85, o = {}) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: 0, flatShading: true, ...o });
-const PER = (f) => Math.round(f * END) / END;          // frecuencias con un número entero de ciclos en todo el vídeo (bucle perfecto)
-const cyc = (t, f, ph = 0) => Math.sin(6.2832 * PER(f) * t + ph);
-const _m4b = new THREE.Object3D();
-// ---------- cielo, nubes y luz del sol
-function buildDay() {
-  const g = new THREE.SphereGeometry(320, 48, 24), p = g.attributes.position, col = [];
-  const top = new THREE.Color(0x1f6fd8), hor = new THREE.Color(0xa9dcff), bot = new THREE.Color(0xd0ecff);
-  for (let i = 0; i < p.count; i++) { const y = p.getY(i) / 320, c = y > 0 ? hor.clone().lerp(top, Math.pow(Math.min(1, y * 1.6), 0.7)) : bot; col.push(c.r, c.g, c.b); }
-  g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-  S.sky = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide, fog: false, depthWrite: false })); S.sky.frustumCulled = false; S.sky.renderOrder = -10; scene.add(S.sky);
-  scene.background = new THREE.Color(0xa9dcff); scene.fog = new THREE.Fog(0xbfe4ff, 30, 140);
-  S.cloudM = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, flatShading: true, emissive: 0xd2e2f2, emissiveIntensity: 0.5, fog: false });
-  S.clouds = [];
-  for (let i = 0; i < 30; i++) { const c = new THREE.Group(), n = 4 + Math.floor(hash(i * 2.3) * 4);
-    for (let k = 0; k < n; k++) { const r = 0.6 + hash(i * 3 + k) * 0.8, b = new THREE.Mesh(new THREE.IcosahedronGeometry(r, 1), S.cloudM); b.position.set((k - n / 2) * 0.7 + (hash(i + k * 7) - 0.5) * 0.4, (hash(i * 5 + k) - 0.3) * 0.4, (hash(i * 9 + k) - 0.5) * 0.7); b.scale.y = 0.7; c.add(b); }
-    const a = hash(i * 7.7) * 6.283, d = 18 + hash(i * 4.1) * 50; c.position.set(4 + Math.cos(a) * d, 10 + hash(i * 6.6) * 7, -10 + Math.sin(a) * d); c.scale.setScalar(1.1 + hash(i * 8.8) * 1.4); c.rotation.y = hash(i) * 3; scene.add(c); S.clouds.push(c); }
-  const R = S.rig; R.key.castShadow = false; R.key.intensity = 0; R.a.intensity = R.b.intensity = R.f.intensity = 0;
-  R.sun.color.set(0xfff1de); R.sun.intensity = 4.6; R.sun.castShadow = true; R.sun.shadow.mapSize.set(2048, 2048); R.sun.shadow.bias = -0.0005; R.sun.shadow.normalBias = 0.012; R.sun.shadow.radius = 2;
-  R.sun.shadow.camera.near = 0.5; R.sun.shadow.camera.far = 110; R.hemi.color.set(0xcde6ff); R.hemi.groundColor.set(0xb8a07a); R.hemi.intensity = 1.85;
+// ---------------------------------------------------------------- objetos de «GTA 6: el dinero» (escala real: 1 unidad = 1 m): cajas de videojuego (portadas
+// inventadas, sin logos), fajos de billetes (billete inventado), bobinas de cine, el calendario de mesa, la etiqueta del precio, el tique, la maqueta del
+// rascacielos y el documento que se sella.
+// ---------- cajas de videojuego
+function caseTex(title, sub, theme) {
+  const [c0, c1, c2] = theme;
+  return canvasTex(512, 640, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, c0); gr.addColorStop(0.55, c1); gr.addColorStop(1, c2); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    g.fillStyle = 'rgba(255,236,190,.95)'; g.beginPath(); g.arc(w * 0.62, h * 0.5, 70, 0, 7); g.fill();
+    g.fillStyle = 'rgba(10,8,20,.92)'; for (let i = 0; i < 22; i++) { const x = i * 24 - 6, bh = 60 + hash(i * 3.7) * 190; g.fillRect(x, h * 0.78 - bh, 20 + hash(i) * 8, bh); }
+    g.fillRect(0, h * 0.78, w, h * 0.22);
+    for (let i = 0; i < 4; i++) { const x = 60 + i * 120, y = h * 0.78; g.fillRect(x - 2, y - 150, 5, 150); g.beginPath(); g.ellipse(x, y - 150, 40, 12, -0.3 + i * 0.2, 0, 7); g.fill(); }
+    g.fillStyle = '#ffffff'; g.font = '900 120px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.shadowColor = 'rgba(0,0,0,.6)'; g.shadowBlur = 18; g.fillText(title, w / 2, 112);
+    g.shadowBlur = 0; g.font = '700 30px Inter'; g.fillStyle = 'rgba(255,255,255,.9)'; g.fillText(sub, w / 2, 192);
+    });
 }
-const SUN_D = new THREE.Vector3(0.32, 0.8, 0.5).normalize();      // sol alto, detrás de la cámara (que mira casi siempre hacia −z y el mar)
-function sunAt(c, size) { const R = S.rig.sun; R.position.copy(c).addScaledVector(SUN_D, 50); R.target.position.copy(c); R.target.updateMatrixWorld();
-  const sc = R.shadow.camera; sc.left = -size; sc.right = size; sc.top = size; sc.bottom = -size; sc.updateProjectionMatrix(); }
-// ---------- texturas
-const DECO = [['#f7b9c9', '#ffffff', '#3fb8b0'], ['#a9e4cf', '#ffffff', '#f06f8f'], ['#c8b8ec', '#fffaf0', '#ffb347'], ['#a7d7f2', '#ffffff', '#f2c230'], ['#f8e08e', '#ffffff', '#2f9fb8'],
-  ['#ffc6a0', '#fffaf2', '#3a9e8c'], ['#f5f1e8', '#9fdcd2', '#e85a8a'], ['#b8ecd9', '#fff5e8', '#7a5cc8'], ['#ffd6e4', '#ffffff', '#1f9fd0'], ['#e4f1b0', '#ffffff', '#ee6b4a']];
-const HOTEL = ['CORAL', 'BRISA', 'AURORA', 'MARINA', 'PALMA', 'ESTRELLA', 'OCÉANO', 'LUNA', 'SIRENA', 'ATLÁNTICO', 'PARAÍSO', 'TROPICAL', 'FLAMENCO', 'DELFÍN'];
-function decoTex(st, v) {      // 3 huecos × 2 pisos: ventanas corridas con «cejas» blancas encima y una franja de color en el centro
-  return canvasTex(384, 256, (g, w, h) => { const [wall, trim, acc] = DECO[st]; g.fillStyle = wall; g.fillRect(0, 0, w, h);
-    for (let i = 0; i < 220; i++) { g.fillStyle = `rgba(0,0,0,${0.012 + hash(i * 3.3 + st) * 0.025})`; g.fillRect(hash(i * 1.7 + st + v) * w, hash(i * 2.9 + st) * h, 3, 3); }
-    for (let f = 0; f < 2; f++) { const y0 = f * 128 + 34;
-      for (let c = 0; c < 3; c++) { const x0 = c * 128 + 18, ww = 92, wh = 70, k = st * 7 + v * 13 + f * 3 + c;
-        const gr = g.createLinearGradient(0, y0, 0, y0 + wh); gr.addColorStop(0, '#cfe9fb'); gr.addColorStop(0.5, '#6f9fc4'); gr.addColorStop(1, '#2f4a66'); g.fillStyle = gr; g.fillRect(x0, y0, ww, wh);
-        g.fillStyle = trim; for (let q = 1; q < 3; q++) g.fillRect(x0 + q * ww / 3 - 2, y0, 4, wh);
-        const bl = hash(k * 1.91) * 0.6; g.fillStyle = 'rgba(255,255,255,.55)'; g.fillRect(x0, y0, ww, wh * bl * 0.5);
-        g.fillStyle = 'rgba(255,255,255,.3)'; g.fillRect(x0 + 6, y0 + 8, 10, wh - 16); }
-      g.fillStyle = 'rgba(0,0,0,.16)'; g.fillRect(0, y0 - 8, w, 8); g.fillStyle = trim; g.fillRect(0, y0 - 14, w, 7);
-      g.fillStyle = 'rgba(0,0,0,.06)'; g.fillRect(0, y0 + 72, w, 4); }
-    if (v % 2 === 0) { g.fillStyle = acc; g.fillRect(w / 2 - 10, 0, 20, h); g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(w / 2 - 10, 0, 4, h); } });
+function spineTex(title) { return canvasTex(64, 512, (g, w, h) => { g.fillStyle = '#121418'; g.fillRect(0, 0, w, h); g.save(); g.translate(w / 2, h / 2); g.rotate(-Math.PI / 2); g.fillStyle = '#ffffff'; g.font = '900 34px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(title, 0, 2); g.restore(); }); }
+function gameCase(title, sub, theme, s = 1) {      // caja de videojuego de 13,5 × 17 × 1,5 cm (× s); su cara +z es la portada
+  const W2 = 0.135, H2 = 0.17, D = 0.015, g = new THREE.Group();
+  const body = rbox(W2, H2, D, new THREE.MeshPhysicalMaterial({ color: 0x15171c, roughness: 0.35, clearcoat: 0.8, clearcoatRoughness: 0.2 }), 0.006); g.add(body);
+  const cov = mesh(new THREE.PlaneGeometry(W2 * 0.93, H2 * 0.95), new THREE.MeshPhysicalMaterial({ map: caseTex(title, sub, theme), roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.08 }), false); cov.position.z = D / 2 + 0.0008; g.add(cov);
+  const sp = mesh(new THREE.PlaneGeometry(D * 0.86, H2 * 0.95), new THREE.MeshStandardMaterial({ map: spineTex(title), roughness: 0.4 }), false); sp.rotation.y = -Math.PI / 2; sp.position.x = -W2 / 2 - 0.0008; g.add(sp);
+  const back = mesh(new THREE.PlaneGeometry(W2 * 0.93, H2 * 0.95), new THREE.MeshStandardMaterial({ color: 0x1c1f26, roughness: 0.5 }), false); back.rotation.y = Math.PI; back.position.z = -D / 2 - 0.0008; g.add(back);
+  g.scale.setScalar(s); g.userData.s0 = s; g.traverse(o => { if (o.isMesh) o.castShadow = true; }); return g;
 }
-const SHOPS = ['CAFÉ', 'HELADOS', 'SURF', 'BAR', 'GAFAS DE SOL', 'BAÑADORES', 'ZUMOS', 'PIZZA', 'TACOS', 'MARISCOS', 'BOUTIQUE', 'RECUERDOS'];
-function shopTex(n, seed, wall) {     // el bajo: n locales con su rótulo, cristaleras y terraza
-  return canvasTex(256 * n, 160, (g, w, h) => { g.fillStyle = wall; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(0,0,0,.1)'; g.fillRect(0, h - 10, w, 10);
-    for (let i = 0; i < n; i++) { const k = Math.floor(hash(seed * 3.1 + i * 7.3) * SHOPS.length), x0 = i * 256 + 22, c = DECO[Math.floor(hash(seed + i * 5.1) * DECO.length)][2];
-      g.fillStyle = '#ffffff'; g.fillRect(x0 - 6, 10, 224, 36); g.fillStyle = c; g.font = '900 28px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(SHOPS[k], x0 + 106, 29);
-      const gr = g.createLinearGradient(0, 52, 0, h); gr.addColorStop(0, '#2c4258'); gr.addColorStop(1, '#16222e'); g.fillStyle = gr; g.fillRect(x0, 52, 212, h - 62);
-      g.fillStyle = 'rgba(190,220,240,.28)'; g.fillRect(x0 + 8, 58, 80, h - 74); g.fillStyle = 'rgba(255,214,150,.35)'; g.fillRect(x0 + 120, 90, 70, 40); } });
-}
-function awningTex(c) { return canvasTex(128, 64, (g, w, h) => { for (let i = 0; i < 8; i++) { g.fillStyle = i % 2 ? '#ffffff' : c; g.fillRect(i * 16, 0, 16, h); } g.fillStyle = 'rgba(0,0,0,.12)'; g.fillRect(0, h - 6, w, 6); }); }
-function signTex(name, c) { return canvasTex(128, 512, (g, w, h) => { g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); g.strokeStyle = c; g.lineWidth = 8; g.strokeRect(8, 8, w - 16, h - 16);
-  g.fillStyle = c; g.font = '900 64px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; const L = [...name]; const step = Math.min(68, (h - 60) / L.length); L.forEach((ch, i) => g.fillText(ch, w / 2, 40 + step * (i + 0.5))); }); }
-// ---------- edificios: hotel art déco (cuerpo pastel, cejas sobre las ventanas, corona escalonada con el rótulo vertical, toldo y terraza)
-function hotel(x, z, wCols, floors, st, v, name) {
-  const g = new THREE.Group(), wd = wCols * BW, hh = GH + floors * FH, dp = 1.4, [wall, trim, acc] = DECO[st];
-  const body = new THREE.Mesh(new THREE.BoxGeometry(wd, hh, dp), flatM(wall, 0.9)); body.position.set(0, hh / 2, -dp / 2); body.castShadow = true; body.receiveShadow = true; g.add(body);
-  const ft = decoTex(st, v); ft.wrapS = ft.wrapT = THREE.RepeatWrapping; ft.repeat.set(wCols / 3, floors / 2);
-  const fac = new THREE.Mesh(new THREE.PlaneGeometry(wd, floors * FH), new THREE.MeshStandardMaterial({ map: ft, roughness: 0.85 })); fac.position.set(0, GH + floors * FH / 2, 0.003); fac.receiveShadow = true; g.add(fac);
-  const nShop = wCols >= 6 ? 2 : 1, shop = new THREE.Mesh(new THREE.PlaneGeometry(wd, GH), new THREE.MeshStandardMaterial({ map: shopTex(nShop, x * 3.1 + z * 7.7, wall), roughness: 0.8 })); shop.position.set(0, GH / 2, 0.003); shop.receiveShadow = true; g.add(shop);
-  // corona: dos escalones y el rótulo vertical con el nombre del hotel
-  const c1 = new THREE.Mesh(new THREE.BoxGeometry(wd * 0.62, 0.16, 0.5), flatM(wall, 0.9)); c1.position.set(0, hh + 0.08, -0.3); c1.castShadow = true; g.add(c1);
-  const c2 = new THREE.Mesh(new THREE.BoxGeometry(wd * 0.3, 0.14, 0.3), flatM(trim, 0.9)); c2.position.set(0, hh + 0.23, -0.25); c2.castShadow = true; g.add(c2);
-  const cap0 = new THREE.Mesh(new THREE.BoxGeometry(wd + 0.04, 0.03, dp + 0.02), flatM(trim, 0.7)); cap0.position.set(0, hh + 0.012, -dp / 2); cap0.castShadow = true; g.add(cap0);
-  if (name) { const sh = Math.min(0.9, floors * FH * 0.55), sg = new THREE.Mesh(new THREE.BoxGeometry(0.1, sh, 0.02), [flatM(trim), flatM(trim), flatM(trim), flatM(trim), new THREE.MeshStandardMaterial({ map: signTex(name, acc), roughness: 0.6 }), flatM(trim)]);
-    sg.position.set(0, hh - sh / 2 + 0.2, 0.05); sg.castShadow = true; g.add(sg); }
-  // franja vertical de color (aleta) en el centro
-  if (v % 2 === 0) { const fin = new THREE.Mesh(new THREE.BoxGeometry(0.05, floors * FH, 0.04), flatM(acc, 0.8)); fin.position.set(0, GH + floors * FH / 2, 0.02); fin.castShadow = true; g.add(fin); }
-  // toldo a rayas sobre el bajo
-  const aw = new THREE.Mesh(new THREE.BoxGeometry(wd * 0.94, 0.008, 0.16), [flatM(acc), flatM(acc), new THREE.MeshStandardMaterial({ map: awningTex(acc), roughness: 0.8 }), flatM(acc), flatM(acc), flatM(acc)]);
-  aw.position.set(0, GH - 0.03, 0.08); aw.rotation.x = 0.28; aw.castShadow = true; g.add(aw);
-  g.position.set(x, 0, z); g.rotation.y = Math.PI / 2; scene.add(g);
-  return { g, wd, hh, floors, wCols, st };
-}
-// ---------- palmeras (tronco curvo con anillos y nueve hojas que se mecen)
-function frondTex() { return canvasTex(64, 256, (g, w, h) => { g.clearRect(0, 0, w, h); g.strokeStyle = '#3d7a2a'; g.lineWidth = 4; g.beginPath(); g.moveTo(w / 2, h); g.lineTo(w / 2, 6); g.stroke();
-  for (let y = 10; y < h - 6; y += 7) { const L = (w / 2 - 2) * Math.sin(Math.PI * (h - y) / h * 0.95 + 0.1); g.strokeStyle = ['#4f9a36', '#5fae3e', '#3f8a2e'][y % 3]; g.lineWidth = 3.2;
-    g.beginPath(); g.moveTo(w / 2, y + 6); g.lineTo(w / 2 - L, y - 4); g.moveTo(w / 2, y + 6); g.lineTo(w / 2 + L, y - 4); g.stroke(); } }); }
-function trunkTex() { return canvasTex(64, 256, (g, w, h) => { g.fillStyle = '#9b7a55'; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 12) { g.fillStyle = 'rgba(60,40,22,.45)'; g.fillRect(0, y, w, 3); g.fillStyle = 'rgba(255,240,210,.18)'; g.fillRect(0, y + 4, w, 2); } }); }
-function buildPalms(spots) {
-  const NV = 3, trunks = [], tm = new THREE.MeshStandardMaterial({ map: trunkTex(), roughness: 0.9 });
-  for (let v = 0; v < NV; v++) { const lean = 0.12 + v * 0.07, pts = []; for (let i = 0; i <= 8; i++) { const u = i / 8; pts.push(v3(lean * u * u, u, 0)); }
-    const geo = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 10, 0.022, 7, false); const pa = geo.attributes.position;
-    for (let i = 0; i < pa.count; i++) { const y = pa.getY(i), s = 1.25 - 0.35 * y; pa.setX(i, (pa.getX(i) - lean * y * y) * s + lean * y * y); pa.setZ(i, pa.getZ(i) * s); }
-    geo.computeVertexNormals(); trunks.push({ geo, top: v3(lean, 1, 0), list: [] }); }
-  spots.forEach((s, i) => trunks[i % NV].list.push(s));
-  S.palmTr = trunks.map(T => { const m = new THREE.InstancedMesh(T.geo, tm, Math.max(1, T.list.length)); m.castShadow = true; m.receiveShadow = true;
-    T.list.forEach((s, j) => { _m4b.position.set(s.x, 0, s.z); _m4b.rotation.set(0, s.ry, 0); _m4b.scale.setScalar(s.h); _m4b.updateMatrix(); m.setMatrixAt(j, _m4b.matrix); }); scene.add(m); return m; });
-  // hojas: un plano doblado (cae hacia fuera) con la textura de la hoja
-  const fg = new THREE.PlaneGeometry(0.11, 0.5, 1, 8).translate(0, 0.25, 0), fp = fg.attributes.position;
-  for (let i = 0; i < fp.count; i++) { const y = fp.getY(i) / 0.5; fp.setZ(i, -0.2 * y * y); fp.setX(i, fp.getX(i) * (1 - 0.15 * y)); }
-  fg.rotateX(-Math.PI / 2 + 0.25); fg.computeVertexNormals();
-  const fm = new THREE.MeshStandardMaterial({ map: frondTex(), alphaTest: 0.45, side: THREE.DoubleSide, roughness: 0.75 });
-  S.palms = []; trunks.forEach(T => T.list.forEach(s => { const top = T.top.clone().multiplyScalar(s.h).applyAxisAngle(v3(0, 1, 0), s.ry).add(v3(s.x, 0, s.z)); S.palms.push({ top, h: s.h, ph: hash(s.x * 3 + s.z) * 6.28 }); }));
-  S.frond = new THREE.InstancedMesh(fg, fm, S.palms.length * 9); S.frond.castShadow = true; S.frond.frustumCulled = false; scene.add(S.frond);
-  const nut = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.018, 0), flatM(0x6b4a22), S.palms.length * 3); S.palms.forEach((p, i) => { for (let k = 0; k < 3; k++) { _m4b.position.copy(p.top).add(v3(Math.cos(k * 2.1) * 0.025, -0.02, Math.sin(k * 2.1) * 0.025)); _m4b.rotation.set(0, 0, 0); _m4b.scale.setScalar(p.h); _m4b.updateMatrix(); nut.setMatrixAt(i * 3 + k, _m4b.matrix); } }); scene.add(nut);
-  palmsAt(0);
-}
-const _qf = new THREE.Quaternion(), _ef = new THREE.Euler(), _vf = new THREE.Vector3(), _sf = new THREE.Vector3();
-function palmsAt(t) {
-  let n = 0;
-  for (const p of S.palms) for (let k = 0; k < 9; k++) { const a = k / 9 * 6.283 + p.ph, sway = 0.08 * cyc(t, 0.5, p.ph + k * 0.7) + 0.05 * cyc(t, 0.9, p.ph * 2 + k);
-    _qf.setFromEuler(_ef.set(-0.15 - (k % 3) * 0.18 + sway, a, 0, 'YXZ')); _sf.setScalar(p.h * (0.85 + (k % 2) * 0.2)); _m4.compose(p.top, _qf, _sf); S.frond.setMatrixAt(n++, _m4); }
-  S.frond.instanceMatrix.needsUpdate = true;
-}
-// ---------- el mar: degradado turquesa → azul y olas que se mueven (mapa de normales), con la espuma en la orilla
-function waveNormalTex() { const N = 256; return canvasTex(N, N, (g, w, h) => { const im = g.createImageData(w, h);
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { let dx = 0, dy = 0; for (let k = 1; k <= 4; k++) { const a = k * 1.7, fx = Math.round(2 + hash(k) * 3), fy = Math.round(1 + hash(k * 3) * 4), ph = hash(k * 7) * 6.28;
-      const s = Math.cos(6.2832 * (fx * x / w + fy * y / h) + ph) / k; dx += s * fx; dy += s * fy; }
-    const i = (y * w + x) * 4; im.data[i] = 128 + dx * 9; im.data[i + 1] = 128 + dy * 9; im.data[i + 2] = 255; im.data[i + 3] = 255; }
-  g.putImageData(im, 0, 0); }); }
-function buildSea() {
-  const g = new THREE.PlaneGeometry(260, 260, 60, 1); g.rotateX(-Math.PI / 2); g.translate(BV.SEA + 130, -0.03, -10);
-  const p = g.attributes.position, col = [], near = new THREE.Color(0x3fd6c8), mid = new THREE.Color(0x1aa0d0), far = new THREE.Color(0x1660b0);
-  for (let i = 0; i < p.count; i++) { const d = p.getX(i) - BV.SEA, c = d < 6 ? near.clone().lerp(mid, d / 6) : mid.clone().lerp(far, Math.min(1, (d - 6) / 40)); col.push(c.r, c.g, c.b); }
-  g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-  const nt = waveNormalTex(); nt.colorSpace = THREE.NoColorSpace; nt.wrapS = nt.wrapT = THREE.RepeatWrapping; nt.repeat.set(70, 70);
-  S.seaM = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.18, metalness: 0.05, normalMap: nt, normalScale: new THREE.Vector2(0.35, 0.35), envMapIntensity: 1.4 });
-  const sea = new THREE.Mesh(g, S.seaM); sea.receiveShadow = true; scene.add(sea); S.sea = sea;
-  // espuma de la orilla (dos franjas que suben y bajan)
-  const ft = canvasTex(64, 512, (gg, w, h) => { gg.clearRect(0, 0, w, h); for (let i = 0; i < 900; i++) { gg.fillStyle = `rgba(255,255,255,${0.25 + hash(i) * 0.6})`; const y = hash(i * 3.3) * h, x = Math.pow(hash(i * 7.1), 1.8) * w * 0.9; gg.beginPath(); gg.arc(x, y, 1.5 + hash(i * 9) * 3, 0, 7); gg.fill(); }
-    const gr = gg.createLinearGradient(0, 0, w, 0); gr.addColorStop(0, 'rgba(255,255,255,.9)'); gr.addColorStop(0.25, 'rgba(255,255,255,.35)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); gg.fillStyle = gr; gg.fillRect(0, 0, w, h); });
-  ft.wrapS = ft.wrapT = THREE.RepeatWrapping; ft.repeat.set(1, 30);
-  S.foam = [0, 1].map(i => { const m = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 120).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ map: ft.clone(), transparent: true, depthWrite: false, roughness: 0.6 }));
-    m.material.map.needsUpdate = true; m.material.map.repeat.set(1, 30); m.material.map.offset.y = i * 0.37; m.position.set(BV.SEA + 0.3, -0.012 + i * 0.002, -14); m.renderOrder = 2; scene.add(m); return m; });
-}
-// ---------- casetas de socorrista, sombrillas, toallas y tumbonas
-function lifeguard(x, z, c, ry) {
-  const g = new THREE.Group(); const cab = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.11, 0.13), flatM(c, 0.8)); cab.position.y = 0.17; cab.castShadow = true; g.add(cab);
-  const win = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.045, 0.005), flatM(0x2f4a66, 0.3)); win.position.set(0, 0.185, 0.066); g.add(win);
-  const roof = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.07, 4).rotateY(Math.PI / 4), flatM(0xffffff, 0.7)); roof.position.y = 0.26; roof.scale.set(1.05, 1, 0.85); roof.castShadow = true; g.add(roof);
-  const deck = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.012, 0.2), flatM(0xf4efe4)); deck.position.y = 0.11; deck.castShadow = true; g.add(deck);
-  for (const [a, b] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) { const l = new THREE.Mesh(new THREE.BoxGeometry(0.012, 0.11, 0.012), flatM(0xf4efe4)); l.position.set(a * 0.09, 0.055, b * 0.08); l.castShadow = true; g.add(l); }
-  const ramp = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.008, 0.2), flatM(0xf4efe4)); ramp.position.set(0, 0.055, 0.17); ramp.rotation.x = 0.55; ramp.castShadow = true; g.add(ramp);
-  const flag = new THREE.Mesh(new THREE.PlaneGeometry(0.05, 0.03), new THREE.MeshStandardMaterial({ color: 0xe53935, side: THREE.DoubleSide })); flag.position.set(0.035, 0.35, 0); g.add(flag);
-  const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.003, 0.003, 0.12, 5), flatM(0xffffff)); pole.position.set(0, 0.32, 0); g.add(pole);
-  g.position.set(x, 0, z); g.rotation.y = ry; scene.add(g); return g;
-}
-function buildBeachProps() {
-  const UC = [0xff5a7a, 0xffb02e, 0x2ec4b6, 0x5a7cff, 0xf7f7f2, 0xff7b39, 0x9b5de5];
-  const spots = []; for (let i = 0; i < 70; i++) { const x = 2.6 + hash(i * 2.7) * 6.6, z = 10 - hash(i * 5.3) * 52; if (Math.abs(z - (-1)) < 4.2 && x < 9.2) continue; if (Math.abs(z + 16.5) < 2.7 && x > 1.0) continue; if (Math.abs(z + 12.5) < 2.6 && x < 5.5) continue; if (Math.abs(z + 20.6) < 3.2 && x < 6.6) continue; if (z > 5 && x < 4.5) continue; spots.push([x, z, i]); }
-  const canopyG = new THREE.ConeGeometry(0.11, 0.045, 8, 1, true).translate(0, 0.17, 0), poleG = new THREE.CylinderGeometry(0.003, 0.003, 0.17, 5).translate(0, 0.085, 0), towelG = new THREE.BoxGeometry(0.07, 0.003, 0.15);
-  const can = new THREE.InstancedMesh(canopyG, flatM(0xffffff, 0.7, { side: THREE.DoubleSide }), spots.length), pol = new THREE.InstancedMesh(poleG, flatM(0xf2f2f2), spots.length), tow = new THREE.InstancedMesh(towelG, flatM(0xffffff), spots.length * 2);
-  spots.forEach(([x, z, i], j) => { _m4b.position.set(x, 0, z); _m4b.rotation.set((hash(i) - 0.5) * 0.2, 0, (hash(i * 3) - 0.5) * 0.2); _m4b.scale.setScalar(1); _m4b.updateMatrix(); can.setMatrixAt(j, _m4b.matrix); pol.setMatrixAt(j, _m4b.matrix);
-    can.setColorAt(j, new THREE.Color(UC[i % UC.length])); for (let k = 0; k < 2; k++) { _m4b.position.set(x + (k - 0.5) * 0.09, 0.002, z + 0.08); _m4b.rotation.set(0, (hash(i + k) - 0.5) * 0.5, 0); _m4b.updateMatrix(); tow.setMatrixAt(j * 2 + k, _m4b.matrix); tow.setColorAt(j * 2 + k, new THREE.Color(UC[(i + k + 2) % UC.length])); } });
-  can.castShadow = pol.castShadow = true; tow.receiveShadow = true; scene.add(can, pol, tow);
-  S.lifeguards = [[3.6, 9, 0xff8fb0], [9.3, -3.4, 0x7fd8c8], [8.7, -9.4, 0xffd166], [8.6, -31, 0xb39ddb], [6.4, -40, 0x80c4ff]].map(([x, z, c], i) => lifeguard(x, z, c, -Math.PI / 2 + (i % 2 ? 0.25 : -0.2)));
-}
-// ---------- coches por la avenida (van y vuelven en bucle: un número entero de vueltas en todo el vídeo)
-function buildCars() {
-  const CC = [0xff6f91, 0x5ad1c3, 0xfff1d6, 0xffc93c, 0x6c8cff, 0xf5f5f5, 0xff8a3d, 0x9be15d, 0xc77dff, 0x3ac0ff];
-  const body = new THREE.BoxGeometry(0.085, 0.035, 0.2).translate(0, 0.03, 0), cabin = new THREE.BoxGeometry(0.075, 0.028, 0.09).translate(0, 0.061, -0.012), wheel = new THREE.CylinderGeometry(0.016, 0.016, 0.012, 10).rotateZ(Math.PI / 2);
-  const N = 14; S.cars = [];
-  for (let i = 0; i < N; i++) S.cars.push({ lane: i % 2, ph: hash(i * 3.7), col: CC[i % CC.length], n: 1 + (i % 3 === 0 ? 1 : 0) });
-  const mb = new THREE.InstancedMesh(body, paint(0xffffff, 0.3), N), mc = new THREE.InstancedMesh(cabin, new THREE.MeshPhysicalMaterial({ color: 0x1d2a38, roughness: 0.08, metalness: 0.4, clearcoat: 1 }), N), mw = new THREE.InstancedMesh(wheel, flatM(0x15171c, 0.6), N * 4);
-  S.cars.forEach((c, i) => mb.setColorAt(i, new THREE.Color(c.col))); mb.castShadow = mc.castShadow = mw.castShadow = true; mb.receiveShadow = true; scene.add(mb, mc, mw); S.carM = { mb, mc, mw };
-}
-function carsAt(t) {
-  const L = BV.Z0 - BV.Z1, { mb, mc, mw } = S.carM;
-  S.cars.forEach((c, i) => { const v = c.n * L / END, u = ((c.ph * L + v * t) % L + L) % L, dir = c.lane ? 1 : -1, z = c.lane ? BV.Z1 + u : BV.Z0 - u, x = c.lane ? -1.15 : -2.05;
-    _m4b.position.set(x, 0.006, z); _m4b.rotation.set(0, c.lane ? 0 : Math.PI, 0); _m4b.scale.setScalar(1); _m4b.updateMatrix(); mb.setMatrixAt(i, _m4b.matrix); mc.setMatrixAt(i, _m4b.matrix);
-    for (let k = 0; k < 4; k++) { const wx = (k % 2 ? 1 : -1) * 0.044, wz = (k < 2 ? 1 : -1) * 0.065; _m4.makeTranslation(wx, 0.016, wz).premultiply(_m4b.matrix); mw.setMatrixAt(i * 4 + k, _m4); } });
-  mb.instanceMatrix.needsUpdate = mc.instanceMatrix.needsUpdate = mw.instanceMatrix.needsUpdate = true;
-}
-function buildCity() {
-  // suelo: asfalto (avenida y fondo), acera de los hoteles, paseo marítimo con murete, arena y orilla mojada
-  const asph = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#5f646c'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { const l = hash(i) > 0.5; g.fillStyle = l ? `rgba(255,255,255,${0.03 + hash(i * 3) * 0.05})` : `rgba(0,0,0,${0.04 + hash(i * 3) * 0.06})`; g.fillRect(hash(i * 7) * w, hash(i * 11) * h, 2, 2); } });
-  asph.wrapS = asph.wrapT = THREE.RepeatWrapping; asph.repeat.set(60, 60);
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(240, 240), new THREE.MeshStandardMaterial({ map: asph, roughness: 0.95 })); ground.rotation.x = -Math.PI / 2; ground.position.set(-118 + BV.R1, -0.001, 0); ground.receiveShadow = true; scene.add(ground);
-  const tiles = (base, line, sz = 256) => { const t = canvasTex(sz, sz, (g, w, h) => { g.fillStyle = base; g.fillRect(0, 0, w, h); g.strokeStyle = line; g.lineWidth = 2; for (let i = 0; i <= 4; i++) { g.beginPath(); g.moveTo(i * w / 4, 0); g.lineTo(i * w / 4, h); g.moveTo(0, i * h / 4); g.lineTo(w, i * h / 4); g.stroke(); }
-    for (let i = 0; i < 400; i++) { g.fillStyle = `rgba(0,0,0,${hash(i) * 0.035})`; g.fillRect(hash(i * 5) * w, hash(i * 9) * h, 3, 3); } }); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t; };
-  const L = BV.Z0 - BV.Z1, zc = (BV.Z0 + BV.Z1) / 2;
-  { const t = tiles('#e9e1d4', 'rgba(0,0,0,.12)'); t.repeat.set(0.6 / 0.25, L / 0.25); const sw = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.02, L), new THREE.MeshStandardMaterial({ map: t, roughness: 0.9 })); sw.position.set(BV.HX + 0.3, 0.01, zc); sw.receiveShadow = true; scene.add(sw); }
-  { const t = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#f6efe6'; g.fillRect(0, 0, w, h); g.strokeStyle = '#f08fb0'; g.lineWidth = 10; for (let k = 0; k < 3; k++) { g.beginPath(); for (let y = 0; y <= h; y += 4) { const x = w * (0.2 + k * 0.3) + Math.sin(y / h * 6.283 * 2) * 18; y ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); }
-      for (let i = 0; i < 300; i++) { g.fillStyle = `rgba(0,0,0,${hash(i) * 0.03})`; g.fillRect(hash(i * 5) * w, hash(i * 9) * h, 3, 3); } });
-    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, L / 1.5); const pm = new THREE.Mesh(new THREE.BoxGeometry(BV.P1 - BV.R1, 0.022, L), new THREE.MeshStandardMaterial({ map: t, roughness: 0.85 })); pm.position.set((BV.P1 + BV.R1) / 2, 0.011, zc); pm.receiveShadow = true; scene.add(pm); }
-  const curbM = flatM(0xd9d2c4); for (const x of [BV.R0, BV.R1]) { const cb = new THREE.Mesh(new THREE.BoxGeometry(0.025, 0.026, L), curbM); cb.position.set(x, 0.013, zc); cb.receiveShadow = true; scene.add(cb); }
-  { const wm = flatM(0xffffff, 0.7), segs = []; for (let z = BV.Z0; z > BV.Z1; z -= 3.2) segs.push(z); S.wallSegs = segs;
-    const w = new THREE.InstancedMesh(new THREE.BoxGeometry(0.06, 0.07, 2.6).translate(0, 0.035, -1.3), wm, segs.length); segs.forEach((z, i) => { _m4b.position.set(BV.P1, 0, z - 0.3); _m4b.rotation.set(0, 0, 0); _m4b.scale.setScalar(1); _m4b.updateMatrix(); w.setMatrixAt(i, _m4b.matrix); }); w.castShadow = w.receiveShadow = true; scene.add(w); }
-  { const sand = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#efd9a8'; g.fillRect(0, 0, w, h); for (let i = 0; i < 14000; i++) { g.fillStyle = hash(i) > 0.5 ? `rgba(255,250,235,${0.08 + hash(i * 3) * 0.1})` : `rgba(150,110,60,${0.05 + hash(i * 3) * 0.08})`; g.fillRect(hash(i * 7) * w, hash(i * 11) * h, 2, 2); } });
-    sand.wrapS = sand.wrapT = THREE.RepeatWrapping; sand.repeat.set(10, 60);
-    const g = new THREE.PlaneGeometry(BV.SEA + 1.5 - BV.P1, 200, 24, 1); g.rotateX(-Math.PI / 2); g.translate((BV.SEA + 1.5 + BV.P1) / 2, 0, -15);
-    const p = g.attributes.position, col = []; for (let i = 0; i < p.count; i++) { const x = p.getX(i), d = (x - BV.P1) / (BV.SEA - BV.P1); p.setY(i, 0.004 - Math.max(0, d - 0.55) * 0.07); const wet = clamp((x - (BV.SEA - 1.0)) / 0.8); const c = new THREE.Color(0xffffff).lerp(new THREE.Color(0xb5a48a), wet * 0.7); col.push(c.r, c.g, c.b); }
-    g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3)); g.computeVertexNormals();
-    const sm = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: sand, vertexColors: true, roughness: 0.95 })); sm.receiveShadow = true; scene.add(sm); }
-  { const wm = flatM(0xf4f4f0, 0.6), dashes = [], zebra = []; for (let z = BV.Z0; z > BV.Z1; z -= 0.5) if (!GAPS.some(zc2 => Math.abs(z - zc2) < 0.5)) dashes.push(z);
-    for (const z0 of GAPS) for (let x = BV.R0 + 0.12; x < BV.R1 - 0.05; x += 0.13) zebra.push([x, z0 + 0.45]);
-    const da = new THREE.InstancedMesh(new THREE.BoxGeometry(0.025, 0.003, 0.22), wm, dashes.length); dashes.forEach((z, i) => { _m4b.position.set((BV.R0 + BV.R1) / 2, 0.0015, z); _m4b.rotation.set(0, 0, 0); _m4b.scale.setScalar(1); _m4b.updateMatrix(); da.setMatrixAt(i, _m4b.matrix); }); da.receiveShadow = true; scene.add(da);
-    const ze = new THREE.InstancedMesh(new THREE.BoxGeometry(0.07, 0.003, 0.34), wm, zebra.length); zebra.forEach(([x, z], i) => { _m4b.position.set(x, 0.0015, z); _m4b.updateMatrix(); ze.setMatrixAt(i, _m4b.matrix); }); ze.receiveShadow = true; scene.add(ze); }
-  // hoteles: primera fila frente al mar (con las calles que cruzan), una segunda fila de torres detrás y el perfil de la ciudad al fondo
-  const B = []; let seed = 5, zz = BV.Z0 - 0.5;
-  while (zz > BV.Z1 + 1) { const cols = hash(seed * 1.7) < 0.5 ? 6 : 9, wd = cols * BW, fl = [5, 6, 7, 8, 9][Math.floor(hash(seed * 2.9) * 5)];
-    const gap = GAPS.find(z0 => zz - wd < z0 + 0.5 && zz > z0 - 0.5); if (gap !== undefined) { zz = gap - 0.5; continue; }
-    B.push(hotel(BV.HX, zz - wd / 2, cols, fl, Math.floor(hash(seed * 4.3) * DECO.length), seed % 3, HOTEL[seed % HOTEL.length])); zz -= wd + 0.02; seed++; }
-  for (let z = BV.Z0 - 1; z > BV.Z1 + 2; z -= 2.9) { const fl = 12 + Math.floor(hash(z * 3) * 6) * 2; B.push(hotel(BV.HX - 2.6, z, 6, fl, Math.floor(hash(z * 7) * DECO.length), 1, null)); }
-  for (let i = 0; i < 90; i++) { const x = -9 - hash(i * 3.3) * 40, z = 20 - hash(i * 5.5) * 85, h = 2 + hash(i * 1.1) * 7; const bx2 = new THREE.Mesh(new THREE.BoxGeometry(1 + hash(i) * 2.2, h, 1 + hash(i * 2) * 2.2), flatM(new THREE.Color(DECO[i % DECO.length][0]).getHex(), 0.9));
-    bx2.position.set(x, h / 2, z); scene.add(bx2); }
-  S.buildings = B;
-  // cejas de verdad (losas finas sobre cada piso) y terrazas con mesas en la acera
-  { const ed = []; for (const b of B) { b.g.updateMatrixWorld(true); for (let f = 1; f <= b.floors; f++) ed.push(new THREE.Matrix4().multiplyMatrices(b.g.matrixWorld, new THREE.Matrix4().makeTranslation(0, GH + f * FH - 0.035, 0.025))); }
-    const eb = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 0.012, 0.05), flatM(0xffffff, 0.7), ed.length);     // ancho de cada ceja = ancho del hotel
-    let k = 0; for (const b of B) for (let f = 1; f <= b.floors; f++) { eb.setMatrixAt(k, ed[k].clone().multiply(new THREE.Matrix4().makeScale(b.wd * 0.98, 1, 1))); k++; }
-    eb.castShadow = true; eb.receiveShadow = true; scene.add(eb);
-    const tb = []; for (const b of B) if (Math.abs(b.g.position.x - BV.HX) < 0.01) for (let q = -1; q <= 1; q += 2) tb.push([BV.HX + 0.38, b.g.position.z + q * b.wd * 0.25]);
-    const top = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.022, 0.022, 0.004, 10).translate(0, 0.045, 0), flatM(0xffffff), tb.length), leg = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.003, 0.003, 0.045, 5).translate(0, 0.0225, 0), flatM(0x30343c), tb.length);
-    const umb = new THREE.InstancedMesh(new THREE.ConeGeometry(0.06, 0.025, 8, 1, true).translate(0, 0.11, 0), flatM(0xffffff, 0.7, { side: THREE.DoubleSide }), tb.length), up = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.002, 0.002, 0.11, 4).translate(0, 0.055, 0), flatM(0xf0f0f0), tb.length);
-    tb.forEach(([x, z], i) => { _m4b.position.set(x, 0.02, z); _m4b.rotation.set(0, 0, 0); _m4b.scale.setScalar(1); _m4b.updateMatrix(); top.setMatrixAt(i, _m4b.matrix); leg.setMatrixAt(i, _m4b.matrix); umb.setMatrixAt(i, _m4b.matrix); up.setMatrixAt(i, _m4b.matrix); umb.setColorAt(i, new THREE.Color([0xff7aa2, 0x3cc6b4, 0xffc247, 0x7a8cff][i % 4])); });
-    top.castShadow = umb.castShadow = true; scene.add(top, leg, umb, up); }
-  // palmeras (en el paseo y alguna en la arena) y farolas
-  { const sp = []; for (let z = BV.Z0 - 0.4; z > BV.Z1; z -= 1.05) if (z < 2.4 || z > 10.6) sp.push({ x: 0.05 + (hash(z) - 0.5) * 0.12, z, ry: hash(z * 3.1) * 6.28, h: 0.95 + hash(z * 5.7) * 0.35 });
-    for (let z = BV.Z0 - 0.9; z > BV.Z1; z -= 2.1) sp.push({ x: BV.R0 - 0.05 + (hash(z * 2) - 0.5) * 0.06, z, ry: hash(z * 9.1) * 6.28, h: 0.8 + hash(z * 2.7) * 0.25 });
-    for (let i = 0; i < 16; i++) { const x = 1.4 + hash(i * 4.4) * 1.0, z = 12 - hash(i * 6.6) * 60; if (Math.abs(z + 1) < 4.5 || Math.abs(z + 11.5) < 3.7 || Math.abs(z + 16.5) < 2.6 || Math.abs(z + 20.6) < 3.4 || z > 3) continue; sp.push({ x, z, ry: hash(i) * 6.28, h: 1.0 + hash(i * 3) * 0.4 }); }
-    buildPalms(sp);
-    const lp = []; for (let z = BV.Z0 - 0.95; z > BV.Z1; z -= 2.1) lp.push([BV.R1 + 0.1, z]);
-    const pole = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.006, 0.008, 0.5, 6).translate(0, 0.25, 0), flatM(0xf2f2f2, 0.5), lp.length), head = new THREE.InstancedMesh(new THREE.SphereGeometry(0.02, 10, 8), flatM(0xffffff, 0.3), lp.length);
-    lp.forEach(([x, z], i) => { _m4b.position.set(x, 0, z); _m4b.rotation.set(0, 0, 0); _m4b.scale.setScalar(1); _m4b.updateMatrix(); pole.setMatrixAt(i, _m4b.matrix); _m4b.position.set(x, 0.51, z); _m4b.updateMatrix(); head.setMatrixAt(i, _m4b.matrix); });
-    pole.castShadow = head.castShadow = true; scene.add(pole, head); }
-  buildSea(); buildBeachProps(); buildCars(); buildCrowd(); buildMoney();
-}
-// ---------- la gente: piezas instanciadas (piernas, cuerpo, brazos, cabeza, pelo). Paseantes que van y vuelven por el paseo y la orilla (bucle perfecto),
-// gente en la arena mirando las torres (levantan los brazos en los momentos fuertes) y la gente de la pirámide de Brasil (frase 4)
-const SHIRT = [0x2f6fd0, 0xf2c230, 0xe85a8a, 0x2e9e5b, 0xf07c2a, 0x8e44ad, 0x1abc9c, 0x34495e, 0xd6262e, 0xf4f1ea, 0x5dade2, 0xb9770e, 0xff8fab, 0x7bdff2];
-const PANTS = [0x2c3e64, 0x1b1f27, 0x3b4a6b, 0x6b5a45, 0x23262d, 0x4a5568, 0xe9e2d0, 0x3c6e71];
-const SKIN = [0xf0c8a8, 0xe0b090, 0xc6906a, 0x9a6a48, 0x7a4e32, 0xf5d5bd], HAIR = [0x2a1d14, 0x3d2a1c, 0x14110f, 0x6b4a2a, 0xb08850, 0x8a8a8a, 0xd8c08a];
-function buildCrowd() {
-  const P = []; const add = o => P.push(Object.assign({ ph: hash(P.length * 1.37) * 6.283, f: 1.5 + hash(P.length * 2.71) * 0.5, A: 0, y: 0, k0: null, look: null }, o));
-  for (let i = 0; i < 150; i++) { const x = BV.R1 + 0.15 + hash(i * 5.1) * 1.2, z = BV.Z0 - hash(i * 7.3) * (BV.Z0 - BV.Z1); add({ x, z, yaw: 0, A: 0.6 + hash(i * 1.9) * 1.8, grp: 0 }); }
-  for (let i = 0; i < 70; i++) { const x = BV.HX + 0.15 + hash(i * 3.1) * 0.35, z = BV.Z0 - hash(i * 9.3) * (BV.Z0 - BV.Z1); if (GAPS.some(z0 => Math.abs(z - z0) < 0.5)) continue; add({ x, z, yaw: 0, A: 0.5 + hash(i * 2.9) * 1.2, grp: 0 }); }
-  for (let i = 0; i < 90; i++) { const x = BV.SEA - 0.5 + hash(i * 2.3) * 0.6, z = 12 - hash(i * 4.9) * 60; add({ x, z, yaw: 0, A: 0.8 + hash(i * 3.3) * 2.2, grp: 0 }); }
-  // la gente en la arena alrededor de las torres de la plaza y de las dos paradas (miran hacia arriba)
-  for (const [cx, cz, r0, r1, n] of [[4.6, -1.0, 3.0, 5.2, 320], [2.6, -12.4, 1.5, 2.8, 100], [3.7, -20.6, 1.9, 3.1, 110], [7.4, -16.5, 1.6, 2.6, 70]]) for (let i = 0; i < n; i++) {
-    const a = hash(i * 1.91 + cx) * 6.283, r = r0 + Math.sqrt(hash(i * 3.73 + cz)) * (r1 - r0), x = cx + Math.cos(a) * r, z = cz + Math.sin(a) * r * 0.8;
-    if (x < BV.P1 + 0.25 || x > BV.SEA - 0.3) continue; add({ x, z, yaw: Math.atan2(cx - x, cz - z) + (hash(i) - 0.5) * 0.6, grp: 1, cx, cz }); }
-  S.people = P; S.nCrowd = P.length;
-  // la pirámide de Brasil (frase 4): gente en gradas, de abajo arriba
-  buildBrazilPeople(add);
-  const N = P.length;
-  const g = { leg: new THREE.BoxGeometry(0.021, 0.085, 0.024).translate(0, -0.0425, 0), torso: new THREE.BoxGeometry(0.052, 0.07, 0.03).translate(0, 0.035, 0), arm: new THREE.BoxGeometry(0.015, 0.066, 0.017).translate(0, -0.033, 0),
-    head: new THREE.IcosahedronGeometry(0.0128, 1), hair: new THREE.SphereGeometry(0.0138, 8, 4, 0, 6.283, 0, 1.75) };
-  const mk = geo => { const m = new THREE.InstancedMesh(geo, flatM(0xffffff, 0.75), N); m.castShadow = true; m.receiveShadow = true; m.frustumCulled = false; scene.add(m); return m; };
-  S.pp = { legL: mk(g.leg), legR: mk(g.leg), torso: mk(g.torso), armL: mk(g.arm), armR: mk(g.arm), head: mk(g.head), hair: mk(g.hair) };
-  const c = new THREE.Color();
-  P.forEach((p, i) => { const br = p.grp === 4, sh = br ? [0xf7d116, 0x1f9e4a, 0x2a5bd7, 0xf7d116, 0xffffff][i % 5] : SHIRT[Math.floor(hash(i * 4.4) * SHIRT.length)], pa = PANTS[Math.floor(hash(i * 5.5) * PANTS.length)], sk = SKIN[Math.floor(hash(i * 6.6) * SKIN.length)], hr = HAIR[Math.floor(hash(i * 7.7) * HAIR.length)];
-    for (const k of ['legL', 'legR']) S.pp[k].setColorAt(i, c.set(pa)); for (const k of ['torso', 'armL', 'armR']) S.pp[k].setColorAt(i, c.set(sh)); S.pp.head.setColorAt(i, c.set(sk)); S.pp.hair.setColorAt(i, c.set(hr)); });
-}
-const _mA = new THREE.Matrix4(), _mB = new THREE.Matrix4(), _mC = new THREE.Matrix4(), _qc = new THREE.Quaternion(), _eu = new THREE.Euler(), _scl = new THREE.Vector3(1, 1, 1), _pp0 = new THREE.Vector3(), _zero = new THREE.Matrix4().makeScale(0, 0, 0);
-function partM(base, x, y, z, rx, rz, out) { _mB.makeRotationFromEuler(_eu.set(rx, 0, rz)); _mB.setPosition(x, y, z); return out.multiplyMatrices(base, _mB); }
-function cheerAt(p, i, t) {      // levantan los brazos: al reventar la torre de GTA 5, con el récord, con Brasil y cuando GTA 6 pasa a la película
-  if (p.grp === 4) return t > K.brasil4 - 0.1 && t < K.y5 ? 1 : 0;
-  if (p.grp !== 1 || hash(i * 3.1) > 0.45) return 0;
-  if (p.cz > -5) return (t < 2.2 || (t > K.mas8 && t < END - 0.6)) ? 1 : 0;
-  if (p.cz > -15) return t > K.guinness3 - 0.1 && t < K.lleva4 ? 1 : 0;
-  return 0;
-}
-function crowdAt(t) {
-  const P = S.people, pp = S.pp;
-  for (let i = 0; i < P.length; i++) { const p = P[i]; const k = p.k0 ? p.k0(t) : 1;
-    if (k <= 0.002) { for (const key in pp) pp[key].setMatrixAt(i, _zero); continue; }
-    let x = p.x, z = p.z, yaw = p.yaw, sp = 1;
-    if (p.A) { const w = 6.2832 / END, ph = w * t + p.ph; z = p.z + p.A * Math.sin(ph); const vz = p.A * w * Math.cos(ph); yaw = vz < 0 ? Math.PI : 0; sp = Math.min(1, Math.abs(vz) / 0.08); }
-    const ph = 6.2832 * PER(p.f) * t + p.ph, walk = p.grp === 0, sw = Math.sin(ph) * (walk ? 0.45 * sp : 0.1), bob = Math.abs(Math.cos(ph)) * 0.004 * (walk ? sp : 0.4);
-    _qc.setFromEuler(_eu.set(0, yaw + Math.sin(ph * 0.5) * 0.04, 0)); _pp0.set(x, p.y + 0.085 + bob + (walk ? 0.02 : 0.012), z); _scl.setScalar(k); _mA.compose(_pp0, _qc, _scl);
-    pp.legL.setMatrixAt(i, partM(_mA, -0.012, 0, 0, sw, 0, _mC)); pp.legR.setMatrixAt(i, partM(_mA, 0.012, 0, 0, -sw, 0, _mC)); pp.torso.setMatrixAt(i, partM(_mA, 0, 0, 0, 0.03, 0, _mC));
-    const ch = cheerAt(p, i, t);
-    pp.armL.setMatrixAt(i, partM(_mA, -0.034, 0.064, 0, ch ? 3.2 + Math.sin(ph * 2) * 0.2 : -sw * 0.8, ch ? -0.2 : 0.08, _mC));
-    pp.armR.setMatrixAt(i, partM(_mA, 0.034, 0.064, 0, ch ? 3.2 + Math.cos(ph * 2) * 0.2 : sw * 0.8, ch ? 0.2 : -0.08, _mC));
-    pp.head.setMatrixAt(i, partM(_mA, 0, 0.083, 0, p.grp === 1 ? -0.35 : 0, 0, _mC)); pp.hair.setMatrixAt(i, partM(_mA, 0, 0.0865, -0.001, p.grp === 1 ? -0.55 : -0.2, 0, _mC)); }
-  for (const key in pp) pp[key].instanceMatrix.needsUpdate = true;
-}
-function cityAt(t, st) {
-  S.sky.position.copy(cam.position);
-  crowdAt(t); _scl.set(1, 1, 1); palmsAt(t); carsAt(t);
-  S.seaM.normalMap.offset.set(PER(0.02) * t, PER(0.035) * t);
-  S.foam.forEach((m, i) => { const u = cyc(t, 0.16, i * 3.1); m.position.x = BV.SEA + 0.25 - 0.35 * u; m.material.opacity = 0.75 + 0.25 * u; m.material.map.offset.y = i * 0.37 + PER(0.01) * t; });
-}
-// ---------------------------------------------------------------- el dinero: torres de fajos de billetes que salen de la arena (la altura es el dinero: MS unidades por cada 1.000 M$),
-// las bobinas de cine (la película más taquillera y la más cara), la torre de cristal de GTA 6 que se llena al final, el rascacielos, el contador de días con la medalla,
-// la torre de cajas de juego frente a la pirámide de gente de Brasil, el calendario del 19 de noviembre y la etiqueta del precio. Billetes que vuelan.
-const MS = 1.2;
-const PZ = { g5: v3(2.3, 0, -0.9), reel: v3(4.6, 0, -1.5), g6: v3(6.9, 0, -0.5), cost: v3(7.4, 0, -16.5), sky: v3(7.5, 0, -15.55), reel2: v3(7.3, 0, -17.65), cal: v3(5.45, 0, 1.05) };
-function canvasPlane(w, h, px, draw, opts = {}) {
-  const t = canvasTex(px, Math.round(px * h / w), draw); const m = mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({ map: t, roughness: opts.r ?? 0.85, transparent: !!opts.tr, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -1 }), opts.cs ?? false);
-  m.userData.tex = t; return m;
-}
-const ST1 = { tw: v3(2.7, 0, -12.6), sign: v3(1.72, 0, -12.15) }, ST2 = { box: v3(3.0, 0, -20.4), pyr: v3(4.4, 0, -20.9) };
-const HOOK_CAM = v3(0.6, 0.42, 8.2);
-// ---------- texturas: billete (inventado: sin retrato ni diseño real), fajos de lado y desde arriba
+const TH5 = ['#1c3f7a', '#e0874a', '#3b1d3f'], TH6 = ['#ff7a59', '#e9478e', '#3a1f7a'];
+// ---------- billetes y fajos (billete inventado: ni retrato ni diseño real)
 function billDraw(g, x, y, w, h) {
-  const gr = g.createLinearGradient(x, y, x + w, y + h); gr.addColorStop(0, '#e7efdc'); gr.addColorStop(1, '#c9d9bc'); g.fillStyle = gr; g.fillRect(x, y, w, h);
+  const gr = g.createLinearGradient(x, y, x + w, y + h); gr.addColorStop(0, '#d6e2c6'); gr.addColorStop(1, '#b5c9a2'); g.fillStyle = gr; g.fillRect(x, y, w, h);
   g.strokeStyle = '#2f6247'; g.lineWidth = Math.max(1, h * 0.04); g.strokeRect(x + h * 0.06, y + h * 0.06, w - h * 0.12, h - h * 0.12);
-  g.fillStyle = 'rgba(47,98,71,.18)'; for (let i = 0; i < 6; i++) g.fillRect(x + w * 0.08, y + h * (0.3 + i * 0.08), w * 0.25, h * 0.02);
-  g.beginPath(); g.ellipse(x + w * 0.62, y + h * 0.5, h * 0.3, h * 0.33, 0, 0, 7); g.fillStyle = 'rgba(47,98,71,.25)'; g.fill(); g.strokeStyle = 'rgba(47,98,71,.6)'; g.lineWidth = Math.max(1, h * 0.03); g.stroke();
+  g.beginPath(); g.ellipse(x + w * 0.62, y + h * 0.5, h * 0.3, h * 0.33, 0, 0, 7); g.fillStyle = 'rgba(47,98,71,.22)'; g.fill(); g.strokeStyle = 'rgba(47,98,71,.6)'; g.lineWidth = Math.max(1, h * 0.03); g.stroke();
   for (let r = 0.08; r < 0.3; r += 0.07) { g.beginPath(); g.ellipse(x + w * 0.62, y + h * 0.5, h * r, h * (r + 0.02), 0, 0, 7); g.stroke(); }
   g.fillStyle = '#2f6247'; g.font = `900 ${h * 0.24}px Inter`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('100', x + w * 0.13, y + h * 0.2); g.fillText('100', x + w * 0.88, y + h * 0.8);
+  g.fillStyle = 'rgba(47,98,71,.2)'; for (let i = 0; i < 5; i++) g.fillRect(x + w * 0.08, y + h * (0.36 + i * 0.08), w * 0.24, h * 0.02);
 }
-let BILL_T = null, SIDE_T = null, TOP_T = null;
-function moneyTex() {
-  BILL_T = canvasTex(256, 110, (g, w, h) => billDraw(g, 0, 0, w, h));
-  SIDE_T = canvasTex(512, 512, (g, w, h) => { const cols = 6, rows = 16, bw = w / cols, bh = h / rows; g.fillStyle = '#26301f'; g.fillRect(0, 0, w, h);
-    for (let r = 0; r < rows; r++) for (let c = -1; c < cols; c++) { const x = c * bw + (r % 2 ? bw / 2 : 0) + 2, y = r * bh + 2, ww = bw - 4, hh = bh - 4, k = hash(r * 31 + c * 7);
-      const base = `rgb(${190 + k * 22},${206 + k * 16},${176 + k * 18})`; g.fillStyle = base; g.fillRect(x, y, ww, hh);
-      for (let yy = y + 2; yy < y + hh; yy += 2.2) { g.fillStyle = `rgba(40,70,48,${0.12 + hash(yy * 3 + c) * 0.16})`; g.fillRect(x, yy, ww, 0.8); }
-      g.fillStyle = '#e2c770'; g.fillRect(x + ww * 0.42, y, ww * 0.16, hh); g.fillStyle = 'rgba(120,80,20,.35)'; g.fillRect(x + ww * 0.42, y, 1.5, hh); g.fillRect(x + ww * 0.58 - 1.5, y, 1.5, hh);
-      g.fillStyle = 'rgba(255,255,255,.25)'; g.fillRect(x, y, ww, 1.5); g.fillStyle = 'rgba(0,0,0,.25)'; g.fillRect(x, y + hh - 1.5, ww, 1.5); } });
-  TOP_T = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#26301f'; g.fillRect(0, 0, w, h); const cols = 4, rows = 8, bw = w / cols, bh = h / rows;
-    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const x = c * bw + 3, y = r * bh + 3; billDraw(g, x, y, bw - 6, bh - 6); g.fillStyle = '#e2c770'; g.fillRect(x + (bw - 6) * 0.42, y, (bw - 6) * 0.16, bh - 6); } });
-  for (const t of [SIDE_T, TOP_T]) { t.wrapS = t.wrapT = THREE.RepeatWrapping; }
+let BUNDLE_M = null;
+function bundleMats() {
+  if (BUNDLE_M) return BUNDLE_M;
+  const band = (g, w, h, vertical) => { g.fillStyle = '#d9c27a'; if (vertical) g.fillRect(w * 0.45, 0, w * 0.1, h); else g.fillRect(0, h * 0.45, w, h * 0.1); g.fillStyle = 'rgba(120,80,20,.35)'; if (vertical) { g.fillRect(w * 0.42, 0, 2, h); g.fillRect(w * 0.58 - 2, 0, 2, h); } };
+  const top = canvasTex(512, 220, (g, w, h) => { billDraw(g, 0, 0, w, h); band(g, w, h, true); });
+  const edge = (long) => canvasTex(512, 48, (g, w, h) => { g.fillStyle = '#bfd1ac'; g.fillRect(0, 0, w, h); for (let y = 1; y < h; y += 2.1) { g.fillStyle = `rgba(30,62,40,${0.18 + hash(y * 3) * 0.22})`; g.fillRect(0, y, w, 0.9); } if (long) { g.fillStyle = '#d9c27a'; g.fillRect(w * 0.45, 0, w * 0.1, h); g.fillStyle = 'rgba(110,80,30,.4)'; g.fillRect(w * 0.45, 0, 2, h); g.fillRect(w * 0.55 - 2, 0, 2, h); } });
+  const mT = new THREE.MeshStandardMaterial({ map: top, roughness: 0.75 }), mL = new THREE.MeshStandardMaterial({ map: edge(true), roughness: 0.8 }), mS = new THREE.MeshStandardMaterial({ map: edge(false), roughness: 0.8 });
+  BUNDLE_M = [mS, mS, mT, mT, mL, mL]; return BUNDLE_M;
 }
-// ---------- torre de fajos: setH(h) cambia la altura sin estirar la textura
-function moneyTower(w, d = w) {
-  const side = SIDE_T.clone(), sideZ = SIDE_T.clone(), top = TOP_T.clone(); for (const t of [side, sideZ, top]) { t.needsUpdate = true; t.wrapS = t.wrapT = THREE.RepeatWrapping; }
-  const mS = new THREE.MeshStandardMaterial({ map: side, roughness: 0.72 }), mZ = new THREE.MeshStandardMaterial({ map: sideZ, roughness: 0.72 }), mT = new THREE.MeshStandardMaterial({ map: top, roughness: 0.7 });
-  const body = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1).translate(0, 0.5, 0), [mZ, mZ, mT, mT, mS, mS]); body.castShadow = true; body.receiveShadow = true;
-  const g = new THREE.Group(); g.add(body); scene.add(g);
-  const T = { g, body, w, d, h: -1, setH(h) { h = Math.max(0.0005, h); if (Math.abs(h - T.h) < 1e-5) return; T.h = h; body.scale.set(w, h, d); side.repeat.set(w / 0.96, h / 1.12); sideZ.repeat.set(d / 0.96, h / 1.12); top.repeat.set(w / 0.9, d / 0.9); } };
-  T.setH(0.001); return T;
+const BUN = { w: 0.156, h: 0.012, d: 0.066 };          // un fajo de 100 billetes de 100
+function bundleGeo() { return new THREE.BoxGeometry(BUN.w, BUN.h, BUN.d); }
+// columna de fajos (instanciada): capas de 2 fajos cruzadas (como ladrillos); setN(k) enseña k capas (la última, cayendo)
+function bundleColumn(maxLayers, s = 1) {
+  const im = new THREE.InstancedMesh(bundleGeo(), bundleMats(), maxLayers * 2); im.castShadow = true; im.receiveShadow = true; im.frustumCulled = false;
+  const g = new THREE.Group(); g.add(im); g.scale.setScalar(s); g.userData.s0 = s;
+  const C = { g, im, k: -1, top: 0, setN(k, drop = 0.12) { k = Math.max(0, Math.min(maxLayers, k)); if (Math.abs(k - C.k) < 1e-4) return; C.k = k; const full = Math.floor(k), part = k - full; let c = 0;
+      for (let l = 0; l < maxLayers; l++) for (let j = 0; j < 2; j++) { const on = l < full || (l === full && part > 0.02);
+        if (!on) { im.setMatrixAt(c++, _zero4); continue; }
+        const off = (j - 0.5) * (BUN.d + 0.002), y = BUN.h / 2 + l * BUN.h * 1.02 + (l === full ? (1 - part) * drop : 0);
+        if (l % 2 === 0) _o4.position.set((hash(l * 7 + j) - 0.5) * 0.006, y, off); else _o4.position.set(off, y, (hash(l * 5 + j) - 0.5) * 0.006);
+        _o4.rotation.set(0, (l % 2 ? Math.PI / 2 : 0) + (hash(l * 4 + j) - 0.5) * 0.05, 0); _o4.scale.setScalar(1); _o4.updateMatrix(); im.setMatrixAt(c++, _o4.matrix); }
+      im.instanceMatrix.needsUpdate = true; C.top = (full + (part > 0.02 ? 1 : 0)) * BUN.h * 1.02; } };
+  C.setN(0); return C;
 }
-// ---------- rótulo flotante (placa oscura con dos líneas) que mira a la cámara
-function tag3(l1, l2, c2 = '#FFC24A', w = 1.4, c1 = '#ffffff') {
-  const h = w * 0.42, t = canvasTex(640, Math.round(640 * h / w), (g, W2, H2) => { g.clearRect(0, 0, W2, H2); g.fillStyle = 'rgba(12,16,24,.86)'; rr(g, 6, 6, W2 - 12, H2 - 12, H2 * 0.16); g.fill();
-    g.fillStyle = c2; g.fillRect(6, H2 - 18, W2 - 12, 12);
-    g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = c1; g.font = `900 ${H2 * (l2 ? 0.34 : 0.48)}px Inter`; g.fillText(l1, W2 / 2, l2 ? H2 * 0.32 : H2 * 0.48, W2 * 0.9);
-    if (l2) { g.fillStyle = c2; g.font = `900 ${H2 * 0.3}px Inter`; g.fillText(l2, W2 / 2, H2 * 0.68, W2 * 0.9); } });
-  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: t, transparent: true, depthWrite: false, toneMapped: false, side: THREE.DoubleSide }));
-  m.renderOrder = 8; scene.add(m); m.visible = false; return m;
+const _o4 = new THREE.Object3D(), _zero4 = new THREE.Matrix4().makeScale(0, 0, 0);
+// ---------- bobinas de cine
+function reelFaceTex(gold) { return canvasTex(256, 256, (g, w, h) => { const c = w / 2; g.fillStyle = gold ? '#d9a93f' : '#b9bec7'; g.beginPath(); g.arc(c, c, c - 2, 0, 7); g.fill();
+  const gr = g.createRadialGradient(c - 30, c - 30, 10, c, c, c); gr.addColorStop(0, 'rgba(255,255,255,.35)'); gr.addColorStop(1, 'rgba(0,0,0,.25)'); g.fillStyle = gr; g.beginPath(); g.arc(c, c, c - 2, 0, 7); g.fill();
+  g.fillStyle = '#16120e'; for (let i = 0; i < 6; i++) { const a = i / 6 * 6.283 + 0.26; g.beginPath(); g.arc(c + Math.cos(a) * c * 0.55, c + Math.sin(a) * c * 0.55, c * 0.22, 0, 7); g.fill(); }
+  g.beginPath(); g.arc(c, c, c * 0.09, 0, 7); g.fill(); g.strokeStyle = gold ? '#8a6418' : '#7d838e'; g.lineWidth = 6; g.beginPath(); g.arc(c, c, c - 5, 0, 7); g.stroke(); }); }
+function reelSmallParts(R = 0.034, T = 0.012) {
+  const geo = new THREE.CylinderGeometry(R, R, T, 28).rotateX(Math.PI / 2);
+  const side = new THREE.MeshStandardMaterial({ color: 0x2a221c, roughness: 0.5, metalness: 0.2 });
+  return { geo, mats: [side, new THREE.MeshStandardMaterial({ map: reelFaceTex(false), roughness: 0.3, metalness: 0.75 }), new THREE.MeshStandardMaterial({ map: reelFaceTex(false), roughness: 0.3, metalness: 0.75 })],
+    gold: [side, new THREE.MeshStandardMaterial({ map: reelFaceTex(true), roughness: 0.25, metalness: 0.85 }), new THREE.MeshStandardMaterial({ map: reelFaceTex(true), roughness: 0.25, metalness: 0.85 })] };
 }
-function faceCam(o) { o.rotation.set(0, Math.atan2(cam.position.x - o.position.x, cam.position.z - o.position.z), 0); }
-function showTag(o, pos, k) { o.visible = k > 0.01; if (!o.visible) return; o.position.copy(pos); faceCam(o); o.scale.setScalar(Math.max(0.0001, k)); }
-// ---------- bobina de cine (aluminio con seis huecos, película enrollada y una tira que cae hasta la arena)
-function filmTex() { return canvasTex(128, 512, (g, w, h) => { g.fillStyle = '#1a1612'; g.fillRect(0, 0, w, h);
-  for (let y = 0; y < h; y += 16) { g.fillStyle = '#e8e2d4'; g.fillRect(8, y + 4, 12, 8); g.fillRect(w - 20, y + 4, 12, 8); }
-  for (let y = 0; y < h; y += 96) { const gr = g.createLinearGradient(0, y, 0, y + 88); gr.addColorStop(0, '#ff9a5a'); gr.addColorStop(0.5, '#e8508a'); gr.addColorStop(1, '#5a3cc0'); g.fillStyle = gr; g.fillRect(28, y + 6, w - 56, 84);
-    g.fillStyle = 'rgba(255,255,255,.25)'; g.beginPath(); g.arc(w / 2, y + 40, 14, 0, 7); g.fill(); } }); }
-function reel(R) {
+function reelBig(R, gold = false) {        // bobina de aluminio de verdad (seis huecos, película enrollada y tira que cae)
   const g = new THREE.Group(), sh = new THREE.Shape(); sh.absarc(0, 0, R, 0, Math.PI * 2, false);
-  for (let i = 0; i < 6; i++) { const a = i / 6 * 6.283 + 0.26, h = new THREE.Path(); h.absarc(Math.cos(a) * R * 0.55, Math.sin(a) * R * 0.55, R * 0.24, 0, Math.PI * 2, true); sh.holes.push(h); }
+  for (let i = 0; i < 6; i++) { const a = i / 6 * 6.283 + 0.26, hp = new THREE.Path(); hp.absarc(Math.cos(a) * R * 0.55, Math.sin(a) * R * 0.55, R * 0.24, 0, Math.PI * 2, true); sh.holes.push(hp); }
   const hub = new THREE.Path(); hub.absarc(0, 0, R * 0.07, 0, Math.PI * 2, true); sh.holes.push(hub);
   const fg = new THREE.ExtrudeGeometry(sh, { depth: R * 0.03, bevelEnabled: true, bevelThickness: R * 0.012, bevelSize: R * 0.012, bevelSegments: 2, curveSegments: 40 });
-  const al = new THREE.MeshStandardMaterial({ color: 0xc8ccd4, roughness: 0.28, metalness: 0.85 });
-  for (const z of [-R * 0.16, R * 0.13]) { const f = new THREE.Mesh(fg, al); f.position.z = z; f.castShadow = true; f.receiveShadow = true; g.add(f); }
-  const wound = new THREE.Mesh(new THREE.CylinderGeometry(R * 0.82, R * 0.82, R * 0.27, 64, 1, false).rotateX(Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x241c16, roughness: 0.45, metalness: 0.2 })); wound.castShadow = true; g.add(wound);
-  const core = new THREE.Mesh(new THREE.CylinderGeometry(R * 0.16, R * 0.16, R * 0.36, 24).rotateX(Math.PI / 2), al); g.add(core);
-  // la tira de película que baja desde el borde y se enrolla en la arena
-  const pts = []; for (let i = 0; i <= 24; i++) { const u = i / 24; pts.push(v3(R * 0.82 + u * R * 0.5, -u * u * R * 0.95 + (1 - u) * R * 0.05, 0)); }
-  for (let i = 1; i <= 12; i++) { const u = i / 12; pts.push(v3(R * 1.32 + u * R * 0.6, -R * 0.99, Math.sin(u * 3) * R * 0.25)); }
-  const curve = new THREE.CatmullRomCurve3(pts), N = 120, pos = [], uv = [], idx = [], wdt = R * 0.12;
-  for (let i = 0; i <= N; i++) { const u = i / N, p = curve.getPoint(u); pos.push(p.x, p.y, p.z - wdt, p.x, p.y, p.z + wdt); uv.push(0, u * 9, 1, u * 9); if (i < N) idx.push(i * 2, i * 2 + 1, i * 2 + 2, i * 2 + 1, i * 2 + 3, i * 2 + 2); }
-  const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); sg.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); sg.setIndex(idx); sg.computeVertexNormals();
-  const ft = filmTex(); ft.wrapS = ft.wrapT = THREE.RepeatWrapping; const strip = new THREE.Mesh(sg, new THREE.MeshStandardMaterial({ map: ft, roughness: 0.35, metalness: 0.1, side: THREE.DoubleSide })); strip.castShadow = true; g.add(strip);
-  const out = new THREE.Group(); g.position.y = R; out.add(g); scene.add(out); return { g: out, R };
+  const al = gold ? M.gold : new THREE.MeshStandardMaterial({ color: 0xc8ccd4, roughness: 0.25, metalness: 0.9 });
+  for (const z of [-R * 0.16, R * 0.13]) { const f = mesh(fg, al); f.position.z = z; g.add(f); }
+  const wound = mesh(new THREE.CylinderGeometry(R * 0.8, R * 0.8, R * 0.27, 64).rotateX(Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0x241c16, roughness: 0.45, metalness: 0.2 })); g.add(wound);
+  const core = mesh(new THREE.CylinderGeometry(R * 0.16, R * 0.16, R * 0.36, 24).rotateX(Math.PI / 2), al); g.add(core);
+  const out = new THREE.Group(); g.position.y = R; out.add(g); out.userData.R = R; return out;
 }
-// ---------- rascacielos (maqueta de un superrascacielos inventado: planta en tres alas, retranqueos y aguja)
-function skyscraper(H) {
-  const g = new THREE.Group(), gm = new THREE.MeshPhysicalMaterial({ color: 0x9fc4e0, roughness: 0.12, metalness: 0.7, clearcoat: 1, clearcoatRoughness: 0.05 }), fm = new THREE.MeshStandardMaterial({ color: 0xe9eef2, roughness: 0.4, metalness: 0.5 });
+// ---------- calendario de mesa (19 NOV)
+function deskCalendar(s = 1) {
+  const t = canvasTex(512, 600, (g, w, h) => { g.fillStyle = '#fbfaf6'; g.fillRect(0, 0, w, h); g.fillStyle = '#c62828'; g.fillRect(0, 0, w, 150); g.fillStyle = '#ffffff'; g.font = '900 78px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('NOVIEMBRE', w / 2, 80);
+    g.fillStyle = '#16181d'; g.font = '900 330px Inter'; g.fillText('19', w / 2, 360); g.fillStyle = '#c62828'; g.font = '900 54px Inter'; g.fillText('JUEVES · 2026', w / 2, 540);
+    g.fillStyle = '#9aa1ab'; for (let x = 40; x < w; x += 54) { g.beginPath(); g.arc(x, 18, 9, 0, 7); g.fill(); } });
+  const side = new THREE.MeshStandardMaterial({ color: 0xf2efe8, roughness: 0.85 }), m = mesh(new THREE.BoxGeometry(0.16, 0.19, 0.045).translate(0, 0.095, 0), [side, side, side, side, new THREE.MeshStandardMaterial({ map: t, roughness: 0.6 }), side]);
+  const stand = mesh(new THREE.BoxGeometry(0.17, 0.012, 0.09).translate(0, 0.006, -0.01), M.woodL); const g = grp(stand, m); m.position.y = 0.012; m.rotation.x = -0.12; g.scale.setScalar(s); g.userData.s0 = s; return g;
+}
+// ---------- calendario de taco con «DÍA n» (frase 3)
+function dayCalendar() {
+  const tex = canvasTex(400, 480, () => {}); const side = new THREE.MeshStandardMaterial({ color: 0xf2efe8, roughness: 0.85 });
+  const m = mesh(new THREE.BoxGeometry(0.13, 0.155, 0.04).translate(0, 0.0775, 0), [side, side, side, side, new THREE.MeshStandardMaterial({ map: tex, roughness: 0.6 }), side]);
+  const ring = mesh(new THREE.BoxGeometry(0.135, 0.012, 0.045), M.brass); ring.position.y = 0.16; const g = grp(m, ring); g.userData.tex = tex; g.userData.n = -1;
+  g.userData.draw = (n) => { if (g.userData.n === n) return; g.userData.n = n; const G = tex.userData.g, w = 400, h = 480; G.fillStyle = '#fbfaf6'; G.fillRect(0, 0, w, h); G.fillStyle = '#16181d'; G.fillRect(0, 0, w, 110);
+    G.fillStyle = '#ffffff'; G.font = '900 62px Inter'; G.textAlign = 'center'; G.textBaseline = 'middle'; G.fillText('DÍA', w / 2, 58); G.fillStyle = n === 1 ? '#16181d' : '#c62828'; G.font = '900 300px Inter'; G.fillText(String(n), w / 2, 300);
+    G.fillStyle = '#7d838e'; G.font = '700 34px Inter'; G.fillText('SEPT. 2013', w / 2, 445); tex.needsUpdate = true; };
+  g.userData.draw(1); return g;
+}
+// ---------- etiqueta del precio y tique de compra
+function priceTagObj() {
+  const W2 = 0.2, H2 = 0.11, s = new THREE.Shape(); s.moveTo(-W2 / 2 + 0.03, H2 / 2); s.lineTo(W2 / 2 - 0.01, H2 / 2); s.quadraticCurveTo(W2 / 2, H2 / 2, W2 / 2, H2 / 2 - 0.01); s.lineTo(W2 / 2, -H2 / 2 + 0.01); s.quadraticCurveTo(W2 / 2, -H2 / 2, W2 / 2 - 0.01, -H2 / 2);
+  s.lineTo(-W2 / 2 + 0.03, -H2 / 2); s.lineTo(-W2 / 2, 0); s.lineTo(-W2 / 2 + 0.03, H2 / 2); const hole = new THREE.Path(); hole.absarc(-W2 / 2 + 0.022, 0, 0.007, 0, 7, true); s.holes.push(hole);
+  const geo = new THREE.ExtrudeGeometry(s, { depth: 0.002, bevelEnabled: false }); const pos = geo.attributes.position, uv = []; for (let i = 0; i < pos.count; i++) uv.push((pos.getX(i) + W2 / 2) / W2, (pos.getY(i) + H2 / 2) / H2); geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  const mk = txt => canvasTex(1000, 550, (g, w, h) => { g.fillStyle = '#fbf8ef'; g.fillRect(0, 0, w, h); g.strokeStyle = '#c62828'; g.lineWidth = 14; g.strokeRect(190, 24, w - 214, h - 48);
+    g.fillStyle = '#c62828'; g.font = '900 200px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(txt, 590, 290, 740); });
+  const tA = mk('79,99 €'), tB = mk('¿80 €?'), m = mesh(geo, new THREE.MeshStandardMaterial({ map: tA, roughness: 0.6 }));
+  const str = mesh(new THREE.CylinderGeometry(0.0012, 0.0012, 0.2, 5).translate(0, 0.1, 0), new THREE.MeshStandardMaterial({ color: 0xc9b48a, roughness: 0.8 }), false); str.position.set(-W2 / 2 + 0.022, 0, 0.001);
+  const g = grp(m, str); g.userData = { m, tA, tB }; return g;
+}
+function receiptObj() {
+  const t = canvasTex(400, 900, (g, w, h) => { g.fillStyle = '#f7f5ef'; g.fillRect(0, 0, w, h); g.fillStyle = '#2b2b30'; g.textAlign = 'center'; g.font = '700 30px DejaVuMono'; g.fillText('TIENDA DE EJEMPLO', w / 2, 70); g.font = '400 22px DejaVuMono'; g.fillText('19/11/2026  10:00', w / 2, 110);
+    g.fillText('--------------------------', w / 2, 150); g.textAlign = 'left'; g.font = '700 26px DejaVuMono'; g.fillText('GTA VI ED. ESTÁNDAR', 30, 210); g.textAlign = 'right'; g.fillText('79,99', w - 30, 260);
+    g.textAlign = 'center'; g.font = '400 22px DejaVuMono'; g.fillText('--------------------------', w / 2, 320); g.textAlign = 'left'; g.font = '900 34px DejaVuMono'; g.fillText('TOTAL', 30, 390); g.textAlign = 'right'; g.fillText('79,99 €', w - 30, 390);
+    g.textAlign = 'center'; g.font = '400 20px DejaVuMono'; g.fillText('IVA INCLUIDO', w / 2, 440); for (let i = 0; i < 26; i++) { g.fillRect(70 + i * 10 + (hash(i) > 0.5 ? 2 : 0), 520, hash(i * 3) > 0.5 ? 6 : 3, 90); } g.fillText('¡GRACIAS!', w / 2, 680); });
+  const p = mesh(new THREE.PlaneGeometry(0.08, 0.18, 1, 12), new THREE.MeshStandardMaterial({ map: t, roughness: 0.9, side: THREE.DoubleSide }), false); const pa = p.geometry.attributes.position;
+  for (let i = 0; i < pa.count; i++) { const y = pa.getY(i); pa.setZ(i, 0.008 * Math.sin((y + 0.09) * 30)); } p.geometry.computeVertexNormals(); return p;
+}
+// ---------- maqueta blanca de un superrascacielos inventado (planta en tres alas, retranqueos y aguja)
+function supertall(H) {
+  const g = new THREE.Group(), wm = new THREE.MeshStandardMaterial({ color: 0xf1eee8, roughness: 0.55 }), gm = new THREE.MeshPhysicalMaterial({ color: 0x9fb8cc, roughness: 0.1, metalness: 0.6, clearcoat: 1 });
   const wing = (len, wd, h) => { const s = new THREE.Shape(); s.moveTo(-wd / 2, 0); s.lineTo(wd / 2, 0); s.lineTo(wd / 2, len - wd / 2); s.absarc(0, len - wd / 2, wd / 2, 0, Math.PI, false); s.lineTo(-wd / 2, 0);
     const geo = new THREE.ExtrudeGeometry(s, { depth: h, bevelEnabled: false, curveSegments: 10 }); geo.rotateX(-Math.PI / 2); return geo; };
   const segs = 9; let y = 0;
   for (let i = 0; i < segs; i++) { const h = H * 0.62 / segs, sc = 1 - i / segs * 0.82;
-    for (let k = 0; k < 3; k++) { if (i > 0 && k === i % 3 && i > 5) continue; const len = H * 0.17 * sc * (k === (i % 3) ? 0.82 : 1), m = new THREE.Mesh(wing(len, H * 0.075 * (0.55 + 0.45 * sc), h), gm); m.position.y = y; m.rotation.y = k * 2.094; m.castShadow = true; g.add(m); }
-    const band = new THREE.Mesh(new THREE.CylinderGeometry(H * 0.05 * (0.5 + 0.5 * sc), H * 0.05 * (0.5 + 0.5 * sc), h * 0.06, 12), fm); band.position.y = y + h; g.add(band); y += h; }
-  const core = new THREE.Mesh(new THREE.CylinderGeometry(H * 0.012, H * 0.04, H * 0.18, 12), gm); core.position.y = y + H * 0.09; g.add(core);
-  const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.002, H * 0.012, H * 0.2, 8), fm); spire.position.y = y + H * 0.28; spire.castShadow = true; g.add(spire);
-  scene.add(g); return g;
+    for (let k = 0; k < 3; k++) { if (i > 5 && k === i % 3) continue; const len = H * 0.17 * sc * (k === (i % 3) ? 0.82 : 1), m = mesh(wing(len, H * 0.075 * (0.55 + 0.45 * sc), h), i % 2 ? wm : gm); m.position.y = y; m.rotation.y = k * 2.094; g.add(m); }
+    y += h; }
+  const core = mesh(new THREE.CylinderGeometry(H * 0.012, H * 0.04, H * 0.18, 12), wm); core.position.y = y + H * 0.09; g.add(core);
+  const spire = mesh(new THREE.CylinderGeometry(0.0015, H * 0.012, H * 0.2, 8), wm); spire.position.y = y + H * 0.28; g.add(spire);
+  const base = mesh(new THREE.CylinderGeometry(H * 0.22, H * 0.24, 0.012, 40), M.woodL); base.position.y = 0.006; g.add(base); return g;
 }
-// ---------- calendario de taco (19 NOV) y etiqueta de precio
-function calendarBlock() {
-  const t = canvasTex(512, 600, (g, w, h) => { g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); g.fillStyle = '#e53935'; g.fillRect(0, 0, w, 150); g.fillStyle = '#ffffff'; g.font = '900 78px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('NOVIEMBRE', w / 2, 80);
-    g.fillStyle = '#16181d'; g.font = '900 330px Inter'; g.fillText('19', w / 2, 360); g.fillStyle = '#e53935'; g.font = '900 56px Inter'; g.fillText('JUEVES · 2026', w / 2, 540);
-    g.fillStyle = '#9aa1ab'; for (let x = 40; x < w; x += 54) { g.beginPath(); g.arc(x, 18, 9, 0, 7); g.fill(); } });
-  const side = flatM(0xf2efe8, 0.8), m = new THREE.Mesh(new THREE.BoxGeometry(1.0, 1.17, 0.26).translate(0, 0.585, 0), [side, side, side, side, new THREE.MeshStandardMaterial({ map: t, roughness: 0.6 }), side]);
-  m.castShadow = true; m.receiveShadow = true; scene.add(m); return m;
+// ---------- documento que se sella (frase 5)
+function stampDoc() {
+  const draw = (g, w, h, k) => { g.fillStyle = '#f2eee3'; g.fillRect(0, 0, w, h); g.fillStyle = '#2b2218'; g.textAlign = 'center'; g.font = '900 46px Inter'; g.fillText('¿COSTÓ GTA 6', w / 2, 90); g.fillText('MÁS QUE EL', w / 2, 146); g.fillText('BURJ KHALIFA?', w / 2, 202);
+    g.font = '600 26px Inter'; g.fillText('El edificio más alto del mundo: 1.500 M$', w / 2, 252); textLines(g, 60, 300, w - 120, 9, 26, 'rgba(40,36,30,.45)', 4);
+    if (k > 0) { g.save(); g.globalAlpha = Math.min(1, k * 1.5); g.translate(w / 2, h * 0.72); g.rotate(-0.14); g.strokeStyle = '#c62828'; g.lineWidth = 14; rr(g, -190, -78, 380, 156, 16); g.stroke(); g.fillStyle = '#c62828'; g.font = '900 120px Inter'; g.textBaseline = 'middle'; g.fillText('NO', 0, 6);
+      g.font = '800 22px Inter'; g.fillText('ROCKSTAR GAMES', 0, -58); g.restore(); } };
+  const t = canvasTex(768, 1000, (g, w, h) => draw(g, w, h, 0)); const p = mesh(new THREE.PlaneGeometry(0.21, 0.274), new THREE.MeshStandardMaterial({ map: t, roughness: 0.85, polygonOffset: true, polygonOffsetFactor: -1 }), false);
+  p.userData = { tex: t, draw, k: -1 }; return p;
 }
-function priceTag() {
-  const W2 = 1.0, H2 = 0.56, s = new THREE.Shape(); s.moveTo(-W2 / 2 + 0.16, H2 / 2); s.lineTo(W2 / 2 - 0.05, H2 / 2); s.quadraticCurveTo(W2 / 2, H2 / 2, W2 / 2, H2 / 2 - 0.05); s.lineTo(W2 / 2, -H2 / 2 + 0.05); s.quadraticCurveTo(W2 / 2, -H2 / 2, W2 / 2 - 0.05, -H2 / 2);
-  s.lineTo(-W2 / 2 + 0.16, -H2 / 2); s.lineTo(-W2 / 2, 0); s.lineTo(-W2 / 2 + 0.16, H2 / 2); const hole = new THREE.Path(); hole.absarc(-W2 / 2 + 0.11, 0, 0.035, 0, 7, true); s.holes.push(hole);
-  const geo = new THREE.ExtrudeGeometry(s, { depth: 0.02, bevelEnabled: true, bevelThickness: 0.006, bevelSize: 0.006, bevelSegments: 2 }); geo.translate(0, 0, -0.01);
-  const pos = geo.attributes.position, uv = []; for (let i = 0; i < pos.count; i++) uv.push((pos.getX(i) + W2 / 2) / W2, (pos.getY(i) + H2 / 2) / H2); geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
-  const mk = txt => canvasTex(1000, 560, (g, w, h) => { g.fillStyle = '#fffdf6'; g.fillRect(0, 0, w, h); g.strokeStyle = '#e53935'; g.lineWidth = 16; g.strokeRect(190, 26, w - 216, h - 52);
-    g.fillStyle = '#e53935'; g.font = '900 210px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(txt, 590, 300, 740); });
-  const tA = mk('79,99 €'), tB = mk('¿80 €?'); const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: tA, roughness: 0.55 })); m.castShadow = true;
-  const g = new THREE.Group(); m.position.set(W2 / 2 - 0.11, -0.12, 0); m.rotation.z = -0.22; g.add(m);
-  const str = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.004, 3, 5).translate(0, 1.5, 0), flatM(0x8a6a44)); str.position.set(0, -0.12, 0); g.add(str);
-  scene.add(g); g.visible = false; return { g, m, tA, tB };
+// ---------------------------------------------------------------- el centro: cien bobinas de cine (las películas más taquilleras, una dorada: la n.º 1) y la caja de
+// GTA 5 gigante que cae sobre ellas como el mazo de Derecho (no queda ninguna en pie); detrás sube la vitrina con GTA 6 y el calendario del 19 (L2).
+// Al final las bobinas se levantan y la caja sube hasta la pose del primer fotograma (bucle).
+const RG = { sp: 0.085 }, GOLD1 = 63;
+const gridP = i => v3(((i % 10) - 4.5) * RG.sp, 0, (Math.floor(i / 10) - 4.5) * RG.sp);
+const T_HIT = 0.3, CASE_S = 3.2, CASE_TOP = 0.42;
+const _o = new THREE.Object3D(), _ax = new THREE.Vector3();
+function buildCenter() {
+  const Z = new THREE.Group(); scene.add(Z); S.ctr = Z;
+  const RP = reelSmallParts(0.034, 0.012);
+  S.reels = new THREE.InstancedMesh(RP.geo, RP.mats, 100); S.reels.castShadow = true; S.reels.receiveShadow = true; S.reels.frustumCulled = false; Z.add(S.reels);
+  S.gold1 = mesh(RP.geo, RP.gold); Z.add(S.gold1);
+  S.case5 = gameCase('GTA 5', 'SALIÓ EN 2013', TH5, CASE_S); Z.add(S.case5);
+  S.shock = new THREE.Mesh(new THREE.RingGeometry(0.97, 1.0, 96), new THREE.MeshBasicMaterial({ color: 0xffe2b0, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false, side: THREE.DoubleSide }));
+  S.shock.rotation.x = -Math.PI / 2; S.shock.position.y = 0.004; Z.add(S.shock);
+  S.dust = sparks(Z, 220, 0xffe0b0, 0.03);
+  // la vitrina con GTA 6 (sube detrás) y el calendario de mesa
+  S.vit = vitrine(0.34, 0.6); S.vit.position.set(0.58, 0, -0.5); S.vit.rotation.y = -0.45; Z.add(S.vit);
+  const easel = grp(at(mesh(new THREE.BoxGeometry(0.2, 0.012, 0.12), M.brass), 0, 0.086, 0), at(mesh(new THREE.BoxGeometry(0.012, 0.2, 0.012), M.brass), 0, 0.18, -0.04, 0, -0.25));
+  S.case6v = gameCase('GTA 6', 'SALE EL 19-11-2026', TH6, 1.55); S.case6v.position.set(0, 0.098 + 0.132, 0.0); S.case6v.rotation.x = -0.18; S.vit.add(easel, S.case6v);
+  S.cal = deskCalendar(1.0); S.cal.position.set(0.98, 0, -0.28); S.cal.rotation.y = -0.6; Z.add(S.cal);
+  S.ctrCone = lightCone(1.6, 5, 0.05); Z.add(S.ctrCone);
 }
-// ---------- la pirámide de Brasil: gradas con gente (se crean con el resto de la gente) y la bandera arriba
-const BRZ = { tiers: 5, h: 2.13 / 5, w0: 1.5, w1: 0.34 };
-function buildBrazilPeople(add) {
-  const c = ST2.pyr;
-  for (let k = 0; k < BRZ.tiers; k++) { const y = (k + 1) * BRZ.h, half = (BRZ.w0 - (BRZ.w0 - BRZ.w1) * (k + 1) / BRZ.tiers) / 2, n = Math.max(6, Math.round(half * 8 / 0.09));
-    for (let i = 0; i < n; i++) { const u = i / n, side = Math.floor(u * 4), f = (u * 4) % 1, e = half - 0.035; let x, z;
-      if (side === 0) { x = -e + f * 2 * e; z = e; } else if (side === 1) { x = e; z = e - f * 2 * e; } else if (side === 2) { x = e - f * 2 * e; z = -e; } else { x = -e; z = -e + f * 2 * e; }
-      const t0 = k * 0.12 + hash(i * 3.3 + k) * 0.18;
-      add({ x: c.x + x, z: c.z + z, y, yaw: Math.atan2(x, z), grp: 4, k0: t => pop(t, K.mas4b - 0.2 + t0, 0.3) * (1 - win(t, K.rockstar5 + 0.3, 0.3)) }); } }
+function fallState(i, t) {       // ángulo de caída de la bobina i (0 = de pie): caen en ola desde la caja; al final se levantan (rebobinado)
+  const P = i < 0 ? gridP(GOLD1) : gridP(i), dist = Math.hypot(P.x, P.z), dl = T_HIT + dist / 2.6 + hash(i * 3.7 + 1) * 0.05 + (i < 0 ? 0.55 : 0);
+  let u = clamp((t - dl) / 0.24), th = Math.PI / 2 * 0.985 * u * u;
+  if (u >= 1) th -= 0.08 * Math.sin(Math.PI * clamp((t - dl - 0.24) / 0.22)) * Math.exp(-(t - dl - 0.24) * 6);
+  if (i < 0) th += (t > T_HIT + 0.1 && u <= 0 ? 0.12 * Math.sin((t - T_HIT) * 22) * Math.exp(-(t - T_HIT) * 2.5) : 0);      // la dorada se tambalea antes de caer
+  const up = clamp((t - (K.mandaselo9 + 0.2 + hash(i * 5.1 + 2) * 0.6)) / 0.35); th *= 1 - eio(up);
+  return th;
 }
-// ---------- todo junto
-function buildMoney() {
-  moneyTex();
-  S.g5 = moneyTower(1.05); S.g5.g.position.copy(PZ.g5);
-  S.reel = reel(2.925 * MS / 2); S.reel.g.position.copy(PZ.reel); S.reel.g.rotation.y = Math.atan2(HOOK_CAM.x - PZ.reel.x, HOOK_CAM.z - PZ.reel.z) + 0.05;
-  // la torre de cristal de GTA 6 (vacía hasta el final) con su interrogación y la línea de la película más taquillera
-  { const G = new THREE.Group(); G.position.copy(PZ.g6); scene.add(G); S.g6G = G;
-    const glass = new THREE.Mesh(new THREE.BoxGeometry(1.1, 4.4, 1.1).translate(0, 2.2, 0), new THREE.MeshPhysicalMaterial({ color: 0xcfeaff, roughness: 0.04, metalness: 0.1, transparent: true, opacity: 0.16, depthWrite: false, clearcoat: 1, side: THREE.DoubleSide }));
-    glass.renderOrder = 3; G.add(glass); edges(glass, 0xffffff, 2.2, 28, 0.9);
-    const base = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.08, 1.3).translate(0, 0.04, 0), flatM(0xffffff, 0.5)); base.castShadow = true; base.receiveShadow = true; G.add(base);
-    for (let k = 1; k <= 3; k++) { const tick = new THREE.Mesh(new THREE.BoxGeometry(1.12, 0.012, 1.12).translate(0, k * MS, 0), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5, depthWrite: false })); G.add(tick); }
-    S.g6 = moneyTower(0.95); S.g6.g.position.set(PZ.g6.x, 0.08, PZ.g6.z);
-    S.qm = canvasPlane(0.85, 1.06, 512, (g, w, h) => { g.clearRect(0, 0, w, h); g.fillStyle = '#ffb547'; g.font = '900 560px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.shadowColor = 'rgba(255,170,60,.9)'; g.shadowBlur = 40; g.fillText('?', w / 2, h * 0.54); }, { tr: true });
-    S.qm.material = new THREE.MeshBasicMaterial({ map: S.qm.userData.tex, transparent: true, depthWrite: false, toneMapped: false, side: THREE.DoubleSide }); S.qm.renderOrder = 6; scene.add(S.qm);
-    // la línea de la película n.º 1 (a la altura de la bobina), de la bobina a la torre de GTA 6
-    const top = 2.925 * MS, a = v3(PZ.reel.x, top, PZ.reel.z), b = v3(PZ.g6.x + 0.55, top, PZ.g6.z); S.topLine = polyline([a, b], lineMat(0xffc24a, 3, 0.95, true)); S.topLine.visible = false; scene.add(S.topLine); }
-  // el coste (frases 5 y 6): torre de coste, rascacielos, sello «NO» y la bobina de la película más cara
-  S.cost = moneyTower(0.8); S.cost.g.position.copy(PZ.cost);
-  { const gt = SIDE_T.clone(); gt.needsUpdate = true; gt.wrapS = gt.wrapT = THREE.RepeatWrapping; gt.repeat.set(0.84 / 0.96, 0.5 * MS / 1.12); S.bandT = gt; }
-  S.band = new THREE.Mesh(new THREE.BoxGeometry(0.84, 1, 0.84).translate(0, 0.5, 0), new THREE.MeshStandardMaterial({ map: S.bandT, color: 0xfff0c0, transparent: true, opacity: 0.42, depthWrite: false, roughness: 0.6 })); S.band.position.copy(PZ.cost); S.band.renderOrder = 4; scene.add(S.band); edges(S.band, 0xffc24a, 2, 28, 0.9);
-  S.sky = S.sky; S.tower = skyscraper(1.5 * MS); S.tower.position.copy(PZ.sky);
-  S.no = canvasPlane(0.9, 0.5, 512, (g, w, h) => { g.clearRect(0, 0, w, h); g.save(); g.translate(w / 2, h / 2); g.rotate(-0.12); g.strokeStyle = '#ff3b30'; g.lineWidth = 22; rr(g, -w / 2 + 20, -h / 2 + 20, w - 40, h - 40, 26); g.stroke();
-    g.fillStyle = '#ff3b30'; g.font = '900 190px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('NO', 0, 8); g.restore(); }, { tr: true });
-  S.no.material = new THREE.MeshBasicMaterial({ map: S.no.userData.tex, transparent: true, depthWrite: false, toneMapped: false, side: THREE.DoubleSide }); S.no.renderOrder = 9; scene.add(S.no);
-  S.reel2 = reel(0.659 * MS / 2); S.reel2.g.position.copy(PZ.reel2); S.reel2.g.rotation.y = 0.9;
-  // la parada 1: el contador de días, la torre que sube y la medalla
-  S.day = moneyTower(0.85); S.day.g.position.copy(ST1.tw);
-  { const t = canvasTex(512, 256, () => {}); S.dayT = t; const side = flatM(0x23262d, 0.5); S.dayBoard = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.45, 0.06), [side, side, side, side, new THREE.MeshBasicMaterial({ map: t, toneMapped: false }), side]);
-    const legs = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.5, 0.04).translate(0, -0.47, 0), flatM(0x2b2f36)); S.dayBoard.add(legs); S.dayBoard.position.set(ST1.sign.x, 0.72, ST1.sign.z); S.dayBoard.rotation.y = -0.65; S.dayBoard.castShadow = true; scene.add(S.dayBoard); }
-  { const g = new THREE.Group(), disc = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.05, 40).rotateX(Math.PI / 2), M.gold); disc.castShadow = true; g.add(disc);
-    const face = canvasPlane(0.4, 0.4, 256, (gg, w, h) => { gg.clearRect(0, 0, w, h); gg.fillStyle = '#7a4f0a'; gg.font = '900 58px Inter'; gg.textAlign = 'center'; gg.textBaseline = 'middle'; gg.fillText('RÉCORD', w / 2, h * 0.42); gg.font = '900 40px Inter'; gg.fillText('MUNDIAL', w / 2, h * 0.62); }, { tr: true });
-    face.position.z = 0.03; g.add(face); const f2 = face.clone(); f2.rotation.y = Math.PI; f2.position.z = -0.03; g.add(f2);
-    for (const s of [-1, 1]) { const rib = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.32, 0.01), new THREE.MeshStandardMaterial({ color: s < 0 ? 0xd62828 : 0x1d4ed8, roughness: 0.6 })); rib.position.set(s * 0.07, 0.36, -0.01); rib.rotation.z = s * 0.25; g.add(rib); }
-    scene.add(g); S.medal = g; }
-  // la parada 2: la torre de cajas de juego (copias) y la pirámide de Brasil con su bandera
-  { const cover = canvasTex(256, 320, (g, w, h) => { g.fillStyle = '#0f1a2b'; g.fillRect(0, 0, w, h); const gr = g.createLinearGradient(0, 30, 0, h - 30); gr.addColorStop(0, '#ffb15c'); gr.addColorStop(0.55, '#ff5c8a'); gr.addColorStop(1, '#3b2a8f'); g.fillStyle = gr; g.fillRect(14, 40, w - 28, h - 54);
-      g.fillStyle = '#ffe9b0'; g.beginPath(); g.arc(w / 2, h * 0.55, 42, 0, 7); g.fill(); g.fillStyle = '#1c1030'; for (let i = 0; i < 3; i++) { g.fillRect(40 + i * 70, h * 0.5, 6, h * 0.42); g.beginPath(); g.ellipse(43 + i * 70, h * 0.5, 34, 10, -0.3, 0, 7); g.fill(); }
-      g.fillStyle = '#ffffff'; g.fillRect(14, 10, w - 28, 22); });
-    const spine = canvasTex(256, 32, (g, w, h) => { g.fillStyle = '#f4f6f9'; g.fillRect(0, 0, w, h); g.fillStyle = '#1f5fd6'; g.fillRect(0, 0, 34, h); g.fillStyle = '#ff5c8a'; g.fillRect(40, 9, w - 60, h - 18); g.fillStyle = 'rgba(0,0,0,.18)'; g.fillRect(0, h - 3, w, 3); });
-    const spineM = new THREE.MeshStandardMaterial({ map: spine, roughness: 0.45 }), caseM = [spineM, spineM, new THREE.MeshStandardMaterial({ map: cover, roughness: 0.4 }), flatM(0x1b2232), spineM, spineM];
-    const geo = new THREE.BoxGeometry(0.23, 0.028, 0.29); S.boxes = []; const nl = Math.round(2.3 / 0.03);
-    S.boxIM = new THREE.InstancedMesh(geo, caseM, nl * 9); S.boxIM.castShadow = true; S.boxIM.receiveShadow = true; S.boxIM.frustumCulled = false; scene.add(S.boxIM);
-    for (let l = 0; l < nl; l++) for (let c = 0; c < 9; c++) S.boxes.push({ l, x: ((c % 3) - 1) * 0.245 + (hash(l * 9 + c) - 0.5) * 0.02, z: (Math.floor(c / 3) - 1) * 0.305 + (hash(l * 7 + c) - 0.5) * 0.02, ry: (hash(l * 5 + c) - 0.5) * 0.08 }); }
-  { const g = new THREE.Group(), stoneM = [flatM(0x1f9e4a, 0.8), flatM(0x2bb15a, 0.8)], edgeM = flatM(0xf7d116, 0.6);
-    for (let k = 0; k < BRZ.tiers; k++) { const w = BRZ.w0 - (BRZ.w0 - BRZ.w1) * k / BRZ.tiers, b = new THREE.Mesh(new THREE.BoxGeometry(w, BRZ.h, w).translate(0, BRZ.h / 2 + k * BRZ.h, 0), stoneM[k % 2]); b.castShadow = true; b.receiveShadow = true; g.add(b);
-      const e = new THREE.Mesh(new THREE.BoxGeometry(w + 0.012, 0.03, w + 0.012).translate(0, (k + 1) * BRZ.h - 0.015, 0), edgeM); g.add(e); }
-    const flagT = canvasTex(300, 210, (gg, w, h) => { gg.fillStyle = '#1f9e4a'; gg.fillRect(0, 0, w, h); gg.fillStyle = '#f7d116'; gg.beginPath(); gg.moveTo(w / 2, 18); gg.lineTo(w - 22, h / 2); gg.lineTo(w / 2, h - 18); gg.lineTo(22, h / 2); gg.closePath(); gg.fill();
-      gg.fillStyle = '#2a4fbf'; gg.beginPath(); gg.arc(w / 2, h / 2, 52, 0, 7); gg.fill(); gg.strokeStyle = '#ffffff'; gg.lineWidth = 6; gg.beginPath(); gg.arc(w / 2, h / 2 + 70, 92, -2.2, -0.95); gg.stroke(); });
-    const flag = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.35, 12, 1), new THREE.MeshStandardMaterial({ map: flagT, side: THREE.DoubleSide, roughness: 0.7 })); flag.position.set(0.27, BRZ.tiers * BRZ.h + 0.42, 0); flag.castShadow = true; g.add(flag); S.flag = flag;
-    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.62, 6).translate(0, 0.31, 0), flatM(0xe8e8e8)); pole.position.y = BRZ.tiers * BRZ.h; g.add(pole);
-    g.position.copy(ST2.pyr); scene.add(g); S.pyr = g; }
-  S.cal = calendarBlock(); S.cal.position.copy(PZ.cal); S.cal.scale.setScalar(0.68);
-  S.tag = priceTag();
-  // rótulos
-  S.tags = { g5: tag3('GTA 5', 'MÁS DE 6.000 M$', '#7CF0A9', 1.25), reel: tag3('PELÍCULA N.º 1', '2.925 M$', '#FFC24A', 1.3), g6: tag3('GTA 6', 'SALE EL 19', '#FFB547', 0.95),
-    day: tag3('GTA 5', '', '#7CF0A9', 1.2), boxes: tag3('COPIAS DE GTA 5', '230 M', '#7CF0A9', 0.95), brazil: tag3('HABITANTES DE BRASIL', '213 M', '#F7D116', 1.0),
-    sky: tag3('EL EDIFICIO MÁS ALTO', '1.500 M$', '#8FE6FF', 1.05), cost: tag3('COSTE DE GTA 6', '1.000–1.500 M$', '#FFC24A', 1.0), reel2: tag3('LA PELÍCULA MÁS CARA', '659 M$', '#FF8A80', 1.0),
-    g6b: tag3('GTA 6 · 1.ER AÑO', '3.200 M$', '#7CF0A9', 1.2), costQ: tag3('COSTE DE GTA 6', '¿?', '#FFB547', 1.0) };
-  buildBills();
+function centerAt(t, st) {
+  const Z = S.ctr, vis = t < K.el3 + 1.6 || t > K.pagarias9 - 1.2; Z.visible = vis; if (!vis) return;
+  // ---- la caja: cae acelerando, golpea (onda, polvo, temblor), rebota un poco; al final sube hasta la pose del primer fotograma
+  let y = CASE_TOP * (1 - clamp(t / T_HIT) * clamp(t / T_HIT));
+  if (t > T_HIT) { const u = t - T_HIT; y = 0.035 * Math.abs(Math.sin(u * 13)) * Math.exp(-u * 8); }
+  y += CASE_TOP * eio(clamp((t - (END - 1.7)) / 1.7));
+  S.case5.position.set(0, 0.272 + y, 0); S.case5.rotation.set(0, 0, 0.02 * Math.sin((t - T_HIT) * 15) * Math.exp(-Math.max(0, t - T_HIT) * 4) * (t > T_HIT ? 1 : 0));
+  const ush = t - T_HIT; S.shock.visible = ush > 0 && ush < 0.9; if (S.shock.visible) { const e = eo(clamp(ush / 0.85)); S.shock.scale.setScalar(0.1 + e * 1.4); S.shock.material.opacity = 0.85 * (1 - e); }
+  S.dust.visible = ush > 0 && ush < 1.6; if (S.dust.visible) { burst(S.dust, v3(0, 0.02, 0), t, T_HIT, 0.4, 1.5, false, 0.7); S.dust.material.opacity = 1 - clamp(ush / 1.6); }
+  // ---- las bobinas: caen hacia fuera desde la caja; la dorada (la película n.º 1) aguanta un instante y también cae
+  for (let i = 0; i < 100; i++) {
+    const P = gridP(i), th = i === GOLD1 ? 0 : fallState(i, t), d = Math.hypot(P.x, P.z) > 1e-4 ? v3(P.x, 0, P.z).normalize() : v3(1, 0, 0);
+    _ax.set(d.z, 0, -d.x); _o.position.copy(P); _o.position.y = 0.034 * Math.cos(th) + 0.006 * Math.sin(th); _o.position.addScaledVector(d, 0.034 * Math.sin(th));
+    _o.quaternion.setFromAxisAngle(_ax, th); _o.scale.setScalar(i === GOLD1 ? 0.0001 : 1); _o.updateMatrix(); S.reels.setMatrixAt(i, _o.matrix);
+  }
+  S.reels.instanceMatrix.needsUpdate = true;
+  { const P = gridP(GOLD1), th = fallState(-1, t), d = v3(P.x, 0, P.z).normalize(); _ax.set(d.z, 0, -d.x); S.gold1.position.copy(P); S.gold1.position.y = 0.034 * Math.cos(th) + 0.006 * Math.sin(th); S.gold1.position.addScaledVector(d, 0.034 * Math.sin(th)); S.gold1.quaternion.setFromAxisAngle(_ax, th); }
+  // ---- la vitrina (L2): sube del suelo con «Y el 19…»; la luz roja de la cerradura parpadea con «¿Cuánto…?»; el calendario sale con «19»
+  const vk = win(t, K.y2 - 0.15, 0.6) * (1 - win(t, K.el3 + 0.6, 0.4));
+  S.vit.visible = vk > 0.01; S.vit.position.y = -0.75 * (1 - vk);
+  if (S.vit.visible) { const on = t > K.cuanto2 - 0.05 ? 1 : 0; S.vit.userData.led.material.emissiveIntensity = 3 * on * (0.6 + 0.4 * Math.sin(t * 9)); }
+  const ck = pop(t, K.diecinueve2 - 0.12, 0.45) * (1 - win(t, K.el3 + 0.6, 0.3)); show(S.cal, ck);
+  S.ctrCone.material.uniforms.op.value = 0.05;
 }
-// ---------- billetes que vuelan: la explosión de GTA 5 (con la arena), la de GTA 6 al pasar a la película y la lluvia del final
-function buildBills() {
-  const N = 520; S.billN = N; S.bills = [];
-  for (let i = 0; i < N; i++) S.bills.push({ a: hash(i * 1.37) * 6.283, v: 0.6 + hash(i * 2.91) * 1.6, up: 1.4 + hash(i * 4.13) * 3.2, h0: hash(i * 7.7), spin: 2 + hash(i * 5.5) * 6, ax: hash(i * 6.1), grp: i < 300 ? 0 : i < 420 ? 1 : 2 });
-  const m = new THREE.MeshStandardMaterial({ map: BILL_T, side: THREE.DoubleSide, roughness: 0.7 });
-  S.billIM = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.12, 0.052), m, N); S.billIM.castShadow = true; S.billIM.frustumCulled = false; scene.add(S.billIM);
-  S.sandIM = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.03, 0), flatM(0xe2c48f, 0.95), 160); S.sandIM.castShadow = true; S.sandIM.frustumCulled = false; scene.add(S.sandIM);
+// ---------------------------------------------------------------- estaciones en el círculo de radio R_ST (pedestal de madera con canto de latón y su haz de luz;
+// su +z local mira hacia fuera, hacia la cámara): D los fajos del primer día (L3), C las copias frente a Brasil (L4), K el coste (L5–L6), P el precio (L7)
+// y B la balanza de la respuesta (L8–L9).
+const ST = {};
+function station(name, a, r = 1.0) {
+  const Z = new THREE.Group(); Z.position.copy(stP(a)); Z.rotation.y = a * D2; scene.add(Z);
+  const pl = plinth(r, 0.55); Z.add(pl); const lc = lightCone(r * 1.15, 4.6, 0.055); Z.add(lc);
+  const top = new THREE.Group(); top.position.y = 0.55; Z.add(top);
+  ST[name] = { Z, top, a, cone: lc }; return ST[name];
 }
-// tiempo de la explosión inicial: corre normal y, en el último medio segundo, rebobina hasta el estado del primer fotograma (bucle)
-const ERUPT0 = 0.12;          // en el primer fotograma la torre ya va por un tercio
-const REW = 0.55;
-function eruptT(t) { if (t > END - REW) return ERUPT0 + (END - t) / REW * 1.25; return t + ERUPT0; }
-function billsAt(t) {
-  const te = eruptT(t), top5 = S.g5.h, M2 = S.billIM;
-  for (let i = 0; i < S.billN; i++) { const b = S.bills[i]; let p = null, sc = 1, tt = 0;
-    if (b.grp === 0) { tt = te - b.h0 * 0.5; if (tt > 0 && tt < 6) { const r = b.v * (1 - Math.exp(-tt * 1.6)) * 1.6, y0 = top5 * (0.15 + b.h0 * 0.85);
-        p = _p.set(PZ.g5.x + Math.cos(b.a) * (0.55 + r), Math.max(0.01, y0 + b.up * tt * Math.exp(-tt * 1.2) - 0.55 * tt), PZ.g5.z + Math.sin(b.a) * (0.55 + r)); sc = (1 - win(tt, 5.2, 0.6)) * (t > END - REW ? win(t, END - REW, 0.2) : 1); } }
-    else if (b.grp === 1) { tt = t - (K.pelicula8 - 0.05) - b.h0 * 0.35; if (tt > 0 && t < END - 0.65) { const r = b.v * (1 - Math.exp(-tt * 1.4)) * 1.4, y0 = S.g6.h + 0.1;
-        p = _p.set(PZ.g6.x + Math.cos(b.a) * (0.5 + r), Math.max(0.01, y0 + b.up * 0.6 * tt * Math.exp(-tt) - 0.32 * tt), PZ.g6.z + Math.sin(b.a) * (0.5 + r)); sc = 1 - win(t, END - 1.0, 0.35); } }
-    else { tt = t - K.pagarias9 + b.h0 * 2.5; if (tt > 0 && t < END - 0.65) { const fall = 7 - 0.7 * tt; if (fall > 0.01) p = _p.set(3 + Math.cos(b.a) * 4.5 * b.ax + 1.5, fall, 0.5 + Math.sin(b.a) * 4.5 * b.ax); sc = 1 - win(t, END - 1.0, 0.35); } }
-    if (!p || sc <= 0.01) { M2.setMatrixAt(i, _zero); continue; }
-    const fl = p.y > 0.02 ? 1 : 0; _q.setFromEuler(_e.set(fl ? Math.sin(tt * b.spin) * 1.2 : -Math.PI / 2, b.a + tt * b.spin * 0.3 * fl, fl ? Math.cos(tt * b.spin * 0.7) * 0.8 : 0));
-    _s.setScalar(sc * (b.grp === 2 ? 1.3 : 1)); _m4.compose(p, _q, _s); M2.setMatrixAt(i, _m4); }
-  M2.instanceMatrix.needsUpdate = true;
-  for (let i = 0; i < 160; i++) { const a = hash(i * 3.9) * 6.283, v = 0.8 + hash(i * 1.3) * 2, up = 2 + hash(i * 2.2) * 3, tt = te - hash(i * 8.1) * 0.25;
-    if (tt <= 0 || tt > 1.6) { S.sandIM.setMatrixAt(i, _zero); continue; }
-    const y = 0.02 + up * tt - 4.5 * tt * tt; _p.set(PZ.g5.x + Math.cos(a) * (0.5 + v * tt), Math.max(0.01, y), PZ.g5.z + Math.sin(a) * (0.5 + v * tt)); _q.identity(); _s.setScalar((0.6 + hash(i) * 1.2) * (1 - win(tt, 1.1, 0.5)) * (t > END - REW ? win(t, END - REW, 0.2) : 1)); _m4.compose(_p, _q, _s); S.sandIM.setMatrixAt(i, _m4); }
-  S.sandIM.instanceMatrix.needsUpdate = true;
+const TOP = 0.55, LAY = BUN.h * 1.02;
+const lay = musd => musd / 25;                    // capas de fajos: 25 M$ por capa (escala de la frase 3)
+function buildStations() {
+  // ---------- L3: el primer día (800 M$) y a los tres días (1.000 M$): columna de fajos, calendario de taco y medalla del récord
+  { const s = station('D', ANG.D, 1.0);
+    s.col = bundleColumn(44, 1.0); s.col.g.position.set(0.12, 0, -0.04); s.top.add(s.col.g);
+    s.cal = dayCalendar(); s.cal.position.set(-0.19, 0, 0.16); s.cal.rotation.y = 0.3; s.top.add(s.cal);
+    s.med = grp(medal()); s.med.scale.setScalar(1.6); s.top.add(s.med);
+    s.sp = sparks(s.top, 120, 0xffd58a, 0.022);
+  }
+  // ---------- L4: 230 cajas pequeñas (1 por millón de copias) y 213 figuritas de Brasil encima; sobran 17 (en dorado)
+  { const s = station('C', ANG.C, 1.05);
+    const cg = new THREE.BoxGeometry(0.03, 0.0045, 0.036), cm = new THREE.MeshPhysicalMaterial({ color: 0x1b1e25, roughness: 0.35, clearcoat: 0.6 }), ct = new THREE.MeshPhysicalMaterial({ map: caseTex('GTA 5', '', TH5), roughness: 0.3, clearcoat: 0.8 });
+    s.cases = new THREE.InstancedMesh(cg, [cm, cm, ct, cm, cm, cm], 230); s.cases.castShadow = true; s.cases.receiveShadow = true; s.cases.frustumCulled = false; s.top.add(s.cases);
+    s.cpos = []; for (let i = 0; i < 230; i++) { const c = i % 23, r = Math.floor(i / 23); s.cpos.push(v3((c - 11) * 0.04, 0.0023, (r - 4.5) * 0.048 + 0.02)); }
+    s.figs = new THREE.InstancedMesh(studentGeo(true), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.4, clearcoat: 0.5 }), 213); s.figs.castShadow = true; s.figs.frustumCulled = false; s.top.add(s.figs);
+    const FC = [new THREE.Color(0x1f9e4a), new THREE.Color(0xf2c318), new THREE.Color(0x2c5fd6)]; for (let i = 0; i < 213; i++) s.figs.setColorAt(i, FC[hash(i * 7.7) < 0.55 ? 0 : hash(i * 3.3) < 0.7 ? 1 : 2]);
+    s.glow = new THREE.Mesh(new THREE.PlaneGeometry(0.75, 0.16), new THREE.MeshBasicMaterial({ map: canvasTex(256, 64, (g, w, h) => { const r = g.createRadialGradient(w / 2, h / 2, 4, w / 2, h / 2, w * 0.5); r.addColorStop(0, 'rgba(255,200,90,.9)'); r.addColorStop(1, 'rgba(255,170,50,0)'); g.fillStyle = r; g.fillRect(0, 0, w, h); }), transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+    s.glow.rotation.x = -Math.PI / 2; s.top.add(s.glow);
+  }
+  // ---------- L5–L6: el coste. La caja de GTA 6, el documento que se sella «NO», la maqueta del rascacielos, la columna de los analistas y la película más cara
+  { const s = station('K', ANG.K, 1.05);
+    s.case = gameCase('GTA 6', 'SALE EL 19-11-2026', TH6, 1.3); s.case.position.set(-0.46, 0.11, 0.2); s.case.rotation.set(-0.25, 0.35, 0); s.top.add(s.case);
+    s.stand = mesh(new THREE.BoxGeometry(0.16, 0.012, 0.1), M.brass); s.stand.position.set(-0.46, 0.006, 0.21); s.top.add(s.stand);
+    s.doc = stampDoc(); s.doc.rotation.x = -Math.PI / 2; s.doc.rotation.z = 0.08; s.doc.position.set(0.02, 0.003, 0.3); s.top.add(s.doc);
+    s.stp = rubberStamp('NO'); s.top.add(s.stp);
+    s.sky = supertall(0.85); s.sky.position.set(0.32, 0, -0.3); s.top.add(s.sky);
+    s.col = bundleColumn(72, 1.0); s.col.g.position.set(0.0, 0, -0.3); s.top.add(s.col.g);
+    s.reel = reelBig(0.085); s.reel.position.set(-0.5, 0, -0.18); s.reel.rotation.y = 0.35; s.top.add(s.reel);
+    s.col2 = bundleColumn(32, 1.0); s.col2.g.position.set(-0.3, 0, -0.3); s.top.add(s.col2.g);
+  }
+  // ---------- L7: el precio. La caja de GTA 6 en su atril, la etiqueta de 79,99 € y el tique
+  { const s = station('P', ANG.P, 0.95);
+    s.case = gameCase('GTA 6', 'SALE EL 19-11-2026', TH6, 1.4); s.case.position.set(-0.07, 0.125, 0.0); s.case.rotation.set(-0.12, 0.15, 0); s.top.add(s.case);
+    s.easel = grp(at(mesh(new THREE.BoxGeometry(0.24, 0.012, 0.14), M.brass), 0, 0.006, 0.02), at(mesh(new THREE.BoxGeometry(0.014, 0.24, 0.014), M.brass), 0, 0.12, -0.05, -0.12)); s.easel.position.set(-0.05, 0, 0); s.top.add(s.easel);
+    s.tag = priceTagObj(); s.tag.scale.setScalar(1.35); s.top.add(s.tag);
+    s.rec = receiptObj(); s.rec.rotation.set(-Math.PI / 2 + 0.05, 0, -0.35); s.rec.position.set(0.25, 0.006, 0.18); s.top.add(s.rec);
+  }
+  // ---------- L8–L9: la balanza. A la izquierda la película n.º 1 (bobina dorada y sus fajos); a la derecha GTA 6 y los fajos de su primer año
+  { const s = station('B', ANG.B, 1.05);
+    s.sc = scales(0.75); s.sc.position.set(0, 0, -0.05); s.top.add(s.sc);
+    s.reel = reelBig(0.055, true); s.case = gameCase('GTA 6', 'SALE EL 19-11-2026', TH6, 0.72); s.top.add(s.reel, s.case);
+    s.L = bundleColumn(9, 0.48); s.R = bundleColumn(10, 0.48); s.top.add(s.L.g, s.R.g);
+    s.tag = priceTagObj(); s.tag.scale.setScalar(0.85); s.top.add(s.tag);
+  }
 }
-function dayBoard(n, k) {
-  const g = S.dayT.userData.g, w = 512, h = 256; g.clearRect(0, 0, w, h); g.fillStyle = '#16181d'; g.fillRect(0, 0, w, h);
-  g.fillStyle = '#2a2e36'; g.fillRect(16, 16, w - 32, h - 32); g.fillStyle = 'rgba(0,0,0,.6)'; g.fillRect(16, h / 2 - 2, w - 32, 4);
-  g.save(); g.translate(w / 2, h / 2); g.scale(1, Math.max(0.05, Math.abs(Math.cos(k * Math.PI)))); g.fillStyle = '#FFC24A'; g.font = '900 150px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('DÍA ' + n, 0, 8); g.restore();
-  S.dayT.needsUpdate = true;
+function stationsAt(t) {
+  const vis = (s, a, b) => { s.Z.visible = t > a && t < b; return s.Z.visible; };
+  // L3
+  { const s = ST.D; if (vis(s, K.el3 - 0.4, K.y5 + 0.4)) {
+    const k = keyed(t, [[0, 0], [K.primer3 - 0.1, 0], [K.n800 + 0.35, lay(800)], [K.n1000 - 0.1, lay(800)], [K.n1000 + 0.45, lay(1000)]]); s.col.setN(k, 0.1);
+    const n = t < K.en3 + 0.05 ? 1 : t < K.n3 + 0.15 ? 2 : 3; s.cal.userData.draw(n); show(s.cal, pop(t, K.primer3 - 0.2, 0.4));
+    s.cal.rotation.x = n > 1 && t < K.n3 + 0.6 ? -0.15 * Math.sin(clamp((t - (n === 2 ? K.en3 + 0.05 : K.n3 + 0.15)) / 0.25) * Math.PI) : 0;
+    const mk = pop(t, K.record3 - 0.1, 0.45); s.med.visible = mk > 0.01; s.med.position.set(0.12, s.col.top + 0.17 + 0.012 * Math.sin(t * 3), -0.02); s.med.rotation.y = 0.25 * Math.sin(t * 1.6); s.med.scale.setScalar(Math.max(0.0001, 1.6 * mk));
+    s.sp.visible = t > K.record3 && t < K.record3 + 1.8; if (s.sp.visible) burst(s.sp, v3(0.12, s.col.top + 0.17, -0.02), t, K.record3, 0.3, 1.4, false, 0.25);
+  } }
+  // L4
+  { const s = ST.C; if (vis(s, K.lleva4 - 0.6, K.rockstar5 + 0.3)) {
+    const t0 = K.n230 - 0.2;
+    for (let i = 0; i < 230; i++) { const p = s.cpos[i], k = pop(t, t0 + (i % 23) * 0.025 + Math.floor(i / 23) * 0.04, 0.3); _o.position.copy(p); _o.position.y += 0.06 * (1 - clamp(k)); _o.rotation.set(0, (hash(i) - 0.5) * 0.15, 0); _o.scale.setScalar(Math.max(0.0001, k)); _o.updateMatrix(); s.cases.setMatrixAt(i, _o.matrix); }
+    s.cases.instanceMatrix.needsUpdate = true;
+    const f0 = K.mas4b - 0.15;
+    for (let i = 0; i < 213; i++) { const p = s.cpos[i], k = pop(t, f0 + (i % 23) * 0.02 + Math.floor(i / 23) * 0.035, 0.3); _o.position.set(p.x, 0.0045 + 0.08 * (1 - clamp(k)), p.z); _o.rotation.set(0, Math.PI + (hash(i * 3) - 0.5) * 0.4, 0); _o.scale.setScalar(Math.max(0.0001, k * 0.85)); _o.updateMatrix(); s.figs.setMatrixAt(i, _o.matrix); }
+    s.figs.instanceMatrix.needsUpdate = true;
+    const g0 = s.cpos[213], g1 = s.cpos[229]; s.glow.position.set((g0.x + g1.x) / 2, 0.006, (g0.z + g1.z) / 2); s.glow.scale.set((g1.x - g0.x + 0.08) / 0.75, 1, 1); s.glow.material.opacity = 0.9 * win(t, K.brasil4 - 0.1, 0.4);
+  } }
+  // L5–L6
+  { const s = ST.K; if (vis(s, K.brasil4 + 0.1, K.ti7 + 0.6)) {
+    show(s.case, pop(t, K.y5 - 0.1, 0.45) * 1.3); show(s.stand, pop(t, K.y5 - 0.15, 0.4));
+    show(s.doc, pop(t, K.rockstar5 - 0.1, 0.4));
+    const sd = t - (K.negar5 + 0.02), down = sd > 0 ? (sd < 0.12 ? sd / 0.12 : sd < 0.32 ? 1 : Math.max(0, 1 - (sd - 0.32) / 0.25)) : 0;
+    s.stp.visible = t > K.rockstar5 && t < K.analistas6; s.stp.position.set(0.02, 0.32 - 0.31 * eio(down) + 0.1 * (1 - win(t, K.rockstar5, 0.3)), 0.3); s.stp.rotation.y = 0.08;
+    const dk = sd > 0.1 ? 1 : 0; if (dk !== s.doc.userData.k) { const T = s.doc.userData.tex; s.doc.userData.draw(T.userData.g, T.userData.c.width, T.userData.c.height, dk); T.needsUpdate = true; s.doc.userData.k = dk; }
+    const kk = win(t, K.edificio5 - 0.3, 0.9); s.sky.visible = kk > 0.01; s.sky.scale.set(1, Math.max(0.001, kk), 1);
+    const ck = keyed(t, [[0, 0], [K.los6, 0], [K.n1000b + 0.2, 46], [K.n1500 - 0.1, 48], [K.n1500 + 0.35, 58]]); s.col.setN(ck, 0.08);
+    show(s.reel, pop(t, K.cualquier6 - 0.2, 0.45)); s.col2.setN(keyed(t, [[0, 0], [K.cualquier6 - 0.1, 0], [K.pelicula6 + 0.3, 30]]), 0.08);
+  } }
+  // L7
+  { const s = ST.P; if (vis(s, K.mas6 - 0.2, K.respuesta8 + 0.8)) {
+    show(s.case, pop(t, K.y7 - 0.2, 0.45) * 1.4); show(s.easel, pop(t, K.y7 - 0.25, 0.4));
+    const tk = win(t, K.costara7 - 0.3, 0.45); s.tag.visible = tk > 0.01; s.tag.position.set(0.12, 0.33 + 0.25 * (1 - tk), 0.06); s.tag.rotation.set(0, -0.15, 0.25 * Math.sin((t - K.costara7) * 3.2) * Math.exp(-Math.max(0, t - K.costara7) * 0.8) - 0.1);
+    s.rec.visible = t > K.n80 - 0.3; s.rec.scale.set(1, Math.max(0.001, eo(clamp((t - K.n80 + 0.3) / 0.5))), 1);
+  } }
+  // L8–L9: la balanza. Los fajos de GTA 6 caen uno a uno sobre su platillo y, con «más que la película», ese lado baja
+  { const s = ST.B; if (vis(s, K.euros7 + 0.2, K.mandaselo9 + 1.2)) {
+    const rk = keyed(t, [[0, 0], [K.respuesta8, 0], [K.segun8, 9]]), gk = keyed(t, [[0, 0], [K.tres8 - 0.1, 0], [K.ano8, 8], [K.mas8 + 0.1, 10]]);
+    s.L.setN(rk, 0.15); s.R.setN(gk, 0.15);
+    const tilt = keyed(t, [[0, 0], [K.respuesta8 + 0.3, 0], [K.segun8 + 0.3, 0.16], [K.tres8, 0.16], [K.ano8, 0.02], [K.mas8 - 0.05, -0.02], [K.mas8 + 0.4, -0.24]]) + (t > K.mas8 + 0.4 ? 0.025 * Math.sin((t - K.mas8 - 0.4) * 5) * Math.exp(-(t - K.mas8 - 0.4) * 2.5) : 0);
+    scalesTilt(s.sc, tilt);
+    const pans = s.sc.userData.pans.map(p => { p.updateWorldMatrix(true, false); const w = p.localToWorld(v3(0, -0.42, 0)); return s.top.worldToLocal(w); });
+    s.reel.position.copy(pans[0]).add(v3(0.045, 0.009, 0)); s.reel.rotation.y = 0.3; show(s.reel, pop(t, K.euros7 + 0.3, 0.4));
+    s.L.g.position.copy(pans[0]).add(v3(-0.04, 0.009, 0.0)); s.L.g.rotation.y = 0.4;
+    s.case.position.copy(pans[1]).add(v3(0.04, 0.009 + 0.062, 0.0)); s.case.rotation.set(-0.3, -0.2, 0); show(s.case, pop(t, K.euros7 + 0.4, 0.4) * 0.72);
+    s.R.g.position.copy(pans[1]).add(v3(-0.045, 0.009, 0.0)); s.R.g.rotation.y = -0.3;
+    const pk = win(t, K.pagarias9 - 0.25, 0.4) * (1 - win(t, K.mandaselo9 + 0.2, 0.3)); s.tag.visible = pk > 0.01; s.tag.userData.m.material.map = s.tag.userData.tB;
+    s.tag.position.copy(pans[1]).add(v3(0.1, 0.2 + 0.2 * (1 - pk), 0.06)); s.tag.rotation.set(0, -0.2, 0.2 * Math.sin((t - K.pagarias9) * 3) * Math.exp(-Math.max(0, t - K.pagarias9) * 0.8));
+  } }
+  for (const k in ST) { const s = ST[k]; if (s.Z.visible) s.cone.material.uniforms.op.value = 0.055; }
 }
-const _vt = new THREE.Vector3();
-function moneyAt(t) {
-  // GTA 5: sale de la arena en el primer segundo (y rebobina al final)
-  const te = eruptT(t), h5 = 6.0 * MS * (1 - Math.pow(1 - clamp(te / 1.05), 3)) * (1 + 0.04 * Math.sin(clamp(te / 1.05) * 9) * (1 - clamp(te / 1.05)));
-  S.g5.setH(Math.max(0.002, h5)); S.g5.g.position.y = 0; S.g5.g.rotation.y = 0.04 * Math.sin(te * 20) * Math.exp(-te * 3);
-  showTag(S.tags.g5, _vt.set(PZ.g5.x - 0.05, Math.min(h5 * 0.5, 2.3), PZ.g5.z + 0.62), Math.max(window.COVER_G5 ? 1 : 0, win(t, K.es2 - 0.15, 0.3) * (1 - win(t, K.el3 - 0.1, 0.3))));
-  if (t < K.el3) showTag(S.tags.reel, _vt.set(PZ.reel.x - 0.75, 1.45, PZ.reel.z + 0.85), win(t, K.pelicula1 - 0.1, 0.3) * (1 - win(t, K.y2 + 0.4, 0.3)));
-  else showTag(S.tags.reel, _vt.set(PZ.reel.x + 0.15, 2.925 * MS + 0.36, PZ.reel.z), win(t, K.pelicula8 - 0.1, 0.3) * (1 - win(t, K.pagarias9 - 0.2, 0.3)));
-  // GTA 6: el calendario cae, la interrogación flota y, en la respuesta, se llena hasta los 3.200 M$ y pasa a la película
-  { const k = win(t, K.diecinueve2 - 0.35, 0.35), land = clamp((t - K.diecinueve2 + 0.05) / 0.25), y = k < 1 ? 7 * (1 - k * k) : 0;
-    S.cal.visible = t > K.diecinueve2 - 0.4 && t < K.gta3 + 0.6; S.cal.position.y = Math.max(0, y) + (land > 0 ? Math.abs(Math.sin(land * Math.PI * 2)) * 0.06 * (1 - land) : 0); S.cal.rotation.z = (1 - k) * 0.4; }
-  const fill = keyed(t, [[0, 0], [K.tres8 - 0.15, 0], [K.millones8 + 0.15, 2.0 * MS], [K.ano8 + 0.1, 2.75 * MS], [K.pelicula8 - 0.05, 3.2 * MS]]);
-  S.g6.setH(Math.max(0.002, fill)); S.g6.g.visible = fill > 0.003;
-  { const k = win(t, K.gta2 - 0.1, 0.3) * (1 - win(t, K.tres8 - 0.2, 0.3)), q = S.qm; q.visible = k > 0.01; q.position.set(PZ.g6.x, 1.9 + 0.1 * Math.sin(t * 2.2), PZ.g6.z); faceCam(q); q.scale.setScalar(Math.max(0.0001, k * (1 + 0.12 * win(t, K.cuanto2, 0.15) * (1 - win(t, K.cuanto2 + 0.4, 0.3))))); }
-  showTag(S.tags.g6, _vt.set(PZ.g6.x, 3.15, PZ.g6.z + 0.1), win(t, K.gta2 - 0.15, 0.3) * (1 - win(t, K.el3 - 0.1, 0.3)));
-  showTag(S.tags.g6b, _vt.set(PZ.g6.x, fill + 0.42, PZ.g6.z + 0.3), win(t, K.ano8 - 0.15, 0.3) * (1 - win(t, K.pagarias9 - 0.2, 0.3)));
-  S.topLine.visible = t > K.pelicula8 - 0.6 && t < K.mandaselo9; if (S.topLine.visible) S.topLine.material.opacity = 0.95 * win(t, K.pelicula8 - 0.6, 0.3);
-  // el coste: el rascacielos sube, la torre del coste lo intenta y el sello dice NO; luego la franja de los analistas y la película más cara
-  { const ks = win(t, K.costara5 - 0.1, 1.3) * (1 - win(t, K.y7 - 0.2, 0.4)); S.tower.visible = ks > 0.005; S.tower.scale.set(1, Math.max(0.001, ks), 1);
-    const c = keyed(t, [[0, 0], [K.y5 + 0.2, 0], [K.rockstar5 + 0.2, 0.75 * MS], [K.costara5, 0.85 * MS], [K.alto5, 1.45 * MS], [K.mundo5 + 0.1, 1.5 * MS], [K.entre6 - 0.1, 1.5 * MS], [K.n1000b + 0.3, 1.0 * MS], [K.y7 - 0.25, 1.0 * MS], [K.y7 + 0.25, 0]]);
-    S.cost.setH(Math.max(0.002, c)); S.cost.g.visible = c > 0.004;
-    const kb = win(t, K.entre6 - 0.1, 0.3) * (1 - win(t, K.y7 - 0.3, 0.3)); S.band.visible = kb > 0.01; S.band.position.set(PZ.cost.x, 1.0 * MS, PZ.cost.z); S.band.scale.set(1, 0.5 * MS * Math.max(0.001, kb), 1);
-    const kn = pop(t, K.mundo5 - 0.1, 0.3) * (1 - win(t, K.entre6 - 0.2, 0.3)); S.no.visible = kn > 0.01; S.no.position.set(PZ.cost.x - 0.1, 1.5 * MS + 0.12, PZ.cost.z - 0.2); faceCam(S.no); S.no.scale.setScalar(Math.max(0.0001, kn * (1 + 0.6 * (1 - win(t, K.mundo5 - 0.1, 0.18)))));
-    const kr = pop(t, K.cualquier6 - 0.2, 0.35) * (1 - win(t, K.y7 - 0.2, 0.3)); S.reel2.g.visible = kr > 0.01; S.reel2.g.scale.setScalar(Math.max(0.0001, kr));
-    showTag(S.tags.sky, _vt.set(PZ.sky.x - 0.1, 1.5 * MS * ks + 0.36, PZ.sky.z - 0.1), win(t, K.edificio5 + 0.1, 0.3) * (1 - win(t, K.entre6 - 0.1, 0.3)));
-    showTag(S.tags.cost, _vt.set(PZ.cost.x - 0.05, 1.5 * MS + 0.42, PZ.cost.z + 0.1), win(t, K.entre6 - 0.1, 0.3) * (1 - win(t, K.y7 - 0.3, 0.3)));
-    showTag(S.tags.costQ, _vt.set(PZ.cost.x - 0.05, c + 0.38, PZ.cost.z + 0.1), win(t, K.y5 + 0.4, 0.3) * (1 - win(t, K.mundo5 - 0.3, 0.25)));
-    showTag(S.tags.reel2, _vt.set(PZ.reel2.x, 0.659 * MS + 0.34, PZ.reel2.z + 0.1), win(t, K.cualquier6 - 0.05, 0.3) * (1 - win(t, K.y7 - 0.25, 0.3))); }
-  // parada 1: el contador de días y la torre que sube a 800 M$ y a 1.000 M$; la medalla del récord
-  { const h = keyed(t, [[0, 0], [K.el3, 0], [K.n800 + 0.2, 0.8 * MS], [K.dolares3 + 0.3, 0.8 * MS], [K.n1000 - 0.1, 0.8 * MS], [K.n1000 + 0.35, 1.0 * MS]]) * (1 - win(t, K.copias4, 0.4) * 0);
-    S.day.setH(Math.max(0.002, h)); S.day.g.visible = h > 0.003 && t < K.y5 + 1.5;
-    const n = t < K.en3 ? 1 : t < K.n3 + 0.25 ? 2 : 3, fk = t < K.en3 ? clamp((t - K.en3 + 0.2) / 0.2) : t < K.n3 + 0.25 ? clamp((t - K.n3 - 0.05) / 0.2) : 0;
-    dayBoard(n, fk); S.dayBoard.visible = t > K.el3 - 0.5 && t < K.y5 + 1.5; S.dayBoard.scale.setScalar(Math.max(0.0001, pop(t, K.el3 - 0.25, 0.35)));
-    const km = pop(t, K.record3 - 0.1, 0.4); S.medal.visible = km > 0.01 && t < K.y5 + 1.5; S.medal.position.set(ST1.tw.x, h + 0.55 + 0.04 * Math.sin(t * 3), ST1.tw.z + 0.1); S.medal.rotation.y = Math.atan2(cam.position.x - ST1.tw.x, cam.position.z - ST1.tw.z) + 0.3 * Math.sin(t * 2); S.medal.scale.setScalar(Math.max(0.0001, km));
-    showTag(S.tags.day, _vt.set(ST1.tw.x, Math.max(0.35, h * 0.5), ST1.tw.z + 0.6), 0); }
-  // parada 2: las cajas caen capa a capa (230 M) y la pirámide de gente de Brasil (213 M) sube con la bandera
-  { const t0 = K.n230 - 0.3, per = 0.016; let n = 0;
-    for (const b of S.boxes) { const tl = t0 + b.l * per + hash(b.l * 3 + b.x) * 0.03, k = clamp((t - tl) / 0.12), vis = t > tl && t < K.y5 + 1.5;
-      if (!vis) { S.boxIM.setMatrixAt(n++, _zero); continue; } _p.set(ST2.box.x + b.x, 0.014 + b.l * 0.03 + (1 - k * k) * 0.22, ST2.box.z + b.z); _q.setFromEuler(_e.set(0, b.ry + (1 - k) * 0.3, 0)); _s.setScalar(1); _m4.compose(_p, _q, _s); S.boxIM.setMatrixAt(n++, _m4); }
-    S.boxIM.instanceMatrix.needsUpdate = true;
-    const kp = win(t, K.mas4b - 0.3, 0.6); S.pyr.visible = kp > 0.005 && t < K.y5 + 1.5; S.pyr.scale.set(1, Math.max(0.001, kp), 1);
-    const fp = S.flag.geometry.attributes.position; if (!S.flag.userData.x0) S.flag.userData.x0 = Float32Array.from(fp.array);
-    for (let i = 0; i < fp.count; i++) { const x0 = S.flag.userData.x0[i * 3], u = (x0 + 0.25) / 0.5; fp.setZ(i, Math.sin(u * 5 - t * 7) * 0.035 * u); } fp.needsUpdate = true;
-    showTag(S.tags.boxes, _vt.set(ST2.box.x + 0.1, 1.15, ST2.box.z + 0.55), win(t, K.copias4 - 0.15, 0.3) * (1 - win(t, K.y5, 0.3)));
-    showTag(S.tags.brazil, _vt.set(ST2.pyr.x + 0.35, 2.13 * kp * 0.42, ST2.pyr.z + 0.95), win(t, K.brasil4 - 0.15, 0.3) * (1 - win(t, K.y5, 0.3))); }
-  // la etiqueta del precio: baja balanceándose delante de la cámara (frase 7) y vuelve con «¿80 €?» (frase 9)
-  { const kA = win(t, K.costara7 - 0.35, 0.45) * (1 - win(t, K.euros7 + 0.25, 0.3)), kB = win(t, K.pagarias9 - 0.3, 0.4) * (1 - win(t, K.mandaselo9 + 0.1, 0.35)), k = Math.max(kA, kB);
-    const T = S.tag; T.g.visible = k > 0.005; if (T.g.visible) { const B = kB > kA, st = camAt(t), fw = _vt.subVectors(st.l, st.p).normalize(), rt = v3(-fw.z, 0, fw.x).normalize(), base = st.p.clone().addScaledVector(fw, 3.1).addScaledVector(rt, -0.3);
-      T.m.material.map = B ? T.tB : T.tA; T.g.position.set(base.x, base.y + 0.22 + (1 - k) * 2.4, base.z); T.g.rotation.set(0, Math.atan2(-fw.x, -fw.z), 0.22 * Math.sin((t - (B ? K.pagarias9 : K.costara7)) * 3.1) * Math.exp(-Math.max(0, t - (B ? K.pagarias9 : K.costara7)) * 0.6)); } }
-  billsAt(t);
-}
-// ---------------------------------------------------------------- cámara: siempre en movimiento. Desde el paseo, la torre de GTA 5 revienta la arena junto a la bobina gigante →
-// barrido a la torre de cristal de GTA 6 (calendario e interrogación) → vuelo por el paseo hasta el contador de días (800 → 1.000 M$, la medalla) → la torre de
-// cajas frente a la pirámide de Brasil → giro y vuelo por la orilla hasta el coste (el rascacielos, el «NO», la película más cara) → la etiqueta del precio →
-// GTA 6 se llena y pasa a la película n.º 1 (grúa) → vuelta por encima de la plaza hasta el primer plano (bucle)
+// ---------------------------------------------------------------- cámara (como en Derecho): entre las bobinas cuando cae la caja → la portada de GTA 5 → la vitrina de
+// GTA 6 → vuela al círculo de pedestales: los fajos y la medalla, las copias frente a Brasil, el coste (sello, maqueta, columna de los analistas), el precio y la
+// balanza → vuelve al centro: las bobinas se levantan y la caja sube hasta la pose del primer fotograma (bucle).
 let CKS = [], CUTS = [];
-const H0 = [0.6, 0.42, 8.2], L0 = [3.6, 2.75, -1.1], H1 = [0.65, 0.44, 7.85], L1 = [3.62, 2.78, -1.1], Hm = [0.63, 0.5, 8.75], Lm = [3.58, 2.72, -1.1];
+const stCam = (a, dist, h, dx = 0) => { const p = stP(a, dist, h).add(stT(a).multiplyScalar(dx)); return [p.x, p.y, p.z]; };
+const stLook = (a, y, dx = 0, r = R_ST) => { const p = stP(a, r, y).add(stT(a).multiplyScalar(dx)); return [p.x, p.y, p.z]; };
+const T0 = [0.5, 0.16, 1.1], L0 = [0, 0.42, 0], T1 = [0.485, 0.163, 1.07], L1 = [0, 0.415, 0], Tm = [0.52, 0.156, 1.14], Lm = [0, 0.425, 0];
 function buildCam() {
+  const { D, C, K: KK, P, B } = ANG;
+  const hold = (t, a, d, h, dx, ly, ldx, lr = R_ST, f = 34) => [t, stCam(a, d, h, dx), stLook(a, ly, ldx, lr), f];
   const A = [
-    [-0.4, Hm, Lm, 48], [0.0, H0, L0, 48], [0.5, H1, L1, 48], [K.videojuego1 + 0.3, [0.8, 0.52, 7.3], [3.7, 2.95, -1.1], 47],
-    [K.gta2, [0.9, 0.62, 9.2], [3.3, 3.0, -1.0], 47], [K.y2, [2.3, 1.2, 9.6], [5.3, 2.3, -0.6], 46],
-    [K.sale2, [3.6, 1.55, 8.6], [6.5, 2.3, -0.4], 44], [K.cuanto2, [4.6, 1.5, 6.4], [6.85, 2.15, -0.5], 42], [K.final2 + 0.25, [4.9, 1.45, 5.7], [6.9, 2.05, -0.5], 42],
-    [K.el3 + 0.3, [2.4, 1.0, 3.4], [1.3, 0.85, -6.0], 48], [K.el3 + 0.62, [0.72, 0.6, -0.8], [1.8, 0.7, -9.0], 48], [K.gta3 + 0.05, [0.95, 0.68, -3.2], [2.3, 0.75, -12.0], 48],
-    [K.n800, [3.9, 0.92, -7.9], [2.3, 0.85, -12.4], 46], [K.en3, [4.05, 0.9, -8.15], [2.3, 0.88, -12.4], 46], [K.n1000, [4.12, 0.92, -8.3], [2.32, 0.98, -12.45], 46],
-    [K.record3, [4.2, 1.05, -8.45], [2.4, 1.22, -12.5], 46], [K.lleva4 - 0.1, [4.25, 1.1, -8.55], [2.42, 1.28, -12.5], 46],
-    [K.n230, [3.82, 1.35, -13.6], [3.85, 1.0, -20.6], 46], [K.copias4, [3.82, 1.42, -13.8], [3.88, 1.1, -20.65], 46], [K.brasil4, [3.82, 1.48, -14.0], [3.9, 1.18, -20.7], 46],
-    [K.y5, [3.65, 1.5, -14.3], [4.4, 1.2, -20.4], 46], [K.y5 + 0.65, [1.6, 1.4, -16.0], [7.4, 1.0, -17.2], 47],
-    [K.rockstar5, [1.15, 1.3, -16.35], [7.4, 1.0, -16.45], 46], [K.negar5, [1.05, 1.25, -16.38], [7.4, 1.05, -16.4], 45], [K.edificio5, [1.0, 1.3, -16.3], [7.4, 1.15, -16.25], 45],
-    [K.mundo5, [1.0, 1.38, -16.3], [7.4, 1.25, -16.2], 45], [K.entre6, [1.05, 1.32, -16.45], [7.4, 1.15, -16.4], 45],
-    [K.cualquier6, [1.25, 1.05, -16.7], [7.4, 0.85, -16.8], 45], [K.y7 - 0.1, [1.35, 1.05, -16.6], [7.4, 0.85, -16.8], 45],
-    [K.ti7 + 0.25, [2.5, 1.25, -15.7], [7.0, 1.5, -8.0], 46], [K.euros7 + 0.2, [3.3, 1.3, -14.4], [6.5, 1.8, -4.0], 46],
-    [K.respuesta8 + 0.15, [8.8, 1.7, -12.6], [6.0, 2.2, -1.0], 46], [K.segun8, [11.9, 1.9, -11.4], [5.8, 2.3, -1.0], 46], [K.tres8, [12.4, 2.0, -10.6], [5.8, 2.4, -1.0], 46],
-    [K.ano8, [12.2, 2.3, -10.2], [5.8, 2.7, -1.0], 46], [K.pelicula8, [12.1, 3.0, -10.0], [5.8, 3.2, -1.0], 46], [K.historia8 + 0.3, [12.0, 3.8, -9.8], [5.7, 3.4, -1.0], 46],
-    [K.pagarias9 + 0.3, [12.4, 3.4, -4.5], [5.2, 2.9, -1.0], 47], [K.videojuego9, [11.2, 2.8, 4.0], [4.6, 2.7, -1.0], 48],
-    [K.mandaselo9, [7.4, 2.0, 9.4], [4.0, 2.7, -1.1], 48], [END - 1.2, [2.2, 0.9, 10.2], [3.7, 2.7, -1.1], 48], [END - 0.4, Hm, Lm, 48],
-    [END, H0, L0, 48], [END + 0.5, H1, L1, 48],
+    [-0.4, Tm, Lm, 42], [0.0, T0, L0, 42], [0.5, T1, L1, 42], [T_HIT + 0.35, [0.5, 0.18, 1.05], [0, 0.32, 0], 41],
+    [K.historia1, [0.68, 0.46, 1.15], [0, 0.14, 0], 40], [K.dinero1, [0.45, 0.55, 1.25], [0, 0.18, 0], 38], [K.videojuego1, [0.32, 0.36, 1.3], [0, 0.3, 0], 37],
+    [K.es2 + 0.2, [0.08, 0.33, 1.12], [0, 0.3, 0], 36], [K.y2, [0.8, 0.58, 1.3], [0.38, 0.36, -0.4], 38], [K.sale2, [1.3, 0.6, 0.75], [0.56, 0.38, -0.5], 37],
+    [K.cuanto2, [1.28, 0.56, 0.5], [0.57, 0.38, -0.5], 35], [K.final2 + 0.25, [1.26, 0.55, 0.42], [0.57, 0.38, -0.5], 34],
+    [K.el3 + 0.45, [2.2, 1.15, 2.6], [3.6, 0.8, 6.0], 40], [K.gta3, stCam(D, 9.9, 1.1, -0.2), stLook(D, 0.75, -0.05), 37],
+    [K.n800, stCam(D, 9.55, 1.0, -0.03), stLook(D, 0.8, -0.03), 36], [K.en3, stCam(D, 9.45, 0.92, -0.12), stLook(D, 0.72, -0.1, R_ST + 0.08), 35],
+    [K.n1000, stCam(D, 9.55, 1.02, 0.04), stLook(D, 0.86, 0.04), 36], [K.record3, stCam(D, 9.7, 1.15, 0.06), stLook(D, 1.02, 0.06), 37], hold(K.lleva4 - 0.25, D, 9.72, 1.17, 0.07, 1.04, 0.07, R_ST, 37),
+    [K.lleva4 + 0.35, stCam(C, 9.8, 1.55, -0.25), stLook(C, 0.56, -0.05), 40], [K.n230, stCam(C, 9.4, 1.3, -0.1), stLook(C, 0.56, -0.04), 38],
+    [K.copias4, stCam(C, 9.28, 1.15, 0.04), stLook(C, 0.56, 0.0), 37], [K.mas4b, stCam(C, 9.22, 1.02, 0.14), stLook(C, 0.57, 0.1, R_ST + 0.02), 36],
+    [K.brasil4, stCam(C, 9.15, 0.92, 0.28), stLook(C, 0.57, 0.28, R_ST + 0.05), 34], hold(K.y5 - 0.1, C, 9.14, 0.9, 0.3, 0.57, 0.3, R_ST + 0.05, 34),
+    [K.y5 + 0.45, stCam(KK, 9.85, 1.02, -0.42), stLook(KK, 0.68, -0.45, R_ST + 0.2), 36], [K.rockstar5, stCam(KK, 9.3, 1.08, -0.1), stLook(KK, 0.6, -0.06, R_ST + 0.2), 35],
+    [K.negar5, stCam(KK, 9.15, 0.95, -0.05), stLook(KK, 0.58, -0.05, R_ST + 0.26), 33], [K.costara5 + 0.3, stCam(KK, 9.2, 0.97, -0.02), stLook(KK, 0.58, -0.04, R_ST + 0.26), 33],
+    [K.edificio5, stCam(KK, 9.6, 1.02, 0.22), stLook(KK, 0.95, 0.26, R_ST - 0.3), 36], [K.mundo5, stCam(KK, 9.7, 1.15, 0.2), stLook(KK, 1.02, 0.24, R_ST - 0.3), 37],
+    [K.entre6, stCam(KK, 9.85, 1.08, 0.08), stLook(KK, 0.92, 0.06, R_ST - 0.3), 38], [K.cualquier6, stCam(KK, 9.95, 1.02, -0.16), stLook(KK, 0.85, -0.14, R_ST - 0.3), 39], hold(K.y7 - 0.2, KK, 9.97, 1.02, -0.17, 0.85, -0.15, R_ST - 0.3, 39),
+    [K.y7 + 0.35, stCam(P, 9.95, 0.98, -0.02), stLook(P, 0.8, 0.0), 36], [K.n80, stCam(P, 9.85, 0.96, 0.0), stLook(P, 0.82, 0.02, R_ST + 0.05), 35], hold(K.euros7 + 0.35, P, 9.83, 0.96, 0.01, 0.82, 0.02, R_ST + 0.05, 35),
+    [K.respuesta8 + 0.35, stCam(B, 10.6, 1.36, 0.0), stLook(B, 1.02, 0.0), 36], [K.tres8, stCam(B, 10.4, 1.3, 0.05), stLook(B, 1.0, 0.04), 35], [K.ano8, stCam(B, 10.32, 1.26, 0.08), stLook(B, 0.99, 0.07), 34],
+    [K.mas8, stCam(B, 10.45, 1.28, 0.0), stLook(B, 1.01, 0.0), 35], [K.historia8 + 0.3, stCam(B, 10.6, 1.32, 0.0), stLook(B, 1.02, 0.0), 36],
+    [K.pagarias9 + 0.3, stCam(B, 9.75, 1.12, 0.28), stLook(B, 1.0, 0.3, R_ST + 0.05), 34], [K.videojuego9, stCam(B, 9.7, 1.12, 0.32), stLook(B, 1.02, 0.34, R_ST + 0.05), 33],
+    [K.mandaselo9 + 0.5, [-2.6, 1.3, -1.2], [0, 0.25, 0], 44], [END - 1.4, [0.85, 0.34, 1.6], [0, 0.3, 0], 42], [END - 0.4, Tm, Lm, 42],
+    [END, T0, L0, 42], [END + 0.5, T1, L1, 42],
   ];
   CKS = [A];
-  { const st = camKeys(K.diecinueve2 + 0.4, A); S.cal.rotation.y = Math.atan2(st.p.x - PZ.cal.x, st.p.z - PZ.cal.z); }
-  { const st = camKeys(K.n800, A); S.dayBoard.rotation.y = Math.atan2(st.p.x - ST1.sign.x, st.p.z - ST1.sign.z); }
 }
 function camAt(t) {
   const st = camKeys(t, CKS[0]);
-  const te = eruptT(t), sh = 0.012 * Math.exp(-Math.max(0, te - ERUPT0) * 3.5) * (te < 1.6 ? 1 : 0);      // la arena tiembla cuando sale la torre
-  st.p.x += Math.sin(t * 41) * sh + 0.004 * Math.sin(t * 1.3); st.p.y += Math.sin(t * 33 + 1) * sh + 0.003 * Math.sin(t * 1.7 + 2);
+  const u = t - T_HIT; if (u > 0 && u < 0.45) { const a = 0.012 * Math.exp(-u * 9); st.p.x += Math.sin(u * 91) * a; st.p.y += Math.sin(u * 77 + 1) * a; st.l.y += Math.sin(u * 83 + 2) * a * 0.6; }
   return st;
 }
 function prevT(t, dt) { return t - dt; }
 function flashAt(t) {
   let f = 0;
-  for (const [t0, k] of [[K.n1000 + 0.3, 0.03], [K.record3, 0.04], [K.brasil4, 0.03], [K.mundo5 - 0.05, 0.04], [K.euros7, 0.03], [K.pelicula8, 0.05]])
+  for (const [t0, k] of [[T_HIT, 0.16], [K.historia1, 0.04], [K.n1000, 0.04], [K.record3, 0.06], [K.brasil4, 0.05], [K.negar5 + 0.15, 0.07], [K.n80, 0.04], [K.mas8 + 0.3, 0.08]])
     if (t > t0) f += k * Math.exp(-(t - t0) / 0.08);
   return f;
 }
 function whiteAt(t) { return 0; }
 function stageAt(t, st) {
-  NOW = t; cityAt(t, st); moneyAt(t);
-  const c = st.l, d = st.p.distanceTo(c); sunAt(v3(c.x, 0, c.z).lerp(st.p, 0.25), clamp(d * 0.8 + 2.4, 3.5, 13));
+  NOW = t; centerAt(t, st); stationsAt(t);
+  const c = st.l, d = st.p.distanceTo(c), yaw = Math.atan2(st.p.x - c.x, st.p.z - c.z), k = clamp(d / 5, 0.2, 1.2);
+  rigAt(c, yaw, k, 1.15, 0.6);
+  const R = S.rig; R.sun.intensity = 0.0; R.hemi.intensity = 0.12;
 }
-// ---------------------------------------------------------------- HUD: cabecera (GTA 6 · el dinero · sale el 19 NOV) con la pregunta pendiente (¿cuánto va a ganar?) y titulares en placas
+// ---------------------------------------------------------------- HUD (como en Derecho): cabecera con la pregunta pendiente (¿cuánto va a ganar?), cifras grandes y rótulos con línea guía
 function buildHudPlan() {}
-const HG = '#FFC24A', HD = '#8FE6FF', HR = '#FF5247', HV = '#7CF0A9';
+const wpo = (o, x, y, z) => { o.updateWorldMatrix(true, false); return o.localToWorld(v3(x, y, z)); };
+const HG = '#FFC24A';
 function hdr(t) {
-  hg.save(); const gr = hg.createLinearGradient(0, 0, 0, 300); gr.addColorStop(0, 'rgba(6,10,18,.5)'); gr.addColorStop(1, 'rgba(6,10,18,0)'); hg.fillStyle = gr; hg.fillRect(0, 0, W, 300);
-  hg.textBaseline = 'alphabetic'; hg.shadowColor = 'rgba(0,0,0,.6)'; hg.shadowBlur = 10;
-  hg.letterSpacing = '9px'; hfont(44); hg.fillStyle = '#ffffff'; hg.textAlign = 'left'; hg.fillText('GTA 6', 54, 142);
-  hg.letterSpacing = '4px'; hfont(23, false); hg.fillStyle = '#E3E8EE'; hg.fillText('EL DINERO · LO QUE NADIE TE CUENTA', 56, 182);
-  hg.fillStyle = 'rgba(255,255,255,.45)'; hg.fillRect(56, 196, 968, 1.5);
+  hg.save(); hg.textBaseline = 'alphabetic';
+  const tk = 1;
+  hg.letterSpacing = '9px'; hfont(44); hg.fillStyle = HC.white; hg.textAlign = 'left'; hg.fillText(typed('GTA 6', tk), 54, 142);
+  hg.letterSpacing = '4px'; hfont(23, false); hg.fillStyle = HC.grey; hg.fillText(typed('EL DINERO, POR DENTRO', tk), 56, 182);
+  hg.fillStyle = 'rgba(238,242,246,.35)'; hg.fillRect(56, 196, 968, 1.5);
   hg.textAlign = 'right'; hg.letterSpacing = '3px';
-  hfont(17, false); hg.fillStyle = '#E3E8EE'; hg.fillText('SALE EL', 1024, 112);
+  hfont(17, false); hg.fillStyle = HC.grey; hg.fillText('SALE EL', 1024, 112);
   hfont(32); hg.fillStyle = HG; hg.fillText('19 NOV', 1024, 148);
-  hfont(17, false); hg.fillStyle = '#E3E8EE'; hg.fillText('PS5 · XBOX SERIES', 1024, 178);
+  hfont(17, false); hg.fillStyle = HC.grey; hg.fillText('PS5 · XBOX SERIES', 1024, 178);
   const mk = win(t, K.ganar2, 0.3) * (1 - win(t, END - 0.9, 0.4));
   if (mk > 0.01) {
-    let txt = '¿CUÁNTO VA A GANAR? · ???', col = HR, blink = true;
-    if (t > K.tres8 + 0.2) { txt = '3.200 M$ EL 1.ER AÑO (ANALISTAS) ✓'; col = HC.green; blink = false; }
+    let txt = '¿CUÁNTO VA A GANAR? · ???', col = HC.red, blink = true;
+    if (t > K.tres8 + 0.2) { txt = '3.200 M$ EL 1.ER AÑO (ANALISTAS)'; col = HC.green; blink = false; }
+    if (t > K.mas8 + 0.3) { txt = 'MÁS QUE LA PELÍCULA N.º 1'; col = HG; blink = false; }
     const on = !blink || Math.sin(t * 9) > -0.3;
     hg.globalAlpha = mk; hfont(19); hg.letterSpacing = '3px'; hg.textAlign = 'right';
     const w = hg.measureText(txt).width + 34, x1 = 1024, x0 = x1 - w, y = 238;
-    hg.shadowBlur = 0; hg.fillStyle = 'rgba(8,10,14,.6)'; hg.fillRect(x0, y - 22, w, 32);
     hg.strokeStyle = col; hg.lineWidth = 1.5; hg.beginPath();
     hg.moveTo(x0 + 10, y - 22); hg.lineTo(x0, y - 22); hg.lineTo(x0, y + 10); hg.lineTo(x0 + 10, y + 10);
     hg.moveTo(x1 - 10, y - 22); hg.lineTo(x1, y - 22); hg.lineTo(x1, y + 10); hg.lineTo(x1 - 10, y + 10); hg.stroke();
@@ -1500,49 +1265,45 @@ function hdr(t) {
   hg.restore();
 }
 const cw = (t, t0, t1) => win(t, t0, 0.25) * (1 - win(t, t1, 0.25));
-function cap(txt, y, size, col, k, o = {}) {
-  if (k <= 0.01) return; hg.save(); hg.letterSpacing = (o.ls ?? Math.round(size * 0.12)) + 'px'; hfont(size); const tw = hg.measureText(txt).width, pw = tw + size * 1.1, ph = size * 1.55, x = o.x ?? W / 2;
-  const e = eo(clamp(k * 1.4)); hg.globalAlpha = clamp(k * 3) * 0.78; hg.fillStyle = o.bg || 'rgba(10,12,18,1)'; rr(hg, x - pw / 2 * e, y - ph / 2, pw * e, ph, ph * 0.22); hg.fill();
-  if (o.bar) { hg.globalAlpha = clamp(k * 3); hg.fillStyle = o.bar; hg.fillRect(x - pw / 2 * e, y - ph / 2, 8, ph); } hg.restore();
-  bigText(txt, x, y + 2, size, col, k, { glow: o.glow, type: o.type, ls: o.ls ?? Math.round(size * 0.12) });
-}
+function lab(o, x, y, z, txt, sub, k, opt) { if (k <= 0.01 || !o.visible) return; callout(wpo(o, x, y, z), txt, sub, k, { size: 26, subSize: 19, bg: true, ...opt }); }
 const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 function hudAt(t) {
   hudBegin(); hdr(t);
-  const Y = 1440;
-  // 1
-  { cap('NINGUNA PELÍCULA', Y - 45, 52, '#ffffff', cw(t, K.pelicula1 - 0.1, K.es2 - 0.1)); cap('HA GANADO TANTO', Y + 45, 60, HG, cw(t, K.ganado1 - 0.05, K.es2 - 0.1), { glow: 10, bar: HG }); }
-  // 2
-  { cap('GTA 5', Y, 86, HV, cw(t, K.gta2 - 0.1, K.y2 - 0.05), { glow: 12, type: false, bar: HV });
-    cap('19 DE NOVIEMBRE', Y - 45, 44, '#ffffff', cw(t, K.diecinueve2 - 0.1, K.cuanto2 - 0.1)); cap('SALE GTA 6', Y + 45, 64, HG, cw(t, K.sale2 - 0.05, K.cuanto2 - 0.1), { glow: 10, type: false, bar: HG });
-    cap('¿CUÁNTO VA A GANAR?', Y, 58, HG, cw(t, K.cuanto2 - 0.05, K.el3 - 0.1), { glow: 10, bar: HG }); cap('TE LO DIGO AL FINAL ↓', Y + 100, 32, '#ffffff', cw(t, K.digo2 - 0.05, K.el3 - 0.1)); }
-  // 3
-  { const n1 = lerp(0, 800, eo(clamp((t - K.n800 + 0.15) / 0.7))), n2 = lerp(800, 1000, eo(clamp((t - K.n1000 + 0.1) / 0.5)));
-    cap('EL PRIMER DÍA', Y - 60, 40, '#ffffff', cw(t, K.primer3 - 0.1, K.en3 - 0.1)); cap(fmt(n1) + ' M$', Y + 30, 82, HV, cw(t, K.n800 - 0.1, K.en3 - 0.1), { glow: 12, type: false, bar: HV });
-    cap('EN 3 DÍAS', Y - 60, 40, '#ffffff', cw(t, K.en3 - 0.05, K.lleva4 - 0.1)); cap(fmt(t < K.n1000 - 0.1 ? 800 : n2) + ' M$', Y + 30, 82, HV, cw(t, K.n1000 - 0.15, K.lleva4 - 0.1), { glow: 12, type: false, bar: HV });
-    cap('RÉCORD GUINNESS', Y + 130, 38, HG, cw(t, K.record3 - 0.05, K.lleva4 - 0.1), { bar: HG }); }
-  // 4
-  { const n = lerp(0, 230, eo(clamp((t - K.n230 + 0.1) / 0.9)));
-    cap('+' + fmt(n) + ' MILLONES', Y - 40, 66, HV, cw(t, K.n230 - 0.1, K.y5 - 0.1), { glow: 10, type: false, bar: HV }); cap('DE COPIAS', Y + 50, 40, '#ffffff', cw(t, K.copias4 - 0.1, K.y5 - 0.1));
-    cap('MÁS QUE HABITANTES TIENE BRASIL', Y + 135, 34, HG, cw(t, K.mas4b - 0.05, K.y5 - 0.1), { bar: HG }); }
-  // 5
-  { cap('¿Y GTA 6?', Y, 76, HG, cw(t, K.y5 - 0.05, K.rockstar5 - 0.05), { glow: 12, type: false, bar: HG });
-    cap('ROCKSTAR NIEGA QUE COSTARA', Y - 50, 40, '#ffffff', cw(t, K.negar5 - 0.1, K.los6 - 0.1)); cap('MÁS QUE EL BURJ KHALIFA', Y + 40, 54, HR, cw(t, K.edificio5 - 0.1, K.los6 - 0.1), { glow: 10, bar: HR }); }
-  // 6
-  { cap('LOS ANALISTAS CALCULAN', Y - 60, 38, HC.grey, cw(t, K.los6 - 0.05, K.y7 - 0.1)); cap('1.000–1.500 M$', Y + 25, 76, HG, cw(t, K.n1000b - 0.1, K.y7 - 0.1), { glow: 12, type: false, bar: HG });
-    cap('MÁS QUE CUALQUIER PELÍCULA', Y + 125, 38, '#ffffff', cw(t, K.mas6 - 0.05, K.y7 - 0.1)); }
-  // 7
-  { cap('Y A TI TE COSTARÁ', Y - 45, 44, '#ffffff', cw(t, K.y7 - 0.05, K.respuesta8 - 0.1)); cap('79,99 €', Y + 50, 84, HR, cw(t, K.n80 - 0.15, K.respuesta8 - 0.1), { glow: 12, type: false, bar: HR }); }
-  // 8
-  { const n = lerp(0, 3200, eio(clamp((t - K.tres8 + 0.1) / 2.4)));
-    cap('LA RESPUESTA', Y - 60, 40, '#ffffff', cw(t, K.respuesta8 - 0.05, K.tres8 - 0.1)); cap('SEGÚN LOS ANALISTAS', Y - 60, 34, HC.grey, cw(t, K.segun8 - 0.05, K.pagarias9 - 0.1));
-    cap(fmt(n) + ' M$', Y + 30, 92, HV, cw(t, K.tres8 - 0.1, K.pagarias9 - 0.1), { glow: 14, type: false, bar: HV });
-    cap('SOLO EL PRIMER AÑO', Y + 135, 40, HG, cw(t, K.solo8 - 0.05, K.mas8 - 0.05), { bar: HG }); cap('MÁS QUE LA PELÍCULA N.º 1', Y + 135, 40, HG, cw(t, K.mas8 - 0.05, K.pagarias9 - 0.1), { bar: HG }); }
-  // 9
-  { cap('¿PAGARÍAS 80 €', Y - 45, 66, '#ffffff', cw(t, K.pagarias9 - 0.05, K.mandaselo9 - 0.05), { type: false, bar: '#ffffff' }); cap('POR UN VIDEOJUEGO?', Y + 50, 56, HG, cw(t, K.videojuego9 - 0.15, K.mandaselo9 - 0.05), { glow: 10, type: false, bar: HG });
-    cap('MÁNDASELO A QUIEN DICE QUE', Y - 30, 40, '#ffffff', cw(t, K.mandaselo9 - 0.05, END - 0.6)); cap('JUGAR ES TIRAR EL DINERO', Y + 55, 50, HG, cw(t, K.jugar9 - 0.1, END - 0.6), { bar: HG }); }
+  const Y = 1430;
+  // L1: 0 / 100 · la película n.º 1 · GTA 5
+  { const k = cw(t, K.historia1, K.es2 - 0.2); if (k > 0.01) { bigText('0 / 100', W / 2, Y, 120, HG, k, { glow: 26, type: false, dark: 30 }); bigText('PELÍCULAS HAN GANADO TANTO', W / 2, Y + 96, 30, HC.white, cw(t, K.ganado1, K.es2 - 0.2), { dark: 20 }); } }
+  if (S.ctr.visible) { lab(S.gold1, 0, 0.04, 0, 'PELÍCULA N.º 1', '2.925 M$', cw(t, K.pelicula1 + 0.25, K.videojuego1 - 0.1), { dx: -120, dy: -170, color: HG });
+    lab(S.case5, 0.05, 0.06, 0.008, 'GTA 5', 'MÁS DE 6.000 M$', cw(t, K.videojuego1, K.y2 - 0.05), { dx: 130, dy: -150, color: HC.green }); }
+  // L2: GTA 6 en su vitrina · ¿cuánto va a ganar?
+  if (S.vit.visible) { const L = S.vit.userData.lock; lab(L, 0, 0.12, 0.01, 'GTA 6', 'SALE EL 19 DE NOVIEMBRE', cw(t, K.sale2 - 0.05, K.cuanto2 - 0.05), { dx: 150, dy: -120, color: HG });
+    const q = cw(t, K.cuanto2, K.el3); if (q > 0.01) { const P = proj(wpo(L, 0, 0.02, 0.02)); if (P.ok) bigText('?', P.x, P.y - 150, 150, HC.red, q, { glow: 30, type: false }); } }
+  // L3: 800 M$ el primer día · 1.000 M$ en 3 días · récord
+  { const a = cw(t, K.n800 - 0.1, K.lleva4 - 0.2); if (a > 0.01) { const n = t < K.n1000 - 0.1 ? 800e6 * eo(clamp((t - K.n800 + 0.1) / 0.8)) : 800e6 + 200e6 * eo(clamp((t - K.n1000 + 0.1) / 0.5));
+      bigText(fmt(Math.round(n / 1e6) * 1e6) + ' $', W / 2, Y, 92, HC.green, a, { glow: 20, type: false, dark: 30 }); bigText(t < K.en3 ? 'EL PRIMER DÍA' : 'EN 3 DÍAS', W / 2, Y + 90, 32, HC.white, a, { dark: 20 }); }
+    const D = ST.D; if (D.Z.visible) lab(D.med, 0, 0.0, 0.02, 'RÉCORD GUINNESS', 'NADA LLEGÓ TAN RÁPIDO', cw(t, K.record3 + 0.1, K.lleva4 - 0.1), { dx: -140, dy: -120, color: HG }); }
+  // L4: 230 M de copias · 213 M de brasileños · sobran 17 M
+  { const a = cw(t, K.n230 - 0.1, K.y5 - 0.15); if (a > 0.01) { bigText('+' + fmt(230 * eo(clamp((t - K.n230 + 0.1) / 0.9))) + ' M', W / 2, Y - 30, 96, HC.white, a, { type: false, dark: 30 }); bigText('COPIAS DE GTA 5', W / 2, Y + 50, 30, HC.white, a, { dark: 20 });
+      bigText('BRASIL: 213 M DE HABITANTES', W / 2, Y + 115, 34, HG, cw(t, K.habitantes4 - 0.1, K.y5 - 0.15), { glow: 12, dark: 20 }); }
+    const C = ST.C; if (C.Z.visible) callout(C.top.localToWorld(v3(0.24, 0.01, 0.236)), '17 M DE COPIAS MÁS', null, cw(t, K.brasil4, K.y5 - 0.1), { dx: 60, dy: -260, size: 26, bg: true, color: HG }); }
+  // L5: Rockstar lo niega · el edificio más alto
+  { const Kk = ST.K; if (Kk.Z.visible) { lab(Kk.doc, 0, 0.0, 0.0, 'ROCKSTAR LO NIEGA', null, cw(t, K.negar5 + 0.25, K.edificio5 - 0.1), { dx: -110, dy: -220, color: HC.red });
+      lab(Kk.sky, 0, 0.86, 0, 'BURJ KHALIFA', 'EL MÁS ALTO · 1.500 M$', cw(t, K.edificio5 + 0.2, K.entre6 - 0.1), { dx: 120, dy: -110, color: HC.teal });
+      lab(Kk.col.g, 0, 0.62, 0, 'COSTE DE GTA 6', 'ANALISTAS: 1.000–1.500 M$', cw(t, K.n1000b, K.cualquier6 - 0.1), { dx: -130, dy: -120, color: HG });
+      lab(Kk.reel, 0, 0.19, 0, 'LA PELÍCULA MÁS CARA', '659 M$', cw(t, K.cualquier6 + 0.1, K.y7 - 0.1), { dx: 110, dy: -170, color: HC.white }); }
+    const a = cw(t, K.n1000b - 0.1, K.mas6 - 0.05); if (a > 0.01) bigText('1.000–1.500 M$', W / 2, Y, 86, HG, a, { glow: 18, type: false, dark: 30 });
+    const b = cw(t, K.mas6 - 0.05, K.y7 - 0.1); if (b > 0.01) bigText('MÁS QUE CUALQUIER PELÍCULA', W / 2, Y, 46, HC.white, b, { dark: 24 }); }
+  // L7: 79,99 €
+  { const a = cw(t, K.n80 - 0.15, K.respuesta8 - 0.1); if (a > 0.01) { bigText('79,99 €', W / 2, Y, 120, HC.red, a, { glow: 24, type: false, dark: 30 }); bigText('EDICIÓN ESTÁNDAR · ESPAÑA', W / 2, Y + 92, 28, HC.white, a, { dark: 20 }); } }
+  // L8: la balanza · 3.200 M$ frente a 2.925 M$
+  { const Bs = ST.B; if (Bs.Z.visible) { lab(Bs.reel, 0, 0.16, 0, 'PELÍCULA N.º 1', '2.925 M$', cw(t, K.segun8, K.pagarias9 - 0.1), { dx: -110, dy: -200, color: HC.white });
+      lab(Bs.case, 0, 0.1, 0, 'GTA 6 · 1.ER AÑO', fmt(3200 * eo(clamp((t - K.tres8 + 0.1) / 1.4))) + ' M$', cw(t, K.tres8 - 0.1, K.pagarias9 - 0.1), { dx: 110, dy: -230, color: HC.green }); }
+    const a = cw(t, K.tres8 - 0.1, K.pagarias9 - 0.1); if (a > 0.01) { bigText(fmt(3200 * eo(clamp((t - K.tres8 + 0.1) / 1.4))) + ' M$', W / 2, Y, 110, HC.green, a, { glow: 24, type: false, dark: 30 });
+      bigText(t < K.mas8 ? 'SOLO EL PRIMER AÑO · SEGÚN LOS ANALISTAS' : 'MÁS QUE LA PELÍCULA N.º 1', W / 2, Y + 92, 30, t < K.mas8 ? HC.white : HG, a, { dark: 20 }); } }
+  // L9: ¿80 €? · mándaselo
+  { const a = cw(t, K.pagarias9 - 0.05, K.mandaselo9 - 0.05); if (a > 0.01) { bigText('¿PAGARÍAS 80 €?', W / 2, Y, 76, HC.white, a, { type: false, dark: 30 }); bigText('POR UN VIDEOJUEGO', W / 2, Y + 80, 34, HG, cw(t, K.videojuego9 - 0.15, K.mandaselo9 - 0.05), { dark: 20 }); }
+    const m = cw(t, K.mandaselo9 - 0.05, END - 0.6); if (m > 0.01) { bigText('MÁNDASELO A QUIEN DICE QUE', W / 2, Y - 10, 40, HC.white, m, { dark: 24 }); bigText('JUGAR ES TIRAR EL DINERO', W / 2, Y + 60, 52, HG, cw(t, K.jugar9 - 0.1, END - 0.6), { glow: 14, dark: 26 }); } }
 }
-// ---------------------------------------------------------------- un fotograma (renderAt), portada y arranque: tipos de letra, tiempos de la voz y escena
+// ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
 const _fw = new THREE.Vector3(), _rt = new THREE.Vector3(), _up2 = new THREE.Vector3();
@@ -1582,11 +1343,12 @@ window.renderAt = function (t) {
 };
 // portada (sin HUD)
 window.renderCover = function () {
-  const t = window.COVER_T ? Number(window.COVER_T) : 1.2; frame(t);
+  const t = window.COVER_T ? Number(window.COVER_T) : 0.6; frame(t);
   if (window.COVER_CAM) { const C = window.COVER_CAM; cam.fov = C[6]; cam.updateProjectionMatrix(); cam.position.set(C[0], C[1], C[2]); cam.up.set(0, 1, 0); cam.lookAt(C[3], C[4], C[5]); cam.updateMatrixWorld(); }
   if (window.camOverride) window.camOverride(cam, v3);
   const VP = vpOf(); flowUpdate(t, VP, VP); fxUpdate(t, VP, VP);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0; post.uniforms.white.value = 0;
+  if (S.ctrCone) S.ctrCone.visible = false;      // en la portada, sin el haz del centro (de frente se ve como columnas)
   hudBegin(); drawFrame(t);
   return true;
 };
@@ -1613,10 +1375,11 @@ window.renderCover = function () {
     respuesta8: atL(8, 'respuesta'), segun8: atL(8, 'segun'), tres8: atL(8, '=3200'), millones8: atL(8, 'millones'), solo8: atL(8, 'solo'), ano8: atL(8, 'ano'), mas8: atL(8, '=mas'), pelicula8: atL(8, 'pelicula'), taquillera8: atL(8, 'taquillera'), historia8: atL(8, 'historia'),
     pagarias9: atL(9, 'pagarias'), n80b: atL(9, '=80'), videojuego9: atL(9, 'videojuego'), mandaselo9: atL(9, 'mandaselo'), jugar9: atL(9, 'jugar'), dinero9: atL(9, 'dinero'),
   };
-  mats(); buildMats(); buildRig(); S.flow = [];
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.35; }
-  buildDay(); buildCity();
-  post.uniforms.ca.value = 0.35; post.uniforms.vig.value = 0.2;
+  mats(); buildMats(); buildRig(); buildFloor(); buildFlow();
+  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5; }
+  scene.fog = new THREE.FogExp2(0x000000, 0.035);
+  buildCenter(); buildStations();
+  post.uniforms.ca.value = 0.4;
   buildCam(); buildHudPlan();
   for (const m of LMS) m.resolution.set(W * PR, H * PR);
   window.K = K; window.END = END; window.dbgEval = s => eval(s);

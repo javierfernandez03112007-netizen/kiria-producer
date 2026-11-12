@@ -1,5 +1,5 @@
 """Compone «GTA 6: el dinero»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en Impact
-(el dinero en verde, las fechas y los récords en dorado, el precio y lo que se niega en rojo) + la voz de Javi (su MP3,
+(estilo del vídeo de Derecho; el dinero en verde, las fechas y los récords en dorado, el precio y lo que se niega en rojo) + la voz de Javi (su MP3,
 ElevenLabs, Danny, a su velocidad natural) + efectos SOLO de la biblioteca de ElevenLabs del canal (projects/*/assets/sfx), uno por suceso.
 
     python3 ajustar_voz.py && python3 env_voz.py
@@ -24,6 +24,7 @@ from engine.subs import Subs, norm  # noqa: E402
 
 FPS, W, H = 60, 1080, 1920
 LINES = json.load(open(os.path.join(ROOT, "tiempos.json")))
+T_HIT = 0.3
 END = LINES[-1]["end"] + 1.2
 N = int(END * FPS)
 FRAMES = os.environ.get("FRAMES_DIR", os.path.join(ROOT, "out", "frames"))
@@ -100,52 +101,50 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    # 1: la torre de GTA 5 revienta la arena (ya va saliendo en el primer fotograma), los billetes vuelan y la gente lo celebra
-    put("economia/torre", -0.05, 0.9, 0.55, 0.2)
-    put("ade/papeles_vuelan", 0.25, 1.4, 0.3, 0.4)
-    put("ade/multitud", 0.6, 1.8, 0.18, 0.6)
-    put("tapas/etiqueta", at("película", 1, 1) - 0.08, 0.5, 0.3, 0.15)
-    # 2: «GTA 5» en la torre; cae el calendario del 19; barrido a la torre de cristal; la interrogación; «???» en la cabecera
-    put("lanzamiento/marcador", at("gta", 1, 2) - 0.05, 0.45, 0.3)
-    put("magisterio/calendario", at("19", 1, 2) - 0.3, 0.9, 0.4, 0.2)
-    put("economia/impacto", at("19", 1, 2) + 0.02, 0.5, 0.35, 0.2)
-    put("medicina/whoosh", at("sale", 1, 2) - 0.3, 0.55, 0.25, 0.2)
+    # 1: la caja de GTA 5 cae como un mazo sobre las cien bobinas (golpe, onda) y caen todas; la n.º 1, la última
+    put("lanzamiento/mazo", T_HIT - 0.04, 0.9, 0.6, 0.25)
+    put("medicina/caen", T_HIT + 0.05, 1.1, 0.4, 0.4)
+    put("cerradura/clunk", T_HIT + 0.85, 0.45, 0.3, 0.2)
+    put("lanzamiento/marcador", at("historia", 1, 1) - 0.05, 0.4, 0.28)
+    # 2: la portada de GTA 5; sube la vitrina de GTA 6; el calendario del 19; la luz roja y la interrogación; «???» en la cabecera
+    put("lanzamiento/tarjeta", at("gta", 1, 2) - 0.05, 0.45, 0.3)
+    put("medicina/vitrina", at("y", 1, 2) - 0.15, 0.9, 0.42, 0.25)
+    put("magisterio/calendario", at("19", 1, 2) - 0.2, 0.8, 0.38, 0.2)
     put("avion/pregunta", at("cuánto", 1, 2) - 0.1, 0.8, 0.4, 0.25)
     put("lanzamiento/marcador", at("final", 1, 2), 0.35, 0.25)
-    # 3: vuelo por el paseo; el cartel de los días; la torre sube a 800 M$; el cartel pasa al día 3; 1.000 M$; la medalla
-    put("avion/whoosh_largo", at("el", 1, 3) - 0.2, 1.1, 0.3, 0.3)
-    put("lanzamiento/dias", at("día", 1, 3) - 0.15, 0.6, 0.35, 0.2)
-    put("economia/subida", at("800", 1, 3) - 0.3, 1.0, 0.35, 0.3)
-    put("lanzamiento/voltea", at("en", 1, 3) - 0.05, 0.45, 0.35)
-    put("economia/monton", at("1000", 1, 3) - 0.1, 0.7, 0.4, 0.2)
+    # 3: vuelo al primer pedestal; el calendario de taco; los fajos suben a 800 M$; pasa al día 3; 1.000 M$; la medalla del récord
+    put("avion/whoosh_largo", at("el", 1, 3) - 0.1, 1.1, 0.3, 0.3)
+    put("lanzamiento/dias", at("primer", 1, 3) - 0.2, 0.6, 0.32, 0.2)
+    put("robo_banco/fajos", at("800", 1, 3) - 0.25, 0.8, 0.45, 0.2)
+    put("lanzamiento/voltea", at("en", 1, 3) - 0.02, 0.45, 0.32)
+    put("economia/monton", at("1000", 1, 3) - 0.1, 0.7, 0.42, 0.2)
     put("economia/medalla", at("récord", 1, 3) - 0.12, 0.6, 0.45, 0.2)
-    # 4: vuelo a la siguiente parada; las cajas caen capa a capa; la pirámide de Brasil sube y la gente lo celebra
-    put("medicina/whoosh_largo", at("lleva", 1, 4) - 0.35, 1.1, 0.28, 0.3)
-    put("lanzamiento/construye", at("230", 1, 4) - 0.3, 1.3, 0.38, 0.3)
-    put("gta6/edificios", at("más", 2, 4) - 0.3, 1.2, 0.35, 0.3)
-    put("ade/multitud", at("brasil", 1, 4) - 0.1, 1.0, 0.25, 0.4)
-    # 5: giro hacia el mar; sale la torre del coste con su interrogación; sube el rascacielos; el sello «NO»
-    put("avion/whoosh", at("y", 1, 5) - 0.15, 0.6, 0.3, 0.2)
-    put("gta6/columna", at("y", 1, 5) + 0.25, 0.85, 0.4, 0.2)
-    put("avion/subida", at("costara", 1, 5) - 0.1, 1.6, 0.3, 0.4)
-    put("robo_banco/sello", at("mundo", 1, 5) - 0.12, 0.45, 0.55, 0.15)
-    # 6: la franja de los analistas (1.000–1.500 M$); la película más cara aparece al lado, más baja
-    put("economia/barras", at("entre", 1, 6) - 0.1, 0.6, 0.35, 0.2)
+    # 4: vuelo; aparecen las 230 cajas; las figuritas de Brasil se colocan encima; sobran 17 (brillo dorado)
+    put("medicina/whoosh_largo", at("lleva", 1, 4) - 0.3, 1.0, 0.28, 0.3)
+    put("lanzamiento/construye", at("230", 1, 4) - 0.25, 1.2, 0.35, 0.3)
+    put("ade/fichas", at("más", 2, 4) - 0.2, 1.0, 0.4, 0.3)
+    put("medicina/dorado", at("brasil", 1, 4) - 0.12, 0.8, 0.42, 0.25)
+    # 5: vuelo al coste; el documento; el sello «NO»; sube la maqueta del rascacielos
+    put("avion/whoosh", at("y", 1, 5) - 0.2, 0.6, 0.28, 0.2)
+    put("magisterio/papel", at("rockstar", 1, 5) - 0.15, 0.5, 0.35, 0.2)
+    put("robo_banco/sello", at("negar", 1, 5) + 0.02, 0.45, 0.6, 0.15)
+    put("gta6/edificios", at("edificio", 1, 5) - 0.35, 1.3, 0.35, 0.3)
+    # 6: la columna de los analistas sube; la bobina de la película más cara, al lado
+    put("robo_banco/fajos", at("1000", 1, 6) - 0.3, 0.8, 0.4, 0.2)
     put("tapas/pop", at("cualquier", 1, 6) - 0.18, 0.45, 0.4)
-    # 7: la etiqueta del precio baja balanceándose; 80 euros
-    put("lanzamiento/precio", at("costará", 1, 7) - 0.32, 0.5, 0.4, 0.15)
-    put("economia/cajero", at("80", 1, 7) - 0.05, 0.9, 0.3, 0.3)
-    # 8: vuelo a la plaza; la torre de cristal se llena; pasa a la película n.º 1 (billetes y gente)
-    put("avion/whoosh_largo", at("respuesta", 1, 8) - 0.25, 1.1, 0.3, 0.3)
-    put("economia/subida", at("3200", 1, 8) - 0.1, 1.2, 0.4, 0.3)
+    # 7: vuelo al precio; la etiqueta de 79,99 €; el tique
+    put("medicina/whoosh", at("y", 1, 7) - 0.2, 0.55, 0.25, 0.2)
+    put("tapas/etiqueta", at("costará", 1, 7) - 0.3, 0.6, 0.4, 0.2)
+    put("economia/cajero", at("80", 1, 7) - 0.1, 0.9, 0.32, 0.3)
+    # 8: vuelo a la balanza; caen los fajos de GTA 6 en su platillo y, con «más que la película», ese lado baja
+    put("avion/whoosh_largo", at("respuesta", 1, 8) - 0.3, 1.0, 0.28, 0.3)
+    put("robo_banco/fajos", at("3200", 1, 8) - 0.1, 0.8, 0.42, 0.2)
     put("cripto/contador", at("millones", 1, 8) - 0.2, 1.0, 0.25, 0.3)
-    put("economia/impacto", at("más", 1, 8) - 0.02, 0.6, 0.45, 0.2)
-    put("robo_banco/fajos", at("más", 1, 8) + 0.1, 0.8, 0.35, 0.2)
-    put("ade/multitud", at("película", 1, 8), 1.6, 0.22, 0.5)
-    # 9: la etiqueta vuelve con «¿80 €?»; mándaselo; rebobina hasta el primer fotograma (bucle)
+    put("medicina/golpe", at("más", 1, 8) + 0.05, 0.7, 0.5, 0.2)
+    # 9: la etiqueta vuelve con «¿80 €?»; mándaselo; vuelo al centro: las bobinas se levantan y la caja sube (bucle)
     put("tapas/etiqueta", at("pagarías", 1, 9) - 0.25, 0.6, 0.35, 0.2)
     put("lanzamiento/enviado", at("mándaselo") + 0.1, 0.5, 0.35)
-    put("promo_web/rebobina", END - 0.6, 0.6, 0.35, 0.1)
+    put("promo_web/rebobina", at("mándaselo") + 0.5, 1.1, 0.3, 0.3)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
