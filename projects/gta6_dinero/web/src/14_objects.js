@@ -62,11 +62,16 @@ function reelFaceTex(gold) { return canvasTex(256, 256, (g, w, h) => { const c =
   const gr = g.createRadialGradient(c - 30, c - 30, 10, c, c, c); gr.addColorStop(0, 'rgba(255,255,255,.35)'); gr.addColorStop(1, 'rgba(0,0,0,.25)'); g.fillStyle = gr; g.beginPath(); g.arc(c, c, c - 2, 0, 7); g.fill();
   g.fillStyle = '#16120e'; for (let i = 0; i < 6; i++) { const a = i / 6 * 6.283 + 0.26; g.beginPath(); g.arc(c + Math.cos(a) * c * 0.55, c + Math.sin(a) * c * 0.55, c * 0.22, 0, 7); g.fill(); }
   g.beginPath(); g.arc(c, c, c * 0.09, 0, 7); g.fill(); g.strokeStyle = gold ? '#8a6418' : '#7d838e'; g.lineWidth = 6; g.beginPath(); g.arc(c, c, c - 5, 0, 7); g.stroke(); }); }
+// las caras de las bobinas pequeñas son espejos planos: al levantarse, alguna refleja el foco hacia la cámara y da un fogonazo de un
+// fotograma (valor ≈ 30) que el resplandor convierte en una mancha blanca. Se limita su brillo por debajo del umbral del resplandor (1,7):
+// el brillo normal no cambia y el reflejo se queda en un destello pequeño.
+const capGlint = (m, c = 1.2) => { m.onBeforeCompile = sh => { const f = sh.fragmentShader.replace('#include <opaque_fragment>', `outgoingLight = min(outgoingLight, vec3(${c.toFixed(2)}));\n#include <opaque_fragment>`);
+  if (f === sh.fragmentShader) console.error('ERROR capGlint: no encuentro opaque_fragment'); sh.fragmentShader = f; }; return m; };
 function reelSmallParts(R = 0.034, T = 0.012) {
   const geo = new THREE.CylinderGeometry(R, R, T, 28).rotateX(Math.PI / 2);
   const side = new THREE.MeshStandardMaterial({ color: 0x2a221c, roughness: 0.5, metalness: 0.2 });
-  return { geo, mats: [side, new THREE.MeshStandardMaterial({ map: reelFaceTex(false), roughness: 0.3, metalness: 0.75 }), new THREE.MeshStandardMaterial({ map: reelFaceTex(false), roughness: 0.3, metalness: 0.75 })],
-    gold: [side, new THREE.MeshStandardMaterial({ map: reelFaceTex(true), roughness: 0.25, metalness: 0.85 }), new THREE.MeshStandardMaterial({ map: reelFaceTex(true), roughness: 0.25, metalness: 0.85 })] };
+  const face = gold => capGlint(new THREE.MeshStandardMaterial({ map: reelFaceTex(gold), roughness: gold ? 0.25 : 0.3, metalness: gold ? 0.85 : 0.75 }));
+  return { geo, mats: [side, face(false), face(false)], gold: [side, face(true), face(true)] };
 }
 function reelBig(R, gold = false) {        // bobina de aluminio de verdad (seis huecos, película enrollada y tira que cae)
   const g = new THREE.Group(), sh = new THREE.Shape(); sh.absarc(0, 0, R, 0, Math.PI * 2, false);
