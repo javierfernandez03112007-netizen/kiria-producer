@@ -1,7 +1,7 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Huelga general 11-N».
-Base: la manifestación por la avenida, con el mapa de España flotando encima (sin HUD):
-    COVER=1 COVER_T=1.0 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
-Título en Impact con contorno, como los subtítulos (la pregunta en rojo)."""
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Odontología por dentro».
+Base: la dentadura gigante con brackets en la plaza, recién cerrada (sin HUD):
+    COVER=1 COVER_T=0.5 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Título en Impact con contorno, como los subtítulos («no es especialista» en rojo)."""
 import os
 import sys
 
@@ -30,9 +30,9 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("HUELGA", None), ("GENERAL", None)], y + 100 * k, int(150 * k), int(12 * k))
-    row(img, [("¿TE", RED), ("PUEDEN", RED), ("DESPEDIR?", RED)], y + 240 * k, int(104 * k), int(9 * k))
-    paste(img, chip("hoy, 11-N · lo que tienes que saber", int(38 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 350 * k)
+    row(img, [("TU", None), ("ORTODONCISTA", None)], y + 100 * k, int(122 * k), int(11 * k))
+    row(img, [("NO", RED), ("ES", RED), ("ESPECIALISTA", RED)], y + 235 * k, int(112 * k), int(10 * k))
+    paste(img, chip("odontología por dentro · lo que nadie te cuenta", int(36 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 345 * k)
 
 
 def main():

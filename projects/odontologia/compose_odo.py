@@ -1,10 +1,10 @@
-"""Compone «Huelga general 11-N»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en Impact
-(la huelga y lo que no cobras en rojo, las cifras en dorado, la vivienda en celeste, tus derechos en verde) + la voz de Javi (su MP3,
-ElevenLabs, Danny, al 112,5 %) + efectos SOLO de la biblioteca de ElevenLabs del canal (projects/*/assets/sfx), uno por suceso y cortados al terminar.
+"""Compone «Odontología por dentro»: fotogramas 3D a 60 fps (out/frames, ya con el HUD) + subtítulos palabra a palabra en Impact
+(lo que no existe y lo rechazado en rojo, las cifras y el máster en dorado, lo que sí puedes hacer en verde) + la voz de Javi (su MP3,
+ElevenLabs, Danny, a su velocidad natural) + efectos SOLO de la biblioteca de ElevenLabs del canal (projects/*/assets/sfx), uno por suceso.
 
     python3 ajustar_voz.py && python3 env_voz.py
     WK=3 ./render_local.sh 0 N    (o máquinas de ayuda con render_chunk.sh)
-    python3 projects/huelga/compose_huelga.py [--test t1 t2 ...] [--sfx]
+    python3 projects/odontologia/compose_odo.py [--test t1 t2 ...] [--sfx]
 """
 import json
 import os
@@ -44,16 +44,14 @@ def at(word, k=1, line=None):
 # ---------------------------------------------------------------- subtítulos
 GO, R, WH = "#FFC24A", "#FF5A4E", "#EEF2F6"
 BL, GR, TE, AM, OR, PK = "#8FE6FF", "#7CF0A9", "#62E3D4", "#FFB547", "#FF9A4A", "#FF8FB5"
-_K = {1: {"huelga": R, "general": R, "toda": WH, "españa": GO, "sueldos": GO},
-      2: {"despedir": R, "final": R},
-      3: {"primera": GO, "ccoo": R, "ugt": R, "catorce": GO, "años": GO, "inquilinas": BL, "salarios": GO, "vivienda": WH, "precios": BL},
-      4: {"sueldos": GO, "7": GO, "alquileres": GR, "desahucio": R, "alternativa": R},
-      5: {"vivienda": BL, "laboral": WH, "sueldo": GO, "alquiler": R},
-      6: {"pymes": WH, "1850": GO, "4560": GO, "millones": GO},
-      7: {"patronal": WH, "electoral": R, "campaña": GO, "generales": BL, "29": BL, "noviembre": BL},
-      8: {"medianoche": R, "servicios": BL, "mínimos": BL, "manifestaciones": GO, "ciudades": GO},
-      9: {"despido": R, "despedir": GR, "sancionar": GR, "fundamental": GO, "avisar": GR, "sustituirte": GR, "cobras": R},
-      10: {"tú": GO, "haces": R, "trabajar": GO, "mándaselo": GO}}
+_K = {1: {"ortodoncista": WH, "especialista": R, "ortodoncia": GO, "españa": WH, "especialidad": R, "existe": R},
+      2: {"final": R},
+      3: {"odontología": WH, "cinco": GO, "años": GO, "anatomía": BL, "materiales": BL, "prótesis": BL, "cirugía": BL, "pacientes": GR},
+      4: {"empastar": GR, "muelas": GR, "brackets": GR, "todo": GO},
+      5: {"1700": GO, "dentistas": WH, "43000": GO},
+      6: {"consejo": WH, "único": R, "europea": BL, "especialidades": R, "oficiales": R, "julio": WH, "rechazó": R, "seis": R, "ortodoncia": GO},
+      7: {"ortodoncista": WH, "máster": GO, "buenísimo": GO, "especialista": R, "oficial": R, "serlo": R},
+      8: {"brackets": WH, "invisibles": BL, "mándaselo": GO, "aparato": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -101,72 +99,55 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    # 1: las persianas bajan de golpe en cadena por la avenida (empezó justo antes del primer fotograma), la multitud; la cámara sube al mapa
-    #    que flota (la onda roja y las chinchetas), las monedas y la casa
-    put("robo_banco/persiana", -0.2, 0.9, 0.7, 0.3)
-    put("ade/multitud", 0.0, 1.5, 0.32, 0.5)
-    put("avion/whoosh_largo", at("toda", 1, 1) - 0.3, 0.9, 0.3, 0.25)
-    put("economia/monedas_caen", at("solo", 1, 1) - 0.12, 0.7, 0.4, 0.2)
-    put("tapas/pop", at("sueldos", 1, 1) - 0.08, 0.35, 0.45)
-    # 2: picado hasta «tú»; la interrogación; «???» en la cabecera
-    put("medicina/whoosh_largo", at("si", 1, 2) - 0.35, 0.8, 0.3, 0.25)
-    put("avion/pregunta", at("despedir", 1, 2) - 0.25, 0.6, 0.45, 0.2)
+    # 1: la dentadura gigante se cierra de golpe; la cámara gira hacia el cartel; «ESPECIALISTA» se suelta y cae
+    put("cerradura/clunk", -0.04, 0.5, 0.6, 0.2)
+    put("avion/whoosh_largo", at("especialista", 1, 1) - 0.4, 0.9, 0.28, 0.25)
+    put("lanzamiento/cae", at("existe", 1, 1) - 0.02, 0.6, 0.45, 0.2)
+    put("cerradura/choca", at("existe", 1, 1) + 0.5, 0.45, 0.45)
+    # 2: la interrogación; «???» en la cabecera
+    put("avion/pregunta", at("entonces", 1, 2) - 0.25, 0.6, 0.45, 0.2)
     put("lanzamiento/marcador", at("final", 1, 2), 0.35, 0.3)
-    # 3: la pantalla gigante (contador 2012 → 2026), vuelo hasta la cabecera, las banderas, la pancarta del lema palabra a palabra
-    put("cerradura/whoosh", at("primera", 1, 3) - 0.3, 0.5, 0.25)
-    put("lanzamiento/contador", at("catorce", 1, 3) - 0.3, 0.9, 0.4, 0.2)
-    put("magisterio/ding", at("años", 1, 3) - 0.05, 0.4, 0.35)
-    put("avion/whoosh_largo", at("sindicatos", 1, 3) - 0.5, 0.9, 0.3, 0.25)
-    put("ade/marcha", at("sindicatos", 1, 3) - 0.05, 1.6, 0.3, 0.4)
-    put("ade/multitud", at("lema", 1, 3) - 0.2, 1.3, 0.28, 0.5)
-    for w in ("salarios", "vivienda", "precios"):
-        put("lanzamiento/palabra", at(w, 1, 3) - 0.05, 0.3, 0.35)
-    # 4: a la plaza: la pila del sueldo sube, la casa con el alquiler que baja, la caja de la mudanza y el «prohibido»
-    put("avion/whoosh_largo", at("piden", 1, 4) - 0.4, 0.8, 0.3, 0.25)
-    put("economia/monton", at("subir", 1, 4) - 0.1, 0.6, 0.4, 0.2)
-    put("economia/precio_sube", at("7", 1, 4) - 0.05, 0.6, 0.35, 0.2)
-    put("magisterio/pop", at("bajar", 1, 4) - 0.2, 0.35, 0.4)
-    put("economia/caida", at("alquileres", 1, 4), 0.6, 0.35, 0.2)
-    put("lanzamiento/caja", at("desahucio", 1, 4) - 0.2, 0.45, 0.4)
-    put("cerradura/denegado", at("alternativa", 1, 4) - 0.15, 0.4, 0.35)
-    # 5: la balanza se inclina hacia la casa
-    put("medicina/pop", at("vivienda", 1, 5) - 0.05, 0.35, 0.4)
-    put("cerradura/clunk", at("llega", 1, 5) - 0.05, 0.5, 0.4, 0.2)
-    # 6: las torres de billetes crecen (1.850 y 4.560 millones)
-    put("economia/torre", at("asociación", 1, 6), 0.9, 0.35, 0.25)
-    put("robo_banco/fajos", at("1850", 1, 6) - 0.1, 0.6, 0.45, 0.2)
-    put("lanzamiento/contador", at("4560", 1, 6) - 0.1, 0.9, 0.45, 0.2)
-    put("economia/impacto", at("millones", 1, 6), 0.45, 0.35, 0.2)
-    # 7: «electoral»; el calendario (11, 13 y 29); el sobre entra en la urna
-    put("avion/whoosh", at("patronal", 1, 7) - 0.3, 0.45, 0.25)
-    put("robo_banco/sello", at("electoral", 1, 7) - 0.05, 0.5, 0.45)
-    put("magisterio/calendario", at("dos", 1, 7) - 0.25, 0.6, 0.4, 0.2)
-    put("quimica/papel", at("noviembre", 1, 7), 0.5, 0.4, 0.2)
-    # 8: el reloj da las 00:00, pasa el autobús de servicios mínimos, gente en muchas ciudades (el mapa sobre la plaza)
-    put("avion/whoosh_largo", at("hoy", 1, 8) - 0.4, 0.8, 0.3, 0.25)
-    put("robo_banco/reloj", at("medianoche", 1, 8) - 0.2, 0.9, 0.45, 0.25)
-    put("robo_banco/camion", at("servicios", 1, 8) - 0.4, 2.0, 0.35, 0.5)
-    put("ade/multitud", at("manifestaciones", 1, 8) - 0.1, 1.3, 0.3, 0.5)
-    put("avion/sube", at("ciudades", 1, 8) - 0.6, 0.8, 0.3, 0.25)
-    # 9: el escudo, la Constitución, los vistos buenos, la nómina con el día a cero
-    put("avion/whoosh", at("y", 1, 9) - 0.15, 0.45, 0.25)
-    put("robo_banco/sello", at("despedir", 1, 9) - 0.05, 0.5, 0.45)
-    put("magisterio/libro", at("fundamental", 1, 9) - 0.3, 0.7, 0.4, 0.2)
-    put("cripto/check", at("avisar", 1, 9) - 0.02, 0.35, 0.35)
-    put("quimica/ok", at("sustituirte", 1, 9) - 0.02, 0.4, 0.35)
-    put("lanzamiento/papel", at("pero", 1, 9) - 0.2, 0.45, 0.4)
-    put("avion/tiza_tachar", at("cobras", 1, 9) - 0.02, 0.45, 0.4)
-    # 10: el cruce (los dos caminos), te leo, mándaselo; rebobina por la avenida hasta el principio (bucle)
-    put("avion/whoosh", at("tú", 1, 10) - 0.3, 0.45, 0.25)
-    put("lanzamiento/ping", at("haces", 1, 10) - 0.02, 0.35, 0.3)
-    put("lanzamiento/ping", at("trabajar", 1, 10) - 0.02, 0.35, 0.3)
-    put("lanzamiento/mensaje", at("leo") - 0.05, 0.4, 0.35)
+    # 3: vuelo a la facultad; cada piso se enciende con lo suyo
+    put("medicina/whoosh_largo", at("odontología", 1, 3) - 0.35, 0.9, 0.3, 0.25)
+    put("medicina/huesos", at("anatomía", 1, 3) - 0.1, 0.5, 0.4)
+    put("quimica/vidrio", at("materiales", 1, 3) - 0.1, 0.45, 0.35)
+    put("tapas/pop", at("prótesis", 1, 3) - 0.1, 0.3, 0.4)
+    put("medicina/instrumental", at("cirugía", 1, 3) - 0.08, 0.45, 0.4)
+    put("medicina/lampara", at("pacientes", 1, 3) - 0.1, 0.5, 0.4)
+    # 4: la boca se abre; empaste; la muela sale; brackets; todo
+    put("robot_neuronas/servo", at("acabar", 1, 4) - 0.25, 0.6, 0.35, 0.2)
+    put("cripto/llenar", at("empastar", 1, 4) - 0.05, 0.6, 0.4, 0.2)
+    put("lanzamiento/sale", at("muelas", 1, 4) - 0.05, 0.5, 0.45, 0.2)
+    put("cerradura/pitones", at("brackets", 1, 4) - 0.2, 0.7, 0.45, 0.2)
+    put("quimica/ok", at("todo", 1, 4) - 0.02, 0.4, 0.35)
+    # 5: salen los dentistas de la facultad; el contador; la grúa sube y se ve la plaza llena
+    put("ade/multitud", at("salen", 1, 5) - 0.1, 1.5, 0.3, 0.5)
+    put("lanzamiento/contador", at("1700", 1, 5) - 0.1, 0.8, 0.4, 0.2)
+    put("avion/sube", at("país", 1, 5) - 0.3, 0.8, 0.3, 0.25)
+    put("economia/impacto", at("43000", 1, 5) - 0.02, 0.5, 0.4, 0.2)
+    # 6: el mapa de Europa; los ✓ de la UE; España en rojo; las seis solicitudes y sus sellos
+    put("gafas/onda", at("según", 1, 6) - 0.4, 0.7, 0.3, 0.25)
+    put("cripto/check", at("único", 1, 6) - 0.1, 0.4, 0.35)
+    put("cerradura/denegado", at("sin", 1, 6) - 0.05, 0.45, 0.45)
+    put("magisterio/papel", at("julio", 1, 6) - 0.25, 0.5, 0.35, 0.2)
+    for j in range(5):
+        put("robo_banco/sello", at("rechazó", 1, 6) - 0.05 + j * 0.16, 0.25, 0.32, 0.08)
+    put("robo_banco/sello", at("ortodoncia", 1, 6) + 0.05, 0.45, 0.5, 0.15)
+    # 7: vuelta a la clínica; el máster; las estrellas; «especialista oficial» tachado
+    put("avion/whoosh_largo", at("así", 1, 7) - 0.35, 0.8, 0.28, 0.25)
+    put("medicina/diploma", at("máster", 1, 7) - 0.15, 0.6, 0.45, 0.2)
+    put("medicina/dorado", at("buenísimo", 1, 7) - 0.2, 0.7, 0.4, 0.2)
+    put("magisterio/tarjeta", at("especialista", 1, 7) - 0.15, 0.4, 0.35)
+    put("avion/tiza_tachar", at("serlo", 1, 7) - 0.25, 0.5, 0.45, 0.2)
+    # 8: brackets o invisibles; mándaselo; la boca se abre y se cierra otra vez (bucle)
+    put("medicina/whoosh", at("brackets", 1, 8) - 0.3, 0.45, 0.25)
+    put("gafas/brillo", at("invisibles", 1, 8) - 0.1, 0.6, 0.35, 0.2)
     put("lanzamiento/enviado", at("mándaselo") + 0.1, 0.45, 0.35)
-    put("promo_web/rebobina", END - 1.25, 1.25, 0.4, 0.1)
+    put("promo_web/rebobina", END - 1.2, 1.15, 0.35, 0.1)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
-def main(dst=os.path.join(ROOT, "out", "huelga.mp4")):
+def main(dst=os.path.join(ROOT, "out", "odontologia.mp4")):
     missing = [i for i in range(N) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
