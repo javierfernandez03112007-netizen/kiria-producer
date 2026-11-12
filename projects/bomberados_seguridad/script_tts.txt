@@ -1,0 +1,12 @@
+[urgent, shouting] ¡FRENA! Hay un coche accidentado en tu carril… [alarmed] ¡y está lloviendo!
+[tense, fast] ¿Cómo se llama el conjunto de sistemas que evitan el impacto?
+[quick] ¿Seguridad activa, pasiva dinámica… [teasing] o activa dinámica?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [intrigued] Si has dicho «pasiva»… [grave] has caído en la trampa.
+[explaining, fast] La activa trabaja ANTES del golpe: frenos con a be ese, control de estabilidad, neumáticos, dirección, suspensión y luces.
+[explaining] La pasiva, DURANTE: cinturón, airbags, reposacabezas y una carrocería que se deforma para proteger el habitáculo.
+[emphatic] Activa: EVITA el choque. Pasiva: REDUCE el daño.
+[serious, warning] Y ojo, bombero: un airbag sin saltar… puede saltar mientras rescatas.
+[challenging] Escribe en comentarios cuál crees que es la correcta.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

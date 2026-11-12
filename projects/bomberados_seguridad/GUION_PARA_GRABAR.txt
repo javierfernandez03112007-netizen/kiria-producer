@@ -1,0 +1,58 @@
+«¿QUÉ TE SALVA ANTES DEL GOLPE?» — seguridad activa y pasiva del vehículo (pregunta de ADRIÁN, Notion «VIERNES 13
+PREGUNTA EXPLICADA»; examen del Ayto. de Marbella 2023)
+
+La misma forma que los vídeos que más se ven: gancho que ALARMA (¡frena!), cuenta de 5 s, «¡Tiempo!» con la trampa
+tachada, un dron que no para y planos abiertos. Y lo que pide Adrián: explicar la diferencia entre los elementos de
+seguridad ACTIVA (evitan el choque) y PASIVA (reducen el daño cuando ya chocas), con bomberos rescatando en el accidente.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 45 s de voz + 4 s de cuenta. RÁPIDO y con urgencia (no la voy a ralentizar). «¡FRENA!», de golpe, como un grito.
+Las dos listas (activa y pasiva), enumerando con ritmo. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en el 5).
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, shouting] ¡FRENA! Hay un coche accidentado en tu carril… [alarmed] ¡y está lloviendo!
+[tense, fast] ¿Cómo se llama el conjunto de sistemas que evitan el impacto?
+[quick] ¿Seguridad activa, pasiva dinámica… [teasing] o activa dinámica?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [intrigued] Si has dicho «pasiva»… [grave] has caído en la trampa.
+[explaining, fast] La activa trabaja ANTES del golpe: frenos con a be ese, control de estabilidad, neumáticos, dirección, suspensión y luces.
+[explaining] La pasiva, DURANTE: cinturón, airbags, reposacabezas y una carrocería que se deforma para proteger el habitáculo.
+[emphatic] Activa: EVITA el choque. Pasiva: REDUCE el daño.
+[serious, warning] Y ojo, bombero: un airbag sin saltar… puede saltar mientras rescatas.
+[challenging] Escribe en comentarios cuál crees que es la correcta.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«a be ese» es el ABS deletreado, para que no diga «abs»; en los subtítulos sale «ABS». «oposíte» va con tilde a propósito:
+sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche y bajo la lluvia en una autovía, con UN DRON QUE NO PARA y planos
+abiertos (los dos coches enteros):
+1. «¡FRENA! Hay un coche accidentado en tu carril… ¡y está lloviendo!» — primer fotograma: tu coche a toda velocidad bajo
+   la lluvia y, en sus faros, un coche cruzado en el carril con los warnings y humo; se encienden las luces de freno y chirrían
+   las ruedas.
+2. «¿Cómo se llama el conjunto de sistemas que evitan el impacto?» — cámara lenta: la lluvia casi quieta, el agua saltando de
+   las ruedas; la tarjeta con la pregunta y el sello EXAMEN · AYTO. DE MARBELLA 2023.
+3. «¿Seguridad activa, pasiva dinámica… o activa dinámica?» — salen las tarjetas A / B / C.
+4. «Comenta tu letra. Tienes cinco segundos.» — cuenta 1-2-3-4-5 con bocina; el dron gira alrededor del coche frenando.
+5. «¡Tiempo! Si has dicho “pasiva”… has caído en la trampa.» — la B roja y tachada.
+6. «La activa trabaja ANTES del golpe…» — rótulo SEGURIDAD ACTIVA · ANTES DEL GOLPE y, en el coche, cada pieza se ilumina al
+   nombrarla: discos de freno al rojo con ABS que late, flechas de estabilidad, neumáticos que sacan el agua, ruedas que
+   giran, muelles que se comprimen y los faros que barren la carretera. El coche se para a un metro del otro.
+7. «La pasiva, DURANTE…» — el dron vuela al coche accidentado y lo vemos en «rayos X»: el choque repetido en holograma, el
+   cinturón que tira, los airbags que se inflan, el reposacabezas, el morro que se arruga y la jaula del habitáculo, intacta.
+8. «Activa: EVITA el choque. Pasiva: REDUCE el daño.» — plano abierto con los dos coches: ACTIVA en verde sobre uno, PASIVA
+   en naranja sobre el otro.
+9. «Y ojo, bombero: un airbag sin saltar… puede saltar mientras rescatas.» — llega la autobomba con las luces: bomberos con
+   la cizalla junto al coche y un aviso rojo en el airbag de cortina que no ha saltado.
+10. «Escribe en comentarios cuál crees que es la correcta.» — el dron sube; las tres tarjetas (la B tachada) y «💬 ESCRIBE
+    TU LETRA EN COMENTARIOS».
+11. ★ «¡Mándaselo a quien oposite contigo, a ver si la acierta!» — avión de papel.
+12. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta (solo en la descripción): A) Seguridad activa.
