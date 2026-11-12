@@ -3,7 +3,46 @@
 Lo escribe cada día el chat «Análisis y plan · kiria.ai» (instrucciones en `ANALISIS_DIARIO.md`). La misma versión está en Notion,
 página «📈 Análisis de contenido · kiria.ai».
 
-## Última actualización: miércoles 11-11-2026, 10:00
+## Última actualización: jueves 12-11-2026, 10:00
+
+**Datos**: captura del 11-11 a las 20:34 (falta otra vez la de las 08:33 de hoy). **3,69 M de visualizaciones** en Instagram (+70.000 en 24 h).
+No hay captura de TikTok en esta tanda. La Huelga y el Avión todavía no tienen fila de métricas.
+
+- **GTA 6 sigue subiendo: 182.210 (+56.552 en su segundo día)**, con 77,7 % que pasa de 3 s y 27,3 s de media. Es el que más crece del canal,
+  pero se guarda poco (2,7 por cada 1.000) y se comparte poco (2,6). Confirma lo de ayer: actualidad + «tú» trae gente nueva, no seguidores.
+- Las carreras antiguas siguen sumando solas: Industrial +10.811, Mecánica +5.710, Magisterio +4.951, Derecho +4.342.
+- La tapa gratis no existe: 41.914 (+2.768). ADE se ha parado en Instagram: 24.220 (+443).
+- **Reto · Capítulo 1** (se subió el 11-11 a las 10:20, no el jueves): 330 en 10 h. Metricool da 48 de alcance, así que va con retraso; no sacar
+  conclusiones todavía. Ficha rellenada (Marca, Estudio kiria, 54,2 s).
+
+**Cambio de plan (Javi lo aprobó el 11-11, `MEMORIA.md`)**: una carrera «por dentro» con giro al día a las 10:00 y nada más en el feed; la
+actualidad, las curiosidades y los anuncios van como reel de prueba o fuera del feed; nada de política ni de protestas; guiones de 145 palabras
+como mucho. Lote ya en el calendario: Veterinaria (jue 12), Odontología (vie 13), Enfermería (sáb 14), Farmacia (dom 15), Biología (lun 16),
+Periodismo (mar 17). Por eso **aparco «Zaragoza contra los centros de datos»**: es una protesta (Instagram no la recomienda a quien no te
+sigue); si se hace, como reel de prueba.
+
+**Prueba A/B de la semana**: duración. Veterinaria (174 palabras, voz acelerada) frente a Odontología, Enfermería y Farmacia (≤ 145 palabras,
+voz a su velocidad). Se compara el % de vídeo visto y las visualizaciones a las 48 h.
+
+### Vídeo recomendado: «Nutrición por dentro» · miércoles 18-11 a las 10:00
+Es la siguiente del lote, una carrera nueva con mucha gente estudiándola y con un giro de acceso, como las que mejor funcionan (Derecho, Industrial).
+Gancho de paradoja legal, distinto del de Periodismo del día antes («no te piden la carrera»). Se entiende fuera de España: todo el mundo
+conoce «dietas de internet». Guion de 130 palabras. Fuentes en `projects/nutricion/FUENTES.md` (dos datos marcados CONFIRMAR).
+Primer segundo: un centro de salud en corte con todas las consultas encendidas, y una puerta con el cartel «Dietista-nutricionista» que se
+abre a una habitación vacía (polvo, la silla tapada con plástico).
+
+```
+Estudias cuatro años para ser dietista-nutricionista… y en la sanidad pública de muchas comunidades tu puesto ni siquiera existe. ¿Entonces dónde acabas trabajando? Te lo digo al final. Nutrición Humana y Dietética son cuatro años: bioquímica, fisiología, dietas de hospital y prácticas con pacientes. Desde dos mil tres, la ley la reconoce como profesión sanitaria. Pero vas a tu centro de salud… y no hay ninguno. Te atiende tu médico o tu enfermera. En la Comunidad Valenciana, la sanidad pública tenía catorce plazas de dietista-nutricionista. Ahora anuncia cien en atención primaria. Y en Madrid, según el sindicato CSIF, la categoría ni siquiera está creada. Así que casi todos acaban en consultas privadas, clubes deportivos, hospitales privados o la industria de la alimentación. ¿Dietista o entrenador? Mándaselo a quien sigue dietas de internet.
+```
+
+### Alternativas
+1. **Criminología por dentro**: «Estudias cuatro años de Criminología… y para ser policía te piden el Bachillerato» (Escala Básica de la Policía
+   Nacional, BOE-A-2025-16610: 2.764 plazas, título de Bachiller). Mejor dejar un día entre esta y Periodismo, porque tienen el mismo giro.
+2. **Fisioterapia por dentro**: un giro sobre quién puede tocarte la espalda sin carrera (quiromasaje sin regular). CONFIRMAR los datos antes del guion.
+
+---
+
+## Actualización anterior: miércoles 11-11-2026, 10:00
 
 **Datos:** captura de Metricool de ayer a las 20:34 (≈ 13 h; falta otra vez la de las 08:33). 26 vídeos de @kiria.ai en Instagram +
 ADE en TikTok. Economía y el perro robot siguen congelados en Metricool.

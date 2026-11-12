@@ -5,7 +5,7 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 11-11-2026 (26 vídeos de Instagram + TikTok, siete capturas de Metricool).
+Última actualización: 12-11-2026 (27 vídeos de Instagram + TikTok, ocho capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
@@ -13,7 +13,8 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
   «por dentro» de carreras: 287 mil visitas; duelos: 59 mil; curiosidades: 71 mil.
 - ✅ Carreras con mucha gente estudiándolas o con un bulo popular («Magisterio = macarrones»): más gente a quien mandárselo.
 - 🧪 **Actualidad con fecha + «tú» + por dentro** (GTA 6, 11-11): 125.658 en 27 h y 77,8 % pasa de 3 s, el mejor arranque desde
-  Derecho. Trae gente nueva, pero se guarda poco (2,4 por cada 1.000).
+  Derecho; 182.210 a las 51 h (+56.552 el segundo día). Trae gente nueva, pero se guarda poco (2,7 por cada 1.000). Con el plan del
+  11-11 👤 va como **reel de prueba**, no en el feed.
 - 🧪 **Historias reales contadas en orden** (el túnel de Brasil): la mejor retención del canal (79 % del vídeo visto) y el que más
   crece (+13.928 en un día, 7-11). Alternarlas con las carreras; se guardan poco.
 - 👤 **Público nuevo (Javi, 6/7-11)**: además de estudiantes, atraer a dueños de pequeños negocios (noticias que les afectan, negocios por
