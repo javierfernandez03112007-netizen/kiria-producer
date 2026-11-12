@@ -1,0 +1,210 @@
+{
+ "formato": "reto",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 4.05,
+  "count_line": 2,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿A QUIÉN VAS A RETAR HOY?",
+ "portada": {
+  "titulo": "¿DE FRENTE, POR DETRÁS O EN DIAGONAL?",
+  "etiqueta": "¡UN COCHE EN LLAMAS!",
+  "t": 2.5,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "coche": [
+   "coche",
+   1,
+   1
+  ],
+  "llamas": [
+   "llamas…",
+   1,
+   1
+  ],
+  "rival1": [
+   "rival",
+   1,
+   1
+  ],
+  "contestado": [
+   "contestado!",
+   1,
+   1
+  ],
+  "manguera": [
+   "manguera:",
+   1,
+   2
+  ],
+  "oA": [
+   "frente,",
+   1,
+   2
+  ],
+  "oB": [
+   "detrás…",
+   1,
+   2
+  ],
+  "oC": [
+   "diagonal?",
+   1,
+   2
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   3
+  ],
+  "cinco3": [
+   "cinco",
+   1,
+   3
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   4
+  ],
+  "rival4": [
+   "rival",
+   1,
+   4
+  ],
+  "frente4": [
+   "frente…",
+   1,
+   4
+  ],
+  "amortiguador": [
+   "amortiguador",
+   1,
+   4
+  ],
+  "parachoques": [
+   "parachoques",
+   1,
+   4
+  ],
+  "disparado": [
+   "disparado!",
+   1,
+   4
+  ],
+  "diagonal5": [
+   "diagonal…",
+   1,
+   5
+  ],
+  "punto": [
+   "¡punto",
+   1,
+   5
+  ],
+  "delante": [
+   "delante",
+   1,
+   5
+  ],
+  "detras5": [
+   "detrás",
+   1,
+   5
+  ],
+  "piezas": [
+   "piezas",
+   1,
+   5
+  ],
+  "esquina": [
+   "esquina,",
+   1,
+   5
+  ],
+  "cuarenta": [
+   "cuarenta",
+   1,
+   5
+  ],
+  "grados": [
+   "grados.",
+   1,
+   5
+  ],
+  "madrid": [
+   "Madrid",
+   1,
+   6
+  ],
+  "cinco6": [
+   "cinco",
+   1,
+   6
+  ],
+  "plaza": [
+   "plaza:",
+   1,
+   6
+  ],
+  "unrival": [
+   "rival…",
+   1,
+   6
+  ],
+  "cuatro": [
+   "cuatro.",
+   1,
+   6
+  ],
+  "habrias": [
+   "habrías",
+   1,
+   7
+  ],
+  "confiesalo": [
+   "Confiésalo",
+   1,
+   7
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   8
+  ],
+  "gana": [
+   "gana!",
+   1,
+   8
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   9
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   9
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   9
+  ]
+ }
+}

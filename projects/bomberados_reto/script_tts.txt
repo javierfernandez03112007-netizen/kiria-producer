@@ -1,0 +1,9 @@
+[alarmed, urgent] ¡Un coche en LLAMAS… [tense] y tu rival YA ha contestado!
+[fast] Llevas la manguera: [quick] ¿te acercas de frente, por detrás… [teasing] o en diagonal?
+[challenging] Comenta tu letra: [urgent] tienes CINCO segundos.
+[alarmed] ¡Tiempo! [grave] Tu rival ha ido de frente… [shocked] ¡y el amortiguador del parachoques sale DISPARADO!
+[excited] Si has dicho en diagonal… ¡punto para ti! [explaining] Por delante y por detrás pueden salir piezas disparadas: [confident] tú, por la esquina, a CUARENTA Y CINCO grados.
+[serious] En el examen de Madrid hubo casi CINCO por plaza: [emphatic] no tienes un rival… ¡tienes CUATRO!
+[playful] ¿Tú habrías ido de frente? [teasing] Confiésalo en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo… [challenging] a ver quién gana!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

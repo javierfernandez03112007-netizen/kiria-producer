@@ -1,0 +1,57 @@
+«RETA A OTRO OPOSITOR» — idea de ADRIÁN (Notion «MIÉRCOLES 11 FOMO JUGADOR BOMBERADOS»): el opositor que estudia solo →
+el 1 vs 1 de la app con la ruleta → duelo con cuenta atrás y marcador → «¿A QUIÉN VAS A RETAR HOY?» → BOMBERADOS:
+«NO ES UN JUEGO. ES LO QUE TE VA A DAR LA PLAZA».
+
+CÓMO LO HE ADAPTADO (análisis del mensaje, bomberados/MENSAJE.md, y el plan del 11 nov que está en la fila de Notion):
+los vídeos en los que la app o el opositor estudiando son el protagonista se han quedado en 3.900–7.600 vistas (autobús,
+FOMO, Profe IA); los de bomberos en acción en 3D, en 20.000–106.000. Así que el 1 vs 1 de Adrián es el MARCO y la
+pregunta del duelo es de BOMBEROS EN ACCIÓN y la entiende cualquiera:
+- UNA idea: a un coche en llamas no se entra de frente: por delante y por detrás pueden salir piezas disparadas
+  (los amortiguadores del parachoques); se entra en diagonal, a 45 grados.
+- Tú dentro y en juego: llevas la manguera y tu rival ya ha contestado.
+- La trampa se VE: el rival va de frente y el amortiguador sale disparado (a cámara lenta, le pasa rozando).
+- El «¡ajá!» se ve con un número redondo: el coche visto desde arriba, las dos zonas rojas (delante y detrás) y tus
+  dos diagonales de 45°.
+- De Adrián se queda: el 1 vs 1 con la ruleta (cae en VEHÍCULOS), la cuenta atrás, el marcador (TÚ +1), «¿A QUIÉN VAS
+  A RETAR HOY?», «NO ES UN JUEGO. ES LO QUE TE VA A DAR LA PLAZA» y la grabación REAL del 1 vs 1 al final.
+- Cierre que se contesta sin saber nada: «¿Tú habrías ido de frente? Confiésalo».
+(La sartén con aceite que te había planteado antes ya salió el 29 oct como V o F; por eso la cambio por el coche.)
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 42 s de voz + 4 s de cuenta (≈ 46 s). RÁPIDO y con urgencia. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina
+en el 5). Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[alarmed, urgent] ¡Un coche en LLAMAS… [tense] y tu rival YA ha contestado!
+[fast] Llevas la manguera: [quick] ¿te acercas de frente, por detrás… [teasing] o en diagonal?
+[challenging] Comenta tu letra: [urgent] tienes CINCO segundos.
+[alarmed] ¡Tiempo! [grave] Tu rival ha ido de frente… [shocked] ¡y el amortiguador del parachoques sale DISPARADO!
+[excited] Si has dicho en diagonal… ¡punto para ti! [explaining] Por delante y por detrás pueden salir piezas disparadas: [confident] tú, por la esquina, a CUARENTA Y CINCO grados.
+[serious] En el examen de Madrid hubo casi CINCO por plaza: [emphatic] no tienes un rival… ¡tienes CUATRO!
+[playful] ¿Tú habrías ido de frente? [teasing] Confiésalo en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo… [challenging] a ver quién gana!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — 3D de noche, un DRON QUE NO PARA y planos abiertos:
+1. «¡Un coche en llamas… y tu rival ya ha contestado!» — primer fotograma: un coche ardiendo entero en el arcén, de
+   noche; detrás, la autobomba con los rotativos y tú con la manguera. Arriba, el marcador del 1 vs 1 (TÚ 0 · RIVAL 0),
+   la ruleta que cae en VEHÍCULOS y, en el rival, «✓ YA HA CONTESTADO».
+2. «Llevas la manguera: ¿te acercas de frente, por detrás… o en diagonal?» — en el asfalto se dibujan los tres caminos
+   hacia el coche (A de frente, B por detrás, C en diagonal) y salen las tres tarjetas.
+3. «Comenta tu letra: tienes cinco segundos.» — cuenta 1-2-3-4-5 con bocina; el dron gira alrededor del coche.
+4. «¡Tiempo! Tu rival ha ido de frente… ¡y el amortiguador del parachoques sale disparado!» — el rival (un holograma
+   rojo) avanza de frente y, a cámara lenta, el amortiguador sale volando del parachoques y le pasa rozando; la A, tachada.
+5. «Si has dicho en diagonal… ¡punto para ti! Por delante y por detrás pueden salir piezas disparadas: tú, por la
+   esquina, a cuarenta y cinco grados.» — TÚ +1; el coche se ve desde arriba con rayos X: los amortiguadores de delante y
+   de detrás y sus zonas rojas; tú entras por la esquina por la línea de 45° y abres la lanza.
+6. «En el examen de Madrid hubo casi cinco por plaza: no tienes un rival… tienes cuatro.» — 1.285 PRESENTADOS · 267
+   PLAZAS; alrededor aparecen cuatro hologramas de rival y el marcador pasa de 1 a 4 rivales.
+7. «¿Tú habrías ido de frente? Confiésalo en comentarios.» — las tarjetas: A y B tachadas, C en verde; 💬 CONFIÉSALO.
+8. ★ «¡Mándaselo a quien oposite contigo… a ver quién gana!» — avión de papel con «¿A QUIÉN VAS A RETAR HOY?».
+9. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS, la grabación real del 1 vs 1
+   (la ruleta) en el móvil y «NO ES UN JUEGO. ES LO QUE TE VA A DAR LA PLAZA».
