@@ -1,0 +1,315 @@
+{
+ "formato": "seguridad",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 4.05,
+  "count_line": 3,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿LA ACERTARÁ?",
+ "portada": {
+  "titulo": "¿QUÉ TE SALVA ANTES DEL GOLPE?",
+  "etiqueta": "¡FRENA!",
+  "t": 1.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "frena": [
+   "¡Frena!",
+   1,
+   1
+  ],
+  "coche": [
+   "coche",
+   1,
+   1
+  ],
+  "accidentado": [
+   "accidentado",
+   1,
+   1
+  ],
+  "carril": [
+   "carril…",
+   1,
+   1
+  ],
+  "lloviendo": [
+   "lloviendo!",
+   1,
+   1
+  ],
+  "como": [
+   "¿Cómo",
+   1,
+   2
+  ],
+  "sistemas": [
+   "sistemas",
+   1,
+   2
+  ],
+  "evitan": [
+   "evitan",
+   1,
+   2
+  ],
+  "impacto": [
+   "impacto?",
+   1,
+   2
+  ],
+  "optA": [
+   "activa,",
+   1,
+   3
+  ],
+  "optB": [
+   "pasiva",
+   1,
+   3
+  ],
+  "optC": [
+   "activa",
+   2,
+   3
+  ],
+  "dinamica2": [
+   "dinámica?",
+   2,
+   3
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   4
+  ],
+  "cinco": [
+   "cinco",
+   1,
+   4
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   5
+  ],
+  "pasivaT": [
+   "«pasiva»…",
+   1,
+   5
+  ],
+  "trampa": [
+   "trampa.",
+   1,
+   5
+  ],
+  "activa": [
+   "activa",
+   1,
+   6
+  ],
+  "antes": [
+   "antes",
+   1,
+   6
+  ],
+  "frenos": [
+   "frenos",
+   1,
+   6
+  ],
+  "abs": [
+   "ABS,",
+   1,
+   6
+  ],
+  "control": [
+   "control",
+   1,
+   6
+  ],
+  "estabilidad": [
+   "estabilidad,",
+   1,
+   6
+  ],
+  "neumaticos": [
+   "neumáticos,",
+   1,
+   6
+  ],
+  "direccion": [
+   "dirección,",
+   1,
+   6
+  ],
+  "suspension": [
+   "suspensión",
+   1,
+   6
+  ],
+  "luces": [
+   "luces.",
+   1,
+   6
+  ],
+  "pasiva": [
+   "pasiva,",
+   1,
+   7
+  ],
+  "durante": [
+   "durante:",
+   1,
+   7
+  ],
+  "cinturon": [
+   "cinturón,",
+   1,
+   7
+  ],
+  "airbags": [
+   "airbags,",
+   1,
+   7
+  ],
+  "reposa": [
+   "reposacabezas",
+   1,
+   7
+  ],
+  "carroceria": [
+   "carrocería",
+   1,
+   7
+  ],
+  "deforma": [
+   "deforma",
+   1,
+   7
+  ],
+  "proteger": [
+   "proteger",
+   1,
+   7
+  ],
+  "habitaculo": [
+   "habitáculo.",
+   1,
+   7
+  ],
+  "activa2": [
+   "Activa:",
+   1,
+   8
+  ],
+  "evita": [
+   "evita",
+   1,
+   8
+  ],
+  "choque": [
+   "choque.",
+   1,
+   8
+  ],
+  "pasiva2": [
+   "Pasiva:",
+   1,
+   8
+  ],
+  "reduce": [
+   "reduce",
+   1,
+   8
+  ],
+  "dano": [
+   "daño.",
+   1,
+   8
+  ],
+  "ojo": [
+   "ojo,",
+   1,
+   9
+  ],
+  "bombero": [
+   "bombero:",
+   1,
+   9
+  ],
+  "airbag": [
+   "airbag",
+   1,
+   9
+  ],
+  "sin": [
+   "sin",
+   1,
+   9
+  ],
+  "saltar2": [
+   "saltar",
+   2,
+   9
+  ],
+  "rescatas": [
+   "rescatas.",
+   1,
+   9
+  ],
+  "escribe": [
+   "Escribe",
+   1,
+   10
+  ],
+  "comentarios": [
+   "comentarios",
+   1,
+   10
+  ],
+  "correcta": [
+   "correcta.",
+   1,
+   10
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   11
+  ],
+  "acierta": [
+   "acierta!",
+   1,
+   11
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   12
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   12
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   12
+  ]
+ }
+}

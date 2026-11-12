@@ -1,0 +1,706 @@
+[
+ {
+  "text": "¡Frena! Hay un coche accidentado en tu carril… ¡y está lloviendo!",
+  "start": 0.0,
+  "end": 3.84,
+  "words": [
+   {
+    "w": "¡Frena!",
+    "start": 0.0,
+    "end": 0.326
+   },
+   {
+    "w": "Hay",
+    "start": 0.426,
+    "end": 0.609
+   },
+   {
+    "w": "un",
+    "start": 0.609,
+    "end": 0.791
+   },
+   {
+    "w": "coche",
+    "start": 0.791,
+    "end": 1.117
+   },
+   {
+    "w": "accidentado",
+    "start": 1.117,
+    "end": 1.871
+   },
+   {
+    "w": "en",
+    "start": 1.871,
+    "end": 2.054
+   },
+   {
+    "w": "tu",
+    "start": 2.054,
+    "end": 2.237
+   },
+   {
+    "w": "carril…",
+    "start": 2.237,
+    "end": 2.563
+   },
+   {
+    "w": "¡y",
+    "start": 2.863,
+    "end": 3.046
+   },
+   {
+    "w": "está",
+    "start": 3.046,
+    "end": 3.371
+   },
+   {
+    "w": "lloviendo!",
+    "start": 3.371,
+    "end": 3.84
+   }
+  ]
+ },
+ {
+  "text": "¿Cómo se llama el conjunto de sistemas que evitan el impacto?",
+  "start": 4.14,
+  "end": 7.58,
+  "words": [
+   {
+    "w": "¿Cómo",
+    "start": 4.14,
+    "end": 4.466
+   },
+   {
+    "w": "se",
+    "start": 4.466,
+    "end": 4.649
+   },
+   {
+    "w": "llama",
+    "start": 4.649,
+    "end": 4.974
+   },
+   {
+    "w": "el",
+    "start": 4.974,
+    "end": 5.157
+   },
+   {
+    "w": "conjunto",
+    "start": 5.157,
+    "end": 5.626
+   },
+   {
+    "w": "de",
+    "start": 5.626,
+    "end": 5.809
+   },
+   {
+    "w": "sistemas",
+    "start": 5.809,
+    "end": 6.277
+   },
+   {
+    "w": "que",
+    "start": 6.277,
+    "end": 6.46
+   },
+   {
+    "w": "evitan",
+    "start": 6.46,
+    "end": 6.929
+   },
+   {
+    "w": "el",
+    "start": 6.929,
+    "end": 7.111
+   },
+   {
+    "w": "impacto?",
+    "start": 7.111,
+    "end": 7.58
+   }
+  ]
+ },
+ {
+  "text": "¿Seguridad activa, pasiva dinámica… o activa dinámica?",
+  "start": 7.88,
+  "end": 11.703,
+  "words": [
+   {
+    "w": "¿Seguridad",
+    "start": 7.88,
+    "end": 8.491
+   },
+   {
+    "w": "activa,",
+    "start": 8.491,
+    "end": 8.96
+   },
+   {
+    "w": "pasiva",
+    "start": 9.06,
+    "end": 9.529
+   },
+   {
+    "w": "dinámica…",
+    "start": 9.529,
+    "end": 10.14
+   },
+   {
+    "w": "o",
+    "start": 10.44,
+    "end": 10.623
+   },
+   {
+    "w": "activa",
+    "start": 10.623,
+    "end": 11.091
+   },
+   {
+    "w": "dinámica?",
+    "start": 11.091,
+    "end": 11.703
+   }
+  ]
+ },
+ {
+  "text": "Comenta tu letra. Tienes cinco segundos.",
+  "start": 12.003,
+  "end": 14.2,
+  "words": [
+   {
+    "w": "Comenta",
+    "start": 12.003,
+    "end": 12.472
+   },
+   {
+    "w": "tu",
+    "start": 12.472,
+    "end": 12.654
+   },
+   {
+    "w": "letra.",
+    "start": 12.654,
+    "end": 12.98
+   },
+   {
+    "w": "Tienes",
+    "start": 13.08,
+    "end": 13.406
+   },
+   {
+    "w": "cinco",
+    "start": 13.406,
+    "end": 13.732
+   },
+   {
+    "w": "segundos.",
+    "start": 13.732,
+    "end": 14.2
+   }
+  ]
+ },
+ {
+  "text": "¡Tiempo! Si has dicho «pasiva»… has caído en la trampa.",
+  "start": 18.55,
+  "end": 21.636,
+  "words": [
+   {
+    "w": "¡Tiempo!",
+    "start": 18.55,
+    "end": 18.876
+   },
+   {
+    "w": "Si",
+    "start": 18.976,
+    "end": 19.159
+   },
+   {
+    "w": "has",
+    "start": 19.159,
+    "end": 19.341
+   },
+   {
+    "w": "dicho",
+    "start": 19.341,
+    "end": 19.667
+   },
+   {
+    "w": "«pasiva»…",
+    "start": 19.667,
+    "end": 20.136
+   },
+   {
+    "w": "has",
+    "start": 20.436,
+    "end": 20.619
+   },
+   {
+    "w": "caído",
+    "start": 20.619,
+    "end": 20.944
+   },
+   {
+    "w": "en",
+    "start": 20.944,
+    "end": 21.127
+   },
+   {
+    "w": "la",
+    "start": 21.127,
+    "end": 21.31
+   },
+   {
+    "w": "trampa.",
+    "start": 21.31,
+    "end": 21.636
+   }
+  ]
+ },
+ {
+  "text": "La activa trabaja antes del golpe: frenos con ABS, control de estabilidad, neumáticos, dirección, suspensión y luces.",
+  "start": 21.936,
+  "end": 28.482,
+  "words": [
+   {
+    "w": "La",
+    "start": 21.936,
+    "end": 22.119
+   },
+   {
+    "w": "activa",
+    "start": 22.119,
+    "end": 22.587
+   },
+   {
+    "w": "trabaja",
+    "start": 22.587,
+    "end": 23.056
+   },
+   {
+    "w": "antes",
+    "start": 23.056,
+    "end": 23.382
+   },
+   {
+    "w": "del",
+    "start": 23.382,
+    "end": 23.565
+   },
+   {
+    "w": "golpe:",
+    "start": 23.565,
+    "end": 23.89
+   },
+   {
+    "w": "frenos",
+    "start": 24.07,
+    "end": 24.396
+   },
+   {
+    "w": "con",
+    "start": 24.396,
+    "end": 24.579
+   },
+   {
+    "w": "ABS,",
+    "start": 24.579,
+    "end": 24.762
+   },
+   {
+    "w": "control",
+    "start": 24.862,
+    "end": 25.187
+   },
+   {
+    "w": "de",
+    "start": 25.187,
+    "end": 25.37
+   },
+   {
+    "w": "estabilidad,",
+    "start": 25.37,
+    "end": 26.125
+   },
+   {
+    "w": "neumáticos,",
+    "start": 26.225,
+    "end": 26.836
+   },
+   {
+    "w": "dirección,",
+    "start": 26.936,
+    "end": 27.405
+   },
+   {
+    "w": "suspensión",
+    "start": 27.505,
+    "end": 27.973
+   },
+   {
+    "w": "y",
+    "start": 27.973,
+    "end": 28.156
+   },
+   {
+    "w": "luces.",
+    "start": 28.156,
+    "end": 28.482
+   }
+  ]
+ },
+ {
+  "text": "La pasiva, durante: cinturón, airbags, reposacabezas y una carrocería que se deforma para proteger el habitáculo.",
+  "start": 28.782,
+  "end": 35.759,
+  "words": [
+   {
+    "w": "La",
+    "start": 28.782,
+    "end": 28.965
+   },
+   {
+    "w": "pasiva,",
+    "start": 28.965,
+    "end": 29.433
+   },
+   {
+    "w": "durante:",
+    "start": 29.533,
+    "end": 30.002
+   },
+   {
+    "w": "cinturón,",
+    "start": 30.182,
+    "end": 30.651
+   },
+   {
+    "w": "airbags,",
+    "start": 30.751,
+    "end": 31.076
+   },
+   {
+    "w": "reposacabezas",
+    "start": 31.176,
+    "end": 32.073
+   },
+   {
+    "w": "y",
+    "start": 32.073,
+    "end": 32.256
+   },
+   {
+    "w": "una",
+    "start": 32.256,
+    "end": 32.582
+   },
+   {
+    "w": "carrocería",
+    "start": 32.582,
+    "end": 33.193
+   },
+   {
+    "w": "que",
+    "start": 33.193,
+    "end": 33.376
+   },
+   {
+    "w": "se",
+    "start": 33.376,
+    "end": 33.559
+   },
+   {
+    "w": "deforma",
+    "start": 33.559,
+    "end": 34.028
+   },
+   {
+    "w": "para",
+    "start": 34.028,
+    "end": 34.353
+   },
+   {
+    "w": "proteger",
+    "start": 34.353,
+    "end": 34.822
+   },
+   {
+    "w": "el",
+    "start": 34.822,
+    "end": 35.005
+   },
+   {
+    "w": "habitáculo.",
+    "start": 35.005,
+    "end": 35.759
+   }
+  ]
+ },
+ {
+  "text": "Activa: evita el choque. Pasiva: reduce el daño.",
+  "start": 36.059,
+  "end": 39.41,
+  "words": [
+   {
+    "w": "Activa:",
+    "start": 36.059,
+    "end": 36.528
+   },
+   {
+    "w": "evita",
+    "start": 36.708,
+    "end": 37.176
+   },
+   {
+    "w": "el",
+    "start": 37.176,
+    "end": 37.359
+   },
+   {
+    "w": "choque.",
+    "start": 37.359,
+    "end": 37.685
+   },
+   {
+    "w": "Pasiva:",
+    "start": 37.785,
+    "end": 38.253
+   },
+   {
+    "w": "reduce",
+    "start": 38.433,
+    "end": 38.902
+   },
+   {
+    "w": "el",
+    "start": 38.902,
+    "end": 39.085
+   },
+   {
+    "w": "daño.",
+    "start": 39.085,
+    "end": 39.41
+   }
+  ]
+ },
+ {
+  "text": "Y ojo, bombero: un airbag sin saltar… puede saltar mientras rescatas.",
+  "start": 39.71,
+  "end": 43.73,
+  "words": [
+   {
+    "w": "Y",
+    "start": 39.71,
+    "end": 39.893
+   },
+   {
+    "w": "ojo,",
+    "start": 39.893,
+    "end": 40.219
+   },
+   {
+    "w": "bombero:",
+    "start": 40.319,
+    "end": 40.787
+   },
+   {
+    "w": "un",
+    "start": 40.967,
+    "end": 41.15
+   },
+   {
+    "w": "airbag",
+    "start": 41.15,
+    "end": 41.476
+   },
+   {
+    "w": "sin",
+    "start": 41.476,
+    "end": 41.659
+   },
+   {
+    "w": "saltar…",
+    "start": 41.659,
+    "end": 41.984
+   },
+   {
+    "w": "puede",
+    "start": 42.284,
+    "end": 42.61
+   },
+   {
+    "w": "saltar",
+    "start": 42.61,
+    "end": 42.936
+   },
+   {
+    "w": "mientras",
+    "start": 42.936,
+    "end": 43.261
+   },
+   {
+    "w": "rescatas.",
+    "start": 43.261,
+    "end": 43.73
+   }
+  ]
+ },
+ {
+  "text": "Escribe en comentarios cuál crees que es la correcta.",
+  "start": 44.03,
+  "end": 46.676,
+  "words": [
+   {
+    "w": "Escribe",
+    "start": 44.03,
+    "end": 44.499
+   },
+   {
+    "w": "en",
+    "start": 44.499,
+    "end": 44.681
+   },
+   {
+    "w": "comentarios",
+    "start": 44.681,
+    "end": 45.293
+   },
+   {
+    "w": "cuál",
+    "start": 45.293,
+    "end": 45.476
+   },
+   {
+    "w": "crees",
+    "start": 45.476,
+    "end": 45.659
+   },
+   {
+    "w": "que",
+    "start": 45.659,
+    "end": 45.841
+   },
+   {
+    "w": "es",
+    "start": 45.841,
+    "end": 46.024
+   },
+   {
+    "w": "la",
+    "start": 46.024,
+    "end": 46.207
+   },
+   {
+    "w": "correcta.",
+    "start": 46.207,
+    "end": 46.676
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien oposite contigo, a ver si la acierta!",
+  "start": 46.976,
+  "end": 51.476,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 46.976,
+    "end": 47.816
+   },
+   {
+    "w": "a",
+    "start": 47.816,
+    "end": 48.056
+   },
+   {
+    "w": "quien",
+    "start": 48.056,
+    "end": 48.296
+   },
+   {
+    "w": "oposite",
+    "start": 48.296,
+    "end": 49.136
+   },
+   {
+    "w": "contigo,",
+    "start": 49.136,
+    "end": 49.776
+   },
+   {
+    "w": "a",
+    "start": 49.876,
+    "end": 50.116
+   },
+   {
+    "w": "ver",
+    "start": 50.116,
+    "end": 50.356
+   },
+   {
+    "w": "si",
+    "start": 50.356,
+    "end": 50.596
+   },
+   {
+    "w": "la",
+    "start": 50.596,
+    "end": 50.836
+   },
+   {
+    "w": "acierta!",
+    "start": 50.836,
+    "end": 51.476
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 51.776,
+  "end": 56.296,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 51.776,
+    "end": 52.616
+   },
+   {
+    "w": "a",
+    "start": 52.616,
+    "end": 52.856
+   },
+   {
+    "w": "bombero?",
+    "start": 52.856,
+    "end": 53.496
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 53.596,
+    "end": 54.436
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 54.536,
+    "end": 55.176
+   },
+   {
+    "w": "gratis",
+    "start": 55.176,
+    "end": 55.616
+   },
+   {
+    "w": "cinco",
+    "start": 55.616,
+    "end": 56.056
+   },
+   {
+    "w": "días!",
+    "start": 56.056,
+    "end": 56.296
+   }
+  ]
+ }
+]

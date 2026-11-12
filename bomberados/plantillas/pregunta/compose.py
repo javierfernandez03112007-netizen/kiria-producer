@@ -1825,7 +1825,132 @@ def sfx_track_quiz(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_seguridad(path):
+    """«¿Qué te salva antes del golpe?» (seguridad activa y pasiva): lluvia y motor a 90 km/h, ¡FRENA! (frenazo que se
+    estira en la cámara lenta, latido y tensión), las tarjetas y la cuenta 1 → 5 con bocina, «¡Tiempo!» con la B tachada;
+    la ACTIVA pieza a pieza (ABS que traquetea, ESP, agua de las ruedas, dirección, suspensión, largas) y el coche que se para
+    a 1 m; la PASIVA en «rayos X» (rebobinado, cinturón, airbags, reposacabezas, el golpe que arruga el morro, la jaula);
+    la autobomba que llega con la sirena, la radio y la cizalla, el aviso del airbag sin saltar, las letras y la venta.
+    Tiempos como en seguridad.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["count0"] = LINES[3]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["stop"] = c["luces"] + 0.2
+    T["tb"] = min(c["frena"] + 0.22, c["coche"] - 0.15)
+    T["truck0"] = c["pasiva"] + 0.6; T["truck1"] = c["habitaculo"] + 0.4
+    nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
+    lluvia, motor, fren = _load("lluvia_fuera"), _load("motor"), _onset(_load("frenazo"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # lluvia todo el vídeo (más fuerte en el gancho); motor a 90 km/h hasta que frena, y grave en la cámara lenta
+    put(_loop(lluvia, END + 0.5), 0.0, -27, END + 0.5, 0.01, 0.6, track=amb)
+    put(_loop(lluvia, 4.0), 0.0, -26, c["como"], 0.01, 0.8)
+    put(_loop(motor, 4.0), 0.0, -25, T["tb"] + 0.4, 0.01, 0.3)
+    put(_loop(_pitch(motor, 0.55), T["stop"] - T["tb"] + 1.0), T["tb"] + 0.2, -31, T["stop"] - T["tb"], 0.4, 0.5, track=amb)
+    # ¡FRENA!: frenazo (y luego estirado y grave: cámara lenta), latido y tensión
+    put(fren, T["tb"] - 0.06, -19, 1.3, 0.003, 0.4)
+    put("golpe", T["tb"] - 0.04, -24, 0.7, 0.003, 0.3)
+    slow = _pitch(fren, 0.5)
+    put(slow, c["coche"] + 0.4, -27, min(3.0, c["como"] - c["coche"]), 0.2, 0.8)
+    t = c["coche"] + 0.3
+    while t < c["optA"]:
+        put("latido", t, -24, 0.7); t += 0.95
+    put("tension", c["coche"], -30, c["tiempo"] - c["coche"] + 0.3, 0.6, 0.2, track=amb)
+    put("whoosh", c["como"] - 0.3, -28, 0.7)
+    put(_pitch(nota, 1.3), c["impacto"] - 0.03, -30, 0.9)
+    # opciones (una nota por tarjeta), cuenta 1 → 5 con bocina, «¡Tiempo!» con la B tachada
+    for k, key in enumerate(("optA", "optB", "optC")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    put(toque, c["comenta"] - 0.05, -28, 0.35)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    put("fallo", c["tiempo"] + 0.12, -26, 0.5)
+    put("whoosh2", c["tiempo"] + 0.2, -29, 0.8)
+    put(toque, c["trampa"] - 0.05, -28, 0.35)
+    # ACTIVA: cada pieza al nombrarla; el coche se para a 1 m en «luces»
+    put("destello", c["activa"] - 0.12, -27, 0.6)
+    put("whoosh", c["frenos"] - 0.3, -29, 0.6)
+    rele = _onset(_load("rele"))
+    for k in range(7):
+        put(rele, c["abs"] - 0.02 + k * 0.11, -27 - (k % 2) * 2, 0.1, 0.002, 0.03)
+    put("whoosh2", c["control"] - 0.2, -29, 0.8)
+    put(_pitch(_load("agua"), 1.2), c["neumaticos"] - 0.1, -28, 0.9, 0.05, 0.3)
+    put("llave", c["direccion"] - 0.03, -28, 0.4)
+    put(_pitch(_onset(_load("golpe")), 0.7), c["suspension"] - 0.03, -28, 0.6, 0.003, 0.3)
+    for k, key in enumerate(("frenos", "control", "neumaticos", "direccion", "suspension", "luces")):
+        put(_pitch(toque, 1.0 + 0.07 * k), c[key] + 0.02, -30, 0.3)
+    put("destello", c["luces"] - 0.06, -25, 0.6)
+    put(_pitch(_onset(_load("golpe")), 0.6), T["stop"] - 0.02, -24, 0.8, 0.003, 0.4)
+    put("acierto", T["stop"] + 0.02, -27, 0.8)
+    # PASIVA en «rayos X»: rebobinado y el golpe pieza a pieza
+    rew = _onset(_load("whoosh2"))[::-1].copy()
+    put(rew, c["pasiva"] - 0.45, -27, 0.6, 0.05, 0.05)
+    put("glitch", c["pasiva"] - 0.05, -31, 0.3)
+    put("llave", c["cinturon"] - 0.03, -24, 0.4)
+    put(_pitch(_onset(_load("golpe")), 1.5), c["airbags"] - 0.04, -21, 0.4, 0.002, 0.2)
+    put("aire", c["airbags"] - 0.02, -25, 0.6, 0.005, 0.3)
+    put(_pitch(toque, 0.9), c["reposa"] - 0.02, -28, 0.35)
+    put("golpe", c["deforma"] - 0.02, -18, 1.0, 0.002, 0.45)
+    put("cristales", c["deforma"] + 0.02, -24, 1.0)
+    put("destello", c["habitaculo"] - 0.08, -26, 0.7)
+    put(_pitch(nota, 1.5), c["habitaculo"] + 0.05, -30, 0.8)
+    # la autobomba llega con la sirena (y se apaga al aparcar); resumen
+    sir = _load("sirena")
+    put(_loop(sir, T["truck1"] - T["truck0"] + 1.0), T["truck0"] - 0.3, -29, T["truck1"] - T["truck0"] + 0.8, 0.8, 0.6, track=amb)
+    put(_loop(_pitch(motor, 0.8), T["truck1"] - T["truck0"] + 1.5), T["truck0"], -31, T["truck1"] - T["truck0"] + 1.0, 0.8, 0.8, track=amb)
+    put(toque, c["activa2"] - 0.03, -27, 0.35)
+    put(_pitch(toque, 1.2), c["pasiva2"] - 0.03, -27, 0.35)
+    # ojo, bombero: radio, la cizalla y el aviso del airbag sin saltar
+    put("radio", c["activa2"] + 0.3, -33, 1.5, 0.05, 0.3, track=amb)
+    put(_loop(_pitch(motor, 1.7), 3.0), c["ojo"] - 0.3, -32, c["saltar2"] - c["ojo"] + 0.3, 0.2, 0.2)
+    for k in range(3):
+        put(_pitch(nota, 2.0), c["airbag"] + k * 0.22, -27, 0.18)
+    put("alarma", c["saltar2"] - 0.05, -28, 0.9, 0.005, 0.3)
+    put("golpe", c["saltar2"] - 0.03, -24, 0.6, 0.003, 0.3)
+    # «Escribe en comentarios…»: el dron sube y vuelven las letras
+    put("whoosh2", c["escribe"] - 0.3, -27, 0.8)
+    for i in range(3):
+        put(_pitch(bub, 1 + 0.06 * i), c["escribe"] - 0.2 + 0.07 * i, -27, 0.25)
+    put(_pitch(nota, 1.5), c["correcta"] - 0.03, -29, 0.9)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "seguridad":
+        return sfx_track_seguridad(path)
     if Q.get("formato") == "quiz":
         return sfx_track_quiz(path)
     if Q.get("formato") == "mangueras":
