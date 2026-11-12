@@ -1,0 +1,11 @@
+[urgent, alarmed] ¡Alguien atrapado en el ÚLTIMO piso… [tense] y el humo tapa el edificio!
+[fast] Solo tienes el plano: ahí mide SIETE centímetros. De verdad, VEINTIÚN metros.
+[quick] ¿A qué escala está? ¿Uno entre treinta, trescientos, tres mil… [teasing] o ciento cincuenta?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [amused] Con uno entre treinta… [laughs] ¡el edificio sería una caseta de dos metros!
+[explaining] Mira el plano: cada centímetro es un PISO.
+[building up] Uno, dos, tres… [excited] ¡siete pisos de tres metros: VEINTIÚN metros! [relieved] Y tu escalera llega.
+[teasing] Ahora pasa esos tres metros a centímetros… y tendrás la escala.
+[challenging] Escribe tu letra… [playful] y si te has comido algún cero, confiésalo.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

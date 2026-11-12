@@ -1,0 +1,240 @@
+{
+ "formato": "escala",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 4.05,
+  "count_line": 3,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "TU COMPAÑERO DE OPOSICIÓN",
+ "compartir_titulo": "¿LA ACERTARÁ?",
+ "portada": {
+  "titulo": "¿A QUÉ ESCALA ESTÁ EL PLANO?",
+  "etiqueta": "¡ATRAPADO EN EL ÚLTIMO PISO!",
+  "t": 1.2,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "hay": [
+   "¡Alguien",
+   1,
+   1
+  ],
+  "atrapado": [
+   "atrapado",
+   1,
+   1
+  ],
+  "piso": [
+   "piso…",
+   1,
+   1
+  ],
+  "humo": [
+   "humo",
+   1,
+   1
+  ],
+  "edificio": [
+   "edificio!",
+   1,
+   1
+  ],
+  "plano": [
+   "plano:",
+   1,
+   2
+  ],
+  "siete": [
+   "siete",
+   1,
+   2
+  ],
+  "verdad": [
+   "verdad,",
+   1,
+   2
+  ],
+  "veintiun": [
+   "veintiún",
+   1,
+   2
+  ],
+  "metros": [
+   "metros.",
+   1,
+   2
+  ],
+  "escala": [
+   "escala",
+   1,
+   3
+  ],
+  "o30": [
+   "treinta,",
+   1,
+   3
+  ],
+  "o300": [
+   "trescientos,",
+   1,
+   3
+  ],
+  "o3000": [
+   "tres",
+   1,
+   3
+  ],
+  "o150": [
+   "ciento",
+   1,
+   3
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   4
+  ],
+  "cinco": [
+   "cinco",
+   1,
+   4
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   5
+  ],
+  "treinta5": [
+   "treinta…",
+   1,
+   5
+  ],
+  "caseta": [
+   "caseta",
+   1,
+   5
+  ],
+  "dos5": [
+   "dos",
+   1,
+   5
+  ],
+  "mira": [
+   "Mira",
+   1,
+   6
+  ],
+  "centimetro": [
+   "centímetro",
+   1,
+   6
+  ],
+  "piso6": [
+   "piso.",
+   1,
+   6
+  ],
+  "uno7": [
+   "Uno,",
+   1,
+   7
+  ],
+  "dos7": [
+   "dos,",
+   1,
+   7
+  ],
+  "tres7": [
+   "tres…",
+   1,
+   7
+  ],
+  "pisos7": [
+   "pisos",
+   1,
+   7
+  ],
+  "tresm7": [
+   "tres",
+   2,
+   7
+  ],
+  "veintiun7": [
+   "veintiún",
+   1,
+   7
+  ],
+  "escalera": [
+   "escalera",
+   1,
+   7
+  ],
+  "llega": [
+   "llega.",
+   1,
+   7
+  ],
+  "pasa": [
+   "pasa",
+   1,
+   8
+  ],
+  "centimetros8": [
+   "centímetros…",
+   1,
+   8
+  ],
+  "escala8": [
+   "escala.",
+   1,
+   8
+  ],
+  "escribe": [
+   "Escribe",
+   1,
+   9
+  ],
+  "cero": [
+   "cero,",
+   1,
+   9
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   10
+  ],
+  "acierta": [
+   "acierta!",
+   1,
+   10
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   11
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   11
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   11
+  ]
+ }
+}

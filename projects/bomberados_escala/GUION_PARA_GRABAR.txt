@@ -1,0 +1,54 @@
+«¿A QUÉ ESCALA ESTÁ EL PLANO?» — pregunta de ADRIÁN (Notion «DOMINGO 15 PREGUNTA EXPLICADA»; examen del Ayto. de
+Málaga 2025): «Si un edificio tiene una altura de 21 metros y sobre plano esa altura mide 7 cm, ¿a qué escala se encuentra
+el plano? a) 1:30 b) 1:300 c) 1:3000 d) 1:150».
+
+EL MENSAJE (lo nuevo, según el análisis de los virales: bomberados/MENSAJE.md y la página de Notion «El mensaje de los
+vídeos que funcionan»):
+- UNA idea, de cómo trabaja un bombero y que entiende cualquiera: «en este plano, cada centímetro es un piso».
+- Alguien en juego y tú dentro: hay una persona atrapada en el último piso, el humo tapa el edificio y solo tienes el plano.
+- La trampa se VE: con 1:30 el edificio sería una caseta de dos metros (el edificio encoge en pantalla).
+- El «¡ajá!» se ve con números redondos: uno, dos, tres… siete pisos de tres metros = 21 metros, y la escalera llega.
+- Sin decir la respuesta: el último paso (pasar los 3 metros a centímetros) lo hace el que lo ve, en comentarios.
+- Cierre que se puede contestar sin saber la letra: «si te has comido algún cero, confiésalo».
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 45 s de voz + 4 s de cuenta (≈ 50 s). RÁPIDO y con urgencia. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en
+el 5). «Uno, dos, tres…», contando con emoción mientras sube la escalera. Lo más fuerte, el final: «¡MÁNDASELO…!»,
+«¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Alguien atrapado en el ÚLTIMO piso… [tense] y el humo tapa el edificio!
+[fast] Solo tienes el plano: ahí mide SIETE centímetros. De verdad, VEINTIÚN metros.
+[quick] ¿A qué escala está? ¿Uno entre treinta, trescientos, tres mil… [teasing] o ciento cincuenta?
+[challenging] Comenta tu letra. [urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [amused] Con uno entre treinta… [laughs] ¡el edificio sería una caseta de dos metros!
+[explaining] Mira el plano: cada centímetro es un PISO.
+[building up] Uno, dos, tres… [excited] ¡siete pisos de tres metros: VEINTIÚN metros! [relieved] Y tu escalera llega.
+[teasing] Ahora pasa esos tres metros a centímetros… y tendrás la escala.
+[challenging] Escribe tu letra… [playful] y si te has comido algún cero, confiésalo.
+[excited, emphatic] ¡MÁNDASELO a quien oposíte contigo, a ver si la acierta!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+(«oposíte» va con tilde a propósito: sin ella Danny dice «opósite».)
+
+GUION COMPLETO (voz y pantalla) — 3D de noche, un DRON QUE NO PARA y planos abiertos:
+1. «¡Alguien atrapado en el último piso… y el humo tapa el edificio!» — primer fotograma: un edificio de siete plantas
+   envuelto en humo y, arriba del todo, alguien en la ventana con la linterna del móvil; abajo, la autoescala con las luces.
+2. «Solo tienes el plano: ahí mide siete centímetros. De verdad, veintiún metros.» — el bombero (tú) despliega el plano
+   sobre el camión: la regla marca 7 CM; el dron sube por la fachada con la cota 21 M.
+3. «¿A qué escala está?…» — las tarjetas A 1:30 · B 1:300 · C 1:3000 · D 1:150 y el sello EXAMEN · AYTO. DE MÁLAGA 2025.
+4. «Comenta tu letra. Tienes cinco segundos.» — cuenta 1-2-3-4-5 con bocina; el dron gira alrededor del edificio.
+5. «¡Tiempo! Con uno entre treinta… ¡el edificio sería una caseta de dos metros!» — la A, roja y tachada, y el edificio
+   ENCOGE hasta ser una caseta al lado del camión (y vuelve).
+6. «Mira el plano: cada centímetro es un piso.» — la regla del plano se parte en 7 centímetros y cada uno salta a su planta.
+7. «Uno, dos, tres… ¡siete pisos de tres metros: veintiún metros! Y tu escalera llega.» — las plantas se encienden una a una
+   (3 · 6 · 9 … 21 M) mientras la autoescala sube a la vez y llega a la ventana del último piso.
+8. «Ahora pasa esos tres metros a centímetros… y tendrás la escala.» — «1 CM = 3 M = ¿? CM» y «1 : ¿?».
+9. «Escribe tu letra… y si te has comido algún cero, confiésalo.» — vuelven las tarjetas (la A tachada) y «💬 ESCRIBE TU LETRA».
+10. ★ «¡Mándaselo a quien oposite contigo…!» — avión de papel.
+11. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+
+Respuesta (solo en la descripción): B) 1:300 (21 m = 2.100 cm; 2.100 ÷ 7 = 300).
