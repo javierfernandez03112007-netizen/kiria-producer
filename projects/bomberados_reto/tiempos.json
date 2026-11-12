@@ -1,609 +1,609 @@
 [
  {
   "text": "¡Un coche en llamas… y tu rival ya ha contestado!",
-  "start": 0.0,
-  "end": 2.986,
+  "start": 0.06,
+  "end": 3.552,
   "words": [
    {
     "w": "¡Un",
-    "start": 0.0,
-    "end": 0.183
+    "start": 0.06,
+    "end": 0.299
    },
    {
     "w": "coche",
-    "start": 0.183,
-    "end": 0.509
+    "start": 0.299,
+    "end": 0.698
    },
    {
     "w": "en",
-    "start": 0.509,
-    "end": 0.691
+    "start": 0.698,
+    "end": 0.858
    },
    {
     "w": "llamas…",
-    "start": 0.691,
-    "end": 1.017
+    "start": 0.858,
+    "end": 1.956
    },
    {
     "w": "y",
-    "start": 1.317,
-    "end": 1.5
+    "start": 1.956,
+    "end": 2.037
    },
    {
     "w": "tu",
-    "start": 1.5,
-    "end": 1.683
+    "start": 2.037,
+    "end": 2.135
    },
    {
     "w": "rival",
-    "start": 1.683,
-    "end": 2.009
+    "start": 2.135,
+    "end": 2.614
    },
    {
     "w": "ya",
-    "start": 2.009,
-    "end": 2.191
+    "start": 2.614,
+    "end": 2.774
    },
    {
     "w": "ha",
-    "start": 2.191,
-    "end": 2.374
+    "start": 2.774,
+    "end": 2.934
    },
    {
     "w": "contestado!",
-    "start": 2.374,
-    "end": 2.986
+    "start": 2.934,
+    "end": 3.552
    }
   ]
  },
  {
   "text": "Llevas la manguera: ¿te acercas de frente, por detrás… o en diagonal?",
-  "start": 3.286,
-  "end": 7.346,
+  "start": 3.862,
+  "end": 7.564,
   "words": [
    {
     "w": "Llevas",
-    "start": 3.286,
-    "end": 3.612
+    "start": 3.862,
+    "end": 4.131
    },
    {
     "w": "la",
-    "start": 3.612,
-    "end": 3.795
+    "start": 4.131,
+    "end": 4.291
    },
    {
     "w": "manguera:",
-    "start": 3.795,
-    "end": 4.263
+    "start": 4.291,
+    "end": 5.009
    },
    {
     "w": "¿te",
-    "start": 4.443,
-    "end": 4.626
+    "start": 5.009,
+    "end": 5.117
    },
    {
     "w": "acercas",
-    "start": 4.626,
-    "end": 5.095
+    "start": 5.117,
+    "end": 5.488
    },
    {
     "w": "de",
-    "start": 5.095,
-    "end": 5.277
+    "start": 5.488,
+    "end": 5.568
    },
    {
     "w": "frente,",
-    "start": 5.277,
-    "end": 5.603
+    "start": 5.568,
+    "end": 6.047
    },
    {
     "w": "por",
-    "start": 5.703,
-    "end": 5.886
+    "start": 6.047,
+    "end": 6.206
    },
    {
     "w": "detrás…",
-    "start": 5.886,
-    "end": 6.212
+    "start": 6.206,
+    "end": 6.815
    },
    {
     "w": "o",
-    "start": 6.512,
-    "end": 6.695
+    "start": 6.815,
+    "end": 6.9
    },
    {
     "w": "en",
-    "start": 6.695,
-    "end": 6.877
+    "start": 6.9,
+    "end": 7.005
    },
    {
     "w": "diagonal?",
-    "start": 6.877,
-    "end": 7.346
+    "start": 7.005,
+    "end": 7.564
    }
   ]
  },
  {
   "text": "Comenta tu letra: tienes cinco segundos.",
-  "start": 7.646,
-  "end": 9.923,
+  "start": 7.873,
+  "end": 10.078,
   "words": [
    {
     "w": "Comenta",
-    "start": 7.646,
-    "end": 8.115
+    "start": 7.873,
+    "end": 8.202
    },
    {
     "w": "tu",
-    "start": 8.115,
-    "end": 8.297
+    "start": 8.202,
+    "end": 8.362
    },
    {
     "w": "letra:",
-    "start": 8.297,
-    "end": 8.623
+    "start": 8.362,
+    "end": 8.791
    },
    {
     "w": "tienes",
-    "start": 8.803,
-    "end": 9.129
+    "start": 8.791,
+    "end": 9.24
    },
    {
     "w": "cinco",
-    "start": 9.129,
-    "end": 9.455
+    "start": 9.24,
+    "end": 9.559
    },
    {
     "w": "segundos.",
-    "start": 9.455,
-    "end": 9.923
+    "start": 9.559,
+    "end": 10.078
    }
   ]
  },
  {
   "text": "¡Tiempo! Tu rival ha ido de frente… ¡y el amortiguador del parachoques sale disparado!",
-  "start": 14.273,
-  "end": 19.376,
+  "start": 14.387,
+  "end": 19.297,
   "words": [
    {
     "w": "¡Tiempo!",
-    "start": 14.273,
-    "end": 14.599
+    "start": 14.387,
+    "end": 15.186
    },
    {
     "w": "Tu",
-    "start": 14.699,
-    "end": 14.882
+    "start": 15.186,
+    "end": 15.311
    },
    {
     "w": "rival",
-    "start": 14.882,
-    "end": 15.207
+    "start": 15.311,
+    "end": 15.605
    },
    {
     "w": "ha",
-    "start": 15.207,
-    "end": 15.39
+    "start": 15.605,
+    "end": 15.844
    },
    {
     "w": "ido",
-    "start": 15.39,
-    "end": 15.716
+    "start": 15.844,
+    "end": 16.084
    },
    {
     "w": "de",
-    "start": 15.716,
-    "end": 15.899
+    "start": 16.084,
+    "end": 16.164
    },
    {
     "w": "frente…",
-    "start": 15.899,
-    "end": 16.224
+    "start": 16.164,
+    "end": 16.852
    },
    {
     "w": "¡y",
-    "start": 16.524,
-    "end": 16.707
+    "start": 16.852,
+    "end": 16.948
    },
    {
     "w": "el",
-    "start": 16.707,
-    "end": 16.89
+    "start": 16.948,
+    "end": 17.045
    },
    {
     "w": "amortiguador",
-    "start": 16.89,
-    "end": 17.644
+    "start": 17.045,
+    "end": 17.6
    },
    {
     "w": "del",
-    "start": 17.644,
-    "end": 17.827
+    "start": 17.6,
+    "end": 17.76
    },
    {
     "w": "parachoques",
-    "start": 17.827,
-    "end": 18.439
+    "start": 17.76,
+    "end": 18.479
    },
    {
     "w": "sale",
-    "start": 18.439,
-    "end": 18.764
+    "start": 18.479,
+    "end": 18.718
    },
    {
     "w": "disparado!",
-    "start": 18.764,
-    "end": 19.376
+    "start": 18.718,
+    "end": 19.297
    }
   ]
  },
  {
   "text": "Si has dicho en diagonal… ¡punto para ti! Por delante y por detrás pueden salir piezas disparadas: tú, por la esquina, a cuarenta y cinco grados.",
-  "start": 19.676,
-  "end": 28.067,
+  "start": 19.626,
+  "end": 27.629,
   "words": [
    {
     "w": "Si",
-    "start": 19.676,
-    "end": 19.859
+    "start": 19.626,
+    "end": 19.72
    },
    {
     "w": "has",
-    "start": 19.859,
-    "end": 20.042
+    "start": 19.72,
+    "end": 19.836
    },
    {
     "w": "dicho",
-    "start": 20.042,
-    "end": 20.367
+    "start": 19.836,
+    "end": 20.155
    },
    {
     "w": "en",
-    "start": 20.367,
-    "end": 20.55
+    "start": 20.155,
+    "end": 20.235
    },
    {
     "w": "diagonal…",
-    "start": 20.55,
-    "end": 21.019
+    "start": 20.235,
+    "end": 20.953
    },
    {
     "w": "¡punto",
-    "start": 21.319,
-    "end": 21.645
+    "start": 20.953,
+    "end": 21.352
    },
    {
     "w": "para",
-    "start": 21.645,
-    "end": 21.97
+    "start": 21.352,
+    "end": 21.512
    },
    {
     "w": "ti!",
-    "start": 21.97,
-    "end": 22.153
+    "start": 21.512,
+    "end": 22.071
    },
    {
     "w": "Por",
-    "start": 22.253,
-    "end": 22.436
+    "start": 22.071,
+    "end": 22.151
    },
    {
     "w": "delante",
-    "start": 22.436,
-    "end": 22.905
+    "start": 22.151,
+    "end": 22.55
    },
    {
     "w": "y",
-    "start": 22.905,
-    "end": 23.087
+    "start": 22.55,
+    "end": 22.63
    },
    {
     "w": "por",
-    "start": 23.087,
-    "end": 23.27
+    "start": 22.63,
+    "end": 22.789
    },
    {
     "w": "detrás",
-    "start": 23.27,
-    "end": 23.596
+    "start": 22.789,
+    "end": 23.188
    },
    {
     "w": "pueden",
-    "start": 23.596,
-    "end": 23.922
+    "start": 23.188,
+    "end": 23.428
    },
    {
     "w": "salir",
-    "start": 23.922,
-    "end": 24.247
+    "start": 23.428,
+    "end": 23.747
    },
    {
     "w": "piezas",
-    "start": 24.247,
-    "end": 24.573
+    "start": 23.747,
+    "end": 24.166
    },
    {
     "w": "disparadas:",
-    "start": 24.573,
-    "end": 25.185
+    "start": 24.166,
+    "end": 25.004
    },
    {
     "w": "tú,",
-    "start": 25.365,
-    "end": 25.547
+    "start": 25.004,
+    "end": 25.393
    },
    {
     "w": "por",
-    "start": 25.647,
-    "end": 25.83
+    "start": 25.393,
+    "end": 25.503
    },
    {
     "w": "la",
-    "start": 25.83,
-    "end": 26.013
+    "start": 25.503,
+    "end": 25.663
    },
    {
     "w": "esquina,",
-    "start": 26.013,
-    "end": 26.482
+    "start": 25.663,
+    "end": 26.222
    },
    {
     "w": "a",
-    "start": 26.582,
-    "end": 26.765
+    "start": 26.222,
+    "end": 26.381
    },
    {
     "w": "cuarenta",
-    "start": 26.765,
-    "end": 27.233
+    "start": 26.381,
+    "end": 26.741
    },
    {
     "w": "y",
-    "start": 27.233,
-    "end": 27.416
+    "start": 26.741,
+    "end": 26.86
    },
    {
     "w": "cinco",
-    "start": 27.416,
-    "end": 27.742
+    "start": 26.86,
+    "end": 27.18
    },
    {
     "w": "grados.",
-    "start": 27.742,
-    "end": 28.067
+    "start": 27.18,
+    "end": 27.629
    }
   ]
  },
  {
   "text": "En el examen de Madrid hubo casi cinco por plaza: no tienes un rival… tienes cuatro.",
-  "start": 28.367,
-  "end": 33.344,
+  "start": 27.988,
+  "end": 33.047,
   "words": [
    {
     "w": "En",
-    "start": 28.367,
-    "end": 28.55
+    "start": 27.988,
+    "end": 28.055
    },
    {
     "w": "el",
-    "start": 28.55,
-    "end": 28.733
+    "start": 28.055,
+    "end": 28.138
    },
    {
     "w": "examen",
-    "start": 28.733,
-    "end": 29.201
+    "start": 28.138,
+    "end": 28.457
    },
    {
     "w": "de",
-    "start": 29.201,
-    "end": 29.384
+    "start": 28.457,
+    "end": 28.616
    },
    {
     "w": "Madrid",
-    "start": 29.384,
-    "end": 29.71
+    "start": 28.616,
+    "end": 29.016
    },
    {
     "w": "hubo",
-    "start": 29.71,
-    "end": 30.036
+    "start": 29.016,
+    "end": 29.335
    },
    {
     "w": "casi",
-    "start": 30.036,
-    "end": 30.361
+    "start": 29.335,
+    "end": 29.574
    },
    {
     "w": "cinco",
-    "start": 30.361,
-    "end": 30.687
+    "start": 29.574,
+    "end": 29.974
    },
    {
     "w": "por",
-    "start": 30.687,
-    "end": 30.87
+    "start": 29.974,
+    "end": 30.133
    },
    {
     "w": "plaza:",
-    "start": 30.87,
-    "end": 31.196
+    "start": 30.133,
+    "end": 30.782
    },
    {
     "w": "no",
-    "start": 31.376,
-    "end": 31.558
+    "start": 30.782,
+    "end": 30.931
    },
    {
     "w": "tienes",
-    "start": 31.558,
-    "end": 31.884
+    "start": 30.931,
+    "end": 31.331
    },
    {
     "w": "un",
-    "start": 31.884,
-    "end": 32.067
+    "start": 31.331,
+    "end": 31.49
    },
    {
     "w": "rival…",
-    "start": 32.067,
-    "end": 32.393
+    "start": 31.49,
+    "end": 32.089
    },
    {
     "w": "tienes",
-    "start": 32.693,
-    "end": 33.018
+    "start": 32.089,
+    "end": 32.608
    },
    {
     "w": "cuatro.",
-    "start": 33.018,
-    "end": 33.344
+    "start": 32.608,
+    "end": 33.047
    }
   ]
  },
  {
   "text": "¿Tú habrías ido de frente? Confiésalo en comentarios.",
-  "start": 33.644,
-  "end": 36.493,
+  "start": 33.506,
+  "end": 36.3,
   "words": [
    {
     "w": "¿Tú",
-    "start": 33.644,
-    "end": 33.827
+    "start": 33.506,
+    "end": 33.644
    },
    {
     "w": "habrías",
-    "start": 33.827,
-    "end": 34.153
+    "start": 33.644,
+    "end": 33.965
    },
    {
     "w": "ido",
-    "start": 34.153,
-    "end": 34.478
+    "start": 33.965,
+    "end": 34.204
    },
    {
     "w": "de",
-    "start": 34.478,
-    "end": 34.661
+    "start": 34.204,
+    "end": 34.364
    },
    {
     "w": "frente?",
-    "start": 34.661,
-    "end": 34.987
+    "start": 34.364,
+    "end": 35.013
    },
    {
     "w": "Confiésalo",
-    "start": 35.087,
-    "end": 35.698
+    "start": 35.013,
+    "end": 35.641
    },
    {
     "w": "en",
-    "start": 35.698,
-    "end": 35.881
+    "start": 35.641,
+    "end": 35.801
    },
    {
     "w": "comentarios.",
-    "start": 35.881,
-    "end": 36.493
+    "start": 35.801,
+    "end": 36.3
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien oposite contigo… a ver quién gana!",
-  "start": 36.793,
-  "end": 41.053,
+  "start": 36.579,
+  "end": 39.443,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 36.793,
-    "end": 37.633
+    "start": 36.579,
+    "end": 37.158
    },
    {
     "w": "a",
-    "start": 37.633,
-    "end": 37.873
+    "start": 37.158,
+    "end": 37.238
    },
    {
     "w": "quien",
-    "start": 37.873,
-    "end": 38.113
+    "start": 37.238,
+    "end": 37.477
    },
    {
     "w": "oposite",
-    "start": 38.113,
-    "end": 38.953
+    "start": 37.477,
+    "end": 38.036
    },
    {
     "w": "contigo…",
-    "start": 38.953,
-    "end": 39.593
+    "start": 38.036,
+    "end": 38.555
    },
    {
     "w": "a",
-    "start": 39.893,
-    "end": 40.133
+    "start": 38.555,
+    "end": 38.754
    },
    {
     "w": "ver",
-    "start": 40.133,
-    "end": 40.373
+    "start": 38.754,
+    "end": 38.834
    },
    {
     "w": "quién",
-    "start": 40.373,
-    "end": 40.613
+    "start": 38.834,
+    "end": 39.074
    },
    {
     "w": "gana!",
-    "start": 40.613,
-    "end": 41.053
+    "start": 39.074,
+    "end": 39.443
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 41.353,
-  "end": 45.873,
+  "start": 39.792,
+  "end": 43.983,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 41.353,
-    "end": 42.193
+    "start": 39.792,
+    "end": 40.351
    },
    {
     "w": "a",
-    "start": 42.193,
-    "end": 42.433
+    "start": 40.351,
+    "end": 40.431
    },
    {
     "w": "bombero?",
-    "start": 42.433,
-    "end": 43.073
+    "start": 40.431,
+    "end": 41.069
    },
    {
     "w": "¡Bomberados!",
-    "start": 43.173,
-    "end": 44.013
+    "start": 41.069,
+    "end": 42.307
    },
    {
     "w": "¡Pruébala",
-    "start": 44.113,
-    "end": 44.753
+    "start": 42.307,
+    "end": 42.746
    },
    {
     "w": "gratis",
-    "start": 44.753,
-    "end": 45.193
+    "start": 42.746,
+    "end": 43.225
    },
    {
     "w": "cinco",
-    "start": 45.193,
-    "end": 45.633
+    "start": 43.225,
+    "end": 43.544
    },
    {
     "w": "días!",
-    "start": 45.633,
-    "end": 45.873
+    "start": 43.544,
+    "end": 43.983
    }
   ]
  }

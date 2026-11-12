@@ -2044,7 +2044,122 @@ def sfx_track_escala(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_reto(path):
+    """«Reta a otro opositor» (1 vs 1 con un coche en llamas): el fuego y los rotativos de fondo, la ruleta que cae en VEHÍCULOS,
+    el rival que ya ha contestado, los tres caminos y las tarjetas, la cuenta 1 → 5 con bocina, el rival (holograma) que va de
+    frente, ¡pum! y el amortiguador a cámara lenta (grave y estirado), el +1, las zonas de disparo, tus pasos por la diagonal,
+    el agua de la lanza y el vapor, Madrid y los cuatro rivales, las letras y la venta (con la ruleta de la grabación real).
+    Tiempos como en reto.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["count0"] = LINES[2]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["l0"] = c["disparado"] + 0.02
+    T["walk0"] = c["rival4"] - 0.1; T["walk1"] = T["l0"] - 0.1
+    T["go0"] = c["esquina"] - 1.3; T["go1"] = c["grados"] - 0.15
+    nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
+    fuego, glitch = _load("fuego"), _onset(_load("glitch"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # fondo: el fuego todo el vídeo (baja con el agua), la autovía y los rotativos
+    put(_loop(fuego, END + 0.5), 0.0, -25, c["madrid"] + 1.0, 0.01, 1.5, track=amb)
+    put(_loop(fuego, END + 0.5), c["madrid"], -31, END - c["madrid"], 1.0, 0.6, track=amb)
+    put(_loop(_load("ciudad"), END + 0.5), 0.0, -34, END + 0.5, 0.01, 0.6, track=amb)
+    put("rotativo", 0.0, -33, T["count1"], 0.3, 0.8, track=amb)
+    # gancho: golpe, latido, la ruleta que cae en VEHÍCULOS y el rival que ya ha contestado
+    put("golpe", c["coche"] - 0.02, -23, 0.8, 0.003, 0.35)
+    put("latido", 0.05, -24, 0.7)
+    put("ruleta", 0.0, -27, 1.1, 0.01, 0.15)
+    put(_pitch(nota, 1.25), 1.03, -27, 0.6)
+    put(_pitch(toque, 1.4), c["contestado"] - 0.05, -25, 0.35)
+    put("tension", c["rival1"], -31, c["tiempo"] - c["rival1"], 0.6, 0.2, track=amb)
+    # los tres caminos y las tarjetas, la cuenta con bocina y «¡Tiempo!»
+    put("whoosh2", c["oA"] - 0.3, -29, 0.8)
+    for k, key in enumerate(("oA", "oB", "oC")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    put(toque, c["comenta"] - 0.05, -28, 0.35)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    # el rival: aparece (holograma), va de frente (pasos), los amortiguadores al rojo y… ¡pum! a cámara lenta
+    put(glitch, c["tiempo"] + 0.1, -27, 0.6)
+    put(_loop(_load("pasos"), 6.0), T["walk0"], -31, T["walk1"] - T["walk0"], 0.2, 0.2)
+    put("rele", c["amortiguador"] - 0.1, -27, 0.3)
+    put("latido", c["amortiguador"] + 0.2, -23, 0.7)
+    put("latido", c["parachoques"] + 0.2, -22, 0.7)
+    put("golpe", T["l0"] - 0.01, -16, 0.9, 0.002, 0.4)
+    put(_pitch(_onset(_load("trueno")), 0.7), T["l0"] - 0.01, -20, 1.6, 0.003, 0.8)
+    put(_pitch(_onset(_load("whoosh")), 0.55), T["l0"] + 0.05, -23, 1.5, 0.05, 0.4)
+    put(_pitch(_onset(_load("latido")), 0.75), T["l0"] + 0.5, -24, 0.9)
+    put("whoosh2", T["l0"] + 1.5, -24, 0.6)
+    put("fallo", T["l0"] + 0.7, -26, 0.5)
+    put(glitch, T["l0"] + 0.75, -28, 0.5)
+    # el +1 y la explicación: las zonas de disparo, tus pasos por la diagonal, los 45° y el agua
+    put("acierto", c["punto"] - 0.02, -22, 0.9)
+    put("logro", c["punto"] + 0.05, -27, 0.8)
+    put("whoosh", c["punto"] - 0.4, -29, 0.7)
+    put("rele", c["delante"] - 0.05, -27, 0.3)
+    put(_pitch(nota, 0.9), c["delante"] - 0.03, -28, 0.6)
+    put("rele", c["detras5"] - 0.05, -27, 0.3)
+    put(_pitch(nota, 0.85), c["detras5"] - 0.03, -28, 0.6)
+    put(_pitch(_onset(_load("whoosh2")), 1.5), c["piezas"] - 0.1, -28, 0.4)
+    put(_pitch(_onset(_load("whoosh2")), 1.7), c["piezas"] + 0.2, -29, 0.4)
+    put(_loop(_load("pasos"), 6.0), T["go0"], -29, T["go1"] - T["go0"], 0.2, 0.2)
+    put("destello", c["cuarenta"] - 0.06, -26, 0.6)
+    put(_pitch(nota, 1.5), c["cuarenta"] - 0.03, -28, 0.8)
+    put(_loop(_load("agua"), 25.0), c["grados"] + 0.1, -26, c["compartir"] - c["grados"], 0.05, 0.8, track=amb)
+    put("vapor", c["grados"] + 0.6, -28, 3.0, 0.3, 1.0)
+    # Madrid: casi cinco por plaza; los cuatro rivales
+    put("papeles", c["madrid"] - 0.1, -26, 0.6)
+    put(_pitch(nota, 1.2), c["cinco6"] - 0.03, -27, 0.7)
+    put("destello", c["cinco6"] - 0.06, -27, 0.5)
+    put(glitch, c["unrival"] - 0.3, -27, 0.6)
+    for i in range(3):
+        put(glitch, c["cuatro"] - 0.25 + 0.12 * i, -27, 0.5)
+    put("golpe", c["cuatro"] - 0.02, -25, 0.6, 0.003, 0.3)
+    # final: vuelven las letras y «confiésalo»
+    put("whoosh2", c["habrias"] - 0.3, -27, 0.8)
+    for i in range(3):
+        put(_pitch(bub, 1 + 0.06 * i), c["habrias"] - 0.2 + 0.07 * i, -27, 0.25)
+    put(_pitch(toque, 1.3), c["confiesalo"] - 0.03, -27, 0.35)
+    # venta: el avión, la grabación real (la ruleta gira) y la marca
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    sp0 = c["compartir"] + 0.3 + (5.0 - 2.1) / (7.4 - 2.1) * (c["descripcion"] - c["compartir"] - 0.2)
+    put("ruleta", sp0, -29, 1.4, 0.02, 0.3)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "reto":
+        return sfx_track_reto(path)
     if Q.get("formato") == "escala":
         return sfx_track_escala(path)
     if Q.get("formato") == "seguridad":

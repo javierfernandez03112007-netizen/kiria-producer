@@ -620,7 +620,8 @@ function closing(t) {
   g.restore();
   const la = eo(prog(t, CUE.marca + 0.6, 0.4));
   g.globalAlpha = a * la;
-  txt('Falla en casa, no en el examen.', 540, 1080 + 20 * (1 - la), 52, WHITE, 800, 'center');
+  const lema = [].concat(Q.lema || 'Falla en casa, no en el examen.');     // Q.lema: otra frase (o varias líneas) bajo la placa
+  lema.forEach((s, i) => txt(s, 540, 1080 - 30 * (lema.length - 1) + 62 * i + 20 * (1 - la), lema.length > 1 ? 46 : 52, WHITE, 800, 'center'));
   // botón de la prueba gratis
   const pa = prog(t, CUE.prueba, 0.45);
   if (pa > 0) {
