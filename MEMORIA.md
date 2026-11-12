@@ -110,6 +110,17 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **«Odontología por dentro»** (`projects/odontologia/`, 12-11-2026): primer vídeo del plan del 11-11 (carreras, una al día a las 10:00) y
+  primero con **la voz a su velocidad natural** (TEMPO 1.0: 54,0 s → 50,4 s solo quitando silencios largos; vídeo de 51,3 s). Javi: «hazlo muy
+  profesional con mucho flujo óptico y lo más realista posible» → el estilo de la huelga (ciudad de día con gente) reutilizado: `16_city.js`
+  adaptado (peatones que van y vuelven por las aceras —bucle perfecto—, gente en la plaza y ≈ 1.300 dentistas con bata que salen de la facultad),
+  `17_teeth.js` (dentadura gigante de 28 dientes con su forma, raíces, encías, brackets de acero con ligaduras de colores, alambre, empaste,
+  muela que sale y férula transparente), `15_map.js` (Europa: `mapa_europa.py`, proyección ortográfica; la UE en verde con ✓ y España en rojo),
+  `20_stations.js` (facultad en corte con un piso por año, cartel de la clínica cuyo panel «ESPECIALISTA» se cae, el ortodoncista con máster,
+  estrellas y placa tachada, las seis solicitudes con sello «RECHAZADA»). **Entregado el 12-11 (10:50)**: 51,3 s, 60 fps, −15,1 LUFS.
+  Lecciones: (1) los dientes tienen que ir con las mismas proporciones que la arcada (si se estiran solo a lo ancho parecen fichas); (2) las
+  raíces, más cortas que la encía o asoman como pinchos; (3) en `fetch_compose.sh`, al copiar de otro proyecto, el `sed` cambió
+  `compose_huelga.py` por `compose_odontologia.py` (nombre que no existe) y el montaje no arrancó: comprobar el nombre del script de montaje.
 - **«Huelga general 11-N»** (`projects/huelga/`, 11-11-2026, el mismo día de la huelga): Javi: «hazlo lo mejor, más enganchante y
   profesional que puedas… que con este vídeo despeguemos la cuenta». Guion v2 de 169 palabras (gancho «Hoy hay huelga general en toda
   España… y no es solo por los sueldos»; promesa «¿Y si la haces, te pueden despedir? Te lo digo al final»; re-gancho con el coste de

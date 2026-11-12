@@ -27,5 +27,5 @@ for p in $(pgrep -f "auto_finish.sh") $(pgrep -f "render_local.sh"); do kill $p 
 for p in $(pgrep -f "node web/capture.mjs out/frames"); do kill $p 2>/dev/null; done
 sleep 3
 while [ ! -f out/SFX_READY ]; do sleep 20; done      # los efectos tienen que estar revisados antes de componer
-python3 compose_odontologia.py > out/compose.log 2>&1 && touch out/DONE && echo "$(date +%H:%M) COMPUESTO"
+python3 compose_odo.py > out/compose.log 2>&1 && touch out/DONE && echo "$(date +%H:%M) COMPUESTO"
 tail -3 out/compose.log

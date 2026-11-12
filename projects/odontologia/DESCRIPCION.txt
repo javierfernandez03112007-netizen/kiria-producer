@@ -34,4 +34,6 @@ NOTAS PARA LA ENTREGA (no publicar):
 - Atribuido: «el único país de la UE sin especialidades» lo dice el Consejo General de Dentistas. Rótulos de EJEMPLO: el diploma del máster,
   las solicitudes y los nombres de las tiendas.
 - Efectos: solo de la biblioteca de ElevenLabs del canal, uno por suceso; sin música.
+- Entregado el 12-11-2026 (10:50): out/odontologia.mp4 (51,3 s, 60 fps, −15,1 LUFS), out/portada.jpg (9:16) y out/miniatura.jpg (4:5).
+- Revisión: las uniones de los 7 trozos encajan y el último fotograma enlaza con el primero.
 - Subida: viernes 13 a las 10:00 (plan del 11-11: una carrera al día a las 10:00 y nada más ese día).
