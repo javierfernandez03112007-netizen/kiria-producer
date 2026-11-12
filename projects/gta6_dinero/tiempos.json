@@ -1,0 +1,750 @@
+[
+ {
+  "text": "Ninguna película de la historia ha ganado tanto dinero como este videojuego.",
+  "start": 0.0,
+  "end": 4.04,
+  "words": [
+   {
+    "w": "Ninguna",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "w": "película",
+    "start": 0.56,
+    "end": 0.96
+   },
+   {
+    "w": "de",
+    "start": 0.96,
+    "end": 1.04
+   },
+   {
+    "w": "la",
+    "start": 1.04,
+    "end": 1.2
+   },
+   {
+    "w": "historia",
+    "start": 1.2,
+    "end": 1.6
+   },
+   {
+    "w": "ha",
+    "start": 1.6,
+    "end": 1.76
+   },
+   {
+    "w": "ganado",
+    "start": 1.76,
+    "end": 2.24
+   },
+   {
+    "w": "tanto",
+    "start": 2.24,
+    "end": 2.56
+   },
+   {
+    "w": "dinero",
+    "start": 2.56,
+    "end": 2.96
+   },
+   {
+    "w": "como",
+    "start": 2.96,
+    "end": 3.2
+   },
+   {
+    "w": "este",
+    "start": 3.2,
+    "end": 3.44
+   },
+   {
+    "w": "videojuego.",
+    "start": 3.44,
+    "end": 4.04
+   }
+  ]
+ },
+ {
+  "text": "Es GTA 5. Y el 19 de noviembre sale GTA 6. ¿Cuánto va a ganar? Te lo digo al final.",
+  "start": 4.23,
+  "end": 11.1,
+  "words": [
+   {
+    "w": "Es",
+    "start": 4.23,
+    "end": 4.54
+   },
+   {
+    "w": "GTA",
+    "start": 4.54,
+    "end": 5.42
+   },
+   {
+    "w": "5.",
+    "start": 5.42,
+    "end": 6.18
+   },
+   {
+    "w": "Y",
+    "start": 6.18,
+    "end": 6.324
+   },
+   {
+    "w": "el",
+    "start": 6.324,
+    "end": 6.468
+   },
+   {
+    "w": "19",
+    "start": 6.468,
+    "end": 6.82
+   },
+   {
+    "w": "de",
+    "start": 6.82,
+    "end": 6.9
+   },
+   {
+    "w": "noviembre",
+    "start": 6.9,
+    "end": 7.38
+   },
+   {
+    "w": "sale",
+    "start": 7.38,
+    "end": 7.78
+   },
+   {
+    "w": "GTA",
+    "start": 7.78,
+    "end": 8.42
+   },
+   {
+    "w": "6.",
+    "start": 8.42,
+    "end": 9.07
+   },
+   {
+    "w": "¿Cuánto",
+    "start": 9.07,
+    "end": 9.34
+   },
+   {
+    "w": "va",
+    "start": 9.34,
+    "end": 9.5
+   },
+   {
+    "w": "a",
+    "start": 9.5,
+    "end": 9.58
+   },
+   {
+    "w": "ganar?",
+    "start": 9.58,
+    "end": 10.26
+   },
+   {
+    "w": "Te",
+    "start": 10.26,
+    "end": 10.332
+   },
+   {
+    "w": "lo",
+    "start": 10.332,
+    "end": 10.42
+   },
+   {
+    "w": "digo",
+    "start": 10.42,
+    "end": 10.74
+   },
+   {
+    "w": "al",
+    "start": 10.74,
+    "end": 10.9
+   },
+   {
+    "w": "final.",
+    "start": 10.9,
+    "end": 11.1
+   }
+  ]
+ },
+ {
+  "text": "El primer día, GTA 5 hizo 800 millones de dólares. En 3 días, 1.000 millones: récord Guinness.",
+  "start": 11.49,
+  "end": 18.64,
+  "words": [
+   {
+    "w": "El",
+    "start": 11.49,
+    "end": 11.601
+   },
+   {
+    "w": "primer",
+    "start": 11.601,
+    "end": 11.86
+   },
+   {
+    "w": "día,",
+    "start": 11.86,
+    "end": 12.33
+   },
+   {
+    "w": "GTA",
+    "start": 12.33,
+    "end": 12.86
+   },
+   {
+    "w": "5",
+    "start": 12.86,
+    "end": 13.18
+   },
+   {
+    "w": "hizo",
+    "start": 13.18,
+    "end": 13.58
+   },
+   {
+    "w": "800",
+    "start": 13.58,
+    "end": 14.38
+   },
+   {
+    "w": "millones",
+    "start": 14.38,
+    "end": 14.86
+   },
+   {
+    "w": "de",
+    "start": 14.86,
+    "end": 15.02
+   },
+   {
+    "w": "dólares.",
+    "start": 15.02,
+    "end": 15.84
+   },
+   {
+    "w": "En",
+    "start": 15.84,
+    "end": 15.94
+   },
+   {
+    "w": "3",
+    "start": 15.94,
+    "end": 16.26
+   },
+   {
+    "w": "días,",
+    "start": 16.26,
+    "end": 16.68
+   },
+   {
+    "w": "1.000",
+    "start": 16.68,
+    "end": 17.1
+   },
+   {
+    "w": "millones:",
+    "start": 17.1,
+    "end": 17.74
+   },
+   {
+    "w": "récord",
+    "start": 17.74,
+    "end": 18.26
+   },
+   {
+    "w": "Guinness.",
+    "start": 18.26,
+    "end": 18.64
+   }
+  ]
+ },
+ {
+  "text": "Lleva más de 230 millones de copias: más que habitantes tiene Brasil.",
+  "start": 18.89,
+  "end": 23.55,
+  "words": [
+   {
+    "w": "Lleva",
+    "start": 18.89,
+    "end": 19.34
+   },
+   {
+    "w": "más",
+    "start": 19.34,
+    "end": 19.5
+   },
+   {
+    "w": "de",
+    "start": 19.5,
+    "end": 19.66
+   },
+   {
+    "w": "230",
+    "start": 19.66,
+    "end": 20.7
+   },
+   {
+    "w": "millones",
+    "start": 20.7,
+    "end": 21.1
+   },
+   {
+    "w": "de",
+    "start": 21.1,
+    "end": 21.26
+   },
+   {
+    "w": "copias:",
+    "start": 21.26,
+    "end": 21.97
+   },
+   {
+    "w": "más",
+    "start": 21.97,
+    "end": 22.1
+   },
+   {
+    "w": "que",
+    "start": 22.1,
+    "end": 22.34
+   },
+   {
+    "w": "habitantes",
+    "start": 22.34,
+    "end": 22.82
+   },
+   {
+    "w": "tiene",
+    "start": 22.82,
+    "end": 23.14
+   },
+   {
+    "w": "Brasil.",
+    "start": 23.14,
+    "end": 23.55
+   }
+  ]
+ },
+ {
+  "text": "¿Y GTA 6? Rockstar ha tenido que negar que costara más que el edificio más alto del mundo.",
+  "start": 23.88,
+  "end": 29.45,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 23.88,
+    "end": 24.195
+   },
+   {
+    "w": "GTA",
+    "start": 24.195,
+    "end": 24.58
+   },
+   {
+    "w": "6?",
+    "start": 24.58,
+    "end": 25.15
+   },
+   {
+    "w": "Rockstar",
+    "start": 25.15,
+    "end": 25.74
+   },
+   {
+    "w": "ha",
+    "start": 25.74,
+    "end": 25.9
+   },
+   {
+    "w": "tenido",
+    "start": 25.9,
+    "end": 26.14
+   },
+   {
+    "w": "que",
+    "start": 26.14,
+    "end": 26.3
+   },
+   {
+    "w": "negar",
+    "start": 26.3,
+    "end": 26.62
+   },
+   {
+    "w": "que",
+    "start": 26.62,
+    "end": 26.78
+   },
+   {
+    "w": "costara",
+    "start": 26.78,
+    "end": 27.26
+   },
+   {
+    "w": "más",
+    "start": 27.26,
+    "end": 27.42
+   },
+   {
+    "w": "que",
+    "start": 27.42,
+    "end": 27.58
+   },
+   {
+    "w": "el",
+    "start": 27.58,
+    "end": 27.74
+   },
+   {
+    "w": "edificio",
+    "start": 27.74,
+    "end": 28.38
+   },
+   {
+    "w": "más",
+    "start": 28.38,
+    "end": 28.62
+   },
+   {
+    "w": "alto",
+    "start": 28.62,
+    "end": 28.94
+   },
+   {
+    "w": "del",
+    "start": 28.94,
+    "end": 29.18
+   },
+   {
+    "w": "mundo.",
+    "start": 29.18,
+    "end": 29.45
+   }
+  ]
+ },
+ {
+  "text": "Los analistas calculan entre 1.000 y 1.500 millones de dólares. Más que cualquier película.",
+  "start": 29.71,
+  "end": 35.43,
+  "words": [
+   {
+    "w": "Los",
+    "start": 29.71,
+    "end": 29.78
+   },
+   {
+    "w": "analistas",
+    "start": 29.78,
+    "end": 30.34
+   },
+   {
+    "w": "calculan",
+    "start": 30.34,
+    "end": 30.98
+   },
+   {
+    "w": "entre",
+    "start": 30.98,
+    "end": 31.14
+   },
+   {
+    "w": "1.000",
+    "start": 31.14,
+    "end": 31.62
+   },
+   {
+    "w": "y",
+    "start": 31.62,
+    "end": 31.78
+   },
+   {
+    "w": "1.500",
+    "start": 31.78,
+    "end": 32.66
+   },
+   {
+    "w": "millones",
+    "start": 32.66,
+    "end": 33.06
+   },
+   {
+    "w": "de",
+    "start": 33.06,
+    "end": 33.22
+   },
+   {
+    "w": "dólares.",
+    "start": 33.22,
+    "end": 33.91
+   },
+   {
+    "w": "Más",
+    "start": 33.91,
+    "end": 34.22
+   },
+   {
+    "w": "que",
+    "start": 34.22,
+    "end": 34.46
+   },
+   {
+    "w": "cualquier",
+    "start": 34.46,
+    "end": 34.94
+   },
+   {
+    "w": "película.",
+    "start": 34.94,
+    "end": 35.43
+   }
+  ]
+ },
+ {
+  "text": "Y a ti te costará casi 80 euros.",
+  "start": 35.63,
+  "end": 37.94,
+  "words": [
+   {
+    "w": "Y",
+    "start": 35.63,
+    "end": 35.724
+   },
+   {
+    "w": "a",
+    "start": 35.724,
+    "end": 35.84
+   },
+   {
+    "w": "ti",
+    "start": 35.84,
+    "end": 36.08
+   },
+   {
+    "w": "te",
+    "start": 36.08,
+    "end": 36.24
+   },
+   {
+    "w": "costará",
+    "start": 36.24,
+    "end": 36.72
+   },
+   {
+    "w": "casi",
+    "start": 36.72,
+    "end": 37.04
+   },
+   {
+    "w": "80",
+    "start": 37.04,
+    "end": 37.52
+   },
+   {
+    "w": "euros.",
+    "start": 37.52,
+    "end": 37.94
+   }
+  ]
+ },
+ {
+  "text": "La respuesta: según los analistas, 3.200 millones solo el primer año. Más que la película más taquillera de la historia.",
+  "start": 38.02,
+  "end": 45.71,
+  "words": [
+   {
+    "w": "La",
+    "start": 38.02,
+    "end": 38.18
+   },
+   {
+    "w": "respuesta:",
+    "start": 38.18,
+    "end": 39.0
+   },
+   {
+    "w": "según",
+    "start": 39.0,
+    "end": 39.26
+   },
+   {
+    "w": "los",
+    "start": 39.26,
+    "end": 39.42
+   },
+   {
+    "w": "analistas,",
+    "start": 39.42,
+    "end": 40.14
+   },
+   {
+    "w": "3.200",
+    "start": 40.14,
+    "end": 41.22
+   },
+   {
+    "w": "millones",
+    "start": 41.22,
+    "end": 41.86
+   },
+   {
+    "w": "solo",
+    "start": 41.86,
+    "end": 42.18
+   },
+   {
+    "w": "el",
+    "start": 42.18,
+    "end": 42.34
+   },
+   {
+    "w": "primer",
+    "start": 42.34,
+    "end": 42.66
+   },
+   {
+    "w": "año.",
+    "start": 42.66,
+    "end": 43.19
+   },
+   {
+    "w": "Más",
+    "start": 43.19,
+    "end": 43.42
+   },
+   {
+    "w": "que",
+    "start": 43.42,
+    "end": 43.58
+   },
+   {
+    "w": "la",
+    "start": 43.58,
+    "end": 43.66
+   },
+   {
+    "w": "película",
+    "start": 43.66,
+    "end": 44.14
+   },
+   {
+    "w": "más",
+    "start": 44.14,
+    "end": 44.46
+   },
+   {
+    "w": "taquillera",
+    "start": 44.46,
+    "end": 45.18
+   },
+   {
+    "w": "de",
+    "start": 45.18,
+    "end": 45.26
+   },
+   {
+    "w": "la",
+    "start": 45.26,
+    "end": 45.34
+   },
+   {
+    "w": "historia.",
+    "start": 45.34,
+    "end": 45.71
+   }
+  ]
+ },
+ {
+  "text": "¿Pagarías 80 euros por un videojuego? Mándaselo a quien dice que jugar es tirar el dinero.",
+  "start": 45.91,
+  "end": 50.908,
+  "words": [
+   {
+    "w": "¿Pagarías",
+    "start": 45.91,
+    "end": 46.44
+   },
+   {
+    "w": "80",
+    "start": 46.44,
+    "end": 46.84
+   },
+   {
+    "w": "euros",
+    "start": 46.84,
+    "end": 47.16
+   },
+   {
+    "w": "por",
+    "start": 47.16,
+    "end": 47.24
+   },
+   {
+    "w": "un",
+    "start": 47.24,
+    "end": 47.4
+   },
+   {
+    "w": "videojuego?",
+    "start": 47.4,
+    "end": 48.326
+   },
+   {
+    "w": "Mándaselo",
+    "start": 48.326,
+    "end": 48.962
+   },
+   {
+    "w": "a",
+    "start": 48.962,
+    "end": 49.04
+   },
+   {
+    "w": "quien",
+    "start": 49.04,
+    "end": 49.197
+   },
+   {
+    "w": "dice",
+    "start": 49.197,
+    "end": 49.51
+   },
+   {
+    "w": "que",
+    "start": 49.51,
+    "end": 49.666
+   },
+   {
+    "w": "jugar",
+    "start": 49.666,
+    "end": 49.979
+   },
+   {
+    "w": "es",
+    "start": 49.979,
+    "end": 50.136
+   },
+   {
+    "w": "tirar",
+    "start": 50.136,
+    "end": 50.448
+   },
+   {
+    "w": "el",
+    "start": 50.448,
+    "end": 50.605
+   },
+   {
+    "w": "dinero.",
+    "start": 50.605,
+    "end": 50.908
+   }
+  ]
+ }
+]
