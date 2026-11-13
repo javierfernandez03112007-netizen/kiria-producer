@@ -5,7 +5,7 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 12-11-2026 (27 vídeos de Instagram + TikTok, ocho capturas de Metricool).
+Última actualización: 13-11-2026 (28 vídeos de Instagram + TikTok, nueve capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
@@ -14,7 +14,7 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - ✅ Carreras con mucha gente estudiándolas o con un bulo popular («Magisterio = macarrones»): más gente a quien mandárselo.
 - 🧪 **Actualidad con fecha + «tú» + por dentro** (GTA 6, 11-11): 125.658 en 27 h y 77,8 % pasa de 3 s, el mejor arranque desde
   Derecho; 182.210 a las 51 h (+56.552 el segundo día). Trae gente nueva, pero se guarda poco (2,7 por cada 1.000). Con el plan del
-  11-11 👤 va como **reel de prueba**, no en el feed.
+  11-11 👤 va como **reel de prueba**, no en el feed. Al tercer día se frena (+4.012), mientras las carreras siguen sumando miles cada día.
 - 🧪 **Historias reales contadas en orden** (el túnel de Brasil): la mejor retención del canal (79 % del vídeo visto) y el que más
   crece (+13.928 en un día, 7-11). Alternarlas con las carreras; se guardan poco.
 - 👤 **Público nuevo (Javi, 6/7-11)**: además de estudiantes, atraer a dueños de pequeños negocios (noticias que les afectan, negocios por
@@ -72,6 +72,7 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 ## 7 bis. Plan del 11-11 (👤 Javi lo aprobó)
 - 👤 **Un vídeo al día, a las 10:00, de carreras «por dentro» con giro**; nada más ese día en el feed. Lo experimental, como **reel de prueba**.
 - 👤 Anuncios y el reto, fuera del feed principal (historias, otra cuenta o anuncio pagado).
+  Prueba: el capítulo 1 del reto, 26,4 % pasa de 3 s y 1.692 en 34 h.
 - 🧪 **Desde el 2-11 las carreras tienen las mismas señales que Derecho o Industrial (≈ 18 compartidos y 15 guardados por cada 1.000) pero 15 veces
   menos alcance**: el freno es el empujón inicial de la cuenta (mezcla de temas, varios vídeos al día y anuncios con 37–43 % a los 3 s), no el vídeo.
 - 🧪 **Política y temas sociales** (huelga, elecciones, sindicatos, protestas): Instagram, por defecto, no los recomienda a quien no te sigue. Fuera del feed.

@@ -3,7 +3,44 @@
 Lo escribe cada día el chat «Análisis y plan · kiria.ai» (instrucciones en `ANALISIS_DIARIO.md`). La misma versión está en Notion,
 página «📈 Análisis de contenido · kiria.ai».
 
-## Última actualización: jueves 12-11-2026, 10:00
+## Última actualización: viernes 13-11-2026, 10:00
+
+**Datos**: Instagram, captura del 12-11 a las 20:34 (es el tercer día seguido sin la de las 08:33). TikTok, captura de hoy a las 08:41.
+**3,74 M de visualizaciones** en Instagram (+47.500 en 24 h, la mitad que el día anterior).
+
+- **Odontología** (se subió el jue 12 a las 09:54, no el viernes): 2.787 en 10,7 h y 63,8 % pasa de 3 s. Arranque flojo, pero se comparte
+  mucho (26 por cada 1.000, como las mejores carreras) y se guarda poco (2,9). Provisional: hay que verlo a las 48 h.
+- **Reto · Capítulo 1**: 1.692 en 34 h, **26,4 % pasa de 3 s** y 9,8 s de media, como los anuncios (37–43 %). Confirma el plan del 11-11:
+  los vídeos de marca, fuera del feed.
+- **GTA 6 se ha frenado**: +4.012 (186.222). La actualidad tira dos días y se para; las carreras siguen sumando solas (Industrial +10.284,
+  Mecánica +7.193, Derecho +4.584, Magisterio +2.846).
+- **TikTok**: GTA 6, 8.647 en 23 h (21 compartidos); ADE, 29.434. Allí ya rinde más que en Instagram.
+- Huelga, Avión y Veterinaria siguen sin fila de métricas.
+- Producción ha preparado «GTA 6: el dinero» (Listo, mié 18 a las 18:00) y el guion de Nvidia (reel de prueba). Regla nueva de Javi: los
+  informativos, con el estilo de Derecho (sala oscura de museo, pedestales y objetos reales). Ojo: el mié 18 coinciden Nutrición (10:00) y
+  GTA dinero (18:00); la receta lo permite (distinto tipo y más de 6 h), pero el plan del 11-11 dice «nada más ese día».
+
+**Prueba A/B de la semana**: duración (Veterinaria, 174 palabras, frente al lote de ≤ 145). Odontología (51 s) arranca peor que ADE, pero aún no
+hay 48 h.
+
+### Vídeo recomendado: «Criminología por dentro» · jueves 19-11 a las 10:00
+Es una carrera nueva, con mucha gente que la estudia por las series, y con un giro de acceso, como las que mejor funcionan. Va separada de
+Periodismo por Nutrición, porque el giro se parece. 140 palabras. Fuentes en `projects/criminologia/FUENTES.md`. Estilo de Derecho: sala
+oscura con pedestales. Primer segundo: una placa de policía gigante cae como el mazo sobre un birrete de graduado y lo aplasta contra un
+título de Bachiller. Pedestales: el temario con su cinta, el test y la báscula de pruebas físicas, el maletín de huellas de la Científica tras
+un cristal y la balanza de la respuesta.
+
+```
+Estudias cuatro años de Criminología… y para ser policía te piden lo mismo que a quien solo tiene Bachillerato. ¿Entonces para qué sirve? Te lo digo al final. Criminología son cuatro años: derecho penal, psicología del delincuente, estadística, víctimas… y muy poco laboratorio, no como en las series. Pero para entrar en la Policía Nacional como policía piden el título de Bachiller. Plazas en la convocatoria de dos mil veinticinco: dos mil setecientas sesenta y cuatro. Y te examinas igual que todos: test, pruebas físicas, psicotécnico y entrevista. Lo de las series, las huellas y el ADN, lo hace la Policía Científica: policías que ya aprobaron la oposición. La respuesta: la carrera no te abre la puerta de la policía. Te sirve para prisiones, víctimas o seguridad, y para opositar a inspector, que sí pide un grado. ¿Carrera u oposición directa? Mándaselo a quien quiere ser policía.
+```
+
+### Alternativas
+1. **Fisioterapia por dentro** (quién puede tocarte la espalda sin carrera; CONFIRMAR los datos antes del guion).
+2. **Trabajo Social por dentro** (más de 40.000 colegiados; buscar el giro de acceso con fuente).
+
+---
+
+## Actualización anterior: jueves 12-11-2026, 10:00
 
 **Datos**: captura del 11-11 a las 20:34 (falta otra vez la de las 08:33 de hoy). **3,69 M de visualizaciones** en Instagram (+70.000 en 24 h).
 No hay captura de TikTok en esta tanda. La Huelga y el Avión todavía no tienen fila de métricas.
