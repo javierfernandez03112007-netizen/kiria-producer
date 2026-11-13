@@ -110,6 +110,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **«El jefe de Nvidia dimite»** (`projects/nvidia_dimision/`, guion 13-11-2026): Javi: «uno sobre la dimisión del dueño de NVIDIA, y al final
+  que la pregunta no sea rara sino algo como: ¿crees que por una infidelidad tienen que obligarle a dimitir?». Actualidad → reel de prueba.
+  Guion de 148 palabras con todo atribuido (`FUENTES.md`): carta del 8-11 («fui infiel a mi mujer»), investigación del consejo (si fue objetivo
+  de espionaje extranjero), dimisión aceptada el 11-11 y anunciada el 12-11, «más de un 13 %» al abrir (la cifra que cumplen todas las fuentes;
+  la de «601.000 millones» no se pudo confirmar y no se usa). Sin nombrar a las mujeres; sin Congreso ni Trump (tono político). Desde esta sesión
+  WebFetch no abre los medios (la red no deja pasar esos dominios): los datos se cruzan con varias búsquedas. Pendiente: el MP3 de Javi.
 - **«GTA 6: el dinero»** (`projects/gta6_dinero/`, 12-11-2026): Javi: «el de odontología ha sido un completo caos, vamos a hacer otro de GTA…
   con otro enfoque: lo que va a ser GTA 6, el dinero… cosas de mucho interés para la gran parte de la población». Guion de 141 palabras
   (gancho 16: «Ninguna película de la historia ha ganado tanto dinero como este videojuego»; respuesta: 3.200 M$ el primer año según los
