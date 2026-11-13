@@ -2157,7 +2157,103 @@ def sfx_track_reto(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_alfabeto(path):
+    """«¿Por qué los bomberos dicen "Bravo" y "Delta"?»: la calle de noche con el fuego, la radio (clic al pulsar, ruido y
+    fallos cuando «be» y «de» se confunden), las sirenas y la bomba, el equipo que entra, el reloj en la puerta equivocada y el
+    acierto en la buena, una nota por cada letra del alfabeto, el reto de la Q con la cuenta y la bocina, Quebec y las banderas,
+    «ANA» letra a letra y la venta. Tiempos como en alfabeto.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["count0"] = LINES[7]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["in0"] = c["postureo"] - 0.2; T["in1"] = c["tercero"] + 0.3
+    T["d0"] = c["puerta"] - 0.1; T["d1"] = c["poreso"] + 0.2; T["b0"] = c["bravo5"] + 0.3
+    let0 = c["cada"] + 0.1; let1 = max(c["zulu6"] + 0.25, let0 + 2.4)
+    nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
+    fuego, glitch, rele = _load("fuego"), _onset(_load("glitch")), _onset(_load("rele"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # fondo: la calle, el fuego y, a lo lejos, una sirena
+    put(_loop(_load("ciudad"), END + 0.5), 0.0, -32, END + 0.5, 0.01, 0.6, track=amb)
+    put(_loop(fuego, END + 0.5), 0.0, -26, T["fin"], 0.01, 1.2, track=amb)
+    put("rotativo", 0.0, -34, T["count1"], 0.3, 0.8, track=amb)
+    # gancho: golpe y latido (alguien atrapado junto al fuego)
+    put("golpe", 0.0, -24, 0.8, 0.003, 0.35)
+    put("latido", 0.1, -24, 0.7)
+    # la radio: clic al pulsar y la voz que llega; con sirenas y la bomba, ruido y fallos en «be» / «de»
+    for t0 in (c["bravo1"] - 0.35, c["sirenas"] - 0.3, c["bravo5"] - 0.3):
+        put(rele, t0, -24, 0.2)
+    put("radio", c["bravo1"] - 0.3, -30, c["radio"] - c["bravo1"] + 0.5, 0.05, 0.2)
+    put("sirena", c["sirenas"] - 0.2, -25, 3.2, 0.3, 0.8)
+    put(_loop(_load("motor"), 8.0), c["motor"] - 0.2, -27, 2.8, 0.2, 0.6)
+    put("radio", c["sirenas"] - 0.2, -25, c["igual"] - c["sirenas"] + 0.6, 0.05, 0.3)
+    put(glitch, c["be3"] - 0.03, -24, 0.4)
+    put(glitch, c["de3"] - 0.03, -24, 0.4)
+    # el equipo entra, va a la puerta equivocada (el reloj corre) y, con «Bravo», a la buena
+    put(_loop(_load("pasos"), 6.0), T["in0"], -31, T["in1"] - T["in0"], 0.2, 0.2)
+    put("fallo", c["equivocada"] - 0.02, -24, 0.5)
+    put("reloj_rapido", T["d0"] + 0.6, -29, T["d1"] - T["d0"] - 0.4, 0.1, 0.2)
+    put("radio", c["bravo5"] - 0.25, -31, c["imposibles"] - c["bravo5"] + 0.3, 0.05, 0.2)
+    put(_pitch(toque, 1.2), c["bravo5"] - 0.03, -27, 0.3)
+    put(_pitch(toque, 1.35), c["delta5"] - 0.03, -27, 0.3)
+    put("acierto", c["imposibles"] - 0.02, -23, 0.9)
+    put("llave", c["imposibles"] + 0.15, -28, 0.4)
+    # el alfabeto: una nota que sube por cada letra (y la ventana que se enciende); «guárdalo»
+    put("whoosh2", c["cada"] - 0.3, -28, 0.7)
+    for n in range(26):
+        put(_pitch(nota, 0.8 * 1.035 ** n), let0 + n * (let1 - let0) / 25 - 0.02, -32, 0.25)
+    put("destello", c["pilotos"] - 0.06, -25, 0.6)
+    # el reto de la Q: tarjetas, cuenta con bocina y «¡Tiempo!»
+    put("whoosh2", c["oA"] - 0.3, -29, 0.8)
+    for k, key in enumerate(("oA", "oB", "oC")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    put("fallo", c["tiempo"] + 0.12, -26, 0.5)
+    put("acierto", c["quebec9"] - 0.02, -23, 0.9)
+    for key in ("ingles", "frances", "espanol"):
+        put(_pitch(toque, 1.2), c[key] - 0.03, -28, 0.3)
+    # tu nombre: ANA = ALFA · NOVEMBER · ALFA
+    for i in range(3):
+        put(_pitch(nota, 1.2 + 0.12 * i), c["ahora"] + 0.4 + 0.35 * i, -29, 0.4)
+    put(_pitch(toque, 1.3), c["nombre"] - 0.03, -27, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "alfabeto":
+        return sfx_track_alfabeto(path)
     if Q.get("formato") == "reto":
         return sfx_track_reto(path)
     if Q.get("formato") == "escala":
