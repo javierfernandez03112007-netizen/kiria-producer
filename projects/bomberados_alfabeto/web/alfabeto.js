@@ -876,6 +876,7 @@ function alphaBoard(t) {
     txt(L, 20, 18, 52, n === 1 || n === 3 ? GOLD2 : CYAN2, 400, 'center', 'Bebas');
     txt('→', 70, 16, 40, 'rgba(255,255,255,0.5)', 400, 'center', 'Bebas');
     txt(wd, 110, 18, 50, '#F4F6F8', 400, 'left', 'Bebas');
+    if (wd === 'ECHO') { g.font = '400 50px Bebas'; txt('«ECO»', 110 + g.measureText(wd).width + 16, 18, 40, 'rgba(255,255,255,0.6)', 400, 'left', 'Bebas'); }   // como se pronuncia (la pizarra de Javi)
     g.restore();
   });
   g.restore();
