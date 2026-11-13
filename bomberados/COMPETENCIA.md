@@ -36,3 +36,27 @@ y de fecha indeterminada. Repetir la revisión cada 1–3 meses.
 - Sartén: https://www.cronica.com.ar/cosa-de-locos/Furor-por-el-bombero-tiktoker-que-conto-como-reaccionar-ante-una-olla-que-se-prende-fuego-en-la-cocina-20221125-0074.html ·
   https://614-5ce56ebdc87b7.radiocms.com/news/entertainment/watch-terrifying-video-shows-what-you-should-never-do-to-a-kitchen-fire
 - Flashover con muebles modernos (UL FSRI): https://technicalpanels.fsri.org/research-projects/comparison-of-synthetic-and-natural-home-furnishings.html
+
+## Revisión del 13 nov 2026 (pregunta de Javi: «perfiles muy potentes en Instagram que expliquen temario o preparen la oposición»)
+Instagram sigue sin abrir desde la nube: cifras de los resultados del buscador (aproximadas, de fecha incierta).
+- **En España no hay cuentas «muy potentes» en este nicho**: las mayores rondan 6.000–14.000 seguidores. Élite Bomberos
+  (8.838 el 9 nov) ya está entre ellas, y los 3D de Bomberados (20.000–106.000 vistas) llegan a más gente de la que siguen a
+  cualquiera de estas cuentas.
+- **La marca más fuerte como negocio: Formación Ninja / «Bombero Ninja»** (@formacion_ninja; el bombero y preparador David
+  Fuentes, @davidfuentesninja): academia online por suscripción; su primer curso (dic. 2019, Comunidad de Madrid) tuvo 497
+  solicitudes en 5 días; dice ser la que más aprueba en Bomberos AENA, con más de 10.000 preguntas de test; trabaja con opositoras
+  que graban su preparación con código de descuento (@albastunt). Seguidores: sin dato (mirarlo desde el móvil).
+- Academias: @oposicionesbombero ≈ 14.000 · @navarrobomber ≈ 12.000 (Comunidad Valenciana; también TikTok) · @oposurbomberos
+  ≈ 6.700 (Madrid; evaluaciones de pruebas físicas) · @academiacentralbomberos ≈ 6.000 · @academia.integral.emergencias ≈ 1.000
+  · @oposicionbomberos ≈ 1.000 (Canarias) · @academiabombleon ≈ 900 · @_academiabomberos.es ≈ 700 · @oposicionbomberoonline
+  (Raúl Sanz) ≈ 430.
+- Cuentas de los propios cuerpos/colectivos (el oficio, no la oposición): @bomberosgrancanaria ≈ 12.000 · @euskadibomberos
+  ≈ 12.000 · @bomberosgranada ≈ 6.600 · @bomberos_madrid_2.0 ≈ 2.800 (dirigida a opositores).
+- Fuentes: https://www.tiktok.com/@formacion_ninja/video/7634163640681172257 ·
+  https://emprendedores.es/ideas-de-negocio/emprendedor-ninja · https://www.instagram.com/oposurbomberos/ ·
+  https://www.instagram.com/academiacentralbomberos/ · https://www.instagram.com/academia.integral.emergencias/ ·
+  https://www.instagram.com/oposicionbomberos/ · https://www.instagram.com/academiabombleon/ ·
+  https://www.instagram.com/_academiabomberos.es/ · https://www.instagram.com/oposicionbomberoonline/ ·
+  https://www.tiktok.com/@navarrobomber/video/7459420701582298401 · https://www.instagram.com/bomberosgrancanaria/ ·
+  https://www.instagram.com/euskadibomberos/ · https://www.instagram.com/bomberosgranada/ ·
+  https://www.instagram.com/bomberos_madrid_2.0/ · https://www.tiktok.com/@albastunt/video/7412971126357347617
