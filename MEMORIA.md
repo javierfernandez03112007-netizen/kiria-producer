@@ -115,7 +115,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Guion de 148 palabras con todo atribuido (`FUENTES.md`): carta del 8-11 («fui infiel a mi mujer»), investigación del consejo (si fue objetivo
   de espionaje extranjero), dimisión aceptada el 11-11 y anunciada el 12-11, «más de un 13 %» al abrir (la cifra que cumplen todas las fuentes;
   la de «601.000 millones» no se pudo confirmar y no se usa). Sin nombrar a las mujeres; sin Congreso ni Trump (tono político). Desde esta sesión
-  WebFetch no abre los medios (la red no deja pasar esos dominios): los datos se cruzan con varias búsquedas. Pendiente: el MP3 de Javi.
+  WebFetch no abre los medios (la red no deja pasar esos dominios): los datos se cruzan con varias búsquedas. MP3 de Javi (13-11, **voz Roger v4**,
+  no Danny): 51,1 s; vídeo de 52,0 s. Escena sobre el kit de GTA «el dinero» (`10_parts.js`, cámara y HUD): una alianza gigante cae como el mazo
+  sobre un chip genérico y lo parte (`14_objects.js`: `ringObj`, `chipObj` en dos mitades), la silla de director vacía se va rodando con «ha
+  dimitido» (`execChair`), vitrina con la carpeta de la investigación, y cinco pedestales (calendario de años y placa; la carta que se escribe a
+  máquina, el sello «ABIERTA», la placa que cae; la campana y el panel con el −13 %; la lupa, el micrófono, las siluetas sin cara y el
+  organigrama; la balanza vida privada / su cargo). Lección (8): **el suelo pulido refleja los paneles de luz del `RoomEnvironment`**: el pedestal
+  a 178° salía lavado, casi blanco (en GTA también); se arregla girando el entorno (`scene.environmentRotation.y = Math.PI / 2`), no bajando su
+  intensidad. Render en las 6 máquinas (`render-nvd-1…6`) + aquí (2676–3120).
 - **«GTA 6: el dinero»** (`projects/gta6_dinero/`, 12-11-2026): Javi: «el de odontología ha sido un completo caos, vamos a hacer otro de GTA…
   con otro enfoque: lo que va a ser GTA 6, el dinero… cosas de mucho interés para la gran parte de la población». Guion de 141 palabras
   (gancho 16: «Ninguna película de la historia ha ganado tanto dinero como este videojuego»; respuesta: 3.200 M$ el primer año según los
