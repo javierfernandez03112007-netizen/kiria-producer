@@ -1,0 +1,280 @@
+{
+ "formato": "alfabeto",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 4.05,
+  "count_line": 7,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿SABE DELETREAR SU NOMBRE?",
+ "portada": {
+  "titulo": "¿POR QUÉ DICEN «BRAVO» Y «DELTA»?",
+  "etiqueta": "¡ATRAPADO EN EL 3.º B!",
+  "t": 2.5,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "oido": [
+   "oído",
+   1,
+   1
+  ],
+  "bombero1": [
+   "bombero",
+   1,
+   1
+  ],
+  "militar": [
+   "militar",
+   1,
+   1
+  ],
+  "bravo1": [
+   "Bravo",
+   1,
+   1
+  ],
+  "delta1": [
+   "Delta",
+   1,
+   1
+  ],
+  "radio": [
+   "radio?",
+   1,
+   1
+  ],
+  "postureo": [
+   "postureo:",
+   1,
+   2
+  ],
+  "salvar": [
+   "salvar",
+   1,
+   2
+  ],
+  "atrapado": [
+   "atrapado",
+   1,
+   2
+  ],
+  "tercero": [
+   "tercero",
+   1,
+   2
+  ],
+  "b2": [
+   "B.",
+   1,
+   2
+  ],
+  "sirenas": [
+   "sirenas",
+   1,
+   3
+  ],
+  "motor": [
+   "motor",
+   1,
+   3
+  ],
+  "be3": [
+   "be",
+   1,
+   3
+  ],
+  "de3": [
+   "de",
+   2,
+   3
+  ],
+  "suenan": [
+   "suenan",
+   1,
+   3
+  ],
+  "igual": [
+   "igual…",
+   1,
+   3
+  ],
+  "puerta": [
+   "puerta",
+   1,
+   4
+  ],
+  "equivocada": [
+   "equivocada",
+   1,
+   4
+  ],
+  "minutos": [
+   "minutos",
+   1,
+   4
+  ],
+  "poreso": [
+   "Por",
+   1,
+   5
+  ],
+  "bravo5": [
+   "Bravo",
+   1,
+   5
+  ],
+  "delta5": [
+   "Delta",
+   1,
+   5
+  ],
+  "imposibles": [
+   "imposibles",
+   1,
+   5
+  ],
+  "cada": [
+   "Cada",
+   1,
+   6
+  ],
+  "alfa6": [
+   "Alfa",
+   1,
+   6
+  ],
+  "zulu6": [
+   "Zulu:",
+   1,
+   6
+  ],
+  "bomberos6": [
+   "bomberos,",
+   1,
+   6
+  ],
+  "militares": [
+   "militares",
+   1,
+   6
+  ],
+  "pilotos": [
+   "pilotos.",
+   1,
+   6
+  ],
+  "aver": [
+   "ver",
+   1,
+   7
+  ],
+  "hablas": [
+   "hablas",
+   1,
+   7
+  ],
+  "q7": [
+   "Q",
+   1,
+   7
+  ],
+  "oA": [
+   "queso,",
+   1,
+   7
+  ],
+  "oB": [
+   "Quijote…",
+   1,
+   7
+  ],
+  "oC": [
+   "Quebec?",
+   1,
+   7
+  ],
+  "tienes": [
+   "Tienes",
+   1,
+   8
+  ],
+  "cinco8": [
+   "cinco",
+   1,
+   8
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   9
+  ],
+  "quebec9": [
+   "Quebec:",
+   1,
+   9
+  ],
+  "ingles": [
+   "inglés,",
+   1,
+   9
+  ],
+  "frances": [
+   "francés",
+   1,
+   9
+  ],
+  "espanol": [
+   "español.",
+   1,
+   9
+  ],
+  "ahora": [
+   "Ahora",
+   1,
+   10
+  ],
+  "nombre": [
+   "nombre",
+   1,
+   10
+  ],
+  "comentarios": [
+   "comentarios.",
+   1,
+   10
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   11
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   12
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   12
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   12
+  ]
+ }
+}

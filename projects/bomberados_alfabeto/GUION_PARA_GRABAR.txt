@@ -1,0 +1,57 @@
+«¿POR QUÉ LOS BOMBEROS DICEN "BRAVO" Y "DELTA"?» — el alfabeto de radio (idea de Javi, 13 nov).
+
+CÓMO LO HE PLANTEADO (tu gancho + lo que funciona en la cuenta, bomberados/MENSAJE.md y el plan del 13 nov):
+- Tu gancho tal cual: «¿Alguna vez has oído a un bombero o a un militar decir "Bravo" o "Delta" por la radio?». Y en el
+  primer fotograma ya hay peligro: un edificio con fuego en el tercero y alguien en la ventana; el mando habla por la radio.
+- UNA idea: por radio, muchas letras suenan igual (B y D, M y N…); por eso cada letra se dice con una palabra que no se
+  confunde.
+- Alguien en juego y bomberos en acción (el plan del 13 nov: nada de teoría sin bombero haciendo algo): hay una persona
+  atrapada en el tercero B; entre sirenas, «be» llega como «de» y el equipo va a la puerta equivocada.
+- El «¡ajá!» se VE: «BRAVO» y «DELTA» llegan claras y el equipo va a la puerta buena.
+- Toda la tabla de la A a la Z en pantalla (como la pizarra que me has mandado) para que la guarden; y en la descripción.
+- El reto con cuenta de 5 s y «¡Tiempo!» tachando la trampa: «¿La Q es queso, Quijote… o Quebec?».
+- Cierre que contesta cualquiera: «escribe tu nombre como un bombero en comentarios» y «mándaselo a quien quiera ser bombero».
+- He puesto «bomberos, militares y pilotos» y no «policías»: en España cada policía usa el suyo (muchas, el de «A de Antonio,
+  B de Barcelona…»), así que decir «policía» podría ser falso.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 48 s de voz + 4 s de cuenta (≈ 52 s). RÁPIDO. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en el 5).
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[curious, intriguing] ¿Alguna vez has oído a un bombero o a un militar decir «BRAVO» o «DELTA» por la radio?
+[serious, urgent] No es postureo: puede salvar al que está atrapado en el tercero B.
+[tense, fast] Entre sirenas y el motor de la bomba, «be» y «de» suenan casi igual…
+[grave] Y una puerta equivocada son minutos que no tiene.
+[explaining, confident] Por eso la B es «BRAVO» y la D es «DELTA»: imposibles de confundir.
+[upbeat] Cada letra tiene su palabra, de Alfa a Zulu: la usan bomberos, militares y pilotos.
+[playful, challenging] A ver si ya hablas como ellos: ¿la Q es queso, Quijote… [teasing] o Quebec?
+[urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [amused] Es Quebec: se entiende igual en inglés, francés y español.
+[playful] Ahora tú: escribe tu nombre como un bombero en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — 3D de noche, un DRON QUE NO PARA y planos abiertos:
+1. «¿Alguna vez has oído a un bombero o a un militar decir "Bravo" o "Delta" por la radio?» — primer fotograma: edificio de
+   noche con fuego y humo en el tercero; alguien en la ventana con la linterna del móvil; abajo, la autobomba con los
+   rotativos y el mando con la radio en la mano; salen «BRAVO» y «DELTA» de la radio.
+2. «No es postureo: puede salvar al que está atrapado en el tercero B.» — «3.º B» sobre la ventana de la persona.
+3. «Entre sirenas y el motor de la bomba, "be" y "de" suenan casi igual…» — la radio con ruido: la letra que se oye cambia
+   entre B y D.
+4. «Y una puerta equivocada son minutos que no tiene.» — el plano del tercero (pisos A, B, C, D): el equipo va a la D, cruz
+   roja y el reloj que corre.
+5. «Por eso la B es "Bravo" y la D es "Delta": imposibles de confundir.» — llega «TERCERO BRAVO» limpio y el equipo va a la B.
+6. «Cada letra tiene su palabra, de Alfa a Zulu: la usan bomberos, militares y pilotos.» — las ventanas del edificio se
+   encienden una a una con su letra: A ALFA, B BRAVO… Z ZULU (la tabla entera, como tu pizarra) y «📌 GUÁRDALO».
+7. «A ver si ya hablas como ellos: ¿la Q es queso, Quijote… o Quebec?» — tres tarjetas: A QUESO · B QUIJOTE · C QUEBEC.
+8. «Tienes cinco segundos.» — cuenta 1-2-3-4-5 con bocina; el dron gira alrededor del edificio.
+9. «¡Tiempo! Es Quebec: se entiende igual en inglés, francés y español.» — A y B tachadas; QUEBEC en verde con las tres
+   banderas.
+10. «Ahora tú: escribe tu nombre como un bombero en comentarios.» — «ANA = ALFA · NOVEMBER · ALFA» y «💬 TU NOMBRE».
+11. ★ «¡Mándaselo a quien quiera ser bombero!» — avión de papel con «¿SABE DELETREAR SU NOMBRE?».
+12. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.

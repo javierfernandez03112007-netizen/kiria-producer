@@ -1,0 +1,761 @@
+[
+ {
+  "text": "¿Alguna vez has oído a un bombero o a un militar decir «Bravo» o «Delta» por la radio?",
+  "start": 0.0,
+  "end": 4.863,
+  "words": [
+   {
+    "w": "¿Alguna",
+    "start": 0.0,
+    "end": 0.469
+   },
+   {
+    "w": "vez",
+    "start": 0.469,
+    "end": 0.651
+   },
+   {
+    "w": "has",
+    "start": 0.651,
+    "end": 0.834
+   },
+   {
+    "w": "oído",
+    "start": 0.834,
+    "end": 1.16
+   },
+   {
+    "w": "a",
+    "start": 1.16,
+    "end": 1.343
+   },
+   {
+    "w": "un",
+    "start": 1.343,
+    "end": 1.526
+   },
+   {
+    "w": "bombero",
+    "start": 1.526,
+    "end": 1.994
+   },
+   {
+    "w": "o",
+    "start": 1.994,
+    "end": 2.177
+   },
+   {
+    "w": "a",
+    "start": 2.177,
+    "end": 2.36
+   },
+   {
+    "w": "un",
+    "start": 2.36,
+    "end": 2.543
+   },
+   {
+    "w": "militar",
+    "start": 2.543,
+    "end": 3.011
+   },
+   {
+    "w": "decir",
+    "start": 3.011,
+    "end": 3.337
+   },
+   {
+    "w": "«Bravo»",
+    "start": 3.337,
+    "end": 3.663
+   },
+   {
+    "w": "o",
+    "start": 3.663,
+    "end": 3.846
+   },
+   {
+    "w": "«Delta»",
+    "start": 3.846,
+    "end": 4.171
+   },
+   {
+    "w": "por",
+    "start": 4.171,
+    "end": 4.354
+   },
+   {
+    "w": "la",
+    "start": 4.354,
+    "end": 4.537
+   },
+   {
+    "w": "radio?",
+    "start": 4.537,
+    "end": 4.863
+   }
+  ]
+ },
+ {
+  "text": "No es postureo: puede salvar al que está atrapado en el tercero B.",
+  "start": 5.163,
+  "end": 9.149,
+  "words": [
+   {
+    "w": "No",
+    "start": 5.163,
+    "end": 5.346
+   },
+   {
+    "w": "es",
+    "start": 5.346,
+    "end": 5.529
+   },
+   {
+    "w": "postureo:",
+    "start": 5.529,
+    "end": 5.997
+   },
+   {
+    "w": "puede",
+    "start": 6.177,
+    "end": 6.503
+   },
+   {
+    "w": "salvar",
+    "start": 6.503,
+    "end": 6.829
+   },
+   {
+    "w": "al",
+    "start": 6.829,
+    "end": 7.012
+   },
+   {
+    "w": "que",
+    "start": 7.012,
+    "end": 7.194
+   },
+   {
+    "w": "está",
+    "start": 7.194,
+    "end": 7.52
+   },
+   {
+    "w": "atrapado",
+    "start": 7.52,
+    "end": 8.132
+   },
+   {
+    "w": "en",
+    "start": 8.132,
+    "end": 8.314
+   },
+   {
+    "w": "el",
+    "start": 8.314,
+    "end": 8.497
+   },
+   {
+    "w": "tercero",
+    "start": 8.497,
+    "end": 8.966
+   },
+   {
+    "w": "B.",
+    "start": 8.966,
+    "end": 9.149
+   }
+  ]
+ },
+ {
+  "text": "Entre sirenas y el motor de la bomba, «be» y «de» suenan casi igual…",
+  "start": 9.449,
+  "end": 13.252,
+  "words": [
+   {
+    "w": "Entre",
+    "start": 9.449,
+    "end": 9.775
+   },
+   {
+    "w": "sirenas",
+    "start": 9.775,
+    "end": 10.243
+   },
+   {
+    "w": "y",
+    "start": 10.243,
+    "end": 10.426
+   },
+   {
+    "w": "el",
+    "start": 10.426,
+    "end": 10.609
+   },
+   {
+    "w": "motor",
+    "start": 10.609,
+    "end": 10.935
+   },
+   {
+    "w": "de",
+    "start": 10.935,
+    "end": 11.118
+   },
+   {
+    "w": "la",
+    "start": 11.118,
+    "end": 11.3
+   },
+   {
+    "w": "bomba,",
+    "start": 11.3,
+    "end": 11.626
+   },
+   {
+    "w": "«be»",
+    "start": 11.726,
+    "end": 11.909
+   },
+   {
+    "w": "y",
+    "start": 11.909,
+    "end": 12.092
+   },
+   {
+    "w": "«de»",
+    "start": 12.092,
+    "end": 12.275
+   },
+   {
+    "w": "suenan",
+    "start": 12.275,
+    "end": 12.6
+   },
+   {
+    "w": "casi",
+    "start": 12.6,
+    "end": 12.926
+   },
+   {
+    "w": "igual…",
+    "start": 12.926,
+    "end": 13.252
+   }
+  ]
+ },
+ {
+  "text": "Y una puerta equivocada son minutos que no tiene.",
+  "start": 13.552,
+  "end": 16.483,
+  "words": [
+   {
+    "w": "Y",
+    "start": 13.552,
+    "end": 13.735
+   },
+   {
+    "w": "una",
+    "start": 13.735,
+    "end": 14.061
+   },
+   {
+    "w": "puerta",
+    "start": 14.061,
+    "end": 14.386
+   },
+   {
+    "w": "equivocada",
+    "start": 14.386,
+    "end": 15.141
+   },
+   {
+    "w": "son",
+    "start": 15.141,
+    "end": 15.323
+   },
+   {
+    "w": "minutos",
+    "start": 15.323,
+    "end": 15.792
+   },
+   {
+    "w": "que",
+    "start": 15.792,
+    "end": 15.975
+   },
+   {
+    "w": "no",
+    "start": 15.975,
+    "end": 16.158
+   },
+   {
+    "w": "tiene.",
+    "start": 16.158,
+    "end": 16.483
+   }
+  ]
+ },
+ {
+  "text": "Por eso la B es «Bravo» y la D es «Delta»: imposibles de confundir.",
+  "start": 16.783,
+  "end": 20.666,
+  "words": [
+   {
+    "w": "Por",
+    "start": 16.783,
+    "end": 16.966
+   },
+   {
+    "w": "eso",
+    "start": 16.966,
+    "end": 17.292
+   },
+   {
+    "w": "la",
+    "start": 17.292,
+    "end": 17.474
+   },
+   {
+    "w": "B",
+    "start": 17.474,
+    "end": 17.657
+   },
+   {
+    "w": "es",
+    "start": 17.657,
+    "end": 17.84
+   },
+   {
+    "w": "«Bravo»",
+    "start": 17.84,
+    "end": 18.166
+   },
+   {
+    "w": "y",
+    "start": 18.166,
+    "end": 18.349
+   },
+   {
+    "w": "la",
+    "start": 18.349,
+    "end": 18.532
+   },
+   {
+    "w": "D",
+    "start": 18.532,
+    "end": 18.714
+   },
+   {
+    "w": "es",
+    "start": 18.714,
+    "end": 18.897
+   },
+   {
+    "w": "«Delta»:",
+    "start": 18.897,
+    "end": 19.223
+   },
+   {
+    "w": "imposibles",
+    "start": 19.403,
+    "end": 20.014
+   },
+   {
+    "w": "de",
+    "start": 20.014,
+    "end": 20.197
+   },
+   {
+    "w": "confundir.",
+    "start": 20.197,
+    "end": 20.666
+   }
+  ]
+ },
+ {
+  "text": "Cada letra tiene su palabra, de Alfa a Zulu: la usan bomberos, militares y pilotos.",
+  "start": 20.966,
+  "end": 26.232,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 20.966,
+    "end": 21.292
+   },
+   {
+    "w": "letra",
+    "start": 21.292,
+    "end": 21.617
+   },
+   {
+    "w": "tiene",
+    "start": 21.617,
+    "end": 21.943
+   },
+   {
+    "w": "su",
+    "start": 21.943,
+    "end": 22.126
+   },
+   {
+    "w": "palabra,",
+    "start": 22.126,
+    "end": 22.595
+   },
+   {
+    "w": "de",
+    "start": 22.695,
+    "end": 22.877
+   },
+   {
+    "w": "Alfa",
+    "start": 22.877,
+    "end": 23.203
+   },
+   {
+    "w": "a",
+    "start": 23.203,
+    "end": 23.386
+   },
+   {
+    "w": "Zulu:",
+    "start": 23.386,
+    "end": 23.712
+   },
+   {
+    "w": "la",
+    "start": 23.892,
+    "end": 24.075
+   },
+   {
+    "w": "usan",
+    "start": 24.075,
+    "end": 24.4
+   },
+   {
+    "w": "bomberos,",
+    "start": 24.4,
+    "end": 24.869
+   },
+   {
+    "w": "militares",
+    "start": 24.969,
+    "end": 25.58
+   },
+   {
+    "w": "y",
+    "start": 25.58,
+    "end": 25.763
+   },
+   {
+    "w": "pilotos.",
+    "start": 25.763,
+    "end": 26.232
+   }
+  ]
+ },
+ {
+  "text": "A ver si ya hablas como ellos: ¿la Q es queso, Quijote… o Quebec?",
+  "start": 26.532,
+  "end": 30.672,
+  "words": [
+   {
+    "w": "A",
+    "start": 26.532,
+    "end": 26.715
+   },
+   {
+    "w": "ver",
+    "start": 26.715,
+    "end": 26.898
+   },
+   {
+    "w": "si",
+    "start": 26.898,
+    "end": 27.081
+   },
+   {
+    "w": "ya",
+    "start": 27.081,
+    "end": 27.263
+   },
+   {
+    "w": "hablas",
+    "start": 27.263,
+    "end": 27.589
+   },
+   {
+    "w": "como",
+    "start": 27.589,
+    "end": 27.915
+   },
+   {
+    "w": "ellos:",
+    "start": 27.915,
+    "end": 28.241
+   },
+   {
+    "w": "¿la",
+    "start": 28.421,
+    "end": 28.603
+   },
+   {
+    "w": "Q",
+    "start": 28.603,
+    "end": 28.786
+   },
+   {
+    "w": "es",
+    "start": 28.786,
+    "end": 28.969
+   },
+   {
+    "w": "queso,",
+    "start": 28.969,
+    "end": 29.295
+   },
+   {
+    "w": "Quijote…",
+    "start": 29.395,
+    "end": 29.863
+   },
+   {
+    "w": "o",
+    "start": 30.163,
+    "end": 30.346
+   },
+   {
+    "w": "Quebec?",
+    "start": 30.346,
+    "end": 30.672
+   }
+  ]
+ },
+ {
+  "text": "Tienes cinco segundos.",
+  "start": 30.972,
+  "end": 32.092,
+  "words": [
+   {
+    "w": "Tienes",
+    "start": 30.972,
+    "end": 31.298
+   },
+   {
+    "w": "cinco",
+    "start": 31.298,
+    "end": 31.623
+   },
+   {
+    "w": "segundos.",
+    "start": 31.623,
+    "end": 32.092
+   }
+  ]
+ },
+ {
+  "text": "¡Tiempo! Es Quebec: se entiende igual en inglés, francés y español.",
+  "start": 36.442,
+  "end": 40.119,
+  "words": [
+   {
+    "w": "¡Tiempo!",
+    "start": 36.442,
+    "end": 36.768
+   },
+   {
+    "w": "Es",
+    "start": 36.868,
+    "end": 37.051
+   },
+   {
+    "w": "Quebec:",
+    "start": 37.051,
+    "end": 37.376
+   },
+   {
+    "w": "se",
+    "start": 37.556,
+    "end": 37.739
+   },
+   {
+    "w": "entiende",
+    "start": 37.739,
+    "end": 38.208
+   },
+   {
+    "w": "igual",
+    "start": 38.208,
+    "end": 38.533
+   },
+   {
+    "w": "en",
+    "start": 38.533,
+    "end": 38.716
+   },
+   {
+    "w": "inglés,",
+    "start": 38.716,
+    "end": 39.042
+   },
+   {
+    "w": "francés",
+    "start": 39.142,
+    "end": 39.468
+   },
+   {
+    "w": "y",
+    "start": 39.468,
+    "end": 39.651
+   },
+   {
+    "w": "español.",
+    "start": 39.651,
+    "end": 40.119
+   }
+  ]
+ },
+ {
+  "text": "Ahora tú: escribe tu nombre como un bombero en comentarios.",
+  "start": 40.419,
+  "end": 43.999,
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 40.419,
+    "end": 40.888
+   },
+   {
+    "w": "tú:",
+    "start": 40.888,
+    "end": 41.07
+   },
+   {
+    "w": "escribe",
+    "start": 41.25,
+    "end": 41.719
+   },
+   {
+    "w": "tu",
+    "start": 41.719,
+    "end": 41.902
+   },
+   {
+    "w": "nombre",
+    "start": 41.902,
+    "end": 42.228
+   },
+   {
+    "w": "como",
+    "start": 42.228,
+    "end": 42.553
+   },
+   {
+    "w": "un",
+    "start": 42.553,
+    "end": 42.736
+   },
+   {
+    "w": "bombero",
+    "start": 42.736,
+    "end": 43.205
+   },
+   {
+    "w": "en",
+    "start": 43.205,
+    "end": 43.388
+   },
+   {
+    "w": "comentarios.",
+    "start": 43.388,
+    "end": 43.999
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 44.299,
+  "end": 46.939,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 44.299,
+    "end": 45.139
+   },
+   {
+    "w": "a",
+    "start": 45.139,
+    "end": 45.379
+   },
+   {
+    "w": "quien",
+    "start": 45.379,
+    "end": 45.619
+   },
+   {
+    "w": "quiera",
+    "start": 45.619,
+    "end": 46.059
+   },
+   {
+    "w": "ser",
+    "start": 46.059,
+    "end": 46.299
+   },
+   {
+    "w": "bombero!",
+    "start": 46.299,
+    "end": 46.939
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 47.239,
+  "end": 51.759,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 47.239,
+    "end": 48.079
+   },
+   {
+    "w": "a",
+    "start": 48.079,
+    "end": 48.319
+   },
+   {
+    "w": "bombero?",
+    "start": 48.319,
+    "end": 48.959
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 49.059,
+    "end": 49.899
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 49.999,
+    "end": 50.639
+   },
+   {
+    "w": "gratis",
+    "start": 50.639,
+    "end": 51.079
+   },
+   {
+    "w": "cinco",
+    "start": 51.079,
+    "end": 51.519
+   },
+   {
+    "w": "días!",
+    "start": 51.519,
+    "end": 51.759
+   }
+  ]
+ }
+]
