@@ -1,0 +1,790 @@
+[
+ {
+  "text": "El jefe de Nvidia ha dimitido días después de confesar una infidelidad.",
+  "start": 0.0,
+  "end": 4.66,
+  "words": [
+   {
+    "w": "El",
+    "start": 0.0,
+    "end": 0.16
+   },
+   {
+    "w": "jefe",
+    "start": 0.16,
+    "end": 0.48
+   },
+   {
+    "w": "de",
+    "start": 0.48,
+    "end": 0.64
+   },
+   {
+    "w": "Nvidia",
+    "start": 0.64,
+    "end": 1.28
+   },
+   {
+    "w": "ha",
+    "start": 1.28,
+    "end": 1.44
+   },
+   {
+    "w": "dimitido",
+    "start": 1.44,
+    "end": 2.08
+   },
+   {
+    "w": "días",
+    "start": 2.08,
+    "end": 2.4
+   },
+   {
+    "w": "después",
+    "start": 2.4,
+    "end": 2.8
+   },
+   {
+    "w": "de",
+    "start": 2.8,
+    "end": 3.04
+   },
+   {
+    "w": "confesar",
+    "start": 3.04,
+    "end": 3.6
+   },
+   {
+    "w": "una",
+    "start": 3.6,
+    "end": 3.92
+   },
+   {
+    "w": "infidelidad.",
+    "start": 3.92,
+    "end": 4.66
+   }
+  ]
+ },
+ {
+  "text": "Pero su empresa no investiga si fue infiel, sino otra cosa. Te lo digo al final.",
+  "start": 4.94,
+  "end": 9.88,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 4.94,
+    "end": 5.02
+   },
+   {
+    "w": "su",
+    "start": 5.02,
+    "end": 5.26
+   },
+   {
+    "w": "empresa",
+    "start": 5.26,
+    "end": 5.66
+   },
+   {
+    "w": "no",
+    "start": 5.66,
+    "end": 5.9
+   },
+   {
+    "w": "investiga",
+    "start": 5.9,
+    "end": 6.54
+   },
+   {
+    "w": "si",
+    "start": 6.54,
+    "end": 6.7
+   },
+   {
+    "w": "fue",
+    "start": 6.7,
+    "end": 6.94
+   },
+   {
+    "w": "infiel,",
+    "start": 6.94,
+    "end": 7.54
+   },
+   {
+    "w": "sino",
+    "start": 7.54,
+    "end": 7.94
+   },
+   {
+    "w": "otra",
+    "start": 7.94,
+    "end": 8.42
+   },
+   {
+    "w": "cosa.",
+    "start": 8.42,
+    "end": 9.03
+   },
+   {
+    "w": "Te",
+    "start": 9.03,
+    "end": 9.098
+   },
+   {
+    "w": "lo",
+    "start": 9.098,
+    "end": 9.18
+   },
+   {
+    "w": "digo",
+    "start": 9.18,
+    "end": 9.5
+   },
+   {
+    "w": "al",
+    "start": 9.5,
+    "end": 9.74
+   },
+   {
+    "w": "final.",
+    "start": 9.74,
+    "end": 9.88
+   }
+  ]
+ },
+ {
+  "text": "Jensen Huang llevaba 33 años al frente: Nvidia llegó a ser la más valiosa del mundo.",
+  "start": 10.37,
+  "end": 16.62,
+  "words": [
+   {
+    "w": "Jensen",
+    "start": 10.37,
+    "end": 10.88
+   },
+   {
+    "w": "Huang",
+    "start": 10.88,
+    "end": 11.28
+   },
+   {
+    "w": "llevaba",
+    "start": 11.28,
+    "end": 11.84
+   },
+   {
+    "w": "33",
+    "start": 11.84,
+    "end": 12.48
+   },
+   {
+    "w": "años",
+    "start": 12.48,
+    "end": 12.88
+   },
+   {
+    "w": "al",
+    "start": 12.88,
+    "end": 13.12
+   },
+   {
+    "w": "frente:",
+    "start": 13.12,
+    "end": 13.79
+   },
+   {
+    "w": "Nvidia",
+    "start": 13.79,
+    "end": 14.36
+   },
+   {
+    "w": "llegó",
+    "start": 14.36,
+    "end": 14.76
+   },
+   {
+    "w": "a",
+    "start": 14.76,
+    "end": 14.84
+   },
+   {
+    "w": "ser",
+    "start": 14.84,
+    "end": 15.08
+   },
+   {
+    "w": "la",
+    "start": 15.08,
+    "end": 15.24
+   },
+   {
+    "w": "más",
+    "start": 15.24,
+    "end": 15.48
+   },
+   {
+    "w": "valiosa",
+    "start": 15.48,
+    "end": 16.12
+   },
+   {
+    "w": "del",
+    "start": 16.12,
+    "end": 16.36
+   },
+   {
+    "w": "mundo.",
+    "start": 16.36,
+    "end": 16.62
+   }
+  ]
+ },
+ {
+  "text": "El domingo escribió a sus empleados: «Fui infiel a mi mujer».",
+  "start": 16.91,
+  "end": 20.59,
+  "words": [
+   {
+    "w": "El",
+    "start": 16.91,
+    "end": 17.043
+   },
+   {
+    "w": "domingo",
+    "start": 17.043,
+    "end": 17.5
+   },
+   {
+    "w": "escribió",
+    "start": 17.5,
+    "end": 18.06
+   },
+   {
+    "w": "a",
+    "start": 18.06,
+    "end": 18.14
+   },
+   {
+    "w": "sus",
+    "start": 18.14,
+    "end": 18.3
+   },
+   {
+    "w": "empleados:",
+    "start": 18.3,
+    "end": 19.27
+   },
+   {
+    "w": "«Fui",
+    "start": 19.27,
+    "end": 19.46
+   },
+   {
+    "w": "infiel",
+    "start": 19.46,
+    "end": 20.02
+   },
+   {
+    "w": "a",
+    "start": 20.02,
+    "end": 20.1
+   },
+   {
+    "w": "mi",
+    "start": 20.1,
+    "end": 20.26
+   },
+   {
+    "w": "mujer».",
+    "start": 20.26,
+    "end": 20.59
+   }
+  ]
+ },
+ {
+  "text": "Su consejo abrió una investigación, y a los pocos días dimitió.",
+  "start": 20.81,
+  "end": 24.51,
+  "words": [
+   {
+    "w": "Su",
+    "start": 20.81,
+    "end": 20.92
+   },
+   {
+    "w": "consejo",
+    "start": 20.92,
+    "end": 21.48
+   },
+   {
+    "w": "abrió",
+    "start": 21.48,
+    "end": 21.96
+   },
+   {
+    "w": "una",
+    "start": 21.96,
+    "end": 22.2
+   },
+   {
+    "w": "investigación,",
+    "start": 22.2,
+    "end": 22.97
+   },
+   {
+    "w": "y",
+    "start": 22.97,
+    "end": 23.038
+   },
+   {
+    "w": "a",
+    "start": 23.038,
+    "end": 23.12
+   },
+   {
+    "w": "los",
+    "start": 23.12,
+    "end": 23.28
+   },
+   {
+    "w": "pocos",
+    "start": 23.28,
+    "end": 23.52
+   },
+   {
+    "w": "días",
+    "start": 23.52,
+    "end": 23.84
+   },
+   {
+    "w": "dimitió.",
+    "start": 23.84,
+    "end": 24.51
+   }
+  ]
+ },
+ {
+  "text": "El jueves, al abrir la bolsa, la acción se hundió más de un 13 %.",
+  "start": 24.83,
+  "end": 29.38,
+  "words": [
+   {
+    "w": "El",
+    "start": 24.83,
+    "end": 25.025
+   },
+   {
+    "w": "jueves,",
+    "start": 25.025,
+    "end": 25.48
+   },
+   {
+    "w": "al",
+    "start": 25.48,
+    "end": 25.72
+   },
+   {
+    "w": "abrir",
+    "start": 25.72,
+    "end": 26.04
+   },
+   {
+    "w": "la",
+    "start": 26.04,
+    "end": 26.2
+   },
+   {
+    "w": "bolsa,",
+    "start": 26.2,
+    "end": 26.68
+   },
+   {
+    "w": "la",
+    "start": 26.68,
+    "end": 26.788
+   },
+   {
+    "w": "acción",
+    "start": 26.788,
+    "end": 27.04
+   },
+   {
+    "w": "se",
+    "start": 27.04,
+    "end": 27.28
+   },
+   {
+    "w": "hundió",
+    "start": 27.28,
+    "end": 27.84
+   },
+   {
+    "w": "más",
+    "start": 27.84,
+    "end": 28.0
+   },
+   {
+    "w": "de",
+    "start": 28.0,
+    "end": 28.16
+   },
+   {
+    "w": "un",
+    "start": 28.16,
+    "end": 28.4
+   },
+   {
+    "w": "13",
+    "start": 28.4,
+    "end": 29.08
+   },
+   {
+    "w": "%.",
+    "start": 29.08,
+    "end": 29.38
+   }
+  ]
+ },
+ {
+  "text": "La respuesta: investigan si Huang fue objetivo de una operación de espionaje extranjero.",
+  "start": 29.56,
+  "end": 34.92,
+  "words": [
+   {
+    "w": "La",
+    "start": 29.56,
+    "end": 29.805
+   },
+   {
+    "w": "respuesta:",
+    "start": 29.805,
+    "end": 30.53
+   },
+   {
+    "w": "investigan",
+    "start": 30.53,
+    "end": 31.24
+   },
+   {
+    "w": "si",
+    "start": 31.24,
+    "end": 31.4
+   },
+   {
+    "w": "Huang",
+    "start": 31.4,
+    "end": 31.8
+   },
+   {
+    "w": "fue",
+    "start": 31.8,
+    "end": 32.04
+   },
+   {
+    "w": "objetivo",
+    "start": 32.04,
+    "end": 32.6
+   },
+   {
+    "w": "de",
+    "start": 32.6,
+    "end": 32.76
+   },
+   {
+    "w": "una",
+    "start": 32.76,
+    "end": 32.92
+   },
+   {
+    "w": "operación",
+    "start": 32.92,
+    "end": 33.4
+   },
+   {
+    "w": "de",
+    "start": 33.4,
+    "end": 33.56
+   },
+   {
+    "w": "espionaje",
+    "start": 33.56,
+    "end": 34.28
+   },
+   {
+    "w": "extranjero.",
+    "start": 34.28,
+    "end": 34.92
+   }
+  ]
+ },
+ {
+  "text": "Según The Washington Post, la mujer con la que fue infiel es sospechosa de espiar para China. Y The New York Times cuenta otra relación, con una directiva a sus órdenes.",
+  "start": 35.19,
+  "end": 44.88,
+  "words": [
+   {
+    "w": "Según",
+    "start": 35.19,
+    "end": 35.42
+   },
+   {
+    "w": "The",
+    "start": 35.42,
+    "end": 35.58
+   },
+   {
+    "w": "Washington",
+    "start": 35.58,
+    "end": 36.22
+   },
+   {
+    "w": "Post,",
+    "start": 36.22,
+    "end": 36.78
+   },
+   {
+    "w": "la",
+    "start": 36.78,
+    "end": 36.888
+   },
+   {
+    "w": "mujer",
+    "start": 36.888,
+    "end": 37.14
+   },
+   {
+    "w": "con",
+    "start": 37.14,
+    "end": 37.3
+   },
+   {
+    "w": "la",
+    "start": 37.3,
+    "end": 37.38
+   },
+   {
+    "w": "que",
+    "start": 37.38,
+    "end": 37.54
+   },
+   {
+    "w": "fue",
+    "start": 37.54,
+    "end": 37.78
+   },
+   {
+    "w": "infiel",
+    "start": 37.78,
+    "end": 38.34
+   },
+   {
+    "w": "es",
+    "start": 38.34,
+    "end": 38.5
+   },
+   {
+    "w": "sospechosa",
+    "start": 38.5,
+    "end": 39.14
+   },
+   {
+    "w": "de",
+    "start": 39.14,
+    "end": 39.3
+   },
+   {
+    "w": "espiar",
+    "start": 39.3,
+    "end": 39.86
+   },
+   {
+    "w": "para",
+    "start": 39.86,
+    "end": 40.1
+   },
+   {
+    "w": "China.",
+    "start": 40.1,
+    "end": 40.73
+   },
+   {
+    "w": "Y",
+    "start": 40.73,
+    "end": 40.841
+   },
+   {
+    "w": "The",
+    "start": 40.841,
+    "end": 40.952
+   },
+   {
+    "w": "New",
+    "start": 40.952,
+    "end": 41.1
+   },
+   {
+    "w": "York",
+    "start": 41.1,
+    "end": 41.34
+   },
+   {
+    "w": "Times",
+    "start": 41.34,
+    "end": 41.82
+   },
+   {
+    "w": "cuenta",
+    "start": 41.82,
+    "end": 42.3
+   },
+   {
+    "w": "otra",
+    "start": 42.3,
+    "end": 42.62
+   },
+   {
+    "w": "relación,",
+    "start": 42.62,
+    "end": 43.2
+   },
+   {
+    "w": "con",
+    "start": 43.2,
+    "end": 43.3
+   },
+   {
+    "w": "una",
+    "start": 43.3,
+    "end": 43.54
+   },
+   {
+    "w": "directiva",
+    "start": 43.54,
+    "end": 44.1
+   },
+   {
+    "w": "a",
+    "start": 44.1,
+    "end": 44.18
+   },
+   {
+    "w": "sus",
+    "start": 44.18,
+    "end": 44.42
+   },
+   {
+    "w": "órdenes.",
+    "start": 44.42,
+    "end": 44.88
+   }
+  ]
+ },
+ {
+  "text": "¿Crees que por una infidelidad le tienen que obligar a dimitir? Mándaselo a quien diga que es su vida privada.",
+  "start": 45.1,
+  "end": 50.813,
+  "words": [
+   {
+    "w": "¿Crees",
+    "start": 45.1,
+    "end": 45.32
+   },
+   {
+    "w": "que",
+    "start": 45.32,
+    "end": 45.56
+   },
+   {
+    "w": "por",
+    "start": 45.56,
+    "end": 45.72
+   },
+   {
+    "w": "una",
+    "start": 45.72,
+    "end": 45.88
+   },
+   {
+    "w": "infidelidad",
+    "start": 45.88,
+    "end": 46.6
+   },
+   {
+    "w": "le",
+    "start": 46.6,
+    "end": 46.76
+   },
+   {
+    "w": "tienen",
+    "start": 46.76,
+    "end": 47.08
+   },
+   {
+    "w": "que",
+    "start": 47.08,
+    "end": 47.16
+   },
+   {
+    "w": "obligar",
+    "start": 47.16,
+    "end": 47.56
+   },
+   {
+    "w": "a",
+    "start": 47.56,
+    "end": 47.64
+   },
+   {
+    "w": "dimitir?",
+    "start": 47.64,
+    "end": 48.546
+   },
+   {
+    "w": "Mándaselo",
+    "start": 48.546,
+    "end": 49.044
+   },
+   {
+    "w": "a",
+    "start": 49.044,
+    "end": 49.122
+   },
+   {
+    "w": "quien",
+    "start": 49.122,
+    "end": 49.357
+   },
+   {
+    "w": "diga",
+    "start": 49.357,
+    "end": 49.67
+   },
+   {
+    "w": "que",
+    "start": 49.67,
+    "end": 49.826
+   },
+   {
+    "w": "es",
+    "start": 49.826,
+    "end": 49.982
+   },
+   {
+    "w": "su",
+    "start": 49.982,
+    "end": 50.139
+   },
+   {
+    "w": "vida",
+    "start": 50.139,
+    "end": 50.373
+   },
+   {
+    "w": "privada.",
+    "start": 50.373,
+    "end": 50.813
+   }
+  ]
+ }
+]

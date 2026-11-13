@@ -1,0 +1,722 @@
+[
+{
+"w": "El",
+"start": 0.0,
+"end": 0.08
+},
+{
+"w": "jefe",
+"start": 0.16,
+"end": 0.4
+},
+{
+"w": "de",
+"start": 0.48,
+"end": 0.56
+},
+{
+"w": "Nvidia",
+"start": 0.64,
+"end": 1.2
+},
+{
+"w": "ha",
+"start": 1.28,
+"end": 1.36
+},
+{
+"w": "dimitido",
+"start": 1.44,
+"end": 1.92
+},
+{
+"w": "días",
+"start": 2.08,
+"end": 2.4
+},
+{
+"w": "después",
+"start": 2.4,
+"end": 2.72
+},
+{
+"w": "de",
+"start": 2.8,
+"end": 2.88
+},
+{
+"w": "confesar",
+"start": 3.04,
+"end": 3.52
+},
+{
+"w": "una",
+"start": 3.6,
+"end": 3.68
+},
+{
+"w": "infidelidad.",
+"start": 3.92,
+"end": 4.88
+},
+{
+"w": "Pero",
+"start": 5.04,
+"end": 5.12
+},
+{
+"w": "su",
+"start": 5.28,
+"end": 5.36
+},
+{
+"w": "empresa",
+"start": 5.52,
+"end": 5.92
+},
+{
+"w": "no",
+"start": 5.92,
+"end": 6.0
+},
+{
+"w": "investiga",
+"start": 6.16,
+"end": 6.56
+},
+{
+"w": "si",
+"start": 6.8,
+"end": 6.88
+},
+{
+"w": "fue",
+"start": 6.96,
+"end": 7.04
+},
+{
+"w": "infiel,",
+"start": 7.2,
+"end": 7.84
+},
+{
+"w": "sino",
+"start": 7.92,
+"end": 8.24
+},
+{
+"w": "otra",
+"start": 8.32,
+"end": 8.64
+},
+{
+"w": "cosa.",
+"start": 8.8,
+"end": 9.2
+},
+{
+"w": "Te",
+"start": 9.36,
+"end": 9.44
+},
+{
+"w": "lo",
+"start": 9.52,
+"end": 9.6
+},
+{
+"w": "digo",
+"start": 9.68,
+"end": 9.92
+},
+{
+"w": "al",
+"start": 10.0,
+"end": 10.08
+},
+{
+"w": "final.",
+"start": 10.24,
+"end": 10.64
+},
+{
+"w": "Jensen",
+"start": 10.96,
+"end": 11.52
+},
+{
+"w": "Juan",
+"start": 11.68,
+"end": 12.0
+},
+{
+"w": "llevaba",
+"start": 12.08,
+"end": 12.48
+},
+{
+"w": "33",
+"start": 12.64,
+"end": 13.12
+},
+{
+"w": "años",
+"start": 13.28,
+"end": 13.52
+},
+{
+"w": "al",
+"start": 13.68,
+"end": 13.76
+},
+{
+"w": "frente.",
+"start": 13.92,
+"end": 14.4
+},
+{
+"w": "Nvidia",
+"start": 14.56,
+"end": 15.2
+},
+{
+"w": "llegó",
+"start": 15.28,
+"end": 15.6
+},
+{
+"w": "a",
+"start": 15.68,
+"end": 15.76
+},
+{
+"w": "ser",
+"start": 15.76,
+"end": 15.84
+},
+{
+"w": "la",
+"start": 16.0,
+"end": 16.08
+},
+{
+"w": "más",
+"start": 16.16,
+"end": 16.24
+},
+{
+"w": "valiosa",
+"start": 16.4,
+"end": 16.88
+},
+{
+"w": "del",
+"start": 17.04,
+"end": 17.12
+},
+{
+"w": "mundo.",
+"start": 17.28,
+"end": 17.68
+},
+{
+"w": "El",
+"start": 17.84,
+"end": 17.92
+},
+{
+"w": "domingo",
+"start": 18.08,
+"end": 18.48
+},
+{
+"w": "escrió",
+"start": 18.64,
+"end": 19.12
+},
+{
+"w": "a",
+"start": 19.2,
+"end": 19.28
+},
+{
+"w": "sus",
+"start": 19.28,
+"end": 19.36
+},
+{
+"w": "empleados:",
+"start": 19.44,
+"end": 20.16
+},
+{
+"w": "Fui",
+"start": 20.4,
+"end": 20.64
+},
+{
+"w": "infiel",
+"start": 20.72,
+"end": 21.2
+},
+{
+"w": "a",
+"start": 21.28,
+"end": 21.36
+},
+{
+"w": "mi",
+"start": 21.36,
+"end": 21.44
+},
+{
+"w": "mujer.",
+"start": 21.52,
+"end": 22.0
+},
+{
+"w": "Su",
+"start": 22.24,
+"end": 22.32
+},
+{
+"w": "consejo",
+"start": 22.48,
+"end": 22.88
+},
+{
+"w": "abrió",
+"start": 23.04,
+"end": 23.44
+},
+{
+"w": "una",
+"start": 23.52,
+"end": 23.6
+},
+{
+"w": "investigación",
+"start": 23.76,
+"end": 24.32
+},
+{
+"w": "y",
+"start": 24.48,
+"end": 24.56
+},
+{
+"w": "a",
+"start": 24.64,
+"end": 24.72
+},
+{
+"w": "los",
+"start": 24.8,
+"end": 24.88
+},
+{
+"w": "pocos",
+"start": 24.96,
+"end": 25.2
+},
+{
+"w": "días",
+"start": 25.2,
+"end": 25.44
+},
+{
+"w": "dimitió.",
+"start": 25.52,
+"end": 26.16
+},
+{
+"w": "El",
+"start": 26.5,
+"end": 26.58
+},
+{
+"w": "jueves,",
+"start": 26.74,
+"end": 27.38
+},
+{
+"w": "al",
+"start": 27.38,
+"end": 27.46
+},
+{
+"w": "abrir",
+"start": 27.62,
+"end": 27.86
+},
+{
+"w": "la",
+"start": 27.94,
+"end": 28.02
+},
+{
+"w": "bolsa,",
+"start": 28.1,
+"end": 28.5
+},
+{
+"w": "la",
+"start": 28.58,
+"end": 28.66
+},
+{
+"w": "acción",
+"start": 28.74,
+"end": 28.98
+},
+{
+"w": "se",
+"start": 29.06,
+"end": 29.14
+},
+{
+"w": "hundió",
+"start": 29.3,
+"end": 29.78
+},
+{
+"w": "más",
+"start": 29.86,
+"end": 29.94
+},
+{
+"w": "de",
+"start": 30.02,
+"end": 30.1
+},
+{
+"w": "un",
+"start": 30.18,
+"end": 30.26
+},
+{
+"w": "13%.",
+"start": 30.42,
+"end": 31.54
+},
+{
+"w": "La",
+"start": 31.78,
+"end": 31.86
+},
+{
+"w": "respuesta",
+"start": 31.94,
+"end": 32.42
+},
+{
+"w": "Investigan",
+"start": 32.9,
+"end": 33.46
+},
+{
+"w": "si",
+"start": 33.7,
+"end": 33.78
+},
+{
+"w": "Juan",
+"start": 33.86,
+"end": 34.18
+},
+{
+"w": "fue",
+"start": 34.26,
+"end": 34.34
+},
+{
+"w": "objetivo",
+"start": 34.5,
+"end": 34.98
+},
+{
+"w": "de",
+"start": 35.06,
+"end": 35.14
+},
+{
+"w": "una",
+"start": 35.22,
+"end": 35.3
+},
+{
+"w": "operación",
+"start": 35.38,
+"end": 35.78
+},
+{
+"w": "de",
+"start": 35.86,
+"end": 35.94
+},
+{
+"w": "espionaje",
+"start": 36.02,
+"end": 36.66
+},
+{
+"w": "extranjero.",
+"start": 36.74,
+"end": 37.54
+},
+{
+"w": "Según",
+"start": 37.7,
+"end": 38.02
+},
+{
+"w": "The",
+"start": 38.1,
+"end": 38.18
+},
+{
+"w": "Washington",
+"start": 38.26,
+"end": 38.82
+},
+{
+"w": "Post,",
+"start": 38.9,
+"end": 39.38
+},
+{
+"w": "la",
+"start": 39.46,
+"end": 39.54
+},
+{
+"w": "mujer",
+"start": 39.62,
+"end": 39.86
+},
+{
+"w": "con",
+"start": 39.94,
+"end": 40.02
+},
+{
+"w": "la",
+"start": 40.1,
+"end": 40.18
+},
+{
+"w": "que",
+"start": 40.18,
+"end": 40.26
+},
+{
+"w": "fue",
+"start": 40.34,
+"end": 40.42
+},
+{
+"w": "infiel",
+"start": 40.58,
+"end": 40.98
+},
+{
+"w": "es",
+"start": 41.14,
+"end": 41.22
+},
+{
+"w": "sospechosa",
+"start": 41.3,
+"end": 41.86
+},
+{
+"w": "de",
+"start": 41.94,
+"end": 42.02
+},
+{
+"w": "espiar",
+"start": 42.1,
+"end": 42.5
+},
+{
+"w": "para",
+"start": 42.66,
+"end": 42.74
+},
+{
+"w": "China.",
+"start": 42.9,
+"end": 43.38
+},
+{
+"w": "Y",
+"start": 43.46,
+"end": 43.54
+},
+{
+"w": "The",
+"start": 43.62,
+"end": 43.7
+},
+{
+"w": "New",
+"start": 43.78,
+"end": 43.86
+},
+{
+"w": "York",
+"start": 44.02,
+"end": 44.1
+},
+{
+"w": "Times",
+"start": 44.26,
+"end": 44.58
+},
+{
+"w": "cuenta",
+"start": 44.74,
+"end": 44.98
+},
+{
+"w": "otra",
+"start": 45.22,
+"end": 45.46
+},
+{
+"w": "relación,",
+"start": 45.54,
+"end": 46.1
+},
+{
+"w": "con",
+"start": 46.18,
+"end": 46.26
+},
+{
+"w": "una",
+"start": 46.34,
+"end": 46.42
+},
+{
+"w": "directiva",
+"start": 46.58,
+"end": 46.98
+},
+{
+"w": "a",
+"start": 47.14,
+"end": 47.22
+},
+{
+"w": "sus",
+"start": 47.22,
+"end": 47.3
+},
+{
+"w": "órdenes.",
+"start": 47.46,
+"end": 48.1
+},
+{
+"w": "¿Crees",
+"start": 48.18,
+"end": 48.58
+},
+{
+"w": "que",
+"start": 48.66,
+"end": 48.74
+},
+{
+"w": "por",
+"start": 48.9,
+"end": 48.98
+},
+{
+"w": "una",
+"start": 49.06,
+"end": 49.14
+},
+{
+"w": "infidelidad",
+"start": 49.22,
+"end": 49.86
+},
+{
+"w": "le",
+"start": 49.94,
+"end": 50.02
+},
+{
+"w": "tienen",
+"start": 50.1,
+"end": 50.34
+},
+{
+"w": "que",
+"start": 50.42,
+"end": 50.5
+},
+{
+"w": "obligar",
+"start": 50.5,
+"end": 50.82
+},
+{
+"w": "a",
+"start": 50.9,
+"end": 50.98
+},
+{
+"w": "dimitir?",
+"start": 50.98,
+"end": 51.38
+},
+{
+"w": "Mándaselo",
+"start": 51.72,
+"end": 52.36
+},
+{
+"w": "a",
+"start": 52.52,
+"end": 52.6
+},
+{
+"w": "quien",
+"start": 52.6,
+"end": 52.84
+},
+{
+"w": "diga",
+"start": 52.84,
+"end": 53.08
+},
+{
+"w": "que",
+"start": 53.16,
+"end": 53.24
+},
+{
+"w": "es",
+"start": 53.32,
+"end": 53.4
+},
+{
+"w": "su",
+"start": 53.48,
+"end": 53.56
+},
+{
+"w": "vida",
+"start": 53.64,
+"end": 53.72
+},
+{
+"w": "privada.",
+"start": 53.88,
+"end": 54.44
+}
+]
