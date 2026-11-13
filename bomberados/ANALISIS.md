@@ -25,7 +25,38 @@ los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 (PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
 Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
-## 📌 Para los próximos vídeos (plan del 11 nov)
+## 📌 Para los próximos vídeos (plan del 13 nov)
+
+1. **Bomberos en acción en 3D con dron, siempre** (se mantiene). «Un día de bombero» ya va por 85.800 vistas y 92 comentarios.
+2. **Nada de teoría sin bombero en acción.** «Seguridad activa y pasiva» (6.000 vistas) se queda como los que venden la app
+   (autobús 5.554, FOMO 5.505); todo lo que funciona enseña a un bombero haciendo algo. Si el tema es teoría, que la explique
+   una situación real (coche en llamas, rescate…).
+3. **Test relámpago en 3D sí:** «¿Cuántas aciertas?» 20.300 vistas y 43,5 me gusta/1.000 a la primera (provisional).
+4. **Cierre para comentar** (sin cambios): letras A/B/C/D en pantalla **o** pregunta personal («¿Te ves…?»).
+5. **Añadir «mándaselo a quien quiera ser bombero»** en los de la vida del bombero: «Un día de bombero» comenta mucho pero se
+   comparte poco (4,7/1.000 frente a 12–13 del acoplamiento y «Ocho de cada diez»).
+6. **Duración 45–57 s** (sin cambios).
+7. **«Reta a otro opositor» (1 vs 1, de Adrián):** el coche en llamas como protagonista; la app solo al final.
+
+### Seguidores (9 nov 13:24 → 12 nov 21:30, ≈ 3,3 días)
+| Cuenta | 9 nov | 12 nov | Crecimiento | Por día |
+|---|---|---|---|---|
+| Bomberados | 2.656 | 2.976 | +320 (+12 %) | ≈ 97 |
+| Élite Bomberos | 8.838 | 9.405 | +567 (+6 %) | ≈ 172 |
+
+Crecen menos que en el periodo anterior (≈ 355 y 335 al día): en estos días salieron los que venden la app y la teoría
+(los flojos). Provisional; puede haber otras causas.
+
+### Lo nuevo del 13 nov (cifras del 12 nov)
+| Vídeo | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
+|---|---|---|---|---|
+| Un día de bombero | 85.800 | 52,6 | 1,1 (92) | 4,7 |
+| ¿Cuántas aciertas? (Test relámpago 3D) | 20.300 | 43,5 | 0,8 | 5,9 |
+| Seguridad activa y pasiva | 6.014 | 24,4 | 1,2 | 7,3 |
+| Autobús (app) | 5.554 | 15,7 | 0,7 | 9,9 |
+| FOMO (app) | 5.505 | 14,0 | 0,9 | 9,6 |
+
+## Plan anterior (11 nov)
 
 1. **Bomberos en acción en 3D cinematográfico con dron, siempre.** «Un día de bombero» (3D, Adrián): 78.800 vistas en un día.
 2. **La app nunca es el gancho ni el protagonista.** Los dos que la venden (autobús 5.100 y FOMO 3.899 vistas) llegan 15 veces
