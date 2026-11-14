@@ -1,0 +1,767 @@
+[
+ {
+  "text": "¿Por qué te duele el cerebro al comer helado?",
+  "start": 0.0,
+  "end": 2.16,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "qué",
+    "start": 0.24,
+    "end": 0.32
+   },
+   {
+    "w": "te",
+    "start": 0.32,
+    "end": 0.48
+   },
+   {
+    "w": "duele",
+    "start": 0.48,
+    "end": 0.8
+   },
+   {
+    "w": "el",
+    "start": 0.8,
+    "end": 0.88
+   },
+   {
+    "w": "cerebro",
+    "start": 0.88,
+    "end": 1.28
+   },
+   {
+    "w": "al",
+    "start": 1.28,
+    "end": 1.44
+   },
+   {
+    "w": "comer",
+    "start": 1.44,
+    "end": 1.76
+   },
+   {
+    "w": "helado?",
+    "start": 1.76,
+    "end": 2.16
+   }
+  ]
+ },
+ {
+  "text": "Al final te digo el truco para quitártelo.",
+  "start": 2.24,
+  "end": 4.33,
+  "words": [
+   {
+    "w": "Al",
+    "start": 2.24,
+    "end": 2.38
+   },
+   {
+    "w": "final",
+    "start": 2.38,
+    "end": 2.7
+   },
+   {
+    "w": "te",
+    "start": 2.7,
+    "end": 2.86
+   },
+   {
+    "w": "digo",
+    "start": 2.86,
+    "end": 3.18
+   },
+   {
+    "w": "el",
+    "start": 3.18,
+    "end": 3.26
+   },
+   {
+    "w": "truco",
+    "start": 3.26,
+    "end": 3.58
+   },
+   {
+    "w": "para",
+    "start": 3.58,
+    "end": 3.74
+   },
+   {
+    "w": "quitártelo.",
+    "start": 3.74,
+    "end": 4.33
+   }
+  ]
+ },
+ {
+  "text": "El helado enfría el paladar y un nervio da la alarma.",
+  "start": 4.67,
+  "end": 7.94,
+  "words": [
+   {
+    "w": "El",
+    "start": 4.67,
+    "end": 4.771
+   },
+   {
+    "w": "helado",
+    "start": 4.771,
+    "end": 5.12
+   },
+   {
+    "w": "enfría",
+    "start": 5.12,
+    "end": 5.68
+   },
+   {
+    "w": "el",
+    "start": 5.68,
+    "end": 5.76
+   },
+   {
+    "w": "paladar",
+    "start": 5.76,
+    "end": 6.32
+   },
+   {
+    "w": "y",
+    "start": 6.32,
+    "end": 6.48
+   },
+   {
+    "w": "un",
+    "start": 6.48,
+    "end": 6.64
+   },
+   {
+    "w": "nervio",
+    "start": 6.64,
+    "end": 7.12
+   },
+   {
+    "w": "da",
+    "start": 7.12,
+    "end": 7.36
+   },
+   {
+    "w": "la",
+    "start": 7.36,
+    "end": 7.52
+   },
+   {
+    "w": "alarma.",
+    "start": 7.52,
+    "end": 7.94
+   }
+  ]
+ },
+ {
+  "text": "Tu cuerpo manda sangre caliente de golpe: una arteria del cerebro se ensancha en segundos.",
+  "start": 8.08,
+  "end": 13.17,
+  "words": [
+   {
+    "w": "Tu",
+    "start": 8.08,
+    "end": 8.2
+   },
+   {
+    "w": "cuerpo",
+    "start": 8.2,
+    "end": 8.52
+   },
+   {
+    "w": "manda",
+    "start": 8.52,
+    "end": 8.92
+   },
+   {
+    "w": "sangre",
+    "start": 8.92,
+    "end": 9.32
+   },
+   {
+    "w": "caliente",
+    "start": 9.32,
+    "end": 9.8
+   },
+   {
+    "w": "de",
+    "start": 9.8,
+    "end": 9.96
+   },
+   {
+    "w": "golpe:",
+    "start": 9.96,
+    "end": 10.49
+   },
+   {
+    "w": "una",
+    "start": 10.49,
+    "end": 10.64
+   },
+   {
+    "w": "arteria",
+    "start": 10.64,
+    "end": 11.12
+   },
+   {
+    "w": "del",
+    "start": 11.12,
+    "end": 11.28
+   },
+   {
+    "w": "cerebro",
+    "start": 11.28,
+    "end": 11.68
+   },
+   {
+    "w": "se",
+    "start": 11.68,
+    "end": 11.84
+   },
+   {
+    "w": "ensancha",
+    "start": 11.84,
+    "end": 12.48
+   },
+   {
+    "w": "en",
+    "start": 12.48,
+    "end": 12.64
+   },
+   {
+    "w": "segundos.",
+    "start": 12.64,
+    "end": 13.17
+   }
+  ]
+ },
+ {
+  "text": "Y como el cráneo no se estira, la presión aprieta las capas que envuelven el cerebro… y esas sí duelen.",
+  "start": 13.25,
+  "end": 19.23,
+  "words": [
+   {
+    "w": "Y",
+    "start": 13.25,
+    "end": 13.313
+   },
+   {
+    "w": "como",
+    "start": 13.313,
+    "end": 13.46
+   },
+   {
+    "w": "el",
+    "start": 13.46,
+    "end": 13.54
+   },
+   {
+    "w": "cráneo",
+    "start": 13.54,
+    "end": 14.1
+   },
+   {
+    "w": "no",
+    "start": 14.1,
+    "end": 14.26
+   },
+   {
+    "w": "se",
+    "start": 14.26,
+    "end": 14.42
+   },
+   {
+    "w": "estira,",
+    "start": 14.42,
+    "end": 14.94
+   },
+   {
+    "w": "la",
+    "start": 14.94,
+    "end": 15.02
+   },
+   {
+    "w": "presión",
+    "start": 15.02,
+    "end": 15.42
+   },
+   {
+    "w": "aprieta",
+    "start": 15.42,
+    "end": 16.06
+   },
+   {
+    "w": "las",
+    "start": 16.06,
+    "end": 16.14
+   },
+   {
+    "w": "capas",
+    "start": 16.14,
+    "end": 16.46
+   },
+   {
+    "w": "que",
+    "start": 16.46,
+    "end": 16.62
+   },
+   {
+    "w": "envuelven",
+    "start": 16.62,
+    "end": 17.18
+   },
+   {
+    "w": "el",
+    "start": 17.18,
+    "end": 17.34
+   },
+   {
+    "w": "cerebro…",
+    "start": 17.34,
+    "end": 17.74
+   },
+   {
+    "w": "y",
+    "start": 17.74,
+    "end": 17.97
+   },
+   {
+    "w": "esas",
+    "start": 17.97,
+    "end": 18.37
+   },
+   {
+    "w": "sí",
+    "start": 18.37,
+    "end": 18.69
+   },
+   {
+    "w": "duelen.",
+    "start": 18.69,
+    "end": 19.23
+   }
+  ]
+ },
+ {
+  "text": "El nervio que avisa también llega a la frente: por eso te duele ahí.",
+  "start": 19.45,
+  "end": 23.16,
+  "words": [
+   {
+    "w": "El",
+    "start": 19.45,
+    "end": 19.558
+   },
+   {
+    "w": "nervio",
+    "start": 19.558,
+    "end": 19.81
+   },
+   {
+    "w": "que",
+    "start": 19.81,
+    "end": 20.05
+   },
+   {
+    "w": "avisa",
+    "start": 20.05,
+    "end": 20.61
+   },
+   {
+    "w": "también",
+    "start": 20.61,
+    "end": 20.93
+   },
+   {
+    "w": "llega",
+    "start": 20.93,
+    "end": 21.33
+   },
+   {
+    "w": "a",
+    "start": 21.33,
+    "end": 21.41
+   },
+   {
+    "w": "la",
+    "start": 21.41,
+    "end": 21.57
+   },
+   {
+    "w": "frente:",
+    "start": 21.57,
+    "end": 22.07
+   },
+   {
+    "w": "por",
+    "start": 22.07,
+    "end": 22.17
+   },
+   {
+    "w": "eso",
+    "start": 22.17,
+    "end": 22.41
+   },
+   {
+    "w": "te",
+    "start": 22.41,
+    "end": 22.57
+   },
+   {
+    "w": "duele",
+    "start": 22.57,
+    "end": 22.97
+   },
+   {
+    "w": "ahí.",
+    "start": 22.97,
+    "end": 23.16
+   }
+  ]
+ },
+ {
+  "text": "En 2012 lo midieron en Harvard: el dolor empieza cuando la arteria se abre y se va cuando se cierra.",
+  "start": 23.29,
+  "end": 29.14,
+  "words": [
+   {
+    "w": "En",
+    "start": 23.29,
+    "end": 23.423
+   },
+   {
+    "w": "2012",
+    "start": 23.423,
+    "end": 24.03
+   },
+   {
+    "w": "lo",
+    "start": 24.03,
+    "end": 24.27
+   },
+   {
+    "w": "midieron",
+    "start": 24.27,
+    "end": 24.83
+   },
+   {
+    "w": "en",
+    "start": 24.83,
+    "end": 24.91
+   },
+   {
+    "w": "Harvard:",
+    "start": 24.91,
+    "end": 25.47
+   },
+   {
+    "w": "el",
+    "start": 25.47,
+    "end": 25.59
+   },
+   {
+    "w": "dolor",
+    "start": 25.59,
+    "end": 25.99
+   },
+   {
+    "w": "empieza",
+    "start": 25.99,
+    "end": 26.39
+   },
+   {
+    "w": "cuando",
+    "start": 26.39,
+    "end": 26.63
+   },
+   {
+    "w": "la",
+    "start": 26.63,
+    "end": 26.79
+   },
+   {
+    "w": "arteria",
+    "start": 26.79,
+    "end": 27.27
+   },
+   {
+    "w": "se",
+    "start": 27.27,
+    "end": 27.43
+   },
+   {
+    "w": "abre",
+    "start": 27.43,
+    "end": 27.73
+   },
+   {
+    "w": "y",
+    "start": 27.73,
+    "end": 27.87
+   },
+   {
+    "w": "se",
+    "start": 27.87,
+    "end": 28.03
+   },
+   {
+    "w": "va",
+    "start": 28.03,
+    "end": 28.27
+   },
+   {
+    "w": "cuando",
+    "start": 28.27,
+    "end": 28.59
+   },
+   {
+    "w": "se",
+    "start": 28.59,
+    "end": 28.75
+   },
+   {
+    "w": "cierra.",
+    "start": 28.75,
+    "end": 29.14
+   }
+  ]
+ },
+ {
+  "text": "Y si comes rápido, te pasa el doble: a 27 de cada 100, frente a 13.",
+  "start": 29.21,
+  "end": 33.62,
+  "words": [
+   {
+    "w": "Y",
+    "start": 29.21,
+    "end": 29.291
+   },
+   {
+    "w": "si",
+    "start": 29.291,
+    "end": 29.39
+   },
+   {
+    "w": "comes",
+    "start": 29.39,
+    "end": 29.79
+   },
+   {
+    "w": "rápido,",
+    "start": 29.79,
+    "end": 30.29
+   },
+   {
+    "w": "te",
+    "start": 30.29,
+    "end": 30.43
+   },
+   {
+    "w": "pasa",
+    "start": 30.43,
+    "end": 30.75
+   },
+   {
+    "w": "el",
+    "start": 30.75,
+    "end": 30.83
+   },
+   {
+    "w": "doble:",
+    "start": 30.83,
+    "end": 31.29
+   },
+   {
+    "w": "a",
+    "start": 31.29,
+    "end": 31.43
+   },
+   {
+    "w": "27",
+    "start": 31.43,
+    "end": 32.07
+   },
+   {
+    "w": "de",
+    "start": 32.07,
+    "end": 32.23
+   },
+   {
+    "w": "cada",
+    "start": 32.23,
+    "end": 32.47
+   },
+   {
+    "w": "100,",
+    "start": 32.47,
+    "end": 32.81
+   },
+   {
+    "w": "frente",
+    "start": 32.81,
+    "end": 33.15
+   },
+   {
+    "w": "a",
+    "start": 33.15,
+    "end": 33.31
+   },
+   {
+    "w": "13.",
+    "start": 33.31,
+    "end": 33.62
+   }
+  ]
+ },
+ {
+  "text": "El truco que recomiendan los médicos: aprieta la lengua contra el paladar para calentarlo.",
+  "start": 33.71,
+  "end": 38.55,
+  "words": [
+   {
+    "w": "El",
+    "start": 33.71,
+    "end": 33.81
+   },
+   {
+    "w": "truco",
+    "start": 33.81,
+    "end": 34.21
+   },
+   {
+    "w": "que",
+    "start": 34.21,
+    "end": 34.37
+   },
+   {
+    "w": "recomiendan",
+    "start": 34.37,
+    "end": 35.01
+   },
+   {
+    "w": "los",
+    "start": 35.01,
+    "end": 35.17
+   },
+   {
+    "w": "médicos:",
+    "start": 35.17,
+    "end": 35.79
+   },
+   {
+    "w": "aprieta",
+    "start": 35.79,
+    "end": 36.33
+   },
+   {
+    "w": "la",
+    "start": 36.33,
+    "end": 36.41
+   },
+   {
+    "w": "lengua",
+    "start": 36.41,
+    "end": 36.81
+   },
+   {
+    "w": "contra",
+    "start": 36.81,
+    "end": 36.97
+   },
+   {
+    "w": "el",
+    "start": 36.97,
+    "end": 37.13
+   },
+   {
+    "w": "paladar",
+    "start": 37.13,
+    "end": 37.77
+   },
+   {
+    "w": "para",
+    "start": 37.77,
+    "end": 37.93
+   },
+   {
+    "w": "calentarlo.",
+    "start": 37.93,
+    "end": 38.55
+   }
+  ]
+ },
+ {
+  "text": "¿Tú muerdes el helado o lo chupas? Mándaselo a quien lo muerde.",
+  "start": 38.68,
+  "end": 42.217,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 38.68,
+    "end": 38.83
+   },
+   {
+    "w": "muerdes",
+    "start": 38.83,
+    "end": 39.31
+   },
+   {
+    "w": "el",
+    "start": 39.31,
+    "end": 39.47
+   },
+   {
+    "w": "helado",
+    "start": 39.47,
+    "end": 39.87
+   },
+   {
+    "w": "o",
+    "start": 39.87,
+    "end": 40.03
+   },
+   {
+    "w": "lo",
+    "start": 40.03,
+    "end": 40.19
+   },
+   {
+    "w": "chupas?",
+    "start": 40.19,
+    "end": 40.866
+   },
+   {
+    "w": "Mándaselo",
+    "start": 40.866,
+    "end": 41.479
+   },
+   {
+    "w": "a",
+    "start": 41.479,
+    "end": 41.556
+   },
+   {
+    "w": "quien",
+    "start": 41.556,
+    "end": 41.709
+   },
+   {
+    "w": "lo",
+    "start": 41.709,
+    "end": 41.862
+   },
+   {
+    "w": "muerde.",
+    "start": 41.862,
+    "end": 42.217
+   }
+  ]
+ }
+]
