@@ -1,7 +1,7 @@
 """Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Qué pasa cuando te crujes los dedos».
-Base: la alianza clavada en el chip partido, con la silla vacía detrás (estilo del vídeo de Derecho, sin HUD):
-    COVER=1 COVER_T=1.0 COVER_CAM="0.12,0.62,2.3,0,0.62,-0.4,40" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
-Título en Impact con contorno, como los subtítulos: la frase del gancho («una infidelidad» en dorado)."""
+Base: la mano gigante en rayos X en el instante del primer crujido (destello en el nudillo), sin HUD:
+    COVER=1 COVER_T=0.33 COVER_CAM="0.35,2.05,5.6,0,2.75,0,40" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Título en Impact con contorno, como los subtítulos («¿da artritis?» en dorado)."""
 import os
 import sys
 
@@ -33,20 +33,19 @@ def row(img, parts, cy, size, stroke, maxw=1000):
 
 
 def title(img, y, k=1.0):
-    row(img, [("EL", None), ("JEFE", None), ("DE", None), ("NVIDIA", None), ("DIMITE", None)], y + 90 * k, int(112 * k), int(11 * k), 1000 * k)
-    row(img, [("TRAS", None), ("CONFESAR", None)], y + 210 * k, int(104 * k), int(10 * k), 1000 * k)
-    row(img, [("UNA", GOLD), ("INFIDELIDAD", GOLD)], y + 335 * k, int(124 * k), int(12 * k), 1000 * k)
-    paste(img, chip("nvidia · la dimisión · lo que investigan", int(36 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 455 * k)
+    row(img, [("CRUJIRTE", None), ("LOS", None), ("DEDOS", None)], y + 95 * k, int(116 * k), int(11 * k), 1000 * k)
+    row(img, [("¿DA", GOLD), ("ARTRITIS?", GOLD)], y + 235 * k, int(140 * k), int(13 * k), 1000 * k)
+    paste(img, chip("un médico lo probó 50 años · así funciona", int(36 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 360 * k)
 
 
 def main():
     base = cv2.imread(os.path.join(ROOT, "out", "cover", "cover3d.png")).astype(np.float32) / 255
     img = base.copy()
-    halo(img, W / 2, 1250, 520, (0.85, 0.75, 0.5), 0.03)
+    halo(img, W / 2, 1150, 520, (0.55, 0.75, 1.0), 0.03)
     title(img, 120)
     post.grain(img, 0, 0.008)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
-    m = base[430:430 + 1350].copy()
+    m = base[380:380 + 1350].copy()
     title(m, 20, 0.74)
     cv2.imwrite(os.path.join(ROOT, "out", "miniatura.jpg"), post.finish(m), [cv2.IMWRITE_JPEG_QUALITY, 95])
     print("portada → out/portada.jpg · miniatura → out/miniatura.jpg")

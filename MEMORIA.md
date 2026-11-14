@@ -127,6 +127,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Gafas (jue 5), Medicina (vie 6, si se confirma el MIR), Economía (sáb 7, si se confirma SPIVA), Magisterio (lun 9).
 
 ## Vídeos recientes
+- **«Qué pasa cuando te crujes los dedos»** (`projects/dedos/`, 14-11-2026): segundo de la nueva dinámica «Así funciona», idea de Javi. MP3 con
+  la **voz «Nico, documental»** (otra voz distinta: Danny, Roger y ahora Nico): 46,2 s; vídeo de 47,1 s. Escena sobre el kit de Derecho/Nvidia:
+  mano gigante en rayos X (`xrayHand` en `14_objects.js`: huesos de verdad con sus falanges y piel translúcida; cada dedo se dobla por el
+  nudillo), la maqueta del nudillo en corte con la burbuja y el manómetro, la resonancia, las campanas del debate, el reloj de 20 min, las manos
+  de Unger, la caja de luz con las radiografías, el Ig Nobel y las 215 figuritas. Lección (9): **el renderizador usa búfer de profundidad
+  logarítmico: todo `ShaderMaterial` propio necesita los trozos `logdepthbuf_*`** (si no, el suelo tapa el objeto por debajo del horizonte; le
+  pasaba a la mano en rayos X).
 - **«El jefe de Nvidia dimite»** (`projects/nvidia_dimision/`, guion 13-11-2026): Javi: «uno sobre la dimisión del dueño de NVIDIA, y al final
   que la pregunta no sea rara sino algo como: ¿crees que por una infidelidad tienen que obligarle a dimitir?». Actualidad → reel de prueba.
   Guion de 148 palabras con todo atribuido (`FUENTES.md`): carta del 8-11 («fui infiel a mi mujer»), investigación del consejo (si fue objetivo
