@@ -2273,26 +2273,49 @@ def sfx_track_techo(path):
         x = _onset(_load(x)) if isinstance(x, str) else x
         _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
 
+    def bed(x, dur, seed, a=0.45, b=2.45, seg=(0.7, 1.3), xf=0.25):
+        # ambiente sin repetición: trozos al azar del efecto con fundido de igual potencia y los chasquidos sueltos
+        # rebajados (el fuego de 3 s repetido cada 2 s daba un «pop» a compás)
+        rng = np.random.default_rng(seed)
+        n, k = int(dur * sfx.SR), int(xf * sfx.SR)
+        fi_, fo_ = np.sqrt(np.linspace(0, 1, k))[:, None], np.sqrt(np.linspace(1, 0, k))[:, None]
+        y = np.zeros((0, 2))
+        while len(y) < n:
+            L = rng.uniform(*seg); s0 = rng.uniform(a, b - L)
+            z = x[int(s0 * sfx.SR): int((s0 + L) * sfx.SR)] * 10 ** (rng.uniform(-2, 2) / 20)
+            if len(y) >= k:
+                z = z.copy(); z[:k] = y[-k:] * fo_ + z[:k] * fi_
+                y = np.concatenate([y[:-k], z])
+            else:
+                y = z.copy()
+        y = y[:n]
+        w = 480; nf = len(y) // w
+        e = np.sqrt((y[:nf * w].mean(1).reshape(nf, w) ** 2).mean(1)) + 1e-9
+        gr = np.minimum(1, np.median(e) * 10 ** (7 / 20) / e)
+        gr = np.min(np.stack([np.roll(gr, d) for d in range(-3, 4)]), 0)
+        gr = np.convolve(gr, np.ones(5) / 5, "same")
+        return y * np.interp(np.arange(len(y)), np.arange(nf) * w + w / 2, gr)[:, None]
+
     # el fuego del salón todo el vídeo (más fuerte en la combustión súbita) y una tensión de fondo
-    put(_loop(fuego, END + 0.5), 0.0, -24, T["fin"], 0.01, 1.2, track=amb)
-    put(_loop(fuego, 6.0), T["room0"] - 0.1, -17, T["rew0"] - T["room0"] + 0.2, 0.05, 0.15)
+    put(bed(fuego, END + 0.5, 7), 0.0, -28, T["fin"], 0.01, 1.2, track=amb)
+    put(bed(fuego, 6.0, 3), T["room0"] - 0.1, -22, T["rew0"] - T["room0"] + 0.2, 0.05, 0.15, track=amb)
     put("tension", c["arriba"] - 0.2, -30, T["ign0"] - c["arriba"] + 0.4, 0.5, 0.2, track=amb)
     # gancho: golpe y latido; cada golpe corto de agua con su silbido de vapor
     put("golpe", 0.0, -24, 0.8, 0.003, 0.35)
     put("latido", 0.1, -25, 0.7)
     for t0 in pulses:
-        put(agua, t0, -22, 0.32, 0.01, 0.08)
-        put(vapor, t0 + 0.12, -30, 0.7, 0.05, 0.4)
+        put(agua, t0, -28, 0.32, 0.01, 0.08)
+        put(vapor, t0 + 0.12, -33, 0.7, 0.05, 0.4)
     # «¿error?» → «técnica»
     put(_pitch(toque, 0.8), c["equivocado"] - 0.03, -27, 0.3)
     put("acierto", c["tecnica"] - 0.02, -24, 0.8)
     # el humo se calienta… y prende: estallido grave, ruido del fuego y rebobinado
-    put(_pitch(_onset(_load("whoosh")), 0.7), c["seiscientos"] - 0.2, -27, 0.8)
-    put("golpe", T["ign0"], -18, 0.9, 0.002, 0.4)
-    put(_pitch(_onset(_load("trueno")), 0.75), T["ign0"], -20, 1.6, 0.003, 0.8)
-    put(_pitch(_onset(_load("whoosh2")), 0.7), T["room0"] - 0.05, -22, 0.9)
+    put(_pitch(_onset(_load("whoosh")), 0.7), c["seiscientos"] - 0.2, -30, 0.8)
+    put("golpe", T["ign0"], -21, 0.9, 0.002, 0.4)
+    put(_pitch(_onset(_load("trueno")), 0.75), T["ign0"], -23, 1.6, 0.003, 0.8)
+    put(_pitch(_onset(_load("whoosh2")), 0.7), T["room0"] - 0.05, -26, 0.9)
     wr = _onset(_load("whoosh2"))[::-1].copy()
-    put(wr, T["rew0"], -22, 0.5, 0.05, 0.05)
+    put(wr, T["rew0"], -25, 0.5, 0.05, 0.05)
     put("destello", T["rew1"] - 0.05, -25, 0.5)
     put(_pitch(nota, 1.3), c["enfrian"] - 0.03, -28, 0.7)
     # el reto: tarjetas, cuenta con bocina y «¡Tiempo!»
@@ -2302,18 +2325,18 @@ def sfx_track_techo(path):
         put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
     for k in range(4):
         put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
-    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("bocina", T["count1"] - 0.02, -21, 0.9, 0.003, 0.12)
     put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
     put("fallo", c["tiempo"] + 0.12, -26, 0.5)
     put("acierto", c["cocerse7"] - 0.02, -23, 0.9)
     # 1 litro → 1.700 litros de vapor
     put(_pitch(bub, 0.8), c["litro"] - 0.05, -25, 0.3)
-    put(vapor, c["mil"] - 0.05, -22, 1.4, 0.05, 0.6)
+    put(vapor, c["mil"] - 0.05, -27, 1.4, 0.05, 0.6, track=amb)
     put("destello", c["mil"] + 0.35, -26, 0.6)
     # a chorro: el agua sin parar y el vapor que baja
-    put(_loop(agua, 6.0), T["jet0"], -21, T["jet1"] - T["jet0"], 0.05, 0.3)
-    put(_loop(vapor, 6.0), T["jet0"] + 0.3, -21, c["habrias"] - T["jet0"], 0.4, 0.8)
-    put("latido", c["quema"] - 0.05, -22, 0.7)
+    put(_loop(agua, 6.0), T["jet0"], -25, T["jet1"] - T["jet0"], 0.05, 0.3, track=amb)
+    put(_loop(vapor, 6.0), T["jet0"] + 0.3, -26, c["habrias"] - T["jet0"], 0.4, 0.8, track=amb)
+    put("latido", c["quema"] - 0.05, -25, 0.7)
     # final: vuelven las letras y «confiésalo»
     put("whoosh2", c["habrias"] - 0.3, -27, 0.8)
     for i in range(3):
