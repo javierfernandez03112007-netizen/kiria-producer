@@ -31,10 +31,14 @@ NOTAS PARA LA ENTREGA (no publicar):
 - Nueva dinámica «Así funciona» (Javi, 14-11), versión cuerpo («qué pasa cuando…»). Idea de Javi.
 - Voz: la de Javi (su MP3 del 14-11, ElevenLabs, voz «Nico, documental» v4: esta vez no es Danny ni Roger), a su velocidad natural (solo se
   recortan los silencios largos): 46,2 s de voz; vídeo de 47,1 s, 60 fps.
-- Estilo realista y de cine (estudio oscuro, como Derecho): una mano gigante en rayos X que se cruje los nudillos (en cada uno, un destello);
-  la maqueta del nudillo en corte con su líquido, el manómetro y la burbuja; la resonancia (0,31 s); las campanas de cristal del debate; el reloj
-  de 20 minutos; las dos manos de Unger (la izquierda cruje); las radiografías limpias, el Ig Nobel y las 215 figuritas. Bucle: la mano vuelve
-  a la pose del primer fotograma.
+- Versión 2 (Javi, 14-11, con 3 imágenes de referencia: «muy muy visual, que se vea la mano, un dedo de verdad, luego por dentro… con un fondo
+  suave»): estilo ilustración médica sobre fondo claro. Una mano de piel de verdad (una sola superficie, con nudillos, uñas y pulgar) y el índice
+  que se abre con un corte: hueso (marfil), cartílago (azul), cápsula, líquido sinovial con el gas disuelto, vasos y nervio. En el primer
+  segundo el dedo ya está abierto y cruje (nace la burbuja); al tirar, la articulación se separa, el manómetro cae, el gas se junta y ¡crac!:
+  la burbuja. Luego el anillo de la resonancia con su pantalla (0,31 s), los dos círculos del debate (nacer / romperse), el reloj de 20 min,
+  las dos manos de Unger (la izquierda cruje), los dos índices abiertos y sanos, la peana con el Ig Nobel y las 215 figuritas. Bucle: el
+  último fotograma es el primer plano del índice abierto.
+- Pasos numerados como en una lámina (1 cápsula con líquido · 2 tiras · 3 la presión cae · 4 burbuja); textos en tinta oscura con halo blanco.
 - Lo dudoso va como debate («aún se discute si el ruido es la burbuja al nacer o al romperse»). Lo de Unger es una sola persona: por eso se
   añade el estudio de 215 personas.
 - Subida propuesta: en el feed, a las 10:00 (es la nueva línea principal).

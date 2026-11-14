@@ -134,6 +134,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   de Unger, la caja de luz con las radiografías, el Ig Nobel y las 215 figuritas. Lección (9): **el renderizador usa búfer de profundidad
   logarítmico: todo `ShaderMaterial` propio necesita los trozos `logdepthbuf_*`** (si no, el suelo tapa el objeto por debajo del horizonte; le
   pasaba a la mano en rayos X).
+  **Versión 2 (la buena, Javi 14-11 con 3 imágenes de referencia)**: «muy muy visual, que se vea la mano, un dedo de verdad, luego por dentro…
+  con un fondo suave, cosas así no tan perfectas». Se tiró la de rayos X y se rehízo como **ilustración médica sobre fondo claro**: mano de piel
+  real con el índice que se abre con un corte (hueso marfil, cartílago azul, cápsula, líquido con el gas, vasos, nervio, burbuja con contorno
+  azul), pasos numerados como en una lámina y textos en tinta oscura. Render a ≈ 2 s por fotograma; 6 máquinas de ayuda (rama `render-ddo2-*`).
+  Lecciones: (10) **mano realista = una sola superficie**: campo de distancias (cápsulas de falanges y metacarpos, elipsoides de la palma,
+  pulgar, membrana del pulgar y antebrazo unidos con mínimo suave) → marching cubes (tablas `triTable` de three) → normales del gradiente →
+  esqueleto y pesos calculados (`13_skin.js`, `realHand`). Montarla con piezas (tubos, cápsulas, bolas en los nudillos) parece un maniquí.
+  (11) **Fondo claro**: destellos con mezcla normal (lo aditivo blanco no se ve), HUD en tinta oscura con halo blanco (`bigText` `halo`,
+  `callout` `light`), y la burbuja como sombreador con borde azul (si es blanca y translúcida se pierde sobre el líquido claro).
+  (12) **Ventana en la piel**: la piel lleva 5 planos de corte con `clipIntersection = true`; la carne de dentro (cara trasera, rosa) lleva 4
+  planos «quedarse dentro» (unión) para que solo se vea en la franja del índice, y usa solo los triángulos de esa zona (mucho más rápido).
+  (13) Las matrices de un `InstancedMesh` empiezan en la identidad: inicializarlas siempre (34 esferas de radio 1 taparon la mano entera).
 - **«El jefe de Nvidia dimite»** (`projects/nvidia_dimision/`, guion 13-11-2026): Javi: «uno sobre la dimisión del dueño de NVIDIA, y al final
   que la pregunta no sea rara sino algo como: ¿crees que por una infidelidad tienen que obligarle a dimitir?». Actualidad → reel de prueba.
   Guion de 148 palabras con todo atribuido (`FUENTES.md`): carta del 8-11 («fui infiel a mi mujer»), investigación del consejo (si fue objetivo

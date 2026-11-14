@@ -52,6 +52,9 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - 🧪 Maqueta en corte / rayos X (Brasil, cerradura): muy buen arranque (80 % y 70 % pasan de 3 s).
 - 🧪 Objetos en miniatura que crecen (Química, tubo de ensayo con la fábrica) paran menos el dedo (60,6 %) que un golpe con el dato
   dentro (mazo sobre figuritas, 75 %).
+- 👤 **Cuerpo humano (Javi, 14-11, con imágenes de referencia)**: estilo ilustración médica: la parte del cuerpo de verdad (piel), luego
+  por dentro con un corte (hueso, cartílago, líquido…) y «lo que pasa en cada momento», con un **fondo claro y suave**; no maqueta oscura
+  ni rayos X. Primer caso: los dedos (`projects/dedos/`).
 
 ## 5. Letra y subtítulos
 - 👤 Impact, ≈ 96, contorno 8, palabra clave en recuadro (`REGLAS.md`). 🧪 Aún no se puede comparar con la letra antigua: los vídeos sin

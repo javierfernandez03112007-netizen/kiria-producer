@@ -1,6 +1,6 @@
 """Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Qué pasa cuando te crujes los dedos».
-Base: la mano gigante en rayos X en el instante del primer crujido (destello en el nudillo), sin HUD:
-    COVER=1 COVER_T=0.33 COVER_CAM="0.35,2.05,5.6,0,2.75,0,40" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Base (versión 2, ilustración médica): la mano de piel con el índice abierto (hueso, cartílago, vasos y la burbuja en la articulación), sin HUD:
+    COVER=1 COVER_T=14.7 COVER_CAM="0.15,1.6,1.75,-0.22,1.57,0,38" node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos («¿da artritis?» en dorado)."""
 import os
 import sys
@@ -41,7 +41,6 @@ def title(img, y, k=1.0):
 def main():
     base = cv2.imread(os.path.join(ROOT, "out", "cover", "cover3d.png")).astype(np.float32) / 255
     img = base.copy()
-    halo(img, W / 2, 1150, 520, (0.55, 0.75, 1.0), 0.03)
     title(img, 120)
     post.grain(img, 0, 0.008)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
