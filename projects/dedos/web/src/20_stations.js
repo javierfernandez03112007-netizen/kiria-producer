@@ -65,17 +65,22 @@ function insetJoint(burst) {
   const g = new THREE.Group(), R = 0.19, M = innerMats(), planes = [];
   for (let i = 0; i < 28; i++) planes.push(new THREE.Plane());
   const clipM = m => { const c = m.clone(); c.clippingPlanes = planes; c.clipIntersection = false; return c; };
-  const bg = canvasTex(256, 256, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2); gr.addColorStop(0, '#f7ece8'); gr.addColorStop(1, '#e6cbc4'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
+  const bg = canvasTex(512, 512, (c, w, h) => { c.fillStyle = '#b8473e'; c.fillRect(0, 0, w, h);
+    for (let i = 0; i < 110; i++) { const light = hash(i * 3.1) > 0.45; c.strokeStyle = light ? `rgba(242,146,128,${0.16 + hash(i * 5.3) * 0.26})` : `rgba(104,18,16,${0.14 + hash(i * 2.2) * 0.24})`; c.lineWidth = 3 + hash(i * 7.9) * 7; c.beginPath(); let x = hash(i * 1.7) * w; c.moveTo(x, -10); for (let y = 0; y <= h + 40; y += 40) { x += (hash(i * 13 + y) - 0.5) * 9; c.lineTo(x, y); } c.stroke(); }
+    const gr = c.createRadialGradient(w / 2, h / 2, w * 0.18, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,220,205,.25)'); gr.addColorStop(1, 'rgba(60,8,6,.55)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
   const disc = new THREE.Mesh(new THREE.CircleGeometry(R, 72), new THREE.MeshStandardMaterial({ map: bg, roughness: 0.7 })); disc.position.z = -0.06; g.add(disc);
   const rim = new THREE.Mesh(new THREE.TorusGeometry(R, 0.009, 16, 96), softWhite(0xffffff, 0.2)); rim.position.z = -0.03; rim.scale.z = 3; g.add(rim);
   const s = 0.105 / 0.094;      // la articulación del dedo, ampliada
   const lo = new THREE.Mesh(phalanxGeo(-0.3, -0.024, 0.06, 0.055), clipM(M.bone)); const loC = new THREE.Mesh(cartGeo(-0.3, -0.024, 0.06, 0.055, 'head'), clipM(M.cart));
   const up = new THREE.Mesh(phalanxGeo(0.024, 0.3, 0.058, 0.052), clipM(M.bone)); const upC = new THREE.Mesh(cartGeo(0.024, 0.3, 0.058, 0.052, 'base'), clipM(M.cart));
   const fl = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.062, 40), clipM(M.fluid)); fl.scale.set(1.12, 1, 0.84);
+  const capM = clipM(M.caps); const cap = lathe([[0.052, -0.085], [0.064, -0.05], [0.07, 0], [0.064, 0.05], [0.05, 0.085]], 40, capM); cap.scale.set(1.12, 1, 0.84); cap.renderOrder = 6;
+  const NB = 30, mb = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 16, 10), M.bub, NB); mb.frustumCulled = false; mb.renderOrder = 7;
+  const mp = []; for (let i = 0; i < NB; i++) { const a = hash(i * 4.3) * 6.283, rr2 = Math.sqrt(hash(i * 6.1)) * 0.042; mp.push([Math.cos(a) * rr2 * 1.12, (hash(i * 2.3) - 0.5) * 0.034, Math.sin(a) * rr2 * 0.84, 0.0035 + hash(i * 8.3) * 0.005]); }
   const bub = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), M.bub); bub.scale.setScalar(0.0001); bub.renderOrder = 8;
-  const J = new THREE.Group(); J.add(lo, loC, up, upC, fl, bub); J.rotation.x = 0.25; J.scale.setScalar(1.55); g.add(J);
+  const J = new THREE.Group(); J.add(lo, loC, up, upC, fl, cap, mb, bub); J.rotation.x = 0.25; J.scale.setScalar(1.55); g.add(J);
   const bits = []; for (let i = 0; i < 12; i++) { const b = new THREE.Mesh(new THREE.SphereGeometry(1, 12, 8), M.bub); b.scale.setScalar(0.0001); J.add(b); bits.push(b); }
-  g.userData = { planes, R, bub, bits, J, burst }; return g;
+  g.userData = { planes, R, bub, bits, J, burst, mb, mp }; return g;
 }
 function insetClip(g) {      // planos del círculo (en el mundo): solo se ve lo que cae dentro del aro
   const U = g.userData; g.updateWorldMatrix(true, true); const n = U.planes.length, M4 = g.matrixWorld; _m3.getNormalMatrix(M4);
@@ -86,7 +91,7 @@ function buildStations() {
   ST.ring = mriRing(); scene.add(ST.ring);
   ST.panel = mriPanel(); ST.panel.position.set(-0.71, 1.36, 0.32); ST.panel.rotation.y = 0.24; scene.add(ST.panel);
   ST.gauge = gaugeSoft(); ST.gauge.position.set(-0.48, 1.2, 0.3); ST.gauge.rotation.y = 0.3; ST.gauge.userData.s0 = 0.75; scene.add(ST.gauge);
-  ST.arrow = arrowSoft(); scene.add(ST.arrow);
+  ST.arrow = arrowSoft(0xd8372c); scene.add(ST.arrow);
   ST.in1 = insetJoint(false); ST.in1.position.set(-0.56, 1.62, 0.62); scene.add(ST.in1);
   ST.in2 = insetJoint(true); ST.in2.position.set(-0.13, 1.62, 0.62); scene.add(ST.in2);
   ST.clock = clockSoft(); ST.clock.position.set(-0.54, 1.46, 0.24); ST.clock.rotation.y = 0.3; scene.add(ST.clock);
@@ -116,6 +121,8 @@ function stationsAt(t) {
   // L5: los dos círculos del debate: la burbuja que nace (izquierda) y la que se rompe (derecha)
   for (const [g, t0] of [[ST.in1, K.discute5 - 0.15], [ST.in2, K.discute5 + 0.05]]) { const a = pop(t, t0, 0.45) * (1 - win(t, K.burbuja6 - 0.3, 0.35)); show(g, a); if (!g.visible) continue; insetClip(g);
     const U = g.userData; U.J.rotation.y = 0.25 * Math.sin(t * 0.6);
+    { const cv = U.burst ? 0 : eio(clamp((t - (K.nacer5 - 0.6)) / 0.56)), vis = U.burst ? 0 : 1 - win(t, K.nacer5 - 0.05, 0.08);
+      for (let i = 0; i < U.mp.length; i++) { const q = U.mp[i]; _o.position.set(q[0] * (1 - cv), q[1] * (1 - cv), q[2] * (1 - cv)); _o.rotation.set(0, 0, 0); _o.scale.setScalar(Math.max(0.00001, q[3] * vis * (1 - 0.4 * cv))); _o.updateMatrix(); U.mb.setMatrixAt(i, _o.matrix); } U.mb.instanceMatrix.needsUpdate = true; }
     if (!U.burst) { const b = popk(t, K.nacer5 - 0.04); U.bub.scale.set(0.05 * b, 0.026 * b + 0.0001, 0.045 * b); }
     else { const u = t - (K.romperse5 - 0.04), alive = u < 0 ? 1 : Math.max(0, 1 - u / 0.08); U.bub.scale.set(0.05 * alive + 0.0001, 0.026 * alive + 0.0001, 0.045 * alive + 0.0001);
       U.bits.forEach((b, i) => { const a2 = i / U.bits.length * Math.PI * 2, e = eo(clamp(u / 0.5)); b.visible = u > 0 && u < 1.3; if (!b.visible) return; b.scale.setScalar(0.011 * (1 - clamp((u - 0.4) / 0.9)));

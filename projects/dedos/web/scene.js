@@ -901,17 +901,36 @@ function skinBase() {
 // burbuja de gas dentro del líquido: transparente, con el borde plateado (fresnel) y un brillo (lleva los trozos de profundidad logarítmica)
 function bubbleMat(op = 1) {
   return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, uniforms: { col: { value: new THREE.Color(0.86, 0.94, 1.0).multiplyScalar(1.25) }, op: { value: op } },
-    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vN; varying vec3 vV; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv;\n#include <logdepthbuf_vertex>\n}',
+    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vN; varying vec3 vV; void main(){ vec4 p = vec4(position,1.); vec3 nn = normal;\n#ifdef USE_INSTANCING\np = instanceMatrix * p; nn = mat3(instanceMatrix) * nn;\n#endif\nvec4 mv = modelViewMatrix * p; vN = normalize(normalMatrix * nn); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv;\n#include <logdepthbuf_vertex>\n}',
     fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform vec3 col; uniform float op; varying vec3 vN; varying vec3 vV; void main(){\n#include <logdepthbuf_fragment>\nvec3 N = normalize(vN); float r = 1. - abs(dot(N, normalize(vV))); float rim = smoothstep(0.45, 0.92, r); vec3 c = mix(vec3(1.0, 1.04, 1.08), vec3(0.1, 0.36, 0.78), rim); float a = mix(0.42, 0.97, rim); float hl = pow(max(dot(N, normalize(vec3(-0.45, 0.6, 0.66))), 0.), 30.); c = mix(c, vec3(1.6), hl); gl_FragColor = vec4(c, clamp(a + hl, 0., 1.) * op); }' });
+}
+let MUSCLE_T = null;
+function muscleTex() {
+  if (MUSCLE_T) return MUSCLE_T;
+  MUSCLE_T = canvasTex(512, 1024, (g, w, h) => { g.fillStyle = '#b4423a'; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 150; i++) { const light = hash(i * 3.1) > 0.45; g.strokeStyle = light ? `rgba(242,146,128,${0.16 + hash(i * 5.3) * 0.26})` : `rgba(104,18,16,${0.14 + hash(i * 2.2) * 0.24})`; g.lineWidth = 2 + hash(i * 7.9) * 5;
+      g.beginPath(); let x = hash(i * 1.7) * w; g.moveTo(x, -10); for (let y = 0; y <= h + 40; y += 40) { x += (hash(i * 13 + y) - 0.5) * 7; g.lineTo(x, y); } g.stroke(); }
+    for (let i = 0; i < 16; i++) { g.strokeStyle = 'rgba(255,232,222,.24)'; g.lineWidth = 2.5; g.beginPath(); let x = hash(i * 9.7) * w; g.moveTo(x, 0); for (let y = 0; y <= h; y += 60) { x += (hash(i * 31 + y) - 0.5) * 10; g.lineTo(x, y); } g.stroke(); } });
+  MUSCLE_T.wrapS = MUSCLE_T.wrapT = THREE.RepeatWrapping; return MUSCLE_T;
+}
+function tissueMat() {
+  const m = new THREE.MeshPhysicalMaterial({ map: muscleTex(), roughness: 0.4, clearcoat: 0.55, clearcoatRoughness: 0.3, emissive: 0x3a0806, emissiveIntensity: 0.22, side: THREE.BackSide });
+  const U = { cutP: { value: new THREE.Vector4(0, 0, 1, -100) }, cutOn: { value: 0 } }; m.userData.U = U;
+  m.onBeforeCompile = sh => { sh.uniforms.cutP = U.cutP; sh.uniforms.cutOn = U.cutOn;
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vWPos;').replace('#include <project_vertex>', '#include <project_vertex>\nvWPos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nvarying vec3 vWPos; uniform vec4 cutP; uniform float cutOn;')
+      .replace('#include <map_fragment>', '#include <map_fragment>\n{ float dd = abs(dot(cutP.xyz, vWPos) + cutP.w); float kf = (1. - smoothstep(0.011, 0.016, dd)) * cutOn, ks = (1. - smoothstep(0.0035, 0.0055, dd)) * cutOn; diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.86, 0.6, 0.18), kf); diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.74, 0.38, 0.26), ks); }'); };
+  return m;
 }
 let IBM = null;
 function innerMats() {
   if (IBM) return IBM;
-  const pores = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#efe3c8'; g.fillRect(0, 0, w, h); for (let i = 0; i < 600; i++) { g.fillStyle = `rgba(185,150,100,${0.12 + hash(i) * 0.22})`; g.beginPath(); g.arc(hash(i * 3.3) * w, hash(i * 5.1) * h, 0.8 + hash(i * 2.2) * 2.6, 0, 7); g.fill(); } });
+  const pores = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#efe3c8'; g.fillRect(0, 0, w, h); for (let i = 0; i < 600; i++) { g.fillStyle = `rgba(170,128,80,${0.18 + hash(i) * 0.3})`; g.beginPath(); g.arc(hash(i * 3.3) * w, hash(i * 5.1) * h, 0.8 + hash(i * 2.2) * 2.6, 0, 7); g.fill(); } });
   pores.wrapS = pores.wrapT = THREE.RepeatWrapping;
   IBM = { bone: new THREE.MeshPhysicalMaterial({ map: pores, roughness: 0.5, clearcoat: 0.35, clearcoatRoughness: 0.35, emissive: 0x2a2012, emissiveIntensity: 0.12 }),
     cart: new THREE.MeshPhysicalMaterial({ color: 0xa9cdee, roughness: 0.1, clearcoat: 1, clearcoatRoughness: 0.04, emissive: 0x15324f, emissiveIntensity: 0.22 }),
-    fluid: new THREE.MeshPhysicalMaterial({ color: 0x8fd0f5, roughness: 0.05, transparent: true, opacity: 0.5, clearcoat: 1, emissive: 0x2f78b8, emissiveIntensity: 0.35, depthWrite: false }),
+    fluid: new THREE.MeshPhysicalMaterial({ color: 0x45a3e6, roughness: 0.05, transparent: true, opacity: 0.6, clearcoat: 1, emissive: 0x1a62b0, emissiveIntensity: 0.5, depthWrite: false }),
+    caps: new THREE.MeshPhysicalMaterial({ color: 0xf3f6f9, roughness: 0.35, transparent: true, opacity: 0.5, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide }),
     dot: new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9, depthWrite: false }),
     bub: bubbleMat(),
     tendon: new THREE.MeshPhysicalMaterial({ color: 0xf4eee6, roughness: 0.32, sheen: 1, sheenColor: new THREE.Color(0xffffff), clearcoat: 0.4 }),
@@ -937,7 +956,7 @@ function phalanxGeo(y0, y1, rb, rh, distal = false) {
 }
 // capa de cartílago sobre el extremo de un hueso (cabeza: arriba; base: abajo)
 function cartGeo(y0, y1, rb, rh, end) {
-  const L = y1 - y0, P = end === 'head' ? [[rh * 1.035, 0.84], [rh * 1.05, 0.92], [rh * 0.81, 0.985], [0, 1.012]] : [[0, -0.012], [rb * 0.74, -0.008], [rb * 1.04, 0.04], [rb * 1.02, 0.1]];
+  const L = y1 - y0, P = end === 'head' ? [[rh * 1.035, 0.84], [rh * 1.05, 0.92], [rh * 0.81, 0.985], [0, 1.012]] : [[0, -0.012], [rb * 0.74, -0.008], [rb * 0.98, 0.012], [rb * 1.035, 0.035], [rb * 0.99, 0.065]];
   const g = new THREE.LatheGeometry(V2(P.map(([x, y]) => [x, y0 + y * L])), 28); g.scale(1.12, 1, 0.84); return g;
 }
 const GAP = 0.016;
@@ -1030,7 +1049,7 @@ function innerGeo() {
   for (let i = 0; i < I.length; i += 3) if (near(I[i]) && near(I[i + 1]) && near(I[i + 2])) out.push(I[i], I[i + 1], I[i + 2]);
   INNER_GEO = new THREE.BufferGeometry(); for (const k in g.attributes) INNER_GEO.setAttribute(k, g.attributes[k]); INNER_GEO.setIndex(out); return INNER_GEO;
 }
-// el interior de un dedo (falanges con su cartílago, tendón flexor, arteria, vena y nervios; en la articulación del medio: cápsula, líquido, gas y burbuja)
+// el interior de un dedo (falanges con su cartílago, tendón flexor y ligamentos; en la articulación del medio: cápsula blanca, líquido azul con burbujitas de gas y la burbuja)
 function fingerInside(F, planes) {
   const M = innerMats(), [b0, b1, b2] = F.bones, L = F.L, r = F.r, g2 = GAP / 2;
   const ends = [[0.02, L[0] - g2], [g2, L[1] - g2], [g2, L[2] * 0.8]], rad = [[0.44, 0.4], [0.4, 0.37], [0.37, 0.3]], segs = [b0, b1, b2];
@@ -1038,17 +1057,17 @@ function fingerInside(F, planes) {
   for (let i = 0; i < 2; i++) { const [y0, y1] = ends[i]; segs[i].add(new THREE.Mesh(cartGeo(y0, y1, r * rad[i][0], r * rad[i][1], 'head'), M.cart));
     const [z0, z1] = ends[i + 1]; segs[i + 1].add(new THREE.Mesh(cartGeo(z0, z1, r * rad[i + 1][0], r * rad[i + 1][1], 'base'), M.cart)); }
   for (let i = 0; i < 3; i++) { const l = L[i] * (i === 2 ? 0.7 : 0.98); const t = rbox(r * 0.42, l, r * 0.12, M.tendon, r * 0.05); t.position.set(0, l / 2 + (i ? 0 : 0.01), -r * 0.5); segs[i].add(t); }
-  for (const [x, m, rr2, zz] of [[0.6, M.artery, 0.07, -0.2], [-0.6, M.vein, 0.075, -0.2], [0.68, M.nerve, 0.05, -0.36], [-0.68, M.nerve, 0.05, -0.36]]) for (let i = 0; i < 3; i++) {
-    const l = L[i] * (i === 2 ? 0.75 : 1.0) + (i === 2 ? 0.03 : 0.06), c = cyl(r * rr2, r * rr2, l, m, 10); c.position.set(r * x * (i === 2 ? 0.85 : 1), l / 2 - 0.03, r * zz); segs[i].add(c); }
-  const cm = new THREE.MeshPhysicalMaterial({ color: 0xf7ddd6, roughness: 0.3, transparent: true, opacity: 0.38, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+  const lgM = M.tendon.clone(); lgM.transparent = true; lgM.opacity = 0.8;
+  for (const bj of [b1, b2]) for (const sx of [-1, 1]) for (const k of [-1, 1]) { const lg = cyl(r * 0.035, r * 0.04, bj === b1 ? 0.085 : 0.065, lgM, 10); lg.position.set(sx * r * (0.56 + 0.05 * k), 0, -r * 0.12 + k * r * 0.07); lg.rotation.z = sx * k * 0.12; bj.add(lg); }
+  const cm = M.caps.clone();
   if (planes) { cm.clippingPlanes = planes; cm.clipIntersection = true; }
   const cap = lathe([[r * 0.46, -0.085], [r * 0.52, -0.066], [r * 0.6, -0.042], [r * 0.645, -0.016], [r * 0.655, 0.0], [r * 0.645, 0.016], [r * 0.6, 0.04], [r * 0.51, 0.062], [r * 0.44, 0.08]], 40, cm); cap.scale.set(1.12, 1, 0.84); cap.renderOrder = 6; b1.add(cap);
   const fl = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.42, r * 0.42, 1, 32, 1), M.fluid); fl.scale.set(1.12, GAP * 1.6, 0.84); fl.renderOrder = 5; b1.add(fl);
-  const dots = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 6), M.dot, 34); dots.frustumCulled = false; dots.renderOrder = 7; b1.add(dots);
-  { const o = new THREE.Object3D(); o.scale.setScalar(0.00001); o.updateMatrix(); for (let i = 0; i < 34; i++) dots.setMatrixAt(i, o.matrix); }
-  const dp = []; for (let i = 0; i < 34; i++) { const a = hash(i * 3.7) * 6.283, rr2 = Math.sqrt(hash(i * 5.3)) * r * 0.4; dp.push(v3(Math.cos(a) * rr2 * 1.12, (hash(i * 2.9) - 0.5) * GAP * 0.9, Math.sin(a) * rr2 * 0.84)); }
+  const NB = 46, dots = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 16, 10), M.bub, NB); dots.frustumCulled = false; dots.renderOrder = 7; b1.add(dots);
+  { const o = new THREE.Object3D(); o.scale.setScalar(0.00001); o.updateMatrix(); for (let i = 0; i < NB; i++) dots.setMatrixAt(i, o.matrix); }
+  const dp = [], dr = []; for (let i = 0; i < NB; i++) { const a = hash(i * 3.7) * 6.283, rr2 = Math.sqrt(hash(i * 5.3)) * r * 0.4; dp.push(v3(Math.cos(a) * rr2 * 1.12, (hash(i * 2.9) - 0.5) * GAP * 0.8, Math.sin(a) * rr2 * 0.84)); dr.push(0.0017 + hash(i * 7.1) * 0.0027); }
   const bub = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), M.bub); bub.scale.setScalar(0.0001); bub.renderOrder = 8; b1.add(bub);
-  Object.assign(F, { cap, fluid: fl, dots, dp, bub });
+  Object.assign(F, { cap, fluid: fl, dots, dp, dr, bub });
 }
 function nailMesh(r, L2) {
   const tex = canvasTex(64, 128, (g, w, h) => { const gr = g.createLinearGradient(0, h, 0, 0); gr.addColorStop(0, '#e7bcaf'); gr.addColorStop(0.16, '#dfa597'); gr.addColorStop(0.84, '#e2a99b'); gr.addColorStop(0.93, '#ecd0c5'); gr.addColorStop(1, '#f1ddd4'); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
@@ -1060,7 +1079,7 @@ function nailMesh(r, L2) {
 function realHand(o = {}) {
   const base = skinBase(), g = new THREE.Group(), geo = handGeo();
   const planes = o.cut ? [0, 1, 2, 3, 4].map(() => new THREE.Plane()) : null, iplanes = o.cut ? [0, 1, 2, 3].map(() => new THREE.Plane()) : null;
-  const om = base.outer.clone(), im = base.inner.clone();
+  const om = base.outer.clone(), im = tissueMat();
   if (planes) { om.clippingPlanes = planes; om.clipIntersection = true; im.clippingPlanes = iplanes; im.clipIntersection = false; }      // la carne de dentro solo se dibuja en la franja del índice
   const root = new THREE.Bone(), bones = [root], fingers = [];
   for (const d of HD.F) { const b0 = new THREE.Bone(), b1 = new THREE.Bone(), b2 = new THREE.Bone(); b0.position.set(d.x, d.y, 0); b0.rotation.z = d.a * D2; b1.position.y = d.L[0]; b2.position.y = d.L[1];
@@ -1087,7 +1106,7 @@ function realHand(o = {}) {
   const spr = (map, ro) => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, depthTest: false, toneMapped: false })); s.scale.setScalar(0.0001); s.renderOrder = ro; g.add(s); return s; };
   const fxp = [v3(...HD.T[1]).add(v3(0, 0, 0.1)), ...HD.F.map(d => v3(d.x, d.y - 0.02, 0.15))];
   const fx = fxp.map(p => { const a = spr(flT, 10), b = spr(rgT, 10), c = spr(redT, 9); for (const s of [a, b, c]) s.position.copy(p); return { flash: a, ring: b, red: c, p }; });
-  g.userData = { fingers, thumb: { bones: [t1, t2] }, fx, mesh, inner, planes, iplanes };
+  g.userData = { fingers, thumb: { bones: [t1, t2] }, fx, mesh, inner, planes, iplanes, tissue: im };
   if (o.left) g.scale.x = -1;
   return g;
 }
@@ -1104,6 +1123,7 @@ function cutUpdate(h, zc, y0, y1, xm) {
   set(0, 0, 0, -1, zc); set(1, 0, -1, 0, y0); set(2, 0, 1, 0, -y1); set(3, 1, 0, 0, -xm); set(4, -1, 0, 0, -xm);
   const Q = h.userData.iplanes, e = 0.012, si = (i, nx, ny, nz, c) => { Q[i].normal.set(nx, ny, nz); Q[i].constant = c; Q[i].applyMatrix4(M4, _m3); };
   si(0, 0, 1, 0, -(y0 - e)); si(1, 0, -1, 0, y1 + e); si(2, -1, 0, 0, xm + e); si(3, 1, 0, 0, xm + e);
+  const TU = h.userData.tissue.userData.U; TU.cutP.value.set(P[0].normal.x, P[0].normal.y, P[0].normal.z, P[0].constant); TU.cutOn.value = zc < 0.075 ? 1 : 0;
 }
 // fondo claro y suave: esfera con degradado (lleva los trozos de profundidad logarítmica)
 function softBackdrop() {
@@ -1330,14 +1350,14 @@ function bubAt(t) {
   return Math.max(a, b);
 }
 const _jw = new THREE.Vector3(), _q0 = new THREE.Quaternion();
-function jointAt(h, t, pull, bk, dotK, conv, shake) {
+function jointAt(h, t, pull, bk, dotK, conv, shake, grow = 0) {
   const F = h.userData.fingers[0], g = GAP + pull, r = F.r;
   F.fluid.scale.y = g * 1.55; F.fluid.position.y = -pull / 2;
   F.bub.visible = bk > 0.003; F.bub.position.set(0, -pull / 2, 0); F.bub.scale.set(r * 0.33 * bk, g * 0.43 * Math.min(1, bk), r * 0.27 * bk);
   F.dots.visible = dotK > 0.01;
   if (F.dots.visible) { for (let i = 0; i < F.dp.length; i++) { const p = F.dp[i], j = shake * 0.0022;
       _o.position.set(p.x * (1 - conv) + Math.sin(t * 37 + i) * j, (p.y * (g / GAP) - pull / 2) * (1 - conv) - pull / 2 * conv + Math.cos(t * 41 + i * 2) * j, p.z * (1 - conv));
-      _o.rotation.set(0, 0, 0); _o.scale.setScalar(0.0021 * dotK * (1 - 0.5 * conv)); _o.updateMatrix(); F.dots.setMatrixAt(i, _o.matrix); }
+      _o.rotation.set(0, 0, 0); _o.scale.setScalar(Math.max(0.00001, F.dr[i] * dotK * (1 + 0.7 * grow) * (1 - 0.65 * conv))); _o.updateMatrix(); F.dots.setMatrixAt(i, _o.matrix); }
     F.dots.instanceMatrix.needsUpdate = true; }
 }
 // crujido de un nudillo (destello + onda) en las marcas de la mano
@@ -1366,7 +1386,7 @@ function centerAt(t, st) {
   const dotK = Math.max(1 - win(t, 0.24, 0.07), win(t, K.liquido3 - 0.1, 0.4) * (1 - win(t, K.golpe3 - 0.04, 0.06)), win(t, END - 1.0, 0.5));
   const conv = Math.max(t < 2 ? eio(clamp((t - 0.06) / 0.24)) : 0, eio(clamp((t - K.gas3) / (K.golpe3 - K.gas3))));
   const shake = win(t, K.presion3 - 0.1, 0.3) * (1 - win(t, K.golpe3 - 0.1, 0.1));
-  jointAt(H, t, pull, bk, dotK, conv, shake);
+  jointAt(H, t, pull, bk, dotK, conv, shake, win(t, K.presion3 - 0.05, 0.8) * (1 - win(t, K.golpe3 - 0.05, 0.1)));
   const F = U.fingers[0];
   F.cap.material.opacity = 0.38 + 0.3 * env(t, K.capsula3 - 0.05, K.liquido3 + 0.2, 0.25, 0.4);
   F.fluid.material.emissiveIntensity = 0.35 + 0.6 * env(t, K.liquido3 - 0.05, K.tirar3 + 0.1, 0.25, 0.4);
@@ -1456,17 +1476,22 @@ function insetJoint(burst) {
   const g = new THREE.Group(), R = 0.19, M = innerMats(), planes = [];
   for (let i = 0; i < 28; i++) planes.push(new THREE.Plane());
   const clipM = m => { const c = m.clone(); c.clippingPlanes = planes; c.clipIntersection = false; return c; };
-  const bg = canvasTex(256, 256, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2); gr.addColorStop(0, '#f7ece8'); gr.addColorStop(1, '#e6cbc4'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
+  const bg = canvasTex(512, 512, (c, w, h) => { c.fillStyle = '#b8473e'; c.fillRect(0, 0, w, h);
+    for (let i = 0; i < 110; i++) { const light = hash(i * 3.1) > 0.45; c.strokeStyle = light ? `rgba(242,146,128,${0.16 + hash(i * 5.3) * 0.26})` : `rgba(104,18,16,${0.14 + hash(i * 2.2) * 0.24})`; c.lineWidth = 3 + hash(i * 7.9) * 7; c.beginPath(); let x = hash(i * 1.7) * w; c.moveTo(x, -10); for (let y = 0; y <= h + 40; y += 40) { x += (hash(i * 13 + y) - 0.5) * 9; c.lineTo(x, y); } c.stroke(); }
+    const gr = c.createRadialGradient(w / 2, h / 2, w * 0.18, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,220,205,.25)'); gr.addColorStop(1, 'rgba(60,8,6,.55)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
   const disc = new THREE.Mesh(new THREE.CircleGeometry(R, 72), new THREE.MeshStandardMaterial({ map: bg, roughness: 0.7 })); disc.position.z = -0.06; g.add(disc);
   const rim = new THREE.Mesh(new THREE.TorusGeometry(R, 0.009, 16, 96), softWhite(0xffffff, 0.2)); rim.position.z = -0.03; rim.scale.z = 3; g.add(rim);
   const s = 0.105 / 0.094;      // la articulación del dedo, ampliada
   const lo = new THREE.Mesh(phalanxGeo(-0.3, -0.024, 0.06, 0.055), clipM(M.bone)); const loC = new THREE.Mesh(cartGeo(-0.3, -0.024, 0.06, 0.055, 'head'), clipM(M.cart));
   const up = new THREE.Mesh(phalanxGeo(0.024, 0.3, 0.058, 0.052), clipM(M.bone)); const upC = new THREE.Mesh(cartGeo(0.024, 0.3, 0.058, 0.052, 'base'), clipM(M.cart));
   const fl = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.062, 40), clipM(M.fluid)); fl.scale.set(1.12, 1, 0.84);
+  const capM = clipM(M.caps); const cap = lathe([[0.052, -0.085], [0.064, -0.05], [0.07, 0], [0.064, 0.05], [0.05, 0.085]], 40, capM); cap.scale.set(1.12, 1, 0.84); cap.renderOrder = 6;
+  const NB = 30, mb = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 16, 10), M.bub, NB); mb.frustumCulled = false; mb.renderOrder = 7;
+  const mp = []; for (let i = 0; i < NB; i++) { const a = hash(i * 4.3) * 6.283, rr2 = Math.sqrt(hash(i * 6.1)) * 0.042; mp.push([Math.cos(a) * rr2 * 1.12, (hash(i * 2.3) - 0.5) * 0.034, Math.sin(a) * rr2 * 0.84, 0.0035 + hash(i * 8.3) * 0.005]); }
   const bub = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), M.bub); bub.scale.setScalar(0.0001); bub.renderOrder = 8;
-  const J = new THREE.Group(); J.add(lo, loC, up, upC, fl, bub); J.rotation.x = 0.25; J.scale.setScalar(1.55); g.add(J);
+  const J = new THREE.Group(); J.add(lo, loC, up, upC, fl, cap, mb, bub); J.rotation.x = 0.25; J.scale.setScalar(1.55); g.add(J);
   const bits = []; for (let i = 0; i < 12; i++) { const b = new THREE.Mesh(new THREE.SphereGeometry(1, 12, 8), M.bub); b.scale.setScalar(0.0001); J.add(b); bits.push(b); }
-  g.userData = { planes, R, bub, bits, J, burst }; return g;
+  g.userData = { planes, R, bub, bits, J, burst, mb, mp }; return g;
 }
 function insetClip(g) {      // planos del círculo (en el mundo): solo se ve lo que cae dentro del aro
   const U = g.userData; g.updateWorldMatrix(true, true); const n = U.planes.length, M4 = g.matrixWorld; _m3.getNormalMatrix(M4);
@@ -1477,7 +1502,7 @@ function buildStations() {
   ST.ring = mriRing(); scene.add(ST.ring);
   ST.panel = mriPanel(); ST.panel.position.set(-0.71, 1.36, 0.32); ST.panel.rotation.y = 0.24; scene.add(ST.panel);
   ST.gauge = gaugeSoft(); ST.gauge.position.set(-0.48, 1.2, 0.3); ST.gauge.rotation.y = 0.3; ST.gauge.userData.s0 = 0.75; scene.add(ST.gauge);
-  ST.arrow = arrowSoft(); scene.add(ST.arrow);
+  ST.arrow = arrowSoft(0xd8372c); scene.add(ST.arrow);
   ST.in1 = insetJoint(false); ST.in1.position.set(-0.56, 1.62, 0.62); scene.add(ST.in1);
   ST.in2 = insetJoint(true); ST.in2.position.set(-0.13, 1.62, 0.62); scene.add(ST.in2);
   ST.clock = clockSoft(); ST.clock.position.set(-0.54, 1.46, 0.24); ST.clock.rotation.y = 0.3; scene.add(ST.clock);
@@ -1507,6 +1532,8 @@ function stationsAt(t) {
   // L5: los dos círculos del debate: la burbuja que nace (izquierda) y la que se rompe (derecha)
   for (const [g, t0] of [[ST.in1, K.discute5 - 0.15], [ST.in2, K.discute5 + 0.05]]) { const a = pop(t, t0, 0.45) * (1 - win(t, K.burbuja6 - 0.3, 0.35)); show(g, a); if (!g.visible) continue; insetClip(g);
     const U = g.userData; U.J.rotation.y = 0.25 * Math.sin(t * 0.6);
+    { const cv = U.burst ? 0 : eio(clamp((t - (K.nacer5 - 0.6)) / 0.56)), vis = U.burst ? 0 : 1 - win(t, K.nacer5 - 0.05, 0.08);
+      for (let i = 0; i < U.mp.length; i++) { const q = U.mp[i]; _o.position.set(q[0] * (1 - cv), q[1] * (1 - cv), q[2] * (1 - cv)); _o.rotation.set(0, 0, 0); _o.scale.setScalar(Math.max(0.00001, q[3] * vis * (1 - 0.4 * cv))); _o.updateMatrix(); U.mb.setMatrixAt(i, _o.matrix); } U.mb.instanceMatrix.needsUpdate = true; }
     if (!U.burst) { const b = popk(t, K.nacer5 - 0.04); U.bub.scale.set(0.05 * b, 0.026 * b + 0.0001, 0.045 * b); }
     else { const u = t - (K.romperse5 - 0.04), alive = u < 0 ? 1 : Math.max(0, 1 - u / 0.08); U.bub.scale.set(0.05 * alive + 0.0001, 0.026 * alive + 0.0001, 0.045 * alive + 0.0001);
       U.bits.forEach((b, i) => { const a2 = i / U.bits.length * Math.PI * 2, e = eo(clamp(u / 0.5)); b.visible = u > 0 && u < 1.3; if (!b.visible) return; b.scale.setScalar(0.011 * (1 - clamp((u - 0.4) / 0.9)));
@@ -1618,17 +1645,17 @@ function hudAt(t) {
   // L2: ¿tenían razón?
   { const a = cw(t, K.tenian2 - 0.05, K.cada3 - 0.1); if (a > 0.01) { big('¿TENÍAN RAZÓN?', Y, 84, INK, a); small('TE LO DIGO AL FINAL', Y + 78, 28, REDc, cw(t, K.digo2 - 0.1, K.cada3 - 0.1)); } }
   // L3: los pasos, como en una lámina: 1 la cápsula con líquido · 2 tiras · 3 la presión cae · 4 ¡burbuja!
-  { const st = [[K.cada3 - 0.05, K.tirar3 - 0.32, 1, 'UNA CÁPSULA CON LÍQUIDO', TEALc], [K.tirar3 - 0.05, K.presion3 - 0.32, 2, 'TIRAS DEL DEDO', BLUE], [K.presion3 - 0.05, K.gas3 - 0.32, 3, 'LA PRESIÓN CAE', REDc], [K.gas3 - 0.05, K.n2015 - 0.32, 4, 'EL GAS FORMA UNA BURBUJA', TEALc]];
+  { const st = [[K.cada3 - 0.05, K.tirar3 - 0.32, 1, 'UNA CÁPSULA CON LÍQUIDO', TEALc], [K.tirar3 - 0.05, K.presion3 - 0.32, 2, 'TIRAS DEL DEDO', REDc], [K.presion3 - 0.05, K.gas3 - 0.32, 3, 'LA PRESIÓN CAE', BLUE], [K.gas3 - 0.05, K.n2015 - 0.32, 4, 'EL GAS FORMA UNA BURBUJA', TEALc]];
     for (const [t0, t1, n, txt, col] of st) { const a = cw(t, t0, t1); if (a <= 0.01) continue; hg.save(); hfont(58); hg.letterSpacing = '2px'; const w = hg.measureText(txt).width; hg.restore();
       stepBadge(n, W / 2 - w / 2 - 50, Y, a, col); bigText(txt, W / 2 + 24, Y, 58, INK, a, { type: false, halo: 20, ls: 2 }); }
     const c = cw(t, K.golpe3 - 0.05, K.n2015 - 0.32); if (c > 0.01) small('DE GOLPE, EN MENOS DE UN SEGUNDO', Y + 76, 28, GREY, c);
     if (cutK(t) > 0.5 && t > K.cada3 && t < K.n2015) {
       lab(F.ph[0], 0, 0.3, 0.03, 'HUESO', null, cw(t, K.nudillo3 + 0.2, K.capsula3 - 0.1), { dx: -170, dy: -40, color: INK });
       lab(F.cap, -F.r * 0.62, 0.0, 0.0, 'CÁPSULA', 'LA ENVUELVE', cw(t, K.capsula3 - 0.05, K.liquido3 - 0.1), { dx: -170, dy: -150, color: TEALc });
-      lab(F.fluid, F.r * 0.3, 0, 0.02, 'LÍQUIDO SINOVIAL', 'CON GAS DISUELTO', cw(t, K.liquido3 - 0.05, K.tirar3 - 0.1), { dx: 150, dy: -200, color: TEALc });
+      lab(F.fluid, F.r * 0.3, 0, 0.02, 'LÍQUIDO SINOVIAL', 'CON GASES DISUELTOS', cw(t, K.liquido3 - 0.05, K.tirar3 - 0.1), { dx: 150, dy: -200, color: TEALc });
       lab(F.bub, 0, 0, 0.0, 'BURBUJA DE GAS', null, cw(t, K.golpe3 + 0.1, K.n2015 - 0.1), { dx: 160, dy: -180, color: TEALc }); }
     if (t > K.golpe3 && t < K.golpe3 + 0.9) { const P = proj(S.jf.position); crac({ x: P.x - 120, y: P.y - 250, ok: P.ok }, clamp((t - K.golpe3) / 0.9)); }
-    if (ST.arrow.visible && t < K.burbuja6) labP(proj(ST.arrow.localToWorld(v3(0, 0.27, 0))), 'TIRAS', null, cw(t, K.tirar3, K.presion3 - 0.1), { dx: -60, dy: -120, color: BLUE }); }
+    if (ST.arrow.visible && t < K.burbuja6) labP(proj(ST.arrow.localToWorld(v3(0, 0.27, 0))), 'TIRAS', null, cw(t, K.tirar3, K.presion3 - 0.1), { dx: -60, dy: -120, color: REDc }); }
   // L4: 2015, la resonancia: 0,31 s
   { const a = cw(t, K.n2015 - 0.05, K.menos4 - 0.32); if (a > 0.01) { big('2015', Y, 120, INK, a); small('LO GRABAN POR PRIMERA VEZ EN UNA RESONANCIA', Y + 88, 26, BLUE, a); }
     const b = cw(t, K.menos4 - 0.05, K.discute5 - 0.32); if (b > 0.01) { big('0,31 s', Y, 130, BLUE, b); small('MENOS DE UN TERCIO DE SEGUNDO', Y + 92, 28, INK, b); }

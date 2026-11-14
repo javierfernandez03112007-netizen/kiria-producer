@@ -51,17 +51,17 @@ function hudAt(t) {
   // L2: ¿tenían razón?
   { const a = cw(t, K.tenian2 - 0.05, K.cada3 - 0.1); if (a > 0.01) { big('¿TENÍAN RAZÓN?', Y, 84, INK, a); small('TE LO DIGO AL FINAL', Y + 78, 28, REDc, cw(t, K.digo2 - 0.1, K.cada3 - 0.1)); } }
   // L3: los pasos, como en una lámina: 1 la cápsula con líquido · 2 tiras · 3 la presión cae · 4 ¡burbuja!
-  { const st = [[K.cada3 - 0.05, K.tirar3 - 0.32, 1, 'UNA CÁPSULA CON LÍQUIDO', TEALc], [K.tirar3 - 0.05, K.presion3 - 0.32, 2, 'TIRAS DEL DEDO', BLUE], [K.presion3 - 0.05, K.gas3 - 0.32, 3, 'LA PRESIÓN CAE', REDc], [K.gas3 - 0.05, K.n2015 - 0.32, 4, 'EL GAS FORMA UNA BURBUJA', TEALc]];
+  { const st = [[K.cada3 - 0.05, K.tirar3 - 0.32, 1, 'UNA CÁPSULA CON LÍQUIDO', TEALc], [K.tirar3 - 0.05, K.presion3 - 0.32, 2, 'TIRAS DEL DEDO', REDc], [K.presion3 - 0.05, K.gas3 - 0.32, 3, 'LA PRESIÓN CAE', BLUE], [K.gas3 - 0.05, K.n2015 - 0.32, 4, 'EL GAS FORMA UNA BURBUJA', TEALc]];
     for (const [t0, t1, n, txt, col] of st) { const a = cw(t, t0, t1); if (a <= 0.01) continue; hg.save(); hfont(58); hg.letterSpacing = '2px'; const w = hg.measureText(txt).width; hg.restore();
       stepBadge(n, W / 2 - w / 2 - 50, Y, a, col); bigText(txt, W / 2 + 24, Y, 58, INK, a, { type: false, halo: 20, ls: 2 }); }
     const c = cw(t, K.golpe3 - 0.05, K.n2015 - 0.32); if (c > 0.01) small('DE GOLPE, EN MENOS DE UN SEGUNDO', Y + 76, 28, GREY, c);
     if (cutK(t) > 0.5 && t > K.cada3 && t < K.n2015) {
       lab(F.ph[0], 0, 0.3, 0.03, 'HUESO', null, cw(t, K.nudillo3 + 0.2, K.capsula3 - 0.1), { dx: -170, dy: -40, color: INK });
       lab(F.cap, -F.r * 0.62, 0.0, 0.0, 'CÁPSULA', 'LA ENVUELVE', cw(t, K.capsula3 - 0.05, K.liquido3 - 0.1), { dx: -170, dy: -150, color: TEALc });
-      lab(F.fluid, F.r * 0.3, 0, 0.02, 'LÍQUIDO SINOVIAL', 'CON GAS DISUELTO', cw(t, K.liquido3 - 0.05, K.tirar3 - 0.1), { dx: 150, dy: -200, color: TEALc });
+      lab(F.fluid, F.r * 0.3, 0, 0.02, 'LÍQUIDO SINOVIAL', 'CON GASES DISUELTOS', cw(t, K.liquido3 - 0.05, K.tirar3 - 0.1), { dx: 150, dy: -200, color: TEALc });
       lab(F.bub, 0, 0, 0.0, 'BURBUJA DE GAS', null, cw(t, K.golpe3 + 0.1, K.n2015 - 0.1), { dx: 160, dy: -180, color: TEALc }); }
     if (t > K.golpe3 && t < K.golpe3 + 0.9) { const P = proj(S.jf.position); crac({ x: P.x - 120, y: P.y - 250, ok: P.ok }, clamp((t - K.golpe3) / 0.9)); }
-    if (ST.arrow.visible && t < K.burbuja6) labP(proj(ST.arrow.localToWorld(v3(0, 0.27, 0))), 'TIRAS', null, cw(t, K.tirar3, K.presion3 - 0.1), { dx: -60, dy: -120, color: BLUE }); }
+    if (ST.arrow.visible && t < K.burbuja6) labP(proj(ST.arrow.localToWorld(v3(0, 0.27, 0))), 'TIRAS', null, cw(t, K.tirar3, K.presion3 - 0.1), { dx: -60, dy: -120, color: REDc }); }
   // L4: 2015, la resonancia: 0,31 s
   { const a = cw(t, K.n2015 - 0.05, K.menos4 - 0.32); if (a > 0.01) { big('2015', Y, 120, INK, a); small('LO GRABAN POR PRIMERA VEZ EN UNA RESONANCIA', Y + 88, 26, BLUE, a); }
     const b = cw(t, K.menos4 - 0.05, K.discute5 - 0.32); if (b > 0.01) { big('0,31 s', Y, 130, BLUE, b); small('MENOS DE UN TERCIO DE SEGUNDO', Y + 92, 28, INK, b); }

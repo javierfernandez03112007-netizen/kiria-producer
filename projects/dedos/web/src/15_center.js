@@ -38,14 +38,14 @@ function bubAt(t) {
   return Math.max(a, b);
 }
 const _jw = new THREE.Vector3(), _q0 = new THREE.Quaternion();
-function jointAt(h, t, pull, bk, dotK, conv, shake) {
+function jointAt(h, t, pull, bk, dotK, conv, shake, grow = 0) {
   const F = h.userData.fingers[0], g = GAP + pull, r = F.r;
   F.fluid.scale.y = g * 1.55; F.fluid.position.y = -pull / 2;
   F.bub.visible = bk > 0.003; F.bub.position.set(0, -pull / 2, 0); F.bub.scale.set(r * 0.33 * bk, g * 0.43 * Math.min(1, bk), r * 0.27 * bk);
   F.dots.visible = dotK > 0.01;
   if (F.dots.visible) { for (let i = 0; i < F.dp.length; i++) { const p = F.dp[i], j = shake * 0.0022;
       _o.position.set(p.x * (1 - conv) + Math.sin(t * 37 + i) * j, (p.y * (g / GAP) - pull / 2) * (1 - conv) - pull / 2 * conv + Math.cos(t * 41 + i * 2) * j, p.z * (1 - conv));
-      _o.rotation.set(0, 0, 0); _o.scale.setScalar(0.0021 * dotK * (1 - 0.5 * conv)); _o.updateMatrix(); F.dots.setMatrixAt(i, _o.matrix); }
+      _o.rotation.set(0, 0, 0); _o.scale.setScalar(Math.max(0.00001, F.dr[i] * dotK * (1 + 0.7 * grow) * (1 - 0.65 * conv))); _o.updateMatrix(); F.dots.setMatrixAt(i, _o.matrix); }
     F.dots.instanceMatrix.needsUpdate = true; }
 }
 // crujido de un nudillo (destello + onda) en las marcas de la mano
@@ -74,7 +74,7 @@ function centerAt(t, st) {
   const dotK = Math.max(1 - win(t, 0.24, 0.07), win(t, K.liquido3 - 0.1, 0.4) * (1 - win(t, K.golpe3 - 0.04, 0.06)), win(t, END - 1.0, 0.5));
   const conv = Math.max(t < 2 ? eio(clamp((t - 0.06) / 0.24)) : 0, eio(clamp((t - K.gas3) / (K.golpe3 - K.gas3))));
   const shake = win(t, K.presion3 - 0.1, 0.3) * (1 - win(t, K.golpe3 - 0.1, 0.1));
-  jointAt(H, t, pull, bk, dotK, conv, shake);
+  jointAt(H, t, pull, bk, dotK, conv, shake, win(t, K.presion3 - 0.05, 0.8) * (1 - win(t, K.golpe3 - 0.05, 0.1)));
   const F = U.fingers[0];
   F.cap.material.opacity = 0.38 + 0.3 * env(t, K.capsula3 - 0.05, K.liquido3 + 0.2, 0.25, 0.4);
   F.fluid.material.emissiveIntensity = 0.35 + 0.6 * env(t, K.liquido3 - 0.05, K.tirar3 + 0.1, 0.25, 0.4);
