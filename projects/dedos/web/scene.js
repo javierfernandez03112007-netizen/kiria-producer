@@ -10,6 +10,7 @@ import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
 import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { triTable } from 'three/addons/objects/MarchingCubes.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { W, H, clamp, prog, lerp, eo, eio, ss, loadTopo, ringSegments, ll, fatLines, arcPoints } from './lib.js';
 
@@ -279,7 +280,8 @@ const MONO = '"SpaceMono","DejaVuMono",monospace';
 const HC = { white: '#EEF2F6', grey: '#9AA1AB', dim: '#5C636D', amber: '#FFB547', teal: '#62E3D4', red: '#FF5247', green: '#7CF0A9' };
 const _pv = new THREE.Vector3();
 function proj(v) { _pv.copy(v).project(cam); return { x: (_pv.x + 1) / 2 * W, y: (1 - _pv.y) / 2 * H, ok: _pv.z < 1 && _pv.z > -1 }; }
-function hfont(px, bold = true) { hg.font = `${bold ? 700 : 400} ${px}px ${MONO}`; }
+let HFONT = MONO, HW = [700, 400];
+function hfont(px, bold = true) { hg.font = `${bold ? HW[0] : HW[1]} ${px}px ${HFONT}`; }
 const typed = (txt, k) => txt.slice(0, Math.floor(txt.length * clamp(k) + 0.001));
 function hudBegin() { hg.setTransform(PR, 0, 0, PR, 0, 0); hg.clearRect(0, 0, W, H); hg.lineCap = 'round'; hg.lineJoin = 'round'; }
 function glowStroke(col, w, blur = 14) { hg.shadowColor = col; hg.shadowBlur = blur; hg.strokeStyle = col; hg.lineWidth = w; }
@@ -334,9 +336,9 @@ function callout(anchor, txt, sub, k, o = {}) {
   hg.stroke();
   if (kt > 0) {
     hg.textAlign = right ? 'left' : 'right'; hg.textBaseline = 'middle'; hg.letterSpacing = '3px'; hfont(size); hg.fillStyle = col;
-    hg.shadowColor = 'rgba(0,0,0,.9)'; hg.shadowBlur = 8;
+    hg.shadowColor = o.light ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,.9)'; hg.shadowBlur = o.light ? 0 : 8;
     const tx = T.x + (right ? 12 : -12);
-    if (o.bg) { hg.save(); hg.shadowBlur = 0; hg.fillStyle = 'rgba(0,0,0,.72)'; const bh = sub ? size + subSize * 1.7 + 14 : size * 1.55; rr(hg, (right ? tx : tx - tw) - 14, T.y - size * 0.78, tw + 28, bh, 10); hg.fill(); hg.restore(); }
+    if (o.bg) { hg.save(); hg.shadowBlur = o.light ? 18 : 0; hg.shadowColor = 'rgba(60,40,30,.18)'; hg.fillStyle = o.light ? 'rgba(255,255,255,.93)' : 'rgba(0,0,0,.72)'; const bh = sub ? size + subSize * 1.7 + 14 : size * 1.55; rr(hg, (right ? tx : tx - tw) - 14, T.y - size * 0.78, tw + 28, bh, 10); hg.fill(); hg.restore(); }
     hg.fillText(typed(txt, kt), tx, T.y - (sub ? 3 : 0));
     if (sub) { hfont(subSize, false); hg.fillStyle = o.subCol || HC.grey; hg.fillText(typed(sub, clamp(kt * 1.4 - 0.4)), tx, T.y + size * 0.5 + subSize * 0.62); }
   }
@@ -349,6 +351,7 @@ function bigText(txt, x, y, size, col, k, o = {}) {
   hg.textAlign = o.align || 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = (o.ls ?? Math.round(size * 0.14)) + 'px'; hfont(size, o.bold ?? true);
   if (o.glow) { hg.shadowColor = col; hg.shadowBlur = o.glow; }
   const s = typed(txt, o.type === false ? 1 : clamp(k * 1.6));
+  if (o.halo) { hg.save(); hg.shadowColor = 'rgba(255,255,255,1)'; hg.shadowBlur = o.halo; hg.fillStyle = 'rgba(255,255,255,.85)'; for (let i = 0; i < 2; i++) { if (o.scale) { hg.save(); hg.translate(x, y); hg.scale(o.scale, o.scale); hg.fillText(s, 0, 0); hg.restore(); } else hg.fillText(s, x, y); } hg.restore(); }
   if (o.dark) { hg.save(); hg.shadowColor = 'rgba(0,0,0,.95)'; hg.shadowBlur = o.dark; hg.fillStyle = 'rgba(0,0,0,.55)'; for (let i = 0; i < 2; i++) { if (o.scale) { hg.save(); hg.translate(x, y); hg.scale(o.scale, o.scale); hg.fillText(s, 0, 0); hg.restore(); } else hg.fillText(s, x, y); } hg.restore(); if (o.glow) { hg.shadowColor = col; hg.shadowBlur = o.glow; } }
   hg.fillStyle = col;
   if (o.scale) { hg.translate(x, y); hg.scale(o.scale, o.scale); hg.fillText(s, 0, 0); } else hg.fillText(s, x, y);
@@ -877,6 +880,254 @@ function studentGeo(lo = false) {
   return mergeGeometries(parts);
 }
 function capGeo() { const b = new THREE.BoxGeometry(0.022, 0.003, 0.022); b.translate(0, 0.062, 0); const c = new THREE.CylinderGeometry(0.008, 0.009, 0.006, 10); c.translate(0, 0.0585, 0); return mergeGeometries([b.toNonIndexed(), c.toNonIndexed()].map(g => { for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv'].includes(k)) g.deleteAttribute(k); return g; })); }
+// ---------------------------------------------------------------- estilo ilustración médica (Javi, 14-11, con imágenes de referencia): una mano de piel de verdad
+// sobre un fondo claro y suave; el dedo índice se abre con un corte (la piel de arriba desaparece) y deja ver por dentro los huesos (marfil), el cartílago
+// (azulado), la cápsula de la articulación con su líquido, el tendón, las venas y la burbuja.
+// La mano es UNA sola superficie suave: un campo de distancias (falanges, metacarpos, almohadillas de la palma, pulgar y antebrazo unidos con un mínimo
+// suave) convertido en malla con «marching cubes», con su esqueleto y los pesos calculados (cada dedo se dobla por sus tres articulaciones).
+function noiseSkin(g, w, h, n, a = 1) {
+  for (let i = 0; i < n; i++) { const x = hash(i * 1.3) * w, y = hash(i * 2.7) * h, r = 1 + hash(i * 4.1) * 5; g.fillStyle = hash(i * 7.7) > 0.5 ? `rgba(150,78,58,${0.035 * a})` : `rgba(255,222,200,${0.07 * a})`; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); }
+  for (let i = 0; i < n / 2; i++) { g.fillStyle = `rgba(110,50,38,${0.045 * a})`; g.fillRect(hash(i * 9.1) * w, hash(i * 3.9) * h, 1.1, 1.1); }      // poros
+}
+let SKM = null;
+function skinBase() {
+  if (SKM) return SKM;
+  const map = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); noiseSkin(g, w, h, 3200, 1.3); }); map.wrapS = map.wrapT = THREE.RepeatWrapping;
+  SKM = { outer: new THREE.MeshPhysicalMaterial({ map, vertexColors: true, roughness: 0.5, sheen: 0.55, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xffa98a), clearcoat: 0.12, clearcoatRoughness: 0.5,
+      emissive: 0x4a1408, emissiveIntensity: 0.22 }),
+    inner: new THREE.MeshStandardMaterial({ color: 0xc4524b, roughness: 0.62, emissive: 0x3a0b08, emissiveIntensity: 0.35, side: THREE.BackSide }) };
+  return SKM;
+}
+// burbuja de gas dentro del líquido: transparente, con el borde plateado (fresnel) y un brillo (lleva los trozos de profundidad logarítmica)
+function bubbleMat(op = 1) {
+  return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, uniforms: { col: { value: new THREE.Color(0.86, 0.94, 1.0).multiplyScalar(1.25) }, op: { value: op } },
+    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vN; varying vec3 vV; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv;\n#include <logdepthbuf_vertex>\n}',
+    fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform vec3 col; uniform float op; varying vec3 vN; varying vec3 vV; void main(){\n#include <logdepthbuf_fragment>\nvec3 N = normalize(vN); float r = 1. - abs(dot(N, normalize(vV))); float rim = smoothstep(0.45, 0.92, r); vec3 c = mix(vec3(1.0, 1.04, 1.08), vec3(0.1, 0.36, 0.78), rim); float a = mix(0.42, 0.97, rim); float hl = pow(max(dot(N, normalize(vec3(-0.45, 0.6, 0.66))), 0.), 30.); c = mix(c, vec3(1.6), hl); gl_FragColor = vec4(c, clamp(a + hl, 0., 1.) * op); }' });
+}
+let IBM = null;
+function innerMats() {
+  if (IBM) return IBM;
+  const pores = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#efe3c8'; g.fillRect(0, 0, w, h); for (let i = 0; i < 600; i++) { g.fillStyle = `rgba(185,150,100,${0.12 + hash(i) * 0.22})`; g.beginPath(); g.arc(hash(i * 3.3) * w, hash(i * 5.1) * h, 0.8 + hash(i * 2.2) * 2.6, 0, 7); g.fill(); } });
+  pores.wrapS = pores.wrapT = THREE.RepeatWrapping;
+  IBM = { bone: new THREE.MeshPhysicalMaterial({ map: pores, roughness: 0.5, clearcoat: 0.35, clearcoatRoughness: 0.35, emissive: 0x2a2012, emissiveIntensity: 0.12 }),
+    cart: new THREE.MeshPhysicalMaterial({ color: 0xa9cdee, roughness: 0.1, clearcoat: 1, clearcoatRoughness: 0.04, emissive: 0x15324f, emissiveIntensity: 0.22 }),
+    fluid: new THREE.MeshPhysicalMaterial({ color: 0x8fd0f5, roughness: 0.05, transparent: true, opacity: 0.5, clearcoat: 1, emissive: 0x2f78b8, emissiveIntensity: 0.35, depthWrite: false }),
+    dot: new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.9, depthWrite: false }),
+    bub: bubbleMat(),
+    tendon: new THREE.MeshPhysicalMaterial({ color: 0xf4eee6, roughness: 0.32, sheen: 1, sheenColor: new THREE.Color(0xffffff), clearcoat: 0.4 }),
+    artery: new THREE.MeshPhysicalMaterial({ color: 0xc8262c, roughness: 0.3, clearcoat: 0.8, emissive: 0x400406, emissiveIntensity: 0.3 }),
+    vein: new THREE.MeshPhysicalMaterial({ color: 0x3f5fae, roughness: 0.3, clearcoat: 0.8, emissive: 0x0b1438, emissiveIntensity: 0.3 }),
+    nerve: new THREE.MeshPhysicalMaterial({ color: 0xf2d36b, roughness: 0.35, clearcoat: 0.6 }) };
+  return IBM;
+}
+// desplaza los vértices un poco a lo largo de la normal con ruido suave: formas orgánicas, «no tan perfectas»
+function wobble(geo, amp, f = 9, seed = 1) {
+  geo.computeVertexNormals(); const p = geo.attributes.position, n = geo.attributes.normal;
+  for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i), z = p.getZ(i); const k = Math.sin(x * f + seed) * Math.sin(y * f * 0.7 + seed * 2.1) * Math.sin(z * f * 1.3 + seed * 0.7) + 0.5 * Math.sin((x + y + z) * f * 2.1 + seed);
+    p.setXYZ(i, x + n.getX(i) * amp * k, y + n.getY(i) * amp * k, z + n.getZ(i) * amp * k); }
+  geo.computeVertexNormals(); return geo;
+}
+const V2 = (a) => a.map(([x, y]) => new THREE.Vector2(Math.max(0.00005, x), y));
+// falange (a lo largo de +y, de y0 a y1): base ancha con la cara articular un poco hundida, caña más fina y aplanada, cabeza redondeada
+function phalanxGeo(y0, y1, rb, rh, distal = false) {
+  const L = y1 - y0, P = distal
+    ? [[0, 0.02], [rb * 0.7, 0], [rb, 0.06], [rb * 0.92, 0.16], [rb * 0.55, 0.36], [rb * 0.45, 0.6], [rb * 0.62, 0.8], [rb * 0.7, 0.9], [rb * 0.5, 0.98], [0, 1]]
+    : [[0, 0.025], [rb * 0.72, 0], [rb, 0.04], [rb * 0.95, 0.12], [rb * 0.66, 0.26], [rb * 0.56, 0.5], [rh * 0.72, 0.74], [rh * 0.98, 0.86], [rh, 0.92], [rh * 0.78, 0.98], [0, 1]];
+  const g = new THREE.LatheGeometry(V2(P.map(([x, y]) => [x, y0 + y * L])), 28); g.scale(1.12, 1, 0.84); return wobble(g, rb * 0.03, 60, y0 * 37);
+}
+// capa de cartílago sobre el extremo de un hueso (cabeza: arriba; base: abajo)
+function cartGeo(y0, y1, rb, rh, end) {
+  const L = y1 - y0, P = end === 'head' ? [[rh * 1.035, 0.84], [rh * 1.05, 0.92], [rh * 0.81, 0.985], [0, 1.012]] : [[0, -0.012], [rb * 0.74, -0.008], [rb * 1.04, 0.04], [rb * 1.02, 0.1]];
+  const g = new THREE.LatheGeometry(V2(P.map(([x, y]) => [x, y0 + y * L])), 28); g.scale(1.12, 1, 0.84); return g;
+}
+const GAP = 0.016;
+
+// ---------- la forma de la mano (en reposo: mano derecha, dorso hacia +z, dedos hacia +y)
+const HD = {
+  F: [ { x: -0.31, y: 0.86, a: 5, L: [0.42, 0.25, 0.21], r: 0.094 },       // índice, corazón, anular, meñique: nudillo (x, y), giro (grados), falanges, radio
+       { x: -0.1, y: 0.9, a: 0, L: [0.46, 0.29, 0.22], r: 0.098 },
+       { x: 0.11, y: 0.87, a: -4, L: [0.43, 0.27, 0.21], r: 0.093 },
+       { x: 0.3, y: 0.79, a: -9, L: [0.34, 0.21, 0.19], r: 0.08 } ],
+  T: [ [-0.25, 0.12, -0.04], [-0.46, 0.39, 0.01], [-0.585, 0.585, 0.045], [-0.67, 0.745, 0.065] ], TR: [0.12, 0.108, 0.1, 0.088],   // pulgar: CMC, MCP, IP, yema
+};
+for (const d of HD.F) { const a = d.a * D2; d.u = [-Math.sin(a), Math.cos(a)]; const P = [[d.x, d.y]]; let s = 0; for (let j = 0; j < 3; j++) { s += j < 2 ? d.L[j] : d.L[2] - d.r * 0.8; P.push([d.x + d.u[0] * s, d.y + d.u[1] * s]); } d.P = P; }
+function capP(a, b, ra, rb, zs) { const izs = 1 / zs, dx = b[0] - a[0], dy = b[1] - a[1], dz = ((b[2] || 0) - (a[2] || 0)) * izs; return { ax: a[0], ay: a[1], az: a[2] || 0, dx, dy, dz, ra, rb, izs, il2: 1 / (dx * dx + dy * dy + dz * dz) }; }
+function capD(x, y, z, P) { const px = x - P.ax, py = y - P.ay, pz = (z - P.az) * P.izs; let h = (px * P.dx + py * P.dy + pz * P.dz) * P.il2; h = h < 0 ? 0 : h > 1 ? 1 : h;
+  const qx = px - P.dx * h, qy = py - P.dy * h, qz = pz - P.dz * h; return Math.sqrt(qx * qx + qy * qy + qz * qz) - (P.ra + (P.rb - P.ra) * h); }
+function ellD(x, y, z, E) { const a = (x - E[0]) / E[3], b = (y - E[1]) / E[4], c = (z - E[2]) / E[5]; return (Math.sqrt(a * a + b * b + c * c) - 1) * E[6]; }
+const smin = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.min(a, b) - h * h * k * 0.25; };
+function sphD(x, y, z, K) { const a = x - K[0], b = y - K[1], c = (z - K[2]) / K[4]; return Math.sqrt(a * a + b * b + c * c) - K[3]; }
+const HP = (() => {
+  const meta = HD.F.map(d => capP([d.x * 0.62 - 0.01, 0.16, 0.03], [d.x - d.u[0] * 0.03, d.y - d.u[1] * 0.03, 0.03], 0.085, d.r * 1.05, 1.0));
+  const fing = HD.F.map(d => [capP([...d.P[0], 0], [...d.P[1], 0], d.r, d.r * 0.93, 0.86), capP([...d.P[1], 0], [...d.P[2], 0], d.r * 0.93, d.r * 0.86, 0.86), capP([...d.P[2], 0], [...d.P[3], -d.r * 0.06], d.r * 0.86, d.r * 0.8, 0.86)]);
+  const knk = HD.F.map(d => [[...d.P[1], 0.005, d.r * 0.955, 0.86], [...d.P[2], 0.004, d.r * 0.875, 0.86]]);
+  const thumb = [0, 1, 2].map(j => capP(HD.T[j], HD.T[j + 1], HD.TR[j], HD.TR[j + 1], 0.86));
+  const ell = [[-0.03, 0.47, -0.03, 0.38, 0.4, 0.12], [-0.25, 0.27, -0.07, 0.15, 0.2, 0.12], [0.27, 0.32, -0.05, 0.1, 0.3, 0.1]].map(e => [...e, Math.min(e[3], e[4], e[5])]);
+  const arm = capP([0, 0.16, 0], [0.02, -2.2, 0], 0.27, 0.3, 0.66);
+  return { meta, fing, knk, thumb, ell, arm };
+})();
+function sdPalm(x, y, z) { let p = capD(x, y, z, HP.meta[0]); for (let i = 1; i < 4; i++) p = smin(p, capD(x, y, z, HP.meta[i]), 0.1); for (const e of HP.ell) p = smin(p, ellD(x, y, z, e), 0.1); return smin(p, capD(x, y, z, HP.arm), 0.16); }
+function sdFinger(x, y, z, i) { const F = HP.fing[i]; let f = Math.min(capD(x, y, z, F[0]), capD(x, y, z, F[1]), capD(x, y, z, F[2])); for (const K of HP.knk[i]) f = smin(f, sphD(x, y, z, K), 0.03); return f; }
+function sdThumb(x, y, z) { return Math.min(capD(x, y, z, HP.thumb[0]), capD(x, y, z, HP.thumb[1]), capD(x, y, z, HP.thumb[2])); }
+const WEB = capP([-0.43, 0.36, -0.01], [-0.29, 0.66, 0.0], 0.05, 0.045, 0.7);
+function sdHand(x, y, z) { let d = smin(sdPalm(x, y, z), capD(x, y, z, WEB), 0.09); for (let i = 0; i < 4; i++) d = smin(d, sdFinger(x, y, z, i), 0.05); return smin(d, sdThumb(x, y, z), 0.07); }
+// marching cubes (tablas de Paul Bourke, las mismas que usa three) con vértices compartidos por arista → malla indexada
+const MC_E = [[0, 0, 0, 0], [1, 0, 0, 1], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0], [1, 0, 1, 1], [0, 1, 1, 0], [0, 0, 1, 1], [0, 0, 0, 2], [1, 0, 0, 2], [1, 1, 0, 2], [0, 1, 0, 2]];
+let HAND_GEO = null;
+const HAND_Y0 = -0.75;
+function handGeo() {
+  if (HAND_GEO) return HAND_GEO;
+  const h = 0.0085, x0 = -0.86, y0 = HAND_Y0, z0 = -0.27, nx = Math.ceil((0.56 - x0) / h) + 1, ny = Math.ceil((1.9 - y0) / h) + 1, nz = Math.ceil((0.27 - z0) / h) + 1;
+  const F = new Float32Array(nx * ny * nz); let q = 0;
+  for (let k = 0; k < nz; k++) { const z = z0 + k * h; for (let j = 0; j < ny; j++) { const y = y0 + j * h; for (let i = 0; i < nx; i++, q++) { const x = x0 + i * h; F[q] = -sdHand(x, y, z); } } }
+  const id = (i, j, k) => i + nx * (j + ny * k), vmap = new Map(), P = [], I = [];
+  const vert = (i, j, k, ax) => { const key = id(i, j, k) * 3 + ax; let v = vmap.get(key); if (v !== undefined) return v;
+    const a = F[id(i, j, k)], b = F[ax === 0 ? id(i + 1, j, k) : ax === 1 ? id(i, j + 1, k) : id(i, j, k + 1)], t = a === b ? 0.5 : a / (a - b);
+    v = P.length / 3; P.push(x0 + (i + (ax === 0 ? t : 0)) * h, y0 + (j + (ax === 1 ? t : 0)) * h, z0 + (k + (ax === 2 ? t : 0)) * h); vmap.set(key, v); return v; };
+  const C = [[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]];
+  for (let k = 0; k < nz - 1; k++) for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
+    let ci = 0; for (let c = 0; c < 8; c++) if (F[id(i + C[c][0], j + C[c][1], k + C[c][2])] < 0) ci |= 1 << c;
+    if (ci === 0 || ci === 255) continue; const o = ci << 4;
+    for (let e = 0; triTable[o + e] !== -1; e += 3) for (let m = 0; m < 3; m++) { const E = MC_E[triTable[o + e + m]]; I.push(vert(i + E[0], j + E[1], k + E[2], E[3])); }
+  }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); g.setIndex(I);
+  // normales del gradiente del campo, colores de la piel y pesos de los huesos
+  const n = P.length / 3, N = new Float32Array(n * 3), COL = new Float32Array(n * 3), UV = new Float32Array(n * 2), SI = new Uint16Array(n * 4), SW = new Float32Array(n * 4), e = h * 0.5;
+  const base = new THREE.Color(0xd8987e), red = new THREE.Color(0xcf7468), pale = new THREE.Color(0xe2ab92), cc = new THREE.Color();
+  const ssm = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+  for (let v = 0; v < n; v++) {
+    const x = P[v * 3], y = P[v * 3 + 1], z = P[v * 3 + 2];
+    const gx = sdHand(x + e, y, z) - sdHand(x - e, y, z), gy = sdHand(x, y + e, z) - sdHand(x, y - e, z), gz = sdHand(x, y, z + e) - sdHand(x, y, z - e), gl = Math.hypot(gx, gy, gz) || 1;
+    N[v * 3] = gx / gl; N[v * 3 + 1] = gy / gl; N[v * 3 + 2] = gz / gl;
+    UV[v * 2] = x * 1.6 + z * 0.7; UV[v * 2 + 1] = y * 1.6;
+    // ¿a qué parte pertenece? (la más cercana: palma/antebrazo, un dedo o el pulgar)
+    let best = sdPalm(x, y, z), part = -1; for (let i = 0; i < 4; i++) { const d = sdFinger(x, y, z, i); if (d < best) { best = d; part = i; } } { const d = sdThumb(x, y, z); if (d < best) { best = d; part = 4; } }
+    let w = [1, 0, 0, 0], b = [0, 0, 0, 0]; cc.copy(base);
+    if (part >= 0 && part < 4) { const d = HD.F[part], s = (x - d.x) * d.u[0] + (y - d.y) * d.u[1];
+      const w0 = ssm(-0.05, 0.06, s), w1 = ssm(d.L[0] - 0.035, d.L[0] + 0.035, s), w2 = ssm(d.L[0] + d.L[1] - 0.03, d.L[0] + d.L[1] + 0.03, s);
+      const bi = 1 + part * 3; b = [0, bi, bi + 1, bi + 2]; w = [1 - w0, w0 * (1 - w1), w0 * w1 * (1 - w2), w0 * w1 * w2];
+      // nudillos algo más rosados por el dorso, y la yema
+      const kn = Math.max(Math.exp(-(((s - d.L[0]) / 0.035) ** 2)), Math.exp(-(((s - d.L[0] - d.L[1]) / 0.03) ** 2)) * 0.8, Math.exp(-((s / 0.045) ** 2)) * 0.6) * ssm(0.035, 0.075, z);
+      const tip = ssm(d.L[0] + d.L[1] + d.L[2] * 0.45, d.L[0] + d.L[1] + d.L[2], s);
+      cc.lerp(red, clamp(kn * 0.4 + tip * 0.4));
+    } else if (part === 4) { const A = HD.T[1], B = HD.T[2], ux = B[0] - A[0], uy = B[1] - A[1], ul = Math.hypot(ux, uy), s = ((x - A[0]) * ux + (y - A[1]) * uy) / ul;
+      const w1 = ssm(-0.04, 0.05, s), w2 = ssm(ul - 0.03, ul + 0.03, s); b = [0, 13, 14, 0]; w = [1 - w1, w1 * (1 - w2), w1 * w2, 0];
+      cc.lerp(red, ssm(ul + 0.05, ul + 0.2, s) * 0.4);
+    } else { cc.lerp(pale, ssm(-0.1, 0.12, z) * 0.2 * ssm(0.1, 0.6, y)); }
+    COL[v * 3] = cc.r; COL[v * 3 + 1] = cc.g; COL[v * 3 + 2] = cc.b;
+    for (let m = 0; m < 4; m++) { SI[v * 4 + m] = b[m]; SW[v * 4 + m] = w[m]; }
+  }
+  g.setAttribute('normal', new THREE.BufferAttribute(N, 3)); g.setAttribute('color', new THREE.BufferAttribute(COL, 3)); g.setAttribute('uv', new THREE.BufferAttribute(UV, 2));
+  g.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(SI, 4)); g.setAttribute('skinWeight', new THREE.Float32BufferAttribute(SW, 4));
+  console.log('mano: ' + n + ' vértices, ' + I.length / 3 + ' triángulos');
+  HAND_GEO = g; return g;
+}
+// la misma malla, pero solo con los triángulos alrededor del índice (para la carne de dentro, que solo se ve en el corte)
+let INNER_GEO = null;
+function innerGeo() {
+  if (INNER_GEO) return INNER_GEO; const g = handGeo(), P = g.attributes.position, I = g.index.array, out = [], d = HD.F[0];
+  const near = v => { const x = P.getX(v) - d.x, y = P.getY(v) - d.y, s = x * d.u[0] + y * d.u[1], q = x * d.u[1] - y * d.u[0]; return s > 0.05 && s < 0.85 && Math.abs(q) < 0.16; };
+  for (let i = 0; i < I.length; i += 3) if (near(I[i]) && near(I[i + 1]) && near(I[i + 2])) out.push(I[i], I[i + 1], I[i + 2]);
+  INNER_GEO = new THREE.BufferGeometry(); for (const k in g.attributes) INNER_GEO.setAttribute(k, g.attributes[k]); INNER_GEO.setIndex(out); return INNER_GEO;
+}
+// el interior de un dedo (falanges con su cartílago, tendón flexor, arteria, vena y nervios; en la articulación del medio: cápsula, líquido, gas y burbuja)
+function fingerInside(F, planes) {
+  const M = innerMats(), [b0, b1, b2] = F.bones, L = F.L, r = F.r, g2 = GAP / 2;
+  const ends = [[0.02, L[0] - g2], [g2, L[1] - g2], [g2, L[2] * 0.8]], rad = [[0.44, 0.4], [0.4, 0.37], [0.37, 0.3]], segs = [b0, b1, b2];
+  F.ph = ends.map(([y0, y1], i) => { const m = new THREE.Mesh(phalanxGeo(y0, y1, r * rad[i][0], r * rad[i][1], i === 2), M.bone); m.castShadow = true; segs[i].add(m); return m; });
+  for (let i = 0; i < 2; i++) { const [y0, y1] = ends[i]; segs[i].add(new THREE.Mesh(cartGeo(y0, y1, r * rad[i][0], r * rad[i][1], 'head'), M.cart));
+    const [z0, z1] = ends[i + 1]; segs[i + 1].add(new THREE.Mesh(cartGeo(z0, z1, r * rad[i + 1][0], r * rad[i + 1][1], 'base'), M.cart)); }
+  for (let i = 0; i < 3; i++) { const l = L[i] * (i === 2 ? 0.7 : 0.98); const t = rbox(r * 0.42, l, r * 0.12, M.tendon, r * 0.05); t.position.set(0, l / 2 + (i ? 0 : 0.01), -r * 0.5); segs[i].add(t); }
+  for (const [x, m, rr2, zz] of [[0.6, M.artery, 0.07, -0.2], [-0.6, M.vein, 0.075, -0.2], [0.68, M.nerve, 0.05, -0.36], [-0.68, M.nerve, 0.05, -0.36]]) for (let i = 0; i < 3; i++) {
+    const l = L[i] * (i === 2 ? 0.75 : 1.0) + (i === 2 ? 0.03 : 0.06), c = cyl(r * rr2, r * rr2, l, m, 10); c.position.set(r * x * (i === 2 ? 0.85 : 1), l / 2 - 0.03, r * zz); segs[i].add(c); }
+  const cm = new THREE.MeshPhysicalMaterial({ color: 0xf7ddd6, roughness: 0.3, transparent: true, opacity: 0.38, clearcoat: 1, depthWrite: false, side: THREE.DoubleSide });
+  if (planes) { cm.clippingPlanes = planes; cm.clipIntersection = true; }
+  const cap = lathe([[r * 0.46, -0.085], [r * 0.52, -0.066], [r * 0.6, -0.042], [r * 0.645, -0.016], [r * 0.655, 0.0], [r * 0.645, 0.016], [r * 0.6, 0.04], [r * 0.51, 0.062], [r * 0.44, 0.08]], 40, cm); cap.scale.set(1.12, 1, 0.84); cap.renderOrder = 6; b1.add(cap);
+  const fl = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.42, r * 0.42, 1, 32, 1), M.fluid); fl.scale.set(1.12, GAP * 1.6, 0.84); fl.renderOrder = 5; b1.add(fl);
+  const dots = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 6), M.dot, 34); dots.frustumCulled = false; dots.renderOrder = 7; b1.add(dots);
+  { const o = new THREE.Object3D(); o.scale.setScalar(0.00001); o.updateMatrix(); for (let i = 0; i < 34; i++) dots.setMatrixAt(i, o.matrix); }
+  const dp = []; for (let i = 0; i < 34; i++) { const a = hash(i * 3.7) * 6.283, rr2 = Math.sqrt(hash(i * 5.3)) * r * 0.4; dp.push(v3(Math.cos(a) * rr2 * 1.12, (hash(i * 2.9) - 0.5) * GAP * 0.9, Math.sin(a) * rr2 * 0.84)); }
+  const bub = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), M.bub); bub.scale.setScalar(0.0001); bub.renderOrder = 8; b1.add(bub);
+  Object.assign(F, { cap, fluid: fl, dots, dp, bub });
+}
+function nailMesh(r, L2) {
+  const tex = canvasTex(64, 128, (g, w, h) => { const gr = g.createLinearGradient(0, h, 0, 0); gr.addColorStop(0, '#e7bcaf'); gr.addColorStop(0.16, '#dfa597'); gr.addColorStop(0.84, '#e2a99b'); gr.addColorStop(0.93, '#ecd0c5'); gr.addColorStop(1, '#f1ddd4'); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+  const m = new THREE.MeshPhysicalMaterial({ map: tex, roughness: 0.32, clearcoat: 0.55, clearcoatRoughness: 0.18 });
+  const geo = new THREE.CylinderGeometry(r * 0.76, r * 0.8, L2 * 0.6, 20, 1, true, -0.9, 1.8); geo.scale(1, 1, 0.92);
+  const nm = new THREE.Mesh(geo, m); nm.position.y = L2 * 0.6; nm.renderOrder = 2; return nm;
+}
+// la mano derecha (o la izquierda con o.left), con su esqueleto, el interior del índice y su corte (o.cut)
+function realHand(o = {}) {
+  const base = skinBase(), g = new THREE.Group(), geo = handGeo();
+  const planes = o.cut ? [0, 1, 2, 3, 4].map(() => new THREE.Plane()) : null, iplanes = o.cut ? [0, 1, 2, 3].map(() => new THREE.Plane()) : null;
+  const om = base.outer.clone(), im = base.inner.clone();
+  if (planes) { om.clippingPlanes = planes; om.clipIntersection = true; im.clippingPlanes = iplanes; im.clipIntersection = false; }      // la carne de dentro solo se dibuja en la franja del índice
+  const root = new THREE.Bone(), bones = [root], fingers = [];
+  for (const d of HD.F) { const b0 = new THREE.Bone(), b1 = new THREE.Bone(), b2 = new THREE.Bone(); b0.position.set(d.x, d.y, 0); b0.rotation.z = d.a * D2; b1.position.y = d.L[0]; b2.position.y = d.L[1];
+    root.add(b0); b0.add(b1); b1.add(b2); bones.push(b0, b1, b2); fingers.push({ bones: [b0, b1, b2], L: d.L, r: d.r, d }); }
+  // pulgar: t1 en el MCP (eje hacia el IP) y t2 en el IP; su «dorso» mira a la izquierda y un poco hacia delante
+  const tq = (A, B) => { const y = v3(B[0] - A[0], B[1] - A[1], B[2] - A[2]).normalize(), z = v3(-0.7, 0, 0.72).normalize(); const x = new THREE.Vector3().crossVectors(y, z).normalize(); z.crossVectors(x, y).normalize(); return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z)); };
+  const t1 = new THREE.Bone(), t2 = new THREE.Bone(), q1 = tq(HD.T[1], HD.T[2]), q2 = tq(HD.T[2], HD.T[3]);
+  t1.position.set(...HD.T[1]); t1.quaternion.copy(q1); root.add(t1); t2.position.copy(v3(...HD.T[2]).sub(v3(...HD.T[1])).applyQuaternion(q1.clone().invert())); t2.quaternion.copy(q1.clone().invert().multiply(q2)); t1.add(t2); bones.push(t1, t2);
+  const mesh = new THREE.SkinnedMesh(geo, om), inner = new THREE.SkinnedMesh(innerGeo(), im); mesh.add(root); g.add(mesh); g.add(inner);
+  g.updateMatrixWorld(true); const sk = new THREE.Skeleton(bones); mesh.bind(sk); inner.bind(sk);
+  mesh.castShadow = true; mesh.receiveShadow = true; mesh.frustumCulled = inner.frustumCulled = false;
+  // antebrazo: sigue al corte del campo (su sección en y = HAND_Y0 es la elipse del brazo)
+  { const ya = HAND_Y0, x0 = 0.02 * (0.16 - ya) / 2.36, r0 = 0.27 + 0.03 * (0.16 - ya) / 2.36;
+    const arm = new THREE.Mesh(new THREE.CylinderGeometry(r0, r0 + 0.03, 2.4, 64, 1, true), om); arm.scale.z = 0.66; arm.position.set(x0, ya - 1.2, 0); arm.receiveShadow = true; g.add(arm);
+    const c = arm.geometry.attributes.position.count, col = new Float32Array(c * 3), cc = new THREE.Color(0xd99572); for (let i = 0; i < c; i++) { col[i * 3] = cc.r; col[i * 3 + 1] = cc.g; col[i * 3 + 2] = cc.b; } arm.geometry.setAttribute('color', new THREE.BufferAttribute(col, 3)); }
+  // uñas
+  fingers.forEach(F => { const nm = nailMesh(F.r, F.L[2]); F.bones[2].add(nm); F.nail = nm; });
+  { const nm = nailMesh(HD.TR[2] * 0.98, 0.21); nm.position.y = 0.105; t2.add(nm); }
+  if (o.inside !== false) fingerInside(fingers[0], planes);
+  // destello, onda y rojez (la «artritis» del mito) en cada nudillo
+  const flT = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 2, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.28, 'rgba(150,215,255,.9)'); gr.addColorStop(0.6, 'rgba(50,150,235,.35)'); gr.addColorStop(1, 'rgba(50,150,235,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
+  const rgT = canvasTex(256, 256, (c, w, h) => { c.strokeStyle = 'rgba(40,140,230,.95)'; c.lineWidth = 7; c.beginPath(); c.arc(w / 2, h / 2, w / 2 - 8, 0, 7); c.stroke(); });
+  const redT = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 2, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(235,40,40,.75)'); gr.addColorStop(0.5, 'rgba(235,40,40,.3)'); gr.addColorStop(1, 'rgba(235,40,40,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
+  const spr = (map, ro) => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, depthTest: false, toneMapped: false })); s.scale.setScalar(0.0001); s.renderOrder = ro; g.add(s); return s; };
+  const fxp = [v3(...HD.T[1]).add(v3(0, 0, 0.1)), ...HD.F.map(d => v3(d.x, d.y - 0.02, 0.15))];
+  const fx = fxp.map(p => { const a = spr(flT, 10), b = spr(rgT, 10), c = spr(redT, 9); for (const s of [a, b, c]) s.position.copy(p); return { flash: a, ring: b, red: c, p }; });
+  g.userData = { fingers, thumb: { bones: [t1, t2] }, fx, mesh, inner, planes, iplanes };
+  if (o.left) g.scale.x = -1;
+  return g;
+}
+// pose: flexión de cada dedo por el nudillo (rad, hacia la palma; [pulgar, índice, corazón, anular, meñique]) y estiramiento de la articulación del medio
+function handPose2(h, ang, pull = []) {
+  h.userData.fingers.forEach((f, i) => { const a = ang[i + 1] || 0; f.bones[0].rotation.x = -a; f.bones[1].rotation.x = -a * 0.75; f.bones[2].rotation.x = -a * 0.45; f.bones[1].position.y = f.L[0] + (pull[i + 1] || 0); });
+  const [t1, t2] = h.userData.thumb.bones, a = ang[0] || 0; t1.rotation.x = -a * 0.7; t2.rotation.x = -a * 0.6;
+}
+// planos del corte (en el marco del hueso proximal del índice): quita la piel con z > zc entre y0 e y1 y |x| < xm. zc alto = cerrado
+const _m3 = new THREE.Matrix3();
+function cutUpdate(h, zc, y0, y1, xm) {
+  const P = h.userData.planes; if (!P) return; const b = h.userData.fingers[0].bones[0]; b.updateWorldMatrix(true, false); const M4 = b.matrixWorld; _m3.getNormalMatrix(M4);
+  const set = (i, nx, ny, nz, c) => { P[i].normal.set(nx, ny, nz); P[i].constant = c; P[i].applyMatrix4(M4, _m3); };
+  set(0, 0, 0, -1, zc); set(1, 0, -1, 0, y0); set(2, 0, 1, 0, -y1); set(3, 1, 0, 0, -xm); set(4, -1, 0, 0, -xm);
+  const Q = h.userData.iplanes, e = 0.012, si = (i, nx, ny, nz, c) => { Q[i].normal.set(nx, ny, nz); Q[i].constant = c; Q[i].applyMatrix4(M4, _m3); };
+  si(0, 0, 1, 0, -(y0 - e)); si(1, 0, -1, 0, y1 + e); si(2, -1, 0, 0, xm + e); si(3, 1, 0, 0, xm + e);
+}
+// fondo claro y suave: esfera con degradado (lleva los trozos de profundidad logarítmica)
+function softBackdrop() {
+  const m = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, uniforms: { top: { value: new THREE.Color(0xf6f1ea) }, bot: { value: new THREE.Color(0xe2d8cc) }, k: { value: 1.12 } },
+    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.);\n#include <logdepthbuf_vertex>\n}',
+    fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform vec3 top, bot; uniform float k; varying vec3 vP; void main(){\n#include <logdepthbuf_fragment>\nfloat e = smoothstep(-0.55, 0.65, vP.y); gl_FragColor = vec4(mix(bot, top, e) * k, 1.); }' });
+  const s = new THREE.Mesh(new THREE.SphereGeometry(80, 48, 24), m); s.renderOrder = -1; s.frustumCulled = false; return s;
+}
+// luces de estudio suaves (cielo cálido, luz principal con sombras suaves, relleno frío y contraluz)
+function softLights() {
+  const hemi = new THREE.HemisphereLight(0xfff2e6, 0xb9a99b, 0.75);
+  const key = new THREE.DirectionalLight(0xfff0e0, 2.7); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0004; key.shadow.normalBias = 0.01; key.shadow.radius = 5;
+  const fill = new THREE.DirectionalLight(0xdfeaff, 0.55), rim = new THREE.DirectionalLight(0xffffff, 1.6);
+  scene.add(hemi, key, key.target, fill, fill.target, rim, rim.target); S.L = { hemi, key, fill, rim };
+}
+// coloca las luces alrededor de lo que se mira (c) según desde dónde (yaw) y el tamaño (k)
+function lightsAt(c, yaw, k = 1) {
+  const L = S.L, rot = (x, y, z) => v3(c.x + x * Math.cos(yaw) + z * Math.sin(yaw), c.y + y, c.z - x * Math.sin(yaw) + z * Math.cos(yaw));
+  L.key.position.copy(rot(-3 * k, 4.2 * k, 3.4 * k)); L.key.target.position.copy(c);
+  const sc = L.key.shadow.camera, e = 1.6 * k; sc.left = -e; sc.right = e; sc.top = e; sc.bottom = -e; sc.near = 0.1; sc.far = 14 * k; sc.updateProjectionMatrix();
+  L.fill.position.copy(rot(4 * k, 0.6 * k, 2.4 * k)); L.fill.target.position.copy(c);
+  L.rim.position.copy(rot(0.8 * k, 2.6 * k, -4 * k)); L.rim.target.position.copy(c);
+  for (const l of [L.key, L.fill, L.rim]) l.target.updateMatrixWorld();
+}
 // ---------------------------------------------------------------- objetos de «Qué pasa cuando te crujes los dedos» (1 unidad = 1 m; las piezas del centro, gigantes):
 // la mano en rayos X (huesos de verdad y piel translúcida; cada dedo se dobla por el nudillo), la maqueta del nudillo en corte con su líquido y la
 // burbuja, el manómetro, la resonancia, las campanas de cristal del debate, el reloj de 20 minutos, la caja de luz con las radiografías, el premio
@@ -1039,235 +1290,374 @@ function prize() {
   const t = canvasTex(512, 160, (c, w, h) => { c.fillStyle = '#c9a24d'; c.fillRect(0, 0, w, h); c.fillStyle = '#2a1d0c'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '900 62px Inter'; c.fillText('IG NOBEL', w / 2, 58); c.font = '700 40px Inter'; c.fillText('MEDICINA · 2009', w / 2, 120); });
   const pl = mesh(new THREE.PlaneGeometry(0.1, 0.031), new THREE.MeshPhysicalMaterial({ map: t, metalness: 0.7, roughness: 0.3 }), false); pl.position.set(0, 0.025, 0.061); g.add(pl); return g;
 }
-// ---------------------------------------------------------------- el centro: una mano gigante en rayos X que se cruje los nudillos uno a uno (en cada uno estalla
-// un destello de luz). Al final vuelve a la pose del primer fotograma (bucle).
-const T_HIT = 0.3, HAND_S = 2.2;
-const CRACK = [1.72, 0.3, 0.64, 0.98, 1.34];          // pulgar, índice, corazón, anular, meñique
-const flexAt = (t, tc) => { const u = t - tc; if (u < -0.26 || u > 0.62) return 0; return u < 0 ? 1.25 * eio(clamp((u + 0.26) / 0.26)) : u < 0.14 ? 1.25 : 1.25 * (1 - eio(clamp((u - 0.14) / 0.48))); };
+// ---------------------------------------------------------------- el centro: una mano derecha de piel, vista por el dorso, sobre el fondo claro. El índice lleva un corte
+// que se abre (la piel de arriba desaparece) y deja ver el dedo por dentro: al tirar, la articulación del medio se separa, el gas del líquido se junta y nace
+// la burbuja. La mano izquierda (Unger) entra en la frase 7. Al final todo vuelve al primer fotograma (bucle).
+const T_HIT = 0.3;
+const flexAt = (t, tc, A = 0.95) => { const u = t - tc; if (u < -0.26 || u > 0.62) return 0; return u < 0 ? A * eio(clamp((u + 0.26) / 0.26)) : u < 0.14 ? A : A * (1 - eio(clamp((u - 0.14) / 0.48))); };
+const CUT = { y0: 0.17, y1: 0.69, xm: 0.106, open: -0.01, closed: 0.13 };
+const qflex = (t, tc, A = 0.6) => { const u = t - tc; if (u < -0.1 || u > 0.25) return 0; return u < 0 ? A * eio((u + 0.1) / 0.1) : u < 0.05 ? A : A * (1 - eio((u - 0.05) / 0.2)); };
+const popk = (t, t0) => { const u = t - t0; if (u <= 0) return 0; return u < 0.09 ? eo(u / 0.09) * 1.15 : 1 + 0.15 * Math.exp(-(u - 0.09) * 9) * Math.cos((u - 0.09) * 32); };
+const HAND_L = -1.62;
 function buildCenter() {
   const Z = new THREE.Group(); scene.add(Z); S.ctr = Z;
-  S.hand = xrayHand(HAND_S); S.hand.position.set(0, 1.32, 0); Z.add(S.hand);
-  S.base = grp(cyl(0.5, 0.56, 0.08, M.wood, 64), at(cyl(0.505, 0.505, 0.012, M.brass, 64), 0, 0.03, 0)); S.base.position.y = 0.04; Z.add(S.base);
-  S.ctrCone = lightCone(1.6, 5, 0.05); Z.add(S.ctrCone);
+  S.hand = realHand({ cut: true }); Z.add(S.hand);
+  S.handL = realHand({ cut: true, left: true }); S.handL.position.x = HAND_L; Z.add(S.handL);
+  // destello y onda del crujido dentro de la articulación
+  const flT = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 2, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.3, 'rgba(160,220,255,.85)'); gr.addColorStop(0.65, 'rgba(60,160,240,.3)'); gr.addColorStop(1, 'rgba(60,160,240,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
+  const rgT = canvasTex(256, 256, (c, w, h) => { c.strokeStyle = 'rgba(40,140,230,.95)'; c.lineWidth = 6; c.beginPath(); c.arc(w / 2, h / 2, w / 2 - 8, 0, 7); c.stroke(); });
+  S.jf = new THREE.Sprite(new THREE.SpriteMaterial({ map: flT, transparent: true, depthWrite: false, depthTest: false, toneMapped: false })); S.jf.renderOrder = 11; scene.add(S.jf);
+  S.jr = new THREE.Sprite(new THREE.SpriteMaterial({ map: rgT, transparent: true, depthWrite: false, depthTest: false, toneMapped: false })); S.jr.renderOrder = 11; scene.add(S.jr);
+}
+// el corte del índice: 1 = abierto
+function cutK(t) {
+  let k = 1 - win(t, 0.55, 0.7);
+  k = Math.max(k, win(t, K.cada3 - 0.3, 0.65) * (1 - win(t, K.respuesta7 - 0.62, 0.5)));
+  return Math.max(k, win(t, END - 1.05, 0.75));
+}
+// cuánto se separa la articulación del medio al tirar del dedo
+function pullAt(t) {
+  let p = 0.012 * eio(clamp(t / 0.3)) * (1 - win(t, 0.9, 0.5));
+  const a = eio(clamp((t - (K.tirar3 - 0.05)) / 0.6)), b = t > K.golpe3 ? 0.007 * (1 - Math.exp(-(t - K.golpe3) * 18)) : 0;
+  p += (0.013 * a + b) * (1 - win(t, K.respuesta7 - 0.62, 0.5));
+  p += 0.006 * Math.sin(Math.PI * clamp((t - (K.crujir6 - 0.2)) / 0.7));       // vuelve a tirar (no cruje)
+  return p;
+}
+// tamaño de la burbuja (1 = recién nacida)
+function bubAt(t) {
+  const a = popk(t, T_HIT) * (1 - win(t, 1.0, 0.4));
+  const b = popk(t, K.golpe3) * (1 - 0.72 * eio(clamp((t - K.durar6) / (K.enseguida6 + 0.4 - K.durar6)))) * (1 - win(t, K.respuesta7 - 0.62, 0.45));
+  return Math.max(a, b);
+}
+const _jw = new THREE.Vector3(), _q0 = new THREE.Quaternion();
+function jointAt(h, t, pull, bk, dotK, conv, shake) {
+  const F = h.userData.fingers[0], g = GAP + pull, r = F.r;
+  F.fluid.scale.y = g * 1.55; F.fluid.position.y = -pull / 2;
+  F.bub.visible = bk > 0.003; F.bub.position.set(0, -pull / 2, 0); F.bub.scale.set(r * 0.33 * bk, g * 0.43 * Math.min(1, bk), r * 0.27 * bk);
+  F.dots.visible = dotK > 0.01;
+  if (F.dots.visible) { for (let i = 0; i < F.dp.length; i++) { const p = F.dp[i], j = shake * 0.0022;
+      _o.position.set(p.x * (1 - conv) + Math.sin(t * 37 + i) * j, (p.y * (g / GAP) - pull / 2) * (1 - conv) - pull / 2 * conv + Math.cos(t * 41 + i * 2) * j, p.z * (1 - conv));
+      _o.rotation.set(0, 0, 0); _o.scale.setScalar(0.0021 * dotK * (1 - 0.5 * conv)); _o.updateMatrix(); F.dots.setMatrixAt(i, _o.matrix); }
+    F.dots.instanceMatrix.needsUpdate = true; }
+}
+// crujido de un nudillo (destello + onda) en las marcas de la mano
+function knuckleFx(h, t, times, s = 1) {
+  h.userData.fx.forEach((f, i) => { let k = 0, ku = 9; for (const tc of times[i] || []) { const u = t - tc; if (u > 0 && u < 0.6) { k = Math.max(k, Math.exp(-u * 8)); ku = Math.min(ku, u); } }
+    f.flash.scale.setScalar(Math.max(0.0001, 0.22 * s * k)); f.flash.material.opacity = Math.min(1, k * 1.4);
+    const rk = ku < 0.55 ? ku / 0.55 : 1; f.ring.scale.setScalar(rk < 1 ? (0.06 + 0.3 * eo(rk)) * s : 0.0001); f.ring.material.opacity = rk < 1 ? (1 - rk) * 0.9 : 0; });
 }
 function centerAt(t, st) {
-  const Z = S.ctr, vis = t < K.cada3 + 2.4 || t > K.mandaselo9 - 1.0; Z.visible = vis; if (!vis) return;
-  // los cinco nudillos al principio y un crujido más con «¿tú te los crujes?»
-  const XC = i => K.mandaselo9 + 0.15 + (i - 1) * 0.14;                 // un crujido más, ya de vuelta en el centro
-  const ang = CRACK.map((tc, i) => flexAt(t, tc) + (i >= 1 && i <= 4 ? flexAt(t, XC(i)) : 0));
-  handPose(S.hand, ang);
-  S.hand.userData.flashes.forEach((f, i) => { let k = 0; for (const tc of [CRACK[i], ...(i >= 1 && i <= 4 ? [XC(i)] : [])]) { const u = t - tc; if (u > 0 && u < 0.5) k = Math.max(k, Math.exp(-u * 7)); }
-    f.scale.setScalar(Math.max(0.0001, 0.42 * k)); f.material.opacity = Math.min(1, k * 1.3); });
-  S.hand.rotation.y = 0.1 * Math.sin(t * 0.35);
-  S.ctrCone.material.uniforms.op.value = 0.05;
+  const H = S.hand, U = H.userData;
+  H.rotation.y = 0.035 * Math.sin(2 * Math.PI * t / END);
+  // crujidos: el principio (tras el del índice por dentro), el «50 años», la frase 9
+  const T1 = [[1.72], [], [0.64], [0.98], [1.34]];
+  const cyc = []; if (t > K.medico1 - 0.1 && t < K.tenian2) { const c0 = K.medico1 + 0.05; for (let n = 0; n < 5; n++) for (let i = 1; i <= 4; i++) { (cyc[i] = cyc[i] || []).push(c0 + n * 0.5 + (i - 1) * 0.08); } }
+  const XC = i => K.mandaselo9 + 0.15 + (i - 1) * 0.14;
+  const times = [0, 1, 2, 3, 4].map(i => [...T1[i], ...(cyc[i] || []), ...(i >= 1 ? [XC(i)] : [K.mandaselo9 + 0.8])]);
+  const ang = [0, 1, 2, 3, 4].map(i => { let a = 0; for (const tc of T1[i]) a = Math.max(a, flexAt(t, tc)); for (const tc of cyc[i] || []) a = Math.max(a, qflex(t, tc, 0.55)); for (const tc of i >= 1 ? [XC(i)] : [K.mandaselo9 + 0.8]) a = Math.max(a, flexAt(t, tc)); return a; });
+  const pull = pullAt(t); handPose2(H, ang, [0, pull]);
+  knuckleFx(H, t, times, t > K.medico1 - 0.2 && t < K.tenian2 ? 0.6 : 1);
+  // la «artritis» del mito: rojez en los nudillos
+  const rk = win(t, K.artritis1 - 0.1, 0.35) * (1 - win(t, K.tenian2 - 0.2, 0.5));
+  U.fx.forEach((f, i) => { f.red.scale.setScalar(Math.max(0.0001, (i ? 0.3 : 0.24) * rk * (1 + 0.08 * Math.sin(t * 7 + i)))); f.red.material.opacity = rk * 0.75; });
+  // el corte y lo que pasa dentro de la articulación del medio
+  const ck = cutK(t); cutUpdate(H, lerp(CUT.closed, CUT.open, ck), CUT.y0, CUT.y1, CUT.xm);
+  const bk = bubAt(t);
+  const dotK = Math.max(1 - win(t, 0.24, 0.07), win(t, K.liquido3 - 0.1, 0.4) * (1 - win(t, K.golpe3 - 0.04, 0.06)), win(t, END - 1.0, 0.5));
+  const conv = Math.max(t < 2 ? eio(clamp((t - 0.06) / 0.24)) : 0, eio(clamp((t - K.gas3) / (K.golpe3 - K.gas3))));
+  const shake = win(t, K.presion3 - 0.1, 0.3) * (1 - win(t, K.golpe3 - 0.1, 0.1));
+  jointAt(H, t, pull, bk, dotK, conv, shake);
+  const F = U.fingers[0];
+  F.cap.material.opacity = 0.38 + 0.3 * env(t, K.capsula3 - 0.05, K.liquido3 + 0.2, 0.25, 0.4);
+  F.fluid.material.emissiveIntensity = 0.35 + 0.6 * env(t, K.liquido3 - 0.05, K.tirar3 + 0.1, 0.25, 0.4);
+  // destello y onda en la articulación al nacer la burbuja
+  F.bub.getWorldPosition(_jw); S.jf.position.copy(_jw); S.jr.position.copy(_jw);
+  let fk = 0, ru = 9; for (const tc of [T_HIT, K.golpe3]) { const u = t - tc; if (u > 0 && u < 0.7) { fk = Math.max(fk, Math.exp(-u * 7)); ru = Math.min(ru, u); } }
+  S.jf.scale.setScalar(Math.max(0.0001, 0.11 * fk)); S.jf.material.opacity = Math.min(1, fk * 1.3);
+  const rr3 = ru < 0.6 ? ru / 0.6 : 1; S.jr.scale.setScalar(rr3 < 1 ? 0.03 + 0.16 * eo(rr3) : 0.0001); S.jr.material.opacity = rr3 < 1 ? (1 - rr3) * 0.9 : 0;
+  // la mano izquierda de Unger: entra en la frase 7, cruje una y otra vez; en la 8 se abren los dos índices (sin artritis)
+  const L = S.handL, lv = t > K.respuesta7 - 0.4 && t < K.mandaselo9; L.visible = lv;
+  if (lv) { const e = eio(clamp((t - (K.respuesta7 - 0.3)) / 0.9)) * (1 - eio(clamp((t - (K.tu9 - 0.1)) / 0.9)));
+    L.position.set(lerp(HAND_L - 2.2, HAND_L, e), 0, 0); L.rotation.y = -0.035 * Math.sin(2 * Math.PI * t / END);
+    const P7 = 0.7, cy = t > K.crujio7 - 0.3 && t < K.anos7 + 0.4, ph = (t - (K.crujio7 - 0.3)) / P7, u = ((ph % 1) + 1) % 1 * P7, off = i => i ? 0.1 + (i - 1) * 0.06 : 0.36;
+    const la = [0, 1, 2, 3, 4].map(i => cy ? qflex(u, off(i), 0.75) : 0); handPose2(L, la, []);
+    const lt = [0, 1, 2, 3, 4].map(i => { if (!cy) return []; const c0 = Math.floor(ph) * P7 + (K.crujio7 - 0.3) + off(i); return [c0, c0 - P7]; });
+    knuckleFx(L, t, lt, 0.8);
+    const lk = win(t, K.ninguna8 - 0.1, 0.6) * (1 - win(t, K.ig8 + 0.3, 0.6)); cutUpdate(L, lerp(CUT.closed, CUT.open, lk), CUT.y0, CUT.y1, CUT.xm);
+    jointAt(L, t, 0, 0, 0, 0, 0);
+  }
+  // en la frase 8 también se abre el índice derecho (los dos sanos)
+  if (t > K.ninguna8 - 0.2 && t < K.ig8 + 1.0) { const lk = win(t, K.ninguna8 - 0.1, 0.6) * (1 - win(t, K.ig8 + 0.3, 0.6)); cutUpdate(H, lerp(CUT.closed, CUT.open, Math.max(ck, lk)), CUT.y0, CUT.y1, CUT.xm); }
 }
-// ---------------------------------------------------------------- estaciones en el círculo de radio R_ST (pedestal de madera con canto de latón y su haz de luz;
-// su +z local mira hacia fuera, hacia la cámara): D el nudillo por dentro (L3), C la resonancia (L4), K el debate y los 20 minutos (L5–L6),
-// P las dos manos de Unger (L7) y B las radiografías, el premio y las 215 personas (L8).
+// ---------------------------------------------------------------- objetos alrededor de la mano (estilo ilustración: blanco brillante y suave): el anillo de la resonancia y
+// su pantalla (L4), el manómetro y la flecha de tirar (L3), los dos círculos del debate (L5), el reloj de 20 minutos (L6) y, en la 8, una peana blanca
+// con el Ig Nobel y las 215 figuritas.
 const ST = {};
-function station(name, a, r = 1.0) {
-  const Z = new THREE.Group(); Z.position.copy(stP(a)); Z.rotation.y = a * D2; scene.add(Z);
-  const pl = plinth(r, 0.55); Z.add(pl); const lc = lightCone(r * 1.15, 4.6, 0.055); Z.add(lc);
-  const top = new THREE.Group(); top.position.y = 0.55; Z.add(top);
-  ST[name] = { Z, top, a, cone: lc }; return ST[name];
-}
-const LH = 0.42;      // escala de las manos de Unger
-function buildStations() {
-  { const s = station('D', ANG.D, 1.0);
-    s.kn = knuckleModel(); s.kn.position.set(-0.02, 0.24, 0.06); s.kn.scale.setScalar(1.35); s.top.add(s.kn);
-    s.g = gauge(); s.g.position.set(0.5, 0.28, -0.12); s.g.rotation.y = -0.35; s.top.add(s.g);
-    s.sp = sparks(s.top, 80, 0xbfe4ff, 0.018);
-  }
-  { const s = station('C', ANG.C, 1.0);
-    s.mri = mriMachine(); s.mri.position.set(-0.26, 0, -0.08); s.mri.rotation.y = 0.45; s.mri.scale.setScalar(0.85); s.top.add(s.mri);
-    s.scr = mriScreen(); s.scr.position.set(0.34, 0, 0.06); s.scr.rotation.y = -0.3; s.scr.scale.setScalar(1.25); s.top.add(s.scr);
-  }
-  { const s = station('K', ANG.K, 1.05);
-    s.j1 = bellJar(); s.j1.position.set(-0.27, 0, 0.12); s.top.add(s.j1);
-    s.j2 = bellJar(); s.j2.position.set(0.27, 0, 0.12); s.top.add(s.j2);
-    s.clk = clock20(); s.clk.position.set(0, 0.36, -0.3); s.clk.scale.setScalar(1.4); s.top.add(s.clk);
-  }
-  { const s = station('P', ANG.P, 1.05);
-    s.hL = xrayHand(LH); s.hL.scale.x = -LH; s.hL.position.set(-0.22, 0.27, 0.0); s.top.add(s.hL);
-    s.hR = xrayHand(LH); s.hR.position.set(0.22, 0.27, 0.0); s.top.add(s.hR);
-    for (const x of [-0.22, 0.22]) { const b = cyl(0.07, 0.08, 0.03, M.wood, 32); b.position.set(x, 0.015, 0); s.top.add(b); }
-  }
-  { const s = station('B', ANG.B, 1.05);
-    s.lb = lightBox(); s.lb.position.set(-0.1, 0, -0.2); s.lb.scale.setScalar(1.15); s.top.add(s.lb);
-    s.pr = prize(); s.pr.position.set(0.46, 0, 0.0); s.pr.rotation.y = -0.3; s.pr.scale.setScalar(1.3); s.pr.userData.s0 = 1.3; s.top.add(s.pr);
-    s.figs = new THREE.InstancedMesh(studentGeo(true), new THREE.MeshPhysicalMaterial({ color: 0xe6e1d8, roughness: 0.4, clearcoat: 0.5 }), 215); s.figs.frustumCulled = false; s.top.add(s.figs);
-    s.fpos = []; for (let i = 0; i < 215; i++) { const c = i % 22, r = Math.floor(i / 22); s.fpos.push(v3((c - 10.5) * 0.034, 0, 0.16 + r * 0.032)); }
-  }
-}
-function stationsAt(t) {
-  const vis = (s, a, b) => { s.Z.visible = t > a && t < b; return s.Z.visible; };
-  // L3: al tirar del dedo se abre la articulación, la presión cae y nace la burbuja de golpe
-  { const s = ST.D; if (vis(s, K.final2 - 0.4, K.resonancia4 + 0.5)) { const U = s.kn.userData;
-    const pull = eio(clamp((t - (K.tirar3 - 0.05)) / 0.6)); U.ph.position.x = 0.05 * pull; U.fluid.scale.set(0.045 + 0.03 * pull, 0.11, 0.11); U.fluid.position.x = 0.025 * pull;
-    const pr = eio(clamp((t - (K.presion3 - 0.05)) / 0.5)); s.g.userData.nd.rotation.z = -1.9 + 3.2 * pr;
-    const b = t - (K.golpe3 - 0.02), bk = b > 0 ? (b < 0.12 ? eo(b / 0.12) * 1.15 : 1 + 0.15 * Math.exp(-(b - 0.12) * 7) * Math.cos((b - 0.12) * 30)) : 0;
-    U.bub.scale.setScalar(Math.max(0.0001, 0.055 * bk)); U.bub.position.x = 0.025 * pull;
-    s.sp.visible = b > 0 && b < 0.9; if (s.sp.visible) burst(s.sp, s.top.worldToLocal(U.bub.getWorldPosition(v3(0, 0, 0))), t, K.golpe3, 0.22, 0.8, false, 0.2);
-  } }
-  // L4: la resonancia: en el monitor aparece la cavidad y el reloj llega a 0,31 s
-  { const s = ST.C; if (vis(s, K.burbuja3 - 0.4, K.ruido5)) s.scr.userData.draw(clamp((t - (K.grabaron4 - 0.1)) / (K.segundo4 + 0.3 - K.grabaron4))); }
-  // L5–L6: el debate (la burbuja que nace y la que se rompe) y el reloj de 20 minutos (la burbuja se encoge despacio)
-  { const s = ST.K; if (vis(s, K.segundo4 - 0.3, K.donald7 - 0.3)) { const A = s.j1.userData, Bq = s.j2.userData;
-    const na = t - (K.nacer5 - 0.05), nk = na > 0 ? (na < 0.15 ? eo(na / 0.15) * 1.12 : 1 + 0.12 * Math.exp(-(na - 0.15) * 6) * Math.cos((na - 0.15) * 25)) : 0.0001;
-    const shrink = 1 - 0.85 * eio(clamp((t - K.durar6) / (K.crujir6 - K.durar6)));
-    A.bub.scale.setScalar(Math.max(0.0001, 0.055 * nk * shrink));
-    const ro = t - (K.romperse5 - 0.05); Bq.bub.scale.setScalar(ro > 0 ? Math.max(0.0001, 0.055 * (1 - eo(clamp(ro / 0.1)))) : 0.055);
-    Bq.bits.forEach((b, i) => { const a = i * 0.7, u = Math.max(0, ro); b.visible = ro > 0 && ro < 1.4; if (!b.visible) return; b.scale.setScalar(0.011 * (1 - clamp(u / 1.4))); b.position.set(Math.cos(a) * 0.06 * eo(clamp(u / 0.3)), 0.13 + 0.05 * u + Math.sin(a * 1.7) * 0.03, Math.sin(a) * 0.05 * eo(clamp(u / 0.3))); });
-    const ck = eio(clamp((t - K.durar6) / (K.minutos6 + 1.0 - K.durar6))); s.clk.userData.hd.rotation.z = -ck * Math.PI * 2;
-    s.clk.userData.sweep.geometry.dispose(); s.clk.userData.sweep.geometry = new THREE.CircleGeometry(0.134, 48, Math.PI / 2 - ck * Math.PI * 2, Math.max(0.001, ck * Math.PI * 2));
-  } }
-  // L7: las dos manos de Unger: la izquierda cruje una y otra vez (dos veces al día, 50 años) y la derecha no
-  { const s = ST.P; if (vis(s, K.minutos6, K.tuvo8 + 0.5)) {
-    const cyc = t > K.crujio7 - 0.3 && t < K.anos7 + 0.4, ph = (t - (K.crujio7 - 0.3)) / 0.55;
-    const ang = [0, 1, 2, 3, 4].map(i => cyc ? flexAt(((ph % 1) + 1) % 1 * 0.55, 0.12 + i * 0.06) * 0.9 : 0); handPose(s.hL, ang);
-    s.hL.userData.flashes.forEach((f, i) => { const u = (((ph % 1) + 1) % 1) * 0.55 - (0.12 + i * 0.06); const k = cyc && u > 0 && u < 0.3 ? Math.exp(-u * 9) : 0; f.scale.setScalar(Math.max(0.0001, 0.16 * k)); f.material.opacity = Math.min(1, k * 1.3); });
-    handPose(s.hR, [0, 0, 0, 0, 0]);
-  } }
-  // L8: las radiografías limpias, el premio y las 215 personas
-  { const s = ST.B; if (vis(s, K.anos7 - 0.3, K.crujes9 + 0.2)) {
-    show(s.pr, pop(t, K.ig8 - 0.15, 0.45));
-    const t0 = K.n215 - 0.15; for (let i = 0; i < 215; i++) { const p = s.fpos[i], k = pop(t, t0 + (i % 22) * 0.012 + Math.floor(i / 22) * 0.05, 0.3); _o.position.set(p.x, 0.08 * (1 - clamp(k)), p.z); _o.rotation.set(0, Math.PI, 0); _o.scale.setScalar(Math.max(0.0001, k * 1.1)); _o.updateMatrix(); s.figs.setMatrixAt(i, _o.matrix); }
-    s.figs.instanceMatrix.needsUpdate = true;
-  } }
-  for (const k in ST) { const s = ST[k]; if (s.Z.visible) s.cone.material.uniforms.op.value = 0.055; }
-}
 const _o = new THREE.Object3D();
-// ---------------------------------------------------------------- cámara: frente a la mano gigante en rayos X → retrocede en línea recta (sin girar) hasta el primer
-// pedestal → la resonancia → el debate y el reloj → las manos de Unger → las radiografías y las 215 personas → vuelve rodeando la mano hasta la pose
-// del primer fotograma (bucle).
-let CKS = [], CUTS = [];
-const stCam = (a, dist, h, dx = 0) => { const p = stP(a, dist, h).add(stT(a).multiplyScalar(dx)); return [p.x, p.y, p.z]; };
-const stLook = (a, y, dx = 0, r = R_ST) => { const p = stP(a, r, y).add(stT(a).multiplyScalar(dx)); return [p.x, p.y, p.z]; };
-const T0 = [0.5, 2.0, 4.2], L0 = [0, 2.35, 0], T1 = [0.49, 1.995, 4.15], L1 = [0, 2.345, 0], Tm = [0.51, 2.005, 4.25], Lm = [0, 2.355, 0];
+const softWhite = (c = 0xf7f6f3, r = 0.3) => new THREE.MeshPhysicalMaterial({ color: c, roughness: r, clearcoat: 0.8, clearcoatRoughness: 0.15 });
+function mriRing() {
+  const g = new THREE.Group(), wm = softWhite();
+  const prof = [[0.15, 0.0], [0.152, -0.05], [0.17, -0.075], [0.25, -0.08], [0.272, -0.065], [0.28, -0.03], [0.28, 0.03], [0.272, 0.065], [0.25, 0.08], [0.17, 0.075], [0.152, 0.05], [0.15, 0.0]];
+  const body = lathe(prof, 96, wm); g.add(body);
+  const bore = new THREE.Mesh(new THREE.CylinderGeometry(0.151, 0.151, 0.1, 64, 1, true), new THREE.MeshStandardMaterial({ color: 0xc9ced6, roughness: 0.5, side: THREE.BackSide })); g.add(bore);
+  const strip = new THREE.Mesh(new THREE.TorusGeometry(0.281, 0.006, 8, 96), new THREE.MeshStandardMaterial({ color: 0x2f8cff, emissive: 0x2f8cff, emissiveIntensity: 1.6 })); strip.rotation.x = Math.PI / 2; g.add(strip);
+  const glow = new THREE.Mesh(new THREE.TorusGeometry(0.152, 0.004, 8, 96), new THREE.MeshStandardMaterial({ color: 0x9fd2ff, emissive: 0x6fbaff, emissiveIntensity: 1.4 })); glow.rotation.x = Math.PI / 2; glow.position.y = 0.05; g.add(glow);
+  g.userData = { strip, glow }; return g;
+}
+function mriPanel() {
+  const tex = canvasTex(720, 880, () => {}); let lk = -1;
+  const g = new THREE.Group(); const fr = rbox(0.46, 0.56, 0.026, softWhite(), 0.04); g.add(fr);
+  const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.414, 0.506), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false })); scr.position.z = 0.0135; g.add(scr);
+  g.userData.draw = k => { k = Math.round(k * 60) / 60; if (k === lk) return; lk = k; const c = tex.userData.g, w = 720, h = 880; c.fillStyle = '#05070a'; c.fillRect(0, 0, w, h);
+    const cx = w / 2, cy = h / 2 + 30, gap = 22 + 22 * clamp(k * 1.6);
+    const tis = c.createRadialGradient(cx, cy, 40, cx, cy, 330); tis.addColorStop(0, 'rgba(150,154,160,.75)'); tis.addColorStop(1, 'rgba(90,94,100,.35)'); c.fillStyle = tis; c.beginPath(); c.ellipse(cx, cy, 170, 400, 0, 0, 7); c.fill();
+    c.fillStyle = '#dfe3e8'; c.beginPath(); c.ellipse(cx, cy + 210 + gap / 2, 72, 190, 0, 0, 7); c.fill(); c.beginPath(); c.ellipse(cx, cy - 215 - gap / 2, 78, 200, 0, 0, 7); c.fill();
+    c.fillStyle = '#b4bac2'; c.beginPath(); c.ellipse(cx, cy - 38 - gap / 2, 86, 44, 0, 0, 7); c.fill(); c.beginPath(); c.ellipse(cx, cy + 40 + gap / 2, 82, 40, 0, 0, 7); c.fill();
+    if (k > 0.3) { const r = 36 * eo(clamp((k - 0.3) / 0.25)); c.fillStyle = '#000'; c.beginPath(); c.ellipse(cx, cy, r * 1.7, r, 0, 0, 7); c.fill(); }
+    c.fillStyle = '#8b939e'; c.font = '700 30px Inter'; c.textAlign = 'left'; c.fillText('RESONANCIA · DEDO', 30, 52); c.textAlign = 'right'; c.fillStyle = '#ffffff'; c.font = '900 40px Inter'; c.fillText((0.31 * clamp(k)).toFixed(2).replace('.', ',') + ' s', w - 30, 56);
+    c.fillStyle = 'rgba(255,255,255,.18)'; c.fillRect(30, h - 46, w - 60, 8); c.fillStyle = '#4fa3ff'; c.fillRect(30, h - 46, (w - 60) * clamp(k), 8);
+    tex.needsUpdate = true; };
+  g.userData.draw(0); return g;
+}
+function dialTex(draw) { return canvasTex(512, 512, (c, w, h) => { c.fillStyle = '#ffffff'; c.beginPath(); c.arc(w / 2, h / 2, w / 2 - 4, 0, 7); c.fill(); draw(c, w, h); }); }
+function dial(r, tex) {
+  const g = new THREE.Group(); const rim = new THREE.Mesh(new THREE.TorusGeometry(r, r * 0.07, 16, 72), softWhite(0xeeeeec, 0.25)); g.add(rim);
+  const back = new THREE.Mesh(new THREE.CylinderGeometry(r, r, r * 0.12, 72), softWhite(0xeeeeec)); back.rotation.x = Math.PI / 2; back.position.z = -r * 0.06; g.add(back);
+  const face = new THREE.Mesh(new THREE.CircleGeometry(r * 0.98, 72), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.45 })); face.position.z = 0.002; g.add(face);
+  const glass = new THREE.Mesh(new THREE.CircleGeometry(r, 72), new THREE.MeshPhysicalMaterial({ color: 0xffffff, transparent: true, opacity: 0.08, roughness: 0.02, clearcoat: 1, depthWrite: false })); glass.position.z = r * 0.05; g.add(glass);
+  return g;
+}
+function gaugeSoft() {
+  const tex = dialTex((c, w, h) => { const cx = w / 2, cy = h / 2;
+    for (let i = 0; i <= 40; i++) { const a = Math.PI * (0.75 + 1.5 * i / 40), L = i % 5 ? 14 : 28; c.strokeStyle = '#2a3340'; c.lineWidth = i % 5 ? 3 : 6; c.beginPath(); c.moveTo(cx + Math.cos(a) * 206, cy + Math.sin(a) * 206); c.lineTo(cx + Math.cos(a) * (206 - L), cy + Math.sin(a) * (206 - L)); c.stroke(); }
+    const arc = (a0, a1, col) => { c.strokeStyle = col; c.lineWidth = 18; c.beginPath(); c.arc(cx, cy, 225, Math.PI * (0.75 + 1.5 * a0), Math.PI * (0.75 + 1.5 * a1)); c.stroke(); };
+    arc(0, 0.3, '#e04848'); arc(0.3, 0.7, '#f2b33d'); arc(0.7, 1, '#3c9b62');
+    c.fillStyle = '#2a3340'; c.textAlign = 'center'; c.font = '900 50px Inter'; c.fillText('PRESIÓN', cx, cy + 120); c.font = '700 30px Inter'; c.fillText('BAJA', cx - 128, cy + 196); c.fillText('ALTA', cx + 128, cy + 196); });
+  const g = dial(0.1, tex); const nd = new THREE.Group(); nd.position.z = 0.006; const n = new THREE.Mesh(new THREE.BoxGeometry(0.006, 0.08, 0.003).translate(0, 0.032, 0), new THREE.MeshStandardMaterial({ color: 0xd62f2f, roughness: 0.4 })); nd.add(n);
+  const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.009, 0.009, 0.006, 24), new THREE.MeshStandardMaterial({ color: 0x2a3340 })); hub.rotation.x = Math.PI / 2; nd.add(hub); g.add(nd);
+  g.userData.nd = nd; return g;
+}
+function clockSoft() {
+  const tex = dialTex((c, w, h) => { const cx = w / 2, cy = h / 2; c.fillStyle = '#2a3340'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    for (let i = 0; i < 20; i++) { const a = -Math.PI / 2 + i / 20 * Math.PI * 2; c.beginPath(); c.arc(cx + Math.cos(a) * 214, cy + Math.sin(a) * 214, i % 5 ? 5 : 9, 0, 7); c.fill(); if (i % 5 === 0) { c.font = '900 50px Inter'; c.fillText(String(i), cx + Math.cos(a) * 162, cy + Math.sin(a) * 162); } }
+    c.font = '700 32px Inter'; c.fillText('MIN', cx, cy + 92); });
+  const g = dial(0.11, tex);
+  const sweep = new THREE.Mesh(new THREE.CircleGeometry(0.104, 64, Math.PI / 2, 0.001), new THREE.MeshBasicMaterial({ color: 0x4fa3ff, transparent: true, opacity: 0.3, depthWrite: false })); sweep.position.z = 0.004; g.add(sweep);
+  const hd = new THREE.Group(); hd.position.z = 0.007; hd.add(new THREE.Mesh(new THREE.BoxGeometry(0.007, 0.09, 0.003).translate(0, 0.038, 0), new THREE.MeshStandardMaterial({ color: 0xd62f2f }))); g.add(hd);
+  g.userData = { hd, sweep }; return g;
+}
+function arrowSoft(col = 0x2f7fe0) {
+  const s = new THREE.Shape(); s.moveTo(-0.022, 0); s.lineTo(0.022, 0); s.lineTo(0.022, 0.17); s.lineTo(0.05, 0.17); s.lineTo(0, 0.26); s.lineTo(-0.05, 0.17); s.lineTo(-0.022, 0.17); s.closePath();
+  const geo = new THREE.ExtrudeGeometry(s, { depth: 0.012, bevelEnabled: true, bevelSize: 0.004, bevelThickness: 0.004, bevelSegments: 3 }); geo.translate(0, 0, -0.006);
+  const m = new THREE.Mesh(geo, new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.3, clearcoat: 1, emissive: col, emissiveIntensity: 0.25 })); m.castShadow = true; return m;
+}
+// círculo «lupa» del debate: la articulación en grande con su burbuja (nace) o rompiéndose en trocitos (rompe)
+function insetJoint(burst) {
+  const g = new THREE.Group(), R = 0.19, M = innerMats(), planes = [];
+  for (let i = 0; i < 28; i++) planes.push(new THREE.Plane());
+  const clipM = m => { const c = m.clone(); c.clippingPlanes = planes; c.clipIntersection = false; return c; };
+  const bg = canvasTex(256, 256, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 10, w / 2, h / 2, w / 2); gr.addColorStop(0, '#f7ece8'); gr.addColorStop(1, '#e6cbc4'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
+  const disc = new THREE.Mesh(new THREE.CircleGeometry(R, 72), new THREE.MeshStandardMaterial({ map: bg, roughness: 0.7 })); disc.position.z = -0.06; g.add(disc);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(R, 0.009, 16, 96), softWhite(0xffffff, 0.2)); rim.position.z = -0.03; rim.scale.z = 3; g.add(rim);
+  const s = 0.105 / 0.094;      // la articulación del dedo, ampliada
+  const lo = new THREE.Mesh(phalanxGeo(-0.3, -0.024, 0.06, 0.055), clipM(M.bone)); const loC = new THREE.Mesh(cartGeo(-0.3, -0.024, 0.06, 0.055, 'head'), clipM(M.cart));
+  const up = new THREE.Mesh(phalanxGeo(0.024, 0.3, 0.058, 0.052), clipM(M.bone)); const upC = new THREE.Mesh(cartGeo(0.024, 0.3, 0.058, 0.052, 'base'), clipM(M.cart));
+  const fl = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.062, 40), clipM(M.fluid)); fl.scale.set(1.12, 1, 0.84);
+  const bub = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), M.bub); bub.scale.setScalar(0.0001); bub.renderOrder = 8;
+  const J = new THREE.Group(); J.add(lo, loC, up, upC, fl, bub); J.rotation.x = 0.25; J.scale.setScalar(1.55); g.add(J);
+  const bits = []; for (let i = 0; i < 12; i++) { const b = new THREE.Mesh(new THREE.SphereGeometry(1, 12, 8), M.bub); b.scale.setScalar(0.0001); J.add(b); bits.push(b); }
+  g.userData = { planes, R, bub, bits, J, burst }; return g;
+}
+function insetClip(g) {      // planos del círculo (en el mundo): solo se ve lo que cae dentro del aro
+  const U = g.userData; g.updateWorldMatrix(true, true); const n = U.planes.length, M4 = g.matrixWorld; _m3.getNormalMatrix(M4);
+  for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, P = U.planes[i]; P.normal.set(-Math.cos(a), -Math.sin(a), 0); P.constant = U.R * 0.985; P.applyMatrix4(M4, _m3); }
+}
+const PLAT = v3(HAND_L / 2, -0.42, 1.2);
+function buildStations() {
+  ST.ring = mriRing(); scene.add(ST.ring);
+  ST.panel = mriPanel(); ST.panel.position.set(-0.71, 1.36, 0.32); ST.panel.rotation.y = 0.24; scene.add(ST.panel);
+  ST.gauge = gaugeSoft(); ST.gauge.position.set(-0.48, 1.2, 0.3); ST.gauge.rotation.y = 0.3; ST.gauge.userData.s0 = 0.75; scene.add(ST.gauge);
+  ST.arrow = arrowSoft(); scene.add(ST.arrow);
+  ST.in1 = insetJoint(false); ST.in1.position.set(-0.56, 1.62, 0.62); scene.add(ST.in1);
+  ST.in2 = insetJoint(true); ST.in2.position.set(-0.13, 1.62, 0.62); scene.add(ST.in2);
+  ST.clock = clockSoft(); ST.clock.position.set(-0.54, 1.46, 0.24); ST.clock.rotation.y = 0.3; scene.add(ST.clock);
+  // peana blanca con el premio y las 215 figuritas
+  ST.plat = new THREE.Group(); ST.plat.position.copy(PLAT); scene.add(ST.plat);
+  const top = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.28, 0.06, 96), softWhite(0xf4f2ee, 0.45)); top.receiveShadow = true; top.castShadow = true; ST.plat.add(top);
+  ST.prize = prize(); ST.prize.position.set(0, 0.03, -0.05); ST.prize.userData.s0 = 2.2; ST.plat.add(ST.prize);
+  ST.figs = new THREE.InstancedMesh(studentGeo(false), new THREE.MeshPhysicalMaterial({ color: 0xefe9e1, roughness: 0.45, clearcoat: 0.4 }), 215); ST.figs.castShadow = true; ST.figs.frustumCulled = false; ST.plat.add(ST.figs);
+  ST.fpos = []; for (let i = 0; i < 215; i++) { const r = 0.3 + 0.82 * Math.sqrt((i + 0.5) / 215), a = i * 2.39996 + 0.4; ST.fpos.push(v3(Math.cos(a) * r, 0.03, Math.sin(a) * r * 0.92 + 0.08)); }
+}
+// la pose del índice: un punto a lo largo de su eje (s) y su giro
+const _bq = new THREE.Quaternion(), _bp = new THREE.Vector3();
+function alongIndex(h, s, out) { const b = h.userData.fingers[0].bones[0]; b.updateWorldMatrix(true, false); b.getWorldQuaternion(_bq); return out.set(0, s, 0).applyMatrix4(b.matrixWorld); }
+function stationsAt(t) {
+  const H = S.hand;
+  // L3: la flecha de tirar (al lado del dedo) y el manómetro (la presión cae)
+  { const a = pop(t, K.tirar3 - 0.12, 0.4) * (1 - win(t, K.presion3 + 0.2, 0.3)) + 0.8 * env(t, K.crujir6 - 0.35, K.enseguida6 + 0.3, 0.3, 0.3);
+    ST.arrow.visible = a > 0.01; if (ST.arrow.visible) { alongIndex(H, 0.44 + 0.02 * Math.sin(Math.max(0, t - K.tirar3) * 9), _bp); ST.arrow.position.copy(_bp).add(v3(-0.155, 0, 0.05)); ST.arrow.quaternion.copy(_bq); ST.arrow.scale.setScalar(Math.max(0.0001, 0.62 * a)); } }
+  { const a = pop(t, K.presion3 - 0.3, 0.4) * (1 - win(t, K.golpe3 + 0.5, 0.3)); show(ST.gauge, a);
+    if (ST.gauge.visible) ST.gauge.userData.nd.rotation.z = -1.95 + 3.9 * eio(clamp((t - K.presion3 + 0.05) / (K.cae3 + 0.45 - K.presion3))); }
+  // L4: el anillo de resonancia baja por el dedo y la pantalla graba la cavidad (0,31 s)
+  { const vin = eio(clamp((t - (K.n2015 + 0.35)) / 0.85)), vout = eio(clamp((t - (K.discute5 - 0.45)) / 0.55)), v = vin * (1 - vout);
+    ST.ring.visible = v > 0.002; if (ST.ring.visible) { alongIndex(H, lerp(1.35, 0.42, vin) + 0.9 * vout, _bp); ST.ring.position.copy(_bp); ST.ring.quaternion.copy(_bq); ST.ring.scale.setScalar(Math.max(0.0001, 0.6 + 0.4 * v));
+      ST.ring.userData.strip.material.emissiveIntensity = 1.2 + 1.2 * env(t, K.resonancia4 - 0.1, K.segundo4 + 0.4, 0.2, 0.3) * (0.7 + 0.3 * Math.sin(t * 20)); }
+    const p = pop(t, K.n2015 + 0.25, 0.45) * (1 - win(t, K.discute5 - 0.35, 0.35)); show(ST.panel, p);
+    if (ST.panel.visible) ST.panel.userData.draw(clamp((t - (K.resonancia4 - 0.1)) / (K.segundo4 + 0.25 - K.resonancia4))); }
+  // L5: los dos círculos del debate: la burbuja que nace (izquierda) y la que se rompe (derecha)
+  for (const [g, t0] of [[ST.in1, K.discute5 - 0.15], [ST.in2, K.discute5 + 0.05]]) { const a = pop(t, t0, 0.45) * (1 - win(t, K.burbuja6 - 0.3, 0.35)); show(g, a); if (!g.visible) continue; insetClip(g);
+    const U = g.userData; U.J.rotation.y = 0.25 * Math.sin(t * 0.6);
+    if (!U.burst) { const b = popk(t, K.nacer5 - 0.04); U.bub.scale.set(0.05 * b, 0.026 * b + 0.0001, 0.045 * b); }
+    else { const u = t - (K.romperse5 - 0.04), alive = u < 0 ? 1 : Math.max(0, 1 - u / 0.08); U.bub.scale.set(0.05 * alive + 0.0001, 0.026 * alive + 0.0001, 0.045 * alive + 0.0001);
+      U.bits.forEach((b, i) => { const a2 = i / U.bits.length * Math.PI * 2, e = eo(clamp(u / 0.5)); b.visible = u > 0 && u < 1.3; if (!b.visible) return; b.scale.setScalar(0.011 * (1 - clamp((u - 0.4) / 0.9)));
+        b.position.set(Math.cos(a2) * 0.075 * e, Math.sin(a2 * 3) * 0.01 * e, Math.sin(a2) * 0.06 * e); }); } }
+  // L6: el reloj de 20 minutos
+  { const a = pop(t, K.durar6 + 0.1, 0.45) * (1 - win(t, K.respuesta7 - 0.2, 0.35)); show(ST.clock, a);
+    if (ST.clock.visible) { const ck = eio(clamp((t - K.durar6) / (K.minutos6 + 1.0 - K.durar6))), U = ST.clock.userData; U.hd.rotation.z = -ck * Math.PI * 2;
+      U.sweep.geometry.dispose(); U.sweep.geometry = new THREE.CircleGeometry(0.104, 64, Math.PI / 2 - ck * Math.PI * 2, Math.max(0.001, ck * Math.PI * 2)); } }
+  // L8: la peana, el Ig Nobel y las 215 personas
+  { const a = pop(t, K.ig8 - 0.55, 0.5) * (1 - win(t, K.tu9 - 0.25, 0.4)); ST.plat.visible = a > 0.002; if (ST.plat.visible) { ST.plat.scale.setScalar(Math.max(0.0001, a));
+      show(ST.prize, pop(t, K.ig8 - 0.12, 0.45)); ST.prize.rotation.y = 0.3 * Math.sin(t * 0.8);
+      const t0 = K.n215 - 0.15; for (let i = 0; i < 215; i++) { const p = ST.fpos[i], k = pop(t, t0 + i * 0.0042, 0.3); _o.position.set(p.x, p.y + 0.1 * (1 - clamp(k)), p.z); _o.rotation.set(0, Math.atan2(-p.x, 3 - p.z), 0); _o.scale.setScalar(Math.max(0.0001, k * 1.9)); _o.updateMatrix(); ST.figs.setMatrixAt(i, _o.matrix); }
+      ST.figs.instanceMatrix.needsUpdate = true; } }
+}
+// ---------------------------------------------------------------- cámara: primer plano del índice abierto (cruje a los 0,3 s) → se aleja y se ve la mano entera → entra en el
+// dedo (frase 3) → el anillo de resonancia y su pantalla → los dos círculos del debate → vuelve al dedo con el reloj → las dos manos de Unger → la peana con el
+// premio y las 215 personas → vuelve a la mano y al primer plano del principio (bucle).
+let CKS = [];
+const T0 = [0.06, 1.59, 1.32], L0 = [-0.33, 1.31, 0.0], T0b = [0.055, 1.585, 1.34], L0b = [-0.33, 1.308, 0.0], Tm = [0.07, 1.6, 1.28], Lm = [-0.33, 1.312, 0.0];
 function buildCam() {
-  const { D, C, K: KK, P, B } = ANG;
-  const hold = (t, a, d, h, dx, ly, ldx, lr = R_ST, f = 34) => [t, stCam(a, d, h, dx), stLook(a, ly, ldx, lr), f];
+  const HL = HAND_L / 2;
   const A = [
-    [-0.4, Tm, Lm, 40], [0.0, T0, L0, 40], [0.5, T1, L1, 40],
-    [K.artritis1, [0.9, 2.1, 4.0], [0, 2.3, 0], 40], [K.n50, [0.3, 1.9, 4.5], [0, 2.2, 0], 40], [K.razon2, [-0.4, 2.2, 4.3], [0, 2.3, 0], 40],
-    [K.final2 + 0.25, [0.4, 1.9, 4.6], [0, 2.1, 0], 40],
-    // al primer pedestal sin girar: retrocede mirando a la mano, pasa por encima del pedestal y baja delante de él
-    [K.final2 + 0.79, [1.55, 1.75, 5.7], [0.0, 1.9, 0.0], 40], [K.final2 + 1.43, [2.7, 1.7, 6.85], [0.2, 1.4, 0.8], 40],
-    [K.final2 + 1.83, [3.7, 1.75, 7.8], [2.3, 0.75, 4.6], 40], [K.final2 + 2.28, stCam(D, 10.3, 1.35, -0.15), stLook(D, 0.8, -0.05), 38],
-    [K.tirar3, stCam(D, 9.55, 1.05, -0.05), stLook(D, 0.8, -0.02, R_ST + 0.06), 36], [K.presion3, stCam(D, 9.62, 1.08, 0.14), stLook(D, 0.8, 0.14, R_ST), 36],
-    [K.golpe3, stCam(D, 9.38, 0.98, 0.0), stLook(D, 0.8, 0.0, R_ST + 0.06), 33], hold(K.n2015 - 0.25, D, 9.36, 0.97, 0.0, 0.8, 0.0, R_ST + 0.06, 33),
-    [K.n2015 + 0.35, stCam(C, 10.15, 1.2, 0.04), stLook(C, 0.82, 0.04), 38], [K.resonancia4, stCam(C, 9.6, 1.05, 0.15), stLook(C, 0.95, 0.2, R_ST - 0.05), 35],
-    [K.tercio4, stCam(C, 9.45, 1.02, 0.22), stLook(C, 0.97, 0.27, R_ST), 34], hold(K.discute5 - 0.45, C, 9.45, 1.02, 0.23, 0.97, 0.28, R_ST, 34),
-    [K.discute5 + 0.15, stCam(KK, 9.75, 1.0, 0.0), stLook(KK, 0.72, 0.0, R_ST + 0.05), 37], [K.nacer5, stCam(KK, 9.6, 0.95, -0.12), stLook(KK, 0.7, -0.12, R_ST + 0.1), 35],
-    [K.romperse5, stCam(KK, 9.6, 0.95, 0.12), stLook(KK, 0.7, 0.12, R_ST + 0.1), 35], [K.durar6, stCam(KK, 9.8, 1.1, 0.0), stLook(KK, 0.95, 0.0, R_ST - 0.15), 36],
-    [K.crujir6, stCam(KK, 9.7, 1.0, -0.15), stLook(KK, 0.8, -0.15, R_ST), 35], hold(K.respuesta7 - 0.25, KK, 9.72, 1.0, -0.16, 0.8, -0.16, R_ST, 35),
-    [K.respuesta7 + 0.35, stCam(P, 10.0, 1.15, 0.0), stLook(P, 0.95, 0.0), 37], [K.crujio7, stCam(P, 9.75, 1.05, -0.04), stLook(P, 0.95, -0.04, R_ST), 36],
-    [K.dos7, stCam(P, 9.75, 1.05, -0.05), stLook(P, 0.96, -0.05), 36], hold(K.tuvo8 - 0.25, P, 9.8, 1.07, 0.0, 0.96, 0.0, R_ST, 36),
-    [K.tuvo8 + 0.35, stCam(B, 10.2, 1.25, 0.0), stLook(B, 0.95, 0.0, R_ST - 0.1), 37], [K.ig8, stCam(B, 9.8, 1.05, 0.3), stLook(B, 0.85, 0.35, R_ST), 35],
-    [K.n215, stCam(B, 9.9, 1.35, 0.0), stLook(B, 0.62, 0.0, R_ST + 0.2), 37], hold(K.tu9 - 0.25, B, 9.95, 1.36, 0.0, 0.62, 0.0, R_ST + 0.2, 37),
-    // vuelta: sale de la estación hacia el hueco de 205° y rodea la mano hasta ponerse delante
-    [K.tu9 + 0.3, stCam(B, 10.5, 1.75, -1.7), stLook(B, 1.0, -0.7), 38], [K.mandaselo9 + 0.4, [5.2 * Math.sin(205 * D2), 2.1, 5.2 * Math.cos(205 * D2)], [0, 2.1, 0], 42],
-    [END - 2.0, [-3.9, 2.1, -0.4], [0, 2.2, 0], 42], [END - 1.15, [-2.3, 2.05, 3.4], [0, 2.3, 0], 41], [END - 0.4, Tm, Lm, 40],
-    [END, T0, L0, 40], [END + 0.5, T1, L1, 40],
+    [-0.4, Tm, Lm, 36], [0.0, T0, L0, 36], [0.35, T0b, L0b, 36],
+    [1.3, [0.5, 1.2, 3.3], [-0.1, 0.82, 0], 38], [2.4, [1.0, 1.15, 3.05], [-0.09, 0.84, 0], 38], [K.medico1, [1.2, 1.08, 2.9], [-0.08, 0.86, 0], 38],
+    [K.tenian2 - 0.1, [1.05, 1.12, 2.85], [-0.12, 0.88, 0], 38], [K.final2, [0.55, 1.3, 2.0], [-0.25, 1.05, 0], 38],
+    [K.nudillo3 + 0.1, [0.1, 1.45, 1.1], [-0.33, 1.25, 0], 37], [K.capsula3, [-0.13, 1.45, 0.62], [-0.35, 1.29, 0.0], 36], [K.liquido3, [-0.2, 1.4, 0.5], [-0.35, 1.285, 0.0], 36],
+    [K.tirar3, [-0.12, 1.42, 0.8], [-0.42, 1.33, 0.02], 36], [K.presion3, [-0.24, 1.36, 1.15], [-0.45, 1.26, 0.1], 36], [K.cae3 + 0.45, [-0.235, 1.355, 1.12], [-0.445, 1.262, 0.1], 36], [K.gas3, [-0.2, 1.37, 0.5], [-0.35, 1.287, 0.0], 36],
+    [K.golpe3, [-0.23, 1.345, 0.41], [-0.35, 1.287, 0.0], 35], [K.n2015 - 0.2, [-0.235, 1.34, 0.4], [-0.35, 1.286, 0.0], 35],
+    [K.n2015 + 0.7, [-0.44, 1.47, 2.3], [-0.59, 1.35, 0.15], 36], [K.resonancia4, [-0.46, 1.45, 2.25], [-0.59, 1.34, 0.15], 36], [K.discute5 - 0.35, [-0.48, 1.44, 2.15], [-0.59, 1.34, 0.15], 36],
+    [K.discute5 + 0.4, [-0.345, 1.64, 3.5], [-0.345, 1.6, 0.62], 36], [K.nacer5, [-0.37, 1.64, 3.42], [-0.36, 1.6, 0.62], 36], [K.romperse5, [-0.32, 1.64, 3.42], [-0.33, 1.6, 0.62], 36], [K.burbuja6 - 0.45, [-0.31, 1.64, 3.38], [-0.33, 1.6, 0.62], 36],
+    [K.burbuja6 + 0.3, [-0.17, 1.42, 0.6], [-0.36, 1.3, 0.02], 36], [K.durar6 + 0.05, [-0.18, 1.43, 0.68], [-0.38, 1.31, 0.04], 36], [K.durar6 + 0.75, [-0.24, 1.53, 1.32], [-0.46, 1.38, 0.1], 36], [K.minutos6 + 0.3, [-0.245, 1.53, 1.33], [-0.46, 1.38, 0.1], 36], [K.crujir6, [-0.23, 1.52, 1.3], [-0.45, 1.37, 0.09], 36],
+    [K.respuesta7 - 0.2, [-0.22, 1.52, 1.32], [-0.44, 1.37, 0.09], 36],
+    [K.donald7, [HL, 1.15, 6.6], [HL, 0.82, 0], 38], [K.crujio7, [HL - 0.15, 1.05, 6.2], [HL - 0.1, 0.82, 0], 38], [K.anos7, [HL - 0.1, 1.1, 6.3], [HL, 0.84, 0], 38],
+    [K.ninguna8, [HL, 1.45, 4.1], [HL, 1.25, 0], 38], [K.ig8 - 0.35, [HL, 1.42, 4.3], [HL, 1.15, 0.1], 38],
+    [K.ig8 + 0.4, [HL, 1.3, 5.6], [HL, 0.35, 0.6], 38], [K.n215, [HL, 1.6, 5.3], [HL, 0.15, 0.8], 38], [K.tu9 - 0.2, [HL + 0.05, 1.62, 5.25], [HL, 0.16, 0.8], 38],
+    [K.mandaselo9, [0.45, 1.2, 3.3], [-0.1, 0.85, 0], 38], [K.dara9, [0.6, 1.25, 3.1], [-0.12, 0.88, 0], 38], [END - 1.2, [0.3, 1.38, 1.7], [-0.3, 1.2, 0], 37],
+    [END - 0.4, Tm, Lm, 36], [END, T0, L0, 36], [END + 0.35, T0b, L0b, 36],
   ];
   CKS = [A];
 }
 function camAt(t) {
   const st = camKeys(t, CKS[0]);
-  const u = t - T_HIT; if (u > 0 && u < 0.35) { const a = 0.008 * Math.exp(-u * 9); st.p.x += Math.sin(u * 91) * a; st.p.y += Math.sin(u * 77 + 1) * a; }
+  for (const [t0, a0] of [[T_HIT, 0.004], [K.golpe3, 0.004]]) { const u = t - t0; if (u > 0 && u < 0.35) { const a = a0 * Math.exp(-u * 9); st.p.x += Math.sin(u * 91) * a; st.p.y += Math.sin(u * 77 + 1) * a; } }
   return st;
 }
 function prevT(t, dt) { return t - dt; }
 function flashAt(t) {
   let f = 0;
-  for (const [t0, k] of [[T_HIT, 0.06], [K.golpe3, 0.06], [K.nacer5, 0.03], [K.romperse5, 0.03], [K.ninguna8, 0.03], [K.ig8, 0.04]])
+  for (const [t0, k] of [[T_HIT, 0.035], [K.golpe3, 0.045], [K.nacer5, 0.02], [K.romperse5, 0.02], [K.ig8, 0.02]])
     if (t > t0) f += k * Math.exp(-(t - t0) / 0.08);
   return f;
 }
 function whiteAt(t) { return 0; }
-function coneFade(cone, base, t, st, k = 1) {        // el haz se apaga solo mientras la cámara atraviesa su superficie (si no, la pantalla se pone blanca); k: cuánto se aplica
-  const w = new THREE.Vector3(); cone.getWorldPosition(w); const R0 = cone.geometry.parameters.radiusBottom, H = cone.geometry.parameters.height, y = st.p.y - (w.y - H / 2);
-  const r = R0 + (0.06 - R0) * clamp(y / H), d = Math.hypot(st.p.x - w.x, st.p.z - w.z); cone.material.uniforms.op.value = base * (1 - k + k * clamp((Math.abs(d - r) - 0.05) / 0.2));
-}
 function stageAt(t, st) {
   NOW = t; centerAt(t, st); stationsAt(t);
-  const fk = t > K.tu9 - 0.2 && t < END - 1.3 ? 1 : win(t, K.final2 + 0.25, 0.3) * (1 - win(t, K.final2 + 2.6, 0.3));
-  coneFade(S.ctrCone, 0.05, t, st, fk); for (const k in ST) if (ST[k].Z.visible) coneFade(ST[k].cone, 0.055, t, st, fk);
-  const c = st.l, d = st.p.distanceTo(c), yaw = Math.atan2(st.p.x - c.x, st.p.z - c.z), k = clamp(d / 5, 0.2, 1.2);
-  rigAt(c, yaw, k, 1.15, 0.6);
-  const R = S.rig; R.sun.intensity = 0.0; R.hemi.intensity = 0.12;
+  const c = st.l, yaw = Math.atan2(st.p.x - c.x, st.p.z - c.z), d = st.p.distanceTo(c);
+  lightsAt(c, yaw, clamp(d / 2.6, 0.35, 1.6));
 }
-// ---------------------------------------------------------------- HUD (como en Derecho): cabecera con la pregunta pendiente (¿da artritis?), cifras grandes y
-// rótulos con línea guía.
-function buildHudPlan() {}
+// ---------------------------------------------------------------- HUD sobre fondo claro (estilo infografía médica): tinta oscura con halo blanco, rótulos en cajas blancas
+// con línea guía, pasos numerados en la frase 3 y la pregunta pendiente (¿da artritis?) en la cabecera.
+const INK = '#1C2430', GREY = '#5A6472', GOLD = '#C27A00', TEALc = '#0E8C86', REDc = '#D32F2F', GREEN = '#2E9D57', BLUE = '#1F6FD1';
+function buildHudPlan() { HFONT = 'Inter'; HW = [900, 700]; }
 const wpo = (o, x, y, z) => { o.updateWorldMatrix(true, false); return o.localToWorld(v3(x, y, z)); };
-const HG = '#FFC24A';
 function hdr(t) {
   hg.save(); hg.textBaseline = 'alphabetic';
-  hg.letterSpacing = '9px'; hfont(44); hg.fillStyle = HC.white; hg.textAlign = 'left'; hg.fillText('TUS DEDOS', 54, 142);
-  hg.letterSpacing = '4px'; hfont(23, false); hg.fillStyle = HC.grey; hg.fillText('QUÉ PASA CUANDO TE LOS CRUJES', 56, 182);
-  hg.fillStyle = 'rgba(238,242,246,.35)'; hg.fillRect(56, 196, 968, 1.5);
-  hg.textAlign = 'right'; hg.letterSpacing = '3px';
-  hfont(17, false); hg.fillStyle = HC.grey; hg.fillText('ASÍ FUNCIONA', 1024, 112);
-  hfont(32); hg.fillStyle = HG; hg.fillText('TU CUERPO', 1024, 148);
-  hfont(17, false); hg.fillStyle = HC.grey; hg.fillText('POR DENTRO', 1024, 178);
+  hg.letterSpacing = '4px'; hfont(46); hg.fillStyle = INK; hg.textAlign = 'left'; hg.fillText('TUS DEDOS', 54, 142);
+  hg.letterSpacing = '2px'; hfont(24, false); hg.fillStyle = GREY; hg.fillText('QUÉ PASA CUANDO TE LOS CRUJES', 56, 180);
+  hg.fillStyle = 'rgba(28,36,48,.22)'; hg.fillRect(56, 196, 968, 2);
+  hg.textAlign = 'right'; hg.letterSpacing = '2px';
+  hfont(18, false); hg.fillStyle = GREY; hg.fillText('ASÍ FUNCIONA', 1024, 112);
+  hfont(32); hg.fillStyle = GOLD; hg.fillText('TU CUERPO', 1024, 148);
+  hfont(18, false); hg.fillStyle = GREY; hg.fillText('POR DENTRO', 1024, 178);
   const mk = win(t, K.tenian2, 0.3) * (1 - win(t, END - 0.9, 0.4));
   if (mk > 0.01) {
-    let txt = '¿DA ARTRITIS? · ???', col = HC.red, blink = true;
-    if (t > K.respuesta7 + 0.3) { txt = '50 AÑOS DE PRUEBA (UNGER)'; col = HG; blink = false; }
-    if (t > K.ninguna8) { txt = 'NO: NI EN UNA MANO NI EN LA OTRA'; col = HC.green; blink = false; }
-    if (t > K.tu9) { txt = '¿TÚ TE LOS CRUJES?'; col = HC.white; blink = false; }
+    let txt = '¿DA ARTRITIS? · ???', col = REDc, blink = true;
+    if (t > K.respuesta7 + 0.3) { txt = '50 AÑOS DE PRUEBA (UNGER)'; col = GOLD; blink = false; }
+    if (t > K.ninguna8) { txt = 'NO: NI EN UNA MANO NI EN LA OTRA'; col = GREEN; blink = false; }
+    if (t > K.tu9) { txt = '¿TÚ TE LOS CRUJES?'; col = INK; blink = false; }
     const on = !blink || Math.sin(t * 9) > -0.3;
-    hg.globalAlpha = mk; hfont(19); hg.letterSpacing = '3px'; hg.textAlign = 'right';
+    hg.globalAlpha = mk * (on ? 1 : 0.25); hfont(20); hg.letterSpacing = '2px'; hg.textAlign = 'right';
     const w = hg.measureText(txt).width + 34, x1 = 1024, x0 = x1 - w, y = 238;
-    hg.strokeStyle = col; hg.lineWidth = 1.5; hg.beginPath();
-    hg.moveTo(x0 + 10, y - 22); hg.lineTo(x0, y - 22); hg.lineTo(x0, y + 10); hg.lineTo(x0 + 10, y + 10);
-    hg.moveTo(x1 - 10, y - 22); hg.lineTo(x1, y - 22); hg.lineTo(x1, y + 10); hg.lineTo(x1 - 10, y + 10); hg.stroke();
-    hg.fillStyle = col; if (on) hg.fillText(txt, x1 - 15, y);
+    hg.fillStyle = 'rgba(255,255,255,.75)'; rr(hg, x0, y - 26, w, 40, 8); hg.fill();
+    hg.strokeStyle = col; hg.lineWidth = 2; rr(hg, x0, y - 26, w, 40, 8); hg.stroke();
+    hg.fillStyle = col; hg.fillText(txt, x1 - 17, y + 1);
   }
   hg.restore();
 }
 const cw = (t, t0, t1) => win(t, t0, 0.25) * (1 - win(t, t1, 0.25));
-function lab(o, x, y, z, txt, sub, k, opt) { if (k <= 0.01 || !o.visible) return; callout(wpo(o, x, y, z), txt, sub, k, { size: 26, subSize: 19, bg: true, ...opt }); }
+function lab(o, x, y, z, txt, sub, k, opt) { if (k <= 0.01 || !o.visible) return; callout(wpo(o, x, y, z), txt, sub, k, { size: 27, subSize: 20, bg: true, light: true, subCol: GREY, ...opt }); }
+function labP(P, txt, sub, k, opt) { if (k <= 0.01) return; callout(P, txt, sub, k, { size: 27, subSize: 20, bg: true, light: true, subCol: GREY, ...opt }); }
+const big = (txt, y, size, col, k, o = {}) => bigText(txt, W / 2, y, size, col, k, { type: false, halo: 22, ls: Math.round(size * 0.04), ...o });
+const small = (txt, y, size, col, k, o = {}) => bigText(txt, W / 2, y, size, col, k, { halo: 14, ls: 2, ...o });
+function stepBadge(n, x, y, k, col) { if (k <= 0.01) return; hg.save(); hg.globalAlpha = clamp(k * 2); const r = 30 * (0.6 + 0.4 * eo(clamp(k * 1.5)));
+  hg.fillStyle = col; hg.beginPath(); hg.arc(x, y, r, 0, 7); hg.fill(); hg.fillStyle = '#fff'; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hfont(34); hg.letterSpacing = '0px'; hg.fillText(String(n), x, y + 2); hg.restore(); }
+function check(P, k, col = GREEN, s = 1) { if (k <= 0.01 || !P.ok) return; hg.save(); hg.globalAlpha = clamp(k * 2); const r = 46 * s * (0.5 + 0.5 * eo(clamp(k * 1.6)));
+  hg.fillStyle = col; hg.beginPath(); hg.arc(P.x, P.y, r, 0, 7); hg.fill(); hg.strokeStyle = '#fff'; hg.lineWidth = 9 * s; hg.beginPath(); hg.moveTo(P.x - r * 0.42, P.y + r * 0.02); hg.lineTo(P.x - r * 0.1, P.y + r * 0.34); hg.lineTo(P.x + r * 0.46, P.y - r * 0.3); hg.stroke(); hg.restore(); }
+function cross(P, k, s = 1) { if (k <= 0.01 || !P.ok) return; hg.save(); hg.globalAlpha = clamp(k * 2); const r = 40 * s * (0.5 + 0.5 * eo(clamp(k * 1.6)));
+  hg.fillStyle = REDc; hg.beginPath(); hg.arc(P.x, P.y, r, 0, 7); hg.fill(); hg.strokeStyle = '#fff'; hg.lineWidth = 8 * s; hg.beginPath(); hg.moveTo(P.x - r * 0.38, P.y - r * 0.38); hg.lineTo(P.x + r * 0.38, P.y + r * 0.38); hg.moveTo(P.x + r * 0.38, P.y - r * 0.38); hg.lineTo(P.x - r * 0.38, P.y + r * 0.38); hg.stroke(); hg.restore(); }
+function crac(P, k, col = BLUE) { if (k <= 0.01 || !P.ok) return; hg.save(); hg.globalAlpha = clamp(k * 3) * (1 - clamp((k - 0.7) / 0.3)); const s = 0.7 + 0.5 * eo(clamp(k * 3));
+  hg.translate(P.x, P.y); hg.rotate(-0.12); hg.scale(s, s); hfont(54); hg.letterSpacing = '2px'; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.lineWidth = 10; hg.strokeStyle = '#fff'; hg.strokeText('¡CRAC!', 0, 0); hg.fillStyle = col; hg.fillText('¡CRAC!', 0, 0); hg.restore(); }
 const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 function hudAt(t) {
   hudBegin(); hdr(t);
-  const Y = 1430;
-  // L1: 50 años
-  { const a = cw(t, K.medico1 - 0.05, K.tenian2 - 0.32); if (a > 0.01) { bigText(Math.round(1 + 49 * eo(clamp((t - K.medico1) / (K.anos1 + 0.2 - K.medico1)))) + ' AÑOS', W / 2, Y, 110, HG, a, { glow: 18, type: false, dark: 30 }); bigText('UN MÉDICO LO COMPROBÓ EN SU PROPIA MANO', W / 2, Y + 88, 26, HC.white, a, { dark: 20 }); } }
-  // L2: ¿tenían razón? (la «?» roja junto a la mano)
-  { const a = cw(t, K.tenian2 - 0.05, K.cada3 - 0.1); if (a > 0.01) { bigText('¿TENÍAN RAZÓN?', W / 2, Y + 10, 72, HC.white, a, { glow: 10, type: false, dark: 28 });
-      if (S.ctr.visible) { const P = proj(wpo(S.hand, 0.0, 0.42, 0.08)); if (P.ok) bigText('?', P.x + 190, P.y - 120, 170, HC.red, a, { glow: 30, type: false }); } } }
-  // L3: la cápsula con líquido, la presión cae, la burbuja
-  { const D = ST.D; const U = D.kn.userData;
-    if (D.Z.visible) { lab(U.caps, 0.0, 0.9, 0.3, 'CÁPSULA', 'LLENA DE LÍQUIDO SINOVIAL', cw(t, K.capsula3, K.tirar3 - 0.1), { dx: 120, dy: -200, color: HG });
-      lab(D.g, 0, 0.1, 0.02, 'PRESIÓN', 'DENTRO DEL NUDILLO', cw(t, K.presion3, K.gas3 - 0.1), { dx: -140, dy: -150, color: HC.red });
-      lab(U.bub, 0, 1.0, 0, 'BURBUJA DE GAS', 'SE FORMA DE GOLPE', cw(t, K.golpe3 + 0.1, K.n2015 - 0.1), { dx: 130, dy: -190, color: HC.teal }); }
-    const a = cw(t, K.tirar3 - 0.05, K.presion3 - 0.32); if (a > 0.01) bigText('TIRAS DEL DEDO', W / 2, Y + 20, 64, HC.white, a, { glow: 8, type: false, dark: 26 });
-    const b = cw(t, K.presion3 - 0.05, K.golpe3 - 0.32); if (b > 0.01) bigText('LA PRESIÓN CAE', W / 2, Y + 20, 72, HC.red, b, { glow: 14, type: false, dark: 28 });
-    const c = cw(t, K.golpe3 - 0.05, K.n2015 - 0.32); if (c > 0.01) { bigText('¡BURBUJA!', W / 2, Y, 110, HC.teal, c, { glow: 22, type: false, dark: 30 }); bigText('EL GAS DEL LÍQUIDO SE JUNTA DE GOLPE', W / 2, Y + 86, 26, HC.white, c, { dark: 20 }); } }
+  const Y = 1440, H1 = S.hand.userData, F = H1.fingers[0];
+  // L1: el crujido del principio; «¿artritis?» en rojo; 50 años
+  { const P = proj(S.jf.position); const k = clamp((t - T_HIT) / 0.9); if (t > T_HIT && t < T_HIT + 0.9) crac({ x: P.x + 150, y: P.y - 230, ok: P.ok }, k); }
+  { const a = cw(t, K.artritis1 - 0.05, K.medico1 - 0.2); if (a > 0.01) { big('¿ARTRITIS?', Y, 104, REDc, a); small('LO QUE SIEMPRE TE HAN DICHO', Y + 84, 28, INK, a); } }
+  { const a = cw(t, K.medico1 - 0.05, K.tenian2 - 0.32); if (a > 0.01) { big(Math.round(1 + 49 * eo(clamp((t - K.medico1) / (K.anos1 + 0.2 - K.medico1)))) + ' AÑOS', Y, 120, GOLD, a); small('UN MÉDICO LO COMPROBÓ EN SU PROPIA MANO', Y + 90, 28, INK, a); } }
+  // L2: ¿tenían razón?
+  { const a = cw(t, K.tenian2 - 0.05, K.cada3 - 0.1); if (a > 0.01) { big('¿TENÍAN RAZÓN?', Y, 84, INK, a); small('TE LO DIGO AL FINAL', Y + 78, 28, REDc, cw(t, K.digo2 - 0.1, K.cada3 - 0.1)); } }
+  // L3: los pasos, como en una lámina: 1 la cápsula con líquido · 2 tiras · 3 la presión cae · 4 ¡burbuja!
+  { const st = [[K.cada3 - 0.05, K.tirar3 - 0.32, 1, 'UNA CÁPSULA CON LÍQUIDO', TEALc], [K.tirar3 - 0.05, K.presion3 - 0.32, 2, 'TIRAS DEL DEDO', BLUE], [K.presion3 - 0.05, K.gas3 - 0.32, 3, 'LA PRESIÓN CAE', REDc], [K.gas3 - 0.05, K.n2015 - 0.32, 4, 'EL GAS FORMA UNA BURBUJA', TEALc]];
+    for (const [t0, t1, n, txt, col] of st) { const a = cw(t, t0, t1); if (a <= 0.01) continue; hg.save(); hfont(58); hg.letterSpacing = '2px'; const w = hg.measureText(txt).width; hg.restore();
+      stepBadge(n, W / 2 - w / 2 - 50, Y, a, col); bigText(txt, W / 2 + 24, Y, 58, INK, a, { type: false, halo: 20, ls: 2 }); }
+    const c = cw(t, K.golpe3 - 0.05, K.n2015 - 0.32); if (c > 0.01) small('DE GOLPE, EN MENOS DE UN SEGUNDO', Y + 76, 28, GREY, c);
+    if (cutK(t) > 0.5 && t > K.cada3 && t < K.n2015) {
+      lab(F.ph[0], 0, 0.3, 0.03, 'HUESO', null, cw(t, K.nudillo3 + 0.2, K.capsula3 - 0.1), { dx: -170, dy: -40, color: INK });
+      lab(F.cap, -F.r * 0.62, 0.0, 0.0, 'CÁPSULA', 'LA ENVUELVE', cw(t, K.capsula3 - 0.05, K.liquido3 - 0.1), { dx: -170, dy: -150, color: TEALc });
+      lab(F.fluid, F.r * 0.3, 0, 0.02, 'LÍQUIDO SINOVIAL', 'CON GAS DISUELTO', cw(t, K.liquido3 - 0.05, K.tirar3 - 0.1), { dx: 150, dy: -200, color: TEALc });
+      lab(F.bub, 0, 0, 0.0, 'BURBUJA DE GAS', null, cw(t, K.golpe3 + 0.1, K.n2015 - 0.1), { dx: 160, dy: -180, color: TEALc }); }
+    if (t > K.golpe3 && t < K.golpe3 + 0.9) { const P = proj(S.jf.position); crac({ x: P.x - 120, y: P.y - 250, ok: P.ok }, clamp((t - K.golpe3) / 0.9)); }
+    if (ST.arrow.visible && t < K.burbuja6) labP(proj(ST.arrow.localToWorld(v3(0, 0.27, 0))), 'TIRAS', null, cw(t, K.tirar3, K.presion3 - 0.1), { dx: -60, dy: -120, color: BLUE }); }
   // L4: 2015, la resonancia: 0,31 s
-  { const C = ST.C; const a = cw(t, K.n2015 - 0.05, K.menos4 - 0.32); if (a > 0.01) { bigText('2015', W / 2, Y, 110, HC.white, a, { glow: 14, type: false, dark: 30 }); bigText('LA PRIMERA VEZ QUE SE GRABA EN UNA RESONANCIA', W / 2, Y + 86, 24, HG, a, { dark: 20 }); }
-    const b = cw(t, K.menos4 - 0.05, K.discute5 - 0.32); if (b > 0.01) { bigText('0,31 s', W / 2, Y, 120, HG, b, { glow: 22, type: false, dark: 30 }); bigText('MENOS DE UN TERCIO DE SEGUNDO', W / 2, Y + 90, 28, HC.white, b, { dark: 20 }); }
-    if (C.Z.visible) lab(C.scr, 0, 0.56, 0.02, 'RESONANCIA MAGNÉTICA', 'PLOS ONE, 2015', cw(t, K.grabaron4, K.menos4 - 0.1), { dx: -140, dy: -170, color: HC.white }); }
-  // L5–L6: ¿al nacer o al romperse? · 20 minutos
-  { const Kk = ST.K; const a = cw(t, K.discute5 - 0.05, K.burbuja6 - 0.32); if (a > 0.01) { bigText('¿AL NACER…', W / 2, Y - 10, 64, HC.white, a, { glow: 8, type: false, dark: 26 }); bigText('O AL ROMPERSE?', W / 2, Y + 62, 64, HG, cw(t, K.romperse5 - 0.1, K.burbuja6 - 0.32), { glow: 12, type: false, dark: 26 }); bigText('LOS CIENTÍFICOS AÚN NO SE PONEN DE ACUERDO', W / 2, Y + 122, 24, HC.white, a, { dark: 18 }); }
-    if (Kk.Z.visible) { lab(Kk.j1, 0, 0.42, 0, '¿AL NACER?', 'RESONANCIA, 2015', cw(t, K.nacer5 - 0.05, K.burbuja6 - 0.1), { dx: -110, dy: -180, color: HC.teal });
-      lab(Kk.j2, 0, 0.42, 0, '¿AL ROMPERSE?', 'ESTUDIOS DE 1971 Y 2018', cw(t, K.romperse5 - 0.05, K.burbuja6 - 0.1), { dx: 110, dy: -180, color: HG }); }
-    const b = cw(t, K.durar6 - 0.05, K.respuesta7 - 0.32); if (b > 0.01) { const n = Math.round(20 * eio(clamp((t - K.durar6) / (K.minutos6 + 1.0 - K.durar6)))); bigText(n + ' MIN', W / 2, Y, 120, HG, b, { glow: 20, type: false, dark: 30 }); bigText(t < K.eso6 ? 'LA BURBUJA PUEDE SEGUIR AHÍ' : 'Y MIENTRAS, ESE DEDO NO VUELVE A CRUJIR', W / 2, Y + 90, 28, HC.white, b, { dark: 20 }); } }
+  { const a = cw(t, K.n2015 - 0.05, K.menos4 - 0.32); if (a > 0.01) { big('2015', Y, 120, INK, a); small('LO GRABAN POR PRIMERA VEZ EN UNA RESONANCIA', Y + 88, 26, BLUE, a); }
+    const b = cw(t, K.menos4 - 0.05, K.discute5 - 0.32); if (b > 0.01) { big('0,31 s', Y, 130, BLUE, b); small('MENOS DE UN TERCIO DE SEGUNDO', Y + 92, 28, INK, b); }
+    lab(ST.panel, 0, 0.29, 0.02, 'RESONANCIA MAGNÉTICA', 'PLOS ONE, 2015', cw(t, K.grabaron4, K.menos4 - 0.1), { dx: 120, dy: -150, color: BLUE }); }
+  // L5: ¿al nacer o al romperse?
+  { const a = cw(t, K.discute5 - 0.05, K.burbuja6 - 0.32); if (a > 0.01) { small('LOS CIENTÍFICOS AÚN NO SE PONEN DE ACUERDO', Y + 40, 30, INK, a); }
+    for (const [g, txt, col, t0, sub] of [[ST.in1, '¿AL NACER?', TEALc, K.nacer5 - 0.4, 'KAWCHUK, 2015'], [ST.in2, '¿AL ROMPERSE?', GOLD, K.romperse5 - 0.4, 'ESTUDIOS DE 1971 Y 2018']]) {
+      if (!g.visible) continue; const P = proj(wpo(g, 0, 0.19, 0)); const k = cw(t, t0, K.burbuja6 - 0.32);
+      if (k > 0.01 && P.ok) { bigText(txt, P.x, P.y - 70, 44, col, k, { type: false, halo: 16, ls: 1 }); bigText(sub, P.x, P.y - 26, 20, GREY, k, { type: false, halo: 10, ls: 1, bold: false }); } }
+    for (const [g, t0] of [[ST.in1, K.nacer5], [ST.in2, K.romperse5]]) if (g.visible && t > t0 && t < t0 + 0.9) { const P = proj(wpo(g, 0, -0.13, 0.05)); crac(P, clamp((t - t0) / 0.9), g === ST.in1 ? TEALc : GOLD); } }
+  // L6: 20 minutos · ese dedo no vuelve a crujir
+  { const b = cw(t, K.durar6 - 0.05, K.respuesta7 - 0.32); if (b > 0.01) { small(t < K.eso6 - 0.1 ? 'LA BURBUJA PUEDE DURAR' : 'Y MIENTRAS, ESE DEDO', Y - 78, 30, INK, b, { type: false });
+      big(t < K.eso6 - 0.1 ? 'HASTA 20 MIN' : 'NO VUELVE A CRUJIR', Y, t < K.eso6 - 0.1 ? 104 : 78, t < K.eso6 - 0.1 ? BLUE : REDc, b); }
+    if (t > K.burbuja6 && t < K.respuesta7) { lab(F.bub, 0, 0, 0, 'LA BURBUJA', 'SE VA DISOLVIENDO', cw(t, K.burbuja6 + 0.3, K.eso6 - 0.1), { dx: 150, dy: -180, color: TEALc });
+      const P = proj(S.jf.position); cross({ x: P.x - 150, y: P.y + 40, ok: P.ok }, cw(t, K.crujir6 + 0.1, K.respuesta7 - 0.3)); } }
   // L7: Donald Unger, 50 años crujiendo una sola mano
-  { const P = ST.P; const a = cw(t, K.donald7 - 0.05, K.dos7 - 0.32); if (a > 0.01) { bigText('DONALD UNGER', W / 2, Y, 76, HC.white, a, { glow: 10, type: false, dark: 28 }); bigText('MÉDICO · SOLO LA MANO IZQUIERDA', W / 2, Y + 74, 28, HG, cw(t, K.sola7 - 0.1, K.dos7 - 0.32), { dark: 20 }); }
-    const b = cw(t, K.dos7 - 0.05, K.tuvo8 - 0.32); if (b > 0.01) { bigText(t < K.n50b - 0.05 ? '2 VECES AL DÍA' : '50 AÑOS', W / 2, Y, 100, HG, b, { glow: 18, type: false, dark: 30 }); bigText('MÁS DE 36.500 CRUJIDOS', W / 2, Y + 84, 28, HC.white, cw(t, K.n50b - 0.1, K.tuvo8 - 0.32), { dark: 20 }); }
-    if (P.Z.visible) { lab(P.hL, 0.03, 0.62, 0.05, 'LA IZQUIERDA', 'SE LA CRUJÍA', cw(t, K.sola7, K.tuvo8 - 0.1), { dx: -40, dy: -290, color: HG });
-      lab(P.hR, 0.03, 0.62, 0.05, 'LA DERECHA', 'NO (PARA COMPARAR)', cw(t, K.mano7, K.tuvo8 - 0.1), { dx: 40, dy: -150, color: HC.white }); } }
+  { const a = cw(t, K.donald7 - 0.05, K.dos7 - 0.32); if (a > 0.01) { big('DONALD UNGER', Y, 84, INK, a); small('MÉDICO · SOLO SE CRUJÍA LA IZQUIERDA', Y + 78, 28, GOLD, cw(t, K.sola7 - 0.1, K.dos7 - 0.32)); }
+    const b = cw(t, K.dos7 - 0.05, K.tuvo8 - 0.32); if (b > 0.01) { big(t < K.n50b - 0.05 ? '2 VECES AL DÍA' : '50 AÑOS', Y, 104, GOLD, b); small('MÁS DE 36.500 CRUJIDOS', Y + 84, 28, INK, cw(t, K.n50b - 0.1, K.tuvo8 - 0.32)); }
+    if (S.handL.visible) for (const [h, t1, a1, a2, col] of [[S.handL, K.sola7, 'LA IZQUIERDA', 'SE LA CRUJÍA', GOLD], [S.hand, K.mano7, 'LA DERECHA', 'NUNCA (PARA COMPARAR)', INK]]) {
+      const k = cw(t, t1, K.tuvo8 - 0.1), P = proj(wpo(h, -0.1, 1.95, 0.05)); if (k <= 0.01 || !P.ok) continue; const y = Math.max(540, P.y - 90);
+      bigText(a1, P.x, y, 34, col, k, { type: false, halo: 16, ls: 1 }); bigText(a2, P.x, y + 36, 21, GREY, k, { type: false, halo: 12, ls: 1, bold: false }); } }
   // L8: ninguna artritis · Ig Nobel · 215 personas
-  { const Bs = ST.B; const a = cw(t, K.ninguna8 - 0.05, K.ig8 - 0.32); if (a > 0.01) { bigText('NINGUNA ARTRITIS', W / 2, Y, 70, HC.green, a, { glow: 14, type: false, dark: 28 }); bigText('NI EN UNA MANO NI EN LA OTRA', W / 2, Y + 74, 28, HC.white, a, { dark: 20 }); }
-    const b = cw(t, K.ig8 - 0.05, K.n215 - 0.32); if (b > 0.01) { bigText('IG NOBEL', W / 2, Y, 100, HG, b, { glow: 20, type: false, dark: 30 }); bigText('MEDICINA · 2009', W / 2, Y + 84, 28, HC.white, b, { dark: 20 }); }
-    const c = cw(t, K.n215 - 0.05, K.tu9 - 0.32); if (c > 0.01) { bigText(Math.round(215 * eo(clamp((t - K.n215 + 0.05) / 0.9))) + ' PERSONAS', W / 2, Y, 84, HC.white, c, { glow: 10, type: false, dark: 28 }); bigText('ESTUDIO DE 2011: LA MISMA CONCLUSIÓN', W / 2, Y + 80, 28, HC.green, c, { dark: 20 }); }
-    if (Bs.Z.visible) { const F = Bs.lb.userData.films; lab(F[0], 0, 0.1, 0.005, 'SIN ARTRITIS', null, cw(t, K.ninguna8 - 0.1, K.ig8 - 0.1), { dx: -110, dy: -150, color: HC.green }); lab(F[1], 0, 0.1, 0.005, 'SIN ARTRITIS', null, cw(t, K.ninguna8 + 0.1, K.ig8 - 0.1), { dx: 110, dy: -150, color: HC.green }); } }
+  { const a = cw(t, K.ninguna8 - 0.05, K.ig8 - 0.32); if (a > 0.01) { big('NINGUNA ARTRITIS', Y, 84, GREEN, a); small('NI EN UNA MANO NI EN LA OTRA', Y + 78, 28, INK, a); }
+    if (S.handL.visible) { const k = cw(t, K.ninguna8 - 0.1, K.ig8 - 0.1); check(proj(wpo(S.handL, -0.35, 1.95, 0.1)), k); check(proj(wpo(S.hand, -0.35, 1.95, 0.1)), cw(t, K.ninguna8 + 0.1, K.ig8 - 0.1)); }
+    const b = cw(t, K.ig8 - 0.05, K.n215 - 0.32); if (b > 0.01) { big('IG NOBEL', Y, 116, GOLD, b); small('MEDICINA · 2009', Y + 88, 30, INK, b); }
+    const c = cw(t, K.n215 - 0.05, K.tu9 - 0.32); if (c > 0.01) { big(Math.round(215 * eo(clamp((t - K.n215 + 0.05) / 0.9))) + ' PERSONAS', Y, 96, INK, c); small('ESTUDIO DE 2011: LA MISMA CONCLUSIÓN', Y + 80, 28, GREEN, c); } }
   // L9: ¿tú te los crujes? · mándaselo
-  { const a = cw(t, K.tu9 - 0.05, K.mandaselo9 - 0.3); if (a > 0.01) bigText('¿TÚ TE LOS CRUJES?', W / 2, Y + 20, 68, HC.white, a, { glow: 10, type: false, dark: 28 });
-    const m = cw(t, K.mandaselo9 - 0.05, END - 0.6); if (m > 0.01) { bigText('MÁNDASELO A QUIEN TE DICE', W / 2, Y - 10, 40, HC.white, m, { dark: 24 }); bigText('QUE TE DARÁ ARTRITIS', W / 2, Y + 60, 56, HG, cw(t, K.dara9 - 0.1, END - 0.6), { glow: 14, dark: 26 }); } }
+  { const a = cw(t, K.tu9 - 0.05, K.mandaselo9 - 0.3); if (a > 0.01) big('¿TÚ TE LOS CRUJES?', Y, 80, INK, a);
+    const m = cw(t, K.mandaselo9 - 0.05, END - 0.6); if (m > 0.01) { small('MÁNDASELO A QUIEN TE DICE', Y - 10, 40, INK, m, { type: false }); big('QUE TE DARÁ ARTRITIS', Y + 62, 60, REDc, cw(t, K.dara9 - 0.1, END - 0.6)); } }
 }
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
@@ -1314,7 +1704,6 @@ window.renderCover = function () {
   if (window.camOverride) window.camOverride(cam, v3);
   const VP = vpOf(); flowUpdate(t, VP, VP); fxUpdate(t, VP, VP);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0; post.uniforms.white.value = 0;
-  if (S.ctrCone) S.ctrCone.visible = false;      // en la portada, sin el haz del centro (de frente se ve como columnas)
   hudBegin(); drawFrame(t);
   return true;
 };
@@ -1341,12 +1730,11 @@ window.renderCover = function () {
     tuvo8: atL(8, 'tuvo'), artritis8: atL(8, 'artritis'), ninguna8: atL(8, 'ninguna'), mano8: atL(8, 'mano'), dieron8: atL(8, 'dieron'), ig8: atL(8, '=ig'), nobel8: atL(8, 'nobel'), estudio8: atL(8, 'estudio'), n215: atL(8, '=215'), personas8: atL(8, 'personas'), mismo8: atL(8, 'mismo'),
     tu9: atL(9, '=tu'), crujes9: atL(9, 'crujes'), mandaselo9: atL(9, 'mandaselo'), dice9: atL(9, 'dice'), dara9: atL(9, 'dara'), artritis9: atL(9, 'artritis'),
   };
-  mats(); buildMats(); buildRig(); buildFloor(); buildFlow();
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5;
-    scene.environmentRotation.y = Math.PI / 2; }      // girado 90°: si no, el suelo pulido refleja un panel de luz del entorno detrás del pedestal P y se ve todo blanco
-  scene.fog = new THREE.FogExp2(0x000000, 0.035);
+  mats(); buildMats(); softLights(); S.flow = [];
+  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55; }
+  scene.background = new THREE.Color(0xf3ede6); scene.add(softBackdrop());
   buildCenter(); buildStations();
-  post.uniforms.ca.value = 0.4;
+  post.uniforms.ca.value = 0.25; post.uniforms.vig.value = 0.16; post.uniforms.bloom.value = 0.35;
   buildCam(); buildHudPlan();
   for (const m of LMS) m.resolution.set(W * PR, H * PR);
   window.K = K; window.END = END; window.dbgEval = s => eval(s);

@@ -43,7 +43,6 @@ window.renderCover = function () {
   if (window.camOverride) window.camOverride(cam, v3);
   const VP = vpOf(); flowUpdate(t, VP, VP); fxUpdate(t, VP, VP);
   post.uniforms.m0.value.set(0, 0); post.uniforms.J.value.set(0, 0, 0, 0); post.uniforms.flash.value = 0; post.uniforms.white.value = 0;
-  if (S.ctrCone) S.ctrCone.visible = false;      // en la portada, sin el haz del centro (de frente se ve como columnas)
   hudBegin(); drawFrame(t);
   return true;
 };
@@ -70,12 +69,11 @@ window.renderCover = function () {
     tuvo8: atL(8, 'tuvo'), artritis8: atL(8, 'artritis'), ninguna8: atL(8, 'ninguna'), mano8: atL(8, 'mano'), dieron8: atL(8, 'dieron'), ig8: atL(8, '=ig'), nobel8: atL(8, 'nobel'), estudio8: atL(8, 'estudio'), n215: atL(8, '=215'), personas8: atL(8, 'personas'), mismo8: atL(8, 'mismo'),
     tu9: atL(9, '=tu'), crujes9: atL(9, 'crujes'), mandaselo9: atL(9, 'mandaselo'), dice9: atL(9, 'dice'), dara9: atL(9, 'dara'), artritis9: atL(9, 'artritis'),
   };
-  mats(); buildMats(); buildRig(); buildFloor(); buildFlow();
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.5;
-    scene.environmentRotation.y = Math.PI / 2; }      // girado 90°: si no, el suelo pulido refleja un panel de luz del entorno detrás del pedestal P y se ve todo blanco
-  scene.fog = new THREE.FogExp2(0x000000, 0.035);
+  mats(); buildMats(); softLights(); S.flow = [];
+  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55; }
+  scene.background = new THREE.Color(0xf3ede6); scene.add(softBackdrop());
   buildCenter(); buildStations();
-  post.uniforms.ca.value = 0.4;
+  post.uniforms.ca.value = 0.25; post.uniforms.vig.value = 0.16; post.uniforms.bloom.value = 0.35;
   buildCam(); buildHudPlan();
   for (const m of LMS) m.resolution.set(W * PR, H * PR);
   window.K = K; window.END = END; window.dbgEval = s => eval(s);

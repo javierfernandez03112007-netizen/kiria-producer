@@ -101,39 +101,40 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    # 1: la mano gigante se cruje los cinco nudillos (un crujido por dedo); el contador de los 50 años
+    # 1: el índice abierto cruje por dentro (0,3 s) y la mano se cruje los demás nudillos (un crujido por dedo); el contador de los 50 años
     for tc in [0.3, 0.64, 0.98, 1.34, 1.72]:
         put("medicina/huesos", tc - 0.01, 0.3, 0.55, 0.12)
     put("lanzamiento/dias", at("médico", 1, 1) - 0.05, 0.9, 0.3, 0.3)
     # 2: la interrogación roja
     put("avion/pregunta", at("tenían", 1, 2) - 0.1, 0.8, 0.38, 0.25)
-    # 3: retrocede hasta el nudillo; tira del dedo; la presión cae; nace la burbuja de golpe
+    # 3: la cámara entra en el dedo (se abre la piel); tira del dedo; la presión cae; el gas se junta; ¡crac!: nace la burbuja de golpe
     put("avion/whoosh_largo", at("final", 1, 2) + 0.2, 1.3, 0.3, 0.35)
     put("lanzamiento/estira", at("tirar", 1, 3) - 0.05, 0.6, 0.38, 0.2)
     put("economia/caida", at("presión", 1, 3) - 0.08, 0.9, 0.35, 0.3)
-    put("lanzamiento/burbuja", at("golpe", 1, 3) - 0.04, 0.5, 0.5, 0.2)
-    # 4: vuelo a la resonancia; el monitor; el cronómetro llega a 0,31 s
+    put("quimica/burbujas", at("gas", 1, 3) - 0.02, 0.6, 0.26, 0.25)
+    put("medicina/huesos", at("golpe", 1, 3) - 0.01, 0.3, 0.6, 0.12)
+    # 4: la cámara sale del dedo y baja el anillo de la resonancia; la pantalla; el cronómetro llega a 0,31 s
     put("medicina/whoosh", at("2015", 1, 4) - 0.25, 0.6, 0.28, 0.2)
     put("medicina/monitor", at("resonancia", 1, 4) - 0.1, 0.9, 0.3, 0.3)
     put("avion/cronometro", at("menos", 1, 4) - 0.05, 0.9, 0.32, 0.3)
-    # 5: vuelo a las campanas; la burbuja que nace y la que se rompe
+    # 5: los dos círculos del debate: la burbuja que nace y la que se rompe
     put("avion/whoosh", at("discute", 1, 5) - 0.45, 0.6, 0.28, 0.2)
     put("quimica/burbujas", at("nacer", 1, 5) - 0.05, 0.6, 0.4, 0.25)
     put("tapas/pop", at("romperse", 1, 5) - 0.05, 0.4, 0.45, 0.15)
     # 6: el reloj de 20 minutos; «no vuelve a crujir»
     put("lanzamiento/tictac", at("durar", 1, 6) - 0.02, at("minutos", 1, 6) + 1.0 - at("durar", 1, 6), 0.3, 0.3)
     put("cerradura/denegado", at("crujir", 1, 6) - 0.05, 0.6, 0.32, 0.2)
-    # 7: vuelo a las manos de Unger; la izquierda cruje (tres veces) y el contador de 50 años
+    # 7: la cámara se aleja y entra la mano izquierda de Unger; la izquierda cruje (tres veces, como en la imagen: un ciclo cada 0,7 s) y el contador de 50 años
     put("avion/whoosh_largo", at("respuesta", 1, 7) - 0.3, 1.0, 0.28, 0.3)
     for k in range(3):
-        put("medicina/huesos", at("crujió", 1, 7) - 0.3 + k * 0.55 + 0.12, 0.3, 0.38, 0.12)
+        put("medicina/huesos", at("crujió", 1, 7) - 0.3 + k * 0.7 + 0.1 - 0.01, 0.3, 0.38, 0.12)
     put("cripto/contador", at("50", 1, 7) - 0.1, 0.9, 0.28, 0.3)
-    # 8: vuelo a las radiografías: sin artritis; el premio; las 215 personas
+    # 8: los dos índices se abren, sanos (sin artritis); el premio; las 215 personas
     put("medicina/whoosh", at("tuvo", 1, 8) - 0.25, 0.6, 0.28, 0.2)
     put("quimica/check", at("ninguna", 1, 8) - 0.1, 0.6, 0.4, 0.2)
     put("economia/medalla", at("ig", 1, 8) - 0.12, 0.6, 0.42, 0.2)
     put("magisterio/munecos", at("215", 1, 8) - 0.15, 1.0, 0.35, 0.3)
-    # 9: vuelta a la mano gigante, que se cruje otra vez
+    # 9: vuelta a la mano, que se cruje otra vez
     put("avion/whoosh_largo", at("tú", 1, 9) - 0.2, 1.2, 0.28, 0.3)
     for i in (1, 3):
         put("medicina/huesos", at("mándaselo", 1, 9) + 0.15 + (i - 1) * 0.14 - 0.01, 0.3, 0.42, 0.12)
