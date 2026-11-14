@@ -3,7 +3,37 @@
 Lo escribe cada día el chat «Análisis y plan · kiria.ai» (instrucciones en `ANALISIS_DIARIO.md`). La misma versión está en Notion,
 página «📈 Análisis de contenido · kiria.ai».
 
-## Última actualización: viernes 13-11-2026, 10:00
+## Última actualización: sábado 14-11-2026, 10:00
+
+**Datos**: Instagram, captura del 13-11 a las 20:36 (cuarto día sin la de las 08:33). Sin captura nueva de TikTok. **3,78 M de
+visualizaciones** en Instagram (+37.300 en 24 h; el ritmo baja: +70.000, +47.500, +37.300).
+
+- **No se ha subido nada desde Odontología (jue 12).** Enfermería tenía que salir hoy a las 10:00 y sigue en «Guion» (sin la voz de Javi); lo
+  mismo Farmacia, Biología, Periodismo, Nutrición y Criminología. Nvidia está hecho (producción, 13-11), pero no tiene fila en el calendario.
+  **El cuello de botella es grabar la voz**: con el lote grabado de una vez (plan del 11-11) se llena la semana.
+- **Odontología**: 8.646 en 34,7 h (+5.859), 57,6 % pasa de 3 s, 25,6 s de media (50 % de 51 s). Se comparte mucho (27 por cada 1.000) y se
+  guarda poco (6,7). Arranca peor que ADE (21.586 en 24 h). Para Javi fue «un completo caos» de hacer.
+- Las carreras antiguas siguen sumando solas: Industrial +7.830, Mecánica +5.613, Derecho +3.548. GTA 6, +2.596 (188.818).
+
+**Prueba A/B (duración)**: sin datos todavía: Veterinaria no tiene fila de métricas y el lote de ≤ 145 palabras no se ha subido.
+
+### Vídeo recomendado: «Ciencias del Deporte por dentro» · viernes 20-11 a las 10:00
+Es la fórmula que más ha funcionado (✅ «acabas la carrera… y todavía no eres…», como Derecho y Magisterio) en una carrera con muchísima gente y
+un bulo popular («jugar al fútbol»), que da a quién mandárselo. 139 palabras. Fuentes en `projects/cafyd/FUENTES.md` (LOE art. 94, Orden ECI/3858/2007).
+Estilo de Derecho: un silbato gigante cae como el mazo sobre un pupitre de instituto y lo parte; pedestales con el balón medicinal, el cronómetro,
+el título del máster con su sello y el temario de la oposición frente al tribunal; balanza final entre el silbato y la tiza.
+
+```
+Estudias cuatro años de Ciencias del Deporte… y todavía no puedes dar Educación Física en un instituto. ¿Qué te falta? Te lo digo al final. Son cuatro años: anatomía, fisiología del ejercicio, biomecánica, entrenamiento… y muchas horas en el pabellón. Sales sabiendo preparar a un atleta, diseñar un entrenamiento o readaptar a alguien después de una lesión. Pero para dar clase en secundaria, la ley pide algo más: el máster de profesorado. Un año más, sesenta créditos. Y para la pública, después del máster, la oposición: temario, un examen práctico y la programación de todo un curso, que defiendes delante de un tribunal. La respuesta: el grado te hace experto en deporte. Para ser profe, te faltan el máster… y la oposición. ¿Entrenador o profe de Educación Física? Mándaselo a quien dice que su carrera es jugar al fútbol.
+```
+
+### Alternativas
+1. **Trabajo Social por dentro** (buscar el giro de acceso con fuente).
+2. **Fisioterapia por dentro**: descartada por ahora. El «quiromasaje frente a fisioterapia» no tiene una fuente legal clara (solo la postura del Consejo de Fisioterapeutas).
+
+---
+
+## Actualización anterior: viernes 13-11-2026, 10:00
 
 **Datos**: Instagram, captura del 12-11 a las 20:34 (es el tercer día seguido sin la de las 08:33). TikTok, captura de hoy a las 08:41.
 **3,74 M de visualizaciones** en Instagram (+47.500 en 24 h, la mitad que el día anterior).
