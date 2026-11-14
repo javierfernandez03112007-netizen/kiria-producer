@@ -79,6 +79,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
+   - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
+     congela en 2 segundos y luego, por dentro». Pidió «Homer Simpson o algo así»: se hace un **personaje propio** con ese aire (heladero
+     rechoncho y calvo, uniforme blanco, gorra, pajarita), porque Homer es de Disney/Fox. Guion de 144 palabras con fuentes; esperando su MP3.
    - Cuerpo («qué pasa cuando…»): las agujetas no son ácido láctico · los dedos arrugados en el agua (lo hace tu sistema nervioso) · se te
      duerme el pie · el «cerebro congelado» con el helado · estornudar al mirar al sol · la piel de gallina · el hipo · el bostezo contagioso.
    - Aparatos: el GPS (sin la relatividad de Einstein fallaría kilómetros cada día) · la pantalla táctil (siente la electricidad de tu dedo)
