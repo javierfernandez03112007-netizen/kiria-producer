@@ -77,10 +77,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 - Primer vídeo: **el microondas** (`projects/microondas/`, guion 14-11). Lista de siguientes en «Próximas ideas».
 
 ## Próximas ideas
-0. **«Así funciona» (nueva dinámica, 14-11), por orden**: el microondas (hecho el guion) · el GPS del móvil (sin la relatividad de Einstein se
-   desviaría kilómetros cada día; dato por confirmar) · el chip: de la arena a tu móvil (la máquina de luz EUV; enlaza con Nvidia) · internet
-   viaja bajo el mar (cables submarinos; % por confirmar) · la nevera no fabrica frío (bomba de calor) · la pantalla táctil (siente la
-   electricidad de tu dedo) · la tarjeta sin contacto (no tiene batería). Cada dato, con fuente antes de grabar.
+0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
+   pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
+   - Cuerpo («qué pasa cuando…»): las agujetas no son ácido láctico · los dedos arrugados en el agua (lo hace tu sistema nervioso) · se te
+     duerme el pie · el «cerebro congelado» con el helado · estornudar al mirar al sol · la piel de gallina · el hipo · el bostezo contagioso.
+   - Aparatos: el GPS (sin la relatividad de Einstein fallaría kilómetros cada día) · la pantalla táctil (siente la electricidad de tu dedo)
+     · la tarjeta sin contacto (no tiene batería) · la nevera no fabrica frío · el airbag (se infla en una fracción de segundo).
+   - Sistemas y avances: internet viaja bajo el mar · el chip, de la arena a tu móvil · cómo llega la luz a tu enchufe.
 1. **Psicología** (elegida el 1-11-2026; plan y datos en `projects/psicologia/IDEA.md` y `FUENTES.md`): «Estudias cuatro años de Psicología… y la ley no te deja tratar ni a un solo paciente» → Máster en Psicología General
    Sanitaria o PIR. (Comprobar Ley 33/2011, créditos del máster, plazas PIR y nota de corte antes del guion.)
 2. Medicina (6 años + MIR), duelos (ADE vs Economía, Matemáticas vs Física, Arquitectura vs Edificación, Informática vs Ciencia de Datos),

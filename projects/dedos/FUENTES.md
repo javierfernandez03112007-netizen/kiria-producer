@@ -1,0 +1,11 @@
+# Fuentes · «Qué pasa cuando te crujes los dedos» (14-11-2026)
+
+| Dato del guion | Fuente | Nota |
+|---|---|---|
+| El nudillo es una cápsula con líquido (sinovial); al tirar del dedo la presión cae y el gas forma una burbuja | Kawchuk et al., «Real-Time Visualization of Joint Cavitation», PLOS ONE, 15-4-2015 (resumen en Science News: https://www.sciencenews.org/article/researchers-pull-fingers-solve-why-knuckles-crack y ScienceDaily: https://sciencedaily.com/releases/2015/04/150415155320.htm) | Cavitación: se forma una cavidad de gas en el líquido sinovial. |
+| En 2015 lo grabaron con una resonancia: menos de un tercio de segundo | Kawchuk 2015: vídeo de resonancia magnética; cada crujido, en menos de 310 milisegundos | Un solo participante (10 dedos). |
+| Aún se discute si el ruido es la burbuja al formarse o al romperse | Kawchuk 2015 (al formarse) frente a Unsworth 1971 y Chandran Suja y Barakat, Scientific Reports 8:4600 (2018) (al romperse en parte): https://pmc.ncbi.nlm.nih.gov/articles/PMC5876406/ | |
+| La burbuja puede durar hasta 20 minutos; por eso ese dedo no vuelve a crujir enseguida | Kawchuk 2015: la burbuja seguía en la articulación hasta 20 minutos después (Science News Explores: https://www.snexplores.org/article/mystery-solved-why-knuckles-crack) | La espera para volver a crujir se explica porque el gas tiene que volver a disolverse. |
+| Donald Unger se crujió los dedos de una sola mano (la izquierda), al menos dos veces al día, durante 50 años; no tuvo artritis en ninguna mano | Unger, carta en Arthritis & Rheumatism (1998), «Does Knuckle Cracking Lead to Arthritis of the Fingers?» · Live Science: https://www.livescience.com/9729-knuckle-cracking-ig-nobel-prize.html · Improbable Research: https://improbable.com/2010/02/15/ig-nobel-acceptance-speech-knuckle-cracking/ | Su carta dice 50 años (algunas noticias dicen 60): se usa 50. |
+| Le dieron un Ig Nobel | Premio Ig Nobel de Medicina 2009 (The Tech: https://thetech.com/2009/10/02/ignobels-v129-n41) | |
+| Un estudio con 215 personas dijo lo mismo | deWeber et al., J Am Board Fam Med (2011): sin diferencia en el riesgo de artrosis de la mano entre quien se cruje los dedos y quien no | Lo de Unger es una sola persona: por eso se añade el estudio. |
