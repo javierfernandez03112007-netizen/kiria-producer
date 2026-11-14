@@ -136,8 +136,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   pasaba a la mano en rayos X).
   **Versión 2 (la buena, Javi 14-11 con 3 imágenes de referencia)**: «muy muy visual, que se vea la mano, un dedo de verdad, luego por dentro…
   con un fondo suave, cosas así no tan perfectas». Se tiró la de rayos X y se rehízo como **ilustración médica sobre fondo claro**: mano de piel
-  real con el índice que se abre con un corte (hueso marfil, cartílago azul, cápsula, líquido con el gas, vasos, nervio, burbuja con contorno
-  azul), pasos numerados como en una lámina y textos en tinta oscura. Render a ≈ 2 s por fotograma; 6 máquinas de ayuda (rama `render-ddo2-*`).
+  real con el índice que se abre con un corte, como en su lámina «¿Por qué crujen los dedos?»: músculo rojo con fibras (textura en la cara
+  trasera de la piel) y, junto al borde del corte, la piel y la grasa amarilla (sombreador: distancia al plano del corte); hueso marfil,
+  cartílago azul, ligamentos y cápsula blancos, líquido azul lleno de burbujitas de gas que crecen al caer la presión y se juntan en la
+  burbuja (contorno azul). Una primera versión con tubos de colores (arteria, vena, nervio) sobre rosa plano parecía un esquema: fuera.
+  Pasos numerados como en una lámina y textos en tinta oscura. Render a ≈ 2 s por fotograma; 6 máquinas de ayuda (rama `render-ddo2-*`).
   Lecciones: (10) **mano realista = una sola superficie**: campo de distancias (cápsulas de falanges y metacarpos, elipsoides de la palma,
   pulgar, membrana del pulgar y antebrazo unidos con mínimo suave) → marching cubes (tablas `triTable` de three) → normales del gradiente →
   esqueleto y pesos calculados (`13_skin.js`, `realHand`). Montarla con piezas (tubos, cápsulas, bolas en los nudillos) parece un maniquí.
