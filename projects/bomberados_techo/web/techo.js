@@ -545,7 +545,7 @@ const BLUE2 = '#3FB6FF', RED2 = '#FF4B3E', GREEN2 = '#3EF08A', GOLD2 = '#FFC83D'
 const COLS = ['#FF7A1A', '#2DD4BF', '#F0457A'];
 const GLOW = (col, k = 1) => { const m = new THREE.MeshBasicMaterial({ color: col, fog: false }); m.color.multiplyScalar(k); return m; };
 const FF = V(0.95, 0, -1.15);                                      // el bombero, agachado junto a la puerta
-let ff, nozzle, fireS, fireRoom, fireL, fireL2, smokeU, steamU, layer, steamBox, pulses = [], jetS, steamP, bottle, cube, cubeM, hoseM, ceilP;
+let ff, nozzle, fireS, fireRoom, fireL, fireL2, smokeU, steamU, layer, steamBox, pulses = [], jetS, steamP, bottle1L, cube, cubeM, hoseM, ceilP;
 
 function addLegs(ff) {
   ff.updateMatrixWorld(true);
@@ -558,23 +558,24 @@ function face(o, dir) { o.rotation.y = Math.atan2(-dir.x, -dir.z); }
 
 // la capa de humo del techo: gas sin quemar que brilla con el fuego de abajo, que prende (combustión súbita) o se enfría
 const LAYER_V = `varying vec3 vW; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`;
-const LAYER_F = `uniform sampler2D uTex; uniform float uTime, uHot, uIgn, uCool, uSteam, uA;
+const LAYER_F = `uniform sampler2D uTex; uniform float uTime, uHot, uIgn, uCool, uSteam, uA; uniform vec3 uFire;
 varying vec3 vW;
 void main(){
   float n = texture2D(uTex, vW.xz * 0.16 + vec2(uTime * 0.035, -uTime * 0.02) + vW.y * 0.05).r;
   float n2 = texture2D(uTex, vW.xz * 0.42 - vec2(uTime * 0.06, uTime * 0.045) + vW.y * 0.1).r;
-  float d = 0.55 + 0.45 * (0.6 * n + 0.4 * n2);
-  vec3 col = vec3(0.07, 0.062, 0.055) * d;
-  col += vec3(1.35, 0.42, 0.1) * uHot * d * (0.35 + 0.65 * n2);
-  col += vec3(3.2, 1.15, 0.22) * uIgn * smoothstep(0.25, 0.75, n * 0.7 + n2 * 0.6);
-  col = mix(col, vec3(0.3, 0.31, 0.33) * d, uCool);
+  float d = 0.6 + 0.4 * (0.6 * n + 0.4 * n2);
+  vec2 df = vW.xz - uFire.xz; float near = exp(-dot(df, df) / 5.0);          // brilla más encima del fuego
+  vec3 col = vec3(0.03, 0.027, 0.024) * d;                                   // humo negro y espeso
+  col += vec3(1.5, 0.45, 0.1) * uHot * d * (0.12 + 0.88 * near) * (0.35 + 0.65 * n2);
+  col += vec3(1.8, 0.6, 0.12) * uIgn * smoothstep(0.3, 0.75, n * 0.7 + n2 * 0.6);
+  col = mix(col, vec3(0.2, 0.21, 0.23) * d, uCool);
   col = mix(col, vec3(0.85, 0.87, 0.9) * (0.75 + 0.25 * n), uSteam);
-  float a = clamp((0.78 * d + 0.25 * uIgn) * uA, 0.0, 0.97);
+  float a = clamp((0.92 * d + 0.08 * uIgn) * uA, 0.0, 0.98);
   gl_FragColor = vec4(col * a, a);
 }`;
 function layerBox(u) {
   const m = new THREE.Mesh(new THREE.BoxGeometry(ROOM_W - 0.02, 1, ROOM_L - 0.02), new THREE.ShaderMaterial({ uniforms: u, vertexShader: LAYER_V, fragmentShader: LAYER_F,
-    transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor }));
+    transparent: true, depthWrite: false, side: THREE.FrontSide, blending: THREE.CustomBlending, blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor }));
   m.renderOrder = 13; world.add(m); return m;
 }
 function setLayer(m, h) { const th = Math.max(0.02, ROOM_H - h); m.scale.y = th; m.position.set(0, h + th / 2, -ROOM_L / 2); }
@@ -597,7 +598,7 @@ function buildWorld() {
   for (const [z0, z1] of rightParts) { const w = new THREE.Mesh(new THREE.PlaneGeometry(z1 - z0, ROOM_H), wallM); w.rotation.y = -Math.PI / 2; w.position.set(ROOM_W / 2, ROOM_H / 2, (z0 + z1) / 2); w.receiveShadow = true; world.add(w); }
   const lint = new THREE.Mesh(new THREE.PlaneGeometry(1.0, ROOM_H - 2.1), wallM); lint.rotation.y = -Math.PI / 2; lint.position.set(ROOM_W / 2, 2.1 + (ROOM_H - 2.1) / 2, -1.1); world.add(lint);
   const corr = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 2.1), new THREE.MeshStandardMaterial({ color: 0x080808, emissive: 0x1a1008, emissiveIntensity: 1 })); corr.rotation.y = -Math.PI / 2; corr.position.set(ROOM_W / 2 + 0.6, 1.05, -1.1); world.add(corr);
-  const ceil = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_L), new THREE.MeshStandardMaterial({ color: 0x6a645c, roughness: 0.95 }));
+  const ceil = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_L), new THREE.MeshStandardMaterial({ color: 0x2a2622, roughness: 0.95 }));
   ceil.rotation.x = Math.PI / 2; ceil.position.set(0, ROOM_H, -ROOM_L / 2); world.add(ceil);
   // los cantos del corte (casa de muñecas)
   const edgeM = new THREE.MeshStandardMaterial({ color: 0x2a2a2e, roughness: 0.8 });
@@ -620,15 +621,15 @@ function buildWorld() {
   const shade = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.22, 0.25, 16, 1, true), new THREE.MeshStandardMaterial({ color: 0xd9cbb0, roughness: 0.9, side: THREE.DoubleSide })); shade.position.set(1.1, 1.55, -5.2); world.add(shade);
   // el fuego del sofá, la luz que parpadea, y el fuego de toda la habitación (solo en la combustión súbita)
   fireS = fireSet(world, V(-0.55, 0.55, -5.0), tongues(9, 5, (i, r) => [-1.45 + i * 0.22 + (r(1) - 0.5) * 0.1, 0.52, -5.0 + (r(2) - 0.5) * 0.4, 0.55 + 0.3 * r(3), 1.1 + 0.9 * r(4)]),
-    { seed: 5, extent: [0.9, 0.1, 0.3], smokeN: 30, smokeSize: 0.7, smokeY: 1.2, emberN: 50, bright: 1.5 });
-  fireRoom = new Flames(tongues(26, 13, (i, r) => [-1.7 + r(1) * 3.4, 0.02 + r(5) * 0.3, -5.4 + r(2) * 4.6, 0.7 + 0.5 * r(3), 1.6 + 1.1 * r(4)]), { seed: 13, bright: 1.6 });
+    { seed: 5, extent: [0.9, 0.1, 0.3], smokeN: 30, smokeSize: 0.7, smokeY: 1.2, emberN: 50, bright: 1.25 });
+  fireRoom = new Flames(tongues(26, 13, (i, r) => [-1.7 + r(1) * 3.4, 0.02 + r(5) * 0.3, -5.4 + r(2) * 4.6, 0.7 + 0.5 * r(3), 1.6 + 1.1 * r(4)]), { seed: 13, bright: 0.95 });
   world.add(fireRoom.mesh);
   fireL = new THREE.PointLight(0xff6a1a, 25, 0, 2); fireL.position.set(-0.55, 1.2, -4.6); world.add(fireL);
   fireL2 = new THREE.PointLight(0xff5a10, 0, 0, 2); fireL2.position.set(0, 2.2, -2.8); world.add(fireL2);
   // la capa de humo (y la de vapor)
-  smokeU = { uTex: { value: NOISE }, uTime: { value: 0 }, uHot: { value: 0.6 }, uIgn: { value: 0 }, uCool: { value: 0 }, uSteam: { value: 0 }, uA: { value: 1 } };
+  smokeU = { uTex: { value: NOISE }, uTime: { value: 0 }, uHot: { value: 0.6 }, uIgn: { value: 0 }, uCool: { value: 0 }, uSteam: { value: 0 }, uA: { value: 1 }, uFire: { value: V(-0.55, 2, -4.9) } };
   layer = layerBox(smokeU);
-  steamU = { uTex: { value: NOISE }, uTime: { value: 0 }, uHot: { value: 0 }, uIgn: { value: 0 }, uCool: { value: 0 }, uSteam: { value: 1 }, uA: { value: 0 } };
+  steamU = { uTex: { value: NOISE }, uTime: { value: 0 }, uHot: { value: 0 }, uIgn: { value: 0 }, uCool: { value: 0 }, uSteam: { value: 1 }, uA: { value: 0 }, uFire: { value: V(-0.55, 2, -4.9) } };
   steamBox = layerBox(steamU); steamBox.renderOrder = 14;
   ceilP = new Parts(60, { life: 6, rise: 0.05, acc: 0, size: 1.4, grow: 1.6, turb: 0.5, rot: 6.28, opacity: 0.5, c: [[0.09, 0.08, 0.07], [0.07, 0.065, 0.06], [0.06, 0.055, 0.05], [0.05, 0.05, 0.05]], seed: 61, extent: [1.8, 0.2, 2.6], order: 12 });
   ceilP.at(0, 2.35, -2.8); world.add(ceilP.mesh);
@@ -649,9 +650,9 @@ function buildWorld() {
   steamP = new Parts(120, { life: 3.0, rise: -0.45, acc: 0, size: 1.2, grow: 2.2, turb: 0.6, rot: 6.28, opacity: 0, c: [[0.95, 0.96, 1.0], [0.85, 0.87, 0.9], [0.75, 0.77, 0.8], [0.65, 0.66, 0.7]], seed: 93, extent: [1.6, 0.2, 2.2], order: 14 });
   steamP.at(-0.2, 2.4, -2.9); world.add(steamP.mesh);
   // 1 litro → 1.700 litros de vapor
-  bottle = new THREE.Group(); bottle.position.set(0.15, 0, -2.05); world.add(bottle);
-  const bg = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.24, 20), new THREE.MeshPhysicalMaterial({ color: 0x8fd0ff, roughness: 0.1, transmission: 0.6, transparent: true, opacity: 0.8 })); bg.position.y = 0.12; bottle.add(bg);
-  const bc = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.04, 12), new THREE.MeshStandardMaterial({ color: 0x2060c0 })); bc.position.y = 0.26; bottle.add(bc);
+  bottle1L = new THREE.Group(); bottle1L.position.set(0.15, 0, -2.05); world.add(bottle1L);
+  const bg = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.24, 20), new THREE.MeshPhysicalMaterial({ color: 0x8fd0ff, roughness: 0.1, transmission: 0.6, transparent: true, opacity: 0.8 })); bg.position.y = 0.12; bottle1L.add(bg);
+  const bc = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.04, 12), new THREE.MeshStandardMaterial({ color: 0x2060c0 })); bc.position.y = 0.26; bottle1L.add(bc);
   cubeM = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x9aa6b4, emissiveIntensity: 0.5, transparent: true, opacity: 0.0, roughness: 1, depthWrite: false });
   cube = new THREE.Mesh(new RoundedBoxGeometry(1.19, 1.19, 1.19, 3, 0.08), cubeM); cube.position.set(-0.75, 0.6, -2.5); cube.renderOrder = 15; world.add(cube);
 }
@@ -735,8 +736,8 @@ function update(t) {
   const sofaK = (1 - 0.45 * wi) * (1 - 0.4 * sm(T.jet0, T.jet1, t));
   fireS.F.u.uInt.value = Math.max(sofaK, room);
   fireRoom.u.uInt.value = room;
-  fireL.intensity = (22 + 8 * Math.sin(t * 17) * Math.sin(t * 4.3)) * Math.max(sofaK, 0.4) + 60 * room;
-  fireL2.intensity = 45 * ign + 40 * room;
+  fireL.intensity = (22 + 8 * Math.sin(t * 17) * Math.sin(t * 4.3)) * Math.max(sofaK, 0.4) + 30 * room;
+  fireL2.intensity = 30 * ign + 25 * room;
   // la capa de humo: baja, brilla, prende o se enfría; el vapor (a chorro) baja hasta el suelo
   let h = mx(1.75, 1.35, sm(T.arriba, T.seiscientos, t)); h = mx(h, 1.85, cool); h = mx(h, 2.05, sm(T.jet0, T.jet0 + 1, t));
   setLayer(layer, h);
@@ -759,7 +760,7 @@ function update(t) {
   jetS.u.uOn0.value = cur[0]; jetS.u.uOn1.value = cur[1];
   // 1 litro y 1.700 litros
   const bA = sm(T.litro - 0.2, T.litro + 0.1, t) * (1 - sm(T.chorro - 0.3, T.chorro, t));
-  bottle.visible = bA > 0.01; bottle.scale.setScalar(0.3 + 0.7 * bk(cl(bA)));
+  bottle1L.visible = bA > 0.01; bottle1L.scale.setScalar(0.3 + 0.7 * bk(cl(bA)));
   const cA = e3(pr(t, T.mil - 0.1, 0.9)) * (1 - sm(T.chorro - 0.3, T.chorro, t));
   cube.visible = cA > 0.01; cube.scale.setScalar(Math.max(0.01, cA)); cube.position.y = 0.6 * cA; cubeM.opacity = 0.55 * cl(cA * 1.5);
 }
@@ -788,7 +789,7 @@ function stamp(text, y, col, a, px = 170, rot = -0.06) {
   g.restore();
 }
 function thermo(t) {                    // termómetro del humo, pegado a la capa
-  const a = sm(0.3, 0.7, t) * (1 - sm(T.porque - 0.3, T.porque, t)) + sm(T.chorro, T.chorro + 0.3, t) * (1 - sm(T.habrias - 0.3, T.habrias, t));
+  const a = sm(0.3, 0.7, t) * (1 - sm(T.porque - 0.3, T.porque, t));
   if (a <= 0.01) return;
   const v = temp(t), hot = v >= 590, cold = v < 300;
   const col = hot ? RED2 : cold ? CYAN2 : ORANGE2;
@@ -852,7 +853,7 @@ async function overlay(t) {
   }
   stamp('¡TIEMPO!', 1080, RED2, Math.exp(-Math.pow((t - T.tiempo - 0.35) / 0.32, 4)), 180);
   // 1 litro → 1.700 litros
-  const pb = proj(bottle.localToWorld(V(0, 0.45, 0))), pq = proj(V(-0.75, 1.45, -2.5));
+  const pb = proj(bottle1L.localToWorld(V(0, 0.45, 0))), pq = proj(V(-0.75, 1.45, -2.5));
   chip(pb.x + 30, pb.y, '1 L DE AGUA', CYAN2, pb.ok ? sm(T.litro - 0.1, T.litro + 0.2, t) * (1 - sm(T.chorro - 0.3, T.chorro, t)) : 0, 1, null, 54);
   chip(pq.x, pq.y - 30, '1.700 L DE VAPOR', '#F4F6F8', pq.ok ? sm(T.mil + 0.2, T.mil + 0.5, t) * (1 - sm(T.chorro - 0.3, T.chorro, t)) : 0, 1 + 0.12 * pulse(t, T.mil + 0.45, 0.2), null, 62);
   // a chorro: el vapor baja y quema
@@ -887,7 +888,7 @@ window.renderAt = async t => {
   }
   if (N > 1) update(t);
   finMat.uniforms.tSrc.value = accRT.texture; finMat.uniforms.uTime.value = t;
-  const fl1 = Math.exp(-Math.pow((t - T.tiempo - 0.03) / 0.07, 2)) * 0.35, fl2 = Math.exp(-Math.pow((t - T.room0 - 0.05) / 0.09, 2)) * 0.2, fl3 = Math.exp(-Math.pow((t - T.rew1) / 0.08, 2)) * 0.3;
+  const fl1 = Math.exp(-Math.pow((t - T.tiempo - 0.03) / 0.07, 2)) * 0.35, fl2 = Math.exp(-Math.pow((t - T.room0 - 0.05) / 0.09, 2)) * 0.12, fl3 = Math.exp(-Math.pow((t - T.rew1) / 0.08, 2)) * 0.3;
   const fm = Math.max(fl1, fl2, fl3);
   finMat.uniforms.uFlash.value = fm;
   if (fm === fl3) finMat.uniforms.uFlashCol.value.setRGB(1, 1, 1); else if (fm === fl2) finMat.uniforms.uFlashCol.value.setRGB(1, 0.6, 0.3); else finMat.uniforms.uFlashCol.value.setRGB(1, 0.35, 0.3);
