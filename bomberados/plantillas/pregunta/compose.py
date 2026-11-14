@@ -2251,7 +2251,102 @@ def sfx_track_alfabeto(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_techo(path):
+    """«¿Por qué el bombero echa el agua al techo?»: el fuego del salón, cada golpe corto de agua con su silbido de vapor,
+    «¿error?» / «técnica», el humo que se calienta (tensión), la combustión súbita (estallido grave y el fuego que ruge) y el
+    rebobinado, los golpes que enfrían, el reto con la cuenta y la bocina, 1 L → 1.700 L de vapor, el chorro con el vapor
+    que baja, las letras y la venta. Tiempos como en techo.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["count0"] = LINES[5]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["ign0"] = c["golpe3"] - 0.15; T["room0"] = c["arde"] - 0.1; T["rew0"] = c["poreso"] - 0.45; T["rew1"] = c["poreso"] + 0.05
+    pulses = [0.15, 0.95, 1.75, c["golpes4"], c["golpes4"] + 0.55, c["golpes4"] + 1.1]
+    T["jet0"] = c["chorro"] - 0.05; T["jet1"] = c["quema"] + 0.6
+    nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
+    fuego, agua, vapor = _load("fuego"), _onset(_load("agua")), _onset(_load("vapor"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # el fuego del salón todo el vídeo (más fuerte en la combustión súbita) y una tensión de fondo
+    put(_loop(fuego, END + 0.5), 0.0, -24, T["fin"], 0.01, 1.2, track=amb)
+    put(_loop(fuego, 6.0), T["room0"] - 0.1, -17, T["rew0"] - T["room0"] + 0.2, 0.05, 0.15)
+    put("tension", c["arriba"] - 0.2, -30, T["ign0"] - c["arriba"] + 0.4, 0.5, 0.2, track=amb)
+    # gancho: golpe y latido; cada golpe corto de agua con su silbido de vapor
+    put("golpe", 0.0, -24, 0.8, 0.003, 0.35)
+    put("latido", 0.1, -25, 0.7)
+    for t0 in pulses:
+        put(agua, t0, -22, 0.32, 0.01, 0.08)
+        put(vapor, t0 + 0.12, -30, 0.7, 0.05, 0.4)
+    # «¿error?» → «técnica»
+    put(_pitch(toque, 0.8), c["equivocado"] - 0.03, -27, 0.3)
+    put("acierto", c["tecnica"] - 0.02, -24, 0.8)
+    # el humo se calienta… y prende: estallido grave, ruido del fuego y rebobinado
+    put(_pitch(_onset(_load("whoosh")), 0.7), c["seiscientos"] - 0.2, -27, 0.8)
+    put("golpe", T["ign0"], -18, 0.9, 0.002, 0.4)
+    put(_pitch(_onset(_load("trueno")), 0.75), T["ign0"], -20, 1.6, 0.003, 0.8)
+    put(_pitch(_onset(_load("whoosh2")), 0.7), T["room0"] - 0.05, -22, 0.9)
+    wr = _onset(_load("whoosh2"))[::-1].copy()
+    put(wr, T["rew0"], -22, 0.5, 0.05, 0.05)
+    put("destello", T["rew1"] - 0.05, -25, 0.5)
+    put(_pitch(nota, 1.3), c["enfrian"] - 0.03, -28, 0.7)
+    # el reto: tarjetas, cuenta con bocina y «¡Tiempo!»
+    put("whoosh2", c["oA"] - 0.3, -29, 0.8)
+    for k, key in enumerate(("oA", "oB", "oC")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -19, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    put("fallo", c["tiempo"] + 0.12, -26, 0.5)
+    put("acierto", c["cocerse7"] - 0.02, -23, 0.9)
+    # 1 litro → 1.700 litros de vapor
+    put(_pitch(bub, 0.8), c["litro"] - 0.05, -25, 0.3)
+    put(vapor, c["mil"] - 0.05, -22, 1.4, 0.05, 0.6)
+    put("destello", c["mil"] + 0.35, -26, 0.6)
+    # a chorro: el agua sin parar y el vapor que baja
+    put(_loop(agua, 6.0), T["jet0"], -21, T["jet1"] - T["jet0"], 0.05, 0.3)
+    put(_loop(vapor, 6.0), T["jet0"] + 0.3, -21, c["habrias"] - T["jet0"], 0.4, 0.8)
+    put("latido", c["quema"] - 0.05, -22, 0.7)
+    # final: vuelven las letras y «confiésalo»
+    put("whoosh2", c["habrias"] - 0.3, -27, 0.8)
+    for i in range(3):
+        put(_pitch(bub, 1 + 0.06 * i), c["habrias"] - 0.2 + 0.07 * i, -27, 0.25)
+    put(_pitch(toque, 1.3), c["confiesalo"] - 0.03, -27, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "techo":
+        return sfx_track_techo(path)
     if Q.get("formato") == "alfabeto":
         return sfx_track_alfabeto(path)
     if Q.get("formato") == "reto":
