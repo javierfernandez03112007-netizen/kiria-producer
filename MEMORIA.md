@@ -140,7 +140,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   trasera de la piel) y, junto al borde del corte, la piel y la grasa amarilla (sombreador: distancia al plano del corte); hueso marfil,
   cartílago azul, ligamentos y cápsula blancos, líquido azul lleno de burbujitas de gas que crecen al caer la presión y se juntan en la
   burbuja (contorno azul). Una primera versión con tubos de colores (arteria, vena, nervio) sobre rosa plano parecía un esquema: fuera.
-  Pasos numerados como en una lámina y textos en tinta oscura. Render a ≈ 2 s por fotograma; 6 máquinas de ayuda (rama `render-ddo2-*`).
+  Pasos numerados como en una lámina y textos en tinta oscura. **Entregado el 14-11 a las 20:10** (47,1 s, −14,9 LUFS; ramas
+  `render-ddo3-*`; la v1 de rayos X queda en `render-ddo-*` y una prueba intermedia en `render-ddo2-*`). Ojo con `fetch_compose.sh`: si
+  falta `out/frames`, marca el trozo como hecho sin meter los fotogramas (crear la carpeta antes). Render a ≈ 2 s por fotograma; 6 máquinas de ayuda (rama `render-ddo2-*`).
   Lecciones: (10) **mano realista = una sola superficie**: campo de distancias (cápsulas de falanges y metacarpos, elipsoides de la palma,
   pulgar, membrana del pulgar y antebrazo unidos con mínimo suave) → marching cubes (tablas `triTable` de three) → normales del gradiente →
   esqueleto y pesos calculados (`13_skin.js`, `realHand`). Montarla con piezas (tubos, cápsulas, bolas en los nudillos) parece un maniquí.
