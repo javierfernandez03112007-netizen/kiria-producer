@@ -28,6 +28,7 @@ window.renderAt = function (t) {
   if (window.LABDAY) { hemi.color.set(0xfff4ea); hemi.groundColor.set(0xb9a99b); hemi.intensity = 0.8; key.intensity = 2.6; key.position.set(-3, 4.2, 3.4); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
     const c = key.shadow.camera; c.left = c.bottom = -9; c.right = c.top = 9; c.near = 0.5; c.far = 40; key.shadow.normalBias = 0.02; key.target.position.set(0, -5, 0); scene.add(key.target);
     const fill = new THREE.DirectionalLight(0xdfeaff, 0.6); fill.position.set(4, 1, 3); const rim = new THREE.DirectionalLight(0xffffff, 1.4); rim.position.set(2, 3, -5); scene.add(fill, rim); scene.environmentIntensity = 0.6; }
+  if (typeof preloadHero === 'function') await preloadHero();
   S.hero = buildHero(); scene.add(S.hero); S.hero.traverse(o => { o.renderOrder = 30; }); FZ.gh.value = window.GHOST ?? (window.LABDAY ? 0 : 1); S.hero.visible = !window.NOHERO;
   { const U = S.hero.userData; armPose(U, v3(-0.36, -1.66, 1.62), v3(0.2, 0.8, -0.56), v3(-2, -3.9, 0.9)); }
   post.uniforms.ca.value = 0.25; post.uniforms.vig.value = 0.35; post.uniforms.bloom.value = 0.9;

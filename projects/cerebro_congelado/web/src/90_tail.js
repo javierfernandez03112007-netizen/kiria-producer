@@ -75,6 +75,7 @@ window.renderCover = function () {
   mats(); buildMats(); S.flow = [];
   buildWorld(); cam.far = 30000; cam.updateProjectionMatrix();
   { const pm = new THREE.PMREMGenerator(renderer); S.envRoom = pm.fromScene(new RoomEnvironment(), 0.04).texture; S.envSky = scene.environment; }
+  if (typeof preloadHero === 'function') await preloadHero();      // modelos y texturas del personaje (si los usa)
   buildCenter(); buildStations();
   post.uniforms.ca.value = 0.25; post.uniforms.vig.value = 0.16; post.uniforms.bloom.value = 0.35;
   buildCam(); buildHudPlan();
