@@ -571,6 +571,7 @@ void main(){
   col = mix(col, vec3(0.2, 0.21, 0.23) * d, uCool);
   col = mix(col, vec3(0.85, 0.87, 0.9) * (0.75 + 0.25 * n), uSteam);
   float a = clamp((0.92 * d + 0.08 * uIgn) * uA, 0.0, 0.98);
+  a *= mix(1.0, 0.3 + 0.7 * smoothstep(0.0, 2.7, vW.y), uSteam);              // el vapor, más denso arriba: se ve al bombero dentro
   gl_FragColor = vec4(col * a, a);
 }`;
 function layerBox(u) {
@@ -745,8 +746,8 @@ function update(t) {
   smokeU.uCool.value = cool * (1 - 0.3 * pulse(t, T.golpes4 + 0.3, 0.3)); smokeU.uA.value = 1 - 0.5 * sm(T.jet0, T.jet0 + 1.2, t);
   const st = sm(T.jet0 + 0.2, T.suelo + 0.4, t) * (1 - sm(T.habrias - 0.3, T.habrias + 0.5, t));
   setLayer(steamBox, mx(ROOM_H - 0.02, 0.12, e3(pr(t, T.jet0 + 0.2, T.suelo + 0.4 - T.jet0 - 0.2))));
-  steamU.uTime.value = t; steamU.uA.value = 0.75 * st;
-  steamP.u.uTime.value = t; steamP.u.uOpacity.value = 0.5 * st;
+  steamU.uTime.value = t; steamU.uA.value = 0.62 * st;
+  steamP.u.uTime.value = t; steamP.u.uOpacity.value = 0.32 * st;
   ceilP.u.uTime.value = t; ceilP.u.uOpacity.value = 0.45 * (1 - 0.6 * cool) * (1 - st);
   // la lanza: al techo (golpes), al sofá en la versión mala
   const pitch = mx(0.8, -0.2, wi);
@@ -857,6 +858,8 @@ async function overlay(t) {
   chip(pb.x + 30, pb.y, '1 L DE AGUA', CYAN2, pb.ok ? sm(T.litro - 0.1, T.litro + 0.2, t) * (1 - sm(T.chorro - 0.3, T.chorro, t)) : 0, 1, null, 54);
   chip(pq.x, pq.y - 30, '1.700 L DE VAPOR', '#F4F6F8', pq.ok ? sm(T.mil + 0.2, T.mil + 0.5, t) * (1 - sm(T.chorro - 0.3, T.chorro, t)) : 0, 1 + 0.12 * pulse(t, T.mil + 0.45, 0.2), null, 62);
   // a chorro: el vapor baja y quema
+  const hv = sm(T.quema - 0.15, T.quema + 0.25, t) * (1 - sm(T.habrias - 0.4, T.habrias + 0.1, t));   // el vapor quema: borde rojo de calor
+  if (hv > 0) { const gr = g.createRadialGradient(540, 1000, 360, 540, 1000, 1150); gr.addColorStop(0, 'rgba(255,60,20,0)'); gr.addColorStop(1, `rgba(255,48,14,${0.48 * hv * (0.82 + 0.18 * Math.sin(t * 9))})`); g.save(); g.fillStyle = gr; g.fillRect(0, 0, 1080, 1920); g.restore(); }
   chip(540, 1500, 'A CHORRO', RED2, sm(T.chorro - 0.1, T.chorro + 0.2, t) * (1 - sm(T.suelo - 0.2, T.suelo, t)), 1, 'warn', 58);
   chip(540, 1500, 'VAPOR A +100 °C: QUEMA', RED2, sm(T.quema - 0.15, T.quema + 0.15, t) * (1 - sm(T.habrias - 0.3, T.habrias, t)), 1.0 + 0.1 * pulse(t, T.quema + 0.15, 0.2), 'warn', 58);
   // final: confiésalo
