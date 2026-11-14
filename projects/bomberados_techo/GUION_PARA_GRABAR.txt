@@ -1,0 +1,53 @@
+«¿POR QUÉ EL BOMBERO ECHA EL AGUA AL TECHO?» — idea de Javi (14 nov): parece que lo hace mal, pero es una técnica.
+
+CÓMO LO HE PLANTEADO (MENSAJE.md y el plan del 13 nov: bombero en acción y la teoría explicada con una situación real):
+- UNA idea: el peligro está arriba. El humo es gas sin quemar y, hacia los 600 °C, prende de golpe y arde toda la
+  habitación (la combustión súbita generalizada, «flashover»). Por eso el bombero da golpes cortos de agua al techo: lo enfría
+  antes de que prenda.
+- Gancho de alarma con sorpresa: «¡Este bombero echa el agua al techo… y el fuego está en el sofá!» → «¿Se ha equivocado? No:
+  es una técnica» (tu frase).
+- La trampa se VE: si apuntara al sofá, el humo del techo prendería y ardería toda la habitación con él dentro.
+- Reto con cuenta de 5 s y «¡Tiempo!»: «¿Y por qué a golpes? ¿Para que llegue más lejos, para no cocerse con el vapor… o
+  para ver el fuego?» → para no cocerse: un litro de agua da 1.700 litros de vapor; a chorro, el vapor baja y quema.
+- Cierre que contesta cualquiera: «¿Tú habrías apuntado al fuego? Confiésalo» y «mándaselo a quien quiera ser bombero».
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 48 s de voz + 4 s de cuenta (≈ 52 s). RÁPIDO. La cuenta 1-2-3-4-5 NO se graba: la meto yo (con bocina en el 5).
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[alarmed, surprised] ¡Este bombero echa el agua al TECHO… [urgent] y el fuego está en el sofá!
+[curious] ¿Se ha equivocado? [confident] No: es una técnica.
+[tense, explaining] Arriba se junta el humo, gas sin quemar: si llega a unos SEISCIENTOS grados, prende de golpe… [alarmed] y arde TODA la habitación.
+[explaining, confident] Por eso, golpes cortos al techo: enfrían el humo antes de que prenda.
+[challenging] ¿Y por qué a golpes? [quick] ¿Para que llegue más lejos, para no cocerse con el vapor… [teasing] o para ver el fuego?
+[urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [explaining] Para no cocerse: un litro de agua son MIL SETECIENTOS de vapor.
+[serious, grave] A chorro, se hace tanto vapor que baja hasta el suelo… y quema a quien esté dentro.
+[playful, teasing] ¿Tú habrías apuntado al fuego? Confiésalo en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — 3D: un salón ardiendo visto por dentro (la pared de delante quitada, como una casa de
+muñecas), con el DRON QUE NO PARA:
+1. «¡Este bombero echa el agua al techo… y el fuego está en el sofá!» — primer fotograma: el sofá en llamas y, en la puerta,
+   el bombero agachado dando un golpe de agua pulverizada hacia el techo, donde se acumula una capa de humo que brilla.
+2. «¿Se ha equivocado? No: es una técnica.» — una flecha al techo y «¿ERROR?» que pasa a «TÉCNICA ✓».
+3. «Arriba se junta el humo, gas sin quemar: si llega a unos seiscientos grados, prende de golpe… y arde toda la habitación.»
+   — el termómetro del humo sube (200 → 400 → 600 °C) y, en una versión «¿y si apuntara al sofá?», la capa prende y la
+   habitación entera arde (COMBUSTIÓN SÚBITA).
+4. «Por eso, golpes cortos al techo: enfrían el humo antes de que prenda.» — vuelve atrás: tres golpes cortos al techo y el
+   humo pasa de naranja a gris; el termómetro baja.
+5. «¿Y por qué a golpes?…» — tres tarjetas: A PARA QUE LLEGUE MÁS LEJOS · B PARA NO COCERSE CON EL VAPOR · C PARA VER EL FUEGO.
+6. «Tienes cinco segundos.» — cuenta 1-2-3-4-5 con bocina; el dron gira alrededor de la habitación.
+7. «¡Tiempo! Para no cocerse: un litro de agua son mil setecientos de vapor.» — A y C tachadas; una botella de 1 L junto a un
+   cubo de vapor de 1.700 L (más alto que el bombero).
+8. «A chorro, se hace tanto vapor que baja hasta el suelo… y quema a quien esté dentro.» — un chorro al techo y la nube de vapor
+   que baja hasta el suelo, en rojo.
+9. «¿Tú habrías apuntado al fuego? Confiésalo en comentarios.» — las letras con la B en verde y 💬 CONFIÉSALO.
+10. ★ «¡Mándaselo a quien quiera ser bombero!» — avión de papel.
+11. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.

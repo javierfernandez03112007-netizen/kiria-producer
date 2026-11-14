@@ -1,0 +1,11 @@
+[alarmed, surprised] ¡Este bombero echa el agua al TECHO… [urgent] y el fuego está en el sofá!
+[curious] ¿Se ha equivocado? [confident] No: es una técnica.
+[tense, explaining] Arriba se junta el humo, gas sin quemar: si llega a unos SEISCIENTOS grados, prende de golpe… [alarmed] y arde TODA la habitación.
+[explaining, confident] Por eso, golpes cortos al techo: enfrían el humo antes de que prenda.
+[challenging] ¿Y por qué a golpes? [quick] ¿Para que llegue más lejos, para no cocerse con el vapor… [teasing] o para ver el fuego?
+[urgent] Tienes CINCO segundos.
+[alarmed] ¡Tiempo! [explaining] Para no cocerse: un litro de agua son MIL SETECIENTOS de vapor.
+[serious, grave] A chorro, se hace tanto vapor que baja hasta el suelo… y quema a quien esté dentro.
+[playful, teasing] ¿Tú habrías apuntado al fuego? Confiésalo en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!

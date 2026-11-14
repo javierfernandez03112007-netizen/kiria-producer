@@ -1,0 +1,220 @@
+{
+ "formato": "techo",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 4.05,
+  "count_line": 5,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿HABRÍA APUNTADO AL FUEGO?",
+ "portada": {
+  "titulo": "¿POR QUÉ ECHA EL AGUA AL TECHO?",
+  "etiqueta": "¡Y EL FUEGO ESTÁ EN EL SOFÁ!",
+  "t": 1.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "bombero1": [
+   "bombero",
+   1,
+   1
+  ],
+  "techo1": [
+   "techo…",
+   1,
+   1
+  ],
+  "fuego1": [
+   "fuego",
+   1,
+   1
+  ],
+  "sofa": [
+   "sofá!",
+   1,
+   1
+  ],
+  "equivocado": [
+   "equivocado?",
+   1,
+   2
+  ],
+  "tecnica": [
+   "técnica.",
+   1,
+   2
+  ],
+  "arriba": [
+   "Arriba",
+   1,
+   3
+  ],
+  "humo3": [
+   "humo,",
+   1,
+   3
+  ],
+  "gas": [
+   "gas",
+   1,
+   3
+  ],
+  "seiscientos": [
+   "seiscientos",
+   1,
+   3
+  ],
+  "golpe3": [
+   "golpe…",
+   1,
+   3
+  ],
+  "arde": [
+   "arde",
+   1,
+   3
+  ],
+  "habitacion": [
+   "habitación.",
+   1,
+   3
+  ],
+  "poreso": [
+   "Por",
+   1,
+   4
+  ],
+  "golpes4": [
+   "golpes",
+   1,
+   4
+  ],
+  "techo4": [
+   "techo:",
+   1,
+   4
+  ],
+  "enfrian": [
+   "enfrían",
+   1,
+   4
+  ],
+  "prenda": [
+   "prenda.",
+   1,
+   4
+  ],
+  "porque": [
+   "¿Y",
+   1,
+   5
+  ],
+  "oA": [
+   "lejos,",
+   1,
+   5
+  ],
+  "oB": [
+   "vapor…",
+   1,
+   5
+  ],
+  "oC": [
+   "fuego?",
+   1,
+   5
+  ],
+  "tienes": [
+   "Tienes",
+   1,
+   6
+  ],
+  "tiempo": [
+   "¡Tiempo!",
+   1,
+   7
+  ],
+  "cocerse7": [
+   "cocerse:",
+   1,
+   7
+  ],
+  "litro": [
+   "litro",
+   1,
+   7
+  ],
+  "mil": [
+   "mil",
+   1,
+   7
+  ],
+  "vapor7": [
+   "vapor.",
+   1,
+   7
+  ],
+  "chorro": [
+   "chorro,",
+   1,
+   8
+  ],
+  "baja": [
+   "baja",
+   1,
+   8
+  ],
+  "suelo": [
+   "suelo…",
+   1,
+   8
+  ],
+  "quema": [
+   "quema",
+   1,
+   8
+  ],
+  "habrias": [
+   "habrías",
+   1,
+   9
+  ],
+  "confiesalo": [
+   "Confiésalo",
+   1,
+   9
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   10
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   11
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   11
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   11
+  ]
+ }
+}
