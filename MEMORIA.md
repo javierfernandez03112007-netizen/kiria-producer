@@ -66,7 +66,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
 - **Primer lote (11-11)**: Veterinaria (jue 12, 10:00, ya hecho), Odontología (vie 13), Enfermería (sáb 14), Farmacia (dom 15), Biología (lun 16),
   Periodismo (mar 17). Guiones y fuentes en `projects/<carrera>/` (`script.txt`, `script_tts.txt`, `FUENTES.md`) y en el Calendario de Notion (Estado «Guion»).
 
+## Nueva dinámica: «Así funciona» (Javi, 14-11-2026)
+- 👤 Javi: «Vamos a cambiar ahora mismo de dinámica de los vídeos: centrarnos en explicar cómo funcionan distintos aparatos, sistemas informáticos,
+  eléctricos o avances de la sociedad… de manera muy cinematográfica: cómo se crea y funciona el dispositivo». **Sustituye a las carreras «por
+  dentro» (plan del 11-11) como línea principal.** Lo demás del plan sigue: un vídeo al día, sin política, guiones de ≤ 145 palabras.
+- Cómo se hace: gancho de creencia rota sobre el aparato («crees que… en realidad…»), la historia de cómo se inventó o se fabrica, el aparato que se
+  abre (rayos X, vista explosionada, corte) y la cámara que entra hasta la escala de lo que pasa dentro; respuesta útil al final (un consejo que
+  se guarda) y pregunta de bando sobre cómo lo usa cada uno. «Cinematográfico» = realista y de cine (estudio oscuro, materiales de verdad,
+  cámara lenta, macro), **no** la maqueta de colores que Javi rechazó el 12-11.
+- Primer vídeo: **el microondas** (`projects/microondas/`, guion 14-11). Lista de siguientes en «Próximas ideas».
+
 ## Próximas ideas
+0. **«Así funciona» (nueva dinámica, 14-11), por orden**: el microondas (hecho el guion) · el GPS del móvil (sin la relatividad de Einstein se
+   desviaría kilómetros cada día; dato por confirmar) · el chip: de la arena a tu móvil (la máquina de luz EUV; enlaza con Nvidia) · internet
+   viaja bajo el mar (cables submarinos; % por confirmar) · la nevera no fabrica frío (bomba de calor) · la pantalla táctil (siente la
+   electricidad de tu dedo) · la tarjeta sin contacto (no tiene batería). Cada dato, con fuente antes de grabar.
 1. **Psicología** (elegida el 1-11-2026; plan y datos en `projects/psicologia/IDEA.md` y `FUENTES.md`): «Estudias cuatro años de Psicología… y la ley no te deja tratar ni a un solo paciente» → Máster en Psicología General
    Sanitaria o PIR. (Comprobar Ley 33/2011, créditos del máster, plazas PIR y nota de corte antes del guion.)
 2. Medicina (6 años + MIR), duelos (ADE vs Economía, Matemáticas vs Física, Arquitectura vs Edificación, Informática vs Ciencia de Datos),

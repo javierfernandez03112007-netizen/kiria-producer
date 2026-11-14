@@ -70,6 +70,9 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - Portada con la frase del gancho en grande; descripción con las fuentes. Hashtags y descripción: sin datos todavía para compararlos.
 
 ## 7 bis. Plan del 11-11 (👤 Javi lo aprobó)
+- 👤 **Cambio de dinámica (Javi, 14-11)**: la línea principal pasa a ser **«Así funciona»**: cómo funcionan y cómo se crean aparatos, sistemas
+  informáticos y eléctricos y avances de la sociedad, muy cinematográfico (realista, no maqueta de colores). Sustituye a las carreras como tema del
+  día; el resto del plan (un vídeo al día, sin política, reel de prueba para lo experimental) sigue. Primero: el microondas.
 - 👤 **Un vídeo al día, a las 10:00, de carreras «por dentro» con giro**; nada más ese día en el feed. Lo experimental, como **reel de prueba**.
 - 👤 Anuncios y el reto, fuera del feed principal (historias, otra cuenta o anuncio pagado).
   Prueba: el capítulo 1 del reto, 26,4 % pasa de 3 s y 1.692 en 34 h.
