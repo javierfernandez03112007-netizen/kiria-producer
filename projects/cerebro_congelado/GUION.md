@@ -8,7 +8,7 @@ Estilo: ilustración médica sobre fondo claro y suave (como «los dedos» v2). 
 
 | # | Frase | Lo que se ve |
 |---|-------|--------------|
-| 1 | Tu cerebro no puede sentir dolor. Entonces, ¿por qué te duele al comer helado? | Primer fotograma: el heladero muerde el polo y en 2 segundos se congela entero (la escarcha sube de la boca a la frente, cristales de hielo, ojos como platos). La cabeza se vuelve transparente: el cerebro, rosa, con «SIN SENSORES DE DOLOR»; luego se agarra la frente y la frente se pone roja. |
+| 1 | ¿Por qué te duele el cerebro al comer helado? (así lo grabó Javi) | Primer fotograma: el heladero muerde el polo y en 2 segundos se congela entero (la escarcha sube de la boca a la frente, cristales de hielo, ojos como platos). La cabeza se vuelve transparente: el cerebro, rosa, con «SIN SENSORES DE DOLOR»; luego se agarra la frente y la frente se pone roja. |
 | 2 | Al final te digo el truco para quitártelo. | Chip en la cabecera: «EL TRUCO: ???». |
 | 3 | El helado enfría el paladar y un nervio da la alarma. | La cabeza se abre en corte de perfil (como una lámina): boca, lengua, paladar, nariz y cerebro. El frío azul se extiende por el paladar y el nervio (amarillo) se enciende: un pulso de luz sube hacia el cerebro. |
 | 4 | Tu cuerpo manda sangre caliente de golpe: una arteria del cerebro se ensancha en segundos. | La arteria (roja) se hincha y la sangre corre en partículas. |

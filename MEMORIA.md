@@ -81,7 +81,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
      congela en 2 segundos y luego, por dentro». Pidió «Homer Simpson o algo así»: se hace un **personaje propio** con ese aire (heladero
-     rechoncho y calvo, uniforme blanco, gorra, pajarita), porque Homer es de Disney/Fox. Guion de 144 palabras con fuentes; esperando su MP3.
+     rechoncho y calvo, uniforme blanco, gorra, pajarita), porque Homer es de Disney/Fox. MP3 de Javi (voz Nico; cambió la primera frase a
+     «¿Por qué te duele el cerebro al comer helado?»): 42,5 s. Escena: el heladero hecho con campos de distancias (cabeza con gestos por morph:
+     boca, sonrisa, mueca; ojos con párpados; bigote, cejas, gorra; puño de la mano realista con el polo) que se congela con un sombreador de
+     escarcha (frente que sale de la boca y deshielo con el truco) y la cabeza en corte de perfil (`17_section.js`: contornos del campo en
+     x = 0 con marching squares → láminas extruidas). Render en ramas `render-cc-*`. Lección (14): **para que un color brille en rojo con
+     ACES, el color base también tiene que ser rojo oscuro** (si no, el rojo del emisivo se satura y queda salmón).
    - Cuerpo («qué pasa cuando…»): las agujetas no son ácido láctico · los dedos arrugados en el agua (lo hace tu sistema nervioso) · se te
      duerme el pie · el «cerebro congelado» con el helado · estornudar al mirar al sol · la piel de gallina · el hipo · el bostezo contagioso.
    - Aparatos: el GPS (sin la relatividad de Einstein fallaría kilómetros cada día) · la pantalla táctil (siente la electricidad de tu dedo)
