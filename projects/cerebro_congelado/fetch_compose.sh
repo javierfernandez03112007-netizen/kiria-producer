@@ -3,7 +3,7 @@
 # compone el vídeo (out/cerebro_congelado.mp4) y escribe out/DONE. Uso: nohup ./fetch_compose.sh > out/fetch.log 2>&1 &
 cd /home/user/kiria-producer/projects/cerebro_congelado
 mkdir -p out/frames
-PFX=${PFX:-render-cc}
+PFX=${PFX:-render-cc2}
 N=$(python3 -c "import json; L=json.load(open('tiempos.json')); print(int((L[-1]['end'] + 1.2) * 60))")
 missing() { python3 -c "import os; print(sum(1 for i in range($N) if not os.path.exists('out/frames/f%05d.jpg'%i)))"; }
 while true; do

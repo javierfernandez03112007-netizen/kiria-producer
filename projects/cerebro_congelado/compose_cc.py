@@ -24,7 +24,6 @@ from engine.subs import Subs, norm  # noqa: E402
 
 FPS, W, H = 60, 1080, 1920
 LINES = json.load(open(os.path.join(ROOT, "tiempos.json")))
-T_HIT = 0.12
 END = LINES[-1]["end"] + 1.2
 N = int(END * FPS)
 FRAMES = os.environ.get("FRAMES_DIR", os.path.join(ROOT, "out", "frames"))
@@ -102,16 +101,21 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    # 1: muerde el polo (crujido) y se congela en 2 segundos (escarcha y hielo que cruje)
+    T_HIT = at("comer", 1, 1) + 0.08                     # el mordisco (igual que en la escena)
+    MAC0, MAC1 = at("nervio", 1, 3) + 0.38, at("cuerpo", 1, 4) - 0.06      # primer plano de neuronas
+    # 1: el dron baja hasta Homer; muerde el polo (crujido); la cámara se mete en la cabeza y el cerebro se congela
+    put("avion/whoosh_largo", 0.0, 1.35, 0.22, 0.45)
     put("medicina/huesos", T_HIT - 0.01, 0.3, 0.55, 0.12)
-    put("gafas/congelar", T_HIT + 0.04, 1.6, 0.42, 0.4)
-    put("cripto/hielo", 0.95, 0.8, 0.32, 0.3)
-    # 2: gira a su perfil y la cabeza se abre como una lámina
-    put("medicina/whoosh", at("truco", 1, 2) - 0.1, 0.6, 0.26, 0.2)
-    put("robot_neuronas/despiece", at("truco", 1, 2) + 0.5, 0.9, 0.32, 0.3)
-    # 3: el frío llega al paladar; el nervio da la alarma
+    put("medicina/whoosh", T_HIT + 0.03, 0.5, 0.3, 0.2)
+    put("gafas/congelar", T_HIT + 0.2, 1.6, 0.42, 0.4)
+    put("cripto/hielo", T_HIT + 0.75, 0.8, 0.3, 0.3)
+    # 3: el frío llega al paladar; el nervio da la alarma (la cámara se lanza dentro del nervio y la señal salta de neurona en neurona)
     put("gafas/aire", at("enfría", 1, 3) - 0.08, 0.8, 0.3, 0.3)
-    put("cerradura/aviso", at("nervio", 1, 3) - 0.02, 0.7, 0.34, 0.25)
+    put("cerradura/aviso", at("nervio", 1, 3) - 0.02, 0.7, 0.3, 0.25)
+    put("cerradura/zambullida", MAC0 - 0.12, 0.6, 0.28, 0.2)
+    put("robot_neuronas/estimulo", MAC0 + 0.25, 0.7, 0.34, 0.25)
+    put("robot_neuronas/disparo", MAC1 - 0.4, 0.5, 0.26, 0.2)
+    put("medicina/whoosh", MAC1 - 0.06, 0.5, 0.24, 0.2)
     # 4: la sangre sube de golpe; la arteria se ensancha
     put("robo_banco/chorro", at("sangre", 1, 4) - 0.12, 1.2, 0.32, 0.35)
     put("lanzamiento/estira", at("ensancha", 1, 4) - 0.05, 0.7, 0.4, 0.25)
@@ -127,7 +131,7 @@ def sfx_track(path):
     put("economia/subida", at("empieza", 1, 7) - 0.05, 0.8, 0.28, 0.3)
     put("economia/caida", at("cierra", 1, 7) - 0.1, 0.8, 0.3, 0.3)
     # 8: las 100 figuritas; 27 se congelan comiendo rápido, 13 despacio
-    put("avion/whoosh", at("comes", 1, 8) - 0.35, 0.6, 0.26, 0.2)
+    put("medicina/whoosh", at("cierra", 1, 7) + 0.22, 0.6, 0.24, 0.2)
     put("magisterio/munecos", at("comes", 1, 8) - 0.2, 0.9, 0.32, 0.3)
     put("cripto/contador", at("27", 1, 8) - 0.1, 0.8, 0.3, 0.3)
     put("economia/ding", at("13", 1, 8) - 0.02, 0.6, 0.34, 0.2)
@@ -135,7 +139,10 @@ def sfx_track(path):
     put("medicina/whoosh", at("truco", 1, 9) - 0.2, 0.6, 0.26, 0.2)
     put("lanzamiento/absorbe", at("aprieta", 1, 9) + 0.25, 0.7, 0.3, 0.25)
     put("quimica/vapor", at("paladar", 1, 9) - 0.05, 1.0, 0.3, 0.35)
-    put("cripto/hielo", at("calentarlo", 1, 9) - 0.15, 0.8, 0.38, 0.3)
+    put("medicina/whoosh", at("calentarlo", 1, 9) + 0.08, 0.5, 0.22, 0.2)
+    put("avion/brillo", at("calentarlo", 1, 9) + 0.3, 0.8, 0.3, 0.3)
+    # 10: el dron vuelve a subir (bucle)
+    put("avion/whoosh_largo", END - 1.6, 1.4, 0.2, 0.5)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 

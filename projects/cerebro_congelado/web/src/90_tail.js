@@ -71,13 +71,14 @@ window.renderCover = function () {
     tu10: atL(10, '=tu'), muerdes10: atL(10, 'muerdes'), helado10: atL(10, 'helado'), chupas10: atL(10, 'chupas'), mandaselo10: atL(10, 'mandaselo'), muerde10: atL(10, 'muerde'),
   };
 
-  mats(); buildMats(); softLights(); S.flow = [];
-  { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55; }
-  scene.background = new THREE.Color(0xf3ede6); scene.add(softBackdrop());
+  T_HIT = K.comer1 + 0.08;
+  mats(); buildMats(); S.flow = [];
+  buildWorld(); cam.far = 30000; cam.updateProjectionMatrix();
+  { const pm = new THREE.PMREMGenerator(renderer); S.envRoom = pm.fromScene(new RoomEnvironment(), 0.04).texture; S.envSky = scene.environment; }
   buildCenter(); buildStations();
   post.uniforms.ca.value = 0.25; post.uniforms.vig.value = 0.16; post.uniforms.bloom.value = 0.35;
   buildCam(); buildHudPlan();
   for (const m of LMS) m.resolution.set(W * PR, H * PR);
-  window.K = K; window.END = END; window.dbgEval = s => eval(s);
+  window.K = K; window.END = END; window.dbgEval = s => eval(s); window.glLost = () => renderer.getContext().isContextLost();
   window.ready = true;
 })().catch(e => { console.error('ERROR', e.stack || e); window.failed = String(e); });
