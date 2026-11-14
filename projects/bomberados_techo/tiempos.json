@@ -2,737 +2,737 @@
  {
   "text": "¡Este bombero echa el agua al techo… y el fuego está en el sofá!",
   "start": 0.0,
-  "end": 4.146,
+  "end": 3.5,
   "words": [
    {
     "w": "¡Este",
     "start": 0.0,
-    "end": 0.326
+    "end": 0.32
    },
    {
     "w": "bombero",
-    "start": 0.326,
-    "end": 0.794
+    "start": 0.32,
+    "end": 0.8
    },
    {
     "w": "echa",
-    "start": 0.794,
-    "end": 1.12
+    "start": 0.8,
+    "end": 1.04
    },
    {
     "w": "el",
-    "start": 1.12,
-    "end": 1.303
+    "start": 1.04,
+    "end": 1.2
    },
    {
     "w": "agua",
-    "start": 1.303,
-    "end": 1.629
+    "start": 1.2,
+    "end": 1.44
    },
    {
     "w": "al",
-    "start": 1.629,
-    "end": 1.811
+    "start": 1.44,
+    "end": 1.6
    },
    {
     "w": "techo…",
-    "start": 1.811,
-    "end": 2.137
+    "start": 1.6,
+    "end": 1.92
    },
    {
     "w": "y",
-    "start": 2.437,
-    "end": 2.62
+    "start": 1.92,
+    "end": 2.08
    },
    {
     "w": "el",
-    "start": 2.62,
-    "end": 2.803
+    "start": 2.08,
+    "end": 2.24
    },
    {
     "w": "fuego",
-    "start": 2.803,
-    "end": 3.129
+    "start": 2.24,
+    "end": 2.64
    },
    {
     "w": "está",
-    "start": 3.129,
-    "end": 3.454
+    "start": 2.64,
+    "end": 2.88
    },
    {
     "w": "en",
-    "start": 3.454,
-    "end": 3.637
+    "start": 2.88,
+    "end": 2.96
    },
    {
     "w": "el",
-    "start": 3.637,
-    "end": 3.82
+    "start": 2.96,
+    "end": 3.12
    },
    {
     "w": "sofá!",
-    "start": 3.82,
-    "end": 4.146
+    "start": 3.12,
+    "end": 3.5
    }
   ]
  },
  {
   "text": "¿Se ha equivocado? No: es una técnica.",
-  "start": 4.446,
-  "end": 7.006,
+  "start": 3.93,
+  "end": 6.66,
   "words": [
    {
     "w": "¿Se",
-    "start": 4.446,
-    "end": 4.629
+    "start": 3.93,
+    "end": 4.08
    },
    {
     "w": "ha",
-    "start": 4.629,
-    "end": 4.812
+    "start": 4.08,
+    "end": 4.32
    },
    {
     "w": "equivocado?",
-    "start": 4.812,
-    "end": 5.566
+    "start": 4.32,
+    "end": 5.2
    },
    {
     "w": "No:",
-    "start": 5.666,
-    "end": 5.849
+    "start": 5.2,
+    "end": 5.76
    },
    {
     "w": "es",
-    "start": 6.029,
-    "end": 6.212
+    "start": 5.76,
+    "end": 6.0
    },
    {
     "w": "una",
-    "start": 6.212,
-    "end": 6.537
+    "start": 6.0,
+    "end": 6.24
    },
    {
     "w": "técnica.",
-    "start": 6.537,
-    "end": 7.006
+    "start": 6.24,
+    "end": 6.66
    }
   ]
  },
  {
   "text": "Arriba se junta el humo, gas sin quemar: si llega a unos seiscientos grados, prende de golpe… y arde toda la habitación.",
-  "start": 7.306,
-  "end": 14.437,
+  "start": 7.09,
+  "end": 14.34,
   "words": [
    {
     "w": "Arriba",
-    "start": 7.306,
-    "end": 7.775
+    "start": 7.09,
+    "end": 7.44
    },
    {
     "w": "se",
-    "start": 7.775,
-    "end": 7.957
+    "start": 7.44,
+    "end": 7.6
    },
    {
     "w": "junta",
-    "start": 7.957,
-    "end": 8.283
+    "start": 7.6,
+    "end": 8.0
    },
    {
     "w": "el",
-    "start": 8.283,
-    "end": 8.466
+    "start": 8.0,
+    "end": 8.16
    },
    {
     "w": "humo,",
-    "start": 8.466,
-    "end": 8.792
+    "start": 8.16,
+    "end": 8.57
    },
    {
     "w": "gas",
-    "start": 8.892,
-    "end": 9.075
+    "start": 8.57,
+    "end": 8.96
    },
    {
     "w": "sin",
-    "start": 9.075,
-    "end": 9.257
+    "start": 8.96,
+    "end": 9.12
    },
    {
     "w": "quemar:",
-    "start": 9.257,
-    "end": 9.583
+    "start": 9.12,
+    "end": 9.86
    },
    {
     "w": "si",
-    "start": 9.763,
-    "end": 9.946
+    "start": 9.86,
+    "end": 9.974
    },
    {
     "w": "llega",
-    "start": 9.946,
-    "end": 10.272
+    "start": 9.974,
+    "end": 10.24
    },
    {
     "w": "a",
-    "start": 10.272,
-    "end": 10.455
+    "start": 10.24,
+    "end": 10.32
    },
    {
     "w": "unos",
-    "start": 10.455,
-    "end": 10.78
+    "start": 10.32,
+    "end": 10.56
    },
    {
     "w": "seiscientos",
-    "start": 10.78,
-    "end": 11.249
+    "start": 10.56,
+    "end": 11.2
    },
    {
     "w": "grados,",
-    "start": 11.249,
-    "end": 11.575
+    "start": 11.2,
+    "end": 11.73
    },
    {
     "w": "prende",
-    "start": 11.675,
-    "end": 12.0
+    "start": 11.73,
+    "end": 12.08
    },
    {
     "w": "de",
-    "start": 12.0,
-    "end": 12.183
+    "start": 12.08,
+    "end": 12.24
    },
    {
     "w": "golpe…",
-    "start": 12.183,
-    "end": 12.509
+    "start": 12.24,
+    "end": 12.85
    },
    {
     "w": "y",
-    "start": 12.809,
-    "end": 12.992
+    "start": 12.85,
+    "end": 12.96
    },
    {
     "w": "arde",
-    "start": 12.992,
-    "end": 13.317
+    "start": 12.96,
+    "end": 13.44
    },
    {
     "w": "toda",
-    "start": 13.317,
-    "end": 13.643
+    "start": 13.44,
+    "end": 13.68
    },
    {
     "w": "la",
-    "start": 13.643,
-    "end": 13.826
+    "start": 13.68,
+    "end": 13.84
    },
    {
     "w": "habitación.",
-    "start": 13.826,
-    "end": 14.437
+    "start": 13.84,
+    "end": 14.34
    }
   ]
  },
  {
   "text": "Por eso, golpes cortos al techo: enfrían el humo antes de que prenda.",
-  "start": 14.737,
-  "end": 18.537,
+  "start": 14.76,
+  "end": 18.68,
   "words": [
    {
     "w": "Por",
-    "start": 14.737,
-    "end": 14.92
+    "start": 14.76,
+    "end": 14.88
    },
    {
     "w": "eso,",
-    "start": 14.92,
-    "end": 15.246
+    "start": 14.88,
+    "end": 15.28
    },
    {
     "w": "golpes",
-    "start": 15.346,
-    "end": 15.671
+    "start": 15.28,
+    "end": 15.84
    },
    {
     "w": "cortos",
-    "start": 15.671,
-    "end": 15.997
+    "start": 15.84,
+    "end": 16.24
    },
    {
     "w": "al",
-    "start": 15.997,
-    "end": 16.18
+    "start": 16.24,
+    "end": 16.4
    },
    {
     "w": "techo:",
-    "start": 16.18,
-    "end": 16.506
+    "start": 16.4,
+    "end": 16.97
    },
    {
     "w": "enfrían",
-    "start": 16.686,
-    "end": 17.011
+    "start": 16.97,
+    "end": 17.44
    },
    {
     "w": "el",
-    "start": 17.011,
-    "end": 17.194
+    "start": 17.44,
+    "end": 17.6
    },
    {
     "w": "humo",
-    "start": 17.194,
-    "end": 17.52
+    "start": 17.6,
+    "end": 17.84
    },
    {
     "w": "antes",
-    "start": 17.52,
-    "end": 17.846
+    "start": 17.84,
+    "end": 18.08
    },
    {
     "w": "de",
-    "start": 17.846,
-    "end": 18.028
+    "start": 18.08,
+    "end": 18.16
    },
    {
     "w": "que",
-    "start": 18.028,
-    "end": 18.211
+    "start": 18.16,
+    "end": 18.32
    },
    {
     "w": "prenda.",
-    "start": 18.211,
-    "end": 18.537
+    "start": 18.32,
+    "end": 18.68
    }
   ]
  },
  {
   "text": "¿Y por qué a golpes? ¿Para que llegue más lejos, para no cocerse con el vapor… o para ver el fuego?",
-  "start": 18.837,
-  "end": 24.606,
+  "start": 19.1,
+  "end": 24.57,
   "words": [
    {
     "w": "¿Y",
-    "start": 18.837,
-    "end": 19.02
+    "start": 19.1,
+    "end": 19.2
    },
    {
     "w": "por",
-    "start": 19.02,
-    "end": 19.203
+    "start": 19.2,
+    "end": 19.36
    },
    {
     "w": "qué",
-    "start": 19.203,
-    "end": 19.386
+    "start": 19.36,
+    "end": 19.6
    },
    {
     "w": "a",
-    "start": 19.386,
-    "end": 19.568
+    "start": 19.6,
+    "end": 19.76
    },
    {
     "w": "golpes?",
-    "start": 19.568,
-    "end": 19.894
+    "start": 19.76,
+    "end": 20.48
    },
    {
     "w": "¿Para",
-    "start": 19.994,
-    "end": 20.32
+    "start": 20.48,
+    "end": 20.56
    },
    {
     "w": "que",
-    "start": 20.32,
-    "end": 20.503
+    "start": 20.56,
+    "end": 20.72
    },
    {
     "w": "llegue",
-    "start": 20.503,
-    "end": 20.828
+    "start": 20.72,
+    "end": 21.12
    },
    {
     "w": "más",
-    "start": 20.828,
-    "end": 21.011
+    "start": 21.12,
+    "end": 21.28
    },
    {
     "w": "lejos,",
-    "start": 21.011,
-    "end": 21.337
+    "start": 21.28,
+    "end": 21.76
    },
    {
     "w": "para",
-    "start": 21.437,
-    "end": 21.763
+    "start": 21.76,
+    "end": 21.92
    },
    {
     "w": "no",
-    "start": 21.763,
-    "end": 21.946
+    "start": 21.92,
+    "end": 22.08
    },
    {
     "w": "cocerse",
-    "start": 21.946,
-    "end": 22.414
+    "start": 22.08,
+    "end": 22.64
    },
    {
     "w": "con",
-    "start": 22.414,
-    "end": 22.597
+    "start": 22.64,
+    "end": 22.72
    },
    {
     "w": "el",
-    "start": 22.597,
-    "end": 22.78
+    "start": 22.72,
+    "end": 22.88
    },
    {
     "w": "vapor…",
-    "start": 22.78,
-    "end": 23.106
+    "start": 22.88,
+    "end": 23.5
    },
    {
     "w": "o",
-    "start": 23.406,
-    "end": 23.588
+    "start": 23.5,
+    "end": 23.6
    },
    {
     "w": "para",
-    "start": 23.588,
-    "end": 23.914
+    "start": 23.6,
+    "end": 23.84
    },
    {
     "w": "ver",
-    "start": 23.914,
-    "end": 24.097
+    "start": 23.84,
+    "end": 24.08
    },
    {
     "w": "el",
-    "start": 24.097,
-    "end": 24.28
+    "start": 24.08,
+    "end": 24.24
    },
    {
     "w": "fuego?",
-    "start": 24.28,
-    "end": 24.606
+    "start": 24.24,
+    "end": 24.57
    }
   ]
  },
  {
   "text": "Tienes cinco segundos.",
-  "start": 24.906,
-  "end": 26.026,
+  "start": 24.96,
+  "end": 26.18,
   "words": [
    {
     "w": "Tienes",
-    "start": 24.906,
-    "end": 25.232
+    "start": 24.96,
+    "end": 25.28
    },
    {
     "w": "cinco",
-    "start": 25.232,
-    "end": 25.557
+    "start": 25.28,
+    "end": 25.68
    },
    {
     "w": "segundos.",
-    "start": 25.557,
-    "end": 26.026
+    "start": 25.68,
+    "end": 26.18
    }
   ]
  },
  {
   "text": "¡Tiempo! Para no cocerse: un litro de agua son mil setecientos de vapor.",
-  "start": 30.376,
-  "end": 34.462,
+  "start": 30.53,
+  "end": 34.94,
   "words": [
    {
     "w": "¡Tiempo!",
-    "start": 30.376,
-    "end": 30.702
+    "start": 30.53,
+    "end": 31.33
    },
    {
     "w": "Para",
-    "start": 30.802,
-    "end": 31.127
+    "start": 31.33,
+    "end": 31.41
    },
    {
     "w": "no",
-    "start": 31.127,
-    "end": 31.31
+    "start": 31.41,
+    "end": 31.65
    },
    {
     "w": "cocerse:",
-    "start": 31.31,
-    "end": 31.779
+    "start": 31.65,
+    "end": 32.45
    },
    {
     "w": "un",
-    "start": 31.959,
-    "end": 32.142
+    "start": 32.45,
+    "end": 32.53
    },
    {
     "w": "litro",
-    "start": 32.142,
-    "end": 32.467
+    "start": 32.53,
+    "end": 32.85
    },
    {
     "w": "de",
-    "start": 32.467,
-    "end": 32.65
+    "start": 32.85,
+    "end": 33.01
    },
    {
     "w": "agua",
-    "start": 32.65,
-    "end": 32.976
+    "start": 33.01,
+    "end": 33.33
    },
    {
     "w": "son",
-    "start": 32.976,
-    "end": 33.159
+    "start": 33.33,
+    "end": 33.57
    },
    {
     "w": "mil",
-    "start": 33.159,
-    "end": 33.342
+    "start": 33.57,
+    "end": 33.916
    },
    {
     "w": "setecientos",
-    "start": 33.342,
-    "end": 33.953
+    "start": 33.916,
+    "end": 34.53
    },
    {
     "w": "de",
-    "start": 33.953,
-    "end": 34.136
+    "start": 34.53,
+    "end": 34.61
    },
    {
     "w": "vapor.",
-    "start": 34.136,
-    "end": 34.462
+    "start": 34.61,
+    "end": 34.94
    }
   ]
  },
  {
   "text": "A chorro, se hace tanto vapor que baja hasta el suelo… y quema a quien esté dentro.",
-  "start": 34.762,
-  "end": 39.699,
+  "start": 35.33,
+  "end": 40.11,
   "words": [
    {
     "w": "A",
-    "start": 34.762,
-    "end": 34.945
+    "start": 35.33,
+    "end": 35.41
    },
    {
     "w": "chorro,",
-    "start": 34.945,
-    "end": 35.271
+    "start": 35.41,
+    "end": 36.05
    },
    {
     "w": "se",
-    "start": 35.371,
-    "end": 35.553
+    "start": 36.05,
+    "end": 36.21
    },
    {
     "w": "hace",
-    "start": 35.553,
-    "end": 35.879
+    "start": 36.21,
+    "end": 36.53
    },
    {
     "w": "tanto",
-    "start": 35.879,
-    "end": 36.205
+    "start": 36.53,
+    "end": 36.85
    },
    {
     "w": "vapor",
-    "start": 36.205,
-    "end": 36.531
+    "start": 36.85,
+    "end": 37.25
    },
    {
     "w": "que",
-    "start": 36.531,
-    "end": 36.713
+    "start": 37.25,
+    "end": 37.41
    },
    {
     "w": "baja",
-    "start": 36.713,
-    "end": 37.039
+    "start": 37.41,
+    "end": 37.73
    },
    {
     "w": "hasta",
-    "start": 37.039,
-    "end": 37.365
+    "start": 37.73,
+    "end": 37.97
    },
    {
     "w": "el",
-    "start": 37.365,
-    "end": 37.548
+    "start": 37.97,
+    "end": 38.05
    },
    {
     "w": "suelo…",
-    "start": 37.548,
-    "end": 37.873
+    "start": 38.05,
+    "end": 38.75
    },
    {
     "w": "y",
-    "start": 38.173,
-    "end": 38.356
+    "start": 38.75,
+    "end": 38.9
    },
    {
     "w": "quema",
-    "start": 38.356,
-    "end": 38.682
+    "start": 38.9,
+    "end": 39.25
    },
    {
     "w": "a",
-    "start": 38.682,
-    "end": 38.865
+    "start": 39.25,
+    "end": 39.33
    },
    {
     "w": "quien",
-    "start": 38.865,
-    "end": 39.048
+    "start": 39.33,
+    "end": 39.57
    },
    {
     "w": "esté",
-    "start": 39.048,
-    "end": 39.373
+    "start": 39.57,
+    "end": 39.81
    },
    {
     "w": "dentro.",
-    "start": 39.373,
-    "end": 39.699
+    "start": 39.81,
+    "end": 40.11
    }
   ]
  },
  {
   "text": "¿Tú habrías apuntado al fuego? Confiésalo en comentarios.",
-  "start": 39.999,
-  "end": 43.133,
+  "start": 40.57,
+  "end": 43.64,
   "words": [
    {
     "w": "¿Tú",
-    "start": 39.999,
-    "end": 40.182
+    "start": 40.57,
+    "end": 40.69
    },
    {
     "w": "habrías",
-    "start": 40.182,
-    "end": 40.508
+    "start": 40.69,
+    "end": 41.09
    },
    {
     "w": "apuntado",
-    "start": 40.508,
-    "end": 41.119
+    "start": 41.09,
+    "end": 41.57
    },
    {
     "w": "al",
-    "start": 41.119,
-    "end": 41.302
+    "start": 41.57,
+    "end": 41.73
    },
    {
     "w": "fuego?",
-    "start": 41.302,
-    "end": 41.628
+    "start": 41.73,
+    "end": 42.32
    },
    {
     "w": "Confiésalo",
-    "start": 41.728,
-    "end": 42.339
+    "start": 42.32,
+    "end": 42.93
    },
    {
     "w": "en",
-    "start": 42.339,
-    "end": 42.522
+    "start": 42.93,
+    "end": 43.09
    },
    {
     "w": "comentarios.",
-    "start": 42.522,
-    "end": 43.133
+    "start": 43.09,
+    "end": 43.64
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien quiera ser bombero!",
-  "start": 43.433,
-  "end": 46.073,
+  "start": 43.98,
+  "end": 45.98,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 43.433,
-    "end": 44.273
+    "start": 43.98,
+    "end": 44.77
    },
    {
     "w": "a",
-    "start": 44.273,
-    "end": 44.513
+    "start": 44.77,
+    "end": 44.85
    },
    {
     "w": "quien",
-    "start": 44.513,
-    "end": 44.753
+    "start": 44.85,
+    "end": 45.01
    },
    {
     "w": "quiera",
-    "start": 44.753,
-    "end": 45.193
+    "start": 45.01,
+    "end": 45.33
    },
    {
     "w": "ser",
-    "start": 45.193,
-    "end": 45.433
+    "start": 45.33,
+    "end": 45.49
    },
    {
     "w": "bombero!",
-    "start": 45.433,
-    "end": 46.073
+    "start": 45.49,
+    "end": 45.98
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 46.373,
-  "end": 50.893,
+  "start": 46.34,
+  "end": 50.71,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 46.373,
-    "end": 47.213
+    "start": 46.34,
+    "end": 46.93
    },
    {
     "w": "a",
-    "start": 47.213,
-    "end": 47.453
+    "start": 46.93,
+    "end": 47.01
    },
    {
     "w": "bombero?",
-    "start": 47.453,
-    "end": 48.093
+    "start": 47.01,
+    "end": 47.73
    },
    {
     "w": "¡Bomberados!",
-    "start": 48.193,
-    "end": 49.033
+    "start": 47.73,
+    "end": 49.0
    },
    {
     "w": "¡Pruébala",
-    "start": 49.133,
-    "end": 49.773
+    "start": 49.0,
+    "end": 49.41
    },
    {
     "w": "gratis",
-    "start": 49.773,
-    "end": 50.213
+    "start": 49.41,
+    "end": 49.97
    },
    {
     "w": "cinco",
-    "start": 50.213,
-    "end": 50.653
+    "start": 49.97,
+    "end": 50.29
    },
    {
     "w": "días!",
-    "start": 50.653,
-    "end": 50.893
+    "start": 50.29,
+    "end": 50.71
    }
   ]
  }

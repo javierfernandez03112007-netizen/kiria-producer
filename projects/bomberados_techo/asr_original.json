@@ -1,0 +1,662 @@
+[
+ {
+  "w": "Este",
+  "start": 0.0,
+  "end": 0.32
+ },
+ {
+  "w": "bombero",
+  "start": 0.32,
+  "end": 0.8
+ },
+ {
+  "w": "echa",
+  "start": 0.8,
+  "end": 1.04
+ },
+ {
+  "w": "el",
+  "start": 1.04,
+  "end": 1.2
+ },
+ {
+  "w": "agua",
+  "start": 1.2,
+  "end": 1.44
+ },
+ {
+  "w": "al",
+  "start": 1.44,
+  "end": 1.6
+ },
+ {
+  "w": "techo",
+  "start": 1.6,
+  "end": 1.92
+ },
+ {
+  "w": "y",
+  "start": 1.92,
+  "end": 2.08
+ },
+ {
+  "w": "el",
+  "start": 2.08,
+  "end": 2.24
+ },
+ {
+  "w": "fuego",
+  "start": 2.24,
+  "end": 2.64
+ },
+ {
+  "w": "está",
+  "start": 2.64,
+  "end": 2.88
+ },
+ {
+  "w": "en",
+  "start": 2.88,
+  "end": 2.96
+ },
+ {
+  "w": "el",
+  "start": 2.96,
+  "end": 3.12
+ },
+ {
+  "w": "sofá.",
+  "start": 3.12,
+  "end": 3.76
+ },
+ {
+  "w": "¿Se",
+  "start": 3.76,
+  "end": 4.08
+ },
+ {
+  "w": "ha",
+  "start": 4.08,
+  "end": 4.32
+ },
+ {
+  "w": "equivocado?",
+  "start": 4.32,
+  "end": 5.2
+ },
+ {
+  "w": "No.",
+  "start": 5.2,
+  "end": 5.76
+ },
+ {
+  "w": "Es",
+  "start": 5.76,
+  "end": 6.0
+ },
+ {
+  "w": "una",
+  "start": 6.0,
+  "end": 6.24
+ },
+ {
+  "w": "técnica.",
+  "start": 6.24,
+  "end": 6.96
+ },
+ {
+  "w": "Arriba",
+  "start": 6.96,
+  "end": 7.44
+ },
+ {
+  "w": "se",
+  "start": 7.44,
+  "end": 7.6
+ },
+ {
+  "w": "junta",
+  "start": 7.6,
+  "end": 8.0
+ },
+ {
+  "w": "el",
+  "start": 8.0,
+  "end": 8.16
+ },
+ {
+  "w": "humo,",
+  "start": 8.16,
+  "end": 8.56
+ },
+ {
+  "w": "gas",
+  "start": 8.56,
+  "end": 8.96
+ },
+ {
+  "w": "sin",
+  "start": 8.96,
+  "end": 9.12
+ },
+ {
+  "w": "quemar.",
+  "start": 9.12,
+  "end": 9.76
+ },
+ {
+  "w": "Si",
+  "start": 9.76,
+  "end": 9.92
+ },
+ {
+  "w": "llega",
+  "start": 9.92,
+  "end": 10.24
+ },
+ {
+  "w": "a",
+  "start": 10.24,
+  "end": 10.32
+ },
+ {
+  "w": "unos",
+  "start": 10.32,
+  "end": 10.56
+ },
+ {
+  "w": "seiscientos",
+  "start": 10.56,
+  "end": 11.2
+ },
+ {
+  "w": "grados,",
+  "start": 11.2,
+  "end": 11.68
+ },
+ {
+  "w": "prende",
+  "start": 11.68,
+  "end": 12.08
+ },
+ {
+  "w": "de",
+  "start": 12.08,
+  "end": 12.24
+ },
+ {
+  "w": "golpe",
+  "start": 12.24,
+  "end": 12.72
+ },
+ {
+  "w": "y",
+  "start": 12.72,
+  "end": 12.96
+ },
+ {
+  "w": "arde",
+  "start": 12.96,
+  "end": 13.44
+ },
+ {
+  "w": "toda",
+  "start": 13.44,
+  "end": 13.68
+ },
+ {
+  "w": "la",
+  "start": 13.68,
+  "end": 13.84
+ },
+ {
+  "w": "habitación.",
+  "start": 13.84,
+  "end": 14.64
+ },
+ {
+  "w": "Por",
+  "start": 14.64,
+  "end": 14.88
+ },
+ {
+  "w": "eso,",
+  "start": 14.88,
+  "end": 15.28
+ },
+ {
+  "w": "golpes",
+  "start": 15.28,
+  "end": 15.84
+ },
+ {
+  "w": "cortos",
+  "start": 15.84,
+  "end": 16.24
+ },
+ {
+  "w": "al",
+  "start": 16.24,
+  "end": 16.4
+ },
+ {
+  "w": "techo.",
+  "start": 16.4,
+  "end": 16.88
+ },
+ {
+  "w": "Enfrían",
+  "start": 16.88,
+  "end": 17.44
+ },
+ {
+  "w": "el",
+  "start": 17.44,
+  "end": 17.6
+ },
+ {
+  "w": "humo",
+  "start": 17.6,
+  "end": 17.84
+ },
+ {
+  "w": "antes",
+  "start": 17.84,
+  "end": 18.08
+ },
+ {
+  "w": "de",
+  "start": 18.08,
+  "end": 18.16
+ },
+ {
+  "w": "que",
+  "start": 18.16,
+  "end": 18.32
+ },
+ {
+  "w": "prenda.",
+  "start": 18.32,
+  "end": 18.96
+ },
+ {
+  "w": "¿Y",
+  "start": 18.96,
+  "end": 19.2
+ },
+ {
+  "w": "por",
+  "start": 19.2,
+  "end": 19.36
+ },
+ {
+  "w": "qué",
+  "start": 19.36,
+  "end": 19.6
+ },
+ {
+  "w": "a",
+  "start": 19.6,
+  "end": 19.76
+ },
+ {
+  "w": "golpes?",
+  "start": 19.76,
+  "end": 20.32
+ },
+ {
+  "w": "¿Para",
+  "start": 20.32,
+  "end": 20.56
+ },
+ {
+  "w": "que",
+  "start": 20.56,
+  "end": 20.72
+ },
+ {
+  "w": "llegue",
+  "start": 20.72,
+  "end": 21.12
+ },
+ {
+  "w": "más",
+  "start": 21.12,
+  "end": 21.28
+ },
+ {
+  "w": "lejos,",
+  "start": 21.28,
+  "end": 21.76
+ },
+ {
+  "w": "para",
+  "start": 21.76,
+  "end": 21.92
+ },
+ {
+  "w": "no",
+  "start": 21.92,
+  "end": 22.08
+ },
+ {
+  "w": "cocerse",
+  "start": 22.08,
+  "end": 22.64
+ },
+ {
+  "w": "con",
+  "start": 22.64,
+  "end": 22.72
+ },
+ {
+  "w": "el",
+  "start": 22.72,
+  "end": 22.88
+ },
+ {
+  "w": "vapor",
+  "start": 22.88,
+  "end": 23.36
+ },
+ {
+  "w": "o",
+  "start": 23.36,
+  "end": 23.6
+ },
+ {
+  "w": "para",
+  "start": 23.6,
+  "end": 23.84
+ },
+ {
+  "w": "ver",
+  "start": 23.84,
+  "end": 24.08
+ },
+ {
+  "w": "el",
+  "start": 24.08,
+  "end": 24.24
+ },
+ {
+  "w": "fuego?",
+  "start": 24.24,
+  "end": 24.8
+ },
+ {
+  "w": "¡Tienes",
+  "start": 24.8,
+  "end": 25.28
+ },
+ {
+  "w": "cinco",
+  "start": 25.28,
+  "end": 25.68
+ },
+ {
+  "w": "segundos!",
+  "start": 25.68,
+  "end": 26.24
+ },
+ {
+  "w": "¡Tiempo!",
+  "start": 26.47,
+  "end": 26.9
+ },
+ {
+  "w": "Para",
+  "start": 27.2,
+  "end": 27.36
+ },
+ {
+  "w": "no",
+  "start": 27.36,
+  "end": 27.6
+ },
+ {
+  "w": "cocerse.",
+  "start": 27.6,
+  "end": 28.32
+ },
+ {
+  "w": "Un",
+  "start": 28.32,
+  "end": 28.48
+ },
+ {
+  "w": "litro",
+  "start": 28.48,
+  "end": 28.8
+ },
+ {
+  "w": "de",
+  "start": 28.8,
+  "end": 28.96
+ },
+ {
+  "w": "agua",
+  "start": 28.96,
+  "end": 29.28
+ },
+ {
+  "w": "son",
+  "start": 29.28,
+  "end": 29.52
+ },
+ {
+  "w": "mil",
+  "start": 29.52,
+  "end": 29.8656
+ },
+ {
+  "w": "setecientos",
+  "start": 29.8656,
+  "end": 30.48
+ },
+ {
+  "w": "de",
+  "start": 30.48,
+  "end": 30.56
+ },
+ {
+  "w": "vapor.",
+  "start": 30.56,
+  "end": 31.2
+ },
+ {
+  "w": "A",
+  "start": 31.2,
+  "end": 31.36
+ },
+ {
+  "w": "chorro,",
+  "start": 31.36,
+  "end": 32.0
+ },
+ {
+  "w": "se",
+  "start": 32.0,
+  "end": 32.16
+ },
+ {
+  "w": "hace",
+  "start": 32.16,
+  "end": 32.48
+ },
+ {
+  "w": "tanto",
+  "start": 32.48,
+  "end": 32.8
+ },
+ {
+  "w": "vapor",
+  "start": 32.8,
+  "end": 33.2
+ },
+ {
+  "w": "que",
+  "start": 33.2,
+  "end": 33.36
+ },
+ {
+  "w": "baja",
+  "start": 33.36,
+  "end": 33.68
+ },
+ {
+  "w": "hasta",
+  "start": 33.68,
+  "end": 33.92
+ },
+ {
+  "w": "el",
+  "start": 33.92,
+  "end": 34.0
+ },
+ {
+  "w": "suelo",
+  "start": 34.0,
+  "end": 34.56
+ },
+ {
+  "w": "y",
+  "start": 34.56,
+  "end": 34.72
+ },
+ {
+  "w": "quema",
+  "start": 34.72,
+  "end": 35.2
+ },
+ {
+  "w": "a",
+  "start": 35.2,
+  "end": 35.28
+ },
+ {
+  "w": "quien",
+  "start": 35.28,
+  "end": 35.52
+ },
+ {
+  "w": "esté",
+  "start": 35.52,
+  "end": 35.76
+ },
+ {
+  "w": "dentro.",
+  "start": 35.76,
+  "end": 36.32
+ },
+ {
+  "w": "¿Tú",
+  "start": 36.32,
+  "end": 36.64
+ },
+ {
+  "w": "habrías",
+  "start": 36.64,
+  "end": 37.04
+ },
+ {
+  "w": "apuntado",
+  "start": 37.04,
+  "end": 37.52
+ },
+ {
+  "w": "al",
+  "start": 37.52,
+  "end": 37.68
+ },
+ {
+  "w": "fuego?",
+  "start": 37.68,
+  "end": 38.16
+ },
+ {
+  "w": "Confiésalo",
+  "start": 38.16,
+  "end": 38.88
+ },
+ {
+  "w": "en",
+  "start": 38.88,
+  "end": 39.04
+ },
+ {
+  "w": "comentarios.",
+  "start": 39.04,
+  "end": 39.76
+ },
+ {
+  "w": "¡Mándaselo",
+  "start": 39.76,
+  "end": 40.72
+ },
+ {
+  "w": "a",
+  "start": 40.72,
+  "end": 40.8
+ },
+ {
+  "w": "quien",
+  "start": 40.8,
+  "end": 40.96
+ },
+ {
+  "w": "quiera",
+  "start": 40.96,
+  "end": 41.28
+ },
+ {
+  "w": "ser",
+  "start": 41.28,
+  "end": 41.44
+ },
+ {
+  "w": "bombero!",
+  "start": 41.44,
+  "end": 42.0
+ },
+ {
+  "w": "¿Opositas",
+  "start": 42.0,
+  "end": 42.88
+ },
+ {
+  "w": "a",
+  "start": 42.88,
+  "end": 42.96
+ },
+ {
+  "w": "bombero?",
+  "start": 42.96,
+  "end": 43.52
+ },
+ {
+  "w": "¡Bomberados!",
+  "start": 43.52,
+  "end": 44.8
+ },
+ {
+  "w": "Pruébala",
+  "start": 44.8,
+  "end": 45.36
+ },
+ {
+  "w": "gratis",
+  "start": 45.36,
+  "end": 45.92
+ },
+ {
+  "w": "cinco",
+  "start": 45.92,
+  "end": 46.24
+ },
+ {
+  "w": "días.",
+  "start": 46.24,
+  "end": 46.916
+ }
+]
