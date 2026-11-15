@@ -148,7 +148,8 @@ function hrHairPts() {
   return [arc(-0.42, 3.5, 0.58, 0.36, 0.95, 0.42), arc(-0.92, 3.32, 0.62, 0.36, 1.05, 0.42)];
 }
 // el garabato «~» de la boca en reposo (de frente: x, y), como en la cabeza grande de frente
-const HR_SQ = [[0.02, -0.5], [-0.03, -0.58], [0.0, -0.66], [0.1, -0.71], [0.07, -0.79], [-0.04, -0.84], [0.03, -0.86], [0.17, -0.8], [0.32, -0.7], [0.45, -0.65], [0.55, -0.66]];
+const HR_SQ = [[0.44, -0.13], [0.53, -0.28], [0.56, -0.42], [0.48, -0.53], [0.32, -0.57], [0.12, -0.57], [-0.02, -0.59], [-0.07, -0.66], [99, 99],
+  [0.33, -0.58], [0.3, -0.68], [0.23, -0.8], [0.16, -0.92]];
 const tri = x => 1 - 4 * Math.abs(((x % 1) + 1) % 1 - 0.5);       // onda en triángulo (−1 … 1)
 let HEAD_GEO = null;
 function headGeo() {
@@ -165,11 +166,13 @@ function headGeo() {
     let yc = y;
     if (ax < M.hw + 0.05 && z > M.z0 - 0.05) { const tx = ax < M.hw ? M.t * Math.sqrt(1 - (ax / M.hw) ** 2) : 0, dy = y - M.y, a = Math.abs(dy), b = 3 * M.t;
       if (a < b) yc = M.y + Math.sign(dy) * (a <= tx ? 0 : (a - tx) * b / (b - tx)); }
-    R[v * 3] = x; R[v * 3 + 1] = yc; R[v * 3 + 2] = z;
-    if (isIn) grad(sdHead, x, y, z, g3); else grad(hrHeadClosed, x, yc, z, g3);
+    let xc = x, zc = z;
+    if (!isIn && yc !== y) for (let it = 0; it < 3; it++) { const d = hrHeadClosed(xc, yc, zc); grad(hrHeadClosed, xc, yc, zc, g3); xc -= g3[0] * d; yc -= g3[1] * d; zc -= g3[2] * d; }
+    R[v * 3] = xc; R[v * 3 + 1] = yc; R[v * 3 + 2] = zc;
+    if (isIn) grad(sdHead, x, y, z, g3); else grad(hrHeadClosed, xc, yc, zc, g3);
     N[v * 3] = g3[0]; N[v * 3 + 1] = g3[1]; N[v * 3 + 2] = g3[2];
-    A[v * 4] = isIn ? -1 : hrPaint(x, yc, z); A[v * 4 + 1] = isIn ? 1 : 0; A[v * 4 + 2] = isIn ? 0.3 : hrAO(hrHeadAO, x, yc, z, g3[0], g3[1], g3[2]); A[v * 4 + 3] = 0;
-    UV[v * 2] = x * 0.9 + z * 0.4; UV[v * 2 + 1] = yc * 0.9;
+    A[v * 4] = isIn ? -1 : hrPaint(xc, yc, zc); A[v * 4 + 1] = isIn ? 1 : 0; A[v * 4 + 2] = isIn ? 0.3 : hrAO(hrHeadAO, xc, yc, zc, g3[0], g3[1], g3[2]); A[v * 4 + 3] = 0;
+    UV[v * 2] = xc * 0.9 + zc * 0.4; UV[v * 2 + 1] = yc * 0.9;
   }
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(R, 3)); g.setIndex(I);
   g.setAttribute('normal', new THREE.BufferAttribute(N, 3)); g.setAttribute('hm', new THREE.BufferAttribute(A, 4)); g.setAttribute('uv', new THREE.BufferAttribute(UV, 2));
@@ -201,4 +204,272 @@ function headGeo() {
   g.morphAttributes.normal = [new THREE.BufferAttribute(jn, 3), new THREE.BufferAttribute(new Float32Array(n * 3), 3), new THREE.BufferAttribute(new Float32Array(n * 3), 3)];
   g.morphTargetsRelative = true;
   console.log('cabeza: ' + n + ' vértices, ' + (I.length / 3) + ' triángulos, ' + Math.round(performance.now() - t0) + ' ms'); HEAD_GEO = g; return g;
+}
+
+// ---------------------------------------------------------------- materiales: escarcha y modo fantasma (freezable) y la piel de la figura (stubbly)
+// ---------- congelación: escarcha que se extiende desde la boca (y se derrite desde la boca con el truco); FZ.gh: la piel y la ropa se vuelven cristal azul
+const FZ = { c: { value: new THREE.Vector3(0, -0.67, 2.2) }, r: { value: 0 }, m: { value: 0 }, pc: { value: new THREE.Vector3(0, 2.3, 1.45) }, pk: { value: 0 }, gh: { value: 0 } };
+function freezable(m) {
+  const prev = m.onBeforeCompile; m.transparent = true;
+  m.onBeforeCompile = (sh, r) => { if (prev) prev(sh, r); sh.uniforms.fzC = FZ.c; sh.uniforms.fzR = FZ.r; sh.uniforms.fzM = FZ.m; sh.uniforms.pnC = FZ.pc; sh.uniforms.pnK = FZ.pk; sh.uniforms.ghK = FZ.gh;
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vFzW;').replace('#include <project_vertex>', '#include <project_vertex>\nvFzW = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
+varying vec3 vFzW; uniform vec3 fzC, pnC; uniform float fzR, fzM, pnK, ghK;
+float fzH(vec3 p){ return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
+float fzN(vec3 p){ vec3 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f);
+  return mix(mix(mix(fzH(i), fzH(i + vec3(1,0,0)), f.x), mix(fzH(i + vec3(0,1,0)), fzH(i + vec3(1,1,0)), f.x), f.y), mix(mix(fzH(i + vec3(0,0,1)), fzH(i + vec3(1,0,1)), f.x), mix(fzH(i + vec3(0,1,1)), fzH(i + vec3(1,1,1)), f.x), f.y), f.z); }`)
+      .replace('#include <color_fragment>', `#include <color_fragment>
+float fzD = distance(vFzW, fzC), fzN1 = fzN(vFzW * 9.) * 0.6 + fzN(vFzW * 23.) * 0.4;
+float fzK = (1. - smoothstep(fzR - 0.3, fzR, fzD + fzN1 * 0.25)) * smoothstep(fzM, fzM + 0.3, fzD + fzN1 * 0.25);
+float fzB = fzK * (1. - smoothstep(fzR - 0.45, fzR - 0.05, fzD + fzN1 * 0.25));
+diffuseColor.rgb = mix(diffuseColor.rgb, mix(vec3(0.12, 0.3, 0.6), vec3(0.5, 0.72, 0.93), smoothstep(0.25, 0.85, fzN1)) * (0.85 + 0.3 * fzN(vFzW * 41.)), fzK * 0.9);
+float pnD = distance(vFzW, pnC), pnA = pnK * exp(-pnD * pnD / 0.35);
+diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.8, 0.03, 0.02), clamp(pnA, 0., 0.85));`)
+      .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+float fzRim = pow(1. - abs(dot(normalize(normal), normalize(vViewPosition))), 2.2); vec3 fzQ = fract(vFzW * 70.) - 0.5;
+totalEmissiveRadiance = mix(totalEmissiveRadiance, vec3(0.0), fzK * 0.8) + vec3(0.9, 0.04, 0.02) * pnA * 0.8 + vec3(0.3, 0.62, 1.0) * fzB * 0.7 + vec3(0.45, 0.7, 1.0) * fzRim * fzK * 0.12 + vec3(1.2) * fzK * step(0.993, fzH(floor(vFzW * 70.))) * (1. - smoothstep(0.15, 0.4, length(fzQ)));`)
+      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = mix(roughnessFactor, 0.18, fzK);')
+      .replace('#include <dithering_fragment>', `#include <dithering_fragment>
+{ float ghR = pow(1. - abs(dot(normalize(normal), normalize(vViewPosition))), 2.0);
+  vec3 ghC = vec3(0.5, 0.72, 1.0) * (0.1 + 1.5 * ghR) + vec3(1.0, 0.12, 0.06) * pnA * 1.4;
+  gl_FragColor = mix(gl_FragColor, vec4(ghC, clamp(0.03 + 0.72 * ghR + pnA * 0.5, 0., 1.)), ghK); }`); };
+  return m;
+}
+// colores de la hoja (calibrados para que, con la luz de estudio y el acabado ACES, el promedio salga como la hoja: piel #F7C846, morro #CF9259)
+const HR_COL = { skin: new THREE.Color(0.93, 0.56, 0.085), muz: new THREE.Color(0.6, 0.255, 0.105), pants: new THREE.Color(0.165, 0.21, 0.55) };
+// la piel de la figura: color de la hoja (amarillo y, en la cabeza, el morro tostado con su grano finísimo), luz que envuelve la sombra en tono cálido
+// (calidez de subsurface fingida, sin transmission), microtextura muy sutil y, en la cabeza, el zigzag del pelo y el garabato de la boca en reposo
+// pintados como en la hoja. Va después de freezable() (usa su ruido fzN). o.head: la malla de la cabeza (atributo hm: morro, boca por dentro, oclusión).
+function stubbly(m, o = {}) {
+  const prev = m.onBeforeCompile, head = !!o.head;
+  m.customProgramCacheKey = () => 'hrSkin' + (head ? 'H' : 'P');
+  m.onBeforeCompile = (sh, r) => { if (prev) prev(sh, r);
+    sh.uniforms.hrSkin = { value: HR_COL.skin }; sh.uniforms.hrMuz = { value: HR_COL.muz };
+    if (head) { sh.uniforms.hrZZ = { value: HR_ZZ.map(([a, b]) => new THREE.Vector2(a, b)) }; sh.uniforms.hrSQ = { value: HR_SQ.map(([a, b]) => new THREE.Vector2(a, b)) }; }
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vHp; varying vec4 vHm; varying float vMouth;' + (head ? '\nattribute vec4 hm;' : ''))
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvHp = position; vHm = ' + (head ? 'hm;\nvMouth = clamp(morphTargetInfluences[0] + morphTargetInfluences[1] * 1.3 + morphTargetInfluences[2] * 1.3, 0., 1.);' : 'vec4(-1., 0., 1., 0.); vMouth = 0.;'));
+    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
+varying vec3 vHp; varying vec4 vHm; varying float vMouth; uniform vec3 hrSkin, hrMuz;` + (head ? `
+uniform vec2 hrZZ[${HR_ZZ.length}]; uniform vec2 hrSQ[${HR_SQ.length}];
+float hrSeg(vec2 p, vec2 a, vec2 b){ vec2 pa = p - a, ba = b - a; return length(pa - ba * clamp(dot(pa, ba) / dot(ba, ba), 0., 1.)); }` : ''))
+      .replace('#include <lights_physical_pars_fragment>', THREE.ShaderChunk.lights_physical_pars_fragment.replace('reflectedLight.directDiffuse += irradiance * BRDF_Lambert( material.diffuseColor );',
+        `reflectedLight.directDiffuse += irradiance * BRDF_Lambert( material.diffuseColor );
+  { float hrW = saturate( ( dot( geometryNormal, directLight.direction ) + 0.5 ) / 1.5 );          // la luz envuelve la sombra (piel cálida)
+    reflectedLight.directDiffuse += max( hrW * hrW - dotNL, 0. ) * vec3( 1.0, 0.62, 0.36 ) * 0.85 * directLight.color * BRDF_Lambert( material.diffuseColor ); }`))
+      .replace('#include <color_fragment>', `#include <color_fragment>
+{ vec3 c = hrSkin * (0.975 + 0.05 * fzN(vHp * 7.)) * (0.988 + 0.024 * fzN(vHp * 95.));` + (head ? `
+  float fw = max(fwidth(vHm.x), 1e-4), mz = smoothstep(-fw, fw, vHm.x);
+  float g1 = fzN(vHp * 230.), g2 = fzN(vHp * 61. + 3.), g3 = fzN(vHp * 17. + 7.);
+  vec3 mc = hrMuz * (0.95 + 0.1 * g3) * (1.04 - 0.08 * smoothstep(0.55, 0.8, g2));
+  mc = mix(mc, hrMuz * 0.55, smoothstep(0.66, 0.82, g1) * 0.5);                                   // el grano de la barba (del color de la hoja)
+  c = mix(c, mc, mz);
+  c = mix(c, vec3(0.13, 0.025, 0.02), clamp(vHm.y, 0., 1.));                                      // la boca por dentro
+  // el zigzag del pelo (línea fina, como en la hoja) y el garabato «~» de la boca en reposo
+  { float ph = atan(vHp.x, -(vHp.z + 0.2)) * 1.25, d = 9.;
+    for (int i = 0; i < ${HR_ZZ.length - 1}; i++) d = min(d, hrSeg(vec2(ph, vHp.y), hrZZ[i], hrZZ[i + 1]));
+    float aa = fwidth(d) + 1e-4, ln = (1. - smoothstep(0.019 - aa, 0.019 + aa, d)) * step(abs(ph), 2.6) * (1. - vHm.y);
+    c = mix(c, vec3(0.16, 0.1, 0.03), ln * 0.92); }
+  if (vHp.z > 1.35 && vHm.y < 0.5) { float d = 9.;
+    for (int i = 0; i < ${HR_SQ.length - 1}; i++) { if (hrSQ[i].x > 50. || hrSQ[i + 1].x > 50.) continue; d = min(d, hrSeg(vHp.xy, hrSQ[i], hrSQ[i + 1])); }
+    float aa = fwidth(d) + 1e-4, ln = (1. - smoothstep(0.036 - aa, 0.036 + aa, d)) * (1. - vMouth) * smoothstep(1.35, 1.6, vHp.z);
+    c = mix(c, vec3(0.2, 0.07, 0.03), ln * 0.95); }` : '') + `
+  diffuseColor.rgb = c; }`)
+      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = clamp(roughnessFactor * (0.9 + 0.2 * fzN(vHp * 140.))' + (head ? ' + 0.12 * smoothstep(-0.02, 0.02, vHm.x)' : '') + ', 0.05, 1.);')
+      .replace('#include <aomap_fragment>', '#include <aomap_fragment>\nreflectedLight.indirectDiffuse *= vHm.z; reflectedLight.directDiffuse *= mix(1., vHm.z, 0.55); reflectedLight.indirectSpecular *= mix(1., vHm.z, 0.7);'); };
+  return m;
+}
+function hrSkinMat(head) {
+  const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.5, clearcoat: 0.1, clearcoatRoughness: 0.4, sheen: 0.15, sheenRoughness: 0.7, sheenColor: new THREE.Color(0xffd890) });
+  return stubbly(freezable(m), { head });
+}
+
+// ---------------------------------------------------------------- ojos (círculos blancos grandes, brillantes y húmedos, con el punto negro), párpados solo al parpadear
+function hrLidGeo(top) {      // media cáscara (párpado de arriba o de abajo) con un gesto de arrugas (morph) para los ojos apretados
+  const g = new THREE.SphereGeometry(1.055, 48, 20, 0, Math.PI * 2, top ? 0 : Math.PI / 2, Math.PI / 2), P = g.attributes.position, d = new Float32Array(P.count * 3);
+  for (let i = 0; i < P.count; i++) { const x = P.getX(i), y = P.getY(i), z = P.getZ(i), th = Math.acos(clamp(Math.abs(y) / 1.055, 0, 1)), e = Math.PI / 2 - th;   // e: distancia al borde
+    const k = 0.06 * Math.pow(Math.sin(e * 9.5), 2) * Math.exp(-e * 2.2) * (0.6 + 0.4 * Math.abs(x)) + 0.05 * Math.exp(-e * 6);
+    d[i * 3] = x * k; d[i * 3 + 1] = y * k; d[i * 3 + 2] = z * k; }
+  g.morphAttributes.position = [new THREE.BufferAttribute(d, 3)]; g.morphTargetsRelative = true; return g;
+}
+function makeEye(lidM) {
+  const E = HM.ey, g = new THREE.Group(), s = new THREE.Group(); s.scale.set(E.rx, E.ry, E.rz); g.add(s);
+  const white = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 40), freezable(new THREE.MeshPhysicalMaterial({ color: 0xfbfaf7, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.025, sheen: 0.2, sheenColor: new THREE.Color(0xffffff) })));
+  white.castShadow = true; white.receiveShadow = true; s.add(white);
+  const look = new THREE.Group(); s.add(look);
+  const pup = new THREE.Mesh(new THREE.SphereGeometry(1.004, 40, 10, 0, Math.PI * 2, 0, 0.165), freezable(new THREE.MeshPhysicalMaterial({ color: 0x050403, roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.02 })));
+  pup.rotation.x = Math.PI / 2; look.add(pup);
+  const lidU = new THREE.Mesh(hrLidGeo(true), lidM), lidL = new THREE.Mesh(hrLidGeo(false), lidM); lidU.castShadow = lidL.castShadow = true; s.add(lidU, lidL);
+  g.userData = { s, look, pup, lidU, lidL, base: s.scale.clone() }; eyePose(g, 1); return g;
+}
+// pose de un ojo: abierto (0 cerrado … 1 normal … 1,5 muy abierto), pupila, mirada (yaw: hacia +x; pitch > 0: hacia abajo).
+// Por debajo de 0,3 los párpados se cierran; entre 0,1 y 0,3 (ojos apretados de dolor) salen las arrugas de los párpados.
+function eyePose(e, open, pup = 1, yaw = 0, pitch = 0) {
+  const U = e.userData, cl = 1 - hrSS(0.3, 0.88, open), sq = hrSS(0.36, 0.2, open) * hrSS(0.0, 0.1, open);
+  U.lidU.rotation.x = lerp(-1.95, 0.08, cl); U.lidL.rotation.x = lerp(1.9, 0.08, cl); U.lidU.visible = U.lidL.visible = cl > 0.002;
+  U.lidU.morphTargetInfluences[0] = U.lidL.morphTargetInfluences[0] = sq;
+  U.s.scale.copy(U.base).multiplyScalar(1 + 0.06 * clamp(open - 1, 0, 0.5));
+  U.pup.scale.setScalar(pup); U.look.rotation.set(pitch, yaw, 0);
+}
+// tubo que adelgaza en las puntas (los pelos)
+function taperTube(pts, r, m, seg = 40, rs = 12, prof = u => Math.sin(Math.PI * clamp(u * 0.92 + 0.04))) {
+  const cv = new THREE.CatmullRomCurve3(pts), geo = new THREE.TubeGeometry(cv, seg, r, rs, false), P = geo.attributes.position, c = new THREE.Vector3(), v = new THREE.Vector3();
+  for (let i = 0; i <= seg; i++) { cv.getPointAt(i / seg, c); const f = prof(i / seg); for (let j = 0; j <= rs; j++) { const k = i * (rs + 1) + j; v.fromBufferAttribute(P, k).sub(c).multiplyScalar(f).add(c); P.setXYZ(k, v.x, v.y, v.z); } }
+  geo.computeVertexNormals(); const mm = new THREE.Mesh(geo, m); mm.castShadow = true; return mm;
+}
+function hairMat(c = 0x2a2420) { return freezable(new THREE.MeshPhysicalMaterial({ color: c, roughness: 0.55, sheen: 0.8, sheenRoughness: 0.45, sheenColor: new THREE.Color(0x8a7a6a), clearcoat: 0.3, clearcoatRoughness: 0.4 })); }
+
+// ---------------------------------------------------------------- el polo de chocolate (1,5 veces el de antes)
+function popsicle() {
+  const g = new THREE.Group(); const ch = freezable(new THREE.MeshPhysicalMaterial({ color: 0x3f2215, roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.22, sheen: 0.3, sheenColor: new THREE.Color(0x8a5a3a) }));
+  const bar = rbox(0.69, 1.26, 0.26, ch, 0.12); bar.position.y = 0.63 + 0.72; g.add(bar);
+  const stick = rbox(0.15, 0.93, 0.04, freezable(new THREE.MeshStandardMaterial({ color: 0xe0c38e, roughness: 0.8 })), 0.06); stick.position.y = 0.465; g.add(stick);
+  g.userData = { bar }; return g;
+}
+
+// ---------------------------------------------------------------- el cuerpo: camisa blanca de manga corta con cuello de dos puntas, pantalón azul y zapatos de cuero
+// (la figura vestida de la hoja: barriga grande en pera, hombros caídos y estrechos, piernas cortas y gruesas)
+const BD = {
+  ch: { cy: -3.1, cz: -0.12, rx: 1.78, ry: 1.3, rz: 1.32 },              // pecho
+  be: { cy: -5.45, cz: 0.42, rx: 2.86, ry: 2.18, rz: 2.22 },             // barriga
+  shA: [0.8, -2.05, -0.2], shB: [2.0, -2.82, -0.22], shR: 0.56,         // hombros caídos (del cuello al brazo)
+  wy: -6.3,                                                              // la camisa se mete en el pantalón
+};
+function hrShirtSD(x, y, z) {
+  const ax = Math.abs(x), C = BD.ch, B = BD.be;
+  let d = smin(hrE(x, y - C.cy, z - C.cz, C.rx, C.ry, C.rz), hrE(x, y - B.cy, z - B.cz, B.rx, B.ry, B.rz), 0.9);
+  d = smin(d, hrCap(ax, y, z, ...BD.shA, ...BD.shB, BD.shR, BD.shR * 0.95), 0.5);
+  // arrugas suaves: bajo los brazos, sobre la barriga (al meterse en el pantalón) y en la espalda
+  d += 0.012 * Math.sin(y * 7 + Math.sin(x * 3.1) * 1.4) * hrSS(-5.6, -6.3, y) + 0.008 * Math.sin(x * 5.5 + y * 2.0) * hrSS(1.2, 2.2, ax) * hrSS(-2.6, -4.0, y);
+  d = Math.max(d, -(y + 6.95));                                           // por debajo, dentro del pantalón
+  return ssub(d, (Math.hypot(x / 0.99, (z - 0.06) / 0.82) - 1) * 0.82 + Math.max(0, -1.95 - y) * 3, 0.06);   // el hueco del cuello
+}
+const PT = { wy0: -6.1, wb: { cy: -6.95, cz: 0.3, rx: 2.66, ry: 1.05, rz: 2.12 }, hp: { cy: -7.45, cz: 0.08, rx: 2.55, ry: 1.3, rz: 1.95 }, lx: 1.16, la: -7.6, lb: -13.05, ra: 1.13, rb: 1.06, hem: -13.12 };
+function hrPantsSD(x, y, z) {
+  const ax = Math.abs(x), H = PT.hp, B = PT.wb;
+  let d = smin(hrE(x, y - B.cy, z - B.cz, B.rx, B.ry, B.rz), hrE(x, y - H.cy, z - H.cz, H.rx, H.ry, H.rz), 0.6);    // la cintura (bajo la barriga) y la cadera
+  d = smin(d, hrCap(ax, y, z, PT.lx, PT.la, 0.06, PT.lx - 0.03, PT.lb, 0.14, PT.ra, PT.rb), 0.5);
+  // la «V» de la entrepierna, arrugas abajo (el bajo se apoya en el zapato) y en las rodillas
+  d += 0.03 * hrSS(-8.1, -8.7, y) * Math.exp(-((x / 0.22) ** 2)) * hrSS(-1.0, 0.5, z);
+  d += 0.022 * Math.sin(y * 6.2 + Math.sin(x * 3.3 + z * 2.6) * 1.8) * hrSS(-11.6, -12.9, y) + 0.01 * Math.sin(y * 3.4 + x * 6.0 + z) * hrSS(-9.3, -10.3, y) * (1 - hrSS(-11.0, -11.8, y));
+  return Math.max(d, PT.hem - y, y - PT.wy0);
+}
+const SHOE = { x: 1.17, y: -13.29, z: 0.5, rx: 0.7, ry: 0.4, rz: 1.27 };
+function hrShoesSD(x, y, z) {
+  const ax = Math.abs(x), S = SHOE, d0 = hrE(ax - S.x, y - S.y, z - S.z, S.rx, S.ry, S.rz);
+  let d = smin(d0, hrE(ax - S.x, y + 13.2, z + 0.05, 0.62, 0.42, 0.72), 0.2);       // talón
+  d = smin(d, hrE(ax - S.x, y + 12.95, z - 0.05, 0.6, 0.3, 0.6), 0.25);              // el empeine sube hasta el pantalón
+  return Math.max(d, -13.6 - y);
+}
+function hrClothTex(w, draw, rep) { const t = canvasTex(w, w, draw); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep, rep); t.colorSpace = THREE.NoColorSpace; return t; }
+function shirtMat() {      // algodón blanco: tejido fino (relieve) y un brillo aterciopelado
+  const b = hrClothTex(256, (g, w, h) => { g.fillStyle = '#808080'; g.fillRect(0, 0, w, h);
+    for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(255,255,255,${0.16 + hash(y) * 0.12})`; g.fillRect(0, y, w, 1); }
+    for (let x = 0; x < w; x += 2) { g.fillStyle = `rgba(0,0,0,${0.12 + hash(x * 3.1) * 0.1})`; g.fillRect(x, 0, 1, h); }
+    for (let i = 0; i < 900; i++) { g.fillStyle = `rgba(${hash(i) > 0.5 ? '255,255,255' : '0,0,0'},0.08)`; g.fillRect(hash(i * 2.3) * w, hash(i * 5.7) * h, 1 + hash(i) * 3, 1); } }, 9);
+  return freezable(new THREE.MeshPhysicalMaterial({ color: 0xdcdad4, bumpMap: b, bumpScale: 1.6, roughness: 0.88, sheen: 0.35, sheenRoughness: 0.6, sheenColor: new THREE.Color(0xf4f4f4) }));
+}
+function pantsMat() {      // algodón azul (sarga: diagonales finas)
+  const b = hrClothTex(256, (g, w, h) => { g.fillStyle = '#808080'; g.fillRect(0, 0, w, h); g.lineWidth = 1.2;
+    for (let k = -h; k < w; k += 4) { g.strokeStyle = `rgba(255,255,255,${0.2 + hash(k) * 0.15})`; g.beginPath(); g.moveTo(k, 0); g.lineTo(k + h, h); g.stroke(); }
+    for (let i = 0; i < 1200; i++) { g.fillStyle = `rgba(0,0,0,${0.06 + hash(i) * 0.06})`; g.fillRect(hash(i * 2.3) * w, hash(i * 5.7) * h, 1, 1 + hash(i) * 2); } }, 10);
+  return freezable(new THREE.MeshPhysicalMaterial({ color: HR_COL.pants, bumpMap: b, bumpScale: 0.7, roughness: 0.84, sheen: 0.8, sheenRoughness: 0.5, sheenColor: new THREE.Color(0x9fb2e8) }));
+}
+function shoeMat() {       // cuero negro con su grano y brillo
+  const b = hrClothTex(256, (g, w, h) => { g.fillStyle = '#808080'; g.fillRect(0, 0, w, h); for (let i = 0; i < 2600; i++) { g.fillStyle = `rgba(${hash(i) > 0.5 ? '255,255,255' : '0,0,0'},${0.05 + hash(i * 3.3) * 0.08})`; g.beginPath(); g.arc(hash(i * 2.3) * w, hash(i * 5.7) * h, 0.6 + hash(i * 7.1) * 1.6, 0, 7); g.fill(); } }, 6);
+  return freezable(new THREE.MeshPhysicalMaterial({ color: 0x1a1918, bumpMap: b, bumpScale: 0.35, roughness: 0.34, clearcoat: 0.7, clearcoatRoughness: 0.18, sheen: 0.2, sheenColor: new THREE.Color(0x605a55) }));
+}
+// el cuello de la camisa: una tira alrededor del cuello y las dos puntas que caen sobre el pecho
+function hrCollar(m) {
+  const g = new THREE.Group(), N = 72, band = [], top = [];
+  const ring = (y, r0, out) => { const P = []; for (let i = 0; i <= N; i++) { const a = -Math.PI + 2 * Math.PI * i / N, gap = Math.abs(a) < 0.2;
+    P.push(v3(Math.sin(a) * (1.02 + out) * r0, y + 0.05 * Math.cos(a), 0.06 + Math.cos(a) * (0.84 + out) * r0)); } return P; };
+  // la tira (abierta delante): superficie entre dos anillos, con grosor
+  const geo = new THREE.BufferGeometry(), P = [], I = [], lo = ring(-2.06, 1.0, 0.07), hi = ring(-1.62, 1.0, 0.0);
+  const open = i => Math.abs(-Math.PI + 2 * Math.PI * i / N) < 0.32;
+  for (let i = 0; i <= N; i++) { P.push(lo[i].x, lo[i].y, lo[i].z, hi[i].x, hi[i].y, hi[i].z); }
+  for (let i = 0; i < N; i++) { if (open(i) || open(i + 1)) continue; const a = i * 2, b = a + 1, c = a + 2, d = a + 3; I.push(a, c, b, b, c, d); }
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); geo.setIndex(I); geo.computeVertexNormals();
+  const bm = m.clone(); bm.side = THREE.DoubleSide; const bandM = new THREE.Mesh(geo, bm); bandM.castShadow = true; g.add(bandM);
+  // las dos puntas: lengüetas dobladas hacia abajo y afuera desde el cuello
+  for (const s of [-1, 1]) { const sh = new THREE.Shape(); sh.moveTo(0, 0); sh.lineTo(0.95, 0.05); sh.quadraticCurveTo(0.75, -0.35, 0.28, -0.98); sh.quadraticCurveTo(0.08, -0.55, 0, 0);
+    const eg = new THREE.ExtrudeGeometry(sh, { depth: 0.035, bevelEnabled: true, bevelSize: 0.025, bevelThickness: 0.02, bevelSegments: 2, curveSegments: 10 });
+    const pm = new THREE.Mesh(eg, m); pm.castShadow = true; pm.scale.set(s, 1, 1);
+    pm.position.set(s * 0.12, -1.7, 0.9); pm.rotation.set(-0.95, s * 0.62, s * 0.18); g.add(pm); }
+  return g;
+}
+const _up0 = new THREE.Vector3(0, 1, 0), _lv = new THREE.Vector3(), _el = new THREE.Vector3();
+// la mano (de skin_v2.js): tamaño, punto del puño por donde pasa el palo y las dos poses (puño y relajada) [pulgar, índice, corazón, anular]
+const HR_HAND_S = 1.3, HR_GRIP = [0, 0.86, -0.3], HR_FIST = [0.9, 1.5, 1.55, 1.58], HR_RELAX = [0.25, 0.5, 0.6, 0.7];
+function limb(m, a, b) { const d = _lv.copy(b).sub(a), L = d.length(); m.position.copy(a); m.quaternion.setFromUnitVectors(_up0, d.divideScalar(L)); m.scale.set(1, L, 1); }
+// la manga corta: sigue al brazo (pegada al hombro, a lo largo del brazo, sin estirarse)
+function hrSleevePose(s, a, b) { const d = _lv.copy(b).sub(a).normalize(); s.position.copy(a); s.quaternion.setFromUnitVectors(_up0, d); }
+function hrSleeveGeo() {
+  const prof = [[0.56, 1.1], [0.6, 1.15], [0.69, 1.13], [0.71, 1.06], [0.7, 0.9], [0.71, 0.6], [0.72, 0.25], [0.7, -0.05], [0.6, -0.22], [0.4, -0.33], [0.001, -0.36]];
+  const g = new THREE.LatheGeometry(prof.map(([r, y]) => new THREE.Vector2(r, y)), 56), P = g.attributes.position;
+  for (let i = 0; i < P.count; i++) { const x = P.getX(i), y = P.getY(i), z = P.getZ(i), a = Math.atan2(x, z), k = 1 + 0.025 * Math.sin(a * 5 - y * 3) * hrSS(0.0, 0.5, y) + 0.04 * hrSS(0.95, 1.1, y) * Math.sin(a * 3);
+    P.setXYZ(i, x * k, y, z * k); }
+  g.computeVertexNormals(); return g;
+}
+function buildHero() {
+  const G = new THREE.Group(), U = {};
+  U.cut = [new THREE.Plane(new THREE.Vector3(-1, 0, 0), 9)];
+  // cabeza (grupo pivote en el origen)
+  const skin = hrSkinMat(true); skin.clippingPlanes = U.cut; U.skinMat = skin;
+  const skinP = hrSkinMat(false); skinP.clippingPlanes = U.cut;
+  const H = new THREE.Group(); G.add(H); U.head = H;
+  const hm = new THREE.Mesh(headGeo(), skin); hm.castShadow = true; hm.receiveShadow = true; H.add(hm); U.headMesh = hm;
+  U.eyes = [1, -1].map(s => { const e = makeEye(skinP); e.position.set(s * HM.ey.cx, HM.ey.cy, HM.ey.cz); e.traverse(o => { if (o.isMesh) o.material.clippingPlanes = U.cut; }); H.add(e); return e; });
+  U.brows = [];
+  const hh = hairMat(); hh.clippingPlanes = U.cut;
+  U.hairs = hrHairPts().map(L => { const m = taperTube(L.map(p => v3(...p)), 0.036, hh, 48, 10, u => 0.55 + 0.45 * Math.sin(Math.PI * clamp(u * 1.1 - 0.05))); H.add(m); return m; });
+  // dientes (arriba, en la cabeza; abajo, en la mandíbula) y la lengua
+  const tm = freezable(new THREE.MeshPhysicalMaterial({ color: 0xf3efe4, roughness: 0.22, clearcoat: 0.7, clearcoatRoughness: 0.1 })); tm.clippingPlanes = U.cut;
+  const M = HM.mo, teeth = (y0, h, R, cz, n, w) => { const g = new THREE.Group(); for (let i = 0; i < n; i++) { const a = (i - (n - 1) / 2) * 0.19, t = rbox(w, h, 0.09, tm, 0.035);
+    t.position.set(Math.sin(a) * R, y0, cz + Math.cos(a) * R); t.rotation.y = a; t.castShadow = true; g.add(t); } return g; };
+  U.teethU = teeth(M.y + 0.08, 0.22, 0.62, 1.15, 8, 0.16); H.add(U.teethU);
+  U.jaw = new THREE.Group(); U.jaw.position.copy(JAW_P); H.add(U.jaw);
+  U.teethL = teeth(M.y - 0.08, 0.19, 0.58, 1.14, 8, 0.15); U.teethL.position.sub(JAW_P); U.jaw.add(U.teethL);
+  const tg = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 20), freezable(new THREE.MeshPhysicalMaterial({ color: 0xa8333a, roughness: 0.42, clearcoat: 0.5, clearcoatRoughness: 0.25 })));
+  tg.material.clippingPlanes = U.cut; tg.scale.set(0.42, 0.11, 0.44); tg.position.set(0, M.y - 0.2, 1.08).sub(JAW_P); U.jaw.add(tg); U.tongue = tg;
+  // con la sonrisa, el labio de abajo baja y los dientes de abajo con él (de la hoja: solo se ven los de arriba)
+  U.teethL.onBeforeRender = () => { const mi = hm.morphTargetInfluences; U.teethL.position.set(0, -0.3 * mi[1], 0).sub(JAW_P); U.teethL.updateMatrixWorld(true); };
+  U.teethU.onBeforeRender = () => { const mi = hm.morphTargetInfluences; U.teethU.position.y = 0.12 * mi[0]; U.teethU.updateMatrixWorld(true); };
+  U.cap = new THREE.Group(); U.cap.visible = false; H.add(U.cap);
+  // cuerpo: camisa, cuello, pantalón y zapatos
+  const shirt = shirtMat(); U.shirt = shirt;
+  const body = new THREE.Mesh(mcGeometry(hrShirtSD, [-3.1, -7.0, -2.0, 3.1, -1.5, 2.9], 0.05, (x, y, z, c) => c.setRGB(1, 1, 1)), shirt); body.castShadow = true; body.receiveShadow = true; G.add(body); U.body = body;
+  U.collar = hrCollar(shirt); G.add(U.collar);
+  const pants = new THREE.Mesh(mcGeometry(hrPantsSD, [-2.8, -13.2, -2.2, 2.8, -5.9, 2.6], 0.05, (x, y, z, c) => c.setRGB(1, 1, 1)), pantsMat()); pants.castShadow = true; pants.receiveShadow = true; G.add(pants); U.pants = pants;
+  const shoes = new THREE.Mesh(mcGeometry(hrShoesSD, [-2.0, -13.62, -0.9, 2.0, -12.5, 1.9], 0.03, (x, y, z, c) => c.setRGB(1, 1, 1)), shoeMat()); shoes.castShadow = true; shoes.receiveShadow = true; G.add(shoes); U.shoes = shoes;
+  // brazos: de la manga al codo (siguen a los antebrazos) y las mangas
+  const upGeo = new THREE.LatheGeometry([[0.001, -0.14], [0.34, -0.1], [0.5, 0.03], [0.55, 0.25], [0.54, 0.6], [0.51, 0.85], [0.47, 0.98], [0.35, 1.08], [0.001, 1.13]].map(([r, y]) => new THREE.Vector2(r, y)), 40);
+  U.upR = new THREE.Mesh(upGeo, skinP); U.upL = new THREE.Mesh(upGeo, skinP); for (const m of [U.upR, U.upL]) { m.castShadow = true; m.receiveShadow = true; G.add(m); }
+  const slGeo = hrSleeveGeo(); U.slR = new THREE.Mesh(slGeo, shirt); U.slL = new THREE.Mesh(slGeo, shirt); for (const m of [U.slR, U.slL]) { m.castShadow = true; m.receiveShadow = true; G.add(m); }
+  U.shR = v3(-2.08, -2.78, -0.22); U.shL = v3(2.08, -2.78, -0.22);
+  // brazo derecho (el del polo): antebrazo y mano con el puño cerrado sobre el palo
+  U.armR = new THREE.Group(); G.add(U.armR);
+  U.handR = realHand({ inside: false }); U.handR.scale.setScalar(HR_HAND_S); U.armR.add(U.handR);
+  { const X = v3(0, -1, 0), Y = v3(0, 0, 1), Z = new THREE.Vector3().crossVectors(X, Y); U.handR.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, Y, Z));
+    const Gp = v3(...HR_GRIP).multiplyScalar(HR_HAND_S).applyQuaternion(U.handR.quaternion); U.handR.position.set(0, 0.2, 0).sub(Gp); }
+  U.handR.updateMatrix();
+  handPose2(U.handR, HR_FIST);
+  U.handR.traverse(o => { if (o.isMesh && o.material && !o.isSprite) { o.material = stubbly(freezable(o.material.clone())); o.material.clippingPlanes = null; } });
+  U.pop = popsicle(); U.pop.rotation.x = POP_TILT; U.armR.add(U.pop);
+  // brazo izquierdo: cae junto a la barriga, con la mano relajada (la misma mano, en espejo)
+  U.handL = realHand({ inside: false }); U.handL.scale.set(-HR_HAND_S, HR_HAND_S, HR_HAND_S); G.add(U.handL);
+  handPose2(U.handL, HR_RELAX);
+  U.handL.traverse(o => { if (o.isMesh && o.material && !o.isSprite) o.material = stubbly(freezable(o.material.clone())); });
+  { const E = v3(3.2, -4.95, 0.05), W = v3(3.32, -6.45, 0.42), Y = W.clone().sub(E).normalize(), Zh = v3(-1, 0, 0.3).normalize(), X = new THREE.Vector3().crossVectors(Y, Zh).normalize(), Z = new THREE.Vector3().crossVectors(X, Y);
+    U.handL.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, Y, Z));
+    const off = v3(0, ARM_ELB, 0).multiply(U.handL.scale).applyQuaternion(U.handL.quaternion); U.handL.position.copy(E).sub(off); limb(U.upL, U.shL, E); hrSleevePose(U.slL, U.shL, E); }
+  U.icicles = [];
+  G.userData = U; return G;
+}
+// la pose del brazo que sostiene el polo: el puño (con el palo) en P, el polo apuntando a «dir»; E: hacia dónde queda el codo
+const _hq = new THREE.Quaternion(), _hm4 = new THREE.Matrix4(), POP_TILT = 0.3;
+function armPose(U, P, dir, E) {
+  const s = dir.clone().normalize(), e = E.clone().sub(P), n = e.sub(s.clone().multiplyScalar(e.dot(s))).normalize().negate(), ca = Math.cos(POP_TILT), sa = Math.sin(POP_TILT);
+  const y = s.clone().multiplyScalar(ca).addScaledVector(n, -sa), z = s.clone().multiplyScalar(sa).addScaledVector(n, ca), x = new THREE.Vector3().crossVectors(y, z).normalize();
+  _hm4.makeBasis(x, y, z); U.armR.quaternion.setFromRotationMatrix(_hm4); U.armR.position.copy(P).sub(s.multiplyScalar(0.2));
+  _el.set(0, ARM_ELB, 0).applyMatrix4(U.handR.matrix).applyQuaternion(U.armR.quaternion).add(U.armR.position); limb(U.upR, U.shR, _el); hrSleevePose(U.slR, U.shR, _el);
 }

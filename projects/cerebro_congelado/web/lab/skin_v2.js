@@ -81,11 +81,13 @@ const GAP = 0.016;
 
 // ---------- la forma de la mano (en reposo: mano derecha, dorso hacia +z, dedos hacia +y)
 const HD = {
-  F: [ { x: -0.27, y: 0.86, a: 6, L: [0.41, 0.25, 0.21], r: 0.118 },       // la mano de Homer: tres dedos gordos + el pulgar (nudillo (x, y), giro, falanges, radio)
-       { x: -0.02, y: 0.9, a: 0, L: [0.45, 0.27, 0.22], r: 0.122 },
-       { x: 0.23, y: 0.85, a: -7, L: [0.4, 0.25, 0.2], r: 0.115 } ],
-  T: [ [-0.25, 0.12, -0.04], [-0.46, 0.39, 0.01], [-0.585, 0.585, 0.045], [-0.67, 0.745, 0.065] ], TR: [0.12, 0.108, 0.1, 0.088],   // pulgar: CMC, MCP, IP, yema
+  F: [ { x: -0.3, y: 0.83, a: 7, L: [0.36, 0.24, 0.21], r: 0.155 },       // la mano de Homer (la hoja): tres dedos gordos + el pulgar, sin uñas (nudillo (x, y), giro, falanges, radio)
+       { x: 0.0, y: 0.87, a: 0, L: [0.38, 0.25, 0.21], r: 0.16 },
+       { x: 0.3, y: 0.82, a: -7, L: [0.35, 0.23, 0.2], r: 0.152 } ],
+  T: [ [-0.3, 0.1, -0.04], [-0.53, 0.37, 0.02], [-0.67, 0.57, 0.06], [-0.76, 0.73, 0.08] ], TR: [0.165, 0.155, 0.145, 0.128],   // pulgar: CMC, MCP, IP, yema
 };
+// el codo, redondo, al final del antebrazo (corto, como el de la hoja), en coordenadas de la mano
+const ARM_ELB = -1.42;
 for (const d of HD.F) { const a = d.a * D2; d.u = [-Math.sin(a), Math.cos(a)]; const P = [[d.x, d.y]]; let s = 0; for (let j = 0; j < 3; j++) { s += j < 2 ? d.L[j] : d.L[2] - d.r * 0.8; P.push([d.x + d.u[0] * s, d.y + d.u[1] * s]); } d.P = P; }
 function capP(a, b, ra, rb, zs) { const izs = 1 / zs, dx = b[0] - a[0], dy = b[1] - a[1], dz = ((b[2] || 0) - (a[2] || 0)) * izs; return { ax: a[0], ay: a[1], az: a[2] || 0, dx, dy, dz, ra, rb, izs, il2: 1 / (dx * dx + dy * dy + dz * dz) }; }
 function capD(x, y, z, P) { const px = x - P.ax, py = y - P.ay, pz = (z - P.az) * P.izs; let h = (px * P.dx + py * P.dy + pz * P.dz) * P.il2; h = h < 0 ? 0 : h > 1 ? 1 : h;
@@ -94,42 +96,30 @@ function ellD(x, y, z, E) { const a = (x - E[0]) / E[3], b = (y - E[1]) / E[4], 
 const smin = (a, b, k) => { const h = Math.max(k - Math.abs(a - b), 0) / k; return Math.min(a, b) - h * h * k * 0.25; };
 function sphD(x, y, z, K) { const a = x - K[0], b = y - K[1], c = (z - K[2]) / K[4]; return Math.sqrt(a * a + b * b + c * c) - K[3]; }
 const HP = (() => {
-  const meta = HD.F.map(d => capP([d.x * 0.62 - 0.01, 0.16, 0.03], [d.x - d.u[0] * 0.03, d.y - d.u[1] * 0.03, 0.03], 0.085, d.r * 1.05, 1.0));
-  const fing = HD.F.map(d => [capP([...d.P[0], 0], [...d.P[1], 0], d.r, d.r * 0.93, 0.86), capP([...d.P[1], 0], [...d.P[2], 0], d.r * 0.93, d.r * 0.86, 0.86), capP([...d.P[2], 0], [...d.P[3], -d.r * 0.06], d.r * 0.86, d.r * 0.8, 0.86)]);
-  const knk = HD.F.map(d => [[...d.P[1], 0.005, d.r * 0.955, 0.86], [...d.P[2], 0.004, d.r * 0.875, 0.86]]);
-  const thumb = [0, 1, 2].map(j => capP(HD.T[j], HD.T[j + 1], HD.TR[j], HD.TR[j + 1], 0.86));
-  const ell = [[-0.03, 0.47, -0.03, 0.38, 0.4, 0.12], [-0.25, 0.27, -0.07, 0.15, 0.2, 0.12], [0.27, 0.32, -0.05, 0.1, 0.3, 0.1]].map(e => [...e, Math.min(e[3], e[4], e[5])]);
-  const arm = capP([0, 0.16, 0], [0.02, -2.2, 0], 0.27, 0.3, 0.66);
+  const meta = HD.F.map(d => capP([d.x * 0.6 - 0.01, 0.14, 0.03], [d.x - d.u[0] * 0.03, d.y - d.u[1] * 0.03, 0.03], 0.11, d.r * 1.08, 1.0));
+  const fing = HD.F.map(d => [capP([...d.P[0], 0], [...d.P[1], 0], d.r, d.r * 0.96, 0.9), capP([...d.P[1], 0], [...d.P[2], 0], d.r * 0.96, d.r * 0.92, 0.9), capP([...d.P[2], 0], [...d.P[3], -d.r * 0.04], d.r * 0.92, d.r * 0.88, 0.9)]);
+  const knk = HD.F.map(d => [[...d.P[1], 0.005, d.r * 0.985, 0.9], [...d.P[2], 0.004, d.r * 0.94, 0.9]]);
+  const thumb = [0, 1, 2].map(j => capP(HD.T[j], HD.T[j + 1], HD.TR[j], HD.TR[j + 1], 0.9));
+  const ell = [[-0.02, 0.46, -0.03, 0.46, 0.43, 0.17], [-0.27, 0.27, -0.08, 0.19, 0.22, 0.15], [0.29, 0.31, -0.06, 0.13, 0.32, 0.13]].map(e => [...e, Math.min(e[3], e[4], e[5])]);
+  const arm = capP([0, 0.16, 0], [0.02, ARM_ELB, 0], 0.35, 0.38, 0.93);      // antebrazo gordito hasta el codo redondo
   return { meta, fing, knk, thumb, ell, arm };
 })();
-function sdPalm(x, y, z) { let p = capD(x, y, z, HP.meta[0]); for (let i = 1; i < HD.F.length; i++) p = smin(p, capD(x, y, z, HP.meta[i]), 0.1); for (const e of HP.ell) p = smin(p, ellD(x, y, z, e), 0.1); return smin(p, capD(x, y, z, HP.arm), 0.16); }
+function sdPalm(x, y, z) { let p = capD(x, y, z, HP.meta[0]); for (let i = 1; i < HD.F.length; i++) p = smin(p, capD(x, y, z, HP.meta[i]), 0.12); for (const e of HP.ell) p = smin(p, ellD(x, y, z, e), 0.12); return smin(p, capD(x, y, z, HP.arm), 0.22); }
 function sdFinger(x, y, z, i) { const F = HP.fing[i]; let f = Math.min(capD(x, y, z, F[0]), capD(x, y, z, F[1]), capD(x, y, z, F[2])); for (const K of HP.knk[i]) f = smin(f, sphD(x, y, z, K), 0.03); return f; }
 function sdThumb(x, y, z) { return Math.min(capD(x, y, z, HP.thumb[0]), capD(x, y, z, HP.thumb[1]), capD(x, y, z, HP.thumb[2])); }
-const WEB = capP([-0.43, 0.36, -0.01], [-0.29, 0.66, 0.0], 0.05, 0.045, 0.7);
-function sdHand(x, y, z) { let d = smin(sdPalm(x, y, z), capD(x, y, z, WEB), 0.09); for (let i = 0; i < HD.F.length; i++) d = smin(d, sdFinger(x, y, z, i), 0.05); return smin(d, sdThumb(x, y, z), 0.07); }
+const WEB = capP([-0.47, 0.36, -0.01], [-0.31, 0.64, 0.0], 0.07, 0.06, 0.7);
+function sdHand(x, y, z) { let d = smin(sdPalm(x, y, z), capD(x, y, z, WEB), 0.1); for (let i = 0; i < HD.F.length; i++) d = smin(d, sdFinger(x, y, z, i), 0.07); return smin(d, sdThumb(x, y, z), 0.09); }
 // marching cubes (tablas de Paul Bourke, las mismas que usa three) con vértices compartidos por arista → malla indexada
 const MC_E = [[0, 0, 0, 0], [1, 0, 0, 1], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0], [1, 0, 1, 1], [0, 1, 1, 0], [0, 0, 1, 1], [0, 0, 0, 2], [1, 0, 0, 2], [1, 1, 0, 2], [0, 1, 0, 2]];
 let HAND_GEO = null;
 const HAND_Y0 = -0.75;
 function handGeo() {
   if (HAND_GEO) return HAND_GEO;
-  const h = 0.0085, x0 = -0.86, y0 = HAND_Y0, z0 = -0.27, nx = Math.ceil((0.56 - x0) / h) + 1, ny = Math.ceil((1.9 - y0) / h) + 1, nz = Math.ceil((0.27 - z0) / h) + 1;
-  const F = new Float32Array(nx * ny * nz); let q = 0;
-  for (let k = 0; k < nz; k++) { const z = z0 + k * h; for (let j = 0; j < ny; j++) { const y = y0 + j * h; for (let i = 0; i < nx; i++, q++) { const x = x0 + i * h; F[q] = -sdHand(x, y, z); } } }
-  const id = (i, j, k) => i + nx * (j + ny * k), vmap = new Map(), P = [], I = [];
-  const vert = (i, j, k, ax) => { const key = id(i, j, k) * 3 + ax; let v = vmap.get(key); if (v !== undefined) return v;
-    const a = F[id(i, j, k)], b = F[ax === 0 ? id(i + 1, j, k) : ax === 1 ? id(i, j + 1, k) : id(i, j, k + 1)], t = a === b ? 0.5 : a / (a - b);
-    v = P.length / 3; P.push(x0 + (i + (ax === 0 ? t : 0)) * h, y0 + (j + (ax === 1 ? t : 0)) * h, z0 + (k + (ax === 2 ? t : 0)) * h); vmap.set(key, v); return v; };
-  const C = [[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]];
-  for (let k = 0; k < nz - 1; k++) for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
-    let ci = 0; for (let c = 0; c < 8; c++) if (F[id(i + C[c][0], j + C[c][1], k + C[c][2])] < 0) ci |= 1 << c;
-    if (ci === 0 || ci === 255) continue; const o = ci << 4;
-    for (let e = 0; triTable[o + e] !== -1; e += 3) for (let m = 0; m < 3; m++) { const E = MC_E[triTable[o + e + m]]; I.push(vert(i + E[0], j + E[1], k + E[2], E[3])); }
-  }
+  const h = 0.0105, { P, I } = mcBuild(sdHand, -0.98, ARM_ELB - 0.44, -0.36, 0.66, 1.85, 0.36, h);      // (mano, antebrazo y codo: una sola superficie)
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); g.setIndex(I);
   // normales del gradiente del campo, colores de la piel y pesos de los huesos
   const n = P.length / 3, N = new Float32Array(n * 3), COL = new Float32Array(n * 3), UV = new Float32Array(n * 2), SI = new Uint16Array(n * 4), SW = new Float32Array(n * 4), e = h * 0.5;
-  const base = new THREE.Color(0xdcae36), red = new THREE.Color(0xcf8f2a), pale = new THREE.Color(0xe7bf4c), cc = new THREE.Color();
+  const base = new THREE.Color(1, 1, 1), red = new THREE.Color(0.97, 0.9, 0.86), pale = new THREE.Color(1.02, 1.02, 1.0), cc = new THREE.Color();
   const ssm = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
   for (let v = 0; v < n; v++) {
     const x = P[v * 3], y = P[v * 3 + 1], z = P[v * 3 + 2];
@@ -208,13 +198,6 @@ function realHand(o = {}) {
   const mesh = new THREE.SkinnedMesh(geo, om), inner = new THREE.SkinnedMesh(innerGeo(), im); mesh.add(root); g.add(mesh); g.add(inner);
   g.updateMatrixWorld(true); const sk = new THREE.Skeleton(bones); mesh.bind(sk); inner.bind(sk);
   mesh.castShadow = true; mesh.receiveShadow = true; mesh.frustumCulled = inner.frustumCulled = false;
-  // antebrazo: sigue al corte del campo (su sección en y = HAND_Y0 es la elipse del brazo)
-  { const ya = HAND_Y0, x0 = 0.02 * (0.16 - ya) / 2.36, r0 = 0.27 + 0.03 * (0.16 - ya) / 2.36;
-    const arm = new THREE.Mesh(new THREE.CylinderGeometry(r0, r0 + 0.03, 2.4, 64, 1, true), om); arm.scale.z = 0.66; arm.position.set(x0, ya - 1.2, 0); arm.receiveShadow = true; g.add(arm);
-    const c = arm.geometry.attributes.position.count, col = new Float32Array(c * 3), cc = new THREE.Color(0xdcae36); for (let i = 0; i < c; i++) { col[i * 3] = cc.r; col[i * 3 + 1] = cc.g; col[i * 3 + 2] = cc.b; } arm.geometry.setAttribute('color', new THREE.BufferAttribute(col, 3)); }
-  // uñas
-  fingers.forEach(F => { const nm = nailMesh(F.r, F.L[2]); F.bones[2].add(nm); F.nail = nm; });
-  { const nm = nailMesh(HD.TR[2] * 0.98, 0.21); nm.position.y = 0.105; t2.add(nm); }
   if (o.inside !== false) fingerInside(fingers[0], planes);
   // destello, onda y rojez (la «artritis» del mito) en cada nudillo
   const flT = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 2, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.28, 'rgba(150,215,255,.9)'); gr.addColorStop(0.6, 'rgba(50,150,235,.35)'); gr.addColorStop(1, 'rgba(50,150,235,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
