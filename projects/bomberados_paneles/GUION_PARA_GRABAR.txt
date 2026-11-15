@@ -1,0 +1,55 @@
+«¿QUÉ LLEVA ESTA CISTERNA?» — el panel naranja en una cisterna volcada de noche (idea de Adrián en Notion:
+«LUNES 16 EXAMEN PANELES NARANJA»: que los opositores identifiquen la sustancia por el número ONU, 3 y rápido)
+
+Hecho con el plan de esta mañana y el MENSAJE de los que funcionan: bomberos en acción en 3D con dron (cisterna volcada
+de noche), UNA idea («el número de abajo dice qué lleva… y eso decide cómo te acercas»), tú dentro de la escena, tres
+rondas rápidas con cuenta de 3 s (como «¿Cuántas aciertas?») y cierre con letras A/B/C/D + «mándaselo a quien quiera
+ser bombero». 45–57 s.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+≈ 40 s de voz + 3 cuentas de 3 s que meto yo (≈ 52 s). Ritmo de concurso: los números, claros y con intriga; las
+respuestas, seguras y con fuerza. Las cuentas 3-2-1 NO se graban: las meto yo con su tic-tac.
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Una cisterna VOLCADA… [tense] y no sabes qué lleva!
+[serious, fast] Antes de acercarte, desde lejos, mira el panel naranja: [emphatic] el número de ABAJO te lo dice.
+[intrigued, slow] Mil doscientos tres.
+[confident] ¡Gasolina! [serious] Arde con una chispa: se tapa con espuma.
+[intrigued, slow] Mil novecientos setenta y ocho.
+[confident] ¡Propano! [tense] Si el fuego calienta la cisterna, puede REVENTAR: se enfría desde lejos.
+[intrigued, slow] Mil ochocientos treinta.
+[confident] ¡Ácido sulfúrico! [serious] Te quema la piel: solo se entra con traje químico.
+[mischievous] Y ahora, la trampa: [slow] mil doscientos DOS. [teasing] Uno menos que la gasolina…
+[challenging] ¿Qué lleva? ¿A, B, C o D? Comenta tu letra.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, en una autovía, con un dron que no para y planos abiertos:
+1. «¡Una cisterna volcada… y no sabes qué lleva!» — primer fotograma: la cisterna tumbada de lado en mitad de la autovía,
+   los warnings parpadeando, un charco que avanza por el asfalto y el panel naranja tapado por el reflejo de las luces.
+2. «Antes de acercarte, desde lejos…» — el bombero se para lejos (cartel «50 m») con el viento a la espalda; el dron vuela
+   hasta el panel: arriba el número de peligro, ABAJO el número ONU (se ilumina) → «QUÉ LLEVA».
+3. «Mil doscientos tres.» — el panel gira y marca 33 / 1203; tres tarjetas: A GASÓLEO · B GASOLINA · C PROPANO; cuenta
+   3-2-1 → «¡Gasolina!» (B en verde): el charco brilla, un rayo de chispa tachado y la espuma blanca tapa el charco.
+4. «Mil novecientos setenta y ocho.» — el panel gira: 23 / 1978; A BUTANO · B PROPANO · C METANO; 3-2-1 → «¡Propano!»:
+   la cisterna se pone al rojo junto al fuego, cartel «PUEDE REVENTAR», el dron se aleja de golpe y un cañón de agua sin
+   nadie al lado la enfría desde lejos.
+5. «Mil ochocientos treinta.» — 80 / 1830; A ÁCIDO CLORHÍDRICO · B ÁCIDO SULFHÍDRICO · C ÁCIDO SULFÚRICO (la trampa de
+   Adrián: sulfúrico, NO sulfhídrico); 3-2-1 → «¡Ácido sulfúrico!»: el charco humea, y el bombero se transforma con el
+   traje de protección química.
+6. «Y ahora, la trampa: mil doscientos dos…» — 30 / 1202 junto al 33 / 1203 de antes: solo cambia una cifra.
+   Cuatro tarjetas: A GASOLINA · B GASÓLEO · C QUEROSENO · D BUTANO y «💬 COMENTA TU LETRA» (la solución, en la
+   descripción: B, gasóleo).
+7. ★ «¡Mándaselo a quien quiera ser bombero!» — avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+8. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Fuentes (en FUENTES.md): panel naranja (ADR 5.3.2; INSST, NTP 786); números ONU y de peligro (ADR, tabla A del cap. 3.2:
+33/1203 gasolina, 23/1978 propano, 80/1830 ácido sulfúrico, 30/1202 gasóleo); qué hacer con cada uno (Guía de Respuesta en
+caso de Emergencia 2024: guías 128, 115 y 137; acercarse con el viento a favor y sin prisas); 50 m por defecto (Guía
+Táctica de Actuación 13 de los bomberos de la Diputación de Sevilla). CONFIRMAR la prueba gratis de 5 días.
