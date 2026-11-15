@@ -1,0 +1,9 @@
+Sin Einstein, el GPS de tu móvil se equivocaría unos diez kilómetros cada día.
+¿Por qué? Te lo digo al final.
+Tu móvil no mira un mapa: escucha. Sobre ti vuelan unos 30 satélites a 20.000 kilómetros de altura, cada uno con un reloj atómico.
+Todos repiten sin parar: «soy este satélite y esta es la hora exacta».
+Tu móvil oye al menos cuatro, calcula cuánto tarda cada señal en llegar… y así sabe dónde estás.
+Pero la señal viaja a la velocidad de la luz: una millonésima de segundo de error son 300 metros.
+Y allí arriba el tiempo pasa distinto: sus relojes se adelantan unas 38 millonésimas de segundo al día.
+La respuesta: van corregidos con la relatividad de Einstein. Si no, el error crecería diez kilómetros al día.
+¿Mapa del móvil o te orientas solo? Mándaselo a quien siempre se pierde.

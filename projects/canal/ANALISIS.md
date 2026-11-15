@@ -3,7 +3,42 @@
 Lo escribe cada día el chat «Análisis y plan · kiria.ai» (instrucciones en `ANALISIS_DIARIO.md`). La misma versión está en Notion,
 página «📈 Análisis de contenido · kiria.ai».
 
-## Última actualización: sábado 14-11-2026, 10:00
+## Última actualización: domingo 15-11-2026, 10:00
+
+**Datos**: Instagram y TikTok, captura del 14-11 a las 20:36 (sigue faltando la de las 08:33). Instagram suma ≈ +34.000 en 24 h (las carreras
+antiguas: Mecánica +7.377, Industrial +5.068, Magisterio +3.261, Derecho +3.212).
+
+- **Nvidia** (se subió el vie 13 a las 16:25): 2.835 en 28 h, 59,6 % pasa de 3 s y solo **14,5 s de media** (28 % de 52 s). Se comparte bastante
+  (24 por cada 1.000), pero la gente se va pronto. La actualidad lejana sin «tú» vuelve a quedarse corta (como el perro robot). Ficha rellenada.
+- **Odontología**: se queda en 8.646 (la captura del 14-11 repite la cifra del 13-11; puede que Metricool no la haya actualizado).
+- **TikTok**: GTA 6 llega a 17.467 (+8.820 en un día). Allí sigue creciendo cuando en Instagram ya se ha parado (+1.697).
+- Enfermería (sáb 14) y Farmacia (hoy) siguen en «Guion»: no se han grabado.
+
+**Cambio de línea (👤 Javi, 14-11, `MEMORIA.md`)**: «Así funciona» (cómo funcionan aparatos y sistemas, de cine y realista) sustituye a las
+carreras como línea principal. En marcha: el microondas (Voz), crujirse los dedos (Listo) y el helado (Render). Dejo en reserva, sin fecha,
+mis tres propuestas de carreras (Nutrición, Criminología, Ciencias del Deporte). **Lo que dicen los datos**: las carreras «por dentro» siguen
+siendo lo único que suma miles cada día sin subir nada; conviene meter una de vez en cuando, aunque la línea principal cambie.
+**Ojo con «el helado»**: el código de producción tiene un «Homer realista» y «la casa de los Simpson», aunque la MEMORIA decía que se haría un
+personaje propio por los derechos. Un personaje de Disney/Fox puede hacer que se borre el vídeo o se limite su alcance.
+
+### Vídeo recomendado: «Así funciona: el GPS» · sábado 21-11 a las 10:00
+Encaja en la nueva línea. Combina un dato que choca con un «tú» («sin Einstein, el GPS de tu móvil se equivocaría diez kilómetros al día») y una
+respuesta que se entiende fuera de España. Además, el gancho no repite «crees que…», que ya usa el microondas. 144 palabras. Fuentes en `projects/gps/FUENTES.md`
+(GPS.gov y N. Ashby, Living Reviews in Relativity, 2003). Primer segundo: un móvil sobre una mesa oscura con el punto azul del mapa que se
+desliza solo, kilómetros fuera de la ciudad (mapa genérico, sin logos). Después, la cámara sube hasta un satélite con su reloj atómico en corte,
+se ven las cuatro señales como hilos de luz y dos relojes, uno en el suelo y otro en órbita, que se separan.
+
+```
+Sin Einstein, el GPS de tu móvil se equivocaría unos diez kilómetros cada día. ¿Por qué? Te lo digo al final. Tu móvil no mira un mapa: escucha. Sobre ti vuelan unos treinta satélites a veinte mil kilómetros de altura, cada uno con un reloj atómico. Todos repiten sin parar: «soy este satélite y esta es la hora exacta». Tu móvil oye al menos cuatro, calcula cuánto tarda cada señal en llegar… y así sabe dónde estás. Pero la señal viaja a la velocidad de la luz: una millonésima de segundo de error son trescientos metros. Y allí arriba el tiempo pasa distinto: sus relojes se adelantan unas treinta y ocho millonésimas de segundo al día. La respuesta: van corregidos con la relatividad de Einstein. Si no, el error crecería diez kilómetros al día. ¿Mapa del móvil o te orientas solo? Mándaselo a quien siempre se pierde.
+```
+
+### Alternativas
+1. **La tarjeta sin contacto no tiene batería** (la energía se la da el datáfono por inducción).
+2. **Internet viaja bajo el mar** (cables submarinos). Las dos, de la lista de Javi; con fuentes antes del guion.
+
+---
+
+## Actualización anterior: sábado 14-11-2026, 10:00
 
 **Datos**: Instagram, captura del 13-11 a las 20:36 (cuarto día sin la de las 08:33). Sin captura nueva de TikTok. **3,78 M de
 visualizaciones** en Instagram (+37.300 en 24 h; el ritmo baja: +70.000, +47.500, +37.300).
