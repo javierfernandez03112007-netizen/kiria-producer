@@ -4,4 +4,4 @@ cd /home/user/kiria-producer/projects/cerebro_congelado && web/build.sh && name=
 rm -rf out/t_$name && mkdir -p out/t_$name
 ts=("$@"); for w in 0 1 2; do l=""; for i in "${!ts[@]}"; do [ $((i % 3)) = $w ] && l="$l,${ts[$i]}"; done; [ -n "$l" ] && FPS=60 timeout 900 node web/capture.mjs out/t_$name ${l#,} > out/t_$name/w$w.log 2>&1 & done; wait
 cat out/t_$name/w*.log | grep -v '^ok' | head -5
-python3 /tmp/claude-0/sheet.py out/t_$name/sheet.jpg $(ls out/t_$name/f*.jpg)
+python3 web/lab/sheet.py out/t_$name/sheet.jpg $(ls out/t_$name/f*.jpg)

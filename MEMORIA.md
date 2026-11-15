@@ -20,6 +20,10 @@ esto, `CLAUDE.md` y los `.md` de `engine/` son la memoria. Actualízala cuando c
 - Entrega de cada vídeo: `out/<nombre>.mp4` (1080x1920, 60 fps, 20–60 MB, ≈ −15/−16 LUFS), `out/portada.jpg` (9:16), `out/miniatura.jpg`
   (4:5) y `DESCRIPCION.txt` (versión larga + corta para TikTok + notas de entrega).
 - Nada de aviones en vídeos que no sean de aeronáutica; nada cortado por los lados; sin logos reales; sin la marca kiria.ai en los vídeos.
+- **La máquina en la nube se puede reiniciar sin avisar (15-11-2026: se perdieron ~8 h de trabajo de agentes)**: al reiniciarse, el repo se
+  clona de nuevo y se pierde TODO lo no subido (archivos de los agentes, `out/`, `/tmp`, el scratchpad y las imágenes que mandó Javi).
+  Por eso: con agentes trabajando, un guardado automático (commit + push cada pocos minutos) y las referencias de Javi dentro del repo
+  (p. ej. `projects/<vídeo>/web/lab/ref/`). El entorno tiene un script de arranque que reinstala OpenCV, la letra Impact y three.js.
 
 ## Sistema de 3 chats (Javi, 6-11-2026)
 1. **Producción** (este tipo de chat): guion → voz de Javi → vídeo, portada, descripción (y TikTok: `projects/canal/TIKTOK.md`).
