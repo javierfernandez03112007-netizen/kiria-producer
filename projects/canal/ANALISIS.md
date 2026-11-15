@@ -15,11 +15,11 @@ antiguas: Mecánica +7.377, Industrial +5.068, Magisterio +3.261, Derecho +3.212
 - Enfermería (sáb 14) y Farmacia (hoy) siguen en «Guion»: no se han grabado.
 
 **Cambio de línea (👤 Javi, 14-11, `MEMORIA.md`)**: «Así funciona» (cómo funcionan aparatos y sistemas, de cine y realista) sustituye a las
-carreras como línea principal. En marcha: el microondas (Voz), crujirse los dedos (Listo) y el helado (Render). Dejo en reserva, sin fecha,
+carreras como línea principal. En marcha: el microondas (Voz) y crujirse los dedos (Listo). El helado está parado por orden de Javi (15-11). Dejo en reserva, sin fecha,
 mis tres propuestas de carreras (Nutrición, Criminología, Ciencias del Deporte). **Lo que dicen los datos**: las carreras «por dentro» siguen
 siendo lo único que suma miles cada día sin subir nada; conviene meter una de vez en cuando, aunque la línea principal cambie.
-**Ojo con «el helado»**: el código de producción tiene un «Homer realista» y «la casa de los Simpson», aunque la MEMORIA decía que se haría un
-personaje propio por los derechos. Un personaje de Disney/Fox puede hacer que se borre el vídeo o se limite su alcance.
+**Ojo con «el helado» si se retoma**: Javi quiere a Homer Simpson tal cual. Es un personaje de Disney y puede hacer que se borre el vídeo o se
+limite su alcance; un personaje propio evita el riesgo.
 
 ### Vídeo recomendado: «Así funciona: el GPS» · sábado 21-11 a las 10:00
 Encaja en la nueva línea. Combina un dato que choca con un «tú» («sin Einstein, el GPS de tu móvil se equivocaría diez kilómetros al día») y una
