@@ -1,21 +1,48 @@
-// ---------------------------------------------------------------- el heladero: personaje propio con el aire que pidió Javi (rechoncho, calvo, bigote, uniforme
-// blanco con gorra de plato y pajarita negra), realista como la mano de «los dedos». Cabeza y cuerpo: superficies hechas con campos de distancias +
-// marching cubes. Unidades: 1 = 10 cm. Cabeza: centro en (0, 0, 0), cara hacia +z, coronilla en y ≈ 1,15, barbilla en y ≈ −1,15.
+// ---------------------------------------------------------------- Homer tal cual la hoja de modelo que mandó Javi (web/lab/ref/homer_modelo.jpg), sin inventar nada:
+// una figura de coleccionista en 3D (piel con brillo suave y calidez, morro con su grano, ojos húmedos, algodón, cuero). Cabeza, camisa, pantalón y
+// zapatos son superficies de campos de distancias + marching cubes (el campo solo se calcula cerca de la superficie).
+// Medidas sacadas de la hoja (1 cabeza = 5,1 de la coronilla a la barbilla; la figura vestida mide unas 3,4 cabezas). Unidades: 1 = 10 cm.
+// Cabeza con el pivote en el origen y la cara hacia +z: coronilla y = 3,65, ojos y = 1,43, boca y = −0,69 (fija por el paladar y la lengua de dentro),
+// barbilla y = −1,45; pies en y = −13,6. La mano derecha de Homer está en −x.
 const ssub = (d, cut, k) => { const h = clamp(0.5 - 0.5 * (d + cut) / k); return lerp(d, -cut, h) + k * h * (1 - h); };      // resta suave
 const E7 = (cx, cy, cz, rx, ry, rz) => [cx, cy, cz, rx, ry, rz, Math.min(rx, ry, rz)];
 const sph4 = (x, y, z, S) => Math.hypot(x - S[0], y - S[1], z - S[2]) - S[3];
-// marching cubes genérico: campo sd(x, y, z) (negativo dentro) en la caja [x0,x1]×[y0,y1]×[z0,z1] con paso h → { P, I }
+const hrSS = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+// elipsoide (distancia aproximada de Íñigo Quílez: buena cerca de la superficie)
+function hrE(px, py, pz, rx, ry, rz) {
+  const ax = px / rx, ay = py / ry, az = pz / rz, k0 = Math.sqrt(ax * ax + ay * ay + az * az), bx = ax / rx, by = ay / ry, bz = az / rz, k1 = Math.sqrt(bx * bx + by * by + bz * bz);
+  return k1 < 1e-9 ? -Math.min(rx, ry, rz) : k0 * (k0 - 1) / k1;
+}
+// elipsoide girado alrededor del eje x (t > 0: la parte de arriba se va hacia atrás)
+function hrET(x, y, z, E) { const py = y - E.cy, pz = z - E.cz; return hrE(x - E.cx, py * E.ct - pz * E.st, py * E.st + pz * E.ct, E.rx, E.ry, E.rz); }
+const hrTilt = E => Object.assign(E, { ct: Math.cos(E.t), st: Math.sin(E.t) });
+// cápsula de radio variable (ra en a, rb en b)
+function hrCap(x, y, z, ax, ay, az, bx, by, bz, ra, rb) {
+  const dx = bx - ax, dy = by - ay, dz = bz - az, px = x - ax, py = y - ay, pz = z - az;
+  const h = clamp((px * dx + py * dy + pz * dz) / (dx * dx + dy * dy + dz * dz));
+  return Math.hypot(px - dx * h, py - dy * h, pz - dz * h) - (ra + (rb - ra) * h);
+}
+// marching cubes genérico: campo sd(x, y, z) (negativo dentro) en la caja [x0,x1]×[y0,y1]×[z0,z1] con paso h → { P, I }.
+// Primero una rejilla gruesa (paso 4h); el campo fino solo se calcula donde la superficie puede estar cerca (el resto se interpola).
 function mcBuild(sd, x0, y0, z0, x1, y1, z1, h) {
   const nx = Math.ceil((x1 - x0) / h) + 1, ny = Math.ceil((y1 - y0) / h) + 1, nz = Math.ceil((z1 - z0) / h) + 1;
-  const F = new Float32Array(nx * ny * nz); let q = 0;
-  for (let k = 0; k < nz; k++) { const z = z0 + k * h; for (let j = 0; j < ny; j++) { const y = y0 + j * h; for (let i = 0; i < nx; i++, q++) F[q] = -sd(x0 + i * h, y, z); } }
+  const F = new Float32Array(nx * ny * nz), C = 4, H4 = h * C, cx = Math.ceil((nx - 1) / C) + 2, cy = Math.ceil((ny - 1) / C) + 2, cz = Math.ceil((nz - 1) / C) + 2, cxy = cx * cy;
+  const G = new Float32Array(cx * cy * cz);
+  for (let k = 0, q = 0; k < cz; k++) for (let j = 0; j < cy; j++) for (let i = 0; i < cx; i++, q++) G[q] = -sd(x0 + i * H4, y0 + j * H4, z0 + k * H4);
+  const band = H4 * 2.2;
+  for (let k = 0, q = 0; k < nz; k++) { const k0 = (k / C) | 0, tk = k / C - k0, z = z0 + k * h;
+    for (let j = 0; j < ny; j++) { const j0 = (j / C) | 0, tj = j / C - j0, y = y0 + j * h;
+      for (let i = 0; i < nx; i++, q++) { const i0 = (i / C) | 0, ti = i / C - i0, b = i0 + cx * j0 + cxy * k0;
+        const a0 = G[b] + (G[b + 1] - G[b]) * ti, a1 = G[b + cx] + (G[b + cx + 1] - G[b + cx]) * ti, a2 = G[b + cxy] + (G[b + cxy + 1] - G[b + cxy]) * ti, a3 = G[b + cxy + cx] + (G[b + cxy + cx + 1] - G[b + cxy + cx]) * ti;
+        const c0 = a0 + (a1 - a0) * tj, c1 = a2 + (a3 - a2) * tj, g = c0 + (c1 - c0) * tk;
+        F[q] = (g > band || g < -band) ? g : -sd(x0 + i * h, y, z); } } }
   const id = (i, j, k) => i + nx * (j + ny * k), vmap = new Map(), P = [], I = [];
   const vert = (i, j, k, ax) => { const key = id(i, j, k) * 3 + ax; let v = vmap.get(key); if (v !== undefined) return v;
     const a = F[id(i, j, k)], b = F[ax === 0 ? id(i + 1, j, k) : ax === 1 ? id(i, j + 1, k) : id(i, j, k + 1)], t = a === b ? 0.5 : a / (a - b);
     v = P.length / 3; P.push(x0 + (i + (ax === 0 ? t : 0)) * h, y0 + (j + (ax === 1 ? t : 0)) * h, z0 + (k + (ax === 2 ? t : 0)) * h); vmap.set(key, v); return v; };
-  const C = [[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]];
+  const CO = [[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]];
   for (let k = 0; k < nz - 1; k++) for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
-    let ci = 0; for (let c = 0; c < 8; c++) if (F[id(i + C[c][0], j + C[c][1], k + C[c][2])] < 0) ci |= 1 << c;
+    let ci = 0; for (let c = 0; c < 8; c++) if (F[id(i + CO[c][0], j + CO[c][1], k + CO[c][2])] < 0) ci |= 1 << c;
     if (ci === 0 || ci === 255) continue; const o = ci << 4;
     for (let e = 0; triTable[o + e] !== -1; e += 3) for (let m = 0; m < 3; m++) { const Ed = MC_E[triTable[o + e + m]]; I.push(vert(i + Ed[0], j + Ed[1], k + Ed[2], Ed[3])); }
   }
@@ -32,245 +59,131 @@ function mcGeometry(sd, box, h, colorFn) {
   g.setAttribute('normal', new THREE.BufferAttribute(N, 3)); g.setAttribute('color', new THREE.BufferAttribute(COL, 3)); g.setAttribute('uv', new THREE.BufferAttribute(UV, 2));
   return g;
 }
-// ---------- la cabeza de Homer (en versión real): cráneo alto, ojos grandes y saltones, nariz larga, el morro con la barba de sombra, orejas,
-// el pelo en zigzag por detrás y los dos pelos de arriba
-const HEADP = {
-  cran: E7(0, 0.42, -0.12, 0.74, 1.0, 0.86), muz: E7(0, -0.52, 0.3, 0.66, 0.58, 0.66), jowl: E7(0, -1.05, 0.05, 0.62, 0.42, 0.62),
-  neck: capP([0, -0.8, -0.25], [0, -2.3, -0.22], 0.62, 0.64, 0.92),
-  brow: capP([-0.34, 0.27, 0.66], [0.34, 0.27, 0.66], 0.08, 0.08, 1),
-  nose: capP([0, 0.0, 0.82], [0, -0.27, 1.13], 0.1, 0.12, 1), tip: [0, -0.3, 1.17, 0.13],
-  lipU: capP([-0.36, -0.6, 0.86], [0.36, -0.6, 0.86], 0.075, 0.075, 0.9), lipL: capP([-0.3, -0.77, 0.82], [0.3, -0.77, 0.82], 0.06, 0.06, 0.9),
-  ears: [E7(0.74, 0.0, -0.24, 0.085, 0.24, 0.17), E7(-0.74, 0.0, -0.24, 0.085, 0.24, 0.17)],
-  ahx: [capP([0.8, 0.13, -0.29], [0.81, -0.07, -0.31], 0.022, 0.026, 1), capP([-0.8, 0.13, -0.29], [-0.81, -0.07, -0.31], 0.022, 0.026, 1)],
-  socks: [[0.22, 0.12, 0.7, 0.2], [-0.22, 0.12, 0.7, 0.2]], mouth: E7(0, -0.685, 0.6, 0.38, 0.05, 0.36), earH: [[0.83, -0.03, -0.2, 0.072], [-0.83, -0.03, -0.2, 0.072]],
-};
-function sdHead(x, y, z) {
-  const H = HEADP; let d = smin(ellD(x, y, z, H.cran), ellD(x, y, z, H.muz), 0.3);
-  d = smin(d, ellD(x, y, z, H.jowl), 0.25); d = smin(d, capD(x, y, z, H.neck), 0.3); d = smin(d, capD(x, y, z, H.brow), 0.1);
-  d = smin(d, Math.min(capD(x, y, z, H.nose), sph4(x, y, z, H.tip)), 0.06);
-  d = smin(d, capD(x, y, z, H.lipU), 0.05); d = smin(d, capD(x, y, z, H.lipL), 0.05); for (const e of H.ears) d = smin(d, ellD(x, y, z, e), 0.05);
-  for (const s of H.socks) d = ssub(d, sph4(x, y, z, s), 0.04);
-  d = ssub(d, ellD(x, y, z, H.mouth), 0.025); for (const s of H.earH) d = ssub(d, sph4(x, y, z, s), 0.03); for (const a of H.ahx) d = smin(d, capD(x, y, z, a), 0.02);
-  return d;
+// oclusión ambiental por vértice a partir de un campo (oscurece los pliegues: alrededor de los ojos, la oreja, la nariz, la boca, el cuello de la camisa…)
+function hrAO(sd, x, y, z, nx, ny, nz, s = 0.06, k = 1.6) {
+  let o = 0, w = 1; for (let i = 1; i <= 5; i++) { const t = s * i * i * 0.5 + s * 0.5; o += w * Math.max(0, t - sd(x + nx * t, y + ny * t, z + nz * t)) / t; w *= 0.62; }
+  return clamp(1 - k * o * 0.42, 0.18, 1);
 }
-const HEAD_BOX = [-0.92, -1.85, -1.1, 0.92, 1.5, 1.35];
-const JAW_P = new THREE.Vector3(0, -0.45, -0.3), JAW_A = 0.3;
-const tri = x => 1 - 4 * Math.abs(((x % 1) + 1) % 1 - 0.5);       // onda en triángulo (−1 … 1): el zigzag del pelo
+
+// ---------------------------------------------------------------- la cabeza (medidas de la cabeza de perfil, las de frente y la nuca)
+const HM = {
+  cr: { cy: 2.08, cz: -0.06, rx: 1.17, ry: 1.6, ryb: 1.95, rz: 1.47, k: 0.27 },              // cráneo en bala, inclinado hacia atrás (cizalla k)
+  jw: { cx: 0, cy: 0.12, cz: 0.18, rx: 1.2, ry: 1.3, rz: 1.08 },                              // mejillas y mandíbula (detrás del morro, bajo las orejas)
+  nk: { y0: -0.35, y1: -3.6, cz: 0.06, rx: 0.93, rz: 0.77, k: -0.21 },                         // cuello (sin marcar: la cabeza baja hasta los hombros)
+  mu: hrTilt({ cx: 0, cy: -0.07, cz: 1.27, rx: 1.18, ry: 0.66, rz: 1.21, t: -0.36 }),         // el morro de arriba (la punta, hacia delante y abajo)
+  ml: { cx: 0, cy: -1.0, cz: 1.02, rx: 1.0, ry: 0.5, rz: 0.86 },                              // labio de abajo y barbilla
+  ns: { ax: 0, ay: 0.95, az: 1.2, bx: 0, by: 0.81, bz: 2.23, rx: 0.27, ry: 0.22 },            // la nariz: un cilindro desde entre los ojos
+  ey: { cx: 0.75, cy: 1.43, cz: 1.35, rx: 0.57, ry: 0.6, rz: 0.43 },                          // el ojo izquierdo (el derecho, en −x)
+  er: { cx: 1.22, cy: 0.42, cz: -0.18, a: 0.45 },                                             // la oreja (girada a hacia delante)
+  mo: { y: -0.69, hw: 0.55, t: 0.032, z0: 1.3 },                                              // la boca: altura, media anchura, media rendija, fondo
+  cv: { cx: 0, cy: -0.66, cz: 1.05, rx: 0.6, ry: 0.3, rz: 0.55 },                             // el hueco de la boca (su techo es el paladar)
+};
+{ const E = HM.er; E.nx = Math.cos(E.a); E.nz = Math.sin(E.a); }
+function hrCran(x, y, z) { const C = HM.cr, py = y - C.cy, pz = z - C.cz + C.k * py; return hrE(x, py, pz, C.rx, py > 0 ? C.ry : C.ryb, C.rz); }
+function hrJaw(x, y, z) { const J = HM.jw; return hrE(x - J.cx, y - J.cy, z - J.cz, J.rx, J.ry, J.rz); }
+function hrNeck(x, y, z) { const N = HM.nk, yy = Math.max(y, -1.9), zc = N.cz + N.k * (yy + 1.0), e = (Math.hypot(x / N.rx, (z - zc) / N.rz) - 1) * Math.min(N.rx, N.rz); return Math.max(e, y - N.y0, N.y1 - y); }
+function hrMuzzle(x, y, z) { const L = HM.ml; return smin(hrET(x, y, z, HM.mu), hrE(x - L.cx, y - L.cy, z - L.cz, L.rx, L.ry, L.rz), 0.26); }
+function hrNose(x, y, z) {
+  const N = HM.ns, dx = N.bx - N.ax, dy = N.by - N.ay, dz = N.bz - N.az, px = x - N.ax, py = y - N.ay, pz = z - N.az;
+  const h = clamp((px * dx + py * dy + pz * dz) / (dx * dx + dy * dy + dz * dz)), ox = (px - dx * h) / N.rx, oy = (py - dy * h) / N.ry, oz = (pz - dz * h) / N.ry;
+  return (Math.sqrt(ox * ox + oy * oy + oz * oz) - 1) * N.ry;
+}
+// la oreja (ax = |x|): un disco con el hueco, abierto por delante (la C de la hoja) y la T de dentro
+function hrEar(ax, y, z) {
+  const E = HM.er, px = ax - E.cx, py = y - E.cy, pz = z - E.cz, w = px * E.nx + pz * E.nz, u = -px * E.nz + pz * E.nx;
+  if (w * w + u * u + py * py > 0.5) return 0.6;
+  let d = hrE(u, py, w, 0.3, 0.36, 0.2);
+  d = ssub(d, hrE(u - 0.035, py, w - 0.2, 0.2, 0.25, 0.15), 0.04);
+  d = ssub(d, hrE(u - 0.29, py + 0.02, w - 0.1, 0.13, 0.15, 0.17), 0.03);
+  d = smin(d, hrCap(u, py, w, -0.13, 0.06, 0.06, 0.12, 0.06, 0.06, 0.034, 0.03), 0.03);
+  return smin(d, hrCap(u, py, w, -0.005, 0.06, 0.06, -0.005, -0.13, 0.05, 0.032, 0.028), 0.03);
+}
+// la cuenca de cada ojo (un poco mayor que el ojo: deja sitio a los párpados)
+function hrSock(ax, y, z) { const E = HM.ey; return hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx + 0.035, E.ry + 0.035, E.rz + 0.035); }
+function hrEyeD(ax, y, z) { const E = HM.ey; return hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx, E.ry, E.rz); }
+// todo lo que no es el morro (para saber dónde acaba el color tostado)
+function hrRest(x, y, z) { let d = smin(hrCran(x, y, z), hrJaw(x, y, z), 0.45); d = smin(d, hrNeck(x, y, z), 0.45); return d; }
+// la cabeza con la boca cerrada (sin rendija)
+function hrHeadClosed(x, y, z) {
+  const ax = Math.abs(x); let d = hrRest(x, y, z);
+  d = smin(d, hrMuzzle(x, y, z), 0.3);
+  d = smin(d, hrNose(x, y, z), 0.12);
+  d = smin(d, hrEar(ax, y, z), 0.07);
+  return ssub(d, hrSock(ax, y, z), 0.07);
+}
+// la rendija de la boca y el hueco de dentro (negativo dentro)
+function hrMouthCut(x, y, z) {
+  const M = HM.mo, C = HM.cv, ax = Math.abs(x), tx = ax < M.hw ? M.t * Math.sqrt(1 - (ax / M.hw) ** 2) : 0;
+  const slit = Math.max(Math.abs(y - M.y) - tx, M.z0 - z, ax - M.hw);
+  return Math.min(slit, hrE(x - C.cx, y - C.cy, z - C.cz, C.rx, C.ry, C.rz));
+}
+// la cabeza tal como es la malla (la boca con su rendija abierta y el hueco): la usan también el corte de perfil y el cerebro
+function sdHead(x, y, z) { return Math.max(hrHeadClosed(x, y, z), -hrMouthCut(x, y, z)); }
+// la cabeza cerrada con los ojos (para la oclusión)
+function hrHeadAO(x, y, z) { return Math.min(hrHeadClosed(x, y, z), hrEyeD(Math.abs(x), y, z)); }
+// el color tostado del morro: > 0 dentro (la parte de la superficie que es del morro y no del resto de la cabeza)
+function hrPaint(x, y, z) { return hrRest(x, y, z) - hrMuzzle(x, y, z) + 0.035 - 0.12 * hrSS(0.0, -0.5, y) * hrSS(1.2, 0.6, z); }
+const HEAD_BOX = [-1.75, -3.55, -1.75, 1.75, 3.85, 2.75];
+// el hueco del cráneo (donde va el cerebro): elipsoide inscrito en el cráneo con 0,26 de hueso y piel
+const HEADP = { cran: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), cav: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), palate: [0, -0.36, 1.05], forehead: [0, 2.35, 1.38],
+  eyes: [[0.75, 1.43, 1.35], [-0.75, 1.43, 1.35]], mouth: [0, -0.69, 2.05] };
+const JAW_P = new THREE.Vector3(0, -0.15, -0.3), JAW_A = 0.28;
+// el zigzag del pelo (de oreja a oreja por la nuca): puntos (ángulo alrededor de la cabeza en grados, altura). 0° = la nuca; −x (la derecha de Homer) a la izquierda
+const HR_ZZ = (() => { const side = [[63, 1.3], [80, 0.92], [80, 1.32], [96, 1.08], [100, 1.58], [114, 1.22]], back = [[-41, 1.18], [-18, 1.64], [0, 1.18]];
+  const L = [...side.slice().reverse().map(([a, y]) => [-a, y]), ...back, ...back.slice(0, 2).reverse().map(([a, y]) => [-a, y]), ...side];
+  return L.map(([a, y]) => [a * Math.PI / 180 * 1.25, y]); })();
+// el garabato «~» de la boca en reposo (de frente: x, y), como en la cabeza grande de frente
+const HR_SQ = [[0.02, -0.5], [-0.03, -0.58], [0.0, -0.66], [0.1, -0.71], [0.07, -0.79], [-0.04, -0.84], [0.03, -0.86], [0.17, -0.8], [0.32, -0.7], [0.45, -0.65], [0.55, -0.66]];
+const tri = x => 1 - 4 * Math.abs(((x % 1) + 1) % 1 - 0.5);       // onda en triángulo (−1 … 1)
 let HEAD_GEO = null;
 function headGeo() {
   if (HEAD_GEO) return HEAD_GEO;
-  const base = new THREE.Color(0xe1b53a), warm = new THREE.Color(0xd99a2a), inner = new THREE.Color(0x5a1c1a), ssm = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
-  const MZ = HEADP.muz, masks = [];
-  const g = mcGeometry(sdHead, HEAD_BOX, 0.014, (x, y, z, c) => { c.copy(base);
-    // un poco más cálido en la nariz, las orejas y los pliegues
-    const wk = Math.exp(-((x * x) + (y + 0.25) ** 2 + (z - 1.1) ** 2) / 0.02) * 0.5 + Math.exp(-(((Math.abs(x) - 0.75) ** 2) + y * y + (z + 0.2) ** 2) / 0.03) * 0.5;
-    c.lerp(warm, clamp(wk));
-    if (Math.abs(x) < 0.38 && Math.abs(y + 0.685) < 0.055 && z < 0.86 && z > 0.36) c.lerp(inner, ssm(0.86, 0.74, z) * ssm(0.36, 0.48, z));
-    // barba de sombra (el morro) y el pelo en zigzag de detrás
-    const q = Math.hypot((x - MZ[0]) / 0.74, (y - MZ[1]) / 0.66, (z - MZ[2]) / 0.74);
-    const stub = ssm(1.13, 0.97, q) * ssm(-0.36, -0.46, y) * (1 - ssm(-1.08, -1.3, y)) * (1 - (Math.abs(x) < 0.38 && Math.abs(y + 0.685) < 0.06 && z < 0.84 ? 1 : 0));
-    const ang = Math.atan2(x, -(z + 0.1)), back = 1 - ssm(1.75, 2.05, Math.abs(ang)), ytop = 0.18 + 0.08 * tri(ang * 2.2 + 0.25);
-    const hair = back * ssm(ytop + 0.02, ytop - 0.02, y) * ssm(-0.5, -0.3, y) * ssm(0.2, 0.45, Math.hypot(x, z + 0.12));
-    masks.push(stub, hair); });
-  g.setAttribute('hmask', new THREE.Float32BufferAttribute(masks, 2));
-  // gestos (morph): boca abierta (la mandíbula gira), sonrisa y mueca
-  const P = g.attributes.position, n = P.count, jaw = new Float32Array(n * 3), smile = new Float32Array(n * 3), grim = new Float32Array(n * 3), N = g.attributes.normal, jn = new Float32Array(n * 3);
-  const R = new THREE.Matrix4().makeRotationX(JAW_A), Rn = new THREE.Matrix3().setFromMatrix4(R), p = new THREE.Vector3(), nn = new THREE.Vector3();
-  for (let v = 0; v < n; v++) { const x = P.getX(v), y = P.getY(v), z = P.getZ(v);
-    const wj = ssm(-0.62, -0.73, y) * (1 - ssm(-1.3, -1.65, y)) * ssm(-0.35, 0.05, z) * (1 - 0.6 * ssm(0.6, 0.82, Math.abs(x)));
-    p.set(x, y, z).sub(JAW_P).applyMatrix4(R).add(JAW_P); jaw[v * 3] = (p.x - x) * wj; jaw[v * 3 + 1] = (p.y - y) * wj; jaw[v * 3 + 2] = (p.z - z) * wj;
-    nn.set(N.getX(v), N.getY(v), N.getZ(v)).applyMatrix3(Rn); jn[v * 3] = (nn.x - N.getX(v)) * wj; jn[v * 3 + 1] = (nn.y - N.getY(v)) * wj; jn[v * 3 + 2] = (nn.z - N.getZ(v)) * wj;
-    const sx = Math.sign(x) || 1, gc = Math.exp(-(((Math.abs(x) - 0.37) ** 2) + (y + 0.685) ** 2) / 0.014) * ssm(0.5, 0.75, z), gk = Math.exp(-(((Math.abs(x) - 0.42) ** 2) + (y + 0.35) ** 2) / 0.05) * ssm(0.3, 0.6, z);
-    smile[v * 3] = sx * 0.04 * gc; smile[v * 3 + 1] = 0.07 * gc + 0.035 * gk; smile[v * 3 + 2] = -0.03 * gc + 0.015 * gk;
-    grim[v * 3] = sx * 0.03 * gc; grim[v * 3 + 1] = -0.06 * gc; grim[v * 3 + 2] = -0.01 * gc; }
+  const t0 = performance.now(), hh = 0.028, M = HM.mo;
+  const { P, I } = mcBuild(sdHead, ...HEAD_BOX, hh), n = P.length / 3;
+  const R = new Float32Array(n * 3), N = new Float32Array(n * 3), A = new Float32Array(n * 4), UV = new Float32Array(n * 2), inner = new Uint8Array(n), e = 0.012;
+  const grad = (f, x, y, z, o) => { const gx = f(x + e, y, z) - f(x - e, y, z), gy = f(x, y + e, z) - f(x, y - e, z), gz = f(x, y, z + e) - f(x, y, z - e), gl = Math.hypot(gx, gy, gz) || 1; o[0] = gx / gl; o[1] = gy / gl; o[2] = gz / gl; };
+  const g3 = [0, 0, 0];
+  for (let v = 0; v < n; v++) {
+    const x = P[v * 3], y = P[v * 3 + 1], z = P[v * 3 + 2], ax = Math.abs(x), isIn = hrHeadClosed(x, y, z) < -0.006;
+    inner[v] = isIn ? 1 : 0;
+    // la boca se cierra: los labios se juntan sobre la rendija (las posiciones abiertas sirven para los gestos)
+    let yc = y;
+    if (ax < M.hw + 0.05 && z > M.z0 - 0.05) { const tx = ax < M.hw ? M.t * Math.sqrt(1 - (ax / M.hw) ** 2) : 0, dy = y - M.y, a = Math.abs(dy), b = 3 * M.t;
+      if (a < b) yc = M.y + Math.sign(dy) * (a <= tx ? 0 : (a - tx) * b / (b - tx)); }
+    R[v * 3] = x; R[v * 3 + 1] = yc; R[v * 3 + 2] = z;
+    if (isIn) grad(sdHead, x, y, z, g3); else grad(hrHeadClosed, x, yc, z, g3);
+    N[v * 3] = g3[0]; N[v * 3 + 1] = g3[1]; N[v * 3 + 2] = g3[2];
+    A[v * 4] = isIn ? -1 : hrPaint(x, yc, z); A[v * 4 + 1] = isIn ? 1 : 0; A[v * 4 + 2] = isIn ? 0.3 : hrAO(hrHeadAO, x, yc, z, g3[0], g3[1], g3[2]); A[v * 4 + 3] = 0;
+    UV[v * 2] = x * 0.9 + z * 0.4; UV[v * 2 + 1] = yc * 0.9;
+  }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(R, 3)); g.setIndex(I);
+  g.setAttribute('normal', new THREE.BufferAttribute(N, 3)); g.setAttribute('hm', new THREE.BufferAttribute(A, 4)); g.setAttribute('uv', new THREE.BufferAttribute(UV, 2));
+  // gestos (morph, relativos): 0 = la «O» de la hoja (la mandíbula gira en JAW_P), 1 = sonrisa grande, 2 = dientes apretados (mueca)
+  const jaw = new Float32Array(n * 3), smile = new Float32Array(n * 3), grim = new Float32Array(n * 3), jn = new Float32Array(n * 3);
+  const Rm = new THREE.Matrix4().makeRotationX(JAW_A), Rn = new THREE.Matrix3().setFromMatrix4(Rm), p = new THREE.Vector3(), nn = new THREE.Vector3();
+  for (let v = 0; v < n; v++) {
+    const x = P[v * 3], y0 = P[v * 3 + 1], z = R[v * 3 + 2], y = R[v * 3 + 1], ax = Math.abs(x), sx = Math.sign(x) || 1;
+    // ¿labio de abajo (1) o de arriba (0)? En la rendija lo dice la posición abierta; fuera, una transición suave por la mejilla
+    const inSlit = ax < M.hw + 0.02 && z > M.z0 - 0.1, cw = hrSS(M.hw + 0.02, M.hw - 0.14, ax) * (inSlit ? 1 : 0);
+    const below = lerp(hrSS(M.y + 0.3, M.y - 0.3, y), y0 < M.y ? 1 : 0, cw);
+    // la mandíbula: el labio de abajo y la barbilla (por delante), el suelo de la boca; se apaga hacia la nuca y el cuello
+    const wjr = hrSS(-0.35, 0.45, z) * (1 - hrSS(-1.55, -2.0, y)) * (1 - 0.55 * hrSS(0.75, 1.15, ax)), wj = below * wjr;
+    p.set(x, y, z).sub(JAW_P).applyMatrix4(Rm).add(JAW_P);
+    const lip = Math.exp(-(((y - M.y) / 0.42) ** 2)) * hrSS(0.9, 1.5, z), prof = ax < M.hw ? Math.sqrt(1 - (ax / M.hw) ** 2) : 0;
+    // «O»: la mandíbula baja, la boca se redondea (las comisuras hacia el centro) y los labios salen un poco
+    jaw[v * 3] = (p.x - x) * wj - 0.42 * x * lip * hrSS(1.3, 0.7, ax);
+    jaw[v * 3 + 1] = (p.y - y) * wj + below * lip * 0.42 * (1 - prof) * (1 - hrSS(0.75, 1.0, ax)) + (1 - below) * lip * 0.1 * prof;
+    jaw[v * 3 + 2] = (p.z - z) * wj + 0.1 * lip * hrSS(1.2, 0.3, ax);
+    nn.set(N[v * 3], N[v * 3 + 1], N[v * 3 + 2]).applyMatrix3(Rn); jn[v * 3] = (nn.x - N[v * 3]) * wj; jn[v * 3 + 1] = (nn.y - N[v * 3 + 1]) * wj; jn[v * 3 + 2] = (nn.z - N[v * 3 + 2]) * wj;
+    // sonrisa: comisuras arriba, afuera y atrás; el labio de arriba sube un poco (dientes de arriba) y el de abajo baja en «U»; las mejillas suben
+    const gc = Math.exp(-(((ax - 0.55) ** 2) + (y - M.y) ** 2) / 0.09) * hrSS(0.6, 1.4, z), ck = Math.exp(-(((ax - 0.75) ** 2) + (y + 0.1) ** 2) / 0.22) * hrSS(0.5, 1.3, z);
+    smile[v * 3] = sx * 0.2 * gc; smile[v * 3 + 1] = 0.3 * gc + 0.1 * ck + lip * (0.1 * (1 - below) - 0.36 * below * Math.max(prof, 0.25 * hrSS(0.95, 0.5, ax))); smile[v * 3 + 2] = -0.12 * gc;
+    // mueca (dientes apretados): los labios se separan en un rectángulo ancho, las comisuras se van hacia los lados
+    const pr2 = ax < M.hw + 0.1 ? Math.pow(Math.max(0, 1 - (ax / (M.hw + 0.1)) ** 4), 0.5) : 0;
+    grim[v * 3] = sx * 0.2 * gc; grim[v * 3 + 1] = lip * (0.2 * (1 - below) - 0.22 * below) * pr2 - 0.02 * gc + 0.08 * ck; grim[v * 3 + 2] = -0.1 * gc;
+  }
   g.morphAttributes.position = [new THREE.BufferAttribute(jaw, 3), new THREE.BufferAttribute(smile, 3), new THREE.BufferAttribute(grim, 3)];
   g.morphAttributes.normal = [new THREE.BufferAttribute(jn, 3), new THREE.BufferAttribute(new Float32Array(n * 3), 3), new THREE.BufferAttribute(new Float32Array(n * 3), 3)];
   g.morphTargetsRelative = true;
-  console.log('cabeza: ' + n + ' vértices'); HEAD_GEO = g; return g;
-}
-// barba de sombra y pelo corto: puntitos y mechones sobre la piel (máscaras por vértice)
-function stubbly(m) { const prev = m.onBeforeCompile; m.onBeforeCompile = (sh, r) => { prev(sh, r);
-  sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nattribute vec2 hmask; varying vec2 vHm; varying vec3 vHp;').replace('#include <begin_vertex>', '#include <begin_vertex>\nvHm = hmask; vHp = position;');
-  sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nvarying vec2 vHm; varying vec3 vHp;').replace('#include <color_fragment>', `#include <color_fragment>
-{ diffuseColor.rgb *= mix(vec3(0.95, 0.93, 0.9), vec3(1.04, 1.03, 1.0), fzN(vHp * 6.5)) * (0.975 + 0.05 * fzN(vHp * 140.));
-  float fw = clamp(length(fwidth(vHp)) * 230., 0., 1.), d1 = fzN(vHp * 240.), d2 = fzN(vHp * 55. + 7.), st = vHm.x;
-  float dots = smoothstep(0.56, 0.7, d1) * (1. - fw);
-  diffuseColor.rgb = mix(diffuseColor.rgb, mix(vec3(0.6, 0.48, 0.26), vec3(0.47, 0.38, 0.22), d2), st * 0.6);
-  diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.15, 0.12, 0.08), st * (dots * 0.55 + fw * 0.22));
-  float hs = fzN(vHp * vec3(330., 42., 330.)), hv = fzN(vHp * vec3(80., 12., 80.) + 3.);
-  diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.1, 0.07, 0.045) * (0.75 + 0.5 * hv) * (0.8 + 0.4 * hs), clamp(vHm.y * (0.8 + 0.2 * hs), 0., 0.96)); }`); }; return m; }
-// ---------- congelación: escarcha que se extiende desde la boca (y se derrite desde la boca con el truco)
-const FZ = { c: { value: new THREE.Vector3(0, -0.67, 0.85) }, r: { value: 0 }, m: { value: 0 }, pc: { value: new THREE.Vector3(0, 0.45, 0.72) }, pk: { value: 0 }, gh: { value: 0 } };
-function freezable(m) {
-  const prev = m.onBeforeCompile; m.transparent = true;
-  m.onBeforeCompile = (sh, r) => { if (prev) prev(sh, r); sh.uniforms.fzC = FZ.c; sh.uniforms.fzR = FZ.r; sh.uniforms.fzM = FZ.m; sh.uniforms.pnC = FZ.pc; sh.uniforms.pnK = FZ.pk; sh.uniforms.ghK = FZ.gh;
-    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vFzW;').replace('#include <project_vertex>', '#include <project_vertex>\nvFzW = (modelMatrix * vec4(transformed, 1.0)).xyz;');
-    sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
-varying vec3 vFzW; uniform vec3 fzC, pnC; uniform float fzR, fzM, pnK, ghK;
-float fzH(vec3 p){ return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
-float fzN(vec3 p){ vec3 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f);
-  return mix(mix(mix(fzH(i), fzH(i + vec3(1,0,0)), f.x), mix(fzH(i + vec3(0,1,0)), fzH(i + vec3(1,1,0)), f.x), f.y), mix(mix(fzH(i + vec3(0,0,1)), fzH(i + vec3(1,0,1)), f.x), mix(fzH(i + vec3(0,1,1)), fzH(i + vec3(1,1,1)), f.x), f.y), f.z); }`)
-      .replace('#include <color_fragment>', `#include <color_fragment>
-float fzD = distance(vFzW, fzC), fzN1 = fzN(vFzW * 9.) * 0.6 + fzN(vFzW * 23.) * 0.4;
-float fzK = (1. - smoothstep(fzR - 0.3, fzR, fzD + fzN1 * 0.25)) * smoothstep(fzM, fzM + 0.3, fzD + fzN1 * 0.25);
-float fzB = fzK * (1. - smoothstep(fzR - 0.45, fzR - 0.05, fzD + fzN1 * 0.25));
-diffuseColor.rgb = mix(diffuseColor.rgb, mix(vec3(0.12, 0.3, 0.6), vec3(0.5, 0.72, 0.93), smoothstep(0.25, 0.85, fzN1)) * (0.85 + 0.3 * fzN(vFzW * 41.)), fzK * 0.9);
-float pnD = distance(vFzW, pnC), pnA = pnK * exp(-pnD * pnD / 0.09);
-diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.8, 0.03, 0.02), clamp(pnA, 0., 0.85));`)
-      .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-float fzRim = pow(1. - abs(dot(normalize(normal), normalize(vViewPosition))), 2.2); vec3 fzQ = fract(vFzW * 70.) - 0.5;
-totalEmissiveRadiance = mix(totalEmissiveRadiance, vec3(0.0), fzK * 0.8) + vec3(0.9, 0.04, 0.02) * pnA * 0.8 + vec3(0.3, 0.62, 1.0) * fzB * 0.7 + vec3(0.45, 0.7, 1.0) * fzRim * fzK * 0.12 + vec3(1.2) * fzK * step(0.993, fzH(floor(vFzW * 70.))) * (1. - smoothstep(0.15, 0.4, length(fzQ)));`)
-      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = mix(roughnessFactor, 0.18, fzK);')
-      .replace('#include <dithering_fragment>', `#include <dithering_fragment>
-{ float ghR = pow(1. - abs(dot(normalize(normal), normalize(vViewPosition))), 2.0);
-  vec3 ghC = vec3(0.5, 0.72, 1.0) * (0.1 + 1.5 * ghR) + vec3(1.0, 0.12, 0.06) * pnA * 1.4;
-  gl_FragColor = mix(gl_FragColor, vec4(ghC, clamp(0.03 + 0.72 * ghR + pnA * 0.5, 0., 1.)), ghK); }`); };
-  return m;
-}
-// ---------- piezas de la cara
-function eyeTex() {      // textura polar del iris: x = ángulo, y = del centro (arriba, v = 1) al borde (abajo)
-  return canvasTex(256, 128, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#050505'); gr.addColorStop(0.38, '#050505'); gr.addColorStop(0.42, '#2a1a0e'); gr.addColorStop(0.7, '#3e2a16'); gr.addColorStop(0.9, '#2a1c10'); gr.addColorStop(1, '#100a05');
-    g.fillStyle = gr; g.fillRect(0, 0, w, h);
-    for (let i = 0; i < 160; i++) { const x = hash(i * 3.1) * w; g.strokeStyle = hash(i) > 0.5 ? 'rgba(190,150,90,.35)' : 'rgba(30,18,8,.35)'; g.lineWidth = 1 + hash(i * 2.3) * 1.5; g.beginPath(); g.moveTo(x, h * 0.42); g.lineTo(x + (hash(i * 7.7) - 0.5) * 6, h * (0.75 + hash(i * 5.7) * 0.2)); g.stroke(); } });
-}
-function makeEye(skinM, R = 0.125, IR = 0.06) {
-  const g = new THREE.Group();
-  const scl = new THREE.Mesh(new THREE.SphereGeometry(R, 32, 24), freezable(new THREE.MeshPhysicalMaterial({ color: 0xf4efe8, roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.05 }))); g.add(scl);
-  const look = new THREE.Group(); g.add(look);
-  const iris = new THREE.Mesh(new THREE.SphereGeometry(R + 0.0012, 48, 10, 0, Math.PI * 2, 0, Math.asin(IR / R)), freezable(new THREE.MeshStandardMaterial({ map: eyeTex(), roughness: 0.35 }))); iris.rotation.x = Math.PI / 2; look.add(iris);
-  const pup = new THREE.Group(); look.add(pup);
-  const cor = new THREE.Mesh(new THREE.SphereGeometry(IR * 1.1, 24, 16, 0, Math.PI * 2, 0, Math.PI * 0.42), new THREE.MeshPhysicalMaterial({ color: 0xffffff, transparent: true, opacity: 0.12, roughness: 0, clearcoat: 1, clearcoatRoughness: 0, depthWrite: false }));
-  cor.rotation.x = Math.PI / 2; cor.position.z = R - IR * 0.75; look.add(cor);
-  const lidU = new THREE.Mesh(new THREE.SphereGeometry(R + 0.012, 32, 14, 0, Math.PI * 2, 0, Math.PI * 0.5), skinM), lidL = new THREE.Mesh(new THREE.SphereGeometry(R + 0.01, 32, 14, 0, Math.PI * 2, Math.PI * 0.5, Math.PI * 0.5), skinM);
-  g.add(lidU, lidL); g.userData = { look, pup, lidU, lidL }; return g;
-}
-// pose de un ojo: abierto (0 cerrado … 1 normal … 1,5 muy abierto), pupila, mirada
-function eyePose(e, open, pup = 1, yaw = 0, pitch = 0) { const U = e.userData; U.lidU.rotation.x = lerp(0.3, -0.38, clamp(open, 0, 1)) - 0.55 * clamp(open - 1, 0, 0.6); U.lidL.rotation.x = lerp(-0.1, 0.38, clamp(open, 0, 1)) + 0.25 * clamp(open - 1, 0, 0.6);
-  U.pup.scale.setScalar(pup); U.look.rotation.set(pitch, yaw, 0); }
-// tubo que adelgaza en las puntas (cejas, bigote)
-function taperTube(pts, r, m, seg = 40, rs = 12, prof = u => Math.sin(Math.PI * clamp(u * 0.92 + 0.04))) {
-  const cv = new THREE.CatmullRomCurve3(pts), geo = new THREE.TubeGeometry(cv, seg, r, rs, false), P = geo.attributes.position, c = new THREE.Vector3(), v = new THREE.Vector3();
-  for (let i = 0; i <= seg; i++) { cv.getPointAt(i / seg, c); const f = prof(i / seg); for (let j = 0; j <= rs; j++) { const k = i * (rs + 1) + j; v.fromBufferAttribute(P, k).sub(c).multiplyScalar(f).add(c); P.setXYZ(k, v.x, v.y, v.z); } }
-  geo.computeVertexNormals(); const mm = new THREE.Mesh(geo, m); mm.castShadow = true; return mm;
-}
-function hairMat(c = 0x4b3424) { return freezable(new THREE.MeshPhysicalMaterial({ color: c, roughness: 0.85, sheen: 1, sheenRoughness: 0.6, sheenColor: new THREE.Color(0x8a6a50) })); }
-// ---------- la gorra de plato (blanca, banda y visera negras, chapa plateada con un cucurucho)
-function capHat(clip) {
-  const g = new THREE.Group(), wm = freezable(new THREE.MeshPhysicalMaterial({ color: 0xf6f6f3, roughness: 0.6, sheen: 0.5, sheenColor: new THREE.Color(0xffffff) })), bm = freezable(new THREE.MeshPhysicalMaterial({ color: 0x111215, roughness: 0.25, clearcoat: 1, clearcoatRoughness: 0.1 }));
-  const crown = lathe([[0.0, 0.42], [0.55, 0.43], [0.86, 0.38], [0.9, 0.33], [0.76, 0.16], [0.62, 0.08], [0.61, 0.0]], 64, wm); g.add(crown);
-  const band = new THREE.Mesh(new THREE.CylinderGeometry(0.625, 0.615, 0.13, 64, 1, true), bm); band.position.y = 0.06; g.add(band);
-  const vs = new THREE.Shape(); vs.absarc(0, 0, 1.0, -0.15, Math.PI + 0.15, false); vs.absarc(0, 0, 0.62, Math.PI + 0.15, -0.15, true);
-  const vg = new THREE.ExtrudeGeometry(vs, { depth: 0.02, bevelEnabled: true, bevelSize: 0.01, bevelThickness: 0.01, bevelSegments: 2, curveSegments: 32 }); vg.rotateX(Math.PI / 2);
-  { const P = vg.attributes.position; for (let i = 0; i < P.count; i++) { const x = P.getX(i), z = P.getZ(i), r = Math.hypot(x, z); P.setY(i, P.getY(i) - Math.max(0, r - 0.62) * 0.45); } vg.computeVertexNormals(); }
-  const vis = new THREE.Mesh(vg, bm); vis.rotation.y = Math.PI; vis.scale.set(0.98, 1, -0.8); vis.position.y = 0.02; g.add(vis);
-  const bt = canvasTex(128, 128, (c, w, h) => { const gr = c.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#f2f4f7'); gr.addColorStop(1, '#9aa1ab'); c.fillStyle = gr; c.beginPath(); c.ellipse(w / 2, h / 2, w / 2 - 2, h / 2 - 2, 0, 0, 7); c.fill();
-    c.fillStyle = '#7b8490'; c.beginPath(); c.moveTo(w / 2, h * 0.86); c.lineTo(w * 0.36, h * 0.46); c.lineTo(w * 0.64, h * 0.46); c.closePath(); c.fill(); c.beginPath(); c.arc(w / 2, h * 0.4, w * 0.15, 0, 7); c.fill(); });
-  const badge = new THREE.Mesh(new THREE.CircleGeometry(0.1, 32), freezable(new THREE.MeshPhysicalMaterial({ map: bt, metalness: 0.6, roughness: 0.3 }))); badge.position.set(0, 0.24, 0.66); badge.rotation.x = -0.35; g.add(badge);
-  g.traverse(o => { if (o.isMesh) { o.castShadow = true; if (clip) o.material.clippingPlanes = clip; } });
-  return g;
-}
-// ---------- el polo de chocolate
-function popsicle() {
-  const g = new THREE.Group(); const ch = freezable(new THREE.MeshPhysicalMaterial({ color: 0x4b2a19, roughness: 0.32, clearcoat: 0.7, clearcoatRoughness: 0.25 }));
-  const bar = rbox(0.46, 0.84, 0.17, ch, 0.08); bar.position.y = 0.42 + 0.48; g.add(bar);
-  const stick = rbox(0.1, 0.62, 0.026, freezable(new THREE.MeshStandardMaterial({ color: 0xe0c38e, roughness: 0.8 })), 0.04); stick.position.y = 0.31; g.add(stick);
-  g.userData = { bar }; return g;
-}
-// ---------- el cuerpo (camisa blanca) y los brazos
-const BODYP = { chest: E7(0, -2.8, -0.22, 1.42, 1.0, 0.98), belly: E7(0, -5.0, -0.02, 1.78, 2.15, 1.55), sh: capP([-1.18, -2.42, -0.28], [1.18, -2.42, -0.28], 0.5, 0.5, 1),
-  col: capP([0, -1.55, -0.3], [0, -2.3, -0.27], 0.67, 0.72, 0.92),
-  slR: capP([-1.32, -2.45, -0.22], [-1.58, -3.42, 0.12], 0.5, 0.55, 1), slL: capP([1.32, -2.45, -0.22], [1.6, -3.45, -0.1], 0.5, 0.55, 1) };
-function sdBody(x, y, z) { const B = BODYP; let d = smin(ellD(x, y, z, B.chest), ellD(x, y, z, B.belly), 0.5); d = smin(d, capD(x, y, z, B.sh), 0.35); d = smin(d, capD(x, y, z, B.col), 0.2);
-  d = smin(d, capD(x, y, z, B.slR), 0.18); d = smin(d, capD(x, y, z, B.slL), 0.18);
-  d += 0.01 * Math.sin(y * 9 + Math.sin(x * 5) * 1.2) * clamp((-y - 5.6) / 0.8);      // la camisa se arruga al meterse en el pantalón
-  return Math.max(d, -(y + 6.95)); }
-// punto de la superficie (por delante) de un campo, en x, y
-function surfZ(sd, x, y, z0 = 3) { let z = z0; while (z > -2 && sd(x, y, z) > 0) z -= 0.02; let a = z, b = z + 0.02; for (let i = 0; i < 20; i++) { const m = (a + b) / 2; if (sd(x, y, m) > 0) b = m; else a = m; } return (a + b) / 2; }
-function shirtMat() {
-  const t = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(150,150,160,${0.03 + hash(y) * 0.04})`; g.fillRect(0, y, w, 1); } for (let x = 0; x < w; x += 2) { g.fillStyle = `rgba(150,150,160,${0.02 + hash(x * 3.1) * 0.03})`; g.fillRect(x, 0, 1, h); } });
-  t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
-  return freezable(new THREE.MeshPhysicalMaterial({ color: 0xf3f3f0, map: t, roughness: 0.82, sheen: 0.6, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xffffff), vertexColors: false }));
-}
-// el pantalón azul (cadera, cintura y piernas, con arrugas abajo) y los zapatos
-const PANTP = { hip: E7(0, -7.3, -0.08, 1.56, 0.85, 1.16), waist: E7(0, -6.6, -0.02, 1.26, 0.42, 1.08),
-  leg: [capP([0.76, -7.6, -0.08], [0.78, -12.78, -0.04], 0.8, 0.56, 1), capP([-0.76, -7.6, -0.08], [-0.78, -12.78, -0.04], 0.8, 0.56, 1)] };
-function sdPants(x, y, z) { const P = PANTP; let d = smin(ellD(x, y, z, P.hip), ellD(x, y, z, P.waist), 0.25); for (const l of P.leg) d = smin(d, capD(x, y, z, l), 0.18);
-  d += 0.016 * Math.sin(y * 6.5 + Math.sin(x * 4.0 + z * 3.0) * 1.6) * (0.25 + 0.75 * clamp((-y - 11.0) / 1.6)) + 0.01 * Math.sin(y * 3.1 + x * 7.0) * clamp((-y - 8.6) / 1.0) * (1 - clamp((-y - 10.2) / 0.8));
-  return Math.max(d, -(y + 12.82)); }
-const SHOEP = [E7(0.8, -13.22, 0.3, 0.48, 0.39, 0.9), E7(-0.8, -13.22, 0.3, 0.48, 0.39, 0.9)];
-function sdShoes(x, y, z) { return Math.max(Math.min(ellD(x, y, z, SHOEP[0]), ellD(x, y, z, SHOEP[1])), -(y + 13.6)); }
-function pantsMat() {
-  const t = canvasTex(256, 256, (g, w, h) => { g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, h); for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(40,50,80,${0.05 + hash(y) * 0.06})`; g.fillRect(0, y, w, 1); } for (let x = 0; x < w; x += 3) { g.fillStyle = `rgba(40,50,80,${0.04 + hash(x * 1.3) * 0.05})`; g.fillRect(x, 0, 1, h); } });
-  t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(9, 9);
-  return freezable(new THREE.MeshPhysicalMaterial({ color: 0x46689f, map: t, roughness: 0.86, sheen: 0.7, sheenRoughness: 0.6, sheenColor: new THREE.Color(0xa6bce6) }));
-}
-const _up0 = new THREE.Vector3(0, 1, 0), _lv = new THREE.Vector3(), _el = new THREE.Vector3();
-function limb(m, a, b) { const d = _lv.copy(b).sub(a), L = d.length(); m.position.copy(a); m.quaternion.setFromUnitVectors(_up0, d.divideScalar(L)); m.scale.set(1, L, 1); }
-function buildHero() {
-  const G = new THREE.Group(), U = {};
-  // cabeza (con su grupo para girarla y el plano de corte de perfil)
-  U.cut = [new THREE.Plane(new THREE.Vector3(-1, 0, 0), 5)];
-  const skin = stubbly(freezable(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 0.46, sheen: 0.55, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xffd27a), clearcoat: 0.14, clearcoatRoughness: 0.45, emissive: 0x4a3006, emissiveIntensity: 0.18 })));
-  skin.clippingPlanes = U.cut;
-  const skinFlat = freezable(new THREE.MeshPhysicalMaterial({ color: 0xdcae36, roughness: 0.46, sheen: 0.5, sheenColor: new THREE.Color(0xffd27a), emissive: 0x4a3006, emissiveIntensity: 0.18 })); skinFlat.clippingPlanes = U.cut;
-  const H = new THREE.Group(); G.add(H); U.head = H;
-  const hm = new THREE.Mesh(headGeo(), skin); hm.castShadow = true; hm.receiveShadow = true; H.add(hm); U.headMesh = hm;
-  U.eyes = [0.22, -0.22].map(x => { const e = makeEye(skinFlat, 0.19, 0.05); e.position.set(x, 0.12, 0.62); e.traverse(o => { if (o.isMesh && !o.material.clippingPlanes) o.material.clippingPlanes = U.cut; }); H.add(e); return e; });
-  const hb = hairMat(0x5a4130); hb.clippingPlanes = U.cut;
-  U.brows = [];
-  // los dos pelos de arriba (se ven cuando sale volando la gorra)
-  const hh = hairMat(0x2a1d14); hh.clippingPlanes = U.cut;
-  U.hairs = [-0.05, 0.06].map((x, i) => { const m = taperTube([v3(x, 1.36, 0.3 - i * 0.05), v3(x * 1.4, 1.58, 0.12 - i * 0.04), v3(x * 1.6, 1.62, -0.12 - i * 0.04), v3(x, 1.44, -0.34 - i * 0.04)], 0.013, hh, 40, 6, u => 0.6 + 0.4 * Math.sin(Math.PI * u)); H.add(m); return m; });
-  const tm = freezable(new THREE.MeshPhysicalMaterial({ color: 0xf2eee4, roughness: 0.3, clearcoat: 0.6 })); tm.clippingPlanes = U.cut;
-  const teethU = new THREE.Group(); for (let i = -4; i <= 4; i++) { const a = i * 0.16, t = rbox(0.075, 0.1, 0.05, tm, 0.02); t.position.set(Math.sin(a) * 0.42, -0.655, 0.36 + Math.cos(a) * 0.42); t.rotation.y = a; teethU.add(t); } H.add(teethU);
-  U.jaw = new THREE.Group(); U.jaw.position.copy(JAW_P); H.add(U.jaw);
-  const teethL = new THREE.Group(); for (let i = -4; i <= 4; i++) { const a = i * 0.16, t = rbox(0.07, 0.085, 0.045, tm, 0.02); t.position.set(Math.sin(a) * 0.39, -0.715, 0.35 + Math.cos(a) * 0.39); t.rotation.y = a; teethL.add(t); }
-  teethL.position.sub(JAW_P); U.jaw.add(teethL);
-  U.cap = new THREE.Group(); U.cap.visible = false; H.add(U.cap);
-  // cuerpo: la camisa blanca de manga corta (cuello y tres botones), el pantalón azul y los zapatos
-  const shirt = shirtMat(); U.shirt = shirt;
-  const body = new THREE.Mesh(mcGeometry(sdBody, [-2.25, -7.0, -1.75, 2.25, -1.4, 1.75], 0.034, (x, y, z, c) => c.setRGB(1, 1, 1)), shirt); body.castShadow = true; body.receiveShadow = true; G.add(body); U.body = body;
-  for (const s of [-1, 1]) { const cl = rbox(0.52, 0.36, 0.04, shirt, 0.03); cl.position.set(s * 0.33, -1.68, 0.42); cl.rotation.set(-0.55, s * 0.5, s * 0.72); cl.castShadow = true; G.add(cl); }
-  const bm = freezable(new THREE.MeshPhysicalMaterial({ color: 0xe9e6df, roughness: 0.3, clearcoat: 1 }));
-  for (let i = 0; i < 4; i++) { const y = -2.6 - i * 0.95, b = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.02, 20), bm), z = surfZ(sdBody, 0, y), n = v3(0, sdBody(0, y + 0.01, z) - sdBody(0, y - 0.01, z), 0.02).normalize();
-    b.quaternion.setFromUnitVectors(_up0, n); b.position.set(0, y, z + 0.012); G.add(b); }
-  const pants = new THREE.Mesh(mcGeometry(sdPants, [-2.0, -12.85, -1.5, 2.0, -6.0, 1.4], 0.034, (x, y, z, c) => c.setRGB(1, 1, 1)), pantsMat()); pants.castShadow = true; pants.receiveShadow = true; G.add(pants); U.pants = pants;
-  const shoes = new THREE.Mesh(mcGeometry(sdShoes, [-1.2, -13.62, -0.75, 1.2, -12.4, 1.3], 0.022, (x, y, z, c) => c.setRGB(1, 1, 1)), freezable(new THREE.MeshPhysicalMaterial({ color: 0x2a2826, roughness: 0.42, clearcoat: 0.7, clearcoatRoughness: 0.25 })));
-  shoes.castShadow = true; shoes.receiveShadow = true; G.add(shoes);
-  // brazos: los de arriba (de la manga al codo) siguen a los antebrazos
-  const armSkin = freezable(new THREE.MeshPhysicalMaterial({ color: 0xdcae36, roughness: 0.46, sheen: 0.5, sheenColor: new THREE.Color(0xffd27a), emissive: 0x4a3006, emissiveIntensity: 0.18 }));
-  const upGeo = new THREE.LatheGeometry([[0.001, -0.1], [0.26, -0.07], [0.37, 0.03], [0.4, 0.25], [0.38, 0.6], [0.33, 0.9], [0.26, 1.03], [0.001, 1.1]].map(([r, y]) => new THREE.Vector2(r, y)), 32);
-  U.upR = new THREE.Mesh(upGeo, armSkin); U.upL = new THREE.Mesh(upGeo, armSkin); for (const m of [U.upR, U.upL]) { m.castShadow = true; m.receiveShadow = true; G.add(m); }
-  U.shR = v3(-1.35, -2.5, -0.2); U.shL = v3(1.35, -2.5, -0.2);
-  // brazo derecho (el del polo): antebrazo y mano de piel (la mano realista) con el puño cerrado sobre el palo
-  U.armR = new THREE.Group(); G.add(U.armR);
-  U.handR = realHand({ inside: false }); U.handR.scale.setScalar(0.92); U.armR.add(U.handR);
-  { const X = v3(0, -1, 0), Y = v3(0, 0, 1), Z = new THREE.Vector3().crossVectors(X, Y); U.handR.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, Y, Z));
-    const G = v3(0, 0.72, -0.3).multiplyScalar(0.92).applyQuaternion(U.handR.quaternion); U.handR.position.set(0, 0.2, 0).sub(G); }
-  U.handR.updateMatrix();
-  handPose2(U.handR, [0.9, 1.45, 1.5, 1.52, 1.55]);
-  U.handR.traverse(o => { if (o.isMesh && o.material && !o.isSprite) o.material = freezable(o.material.clone()); });
-  U.pop = popsicle(); U.pop.rotation.x = POP_TILT; U.armR.add(U.pop);
-  // brazo izquierdo: cae junto al cuerpo, con la mano relajada (la misma mano, en espejo)
-  U.handL = realHand({ inside: false }); U.handL.scale.set(-0.92, 0.92, 0.92); G.add(U.handL);
-  handPose2(U.handL, [0.3, 0.45, 0.55, 0.65]);
-  U.handL.traverse(o => { if (o.isMesh && o.material && !o.isSprite) o.material = freezable(o.material.clone()); });
-  { const E = v3(2.05, -4.45, 0.12), W = v3(2.1, -6.7, 0.38), Y = W.clone().sub(E).normalize(), Zh = v3(-1, 0, 0.25).normalize(), X = new THREE.Vector3().crossVectors(Y, Zh).normalize(), Z = new THREE.Vector3().crossVectors(X, Y);
-    U.handL.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, Y, Z));
-    const off = v3(0, HAND_Y0 - 2.25, 0).multiply(U.handL.scale).applyQuaternion(U.handL.quaternion); U.handL.position.copy(E).sub(off); limb(U.upL, U.shL, E); }
-  // carámbanos (crecen cuando pasa la escarcha)
-  const im = new THREE.MeshPhysicalMaterial({ color: 0xcfe8ff, roughness: 0.05, transmission: 0, transparent: true, opacity: 0.85, clearcoat: 1, clearcoatRoughness: 0.02, emissive: 0x4f8fd8, emissiveIntensity: 0.25 }); im.clippingPlanes = U.cut;
-  U.icicles = [];
-  const ic = (x, y, z, len, r, par = H) => { const m = new THREE.Mesh(new THREE.ConeGeometry(r, len, 10).rotateX(Math.PI).translate(0, -len / 2, 0), im); m.position.set(x, y, z); m.scale.setScalar(0.0001); par.add(m); U.icicles.push({ m, p: new THREE.Vector3(x, y, z) }); };
-  for (const [x, l] of [[-0.32, 0.15], [-0.22, 0.1], [-0.11, 0.18], [0.0, 0.12], [0.1, 0.17], [0.21, 0.1], [0.31, 0.14]]) ic(x, -0.66, 0.92 - Math.abs(x) * 0.28, l, 0.024);
-  ic(0, -0.42, 1.2, 0.13, 0.026); ic(-0.2, -1.07, 0.76, 0.14, 0.03); ic(0.16, -1.08, 0.75, 0.1, 0.025); ic(0.8, -0.2, -0.2, 0.12, 0.025); ic(-0.8, -0.2, -0.2, 0.13, 0.025);
-  G.userData = U; return G;
-}
-// la pose del brazo que sostiene el polo: el puño (con el palo) en P, el polo apuntando a «dir»
-const _hq = new THREE.Quaternion(), _hm4 = new THREE.Matrix4(), POP_TILT = 0.7;
-function armPose(U, P, dir, E) {      // P: donde está el palo en el puño; dir: hacia dónde apunta el polo; E: hacia dónde queda el codo
-  const s = dir.clone().normalize(), e = E.clone().sub(P), n = e.sub(s.clone().multiplyScalar(e.dot(s))).normalize().negate(), ca = Math.cos(POP_TILT), sa = Math.sin(POP_TILT);
-  const y = s.clone().multiplyScalar(ca).addScaledVector(n, -sa), z = s.clone().multiplyScalar(sa).addScaledVector(n, ca), x = new THREE.Vector3().crossVectors(y, z).normalize();
-  _hm4.makeBasis(x, y, z); U.armR.quaternion.setFromRotationMatrix(_hm4); U.armR.position.copy(P).sub(s.multiplyScalar(0.2));
-  _el.set(0, HAND_Y0 - 2.25, 0).applyMatrix4(U.handR.matrix).applyQuaternion(U.armR.quaternion).add(U.armR.position); limb(U.upR, U.shR, _el);
+  console.log('cabeza: ' + n + ' vértices, ' + (I.length / 3) + ' triángulos, ' + Math.round(performance.now() - t0) + ' ms'); HEAD_GEO = g; return g;
 }
