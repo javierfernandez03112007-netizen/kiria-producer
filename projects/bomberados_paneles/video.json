@@ -1,0 +1,259 @@
+{
+ "formato": "paneles",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "counts": {
+   "2": 3.0,
+   "4": 3.0,
+   "6": 3.0
+  },
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿QUÉ LLEVA EL 1202?",
+ "portada": {
+  "titulo": "¿QUÉ LLEVA ESTA CISTERNA?",
+  "etiqueta": "LEE EL NÚMERO DE ABAJO",
+  "t": 1.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "cisterna": [
+   "cisterna",
+   1,
+   1
+  ],
+  "volcada": [
+   "volcada",
+   1,
+   1
+  ],
+  "lleva1": [
+   "lleva",
+   1,
+   1
+  ],
+  "antes": [
+   "Antes",
+   1,
+   2
+  ],
+  "lejos": [
+   "lejos",
+   1,
+   2
+  ],
+  "panel": [
+   "panel",
+   1,
+   2
+  ],
+  "naranja": [
+   "naranja",
+   1,
+   2
+  ],
+  "abajo": [
+   "abajo",
+   1,
+   2
+  ],
+  "dice": [
+   "dice",
+   1,
+   2
+  ],
+  "n1": [
+   "Mil",
+   1,
+   3
+  ],
+  "tres": [
+   "tres",
+   1,
+   3
+  ],
+  "gasolina": [
+   "Gasolina",
+   1,
+   4
+  ],
+  "chispa": [
+   "chispa",
+   1,
+   4
+  ],
+  "tapa": [
+   "tapa",
+   1,
+   4
+  ],
+  "espuma": [
+   "espuma",
+   1,
+   4
+  ],
+  "n2": [
+   "Mil",
+   1,
+   5
+  ],
+  "ocho": [
+   "ocho",
+   1,
+   5
+  ],
+  "propano": [
+   "Propano",
+   1,
+   6
+  ],
+  "fuego": [
+   "fuego",
+   1,
+   6
+  ],
+  "calienta": [
+   "calienta",
+   1,
+   6
+  ],
+  "reventar": [
+   "reventar",
+   1,
+   6
+  ],
+  "enfria": [
+   "enfría",
+   1,
+   6
+  ],
+  "lejos2": [
+   "lejos",
+   1,
+   6
+  ],
+  "n3": [
+   "Mil",
+   1,
+   7
+  ],
+  "treinta": [
+   "treinta",
+   1,
+   7
+  ],
+  "acido": [
+   "Ácido",
+   1,
+   8
+  ],
+  "sulfurico": [
+   "sulfúrico",
+   1,
+   8
+  ],
+  "piel": [
+   "piel",
+   1,
+   8
+  ],
+  "traje": [
+   "traje",
+   1,
+   8
+  ],
+  "quimico": [
+   "químico",
+   1,
+   8
+  ],
+  "trampa": [
+   "trampa",
+   1,
+   9
+  ],
+  "n4": [
+   "mil",
+   1,
+   9
+  ],
+  "dos": [
+   "dos",
+   1,
+   9
+  ],
+  "uno": [
+   "Uno",
+   1,
+   9
+  ],
+  "gasolina2": [
+   "gasolina",
+   1,
+   9
+  ],
+  "quelleva": [
+   "Qué",
+   1,
+   10
+  ],
+  "oA": [
+   "A",
+   1,
+   10
+  ],
+  "oB": [
+   "B",
+   1,
+   10
+  ],
+  "oC": [
+   "C",
+   1,
+   10
+  ],
+  "oD": [
+   "D",
+   1,
+   10
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   10
+  ],
+  "compartir": [
+   "¡Mándaselo",
+   1,
+   11
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   12
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   12
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   12
+  ]
+ }
+}
