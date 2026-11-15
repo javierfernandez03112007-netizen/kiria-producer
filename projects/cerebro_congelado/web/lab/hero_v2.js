@@ -67,22 +67,24 @@ function hrAO(sd, x, y, z, nx, ny, nz, s = 0.06, k = 1.6) {
 
 // ---------------------------------------------------------------- la cabeza (medidas de la cabeza de perfil, las de frente y la nuca)
 const HM = {
-  cr: { cy: 2.08, cz: -0.06, rx: 1.17, ry: 1.6, ryb: 1.95, rz: 1.47, k: 0.27 },              // cráneo en bala, inclinado hacia atrás (cizalla k)
-  jw: { cx: 0, cy: 0.12, cz: 0.18, rx: 1.2, ry: 1.3, rz: 1.08 },                              // mejillas y mandíbula (detrás del morro, bajo las orejas)
-  nk: { y0: -0.35, y1: -3.6, cz: 0.06, rx: 0.93, rz: 0.77, k: -0.21 },                         // cuello (sin marcar: la cabeza baja hasta los hombros)
-  mu: hrTilt({ cx: 0, cy: -0.07, cz: 1.27, rx: 1.18, ry: 0.66, rz: 1.21, t: -0.36 }),         // el morro de arriba (la punta, hacia delante y abajo)
-  ml: { cx: 0, cy: -1.0, cz: 1.02, rx: 1.0, ry: 0.5, rz: 0.86 },                              // labio de abajo y barbilla
-  ns: { ax: 0, ay: 0.95, az: 1.2, bx: 0, by: 0.81, bz: 2.23, rx: 0.27, ry: 0.22 },            // la nariz: un cilindro desde entre los ojos
-  ey: { cx: 0.75, cy: 1.43, cz: 1.35, rx: 0.57, ry: 0.6, rz: 0.43 },                          // el ojo izquierdo (el derecho, en −x)
-  er: { cx: 1.22, cy: 0.42, cz: -0.18, a: 0.45 },                                             // la oreja (girada a hacia delante)
+  c1: { cx: 0, cy: 2.194, cz: -0.005, rx: 1.25, ry: 1.407, rz: 1.539 },                       // cráneo en bala (ajustado a la hoja): la masa grande…
+  c2: { cx: 0, cy: 2.95, cz: -0.309, rx: 0.75, ry: 0.72, rz: 1.025 },                         // …y la coronilla, que se va hacia atrás
+  jw: hrTilt({ cx: 0, cy: 0.633, cz: 0.034, rx: 1.198, ry: 1.691, rz: 1.045, t: 0.314 }),     // mejillas, sienes y mandíbula (detrás del morro)
+  nk: { y0: 0.0, y1: -3.6, cz: 0.058, rx: 0.988, rz: 0.817, k: -0.138 },                      // el cuello (sin marcar: la cabeza baja hasta los hombros)
+  mu: hrTilt({ cx: 0, cy: -0.003, cz: 1.326, rx: 1.212, ry: 0.696, rz: 1.188, t: -0.296 }),   // el morro de arriba (la punta, hacia delante y abajo)
+  ml: { cx: 0, cy: -1.014, cz: 1.049, rx: 1.002, ry: 0.511, rz: 0.692 },                      // labio de abajo y barbilla
+  mj: { cx: 0, cy: -0.474, cz: 0.971, rx: 1.176, ry: 0.752, rz: 0.856 },                      // los carrillos del morro (de frente, un disco)
+  ns: { ax: 0, ay: 0.93, az: 1.25, bx: 0, by: 0.8, bz: 2.26, rx: 0.31, ry: 0.25 },            // la nariz: un cilindro desde entre los ojos
+  ey: { cx: 0.75, cy: 1.43, cz: 1.37, rx: 0.57, ry: 0.6, rz: 0.45 },                          // el ojo izquierdo (el derecho, en −x)
+  er: { cx: 1.27, cy: 0.52, cz: -0.17, a: 0.75 },                                              // la oreja (girada a hacia delante)
   mo: { y: -0.69, hw: 0.55, t: 0.032, z0: 1.3 },                                              // la boca: altura, media anchura, media rendija, fondo
   cv: { cx: 0, cy: -0.66, cz: 1.05, rx: 0.6, ry: 0.3, rz: 0.55 },                             // el hueco de la boca (su techo es el paladar)
 };
 { const E = HM.er; E.nx = Math.cos(E.a); E.nz = Math.sin(E.a); }
-function hrCran(x, y, z) { const C = HM.cr, py = y - C.cy, pz = z - C.cz + C.k * py; return hrE(x, py, pz, C.rx, py > 0 ? C.ry : C.ryb, C.rz); }
-function hrJaw(x, y, z) { const J = HM.jw; return hrE(x - J.cx, y - J.cy, z - J.cz, J.rx, J.ry, J.rz); }
-function hrNeck(x, y, z) { const N = HM.nk, yy = Math.max(y, -1.9), zc = N.cz + N.k * (yy + 1.0), e = (Math.hypot(x / N.rx, (z - zc) / N.rz) - 1) * Math.min(N.rx, N.rz); return Math.max(e, y - N.y0, N.y1 - y); }
-function hrMuzzle(x, y, z) { const L = HM.ml; return smin(hrET(x, y, z, HM.mu), hrE(x - L.cx, y - L.cy, z - L.cz, L.rx, L.ry, L.rz), 0.26); }
+function hrCran(x, y, z) { const A = HM.c1, B = HM.c2; return smin(hrE(x, y - A.cy, z - A.cz, A.rx, A.ry, A.rz), hrE(x, y - B.cy, z - B.cz, B.rx, B.ry, B.rz), 0.302); }
+function hrNeck(x, y, z) { const N = HM.nk, zc = N.cz + N.k * (Math.max(y, -1.9) + 1.0), e = (Math.hypot(x / N.rx, (z - zc) / N.rz) - 1) * Math.min(N.rx, N.rz); return Math.max(e, y - N.y0, N.y1 - y); }
+function hrMuzzle(x, y, z) { const L = HM.ml, J = HM.mj; let d = smin(smin(hrET(x, y, z, HM.mu), hrE(x, y - L.cy, z - L.cz, L.rx, L.ry, L.rz), 0.266), hrE(x, y - J.cy, z - J.cz, J.rx, J.ry, J.rz), 0.25);
+  return smin(d, hrE(x, y - 0.5, z - 1.98, 0.36, 0.15, 0.3), 0.12); }     // arriba, el morro llega hasta la nariz (sin hueco)
 function hrNose(x, y, z) {
   const N = HM.ns, dx = N.bx - N.ax, dy = N.by - N.ay, dz = N.bz - N.az, px = x - N.ax, py = y - N.ay, pz = z - N.az;
   const h = clamp((px * dx + py * dy + pz * dz) / (dx * dx + dy * dy + dz * dz)), ox = (px - dx * h) / N.rx, oy = (py - dy * h) / N.ry, oz = (pz - dz * h) / N.ry;
@@ -102,7 +104,9 @@ function hrEar(ax, y, z) {
 function hrSock(ax, y, z) { const E = HM.ey; return hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx + 0.035, E.ry + 0.035, E.rz + 0.035); }
 function hrEyeD(ax, y, z) { const E = HM.ey; return hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx, E.ry, E.rz); }
 // todo lo que no es el morro (para saber dónde acaba el color tostado)
-function hrRest(x, y, z) { let d = smin(hrCran(x, y, z), hrJaw(x, y, z), 0.45); d = smin(d, hrNeck(x, y, z), 0.45); return d; }
+function hrRest(x, y, z) { let d = smin(smin(hrCran(x, y, z), hrET(x, y, z, HM.jw), 0.547), hrNeck(x, y, z), 0.281);
+  d = smin(d, hrE(x, y + 0.72, z - 0.2, 1.1, 0.72, 0.85), 0.3);                                   // la mandíbula por detrás del morro (de espaldas no se ve el morro)
+  const E = HM.ey, ax = Math.abs(x); return smin(d, Math.max(hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx + 0.06, E.ry + 0.06, E.rz + 0.06), z - E.cz + 0.25), 0.08); }   // la piel que envuelve el ojo por detrás (de espaldas no asoma el blanco)
 // la cabeza con la boca cerrada (sin rendija)
 function hrHeadClosed(x, y, z) {
   const ax = Math.abs(x); let d = hrRest(x, y, z);
@@ -122,16 +126,27 @@ function sdHead(x, y, z) { return Math.max(hrHeadClosed(x, y, z), -hrMouthCut(x,
 // la cabeza cerrada con los ojos (para la oclusión)
 function hrHeadAO(x, y, z) { return Math.min(hrHeadClosed(x, y, z), hrEyeD(Math.abs(x), y, z)); }
 // el color tostado del morro: > 0 dentro (la parte de la superficie que es del morro y no del resto de la cabeza)
-function hrPaint(x, y, z) { return hrRest(x, y, z) - hrMuzzle(x, y, z) + 0.035 - 0.12 * hrSS(0.0, -0.5, y) * hrSS(1.2, 0.6, z); }
+function hrPaint(x, y, z) {
+  const ax = Math.abs(x), yt = 0.6 - 0.6 * Math.pow(Math.min(1, ax / 1.18), 2.4) + 0.22 * hrSS(1.5, 0.8, z) * hrSS(0.5, 1.0, ax);       // borde de arriba (de frente)
+  const zb = y > 0 ? 0.5 + 1.1 * y : y < -0.9 ? 0.5 + 1.4 * Math.pow(-0.9 - y, 1.3) : 0.5;                                          // borde de atrás (de perfil)
+  return Math.min(hrRest(x, y, z) - hrMuzzle(x, y, z) + 0.05, (yt - y) * 0.7, (z - zb) * 0.7);
+}
 const HEAD_BOX = [-1.75, -3.55, -1.75, 1.75, 3.85, 2.75];
 // el hueco del cráneo (donde va el cerebro): elipsoide inscrito en el cráneo con 0,26 de hueso y piel
 const HEADP = { cran: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), cav: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), palate: [0, -0.36, 1.05], forehead: [0, 2.35, 1.38],
   eyes: [[0.75, 1.43, 1.35], [-0.75, 1.43, 1.35]], mouth: [0, -0.69, 2.05] };
 const JAW_P = new THREE.Vector3(0, -0.15, -0.3), JAW_A = 0.28;
 // el zigzag del pelo (de oreja a oreja por la nuca): puntos (ángulo alrededor de la cabeza en grados, altura). 0° = la nuca; −x (la derecha de Homer) a la izquierda
-const HR_ZZ = (() => { const side = [[63, 1.3], [80, 0.92], [80, 1.32], [96, 1.08], [100, 1.58], [114, 1.22]], back = [[-41, 1.18], [-18, 1.64], [0, 1.18]];
+const HR_ZZ = (() => { const side = [[63, 1.5], [80, 0.95], [80, 1.42], [96, 1.15], [100, 1.68], [114, 1.33]], back = [[-41, 1.12], [-18, 1.6], [0, 1.12]];
   const L = [...side.slice().reverse().map(([a, y]) => [-a, y]), ...back, ...back.slice(0, 2).reverse().map(([a, y]) => [-a, y]), ...side];
   return L.map(([a, y]) => [a * Math.PI / 180 * 1.25, y]); })();
+// los dos pelos de arriba: arcos tumbados hacia atrás (pie izquierdo, punta, pie derecho)
+function hrHairPts() {
+  const arc = (zc, yf, w, h, lean, yaw, n = 26) => { const P = [], cy = Math.cos(yaw), sy = Math.sin(yaw), cl = Math.cos(lean), sl = Math.sin(lean);
+    for (let i = 0; i <= n; i++) { const a = Math.PI * i / n, u = -Math.cos(a) * w, v = Math.sin(a) * h;      // el arco en su plano (u: de lado a lado, v: hacia arriba)
+      const yy = yf + v * cl, zz = zc - v * sl; P.push([u * cy, yy, zz + u * sy]); } return P; };
+  return [arc(-0.42, 3.5, 0.58, 0.36, 0.95, 0.42), arc(-0.92, 3.32, 0.62, 0.36, 1.05, 0.42)];
+}
 // el garabato «~» de la boca en reposo (de frente: x, y), como en la cabeza grande de frente
 const HR_SQ = [[0.02, -0.5], [-0.03, -0.58], [0.0, -0.66], [0.1, -0.71], [0.07, -0.79], [-0.04, -0.84], [0.03, -0.86], [0.17, -0.8], [0.32, -0.7], [0.45, -0.65], [0.55, -0.66]];
 const tri = x => 1 - 4 * Math.abs(((x % 1) + 1) % 1 - 0.5);       // onda en triángulo (−1 … 1)
