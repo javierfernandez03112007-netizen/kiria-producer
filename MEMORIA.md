@@ -91,6 +91,17 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
      escarcha (frente que sale de la boca y deshielo con el truco) y la cabeza en corte de perfil (`17_section.js`: contornos del campo en
      x = 0 con marching squares → láminas extruidas). Render en ramas `render-cc-*`. Lección (14): **para que un color brille en rojo con
      ACES, el color base también tiene que ser rojo oscuro** (si no, el rojo del emisivo se satura y queda salmón).
+     **ESTADO (15-11): PARADO por orden de Javi («Para de hacerlo», «Déjalo todo guardado y para»). No retomar sin que lo pida.** Javi
+     rechazó el heladero propio y también un Homer «de carne y hueso»: quiere a **Homer tal cual su hoja de modelo, sin inventar nada**
+     («te he pasado la foto, no inventes nada más, solo utiliza esto»; la hoja está en `web/lab/ref/homer_modelo.jpg`), con materiales y luz
+     de calidad. Pidió además: Homer de pie **en la puerta de su casa de Springfield**, plano de **dron** que se acerca, se come el polo y
+     **no se congela él: la cámara entra en la cabeza y se congela el cerebro**, con cerebro de cristal y neuronas «superrealistas».
+     Guardado en la rama: `19_house.js` (la casa, jardín, coches, cielo), `15_center.js`/`30_camera.js` (línea de tiempo y dron),
+     `20_stations.js` (peanas en el césped), HUD claro/oscuro, efectos reajustados, `render_chunk.sh` a 1,5× (ramas `render-cc2-*`),
+     banco de pruebas `web/lab/` (`lab.sh`) y el **Homer a medias según la hoja** (`web/lab/hero_v2.js`, `skin_v2.js`, `test_hero.js`:
+     ya se reconoce; faltaban la boca en reposo, las orejas en C, los párpados de dolor y la revisión lado a lado). Sin integrar en `src/`.
+     Se perdieron con el reinicio de la máquina (habría que rehacerlos): el cerebro de cristal, los nervios/arterias/paladar/lengua y el
+     primer plano de neuronas. El escaneo de cabeza `web/assets/lps/` (CC BY 3.0) quedó sin usar. Homer es de Disney: el riesgo lo decide Javi.
    - Cuerpo («qué pasa cuando…»): las agujetas no son ácido láctico · los dedos arrugados en el agua (lo hace tu sistema nervioso) · se te
      duerme el pie · el «cerebro congelado» con el helado · estornudar al mirar al sol · la piel de gallina · el hipo · el bostezo contagioso.
    - Aparatos: el GPS (sin la relatividad de Einstein fallaría kilómetros cada día) · la pantalla táctil (siente la electricidad de tu dedo)
