@@ -2367,7 +2367,145 @@ def sfx_track_techo(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_paneles(path):
+    """«¿Qué lleva esta cisterna?» (panel naranja): la autovía de noche (sirena al llegar, motor de la autobomba, el relé de
+    los intermitentes de la cisterna), el dron que vuela (barridos), el panel que rueda como una tragaperras y se para en
+    cada número, la cuenta 3-2-1 de cada ronda con su acierto; gasolina (chispa y espuma), propano (fuego, tensión y latido,
+    el cañón de agua y el vapor donde cae), ácido (burbujeo y el traje que te cubre), la trampa del 1202, las letras y la
+    venta. Tiempos como en paneles.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    Tc = [LINES[i]["end"] + 0.05 for i in (2, 4, 6)]
+    Tr = [c["gasolina"], c["propano"], c["acido"]]
+    Tf = [c["n1"] - 0.2, c["n2"] - 0.2, c["n3"] - 0.2, c["n4"] - 0.15]
+    nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
+    fuego, agua, vapor, ruleta, flip = _load("fuego"), _onset(_load("agua")), _onset(_load("vapor")), _onset(_load("ruleta")), _onset(_load("flip"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    def bed(x, dur, seed, a=0.45, b=2.45, seg=(0.7, 1.3), xf=0.25):      # ambiente sin repetición (como en el del techo)
+        rng = np.random.default_rng(seed)
+        n, k = int(dur * sfx.SR), int(xf * sfx.SR)
+        fi_, fo_ = np.sqrt(np.linspace(0, 1, k))[:, None], np.sqrt(np.linspace(1, 0, k))[:, None]
+        y = np.zeros((0, 2))
+        while len(y) < n:
+            L = rng.uniform(*seg); s0 = rng.uniform(a, b - L)
+            z = x[int(s0 * sfx.SR): int((s0 + L) * sfx.SR)] * 10 ** (rng.uniform(-2, 2) / 20)
+            if len(y) >= k:
+                z = z.copy(); z[:k] = y[-k:] * fo_ + z[:k] * fi_
+                y = np.concatenate([y[:-k], z])
+            else:
+                y = z.copy()
+        y = y[:n]
+        w = 480; nf = len(y) // w
+        e = np.sqrt((y[:nf * w].mean(1).reshape(nf, w) ** 2).mean(1)) + 1e-9
+        gr = np.minimum(1, np.median(e) * 10 ** (7 / 20) / e)
+        gr = np.min(np.stack([np.roll(gr, d) for d in range(-3, 4)]), 0)
+        gr = np.convolve(gr, np.ones(5) / 5, "same")
+        return y * np.interp(np.arange(len(y)), np.arange(nf) * w + w / 2, gr)[:, None]
+
+    # la autovía de noche: sirena al llegar, motor de la autobomba, el relé de los intermitentes (cada 0,4 s) y el goteo
+    put("golpe", 0.0, -23, 0.8, 0.003, 0.35)
+    put("latido", 0.08, -25, 0.7)
+    put("sirena", 0.0, -27, LINES[1]["start"] + 0.6, 0.05, 0.8, track=amb)
+    put("ciudad", 0.0, -38, T["fin"], 0.6, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.3, -37, T["fin"] - 0.3, 0.8, 1.0, track=amb)
+    rl = _onset(_load("rele"))[: int(0.07 * sfx.SR)]
+    tt = 0.0
+    while tt < T["fin"]:
+        put(rl, tt, -33, 0.07, 0.002, 0.03, track=amb, g=1.0 if int(tt / 0.4) % 2 == 0 else 0.7)
+        tt += 0.4
+    put(_loop(agua, 6.0), 0.2, -40, Tf[1] - 0.2, 0.5, 0.4, track=amb)                       # el goteo de la válvula
+    put(_pitch(_onset(_load("golpe")), 0.6), c["volcada"] - 0.05, -27, 1.0, 0.003, 0.5)       # chapa
+    # el dron vuelve hacia ti (viento) y vuela hasta el panel
+    put("whoosh", c["antes"] - 0.1, -26, 1.0)
+    put("aire", c["lejos"] - 0.2, -31, 1.8, 0.3, 0.6, track=amb)
+    put("whoosh2", c["panel"] - 0.3, -26, 0.9)
+    # el panel: tragaperras hasta el primer número; en cada ronda rueda y se para
+    put(_loop(ruleta, 4.0), c["abajo"] - 0.1, -27, Tf[0] - c["abajo"] + 0.45, 0.05, 0.08)
+    for k in range(4):
+        if k:
+            put(ruleta, Tf[k] - 0.05, -29, 0.5, 0.01, 0.1)
+        put(flip, Tf[k] + 0.32, -24, 0.4)
+        put(_pitch(toque, 1.0 + 0.08 * k), Tf[k] + 0.34, -28, 0.35)
+    # las tres rondas: cuenta 3-2-1 con tensión y el acierto
+    for k in range(3):
+        put("tension", Tc[k] - 0.1, -30, 3.2, 0.2, 0.1)
+        for j in range(3):
+            put("tic", Tc[k] + j, -21 + 1.5 * j, 0.3)
+        put("acierto", Tr[k] - 0.03, -22, 0.9, 0.003, 0.3)
+        put("destello", Tr[k] - 0.05, -26, 0.6)
+        for i in range(3):
+            put(_pitch(bub, 1.0 + 0.08 * i), c[["n1", "n2", "n3"][k]] + 0.1 + 0.12 * i, -28, 0.2)
+    # gasolina: la chispa y la espuma que tapa el charco
+    put("glitch", c["chispa"] - 0.02, -29, 0.35)
+    put(_loop(agua, 6.0), c["gasolina"] + 0.25, -27, Tf[1] - 0.45 - c["gasolina"] - 0.25, 0.1, 0.3)
+    put(_pitch(vapor, 0.7), c["tapa"] - 0.1, -31, Tf[1] - c["tapa"] - 0.2, 0.3, 0.4, track=amb)
+    for i in range(5):
+        put(_pitch(bub, 0.7 + 0.05 * i), c["tapa"] + 0.15 * i, -32, 0.2)
+    # propano: el fuego, la tensión y el latido; el cañón de agua y el vapor donde cae
+    put(_pitch(_onset(_load("whoosh2")), 0.7), c["propano"] - 0.2, -24, 0.9)
+    put(bed(fuego, Tf[2] - c["propano"] + 0.5, 11), c["propano"] - 0.25, -22, Tf[2] - c["propano"], 0.2, 0.3, track=amb)
+    put("tension", c["fuego"] - 0.1, -27, c["reventar"] - c["fuego"] + 0.4, 0.4, 0.2)
+    put("latido", c["reventar"] - 0.05, -24, 0.7)
+    put("latido", c["reventar"] + 0.55, -26, 0.7)
+    put(_pitch(_onset(_load("golpe")), 0.55), c["reventar"] - 0.03, -25, 1.2, 0.003, 0.6)
+    put(_loop(agua, 6.0), c["reventar"] + 0.1, -25, Tf[2] - 0.4 - c["reventar"] - 0.1, 0.2, 0.3, track=amb)
+    put(vapor, c["enfria"] + 0.55, -27, Tf[2] - c["enfria"] - 0.6, 0.2, 0.5, track=amb)
+    # ácido: burbujea y humea; el traje te cubre de abajo arriba
+    rng = np.random.default_rng(5)
+    tb = Tf[2] + 0.3
+    while tb < c["trampa"] - 0.3:
+        put(_pitch(bub, rng.uniform(0.55, 0.9)), tb, -33 + rng.uniform(-2, 2), 0.2)
+        tb += rng.uniform(0.12, 0.3)
+    put(_pitch(vapor, 0.85), Tf[2] + 0.3, -33, c["trampa"] - Tf[2] - 0.5, 0.4, 0.5, track=amb)
+    wr = _onset(_load("whoosh2"))[::-1].copy()
+    put(wr, c["traje"] - 0.35, -25, 1.0, 0.05, 0.05)
+    put("destello", c["quimico"] + 0.3, -25, 0.6)
+    # la trampa: 1202, uno menos que la gasolina
+    put("glitch", c["trampa"] - 0.05, -28, 0.4)
+    put(_pitch(toque, 0.8), c["trampa"] - 0.03, -27, 0.35)
+    put(_pitch(nota, 0.9), c["uno"] - 0.05, -27, 0.7)
+    put("tension", c["uno"] - 0.1, -31, c["quelleva"] - c["uno"] + 0.2, 0.3, 0.3)
+    # las cuatro letras y «comenta tu letra»
+    for k, key in enumerate(("oA", "oB", "oC", "oD")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    put(_pitch(toque, 1.3), c["comenta"] - 0.03, -27, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "paneles":
+        return sfx_track_paneles(path)
     if Q.get("formato") == "techo":
         return sfx_track_techo(path)
     if Q.get("formato") == "alfabeto":
