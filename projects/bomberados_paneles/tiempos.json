@@ -1,610 +1,563 @@
 [
  {
-  "text": "¡Una cisterna volcada… y no sabes qué lleva!",
-  "start": 0.0,
-  "end": 3.001,
-  "words": [
-   {
-    "w": "¡Una",
-    "start": 0.0,
-    "end": 0.357
-   },
-   {
-    "w": "cisterna",
-    "start": 0.357,
-    "end": 0.874
-   },
-   {
-    "w": "volcada…",
-    "start": 0.874,
-    "end": 1.39
-   },
-   {
-    "w": "y",
-    "start": 1.69,
-    "end": 1.889
-   },
-   {
-    "w": "no",
-    "start": 1.889,
-    "end": 2.087
-   },
-   {
-    "w": "sabes",
-    "start": 2.087,
-    "end": 2.445
-   },
-   {
-    "w": "qué",
-    "start": 2.445,
-    "end": 2.643
-   },
-   {
-    "w": "lleva!",
-    "start": 2.643,
-    "end": 3.001
-   }
-  ]
- },
- {
   "text": "Antes de acercarte, desde lejos, mira el panel naranja: el número de abajo te lo dice.",
-  "start": 3.301,
-  "end": 9.242,
+  "start": 0.0,
+  "end": 5.572,
   "words": [
    {
     "w": "Antes",
-    "start": 3.301,
-    "end": 3.658
+    "start": 0.0,
+    "end": 0.32
    },
    {
     "w": "de",
-    "start": 3.658,
-    "end": 3.857
+    "start": 0.32,
+    "end": 0.479
    },
    {
     "w": "acercarte,",
-    "start": 3.857,
-    "end": 4.532
+    "start": 0.479,
+    "end": 1.288
    },
    {
     "w": "desde",
-    "start": 4.632,
-    "end": 4.99
+    "start": 1.288,
+    "end": 1.598
    },
    {
     "w": "lejos,",
-    "start": 4.99,
-    "end": 5.347
+    "start": 1.598,
+    "end": 2.207
    },
    {
     "w": "mira",
-    "start": 5.447,
-    "end": 5.804
+    "start": 2.207,
+    "end": 2.556
    },
    {
     "w": "el",
-    "start": 5.804,
-    "end": 6.003
+    "start": 2.556,
+    "end": 2.636
    },
    {
     "w": "panel",
-    "start": 6.003,
-    "end": 6.361
+    "start": 2.636,
+    "end": 3.036
    },
    {
     "w": "naranja:",
-    "start": 6.361,
-    "end": 6.877
+    "start": 3.036,
+    "end": 3.984
    },
    {
     "w": "el",
-    "start": 7.057,
-    "end": 7.256
+    "start": 3.984,
+    "end": 4.074
    },
    {
     "w": "número",
-    "start": 7.256,
-    "end": 7.772
+    "start": 4.074,
+    "end": 4.474
    },
    {
     "w": "de",
-    "start": 7.772,
-    "end": 7.971
+    "start": 4.474,
+    "end": 4.633
    },
    {
     "w": "abajo",
-    "start": 7.971,
-    "end": 8.487
+    "start": 4.633,
+    "end": 4.953
    },
    {
     "w": "te",
-    "start": 8.487,
-    "end": 8.685
+    "start": 4.953,
+    "end": 5.113
    },
    {
     "w": "lo",
-    "start": 8.685,
-    "end": 8.884
+    "start": 5.113,
+    "end": 5.272
    },
    {
     "w": "dice.",
-    "start": 8.884,
-    "end": 9.242
+    "start": 5.272,
+    "end": 5.572
    }
   ]
  },
  {
   "text": "Mil doscientos tres.",
-  "start": 9.542,
-  "end": 10.456,
+  "start": 6.061,
+  "end": 8.028,
   "words": [
    {
     "w": "Mil",
-    "start": 9.542,
-    "end": 9.741
+    "start": 6.061,
+    "end": 6.435
    },
    {
     "w": "doscientos",
-    "start": 9.741,
-    "end": 10.257
+    "start": 6.435,
+    "end": 7.615
    },
    {
     "w": "tres.",
-    "start": 10.257,
-    "end": 10.456
+    "start": 7.615,
+    "end": 8.028
    }
   ]
  },
  {
   "text": "¡Gasolina! Arde con una chispa: se tapa con espuma.",
-  "start": 13.756,
-  "end": 17.253,
+  "start": 11.388,
+  "end": 15.282,
   "words": [
    {
     "w": "¡Gasolina!",
-    "start": 13.756,
-    "end": 14.431
+    "start": 11.388,
+    "end": 12.596
    },
    {
     "w": "Arde",
-    "start": 14.531,
-    "end": 14.888
+    "start": 12.596,
+    "end": 12.986
    },
    {
     "w": "con",
-    "start": 14.888,
-    "end": 15.087
+    "start": 12.986,
+    "end": 13.145
    },
    {
     "w": "una",
-    "start": 15.087,
-    "end": 15.445
+    "start": 13.145,
+    "end": 13.385
    },
    {
     "w": "chispa:",
-    "start": 15.445,
-    "end": 15.802
+    "start": 13.385,
+    "end": 14.154
    },
    {
     "w": "se",
-    "start": 15.982,
-    "end": 16.181
+    "start": 14.154,
+    "end": 14.264
    },
    {
     "w": "tapa",
-    "start": 16.181,
-    "end": 16.538
+    "start": 14.264,
+    "end": 14.743
    },
    {
     "w": "con",
-    "start": 16.538,
-    "end": 16.737
+    "start": 14.743,
+    "end": 14.903
    },
    {
     "w": "espuma.",
-    "start": 16.737,
-    "end": 17.253
+    "start": 14.903,
+    "end": 15.282
    }
   ]
  },
  {
   "text": "Mil novecientos setenta y ocho.",
-  "start": 17.553,
-  "end": 19.499,
+  "start": 15.702,
+  "end": 17.709,
   "words": [
    {
     "w": "Mil",
-    "start": 17.553,
-    "end": 17.752
+    "start": 15.702,
+    "end": 15.867
    },
    {
     "w": "novecientos",
-    "start": 17.752,
-    "end": 18.427
+    "start": 15.867,
+    "end": 16.607
    },
    {
     "w": "setenta",
-    "start": 18.427,
-    "end": 18.943
+    "start": 16.607,
+    "end": 17.164
    },
    {
     "w": "y",
-    "start": 18.943,
-    "end": 19.142
+    "start": 17.164,
+    "end": 17.348
    },
    {
     "w": "ocho.",
-    "start": 19.142,
-    "end": 19.499
+    "start": 17.348,
+    "end": 17.709
    }
   ]
  },
  {
   "text": "¡Propano! Si el fuego calienta la cisterna, puede reventar: se enfría desde lejos.",
-  "start": 22.799,
-  "end": 27.826,
+  "start": 21.058,
+  "end": 26.81,
   "words": [
    {
     "w": "¡Propano!",
-    "start": 22.799,
-    "end": 23.315
+    "start": 21.058,
+    "end": 22.027
    },
    {
     "w": "Si",
-    "start": 23.415,
-    "end": 23.614
+    "start": 22.027,
+    "end": 22.137
    },
    {
     "w": "el",
-    "start": 23.614,
-    "end": 23.813
+    "start": 22.137,
+    "end": 22.217
    },
    {
     "w": "fuego",
-    "start": 23.813,
-    "end": 24.17
+    "start": 22.217,
+    "end": 22.536
    },
    {
     "w": "calienta",
-    "start": 24.17,
-    "end": 24.686
+    "start": 22.536,
+    "end": 23.095
    },
    {
     "w": "la",
-    "start": 24.686,
-    "end": 24.885
+    "start": 23.095,
+    "end": 23.175
    },
    {
     "w": "cisterna,",
-    "start": 24.885,
-    "end": 25.401
+    "start": 23.175,
+    "end": 23.974
    },
    {
     "w": "puede",
-    "start": 25.501,
-    "end": 25.859
+    "start": 23.974,
+    "end": 24.374
    },
    {
     "w": "reventar:",
-    "start": 25.859,
-    "end": 26.375
+    "start": 24.374,
+    "end": 25.462
    },
    {
     "w": "se",
-    "start": 26.555,
-    "end": 26.754
+    "start": 25.462,
+    "end": 25.572
    },
    {
     "w": "enfría",
-    "start": 26.754,
-    "end": 27.111
+    "start": 25.572,
+    "end": 26.131
    },
    {
     "w": "desde",
-    "start": 27.111,
-    "end": 27.469
+    "start": 26.131,
+    "end": 26.451
    },
    {
     "w": "lejos.",
-    "start": 27.469,
-    "end": 27.826
+    "start": 26.451,
+    "end": 26.81
    }
   ]
  },
  {
   "text": "Mil ochocientos treinta.",
-  "start": 28.126,
-  "end": 29.357,
+  "start": 27.18,
+  "end": 28.807,
   "words": [
    {
     "w": "Mil",
-    "start": 28.126,
-    "end": 28.325
+    "start": 27.18,
+    "end": 27.406
    },
    {
     "w": "ochocientos",
-    "start": 28.325,
-    "end": 29.0
+    "start": 27.406,
+    "end": 28.354
    },
    {
     "w": "treinta.",
-    "start": 29.0,
-    "end": 29.357
+    "start": 28.354,
+    "end": 28.807
    }
   ]
  },
  {
   "text": "¡Ácido sulfúrico! Te quema la piel: solo se entra con traje químico.",
-  "start": 32.657,
-  "end": 37.068,
+  "start": 32.167,
+  "end": 36.61,
   "words": [
    {
     "w": "¡Ácido",
-    "start": 32.657,
-    "end": 33.173
+    "start": 32.167,
+    "end": 32.566
    },
    {
     "w": "sulfúrico!",
-    "start": 33.173,
-    "end": 33.848
+    "start": 32.566,
+    "end": 33.685
    },
    {
     "w": "Te",
-    "start": 33.948,
-    "end": 34.147
+    "start": 33.685,
+    "end": 33.828
    },
    {
     "w": "quema",
-    "start": 34.147,
-    "end": 34.504
+    "start": 33.828,
+    "end": 34.164
    },
    {
     "w": "la",
-    "start": 34.504,
-    "end": 34.703
+    "start": 34.164,
+    "end": 34.244
    },
    {
     "w": "piel:",
-    "start": 34.703,
-    "end": 34.902
+    "start": 34.244,
+    "end": 34.903
    },
    {
     "w": "solo",
-    "start": 35.082,
-    "end": 35.439
+    "start": 34.903,
+    "end": 35.122
    },
    {
     "w": "se",
-    "start": 35.439,
-    "end": 35.638
+    "start": 35.122,
+    "end": 35.282
    },
    {
     "w": "entra",
-    "start": 35.638,
-    "end": 35.995
+    "start": 35.282,
+    "end": 35.682
    },
    {
     "w": "con",
-    "start": 35.995,
-    "end": 36.194
+    "start": 35.682,
+    "end": 35.841
    },
    {
     "w": "traje",
-    "start": 36.194,
-    "end": 36.552
+    "start": 35.841,
+    "end": 36.241
    },
    {
     "w": "químico.",
-    "start": 36.552,
-    "end": 37.068
+    "start": 36.241,
+    "end": 36.61
    }
   ]
  },
  {
   "text": "Y ahora, la trampa: mil doscientos dos. Uno menos que la gasolina…",
-  "start": 37.368,
-  "end": 41.72,
+  "start": 37.06,
+  "end": 42.432,
   "words": [
    {
     "w": "Y",
-    "start": 37.368,
-    "end": 37.567
+    "start": 37.06,
+    "end": 37.279
    },
    {
     "w": "ahora,",
-    "start": 37.567,
-    "end": 38.083
+    "start": 37.279,
+    "end": 37.759
    },
    {
     "w": "la",
-    "start": 38.183,
-    "end": 38.382
+    "start": 37.759,
+    "end": 37.998
    },
    {
     "w": "trampa:",
-    "start": 38.382,
-    "end": 38.739
+    "start": 37.998,
+    "end": 38.867
    },
    {
     "w": "mil",
-    "start": 38.919,
-    "end": 39.118
+    "start": 38.867,
+    "end": 39.229
    },
    {
     "w": "doscientos",
-    "start": 39.118,
-    "end": 39.634
+    "start": 39.229,
+    "end": 40.343
    },
    {
     "w": "dos.",
-    "start": 39.634,
-    "end": 39.833
+    "start": 40.343,
+    "end": 40.994
    },
    {
     "w": "Uno",
-    "start": 39.933,
-    "end": 40.29
+    "start": 40.994,
+    "end": 41.274
    },
    {
     "w": "menos",
-    "start": 40.29,
-    "end": 40.648
+    "start": 41.274,
+    "end": 41.513
    },
    {
     "w": "que",
-    "start": 40.648,
-    "end": 40.846
+    "start": 41.513,
+    "end": 41.673
    },
    {
     "w": "la",
-    "start": 40.846,
-    "end": 41.045
+    "start": 41.673,
+    "end": 41.833
    },
    {
     "w": "gasolina…",
-    "start": 41.045,
-    "end": 41.72
+    "start": 41.833,
+    "end": 42.432
    }
   ]
  },
  {
   "text": "¿Qué lleva? ¿A, B, C o D? Comenta tu letra.",
-  "start": 42.02,
-  "end": 45.042,
+  "start": 42.821,
+  "end": 47.125,
   "words": [
    {
     "w": "¿Qué",
-    "start": 42.02,
-    "end": 42.219
+    "start": 42.821,
+    "end": 42.951
    },
    {
     "w": "lleva?",
-    "start": 42.219,
-    "end": 42.576
+    "start": 42.951,
+    "end": 43.75
    },
    {
     "w": "¿A,",
-    "start": 42.676,
-    "end": 42.875
+    "start": 43.75,
+    "end": 44.309
    },
    {
     "w": "B,",
-    "start": 42.975,
-    "end": 43.174
+    "start": 44.309,
+    "end": 44.968
    },
    {
     "w": "C",
-    "start": 43.274,
-    "end": 43.472
+    "start": 44.968,
+    "end": 45.508
    },
    {
     "w": "o",
-    "start": 43.472,
-    "end": 43.671
+    "start": 45.508,
+    "end": 45.587
    },
    {
     "w": "D?",
-    "start": 43.671,
-    "end": 43.87
+    "start": 45.587,
+    "end": 46.256
    },
    {
     "w": "Comenta",
-    "start": 43.97,
-    "end": 44.486
+    "start": 46.256,
+    "end": 46.706
    },
    {
     "w": "tu",
-    "start": 44.486,
-    "end": 44.685
+    "start": 46.706,
+    "end": 46.866
    },
    {
     "w": "letra.",
-    "start": 44.685,
-    "end": 45.042
+    "start": 46.866,
+    "end": 47.125
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien quiera ser bombero!",
-  "start": 45.342,
-  "end": 47.982,
+  "start": 47.485,
+  "end": 49.592,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 45.342,
-    "end": 46.182
+    "start": 47.485,
+    "end": 48.224
    },
    {
     "w": "a",
-    "start": 46.182,
-    "end": 46.422
+    "start": 48.224,
+    "end": 48.383
    },
    {
     "w": "quien",
-    "start": 46.422,
-    "end": 46.662
+    "start": 48.383,
+    "end": 48.623
    },
    {
     "w": "quiera",
-    "start": 46.662,
-    "end": 47.102
+    "start": 48.623,
+    "end": 48.943
    },
    {
     "w": "ser",
-    "start": 47.102,
-    "end": 47.342
+    "start": 48.943,
+    "end": 49.102
    },
    {
     "w": "bombero!",
-    "start": 47.342,
-    "end": 47.982
+    "start": 49.102,
+    "end": 49.592
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 48.282,
-  "end": 52.802,
+  "start": 49.941,
+  "end": 54.465,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 48.282,
-    "end": 49.122
+    "start": 49.941,
+    "end": 50.54
    },
    {
     "w": "a",
-    "start": 49.122,
-    "end": 49.362
+    "start": 50.54,
+    "end": 50.7
    },
    {
     "w": "bombero?",
-    "start": 49.362,
-    "end": 50.002
+    "start": 50.7,
+    "end": 51.369
    },
    {
     "w": "¡Bomberados!",
-    "start": 50.102,
-    "end": 50.942
+    "start": 51.369,
+    "end": 52.737
    },
    {
     "w": "¡Pruébala",
-    "start": 51.042,
-    "end": 51.682
+    "start": 52.737,
+    "end": 53.176
    },
    {
     "w": "gratis",
-    "start": 51.682,
-    "end": 52.122
+    "start": 53.176,
+    "end": 53.736
    },
    {
     "w": "cinco",
-    "start": 52.122,
-    "end": 52.562
+    "start": 53.736,
+    "end": 54.055
    },
    {
     "w": "días!",
-    "start": 52.562,
-    "end": 52.802
+    "start": 54.055,
+    "end": 54.465
    }
   ]
  }

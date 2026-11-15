@@ -1,0 +1,487 @@
+[
+ {
+  "w": "Antes",
+  "start": 0.0,
+  "end": 0.32
+ },
+ {
+  "w": "de",
+  "start": 0.32,
+  "end": 0.48
+ },
+ {
+  "w": "acercarte,",
+  "start": 0.48,
+  "end": 1.28
+ },
+ {
+  "w": "desde",
+  "start": 1.28,
+  "end": 1.6
+ },
+ {
+  "w": "lejos,",
+  "start": 1.6,
+  "end": 2.16
+ },
+ {
+  "w": "mira",
+  "start": 2.16,
+  "end": 2.56
+ },
+ {
+  "w": "el",
+  "start": 2.56,
+  "end": 2.64
+ },
+ {
+  "w": "panel",
+  "start": 2.64,
+  "end": 3.04
+ },
+ {
+  "w": "naranja.",
+  "start": 3.04,
+  "end": 3.92
+ },
+ {
+  "w": "El",
+  "start": 3.92,
+  "end": 4.08
+ },
+ {
+  "w": "número",
+  "start": 4.08,
+  "end": 4.48
+ },
+ {
+  "w": "de",
+  "start": 4.48,
+  "end": 4.64
+ },
+ {
+  "w": "abajo",
+  "start": 4.64,
+  "end": 4.96
+ },
+ {
+  "w": "te",
+  "start": 4.96,
+  "end": 5.12
+ },
+ {
+  "w": "lo",
+  "start": 5.12,
+  "end": 5.28
+ },
+ {
+  "w": "dice.",
+  "start": 5.28,
+  "end": 6.08
+ },
+ {
+  "w": "Mil",
+  "start": 6.05,
+  "end": 6.444
+ },
+ {
+  "w": "doscientos",
+  "start": 6.444,
+  "end": 7.626
+ },
+ {
+  "w": "tres.",
+  "start": 7.626,
+  "end": 8.02
+ },
+ {
+  "w": "Gasolina.",
+  "start": 8.4,
+  "end": 9.44
+ },
+ {
+  "w": "Arde",
+  "start": 9.44,
+  "end": 10.0
+ },
+ {
+  "w": "con",
+  "start": 10.0,
+  "end": 10.16
+ },
+ {
+  "w": "una",
+  "start": 10.16,
+  "end": 10.4
+ },
+ {
+  "w": "chispa.",
+  "start": 10.4,
+  "end": 11.12
+ },
+ {
+  "w": "Se",
+  "start": 11.12,
+  "end": 11.28
+ },
+ {
+  "w": "tapa",
+  "start": 11.28,
+  "end": 11.76
+ },
+ {
+  "w": "con",
+  "start": 11.76,
+  "end": 11.92
+ },
+ {
+  "w": "espuma.",
+  "start": 11.92,
+  "end": 12.72
+ },
+ {
+  "w": "Mil",
+  "start": 12.7,
+  "end": 12.885
+ },
+ {
+  "w": "novecientos",
+  "start": 12.885,
+  "end": 13.627
+ },
+ {
+  "w": "setenta",
+  "start": 13.627,
+  "end": 14.184
+ },
+ {
+  "w": "y",
+  "start": 14.184,
+  "end": 14.369
+ },
+ {
+  "w": "ocho.",
+  "start": 14.369,
+  "end": 14.74
+ },
+ {
+  "w": "Propano.",
+  "start": 15.04,
+  "end": 15.92
+ },
+ {
+  "w": "Si",
+  "start": 15.92,
+  "end": 16.16
+ },
+ {
+  "w": "el",
+  "start": 16.16,
+  "end": 16.24
+ },
+ {
+  "w": "fuego",
+  "start": 16.24,
+  "end": 16.56
+ },
+ {
+  "w": "calienta",
+  "start": 16.56,
+  "end": 17.12
+ },
+ {
+  "w": "la",
+  "start": 17.12,
+  "end": 17.2
+ },
+ {
+  "w": "cisterna,",
+  "start": 17.2,
+  "end": 18.0
+ },
+ {
+  "w": "puede",
+  "start": 18.0,
+  "end": 18.4
+ },
+ {
+  "w": "reventar.",
+  "start": 18.4,
+  "end": 19.36
+ },
+ {
+  "w": "Se",
+  "start": 19.36,
+  "end": 19.6
+ },
+ {
+  "w": "enfría",
+  "start": 19.6,
+  "end": 20.16
+ },
+ {
+  "w": "desde",
+  "start": 20.16,
+  "end": 20.48
+ },
+ {
+  "w": "lejos.",
+  "start": 20.48,
+  "end": 21.2
+ },
+ {
+  "w": "Mil",
+  "start": 21.2,
+  "end": 21.437
+ },
+ {
+  "w": "ochocientos",
+  "start": 21.437,
+  "end": 22.386
+ },
+ {
+  "w": "treinta.",
+  "start": 22.386,
+  "end": 22.86
+ },
+ {
+  "w": "Ácido",
+  "start": 23.12,
+  "end": 23.6
+ },
+ {
+  "w": "sulfúrico.",
+  "start": 23.6,
+  "end": 24.56
+ },
+ {
+  "w": "Te",
+  "start": 24.56,
+  "end": 24.72
+ },
+ {
+  "w": "quema",
+  "start": 24.72,
+  "end": 25.2
+ },
+ {
+  "w": "la",
+  "start": 25.2,
+  "end": 25.28
+ },
+ {
+  "w": "piel.",
+  "start": 25.28,
+  "end": 25.84
+ },
+ {
+  "w": "Solo",
+  "start": 25.84,
+  "end": 26.16
+ },
+ {
+  "w": "se",
+  "start": 26.16,
+  "end": 26.32
+ },
+ {
+  "w": "entra",
+  "start": 26.32,
+  "end": 26.72
+ },
+ {
+  "w": "con",
+  "start": 26.72,
+  "end": 26.88
+ },
+ {
+  "w": "traje",
+  "start": 26.88,
+  "end": 27.28
+ },
+ {
+  "w": "químico.",
+  "start": 27.28,
+  "end": 28.0
+ },
+ {
+  "w": "Y",
+  "start": 28.0,
+  "end": 28.32
+ },
+ {
+  "w": "ahora",
+  "start": 28.32,
+  "end": 28.8
+ },
+ {
+  "w": "la",
+  "start": 28.8,
+  "end": 29.04
+ },
+ {
+  "w": "trampa.",
+  "start": 29.04,
+  "end": 29.92
+ },
+ {
+  "w": "mil",
+  "start": 29.9,
+  "end": 30.272
+ },
+ {
+  "w": "doscientos",
+  "start": 30.272,
+  "end": 31.388
+ },
+ {
+  "w": "dos.",
+  "start": 31.388,
+  "end": 31.76
+ },
+ {
+  "w": "Uno",
+  "start": 31.92,
+  "end": 32.32
+ },
+ {
+  "w": "menos",
+  "start": 32.32,
+  "end": 32.56
+ },
+ {
+  "w": "que",
+  "start": 32.56,
+  "end": 32.72
+ },
+ {
+  "w": "la",
+  "start": 32.72,
+  "end": 32.88
+ },
+ {
+  "w": "gasolina.",
+  "start": 32.88,
+  "end": 33.68
+ },
+ {
+  "w": "¿Qué",
+  "start": 33.68,
+  "end": 34.0
+ },
+ {
+  "w": "lleva?",
+  "start": 34.0,
+  "end": 34.8
+ },
+ {
+  "w": "A,",
+  "start": 34.8,
+  "end": 35.36
+ },
+ {
+  "w": "B,",
+  "start": 35.36,
+  "end": 36.0
+ },
+ {
+  "w": "C",
+  "start": 36.0,
+  "end": 36.4
+ },
+ {
+  "w": "o",
+  "start": 36.4,
+  "end": 36.64
+ },
+ {
+  "w": "D.",
+  "start": 36.64,
+  "end": 37.2
+ },
+ {
+  "w": "Comenta",
+  "start": 37.2,
+  "end": 37.76
+ },
+ {
+  "w": "tu",
+  "start": 37.76,
+  "end": 37.92
+ },
+ {
+  "w": "letra.",
+  "start": 37.92,
+  "end": 38.48
+ },
+ {
+  "w": "Mándaselo",
+  "start": 38.48,
+  "end": 39.28
+ },
+ {
+  "w": "a",
+  "start": 39.28,
+  "end": 39.44
+ },
+ {
+  "w": "quien",
+  "start": 39.44,
+  "end": 39.68
+ },
+ {
+  "w": "quiera",
+  "start": 39.68,
+  "end": 40.0
+ },
+ {
+  "w": "ser",
+  "start": 40.0,
+  "end": 40.16
+ },
+ {
+  "w": "bombero.",
+  "start": 40.16,
+  "end": 40.88
+ },
+ {
+  "w": "Opositas",
+  "start": 40.88,
+  "end": 41.6
+ },
+ {
+  "w": "a",
+  "start": 41.6,
+  "end": 41.76
+ },
+ {
+  "w": "bombero.",
+  "start": 41.76,
+  "end": 42.32
+ },
+ {
+  "w": "¡Bomberados!",
+  "start": 42.32,
+  "end": 43.68
+ },
+ {
+  "w": "Pruébala",
+  "start": 43.68,
+  "end": 44.24
+ },
+ {
+  "w": "gratis",
+  "start": 44.24,
+  "end": 44.8
+ },
+ {
+  "w": "cinco",
+  "start": 44.8,
+  "end": 45.12
+ },
+ {
+  "w": "días.",
+  "start": 45.12,
+  "end": 45.714
+ }
+]

@@ -883,7 +883,8 @@ let T = {}, KEYS = null, PANEL_W = null, PANEL_N = null;
 function setupTimes() {
   T = { ...CUE, end: END };
   const L = window.LINES_;
-  T.c = [L[2].end + 0.05, L[4].end + 0.05, L[6].end + 0.05];        // las tres cuentas de 3 s
+  T.c = [L[1].end + 0.05, L[3].end + 0.05, L[5].end + 0.05];        // las tres cuentas de 3 s
+  T.volcada = 0.1; T.lleva1 = 0.35;                                   // la voz empieza en «Antes de acercarte»: el gancho es la imagen
   T.r = [T.gasolina, T.propano, T.acido];                            // la respuesta de cada ronda
   T.f = [T.n1 - 0.2, T.n2 - 0.2, T.n3 - 0.2, T.n4 - 0.15];           // el panel cambia de números
   T.mv = [T.c[0] + 1.5, T.c[1] + 1.5, T.c[2] + 1.5];                 // tú cambias de sitio (la cámara está en el panel)
@@ -899,12 +900,10 @@ function orbit(phi, r = 1.45, dy = 0.08, ty = -0.24) {             // alrededor 
 function camKeys() {
   const C3 = V(-10.8, 1.6, 6.4);                                     // la cámara frente a ti en la ronda del ácido
   const K = [
-    [0, [14.5, 6.5, 3.0, -3, 0.8, -0.4, 40]],                          // por detrás y alto: la cisterna tumbada hacia la cabeza tractora
-    [T.volcada, [13.2, 5.9, 4.4, -3.4, 0.9, -0.2, 40]],
-    [T.lleva1, [9.5, 4.6, 7.0, -4.5, 1.0, 0.4, 40]],
-    [T.antes + 0.2, [-12, 4.0, 8.6, -5.5, 1.0, 0.8, 38]],              // el dron vuelve hacia ti sin perderla de vista…
-    [T.lejos + 0.25, [-39, 3.3, 5.2, -15, 0.5, 1.8, 30]],              // …detrás de ti: la cisterna, lejos
-    [T.naranja + 0.1, [-37.6, 3.1, 5.0, -14, 0.6, 1.6, 30]],
+    [0, [-14, 8, 4.2, 2, 0.4, -0.6, 42]],                              // la cabeza tractora con los intermitentes y la cisterna tumbada detrás
+    [0.45, [-15.2, 7.7, 4.6, 1.2, 0.5, -0.5, 42]],
+    [T.lejos + 0.25, [-39, 3.3, 5.2, -15, 0.5, 1.8, 30]],              // el dron vuelve hacia ti: la cisterna, lejos
+    [T.panel, [-37.8, 3.15, 5.0, -14, 0.6, 1.6, 30]],
     [T.abajo, [...orbit(0, 1.6), 34]],                                // y vuela hasta el panel
     [T.n1, [...orbit(4, 1.5), 34]],
     [T.c[0] + 1.5, [...orbit(-8), 34]],
@@ -1116,8 +1115,8 @@ async function overlay(t) {
   g.setTransform(PRX, 0, 0, PRX, 0, 0); g.clearRect(0, 0, W2, H2);
   // gancho: la cisterna volcada… ¿qué lleva?
   const pt = proj(trailer.localToWorld(V(0, TR, -TR - 0.4)));
-  chip(pt.x, pt.y - 120, 'CISTERNA VOLCADA', RED2, pt.ok ? sm(T.volcada - 0.15, T.volcada + 0.15, t) * (1 - sm(T.antes - 0.3, T.antes, t)) : 0, 1, 'warn', 56);
-  pill(540, 760, '¿QUÉ LLEVA?', GOLD2, sm(T.lleva1 - 0.15, T.lleva1 + 0.15, t) * (1 - sm(T.antes - 0.1, T.antes + 0.2, t)), 64);
+  chip(pt.x, pt.y - 120, 'CISTERNA VOLCADA', RED2, pt.ok ? sm(-0.2, 0.0, t) * (1 - sm(T.lejos - 0.55, T.lejos - 0.25, t)) : 0, 1, 'warn', 56);
+  pill(540, 1180, '¿QUÉ LLEVA?', GOLD2, sm(-0.2, 0.0, t) * (1 - sm(T.lejos - 0.45, T.lejos - 0.15, t)), 64);
   // lejos y con el viento a favor
   const pm = proj(V((YOU0.x + CAB.x) / 2, 0.3, (YOU0.z + CAB.z) / 2 + 0.6));
   chip(pm.x, pm.y, 'DESDE LEJOS', GOLD2, pm.ok ? sm(T.lejos - 0.1, T.lejos + 0.2, t) * (1 - sm(T.panel - 0.3, T.panel, t)) : 0, 1, null, 56);

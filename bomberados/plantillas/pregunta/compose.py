@@ -2379,7 +2379,7 @@ def sfx_track_paneles(path):
     c = {k: at(v) for k, v in Q["cues"].items()}
     T = dict(c)
     T["fin"] = c["compartir"] - 0.25
-    Tc = [LINES[i]["end"] + 0.05 for i in (2, 4, 6)]
+    Tc = [LINES[i]["end"] + 0.05 for i in (1, 3, 5)]
     Tr = [c["gasolina"], c["propano"], c["acido"]]
     Tf = [c["n1"] - 0.2, c["n2"] - 0.2, c["n3"] - 0.2, c["n4"] - 0.15]
     nota, toque, bub = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja"))
@@ -2413,7 +2413,7 @@ def sfx_track_paneles(path):
     # la autovía de noche: sirena al llegar, motor de la autobomba, el relé de los intermitentes (cada 0,4 s) y el goteo
     put("golpe", 0.0, -23, 0.8, 0.003, 0.35)
     put("latido", 0.08, -25, 0.7)
-    put("sirena", 0.0, -27, LINES[1]["start"] + 0.6, 0.05, 0.8, track=amb)
+    put("sirena", 0.0, -27, 3.4, 0.05, 0.8, track=amb)
     put("ciudad", 0.0, -38, T["fin"], 0.6, 1.0, track=amb)
     put(_loop(_load("motor"), END + 0.5), 0.3, -37, T["fin"] - 0.3, 0.8, 1.0, track=amb)
     rl = _onset(_load("rele"))[: int(0.07 * sfx.SR)]
@@ -2422,7 +2422,7 @@ def sfx_track_paneles(path):
         put(rl, tt, -33, 0.07, 0.002, 0.03, track=amb, g=1.0 if int(tt / 0.4) % 2 == 0 else 0.7)
         tt += 0.4
     put(_loop(agua, 6.0), 0.2, -40, Tf[1] - 0.2, 0.5, 0.4, track=amb)                       # el goteo de la válvula
-    put(_pitch(_onset(_load("golpe")), 0.6), c["volcada"] - 0.05, -27, 1.0, 0.003, 0.5)       # chapa
+    put(_pitch(_onset(_load("golpe")), 0.6), 0.05, -27, 1.0, 0.003, 0.5)                   # chapa
     # el dron vuelve hacia ti (viento) y vuela hasta el panel
     put("whoosh", c["antes"] - 0.1, -26, 1.0)
     put("aire", c["lejos"] - 0.2, -31, 1.8, 0.3, 0.6, track=amb)
