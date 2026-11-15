@@ -74,9 +74,9 @@ const HM = {
   mu: hrTilt({ cx: 0, cy: -0.003, cz: 1.326, rx: 1.212, ry: 0.696, rz: 1.188, t: -0.296 }),   // el morro de arriba (la punta, hacia delante y abajo)
   ml: { cx: 0, cy: -1.014, cz: 1.049, rx: 1.002, ry: 0.511, rz: 0.692 },                      // labio de abajo y barbilla
   mj: { cx: 0, cy: -0.474, cz: 0.971, rx: 1.176, ry: 0.752, rz: 0.856 },                      // los carrillos del morro (de frente, un disco)
-  ns: { ax: 0, ay: 0.93, az: 1.25, bx: 0, by: 0.8, bz: 2.26, rx: 0.31, ry: 0.25 },            // la nariz: un cilindro desde entre los ojos
+  ns: { ax: 0, ay: 0.93, az: 1.25, bx: 0, by: 0.79, bz: 2.22, rx: 0.35, ry: 0.29 },            // la nariz: un cilindro desde entre los ojos
   ey: { cx: 0.75, cy: 1.43, cz: 1.37, rx: 0.57, ry: 0.6, rz: 0.45 },                          // el ojo izquierdo (el derecho, en −x)
-  er: { cx: 1.27, cy: 0.52, cz: -0.17, a: 0.75 },                                              // la oreja (girada a hacia delante)
+  er: { cx: 1.3, cy: 0.5, cz: -0.17, a: 0.75 },                                              // la oreja (girada a hacia delante)
   mo: { y: -0.69, hw: 0.55, t: 0.032, z0: 1.3 },                                              // la boca: altura, media anchura, media rendija, fondo
   cv: { cx: 0, cy: -0.66, cz: 1.05, rx: 0.6, ry: 0.3, rz: 0.55 },                             // el hueco de la boca (su techo es el paladar)
 };
@@ -93,19 +93,19 @@ function hrNose(x, y, z) {
 // la oreja (ax = |x|): un disco con el hueco, abierto por delante (la C de la hoja) y la T de dentro
 function hrEar(ax, y, z) {
   const E = HM.er, px = ax - E.cx, py = y - E.cy, pz = z - E.cz, w = px * E.nx + pz * E.nz, u = -px * E.nz + pz * E.nx;
-  if (w * w + u * u + py * py > 0.5) return 0.6;
-  let d = hrE(u, py, w, 0.3, 0.36, 0.2);
-  d = ssub(d, hrE(u - 0.035, py, w - 0.2, 0.2, 0.25, 0.15), 0.04);
-  d = ssub(d, hrE(u - 0.29, py + 0.02, w - 0.1, 0.13, 0.15, 0.17), 0.03);
-  d = smin(d, hrCap(u, py, w, -0.13, 0.06, 0.06, 0.12, 0.06, 0.06, 0.034, 0.03), 0.03);
-  return smin(d, hrCap(u, py, w, -0.005, 0.06, 0.06, -0.005, -0.13, 0.05, 0.032, 0.028), 0.03);
+  if (w * w + u * u + py * py > 0.62) return 0.6;
+  let d = hrE(u, py, w, 0.34, 0.41, 0.22);
+  d = ssub(d, hrE(u - 0.04, py, w - 0.22, 0.23, 0.29, 0.16), 0.04);
+  d = ssub(d, hrE(u - 0.33, py + 0.02, w - 0.11, 0.15, 0.17, 0.18), 0.03);
+  d = smin(d, hrCap(u, py, w, -0.15, 0.07, 0.07, 0.14, 0.07, 0.07, 0.038, 0.034), 0.03);
+  return smin(d, hrCap(u, py, w, -0.005, 0.07, 0.07, -0.005, -0.15, 0.06, 0.036, 0.032), 0.03);
 }
 // la cuenca de cada ojo (un poco mayor que el ojo: deja sitio a los párpados)
 function hrSock(ax, y, z) { const E = HM.ey; return hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx + 0.035, E.ry + 0.035, E.rz + 0.035); }
 function hrEyeD(ax, y, z) { const E = HM.ey; return hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx, E.ry, E.rz); }
 // todo lo que no es el morro (para saber dónde acaba el color tostado)
 function hrRest(x, y, z) { let d = smin(smin(hrCran(x, y, z), hrET(x, y, z, HM.jw), 0.547), hrNeck(x, y, z), 0.281);
-  d = smin(d, hrE(x, y + 0.72, z - 0.2, 1.1, 0.72, 0.85), 0.3);                                   // la mandíbula por detrás del morro (de espaldas no se ve el morro)
+  d = smin(d, hrE(x, y + 0.75, z - 0.12, 1.14, 0.8, 0.86), 0.3);                                   // la mandíbula por detrás del morro (de espaldas no se ve el morro)
   const E = HM.ey, ax = Math.abs(x); return smin(d, Math.max(hrE(ax - E.cx, y - E.cy, z - E.cz, E.rx + 0.06, E.ry + 0.06, E.rz + 0.06), z - E.cz + 0.25), 0.08); }   // la piel que envuelve el ojo por detrás (de espaldas no asoma el blanco)
 // la cabeza con la boca cerrada (sin rendija)
 function hrHeadClosed(x, y, z) {
@@ -127,7 +127,7 @@ function sdHead(x, y, z) { return Math.max(hrHeadClosed(x, y, z), -hrMouthCut(x,
 function hrHeadAO(x, y, z) { return Math.min(hrHeadClosed(x, y, z), hrEyeD(Math.abs(x), y, z)); }
 // el color tostado del morro: > 0 dentro (la parte de la superficie que es del morro y no del resto de la cabeza)
 function hrPaint(x, y, z) {
-  const ax = Math.abs(x), yt = 0.6 - 0.6 * Math.pow(Math.min(1, ax / 1.18), 2.4) + 0.22 * hrSS(1.5, 0.8, z) * hrSS(0.5, 1.0, ax);       // borde de arriba (de frente)
+  const ax = Math.abs(x), yt = 0.62 - 0.62 * Math.pow(Math.min(1, ax / 1.16), 3) + 0.18 * hrSS(1.5, 0.8, z) * hrSS(0.5, 1.0, ax);       // borde de arriba (de frente)
   const zb = y > 0 ? 0.5 + 1.1 * y : y < -0.9 ? 0.5 + 1.4 * Math.pow(-0.9 - y, 1.3) : 0.5;                                          // borde de atrás (de perfil)
   return Math.min(hrRest(x, y, z) - hrMuzzle(x, y, z) + 0.05, (yt - y) * 0.7, (z - zb) * 0.7);
 }
@@ -135,7 +135,7 @@ const HEAD_BOX = [-1.75, -3.55, -1.75, 1.75, 3.85, 2.75];
 // el hueco del cráneo (donde va el cerebro): elipsoide inscrito en el cráneo con 0,26 de hueso y piel
 const HEADP = { cran: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), cav: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), palate: [0, -0.36, 1.05], forehead: [0, 2.35, 1.38],
   eyes: [[0.75, 1.43, 1.35], [-0.75, 1.43, 1.35]], mouth: [0, -0.69, 2.05] };
-const JAW_P = new THREE.Vector3(0, -0.15, -0.3), JAW_A = 0.34;
+const JAW_P = new THREE.Vector3(0, -0.15, -0.3), JAW_A = 0.22;
 // el zigzag del pelo (de oreja a oreja por la nuca): puntos (ángulo alrededor de la cabeza en grados, altura). 0° = la nuca; −x (la derecha de Homer) a la izquierda
 const HR_ZZ = (() => { const side = [[63, 1.5], [80, 0.95], [80, 1.42], [96, 1.15], [100, 1.68], [114, 1.33]], back = [[-41, 1.12], [-18, 1.6], [0, 1.12]];
   const L = [...side.slice().reverse().map(([a, y]) => [-a, y]), ...back, ...back.slice(0, 2).reverse().map(([a, y]) => [-a, y]), ...side];
@@ -145,7 +145,7 @@ function hrHairPts() {
   const arc = (zc, yf, w, h, lean, yaw, n = 26) => { const P = [], cy = Math.cos(yaw), sy = Math.sin(yaw), cl = Math.cos(lean), sl = Math.sin(lean);
     for (let i = 0; i <= n; i++) { const a = Math.PI * i / n, u = -Math.cos(a) * w, v = Math.sin(a) * h;      // el arco en su plano (u: de lado a lado, v: hacia arriba)
       const yy = yf + v * cl, zz = zc - v * sl; P.push([u * cy, yy, zz + u * sy]); } return P; };
-  return [arc(-0.42, 3.5, 0.58, 0.36, 0.95, 0.42), arc(-0.92, 3.32, 0.62, 0.36, 1.05, 0.42)];
+  return [arc(-0.36, 3.52, 0.6, 0.46, 0.72, 0.42), arc(-0.86, 3.36, 0.64, 0.46, 0.85, 0.42)];
 }
 // el garabato «~» de la boca en reposo (de frente: x, y), como en la cabeza grande de frente
 const HR_SQ = [[0.44, -0.13], [0.53, -0.28], [0.56, -0.42], [0.48, -0.53], [0.32, -0.57], [0.12, -0.57], [-0.02, -0.59], [-0.07, -0.66], [99, 99],
@@ -192,13 +192,13 @@ function headGeo() {
     p.set(x, y, z).sub(JAW_P).applyMatrix4(Rm).add(JAW_P);
     const lip = Math.exp(-(((y - M.y) / 0.42) ** 2)) * hrSS(0.9, 1.5, z), prof = ax < M.hw ? Math.sqrt(1 - (ax / M.hw) ** 2) : 0;
     // «O»: la mandíbula baja, la boca se redondea (las comisuras hacia el centro) y los labios salen un poco
-    jaw[v * 3] = (p.x - x) * wj - 0.5 * x * lip * hrSS(1.3, 0.7, ax);
-    jaw[v * 3 + 1] = (p.y - y) * wj + below * lip * 0.5 * (1 - prof) * (1 - hrSS(0.75, 1.0, ax)) + (1 - below) * lip * 0.16 * prof;
+    jaw[v * 3] = (p.x - x) * wj - 0.47 * x * lip * hrSS(1.3, 0.7, ax);
+    jaw[v * 3 + 1] = (p.y - y) * wj + below * lip * (0.5 * (1 - prof) * (1 - hrSS(0.75, 1.0, ax)) + 0.23 * prof) + (1 - below) * lip * 0.39 * Math.pow(prof, 0.6);
     jaw[v * 3 + 2] = (p.z - z) * wj + 0.1 * lip * hrSS(1.2, 0.3, ax);
     nn.set(N[v * 3], N[v * 3 + 1], N[v * 3 + 2]).applyMatrix3(Rn); jn[v * 3] = (nn.x - N[v * 3]) * wj; jn[v * 3 + 1] = (nn.y - N[v * 3 + 1]) * wj; jn[v * 3 + 2] = (nn.z - N[v * 3 + 2]) * wj;
     // sonrisa: comisuras arriba, afuera y atrás; el labio de arriba sube un poco (dientes de arriba) y el de abajo baja en «U»; las mejillas suben
     const gc = Math.exp(-(((ax - 0.55) ** 2) + (y - M.y) ** 2) / 0.09) * hrSS(0.6, 1.4, z), ck = Math.exp(-(((ax - 0.75) ** 2) + (y + 0.1) ** 2) / 0.22) * hrSS(0.5, 1.3, z);
-    smile[v * 3] = sx * 0.26 * gc; smile[v * 3 + 1] = 0.42 * gc + 0.12 * ck + lip * (0.12 * (1 - below) * prof - 0.62 * below * Math.pow(prof, 1.4)); smile[v * 3 + 2] = -0.14 * gc;
+    smile[v * 3] = sx * 0.27 * gc; smile[v * 3 + 1] = 0.46 * gc + 0.12 * ck + lip * (0.24 * (1 - below) * Math.pow(prof, 0.8) - 0.45 * below * Math.pow(prof, 1.2)); smile[v * 3 + 2] = -0.14 * gc;
     // mueca (dientes apretados): los labios se separan en un rectángulo ancho, las comisuras se van hacia los lados
     const pr2 = ax < M.hw + 0.1 ? Math.pow(Math.max(0, 1 - (ax / (M.hw + 0.1)) ** 4), 0.5) : 0;
     grim[v * 3] = sx * 0.24 * gc; grim[v * 3 + 1] = lip * (0.21 * (1 - below) - 0.21 * below) * pr2 + 0.1 * gc + 0.1 * ck; grim[v * 3 + 2] = -0.1 * gc;
@@ -291,7 +291,7 @@ function hrLidGeo(top) {      // media cáscara (párpado de arriba o de abajo) 
   const R0 = top ? 1.062 : 1.046, g = new THREE.SphereGeometry(R0, 48, 20, 0, Math.PI * 2, top ? 0 : Math.PI / 2, Math.PI / 2), P = g.attributes.position, d = new Float32Array(P.count * 3);
   for (let i = 0; i < P.count; i++) { const x = P.getX(i), y = P.getY(i), z = P.getZ(i), th = Math.acos(clamp(Math.abs(y) / R0, 0, 1)), e = Math.PI / 2 - th, roll = 1 + 0.04 * Math.exp(-((e / 0.09) ** 2));   // e: distancia al borde
     P.setXYZ(i, x * roll, y * roll, z * roll);
-    const k = 0.06 * Math.pow(Math.sin(e * 9.5), 2) * Math.exp(-e * 2.2) * (0.6 + 0.4 * Math.abs(x)) + 0.05 * Math.exp(-e * 6);
+    const k = 0.13 * Math.pow(Math.sin(e * 11), 2) * Math.exp(-e * 2.0) * (0.55 + 0.45 * Math.abs(x)) + 0.07 * Math.exp(-e * 5);
     d[i * 3] = x * k; d[i * 3 + 1] = y * k; d[i * 3 + 2] = z * k; }
   g.morphAttributes.position = [new THREE.BufferAttribute(d, 3)]; g.morphTargetsRelative = true; return g;
 }
@@ -303,14 +303,17 @@ function makeEye(lidM) {
   const pup = new THREE.Mesh(new THREE.SphereGeometry(1.004, 40, 10, 0, Math.PI * 2, 0, 0.165), freezable(new THREE.MeshPhysicalMaterial({ color: 0x050403, roughness: 0.2, clearcoat: 1, clearcoatRoughness: 0.02 })));
   pup.rotation.x = Math.PI / 2; look.add(pup);
   const lidU = new THREE.Mesh(hrLidGeo(true), lidM), lidL = new THREE.Mesh(hrLidGeo(false), lidM); lidU.castShadow = lidL.castShadow = true; s.add(lidU, lidL);
-  g.userData = { s, look, pup, lidU, lidL, base: s.scale.clone() }; eyePose(g, 1); return g;
+  // el pliegue donde se juntan los párpados (solo con los ojos cerrados)
+  const crease = new THREE.Mesh(new THREE.TorusGeometry(1.085, 0.022, 8, 64, Math.PI * 1.1), freezable(new THREE.MeshStandardMaterial({ color: 0x5a3a12, roughness: 0.7 })));
+  crease.rotation.set(0.09, 0, Math.PI * 0.95); s.add(crease);
+  g.userData = { s, look, pup, lidU, lidL, crease, base: s.scale.clone() }; eyePose(g, 1); return g;
 }
 // pose de un ojo: abierto (0 cerrado … 1 normal … 1,5 muy abierto), pupila, mirada (yaw: hacia +x; pitch > 0: hacia abajo).
 // Por debajo de 0,3 los párpados se cierran; entre 0,1 y 0,3 (ojos apretados de dolor) salen las arrugas de los párpados.
 function eyePose(e, open, pup = 1, yaw = 0, pitch = 0) {
   const U = e.userData, cl = 1 - hrSS(0.3, 0.88, open), sq = hrSS(0.36, 0.2, open) * hrSS(0.0, 0.1, open);
   U.lidU.rotation.x = lerp(-1.95, 0.12, cl); U.lidL.rotation.x = lerp(1.9, 0.05, cl); U.lidU.visible = U.lidL.visible = cl > 0.002;
-  U.lidU.morphTargetInfluences[0] = U.lidL.morphTargetInfluences[0] = sq;
+  U.lidU.morphTargetInfluences[0] = U.lidL.morphTargetInfluences[0] = sq; U.crease.visible = cl > 0.9; U.crease.scale.setScalar(1 + 0.05 * sq);
   U.s.scale.copy(U.base).multiplyScalar(1 + 0.06 * clamp(open - 1, 0, 0.5));
   U.pup.scale.setScalar(pup); U.look.rotation.set(pitch, yaw, 0);
 }
@@ -429,7 +432,7 @@ function buildHero() {
   U.hairs = hrHairPts().map(L => { const m = taperTube(L.map(p => v3(...p)), 0.036, hh, 48, 10, u => 0.55 + 0.45 * Math.sin(Math.PI * clamp(u * 1.1 - 0.05))); H.add(m); return m; });
   // dientes (arriba, en la cabeza; abajo, en la mandíbula) y la lengua
   const tm = freezable(new THREE.MeshPhysicalMaterial({ color: 0xf3efe4, roughness: 0.22, clearcoat: 0.7, clearcoatRoughness: 0.1 })); tm.clippingPlanes = U.cut;
-  const M = HM.mo, teeth = (y0, h, R, cz, n, w) => { const g = new THREE.Group(); for (let i = 0; i < n; i++) { const a = (i - (n - 1) / 2) * (w + 0.022) / R, t = rbox(w, h, 0.09, tm, 0.04);
+  const M = HM.mo, teeth = (y0, h, R, cz, n, w) => { const g = new THREE.Group(); for (let i = 0; i < n; i++) { const a = (i - (n - 1) / 2) * (w + 0.012) / R, t = rbox(w, h, 0.09, tm, 0.04);
     t.position.set(Math.sin(a) * R, y0, cz + Math.cos(a) * R); t.rotation.y = a; t.castShadow = true; g.add(t); } return g; };
   U.teethU = teeth(M.y + 0.08, 0.24, 0.62, 1.15, 6, 0.19); H.add(U.teethU);
   U.jaw = new THREE.Group(); U.jaw.position.copy(JAW_P); H.add(U.jaw);
@@ -437,9 +440,13 @@ function buildHero() {
   const tg = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 20), freezable(new THREE.MeshPhysicalMaterial({ color: 0xa8333a, roughness: 0.42, clearcoat: 0.5, clearcoatRoughness: 0.25 })));
   tg.material.clippingPlanes = U.cut; tg.scale.set(0.42, 0.11, 0.44); tg.position.set(0, M.y - 0.2, 1.08).sub(JAW_P); U.jaw.add(tg); U.tongue = tg;
   // con la sonrisa, el labio de abajo baja y los dientes de abajo con él (de la hoja: solo se ven los de arriba)
-  U.teethL.onBeforeRender = () => { const mi = hm.morphTargetInfluences, o = hrSS(0.75, 0.97, mi[0]); U.teethL.position.set(0, -0.42 * mi[1], -0.2 * o).sub(JAW_P); U.teethL.scale.set(1, 1 - 0.95 * o, 1); U.teethL.updateMatrixWorld(true); };
-  tg.onBeforeRender = () => { const mi = hm.morphTargetInfluences; tg.position.set(0, M.y - 0.22 - 0.12 * mi[0] - 0.3 * mi[1], 1.04 - 0.3 * mi[0] - 0.3 * mi[1]).sub(JAW_P); tg.updateMatrixWorld(true); };
-  U.teethU.onBeforeRender = () => { const mi = hm.morphTargetInfluences, o = hrSS(0.75, 0.97, mi[0]); U.teethU.position.set(0, 0.1 * o, -0.2 * o); U.teethU.scale.set(1, 1 - 0.95 * o, 1); U.teethU.updateMatrixWorld(true); };
+  // con la «O» de la hoja no se ven los dientes; con la sonrisa, el labio de abajo baja y los dientes de abajo con él (solo se ven los de arriba)
+  const teethPose = () => { const mi = hm.morphTargetInfluences, o = hrSS(0.75, 0.97, mi[0]);
+    U.teethL.position.set(0, -0.42 * mi[1], -0.2 * o).sub(JAW_P); U.teethL.scale.set(1, 1 - 0.95 * o, 1);
+    U.teethU.position.set(0, 0.1 * o, -0.2 * o); U.teethU.scale.set(1, 1 - 0.95 * o, 1);
+    tg.position.set(0, M.y - 0.22 - 0.12 * mi[0] - 0.3 * mi[1], 1.04 - 0.3 * mi[0] - 0.3 * mi[1]).sub(JAW_P); U.head.updateMatrixWorld(true); };
+  for (const g of [U.teethU, U.teethL]) for (const t of g.children) t.onBeforeRender = teethPose;
+  tg.onBeforeRender = teethPose;
   U.cap = new THREE.Group(); U.cap.visible = false; H.add(U.cap);
   // cuerpo: camisa, cuello, pantalón y zapatos
   const shirt = shirtMat(); U.shirt = shirt;
