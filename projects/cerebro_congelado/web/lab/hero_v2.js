@@ -76,14 +76,14 @@ const HM = {
   mj: { cx: 0, cy: -0.474, cz: 0.971, rx: 1.176, ry: 0.752, rz: 0.856 },                      // los carrillos del morro (de frente, un disco)
   ns: { ax: 0, ay: 0.93, az: 1.25, bx: 0, by: 0.79, bz: 2.22, rx: 0.35, ry: 0.29 },            // la nariz: un cilindro desde entre los ojos
   ey: { cx: 0.75, cy: 1.43, cz: 1.37, rx: 0.57, ry: 0.6, rz: 0.45 },                          // el ojo izquierdo (el derecho, en −x)
-  er: { cx: 1.3, cy: 0.5, cz: -0.17, a: 0.75 },                                              // la oreja (girada a hacia delante)
+  er: { cx: 1.3, cy: 0.38, cz: -0.17, a: 0.75 },                                              // la oreja (girada a hacia delante)
   mo: { y: -0.69, hw: 0.55, t: 0.032, z0: 1.3 },                                              // la boca: altura, media anchura, media rendija, fondo
   cv: { cx: 0, cy: -0.66, cz: 1.05, rx: 0.6, ry: 0.3, rz: 0.55 },                             // el hueco de la boca (su techo es el paladar)
 };
 { const E = HM.er; E.nx = Math.cos(E.a); E.nz = Math.sin(E.a); }
 function hrCran(x, y, z) { const A = HM.c1, B = HM.c2; return smin(hrE(x, y - A.cy, z - A.cz, A.rx, A.ry, A.rz), hrE(x, y - B.cy, z - B.cz, B.rx, B.ry, B.rz), 0.302); }
 function hrNeck(x, y, z) { const N = HM.nk, zc = N.cz + N.k * (Math.max(y, -1.9) + 1.0), e = (Math.hypot(x / N.rx, (z - zc) / N.rz) - 1) * Math.min(N.rx, N.rz); return Math.max(e, y - N.y0, N.y1 - y); }
-function hrMuzzle(x, y, z) { const L = HM.ml, J = HM.mj; let d = smin(smin(hrET(x, y, z, HM.mu), hrE(x, y - L.cy, z - L.cz, L.rx, L.ry, L.rz), 0.266), hrE(x, y - J.cy, z - J.cz, J.rx, J.ry, J.rz), 0.25);
+function hrMuzzle(x, y, z) { const L = HM.ml, J = HM.mj; let d = smin(smin(hrET(x, y, z, HM.mu), hrE(x, y - L.cy, z - L.cz, L.rx, L.ry, L.rz), 0.36), hrE(x, y - J.cy, z - J.cz, J.rx, J.ry, J.rz), 0.25);
   return smin(d, hrE(x, y - 0.5, z - 1.98, 0.36, 0.15, 0.3), 0.12); }     // arriba, el morro llega hasta la nariz (sin hueco)
 function hrNose(x, y, z) {
   const N = HM.ns, dx = N.bx - N.ax, dy = N.by - N.ay, dz = N.bz - N.az, px = x - N.ax, py = y - N.ay, pz = z - N.az;
@@ -96,7 +96,7 @@ function hrEar(ax, y, z) {
   if (w * w + u * u + py * py > 0.62) return 0.6;
   let d = hrE(u, py, w, 0.34, 0.41, 0.22);
   d = ssub(d, hrE(u - 0.04, py, w - 0.22, 0.23, 0.29, 0.16), 0.04);
-  d = ssub(d, hrE(u - 0.33, py + 0.02, w - 0.11, 0.15, 0.17, 0.18), 0.03);
+  d = ssub(d, hrE(u - 0.3, py - 0.04, w - 0.1, 0.2, 0.25, 0.19), 0.03);
   d = smin(d, hrCap(u, py, w, -0.15, 0.07, 0.07, 0.14, 0.07, 0.07, 0.038, 0.034), 0.03);
   return smin(d, hrCap(u, py, w, -0.005, 0.07, 0.07, -0.005, -0.15, 0.06, 0.036, 0.032), 0.03);
 }
@@ -127,17 +127,20 @@ function sdHead(x, y, z) { return Math.max(hrHeadClosed(x, y, z), -hrMouthCut(x,
 function hrHeadAO(x, y, z) { return Math.min(hrHeadClosed(x, y, z), hrEyeD(Math.abs(x), y, z)); }
 // el color tostado del morro: > 0 dentro (la parte de la superficie que es del morro y no del resto de la cabeza)
 function hrPaint(x, y, z) {
-  const ax = Math.abs(x), yt = 0.62 - 0.62 * Math.pow(Math.min(1, ax / 1.16), 3) + 0.18 * hrSS(1.5, 0.8, z) * hrSS(0.5, 1.0, ax);       // borde de arriba (de frente)
-  const zb = y > 0 ? 0.5 + 1.1 * y : y < -0.9 ? 0.5 + 1.4 * Math.pow(-0.9 - y, 1.3) : 0.5;                                          // borde de atrás (de perfil)
-  return Math.min(hrRest(x, y, z) - hrMuzzle(x, y, z) + 0.05, (yt - y) * 0.7, (z - zb) * 0.7);
+  const ax = Math.abs(x), ytF = 0.62 - 0.62 * Math.pow(Math.min(1, ax / 1.16), 3), ytS = 0.52 - 0.35 * hrSS(1.0, 0.45, z);
+  const yt = lerp(ytS, ytF, hrSS(1.2, 1.75, z));                                                                   // borde de arriba: de frente / de lado
+  const zb = y > 0 ? 0.37 + 1.6 * y : y < -0.9 ? 0.37 + 1.5 * Math.pow(-0.9 - y, 1.25) : 0.37;                      // borde de atrás (de perfil)
+  return Math.min((yt - y) * 0.7, (z - zb) * 0.7, (hrNose(x, y, z) - 0.01) * 2.0);
 }
+// la línea de la boca de perfil (en el lado del morro, como en la cabeza de perfil de la hoja): puntos (z, y)
+const HR_ML = [[0.85, -0.74], [1.3, -0.7], [1.65, -0.67]];
 const HEAD_BOX = [-1.75, -3.55, -1.75, 1.75, 3.85, 2.75];
 // el hueco del cráneo (donde va el cerebro): elipsoide inscrito en el cráneo con 0,26 de hueso y piel
 const HEADP = { cran: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), cav: E7(0, 2.0, -0.12, 0.91, 1.42, 1.18), palate: [0, -0.36, 1.05], forehead: [0, 2.35, 1.38],
   eyes: [[0.75, 1.43, 1.35], [-0.75, 1.43, 1.35]], mouth: [0, -0.69, 2.05] };
 const JAW_P = new THREE.Vector3(0, -0.15, -0.3), JAW_A = 0.22;
 // el zigzag del pelo (de oreja a oreja por la nuca): puntos (ángulo alrededor de la cabeza en grados, altura). 0° = la nuca; −x (la derecha de Homer) a la izquierda
-const HR_ZZ = (() => { const side = [[63, 1.5], [80, 0.95], [80, 1.42], [96, 1.15], [100, 1.68], [114, 1.33]], back = [[-41, 1.12], [-18, 1.6], [0, 1.12]];
+const HR_ZZ = (() => { const side = [[63, 1.27], [80, 0.77], [80, 1.27], [96, 1.0], [100, 1.54], [114, 1.19]], back = [[-41, 1.0], [-18, 1.48], [0, 1.0]];
   const L = [...side.slice().reverse().map(([a, y]) => [-a, y]), ...back, ...back.slice(0, 2).reverse().map(([a, y]) => [-a, y]), ...side];
   return L.map(([a, y]) => [a * Math.PI / 180 * 1.25, y]); })();
 // los dos pelos de arriba: arcos tumbados hacia atrás (pie izquierdo, punta, pie derecho)
@@ -192,8 +195,8 @@ function headGeo() {
     p.set(x, y, z).sub(JAW_P).applyMatrix4(Rm).add(JAW_P);
     const lip = Math.exp(-(((y - M.y) / 0.42) ** 2)) * hrSS(0.9, 1.5, z), prof = ax < M.hw ? Math.sqrt(1 - (ax / M.hw) ** 2) : 0;
     // «O»: la mandíbula baja, la boca se redondea (las comisuras hacia el centro) y los labios salen un poco
-    jaw[v * 3] = (p.x - x) * wj - 0.47 * x * lip * hrSS(1.3, 0.7, ax);
-    jaw[v * 3 + 1] = (p.y - y) * wj + below * lip * (0.5 * (1 - prof) * (1 - hrSS(0.75, 1.0, ax)) + 0.23 * prof) + (1 - below) * lip * 0.39 * Math.pow(prof, 0.6);
+    jaw[v * 3] = (p.x - x) * wj - 0.3 * x * lip * hrSS(1.3, 0.7, ax);
+    jaw[v * 3 + 1] = (p.y - y) * wj + below * lip * (0.5 * (1 - prof) * (1 - hrSS(0.75, 1.0, ax)) + 0.13 * prof) + (1 - below) * lip * 0.54 * Math.pow(prof, 1.1);
     jaw[v * 3 + 2] = (p.z - z) * wj + 0.1 * lip * hrSS(1.2, 0.3, ax);
     nn.set(N[v * 3], N[v * 3 + 1], N[v * 3 + 2]).applyMatrix3(Rn); jn[v * 3] = (nn.x - N[v * 3]) * wj; jn[v * 3 + 1] = (nn.y - N[v * 3 + 1]) * wj; jn[v * 3 + 2] = (nn.z - N[v * 3 + 2]) * wj;
     // sonrisa: comisuras arriba, afuera y atrás; el labio de arriba sube un poco (dientes de arriba) y el de abajo baja en «U»; las mejillas suben
@@ -201,7 +204,7 @@ function headGeo() {
     smile[v * 3] = sx * 0.27 * gc; smile[v * 3 + 1] = 0.46 * gc + 0.12 * ck + lip * (0.24 * (1 - below) * Math.pow(prof, 0.8) - 0.45 * below * Math.pow(prof, 1.2)); smile[v * 3 + 2] = -0.14 * gc;
     // mueca (dientes apretados): los labios se separan en un rectángulo ancho, las comisuras se van hacia los lados
     const pr2 = ax < M.hw + 0.1 ? Math.pow(Math.max(0, 1 - (ax / (M.hw + 0.1)) ** 4), 0.5) : 0;
-    grim[v * 3] = sx * 0.24 * gc; grim[v * 3 + 1] = lip * (0.21 * (1 - below) - 0.21 * below) * pr2 + 0.1 * gc + 0.1 * ck; grim[v * 3 + 2] = -0.1 * gc;
+    grim[v * 3] = sx * 0.1 * gc; grim[v * 3 + 1] = lip * (0.2 * (1 - below) * pr2 - 0.24 * below * Math.pow(prof, 0.9)) + 0.2 * gc + 0.1 * ck; grim[v * 3 + 2] = -0.08 * gc;
   }
   g.morphAttributes.position = [new THREE.BufferAttribute(jaw, 3), new THREE.BufferAttribute(smile, 3), new THREE.BufferAttribute(grim, 3)];
   g.morphAttributes.normal = [new THREE.BufferAttribute(jn, 3), new THREE.BufferAttribute(new Float32Array(n * 3), 3), new THREE.BufferAttribute(new Float32Array(n * 3), 3)];
@@ -248,12 +251,12 @@ function stubbly(m, o = {}) {
   m.customProgramCacheKey = () => 'hrSkin' + (head ? 'H' : 'P');
   m.onBeforeCompile = (sh, r) => { if (prev) prev(sh, r);
     sh.uniforms.hrSkin = { value: HR_COL.skin }; sh.uniforms.hrMuz = { value: HR_COL.muz };
-    if (head) { sh.uniforms.hrZZ = { value: HR_ZZ.map(([a, b]) => new THREE.Vector2(a, b)) }; sh.uniforms.hrSQ = { value: HR_SQ.map(([a, b]) => new THREE.Vector2(a, b)) }; }
+    if (head) { sh.uniforms.hrZZ = { value: HR_ZZ.map(([a, b]) => new THREE.Vector2(a, b)) }; sh.uniforms.hrSQ = { value: HR_SQ.map(([a, b]) => new THREE.Vector2(a, b)) }; sh.uniforms.hrML = { value: HR_ML.map(([a, b]) => new THREE.Vector2(a, b)) }; }
     sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vHp; varying vec4 vHm; varying float vMouth;' + (head ? '\nattribute vec4 hm;' : ''))
       .replace('#include <begin_vertex>', '#include <begin_vertex>\nvHp = position; vHm = ' + (head ? 'hm;\nvMouth = clamp(morphTargetInfluences[0] + morphTargetInfluences[1] * 1.3 + morphTargetInfluences[2] * 1.3, 0., 1.);' : 'vec4(-1., 0., 1., 0.); vMouth = 0.;'));
     sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
 varying vec3 vHp; varying vec4 vHm; varying float vMouth; uniform vec3 hrSkin, hrMuz;` + (head ? `
-uniform vec2 hrZZ[${HR_ZZ.length}]; uniform vec2 hrSQ[${HR_SQ.length}];
+uniform vec2 hrZZ[${HR_ZZ.length}]; uniform vec2 hrSQ[${HR_SQ.length}]; uniform vec2 hrML[${HR_ML.length}];
 float hrSeg(vec2 p, vec2 a, vec2 b){ vec2 pa = p - a, ba = b - a; return length(pa - ba * clamp(dot(pa, ba) / dot(ba, ba), 0., 1.)); }` : ''))
       .replace('#include <lights_physical_pars_fragment>', THREE.ShaderChunk.lights_physical_pars_fragment.replace('reflectedLight.directDiffuse += irradiance * BRDF_Lambert( material.diffuseColor );',
         `reflectedLight.directDiffuse += irradiance * BRDF_Lambert( material.diffuseColor );
@@ -275,9 +278,13 @@ float hrSeg(vec2 p, vec2 a, vec2 b){ vec2 pa = p - a, ba = b - a; return length(
   if (vHp.z > 1.35 && vHm.y < 0.5) { float d = 9.;
     for (int i = 0; i < ${HR_SQ.length - 1}; i++) { if (hrSQ[i].x > 50. || hrSQ[i + 1].x > 50.) continue; d = min(d, hrSeg(vHp.xy, hrSQ[i], hrSQ[i + 1])); }
     float aa = fwidth(d) + 1e-4, ln = (1. - smoothstep(0.036 - aa, 0.036 + aa, d)) * (1. - vMouth) * smoothstep(1.35, 1.6, vHp.z);
-    c = mix(c, vec3(0.2, 0.07, 0.03), ln * 0.95); }` : '') + `
+    c = mix(c, vec3(0.2, 0.07, 0.03), ln * 0.95); }
+  { float d = 9.; for (int i = 0; i < ${HR_ML.length - 1}; i++) d = min(d, hrSeg(vHp.zy, hrML[i], hrML[i + 1]));
+    float aa = fwidth(d) + 1e-4, ln = (1. - smoothstep(0.02 - aa, 0.02 + aa, d)) * smoothstep(0.93, 1.03, abs(vHp.x)) * mz * (1. - vMouth);
+    c = mix(c, vec3(0.22, 0.08, 0.03), ln * 0.9); }` : '') + `
   diffuseColor.rgb = c; }`)
-      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = clamp(roughnessFactor * (0.9 + 0.2 * fzN(vHp * 140.))' + (head ? ' + 0.12 * smoothstep(-0.02, 0.02, vHm.x)' : '') + ', 0.05, 1.);')
+      .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = clamp(roughnessFactor * (0.9 + 0.2 * fzN(vHp * 140.))' + (head ? ' + 0.12 * smoothstep(-0.02, 0.02, vHm.x) + 0.5 * vHm.y' : '') + ', 0.05, 1.);')
+      .replace('#include <lights_physical_fragment>', '#include <lights_physical_fragment>' + (head ? '\n{ float cv = clamp(vHm.y, 0., 1.); material.specularColor *= 1. - 0.9 * cv; material.specularF90 *= 1. - 0.9 * cv;\n#ifdef USE_CLEARCOAT\nmaterial.clearcoat *= 1. - cv;\n#endif\n#ifdef USE_SHEEN\nmaterial.sheenColor *= 1. - cv;\n#endif\n}' : ''))
       .replace('#include <aomap_fragment>', '#include <aomap_fragment>\nreflectedLight.indirectDiffuse *= vHm.z; reflectedLight.directDiffuse *= mix(1., vHm.z, 0.55); reflectedLight.indirectSpecular *= mix(1., vHm.z, 0.7);'); };
   return m;
 }
@@ -305,7 +312,7 @@ function makeEye(lidM) {
   const lidU = new THREE.Mesh(hrLidGeo(true), lidM), lidL = new THREE.Mesh(hrLidGeo(false), lidM); lidU.castShadow = lidL.castShadow = true; s.add(lidU, lidL);
   // el pliegue donde se juntan los párpados (solo con los ojos cerrados)
   const crease = new THREE.Mesh(new THREE.TorusGeometry(1.085, 0.022, 8, 64, Math.PI * 1.1), freezable(new THREE.MeshStandardMaterial({ color: 0x5a3a12, roughness: 0.7 })));
-  crease.rotation.set(0.09, 0, Math.PI * 0.95); s.add(crease);
+  crease.rotation.set(Math.PI / 2 + 0.085, 0, -0.05 * Math.PI); s.add(crease);
   g.userData = { s, look, pup, lidU, lidL, crease, base: s.scale.clone() }; eyePose(g, 1); return g;
 }
 // pose de un ojo: abierto (0 cerrado … 1 normal … 1,5 muy abierto), pupila, mirada (yaw: hacia +x; pitch > 0: hacia abajo).
@@ -313,7 +320,7 @@ function makeEye(lidM) {
 function eyePose(e, open, pup = 1, yaw = 0, pitch = 0) {
   const U = e.userData, cl = 1 - hrSS(0.3, 0.88, open), sq = hrSS(0.36, 0.2, open) * hrSS(0.0, 0.1, open);
   U.lidU.rotation.x = lerp(-1.95, 0.12, cl); U.lidL.rotation.x = lerp(1.9, 0.05, cl); U.lidU.visible = U.lidL.visible = cl > 0.002;
-  U.lidU.morphTargetInfluences[0] = U.lidL.morphTargetInfluences[0] = sq; U.crease.visible = cl > 0.9; U.crease.scale.setScalar(1 + 0.05 * sq);
+  U.lidU.morphTargetInfluences[0] = U.lidL.morphTargetInfluences[0] = sq; U.crease.visible = cl > 0.9; U.crease.scale.setScalar(1 + 0.04 * sq); U.lidU.scale.set(1, 1, 1 - 0.07 * sq); U.lidL.scale.set(1, 1, 1 - 0.07 * sq);
   U.s.scale.copy(U.base).multiplyScalar(1 + 0.06 * clamp(open - 1, 0, 0.5));
   U.pup.scale.setScalar(pup); U.look.rotation.set(pitch, yaw, 0);
 }
@@ -337,8 +344,8 @@ function popsicle() {
 // (la figura vestida de la hoja: barriga grande en pera, hombros caídos y estrechos, piernas cortas y gruesas)
 const BD = {
   ch: { cy: -3.1, cz: -0.12, rx: 1.78, ry: 1.3, rz: 1.32 },              // pecho
-  be: { cy: -5.45, cz: 0.42, rx: 2.86, ry: 2.18, rz: 2.22 },             // barriga
-  shA: [0.8, -2.05, -0.2], shB: [2.0, -2.82, -0.22], shR: 0.56,         // hombros caídos (del cuello al brazo)
+  be: { cy: -5.62, cz: 0.42, rx: 2.9, ry: 2.2, rz: 2.22 },             // barriga
+  shA: [0.8, -2.08, -0.2], shB: [1.88, -2.9, -0.22], shR: 0.56,         // hombros caídos (del cuello al brazo)
   wy: -6.3,                                                              // la camisa se mete en el pantalón
 };
 function hrShirtSD(x, y, z) {
@@ -360,12 +367,14 @@ function hrPantsSD(x, y, z) {
   d += 0.022 * Math.sin(y * 6.2 + Math.sin(x * 3.3 + z * 2.6) * 1.8) * hrSS(-11.6, -12.9, y) + 0.01 * Math.sin(y * 3.4 + x * 6.0 + z) * hrSS(-9.3, -10.3, y) * (1 - hrSS(-11.0, -11.8, y));
   return Math.max(d, PT.hem - y, y - PT.wy0);
 }
-const SHOE = { x: 1.17, y: -13.29, z: 0.5, rx: 0.7, ry: 0.4, rz: 1.27 };
+const SHOE = { x: 1.17, y: -13.26, z: 0.5, rx: 0.72, ry: 0.34, rz: 1.3 };
 function hrShoesSD(x, y, z) {
   const ax = Math.abs(x), S = SHOE, d0 = hrE(ax - S.x, y - S.y, z - S.z, S.rx, S.ry, S.rz);
-  let d = smin(d0, hrE(ax - S.x, y + 13.2, z + 0.05, 0.62, 0.42, 0.72), 0.2);       // talón
-  d = smin(d, hrE(ax - S.x, y + 12.95, z - 0.05, 0.6, 0.3, 0.6), 0.25);              // el empeine sube hasta el pantalón
-  return Math.max(d, -13.6 - y);
+  let d = smin(d0, hrE(ax - S.x, y + 13.2, z + 0.1, 0.64, 0.4, 0.72), 0.2);          // talón
+  d = smin(d, hrE(ax - S.x, y + 12.97, z - 0.02, 0.6, 0.28, 0.6), 0.25);              // el empeine sube hasta el pantalón
+  d = Math.max(d, -13.5 - y);
+  const sole = Math.max(hrE(ax - S.x, 0, z - S.z + 0.05, S.rx + 0.05, 1, S.rz + 0.06), Math.abs(y + 13.55) - 0.05);   // la suela
+  return smin(d, sole, 0.03);
 }
 function hrClothTex(w, draw, rep) { const t = canvasTex(w, w, draw); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep, rep); t.colorSpace = THREE.NoColorSpace; return t; }
 function shirtMat() {      // algodón blanco: tejido fino (relieve) y un brillo aterciopelado
@@ -373,7 +382,7 @@ function shirtMat() {      // algodón blanco: tejido fino (relieve) y un brillo
     for (let y = 0; y < h; y += 2) { g.fillStyle = `rgba(255,255,255,${0.16 + hash(y) * 0.12})`; g.fillRect(0, y, w, 1); }
     for (let x = 0; x < w; x += 2) { g.fillStyle = `rgba(0,0,0,${0.12 + hash(x * 3.1) * 0.1})`; g.fillRect(x, 0, 1, h); }
     for (let i = 0; i < 900; i++) { g.fillStyle = `rgba(${hash(i) > 0.5 ? '255,255,255' : '0,0,0'},0.08)`; g.fillRect(hash(i * 2.3) * w, hash(i * 5.7) * h, 1 + hash(i) * 3, 1); } }, 9);
-  return freezable(new THREE.MeshPhysicalMaterial({ color: 0xdcdad4, bumpMap: b, bumpScale: 1.6, roughness: 0.88, sheen: 0.35, sheenRoughness: 0.6, sheenColor: new THREE.Color(0xf4f4f4) }));
+  return freezable(new THREE.MeshPhysicalMaterial({ color: 0xcfccc5, bumpMap: b, bumpScale: 2.2, roughness: 0.9, sheen: 0.2, sheenRoughness: 0.7, sheenColor: new THREE.Color(0xeeeeee) }));
 }
 function pantsMat() {      // algodón azul (sarga: diagonales finas)
   const b = hrClothTex(256, (g, w, h) => { g.fillStyle = '#808080'; g.fillRect(0, 0, w, h); g.lineWidth = 1.2;
@@ -383,26 +392,22 @@ function pantsMat() {      // algodón azul (sarga: diagonales finas)
 }
 function shoeMat() {       // cuero negro con su grano y brillo
   const b = hrClothTex(256, (g, w, h) => { g.fillStyle = '#808080'; g.fillRect(0, 0, w, h); for (let i = 0; i < 2600; i++) { g.fillStyle = `rgba(${hash(i) > 0.5 ? '255,255,255' : '0,0,0'},${0.05 + hash(i * 3.3) * 0.08})`; g.beginPath(); g.arc(hash(i * 2.3) * w, hash(i * 5.7) * h, 0.6 + hash(i * 7.1) * 1.6, 0, 7); g.fill(); } }, 6);
-  return freezable(new THREE.MeshPhysicalMaterial({ color: 0x1a1918, bumpMap: b, bumpScale: 0.35, roughness: 0.34, clearcoat: 0.7, clearcoatRoughness: 0.18, sheen: 0.2, sheenColor: new THREE.Color(0x605a55) }));
+  return freezable(new THREE.MeshPhysicalMaterial({ color: 0x1c1b1a, vertexColors: true, bumpMap: b, bumpScale: 0.35, roughness: 0.34, clearcoat: 0.7, clearcoatRoughness: 0.18, sheen: 0.2, sheenColor: new THREE.Color(0x605a55) }));
 }
-// el cuello de la camisa: una tira alrededor del cuello y las dos puntas que caen sobre el pecho
+// el cuello de la camisa: la tira que rodea el cuello y la solapa doblada sobre los hombros, abierta delante en dos puntas (como la figura vestida de la hoja)
 function hrCollar(m) {
-  const g = new THREE.Group(), N = 72, band = [], top = [];
-  const ring = (y, r0, out) => { const P = []; for (let i = 0; i <= N; i++) { const a = -Math.PI + 2 * Math.PI * i / N, gap = Math.abs(a) < 0.2;
-    P.push(v3(Math.sin(a) * (1.02 + out) * r0, y + 0.05 * Math.cos(a), 0.06 + Math.cos(a) * (0.84 + out) * r0)); } return P; };
-  // la tira (abierta delante): superficie entre dos anillos, con grosor
-  const geo = new THREE.BufferGeometry(), P = [], I = [], lo = ring(-2.06, 1.0, 0.07), hi = ring(-1.62, 1.0, 0.0);
-  const open = i => Math.abs(-Math.PI + 2 * Math.PI * i / N) < 0.32;
-  for (let i = 0; i <= N; i++) { P.push(lo[i].x, lo[i].y, lo[i].z, hi[i].x, hi[i].y, hi[i].z); }
-  for (let i = 0; i < N; i++) { if (open(i) || open(i + 1)) continue; const a = i * 2, b = a + 1, c = a + 2, d = a + 3; I.push(a, c, b, b, c, d); }
-  geo.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); geo.setIndex(I); geo.computeVertexNormals();
-  const bm = m.clone(); bm.side = THREE.DoubleSide; const bandM = new THREE.Mesh(geo, bm); bandM.castShadow = true; g.add(bandM);
-  // las dos puntas: lengüetas dobladas hacia abajo y afuera desde el cuello
-  for (const s of [-1, 1]) { const sh = new THREE.Shape(); sh.moveTo(0, 0); sh.lineTo(0.95, 0.05); sh.quadraticCurveTo(0.75, -0.35, 0.28, -0.98); sh.quadraticCurveTo(0.08, -0.55, 0, 0);
-    const eg = new THREE.ExtrudeGeometry(sh, { depth: 0.035, bevelEnabled: true, bevelSize: 0.025, bevelThickness: 0.02, bevelSegments: 2, curveSegments: 10 });
-    const pm = new THREE.Mesh(eg, m); pm.castShadow = true; pm.scale.set(s, 1, 1);
-    pm.position.set(s * 0.12, -1.7, 0.9); pm.rotation.set(-0.95, s * 0.62, s * 0.18); g.add(pm); }
-  return g;
+  const NA = 96, NP = 14, P = [], I = [], gap = 0.2;
+  // perfil (radio, altura) de dentro a fuera: la tira sube, se dobla y cae sobre los hombros; delante, la caída se alarga en las dos puntas
+  for (let i = 0; i <= NA; i++) {
+    const a = gap + (2 * Math.PI - 2 * gap) * i / NA, ang = a, sa = Math.sin(ang), ca = Math.cos(ang), fr = Math.max(0, ca);      // a = 0: delante (+z)
+    const da = Math.min(a, 2 * Math.PI - a), tip = Math.exp(-(((da - 0.42) / 0.2) ** 2)), L = 0.5 + 0.55 * tip * fr - 0.25 * hrSS(0.32, gap, da);
+    for (let j = 0; j <= NP; j++) { const u = j / NP; let r, y;
+      if (u < 0.4) { const t = u / 0.4; r = 1.0 + 0.03 * t; y = -2.02 + 0.42 * t; }                       // la tira (sube pegada al cuello)
+      else { const t = (u - 0.4) / 0.6; r = 1.05 + (0.38 + 0.25 * tip * fr) * t; y = -1.58 - L * t - 0.06 * Math.sin(Math.PI * t); }   // la solapa (cae hacia fuera)
+      P.push(sa * r * 1.0, y, 0.06 + ca * r * 0.84); } }
+  for (let i = 0; i < NA; i++) for (let j = 0; j < NP; j++) { const a = i * (NP + 1) + j, b = a + NP + 1; I.push(a, b, a + 1, a + 1, b, b + 1); }
+  const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(P, 3)); g.setIndex(I); g.computeVertexNormals();
+  const cm = m.clone(); cm.side = THREE.DoubleSide; const mesh = new THREE.Mesh(g, cm); mesh.castShadow = true; mesh.receiveShadow = true; return mesh;
 }
 const _up0 = new THREE.Vector3(0, 1, 0), _lv = new THREE.Vector3(), _el = new THREE.Vector3();
 // la mano (de skin_v2.js): tamaño, punto del puño por donde pasa el palo y las dos poses (puño y relajada) [pulgar, índice, corazón, anular]
@@ -412,7 +417,7 @@ function limb(m, a, b) { const d = _lv.copy(b).sub(a), L = d.length(); m.positio
 const _dn0 = new THREE.Vector3(0, -1, 0);
 function hrSleevePose(s, a, b) { const d = _lv.copy(b).sub(a).normalize(); s.position.copy(a); s.quaternion.setFromUnitVectors(_dn0, d); }
 function hrSleeveGeo() {
-  const prof = [[0.56, -1.1], [0.6, -1.15], [0.69, -1.13], [0.71, -1.06], [0.7, -0.9], [0.71, -0.6], [0.72, -0.25], [0.7, 0.05], [0.6, 0.22], [0.4, 0.33], [0.001, 0.36]];
+  const prof = [[0.55, -1.22], [0.59, -1.27], [0.67, -1.25], [0.69, -1.18], [0.68, -0.95], [0.68, -0.6], [0.67, -0.25], [0.64, 0.05], [0.55, 0.22], [0.36, 0.32], [0.001, 0.35]];
   const g = new THREE.LatheGeometry(prof.map(([r, y]) => new THREE.Vector2(r, y)), 56), P = g.attributes.position;
   for (let i = 0; i < P.count; i++) { const x = P.getX(i), y = P.getY(i), z = P.getZ(i), a = Math.atan2(x, z), k = 1 + 0.025 * Math.sin(a * 5 + y * 3) * hrSS(0.0, -0.5, y) + 0.04 * hrSS(-0.95, -1.1, y) * Math.sin(a * 3);
     P.setXYZ(i, x * k, y, z * k); }
@@ -434,16 +439,16 @@ function buildHero() {
   const tm = freezable(new THREE.MeshPhysicalMaterial({ color: 0xf3efe4, roughness: 0.22, clearcoat: 0.7, clearcoatRoughness: 0.1 })); tm.clippingPlanes = U.cut;
   const M = HM.mo, teeth = (y0, h, R, cz, n, w) => { const g = new THREE.Group(); for (let i = 0; i < n; i++) { const a = (i - (n - 1) / 2) * (w + 0.012) / R, t = rbox(w, h, 0.09, tm, 0.04);
     t.position.set(Math.sin(a) * R, y0, cz + Math.cos(a) * R); t.rotation.y = a; t.castShadow = true; g.add(t); } return g; };
-  U.teethU = teeth(M.y + 0.08, 0.24, 0.62, 1.15, 6, 0.19); H.add(U.teethU);
+  U.teethU = teeth(M.y + 0.08, 0.25, 0.64, 1.13, 6, 0.225); H.add(U.teethU);
   U.jaw = new THREE.Group(); U.jaw.position.copy(JAW_P); H.add(U.jaw);
-  U.teethL = teeth(M.y - 0.08, 0.2, 0.58, 1.14, 6, 0.18); U.teethL.position.sub(JAW_P); U.jaw.add(U.teethL);
+  U.teethL = teeth(M.y - 0.08, 0.21, 0.6, 1.12, 6, 0.21); U.teethL.position.sub(JAW_P); U.jaw.add(U.teethL);
   const tg = new THREE.Mesh(new THREE.SphereGeometry(1, 40, 20), freezable(new THREE.MeshPhysicalMaterial({ color: 0xa8333a, roughness: 0.42, clearcoat: 0.5, clearcoatRoughness: 0.25 })));
   tg.material.clippingPlanes = U.cut; tg.scale.set(0.42, 0.11, 0.44); tg.position.set(0, M.y - 0.2, 1.08).sub(JAW_P); U.jaw.add(tg); U.tongue = tg;
   // con la sonrisa, el labio de abajo baja y los dientes de abajo con él (de la hoja: solo se ven los de arriba)
   // con la «O» de la hoja no se ven los dientes; con la sonrisa, el labio de abajo baja y los dientes de abajo con él (solo se ven los de arriba)
   const teethPose = () => { const mi = hm.morphTargetInfluences, o = hrSS(0.75, 0.97, mi[0]);
-    U.teethL.position.set(0, -0.42 * mi[1], -0.2 * o).sub(JAW_P); U.teethL.scale.set(1, 1 - 0.95 * o, 1);
-    U.teethU.position.set(0, 0.1 * o, -0.2 * o); U.teethU.scale.set(1, 1 - 0.95 * o, 1);
+    U.teethL.position.set(0, -0.36 * mi[1], -0.6 * o - 0.3 * mi[1]).sub(JAW_P); U.teethL.scale.set(1, 1 - 0.999 * o, 1);
+    U.teethU.position.set(0, 0.1 * o, -0.6 * o); U.teethU.scale.set(1, 1 - 0.999 * o, 1);
     tg.position.set(0, M.y - 0.22 - 0.12 * mi[0] - 0.3 * mi[1], 1.04 - 0.3 * mi[0] - 0.3 * mi[1]).sub(JAW_P); U.head.updateMatrixWorld(true); };
   for (const g of [U.teethU, U.teethL]) for (const t of g.children) t.onBeforeRender = teethPose;
   tg.onBeforeRender = teethPose;
@@ -453,12 +458,12 @@ function buildHero() {
   const body = new THREE.Mesh(mcGeometry(hrShirtSD, [-3.1, -7.0, -2.0, 3.1, -1.5, 2.9], 0.05, (x, y, z, c) => c.setRGB(1, 1, 1)), shirt); body.castShadow = true; body.receiveShadow = true; G.add(body); U.body = body;
   U.collar = hrCollar(shirt); G.add(U.collar);
   const pants = new THREE.Mesh(mcGeometry(hrPantsSD, [-2.8, -13.2, -2.2, 2.8, -5.9, 2.6], 0.05, (x, y, z, c) => c.setRGB(1, 1, 1)), pantsMat()); pants.castShadow = true; pants.receiveShadow = true; G.add(pants); U.pants = pants;
-  const shoes = new THREE.Mesh(mcGeometry(hrShoesSD, [-2.0, -13.62, -0.9, 2.0, -12.5, 1.9], 0.03, (x, y, z, c) => c.setRGB(1, 1, 1)), shoeMat()); shoes.castShadow = true; shoes.receiveShadow = true; G.add(shoes); U.shoes = shoes;
+  const shoes = new THREE.Mesh(mcGeometry(hrShoesSD, [-2.05, -13.62, -0.95, 2.05, -12.55, 1.95], 0.028, (x, y, z, c) => c.setRGB(...(y < -13.49 ? [0.45, 0.42, 0.4] : [1, 1, 1]))), shoeMat()); shoes.castShadow = true; shoes.receiveShadow = true; G.add(shoes); U.shoes = shoes;
   // brazos: de la manga al codo (siguen a los antebrazos) y las mangas
   const upGeo = new THREE.LatheGeometry([[0.001, -0.14], [0.34, -0.1], [0.5, 0.03], [0.55, 0.25], [0.54, 0.6], [0.51, 0.85], [0.47, 0.98], [0.35, 1.08], [0.001, 1.13]].map(([r, y]) => new THREE.Vector2(r, y)), 40);
   U.upR = new THREE.Mesh(upGeo, skinP); U.upL = new THREE.Mesh(upGeo, skinP); for (const m of [U.upR, U.upL]) { m.castShadow = true; m.receiveShadow = true; G.add(m); }
   const slGeo = hrSleeveGeo(); U.slR = new THREE.Mesh(slGeo, shirt); U.slL = new THREE.Mesh(slGeo, shirt); for (const m of [U.slR, U.slL]) { m.castShadow = true; m.receiveShadow = true; G.add(m); }
-  U.shR = v3(-2.08, -2.78, -0.22); U.shL = v3(2.08, -2.78, -0.22);
+  U.shR = v3(-1.96, -2.86, -0.22); U.shL = v3(1.96, -2.86, -0.22);
   // brazo derecho (el del polo): antebrazo y mano con el puño cerrado sobre el palo
   U.armR = new THREE.Group(); G.add(U.armR);
   U.handR = realHand({ inside: false }); U.handR.scale.setScalar(HR_HAND_S); U.armR.add(U.handR);

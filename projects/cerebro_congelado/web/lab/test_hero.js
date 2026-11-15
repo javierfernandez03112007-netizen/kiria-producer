@@ -6,8 +6,15 @@ const P_BITE_T = v3(-0.09, -2.17, 3.06), D_BITE_T = v3(0.05, 0.86, -0.5), P_HOLD
 // cámaras: [az (0 = de frente, −π/2 = perfil mirando a la derecha), elevación, distancia, altura a la que mira, fov]
 const HV = { cuerpo: [0, 0, 150, -4.75, 7.6], cabeza: [0, 0, 120, 1.0, 3.6], lejos: 150 };
 // el brazo del polo caído a un lado (para las vistas de cuerpo entero, como en la hoja)
-const P_SIDE_T = v3(-3.15, -7.05, 0.75), D_SIDE_T = v3(-0.05, 0.25, 1), ELB_SIDE_T = v3(-3.6, -5.2, -0.8);
-function labBuild(head) { }
+const P_SIDE_T = v3(-3.05, -7.1, 0.6), D_SIDE_T = v3(0.0, 0.3, 1), ELB_SIDE_T = v3(-3.0, -5.0, -0.5);
+// fondo de estudio (gris medio, como una foto de producto: la camisa blanca y la piel amarilla se leen bien) y suelo con sombra
+function labBuild(head) {
+  const m = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, uniforms: {},
+    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);\n#include <logdepthbuf_vertex>\n}',
+    fragmentShader: '#include <logdepthbuf_pars_fragment>\nvarying vec3 vP; void main(){\n#include <logdepthbuf_fragment>\nfloat e = smoothstep(-0.4, 0.6, vP.y); gl_FragColor = vec4(mix(vec3(0.19, 0.18, 0.17), vec3(0.3, 0.3, 0.31), e), 1.); }' });
+  const bg = new THREE.Mesh(new THREE.SphereGeometry(200, 48, 24), m); bg.renderOrder = -2; bg.frustumCulled = false; scene.add(bg);
+  const fl = new THREE.Mesh(new THREE.CircleGeometry(14, 64), new THREE.ShadowMaterial({ opacity: 0.28 })); fl.rotation.x = -Math.PI / 2; fl.position.y = -13.6; fl.receiveShadow = true; scene.add(fl);
+}
 // expresión: [boca abierta, sonrisa, mueca], ojos abiertos (0..1,5), mirada (yaw, pitch)
 function heroFace(U, jaw, smile, grim, open, yaw = 0, pitch = 0) {
   const mi = U.headMesh.morphTargetInfluences; mi[0] = jaw; mi[1] = smile; mi[2] = grim; U.jaw.rotation.x = JAW_A * jaw;
