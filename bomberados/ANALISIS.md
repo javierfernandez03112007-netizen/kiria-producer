@@ -25,6 +25,14 @@ los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 (PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
 Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
+## 📌 Semana de Adrián (16–22 nov), con el plan del 13 nov aplicado
+Sin cifras nuevas desde el 12 nov; las reglas del 13 nov siguen. Notas puestas en cada fila de Notion:
+- **Lun 16 paneles naranja:** el ADR en estilo app hizo 15.900; en 3D con dron (cisterna volcada de noche) y letras al final.
+- **Mar 17 bloqueadores** y **sáb 21 las 5 reglas de oro:** son teoría → que las cuente una intervención real en 3D, sin listas.
+- **Mié 18 motosierra**, **vie 20 estabilizar un vehículo** y **dom 22 partes del incendio forestal:** buenos temas (maniobra que
+  se ve): 3D con dron, cierre con letras o pregunta personal.
+- **Jue 19 lo que más preguntan del RSCIEI:** reglamento → mejor como Test relámpago 3D con una escena por pregunta.
+
 ## 📌 Para los próximos vídeos (plan del 13 nov)
 
 1. **Bomberos en acción en 3D con dron, siempre** (se mantiene). «Un día de bombero» ya va por 85.800 vistas y 92 comentarios.
