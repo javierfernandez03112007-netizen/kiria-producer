@@ -5,7 +5,7 @@ let MUGW = new THREE.Vector3();          // base de la taza en el mundo
 async function buildScene() {
   S.mw = buildMicrowave(); S.mw.position.copy(MW_POS); scene.add(S.mw);
   const U = S.mw.userData; S.mug = buildMug(); S.mug.position.copy(U.plateC).add(v3(0, U.plateTop - U.plateC.y + 0.02, 0)).add(MW_POS); scene.add(S.mug); MUGW.copy(S.mug.position);
-  S.splash = buildSplash(1500, 1); S.mug.add(S.splash);
+  S.splash = buildSplash(1500, 1); S.splash.position.copy(MUGW); scene.add(S.splash);      // el estallido no gira con el plato
   S.coffee = buildCoffee(); S.mug.add(S.coffee);
   S.stick = buildStick(); S.stick.position.set(1.4, 0.75, 0.5); S.stick.rotation.set(0.1, 0.35, -0.2); S.stick.visible = false; S.mug.add(S.stick);
   S.bub = buildBubbles(90); S.mug.add(S.bub);
@@ -21,23 +21,29 @@ async function buildScene() {
 const mixv = (a, b, u) => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u];
 // el estallido: τ (segundos reales) en cada momento. A cámara lenta: 1 s de vídeo ≈ 0,06 s de verdad
 function tauAt(t) {
-  if (t < SHT.B0) return 0.055;                                                   // A: congelado en el aire (primer fotograma = último)
-  if (t >= K.saltar1 - 0.05 && t < K.tu2 + 0.4) return clamp((t - K.saltar1 + 0.05) * 0.075, 0, 0.11);        // C: estalla hacia la cámara
-  if (t >= K.hierve8 - 0.08 && t < K.truco10) return clamp((t - K.hierve8 + 0.08) * 0.06, 0, 0.16);            // P–Q: al echar el café
-  if (t >= SHT.U1) return clamp(0.055 * (t - SHT.U1) / (END - SHT.U1), 0, 0.055);                            // U: vuelve a estallar y se congela (bucle)
+  if (t < SHT.B0) return 0.055;                                                                   // A: congelado en el aire (primer fotograma = último)
+  if (t >= SHT.C0 && t < SHT.E0) return clamp((t - SHT.C0) * 0.075, 0, 0.11);                     // C–D: estalla hacia la cámara
+  if (t >= SHT.P0 && t < SHT.Q0) return clamp((t - SHT.P0 - 0.05) * 0.06, 0, 0.13);               // P: al echar el café
+  if (t >= SHT.Q0 && t < SHT.R0) return clamp((t - K.quemaduras9 + 0.25) * 0.06, 0, 0.13);        // Q: al coger la taza
+  if (t >= SHT.U1) return 0.055 * clamp((t - SHT.U1) / (END - SHT.U1));                           // U: vuelve a estallar y se congela (bucle)
   return 0;
 }
+// el plato gira con el horno encendido (y la taza con él); en los estallidos (cámara lenta) apenas se mueve. R: el asa mira hacia delante a la derecha
+function mugRot(t, sh) { const R = -0.6, w = 0.5;
+  if (sh === 'B') return R - w * (SHT.C0 - t); if (sh === 'U') return R - w * Math.max(0, SHT.U1 - t);
+  if (sh === 'G' || sh === 'H') return R + w * (t - SHT.G0); if (sh === 'N') return R + w * (t - SHT.N0); return R; }
 const T_THERM = () => [K.microondas6 - 0.05, K.lisa6 - 0.35];
 function stageAt(t, st) {
   NOW = t; const U = S.mw.userData, sh = shotAt(t);
   // el microondas: luz, plato, puerta, pantalla
   const doorOpen = (sh === 'O' || sh === 'P' || sh === 'Q' || sh === 'S') ? 1 : 0;
   const door = doorOpen ? (sh === 'O' ? win(t, K.pero8 - 0.1, 0.5) * 0.78 : 0.78) : 0;
-  const on = doorOpen || sh === 'T' ? 0 : 1, turning = ['B', 'D', 'G', 'N', 'L'].includes(sh) ? 1 : 0;
+  const on = doorOpen || sh === 'T' ? 0 : sh === 'U' ? win(t, SHT.U0, 0.6) : 1;
   const secs = Math.max(0, Math.ceil(60 - (t - 0.75) * 0.9)), disp = sh === 'R' || sh === 'S' ? '1:00' : (on ? `0:${String(secs % 60).padStart(2, '0')}` : '12:34');
-  microwaveAt(S.mw, { on, turn: t * 0.55 * turning + (turning ? 0 : 1.2), door, display: disp });
+  const rot = mugRot(t, sh); S.mug.rotation.y = rot; microwaveAt(S.mw, { on, turn: rot, door, display: disp });
   // la taza: superficie, estallido, café, palito, burbujas, corte y vista térmica
-  const tau = tauAt(t); splashAt(S.splash, tau, { dir: (sh === 'C' || sh === 'A' || sh === 'U') ? v3(0, 0, 1) : (sh === 'P' || sh === 'Q' ? v3(0.15, 0, 1) : null), floor: -1.6, steam: 1 });
+  const tau = tauAt(t), doorShut = door < 0.05, mz = MUGW.z;
+  splashAt(S.splash, tau, { dir: (sh === 'Q' ? v3(0.55, 0, 0.8) : sh === 'P' ? v3(0.15, 0, 1) : v3(0, 0, 1)), floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null, frontZ: -6 - mz, floorOut: -MUGW.y, steam: 1 });
   const bulge = tau > 0 ? 0.9 * Math.exp(-Math.pow((tau - 0.012) / 0.02, 2)) : 0, crown = tau > 0 ? clamp(tau / 0.05) : 0;
   mugSurface(S.mug, t, { amp: tau > 0 ? 0.35 * clamp(tau / 0.02) : (sh === 'S' ? 0.03 : 0), bulge, crown });
   coffeeAt(S.coffee, sh === 'O' || sh === 'P' ? clamp((t - (K.echas8 - 0.1)) / (K.hierve8 - K.echas8 + 0.05)) : 0);

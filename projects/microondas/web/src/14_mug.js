@@ -10,7 +10,7 @@ function mugProfile() {
 function buildMug(o = {}) {
   const G = new THREE.Group(), U = {};
   const { pts, nOut } = mugProfile(), seg = 96;
-  const g = new THREE.LatheGeometry(pts, seg); g.computeVertexNormals();
+  const g = new THREE.LatheGeometry(pts, seg);      // (sin recalcular normales: así no sale la costura)
   // color por vértice: esmalte de fuera (verde azulado oscuro) y de dentro (blanco)
   const col = new Float32Array(g.attributes.position.count * 3), cOut = new THREE.Color(o.color ?? 0x2b5a68), cIn = new THREE.Color(0xf3f1ec), cc = new THREE.Color();
   for (let i = 0; i <= seg; i++) for (let j = 0; j < pts.length; j++) { const k = i * pts.length + j; cc.copy(j < nOut - 1 ? cOut : cIn); if (j === nOut - 1 || j === nOut - 2) cc.copy(cOut).lerp(cIn, 0.35); col[k * 3] = cc.r; col[k * 3 + 1] = cc.g; col[k * 3 + 2] = cc.b; }
@@ -26,8 +26,11 @@ function buildMug(o = {}) {
     const h = new THREE.Mesh(hg, hm); h.castShadow = true; G.add(h); U.handle = h; U.hmat = hm; }
   // el agua: superficie (rejilla polar que se deforma: menisco, hervor, el bulto del estallido) en dos capas: un velo de color y el reflejo (aditivo)
   { const NR = 40, NA = 96, rW = MUG.rIn(MUG.WY) - 0.02, pos = [], idx = [];
-    for (let i = 0; i <= NR; i++) for (let j = 0; j <= NA; j++) { const r = rW * i / NR, a = j / NA * Math.PI * 2; pos.push(Math.cos(a) * r, 0, Math.sin(a) * r); }
-    for (let i = 0; i < NR; i++) for (let j = 0; j < NA; j++) { const a = i * (NA + 1) + j, b = a + NA + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
+    // sin vértices repetidos (centro único y la vuelta cerrada) para que las normales no hagan costura
+    pos.push(0, 0, 0); for (let i = 1; i <= NR; i++) for (let j = 0; j < NA; j++) { const r = rW * Math.pow(i / NR, 0.85), a = j / NA * Math.PI * 2; pos.push(Math.cos(a) * r, 0, Math.sin(a) * r); }
+    const vi = (i, j) => i === 0 ? 0 : 1 + (i - 1) * NA + (j % NA);
+    for (let j = 0; j < NA; j++) idx.push(0, vi(1, j + 1), vi(1, j));
+    for (let i = 1; i < NR; i++) for (let j = 0; j < NA; j++) { const a = vi(i, j), b = vi(i + 1, j), c = vi(i, j + 1), d = vi(i + 1, j + 1); idx.push(a, c, b, b, c, d); }
     const sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); sg.setIndex(idx); sg.computeVertexNormals();
     U.surfBase = Float32Array.from(pos); U.NR = NR; U.NA = NA; U.rW = rW;
     const tint = new THREE.MeshPhysicalMaterial({ color: 0x8fb2b8, roughness: 0.02, transparent: true, opacity: 0.16, depthWrite: false });
@@ -36,7 +39,10 @@ function buildMug(o = {}) {
     U.surf = sg; U.surfMeshes = [s1, s2];
     // el cuerpo del agua (solo se ve en corte)
     const wb = new THREE.Mesh(new THREE.CylinderGeometry(rW - 0.01, MUG.rIn(0.8) - 0.02, MUG.WY - 0.65, 64, 1, true), new THREE.MeshPhysicalMaterial({ color: 0x6f9aa6, roughness: 0.05, transparent: true, opacity: 0.28, side: THREE.DoubleSide, depthWrite: false }));
-    wb.position.y = (MUG.WY + 0.65) / 2; wb.renderOrder = 6; wb.visible = false; G.add(wb); U.waterBody = wb; }
+    wb.position.y = (MUG.WY + 0.65) / 2; wb.renderOrder = 6; wb.visible = false; G.add(wb); U.waterBody = wb;
+    // la cara del corte del agua (trapecio en z = 0)
+    const fs = new THREE.Shape(); fs.moveTo(-MUG.rIn(0.7) + 0.02, 0.66); fs.lineTo(MUG.rIn(0.7) - 0.02, 0.66); fs.lineTo(rW, MUG.WY); fs.lineTo(-rW, MUG.WY); fs.closePath();
+    const cf = new THREE.Mesh(new THREE.ShapeGeometry(fs), wb.material); cf.renderOrder = 6; cf.visible = false; G.add(cf); U.cutFace = cf; }
   G.userData = U; return G;
 }
 // la superficie del agua: menisco en el borde + rizos de hervor (amp) + el bulto del centro (bulge, en cm) y el anillo que se abre (crown)
@@ -52,6 +58,8 @@ function mugSurface(M, t, o = {}) {
 // corte de la taza (plano x = 0: se quita la mitad de delante) para ver el agua por dentro
 function mugCut(M, on) {
   const U = M.userData; if (!U.cutP) U.cutP = [new THREE.Plane(new THREE.Vector3(0, 0, -1), 0)];
+  M.updateWorldMatrix(true, false); U.cutP[0].constant = new THREE.Vector3().setFromMatrixPosition(M.matrixWorld).z;     // plano z = z de la taza (mundo)
+  if (U.cutFace) U.cutFace.visible = !!on;
   const cp = on ? U.cutP : null; for (const m of [U.mat, U.hmat]) { m.clippingPlanes = cp; m.side = on ? THREE.DoubleSide : THREE.FrontSide; m.needsUpdate = true; }
   for (const s of U.surfMeshes) { s.material.clippingPlanes = cp; s.material.needsUpdate = true; }
   U.waterBody.visible = !!on; U.waterBody.material.clippingPlanes = cp;
@@ -72,19 +80,25 @@ function buildSplash(n = 1400, seed = 1) {
   G.userData = { im, D, n, steam, seed }; return G;
 }
 const _sv = new THREE.Vector3(), _sq = new THREE.Quaternion(), _sY = new THREE.Vector3(0, 1, 0);
-// τ: segundos reales desde que estalla; o.dir: empuja el chorro hacia un lado (p. ej. hacia la cámara); o.floor: altura donde se paran las gotas que caen fuera
+// τ: segundos reales desde que estalla; o.dir: empuja el chorro hacia un lado (p. ej. hacia la cámara); o.floor: altura (local) del suelo del horno;
+// o.wallZ: con la puerta cerrada, las gotas se quedan pegadas al cristal (z local) y resbalan; o.frontZ + o.floorOut: con la puerta abierta, más allá de frontZ caen a la encimera
 function splashAt(SP, tau, o = {}) {
-  const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, rimR = MUG.R + 0.3;
+  const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, wallZ = o.wallZ ?? null, frontZ = o.frontZ ?? 1e9, floorOut = o.floorOut ?? floor;
   for (let i = 0; i < U.n; i++) { const b = i * 8, t = tau - D[b + 6];
     if (tau <= 0 || t <= 0) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); continue; }
     let vx = D[b + 2], vy = D[b + 3], vz = D[b + 4]; if (dir) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
-    let x = D[b] + vx * t, y = MUG.WY + vy * t - 0.5 * g * t * t, z = D[b + 1] + vz * t, vyy = vy - g * t, s = D[b + 5];
-    const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.1;
+    let x = D[b] + vx * t, y = MUG.WY + vy * t - 0.5 * g * t * t, z = D[b + 1] + vz * t, vyy = vy - g * t, s = D[b + 5], flat = 0;
+    if (wallZ !== null && z > wallZ && vz > 0) {                                                        // choca con el cristal de la puerta y resbala
+      const th = (wallZ - D[b + 1]) / vz, yh = MUG.WY + vy * th - 0.5 * g * th * th; x = D[b] + vx * th; z = wallZ; y = Math.max(floor, yh - 5 * (t - th)); vx = 0; vyy = -5; vz = 0; flat = 1; }
+    const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.1, fl = z > frontZ ? floorOut : floor;
     if (inside && y < MUG.WY && vyy < 0) s *= clamp((y - MUG.WY + 1.2) / 1.2);                   // las que vuelven a caer dentro se hunden
-    if (!inside && y < floor) { const tl = (y - floor) / Math.max(1, -vyy); y = floor; s *= clamp(1 + tl * 12); }   // las que caen fuera se aplastan y se van
-    const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(4, sp * 0.012 * (o.blur ?? 1));
-    _o.position.set(x, y, z); _sv.set(vx, vyy, vz).normalize(); _o.quaternion.setFromUnitVectors(_sY, _sv);
-    _o.scale.set(Math.max(0.0001, s), Math.max(0.0001, s * stretch), Math.max(0.0001, s)); _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); }
+    if (!inside && y < fl) { const tl = (y - fl) / Math.max(1, -vyy); y = fl; s *= clamp(1 + tl * 10); flat = 2; }   // las que caen fuera se aplastan y se van
+    if (flat === 1) { _o.position.set(x, y, z - s * 0.3); _o.quaternion.identity(); _o.scale.set(s * 1.5, s * 1.9, Math.max(0.0001, s * 0.35)); }
+    else if (flat === 2) { _o.position.set(x, y + s * 0.15, z); _o.quaternion.identity(); _o.scale.set(Math.max(0.0001, s * 1.7), Math.max(0.0001, s * 0.3), Math.max(0.0001, s * 1.7)); }
+    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(4, sp * 0.012 * (o.blur ?? 1));
+      _o.position.set(x, y, z); _sv.set(vx, vyy, vz).normalize(); _o.quaternion.setFromUnitVectors(_sY, _sv);
+      _o.scale.set(Math.max(0.0001, s), Math.max(0.0001, s * stretch), Math.max(0.0001, s)); }
+    _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); }
   U.im.instanceMatrix.needsUpdate = true;
   U.steam.forEach((s, i) => { const t = tau - 0.01 - (i % 12) * 0.006, k = clamp(t / 0.12); s.visible = t > 0;
     if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 1 + 3 * hash(i * 5.1) + 18 * k * hash(i * 1.3);

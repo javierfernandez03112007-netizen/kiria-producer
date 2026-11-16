@@ -7,7 +7,7 @@ const ENV = { file: 'blinds', rot: 3.14, bg: 0.6, env: 0.8, blur: 0.07, wb: [0.8
 const TEXL = new THREE.TextureLoader(), PENDING = [];
 function tx(path, srgb = true, rep = null) { let ok, ko; PENDING.push(new Promise((a, b) => { ok = a; ko = b; })); const t = TEXL.load(ASSET + path, () => ok(), undefined, e => { console.error('ERROR textura ' + path); ok(); }); t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace; t.anisotropy = 8; if (rep) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep[0], rep[1]); } return t; }
 async function loadEnv() {
-  const hdr = await new RGBELoader().loadAsync(ASSET + `ph/${window.ENVFILE || ENV.file}/${window.ENVFILE || ENV.file}_4k.hdr`); hdr.mapping = THREE.EquirectangularReflectionMapping;
+  const hdr = await new RGBELoader().loadAsync(ASSET + `ph/${window.ENVFILE || ENV.file}/${window.ENVFILE || ENV.file}_${window.ENVRES || '4k'}.hdr`); hdr.mapping = THREE.EquirectangularReflectionMapping;
   // balance de blancos: la luz de la persiana tiñe todo de naranja; se corrige un poco hacia neutro
   { const d = hdr.image.data, wb = ENV.wb, f = THREE.DataUtils; const half = d instanceof Uint16Array;
     for (let i = 0; i < d.length; i += 4) for (let c = 0; c < 3; c++) d[i + c] = half ? f.toHalfFloat(f.fromHalfFloat(d[i + c]) * wb[c]) : d[i + c] * wb[c];
