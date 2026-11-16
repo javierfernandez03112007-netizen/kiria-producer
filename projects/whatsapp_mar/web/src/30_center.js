@@ -7,7 +7,6 @@ const TX = TONm.clone().sub(FIJm).setY(0).normalize(), TZ = new THREE.Vector3().
 const TON_M = new THREE.Matrix4().makeBasis(TX, SY, TZ).setPosition(TONm.clone().setY(TON_SEA));
 const Bw = (x, y, z) => slabP(x, y + SEA, z), Iw = (x, y, z) => slabP(SL + x, y + SEA, z), Sw = (x, y, z) => slabP(x, y, z);
 const Tw = (x, y, z) => new THREE.Vector3(x, y, z).applyMatrix4(TON_M), Fw = (x, y, z) => new THREE.Vector3(x, y, z).add(FIB0);
-function fnOf(n) { try { return eval('typeof ' + n + " === 'function' ? " + n + ' : null'); } catch (e) { return null; } }
 function placeholder(txt, w = 4, col = '#ffcf6b') { const g = new THREE.Group(); const l = label(txt, { size: 70, w, pill: true, color: col }); l.position.y = w * 0.3; g.add(l); g.userData.anchors = {}; g.userData.ph = l; return g; }
 async function buildScene() {
   S.world = new THREE.Group(); scene.add(S.world);
@@ -60,7 +59,7 @@ function stageAt(t, st) {
   if (S.map && mAt) {
     mAt(t, { draw: win(t, K['99_3'] - 0.1, 3.4), glow: 1 + 0.6 * env(t, K['cables_3'] - 0.1, K['cables_3'] + 0.7, 0.15, 0.4) + 0.4 * env(t, K['600_9'] - 0.2, K['ano_9'], 0.2, 0.5),
       ella: t > K['hunde_8'] ? clamp((t - K['hunde_8']) / (K['segundo_8'] + 0.1 - K['hunde_8'])) : 0, breaks: t > K['rompen_9'] - 0.1 && t < 43 ? clamp((t - K['rompen_9'] + 0.1) / 2.2) : 0,
-      mauritania: t < 20 ? 1 - win(t, K['entero_4'] - 0.35, 0.6) : 1, tonga: 1 - win(t, K['pais_11'] - 0.1, 1.8), sat: env(t, K['99_3'] - 0.3, K['si_4'], 0.4, 0.5), ace: t > K['rompe_4'] - 0.05 && t < 20 ? 1 : 0 });
+      mauritania: t < 20 ? 1 - win(t, K['entero_4'] - 0.35, 0.6) : 1, tonga: 1 - win(t, K['pais_11'] - 0.1, 1.8), sat: env(t, K['99_3'] - 0.3, K['si_4'], 0.4, 0.5), ace: t > K['rompe_4'] - 0.05 && t < 20 ? 1 : 0, tongaCut: t > K['partio_11'] - 0.1 ? 1 : 0 });
   }
   // la playa: el móvil (encendido con la notificación al principio y al final = bucle)
   const fBeach = fnOf('beachAt');
@@ -72,7 +71,7 @@ function stageAt(t, st) {
       S.msg.quaternion.copy(cam.quaternion); } }
   // la península: escribe, envía, ondas, pulso por la torre y el tubo, y de la estación al mar
   const fIb = fnOf('iberiaAt');
-  if (fIb) fIb(t, { type: win(t, 13.6, 0.85), send: win(t, K['enviarlo_5'] + 0.15, 0.45), waves: clamp((t - K['su_5'] - 0.1) / (K['antena_5'] + 0.5 - K['su_5'])), pulse: clamp((t - K['entra_6']) / (K['luz_6'] - K['entra_6'] + 0.1)),
+  if (fIb) fIb(t, { type: win(t, 13.6, 0.85), send: win(t, K['enviarlo_5'] + 0.15, 0.45), waves: clamp((t - K['su_5'] - 0.1) / (K['cercana_5'] + 0.45 - K['su_5'])), pulse: clamp((t - K['entra_6']) / (K['luz_6'] - K['entra_6'] + 0.1)),
     pulse2: clamp((t - K['portugal_8'] + 0.1) / (K['hunde_8'] + 0.35 - K['portugal_8'])) });
   // la fibra
   const fFb = fnOf('fiberAt'); if (fFb && fib) fFb(t, { speed: 1, hair: win(t, K['fino_7'] - 0.2, 0.5), pulses: 1 });

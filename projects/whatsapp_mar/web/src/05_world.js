@@ -5,6 +5,8 @@
 // Pacífico. La fibra por dentro es un decorado aparte (micro).
 // Unidades: en las viñetas, 1 unidad = 1 m. El mapa: 10 unidades por grado (equirrectangular, centrado en LON0). El suelo del mapa es y = 0.
 const LON0 = -20, MAPK = 10;
+// la función de una pieza si existe (las piezas que aún no han llegado se sustituyen)
+function fnOf(n) { try { return eval('typeof ' + n + " === 'function' ? " + n + ' : null'); } catch (e) { return null; } }
 function wrapLon(lon) { let l = lon; while (l < LON0 - 180) l += 360; while (l >= LON0 + 180) l -= 360; return l; }
 function mapP(lon, lat, y = 0) { return new THREE.Vector3((wrapLon(lon) - LON0) * MAPK, y, -lat * MAPK); }
 // ---------- la franja del Atlántico (la maqueta): marco local X (de Brasil a la península), Y arriba, Z hacia la cara de cristal delantera

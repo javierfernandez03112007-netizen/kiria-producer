@@ -158,7 +158,7 @@ async function buildSlab() {
   // el cable del mensaje (z = 6) y el otro (z = −5)
   const p1 = slbCablePath(CABLE_Z), g1 = cableGeo(p1, (u, p) => lerp(0.07, 0.32, _sm(6, 26, seaDepth(p.x)))), m1 = cableMat({ tot: g1.userData.tot });
   SLB.c1 = { pts: p1, L: g1.userData.L, mesh: new THREE.Mesh(g1, m1), m: m1 }; SLB.c1.mesh.castShadow = true; g.add(SLB.c1.mesh);
-  const p2 = slbCablePath(CABLE2_Z), g2 = cableGeo(p2, (u, p) => lerp(0.07, 0.3, _sm(6, 26, seaDepth(p.x)))), m2 = cableMat({ tot: g2.userData.tot, flow: 0.2, base: 0.22 });
+  const c2x0 = fnOf('incCable2') ? 44 : 0, p2 = slbCablePath(CABLE2_Z, c2x0), g2 = cableGeo(p2, (u, p) => lerp(0.055, 0.3, _sm(c2x0, c2x0 + 50, p.x) * _sm(6, 26, seaDepth(p.x)))), m2 = cableMat({ tot: g2.userData.tot, flow: 0.2, base: 0.22 });
   SLB.c2 = { pts: p2, L: g2.userData.L, mesh: new THREE.Mesh(g2, m2), m: m2 }; SLB.c2.mesh.castShadow = true; g.add(SLB.c2.mesh);
   SLB.pulse = slbGlowSprite(COL.light, 1.2); g.add(SLB.pulse);
   g.add(slbDecor());
@@ -186,10 +186,10 @@ function slabLocal(pw) { return pw.clone().applyMatrix4(new THREE.Matrix4().copy
 function slbDecor() {
   const g = new THREE.Group(), zones = [[3, 46], [SL - 46, SL - 3]], okZ = z => Math.abs(z - CABLE_Z) > 1.3 && Math.abs(z - CABLE2_Z) > 1.3;
   // rocas
-  const rg = new THREE.IcosahedronGeometry(1, 2); { const p = rg.attributes.position; for (let i = 0; i < p.count; i++) { const k = 0.75 + 0.5 * hash(i * 1.7 + 3); p.setXYZ(i, p.getX(i) * k, p.getY(i) * k * 0.7, p.getZ(i) * k); } rg.computeVertexNormals(); }
+  const rg = new THREE.IcosahedronGeometry(1, 3); { const p = rg.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i), z = p.getZ(i), k = 1 + 0.18 * Math.sin(x * 3.1 + 1) * Math.sin(y * 2.3 + 2) + 0.12 * Math.sin(z * 4.7 + x * 1.3); p.setXYZ(i, x * k, y * k * 0.65, z * k); } rg.computeVertexNormals(); }
   const rocks = new THREE.InstancedMesh(rg, new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.85 }), 700); let n = 0;
-  for (let i = 0; i < 2600 && n < 700; i++) { const zn = zones[i % 2], x = zn[0] + hash(i * 3.3) * (zn[1] - zn[0]), z = -18.5 + hash(i * 5.9) * 37; if (!okZ(z) || seaDepth(x) < 1.2) continue;
-    const s = 0.15 + Math.pow(hash(i * 7.1), 3) * 1.4; _o.position.set(x, seabedY(x, z) + s * 0.15, z); _o.rotation.set(hash(i) * 3, hash(i * 2) * 6.3, hash(i * 4) * 3); _o.scale.set(s, s * (0.6 + hash(i * 8) * 0.6), s); _o.updateMatrix(); rocks.setMatrixAt(n, _o.matrix);
+  for (let i = 0; i < 2600 && n < 700; i++) { const zn = zones[i % 2], x = zn[0] + hash(i * 3.3) * (zn[1] - zn[0]), z = -18.5 + hash(i * 5.9) * 37; if (!okZ(z) || seaDepth(x) < 1.2 || (z > 2 && z < 15)) continue;
+    const s = 0.12 + Math.pow(hash(i * 7.1), 3) * 0.9; _o.position.set(x, seabedY(x, z) + s * 0.15, z); _o.rotation.set(hash(i) * 3, hash(i * 2) * 6.3, hash(i * 4) * 3); _o.scale.set(s, s * (0.6 + hash(i * 8) * 0.6), s); _o.updateMatrix(); rocks.setMatrixAt(n, _o.matrix);
     _c.setHSL(0.07 + hash(i * 9) * 0.12, 0.14 + hash(i * 11) * 0.2, 0.42 + hash(i * 13) * 0.2); rocks.setColorAt(n, _c); n++; }
   rocks.count = n; rocks.castShadow = true; rocks.receiveShadow = true; g.add(rocks);
   // algas: hojas finas en manojos (se mecen con la corriente)
