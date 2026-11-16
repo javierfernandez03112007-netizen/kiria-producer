@@ -16,11 +16,11 @@ function brushedTex(w = 1024, h = 256) {
 }
 function mwMats() {
   const br = brushedTex();
-  const metal = new THREE.MeshPhysicalMaterial({ color: 0xc3c7cc, metalness: 0.92, roughness: 0.34, roughnessMap: br, bumpMap: br, bumpScale: 0.15, clearcoat: 0.15, clearcoatRoughness: 0.3 });
+  const metal = new THREE.MeshPhysicalMaterial({ color: 0xb4b9bf, metalness: 0.78, roughness: 0.4, roughnessMap: br, bumpMap: br, bumpScale: 0.15, clearcoat: 0.2, clearcoatRoughness: 0.3, envMapIntensity: 0.85 });
   const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#ece9e2'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
   enamelT.wrapS = enamelT.wrapT = THREE.RepeatWrapping; enamelT.repeat.set(3, 3);
   const enamel = new THREE.MeshPhysicalMaterial({ map: enamelT, roughness: 0.38, clearcoat: 0.5, clearcoatRoughness: 0.25, side: THREE.DoubleSide });
-  const black = new THREE.MeshPhysicalMaterial({ color: 0x0c0d10, roughness: 0.06, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.03 });
+  const black = new THREE.MeshPhysicalMaterial({ color: 0x0c0d10, roughness: 0.08, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 0.7 });
   const rubber = new THREE.MeshStandardMaterial({ color: 0x141416, roughness: 0.9 });
   return { metal, enamel, black, rubber };
 }
@@ -73,8 +73,8 @@ function buildMicrowave() {
     gr.position.set(C.x1 - 0.03, 21.5, -27); gr.rotation.y = -Math.PI / 2; G.add(gr); U.lampGrille = gr;
     for (const [y, z] of [[11.8, -10.2], [11.8, -17.8], [19.2, -10.2], [19.2, -17.8]]) { const s = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.15, 12), new THREE.MeshStandardMaterial({ color: 0x9aa0a6, metalness: 1, roughness: 0.3 })); s.rotation.z = Math.PI / 2; s.position.set(C.x1 - 0.06, y, z); G.add(s); } }
   // la luz de dentro (cálida) y la del plato
-  { const L = new THREE.PointLight(0xffc98a, 0, 60, 2); L.position.set(C.x1 - 3, C.y1 - 3, -26); G.add(L); U.lamp = L;
-    const L2 = new THREE.PointLight(0xffd9a8, 0, 50, 2); L2.position.set(-14, C.y1 - 2, -6); G.add(L2); U.lamp2 = L2; }
+  { const L = new THREE.PointLight(0xffe2b4, 0, 60, 2); L.position.set(C.x1 - 3, C.y1 - 3, -26); G.add(L); U.lamp = L;
+    const L2 = new THREE.PointLight(0xffe8c4, 0, 50, 2); L2.position.set(-14, C.y1 - 2, -6); G.add(L2); U.lamp2 = L2; }
   // el plato giratorio de cristal sobre su aro de ruedas
   { const cx = (C.x0 + C.x1) / 2, cz = (C.z0 + C.z1) / 2; U.plateC = v3(cx, C.y0, cz);
     const ring = new THREE.Mesh(new THREE.TorusGeometry(9, 0.35, 10, 64), new THREE.MeshStandardMaterial({ color: 0x2a2b2f, roughness: 0.6 })); ring.rotation.x = Math.PI / 2; ring.position.set(cx, C.y0 + 0.6, cz); G.add(ring);

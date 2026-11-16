@@ -1,6 +1,7 @@
 // ---------------------------------------------------------------- la cocina de verdad: el HDRI «Blinds» de Poly Haven (CC0, una cocina real con persianas) da el
 // fondo (desenfocado, como con un objetivo de cine) y la luz de todos los reflejos; encima va la encimera de madera (textura «kitchen_wood», CC0) y una
 // luz de ventana con sombras suaves. Unidades: 1 = 1 cm; la encimera está en y = 0.
+const _o = new THREE.Object3D();      // objeto de trabajo para las matrices de las instancias
 const ASSET = '/projects/microondas/web/assets/';
 const ENV = { file: 'blinds', rot: 3.14, bg: 0.6, env: 0.8, blur: 0.07, wb: [0.8, 0.9, 1.1] };
 const TEXL = new THREE.TextureLoader(), PENDING = [];
