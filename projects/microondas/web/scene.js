@@ -2355,7 +2355,7 @@ function hudAt(t) {
   countUp(t, cw(t, K.n2450 - 0.1, K.agua4 - 0.2));
   // I: la molécula protagonista (el oxígeno, negativo; los hidrógenos, positivos)
   if (sh === 'I' && S.mol && S.mol.heroAt) { const hr = S.mol.heroAt(), a = cw(t, K.moleculas4 - 0.05, K.giran4 + 0.7);
-    lab(hr.p, 'MOLÉCULA DE AGUA', 'H₂O', a, { dx: 160, dy: -260 }); }
+    lab(hr.O, 'MOLÉCULA DE AGUA', 'H₂O', a, { dx: 170, dy: 300 }); }
   // K: las rayitas del fondo del cazo
   if (sh === 'K') { const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z); lab(pot.clone().add(v3(-0.6, 0.6, -1.2)), 'RAYITAS DEL FONDO', 'AQUÍ NACEN LAS BURBUJAS', cw(t, K.rayitas5 - 0.1, SHT.L0), { dx: -160, dy: -300 }); }
   // L: vista térmica
