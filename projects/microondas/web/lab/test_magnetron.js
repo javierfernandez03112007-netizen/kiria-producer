@@ -30,6 +30,10 @@ function magLabMW(on) {     // el magnetrón dentro del microondas (o fuera, sob
 }
 function magLabShell(op) { if (!MAGLMW) return; const m = MAGLMW.userData.M.metal; m.transparent = op < 0.999; m.opacity = op; m.depthWrite = op > 0.5; MAGLMW.userData.M.enamel.transparent = op < 0.999; MAGLMW.userData.M.enamel.opacity = Math.max(op, 0.35); }
 function labAt(t) {
+  { const now = performance.now(); if (window._magT) console.error('INFO t=' + window._magK + ' ' + (now - window._magT).toFixed(0) + ' ms'); window._magT = now; window._magK = t; }   // cronómetro
+  MAG.group.visible = true;
+  if (window.MAGHIDE || t >= 30 && t < 32) { MAG.group.visible = false; if (MAGLMW) MAGLMW.visible = false; return MAGV[t >= 31 ? 2 : 0].cam; }   // sin magnetrón (la base, para comparar)
+  if (window.MAGONLY) MAG.group.traverse(o => { if (o.isMesh && !window.MAGONLY.includes(o.material.type)) o.visible = false; });
   if (t >= 20) return magLabTimeline(t - 16);
   let k = Math.floor(t + 1e-6);
   if (k >= 10 && !MAGLMW) k = 0;

@@ -50,7 +50,7 @@ const thermalMat = (T0, T1, y0, y1, nz = 0.03) => new THREE.ShaderMaterial({ uni
 let THERM = false;
 function thermal(on) {
   if (on === THERM) return; THERM = on; const U = S.mw.userData, Um = S.mug.userData, my = MUGW.y;
-  const swap = (root, mk) => root.traverse(o => { if (!(o.isMesh || o.isSprite) || o === S.splash || o.parent === S.splash) return; if (on) { o.userData.m0 = o.material; o.material = mk(o); } else if (o.userData.m0) { o.material = o.userData.m0; o.userData.m0 = null; } });
+  const swap = (root, mk) => root.traverse(o => { if (!(o.isMesh || o.isSprite) || o === S.splash || o.parent === S.splash) return; if (on) { o.userData.m0 = o.material; const tm = mk(o); o.material = Array.isArray(o.material) ? o.material.map(() => tm) : tm; } else if (o.userData.m0) { o.material = o.userData.m0; o.userData.m0 = null; } });
   const cool = thermalMat(0.16, 0.12, 0, 26, 0.02), grille = thermalMat(0.34, 0.34, 0, 1, 0.01), plate = thermalMat(0.22, 0.2, 0, 10, 0.02);
   const mug = thermalMat(0.5, 0.33, my + 6.5, my + 9.8, 0.025), water = thermalMat(0.97, 0.9, -1, 1, 0.05);
   swap(S.mw, o => o.material === U.lampGrille.material ? grille : U.plate.getObjectById(o.id) ? plate : cool);
@@ -74,7 +74,7 @@ function stageAt(t, st) {
   const on = doorOpen ? 0 : sh === 'U' ? win(t, SHT.U0, 0.6) : 1;
   const secs = Math.max(0, Math.ceil(60 - (t - 0.75) * 0.9)), disp = sh === 'R' || sh === 'S' ? (sh === 'R' ? `${t < SHT.R0 + 0.9 ? '1:00' : '0:5' + (9 - Math.floor((t - SHT.R0 - 0.9) / 0.9) % 10)}` : '1:00') : (on ? `0:${String(secs % 60).padStart(2, '0')}` : '12:34');
   const rot = mugRot(t, sh); S.mug.rotation.y = rot; microwaveAt(S.mw, { on, lamp: Math.max(on, doorOpen), turn: rot, door, display: disp });
-  thermal(sh === 'L'); underwater(sh === 'K' || sh === 'M', sh === 'K' ? 0xb9cfd2 : 0xd4e2e1, sh === 'K' ? 0.075 : 0.06);
+  thermal(sh === 'L'); underwater(sh === 'K' || sh === 'M', sh === 'K' ? 0x8eaab0 : 0xb8cccc, sh === 'K' ? 0.032 : 0.03);
   // la taza: superficie, estallido, café, palito, burbujas, corte
   const tau = tauAt(t), doorShut = door < 0.05, mz = MUGW.z;
   if (!THERM) innerEnv(lerp(0.2, 0.6, clamp(door / 0.78)));
@@ -97,7 +97,7 @@ function stageAt(t, st) {
     S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5 + 14 * k, -17 + 10 * k)); }
   if (S.waves) magWavesAt(t, { on: sh === 'G' ? 1 : 0, flow: sh === 'G' ? win(t, SHT.G0, 0.8) : 0 });
   // la carcasa del microondas se vuelve de cristal para enseñar el magnetrón
-  { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
+  { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; if (!THERM) U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
   if (S.mol) moleculesAt(t, { on: sh === 'I' ? 1 : 0, field: sh === 'I' ? win(t, K.intenta4, 0.4) : 0, heat: sh === 'I' ? clamp((t - K.giran4 + 0.2) / (K.calor4 - K.giran4 + 0.6)) : 0 });
   // la mano, en primera persona: entra desde abajo hacia el asa; al estallar, se retira de golpe
   { const vis = sh === 'Q'; S.hand.visible = vis;

@@ -52,11 +52,11 @@ function buildCam() {
       k(SHT.J0, P([pot.x + 24, pot.y + 13, pot.z + 40], [pot.x, pot.y + 4, pot.z], 38)), k(K.abajo5, P([pot.x + 16, pot.y + 5, pot.z + 30], [pot.x, pot.y + 1, pot.z], 38)),
       k(SHT.K0, P([pot.x + 14, pot.y + 3.5, pot.z + 26], [pot.x, pot.y + 0.5, pot.z], 38))] },
     { t0: SHT.K0, keys: [                                                                // K: dentro del agua del cazo, a ras del fondo: las burbujas nacen en las rayitas
-      k(SHT.K0, P([pot.x + 3.6, pot.y + 2.2, pot.z + 5.2], [pot.x - 0.4, pot.y + 0.4, pot.z - 1.6], 52)), k(SHT.L0, P([pot.x + 2.4, pot.y + 1.5, pot.z + 3.4], [pot.x - 0.8, pot.y + 0.4, pot.z - 2.4], 50))] },
+      k(SHT.K0, P([pot.x + 2.6, pot.y + 4.2, pot.z + 4.4], [pot.x - 0.4, pot.y + 0.5, pot.z - 1.2], 50)), k(SHT.L0, P([pot.x + 1.6, pot.y + 3.0, pot.z + 2.8], [pot.x - 0.7, pot.y + 0.5, pot.z - 1.8], 48))] },
     { t0: SHT.L0, keys: [                                                                // L: vista térmica, desde arriba
       k(SHT.L0, P([mx + 4, my + 17, mz + 12.5], [mx, my + 6, mz], 48)), k(SHT.M0, P([mx + 2.2, my + 16, mz + 11], [mx, my + 6.2, mz], 46))] },
     { t0: SHT.M0, keys: [                                                                // M: dentro del agua de la taza, a ras del fondo liso: nada
-      k(SHT.M0, P([mx + 1.2, my + 2.4, mz + 1.6], [mx - 0.8, my + 0.9, mz - 2.2], 56)), k(SHT.N0, P([mx + 0.6, my + 2.0, mz + 1.2], [mx - 1.0, my + 0.85, mz - 2.4], 54))] },
+      k(SHT.M0, P([mx + 1.0, my + 3.6, mz + 1.5], [mx - 0.6, my + 0.8, mz - 1.4], 56)), k(SHT.N0, P([mx + 0.6, my + 3.0, mz + 1.1], [mx - 0.8, my + 0.8, mz - 1.6], 54))] },
     { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.8, my + 16.5, mz + 9.5], [mx, wy - 0.5, mz], 42)), k(SHT.O0, P([mx - 0.4, my + 14.8, mz + 7.2], [mx, wy - 0.5, mz], 40))] },
     { t0: SHT.O0, keys: [                                                                // O → P: la puerta se abre, cae el café, estalla hacia fuera
       k(SHT.O0, P([8, 25, 28], [mx, wy - 1, mz], 38)), k(K.echas8, P([1.5, 21, 9], [mx, wy, mz], 38)), k(SHT.P0, P([-1.5, 19.5, 2], [mx, wy + 0.5, mz], 40)),

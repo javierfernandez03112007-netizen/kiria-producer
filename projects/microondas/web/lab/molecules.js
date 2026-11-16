@@ -17,7 +17,7 @@
 
 const MOL_ORIGIN = new THREE.Vector3(0, 2000, 0);
 const MOL_NU = 2.0;                                                         // Hz en pantalla: 4 inversiones del campo por segundo
-const MOL_LAMBDA = 22;                                                      // longitud de la onda en pantalla (unidades): el pulso cruza la imagen en ≈ 0,15 s
+const MOL_LAMBDA = 16;                                                      // longitud de la onda en pantalla (unidades): el pulso cruza la imagen en ≈ 0,15 s
 const MOL_K = new THREE.Vector3(0.22, -1, -0.32).normalize();               // hacia dónde viaja la onda: de arriba abajo, alejándose un poco
 const MOL_E = new THREE.Vector3(1, 0, 0).addScaledVector(MOL_K, -MOL_K.x).normalize();   // el campo eléctrico (perpendicular a la onda: casi horizontal)
 const MOL_DOF = 300, MOL_DOFMAX = 90;                                       // abertura (px de 1920 · unidades) y desenfoque máximo (px)
@@ -81,7 +81,7 @@ vec3 molWater(vec3 o, vec3 d, float D, out vec3 T) {
   float sg = molSg();
   T = molTrans(D);
   float pa = molPulseScatter(dot(o, uWaveK), dot(d, uWaveK), D, sg);
-  return (1.0 - T) * molWaterCol(d) + vec3(0.011, 0.05, 0.075) * uField * pa;
+  return (1.0 - T) * molWaterCol(d) + vec3(0.013, 0.062, 0.094) * uField * pa;
 }
 // caja de luz (rectángulo de bordes suaves) vista en el reflejo R
 float molBox(vec3 R, vec3 L, vec3 U, vec2 sz, float soft) {
@@ -303,7 +303,7 @@ function molLayout(rng) {
     const p = v3(x + s * (0.12 + rng() * 0.76), y + s * (0.12 + rng() * 0.76), z + s * (0.12 + rng() * 0.76));
     const d = 14 - p.z; if (d < 0) continue;
     if (Math.abs(p.x + 0.9) > 4 + 0.3 * d || Math.abs(p.y - 0.4) > 4.5 + 0.46 * d) continue;
-    if (p.length() < 2.2 || pos.slice(1, 3).some(o => o.distanceTo(p) < 2.0)) continue;
+    if (p.length() < 2.2 || pos.some(o => o.distanceToSquared(p) < 2.15 * 2.15)) continue;          // nunca se tocan (alcance de cada una ≤ 0,81 + temblor)
     let ok = true, dmin = 1e9;
     for (let i = 0; i < path.length && ok; i++) {
       const c = path[i].p, dc = c.distanceTo(p); dmin = Math.min(dmin, dc); if (dc < 2.5) { ok = false; break; }
@@ -448,9 +448,16 @@ function moleculesAt(t, P = {}) {
     const mOx = (Ox + pv[0]) / 2, mOy = (Oy + pv[1]) / 2, mOz = (Oz + pv[2]) / 2;
     for (const h of [3, 6]) { const hx = (at[b + h] + pv[h]) / 2, hy = (at[b + h + 1] + pv[h + 1]) / 2, hz = (at[b + h + 2] + pv[h + 2]) / 2;
       push(mOx, mOy, mOz, MOL_M.rS, hx, hy, hz, 2, 0, 0, 0, glow, (Ox + at[b + h] - pv[0] - pv[h]) / 2, (Oy + at[b + h + 1] - pv[1] - pv[h + 1]) / 2, (Oz + at[b + h + 2] - pv[2] - pv[h + 2]) / 2); }
-    if (glow > 0.04) push(px, py, pz, 1.15 + 0.35 * glow, 1.0, 0.34, 0.07, 4, 0, 0, 0, 0.42 * glow * glow * glow + 0.025 * glow, px, py, pz);
+    if (glow > 0.04) push(px, py, pz, 1.15 + 0.35 * glow, 1.0, 0.34, 0.07, 4, 0, 0, 0, 0.36 * glow * glow * glow + 0.025 * glow, px, py, pz);
   }
   const fx0 = at[0] - cx, fy0 = at[1] - cy, fz0 = at[2] - cz, focus = P.focus ?? Math.max(1, fx0 * fx + fy0 * fy + fz0 * fz);
+  // el dipolo de la protagonista (opcional, P.dipole 0…1): una nube tenue rojiza en el oxígeno (δ−) y azulada en los hidrógenos (δ+), los colores de los
+  // mapas de carga; para acompañar a los rótulos δ−/δ+ del HUD (MOL.heroAt() da dónde ponerlos)
+  const dip = clamp(P.dipole ?? 0);
+  if (dip > 0.01 && M.vis[0]) {
+    push(at[0], at[1], at[2], 0.62, 1.0, 0.16, 0.2, 4, 0, 0, 0, 0.2 * dip, at[0], at[1], at[2]);
+    for (const h of [3, 6]) push(at[h], at[h + 1], at[h + 2], 0.46, 0.22, 0.52, 1.0, 4, 0, 0, 0, 0.22 * dip, at[h], at[h + 1], at[h + 2]);
+  }
   // enlaces de hidrógeno: puntos tenues entre el hidrógeno de una y el oxígeno de la otra; se rompen al girar o separarse y se rehacen al volver
   for (const bd of M.bonds) {
     if (!M.vis[bd.i] || !M.vis[bd.j] || np > M.MAXP - 20) continue;
@@ -468,7 +475,7 @@ function moleculesAt(t, P = {}) {
   // partículas en suspensión: deriva lenta + el empuje del campo (velocidad ∝ campo → posición ∝ −cos(fase)), con su trazo durante el obturador
   { const Mo = M.motes, NM = Mo.length / 4, Ex = MOL_E.x, Ey = MOL_E.y, Ez = MOL_E.z, Kx = MOL_K.x, Ky = MOL_K.y, Kz = MOL_K.z, Tm = t - 1 / 60;
     for (let i = 0; i < NM && np < M.MAXP - 1; i++) {
-      const bx = Mo[i * 4], by = Mo[i * 4 + 1], bz = Mo[i * 4 + 2], sd = Mo[i * 4 + 3], xi = bx * Kx + by * Ky + bz * Kz, am = 0.17 * field * (0.6 + 0.8 * ((sd * 7.31) % 1));
+      const bx = Mo[i * 4], by = Mo[i * 4 + 1], bz = Mo[i * 4 + 2], sd = Mo[i * 4 + 3], xi = bx * Kx + by * Ky + bz * Kz, am = 0.2 * field * (0.6 + 0.8 * ((sd * 7.31) % 1));
       const sx = bx + 0.16 * Math.sin(t * 0.23 + sd * 61), sy = by + 0.16 * Math.sin(t * 0.19 + sd * 37), sz = bz + 0.16 * Math.sin(t * 0.21 + sd * 17), ph = omega * t - kap * xi, ph0 = omega * Tm - kap * xi;
       const e1 = -am * Math.cos(ph), e0 = -am * Math.cos(ph0);
       const x = sx + Ex * e1, y = sy + Ey * e1, z = sz + Ez * e1;

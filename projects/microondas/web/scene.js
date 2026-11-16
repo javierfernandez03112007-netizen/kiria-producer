@@ -1626,7 +1626,7 @@ const thermalMat = (T0, T1, y0, y1, nz = 0.03) => new THREE.ShaderMaterial({ uni
 let THERM = false;
 function thermal(on) {
   if (on === THERM) return; THERM = on; const U = S.mw.userData, Um = S.mug.userData, my = MUGW.y;
-  const swap = (root, mk) => root.traverse(o => { if (!(o.isMesh || o.isSprite) || o === S.splash || o.parent === S.splash) return; if (on) { o.userData.m0 = o.material; o.material = mk(o); } else if (o.userData.m0) { o.material = o.userData.m0; o.userData.m0 = null; } });
+  const swap = (root, mk) => root.traverse(o => { if (!(o.isMesh || o.isSprite) || o === S.splash || o.parent === S.splash) return; if (on) { o.userData.m0 = o.material; const tm = mk(o); o.material = Array.isArray(o.material) ? o.material.map(() => tm) : tm; } else if (o.userData.m0) { o.material = o.userData.m0; o.userData.m0 = null; } });
   const cool = thermalMat(0.16, 0.12, 0, 26, 0.02), grille = thermalMat(0.34, 0.34, 0, 1, 0.01), plate = thermalMat(0.22, 0.2, 0, 10, 0.02);
   const mug = thermalMat(0.5, 0.33, my + 6.5, my + 9.8, 0.025), water = thermalMat(0.97, 0.9, -1, 1, 0.05);
   swap(S.mw, o => o.material === U.lampGrille.material ? grille : U.plate.getObjectById(o.id) ? plate : cool);
@@ -1673,7 +1673,7 @@ function stageAt(t, st) {
     S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5 + 14 * k, -17 + 10 * k)); }
   if (S.waves) magWavesAt(t, { on: sh === 'G' ? 1 : 0, flow: sh === 'G' ? win(t, SHT.G0, 0.8) : 0 });
   // la carcasa del microondas se vuelve de cristal para enseñar el magnetrón
-  { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
+  { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; if (!THERM) U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
   if (S.mol) moleculesAt(t, { on: sh === 'I' ? 1 : 0, field: sh === 'I' ? win(t, K.intenta4, 0.4) : 0, heat: sh === 'I' ? clamp((t - K.giran4 + 0.2) / (K.calor4 - K.giran4 + 0.6)) : 0 });
   // la mano, en primera persona: entra desde abajo hacia el asa; al estallar, se retira de golpe
   { const vis = sh === 'Q'; S.hand.visible = vis;
@@ -1830,7 +1830,7 @@ function fdaCard(t, a) {
   hg.restore();
 }
 function hudAt(t) {
-  const sh = shotAt(t), dark = ['E', 'F', 'I'].includes(sh); hudPalette(dark); hudBegin(); hdr(t);
+  const sh = shotAt(t); hudPalette(true); hudBegin(); hdr(t);          // siempre texto claro con sombra oscura (se lee sobre cualquier plano)
   const U = S.mw.userData, mw = (x, y, z) => S.mw.localToWorld(v3(x, y, z)), mg = (x, y, z) => S.mug.localToWorld(v3(x, y, z));
   // E: el magnetrón
   if (S.mag && (sh === 'E' || sh === 'F')) { const a = cw(t, K.magnetron2 + 0.35, SHT.F0 + 0.4); const p = S.mag.group.localToWorld(v3(0, 0, 0));
@@ -1838,23 +1838,22 @@ function hudAt(t) {
   // F–G: 2.450 millones de veces por segundo
   countUp(t, cw(t, K.n2450 - 0.1, K.agua4 - 0.2));
   // K: las rayitas del fondo del cazo
-  if (sh === 'K') { const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z); lab(pot.clone().add(v3(-1.5, 0.35, -2)), 'RAYITAS', 'AQUÍ NACEN LAS BURBUJAS', cw(t, K.rayitas5 - 0.1, SHT.L0), { dx: -160, dy: -260 }); }
+  if (sh === 'K') { const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z); lab(pot.clone().add(v3(-0.6, 0.6, -1.2)), 'RAYITAS DEL FONDO', 'AQUÍ NACEN LAS BURBUJAS', cw(t, K.rayitas5 - 0.1, SHT.L0), { dx: -160, dy: -300 }); }
   // L: vista térmica
   if (sh === 'L') { const a = cw(t, SHT.L0 + 0.4, SHT.M0); small('VISTA TÉRMICA', 1640, 26, GREY, a);
-    lab(mg(-1.2, 4.5, -1), 'AGUA', 'LA CALIENTAN LAS ONDAS', cw(t, K.agua6 - 0.1, SHT.M0), { color: HOT, dx: -150, dy: -240 });
-    lab(mg(3.95, 6.5, 0.4), 'TAZA', 'CASI NO SE CALIENTA', cw(t, K.taza6 - 0.1, SHT.M0), { color: COOL, dx: 150, dy: 200 }); }
+    lab(mg(-1.0, MUG.WY, 0.6), 'AGUA', 'LA CALIENTAN LAS ONDAS', cw(t, K.agua6 - 0.1, SHT.M0), { color: HOT, dx: -150, dy: -260 });
+    lab(mg(0, 3.5, 4.1), 'TAZA', 'CASI NO SE CALIENTA', cw(t, K.taza6 - 0.1, SHT.M0), { color: COOL, dx: 150, dy: 220 }); }
   // M: la pared lisa
-  if (sh === 'M') lab(mg(-0.8, 4.2, -3.6), 'PARED LISA', 'NINGÚN SITIO DONDE NACER', cw(t, K.lisa6, SHT.N0), { dx: 160, dy: -250 });
+  if (sh === 'M') lab(v3(MUGW.x - 0.8, MUGW.y + 0.75, MUGW.z - 1.8), 'TAZA LISA', 'NINGÚN SITIO DONDE NACER', cw(t, K.lisa6, SHT.N0), { dx: 160, dy: -300 });
   // N: más de cien grados y quieta
   { const a = cw(t, K.cien7 - 0.05, SHT.O0 - 0.1); if (a > 0.01) { big('> 100 °C', 1480, 150, HOT, a); small(t > K.sigue7 - 0.1 ? 'Y SIGUE QUIETA' : '', 1580, 34, INK, a); } }
   // Q: la FDA
   fdaCard(t, cw(t, K.fda9 + 0.2, SHT.R0 - 0.1, 0.35));
   // S: las vetas del palito
   if (sh === 'S' && S.stick.visible) lab(S.stick.localToWorld(v3(0, 4.5, 0.1)), 'VETAS DE LA MADERA', 'LAS BURBUJAS NACEN AQUÍ', cw(t, K.vetas10 - 0.1, SHT.T0), { dx: 150, dy: -240 });
-  // T: ¿micro o cazo?
-  if (sh === 'T' || sh === 'U') { const a = cw(t, K.micro11 - 0.05, K.mandaselo11 + 0.3);
-    lab(mw(-4, 29, -18), 'MICRO', '', a, { dx: -120, dy: -150 }); lab(v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y + 13.5, STOVE_POS.z + POT_L.z), 'CAZO', '', a * win(t, K.cazo11 - 0.1, 0.2), { dx: 120, dy: -150 });
-    big('¿MICRO O CAZO?', 1520, 96, INK, a); }
+  // T–W: ¿micro o cazo? (un plano para cada palabra)
+  if (sh === 'T' || sh === 'W') { const a = cw(t, K.micro11 - 0.05, K.mandaselo11 + 0.2, 0.15);
+    big(sh === 'T' ? '¿MICRO…' : '…O CAZO?', 1520, 104, sh === 'T' ? INK : HOT, a); }
 }
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
