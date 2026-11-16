@@ -50,7 +50,7 @@ function fdaCard(t, a) {
   hg.restore();
 }
 function hudAt(t) {
-  const sh = shotAt(t), dark = ['E', 'F', 'I'].includes(sh); hudPalette(dark); hudBegin(); hdr(t);
+  const sh = shotAt(t); hudPalette(true); hudBegin(); hdr(t);          // siempre texto claro con sombra oscura (se lee sobre cualquier plano)
   const U = S.mw.userData, mw = (x, y, z) => S.mw.localToWorld(v3(x, y, z)), mg = (x, y, z) => S.mug.localToWorld(v3(x, y, z));
   // E: el magnetrón
   if (S.mag && (sh === 'E' || sh === 'F')) { const a = cw(t, K.magnetron2 + 0.35, SHT.F0 + 0.4); const p = S.mag.group.localToWorld(v3(0, 0, 0));
@@ -58,21 +58,20 @@ function hudAt(t) {
   // F–G: 2.450 millones de veces por segundo
   countUp(t, cw(t, K.n2450 - 0.1, K.agua4 - 0.2));
   // K: las rayitas del fondo del cazo
-  if (sh === 'K') { const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z); lab(pot.clone().add(v3(-1.5, 0.35, -2)), 'RAYITAS', 'AQUÍ NACEN LAS BURBUJAS', cw(t, K.rayitas5 - 0.1, SHT.L0), { dx: -160, dy: -260 }); }
+  if (sh === 'K') { const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z); lab(pot.clone().add(v3(-0.6, 0.6, -1.2)), 'RAYITAS DEL FONDO', 'AQUÍ NACEN LAS BURBUJAS', cw(t, K.rayitas5 - 0.1, SHT.L0), { dx: -160, dy: -300 }); }
   // L: vista térmica
   if (sh === 'L') { const a = cw(t, SHT.L0 + 0.4, SHT.M0); small('VISTA TÉRMICA', 1640, 26, GREY, a);
-    lab(mg(-1.2, 4.5, -1), 'AGUA', 'LA CALIENTAN LAS ONDAS', cw(t, K.agua6 - 0.1, SHT.M0), { color: HOT, dx: -150, dy: -240 });
-    lab(mg(3.95, 6.5, 0.4), 'TAZA', 'CASI NO SE CALIENTA', cw(t, K.taza6 - 0.1, SHT.M0), { color: COOL, dx: 150, dy: 200 }); }
+    lab(mg(-1.0, MUG.WY, 0.6), 'AGUA', 'LA CALIENTAN LAS ONDAS', cw(t, K.agua6 - 0.1, SHT.M0), { color: HOT, dx: -150, dy: -260 });
+    lab(mg(0, 3.5, 4.1), 'TAZA', 'CASI NO SE CALIENTA', cw(t, K.taza6 - 0.1, SHT.M0), { color: COOL, dx: 150, dy: 220 }); }
   // M: la pared lisa
-  if (sh === 'M') lab(mg(-0.8, 4.2, -3.6), 'PARED LISA', 'NINGÚN SITIO DONDE NACER', cw(t, K.lisa6, SHT.N0), { dx: 160, dy: -250 });
+  if (sh === 'M') lab(v3(MUGW.x - 0.8, MUGW.y + 0.75, MUGW.z - 1.8), 'TAZA LISA', 'NINGÚN SITIO DONDE NACER', cw(t, K.lisa6, SHT.N0), { dx: 160, dy: -300 });
   // N: más de cien grados y quieta
   { const a = cw(t, K.cien7 - 0.05, SHT.O0 - 0.1); if (a > 0.01) { big('> 100 °C', 1480, 150, HOT, a); small(t > K.sigue7 - 0.1 ? 'Y SIGUE QUIETA' : '', 1580, 34, INK, a); } }
   // Q: la FDA
   fdaCard(t, cw(t, K.fda9 + 0.2, SHT.R0 - 0.1, 0.35));
   // S: las vetas del palito
   if (sh === 'S' && S.stick.visible) lab(S.stick.localToWorld(v3(0, 4.5, 0.1)), 'VETAS DE LA MADERA', 'LAS BURBUJAS NACEN AQUÍ', cw(t, K.vetas10 - 0.1, SHT.T0), { dx: 150, dy: -240 });
-  // T: ¿micro o cazo?
-  if (sh === 'T' || sh === 'U') { const a = cw(t, K.micro11 - 0.05, K.mandaselo11 + 0.3);
-    lab(mw(-4, 29, -18), 'MICRO', '', a, { dx: -120, dy: -150 }); lab(v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y + 13.5, STOVE_POS.z + POT_L.z), 'CAZO', '', a * win(t, K.cazo11 - 0.1, 0.2), { dx: 120, dy: -150 });
-    big('¿MICRO O CAZO?', 1520, 96, INK, a); }
+  // T–W: ¿micro o cazo? (un plano para cada palabra)
+  if (sh === 'T' || sh === 'W') { const a = cw(t, K.micro11 - 0.05, K.mandaselo11 + 0.2, 0.15);
+    big(sh === 'T' ? '¿MICRO…' : '…O CAZO?', 1520, 104, sh === 'T' ? INK : HOT, a); }
 }

@@ -249,7 +249,7 @@ void main() {
     vec3 core = ty < 0.5 ? vec3(1.0, 0.33, 0.05) : (ty < 1.5 ? vec3(1.0, 0.6, 0.24) : vec3(1.0, 0.4, 0.09));
     float pr = pow(NV, 1.2);
     col = col * (1.0 - 0.65 * glow) + spec * ao * (1.0 - 0.3 * glow);
-    col += mix(vec3(0.62, 0.06, 0.008), core, pr) * (0.3 * glow + 3.2 * glow * glow * glow) * (0.4 + 0.6 * pr);
+    col += mix(vec3(0.62, 0.06, 0.008), core, pr) * (0.3 * glow + 4.4 * glow * glow * glow) * (0.35 + 0.65 * pr);
   }
   vec3 T; float D = length(P);
   vec3 ins = molWater(Ol, Dw, D, T);
@@ -448,7 +448,7 @@ function moleculesAt(t, P = {}) {
     const mOx = (Ox + pv[0]) / 2, mOy = (Oy + pv[1]) / 2, mOz = (Oz + pv[2]) / 2;
     for (const h of [3, 6]) { const hx = (at[b + h] + pv[h]) / 2, hy = (at[b + h + 1] + pv[h + 1]) / 2, hz = (at[b + h + 2] + pv[h + 2]) / 2;
       push(mOx, mOy, mOz, MOL_M.rS, hx, hy, hz, 2, 0, 0, 0, glow, (Ox + at[b + h] - pv[0] - pv[h]) / 2, (Oy + at[b + h + 1] - pv[1] - pv[h + 1]) / 2, (Oz + at[b + h + 2] - pv[2] - pv[h + 2]) / 2); }
-    if (glow > 0.04) push(px, py, pz, 1.05 + 0.3 * glow, 1.0, 0.38, 0.09, 4, 0, 0, 0, 0.16 * glow * glow * glow + 0.02 * glow, px, py, pz);
+    if (glow > 0.04) push(px, py, pz, 1.15 + 0.35 * glow, 1.0, 0.34, 0.07, 4, 0, 0, 0, 0.42 * glow * glow * glow + 0.025 * glow, px, py, pz);
   }
   const fx0 = at[0] - cx, fy0 = at[1] - cy, fz0 = at[2] - cz, focus = P.focus ?? Math.max(1, fx0 * fx + fy0 * fy + fz0 * fz);
   // enlaces de hidrógeno: puntos tenues entre el hidrógeno de una y el oxígeno de la otra; se rompen al girar o separarse y se rehacen al volver
