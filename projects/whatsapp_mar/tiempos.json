@@ -1,0 +1,953 @@
+[
+ {
+  "text": "«Hijo, ¿dónde estás?»… Y tú estás en Brasil.",
+  "start": 0.06,
+  "end": 3.18,
+  "words": [
+   {
+    "w": "«Hijo,",
+    "start": 0.06,
+    "end": 0.54
+   },
+   {
+    "w": "¿dónde",
+    "start": 0.54,
+    "end": 1.1
+   },
+   {
+    "w": "estás?»…",
+    "start": 1.1,
+    "end": 1.61
+   },
+   {
+    "w": "Y",
+    "start": 1.61,
+    "end": 1.81
+   },
+   {
+    "w": "tú",
+    "start": 1.81,
+    "end": 2.13
+   },
+   {
+    "w": "estás",
+    "start": 2.13,
+    "end": 2.53
+   },
+   {
+    "w": "en",
+    "start": 2.53,
+    "end": 2.69
+   },
+   {
+    "w": "Brasil.",
+    "start": 2.69,
+    "end": 3.18
+   }
+  ]
+ },
+ {
+  "text": "Ese mensaje ha cruzado el fondo del mar.",
+  "start": 3.32,
+  "end": 5.68,
+  "words": [
+   {
+    "w": "Ese",
+    "start": 3.32,
+    "end": 3.51
+   },
+   {
+    "w": "mensaje",
+    "start": 3.51,
+    "end": 4.07
+   },
+   {
+    "w": "ha",
+    "start": 4.07,
+    "end": 4.23
+   },
+   {
+    "w": "cruzado",
+    "start": 4.23,
+    "end": 4.71
+   },
+   {
+    "w": "el",
+    "start": 4.71,
+    "end": 4.87
+   },
+   {
+    "w": "fondo",
+    "start": 4.87,
+    "end": 5.19
+   },
+   {
+    "w": "del",
+    "start": 5.19,
+    "end": 5.43
+   },
+   {
+    "w": "mar.",
+    "start": 5.43,
+    "end": 5.68
+   }
+  ]
+ },
+ {
+  "text": "Más de 99 de cada 100 datos entre continentes viajan así: por cables.",
+  "start": 5.84,
+  "end": 10.46,
+  "words": [
+   {
+    "w": "Más",
+    "start": 5.84,
+    "end": 5.99
+   },
+   {
+    "w": "de",
+    "start": 5.99,
+    "end": 6.15
+   },
+   {
+    "w": "99",
+    "start": 6.15,
+    "end": 6.79
+   },
+   {
+    "w": "de",
+    "start": 6.79,
+    "end": 6.95
+   },
+   {
+    "w": "cada",
+    "start": 6.95,
+    "end": 7.19
+   },
+   {
+    "w": "100",
+    "start": 7.19,
+    "end": 7.51
+   },
+   {
+    "w": "datos",
+    "start": 7.51,
+    "end": 7.91
+   },
+   {
+    "w": "entre",
+    "start": 7.91,
+    "end": 8.15
+   },
+   {
+    "w": "continentes",
+    "start": 8.15,
+    "end": 8.71
+   },
+   {
+    "w": "viajan",
+    "start": 8.71,
+    "end": 9.27
+   },
+   {
+    "w": "así:",
+    "start": 9.27,
+    "end": 9.76
+   },
+   {
+    "w": "por",
+    "start": 9.76,
+    "end": 9.95
+   },
+   {
+    "w": "cables.",
+    "start": 9.95,
+    "end": 10.46
+   }
+  ]
+ },
+ {
+  "text": "Y si uno se rompe, un país entero se puede apagar.",
+  "start": 10.66,
+  "end": 14.13,
+  "words": [
+   {
+    "w": "Y",
+    "start": 10.66,
+    "end": 10.791
+   },
+   {
+    "w": "si",
+    "start": 10.791,
+    "end": 10.95
+   },
+   {
+    "w": "uno",
+    "start": 10.95,
+    "end": 11.27
+   },
+   {
+    "w": "se",
+    "start": 11.27,
+    "end": 11.43
+   },
+   {
+    "w": "rompe,",
+    "start": 11.43,
+    "end": 12.27
+   },
+   {
+    "w": "un",
+    "start": 12.27,
+    "end": 12.43
+   },
+   {
+    "w": "país",
+    "start": 12.43,
+    "end": 12.75
+   },
+   {
+    "w": "entero",
+    "start": 12.75,
+    "end": 13.23
+   },
+   {
+    "w": "se",
+    "start": 13.23,
+    "end": 13.39
+   },
+   {
+    "w": "puede",
+    "start": 13.39,
+    "end": 13.63
+   },
+   {
+    "w": "apagar.",
+    "start": 13.63,
+    "end": 14.13
+   }
+  ]
+ },
+ {
+  "text": "Al enviarlo, su móvil lo lanza en ondas hasta la antena más cercana.",
+  "start": 14.27,
+  "end": 17.9,
+  "words": [
+   {
+    "w": "Al",
+    "start": 14.27,
+    "end": 14.35
+   },
+   {
+    "w": "enviarlo,",
+    "start": 14.35,
+    "end": 14.99
+   },
+   {
+    "w": "su",
+    "start": 14.99,
+    "end": 15.15
+   },
+   {
+    "w": "móvil",
+    "start": 15.15,
+    "end": 15.55
+   },
+   {
+    "w": "lo",
+    "start": 15.55,
+    "end": 15.63
+   },
+   {
+    "w": "lanza",
+    "start": 15.63,
+    "end": 15.95
+   },
+   {
+    "w": "en",
+    "start": 15.95,
+    "end": 16.11
+   },
+   {
+    "w": "ondas",
+    "start": 16.11,
+    "end": 16.51
+   },
+   {
+    "w": "hasta",
+    "start": 16.51,
+    "end": 16.75
+   },
+   {
+    "w": "la",
+    "start": 16.75,
+    "end": 16.91
+   },
+   {
+    "w": "antena",
+    "start": 16.91,
+    "end": 17.31
+   },
+   {
+    "w": "más",
+    "start": 17.31,
+    "end": 17.47
+   },
+   {
+    "w": "cercana.",
+    "start": 17.47,
+    "end": 17.9
+   }
+  ]
+ },
+ {
+  "text": "Ahí entra en un cable de fibra y se convierte en luz.",
+  "start": 18.15,
+  "end": 21.33,
+  "words": [
+   {
+    "w": "Ahí",
+    "start": 18.15,
+    "end": 18.39
+   },
+   {
+    "w": "entra",
+    "start": 18.39,
+    "end": 18.79
+   },
+   {
+    "w": "en",
+    "start": 18.79,
+    "end": 18.95
+   },
+   {
+    "w": "un",
+    "start": 18.95,
+    "end": 19.03
+   },
+   {
+    "w": "cable",
+    "start": 19.03,
+    "end": 19.35
+   },
+   {
+    "w": "de",
+    "start": 19.35,
+    "end": 19.43
+   },
+   {
+    "w": "fibra",
+    "start": 19.43,
+    "end": 19.99
+   },
+   {
+    "w": "y",
+    "start": 19.99,
+    "end": 20.11
+   },
+   {
+    "w": "se",
+    "start": 20.11,
+    "end": 20.27
+   },
+   {
+    "w": "convierte",
+    "start": 20.27,
+    "end": 20.83
+   },
+   {
+    "w": "en",
+    "start": 20.83,
+    "end": 20.99
+   },
+   {
+    "w": "luz.",
+    "start": 20.99,
+    "end": 21.33
+   }
+  ]
+ },
+ {
+  "text": "Luz que corre por un hilo de cristal fino como un pelo, a 200.000 kilómetros por segundo.",
+  "start": 21.43,
+  "end": 26.75,
+  "words": [
+   {
+    "w": "Luz",
+    "start": 21.43,
+    "end": 21.75
+   },
+   {
+    "w": "que",
+    "start": 21.75,
+    "end": 21.83
+   },
+   {
+    "w": "corre",
+    "start": 21.83,
+    "end": 22.15
+   },
+   {
+    "w": "por",
+    "start": 22.15,
+    "end": 22.31
+   },
+   {
+    "w": "un",
+    "start": 22.31,
+    "end": 22.47
+   },
+   {
+    "w": "hilo",
+    "start": 22.47,
+    "end": 22.79
+   },
+   {
+    "w": "de",
+    "start": 22.79,
+    "end": 22.87
+   },
+   {
+    "w": "cristal",
+    "start": 22.87,
+    "end": 23.27
+   },
+   {
+    "w": "fino",
+    "start": 23.27,
+    "end": 23.67
+   },
+   {
+    "w": "como",
+    "start": 23.67,
+    "end": 23.83
+   },
+   {
+    "w": "un",
+    "start": 23.83,
+    "end": 23.99
+   },
+   {
+    "w": "pelo,",
+    "start": 23.99,
+    "end": 24.48
+   },
+   {
+    "w": "a",
+    "start": 24.48,
+    "end": 24.64
+   },
+   {
+    "w": "200.000",
+    "start": 24.64,
+    "end": 25.52
+   },
+   {
+    "w": "kilómetros",
+    "start": 25.52,
+    "end": 26.16
+   },
+   {
+    "w": "por",
+    "start": 26.16,
+    "end": 26.32
+   },
+   {
+    "w": "segundo.",
+    "start": 26.32,
+    "end": 26.75
+   }
+  ]
+ },
+ {
+  "text": "En Portugal se hunde en el mar y cruza 6.000 kilómetros hasta Brasil… en tres centésimas de segundo.",
+  "start": 26.94,
+  "end": 32.88,
+  "words": [
+   {
+    "w": "En",
+    "start": 26.94,
+    "end": 27.08
+   },
+   {
+    "w": "Portugal",
+    "start": 27.08,
+    "end": 27.56
+   },
+   {
+    "w": "se",
+    "start": 27.56,
+    "end": 27.72
+   },
+   {
+    "w": "hunde",
+    "start": 27.72,
+    "end": 28.12
+   },
+   {
+    "w": "en",
+    "start": 28.12,
+    "end": 28.28
+   },
+   {
+    "w": "el",
+    "start": 28.28,
+    "end": 28.36
+   },
+   {
+    "w": "mar",
+    "start": 28.36,
+    "end": 28.6
+   },
+   {
+    "w": "y",
+    "start": 28.6,
+    "end": 28.76
+   },
+   {
+    "w": "cruza",
+    "start": 28.76,
+    "end": 29.24
+   },
+   {
+    "w": "6.000",
+    "start": 29.24,
+    "end": 29.8
+   },
+   {
+    "w": "kilómetros",
+    "start": 29.8,
+    "end": 30.28
+   },
+   {
+    "w": "hasta",
+    "start": 30.28,
+    "end": 30.52
+   },
+   {
+    "w": "Brasil…",
+    "start": 30.52,
+    "end": 30.99
+   },
+   {
+    "w": "en",
+    "start": 30.99,
+    "end": 31.23
+   },
+   {
+    "w": "tres",
+    "start": 31.23,
+    "end": 31.55
+   },
+   {
+    "w": "centésimas",
+    "start": 31.55,
+    "end": 32.35
+   },
+   {
+    "w": "de",
+    "start": 32.35,
+    "end": 32.51
+   },
+   {
+    "w": "segundo.",
+    "start": 32.51,
+    "end": 32.88
+   }
+  ]
+ },
+ {
+  "text": "Hay más de 600 cables así, y cada año se rompen entre 150 y 200.",
+  "start": 33.0,
+  "end": 38.19,
+  "words": [
+   {
+    "w": "Hay",
+    "start": 33.0,
+    "end": 33.21
+   },
+   {
+    "w": "más",
+    "start": 33.21,
+    "end": 33.37
+   },
+   {
+    "w": "de",
+    "start": 33.37,
+    "end": 33.53
+   },
+   {
+    "w": "600",
+    "start": 33.53,
+    "end": 34.17
+   },
+   {
+    "w": "cables",
+    "start": 34.17,
+    "end": 34.65
+   },
+   {
+    "w": "así,",
+    "start": 34.65,
+    "end": 35.09
+   },
+   {
+    "w": "y",
+    "start": 35.09,
+    "end": 35.17
+   },
+   {
+    "w": "cada",
+    "start": 35.17,
+    "end": 35.41
+   },
+   {
+    "w": "año",
+    "start": 35.41,
+    "end": 35.65
+   },
+   {
+    "w": "se",
+    "start": 35.65,
+    "end": 35.81
+   },
+   {
+    "w": "rompen",
+    "start": 35.81,
+    "end": 36.29
+   },
+   {
+    "w": "entre",
+    "start": 36.29,
+    "end": 36.61
+   },
+   {
+    "w": "150",
+    "start": 36.61,
+    "end": 37.41
+   },
+   {
+    "w": "y",
+    "start": 37.41,
+    "end": 37.57
+   },
+   {
+    "w": "200.",
+    "start": 37.57,
+    "end": 38.19
+   }
+  ]
+ },
+ {
+  "text": "Y no son los tiburones: tres de cada cuatro veces es un ancla o una red de pesca.",
+  "start": 38.27,
+  "end": 42.91,
+  "words": [
+   {
+    "w": "Y",
+    "start": 38.27,
+    "end": 38.41
+   },
+   {
+    "w": "no",
+    "start": 38.41,
+    "end": 38.65
+   },
+   {
+    "w": "son",
+    "start": 38.65,
+    "end": 38.81
+   },
+   {
+    "w": "los",
+    "start": 38.81,
+    "end": 38.97
+   },
+   {
+    "w": "tiburones:",
+    "start": 38.97,
+    "end": 39.84
+   },
+   {
+    "w": "tres",
+    "start": 39.84,
+    "end": 40.05
+   },
+   {
+    "w": "de",
+    "start": 40.05,
+    "end": 40.21
+   },
+   {
+    "w": "cada",
+    "start": 40.21,
+    "end": 40.45
+   },
+   {
+    "w": "cuatro",
+    "start": 40.45,
+    "end": 40.69
+   },
+   {
+    "w": "veces",
+    "start": 40.69,
+    "end": 41.01
+   },
+   {
+    "w": "es",
+    "start": 41.01,
+    "end": 41.17
+   },
+   {
+    "w": "un",
+    "start": 41.17,
+    "end": 41.33
+   },
+   {
+    "w": "ancla",
+    "start": 41.33,
+    "end": 41.89
+   },
+   {
+    "w": "o",
+    "start": 41.89,
+    "end": 42.05
+   },
+   {
+    "w": "una",
+    "start": 42.05,
+    "end": 42.21
+   },
+   {
+    "w": "red",
+    "start": 42.21,
+    "end": 42.45
+   },
+   {
+    "w": "de",
+    "start": 42.45,
+    "end": 42.61
+   },
+   {
+    "w": "pesca.",
+    "start": 42.61,
+    "end": 42.91
+   }
+  ]
+ },
+ {
+  "text": "En 2022, un volcán partió el único cable de Tonga y el país entero se quedó cinco semanas casi sin internet.",
+  "start": 43.03,
+  "end": 49.88,
+  "words": [
+   {
+    "w": "En",
+    "start": 43.03,
+    "end": 43.11
+   },
+   {
+    "w": "2022,",
+    "start": 43.11,
+    "end": 44.12
+   },
+   {
+    "w": "un",
+    "start": 44.12,
+    "end": 44.285
+   },
+   {
+    "w": "volcán",
+    "start": 44.285,
+    "end": 44.67
+   },
+   {
+    "w": "partió",
+    "start": 44.67,
+    "end": 45.15
+   },
+   {
+    "w": "el",
+    "start": 45.15,
+    "end": 45.31
+   },
+   {
+    "w": "único",
+    "start": 45.31,
+    "end": 45.55
+   },
+   {
+    "w": "cable",
+    "start": 45.55,
+    "end": 45.87
+   },
+   {
+    "w": "de",
+    "start": 45.87,
+    "end": 46.03
+   },
+   {
+    "w": "Tonga",
+    "start": 46.03,
+    "end": 46.55
+   },
+   {
+    "w": "y",
+    "start": 46.55,
+    "end": 46.63
+   },
+   {
+    "w": "el",
+    "start": 46.63,
+    "end": 46.79
+   },
+   {
+    "w": "país",
+    "start": 46.79,
+    "end": 47.11
+   },
+   {
+    "w": "entero",
+    "start": 47.11,
+    "end": 47.43
+   },
+   {
+    "w": "se",
+    "start": 47.43,
+    "end": 47.59
+   },
+   {
+    "w": "quedó",
+    "start": 47.59,
+    "end": 47.99
+   },
+   {
+    "w": "cinco",
+    "start": 47.99,
+    "end": 48.39
+   },
+   {
+    "w": "semanas",
+    "start": 48.39,
+    "end": 48.79
+   },
+   {
+    "w": "casi",
+    "start": 48.79,
+    "end": 49.11
+   },
+   {
+    "w": "sin",
+    "start": 49.11,
+    "end": 49.35
+   },
+   {
+    "w": "internet.",
+    "start": 49.35,
+    "end": 49.88
+   }
+  ]
+ },
+ {
+  "text": "Así que contéstale: su mensaje ha cruzado un océano para encontrarte.",
+  "start": 49.92,
+  "end": 53.8,
+  "words": [
+   {
+    "w": "Así",
+    "start": 49.92,
+    "end": 50.09
+   },
+   {
+    "w": "que",
+    "start": 50.09,
+    "end": 50.25
+   },
+   {
+    "w": "contéstale:",
+    "start": 50.25,
+    "end": 51.16
+   },
+   {
+    "w": "su",
+    "start": 51.16,
+    "end": 51.33
+   },
+   {
+    "w": "mensaje",
+    "start": 51.33,
+    "end": 51.81
+   },
+   {
+    "w": "ha",
+    "start": 51.81,
+    "end": 51.97
+   },
+   {
+    "w": "cruzado",
+    "start": 51.97,
+    "end": 52.45
+   },
+   {
+    "w": "un",
+    "start": 52.45,
+    "end": 52.53
+   },
+   {
+    "w": "océano",
+    "start": 52.53,
+    "end": 53.01
+   },
+   {
+    "w": "para",
+    "start": 53.01,
+    "end": 53.25
+   },
+   {
+    "w": "encontrarte.",
+    "start": 53.25,
+    "end": 53.8
+   }
+  ]
+ },
+ {
+  "text": "¿Satélite o cable? Mándaselo a tu madre.",
+  "start": 53.93,
+  "end": 56.406,
+  "words": [
+   {
+    "w": "¿Satélite",
+    "start": 53.93,
+    "end": 54.65
+   },
+   {
+    "w": "o",
+    "start": 54.65,
+    "end": 54.79
+   },
+   {
+    "w": "cable?",
+    "start": 54.79,
+    "end": 55.328
+   },
+   {
+    "w": "Mándaselo",
+    "start": 55.328,
+    "end": 55.935
+   },
+   {
+    "w": "a",
+    "start": 55.935,
+    "end": 56.014
+   },
+   {
+    "w": "tu",
+    "start": 56.014,
+    "end": 56.171
+   },
+   {
+    "w": "madre.",
+    "start": 56.171,
+    "end": 56.406
+   }
+  ]
+ }
+]
