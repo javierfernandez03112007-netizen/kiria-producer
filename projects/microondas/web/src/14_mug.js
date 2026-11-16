@@ -47,9 +47,9 @@ function buildMug(o = {}) {
 }
 // la superficie del agua: menisco en el borde + rizos de hervor (amp) + el bulto del centro (bulge, en cm) y el anillo que se abre (crown)
 function mugSurface(M, t, o = {}) {
-  const U = M.userData, P = U.surf.attributes.position, B = U.surfBase, amp = o.amp ?? 0, bulge = o.bulge ?? 0, crown = o.crown ?? 0;
+  const U = M.userData, P = U.surf.attributes.position, B = U.surfBase, amp = o.amp ?? 0, bulge = o.bulge ?? 0, crown = o.crown ?? 0, rise = o.rise ?? 0;
   for (let k = 0; k < P.count; k++) { const x = B[k * 3], z = B[k * 3 + 2], r = Math.hypot(x, z), u = r / U.rW;
-    let y = 0.09 * Math.pow(u, 14);                                            // menisco
+    let y = 0.09 * Math.pow(u, 14) + rise;                                     // menisco (y el nivel que sube al hervir)
     y += amp * (0.12 * Math.sin(x * 5.1 + t * 13) * Math.sin(z * 4.3 - t * 11) + 0.06 * Math.sin(r * 9 - t * 20));
     y += bulge * Math.exp(-r * r / 2.2) + crown * 0.6 * Math.exp(-Math.pow((r - 1.6 - crown * 1.5) / 0.55, 2));
     P.setY(k, y); }
@@ -64,16 +64,30 @@ function mugCut(M, on) {
   for (const s of U.surfMeshes) { s.material.clippingPlanes = cp; s.material.needsUpdate = true; }
   U.waterBody.visible = !!on; U.waterBody.material.clippingPlanes = cp;
 }
-// ---------- el estallido: gotas (instanciadas, se estiran con la velocidad), la columna y el vapor. τ = tiempo REAL del estallido en segundos
-function buildSplash(n = 1400, seed = 1) {
-  const G = new THREE.Group(), geo = new THREE.IcosahedronGeometry(1, 2);
-  const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.0, metalness: 0, transmission: 1, thickness: 0.6, ior: 1.33, envMapIntensity: 2.2, specularIntensity: 1 });
+// ---------- el estallido (hervor de golpe del agua sobrecalentada), a cámara lenta. τ = tiempo REAL desde que empieza, en segundos.
+// Lo que se ve en los vídeos de verdad: el agua sube de nivel, la superficie se llena de burbujas de vapor que revientan y lanzan rocío fino, del centro sale un
+// chorro de gotas alargadas (hacia la cámara si o.dir) y sale vapor. Las gotas se pegan al cristal de la puerta cerrada o caen a la encimera si está abierta.
+const SPL = { NB: 64 };
+const boilLevel = tau => tau <= 0 ? 0 : 1.3 * clamp(tau / 0.012) * (1 - 0.6 * clamp((tau - 0.06) / 0.08));
+function buildSplash(n = 2600, seed = 1) {
+  const G = new THREE.Group(), geo = new THREE.SphereGeometry(1, 14, 10);
+  // gota = lente pequeña: casi negra en el centro (deja ver el fondo), borde brillante por Fresnel y el destello de la lámpara (como en la fotografía de alta velocidad)
+  const m = new THREE.MeshPhysicalMaterial({ color: 0x0a0d10, roughness: 0.02, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.0, specularIntensity: 1, ior: 1.33, transparent: true, opacity: 0.72, envMapIntensity: 3.2, depthWrite: false });
+  m.userData.envFixed = 1.6;                                                              // reflejos fijos (no se apagan dentro del horno: si no, no se verían)
   const im = new THREE.InstancedMesh(geo, m, n); im.frustumCulled = false; im.renderOrder = 9; G.add(im);
-  const D = new Float32Array(n * 8);           // x0, z0, vx, vy, vz, size, τ0, kind
-  for (let i = 0; i < n; i++) { const h = k => hash(i * 7.31 + k * 1.913 + seed * 13.7); const core = i < n * 0.18;
-    const r = (core ? 1.1 : 3.4) * Math.sqrt(h(1)), a = h(2) * 6.283, x0 = Math.cos(a) * r, z0 = Math.sin(a) * r, up = core ? 60 + 70 * h(3) : 80 + 140 * h(3), out = (core ? 8 : 20) + 50 * h(4) * (r / 3.4);
-    D.set([x0, z0, Math.cos(a) * out, up, Math.sin(a) * out, core ? 0.05 + 0.1 * h(5) : 0.012 + 0.055 * Math.pow(h(5), 2), (core ? 0.004 : 0.012) * h(6) + (r / 3.4) * 0.01, core ? 1 : 0], i * 8); }
-  _o.scale.setScalar(0.0001); _o.position.set(0, -1000, 0); _o.updateMatrix(); for (let i = 0; i < n; i++) im.setMatrixAt(i, _o.matrix);
+  // burbujas que asoman y revientan en la superficie
+  const NB = SPL.NB, BD = new Float32Array(NB * 5);                                     // x, z, rMax, nace, revienta
+  for (let j = 0; j < NB; j++) { const h = k => hash(j * 5.13 + k * 2.37 + seed * 3.3), r = 3.2 * Math.sqrt(h(1)), a = h(2) * 6.283, tb = 0.055 * Math.pow(h(4), 1.5);
+    BD.set([Math.cos(a) * r, Math.sin(a) * r, 0.22 + 0.55 * Math.pow(h(3), 1.6), tb, tb + 0.004 + 0.011 * h(5)], j * 5); }
+  const bub = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 28, 18), bubbleMat(0.45), NB); bub.frustumCulled = false; bub.renderOrder = 8; G.add(bub);
+  // gotas: el chorro del centro (gordas y alargadas) y el rocío de cada burbuja que revienta
+  const D = new Float32Array(n * 8);                                                     // x0, z0, vx, vy, vz, tamaño, τ0, tipo
+  for (let i = 0; i < n; i++) { const h = k => hash(i * 7.31 + k * 1.913 + seed * 13.7), core = i < n * 0.14;
+    if (core) { const r = 1.0 * Math.sqrt(h(1)), a = h(2) * 6.283, out = 4 + 22 * h(4);
+      D.set([Math.cos(a) * r, Math.sin(a) * r, Math.cos(a) * out, 110 + 170 * h(3), Math.sin(a) * out, 0.035 + 0.06 * Math.pow(h(5), 1.3), 0.008 + 0.03 * h(6), 1], i * 8); }
+    else { const j = Math.floor(h(7) * NB), bx = BD[j * 5], bz = BD[j * 5 + 1], br = BD[j * 5 + 2], a = h(2) * 6.283, out = 8 + 45 * h(4);
+      D.set([bx + Math.cos(a) * br * 0.6, bz + Math.sin(a) * br * 0.6, Math.cos(a) * out, (35 + 150 * h(3)) * (0.6 + br), Math.sin(a) * out, 0.01 + 0.04 * Math.pow(h(5), 2.2), BD[j * 5 + 4] + 0.002 * h(6), 0], i * 8); } }
+  _o.scale.setScalar(0.0001); _o.position.set(0, -1000, 0); _o.updateMatrix(); for (let i = 0; i < n; i++) im.setMatrixAt(i, _o.matrix); for (let j = 0; j < NB; j++) bub.setMatrixAt(j, _o.matrix);
   // vapor: nubecillas (textura de ruido) que suben, crecen y se deshacen; a contraluz de la lámpara del horno brillan
   const st = canvasTex(256, 256, (c, w, h) => { const img = c.createImageData(w, h), d = img.data;
     const n2 = (x, y, f) => { let v = 0, a = 1, s = 0; for (let o = 0; o < 5; o++) { v += a * (Math.sin(x * f * 1.7 + hash(o * 3.1) * 9) * Math.sin(y * f * 1.3 + hash(o * 7.7) * 9) * 0.5 + 0.5); s += a; a *= 0.55; f *= 2.1; } return v / s; };
@@ -81,70 +95,58 @@ function buildSplash(n = 1400, seed = 1) {
       const a = fall * Math.pow(n2(u * 6, v * 6, 1.2), 2.2) * 1.6, i = (y * w + x) * 4; d[i] = d[i + 1] = d[i + 2] = 255; d[i + 3] = Math.min(255, a * 255); }
     c.putImageData(img, 0, 0); });
   const steam = []; for (let i = 0; i < 70; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: st, color: 0xfff4e6, transparent: true, depthWrite: false, opacity: 0, rotation: hash(i * 9.1) * 6.28 })); s.renderOrder = 10; G.add(s); steam.push(s); }
-  G.userData = { im, D, n, steam, seed }; return G;
+  G.userData = { im, D, n, steam, seed, bub, BD, NB }; return G;
 }
 const _sv = new THREE.Vector3(), _sq = new THREE.Quaternion(), _sY = new THREE.Vector3(0, 1, 0);
-// τ: segundos reales desde que estalla; o.dir: empuja el chorro hacia un lado (p. ej. hacia la cámara); o.floor: altura (local) del suelo del horno;
-// o.wallZ: con la puerta cerrada, las gotas se quedan pegadas al cristal (z local) y resbalan; o.frontZ + o.floorOut: con la puerta abierta, más allá de frontZ caen a la encimera
+// o.dir: hacia dónde se inclina el chorro; o.floor: altura (local) del suelo del horno; o.wallZ: con la puerta cerrada, las gotas se quedan pegadas al cristal (z local)
+// y resbalan; o.frontZ + o.floorOut: con la puerta abierta, más allá de frontZ caen a la encimera
 function splashAt(SP, tau, o = {}) {
-  const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, wallZ = o.wallZ ?? null, frontZ = o.frontZ ?? 1e9, floorOut = o.floorOut ?? floor;
+  const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, wallZ = o.wallZ ?? null, frontZ = o.frontZ ?? 1e9, floorOut = o.floorOut ?? floor, lv = boilLevel(tau);
   for (let i = 0; i < U.n; i++) { const b = i * 8, t = tau - D[b + 6];
     if (tau <= 0 || t <= 0) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); continue; }
-    let vx = D[b + 2], vy = D[b + 3], vz = D[b + 4]; if (dir) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
-    let x = D[b] + vx * t, y = MUG.WY + vy * t - 0.5 * g * t * t, z = D[b + 1] + vz * t, vyy = vy - g * t, s = D[b + 5], flat = 0;
+    let vx = D[b + 2], vy = D[b + 3], vz = D[b + 4]; if (dir) { const k = D[b + 7] ? 0.5 : 0.3; vx += dir.x * vy * k; vz += dir.z * vy * k; }
+    let x = D[b] + vx * t, y = MUG.WY + lv + vy * t - 0.5 * g * t * t, z = D[b + 1] + vz * t, vyy = vy - g * t, s = D[b + 5] * clamp(t / 0.002), flat = 0;
     if (wallZ !== null && z > wallZ && vz > 0) {                                                        // choca con el cristal de la puerta y resbala
-      const th = (wallZ - D[b + 1]) / vz, yh = MUG.WY + vy * th - 0.5 * g * th * th; x = D[b] + vx * th; z = wallZ; y = Math.max(floor, yh - 5 * (t - th)); vx = 0; vyy = -5; vz = 0; flat = 1; }
+      const th = (wallZ - D[b + 1]) / vz, yh = MUG.WY + lv + vy * th - 0.5 * g * th * th; x = D[b] + vx * th; z = wallZ; y = Math.max(floor, yh - 5 * (t - th)); vx = 0; vyy = -5; vz = 0; flat = 1; }
     const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.1, fl = z > frontZ ? floorOut : floor;
-    if (inside && y < MUG.WY && vyy < 0) s *= clamp((y - MUG.WY + 1.2) / 1.2);                   // las que vuelven a caer dentro se hunden
+    if (inside && y < MUG.WY + lv && vyy < 0) s *= clamp((y - MUG.WY - lv + 0.6) / 0.6);              // las que vuelven a caer dentro se hunden
     if (!inside && y < fl) { const tl = (y - fl) / Math.max(1, -vyy); y = fl; s *= clamp(1 + tl * 10); flat = 2; }   // las que caen fuera se aplastan y se van
     if (flat === 1) { _o.position.set(x, y, z - s * 0.3); _o.quaternion.identity(); _o.scale.set(s * 1.5, s * 1.9, Math.max(0.0001, s * 0.35)); }
     else if (flat === 2) { _o.position.set(x, y + s * 0.15, z); _o.quaternion.identity(); _o.scale.set(Math.max(0.0001, s * 1.7), Math.max(0.0001, s * 0.3), Math.max(0.0001, s * 1.7)); }
-    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(2.5, sp * 0.008 * (o.blur ?? 1));
+    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(D[b + 7] ? 3.2 : 2.2, sp * 0.009 * (o.blur ?? 1));
       _o.position.set(x, y, z); _sv.set(vx, vyy, vz).normalize(); _o.quaternion.setFromUnitVectors(_sY, _sv);
       _o.scale.set(Math.max(0.0001, s), Math.max(0.0001, s * stretch), Math.max(0.0001, s)); }
     _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); }
   U.im.instanceMatrix.needsUpdate = true;
-  U.steam.forEach((s, i) => { const t = tau - 0.006 - (i % 14) * 0.005, k = clamp(t / 0.16); s.visible = t > 0 && (o.steam ?? 1) > 0;
+  // las burbujas de la superficie: asoman (casquete), crecen y revientan
+  for (let j = 0; j < U.NB; j++) { const b = j * 5, u = (tau - U.BD[b + 3]) / (U.BD[b + 4] - U.BD[b + 3]);
+    if (tau <= 0 || u <= 0 || u >= 1) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); }
+    else { const r = U.BD[b + 2] * Math.pow(sm5(clamp(u * 1.25)), 0.6); _o.position.set(U.BD[b], MUG.WY + lv - r * 0.45, U.BD[b + 1]); _o.quaternion.identity(); _o.scale.set(r, r * 0.9, r); }
+    _o.updateMatrix(); U.bub.setMatrixAt(j, _o.matrix); }
+  U.bub.instanceMatrix.needsUpdate = true;
+  U.steam.forEach((s, i) => { const t = tau - 0.012 - (i % 14) * 0.006, k = clamp(t / 0.16); s.visible = t > 0 && (o.steam ?? 1) > 0;
     if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 0.6 + 2.6 * hash(i * 5.1) + 9 * k * hash(i * 1.3), d = o.dir ? 6 * k : 0;
-    s.position.set(Math.cos(a) * r + (o.dir ? o.dir.x * d : 0), MUG.WY + 1 + 16 * Math.pow(k, 0.7) * (0.4 + hash(i * 2.9)), Math.sin(a) * r + (o.dir ? o.dir.z * d : 0));
+    s.position.set(Math.cos(a) * r + (o.dir ? o.dir.x * d : 0), MUG.WY + lv + 1 + 16 * Math.pow(k, 0.7) * (0.4 + hash(i * 2.9)), Math.sin(a) * r + (o.dir ? o.dir.z * d : 0));
     s.scale.setScalar(2.2 + 9 * Math.pow(k, 0.6) * (0.6 + 0.8 * hash(i * 4.4))); s.material.rotation = hash(i * 9.1) * 6.28 + k * (hash(i) - 0.5) * 2;
-    s.material.opacity = 0.42 * Math.sin(Math.PI * clamp(k * 1.05)) * (o.steam ?? 1); });
+    s.material.opacity = 0.34 * Math.sin(Math.PI * clamp(k * 1.05)) * (o.steam ?? 1); });
 }
-// ---------- el agua que estalla, continua (metaballs → superficie con marching cubes): primero se abomba, luego sube una columna que se rompe en
-// gotas gordas y un anillo que salpica hacia fuera. τ en segundos reales. Va en el grupo del estallido (coordenadas de la taza, sin girar).
-const ERU = { HE: 11, Y0: -3.5, res: 84 };                 // cubo de 22 cm: de WY-3,5 a WY+18,5; celda ≈ 0,26 cm
+// ---------- el bulto del principio (el agua se abomba antes de reventar), continuo: metaballs → superficie con marching cubes. Va en el grupo del estallido.
+const ERU = { HE: 6, Y0: -3.2, res: 72 };                 // cubo de 12 cm: de WY-3,2 a WY+8,8; celda ≈ 0,17 cm
 function buildErupt(seed = 3) {
-  const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.025, metalness: 0, transmission: 1, thickness: 1.2, ior: 1.33, specularIntensity: 1, envMapIntensity: 1.5, attenuationColor: new THREE.Color(0xd8f0f2), attenuationDistance: 12 });
-  const mc = new MarchingCubes(ERU.res, mat, false, false, 90000); mc.isolation = 80; mc.frustumCulled = false; mc.renderOrder = 8;
-  mc.scale.setScalar(ERU.HE); mc.position.set(0, MUG.WY + ERU.Y0 + ERU.HE, 0); mc.castShadow = false;
-  const B = [];                                            // bolas: x0, y0, z0, vx, vy, vz, r0, t0, decay, kind (0 bulto, 1 columna, 2 anillo, 3 gotas gordas)
-  const h = (i, k) => hash(i * 4.77 + k * 1.31 + seed * 9.1);
-  B.push([0, -1.6, 0, 0, 34, 0, 2.3, 0.0, 70, 0]);                                                    // el bulto del centro
-  for (let i = 0; i < 12; i++) { const a = h(i, 1) * 6.283, r = 0.5 * h(i, 2);                       // la columna
-    B.push([Math.cos(a) * r, -0.4, Math.sin(a) * r, Math.cos(a) * 9 * h(i, 3), 70 + 120 * Math.pow(i / 11, 0.8) + 25 * h(i, 4), Math.sin(a) * 9 * h(i, 3), 1.05 - 0.04 * i + 0.2 * h(i, 5), 0.004 + 0.0016 * i, 9 + 6 * h(i, 6), 1]); }
-  for (let i = 0; i < 18; i++) { const a = (i + 0.4 * h(i, 7)) / 18 * 6.283, r = 1.8 + 0.8 * h(i, 8), out = 30 + 40 * h(i, 9);   // el anillo (corona)
-    B.push([Math.cos(a) * r, 0.1, Math.sin(a) * r, Math.cos(a) * out, 45 + 60 * h(i, 10), Math.sin(a) * out, 0.55 + 0.25 * h(i, 11), 0.008 + 0.006 * h(i, 12), 7 + 6 * h(i, 13), 2]); }
-  for (let i = 0; i < 16; i++) { const a = h(i, 14) * 6.283, r = 1.4 * h(i, 15), out = 12 + 40 * h(i, 16);  // gotas gordas que salen de la columna
-    B.push([Math.cos(a) * r, 0.5, Math.sin(a) * r, Math.cos(a) * out, 90 + 110 * h(i, 17), Math.sin(a) * out, 0.38 + 0.25 * h(i, 18), 0.012 + 0.02 * h(i, 19), 4 + 4 * h(i, 20), 3]); }
-  mc.userData = { B }; return mc;
+  const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.02, metalness: 0, transmission: 1, thickness: 1.5, ior: 1.33, specularIntensity: 1, envMapIntensity: 1.6, attenuationColor: new THREE.Color(0xd8f0f2), attenuationDistance: 10 });
+  const mc = new THREE.Group(), m = new MarchingCubes(ERU.res, mat, false, false, 60000); m.isolation = 80; m.frustumCulled = false; m.renderOrder = 8;
+  m.scale.setScalar(ERU.HE); m.position.set(0, MUG.WY + ERU.Y0 + ERU.HE, 0); mc.add(m);
+  const B = [[0, 0, 1.45, 1]];                                                            // x, z, radio, peso: el bulto del centro y los grumos de su superficie
+  for (let i = 0; i < 16; i++) { const h = k => hash(i * 4.77 + k * 1.31 + seed * 9.1), a = h(1) * 6.283, r = 0.4 + 1.6 * h(2); B.push([Math.cos(a) * r, Math.sin(a) * r, 0.35 + 0.4 * h(3), 0.6 + 0.4 * h(4)]); }
+  mc.userData = { m, B }; return mc;
 }
-// o.dir: hacia dónde se inclina el chorro; o.wallZ / o.floor como en splashAt
 function eruptAt(EP, tau, o = {}) {
-  const B = EP.userData.B, g = 981, dir = o.dir || null, HE = ERU.HE, cy = MUG.WY + ERU.Y0 + HE, iso = EP.isolation, sub = 12, wallZ = o.wallZ ?? null, floor = o.floor ?? -0.05;
-  EP.visible = tau > 0.0005; if (!EP.visible) return; EP.reset(); let n = 0;
-  for (const b of B) { const t = tau - b[7]; if (t <= 0) continue;
-    let vx = b[3], vy = b[4], vz = b[5]; if (dir && b[9] > 0) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
-    let x = b[0] + vx * t, y = MUG.WY + b[1] + vy * t - 0.5 * g * t * t, z = b[2] + vz * t, r = b[6];
-    if (b[9] === 0) { r = b[6] * Math.exp(-Math.pow(Math.max(0, t - 0.012) * b[8], 2)); y = MUG.WY + b[1] + Math.min(vy * t, 2.6); }      // el bulto sube y se deshace
-    else r *= Math.exp(-t * b[8]) * clamp(t / 0.004);                                                                                // crece al salir y se adelgaza (se rompe en gotas)
-    if (wallZ !== null && z > wallZ - r) z = wallZ - r;
-    const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.3;
-    if (inside && y < MUG.WY - 0.3 && b[9] > 0 && vy - g * t < 0) r *= clamp((y - MUG.WY + 1.5) / 1.2);                          // vuelve a caer dentro
-    if (!inside && y < floor + r * 0.5) { y = floor + r * 0.5; r *= 0.85; }
-    if (r < 0.12) continue;
-    const nx = x / (2 * HE) + 0.5, ny = (y - cy) / (2 * HE) + 0.5, nz = z / (2 * HE) + 0.5; if (nx < 0.02 || nx > 0.98 || ny < 0.02 || ny > 0.98 || nz < 0.02 || nz > 0.98) continue;
-    const d = r / (2 * HE); EP.addBall(nx, ny, nz, d * d * (iso + sub), sub); n++; }
-  EP.update(); EP.visible = n > 0;
+  const { m, B } = EP.userData, HE = ERU.HE, cy = MUG.WY + ERU.Y0 + HE, sub = 12, iso = m.isolation, lv = boilLevel(tau);
+  const up = clamp(tau / 0.011), burst = clamp((tau - 0.011) / 0.008), k = Math.pow(sm5(up), 0.8) * (1 - sm5(burst));
+  EP.visible = k > 0.02; if (!EP.visible) return; m.reset();
+  for (const [x, z, r0, w] of B) { const r = r0 * k * (w < 1 ? (0.6 + 0.6 * up) : 1), y = MUG.WY + lv - (w < 1 ? 0.3 : 1.1) + (w < 1 ? 1.2 : 1.7) * k;
+    if (r < 0.1) continue; const nx = x / (2 * HE) + 0.5, ny = (y - cy) / (2 * HE) + 0.5, nz = z / (2 * HE) + 0.5, d = r / (2 * HE); m.addBall(nx, ny, nz, d * d * (iso + sub), sub); }
+  m.update();
 }
 // ---------- el café soluble: gránulos que caen (a cámara lenta) y tocan el agua en τHit
 function buildCoffee(n = 140) {

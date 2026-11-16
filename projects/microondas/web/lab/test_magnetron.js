@@ -8,15 +8,16 @@ let MAGLMW = null;
 async function labBuild() {
   buildMagnetron({ guide: true }); scene.add(MAG.group);
   if (typeof buildMicrowave === 'function') { MAGLMW = buildMicrowave(); MAGLMW.position.set(0, 0, -6); scene.add(MAGLMW); buildMagWaves(); MAGLMW.add(MAGW.group); }
+  if (window.MAGDBG) { const L = []; MAG.group.traverse(o => { if (o.isMesh) { const g = o.geometry, n = (g.index ? g.index.count : g.attributes.position.count) / 3 * (g.isInstancedBufferGeometry ? g.instanceCount : 1); L.push([Math.round(n), (o.parent && o.parent.name) + '/' + (o.material.type || '') + '/' + g.type]); } }); L.sort((a, b) => b[0] - a[0]); console.error('INFO ' + L.slice(0, 14).map(x => x.join(':')).join(' | ')); }
   console.error('INFO magnetrón: ' + Math.round(MAG.tris) + ' triángulos' + (MAGW ? ' · ondas del horno: ' + Math.round(MAGW.tris) + ' (' + MAGW.sets.length + ' fuentes)' : ''));
 }
 const MAGV = [
-  { at: [0, 5.25, 8], ry: -0.55, P: {}, cam: [21, 12.5, 34, 0, 5.4, 8, 26] },
-  { at: [0, 9.6, 8], ry: -0.55, P: { explode: 1 }, cam: [30, 17, 50, 1.6, 9.8, 8, 28] },
-  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1, guide: 0 }, cam: [17, 17, 26, 0, 5.4, 8, 26] },
-  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1, guide: 0 }, cam: [4.4, 9.4, 12.8, 0, 5.3, 8, 30] },
-  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1, wave: 1, guide: 0 }, cam: [20, 14, 31, 0, 8, 8, 30] },
-  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1, wave: 1, guide: 1 }, cam: [20, 15, 31, 0, 8, 8, 30] },
+  { at: [0, 5.25, 8], ry: -0.5, P: {}, cam: [27.5, 19.5, 47, 0, 5.2, 8, 26] },
+  { at: [0, 10.2, 8], ry: -0.25, P: { explode: 1 }, cam: [16, 16, 64, 1.6, 10.0, 8, 28] },
+  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1 }, cam: [27, 24.5, 39, 0, 4.8, 8, 26] },
+  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1 }, cam: [5.1, 9.9, 13.1, 0, 5.25, 8, 32] },
+  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1, wave: 1 }, cam: [24, 17, 40, 0, 8, 8, 30] },
+  { at: [0, 5.25, 8], ry: 0, P: { cut: 1, glow: 1, electrons: 1, wave: 1, guide: 1 }, cam: [24, 18, 40, 0, 8, 8, 30] },
 ];
 function magLabMW(on) {     // el magnetrón dentro del microondas (o fuera, sobre la encimera)
   if (on && MAGLMW) { if (MAG.group.parent !== MAGLMW) MAGLMW.add(MAG.group); MAG.group.position.set(17, 15.5, -14); MAG.group.rotation.set(0, 0, Math.PI / 2); MAG.group.scale.setScalar(1); }

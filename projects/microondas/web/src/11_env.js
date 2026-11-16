@@ -44,6 +44,6 @@ function lightsAt(c, d) {
 // cada material con su propia intensidad de reflejos (con scene.environment, three.js ignora envMapIntensity): se le pone el HDRI a mano.
 // k: factor extra (dentro del horno cerrado apenas llega la luz de la cocina)
 function envMat(m, k = 1) { if (!m || !m.isMeshStandardMaterial || !S.hdr) return; if (m.userData.env0 === undefined) m.userData.env0 = m.envMapIntensity;
-  if (m.envMap !== S.hdr) { m.envMap = S.hdr; m.needsUpdate = true; } m.envMapRotation.set(0, ENV.rot, 0); m.envMapIntensity = m.userData.env0 * ENV.env * k; }
+  if (m.envMap !== S.hdr) { m.envMap = S.hdr; m.needsUpdate = true; } m.envMapRotation.set(0, ENV.rot, 0); m.envMapIntensity = m.userData.envFixed ?? m.userData.env0 * ENV.env * k; }
 function envAll(root, k = 1) { root.traverse(o => { if (!o.material) return; for (const m of [].concat(o.material)) envMat(m, k); }); }
 function waitLoads() { return Promise.all(PENDING); }

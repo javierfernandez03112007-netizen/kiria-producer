@@ -5,7 +5,7 @@ let MUGW = new THREE.Vector3();          // base de la taza en el mundo
 async function buildScene() {
   S.mw = buildMicrowave(); S.mw.position.copy(MW_POS); scene.add(S.mw);
   const U = S.mw.userData; S.mug = buildMug(); S.mug.position.copy(U.plateC).add(v3(0, U.plateTop - U.plateC.y + 0.02, 0)).add(MW_POS); scene.add(S.mug); MUGW.copy(S.mug.position);
-  S.splash = buildSplash(1500, 1); S.splash.position.copy(MUGW); scene.add(S.splash);      // el estallido no gira con el plato
+  S.splash = buildSplash(2600, 1); S.splash.position.copy(MUGW); scene.add(S.splash);      // el estallido no gira con el plato
   S.erupt = buildErupt(3); S.splash.add(S.erupt);
   S.coffee = buildCoffee(); S.mug.add(S.coffee);
   S.stick = buildStick(); S.stick.position.set(1.4, 0.75, 0.5); S.stick.rotation.set(0.1, 0.35, -0.2); S.stick.visible = false; S.mug.add(S.stick);
@@ -54,7 +54,7 @@ function stageAt(t, st) {
   splashAt(S.splash, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null, frontZ: -6 - mz, floorOut: -MUGW.y, steam: 1 });
   eruptAt(S.erupt, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null });
   const bulge = tau > 0 ? 0.35 * Math.exp(-Math.pow((tau - 0.012) / 0.02, 2)) : 0, crown = tau > 0 ? clamp(tau / 0.05) : 0;
-  mugSurface(S.mug, t, { amp: tau > 0 ? 0.35 * clamp(tau / 0.02) : (sh === 'S' ? 0.03 : 0), bulge, crown });
+  mugSurface(S.mug, t, { amp: tau > 0 ? 0.35 * clamp(tau / 0.02) : (sh === 'S' ? 0.03 : 0), bulge, crown: crown * 0.4, rise: boilLevel(tau) });
   coffeeAt(S.coffee, sh === 'O' || sh === 'P' ? clamp((t - (K.echas8 - 0.1)) / (K.hierve8 - K.echas8 + 0.05)) : 0);
   S.stick.visible = sh === 'S'; bubblesAt(S.bub, t, v3(1.45, 1.2, 0.55), v3(2.6, 7.6, 1.5), sh === 'S' ? clamp((t - K.vetas10 + 0.3) / 1.2) : 0, { rate: 0.55, scale: 0.8 });
   mugCut(S.mug, sh === 'L' || sh === 'M');
