@@ -2503,7 +2503,110 @@ def sfx_track_paneles(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_bloqueadores(path):
+    """«Si sueltas la cuerda, ¿qué hace la camilla?» (bloqueadores): el barranco de noche (viento, grillos, el motor de la
+    autobomba), cada tirón de cuerda con el «clac» del bloqueador, la cuerda que se escapa, la pregunta con sus tarjetas, la
+    cuenta de 5 s con la bocina, el «¿y si no lo llevara?» (cae con un silbido y se rebobina), los rayos X (zumbido, la
+    cuerda que corre y el mordisco metálico de la leva), el que sube con puño y croll (un clic por paso), las letras y la
+    venta. Tiempos como en bloqueadores.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    T["count0"] = LINES[3]["end"] + 0.05; T["count1"] = T["count0"] + 4.0
+    T["g0"] = c["tiempo"] + 0.08; T["g1"] = T["g0"] + 0.75; T["rw1"] = T["g1"] + 0.45
+    pulls = [c["tirando"] - 0.1, c["tiron"] - 0.05, c["palmo"] - 0.15, c["arriba"] - 0.15, c["tiras"] - 0.1, c["nobaja"] + 0.45, c["colgarias"] - 0.2]
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    clac = _pitch(_onset(_load("golpe")), 1.9)
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # el barranco: viento, grillos y el motor de la autobomba arriba
+    put(_loop(_load("aire"), END + 0.5), 0.0, -31, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("grillos"), END + 0.5), 0.0, -37, T["fin"], 0.6, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -39, T["fin"], 0.6, 1.0, track=amb)
+    put("golpe", 0.0, -24, 0.8, 0.003, 0.35)
+    put("latido", 0.1, -25, 0.7)
+    put(_pitch(_onset(_load("whoosh")), 0.6), c["barranco"] - 0.3, -27, 1.2)
+    # cada tirón: la cuerda corre y, al soltar, el «clac» del bloqueador
+    for p in pulls:
+        put(_pitch(_onset(_load("whoosh2")), 1.6), p, -30, 0.55, 0.02, 0.15)
+        put(_pitch(tic, 1.5), p + 0.58, -27, 0.2)
+    # se te escapa: la cuerda resbala y el corazón
+    put(_pitch(_onset(_load("whoosh2")), 1.9), c["escapa"] - 0.05, -25, 0.4)
+    put(clac, c["escapa"] + 0.08, -26, 0.4)
+    put("latido", c["escapa"] + 0.15, -23, 0.7)
+    # la pregunta: tarjetas, cuenta con bocina
+    for k, key in enumerate(("cae", "despacio", "quieta1")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.03, -29, 0.7)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.1, -27, 0.2)
+    put("tension", T["count0"] - 0.1, -30, 4.2, 0.2, 0.1)
+    for k in range(4):
+        put("tic", T["count0"] + k, -22 + 1.5 * k, 0.3)
+    put("bocina", T["count1"] - 0.02, -21, 0.9, 0.003, 0.12)
+    put("golpe", T["count1"] - 0.02, -24, 0.7, 0.005, 0.3)
+    # ¿y si no lo llevara?: cae silbando… y se rebobina; se queda quieta
+    put(_pitch(_onset(_load("whoosh")), 0.8), T["g0"], -24, 0.8, 0.01, 0.2)
+    put("fallo", T["g0"] + 0.5, -26, 0.5)
+    wr = _onset(_load("whoosh2"))[::-1].copy()
+    put(wr, T["g1"], -24, 0.5, 0.05, 0.05)
+    put("acierto", c["quieta2"] - 0.03, -23, 0.9)
+    put("destello", c["bloqueador"] - 0.05, -25, 0.6)
+    put(_pitch(toque, 1.2), c["bloqueador"] - 0.02, -27, 0.35)
+    # rayos X: zumbido, la cuerda que corre y el mordisco de la leva
+    put(_pitch(_onset(_load("glitch")), 0.8), c["leva"] - 0.35, -29, 0.4)
+    put("tension", c["leva"] - 0.2, -33, c["poreso"] - c["leva"], 0.3, 0.3, track=amb)
+    put(_pitch(nota, 1.3), c["dientes"] - 0.03, -28, 0.6)
+    put(clac, c["muerde"] + 0.02, -21, 0.5)
+    put(_pitch(_onset(_load("golpe")), 0.8), c["muerde"] + 0.02, -25, 0.6, 0.003, 0.3)
+    put("destello", c["muerde"] + 0.05, -26, 0.5)
+    # tiras, descansas… y no baja
+    put(_pitch(toque, 0.9), c["descansas"] - 0.03, -29, 0.35)
+    put("acierto", c["nobaja"] - 0.03, -25, 0.8)
+    # el que sube: un clic del croll en cada paso y el del puño
+    tk = c["truco"] - 0.4 + 0.5
+    while tk < c["colgarias"]:
+        put(_pitch(tic, 1.8), tk, -30, 0.15)
+        put(_pitch(tic, 1.3), tk + 0.6, -31, 0.15)
+        tk += 1.25
+    for key in ("puno", "croll"):
+        put(_pitch(toque, 1.15), c[key] - 0.03, -28, 0.35)
+    # final: «dímelo en comentarios»
+    put("whoosh2", c["colgarias"] - 0.3, -27, 0.8)
+    put(_pitch(toque, 1.3), c["comentarios"] - 0.03, -27, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "bloqueadores":
+        return sfx_track_bloqueadores(path)
     if Q.get("formato") == "paneles":
         return sfx_track_paneles(path)
     if Q.get("formato") == "techo":

@@ -1,0 +1,724 @@
+[
+ {
+  "text": "¡Un herido en el fondo de un barranco… y lo subes tú, tirando de una cuerda!",
+  "start": 0.0,
+  "end": 5.167,
+  "words": [
+   {
+    "w": "¡Un",
+    "start": 0.0,
+    "end": 0.199
+   },
+   {
+    "w": "herido",
+    "start": 0.199,
+    "end": 0.715
+   },
+   {
+    "w": "en",
+    "start": 0.715,
+    "end": 0.914
+   },
+   {
+    "w": "el",
+    "start": 0.914,
+    "end": 1.112
+   },
+   {
+    "w": "fondo",
+    "start": 1.112,
+    "end": 1.47
+   },
+   {
+    "w": "de",
+    "start": 1.47,
+    "end": 1.669
+   },
+   {
+    "w": "un",
+    "start": 1.669,
+    "end": 1.867
+   },
+   {
+    "w": "barranco…",
+    "start": 1.867,
+    "end": 2.383
+   },
+   {
+    "w": "y",
+    "start": 2.683,
+    "end": 2.882
+   },
+   {
+    "w": "lo",
+    "start": 2.882,
+    "end": 3.081
+   },
+   {
+    "w": "subes",
+    "start": 3.081,
+    "end": 3.438
+   },
+   {
+    "w": "tú,",
+    "start": 3.438,
+    "end": 3.637
+   },
+   {
+    "w": "tirando",
+    "start": 3.737,
+    "end": 4.253
+   },
+   {
+    "w": "de",
+    "start": 4.253,
+    "end": 4.452
+   },
+   {
+    "w": "una",
+    "start": 4.452,
+    "end": 4.81
+   },
+   {
+    "w": "cuerda!",
+    "start": 4.81,
+    "end": 5.167
+   }
+  ]
+ },
+ {
+  "text": "Cada tirón lo sube un palmo. Pero ¿y si se te escapa?",
+  "start": 5.467,
+  "end": 9.063,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 5.467,
+    "end": 5.824
+   },
+   {
+    "w": "tirón",
+    "start": 5.824,
+    "end": 6.182
+   },
+   {
+    "w": "lo",
+    "start": 6.182,
+    "end": 6.381
+   },
+   {
+    "w": "sube",
+    "start": 6.381,
+    "end": 6.738
+   },
+   {
+    "w": "un",
+    "start": 6.738,
+    "end": 6.937
+   },
+   {
+    "w": "palmo.",
+    "start": 6.937,
+    "end": 7.294
+   },
+   {
+    "w": "Pero",
+    "start": 7.394,
+    "end": 7.752
+   },
+   {
+    "w": "¿y",
+    "start": 7.752,
+    "end": 7.95
+   },
+   {
+    "w": "si",
+    "start": 7.95,
+    "end": 8.149
+   },
+   {
+    "w": "se",
+    "start": 8.149,
+    "end": 8.348
+   },
+   {
+    "w": "te",
+    "start": 8.348,
+    "end": 8.547
+   },
+   {
+    "w": "escapa?",
+    "start": 8.547,
+    "end": 9.063
+   }
+  ]
+ },
+ {
+  "text": "Sueltas la cuerda: ¿qué hace la camilla? ¿Cae, baja despacio… o se queda quieta?",
+  "start": 9.363,
+  "end": 14.413,
+  "words": [
+   {
+    "w": "Sueltas",
+    "start": 9.363,
+    "end": 9.72
+   },
+   {
+    "w": "la",
+    "start": 9.72,
+    "end": 9.919
+   },
+   {
+    "w": "cuerda:",
+    "start": 9.919,
+    "end": 10.277
+   },
+   {
+    "w": "¿qué",
+    "start": 10.457,
+    "end": 10.655
+   },
+   {
+    "w": "hace",
+    "start": 10.655,
+    "end": 11.013
+   },
+   {
+    "w": "la",
+    "start": 11.013,
+    "end": 11.212
+   },
+   {
+    "w": "camilla?",
+    "start": 11.212,
+    "end": 11.728
+   },
+   {
+    "w": "¿Cae,",
+    "start": 11.828,
+    "end": 12.026
+   },
+   {
+    "w": "baja",
+    "start": 12.126,
+    "end": 12.484
+   },
+   {
+    "w": "despacio…",
+    "start": 12.484,
+    "end": 13.0
+   },
+   {
+    "w": "o",
+    "start": 13.3,
+    "end": 13.499
+   },
+   {
+    "w": "se",
+    "start": 13.499,
+    "end": 13.698
+   },
+   {
+    "w": "queda",
+    "start": 13.698,
+    "end": 14.055
+   },
+   {
+    "w": "quieta?",
+    "start": 14.055,
+    "end": 14.413
+   }
+  ]
+ },
+ {
+  "text": "Tienes cinco segundos.",
+  "start": 14.713,
+  "end": 15.944,
+  "words": [
+   {
+    "w": "Tienes",
+    "start": 14.713,
+    "end": 15.07
+   },
+   {
+    "w": "cinco",
+    "start": 15.07,
+    "end": 15.428
+   },
+   {
+    "w": "segundos.",
+    "start": 15.428,
+    "end": 15.944
+   }
+  ]
+ },
+ {
+  "text": "¡Tiempo! Se queda quieta… por el bloqueador.",
+  "start": 20.294,
+  "end": 22.879,
+  "words": [
+   {
+    "w": "¡Tiempo!",
+    "start": 20.294,
+    "end": 20.651
+   },
+   {
+    "w": "Se",
+    "start": 20.751,
+    "end": 20.95
+   },
+   {
+    "w": "queda",
+    "start": 20.95,
+    "end": 21.308
+   },
+   {
+    "w": "quieta…",
+    "start": 21.308,
+    "end": 21.665
+   },
+   {
+    "w": "por",
+    "start": 21.965,
+    "end": 22.164
+   },
+   {
+    "w": "el",
+    "start": 22.164,
+    "end": 22.363
+   },
+   {
+    "w": "bloqueador.",
+    "start": 22.363,
+    "end": 22.879
+   }
+  ]
+ },
+ {
+  "text": "Dentro tiene una leva con dientes: la cuerda corre hacia arriba… y si tira hacia abajo, la muerde.",
+  "start": 23.179,
+  "end": 29.717,
+  "words": [
+   {
+    "w": "Dentro",
+    "start": 23.179,
+    "end": 23.536
+   },
+   {
+    "w": "tiene",
+    "start": 23.536,
+    "end": 23.894
+   },
+   {
+    "w": "una",
+    "start": 23.894,
+    "end": 24.251
+   },
+   {
+    "w": "leva",
+    "start": 24.251,
+    "end": 24.609
+   },
+   {
+    "w": "con",
+    "start": 24.609,
+    "end": 24.808
+   },
+   {
+    "w": "dientes:",
+    "start": 24.808,
+    "end": 25.165
+   },
+   {
+    "w": "la",
+    "start": 25.345,
+    "end": 25.544
+   },
+   {
+    "w": "cuerda",
+    "start": 25.544,
+    "end": 25.901
+   },
+   {
+    "w": "corre",
+    "start": 25.901,
+    "end": 26.259
+   },
+   {
+    "w": "hacia",
+    "start": 26.259,
+    "end": 26.616
+   },
+   {
+    "w": "arriba…",
+    "start": 26.616,
+    "end": 27.132
+   },
+   {
+    "w": "y",
+    "start": 27.432,
+    "end": 27.631
+   },
+   {
+    "w": "si",
+    "start": 27.631,
+    "end": 27.83
+   },
+   {
+    "w": "tira",
+    "start": 27.83,
+    "end": 28.187
+   },
+   {
+    "w": "hacia",
+    "start": 28.187,
+    "end": 28.545
+   },
+   {
+    "w": "abajo,",
+    "start": 28.545,
+    "end": 29.061
+   },
+   {
+    "w": "la",
+    "start": 29.161,
+    "end": 29.36
+   },
+   {
+    "w": "muerde.",
+    "start": 29.36,
+    "end": 29.717
+   }
+  ]
+ },
+ {
+  "text": "Por eso nadie aguanta al herido a pulso: tiras, descansas… y la camilla no baja.",
+  "start": 30.017,
+  "end": 35.641,
+  "words": [
+   {
+    "w": "Por",
+    "start": 30.017,
+    "end": 30.216
+   },
+   {
+    "w": "eso",
+    "start": 30.216,
+    "end": 30.573
+   },
+   {
+    "w": "nadie",
+    "start": 30.573,
+    "end": 30.931
+   },
+   {
+    "w": "aguanta",
+    "start": 30.931,
+    "end": 31.447
+   },
+   {
+    "w": "al",
+    "start": 31.447,
+    "end": 31.646
+   },
+   {
+    "w": "herido",
+    "start": 31.646,
+    "end": 32.162
+   },
+   {
+    "w": "a",
+    "start": 32.162,
+    "end": 32.36
+   },
+   {
+    "w": "pulso:",
+    "start": 32.36,
+    "end": 32.718
+   },
+   {
+    "w": "tiras,",
+    "start": 32.898,
+    "end": 33.255
+   },
+   {
+    "w": "descansas…",
+    "start": 33.355,
+    "end": 33.872
+   },
+   {
+    "w": "y",
+    "start": 34.172,
+    "end": 34.37
+   },
+   {
+    "w": "la",
+    "start": 34.37,
+    "end": 34.569
+   },
+   {
+    "w": "camilla",
+    "start": 34.569,
+    "end": 35.085
+   },
+   {
+    "w": "no",
+    "start": 35.085,
+    "end": 35.284
+   },
+   {
+    "w": "baja.",
+    "start": 35.284,
+    "end": 35.641
+   }
+  ]
+ },
+ {
+  "text": "Con el mismo truco, el bombero sube por la cuerda: el puño en la mano y el croll en el pecho.",
+  "start": 35.941,
+  "end": 41.823,
+  "words": [
+   {
+    "w": "Con",
+    "start": 35.941,
+    "end": 36.14
+   },
+   {
+    "w": "el",
+    "start": 36.14,
+    "end": 36.338
+   },
+   {
+    "w": "mismo",
+    "start": 36.338,
+    "end": 36.696
+   },
+   {
+    "w": "truco,",
+    "start": 36.696,
+    "end": 37.053
+   },
+   {
+    "w": "el",
+    "start": 37.153,
+    "end": 37.352
+   },
+   {
+    "w": "bombero",
+    "start": 37.352,
+    "end": 37.868
+   },
+   {
+    "w": "sube",
+    "start": 37.868,
+    "end": 38.226
+   },
+   {
+    "w": "por",
+    "start": 38.226,
+    "end": 38.424
+   },
+   {
+    "w": "la",
+    "start": 38.424,
+    "end": 38.623
+   },
+   {
+    "w": "cuerda:",
+    "start": 38.623,
+    "end": 38.981
+   },
+   {
+    "w": "el",
+    "start": 39.161,
+    "end": 39.359
+   },
+   {
+    "w": "puño",
+    "start": 39.359,
+    "end": 39.717
+   },
+   {
+    "w": "en",
+    "start": 39.717,
+    "end": 39.916
+   },
+   {
+    "w": "la",
+    "start": 39.916,
+    "end": 40.114
+   },
+   {
+    "w": "mano",
+    "start": 40.114,
+    "end": 40.472
+   },
+   {
+    "w": "y",
+    "start": 40.472,
+    "end": 40.671
+   },
+   {
+    "w": "el",
+    "start": 40.671,
+    "end": 40.869
+   },
+   {
+    "w": "croll",
+    "start": 40.869,
+    "end": 41.068
+   },
+   {
+    "w": "en",
+    "start": 41.068,
+    "end": 41.267
+   },
+   {
+    "w": "el",
+    "start": 41.267,
+    "end": 41.465
+   },
+   {
+    "w": "pecho.",
+    "start": 41.465,
+    "end": 41.823
+   }
+  ]
+ },
+ {
+  "text": "¿Tú te colgarías de esa cuerda? Dímelo en comentarios.",
+  "start": 42.123,
+  "end": 45.44,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 42.123,
+    "end": 42.322
+   },
+   {
+    "w": "te",
+    "start": 42.322,
+    "end": 42.52
+   },
+   {
+    "w": "colgarías",
+    "start": 42.52,
+    "end": 43.037
+   },
+   {
+    "w": "de",
+    "start": 43.037,
+    "end": 43.235
+   },
+   {
+    "w": "esa",
+    "start": 43.235,
+    "end": 43.593
+   },
+   {
+    "w": "cuerda?",
+    "start": 43.593,
+    "end": 43.95
+   },
+   {
+    "w": "Dímelo",
+    "start": 44.05,
+    "end": 44.566
+   },
+   {
+    "w": "en",
+    "start": 44.566,
+    "end": 44.765
+   },
+   {
+    "w": "comentarios.",
+    "start": 44.765,
+    "end": 45.44
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 45.74,
+  "end": 48.38,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 45.74,
+    "end": 46.58
+   },
+   {
+    "w": "a",
+    "start": 46.58,
+    "end": 46.82
+   },
+   {
+    "w": "quien",
+    "start": 46.82,
+    "end": 47.06
+   },
+   {
+    "w": "quiera",
+    "start": 47.06,
+    "end": 47.5
+   },
+   {
+    "w": "ser",
+    "start": 47.5,
+    "end": 47.74
+   },
+   {
+    "w": "bombero!",
+    "start": 47.74,
+    "end": 48.38
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 48.68,
+  "end": 53.2,
+  "words": [
+   {
+    "w": "¿Opositas",
+    "start": 48.68,
+    "end": 49.52
+   },
+   {
+    "w": "a",
+    "start": 49.52,
+    "end": 49.76
+   },
+   {
+    "w": "bombero?",
+    "start": 49.76,
+    "end": 50.4
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 50.5,
+    "end": 51.34
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 51.44,
+    "end": 52.08
+   },
+   {
+    "w": "gratis",
+    "start": 52.08,
+    "end": 52.52
+   },
+   {
+    "w": "cinco",
+    "start": 52.52,
+    "end": 52.96
+   },
+   {
+    "w": "días!",
+    "start": 52.96,
+    "end": 53.2
+   }
+  ]
+ }
+]
