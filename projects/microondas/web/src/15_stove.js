@@ -4,11 +4,11 @@
 const STOVE_POS = new THREE.Vector3(100, -88.1, -18), POT_L = v3(-11.5, 87.4, 12.5), POT_R = 8.75, POT_WY = 8.6;
 async function loadGLTF(path) { const g = await new GLTFLoader().loadAsync(ASSET + path); g.scene.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } }); return g.scene; }
 function scratchTex() {        // fondo del cazo: esmalte con rayitas (las 900 grandes son donde nacen las burbujas) y otras muy finas; 2048 px para los planos de cerca
-  const t = canvasTex(2048, 2048, (g, w, h) => { g.fillStyle = '#cfd4d7'; g.fillRect(0, 0, w, h);
+  const t = canvasTex(2048, 2048, (g, w, h) => { g.fillStyle = '#b4b9bd'; g.fillRect(0, 0, w, h);
     for (let i = 0; i < 4000; i++) { g.fillStyle = `rgba(${hash(i * 9.1) > 0.5 ? '90,92,96' : '245,247,250'},${0.04 + hash(i * 3.3) * 0.06})`; g.beginPath(); g.arc(hash(i * 1.1) * w, hash(i * 2.9) * h, 2 + hash(i * 4.7) * 14, 0, 7); g.fill(); }
     for (let i = 0; i < 5000; i++) { const x = hash(i * 0.71 + 3) * w, y = hash(i * 1.37 + 5) * h, a = hash(i * 2.11 + 7) * 6.28, l = 8 + hash(i * 3.3 + 1) * 90; g.strokeStyle = `rgba(${hash(i * 5.5) > 0.5 ? '80,82,86' : '255,255,255'},${0.08 + hash(i * 6.1) * 0.18})`; g.lineWidth = 0.5 + hash(i * 7.3) * 0.8;
       g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * l, y + Math.sin(a) * l); g.stroke(); }
-    for (let i = 0; i < 900; i++) { const x = hash(i * 1.7) * w, y = hash(i * 2.3) * h, a = hash(i * 3.9) * 6.28, l = (6 + hash(i * 5.1) * 60) * 2; g.strokeStyle = `rgba(${hash(i * 7.7) > 0.5 ? '60,62,66' : '255,255,255'},${0.35 + hash(i * 4.4) * 0.4})`; g.lineWidth = (0.6 + hash(i * 6.6) * 1.2) * 2;
+    for (let i = 0; i < 900; i++) { const x = hash(i * 1.7) * w, y = hash(i * 2.3) * h, a = hash(i * 3.9) * 6.28, l = (6 + hash(i * 5.1) * 60) * 2; g.strokeStyle = `rgba(${hash(i * 7.7) > 0.35 ? '38,40,44' : '255,255,255'},${0.5 + hash(i * 4.4) * 0.45})`; g.lineWidth = (0.7 + hash(i * 6.6) * 1.3) * 2;
       g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * l, y + Math.sin(a) * l); g.stroke(); } });
   t.colorSpace = THREE.SRGBColorSpace; return t;
 }
