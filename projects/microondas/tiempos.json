@@ -1,0 +1,919 @@
+[
+ {
+  "text": "Cuidado cuando calientes agua en el microondas: te puede saltar a la cara.",
+  "start": 0.0,
+  "end": 4.27,
+  "words": [
+   {
+    "w": "Cuidado",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "w": "cuando",
+    "start": 0.48,
+    "end": 0.72
+   },
+   {
+    "w": "calientes",
+    "start": 0.72,
+    "end": 1.28
+   },
+   {
+    "w": "agua",
+    "start": 1.28,
+    "end": 1.52
+   },
+   {
+    "w": "en",
+    "start": 1.52,
+    "end": 1.6
+   },
+   {
+    "w": "el",
+    "start": 1.6,
+    "end": 1.68
+   },
+   {
+    "w": "microondas:",
+    "start": 1.68,
+    "end": 2.67
+   },
+   {
+    "w": "te",
+    "start": 2.67,
+    "end": 2.84
+   },
+   {
+    "w": "puede",
+    "start": 2.84,
+    "end": 3.24
+   },
+   {
+    "w": "saltar",
+    "start": 3.24,
+    "end": 3.72
+   },
+   {
+    "w": "a",
+    "start": 3.72,
+    "end": 3.8
+   },
+   {
+    "w": "la",
+    "start": 3.8,
+    "end": 3.96
+   },
+   {
+    "w": "cara.",
+    "start": 3.96,
+    "end": 4.27
+   }
+  ]
+ },
+ {
+  "text": "Tu microondas lleva dentro un magnetrón, la pieza de los radares de la Segunda Guerra Mundial.",
+  "start": 4.39,
+  "end": 9.06,
+  "words": [
+   {
+    "w": "Tu",
+    "start": 4.39,
+    "end": 4.563
+   },
+   {
+    "w": "microondas",
+    "start": 4.563,
+    "end": 5.16
+   },
+   {
+    "w": "lleva",
+    "start": 5.16,
+    "end": 5.4
+   },
+   {
+    "w": "dentro",
+    "start": 5.4,
+    "end": 5.64
+   },
+   {
+    "w": "un",
+    "start": 5.64,
+    "end": 5.8
+   },
+   {
+    "w": "magnetrón,",
+    "start": 5.8,
+    "end": 6.64
+   },
+   {
+    "w": "la",
+    "start": 6.64,
+    "end": 6.72
+   },
+   {
+    "w": "pieza",
+    "start": 6.72,
+    "end": 7.04
+   },
+   {
+    "w": "de",
+    "start": 7.04,
+    "end": 7.12
+   },
+   {
+    "w": "los",
+    "start": 7.12,
+    "end": 7.28
+   },
+   {
+    "w": "radares",
+    "start": 7.28,
+    "end": 7.84
+   },
+   {
+    "w": "de",
+    "start": 7.84,
+    "end": 7.92
+   },
+   {
+    "w": "la",
+    "start": 7.92,
+    "end": 8.0
+   },
+   {
+    "w": "Segunda",
+    "start": 8.0,
+    "end": 8.4
+   },
+   {
+    "w": "Guerra",
+    "start": 8.4,
+    "end": 8.72
+   },
+   {
+    "w": "Mundial.",
+    "start": 8.72,
+    "end": 9.06
+   }
+  ]
+ },
+ {
+  "text": "Dispara ondas que vibran 2.450 millones de veces por segundo.",
+  "start": 9.2,
+  "end": 13.72,
+  "words": [
+   {
+    "w": "Dispara",
+    "start": 9.2,
+    "end": 9.64
+   },
+   {
+    "w": "ondas",
+    "start": 9.64,
+    "end": 10.04
+   },
+   {
+    "w": "que",
+    "start": 10.04,
+    "end": 10.12
+   },
+   {
+    "w": "vibran",
+    "start": 10.12,
+    "end": 10.52
+   },
+   {
+    "w": "2.450",
+    "start": 10.52,
+    "end": 12.12
+   },
+   {
+    "w": "millones",
+    "start": 12.12,
+    "end": 12.6
+   },
+   {
+    "w": "de",
+    "start": 12.6,
+    "end": 12.76
+   },
+   {
+    "w": "veces",
+    "start": 12.76,
+    "end": 13.08
+   },
+   {
+    "w": "por",
+    "start": 13.08,
+    "end": 13.32
+   },
+   {
+    "w": "segundo.",
+    "start": 13.32,
+    "end": 13.72
+   }
+  ]
+ },
+ {
+  "text": "El agua intenta seguirlas: sus moléculas giran sin parar, y eso es calor.",
+  "start": 13.87,
+  "end": 18.54,
+  "words": [
+   {
+    "w": "El",
+    "start": 13.87,
+    "end": 13.981
+   },
+   {
+    "w": "agua",
+    "start": 13.981,
+    "end": 14.24
+   },
+   {
+    "w": "intenta",
+    "start": 14.24,
+    "end": 14.72
+   },
+   {
+    "w": "seguirlas:",
+    "start": 14.72,
+    "end": 15.48
+   },
+   {
+    "w": "sus",
+    "start": 15.48,
+    "end": 15.64
+   },
+   {
+    "w": "moléculas",
+    "start": 15.64,
+    "end": 16.2
+   },
+   {
+    "w": "giran",
+    "start": 16.2,
+    "end": 16.68
+   },
+   {
+    "w": "sin",
+    "start": 16.68,
+    "end": 16.92
+   },
+   {
+    "w": "parar,",
+    "start": 16.92,
+    "end": 17.43
+   },
+   {
+    "w": "y",
+    "start": 17.43,
+    "end": 17.6
+   },
+   {
+    "w": "eso",
+    "start": 17.6,
+    "end": 17.97
+   },
+   {
+    "w": "es",
+    "start": 17.97,
+    "end": 18.12
+   },
+   {
+    "w": "calor.",
+    "start": 18.12,
+    "end": 18.54
+   }
+  ]
+ },
+ {
+  "text": "En un cazo, el calor llega por abajo y las burbujas nacen en las rayitas del fondo.",
+  "start": 18.73,
+  "end": 23.14,
+  "words": [
+   {
+    "w": "En",
+    "start": 18.73,
+    "end": 18.8
+   },
+   {
+    "w": "un",
+    "start": 18.8,
+    "end": 18.96
+   },
+   {
+    "w": "cazo,",
+    "start": 18.96,
+    "end": 19.36
+   },
+   {
+    "w": "el",
+    "start": 19.36,
+    "end": 19.52
+   },
+   {
+    "w": "calor",
+    "start": 19.52,
+    "end": 19.92
+   },
+   {
+    "w": "llega",
+    "start": 19.92,
+    "end": 20.24
+   },
+   {
+    "w": "por",
+    "start": 20.24,
+    "end": 20.32
+   },
+   {
+    "w": "abajo",
+    "start": 20.32,
+    "end": 20.64
+   },
+   {
+    "w": "y",
+    "start": 20.64,
+    "end": 20.8
+   },
+   {
+    "w": "las",
+    "start": 20.8,
+    "end": 20.96
+   },
+   {
+    "w": "burbujas",
+    "start": 20.96,
+    "end": 21.6
+   },
+   {
+    "w": "nacen",
+    "start": 21.6,
+    "end": 21.92
+   },
+   {
+    "w": "en",
+    "start": 21.92,
+    "end": 22.0
+   },
+   {
+    "w": "las",
+    "start": 22.0,
+    "end": 22.16
+   },
+   {
+    "w": "rayitas",
+    "start": 22.16,
+    "end": 22.72
+   },
+   {
+    "w": "del",
+    "start": 22.72,
+    "end": 22.88
+   },
+   {
+    "w": "fondo.",
+    "start": 22.88,
+    "end": 23.14
+   }
+  ]
+ },
+ {
+  "text": "En el microondas se calienta el agua, no la taza. Y si la taza es lisa, la burbuja no tiene dónde nacer.",
+  "start": 23.29,
+  "end": 29.16,
+  "words": [
+   {
+    "w": "En",
+    "start": 23.29,
+    "end": 23.439
+   },
+   {
+    "w": "el",
+    "start": 23.439,
+    "end": 23.589
+   },
+   {
+    "w": "microondas",
+    "start": 23.589,
+    "end": 24.12
+   },
+   {
+    "w": "se",
+    "start": 24.12,
+    "end": 24.28
+   },
+   {
+    "w": "calienta",
+    "start": 24.28,
+    "end": 24.76
+   },
+   {
+    "w": "el",
+    "start": 24.76,
+    "end": 24.84
+   },
+   {
+    "w": "agua,",
+    "start": 24.84,
+    "end": 25.24
+   },
+   {
+    "w": "no",
+    "start": 25.24,
+    "end": 25.48
+   },
+   {
+    "w": "la",
+    "start": 25.48,
+    "end": 25.64
+   },
+   {
+    "w": "taza.",
+    "start": 25.64,
+    "end": 26.22
+   },
+   {
+    "w": "Y",
+    "start": 26.22,
+    "end": 26.298
+   },
+   {
+    "w": "si",
+    "start": 26.298,
+    "end": 26.376
+   },
+   {
+    "w": "la",
+    "start": 26.376,
+    "end": 26.48
+   },
+   {
+    "w": "taza",
+    "start": 26.48,
+    "end": 26.8
+   },
+   {
+    "w": "es",
+    "start": 26.8,
+    "end": 26.96
+   },
+   {
+    "w": "lisa,",
+    "start": 26.96,
+    "end": 27.39
+   },
+   {
+    "w": "la",
+    "start": 27.39,
+    "end": 27.48
+   },
+   {
+    "w": "burbuja",
+    "start": 27.48,
+    "end": 28.12
+   },
+   {
+    "w": "no",
+    "start": 28.12,
+    "end": 28.28
+   },
+   {
+    "w": "tiene",
+    "start": 28.28,
+    "end": 28.52
+   },
+   {
+    "w": "dónde",
+    "start": 28.52,
+    "end": 28.952
+   },
+   {
+    "w": "nacer.",
+    "start": 28.952,
+    "end": 29.16
+   }
+  ]
+ },
+ {
+  "text": "El agua pasa de cien grados… y sigue quieta.",
+  "start": 29.38,
+  "end": 32.26,
+  "words": [
+   {
+    "w": "El",
+    "start": 29.38,
+    "end": 29.48
+   },
+   {
+    "w": "agua",
+    "start": 29.48,
+    "end": 29.8
+   },
+   {
+    "w": "pasa",
+    "start": 29.8,
+    "end": 30.2
+   },
+   {
+    "w": "de",
+    "start": 30.2,
+    "end": 30.36
+   },
+   {
+    "w": "cien",
+    "start": 30.36,
+    "end": 30.76
+   },
+   {
+    "w": "grados…",
+    "start": 30.76,
+    "end": 31.34
+   },
+   {
+    "w": "y",
+    "start": 31.34,
+    "end": 31.499
+   },
+   {
+    "w": "sigue",
+    "start": 31.499,
+    "end": 31.87
+   },
+   {
+    "w": "quieta.",
+    "start": 31.87,
+    "end": 32.26
+   }
+  ]
+ },
+ {
+  "text": "Pero en cuanto la mueves o le echas el café, hierve de golpe y salta fuera.",
+  "start": 32.41,
+  "end": 36.73,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 32.41,
+    "end": 32.53
+   },
+   {
+    "w": "en",
+    "start": 32.53,
+    "end": 32.61
+   },
+   {
+    "w": "cuanto",
+    "start": 32.61,
+    "end": 32.93
+   },
+   {
+    "w": "la",
+    "start": 32.93,
+    "end": 33.09
+   },
+   {
+    "w": "mueves",
+    "start": 33.09,
+    "end": 33.57
+   },
+   {
+    "w": "o",
+    "start": 33.57,
+    "end": 33.73
+   },
+   {
+    "w": "le",
+    "start": 33.73,
+    "end": 33.89
+   },
+   {
+    "w": "echas",
+    "start": 33.89,
+    "end": 34.21
+   },
+   {
+    "w": "el",
+    "start": 34.21,
+    "end": 34.37
+   },
+   {
+    "w": "café,",
+    "start": 34.37,
+    "end": 34.94
+   },
+   {
+    "w": "hierve",
+    "start": 34.94,
+    "end": 35.37
+   },
+   {
+    "w": "de",
+    "start": 35.37,
+    "end": 35.45
+   },
+   {
+    "w": "golpe",
+    "start": 35.45,
+    "end": 35.85
+   },
+   {
+    "w": "y",
+    "start": 35.85,
+    "end": 36.01
+   },
+   {
+    "w": "salta",
+    "start": 36.01,
+    "end": 36.41
+   },
+   {
+    "w": "fuera.",
+    "start": 36.41,
+    "end": 36.73
+   }
+  ]
+ },
+ {
+  "text": "La FDA de Estados Unidos ha recibido avisos de quemaduras graves en manos y cara por esto.",
+  "start": 36.85,
+  "end": 42.0,
+  "words": [
+   {
+    "w": "La",
+    "start": 36.85,
+    "end": 37.03
+   },
+   {
+    "w": "FDA",
+    "start": 37.03,
+    "end": 37.67
+   },
+   {
+    "w": "de",
+    "start": 37.67,
+    "end": 37.83
+   },
+   {
+    "w": "Estados",
+    "start": 37.83,
+    "end": 38.23
+   },
+   {
+    "w": "Unidos",
+    "start": 38.23,
+    "end": 38.63
+   },
+   {
+    "w": "ha",
+    "start": 38.63,
+    "end": 38.79
+   },
+   {
+    "w": "recibido",
+    "start": 38.79,
+    "end": 39.27
+   },
+   {
+    "w": "avisos",
+    "start": 39.27,
+    "end": 39.59
+   },
+   {
+    "w": "de",
+    "start": 39.59,
+    "end": 39.67
+   },
+   {
+    "w": "quemaduras",
+    "start": 39.67,
+    "end": 40.31
+   },
+   {
+    "w": "graves",
+    "start": 40.31,
+    "end": 40.71
+   },
+   {
+    "w": "en",
+    "start": 40.71,
+    "end": 40.87
+   },
+   {
+    "w": "manos",
+    "start": 40.87,
+    "end": 41.11
+   },
+   {
+    "w": "y",
+    "start": 41.11,
+    "end": 41.27
+   },
+   {
+    "w": "cara",
+    "start": 41.27,
+    "end": 41.67
+   },
+   {
+    "w": "por",
+    "start": 41.67,
+    "end": 41.83
+   },
+   {
+    "w": "esto.",
+    "start": 41.83,
+    "end": 42.0
+   }
+  ]
+ },
+ {
+  "text": "El truco: no la calientes de más y mete un palito de madera: en sus vetas las burbujas nacen poco a poco.",
+  "start": 42.09,
+  "end": 48.11,
+  "words": [
+   {
+    "w": "El",
+    "start": 42.09,
+    "end": 42.17
+   },
+   {
+    "w": "truco:",
+    "start": 42.17,
+    "end": 42.76
+   },
+   {
+    "w": "no",
+    "start": 42.76,
+    "end": 42.85
+   },
+   {
+    "w": "la",
+    "start": 42.85,
+    "end": 43.01
+   },
+   {
+    "w": "calientes",
+    "start": 43.01,
+    "end": 43.65
+   },
+   {
+    "w": "de",
+    "start": 43.65,
+    "end": 43.73
+   },
+   {
+    "w": "más",
+    "start": 43.73,
+    "end": 43.89
+   },
+   {
+    "w": "y",
+    "start": 43.89,
+    "end": 44.05
+   },
+   {
+    "w": "mete",
+    "start": 44.05,
+    "end": 44.45
+   },
+   {
+    "w": "un",
+    "start": 44.45,
+    "end": 44.53
+   },
+   {
+    "w": "palito",
+    "start": 44.53,
+    "end": 44.93
+   },
+   {
+    "w": "de",
+    "start": 44.93,
+    "end": 45.01
+   },
+   {
+    "w": "madera:",
+    "start": 45.01,
+    "end": 45.55
+   },
+   {
+    "w": "en",
+    "start": 45.55,
+    "end": 45.685
+   },
+   {
+    "w": "sus",
+    "start": 45.685,
+    "end": 45.85
+   },
+   {
+    "w": "vetas",
+    "start": 45.85,
+    "end": 46.33
+   },
+   {
+    "w": "las",
+    "start": 46.33,
+    "end": 46.41
+   },
+   {
+    "w": "burbujas",
+    "start": 46.41,
+    "end": 47.05
+   },
+   {
+    "w": "nacen",
+    "start": 47.05,
+    "end": 47.45
+   },
+   {
+    "w": "poco",
+    "start": 47.45,
+    "end": 47.69
+   },
+   {
+    "w": "a",
+    "start": 47.69,
+    "end": 47.85
+   },
+   {
+    "w": "poco.",
+    "start": 47.85,
+    "end": 48.11
+   }
+  ]
+ },
+ {
+  "text": "¿Micro o cazo? Mándaselo a quien se calienta el café en el microondas.",
+  "start": 48.21,
+  "end": 52.074,
+  "words": [
+   {
+    "w": "¿Micro",
+    "start": 48.21,
+    "end": 48.81
+   },
+   {
+    "w": "o",
+    "start": 48.81,
+    "end": 48.95
+   },
+   {
+    "w": "cazo?",
+    "start": 48.95,
+    "end": 49.567
+   },
+   {
+    "w": "Mándaselo",
+    "start": 49.567,
+    "end": 50.175
+   },
+   {
+    "w": "a",
+    "start": 50.175,
+    "end": 50.253
+   },
+   {
+    "w": "quien",
+    "start": 50.253,
+    "end": 50.41
+   },
+   {
+    "w": "se",
+    "start": 50.41,
+    "end": 50.488
+   },
+   {
+    "w": "calienta",
+    "start": 50.488,
+    "end": 50.958
+   },
+   {
+    "w": "el",
+    "start": 50.958,
+    "end": 51.036
+   },
+   {
+    "w": "café",
+    "start": 51.036,
+    "end": 51.271
+   },
+   {
+    "w": "en",
+    "start": 51.271,
+    "end": 51.35
+   },
+   {
+    "w": "el",
+    "start": 51.35,
+    "end": 51.428
+   },
+   {
+    "w": "microondas.",
+    "start": 51.428,
+    "end": 52.074
+   }
+  ]
+ }
+]
