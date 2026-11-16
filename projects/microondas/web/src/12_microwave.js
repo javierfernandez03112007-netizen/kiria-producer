@@ -17,9 +17,9 @@ function brushedTex(w = 1024, h = 256) {
 function mwMats() {
   const br = brushedTex();
   const metal = new THREE.MeshPhysicalMaterial({ color: 0xb4b9bf, metalness: 0.78, roughness: 0.4, roughnessMap: br, bumpMap: br, bumpScale: 0.15, clearcoat: 0.2, clearcoatRoughness: 0.3, envMapIntensity: 0.85 });
-  const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#ece9e2'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
+  const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#d9d9d5'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
   enamelT.wrapS = enamelT.wrapT = THREE.RepeatWrapping; enamelT.repeat.set(3, 3);
-  const enamel = new THREE.MeshPhysicalMaterial({ map: enamelT, roughness: 0.38, clearcoat: 0.5, clearcoatRoughness: 0.25, side: THREE.DoubleSide });
+  const enamel = new THREE.MeshPhysicalMaterial({ map: enamelT, roughness: 0.42, clearcoat: 0.35, clearcoatRoughness: 0.3, side: THREE.DoubleSide });
   const black = new THREE.MeshPhysicalMaterial({ color: 0x0c0d10, roughness: 0.08, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 0.7 });
   const rubber = new THREE.MeshStandardMaterial({ color: 0x141416, roughness: 0.9 });
   return { metal, enamel, black, rubber };
@@ -95,7 +95,9 @@ function buildMicrowave() {
     gl.position.set(dw / 2, (y0 + y1) / 2, 2.46); gl.renderOrder = 6; D2.add(gl); U.doorGlass = gl;
     const sc = meshScreenTex(); sc.repeat.set((wx1 - wx0) / 25, (wy1 - wy0) / 25);
     const scr = new THREE.Mesh(new THREE.PlaneGeometry(wx1 - wx0 + 1.6, wy1 - wy0 + 1.6), new THREE.MeshStandardMaterial({ color: 0x1b1c1f, metalness: 0.7, roughness: 0.45, alphaMap: sc, transparent: true, depthWrite: false, side: THREE.DoubleSide }));
-    scr.position.set((wx0 + wx1) / 2, (wy0 + wy1) / 2, 1.2); scr.renderOrder = 5; D2.add(scr); U.screen = scr; U.win = { x0: wx0 - W / 2, x1: wx1 - W / 2, y0: wy0, y1: wy1 };
+    scr.position.set((wx0 + wx1) / 2, (wy0 + wy1) / 2, 1.2); scr.renderOrder = 5; D2.add(scr); U.screen = scr;
+    // con la cámara muy cerca, la rejilla queda desenfocada: un velo oscuro uniforme (como en una foto de verdad)
+    const veil = new THREE.Mesh(scr.geometry, new THREE.MeshBasicMaterial({ color: 0x0b0c0e, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide })); veil.position.copy(scr.position); veil.renderOrder = 5; D2.add(veil); U.veil = veil; U.win = { x0: wx0 - W / 2, x1: wx1 - W / 2, y0: wy0, y1: wy1 };
     // junta interior (se ve con la puerta abierta)
     const gs = roundRectShape(1, y0 + 1, dw - 1, y1 - 1, 1.2); gs.holes.push(rectPathXY(wx0 - 0.8, wy0 - 0.8, wx1 + 0.8, wy1 + 0.8));
     const gk = new THREE.Mesh(new THREE.ShapeGeometry(gs), new THREE.MeshStandardMaterial({ color: 0x2d2f33, roughness: 0.7, side: THREE.DoubleSide })); gk.position.z = 0.38; D2.add(gk); }
@@ -113,7 +115,7 @@ function buildMicrowave() {
 // estado: luz encendida (0–1), giro del plato, puerta (0 cerrada … 1 abierta 100°), texto de la pantalla
 function microwaveAt(MW, o) {
   const U = MW.userData, on = o.on ?? 0;
-  U.lamp.intensity = 900 * on; U.lamp2.intensity = 350 * on; U.lampGrille.material.emissiveIntensity = 3 * on;
+  const lamp = o.lamp ?? on; U.lamp.intensity = 380 * lamp; U.lamp2.intensity = 140 * lamp; U.lampGrille.material.emissiveIntensity = 3 * lamp;
   U.plate.rotation.y = o.turn ?? 0; U.door.rotation.y = -(o.door ?? 0) * 1.75;
   const txt = o.display ?? ':'; if (U._txt !== txt + on) { U._txt = txt + on; U.panelTex.userData.draw(txt, on > 0.5); }
 }

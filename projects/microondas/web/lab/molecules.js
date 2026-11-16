@@ -20,8 +20,8 @@ const MOL_NU = 2.0;                                                         // H
 const MOL_LAMBDA = 22;                                                      // longitud de la onda en pantalla (unidades): el pulso cruza la imagen en ≈ 0,15 s
 const MOL_K = new THREE.Vector3(0.22, -1, -0.32).normalize();               // hacia dónde viaja la onda: de arriba abajo, alejándose un poco
 const MOL_E = new THREE.Vector3(1, 0, 0).addScaledVector(MOL_K, -MOL_K.x).normalize();   // el campo eléctrico (perpendicular a la onda: casi horizontal)
-const MOL_DOF = 170, MOL_DOFMAX = 70;                                       // abertura (px de 1920 · unidades) y desenfoque máximo (px)
-const MOL_FOG = 0.042;                                                      // extinción del agua por unidad
+const MOL_DOF = 300, MOL_DOFMAX = 90;                                       // abertura (px de 1920 · unidades) y desenfoque máximo (px)
+const MOL_FOG = 0.072;                                                      // extinción del agua por unidad
 // la molécula (centro de masas en el origen; el dipolo, del oxígeno hacia los hidrógenos, es +y)
 const MOL_M = (() => {
   const L = 0.68, a = 104.5 * Math.PI / 180, hx = L * Math.sin(a / 2), hy = L * Math.cos(a / 2), yo = -hy / 9;   // 16·yO + 2·(yO + hy) = 0
@@ -59,29 +59,31 @@ float molPulseAvg(float xi, float sxi) {
 }
 // el color del agua profunda en una dirección: más clara hacia arriba y hacia la luz de contra (dispersión hacia delante); se templa con el calor
 vec3 molWaterCol(vec3 d) {
-  vec3 c = mix(vec3(0.0008, 0.0032, 0.0075), vec3(0.0055, 0.024, 0.047), smoothstep(-0.8, 0.9, d.y));
+  vec3 c = mix(vec3(0.0005, 0.0032, 0.0052), vec3(0.0032, 0.022, 0.034), smoothstep(-0.8, 0.9, d.y));
   float f = max(dot(d, uRim), 0.0);
-  c += vec3(0.010, 0.038, 0.066) * pow(f, 5.0) + vec3(0.0025, 0.011, 0.02) * f * f;
+  c += vec3(0.006, 0.036, 0.05) * pow(f, 5.0) + vec3(0.0015, 0.010, 0.015) * f * f;
   c += vec3(0.020, 0.0065, 0.0012) * uHeat * (0.45 + 0.55 * smoothstep(-0.6, 0.6, d.y));
   return c;
 }
 // luz que dispersa el agua entre la cámara (o, local) y un punto a distancia D en la dirección d; T = lo que pasa del objeto
-vec3 molWater(vec3 o, vec3 d, float D, out float T) {
-  float sg = uFogK * (1.0 + 10.0 * (1.0 - uOn) * (1.0 - uOn));
-  T = exp(-sg * D);
-  float m = 1.0 / sg - (T > 1e-6 ? D * T / max(1.0 - T, 1e-5) : 0.0);          // dónde pesa más el tramo (media de la exponencial truncada)
+float molSg() { return uFogK * (1.0 + 10.0 * (1.0 - uOn) * (1.0 - uOn)); }
+vec3 molTrans(float D) { return exp(-molSg() * D * vec3(1.4, 1.0, 0.95)); }        // el agua se come antes el rojo: lo lejano se oscurece y se enfría
+vec3 molWater(vec3 o, vec3 d, float D, out vec3 T) {
+  float sg = molSg();
+  T = molTrans(D);
+  float m = 1.0 / sg - (T.g > 1e-6 ? D * T.g / max(1.0 - T.g, 1e-5) : 0.0);    // dónde pesa más el tramo (media de la exponencial truncada)
   float pa = molPulseAvg(dot(o + d * m, uWaveK), abs(dot(d, uWaveK)) * m * 0.85 + 0.4);
-  return (1.0 - T) * (molWaterCol(d) + vec3(0.010, 0.030, 0.056) * uField * pa);
+  return (1.0 - T) * (molWaterCol(d) + vec3(0.007, 0.032, 0.048) * uField * pa);
 }
 // caja de luz (rectángulo de bordes suaves) vista en el reflejo R
 float molBox(vec3 R, vec3 L, vec3 U, vec2 sz, float soft) {
   float w = dot(R, L); if (w < 0.05) return 0.0;
   vec2 q = abs(vec2(dot(R, U), dot(R, cross(L, U))) / w);
   vec2 e = 1.0 - smoothstep(sz - soft, sz + soft, q);
-  return e.x * e.y;
+  return e.x * e.y * sz.x * sz.y / ((sz.x + soft) * (sz.y + soft));          // borrosa, más grande pero igual de energía
 }
 vec3 molEnv(vec3 R, float soft) {
-  return molWaterCol(R) * 2.2 + uKeyCol * 3.4 * molBox(R, uKey, uKeyU, vec2(0.36, 0.25), soft) + uRimCol * 2.6 * molBox(R, uRim, uRimU, vec2(0.62, 0.13), soft);
+  return molWaterCol(R) * 2.2 + uKeyCol * 3.6 * molBox(R, uKey, uKeyU, vec2(0.5, 0.34), soft + 0.1) + uRimCol * 2.8 * molBox(R, uRim, uRimU, vec2(0.7, 0.12), soft + 0.03);
 }
 `;
 
@@ -114,7 +116,7 @@ void main() {
     float w = (r + bw) * 1.3;
     p = (position.x < 0.0 ? a - ah * w : b + ah * w) + sd * position.y * w;
   }
-  vPos = p; vA = vec4(a, r); vB = b; vC = c; vI = vec4(ty, iC.w, bw, px);
+  vPos = p; vA = vec4(a, r); vB = ty > 3.5 ? iB.xyz : b; vC = c; vI = vec4(ty, iC.w, bw, px);
   gl_Position = projectionMatrix * vec4(p, 1.0);
   #include <logdepthbuf_vertex>
 }`;
@@ -139,9 +141,9 @@ float molOccC(vec3 p, vec3 n, vec3 a, vec3 b, float r) { vec3 ab = b - a; float 
 vec3 molShade(vec3 N, vec3 V, vec3 alb, float rough, float coat, float sss, float soft) {
   float NV = max(dot(N, V), 0.0), F = 0.04 + 0.96 * pow(1.0 - NV, 5.0);
   float k1 = dot(N, uKey), k2 = dot(N, uRim);
-  vec3 dif = uKeyCol * max((k1 + 0.3) / 1.3, 0.0) + uRimCol * 0.5 * max((k2 + 0.15) / 1.15, 0.0);
+  vec3 dif = uKeyCol * max((k1 + 0.2) / 1.2, 0.0) + uRimCol * 0.65 * max((k2 + 0.1) / 1.1, 0.0);
   dif += uKeyCol * sss * smoothstep(-0.55, 0.05, k1) * (1.0 - smoothstep(0.05, 0.6, k1));          // el terminador se aclara (luz que entra y sale)
-  vec3 amb = mix(vec3(0.010, 0.026, 0.045), vec3(0.045, 0.10, 0.16), N.y * 0.5 + 0.5);
+  vec3 amb = mix(vec3(0.004, 0.014, 0.02), vec3(0.022, 0.068, 0.095), N.y * 0.5 + 0.5);
   vec3 c = alb * (dif + amb) * (1.0 - F * coat);
   float a = rough * rough, a2 = a * a;
   vec3 H1 = normalize(uKey + V), H2 = normalize(uRim + V);
@@ -155,6 +157,14 @@ void main() {
   vec3 rd = normalize(vPos);
   float ty = vI.x, bw = vI.z, px = vI.w, kb = max(bw - px, 0.0);
   vec3 N, P, alb; float alpha, glow = 0.0, ao = 1.0, rough = 0.42, coat = 1.0, sss = 0.0, lit = 1.0;
+  if (ty > 3.5) {                         // halo: la luz que el agua dispersa alrededor de una molécula caliente (aditivo: alfa 0 con la mezcla premultiplicada)
+    vec3 c = vA.xyz; float r = vA.w + bw, tc = dot(rd, c), d = sqrt(max(dot(c, c) - tc * tc, 0.0)), q = d / r;
+    float k = exp(-3.2 * q * q) * (1.0 - smoothstep(0.75, 1.0, q));
+    if (k < 0.002) discard;
+    gl_FragColor = vec4(vB * vI.y * k * molTrans(length(c)) * smoothstep(0.0, 0.35, uOn), 0.0);
+    gl_FragDepth = molDepth(-c.z + 0.9);                                                      // detrás de sus propios átomos
+    return;
+  }
   if (ty > 2.5) {                       // punto de un enlace de hidrógeno: una motita de luz
     vec3 c = vA.xyz; float r = vA.w, tc = dot(rd, c), d = sqrt(max(dot(c, c) - tc * tc, 0.0));
     alpha = molOverlap(d, r, bw) / (PI * bw * bw) * vI.y;
@@ -169,7 +179,7 @@ void main() {
     N = normalize(sd * de - rd * sqrt(r * r - de * de));
     P = c + N * r;
     bool isO = ty < 0.5;
-    alb = isO ? vec3(0.36, 0.016, 0.014) : vec3(0.74, 0.76, 0.79);
+    alb = isO ? vec3(0.30, 0.012, 0.011) : vec3(0.72, 0.74, 0.77);
     rough = isO ? 0.36 : 0.42; sss = isO ? 0.18 : 0.32; glow = vI.y;
     // sombra de contacto: el otro átomo cercano y las varillas que salen de este
     float rr1 = isO ? uRH : uRO;
@@ -189,8 +199,8 @@ void main() {
     float de = min(d * r / R, r * 0.999);
     N = normalize(qh * (de / r) + vv * sqrt(1.0 - (de / r) * (de / r)));
     P = A + ah * clamp(sA, 0.0, L) + N * r;
-    float hs = smoothstep(0.42, 0.58, sA / L);                                                  // mitad roja (oxígeno) y mitad blanca (hidrógeno)
-    alb = mix(vec3(0.30, 0.014, 0.012), vec3(0.70, 0.72, 0.75), hs);
+    float hs = smoothstep(0.3, 0.7, sA / L);                                                    // mitad roja (oxígeno) y mitad blanca (hidrógeno)
+    alb = mix(vec3(0.21, 0.009, 0.009), vec3(0.68, 0.70, 0.73), hs);
     rough = 0.38; sss = 0.15; glow = vI.y;
     ao = clamp(1.0 - 0.9 * molOccS(P, N, A, uRO) - 0.9 * molOccS(P, N, B, uRH), 0.3, 1.0);
   }
@@ -203,16 +213,17 @@ void main() {
     col = molShade(Nw, Vw, alb, mix(rough, 0.8, clamp(soft * 1.5, 0.0, 1.0)), coat, sss, soft) * ao;
     // el pulso del campo, al pasar, ilumina las moléculas con luz fría (sobre todo por arriba y en los bordes)
     float NV = max(dot(Nw, Vw), 0.0), pl = molPulse(Pl) * uField;
-    col += vec3(0.16, 0.42, 0.85) * pl * (0.10 + 0.9 * pow(1.0 - NV, 3.0) + 0.35 * max(dot(Nw, -uWaveK), 0.0)) * ao;
-    // calor: brillo naranja desde dentro (más en el centro del disco, como una brasa)
-    vec3 hot = ty < 0.5 ? vec3(1.0, 0.25, 0.045) : (ty < 1.5 ? vec3(1.0, 0.46, 0.16) : vec3(1.0, 0.34, 0.08));
-    col += hot * glow * (0.35 + 0.95 * pow(NV, 0.7)) * 2.1;
-  } else col = vec3(0.55, 0.85, 1.0) * 1.3;
-  float T, D = length(P);
+    col += vec3(0.14, 0.5, 0.8) * pl * (0.10 + 0.9 * pow(1.0 - NV, 3.0) + 0.35 * max(dot(Nw, -uWaveK), 0.0)) * ao * (1.0 - 0.7 * glow);
+    // calor: brillo naranja desde dentro (más en el centro del disco, como una brasa): empieza tenue y al final pasa del umbral del resplandor
+    vec3 hot = ty < 0.5 ? vec3(1.0, 0.3, 0.035) : (ty < 1.5 ? vec3(1.0, 0.6, 0.2) : vec3(1.0, 0.4, 0.07));
+    col *= 1.0 - 0.6 * glow;
+    col += hot * (0.35 * glow + 3.4 * glow * glow * glow) * (0.55 + 0.45 * NV);
+  } else col = vec3(0.55, 0.85, 1.0) * 0.95;
+  vec3 T; float D = length(P);
   vec3 ins = molWater(Ol, Dw, D, T);
   col = col * T + ins;
-  alpha *= smoothstep(0.0, 0.35, uOn);
-  gl_FragColor = vec4(col, clamp(alpha, 0.0, 1.0));
+  alpha = clamp(alpha * smoothstep(0.0, 0.35, uOn), 0.0, 1.0);
+  gl_FragColor = vec4(col * alpha, alpha);
   gl_FragDepth = molDepth(-P.z);
 }`;
 
@@ -234,10 +245,10 @@ float molN3(vec3 x) { vec3 i = floor(x), f = fract(x); f = f * f * (3.0 - 2.0 * 
 void main() {
   #include <logdepthbuf_fragment>
   vec3 d = normalize(vW - cameraPosition), Ol = cameraPosition - uOrig;
-  float T; vec3 c = molWater(Ol, d, 1e6, T);
+  vec3 T; vec3 c = molWater(Ol, d, 1e6, T);
   // nubes muy suaves de luz dispersa (el volumen no es plano)
   float n = molN3(d * 2.6 + vec3(0.0, uTime * 0.03, uTime * 0.02)) * 0.65 + molN3(d * 6.1 - vec3(uTime * 0.02, 0.0, 0.0)) * 0.35;
-  c *= 0.78 + 0.5 * n;
+  c *= 0.86 + 0.28 * n;
   gl_FragColor = vec4(c, 1.0);
 }`;
 
@@ -270,7 +281,7 @@ void main() {
   #include <logdepthbuf_vertex>
   float sg = uFogK * (1.0 + 10.0 * (1.0 - uOn) * (1.0 - uOn));
   float pulse = pow(sin(uPhase - uKappa * dot(b, uWaveK)), 8.0) * uField;
-  vA = (0.10 + 0.22 * fract(sd * 13.7)) * (core * core) / (R * R) * (2.0 * R / (2.0 * R + L)) * exp(-sg * z) * (1.0 + 2.2 * pulse) * uOn;
+  vA = (0.35 + 1.1 * pow(fract(sd * 13.7), 3.0)) * pow(core / R, 1.4) * (2.0 * R / (2.0 * R + L)) * exp(-sg * z) * (1.0 + 2.2 * pulse) * uOn;
   vCol = mix(vec3(0.62, 0.84, 1.0), vec3(1.0, 0.62, 0.34), uHeat * 0.55 * fract(sd * 5.3));
 }`;
 const MOL_MOTE_FS = `#include <common>
@@ -299,21 +310,21 @@ function molLayout(rng) {
   { const O = hero('O'), dir = v3(-0.55, 0.8, -0.35).normalize(), c = O.clone().addScaledVector(dir, 1.3 + MOL_M.L);
     pos.push(c); const vloc = MOL_M.H1.clone().sub(MOL_M.O).normalize(), q = new THREE.Quaternion().setFromUnitVectors(vloc, dir.clone().negate());
     q.premultiply(new THREE.Quaternion().setFromAxisAngle(dir, 1.1)); quat.push(q); }
-  const s = 2.7;
-  for (let z = -50; z < 16; z += s) for (let y = -24; y < 24; y += s) for (let x = -19; x < 19; x += s) {
+  const s = 3.0;
+  for (let z = -36; z < 16; z += s) for (let y = -24; y < 24; y += s) for (let x = -19; x < 19; x += s) {
     const p = v3(x + s * (0.12 + rng() * 0.76), y + s * (0.12 + rng() * 0.76), z + s * (0.12 + rng() * 0.76));
     const d = 14 - p.z; if (d < 0) continue;
     if (Math.abs(p.x + 0.9) > 4 + 0.3 * d || Math.abs(p.y - 0.4) > 4.5 + 0.46 * d) continue;
     if (p.length() < 2.2 || pos.slice(1, 3).some(o => o.distanceTo(p) < 2.0)) continue;
-    let ok = true;
+    let ok = true, dmin = 1e9;
     for (let i = 0; i < path.length && ok; i++) {
-      const c = path[i].p; if (c.distanceTo(p) < 2.5) { ok = false; break; }
+      const c = path[i].p, dc = c.distanceTo(p); dmin = Math.min(dmin, dc); if (dc < 2.5) { ok = false; break; }
       if (i % 2 === 0) {                                  // línea de visión de la cámara a la protagonista: siempre despejada
         const l = path[i].l, cl = l.clone().sub(c), tt = clamp(p.clone().sub(c).dot(cl) / cl.lengthSq());
         if (tt > 0.04 && tt < 0.9 && c.clone().addScaledVector(cl, tt).distanceTo(p) < 1.3) ok = false;
       }
     }
-    if (ok) { pos.push(p); quat.push(molRandQuat(rng)); }
+    if (ok && rng() < 1 - 0.62 * molSs(13, 30, dmin)) { pos.push(p); quat.push(molRandQuat(rng)); }
   }
   // enlaces de hidrógeno: muchas moléculas apuntan uno de sus hidrógenos al oxígeno de la vecina más cercana (la red del agua)
   const n = pos.length;
@@ -344,7 +355,7 @@ function buildMolecules() {
     D.amp[i] = Math.sqrt(Math.max(sa, 0.12)) * (0.8 + 0.4 * rng());
     D.lag[i] = 0.32 + 0.3 * rng();                                   // retraso de fase (rad): intentan seguirlo y no llegan
     for (let k = 0; k < 3; k++) { D.tf[i * 6 + k] = (0.55 + 1.6 * rng()) * 2 * Math.PI; D.tf[i * 6 + 3 + k] = rng() * 6.283; D.jf[i * 6 + k] = (0.5 + 1.3 * rng()) * 2 * Math.PI; D.jf[i * 6 + 3 + k] = rng() * 6.283; }
-    D.hot[i] = 0.6 + 0.4 * rng(); D.xi[i] = pos[i].dot(MOL_K);
+    D.hot[i] = 0.5 + 0.5 * rng(); D.xi[i] = pos[i].dot(MOL_K);
   }
   D.amp[0] = 1.0; D.lag[0] = 0.4; D.hot[0] = 0.9;
   // candidatos a enlace de hidrógeno: el hidrógeno de una molécula cerca del oxígeno de otra y casi en línea con su enlace O–H
@@ -353,12 +364,12 @@ function buildMolecules() {
     if (i === j || pos[i].distanceToSquared(pos[j]) > 3.6 * 3.6) continue;
     const Oi = at(i, 'O'), Oj = at(j, 'O');
     for (const k of ['H1', 'H2']) { const H = at(i, k), d = H.distanceTo(Oj), c = H.clone().sub(Oi).normalize().dot(Oj.clone().sub(H).normalize());
-      if (d < 2.8 && c > 0.8) bonds.push({ i, h: k === 'H1' ? 1 : 2, j, d0: d }); }
+      if (d < 2.3 && c > 0.85 && (i < 3 || j < 3 || rng() < 0.45)) bonds.push({ i, h: k === 'H1' ? 1 : 2, j, d0: d }); }
   }
   // uniformes compartidos (las tres capas leen los mismos objetos)
   const key = v3(-0.62, 0.62, 0.48).normalize(), rim = v3(0.46, 0.42, -0.78).normalize();
   const U = { uKey: { value: key }, uKeyU: { value: key.clone().cross(v3(0, 0, 1)).normalize() }, uRim: { value: rim }, uRimU: { value: rim.clone().cross(v3(0, 1, 0)).normalize() },
-    uKeyCol: { value: new THREE.Color(1.0, 0.94, 0.86).multiplyScalar(1.15) }, uRimCol: { value: new THREE.Color(0.55, 0.8, 1.0).multiplyScalar(1.0) },
+    uKeyCol: { value: new THREE.Color(1.0, 0.94, 0.86).multiplyScalar(1.15) }, uRimCol: { value: new THREE.Color(0.48, 0.86, 1.0).multiplyScalar(1.0) },
     uWaveK: { value: MOL_K.clone() }, uE: { value: MOL_E.clone() }, uOrig: { value: g.position.clone() },
     uTime: { value: 0 }, uPhase: { value: 0 }, uKappa: { value: 2 * Math.PI / MOL_LAMBDA }, uOmega: { value: 2 * Math.PI * MOL_NU }, uField: { value: 0 }, uHeat: { value: 0 }, uOn: { value: 1 },
     uFogK: { value: MOL_FOG }, uPz: { value: new THREE.Vector2() }, uFocus: { value: 7 }, uDofK: { value: MOL_DOF }, uDofMax: { value: MOL_DOFMAX }, uResY: { value: H * PR },
@@ -372,7 +383,7 @@ function buildMolecules() {
   const geo = new THREE.InstancedBufferGeometry(); geo.setAttribute('position', quad); geo.setIndex([0, 1, 2, 0, 2, 3]);
   const attr = k => { const a = new THREE.InstancedBufferAttribute(new Float32Array(MAXP * 4), 4); a.setUsage(THREE.DynamicDrawUsage); geo.setAttribute(k, a); return a; };
   const aA = attr('iA'), aB = attr('iB'), aC = attr('iC'); geo.instanceCount = 0;
-  const imp = new THREE.Mesh(geo, new THREE.ShaderMaterial({ uniforms: U, vertexShader: MOL_IMP_VS, fragmentShader: MOL_IMP_FS, transparent: true, depthWrite: true, depthTest: true }));
+  const imp = new THREE.Mesh(geo, new THREE.ShaderMaterial({ uniforms: U, vertexShader: MOL_IMP_VS, fragmentShader: MOL_IMP_FS, transparent: true, premultipliedAlpha: true, depthWrite: true, depthTest: true }));
   imp.frustumCulled = false; imp.renderOrder = 10; imp.onBeforeRender = setPz; g.add(imp);
   // partículas en suspensión
   const NM = 1100, mg = new THREE.InstancedBufferGeometry(); mg.setAttribute('position', quad); mg.setIndex([0, 1, 2, 0, 2, 3]);
@@ -441,18 +452,22 @@ function moleculesAt(t, P = {}) {
     push(H2x, H2y, H2z, MOL_M.rH, Ox, Oy, Oz, 1, H1x, H1y, H1z, glow);
     push(Ox, Oy, Oz, MOL_M.rS, H1x, H1y, H1z, 2, 0, 0, 0, glow);
     push(Ox, Oy, Oz, MOL_M.rS, H2x, H2y, H2z, 2, 0, 0, 0, glow);
+    if (glow > 0.04) push(px, py, pz, 1.45 + 0.5 * glow, 1.0, 0.4, 0.1, 4, 0, 0, 0, 0.26 * glow * glow * glow + 0.03 * glow);
   }
+  const fx0 = at[0] - cx, fy0 = at[1] - cy, fz0 = at[2] - cz, focus = P.focus ?? Math.max(1, fx0 * fx + fy0 * fy + fz0 * fz);
   // enlaces de hidrógeno: puntos tenues entre el hidrógeno de una y el oxígeno de la otra; se rompen al girar o separarse y se rehacen al volver
   for (const bd of M.bonds) {
     if (!M.vis[bd.i] || !M.vis[bd.j] || np > M.MAXP - 20) continue;
     const hb = bd.i * 9 + bd.h * 3, ob = bd.j * 9, oi = bd.i * 9;
     const Hx = at[hb], Hy = at[hb + 1], Hz = at[hb + 2], Ox = at[ob], Oy = at[ob + 1], Oz = at[ob + 2];
+    const bz = (Hx - cx) * fx + (Hy - cy) * fy + (Hz - cz) * fz, near = 1 - molSs(2.2, 5.0, Math.abs(bz - focus));   // solo cerca del plano de foco
+    if (near < 0.03) continue;
     let vx = Ox - Hx, vy = Oy - Hy, vz = Oz - Hz; const d = Math.hypot(vx, vy, vz); vx /= d; vy /= d; vz /= d;
     let wx = Hx - at[oi], wy = Hy - at[oi + 1], wz = Hz - at[oi + 2]; const wl = Math.hypot(wx, wy, wz); wx /= wl; wy /= wl; wz /= wl;
-    const s = (1 - molSs(bd.d0 + 0.08, bd.d0 + 0.5, d)) * molSs(0.8, 0.94, vx * wx + vy * wy + vz * wz);
+    const s = near * (1 - molSs(bd.d0 + 0.08, bd.d0 + 0.5, d)) * molSs(0.8, 0.94, vx * wx + vy * wy + vz * wz);
     if (s < 0.03) continue;
-    const a0 = MOL_M.rH + 0.07, a1 = d - MOL_M.rO - 0.07, nd = Math.max(3, Math.round((a1 - a0) / 0.15));
-    for (let k = 0; k <= nd; k++) { const u = a0 + (a1 - a0) * k / nd; push(Hx + vx * u, Hy + vy * u, Hz + vz * u, 0.024, 0, 0, 0, 3, 0, 0, 0, s * 0.75); }
+    const a0 = MOL_M.rH + 0.07, a1 = d - MOL_M.rO - 0.07, nd = Math.max(3, Math.round((a1 - a0) / 0.13));
+    for (let k = 0; k <= nd; k++) { const u = a0 + (a1 - a0) * k / nd; push(Hx + vx * u, Hy + vy * u, Hz + vz * u, 0.021, 0, 0, 0, 3, 0, 0, 0, s * 0.7); }
   }
   // de atrás adelante (para que los desenfoques se mezclen bien) y a la GPU
   for (let i = 0; i < np; i++) ord[i] = i;
@@ -462,8 +477,7 @@ function moleculesAt(t, P = {}) {
   for (const a of M.attrs) { a.clearUpdateRanges(); a.addUpdateRange(0, np * 4); a.needsUpdate = true; }
   M.geo.instanceCount = np; M.np = np;
   // uniformes
-  const hx = at[0] - cx, hy = at[1] - cy, hz = at[2] - cz;
-  U.uFocus.value = P.focus ?? Math.max(1, hx * fx + hy * fy + hz * fz);
+  U.uFocus.value = focus;
   U.uTime.value = t; U.uPhase.value = Phi; U.uField.value = field; U.uHeat.value = heat; U.uOn.value = on; U.uOrig.value.copy(o);
   U.uResY.value = H * PR; U.uRes.value.set(W * PR, H * PR);
 }

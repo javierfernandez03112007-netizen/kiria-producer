@@ -10,7 +10,7 @@ import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
 import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { triTable } from 'three/addons/objects/MarchingCubes.js';
+import { triTable, MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
@@ -882,18 +882,18 @@ function studentGeo(lo = false) {
   return mergeGeometries(parts);
 }
 function capGeo() { const b = new THREE.BoxGeometry(0.022, 0.003, 0.022); b.translate(0, 0.062, 0); const c = new THREE.CylinderGeometry(0.008, 0.009, 0.006, 10); c.translate(0, 0.0585, 0); return mergeGeometries([b.toNonIndexed(), c.toNonIndexed()].map(g => { for (const k of Object.keys(g.attributes)) if (!['position', 'normal', 'uv'].includes(k)) g.deleteAttribute(k); return g; })); }
-// ---------------------------------------------------------------- la cocina de verdad: el HDRI «Blinds» de Poly Haven (CC0, una cocina real con persianas) da el
-// fondo (desenfocado, como con un objetivo de cine) y la luz de todos los reflejos; encima va la encimera de madera (textura «kitchen_wood», CC0) y una
-// luz de ventana con sombras suaves. Unidades: 1 = 1 cm; la encimera está en y = 0.
+// ---------------------------------------------------------------- la cocina de verdad: el HDRI «Brown Photostudio 02» de Poly Haven (CC0: un loft blanco con su cocina,
+// estanterías con botes y ventanales) da el fondo (desenfocado, como con un objetivo de cine) y la luz de todos los reflejos; encima va la encimera de madera
+// (textura «kitchen_wood», CC0) y la luz de los ventanales (a la izquierda) con sombras suaves. Unidades: 1 = 1 cm; la encimera está en y = 0.
 const _o = new THREE.Object3D();      // objeto de trabajo para las matrices de las instancias
 const ASSET = '/projects/microondas/web/assets/';
-const ENV = { file: 'blinds', rot: 3.14, bg: 0.6, env: 0.8, blur: 0.07, wb: [0.8, 0.9, 1.1] };
+const ENV = { file: 'brown_photostudio_02', rot: 4.71, bg: 0.6, env: 0.8, blur: 0.07, wb: [1, 1, 1] };     // rot 4,71: detrás del micro, las estanterías de la cocina
 const TEXL = new THREE.TextureLoader(), PENDING = [];
 function tx(path, srgb = true, rep = null) { let ok, ko; PENDING.push(new Promise((a, b) => { ok = a; ko = b; })); const t = TEXL.load(ASSET + path, () => ok(), undefined, e => { console.error('ERROR textura ' + path); ok(); }); t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace; t.anisotropy = 8; if (rep) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep[0], rep[1]); } return t; }
 async function loadEnv() {
-  const hdr = await new RGBELoader().loadAsync(ASSET + `ph/${window.ENVFILE || ENV.file}/${window.ENVFILE || ENV.file}_4k.hdr`); hdr.mapping = THREE.EquirectangularReflectionMapping;
-  // balance de blancos: la luz de la persiana tiñe todo de naranja; se corrige un poco hacia neutro
-  { const d = hdr.image.data, wb = ENV.wb, f = THREE.DataUtils; const half = d instanceof Uint16Array;
+  const hdr = await new RGBELoader().loadAsync(ASSET + `ph/${window.ENVFILE || ENV.file}/${window.ENVFILE || ENV.file}_${window.ENVRES || '4k'}.hdr`); hdr.mapping = THREE.EquirectangularReflectionMapping;
+  // balance de blancos (neutro con este HDRI)
+  if (ENV.wb.some(v => v !== 1)) { const d = hdr.image.data, wb = ENV.wb, f = THREE.DataUtils; const half = d instanceof Uint16Array;
     for (let i = 0; i < d.length; i += 4) for (let c = 0; c < 3; c++) d[i + c] = half ? f.toHalfFloat(f.fromHalfFloat(d[i + c]) * wb[c]) : d[i + c] * wb[c];
     hdr.needsUpdate = true; }
   S.hdr = hdr; scene.background = hdr; scene.environment = hdr;
@@ -911,8 +911,8 @@ function buildCounter() {
   const top = new THREE.Mesh(g, m); top.receiveShadow = true; top.castShadow = true; scene.add(top); S.counter = top;
   return top;
 }
-// luz de la ventana (la del HDRI, detrás a la izquierda): sombras suaves; y un relleno frío muy suave
-const WIN_DIR = new THREE.Vector3(-0.55, 0.62, -0.56).normalize();
+// luz de los ventanales (los del HDRI, a la izquierda y un poco por delante): sombras suaves; y un relleno frío muy suave
+const WIN_DIR = new THREE.Vector3(-0.8, 0.55, 0.25).normalize();
 function buildLights() {
   const key = new THREE.DirectionalLight(0xfff1e0, 2.2); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; key.shadow.bias = -0.0002;
   scene.add(key, key.target); const fill = new THREE.DirectionalLight(0xdbe6ff, 0.35); scene.add(fill, fill.target); S.L = { key, fill };
@@ -925,6 +925,11 @@ function lightsAt(c, d) {
   L.fill.position.copy(c).add(v3(0.3, 0.4, 1).multiplyScalar(300)); L.fill.target.position.copy(c);
 }
 // espera a que terminen de cargar todas las texturas e imágenes
+// cada material con su propia intensidad de reflejos (con scene.environment, three.js ignora envMapIntensity): se le pone el HDRI a mano.
+// k: factor extra (dentro del horno cerrado apenas llega la luz de la cocina)
+function envMat(m, k = 1) { if (!m || !m.isMeshStandardMaterial || !S.hdr) return; if (m.userData.env0 === undefined) m.userData.env0 = m.envMapIntensity;
+  if (m.envMap !== S.hdr) { m.envMap = S.hdr; m.needsUpdate = true; } m.envMapRotation.set(0, ENV.rot, 0); m.envMapIntensity = m.userData.env0 * ENV.env * k; }
+function envAll(root, k = 1) { root.traverse(o => { if (!o.material) return; for (const m of [].concat(o.material)) envMat(m, k); }); }
 function waitLoads() { return Promise.all(PENDING); }
 // ---------------------------------------------------------------- el microondas (de los de casa, de encimera): carcasa de acero cepillado con los bordes redondeados,
 // puerta de cristal negro ahumado con la rejilla de agujeros detrás, panel de mandos de cristal negro con la pantalla de cifras y los botones, interior
@@ -945,9 +950,9 @@ function brushedTex(w = 1024, h = 256) {
 function mwMats() {
   const br = brushedTex();
   const metal = new THREE.MeshPhysicalMaterial({ color: 0xb4b9bf, metalness: 0.78, roughness: 0.4, roughnessMap: br, bumpMap: br, bumpScale: 0.15, clearcoat: 0.2, clearcoatRoughness: 0.3, envMapIntensity: 0.85 });
-  const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#ece9e2'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
+  const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#d9d9d5'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
   enamelT.wrapS = enamelT.wrapT = THREE.RepeatWrapping; enamelT.repeat.set(3, 3);
-  const enamel = new THREE.MeshPhysicalMaterial({ map: enamelT, roughness: 0.38, clearcoat: 0.5, clearcoatRoughness: 0.25, side: THREE.DoubleSide });
+  const enamel = new THREE.MeshPhysicalMaterial({ map: enamelT, roughness: 0.42, clearcoat: 0.35, clearcoatRoughness: 0.3, side: THREE.DoubleSide });
   const black = new THREE.MeshPhysicalMaterial({ color: 0x0c0d10, roughness: 0.08, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 0.7 });
   const rubber = new THREE.MeshStandardMaterial({ color: 0x141416, roughness: 0.9 });
   return { metal, enamel, black, rubber };
@@ -1023,7 +1028,9 @@ function buildMicrowave() {
     gl.position.set(dw / 2, (y0 + y1) / 2, 2.46); gl.renderOrder = 6; D2.add(gl); U.doorGlass = gl;
     const sc = meshScreenTex(); sc.repeat.set((wx1 - wx0) / 25, (wy1 - wy0) / 25);
     const scr = new THREE.Mesh(new THREE.PlaneGeometry(wx1 - wx0 + 1.6, wy1 - wy0 + 1.6), new THREE.MeshStandardMaterial({ color: 0x1b1c1f, metalness: 0.7, roughness: 0.45, alphaMap: sc, transparent: true, depthWrite: false, side: THREE.DoubleSide }));
-    scr.position.set((wx0 + wx1) / 2, (wy0 + wy1) / 2, 1.2); scr.renderOrder = 5; D2.add(scr); U.screen = scr; U.win = { x0: wx0 - W / 2, x1: wx1 - W / 2, y0: wy0, y1: wy1 };
+    scr.position.set((wx0 + wx1) / 2, (wy0 + wy1) / 2, 1.2); scr.renderOrder = 5; D2.add(scr); U.screen = scr;
+    // con la cámara muy cerca, la rejilla queda desenfocada: un velo oscuro uniforme (como en una foto de verdad)
+    const veil = new THREE.Mesh(scr.geometry, new THREE.MeshBasicMaterial({ color: 0x0b0c0e, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide })); veil.position.copy(scr.position); veil.renderOrder = 5; D2.add(veil); U.veil = veil; U.win = { x0: wx0 - W / 2, x1: wx1 - W / 2, y0: wy0, y1: wy1 };
     // junta interior (se ve con la puerta abierta)
     const gs = roundRectShape(1, y0 + 1, dw - 1, y1 - 1, 1.2); gs.holes.push(rectPathXY(wx0 - 0.8, wy0 - 0.8, wx1 + 0.8, wy1 + 0.8));
     const gk = new THREE.Mesh(new THREE.ShapeGeometry(gs), new THREE.MeshStandardMaterial({ color: 0x2d2f33, roughness: 0.7, side: THREE.DoubleSide })); gk.position.z = 0.38; D2.add(gk); }
@@ -1041,7 +1048,7 @@ function buildMicrowave() {
 // estado: luz encendida (0–1), giro del plato, puerta (0 cerrada … 1 abierta 100°), texto de la pantalla
 function microwaveAt(MW, o) {
   const U = MW.userData, on = o.on ?? 0;
-  U.lamp.intensity = 900 * on; U.lamp2.intensity = 350 * on; U.lampGrille.material.emissiveIntensity = 3 * on;
+  const lamp = o.lamp ?? on; U.lamp.intensity = 380 * lamp; U.lamp2.intensity = 140 * lamp; U.lampGrille.material.emissiveIntensity = 3 * lamp;
   U.plate.rotation.y = o.turn ?? 0; U.door.rotation.y = -(o.door ?? 0) * 1.75;
   const txt = o.display ?? ':'; if (U._txt !== txt + on) { U._txt = txt + on; U.panelTex.userData.draw(txt, on > 0.5); }
 }
@@ -1365,7 +1372,7 @@ function buildSplash(n = 1400, seed = 1) {
   const D = new Float32Array(n * 8);           // x0, z0, vx, vy, vz, size, τ0, kind
   for (let i = 0; i < n; i++) { const h = k => hash(i * 7.31 + k * 1.913 + seed * 13.7); const core = i < n * 0.18;
     const r = (core ? 1.1 : 3.4) * Math.sqrt(h(1)), a = h(2) * 6.283, x0 = Math.cos(a) * r, z0 = Math.sin(a) * r, up = core ? 60 + 70 * h(3) : 80 + 140 * h(3), out = (core ? 8 : 20) + 50 * h(4) * (r / 3.4);
-    D.set([x0, z0, Math.cos(a) * out, up, Math.sin(a) * out, core ? 0.22 + 0.3 * h(5) : 0.04 + 0.16 * Math.pow(h(5), 2), (core ? 0.004 : 0.012) * h(6) + (r / 3.4) * 0.01, core ? 1 : 0], i * 8); }
+    D.set([x0, z0, Math.cos(a) * out, up, Math.sin(a) * out, core ? 0.08 + 0.16 * h(5) : 0.025 + 0.1 * Math.pow(h(5), 2), (core ? 0.004 : 0.012) * h(6) + (r / 3.4) * 0.01, core ? 1 : 0], i * 8); }
   _o.scale.setScalar(0.0001); _o.position.set(0, -1000, 0); _o.updateMatrix(); for (let i = 0; i < n; i++) im.setMatrixAt(i, _o.matrix);
   // vapor: manchas suaves que suben y se abren
   const st = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 1, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,.55)'); gr.addColorStop(0.5, 'rgba(255,255,255,.18)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
@@ -1396,6 +1403,42 @@ function splashAt(SP, tau, o = {}) {
   U.steam.forEach((s, i) => { const t = tau - 0.01 - (i % 12) * 0.006, k = clamp(t / 0.12); s.visible = t > 0;
     if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 1 + 3 * hash(i * 5.1) + 18 * k * hash(i * 1.3);
     s.position.set(Math.cos(a) * r, MUG.WY + 2 + 26 * k * (0.5 + hash(i * 2.9)), Math.sin(a) * r); s.scale.setScalar(3 + 14 * k); s.material.opacity = 0.32 * Math.sin(Math.PI * clamp(k * 1.1)) * (o.steam ?? 1); });
+}
+// ---------- el agua que estalla, continua (metaballs → superficie con marching cubes): primero se abomba, luego sube una columna que se rompe en
+// gotas gordas y un anillo que salpica hacia fuera. τ en segundos reales. Va en el grupo del estallido (coordenadas de la taza, sin girar).
+const ERU = { HE: 11, Y0: -3.5, res: 84 };                 // cubo de 22 cm: de WY-3,5 a WY+18,5; celda ≈ 0,26 cm
+function buildErupt(seed = 3) {
+  const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.025, metalness: 0, transmission: 1, thickness: 1.2, ior: 1.33, specularIntensity: 1, envMapIntensity: 1.5, attenuationColor: new THREE.Color(0xd8f0f2), attenuationDistance: 12 });
+  const mc = new MarchingCubes(ERU.res, mat, false, false, 90000); mc.isolation = 80; mc.frustumCulled = false; mc.renderOrder = 8;
+  mc.scale.setScalar(ERU.HE); mc.position.set(0, MUG.WY + ERU.Y0 + ERU.HE, 0); mc.castShadow = false;
+  const B = [];                                            // bolas: x0, y0, z0, vx, vy, vz, r0, t0, decay, kind (0 bulto, 1 columna, 2 anillo, 3 gotas gordas)
+  const h = (i, k) => hash(i * 4.77 + k * 1.31 + seed * 9.1);
+  B.push([0, -1.6, 0, 0, 34, 0, 2.3, 0.0, 70, 0]);                                                    // el bulto del centro
+  for (let i = 0; i < 12; i++) { const a = h(i, 1) * 6.283, r = 0.5 * h(i, 2);                       // la columna
+    B.push([Math.cos(a) * r, -0.4, Math.sin(a) * r, Math.cos(a) * 9 * h(i, 3), 70 + 120 * Math.pow(i / 11, 0.8) + 25 * h(i, 4), Math.sin(a) * 9 * h(i, 3), 1.05 - 0.04 * i + 0.2 * h(i, 5), 0.004 + 0.0016 * i, 9 + 6 * h(i, 6), 1]); }
+  for (let i = 0; i < 18; i++) { const a = (i + 0.4 * h(i, 7)) / 18 * 6.283, r = 1.8 + 0.8 * h(i, 8), out = 30 + 40 * h(i, 9);   // el anillo (corona)
+    B.push([Math.cos(a) * r, 0.1, Math.sin(a) * r, Math.cos(a) * out, 45 + 60 * h(i, 10), Math.sin(a) * out, 0.55 + 0.25 * h(i, 11), 0.008 + 0.006 * h(i, 12), 7 + 6 * h(i, 13), 2]); }
+  for (let i = 0; i < 16; i++) { const a = h(i, 14) * 6.283, r = 1.4 * h(i, 15), out = 12 + 40 * h(i, 16);  // gotas gordas que salen de la columna
+    B.push([Math.cos(a) * r, 0.5, Math.sin(a) * r, Math.cos(a) * out, 90 + 110 * h(i, 17), Math.sin(a) * out, 0.38 + 0.25 * h(i, 18), 0.012 + 0.02 * h(i, 19), 4 + 4 * h(i, 20), 3]); }
+  mc.userData = { B }; return mc;
+}
+// o.dir: hacia dónde se inclina el chorro; o.wallZ / o.floor como en splashAt
+function eruptAt(EP, tau, o = {}) {
+  const B = EP.userData.B, g = 981, dir = o.dir || null, HE = ERU.HE, cy = MUG.WY + ERU.Y0 + HE, iso = EP.isolation, sub = 12, wallZ = o.wallZ ?? null, floor = o.floor ?? -0.05;
+  EP.visible = tau > 0.0005; if (!EP.visible) return; EP.reset(); let n = 0;
+  for (const b of B) { const t = tau - b[7]; if (t <= 0) continue;
+    let vx = b[3], vy = b[4], vz = b[5]; if (dir && b[9] > 0) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
+    let x = b[0] + vx * t, y = MUG.WY + b[1] + vy * t - 0.5 * g * t * t, z = b[2] + vz * t, r = b[6];
+    if (b[9] === 0) { r = b[6] * Math.exp(-Math.pow(Math.max(0, t - 0.012) * b[8], 2)); y = MUG.WY + b[1] + Math.min(vy * t, 2.6); }      // el bulto sube y se deshace
+    else r *= Math.exp(-t * b[8]) * clamp(t / 0.004);                                                                                // crece al salir y se adelgaza (se rompe en gotas)
+    if (wallZ !== null && z > wallZ - r) z = wallZ - r;
+    const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.3;
+    if (inside && y < MUG.WY - 0.3 && b[9] > 0 && vy - g * t < 0) r *= clamp((y - MUG.WY + 1.5) / 1.2);                          // vuelve a caer dentro
+    if (!inside && y < floor + r * 0.5) { y = floor + r * 0.5; r *= 0.85; }
+    if (r < 0.12) continue;
+    const nx = x / (2 * HE) + 0.5, ny = (y - cy) / (2 * HE) + 0.5, nz = z / (2 * HE) + 0.5; if (nx < 0.02 || nx > 0.98 || ny < 0.02 || ny > 0.98 || nz < 0.02 || nz > 0.98) continue;
+    const d = r / (2 * HE); EP.addBall(nx, ny, nz, d * d * (iso + sub), sub); n++; }
+  EP.update(); EP.visible = n > 0;
 }
 // ---------- el café soluble: gránulos que caen (a cámara lenta) y tocan el agua en τHit
 function buildCoffee(n = 140) {
@@ -1496,6 +1539,7 @@ async function buildScene() {
   S.mw = buildMicrowave(); S.mw.position.copy(MW_POS); scene.add(S.mw);
   const U = S.mw.userData; S.mug = buildMug(); S.mug.position.copy(U.plateC).add(v3(0, U.plateTop - U.plateC.y + 0.02, 0)).add(MW_POS); scene.add(S.mug); MUGW.copy(S.mug.position);
   S.splash = buildSplash(1500, 1); S.splash.position.copy(MUGW); scene.add(S.splash);      // el estallido no gira con el plato
+  S.erupt = buildErupt(3); S.splash.add(S.erupt);
   S.coffee = buildCoffee(); S.mug.add(S.coffee);
   S.stick = buildStick(); S.stick.position.set(1.4, 0.75, 0.5); S.stick.rotation.set(0.1, 0.35, -0.2); S.stick.visible = false; S.mug.add(S.stick);
   S.bub = buildBubbles(90); S.mug.add(S.bub);
@@ -1506,7 +1550,11 @@ async function buildScene() {
   // la mano (piel real, la de «los dedos»): entra a coger la taza
   S.hand = realHand({ inside: false }); S.hand.scale.setScalar(10.5); S.hand.visible = false; scene.add(S.hand);
   handPose2(S.hand, [0.35, 0.55, 0.65, 0.75, 0.85]);
+  // reflejos: cada material con su HDRI; lo de dentro del horno, con menos (la caja de metal tapa la cocina)
+  envAll(scene, 1); const IN = [U.M.enamel, U.mica.material, U.lampGrille.material]; U.plate.traverse(o => o.material && IN.push(o.material));
+  S.inner = [...new Set(IN)]; S.innerRoots = [S.mug, S.splash];
 }
+function innerEnv(k) { for (const m of S.inner) envMat(m, k); for (const r of S.innerRoots) envAll(r, k); }
 // mezcla suave entre a y b según u (0..1)
 const mixv = (a, b, u) => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u];
 // el estallido: τ (segundos reales) en cada momento. A cámara lenta: 1 s de vídeo ≈ 0,06 s de verdad
@@ -1530,11 +1578,15 @@ function stageAt(t, st) {
   const door = doorOpen ? (sh === 'O' ? win(t, K.pero8 - 0.1, 0.5) * 0.78 : 0.78) : 0;
   const on = doorOpen || sh === 'T' ? 0 : sh === 'U' ? win(t, SHT.U0, 0.6) : 1;
   const secs = Math.max(0, Math.ceil(60 - (t - 0.75) * 0.9)), disp = sh === 'R' || sh === 'S' ? '1:00' : (on ? `0:${String(secs % 60).padStart(2, '0')}` : '12:34');
-  const rot = mugRot(t, sh); S.mug.rotation.y = rot; microwaveAt(S.mw, { on, turn: rot, door, display: disp });
+  const rot = mugRot(t, sh); S.mug.rotation.y = rot; microwaveAt(S.mw, { on, lamp: Math.max(on, doorOpen), turn: rot, door, display: disp });
   // la taza: superficie, estallido, café, palito, burbujas, corte y vista térmica
   const tau = tauAt(t), doorShut = door < 0.05, mz = MUGW.z;
-  splashAt(S.splash, tau, { dir: (sh === 'Q' ? v3(0.55, 0, 0.8) : sh === 'P' ? v3(0.15, 0, 1) : v3(0, 0, 1)), floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null, frontZ: -6 - mz, floorOut: -MUGW.y, steam: 1 });
-  const bulge = tau > 0 ? 0.9 * Math.exp(-Math.pow((tau - 0.012) / 0.02, 2)) : 0, crown = tau > 0 ? clamp(tau / 0.05) : 0;
+  innerEnv(lerp(0.2, 0.6, clamp(door / 0.78)));
+  { const dz = Math.abs(st.p.z - (-4.8)), near = door < 0.05 ? 1 - clamp((dz - 5) / 22) : 0; U.screen.material.opacity = 1 - near; U.veil.material.opacity = near * 0.55; }   // rejilla desenfocada de cerca
+  const sdir = sh === 'Q' ? v3(0.55, 0, 0.8) : sh === 'P' ? v3(0.15, 0, 1) : v3(0, 0, 1);
+  splashAt(S.splash, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null, frontZ: -6 - mz, floorOut: -MUGW.y, steam: 1 });
+  eruptAt(S.erupt, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null });
+  const bulge = tau > 0 ? 0.35 * Math.exp(-Math.pow((tau - 0.012) / 0.02, 2)) : 0, crown = tau > 0 ? clamp(tau / 0.05) : 0;
   mugSurface(S.mug, t, { amp: tau > 0 ? 0.35 * clamp(tau / 0.02) : (sh === 'S' ? 0.03 : 0), bulge, crown });
   coffeeAt(S.coffee, sh === 'O' || sh === 'P' ? clamp((t - (K.echas8 - 0.1)) / (K.hierve8 - K.echas8 + 0.05)) : 0);
   S.stick.visible = sh === 'S'; bubblesAt(S.bub, t, v3(1.45, 1.2, 0.55), v3(2.6, 7.6, 1.5), sh === 'S' ? clamp((t - K.vetas10 + 0.3) / 1.2) : 0, { rate: 0.55, scale: 0.8 });
@@ -1644,9 +1696,84 @@ function camAt(t) {
 function prevT(t, dt) { const a = t - dt; return segAt(a) !== segAt(t) ? t : Math.max(0, a); }
 function flashAt(t) { let f = 0; for (const [t0, k] of [[SHT.C0 + 0.03, 0.03], [SHT.I0, 0.07], [SHT.P0 + 0.1, 0.025], [K.quemaduras9 - 0.18, 0.02]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.09); return f; }
 function whiteAt(t) { return 0; }
-// ---------------------------------------------------------------- HUD (provisional: vacío mientras se ajustan los planos)
-function buildHudPlan() { HFONT = 'Inter'; }
-function hudAt(t) { hudBegin(); }
+// ---------------------------------------------------------------- HUD sobrio (cine, no maqueta): cabecera con el truco pendiente (bucle abierto hasta el s 42), rótulos con
+// línea guía sobre los objetos de verdad, «> 100 °C», la ficha de la FDA y la pregunta del final. En planos claros, tinta oscura con caja blanca; en oscuros, al revés.
+let INK = '#1C2430', GREY = '#5A6472', HOT = '#E8590C', COOL = '#1F6FD1', GREEN = '#2E9D57', REDc = '#D32F2F', AMBc = '#C27A00', HUDD = false;
+function hudPalette(dark) { HUDD = dark;
+  if (dark) { INK = '#F2F5F8'; GREY = '#B4BEC9'; HOT = '#FF8A3D'; COOL = '#7FC4FF'; GREEN = '#7CF0A9'; REDc = '#FF5A4E'; AMBc = '#FFC24A'; }
+  else { INK = '#1C2430'; GREY = '#5A6472'; HOT = '#E8590C'; COOL = '#1F6FD1'; GREEN = '#2E9D57'; REDc = '#D32F2F'; AMBc = '#C27A00'; } }
+function buildHudPlan() { HFONT = 'Inter'; HW = [900, 600]; }
+const cw = (t, t0, t1, d = 0.25) => win(t, t0, d) * (1 - win(t, t1, d));
+const hal = n => HUDD ? { dark: n } : { halo: n };
+function lab(P, txt, sub, k, o = {}) { if (k <= 0.01) return; callout(P, txt, sub, k, { size: 28, subSize: 20, bg: true, light: !HUDD, subCol: GREY, color: INK, ...o }); }
+const big = (txt, y, size, col, k, o = {}) => bigText(txt, W / 2, y, size, col, k, { type: false, ...hal(22), ls: Math.round(size * 0.04), ...o });
+const small = (txt, y, size, col, k, o = {}) => bigText(txt, W / 2, y, size, col, k, { ...hal(14), ls: 2, ...o });
+// cabecera: «ASÍ FUNCIONA · EL MICROONDAS» y el truco pendiente (parpadea hasta que se dice)
+function hdr(t) {
+  const a = win(t, SHT.B0, 0.35) * (1 - win(t, END - 0.9, 0.4)); if (a <= 0.01) return;
+  hg.save(); hg.globalAlpha = a; hg.textBaseline = 'alphabetic'; hg.shadowColor = HUDD ? 'rgba(0,0,0,.9)' : 'rgba(255,255,255,.95)'; hg.shadowBlur = 12;
+  hg.letterSpacing = '4px'; hfont(46); hg.fillStyle = INK; hg.textAlign = 'left'; hg.fillText('EL MICROONDAS', 54, 142);
+  hg.letterSpacing = '2px'; hfont(24, false); hg.fillStyle = GREY; hg.fillText('POR QUÉ EL AGUA PUEDE SALTARTE A LA CARA', 56, 180);
+  hg.fillStyle = HUDD ? 'rgba(240,245,250,.25)' : 'rgba(28,36,48,.22)'; hg.fillRect(56, 196, 968, 2);
+  hg.textAlign = 'right'; hfont(18, false); hg.fillStyle = GREY; hg.fillText('ASÍ', 1024, 112); hfont(32); hg.fillStyle = HOT; hg.fillText('FUNCIONA', 1024, 148);
+  const mk = win(t, K.cara1 + 0.2, 0.3);
+  if (mk > 0.01) {
+    let txt = 'EL TRUCO PARA EVITARLO · ???', col = REDc, blink = true;
+    if (t > K.truco10) { txt = 'EL TRUCO: NO LA CALIENTES DE MÁS'; col = GREEN; blink = false; }
+    if (t > K.palito10) { txt = 'EL TRUCO: UN PALITO DE MADERA'; col = GREEN; blink = false; }
+    const on = !blink || Math.sin(t * 9) > -0.3;
+    hg.globalAlpha = a * mk * (on ? 1 : 0.25); hfont(20); hg.letterSpacing = '2px'; hg.textAlign = 'right';
+    const w = hg.measureText(txt).width + 34, x1 = 1024, x0 = x1 - w, y = 238;
+    hg.fillStyle = HUDD ? 'rgba(8,12,20,.72)' : 'rgba(255,255,255,.8)'; rr(hg, x0, y - 26, w, 40, 8); hg.fill(); hg.strokeStyle = col; hg.lineWidth = 2; rr(hg, x0, y - 26, w, 40, 8); hg.stroke();
+    hg.fillStyle = col; hg.fillText(txt, x1 - 17, y + 1);
+  }
+  hg.restore();
+}
+// la cuenta de las ondas: sube hasta 2.450.000.000 cuando se dice
+function countUp(t, a) {
+  if (a <= 0.01) return; const k = clamp((t - K.n2450 + 0.1) / 1.1), n = Math.round(2450 * (1 - Math.pow(1 - k, 3))) * 1e6;
+  const s = n.toLocaleString('es-ES').replace(/ /g, '.');
+  big(s, 1500, 92, INK, a, { glow: HUDD ? 18 : 0 }); small('VECES POR SEGUNDO', 1572, 30, HUDD ? AMBc : GREY, a);
+}
+// la ficha de la FDA (aviso oficial, con su nombre)
+function fdaCard(t, a) {
+  if (a <= 0.01) return; const x0 = 90, x1 = 990, y0 = 1330, y1 = 1580, e = eo(clamp(a * 1.4));
+  hg.save(); hg.globalAlpha = clamp(a * 2); hg.translate(0, (1 - e) * 40);
+  hg.fillStyle = 'rgba(255,255,255,.95)'; hg.shadowColor = 'rgba(40,20,10,.28)'; hg.shadowBlur = 26; rr(hg, x0, y0, x1 - x0, y1 - y0, 18); hg.fill(); hg.shadowBlur = 0;
+  hg.fillStyle = '#D32F2F'; rr(hg, x0, y0, 14, y1 - y0, 7); hg.fill();
+  hg.textAlign = 'left'; hg.textBaseline = 'alphabetic'; hg.letterSpacing = '3px'; hfont(26); hg.fillStyle = '#5A6472'; hg.fillText('AVISO OFICIAL · FDA (EE. UU.)', x0 + 48, y0 + 62);
+  hg.letterSpacing = '1px'; hfont(44); hg.fillStyle = '#1C2430'; hg.fillText(typed('Quemaduras graves', clamp((a - 0.2) * 2)), x0 + 48, y0 + 128);
+  hfont(34, false); hg.fillStyle = '#1C2430'; hg.fillText(typed('por agua sobrecalentada en el microondas', clamp((a - 0.35) * 2)), x0 + 48, y0 + 182);
+  hfont(24, false); hg.fillStyle = '#5A6472'; hg.fillText('en las manos y en la cara', x0 + 48, y0 + 222);
+  hg.restore();
+}
+function hudAt(t) {
+  const sh = shotAt(t), dark = ['E', 'F', 'I'].includes(sh); hudPalette(dark); hudBegin(); hdr(t);
+  const U = S.mw.userData, mw = (x, y, z) => S.mw.localToWorld(v3(x, y, z)), mg = (x, y, z) => S.mug.localToWorld(v3(x, y, z));
+  // E: el magnetrón
+  if (S.mag && (sh === 'E' || sh === 'F')) { const a = cw(t, K.magnetron2 + 0.35, SHT.F0 + 0.4); const p = S.mag.group.localToWorld(v3(0, 0, 0));
+    lab(p, 'MAGNETRÓN', t > K.radares2 - 0.1 ? 'EL DE LOS RADARES DE LA II GUERRA MUNDIAL' : '', a, { dx: -170, dy: 260 }); }
+  // F–G: 2.450 millones de veces por segundo
+  countUp(t, cw(t, K.n2450 - 0.1, K.agua4 - 0.2));
+  // K: las rayitas del fondo del cazo
+  if (sh === 'K') { const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z); lab(pot.clone().add(v3(-1.5, 0.35, -2)), 'RAYITAS', 'AQUÍ NACEN LAS BURBUJAS', cw(t, K.rayitas5 - 0.1, SHT.L0), { dx: -160, dy: -260 }); }
+  // L: vista térmica
+  if (sh === 'L') { const a = cw(t, SHT.L0 + 0.4, SHT.M0); small('VISTA TÉRMICA', 1640, 26, GREY, a);
+    lab(mg(-1.2, 4.5, -1), 'AGUA', 'LA CALIENTAN LAS ONDAS', cw(t, K.agua6 - 0.1, SHT.M0), { color: HOT, dx: -150, dy: -240 });
+    lab(mg(3.95, 6.5, 0.4), 'TAZA', 'CASI NO SE CALIENTA', cw(t, K.taza6 - 0.1, SHT.M0), { color: COOL, dx: 150, dy: 200 }); }
+  // M: la pared lisa
+  if (sh === 'M') lab(mg(-0.8, 4.2, -3.6), 'PARED LISA', 'NINGÚN SITIO DONDE NACER', cw(t, K.lisa6, SHT.N0), { dx: 160, dy: -250 });
+  // N: más de cien grados y quieta
+  { const a = cw(t, K.cien7 - 0.05, SHT.O0 - 0.1); if (a > 0.01) { big('> 100 °C', 1480, 150, HOT, a); small(t > K.sigue7 - 0.1 ? 'Y SIGUE QUIETA' : '', 1580, 34, INK, a); } }
+  // Q: la FDA
+  fdaCard(t, cw(t, K.fda9 + 0.2, SHT.R0 - 0.1, 0.35));
+  // S: las vetas del palito
+  if (sh === 'S' && S.stick.visible) lab(S.stick.localToWorld(v3(0, 4.5, 0.1)), 'VETAS DE LA MADERA', 'LAS BURBUJAS NACEN AQUÍ', cw(t, K.vetas10 - 0.1, SHT.T0), { dx: 150, dy: -240 });
+  // T: ¿micro o cazo?
+  if (sh === 'T' || sh === 'U') { const a = cw(t, K.micro11 - 0.05, K.mandaselo11 + 0.3);
+    lab(mw(-4, 29, -18), 'MICRO', '', a, { dx: -120, dy: -150 }); lab(v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y + 13.5, STOVE_POS.z + POT_L.z), 'CAZO', '', a * win(t, K.cazo11 - 0.1, 0.2), { dx: 120, dy: -150 });
+    big('¿MICRO O CAZO?', 1520, 96, INK, a); }
+}
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);

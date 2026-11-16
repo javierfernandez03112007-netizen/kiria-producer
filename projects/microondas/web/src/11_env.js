@@ -1,15 +1,15 @@
-// ---------------------------------------------------------------- la cocina de verdad: el HDRI «Blinds» de Poly Haven (CC0, una cocina real con persianas) da el
-// fondo (desenfocado, como con un objetivo de cine) y la luz de todos los reflejos; encima va la encimera de madera (textura «kitchen_wood», CC0) y una
-// luz de ventana con sombras suaves. Unidades: 1 = 1 cm; la encimera está en y = 0.
+// ---------------------------------------------------------------- la cocina de verdad: el HDRI «Brown Photostudio 02» de Poly Haven (CC0: un loft blanco con su cocina,
+// estanterías con botes y ventanales) da el fondo (desenfocado, como con un objetivo de cine) y la luz de todos los reflejos; encima va la encimera de madera
+// (textura «kitchen_wood», CC0) y la luz de los ventanales (a la izquierda) con sombras suaves. Unidades: 1 = 1 cm; la encimera está en y = 0.
 const _o = new THREE.Object3D();      // objeto de trabajo para las matrices de las instancias
 const ASSET = '/projects/microondas/web/assets/';
-const ENV = { file: 'blinds', rot: 3.14, bg: 0.6, env: 0.8, blur: 0.07, wb: [0.8, 0.9, 1.1] };
+const ENV = { file: 'brown_photostudio_02', rot: 4.71, bg: 0.6, env: 0.8, blur: 0.07, wb: [1, 1, 1] };     // rot 4,71: detrás del micro, las estanterías de la cocina
 const TEXL = new THREE.TextureLoader(), PENDING = [];
 function tx(path, srgb = true, rep = null) { let ok, ko; PENDING.push(new Promise((a, b) => { ok = a; ko = b; })); const t = TEXL.load(ASSET + path, () => ok(), undefined, e => { console.error('ERROR textura ' + path); ok(); }); t.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace; t.anisotropy = 8; if (rep) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep[0], rep[1]); } return t; }
 async function loadEnv() {
   const hdr = await new RGBELoader().loadAsync(ASSET + `ph/${window.ENVFILE || ENV.file}/${window.ENVFILE || ENV.file}_${window.ENVRES || '4k'}.hdr`); hdr.mapping = THREE.EquirectangularReflectionMapping;
-  // balance de blancos: la luz de la persiana tiñe todo de naranja; se corrige un poco hacia neutro
-  { const d = hdr.image.data, wb = ENV.wb, f = THREE.DataUtils; const half = d instanceof Uint16Array;
+  // balance de blancos (neutro con este HDRI)
+  if (ENV.wb.some(v => v !== 1)) { const d = hdr.image.data, wb = ENV.wb, f = THREE.DataUtils; const half = d instanceof Uint16Array;
     for (let i = 0; i < d.length; i += 4) for (let c = 0; c < 3; c++) d[i + c] = half ? f.toHalfFloat(f.fromHalfFloat(d[i + c]) * wb[c]) : d[i + c] * wb[c];
     hdr.needsUpdate = true; }
   S.hdr = hdr; scene.background = hdr; scene.environment = hdr;
@@ -27,8 +27,8 @@ function buildCounter() {
   const top = new THREE.Mesh(g, m); top.receiveShadow = true; top.castShadow = true; scene.add(top); S.counter = top;
   return top;
 }
-// luz de la ventana (la del HDRI, detrás a la izquierda): sombras suaves; y un relleno frío muy suave
-const WIN_DIR = new THREE.Vector3(-0.55, 0.62, -0.56).normalize();
+// luz de los ventanales (los del HDRI, a la izquierda y un poco por delante): sombras suaves; y un relleno frío muy suave
+const WIN_DIR = new THREE.Vector3(-0.8, 0.55, 0.25).normalize();
 function buildLights() {
   const key = new THREE.DirectionalLight(0xfff1e0, 2.2); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; key.shadow.bias = -0.0002;
   scene.add(key, key.target); const fill = new THREE.DirectionalLight(0xdbe6ff, 0.35); scene.add(fill, fill.target); S.L = { key, fill };
@@ -41,4 +41,9 @@ function lightsAt(c, d) {
   L.fill.position.copy(c).add(v3(0.3, 0.4, 1).multiplyScalar(300)); L.fill.target.position.copy(c);
 }
 // espera a que terminen de cargar todas las texturas e imágenes
+// cada material con su propia intensidad de reflejos (con scene.environment, three.js ignora envMapIntensity): se le pone el HDRI a mano.
+// k: factor extra (dentro del horno cerrado apenas llega la luz de la cocina)
+function envMat(m, k = 1) { if (!m || !m.isMeshStandardMaterial || !S.hdr) return; if (m.userData.env0 === undefined) m.userData.env0 = m.envMapIntensity;
+  if (m.envMap !== S.hdr) { m.envMap = S.hdr; m.needsUpdate = true; } m.envMapRotation.set(0, ENV.rot, 0); m.envMapIntensity = m.userData.env0 * ENV.env * k; }
+function envAll(root, k = 1) { root.traverse(o => { if (!o.material) return; for (const m of [].concat(o.material)) envMat(m, k); }); }
 function waitLoads() { return Promise.all(PENDING); }

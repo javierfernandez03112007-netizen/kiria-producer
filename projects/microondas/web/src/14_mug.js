@@ -67,16 +67,20 @@ function mugCut(M, on) {
 // ---------- el estallido: gotas (instanciadas, se estiran con la velocidad), la columna y el vapor. τ = tiempo REAL del estallido en segundos
 function buildSplash(n = 1400, seed = 1) {
   const G = new THREE.Group(), geo = new THREE.IcosahedronGeometry(1, 2);
-  const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.02, metalness: 0, transmission: 1, thickness: 0.25, ior: 1.33, envMapIntensity: 1.6, specularIntensity: 1 });
+  const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.0, metalness: 0, transmission: 1, thickness: 0.6, ior: 1.33, envMapIntensity: 2.2, specularIntensity: 1 });
   const im = new THREE.InstancedMesh(geo, m, n); im.frustumCulled = false; im.renderOrder = 9; G.add(im);
   const D = new Float32Array(n * 8);           // x0, z0, vx, vy, vz, size, τ0, kind
   for (let i = 0; i < n; i++) { const h = k => hash(i * 7.31 + k * 1.913 + seed * 13.7); const core = i < n * 0.18;
     const r = (core ? 1.1 : 3.4) * Math.sqrt(h(1)), a = h(2) * 6.283, x0 = Math.cos(a) * r, z0 = Math.sin(a) * r, up = core ? 60 + 70 * h(3) : 80 + 140 * h(3), out = (core ? 8 : 20) + 50 * h(4) * (r / 3.4);
-    D.set([x0, z0, Math.cos(a) * out, up, Math.sin(a) * out, core ? 0.22 + 0.3 * h(5) : 0.04 + 0.16 * Math.pow(h(5), 2), (core ? 0.004 : 0.012) * h(6) + (r / 3.4) * 0.01, core ? 1 : 0], i * 8); }
+    D.set([x0, z0, Math.cos(a) * out, up, Math.sin(a) * out, core ? 0.05 + 0.1 * h(5) : 0.012 + 0.055 * Math.pow(h(5), 2), (core ? 0.004 : 0.012) * h(6) + (r / 3.4) * 0.01, core ? 1 : 0], i * 8); }
   _o.scale.setScalar(0.0001); _o.position.set(0, -1000, 0); _o.updateMatrix(); for (let i = 0; i < n; i++) im.setMatrixAt(i, _o.matrix);
-  // vapor: manchas suaves que suben y se abren
-  const st = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 1, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,.55)'); gr.addColorStop(0.5, 'rgba(255,255,255,.18)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
-  const steam = []; for (let i = 0; i < 46; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: st, transparent: true, depthWrite: false, opacity: 0 })); s.renderOrder = 10; G.add(s); steam.push(s); }
+  // vapor: nubecillas (textura de ruido) que suben, crecen y se deshacen; a contraluz de la lámpara del horno brillan
+  const st = canvasTex(256, 256, (c, w, h) => { const img = c.createImageData(w, h), d = img.data;
+    const n2 = (x, y, f) => { let v = 0, a = 1, s = 0; for (let o = 0; o < 5; o++) { v += a * (Math.sin(x * f * 1.7 + hash(o * 3.1) * 9) * Math.sin(y * f * 1.3 + hash(o * 7.7) * 9) * 0.5 + 0.5); s += a; a *= 0.55; f *= 2.1; } return v / s; };
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const u = x / w - 0.5, v = y / h - 0.5, r = Math.hypot(u, v) * 2, fall = Math.max(0, 1 - r * r) ** 1.6;
+      const a = fall * Math.pow(n2(u * 6, v * 6, 1.2), 2.2) * 1.6, i = (y * w + x) * 4; d[i] = d[i + 1] = d[i + 2] = 255; d[i + 3] = Math.min(255, a * 255); }
+    c.putImageData(img, 0, 0); });
+  const steam = []; for (let i = 0; i < 70; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: st, color: 0xfff4e6, transparent: true, depthWrite: false, opacity: 0, rotation: hash(i * 9.1) * 6.28 })); s.renderOrder = 10; G.add(s); steam.push(s); }
   G.userData = { im, D, n, steam, seed }; return G;
 }
 const _sv = new THREE.Vector3(), _sq = new THREE.Quaternion(), _sY = new THREE.Vector3(0, 1, 0);
@@ -95,14 +99,52 @@ function splashAt(SP, tau, o = {}) {
     if (!inside && y < fl) { const tl = (y - fl) / Math.max(1, -vyy); y = fl; s *= clamp(1 + tl * 10); flat = 2; }   // las que caen fuera se aplastan y se van
     if (flat === 1) { _o.position.set(x, y, z - s * 0.3); _o.quaternion.identity(); _o.scale.set(s * 1.5, s * 1.9, Math.max(0.0001, s * 0.35)); }
     else if (flat === 2) { _o.position.set(x, y + s * 0.15, z); _o.quaternion.identity(); _o.scale.set(Math.max(0.0001, s * 1.7), Math.max(0.0001, s * 0.3), Math.max(0.0001, s * 1.7)); }
-    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(4, sp * 0.012 * (o.blur ?? 1));
+    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(2.5, sp * 0.008 * (o.blur ?? 1));
       _o.position.set(x, y, z); _sv.set(vx, vyy, vz).normalize(); _o.quaternion.setFromUnitVectors(_sY, _sv);
       _o.scale.set(Math.max(0.0001, s), Math.max(0.0001, s * stretch), Math.max(0.0001, s)); }
     _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); }
   U.im.instanceMatrix.needsUpdate = true;
-  U.steam.forEach((s, i) => { const t = tau - 0.01 - (i % 12) * 0.006, k = clamp(t / 0.12); s.visible = t > 0;
-    if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 1 + 3 * hash(i * 5.1) + 18 * k * hash(i * 1.3);
-    s.position.set(Math.cos(a) * r, MUG.WY + 2 + 26 * k * (0.5 + hash(i * 2.9)), Math.sin(a) * r); s.scale.setScalar(3 + 14 * k); s.material.opacity = 0.32 * Math.sin(Math.PI * clamp(k * 1.1)) * (o.steam ?? 1); });
+  U.steam.forEach((s, i) => { const t = tau - 0.006 - (i % 14) * 0.005, k = clamp(t / 0.16); s.visible = t > 0 && (o.steam ?? 1) > 0;
+    if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 0.6 + 2.6 * hash(i * 5.1) + 9 * k * hash(i * 1.3), d = o.dir ? 6 * k : 0;
+    s.position.set(Math.cos(a) * r + (o.dir ? o.dir.x * d : 0), MUG.WY + 1 + 16 * Math.pow(k, 0.7) * (0.4 + hash(i * 2.9)), Math.sin(a) * r + (o.dir ? o.dir.z * d : 0));
+    s.scale.setScalar(2.2 + 9 * Math.pow(k, 0.6) * (0.6 + 0.8 * hash(i * 4.4))); s.material.rotation = hash(i * 9.1) * 6.28 + k * (hash(i) - 0.5) * 2;
+    s.material.opacity = 0.42 * Math.sin(Math.PI * clamp(k * 1.05)) * (o.steam ?? 1); });
+}
+// ---------- el agua que estalla, continua (metaballs → superficie con marching cubes): primero se abomba, luego sube una columna que se rompe en
+// gotas gordas y un anillo que salpica hacia fuera. τ en segundos reales. Va en el grupo del estallido (coordenadas de la taza, sin girar).
+const ERU = { HE: 11, Y0: -3.5, res: 84 };                 // cubo de 22 cm: de WY-3,5 a WY+18,5; celda ≈ 0,26 cm
+function buildErupt(seed = 3) {
+  const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.025, metalness: 0, transmission: 1, thickness: 1.2, ior: 1.33, specularIntensity: 1, envMapIntensity: 1.5, attenuationColor: new THREE.Color(0xd8f0f2), attenuationDistance: 12 });
+  const mc = new MarchingCubes(ERU.res, mat, false, false, 90000); mc.isolation = 80; mc.frustumCulled = false; mc.renderOrder = 8;
+  mc.scale.setScalar(ERU.HE); mc.position.set(0, MUG.WY + ERU.Y0 + ERU.HE, 0); mc.castShadow = false;
+  const B = [];                                            // bolas: x0, y0, z0, vx, vy, vz, r0, t0, decay, kind (0 bulto, 1 columna, 2 anillo, 3 gotas gordas)
+  const h = (i, k) => hash(i * 4.77 + k * 1.31 + seed * 9.1);
+  B.push([0, -1.6, 0, 0, 34, 0, 2.3, 0.0, 70, 0]);                                                    // el bulto del centro
+  for (let i = 0; i < 12; i++) { const a = h(i, 1) * 6.283, r = 0.5 * h(i, 2);                       // la columna
+    B.push([Math.cos(a) * r, -0.4, Math.sin(a) * r, Math.cos(a) * 9 * h(i, 3), 70 + 120 * Math.pow(i / 11, 0.8) + 25 * h(i, 4), Math.sin(a) * 9 * h(i, 3), 1.05 - 0.04 * i + 0.2 * h(i, 5), 0.004 + 0.0016 * i, 9 + 6 * h(i, 6), 1]); }
+  for (let i = 0; i < 18; i++) { const a = (i + 0.4 * h(i, 7)) / 18 * 6.283, r = 1.8 + 0.8 * h(i, 8), out = 30 + 40 * h(i, 9);   // el anillo (corona)
+    B.push([Math.cos(a) * r, 0.1, Math.sin(a) * r, Math.cos(a) * out, 45 + 60 * h(i, 10), Math.sin(a) * out, 0.55 + 0.25 * h(i, 11), 0.008 + 0.006 * h(i, 12), 7 + 6 * h(i, 13), 2]); }
+  for (let i = 0; i < 16; i++) { const a = h(i, 14) * 6.283, r = 1.4 * h(i, 15), out = 12 + 40 * h(i, 16);  // gotas gordas que salen de la columna
+    B.push([Math.cos(a) * r, 0.5, Math.sin(a) * r, Math.cos(a) * out, 90 + 110 * h(i, 17), Math.sin(a) * out, 0.38 + 0.25 * h(i, 18), 0.012 + 0.02 * h(i, 19), 4 + 4 * h(i, 20), 3]); }
+  mc.userData = { B }; return mc;
+}
+// o.dir: hacia dónde se inclina el chorro; o.wallZ / o.floor como en splashAt
+function eruptAt(EP, tau, o = {}) {
+  const B = EP.userData.B, g = 981, dir = o.dir || null, HE = ERU.HE, cy = MUG.WY + ERU.Y0 + HE, iso = EP.isolation, sub = 12, wallZ = o.wallZ ?? null, floor = o.floor ?? -0.05;
+  EP.visible = tau > 0.0005; if (!EP.visible) return; EP.reset(); let n = 0;
+  for (const b of B) { const t = tau - b[7]; if (t <= 0) continue;
+    let vx = b[3], vy = b[4], vz = b[5]; if (dir && b[9] > 0) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
+    let x = b[0] + vx * t, y = MUG.WY + b[1] + vy * t - 0.5 * g * t * t, z = b[2] + vz * t, r = b[6];
+    if (b[9] === 0) { r = b[6] * Math.exp(-Math.pow(Math.max(0, t - 0.012) * b[8], 2)); y = MUG.WY + b[1] + Math.min(vy * t, 2.6); }      // el bulto sube y se deshace
+    else r *= Math.exp(-t * b[8]) * clamp(t / 0.004);                                                                                // crece al salir y se adelgaza (se rompe en gotas)
+    if (wallZ !== null && z > wallZ - r) z = wallZ - r;
+    const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.3;
+    if (inside && y < MUG.WY - 0.3 && b[9] > 0 && vy - g * t < 0) r *= clamp((y - MUG.WY + 1.5) / 1.2);                          // vuelve a caer dentro
+    if (!inside && y < floor + r * 0.5) { y = floor + r * 0.5; r *= 0.85; }
+    if (r < 0.12) continue;
+    const nx = x / (2 * HE) + 0.5, ny = (y - cy) / (2 * HE) + 0.5, nz = z / (2 * HE) + 0.5; if (nx < 0.02 || nx > 0.98 || ny < 0.02 || ny > 0.98 || nz < 0.02 || nz > 0.98) continue;
+    const d = r / (2 * HE); EP.addBall(nx, ny, nz, d * d * (iso + sub), sub); n++; }
+  EP.update(); EP.visible = n > 0;
 }
 // ---------- el café soluble: gránulos que caen (a cámara lenta) y tocan el agua en τHit
 function buildCoffee(n = 140) {

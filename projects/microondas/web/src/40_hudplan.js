@@ -1,9 +1,9 @@
 // ---------------------------------------------------------------- HUD sobrio (cine, no maqueta): cabecera con el truco pendiente (bucle abierto hasta el s 42), rótulos con
 // línea guía sobre los objetos de verdad, «> 100 °C», la ficha de la FDA y la pregunta del final. En planos claros, tinta oscura con caja blanca; en oscuros, al revés.
-let INK = '#1C2430', GREY = '#5A6472', HOT = '#E8590C', COOL = '#1F6FD1', GREEN = '#2E9D57', REDc = '#D32F2F', AMBER = '#C27A00', HUDD = false;
+let INK = '#1C2430', GREY = '#5A6472', HOT = '#E8590C', COOL = '#1F6FD1', GREEN = '#2E9D57', REDc = '#D32F2F', AMBc = '#C27A00', HUDD = false;
 function hudPalette(dark) { HUDD = dark;
-  if (dark) { INK = '#F2F5F8'; GREY = '#B4BEC9'; HOT = '#FF8A3D'; COOL = '#7FC4FF'; GREEN = '#7CF0A9'; REDc = '#FF5A4E'; AMBER = '#FFC24A'; }
-  else { INK = '#1C2430'; GREY = '#5A6472'; HOT = '#E8590C'; COOL = '#1F6FD1'; GREEN = '#2E9D57'; REDc = '#D32F2F'; AMBER = '#C27A00'; } }
+  if (dark) { INK = '#F2F5F8'; GREY = '#B4BEC9'; HOT = '#FF8A3D'; COOL = '#7FC4FF'; GREEN = '#7CF0A9'; REDc = '#FF5A4E'; AMBc = '#FFC24A'; }
+  else { INK = '#1C2430'; GREY = '#5A6472'; HOT = '#E8590C'; COOL = '#1F6FD1'; GREEN = '#2E9D57'; REDc = '#D32F2F'; AMBc = '#C27A00'; } }
 function buildHudPlan() { HFONT = 'Inter'; HW = [900, 600]; }
 const cw = (t, t0, t1, d = 0.25) => win(t, t0, d) * (1 - win(t, t1, d));
 const hal = n => HUDD ? { dark: n } : { halo: n };
@@ -35,7 +35,7 @@ function hdr(t) {
 function countUp(t, a) {
   if (a <= 0.01) return; const k = clamp((t - K.n2450 + 0.1) / 1.1), n = Math.round(2450 * (1 - Math.pow(1 - k, 3))) * 1e6;
   const s = n.toLocaleString('es-ES').replace(/ /g, '.');
-  big(s, 1500, 92, INK, a, { glow: HUDD ? 18 : 0 }); small('VECES POR SEGUNDO', 1572, 30, HUDD ? AMBER : GREY, a);
+  big(s, 1500, 92, INK, a, { glow: HUDD ? 18 : 0 }); small('VECES POR SEGUNDO', 1572, 30, HUDD ? AMBc : GREY, a);
 }
 // la ficha de la FDA (aviso oficial, con su nombre)
 function fdaCard(t, a) {
