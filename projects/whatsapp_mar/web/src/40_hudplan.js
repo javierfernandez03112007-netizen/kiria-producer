@@ -69,7 +69,7 @@ function hudAt(t) {
   // 5–6 · España, la antena, la fibra
   neon(Iw(40, 7, 10), 'ESPAÑA', '22:47', cw(t, 13.55, K['enviarlo_5'] + 0.1, 0.2), { size: 46, color: AMBc, dy: -220 });
   neon(anc(S.iberia, 'antenna') || Iw(30, 26, -6), 'ANTENA', '', cw(t, K['antena_5'] - 0.1, K['ahi_6'] + 0.4), { size: 42, dy: -200 });
-  neon(Iw(14, 1.6, 20), 'FIBRA ÓPTICA', 'LUZ POR UN HILO DE CRISTAL', cw(t, K['fibra_6'] - 0.1, K['luz_6'] + 0.4), { size: 40, dy: -260 });
+  neon(Iw(14, 1.6, 20), 'FIBRA ÓPTICA', 'LUZ POR UN HILO DE CRISTAL', cw(t, K['fibra_6'] - 0.1, Math.min(K['luz_6'] + 0.4, FIBW[0] - 0.12), 0.2), { size: 40, dy: -260 });
   // 7 · fino como un pelo, 200.000 km/s
   if (inFiberWin(t)) { neon(anc(S.fiber, 'fiber'), 'FIBRA · 0,125 mm', '', cw(t, K['fino_7'] - 0.1, K['a_7'] + 0.1, 0.2), { size: 36, dy: -220 });
     neon(anc(S.fiber, 'hair'), 'PELO', '', cw(t, K['pelo_7'] - 0.3, K['a_7'] + 0.1, 0.2), { size: 36, color: AMBc, dy: 220 });

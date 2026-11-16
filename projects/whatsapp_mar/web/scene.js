@@ -1389,7 +1389,7 @@ function mapPlane() {
         float grid = smoothstep(0.43, 0.5, max(gf.x, gf.y));
         float edge = smoothstep(0.25, 0.5, msk) * (1.0 - smoothstep(0.5, 0.85, msk));
         float br = 0.75 + 0.25 * sin(uTime * 3.0 + ll.x * 2.0 + ll.y * 1.3);
-        em += vec3(0.25, 0.95, 1.0) * cN * (msk * 0.09 * br + edge * 0.55 + L.g * 1.9);
+        em += vec3(0.25, 0.95, 1.0) * cN * (edge * 0.45 + L.g * 1.9);
         totalEmissiveRadiance = em;`);
   };
   const mesh = new THREE.Mesh(geo, m); mesh.receiveShadow = true; mesh.renderOrder = -1; return mesh;
@@ -1761,10 +1761,10 @@ function slabLocal(pw) { return pw.clone().applyMatrix4(new THREE.Matrix4().copy
 function slbDecor() {
   const g = new THREE.Group(), zones = [[3, 46], [SL - 46, SL - 3]], okZ = z => Math.abs(z - CABLE_Z) > 1.3 && Math.abs(z - CABLE2_Z) > 1.3;
   // rocas
-  const rg = new THREE.IcosahedronGeometry(1, 2); { const p = rg.attributes.position; for (let i = 0; i < p.count; i++) { const k = 0.75 + 0.5 * hash(i * 1.7 + 3); p.setXYZ(i, p.getX(i) * k, p.getY(i) * k * 0.7, p.getZ(i) * k); } rg.computeVertexNormals(); }
+  const rg = new THREE.IcosahedronGeometry(1, 3); { const p = rg.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i), z = p.getZ(i), k = 1 + 0.18 * Math.sin(x * 3.1 + 1) * Math.sin(y * 2.3 + 2) + 0.12 * Math.sin(z * 4.7 + x * 1.3); p.setXYZ(i, x * k, y * k * 0.65, z * k); } rg.computeVertexNormals(); }
   const rocks = new THREE.InstancedMesh(rg, new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.85 }), 700); let n = 0;
-  for (let i = 0; i < 2600 && n < 700; i++) { const zn = zones[i % 2], x = zn[0] + hash(i * 3.3) * (zn[1] - zn[0]), z = -18.5 + hash(i * 5.9) * 37; if (!okZ(z) || seaDepth(x) < 1.2) continue;
-    const s = 0.15 + Math.pow(hash(i * 7.1), 3) * 1.4; _o.position.set(x, seabedY(x, z) + s * 0.15, z); _o.rotation.set(hash(i) * 3, hash(i * 2) * 6.3, hash(i * 4) * 3); _o.scale.set(s, s * (0.6 + hash(i * 8) * 0.6), s); _o.updateMatrix(); rocks.setMatrixAt(n, _o.matrix);
+  for (let i = 0; i < 2600 && n < 700; i++) { const zn = zones[i % 2], x = zn[0] + hash(i * 3.3) * (zn[1] - zn[0]), z = -18.5 + hash(i * 5.9) * 37; if (!okZ(z) || seaDepth(x) < 1.2 || (z > 2 && z < 15)) continue;
+    const s = 0.12 + Math.pow(hash(i * 7.1), 3) * 0.9; _o.position.set(x, seabedY(x, z) + s * 0.15, z); _o.rotation.set(hash(i) * 3, hash(i * 2) * 6.3, hash(i * 4) * 3); _o.scale.set(s, s * (0.6 + hash(i * 8) * 0.6), s); _o.updateMatrix(); rocks.setMatrixAt(n, _o.matrix);
     _c.setHSL(0.07 + hash(i * 9) * 0.12, 0.14 + hash(i * 11) * 0.2, 0.42 + hash(i * 13) * 0.2); rocks.setColorAt(n, _c); n++; }
   rocks.count = n; rocks.castShadow = true; rocks.receiveShadow = true; g.add(rocks);
   // algas: hojas finas en manojos (se mecen con la corriente)
@@ -2760,7 +2760,7 @@ function IBE_CAM_OUT(u) {
     [0.34, [46, 10, 36], [35, 12, 4], 46],
     [0.6, [39, top + 2, 10], [30.5, top + 0.2, -5], 40],
     [0.74, [37.5, 13, 9], [30.4, 7, -5.5], 42],
-    [0.8, [38.5, 9.5, 18], [30, 3.5, 19], 44],
+    [0.8, [39, 11.5, 23], [30, 3.5, 19], 44],
     [0.88, [35, 5.5, 30], [26, 2.4, 20], 44],
     [1, [31.5, 4.3, 26.5], [17.5, 2.0, 19.8], 44]]);
 }
@@ -3721,7 +3721,7 @@ function stageAt(t, st) {
       S.msg.quaternion.copy(cam.quaternion); } }
   // la península: escribe, envía, ondas, pulso por la torre y el tubo, y de la estación al mar
   const fIb = fnOf('iberiaAt');
-  if (fIb) fIb(t, { type: win(t, 13.6, 0.85), send: win(t, K['enviarlo_5'] + 0.15, 0.45), waves: clamp((t - K['su_5'] - 0.1) / (K['antena_5'] + 0.5 - K['su_5'])), pulse: clamp((t - K['entra_6']) / (K['luz_6'] - K['entra_6'] + 0.1)),
+  if (fIb) fIb(t, { type: win(t, 13.6, 0.85), send: win(t, K['enviarlo_5'] + 0.15, 0.45), waves: clamp((t - K['su_5'] - 0.1) / (K['cercana_5'] + 0.45 - K['su_5'])), pulse: clamp((t - K['entra_6']) / (K['luz_6'] - K['entra_6'] + 0.1)),
     pulse2: clamp((t - K['portugal_8'] + 0.1) / (K['hunde_8'] + 0.35 - K['portugal_8'])) });
   // la fibra
   const fFb = fnOf('fiberAt'); if (fFb && fib) fFb(t, { speed: 1, hair: win(t, K['fino_7'] - 0.2, 0.5), pulses: 1 });

@@ -56,7 +56,7 @@ function mapPlane() {
         float grid = smoothstep(0.43, 0.5, max(gf.x, gf.y));
         float edge = smoothstep(0.25, 0.5, msk) * (1.0 - smoothstep(0.5, 0.85, msk));
         float br = 0.75 + 0.25 * sin(uTime * 3.0 + ll.x * 2.0 + ll.y * 1.3);
-        em += vec3(0.25, 0.95, 1.0) * cN * (msk * 0.09 * br + edge * 0.55 + L.g * 1.9);
+        em += vec3(0.25, 0.95, 1.0) * cN * (edge * 0.45 + L.g * 1.9);
         totalEmissiveRadiance = em;`);
   };
   const mesh = new THREE.Mesh(geo, m); mesh.receiveShadow = true; mesh.renderOrder = -1; return mesh;
