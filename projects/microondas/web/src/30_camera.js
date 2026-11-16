@@ -33,7 +33,7 @@ function buildCam() {
   SHOTS = 'ABCDEFGHIJKLMNOPQRSTWU'.split('').map(k => [k, SHT[k + '0']]);
   const P = (p, l, f = 40, r = 0) => [p, l, f, r];
   const A0 = P([mx - 3.5, my + 15.5, mz + 13], [mx, my + 11, mz], 46), A1 = P([mx + 0.6, my + 15.2, mz + 12.6], [mx, my + 11, mz], 46);
-  const mag = v3(17.6, 29.5, -13);                                                      // el magnetrón, ya fuera de la carcasa (ver stageAt)
+  const mag = MAGUP.clone();                                                            // el magnetrón, ya fuera de la carcasa (ver stageAt)
   const pot = v3(STOVE_POS.x + POT_L.x, STOVE_POS.y + POT_L.y, STOVE_POS.z + POT_L.z);    // base del cazo
   const k = (t, c) => [t, ...c];
   SEG = [
@@ -42,7 +42,7 @@ function buildCam() {
       k(SHT.B0, P([14, 22, 30], [-5, 13, -20], 40)), k(K.microondas1, P([4, 19.5, 9], [mx, wy + 0.5, mz], 40)), k(2.62, P([-3.6, 19.6, -4.2], [mx, wy + 1.5, mz], 42)),
       k(SHT.C0, P([mx + 0.8, my + 14.5, mz + 12.6], [mx, wy + 2.6, mz], 44)), k(SHT.C0 + 0.5, P([mx + 1.0, my + 15.2, mz + 14.8], [mx, wy + 3.6, mz], 50)),
       k(SHT.D0, P([mx + 1.2, my + 15.4, mz + 15.6], [mx, wy + 3, mz], 50)), k(SHT.D0 + 0.55, P([-2.5, 20.5, -2.5], [mx + 2, wy + 1, mz], 44)),
-      k(SHT.E0, P([42, 34, 66], [6, 15, -20], 36)), k(K.radares2, P([40, 40, 38], [mag.x - 2, mag.y - 4, mag.z - 2], 34)),
+      k(SHT.E0, P([42, 34, 66], [8, 16, -20], 36)), k(K.magnetron2 + 0.9, P([40, 38, 42], [mag.x, mag.y - 4, mag.z], 34)), k(K.radares2, P([38, 40, 31], [mag.x, mag.y, mag.z], 34)),
       k(SHT.F0, P([mag.x + 22, mag.y + 9, mag.z + 26], [mag.x, mag.y, mag.z], 32)), k(SHT.G0, P([mag.x + 14, mag.y + 5, mag.z + 18], [mag.x, mag.y, mag.z], 30))] },
     { t0: SHT.G0, keys: [                                                                // G → H: dentro del horno (la tapa de mica a la derecha), y se zambulle en el agua
       k(SHT.G0, P([-17.5, 20.5, -8.5], [1, 13.5, -22], 58)), k(K.agua4 - 0.35, P([-12, 19.5, -11], [mx, wy, mz], 50)),

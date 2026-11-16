@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------- la escena y lo que pasa en cada frase. Cocina real (HDRI), microondas en la encimera, la taza dentro, la
 // cocina eléctrica con el cazo al lado, el magnetrón y las moléculas (módulos aparte), la mano y el palito de madera.
-const MW_POS = new THREE.Vector3(0, 0, -6);
+const MW_POS = new THREE.Vector3(0, 0, -6), MAGUP = new THREE.Vector3(17.6, 34, -13);   // MAGUP: el magnetrón fuera, encima del micro
 let MUGW = new THREE.Vector3();          // base de la taza en el mundo
 async function buildScene() {
   S.mw = buildMicrowave(); S.mw.position.copy(MW_POS); scene.add(S.mw);
@@ -11,7 +11,7 @@ async function buildScene() {
   S.stick = buildStick(); S.stick.position.set(0.9, 0.75, -1.1); S.stick.rotation.set(-0.12, 0.25, -0.22); S.stick.visible = false; S.mug.add(S.stick);
   S.bub = buildBubbles(90); S.mug.add(S.bub);
   S.stove = await buildStove();
-  if (typeof buildMagnetron === 'function') { S.mag = buildMagnetron(); S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5, -17)); scene.add(S.mag.group); }
+  if (typeof buildMagnetron === 'function') { S.mag = buildMagnetron(); scene.add(S.mag.group); S.mag.group.visible = false; }
   if (typeof buildMagWaves === 'function') { S.waves = buildMagWaves(); S.mw.add(S.waves.group); }
   if (typeof buildMolecules === 'function') { S.mol = buildMolecules(); scene.add(S.mol.group); }
   // la mano (piel real, la de «los dedos»): entra a coger la taza
@@ -93,11 +93,14 @@ function stageAt(t, st) {
   { const Um = S.mug.userData, calm = tau <= 0 && !THERM && sh !== 'S' && sh !== 'M'; Um.mirror.visible = calm; Um.surfMeshes[0].visible = !calm; Um.surfMeshes[1].visible = !calm && !THERM; }
   // la cocina: el cazo (placa al rojo, burbujas)
   stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
-  // el magnetrón (fuera de la carcasa) y las ondas
-  if (S.mag) { const e = ['E', 'F'].includes(sh), k = sh === 'E' ? win(t, K.magnetron2 + 0.15, 0.9) : 1; S.mag.group.visible = e;
-    magnetronAt(t, { explode: sh === 'E' ? win(t, K.pieza2, 1.2) : 0.35, cut: sh === 'F' ? win(t, K.dispara3 + 0.1, 0.6) : 0, glow: sh === 'F' ? 1 : 0.4 * k, electrons: sh === 'F' ? win(t, K.dispara3 + 0.3, 0.5) : 0, wave: sh === 'F' ? win(t, K.ondas3, 0.5) : 0 });
-    S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5 + 14 * k, -17 + 10 * k)); }
-  if (S.waves) magWavesAt(t, { on: sh === 'G' ? 1 : 0, flow: sh === 'G' ? win(t, SHT.G0, 0.8) : 0 });
+  // el magnetrón: primero en su sitio (detrás del panel, con la antena hacia la mica), sube fuera de la carcasa de cristal, se despieza («la pieza de
+  // los radares…»), se vuelve a montar y se abre en corte («dispara ondas»: el cátodo al rojo, los electrones, las ondas por la antena)
+  if (S.mag) { const e = sh === 'E' || sh === 'F'; S.mag.group.visible = e;
+    if (e) { const up = win(t, K.magnetron2 + 0.25, 1.0), G = S.mag.group, A = v3(17, 15.5, -20), Bp = MAGUP;
+      G.position.lerpVectors(A, Bp, up); G.rotation.set(0, lerp(0, 0.42, up) - 0.51 * win(t, SHT.F0, 0.6), (1 - up) * Math.PI / 2); G.updateMatrixWorld(true);
+      magnetronAt(t, { explode: sh === 'E' ? win(t, K.pieza2, 1.0) * (1 - win(t, K.mundial2 - 0.1, 0.6)) : 0, cut: sh === 'F' ? win(t, K.dispara3 + 0.05, 0.5) : 0,
+        glow: sh === 'F' ? 1 : 0.25 * up, electrons: sh === 'F' ? win(t, K.dispara3 + 0.3, 0.5) : 0, wave: sh === 'F' ? win(t, K.ondas3, 0.6) : 0 }); } }
+  if (S.waves) magWavesAt(t, { on: sh === 'G' ? 1 : 0, flow: sh === 'G' ? clamp((t - SHT.G0) / 2.2) : 0 });
   // la carcasa del microondas se vuelve de cristal para enseñar el magnetrón
   { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; if (!THERM) U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
   if (S.mol) moleculesAt(t, { on: sh === 'I' ? clamp((t - SHT.I0) / 0.3 + 0.15) : 0, field: sh === 'I' ? win(t, K.intenta4, 0.4) : 0, heat: sh === 'I' ? clamp((t - K.giran4 + 0.2) / (K.calor4 - K.giran4 + 0.6)) : 0,
