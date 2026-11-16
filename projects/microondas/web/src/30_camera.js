@@ -51,13 +51,13 @@ function buildCam() {
     { t0: SHT.J0, keys: [                                                                // J: el cazo en la placa al rojo
       k(SHT.J0, P([pot.x + 24, pot.y + 13, pot.z + 40], [pot.x, pot.y + 4, pot.z], 38)), k(K.abajo5, P([pot.x + 16, pot.y + 5, pot.z + 30], [pot.x, pot.y + 1, pot.z], 38)),
       k(SHT.K0, P([pot.x + 14, pot.y + 3.5, pot.z + 26], [pot.x, pot.y + 0.5, pot.z], 38))] },
-    { t0: SHT.K0, keys: [                                                                // K: dentro del agua del cazo, a ras del fondo: las burbujas nacen en las rayitas
-      k(SHT.K0, P([pot.x + 2.5, pot.y + 5.5, pot.z + 14], [pot.x - 0.5, pot.y + 1.6, pot.z - 2.5], 40)), k(K.rayitas5, P([pot.x + 1.2, pot.y + 3.2, pot.z + 7.5], [pot.x - 0.8, pot.y + 0.6, pot.z - 2.8], 40)), k(SHT.L0, P([pot.x + 0.8, pot.y + 2.6, pot.z + 5.6], [pot.x - 0.9, pot.y + 0.6, pot.z - 3], 40))] },
+    { t0: SHT.K0, keys: [                                                                // K: el cazo visto desde arriba: las burbujas nacen en las rayitas del fondo
+      k(SHT.K0, P([pot.x + 2.5, pot.y + 18, pot.z + 9], [pot.x - 0.4, pot.y + 0.6, pot.z - 1.2], 42)), k(K.rayitas5, P([pot.x + 1.4, pot.y + 12.5, pot.z + 5.5], [pot.x - 0.6, pot.y + 0.6, pot.z - 1.6], 40)), k(SHT.L0, P([pot.x + 1.0, pot.y + 11, pot.z + 4.6], [pot.x - 0.7, pot.y + 0.6, pot.z - 1.8], 40))] },
     { t0: SHT.L0, keys: [                                                                // L: vista térmica, desde arriba
       k(SHT.L0, P([mx + 4, my + 17, mz + 12.5], [mx, my + 6, mz], 48)), k(SHT.M0, P([mx + 2.2, my + 16, mz + 11], [mx, my + 6.2, mz], 46))] },
     { t0: SHT.M0, keys: [                                                                // M: dentro del agua de la taza, a ras del fondo liso: nada
-      k(SHT.M0, P([mx + 1.2, my + 6.8, mz + 13], [mx - 0.4, my + 3.4, mz - 1.5], 40)), k(K.burbuja6, P([mx + 0.9, my + 4.8, mz + 8.2], [mx - 0.6, my + 2.4, mz - 2.2], 40)), k(SHT.N0, P([mx + 0.7, my + 4.2, mz + 6.8], [mx - 0.7, my + 2.2, mz - 2.4], 40))] },
-    { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.8, my + 16.5, mz + 9.5], [mx, wy - 0.5, mz], 42)), k(SHT.O0, P([mx - 0.4, my + 14.8, mz + 7.2], [mx, wy - 0.5, mz], 40))] },
+      k(SHT.M0, P([mx + 1.5, my + 10.5, mz + 25], [mx + 0.3, my + 4.6, mz - 0.5], 40)), k(SHT.N0, P([mx + 1.2, my + 8.6, mz + 18.5], [mx + 0.2, my + 4.4, mz - 0.5], 40))] },
+    { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.6, my + 18.3, mz + 6.6], [mx, wy - 0.3, mz - 0.4], 44)), k(SHT.O0, P([mx - 0.3, my + 17.0, mz + 5.4], [mx, wy - 0.3, mz - 0.4], 42))] },
     { t0: SHT.O0, keys: [                                                                // O → P: la puerta se abre, cae el café, estalla hacia fuera
       k(SHT.O0, P([8, 25, 28], [mx, wy + 1, mz], 38)), k(K.echas8, P([1.5, 21, 9], [mx, wy + 3, mz], 38)), k(SHT.P0, P([-1.5, 19.5, 2], [mx, wy + 0.5, mz], 40)),
       k(SHT.P0 + 0.6, P([0, 19, 10], [mx, wy + 2, mz + 2], 44)), k(SHT.Q0, P([2, 18.5, 17], [mx, wy + 1, mz + 3], 46))] },

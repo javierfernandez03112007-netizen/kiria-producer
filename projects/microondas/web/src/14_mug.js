@@ -2,7 +2,7 @@
 // del agua sobrecalentada a cámara lenta (gotas que se estiran con la velocidad, la columna del centro y el vapor), el café soluble que cae, el palito de madera
 // (textura real de roble, CC0) con las burbujas que nacen en sus vetas, y la vista en corte. Unidades: cm; origen de la taza abajo en el centro.
 const MUG = { R: 4.15, H: 9.6, WY: 7.9, rIn: y => 3.62 + 0.27 * clamp((y - 0.7) / 8.6) };
-const WATER_REFL = { name: 'aguaEspejo', uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null }, tint: { value: new THREE.Color(0.86, 0.93, 0.95) }, k: { value: 1 }, base: { value: 0.2 } },
+const WATER_REFL = { name: 'aguaEspejo', uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null }, tint: { value: new THREE.Color(0.8, 0.9, 0.93) }, k: { value: 1 }, base: { value: 0.42 } },
   vertexShader: 'uniform mat4 textureMatrix; varying vec4 vUv; varying vec3 vW;\n#include <common>\n#include <logdepthbuf_pars_vertex>\nvoid main(){ vUv = textureMatrix * vec4(position, 1.0); vW = (modelMatrix * vec4(position, 1.0)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n#include <logdepthbuf_vertex>\n}',
   fragmentShader: 'uniform vec3 color, tint; uniform sampler2D tDiffuse; uniform float k, base; varying vec4 vUv; varying vec3 vW;\n#include <logdepthbuf_pars_fragment>\nvoid main(){\n#include <logdepthbuf_fragment>\n' +
     'vec3 V = normalize(cameraPosition - vW); float F = 0.02 + 0.98 * pow(1.0 - max(V.y, 0.0), 5.0); vec4 uv = vUv; uv.xy += vec2(sin(vW.x * 6.0 + vW.z * 2.0), sin(vW.z * 5.0 - vW.x * 3.0)) * 0.0025 * uv.w;' +

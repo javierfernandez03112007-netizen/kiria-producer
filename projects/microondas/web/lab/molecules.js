@@ -72,9 +72,9 @@ float molPulseScatter(float xi0, float beta, float D, float sg) {
 }
 // el color del agua profunda en una dirección: más clara hacia arriba y hacia la luz de contra (dispersión hacia delante); se templa con el calor
 vec3 molWaterCol(vec3 d) {
-  vec3 c = mix(vec3(0.0005, 0.0032, 0.0052), vec3(0.0032, 0.022, 0.034), smoothstep(-0.8, 0.9, d.y));
+  vec3 c = mix(vec3(0.0006, 0.0031, 0.0064), vec3(0.0042, 0.022, 0.041), smoothstep(-0.8, 0.9, d.y));
   float f = max(dot(d, uRim), 0.0);
-  c += vec3(0.006, 0.036, 0.05) * pow(f, 5.0) + vec3(0.0015, 0.010, 0.015) * f * f;
+  c += vec3(0.007, 0.035, 0.058) * pow(f, 5.0) + vec3(0.0018, 0.010, 0.018) * f * f;
   c = mix(c, vec3(0.0075, 0.0034, 0.0016) * (0.55 + 0.6 * smoothstep(-0.7, 0.7, d.y)) + vec3(0.010, 0.004, 0.001) * pow(f, 3.0), 0.4 * uHeat);   // el agua se templa
   return c * (1.0 + 2.2 * (1.0 - uOn));
 }
@@ -393,14 +393,14 @@ function molQRot(wx, wy, wz, out) { const a = Math.hypot(wx, wy, wz); if (a < 1e
 function molQMul(a, b, o) { const x = a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1], y = a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0], z = a[3] * b[2] + a[0] * b[1] - a[1] * b[0] + a[2] * b[3], w = a[3] * b[3] - a[0] * b[0] - a[1] * b[1] - a[2] * b[2]; o[0] = x; o[1] = y; o[2] = z; o[3] = w; return o; }
 function molQApply(q, v, o, k) { const tx = 2 * (q[1] * v.z - q[2] * v.y), ty = 2 * (q[2] * v.x - q[0] * v.z), tz = 2 * (q[0] * v.y - q[1] * v.x);
   o[k] = v.x + q[3] * tx + q[1] * tz - q[2] * ty; o[k + 1] = v.y + q[3] * ty + q[2] * tx - q[0] * tz; o[k + 2] = v.z + q[3] * tz + q[0] * ty - q[1] * tx; }
-const _molQ = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]], _molV = new Float32Array(9), _molPrev = new Float32Array(9);
+const molQs = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]], molTmpV = new Float32Array(9), molTmpPrev = new Float32Array(9);
 const MOL_SHUT = 1 / 120;                                                    // obturador de 180° a 60 fps
 // la pose de la molécula i en el instante t: el dipolo intenta seguir al campo (a un lado y al otro, con retraso) + la agitación del calor.
-// Escribe los 3 átomos (O, H1, H2) en out (9 números) y deja el giro en _molQ[3]; devuelve el campo que nota (−1…1)
+// Escribe los 3 átomos (O, H1, H2) en out (9 números) y deja el giro en molQs[3]; devuelve el campo que nota (−1…1)
 function molPose(D, i, t, field, heat, out) {
   const i3 = i * 3, i6 = i * 6, Phi = 2 * Math.PI * MOL_NU * t, kap = 2 * Math.PI / MOL_LAMBDA;
   const swing = (0.62 + 0.38 * heat) * field, tAmp = 0.06 + 0.5 * heat, jAmp = 0.025 + 0.15 * heat;
-  const qs = _molQ[0], qt = _molQ[1], q0 = _molQ[2], qq = _molQ[3];
+  const qs = molQs[0], qt = molQs[1], q0 = molQs[2], qq = molQs[3];
   const ef = Math.sin(Phi - kap * D.xi[i] - D.lag[i]), sw = swing * D.amp[i] * ef;
   molQRot(D.ax[i3] * sw, D.ax[i3 + 1] * sw, D.ax[i3 + 2] * sw, qs);
   molQRot(tAmp * Math.sin(D.tf[i6] * t + D.tf[i6 + 3]), tAmp * Math.sin(D.tf[i6 + 1] * t + D.tf[i6 + 4]), tAmp * Math.sin(D.tf[i6 + 2] * t + D.tf[i6 + 5]), qt);
@@ -431,8 +431,8 @@ function moleculesAt(t, P = {}) {
     key[np] = (mx - cx) * fx + (my - cy) * fy + (mz - cz) * fz; np++;
   };
   for (let i = 0; i < n; i++) {
-    const ef = molPose(D, i, t, field, heat, _molV), qq = _molQ[3];
-    for (let k = 0; k < 9; k++) at[i * 9 + k] = _molV[k];
+    const ef = molPose(D, i, t, field, heat, molTmpV), qq = molQs[3];
+    for (let k = 0; k < 9; k++) at[i * 9 + k] = molTmpV[k];
     const px = D.pos[i * 3], py = D.pos[i * 3 + 1], pz = D.pos[i * 3 + 2];
     if (i === 0) { M.hero.O.set(at[0], at[1], at[2]).add(o); M.hero.H1.set(at[3], at[4], at[5]).add(o); M.hero.H2.set(at[6], at[7], at[8]).add(o);
       M.hero.p.set(0, 1, 0).applyQuaternion(new THREE.Quaternion(qq[0], qq[1], qq[2], qq[3])); M.fieldValue = field * Math.sin(Phi - kap * D.xi[0]); }
@@ -444,7 +444,7 @@ function moleculesAt(t, P = {}) {
     const glow = heat * D.hot[i] * (0.82 + 0.18 * Math.abs(Math.cos(Phi - kap * D.xi[i] - D.lag[i])));
     const b = i * 9, Ox = at[b], Oy = at[b + 1], Oz = at[b + 2], H1x = at[b + 3], H1y = at[b + 4], H1z = at[b + 5], H2x = at[b + 6], H2y = at[b + 7], H2z = at[b + 8];
     // dónde estaban al abrir el obturador (desenfoque de movimiento)
-    const pv = _molPrev; molPose(D, i, t - MOL_SHUT, field, heat, pv);
+    const pv = molTmpPrev; molPose(D, i, t - MOL_SHUT, field, heat, pv);
     push(Ox, Oy, Oz, MOL_M.rO, H1x, H1y, H1z, 0, H2x, H2y, H2z, glow, pv[0], pv[1], pv[2]);
     push(H1x, H1y, H1z, MOL_M.rH, Ox, Oy, Oz, 1, H2x, H2y, H2z, glow, pv[3], pv[4], pv[5]);
     push(H2x, H2y, H2z, MOL_M.rH, Ox, Oy, Oz, 1, H1x, H1y, H1z, glow, pv[6], pv[7], pv[8]);

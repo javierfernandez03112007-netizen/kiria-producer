@@ -2,7 +2,7 @@
 //  0 montado sobre la encimera · 1 vista explosionada · 2 corte con el filamento al rojo y los electrones · 3 macro del ánodo desde arriba
 //  (corte horizontal) · 4 corte y frentes de onda al aire · 5 corte con la guía de ondas · 6 corte horizontal, plano general · 7 corte a medias ·
 //  (con EXTRA=../src/12_microwave.js) 10 en su sitio dentro del microondas (carcasa transparente) · 11 las ondas llenan la cavidad (flow 1) ·
-//  12 las ondas saliendo por la mica (flow 0,3).
+//  12 las ondas saliendo por la mica (flow 0,3) · 13 la cámara de la toma G, dentro de la cavidad (flow 1).
 //  t ≥ 20: el tramo del vídeo (τ = t − 16, de 4 a 14 s): la carcasa se vuelve transparente, el magnetrón sale flotando y se despieza,
 //  se corta, el filamento se pone al rojo, los electrones giran y las ondas salen por la antena y llenan el horno.
 let MAGLMW = null;
@@ -33,15 +33,7 @@ function labAt(t) {
   { const now = performance.now(); if (window._magT) console.error('INFO t=' + window._magK + ' ' + (now - window._magT).toFixed(0) + ' ms · programas ' + renderer.info.programs.length + ' · llamadas ' + renderer.info.render.calls + ' · triángulos ' + renderer.info.render.triangles); window._magT = now; window._magK = t; }   // cronómetro
   MAG.group.visible = true;
   if (window.MAGHIDE || t >= 30 && t < 32) { MAG.group.visible = false; if (MAGLMW) MAGLMW.visible = false; return MAGV[t >= 31 ? 2 : 0].cam; }   // sin magnetrón (la base, para comparar)
-  if (window.MAGONLY) MAG.group.traverse(o => { if (o.isMesh && !window.MAGONLY.includes(o.material.type)) o.visible = false; });
   if (t >= 20) return magLabTimeline(t - 16);
-  if (t >= 40 && t < 50) {   // experimentos de coste (vista 2): 40 normal · 41 sin interior · 42 sin electrones · 43 a una cara · 44 sin sombras del magnetrón
-    const e = Math.floor(t) - 40; const V = MAGV[2]; magLabMW(false); MAG.group.position.set(...V.at); MAG.group.rotation.set(0, V.ry, 0); magnetronAt(t, V.P); if (MAGLMW) MAGLMW.visible = false;
-    if (e === 1) MAG.inA.visible = false; if (e === 2) { MAG.el.visible = false; MAG.haze.visible = false; }
-    for (const pc of MAG.pieces) for (const m of pc.mats) { const want = e === 3 ? THREE.FrontSide : THREE.DoubleSide; if (m.side !== want && !m.userData.magClipOnly) { m.side = want; m.needsUpdate = true; } }
-    MAG.group.traverse(o => { if (o.isMesh && o.userData.cs0 === undefined) o.userData.cs0 = o.castShadow; if (o.isMesh) o.castShadow = e === 4 ? false : o.userData.cs0; });
-    for (const pc of MAG.pieces) for (const m of pc.mats) m.shadowSide = e === 5 ? THREE.BackSide : null;
-    return V.cam; }
   let k = Math.floor(t + 1e-6);
   if (k >= 10 && !MAGLMW) k = 0;
   if (k < 10) { if (k >= MAGV.length) k = 0; const V = MAGV[k]; magLabMW(false); MAG.group.position.set(...V.at); MAG.group.rotation.set(0, V.ry, 0); MAG.group.scale.setScalar(1);
@@ -49,6 +41,7 @@ function labAt(t) {
   MAGLMW.visible = true; magLabMW(true);
   if (k === 10) { magLabShell(0.18); microwaveAt(MAGLMW, { on: 1, turn: t * 0.6, door: 0, display: '1:00' }); magnetronAt(t, { cut: 1, glow: 1, electrons: 1, wave: 1, guide: 1 }); magWavesAt(t, { on: 1, flow: 0.5 });
     return [62, 42, 46, 13, 15, -19, 26]; }
+  if (k === 13) { magLabShell(1); MAG.group.visible = false; microwaveAt(MAGLMW, { on: 1, turn: t * 0.6, door: 0, display: '1:00' }); magWavesAt(t, { on: 1, flow: 1 }); return [-17.5, 20.5, -8.5, 1, 13.5, -22, 40]; }
   magLabShell(1); microwaveAt(MAGLMW, { on: 1, turn: t * 0.6, door: 1, display: '1:00' }); magnetronAt(t, {});
   magWavesAt(t, { on: 1, flow: k === 11 ? 1 : 0.3 });
   return [-14, 24, 46, -6, 14, -21, 36];

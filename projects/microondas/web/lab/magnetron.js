@@ -26,7 +26,7 @@ const MAGD = {
   tip: 5.76,                                                 // punta del capuchón de la antena
 };
 let MAG = null, MAGW = null, MAGT = null;
-const _magN3 = new THREE.Matrix3(), _magV = new THREE.Vector3(), _magM4 = new THREE.Matrix4(), _magDn = new THREE.Vector3(0, -1, 0);
+const magTmpN3 = new THREE.Matrix3(), magTmpV = new THREE.Vector3(), magTmpM4 = new THREE.Matrix4(), magDown = new THREE.Vector3(0, -1, 0);
 const magSst = (a, b, x) => { const k = clamp((x - a) / (b - a)); return k * k * (3 - 2 * k); };
 const magS5 = x => { x = clamp(x); return x * x * x * (x * (x * 6 - 15) + 10); };
 
@@ -237,7 +237,7 @@ function magRect(x0, y0, x1, y1, r = 0, sh = new THREE.Shape()) {
 }
 function magHole(sh, x, y, r) { const p = new THREE.Path(); p.absarc(x, y, r, 0, Math.PI * 2, true); sh.holes.push(p); return sh; }
 // hélice (filamento del cátodo, bobinas de choque) a lo largo de y o de x
-class MagHelix extends THREE.Curve {
+class MAGHelix extends THREE.Curve {
   constructor(r, len, turns, axis = 'y') { super(); this.r = r; this.len = len; this.turns = turns; this.axis = axis; }
   getPoint(t, out = new THREE.Vector3()) { const a = t * this.turns * Math.PI * 2, c = this.r * Math.cos(a), s = this.r * Math.sin(a), l = (t - 0.5) * this.len; return this.axis === 'y' ? out.set(c, l, s) : out.set(l, c, s); }
 }
@@ -419,7 +419,7 @@ function buildMagnetron(o = {}) {
   const mW = new THREE.MeshStandardMaterial({ color: 0x8c8c92, metalness: 1, roughness: 0.42, emissive: 0xff5c1c, emissiveIntensity: 0 });
   const mMo = new THREE.MeshStandardMaterial({ color: 0xb4b4ba, metalness: 1, roughness: 0.3, emissive: 0xff4a12, emissiveIntensity: 0 });
   const mLd = new THREE.MeshStandardMaterial({ color: 0xa8a8ae, metalness: 1, roughness: 0.34 }); M.mW = mW; M.mMo = mMo;
-  const C = D.ct; add(inA, new THREE.TubeGeometry(new MagHelix(C.r, 2 * C.h, C.turns, 'y'), C.turns * 22, C.w, 8, false), mW, false);
+  const C = D.ct; add(inA, new THREE.TubeGeometry(new MAGHelix(C.r, 2 * C.h, C.turns, 'y'), C.turns * 22, C.w, 8, false), mW, false);
   for (const sy of [1, -1]) { const y0 = sy * (C.h + 0.02), y1 = y0 + sy * 0.07; add(inA, magLatheGeo([[0.04, Math.min(y0, y1)], [0.36, Math.min(y0, y1)], [0.36, Math.max(y0, y1)], [0.04, Math.max(y0, y1)]], { b: 0.012, seg: 40, s: 1 }), mMo, false);
     const q0 = sy > 0 ? y1 + 0.003 : y1 - 0.123, q1 = q0 + 0.12; add(inA, magLatheGeo([[0.04, q0], [0.16, q0], [0.16, q1], [0.04, q1]], { b: 0.01, seg: 24, s: 1 }), mMo, false); }
   { const g = new THREE.CylinderGeometry(0.04, 0.04, C.h + 0.09 + 4.32, 10); const me = add(inA, g, mLd, false); me.position.set(0, (C.h + 0.09 - 4.32) / 2, 0); }
@@ -490,7 +490,7 @@ function buildMagnetron(o = {}) {
     const mWire = mat('wire'), mRod = mat('rod'), fbIn = new THREE.Group(); fbox.add(fbIn); M.fbIn = fbIn;
     for (const sz of [-1, 1]) { const cz = sz * 1.12, cy = -4.4;
       const gr = new THREE.CylinderGeometry(0.19, 0.19, 2.3, 20); gr.rotateZ(Math.PI / 2); gr.translate(0.45, cy, cz); add(fbIn, gr, mRod);
-      const gh = new THREE.TubeGeometry(new MagHelix(0.27, 1.9, 12, 'x'), 12 * 16, 0.045, 6, false); gh.translate(0.45, cy, cz); add(fbIn, gh, mWire);
+      const gh = new THREE.TubeGeometry(new MAGHelix(0.27, 1.9, 12, 'x'), 12 * 16, 0.045, 6, false); gh.translate(0.45, cy, cz); add(fbIn, gh, mWire);
       const w1 = new THREE.CatmullRomCurve3([v3(sz > 0 ? 0 : 0.17, -4.2, 0), v3(-0.4, -4.3, cz * 0.5), v3(-0.5, cy + 0.27, cz)]);
       const w2 = new THREE.CatmullRomCurve3([v3(1.4, cy + 0.27, cz), v3(1.9, -4.2, cz * 0.6), v3(B.x + 0.1, yc, sz * 0.36)]);
       for (const c of [w1, w2]) add(fbIn, new THREE.TubeGeometry(c, 24, 0.035, 6, false), mWire); } }
@@ -527,11 +527,13 @@ function magnetronAt(t, P = {}, M = MAG) {
   const on = cut > 0.0005, d = lerp(4.05, 0, eio(cut)), yaw = P.cutYaw ?? Math.PI / 4, half = P.cutHalf ?? Math.PI / 4;
   const n1 = v3(Math.sin(yaw - half), 0, -Math.cos(yaw - half)), n2 = v3(-Math.sin(yaw + half), 0, Math.cos(yaw + half));     // (ya cambiados de signo: normales hacia lo que se queda)
   const h = P.cutTop != null ? lerp(10, P.cutTop, eio(cut)) : -1000;      // corte horizontal: dentro de la cuña solo se quita lo que está por encima de h
-  for (const pc of M.pieces) { const Mw = pc.root.matrixWorld; _magN3.getNormalMatrix(Mw); _magM4.copy(Mw).invert();
-    pc.planes[0].set(n1, d).applyMatrix4(Mw, _magN3); pc.planes[1].set(n2, d).applyMatrix4(Mw, _magN3); pc.planes[2].set(_magDn, h).applyMatrix4(Mw, _magN3);
-    for (const m of pc.mats) if (m.userData.magU) m.userData.magU.magW2L.value.copy(_magM4);
+  for (const pc of M.pieces) { const Mw = pc.root.matrixWorld; magTmpN3.getNormalMatrix(Mw); magTmpM4.copy(Mw).invert();
+    pc.planes[0].set(n1, d).applyMatrix4(Mw, magTmpN3); pc.planes[1].set(n2, d).applyMatrix4(Mw, magTmpN3); pc.planes[2].set(magDown, h).applyMatrix4(Mw, magTmpN3);
+    for (const m of pc.mats) if (m.userData.magU) m.userData.magU.magW2L.value.copy(magTmpM4);
     for (const m of pc.mats) if (m.userData.magOn !== on) { m.userData.magOn = on; m.clippingPlanes = on ? pc.planes : null; m.clipIntersection = true; m.clipShadows = true;
       if (!m.userData.magClipOnly) m.side = on ? THREE.DoubleSide : THREE.FrontSide; m.needsUpdate = true; } }
+  // con el corte puesto (piezas a dos caras), proyectar sombra duplicaba el coste del fotograma: se apaga salvo P.cutShadows
+  const cs = !on || !!P.cutShadows; if (M._cs !== cs) { M._cs = cs; M.group.traverse(o => { if (o.isMesh) { if (o.userData.magCast === undefined) o.userData.magCast = o.castShadow; o.castShadow = cs && o.userData.magCast; } }); }
   // 3) filamento al rojo (y su luz, que tiñe las puntas de las paletas)
   M.inA.visible = on; M.fbIn.visible = on; M.poles.visible = M.stem.visible = on || ex > 0.001;     // lo de dentro, solo si se ve
   M.mW.emissiveIntensity = 2.7 * gl; M.mMo.emissiveIntensity = 0.22 * gl * gl;
@@ -549,7 +551,7 @@ function magnetronAt(t, P = {}, M = MAG) {
 
 // ---------------------------------------------------------------- LAS ONDAS DENTRO DEL HORNO (coordenadas del microondas). Salen por la mica (pared
 // derecha) y rebotan en las paredes: frentes de la fuente y de sus «imágenes» (las reflexiones en las 6 paredes, hasta 2 rebotes), cada uno
-// recortado a la cavidad; en la pared, donde choca el frente, brilla un poco. λ visible = 6,1 cm (media longitud de onda real, 12,2 cm: crestas y valles).
+// recortado a la cavidad; en la pared, donde choca el frente, brilla un poco. Por defecto, 1 rebote (6 fuentes); o.depth = 2 → 19 fuentes (más caro). λ visible = 6,1 cm (media longitud de onda real, 12,2 cm: crestas y valles).
 function buildMagWaves(o = {}) {
   const C = (typeof MWD !== 'undefined' && MWD.cav) || { x0: -21, x1: 9, y0: 3.4, y1: 24.6, z0: -33, z1: 0 };
   const bMin = v3(C.x0, C.y0, C.z0), bMax = v3(C.x1, C.y1, C.z1), S0 = o.src ? o.src.clone() : v3(C.x1, 15.5, -14), lam = o.lam ?? 6.1;
@@ -557,7 +559,7 @@ function buildMagWaves(o = {}) {
   const walls = [[0, C.x0], [0, C.x1], [1, C.y0], [1, C.y1], [2, C.z0], [2, C.z1]];
   const refl = (p, ax, w) => { const q = p.clone(); q.setComponent(ax, 2 * w - p.getComponent(ax)); return q; };
   const srcs = [{ p: S0, n: 0 }], seen = new Set([S0.toArray().map(x => x.toFixed(2)).join()]);
-  for (let depth = 1; depth <= (o.depth ?? 2); depth++) for (const s of srcs.filter(s => s.n === depth - 1)) for (const [ax, w] of walls) {
+  for (let depth = 1; depth <= (o.depth ?? 1); depth++) for (const s of srcs.filter(s => s.n === depth - 1)) for (const [ax, w] of walls) {
     const q = refl(s.p, ax, w), key = q.toArray().map(x => x.toFixed(2)).join(); if (seen.has(key) || q.distanceTo(s.p) < 0.01) continue; seen.add(key); srcs.push({ p: q, n: depth }); }
   for (const s of srcs) { const onW = s.n === 0, set = magShellSet(s.p, bMin, bMax, { nT: onW ? 24 : s.n === 1 ? 14 : 9, nP: onW ? 56 : s.n === 1 ? 32 : 22, lam, onWall: onW, D: onW ? v3(-1, 0, 0) : null, amp: Math.pow(0.6, s.n), wallK: 0.5, darkK: 0.18, ro: 4 });
     W.sets.push(set); G.add(set.mesh); W.tris += set.tris; }

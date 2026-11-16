@@ -15,3 +15,18 @@ golpe y salta). La versión anterior del guion (por qué gira el plato y dónde 
 | Las moléculas de agua intentan seguir la onda y giran: eso es calor | EPA (arriba) | Simplificación del calentamiento dieléctrico. |
 | El truco: no calentarla de más | FDA (arriba: seguir los tiempos del fabricante y no recalentar el agua) | |
 | …y meter un palito de madera: en sus vetas nacen las burbujas poco a poco | Steve Spangler Science, «Exploding Water in the Microwave»: https://stevespangler.com/experiments/exploding-water-in-the-microwave/ (poner un palito de madera u otra cosa no metálica en el agua) · Wikipedia, «Superheating» (los puntos de nucleación evitan el sobrecalentamiento) | **No es una recomendación de la FDA**: es un consejo habitual de divulgación con base física (la madera da sitio a las burbujas). En el guion va como «el truco», no como dato oficial. |
+
+## Rótulos del vídeo (16-11, tarde)
+- «2.450.000.000 · VECES POR SEGUNDO»: la frecuencia de arriba (2,45 GHz).
+- «> 100 °C · Y SIGUE QUIETA»: sin número concreto, como en el guion.
+- Ficha «AVISO OFICIAL · FDA (EE. UU.) · Quemaduras graves por agua sobrecalentada en el microondas · en las manos y en la cara»: resumen
+  del aviso de la FDA citado arriba («serious skin burns or scalding injuries around people's hands and faces»).
+- «VISTA TÉRMICA»: **ilustrativa** (colores de una cámara térmica: el agua caliente, la taza templada), no es una medida.
+- «EL TRUCO: NO LA CALIENTES DE MÁS» / «EL TRUCO: UN PALITO DE MADERA»: el guion (el palito, consejo de divulgación, no de la FDA).
+
+## Imagen 3D: recursos de terceros (todos CC0, Poly Haven)
+- HDRI «Brown Photostudio 02» (la cocina-loft del fondo y la luz): https://polyhaven.com/a/brown_photostudio_02
+- Modelo «Electric Stove» (la cocina eléctrica): https://polyhaven.com/a/electric_stove — se borró la marca de la textura.
+- Modelo «Pot Enamel 01» (el cazo esmaltado): https://polyhaven.com/a/pot_enamel_01
+- Texturas «Kitchen Wood» (la encimera) y «White Oak Veneer» (el palito): https://polyhaven.com/a/kitchen_wood · https://polyhaven.com/a/white_oak_veneer
+- El microondas, la taza, el agua, el vapor, el magnetrón y las moléculas están modelados para el vídeo (sin marcas).

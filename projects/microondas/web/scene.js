@@ -1316,7 +1316,7 @@ function cutUpdate(h, zc, y0, y1, xm) {
 // del agua sobrecalentada a cámara lenta (gotas que se estiran con la velocidad, la columna del centro y el vapor), el café soluble que cae, el palito de madera
 // (textura real de roble, CC0) con las burbujas que nacen en sus vetas, y la vista en corte. Unidades: cm; origen de la taza abajo en el centro.
 const MUG = { R: 4.15, H: 9.6, WY: 7.9, rIn: y => 3.62 + 0.27 * clamp((y - 0.7) / 8.6) };
-const WATER_REFL = { name: 'aguaEspejo', uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null }, tint: { value: new THREE.Color(0.86, 0.93, 0.95) }, k: { value: 1 }, base: { value: 0.2 } },
+const WATER_REFL = { name: 'aguaEspejo', uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null }, tint: { value: new THREE.Color(0.8, 0.9, 0.93) }, k: { value: 1 }, base: { value: 0.42 } },
   vertexShader: 'uniform mat4 textureMatrix; varying vec4 vUv; varying vec3 vW;\n#include <common>\n#include <logdepthbuf_pars_vertex>\nvoid main(){ vUv = textureMatrix * vec4(position, 1.0); vW = (modelMatrix * vec4(position, 1.0)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n#include <logdepthbuf_vertex>\n}',
   fragmentShader: 'uniform vec3 color, tint; uniform sampler2D tDiffuse; uniform float k, base; varying vec4 vUv; varying vec3 vW;\n#include <logdepthbuf_pars_fragment>\nvoid main(){\n#include <logdepthbuf_fragment>\n' +
     'vec3 V = normalize(cameraPosition - vW); float F = 0.02 + 0.98 * pow(1.0 - max(V.y, 0.0), 5.0); vec4 uv = vUv; uv.xy += vec2(sin(vW.x * 6.0 + vW.z * 2.0), sin(vW.z * 5.0 - vW.x * 3.0)) * 0.0025 * uv.w;' +
@@ -1598,10 +1598,11 @@ async function buildScene() {
   S.stove = await buildStove();
   if (typeof buildMagnetron === 'function') { S.mag = buildMagnetron(); S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5, -17)); scene.add(S.mag.group); }
   if (typeof buildMagWaves === 'function') { S.waves = buildMagWaves(); S.mw.add(S.waves.group); }
-  if (typeof buildMolecules === 'function') S.mol = buildMolecules();
+  if (typeof buildMolecules === 'function') { S.mol = buildMolecules(); scene.add(S.mol.group); }
   // la mano (piel real, la de «los dedos»): entra a coger la taza
   S.hand = realHand({ inside: false }); S.hand.scale.setScalar(7.2); S.hand.visible = false; scene.add(S.hand);      // mano de ≈ 19 cm
   S.hand.traverse(o => { if (o.isMesh && !o.isSkinnedMesh && o.geometry.type === 'CylinderGeometry') { o.scale.y = 3.2; o.position.y = HAND_Y0 - 1.2 * 3.2; } });   // antebrazo largo
+  S.hand.userData.fingers.forEach(f => { f.bones[0].rotation.z = f.d.a * D2 * 0.35; });          // dedos juntos (mano que va a coger algo, no abierta)
   handPose2(S.hand, [0.35, 0.55, 0.65, 0.75, 0.85]);
   // reflejos: cada material con su HDRI; lo de dentro del horno, con menos (la caja de metal tapa la cocina)
   envAll(scene, 1); const IN = [U.M.enamel, U.mica.material, U.lampGrille.material]; U.plate.traverse(o => o.material && IN.push(o.material));
@@ -1676,7 +1677,7 @@ function stageAt(t, st) {
   mugCut(S.mug, sh === 'S' || sh === 'M');
   { const Um = S.mug.userData, calm = tau <= 0 && !THERM && sh !== 'S' && sh !== 'M'; Um.mirror.visible = calm; Um.surfMeshes[0].visible = !calm; Um.surfMeshes[1].visible = !calm && !THERM; }
   // la cocina: el cazo (placa al rojo, burbujas)
-  stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: sh === 'K' ? 1 : 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
+  stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
   // el magnetrón (fuera de la carcasa) y las ondas
   if (S.mag) { const e = ['E', 'F'].includes(sh), k = sh === 'E' ? win(t, K.magnetron2 + 0.15, 0.9) : 1; S.mag.group.visible = e;
     magnetronAt(t, { explode: sh === 'E' ? win(t, K.pieza2, 1.2) : 0.35, cut: sh === 'F' ? win(t, K.dispara3 + 0.1, 0.6) : 0, glow: sh === 'F' ? 1 : 0.4 * k, electrons: sh === 'F' ? win(t, K.dispara3 + 0.3, 0.5) : 0, wave: sh === 'F' ? win(t, K.ondas3, 0.5) : 0 });
@@ -1749,13 +1750,13 @@ function buildCam() {
     { t0: SHT.J0, keys: [                                                                // J: el cazo en la placa al rojo
       k(SHT.J0, P([pot.x + 24, pot.y + 13, pot.z + 40], [pot.x, pot.y + 4, pot.z], 38)), k(K.abajo5, P([pot.x + 16, pot.y + 5, pot.z + 30], [pot.x, pot.y + 1, pot.z], 38)),
       k(SHT.K0, P([pot.x + 14, pot.y + 3.5, pot.z + 26], [pot.x, pot.y + 0.5, pot.z], 38))] },
-    { t0: SHT.K0, keys: [                                                                // K: dentro del agua del cazo, a ras del fondo: las burbujas nacen en las rayitas
-      k(SHT.K0, P([pot.x + 2.5, pot.y + 5.5, pot.z + 14], [pot.x - 0.5, pot.y + 1.6, pot.z - 2.5], 40)), k(K.rayitas5, P([pot.x + 1.2, pot.y + 3.2, pot.z + 7.5], [pot.x - 0.8, pot.y + 0.6, pot.z - 2.8], 40)), k(SHT.L0, P([pot.x + 0.8, pot.y + 2.6, pot.z + 5.6], [pot.x - 0.9, pot.y + 0.6, pot.z - 3], 40))] },
+    { t0: SHT.K0, keys: [                                                                // K: el cazo visto desde arriba: las burbujas nacen en las rayitas del fondo
+      k(SHT.K0, P([pot.x + 2.5, pot.y + 18, pot.z + 9], [pot.x - 0.4, pot.y + 0.6, pot.z - 1.2], 42)), k(K.rayitas5, P([pot.x + 1.4, pot.y + 12.5, pot.z + 5.5], [pot.x - 0.6, pot.y + 0.6, pot.z - 1.6], 40)), k(SHT.L0, P([pot.x + 1.0, pot.y + 11, pot.z + 4.6], [pot.x - 0.7, pot.y + 0.6, pot.z - 1.8], 40))] },
     { t0: SHT.L0, keys: [                                                                // L: vista térmica, desde arriba
       k(SHT.L0, P([mx + 4, my + 17, mz + 12.5], [mx, my + 6, mz], 48)), k(SHT.M0, P([mx + 2.2, my + 16, mz + 11], [mx, my + 6.2, mz], 46))] },
     { t0: SHT.M0, keys: [                                                                // M: dentro del agua de la taza, a ras del fondo liso: nada
-      k(SHT.M0, P([mx + 1.2, my + 6.8, mz + 13], [mx - 0.4, my + 3.4, mz - 1.5], 40)), k(K.burbuja6, P([mx + 0.9, my + 4.8, mz + 8.2], [mx - 0.6, my + 2.4, mz - 2.2], 40)), k(SHT.N0, P([mx + 0.7, my + 4.2, mz + 6.8], [mx - 0.7, my + 2.2, mz - 2.4], 40))] },
-    { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.8, my + 16.5, mz + 9.5], [mx, wy - 0.5, mz], 42)), k(SHT.O0, P([mx - 0.4, my + 14.8, mz + 7.2], [mx, wy - 0.5, mz], 40))] },
+      k(SHT.M0, P([mx + 1.5, my + 10.5, mz + 25], [mx + 0.3, my + 4.6, mz - 0.5], 40)), k(SHT.N0, P([mx + 1.2, my + 8.6, mz + 18.5], [mx + 0.2, my + 4.4, mz - 0.5], 40))] },
+    { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.6, my + 18.3, mz + 6.6], [mx, wy - 0.3, mz - 0.4], 44)), k(SHT.O0, P([mx - 0.3, my + 17.0, mz + 5.4], [mx, wy - 0.3, mz - 0.4], 42))] },
     { t0: SHT.O0, keys: [                                                                // O → P: la puerta se abre, cae el café, estalla hacia fuera
       k(SHT.O0, P([8, 25, 28], [mx, wy + 1, mz], 38)), k(K.echas8, P([1.5, 21, 9], [mx, wy + 3, mz], 38)), k(SHT.P0, P([-1.5, 19.5, 2], [mx, wy + 0.5, mz], 40)),
       k(SHT.P0 + 0.6, P([0, 19, 10], [mx, wy + 2, mz + 2], 44)), k(SHT.Q0, P([2, 18.5, 17], [mx, wy + 1, mz + 3], 46))] },
