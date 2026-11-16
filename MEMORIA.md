@@ -90,6 +90,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Efectos: solo biblioteca del canal (`compose_microondas.py`); **la clave de ElevenLabs del entorno va con el encabezado «Elevenlabs» y la
   API la espera en «xi-api-key»** (Javi no quiso darla otra vez por el formulario el 16-11): `sfx_eleven.py` queda listo para cuando se arregle.
   A la cocina eléctrica escaneada se le borró la marca («AKIRA») de la textura. Render por trozos: `render_chunk.sh` (ramas `render-mic-*`).
+  **PARADO por orden de Javi (16-11, 17:53: «para de hacer lo que estés haciendo»)**. No retomar sin que lo pida. Estado: escena terminada (magnetrón
+  y moléculas ya en `web/src/16_magnetron.js` y `17_molecules.js`); vista previa enviada (`out/preview.mp4`, 15 fps, media resolución; no está en
+  git). Render final a medias en 12 máquinas: trozos hechos y subidos 0–267 (`render-mic-1`), 1066–1333 (`render-mic-3`) y 2132–2399
+  (`render-mic-5`); faltan 267–1066, 1333–2132, 2399–3196 (máquinas 2, 4, 6 y las nuevas «Microondas · render 7–12», etiqueta
+  `kiria-render-mic`, todas avisadas de parar). Los fotogramas 1232–1410 (el cazo visto desde arriba) hay que repetirlos con el código actual
+  (se quitó el reflejo blanco). Para seguir: `render_chunk.sh A B X render-mic` en los rangos que faltan, `fetch_compose.sh` y, con todo,
+  `touch out/SFX_READY` para que monte. Pendiente de permiso: borrar las ramas `render-mic-*` y archivar las máquinas «Microondas · render 7–12».
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
