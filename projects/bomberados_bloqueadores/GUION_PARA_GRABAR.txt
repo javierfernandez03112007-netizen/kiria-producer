@@ -1,0 +1,51 @@
+«SI SUELTAS LA CUERDA, ¿QUÉ HACE LA CAMILLA?» — los bloqueadores en un rescate de noche (idea de Adrián en Notion:
+«MARTES 17 EXPLICAR LOS BLOQUEADORES EN 30 SEGUNDOS»)
+
+Hecho con el plan de esta mañana y el MENSAJE de los que funcionan: nada de teoría ni de lista de aparatos; un bombero en
+acción en 3D con dron (un herido en el fondo de un barranco, de noche, y tú subiéndolo con una cuerda), UNA idea («el
+bloqueador deja correr la cuerda hacia arriba y la muerde si tira hacia abajo»), una pregunta de consecuencia con cuenta
+de 5 s y la trampa que cae casi todo el mundo («cae»), y cierre personal + «mándaselo a quien quiera ser bombero». ≈ 52 s.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+La cuenta de 5 segundos NO se graba: la meto yo con su tic-tac.
+Lo más fuerte, el final: «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Un herido en el fondo de un BARRANCO… [tense] y lo subes TÚ, tirando de una cuerda!
+[effortful] Cada tirón lo sube un palmo. [worried] Pero… ¿y si se te escapa?
+[challenging] Sueltas la cuerda: ¿qué hace la camilla? [slow] ¿Cae, baja despacio… o se queda QUIETA?
+[challenging] Tienes cinco segundos.
+[excited] ¡Tiempo! [confident] Se queda quieta… por el BLOQUEADOR.
+[explaining, clear] Dentro tiene una leva con dientes: la cuerda corre hacia arriba… [emphatic] y si tira hacia abajo, la MUERDE.
+[warm] Por eso nadie aguanta al herido a pulso: tiras, descansas… y la camilla no baja.
+[energetic] Con el mismo truco, el bombero sube por la cuerda: el puño en la mano y el croll en el pecho.
+[curious, challenging] ¿Tú te colgarías de esa cuerda? Dímelo en comentarios.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, con un dron que no para y planos abiertos:
+1. «¡Un herido en el fondo de un barranco…!» — primer fotograma: una camilla colgando de una cuerda sobre el vacío,
+   iluminada por los focos de la autobomba, el barranco negro debajo; arriba, el trípode de rescate en el borde.
+2. «…y lo subes tú, tirando de una cuerda» — tú, arriba, tirando; la cuerda pasa por la polea del trípode.
+   «Cada tirón lo sube un palmo» — la camilla sube a tirones (cartel «+1 PALMO»).
+3. «Pero ¿y si se te escapa?» — la cuerda se te resbala de los guantes (cámara lenta).
+4. Pregunta y tarjetas: A CAE · B BAJA DESPACIO · C SE QUEDA QUIETA; «Tienes cinco segundos» y la cuenta 1→5.
+5. «¡Tiempo!» — un instante de «¿y si no lo llevara?»: la camilla cae (fantasma rojo, la A tachada) y se rebobina…
+   «Se queda quieta… por el bloqueador»: la camilla, clavada; zoom al aparato.
+6. «Dentro tiene una leva con dientes…» — rayos X del bloqueador: la cuerda corre hacia arriba (flechas verdes) y, al tirar
+   hacia abajo, la leva gira y sus dientes muerden la cuerda (flecha roja, ¡CLAC!).
+7. «Por eso nadie aguanta al herido a pulso: tiras, descansas…» — tú tiras, sueltas, tiras: la camilla sube y nunca baja.
+8. «Con el mismo truco, el bombero sube por la cuerda…» — otro bombero sube por una cuerda fija del barranco como un
+   gusano: el puño (con su pedal) en la mano y el croll en el pecho; rótulos PUÑO y CROLL.
+9. «¿Tú te colgarías de esa cuerda?» — el dron sube y se ve todo el rescate; «💬 DÍMELO EN COMENTARIOS».
+10. ★ «¡Mándaselo a quien quiera ser bombero!» — avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+11. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Fuentes (en FUENTES.md): tabla de bloqueadores del manual que manda Adrián (puño, croll, bloqueador de polipasto: UNE EN 567
+y UNE EN 12841); fichas técnicas de Petzl (puño con leva dentada; bloqueador de leva para polipastos como tracción o
+antirretorno). El barranco, los 20 m y «un palmo por tirón» son un EJEMPLO. CONFIRMAR la prueba gratis de 5 días.
