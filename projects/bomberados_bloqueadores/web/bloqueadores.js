@@ -775,9 +775,7 @@ function camKeys() {
     [T.barranco, [4.2, -9.6, 10.6, 0, -4.6, 3.6, 44]],                // el vacío debajo y la cuerda hacia la luz
     [T.subes, [5.6, 7.4, 9.6, 0, -1.6, 1.0, 46]],                     // alto: tú arriba tirando, el trípode y la camilla
     [T.palmo + 0.2, [4.6, 6.0, 8.2, 0, -2.0, 1.4, 44]],
-    [T.escapa - 0.25, [2.1, 1.35, -1.9, 0, 1.0, -2.45, 40]],           // tus manos: ¡se te escapa!
-    [T.escapa + 0.35, [2.7, 2.1, 1.6, 0.4, -1.0, 3.6, 42]],            // por encima del borde (no atraviesa el suelo)
-    [T.escapa + 0.75, [3.1, 0.4, 5.0, 0, -3.6, RZ, 42]],
+    [T.escapa + 0.2, [3.4, 1.6, 6.0, 0, -3.4, RZ, 42]],              // ¿y si se te escapa?: el dron baja a la camilla (por el vacío)
     [T.sueltas + 0.3, [3.4, -3.6, 8.6, 0, -4.9, RZ, 40]],             // la camilla, parada: la pregunta
     [T.count0, [-3.2, -4.0, 8.6, 0, -5.0, RZ, 40]],                   // la cuenta: alrededor de la camilla
     [T.count0 + 2.0, [-4.6, -5.6, 6.6, 0, -5.0, RZ, 40]],
