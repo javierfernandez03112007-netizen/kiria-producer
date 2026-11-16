@@ -8,7 +8,8 @@
 //   (coordenadas del grupo; se mueve con la vista explosionada). o.guide = true añade la guía de ondas (un conducto de chapa sobre la brida,
 //   o.guideLen cm de largo hacia +y, abierto por el final: ahí va la mica del horno).
 // magnetronAt(t, P) con P = { explode, cut, glow, electrons, wave } (0..1) y, opcionales, { guide (0/1: ver la guía), cutYaw, cutHalf (rad:
-//   hacia dónde mira y cuánto abre la cuña del corte; por defecto, el cuarto entre +x y +z) }.
+//   hacia dónde mira y cuánto abre la cuña del corte; por defecto, el cuarto entre +x y +z), cutTop (cm: si se da, dentro de la cuña solo se
+//   quita lo que queda por encima de esa altura: con cutHalf = π/2 y cutTop = 0 se ve el ánodo desde arriba, con las paletas cortadas) }.
 // buildMagWaves() → MAGW (MAGW.group en coordenadas del microondas: llena la cavidad) y magWavesAt(t, P) con P = { on, flow } (0..1).
 // Todo lo global empieza por mag / MAG (los archivos se concatenan en un solo módulo).
 
@@ -25,7 +26,7 @@ const MAGD = {
   tip: 5.76,                                                 // punta del capuchón de la antena
 };
 let MAG = null, MAGW = null, MAGT = null;
-const _magN3 = new THREE.Matrix3(), _magV = new THREE.Vector3();
+const _magN3 = new THREE.Matrix3(), _magV = new THREE.Vector3(), _magM4 = new THREE.Matrix4(), _magDn = new THREE.Vector3(0, -1, 0);
 const magSst = (a, b, x) => { const k = clamp((x - a) / (b - a)); return k * k * (3 - 2 * k); };
 const magS5 = x => { x = clamp(x); return x * x * x * (x * (x * 6 - 15) + 10); };
 
@@ -90,7 +91,7 @@ function magTextures() {
     const s = magFbm(u * 2, v * 160, 2, 160, 3, 21), n = magFbm(u * 5, v * 5, 5, 5, 4, 22), f = hash(u * 7919.1 + v * 113.3);
     const dirt = magSst(0.6, 0.82, n), b = 214 + (s - 0.5) * 26 + (f - 0.5) * 6 - dirt * 30;
     c[0] = b; c[1] = b + 1; c[2] = b + 3 - dirt * 5;
-    d[1] = 255 * (0.4 + (s - 0.5) * 0.16 + dirt * 0.22);
+    d[1] = 255 * (0.54 + (s - 0.5) * 0.16 + dirt * 0.2);
   });
   // ferrita: gris muy oscuro, mate, de grano fino con algún cristalito que brilla
   [T.feC, T.feD] = magImg2(256, 256, (u, v, c, d) => {
@@ -130,13 +131,13 @@ function magTextures() {
 // dibujan por las dos caras y, donde se ve la cara de atrás a través del corte, se pinta como la cara plana del corte (normal del plano, metal
 // vivo del color de la pieza). Así las piezas parecen macizas al cortarlas sin tener que construir las tapas.
 function magCutPatch(m, capHex, capR, capM) {
-  const U = { magCapC: { value: new THREE.Color(capHex) }, magCapRM: { value: new THREE.Vector2(capR, capM) } };
+  const U = { magCapC: { value: new THREE.Color(capHex) }, magCapRM: { value: new THREE.Vector2(capR, capM) }, magW2L: { value: new THREE.Matrix4() } }; m.userData.magU = U;
   m.onBeforeCompile = sh => {
     Object.assign(sh.uniforms, U);
     sh.fragmentShader = sh.fragmentShader
-      .replace('#include <clipping_planes_pars_fragment>', '#include <clipping_planes_pars_fragment>\nuniform vec3 magCapC; uniform vec2 magCapRM;')
+      .replace('#include <clipping_planes_pars_fragment>', '#include <clipping_planes_pars_fragment>\nuniform vec3 magCapC; uniform vec2 magCapRM; uniform mat4 magW2L;')
       .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>
-        float magK = 0.0; vec3 magN = vec3(0.0, 0.0, 1.0);
+        float magK = 0.0, magPat = 1.0, magG = 0.5; vec3 magN = vec3(0.0, 0.0, 1.0);
         #if NUM_CLIPPING_PLANES > 0
         if (!gl_FrontFacing) {
           // el rayo de la cámara a este punto: ¿salió de la zona quitada por uno de los planos antes de llegar aquí? → es la tapa de ese plano
@@ -144,10 +145,14 @@ function magCutPatch(m, capHex, capR, capM) {
           for (int i = 0; i < NUM_CLIPPING_PLANES; i++) { vec4 pl = clippingPlanes[i]; float nd = dot(pl.xyz, Pv); float s = -pl.w / (abs(nd) > 1e-6 ? nd : 1e-6);
             if (nd > 0.0) { if (s < sx) { sx = s; magN = -pl.xyz; } } else { se = max(se, s); } }
           if (sx < 0.9999 && sx > se) magK = 1.0; else discard;
+          // marcas de la fresa en la cara del corte (en el marco de la pieza, para que no «naden» si se mueve)
+          vec3 magLP = (magW2L * vec4(transpose(mat3(viewMatrix)) * (Pv * sx - viewMatrix[3].xyz), 1.0)).xyz;
+          magG = 0.5 + 0.5 * sin(dot(magLP, vec3(31.0, 160.0, 27.0)) + 2.5 * sin(dot(magLP, vec3(6.0, 2.0, 5.0))));
+          magPat = 0.92 + 0.06 * magG + 0.04 * fract(sin(dot(floor(magLP * 80.0), vec3(12.9898, 78.233, 37.719))) * 43758.5453);
         }
         #endif`)
-      .replace('#include <color_fragment>', '#include <color_fragment>\nif (magK > 0.5) diffuseColor.rgb = magCapC;')
-      .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\nif (magK > 0.5) { roughnessFactor = magCapRM.x; metalnessFactor = magCapRM.y; }')
+      .replace('#include <color_fragment>', '#include <color_fragment>\nif (magK > 0.5) diffuseColor.rgb = magCapC * magPat;')
+      .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\nif (magK > 0.5) { roughnessFactor = magCapRM.x * (0.8 + 0.4 * magG); metalnessFactor = magCapRM.y; }')
       .replace('#include <normal_fragment_maps>', '#include <normal_fragment_maps>\nif (magK > 0.5) { normal = magN; nonPerturbedNormal = magN; }')
       .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\nif (magK > 0.5) totalEmissiveRadiance = vec3(0.0);')
       .replace('#include <lights_physical_fragment>', `#include <lights_physical_fragment>
@@ -165,12 +170,12 @@ function magCutPatch(m, capHex, capR, capM) {
 function magKinds(T) {
   const P = o => new THREE.MeshPhysicalMaterial(o), S = o => new THREE.MeshStandardMaterial(o);
   return {
-    zn: [() => P({ map: T.znC, roughnessMap: T.znD, metalnessMap: T.znD, roughness: 1, metalness: 1, clearcoat: 0.2, clearcoatRoughness: 0.35, iridescence: 0.45, iridescenceIOR: 1.55, iridescenceThicknessMap: T.znI, iridescenceThicknessRange: [230, 420] }), 0xc8c8c2, 0.3, 1],
+    zn: [() => P({ map: T.znC, roughnessMap: T.znD, metalnessMap: T.znD, roughness: 1, metalness: 1, clearcoat: 0.2, clearcoatRoughness: 0.35, iridescence: 0.32, iridescenceIOR: 1.55, iridescenceThicknessMap: T.znI, iridescenceThicknessRange: [190, 380] }), 0xc8c8c2, 0.3, 1],
     cu: [() => S({ map: T.cuC, roughnessMap: T.cuD, metalnessMap: T.cuD, roughness: 1, metalness: 1 }), 0xf0a27e, 0.24, 1],
     cuIn: [() => S({ map: T.cmC, roughnessMap: T.cmD, roughness: 1, metalness: 1, vertexColors: true }), 0xf0a27e, 0.22, 1],
     fe: [() => S({ map: T.stC, roughnessMap: T.stD, roughness: 1.1, metalness: 1, color: 0xd8d8d4 }), 0xcfcfca, 0.3, 1],
     ferr: [() => S({ map: T.feC, roughnessMap: T.feD, roughness: 1, metalness: 0, bumpMap: T.feC, bumpScale: 0.9 }), 0x58585c, 0.6, 0],
-    al: [() => P({ map: T.alC, roughnessMap: T.alD, aoMap: T.finAO, aoMapIntensity: 1, roughness: 1, metalness: 1, anisotropy: 0.3, color: 0xe4e4e4 }), 0xdedfe2, 0.25, 1],
+    al: [() => P({ map: T.alC, roughnessMap: T.alD, aoMap: T.finAO, aoMapIntensity: 1, roughness: 1, metalness: 1, anisotropy: 0.25, color: 0xdcdcdc, envMapIntensity: 0.75 }), 0xdedfe2, 0.25, 1],
     cer: [() => P({ map: T.ceC, roughness: 0.42, metalness: 0, clearcoat: 0.3, clearcoatRoughness: 0.3 }), 0xf2efe8, 0.65, 0],
     cap: [() => S({ map: T.stC, roughnessMap: T.stD, roughness: 0.7, metalness: 1, color: 0xf4f4f2 }), 0xd8d8d4, 0.25, 1],
     kov: [() => S({ color: 0x9c968e, roughness: 0.36, metalness: 1 }), 0xb0aaa2, 0.3, 1],
@@ -271,7 +276,7 @@ void main(){
   vec3 col = mix(vec3(0.25, 0.45, 1.0) * 2.6, vec3(1.3, 1.4, 1.7) * 5.0, k * k);
   gl_FragColor = vec4(col * k, vA);
 }`;
-function magElectrons(n = 1400, NS = 14) {
+function magElectrons(n = 1200, NS = 12) {
   const V = n * NS * 4, seed = new Float32Array(V * 4), cs = new Float32Array(V * 3), idx = new Uint32Array(n * NS * 6);
   let v = 0, q = 0;
   for (let i = 0; i < n; i++) { const s = [hash(i * 1.37 + 0.1), hash(i * 2.71 + 0.3), hash(i * 3.97 + 0.7), hash(i * 5.31 + 0.9)];
@@ -281,7 +286,7 @@ function magElectrons(n = 1400, NS = 14) {
   g.setAttribute('seed', new THREE.BufferAttribute(seed, 4)); g.setAttribute('cs', new THREE.BufferAttribute(cs, 3)); g.setIndex(new THREE.BufferAttribute(idx, 1));
   const m = new THREE.ShaderMaterial({ vertexShader: MAG_EL_VS, fragmentShader: MAG_EL_FS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
     uniforms: { time: { value: 0 }, power: { value: 0 }, rc: { value: MAGD.ct.r + 0.05 }, ra: { value: MAGD.vn.ri }, hh: { value: MAGD.vn.h * 0.86 }, om: { value: 2.4 },
-      dts: { value: 0.03 }, nseg: { value: NS }, sz: { value: 0.03 }, res: { value: new THREE.Vector2(W * PR, H * PR) } } });
+      dts: { value: 0.034 }, nseg: { value: NS }, sz: { value: 0.03 }, res: { value: new THREE.Vector2(W * PR, H * PR) } } });
   const me = new THREE.Mesh(g, m); me.frustumCulled = false; me.renderOrder = 8; return me;
 }
 // el halo azul de la carga espacial: discos apilados con la misma rueda de 5 radios que los electrones
@@ -372,7 +377,7 @@ function buildMagnetron(o = {}) {
   const M = { group: G, parts: [], pieces: [], antennaTip0: v3(0, D.tip, 0), antennaTip: v3(0, D.tip, 0), tris: 0 };
   // cada «pieza» que se corta tiene sus materiales (con sus planos de corte en su propio marco)
   let piece = null;
-  const newPiece = root => { piece = { root, mats: [], planes: [new THREE.Plane(), new THREE.Plane()] }; M.pieces.push(piece); return piece; };
+  const newPiece = root => { piece = { root, mats: [], planes: [new THREE.Plane(), new THREE.Plane(), new THREE.Plane()] }; M.pieces.push(piece); return piece; };
   const mat = (kind, cut = true) => { const [f, ch, cr, cm] = K[kind], m = f(); if (cut && piece) { magCutPatch(m, ch, cr, cm); piece.mats.push(m); } return m; };
   const part = (obj, off, t0, d) => { M.parts.push({ obj, base: obj.position.clone(), off, t0, d }); return obj; };
   const add = (par, g, m, cast = true) => { const me = magMesh(g, m, cast); par.add(me); return me; };
@@ -401,12 +406,12 @@ function buildMagnetron(o = {}) {
   // cátodo (no se corta: es la estrella): filamento de tungsteno en espiral, sombreretes de molibdeno, varilla central y patas
   const mW = new THREE.MeshStandardMaterial({ color: 0x8c8c92, metalness: 1, roughness: 0.42, emissive: 0xff5c1c, emissiveIntensity: 0 });
   const mMo = new THREE.MeshStandardMaterial({ color: 0xb4b4ba, metalness: 1, roughness: 0.3, emissive: 0xff4a12, emissiveIntensity: 0 });
-  M.mW = mW; M.mMo = mMo;
+  const mLd = new THREE.MeshStandardMaterial({ color: 0xa8a8ae, metalness: 1, roughness: 0.34 }); M.mW = mW; M.mMo = mMo;
   const C = D.ct; add(tube, new THREE.TubeGeometry(new MagHelix(C.r, 2 * C.h, C.turns, 'y'), C.turns * 22, C.w, 8, false), mW, false);
   for (const sy of [1, -1]) { const y0 = sy * (C.h + 0.02), y1 = y0 + sy * 0.07; add(tube, magLatheGeo([[0.04, Math.min(y0, y1)], [0.36, Math.min(y0, y1)], [0.36, Math.max(y0, y1)], [0.04, Math.max(y0, y1)]], { b: 0.012, seg: 40, s: 1 }), mMo, false);
     const q0 = sy > 0 ? y1 + 0.003 : y1 - 0.123, q1 = q0 + 0.12; add(tube, magLatheGeo([[0.04, q0], [0.16, q0], [0.16, q1], [0.04, q1]], { b: 0.01, seg: 24, s: 1 }), mMo, false); }
-  { const g = new THREE.CylinderGeometry(0.04, 0.04, C.h + 0.09 + 4.32, 10); const me = add(tube, g, mMo, false); me.position.set(0, (C.h + 0.09 - 4.32) / 2, 0); }
-  { const g = new THREE.CylinderGeometry(0.05, 0.05, 4.32 - C.h - 0.09, 10); const me = add(tube, g, mMo, false); me.position.set(0.17, (-C.h - 0.09 - 4.32) / 2, 0); }
+  { const g = new THREE.CylinderGeometry(0.04, 0.04, C.h + 0.09 + 4.32, 10); const me = add(tube, g, mLd, false); me.position.set(0, (C.h + 0.09 - 4.32) / 2, 0); }
+  { const g = new THREE.CylinderGeometry(0.05, 0.05, 4.32 - C.h - 0.09, 10); const me = add(tube, g, mLd, false); me.position.set(0.17, (-C.h - 0.09 - 4.32) / 2, 0); }
   // cable de la antena: sale de lo alto de una paleta (por detrás, fuera del corte), atraviesa la pieza polar y sube por el eje
   const mLead = new THREE.MeshStandardMaterial({ color: 0xe0926a, metalness: 1, roughness: 0.3 });
   { const a = (6 + 0.5) * 2 * Math.PI / D.vn.n, c = Math.cos(a), s = Math.sin(a);
@@ -414,35 +419,35 @@ function buildMagnetron(o = {}) {
     add(tube, new THREE.TubeGeometry(crv, 80, 0.05, 8, false), mLead, false); }
 
   // ---- antena: manguito de cobre, aislante de cerámica, anillo de kovar y capuchón (salen hacia arriba en la vista explosionada)
-  const antC = new THREE.Group(); G.add(antC); part(antC, v3(0, 3.8, 0), 0.05, 0.6);
+  const antC = new THREE.Group(); G.add(antC); part(antC, v3(0, 7.9, 0), 0.04, 0.62);
   add(antC, magLatheGeo([[0.62, 2.886], [1.22, 2.886], [1.22, 2.96], [0.92, 2.96], [0.92, 3.36], [0.62, 3.36]], { b: 0.015, seg: 56, s: 0.5 }), mCu);
   add(antC, magLatheGeo([[0.62, 3.366], [0.9, 3.366], [0.935, 3.62], [0.935, 4.32], [0.9, 4.58], [0.62, 4.58]], { b: 0.03, seg: 56, s: 0.5 }), mCer);
   add(antC, magLatheGeo([[0.6, 4.586], [0.86, 4.586], [0.86, 4.718], [0.6, 4.718]], { b: 0.015, seg: 56, s: 0.5 }), mKov);
-  const capG = new THREE.Group(); G.add(capG); part(capG, v3(0, 5.4, 0), 0.0, 0.55);
+  const capG = new THREE.Group(); G.add(capG); part(capG, v3(0, 9.0, 0), 0.0, 0.6);
   add(capG, magLatheGeo([[0.0, 4.724], [0.77, 4.724], [0.77, 4.86], [0.71, 4.92], [0.71, 5.0], [0.75, 5.05], [0.75, 5.36], [0.68, 5.55], [0.5, 5.68], [0.26, 5.745], [0.0, D.tip]], { b: 0.02, seg: 64, s: 0.6 }), mCap);
   // junta de malla de punto alrededor de la antena (cierra el paso de las microondas entre la brida y la guía)
-  const knit = new THREE.Group(); G.add(knit); part(knit, v3(0, 3.0, 0), 0.1, 0.6);
+  const knit = new THREE.Group(); G.add(knit); part(knit, v3(0, 7.1, 0), 0.08, 0.62);
   { const g = new THREE.TorusGeometry(1.42, 0.2, 14, 72); g.rotateX(Math.PI / 2); g.scale(1, 0.62, 1); g.translate(0, D.pl.y0 + D.pl.t + 0.12, 0);
     const uv = g.attributes.uv; for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * 36, uv.getY(i) * 6); add(knit, g, mKnit); }
 
   // ---- chapa de arriba (brida de montaje con sus 4 agujeros)
-  const plate = new THREE.Group(); G.add(plate); part(plate, v3(0, 2.35, 0), 0.12, 0.62);
+  const plate = new THREE.Group(); G.add(plate); part(plate, v3(0, 6.6, 0), 0.12, 0.62);
   { const sh = magRect(-D.pl.x, -D.pl.z, D.pl.x, D.pl.z, 0.45); magHole(sh, 0, 0, 1.04); for (const sx of [-1, 1]) for (const sz of [-1, 1]) magHole(sh, sx * 4.14, sz * 3.05, 0.2);
     const g = magPlate(sh, D.pl.y0, D.pl.t, 0.025, 40); magBoxUV(g, 0.12); add(plate, g, mZn); }
   // ---- imanes de ferrita
-  const mgT = new THREE.Group(), mgB = new THREE.Group(); G.add(mgT, mgB); part(mgT, v3(0, 1.25, 0), 0.2, 0.62); part(mgB, v3(0, -1.25, 0), 0.2, 0.62);
+  const mgT = new THREE.Group(), mgB = new THREE.Group(); G.add(mgT, mgB); part(mgT, v3(0, 5.8, 0), 0.17, 0.62); part(mgB, v3(0, -1.6, 0), 0.2, 0.62);
   { const pr = [[D.mg.ri, D.mg.y0], [D.mg.ro, D.mg.y0], [D.mg.ro, D.mg.y1], [D.mg.ri, D.mg.y1]];
     add(mgT, magLatheGeo(pr, { b: 0.03, seg: 72, s: 0.45 }), mFerr); add(mgB, magLatheGeo(pr.map(([r, y]) => [r, -y]).reverse(), { b: 0.03, seg: 72, s: 0.45 }), mFerr); }
   // ---- aletas de aluminio (encajadas a presión en el ánodo, con su cuello y las pestañas dobladas en los extremos)
   { const F = D.fn, sh = magRect(-F.x, -F.z, F.x, F.z, 0.12); magHole(sh, 0, 0, 2.04);
-    const gp = magPlate(sh, -F.t / 2, F.t, 0.012, 56);
-    const gc = magLatheGeo([[2.01, F.t / 2 - 0.01], [2.07, F.t / 2 - 0.01], [2.07, 0.24], [2.01, 0.24]], { b: 0.008, seg: 72 });
+    const gp = magPlate(sh, -F.t / 2, F.t, 0.012, 20);
+    const gc = magLatheGeo([[2.01, F.t / 2 - 0.01], [2.07, F.t / 2 - 0.01], [2.07, 0.24], [2.01, 0.24]], { b: 0.008, seg: 48 });
     const lips = [-1, 1].map(sz => { const g = new THREE.BoxGeometry(2 * F.x - 0.02, 0.3, F.t, 1, 1, 1); g.translate(0, F.t / 2 - 0.155, sz * (F.z + F.t / 2 - 0.005)); return g; });
     const gf = magMerge([gp, gc, ...lips]), P = gf.attributes.position, uv = gf.attributes.uv;
     for (let i = 0; i < P.count; i++) uv.setXY(i, (P.getX(i) + 3.6) / 7.2, (P.getZ(i) + 4.94) / 9.88);
-    for (let k = 0; k < F.n; k++) { const fg = new THREE.Group(); fg.position.y = (k - (F.n - 1) / 2) * F.dy; G.add(fg); add(fg, gf, mAl); part(fg, v3(0, (k - (F.n - 1) / 2) * 0.17, 0), 0.32 + 0.02 * Math.abs(k - 3), 0.62); } }
+    for (let k = 0; k < F.n; k++) { const fg = new THREE.Group(); fg.position.y = (k - (F.n - 1) / 2) * F.dy; G.add(fg); add(fg, gf, mAl); part(fg, v3(0, 4.85 + (k - (F.n - 1) / 2) * 0.12, 0), 0.24 + 0.018 * (F.n - 1 - k), 0.6); } }
   // ---- yugo en U: chapa de abajo, dos dobleces y los lados (con las lengüetas que entran en la chapa de arriba) y la etiqueta
-  const yoke = new THREE.Group(); G.add(yoke); part(yoke, v3(0, -3.7, 0), 0.15, 0.65);
+  const yoke = new THREE.Group(); G.add(yoke); part(yoke, v3(0, -5.6, 0), 0.22, 0.66);
   { const Y = D.yk, ro = 0.43, ri = ro - Y.t, xb = Y.x - ro, yb = -D.pl.y0 - Y.t + ro, list = [];
     const sh = magRect(-xb, -Y.z, xb, Y.z, 0); magHole(sh, 0, 0, 1.04); list.push(magPlate(sh, -D.pl.y0 - Y.t, Y.t, 0, 40));
     for (const sx of [1, -1]) {
@@ -454,7 +459,7 @@ function buildMagnetron(o = {}) {
     const lb = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 2.1), mat('label')); lb.material.userData.magClipOnly = true; lb.rotation.y = -Math.PI / 2; lb.position.set(-Y.x - 0.004, 0.15, 0.1); lb.receiveShadow = true; yoke.add(lb); }
 
   // ---- caja del filamento (va a un lado en la vista explosionada): chapa de acero, bobinas de choque y el condensador pasante con sus dos terminales
-  const fbox = new THREE.Group(); G.add(fbox); part(fbox, v3(5.0, -3.6, 0), 0.25, 0.7);
+  const fbox = new THREE.Group(); G.add(fbox); part(fbox, v3(5.2, -6.0, 0), 0.3, 0.68);
   newPiece(fbox);
   { const B = D.fb, mB = mat('zn'), list = [];
     const fr = magRect(-B.x, -B.z, B.x, B.z, 0.3); fr.holes.push(magRect(-B.x + B.w, -B.z + B.w, B.x - B.w, B.z - B.w, 0.22, new THREE.Path()));
@@ -492,7 +497,7 @@ function buildMagnetron(o = {}) {
       uniforms: { time: { value: 0 }, power: { value: 0 }, rc: { value: D.ct.r + 0.04 }, ra: { value: D.vn.ri }, om: { value: 2.4 } } });
     const list = []; for (let k = 0; k < 5; k++) { const g = new THREE.RingGeometry(D.ct.r + 0.03, D.vn.ri, 64, 1); g.rotateX(-Math.PI / 2); g.translate(0, (k - 2) * 0.18, 0); list.push(g); }
     M.haze = new THREE.Mesh(magMerge(list), hm); M.haze.renderOrder = 7; M.haze.frustumCulled = false; G.add(M.haze); }
-  { const src = v3(0, 5.25, 0), free = [v3(-10, D.pl.y0 + D.pl.t + 0.05, -10), v3(10, 17, 10)];
+  { const src = v3(0, 5.25, 0), free = [v3(-8, D.pl.y0 + D.pl.t + 0.05, -8), v3(8, 15, 8)];
     M.wFree = magShellSet(src, free[0], free[1], { nT: 20, nP: 40, lam: 1.5, D: v3(0, 1, 0), tA: 0xa292ff, tB: 0x86b8ff, ro: 5, fadeY: [3.2, 5.6] }); G.add(M.wFree.mesh);
     if (M.guide) { M.wGuide = magShellSet(src, M.guideBox[0], M.guideBox[1], { nT: 18, nP: 36, lam: 1.5, D: v3(0, 1, 0), tA: 0xa292ff, tB: 0x86b8ff, ro: 5, wallK: 0.12 }); M.guide.add(M.wGuide.mesh); } }
   G.traverse(ob => { if (ob.isMesh && ob.geometry && ob.geometry.index) M.tris += ob.geometry.index.count / 3 * (ob.geometry.instanceCount && ob.geometry.instanceCount < 1e6 ? ob.geometry.instanceCount : 1); else if (ob.isMesh) M.tris += ob.geometry.attributes.position.count / 3; });
@@ -510,13 +515,15 @@ function magnetronAt(t, P = {}, M = MAG) {
   // 2) corte en cuña: quita {p·n1 > d y p·n2 > d} (en el marco de cada pieza); d baja de fuera hacia el eje
   const on = cut > 0.0005, d = lerp(7.8, 0, eio(cut)), yaw = P.cutYaw ?? Math.PI / 4, half = P.cutHalf ?? Math.PI / 4;
   const n1 = v3(Math.sin(yaw - half), 0, -Math.cos(yaw - half)), n2 = v3(-Math.sin(yaw + half), 0, Math.cos(yaw + half));     // (ya cambiados de signo: normales hacia lo que se queda)
-  for (const pc of M.pieces) { const Mw = pc.root.matrixWorld; _magN3.getNormalMatrix(Mw);
-    pc.planes[0].set(n1, d).applyMatrix4(Mw, _magN3); pc.planes[1].set(n2, d).applyMatrix4(Mw, _magN3);
+  const h = P.cutTop != null ? lerp(10, P.cutTop, eio(cut)) : -1000;      // corte horizontal: dentro de la cuña solo se quita lo que está por encima de h
+  for (const pc of M.pieces) { const Mw = pc.root.matrixWorld; _magN3.getNormalMatrix(Mw); _magM4.copy(Mw).invert();
+    pc.planes[0].set(n1, d).applyMatrix4(Mw, _magN3); pc.planes[1].set(n2, d).applyMatrix4(Mw, _magN3); pc.planes[2].set(_magDn, h).applyMatrix4(Mw, _magN3);
+    for (const m of pc.mats) if (m.userData.magU) m.userData.magU.magW2L.value.copy(_magM4);
     for (const m of pc.mats) if (m.userData.magOn !== on) { m.userData.magOn = on; m.clippingPlanes = on ? pc.planes : null; m.clipIntersection = true; m.clipShadows = true;
       if (!m.userData.magClipOnly) m.side = on ? THREE.DoubleSide : THREE.FrontSide; m.needsUpdate = true; } }
   // 3) filamento al rojo (y su luz, que tiñe las puntas de las paletas)
   const sc = M.group.getWorldScale(_magV).x;
-  M.mW.emissiveIntensity = 2.7 * gl; M.mMo.emissiveIntensity = 0.5 * gl * gl;
+  M.mW.emissiveIntensity = 2.7 * gl; M.mMo.emissiveIntensity = 0.22 * gl * gl;
   M.light.intensity = (0.85 * gl + 0.3 * el) * sc * sc; M.light.distance = 1.95 * sc; M.light.color.setRGB(1, 0.42 + 0.25 * el * (1 - gl * 0.5), 0.16 + 0.5 * el * (1 - gl * 0.5));
   // 4) electrones y su halo
   const U = M.el.material.uniforms; U.time.value = t; U.power.value = el; M.el.visible = el > 0.002;
@@ -526,7 +533,7 @@ function magnetronAt(t, P = {}, M = MAG) {
   const S = gOn ? M.wGuide : M.wFree, So = gOn ? M.wFree : M.wGuide;
   if (So) So.mesh.visible = false;
   S.m.uniforms.C.value.copy(M.antennaTip).y -= 0.5;
-  magShellsAt(S, t, 6.0, 4 + 16 * wv, wv * 0.6, 5, 2.5);
+  magShellsAt(S, t, 6.0, 3 + 12 * wv, wv * 0.5, 5, 2.5);
 }
 
 // ---------------------------------------------------------------- LAS ONDAS DENTRO DEL HORNO (coordenadas del microondas). Salen por la mica (pared

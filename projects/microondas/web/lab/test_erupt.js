@@ -10,4 +10,4 @@ function labAt(t) { const k = Math.round(t), tau = TAUS[k % TAUS.length], c = MG
   splashAt(SP, tau, { dir, floor: -0.05, wallZ }); eruptAt(EP, tau, { dir, floor: -0.05, wallZ });
   const bulge = 0.35 * Math.exp(-Math.pow((tau - 0.012) / 0.02, 2)); mugSurface(MG, t, { amp: 0.35 * clamp(tau / 0.02), bulge, crown: 0.4 * clamp(tau / 0.05), rise: boilLevel(tau) });
   lightsAt(v3(c.x, c.y + 11, c.z), 15);
-  return [c.x - 1.5, c.y + 15.3, c.z + 12.8, c.x, c.y + 10.5, c.z, 46]; }
+  return [c.x - 1.5, c.y + 15.3, c.z + 12.8, c.x, c.y + 10.5, c.z, 46, window.DOF ? Number(window.DOF) : 18]; }

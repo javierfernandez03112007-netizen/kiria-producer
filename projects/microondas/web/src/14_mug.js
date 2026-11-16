@@ -64,6 +64,18 @@ function mugCut(M, on) {
   for (const s of U.surfMeshes) { s.material.clippingPlanes = cp; s.material.needsUpdate = true; }
   U.waterBody.visible = !!on; U.waterBody.material.clippingPlanes = cp;
 }
+// material de gota de agua (instanciado): uL = dirección hacia la lámpara (en el mundo), se pasa a la vista en cada fotograma
+function dropMat() {
+  return new THREE.ShaderMaterial({ transparent: true, depthWrite: true, uniforms: { uL: { value: new THREE.Vector3(0.7, 0.5, -0.5) }, uL2: { value: new THREE.Vector3(-0.3, 0.6, 0.75) }, bright: { value: 1 } },
+    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vN; varying vec3 vV; void main(){ vec4 p = vec4(position,1.); vec3 nn = normal;\n#ifdef USE_INSTANCING\np = instanceMatrix * p; nn = mat3(instanceMatrix) * nn;\n#endif\nvec4 mv = modelViewMatrix * p; vN = normalize(normalMatrix * nn); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv;\n#include <logdepthbuf_vertex>\n}',
+    fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform vec3 uL, uL2; uniform float bright; varying vec3 vN; varying vec3 vV; void main(){\n#include <logdepthbuf_fragment>\n' +
+      'vec3 N = normalize(vN), V = normalize(vV); float ndv = abs(dot(N, V)), rim = pow(1.0 - ndv, 1.6);' +
+      'vec3 c = mix(vec3(1.0, 0.97, 0.92) * 0.85 * bright, vec3(0.05, 0.055, 0.06), smoothstep(0.15, 0.85, rim)); float a = mix(0.16, 0.8, smoothstep(0.1, 0.9, rim));' +
+      'float s1 = pow(max(dot(N, normalize(uL + V)), 0.0), 160.0), s2 = pow(max(dot(N, normalize(uL2 + V)), 0.0), 90.0) * 0.35;' +
+      'float glint = pow(max(dot(-N, normalize(uL - V)), 0.0), 6.0) * 0.6;' +   // la luz que atraviesa la gota por detrás (destello del lado contrario)
+      'c += vec3(1.0, 0.92, 0.78) * (s1 * 5.0 + glint * 1.4) * bright + vec3(0.85, 0.9, 1.0) * s2 * 2.0; a = clamp(a + s1 + s2 + glint * 0.5, 0.0, 1.0);' +
+      'gl_FragColor = vec4(c, a); }' });
+}
 // ---------- el estallido (hervor de golpe del agua sobrecalentada), a cámara lenta. τ = tiempo REAL desde que empieza, en segundos.
 // Lo que se ve en los vídeos de verdad: el agua sube de nivel, la superficie se llena de burbujas de vapor que revientan y lanzan rocío fino, del centro sale un
 // chorro de gotas alargadas (hacia la cámara si o.dir) y sale vapor. Las gotas se pegan al cristal de la puerta cerrada o caen a la encimera si está abierta.
@@ -71,9 +83,8 @@ const SPL = { NB: 64 };
 const boilLevel = tau => tau <= 0 ? 0 : 1.3 * clamp(tau / 0.012) * (1 - 0.6 * clamp((tau - 0.06) / 0.08));
 function buildSplash(n = 2600, seed = 1) {
   const G = new THREE.Group(), geo = new THREE.SphereGeometry(1, 14, 10);
-  // gota = lente pequeña: casi negra en el centro (deja ver el fondo), borde brillante por Fresnel y el destello de la lámpara (como en la fotografía de alta velocidad)
-  const m = new THREE.MeshPhysicalMaterial({ color: 0x0a0d10, roughness: 0.02, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.0, specularIntensity: 1, ior: 1.33, transparent: true, opacity: 0.72, envMapIntensity: 3.2, depthWrite: false });
-  m.userData.envFixed = 1.6;                                                              // reflejos fijos (no se apagan dentro del horno: si no, no se verían)
+  // gota = lente pequeña (como en la fotografía de alta velocidad): centro claro (concentra la luz), borde oscuro y el destello de la lámpara del horno
+  const m = dropMat();
   const im = new THREE.InstancedMesh(geo, m, n); im.frustumCulled = false; im.renderOrder = 9; G.add(im);
   // burbujas que asoman y revientan en la superficie
   const NB = SPL.NB, BD = new Float32Array(NB * 5);                                     // x, z, rMax, nace, revienta
@@ -102,6 +113,8 @@ const _sv = new THREE.Vector3(), _sq = new THREE.Quaternion(), _sY = new THREE.V
 // y resbalan; o.frontZ + o.floorOut: con la puerta abierta, más allá de frontZ caen a la encimera
 function splashAt(SP, tau, o = {}) {
   const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, wallZ = o.wallZ ?? null, frontZ = o.frontZ ?? 1e9, floorOut = o.floorOut ?? floor, lv = boilLevel(tau);
+  { const mu = U.im.material.uniforms; cam.updateMatrixWorld(); const vm = new THREE.Matrix3().setFromMatrix4(cam.matrixWorldInverse);
+    mu.uL.value.copy(o.light || v3(0.72, 0.52, -0.46)).applyMatrix3(vm).normalize(); mu.uL2.value.copy(v3(-0.3, 0.6, 0.75)).applyMatrix3(vm).normalize(); mu.bright.value = o.bright ?? 1; }
   for (let i = 0; i < U.n; i++) { const b = i * 8, t = tau - D[b + 6];
     if (tau <= 0 || t <= 0) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); continue; }
     let vx = D[b + 2], vy = D[b + 3], vz = D[b + 4]; if (dir) { const k = D[b + 7] ? 0.5 : 0.3; vx += dir.x * vy * k; vz += dir.z * vy * k; }

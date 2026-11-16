@@ -21,6 +21,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffe
 const PR = window.PR || 1; renderer.setPixelRatio(PR); renderer.setSize(W, H); document.body.appendChild(renderer.domElement);
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap; renderer.localClippingEnabled = true;
 const rtA = new THREE.WebGLRenderTarget(W * PR, H * PR, { type: THREE.HalfFloatType, samples: 4 });
+rtA.depthTexture = new THREE.DepthTexture(W * PR, H * PR); rtA.depthTexture.type = THREE.FloatType;
 const BLW = Math.round(W * PR / 4), BLH = Math.round(H * PR / 4);
 const rtB = [0, 1].map(() => new THREE.WebGLRenderTarget(BLW, BLH, { type: THREE.HalfFloatType }));
 const rtC = [0, 1].map(() => new THREE.WebGLRenderTarget(Math.round(BLW / 2), Math.round(BLH / 2), { type: THREE.HalfFloatType }));
@@ -28,6 +29,19 @@ const rtC = [0, 1].map(() => new THREE.WebGLRenderTarget(Math.round(BLW / 2), Ma
 const rtF = new THREE.WebGLRenderTarget(Math.round(W * PR / 2), Math.round(H * PR / 2), { type: THREE.HalfFloatType });
 const fxScene = new THREE.Scene();
 const VS = 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }';
+// profundidad de campo (como un objetivo de cine): desenfoque por disco según la distancia a lo enfocado (de una sola pasada, «bokeh» de Gustafsson)
+const rtD = new THREE.WebGLRenderTarget(W * PR, H * PR, { type: THREE.HalfFloatType });
+const dofM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, tD: { value: null }, focus: { value: 30 }, scale: { value: 0 }, logF: { value: 13 }, px: { value: new THREE.Vector2(1 / (W * PR), 1 / (H * PR)) }, maxR: { value: 18 * PR } },
+  vertexShader: VS, depthTest: false,
+  fragmentShader: `uniform sampler2D tA, tD; uniform float focus, scale, logF, maxR; uniform vec2 px; varying vec2 vUv;
+    float lin(vec2 uv){ return exp2(texture2D(tD, uv).x * logF) - 1.0; }
+    float bs(float z){ return clamp(abs(1.0 / focus - 1.0 / max(z, 0.01)) * scale, 0.0, 1.0) * maxR; }
+    void main(){ float zc = lin(vUv), cs = bs(zc); vec3 col = texture2D(tA, vUv).rgb; float tot = 1.0;
+      if (scale <= 0.0) { gl_FragColor = vec4(col, 1.0); return; }
+      for (int i = 0; i < 56; i++) { float fi = float(i) + 0.5, r = sqrt(fi / 56.0) * maxR, a = fi * 2.39996323;
+        vec2 tc = vUv + vec2(cos(a), sin(a)) * px * r; float z = lin(tc), ss = bs(z); if (z > zc) ss = min(ss, cs * 2.0);
+        float m = smoothstep(r - 0.5, r + 0.5, ss); col += mix(col / tot, texture2D(tA, tc).rgb, m); tot += 1.0; }
+      gl_FragColor = vec4(col / tot, 1.0); }` });
 const brightM = new THREE.ShaderMaterial({ uniforms: { tA: { value: null }, tF: { value: null }, px: { value: new THREE.Vector2(1.5 / (W * PR), 1.5 / (H * PR)) }, th: { value: 1.7 } }, vertexShader: VS, depthTest: false,
   fragmentShader: `uniform sampler2D tA, tF; uniform vec2 px; uniform float th; varying vec2 vUv;
     void main(){ vec3 c = vec3(0.); for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) c += texture2D(tA, vUv + vec2(float(i), float(j)) * px).rgb; c = c / 9.0 + texture2D(tF, vUv).rgb; if (any(isnan(c)) || any(isinf(c))) c = vec3(0.);
@@ -928,7 +942,7 @@ function lightsAt(c, d) {
 // cada material con su propia intensidad de reflejos (con scene.environment, three.js ignora envMapIntensity): se le pone el HDRI a mano.
 // k: factor extra (dentro del horno cerrado apenas llega la luz de la cocina)
 function envMat(m, k = 1) { if (!m || !m.isMeshStandardMaterial || !S.hdr) return; if (m.userData.env0 === undefined) m.userData.env0 = m.envMapIntensity;
-  if (m.envMap !== S.hdr) { m.envMap = S.hdr; m.needsUpdate = true; } m.envMapRotation.set(0, ENV.rot, 0); m.envMapIntensity = m.userData.env0 * ENV.env * k; }
+  if (m.envMap !== S.hdr) { m.envMap = S.hdr; m.needsUpdate = true; } m.envMapRotation.set(0, ENV.rot, 0); m.envMapIntensity = m.userData.envFixed ?? m.userData.env0 * ENV.env * k; }
 function envAll(root, k = 1) { root.traverse(o => { if (!o.material) return; for (const m of [].concat(o.material)) envMat(m, k); }); }
 function waitLoads() { return Promise.all(PENDING); }
 // ---------------------------------------------------------------- el microondas (de los de casa, de encimera): carcasa de acero cepillado con los bordes redondeados,
@@ -950,7 +964,7 @@ function brushedTex(w = 1024, h = 256) {
 function mwMats() {
   const br = brushedTex();
   const metal = new THREE.MeshPhysicalMaterial({ color: 0xb4b9bf, metalness: 0.78, roughness: 0.4, roughnessMap: br, bumpMap: br, bumpScale: 0.15, clearcoat: 0.2, clearcoatRoughness: 0.3, envMapIntensity: 0.85 });
-  const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#d9d9d5'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
+  const enamelT = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#58595c'; g.fillRect(0, 0, w, h); for (let i = 0; i < 9000; i++) { g.fillStyle = hash(i * 1.7) > 0.5 ? 'rgba(160,150,135,.10)' : 'rgba(255,255,255,.12)'; g.fillRect(hash(i * 3.1) * w, hash(i * 5.3) * h, 1.2, 1.2); } });
   enamelT.wrapS = enamelT.wrapT = THREE.RepeatWrapping; enamelT.repeat.set(3, 3);
   const enamel = new THREE.MeshPhysicalMaterial({ map: enamelT, roughness: 0.42, clearcoat: 0.35, clearcoatRoughness: 0.3, side: THREE.DoubleSide });
   const black = new THREE.MeshPhysicalMaterial({ color: 0x0c0d10, roughness: 0.08, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.05, envMapIntensity: 0.7 });
@@ -1347,9 +1361,9 @@ function buildMug(o = {}) {
 }
 // la superficie del agua: menisco en el borde + rizos de hervor (amp) + el bulto del centro (bulge, en cm) y el anillo que se abre (crown)
 function mugSurface(M, t, o = {}) {
-  const U = M.userData, P = U.surf.attributes.position, B = U.surfBase, amp = o.amp ?? 0, bulge = o.bulge ?? 0, crown = o.crown ?? 0;
+  const U = M.userData, P = U.surf.attributes.position, B = U.surfBase, amp = o.amp ?? 0, bulge = o.bulge ?? 0, crown = o.crown ?? 0, rise = o.rise ?? 0;
   for (let k = 0; k < P.count; k++) { const x = B[k * 3], z = B[k * 3 + 2], r = Math.hypot(x, z), u = r / U.rW;
-    let y = 0.09 * Math.pow(u, 14);                                            // menisco
+    let y = 0.09 * Math.pow(u, 14) + rise;                                     // menisco (y el nivel que sube al hervir)
     y += amp * (0.12 * Math.sin(x * 5.1 + t * 13) * Math.sin(z * 4.3 - t * 11) + 0.06 * Math.sin(r * 9 - t * 20));
     y += bulge * Math.exp(-r * r / 2.2) + crown * 0.6 * Math.exp(-Math.pow((r - 1.6 - crown * 1.5) / 0.55, 2));
     P.setY(k, y); }
@@ -1364,81 +1378,102 @@ function mugCut(M, on) {
   for (const s of U.surfMeshes) { s.material.clippingPlanes = cp; s.material.needsUpdate = true; }
   U.waterBody.visible = !!on; U.waterBody.material.clippingPlanes = cp;
 }
-// ---------- el estallido: gotas (instanciadas, se estiran con la velocidad), la columna y el vapor. τ = tiempo REAL del estallido en segundos
-function buildSplash(n = 1400, seed = 1) {
-  const G = new THREE.Group(), geo = new THREE.IcosahedronGeometry(1, 2);
-  const m = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.02, metalness: 0, transmission: 1, thickness: 0.25, ior: 1.33, envMapIntensity: 1.6, specularIntensity: 1 });
+// material de gota de agua (instanciado): uL = dirección hacia la lámpara (en el mundo), se pasa a la vista en cada fotograma
+function dropMat() {
+  return new THREE.ShaderMaterial({ transparent: true, depthWrite: true, uniforms: { uL: { value: new THREE.Vector3(0.7, 0.5, -0.5) }, uL2: { value: new THREE.Vector3(-0.3, 0.6, 0.75) }, bright: { value: 1 } },
+    vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vN; varying vec3 vV; void main(){ vec4 p = vec4(position,1.); vec3 nn = normal;\n#ifdef USE_INSTANCING\np = instanceMatrix * p; nn = mat3(instanceMatrix) * nn;\n#endif\nvec4 mv = modelViewMatrix * p; vN = normalize(normalMatrix * nn); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv;\n#include <logdepthbuf_vertex>\n}',
+    fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform vec3 uL, uL2; uniform float bright; varying vec3 vN; varying vec3 vV; void main(){\n#include <logdepthbuf_fragment>\n' +
+      'vec3 N = normalize(vN), V = normalize(vV); float ndv = abs(dot(N, V)), rim = pow(1.0 - ndv, 1.6);' +
+      'vec3 c = mix(vec3(1.0, 0.97, 0.92) * 0.85 * bright, vec3(0.05, 0.055, 0.06), smoothstep(0.15, 0.85, rim)); float a = mix(0.16, 0.8, smoothstep(0.1, 0.9, rim));' +
+      'float s1 = pow(max(dot(N, normalize(uL + V)), 0.0), 160.0), s2 = pow(max(dot(N, normalize(uL2 + V)), 0.0), 90.0) * 0.35;' +
+      'float glint = pow(max(dot(-N, normalize(uL - V)), 0.0), 6.0) * 0.6;' +   // la luz que atraviesa la gota por detrás (destello del lado contrario)
+      'c += vec3(1.0, 0.92, 0.78) * (s1 * 5.0 + glint * 1.4) * bright + vec3(0.85, 0.9, 1.0) * s2 * 2.0; a = clamp(a + s1 + s2 + glint * 0.5, 0.0, 1.0);' +
+      'gl_FragColor = vec4(c, a); }' });
+}
+// ---------- el estallido (hervor de golpe del agua sobrecalentada), a cámara lenta. τ = tiempo REAL desde que empieza, en segundos.
+// Lo que se ve en los vídeos de verdad: el agua sube de nivel, la superficie se llena de burbujas de vapor que revientan y lanzan rocío fino, del centro sale un
+// chorro de gotas alargadas (hacia la cámara si o.dir) y sale vapor. Las gotas se pegan al cristal de la puerta cerrada o caen a la encimera si está abierta.
+const SPL = { NB: 64 };
+const boilLevel = tau => tau <= 0 ? 0 : 1.3 * clamp(tau / 0.012) * (1 - 0.6 * clamp((tau - 0.06) / 0.08));
+function buildSplash(n = 2600, seed = 1) {
+  const G = new THREE.Group(), geo = new THREE.SphereGeometry(1, 14, 10);
+  // gota = lente pequeña (como en la fotografía de alta velocidad): centro claro (concentra la luz), borde oscuro y el destello de la lámpara del horno
+  const m = dropMat();
   const im = new THREE.InstancedMesh(geo, m, n); im.frustumCulled = false; im.renderOrder = 9; G.add(im);
-  const D = new Float32Array(n * 8);           // x0, z0, vx, vy, vz, size, τ0, kind
-  for (let i = 0; i < n; i++) { const h = k => hash(i * 7.31 + k * 1.913 + seed * 13.7); const core = i < n * 0.18;
-    const r = (core ? 1.1 : 3.4) * Math.sqrt(h(1)), a = h(2) * 6.283, x0 = Math.cos(a) * r, z0 = Math.sin(a) * r, up = core ? 60 + 70 * h(3) : 80 + 140 * h(3), out = (core ? 8 : 20) + 50 * h(4) * (r / 3.4);
-    D.set([x0, z0, Math.cos(a) * out, up, Math.sin(a) * out, core ? 0.08 + 0.16 * h(5) : 0.025 + 0.1 * Math.pow(h(5), 2), (core ? 0.004 : 0.012) * h(6) + (r / 3.4) * 0.01, core ? 1 : 0], i * 8); }
-  _o.scale.setScalar(0.0001); _o.position.set(0, -1000, 0); _o.updateMatrix(); for (let i = 0; i < n; i++) im.setMatrixAt(i, _o.matrix);
-  // vapor: manchas suaves que suben y se abren
-  const st = canvasTex(128, 128, (c, w, h) => { const gr = c.createRadialGradient(w / 2, h / 2, 1, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,255,255,.55)'); gr.addColorStop(0.5, 'rgba(255,255,255,.18)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = gr; c.fillRect(0, 0, w, h); });
-  const steam = []; for (let i = 0; i < 46; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: st, transparent: true, depthWrite: false, opacity: 0 })); s.renderOrder = 10; G.add(s); steam.push(s); }
-  G.userData = { im, D, n, steam, seed }; return G;
+  // burbujas que asoman y revientan en la superficie
+  const NB = SPL.NB, BD = new Float32Array(NB * 5);                                     // x, z, rMax, nace, revienta
+  for (let j = 0; j < NB; j++) { const h = k => hash(j * 5.13 + k * 2.37 + seed * 3.3), r = 3.2 * Math.sqrt(h(1)), a = h(2) * 6.283, tb = 0.055 * Math.pow(h(4), 1.5);
+    BD.set([Math.cos(a) * r, Math.sin(a) * r, 0.22 + 0.55 * Math.pow(h(3), 1.6), tb, tb + 0.004 + 0.011 * h(5)], j * 5); }
+  const bub = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 28, 18), bubbleMat(0.45), NB); bub.frustumCulled = false; bub.renderOrder = 8; G.add(bub);
+  // gotas: el chorro del centro (gordas y alargadas) y el rocío de cada burbuja que revienta
+  const D = new Float32Array(n * 8);                                                     // x0, z0, vx, vy, vz, tamaño, τ0, tipo
+  for (let i = 0; i < n; i++) { const h = k => hash(i * 7.31 + k * 1.913 + seed * 13.7), core = i < n * 0.14;
+    if (core) { const r = 1.0 * Math.sqrt(h(1)), a = h(2) * 6.283, out = 4 + 22 * h(4);
+      D.set([Math.cos(a) * r, Math.sin(a) * r, Math.cos(a) * out, 110 + 170 * h(3), Math.sin(a) * out, 0.035 + 0.06 * Math.pow(h(5), 1.3), 0.008 + 0.03 * h(6), 1], i * 8); }
+    else { const j = Math.floor(h(7) * NB), bx = BD[j * 5], bz = BD[j * 5 + 1], br = BD[j * 5 + 2], a = h(2) * 6.283, out = 8 + 45 * h(4);
+      D.set([bx + Math.cos(a) * br * 0.6, bz + Math.sin(a) * br * 0.6, Math.cos(a) * out, (35 + 150 * h(3)) * (0.6 + br), Math.sin(a) * out, 0.01 + 0.04 * Math.pow(h(5), 2.2), BD[j * 5 + 4] + 0.002 * h(6), 0], i * 8); } }
+  _o.scale.setScalar(0.0001); _o.position.set(0, -1000, 0); _o.updateMatrix(); for (let i = 0; i < n; i++) im.setMatrixAt(i, _o.matrix); for (let j = 0; j < NB; j++) bub.setMatrixAt(j, _o.matrix);
+  // vapor: nubecillas (textura de ruido) que suben, crecen y se deshacen; a contraluz de la lámpara del horno brillan
+  const st = canvasTex(256, 256, (c, w, h) => { const img = c.createImageData(w, h), d = img.data;
+    const n2 = (x, y, f) => { let v = 0, a = 1, s = 0; for (let o = 0; o < 5; o++) { v += a * (Math.sin(x * f * 1.7 + hash(o * 3.1) * 9) * Math.sin(y * f * 1.3 + hash(o * 7.7) * 9) * 0.5 + 0.5); s += a; a *= 0.55; f *= 2.1; } return v / s; };
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const u = x / w - 0.5, v = y / h - 0.5, r = Math.hypot(u, v) * 2, fall = Math.max(0, 1 - r * r) ** 1.6;
+      const a = fall * Math.pow(n2(u * 6, v * 6, 1.2), 2.2) * 1.6, i = (y * w + x) * 4; d[i] = d[i + 1] = d[i + 2] = 255; d[i + 3] = Math.min(255, a * 255); }
+    c.putImageData(img, 0, 0); });
+  const steam = []; for (let i = 0; i < 70; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: st, color: 0xfff4e6, transparent: true, depthWrite: false, opacity: 0, rotation: hash(i * 9.1) * 6.28 })); s.renderOrder = 10; G.add(s); steam.push(s); }
+  G.userData = { im, D, n, steam, seed, bub, BD, NB }; return G;
 }
 const _sv = new THREE.Vector3(), _sq = new THREE.Quaternion(), _sY = new THREE.Vector3(0, 1, 0);
-// τ: segundos reales desde que estalla; o.dir: empuja el chorro hacia un lado (p. ej. hacia la cámara); o.floor: altura (local) del suelo del horno;
-// o.wallZ: con la puerta cerrada, las gotas se quedan pegadas al cristal (z local) y resbalan; o.frontZ + o.floorOut: con la puerta abierta, más allá de frontZ caen a la encimera
+// o.dir: hacia dónde se inclina el chorro; o.floor: altura (local) del suelo del horno; o.wallZ: con la puerta cerrada, las gotas se quedan pegadas al cristal (z local)
+// y resbalan; o.frontZ + o.floorOut: con la puerta abierta, más allá de frontZ caen a la encimera
 function splashAt(SP, tau, o = {}) {
-  const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, wallZ = o.wallZ ?? null, frontZ = o.frontZ ?? 1e9, floorOut = o.floorOut ?? floor;
+  const U = SP.userData, D = U.D, g = 981, dir = o.dir || null, floor = o.floor ?? -0.2, wallZ = o.wallZ ?? null, frontZ = o.frontZ ?? 1e9, floorOut = o.floorOut ?? floor, lv = boilLevel(tau);
+  { const mu = U.im.material.uniforms; cam.updateMatrixWorld(); const vm = new THREE.Matrix3().setFromMatrix4(cam.matrixWorldInverse);
+    mu.uL.value.copy(o.light || v3(0.72, 0.52, -0.46)).applyMatrix3(vm).normalize(); mu.uL2.value.copy(v3(-0.3, 0.6, 0.75)).applyMatrix3(vm).normalize(); mu.bright.value = o.bright ?? 1; }
   for (let i = 0; i < U.n; i++) { const b = i * 8, t = tau - D[b + 6];
     if (tau <= 0 || t <= 0) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); continue; }
-    let vx = D[b + 2], vy = D[b + 3], vz = D[b + 4]; if (dir) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
-    let x = D[b] + vx * t, y = MUG.WY + vy * t - 0.5 * g * t * t, z = D[b + 1] + vz * t, vyy = vy - g * t, s = D[b + 5], flat = 0;
+    let vx = D[b + 2], vy = D[b + 3], vz = D[b + 4]; if (dir) { const k = D[b + 7] ? 0.5 : 0.3; vx += dir.x * vy * k; vz += dir.z * vy * k; }
+    let x = D[b] + vx * t, y = MUG.WY + lv + vy * t - 0.5 * g * t * t, z = D[b + 1] + vz * t, vyy = vy - g * t, s = D[b + 5] * clamp(t / 0.002), flat = 0;
     if (wallZ !== null && z > wallZ && vz > 0) {                                                        // choca con el cristal de la puerta y resbala
-      const th = (wallZ - D[b + 1]) / vz, yh = MUG.WY + vy * th - 0.5 * g * th * th; x = D[b] + vx * th; z = wallZ; y = Math.max(floor, yh - 5 * (t - th)); vx = 0; vyy = -5; vz = 0; flat = 1; }
+      const th = (wallZ - D[b + 1]) / vz, yh = MUG.WY + lv + vy * th - 0.5 * g * th * th; x = D[b] + vx * th; z = wallZ; y = Math.max(floor, yh - 5 * (t - th)); vx = 0; vyy = -5; vz = 0; flat = 1; }
     const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.1, fl = z > frontZ ? floorOut : floor;
-    if (inside && y < MUG.WY && vyy < 0) s *= clamp((y - MUG.WY + 1.2) / 1.2);                   // las que vuelven a caer dentro se hunden
+    if (inside && y < MUG.WY + lv && vyy < 0) s *= clamp((y - MUG.WY - lv + 0.6) / 0.6);              // las que vuelven a caer dentro se hunden
     if (!inside && y < fl) { const tl = (y - fl) / Math.max(1, -vyy); y = fl; s *= clamp(1 + tl * 10); flat = 2; }   // las que caen fuera se aplastan y se van
     if (flat === 1) { _o.position.set(x, y, z - s * 0.3); _o.quaternion.identity(); _o.scale.set(s * 1.5, s * 1.9, Math.max(0.0001, s * 0.35)); }
     else if (flat === 2) { _o.position.set(x, y + s * 0.15, z); _o.quaternion.identity(); _o.scale.set(Math.max(0.0001, s * 1.7), Math.max(0.0001, s * 0.3), Math.max(0.0001, s * 1.7)); }
-    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(4, sp * 0.012 * (o.blur ?? 1));
+    else { const sp = Math.hypot(vx, vyy, vz), stretch = 1 + Math.min(D[b + 7] ? 3.2 : 2.2, sp * 0.009 * (o.blur ?? 1));
       _o.position.set(x, y, z); _sv.set(vx, vyy, vz).normalize(); _o.quaternion.setFromUnitVectors(_sY, _sv);
       _o.scale.set(Math.max(0.0001, s), Math.max(0.0001, s * stretch), Math.max(0.0001, s)); }
     _o.updateMatrix(); U.im.setMatrixAt(i, _o.matrix); }
   U.im.instanceMatrix.needsUpdate = true;
-  U.steam.forEach((s, i) => { const t = tau - 0.01 - (i % 12) * 0.006, k = clamp(t / 0.12); s.visible = t > 0;
-    if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 1 + 3 * hash(i * 5.1) + 18 * k * hash(i * 1.3);
-    s.position.set(Math.cos(a) * r, MUG.WY + 2 + 26 * k * (0.5 + hash(i * 2.9)), Math.sin(a) * r); s.scale.setScalar(3 + 14 * k); s.material.opacity = 0.32 * Math.sin(Math.PI * clamp(k * 1.1)) * (o.steam ?? 1); });
+  // las burbujas de la superficie: asoman (casquete), crecen y revientan
+  for (let j = 0; j < U.NB; j++) { const b = j * 5, u = (tau - U.BD[b + 3]) / (U.BD[b + 4] - U.BD[b + 3]);
+    if (tau <= 0 || u <= 0 || u >= 1) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); }
+    else { const r = U.BD[b + 2] * Math.pow(sm5(clamp(u * 1.25)), 0.6); _o.position.set(U.BD[b], MUG.WY + lv - r * 0.45, U.BD[b + 1]); _o.quaternion.identity(); _o.scale.set(r, r * 0.9, r); }
+    _o.updateMatrix(); U.bub.setMatrixAt(j, _o.matrix); }
+  U.bub.instanceMatrix.needsUpdate = true;
+  U.steam.forEach((s, i) => { const t = tau - 0.012 - (i % 14) * 0.006, k = clamp(t / 0.16); s.visible = t > 0 && (o.steam ?? 1) > 0;
+    if (!s.visible) return; const a = hash(i * 3.7) * 6.283, r = 0.6 + 2.6 * hash(i * 5.1) + 9 * k * hash(i * 1.3), d = o.dir ? 6 * k : 0;
+    s.position.set(Math.cos(a) * r + (o.dir ? o.dir.x * d : 0), MUG.WY + lv + 1 + 16 * Math.pow(k, 0.7) * (0.4 + hash(i * 2.9)), Math.sin(a) * r + (o.dir ? o.dir.z * d : 0));
+    s.scale.setScalar(2.2 + 9 * Math.pow(k, 0.6) * (0.6 + 0.8 * hash(i * 4.4))); s.material.rotation = hash(i * 9.1) * 6.28 + k * (hash(i) - 0.5) * 2;
+    s.material.opacity = 0.34 * Math.sin(Math.PI * clamp(k * 1.05)) * (o.steam ?? 1); });
 }
-// ---------- el agua que estalla, continua (metaballs → superficie con marching cubes): primero se abomba, luego sube una columna que se rompe en
-// gotas gordas y un anillo que salpica hacia fuera. τ en segundos reales. Va en el grupo del estallido (coordenadas de la taza, sin girar).
-const ERU = { HE: 11, Y0: -3.5, res: 84 };                 // cubo de 22 cm: de WY-3,5 a WY+18,5; celda ≈ 0,26 cm
+// ---------- el bulto del principio (el agua se abomba antes de reventar), continuo: metaballs → superficie con marching cubes. Va en el grupo del estallido.
+const ERU = { HE: 6, Y0: -3.2, res: 72 };                 // cubo de 12 cm: de WY-3,2 a WY+8,8; celda ≈ 0,17 cm
 function buildErupt(seed = 3) {
-  const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.025, metalness: 0, transmission: 1, thickness: 1.2, ior: 1.33, specularIntensity: 1, envMapIntensity: 1.5, attenuationColor: new THREE.Color(0xd8f0f2), attenuationDistance: 12 });
-  const mc = new MarchingCubes(ERU.res, mat, false, false, 90000); mc.isolation = 80; mc.frustumCulled = false; mc.renderOrder = 8;
-  mc.scale.setScalar(ERU.HE); mc.position.set(0, MUG.WY + ERU.Y0 + ERU.HE, 0); mc.castShadow = false;
-  const B = [];                                            // bolas: x0, y0, z0, vx, vy, vz, r0, t0, decay, kind (0 bulto, 1 columna, 2 anillo, 3 gotas gordas)
-  const h = (i, k) => hash(i * 4.77 + k * 1.31 + seed * 9.1);
-  B.push([0, -1.6, 0, 0, 34, 0, 2.3, 0.0, 70, 0]);                                                    // el bulto del centro
-  for (let i = 0; i < 12; i++) { const a = h(i, 1) * 6.283, r = 0.5 * h(i, 2);                       // la columna
-    B.push([Math.cos(a) * r, -0.4, Math.sin(a) * r, Math.cos(a) * 9 * h(i, 3), 70 + 120 * Math.pow(i / 11, 0.8) + 25 * h(i, 4), Math.sin(a) * 9 * h(i, 3), 1.05 - 0.04 * i + 0.2 * h(i, 5), 0.004 + 0.0016 * i, 9 + 6 * h(i, 6), 1]); }
-  for (let i = 0; i < 18; i++) { const a = (i + 0.4 * h(i, 7)) / 18 * 6.283, r = 1.8 + 0.8 * h(i, 8), out = 30 + 40 * h(i, 9);   // el anillo (corona)
-    B.push([Math.cos(a) * r, 0.1, Math.sin(a) * r, Math.cos(a) * out, 45 + 60 * h(i, 10), Math.sin(a) * out, 0.55 + 0.25 * h(i, 11), 0.008 + 0.006 * h(i, 12), 7 + 6 * h(i, 13), 2]); }
-  for (let i = 0; i < 16; i++) { const a = h(i, 14) * 6.283, r = 1.4 * h(i, 15), out = 12 + 40 * h(i, 16);  // gotas gordas que salen de la columna
-    B.push([Math.cos(a) * r, 0.5, Math.sin(a) * r, Math.cos(a) * out, 90 + 110 * h(i, 17), Math.sin(a) * out, 0.38 + 0.25 * h(i, 18), 0.012 + 0.02 * h(i, 19), 4 + 4 * h(i, 20), 3]); }
-  mc.userData = { B }; return mc;
+  const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.02, metalness: 0, transmission: 1, thickness: 1.5, ior: 1.33, specularIntensity: 1, envMapIntensity: 1.6, attenuationColor: new THREE.Color(0xd8f0f2), attenuationDistance: 10 });
+  const mc = new THREE.Group(), m = new MarchingCubes(ERU.res, mat, false, false, 60000); m.isolation = 80; m.frustumCulled = false; m.renderOrder = 8;
+  m.scale.setScalar(ERU.HE); m.position.set(0, MUG.WY + ERU.Y0 + ERU.HE, 0); mc.add(m);
+  const B = [[0, 0, 1.45, 1]];                                                            // x, z, radio, peso: el bulto del centro y los grumos de su superficie
+  for (let i = 0; i < 16; i++) { const h = k => hash(i * 4.77 + k * 1.31 + seed * 9.1), a = h(1) * 6.283, r = 0.4 + 1.6 * h(2); B.push([Math.cos(a) * r, Math.sin(a) * r, 0.35 + 0.4 * h(3), 0.6 + 0.4 * h(4)]); }
+  mc.userData = { m, B }; return mc;
 }
-// o.dir: hacia dónde se inclina el chorro; o.wallZ / o.floor como en splashAt
 function eruptAt(EP, tau, o = {}) {
-  const B = EP.userData.B, g = 981, dir = o.dir || null, HE = ERU.HE, cy = MUG.WY + ERU.Y0 + HE, iso = EP.isolation, sub = 12, wallZ = o.wallZ ?? null, floor = o.floor ?? -0.05;
-  EP.visible = tau > 0.0005; if (!EP.visible) return; EP.reset(); let n = 0;
-  for (const b of B) { const t = tau - b[7]; if (t <= 0) continue;
-    let vx = b[3], vy = b[4], vz = b[5]; if (dir && b[9] > 0) { vx += dir.x * vy * 0.45; vz += dir.z * vy * 0.45; }
-    let x = b[0] + vx * t, y = MUG.WY + b[1] + vy * t - 0.5 * g * t * t, z = b[2] + vz * t, r = b[6];
-    if (b[9] === 0) { r = b[6] * Math.exp(-Math.pow(Math.max(0, t - 0.012) * b[8], 2)); y = MUG.WY + b[1] + Math.min(vy * t, 2.6); }      // el bulto sube y se deshace
-    else r *= Math.exp(-t * b[8]) * clamp(t / 0.004);                                                                                // crece al salir y se adelgaza (se rompe en gotas)
-    if (wallZ !== null && z > wallZ - r) z = wallZ - r;
-    const inside = Math.hypot(x, z) < MUG.rIn(MUG.WY) - 0.3;
-    if (inside && y < MUG.WY - 0.3 && b[9] > 0 && vy - g * t < 0) r *= clamp((y - MUG.WY + 1.5) / 1.2);                          // vuelve a caer dentro
-    if (!inside && y < floor + r * 0.5) { y = floor + r * 0.5; r *= 0.85; }
-    if (r < 0.12) continue;
-    const nx = x / (2 * HE) + 0.5, ny = (y - cy) / (2 * HE) + 0.5, nz = z / (2 * HE) + 0.5; if (nx < 0.02 || nx > 0.98 || ny < 0.02 || ny > 0.98 || nz < 0.02 || nz > 0.98) continue;
-    const d = r / (2 * HE); EP.addBall(nx, ny, nz, d * d * (iso + sub), sub); n++; }
-  EP.update(); EP.visible = n > 0;
+  const { m, B } = EP.userData, HE = ERU.HE, cy = MUG.WY + ERU.Y0 + HE, sub = 12, iso = m.isolation, lv = boilLevel(tau);
+  const up = clamp(tau / 0.011), burst = clamp((tau - 0.011) / 0.008), k = Math.pow(sm5(up), 0.8) * (1 - sm5(burst));
+  EP.visible = k > 0.02; if (!EP.visible) return; m.reset();
+  for (const [x, z, r0, w] of B) { const r = r0 * k * (w < 1 ? (0.6 + 0.6 * up) : 1), y = MUG.WY + lv - (w < 1 ? 0.3 : 1.1) + (w < 1 ? 1.2 : 1.7) * k;
+    if (r < 0.1) continue; const nx = x / (2 * HE) + 0.5, ny = (y - cy) / (2 * HE) + 0.5, nz = z / (2 * HE) + 0.5, d = r / (2 * HE); m.addBall(nx, ny, nz, d * d * (iso + sub), sub); }
+  m.update();
 }
 // ---------- el café soluble: gránulos que caen (a cámara lenta) y tocan el agua en τHit
 function buildCoffee(n = 140) {
@@ -1538,17 +1573,18 @@ let MUGW = new THREE.Vector3();          // base de la taza en el mundo
 async function buildScene() {
   S.mw = buildMicrowave(); S.mw.position.copy(MW_POS); scene.add(S.mw);
   const U = S.mw.userData; S.mug = buildMug(); S.mug.position.copy(U.plateC).add(v3(0, U.plateTop - U.plateC.y + 0.02, 0)).add(MW_POS); scene.add(S.mug); MUGW.copy(S.mug.position);
-  S.splash = buildSplash(1500, 1); S.splash.position.copy(MUGW); scene.add(S.splash);      // el estallido no gira con el plato
+  S.splash = buildSplash(2600, 1); S.splash.position.copy(MUGW); scene.add(S.splash);      // el estallido no gira con el plato
   S.erupt = buildErupt(3); S.splash.add(S.erupt);
   S.coffee = buildCoffee(); S.mug.add(S.coffee);
-  S.stick = buildStick(); S.stick.position.set(1.4, 0.75, 0.5); S.stick.rotation.set(0.1, 0.35, -0.2); S.stick.visible = false; S.mug.add(S.stick);
+  S.stick = buildStick(); S.stick.position.set(0.9, 0.75, -1.1); S.stick.rotation.set(-0.12, 0.25, -0.22); S.stick.visible = false; S.mug.add(S.stick);
   S.bub = buildBubbles(90); S.mug.add(S.bub);
   S.stove = await buildStove();
   if (typeof buildMagnetron === 'function') { S.mag = buildMagnetron(); S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5, -17)); scene.add(S.mag.group); }
   if (typeof buildMagWaves === 'function') { S.waves = buildMagWaves(); S.mw.add(S.waves.group); }
   if (typeof buildMolecules === 'function') S.mol = buildMolecules();
   // la mano (piel real, la de «los dedos»): entra a coger la taza
-  S.hand = realHand({ inside: false }); S.hand.scale.setScalar(10.5); S.hand.visible = false; scene.add(S.hand);
+  S.hand = realHand({ inside: false }); S.hand.scale.setScalar(7.2); S.hand.visible = false; scene.add(S.hand);      // mano de ≈ 19 cm
+  S.hand.traverse(o => { if (o.isMesh && !o.isSkinnedMesh && o.geometry.type === 'CylinderGeometry') { o.scale.y = 3.2; o.position.y = HAND_Y0 - 1.2 * 3.2; } });   // antebrazo largo
   handPose2(S.hand, [0.35, 0.55, 0.65, 0.75, 0.85]);
   // reflejos: cada material con su HDRI; lo de dentro del horno, con menos (la caja de metal tapa la cocina)
   envAll(scene, 1); const IN = [U.M.enamel, U.mica.material, U.lampGrille.material]; U.plate.traverse(o => o.material && IN.push(o.material));
@@ -1566,48 +1602,79 @@ function tauAt(t) {
   if (t >= SHT.U1) return 0.055 * clamp((t - SHT.U1) / (END - SHT.U1));                           // U: vuelve a estallar y se congela (bucle)
   return 0;
 }
-// el plato gira con el horno encendido (y la taza con él); en los estallidos (cámara lenta) apenas se mueve. R: el asa mira hacia delante a la derecha
+// el plato gira con el horno encendido (y la taza con él); en los estallidos (cámara lenta) apenas se mueve. R: el asa mira hacia delante a la derecha.
+// En el corte (S) la taza va derecha (asa a la derecha) para que el corte coincida con su cara del agua.
 function mugRot(t, sh) { const R = -0.6, w = 0.5;
   if (sh === 'B') return R - w * (SHT.C0 - t); if (sh === 'U') return R - w * Math.max(0, SHT.U1 - t);
-  if (sh === 'G' || sh === 'H') return R + w * (t - SHT.G0); if (sh === 'N') return R + w * (t - SHT.N0); return R; }
+  if (sh === 'G' || sh === 'H') return R + w * (t - SHT.G0); if (sh === 'N') return R + w * (t - SHT.N0); if (sh === 'S') return 0; return R; }
+// ---------- vista térmica (como una cámara FLIR): cada cosa con el color de su temperatura (paleta «hierro»), en lineal para el ACES del final
+const thermalMat = (T0, T1, y0, y1, nz = 0.03) => new THREE.ShaderMaterial({ uniforms: { T0: { value: T0 }, T1: { value: T1 }, y0: { value: y0 }, y1: { value: y1 }, nz: { value: nz } },
+  vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vW; void main(){ vec4 p = vec4(position, 1.);\n#ifdef USE_INSTANCING\np = instanceMatrix * p;\n#endif\nvec4 w = modelMatrix * p; vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w;\n#include <logdepthbuf_vertex>\n}',
+  fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform float T0, T1, y0, y1, nz; varying vec3 vW;\nfloat hh(vec3 p){ return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 43758.5453); }\n' +
+    'vec3 iron(float t){ t = clamp(t, 0., 1.); vec3 c0 = vec3(0.02,0.01,0.08), c1 = vec3(0.17,0.04,0.42), c2 = vec3(0.55,0.08,0.5), c3 = vec3(0.88,0.2,0.24), c4 = vec3(0.98,0.5,0.1), c5 = vec3(1.,0.84,0.3), c6 = vec3(1.,0.98,0.88);\n' +
+    'if (t < .2) return mix(c0, c1, t / .2); if (t < .4) return mix(c1, c2, (t - .2) / .2); if (t < .6) return mix(c2, c3, (t - .4) / .2); if (t < .75) return mix(c3, c4, (t - .6) / .15); if (t < .9) return mix(c4, c5, (t - .75) / .15); return mix(c5, c6, (t - .9) / .1); }\n' +
+    'void main(){\n#include <logdepthbuf_fragment>\nfloat k = clamp((vW.y - y0) / (y1 - y0), 0., 1.); float n = (sin(vW.x * 1.7 + vW.z * 2.3) * sin(vW.z * 1.9 - vW.x * 1.1) + (hh(floor(vW * 3.)) - .5)) * nz;\n' +
+    'vec3 c = iron(mix(T0, T1, k) + n); gl_FragColor = vec4(pow(c, vec3(2.2)) * 1.25, 1.); }' });
+let THERM = false;
+function thermal(on) {
+  if (on === THERM) return; THERM = on; const U = S.mw.userData, Um = S.mug.userData, my = MUGW.y;
+  const swap = (root, mk) => root.traverse(o => { if (!(o.isMesh || o.isSprite) || o === S.splash || o.parent === S.splash) return; if (on) { o.userData.m0 = o.material; o.material = mk(o); } else if (o.userData.m0) { o.material = o.userData.m0; o.userData.m0 = null; } });
+  const cool = thermalMat(0.16, 0.12, 0, 26, 0.02), grille = thermalMat(0.34, 0.34, 0, 1, 0.01), plate = thermalMat(0.22, 0.2, 0, 10, 0.02);
+  const mug = thermalMat(0.5, 0.33, my + 6.5, my + 9.8, 0.025), water = thermalMat(0.97, 0.9, -1, 1, 0.05);
+  swap(S.mw, o => o.material === U.lampGrille.material ? grille : U.plate.getObjectById(o.id) ? plate : cool);
+  swap(S.mug, o => Um.surfMeshes.includes(o) ? water : mug);
+  Um.surfMeshes[1].visible = !on; S.splash.visible = !on;
+  scene.background = on ? new THREE.Color(0x04020e) : S.hdr;
+}
 const T_THERM = () => [K.microondas6 - 0.05, K.lisa6 - 0.35];
+// ---------- dentro del agua (planos K y M): niebla azulada, la superficie vista desde abajo
+let UNDER = 0;
+function underwater(on, col = 0xc9dcdc, dens = 0.07) {
+  const k = on ? 1 : 0; if (k === UNDER) return; UNDER = k;
+  scene.fog = on ? new THREE.FogExp2(col, dens) : null;
+  for (const m of S.mug.userData.surfMeshes.map(o => o.material)) { m.side = on ? THREE.DoubleSide : THREE.FrontSide; m.needsUpdate = true; }
+}
 function stageAt(t, st) {
   NOW = t; const U = S.mw.userData, sh = shotAt(t);
   // el microondas: luz, plato, puerta, pantalla
   const doorOpen = (sh === 'O' || sh === 'P' || sh === 'Q' || sh === 'S') ? 1 : 0;
   const door = doorOpen ? (sh === 'O' ? win(t, K.pero8 - 0.1, 0.5) * 0.78 : 0.78) : 0;
-  const on = doorOpen || sh === 'T' ? 0 : sh === 'U' ? win(t, SHT.U0, 0.6) : 1;
-  const secs = Math.max(0, Math.ceil(60 - (t - 0.75) * 0.9)), disp = sh === 'R' || sh === 'S' ? '1:00' : (on ? `0:${String(secs % 60).padStart(2, '0')}` : '12:34');
+  const on = doorOpen ? 0 : sh === 'U' ? win(t, SHT.U0, 0.6) : 1;
+  const secs = Math.max(0, Math.ceil(60 - (t - 0.75) * 0.9)), disp = sh === 'R' || sh === 'S' ? (sh === 'R' ? `${t < SHT.R0 + 0.9 ? '1:00' : '0:5' + (9 - Math.floor((t - SHT.R0 - 0.9) / 0.9) % 10)}` : '1:00') : (on ? `0:${String(secs % 60).padStart(2, '0')}` : '12:34');
   const rot = mugRot(t, sh); S.mug.rotation.y = rot; microwaveAt(S.mw, { on, lamp: Math.max(on, doorOpen), turn: rot, door, display: disp });
-  // la taza: superficie, estallido, café, palito, burbujas, corte y vista térmica
+  thermal(sh === 'L'); underwater(sh === 'K' || sh === 'M', sh === 'K' ? 0xb9cfd2 : 0xd4e2e1, sh === 'K' ? 0.075 : 0.06);
+  // la taza: superficie, estallido, café, palito, burbujas, corte
   const tau = tauAt(t), doorShut = door < 0.05, mz = MUGW.z;
-  innerEnv(lerp(0.2, 0.6, clamp(door / 0.78)));
+  if (!THERM) innerEnv(lerp(0.2, 0.6, clamp(door / 0.78)));
   { const dz = Math.abs(st.p.z - (-4.8)), near = door < 0.05 ? 1 - clamp((dz - 5) / 22) : 0; U.screen.material.opacity = 1 - near; U.veil.material.opacity = near * 0.55; }   // rejilla desenfocada de cerca
-  const sdir = sh === 'Q' ? v3(0.55, 0, 0.8) : sh === 'P' ? v3(0.15, 0, 1) : v3(0, 0, 1);
-  splashAt(S.splash, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null, frontZ: -6 - mz, floorOut: -MUGW.y, steam: 1 });
+  const sdir = sh === 'Q' ? v3(0.1, 0.1, 1) : sh === 'P' ? v3(0.15, 0, 1) : v3(0, 0, 1);
+  splashAt(S.splash, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null, frontZ: -6 - mz, floorOut: -MUGW.y, steam: 1, light: doorShut ? null : v3(0.2, 0.8, 0.55) });
   eruptAt(S.erupt, tau, { dir: sdir, floor: -0.05, wallZ: doorShut ? -6 - mz - 0.25 : null });
   const bulge = tau > 0 ? 0.35 * Math.exp(-Math.pow((tau - 0.012) / 0.02, 2)) : 0, crown = tau > 0 ? clamp(tau / 0.05) : 0;
-  mugSurface(S.mug, t, { amp: tau > 0 ? 0.35 * clamp(tau / 0.02) : (sh === 'S' ? 0.03 : 0), bulge, crown });
+  mugSurface(S.mug, t, { amp: tau > 0 ? 0.35 * clamp(tau / 0.02) : (sh === 'S' ? 0.03 : sh === 'L' ? 0.02 : 0.004), bulge, crown: crown * 0.4, rise: boilLevel(tau) });
   coffeeAt(S.coffee, sh === 'O' || sh === 'P' ? clamp((t - (K.echas8 - 0.1)) / (K.hierve8 - K.echas8 + 0.05)) : 0);
-  S.stick.visible = sh === 'S'; bubblesAt(S.bub, t, v3(1.45, 1.2, 0.55), v3(2.6, 7.6, 1.5), sh === 'S' ? clamp((t - K.vetas10 + 0.3) / 1.2) : 0, { rate: 0.55, scale: 0.8 });
-  mugCut(S.mug, sh === 'L' || sh === 'M');
-  { const [a, b] = T_THERM(), k = sh === 'L' ? win(t, a + 0.2, 0.5) : 0, Um = S.mug.userData; Um.therm = k;
-    Um.mat.emissive.setRGB(0.05 * k, 0.16 * k, 0.6 * k); Um.hmat.emissive.copy(Um.mat.emissive); Um.mat.emissiveIntensity = Um.hmat.emissiveIntensity = 1;
-    const wbm = Um.waterBody.material; wbm.color.setRGB(lerp(0.44, 1.0, k), lerp(0.6, 0.42, k), lerp(0.65, 0.1, k)); wbm.emissive = wbm.emissive || new THREE.Color(); wbm.emissive.setRGB(1.6 * k * win(t, K.agua6 - 0.1, 0.5), 0.5 * k * win(t, K.agua6 - 0.1, 0.5), 0.05 * k); wbm.opacity = lerp(0.28, 0.85, k); }
-  // la cocina: el cazo (placa al rojo, corte, burbujas)
-  stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'T' ? 1 : 0), cut: sh === 'K' ? 1 : 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.2) : (sh === 'T' ? 0.6 : 0) });
+  S.stick.visible = sh === 'S';
+  { S.stick.updateMatrix(); const A = v3(0, 1.2, 0.12).applyMatrix4(S.stick.matrix), B = v3(0, 7.3, 0.12).applyMatrix4(S.stick.matrix);      // las burbujas nacen en las vetas del palito
+    bubblesAt(S.bub, t, A, B, sh === 'S' ? clamp((t - K.vetas10 + 0.3) / 1.2) : 0, { rate: 0.55, scale: 0.55 }); }
+  mugCut(S.mug, sh === 'S');
+  // la cocina: el cazo (placa al rojo, burbujas)
+  stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
   // el magnetrón (fuera de la carcasa) y las ondas
   if (S.mag) { const e = ['E', 'F'].includes(sh), k = sh === 'E' ? win(t, K.magnetron2 + 0.15, 0.9) : 1; S.mag.group.visible = e;
     magnetronAt(t, { explode: sh === 'E' ? win(t, K.pieza2, 1.2) : 0.35, cut: sh === 'F' ? win(t, K.dispara3 + 0.1, 0.6) : 0, glow: sh === 'F' ? 1 : 0.4 * k, electrons: sh === 'F' ? win(t, K.dispara3 + 0.3, 0.5) : 0, wave: sh === 'F' ? win(t, K.ondas3, 0.5) : 0 });
-    S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5 + 14 * k * (sh === 'E' ? 1 : 1), -17 + 10 * k)); }
+    S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5 + 14 * k, -17 + 10 * k)); }
   if (S.waves) magWavesAt(t, { on: sh === 'G' ? 1 : 0, flow: sh === 'G' ? win(t, SHT.G0, 0.8) : 0 });
   // la carcasa del microondas se vuelve de cristal para enseñar el magnetrón
-  { const gk = sh === 'E' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
+  { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
   if (S.mol) moleculesAt(t, { on: sh === 'I' ? 1 : 0, field: sh === 'I' ? win(t, K.intenta4, 0.4) : 0, heat: sh === 'I' ? clamp((t - K.giran4 + 0.2) / (K.calor4 - K.giran4 + 0.6)) : 0 });
-  // la mano: entra por delante, coge el asa, salpica y la retira
+  // la mano, en primera persona: entra desde abajo hacia el asa; al estallar, se retira de golpe
   { const vis = sh === 'Q'; S.hand.visible = vis;
-    if (vis) { const reach = win(t, K.fda9 - 0.1, 1.1) * (1 - win(t, K.quemaduras9 - 0.05, 0.25)), m = MUGW;
-      S.hand.position.set(m.x + 14 - 4 * reach, m.y + 6 + 1.5 * reach, m.z + 26 - 15 * reach); S.hand.rotation.set(-1.25, 0.25, -0.55 + 0.2 * reach); } }
+    if (vis) { const hit = K.quemaduras9 - 0.25, reach = win(t, SHT.Q0 + 0.1, hit - SHT.Q0 - 0.1), back = win(t, hit + 0.05, 0.3);
+      const handle = S.mug.localToWorld(v3(6.2, 5.6, 0)), from = v3(5, 17, 14), F = handle.clone().sub(from).normalize();
+      const B = v3(0.25, 1, 0.1); B.addScaledVector(F, -B.dot(F)).normalize(); const X = new THREE.Vector3().crossVectors(F, B);
+      S.hand.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(X, F, B)); S.hand.rotateX(-0.25 * back); S.hand.rotateZ(0.15);
+      S.hand.position.copy(handle).addScaledVector(F, -(13.6 + 12 * (1 - reach) + 14 * back)).add(v3(1.2 * back, -3 * back, 0));
+      handPose2(S.hand, [0.35 + 0.3 * reach - 0.4 * back, 0.3 + 0.45 * reach - 0.35 * back, 0.4 + 0.45 * reach - 0.35 * back, 0.5 + 0.4 * reach - 0.35 * back, 0.6 + 0.35 * reach - 0.35 * back]); } }
   // luces de la cocina y su sombra alrededor de lo que se mira
   const c = st.l; lightsAt(c, st.p.distanceTo(c));
 }
@@ -1632,7 +1699,8 @@ function stageAt(t, st) {
 //  Q  →truco      la mano coge la taza: le salta a la mano (aviso de la FDA)
 //  R  →mete       la pantalla: 1:00
 //  S  →micro      el palito de madera: las burbujas nacen en sus vetas
-//  T  →mándaselo  el micro y el cazo, uno junto al otro
+//  T  →cazo       «¿micro…»: el microondas, de frente
+//  W  →mándaselo  «…o cazo?»: el cazo en la placa
 //  U  →fin        la cámara vuelve dentro del horno: estalla y se congela (= primer fotograma)
 let SHT = {}, SHOTS = [], SEG = [];
 function shotAt(t) { let s = SHOTS[0][0]; for (const [k, t0] of SHOTS) if (t >= t0) s = k; return s; }
@@ -1641,8 +1709,8 @@ function buildCam() {
   const m = MUGW, mx = m.x, my = m.y, mz = m.z, wy = my + MUG.WY;                     // la taza (base) y la superficie del agua
   SHT = { A0: 0, B0: 0.75, C0: K.saltar1 - 0.05, D0: K.tu2, E0: K.magnetron2 - 0.1, F0: K.dispara3 - 0.05, G0: K.n2450 + 0.6, H0: K.agua4 - 0.05, I0: K.agua4 + 0.7,
     J0: K.cazo5 - 0.05, K0: K.burbujas5 - 0.4, L0: K.microondas6 - 0.05, M0: K.lisa6 - 0.3, N0: K.agua7 - 0.05, O0: K.pero8 - 0.05, P0: K.hierve8 - 0.1, Q0: K.fda9 - 0.05,
-    R0: K.truco10 - 0.05, S0: K.mete10 - 0.05, T0: K.micro11 - 0.05, U0: K.mandaselo11 - 0.1, U1: K.microondas11 - 0.05 };
-  SHOTS = 'ABCDEFGHIJKLMNOPQRSTU'.split('').map(k => [k, SHT[k + '0']]);
+    R0: K.truco10 - 0.05, S0: K.mete10 - 0.05, T0: K.micro11 - 0.05, W0: K.cazo11 - 0.05, U0: K.mandaselo11 - 0.1, U1: K.microondas11 - 0.05 };
+  SHOTS = 'ABCDEFGHIJKLMNOPQRSTWU'.split('').map(k => [k, SHT[k + '0']]);
   const P = (p, l, f = 40, r = 0) => [p, l, f, r];
   const A0 = P([mx - 3.5, my + 15.5, mz + 13], [mx, my + 11, mz], 46), A1 = P([mx + 0.6, my + 15.2, mz + 12.6], [mx, my + 11, mz], 46);
   const mag = v3(17.6, 29.5, -13);                                                      // el magnetrón, ya fuera de la carcasa (ver stageAt)
@@ -1656,29 +1724,32 @@ function buildCam() {
       k(SHT.D0, P([mx + 1.2, my + 15.4, mz + 15.6], [mx, wy + 3, mz], 50)), k(SHT.D0 + 0.55, P([-2.5, 20.5, -2.5], [mx + 2, wy + 1, mz], 44)),
       k(SHT.E0, P([42, 34, 66], [6, 15, -20], 36)), k(K.radares2, P([40, 40, 38], [mag.x - 2, mag.y - 4, mag.z - 2], 34)),
       k(SHT.F0, P([mag.x + 22, mag.y + 9, mag.z + 26], [mag.x, mag.y, mag.z], 32)), k(SHT.G0, P([mag.x + 14, mag.y + 5, mag.z + 18], [mag.x, mag.y, mag.z], 30))] },
-    { t0: SHT.G0, keys: [                                                                // G → H: dentro del horno, las ondas, y se zambulle en el agua
-      k(SHT.G0, P([-17.5, 21, -8], [3, 14, -24], 48)), k(K.agua4 - 0.3, P([-11, 19.5, -11], [mx, wy, mz], 44)),
+    { t0: SHT.G0, keys: [                                                                // G → H: dentro del horno (la tapa de mica a la derecha), y se zambulle en el agua
+      k(SHT.G0, P([-17.5, 20.5, -8.5], [1, 13.5, -22], 58)), k(K.agua4 - 0.35, P([-12, 19.5, -11], [mx, wy, mz], 50)),
       k(SHT.H0 + 0.35, P([mx - 1.2, wy + 3.2, mz + 4.2], [mx, wy - 4, mz - 1], 40)), k(SHT.I0, P([mx - 0.2, wy + 0.15, mz + 0.5], [mx, wy - 8, mz - 1], 38))] },
     { t0: SHT.I0, mol: true, keys: [] },                                                 // I: las moléculas (su propia cámara)
-    { t0: SHT.J0, keys: [                                                                // J → K: el cazo en la placa, y en corte
-      k(SHT.J0, P([pot.x + 24, pot.y + 11, pot.z + 40], [pot.x, pot.y + 3, pot.z], 38)), k(K.abajo5, P([pot.x + 17, pot.y + 5.5, pot.z + 31], [pot.x, pot.y + 1, pot.z], 38)),
-      k(SHT.K0, P([pot.x + 4, pot.y + 6.5, pot.z + 22], [pot.x, pot.y + 3.5, pot.z], 36)), k(K.rayitas5, P([pot.x + 1.4, pot.y + 2.4, pot.z + 8], [pot.x, pot.y + 0.4, pot.z - 1.5], 34)),
-      k(SHT.L0, P([pot.x + 0.8, pot.y + 1.9, pot.z + 5.5], [pot.x, pot.y + 0.35, pot.z - 2], 34))] },
-    { t0: SHT.L0, keys: [                                                                // L → M: la taza en corte (vista térmica) y la pared lisa
-      k(SHT.L0, P([mx + 2.2, my + 9.5, mz + 16.3], [mx, my + 4.8, mz], 50)), k(SHT.M0, P([mx + 1.2, my + 8.8, mz + 13.5], [mx, my + 4.8, mz - 1], 46)),
-      k(K.burbuja6, P([mx + 0.6, my + 5.2, mz + 1.8], [mx - 0.4, my + 4.2, mz - 3.9], 40)), k(SHT.N0, P([mx + 0.4, my + 4.9, mz + 0.6], [mx - 0.6, my + 4.0, mz - 3.9], 38))] },
+    { t0: SHT.J0, keys: [                                                                // J: el cazo en la placa al rojo
+      k(SHT.J0, P([pot.x + 24, pot.y + 13, pot.z + 40], [pot.x, pot.y + 4, pot.z], 38)), k(K.abajo5, P([pot.x + 16, pot.y + 5, pot.z + 30], [pot.x, pot.y + 1, pot.z], 38)),
+      k(SHT.K0, P([pot.x + 14, pot.y + 3.5, pot.z + 26], [pot.x, pot.y + 0.5, pot.z], 38))] },
+    { t0: SHT.K0, keys: [                                                                // K: dentro del agua del cazo, a ras del fondo: las burbujas nacen en las rayitas
+      k(SHT.K0, P([pot.x + 3.6, pot.y + 2.2, pot.z + 5.2], [pot.x - 0.4, pot.y + 0.4, pot.z - 1.6], 52)), k(SHT.L0, P([pot.x + 2.4, pot.y + 1.5, pot.z + 3.4], [pot.x - 0.8, pot.y + 0.4, pot.z - 2.4], 50))] },
+    { t0: SHT.L0, keys: [                                                                // L: vista térmica, desde arriba
+      k(SHT.L0, P([mx + 4, my + 17, mz + 12.5], [mx, my + 6, mz], 48)), k(SHT.M0, P([mx + 2.2, my + 16, mz + 11], [mx, my + 6.2, mz], 46))] },
+    { t0: SHT.M0, keys: [                                                                // M: dentro del agua de la taza, a ras del fondo liso: nada
+      k(SHT.M0, P([mx + 1.2, my + 2.4, mz + 1.6], [mx - 0.8, my + 0.9, mz - 2.2], 56)), k(SHT.N0, P([mx + 0.6, my + 2.0, mz + 1.2], [mx - 1.0, my + 0.85, mz - 2.4], 54))] },
     { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.8, my + 16.5, mz + 9.5], [mx, wy - 0.5, mz], 42)), k(SHT.O0, P([mx - 0.4, my + 14.8, mz + 7.2], [mx, wy - 0.5, mz], 40))] },
     { t0: SHT.O0, keys: [                                                                // O → P: la puerta se abre, cae el café, estalla hacia fuera
       k(SHT.O0, P([8, 25, 28], [mx, wy - 1, mz], 38)), k(K.echas8, P([1.5, 21, 9], [mx, wy, mz], 38)), k(SHT.P0, P([-1.5, 19.5, 2], [mx, wy + 0.5, mz], 40)),
       k(SHT.P0 + 0.6, P([0, 19, 10], [mx, wy + 2, mz + 2], 44)), k(SHT.Q0, P([2, 18.5, 17], [mx, wy + 1, mz + 3], 46))] },
-    { t0: SHT.Q0, keys: [                                                                // Q: la mano
-      k(SHT.Q0, P([mx - 9, my + 13, mz + 34], [mx + 3, my + 6, mz + 2], 40)), k(K.quemaduras9, P([mx - 7, my + 12, mz + 30], [mx + 3, my + 6.5, mz + 2], 40)),
-      k(SHT.R0, P([mx - 6, my + 11.5, mz + 28], [mx + 3, my + 7, mz + 3], 40))] },
+    { t0: SHT.Q0, keys: [                                                                // Q: en primera persona: tu mano va a coger la taza
+      k(SHT.Q0, P([4, 26, 36], [mx + 1, my + 8, mz], 44)), k(K.quemaduras9, P([3.5, 25, 31], [mx + 1, my + 8.5, mz], 44)), k(SHT.R0, P([4.5, 26.5, 38], [mx + 1, my + 8.5, mz], 46))] },
     { t0: SHT.R0, keys: [k(SHT.R0, P([32, 31, 40], [17.9, 23, -3.8], 26)), k(SHT.S0, P([28, 28.5, 33], [17.9, 23.6, -3.8], 26))] },                // R: la pantalla
-    { t0: SHT.S0, keys: [k(SHT.S0, P([mx + 2, my + 12, mz + 18.5], [mx, my + 5, mz], 46)), k(K.burbujas10, P([mx + 1.6, my + 8.5, mz + 12.5], [mx + 1.2, my + 4.8, mz], 42)),
-      k(SHT.T0, P([mx + 1.4, my + 7.8, mz + 10.5], [mx + 1.4, my + 4.8, mz], 40))] },  // S: el palito
-    { t0: SHT.T0, keys: [                                                                // T → U: el micro y el cazo; vuelta dentro del horno (bucle)
-      k(SHT.T0, P([150, 40, 80], [44, 4, -18], 34)), k(SHT.U0, P([140, 36, 70], [42, 6, -18], 34)), k(SHT.U0 + 1.15, P([10, 22, 26], [mx, wy + 1, mz], 40)),
+    { t0: SHT.S0, keys: [k(SHT.S0, P([mx + 1.5, my + 10, mz + 24], [mx + 0.8, my + 5, mz - 0.5], 40)), k(K.burbujas10, P([mx + 1.2, my + 8, mz + 16.5], [mx + 0.8, my + 5, mz - 0.5], 40)),
+      k(SHT.T0, P([mx + 1, my + 7.5, mz + 14.5], [mx + 0.8, my + 5, mz - 0.5], 38))] },  // S: el palito (taza en corte)
+    { t0: SHT.T0, keys: [k(SHT.T0, P([30, 22, 45], [-2, 14, -18], 40)), k(SHT.W0, P([27, 21, 40], [-2, 14, -18], 40))] },                           // T: «¿micro…»
+    { t0: SHT.W0, keys: [k(SHT.W0, P([pot.x + 16, pot.y + 24, pot.z + 30], [pot.x, pot.y + 5, pot.z], 38)), k(SHT.U0, P([pot.x + 14, pot.y + 22, pot.z + 27], [pot.x, pot.y + 5, pot.z], 38))] },   // W: «…o cazo?»
+    { t0: SHT.U0, keys: [                                                                // U: vuelta dentro del horno (bucle)
+      k(SHT.U0, P([24, 24, 50], [-4, 13, -20], 38)), k(SHT.U0 + 1.15, P([2, 21, 18], [mx, wy + 1, mz], 40)),
       k(SHT.U1 + 0.15, P([-3.4, 20.6, -4.4], [mx, wy + 2, mz], 44)), k(END, A0)] },
   ];
 }
@@ -1696,6 +1767,9 @@ function camAt(t) {
 function prevT(t, dt) { const a = t - dt; return segAt(a) !== segAt(t) ? t : Math.max(0, a); }
 function flashAt(t) { let f = 0; for (const [t0, k] of [[SHT.C0 + 0.03, 0.03], [SHT.I0, 0.07], [SHT.P0 + 0.1, 0.025], [K.quemaduras9 - 0.18, 0.02]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.09); return f; }
 function whiteAt(t) { return 0; }
+// profundidad de campo por plano: enfoca a lo que se mira; k = cuánto se desenfoca lo demás (más en los planos de cerca)
+const DOFK = { A: 2.0, B: 1.2, C: 2.0, D: 1.2, E: 0.9, F: 1.0, G: 1.2, H: 1.5, I: 0, J: 1.2, K: 2.6, L: 0.5, M: 2.6, N: 1.5, O: 1.2, P: 1.5, Q: 1.3, R: 1.5, S: 1.5, T: 1.0, W: 1.0, U: 1.3 };
+function dofAt(t, st) { const sh = shotAt(t), f = st.p.distanceTo(st.l), k = DOFK[sh] ?? 1; return { focus: f, scale: k * f }; }
 // ---------------------------------------------------------------- HUD sobrio (cine, no maqueta): cabecera con el truco pendiente (bucle abierto hasta el s 42), rótulos con
 // línea guía sobre los objetos de verdad, «> 100 °C», la ficha de la FDA y la pregunta del final. En planos claros, tinta oscura con caja blanca; en oscuros, al revés.
 let INK = '#1C2430', GREY = '#5A6472', HOT = '#E8590C', COOL = '#1F6FD1', GREEN = '#2E9D57', REDc = '#D32F2F', AMBc = '#C27A00', HUDD = false;
@@ -1792,17 +1866,21 @@ function frame(t) {
   const J = [N[0][0] * inv[0][0] + N[0][1] * inv[1][0], N[0][0] * inv[0][1] + N[0][1] * inv[1][1], N[1][0] * inv[0][0] + N[1][1] * inv[1][0], N[1][0] * inv[0][1] + N[1][1] * inv[1][1]];
   post.uniforms.m0.value.set(m[0][0], m[0][1]); post.uniforms.a0.value.set(a[0].x, a[0].y); post.uniforms.J.value.set(...J);
   post.uniforms.flash.value = flashAt(t); post.uniforms.white.value = whiteAt(t); post.uniforms.tint.value.set(0, 0, 0);
+  { const D = typeof dofAt === 'function' ? dofAt(t, st) : null; dofM.uniforms.focus.value = D ? D.focus : d; dofM.uniforms.scale.value = D ? D.scale : 0; }
   return st;
 }
 function blurPass(src, dst, dx, dy) { quad.material = blurM; blurM.uniforms.tA.value = src.texture; blurM.uniforms.d.value.set(dx, dy); renderer.setRenderTarget(dst); renderer.render(quadScene, quadCam); }
+let SRC = rtA;                                     // la imagen que sigue (con profundidad de campo si toca)
 function drawFrame(t) {
-  renderer.setRenderTarget(rtA); renderer.render(scene, cam);
+  renderer.setRenderTarget(rtA); renderer.render(scene, cam); SRC = rtA;
+  if (dofM.uniforms.scale.value > 0) { quad.material = dofM; dofM.uniforms.tA.value = rtA.texture; dofM.uniforms.tD.value = rtA.depthTexture; dofM.uniforms.logF.value = Math.log2(cam.far + 1);
+    renderer.setRenderTarget(rtD); renderer.render(quadScene, quadCam); SRC = rtD; }
   renderer.setRenderTarget(rtF); renderer.setClearColor(0x000000, 1); renderer.clear(); renderer.render(fxScene, cam);
-  quad.material = brightM; brightM.uniforms.tA.value = rtA.texture; brightM.uniforms.tF.value = rtF.texture; renderer.setRenderTarget(rtB[0]); renderer.render(quadScene, quadCam);
+  quad.material = brightM; brightM.uniforms.tA.value = SRC.texture; brightM.uniforms.tF.value = rtF.texture; renderer.setRenderTarget(rtB[0]); renderer.render(quadScene, quadCam);
   blurPass(rtB[0], rtB[1], 1 / BLW, 0); blurPass(rtB[1], rtB[0], 0, 1 / BLH);
   blurPass(rtB[0], rtC[1], 2 / BLW, 0); blurPass(rtC[1], rtC[0], 0, 2 / BLH); blurPass(rtC[0], rtC[1], 3 / BLW, 0); blurPass(rtC[1], rtC[0], 0, 3 / BLH);
   hg.getImageData(0, 0, 1, 1); hudTex.needsUpdate = true; post.uniforms.tH.value = hudTex;
-  quad.material = post; post.uniforms.tA.value = rtA.texture; post.uniforms.tF.value = rtF.texture; post.uniforms.tB.value = rtB[0].texture; post.uniforms.tC.value = rtC[0].texture; post.uniforms.time.value = t;
+  quad.material = post; post.uniforms.tA.value = SRC.texture; post.uniforms.tF.value = rtF.texture; post.uniforms.tB.value = rtB[0].texture; post.uniforms.tC.value = rtC[0].texture; post.uniforms.time.value = t;
   renderer.setRenderTarget(null); renderer.render(quadScene, quadCam);
 }
 window.renderAt = function (t) {

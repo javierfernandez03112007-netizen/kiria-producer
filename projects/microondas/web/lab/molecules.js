@@ -71,12 +71,12 @@ vec3 molWaterCol(vec3 d) {
   vec3 c = mix(vec3(0.0005, 0.0032, 0.0052), vec3(0.0032, 0.022, 0.034), smoothstep(-0.8, 0.9, d.y));
   float f = max(dot(d, uRim), 0.0);
   c += vec3(0.006, 0.036, 0.05) * pow(f, 5.0) + vec3(0.0015, 0.010, 0.015) * f * f;
-  c += vec3(0.011, 0.0034, 0.0005) * uHeat * (0.45 + 0.55 * smoothstep(-0.6, 0.6, d.y));
-  return c;
+  c = mix(c, vec3(0.0075, 0.0034, 0.0016) * (0.55 + 0.6 * smoothstep(-0.7, 0.7, d.y)) + vec3(0.010, 0.004, 0.001) * pow(f, 3.0), 0.4 * uHeat);   // el agua se templa
+  return c * (1.0 + 2.2 * (1.0 - uOn));
 }
 // luz que dispersa el agua entre la cámara (o, local) y un punto a distancia D en la dirección d; T = lo que pasa del objeto
 float molSg() { return uFogK * (1.0 + 10.0 * (1.0 - uOn) * (1.0 - uOn)); }
-vec3 molTrans(float D) { return exp(-molSg() * D * vec3(1.4, 1.0, 0.95)); }        // el agua se come antes el rojo: lo lejano se oscurece y se enfría
+vec3 molTrans(float D) { return exp(-molSg() * D * vec3(1.2, 1.0, 0.98)); }        // el agua se come antes el rojo: lo lejano se oscurece y se enfría
 vec3 molWater(vec3 o, vec3 d, float D, out vec3 T) {
   float sg = molSg();
   T = molTrans(D);
@@ -96,35 +96,40 @@ vec3 molEnv(vec3 R, float soft) {
 `;
 
 // ---------------------------------------------------------------- impostores: átomos (esferas), varillas (cilindros) y los puntos de los enlaces de hidrógeno
-// iA: esfera → centro + radio · varilla → extremo del oxígeno + radio · punto → centro + radio
-// iB: esfera → vecino 1 + tipo · varilla → extremo del hidrógeno + tipo · punto → (0) + tipo        (tipo: 0 oxígeno, 1 hidrógeno, 2 varilla, 3 punto)
-// iC: esfera → vecino 2 + calor · varilla → (0) + calor · punto → (0) + opacidad
+// Tipos: 0 oxígeno, 1 hidrógeno, 2 varilla, 3 punto de luz (motas en suspensión y puntos de los enlaces de hidrógeno), 4 halo (luz alrededor de una molécula caliente).
+// iA: esfera/punto/halo → centro + radio · varilla → extremo del oxígeno + radio
+// iB: esfera → vecino 1 + tipo · varilla → extremo del hidrógeno + tipo · punto/halo → color + tipo
+// iC: esfera → vecino 2 + calor · varilla → (0) + calor · punto/halo → (0) + intensidad
+// iD: esfera/punto → su centro al abrir el obturador (desenfoque de movimiento) · varilla → lo que se mueve su centro durante el obturador · halo → su centro
+// Se dibujan de atrás adelante con mezcla premultiplicada (los puntos y halos suman: alfa 0) y sin escribir profundidad (solo se prueba contra el fondo y la
+// escena): las varillas se recortan justo donde salen de cada esfera, así el orden basta y no hay cortes rectos en los bordes desenfocados.
 const MOL_IMP_VS = `#include <common>
 #include <logdepthbuf_pars_vertex>
-attribute vec4 iA, iB, iC;
+attribute vec4 iA, iB, iC, iD;
 uniform float uFocus, uDofK, uDofMax, uResY;
-varying vec3 vPos, vB, vC; varying vec4 vA, vI;
+varying vec3 vPos, vB, vC, vD; varying vec4 vA, vI;
 void main() {
   float ty = iB.w, r = iA.w;
   vec3 a = (modelViewMatrix * vec4(iA.xyz, 1.0)).xyz, b = (modelViewMatrix * vec4(iB.xyz, 1.0)).xyz, c = (modelViewMatrix * vec4(iC.xyz, 1.0)).xyz;
   bool stick = ty > 1.5 && ty < 2.5;
-  vec3 ctr = stick ? (a + b) * 0.5 : a;
+  vec3 a0 = stick ? a : (modelViewMatrix * vec4(iD.xyz, 1.0)).xyz, mv = stick ? mat3(modelViewMatrix) * iD.xyz : a - a0;
+  vec3 ctr = stick ? (a + b) * 0.5 : (a + a0) * 0.5;
   float z = max(-ctr.z, 0.05);
   float px = z * 2.0 / (projectionMatrix[1][1] * uResY);                                   // un píxel, en unidades, a esa distancia
   float coc = min(uDofK * abs(1.0 / uFocus - 1.0 / z), uDofMax) * uResY / 1920.0;          // radio del desenfoque (px)
   float bw = (coc + 0.75) * px;                                                            // … en unidades (con el antialias)
   vec3 p;
-  if (!stick) {
-    float R = r + bw, D = length(a), hs = R / sqrt(max(1.0 - R * R / (D * D), 0.04)) * 1.04;
-    vec3 f = a / D, rt = cross(f, vec3(0.0, 1.0, 0.0)); rt = length(rt) > 1e-3 ? normalize(rt) : vec3(1.0, 0.0, 0.0); vec3 up = cross(rt, f);
-    p = a + (rt * position.x + up * position.y) * hs;
-  } else {
+  if (!stick) {                       // esfera (o su barrido): cuadrado de cara a la cámara en el centro del recorrido
+    float R = r + bw + 0.5 * length(mv), D = length(ctr), hs = R / sqrt(max(1.0 - R * R / (D * D), 0.04)) * 1.04;
+    vec3 f = ctr / D, rt = cross(f, vec3(0.0, 1.0, 0.0)); rt = length(rt) > 1e-3 ? normalize(rt) : vec3(1.0, 0.0, 0.0); vec3 up = cross(rt, f);
+    p = ctr + (rt * position.x + up * position.y) * hs;
+  } else {                            // varilla: cuadrado a lo largo del eje, ensanchado con su movimiento
     vec3 ax = b - a; float L = length(ax); vec3 ah = ax / max(L, 1e-5);
     vec3 sd = cross(ah, normalize(ctr)); float sl = length(sd); sd = sl > 1e-4 ? sd / sl : vec3(1.0, 0.0, 0.0);
-    float w = (r + bw) * 1.3;
+    float w = (r + bw + 0.5 * length(mv - ah * dot(mv, ah))) * 1.3;
     p = (position.x < 0.0 ? a - ah * w : b + ah * w) + sd * position.y * w;
   }
-  vPos = p; vA = vec4(a, r); vB = ty > 3.5 ? iB.xyz : b; vC = c; vI = vec4(ty, iC.w, bw, px);
+  vPos = p; vA = vec4(a, r); vB = ty > 2.5 ? iB.xyz : b; vC = c; vD = stick ? mv : a0; vI = vec4(ty, iC.w, bw, px);
   gl_Position = projectionMatrix * vec4(p, 1.0);
   #include <logdepthbuf_vertex>
 }`;
@@ -132,7 +137,7 @@ const MOL_IMP_FS = `#include <common>
 #include <logdepthbuf_pars_fragment>
 ${MOL_GLSL}
 uniform float uRO, uRH, uRS;
-varying vec3 vPos, vB, vC; varying vec4 vA, vI;
+varying vec3 vPos, vB, vC, vD; varying vec4 vA, vI;
 // área común de dos círculos de radios r y b con los centros a distancia d (el disco borroso de una esfera: su cobertura exacta)
 float molOverlap(float d, float r, float b) {
   if (d >= r + b) return 0.0;
@@ -141,47 +146,63 @@ float molOverlap(float d, float r, float b) {
   return r2 * acos(clamp((d2 + r2 - b2) / (2.0 * d * r), -1.0, 1.0)) + b2 * acos(clamp((d2 + b2 - r2) / (2.0 * d * b), -1.0, 1.0))
     - 0.5 * sqrt(max((-d + r + b) * (d + r - b) * (d - r + b) * (d + r + b), 0.0));
 }
+// cobertura de una esfera de radio r desenfocada (bw) y barrida de c0 a c1 durante el obturador (media de 4 posiciones);
+// en c deja el centro donde el rayo pasa más cerca (ahí se sombrea)
+float molSphCov(vec3 rd, vec3 c1, vec3 c0, float r, float bw, float px, out vec3 c) {
+  vec3 mv = c1 - c0; float alpha;
+  if (length(mv) > 0.3 * px) {
+    alpha = 0.0;
+    for (int i = 0; i < 4; i++) { vec3 ci = c0 + mv * ((float(i) + 0.5) * 0.25); float ti = dot(rd, ci); alpha += molOverlap(sqrt(max(dot(ci, ci) - ti * ti, 0.0)), r, bw); }
+    alpha *= 0.25 / (PI * bw * bw);
+    float rm = dot(rd, mv), Aq = dot(mv, mv) - rm * rm, Bq = dot(c0, mv) - dot(rd, c0) * rm;
+    c = c0 + mv * clamp(Aq > 1e-12 ? -Bq / Aq : 1.0, 0.0, 1.0);
+  } else { c = c1; float tc = dot(rd, c); alpha = molOverlap(sqrt(max(dot(c, c) - tc * tc, 0.0)), r, bw) / (PI * bw * bw); }
+  return alpha;
+}
 // oclusión de una esfera (centro c, radio r) sobre un punto p con normal n
 float molOccS(vec3 p, vec3 n, vec3 c, float r) { vec3 di = c - p; float l = length(di); float h = l / r; return clamp(max(dot(n, di / l), 0.0) / (h * h), 0.0, 1.0); }
 // … y de una varilla (segmento a-b de radio r): como la esfera más cercana del segmento
 float molOccC(vec3 p, vec3 n, vec3 a, vec3 b, float r) { vec3 ab = b - a; float s = clamp(dot(p - a, ab) / dot(ab, ab), 0.0, 1.0); return molOccS(p, n, a + ab * s, r * 1.15); }
 // la luz sobre la superficie (todo en el mundo): difusa envolvente, subsuperficie, brillo ancho, barniz con el reflejo nítido de las cajas de luz y fresnel
-vec3 molShade(vec3 N, vec3 V, vec3 alb, float rough, float coat, float sss, float soft) {
+vec3 molShade(vec3 N, vec3 V, vec3 alb, float rough, float coat, float sss, float soft, out vec3 spec) {
   float NV = max(dot(N, V), 0.0), F = 0.04 + 0.96 * pow(1.0 - NV, 5.0);
   float k1 = dot(N, uKey), k2 = dot(N, uRim);
   vec3 dif = uKeyCol * max((k1 + 0.2) / 1.2, 0.0) + uRimCol * 0.65 * max((k2 + 0.1) / 1.1, 0.0);
   dif += uKeyCol * sss * smoothstep(-0.55, 0.05, k1) * (1.0 - smoothstep(0.05, 0.6, k1));          // el terminador se aclara (luz que entra y sale)
   vec3 amb = mix(vec3(0.004, 0.014, 0.02), vec3(0.022, 0.068, 0.095), N.y * 0.5 + 0.5);
   vec3 c = alb * (dif + amb) * (1.0 - F * coat);
-  float a = rough * rough, a2 = a * a;
+  float a = rough * rough, a2 = a * a; spec = vec3(0.0);
   vec3 H1 = normalize(uKey + V), H2 = normalize(uRim + V);
   float d1 = max(dot(N, H1), 0.0), d2 = max(dot(N, H2), 0.0);
   float D1 = a2 / (PI * pow(d1 * d1 * (a2 - 1.0) + 1.0, 2.0)), D2 = a2 / (PI * pow(d2 * d2 * (a2 - 1.0) + 1.0, 2.0));
-  c += (uKeyCol * D1 * max(k1, 0.0) + uRimCol * D2 * max(k2, 0.0) * 0.7) * 0.06;
-  c += molEnv(reflect(-V, N), soft) * F * coat;
+  spec = (uKeyCol * D1 * max(k1, 0.0) + uRimCol * D2 * max(k2, 0.0) * 0.7) * 0.06 + molEnv(reflect(-V, N), soft) * F * coat;
   return c;
 }
 void main() {
   vec3 rd = normalize(vPos);
   float ty = vI.x, bw = vI.z, px = vI.w, kb = max(bw - px, 0.0);
-  vec3 N, P, alb; float alpha, glow = 0.0, ao = 1.0, rough = 0.42, coat = 1.0, sss = 0.0, lit = 1.0;
-  if (ty > 3.5) {                         // halo: la luz que el agua dispersa alrededor de una molécula caliente (aditivo: alfa 0 con la mezcla premultiplicada)
+  vec3 N, P, alb; float alpha, glow = 0.0, ao = 1.0, rough = 0.42, coat = 1.0, sss = 0.0;
+  float onk = smoothstep(0.0, 0.35, uOn);
+  if (ty > 3.5) {                         // halo: la luz que el agua dispersa alrededor de una molécula caliente (suma: alfa 0 con la mezcla premultiplicada)
     vec3 c = vA.xyz; float r = vA.w + bw, tc = dot(rd, c), d = sqrt(max(dot(c, c) - tc * tc, 0.0)), q = d / r;
-    float k = exp(-3.2 * q * q) * (1.0 - smoothstep(0.75, 1.0, q));
+    float k = exp(-3.4 * q * q) * (1.0 - smoothstep(0.75, 1.0, q));
     if (k < 0.002) discard;
-    gl_FragColor = vec4(vB * vI.y * k * molTrans(length(c)) * smoothstep(0.0, 0.35, uOn), 0.0);
-    gl_FragDepth = molDepth(-c.z + 0.9);                                                      // detrás de sus propios átomos
+    gl_FragColor = vec4(vB * vI.y * k * molTrans(length(c)) * onk, 0.0);
+    gl_FragDepth = molDepth(-c.z);
     return;
   }
-  if (ty > 2.5) {                       // punto de un enlace de hidrógeno: una motita de luz
-    vec3 c = vA.xyz; float r = vA.w, tc = dot(rd, c), d = sqrt(max(dot(c, c) - tc * tc, 0.0));
-    alpha = molOverlap(d, r, bw) / (PI * bw * bw) * vI.y;
+  if (ty > 2.5) {                         // punto de luz (mota o enlace): esfera emisiva diminuta, desenfocada y barrida (suma)
+    vec3 c; float a = molSphCov(rd, vA.xyz, vD, vA.w, bw, px, c) * vI.y;
+    if (a < 0.0015) discard;
+    gl_FragColor = vec4(vB * a * molTrans(length(c)) * onk, 0.0);
+    gl_FragDepth = molDepth(-c.z);
+    return;
+  }
+  if (ty < 1.5) {                         // átomo: esfera exacta, desenfocada con su disco y barrida con su movimiento
+    vec3 c; float r = vA.w;
+    alpha = molSphCov(rd, vA.xyz, vD, r, bw, px, c);
     if (alpha < 0.004) discard;
-    P = rd * tc; N = -rd; alb = vec3(0.0); lit = 0.0;
-  } else if (ty < 1.5) {                // átomo: esfera exacta, desenfocada con su disco
-    vec3 c = vA.xyz; float r = vA.w, tc = dot(rd, c), d = sqrt(max(dot(c, c) - tc * tc, 0.0));
-    alpha = molOverlap(d, r, bw) / (PI * bw * bw);
-    if (alpha < 0.004) discard;
+    float tc = dot(rd, c), d = sqrt(max(dot(c, c) - tc * tc, 0.0));
     vec3 sd = d > 1e-6 ? (rd * tc - c) / d : vec3(0.0);
     float de = min(d * r / (r + kb * 0.85 + px * 0.5), r * 0.999);                          // con desenfoque, el sombreado se estira al disco
     N = normalize(sd * de - rd * sqrt(r * r - de * de));
@@ -199,9 +220,10 @@ void main() {
     float bb = dot(rd, ah), dd = dot(rd, -A), ee = dot(ah, -A), den = max(1.0 - bb * bb, 1e-5);
     float tR = (bb * ee - dd) / den, sA = (ee - bb * dd) / den;
     vec3 q = rd * tR - (A + ah * sA); float d = length(q);
-    float R = r + kb * 0.85 + px * 0.5;
-    alpha = clamp((min(d + bw, r) - max(d - bw, -r)) / (2.0 * bw), 0.0, 1.0) * min(1.0, r / max(bw, 1e-5) * 1.2);
-    alpha *= smoothstep(-bw, bw * 0.5, sA) * smoothstep(-bw, bw * 0.5, L - sA);
+    float R = r + kb * 0.85 + px * 0.5, bwm = bw + 0.5 * length(vD - ah * dot(vD, ah));        // + lo que se mueve de lado durante el obturador
+    alpha = clamp((min(d + bwm, r) - max(d - bwm, -r)) / (2.0 * bwm), 0.0, 1.0);
+    float sO = sqrt(max(uRO * uRO - r * r, 0.0)), sH = L - sqrt(max(uRH * uRH - r * r, 0.0));           // donde sale de cada esfera
+    alpha *= smoothstep(sO - bwm * 0.5, sO + bwm * 0.5, sA) * (1.0 - smoothstep(sH - bwm * 0.5, sH + bwm * 0.5, sA));
     if (alpha < 0.004) discard;
     vec3 qh = d > 1e-6 ? q / d : vec3(0.0); vec3 vv = normalize(-rd + ah * bb);
     float de = min(d * r / R, r * 0.999);
@@ -217,20 +239,22 @@ void main() {
   vec3 Pl = cameraPosition + (vec4(P, 0.0) * viewMatrix).xyz - uOrig, Ol = cameraPosition - uOrig;
   float soft = 0.035 + kb / max(vA.w, 0.02) * 0.35;
   vec3 col;
-  if (lit > 0.5) {
-    col = molShade(Nw, Vw, alb, mix(rough, 0.8, clamp(soft * 1.5, 0.0, 1.0)), coat, sss, soft) * ao;
+  {
+    vec3 spec; col = molShade(Nw, Vw, alb, mix(rough, 0.8, clamp(soft * 1.5, 0.0, 1.0)), coat, sss, soft, spec) * ao;
     // el pulso del campo, al pasar, ilumina las moléculas con luz fría (sobre todo por arriba y en los bordes)
     float NV = max(dot(Nw, Vw), 0.0), pl = molPulse(Pl) * uField;
     col += vec3(0.3, 0.78, 1.0) * pl * pow(1.0 - NV, 2.5) * (0.55 + 0.6 * max(dot(Nw, -uWaveK), 0.0)) * ao * (1.0 - 0.7 * glow);   // solo en el borde: el cuerpo no cambia de color
-    // calor: brillo naranja desde dentro (más en el centro del disco, como una brasa): empieza tenue y al final pasa del umbral del resplandor
-    vec3 hot = ty < 0.5 ? vec3(1.0, 0.235, 0.028) : (ty < 1.5 ? vec3(1.0, 0.56, 0.18) : vec3(1.0, 0.36, 0.06));
-    col *= 1.0 - 0.6 * glow;
-    col += hot * (0.35 * glow + 3.4 * glow * glow * glow) * (0.55 + 0.45 * NV);
-  } else col = vec3(0.55, 0.85, 1.0) * 0.95;
+    // calor: brilla desde dentro como el metal al rojo: el núcleo amarillo-naranja (al final pasa del umbral del resplandor) y el borde rojo oscuro;
+    // la difusa se apaga y el barniz sigue reflejando las cajas de luz
+    vec3 core = ty < 0.5 ? vec3(1.0, 0.33, 0.05) : (ty < 1.5 ? vec3(1.0, 0.6, 0.24) : vec3(1.0, 0.4, 0.09));
+    float pr = pow(NV, 1.2);
+    col = col * (1.0 - 0.65 * glow) + spec * ao * (1.0 - 0.3 * glow);
+    col += mix(vec3(0.62, 0.06, 0.008), core, pr) * (0.3 * glow + 3.2 * glow * glow * glow) * (0.4 + 0.6 * pr);
+  }
   vec3 T; float D = length(P);
   vec3 ins = molWater(Ol, Dw, D, T);
   col = col * T + ins;
-  alpha = clamp(alpha * smoothstep(0.0, 0.35, uOn), 0.0, 1.0);
+  alpha = clamp(alpha * onk, 0.0, 1.0);
   gl_FragColor = vec4(col * alpha, alpha);
   gl_FragDepth = molDepth(-P.z);
 }`;
@@ -258,50 +282,6 @@ void main() {
   float n = molN3(d * 2.6 + vec3(0.0, uTime * 0.03, uTime * 0.02)) * 0.65 + molN3(d * 6.1 - vec3(uTime * 0.02, 0.0, 0.0)) * 0.35;
   c *= 0.86 + 0.28 * n;
   gl_FragColor = vec4(c, 1.0);
-}`;
-
-// ---------------------------------------------------------------- partículas en suspensión: motitas que flotan, se mecen con el campo (a un lado y al otro) y dejan un trazo
-// corto según se mueven; desenfocadas son discos (bokeh)
-const MOL_MOTE_VS = `#include <common>
-#include <logdepthbuf_pars_vertex>
-attribute vec4 iM;
-uniform vec3 uWaveK, uE, uOrig;
-uniform float uTime, uPhase, uKappa, uOmega, uField, uHeat, uOn, uFogK, uFocus, uDofK, uDofMax, uTau, uMoteA;
-uniform vec2 uRes;
-varying vec2 vQ; varying float vA, vL, vR; varying vec3 vCol;
-vec3 molMote(vec3 b, float sd, float T) {
-  vec3 dr = vec3(sin(T * 0.23 + sd * 61.0), sin(T * 0.19 + sd * 37.0), sin(T * 0.21 + sd * 17.0)) * 0.16;
-  float ph = uPhase - uOmega * (uTime - T) - uKappa * dot(b, uWaveK);
-  return b + dr - uE * (uMoteA * uField * (0.6 + 0.8 * fract(sd * 7.31)) * cos(ph));           // velocidad ∝ campo → posición ∝ −cos(fase)
-}
-void main() {
-  vec3 b = iM.xyz; float sd = iM.w;
-  vec4 a = modelViewMatrix * vec4(molMote(b, sd, uTime), 1.0), q = modelViewMatrix * vec4(molMote(b, sd, uTime - uTau), 1.0);
-  float z = -a.z;
-  if (z < 0.4 || -q.z < 0.3) { gl_Position = vec4(0.0, 0.0, -2.0, 1.0); vA = 0.0; return; }
-  vec4 pa = projectionMatrix * a, pq = projectionMatrix * q;
-  vec2 sa = pa.xy / pa.w * uRes * 0.5, sq = pq.xy / pq.w * uRes * 0.5;
-  float k = uRes.y / 1920.0, core = (1.2 + 2.4 * sd * sd) * k, coc = min(uDofK * abs(1.0 / uFocus - 1.0 / z), uDofMax) * k, R = core + coc;
-  vec2 dv = sa - sq; float L = min(length(dv), 300.0 * k); vec2 dir = L > 0.01 ? normalize(dv) : vec2(1.0, 0.0), nr = vec2(-dir.y, dir.x);
-  vec2 s = (position.x < 0.0 ? sq - dir * R : sq + dir * (L + R)) + nr * position.y * R;
-  vQ = vec2(position.x < 0.0 ? -R : L + R, position.y * R); vL = L; vR = R;
-  gl_Position = vec4(s / (uRes * 0.5) * pa.w, pa.z, pa.w);
-  #include <logdepthbuf_vertex>
-  float sg = uFogK * (1.0 + 10.0 * (1.0 - uOn) * (1.0 - uOn));
-  float pulse = pow(abs(sin(uPhase - uKappa * dot(b, uWaveK))), 16.0) * uField;
-  vA = (0.5 + 1.6 * pow(fract(sd * 13.7), 3.0)) * pow(core / R, 1.2) * (2.0 * R / (2.0 * R + L)) * exp(-sg * z) * (1.0 + 2.2 * pulse) * uOn;
-  vCol = mix(vec3(0.62, 0.84, 1.0), vec3(1.0, 0.62, 0.34), uHeat * 0.55 * fract(sd * 5.3));
-}`;
-const MOL_MOTE_FS = `#include <common>
-#include <logdepthbuf_pars_fragment>
-varying vec2 vQ; varying float vA, vL, vR; varying vec3 vCol;
-void main() {
-  #include <logdepthbuf_fragment>
-  if (vA < 0.0005) discard;
-  float al = clamp(vQ.x, 0.0, vL), dist = length(vec2(vQ.x - al, vQ.y)) / vR;
-  float pr = (1.0 - smoothstep(0.8, 1.0, dist)) * (0.82 + 0.18 * smoothstep(0.5, 0.92, dist));   // disco con el borde un poco más claro (bokeh)
-  float a = pr * vA; if (a < 0.0004) discard;
-  gl_FragColor = vec4(vCol, a);
 }`;
 
 // ---------------------------------------------------------------- dónde está cada molécula (y cómo mira al empezar)
@@ -381,27 +361,23 @@ function buildMolecules() {
     uWaveK: { value: MOL_K.clone() }, uE: { value: MOL_E.clone() }, uOrig: { value: g.position.clone() },
     uTime: { value: 0 }, uPhase: { value: 0 }, uKappa: { value: 2 * Math.PI / MOL_LAMBDA }, uOmega: { value: 2 * Math.PI * MOL_NU }, uField: { value: 0 }, uHeat: { value: 0 }, uOn: { value: 1 },
     uFogK: { value: MOL_FOG }, uPz: { value: new THREE.Vector2() }, uFocus: { value: 7 }, uDofK: { value: MOL_DOF }, uDofMax: { value: MOL_DOFMAX }, uResY: { value: H * PR },
-    uRes: { value: new THREE.Vector2(W * PR, H * PR) }, uRO: { value: MOL_M.rO }, uRH: { value: MOL_M.rH }, uRS: { value: MOL_M.rS }, uTau: { value: 0.045 }, uMoteA: { value: 0.17 } };
+    uRes: { value: new THREE.Vector2(W * PR, H * PR) }, uRO: { value: MOL_M.rO }, uRH: { value: MOL_M.rH }, uRS: { value: MOL_M.rS } };
   const setPz = (r, s, camera) => { const e = camera.projectionMatrix.elements; U.uPz.value.set(e[10], e[14]); };
   // fondo
   const bg = new THREE.Mesh(new THREE.SphereGeometry(400, 32, 16), new THREE.ShaderMaterial({ uniforms: U, vertexShader: MOL_BG_VS, fragmentShader: MOL_BG_FS, side: THREE.BackSide, depthWrite: true }));
   bg.frustumCulled = false; bg.renderOrder = -100; g.add(bg);
   // impostores
-  const MAXP = n * 5 + 8000, quad = new THREE.Float32BufferAttribute([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0], 3);
+  const MAXP = n * 6 + 8000 + 2600, quad = new THREE.Float32BufferAttribute([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0], 3);
   const geo = new THREE.InstancedBufferGeometry(); geo.setAttribute('position', quad); geo.setIndex([0, 1, 2, 0, 2, 3]);
   const attr = k => { const a = new THREE.InstancedBufferAttribute(new Float32Array(MAXP * 4), 4); a.setUsage(THREE.DynamicDrawUsage); geo.setAttribute(k, a); return a; };
-  const aA = attr('iA'), aB = attr('iB'), aC = attr('iC'); geo.instanceCount = 0;
-  const imp = new THREE.Mesh(geo, new THREE.ShaderMaterial({ uniforms: U, vertexShader: MOL_IMP_VS, fragmentShader: MOL_IMP_FS, transparent: true, premultipliedAlpha: true, depthWrite: true, depthTest: true }));
+  const aA = attr('iA'), aB = attr('iB'), aC = attr('iC'), aD = attr('iD'); geo.instanceCount = 0;
+  const imp = new THREE.Mesh(geo, new THREE.ShaderMaterial({ uniforms: U, vertexShader: MOL_IMP_VS, fragmentShader: MOL_IMP_FS, transparent: true, premultipliedAlpha: true, depthWrite: false, depthTest: true }));
   imp.frustumCulled = false; imp.renderOrder = 10; imp.onBeforeRender = setPz; g.add(imp);
-  // partículas en suspensión
-  const NM = 2600, mg = new THREE.InstancedBufferGeometry(); mg.setAttribute('position', quad); mg.setIndex([0, 1, 2, 0, 2, 3]);
-  const M4 = new Float32Array(NM * 4), path = []; for (let i = 0; i <= 60; i++) path.push(molCamLocal(i / 60).p);
-  for (let i = 0; i < NM; i++) { let p; do { p = v3(-7.5 + 14 * rng(), -7 + 15 * rng(), -16 + 32 * rng()); } while (path.some(c => c.distanceTo(p) < 0.9)); M4.set([p.x, p.y, p.z, rng()], i * 4); }
-  mg.setAttribute('iM', new THREE.InstancedBufferAttribute(M4, 4)); mg.instanceCount = NM;
-  const motes = new THREE.Mesh(mg, new THREE.ShaderMaterial({ uniforms: U, vertexShader: MOL_MOTE_VS, fragmentShader: MOL_MOTE_FS, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
-  motes.frustumCulled = false; motes.renderOrder = 11; g.add(motes);
-  MOL = { group: g, D, bonds, U, imp, geo, attrs: [aA, aB, aC], motes, bg, MAXP, n,
-    tmp: { A: new Float32Array(MAXP * 4), B: new Float32Array(MAXP * 4), C: new Float32Array(MAXP * 4), key: new Float32Array(MAXP), ord: new Uint32Array(MAXP) },
+  // partículas en suspensión (posición de partida + semilla): flotan, brillan al pasar el pulso y se mecen con el campo a un lado y al otro
+  const NM = 2600, motes = new Float32Array(NM * 4), path = []; for (let i = 0; i <= 60; i++) path.push(molCamLocal(i / 60).p);
+  for (let i = 0; i < NM; i++) { let p; do { p = v3(-7.5 + 14 * rng(), -7 + 15 * rng(), -16 + 32 * rng()); } while (path.some(c => c.distanceTo(p) < 0.9)); motes.set([p.x, p.y, p.z, rng()], i * 4); }
+  MOL = { group: g, D, bonds, U, imp, geo, attrs: [aA, aB, aC, aD], motes, bg, MAXP: MAXP + NM, n,
+    tmp: { A: new Float32Array(MAXP * 4), B: new Float32Array(MAXP * 4), C: new Float32Array(MAXP * 4), D: new Float32Array(MAXP * 4), key: new Float32Array(MAXP), ord: new Uint32Array(MAXP) },
     atoms: new Float32Array(n * 9), vis: new Uint8Array(n), hero: { O: v3(0, 0, 0), H1: v3(0, 0, 0), H2: v3(0, 0, 0), p: v3(0, -1, 0) }, fieldValue: 0, E: MOL_E.clone(), K: MOL_K.clone(),
     heroAt() { return this.hero; } };
   return MOL;
@@ -413,7 +389,24 @@ function molQRot(wx, wy, wz, out) { const a = Math.hypot(wx, wy, wz); if (a < 1e
 function molQMul(a, b, o) { const x = a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1], y = a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0], z = a[3] * b[2] + a[0] * b[1] - a[1] * b[0] + a[2] * b[3], w = a[3] * b[3] - a[0] * b[0] - a[1] * b[1] - a[2] * b[2]; o[0] = x; o[1] = y; o[2] = z; o[3] = w; return o; }
 function molQApply(q, v, o, k) { const tx = 2 * (q[1] * v.z - q[2] * v.y), ty = 2 * (q[2] * v.x - q[0] * v.z), tz = 2 * (q[0] * v.y - q[1] * v.x);
   o[k] = v.x + q[3] * tx + q[1] * tz - q[2] * ty; o[k + 1] = v.y + q[3] * ty + q[2] * tx - q[0] * tz; o[k + 2] = v.z + q[3] * tz + q[0] * ty - q[1] * tx; }
-const _molQ = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]], _molV = new Float32Array(9);
+const _molQ = [[0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]], _molV = new Float32Array(9), _molPrev = new Float32Array(9);
+const MOL_SHUT = 1 / 120;                                                    // obturador de 180° a 60 fps
+// la pose de la molécula i en el instante t: el dipolo intenta seguir al campo (a un lado y al otro, con retraso) + la agitación del calor.
+// Escribe los 3 átomos (O, H1, H2) en out (9 números) y deja el giro en _molQ[3]; devuelve el campo que nota (−1…1)
+function molPose(D, i, t, field, heat, out) {
+  const i3 = i * 3, i6 = i * 6, Phi = 2 * Math.PI * MOL_NU * t, kap = 2 * Math.PI / MOL_LAMBDA;
+  const swing = (0.62 + 0.38 * heat) * field, tAmp = 0.06 + 0.5 * heat, jAmp = 0.025 + 0.15 * heat;
+  const qs = _molQ[0], qt = _molQ[1], q0 = _molQ[2], qq = _molQ[3];
+  const ef = Math.sin(Phi - kap * D.xi[i] - D.lag[i]), sw = swing * D.amp[i] * ef;
+  molQRot(D.ax[i3] * sw, D.ax[i3 + 1] * sw, D.ax[i3 + 2] * sw, qs);
+  molQRot(tAmp * Math.sin(D.tf[i6] * t + D.tf[i6 + 3]), tAmp * Math.sin(D.tf[i6 + 1] * t + D.tf[i6 + 4]), tAmp * Math.sin(D.tf[i6 + 2] * t + D.tf[i6 + 5]), qt);
+  q0[0] = D.q0[i * 4]; q0[1] = D.q0[i * 4 + 1]; q0[2] = D.q0[i * 4 + 2]; q0[3] = D.q0[i * 4 + 3];
+  molQMul(qt, molQMul(qs, q0, qq), qq);
+  const px = D.pos[i3] + jAmp * Math.sin(D.jf[i6] * t + D.jf[i6 + 3]), py = D.pos[i3 + 1] + jAmp * Math.sin(D.jf[i6 + 1] * t + D.jf[i6 + 4]), pz = D.pos[i3 + 2] + jAmp * Math.sin(D.jf[i6 + 2] * t + D.jf[i6 + 5]);
+  molQApply(qq, MOL_M.O, out, 0); molQApply(qq, MOL_M.H1, out, 3); molQApply(qq, MOL_M.H2, out, 6);
+  for (let k = 0; k < 9; k += 3) { out[k] += px; out[k + 1] += py; out[k + 2] += pz; }
+  return ef;
+}
 
 function moleculesAt(t, P = {}) {
   const M = MOL; if (!M) return;
@@ -425,27 +418,18 @@ function moleculesAt(t, P = {}) {
   const cx = e[12] - o.x, cy = e[13] - o.y, cz = e[14] - o.z, fx = -e[8], fy = -e[9], fz = -e[10], rx = e[0], ry = e[1], rz = e[2], ux = e[4], uy = e[5], uz = e[6];
   const tv = Math.tan((C.fov || 40) * Math.PI / 360), th = tv * (C.aspect || W / H);
   const omega = 2 * Math.PI * MOL_NU, kap = 2 * Math.PI / MOL_LAMBDA, Phi = omega * t;
-  const swing = (0.62 + 0.38 * heat) * field;                          // amplitud del giro (rad) para amp = 1: ≈ 36° → 57°
-  const tAmp = 0.06 + 0.5 * heat, jAmp = 0.025 + 0.15 * heat;           // agitación térmica: giro (rad) y temblor (unidades)
-  const A = M.tmp.A, B = M.tmp.B, Cc = M.tmp.C, key = M.tmp.key, ord = M.tmp.ord, at = M.atoms;
+  const A = M.tmp.A, B = M.tmp.B, Cc = M.tmp.C, Dd = M.tmp.D, key = M.tmp.key, ord = M.tmp.ord, at = M.atoms;
   let np = 0;
-  const push = (ax, ay, az, aw, bx, by, bz, bw, ccx, ccy, ccz, cw) => {
+  const push = (ax, ay, az, aw, bx, by, bz, bw, ccx, ccy, ccz, cw, dx, dy, dz) => {
     const k = np * 4; A[k] = ax; A[k + 1] = ay; A[k + 2] = az; A[k + 3] = aw; B[k] = bx; B[k + 1] = by; B[k + 2] = bz; B[k + 3] = bw; Cc[k] = ccx; Cc[k + 1] = ccy; Cc[k + 2] = ccz; Cc[k + 3] = cw;
+    Dd[k] = dx; Dd[k + 1] = dy; Dd[k + 2] = dz;
     const mx = bw === 2 ? (ax + bx) / 2 : ax, my = bw === 2 ? (ay + by) / 2 : ay, mz = bw === 2 ? (az + bz) / 2 : az;
     key[np] = (mx - cx) * fx + (my - cy) * fy + (mz - cz) * fz; np++;
   };
-  const qs = _molQ[0], qt = _molQ[1], q0 = _molQ[2], qq = _molQ[3];
   for (let i = 0; i < n; i++) {
-    const i3 = i * 3, i6 = i * 6;
-    // giro: el dipolo intenta seguir al campo (a un lado y al otro, con retraso) + la agitación del calor
-    const ef = Math.sin(Phi - kap * D.xi[i] - D.lag[i]);
-    molQRot(D.ax[i3] * swing * D.amp[i] * ef, D.ax[i3 + 1] * swing * D.amp[i] * ef, D.ax[i3 + 2] * swing * D.amp[i] * ef, qs);
-    molQRot(tAmp * Math.sin(D.tf[i6] * t + D.tf[i6 + 3]), tAmp * Math.sin(D.tf[i6 + 1] * t + D.tf[i6 + 4]), tAmp * Math.sin(D.tf[i6 + 2] * t + D.tf[i6 + 5]), qt);
-    q0[0] = D.q0[i * 4]; q0[1] = D.q0[i * 4 + 1]; q0[2] = D.q0[i * 4 + 2]; q0[3] = D.q0[i * 4 + 3];
-    molQMul(qt, molQMul(qs, q0, qq), qq);
-    const px = D.pos[i3] + jAmp * Math.sin(D.jf[i6] * t + D.jf[i6 + 3]), py = D.pos[i3 + 1] + jAmp * Math.sin(D.jf[i6 + 1] * t + D.jf[i6 + 4]), pz = D.pos[i3 + 2] + jAmp * Math.sin(D.jf[i6 + 2] * t + D.jf[i6 + 5]);
-    molQApply(qq, MOL_M.O, _molV, 0); molQApply(qq, MOL_M.H1, _molV, 3); molQApply(qq, MOL_M.H2, _molV, 6);
-    for (let k = 0; k < 9; k += 3) { at[i * 9 + k] = px + _molV[k]; at[i * 9 + k + 1] = py + _molV[k + 1]; at[i * 9 + k + 2] = pz + _molV[k + 2]; }
+    const ef = molPose(D, i, t, field, heat, _molV), qq = _molQ[3];
+    for (let k = 0; k < 9; k++) at[i * 9 + k] = _molV[k];
+    const px = D.pos[i * 3], py = D.pos[i * 3 + 1], pz = D.pos[i * 3 + 2];
     if (i === 0) { M.hero.O.set(at[0], at[1], at[2]).add(o); M.hero.H1.set(at[3], at[4], at[5]).add(o); M.hero.H2.set(at[6], at[7], at[8]).add(o);
       M.hero.p.set(0, 1, 0).applyQuaternion(new THREE.Quaternion(qq[0], qq[1], qq[2], qq[3])); M.fieldValue = field * Math.sin(Phi - kap * D.xi[0]); }
     // ¿se ve? (cono de la cámara con margen)
@@ -455,12 +439,16 @@ function moleculesAt(t, P = {}) {
     // calor propio: crece con el calor y late un poco con cada giro (cuanto más rápido gira, más se calienta)
     const glow = heat * D.hot[i] * (0.82 + 0.18 * Math.abs(Math.cos(Phi - kap * D.xi[i] - D.lag[i])));
     const b = i * 9, Ox = at[b], Oy = at[b + 1], Oz = at[b + 2], H1x = at[b + 3], H1y = at[b + 4], H1z = at[b + 5], H2x = at[b + 6], H2y = at[b + 7], H2z = at[b + 8];
-    push(Ox, Oy, Oz, MOL_M.rO, H1x, H1y, H1z, 0, H2x, H2y, H2z, glow);
-    push(H1x, H1y, H1z, MOL_M.rH, Ox, Oy, Oz, 1, H2x, H2y, H2z, glow);
-    push(H2x, H2y, H2z, MOL_M.rH, Ox, Oy, Oz, 1, H1x, H1y, H1z, glow);
-    push(Ox, Oy, Oz, MOL_M.rS, H1x, H1y, H1z, 2, 0, 0, 0, glow);
-    push(Ox, Oy, Oz, MOL_M.rS, H2x, H2y, H2z, 2, 0, 0, 0, glow);
-    if (glow > 0.04) push(px, py, pz, 1.45 + 0.5 * glow, 1.0, 0.4, 0.1, 4, 0, 0, 0, 0.2 * glow * glow * glow + 0.025 * glow);
+    // dónde estaban al abrir el obturador (desenfoque de movimiento)
+    const pv = _molPrev; molPose(D, i, t - MOL_SHUT, field, heat, pv);
+    push(Ox, Oy, Oz, MOL_M.rO, H1x, H1y, H1z, 0, H2x, H2y, H2z, glow, pv[0], pv[1], pv[2]);
+    push(H1x, H1y, H1z, MOL_M.rH, Ox, Oy, Oz, 1, H2x, H2y, H2z, glow, pv[3], pv[4], pv[5]);
+    push(H2x, H2y, H2z, MOL_M.rH, Ox, Oy, Oz, 1, H1x, H1y, H1z, glow, pv[6], pv[7], pv[8]);
+    // las varillas, a mitad del obturador, con lo que se mueve su centro
+    const mOx = (Ox + pv[0]) / 2, mOy = (Oy + pv[1]) / 2, mOz = (Oz + pv[2]) / 2;
+    for (const h of [3, 6]) { const hx = (at[b + h] + pv[h]) / 2, hy = (at[b + h + 1] + pv[h + 1]) / 2, hz = (at[b + h + 2] + pv[h + 2]) / 2;
+      push(mOx, mOy, mOz, MOL_M.rS, hx, hy, hz, 2, 0, 0, 0, glow, (Ox + at[b + h] - pv[0] - pv[h]) / 2, (Oy + at[b + h + 1] - pv[1] - pv[h + 1]) / 2, (Oz + at[b + h + 2] - pv[2] - pv[h + 2]) / 2); }
+    if (glow > 0.04) push(px, py, pz, 1.05 + 0.3 * glow, 1.0, 0.38, 0.09, 4, 0, 0, 0, 0.16 * glow * glow * glow + 0.02 * glow, px, py, pz);
   }
   const fx0 = at[0] - cx, fy0 = at[1] - cy, fz0 = at[2] - cz, focus = P.focus ?? Math.max(1, fx0 * fx + fy0 * fy + fz0 * fz);
   // enlaces de hidrógeno: puntos tenues entre el hidrógeno de una y el oxígeno de la otra; se rompen al girar o separarse y se rehacen al volver
@@ -475,17 +463,29 @@ function moleculesAt(t, P = {}) {
     const s = near * (1 - molSs(bd.d0 + 0.08, bd.d0 + 0.5, d)) * molSs(0.8, 0.94, vx * wx + vy * wy + vz * wz);
     if (s < 0.03) continue;
     const a0 = MOL_M.rH + 0.07, a1 = d - MOL_M.rO - 0.07, nd = Math.max(3, Math.round((a1 - a0) / 0.13));
-    for (let k = 0; k <= nd; k++) { const u = a0 + (a1 - a0) * k / nd; push(Hx + vx * u, Hy + vy * u, Hz + vz * u, 0.021, 0, 0, 0, 3, 0, 0, 0, s * 0.7); }
+    for (let k = 0; k <= nd; k++) { const u = a0 + (a1 - a0) * k / nd; const qx = Hx + vx * u, qy = Hy + vy * u, qz = Hz + vz * u; push(qx, qy, qz, 0.021, 0.52, 0.81, 0.95, 3, 0, 0, 0, s * 0.7, qx, qy, qz); }
   }
+  // partículas en suspensión: deriva lenta + el empuje del campo (velocidad ∝ campo → posición ∝ −cos(fase)), con su trazo durante el obturador
+  { const Mo = M.motes, NM = Mo.length / 4, Ex = MOL_E.x, Ey = MOL_E.y, Ez = MOL_E.z, Kx = MOL_K.x, Ky = MOL_K.y, Kz = MOL_K.z, Tm = t - 1 / 60;
+    for (let i = 0; i < NM && np < M.MAXP - 1; i++) {
+      const bx = Mo[i * 4], by = Mo[i * 4 + 1], bz = Mo[i * 4 + 2], sd = Mo[i * 4 + 3], xi = bx * Kx + by * Ky + bz * Kz, am = 0.17 * field * (0.6 + 0.8 * ((sd * 7.31) % 1));
+      const sx = bx + 0.16 * Math.sin(t * 0.23 + sd * 61), sy = by + 0.16 * Math.sin(t * 0.19 + sd * 37), sz = bz + 0.16 * Math.sin(t * 0.21 + sd * 17), ph = omega * t - kap * xi, ph0 = omega * Tm - kap * xi;
+      const e1 = -am * Math.cos(ph), e0 = -am * Math.cos(ph0);
+      const x = sx + Ex * e1, y = sy + Ey * e1, z = sz + Ez * e1;
+      const dx = x - cx, dy = y - cy, dz = z - cz, zc = dx * fx + dy * fy + dz * fz;
+      if (zc < 0.4 || Math.abs(dx * rx + dy * ry + dz * rz) > zc * th + 0.6 || Math.abs(dx * ux + dy * uy + dz * uz) > zc * tv + 0.6) continue;
+      const pulse = Math.pow(Math.abs(Math.sin(ph)), 16) * field, wm = ((sd * 5.3) % 1) * heat * 0.55, I = (0.9 + 2.6 * Math.pow((sd * 13.7) % 1, 3)) * (1 + 2.2 * pulse);
+      push(x, y, z, 0.005 + 0.011 * sd * sd, (0.62 + 0.38 * wm) * I, (0.84 - 0.22 * wm) * I, (1.0 - 0.66 * wm) * I, 3, 0, 0, 0, 1, sx + Ex * e0, sy + Ey * e0, sz + Ez * e0);
+    } }
   // de atrás adelante (para que los desenfoques se mezclen bien) y a la GPU
   for (let i = 0; i < np; i++) ord[i] = i;
   const sub = ord.subarray(0, np); sub.sort((a, b) => key[b] - key[a]);
-  const [aA, aB, aC] = M.attrs, dA = aA.array, dB = aB.array, dC = aC.array;
-  for (let k = 0; k < np; k++) { const s = sub[k] * 4, d = k * 4; for (let c = 0; c < 4; c++) { dA[d + c] = A[s + c]; dB[d + c] = B[s + c]; dC[d + c] = Cc[s + c]; } }
+  const [aA, aB, aC, aD] = M.attrs, dA = aA.array, dB = aB.array, dC = aC.array, dD = aD.array;
+  for (let k = 0; k < np; k++) { const s = sub[k] * 4, d = k * 4; for (let c = 0; c < 4; c++) { dA[d + c] = A[s + c]; dB[d + c] = B[s + c]; dC[d + c] = Cc[s + c]; dD[d + c] = Dd[s + c]; } }
   for (const a of M.attrs) { a.clearUpdateRanges(); a.addUpdateRange(0, np * 4); a.needsUpdate = true; }
   M.geo.instanceCount = np; M.np = np;
   // uniformes
-  U.uFocus.value = focus;
+  U.uFocus.value = focus; U.uDofK.value = (P.aperture ?? 1) * MOL_DOF * clamp(focus / 7, 1, 1.8);      // al alejarse, el fondo sigue cremoso
   U.uTime.value = t; U.uPhase.value = Phi; U.uField.value = field; U.uHeat.value = heat; U.uOn.value = on; U.uOrig.value.copy(o);
   U.uResY.value = H * PR; U.uRes.value.set(W * PR, H * PR);
 }
