@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------- el cazo al fuego: la cocina eléctrica y el cazo esmaltado son modelos reales escaneados de Poly Haven (CC0);
 // la placa grande se pone al rojo, el cazo se ve en corte con el agua y las burbujas que nacen en las rayitas del fondo y suben.
 // Unidades: cm. La cocina va lejos del microondas (STOVE_POS), con su encimera a la altura de la del microondas (y ≈ 0).
-const STOVE_POS = new THREE.Vector3(100, -88.1, -18), POT_L = v3(-11.5, 87.4, 12.5), POT_R = 8.75, POT_WY = 8.6;
+const STOVE_POS = new THREE.Vector3(78, -88.1, -18), POT_L = v3(-11.5, 87.4, 12.5), POT_R = 8.75, POT_WY = 8.6;
 async function loadGLTF(path) { const g = await new GLTFLoader().loadAsync(ASSET + path); g.scene.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } }); return g.scene; }
 function scratchTex() {        // fondo del cazo: esmalte con rayitas (las 900 grandes son donde nacen las burbujas) y otras muy finas; 2048 px para los planos de cerca
   const t = canvasTex(2048, 2048, (g, w, h) => { g.fillStyle = '#b4b9bd'; g.fillRect(0, 0, w, h);
