@@ -1,24 +1,25 @@
-# «Así funciona: el microondas» · guion y escena (14-11-2026)
+# «Así funciona: el microondas» · guion y escena (16-11-2026, versión con el gancho de Javi)
 
-Primer vídeo de la **nueva dinámica** (Javi, 14-11): cómo funcionan aparatos, sistemas y avances, muy cinematográfico: cómo se crea y cómo funciona
-el dispositivo. Estilo: realista y de cine (estudio oscuro, materiales de verdad, cámara lenta y macro, cortes y vistas explosionadas), no la
-maqueta de colores. **16-11: ampliado a 178 palabras** (con la voz Nico, ≈ 3,1–3,3 palabras/s, ≈ 55 s; la receta pide 55–60 s): el magnetrón
-por dentro (frase 5) y la rejilla de la puerta (frase 9, segundo reenganche).
+Javi (16-11): «vamos a ponerle un buen gancho, algo como “cuidado cuando hagas esto en casa”, y ya explicamos lo del microondas y algún efecto
+malo que pueda haber con él para explicarlo». Efecto: el **agua sobrecalentada**. Estilo de la línea «Así funciona»: realista y de cine (estudio
+oscuro, materiales de verdad, cámara lenta, macro, vistas en corte), no maqueta de colores. 177 palabras: con la voz Nico (≈ 3,1–3,3
+palabras/s) ≈ 55 s. «Tú» en todo el guion y final útil (lecciones del análisis del 16-11).
 
 | # | Frase | Lo que se ve |
 |---|-------|--------------|
-| 1 | Crees que el microondas calienta de dentro hacia fuera. Es justo al revés. | Primer fotograma: un cuenco de sopa partido en corte dentro del microondas: la superficie hierve a borbotones y el centro sigue siendo hielo. |
-| 2 | Y al final, por qué gira el plato y dónde poner la comida. | El plato de cristal gira solo, en primer plano; una «?» sobre su centro. |
-| 3 | En 1945, cuentan, un ingeniero trabajaba con radares y la chocolatina de su bolsillo se derritió. | Laboratorio de época en blanco y negro que se colorea: la antena de radar y una chocolatina que se derrite en el bolsillo de una bata. |
-| 4 | Tu microondas lleva dentro la misma pieza que aquellos radares: el magnetrón. | El microondas se vuelve transparente y el magnetrón sale flotando en vista explosionada: el ánodo de cobre con sus cavidades, el cátodo y los imanes. |
-| 5 | Dentro, un imán hace girar electrones que, al pasar junto a unas cavidades de cobre, crean ondas. | El magnetrón en corte: el cátodo al rojo en el centro, el anillo de cavidades de cobre, los imanes arriba y abajo; chispas azules (electrones) que giran en espiral y, al pasar por las cavidades, las hacen latir y sale la onda. |
-| 6 | Ondas que vibran 2.450 millones de veces por segundo. | Las ondas salen por la guía y llenan la caja; contador «2.450.000.000 / s». |
-| 7 | El agua de la comida intenta seguirlas: sus moléculas giran sin parar, y eso es calor. | Zoom hasta las moléculas de agua (la V de H₂O) que giran a cámara lenta y se ponen al rojo. |
-| 8 | Pero las ondas solo entran unos centímetros: el centro se calienta después, desde fuera. | Corte de la comida: una capa exterior de 2–4 cm al rojo y el calor que avanza despacio hacia el centro. |
-| 9 | ¿Y por qué no se escapan? La rejilla de la puerta tiene agujeros mucho más pequeños que las ondas: para ellas es una pared. | La cámara llega a la puerta: la rejilla de metal en macro (agujeros de 1–2 mm junto a una onda de 12 cm dibujada a escala); la luz de dentro pasa por los agujeros y las ondas chocan contra la rejilla y rebotan como contra un muro. |
-| 10 | La respuesta: las ondas rebotan en las paredes y dejan puntos calientes y fríos cada 6 centímetros. | Las ondas rebotando dentro de la caja; una tableta de chocolate con calvas derretidas cada 6 cm y una regla. |
-| 11 | Por eso gira el plato. Pero su centro no cambia de sitio: deja ahí un hueco. | Vista cenital: el plato gira y la comida del borde cruza los puntos calientes; la del centro se queda en un punto frío. La comida en anillo. |
-| 12 | ¿Centro o borde? Mándaselo a quien siempre se come el centro frío. | Dos platos, centro frente a borde; vuelve al cuenco del primer fotograma (bucle). |
+| 1 | Cuidado cuando calientes agua en el microondas: te puede saltar a la cara. | Primer fotograma: dentro del microondas, una taza de agua quieta explota hacia la cámara a cámara lenta (gotas y vapor a contraluz). |
+| 2 | Aunque no hierva. Al final te digo el truco. | Rebobina: la misma taza, el agua lisa como un espejo; un termómetro que marca más de 100 °C. |
+| 3 | Tu microondas lleva dentro un magnetrón, la pieza de los radares de la Segunda Guerra Mundial. | El microondas se vuelve transparente y el magnetrón sale flotando (cobre, cátodo, imanes); detrás, la silueta de una antena de radar de época. |
+| 4 | Dispara ondas que vibran 2.450 millones de veces por segundo. | Las ondas salen por la guía y llenan la caja; contador «2.450.000.000 / s». |
+| 5 | El agua intenta seguirlas: sus moléculas giran sin parar, y eso es calor. | Zoom a las moléculas de agua (la V de H₂O) que giran a cámara lenta y se encienden. |
+| 6 | En un cazo, el calor llega por abajo y las burbujas nacen en las rayitas del fondo. | Un cazo en corte sobre el fuego: macro del fondo rayado y las burbujas naciendo en las rayas. |
+| 7 | En el microondas se calienta el agua, no la taza. Y si la taza es lisa, la burbuja no tiene dónde nacer. | La taza en corte: las ondas atraviesan la cerámica y calientan el agua; macro de la pared lisa, sin un solo sitio para una burbuja. |
+| 8 | El agua pasa de cien grados… y sigue quieta. | El termómetro sube de 100 y el agua sigue lisa, en silencio (tensión). |
+| 9 | Pero en cuanto la mueves o le echas el café, hierve de golpe y salta fuera. | Cae una cucharada de café soluble: el agua estalla en burbujas y salta fuera de la taza, a cámara lenta. |
+| 10 | La FDA de Estados Unidos ha recibido avisos de quemaduras graves en manos y cara por esto. | La mano que sostenía la taza y la salpicadura que vuela hacia ella; rótulo «FDA · EE. UU.» (sin heridas explícitas). |
+| 11 | El truco: no la calientes de más y mete un palito de madera: en sus vetas las burbujas nacen poco a poco. | Un palito de madera en la taza: macro de las vetas y burbujas pequeñas que nacen y suben tranquilas. |
+| 12 | ¿Micro o cazo? Mándaselo a quien se calienta el café en el microondas. | Pantalla partida: el microondas y el cazo; vuelve a la taza del primer fotograma a punto de estallar (bucle). |
 
-Gancho: 16 (creencia rota) + promesa con consejo («dónde poner la comida»). Reenganches a los ≈ 25 s («solo entran unos centímetros») y a los
-≈ 32 s («¿y por qué no se escapan?»); respuesta hacia los 42 s; cierre con pregunta de bando útil («¿centro o borde?») y envío.
+Gancho: aviso de peligro en casa (lo pidió Javi) + creencia rota («aunque no hierva») + promesa («al final te digo el truco»).
+Reenganches: «el agua pasa de cien grados… y sigue quieta» (≈ 30 s) y el estallido (≈ 33 s); respuesta útil al final (≈ 45 s); cierre con
+pregunta de bando («¿micro o cazo?») y envío a una persona concreta.
