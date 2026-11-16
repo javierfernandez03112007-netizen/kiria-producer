@@ -52,14 +52,14 @@ function buildCam() {
       k(SHT.J0, P([pot.x + 24, pot.y + 13, pot.z + 40], [pot.x, pot.y + 4, pot.z], 38)), k(K.abajo5, P([pot.x + 16, pot.y + 5, pot.z + 30], [pot.x, pot.y + 1, pot.z], 38)),
       k(SHT.K0, P([pot.x + 14, pot.y + 3.5, pot.z + 26], [pot.x, pot.y + 0.5, pot.z], 38))] },
     { t0: SHT.K0, keys: [                                                                // K: dentro del agua del cazo, a ras del fondo: las burbujas nacen en las rayitas
-      k(SHT.K0, P([pot.x + 2.6, pot.y + 4.2, pot.z + 4.4], [pot.x - 0.4, pot.y + 0.5, pot.z - 1.2], 50)), k(SHT.L0, P([pot.x + 1.6, pot.y + 3.0, pot.z + 2.8], [pot.x - 0.7, pot.y + 0.5, pot.z - 1.8], 48))] },
+      k(SHT.K0, P([pot.x + 2.5, pot.y + 5.5, pot.z + 14], [pot.x - 0.5, pot.y + 1.6, pot.z - 2.5], 40)), k(K.rayitas5, P([pot.x + 1.2, pot.y + 3.2, pot.z + 7.5], [pot.x - 0.8, pot.y + 0.6, pot.z - 2.8], 40)), k(SHT.L0, P([pot.x + 0.8, pot.y + 2.6, pot.z + 5.6], [pot.x - 0.9, pot.y + 0.6, pot.z - 3], 40))] },
     { t0: SHT.L0, keys: [                                                                // L: vista térmica, desde arriba
       k(SHT.L0, P([mx + 4, my + 17, mz + 12.5], [mx, my + 6, mz], 48)), k(SHT.M0, P([mx + 2.2, my + 16, mz + 11], [mx, my + 6.2, mz], 46))] },
     { t0: SHT.M0, keys: [                                                                // M: dentro del agua de la taza, a ras del fondo liso: nada
-      k(SHT.M0, P([mx + 1.0, my + 3.6, mz + 1.5], [mx - 0.6, my + 0.8, mz - 1.4], 56)), k(SHT.N0, P([mx + 0.6, my + 3.0, mz + 1.1], [mx - 0.8, my + 0.8, mz - 1.6], 54))] },
+      k(SHT.M0, P([mx + 1.2, my + 6.8, mz + 13], [mx - 0.4, my + 3.4, mz - 1.5], 40)), k(K.burbuja6, P([mx + 0.9, my + 4.8, mz + 8.2], [mx - 0.6, my + 2.4, mz - 2.2], 40)), k(SHT.N0, P([mx + 0.7, my + 4.2, mz + 6.8], [mx - 0.7, my + 2.2, mz - 2.4], 40))] },
     { t0: SHT.N0, keys: [k(SHT.N0, P([mx - 0.8, my + 16.5, mz + 9.5], [mx, wy - 0.5, mz], 42)), k(SHT.O0, P([mx - 0.4, my + 14.8, mz + 7.2], [mx, wy - 0.5, mz], 40))] },
     { t0: SHT.O0, keys: [                                                                // O → P: la puerta se abre, cae el café, estalla hacia fuera
-      k(SHT.O0, P([8, 25, 28], [mx, wy - 1, mz], 38)), k(K.echas8, P([1.5, 21, 9], [mx, wy, mz], 38)), k(SHT.P0, P([-1.5, 19.5, 2], [mx, wy + 0.5, mz], 40)),
+      k(SHT.O0, P([8, 25, 28], [mx, wy + 1, mz], 38)), k(K.echas8, P([1.5, 21, 9], [mx, wy + 3, mz], 38)), k(SHT.P0, P([-1.5, 19.5, 2], [mx, wy + 0.5, mz], 40)),
       k(SHT.P0 + 0.6, P([0, 19, 10], [mx, wy + 2, mz + 2], 44)), k(SHT.Q0, P([2, 18.5, 17], [mx, wy + 1, mz + 3], 46))] },
     { t0: SHT.Q0, keys: [                                                                // Q: en primera persona: tu mano va a coger la taza
       k(SHT.Q0, P([4, 26, 36], [mx + 1, my + 8, mz], 44)), k(K.quemaduras9, P([3.5, 25, 31], [mx + 1, my + 8.5, mz], 44)), k(SHT.R0, P([4.5, 26.5, 38], [mx + 1, my + 8.5, mz], 46))] },
@@ -88,5 +88,5 @@ function prevT(t, dt) { const a = t - dt; return segAt(a) !== segAt(t) ? t : Mat
 function flashAt(t) { let f = 0; for (const [t0, k] of [[SHT.C0 + 0.03, 0.03], [SHT.I0, 0.07], [SHT.P0 + 0.1, 0.025], [K.quemaduras9 - 0.18, 0.02]]) if (t > t0) f += k * Math.exp(-(t - t0) / 0.09); return f; }
 function whiteAt(t) { return 0; }
 // profundidad de campo por plano: enfoca a lo que se mira; k = cuánto se desenfoca lo demás (más en los planos de cerca)
-const DOFK = { A: 2.0, B: 1.2, C: 2.0, D: 1.2, E: 0.9, F: 1.0, G: 1.2, H: 1.5, I: 0, J: 1.2, K: 2.6, L: 0.5, M: 2.6, N: 1.5, O: 1.2, P: 1.5, Q: 1.3, R: 1.5, S: 1.5, T: 1.0, W: 1.0, U: 1.3 };
+const DOFK = { A: 2.0, B: 1.2, C: 2.0, D: 1.2, E: 0.9, F: 1.0, G: 1.2, H: 1.5, I: 0, J: 1.2, K: 1.6, L: 0.5, M: 1.6, N: 1.5, O: 1.2, P: 1.5, Q: 1.3, R: 1.5, S: 1.5, T: 1.0, W: 1.0, U: 1.3 };
 function dofAt(t, st) { const sh = shotAt(t), f = st.p.distanceTo(st.l), k = DOFK[sh] ?? 1; return { focus: f, scale: k * f }; }

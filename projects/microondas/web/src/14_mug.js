@@ -2,6 +2,11 @@
 // del agua sobrecalentada a cámara lenta (gotas que se estiran con la velocidad, la columna del centro y el vapor), el café soluble que cae, el palito de madera
 // (textura real de roble, CC0) con las burbujas que nacen en sus vetas, y la vista en corte. Unidades: cm; origen de la taza abajo en el centro.
 const MUG = { R: 4.15, H: 9.6, WY: 7.9, rIn: y => 3.62 + 0.27 * clamp((y - 0.7) / 8.6) };
+const WATER_REFL = { name: 'aguaEspejo', uniforms: { color: { value: null }, tDiffuse: { value: null }, textureMatrix: { value: null }, tint: { value: new THREE.Color(0.86, 0.93, 0.95) }, k: { value: 1 }, base: { value: 0.2 } },
+  vertexShader: 'uniform mat4 textureMatrix; varying vec4 vUv; varying vec3 vW;\n#include <common>\n#include <logdepthbuf_pars_vertex>\nvoid main(){ vUv = textureMatrix * vec4(position, 1.0); vW = (modelMatrix * vec4(position, 1.0)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n#include <logdepthbuf_vertex>\n}',
+  fragmentShader: 'uniform vec3 color, tint; uniform sampler2D tDiffuse; uniform float k, base; varying vec4 vUv; varying vec3 vW;\n#include <logdepthbuf_pars_fragment>\nvoid main(){\n#include <logdepthbuf_fragment>\n' +
+    'vec3 V = normalize(cameraPosition - vW); float F = 0.02 + 0.98 * pow(1.0 - max(V.y, 0.0), 5.0); vec4 uv = vUv; uv.xy += vec2(sin(vW.x * 6.0 + vW.z * 2.0), sin(vW.z * 5.0 - vW.x * 3.0)) * 0.0025 * uv.w;' +
+    'vec3 r = texture2DProj(tDiffuse, uv).rgb; float a = clamp(base + F, 0.0, 1.0) * k; gl_FragColor = vec4(r * tint, a); }' };
 function mugProfile() {
   const O = [[0.01, 0], [3.55, 0], [3.82, 0.12], [3.95, 0.45], [4.05, 2], [4.15, 6], [4.24, 9.25], [4.3, 9.5], [4.26, 9.66], [4.14, 9.7], [4.0, 9.6]];
   const I = [[MUG.rIn(9.3), 9.3], [MUG.rIn(6), 6], [MUG.rIn(2), 2], [3.5, 0.95], [3.1, 0.7], [0.01, 0.62]];
@@ -37,6 +42,10 @@ function buildMug(o = {}) {
     const refl = new THREE.MeshPhysicalMaterial({ color: 0x000000, roughness: 0.015, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.01, ior: 1.33, envMapIntensity: 2.4, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
     const s1 = new THREE.Mesh(sg, tint), s2 = new THREE.Mesh(sg, refl); for (const s of [s1, s2]) { s.position.y = MUG.WY; s.renderOrder = 7; G.add(s); }
     U.surf = sg; U.surfMeshes = [s1, s2];
+    // agua quieta: espejo de verdad (Reflector) con Fresnel: refleja el techo del horno (oscurece un poco el agua) y la lámpara (destello);
+    // así se ve que hay agua en una taza blanca. Solo cuando la superficie está lisa (en el hervor se usa la malla que se deforma).
+    const wr = new Reflector(new THREE.CircleGeometry(rW - 0.02, 96), { textureWidth: 1024, textureHeight: 1024, clipBias: 0.002, multisample: 0, shader: WATER_REFL });
+    wr.rotation.x = -Math.PI / 2; wr.position.y = MUG.WY + 0.01; wr.renderOrder = 7; wr.material.transparent = true; wr.material.depthWrite = false; G.add(wr); U.mirror = wr;
     // el cuerpo del agua (solo se ve en corte)
     const wb = new THREE.Mesh(new THREE.CylinderGeometry(rW - 0.01, MUG.rIn(0.8) - 0.02, MUG.WY - 0.65, 64, 1, true), new THREE.MeshPhysicalMaterial({ color: 0x6f9aa6, roughness: 0.05, transparent: true, opacity: 0.28, side: THREE.DoubleSide, depthWrite: false }));
     wb.position.y = (MUG.WY + 0.65) / 2; wb.renderOrder = 6; wb.visible = false; G.add(wb); U.waterBody = wb;

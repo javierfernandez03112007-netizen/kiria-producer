@@ -79,6 +79,17 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   se guarda) y pregunta de bando sobre cómo lo usa cada uno. «Cinematográfico» = realista y de cine (estudio oscuro, materiales de verdad,
   cámara lenta, macro), **no** la maqueta de colores que Javi rechazó el 12-11.
 - Primer vídeo: **el microondas** (`projects/microondas/`, guion 14-11). Lista de siguientes en «Próximas ideas».
+  **Estado (16-11, tarde)**: versión con el gancho de Javi («cuidado cuando calientes agua…»: agua sobrecalentada), su MP3 (53,3 s; la frase
+  que ElevenLabs se saltó se quitó). Escena realista en `web/src/`: HDRI **brown_photostudio_02** (Poly Haven, CC0; «blinds» teñía todo de
+  naranja y el metal parecía cobre), rot 4,71 (detrás del micro, las estanterías de la cocina), luz de ventanales a la izquierda. Interior del
+  horno gris oscuro y lámpara cálida (si no, el agua no se ve). Estallido = hervor de golpe: burbujas que revientan + rocío de gotas con
+  material de «lente» (`dropMat`: centro claro, borde oscuro, destello) + vapor de nubecillas + bulto inicial con marching cubes. **Profundidad
+  de campo** nueva en el motor (`dofM` en `00_head.js`, `dofAt` por plano en `30_camera.js`). Agua quieta con espejo (`Reflector`). Térmico
+  tipo FLIR (`thermalMat`, paleta hierro). Planos A–U en `30_camera.js` (ver la cabecera). Mano en primera persona (piel de «los dedos»).
+  Magnetrón y moléculas: los hacen dos agentes en `web/lab/magnetron.js` y `web/lab/molecules.js` (copiar a `src/` al terminar).
+  Efectos: solo biblioteca del canal (`compose_microondas.py`); **la clave de ElevenLabs del entorno va con el encabezado «Elevenlabs» y la
+  API la espera en «xi-api-key»** (Javi no quiso darla otra vez por el formulario el 16-11): `sfx_eleven.py` queda listo para cuando se arregle.
+  A la cocina eléctrica escaneada se le borró la marca («AKIRA») de la textura. Render por trozos: `render_chunk.sh` (ramas `render-mic-*`).
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,

@@ -49,7 +49,7 @@ function stoveAt(SV, t, o) {
   const R2 = POT_R - 0.3, NBB = U.bub.count;
   for (let i = 0; i < NBB; i++) { const h = q => hash(i * 4.71 + q * 1.37), j = Math.floor(h(9) * 900), f = h(8);       // la rayita j de la textura del fondo
     const px = hash(j * 1.7) * 1024 + Math.cos(hash(j * 3.9) * 6.28) * (6 + hash(j * 5.1) * 60) * f, py = hash(j * 2.3) * 1024 + Math.sin(hash(j * 3.9) * 6.28) * (6 + hash(j * 5.1) * 60) * f;
-    const x0 = (px / 1024 * 2 - 1) * R2, z0 = (py / 1024 * 2 - 1) * R2; if (Math.hypot(x0, z0) > R2 - 0.4) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); _o.updateMatrix(); U.bub.setMatrixAt(i, _o.matrix); continue; }
+    const x0 = (px / 1024 * 2 - 1) * R2, z0 = (py / 1024 * 2 - 1) * R2; if (Math.hypot(x0, z0) > R2 - 0.4 || (cut && z0 > -0.15)) { _o.position.set(0, -1000, 0); _o.scale.setScalar(0.0001); _o.updateMatrix(); U.bub.setMatrixAt(i, _o.matrix); continue; }
     const per = 0.8 + 1.4 * h(1), ph = ((t / per + h(2)) % 1 + 1) % 1, rmax = 0.03 + 0.09 * Math.pow(h(3), 1.5);
     let x = x0, y = 0.56, z = z0, s;
     if (ph < 0.55) { s = rmax * Math.pow(ph / 0.55, 0.6); y = 0.56 + s * 0.8; }                                  // crece pegada a la rayita

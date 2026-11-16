@@ -30,11 +30,18 @@ function magLabMW(on) {     // el magnetrón dentro del microondas (o fuera, sob
 }
 function magLabShell(op) { if (!MAGLMW) return; const m = MAGLMW.userData.M.metal; m.transparent = op < 0.999; m.opacity = op; m.depthWrite = op > 0.5; MAGLMW.userData.M.enamel.transparent = op < 0.999; MAGLMW.userData.M.enamel.opacity = Math.max(op, 0.35); }
 function labAt(t) {
-  { const now = performance.now(); if (window._magT) console.error('INFO t=' + window._magK + ' ' + (now - window._magT).toFixed(0) + ' ms'); window._magT = now; window._magK = t; }   // cronómetro
+  { const now = performance.now(); if (window._magT) console.error('INFO t=' + window._magK + ' ' + (now - window._magT).toFixed(0) + ' ms · programas ' + renderer.info.programs.length + ' · llamadas ' + renderer.info.render.calls + ' · triángulos ' + renderer.info.render.triangles); window._magT = now; window._magK = t; }   // cronómetro
   MAG.group.visible = true;
   if (window.MAGHIDE || t >= 30 && t < 32) { MAG.group.visible = false; if (MAGLMW) MAGLMW.visible = false; return MAGV[t >= 31 ? 2 : 0].cam; }   // sin magnetrón (la base, para comparar)
   if (window.MAGONLY) MAG.group.traverse(o => { if (o.isMesh && !window.MAGONLY.includes(o.material.type)) o.visible = false; });
   if (t >= 20) return magLabTimeline(t - 16);
+  if (t >= 40 && t < 50) {   // experimentos de coste (vista 2): 40 normal · 41 sin interior · 42 sin electrones · 43 a una cara · 44 sin sombras del magnetrón
+    const e = Math.floor(t) - 40; const V = MAGV[2]; magLabMW(false); MAG.group.position.set(...V.at); MAG.group.rotation.set(0, V.ry, 0); magnetronAt(t, V.P); if (MAGLMW) MAGLMW.visible = false;
+    if (e === 1) MAG.inA.visible = false; if (e === 2) { MAG.el.visible = false; MAG.haze.visible = false; }
+    for (const pc of MAG.pieces) for (const m of pc.mats) { const want = e === 3 ? THREE.FrontSide : THREE.DoubleSide; if (m.side !== want && !m.userData.magClipOnly) { m.side = want; m.needsUpdate = true; } }
+    MAG.group.traverse(o => { if (o.isMesh && o.userData.cs0 === undefined) o.userData.cs0 = o.castShadow; if (o.isMesh) o.castShadow = e === 4 ? false : o.userData.cs0; });
+    for (const pc of MAG.pieces) for (const m of pc.mats) m.shadowSide = e === 5 ? THREE.BackSide : null;
+    return V.cam; }
   let k = Math.floor(t + 1e-6);
   if (k >= 10 && !MAGLMW) k = 0;
   if (k < 10) { if (k >= MAGV.length) k = 0; const V = MAGV[k]; magLabMW(false); MAG.group.position.set(...V.at); MAG.group.rotation.set(0, V.ry, 0); MAG.group.scale.setScalar(1);

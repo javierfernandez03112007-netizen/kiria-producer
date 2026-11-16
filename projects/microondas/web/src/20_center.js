@@ -13,7 +13,7 @@ async function buildScene() {
   S.stove = await buildStove();
   if (typeof buildMagnetron === 'function') { S.mag = buildMagnetron(); S.mag.group.position.copy(MW_POS).add(v3(17.6, 15.5, -17)); scene.add(S.mag.group); }
   if (typeof buildMagWaves === 'function') { S.waves = buildMagWaves(); S.mw.add(S.waves.group); }
-  if (typeof buildMolecules === 'function') S.mol = buildMolecules();
+  if (typeof buildMolecules === 'function') { S.mol = buildMolecules(); scene.add(S.mol.group); }
   // la mano (piel real, la de «los dedos»): entra a coger la taza
   S.hand = realHand({ inside: false }); S.hand.scale.setScalar(7.2); S.hand.visible = false; scene.add(S.hand);      // mano de ≈ 19 cm
   S.hand.traverse(o => { if (o.isMesh && !o.isSkinnedMesh && o.geometry.type === 'CylinderGeometry') { o.scale.y = 3.2; o.position.y = HAND_Y0 - 1.2 * 3.2; } });   // antebrazo largo
@@ -38,21 +38,21 @@ function tauAt(t) {
 // En el corte (S) la taza va derecha (asa a la derecha) para que el corte coincida con su cara del agua.
 function mugRot(t, sh) { const R = -0.6, w = 0.5;
   if (sh === 'B') return R - w * (SHT.C0 - t); if (sh === 'U') return R - w * Math.max(0, SHT.U1 - t);
-  if (sh === 'G' || sh === 'H') return R + w * (t - SHT.G0); if (sh === 'N') return R + w * (t - SHT.N0); if (sh === 'S') return 0; return R; }
+  if (sh === 'G' || sh === 'H') return R + w * (t - SHT.G0); if (sh === 'N') return R + w * (t - SHT.N0); if (sh === 'S' || sh === 'M') return 0; return R; }
 // ---------- vista térmica (como una cámara FLIR): cada cosa con el color de su temperatura (paleta «hierro»), en lineal para el ACES del final
 const thermalMat = (T0, T1, y0, y1, nz = 0.03) => new THREE.ShaderMaterial({ uniforms: { T0: { value: T0 }, T1: { value: T1 }, y0: { value: y0 }, y1: { value: y1 }, nz: { value: nz } },
   vertexShader: '#include <common>\n#include <logdepthbuf_pars_vertex>\nvarying vec3 vW; void main(){ vec4 p = vec4(position, 1.);\n#ifdef USE_INSTANCING\np = instanceMatrix * p;\n#endif\nvec4 w = modelMatrix * p; vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w;\n#include <logdepthbuf_vertex>\n}',
   fragmentShader: '#include <logdepthbuf_pars_fragment>\nuniform float T0, T1, y0, y1, nz; varying vec3 vW;\nfloat hh(vec3 p){ return fract(sin(dot(p, vec3(12.9898, 78.233, 37.719))) * 43758.5453); }\n' +
     'vec3 iron(float t){ t = clamp(t, 0., 1.); vec3 c0 = vec3(0.02,0.01,0.08), c1 = vec3(0.17,0.04,0.42), c2 = vec3(0.55,0.08,0.5), c3 = vec3(0.88,0.2,0.24), c4 = vec3(0.98,0.5,0.1), c5 = vec3(1.,0.84,0.3), c6 = vec3(1.,0.98,0.88);\n' +
     'if (t < .2) return mix(c0, c1, t / .2); if (t < .4) return mix(c1, c2, (t - .2) / .2); if (t < .6) return mix(c2, c3, (t - .4) / .2); if (t < .75) return mix(c3, c4, (t - .6) / .15); if (t < .9) return mix(c4, c5, (t - .75) / .15); return mix(c5, c6, (t - .9) / .1); }\n' +
-    'void main(){\n#include <logdepthbuf_fragment>\nfloat k = clamp((vW.y - y0) / (y1 - y0), 0., 1.); float n = (sin(vW.x * 1.7 + vW.z * 2.3) * sin(vW.z * 1.9 - vW.x * 1.1) + (hh(floor(vW * 3.)) - .5)) * nz;\n' +
+    'void main(){\n#include <logdepthbuf_fragment>\nfloat k = clamp((vW.y - y0) / (y1 - y0), 0., 1.); float n = (sin(vW.x * 1.7 + vW.z * 2.3) * sin(vW.z * 1.9 - vW.x * 1.1) + 0.5 * sin(vW.x * 4.1 - vW.z * 3.7) + (hh(vW * 40.) - .5) * 0.25) * nz;\n' +
     'vec3 c = iron(mix(T0, T1, k) + n); gl_FragColor = vec4(pow(c, vec3(2.2)) * 1.25, 1.); }' });
 let THERM = false;
 function thermal(on) {
   if (on === THERM) return; THERM = on; const U = S.mw.userData, Um = S.mug.userData, my = MUGW.y;
   const swap = (root, mk) => root.traverse(o => { if (!(o.isMesh || o.isSprite) || o === S.splash || o.parent === S.splash) return; if (on) { o.userData.m0 = o.material; const tm = mk(o); o.material = Array.isArray(o.material) ? o.material.map(() => tm) : tm; } else if (o.userData.m0) { o.material = o.userData.m0; o.userData.m0 = null; } });
   const cool = thermalMat(0.16, 0.12, 0, 26, 0.02), grille = thermalMat(0.34, 0.34, 0, 1, 0.01), plate = thermalMat(0.22, 0.2, 0, 10, 0.02);
-  const mug = thermalMat(0.5, 0.33, my + 6.5, my + 9.8, 0.025), water = thermalMat(0.97, 0.9, -1, 1, 0.05);
+  const mug = thermalMat(0.4, 0.26, my + 5.5, my + 9.8, 0.02), water = thermalMat(0.96, 0.9, -1, 1, 0.035);
   swap(S.mw, o => o.material === U.lampGrille.material ? grille : U.plate.getObjectById(o.id) ? plate : cool);
   swap(S.mug, o => Um.surfMeshes.includes(o) ? water : mug);
   Um.surfMeshes[1].visible = !on; S.splash.visible = !on;
@@ -74,7 +74,7 @@ function stageAt(t, st) {
   const on = doorOpen ? 0 : sh === 'U' ? win(t, SHT.U0, 0.6) : 1;
   const secs = Math.max(0, Math.ceil(60 - (t - 0.75) * 0.9)), disp = sh === 'R' || sh === 'S' ? (sh === 'R' ? `${t < SHT.R0 + 0.9 ? '1:00' : '0:5' + (9 - Math.floor((t - SHT.R0 - 0.9) / 0.9) % 10)}` : '1:00') : (on ? `0:${String(secs % 60).padStart(2, '0')}` : '12:34');
   const rot = mugRot(t, sh); S.mug.rotation.y = rot; microwaveAt(S.mw, { on, lamp: Math.max(on, doorOpen), turn: rot, door, display: disp });
-  thermal(sh === 'L'); underwater(sh === 'K' || sh === 'M', sh === 'K' ? 0x8eaab0 : 0xb8cccc, sh === 'K' ? 0.032 : 0.03);
+  thermal(sh === 'L');
   // la taza: superficie, estallido, café, palito, burbujas, corte
   const tau = tauAt(t), doorShut = door < 0.05, mz = MUGW.z;
   if (!THERM) innerEnv(lerp(0.2, 0.6, clamp(door / 0.78)));
@@ -88,9 +88,10 @@ function stageAt(t, st) {
   S.stick.visible = sh === 'S';
   { S.stick.updateMatrix(); const A = v3(0, 1.2, 0.12).applyMatrix4(S.stick.matrix), B = v3(0, 7.3, 0.12).applyMatrix4(S.stick.matrix);      // las burbujas nacen en las vetas del palito
     bubblesAt(S.bub, t, A, B, sh === 'S' ? clamp((t - K.vetas10 + 0.3) / 1.2) : 0, { rate: 0.55, scale: 0.55 }); }
-  mugCut(S.mug, sh === 'S');
+  mugCut(S.mug, sh === 'S' || sh === 'M');
+  { const Um = S.mug.userData, calm = tau <= 0 && !THERM && sh !== 'S' && sh !== 'M'; Um.mirror.visible = calm; Um.surfMeshes[0].visible = !calm; Um.surfMeshes[1].visible = !calm && !THERM; }
   // la cocina: el cazo (placa al rojo, burbujas)
-  stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
+  stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: sh === 'K' ? 1 : 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
   // el magnetrón (fuera de la carcasa) y las ondas
   if (S.mag) { const e = ['E', 'F'].includes(sh), k = sh === 'E' ? win(t, K.magnetron2 + 0.15, 0.9) : 1; S.mag.group.visible = e;
     magnetronAt(t, { explode: sh === 'E' ? win(t, K.pieza2, 1.2) : 0.35, cut: sh === 'F' ? win(t, K.dispara3 + 0.1, 0.6) : 0, glow: sh === 'F' ? 1 : 0.4 * k, electrons: sh === 'F' ? win(t, K.dispara3 + 0.3, 0.5) : 0, wave: sh === 'F' ? win(t, K.ondas3, 0.5) : 0 });

@@ -1,0 +1,34 @@
+⚠️ Cuidado cuando calientes agua en el microondas: te puede saltar a la cara.
+
+📡 Así funciona: tu microondas lleva dentro un magnetrón, la pieza de los radares de la Segunda Guerra Mundial. Dispara ondas que vibran 2.450 millones de veces por segundo y las moléculas de agua intentan seguirlas: giran sin parar, y eso es calor.
+
+🫧 En un cazo, el calor llega por abajo y las burbujas nacen en las rayitas del fondo. En el microondas se calienta el agua, no la taza; y si la taza es lisa, la burbuja no tiene dónde nacer: el agua pasa de 100 °C y sigue quieta. En cuanto la mueves o le echas el café, hierve de golpe y salta. La FDA de Estados Unidos ha recibido avisos de quemaduras graves en manos y cara por esto.
+
+🪵 El truco: no la calientes de más y mete un palito de madera; en sus vetas las burbujas nacen poco a poco.
+
+👇 ¿Micro o cazo? Mándaselo a quien se calienta el café en el microondas.
+
+📚 Fuentes: FDA («Risk of Burns from Eruptions of Hot Water Overheated in Microwave Ovens» y su aviso de 2007); EPA («Non-ionizing radiation used in microwave ovens»); Live Science («Why does boiling water have bubbles, except in a microwave?»); Wikipedia («Superheating»); History.com (el invento del microondas). El palito de madera es un consejo habitual de divulgación (Steve Spangler Science), no una recomendación oficial de la FDA.
+
+🎬 Imagen 3D: cocina, cocina eléctrica, cazo esmaltado y texturas de madera de Poly Haven (CC0).
+
+#microondas #asifunciona #ciencia #fisica #cocina #curiosidades #agua #seguridad #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+⚠️ Calentar agua en el microondas puede hacer que te salte a la cara. ¿Por qué pasa y cómo evitarlo? 👇 ¿Micro o cazo?
+
+#microondas #ciencia #asifunciona #cocina #curiosidades
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). La frase que ElevenLabs se saltó en el MP3 se quitó del guion.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Los efectos nuevos (zumbido del micro, pitidos) no se pudieron
+  generar: la clave del entorno va con el encabezado «Elevenlabs» y la API la espera en «xi-api-key».
+- Primer fotograma: el agua congelada en pleno estallido dentro del horno; al final vuelve a estallar y se congela igual (bucle).
+- La respuesta (el truco) llega al final, después del segundo 42.
+- Todo realista: la cocina es un HDRI real (Poly Haven, CC0); la cocina eléctrica y el cazo son modelos escaneados (CC0; a la cocina se le borró la
+  marca de la placa); el microondas, la taza, el agua, el magnetrón y las moléculas están modelados aparte.

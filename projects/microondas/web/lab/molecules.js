@@ -1,19 +1,23 @@
 // ---------------------------------------------------------------- las moléculas de agua, por dentro (frase 4, 13,9–18,5 s: «El agua intenta seguirlas: sus moléculas giran sin
 // parar, y eso es calor»). La cámara, metida en el agua de la taza a escala molecular: cientos de moléculas de H₂O en bolas y varillas (el oxígeno rojo y los
-// dos hidrógenos blancos a 104,5°, con barniz brillante, reflejos de dos cajas de luz y sombra de contacto) dentro de un volumen de agua azul oscura con
-// profundidad de campo (las de delante y las del fondo desenfocadas), partículas en suspensión y dispersión azulada.
-// El campo de las microondas oscila (MOL_NU veces por segundo en pantalla; el de verdad, 2.450 millones de veces, no se vería): un pulso de luz fría barre el
-// volumen de arriba abajo con cada cresta y las partículas en suspensión se mecen a un lado y al otro con él (la dirección del campo que se invierte).
+// dos hidrógenos blancos a 104,5°, con barniz brillante, reflejos de dos cajas de luz, subsuperficie y sombra de contacto) en un volumen de agua azul verdosa
+// oscura con profundidad de campo (las de delante y las del fondo desenfocadas), partículas en suspensión y dispersión (el agua se come antes el rojo).
+// El campo de las microondas oscila (MOL_NU veces por segundo en pantalla; el de verdad, 2.450 millones de veces, no se vería): con cada cresta una lámina de luz
+// fría barre el volumen de arriba abajo (dispersión exacta a lo largo de cada rayo) y deja un borde frío en las moléculas; las partículas en suspensión se mecen
+// a un lado y al otro con él y dejan un trazo corto (la dirección del campo, que se invierte).
 // Las moléculas son dipolos (el lado del oxígeno, negativo; el de los hidrógenos, positivo): intentan seguir el campo y giran a un lado y al otro, con un poco
-// de retraso (ese retraso es justo lo que calienta), cada vez más agitadas; se van encendiendo con un brillo naranja que crece («y eso es calor») y los
-// enlaces de hidrógeno (puntos tenues entre una molécula y la de al lado) se rompen y se rehacen.
+// de retraso (ese retraso es justo lo que calienta), cada vez más agitadas; se encienden por dentro como brasas, con un halo de luz en el agua, que crece
+// («y eso es calor»), y los enlaces de hidrógeno (puntos tenues entre el hidrógeno de una y el oxígeno de la de al lado) se rompen y se rehacen.
 // Cómo se dibuja: «impostores». Cada átomo es un cuadrado de 2 triángulos y el sombreador calcula la esfera exacta (rayo-esfera), su profundidad (logarítmica,
-// como el resto de la escena) y su desenfoque según la distancia al foco (el disco borroso de verdad: solape de dos círculos); las varillas, igual, con un
-// cilindro. Todo va en un solo InstancedMesh ordenado de atrás adelante en cada fotograma (≈ 10 triángulos por molécula). Unidades propias: 1 ≈ 1,5 Å
-// (una molécula mide ≈ 1,4 × 0,8). El grupo está lejos de la cocina (MOL_ORIGIN) y una esfera de agua profunda tapa el fondo de la cocina.
-// API: buildMolecules() → MOL (MOL.group ya colocado: hay que añadirlo a la escena); moleculesAt(t, P) con P = { on, field, heat } (0…1; opcionales:
-// focus = distancia de enfoque, cam = cámara con la que se ordena, por defecto la global `cam`, que tiene que estar ya colocada); moleculesCam(u) →
-// [px,py,pz, lx,ly,lz, fov] en el mundo (u 0…1); MOL.heroAt() → { O, H1, H2, p } de la molécula protagonista en el mundo (para rótulos δ−/δ+ del HUD).
+// como el resto de la escena), su desenfoque según la distancia al foco (el disco borroso de verdad: solape de dos círculos) y su desenfoque de movimiento
+// (barrido durante un obturador de 180°); las varillas, igual, con un cilindro. Átomos, varillas, puntos de luz y halos van en un solo InstancedMesh ordenado de
+// atrás adelante en cada fotograma (≈ 12 triángulos por molécula; 4.000–9.000 en total). Unidades propias: 1 ≈ 1,5 Å (una molécula mide ≈ 1,4 × 0,8).
+// El grupo está lejos de la cocina (MOL_ORIGIN) y una esfera de agua profunda alrededor tapa el fondo de la cocina.
+// API: buildMolecules() → MOL (MOL.group ya colocado: hay que añadirlo a la escena) · moleculesAt(t, P) con P = { on, field, heat } (0…1; opcionales: dipole
+// 0…1 = nube δ−/δ+ de la protagonista, focus = distancia de enfoque, aperture = multiplica la abertura, cam = cámara con la que se ordena y desenfoca; por
+// defecto la global `cam`, que tiene que estar YA colocada para ese fotograma) · moleculesCam(u) → [px,py,pz, lx,ly,lz, fov] en el mundo (u 0…1) ·
+// MOL.heroAt() → { O, H1, H2, p } de la molécula protagonista en el mundo (para los rótulos δ−/δ+ del HUD) · MOL.E (dirección del campo) y MOL.fieldValue
+// (el campo que nota la protagonista en ese fotograma, −1…1: para una flecha del HUD que se invierta).
 
 const MOL_ORIGIN = new THREE.Vector3(0, 2000, 0);
 const MOL_NU = 2.0;                                                         // Hz en pantalla: 4 inversiones del campo por segundo
@@ -376,7 +380,7 @@ function buildMolecules() {
   // partículas en suspensión (posición de partida + semilla): flotan, brillan al pasar el pulso y se mecen con el campo a un lado y al otro
   const NM = 2600, motes = new Float32Array(NM * 4), path = []; for (let i = 0; i <= 60; i++) path.push(molCamLocal(i / 60).p);
   for (let i = 0; i < NM; i++) { let p; do { p = v3(-7.5 + 14 * rng(), -7 + 15 * rng(), -16 + 32 * rng()); } while (path.some(c => c.distanceTo(p) < 0.9)); motes.set([p.x, p.y, p.z, rng()], i * 4); }
-  MOL = { group: g, D, bonds, U, imp, geo, attrs: [aA, aB, aC, aD], motes, bg, MAXP: MAXP + NM, n,
+  MOL = { group: g, D, bonds, U, imp, geo, attrs: [aA, aB, aC, aD], motes, bg, MAXP, n,
     tmp: { A: new Float32Array(MAXP * 4), B: new Float32Array(MAXP * 4), C: new Float32Array(MAXP * 4), D: new Float32Array(MAXP * 4), key: new Float32Array(MAXP), ord: new Uint32Array(MAXP) },
     atoms: new Float32Array(n * 9), vis: new Uint8Array(n), hero: { O: v3(0, 0, 0), H1: v3(0, 0, 0), H2: v3(0, 0, 0), p: v3(0, -1, 0) }, fieldValue: 0, E: MOL_E.clone(), K: MOL_K.clone(),
     heroAt() { return this.hero; } };

@@ -20,7 +20,7 @@ async function labBuild() {
 }
 let MOLT_NF = 0;
 function molTestP(t) {
-  return { on: clamp(t / 0.3 + 0.15), field: 0.3 + 0.7 * win(t, 0.15, 1.0), heat: 0.06 + 0.94 * win(t, 2.0, 2.4), dipole: window.MOLDIP ? win(t, 1.4, 0.4) * (1 - win(t, 2.6, 0.5)) : 0 };
+  return { on: clamp(t / 0.3 + 0.15), field: 0.3 + 0.7 * win(t, 0.15, 1.0), heat: 0.06 + 0.94 * win(t, 2.0, 2.4), dipole: win(t, 1.4, 0.4) * (1 - win(t, 2.6, 0.5)) };
 }
 function labAt(t) {
   const c = moleculesCam(t / MOLT_DUR);
