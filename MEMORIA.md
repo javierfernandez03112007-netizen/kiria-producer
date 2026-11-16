@@ -115,6 +115,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   la franja, la cámara (`31_camera.js`, un solo plano; se entra en la fibra con un destello), los rótulos (`40_hudplan.js`) y el montaje los hice yo.
   Render final en 12 máquinas (las 6 de piezas + «Lanzamiento · render 1–6») → ramas `render-wa-1..12`; `fetch_compose.sh` recoge y monta.
   Mapa: Natural Earth (dominio público); cables ILUSTRATIVOS (A* sobre tierra/mar; los de TeleGeography no permiten uso comercial).
+  **ENTREGADO a Javi el 16-11 a las 20:12** (`out/whatsapp_mar.mp4`, 57,6 s, −14,8 LUFS; portada `out/portada.jpg`; `DESCRIPCION.txt`).
+  La cabecera y la portada dicen «6.000 km bajo el mar en 0,03 segundos» (no «de España a Brasil»: 0,03 s es solo el cruce del cable).
+  Pendiente de permiso: borrar las ramas `render-wa-*` y `wa-*` y archivar las máquinas «WhatsApp · …» (etiqueta `kiria-wa`).
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
