@@ -1,0 +1,30 @@
+💬 «Hijo, ¿dónde estás?»… y tú estás en Brasil. Ese mensaje de tu madre no ha viajado por el aire: ha cruzado el fondo del mar.
+
+🌊 Así funciona: más de 99 de cada 100 datos entre continentes viajan por cables submarinos, no por satélite. Su móvil lanza el mensaje en ondas hasta la antena más cercana; ahí entra en un cable de fibra óptica y se convierte en luz, que corre por un hilo de cristal fino como un pelo a unos 200.000 km por segundo. En Portugal el cable se hunde en el mar y cruza unos 6.000 km hasta Brasil en tres centésimas de segundo.
+
+⚠️ Hay más de 600 cables así y cada año se rompen entre 150 y 200. No son los tiburones: tres de cada cuatro veces es un ancla o una red de pesca. En 2018 Mauritania se quedó dos días sin internet por un solo cable cortado, y en 2022 un volcán submarino partió el único cable de Tonga: el país pasó unas cinco semanas casi sin internet.
+
+👇 ¿Satélite o cable? Mándaselo a tu madre.
+
+📚 Fuentes: TeleGeography («2023 Mythbusting, part 3»; «It's Time To Learn About Latency»; mapa de cables 2026: 603 en servicio; «What happens when submarine cables break»); ICPC, Comité Internacional de Protección de Cables (150–200 averías al año, 70–80 % por pesca y anclas); cable EllaLink Sines–Fortaleza (≈ 6.000 km); NPR/AP y Al Jazeera (Tonga, 2022); Fortune y Oracle/Dyn (Mauritania, 2018). Fibra monomodo: 125 µm (UIT-T G.652).
+
+🎬 Imagen 3D: maqueta ilustrativa (no está a escala); las rutas de los cables del mapa son aproximadas. Mapa: Natural Earth (dominio público).
+
+#asifunciona #internet #cablesubmarino #fibraoptica #whatsapp #tecnologia #curiosidades #ciencia #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+💬 «Hijo, ¿dónde estás?» Ese mensaje de tu madre no va por el aire: cruza el fondo del mar por un cable de luz. 👇 ¿Satélite o cable?
+
+#internet #cablesubmarino #asifunciona #curiosidades #tecnologia
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). ElevenLabs se saltó «Tu madre te escribe:» y «no te ha
+  llegado por el aire»; el guion y los subtítulos siguen lo que dice el audio.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música.
+- Un solo plano sin cortes: se entra en el agua, por la ventana, en la antena y dentro de la fibra (con un destello). Primer fotograma = último (bucle).
+- Rótulo «MAURITANIA · 2018 · 2 DÍAS SIN INTERNET»: dato de la imagen que la voz no dice (fuente en FUENTES.md).

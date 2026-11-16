@@ -105,6 +105,16 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   `kiria-render-mic`, todas avisadas de parar). Los fotogramas 1232–1410 (el cazo visto desde arriba) hay que repetirlos con el código actual
   (se quitó el reflejo blanco). Para seguir: `render_chunk.sh A B X render-mic` en los rangos que faltan, `fetch_compose.sh` y, con todo,
   `touch out/SFX_READY` para que monte. Pendiente de permiso: borrar las ramas `render-mic-*` y archivar las máquinas «Microondas · render 7–12».
+- **«Así funciona: el viaje del mensaje de tu madre» (`projects/whatsapp_mar/`, 16-11-2026)**: gancho con el método nuevo de `engine/HOOKS.md`
+  («Hijo, ¿dónde estás?»… y tú en Brasil; el mensaje cruza el fondo del mar). Javi: «para de hacer lo del cerebro… estamos con lo de WhatsApp y
+  punto» y «abre máquinas para hacerlo rápido». Todo el vídeo es **una maqueta de museo**: una franja del Atlántico en corte (acuario largo) sobre
+  un mapa del mundo de noche con cables de luz; viñetas a escala humana en los extremos (playa de Brasil al atardecer con el móvil; pueblo de
+  España de noche con la cocina de la madre y la antena; costa de Portugal), Tonga en otra maqueta pequeña y la fibra por dentro aparte.
+  Contrato común en `projects/whatsapp_mar/MUNDO.md` + `web/src/05_world.js` (medidas, marcos, `moodSet` de luz por sitio en `11_env.js`).
+  Las piezas las hicieron 6 máquinas (ramas `wa-beach`, `wa-iberia`, `wa-fiber`, `wa-tonga`, `wa-incidents`, `wa-map`, etiqueta `kiria-wa`);
+  la franja, la cámara (`31_camera.js`, un solo plano; se entra en la fibra con un destello), los rótulos (`40_hudplan.js`) y el montaje los hice yo.
+  Render final en 12 máquinas (las 6 de piezas + «Lanzamiento · render 1–6») → ramas `render-wa-1..12`; `fetch_compose.sh` recoge y monta.
+  Mapa: Natural Earth (dominio público); cables ILUSTRATIVOS (A* sobre tierra/mar; los de TeleGeography no permiten uso comercial).
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
