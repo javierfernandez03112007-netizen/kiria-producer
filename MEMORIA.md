@@ -90,7 +90,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   Efectos: solo biblioteca del canal (`compose_microondas.py`); **la clave de ElevenLabs del entorno va con el encabezado «Elevenlabs» y la
   API la espera en «xi-api-key»** (Javi no quiso darla otra vez por el formulario el 16-11): `sfx_eleven.py` queda listo para cuando se arregle.
   A la cocina eléctrica escaneada se le borró la marca («AKIRA») de la textura. Render por trozos: `render_chunk.sh` (ramas `render-mic-*`).
-  **PARADO por orden de Javi (16-11, 17:53: «para de hacer lo que estés haciendo»)**. No retomar sin que lo pida. Estado: escena terminada (magnetrón
+  **ABANDONADO por Javi (16-11, 18:15: «dejamos el vídeo»)** tras ver la vista previa: «la cámara está pegada a los objetos, no se ve
+  nada, solo cambios de escena que giran porque sí». Lo que pidió para los siguientes (vale para todos los «Así funciona»): **un solo plano
+  continuo, sin cortes: la cámara entra en los sitios para cambiar de escena** (puertas, tubos, el agua…), siempre en movimiento, planos
+  medios/generales donde se vea todo, fácil de distinguir; puede ser «de dibujos», no 100 % real, con algo de ficción; referencia de estilo
+  (un vídeo del metro: 3D que parece real pero se nota que no, luces cálidas, rótulos de neón tipo «200 m») en `projects/microondas/ref/estilo/`.
+  Quedó a medias la v2 de un solo plano (`web/src/30_camera.js`, `20_center.js`, `40_hudplan.js`; la v1 en `web/src_v1/`) y los módulos de
+  los ayudantes en `web/lab/` (`xray.js`, `macro.js`, sin terminar). Pendiente de permiso: borrar ramas `render-mic-*` y archivar
+  «Microondas · render 7–12».
+  Estado anterior (17:53): **PARADO por orden de Javi («para de hacer lo que estés haciendo»)**. No retomar sin que lo pida. Estado: escena terminada (magnetrón
   y moléculas ya en `web/src/16_magnetron.js` y `17_molecules.js`); vista previa enviada (`out/preview.mp4`, 15 fps, media resolución; no está en
   git). Render final a medias en 12 máquinas: trozos hechos y subidos 0–267 (`render-mic-1`), 1066–1333 (`render-mic-3`) y 2132–2399
   (`render-mic-5`); faltan 267–1066, 1333–2132, 2399–3196 (máquinas 2, 4, 6 y las nuevas «Microondas · render 7–12», etiqueta
