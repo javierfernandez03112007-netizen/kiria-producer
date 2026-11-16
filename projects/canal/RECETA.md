@@ -5,7 +5,7 @@ El chat de producción la lee antes de cada guion, junto con `engine/REGLAS.md`,
 Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios vídeos lo apoyan) · 🧪 provisional (pocos datos) ·
 👤 decisión de Javi (no se discute con datos).
 
-Última actualización: 15-11-2026 (29 vídeos de Instagram + TikTok, once capturas de Metricool).
+Última actualización: 16-11-2026 (31 vídeos de Instagram + TikTok, doce capturas de Metricool).
 
 ## 1. Tema
 - ✅ **Carreras «por dentro» con un giro legal o de acceso**: la carrera sola no basta (máster habilitante, oposición, MIR, PIR…).
@@ -87,6 +87,8 @@ Cada punto lleva su prueba y su grado de seguridad: ✅ confirmado (varios víde
 - Ganchos de pura curiosidad sin tensión (la carga sin cable, «Tu móvil habla con el cargador…»).
 - 🧪 Noticias de ciencia lejana sin nada que toque al que mira (perro robot: 1.441 en 11 h y 0 compartidos). Meter siempre un «tú».
   Nvidia (13-11): 2.835 en 28 h y 14,5 s de media; la actualidad lejana sin «tú» se abandona pronto.
+- 🧪 **Segunda parte del mismo tema**: «GTA 6: el dinero» 5.887 en 27 h frente a 125.658 del primer GTA. La novedad no se repite.
+- 🧪 **«Así funciona» sin «tú»**: dedos (15-11), 14,4 s de media y 0 compartidos en 11 h. Meter el «tú» y un final útil.
 - Anuncios del estudio como reel normal: Producto en 3D, 37,6 % pasa de 3 s y 6,9 s de media.
 - Vídeos de más de 65 s; dos vídeos informativos el mismo día; anuncios como contenido principal.
 - Precios, logos reales, la marca kiria.ai en los vídeos informativos 👤; cifras sin fuente.

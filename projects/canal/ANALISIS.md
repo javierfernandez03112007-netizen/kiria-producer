@@ -3,7 +3,44 @@
 Lo escribe cada día el chat «Análisis y plan · kiria.ai» (instrucciones en `ANALISIS_DIARIO.md`). La misma versión está en Notion,
 página «📈 Análisis de contenido · kiria.ai».
 
-## Última actualización: domingo 15-11-2026, 10:00
+## Última actualización: lunes 16-11-2026, 10:00
+
+**Datos**: Instagram, captura del 15-11 a las 20:36 (sigue faltando la de las 08:33). **3,84 M de visualizaciones** (+32.500 en 24 h).
+Sin TikTok nuevo.
+
+- **«GTA 6: el dinero»** se subió el sáb 14 a las 17:54, no el mié 18 como decía el calendario: 5.887 en 26,7 h, 61,7 % pasa de 3 s y 18,5 s de
+  media (36 % de 52 s). Se guarda poco (2,9 por cada 1.000). Arranca mucho peor que el primer GTA (125.658 en 27 h): el segundo vídeo de un
+  mismo tema ya no tiene el empujón de la novedad.
+- **Crujirse los dedos** (primer «Así funciona», dom 15 a las 09:41): 2.761 en 10,9 h, 59,7 % pasa de 3 s, **14,4 s de media (31 %) y 0
+  compartidos**. Provisional: hay que verlo a las 48 h, pero la retención está entre las más bajas del canal.
+- **Lo único que sigue sumando solo son las carreras antiguas** (Mecánica +5.249, Magisterio +3.876, Industrial +3.106, Derecho +2.246).
+  Los cuatro últimos estrenos (Odontología, Nvidia, GTA dinero, dedos) se quedan entre 2.800 y 8.600 visualizaciones.
+- Las fichas de GTA dinero y dedos están rellenadas.
+
+**Qué hacer con la nueva línea (👤 Javi, «Así funciona»)**: se mantiene, pero con lo que ya sabemos que funciona: (1) un «tú» y algo que
+toque al que mira desde la primera frase; (2) la imagen del primer segundo con el dato dentro, no una presentación; (3) un final que se
+guarde (un consejo útil o un número). La curiosidad pura sin «tú» se abandona pronto (dedos 14,4 s, Nvidia 14,5 s; La cerradura y la carga
+sin cable ya lo mostraron).
+
+### Vídeo recomendado: «Así funciona: la tarjeta sin contacto» · lunes 23-11 a las 10:00
+Es de la lista de Javi y lleva un «tú» en la primera frase («tu tarjeta del banco…»). La respuesta se guarda (el límite de 50 € sin PIN) y se
+entiende fuera de España, porque es una norma europea y una tecnología mundial. Va después del GPS (sáb 21). 143 palabras. Fuentes en
+`projects/tarjeta/FUENTES.md` (ISO/IEC 14443, EMV, Reglamento (UE) 2018/389; dos datos para CONFIRMAR). Primer segundo: una tarjeta en rayos X
+flotando sobre un datáfono en un estudio oscuro, con la antena de cobre que se ilumina de golpe al acercarse. Luego el campo magnético en
+ondas, el chip en macro que se enciende, la firma como un sello de luz y el «50 €» grabado en el plástico.
+
+```
+Tu tarjeta del banco no tiene batería… y aun así habla con el datáfono. ¿De dónde saca la energía? Te lo digo al final. Dentro del plástico hay un chip diminuto y una antena: un hilo de cobre que da varias vueltas por el borde de la tarjeta. El datáfono crea un campo magnético que cambia de sentido trece millones y medio de veces por segundo. Acercas la tarjeta a menos de cuatro centímetros y ese campo hace circular corriente por la antena. Con esa corriente el chip se enciende, firma la compra con una clave que nunca sale de la tarjeta… y se apaga. Todo en menos de medio segundo. La respuesta: la energía se la da el propio datáfono. Y por seguridad, sin PIN solo pasan compras de hasta cincuenta euros. ¿Tarjeta o móvil? Mándaselo a quien todavía paga en efectivo.
+```
+
+### Alternativas
+1. **Internet viaja bajo el mar** (cables submarinos; «tu mensaje cruza el océano por un cable del grosor de una manguera»).
+2. **Una carrera «por dentro»** de las que ya están escritas (Nutrición, Criminología o Ciencias del Deporte), como contrapeso: son lo único
+   que suma visitas cada día.
+
+---
+
+## Actualización anterior: domingo 15-11-2026, 10:00
 
 **Datos**: Instagram y TikTok, captura del 14-11 a las 20:36 (sigue faltando la de las 08:33). Instagram suma ≈ +34.000 en 24 h (las carreras
 antiguas: Mecánica +7.377, Industrial +5.068, Magisterio +3.261, Derecho +3.212).

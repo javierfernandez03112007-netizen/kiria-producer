@@ -1,0 +1,8 @@
+Tu tarjeta del banco no tiene batería… y aun así habla con el datáfono.
+¿De dónde saca la energía? Te lo digo al final.
+Dentro del plástico hay un chip diminuto y una antena: un hilo de cobre que da varias vueltas por el borde de la tarjeta.
+El datáfono crea un campo magnético que cambia de sentido trece millones y medio de veces por segundo.
+Acercas la tarjeta a menos de cuatro centímetros y ese campo hace circular corriente por la antena.
+Con esa corriente el chip se enciende, firma la compra con una clave que nunca sale de la tarjeta… y se apaga. Todo en menos de medio segundo.
+La respuesta: la energía se la da el propio datáfono. Y por seguridad, sin PIN solo pasan compras de hasta cincuenta euros.
+¿Tarjeta o móvil? Mándaselo a quien todavía paga en efectivo.
