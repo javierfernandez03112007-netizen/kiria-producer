@@ -93,6 +93,8 @@ function stageAt(t, st) {
   { const Um = S.mug.userData, calm = tau <= 0 && !THERM && sh !== 'S' && sh !== 'M'; Um.mirror.visible = calm; Um.surfMeshes[0].visible = !calm; Um.surfMeshes[1].visible = !calm && !THERM; }
   // la cocina: el cazo (placa al rojo, burbujas)
   stoveAt(S.stove, t, { heat: sh === 'J' ? win(t, K.calor5 - 0.2, 0.6) : (sh === 'K' || sh === 'W' ? 1 : 0), cut: 0, boil: sh === 'K' ? clamp((t - K.burbujas5 + 0.6) / 1.4) : (sh === 'W' ? 1 : 0) });
+  // el cazo visto desde arriba (K): sin el reflejo blanco de los ventanales en el agua (si no, tapa las rayitas y las burbujas)
+  { const Us = S.stove.userData; Us.surf.material.envMapIntensity = sh === 'K' ? 0.1 : 1.6; for (const m of Us.potMats) m.envMapIntensity = (m.userData.env0 ?? 1) * ENV.env * (sh === 'K' ? 0.45 : 1); }
   // el magnetrón: primero en su sitio (detrás del panel, con la antena hacia la mica), sube fuera de la carcasa de cristal, se despieza («la pieza de
   // los radares…»), se vuelve a montar y se abre en corte («dispara ondas»: el cátodo al rojo, los electrones, las ondas por la antena)
   if (S.mag) { const e = sh === 'E' || sh === 'F'; S.mag.group.visible = e;
