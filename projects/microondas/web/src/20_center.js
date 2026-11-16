@@ -57,7 +57,7 @@ function thermal(on) {
   swap(S.mw, o => o.material === U.lampGrille.material ? grille : U.plate.getObjectById(o.id) ? plate : cool);
   swap(S.mug, o => Um.surfMeshes.includes(o) ? water : mug);
   Um.surfMeshes[1].visible = !on; S.splash.visible = !on;
-  scene.background = on ? new THREE.Color(0x04020e) : S.hdr;
+  S.thermBg = S.thermBg || new THREE.Color(0x04020e); scene.background = on ? S.thermBg : S.hdr;
 }
 const T_THERM = () => [K.microondas6 - 0.05, K.lisa6 - 0.35];
 // ---------- dentro del agua (planos K y M): niebla azulada, la superficie vista desde abajo
@@ -100,7 +100,10 @@ function stageAt(t, st) {
   if (S.waves) magWavesAt(t, { on: sh === 'G' ? 1 : 0, flow: sh === 'G' ? win(t, SHT.G0, 0.8) : 0 });
   // la carcasa del microondas se vuelve de cristal para enseñar el magnetrón
   { const gk = sh === 'E' || sh === 'F' ? win(t, K.magnetron2 - 0.2, 0.6) : 0; if (!THERM) U.shell.material.forEach((m, i) => { if (i < 2) { m.transparent = gk > 0; m.opacity = 1 - 0.85 * gk; m.depthWrite = gk < 0.5; } }); }
-  if (S.mol) moleculesAt(t, { on: sh === 'I' ? 1 : 0, field: sh === 'I' ? win(t, K.intenta4, 0.4) : 0, heat: sh === 'I' ? clamp((t - K.giran4 + 0.2) / (K.calor4 - K.giran4 + 0.6)) : 0 });
+  if (S.mol) moleculesAt(t, { on: sh === 'I' ? clamp((t - SHT.I0) / 0.3 + 0.15) : 0, field: sh === 'I' ? win(t, K.intenta4, 0.4) : 0, heat: sh === 'I' ? clamp((t - K.giran4 + 0.2) / (K.calor4 - K.giran4 + 0.6)) : 0,
+    dipole: sh === 'I' ? win(t, K.moleculas4, 0.3) * (1 - win(t, K.giran4 + 0.5, 0.4)) : 0 });
+  // fondo: el HDRI de la cocina; nada en las moléculas (su esfera de agua lo tapa) y morado oscuro en la vista térmica
+  { const want = THERM ? S.thermBg : sh === 'I' ? null : S.hdr; if (scene.background !== want) scene.background = want; }
   // la mano, en primera persona: entra desde abajo hacia el asa; al estallar, se retira de golpe
   { const vis = sh === 'Q'; S.hand.visible = vis;
     if (vis) { const hit = K.quemaduras9 - 0.25, reach = win(t, SHT.Q0 + 0.1, hit - SHT.Q0 - 0.1), back = win(t, hit + 0.05, 0.3);

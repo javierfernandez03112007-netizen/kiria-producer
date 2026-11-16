@@ -254,7 +254,7 @@ vec3 ePos(float T, vec4 s, out float a) {
   float life = mix(0.55, 1.05, s.x), q = T / life + s.y * 17.0; a = fract(q); float cyc = floor(q);
   float h1 = fract(sin(cyc * 12.9898 + s.z * 78.233) * 43758.5453), h2 = fract(sin(cyc * 4.1414 + s.w * 31.71) * 24634.6345);
   float r, th, y;
-  if (s.x < 0.28) { r = rc + 0.022 + 0.1 * h1 * h1; th = om * 2.4 * T + s.z * 6.2832 + s.w * 40.0; y = (h2 - 0.5) * 2.0 * hh; }
+  if (s.x < 0.12) { r = rc + 0.03 + 0.1 * h1 * h1; th = om * 2.4 * T + s.z * 6.2832 + s.w * 40.0; y = (h2 - 0.5) * 2.0 * hh; }
   else { float sp = floor(s.w * 5.0), ar = pow(a, 0.8);
     r = mix(rc + 0.03, ra + 0.01, ar);
     th = om * T + sp * 1.256637 + (h1 - 0.5) * 0.42 * (1.0 - 0.4 * ar) - 1.35 * ar;
@@ -268,7 +268,7 @@ void main(){
   vec2 pa = ca.xy / ca.w * res * 0.5, pb = cb.xy / cb.w * res * 0.5, d = pb - pa; float L = length(d);
   vec2 dir = L > 0.001 ? d / L : vec2(1.0, 0.0), nr = vec2(-dir.y, dir.x);
   float px = sz * projectionMatrix[1][1] * res.y * 0.5 / max(ca.w, 0.001);
-  float w = max(1.7, px) * (1.0 - 0.6 * (cs.z + cs.x) / nseg);
+  float w = clamp(px, 1.3, 4.5) * (1.0 - 0.6 * (cs.z + cs.x) / nseg);
   vec4 c = cs.x < 0.5 ? ca : cb; vec2 p = cs.x < 0.5 ? pa - dir * w * step(cs.z, 0.5) : pb;
   p += nr * cs.y * w;
   gl_Position = vec4(p / (res * 0.5) * c.w, c.z, c.w);
@@ -284,7 +284,7 @@ void main(){
   #include <logdepthbuf_fragment>
   if (vA < 0.002) discard;
   float k = exp(-vT * vT * 3.2);
-  vec3 col = mix(vec3(0.25, 0.45, 1.0) * 2.6, vec3(1.3, 1.4, 1.7) * 5.0, k * k);
+  vec3 col = mix(vec3(0.2, 0.4, 1.0) * 0.32, vec3(0.9, 1.0, 1.35) * 0.95, k * k);
   gl_FragColor = vec4(col * k, vA);
 }`;
 function magElectrons(n = 1200, NS = 12) {
@@ -315,7 +315,7 @@ void main(){
   if (x < 0.0 || x > 1.0 || power < 0.002) discard;
   float arm = th - om * time + 1.35 * pow(x, 0.8), s = 0.5 + 0.5 * cos(arm * 5.0);
   float d = pow(s, 3.0) * (1.0 - x) * smoothstep(0.0, 0.2, x) + 0.4 * exp(-x * 5.0);
-  gl_FragColor = vec4(vec3(0.3, 0.5, 1.0) * 1.3, power * d * 0.22 * smoothstep(1.0, 0.8, x));
+  gl_FragColor = vec4(vec3(0.3, 0.5, 1.0) * 1.3, power * d * 0.12 * smoothstep(1.0, 0.8, x));
 }`;
 
 // ---------------------------------------------------------------- frentes de onda: cáscaras esféricas que crecen desde una fuente; solo se dibuja la
@@ -572,6 +572,6 @@ function buildMagWaves(o = {}) {
 function magWavesAt(t, P = {}, W = MAGW) {
   if (!W) return;
   const on = clamp(P.on ?? 0), flow = clamp(P.flow ?? 0), Rf = 2 + flow * 110;
-  for (const s of W.sets) magShellsAt(s, t, 14, Rf, on * 0.5, 40, 4);
+  for (const s of W.sets) magShellsAt(s, t, 14, Rf, on * 0.36, 40, 4);
   W.glow.material.opacity = on * clamp(flow * 4) * (0.5 + 0.15 * Math.sin(t * 9.0)); W.glow.visible = W.glow.material.opacity > 0.002;
 }
