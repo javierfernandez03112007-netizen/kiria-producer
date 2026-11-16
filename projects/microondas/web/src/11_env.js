@@ -23,7 +23,7 @@ function envSet(rot, bg, env, blur) {
 function buildCounter() {
   const m = new THREE.MeshPhysicalMaterial({ map: tx('ph/kitchen_wood/kitchen_wood_Diffuse_2k.jpg', true, [10, 4]), normalMap: tx('ph/kitchen_wood/kitchen_wood_nor_gl_2k.jpg', false, [10, 4]),
     roughnessMap: tx('ph/kitchen_wood/kitchen_wood_Rough_2k.jpg', false, [10, 4]), aoMap: tx('ph/kitchen_wood/kitchen_wood_AO_2k.jpg', false, [10, 4]), roughness: 0.85, clearcoat: 0.45, clearcoatRoughness: 0.18, normalScale: new THREE.Vector2(0.6, 0.6) });
-  const g = new THREE.BoxGeometry(260, 4, 110, 1, 1, 1); g.translate(0, -2, -20); g.setAttribute('uv1', g.attributes.uv);
+  const g = new THREE.BoxGeometry(200, 4, 110, 1, 1, 1); g.translate(-30, -2, -20); g.setAttribute('uv1', g.attributes.uv);
   const top = new THREE.Mesh(g, m); top.receiveShadow = true; top.castShadow = true; scene.add(top); S.counter = top;
   return top;
 }

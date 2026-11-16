@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------- el cazo al fuego: la cocina eléctrica y el cazo esmaltado son modelos reales escaneados de Poly Haven (CC0);
 // la placa grande se pone al rojo, el cazo se ve en corte con el agua y las burbujas que nacen en las rayitas del fondo y suben.
 // Unidades: cm. La cocina va lejos del microondas (STOVE_POS), con su encimera a la altura de la del microondas (y ≈ 0).
-const STOVE_POS = new THREE.Vector3(320, -88.1, -20), POT_L = v3(-11.5, 87.4, 12.5), POT_R = 8.75, POT_WY = 8.6;
+const STOVE_POS = new THREE.Vector3(100, -88.1, -18), POT_L = v3(-11.5, 87.4, 12.5), POT_R = 8.75, POT_WY = 8.6;
 async function loadGLTF(path) { const g = await new GLTFLoader().loadAsync(ASSET + path); g.scene.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } }); return g.scene; }
 function scratchTex() {        // fondo del cazo: esmalte con rayitas finas (donde nacen las burbujas)
   const t = canvasTex(1024, 1024, (g, w, h) => { g.fillStyle = '#d8dde0'; g.fillRect(0, 0, w, h);
@@ -18,7 +18,7 @@ async function buildStove() {
   // la placa al rojo (encima de la placa de hierro, debajo del cazo)
   const glowT = canvasTex(256, 256, (g, w, h) => { const gr = g.createRadialGradient(w / 2, h / 2, w * 0.08, w / 2, h / 2, w / 2); gr.addColorStop(0, 'rgba(255,90,30,.0)'); gr.addColorStop(0.35, 'rgba(255,80,20,.85)');
     gr.addColorStop(0.8, 'rgba(200,40,10,.7)'); gr.addColorStop(1, 'rgba(120,20,5,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); for (let r = 0.2; r < 0.48; r += 0.045) { g.strokeStyle = 'rgba(255,170,90,.35)'; g.lineWidth = 3; g.beginPath(); g.arc(w / 2, h / 2, r * w, 0, 7); g.stroke(); } });
-  const glow = new THREE.Mesh(new THREE.CircleGeometry(10.5, 64), new THREE.MeshBasicMaterial({ map: glowT, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+  const glow = new THREE.Mesh(new THREE.CircleGeometry(9.2, 64), new THREE.MeshBasicMaterial({ map: glowT, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
   glow.rotation.x = -Math.PI / 2; glow.position.set(POT_L.x, POT_L.y - 0.55, POT_L.z); G.add(glow); U.glow = glow;
   // agua del cazo: cuerpo (se ve en corte), cara del corte y superficie
   const wm = new THREE.MeshPhysicalMaterial({ color: 0x7aa3ae, roughness: 0.05, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false });
