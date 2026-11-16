@@ -12,6 +12,8 @@ async function labBuild() {
 function labAt(t) {
   let c, k, P;
   if (t < 5) { const u = t / 3.2; c = macCamPot(u); k = 'pot'; P = { pot: 1 }; }
+  else if (t < 8) { MACT.groups.pot.updateMatrixWorld(); const a = v3(0.5, 4.5, 0.6).applyMatrix4(MACT.groups.pot.matrixWorld), b = v3(0.5, 0.56, 0.0).applyMatrix4(MACT.groups.pot.matrixWorld);
+    c = [a.x, a.y, a.z, b.x, b.y, b.z, 50]; k = 'pot'; P = { pot: 1 }; }      // comprobación: el fondo del cazo visto desde arriba (dentro del agua)
   else if (t < 15) { const u = (t - 10) / 2.8; c = macCamMug(u); k = 'mug'; P = { mug: 1, mugU: u }; }
   else { const u = (t - 20) / 2.25; c = macCamStick(u); k = 'stick'; P = { stick: 1 }; }
   cam.fov = c[6]; cam.updateProjectionMatrix(); cam.position.set(c[0], c[1], c[2]); cam.up.set(0, 1, 0); cam.lookAt(c[3], c[4], c[5]); cam.updateMatrixWorld();

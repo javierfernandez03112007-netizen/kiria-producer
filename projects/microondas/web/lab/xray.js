@@ -16,7 +16,7 @@ const XRD = {
   duct: { x0: 9.08, x1: 13.3, y0: 11.2, y1: 19.8, z0: -31.0, z1: -9.6, t: 0.14 },   // guía de ondas (por dentro): pegada a la pared derecha de la cavidad
   win: { y0: 11.5, y1: 19.5, z0: -18, z1: -10 },                                      // ventana de mica (la boca de la guía en la cavidad)
   mag: [16.18, 15.5, -26],                                                            // magnetrón: la brida contra la guía, la antena dentro (hacia −x)
-  lift: [17, 41, -19],                                                                // magnetrón arriba (fuera del microondas)
+  lift: [17, 47, -19],                                                                // magnetrón arriba (fuera del microondas, en el foco del plato del radar)
   island: [17, 29.6, -19],                                                            // centro de la isla del radar
 };
 let XR = null;
@@ -117,7 +117,7 @@ void main(){
 function xrFillPatch(m) {   // el sólido aparece por debajo de una altura (mundo) con una franja cian en el frente
   const U = { xrFill: { value: -1e4 }, xrBand: { value: 0 } }; m.userData.xrU = U;
   m.onBeforeCompile = sh => { Object.assign(sh.uniforms, U);
-    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying float vXrY;').replace('#include <project_vertex>', '#include <project_vertex>\nvXrY = (modelMatrix * vec4(transformed, 1.0)).y;');
+    sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying float vXrY;').replace('#include <project_vertex>', '#include <project_vertex>\n#ifdef USE_INSTANCING\nvXrY = (modelMatrix * instanceMatrix * vec4(transformed, 1.0)).y;\n#else\nvXrY = (modelMatrix * vec4(transformed, 1.0)).y;\n#endif');
     sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nvarying float vXrY; uniform float xrFill, xrBand;')
       .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (vXrY > xrFill) discard;')
       .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\ntotalEmissiveRadiance += vec3(0.35, 1.6, 2.0) * xrBand * exp(-(xrFill - vXrY) * 1.2);'); };
@@ -142,18 +142,18 @@ function xrBuildRadar(XRo, M) {
       im.instanceMatrix.needsUpdate = true; return im; } });
     els[els.length - 1].l.geometry.setPositions(segs); }
   // el gran plato parabólico (tipo «Würzburg») sobre su cabina, detrás del magnetrón: el magnetrón queda donde iría la antena de alimentación
-  { const D = new THREE.Group(); D.position.set(0, 19.5, -17); D.rotation.x = -0.32; G.add(D); const f = 13, R = 18, prof = [];
+  { const D = new THREE.Group(); D.position.set(0, 15.4, -13); D.rotation.x = -0.32; G.add(D); const f = 11, R = 15, prof = [];
     for (let i = 0; i <= 18; i++) { const r = R * i / 18; prof.push(new THREE.Vector2(Math.max(r, 0.01), r * r / (4 * f))); }
     const g = new THREE.LatheGeometry(prof, 64); g.rotateX(Math.PI / 2); const segs = [];
     for (let k = 0; k < 16; k++) { const a = k / 16 * 6.2832; for (let i = 0; i < 6; i++) { const r0 = R * i / 6, r1 = R * (i + 1) / 6; segs.push(r0 * Math.cos(a), r0 * Math.sin(a), r0 * r0 / (4 * f), r1 * Math.cos(a), r1 * Math.sin(a), r1 * r1 / (4 * f)); } }
-    for (const r of [6, 12, 18]) for (let k = 0; k < 48; k++) { const a0 = k / 48 * 6.2832, a1 = (k + 1) / 48 * 6.2832, z = r * r / (4 * f); segs.push(r * Math.cos(a0), r * Math.sin(a0), z, r * Math.cos(a1), r * Math.sin(a1), z); }
+    for (const r of [5, 10, 15]) for (let k = 0; k < 48; k++) { const a0 = k / 48 * 6.2832, a1 = (k + 1) / 48 * 6.2832, z = r * r / (4 * f); segs.push(r * Math.cos(a0), r * Math.sin(a0), z, r * Math.cos(a1), r * Math.sin(a1), z); }
     const dm = M.steelR.clone(); dm.side = THREE.DoubleSide;
-    el('plato', g, dm, segs, 0.16, { par: D, y0: 1, y1: 42 });
+    el('plato', g, dm, segs, 0.16, { par: D, y0: -15, y1: 17 });
     // brazos de la antena de alimentación (hacia el foco) y la cabina con su horquilla
     const arms = []; for (let k = 0; k < 3; k++) { const a = k / 3 * 6.2832 + 0.5; arms.push(xrBar(v3(R * Math.cos(a), R * Math.sin(a), R * R / (4 * f)), v3(0, 0, f), 0.18)); }
-    el('brazos', magMerge(arms), M.steelR, xrEdges(magMerge(arms), 40), 0.3, { par: D, y0: 10, y1: 40 });
-    const cab = new THREE.BoxGeometry(9, 7, 8); cab.translate(0, 3.5, -19); const fork = [xrBar(v3(-4, 7, -19), v3(-3, 19.5, -17), 0.5), xrBar(v3(4, 7, -19), v3(3, 19.5, -17), 0.5)];
-    el('cabina', magMerge([cab, ...fork]), M.olive, xrEdges(cab, 30).concat(xrEdges(magMerge(fork), 40)), 0.1, { y0: 0, y1: 20 }); }
+    el('brazos', magMerge(arms), M.steelR, xrEdges(magMerge(arms), 40), 0.3, { par: D, y0: -15, y1: 17 });
+    const cab = new THREE.BoxGeometry(9, 7, 8); cab.translate(0, 3.5, -17); const fork = [xrBar(v3(-4, 7, -17), v3(-2.6, 15.4, -13.6), 0.5), xrBar(v3(4, 7, -17), v3(2.6, 15.4, -13.6), 0.5)];
+    el('cabina', magMerge([cab, ...fork]), M.olive, xrEdges(cab, 30).concat(xrEdges(magMerge(fork), 40)), 0.1, { y0: 0, y1: 16 }); }
   // torre de celosía (tipo «Chain Home») con su antena de dipolos arriba
   { const T = [], H2 = 62, b0 = 5, b1 = 1.8, X = -27, Z = -20, lv = 8;
     const P = (y, sx, sz) => { const b = lerp(b0, b1, y / H2); return v3(X + sx * b, y, Z + sz * b); };
@@ -184,7 +184,7 @@ function buildXray(MW) {
   const U = MW.userData, C = MWD.cav, W = MWD.W, H = MWD.H, D = MWD.D, fy0 = MWD.foot, fy1 = fy0 + H, M = xrMats(MW), d = XRD.duct;
   const X = { mw: MW, group: new THREE.Group(), panels: [], hot: [], fans: [] }; MW.add(X.group); X.group.name = 'xray';
   // ---- carcasa en piezas (la original es una sola): marco delantero, paredes de la cavidad y su chapa de fuera; tapa, lados y trasera, que se separan
-  U.shell.visible = false;
+  U.shell.visible = false; MW.traverse(o => { if (o.isMesh && o.parent === MW && Math.abs(o.position.z + D + 0.05) < 0.02) o.visible = false; });   // (y la tapa trasera suelta)
   { const sh = roundRectShape(-W / 2, fy0, W / 2, fy1, 1.8); sh.holes.push(rectPathXY(C.x0, C.y0, C.x1, C.y1));
     const g = new THREE.ExtrudeGeometry(sh, { depth: 1.0, bevelEnabled: true, bevelSize: 0.4, bevelThickness: 0.4, bevelSegments: 3, curveSegments: 10 }); g.translate(0, 0, -1.4); xrUV(g, 1 / 48); xrMesh(g, M.shell, X.group); }
   const wallE = MW.userData.M.enamel, win = XRD.win;
@@ -260,12 +260,12 @@ function buildXray(MW) {
     const dio = xrMesh(new THREE.CylinderGeometry(0.34, 0.34, 3.0, 16), M.black, K); dio.rotation.z = Math.PI / 2; dio.position.set(3.4, 1.1, 2.4);
     const bnd = xrMesh(new THREE.CylinderGeometry(0.35, 0.35, 0.35, 16), M.white, K); bnd.rotation.z = Math.PI / 2; bnd.position.set(4.6, 1.1, 2.4); X.diode = dio; }
   // ---- ventilador detrás del magnetrón (sopla sobre las aletas)
-  { const F = new THREE.Group(); F.position.set(17, 15.5, -34.3); X.group.add(F); X.fan = F;
+  { const F = new THREE.Group(); F.position.set(17, 15.5, -33.8); X.group.add(F); X.fan = F;
     const s = rrShape(11.4, 11.4, 1.2); s.holes.push((() => { const p = new THREE.Path(); p.absarc(0, 0, 5.3, 0, Math.PI * 2, true); return p; })());
     const g = new THREE.ExtrudeGeometry(s, { depth: 1.0, bevelEnabled: true, bevelSize: 0.1, bevelThickness: 0.1, bevelSegments: 1, curveSegments: 24 }); g.translate(0, 0, -0.5); xrMesh(g, M.black, F);
     const rot = new THREE.Group(); F.add(rot); X.fans.push(rot); xrMesh(new THREE.CylinderGeometry(1.4, 1.4, 1.2, 24), M.black, rot).rotation.x = Math.PI / 2;
     for (let k = 0; k < 7; k++) { const b = rbox(3.9, 1.7, 0.12, M.black, 0.6); b.position.set(Math.cos(k / 7 * 6.2832) * 3.2, Math.sin(k / 7 * 6.2832) * 3.2, 0); b.rotation.set(0, 0, k / 7 * 6.2832); b.rotateX(0.55); rot.add(b); }
-    const mot = xrMesh(new THREE.CylinderGeometry(2.0, 2.0, 1.6, 24), M.can, F); mot.rotation.x = Math.PI / 2; mot.position.z = -1.2;
+    const mot = xrMesh(new THREE.CylinderGeometry(2.0, 2.0, 1.6, 24), M.can, F); mot.rotation.x = Math.PI / 2; mot.position.z = -1.0;
     for (let k = 0; k < 3; k++) { const a = k / 3 * 6.2832 + 0.3; xrMesh(xrBar(v3(Math.cos(a) * 2, Math.sin(a) * 2, -1.0), v3(Math.cos(a) * 5.4, Math.sin(a) * 5.4, -0.6), 0.2), M.black, F); } }
   // ---- motor del plato, debajo de la cavidad
   { const Mo = new THREE.Group(); Mo.position.set(-6, fy0 + 0.06, -16.5); X.group.add(Mo); X.motor = Mo;
@@ -280,7 +280,7 @@ function buildXray(MW) {
   xrWire([[13.4, 6.4, -28.8], [15.5, 9.5, -30.5], [19.5, 18.5, -29.5], [20.3, 20.4, -26.4]], 0.13, M.wY, X.group);        // condensador → filamento del magnetrón
   xrWire([[14.0, 6.0, -28.8], [16.5, 8.5, -31.5], [21, 18, -30.5], [20.3, 20.4, -25.6]], 0.13, M.wK, X.group);
   xrWire([[19.5, 2.4, -8.2], [20.5, 3.5, -5.5], [20.5, 6, -3.2]], 0.13, M.wW, X.group); xrWire([[15.2, 2.4, -8.2], [14.5, 3.5, -5], [14.5, 7, -3.2]], 0.13, M.wB, X.group);
-  xrWire([[21.5, 12, -34.3], [23, 9, -30], [23, 8, -12], [21, 9, -3.4]], 0.11, M.wK, X.group);
+  xrWire([[21.5, 12, -33.8], [23, 9, -30], [23, 8, -12], [21, 9, -3.4]], 0.11, M.wK, X.group);
   xrWire([[-3.5, 1.4, -16.5], [5, 1.3, -17], [12, 1.3, -10], [16, 4, -3.2]], 0.11, M.wW, X.group);
 
   // ---- el radar
@@ -303,6 +303,7 @@ function xrayAt(t, P = {}, X = XR) {
   // rayos X: borde cian en las tripas; la guía por fuera se vuelve fantasma para ver los frentes de onda
   XRU.rim.value.setRGB(0.25 * glow, 0.8 * glow, 1.1 * glow);
   X.ductOut.material.opacity = 1 - 0.7 * glow; X.ductOut.material.transparent = glow > 0.001; X.ductOut.material.depthWrite = glow < 0.5;
+  X.ductOut.visible = fly < 0;      // con la cámara entrando en la guía, la chapa de fuera no estorba
   // calor: el magnetrón y las bobinas del transformador, al rojo suave
   for (const m of X.hot) m.emissive.setRGB(1.0, 0.36, 0.1).multiplyScalar(hot * 0.55 * (m.userData.xrHotK || 1));
   // ventilador
@@ -328,7 +329,7 @@ function xrayAt(t, P = {}, X = XR) {
       const wy = e.o.getWorldPosition(xrTmpV).y, h = wy + lerp(e.y0 - 2, e.y1 + 6, fill);
       e.m.userData.xrU.xrFill.value = fill >= 0.999 ? 1e5 : h; e.m.userData.xrU.xrBand.value = magSst(0.2, 0.35, p) * (1 - magSst(0.85, 1, p)); }
     X.sky.material.uniforms.a.value = magSst(0, 0.45, radar);
-    X.beamLight.material.uniforms.a.value = magSst(0.45, 0.85, radar); X.spot.rotation.set(0, -0.9 + Math.sin(t * 0.9) * 0.7, 0); X.beamLight.rotation.x = 0.95 + Math.sin(t * 0.6) * 0.12; }
+    X.beamLight.material.uniforms.a.value = magSst(0.45, 0.85, radar); X.spot.rotation.set(0, -2.2 + Math.sin(t * 0.9) * 0.7, 0); X.beamLight.rotation.x = -(0.95 + Math.sin(t * 0.6) * 0.12); }
 }
 
 // ---------------------------------------------------------------- la cámara que vuela por la guía (coordenadas del MUNDO)

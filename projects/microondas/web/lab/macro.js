@@ -15,8 +15,10 @@
 // del agua) · macWater(on, k) (k: 'pot' | 'mug' | 'stick').
 
 const MAC_DEF = { pot: new THREE.Vector3(66.5, -0.7, -5.5), mug: new THREE.Vector3(-6, 5.17, -22.5), mugRot: -0.6 };
-const MAC_POTY = 0.56, MAC_MUGY = 0.71, MAC_MUGR = 3.08;              // fondos (coordenadas del cazo y de la taza): justo encima de los suyos
-const MAC_WATER = new THREE.Color(0.16, 0.44, 0.6), MAC_DENS = 0.045;  // bruma del agua (lineal) y densidad (1/cm)
+// fondos (coordenadas del cazo y de la taza), justo encima de los suyos: el fondo interior del cazo escaneado está en y = 0,598 y es plano hasta r ≈ 5,66
+// (luego sube la pared); el de la taza, de 0,62 (centro) a 0,7 (r = 3,1)
+const MAC_POTY = 0.615, MAC_POTFR = 5.62, MAC_MUGY = 0.71, MAC_MUGR = 3.08;
+const MAC_WATER = new THREE.Color(0.075, 0.25, 0.36), MAC_NEAR = -3, MAC_FAR = 15;  // el tinte del agua (lineal): lineal con la distancia, ya se nota de cerca
 let MAC = null, macStickRef = null;
 const macPotBase = () => (typeof STOVE_POS !== 'undefined' && typeof POT_L !== 'undefined') ? STOVE_POS.clone().add(POT_L) : MAC_DEF.pot.clone();
 const macPotR = () => (typeof POT_R !== 'undefined' ? POT_R : 8.75), macPotW = () => (typeof POT_WY !== 'undefined' ? POT_WY : 8.6), macMugW = () => (typeof MUG !== 'undefined' ? MUG.WY : 7.9);
@@ -34,8 +36,8 @@ float macCaustic(vec2 p0, float t) {
 }
 float macH(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float macN(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(macH(i), macH(i + vec2(1, 0)), f.x), mix(macH(i + vec2(0, 1)), macH(i + vec2(1, 1)), f.x), f.y); }
-// bruma del agua según la distancia a la cámara
-vec3 macFog(vec3 c, float d) { float f = 1.0 - exp(-uDens * uDens * d * d); return mix(c, uWater, f); }
+// tinte y bruma del agua según la distancia a la cámara (uDens = cuánto del agua: 0 fuera, 1 dentro)
+vec3 macFog(vec3 c, float d) { float f = clamp((d + 3.0) / 15.0, 0.0, 0.85) * uDens; return mix(c, uWater, f); }
 `;
 const MAC_VS = `#include <common>
 #include <logdepthbuf_pars_vertex>
@@ -184,14 +186,16 @@ varying vec3 vW, vN, vL;
 void main() {
   #include <logdepthbuf_fragment>
   vec3 q = vL;                                                    // x: ancho (±0,32), y: largo (±7), z: grosor (±0,08)
-  float g = q.x * 13.0 + q.z * 9.0 + sin(q.y * 0.85 + q.x * 2.4) * 0.9 + (macN(vec2(q.y * 0.55, q.x * 3.0)) - 0.5) * 2.2;
-  float band = fract(g), late = smoothstep(0.62, 0.8, band) * (1.0 - smoothstep(0.86, 0.98, band));      // las vetas (madera de verano, oscura)
-  vec3 wood = mix(vec3(0.62, 0.42, 0.22), vec3(0.78, 0.58, 0.34), macN(vec2(q.y * 1.3, g * 0.7)));
-  wood = mix(wood, vec3(0.34, 0.19, 0.08), late * 0.85);
-  // poros: rayitas oscuras alargadas a lo largo del palito, sobre todo en las vetas
-  vec2 pc = vec2(q.x * 46.0 + q.z * 30.0, q.y * 7.0); vec2 ci = floor(pc), cf = fract(pc) - 0.5; float ph = macH(ci);
-  float pore = (ph < 0.32 + 0.4 * late ? 1.0 : 0.0) * (1.0 - smoothstep(0.12, 0.3, length(vec2(cf.x * 1.0, cf.y * 0.28))));
-  wood = mix(wood, vec3(0.12, 0.06, 0.03), pore * 0.9);
+  float warp = sin(q.y * 0.45 + q.x * 1.6) * 0.7 + (macN(vec2(q.y * 0.3, q.x * 1.5 + q.z * 3.0)) - 0.5) * 2.6;
+  float g = q.x * 7.5 + q.z * 6.0 + warp, band = fract(g);
+  float late = smoothstep(0.5, 0.72, band) * (1.0 - smoothstep(0.8, 0.97, band));             // las vetas (madera de verano, oscura), onduladas
+  vec3 wood = mix(vec3(0.5, 0.31, 0.15), vec3(0.62, 0.42, 0.22), macN(vec2(q.y * 0.9, g * 0.6)));
+  wood *= 0.92 + 0.16 * macN(vec2(q.x * 90.0 + q.z * 60.0, q.y * 1.5));                      // fibras finas a lo largo
+  wood = mix(wood, vec3(0.24, 0.12, 0.045), late * 0.88);
+  // poros: motas oscuras alargadas (≈ 0,2 × 0,7 mm, exageradas), más en las vetas: ahí nacen las burbujas
+  vec2 pc = vec2(q.x * 20.0 + q.z * 14.0, q.y * 5.5); vec2 ci = floor(pc), cf = fract(pc) - 0.5 - (vec2(macH(ci + 3.1), macH(ci + 7.7)) - 0.5) * 0.4;
+  float pore = step(macH(ci), 0.22 + 0.45 * late) * (1.0 - smoothstep(0.7, 1.0, length(vec2(cf.x / 0.2, cf.y / 0.24))));
+  wood = mix(wood, vec3(0.07, 0.035, 0.015), pore * 0.92);
   float wet = 1.0 - smoothstep(uWY - 0.05, uWY + 0.12, vW.y);
   wood *= 1.0 - 0.32 * wet;
   vec3 N = normalize(vN), V = normalize(cameraPosition - vW), L = normalize(vec3(-0.35, 1.0, 0.45)), Hh = normalize(L + V);
@@ -214,17 +218,17 @@ function buildMacro(o = {}) {
   const G = { pot: new THREE.Group(), mug: new THREE.Group(), stick: new THREE.Group() };
   G.pot.name = 'macro_cazo'; G.mug.name = 'macro_taza'; G.stick.name = 'macro_palito';
   // ---- A) el cazo (coordenadas del cazo: origen en su base, y hacia arriba)
-  const R = macPotR() - 0.32;
+  const R = MAC_POTFR;
   // las rayas: dos largas y paralelas (los raíles por los que va la cámara) y otras sueltas que se cruzan
-  const S0 = new THREE.Vector2(-6.4, 3.5), S1 = new THREE.Vector2(6.3, -2.3), dir = S1.clone().sub(S0).normalize(), nrm = new THREE.Vector2(-dir.y, dir.x), RAIL = 0.36;
+  const S0 = new THREE.Vector2(-4.85, 2.3), S1 = new THREE.Vector2(4.8, -1.95), dir = S1.clone().sub(S0).normalize(), nrm = new THREE.Vector2(-dir.y, dir.x), RAIL = 0.36;
   const seg = [], segW = [];
   for (const sd of [-1, 1]) for (let k = 0; k < 2; k++) {           // cada raíl en dos tramos con un quiebro mínimo (no es una regla)
     const a = S0.clone().addScaledVector(nrm, sd * RAIL + (k ? 0.03 * sd : 0)).lerp(S1.clone().addScaledVector(nrm, sd * RAIL), k * 0.5);
     const b = S0.clone().addScaledVector(nrm, sd * RAIL).lerp(S1.clone().addScaledVector(nrm, sd * RAIL + 0.02 * sd), 0.5 + k * 0.5);
     seg.push([a.x, a.y, b.x, b.y]); segW.push(0.055); }
-  while (seg.length < MAC_NS) { const c = new THREE.Vector2((rng() * 2 - 1) * R * 0.85, (rng() * 2 - 1) * R * 0.85); if (c.length() > R - 1) continue;
-    const an = rng() * Math.PI, L = 0.8 + 4.5 * Math.pow(rng(), 1.5), d2 = new THREE.Vector2(Math.cos(an), Math.sin(an)).multiplyScalar(L / 2);
-    const a = c.clone().sub(d2), b = c.clone().add(d2); if (a.length() > R - 0.3 || b.length() > R - 0.3) continue;
+  while (seg.length < MAC_NS) { const c = new THREE.Vector2((rng() * 2 - 1) * R * 0.9, (rng() * 2 - 1) * R * 0.9); if (c.length() > R - 0.6) continue;
+    const an = rng() * Math.PI, L = 0.6 + 3.4 * Math.pow(rng(), 1.5), d2 = new THREE.Vector2(Math.cos(an), Math.sin(an)).multiplyScalar(L / 2);
+    const a = c.clone().sub(d2), b = c.clone().add(d2); if (a.length() > R - 0.2 || b.length() > R - 0.2) continue;
     // que no tape los raíles por delante de la cámara: las que cruzan el pasillo, finas
     seg.push([a.x, a.y, b.x, b.y]); segW.push(0.022 + 0.03 * rng()); }
   const potU = { ...U, uSeg: { value: seg.map(s => new THREE.Vector4(...s)) }, uSegW: { value: segW }, uBase: { value: new THREE.Vector3() } };
@@ -234,7 +238,7 @@ function buildMacro(o = {}) {
   const sites = [];
   for (let s = 0; s < 4; s++) { const [ax, az, bx, bz] = seg[s], L = Math.hypot(bx - ax, bz - az), n = Math.floor(L / 0.5);
     for (let k = 0; k < n; k++) { const u = (k + 0.3 + 0.4 * rng()) / n; sites.push({ x: ax + (bx - ax) * u, z: az + (bz - az) * u, w: segW[s], rail: 1 }); } }
-  const corr = (x, z) => { const px = x - S0.x, pz = z - S0.y, h = px * dir.x + pz * dir.y; return Math.abs(px * nrm.x + pz * nrm.y) < 0.3 && h > -1 && h < 15; };   // pasillo de la cámara
+  const corr = (x, z) => { const px = x - S0.x, pz = z - S0.y, h = px * dir.x + pz * dir.y; return Math.abs(px * nrm.x + pz * nrm.y) < 0.3 && h > -1 && h < 12; };   // pasillo de la cámara
   for (let s = 4; s < MAC_NS; s++) { const [ax, az, bx, bz] = seg[s], n = 1 + Math.floor(rng() * 2.5); for (let k = 0; k < n; k++) { const u = rng(), x = ax + (bx - ax) * u, z = az + (bz - az) * u;
     if (!corr(x, z)) sites.push({ x, z, w: segW[s], rail: 0 }); } }
   for (const st of sites) { st.per = 0.85 + 0.9 * rng(); st.ph = rng(); st.rmax = (st.rail ? 0.07 : 0.035) + (st.rail ? 0.06 : 0.04) * rng(); st.sw = rng() * 6.28; }
@@ -283,9 +287,10 @@ const macWaterY = k => k === 'pot' ? MAC.groups.pot.position.y + macPotW() : MAC
 // y el techo. on: 0…1 (0 = fuera del agua); k: 'pot' | 'mug' | 'stick'
 function macWater(on, k = 'pot') {
   const M = MAC; on = clamp(on);
-  if (on > 0.001) { if (!M.fog) M.fog = new THREE.FogExp2(MAC_WATER.clone(), 0); M.fog.color.copy(MAC_WATER); M.fog.density = MAC_DENS * 0.8 * on; scene.fog = M.fog; }
+  if (on > 0.001) { if (!M.fog) M.fog = new THREE.Fog(MAC_WATER.clone(), MAC_NEAR, MAC_FAR); M.fog.color.copy(MAC_WATER);
+    M.fog.near = MAC_NEAR + (1 - on) * 60; M.fog.far = MAC_FAR / 0.85 + (1 - on) * 200; scene.fog = M.fog; }                 // niebla lineal: tiñe ya de cerca
   else if (scene.fog === M.fog) scene.fog = null;
-  M.U.uDens.value = MAC_DENS * on; M.U.uCaus.value = on;
+  M.U.uDens.value = on; M.U.uCaus.value = on;
   M.potCeil.visible = on > 0.001 && k === 'pot'; M.mugCeil.visible = on > 0.001 && k !== 'pot';
 }
 
@@ -331,7 +336,7 @@ function macToWorld(G, c) { const p = v3(...c[0]).applyMatrix4(G.matrixWorld), l
 function macCamPot(u) {
   const M = MAC; macFrames(); const { S0, S1, dir } = M.rails, y0 = MAC_POTY, W = macPotW();
   const at = (s, h) => [S0.x + dir.x * s, y0 + h, S0.y + dir.y * s];
-  const KS = [[0, at(-0.6, W + 2.8), at(2.5, y0)], [0.22, at(0.6, y0 + 0.75), at(3.6, y0 + 0.1)], [0.4, at(2.2, y0 + 0.42), at(5.4, y0 + 0.12)], [1, at(10.6, y0 + 0.38), at(13.8, y0 + 0.14)]];
+  const KS = [[0, at(-0.4, W + 2.8), at(2.2, y0)], [0.22, at(0.4, y0 + 0.75), at(3.2, y0 + 0.1)], [0.4, at(1.6, y0 + 0.42), at(4.6, y0 + 0.12)], [1, at(7.9, y0 + 0.38), at(10.9, y0 + 0.14)]];
   const T = KS.map(k => k[0]), comp = (j, c) => mono(clamp(u), T, KS.map(k => k[j][c]));
   return macToWorld(M.groups.pot, [[comp(1, 0), comp(1, 1), comp(1, 2)], [comp(2, 0), comp(2, 1), comp(2, 2)], 54 - 6 * clamp(1 - u / 0.3)]);
 }
