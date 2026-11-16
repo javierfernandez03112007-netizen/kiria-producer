@@ -26,11 +26,11 @@ function macRng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) 
 const MAC_GLSL = `
 uniform float uTime, uCaus, uDens; uniform vec3 uWater;
 // cáusticas (la red de luz que la superficie ondulada proyecta en el fondo): versión de la «Tileable Water Caustic» clásica
-float macCaustic(vec2 p, float t) {
-  vec2 i = p; float c = 1.0, inten = 0.005;
+float macCaustic(vec2 p0, float t) {
+  vec2 p = mod(p0, 6.2831853) - 250.0, i = p; float c = 1.0, inten = 0.005;
   for (int n = 0; n < 4; n++) { float tt = t * (1.0 - (3.5 / float(n + 1))); i = p + vec2(cos(tt - i.x) + sin(tt + i.y), sin(tt - i.y) + cos(tt + i.x));
     c += 1.0 / length(vec2(p.x / (sin(i.x + tt) / inten), p.y / (cos(i.y + tt) / inten))); }
-  c /= 4.0; c = 1.17 - pow(c, 1.4); return pow(abs(c), 8.0);
+  c /= 4.0; c = 1.17 - pow(c, 1.4); return min(pow(abs(c), 8.0), 3.0);
 }
 float macH(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float macN(vec2 p) { vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f); return mix(mix(macH(i), macH(i + vec2(1, 0)), f.x), mix(macH(i + vec2(0, 1)), macH(i + vec2(1, 1)), f.x), f.y); }
@@ -184,7 +184,6 @@ varying vec3 vW, vN, vL;
 void main() {
   #include <logdepthbuf_fragment>
   vec3 q = vL;                                                    // x: ancho (±0,32), y: largo (±7), z: grosor (±0,08)
-  float across = abs(vN.z) > 0.0 ? q.x : q.x;
   float g = q.x * 13.0 + q.z * 9.0 + sin(q.y * 0.85 + q.x * 2.4) * 0.9 + (macN(vec2(q.y * 0.55, q.x * 3.0)) - 0.5) * 2.2;
   float band = fract(g), late = smoothstep(0.62, 0.8, band) * (1.0 - smoothstep(0.86, 0.98, band));      // las vetas (madera de verano, oscura)
   vec3 wood = mix(vec3(0.62, 0.42, 0.22), vec3(0.78, 0.58, 0.34), macN(vec2(q.y * 1.3, g * 0.7)));
@@ -235,7 +234,9 @@ function buildMacro(o = {}) {
   const sites = [];
   for (let s = 0; s < 4; s++) { const [ax, az, bx, bz] = seg[s], L = Math.hypot(bx - ax, bz - az), n = Math.floor(L / 0.5);
     for (let k = 0; k < n; k++) { const u = (k + 0.3 + 0.4 * rng()) / n; sites.push({ x: ax + (bx - ax) * u, z: az + (bz - az) * u, w: segW[s], rail: 1 }); } }
-  for (let s = 4; s < MAC_NS; s++) { const [ax, az, bx, bz] = seg[s], n = 1 + Math.floor(rng() * 2.5); for (let k = 0; k < n; k++) { const u = rng(); sites.push({ x: ax + (bx - ax) * u, z: az + (bz - az) * u, w: segW[s], rail: 0 }); } }
+  const corr = (x, z) => { const px = x - S0.x, pz = z - S0.y, h = px * dir.x + pz * dir.y; return Math.abs(px * nrm.x + pz * nrm.y) < 0.3 && h > -1 && h < 15; };   // pasillo de la cámara
+  for (let s = 4; s < MAC_NS; s++) { const [ax, az, bx, bz] = seg[s], n = 1 + Math.floor(rng() * 2.5); for (let k = 0; k < n; k++) { const u = rng(), x = ax + (bx - ax) * u, z = az + (bz - az) * u;
+    if (!corr(x, z)) sites.push({ x, z, w: segW[s], rail: 0 }); } }
   for (const st of sites) { st.per = 0.85 + 0.9 * rng(); st.ph = rng(); st.rmax = (st.rail ? 0.07 : 0.035) + (st.rail ? 0.06 : 0.04) * rng(); st.sw = rng() * 6.28; }
   const potBub = macBubbles(U, sites.length); G.pot.add(potBub);
   const potCeil = new THREE.Mesh(new THREE.CircleGeometry(macPotR() - 0.15, 96), new THREE.ShaderMaterial({ uniforms: { ...U, uY: { value: 0 } }, vertexShader: MAC_VS, fragmentShader: MAC_CEIL_FS, side: THREE.DoubleSide }));
@@ -255,6 +256,7 @@ function buildMacro(o = {}) {
     const h = new THREE.Mesh(new THREE.SphereGeometry(0.2, 10, 8), eyeH); h.position.set(0.22, 0.3, 0.55); e.add(h); e.userData = { p, sd }; hero.add(e); eyes.push(e); }
   // ---- C) el palito y sus burbujas (en el mundo; el palito lo coloca la escena)
   if (!macStickRef) { MAC = { U }; buildMacStick(); }
+  else { const su = macStickRef.material.uniforms; for (const k of ['uTime', 'uCaus', 'uDens', 'uWater']) su[k] = U[k]; }      // si se hizo antes: que comparta los uniformes
   const stickBub = macBubbles(U, 90); G.stick.add(stickBub);
   const ssites = []; for (let i = 0; i < 90; i++) { const face = rng() < 0.8 ? (rng() < 0.5 ? 1 : -1) : 0; ssites.push({ x: face ? (rng() - 0.5) * 0.56 : (rng() < 0.5 ? -0.33 : 0.33), y: -7 + 6.2 * rng(),
     z: face ? face * 0.085 : (rng() - 0.5) * 0.12, nx: face ? 0 : Math.sign(rng() - 0.5), nz: face, per: 2.4 + 2.2 * rng(), ph: rng(), rmax: 0.035 + 0.045 * rng(), sw: rng() * 6.28 }); }
@@ -311,7 +313,7 @@ function macroAt(t, P = {}) {
     const C = new THREE.Vector3().copy(cam.position); M.groups.mug.worldToLocal(C); const cen = v3(hx, MAC_MUGY + r * 0.92, hz), f = C.sub(cen).setY(0.25 * C.y).normalize();
     const look = Math.sin(t * 3.1) * 0.5 * (u > 0.5 && u < 0.85 ? 1.6 : 1), side = v3(f.z, 0, -f.x).normalize();
     M.eyes.forEach(e => { const sd = e.userData.sd, d = f.clone().applyAxisAngle(v3(0, 1, 0), sd * 0.36).add(v3(0, 0.3, 0)).normalize();
-      e.position.copy(cen).addScaledVector(d, r * 0.97); e.lookAt(e.position.clone().add(d)); e.scale.setScalar(Math.max(0.0001, r * 0.2));
+      e.position.copy(cen).addScaledVector(d, r * 0.97); e.lookAt(M.groups.mug.localToWorld(e.position.clone().add(d))); e.scale.setScalar(Math.max(0.0001, r * 0.2));
       e.userData.p.position.set(look * 0.3, 0.05 + 0.1 * Math.sin(t * 2.3), 0.32); e.visible = r > 0.01; }); }
   // C) burbujas del palito: nacen en los poros de la parte mojada, crecen despacio, se sueltan y suben tranquilas
   if (stk > 0.001 && M.stick) { const S = M.stick; S.updateMatrixWorld(); const mw = S.matrixWorld, wy = macWaterY('stick'); let n = 0; const p = new THREE.Vector3(), nn = new THREE.Vector3();
