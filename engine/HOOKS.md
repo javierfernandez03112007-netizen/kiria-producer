@@ -17,6 +17,37 @@ Los ejemplos son ilustrativos: cualquier dato que se use de verdad necesita fuen
 8. **Tensión antes que curiosidad**: un hook que enfrenta a dos bandos o rompe una creencia retiene más que uno que solo
    despierta curiosidad (lección del vídeo de la carga sin cable).
 
+## El gancho que obliga a mirar (Javi, 16-11-2026, con base en neurociencia de la curiosidad)
+Javi: «no tienes que invitarle a ver sino obligarle: decirle algo que sabe, pero no cómo funciona o cómo es de verdad».
+Lo que dice la investigación (resumen; fuentes al final de la sección):
+- **Ilusión de profundidad explicativa** (Rozenblit y Keil, 2002): la gente cree que entiende cómo funcionan las cosas de cada día
+  (cremalleras, cisternas, cerraduras) hasta que tiene que explicarlas; es más fuerte con aparatos que con fenómenos naturales.
+  → El mejor tema es un objeto que el espectador ha usado HOY y que cree entender.
+- **Hueco de información** (Loewenstein, 1994): la curiosidad es una especie de «hambre» que nace al ver un hueco entre lo que sabes y
+  lo que quieres saber; necesita algo de conocimiento previo (de lo que no sabes nada no tienes curiosidad).
+- **La curiosidad enciende el circuito de recompensa** (Kang y otros, 2009; Gruber, Gelman y Ranganath, 2014): con mucha curiosidad se
+  activan el núcleo caudado/accumbens y el mesencéfalo dopaminérgico (recompensa anticipada) y se recuerda mejor la respuesta, sobre todo
+  si sorprende. → El cerebro «se queda» esperando la respuesta como espera un premio.
+- **Lo inesperado obliga a explorar** (Stahl y Feigenson, 2015, *Science*): cuando algo viola lo que esperamos, prestamos más atención,
+  aprendemos más y buscamos explicación. → El primer fotograma enseña lo imposible de esa afirmación.
+- La ventana para decidir si se desliza es de 1–3 s según datos de las plataformas (sin estudio revisado; orientativo).
+**Cómo se escribe (reglas):**
+1. Un objeto o gesto cotidiano que ha hecho hoy (activa lo que sabe).
+2. Una afirmación seca, en segunda persona y en presente, que rompe cómo cree que funciona («tu X no hace Y: hace Z»).
+3. Sin preguntas ni invitaciones («¿sabías que…?», «te cuento», «mira esto»): se afirma.
+4. No se explica el mecanismo: ese hueco es el vídeo (y se cierra al final).
+5. Primer fotograma = la imagen imposible de esa frase.
+6. Huecos en cadena: cada respuesta abre otra pregunta hasta la grande del final.
+Ejemplos (cada dato se comprueba antes de usarlo): «Tu tarjeta no tiene batería: cuando pagas, el datáfono la enciende desde fuera.» ·
+«El WhatsApp que acabas de mandar a otro país ha cruzado el fondo del mar.» · «Tu nevera no fabrica frío: le saca el calor a la comida.» ·
+«Tus auriculares no tapan el ruido: lo borran con otro ruido al revés.» · «En tu pantalla no hay ni un punto blanco.»
+Fuentes: Rozenblit y Keil, *Cognitive Science* 2002 (https://en.wikipedia.org/wiki/Illusion_of_explanatory_depth; Lawson 2006:
+https://www.liverpool.ac.uk/~rlawson/PDF_Files/L-M&C-2006.pdf) · Loewenstein, *Psychological Bulletin* 1994
+(https://www.cmu.edu/dietrich/sds/docs/loewenstein/PsychofCuriosity.pdf) · Kang y otros, *Psychological Science* 2009
+(https://pubmed.ncbi.nlm.nih.gov/19619181/) · Gruber, Gelman y Ranganath, *Neuron* 2014 (https://pmc.ncbi.nlm.nih.gov/articles/PMC4252494) ·
+Gruber y Ranganath, marco PACE 2019 (https://pmc.ncbi.nlm.nih.gov/articles/PMC6891259) · Stahl y Feigenson, *Science* 2015
+(https://pmc.ncbi.nlm.nih.gov/articles/PMC5861377).
+
 ## Las 45 plantillas
 
 ### Tecnología que usas cada día
