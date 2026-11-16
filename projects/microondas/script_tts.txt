@@ -2,9 +2,11 @@ Crees que el microondas calienta de dentro hacia fuera. Es justo al revés.
 Y al final, por qué gira el plato y dónde poner la comida.
 En mil novecientos cuarenta y cinco, cuentan, un ingeniero trabajaba con radares y la chocolatina de su bolsillo se derritió.
 Tu microondas lleva dentro la misma pieza que aquellos radares: el magnetrón.
-Dispara ondas que vibran dos mil cuatrocientos cincuenta millones de veces por segundo.
+Dentro, un imán hace girar electrones que, al pasar junto a unas cavidades de cobre, crean ondas.
+Ondas que vibran dos mil cuatrocientos cincuenta millones de veces por segundo.
 El agua de la comida intenta seguirlas: sus moléculas giran sin parar, y eso es calor.
 Pero las ondas solo entran unos centímetros: el centro se calienta después, desde fuera.
+¿Y por qué no se escapan? La rejilla de la puerta tiene agujeros mucho más pequeños que las ondas: para ellas es una pared.
 La respuesta: las ondas rebotan en las paredes y dejan puntos calientes y fríos cada seis centímetros.
 Por eso gira el plato. Pero su centro no cambia de sitio: deja ahí un hueco.
 ¿Centro o borde? Mándaselo a quien siempre se come el centro frío.
