@@ -37,7 +37,7 @@ function hdr(t) {
   const a = win(t, 1.7, 0.4) * (1 - win(t, END - 1.1, 0.4)) * (1 - 0.85 * cw(t, FIBW[0] - 0.1, FIBW[1] + 0.1, 0.15)); if (a <= 0.01) return;
   hg.save(); hg.globalAlpha = a; hg.textBaseline = 'alphabetic'; hg.shadowColor = 'rgba(0,0,0,.9)'; hg.shadowBlur = 12;
   hg.letterSpacing = '4px'; hfont(42); hg.fillStyle = INK; hg.textAlign = 'left'; hg.fillText('TU MENSAJE', 54, 142);
-  hg.letterSpacing = '2px'; hfont(23, false); hg.fillStyle = GREY; hg.fillText('DE ESPAÑA A BRASIL EN 0,03 SEGUNDOS', 56, 178);
+  hg.letterSpacing = '2px'; hfont(23, false); hg.fillStyle = GREY; hg.fillText('6.000 KM BAJO EL MAR EN 0,03 SEGUNDOS', 56, 178);
   hg.textAlign = 'right'; hfont(18, false); hg.fillStyle = GREY; hg.fillText('ASÍ', 1024, 112); hfont(32); hg.fillStyle = CYAN; hg.fillText('FUNCIONA', 1024, 148);
   hg.restore();
 }
@@ -63,7 +63,7 @@ function hudAt(t) {
   // 3 · 99 de cada 100 por cable; el satélite, casi solo
   neon(mapP(-42, 30, 0.5), '99 DE CADA 100', 'DATOS ENTRE CONTINENTES: POR CABLE', cw(t, K['99_3'] - 0.05, K['y_4'] + 0.1), { size: 46, color: CYAN, dy: -300 });
   const fA = fnOf('mapAnchor'), sat = fA ? fA('sat') : null;
-  if (sat) neon(sat, 'SATÉLITE', 'MENOS DE 1 DE CADA 100', cw(t, K['viajan_3'] - 0.2, K['y_4'] + 0.1), { size: 30, color: GREY, dy: 200, dx: 120 });
+  if (sat) neon(sat, 'SATÉLITE', 'MENOS DE 1 DE CADA 100', cw(t, K['viajan_3'] - 0.2, K['y_4'] + 0.1), { size: 30, color: GREY, dy: 300, dx: 160 });
   // 4 · Mauritania sin internet
   neon(mapP(...GEO.NKC, 0.5), 'MAURITANIA · 2018', '2 DÍAS SIN INTERNET', cw(t, K['entero_4'] - 0.3, K['al_5'] - 0.2), { size: 40, color: REDc, dy: -240 });
   // 5–6 · España, la antena, la fibra

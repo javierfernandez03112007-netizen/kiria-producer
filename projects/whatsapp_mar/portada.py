@@ -32,7 +32,7 @@ def title(img, y, k=1.0):
     row(img, [("«HIJO,", GREEN), ("¿DÓNDE", GREEN), ("ESTÁS?»", GREEN)], y + 90 * k, int(112 * k), int(10 * k))
     row(img, [("ESTE", None), ("MENSAJE", None), ("CRUZA", None)], y + 225 * k, int(118 * k), int(10 * k))
     row(img, [("EL", None), ("FONDO", CYAN), ("DEL", CYAN), ("MAR", CYAN)], y + 360 * k, int(138 * k), int(11 * k))
-    paste(img, chip("de España a Brasil en 0,03 segundos", int(40 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 480 * k)
+    paste(img, chip("6.000 km bajo el mar en 0,03 segundos", int(40 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 480 * k)
 
 
 def main():
