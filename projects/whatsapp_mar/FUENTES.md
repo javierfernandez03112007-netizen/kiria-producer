@@ -1,0 +1,16 @@
+# Fuentes · «Así funciona: el viaje de tu WhatsApp» (16-11-2026)
+
+Gancho con las reglas nuevas de `engine/HOOKS.md` («El gancho que obliga a mirar»): un gesto de cada día (mandar un WhatsApp) y una
+afirmación seca que rompe cómo creemos que funciona (no va «por el aire»: va por el fondo del mar).
+
+| Dato del guion | Fuente | Nota |
+|---|---|---|
+| Más de 99 de cada 100 datos entre continentes van por cables submarinos (no por satélite) | TeleGeography, «2023 Mythbusting, part 3»: https://resources.telegeography.com/2023-mythbusting-part-3 · ITU (2025, citada por la prensa: >99 %, ≈ 500 cables, ≈ 1,7 millones de km) | TeleGeography lo confirma y avisa de que no hay datos exactos del tráfico por satélite (en EE. UU., los satélites son el 0,37 % de la capacidad internacional, según la FCC). |
+| La luz va por un hilo de cristal fino como un pelo | Fibra monomodo estándar: 125 µm de diámetro con su revestimiento (UIT-T G.652) · pelo humano: 17–181 µm (Wikipedia, «Hair») | Comparación aproximada. |
+| A 200.000 kilómetros por segundo | La luz en la fibra va a unos dos tercios de su velocidad en el vacío (≈ 200.000–204.000 km/s): TeleGeography, «It's Time To Learn About Latency»: https://resources.telegeography.com/its-time-to-learn-about-latency · CommScope, «Latency in optical fiber systems» | Redondeado. |
+| De Portugal a Brasil son 6.000 km; el mensaje los cruza en tres centésimas de segundo | Cable EllaLink, Sines (Portugal) – Fortaleza (Brasil): ≈ 5.900–6.000 km (Wikipedia: https://en.wikipedia.org/wiki/EllaLink; el operador da 6.000 km) | 6.000 km / 200.000 km/s = 0,03 s (solo la ida por el cable). |
+| Se hunde a kilómetros de profundidad | La reparación del cable de Tonga se hizo en aguas de hasta 2,5 km (AP, 22-2-2022: https://www.npr.org/2022/02/22/1082483555/tongas-internet-restored-5-weeks-after-big-eruption) | Sin cifra concreta en la voz. |
+| Hay más de 600 cables | Mapa de TeleGeography 2026: 694 sistemas, 603 en servicio (citado por https://www.mappr.co/?p=69957) | |
+| Cada año se rompen entre 150 y 200 | ICPC (Comité Internacional de Protección de Cables): ≈ 150–200 averías al año: https://www.iscpc.org/news/media-enquiries/ | |
+| Tres de cada cuatro veces es un ancla o una red de pesca; no son los tiburones | ICPC: 70–80 % por actividad humana accidental (pesca y anclas) · TeleGeography, «What happens when submarine cables break»: https://blog.telegeography.com/what-happens-when-submarine-cables-break (mordiscos de peces, tiburones incluidos: 0 averías entre 2007 y 2014, datos del ICPC) | «Tres de cada cuatro» = 75 %, dentro del 70–80 %. |
+| En 2022 un volcán partió el único cable de Tonga y el país estuvo cinco semanas casi sin internet | NPR/AP, 22-2-2022: https://www.npr.org/2022/02/22/1082483555/tongas-internet-restored-5-weeks-after-big-eruption · Al Jazeera, 23-2-2022: https://www.aljazeera.com/news/2022/2/23/tonga-internet-reconnected-five-weeks-of-volcanic-eruption | Erupción del Hunga Tonga–Hunga Ha'apai, 15-1-2022; el cable volvió el 22-2 (≈ 38 días). Mientras, solo unos pocos enlaces por satélite: por eso «casi». |
