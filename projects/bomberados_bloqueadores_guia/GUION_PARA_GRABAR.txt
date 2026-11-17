@@ -1,0 +1,54 @@
+«LOS 5 BLOQUEADORES: ¿CUÁL ES CUÁL?» — las cinco herramientas de la foto de Adrián (tabla «Bloqueadores» del manual:
+puño, croll, Basic, Rescucender y shunt), explicadas para el opositor (pedido de Javi, 17 nov)
+
+Cómo está hecho: no es una lista de cinco. Es UN rescate de noche en un barranco y TRES cosas que se hacen con una cuerda:
+SUBIR (puño + croll), IZAR al herido (Basic + Rescucender, en el polipasto) y BAJAR (shunt, debajo del descensor). Cada
+aparato se ve en grande, en su sitio y haciendo su trabajo, con su nombre; abajo se va rellenando una ficha con los
+cinco, que al final se queda entera en pantalla para guardarla. Cierre con una trampa de examen con letras (plan del
+17 nov: «cierre para comentar en todos»; «la teoría funciona si la cuenta una escena»). ≈ 52 s.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo de profe que lo tiene clarísimo: rápido, pero cada nombre bien dicho y con una micro-pausa antes.
+Lo más fuerte, el final: «¡GUÁRDALO…!», «¡MÁNDASELO…!», «¡BOMBERADOS!» y «¡Pruébala GRATIS!».
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡De estos CINCO aparatos cuelga la vida de un bombero… [tense] y en el examen te preguntan cuál es cuál!
+[explaining, clear] Todos hacen lo mismo: dejan correr la cuerda hacia un lado… [emphatic] y hacia el otro, la BLOQUEAN. [intrigued] Lo que cambia es DÓNDE van.
+[energetic, clear] Para SUBIR, dos: el puño, en la mano, con su pedal para el pie… y el crol, en el pecho: es el del arnés integral.
+[energetic, clear] Para IZAR a un herido, en el polipasto: el básic, un puño sin mango… y el Rescucénder, el de la leva ranurada.
+[energetic, clear] Y para BAJAR, el shunt, o pico pato: va DEBAJO del descensor… [relieved] y si sueltas las manos, te frena.
+[mischievous, challenging] Ahora, la trampa: ¿cuál de estos NO se recomienda para un polipasto? ¿A, B o C? Comenta tu letra.
+[excited, emphatic] ¡GUÁRDALO para repasar… y MÁNDASELO a quien oposíte contigo!
+[energetic] ¿Opositas a bombero?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+Cómo están escritos los nombres para que Danny los diga bien (en pantalla salen con su grafía: Croll, Basic, Rescucender):
+«crol», «básic», «Rescucénder» y «oposíte». Si «shunt» lo dice raro («sunt»), cámbialo por «chunt».
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, en un barranco, con un dron que no para:
+1. «¡De estos cinco aparatos cuelga la vida de un bombero…» — primer fotograma: visto desde arriba, un bombero colgado de
+   una cuerda sobre el vacío (el casco amarillo, el barranco negro 18 m más abajo) y, en primer plano, el aparato que
+   muerde la cuerda. «…te preguntan cuál es cuál» — el dron se aleja: todo el rescate, con los cinco aparatos marcados
+   con un número y un «?».
+2. «Todos hacen lo mismo…» — rayos X de uno: la cuerda corre hacia arriba (flecha verde) y, hacia abajo, la leva la
+   bloquea (rojo). «Lo que cambia es dónde van» — tres rótulos sobre el barranco: SUBIR · IZAR · BAJAR.
+3. SUBIR — un bombero sube por una cuerda fija. «el puño, en la mano» (PUÑO, también «jumar»; se ilumina en su mano),
+   «con su pedal para el pie» (PEDAL: del suelo al croll), «el croll, en el pecho» (CROLL), «arnés integral» (se
+   iluminan las cintas del arnés). Sube como un gusano: se pone de pie en el pedal y sube el croll; se sienta y sube el puño.
+4. IZAR — arriba, el trípode y el polipasto con el herido en la camilla. «el Basic, un puño sin mango» (junto a la polea:
+   aparece un puño al lado y se le borra el mango → BASIC; cartel ANTIRRETORNO: no deja que la cuerda vuelva),
+   «el Rescucender, el de la leva ranurada» (agarra la cuerda y tira: TRACCIÓN; rayos X: la leva con ranuras, sin dientes).
+5. BAJAR — otro bombero baja en rápel. «el shunt, o pico pato» (SHUNT, con su forma de pico), «debajo del descensor»
+   (DESCENSOR arriba, SHUNT debajo), «si sueltas las manos, te frena» (abre las manos y se queda clavado: ¡FRENA!;
+   apunte: sustituye al nudo Prusik · vale con 1 o 2 cuerdas).
+6. «Ahora, la trampa…» — tres tarjetas con su dibujo: A BASIC · B CROLL · C RESCUCENDER y «💬 COMENTA TU LETRA»
+   (la solución, para el comentario fijado: B, el croll).
+7. ★ «¡Guárdalo para repasar… y mándaselo a quien oposite contigo!» — la ficha con los cinco (aparato · dónde va · para
+   qué) en grande, y el avión de papel TÚ → QUIEN OPOSITE CONTIGO.
+8. ★ «¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Fuentes (en FUENTES.md): tabla «Bloqueadores» del manual que manda Adrián (todo lo que se dice sale de ahí) y las fichas
+del fabricante que lo confirman. CONFIRMAR la prueba gratis de 5 días.

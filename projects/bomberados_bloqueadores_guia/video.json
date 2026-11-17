@@ -1,0 +1,295 @@
+{
+ "formato": "bloqguia",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "guardalo",
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN OPOSITE CONTIGO",
+ "compartir_titulo": "¿QUIÉN ACIERTA?",
+ "portada": {
+  "titulo": "LOS 5 BLOQUEADORES",
+  "etiqueta": "¿CUÁL ES CUÁL?",
+  "t": 3.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "cinco": [
+   "cinco",
+   1,
+   1
+  ],
+  "aparatos": [
+   "aparatos",
+   1,
+   1
+  ],
+  "vida": [
+   "vida",
+   1,
+   1
+  ],
+  "examen": [
+   "examen",
+   1,
+   1
+  ],
+  "cual1": [
+   "cuál",
+   1,
+   1
+  ],
+  "cual2": [
+   "cuál",
+   2,
+   1
+  ],
+  "todos": [
+   "Todos",
+   1,
+   2
+  ],
+  "correr": [
+   "correr",
+   1,
+   2
+  ],
+  "lado": [
+   "lado",
+   1,
+   2
+  ],
+  "otro": [
+   "otro",
+   1,
+   2
+  ],
+  "bloquean": [
+   "bloquean",
+   1,
+   2
+  ],
+  "cambia": [
+   "cambia",
+   1,
+   2
+  ],
+  "donde": [
+   "dónde",
+   1,
+   2
+  ],
+  "subir": [
+   "subir",
+   1,
+   3
+  ],
+  "dos": [
+   "dos",
+   1,
+   3
+  ],
+  "puno": [
+   "puño",
+   1,
+   3
+  ],
+  "mano": [
+   "mano",
+   1,
+   3
+  ],
+  "pedal": [
+   "pedal",
+   1,
+   3
+  ],
+  "pie": [
+   "pie",
+   1,
+   3
+  ],
+  "croll": [
+   "croll",
+   1,
+   3
+  ],
+  "pecho": [
+   "pecho",
+   1,
+   3
+  ],
+  "arnes": [
+   "arnés",
+   1,
+   3
+  ],
+  "integral": [
+   "integral",
+   1,
+   3
+  ],
+  "izar": [
+   "izar",
+   1,
+   4
+  ],
+  "herido": [
+   "herido",
+   1,
+   4
+  ],
+  "polipasto": [
+   "polipasto",
+   1,
+   4
+  ],
+  "basic": [
+   "Basic",
+   1,
+   4
+  ],
+  "sinmango": [
+   "sin",
+   1,
+   4
+  ],
+  "rescucender": [
+   "Rescucender",
+   1,
+   4
+  ],
+  "leva": [
+   "leva",
+   1,
+   4
+  ],
+  "ranurada": [
+   "ranurada",
+   1,
+   4
+  ],
+  "bajar": [
+   "bajar",
+   1,
+   5
+  ],
+  "shunt": [
+   "shunt",
+   1,
+   5
+  ],
+  "pico": [
+   "pico",
+   1,
+   5
+  ],
+  "debajo": [
+   "debajo",
+   1,
+   5
+  ],
+  "descensor": [
+   "descensor",
+   1,
+   5
+  ],
+  "sueltas": [
+   "sueltas",
+   1,
+   5
+  ],
+  "frena": [
+   "frena",
+   1,
+   5
+  ],
+  "trampa": [
+   "trampa",
+   1,
+   6
+  ],
+  "cual6": [
+   "cuál",
+   1,
+   6
+  ],
+  "no": [
+   "NO",
+   1,
+   6
+  ],
+  "polipasto6": [
+   "polipasto",
+   1,
+   6
+  ],
+  "oA": [
+   "A",
+   1,
+   6
+  ],
+  "oB": [
+   "B",
+   1,
+   6
+  ],
+  "oC": [
+   "C",
+   1,
+   6
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   6
+  ],
+  "guardalo": [
+   "Guárdalo",
+   1,
+   7
+  ],
+  "repasar": [
+   "repasar",
+   1,
+   7
+  ],
+  "compartir": [
+   "mándaselo",
+   1,
+   7
+  ],
+  "acierta": [
+   "oposite",
+   1,
+   7
+  ],
+  "descripcion": [
+   "¿Opositas",
+   1,
+   8
+  ],
+  "marca": [
+   "¡Bomberados!",
+   1,
+   8
+  ],
+  "prueba": [
+   "¡Pruébala",
+   1,
+   8
+  ]
+ }
+}

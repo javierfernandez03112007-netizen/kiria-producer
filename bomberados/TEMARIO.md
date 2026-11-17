@@ -49,3 +49,30 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
 - «¿Por qué si se rompe una farola no se apagan todas?» (fases alternadas) — curiosidad.
 - Preguntas del día: ¿con qué se dispersa una fuga de gas? · ¿qué agente para un incendio de GLP? · ¿qué es lo primero
   tras una deflagración? · ¿qué norma clasifica los gases en familias?
+
+## 14 nov 2026 · Bloqueadores (trabajos en cuerda)
+
+### Fuente — tabla «Bloqueadores» del manual que manda Adrián Luna (Élite Bomberos; imagen en Notion, fila «MARTES 17 EXPLICAR LOS BLOQUEADORES EN 30 SEGUNDOS»; manual y página por confirmar)
+- **Puño bloqueador** (también: de ascensión, puño ascendedor o jumar): a él se fijan el cabo de anclaje largo y el estribo.
+  Pedaleta o estribo pedal: unida al puño, se usa a modo de escala para la progresión vertical; su longitud, unida al
+  puño, del suelo hasta el croll (de pie, el brazo forma 90°). Es muy común ascender por cuerda con croll + puño.
+  UNE EN 567 y UNE EN 12841.
+- **Croll**: bloqueador ventral o de pecho para el ascenso. NO recomendado para el montaje de polipastos. Es el que se
+  encuentra en el arnés integral. UNE EN 567 y UNE EN 12841.
+- **Basic**: para ascensos por cuerda fija o como antirretorno en un polipasto. Es exactamente igual que el puño de
+  ascensión sin agarre. El croll permite sacar la cuerda sin soltar el extremo superior del bloqueador; el Basic, no.
+  Muy empleado con poleas para montar polipastos (polifrenos). UNE EN 567 y UNE EN 12841.
+- **Bloqueador de leva ranurada (Rescucender)**: con cierre; para los polipastos, como sistema de tracción o antirretorno.
+- **Shunt** (pico pato): colocado por debajo del descensor, autoasegura un descenso en rápel y sustituye a los nudos
+  autobloqueantes, como el Prusik. Funciona con una sola cuerda o con dos.
+
+### Vídeos hechos con esto
+- «Si sueltas la cuerda, ¿qué hace la camilla?» (`projects/bomberados_bloqueadores/`): una sola idea (la leva).
+- «Los 5 bloqueadores: ¿cuál es cuál?» (`projects/bomberados_bloqueadores_guia/`): los cinco, por lo que se hace con la
+  cuerda (subir, izar, bajar).
+
+### Preguntas de examen que salen de aquí
+- ¿Qué bloqueador NO se recomienda para montar polipastos? (croll) · ¿Cuál va debajo del descensor? (shunt) ·
+  ¿Qué longitud tiene la pedaleta unida al puño? (del suelo al croll) · ¿Qué normas regulan el puño, el croll y el Basic?
+  (UNE EN 567 y UNE EN 12841) · ¿A qué nudo sustituye el shunt? (a los autobloqueantes, como el Prusik) ·
+  ¿Qué bloqueador es «un puño sin agarre»? (Basic) · ¿Cuál es el de leva ranurada? (Rescucender).
