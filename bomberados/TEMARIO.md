@@ -70,6 +70,8 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
 - «Si sueltas la cuerda, ¿qué hace la camilla?» (`projects/bomberados_bloqueadores/`): una sola idea (la leva).
 - «Los 5 bloqueadores: ¿cuál es cuál?» (`projects/bomberados_bloqueadores_guia/`): los cinco, por lo que se hace con la
   cuerda (subir, izar, bajar).
+- Serie «un vídeo por pieza» (Javi, 17 nov; 30–45 s cada uno): 1 puño (`projects/bomberados_puno/`, guion enviado) ·
+  2 croll · 3 Basic · 4 Rescucender · 5 shunt.
 
 ### Preguntas de examen que salen de aquí
 - ¿Qué bloqueador NO se recomienda para montar polipastos? (croll) · ¿Cuál va debajo del descensor? (shunt) ·

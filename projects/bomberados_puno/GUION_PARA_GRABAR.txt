@@ -1,0 +1,45 @@
+«EL PUÑO: ASÍ SE SUBE POR UNA CUERDA» — pieza 1 de 5 de la serie «un vídeo por pieza» (Javi, 17 nov: 30–45 s cada uno,
+empezando por la primera de la tabla «Bloqueadores» del manual de Adrián: puño → croll → Basic → Rescucender → shunt)
+
+Cómo está hecho: UNA sola idea — cómo sube un bombero por una cuerda con un aparato que cabe en la mano. Se ve en 3D, de
+noche, en el barranco: la leva mordiendo la cuerda (enorme), el bombero colgado sobre el vacío, el puño que corre hacia
+arriba y muerde hacia abajo, el pedal, y cómo sube paso a paso. Un solo dato de examen (la medida del pedal) y un cierre
+que deja abierta la siguiente pieza (el croll) para que comenten. ≈ 38 s.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido y claro, de profe que lo ha hecho mil veces. Lo más fuerte: el arranque y el final («¡MÁNDASELO…!»,
+«¡BOMBERADOS!», «¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[amazed, urgent] ¡Este aparato cabe en UNA mano… [emphatic] y sube a un bombero ENTERO por una cuerda!
+[explaining, clear] Se llama PUÑO, o yumar. Hacia arriba, corre por la cuerda… [emphatic] y hacia abajo, la MUERDE: no baja ni un dedo.
+[energetic, clear] De él cuelga un pedal. Pisas, te pones de pie, otro bloqueador, el crol, te sujeta… y subes el puño otro palmo.
+[confident, teaching] Dato de examen: el pedal se mide del suelo al crol. Así, de pie, el brazo te queda a noventa grados.
+[mischievous, curious] ¿Y el crol? ¿Sabes DÓNDE se pone? Coméntalo… y te lo enseño en el siguiente vídeo.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+Escrito para que Danny lo diga bien (en pantalla sale con su grafía: jumar, croll): «yumar» y «crol».
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, en el barranco, con un dron que no para:
+1. «¡Este aparato cabe en una mano…» — primer fotograma: la leva dentada del puño mordiendo la cuerda, enorme.
+   «…y sube a un bombero entero por una cuerda!» — el dron se abre: el bombero colgado sobre el vacío, con el coche
+   accidentado 20 m más abajo.
+2. «Se llama puño, o jumar» (rótulo PUÑO · también «jumar»). «Hacia arriba, corre por la cuerda» — la mano lo empuja y
+   sube solo (flechas verdes). «y hacia abajo, la muerde: no baja ni un dedo» — tira hacia abajo: la leva se clava
+   (destello rojo, ¡NO BAJA!).
+3. «De él cuelga un pedal» (PEDAL, se ilumina hasta el pie). «Pisas, te pones de pie, otro bloqueador, el croll, te
+   sujeta… y subes el puño otro palmo» — se ve el paso entero, y luego dos o tres seguidos con el dron alejándose: sube.
+4. «Dato de examen: el pedal se mide del suelo al croll…» — regla en pantalla del suelo al croll y el ángulo del brazo:
+   90°. Apunte pequeño: normas UNE EN 567 y UNE EN 12841.
+5. «¿Y el croll? ¿Sabes dónde se pone?» — el croll con un «?» y «💬 COMÉNTALO» · «SIGUIENTE PIEZA: EL CROLL».
+6. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+7. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Fuentes (en FUENTES.md): tabla «Bloqueadores» del manual que manda Adrián. CONFIRMAR la prueba gratis de 5 días.
+
+LA SERIE (una pieza por vídeo, 30–45 s): 1 puño (este) · 2 croll · 3 Basic · 4 Rescucender · 5 shunt.
