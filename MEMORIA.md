@@ -158,6 +158,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    se entra comentando (no puedo leer la lista de seguidores: los nombres me los pasa Javi con una captura de los comentarios ordenados por
    «me gusta»); el acontecimiento de cada día es económico (sequía, precios, impuestos) y el alcalde decide; crece por hitos de seguidores;
    2–3 episodios por semana como reel de prueba; filtrar nombres ofensivos. Pendiente: qué es el «ganador premium» (Javi no lo ha aclarado).
+   Javi (17-11, después): «Perfecto, el rey puede decidir en el próximo vídeo qué hacer con temas concretos» → es REY (no alcalde) y cada
+   episodio acaba con un dilema concreto que el rey resuelve en el siguiente (se ve la consecuencia). Dilemas de juego, sin política real.
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
