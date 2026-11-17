@@ -1,0 +1,244 @@
+{
+ "formato": "puno",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": true,
+  "pause_def": 0.22
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "EL PUÑO",
+  "etiqueta": "¿CÓMO SE SUBE POR UNA CUERDA?",
+  "t": 1.7,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "aparato": [
+   "aparato",
+   1,
+   1
+  ],
+  "mano": [
+   "mano",
+   1,
+   1
+  ],
+  "sube": [
+   "sube",
+   1,
+   1
+  ],
+  "entero": [
+   "entero",
+   1,
+   1
+  ],
+  "cuerda1": [
+   "cuerda",
+   1,
+   1
+  ],
+  "llama": [
+   "llama",
+   1,
+   2
+  ],
+  "puno": [
+   "puño",
+   1,
+   2
+  ],
+  "jumar": [
+   "jumar",
+   1,
+   2
+  ],
+  "arriba": [
+   "arriba",
+   1,
+   2
+  ],
+  "corre": [
+   "corre",
+   1,
+   2
+  ],
+  "abajo": [
+   "abajo",
+   1,
+   2
+  ],
+  "muerde": [
+   "muerde",
+   1,
+   2
+  ],
+  "nobaja": [
+   "no",
+   1,
+   2
+  ],
+  "dedo": [
+   "dedo",
+   1,
+   2
+  ],
+  "cuelga": [
+   "cuelga",
+   1,
+   3
+  ],
+  "pedal": [
+   "pedal",
+   1,
+   3
+  ],
+  "pisas": [
+   "Pisas",
+   1,
+   3
+  ],
+  "pie": [
+   "pie",
+   1,
+   3
+  ],
+  "otro": [
+   "otro",
+   1,
+   3
+  ],
+  "croll3": [
+   "croll",
+   1,
+   3
+  ],
+  "sujeta": [
+   "sujeta",
+   1,
+   3
+  ],
+  "subes": [
+   "subes",
+   1,
+   3
+  ],
+  "palmo": [
+   "palmo",
+   1,
+   3
+  ],
+  "dato": [
+   "Dato",
+   1,
+   4
+  ],
+  "examen": [
+   "examen",
+   1,
+   4
+  ],
+  "mide": [
+   "mide",
+   1,
+   4
+  ],
+  "suelo": [
+   "suelo",
+   1,
+   4
+  ],
+  "croll4": [
+   "croll",
+   1,
+   4
+  ],
+  "asi": [
+   "Así",
+   1,
+   4
+  ],
+  "brazo": [
+   "brazo",
+   1,
+   4
+  ],
+  "noventa": [
+   "noventa",
+   1,
+   4
+  ],
+  "grados": [
+   "grados",
+   1,
+   4
+  ],
+  "ycroll": [
+   "croll",
+   1,
+   5
+  ],
+  "sabes": [
+   "Sabes",
+   1,
+   5
+  ],
+  "donde": [
+   "dónde",
+   1,
+   5
+  ],
+  "comenta": [
+   "Coméntalo",
+   1,
+   5
+  ],
+  "enseno": [
+   "enseño",
+   1,
+   5
+  ],
+  "siguiente": [
+   "siguiente",
+   1,
+   5
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   6
+  ],
+  "acierta": [
+   "quien",
+   1,
+   6
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   7
+  ],
+  "marca": [
+   "Bomberados",
+   1,
+   7
+  ],
+  "prueba": [
+   "Pruébala",
+   1,
+   7
+  ]
+ }
+}

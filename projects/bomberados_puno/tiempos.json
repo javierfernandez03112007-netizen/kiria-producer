@@ -1,0 +1,586 @@
+[
+ {
+  "text": "¡Este aparato cabe en una mano… y sube a un bombero entero por una cuerda!",
+  "start": 0.0,
+  "end": 5.503,
+  "words": [
+   {
+    "w": "¡Este",
+    "start": 0.0,
+    "end": 0.357
+   },
+   {
+    "w": "aparato",
+    "start": 0.357,
+    "end": 1.032
+   },
+   {
+    "w": "cabe",
+    "start": 1.032,
+    "end": 1.39
+   },
+   {
+    "w": "en",
+    "start": 1.39,
+    "end": 1.589
+   },
+   {
+    "w": "una",
+    "start": 1.589,
+    "end": 1.946
+   },
+   {
+    "w": "mano…",
+    "start": 1.946,
+    "end": 2.303
+   },
+   {
+    "w": "y",
+    "start": 2.603,
+    "end": 2.802
+   },
+   {
+    "w": "sube",
+    "start": 2.802,
+    "end": 3.16
+   },
+   {
+    "w": "a",
+    "start": 3.16,
+    "end": 3.358
+   },
+   {
+    "w": "un",
+    "start": 3.358,
+    "end": 3.557
+   },
+   {
+    "w": "bombero",
+    "start": 3.557,
+    "end": 4.073
+   },
+   {
+    "w": "entero",
+    "start": 4.073,
+    "end": 4.59
+   },
+   {
+    "w": "por",
+    "start": 4.59,
+    "end": 4.788
+   },
+   {
+    "w": "una",
+    "start": 4.788,
+    "end": 5.146
+   },
+   {
+    "w": "cuerda!",
+    "start": 5.146,
+    "end": 5.503
+   }
+  ]
+ },
+ {
+  "text": "Se llama puño, o jumar. Hacia arriba, corre por la cuerda… y hacia abajo, la muerde: no baja ni un dedo.",
+  "start": 5.723,
+  "end": 12.999,
+  "words": [
+   {
+    "w": "Se",
+    "start": 5.723,
+    "end": 5.922
+   },
+   {
+    "w": "llama",
+    "start": 5.922,
+    "end": 6.279
+   },
+   {
+    "w": "puño,",
+    "start": 6.279,
+    "end": 6.637
+   },
+   {
+    "w": "o",
+    "start": 6.737,
+    "end": 6.935
+   },
+   {
+    "w": "jumar.",
+    "start": 6.935,
+    "end": 7.293
+   },
+   {
+    "w": "Hacia",
+    "start": 7.393,
+    "end": 7.75
+   },
+   {
+    "w": "arriba,",
+    "start": 7.75,
+    "end": 8.266
+   },
+   {
+    "w": "corre",
+    "start": 8.366,
+    "end": 8.724
+   },
+   {
+    "w": "por",
+    "start": 8.724,
+    "end": 8.923
+   },
+   {
+    "w": "la",
+    "start": 8.923,
+    "end": 9.121
+   },
+   {
+    "w": "cuerda…",
+    "start": 9.121,
+    "end": 9.479
+   },
+   {
+    "w": "y",
+    "start": 9.779,
+    "end": 9.978
+   },
+   {
+    "w": "hacia",
+    "start": 9.978,
+    "end": 10.335
+   },
+   {
+    "w": "abajo,",
+    "start": 10.335,
+    "end": 10.851
+   },
+   {
+    "w": "la",
+    "start": 10.951,
+    "end": 11.15
+   },
+   {
+    "w": "muerde:",
+    "start": 11.15,
+    "end": 11.507
+   },
+   {
+    "w": "no",
+    "start": 11.687,
+    "end": 11.886
+   },
+   {
+    "w": "baja",
+    "start": 11.886,
+    "end": 12.244
+   },
+   {
+    "w": "ni",
+    "start": 12.244,
+    "end": 12.442
+   },
+   {
+    "w": "un",
+    "start": 12.442,
+    "end": 12.641
+   },
+   {
+    "w": "dedo.",
+    "start": 12.641,
+    "end": 12.999
+   }
+  ]
+ },
+ {
+  "text": "De él cuelga un pedal. Pisas, te pones de pie, otro bloqueador, el croll, te sujeta… y subes el puño otro palmo.",
+  "start": 13.219,
+  "end": 20.455,
+  "words": [
+   {
+    "w": "De",
+    "start": 13.219,
+    "end": 13.418
+   },
+   {
+    "w": "él",
+    "start": 13.418,
+    "end": 13.616
+   },
+   {
+    "w": "cuelga",
+    "start": 13.616,
+    "end": 13.974
+   },
+   {
+    "w": "un",
+    "start": 13.974,
+    "end": 14.173
+   },
+   {
+    "w": "pedal.",
+    "start": 14.173,
+    "end": 14.53
+   },
+   {
+    "w": "Pisas,",
+    "start": 14.63,
+    "end": 14.988
+   },
+   {
+    "w": "te",
+    "start": 15.088,
+    "end": 15.286
+   },
+   {
+    "w": "pones",
+    "start": 15.286,
+    "end": 15.644
+   },
+   {
+    "w": "de",
+    "start": 15.644,
+    "end": 15.842
+   },
+   {
+    "w": "pie,",
+    "start": 15.842,
+    "end": 16.041
+   },
+   {
+    "w": "otro",
+    "start": 16.141,
+    "end": 16.499
+   },
+   {
+    "w": "bloqueador,",
+    "start": 16.499,
+    "end": 17.015
+   },
+   {
+    "w": "el",
+    "start": 17.115,
+    "end": 17.314
+   },
+   {
+    "w": "croll,",
+    "start": 17.314,
+    "end": 17.512
+   },
+   {
+    "w": "te",
+    "start": 17.612,
+    "end": 17.811
+   },
+   {
+    "w": "sujeta…",
+    "start": 17.811,
+    "end": 18.327
+   },
+   {
+    "w": "y",
+    "start": 18.627,
+    "end": 18.826
+   },
+   {
+    "w": "subes",
+    "start": 18.826,
+    "end": 19.183
+   },
+   {
+    "w": "el",
+    "start": 19.183,
+    "end": 19.382
+   },
+   {
+    "w": "puño",
+    "start": 19.382,
+    "end": 19.74
+   },
+   {
+    "w": "otro",
+    "start": 19.74,
+    "end": 20.097
+   },
+   {
+    "w": "palmo.",
+    "start": 20.097,
+    "end": 20.455
+   }
+  ]
+ },
+ {
+  "text": "Dato de examen: el pedal se mide del suelo al croll. Así, de pie, el brazo te queda a noventa grados.",
+  "start": 20.675,
+  "end": 27.233,
+  "words": [
+   {
+    "w": "Dato",
+    "start": 20.675,
+    "end": 21.032
+   },
+   {
+    "w": "de",
+    "start": 21.032,
+    "end": 21.231
+   },
+   {
+    "w": "examen:",
+    "start": 21.231,
+    "end": 21.747
+   },
+   {
+    "w": "el",
+    "start": 21.927,
+    "end": 22.126
+   },
+   {
+    "w": "pedal",
+    "start": 22.126,
+    "end": 22.484
+   },
+   {
+    "w": "se",
+    "start": 22.484,
+    "end": 22.682
+   },
+   {
+    "w": "mide",
+    "start": 22.682,
+    "end": 23.04
+   },
+   {
+    "w": "del",
+    "start": 23.04,
+    "end": 23.238
+   },
+   {
+    "w": "suelo",
+    "start": 23.238,
+    "end": 23.596
+   },
+   {
+    "w": "al",
+    "start": 23.596,
+    "end": 23.795
+   },
+   {
+    "w": "croll.",
+    "start": 23.795,
+    "end": 23.993
+   },
+   {
+    "w": "Así,",
+    "start": 24.093,
+    "end": 24.451
+   },
+   {
+    "w": "de",
+    "start": 24.551,
+    "end": 24.75
+   },
+   {
+    "w": "pie,",
+    "start": 24.75,
+    "end": 24.948
+   },
+   {
+    "w": "el",
+    "start": 25.048,
+    "end": 25.247
+   },
+   {
+    "w": "brazo",
+    "start": 25.247,
+    "end": 25.605
+   },
+   {
+    "w": "te",
+    "start": 25.605,
+    "end": 25.803
+   },
+   {
+    "w": "queda",
+    "start": 25.803,
+    "end": 26.161
+   },
+   {
+    "w": "a",
+    "start": 26.161,
+    "end": 26.359
+   },
+   {
+    "w": "noventa",
+    "start": 26.359,
+    "end": 26.876
+   },
+   {
+    "w": "grados.",
+    "start": 26.876,
+    "end": 27.233
+   }
+  ]
+ },
+ {
+  "text": "¿Y el croll? ¿Sabes dónde se pone? Coméntalo… y te lo enseño en el siguiente vídeo.",
+  "start": 27.453,
+  "end": 32.879,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 27.453,
+    "end": 27.652
+   },
+   {
+    "w": "el",
+    "start": 27.652,
+    "end": 27.85
+   },
+   {
+    "w": "croll?",
+    "start": 27.85,
+    "end": 28.049
+   },
+   {
+    "w": "¿Sabes",
+    "start": 28.149,
+    "end": 28.507
+   },
+   {
+    "w": "dónde",
+    "start": 28.507,
+    "end": 28.864
+   },
+   {
+    "w": "se",
+    "start": 28.864,
+    "end": 29.063
+   },
+   {
+    "w": "pone?",
+    "start": 29.063,
+    "end": 29.42
+   },
+   {
+    "w": "Coméntalo…",
+    "start": 29.52,
+    "end": 30.195
+   },
+   {
+    "w": "y",
+    "start": 30.495,
+    "end": 30.694
+   },
+   {
+    "w": "te",
+    "start": 30.694,
+    "end": 30.893
+   },
+   {
+    "w": "lo",
+    "start": 30.893,
+    "end": 31.091
+   },
+   {
+    "w": "enseño",
+    "start": 31.091,
+    "end": 31.608
+   },
+   {
+    "w": "en",
+    "start": 31.608,
+    "end": 31.806
+   },
+   {
+    "w": "el",
+    "start": 31.806,
+    "end": 32.005
+   },
+   {
+    "w": "siguiente",
+    "start": 32.005,
+    "end": 32.521
+   },
+   {
+    "w": "vídeo.",
+    "start": 32.521,
+    "end": 32.879
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 33.099,
+  "end": 35.739,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 33.099,
+    "end": 33.939
+   },
+   {
+    "w": "a",
+    "start": 33.939,
+    "end": 34.179
+   },
+   {
+    "w": "quien",
+    "start": 34.179,
+    "end": 34.419
+   },
+   {
+    "w": "quiera",
+    "start": 34.419,
+    "end": 34.859
+   },
+   {
+    "w": "ser",
+    "start": 34.859,
+    "end": 35.099
+   },
+   {
+    "w": "bombero!",
+    "start": 35.099,
+    "end": 35.739
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 35.959,
+  "end": 39.599,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 35.959,
+    "end": 36.799
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 36.899,
+    "end": 37.739
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 37.839,
+    "end": 38.479
+   },
+   {
+    "w": "gratis",
+    "start": 38.479,
+    "end": 38.919
+   },
+   {
+    "w": "cinco",
+    "start": 38.919,
+    "end": 39.359
+   },
+   {
+    "w": "días!",
+    "start": 39.359,
+    "end": 39.599
+   }
+  ]
+ }
+]

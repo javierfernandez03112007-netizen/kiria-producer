@@ -2728,7 +2728,118 @@ def sfx_track_bloqguia(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_puno(path):
+    """«El puño: así se sube por una cuerda» (serie una pieza por vídeo, 1): el barranco de noche; el mordisco de la leva
+    en el arranque; el clic del croll y el del puño en cada paso; la cuerda que corre al subir el puño y el «clac» cuando
+    muerde; el pedal; la bajada al suelo para el dato de examen (la regla que sube, el «90°»); la pregunta del croll y la
+    venta. Tiempos como en puno.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    a0 = max(4.7, c["llama"] - 0.45); a1 = max(a0 + 0.9, c["puno"] + 0.5); b0 = max(a1 + 0.3, c["arriba"] - 0.15); b1 = max(b0 + 1.5, c["corre"] + 1.3)
+    c0 = max(b1 + 0.6, c["pisas"] + 0.1); c1 = max(c0 + 1.0, c["pie"] + 0.15); d0 = max(c1 + 0.5, c["subes"] - 0.1); d1 = max(d0 + 1.0, c["palmo"] - 0.1); e0 = max(d1 + 0.6, c["dato"] + 0.5)
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    clac = _pitch(_onset(_load("golpe")), 1.9)
+    w2 = _onset(_load("whoosh2"))
+    wh = _onset(_load("whoosh"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # el barranco: viento, grillos y, muy arriba, el motor de la autobomba
+    put(_loop(_load("aire"), END + 0.5), 0.0, -30, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("grillos"), END + 0.5), 0.0, -37, T["fin"], 0.6, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -43, T["fin"], 0.6, 1.0, track=amb)
+    # arranque: la leva muerde la cuerda; la cámara se abre sobre el vacío
+    put("golpe", 0.0, -22, 0.8, 0.003, 0.35)
+    put(clac, 0.02, -22, 0.45)
+    put("latido", 0.12, -24, 0.7)
+    put(_pitch(wh, 0.8), c["mano"] - 0.5, -28, 0.8)
+    put(_pitch(wh, 0.6), c["sube"] + 0.1, -26, 1.3)
+    put("latido", c["entero"] - 0.05, -23, 0.7)
+    put("tension", 0.3, -32, c["llama"] - 0.3, 0.4, 0.5, track=amb)
+    # los pasos del que sube: clic del croll (al ponerse de pie) y clic del puño (al subirlo)
+    for n in range(3):
+        put(_pitch(tic, 1.8), 1.5 * n + 0.63, -32, 0.15)
+        put(_pitch(tic, 1.3), 1.5 * n + 1.35, -33, 0.15)
+    put(_pitch(tic, 1.8), a1, -30, 0.15)
+    for n in range(8):
+        t0 = e0 + 1.5 * n
+        if t0 + 1.4 < T["fin"]:
+            put(_pitch(tic, 1.8), t0 + 0.63, -33, 0.15)
+            put(_pitch(tic, 1.3), t0 + 1.35, -34, 0.15)
+    # se llama puño · hacia arriba, corre · hacia abajo, la muerde: no baja
+    put(_pitch(wh, 0.8), c["llama"] - 0.1, -28, 0.9)
+    put(nota, c["puno"] - 0.03, -25, 0.8)
+    put(bub, c["puno"] - 0.08, -27, 0.2)
+    for k in range(3):
+        put(_pitch(w2, 1.7), b0 + 0.05 + (b1 - b0) * k / 3, -30, 0.6, 0.05, 0.2)
+    put(_pitch(tic, 1.3), b1 + 0.05, -29, 0.15)
+    put(_pitch(toque, 0.8), c["abajo"] + 0.05, -29, 0.35)
+    put(clac, c["muerde"], -20, 0.5)
+    put(_pitch(_onset(_load("golpe")), 0.8), c["muerde"], -24, 0.6, 0.003, 0.3)
+    put("destello", c["muerde"] + 0.04, -27, 0.5)
+    put(_pitch(toque, 0.7), c["nobaja"] + 0.2, -25, 0.4)
+    # el pedal: pisas, te pones de pie, el croll te sujeta y subes el puño otro palmo
+    put(_pitch(wh, 0.9), c["cuelga"] - 0.1, -29, 0.8)
+    put(_pitch(toque, 1.2), c["pedal"] - 0.03, -28, 0.35)
+    put(_pitch(w2, 1.2), c0, -31, 0.7, 0.05, 0.2)
+    put(_pitch(tic, 1.8), c1, -28, 0.15)
+    put(_pitch(nota, 1.122), c["croll3"] - 0.03, -26, 0.7)
+    put(_pitch(bub, 1.1), c["croll3"] - 0.08, -27, 0.2)
+    put(_pitch(w2, 1.7), d0, -30, 0.7, 0.05, 0.2)
+    put(_pitch(tic, 1.3), d1 + 0.05, -28, 0.15)
+    # dato de examen: la cámara baja al suelo; la regla, del suelo al croll; el brazo, a 90°
+    put(_pitch(wh, 0.55), c["dato"] - 0.05, -25, 1.3)
+    put(_pitch(toque, 0.8), c["dato"] + 0.1, -25, 0.4)
+    put("destello", c["examen"] - 0.04, -26, 0.5)
+    for k in range(6):
+        put(_pitch(tic, 1.0 + 0.12 * k), c["mide"] + 0.12 + 0.09 * k, -30, 0.1)
+    put(_pitch(toque, 1.0), c["suelo"] - 0.03, -28, 0.35)
+    put(_pitch(nota, 1.122), c["croll4"] - 0.03, -27, 0.6)
+    put(_pitch(w2, 1.3), c["brazo"] - 0.1, -30, 0.6)
+    put("acierto", c["noventa"] - 0.03, -24, 0.9)
+    # ¿y el croll?: vuelve arriba; la pregunta para comentar y la pieza siguiente
+    put(_pitch(wh, 0.9), c["ycroll"] - 0.35, -26, 1.0)
+    for k in range(2):
+        put(_pitch(nota, 1.0 + 0.19 * k), c["ycroll"] + 0.12 * k, -27, 0.5)
+    put(w2, c["sabes"] - 0.2, -29, 0.6)
+    put(bub, c["sabes"] - 0.05, -26, 0.2)
+    put(_pitch(toque, 1.3), c["comenta"] - 0.03, -26, 0.35)
+    put("destello", c["enseno"] - 0.04, -27, 0.5)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "puno":
+        return sfx_track_puno(path)
     if Q.get("formato") == "bloqguia":
         return sfx_track_bloqguia(path)
     if Q.get("formato") == "bloqueadores":
