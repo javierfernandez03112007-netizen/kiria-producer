@@ -135,6 +135,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   lo que aceleró fue pasar el trozo de esta máquina (la lenta) a dos máquinas que ya habían acabado (ramas `render-gp-19` y `-20`).
   Las máquinas de ayuda van a ≈ 22 fotogramas/min; esta, a ≈ 7,5: **no renderizar aquí si hay máquinas libres**.
   Pendiente de permiso: borrar las ramas `render-gp-*` y archivar máquinas. Aviso visto en una sesión: el límite semanal de uso está cerca.
+- **Spot «La pausa universitaria» (`projects/pausa_universitaria/`, 17-11-2026) — trabajo de clase de Javi, NO es del canal**: Javi subió el
+  documento «Guion y defensa spot desayunos» y pidió el vídeo tal cual el guion técnico (lo defiende ante el profesor): 40 s, **horizontal 16:9
+  (1920×1080)**, subtítulos, cierre con el eslogan «Entre clase y clase, recarga.» más de 4 s; sin precio, sin logotipos de la UGR, sin música
+  (no hay ninguna con licencia: solo ambiente y efectos de la biblioteca). Producto: café con leche y media tostada con tomate y aceite.
+  Un solo MP3 de Javi con las 6 frases: `build_voz.py` corta cada frase (ASR) y la coloca en su segundo del guion (`AT`), pista de 40 s.
+  «Otra clase más…» va como texto en pantalla (no se dice); el eslogan final es rótulo (no subtítulo). Motor en horizontal: `lib.js` W,H = 1920×1080,
+  viñeta 16:9, `capture.mjs` 1920×1080, `Subs(..., W=1920, y=978, size=62)`. Escena: casa de muñecas con techo (aula, pasillo, cafetería),
+  `22_food.js` (taza, tostada, tomate con plano de recorte, aceite, cafetera, tostadora: `prepAt`), muñecos sentados (`poseSit`), `sipAt`.
+  Render con las 12 máquinas ya abiertas (ramas `render-pu-1..12`), aprobado por Javi con la pregunta de la app.
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
