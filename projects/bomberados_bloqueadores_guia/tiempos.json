@@ -1,777 +1,777 @@
 [
  {
   "text": "¡De estos cinco aparatos cuelga la vida de un bombero… y en el examen te preguntan cuál es cuál!",
-  "start": 0.0,
-  "end": 6.139,
+  "start": 0.056,
+  "end": 5.458,
   "words": [
    {
     "w": "¡De",
-    "start": 0.0,
-    "end": 0.199
+    "start": 0.056,
+    "end": 0.28
    },
    {
     "w": "estos",
-    "start": 0.199,
-    "end": 0.556
+    "start": 0.28,
+    "end": 0.505
    },
    {
     "w": "cinco",
-    "start": 0.556,
-    "end": 0.914
+    "start": 0.505,
+    "end": 0.804
    },
    {
     "w": "aparatos",
-    "start": 0.914,
-    "end": 1.589
+    "start": 0.804,
+    "end": 1.252
    },
    {
     "w": "cuelga",
-    "start": 1.589,
-    "end": 1.946
+    "start": 1.252,
+    "end": 1.776
    },
    {
     "w": "la",
-    "start": 1.946,
-    "end": 2.145
+    "start": 1.776,
+    "end": 1.925
    },
    {
     "w": "vida",
-    "start": 2.145,
-    "end": 2.502
+    "start": 1.925,
+    "end": 2.075
    },
    {
     "w": "de",
-    "start": 2.502,
-    "end": 2.701
+    "start": 2.075,
+    "end": 2.224
    },
    {
     "w": "un",
-    "start": 2.701,
-    "end": 2.9
+    "start": 2.224,
+    "end": 2.374
    },
    {
     "w": "bombero…",
-    "start": 2.9,
-    "end": 3.416
+    "start": 2.374,
+    "end": 3.112
    },
    {
     "w": "y",
-    "start": 3.716,
-    "end": 3.915
+    "start": 3.112,
+    "end": 3.21
    },
    {
     "w": "en",
-    "start": 3.915,
-    "end": 4.113
+    "start": 3.21,
+    "end": 3.308
    },
    {
     "w": "el",
-    "start": 4.113,
-    "end": 4.312
+    "start": 3.308,
+    "end": 3.439
    },
    {
     "w": "examen",
-    "start": 4.312,
-    "end": 4.828
+    "start": 3.439,
+    "end": 3.813
    },
    {
     "w": "te",
-    "start": 4.828,
-    "end": 5.027
+    "start": 3.813,
+    "end": 3.963
    },
    {
     "w": "preguntan",
-    "start": 5.027,
-    "end": 5.543
+    "start": 3.963,
+    "end": 4.561
    },
    {
     "w": "cuál",
-    "start": 5.543,
-    "end": 5.742
+    "start": 4.561,
+    "end": 4.935
    },
    {
     "w": "es",
-    "start": 5.742,
-    "end": 5.941
+    "start": 4.935,
+    "end": 5.084
    },
    {
     "w": "cuál!",
-    "start": 5.941,
-    "end": 6.139
+    "start": 5.084,
+    "end": 5.458
    }
   ]
  },
  {
   "text": "Todos hacen lo mismo: dejan correr la cuerda hacia un lado… y hacia el otro, la bloquean. Lo que cambia es dónde van.",
-  "start": 6.439,
-  "end": 13.753,
+  "start": 5.664,
+  "end": 12.533,
   "words": [
    {
     "w": "Todos",
-    "start": 6.439,
-    "end": 6.796
+    "start": 5.664,
+    "end": 5.935
    },
    {
     "w": "hacen",
-    "start": 6.796,
-    "end": 7.154
+    "start": 5.935,
+    "end": 6.234
    },
    {
     "w": "lo",
-    "start": 7.154,
-    "end": 7.353
+    "start": 6.234,
+    "end": 6.383
    },
    {
     "w": "mismo:",
-    "start": 7.353,
-    "end": 7.71
+    "start": 6.383,
+    "end": 6.822
    },
    {
     "w": "dejan",
-    "start": 7.89,
-    "end": 8.248
+    "start": 6.822,
+    "end": 7.178
    },
    {
     "w": "correr",
-    "start": 8.248,
-    "end": 8.605
+    "start": 7.178,
+    "end": 7.477
    },
    {
     "w": "la",
-    "start": 8.605,
-    "end": 8.804
+    "start": 7.477,
+    "end": 7.551
    },
    {
     "w": "cuerda",
-    "start": 8.804,
-    "end": 9.161
+    "start": 7.551,
+    "end": 7.925
    },
    {
     "w": "hacia",
-    "start": 9.161,
-    "end": 9.519
+    "start": 7.925,
+    "end": 8.224
    },
    {
     "w": "un",
-    "start": 9.519,
-    "end": 9.717
+    "start": 8.224,
+    "end": 8.374
    },
    {
     "w": "lado…",
-    "start": 9.717,
-    "end": 10.075
+    "start": 8.374,
+    "end": 8.85
    },
    {
     "w": "y",
-    "start": 10.375,
-    "end": 10.574
+    "start": 8.85,
+    "end": 8.944
    },
    {
     "w": "hacia",
-    "start": 10.574,
-    "end": 10.931
+    "start": 8.944,
+    "end": 9.243
    },
    {
     "w": "el",
-    "start": 10.931,
-    "end": 11.13
+    "start": 9.243,
+    "end": 9.393
    },
    {
     "w": "otro,",
-    "start": 11.13,
-    "end": 11.487
+    "start": 9.393,
+    "end": 9.794
    },
    {
     "w": "la",
-    "start": 11.587,
-    "end": 11.786
+    "start": 9.794,
+    "end": 9.972
    },
    {
     "w": "bloquean.",
-    "start": 11.786,
-    "end": 12.143
+    "start": 9.972,
+    "end": 10.664
    },
    {
     "w": "Lo",
-    "start": 12.243,
-    "end": 12.442
+    "start": 10.664,
+    "end": 10.794
    },
    {
     "w": "que",
-    "start": 12.442,
-    "end": 12.641
+    "start": 10.794,
+    "end": 10.944
    },
    {
     "w": "cambia",
-    "start": 12.641,
-    "end": 12.998
+    "start": 10.944,
+    "end": 11.542
    },
    {
     "w": "es",
-    "start": 12.998,
-    "end": 13.197
+    "start": 11.542,
+    "end": 11.766
    },
    {
     "w": "dónde",
-    "start": 13.197,
-    "end": 13.555
+    "start": 11.766,
+    "end": 12.29
    },
    {
     "w": "van.",
-    "start": 13.555,
-    "end": 13.753
+    "start": 12.29,
+    "end": 12.533
    }
   ]
  },
  {
   "text": "Para subir, dos: el puño, en la mano, con su pedal para el pie… y el croll, en el pecho: es el del arnés integral.",
-  "start": 14.053,
-  "end": 21.669,
+  "start": 12.738,
+  "end": 19.308,
   "words": [
    {
     "w": "Para",
-    "start": 14.053,
-    "end": 14.41
+    "start": 12.738,
+    "end": 12.907
    },
    {
     "w": "subir,",
-    "start": 14.41,
-    "end": 14.768
+    "start": 12.907,
+    "end": 13.43
    },
    {
     "w": "dos:",
-    "start": 14.868,
-    "end": 15.067
+    "start": 13.43,
+    "end": 14.019
    },
    {
     "w": "el",
-    "start": 15.247,
-    "end": 15.445
+    "start": 14.019,
+    "end": 14.093
    },
    {
     "w": "puño,",
-    "start": 15.445,
-    "end": 15.803
+    "start": 14.093,
+    "end": 14.692
    },
    {
     "w": "en",
-    "start": 15.903,
-    "end": 16.102
+    "start": 14.692,
+    "end": 14.766
    },
    {
     "w": "la",
-    "start": 16.102,
-    "end": 16.3
+    "start": 14.766,
+    "end": 14.916
    },
    {
     "w": "mano,",
-    "start": 16.3,
-    "end": 16.658
+    "start": 14.916,
+    "end": 15.29
    },
    {
     "w": "con",
-    "start": 16.758,
-    "end": 16.956
+    "start": 15.29,
+    "end": 15.439
    },
    {
     "w": "su",
-    "start": 16.956,
-    "end": 17.155
+    "start": 15.439,
+    "end": 15.589
    },
    {
     "w": "pedal",
-    "start": 17.155,
-    "end": 17.513
+    "start": 15.589,
+    "end": 15.963
    },
    {
     "w": "para",
-    "start": 17.513,
-    "end": 17.87
+    "start": 15.963,
+    "end": 16.112
    },
    {
     "w": "el",
-    "start": 17.87,
-    "end": 18.069
+    "start": 16.112,
+    "end": 16.262
    },
    {
     "w": "pie…",
-    "start": 18.069,
-    "end": 18.268
+    "start": 16.262,
+    "end": 16.692
    },
    {
     "w": "y",
-    "start": 18.568,
-    "end": 18.766
+    "start": 16.692,
+    "end": 16.763
    },
    {
     "w": "el",
-    "start": 18.766,
-    "end": 18.965
+    "start": 16.763,
+    "end": 16.85
    },
    {
     "w": "croll,",
-    "start": 18.965,
-    "end": 19.164
+    "start": 16.85,
+    "end": 17.346
    },
    {
     "w": "en",
-    "start": 19.264,
-    "end": 19.463
+    "start": 17.346,
+    "end": 17.449
    },
    {
     "w": "el",
-    "start": 19.463,
-    "end": 19.661
+    "start": 17.449,
+    "end": 17.598
    },
    {
     "w": "pecho:",
-    "start": 19.661,
-    "end": 20.019
+    "start": 17.598,
+    "end": 18.056
    },
    {
     "w": "es",
-    "start": 20.199,
-    "end": 20.397
+    "start": 18.056,
+    "end": 18.132
    },
    {
     "w": "el",
-    "start": 20.397,
-    "end": 20.596
+    "start": 18.132,
+    "end": 18.224
    },
    {
     "w": "del",
-    "start": 20.596,
-    "end": 20.795
+    "start": 18.224,
+    "end": 18.449
    },
    {
     "w": "arnés",
-    "start": 20.795,
-    "end": 21.152
+    "start": 18.449,
+    "end": 18.972
    },
    {
     "w": "integral.",
-    "start": 21.152,
-    "end": 21.669
+    "start": 18.972,
+    "end": 19.308
    }
   ]
  },
  {
   "text": "Para izar a un herido, en el polipasto: el Basic, un puño sin mango… y el Rescucender, el de la leva ranurada.",
-  "start": 21.969,
-  "end": 29.819,
+  "start": 19.514,
+  "end": 25.626,
   "words": [
    {
     "w": "Para",
-    "start": 21.969,
-    "end": 22.326
+    "start": 19.514,
+    "end": 19.607
    },
    {
     "w": "izar",
-    "start": 22.326,
-    "end": 22.684
+    "start": 19.607,
+    "end": 19.907
    },
    {
     "w": "a",
-    "start": 22.684,
-    "end": 22.883
+    "start": 19.907,
+    "end": 19.981
    },
    {
     "w": "un",
-    "start": 22.883,
-    "end": 23.081
+    "start": 19.981,
+    "end": 20.131
    },
    {
     "w": "herido,",
-    "start": 23.081,
-    "end": 23.598
+    "start": 20.131,
+    "end": 20.636
    },
    {
     "w": "en",
-    "start": 23.698,
-    "end": 23.896
+    "start": 20.636,
+    "end": 20.729
    },
    {
     "w": "el",
-    "start": 23.896,
-    "end": 24.095
+    "start": 20.729,
+    "end": 20.879
    },
    {
     "w": "polipasto:",
-    "start": 24.095,
-    "end": 24.77
+    "start": 20.879,
+    "end": 21.626
    },
    {
     "w": "el",
-    "start": 24.95,
-    "end": 25.149
+    "start": 21.626,
+    "end": 21.701
    },
    {
     "w": "Basic,",
-    "start": 25.149,
-    "end": 25.506
+    "start": 21.701,
+    "end": 22.308
    },
    {
     "w": "un",
-    "start": 25.606,
-    "end": 25.805
+    "start": 22.308,
+    "end": 22.421
    },
    {
     "w": "puño",
-    "start": 25.805,
-    "end": 26.162
+    "start": 22.421,
+    "end": 22.794
    },
    {
     "w": "sin",
-    "start": 26.162,
-    "end": 26.361
+    "start": 22.794,
+    "end": 22.944
    },
    {
     "w": "mango…",
-    "start": 26.361,
-    "end": 26.719
+    "start": 22.944,
+    "end": 23.561
    },
    {
     "w": "y",
-    "start": 27.019,
-    "end": 27.217
+    "start": 23.561,
+    "end": 23.718
    },
    {
     "w": "el",
-    "start": 27.217,
-    "end": 27.416
+    "start": 23.718,
+    "end": 23.875
    },
    {
     "w": "Rescucender,",
-    "start": 27.416,
-    "end": 28.091
+    "start": 23.875,
+    "end": 24.579
    },
    {
     "w": "el",
-    "start": 28.191,
-    "end": 28.39
+    "start": 24.579,
+    "end": 24.661
    },
    {
     "w": "de",
-    "start": 28.39,
-    "end": 28.588
+    "start": 24.661,
+    "end": 24.742
    },
    {
     "w": "la",
-    "start": 28.588,
-    "end": 28.787
+    "start": 24.742,
+    "end": 24.85
    },
    {
     "w": "leva",
-    "start": 28.787,
-    "end": 29.145
+    "start": 24.85,
+    "end": 25.15
    },
    {
     "w": "ranurada.",
-    "start": 29.145,
-    "end": 29.819
+    "start": 25.15,
+    "end": 25.626
    }
   ]
  },
  {
   "text": "Y para bajar, el shunt, o pico pato: va debajo del descensor… y si sueltas las manos, te frena.",
-  "start": 30.119,
-  "end": 36.421,
+  "start": 25.832,
+  "end": 31.505,
   "words": [
    {
     "w": "Y",
-    "start": 30.119,
-    "end": 30.318
+    "start": 25.832,
+    "end": 25.935
    },
    {
     "w": "para",
-    "start": 30.318,
-    "end": 30.675
+    "start": 25.935,
+    "end": 26.084
    },
    {
     "w": "bajar,",
-    "start": 30.675,
-    "end": 31.033
+    "start": 26.084,
+    "end": 26.673
    },
    {
     "w": "el",
-    "start": 31.133,
-    "end": 31.331
+    "start": 26.673,
+    "end": 26.748
    },
    {
     "w": "shunt,",
-    "start": 31.331,
-    "end": 31.53
+    "start": 26.748,
+    "end": 27.327
    },
    {
     "w": "o",
-    "start": 31.63,
-    "end": 31.829
+    "start": 27.327,
+    "end": 27.421
    },
    {
     "w": "pico",
-    "start": 31.829,
-    "end": 32.186
+    "start": 27.421,
+    "end": 27.72
    },
    {
     "w": "pato:",
-    "start": 32.186,
-    "end": 32.544
+    "start": 27.72,
+    "end": 28.168
    },
    {
     "w": "va",
-    "start": 32.724,
-    "end": 32.922
+    "start": 28.168,
+    "end": 28.393
    },
    {
     "w": "debajo",
-    "start": 32.922,
-    "end": 33.439
+    "start": 28.393,
+    "end": 28.766
    },
    {
     "w": "del",
-    "start": 33.439,
-    "end": 33.637
+    "start": 28.766,
+    "end": 28.916
    },
    {
     "w": "descensor…",
-    "start": 33.637,
-    "end": 34.154
+    "start": 28.916,
+    "end": 29.832
    },
    {
     "w": "y",
-    "start": 34.454,
-    "end": 34.652
+    "start": 29.832,
+    "end": 29.916
    },
    {
     "w": "si",
-    "start": 34.652,
-    "end": 34.851
+    "start": 29.916,
+    "end": 30.019
    },
    {
     "w": "sueltas",
-    "start": 34.851,
-    "end": 35.209
+    "start": 30.019,
+    "end": 30.467
    },
    {
     "w": "las",
-    "start": 35.209,
-    "end": 35.407
+    "start": 30.467,
+    "end": 30.617
    },
    {
     "w": "manos,",
-    "start": 35.407,
-    "end": 35.765
+    "start": 30.617,
+    "end": 31.056
    },
    {
     "w": "te",
-    "start": 35.865,
-    "end": 36.063
+    "start": 31.056,
+    "end": 31.14
    },
    {
     "w": "frena.",
-    "start": 36.063,
-    "end": 36.421
+    "start": 31.14,
+    "end": 31.505
    }
   ]
  },
  {
   "text": "Ahora, la trampa: ¿cuál de estos NO se recomienda para un polipasto? ¿A, B o C? Comenta tu letra.",
-  "start": 36.721,
-  "end": 43.299,
+  "start": 31.729,
+  "end": 38.168,
   "words": [
    {
     "w": "Ahora,",
-    "start": 36.721,
-    "end": 37.237
+    "start": 31.729,
+    "end": 32.178
    },
    {
     "w": "la",
-    "start": 37.337,
-    "end": 37.536
+    "start": 32.178,
+    "end": 32.402
    },
    {
     "w": "trampa:",
-    "start": 37.536,
-    "end": 37.893
+    "start": 32.402,
+    "end": 33.0
    },
    {
     "w": "¿cuál",
-    "start": 38.073,
-    "end": 38.272
+    "start": 33.0,
+    "end": 33.252
    },
    {
     "w": "de",
-    "start": 38.272,
-    "end": 38.471
+    "start": 33.252,
+    "end": 33.402
    },
    {
     "w": "estos",
-    "start": 38.471,
-    "end": 38.828
+    "start": 33.402,
+    "end": 33.925
    },
    {
     "w": "NO",
-    "start": 38.828,
-    "end": 39.027
+    "start": 33.925,
+    "end": 34.224
    },
    {
     "w": "se",
-    "start": 39.027,
-    "end": 39.226
+    "start": 34.224,
+    "end": 34.374
    },
    {
     "w": "recomienda",
-    "start": 39.226,
-    "end": 39.901
+    "start": 34.374,
+    "end": 34.972
    },
    {
     "w": "para",
-    "start": 39.901,
-    "end": 40.258
+    "start": 34.972,
+    "end": 35.121
    },
    {
     "w": "un",
-    "start": 40.258,
-    "end": 40.457
+    "start": 35.121,
+    "end": 35.271
    },
    {
     "w": "polipasto?",
-    "start": 40.457,
-    "end": 41.132
+    "start": 35.271,
+    "end": 36.047
    },
    {
     "w": "¿A,",
-    "start": 41.232,
-    "end": 41.431
+    "start": 36.047,
+    "end": 36.411
    },
    {
     "w": "B",
-    "start": 41.531,
-    "end": 41.729
+    "start": 36.411,
+    "end": 36.888
    },
    {
     "w": "o",
-    "start": 41.729,
-    "end": 41.928
+    "start": 36.888,
+    "end": 36.991
    },
    {
     "w": "C?",
-    "start": 41.928,
-    "end": 42.127
+    "start": 36.991,
+    "end": 37.393
    },
    {
     "w": "Comenta",
-    "start": 42.227,
-    "end": 42.743
+    "start": 37.393,
+    "end": 37.776
    },
    {
     "w": "tu",
-    "start": 42.743,
-    "end": 42.942
+    "start": 37.776,
+    "end": 37.925
    },
    {
     "w": "letra.",
-    "start": 42.942,
-    "end": 43.299
+    "start": 37.925,
+    "end": 38.168
    }
   ]
  },
  {
   "text": "¡Guárdalo para repasar… y mándaselo a quien oposite contigo!",
-  "start": 43.599,
-  "end": 48.659,
+  "start": 38.374,
+  "end": 41.495,
   "words": [
    {
     "w": "¡Guárdalo",
-    "start": 43.599,
-    "end": 44.239
+    "start": 38.374,
+    "end": 38.878
    },
    {
     "w": "para",
-    "start": 44.239,
-    "end": 44.679
+    "start": 38.878,
+    "end": 39.028
    },
    {
     "w": "repasar…",
-    "start": 44.679,
-    "end": 45.319
+    "start": 39.028,
+    "end": 39.72
    },
    {
     "w": "y",
-    "start": 45.619,
-    "end": 45.859
+    "start": 39.72,
+    "end": 39.824
    },
    {
     "w": "mándaselo",
-    "start": 45.859,
-    "end": 46.699
+    "start": 39.824,
+    "end": 40.299
    },
    {
     "w": "a",
-    "start": 46.699,
-    "end": 46.939
+    "start": 40.299,
+    "end": 40.374
    },
    {
     "w": "quien",
-    "start": 46.939,
-    "end": 47.179
+    "start": 40.374,
+    "end": 40.598
    },
    {
     "w": "oposite",
-    "start": 47.179,
-    "end": 48.019
+    "start": 40.598,
+    "end": 41.196
    },
    {
     "w": "contigo!",
-    "start": 48.019,
-    "end": 48.659
+    "start": 41.196,
+    "end": 41.495
    }
   ]
  },
  {
   "text": "¿Opositas a bombero? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 48.959,
-  "end": 53.479,
+  "start": 41.701,
+  "end": 45.422,
   "words": [
    {
     "w": "¿Opositas",
-    "start": 48.959,
-    "end": 49.799
+    "start": 41.701,
+    "end": 42.215
    },
    {
     "w": "a",
-    "start": 49.799,
-    "end": 50.039
+    "start": 42.215,
+    "end": 42.364
    },
    {
     "w": "bombero?",
-    "start": 50.039,
-    "end": 50.679
+    "start": 42.364,
+    "end": 42.878
    },
    {
     "w": "¡Bomberados!",
-    "start": 50.779,
-    "end": 51.619
+    "start": 42.878,
+    "end": 43.912
    },
    {
     "w": "¡Pruébala",
-    "start": 51.719,
-    "end": 52.359
+    "start": 43.912,
+    "end": 44.305
    },
    {
     "w": "gratis",
-    "start": 52.359,
-    "end": 52.799
+    "start": 44.305,
+    "end": 44.734
    },
    {
     "w": "cinco",
-    "start": 52.799,
-    "end": 53.239
+    "start": 44.734,
+    "end": 45.02
    },
    {
     "w": "días!",
-    "start": 53.239,
-    "end": 53.479
+    "start": 45.02,
+    "end": 45.422
    }
   ]
  }

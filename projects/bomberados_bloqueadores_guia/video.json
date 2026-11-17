@@ -2,10 +2,10 @@
  "formato": "bloqguia",
  "estilo": "app",
  "voz": {
-  "tempo": 1.0,
+  "tempo": 1.07,
   "count": 0,
-  "cortar": false,
-  "pause_def": 0.3
+  "cortar": true,
+  "pause_def": 0.22
  },
  "realce": [
   "guardalo",
@@ -290,6 +290,16 @@
    "¡Pruébala",
    1,
    8
+  ],
+  "puno4": [
+   "puño",
+   1,
+   4
+  ],
+  "mango": [
+   "mango",
+   1,
+   4
   ]
  }
 }
