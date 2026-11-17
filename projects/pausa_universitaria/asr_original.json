@@ -1,0 +1,227 @@
+[
+{
+"w": "¿Bajamos",
+"start": 0.0,
+"end": 0.48
+},
+{
+"w": "a",
+"start": 0.56,
+"end": 0.64
+},
+{
+"w": "desayunar?",
+"start": 0.64,
+"end": 1.52
+},
+{
+"w": "Venga",
+"start": 2.24,
+"end": 2.8
+},
+{
+"w": "que",
+"start": 2.88,
+"end": 2.96
+},
+{
+"w": "no",
+"start": 3.12,
+"end": 3.2
+},
+{
+"w": "me",
+"start": 3.28,
+"end": 3.36
+},
+{
+"w": "da",
+"start": 3.44,
+"end": 3.52
+},
+{
+"w": "la",
+"start": 3.6,
+"end": 3.68
+},
+{
+"w": "vida.",
+"start": 3.76,
+"end": 4.16
+},
+{
+"w": "A",
+"start": 4.4,
+"end": 4.48
+},
+{
+"w": "veces,",
+"start": 4.56,
+"end": 5.04
+},
+{
+"w": "para",
+"start": 5.2,
+"end": 5.28
+},
+{
+"w": "seguir",
+"start": 5.44,
+"end": 5.84
+},
+{
+"w": "el",
+"start": 5.92,
+"end": 6.0
+},
+{
+"w": "día,",
+"start": 6.08,
+"end": 6.48
+},
+{
+"w": "solo",
+"start": 6.56,
+"end": 6.64
+},
+{
+"w": "hace",
+"start": 6.96,
+"end": 7.2
+},
+{
+"w": "falta",
+"start": 7.2,
+"end": 7.44
+},
+{
+"w": "una",
+"start": 7.6,
+"end": 7.68
+},
+{
+"w": "buena",
+"start": 7.76,
+"end": 8.0
+},
+{
+"w": "pausa.",
+"start": 8.08,
+"end": 8.64
+},
+{
+"w": "Ahora",
+"start": 8.88,
+"end": 9.2
+},
+{
+"w": "sí.",
+"start": 9.36,
+"end": 9.76
+},
+{
+"w": "Cerca,",
+"start": 10.0,
+"end": 10.64
+},
+{
+"w": "sencillo",
+"start": 10.8,
+"end": 11.52
+},
+{
+"w": "y",
+"start": 11.6,
+"end": 11.68
+},
+{
+"w": "justo",
+"start": 11.84,
+"end": 12.16
+},
+{
+"w": "cuando",
+"start": 12.24,
+"end": 12.32
+},
+{
+"w": "lo",
+"start": 12.56,
+"end": 12.64
+},
+{
+"w": "necesitas.",
+"start": 12.72,
+"end": 13.44
+},
+{
+"w": "Café",
+"start": 13.52,
+"end": 13.92
+},
+{
+"w": "con",
+"start": 13.92,
+"end": 14.0
+},
+{
+"w": "leche",
+"start": 14.08,
+"end": 14.32
+},
+{
+"w": "y",
+"start": 14.4,
+"end": 14.48
+},
+{
+"w": "tostada",
+"start": 14.56,
+"end": 14.96
+},
+{
+"w": "de",
+"start": 15.04,
+"end": 15.12
+},
+{
+"w": "tomate",
+"start": 15.12,
+"end": 15.44
+},
+{
+"w": "y",
+"start": 15.52,
+"end": 15.6
+},
+{
+"w": "aceite.",
+"start": 15.68,
+"end": 16.24
+},
+{
+"w": "Entre",
+"start": 16.4,
+"end": 16.64
+},
+{
+"w": "clase",
+"start": 16.72,
+"end": 17.04
+},
+{
+"w": "y",
+"start": 17.12,
+"end": 17.2
+},
+{
+"w": "clase,",
+"start": 17.2,
+"end": 17.68
+},
+{
+"w": "recarga.",
+"start": 17.84,
+"end": 18.48
+}
+]

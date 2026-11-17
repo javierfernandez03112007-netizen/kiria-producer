@@ -1,0 +1,274 @@
+[
+ {
+  "start": 4.7,
+  "end": 6.22,
+  "text": "¿Bajamos a desayunar?",
+  "words": [
+   {
+    "w": "¿Bajamos",
+    "start": 4.7,
+    "end": 5.18
+   },
+   {
+    "w": "a",
+    "start": 5.26,
+    "end": 5.34
+   },
+   {
+    "w": "desayunar?",
+    "start": 5.34,
+    "end": 6.22
+   }
+  ]
+ },
+ {
+  "start": 6.75,
+  "end": 8.67,
+  "text": "Venga, que no me da la vida.",
+  "words": [
+   {
+    "w": "Venga,",
+    "start": 6.75,
+    "end": 7.31
+   },
+   {
+    "w": "que",
+    "start": 7.39,
+    "end": 7.47
+   },
+   {
+    "w": "no",
+    "start": 7.63,
+    "end": 7.71
+   },
+   {
+    "w": "me",
+    "start": 7.79,
+    "end": 7.87
+   },
+   {
+    "w": "da",
+    "start": 7.95,
+    "end": 8.03
+   },
+   {
+    "w": "la",
+    "start": 8.11,
+    "end": 8.19
+   },
+   {
+    "w": "vida.",
+    "start": 8.27,
+    "end": 8.67
+   }
+  ]
+ },
+ {
+  "start": 10.0,
+  "end": 14.24,
+  "text": "A veces, para seguir con el día, solo hace falta una buena pausa.",
+  "words": [
+   {
+    "w": "A",
+    "start": 10.0,
+    "end": 10.08
+   },
+   {
+    "w": "veces,",
+    "start": 10.16,
+    "end": 10.64
+   },
+   {
+    "w": "para",
+    "start": 10.8,
+    "end": 10.88
+   },
+   {
+    "w": "seguir",
+    "start": 11.04,
+    "end": 11.44
+   },
+   {
+    "w": "con",
+    "start": 11.44,
+    "end": 11.44
+   },
+   {
+    "w": "el",
+    "start": 11.52,
+    "end": 11.6
+   },
+   {
+    "w": "día,",
+    "start": 11.68,
+    "end": 12.08
+   },
+   {
+    "w": "solo",
+    "start": 12.16,
+    "end": 12.24
+   },
+   {
+    "w": "hace",
+    "start": 12.56,
+    "end": 12.8
+   },
+   {
+    "w": "falta",
+    "start": 12.8,
+    "end": 13.04
+   },
+   {
+    "w": "una",
+    "start": 13.2,
+    "end": 13.28
+   },
+   {
+    "w": "buena",
+    "start": 13.36,
+    "end": 13.6
+   },
+   {
+    "w": "pausa.",
+    "start": 13.68,
+    "end": 14.24
+   }
+  ]
+ },
+ {
+  "start": 19.3,
+  "end": 20.18,
+  "text": "Ahora sí.",
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 19.3,
+    "end": 19.62
+   },
+   {
+    "w": "sí.",
+    "start": 19.78,
+    "end": 20.18
+   }
+  ]
+ },
+ {
+  "start": 26.2,
+  "end": 29.64,
+  "text": "Cerca, sencillo y justo cuando lo necesitas.",
+  "words": [
+   {
+    "w": "Cerca,",
+    "start": 26.2,
+    "end": 26.84
+   },
+   {
+    "w": "sencillo",
+    "start": 27.0,
+    "end": 27.72
+   },
+   {
+    "w": "y",
+    "start": 27.8,
+    "end": 27.88
+   },
+   {
+    "w": "justo",
+    "start": 28.04,
+    "end": 28.36
+   },
+   {
+    "w": "cuando",
+    "start": 28.44,
+    "end": 28.52
+   },
+   {
+    "w": "lo",
+    "start": 28.76,
+    "end": 28.84
+   },
+   {
+    "w": "necesitas.",
+    "start": 28.92,
+    "end": 29.64
+   }
+  ]
+ },
+ {
+  "start": 33.6,
+  "end": 38.56,
+  "text": "Café con leche y tostada de tomate y aceite. Entre clase y clase, recarga.",
+  "words": [
+   {
+    "w": "Café",
+    "start": 33.6,
+    "end": 34.0
+   },
+   {
+    "w": "con",
+    "start": 34.0,
+    "end": 34.08
+   },
+   {
+    "w": "leche",
+    "start": 34.16,
+    "end": 34.4
+   },
+   {
+    "w": "y",
+    "start": 34.48,
+    "end": 34.56
+   },
+   {
+    "w": "tostada",
+    "start": 34.64,
+    "end": 35.04
+   },
+   {
+    "w": "de",
+    "start": 35.12,
+    "end": 35.2
+   },
+   {
+    "w": "tomate",
+    "start": 35.2,
+    "end": 35.52
+   },
+   {
+    "w": "y",
+    "start": 35.6,
+    "end": 35.68
+   },
+   {
+    "w": "aceite.",
+    "start": 35.76,
+    "end": 36.32
+   },
+   {
+    "w": "Entre",
+    "start": 36.48,
+    "end": 36.72
+   },
+   {
+    "w": "clase",
+    "start": 36.8,
+    "end": 37.12
+   },
+   {
+    "w": "y",
+    "start": 37.2,
+    "end": 37.28
+   },
+   {
+    "w": "clase,",
+    "start": 37.28,
+    "end": 37.76
+   },
+   {
+    "w": "recarga.",
+    "start": 37.92,
+    "end": 38.56
+   }
+  ]
+ }
+]
