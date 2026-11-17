@@ -150,6 +150,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   suena con la misma voz (solo llegó un audio).
 
 ## Próximas ideas
+-1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; guion del episodio 1 propuesto, sin aprobar todavía)**. Javi: «una serie
+   donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
+   Instagram encima; el que tenga más likes en el comentario del vídeo anterior es el presidente o rey ese día» y «contamos una historia de la
+   evolución de una ciudad poco a poco con los seguidores». Su esquema por episodio: plano aéreo de toda la población → la cámara recorre los
+   grupos → 3–5 nombres en primer plano → ocurre un acontecimiento → se revela el ganador. Lo que le propuse (interpretación mía, no aprobado):
+   se entra comentando (no puedo leer la lista de seguidores: los nombres me los pasa Javi con una captura de los comentarios ordenados por
+   «me gusta»); el acontecimiento de cada día es económico (sequía, precios, impuestos) y el alcalde decide; crece por hitos de seguidores;
+   2–3 episodios por semana como reel de prueba; filtrar nombres ofensivos. Pendiente: qué es el «ganador premium» (Javi no lo ha aclarado).
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
