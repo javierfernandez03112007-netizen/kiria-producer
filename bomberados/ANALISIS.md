@@ -25,6 +25,30 @@ los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 (PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
 Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
+## 📌 Para los próximos vídeos (plan del 17 nov)
+
+1. **Rehacer en 3D lo que funcionó en estilo app.** El panel naranja pasó de 15.900 (app) a **77.800** (3D, cisterna de
+   noche). Ideas nuevas en Notion: Reducción 45→25 en 3D y PAS en 3D.
+2. **La teoría funciona si la cuenta una escena.** Alfabeto de radio (3.º B, la puerta equivocada, el reto de la Q):
+   39.000 vistas y 52 me gusta/1.000; seguridad activa/pasiva sin escena: 6.000.
+3. **La app, solo como cierre.** «Reta a otro opositor» (1 vs 1): 10.100, por encima de los que vendían la app (5.500) pero
+   muy por debajo de los 3D sin app.
+4. **Cierre para comentar en todos** (letras A/B/C/D o pregunta personal): el panel naranja comentó poco (0,3/1.000).
+5. Siguen las del 13 nov: bomberos en acción en 3D con dron, 45–57 s, «mándaselo a quien quiera ser bombero».
+
+### Seguidores (12 nov 21:30 → 16 nov 18:31, ≈ 3,9 días)
+| Cuenta | 12 nov | 16 nov | Crecimiento | Por día |
+|---|---|---|---|---|
+| Bomberados | 2.976 | 3.460 | +484 (+16 %) | ≈ 125 |
+| Élite Bomberos | 9.405 | 9.933 | +528 (+6 %) | ≈ 136 |
+
+### Lo nuevo del 17 nov (cifras del 16 nov)
+| Vídeo | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
+|---|---|---|---|---|
+| Panel naranja de la cisterna (3D) | **77.800** | 40,2 | 0,3 | 4,6 |
+| Alfabeto de radio (3D, escena) | 39.000 | 52,3 | 1,0 | 5,6 |
+| Reta a otro opositor (1 vs 1) | 10.100 | 44,8 | 0,8 | 8,5 |
+
 ## 📌 Semana de Adrián (16–22 nov), con el plan del 13 nov aplicado
 Sin cifras nuevas desde el 12 nov; las reglas del 13 nov siguen. Notas puestas en cada fila de Notion:
 - **Lun 16 paneles naranja:** el ADR en estilo app hizo 15.900; en 3D con dron (cisterna volcada de noche) y letras al final.
