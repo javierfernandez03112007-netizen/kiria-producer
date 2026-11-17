@@ -21,7 +21,7 @@ while true; do
   done
   m=$(missing); echo "$(date +%H:%M) faltan $m"
   [ "$m" = "0" ] && break
-  sleep 90
+  sleep 30
 done
 for p in $(pgrep -f "auto_finish.sh") $(pgrep -f "render_local.sh"); do kill $p 2>/dev/null; done
 for p in $(pgrep -f "node web/capture.mjs out/frames"); do kill $p 2>/dev/null; done
