@@ -160,6 +160,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    2–3 episodios por semana como reel de prueba; filtrar nombres ofensivos. Pendiente: qué es el «ganador premium» (Javi no lo ha aclarado).
    Javi (17-11, después): «Perfecto, el rey puede decidir en el próximo vídeo qué hacer con temas concretos» → es REY (no alcalde) y cada
    episodio acaba con un dilema concreto que el rey resuelve en el siguiente (se ve la consecuencia). Dilemas de juego, sin política real.
+   **Decisión de Javi (17-11): «cada seguidor es una persona y el comentario con más like, el rey».** Salen TODOS los seguidores con su nombre
+   (no solo quien comenta). Los nombres llegan con la exportación de Instagram («Descargar tu información» → Seguidores y seguidos, JSON) que
+   Javi sube al chat: **ese archivo NO se sube al repo** (datos de terceros). El rey sale de una captura de los comentarios. No hay conector que
+   dé nombres (Metricool solo da cifras: 5.882 seguidores el 16-11, +50–110 al día). Filtrar nombres ofensivos y quitar a quien lo pida.
+   Guion del episodio 1 (v2, ≈ 117 palabras) entregado a Javi el 17-11; falta su MP3 y el archivo de seguidores.
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
