@@ -144,6 +144,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   viñeta 16:9, `capture.mjs` 1920×1080, `Subs(..., W=1920, y=978, size=62)`. Escena: casa de muñecas con techo (aula, pasillo, cafetería),
   `22_food.js` (taza, tostada, tomate con plano de recorte, aceite, cafetera, tostadora: `prepAt`), muñecos sentados (`poseSit`), `sipAt`.
   Render con las 12 máquinas ya abiertas (ramas `render-pu-1..12`), aprobado por Javi con la pregunta de la app.
+  **ENTREGADO a Javi el 17-11 a las 17:10 UTC** (`out/pausa_universitaria.mp4`, 40,0 s, 2.400 fotogramas, −14,9 LUFS). El render de 12 × 200
+  fotogramas tardó ≈ 13 min. Ojo con el volumen: con la voz a trozos (silencios entre frases) la mezcla salía a −17,7 LUFS; se compensa con
+  `volume=5.9dB` y limitador a 0,8. Pendiente de permiso: borrar las ramas `render-pu-*`. Avisado a Javi: no lleva música y la frase de ella
+  suena con la misma voz (solo llegó un audio).
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
