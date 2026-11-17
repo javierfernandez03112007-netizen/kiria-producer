@@ -130,6 +130,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   a las fachadas todo quedaba pequeño. Ojo con los brillos: faros hacia la cámara + focos aditivos + resplandor lo tapan todo (resplandor a 0,3,
   faros a 1,1, pintura de coche mate). En esta máquina (4 núcleos) 3 procesos de render no van más rápido que 1 (≈ 7,4 s por fotograma en total).
   Render final con las 12 máquinas (ramas `render-gp-1..12`), aprobado por Javi con la pregunta de la app.
+  **ENTREGADO a Javi el 17-11 a las 11:15** (`out/gta6_policia.mp4`, 47,4 s, −15,0 LUFS; portada `out/portada.jpg`; `DESCRIPCION.txt`).
+  Javi pidió «usa las máquinas ya abiertas, no crees más»: las 6 de «Microondas» no arrancaron (límite de uso de 5 h en esas sesiones);
+  lo que aceleró fue pasar el trozo de esta máquina (la lenta) a dos máquinas que ya habían acabado (ramas `render-gp-19` y `-20`).
+  Las máquinas de ayuda van a ≈ 22 fotogramas/min; esta, a ≈ 7,5: **no renderizar aquí si hay máquinas libres**.
+  Pendiente de permiso: borrar las ramas `render-gp-*` y archivar máquinas. Aviso visto en una sesión: el límite semanal de uso está cerca.
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
