@@ -1,0 +1,789 @@
+[
+ {
+  "text": "El jueves, en GTA 6, la policía no te busca a ti: busca tu ropa y tu coche.",
+  "start": 0.0,
+  "end": 5.49,
+  "words": [
+   {
+    "w": "El",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "jueves,",
+    "start": 0.24,
+    "end": 0.84
+   },
+   {
+    "w": "en",
+    "start": 0.84,
+    "end": 0.92
+   },
+   {
+    "w": "GTA",
+    "start": 0.92,
+    "end": 1.48
+   },
+   {
+    "w": "6,",
+    "start": 1.48,
+    "end": 1.89
+   },
+   {
+    "w": "la",
+    "start": 1.89,
+    "end": 2.0
+   },
+   {
+    "w": "policía",
+    "start": 2.0,
+    "end": 2.48
+   },
+   {
+    "w": "no",
+    "start": 2.48,
+    "end": 2.64
+   },
+   {
+    "w": "te",
+    "start": 2.64,
+    "end": 2.8
+   },
+   {
+    "w": "busca",
+    "start": 2.8,
+    "end": 3.28
+   },
+   {
+    "w": "a",
+    "start": 3.28,
+    "end": 3.44
+   },
+   {
+    "w": "ti:",
+    "start": 3.44,
+    "end": 3.91
+   },
+   {
+    "w": "busca",
+    "start": 3.91,
+    "end": 4.28
+   },
+   {
+    "w": "tu",
+    "start": 4.28,
+    "end": 4.44
+   },
+   {
+    "w": "ropa",
+    "start": 4.44,
+    "end": 4.84
+   },
+   {
+    "w": "y",
+    "start": 4.84,
+    "end": 5.0
+   },
+   {
+    "w": "tu",
+    "start": 5.0,
+    "end": 5.16
+   },
+   {
+    "w": "coche.",
+    "start": 5.16,
+    "end": 5.49
+   }
+  ]
+ },
+ {
+  "text": "¿Cómo la despistas? Al final, el truco que solo pueden hacer Jason y Lucía.",
+  "start": 5.68,
+  "end": 10.14,
+  "words": [
+   {
+    "w": "¿Cómo",
+    "start": 5.68,
+    "end": 5.82
+   },
+   {
+    "w": "la",
+    "start": 5.82,
+    "end": 5.98
+   },
+   {
+    "w": "despistas?",
+    "start": 5.98,
+    "end": 6.94
+   },
+   {
+    "w": "Al",
+    "start": 6.94,
+    "end": 7.22
+   },
+   {
+    "w": "final,",
+    "start": 7.22,
+    "end": 7.64
+   },
+   {
+    "w": "el",
+    "start": 7.64,
+    "end": 7.74
+   },
+   {
+    "w": "truco",
+    "start": 7.74,
+    "end": 8.14
+   },
+   {
+    "w": "que",
+    "start": 8.14,
+    "end": 8.3
+   },
+   {
+    "w": "solo",
+    "start": 8.3,
+    "end": 8.54
+   },
+   {
+    "w": "pueden",
+    "start": 8.54,
+    "end": 8.86
+   },
+   {
+    "w": "hacer",
+    "start": 8.86,
+    "end": 9.1
+   },
+   {
+    "w": "Jason",
+    "start": 9.1,
+    "end": 9.58
+   },
+   {
+    "w": "y",
+    "start": 9.58,
+    "end": 9.74
+   },
+   {
+    "w": "Lucía.",
+    "start": 9.74,
+    "end": 10.14
+   }
+  ]
+ },
+ {
+  "text": "En GTA 5 bastaba con esconderte y esperar a que parpadearan las estrellas.",
+  "start": 10.33,
+  "end": 14.42,
+  "words": [
+   {
+    "w": "En",
+    "start": 10.33,
+    "end": 10.56
+   },
+   {
+    "w": "GTA",
+    "start": 10.56,
+    "end": 10.84
+   },
+   {
+    "w": "5",
+    "start": 10.84,
+    "end": 11.02
+   },
+   {
+    "w": "bastaba",
+    "start": 11.02,
+    "end": 11.64
+   },
+   {
+    "w": "con",
+    "start": 11.64,
+    "end": 11.8
+   },
+   {
+    "w": "esconderte",
+    "start": 11.8,
+    "end": 12.44
+   },
+   {
+    "w": "y",
+    "start": 12.44,
+    "end": 12.52
+   },
+   {
+    "w": "esperar",
+    "start": 12.52,
+    "end": 12.84
+   },
+   {
+    "w": "a",
+    "start": 12.84,
+    "end": 12.92
+   },
+   {
+    "w": "que",
+    "start": 12.92,
+    "end": 13.08
+   },
+   {
+    "w": "parpadearan",
+    "start": 13.08,
+    "end": 13.8
+   },
+   {
+    "w": "las",
+    "start": 13.8,
+    "end": 13.96
+   },
+   {
+    "w": "estrellas.",
+    "start": 13.96,
+    "end": 14.42
+   }
+  ]
+ },
+ {
+  "text": "Ahora vuelven las seis estrellas… pero debajo sale lo que la policía sabe de ti.",
+  "start": 14.64,
+  "end": 19.58,
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 14.64,
+    "end": 14.96
+   },
+   {
+    "w": "vuelven",
+    "start": 14.96,
+    "end": 15.52
+   },
+   {
+    "w": "las",
+    "start": 15.52,
+    "end": 15.76
+   },
+   {
+    "w": "seis",
+    "start": 15.76,
+    "end": 16.16
+   },
+   {
+    "w": "estrellas…",
+    "start": 16.16,
+    "end": 16.96
+   },
+   {
+    "w": "pero",
+    "start": 16.96,
+    "end": 17.11
+   },
+   {
+    "w": "debajo",
+    "start": 17.11,
+    "end": 17.67
+   },
+   {
+    "w": "sale",
+    "start": 17.67,
+    "end": 18.07
+   },
+   {
+    "w": "lo",
+    "start": 18.07,
+    "end": 18.15
+   },
+   {
+    "w": "que",
+    "start": 18.15,
+    "end": 18.31
+   },
+   {
+    "w": "la",
+    "start": 18.31,
+    "end": 18.39
+   },
+   {
+    "w": "policía",
+    "start": 18.39,
+    "end": 18.95
+   },
+   {
+    "w": "sabe",
+    "start": 18.95,
+    "end": 19.27
+   },
+   {
+    "w": "de",
+    "start": 19.27,
+    "end": 19.43
+   },
+   {
+    "w": "ti.",
+    "start": 19.43,
+    "end": 19.58
+   }
+  ]
+ },
+ {
+  "text": "Tu coche. Tu ropa. Tu aspecto. Y si te ha grabado una cámara.",
+  "start": 19.92,
+  "end": 24.11,
+  "words": [
+   {
+    "w": "Tu",
+    "start": 19.92,
+    "end": 20.03
+   },
+   {
+    "w": "coche.",
+    "start": 20.03,
+    "end": 20.76
+   },
+   {
+    "w": "Tu",
+    "start": 20.76,
+    "end": 20.87
+   },
+   {
+    "w": "ropa.",
+    "start": 20.87,
+    "end": 21.57
+   },
+   {
+    "w": "Tu",
+    "start": 21.57,
+    "end": 21.71
+   },
+   {
+    "w": "aspecto.",
+    "start": 21.71,
+    "end": 22.55
+   },
+   {
+    "w": "Y",
+    "start": 22.55,
+    "end": 22.622
+   },
+   {
+    "w": "si",
+    "start": 22.622,
+    "end": 22.71
+   },
+   {
+    "w": "te",
+    "start": 22.71,
+    "end": 22.87
+   },
+   {
+    "w": "ha",
+    "start": 22.87,
+    "end": 23.03
+   },
+   {
+    "w": "grabado",
+    "start": 23.03,
+    "end": 23.51
+   },
+   {
+    "w": "una",
+    "start": 23.51,
+    "end": 23.75
+   },
+   {
+    "w": "cámara.",
+    "start": 23.75,
+    "end": 24.11
+   }
+  ]
+ },
+ {
+  "text": "Todo empieza con un testigo: si nadie te ve y no salta una alarma, no hay estrellas.",
+  "start": 24.26,
+  "end": 29.07,
+  "words": [
+   {
+    "w": "Todo",
+    "start": 24.26,
+    "end": 24.47
+   },
+   {
+    "w": "empieza",
+    "start": 24.47,
+    "end": 24.87
+   },
+   {
+    "w": "con",
+    "start": 24.87,
+    "end": 25.03
+   },
+   {
+    "w": "un",
+    "start": 25.03,
+    "end": 25.19
+   },
+   {
+    "w": "testigo:",
+    "start": 25.19,
+    "end": 25.96
+   },
+   {
+    "w": "si",
+    "start": 25.96,
+    "end": 26.11
+   },
+   {
+    "w": "nadie",
+    "start": 26.11,
+    "end": 26.35
+   },
+   {
+    "w": "te",
+    "start": 26.35,
+    "end": 26.51
+   },
+   {
+    "w": "ve",
+    "start": 26.51,
+    "end": 26.83
+   },
+   {
+    "w": "y",
+    "start": 26.83,
+    "end": 26.99
+   },
+   {
+    "w": "no",
+    "start": 26.99,
+    "end": 27.15
+   },
+   {
+    "w": "salta",
+    "start": 27.15,
+    "end": 27.47
+   },
+   {
+    "w": "una",
+    "start": 27.47,
+    "end": 27.71
+   },
+   {
+    "w": "alarma,",
+    "start": 27.71,
+    "end": 28.16
+   },
+   {
+    "w": "no",
+    "start": 28.16,
+    "end": 28.31
+   },
+   {
+    "w": "hay",
+    "start": 28.31,
+    "end": 28.55
+   },
+   {
+    "w": "estrellas.",
+    "start": 28.55,
+    "end": 29.07
+   }
+  ]
+ },
+ {
+  "text": "Y cada pista se puede borrar.",
+  "start": 29.13,
+  "end": 30.9,
+  "words": [
+   {
+    "w": "Y",
+    "start": 29.13,
+    "end": 29.31
+   },
+   {
+    "w": "cada",
+    "start": 29.31,
+    "end": 29.63
+   },
+   {
+    "w": "pista",
+    "start": 29.63,
+    "end": 30.03
+   },
+   {
+    "w": "se",
+    "start": 30.03,
+    "end": 30.19
+   },
+   {
+    "w": "puede",
+    "start": 30.19,
+    "end": 30.43
+   },
+   {
+    "w": "borrar.",
+    "start": 30.43,
+    "end": 30.9
+   }
+  ]
+ },
+ {
+  "text": "Cambia de coche: una menos. Unas gafas y una gorra: otra menos.",
+  "start": 31.04,
+  "end": 34.78,
+  "words": [
+   {
+    "w": "Cambia",
+    "start": 31.04,
+    "end": 31.35
+   },
+   {
+    "w": "de",
+    "start": 31.35,
+    "end": 31.43
+   },
+   {
+    "w": "coche:",
+    "start": 31.43,
+    "end": 31.95
+   },
+   {
+    "w": "una",
+    "start": 31.95,
+    "end": 32.27
+   },
+   {
+    "w": "menos.",
+    "start": 32.27,
+    "end": 32.79
+   },
+   {
+    "w": "Unas",
+    "start": 32.79,
+    "end": 32.95
+   },
+   {
+    "w": "gafas",
+    "start": 32.95,
+    "end": 33.35
+   },
+   {
+    "w": "y",
+    "start": 33.35,
+    "end": 33.43
+   },
+   {
+    "w": "una",
+    "start": 33.43,
+    "end": 33.67
+   },
+   {
+    "w": "gorra:",
+    "start": 33.67,
+    "end": 34.11
+   },
+   {
+    "w": "otra",
+    "start": 34.11,
+    "end": 34.51
+   },
+   {
+    "w": "menos.",
+    "start": 34.51,
+    "end": 34.78
+   }
+  ]
+ },
+ {
+  "text": "Cuantas menos pistas, más fácil perderlos.",
+  "start": 34.92,
+  "end": 37.33,
+  "words": [
+   {
+    "w": "Cuantas",
+    "start": 34.92,
+    "end": 35.27
+   },
+   {
+    "w": "menos",
+    "start": 35.27,
+    "end": 35.59
+   },
+   {
+    "w": "pistas,",
+    "start": 35.59,
+    "end": 36.15
+   },
+   {
+    "w": "más",
+    "start": 36.15,
+    "end": 36.39
+   },
+   {
+    "w": "fácil",
+    "start": 36.39,
+    "end": 36.79
+   },
+   {
+    "w": "perderlos.",
+    "start": 36.79,
+    "end": 37.33
+   }
+  ]
+ },
+ {
+  "text": "¿Y el truco de Jason y Lucía? Si buscan a una pareja… sepáralos.",
+  "start": 37.41,
+  "end": 41.56,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 37.41,
+    "end": 37.5
+   },
+   {
+    "w": "el",
+    "start": 37.5,
+    "end": 37.61
+   },
+   {
+    "w": "truco",
+    "start": 37.61,
+    "end": 37.93
+   },
+   {
+    "w": "de",
+    "start": 37.93,
+    "end": 38.01
+   },
+   {
+    "w": "Jason",
+    "start": 38.01,
+    "end": 38.49
+   },
+   {
+    "w": "y",
+    "start": 38.49,
+    "end": 38.65
+   },
+   {
+    "w": "Lucía?",
+    "start": 38.65,
+    "end": 39.21
+   },
+   {
+    "w": "Si",
+    "start": 39.21,
+    "end": 39.33
+   },
+   {
+    "w": "buscan",
+    "start": 39.33,
+    "end": 39.61
+   },
+   {
+    "w": "a",
+    "start": 39.61,
+    "end": 39.89
+   },
+   {
+    "w": "una",
+    "start": 39.89,
+    "end": 40.05
+   },
+   {
+    "w": "pareja…",
+    "start": 40.05,
+    "end": 40.77
+   },
+   {
+    "w": "sepáralos.",
+    "start": 40.77,
+    "end": 41.56
+   }
+  ]
+ },
+ {
+  "text": "¿Tú huyes o te cambias de ropa? Mándaselo a quien siempre acaba con cinco estrellas.",
+  "start": 41.61,
+  "end": 46.198,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 41.61,
+    "end": 41.75
+   },
+   {
+    "w": "huyes",
+    "start": 41.75,
+    "end": 42.31
+   },
+   {
+    "w": "o",
+    "start": 42.31,
+    "end": 42.47
+   },
+   {
+    "w": "te",
+    "start": 42.47,
+    "end": 42.63
+   },
+   {
+    "w": "cambias",
+    "start": 42.63,
+    "end": 43.03
+   },
+   {
+    "w": "de",
+    "start": 43.03,
+    "end": 43.19
+   },
+   {
+    "w": "ropa?",
+    "start": 43.19,
+    "end": 43.717
+   },
+   {
+    "w": "Mándaselo",
+    "start": 43.717,
+    "end": 44.252
+   },
+   {
+    "w": "a",
+    "start": 44.252,
+    "end": 44.33
+   },
+   {
+    "w": "quien",
+    "start": 44.33,
+    "end": 44.563
+   },
+   {
+    "w": "siempre",
+    "start": 44.563,
+    "end": 44.874
+   },
+   {
+    "w": "acaba",
+    "start": 44.874,
+    "end": 45.264
+   },
+   {
+    "w": "con",
+    "start": 45.264,
+    "end": 45.419
+   },
+   {
+    "w": "cinco",
+    "start": 45.419,
+    "end": 45.653
+   },
+   {
+    "w": "estrellas.",
+    "start": 45.653,
+    "end": 46.198
+   }
+  ]
+ }
+]
