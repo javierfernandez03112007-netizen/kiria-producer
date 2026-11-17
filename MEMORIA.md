@@ -118,6 +118,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   **ENTREGADO a Javi el 16-11 a las 20:12** (`out/whatsapp_mar.mp4`, 57,6 s, −14,8 LUFS; portada `out/portada.jpg`; `DESCRIPCION.txt`).
   La cabecera y la portada dicen «6.000 km bajo el mar en 0,03 segundos» (no «de España a Brasil»: 0,03 s es solo el cruce del cable).
   Pendiente de permiso: borrar las ramas `render-wa-*` y `wa-*` y archivar las máquinas «WhatsApp · …» (etiqueta `kiria-wa`).
+- **«GTA 6: la policía ya no te busca a ti» (`projects/gta6_policia/`, 17-11-2026)**: Javi descartó dos propuestas (el bulo del apagón mundial
+  del 17-11 y «la llave de medianoche» de la precarga) y pidió «algo dentro del juego, alguna curiosidad respecto al GTA 5 o que debemos tener
+  en cuenta para jugar» → el sistema de búsqueda: en GTA 6 la policía trabaja con una descripción (coche, ropa, aspecto, cámara, pareja) y hace
+  falta un testigo o una alarma (Rob Nelson a IGN, vía Yahoo Tech/SVG/Beebom; `FUENTES.md`). Voz de Javi (Danny): 46,4 s; vídeo de 47,4 s
+  (2.843 fotogramas). Escena nueva a escala 1 m: calle de Vice City al atardecer (`20_set.js`: edificios pastel con neón, callejón, joyería
+  con alarma, pórtico con la cámara de seguridad, playa y mar), muñecos con la ropa aparte del cuerpo (`21_actors.js`: `gtaDoll`; la ropa
+  se queda sola y un maniquí gris se escabulle = primer fotograma), coches (`carModel`: deportivo, berlina, patrulla), y **las estrellas y las
+  pistas van en el HUD** (como en el juego: `40_hudplan.js`, con hilos de neón hasta cada cosa en 3D). Lección de encuadre en vertical:
+  **la cámara mirando a lo largo de la calle** (hacia la puesta de sol) deja el cielo arriba para el HUD y la acción abajo; mirando de frente
+  a las fachadas todo quedaba pequeño. Ojo con los brillos: faros hacia la cámara + focos aditivos + resplandor lo tapan todo (resplandor a 0,3,
+  faros a 1,1, pintura de coche mate). En esta máquina (4 núcleos) 3 procesos de render no van más rápido que 1 (≈ 7,4 s por fotograma en total).
+  Render final con las 12 máquinas (ramas `render-gp-1..12`), aprobado por Javi con la pregunta de la app.
 
 ## Próximas ideas
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
