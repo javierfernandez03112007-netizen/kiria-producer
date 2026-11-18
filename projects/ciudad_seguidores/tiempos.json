@@ -1,0 +1,574 @@
+[
+ {
+  "text": "En esta ciudad viven casi seis mil personas. Si sigues este canal, una eres tú.",
+  "start": 0.0,
+  "end": 5.14,
+  "words": [
+   {
+    "w": "En",
+    "start": 0.0,
+    "end": 0.24
+   },
+   {
+    "w": "esta",
+    "start": 0.24,
+    "end": 0.48
+   },
+   {
+    "w": "ciudad",
+    "start": 0.48,
+    "end": 0.8
+   },
+   {
+    "w": "viven",
+    "start": 0.8,
+    "end": 1.2
+   },
+   {
+    "w": "casi",
+    "start": 1.2,
+    "end": 1.52
+   },
+   {
+    "w": "seis",
+    "start": 1.52,
+    "end": 1.88
+   },
+   {
+    "w": "mil",
+    "start": 1.88,
+    "end": 2.32
+   },
+   {
+    "w": "personas.",
+    "start": 2.32,
+    "end": 3.07
+   },
+   {
+    "w": "Si",
+    "start": 3.07,
+    "end": 3.16
+   },
+   {
+    "w": "sigues",
+    "start": 3.16,
+    "end": 3.64
+   },
+   {
+    "w": "este",
+    "start": 3.64,
+    "end": 3.8
+   },
+   {
+    "w": "canal,",
+    "start": 3.8,
+    "end": 4.33
+   },
+   {
+    "w": "una",
+    "start": 4.33,
+    "end": 4.7
+   },
+   {
+    "w": "eres",
+    "start": 4.7,
+    "end": 5.0
+   },
+   {
+    "w": "tú.",
+    "start": 5.0,
+    "end": 5.14
+   }
+  ]
+ },
+ {
+  "text": "Cada seguidor es un habitante, con su nombre encima. Si no me sigues, tu casa todavía no existe.",
+  "start": 5.33,
+  "end": 10.86,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 5.33,
+    "end": 5.5
+   },
+   {
+    "w": "seguidor",
+    "start": 5.5,
+    "end": 5.98
+   },
+   {
+    "w": "es",
+    "start": 5.98,
+    "end": 6.14
+   },
+   {
+    "w": "un",
+    "start": 6.14,
+    "end": 6.3
+   },
+   {
+    "w": "habitante,",
+    "start": 6.3,
+    "end": 6.95
+   },
+   {
+    "w": "con",
+    "start": 6.95,
+    "end": 7.06
+   },
+   {
+    "w": "su",
+    "start": 7.06,
+    "end": 7.22
+   },
+   {
+    "w": "nombre",
+    "start": 7.22,
+    "end": 7.54
+   },
+   {
+    "w": "encima.",
+    "start": 7.54,
+    "end": 8.26
+   },
+   {
+    "w": "Si",
+    "start": 8.26,
+    "end": 8.38
+   },
+   {
+    "w": "no",
+    "start": 8.38,
+    "end": 8.54
+   },
+   {
+    "w": "me",
+    "start": 8.54,
+    "end": 8.7
+   },
+   {
+    "w": "sigues,",
+    "start": 8.7,
+    "end": 9.28
+   },
+   {
+    "w": "tu",
+    "start": 9.28,
+    "end": 9.46
+   },
+   {
+    "w": "casa",
+    "start": 9.46,
+    "end": 9.78
+   },
+   {
+    "w": "todavía",
+    "start": 9.78,
+    "end": 10.26
+   },
+   {
+    "w": "no",
+    "start": 10.26,
+    "end": 10.42
+   },
+   {
+    "w": "existe.",
+    "start": 10.42,
+    "end": 10.86
+   }
+  ]
+ },
+ {
+  "text": "Hoy es solo un campamento. Cuantos más seamos, más crece: un pueblo, una ciudad, con su mercado, su banco y sus impuestos.",
+  "start": 11.03,
+  "end": 19.02,
+  "words": [
+   {
+    "w": "Hoy",
+    "start": 11.03,
+    "end": 11.3
+   },
+   {
+    "w": "es",
+    "start": 11.3,
+    "end": 11.46
+   },
+   {
+    "w": "solo",
+    "start": 11.46,
+    "end": 11.78
+   },
+   {
+    "w": "un",
+    "start": 11.78,
+    "end": 11.94
+   },
+   {
+    "w": "campamento.",
+    "start": 11.94,
+    "end": 12.86
+   },
+   {
+    "w": "Cuantos",
+    "start": 12.86,
+    "end": 13.1
+   },
+   {
+    "w": "más",
+    "start": 13.1,
+    "end": 13.42
+   },
+   {
+    "w": "seamos,",
+    "start": 13.42,
+    "end": 14.14
+   },
+   {
+    "w": "más",
+    "start": 14.14,
+    "end": 14.38
+   },
+   {
+    "w": "crece:",
+    "start": 14.38,
+    "end": 14.98
+   },
+   {
+    "w": "un",
+    "start": 14.98,
+    "end": 15.14
+   },
+   {
+    "w": "pueblo,",
+    "start": 15.14,
+    "end": 15.78
+   },
+   {
+    "w": "una",
+    "start": 15.78,
+    "end": 16.02
+   },
+   {
+    "w": "ciudad,",
+    "start": 16.02,
+    "end": 16.6
+   },
+   {
+    "w": "con",
+    "start": 16.6,
+    "end": 16.7
+   },
+   {
+    "w": "su",
+    "start": 16.7,
+    "end": 16.86
+   },
+   {
+    "w": "mercado,",
+    "start": 16.86,
+    "end": 17.58
+   },
+   {
+    "w": "su",
+    "start": 17.58,
+    "end": 17.74
+   },
+   {
+    "w": "banco",
+    "start": 17.74,
+    "end": 18.14
+   },
+   {
+    "w": "y",
+    "start": 18.14,
+    "end": 18.3
+   },
+   {
+    "w": "sus",
+    "start": 18.3,
+    "end": 18.46
+   },
+   {
+    "w": "impuestos.",
+    "start": 18.46,
+    "end": 19.02
+   }
+  ]
+ },
+ {
+  "text": "Cada día pasará algo: una sequía, una subida de precios, una crisis. Y alguien tendrá que decidir.",
+  "start": 19.23,
+  "end": 25.52,
+  "words": [
+   {
+    "w": "Cada",
+    "start": 19.23,
+    "end": 19.46
+   },
+   {
+    "w": "día",
+    "start": 19.46,
+    "end": 19.7
+   },
+   {
+    "w": "pasará",
+    "start": 19.7,
+    "end": 20.26
+   },
+   {
+    "w": "algo:",
+    "start": 20.26,
+    "end": 20.78
+   },
+   {
+    "w": "una",
+    "start": 20.78,
+    "end": 21.02
+   },
+   {
+    "w": "sequía,",
+    "start": 21.02,
+    "end": 21.66
+   },
+   {
+    "w": "una",
+    "start": 21.66,
+    "end": 21.9
+   },
+   {
+    "w": "subida",
+    "start": 21.9,
+    "end": 22.3
+   },
+   {
+    "w": "de",
+    "start": 22.3,
+    "end": 22.38
+   },
+   {
+    "w": "precios,",
+    "start": 22.38,
+    "end": 23.05
+   },
+   {
+    "w": "una",
+    "start": 23.05,
+    "end": 23.34
+   },
+   {
+    "w": "crisis.",
+    "start": 23.34,
+    "end": 23.98
+   },
+   {
+    "w": "Y",
+    "start": 23.98,
+    "end": 24.1
+   },
+   {
+    "w": "alguien",
+    "start": 24.1,
+    "end": 24.5
+   },
+   {
+    "w": "tendrá",
+    "start": 24.5,
+    "end": 24.9
+   },
+   {
+    "w": "que",
+    "start": 24.9,
+    "end": 25.06
+   },
+   {
+    "w": "decidir.",
+    "start": 25.06,
+    "end": 25.52
+   }
+  ]
+ },
+ {
+  "text": "¿Quién se sienta en el trono? El comentario con más me gusta le pone nombre a la ciudad, y quien lo escriba reina mañana.",
+  "start": 25.68,
+  "end": 32.41,
+  "words": [
+   {
+    "w": "¿Quién",
+    "start": 25.68,
+    "end": 25.9
+   },
+   {
+    "w": "se",
+    "start": 25.9,
+    "end": 26.06
+   },
+   {
+    "w": "sienta",
+    "start": 26.06,
+    "end": 26.46
+   },
+   {
+    "w": "en",
+    "start": 26.46,
+    "end": 26.54
+   },
+   {
+    "w": "el",
+    "start": 26.54,
+    "end": 26.7
+   },
+   {
+    "w": "trono?",
+    "start": 26.7,
+    "end": 27.32
+   },
+   {
+    "w": "El",
+    "start": 27.32,
+    "end": 27.432
+   },
+   {
+    "w": "comentario",
+    "start": 27.432,
+    "end": 27.94
+   },
+   {
+    "w": "con",
+    "start": 27.94,
+    "end": 28.18
+   },
+   {
+    "w": "más",
+    "start": 28.18,
+    "end": 28.42
+   },
+   {
+    "w": "me",
+    "start": 28.42,
+    "end": 28.58
+   },
+   {
+    "w": "gusta",
+    "start": 28.58,
+    "end": 28.98
+   },
+   {
+    "w": "le",
+    "start": 28.98,
+    "end": 29.14
+   },
+   {
+    "w": "pone",
+    "start": 29.14,
+    "end": 29.46
+   },
+   {
+    "w": "nombre",
+    "start": 29.46,
+    "end": 29.78
+   },
+   {
+    "w": "a",
+    "start": 29.78,
+    "end": 29.86
+   },
+   {
+    "w": "la",
+    "start": 29.86,
+    "end": 30.02
+   },
+   {
+    "w": "ciudad,",
+    "start": 30.02,
+    "end": 30.54
+   },
+   {
+    "w": "y",
+    "start": 30.54,
+    "end": 30.648
+   },
+   {
+    "w": "quien",
+    "start": 30.648,
+    "end": 30.78
+   },
+   {
+    "w": "lo",
+    "start": 30.78,
+    "end": 30.94
+   },
+   {
+    "w": "escriba",
+    "start": 30.94,
+    "end": 31.58
+   },
+   {
+    "w": "reina",
+    "start": 31.58,
+    "end": 32.06
+   },
+   {
+    "w": "mañana.",
+    "start": 32.06,
+    "end": 32.41
+   }
+  ]
+ },
+ {
+  "text": "Mándaselo a quien tú no dejarías reinar ni un día.",
+  "start": 32.549,
+  "end": 35.554,
+  "words": [
+   {
+    "w": "Mándaselo",
+    "start": 32.549,
+    "end": 33.189
+   },
+   {
+    "w": "a",
+    "start": 33.189,
+    "end": 33.268
+   },
+   {
+    "w": "quien",
+    "start": 33.268,
+    "end": 33.583
+   },
+   {
+    "w": "tú",
+    "start": 33.583,
+    "end": 33.741
+   },
+   {
+    "w": "no",
+    "start": 33.741,
+    "end": 33.899
+   },
+   {
+    "w": "dejarías",
+    "start": 33.899,
+    "end": 34.45
+   },
+   {
+    "w": "reinar",
+    "start": 34.45,
+    "end": 34.923
+   },
+   {
+    "w": "ni",
+    "start": 34.923,
+    "end": 35.081
+   },
+   {
+    "w": "un",
+    "start": 35.081,
+    "end": 35.238
+   },
+   {
+    "w": "día.",
+    "start": 35.238,
+    "end": 35.554
+   }
+  ]
+ }
+]
