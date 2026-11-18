@@ -78,3 +78,33 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   ¿Qué longitud tiene la pedaleta unida al puño? (del suelo al croll) · ¿Qué normas regulan el puño, el croll y el Basic?
   (UNE EN 567 y UNE EN 12841) · ¿A qué nudo sustituye el shunt? (a los autobloqueantes, como el Prusik) ·
   ¿Qué bloqueador es «un puño sin agarre»? (Basic) · ¿Cuál es el de leva ranurada? (Rescucender).
+
+## 18 nov 2026 · Motosierra
+
+### Fuente — apuntes y esquema que manda Adrián Luna (Élite Bomberos; Notion, fila «MIÉRCOLES 18 MOTOSIERRA»; manual y página por confirmar)
+- Motor de explosión de dos tiempos. Dos depósitos: aceite para engrasar la cadena (el más cercano a la cadena) y
+  combustible (mezcla al 2–3 % con aceite).
+- **Dispositivos de seguridad**: freno de cadena (se activa a mano o solo —QuickStop— con un rebote fuerte; antes de
+  arrancar el motor se bloquea, hacia delante), cubremanos, bloqueo del acelerador (solo acelera con el seguro pulsado),
+  silentblocks (vibraciones), captor de cadena (si se sale o se rompe), garra de tope (punto de apoyo al cortar),
+  válvula de descompresión (facilita el arranque; se cierra sola con la primera explosión). Espada: 45 cm.
+- **Cadena**: tres tipos de eslabón (de corte; motriz, de tracción o guía; de unión). La definen tres medidas: paso
+  (distancia entre eslabones motrices), longitud (número de eslabones motrices) y galga (su grosor).
+- **Peligros**: REBOTE (kickback o contragolpe): la cadena toca algo duro o madera con el cuarto superior de la punta →
+  lanzada hacia el operario. TRACCIÓN (tirón): se corta con el lado inferior → lanzada hacia delante. EMPUJE (golpe de
+  retroceso): se corta con el lado superior → lanzada hacia el operario.
+- **Uso**: entrar al corte a pleno gas y con la garra apoyada; retirar la máquina con la cadena en marcha; nunca por
+  encima de los hombros; no en sitios cerrados o mal ventilados; no serrar con la punta; mano izquierda en la
+  empuñadura delantera y derecha en la trasera.
+- **Ropa** (UNE EN ISO 11393): clase 1 = 20 m/s, clase 2 = 24 m/s, clase 3 = 28 m/s (velocidad de cadena que resiste);
+  tipos de área de protección A, B… (pierna).
+
+### Vídeos hechos con esto
+- «La motosierra: la parte con la que nunca se corta» (`projects/bomberados_motosierra/`): una sola idea (abajo tira,
+  arriba empuja, la punta rebota) en una intervención (árbol sobre un coche).
+
+### Preguntas de examen que salen de aquí
+- ¿Con qué parte de la espada se produce el rebote? (cuarto superior de la punta) · ¿Y la tracción? (lado inferior) ·
+  ¿Y el empuje? (lado superior) · Antes de arrancar, ¿el freno de cadena? (bloqueado, hacia delante) · ¿Mezcla del
+  combustible? (2–3 % de aceite) · ¿Clases de la ropa anticorte? (20, 24 y 28 m/s) · ¿Qué mano va delante? (la izquierda).
+

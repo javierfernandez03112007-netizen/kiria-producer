@@ -47,7 +47,7 @@ Léelo antes de escribir cualquier guion de Bomberados (junto con `engine/HOOKS.
    dentro»), no como palabra.
 4. **El «¡ajá!» se VE**: una regla con números redondos que se va contando en pantalla (diez, veinte… cincuenta; ocho más
    ocho, dieciséis). Una regla, una imagen que se transforma.
-5. **Frases cortas, un dato por frase; como mucho 3 cosas en una enumeración; 40–50 s.**
+5. **Frases cortas, un dato por frase; como mucho 3 cosas en una enumeración; 30–40 s** (Javi, 18 nov; antes 40–50).
 6. **Cierre que se pueda contestar sin saber la letra**: una decisión aplicada («y para un piso veinte, ¿serie o
    paralelo?») o una pregunta de identidad («¿te ves haciendo esta guardia?»: récord de comentarios). En las de examen,
    las letras además, pero no solas.

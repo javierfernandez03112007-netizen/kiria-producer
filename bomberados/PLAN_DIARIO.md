@@ -51,6 +51,8 @@ cuenta. La sesión de producción lee `bomberados/ANALISIS.md` antes de cada ví
 5. Deja el plan para producción en el repositorio:
    - `bomberados/ANALISIS.md`: arriba del todo, **«📌 Para los próximos vídeos (plan del <fecha>)»** con 5–8 reglas concretas
      para quien haga los vídeos (formatos que priorizar, ganchos, duración, temas, CTA, horas), y debajo el análisis.
+     **La duración la ha fijado Javi (18 nov): 30–40 s.** No vuelvas a escribir 45–57 s; si los datos piden otra cosa,
+     díselo a Javi en el resumen y deja la regla como está hasta que él decida.
    - `bomberados/IDEAS.md` si cambia el orden de lo próximo a producir.
    - Commit y push a master (`git pull --rebase` antes; nunca force push).
 6. Resumen a Javi en el chat (5–8 líneas): lo más importante de los datos, qué has cambiado en Notion y qué haremos en los

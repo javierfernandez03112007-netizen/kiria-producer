@@ -34,7 +34,7 @@ Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: fal
 3. **La app, solo como cierre.** «Reta a otro opositor» (1 vs 1): 10.100, por encima de los que vendían la app (5.500) pero
    muy por debajo de los 3D sin app.
 4. **Cierre para comentar en todos** (letras A/B/C/D o pregunta personal): el panel naranja comentó poco (0,3/1.000).
-5. Siguen las del 13 nov: bomberos en acción en 3D con dron, 45–57 s, «mándaselo a quien quiera ser bombero».
+5. Siguen las del 13 nov: bomberos en acción en 3D con dron y «mándaselo a quien quiera ser bombero». **Duración: 30–40 s (orden de Javi del 18 nov; sustituye a 45–57 s).**
 
 ### Seguidores (12 nov 21:30 → 16 nov 18:31, ≈ 3,9 días)
 | Cuenta | 12 nov | 16 nov | Crecimiento | Por día |

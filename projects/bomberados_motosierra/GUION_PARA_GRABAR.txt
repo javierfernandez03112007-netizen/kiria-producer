@@ -1,0 +1,47 @@
+«LA MOTOSIERRA: LA PARTE CON LA QUE NUNCA SE CORTA» — idea de Adrián (Notion «MIÉRCOLES 18 MOTOSIERRA»)
+Primer vídeo con la regla nueva de Javi (18 nov): 30–40 s. Este sale en ≈ 37 s.
+
+Cómo está hecho: UNA sola idea de cómo funciona la herramienta — la motosierra te mueve según con qué parte de la
+espada cortes: con la de abajo tira de ti, con la de arriba te empuja, y con la punta REBOTA hacia tu cara (por eso
+lleva freno de cadena). Se ve en una intervención de noche: un árbol caído sobre un coche con alguien dentro, y tú con
+la motosierra. Cierre con una decisión para comentar (plan: «cierre para comentar en todos»).
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido, de intervención. Lo más fuerte: el arranque, «¡REBOTE!» y el final («¡MÁNDASELO…!», «¡BOMBERADOS!»,
+«¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Un árbol sobre un coche… y hay alguien DENTRO! [tense] Tú llevas la motosierra. [warning] Y hay una parte con la que NUNCA debes cortar.
+[explaining, clear, fast] La cadena corre siempre en el mismo sentido. Si cortas con la parte de abajo, [emphatic] TIRA de ti hacia delante.
+[explaining, clear] Con la de arriba, te EMPUJA hacia atrás.
+[tense, intrigued] ¿Y con la punta? [alarmed, shouting] ¡REBOTE! [urgent] La espada salta hacia tu cara… [relieved] y te salva el freno, que para la cadena en seco.
+[mischievous, challenging] Y antes de arrancarla, ¿el freno PUESTO o QUITADO? Coméntalo.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, tras el temporal, con un dron que no para:
+1. «¡Un árbol sobre un coche… y hay alguien dentro!» — primer fotograma: un árbol enorme aplastando un coche con las
+   luces de emergencia; dentro, una luz y una mano en el cristal. «Tú llevas la motosierra» — la motosierra en marcha,
+   enorme, en primer plano. «…una parte con la que nunca debes cortar» — la espada con tres zonas marcadas con «?».
+2. «La cadena corre siempre en el mismo sentido» — flechas que recorren la cadena: por arriba se aleja de ti, por abajo
+   vuelve. «Si cortas con la parte de abajo, tira de ti hacia delante» — corta el tronco por arriba: la máquina se va
+   hacia delante (flecha verde, ABAJO → TIRA DE TI).
+3. «Con la de arriba, te empuja hacia atrás» — corta una rama desde abajo: la máquina se viene contra ti
+   (flecha naranja, ARRIBA → TE EMPUJA).
+4. «¿Y con la punta?» — la punta se acerca a una rama, en rojo. «¡Rebote!» — la espada salta en arco hacia la cara
+   (cámara lenta, destello). «…te salva el freno, que para la cadena en seco» — el protector de la mano salta hacia
+   delante y la cadena se queda clavada (FRENO DE CADENA). Sello: CON LA PUNTA NO SE CORTA (rebote: cuarto superior de
+   la punta).
+5. «Y antes de arrancarla, ¿el freno puesto o quitado?» — tarjeta: A PUESTO · B QUITADO y «💬 COMÉNTALO»; detrás, el
+   tronco ya cortado y la puerta del coche que se abre.
+6. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+7. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la pregunta final (para el comentario fijado, no va en el vídeo): PUESTO — antes de arrancar se bloquea el
+freno de cadena (hacia delante).
+Fuentes (en FUENTES.md): la información que manda Adrián en Notion. CONFIRMAR la prueba gratis de 5 días.
