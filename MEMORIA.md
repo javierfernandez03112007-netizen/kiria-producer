@@ -149,6 +149,16 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   `volume=5.9dB` y limitador a 0,8. Pendiente de permiso: borrar las ramas `render-pu-*`. Avisado a Javi: no lleva música y la frase de ella
   suena con la misma voz (solo llegó un audio).
 
+- **Anuncio del croissant relleno de Maison Berthillot, Granada (`projects/berthillot_croissant/`, 18-11-2026)**: Javi pasó UNA foto pequeña
+  (806 × 460: croissants con Nutella, Biscoff o pistacho y un café) y pidió «un anuncio publicitario 100/10, rápido; si hace falta, con voz de
+  publicidad profesional». Hecho sin render 3D: `anuncio.py` (Python, cv2 + PIL, ≈ 3 min): la foto en tarjeta sobre su propio desenfoque,
+  titulares en Cormorant / Instrument Serif, los tres rellenos como bolas de crema, vapor sobre la taza y cierre crema con el nombre. 17,6 s,
+  1080 × 1920, 60 fps, efectos de la biblioteca, sin música. **Entregada la versión sin locución el 18-11**; el texto de la voz está en
+  `locucion.txt` (cuando Javi mande el MP3: guardarlo en `assets/voz.mp3`, ajustar `T` o `TIMES.json` a las palabras y volver a exportar).
+  **ElevenLabs sigue sin funcionar desde aquí** (18-11: el proxy no inyecta la clave: 401 «Neither authorization header nor xi-api-key
+  received»); no volver a pedir la clave a Javi: la voz la genera él. Avisos dados: la foto es pequeña (pedir la original o más fotos), en la
+  foto se ve el precio (2,75 €) y la marca del café (La Malicia), y no lleva música. La foto no se sube al repo (`.gitignore`).
+
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
