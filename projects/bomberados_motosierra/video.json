@@ -4,8 +4,8 @@
  "voz": {
   "tempo": 1.0,
   "count": 0,
-  "cortar": true,
-  "pause_def": 0.22
+  "cortar": false,
+  "pause_def": 0.3
  },
  "realce": [
   "compartir",

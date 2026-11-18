@@ -2837,7 +2837,156 @@ def sfx_track_puno(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def _motosierra(dur, fkeys, carga, cadena, seed=7):
+    """Motosierra sintetizada (motor de dos tiempos): tren de explosiones a la frecuencia fkeys [(t, Hz)…] con su
+    irregularidad, escape (ruido que sigue a cada explosión), silbido de la cadena (cadena(t) 0–1) y el roce contra la
+    madera (carga(t) 0–1). Estéreo, sin normalizar (≈ ±1)."""
+    SR = sfx.SR
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    rs = np.random.RandomState(seed)
+    f = np.interp(t, [k[0] for k in fkeys], [k[1] for k in fkeys])
+    wob = np.interp(t, np.arange(0, dur + 0.2, 0.09), rs.randn(int((dur + 0.2) / 0.09) + 1)) * 0.035
+    f = f * (1 + wob)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    cyc = np.floor(ph / (2 * np.pi)).astype(int)
+    amp = 1 + 0.28 * rs.randn(cyc.max() + 2)[cyc]                    # cada explosión, distinta («ring-ding» de dos tiempos)
+    fr = ph / (2 * np.pi) - cyc                                       # 0…1 dentro de cada ciclo
+    pulso = np.exp(-fr * 5.5)                                         # la explosión y su caída
+    tono = np.zeros(n)
+    for h in range(1, 15):
+        tono += np.sin(h * ph + rs.rand() * 6.283) / h ** 0.85
+    tono = np.tanh(tono * 0.9 * amp) * (0.55 + 0.45 * pulso)
+
+    def banda(x, lo, hi):
+        X = np.fft.rfft(x); fq = np.fft.rfftfreq(len(x), 1 / SR)
+        m = 1 / (1 + (lo / np.maximum(fq, 1)) ** 6) / (1 + (fq / hi) ** 6)
+        return np.fft.irfft(X * m, len(x))
+
+    cad = np.array([cadena(x) for x in t[::480]]); cad = np.interp(t, t[::480], cad)
+    car = np.array([carga(x) for x in t[::480]]); car = np.interp(t, t[::480], car)
+    out = np.zeros((n, 2))
+    for c in range(2):
+        escape = banda(rs.randn(n), 500, 4200) * (0.25 + 0.75 * pulso) * amp * 0.5
+        silbido = banda(np.sign(np.sin(7.3 * ph + 0.6 * np.sin(ph))) * (0.6 + 0.4 * rs.rand(n)), 1400, 5200) * cad * 0.33
+        madera = banda(rs.randn(n), 1800, 7000) * car * (0.55 + 0.45 * np.sin(ph * 0.5) ** 2) * 0.6
+        y = banda(tono, 70, 3600) * 0.75 + escape + silbido + madera
+        out[:, c] = np.roll(np.tanh(y * 1.25), 14 * c)
+    return out
+
+
+def sfx_track_moto(path):
+    """«La motosierra: la parte con la que nunca se corta»: la noche del temporal (viento, trueno lejano, el intermitente
+    del coche), los golpes en el cristal del que está dentro, la motosierra SINTETIZADA (ralentí, acelerón, a fondo con
+    carga en los dos cortes), el tirón y el empuje, el rebote (golpe metálico y la cadena que se para en seco: el motor
+    cae al ralentí), el freno, el tronco que cae al suelo, la pregunta y la venta. Tiempos como en moto.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    c0 = c["cortas"] + 0.5; c1 = c["arriba"] - 0.75; u0 = c["arriba"] + 0.1; u1 = c["punta"] - 1.0; k0 = c["rebote"] - 0.07; drop = c["antes"] + 0.45
+    m = c["motosierra"]
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe"))
+    clac = _pitch(golpe, 1.9)
+    w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    sm = lambda a, b, x: float(np.clip((x - a) / (b - a), 0, 1)) ** 2 * (3 - 2 * float(np.clip((x - a) / (b - a), 0, 1)))
+    cT = lambda x: sm(c0, c0 + 0.15, x) * (1 - sm(c1 - 0.05, c1 + 0.1, x))
+    cB = lambda x: sm(u0 + 0.15, u0 + 0.3, x) * (1 - sm(u1 - 0.05, u1 + 0.1, x))
+    carga = lambda x: max(cT(x), cB(x))
+    # la noche del temporal
+    put(_loop(_load("aire"), END + 0.5), 0.0, -29, T["fin"], 0.3, 1.0, track=amb)
+    put("trueno", 0.0, -25, 3.2, 0.01, 1.2)
+    put("golpe", 0.0, -22, 0.8, 0.003, 0.35)
+    put("latido", 0.15, -24, 0.7)
+    tk = 0.0
+    while tk < T["fin"]:                                            # el intermitente del coche (va con la luz)
+        put(_pitch(tic, 0.8), tk, -36, 0.1); put(_pitch(tic, 0.7), tk + 0.45, -38, 0.1); tk += 0.9
+    # hay alguien dentro: golpes en el cristal
+    for k in range(3):
+        put(_pitch(golpe, 2.6), c["dentro"] - 0.12 + 0.17 * k, -27 - k, 0.12, 0.002, 0.06)
+    put("latido", c["dentro"] + 0.1, -23, 0.7)
+    put(_pitch(wh, 0.8), c["tu"] - 0.25, -27, 1.0)
+    # la motosierra (sintetizada): ralentí → acelerón → a medio gas → a fondo en los dos cortes → rebote: se para la cadena y cae al ralentí
+    fk = [(0, 42), (m - 0.3, 42), (m - 0.08, 168), (m + 0.16, 84), (m + 0.36, 172), (m + 0.7, 104), (c["cortas"], 104), (c0, 162), (c0 + 0.3, 143), (c1, 147),
+          (c1 + 0.2, 72), (u0 + 0.1, 72), (u0 + 0.3, 162), (u0 + 0.5, 143), (u1, 147), (u1 + 0.2, 100), (k0, 126), (k0 + 0.03, 152), (k0 + 0.22, 45), (END + 1, 42)]
+    cadena = lambda x: (0.0 if x > k0 + 0.1 else min(1.0, max(0.0, (np.interp(x, [k[0] for k in fk], [k[1] for k in fk]) - 60) / 95)))
+    ms = _motosierra(T["fin"] + 0.3, fk, carga, cadena)
+    lvl = np.interp(np.arange(len(ms)) / sfx.SR, [0, m - 0.3, m, c["cortas"], c0, c1, c1 + 0.25, u0 + 0.2, u1, u1 + 0.25, k0, k0 + 0.25, T["fin"] - 0.5, T["fin"] + 0.3],
+                    [-36, -36, -25, -30, -25, -25, -31, -25, -25, -30, -26, -37, -39, -60])
+    _put(amb, _to(ms, 0.0) * (10 ** (lvl / 20))[:, None], 0.0)
+    put(_tramo(_to(ms[int((m - 0.1) * sfx.SR):], -21), 0.75, 0.01, 0.2), m - 0.1, -21, 0.75, 0.01, 0.2)      # el acelerón, en primer plano
+    # ¿con qué parte nunca?: tres «?»
+    for k in range(3):
+        put(_pitch(bub, 1.0 + 0.12 * k), c["parte1"] + 0.12 * k, -26, 0.15, 0.001, 0.05)
+    put(_pitch(toque, 0.9), c["nunca"] - 0.03, -26, 0.4)
+    # la cadena gira siempre así
+    put(_pitch(nota, 1.0), c["cadena"] + 0.1, -29, 0.6)
+    # abajo: tira de ti · arriba: te empuja
+    put(_pitch(toque, 1.1), c["abajo"] - 0.03, -28, 0.35)
+    put(_pitch(wh, 1.3), c["tira"] - 0.1, -24, 0.5, 0.01, 0.15)
+    put(_pitch(golpe, 0.75), c["tira"] + 0.12, -24, 0.5, 0.003, 0.25)
+    put(_pitch(toque, 1.25), c["arriba"] - 0.03, -28, 0.35)
+    put(_pitch(wh, 1.3)[::-1].copy(), c["empuja"] - 0.12, -24, 0.5, 0.05, 0.05)
+    put(_pitch(golpe, 0.75), c["empuja"] + 0.12, -24, 0.5, 0.003, 0.25)
+    # ¿y con la punta? ¡rebote!
+    put("tension", c["punta"] - 0.3, -28, k0 - c["punta"] + 0.3, 0.2, 0.03)
+    put("latido", c["punta"] - 0.05, -23, 0.6)
+    put(clac, k0, -17, 0.5)
+    put(_pitch(_onset(_load("barra")), 1.2), k0, -21, 0.7, 0.002, 0.3)
+    put(_pitch(wh, 1.8), k0, -21, 0.3, 0.005, 0.1)
+    put(_pitch(golpe, 0.7), k0 + 0.02, -21, 0.6, 0.003, 0.3)
+    put("latido", c["salta"] - 0.05, -21, 0.6)
+    put("latido", c["cara"] - 0.05, -21, 0.6)
+    # te salva el freno, que para la cadena en seco
+    put(_onset(_load("rele")), c["freno"] - 0.05, -22, 0.25)
+    put(_pitch(toque, 1.0), c["freno"] - 0.02, -27, 0.35)
+    put("acierto", c["para"] + 0.25, -24, 0.9)
+    # el tronco cortado cae al suelo
+    put(_pitch(golpe, 0.55), drop + 0.27, -19, 0.9, 0.003, 0.4)
+    put(_pitch(_onset(_load("papeles")), 0.6), drop + 0.2, -27, 0.9, 0.01, 0.4)
+    # la pregunta: ¿puesto o quitado?
+    put(w2, c["antes"] - 0.2, -28, 0.6)
+    for k, key in enumerate(("puesto", "quitado")):
+        put(_pitch(nota, 1.0 * 1.19 ** k), c[key] - 0.2, -27, 0.6)
+        put(_pitch(bub, 1.0 + 0.12 * k), c[key] - 0.25, -26, 0.2)
+    put(_pitch(toque, 1.3), c["comenta"] - 0.03, -25, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "moto":
+        return sfx_track_moto(path)
     if Q.get("formato") == "puno":
         return sfx_track_puno(path)
     if Q.get("formato") == "bloqguia":

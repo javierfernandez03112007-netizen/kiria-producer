@@ -1,525 +1,525 @@
 [
  {
   "text": "¡Un árbol sobre un coche… y hay alguien dentro! Tú llevas la motosierra. Y hay una parte con la que nunca debes cortar.",
-  "start": 0.0,
-  "end": 7.293,
+  "start": 0.06,
+  "end": 7.839,
   "words": [
    {
     "w": "¡Un",
-    "start": 0.0,
-    "end": 0.199
+    "start": 0.06,
+    "end": 0.219
    },
    {
     "w": "árbol",
-    "start": 0.199,
-    "end": 0.556
+    "start": 0.219,
+    "end": 0.697
    },
    {
     "w": "sobre",
-    "start": 0.556,
-    "end": 0.914
+    "start": 0.697,
+    "end": 0.936
    },
    {
     "w": "un",
-    "start": 0.914,
-    "end": 1.112
+    "start": 0.936,
+    "end": 1.096
    },
    {
     "w": "coche…",
-    "start": 1.112,
-    "end": 1.47
+    "start": 1.096,
+    "end": 1.873
    },
    {
     "w": "y",
-    "start": 1.77,
-    "end": 1.969
+    "start": 1.873,
+    "end": 1.972
    },
    {
     "w": "hay",
-    "start": 1.969,
-    "end": 2.167
+    "start": 1.972,
+    "end": 2.211
    },
    {
     "w": "alguien",
-    "start": 2.167,
-    "end": 2.525
+    "start": 2.211,
+    "end": 2.53
    },
    {
     "w": "dentro!",
-    "start": 2.525,
-    "end": 2.882
+    "start": 2.53,
+    "end": 3.486
    },
    {
     "w": "Tú",
-    "start": 2.982,
-    "end": 3.181
+    "start": 3.486,
+    "end": 3.606
    },
    {
     "w": "llevas",
-    "start": 3.181,
-    "end": 3.538
+    "start": 3.606,
+    "end": 3.884
    },
    {
     "w": "la",
-    "start": 3.538,
-    "end": 3.737
+    "start": 3.884,
+    "end": 4.044
    },
    {
     "w": "motosierra.",
-    "start": 3.737,
-    "end": 4.412
+    "start": 4.044,
+    "end": 5.139
    },
    {
     "w": "Y",
-    "start": 4.512,
-    "end": 4.711
+    "start": 5.139,
+    "end": 5.239
    },
    {
     "w": "hay",
-    "start": 4.711,
-    "end": 4.91
+    "start": 5.239,
+    "end": 5.478
    },
    {
     "w": "una",
-    "start": 4.91,
-    "end": 5.267
+    "start": 5.478,
+    "end": 5.637
    },
    {
     "w": "parte",
-    "start": 5.267,
-    "end": 5.624
+    "start": 5.637,
+    "end": 5.956
    },
    {
     "w": "con",
-    "start": 5.624,
-    "end": 5.823
+    "start": 5.956,
+    "end": 6.116
    },
    {
     "w": "la",
-    "start": 5.823,
-    "end": 6.022
+    "start": 6.116,
+    "end": 6.355
    },
    {
     "w": "que",
-    "start": 6.022,
-    "end": 6.221
+    "start": 6.355,
+    "end": 6.594
    },
    {
     "w": "nunca",
-    "start": 6.221,
-    "end": 6.578
+    "start": 6.594,
+    "end": 6.912
    },
    {
     "w": "debes",
-    "start": 6.578,
-    "end": 6.936
+    "start": 6.912,
+    "end": 7.39
    },
    {
     "w": "cortar.",
-    "start": 6.936,
-    "end": 7.293
+    "start": 7.39,
+    "end": 7.839
    }
   ]
  },
  {
   "text": "La cadena corre siempre en el mismo sentido. Si cortas con la parte de abajo, tira de ti hacia delante.",
-  "start": 7.513,
-  "end": 14.069,
+  "start": 8.167,
+  "end": 13.705,
   "words": [
    {
     "w": "La",
-    "start": 7.513,
-    "end": 7.712
+    "start": 8.167,
+    "end": 8.279
    },
    {
     "w": "cadena",
-    "start": 7.712,
-    "end": 8.228
+    "start": 8.279,
+    "end": 8.665
    },
    {
     "w": "corre",
-    "start": 8.228,
-    "end": 8.585
+    "start": 8.665,
+    "end": 9.064
    },
    {
     "w": "siempre",
-    "start": 8.585,
-    "end": 8.943
+    "start": 9.064,
+    "end": 9.383
    },
    {
     "w": "en",
-    "start": 8.943,
-    "end": 9.142
+    "start": 9.383,
+    "end": 9.542
    },
    {
     "w": "el",
-    "start": 9.142,
-    "end": 9.34
+    "start": 9.542,
+    "end": 9.701
    },
    {
     "w": "mismo",
-    "start": 9.34,
-    "end": 9.698
+    "start": 9.701,
+    "end": 10.02
    },
    {
     "w": "sentido.",
-    "start": 9.698,
-    "end": 10.214
+    "start": 10.02,
+    "end": 10.717
    },
    {
     "w": "Si",
-    "start": 10.314,
-    "end": 10.513
+    "start": 10.717,
+    "end": 10.817
    },
    {
     "w": "cortas",
-    "start": 10.513,
-    "end": 10.87
+    "start": 10.817,
+    "end": 11.295
    },
    {
     "w": "con",
-    "start": 10.87,
-    "end": 11.069
+    "start": 11.295,
+    "end": 11.375
    },
    {
     "w": "la",
-    "start": 11.069,
-    "end": 11.268
+    "start": 11.375,
+    "end": 11.534
    },
    {
     "w": "parte",
-    "start": 11.268,
-    "end": 11.625
+    "start": 11.534,
+    "end": 11.693
    },
    {
     "w": "de",
-    "start": 11.625,
-    "end": 11.824
+    "start": 11.693,
+    "end": 11.853
    },
    {
     "w": "abajo,",
-    "start": 11.824,
-    "end": 12.34
+    "start": 11.853,
+    "end": 12.42
    },
    {
     "w": "tira",
-    "start": 12.44,
-    "end": 12.797
+    "start": 12.42,
+    "end": 12.729
    },
    {
     "w": "de",
-    "start": 12.797,
-    "end": 12.996
+    "start": 12.729,
+    "end": 12.889
    },
    {
     "w": "ti",
-    "start": 12.996,
-    "end": 13.195
+    "start": 12.889,
+    "end": 13.048
    },
    {
     "w": "hacia",
-    "start": 13.195,
-    "end": 13.552
+    "start": 13.048,
+    "end": 13.287
    },
    {
     "w": "delante.",
-    "start": 13.552,
-    "end": 14.069
+    "start": 13.287,
+    "end": 13.705
    }
   ]
  },
  {
   "text": "Con la de arriba, te empuja hacia atrás.",
-  "start": 14.289,
-  "end": 16.931,
+  "start": 14.034,
+  "end": 16.096,
   "words": [
    {
     "w": "Con",
-    "start": 14.289,
-    "end": 14.488
+    "start": 14.034,
+    "end": 14.128
    },
    {
     "w": "la",
-    "start": 14.488,
-    "end": 14.686
+    "start": 14.128,
+    "end": 14.243
    },
    {
     "w": "de",
-    "start": 14.686,
-    "end": 14.885
+    "start": 14.243,
+    "end": 14.323
    },
    {
     "w": "arriba,",
-    "start": 14.885,
-    "end": 15.401
+    "start": 14.323,
+    "end": 14.891
    },
    {
     "w": "te",
-    "start": 15.501,
-    "end": 15.7
+    "start": 14.891,
+    "end": 15.04
    },
    {
     "w": "empuja",
-    "start": 15.7,
-    "end": 16.216
+    "start": 15.04,
+    "end": 15.598
    },
    {
     "w": "hacia",
-    "start": 16.216,
-    "end": 16.574
+    "start": 15.598,
+    "end": 15.837
    },
    {
     "w": "atrás.",
-    "start": 16.574,
-    "end": 16.931
+    "start": 15.837,
+    "end": 16.096
    }
   ]
  },
  {
   "text": "¿Y con la punta? ¡Rebote! La espada salta hacia tu cara… y te salva el freno, que para la cadena en seco.",
-  "start": 17.151,
-  "end": 24.345,
+  "start": 16.504,
+  "end": 22.849,
   "words": [
    {
     "w": "¿Y",
-    "start": 17.151,
-    "end": 17.35
+    "start": 16.504,
+    "end": 16.634
    },
    {
     "w": "con",
-    "start": 17.35,
-    "end": 17.548
+    "start": 16.634,
+    "end": 16.873
    },
    {
     "w": "la",
-    "start": 17.548,
-    "end": 17.747
+    "start": 16.873,
+    "end": 17.112
    },
    {
     "w": "punta?",
-    "start": 17.747,
-    "end": 18.105
+    "start": 17.112,
+    "end": 17.719
    },
    {
     "w": "¡Rebote!",
-    "start": 18.205,
-    "end": 18.721
+    "start": 17.719,
+    "end": 18.715
    },
    {
     "w": "La",
-    "start": 18.821,
-    "end": 19.02
+    "start": 18.715,
+    "end": 18.865
    },
    {
     "w": "espada",
-    "start": 19.02,
-    "end": 19.536
+    "start": 18.865,
+    "end": 19.263
    },
    {
     "w": "salta",
-    "start": 19.536,
-    "end": 19.893
+    "start": 19.263,
+    "end": 19.582
    },
    {
     "w": "hacia",
-    "start": 19.893,
-    "end": 20.251
+    "start": 19.582,
+    "end": 19.821
    },
    {
     "w": "tu",
-    "start": 20.251,
-    "end": 20.449
+    "start": 19.821,
+    "end": 19.98
    },
    {
     "w": "cara…",
-    "start": 20.449,
-    "end": 20.807
+    "start": 19.98,
+    "end": 20.488
    },
    {
     "w": "y",
-    "start": 21.107,
-    "end": 21.306
+    "start": 20.488,
+    "end": 20.582
    },
    {
     "w": "te",
-    "start": 21.306,
-    "end": 21.504
+    "start": 20.582,
+    "end": 20.697
    },
    {
     "w": "salva",
-    "start": 21.504,
-    "end": 21.862
+    "start": 20.697,
+    "end": 21.016
    },
    {
     "w": "el",
-    "start": 21.862,
-    "end": 22.061
+    "start": 21.016,
+    "end": 21.096
    },
    {
     "w": "freno,",
-    "start": 22.061,
-    "end": 22.418
+    "start": 21.096,
+    "end": 21.604
    },
    {
     "w": "que",
-    "start": 22.518,
-    "end": 22.717
+    "start": 21.604,
+    "end": 21.714
    },
    {
     "w": "para",
-    "start": 22.717,
-    "end": 23.074
+    "start": 21.714,
+    "end": 21.972
    },
    {
     "w": "la",
-    "start": 23.074,
-    "end": 23.273
+    "start": 21.972,
+    "end": 22.052
    },
    {
     "w": "cadena",
-    "start": 23.273,
-    "end": 23.789
+    "start": 22.052,
+    "end": 22.371
    },
    {
     "w": "en",
-    "start": 23.789,
-    "end": 23.988
+    "start": 22.371,
+    "end": 22.53
    },
    {
     "w": "seco.",
-    "start": 23.988,
-    "end": 24.345
+    "start": 22.53,
+    "end": 22.849
    }
   ]
  },
  {
   "text": "Y antes de arrancarla, ¿el freno puesto o quitado? Coméntalo.",
-  "start": 24.565,
-  "end": 28.498,
+  "start": 23.138,
+  "end": 26.952,
   "words": [
    {
     "w": "Y",
-    "start": 24.565,
-    "end": 24.764
+    "start": 23.138,
+    "end": 23.247
    },
    {
     "w": "antes",
-    "start": 24.764,
-    "end": 25.121
+    "start": 23.247,
+    "end": 23.407
    },
    {
     "w": "de",
-    "start": 25.121,
-    "end": 25.32
+    "start": 23.407,
+    "end": 23.566
    },
    {
     "w": "arrancarla,",
-    "start": 25.32,
-    "end": 25.995
+    "start": 23.566,
+    "end": 24.482
    },
    {
     "w": "¿el",
-    "start": 26.095,
-    "end": 26.294
+    "start": 24.482,
+    "end": 24.638
    },
    {
     "w": "freno",
-    "start": 26.294,
-    "end": 26.651
+    "start": 24.638,
+    "end": 25.0
    },
    {
     "w": "puesto",
-    "start": 26.651,
-    "end": 27.008
+    "start": 25.0,
+    "end": 25.478
    },
    {
     "w": "o",
-    "start": 27.008,
-    "end": 27.207
+    "start": 25.478,
+    "end": 25.638
    },
    {
     "w": "quitado?",
-    "start": 27.207,
-    "end": 27.723
+    "start": 25.638,
+    "end": 26.424
    },
    {
     "w": "Coméntalo.",
-    "start": 27.823,
-    "end": 28.498
+    "start": 26.424,
+    "end": 26.952
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien quiera ser bombero!",
-  "start": 28.718,
-  "end": 31.358,
+  "start": 27.251,
+  "end": 29.293,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 28.718,
-    "end": 29.558
+    "start": 27.251,
+    "end": 28.028
    },
    {
     "w": "a",
-    "start": 29.558,
-    "end": 29.798
+    "start": 28.028,
+    "end": 28.108
    },
    {
     "w": "quien",
-    "start": 29.798,
-    "end": 30.038
+    "start": 28.108,
+    "end": 28.347
    },
    {
     "w": "quiera",
-    "start": 30.038,
-    "end": 30.478
+    "start": 28.347,
+    "end": 28.666
    },
    {
     "w": "ser",
-    "start": 30.478,
-    "end": 30.718
+    "start": 28.666,
+    "end": 28.825
    },
    {
     "w": "bombero!",
-    "start": 30.718,
-    "end": 31.358
+    "start": 28.825,
+    "end": 29.293
    }
   ]
  },
  {
   "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 31.578,
-  "end": 35.218,
+  "start": 29.592,
+  "end": 33.377,
   "words": [
    {
     "w": "¿Opositas?",
-    "start": 31.578,
-    "end": 32.418
+    "start": 29.592,
+    "end": 30.478
    },
    {
     "w": "¡Bomberados!",
-    "start": 32.518,
-    "end": 33.358
+    "start": 30.478,
+    "end": 31.723
    },
    {
     "w": "¡Pruébala",
-    "start": 33.458,
-    "end": 34.098
+    "start": 31.723,
+    "end": 32.172
    },
    {
     "w": "gratis",
-    "start": 34.098,
-    "end": 34.538
+    "start": 32.172,
+    "end": 32.65
    },
    {
     "w": "cinco",
-    "start": 34.538,
-    "end": 34.978
+    "start": 32.65,
+    "end": 32.968
    },
    {
     "w": "días!",
-    "start": 34.978,
-    "end": 35.218
+    "start": 32.968,
+    "end": 33.377
    }
   ]
  }
