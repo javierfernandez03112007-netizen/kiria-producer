@@ -206,6 +206,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    varios sitios, llegar a cada uno con su palabra y QUEDARSE hasta la siguiente (dos claves por parada).
    **Máquinas de ayuda: el 18-11 por la tarde solo quedan 6** («Lanzamiento · render 1–6»); las de «WhatsApp» y «Microondas» ya no existen
    («resource not found» / inactivas). Se les manda un segundo trozo «cuando acabes el primero» (ramas `render-c2-7..18`).
+   **ENTREGADO a Javi el 18-11 a las 19:40 UTC** (`out/ciudad_seguidores_ep2.mp4`, 42,4 s, 2.545 fotogramas, −14,9 LUFS; `out/portada.jpg`;
+   `DESCRIPCION.txt`; `FUENTES.md`). Con 6 máquinas a dos trozos cada una + esta: ≈ 27 min de render (aprobado con la pregunta de la app).
+   Avisado a Javi: el reconocedor oyó «Hugde» por «Hugo Alcaide» y «ley. Escríbeme» por «leyes. Escribe» (que lo escuche; los subtítulos
+   ponen el guion). Para el episodio 3: captura de los comentarios (la ley más votada y su autor = nuevo rey) y la exportación nueva de
+   seguidores (solo «Seguidores y seguidos»). Pendiente de permiso: borrar las ramas `render-c2-*`.
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
