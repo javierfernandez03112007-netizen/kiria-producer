@@ -192,6 +192,20 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    y quién es el peluquero (nombres de seguidores), el supermercado (un carro, la cola en caja, la cajera), el banco (los de seguridad sacando
    el dinero). Cierre: el comentario con más «me gusta» será el nuevo rey en el próximo vídeo y decide qué hacer o impone una ley; **todo
    realista**; ≈ 45 s. Los nombres que dice la voz los elijo al azar entre los fáciles de leer y Javi puede cambiarlos.
+   **Hecho el 18-11 por la tarde (`projects/ciudad_seguidores_ep2/`)**. Javi añadió: los seguidores nuevos, sin nombre hasta que pase la
+   exportación nueva («mañana»); «iannyanezz» tal cual suena; **inventar más oficios y colocar seguidores en ellos, y que la gente de alrededor
+   también haga cosas y lleve su nombre aunque la cámara no vaya a por ellos**; y **árboles, pistas de fútbol y pádel, parques… «como si fuera
+   real»**. Voz: 41,5 s (2.545 fotogramas). El campamento pasa a PUEBLO: 16 casas por manzana (1.225, una por cada 5) alrededor de un patio,
+   carreteras con raya, aceras, árboles. `22_sites.js`: cada sitio abierto por arriba + sus puestos (`ROLES`: 221): peluquería, panadería, bar con
+   terraza, supermercado (carros, dos cajas, cola), banco (furgón blindado, guardias con sacas), bomberos, taxis, colegio (profesora y corro),
+   lago (pescadores, patos), obra (grúa), mercado, parque (fuente, columpios, corredores, yoga, helados), polideportivo (fútbol 7 y dos pistas de
+   pádel con balones), policías, músico, el rey sentado en el trono. `21_people.js`: cada persona tiene una actividad (pasea por la acera de su
+   manzana, con perro, en coche dando la vuelta a la manzana o aparcado, en un corrillo del patio o de la plaza, sentado, en la puerta de casa);
+   los que nombra la voz llevan etiqueta dorada; las etiquetas llevan el oficio («@nombre · peluquera»). En el episodio 2 se leen ≈ 300 nombres.
+   Lección de cámara: no cruzar el trono al salir de un plano corto del rey (ir a un sitio del lado de la cámara); en un recorrido rápido de
+   varios sitios, llegar a cada uno con su palabra y QUEDARSE hasta la siguiente (dos claves por parada).
+   **Máquinas de ayuda: el 18-11 por la tarde solo quedan 6** («Lanzamiento · render 1–6»); las de «WhatsApp» y «Microondas» ya no existen
+   («resource not found» / inactivas). Se les manda un segundo trozo «cuando acabes el primero» (ramas `render-c2-7..18`).
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se

@@ -1,6 +1,6 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «La ciudad de los seguidores», episodio 1.
-Base: el trono gigante vacío en medio del campamento, rodeado de gente (sin interfaz):
-    COVER=1 COVER_T=26.6 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «La ciudad de los seguidores», episodio 2 (Kiria World).
+Base: el rey en el trono gigante, con su corona, y el pueblo alrededor (sin interfaz):
+    COVER=1 COVER_T=5.6 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos."""
 import os
 import sys
@@ -15,7 +15,7 @@ from engine.subs import word_sprite  # noqa: E402
 from engine import post  # noqa: E402
 
 W, H = 1080, 1920
-PINK, ORNG, GOLD = "#FF5FB8", "#FF9A3D", "#FFD76A"
+PINK, ORNG, GOLD, GREEN = "#FF5FB8", "#FF9A3D", "#FFD76A", "#7CF0A9"
 
 
 def row(img, parts, cy, size, stroke):
@@ -29,20 +29,19 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("CADA", None), ("SEGUIDOR", GOLD)], y + 90 * k, int(132 * k), int(11 * k))
-    row(img, [("VIVE", None), ("EN", None), ("ESTA", None)], y + 225 * k, int(118 * k), int(10 * k))
-    row(img, [("CIUDAD", PINK)], y + 368 * k, int(150 * k), int(11 * k))
-    paste(img, chip("¿quién se sienta en el trono?", int(44 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 490 * k)
+    row(img, [("KIRIA", None), ("WORLD", GREEN)], y + 90 * k, int(150 * k), int(11 * k))
+    row(img, [("YA", None), ("TIENE", None), ("REY", GOLD)], y + 235 * k, int(124 * k), int(10 * k))
+    paste(img, chip("¿qué ley pondrías tú?", int(46 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 350 * k)
 
 
 def main():
     base = cv2.imread(os.path.join(ROOT, "out", "cover", "cover3d.png")).astype(np.float32) / 255
     img = base.copy()
-    title(img, 90)
+    title(img, 110)
     post.grain(img, 0, 0.006)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
-    m = base[420:420 + 1350].copy()
-    title(m, 10, 0.74)
+    m = base[300:300 + 1350].copy()
+    title(m, 16, 0.8)
     cv2.imwrite(os.path.join(ROOT, "out", "miniatura.jpg"), post.finish(m), [cv2.IMWRITE_JPEG_QUALITY, 95])
     print("portada → out/portada.jpg · miniatura → out/miniatura.jpg")
 
