@@ -108,3 +108,29 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   ¿Y el empuje? (lado superior) · Antes de arrancar, ¿el freno de cadena? (bloqueado, hacia delante) · ¿Mezcla del
   combustible? (2–3 % de aceite) · ¿Clases de la ropa anticorte? (20, 24 y 28 m/s) · ¿Qué mano va delante? (la izquierda).
 
+## 18 nov 2026 · RSCIEI (RD 164/2025): configuración de los establecimientos industriales
+
+### Fuente — texto que manda Adrián Luna (Notion, fila «JUEVES 19 LO QUE MÁS PREGUNTAN EN EL RSCIEI 164/2025»)
+- **Tipo A**: ocupa PARCIALMENTE un edificio con otros establecimientos (de uso industrial o de otros usos). AV o AH según
+  la separación con los demás sea vertical u horizontal; si tiene de las dos, AV por defecto.
+- **Tipo B**: ocupa TOTALMENTE un edificio con estructura portante y cerramiento independiente, adyacente a otro(s)
+  edificio(s) de otro establecimiento o a una distancia ≤ 3 m. (Desaparece el caso de la nave adosada con estructura
+  compartida y cubiertas independientes: queda cubierto por el tipo A.)
+- **Tipo C**: ocupa totalmente uno o varios edificios a más de 3 m del edificio más próximo de otros establecimientos; esa
+  distancia, **libre de mercancías combustibles o elementos intermedios que puedan propagar el incendio**. Varios edificios
+  del mismo establecimiento son independientes si están a más de 3 m o si sus paredes colindantes cumplen como muro
+  separador entre sectores (y tienen estructura y cerramiento independientes). Túneles, pasarelas o cintas entre ellos no
+  impiden el tipo C si están compartimentados, garantizan la evacuación y su colapso no afecta a los edificios.
+- **Tipo D**: espacio abierto (descubierto o cubierto por estructuras sin cerramientos laterales totales o parciales, con
+  aberturas laterales suficientes según la tabla de A, H y L). **Se elimina el antiguo tipo E.** Puede tener zonas cerradas
+  puntuales (aseos, vestuarios) que no alberguen la actividad principal ni aumenten el riesgo.
+
+### Vídeos hechos con esto
+- «¿A, B, C o D? Lo que decide es el vecino» (`projects/bomberados_rsciei/`): la nave que se separa de su vecina y la
+  letra que avanza; trampa: cuatro metros llenos de palés (no es C).
+
+### Preguntas de examen que salen de aquí
+- ¿Qué tipo es una nave adosada a otra de otro establecimiento? (B) · ¿Y a 3 m justos? (B: ≤ 3 m) · ¿Y a 3,5 m con la
+  separación libre? (C) · ¿Qué tipo desaparece con el RD 164/2025? (el E) · ¿Qué es AV/AH? (tipo A con separación vertical
+  u horizontal) · ¿Qué condición tiene la distancia del tipo C? (libre de mercancías combustibles).
+

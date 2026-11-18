@@ -1,0 +1,229 @@
+{
+ "formato": "rsciei",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "¿A, B, C O D?",
+  "etiqueta": "LO DECIDE EL VECINO",
+  "t": 2.2,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "arde": [
+   "Arde",
+   1,
+   1
+  ],
+  "nave": [
+   "nave",
+   1,
+   1
+  ],
+  "lado": [
+   "lado",
+   1,
+   1
+  ],
+  "tres1": [
+   "tres",
+   1,
+   1
+  ],
+  "metros1": [
+   "metros",
+   1,
+   1
+  ],
+  "reglamento": [
+   "reglamento",
+   1,
+   1
+  ],
+  "distancia": [
+   "distancia",
+   1,
+   1
+  ],
+  "letra1": [
+   "letra",
+   1,
+   1
+  ],
+  "comparten": [
+   "comparten",
+   1,
+   2
+  ],
+  "edificio": [
+   "edificio",
+   1,
+   2
+  ],
+  "tipoA": [
+   "A",
+   1,
+   2
+  ],
+  "suyo": [
+   "suyo",
+   1,
+   3
+  ],
+  "pegadas": [
+   "pegadas",
+   1,
+   3
+  ],
+  "tres3": [
+   "tres",
+   1,
+   3
+  ],
+  "menos": [
+   "menos",
+   1,
+   3
+  ],
+  "tipoB": [
+   "B",
+   1,
+   3
+  ],
+  "mas4": [
+   "más",
+   1,
+   4
+  ],
+  "tres4": [
+   "tres",
+   1,
+   4
+  ],
+  "libres": [
+   "libres",
+   1,
+   4
+  ],
+  "tipoC": [
+   "C",
+   1,
+   4
+  ],
+  "aire": [
+   "aire",
+   1,
+   4
+  ],
+  "tipoD": [
+   "D",
+   1,
+   4
+  ],
+  "lejos": [
+   "lejos",
+   1,
+   5
+  ],
+  "vecino": [
+   "vecino",
+   1,
+   5
+  ],
+  "avanza": [
+   "avanza",
+   1,
+   5
+  ],
+  "letra5": [
+   "letra",
+   1,
+   5
+  ],
+  "trampa": [
+   "trampa",
+   1,
+   6
+  ],
+  "cuatro": [
+   "cuatro",
+   1,
+   6
+  ],
+  "llenos": [
+   "llenos",
+   1,
+   6
+  ],
+  "pales": [
+   "palés",
+   1,
+   6
+  ],
+  "sigue": [
+   "Sigue",
+   1,
+   6
+  ],
+  "c6": [
+   "C",
+   1,
+   6
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   6
+  ],
+  "si": [
+   "sí",
+   1,
+   6
+  ],
+  "no": [
+   "no",
+   1,
+   6
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   7
+  ],
+  "acierta": [
+   "quien",
+   1,
+   7
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   8
+  ],
+  "marca": [
+   "Bomberados",
+   1,
+   8
+  ],
+  "prueba": [
+   "Pruébala",
+   1,
+   8
+  ]
+ }
+}

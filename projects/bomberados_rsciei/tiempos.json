@@ -1,0 +1,533 @@
+[
+ {
+  "text": "¡Arde una nave… y la de al lado está a tres metros! Para el reglamento, esa distancia es una letra.",
+  "start": 0.0,
+  "end": 6.792,
+  "words": [
+   {
+    "w": "¡Arde",
+    "start": 0.0,
+    "end": 0.479
+   },
+   {
+    "w": "una",
+    "start": 0.479,
+    "end": 0.638
+   },
+   {
+    "w": "nave…",
+    "start": 0.638,
+    "end": 1.366
+   },
+   {
+    "w": "y",
+    "start": 1.366,
+    "end": 1.434
+   },
+   {
+    "w": "la",
+    "start": 1.434,
+    "end": 1.516
+   },
+   {
+    "w": "de",
+    "start": 1.516,
+    "end": 1.676
+   },
+   {
+    "w": "al",
+    "start": 1.676,
+    "end": 1.835
+   },
+   {
+    "w": "lado",
+    "start": 1.835,
+    "end": 2.154
+   },
+   {
+    "w": "está",
+    "start": 2.154,
+    "end": 2.394
+   },
+   {
+    "w": "a",
+    "start": 2.394,
+    "end": 2.553
+   },
+   {
+    "w": "tres",
+    "start": 2.553,
+    "end": 2.872
+   },
+   {
+    "w": "metros!",
+    "start": 2.872,
+    "end": 3.79
+   },
+   {
+    "w": "Para",
+    "start": 3.79,
+    "end": 3.91
+   },
+   {
+    "w": "el",
+    "start": 3.91,
+    "end": 4.149
+   },
+   {
+    "w": "reglamento,",
+    "start": 4.149,
+    "end": 5.107
+   },
+   {
+    "w": "esa",
+    "start": 5.107,
+    "end": 5.346
+   },
+   {
+    "w": "distancia",
+    "start": 5.346,
+    "end": 5.904
+   },
+   {
+    "w": "es",
+    "start": 5.904,
+    "end": 6.064
+   },
+   {
+    "w": "una",
+    "start": 6.064,
+    "end": 6.303
+   },
+   {
+    "w": "letra.",
+    "start": 6.303,
+    "end": 6.792
+   }
+  ]
+ },
+ {
+  "text": "Si las dos comparten edificio, es tipo A.",
+  "start": 7.171,
+  "end": 9.834,
+  "words": [
+   {
+    "w": "Si",
+    "start": 7.171,
+    "end": 7.261
+   },
+   {
+    "w": "las",
+    "start": 7.261,
+    "end": 7.42
+   },
+   {
+    "w": "dos",
+    "start": 7.42,
+    "end": 7.66
+   },
+   {
+    "w": "comparten",
+    "start": 7.66,
+    "end": 8.218
+   },
+   {
+    "w": "edificio,",
+    "start": 8.218,
+    "end": 8.936
+   },
+   {
+    "w": "es",
+    "start": 8.936,
+    "end": 9.176
+   },
+   {
+    "w": "tipo",
+    "start": 9.176,
+    "end": 9.654
+   },
+   {
+    "w": "A.",
+    "start": 9.654,
+    "end": 9.834
+   }
+  ]
+ },
+ {
+  "text": "Si cada una tiene el suyo, pero pegadas o a tres metros o menos, tipo B.",
+  "start": 10.303,
+  "end": 14.661,
+  "words": [
+   {
+    "w": "Si",
+    "start": 10.303,
+    "end": 10.452
+   },
+   {
+    "w": "cada",
+    "start": 10.452,
+    "end": 10.692
+   },
+   {
+    "w": "una",
+    "start": 10.692,
+    "end": 10.931
+   },
+   {
+    "w": "tiene",
+    "start": 10.931,
+    "end": 11.17
+   },
+   {
+    "w": "el",
+    "start": 11.17,
+    "end": 11.33
+   },
+   {
+    "w": "suyo,",
+    "start": 11.33,
+    "end": 11.729
+   },
+   {
+    "w": "pero",
+    "start": 11.729,
+    "end": 11.968
+   },
+   {
+    "w": "pegadas",
+    "start": 11.968,
+    "end": 12.527
+   },
+   {
+    "w": "o",
+    "start": 12.527,
+    "end": 12.686
+   },
+   {
+    "w": "a",
+    "start": 12.686,
+    "end": 12.846
+   },
+   {
+    "w": "tres",
+    "start": 12.846,
+    "end": 13.085
+   },
+   {
+    "w": "metros",
+    "start": 13.085,
+    "end": 13.405
+   },
+   {
+    "w": "o",
+    "start": 13.405,
+    "end": 13.564
+   },
+   {
+    "w": "menos,",
+    "start": 13.564,
+    "end": 14.143
+   },
+   {
+    "w": "tipo",
+    "start": 14.143,
+    "end": 14.442
+   },
+   {
+    "w": "B.",
+    "start": 14.442,
+    "end": 14.661
+   }
+  ]
+ },
+ {
+  "text": "Con más de tres metros libres, tipo C. Y al aire libre, tipo D.",
+  "start": 15.12,
+  "end": 19.429,
+  "words": [
+   {
+    "w": "Con",
+    "start": 15.12,
+    "end": 15.24
+   },
+   {
+    "w": "más",
+    "start": 15.24,
+    "end": 15.399
+   },
+   {
+    "w": "de",
+    "start": 15.399,
+    "end": 15.559
+   },
+   {
+    "w": "tres",
+    "start": 15.559,
+    "end": 15.878
+   },
+   {
+    "w": "metros",
+    "start": 15.878,
+    "end": 16.197
+   },
+   {
+    "w": "libres,",
+    "start": 16.197,
+    "end": 16.865
+   },
+   {
+    "w": "tipo",
+    "start": 16.865,
+    "end": 17.155
+   },
+   {
+    "w": "C.",
+    "start": 17.155,
+    "end": 17.813
+   },
+   {
+    "w": "Y",
+    "start": 17.813,
+    "end": 17.912
+   },
+   {
+    "w": "al",
+    "start": 17.912,
+    "end": 18.032
+   },
+   {
+    "w": "aire",
+    "start": 18.032,
+    "end": 18.351
+   },
+   {
+    "w": "libre,",
+    "start": 18.351,
+    "end": 18.83
+   },
+   {
+    "w": "tipo",
+    "start": 18.83,
+    "end": 19.149
+   },
+   {
+    "w": "D.",
+    "start": 19.149,
+    "end": 19.429
+   }
+  ]
+ },
+ {
+  "text": "Cuanto más lejos del vecino, más avanza la letra.",
+  "start": 19.818,
+  "end": 22.66,
+  "words": [
+   {
+    "w": "Cuanto",
+    "start": 19.818,
+    "end": 20.187
+   },
+   {
+    "w": "más",
+    "start": 20.187,
+    "end": 20.346
+   },
+   {
+    "w": "lejos",
+    "start": 20.346,
+    "end": 20.745
+   },
+   {
+    "w": "del",
+    "start": 20.745,
+    "end": 20.905
+   },
+   {
+    "w": "vecino,",
+    "start": 20.905,
+    "end": 21.543
+   },
+   {
+    "w": "más",
+    "start": 21.543,
+    "end": 21.782
+   },
+   {
+    "w": "avanza",
+    "start": 21.782,
+    "end": 22.261
+   },
+   {
+    "w": "la",
+    "start": 22.261,
+    "end": 22.421
+   },
+   {
+    "w": "letra.",
+    "start": 22.421,
+    "end": 22.66
+   }
+  ]
+ },
+ {
+  "text": "Ahora, la trampa: cuatro metros… pero llenos de palés. ¿Sigue siendo C? Comenta sí o no.",
+  "start": 23.089,
+  "end": 30.061,
+  "words": [
+   {
+    "w": "Ahora,",
+    "start": 23.089,
+    "end": 23.657
+   },
+   {
+    "w": "la",
+    "start": 23.657,
+    "end": 23.857
+   },
+   {
+    "w": "trampa:",
+    "start": 23.857,
+    "end": 24.844
+   },
+   {
+    "w": "cuatro",
+    "start": 24.844,
+    "end": 25.213
+   },
+   {
+    "w": "metros…",
+    "start": 25.213,
+    "end": 25.872
+   },
+   {
+    "w": "pero",
+    "start": 25.872,
+    "end": 26.091
+   },
+   {
+    "w": "llenos",
+    "start": 26.091,
+    "end": 26.57
+   },
+   {
+    "w": "de",
+    "start": 26.57,
+    "end": 26.729
+   },
+   {
+    "w": "palés.",
+    "start": 26.729,
+    "end": 27.657
+   },
+   {
+    "w": "¿Sigue",
+    "start": 27.657,
+    "end": 27.926
+   },
+   {
+    "w": "siendo",
+    "start": 27.926,
+    "end": 28.245
+   },
+   {
+    "w": "C?",
+    "start": 28.245,
+    "end": 28.914
+   },
+   {
+    "w": "Comenta",
+    "start": 28.914,
+    "end": 29.442
+   },
+   {
+    "w": "sí",
+    "start": 29.442,
+    "end": 29.682
+   },
+   {
+    "w": "o",
+    "start": 29.682,
+    "end": 29.921
+   },
+   {
+    "w": "no.",
+    "start": 29.921,
+    "end": 30.061
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 30.39,
+  "end": 32.444,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 30.39,
+    "end": 31.118
+   },
+   {
+    "w": "a",
+    "start": 31.118,
+    "end": 31.198
+   },
+   {
+    "w": "quien",
+    "start": 31.198,
+    "end": 31.437
+   },
+   {
+    "w": "quiera",
+    "start": 31.437,
+    "end": 31.836
+   },
+   {
+    "w": "ser",
+    "start": 31.836,
+    "end": 31.995
+   },
+   {
+    "w": "bombero!",
+    "start": 31.995,
+    "end": 32.444
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 32.773,
+  "end": 36.583,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 32.773,
+    "end": 33.701
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 33.701,
+    "end": 34.968
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 34.968,
+    "end": 35.426
+   },
+   {
+    "w": "gratis",
+    "start": 35.426,
+    "end": 35.905
+   },
+   {
+    "w": "cinco",
+    "start": 35.905,
+    "end": 36.224
+   },
+   {
+    "w": "días!",
+    "start": 36.224,
+    "end": 36.583
+   }
+  ]
+ }
+]

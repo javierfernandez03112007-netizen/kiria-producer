@@ -2984,7 +2984,131 @@ def sfx_track_moto(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_rsciei(path):
+    """«¿A, B, C o D? Lo que decide es el vecino» (RSCIEI): el polígono de noche con la nave ardiendo (fuego sin
+    repeticiones, viento, la autobomba), la vecina que se acerca y se funde en un solo edificio (golpe metálico), que se
+    separa (un tic por metro), los metros libres, las paredes que se van volando (aire libre), la regla A-B-C-D (una nota
+    por letra), los palés que caen en el hueco, la pregunta y la venta. Tiempos como en rsciei.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe"))
+    w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    def bed(x, dur, seed, a=0.45, b=2.45, seg=(0.7, 1.3), xf=0.25):      # ambiente sin repetición (como en el del techo)
+        rng = np.random.default_rng(seed)
+        n, k = int(dur * sfx.SR), int(xf * sfx.SR)
+        fi_, fo_ = np.sqrt(np.linspace(0, 1, k))[:, None], np.sqrt(np.linspace(1, 0, k))[:, None]
+        y = np.zeros((0, 2))
+        while len(y) < n:
+            L = rng.uniform(*seg); s0 = rng.uniform(a, b - L)
+            z = x[int(s0 * sfx.SR): int((s0 + L) * sfx.SR)] * 10 ** (rng.uniform(-2, 2) / 20)
+            if len(y) >= k:
+                z = z.copy(); z[:k] = y[-k:] * fo_ + z[:k] * fi_
+                y = np.concatenate([y[:-k], z])
+            else:
+                y = z.copy()
+        y = y[:n]
+        w = 480; nf = len(y) // w
+        e = np.sqrt((y[:nf * w].mean(1).reshape(nf, w) ** 2).mean(1)) + 1e-9
+        gr = np.minimum(1, np.median(e) * 10 ** (7 / 20) / e)
+        gr = np.min(np.stack([np.roll(gr, d) for d in range(-3, 4)]), 0)
+        gr = np.convolve(gr, np.ones(5) / 5, "same")
+        return y * np.interp(np.arange(len(y)), np.arange(nf) * w + w / 2, gr)[:, None]
+
+    # la noche del polígono: la nave ardiendo, el viento y la autobomba
+    fuego = _load("fuego")
+    put(bed(fuego, T["fin"] + 0.3, 5), 0.0, -26, T["fin"], 0.05, 1.0, track=amb)
+    put(_loop(_load("aire"), END + 0.5), 0.0, -33, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -41, T["fin"], 0.6, 1.0, track=amb)
+    put("golpe", 0.0, -21, 0.8, 0.003, 0.35)
+    put(fuego[int(0.3 * sfx.SR):], 0.0, -22, 1.4, 0.003, 0.6)
+    put("latido", 0.15, -24, 0.7)
+    put("sirena", 0.3, -36, 3.5, 0.6, 1.2)
+    put(_pitch(toque, 1.0), c["tres1"] - 0.03, -26, 0.4)
+    put("latido", c["tres1"] + 0.1, -23, 0.7)
+    put(_pitch(bub, 1.0), c["letra1"] - 0.08, -25, 0.2)
+    put(_pitch(nota, 0.9), c["letra1"] - 0.02, -27, 0.6)
+    # A: la vecina se acerca y se funde en un solo edificio (un solo tejado)
+    put(_pitch(wh, 0.8), c["comparten"] - 0.3, -25, 1.0)
+    put(_pitch(golpe, 0.6), c["edificio"] + 0.05, -20, 0.9, 0.003, 0.4)
+    put(_pitch(_onset(_load("barra")), 0.7), c["edificio"] + 0.05, -26, 0.8, 0.003, 0.4)
+    put(_pitch(nota, 1.0), c["tipoA"] - 0.03, -24, 0.8)
+    put("destello", c["tipoA"] - 0.05, -26, 0.5)
+    # B: se separan (un tic por metro hasta 3)
+    put(_pitch(w2, 1.1)[::-1].copy(), c["suyo"] - 0.3, -26, 0.6, 0.05, 0.05)
+    put(_pitch(golpe, 0.9), c["suyo"] + 0.3, -26, 0.4, 0.003, 0.2)
+    g0, g1 = c["pegadas"] + 0.35, c["menos"] + 0.1
+    for m in (1, 2, 3):
+        u = np.arccos(1 - 2 * m / 3) / np.pi                     # cuándo pasa por cada metro (la separación sigue una curva suave)
+        put(_pitch(tic, 1.0 + 0.15 * m), g0 + (g1 - g0) * u - 0.02, -26, 0.15)
+    put(_pitch(nota, 1.122), c["tipoB"] - 0.03, -24, 0.8)
+    put("destello", c["tipoB"] - 0.05, -26, 0.5)
+    # C: más de 3 metros libres
+    for m in (4, 5, 6):
+        put(_pitch(tic, 1.0 + 0.15 * m), c["mas4"] + (c["tipoC"] + 0.2 - c["mas4"]) * (m - 3) / 3.4, -27, 0.15)
+    put(_pitch(toque, 1.2), c["libres"] - 0.03, -26, 0.35)
+    put(_pitch(nota, 1.26), c["tipoC"] - 0.03, -24, 0.8)
+    put("destello", c["tipoC"] - 0.05, -26, 0.5)
+    # D: las paredes y el tejado se van volando
+    put(_pitch(wh, 0.6), c["aire"] - 0.2, -23, 1.3)
+    put(_loop(_load("aire"), 3.0), c["aire"], -30, c["lejos"] - c["aire"], 0.2, 0.4)
+    put(_pitch(nota, 1.41), c["tipoD"] - 0.03, -24, 0.8)
+    put("destello", c["tipoD"] - 0.05, -26, 0.5)
+    # la regla: una nota por letra
+    put(w2, c["lejos"] - 0.25, -28, 0.6)
+    for i in range(4):
+        t0 = c["lejos"] + 0.15 + i * (c["avanza"] + 0.3 - c["lejos"] - 0.15) / 3
+        put(_pitch(nota, 1.0 * 1.122 ** i), t0 - 0.02, -26, 0.6)
+        put(_pitch(bub, 1.0 + 0.1 * i), t0 - 0.06, -27, 0.15)
+    # la trampa: vuelve la vecina a 4 m y el hueco se llena de palés
+    put(_pitch(wh, 0.75), c["trampa"] - 0.25, -25, 1.0)
+    put("tension", c["trampa"], -30, c["compartir"] - c["trampa"] - 0.3, 0.3, 0.3, track=amb)
+    put(_pitch(golpe, 0.85), c["cuatro"] + 0.1, -24, 0.5, 0.003, 0.25)
+    for i in range(10):
+        put(_pitch(golpe, 0.5 + 0.06 * (i % 4)), c["llenos"] - 0.05 + 0.065 * i * 2.1, -27 + (i % 3), 0.35, 0.003, 0.2)
+    put(_pitch(toque, 0.9), c["sigue"] - 0.03, -25, 0.4)
+    put(_pitch(toque, 0.7), c["c6"] - 0.02, -24, 0.4)
+    for k, key in enumerate(("si", "no")):
+        put(_pitch(nota, 1.0 * 1.19 ** k), c[key] - 0.2, -26, 0.6)
+        put(_pitch(bub, 1.0 + 0.12 * k), c[key] - 0.25, -26, 0.2)
+    put(_pitch(toque, 1.3), c["comenta"] - 0.03, -25, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "rsciei":
+        return sfx_track_rsciei(path)
     if Q.get("formato") == "moto":
         return sfx_track_moto(path)
     if Q.get("formato") == "puno":

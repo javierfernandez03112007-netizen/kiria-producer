@@ -1,0 +1,46 @@
+«¿A, B, C O D? LO QUE DECIDE ES EL VECINO» — idea de Adrián (Notion «JUEVES 19 LO QUE MÁS PREGUNTAN EN EL RSCIEI
+164/2025»: cómo se clasifica un establecimiento industrial según su configuración). 30–40 s: este sale en ≈ 34 s.
+
+Cómo está hecho: es reglamento, así que lo cuenta UNA escena y UNA regla que se ve. Un polígono de noche, arde una nave
+y la de al lado está a tres metros. En 3D, la misma nave se va separando de su vecina y la letra cambia sola:
+comparten edificio → A; cada una con el suyo pero pegadas o a 3 m o menos → B; más de 3 m libres → C; sin paredes,
+al aire libre → D. La regla: «cuanto más lejos del vecino, más avanza la letra». Cierre con trampa para comentar
+(sí o no): cuatro metros… pero llenos de palés.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido y claro. Lo más fuerte: el arranque y el final («¡MÁNDASELO…!», «¡BOMBERADOS!», «¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Arde una nave… y la de al lado está a TRES metros! [intrigued] Para el reglamento, esa distancia es una LETRA.
+[explaining, clear] Si las dos comparten edificio, es tipo A.
+[explaining, clear] Si cada una tiene el suyo, pero pegadas o a tres metros o menos, tipo B.
+[explaining, clear] Con más de tres metros libres, tipo C. Y al aire libre, tipo D.
+[confident, emphatic] Cuanto más LEJOS del vecino, más avanza la letra.
+[mischievous, challenging] Ahora, la trampa: cuatro metros… pero LLENOS de palés. ¿Sigue siendo C? Comenta sí o no.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, en un polígono, con un dron que no para:
+1. «¡Arde una nave… y la de al lado está a tres metros!» — primer fotograma: una nave ardiendo (llamas por el tejado,
+   humo), y pegada a ella la nave vecina; entre las dos, una cota que parpadea: 3 m. «Para el reglamento, esa distancia
+   es una letra» — sobre el hueco aparece una letra con «?».
+2. «Si las dos comparten edificio, es tipo A» — las dos naves se funden en un solo edificio, con un tejado y una pared
+   por dentro: letra A.
+3. «Si cada una tiene el suyo, pero pegadas o a tres metros o menos, tipo B» — el edificio se parte en dos naves, cada
+   una con su tejado; la vecina se aparta 1, 2, 3 metros (la cota va contando): letra B.
+4. «Con más de tres metros libres, tipo C» — pasa de 3 m (4, 5, 6…): la letra salta a C, en verde. «Y al aire libre,
+   tipo D» — a la vecina se le van las paredes y el tejado: queda la mercancía al aire libre: letra D.
+5. «Cuanto más lejos del vecino, más avanza la letra» — regla en pantalla: A · B · C · D sobre una flecha de distancia.
+6. «Ahora, la trampa: cuatro metros… pero llenos de palés» — vuelven a 4 m y el hueco se llena de palés. «¿Sigue
+   siendo C?» — tarjeta SÍ / NO y «💬 COMENTA SÍ O NO».
+7. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+8. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la trampa (para el comentario fijado, no va en el vídeo): NO. Para ser tipo C, esos más de 3 metros tienen
+que estar libres de mercancías combustibles o de cualquier cosa que pueda propagar el incendio.
+Fuentes (en FUENTES.md): el texto que manda Adrián en Notion (RSCIEI, RD 164/2025). CONFIRMAR la prueba gratis de 5 días.
