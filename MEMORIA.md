@@ -150,7 +150,7 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   suena con la misma voz (solo llegó un audio).
 
 ## Próximas ideas
--1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; guion del episodio 1 propuesto, sin aprobar todavía)**. Javi: «una serie
+-1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
    Instagram encima; el que tenga más likes en el comentario del vídeo anterior es el presidente o rey ese día» y «contamos una historia de la
    evolución de una ciudad poco a poco con los seguidores». Su esquema por episodio: plano aéreo de toda la población → la cámara recorre los
@@ -164,7 +164,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    (no solo quien comenta). Los nombres llegan con la exportación de Instagram («Descargar tu información» → Seguidores y seguidos, JSON) que
    Javi sube al chat: **ese archivo NO se sube al repo** (datos de terceros). El rey sale de una captura de los comentarios. No hay conector que
    dé nombres (Metricool solo da cifras: 5.882 seguidores el 16-11, +50–110 al día). Filtrar nombres ofensivos y quitar a quien lo pida.
-   Guion del episodio 1 (v2, ≈ 117 palabras) entregado a Javi el 17-11; falta su MP3 y el archivo de seguidores.
+   **Episodio 1 hecho el 18-11 (`projects/ciudad_seguidores/`)**: Javi mandó la voz (35,8 s; no grabó «y en el centro hay un trono vacío»), la
+   exportación de Instagram (5.997 seguidores) y una referencia de estilo: capturas de juegos de construir ciudades vistos en diagonal desde
+   arriba («algo parecido») → diseño propio con esa vista, sin copiar ningún juego. Y dos reglas nuevas (18-11): **al acercarse, la gente
+   levanta la mano y saluda a cámara con su nombre encima**, y **cada casa es de 5 personas y enseña sus 5 nombres al acercarse**.
+   Cómo está hecho: ciudad en cuadrícula girada 45° (`05_world.js`: U/V de pantalla; rectángulo alto para el formato vertical), todo con
+   instancias (`20_city.js`: 24 parcelas por manzana, 1.200 tiendas = hogares de 5; casas y edificios para «lo que crecerá»; mercado, banco,
+   hacienda con «%», lago, trono gigante, corona), `21_people.js` (5.997 figuritas; la persona i es el seguidor i por orden de llegada: los
+   primeros, más cerca del trono; brazo que saluda para los que están cerca), cámara por claves [t, U, V, altura, distancia, elevación, giro].
+   **Privacidad: los nombres NO van en el repo ni a las máquinas de ayuda.** El render sale sin nombres; `web/labels.mjs` (local, 10 s, sin
+   render) saca por fotograma qué personas y hogares se ven de cerca y dónde caen, y `compose_ciudad.py` pinta las etiquetas con
+   `out/names.json` (carpeta ignorada por git). Del zip de Instagram solo se usó `followers_1.json` (traía también anuncios, accesos y
+   ubicación: borrado al descomprimir). Filtro de nombres ofensivos: casi todo falsos positivos (Vergara, Analía…); ocultos 3.
+   Lección: con la cámara a 60–80 m salían 150 etiquetas montadas unas sobre otras; a ≈ 42 m (≥ 70 px por metro) se leen ≈ 25 a la vez.
+   En el episodio 1 se leen ≈ 90 nombres de personas y 10 hogares (50 nombres): avisar a Javi de que no salen todos en cada vídeo.
+   Render: 2.205 fotogramas; esta máquina va a ≈ 5,4 s por fotograma (unas 3 h 20 min sola); 12 máquinas ya abiertas, ramas `render-cs-1..12`.
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
