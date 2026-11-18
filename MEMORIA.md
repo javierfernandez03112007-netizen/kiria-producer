@@ -184,6 +184,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    rellenó a la vez los primeros fotogramas). Para el episodio 2 hace falta: captura de los comentarios del episodio 1 (nombre de la ciudad y rey)
    y, si se quiere actualizar la población, una exportación nueva de seguidores (pedir SOLO «Seguidores y seguidos»: la primera traía de todo).
    Pendiente de permiso: borrar las ramas `render-cs-*`.
+   **Episodio 2 (pedido por Javi el 18-11, «el de kiria de mañana»; guion propuesto, falta su MP3)**: la ciudad se llama **Kiria World** y el
+   primer rey es **@iannyanezz_** (comentario con más «me gusta» del episodio 1; no está en la lista de seguidores del 17-11). Javi da 6.124
+   seguidores (Metricool: 6.081 el 17-11; ojo: la exportación de Instagram del 17-11 traía 5.997 nombres, menos que el contador).
+   **Regla nueva de Javi: la gente ya no está parada en la calle; cada persona hace algo como en la vida real** (con animales, esperando en el
+   coche, charlando…) y cada capítulo enseña un poco de lo que pasa: la cámara se acerca a una peluquería y la voz dice quién se corta el pelo
+   y quién es el peluquero (nombres de seguidores), el supermercado (un carro, la cola en caja, la cajera), el banco (los de seguridad sacando
+   el dinero). Cierre: el comentario con más «me gusta» será el nuevo rey en el próximo vídeo y decide qué hacer o impone una ley; **todo
+   realista**; ≈ 45 s. Los nombres que dice la voz los elijo al azar entre los fáciles de leer y Javi puede cambiarlos.
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
