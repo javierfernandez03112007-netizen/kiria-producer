@@ -179,6 +179,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
    Lección: con la cámara a 60–80 m salían 150 etiquetas montadas unas sobre otras; a ≈ 42 m (≥ 70 px por metro) se leen ≈ 25 a la vez.
    En el episodio 1 se leen ≈ 90 nombres de personas y 10 hogares (50 nombres): avisar a Javi de que no salen todos en cada vídeo.
    Render: 2.205 fotogramas; esta máquina va a ≈ 5,4 s por fotograma (unas 3 h 20 min sola); 12 máquinas ya abiertas, ramas `render-cs-1..12`.
+   **ENTREGADO a Javi el 18-11 a las 07:10 UTC** (`out/ciudad_seguidores_ep1.mp4`, 36,75 s, 2.205 fotogramas, −14,9 LUFS; `out/portada.jpg`;
+   `DESCRIPCION.txt`; `FUENTES.md`). El render con las 12 máquinas tardó ≈ 20 min (aprobado por Javi con la pregunta de la app; esta máquina
+   rellenó a la vez los primeros fotogramas). Para el episodio 2 hace falta: captura de los comentarios del episodio 1 (nombre de la ciudad y rey)
+   y, si se quiere actualizar la población, una exportación nueva de seguidores (pedir SOLO «Seguidores y seguidos»: la primera traía de todo).
+   Pendiente de permiso: borrar las ramas `render-cs-*`.
 0. **«Así funciona» (nueva dinámica, 14-11)**. Guiones listos: el microondas y **qué pasa cuando te crujes los dedos** (`projects/dedos/`,
    pedido por Javi: «explicar qué pasa cuando nos crujimos los dedos»). Más ideas (cada dato, con fuente antes de grabar):
    - **Elegida por Javi (14-11): el cerebro congelado** (`projects/cerebro_congelado/`): «un muñeco realista comiéndose un helado que se
