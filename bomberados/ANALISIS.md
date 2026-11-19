@@ -25,6 +25,24 @@ los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 (PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
 Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
+## 📌 Para los próximos vídeos (plan del 19 nov)
+
+1. **Duración: 30–40 s** (la fijó Javi el 18 nov; sustituye a los 45–57 s de planes anteriores).
+2. **Rehacer en 3D lo que funcionó en estilo app** (sigue): el panel naranja va por **93.700** (+15.900 en 2 días).
+3. **«¿Cuál es cuál?» antes que la explicación:** «Los 5 bloqueadores» (32.600) llega el doble que el explicativo de la camilla
+   (14.900). Para temas con varias piezas o tipos, reto de reconocerlas en 3D (provisional).
+4. **Cierre para comentar en todos** (letras A/B/C/D o pregunta personal): los 3D de esta semana se quedan en 0,3/1.000.
+5. **La app, solo como cierre:** «Reta a otro opositor» se ha estancado en 11.000.
+6. Siguen: bomberos en acción en 3D con dron; teoría solo si la cuenta una escena; «mándaselo a quien quiera ser bombero».
+
+### Lo nuevo del 19 nov (cifras del 18 nov)
+| Vídeo | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
+|---|---|---|---|---|
+| Panel naranja de la cisterna (3D) | **93.700** | 40,5 | 0,3 | 4,8 |
+| Los 5 bloqueadores: ¿cuál es cuál? | 32.600 | 39,2 | 0,3 | 6,3 |
+| Bloqueadores: la camilla | 14.900 | 38,1 | 0,3 | 3,4 |
+| Reta a otro opositor (1 vs 1) | 11.000 | 45,1 | 0,7 | 8,3 |
+
 ## 📌 Para los próximos vídeos (plan del 17 nov)
 
 1. **Rehacer en 3D lo que funcionó en estilo app.** El panel naranja pasó de 15.900 (app) a **77.800** (3D, cisterna de
