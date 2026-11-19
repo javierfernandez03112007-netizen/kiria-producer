@@ -20,7 +20,7 @@ while true; do
       for f in out/tmp_$tag/*.jpg; do b=$(basename $f); i=$((10#$(echo $b | tr -dc 0-9)))
         # la cámara cambió entre 11,4 y 26,7 s (fotogramas 686–1601): del trozo 2 no valen 686–795 (se hacen aquí) y del 5 no valen 1592–1601 (los trae el 4 nuevo)
         if [ "$X" = 2 ] && [ $i -ge 686 ]; then continue; fi; if [ "$X" = 5 ] && [ $i -lt 1602 ]; then continue; fi
-        if [ "$X" = 4 ]; then mv -f $f out/frames/$b; else [ -f out/frames/$b ] || mv $f out/frames/$b; fi; done
+        if [ "$X" = 4 ] || [ "$X" -ge 7 ]; then mv -f $f out/frames/$b; else [ -f out/frames/$b ] || mv $f out/frames/$b; fi; done      # 7 y 8: la ventana n.º 7 de la fachada con la persona sentada (1370–1575)
       rm -rf out/tmp_$tag; touch out/$tag.done; echo "$(date +%H:%M) $br $tag metido"
     done
   done
