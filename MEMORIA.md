@@ -198,9 +198,16 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   el temblor de cámara (gira la imagen); (4) lo que se dibuja cerca del borde de un objeto girado se corta en vertical: dejar margen;
   (5) si se cambia algo con las máquinas ya renderizando, mensaje con `priority: now` + `pkill -f capture.mjs; rm -rf out/frames` y regla en
   `fetch_compose.sh` para aceptar solo los trozos hechos con el commit nuevo (`git merge-base --is-ancestor`).
+  (6) **control de continuidad antes de entregar** (lo hice tarde: la primera entrega llevaba dos fallos): medir la diferencia entre fotogramas
+  seguidos y buscar picos (script en la sesión: reducir a 135 × 240 y marcar d > 2,6 × mediana vecina + 1,5). Destapó que la punta del boli
+  **saltaba** de un renglón al siguiente en un fotograma (arreglo: `noteTipPx` + media de la posición en ±0,12 s, sin estado, y el boli se levanta)
+  y que la cámara **volteaba 180°** al pasar por la vertical encima del cuaderno (arreglo: llegar por un lado, nunca por encima del punto que mira);
+  (7) para saber si una máquina de ayuda mezcló fotogramas viejos: renderizar aquí una muestra (los tres restos de 3) y comparar (≈ 0,7–0,9 de
+  diferencia media = iguales); (8) al mandar un trozo a una máquina que ya estaba renderizando, pedirle por escrito que mate por PID los
+  `render_chunk.sh` y `capture.mjs` anteriores (un `pkill -f capture.mjs` no para el bucle del script, que relanza capturas).
   Datos (FUENTES.md): LinkedIn 2021, EE. UU., 78 % de millennials y generación Z (rótulo en pantalla); Baylor 2018, 9 minutos (57 estudiantes).
-  Render: las seis máquinas «Lanzamiento · render 1–6» (Javi: «abre las máquinas que sean necesarias»), ramas `render-dt-1…12` (≈ 31 fotogramas/min
-  cada una en esta escena). **Entregado el 19-11 (21:15)**: 39,75 s, 2.385 fotogramas, 1080 × 1920, 60 fps, −14,8 LUFS, 27,8 MB, con portada,
+  Render: las seis máquinas «Lanzamiento · render 1–6» (Javi: «abre las máquinas que sean necesarias»), ramas `render-dt-1…18` (≈ 31 fotogramas/min
+  cada una en esta escena). **Entregado el 19-11 (21:15; versión corregida a las 21:35, la buena)**: 39,75 s, 2.385 fotogramas, 1080 × 1920, 60 fps, −14,8 LUFS, 28 MB, con portada,
   miniatura y `DESCRIPCION.txt`. Sin música (regla del canal). Pendiente de permiso: borrar las ramas `render-dt-*` y `render-bk-*`.
 
 ## Próximas ideas
