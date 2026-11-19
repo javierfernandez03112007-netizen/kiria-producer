@@ -199,7 +199,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (5) si se cambia algo con las máquinas ya renderizando, mensaje con `priority: now` + `pkill -f capture.mjs; rm -rf out/frames` y regla en
   `fetch_compose.sh` para aceptar solo los trozos hechos con el commit nuevo (`git merge-base --is-ancestor`).
   Datos (FUENTES.md): LinkedIn 2021, EE. UU., 78 % de millennials y generación Z (rótulo en pantalla); Baylor 2018, 9 minutos (57 estudiantes).
-  Render: las seis máquinas «Lanzamiento · render 1–6» (Javi: «abre las máquinas que sean necesarias»), ramas `render-dt-1…6`.
+  Render: las seis máquinas «Lanzamiento · render 1–6» (Javi: «abre las máquinas que sean necesarias»), ramas `render-dt-1…12` (≈ 31 fotogramas/min
+  cada una en esta escena). **Entregado el 19-11 (21:15)**: 39,75 s, 2.385 fotogramas, 1080 × 1920, 60 fps, −14,8 LUFS, 27,8 MB, con portada,
+  miniatura y `DESCRIPCION.txt`. Sin música (regla del canal). Pendiente de permiso: borrar las ramas `render-dt-*` y `render-bk-*`.
 
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
