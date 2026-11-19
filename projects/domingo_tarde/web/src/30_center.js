@@ -36,7 +36,7 @@ function stageAt(t, st) {
   // ---- el cuaderno: cerrado a su lado en la cama; mientras escribe, abierto en el regazo
   const nb = S.nb; nb.userData.open.visible = nbOn; nb.userData.closed.visible = !nbOn; b.updateMatrixWorld(true);
   const rest = b.localToWorld(_v().set(-0.5, 0.012, 0.02)), lap = b.localToWorld(_v().set(0.03, 0.215, 0.36)), back = win(t, TL.send + 0.95, 0.3);
-  if (nbOn) { nb.position.copy(lap).lerp(rest.clone().add(_v().set(0, 0.1, 0)), back); nb.rotation.set(0.2 * (1 - back), BOY.yaw + Math.PI + 0.1, 0); } else { nb.position.copy(rest); nb.rotation.set(0, BOY.yaw + 0.35, 0); }
+  if (nbOn) { nb.position.copy(lap).lerp(rest.clone().add(_v().set(0, 0.1, 0)), back); nb.rotation.set(0.2 * (1 - back), BOY.yaw + Math.PI + lerp(0.1, 0.02, sm5(seg(t, 26.75, 27.3))), 0); } else { nb.position.copy(rest); nb.rotation.set(0, BOY.yaw + 0.35, 0); }
   nb.updateMatrixWorld(true);
   const wr = [seg(t, TL.write - 0.3, TL.write + 0.4), ...[0, 1, 2].map(i => seg(t, TL.write + 0.5 + i * 0.72, TL.write + 1.16 + i * 0.72))], sR = { a: seg(t, TL.est + 0.45, TL.est + 1.25), b: seg(t, K['apuntaban_8'] - 0.05, K['apuntaban_8'] + 1.0), moon: seg(t, TL.dormir - 0.1, TL.dormir + 0.6), nine: seg(t, TL.nueve - 0.03, TL.nueve + 0.45) };
   let tip = null; if (nbOn) { const tp = drawNote(nb, wr, sR); const away = win(t, TL.nueve + 0.3, 0.4); tip = notePt(nb, tp[0], tp[1], 0.002 + 0.02 * bump(t, TL.est - 0.2, TL.est + 0.45, 0.2, 0.2) + 0.03 * away).addScaledVector(nbXa(nb), 0.1 * away).addScaledVector(nbZa(nb), 0.07 * away); }
