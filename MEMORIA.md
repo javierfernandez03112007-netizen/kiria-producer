@@ -159,6 +159,19 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   received»); no volver a pedir la clave a Javi: la voz la genera él. Avisos dados: la foto es pequeña (pedir la original o más fotos), en la
   foto se ve el precio (2,75 €) y la marca del café (La Malicia), y no lleva música. La foto no se sube al repo (`.gitignore`).
 
+- **Spot de clase «El plan lo ponéis vosotros» — Booking.com para «La pandilla low-cost» (`projects/booking_pandilla/`, 19-11-2026)**: Javi pasó
+  el guion técnico en PDF (40 s, 16:9, 1080p, **30 fps**, 6 planos: aviso del grupo «VERANO 🌴» en la biblioteca · responden B/C/D con bocadillos
+  de chat · los cuatro en el sofá comparan con la app · votación cenital y «Reservar» · el viaje · cierre). Motor horizontal copiado de
+  `pausa_universitaria`; aquí cada plano es un decorado propio (separados 40 m en x) y **entre planos hay corte** (`SHOTS` en `05_world.js`,
+  cámara por plano en `31_camera.js`, `prevT` no cruza el corte). Novedades reutilizables: caras en los muñecos (`addFace`/`smile`, boca abierta),
+  brazo a un punto (`armTo`, dos huesos), `holdPhone`, móvil con pantalla en lienzo (`drawLock`, `drawVote`), brazo suelto con dedos (`voteArm`),
+  maletas (`dragCase`), pantalla de app dibujada en el HUD (`appPanel`). Los 3D llegan a 35 s; el **cierre (35–40 s) lo hace `compose_booking.py`**
+  con el último fotograma (el selfi) como foto sobre el azul #003580, eslogan y «Booking.com · Descarga la app». Voz: un MP3 con seis frases
+  (`script.txt`) que `build_voz.py` coloca en 12,0 / 14,2 / 17,3 / 18,6 / 20,15 / 35,5 s; **al llegar la voz hay que volver a renderizar
+  10–24,15 s** (fotogramas 300–724: dependen de las palabras). Avisos dados a Javi: datos de la app inventados (rótulo «Pantalla simulada»),
+  «Booking.com» va como texto (no el logo oficial; si manda el PNG se cambia) y **sin música** (la pone él: libre de derechos, corte 1 s antes
+  del clic de «Reservar» ≈ 23,3 s). No hay en la biblioteca sonidos de playa, risas ni obturador: el viaje va sin efectos (lo lleva la música).
+
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
