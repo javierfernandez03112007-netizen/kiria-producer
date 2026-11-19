@@ -1,6 +1,6 @@
 """Portada (1080x1920) y miniatura 4:5 (1080x1350) de «El domingo por la tarde».
-Base: por encima de su hombro, el LUNES saliendo sobre la ciudad (sin rótulos):
-    COVER=1 COVER_T=3.7 FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+Base: él de espaldas en la cama y el LUNES saliendo sobre la ciudad (sin rótulos):
+    COVER=1 COVER_T=1.25 FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos."""
 import os
 import sys

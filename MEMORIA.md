@@ -179,6 +179,28 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   PNG se cambia), la música es sintetizada (no la puedo escuchar: que la revise; se puede exportar sin ella) y no hay en la biblioteca sonidos
   de playa, risas ni obturador.
 
+- **«El domingo por la tarde» (`projects/domingo_tarde/`, 19-11-2026) — línea nueva pedida por Javi: vídeos que despierten «a mí me pasa, no soy
+  el único»**. Javi (19-11): «los vídeos son caos total… no pasamos de las 2.000 visitas, vamos a mejorar la calidad»; quiere seguir con la ciudad
+  de los seguidores y, además, vídeos de curiosidad con sentimiento. Eligió «la tarde del domingo» y pasó una **lámina de referencia** (9 viñetas
+  de estilo anime: cuarto en penumbra violeta con la ventana al atardecer, chico con sudadera oscura, primer plano de cara y de ojos, mano en el
+  pecho, vista desde la puerta; en `ref/referencia_javi.webp`) con la orden «básate en estas… ya solo es ir animando el personaje». Pidió **40–45 s**
+  (el primer guion, de 60 s, lo recortó). Guion de 9 frases (`script.txt`; no grabó «Al final te digo cómo quitártelo»: quitado); voz Danny, 39,9 s →
+  `ajustar_voz.py` con pausas largas (38,8 s; **arreglado un fallo del recorte de silencios: cortaba el doble de lo pedido**). Vídeo de 39,75 s.
+  **Piezas nuevas reutilizables**: `web/src/21_boy.js` = personaje anime (`animeBoy`: cabeza con barbilla `headPt`, ojos y boca dibujados en lienzo
+  sobre la piel con `drawEye` —parpadeo, mirada, cejas de preocupación, texto reflejado en el iris—, pelo de mechones `lockGeo`, manos con dedos
+  `handModel`/`handCurl`/`handAim`, brazo de dos huesos `armTo`, piernas cruzadas `poseCross`, cabeza translúcida `boyGhost`); `20_room.js` = cuarto,
+  ciudad de siluetas con el LUNES saliendo como la luna y fachada de 10 ventanas (`buildFacade`, `roomLit`); `22_props.js` = bloc que se escribe
+  solo (`drawNote`, `handText`), cerebro con alarma, pulso al pecho. Ambiente `ocaso` en `11_env.js` (cielo de 4 tonos; **los colores escritos a mano
+  en el sombreador van en lineal**). Sombreado de dibujo con `toonM` (05_world). Un solo plano continuo (`31_camera.js`): puerta → ventana → cara →
+  cuarto → pecho → ojos → sale por la ventana (cerebro) → fachada (8 de 10) → entra y cenital del cuaderno → puerta (bucle).
+  **Lecciones**: (1) la cámara, siempre por el lado iluminado de la cara y con la cabeza girada hacia ella (`kCam`), si no solo se ve pelo;
+  (2) al escribir, plano cenital con las manos entrando por abajo (por encima del hombro el brazo tapa la hoja); (3) con cámara casi vertical, quitar
+  el temblor de cámara (gira la imagen); (4) lo que se dibuja cerca del borde de un objeto girado se corta en vertical: dejar margen;
+  (5) si se cambia algo con las máquinas ya renderizando, mensaje con `priority: now` + `pkill -f capture.mjs; rm -rf out/frames` y regla en
+  `fetch_compose.sh` para aceptar solo los trozos hechos con el commit nuevo (`git merge-base --is-ancestor`).
+  Datos (FUENTES.md): LinkedIn 2021, EE. UU., 78 % de millennials y generación Z (rótulo en pantalla); Baylor 2018, 9 minutos (57 estudiantes).
+  Render: las seis máquinas «Lanzamiento · render 1–6» (Javi: «abre las máquinas que sean necesarias»), ramas `render-dt-1…6`.
+
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
