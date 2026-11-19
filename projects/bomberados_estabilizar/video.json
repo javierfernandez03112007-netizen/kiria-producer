@@ -1,0 +1,229 @@
+{
+ "formato": "estab",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "COCHE VOLCADO",
+  "etiqueta": "¿CUÁL ES LA MÁS ESTABLE?",
+  "t": 2.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "coche": [
+   "coche",
+   1,
+   1
+  ],
+  "volcado": [
+   "volcado",
+   1,
+   1
+  ],
+  "dentro": [
+   "dentro",
+   1,
+   1
+  ],
+  "sacarle": [
+   "sacarle",
+   1,
+   1
+  ],
+  "mover": [
+   "mover",
+   1,
+   1
+  ],
+  "milimetro": [
+   "milímetro",
+   1,
+   1
+  ],
+  "nunca": [
+   "nunca",
+   1,
+   2
+  ],
+  "derecho": [
+   "derecho",
+   1,
+   2
+  ],
+  "estabiliza": [
+   "estabiliza",
+   1,
+   2
+  ],
+  "encuentras": [
+   "encuentras",
+   1,
+   2
+  ],
+  "ruedas": [
+   "ruedas",
+   1,
+   3
+  ],
+  "cunas3": [
+   "cuñas",
+   1,
+   3
+  ],
+  "ruedas2": [
+   "ruedas",
+   2,
+   3
+  ],
+  "calzos": [
+   "calzos",
+   1,
+   3
+  ],
+  "chasis": [
+   "chasis",
+   1,
+   3
+  ],
+  "minimo": [
+   "Mínimo",
+   1,
+   3
+  ],
+  "tres": [
+   "tres",
+   1,
+   3
+  ],
+  "apoyos": [
+   "apoyos",
+   1,
+   3
+  ],
+  "lado": [
+   "lado",
+   1,
+   4
+  ],
+  "puntales": [
+   "puntales",
+   1,
+   4
+  ],
+  "cuchilla": [
+   "cuchilla",
+   1,
+   4
+  ],
+  "muerde": [
+   "muerde",
+   1,
+   4
+  ],
+  "chapa": [
+   "chapa",
+   1,
+   4
+  ],
+  "boca": [
+   "boca",
+   1,
+   5
+  ],
+  "abajo": [
+   "abajo",
+   1,
+   5
+  ],
+  "cunas5": [
+   "cuñas",
+   1,
+   5
+  ],
+  "capo": [
+   "capó",
+   1,
+   5
+  ],
+  "suelo": [
+   "suelo",
+   1,
+   5
+  ],
+  "ahora": [
+   "Ahora",
+   1,
+   6
+  ],
+  "tres6": [
+   "tres",
+   1,
+   6
+  ],
+  "estable": [
+   "estable",
+   1,
+   6
+  ],
+  "oA": [
+   "A",
+   1,
+   6
+  ],
+  "oB": [
+   "B",
+   1,
+   6
+  ],
+  "oC": [
+   "C",
+   1,
+   6
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   6
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   7
+  ],
+  "acierta": [
+   "quien",
+   1,
+   7
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   8
+  ],
+  "marca": [
+   "Bomberados",
+   1,
+   8
+  ],
+  "prueba": [
+   "Pruébala",
+   1,
+   8
+  ]
+ }
+}

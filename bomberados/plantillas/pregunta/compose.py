@@ -3106,7 +3106,120 @@ def sfx_track_rsciei(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_estab(path):
+    """«Coche volcado: ¿cuál es la más estable?» (estabilización): la carretera de noche (viento, grillos, el motor de la
+    autobomba), el coche de lado que cruje y se balancea (las ruedas aún giran), cristales, el fantasma que lo pone
+    derecho (zumbido de error), las cuñas y los calzos que entran (un golpe seco por apoyo, notas que suben al contar),
+    los puntales que se levantan, se alargan (carraca) y muerden la chapa, la cinta que tensa, las cuñas bajo el capó, la
+    pregunta con las tres letras y la venta. Tiempos como en estab.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    blk = [c["calzos"] + 0.25, c["chasis"] + 0.25, c["tres"] - 0.05, c["apoyos"] + 0.45]
+    s0, s1, bite = c["puntales"] - 0.15, c["cuchilla"] + 0.15, c["muerde"] + 0.05
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe")); clac = _pitch(golpe, 1.9); barra = _onset(_load("barra"))
+    w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # la carretera de noche
+    put(_loop(_load("aire"), END + 0.5), 0.0, -31, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("grillos"), END + 0.5), 0.0, -37, T["fin"], 0.6, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -40, T["fin"], 0.6, 1.0, track=amb)
+    tk = 0.0
+    while tk < T["fin"]:                                           # los intermitentes de los coches
+        put(_pitch(tic, 0.8), tk, -37, 0.1); put(_pitch(tic, 0.7), tk + 0.45, -39, 0.1); tk += 0.9
+    # arranque: el golpe, los cristales y la chapa que cruje mientras se balancea
+    put("golpe", 0.0, -20, 0.9, 0.003, 0.4)
+    put(_pitch(golpe, 0.6), 0.03, -22, 0.9, 0.003, 0.4)
+    put("cristales", 0.05, -24, 1.6, 0.003, 0.6)
+    put("latido", 0.2, -24, 0.7)
+    for k, t0 in enumerate(np.arange(0.9, c["puntales"] + 0.6, 1.0)):
+        g = 1.0 if t0 < c["puntales"] else 0.5
+        put(_pitch(barra, 0.45 + 0.05 * (k % 3)), t0 + 0.2 * np.sin(k), -31 + 5 * (1 - g), 0.7, 0.02, 0.3)
+    put(_loop(_pitch(w2, 0.5), 6.0), 0.0, -36, 5.0, 0.01, 2.5, track=amb)      # las ruedas que aún giran
+    put("latido", c["dentro"] - 0.05, -22, 0.7)
+    for k in range(3):
+        put(_pitch(golpe, 2.6), c["dentro"] + 0.25 + 0.17 * k, -28 - k, 0.12, 0.002, 0.06)
+    put(_pitch(toque, 0.8), c["mover"] - 0.03, -27, 0.4)
+    put(_pitch(toque, 0.7), c["milimetro"] - 0.02, -25, 0.4)
+    # nunca lo pones derecho: el fantasma… error; tal como lo encuentras: bien
+    put(_pitch(wh, 0.8), c["nunca"] - 0.1, -26, 1.0)
+    put("fallo", c["derecho"] + 0.25, -23, 0.6)
+    put("acierto", c["estabiliza"] - 0.03, -24, 0.9)
+    # A: cuñas y calzos (un golpe por apoyo; notas que suben)
+    put(_pitch(wh, 0.75), c["ruedas"] - 0.35, -26, 1.0)
+    for i in range(2):
+        put(_pitch(golpe, 1.5), c["cunas3"] - 0.15 + 0.35 * i + 0.45, -22, 0.4, 0.003, 0.2)
+    for i, t0 in enumerate(blk):
+        put(_pitch(w2, 1.6), t0 - 0.45, -31, 0.4, 0.02, 0.1)
+        put(_pitch(golpe, 1.25), t0, -21, 0.45, 0.003, 0.25)
+        put(_pitch(nota, 1.0 * 1.122 ** i), t0 + 0.02, -27, 0.6)
+    put("acierto", blk[2] + 0.05, -27, 0.8)
+    # B: los puntales se levantan, se alargan (carraca), muerden la chapa y la cinta tensa
+    put(_pitch(wh, 0.75), c["lado"] - 0.35, -26, 1.0)
+    for d in (0.0, 0.3):
+        put(_pitch(barra, 0.9), s0 + d, -24, 0.6, 0.005, 0.3)
+        n = 9
+        for k in range(n):
+            put(_pitch(tic, 2.0), s0 + d + 0.6 + k * (s1 - s0 - 0.6) / n, -31, 0.08)
+    put(clac, bite, -18, 0.5)
+    put(_pitch(_onset(_load("golpe")), 0.8), bite, -22, 0.6, 0.003, 0.3)
+    put("destello", bite + 0.03, -25, 0.5)
+    for d in (0.0, 0.3):
+        for k in range(5):
+            put(_pitch(tic, 1.4), bite + d + 0.1 + 0.07 * k, -29, 0.08)
+    put("acierto", bite + 0.3, -24, 0.9)
+    # C: las cuñas entre el capó y el suelo
+    put(_pitch(wh, 0.75), c["boca"] - 0.35, -26, 1.0)
+    for i in range(4):
+        put(_pitch(w2, 1.5), c["cunas5"] - 0.15 + 0.25 * i, -32, 0.35, 0.02, 0.1)
+        put(_pitch(golpe, 1.3), c["cunas5"] - 0.15 + 0.25 * i + 0.5, -22, 0.4, 0.003, 0.2)
+    put(_pitch(toque, 1.1), c["capo"] - 0.03, -28, 0.35)
+    put(_pitch(toque, 0.9), c["suelo"] - 0.03, -28, 0.35)
+    # la pregunta: las tres letras
+    put(_pitch(wh, 0.6), c["ahora"] - 0.3, -25, 1.2)
+    put("tension", c["ahora"], -31, c["compartir"] - c["ahora"] - 0.3, 0.3, 0.3, track=amb)
+    put(_pitch(toque, 0.8), c["estable"] - 0.03, -25, 0.4)
+    for k, key in enumerate(("oA", "oB", "oC")):
+        put(_pitch(nota, 1.0 * 1.122 ** k), c[key] - 0.25, -26, 0.6)
+        put(_pitch(bub, 1.0 + 0.1 * k), c[key] - 0.3, -26, 0.2)
+    put(_pitch(toque, 1.3), c["comenta"] - 0.03, -25, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "estab":
+        return sfx_track_estab(path)
     if Q.get("formato") == "rsciei":
         return sfx_track_rsciei(path)
     if Q.get("formato") == "moto":

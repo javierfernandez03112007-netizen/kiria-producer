@@ -1,0 +1,46 @@
+«COCHE VOLCADO: ¿CUÁL ES LA MÁS ESTABLE?» — idea de Adrián (Notion «VIERNES 20. ¿Sabes cómo estabilizamos un vehículo?»:
+la teoría de la estabilización de los apuntes de Élite Bomberos). 30–40 s: este sale en ≈ 35 s.
+
+Cómo está hecho (plan del 19 nov: «¿cuál es cuál?» antes que la explicación, cierre para comentar): de noche, tres
+accidentes en la misma carretera, un coche en cada posición, y el dron va de uno a otro. Primero la regla que nadie
+espera: el coche NO se pone derecho, se estabiliza tal como lo encuentras. Luego lo que se usa en cada caso: sobre sus
+ruedas (cuñas y calzos, mínimo tres apoyos), de lado (puntales con su cuchilla) y boca abajo (cuñas entre el capó y el
+suelo). Cierre: «¿cuál es la más estable? ¿A, B o C?» — casi todo el mundo dirá «sobre sus ruedas»… y es boca abajo.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido, de intervención. Lo más fuerte: el arranque y el final («¡MÁNDASELO…!», «¡BOMBERADOS!», «¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Un coche volcado… y alguien DENTRO! [tense] Antes de sacarle, el coche no se puede mover ni un milímetro.
+[firm, emphatic] Y NUNCA lo pones derecho: se estabiliza tal como lo encuentras.
+[explaining, clear, fast] Sobre sus ruedas: cuñas en las ruedas y calzos bajo el chasis. Mínimo, TRES apoyos.
+[explaining, clear] De lado: puntales, con una cuchilla que MUERDE la chapa.
+[explaining, clear] Y boca abajo: cuñas entre el capó y el suelo.
+[mischievous, challenging] Ahora tú: de las tres, ¿cuál es la MÁS estable? ¿A, B o C? Comenta tu letra.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, en una carretera, con un dron que no para:
+1. «¡Un coche volcado… y alguien dentro!» — primer fotograma: un coche tumbado de lado, con las ruedas aún girando, las
+   luces de emergencia y una mano en el cristal. «…no se puede mover ni un milímetro» — el coche se balancea y unas
+   flechas rojas marcan los movimientos (arriba-abajo, a los lados, balanceo).
+2. «Y nunca lo pones derecho» — un coche fantasma intenta ponerlo derecho: ✗ rojo. «se estabiliza tal como lo
+   encuentras» — se queda como está: rótulo TAL COMO LO ENCUENTRAS.
+3. «Sobre sus ruedas…» — el dron vuela al primer coche (A): aparecen las cuñas en las ruedas, y los calzos se meten bajo
+   el chasis, junto a los pilares; un contador cuenta los apoyos: 1, 2, 3… (y un cuarto).
+4. «De lado: puntales…» — vuelve al coche de lado (B): dos puntales se apoyan contra la chapa, la cuchilla la muerde
+   (destello) y una cinta los tensa; el balanceo se para en seco.
+5. «Y boca abajo…» — al tercer coche (C), sobre su techo: las cuñas se meten entre el capó y el suelo.
+6. «Ahora tú: de las tres, ¿cuál es la más estable? ¿A, B o C?» — el dron sube y se ven los tres coches con su letra
+   encima; tarjetas A SOBRE SUS RUEDAS · B DE LADO · C BOCA ABAJO y «💬 COMENTA TU LETRA».
+7. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+8. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la pregunta final (para el comentario fijado, no va en el vídeo): C, boca abajo (sobre su techo) es la
+posición más estable; de lado, la más inestable.
+Fuentes (en FUENTES.md): los apuntes de Élite Bomberos que pone Adrián en Notion. CONFIRMAR la prueba gratis de 5 días.

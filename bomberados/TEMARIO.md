@@ -134,3 +134,27 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   separación libre? (C) · ¿Qué tipo desaparece con el RD 164/2025? (el E) · ¿Qué es AV/AH? (tipo A con separación vertical
   u horizontal) · ¿Qué condición tiene la distancia del tipo C? (libre de mercancías combustibles).
 
+## 19 nov 2026 · Estabilización de vehículos
+
+### Fuente — apuntes de Élite Bomberos que pone Adrián Luna (Notion, fila «VIERNES 20. ¿Sabes cómo estabilizamos un vehículo?»)
+- Objetivo: limitar los movimientos verticales, horizontales y de balanceo para no agravar el estado de las víctimas.
+- **El vehículo se estabiliza en la posición en la que es encontrado (lo más importante).**
+- Bloques escalonados y cuñas: de polietileno (también madera), soportan 100 kg/cm²; los bloques escalonados se ponen a
+  menudo invertidos; se colocan cerca de los pilares A y C (zona de amortiguación).
+- **Sobre sus 4 ruedas**: lo primero, bloquear una o dos ruedas con cuñas; calzos entre el chasis y el suelo; mínimo
+  3 puntos, mejor 4 (hasta 5, bajo el maletero); nada debe sobresalir de los bajos (tropiezos).
+- **Sobre su techo**: la posición MÁS ESTABLE; cuñas en el hueco entre el capó, el motor y el suelo.
+- **Sobre su lateral**: la MÁS INESTABLE; puntales (Stabfast de Weber, Powershore de Holmatro): carga longitudinal
+  1.500–2.500 kg, longitud 1.720–2.500 mm, cuña metálica para apoyos estables y cuchilla que atraviesa la carrocería para
+  enganchar el gancho y tensar.
+
+### Vídeos hechos con esto
+- «Coche volcado: ¿cuál es la más estable?» (`projects/bomberados_estabilizar/`): tres coches, uno en cada posición;
+  regla «tal como lo encuentras»; cierre con letras (respuesta: boca abajo).
+
+### Preguntas de examen que salen de aquí
+- ¿En qué posición se estabiliza un vehículo? (en la que se encuentra) · ¿Posición más estable? (sobre el techo) · ¿Y la
+  más inestable? (sobre el lateral) · ¿Mínimo de puntos de apoyo sobre 4 ruedas? (3; mejor 4) · ¿Cerca de qué pilares van
+  los bloques? (A y C) · ¿Cuánto aguantan los bloques de polietileno? (100 kg/cm²) · ¿Qué lleva el puntal para enganchar el
+  tensor? (una cuchilla que atraviesa la carrocería).
+

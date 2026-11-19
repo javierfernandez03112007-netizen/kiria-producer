@@ -1,0 +1,523 @@
+[
+ {
+  "text": "¡Un coche volcado… y alguien dentro! Antes de sacarle, el coche no se puede mover ni un milímetro.",
+  "start": 0.06,
+  "end": 6.691,
+  "words": [
+   {
+    "w": "¡Un",
+    "start": 0.06,
+    "end": 0.3
+   },
+   {
+    "w": "coche",
+    "start": 0.3,
+    "end": 0.619
+   },
+   {
+    "w": "volcado…",
+    "start": 0.619,
+    "end": 1.638
+   },
+   {
+    "w": "y",
+    "start": 1.638,
+    "end": 1.818
+   },
+   {
+    "w": "alguien",
+    "start": 1.818,
+    "end": 2.217
+   },
+   {
+    "w": "dentro!",
+    "start": 2.217,
+    "end": 3.176
+   },
+   {
+    "w": "Antes",
+    "start": 3.176,
+    "end": 3.336
+   },
+   {
+    "w": "de",
+    "start": 3.336,
+    "end": 3.495
+   },
+   {
+    "w": "sacarle,",
+    "start": 3.495,
+    "end": 4.274
+   },
+   {
+    "w": "el",
+    "start": 4.274,
+    "end": 4.374
+   },
+   {
+    "w": "coche",
+    "start": 4.374,
+    "end": 4.774
+   },
+   {
+    "w": "no",
+    "start": 4.774,
+    "end": 4.933
+   },
+   {
+    "w": "se",
+    "start": 4.933,
+    "end": 5.013
+   },
+   {
+    "w": "puede",
+    "start": 5.013,
+    "end": 5.253
+   },
+   {
+    "w": "mover",
+    "start": 5.253,
+    "end": 5.653
+   },
+   {
+    "w": "ni",
+    "start": 5.653,
+    "end": 5.892
+   },
+   {
+    "w": "un",
+    "start": 5.892,
+    "end": 6.132
+   },
+   {
+    "w": "milímetro.",
+    "start": 6.132,
+    "end": 6.691
+   }
+  ]
+ },
+ {
+  "text": "Y nunca lo pones derecho: se estabiliza tal como lo encuentras.",
+  "start": 7.091,
+  "end": 10.906,
+  "words": [
+   {
+    "w": "Y",
+    "start": 7.091,
+    "end": 7.25
+   },
+   {
+    "w": "nunca",
+    "start": 7.25,
+    "end": 7.65
+   },
+   {
+    "w": "lo",
+    "start": 7.65,
+    "end": 7.81
+   },
+   {
+    "w": "pones",
+    "start": 7.81,
+    "end": 8.289
+   },
+   {
+    "w": "derecho:",
+    "start": 8.289,
+    "end": 8.988
+   },
+   {
+    "w": "se",
+    "start": 8.988,
+    "end": 9.088
+   },
+   {
+    "w": "estabiliza",
+    "start": 9.088,
+    "end": 9.807
+   },
+   {
+    "w": "tal",
+    "start": 9.807,
+    "end": 9.967
+   },
+   {
+    "w": "como",
+    "start": 9.967,
+    "end": 10.206
+   },
+   {
+    "w": "lo",
+    "start": 10.206,
+    "end": 10.366
+   },
+   {
+    "w": "encuentras.",
+    "start": 10.366,
+    "end": 10.906
+   }
+  ]
+ },
+ {
+  "text": "Sobre sus ruedas: cuñas en las ruedas y calzos bajo el chasis. Mínimo, tres apoyos.",
+  "start": 11.355,
+  "end": 16.688,
+  "words": [
+   {
+    "w": "Sobre",
+    "start": 11.355,
+    "end": 11.645
+   },
+   {
+    "w": "sus",
+    "start": 11.645,
+    "end": 11.804
+   },
+   {
+    "w": "ruedas:",
+    "start": 11.804,
+    "end": 12.643
+   },
+   {
+    "w": "cuñas",
+    "start": 12.643,
+    "end": 13.003
+   },
+   {
+    "w": "en",
+    "start": 13.003,
+    "end": 13.083
+   },
+   {
+    "w": "las",
+    "start": 13.083,
+    "end": 13.242
+   },
+   {
+    "w": "ruedas",
+    "start": 13.242,
+    "end": 13.642
+   },
+   {
+    "w": "y",
+    "start": 13.642,
+    "end": 13.722
+   },
+   {
+    "w": "calzos",
+    "start": 13.722,
+    "end": 14.201
+   },
+   {
+    "w": "bajo",
+    "start": 14.201,
+    "end": 14.441
+   },
+   {
+    "w": "el",
+    "start": 14.441,
+    "end": 14.521
+   },
+   {
+    "w": "chasis.",
+    "start": 14.521,
+    "end": 15.32
+   },
+   {
+    "w": "Mínimo,",
+    "start": 15.32,
+    "end": 15.939
+   },
+   {
+    "w": "tres",
+    "start": 15.939,
+    "end": 16.119
+   },
+   {
+    "w": "apoyos.",
+    "start": 16.119,
+    "end": 16.688
+   }
+  ]
+ },
+ {
+  "text": "De lado: puntales, con una cuchilla que muerde la chapa.",
+  "start": 17.047,
+  "end": 20.583,
+  "words": [
+   {
+    "w": "De",
+    "start": 17.047,
+    "end": 17.237
+   },
+   {
+    "w": "lado:",
+    "start": 17.237,
+    "end": 17.926
+   },
+   {
+    "w": "puntales,",
+    "start": 17.926,
+    "end": 18.755
+   },
+   {
+    "w": "con",
+    "start": 18.755,
+    "end": 18.835
+   },
+   {
+    "w": "una",
+    "start": 18.835,
+    "end": 18.995
+   },
+   {
+    "w": "cuchilla",
+    "start": 18.995,
+    "end": 19.474
+   },
+   {
+    "w": "que",
+    "start": 19.474,
+    "end": 19.634
+   },
+   {
+    "w": "muerde",
+    "start": 19.634,
+    "end": 20.113
+   },
+   {
+    "w": "la",
+    "start": 20.113,
+    "end": 20.273
+   },
+   {
+    "w": "chapa.",
+    "start": 20.273,
+    "end": 20.583
+   }
+  ]
+ },
+ {
+  "text": "Y boca abajo: cuñas entre el capó y el suelo.",
+  "start": 20.972,
+  "end": 23.679,
+  "words": [
+   {
+    "w": "Y",
+    "start": 20.972,
+    "end": 21.098
+   },
+   {
+    "w": "boca",
+    "start": 21.098,
+    "end": 21.392
+   },
+   {
+    "w": "abajo:",
+    "start": 21.392,
+    "end": 22.081
+   },
+   {
+    "w": "cuñas",
+    "start": 22.081,
+    "end": 22.51
+   },
+   {
+    "w": "entre",
+    "start": 22.51,
+    "end": 22.67
+   },
+   {
+    "w": "el",
+    "start": 22.67,
+    "end": 22.75
+   },
+   {
+    "w": "capó",
+    "start": 22.75,
+    "end": 23.149
+   },
+   {
+    "w": "y",
+    "start": 23.149,
+    "end": 23.309
+   },
+   {
+    "w": "el",
+    "start": 23.309,
+    "end": 23.389
+   },
+   {
+    "w": "suelo.",
+    "start": 23.389,
+    "end": 23.679
+   }
+  ]
+ },
+ {
+  "text": "Ahora tú: de las tres, ¿cuál es la más estable? ¿A, B o C? Comenta tu letra.",
+  "start": 24.138,
+  "end": 30.36,
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 24.138,
+    "end": 24.507
+   },
+   {
+    "w": "tú:",
+    "start": 24.507,
+    "end": 25.107
+   },
+   {
+    "w": "de",
+    "start": 25.107,
+    "end": 25.227
+   },
+   {
+    "w": "las",
+    "start": 25.227,
+    "end": 25.386
+   },
+   {
+    "w": "tres,",
+    "start": 25.386,
+    "end": 25.996
+   },
+   {
+    "w": "¿cuál",
+    "start": 25.996,
+    "end": 26.265
+   },
+   {
+    "w": "es",
+    "start": 26.265,
+    "end": 26.345
+   },
+   {
+    "w": "la",
+    "start": 26.345,
+    "end": 26.505
+   },
+   {
+    "w": "más",
+    "start": 26.505,
+    "end": 26.745
+   },
+   {
+    "w": "estable?",
+    "start": 26.745,
+    "end": 27.633
+   },
+   {
+    "w": "¿A,",
+    "start": 27.633,
+    "end": 28.203
+   },
+   {
+    "w": "B",
+    "start": 28.203,
+    "end": 28.752
+   },
+   {
+    "w": "o",
+    "start": 28.752,
+    "end": 29.084
+   },
+   {
+    "w": "C?",
+    "start": 29.084,
+    "end": 29.491
+   },
+   {
+    "w": "Comenta",
+    "start": 29.491,
+    "end": 29.94
+   },
+   {
+    "w": "tu",
+    "start": 29.94,
+    "end": 30.1
+   },
+   {
+    "w": "letra.",
+    "start": 30.1,
+    "end": 30.36
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 30.759,
+  "end": 32.757,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 30.759,
+    "end": 31.458
+   },
+   {
+    "w": "a",
+    "start": 31.458,
+    "end": 31.618
+   },
+   {
+    "w": "quien",
+    "start": 31.618,
+    "end": 31.778
+   },
+   {
+    "w": "quiera",
+    "start": 31.778,
+    "end": 32.097
+   },
+   {
+    "w": "ser",
+    "start": 32.097,
+    "end": 32.257
+   },
+   {
+    "w": "bombero!",
+    "start": 32.257,
+    "end": 32.757
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 33.116,
+  "end": 36.981,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 33.116,
+    "end": 34.045
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 34.045,
+    "end": 35.323
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 35.323,
+    "end": 35.773
+   },
+   {
+    "w": "gratis",
+    "start": 35.773,
+    "end": 36.252
+   },
+   {
+    "w": "cinco",
+    "start": 36.252,
+    "end": 36.571
+   },
+   {
+    "w": "días!",
+    "start": 36.571,
+    "end": 36.981
+   }
+  ]
+ }
+]
