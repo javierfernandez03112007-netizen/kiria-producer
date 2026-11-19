@@ -9,6 +9,7 @@ while true; do
   git fetch -q origin "+refs/heads/$PFX-*:refs/remotes/origin/$PFX-*" 2>/dev/null
   for br in $(git branch -r --list "origin/$PFX-*"); do
     X=${br##*-}; if [ "$X" = 3 ] || [ "$X" = 4 ]; then git merge-base --is-ancestor bb42b72 $br 2>/dev/null || continue; fi      # los trozos 3 y 4 solo valen con la cámara nueva
+    if [ "$X" = 5 ] || [ "$X" = 6 ]; then git merge-base --is-ancestor c9fd26a $br 2>/dev/null || continue; fi                # y el 5 y el 6, con el cuaderno nuevo
     for c in $(git ls-tree --full-tree --name-only $br projects/domingo_tarde/chunks/ 2>/dev/null | grep 'chunk_[0-9]*_[0-9]*\.mp4'); do
       tag=$(basename $c .mp4); [ -f out/$tag.done ] && continue
       A=$(echo $tag | cut -d_ -f2); B=$(echo $tag | cut -d_ -f3)
