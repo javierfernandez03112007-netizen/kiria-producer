@@ -27,6 +27,10 @@ function drawNote(nb, w, s) { const t = nb.userData.tex, c = t.userData.g, ink =
   if (s.nine > 0.01) { const k = pop(s.nine, 0, 1); c.save(); c.globalAlpha = clamp(s.nine * 3); c.setLineDash([10, 9]); c.strokeStyle = ink; c.lineWidth = 4; c.beginPath(); c.moveTo(xb + 16, y2 - 16); c.lineTo(xb + 16, y2 + 60); c.moveTo(xa, y1 + 40); c.lineTo(xa, y2 + 60); c.stroke(); c.setLineDash([]);
     c.translate(300, y2 + 128); c.scale(k, k); c.fillStyle = '#e9914a'; rr(c, -196, -56, 392, 112, 30); c.fill(); c.fillStyle = '#fff'; c.font = '900 58px Inter, sans-serif'; c.textAlign = 'center'; c.fillText('9 min antes', 0, 22); c.restore(); tip = [300, y2 + 110]; }
   t.needsUpdate = true; return tip; }
+// dónde va la punta del boli (píxeles de la página) para unos parámetros dados, SIN dibujar: sirve para suavizar su movimiento entre renglones
+function noteTipPx(c, w, s) { let tip = [60, 100]; const hw = (txt, x, y, px, k) => { c.font = `500 ${px}px Inter, sans-serif`; const n = Math.floor(txt.length * clamp(k) + 0.0001); let cx = x, tp = [x, y - px * 0.25]; for (let i = 0; i < txt.length; i++) { const wd = c.measureText(txt[i]).width * 0.96; if (i < n) tp = [cx + wd, y - px * 0.25]; cx += wd; } return tp; };
+  if (w[0] > 0) tip = hw('LUNES', 56, 122, 80, w[0]); NOTE_LINES.forEach((x, i) => { if (w[i + 1] > 0) tip = hw(x, 46, NOTE_Y[i], 46, w[i + 1]); });
+  const y1 = 560, y2 = 700, x0 = 56, xa = 580, xb = 404; if (s.a > 0) tip = [lerp(x0, xa, seg(s.a, 0.3, 1)), y1 + 10]; if (s.b > 0) tip = [lerp(x0, xb, seg(s.b, 0.3, 1)), y2 + 10]; if (s.moon > 0 && s.moon < 1) tip = [470, 470]; if (s.nine > 0.01) tip = [300, y2 + 110]; return tip; }
 // punto del mundo de un píxel de la página
 function notePt(nb, u, v, lift = 0.001) { return nb.localToWorld(new THREE.Vector3(-NB.pw / 2 + u / NB.cw * NB.pw, 0.0078 + lift, 0.003 - NB.ph / 2 + v / NB.ch * NB.ph)); }
 

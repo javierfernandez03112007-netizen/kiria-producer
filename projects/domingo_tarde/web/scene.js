@@ -1282,6 +1282,10 @@ function drawNote(nb, w, s) { const t = nb.userData.tex, c = t.userData.g, ink =
   if (s.nine > 0.01) { const k = pop(s.nine, 0, 1); c.save(); c.globalAlpha = clamp(s.nine * 3); c.setLineDash([10, 9]); c.strokeStyle = ink; c.lineWidth = 4; c.beginPath(); c.moveTo(xb + 16, y2 - 16); c.lineTo(xb + 16, y2 + 60); c.moveTo(xa, y1 + 40); c.lineTo(xa, y2 + 60); c.stroke(); c.setLineDash([]);
     c.translate(300, y2 + 128); c.scale(k, k); c.fillStyle = '#e9914a'; rr(c, -196, -56, 392, 112, 30); c.fill(); c.fillStyle = '#fff'; c.font = '900 58px Inter, sans-serif'; c.textAlign = 'center'; c.fillText('9 min antes', 0, 22); c.restore(); tip = [300, y2 + 110]; }
   t.needsUpdate = true; return tip; }
+// dónde va la punta del boli (píxeles de la página) para unos parámetros dados, SIN dibujar: sirve para suavizar su movimiento entre renglones
+function noteTipPx(c, w, s) { let tip = [60, 100]; const hw = (txt, x, y, px, k) => { c.font = `500 ${px}px Inter, sans-serif`; const n = Math.floor(txt.length * clamp(k) + 0.0001); let cx = x, tp = [x, y - px * 0.25]; for (let i = 0; i < txt.length; i++) { const wd = c.measureText(txt[i]).width * 0.96; if (i < n) tp = [cx + wd, y - px * 0.25]; cx += wd; } return tp; };
+  if (w[0] > 0) tip = hw('LUNES', 56, 122, 80, w[0]); NOTE_LINES.forEach((x, i) => { if (w[i + 1] > 0) tip = hw(x, 46, NOTE_Y[i], 46, w[i + 1]); });
+  const y1 = 560, y2 = 700, x0 = 56, xa = 580, xb = 404; if (s.a > 0) tip = [lerp(x0, xa, seg(s.a, 0.3, 1)), y1 + 10]; if (s.b > 0) tip = [lerp(x0, xb, seg(s.b, 0.3, 1)), y2 + 10]; if (s.moon > 0 && s.moon < 1) tip = [470, 470]; if (s.nine > 0.01) tip = [300, y2 + 110]; return tip; }
 // punto del mundo de un píxel de la página
 function notePt(nb, u, v, lift = 0.001) { return nb.localToWorld(new THREE.Vector3(-NB.pw / 2 + u / NB.cw * NB.pw, 0.0078 + lift, 0.003 - NB.ph / 2 + v / NB.ch * NB.ph)); }
 
@@ -1327,6 +1331,7 @@ async function buildScene() {
   S.nb = buildNotebook(); S.nb.rotation.order = 'YXZ'; scene.add(S.nb); S.pen = buildPen(); scene.add(S.pen); S.icons = thoughtIcons(); for (const i of S.icons) { scene.add(i); i.traverse(o => { if (o.material && o.material.color) o.userData.c0 = o.material.color.clone(); }); }
   S.L.fillD.set(-0.04, 0.1, -1).normalize();
 }
+const noteParams = t => ({ wr: [seg(t, TL.write - 0.3, TL.write + 0.4), ...[0, 1, 2].map(i => seg(t, TL.write + 0.5 + i * 0.72, TL.write + 1.16 + i * 0.72))], sR: { a: seg(t, TL.est + 0.45, TL.est + 1.25), b: seg(t, K['apuntaban_8'] - 0.05, K['apuntaban_8'] + 1.0), moon: seg(t, TL.dormir - 0.1, TL.dormir + 0.6), nine: seg(t, TL.nueve - 0.03, TL.nueve + 0.45) } });
 const _v = () => new THREE.Vector3(), nbXa = nb => new THREE.Vector3(1, 0, 0).applyQuaternion(nb.quaternion), nbZa = nb => new THREE.Vector3(0, 0, 1).applyQuaternion(nb.quaternion);
 // orden en que se encienden las ventanas de la fachada (la suya es la 1) y cuándo
 function litTimes() { const n = S.fac.userData.rooms.filter(r => r.has).length, t0 = TL.casi - 0.05, t1 = TL.diez + 0.25; return [...Array(n)].map((_, i) => t0 + (i + 1) * (t1 - t0) / n); }
@@ -1353,8 +1358,11 @@ function stageAt(t, st) {
   const rest = b.localToWorld(_v().set(-0.5, 0.012, 0.02)), lap = b.localToWorld(_v().set(0.03, 0.215, 0.36)), back = win(t, TL.send + 0.95, 0.3);
   if (nbOn) { nb.position.copy(lap).lerp(rest.clone().add(_v().set(0, 0.1, 0)), back); nb.rotation.set(0.2 * (1 - back), BOY.yaw + Math.PI + lerp(0.1, 0.02, sm5(seg(t, 26.75, 27.3))), 0); } else { nb.position.copy(rest); nb.rotation.set(0, BOY.yaw + 0.35, 0); }
   nb.updateMatrixWorld(true);
-  const wr = [seg(t, TL.write - 0.3, TL.write + 0.4), ...[0, 1, 2].map(i => seg(t, TL.write + 0.5 + i * 0.72, TL.write + 1.16 + i * 0.72))], sR = { a: seg(t, TL.est + 0.45, TL.est + 1.25), b: seg(t, K['apuntaban_8'] - 0.05, K['apuntaban_8'] + 1.0), moon: seg(t, TL.dormir - 0.1, TL.dormir + 0.6), nine: seg(t, TL.nueve - 0.03, TL.nueve + 0.45) };
-  let tip = null; if (nbOn) { const tp = drawNote(nb, wr, sR); const away = win(t, TL.nueve + 0.3, 0.4); tip = notePt(nb, tp[0], tp[1], 0.002 + 0.02 * bump(t, TL.est - 0.2, TL.est + 0.45, 0.2, 0.2) + 0.03 * away).addScaledVector(nbXa(nb), 0.1 * away).addScaledVector(nbZa(nb), 0.07 * away); }
+  const NP = noteParams(t), wr = NP.wr, sR = NP.sR;
+  // la punta del boli: media de dónde «debería» estar en un cuarto de segundo alrededor de t (así va de un renglón a otro con un gesto, sin saltar) y se levanta al cambiar
+  let tip = null; if (nbOn) { drawNote(nb, wr, sR); const c = nb.userData.tex.userData.g, pts = []; for (let i = -4; i <= 4; i++) { const q = noteParams(t + i * 0.03); pts.push(noteTipPx(c, q.wr, q.sR)); }
+    const mx = pts.reduce((a, p) => a + p[0], 0) / pts.length, my = pts.reduce((a, p) => a + p[1], 0) / pts.length, spread = Math.hypot(pts[8][0] - pts[0][0], pts[8][1] - pts[0][1]), away = win(t, TL.nueve + 0.3, 0.4);
+    tip = notePt(nb, mx, my, 0.002 + 0.022 * clamp(spread / 120) + 0.03 * away).addScaledVector(nbXa(nb), 0.1 * away).addScaledVector(nbZa(nb), 0.07 * away); }
   // ---- manos: en las rodillas · la derecha al pecho · escribir (derecha) y sujetar el cuaderno (izquierda)
   const fw = _v().set(0, 0, 1).applyQuaternion(b.quaternion), rt = _v().set(1, 0, 0).applyQuaternion(b.quaternion), up = _v().set(0, 1, 0), nbX = _v().set(1, 0, 0).applyQuaternion(nb.quaternion), nbZ = _v().set(0, 0, 1).applyQuaternion(nb.quaternion), nbY = _v().set(0, 1, 0).applyQuaternion(nb.quaternion);
   for (const [k, s] of [['L', 1], ['R', -1]]) { const knee = b.localToWorld(_v().set(0.3 * s, 0.19, 0.3)), F = fw.clone().multiplyScalar(0.85).addScaledVector(rt, -0.3 * s).addScaledVector(up, -0.35), N = up.clone().negate().addScaledVector(fw, 0.25); let T = knee, curl = 0.28, spread = 0.3, sw = 0.5 * s;
@@ -1403,8 +1411,8 @@ function buildCam() {
     k(TL.eyes + 0.2, eP, eL, 27), k(TL.brain - 0.15, A(eP.clone().lerp(eL, 0.08)), eL, 27),                                     // «No es pereza»: los ojos
     k(TL.viv - 0.1, [0.5, H.y + 0.2, -3.02], at(H, 0, 0, -0.12), 36), k(TL.alarm, [0.67, H.y + 0.17, -2.72], at(H, 0, 0, -0.13), 35), k(TL.only - 0.05, [0.6, H.y + 0.15, -2.8], at(H, 0, 0, -0.14), 35),      // el cerebro, los pensamientos, la alarma (la cámara ya está saliendo por la ventana)
     k(TL.only + 0.8, [0.9, 1.5, -7.0], [0.5, 1.5, -2.2], 35), k(TL.only + 2.0, [facC[0] - 1.5, facC[1] - 1.0, -25.6], [facC[0], facC[1], -2.2], 34), k(TL.help - 0.55, [facC[0] + 1.3, facC[1] + 0.8, -24.2], [facC[0], facC[1], -2.2], 34),   // sale: la fachada entera
-    k(TL.help + 0.1, [0.6, 1.62, -3.2], at(H, 0, 0, -0.2), 36), k(TL.help + 0.6, at(nbP, 0.3, 0, 0.78), at(nbP, 0.07, 0, 0), 38),                                                           // vuelve a entrar por la ventana y sube sobre el cuaderno
-    k(TL.write - 0.15, at(nbP, 0.02, 0, 0.62), at(nbP, 0.05, 0, 0), 38), k(TL.est - 0.25, at(nbP, 0.02, 0, 0.6), at(nbP, 0.05, 0, 0), 38),                                                 // cenital: escribe la lista
+    k(TL.help + 0.1, [0.6, 1.62, -3.2], at(H, 0, 0, -0.2), 36), k(TL.help + 0.42, at(nbP, 0.1, 0.5, 0.75), A(nbP), 38), k(TL.help + 0.66, at(nbP, 0.02, 0.2, 0.68), at(nbP, 0.02, 0, 0), 38),      // vuelve a entrar y llega al cuaderno por su izquierda (sin pasar por la vertical ni por su cabeza: no hay volteo)                                                           // vuelve a entrar por la ventana y sube sobre el cuaderno
+    k(TL.write - 0.02, at(nbP, 0.02, 0, 0.62), at(nbP, 0.08, 0, 0), 38), k(TL.est - 0.25, at(nbP, 0.02, 0, 0.6), at(nbP, 0.08, 0, 0), 38),                                                 // cenital: escribe la lista
     k(TL.est + 0.6, at(nbP, -0.03, 0, 0.56), at(nbP, 0.0, 0, 0), 36), k(TL.send - 0.15, at(nbP, -0.03, 0, 0.53), at(nbP, 0.0, 0, 0), 36),                                                     // baja a la mitad de abajo: las barras y «9 min antes»
     k(TL.send + 0.75, [0.42, 1.8, -1.0], [0.34, 1.5, -2.2], 40), k(TL.send + 1.7, [0.5, 1.58, 0.4], [0.3, 1.5, -2.2], 46), k(END, D0, L0, 54),                                             // suelta el boli, respira… y vuelta a la puerta
   ];
