@@ -2,9 +2,9 @@
 fotogramas 3D de los planos 1–5 (out/frames, 0–35 s, ya con los mensajes, la pantalla de la app y los textos del guion)
 + plano 6 (35–40 s) hecho aquí: el selfi se congela en una foto sobre el azul de la marca, con el eslogan arriba y «Booking.com · Descarga la app» abajo
 + subtítulos de lo que dicen (el eslogan final va como rótulo) + la voz (un MP3, cada frase en su segundo) + efectos SOLO de la biblioteca de ElevenLabs del canal.
-Sin música: el guion pide pop/indie libre de derechos y aquí no hay ninguna con licencia → la pone Javi (YouTube Audio Library / CapCut).
++ música ORIGINAL sintetizada con musica.py (Javi pidió «cualquiera que encaje»; el guion pide pop/indie libre de derechos: esta es nuestra, sin derechos de nadie).
 
-    python3 build_voz.py && python3 env_voz.py          (cuando llegue assets/voz_original.mp3)
+    python3 build_voz.py && python3 env_voz.py && python3 musica.py
     (render → out/frames)
     python3 projects/booking_pandilla/compose_booking.py [--test t1 t2 ...] [--sfx]
 """
@@ -204,17 +204,39 @@ def sfx_track(path):
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
+def lufs(path):
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", path, "-af", "ebur128=peak=true", "-f", "null", "-"], capture_output=True, text=True).stderr.split("Summary:")[-1]
+    g = lambda k: float(r.split(k)[1].split()[0])
+    return g("I:"), g("Peak:")
+
+
+def audio_mix(dst):
+    """Voz (−15 LUFS) + efectos + música (si existen) → dst (48 kHz estéreo) a ≈ −15 LUFS con limitador."""
+    out = os.path.join(ROOT, "out"); sfxp = os.path.join(out, "sfx.wav"); sfx_track(sfxp)
+    mus = os.path.join(out, "musica.wav"); voz = os.path.exists(AUDIO); ins, parts, lab = [], [], []
+    if voz:
+        ins += ["-i", AUDIO]; parts.append(f"[{len(lab)}:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={END}[v]"); lab.append("[v]")
+    ins += ["-i", sfxp]; parts.append(f"[{len(lab)}:a]volume=0.8,aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={END}[s]"); lab.append("[s]")
+    if os.path.exists(mus):
+        ins += ["-i", mus]; parts.append(f"[{len(lab)}:a]volume={MUSIC_GAIN},aresample=48000,aformat=channel_layouts=stereo,apad=whole_dur={END}[m]"); lab.append("[m]")
+    raw = os.path.join(out, "mix_raw.wav")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *ins, "-filter_complex", ";".join(parts) + ";" + "".join(lab) + f"amix=inputs={len(lab)}:duration=longest:normalize=0[a]", "-map", "[a]", "-t", str(END), "-ar", "48000", raw], check=True)
+    i0, p0 = lufs(raw); g = max(-12.0, min(14.0, -15.0 - i0))
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-af", f"volume={g:.2f}dB,alimiter=limit=0.84:level=false", "-ar", "48000", dst], check=True)
+    i1, p1 = lufs(dst); print(f"audio: {'voz + ' if voz else 'SIN voz · '}efectos{' + música' if os.path.exists(mus) else ''} · {i0:.1f} → {i1:.1f} LUFS (pico {p1:.1f} dBFS)")
+    return voz
+
+
+MUSIC_GAIN = float(os.environ.get("MUSIC_GAIN", 0.7))
+
+
 def main(dst=os.path.join(ROOT, "out", "booking_pandilla.mp4")):
     missing = [i for i in range(N3D) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
-    sfxp = os.path.join(ROOT, "out", "sfx.wav"); sfx_track(sfxp)
-    voz = os.path.exists(AUDIO)
-    ins = ["-i", AUDIO, "-i", sfxp] if voz else ["-i", sfxp]
-    fc = ("[1:a]loudnorm=I=-15:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[v];[2:a]volume=0.8[s];[v][s]amix=inputs=2:duration=first:normalize=0,volume=5.9dB,alimiter=limit=0.8:level=false[a]"
-          if voz else "[1:a]volume=0.8,aresample=48000,aformat=channel_layouts=stereo,apad[a]")
-    cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", *ins, "-filter_complex", fc,
-           "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-maxrate", "9M", "-bufsize", "18M", "-pix_fmt", "yuv420p",
+    mix = os.path.join(ROOT, "out", "mix.wav"); voz = audio_mix(mix)
+    cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "bgr24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", mix,
+           "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-maxrate", "9M", "-bufsize", "18M", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-t", str(END), "-movflags", "+faststart", dst]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     with Pool(int(os.environ.get("PROCS", 4)), initializer=init) as pool:
@@ -232,5 +254,7 @@ if __name__ == "__main__":
             cv2.imwrite(os.path.join(ROOT, "out", "ctest", f"c{t:05.2f}.jpg"), fr)
     elif len(sys.argv) > 1 and sys.argv[1] == "--sfx":
         sfx_track(os.path.join(ROOT, "out", "sfx.wav"))
+    elif len(sys.argv) > 1 and sys.argv[1] == "--audio":
+        audio_mix(os.path.join(ROOT, "out", "mix.wav"))
     else:
         main()
