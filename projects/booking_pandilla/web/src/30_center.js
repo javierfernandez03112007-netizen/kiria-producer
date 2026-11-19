@@ -11,10 +11,11 @@ const PEOPLE = { A: { shirt: 0xf2664b, pants: 0x3b4f7a, skin: 0xe6b996, hair: 0x
   C: { shirt: 0xf2b632, pants: 0x2b2d42, skin: 0xd9a27c, hair: 0x8a5a2a, hairStyle: 'ponytail', scale: 1.52 }, D: { shirt: 0x7d5fd0, pants: 0x55606e, skin: 0xe6b996, hair: 0x3a2618, scale: 1.62 } };
 async function buildScene() {
   TL = { on: 1.0, notif: 1.15, grab0: 3.05, grab1: 3.75, lift1: 4.9, bub: [5.5, 7.1, 8.8], panel: 10.7, sort: 11.2, rev: K['mirad_1'], split: K['sale_2'], div: K['dividimos_2'], no: K['uf_3'], si: K['este_4'],
-    vota: K['votamos_5'], c3: K['tres_5'], c2: K['dos_5'], c1: K['uno_5'], point: K['uno_5'] + 0.42, ex: K['uno_5'] + 0.75, press: 23.3, ok: 23.45, fly: 23.62, snap: 34.2 };
+    vota: K['votamos_5'], c3: K['tres_5'], c2: K['dos_5'], c1: K['uno_5'], snap: 34.2 };
+  TL.point = Math.min(TL.c1 + 0.35, 22.3); TL.ex = TL.point + 0.42; TL.press = TL.ex + 0.62; TL.ok = TL.press + 0.14; TL.fly = TL.ok + 0.2;      // todos señalan → queda «Reservar» → D pulsa → confirmada
   S.sets = { lib: buildLib(), bus: buildBus(), kit: buildKit(), bed: buildBed(), sofa: buildSofa(), town: buildTown() }; for (const k in S.sets) scene.add(S.sets[k]);
   S.P = {}; for (const k in PEOPLE) { const d = addFace(gtaDoll(PEOPLE[k])); d.rotation.order = 'YXZ'; scene.add(d); S.P[k] = d; }
-  { const cp = dollCap(0xf5f1e6); S.P.B.userData.J.neck.add(cp); S.capB = cp; const c2 = dollCap(0x2f6fd0); S.P.D.userData.J.neck.add(c2); c2.rotation.y = Math.PI; S.capD = c2; }
+  { const cp = dollCap(0xf5f1e6); S.P.B.userData.J.neck.add(cp); S.capB = cp; const c2 = dollCap(0x2f6fd0); S.P.D.userData.J.neck.add(c2); c2.rotation.y = Math.PI; S.capD = c2; S.hairBD = ['B', 'D'].flatMap(k => S.P[k].userData.J.neck.children.filter(c => c.isMesh && c.material.color.getHex() === PEOPLE[k].hair && c.geometry.type === 'SphereGeometry')); }
   // figurantes
   const xc = [0x4a8fc2, 0xd97aa6, 0xe39b3b, 0x8d6cab, 0xc8553d, 0x5aa469]; S.X = xc.map((c, i) => { const d = addFace(gtaDoll({ shirt: c, pants: [0x3a4660, 0x2b2d42, 0x6b5a48][i % 3], skin: [0xd9a27c, 0xe6b996, 0xc68a62][i % 3], hair: [0x1c1410, 0x5a3a22, 0x8a5a2a, 0x2c2c30][i % 4], hairStyle: i % 2 ? 'ponytail' : undefined, scale: 1.5 + hash(i) * 0.14 })); scene.add(d); return d; });
   // móviles: el protagonista (pantalla que cambia) y los de B, C y D con el chat
@@ -30,7 +31,7 @@ function stageAt(t, st) {
   NOW = t; const sh = shotAt(t), n = sh.n, set = SETOF[n], P = S.P, { A, B, C, D } = P, ox = O[set], vz = voice(t), u = t - sh.a;
   for (const k in S.sets) S.sets[k].visible = k === set; moodSet(MOODOF[set]); lightsAt(st.l, Math.max(2.2, st.p.distanceTo(st.l) * 1.3));
   for (const d of [A, B, C, D, ...S.X]) { d.visible = false; d.position.set(0, 0, 0); d.rotation.set(0, 0, 0); poseZero(d); smile(d, 0.35, 0, t, d.id); }
-  for (const o of [S.ph, S.phB, S.phC, S.phD, ...S.cases, ...S.food, ...S.arms]) o.visible = false; S.ph.scale.setScalar(1); S.ph.up.set(0, 1, 0); S.capB.visible = S.capD.visible = set === 'town';
+  for (const o of [S.ph, S.phB, S.phC, S.phD, ...S.cases, ...S.food, ...S.arms]) o.visible = false; S.ph.scale.setScalar(1); S.ph.up.set(0, 1, 0); S.capB.visible = S.capD.visible = set === 'town'; for (const h of S.hairBD) h.visible = set !== 'town';
   const put = (d, x, y, z, ry = 0) => { d.visible = true; d.position.set(ox + x, y, z); d.rotation.y = ry; return d.userData.J; };
   const sitX = (d, x, z, ry, y = 0.08) => { const J = put(d, x, y, z, ry); poseSit(d); handsLap(d); return J; };
 
@@ -44,7 +45,7 @@ function stageAt(t, st) {
     const q0 = new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI / 2, 0, 0.1 + 0.02 * buzz * Math.sin(t * 170))), q1 = new THREE.Quaternion().setFromEuler(new THREE.Euler(-1.15, 0, -0.06)); ph.quaternion.copy(q0).slerp(q1, lf);
     // la mano entra por abajo a la derecha (brazo con dedos), agarra el móvil por el borde y lo levanta; los brazos del muñeco quedan fuera de plano
     armTo(A, 'L', v3(ox + 0.42, 0.79, 0.56)); armTo(A, 'R', v3(ox - 0.2, 0.785, 0.34));
-    { const a = S.arms[0]; a.visible = true; const out = v3(ox + 0.5, 0.86, 0.62), grip = ph.position.clone().add(v3(0.022, 0.012, 0.04).applyQuaternion(new THREE.Quaternion().setFromEuler(new THREE.Euler(0, 0, 0)))); armPose(a, out.lerp(grip, g1), -0.95 + 0.25 * lf, 0.34 + 0.2 * lf); }
+    { const a = S.arms[0]; a.visible = true; const out = v3(ox + 0.5, 0.86, 0.62), grip = ph.position.clone().add(v3(-0.012, 0.014 + 0.006 * lf, 0.052 + 0.014 * lf)); armPose(a, out.lerp(grip, g1), -0.62 + 0.2 * lf, 0.3 + 0.25 * lf); }
     const lk = win(t, TL.notif + 0.1, 0.35); if (lk > 0) { J.neck.rotation.y = -0.25 * lk; } smile(A, 0.35 + 0.65 * win(t, 1.8, 0.6), 0, t, 1);
   } else if (n === 'bus') {
     // ---- 2a · B, en el autobús: lee, sonríe y celebra con el puño
@@ -84,12 +85,12 @@ function stageAt(t, st) {
     heroDraw((g, w, h) => drawVote(g, w, h, { sel: t >= TL.point + 0.12 ? 1 : 0, ex, press: t >= TL.press + 0.05 && t < TL.ok + 0.02 ? 1 : 0, ok }));
     const c = v3(ox + TBL.x, TBL.y + 0.02, TBL.z + 0.02), yaw = [Math.PI * 1.25, 2.5, 0.6435, -Math.PI / 4], rest = [[-0.1, 0.09], [-0.115, -0.075], [0.115, -0.075], [0.1, 0.09]], tg = [[150, 610], [170, 520], [400, 520], [390, 620]];
     const tap = Math.max(bump(t, TL.c3, TL.c3 + 0.18, 0.07, 0.11), bump(t, TL.c2, TL.c2 + 0.18, 0.07, 0.11), bump(t, TL.c1, TL.c1 + 0.18, 0.07, 0.11)), inn = win(t, 20.05, 0.4);
-    S.arms.forEach((a, i) => { a.visible = true; const r = v3(c.x + rest[i][0] * (1.9 - 0.9 * inn), c.y + 0.012 + 0.016 * (1 - tap) + 0.004 * Math.sin(t * 3 + i), c.z + rest[i][1] * (1.9 - 0.9 * inn)), p = scrPt(ph, tg[i][0], tg[i][1], 0.006);
+    S.arms.forEach((a, i) => { a.visible = true; const r = v3(c.x + rest[i][0] * (1.7 - 0.9 * inn), c.y + 0.012 + 0.016 * (1 - tap) + 0.004 * Math.sin(t * 3 + i), c.z + rest[i][1] * (1.7 - 0.9 * inn)), p = scrPt(ph, tg[i][0], tg[i][1], 0.006);
       let tip = r.clone().lerp(p, pt * (1 - (i === 3 ? 0 : back))); if (i === 3) { const b = scrPt(ph, 400, 880, 0.02 - 0.016 * press); tip.lerp(b, sm5(seg(t, TL.ex + 0.05, TL.press - 0.02))); }
       tip.y += 0.28 * fly * (1 + 0.2 * i); tip.x += rest[i][0] * 1.6 * fly; tip.z += rest[i][1] * 1.6 * fly; armPose(a, tip, yaw[i], 0.3 + 0.25 * fly + 0.1 * (1 - pt) * tap); });
   } else if (n === 'hug') {
     // ---- 4 (final) · ¡reservado!: saltan y se abrazan delante del sofá
-    const xs = { B: -0.52, A: -0.17, C: 0.17, D: 0.52 }; let i = 0; for (const k of ['B', 'A', 'C', 'D']) { const d = P[k], x = xs[k], J = put(d, x, 0, 0.18 + 0.1 * Math.abs(x), -x * 0.4), jp = Math.abs(Math.sin((t - 24.0) * 6.6 + i * 0.9)); d.position.y = 0.2 * jp; J.knL.rotation.x = J.knR.rotation.x = 0.5 * (1 - jp); J.hpL.rotation.x = J.hpR.rotation.x = -0.25 * (1 - jp);
+    const xs = { B: -0.52, A: -0.17, C: 0.17, D: 0.52 }; let i = 0; for (const k of ['B', 'A', 'C', 'D']) { const d = P[k], x = xs[k], J = put(d, x, 0, 0.18 + 0.1 * Math.abs(x), -x * 0.4), jp = Math.abs(Math.sin((t - 24.15) * 6.6 + i * 0.9)); d.position.y = 0.2 * jp; J.knL.rotation.x = J.knR.rotation.x = 0.5 * (1 - jp); J.hpL.rotation.x = J.hpR.rotation.x = -0.25 * (1 - jp);
       if (k === 'A' || k === 'C') armsUp(d, 1, t, i); else { armsUp(d, 1, t, i); const s = k === 'B' ? 'L' : 'R'; J['sh' + s].rotation.x = -1.3; J['sh' + s].rotation.z = k === 'B' ? 0.9 : -0.9; J['el' + s].rotation.x = -0.6; } J.neck.rotation.x = -0.2; smile(d, 1, 1, t, i); i++; }
   } else if (n === 'arrive') {
     // ---- 5a · EL VIAJE: llegan andando con las maletas por la calle de casas blancas

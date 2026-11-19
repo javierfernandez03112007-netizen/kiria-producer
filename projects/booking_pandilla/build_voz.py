@@ -4,7 +4,7 @@ Uso: python3 build_voz.py"""
 import difflib, json, os, re, subprocess, unicodedata
 import numpy as np
 ROOT = os.path.dirname(os.path.abspath(__file__)); SR = 44100; END = 40.0
-AT = [12.0, 14.2, 16.9, 18.2, 20.5, 35.5]            # dónde empieza cada frase en el spot
+AT = [12.0, 14.2, 17.3, 18.6, 20.15, 35.5]            # dónde empieza cada frase en el spot
 def nrm(w):
     w = unicodedata.normalize("NFD", w.lower()); return re.sub(r"[^a-z0-9ñ]", "", "".join(c for c in w if unicodedata.category(c) != "Mn"))
 lines = [l.strip() for l in open(os.path.join(ROOT, "script.txt"), encoding="utf-8") if l.strip()]

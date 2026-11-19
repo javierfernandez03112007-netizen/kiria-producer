@@ -121,7 +121,7 @@ def closing(t):
     last, bg, card, S = closing_assets(); u = t - T3D
     k = sm(u / 0.75)                                               # la foto encoge desde pantalla completa hasta su sitio
     img = bg.copy()
-    ch, cw = card.shape[:2]; s1 = 520 / 1080 * H / (ch - 86) * 1.0; s0 = W / (cw - 40); s = s0 + (s1 - s0) * k; ang = -3.2 * k; cx, cy = W / 2, H / 2 + (506 - H / 2) * k + 13 * s * (1 - k)
+    ch, cw = card.shape[:2]; s1 = 0.84; s0 = W / (cw - 40); s = s0 + (s1 - s0) * k; ang = -3.2 * k; cx, cy = W / 2, H / 2 + (534 - H / 2) * k + 13 * s * (1 - k)
     M = cv2.getRotationMatrix2D((cw / 2, ch / 2), ang, s); M[0, 2] += cx - cw / 2; M[1, 2] += cy - ch / 2
     mask = cv2.warpAffine(np.ones((ch, cw), np.float32), M, (W, H), flags=cv2.INTER_LINEAR)
     if k > 0.02:                                                   # sombra
@@ -132,7 +132,7 @@ def closing(t):
     # eslogan (con la voz) y marca
     t1 = min(at("plan", 1, 6) - 0.25, T3D + 0.75); t2 = at("sitio", 1, 6) - 0.3; t3 = min(at("booking", 1, 6) - 0.15, END - 1.7)
     a1, a2 = sm((t - t1) / 0.4), sm((t - t2) / 0.4)
-    put_sprite(img, S["l1"], W / 2, 92 + (1 - a1) * 22, a1); put_sprite(img, S["l2"], W / 2, 178 + (1 - a2) * 22, a2)
+    put_sprite(img, S["l1"], W / 2, 80 + (1 - a1) * 22, a1); put_sprite(img, S["l2"], W / 2, 168 + (1 - a2) * 22, a2)
     kl = pop(t, t3, 0.4); lw = S["logo"][1].shape[1]; aw = S["app"][1].shape[1]; tot = lw + aw - 10; x0 = W / 2 - tot / 2
     if kl > 0.01:
         put_sprite(img, S["logo"], x0 + lw / 2, 962, clamp((t - t3) / 0.15), 0.8 + 0.2 * kl)
@@ -179,7 +179,8 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    c1 = at("uno", 1, 5); no, si = at("uf", 1, 3), at("este", 1, 4); t4 = min(at("dividimos", 1, 2), no - 1.2); t5 = min(at("cuatro", 1, 2), no - 0.55)
+    c1 = at("uno", 1, 5); no, si = at("uf", 1, 3), at("este", 1, 4); t4 = min(at("dividimos", 1, 2), no - 1.6); t5 = min(at("cuatro", 1, 2), no - 0.95)
+    point = min(c1 + 0.35, 22.3); ex = point + 0.42; press = ex + 0.62; ok = press + 0.14          # igual que TL en web/src/30_center.js
     # 1 · biblioteca: un lápiz, el aviso del grupo y la mano coge el móvil
     put("magisterio/lapiz", 0.15, 0.8, 0.14, 0.3); put("lanzamiento/mensaje", 1.0, 0.6, 0.5, 0.2); put("magisterio/papel", 3.72, 0.4, 0.26, 0.15)
     # 2 · responden los tres: un «pop» por mensaje
@@ -194,8 +195,8 @@ def sfx_track(path):
     # 4 · la votación: tres toques en la mesa, todos señalan, «Reservar» y confirmada
     for k in ("tres", "dos", "uno"):
         put("magisterio/madera_toc", at(k, 1, 5) + 0.05, 0.25, 0.3, 0.1)
-    put("avion/pop", c1 + 0.45, 0.4, 0.42, 0.12); put("lanzamiento/desliza", c1 + 0.75, 0.4, 0.2, 0.15)
-    put("avion/clic", 23.3, 0.3, 0.55, 0.1); put("avion/ding", 23.46, 0.8, 0.5, 0.35); put("avion/brillo", 24.0, 1.0, 0.3, 0.4)
+    put("avion/pop", point + 0.05, 0.4, 0.42, 0.12); put("lanzamiento/desliza", ex, 0.4, 0.2, 0.15)
+    put("avion/clic", press, 0.3, 0.55, 0.1); put("avion/ding", ok + 0.02, 0.8, 0.5, 0.35); put("avion/brillo", 24.15, 0.85, 0.3, 0.4)
     # 5 · el viaje (lo lleva la música): solo el clic de la foto
     put("avion/clic", 34.94, 0.3, 0.6, 0.1)
     # 6 · el cierre: aparece la marca

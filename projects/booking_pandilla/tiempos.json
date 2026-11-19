@@ -1,1 +1,209 @@
-[{"text": "¡Mirad las reseñas de este!", "start": 12.0, "end": 13.86, "words": [{"w": "¡Mirad", "start": 12.0, "end": 12.38}, {"w": "las", "start": 12.41, "end": 12.71}, {"w": "reseñas", "start": 12.74, "end": 13.21}, {"w": "de", "start": 13.24, "end": 13.49}, {"w": "este!", "start": 13.52, "end": 13.86}]}, {"text": "Y sale más barato si lo dividimos entre cuatro.", "start": 14.2, "end": 17.59, "words": [{"w": "Y", "start": 14.2, "end": 14.4}, {"w": "sale", "start": 14.43, "end": 14.77}, {"w": "más", "start": 14.8, "end": 15.1}, {"w": "barato", "start": 15.13, "end": 15.56}, {"w": "si", "start": 15.59, "end": 15.84}, {"w": "lo", "start": 15.87, "end": 16.12}, {"w": "dividimos", "start": 16.15, "end": 16.71}, {"w": "entre", "start": 16.74, "end": 17.13}, {"w": "cuatro.", "start": 17.16, "end": 17.59}]}, {"text": "Uf, ese no.", "start": 16.9, "end": 17.85, "words": [{"w": "Uf,", "start": 16.9, "end": 17.15}, {"w": "ese", "start": 17.28, "end": 17.57}, {"w": "no.", "start": 17.6, "end": 17.85}]}, {"text": "Este sí.", "start": 18.2, "end": 18.82, "words": [{"w": "Este", "start": 18.2, "end": 18.54}, {"w": "sí.", "start": 18.57, "end": 18.82}]}, {"text": "¿Votamos? Tres, dos, uno…", "start": 20.5, "end": 22.45, "words": [{"w": "¿Votamos?", "start": 20.5, "end": 20.98}, {"w": "Tres,", "start": 21.25, "end": 21.59}, {"w": "dos,", "start": 21.72, "end": 22.02}, {"w": "uno…", "start": 22.15, "end": 22.45}]}, {"text": "El plan lo ponéis vosotros. El sitio, Booking punto com.", "start": 35.5, "end": 39.7, "words": [{"w": "El", "start": 35.5, "end": 35.75}, {"w": "plan", "start": 35.78, "end": 36.12}, {"w": "lo", "start": 36.15, "end": 36.4}, {"w": "ponéis", "start": 36.43, "end": 36.86}, {"w": "vosotros.", "start": 36.89, "end": 37.41}, {"w": "El", "start": 37.69, "end": 37.94}, {"w": "sitio,", "start": 37.97, "end": 38.35}, {"w": "Booking", "start": 38.48, "end": 38.96}, {"w": "punto", "start": 38.99, "end": 39.38}, {"w": "com.", "start": 39.41, "end": 39.7}]}]
+[
+ {
+  "start": 12.0,
+  "end": 14.03,
+  "text": "¡Mirad las reseñas de este!",
+  "words": [
+   {
+    "w": "¡Mirad",
+    "start": 12.0,
+    "end": 12.44
+   },
+   {
+    "w": "las",
+    "start": 12.48,
+    "end": 12.71
+   },
+   {
+    "w": "reseñas",
+    "start": 12.75,
+    "end": 13.26
+   },
+   {
+    "w": "de",
+    "start": 13.3,
+    "end": 13.46
+   },
+   {
+    "w": "este!",
+    "start": 13.5,
+    "end": 14.03
+   }
+  ]
+ },
+ {
+  "start": 14.2,
+  "end": 17.59,
+  "text": "Y sale más barato si lo dividimos entre cuatro.",
+  "words": [
+   {
+    "w": "Y",
+    "start": 14.2,
+    "end": 14.29
+   },
+   {
+    "w": "sale",
+    "start": 14.33,
+    "end": 14.63
+   },
+   {
+    "w": "más",
+    "start": 14.67,
+    "end": 14.9
+   },
+   {
+    "w": "barato",
+    "start": 14.94,
+    "end": 15.38
+   },
+   {
+    "w": "si",
+    "start": 15.42,
+    "end": 15.58
+   },
+   {
+    "w": "lo",
+    "start": 15.62,
+    "end": 15.78
+   },
+   {
+    "w": "dividimos",
+    "start": 15.82,
+    "end": 16.47
+   },
+   {
+    "w": "entre",
+    "start": 16.51,
+    "end": 16.88
+   },
+   {
+    "w": "cuatro.",
+    "start": 16.92,
+    "end": 17.59
+   }
+  ]
+ },
+ {
+  "start": 17.3,
+  "end": 18.39,
+  "text": "Uf, ese no.",
+  "words": [
+   {
+    "w": "Uf,",
+    "start": 17.3,
+    "end": 17.69
+   },
+   {
+    "w": "ese",
+    "start": 17.73,
+    "end": 17.96
+   },
+   {
+    "w": "no.",
+    "start": 18.0,
+    "end": 18.39
+   }
+  ]
+ },
+ {
+  "start": 18.6,
+  "end": 19.33,
+  "text": "Este sí.",
+  "words": [
+   {
+    "w": "Este",
+    "start": 18.6,
+    "end": 18.9
+   },
+   {
+    "w": "sí.",
+    "start": 18.94,
+    "end": 19.33
+   }
+  ]
+ },
+ {
+  "start": 20.15,
+  "end": 22.53,
+  "text": "¿Votamos? Tres, dos, uno…",
+  "words": [
+   {
+    "w": "¿Votamos?",
+    "start": 20.15,
+    "end": 20.96
+   },
+   {
+    "w": "Tres,",
+    "start": 21.0,
+    "end": 21.53
+   },
+   {
+    "w": "dos,",
+    "start": 21.57,
+    "end": 22.03
+   },
+   {
+    "w": "uno…",
+    "start": 22.07,
+    "end": 22.53
+   }
+  ]
+ },
+ {
+  "start": 35.5,
+  "end": 39.83,
+  "text": "El plan lo ponéis vosotros. El sitio, Booking punto com.",
+  "words": [
+   {
+    "w": "El",
+    "start": 35.5,
+    "end": 35.66
+   },
+   {
+    "w": "plan",
+    "start": 35.7,
+    "end": 36.0
+   },
+   {
+    "w": "lo",
+    "start": 36.04,
+    "end": 36.2
+   },
+   {
+    "w": "ponéis",
+    "start": 36.24,
+    "end": 36.68
+   },
+   {
+    "w": "vosotros.",
+    "start": 36.72,
+    "end": 37.53
+   },
+   {
+    "w": "El",
+    "start": 37.57,
+    "end": 37.73
+   },
+   {
+    "w": "sitio,",
+    "start": 37.77,
+    "end": 38.37
+   },
+   {
+    "w": "Booking",
+    "start": 38.41,
+    "end": 38.92
+   },
+   {
+    "w": "punto",
+    "start": 38.96,
+    "end": 39.33
+   },
+   {
+    "w": "com.",
+    "start": 39.37,
+    "end": 39.83
+   }
+  ]
+ }
+]

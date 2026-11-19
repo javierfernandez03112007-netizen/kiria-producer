@@ -32,9 +32,9 @@ function appPanel(t) {
     if (sp < 0.99) { g.save(); g.globalAlpha = 1 - sp; const revs = [['L', '#e07a5f', 'Lucía', 'Limpio y a 2 minutos', 'de la playa.'], ['M', '#3d9bd1', 'Marcos', 'Íbamos cuatro amigos:', 'perfecto y barato.'], ['S', '#81b29a', 'Sara', 'El anfitrión, majísimo.', 'Repetiríamos.']];
       revs.forEach((r, i) => { const k = pop(t, TL.rev + 0.3 + i * 0.36, 0.3); if (k <= 0.01) return; const y = 196 + i * 178; g.save(); g.translate(270, y + 80); g.scale(k, k); g.translate(-270, -80); g.fillStyle = '#f3f6fa'; rr(g, 24, 0, 492, 162, 20); g.fill(); g.fillStyle = r[1]; g.beginPath(); g.arc(70, 48, 28, 0, 7); g.fill(); scrText(g, r[0], 70, 59, 30, 900, '#fff', 'center');
         scrText(g, r[2], 112, 44, 27, 900); scrText(g, '★★★★★', 112, 76, 25, 700, '#f5a623'); scrText(g, '“' + r[3], 44, 116, 28, 500); scrText(g, r[4] + '”', 44, 148, 28, 500); g.restore(); }); g.restore(); }
-    if (sp > 0.01) { g.save(); g.globalAlpha = sp; const t4 = Math.min(K['dividimos_2'], TL.no - 1.2), t5 = Math.min(K['cuatro_2'], TL.no - 0.55); scrText(g, 'Precio total · 4 noches', 270, 262, 30, 500, BK.grey, 'center'); scrText(g, '352 €', 270, 376, 118, 900, BK.ink, 'center');
-      const k4 = pop(t, t4, 0.3); if (k4 > 0.01) { g.save(); g.translate(270, 462); g.scale(k4, k4); scrText(g, '÷ 4 personas', 0, 0, 56, 900, BK.cta, 'center'); g.restore(); }
-      const k5 = pop(t, t5, 0.36); if (k5 > 0.01) { g.save(); g.translate(270, 640); g.scale(k5, k5); g.fillStyle = '#e6f6ec'; rr(g, -220, -128, 440, 196, 28); g.fill(); scrText(g, '88 €', 0, 0, 132, 900, '#1f8a4c', 'center'); scrText(g, 'por persona', 0, 48, 34, 700, '#1f8a4c', 'center'); g.restore(); } g.restore(); }
+    if (sp > 0.01) { g.save(); g.globalAlpha = sp; const t4 = Math.min(K['dividimos_2'], TL.no - 1.6), t5 = Math.min(K['cuatro_2'], TL.no - 0.95); scrText(g, 'Precio total · 4 noches', 270, 232, 30, 500, BK.grey, 'center'); scrText(g, '352 €', 270, 326, 104, 900, BK.ink, 'center');
+      const k4 = pop(t, t4, 0.3); if (k4 > 0.01) { g.save(); g.translate(270, 396); g.scale(k4, k4); scrText(g, '÷ 4 personas', 0, 0, 52, 900, BK.cta, 'center'); g.restore(); }
+      const k5 = pop(t, t5, 0.36); if (k5 > 0.01) { g.save(); g.translate(270, 530); g.scale(k5, k5); g.fillStyle = '#e6f6ec'; rr(g, -220, -112, 440, 172, 28); g.fill(); scrText(g, '88 €', 0, 0, 118, 900, '#1f8a4c', 'center'); scrText(g, 'por persona', 0, 44, 32, 700, '#1f8a4c', 'center'); g.restore(); } g.restore(); }
     g.restore(); }
   g.restore();
   sText('Pantalla simulada · datos de ejemplo', x0 + w / 2, y0 + h + 32, 20, 500, 0.85 * kin, { align: 'center' });
@@ -52,6 +52,6 @@ function hudAt(t) {
   // ---- 4 · «Decidís entre todos.» y el confeti del abrazo
   if (n === 'vote' || n === 'hug') { const a = win(t, TL.vota + 0.35, 0.4) * (1 - win(t, 24.75, 0.25)), y = n === 'hug' ? 1000 : 128; hg.save(); hg.font = `900 84px ${EMO}`; const w1 = hg.measureText('Decidís ').width, w2 = hg.measureText('entre todos.').width; hg.restore();
     sText('Decidís ', W / 2 - (w1 + w2) / 2, y, 84, 900, a); sText('entre todos.', W / 2 - (w1 + w2) / 2 + w1, y, 84, 900, a, { col: '#ffd66b' }); }
-  if (n === 'hug') { const u = t - 24.0, cols = ['#febb02', '#0071c2', '#f2664b', '#2f9e6b', '#ffffff', '#7d5fd0']; hg.save(); for (let i = 0; i < 90; i++) { const x = hash(i * 1.7) * W, sp = 520 + hash(i * 3.1) * 520, y = -60 + sp * u - 300 * hash(i * 5.3), r = u * (3 + hash(i) * 6) + i;
+  if (n === 'hug') { const u = t - 24.15 + 0.25, cols = ['#febb02', '#0071c2', '#f2664b', '#2f9e6b', '#ffffff', '#7d5fd0']; hg.save(); for (let i = 0; i < 90; i++) { const x = hash(i * 1.7) * W, sp = 520 + hash(i * 3.1) * 520, y = -60 + sp * u - 300 * hash(i * 5.3), r = u * (3 + hash(i) * 6) + i;
       hg.save(); hg.translate(x + 40 * Math.sin(u * 4 + i), y); hg.rotate(r); hg.fillStyle = cols[i % cols.length]; hg.globalAlpha = 0.95; hg.fillRect(-11, -6, 22, 12 * Math.abs(Math.cos(r * 1.3)) + 3); hg.restore(); } hg.restore(); }
 }
