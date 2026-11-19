@@ -166,11 +166,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   cámara por plano en `31_camera.js`, `prevT` no cruza el corte). Novedades reutilizables: caras en los muñecos (`addFace`/`smile`, boca abierta),
   brazo a un punto (`armTo`, dos huesos), `holdPhone`, móvil con pantalla en lienzo (`drawLock`, `drawVote`), brazo suelto con dedos (`voteArm`),
   maletas (`dragCase`), pantalla de app dibujada en el HUD (`appPanel`). Los 3D llegan a 35 s; el **cierre (35–40 s) lo hace `compose_booking.py`**
-  con el último fotograma (el selfi) como foto sobre el azul #003580, eslogan y «Booking.com · Descarga la app». Voz: un MP3 con seis frases
-  (`script.txt`) que `build_voz.py` coloca en 12,0 / 14,2 / 17,3 / 18,6 / 20,15 / 35,5 s; **al llegar la voz hay que volver a renderizar
-  10–24,15 s** (fotogramas 300–724: dependen de las palabras). Avisos dados a Javi: datos de la app inventados (rótulo «Pantalla simulada»),
-  «Booking.com» va como texto (no el logo oficial; si manda el PNG se cambia) y **sin música** (la pone él: libre de derechos, corte 1 s antes
-  del clic de «Reservar» ≈ 23,3 s). No hay en la biblioteca sonidos de playa, risas ni obturador: el viaje va sin efectos (lo lleva la música).
+  con el último fotograma (el selfi) como foto sobre el azul #003580, eslogan y «Booking.com · Descarga la app». Voz de Javi (ElevenLabs
+  «Danny», un MP3 con seis frases, `script.txt`): `build_voz.py` las coloca en 12,0 / 14,2 / 17,3 / 18,85 / 19,7 / 35,5 s (el reconocedor
+  escribió «3, 2, 1», «Uff» y «Booking.com»: se igualan al guion dentro de `build_voz.py`); la cuenta atrás dura 3,4 s, así que «¿Votamos?»
+  empieza al final del plano del sofá y los cortes quedaron en 24,35 (abrazo) y 25,2 s (viaje). Los fotogramas 300–821 dependen de las
+  palabras: si cambia la voz, se vuelven a renderizar. **Música**: Javi dijo «ponle música también, cualquiera que encaje» → `musica.py`
+  la SINTETIZA (original, sin samples: punteo, bajo, palmas, rasgueo, bombo y campanas a 120 pulsos en do mayor; corte de 1 s antes del clic de
+  «Reservar», vuelve fuerte con la reserva, golpe final en 39,0 s) y `compose_booking.py` mezcla voz + efectos + música y ajusta a −15 LUFS
+  (`--audio` solo la mezcla; `MUSIC_GAIN` para subirla o bajarla). **Entregado el 19-11**: 40,0 s, 1920 × 1080, 30 fps, 1.200 fotogramas,
+  −15,1 LUFS, 31 MB. Render: seis máquinas de ayuda «Lanzamiento · render 1–6» con permiso de Javi (ramas `render-bk-1…12`).
+  Avisos dados a Javi: datos de la app inventados (rótulo «Pantalla simulada»), «Booking.com» va como texto (no el logo oficial; si manda el
+  PNG se cambia), la música es sintetizada (no la puedo escuchar: que la revise; se puede exportar sin ella) y no hay en la biblioteca sonidos
+  de playa, risas ni obturador.
 
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie

@@ -150,7 +150,10 @@ def compose(fi):
         fl = clamp((t - (T3D - 0.07)) / 0.07) * 0.9                 # el destello empieza en los dos últimos fotogramas del selfi
         if fl > 0:
             img = img * (1 - fl) + fl
-        SUBS_L.draw(img, t, 1.0); SUBS_C.draw(img, t, 1.0)
+        if t < LINES[4]["start"] - 0.03:                            # cada subtítulo se va cuando acaba su frase (no se queda bajo el plano siguiente)
+            SUBS_L.draw(img, t, 1.0)
+        elif t < LINES[4]["end"] + 0.3:
+            SUBS_C.draw(img, t, 1.0)
     else:
         img = closing(t)
     return (np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes()
