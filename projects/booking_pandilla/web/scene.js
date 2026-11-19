@@ -651,8 +651,8 @@ function fnOf(n) { try { return eval('typeof ' + n + " === 'function' ? " + n + 
 const O = { lib: 0, bus: 40, kit: 80, bed: 120, sofa: 160, town: 240 };       // origen (x) de cada decorado
 const seg = (t, a, b) => clamp((t - a) / (b - a));
 // los planos: nombre, inicio, fin (s). 1 la chispa · 2 el grupo responde (tres planos cortos) · 3 comparar · 4 la votación (+ el abrazo) · 5 el viaje (cuatro planos)
-const SHOTS = [['lib', 0, 5], ['bus', 5, 6.65], ['kit', 6.65, 8.3], ['bed', 8.3, 10], ['sofa', 10, 20], ['vote', 20, 24.15], ['hug', 24.15, 25],
-  ['arrive', 25, 27.4], ['beach', 27.4, 29.7], ['wall', 29.7, 32.1], ['selfie', 32.1, 35.01]].map(s => ({ n: s[0], a: s[1], b: s[2] }));
+const SHOTS = [['lib', 0, 5], ['bus', 5, 6.65], ['kit', 6.65, 8.3], ['bed', 8.3, 10], ['sofa', 10, 20], ['vote', 20, 24.35], ['hug', 24.35, 25.2],
+  ['arrive', 25.2, 27.4], ['beach', 27.4, 29.7], ['wall', 29.7, 32.1], ['selfie', 32.1, 35.01]].map(s => ({ n: s[0], a: s[1], b: s[2] }));
 function shotAt(t) { for (const s of SHOTS) if (t < s.b) return s; return SHOTS[SHOTS.length - 1]; }
 // el alojamiento del ejemplo (INVENTADO: nombres, precios y notas de mentira para enseñar cómo se compara)
 const STAYS = [{ id: 'A', name: 'Apto. Las Dunas', score: '8,2', word: 'Muy bien', price: 520, col: '#f0a020' }, { id: 'B', name: 'Piso Brisa del Mar', score: '9,1', word: 'Fantástico', price: 352, col: '#2f9e5a' },
@@ -1361,7 +1361,7 @@ const PEOPLE = { A: { shirt: 0xf2664b, pants: 0x3b4f7a, skin: 0xe6b996, hair: 0x
 async function buildScene() {
   TL = { on: 1.0, notif: 1.15, grab0: 3.05, grab1: 3.75, lift1: 4.9, bub: [5.5, 7.1, 8.8], panel: 10.7, sort: 11.2, rev: K['mirad_1'], split: K['sale_2'], div: K['dividimos_2'], no: K['uf_3'], si: K['este_4'],
     vota: K['votamos_5'], c3: K['tres_5'], c2: K['dos_5'], c1: K['uno_5'], snap: 34.2 };
-  TL.point = Math.min(TL.c1 + 0.35, 22.3); TL.ex = TL.point + 0.42; TL.press = TL.ex + 0.62; TL.ok = TL.press + 0.14; TL.fly = TL.ok + 0.2;      // todos señalan → queda «Reservar» → D pulsa → confirmada
+  TL.point = Math.min(TL.c1 - 0.02, 22.45); TL.ex = TL.point + 0.45; TL.press = TL.ex + 0.55; TL.ok = TL.press + 0.14; TL.fly = TL.ok + 0.3;      // todos señalan → queda «Reservar» → D pulsa → confirmada
   S.sets = { lib: buildLib(), bus: buildBus(), kit: buildKit(), bed: buildBed(), sofa: buildSofa(), town: buildTown() }; for (const k in S.sets) scene.add(S.sets[k]);
   S.P = {}; for (const k in PEOPLE) { const d = addFace(gtaDoll(PEOPLE[k])); d.rotation.order = 'YXZ'; scene.add(d); S.P[k] = d; }
   { const cp = dollCap(0xf5f1e6); S.P.B.userData.J.neck.add(cp); S.capB = cp; const c2 = dollCap(0x2f6fd0); S.P.D.userData.J.neck.add(c2); c2.rotation.y = Math.PI; S.capD = c2; S.hairBD = ['B', 'D'].flatMap(k => S.P[k].userData.J.neck.children.filter(c => c.isMesh && c.material.color.getHex() === PEOPLE[k].hair && c.geometry.type === 'SphereGeometry')); }
@@ -1433,19 +1433,19 @@ function stageAt(t, st) {
     const pt = win(t, TL.point, 0.16), ex = seg(t, TL.ex, TL.ex + 0.3), press = bump(t, TL.press, TL.press + 0.14, 0.06, 0.1), ok = seg(t, TL.ok, TL.ok + 0.32), fly = win(t, TL.fly, 0.3), back = win(t, TL.ex - 0.05, 0.25);
     heroDraw((g, w, h) => drawVote(g, w, h, { sel: t >= TL.point + 0.12 ? 1 : 0, ex, press: t >= TL.press + 0.05 && t < TL.ok + 0.02 ? 1 : 0, ok }));
     const c = v3(ox + TBL.x, TBL.y + 0.02, TBL.z + 0.02), yaw = [Math.PI * 1.25, 2.5, 0.6435, -Math.PI / 4], rest = [[-0.1, 0.09], [-0.115, -0.075], [0.115, -0.075], [0.1, 0.09]], tg = [[150, 610], [170, 520], [400, 520], [390, 620]];
-    const tap = Math.max(bump(t, TL.c3, TL.c3 + 0.18, 0.07, 0.11), bump(t, TL.c2, TL.c2 + 0.18, 0.07, 0.11), bump(t, TL.c1, TL.c1 + 0.18, 0.07, 0.11)), inn = win(t, 20.05, 0.4);
+    const tap = Math.max(bump(t, TL.c3, TL.c3 + 0.18, 0.07, 0.11), bump(t, TL.c2, TL.c2 + 0.18, 0.07, 0.11)), inn = win(t, 20.05, 0.4);
     S.arms.forEach((a, i) => { a.visible = true; const r = v3(c.x + rest[i][0] * (1.7 - 0.9 * inn), c.y + 0.012 + 0.016 * (1 - tap) + 0.004 * Math.sin(t * 3 + i), c.z + rest[i][1] * (1.7 - 0.9 * inn)), p = scrPt(ph, tg[i][0], tg[i][1], 0.006);
       let tip = r.clone().lerp(p, pt * (1 - (i === 3 ? 0 : back))); if (i === 3) { const b = scrPt(ph, 400, 880, 0.02 - 0.016 * press); tip.lerp(b, sm5(seg(t, TL.ex + 0.05, TL.press - 0.02))); }
       tip.y += 0.28 * fly * (1 + 0.2 * i); tip.x += rest[i][0] * 1.6 * fly; tip.z += rest[i][1] * 1.6 * fly; armPose(a, tip, yaw[i], 0.3 + 0.25 * fly + 0.1 * (1 - pt) * tap); });
   } else if (n === 'hug') {
     // ---- 4 (final) · ¡reservado!: saltan y se abrazan delante del sofá
-    const xs = { B: -0.52, A: -0.17, C: 0.17, D: 0.52 }; let i = 0; for (const k of ['B', 'A', 'C', 'D']) { const d = P[k], x = xs[k], J = put(d, x, 0, 0.18 + 0.1 * Math.abs(x), -x * 0.4), jp = Math.abs(Math.sin((t - 24.15) * 6.6 + i * 0.9)); d.position.y = 0.2 * jp; J.knL.rotation.x = J.knR.rotation.x = 0.5 * (1 - jp); J.hpL.rotation.x = J.hpR.rotation.x = -0.25 * (1 - jp);
+    const xs = { B: -0.52, A: -0.17, C: 0.17, D: 0.52 }; let i = 0; for (const k of ['B', 'A', 'C', 'D']) { const d = P[k], x = xs[k], J = put(d, x, 0, 0.18 + 0.1 * Math.abs(x), -x * 0.4), jp = Math.abs(Math.sin((t - 24.35) * 6.6 + i * 0.9)); d.position.y = 0.2 * jp; J.knL.rotation.x = J.knR.rotation.x = 0.5 * (1 - jp); J.hpL.rotation.x = J.hpR.rotation.x = -0.25 * (1 - jp);
       if (k === 'A' || k === 'C') armsUp(d, 1, t, i); else { armsUp(d, 1, t, i); const s = k === 'B' ? 'L' : 'R'; J['sh' + s].rotation.x = -1.3; J['sh' + s].rotation.z = k === 'B' ? 0.9 : -0.9; J['el' + s].rotation.x = -0.6; } J.neck.rotation.x = -0.2; smile(d, 1, 1, t, i); i++; }
   } else if (n === 'arrive') {
     // ---- 5a · EL VIAJE: llegan andando con las maletas por la calle de casas blancas
     const off = [[0, 21.3], [-1.0, 20.5], [-1.9, 21.6], [-2.9, 20.8]]; ['A', 'C', 'B', 'D'].forEach((k, i) => { const d = P[k], J = put(d, -3 + 1.35 * u + off[i][0], 0, off[i][1], Math.PI / 2); poseWalk(d, (u * 1.35 + i * 0.7) * 4.3, 0.55, 0.06); d.rotation.y = Math.PI / 2;
       const s = i % 2 ? 'L' : 'R', c = S.cases[i]; c.visible = true; dragCase(c, d, s); smile(d, 1, i === 0 ? 1 : 0, t, i);
-      if (k === 'A') { const pk = bump(t, 25.5, 27.0, 0.3, 0.3); J.shL.rotation.x = lerp(J.shL.rotation.x, -1.75, pk); J.elL.rotation.x = lerp(J.elL.rotation.x, -0.15, pk); J.shL.rotation.z = -0.15; } if (k === 'D') J.neck.rotation.y = 0.6 * Math.sin(t * 1.8); if (k === 'C') J.neck.rotation.y = -0.45; });
+      if (k === 'A') { const pk = bump(t, 25.7, 27.1, 0.3, 0.3); J.shL.rotation.x = lerp(J.shL.rotation.x, -1.75, pk); J.elL.rotation.x = lerp(J.elL.rotation.x, -0.15, pk); J.shL.rotation.z = -0.15; } if (k === 'D') J.neck.rotation.y = 0.6 * Math.sin(t * 1.8); if (k === 'C') J.neck.rotation.y = -0.45; });
     put(S.X[0], 9.5, 0, 19.4, 2.2); put(S.X[1], 10.2, 0, 19.2, -2.4); put(S.X[4], -9, 0, 19.3, 1.2);
   } else if (n === 'beach') {
     // ---- 5b · corren hacia el mar
@@ -1481,9 +1481,9 @@ function buildCam() {
     kit: { o: O.kit, k: [[6.65, [1.25, 1.25, 1.35], [0.28, 1.2, -0.95], 30], [8.3, [1.1, 1.25, 1.15], [0.28, 1.2, -0.95], 30]] },
     bed: { o: O.bed, k: [[8.3, [1.05, 1.9, 1.75], [-0.12, 0.78, -0.72], 30], [10, [0.9, 1.8, 1.55], [-0.14, 0.78, -0.72], 30]] },
     sofa: { o: O.sofa, k: [[10, [0, 1.0, 3.25], [0, 0.98, -0.4], 32], [10.6, [0.02, 1.0, 3.2], [0.02, 0.98, -0.4], 32], [11.5, [0.92, 0.98, 3.5], [0.92, 0.96, -0.4], 32], [16.5, [0.9, 0.98, 3.35], [0.9, 0.96, -0.4], 32], [20, [0.86, 0.98, 3.2], [0.86, 0.96, -0.4], 32]] },
-    vote: { o: O.sofa, k: [[20, [T.x, T.y + 0.47, T.z + 0.1], [T.x, T.y, T.z + 0.02], 30], [22.2, [T.x, T.y + 0.44, T.z + 0.095], [T.x, T.y, T.z + 0.02], 30], [24.15, [T.x, T.y + 0.42, T.z + 0.09], [T.x, T.y, T.z + 0.02], 30]] },
-    hug: { o: O.sofa, shake: 0.012, k: [[24.15, [0.35, 1.35, 3.9], [0, 1.3, 0.2], 32], [25, [0.25, 1.33, 3.5], [0, 1.32, 0.2], 32]] },
-    arrive: { o: O.town, shake: 0.016, k: [[25, [-1.2, 1.15, 25.6], [-4.3, 1.0, 21.0], 32], [27.4, [2.05, 1.15, 25.6], [-1.05, 1.0, 21.0], 32]] },
+    vote: { o: O.sofa, k: [[20, [T.x, T.y + 0.47, T.z + 0.1], [T.x, T.y, T.z + 0.02], 30], [22.2, [T.x, T.y + 0.44, T.z + 0.095], [T.x, T.y, T.z + 0.02], 30], [24.35, [T.x, T.y + 0.42, T.z + 0.09], [T.x, T.y, T.z + 0.02], 30]] },
+    hug: { o: O.sofa, shake: 0.012, k: [[24.35, [0.35, 1.35, 3.9], [0, 1.3, 0.2], 32], [25.2, [0.25, 1.33, 3.5], [0, 1.32, 0.2], 32]] },
+    arrive: { o: O.town, shake: 0.016, k: [[25.2, [-1.2, 1.15, 25.6], [-4.3, 1.0, 21.0], 32], [27.4, [1.77, 1.15, 25.6], [-1.33, 1.0, 21.0], 32]] },
     beach: { o: O.town, shake: 0.02, k: [[27.4, [1.3, 1.55, -1.2], [0, 1.0, -8.5], 32], [29.7, [1.0, 1.6, -5.6], [0, 1.0, -14], 32]] },
     wall: { o: O.town, shake: 0.01, k: [[29.7, [0.7, 1.15, 1.75], [0, 1.05, -2], 32], [32.1, [0.45, 1.12, 1.35], [0, 1.05, -2], 32]] },
     selfie: { o: O.town, shake: 0.007, k: [[32.1, [0.0, 1.2, zc + 1.45], [0.02, 1.3, zc], 46], [33.0, [0.0, 1.52, zc + 1.3], [0.02, 1.36, zc], 46], [35.01, [0.0, 1.54, zc + 1.27], [0.02, 1.36, zc], 46]] },
@@ -1549,9 +1549,9 @@ function hudAt(t) {
     if (a1 > 0.01) { hg.save(); hg.globalAlpha = 0.5 * a1; const gr = hg.createLinearGradient(0, 0, 0, 300); gr.addColorStop(0, 'rgba(20,14,8,1)'); gr.addColorStop(1, 'rgba(20,14,8,0)'); hg.fillStyle = gr; hg.fillRect(0, 0, 1200, 300); hg.restore(); }
     sText('Compara precios.', 70 - (1 - a1) * 30, 122, 74, 900, a1); sText('Lee opiniones reales.', 70 - (1 - a2) * 30, 208, 74, 900, a2, { col: '#ffd66b' }); }
   // ---- 4 · «Decidís entre todos.» y el confeti del abrazo
-  if (n === 'vote' || n === 'hug') { const a = win(t, TL.vota + 0.35, 0.4) * (1 - win(t, 24.75, 0.25)), y = n === 'hug' ? 1000 : 128; hg.save(); hg.font = `900 84px ${EMO}`; const w1 = hg.measureText('Decidís ').width, w2 = hg.measureText('entre todos.').width; hg.restore();
+  if (n === 'vote' || n === 'hug') { const a = win(t, 20.5, 0.4) * (1 - win(t, 24.95, 0.25)), y = n === 'hug' ? 1000 : 128; hg.save(); hg.font = `900 84px ${EMO}`; const w1 = hg.measureText('Decidís ').width, w2 = hg.measureText('entre todos.').width; hg.restore();
     sText('Decidís ', W / 2 - (w1 + w2) / 2, y, 84, 900, a); sText('entre todos.', W / 2 - (w1 + w2) / 2 + w1, y, 84, 900, a, { col: '#ffd66b' }); }
-  if (n === 'hug') { const u = t - 24.15 + 0.25, cols = ['#febb02', '#0071c2', '#f2664b', '#2f9e6b', '#ffffff', '#7d5fd0']; hg.save(); for (let i = 0; i < 90; i++) { const x = hash(i * 1.7) * W, sp = 520 + hash(i * 3.1) * 520, y = -60 + sp * u - 300 * hash(i * 5.3), r = u * (3 + hash(i) * 6) + i;
+  if (n === 'hug') { const u = t - 24.35 + 0.25, cols = ['#febb02', '#0071c2', '#f2664b', '#2f9e6b', '#ffffff', '#7d5fd0']; hg.save(); for (let i = 0; i < 90; i++) { const x = hash(i * 1.7) * W, sp = 520 + hash(i * 3.1) * 520, y = -60 + sp * u - 300 * hash(i * 5.3), r = u * (3 + hash(i) * 6) + i;
       hg.save(); hg.translate(x + 40 * Math.sin(u * 4 + i), y); hg.rotate(r); hg.fillStyle = cols[i % cols.length]; hg.globalAlpha = 0.95; hg.fillRect(-11, -6, 22, 12 * Math.abs(Math.cos(r * 1.3)) + 3); hg.restore(); } hg.restore(); }
 }
 // ---------------------------------------------------------------- un fotograma

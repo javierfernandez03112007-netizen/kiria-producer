@@ -180,7 +180,7 @@ def sfx_track(path):
         sfx.mix(out, x, max(0.0, t0), g)
 
     c1 = at("uno", 1, 5); no, si = at("uf", 1, 3), at("este", 1, 4); t4 = min(at("dividimos", 1, 2), no - 1.6); t5 = min(at("cuatro", 1, 2), no - 0.95)
-    point = min(c1 + 0.35, 22.3); ex = point + 0.42; press = ex + 0.62; ok = press + 0.14          # igual que TL en web/src/30_center.js
+    point = min(c1 - 0.02, 22.45); ex = point + 0.45; press = ex + 0.55; ok = press + 0.14          # igual que TL en web/src/30_center.js
     # 1 · biblioteca: un lápiz, el aviso del grupo y la mano coge el móvil
     put("magisterio/lapiz", 0.15, 0.8, 0.14, 0.3); put("lanzamiento/mensaje", 1.0, 0.6, 0.5, 0.2); put("magisterio/papel", 3.72, 0.4, 0.26, 0.15)
     # 2 · responden los tres: un «pop» por mensaje
@@ -193,10 +193,10 @@ def sfx_track(path):
     put("avion/cifra", t4, 0.4, 0.28, 0.12); put("economia/ding", t5, 0.6, 0.34, 0.25)
     put("avion/error", no + 0.12, 0.5, 0.26, 0.2); put("quimica/ok", si + 0.02, 0.5, 0.36, 0.2)
     # 4 · la votación: tres toques en la mesa, todos señalan, «Reservar» y confirmada
-    for k in ("tres", "dos", "uno"):
+    for k in ("tres", "dos"):
         put("magisterio/madera_toc", at(k, 1, 5) + 0.05, 0.25, 0.3, 0.1)
     put("avion/pop", point + 0.05, 0.4, 0.42, 0.12); put("lanzamiento/desliza", ex, 0.4, 0.2, 0.15)
-    put("avion/clic", press, 0.3, 0.55, 0.1); put("avion/ding", ok + 0.02, 0.8, 0.5, 0.35); put("avion/brillo", 24.15, 0.85, 0.3, 0.4)
+    put("avion/clic", press, 0.3, 0.55, 0.1); put("avion/ding", ok + 0.02, 0.8, 0.5, 0.35); put("avion/brillo", 24.35, 0.85, 0.3, 0.4)
     # 5 · el viaje (lo lleva la música): solo el clic de la foto
     put("avion/clic", 34.94, 0.3, 0.6, 0.1)
     # 6 · el cierre: aparece la marca

@@ -4,11 +4,19 @@ Uso: python3 build_voz.py"""
 import difflib, json, os, re, subprocess, unicodedata
 import numpy as np
 ROOT = os.path.dirname(os.path.abspath(__file__)); SR = 44100; END = 40.0
-AT = [12.0, 14.2, 17.3, 18.6, 20.15, 35.5]            # dónde empieza cada frase en el spot
+AT = [12.0, 14.2, 17.3, 18.85, 19.7, 35.5]            # dónde empieza cada frase en el spot
 def nrm(w):
     w = unicodedata.normalize("NFD", w.lower()); return re.sub(r"[^a-z0-9ñ]", "", "".join(c for c in w if unicodedata.category(c) != "Mn"))
 lines = [l.strip() for l in open(os.path.join(ROOT, "script.txt"), encoding="utf-8") if l.strip()]
 asr = json.load(open(os.path.join(ROOT, "asr_original.json")))
+# el reconocedor escribe «3, 2, 1», «Uff» y «Booking.com» (una palabra): se igualan al guion para que casen
+_fix, _asr = {"3": "tres", "2": "dos", "1": "uno", "uff": "uf"}, []
+for a in asr:
+    k = nrm(a["w"])
+    if k == "bookingcom":
+        d = (a["end"] - a["start"]); _asr += [{"w": "Booking", "start": a["start"], "end": a["start"] + d * 0.42}, {"w": "punto", "start": a["start"] + d * 0.45, "end": a["start"] + d * 0.68}, {"w": "com", "start": a["start"] + d * 0.72, "end": a["end"]}]
+    else: _asr.append(dict(a, w=_fix.get(k, a["w"])))
+asr = _asr
 sw = [(li, w) for li, l in enumerate(lines) for w in l.split()]
 A, B = [nrm(w) for _, w in sw], [nrm(a["w"]) for a in asr]
 st, en = [None] * len(sw), [None] * len(sw)

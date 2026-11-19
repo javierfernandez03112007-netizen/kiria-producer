@@ -1,208 +1,208 @@
 [
  {
   "start": 12.0,
-  "end": 14.03,
+  "end": 13.6,
   "text": "¡Mirad las reseñas de este!",
   "words": [
    {
     "w": "¡Mirad",
     "start": 12.0,
-    "end": 12.44
+    "end": 12.24
    },
    {
     "w": "las",
-    "start": 12.48,
-    "end": 12.71
+    "start": 12.4,
+    "end": 12.48
    },
    {
     "w": "reseñas",
-    "start": 12.75,
-    "end": 13.26
+    "start": 12.56,
+    "end": 13.04
    },
    {
     "w": "de",
-    "start": 13.3,
-    "end": 13.46
+    "start": 13.04,
+    "end": 13.12
    },
    {
     "w": "este!",
-    "start": 13.5,
-    "end": 14.03
+    "start": 13.2,
+    "end": 13.6
    }
   ]
  },
  {
   "start": 14.2,
-  "end": 17.59,
+  "end": 16.76,
   "text": "Y sale más barato si lo dividimos entre cuatro.",
   "words": [
    {
     "w": "Y",
     "start": 14.2,
-    "end": 14.29
+    "end": 14.28
    },
    {
     "w": "sale",
-    "start": 14.33,
-    "end": 14.63
+    "start": 14.44,
+    "end": 14.68
    },
    {
     "w": "más",
-    "start": 14.67,
-    "end": 14.9
+    "start": 14.76,
+    "end": 14.84
    },
    {
     "w": "barato",
-    "start": 14.94,
-    "end": 15.38
+    "start": 14.92,
+    "end": 15.16
    },
    {
     "w": "si",
-    "start": 15.42,
-    "end": 15.58
+    "start": 15.24,
+    "end": 15.32
    },
    {
     "w": "lo",
-    "start": 15.62,
-    "end": 15.78
+    "start": 15.4,
+    "end": 15.48
    },
    {
     "w": "dividimos",
-    "start": 15.82,
-    "end": 16.47
+    "start": 15.48,
+    "end": 15.96
    },
    {
     "w": "entre",
-    "start": 16.51,
-    "end": 16.88
+    "start": 16.04,
+    "end": 16.12
    },
    {
     "w": "cuatro.",
-    "start": 16.92,
-    "end": 17.59
+    "start": 16.28,
+    "end": 16.76
    }
   ]
  },
  {
   "start": 17.3,
-  "end": 18.39,
+  "end": 18.66,
   "text": "Uf, ese no.",
   "words": [
    {
     "w": "Uf,",
     "start": 17.3,
-    "end": 17.69
+    "end": 17.94
    },
    {
     "w": "ese",
-    "start": 17.73,
-    "end": 17.96
+    "start": 17.94,
+    "end": 18.02
    },
    {
     "w": "no.",
-    "start": 18.0,
-    "end": 18.39
+    "start": 18.34,
+    "end": 18.66
    }
   ]
  },
  {
-  "start": 18.6,
-  "end": 19.33,
+  "start": 18.85,
+  "end": 19.57,
   "text": "Este sí.",
   "words": [
    {
     "w": "Este",
-    "start": 18.6,
-    "end": 18.9
+    "start": 18.85,
+    "end": 18.93
    },
    {
     "w": "sí.",
-    "start": 18.94,
-    "end": 19.33
+    "start": 19.25,
+    "end": 19.57
    }
   ]
  },
  {
-  "start": 20.15,
-  "end": 22.53,
+  "start": 19.7,
+  "end": 23.14,
   "text": "¿Votamos? Tres, dos, uno…",
   "words": [
    {
     "w": "¿Votamos?",
-    "start": 20.15,
-    "end": 20.96
+    "start": 19.7,
+    "end": 20.5
    },
    {
     "w": "Tres,",
-    "start": 21.0,
-    "end": 21.53
+    "start": 20.74,
+    "end": 21.3
    },
    {
     "w": "dos,",
-    "start": 21.57,
-    "end": 22.03
+    "start": 21.62,
+    "end": 22.18
    },
    {
     "w": "uno…",
-    "start": 22.07,
-    "end": 22.53
+    "start": 22.42,
+    "end": 23.14
    }
   ]
  },
  {
   "start": 35.5,
-  "end": 39.83,
+  "end": 39.02,
   "text": "El plan lo ponéis vosotros. El sitio, Booking punto com.",
   "words": [
    {
     "w": "El",
     "start": 35.5,
-    "end": 35.66
+    "end": 35.58
    },
    {
     "w": "plan",
-    "start": 35.7,
-    "end": 36.0
+    "start": 35.66,
+    "end": 35.74
    },
    {
     "w": "lo",
-    "start": 36.04,
-    "end": 36.2
+    "start": 35.98,
+    "end": 36.06
    },
    {
     "w": "ponéis",
-    "start": 36.24,
-    "end": 36.68
+    "start": 36.14,
+    "end": 36.54
    },
    {
     "w": "vosotros.",
-    "start": 36.72,
-    "end": 37.53
+    "start": 36.62,
+    "end": 37.1
    },
    {
     "w": "El",
-    "start": 37.57,
-    "end": 37.73
+    "start": 37.26,
+    "end": 37.34
    },
    {
     "w": "sitio,",
-    "start": 37.77,
-    "end": 38.37
+    "start": 37.42,
+    "end": 37.74
    },
    {
     "w": "Booking",
-    "start": 38.41,
-    "end": 38.92
+    "start": 37.98,
+    "end": 38.417
    },
    {
     "w": "punto",
-    "start": 38.96,
-    "end": 39.33
+    "start": 38.448,
+    "end": 38.687
    },
    {
     "w": "com.",
-    "start": 39.37,
-    "end": 39.83
+    "start": 38.729,
+    "end": 39.02
    }
   ]
  }

@@ -50,8 +50,8 @@ function hudAt(t) {
     if (a1 > 0.01) { hg.save(); hg.globalAlpha = 0.5 * a1; const gr = hg.createLinearGradient(0, 0, 0, 300); gr.addColorStop(0, 'rgba(20,14,8,1)'); gr.addColorStop(1, 'rgba(20,14,8,0)'); hg.fillStyle = gr; hg.fillRect(0, 0, 1200, 300); hg.restore(); }
     sText('Compara precios.', 70 - (1 - a1) * 30, 122, 74, 900, a1); sText('Lee opiniones reales.', 70 - (1 - a2) * 30, 208, 74, 900, a2, { col: '#ffd66b' }); }
   // ---- 4 · «Decidís entre todos.» y el confeti del abrazo
-  if (n === 'vote' || n === 'hug') { const a = win(t, TL.vota + 0.35, 0.4) * (1 - win(t, 24.75, 0.25)), y = n === 'hug' ? 1000 : 128; hg.save(); hg.font = `900 84px ${EMO}`; const w1 = hg.measureText('Decidís ').width, w2 = hg.measureText('entre todos.').width; hg.restore();
+  if (n === 'vote' || n === 'hug') { const a = win(t, 20.5, 0.4) * (1 - win(t, 24.95, 0.25)), y = n === 'hug' ? 1000 : 128; hg.save(); hg.font = `900 84px ${EMO}`; const w1 = hg.measureText('Decidís ').width, w2 = hg.measureText('entre todos.').width; hg.restore();
     sText('Decidís ', W / 2 - (w1 + w2) / 2, y, 84, 900, a); sText('entre todos.', W / 2 - (w1 + w2) / 2 + w1, y, 84, 900, a, { col: '#ffd66b' }); }
-  if (n === 'hug') { const u = t - 24.15 + 0.25, cols = ['#febb02', '#0071c2', '#f2664b', '#2f9e6b', '#ffffff', '#7d5fd0']; hg.save(); for (let i = 0; i < 90; i++) { const x = hash(i * 1.7) * W, sp = 520 + hash(i * 3.1) * 520, y = -60 + sp * u - 300 * hash(i * 5.3), r = u * (3 + hash(i) * 6) + i;
+  if (n === 'hug') { const u = t - 24.35 + 0.25, cols = ['#febb02', '#0071c2', '#f2664b', '#2f9e6b', '#ffffff', '#7d5fd0']; hg.save(); for (let i = 0; i < 90; i++) { const x = hash(i * 1.7) * W, sp = 520 + hash(i * 3.1) * 520, y = -60 + sp * u - 300 * hash(i * 5.3), r = u * (3 + hash(i) * 6) + i;
       hg.save(); hg.translate(x + 40 * Math.sin(u * 4 + i), y); hg.rotate(r); hg.fillStyle = cols[i % cols.length]; hg.globalAlpha = 0.95; hg.fillRect(-11, -6, 22, 12 * Math.abs(Math.cos(r * 1.3)) + 3); hg.restore(); } hg.restore(); }
 }

@@ -15,7 +15,9 @@ while true; do
       n=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of csv=p=0 out/$tag.mp4)
       [ "$n" = "$((B - A))" ] || { echo "$(date +%H:%M) $br $tag: $n fotogramas (esperaba $((B - A)))"; continue; }
       rm -rf out/tmp_$tag && mkdir -p out/tmp_$tag && ffmpeg -v error -y -i out/$tag.mp4 -start_number $A -q:v 2 out/tmp_$tag/f%05d.jpg
-      for f in out/tmp_$tag/*.jpg; do b=$(basename $f); [ -f out/frames/$b ] || mv $f out/frames/$b; done
+      X=${br##*-}                                    # ronda 1 (máquinas 1–6): sus fotogramas 300–821 son de antes de llegar la voz → no valen; ronda 2 (7–12): mandan
+      for f in out/tmp_$tag/*.jpg; do b=$(basename $f); i=$((10#$(echo $b | tr -dc 0-9)))
+        if [ "$X" -ge 7 ]; then mv -f $f out/frames/$b; elif [ $i -ge 300 ] && [ $i -lt 822 ]; then continue; else [ -f out/frames/$b ] || mv $f out/frames/$b; fi; done
       rm -rf out/tmp_$tag; touch out/$tag.done; echo "$(date +%H:%M) $br $tag metido"
     done
   done
