@@ -1,0 +1,640 @@
+[
+ {
+  "text": "Son las siete del domingo… y el lunes ya está saliendo por tu ventana.",
+  "start": 0.0,
+  "end": 4.45,
+  "words": [
+   {
+    "w": "Son",
+    "start": 0.0,
+    "end": 0.32
+   },
+   {
+    "w": "las",
+    "start": 0.32,
+    "end": 0.56
+   },
+   {
+    "w": "siete",
+    "start": 0.56,
+    "end": 0.96
+   },
+   {
+    "w": "del",
+    "start": 0.96,
+    "end": 1.12
+   },
+   {
+    "w": "domingo…",
+    "start": 1.12,
+    "end": 2.08
+   },
+   {
+    "w": "y",
+    "start": 2.08,
+    "end": 2.152
+   },
+   {
+    "w": "el",
+    "start": 2.152,
+    "end": 2.24
+   },
+   {
+    "w": "lunes",
+    "start": 2.24,
+    "end": 2.8
+   },
+   {
+    "w": "ya",
+    "start": 2.8,
+    "end": 3.04
+   },
+   {
+    "w": "está",
+    "start": 3.04,
+    "end": 3.28
+   },
+   {
+    "w": "saliendo",
+    "start": 3.28,
+    "end": 3.68
+   },
+   {
+    "w": "por",
+    "start": 3.68,
+    "end": 3.84
+   },
+   {
+    "w": "tu",
+    "start": 3.84,
+    "end": 4.08
+   },
+   {
+    "w": "ventana.",
+    "start": 4.08,
+    "end": 4.45
+   }
+  ]
+ },
+ {
+  "text": "¿Por qué pesa tanto?",
+  "start": 5.15,
+  "end": 6.31,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 5.15,
+    "end": 5.26
+   },
+   {
+    "w": "qué",
+    "start": 5.26,
+    "end": 5.5
+   },
+   {
+    "w": "pesa",
+    "start": 5.5,
+    "end": 5.98
+   },
+   {
+    "w": "tanto?",
+    "start": 5.98,
+    "end": 6.31
+   }
+  ]
+ },
+ {
+  "text": "Estás en tu cuarto, sin nada que hacer… y se te encoge el pecho.",
+  "start": 6.81,
+  "end": 10.82,
+  "words": [
+   {
+    "w": "Estás",
+    "start": 6.81,
+    "end": 7.11
+   },
+   {
+    "w": "en",
+    "start": 7.11,
+    "end": 7.27
+   },
+   {
+    "w": "tu",
+    "start": 7.27,
+    "end": 7.43
+   },
+   {
+    "w": "cuarto,",
+    "start": 7.43,
+    "end": 8.07
+   },
+   {
+    "w": "sin",
+    "start": 8.07,
+    "end": 8.31
+   },
+   {
+    "w": "nada",
+    "start": 8.31,
+    "end": 8.55
+   },
+   {
+    "w": "que",
+    "start": 8.55,
+    "end": 8.87
+   },
+   {
+    "w": "hacer…",
+    "start": 8.87,
+    "end": 9.57
+   },
+   {
+    "w": "y",
+    "start": 9.57,
+    "end": 9.638
+   },
+   {
+    "w": "se",
+    "start": 9.638,
+    "end": 9.72
+   },
+   {
+    "w": "te",
+    "start": 9.72,
+    "end": 9.88
+   },
+   {
+    "w": "encoge",
+    "start": 9.88,
+    "end": 10.44
+   },
+   {
+    "w": "el",
+    "start": 10.44,
+    "end": 10.52
+   },
+   {
+    "w": "pecho.",
+    "start": 10.52,
+    "end": 10.82
+   }
+  ]
+ },
+ {
+  "text": "No es pereza: es tu cerebro viviendo el lunes antes de tiempo.",
+  "start": 11.27,
+  "end": 14.89,
+  "words": [
+   {
+    "w": "No",
+    "start": 11.27,
+    "end": 11.37
+   },
+   {
+    "w": "es",
+    "start": 11.37,
+    "end": 11.53
+   },
+   {
+    "w": "pereza:",
+    "start": 11.53,
+    "end": 12.22
+   },
+   {
+    "w": "es",
+    "start": 12.22,
+    "end": 12.38
+   },
+   {
+    "w": "tu",
+    "start": 12.38,
+    "end": 12.54
+   },
+   {
+    "w": "cerebro",
+    "start": 12.54,
+    "end": 13.02
+   },
+   {
+    "w": "viviendo",
+    "start": 13.02,
+    "end": 13.42
+   },
+   {
+    "w": "el",
+    "start": 13.42,
+    "end": 13.58
+   },
+   {
+    "w": "lunes",
+    "start": 13.58,
+    "end": 14.06
+   },
+   {
+    "w": "antes",
+    "start": 14.06,
+    "end": 14.38
+   },
+   {
+    "w": "de",
+    "start": 14.38,
+    "end": 14.54
+   },
+   {
+    "w": "tiempo.",
+    "start": 14.54,
+    "end": 14.89
+   }
+  ]
+ },
+ {
+  "text": "Ante algo que aún no ha pasado, enciende la alarma del estrés.",
+  "start": 15.34,
+  "end": 18.81,
+  "words": [
+   {
+    "w": "Ante",
+    "start": 15.34,
+    "end": 15.51
+   },
+   {
+    "w": "algo",
+    "start": 15.51,
+    "end": 15.83
+   },
+   {
+    "w": "que",
+    "start": 15.83,
+    "end": 15.99
+   },
+   {
+    "w": "aún",
+    "start": 15.99,
+    "end": 16.23
+   },
+   {
+    "w": "no",
+    "start": 16.23,
+    "end": 16.39
+   },
+   {
+    "w": "ha",
+    "start": 16.39,
+    "end": 16.55
+   },
+   {
+    "w": "pasado,",
+    "start": 16.55,
+    "end": 17.15
+   },
+   {
+    "w": "enciende",
+    "start": 17.15,
+    "end": 17.75
+   },
+   {
+    "w": "la",
+    "start": 17.75,
+    "end": 17.83
+   },
+   {
+    "w": "alarma",
+    "start": 17.83,
+    "end": 18.23
+   },
+   {
+    "w": "del",
+    "start": 18.23,
+    "end": 18.47
+   },
+   {
+    "w": "estrés.",
+    "start": 18.47,
+    "end": 18.81
+   }
+  ]
+ },
+ {
+  "text": "Y no eres el único: en una encuesta de LinkedIn, casi ocho de cada diez jóvenes trabajadores dijeron que les pasa.",
+  "start": 19.41,
+  "end": 25.52,
+  "words": [
+   {
+    "w": "Y",
+    "start": 19.41,
+    "end": 19.509
+   },
+   {
+    "w": "no",
+    "start": 19.509,
+    "end": 19.63
+   },
+   {
+    "w": "eres",
+    "start": 19.63,
+    "end": 19.95
+   },
+   {
+    "w": "el",
+    "start": 19.95,
+    "end": 20.11
+   },
+   {
+    "w": "único:",
+    "start": 20.11,
+    "end": 20.64
+   },
+   {
+    "w": "en",
+    "start": 20.64,
+    "end": 20.688
+   },
+   {
+    "w": "una",
+    "start": 20.688,
+    "end": 20.8
+   },
+   {
+    "w": "encuesta",
+    "start": 20.8,
+    "end": 21.12
+   },
+   {
+    "w": "de",
+    "start": 21.12,
+    "end": 21.28
+   },
+   {
+    "w": "LinkedIn,",
+    "start": 21.28,
+    "end": 22.16
+   },
+   {
+    "w": "casi",
+    "start": 22.16,
+    "end": 22.48
+   },
+   {
+    "w": "ocho",
+    "start": 22.48,
+    "end": 22.72
+   },
+   {
+    "w": "de",
+    "start": 22.72,
+    "end": 22.88
+   },
+   {
+    "w": "cada",
+    "start": 22.88,
+    "end": 23.04
+   },
+   {
+    "w": "diez",
+    "start": 23.04,
+    "end": 23.36
+   },
+   {
+    "w": "jóvenes",
+    "start": 23.36,
+    "end": 23.76
+   },
+   {
+    "w": "trabajadores",
+    "start": 23.76,
+    "end": 24.4
+   },
+   {
+    "w": "dijeron",
+    "start": 24.4,
+    "end": 24.8
+   },
+   {
+    "w": "que",
+    "start": 24.8,
+    "end": 25.04
+   },
+   {
+    "w": "les",
+    "start": 25.04,
+    "end": 25.2
+   },
+   {
+    "w": "pasa.",
+    "start": 25.2,
+    "end": 25.52
+   }
+  ]
+ },
+ {
+  "text": "Lo que ayuda: escribe en un papel lo que te preocupa del lunes.",
+  "start": 26.12,
+  "end": 29.54,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 26.12,
+    "end": 26.22
+   },
+   {
+    "w": "que",
+    "start": 26.22,
+    "end": 26.38
+   },
+   {
+    "w": "ayuda:",
+    "start": 26.38,
+    "end": 27.04
+   },
+   {
+    "w": "escribe",
+    "start": 27.04,
+    "end": 27.44
+   },
+   {
+    "w": "en",
+    "start": 27.44,
+    "end": 27.6
+   },
+   {
+    "w": "un",
+    "start": 27.6,
+    "end": 27.68
+   },
+   {
+    "w": "papel",
+    "start": 27.68,
+    "end": 28.08
+   },
+   {
+    "w": "lo",
+    "start": 28.08,
+    "end": 28.24
+   },
+   {
+    "w": "que",
+    "start": 28.24,
+    "end": 28.32
+   },
+   {
+    "w": "te",
+    "start": 28.32,
+    "end": 28.48
+   },
+   {
+    "w": "preocupa",
+    "start": 28.48,
+    "end": 28.96
+   },
+   {
+    "w": "del",
+    "start": 28.96,
+    "end": 29.12
+   },
+   {
+    "w": "lunes.",
+    "start": 29.12,
+    "end": 29.54
+   }
+  ]
+ },
+ {
+  "text": "En un estudio, quienes apuntaban sus tareas antes de dormir se dormían unos nueve minutos antes.",
+  "start": 29.94,
+  "end": 35.37,
+  "words": [
+   {
+    "w": "En",
+    "start": 29.94,
+    "end": 30.03
+   },
+   {
+    "w": "un",
+    "start": 30.03,
+    "end": 30.14
+   },
+   {
+    "w": "estudio,",
+    "start": 30.14,
+    "end": 30.87
+   },
+   {
+    "w": "quienes",
+    "start": 30.87,
+    "end": 31.1
+   },
+   {
+    "w": "apuntaban",
+    "start": 31.1,
+    "end": 31.66
+   },
+   {
+    "w": "sus",
+    "start": 31.66,
+    "end": 31.9
+   },
+   {
+    "w": "tareas",
+    "start": 31.9,
+    "end": 32.3
+   },
+   {
+    "w": "antes",
+    "start": 32.3,
+    "end": 32.54
+   },
+   {
+    "w": "de",
+    "start": 32.54,
+    "end": 32.7
+   },
+   {
+    "w": "dormir",
+    "start": 32.7,
+    "end": 33.19
+   },
+   {
+    "w": "se",
+    "start": 33.19,
+    "end": 33.34
+   },
+   {
+    "w": "dormían",
+    "start": 33.34,
+    "end": 33.9
+   },
+   {
+    "w": "unos",
+    "start": 33.9,
+    "end": 34.22
+   },
+   {
+    "w": "nueve",
+    "start": 34.22,
+    "end": 34.54
+   },
+   {
+    "w": "minutos",
+    "start": 34.54,
+    "end": 35.1
+   },
+   {
+    "w": "antes.",
+    "start": 35.1,
+    "end": 35.37
+   }
+  ]
+ },
+ {
+  "text": "Mándaselo a quien ahora mismo está mirando el techo.",
+  "start": 35.968,
+  "end": 38.551,
+  "words": [
+   {
+    "w": "Mándaselo",
+    "start": 35.968,
+    "end": 36.634
+   },
+   {
+    "w": "a",
+    "start": 36.634,
+    "end": 36.713
+   },
+   {
+    "w": "quien",
+    "start": 36.713,
+    "end": 36.951
+   },
+   {
+    "w": "ahora",
+    "start": 36.951,
+    "end": 37.19
+   },
+   {
+    "w": "mismo",
+    "start": 37.19,
+    "end": 37.508
+   },
+   {
+    "w": "está",
+    "start": 37.508,
+    "end": 37.746
+   },
+   {
+    "w": "mirando",
+    "start": 37.746,
+    "end": 38.143
+   },
+   {
+    "w": "el",
+    "start": 38.143,
+    "end": 38.223
+   },
+   {
+    "w": "techo.",
+    "start": 38.223,
+    "end": 38.551
+   }
+  ]
+ }
+]
