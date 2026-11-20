@@ -9,6 +9,8 @@ while true; do
   git fetch -q origin "+refs/heads/$PFX-*:refs/remotes/origin/$PFX-*" 2>/dev/null
   for br in $(git branch -r --list "origin/$PFX-*"); do
     X=${br##*-}
+    # 1, 5 y 6 (y los nuevos, ≥ 6) solo valen con el arreglo de la cabeza de cristal (72b508d); 2–4 no tienen cabeza
+    if [ "$X" = 1 ] || [ "$X" = 5 ] || [ "$X" -ge 6 ]; then git merge-base --is-ancestor 72b508d $br 2>/dev/null || continue; fi
     for c in $(git ls-tree --full-tree --name-only $br projects/voz_cerebro/chunks/ 2>/dev/null | grep 'chunk_[0-9]*_[0-9]*\.mp4'); do
       tag=$(basename $c .mp4); [ -f out/$tag.done ] && continue
       A=$(echo $tag | cut -d_ -f2); B=$(echo $tag | cut -d_ -f3)
