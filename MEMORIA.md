@@ -232,6 +232,25 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   recolector no vuelve a sacar ese trozo). **Entregado el 20-11 (13:40)**: 62,3 s, 3.737 fotogramas, 1080 × 1920, 60 fps, −14,7 LUFS, 52 MB,
   con portada y miniatura. Pendiente de permiso: borrar las ramas `render-vc-*`.
 
+- **«Kiria World, día 3» (`projects/ciudad_seguidores_ep3/`, 20-11-2026) — gráficos nuevos, mucho más realistas (Javi: «mejores gráficos, que
+  se vea la fachada y dentro por los cristales las personas, coches, césped, personas con boca y ojos; que enganche; no empieces desde arriba»)**.
+  Rey: sigue @iannyanezz_; su ley: «una vez a la semana, el mejor seguidor» (concretado en el guion: el comentario con más «me gusta» de la
+  semana → se construye lo que pida + estatua de oro). Tiendas pedidas: sushi de @lydiaa.rc, pastelería de @salvadormatthias34, veterinario de
+  @zamii.luu. Voz de Javi 47,4 s (no grabó «libre» en «ni una mesa»). Un solo plano: sello de oro sobre la «LEY Nº 1» (gancho) → cara del rey →
+  la ley de cerca → el rey señala («cómo ser tú») → sale volando por la puerta → sushi lleno y cartel COMPLETO → pastelería y la cola hasta la
+  esquina → el perro que salta de la camilla → pedestal vacío con foco → tarjeta del comentario → estatua de oro con «TU NOMBRE» → vuelta al
+  pergamino (bucle). **Piezas nuevas reutilizables**: `21_folk.js` = personas articuladas con **cara en el sombreador** (ojos con iris, brillo y
+  parpadeo, cejas, mejillas, boca que habla/sonríe; `faceMat`, `person`, `poseSit/Walk/Eat/Wave/Work`, `lookAtP`, `reachTo` = brazo con
+  cinemática inversa); `22_cars.js` (carrocería tejida con lunas, faros, ruedas); `20_town.js` (texturas por código: ladrillo, baldosa, mármol,
+  madera, asfalto, césped con 70.000 briznas, árboles, farolas, bancos, pedestal); `23_shops.js` (fachada + interior visto por el escaparate);
+  `24_hall.js` (salón del trono). **Lecciones**: (1) `Object3D.add()` devuelve el PADRE: `g.add(x).position.set(…)` movía edificios enteros →
+  helper `ad(p, c)`; (2) con `cam.far` bajo, la cúpula del cielo tiene que ser más pequeña que `far` (si no, cielo negro); (3) el sol de lado y
+  la luz de relleno baja dan las sombras que hacen «real» la escena; (4) giros de cámara de 90° en 0,2 s y pasadas a 2 m de una fachada se ven
+  como saltos: girar con claves cada 45° y separarse de la fachada; (5) al cambiar claves de cámara, el interpolador monótono cambia también los
+  tramos vecinos: comparar `camAt` antes/después para saber qué fotogramas rehacer; (6) esta escena (≈ 5.000 mallas) va a ≈ 7–19 fotogramas/min
+  por máquina: el render tarda mucho más que el de escenas sencillas (la próxima vez, juntar geometría estática). Nombres en local con
+  `web/labels.mjs` + `compose_ciudad.py` (los cuatro de la voz y el rey en dorado; el resto, sorteo fijo de la lista del 17-11; se apilan sin pisarse).
+
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
