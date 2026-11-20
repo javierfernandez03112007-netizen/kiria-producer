@@ -2,9 +2,9 @@
  "formato": "forestal",
  "estilo": "app",
  "voz": {
-  "tempo": 1.0,
+  "tempo": 1.03,
   "count": 0,
-  "cortar": false,
+  "cortar": true,
   "pause_def": 0.3
  },
  "realce": [
@@ -15,9 +15,9 @@
  "compartir_a": "QUIEN QUIERA SER BOMBERO",
  "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
  "portada": {
-  "titulo": "¿CUÁL ES LA CABEZA?",
+  "titulo": "CABEZA, COLA… ¡Y DEDOS!",
   "etiqueta": "PARTES DE UN INCENDIO FORESTAL",
-  "t": 2.0,
+  "t": 3.3,
   "oscurecer": true
  },
  "mezcla": {
