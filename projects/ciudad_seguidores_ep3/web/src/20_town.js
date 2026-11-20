@@ -10,7 +10,7 @@ function townMats() {
   const [hc, hh] = stuccoCanvases([226, 214, 190], 21); T.stone = texMat(hc, hh, [3, 3], { r: 0.8, ns: 0.6 });
   T.stoneW = stdM(0xeee7da, 0.55); T.gold = new THREE.MeshStandardMaterial({ color: 0xffc85a, roughness: 0.25, metalness: 1 }); T.goldD = new THREE.MeshStandardMaterial({ color: 0xc8922e, roughness: 0.35, metalness: 1 });
   T.iron = stdM(0x23272b, 0.45, { metalness: 0.6 }); T.woodD = stdM(0x4a2e1c, 0.6); T.bark = stdM(0x5a4433, 0.95); T.glassDark = new THREE.MeshPhysicalMaterial({ color: 0x2a3a48, roughness: 0.06, metalness: 0.0, transparent: true, opacity: 0.85, envMapIntensity: 1.4 });
-  T.glass = new THREE.MeshPhysicalMaterial({ color: 0xdfeef2, roughness: 0.03, metalness: 0, transparent: true, opacity: 0.16, envMapIntensity: 1.5, depthWrite: false });
+  T.glass = new THREE.MeshPhysicalMaterial({ color: 0xdfeef2, roughness: 0.03, metalness: 0, transparent: true, opacity: 0.08, envMapIntensity: 0.55, depthWrite: false });
   T.frame = stdM(0x2c2f33, 0.4, { metalness: 0.5 }); T.velvet = stdM(0x8c1426, 0.75); T.purple = stdM(0x4b2a78, 0.7);
   T.lampGlow = new THREE.MeshStandardMaterial({ color: 0xfff1cf, emissive: 0xffd89a, emissiveIntensity: 1.6, roughness: 0.3 });
   { const c = cnv(256, 256), g = c.getContext('2d'), R = rng(77); g.fillStyle = '#808080'; g.fillRect(0, 0, 256, 256); for (let i = 0; i < 900; i++) { const v = (90 + R() * 120) | 0; g.fillStyle = `rgb(${v},${v},${v})`; g.beginPath(); g.ellipse(R() * 256, R() * 256, 4 + R() * 6, 2 + R() * 3, R() * 3.14, 0, 7); g.fill(); }

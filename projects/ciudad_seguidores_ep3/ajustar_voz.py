@@ -18,11 +18,11 @@ from engine.audio import silences  # noqa: E402
 
 SR = 44100
 TEMPO = 1.0           # Javi (11-11-2026): la voz a su velocidad natural, sin acelerarla; solo se recortan los silencios largos
-PAUSE = {1: 0.5, 2: 0.4, 3: 0.35, 4: 0.5, 5: 0.4, 6: 0.4, 7: 0.55, 8: 0.45, 9: 0.45, 10: 0.5}   # ritmo pausado: Javi quiere ver despacio cada paso
+PAUSE = {1: 0.45, 2: 0.4, 3: 0.35, 4: 0.45, 5: 0.4, 6: 0.4, 7: 0.45, 8: 0.5, 9: 0.45, 10: 0.5}   # pausas entre frases (s): ritmo de relato
 PAUSE_DEF = 0.4
 INNER_MAX = 0.2      # silencios internos (comas, puntos dentro de la frase) como máximo
 INNER_LONG = 0.45     # silencio tras «…» dentro de la frase: pausa dramática
-MIN_PAUSE = {1: 0.4, 3: 0.3, 4: 0.4, 7: 0.45, 10: 0.4}
+MIN_PAUSE = {7: 0.4}   # «vacunar, y en la plaza…» van pegadas en la grabación
 
 
 def nrm(w):

@@ -27,7 +27,7 @@ function shopFrame(G, zc, o) {
   // interior: suelo, paredes, techo con lámparas (todo se ve por el escaparate)
   const fl = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W - 0.1, D), o.floor); fl.rotation.x = -Math.PI / 2; fl.position.set(0, 0.012, -D / 2); fl.receiveShadow = true; g.add(fl);
   g.add(box(SHOP.W, H0, 0.15, o.inWall, 0, H0 / 2, -D)); for (const s of [-1, 1]) g.add(box(0.15, H0, D, o.inWall, s * (W2 - 0.08), H0 / 2, -D / 2));
-  const ce = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W, D), stdM(0xf2efe8, 0.9)); ce.rotation.x = Math.PI / 2; ce.position.set(0, H0 - 0.25, -D / 2); g.add(ce);
+  const ce = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W, D), stdM(0xd8d2c8, 0.9)); ce.rotation.x = Math.PI / 2; ce.position.set(0, H0 - 0.25, -D / 2); g.add(ce);
   g.add(box(SHOP.W, 0.3, D + 0.4, stdM(0x8c8780, 0.8), 0, H0 - 0.1, -D / 2));
   U.lamps = []; for (const x of [-2.4, 0, 2.4]) for (const z of [-1.8, -4.6]) { const l = new THREE.Mesh(new THREE.CircleGeometry(0.28, 20), T.lampGlow); l.rotation.x = Math.PI / 2; l.position.set(x, H0 - 0.26, z); g.add(l); U.lamps.push(l); }
   U.local = (x, y, z) => g.localToWorld(_v(x, y, z)); U.g = g; U.dX = dX;
@@ -73,22 +73,22 @@ function buildShops(G) {
     for (let i = 0; i < 3; i++) { const n = signPlane(0.42, 0.7, 128, (c, w, h) => { c.fillStyle = '#1f3a5f'; c.fillRect(0, 0, w, h); c.fillStyle = '#f2ece0'; c.font = '700 60px serif'; c.textAlign = 'center'; c.fillText(['寿', '司', '屋'][i], w / 2, h * 0.6); }, { r: 0.8 }); n.position.set(U.dX - 0.45 + i * 0.45, 2.95, 0.06); n.material.side = THREE.DoubleSide; g.add(n); }
     shadowAll(g, true, true); }
   // --- PASTELERÍA (centro): toldo de rayas rosa, escaparate de tartas y mostrador
-  SH.pastry = shopFrame(G, -0.5, { seed: 2, wall: pinkSt, floor: tileW, inWall: stdM(0xf6e4ea, 0.9), fascia: stdM(0xf2c6d3, 0.5), frame: stdM(0xf7f3ef, 0.5), pil: stdM(0xf2dce4, 0.6),
+  SH.pastry = shopFrame(G, -0.5, { seed: 2, wall: pinkSt, floor: woodF, inWall: stdM(0xd9a3b5, 0.9), fascia: stdM(0xf2c6d3, 0.5), frame: stdM(0xf7f3ef, 0.5), pil: stdM(0xf2dce4, 0.6),
     sign: (c, w, h) => { c.fillStyle = '#f7d6e0'; c.fillRect(0, 0, w, h); c.fillStyle = '#8a2f4f'; c.font = 'italic 900 64px Inter'; c.textBaseline = 'middle'; c.textAlign = 'center'; c.fillText('Pastelería', w / 2 - 120, h / 2 - 2); c.font = '700 28px Inter'; c.fillStyle = '#b34a70'; c.fillText('de @salvadormatthias34', w / 2 + 250, h / 2 + 6); } });
   { const g = SH.pastry, U = g.userData; // toldo de rayas inclinado
     const aw = signTex(1024, 256, (c, w, h) => { for (let i = 0; i < 16; i++) { c.fillStyle = i % 2 ? '#ffffff' : '#e86f98'; c.fillRect(i * w / 16, 0, w / 16, h); } c.fillStyle = 'rgba(0,0,0,.1)'; c.fillRect(0, h - 26, w, 26); });
     const awn = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W - 0.6, 1.4, 1, 6), new THREE.MeshStandardMaterial({ map: aw, side: THREE.DoubleSide, roughness: 0.85 })); awn.position.set(0, 3.15, 0.65); awn.rotation.x = -1.05; awn.castShadow = true; g.add(awn);
     for (let i = 0; i < 16; i++) { const v = new THREE.Mesh(new THREE.CircleGeometry(0.235, 12, 0, Math.PI), new THREE.MeshStandardMaterial({ color: i % 2 ? 0xffffff : 0xe86f98, side: THREE.DoubleSide, roughness: 0.85 })); v.rotation.z = Math.PI; v.position.set(-3.45 + i * 0.46, 2.82, 1.24); g.add(v); }
     // escaparate: gradas con tartas
-    const disp = box(4.0, 0.7, 0.8, stdM(0xf7f3ef, 0.5), -1.55, 0.35, -0.55); g.add(disp); const disp2 = box(4.0, 0.35, 0.5, stdM(0xf7f3ef, 0.5), -1.55, 0.88, -0.75); g.add(disp2);
+    const disp = box(4.0, 0.7, 0.8, stdM(0x6b3f2c, 0.55), -1.55, 0.35, -0.55); g.add(disp); const disp2 = box(4.0, 0.35, 0.5, stdM(0x6b3f2c, 0.55), -1.55, 0.88, -0.75); g.add(disp2);
     const tc = tieredCake(); tc.position.set(-1.6, 0.7, -0.4); g.add(tc); for (const [x, c1, c2, z, y] of [[-3.1, 0x5a3424, 0x3b2116, -0.35, 0.7], [-0.3, 0xf3e3c3, 0xe8b64a, -0.35, 0.7], [-2.6, 0xf7e9e9, 0xd8233a, -0.75, 1.05], [-0.8, 0x6b3a26, 0xf2ece0, -0.75, 1.05]]) { const ck = cake(0.17, 0.15, c1, c2, Math.round(x * 10)); ck.position.set(x, y, z); g.add(ck); }
     // mostrador con vitrina y la caja registradora
-    g.add(box(4.6, 1.0, 0.75, stdM(0xf2dce4, 0.5), 0.6, 0.5, -4.4)); const vit = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.35, 0.6), T.glass); vit.position.set(0.6, 1.2, -4.4); g.add(vit);
+    g.add(box(4.6, 1.0, 0.75, stdM(0x8a4f63, 0.5), 0.6, 0.5, -4.4)); const vit = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.35, 0.6), T.glass); vit.position.set(0.6, 1.2, -4.4); g.add(vit);
     for (let i = 0; i < 6; i++) { const ck = cake(0.11, 0.09, [0xf7e9e9, 0x5a3424, 0xf3e3c3][i % 3], [0xd8233a, 0xf2ece0, 0xe8b64a][i % 3], 20 + i); ck.position.set(-1.2 + i * 0.7, 1.03, -4.4); g.add(ck); }
     g.add(box(0.36, 0.22, 0.32, stdM(0x2a2a2a, 0.4), 2.5, 1.11, -4.4)); const sh2 = box(5.6, 0.05, 0.35, woodL, 0.4, 2.0, -6.85); g.add(sh2); for (let i = 0; i < 10; i++) { const b = new THREE.Mesh(new THREE.CapsuleGeometry(0.05, 0.12, 4, 8), stdM(0xc68a3c, 0.6)); b.rotation.z = Math.PI / 2; b.position.set(-2.0 + i * 0.5, 2.1, -6.85); g.add(b); }
     shadowAll(g, true, true); }
   // --- VETERINARIO (sur): cruz verde, sala de espera, camilla de acero
-  SH.vet = shopFrame(G, 7.5, { seed: 3, wall: brickB, floor: tileW, inWall: stdM(0xe4f1ee, 0.9), fascia: stdM(0x0f7a6c, 0.5), frame: stdM(0xf3f1ec, 0.5), pil: stdM(0xd9e6e2, 0.6),
+  SH.vet = shopFrame(G, 7.5, { seed: 3, wall: brickB, floor: tileW, inWall: stdM(0xa9d3cb, 0.9), fascia: stdM(0x0f7a6c, 0.5), frame: stdM(0xf3f1ec, 0.5), pil: stdM(0xd9e6e2, 0.6),
     sign: (c, w, h) => { c.fillStyle = '#0f7a6c'; c.fillRect(0, 0, w, h); c.fillStyle = '#ffffff'; c.fillRect(48, h / 2 - 12, 72, 24); c.fillRect(72, h / 2 - 36, 24, 72); c.font = '900 46px Inter'; c.textBaseline = 'middle'; c.fillText('VETERINARIO', 150, h / 2 - 12); c.font = '700 26px Inter'; c.fillStyle = '#bff3e8'; c.fillText('Consultorio de @zamii.luu', 152, h / 2 + 24);
       c.save(); c.translate(w - 90, h / 2); c.fillStyle = '#ffffff'; c.beginPath(); c.arc(0, 8, 20, 0, 7); c.fill(); for (const [x, y] of [[-22, -16], [-8, -26], [8, -26], [22, -16]]) { c.beginPath(); c.arc(x, y, 8, 0, 7); c.fill(); } c.restore(); } });
   { const g = SH.vet, U = g.userData; const steel = new THREE.MeshStandardMaterial({ color: 0xd6dadd, roughness: 0.25, metalness: 0.9 });

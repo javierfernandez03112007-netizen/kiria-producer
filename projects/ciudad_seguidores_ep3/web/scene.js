@@ -1079,7 +1079,7 @@ function townMats() {
   const [hc, hh] = stuccoCanvases([226, 214, 190], 21); T.stone = texMat(hc, hh, [3, 3], { r: 0.8, ns: 0.6 });
   T.stoneW = stdM(0xeee7da, 0.55); T.gold = new THREE.MeshStandardMaterial({ color: 0xffc85a, roughness: 0.25, metalness: 1 }); T.goldD = new THREE.MeshStandardMaterial({ color: 0xc8922e, roughness: 0.35, metalness: 1 });
   T.iron = stdM(0x23272b, 0.45, { metalness: 0.6 }); T.woodD = stdM(0x4a2e1c, 0.6); T.bark = stdM(0x5a4433, 0.95); T.glassDark = new THREE.MeshPhysicalMaterial({ color: 0x2a3a48, roughness: 0.06, metalness: 0.0, transparent: true, opacity: 0.85, envMapIntensity: 1.4 });
-  T.glass = new THREE.MeshPhysicalMaterial({ color: 0xdfeef2, roughness: 0.03, metalness: 0, transparent: true, opacity: 0.16, envMapIntensity: 1.5, depthWrite: false });
+  T.glass = new THREE.MeshPhysicalMaterial({ color: 0xdfeef2, roughness: 0.03, metalness: 0, transparent: true, opacity: 0.08, envMapIntensity: 0.55, depthWrite: false });
   T.frame = stdM(0x2c2f33, 0.4, { metalness: 0.5 }); T.velvet = stdM(0x8c1426, 0.75); T.purple = stdM(0x4b2a78, 0.7);
   T.lampGlow = new THREE.MeshStandardMaterial({ color: 0xfff1cf, emissive: 0xffd89a, emissiveIntensity: 1.6, roughness: 0.3 });
   { const c = cnv(256, 256), g = c.getContext('2d'), R = rng(77); g.fillStyle = '#808080'; g.fillRect(0, 0, 256, 256); for (let i = 0; i < 900; i++) { const v = (90 + R() * 120) | 0; g.fillStyle = `rgb(${v},${v},${v})`; g.beginPath(); g.ellipse(R() * 256, R() * 256, 4 + R() * 6, 2 + R() * 3, R() * 3.14, 0, 7); g.fill(); }
@@ -1432,7 +1432,7 @@ function shopFrame(G, zc, o) {
   // interior: suelo, paredes, techo con lámparas (todo se ve por el escaparate)
   const fl = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W - 0.1, D), o.floor); fl.rotation.x = -Math.PI / 2; fl.position.set(0, 0.012, -D / 2); fl.receiveShadow = true; g.add(fl);
   g.add(box(SHOP.W, H0, 0.15, o.inWall, 0, H0 / 2, -D)); for (const s of [-1, 1]) g.add(box(0.15, H0, D, o.inWall, s * (W2 - 0.08), H0 / 2, -D / 2));
-  const ce = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W, D), stdM(0xf2efe8, 0.9)); ce.rotation.x = Math.PI / 2; ce.position.set(0, H0 - 0.25, -D / 2); g.add(ce);
+  const ce = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W, D), stdM(0xd8d2c8, 0.9)); ce.rotation.x = Math.PI / 2; ce.position.set(0, H0 - 0.25, -D / 2); g.add(ce);
   g.add(box(SHOP.W, 0.3, D + 0.4, stdM(0x8c8780, 0.8), 0, H0 - 0.1, -D / 2));
   U.lamps = []; for (const x of [-2.4, 0, 2.4]) for (const z of [-1.8, -4.6]) { const l = new THREE.Mesh(new THREE.CircleGeometry(0.28, 20), T.lampGlow); l.rotation.x = Math.PI / 2; l.position.set(x, H0 - 0.26, z); g.add(l); U.lamps.push(l); }
   U.local = (x, y, z) => g.localToWorld(_v(x, y, z)); U.g = g; U.dX = dX;
@@ -1478,22 +1478,22 @@ function buildShops(G) {
     for (let i = 0; i < 3; i++) { const n = signPlane(0.42, 0.7, 128, (c, w, h) => { c.fillStyle = '#1f3a5f'; c.fillRect(0, 0, w, h); c.fillStyle = '#f2ece0'; c.font = '700 60px serif'; c.textAlign = 'center'; c.fillText(['寿', '司', '屋'][i], w / 2, h * 0.6); }, { r: 0.8 }); n.position.set(U.dX - 0.45 + i * 0.45, 2.95, 0.06); n.material.side = THREE.DoubleSide; g.add(n); }
     shadowAll(g, true, true); }
   // --- PASTELERÍA (centro): toldo de rayas rosa, escaparate de tartas y mostrador
-  SH.pastry = shopFrame(G, -0.5, { seed: 2, wall: pinkSt, floor: tileW, inWall: stdM(0xf6e4ea, 0.9), fascia: stdM(0xf2c6d3, 0.5), frame: stdM(0xf7f3ef, 0.5), pil: stdM(0xf2dce4, 0.6),
+  SH.pastry = shopFrame(G, -0.5, { seed: 2, wall: pinkSt, floor: woodF, inWall: stdM(0xd9a3b5, 0.9), fascia: stdM(0xf2c6d3, 0.5), frame: stdM(0xf7f3ef, 0.5), pil: stdM(0xf2dce4, 0.6),
     sign: (c, w, h) => { c.fillStyle = '#f7d6e0'; c.fillRect(0, 0, w, h); c.fillStyle = '#8a2f4f'; c.font = 'italic 900 64px Inter'; c.textBaseline = 'middle'; c.textAlign = 'center'; c.fillText('Pastelería', w / 2 - 120, h / 2 - 2); c.font = '700 28px Inter'; c.fillStyle = '#b34a70'; c.fillText('de @salvadormatthias34', w / 2 + 250, h / 2 + 6); } });
   { const g = SH.pastry, U = g.userData; // toldo de rayas inclinado
     const aw = signTex(1024, 256, (c, w, h) => { for (let i = 0; i < 16; i++) { c.fillStyle = i % 2 ? '#ffffff' : '#e86f98'; c.fillRect(i * w / 16, 0, w / 16, h); } c.fillStyle = 'rgba(0,0,0,.1)'; c.fillRect(0, h - 26, w, 26); });
     const awn = new THREE.Mesh(new THREE.PlaneGeometry(SHOP.W - 0.6, 1.4, 1, 6), new THREE.MeshStandardMaterial({ map: aw, side: THREE.DoubleSide, roughness: 0.85 })); awn.position.set(0, 3.15, 0.65); awn.rotation.x = -1.05; awn.castShadow = true; g.add(awn);
     for (let i = 0; i < 16; i++) { const v = new THREE.Mesh(new THREE.CircleGeometry(0.235, 12, 0, Math.PI), new THREE.MeshStandardMaterial({ color: i % 2 ? 0xffffff : 0xe86f98, side: THREE.DoubleSide, roughness: 0.85 })); v.rotation.z = Math.PI; v.position.set(-3.45 + i * 0.46, 2.82, 1.24); g.add(v); }
     // escaparate: gradas con tartas
-    const disp = box(4.0, 0.7, 0.8, stdM(0xf7f3ef, 0.5), -1.55, 0.35, -0.55); g.add(disp); const disp2 = box(4.0, 0.35, 0.5, stdM(0xf7f3ef, 0.5), -1.55, 0.88, -0.75); g.add(disp2);
+    const disp = box(4.0, 0.7, 0.8, stdM(0x6b3f2c, 0.55), -1.55, 0.35, -0.55); g.add(disp); const disp2 = box(4.0, 0.35, 0.5, stdM(0x6b3f2c, 0.55), -1.55, 0.88, -0.75); g.add(disp2);
     const tc = tieredCake(); tc.position.set(-1.6, 0.7, -0.4); g.add(tc); for (const [x, c1, c2, z, y] of [[-3.1, 0x5a3424, 0x3b2116, -0.35, 0.7], [-0.3, 0xf3e3c3, 0xe8b64a, -0.35, 0.7], [-2.6, 0xf7e9e9, 0xd8233a, -0.75, 1.05], [-0.8, 0x6b3a26, 0xf2ece0, -0.75, 1.05]]) { const ck = cake(0.17, 0.15, c1, c2, Math.round(x * 10)); ck.position.set(x, y, z); g.add(ck); }
     // mostrador con vitrina y la caja registradora
-    g.add(box(4.6, 1.0, 0.75, stdM(0xf2dce4, 0.5), 0.6, 0.5, -4.4)); const vit = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.35, 0.6), T.glass); vit.position.set(0.6, 1.2, -4.4); g.add(vit);
+    g.add(box(4.6, 1.0, 0.75, stdM(0x8a4f63, 0.5), 0.6, 0.5, -4.4)); const vit = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.35, 0.6), T.glass); vit.position.set(0.6, 1.2, -4.4); g.add(vit);
     for (let i = 0; i < 6; i++) { const ck = cake(0.11, 0.09, [0xf7e9e9, 0x5a3424, 0xf3e3c3][i % 3], [0xd8233a, 0xf2ece0, 0xe8b64a][i % 3], 20 + i); ck.position.set(-1.2 + i * 0.7, 1.03, -4.4); g.add(ck); }
     g.add(box(0.36, 0.22, 0.32, stdM(0x2a2a2a, 0.4), 2.5, 1.11, -4.4)); const sh2 = box(5.6, 0.05, 0.35, woodL, 0.4, 2.0, -6.85); g.add(sh2); for (let i = 0; i < 10; i++) { const b = new THREE.Mesh(new THREE.CapsuleGeometry(0.05, 0.12, 4, 8), stdM(0xc68a3c, 0.6)); b.rotation.z = Math.PI / 2; b.position.set(-2.0 + i * 0.5, 2.1, -6.85); g.add(b); }
     shadowAll(g, true, true); }
   // --- VETERINARIO (sur): cruz verde, sala de espera, camilla de acero
-  SH.vet = shopFrame(G, 7.5, { seed: 3, wall: brickB, floor: tileW, inWall: stdM(0xe4f1ee, 0.9), fascia: stdM(0x0f7a6c, 0.5), frame: stdM(0xf3f1ec, 0.5), pil: stdM(0xd9e6e2, 0.6),
+  SH.vet = shopFrame(G, 7.5, { seed: 3, wall: brickB, floor: tileW, inWall: stdM(0xa9d3cb, 0.9), fascia: stdM(0x0f7a6c, 0.5), frame: stdM(0xf3f1ec, 0.5), pil: stdM(0xd9e6e2, 0.6),
     sign: (c, w, h) => { c.fillStyle = '#0f7a6c'; c.fillRect(0, 0, w, h); c.fillStyle = '#ffffff'; c.fillRect(48, h / 2 - 12, 72, 24); c.fillRect(72, h / 2 - 36, 24, 72); c.font = '900 46px Inter'; c.textBaseline = 'middle'; c.fillText('VETERINARIO', 150, h / 2 - 12); c.font = '700 26px Inter'; c.fillStyle = '#bff3e8'; c.fillText('Consultorio de @zamii.luu', 152, h / 2 + 24);
       c.save(); c.translate(w - 90, h / 2); c.fillStyle = '#ffffff'; c.beginPath(); c.arc(0, 8, 20, 0, 7); c.fill(); for (const [x, y] of [[-22, -16], [-8, -26], [8, -26], [22, -16]]) { c.beginPath(); c.arc(x, y, 8, 0, 7); c.fill(); } c.restore(); } });
   { const g = SH.vet, U = g.userData; const steel = new THREE.MeshStandardMaterial({ color: 0xd6dadd, roughness: 0.25, metalness: 0.9 });
@@ -1608,7 +1608,7 @@ async function buildScene() {
   const W_ = (w, li, d = 0) => { const k = norm(w) + '_' + li, o = Object.getPrototypeOf(K) === Object.prototype ? K : K; const v = WORDS.find(x => x.li === li && x.n.startsWith(norm(w))); return v ? v.start - 0.03 + d : LS(li) + d; };
   TL = { end: END, L: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(LS), E: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(LE),
     stamp: W_('firmar', 1, 0.25), tocar: W_('tocar', 1), trono: W_('trono', 2), ley2: W_('ley', 2), semana: W_('semana', 2), homen: W_('homenajeara', 2), seguidor: W_('seguidor', 2), final: W_('final', 3), tu: W_('tu', 3),
-    crece: W_('crece', 4), pedis: W_('pedis', 4), sushi: W_('sushi', 5), mesa: W_('mesa', 5), libre: W_('libre', 5), past: W_('pasteleria', 6), tartas: W_('tartas', 6), escap: W_('escaparate', 6), cola: W_('cola', 6), esquina: W_('esquina', 6),
+    crece: W_('crece', 4), pedis: W_('pedis', 4), sushi: W_('sushi', 5), mesa: W_('mesa', 5), libre: W_('mesa', 5, 0.4), past: W_('pasteleria', 6), tartas: W_('tartas', 6), escap: W_('escaparate', 6), cola: W_('cola', 6), esquina: W_('esquina', 6),
     vet: W_('veterinario', 7), paciente: W_('paciente', 7), perro: W_('perro', 7), vacunar: W_('vacunar', 7), plaza: W_('plaza', 8), pedestal: W_('pedestal', 8), vacio: W_('vacio', 8),
     coment: W_('comentario', 9), gusta: W_('gusta', 9), semana9: W_('semana', 9), construir: W_('construira', 9), nombre: W_('nombre', 9), estatua: W_('estatua', 9), oro: W_('oro', 9), manda: W_('mandaselo', 10), estatua10: W_('estatua', 10) };
   townMats(); const G = new THREE.Group(); scene.add(G); S.G = G;
@@ -1624,7 +1624,7 @@ async function buildScene() {
   S.ped = pedestal(); G.add(S.ped);
   for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2 + 0.5, b = bench(); b.position.set(Math.sin(a) * 6.2, 0, Math.cos(a) * 6.2); b.rotation.y = a + Math.PI; G.add(b); }
   for (const [x, z] of [[-9, -9], [9, -9], [-9, 9], [9, 9], [14.6, -6], [14.6, 6], [23.0, -12.6], [23.0, 3.6], [23.0, 14.7]]) { const l = lampPost(); l.position.set(x, 0, z); l.rotation.y = x > 14 ? (x > 20 ? Math.PI : 0) : Math.atan2(-x, -z) - Math.PI / 2; G.add(l); }
-  const R = rng(91); for (const [x, z, h] of [[12.8, -11, 6.5], [12.8, -3.5, 6], [12.8, 4, 6.8], [12.8, 11.5, 6.2], [-13, -9, 7], [-13, 0, 6.5], [-13, 9, 7.2], [-6.5, 10, 5.5], [6.5, 10, 5.8]]) { const t = tree(Math.floor(R() * 1000), h); t.position.set(x, 0.05, z); t.rotation.y = R() * 6; G.add(t); }
+  const R = rng(91); for (const [x, z, h] of [[12.8, -11, 6.5], [12.8, -3.5, 6], [12.8, 4, 6.8], [12.8, 11.5, 6.2], [-14, -13.5, 7], [-13, 0, 6.5], [-13, 9, 7.2], [-6.5, 10, 5.5], [6.5, 10, 5.8]]) { const t = tree(Math.floor(R() * 1000), h); t.position.set(x, 0.05, z); t.rotation.y = R() * 6; G.add(t); }
   for (const [x, z, w, d] of [[-6.5, 12.3, 3.6, 0.6], [6.5, 12.3, 3.6, 0.6], [-6.5, 7.7, 3.6, 0.6], [6.5, 7.7, 3.6, 0.6]]) { const hd = hedge(w, d, 0.7); hd.position.set(x, 0.4, z); G.add(hd); }
   S.grass = grassField(G, T.lawns, 70000, 5);
   // coches: aparcados en el lado de la plaza y alguno que pasa
@@ -1658,7 +1658,7 @@ async function buildScene() {
   for (let i = 0; i < 10; i++) { const p = add(person({ seed: 510 + i, female: WR() < 0.5 }), 0, 0, 0, 0, { k: 'walk', r: 7.5 + WR() * 4, a0: WR() * 6.3, v: (0.9 + WR() * 0.5) * (WR() < 0.5 ? -1 : 1) }); S.walkers.push(p); }
   for (let i = 0; i < 4; i++) { const a = [0.5, 1.55, 3.6, 4.65][i] , p = add(person({ seed: 530 + i, female: i % 2 === 0 }), Math.sin(a) * 6.45, 0, Math.cos(a) * 6.45, a + Math.PI, { k: 'sit' }); }
   // el sello pasa a la mano del rey (cuelga bajo la muñeca derecha) y la mesita se acerca al trono
-  { const H = S.hall.userData; H.table.position.set(0.85, H.dais, -32.6 + 0.78); S.king.userData.J.wrR.add(H.seal); H.seal.position.set(0, -0.2, 0.0); H.seal.rotation.set(0, 0, 0);
+  { const H = S.hall.userData; H.table.position.set(0.85, H.dais, -32.6 + 0.78); H.seal.position.set(0.098, 0.85, 0.181);
     S.sealFx = sparks(H.table, 60, 0xffd27a, 0.02); }
   S.statue = goldStatue(); S.statue.position.set(0, S.ped.userData.top, 0); S.statue.rotation.y = Math.PI * 0.25; G.add(S.statue); S.statue.visible = false; S.statFx = sparks(G, 160, 0xffe08a, 0.06);
   S.namePlates = S.ped.userData.plates.map(pl => { const n = signPlane(0.78, 0.42, 512, (c, w, h) => { const gr = c.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#f2cf6c'); gr.addColorStop(1, '#b4862c'); c.fillStyle = gr; c.fillRect(0, 0, w, h); c.strokeStyle = '#6e4c12'; c.lineWidth = 10; c.strokeRect(10, 10, w - 20, h - 20); c.fillStyle = '#3d2806'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '900 64px Inter'; c.fillText('TU NOMBRE', w / 2, h / 2 - 14); c.font = '700 30px Inter'; c.fillText('mejor seguidor de la semana', w / 2, h / 2 + 46); }, { metal: 0.85, r: 0.3 });
@@ -1684,14 +1684,16 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
   const H = S.hall.userData, inHall = st.p.z < -16.6 && Math.abs(st.p.x) < 13; for (const f of H.flags) flagWave(f, t);
   moodMix({ dia: inHall ? 0.25 : 1, salon: inHall ? 0.75 : 0 });
   // el pergamino: sin sello hasta el golpe, sellado después
-  const sealed = t >= TL.stamp && t < TL.end - 0.9; H.law.material.map = sealed ? H.lawT2 : H.lawT; H.law.material.needsUpdate = H.law.userData.s !== sealed; H.law.userData.s = sealed;
-  burst(S.sealFx, _v(0.03, 0.86, 0.1), t, TL.stamp, 0.6, 0.5, false, 1.5); S.sealFx.material.opacity = bump(t, TL.stamp, TL.stamp + 0.35, 0.02, 0.4);
+  const sealed = t >= TL.stamp; H.law.material.map = sealed ? H.lawT2 : H.lawT; H.law.material.needsUpdate = H.law.userData.s !== sealed; H.law.userData.s = sealed;
+  burst(S.sealFx, _v(0.098, 0.84, 0.181), t, TL.stamp, 0.6, 0.5, false, 1.5); S.sealFx.material.opacity = bump(t, TL.stamp, TL.stamp + 0.35, 0.02, 0.4);
   for (const p of PEOPLE) { poseReset(p); breathe(p, t); const r = p.userData.role, ph = p.userData.phase;
     if (r.k === 'king') { poseSit(p, 0.05);
       // el golpe del sello: la mano baja sobre el pergamino, sella y sube; luego descansa en el brazo del trono
-      H.table.updateMatrixWorld(true); const top = H.table.localToWorld(_v(0.03, 0.83 + 0.2, 0.1)), up = seg(t, TL.stamp - 1.1, TL.stamp - 0.05), dn = seg(t, TL.stamp + 0.12, TL.stamp + 0.7);
-      const hY = t < TL.stamp ? 0.16 * (1 - sm5(seg(t, TL.stamp - 0.35, TL.stamp))) + 0.02 * Math.sin(t * 3) * (1 - up) : 0.0 + 0.2 * sm5(dn);
-      const rest = 1 - win(t, TL.stamp + 0.9, 0.8); if (rest > 0.01) reachTo(p, 'R', top.clone().add(_v(0, hY, 0)), rest);
+      // el sello (en la mesita) sube y baja; la mano del rey lo agarra por el pomo
+      const dn = seg(t, TL.stamp + 0.12, TL.stamp + 0.7), back = win(t, TL.end - 1.0, 0.8);
+      const hY = t < TL.stamp ? 0.16 * (1 - sm5(seg(t, TL.stamp - 0.3, TL.stamp))) + 0.015 * Math.sin(t * 2.5) : 0.2 * sm5(dn) * (1 - back) + 0.16 * back;
+      H.seal.position.y = 0.828 + hY; H.table.updateMatrixWorld(true); const top = H.table.localToWorld(_v(0.098, 0.828 + hY + 0.24, 0.181));
+      const rest = Math.max(1 - win(t, TL.stamp + 0.9, 0.8), back); if (rest > 0.01) reachTo(p, 'R', top, rest);
       // en «tú», señala a la cámara
       const pt = bump(t, TL.tu - 0.25, TL.E[3] + 0.5, 0.3, 0.4); if (pt > 0.01) reachTo(p, 'L', st.p.clone().lerp(p.localToWorld(_v(0, 1.0, 0.3)), 0.82), pt);
       lookAtP(p, st.p, 0.6 + 0.4 * bump(t, TL.trono - 0.4, TL.ley2, 0.4, 0.4)); faceAt(p, t, { smile: 0.75, gx: 0.0, gy: -0.1, brow: 0.3 * bump(t, TL.tu - 0.2, TL.E[3], 0.2, 0.3) }); }
@@ -1704,10 +1706,10 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
     else if (r.k === 'couple') { const k = sm5(seg(t, TL.sushi - 0.6, TL.libre - 0.2)), sad = bump(t, TL.libre + 0.1, TL.L[6], 0.2, 0.4); p.position.z = lerp(3.4, 2.0, k); p.position.x = p.userData.x0 ?? (p.userData.x0 = p.position.x); if (k > 0.01 && k < 0.99) poseWalk(p, k * 3, 1);
       if (sad > 0.01) { for (const [n, s] of [['L', -1], ['R', 1]]) { p.userData.J['sh' + n].rotation.z = s * (0.08 + 0.55 * sad); p.userData.J['el' + n].rotation.x = -1.3 * sad; } } faceAt(p, t, { open: 0.45 * sad, brow: 0.8 * sad, smile: 0.35 - 0.6 * sad }); }
     else if (r.k === 'queue') { faceAt(p, t, { talk: Math.sin(t * 0.6 + ph) > 0.4 ? 1 : 0, smile: 0.4 }); if (r.i % 4 === 1) lookAtP(p, p.localToWorld(_v(0.6, 1.5, 0.2)), 0.5); }
-    else if (r.k === 'vet') { const sy = bump(t, TL.paciente - 0.3, TL.L[8] + 0.2, 0.4, 0.4), oh = bump(t, TL.vacunar - 0.1, TL.L[8] + 0.4, 0.15, 0.4);
+    else if (r.k === 'vet') { const sy = bump(t, TL.paciente - 0.3, TL.L[8] + 0.2, 0.4, 0.4), oh = bump(t, TL.vacunar - 0.45, TL.L[8] + 0.4, 0.15, 0.4);
       p.userData.J.shL.rotation.x = -0.9 * sy - 0.6 * oh; p.userData.J.elL.rotation.x = -1.2 * sy; p.userData.J.shL.rotation.z = -0.2;
       lookAtP(p, S.dog.getWorldPosition(_tg).add(_v(0, 0.3, 0)), 0.8); faceAt(p, t, { smile: 0.5 - 0.7 * oh, open: 0.5 * oh, brow: 0.9 * oh }); }
-    else if (r.k === 'owner2') { const oh = bump(t, TL.vacunar - 0.05, TL.L[8] + 0.4, 0.15, 0.4); lookAtP(p, S.dog.getWorldPosition(_tg).add(_v(0, 0.3, 0)), 0.8); faceAt(p, t, { open: 0.4 * oh, brow: 0.8 * oh, smile: 0.3 }); if (oh > 0.01) { p.userData.J.shR.rotation.x = -1.1 * oh; p.userData.J.shL.rotation.x = -1.1 * oh; } }
+    else if (r.k === 'owner2') { const oh = bump(t, TL.vacunar - 0.4, TL.L[8] + 0.4, 0.15, 0.4); lookAtP(p, S.dog.getWorldPosition(_tg).add(_v(0, 0.3, 0)), 0.8); faceAt(p, t, { open: 0.4 * oh, brow: 0.8 * oh, smile: 0.3 }); if (oh > 0.01) { p.userData.J.shR.rotation.x = -1.1 * oh; p.userData.J.shL.rotation.x = -1.1 * oh; } }
     else if (r.k === 'walk') { const s = t * r.v + r.a0 * r.r, a = s / r.r; p.position.set(Math.sin(a) * r.r, 0, Math.cos(a) * r.r); p.rotation.y = a + (r.v > 0 ? Math.PI / 2 : -Math.PI / 2); poseWalk(p, Math.abs(s), 1); faceAt(p, t, {}); }
     else if (r.k === 'sit') { poseSit(p, 0.05); faceAt(p, t, { talk: Math.sin(t * 0.5 + ph) > 0 ? 1 : 0 }); }
     else faceAt(p, t, { talk: Math.sin(t * 0.8 + ph) > 0.5 ? 0.8 : 0 });
@@ -1716,10 +1718,10 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
   // el cartel de la puerta del sushi: ABIERTO → COMPLETO
   { const D = S.shops.sushi.userData.doorSign; D[0].visible = t < TL.libre; D[1].visible = t >= TL.libre; }
   // el perro: tiembla en la camilla; con «vacunar» salta y se esconde detrás de su dueño
-  if (S.dog) { const J = S.dog.userData.J, j = seg(t, TL.vacunar, TL.vacunar + 0.55), run = seg(t, TL.vacunar + 0.55, TL.vacunar + 1.3);
+  if (S.dog) { const J = S.dog.userData.J, j0 = TL.vacunar - 0.45, j = seg(t, j0, j0 + 0.55), run = seg(t, j0 + 0.55, j0 + 1.3);
     const P0 = _v(-1.2, 0.9, -2.6), P1 = _v(-0.55, 0, -1.9), P2 = _v(0.25, 0, -2.0); const p = j < 1 ? P0.clone().lerp(P1, j) : P1.clone().lerp(P2, sm5(run)); if (j > 0 && j < 1) p.y = lerp(0.9, 0, j) + Math.sin(j * Math.PI) * 0.45;
     S.dog.position.copy(p); S.dog.rotation.y = -Math.PI / 2 + (j > 0 ? Math.PI * 0.75 * sm5(Math.min(1, j * 2)) : 0); const tr = j <= 0 ? 1 : 0.2;
-    J.body.position.x = Math.sin(t * 40) * 0.004 * tr; J.head.rotation.y = j <= 0 ? Math.sin(t * 8) * 0.5 * bump(t, TL.perro, TL.vacunar, 0.2, 0.1) + Math.sin(t * 2) * 0.15 : Math.sin(t * 3) * 0.2; J.tail.rotation.z = Math.sin(t * 14) * 0.6;
+    J.body.position.x = Math.sin(t * 40) * 0.004 * tr; J.head.rotation.y = j <= 0 ? Math.sin(t * 8) * 0.5 * bump(t, TL.perro, TL.vacunar - 0.45, 0.2, 0.1) + Math.sin(t * 2) * 0.15 : Math.sin(t * 3) * 0.2; J.tail.rotation.z = Math.sin(t * 14) * 0.6;
     for (const [n, s] of [['FL', 1], ['FR', -1], ['BL', -1], ['BR', 1]]) J[n].rotation.x = run > 0 && run < 1 ? Math.sin(t * 18) * 0.7 * s : (j > 0 && j < 1 ? -0.6 * s * 0.3 : 0);
     J.earL.rotation.z = -0.25 - 0.3 * (j > 0 && j < 1 ? 1 : 0); J.earR.rotation.z = 0.25 + 0.3 * (j > 0 && j < 1 ? 1 : 0); }
   if (S.dog2) { const J = S.dog2.userData.J; J.tail.rotation.z = Math.sin(t * 10) * 0.5; J.head.rotation.y = Math.sin(t * 1.3) * 0.4; }
@@ -1738,9 +1740,9 @@ function fillAt(t) { return { k: 0, c: [0, 0, 0] }; }
 // cola hasta la esquina, ve escaparse al perro, cruza a la plaza (el pedestal vacío, la tarjeta del comentario, la estatua de oro) y vuelve al salón
 // hasta el mismo pergamino del principio (bucle).
 let CK = [], CUTS = [];
-function buildCam() { const T = TL, P0 = [1.12, 2.36, -31.35], L0 = [0.85, 2.03, -31.85];
+function buildCam() { const T = TL, P0 = [1.3, 2.4, -30.95], L0 = [0.93, 2.15, -31.66];
   CK = [
-    [0, P0, L0, 34], [T.stamp + 0.15, [1.08, 2.3, -31.42], [0.86, 2.05, -31.85], 34],                                                        // el sello cae sobre la ley
+    [0, P0, L0, 36], [T.stamp - 0.3, [1.27, 2.42, -31.0], [0.94, 2.17, -31.66], 36], [T.stamp + 0.2, [1.25, 2.38, -31.03], [0.94, 2.13, -31.66], 36],                                                        // el sello cae sobre la ley
     [T.trono - 0.2, [0.78, 2.62, -30.85], [0.08, 2.33, -32.4], 34], [T.ley2 - 0.1, [0.62, 2.56, -30.6], [0.05, 2.32, -32.4], 34],           // la cara del rey
     [T.semana - 0.15, [0.97, 2.6, -31.48], [0.85, 2.03, -31.85], 30], [T.seguidor + 0.3, [0.93, 2.5, -31.42], [0.85, 2.03, -31.85], 30],     // la ley, de cerca
     [T.final - 0.1, [0.42, 2.72, -29.3], [0.0, 2.27, -32.3], 36], [T.E[3] + 0.12, [0.25, 2.9, -27.6], [0.0, 2.2, -32.0], 38],               // «cómo ser tú»: el rey señala
@@ -1750,11 +1752,11 @@ function buildCam() { const T = TL, P0 = [1.12, 2.36, -31.35], L0 = [0.85, 2.03,
     [T.libre - 0.25, [22.6, 1.65, -6.6], [25.0, 1.7, -5.5], 40], [T.E[5] + 0.1, [22.75, 1.7, -5.3], [25.0, 1.6, -5.5], 40],              // «COMPLETO»
     [T.past - 0.1, [21.6, 1.9, -2.2], [25.6, 1.45, -1.4], 42], [T.tartas + 0.2, [22.6, 1.55, -1.6], [25.8, 1.1, -1.9], 40],              // el escaparate de tartas
     [T.cola - 0.2, [22.2, 2.2, 0.8], [23.6, 1.45, 7.0], 44], [T.esquina + 0.3, [22.0, 2.4, 5.6], [23.7, 1.4, 14.5], 44],                   // la cola hasta la esquina
-    [T.vet + 0.1, [24.2, 1.7, 5.4], [27.3, 1.25, 5.9], 40], [T.vacunar - 0.3, [24.3, 1.5, 6.0], [27.4, 1.0, 6.0], 38], [T.E[7] + 0.2, [24.3, 1.45, 6.6], [27.0, 0.5, 5.8], 40],   // el perro
-    [T.L[8] + 0.2, [20.0, 4.0, 6.0], [8.0, 2.5, 3.0], 46], [T.pedestal + 0.1, [5.5, 2.3, 4.5], [0.0, 2.0, 0.0], 42],                         // a la plaza: el pedestal vacío
-    [T.coment, [4.6, 2.6, 3.0], [0.0, 3.2, 0.0], 42], [T.construir, [4.0, 2.8, 1.6], [0.0, 3.6, 0.0], 42], [T.estatua + 0.5, [3.6, 2.4, -0.6], [0.0, 3.6, 0.0], 42], [T.E[9] + 0.1, [3.4, 2.0, -2.8], [0.0, 2.4, 0.0], 42],
-    [T.manda + 0.2, [2.5, 3.5, -7.0], [0.5, 3.0, -20.0], 46], [T.estatua10 + 0.1, [0.4, 2.9, -16.0], [0.6, 2.5, -28.0], 44], [END - 0.45, [1.05, 2.42, -30.9], [0.85, 2.03, -31.85], 36],   // vuelta al salón…
-    [END, P0, L0, 34],                                                                                                                         // …y al pergamino (bucle)
+    [T.vet + 0.1, [24.2, 1.7, 5.4], [27.3, 1.25, 5.9], 40], [T.vacunar - 0.5, [24.3, 1.5, 6.0], [27.4, 1.0, 6.2], 38], [T.E[7] + 0.3, [24.3, 1.45, 6.9], [27.0, 0.45, 7.5], 40],   // el perro
+    [T.L[8] + 0.5, [18.0, 4.2, 8.0], [6.0, 2.5, 3.0], 46], [T.pedestal + 0.1, [2.3, 2.2, 6.3], [0.0, 2.0, 0.0], 42],                         // a la plaza: el pedestal vacío
+    [T.coment, [2.7, 2.4, 5.2], [0.0, 3.4, 0.0], 42], [T.construir, [2.9, 2.5, 4.6], [0.0, 3.6, 0.0], 42], [T.estatua + 0.5, [3.2, 2.3, 5.8], [0.0, 3.9, 0.0], 46], [T.E[9] + 0.1, [2.1, 1.85, 3.7], [0.0, 2.3, 0.3], 42],
+    [T.manda + 0.2, [1.6, 4.2, -3.0], [0.5, 3.0, -20.0], 46], [T.estatua10 + 0.1, [0.4, 2.9, -16.0], [0.6, 2.5, -28.0], 44], [END - 0.45, [1.38, 2.5, -30.7], [0.93, 2.15, -31.66], 38],   // vuelta al salón…
+    [END, P0, L0, 36],                                                                                                                         // …y al pergamino (bucle)
   ];
   for (let i = 1; i < CK.length; i++) if (CK[i][0] <= CK[i - 1][0]) console.error('ERROR claves de cámara desordenadas en ' + i + ': ' + CK[i - 1][0].toFixed(2) + ' → ' + CK[i][0].toFixed(2)); }
 function camAt(t) { return camKeys(clamp(t, 0, END), CK); }
@@ -1762,9 +1764,19 @@ function prevT(t, dt) { return Math.max(0, t - dt); }
 function whiteAt(t) { return 0; }
 function flashAt(t) { return 0; }
 function dofAt(t, st) { const f = st.p.distanceTo(st.l); return { focus: f, scale: f < 1.2 ? 0.35 * f : 0.05 * f }; }
-// ---------------------------------------------------------------- RÓTULOS (los nombres de los seguidores se pintan al montar, en local; aquí nada)
+// ---------------------------------------------------------------- RÓTULOS: los nombres de los seguidores NO están aquí (privacidad): el montaje los pinta en local con las posiciones
+// que da window.labelsAt(t) (quién se ve, dónde cae su cabeza y a cuántos píxeles por metro). Aquí, en la imagen, no se dibuja nada.
 function buildHudPlan() { HFONT = 'Inter'; HW = [700, 500]; }
 function hudAt(t) { hudBegin(); }
+window.labelsAt = function (t) {
+  frame(t); const out = [], e = vpOf().elements, f = (H / 2) / Math.tan(cam.fov * Math.PI / 360), inHall = cam.position.z < -16.6 && Math.abs(cam.position.x) < 13, R = v => Math.round(v);
+  PEOPLE.forEach((p, i) => { if (!p.visible || (p === S.statue)) return; const isHall = p.parent === S.hall; if (isHall !== inHall) return;
+    p.updateMatrixWorld(true); const hp = p.userData.J.head.getWorldPosition(_v()).add(_v(0, 0.36 * p.userData.k, 0)), cw = e[3] * hp.x + e[7] * hp.y + e[11] * hp.z + e[15]; if (cw <= 0.3) return;
+    const ppm = f / cw; if (ppm < 95) return; const sx = ((e[0] * hp.x + e[4] * hp.y + e[8] * hp.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * hp.x + e[5] * hp.y + e[9] * hp.z + e[13]) / cw) / 2 * H;
+    if (sx < -150 || sx > W + 150 || sy < 0 || sy > H + 150) return; out.push([i, R(sx), R(sy), R(ppm * 10)]); });
+  return { p: out, h: [] }; };
+// quién es quién (índices de PEOPLE): los cuatro que nombra la voz y el oficio de algunos
+window.whoIs = () => { const r = {}; PEOPLE.forEach((p, i) => { const R0 = p.userData.role; r[i] = { k: R0.k, vip: R0.vip || null }; }); return r; };
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);

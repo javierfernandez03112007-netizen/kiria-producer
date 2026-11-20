@@ -14,7 +14,7 @@ async function buildScene() {
   const W_ = (w, li, d = 0) => { const k = norm(w) + '_' + li, o = Object.getPrototypeOf(K) === Object.prototype ? K : K; const v = WORDS.find(x => x.li === li && x.n.startsWith(norm(w))); return v ? v.start - 0.03 + d : LS(li) + d; };
   TL = { end: END, L: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(LS), E: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(LE),
     stamp: W_('firmar', 1, 0.25), tocar: W_('tocar', 1), trono: W_('trono', 2), ley2: W_('ley', 2), semana: W_('semana', 2), homen: W_('homenajeara', 2), seguidor: W_('seguidor', 2), final: W_('final', 3), tu: W_('tu', 3),
-    crece: W_('crece', 4), pedis: W_('pedis', 4), sushi: W_('sushi', 5), mesa: W_('mesa', 5), libre: W_('libre', 5), past: W_('pasteleria', 6), tartas: W_('tartas', 6), escap: W_('escaparate', 6), cola: W_('cola', 6), esquina: W_('esquina', 6),
+    crece: W_('crece', 4), pedis: W_('pedis', 4), sushi: W_('sushi', 5), mesa: W_('mesa', 5), libre: W_('mesa', 5, 0.4), past: W_('pasteleria', 6), tartas: W_('tartas', 6), escap: W_('escaparate', 6), cola: W_('cola', 6), esquina: W_('esquina', 6),
     vet: W_('veterinario', 7), paciente: W_('paciente', 7), perro: W_('perro', 7), vacunar: W_('vacunar', 7), plaza: W_('plaza', 8), pedestal: W_('pedestal', 8), vacio: W_('vacio', 8),
     coment: W_('comentario', 9), gusta: W_('gusta', 9), semana9: W_('semana', 9), construir: W_('construira', 9), nombre: W_('nombre', 9), estatua: W_('estatua', 9), oro: W_('oro', 9), manda: W_('mandaselo', 10), estatua10: W_('estatua', 10) };
   townMats(); const G = new THREE.Group(); scene.add(G); S.G = G;
@@ -30,7 +30,7 @@ async function buildScene() {
   S.ped = pedestal(); G.add(S.ped);
   for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2 + 0.5, b = bench(); b.position.set(Math.sin(a) * 6.2, 0, Math.cos(a) * 6.2); b.rotation.y = a + Math.PI; G.add(b); }
   for (const [x, z] of [[-9, -9], [9, -9], [-9, 9], [9, 9], [14.6, -6], [14.6, 6], [23.0, -12.6], [23.0, 3.6], [23.0, 14.7]]) { const l = lampPost(); l.position.set(x, 0, z); l.rotation.y = x > 14 ? (x > 20 ? Math.PI : 0) : Math.atan2(-x, -z) - Math.PI / 2; G.add(l); }
-  const R = rng(91); for (const [x, z, h] of [[12.8, -11, 6.5], [12.8, -3.5, 6], [12.8, 4, 6.8], [12.8, 11.5, 6.2], [-13, -9, 7], [-13, 0, 6.5], [-13, 9, 7.2], [-6.5, 10, 5.5], [6.5, 10, 5.8]]) { const t = tree(Math.floor(R() * 1000), h); t.position.set(x, 0.05, z); t.rotation.y = R() * 6; G.add(t); }
+  const R = rng(91); for (const [x, z, h] of [[12.8, -11, 6.5], [12.8, -3.5, 6], [12.8, 4, 6.8], [12.8, 11.5, 6.2], [-14, -13.5, 7], [-13, 0, 6.5], [-13, 9, 7.2], [-6.5, 10, 5.5], [6.5, 10, 5.8]]) { const t = tree(Math.floor(R() * 1000), h); t.position.set(x, 0.05, z); t.rotation.y = R() * 6; G.add(t); }
   for (const [x, z, w, d] of [[-6.5, 12.3, 3.6, 0.6], [6.5, 12.3, 3.6, 0.6], [-6.5, 7.7, 3.6, 0.6], [6.5, 7.7, 3.6, 0.6]]) { const hd = hedge(w, d, 0.7); hd.position.set(x, 0.4, z); G.add(hd); }
   S.grass = grassField(G, T.lawns, 70000, 5);
   // coches: aparcados en el lado de la plaza y alguno que pasa
@@ -64,7 +64,7 @@ async function buildScene() {
   for (let i = 0; i < 10; i++) { const p = add(person({ seed: 510 + i, female: WR() < 0.5 }), 0, 0, 0, 0, { k: 'walk', r: 7.5 + WR() * 4, a0: WR() * 6.3, v: (0.9 + WR() * 0.5) * (WR() < 0.5 ? -1 : 1) }); S.walkers.push(p); }
   for (let i = 0; i < 4; i++) { const a = [0.5, 1.55, 3.6, 4.65][i] , p = add(person({ seed: 530 + i, female: i % 2 === 0 }), Math.sin(a) * 6.45, 0, Math.cos(a) * 6.45, a + Math.PI, { k: 'sit' }); }
   // el sello pasa a la mano del rey (cuelga bajo la muñeca derecha) y la mesita se acerca al trono
-  { const H = S.hall.userData; H.table.position.set(0.85, H.dais, -32.6 + 0.78); S.king.userData.J.wrR.add(H.seal); H.seal.position.set(0, -0.2, 0.0); H.seal.rotation.set(0, 0, 0);
+  { const H = S.hall.userData; H.table.position.set(0.85, H.dais, -32.6 + 0.78); H.seal.position.set(0.098, 0.85, 0.181);
     S.sealFx = sparks(H.table, 60, 0xffd27a, 0.02); }
   S.statue = goldStatue(); S.statue.position.set(0, S.ped.userData.top, 0); S.statue.rotation.y = Math.PI * 0.25; G.add(S.statue); S.statue.visible = false; S.statFx = sparks(G, 160, 0xffe08a, 0.06);
   S.namePlates = S.ped.userData.plates.map(pl => { const n = signPlane(0.78, 0.42, 512, (c, w, h) => { const gr = c.createLinearGradient(0, 0, w, h); gr.addColorStop(0, '#f2cf6c'); gr.addColorStop(1, '#b4862c'); c.fillStyle = gr; c.fillRect(0, 0, w, h); c.strokeStyle = '#6e4c12'; c.lineWidth = 10; c.strokeRect(10, 10, w - 20, h - 20); c.fillStyle = '#3d2806'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '900 64px Inter'; c.fillText('TU NOMBRE', w / 2, h / 2 - 14); c.font = '700 30px Inter'; c.fillText('mejor seguidor de la semana', w / 2, h / 2 + 46); }, { metal: 0.85, r: 0.3 });
@@ -90,14 +90,16 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
   const H = S.hall.userData, inHall = st.p.z < -16.6 && Math.abs(st.p.x) < 13; for (const f of H.flags) flagWave(f, t);
   moodMix({ dia: inHall ? 0.25 : 1, salon: inHall ? 0.75 : 0 });
   // el pergamino: sin sello hasta el golpe, sellado después
-  const sealed = t >= TL.stamp && t < TL.end - 0.9; H.law.material.map = sealed ? H.lawT2 : H.lawT; H.law.material.needsUpdate = H.law.userData.s !== sealed; H.law.userData.s = sealed;
-  burst(S.sealFx, _v(0.03, 0.86, 0.1), t, TL.stamp, 0.6, 0.5, false, 1.5); S.sealFx.material.opacity = bump(t, TL.stamp, TL.stamp + 0.35, 0.02, 0.4);
+  const sealed = t >= TL.stamp; H.law.material.map = sealed ? H.lawT2 : H.lawT; H.law.material.needsUpdate = H.law.userData.s !== sealed; H.law.userData.s = sealed;
+  burst(S.sealFx, _v(0.098, 0.84, 0.181), t, TL.stamp, 0.6, 0.5, false, 1.5); S.sealFx.material.opacity = bump(t, TL.stamp, TL.stamp + 0.35, 0.02, 0.4);
   for (const p of PEOPLE) { poseReset(p); breathe(p, t); const r = p.userData.role, ph = p.userData.phase;
     if (r.k === 'king') { poseSit(p, 0.05);
       // el golpe del sello: la mano baja sobre el pergamino, sella y sube; luego descansa en el brazo del trono
-      H.table.updateMatrixWorld(true); const top = H.table.localToWorld(_v(0.03, 0.83 + 0.2, 0.1)), up = seg(t, TL.stamp - 1.1, TL.stamp - 0.05), dn = seg(t, TL.stamp + 0.12, TL.stamp + 0.7);
-      const hY = t < TL.stamp ? 0.16 * (1 - sm5(seg(t, TL.stamp - 0.35, TL.stamp))) + 0.02 * Math.sin(t * 3) * (1 - up) : 0.0 + 0.2 * sm5(dn);
-      const rest = 1 - win(t, TL.stamp + 0.9, 0.8); if (rest > 0.01) reachTo(p, 'R', top.clone().add(_v(0, hY, 0)), rest);
+      // el sello (en la mesita) sube y baja; la mano del rey lo agarra por el pomo
+      const dn = seg(t, TL.stamp + 0.12, TL.stamp + 0.7), back = win(t, TL.end - 1.0, 0.8);
+      const hY = t < TL.stamp ? 0.16 * (1 - sm5(seg(t, TL.stamp - 0.3, TL.stamp))) + 0.015 * Math.sin(t * 2.5) : 0.2 * sm5(dn) * (1 - back) + 0.16 * back;
+      H.seal.position.y = 0.828 + hY; H.table.updateMatrixWorld(true); const top = H.table.localToWorld(_v(0.098, 0.828 + hY + 0.24, 0.181));
+      const rest = Math.max(1 - win(t, TL.stamp + 0.9, 0.8), back); if (rest > 0.01) reachTo(p, 'R', top, rest);
       // en «tú», señala a la cámara
       const pt = bump(t, TL.tu - 0.25, TL.E[3] + 0.5, 0.3, 0.4); if (pt > 0.01) reachTo(p, 'L', st.p.clone().lerp(p.localToWorld(_v(0, 1.0, 0.3)), 0.82), pt);
       lookAtP(p, st.p, 0.6 + 0.4 * bump(t, TL.trono - 0.4, TL.ley2, 0.4, 0.4)); faceAt(p, t, { smile: 0.75, gx: 0.0, gy: -0.1, brow: 0.3 * bump(t, TL.tu - 0.2, TL.E[3], 0.2, 0.3) }); }
@@ -110,10 +112,10 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
     else if (r.k === 'couple') { const k = sm5(seg(t, TL.sushi - 0.6, TL.libre - 0.2)), sad = bump(t, TL.libre + 0.1, TL.L[6], 0.2, 0.4); p.position.z = lerp(3.4, 2.0, k); p.position.x = p.userData.x0 ?? (p.userData.x0 = p.position.x); if (k > 0.01 && k < 0.99) poseWalk(p, k * 3, 1);
       if (sad > 0.01) { for (const [n, s] of [['L', -1], ['R', 1]]) { p.userData.J['sh' + n].rotation.z = s * (0.08 + 0.55 * sad); p.userData.J['el' + n].rotation.x = -1.3 * sad; } } faceAt(p, t, { open: 0.45 * sad, brow: 0.8 * sad, smile: 0.35 - 0.6 * sad }); }
     else if (r.k === 'queue') { faceAt(p, t, { talk: Math.sin(t * 0.6 + ph) > 0.4 ? 1 : 0, smile: 0.4 }); if (r.i % 4 === 1) lookAtP(p, p.localToWorld(_v(0.6, 1.5, 0.2)), 0.5); }
-    else if (r.k === 'vet') { const sy = bump(t, TL.paciente - 0.3, TL.L[8] + 0.2, 0.4, 0.4), oh = bump(t, TL.vacunar - 0.1, TL.L[8] + 0.4, 0.15, 0.4);
+    else if (r.k === 'vet') { const sy = bump(t, TL.paciente - 0.3, TL.L[8] + 0.2, 0.4, 0.4), oh = bump(t, TL.vacunar - 0.45, TL.L[8] + 0.4, 0.15, 0.4);
       p.userData.J.shL.rotation.x = -0.9 * sy - 0.6 * oh; p.userData.J.elL.rotation.x = -1.2 * sy; p.userData.J.shL.rotation.z = -0.2;
       lookAtP(p, S.dog.getWorldPosition(_tg).add(_v(0, 0.3, 0)), 0.8); faceAt(p, t, { smile: 0.5 - 0.7 * oh, open: 0.5 * oh, brow: 0.9 * oh }); }
-    else if (r.k === 'owner2') { const oh = bump(t, TL.vacunar - 0.05, TL.L[8] + 0.4, 0.15, 0.4); lookAtP(p, S.dog.getWorldPosition(_tg).add(_v(0, 0.3, 0)), 0.8); faceAt(p, t, { open: 0.4 * oh, brow: 0.8 * oh, smile: 0.3 }); if (oh > 0.01) { p.userData.J.shR.rotation.x = -1.1 * oh; p.userData.J.shL.rotation.x = -1.1 * oh; } }
+    else if (r.k === 'owner2') { const oh = bump(t, TL.vacunar - 0.4, TL.L[8] + 0.4, 0.15, 0.4); lookAtP(p, S.dog.getWorldPosition(_tg).add(_v(0, 0.3, 0)), 0.8); faceAt(p, t, { open: 0.4 * oh, brow: 0.8 * oh, smile: 0.3 }); if (oh > 0.01) { p.userData.J.shR.rotation.x = -1.1 * oh; p.userData.J.shL.rotation.x = -1.1 * oh; } }
     else if (r.k === 'walk') { const s = t * r.v + r.a0 * r.r, a = s / r.r; p.position.set(Math.sin(a) * r.r, 0, Math.cos(a) * r.r); p.rotation.y = a + (r.v > 0 ? Math.PI / 2 : -Math.PI / 2); poseWalk(p, Math.abs(s), 1); faceAt(p, t, {}); }
     else if (r.k === 'sit') { poseSit(p, 0.05); faceAt(p, t, { talk: Math.sin(t * 0.5 + ph) > 0 ? 1 : 0 }); }
     else faceAt(p, t, { talk: Math.sin(t * 0.8 + ph) > 0.5 ? 0.8 : 0 });
@@ -122,10 +124,10 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
   // el cartel de la puerta del sushi: ABIERTO → COMPLETO
   { const D = S.shops.sushi.userData.doorSign; D[0].visible = t < TL.libre; D[1].visible = t >= TL.libre; }
   // el perro: tiembla en la camilla; con «vacunar» salta y se esconde detrás de su dueño
-  if (S.dog) { const J = S.dog.userData.J, j = seg(t, TL.vacunar, TL.vacunar + 0.55), run = seg(t, TL.vacunar + 0.55, TL.vacunar + 1.3);
+  if (S.dog) { const J = S.dog.userData.J, j0 = TL.vacunar - 0.45, j = seg(t, j0, j0 + 0.55), run = seg(t, j0 + 0.55, j0 + 1.3);
     const P0 = _v(-1.2, 0.9, -2.6), P1 = _v(-0.55, 0, -1.9), P2 = _v(0.25, 0, -2.0); const p = j < 1 ? P0.clone().lerp(P1, j) : P1.clone().lerp(P2, sm5(run)); if (j > 0 && j < 1) p.y = lerp(0.9, 0, j) + Math.sin(j * Math.PI) * 0.45;
     S.dog.position.copy(p); S.dog.rotation.y = -Math.PI / 2 + (j > 0 ? Math.PI * 0.75 * sm5(Math.min(1, j * 2)) : 0); const tr = j <= 0 ? 1 : 0.2;
-    J.body.position.x = Math.sin(t * 40) * 0.004 * tr; J.head.rotation.y = j <= 0 ? Math.sin(t * 8) * 0.5 * bump(t, TL.perro, TL.vacunar, 0.2, 0.1) + Math.sin(t * 2) * 0.15 : Math.sin(t * 3) * 0.2; J.tail.rotation.z = Math.sin(t * 14) * 0.6;
+    J.body.position.x = Math.sin(t * 40) * 0.004 * tr; J.head.rotation.y = j <= 0 ? Math.sin(t * 8) * 0.5 * bump(t, TL.perro, TL.vacunar - 0.45, 0.2, 0.1) + Math.sin(t * 2) * 0.15 : Math.sin(t * 3) * 0.2; J.tail.rotation.z = Math.sin(t * 14) * 0.6;
     for (const [n, s] of [['FL', 1], ['FR', -1], ['BL', -1], ['BR', 1]]) J[n].rotation.x = run > 0 && run < 1 ? Math.sin(t * 18) * 0.7 * s : (j > 0 && j < 1 ? -0.6 * s * 0.3 : 0);
     J.earL.rotation.z = -0.25 - 0.3 * (j > 0 && j < 1 ? 1 : 0); J.earR.rotation.z = 0.25 + 0.3 * (j > 0 && j < 1 ? 1 : 0); }
   if (S.dog2) { const J = S.dog2.userData.J; J.tail.rotation.z = Math.sin(t * 10) * 0.5; J.head.rotation.y = Math.sin(t * 1.3) * 0.4; }
