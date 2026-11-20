@@ -1,0 +1,542 @@
+[
+ {
+  "text": "Has cortado la luz. ¿Ya puedes tocar el cable? ¡No! Si alguien la vuelve a dar, te mata.",
+  "start": 0.0,
+  "end": 6.011,
+  "words": [
+   {
+    "w": "Has",
+    "start": 0.0,
+    "end": 0.319
+   },
+   {
+    "w": "cortado",
+    "start": 0.319,
+    "end": 0.797
+   },
+   {
+    "w": "la",
+    "start": 0.797,
+    "end": 0.877
+   },
+   {
+    "w": "luz.",
+    "start": 0.877,
+    "end": 1.585
+   },
+   {
+    "w": "¿Ya",
+    "start": 1.585,
+    "end": 1.675
+   },
+   {
+    "w": "puedes",
+    "start": 1.675,
+    "end": 1.994
+   },
+   {
+    "w": "tocar",
+    "start": 1.994,
+    "end": 2.392
+   },
+   {
+    "w": "el",
+    "start": 2.392,
+    "end": 2.472
+   },
+   {
+    "w": "cable?",
+    "start": 2.472,
+    "end": 3.02
+   },
+   {
+    "w": "¡No!",
+    "start": 3.02,
+    "end": 4.027
+   },
+   {
+    "w": "Si",
+    "start": 4.027,
+    "end": 4.147
+   },
+   {
+    "w": "alguien",
+    "start": 4.147,
+    "end": 4.466
+   },
+   {
+    "w": "la",
+    "start": 4.466,
+    "end": 4.625
+   },
+   {
+    "w": "vuelve",
+    "start": 4.625,
+    "end": 5.024
+   },
+   {
+    "w": "a",
+    "start": 5.024,
+    "end": 5.104
+   },
+   {
+    "w": "dar,",
+    "start": 5.104,
+    "end": 5.423
+   },
+   {
+    "w": "te",
+    "start": 5.423,
+    "end": 5.582
+   },
+   {
+    "w": "mata.",
+    "start": 5.582,
+    "end": 6.011
+   }
+  ]
+ },
+ {
+  "text": "Por eso hay cinco reglas de oro, y van en orden.",
+  "start": 6.34,
+  "end": 9.4,
+  "words": [
+   {
+    "w": "Por",
+    "start": 6.34,
+    "end": 6.459
+   },
+   {
+    "w": "eso",
+    "start": 6.459,
+    "end": 6.778
+   },
+   {
+    "w": "hay",
+    "start": 6.778,
+    "end": 6.938
+   },
+   {
+    "w": "cinco",
+    "start": 6.938,
+    "end": 7.257
+   },
+   {
+    "w": "reglas",
+    "start": 7.257,
+    "end": 7.735
+   },
+   {
+    "w": "de",
+    "start": 7.735,
+    "end": 7.895
+   },
+   {
+    "w": "oro,",
+    "start": 7.895,
+    "end": 8.383
+   },
+   {
+    "w": "y",
+    "start": 8.383,
+    "end": 8.533
+   },
+   {
+    "w": "van",
+    "start": 8.533,
+    "end": 8.852
+   },
+   {
+    "w": "en",
+    "start": 8.852,
+    "end": 9.011
+   },
+   {
+    "w": "orden.",
+    "start": 9.011,
+    "end": 9.4
+   }
+  ]
+ },
+ {
+  "text": "Uno: abres, y que se vea el corte.",
+  "start": 9.769,
+  "end": 11.962,
+  "words": [
+   {
+    "w": "Uno:",
+    "start": 9.769,
+    "end": 10.347
+   },
+   {
+    "w": "abres,",
+    "start": 10.347,
+    "end": 10.895
+   },
+   {
+    "w": "y",
+    "start": 10.895,
+    "end": 10.98
+   },
+   {
+    "w": "que",
+    "start": 10.98,
+    "end": 11.085
+   },
+   {
+    "w": "se",
+    "start": 11.085,
+    "end": 11.244
+   },
+   {
+    "w": "vea",
+    "start": 11.244,
+    "end": 11.563
+   },
+   {
+    "w": "el",
+    "start": 11.563,
+    "end": 11.643
+   },
+   {
+    "w": "corte.",
+    "start": 11.643,
+    "end": 11.962
+   }
+  ]
+ },
+ {
+  "text": "Dos: lo bloqueas con candado y cartel, para que nadie lo vuelva a dar.",
+  "start": 12.291,
+  "end": 16.158,
+  "words": [
+   {
+    "w": "Dos:",
+    "start": 12.291,
+    "end": 12.929
+   },
+   {
+    "w": "lo",
+    "start": 12.929,
+    "end": 13.093
+   },
+   {
+    "w": "bloqueas",
+    "start": 13.093,
+    "end": 13.477
+   },
+   {
+    "w": "con",
+    "start": 13.477,
+    "end": 13.636
+   },
+   {
+    "w": "candado",
+    "start": 13.636,
+    "end": 14.195
+   },
+   {
+    "w": "y",
+    "start": 14.195,
+    "end": 14.274
+   },
+   {
+    "w": "cartel,",
+    "start": 14.274,
+    "end": 14.753
+   },
+   {
+    "w": "para",
+    "start": 14.753,
+    "end": 14.912
+   },
+   {
+    "w": "que",
+    "start": 14.912,
+    "end": 15.072
+   },
+   {
+    "w": "nadie",
+    "start": 15.072,
+    "end": 15.391
+   },
+   {
+    "w": "lo",
+    "start": 15.391,
+    "end": 15.55
+   },
+   {
+    "w": "vuelva",
+    "start": 15.55,
+    "end": 15.949
+   },
+   {
+    "w": "a",
+    "start": 15.949,
+    "end": 16.029
+   },
+   {
+    "w": "dar.",
+    "start": 16.029,
+    "end": 16.158
+   }
+  ]
+ },
+ {
+  "text": "Tres: compruebas que no hay tensión.",
+  "start": 16.547,
+  "end": 18.65,
+  "words": [
+   {
+    "w": "Tres:",
+    "start": 16.547,
+    "end": 17.145
+   },
+   {
+    "w": "compruebas",
+    "start": 17.145,
+    "end": 17.703
+   },
+   {
+    "w": "que",
+    "start": 17.703,
+    "end": 17.863
+   },
+   {
+    "w": "no",
+    "start": 17.863,
+    "end": 18.102
+   },
+   {
+    "w": "hay",
+    "start": 18.102,
+    "end": 18.262
+   },
+   {
+    "w": "tensión.",
+    "start": 18.262,
+    "end": 18.65
+   }
+  ]
+ },
+ {
+  "text": "Cuatro: lo pones a tierra… y algo más que casi todos olvidan.",
+  "start": 19.009,
+  "end": 23.096,
+  "words": [
+   {
+    "w": "Cuatro:",
+    "start": 19.009,
+    "end": 19.637
+   },
+   {
+    "w": "lo",
+    "start": 19.637,
+    "end": 19.777
+   },
+   {
+    "w": "pones",
+    "start": 19.777,
+    "end": 20.176
+   },
+   {
+    "w": "a",
+    "start": 20.176,
+    "end": 20.335
+   },
+   {
+    "w": "tierra…",
+    "start": 20.335,
+    "end": 20.973
+   },
+   {
+    "w": "y",
+    "start": 20.973,
+    "end": 21.212
+   },
+   {
+    "w": "algo",
+    "start": 21.212,
+    "end": 21.531
+   },
+   {
+    "w": "más",
+    "start": 21.531,
+    "end": 21.77
+   },
+   {
+    "w": "que",
+    "start": 21.77,
+    "end": 21.93
+   },
+   {
+    "w": "casi",
+    "start": 21.93,
+    "end": 22.249
+   },
+   {
+    "w": "todos",
+    "start": 22.249,
+    "end": 22.568
+   },
+   {
+    "w": "olvidan.",
+    "start": 22.568,
+    "end": 23.096
+   }
+  ]
+ },
+ {
+  "text": "Cinco: señalizas y delimitas la zona.",
+  "start": 23.515,
+  "end": 25.927,
+  "words": [
+   {
+    "w": "Cinco:",
+    "start": 23.515,
+    "end": 24.173
+   },
+   {
+    "w": "señalizas",
+    "start": 24.173,
+    "end": 24.881
+   },
+   {
+    "w": "y",
+    "start": 24.881,
+    "end": 24.96
+   },
+   {
+    "w": "delimitas",
+    "start": 24.96,
+    "end": 25.598
+   },
+   {
+    "w": "la",
+    "start": 25.598,
+    "end": 25.678
+   },
+   {
+    "w": "zona.",
+    "start": 25.678,
+    "end": 25.927
+   }
+  ]
+ },
+ {
+  "text": "¿Qué le falta a la cuarta? Comenta.",
+  "start": 26.296,
+  "end": 28.06,
+  "words": [
+   {
+    "w": "¿Qué",
+    "start": 26.296,
+    "end": 26.377
+   },
+   {
+    "w": "le",
+    "start": 26.377,
+    "end": 26.475
+   },
+   {
+    "w": "falta",
+    "start": 26.475,
+    "end": 26.794
+   },
+   {
+    "w": "a",
+    "start": 26.794,
+    "end": 26.874
+   },
+   {
+    "w": "la",
+    "start": 26.874,
+    "end": 27.034
+   },
+   {
+    "w": "cuarta?",
+    "start": 27.034,
+    "end": 27.632
+   },
+   {
+    "w": "Comenta.",
+    "start": 27.632,
+    "end": 28.06
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 28.369,
+  "end": 30.403,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 28.369,
+    "end": 29.107
+   },
+   {
+    "w": "a",
+    "start": 29.107,
+    "end": 29.267
+   },
+   {
+    "w": "quien",
+    "start": 29.267,
+    "end": 29.426
+   },
+   {
+    "w": "quiera",
+    "start": 29.426,
+    "end": 29.745
+   },
+   {
+    "w": "ser",
+    "start": 29.745,
+    "end": 29.984
+   },
+   {
+    "w": "bombero!",
+    "start": 29.984,
+    "end": 30.403
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 30.732,
+  "end": 34.52,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 30.732,
+    "end": 31.639
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 31.639,
+    "end": 32.885
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 32.885,
+    "end": 33.334
+   },
+   {
+    "w": "gratis",
+    "start": 33.334,
+    "end": 33.812
+   },
+   {
+    "w": "cinco",
+    "start": 33.812,
+    "end": 34.131
+   },
+   {
+    "w": "días!",
+    "start": 34.131,
+    "end": 34.52
+   }
+  ]
+ }
+]

@@ -1,0 +1,52 @@
+«HAS CORTADO LA LUZ. ¿YA PUEDES TOCAR EL CABLE?» — las 5 reglas de oro en electricidad (idea de Adrián, Notion «SÁBADO 21.
+Explicar las 5 reglas de oro en electricidad»). 30–40 s: este sale en ≈ 36 s.
+
+Cómo está hecho (plan: «es teoría; que la cuente una situación real en 3D, sin lista en pantalla»): de noche, un
+bombero ante el cuadro eléctrico de una nave y un cable dañado en el suelo. La idea que nadie espera: cortar la luz NO
+basta (si alguien la vuelve a dar, te mata). Las cinco reglas no salen como lista: son cinco gestos sobre el mismo
+cuadro, en orden — las cuchillas se abren (corte visible), candado y cartel, el detector que no pita, las pinzas a tierra,
+los conos y la cinta —, con cinco monedas de oro que se van llenando. Cierre para comentar: a la cuarta le falta algo
+(«y en cortocircuito»), que casi todo el mundo olvida en el examen.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido y firme. Lo más fuerte: el arranque («¡NO!», «te MATA») y el final («¡MÁNDASELO…!», «¡BOMBERADOS!»,
+«¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[tense, urgent] Has cortado la luz. ¿Ya puedes tocar el cable? [shouting, alarmed] ¡NO! [serious] Si alguien la vuelve a dar, te MATA.
+[firm, clear] Por eso hay cinco reglas de oro, y van en ORDEN.
+[clear, fast] Uno: abres, y que se VEA el corte.
+[clear, fast] Dos: lo bloqueas con candado y cartel, para que nadie lo vuelva a dar.
+[clear, fast] Tres: compruebas que no hay tensión.
+[clear, intrigued] Cuatro: lo pones a tierra… [mischievous] y algo más que casi todos olvidan.
+[clear, fast] Cinco: señalizas y delimitas la zona.
+[challenging] ¿Qué le falta a la cuarta? Comenta.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, DE NOCHE, con un dron que no para:
+1. «Has cortado la luz.» — primer fotograma: un guante que se acerca a un cable pelado en el suelo; al lado, el cuadro
+   con la palanca bajada. «¿Ya puedes tocar el cable? ¡No!» — ✗ rojo. «Si alguien la vuelve a dar, te mata» — una mano
+   fantasma sube la palanca y un rayo recorre el cable hasta el guante: destello rojo.
+2. «Por eso hay cinco reglas de oro, y van en orden» — arriba aparecen cinco monedas de oro vacías, numeradas.
+3. «Uno: abres, y que se vea el corte» — las tres cuchillas del seccionador se abren: se ve el hueco (CORTE VISIBLE).
+   Moneda 1: ABRIR.
+4. «Dos: lo bloqueas con candado y cartel» — un candado se cierra en la palanca y cuelga el cartel «NO CONECTAR».
+   Moneda 2: BLOQUEAR.
+5. «Tres: compruebas que no hay tensión» — el detector toca los tres cables: no pita, luz verde (0 V). Moneda 3: VERIFICAR.
+6. «Cuatro: lo pones a tierra… y algo más que casi todos olvidan» — tres pinzas muerden los cables, unidas entre sí y a
+   una pica clavada en el suelo. Moneda 4: A TIERRA… y un «?».
+7. «Cinco: señalizas y delimitas la zona» — conos y cinta alrededor. Moneda 5: DELIMITAR.
+8. «¿Qué le falta a la cuarta? Comenta.» — tarjeta «4. A TIERRA Y… ?» y «💬 COMENTA».
+9. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+10. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la pregunta (para el comentario fijado, no va en el vídeo): «Y EN CORTOCIRCUITO»: la cuarta es «poner a
+tierra y en cortocircuito».
+Fuentes (en FUENTES.md): la lámina que pone Adrián en Notion y el RD 614/2001 (riesgo eléctrico), Anexo II.
+CONFIRMAR la prueba gratis de 5 días.

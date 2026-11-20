@@ -3217,7 +3217,137 @@ def sfx_track_estab(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def _zumbido(dur, seed=3):
+    """Zumbido eléctrico (50 Hz y armónicos, con chisporroteo suave), estéreo, ≈ ±1."""
+    SR = sfx.SR; n = int(dur * SR); t = np.arange(n) / SR; rs = np.random.RandomState(seed)
+    y = sum(np.sin(2 * np.pi * 50 * h * t + rs.rand() * 6) / h ** 0.7 for h in (1, 2, 3, 4, 6, 8))
+    y = np.tanh(1.4 * y) * (0.85 + 0.15 * np.sin(2 * np.pi * 0.7 * t))
+    cr = (rs.rand(n) < 0.002) * rs.randn(n); cr = np.convolve(cr, np.exp(-np.arange(200) / 30), "same")
+    out = np.stack([y + 0.6 * cr, np.roll(y, 9) + 0.6 * np.roll(cr, 13)], 1)
+    return out / (np.abs(out).max() + 1e-9)
+
+
+def _arco(dur, seed=5):
+    """Arco eléctrico: chasquidos y crepitar de alta frecuencia, estéreo."""
+    SR = sfx.SR; n = int(dur * SR); rs = np.random.RandomState(seed)
+    imp = (rs.rand(n) < 0.03) * rs.randn(n) * (1 + 3 * (rs.rand(n) < 0.002))
+    k = np.exp(-np.arange(120) / 12) * np.sin(np.arange(120) * 1.7)
+    y = np.convolve(imp, k, "same") + 0.25 * rs.randn(n) * (rs.rand(n) < 0.3)
+    env = np.exp(-np.linspace(0, 3.5, n)) * (1 - np.exp(-np.linspace(0, 60, n)))
+    out = np.stack([y * env, np.roll(y, 7) * env], 1)
+    return out / (np.abs(out).max() + 1e-9)
+
+
+def sfx_track_oro(path):
+    """«Has cortado la luz. ¿Ya puedes tocar el cable?» (5 reglas de oro): la noche junto a la nave (viento, incendio
+    dentro), el guante que se acerca, el «¡no!», el clac de la palanca que alguien sube, el zumbido de la corriente y el
+    chisporroteo del cable pelado, el arco (te mata), las monedas de oro, y cada regla con su sonido: la palanca que abre
+    (el zumbido se corta), el candado, el detector que toca tres veces sin pitar, las pinzas y la pica, los conos y la
+    cinta; la pregunta y la venta. Tiempos como en oro.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    g0, g1, zap = c["alguien"] + 0.1, c["vuelve"] + 0.35, c["mata"] - 0.02
+    o0, o1 = c["abres"] - 0.1, c["abres"] + 0.55
+    tt = [c["compruebas"] + 0.05 + i * max(0.35, (c["tension"] + 0.4 - c["compruebas"]) / 3) for i in range(3)]
+    cl = [c["cuatro"] - 0.05 + i * 0.32 for i in range(3)]
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe")); barra = _onset(_load("barra")); w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # la noche junto a la nave
+    put(_loop(_load("aire"), END + 0.5), 0.0, -31, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("fuego"), END + 0.5), 0.0, -41, T["fin"], 0.6, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -42, T["fin"], 0.6, 1.0, track=amb)
+    put("tension", 0.0, -31, c["no1"], 0.2, 0.2, track=amb)
+    put("latido", 0.25, -24, 0.7); put("latido", 1.25, -24, 0.7)
+    put(_pitch(wh, 0.7), 0.1, -29, 1.4)
+    # ¡no!
+    put("golpe", c["no1"] - 0.02, -20, 0.8, 0.003, 0.35)
+    put("fallo", c["no1"] + 0.02, -25, 0.5)
+    # alguien la vuelve a dar: la palanca sube (clac), corre la corriente y el arco
+    put(_pitch(wh, 1.0), c["alguien"] - 0.3, -27, 0.8)
+    put(_pitch(barra, 0.8), g1 - 0.05, -21, 0.7, 0.003, 0.3)
+    put(_pitch(golpe, 1.6), g1 - 0.03, -21, 0.4, 0.003, 0.2)
+    hum = _zumbido(o1 - g1 + 0.3)
+    put(hum, g1, -30, o1 - g1 + 0.05, 0.02, 0.05, track=amb)
+    put(_arco(o1 - g1 + 0.3, 9), g1 + 0.2, -33, o1 - g1 - 0.15, 0.05, 0.05, track=amb)
+    put(_pitch(w2, 2.2), g1 + 0.05, -27, zap - g1, 0.02, 0.02)
+    put(_arco(1.0, 11), zap, -19, 0.9, 0.002, 0.3)
+    put(_pitch(golpe, 0.7), zap, -18, 0.8, 0.003, 0.4)
+    put("latido", zap + 0.2, -21, 0.7)
+    # cinco reglas de oro, en orden
+    put(_pitch(wh, 0.7), c["cinco"] - 0.4, -27, 1.0)
+    for i in range(5):
+        put(_pitch(bub, 1.0 + 0.08 * i), c["cinco"] + 0.08 * i, -28, 0.15, 0.001, 0.05)
+    put(w2, c["orden"] - 0.1, -29, 0.6)
+    for i, key in enumerate(("abres", "bloqueas", "compruebas", "tierra", "senalizas")):
+        put(_pitch(nota, 1.0 * 1.122 ** i), c[key] - 0.03, -26, 0.8)
+        put("destello", c[key] - 0.05, -30, 0.5)
+    # 1: la palanca baja (el zumbido se corta) y se ve el corte
+    put(_pitch(barra, 0.75), o1 - 0.05, -20, 0.8, 0.003, 0.35)
+    put(_pitch(golpe, 1.3), o1 - 0.03, -21, 0.4, 0.003, 0.2)
+    put(_pitch(toque, 1.2), c["vea"] - 0.03, -28, 0.35)
+    # 2: el candado (clic) y el cartel
+    put(_pitch(tic, 0.9), c["candado"] + 0.2, -22, 0.15)
+    put(_pitch(tic, 1.6), c["candado"] + 0.26, -24, 0.12)
+    put(_onset(_load("papeles")), c["cartel"] - 0.1, -29, 0.5)
+    # 3: el detector toca los tres bornes… y no pita
+    for t0 in tt:
+        put(_pitch(tic, 2.2), t0, -27, 0.1)
+    put("acierto", c["tension"] + 0.05, -25, 0.8)
+    # 4: las pinzas (clic, clic, clic), la pica (dos golpes) y el «algo más»
+    for t0 in cl:
+        put(_pitch(tic, 1.1), t0 + 0.1, -23, 0.15)
+        put(_pitch(golpe, 2.0), t0 + 0.11, -27, 0.2, 0.003, 0.1)
+    for k in range(2):
+        put(_pitch(golpe, 1.2), c["tierra"] - 0.2 + 0.18 * k, -22, 0.3, 0.003, 0.15)
+    put(_pitch(toque, 0.75), c["algo"] + 0.05, -25, 0.4)
+    put(_pitch(nota, 0.84), c["olvidan"] - 0.05, -27, 0.6)
+    # 5: los conos y la cinta
+    for i in range(4):
+        put(_pitch(golpe, 1.7), c["cinco7"] + 0.05 + 0.13 * i + 0.1, -26, 0.25, 0.003, 0.12)
+    put(_pitch(w2, 1.4), c["senalizas"] + 0.1, -28, 0.8, 0.02, 0.2)
+    # la pregunta
+    put(_pitch(wh, 0.7), c["falta"] - 0.3, -26, 1.0)
+    put("tension", c["falta"], -31, c["compartir"] - c["falta"] - 0.3, 0.3, 0.3, track=amb)
+    put(_pitch(toque, 0.8), c["cuarta"] - 0.03, -25, 0.4)
+    put(_pitch(toque, 1.3), c["comenta"] - 0.03, -25, 0.35)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "oro":
+        return sfx_track_oro(path)
     if Q.get("formato") == "estab":
         return sfx_track_estab(path)
     if Q.get("formato") == "rsciei":

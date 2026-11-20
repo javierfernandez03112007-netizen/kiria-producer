@@ -158,3 +158,22 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   los bloques? (A y C) · ¿Cuánto aguantan los bloques de polietileno? (100 kg/cm²) · ¿Qué lleva el puntal para enganchar el
   tensor? (una cuchilla que atraviesa la carrocería).
 
+## 20 nov 2026 · Las 5 reglas de oro en electricidad (supresión de la tensión)
+
+### Fuente — lámina que pone Adrián Luna (Notion, fila «SÁBADO 21»), que coincide con el RD 614/2001, Anexo II
+1. **Abrir / desconectar**: corte visible o efectivo.
+2. **Bloquear / prevenir la realimentación**: enclavamiento o bloqueo (si es posible) y señalización, para que nadie lo
+   vuelva a conectar.
+3. **Verificar** la ausencia de tensión.
+4. **Poner a tierra y en cortocircuito** (aterrar).
+5. **Delimitar**: proteger frente a elementos próximos en tensión, si los hay, y señalizar y delimitar la zona de trabajo.
+
+### Vídeos hechos con esto
+- «Has cortado la luz. ¿Ya puedes tocar el cable?» (`projects/bomberados_reglasoro/`): cortar la luz no basta; las cinco
+  como gestos en orden sobre el mismo cuadro; cierre: ¿qué le falta a la cuarta? («y en cortocircuito»).
+
+### Preguntas de examen que salen de aquí
+- ¿Cuál es la primera regla de oro? (abrir con corte visible o efectivo) · ¿Qué va antes, verificar o poner a tierra?
+  (verificar) · La cuarta es «poner a tierra y…» (en cortocircuito) · ¿Para qué se bloquea? (evitar la realimentación) ·
+  ¿Qué norma las recoge? (RD 614/2001, Anexo II).
+
