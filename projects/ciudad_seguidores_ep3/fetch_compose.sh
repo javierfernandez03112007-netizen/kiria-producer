@@ -17,7 +17,7 @@ while true; do
       [ "$n" = "$((B - A))" ] || { echo "$(date +%H:%M) $br $tag: $n fotogramas (esperaba $((B - A)))"; continue; }
       rm -rf out/tmp_$tag && mkdir -p out/tmp_$tag && ffmpeg -v error -y -i out/$tag.mp4 -start_number $A -q:v 2 out/tmp_$tag/f%05d.jpg
       for f in out/tmp_$tag/*.jpg; do b=$(basename $f); i=$((10#$(echo $b | tr -dc 0-9)))
-        [ -f out/frames/$b ] || mv $f out/frames/$b; done
+        if [ "$X" -ge 9 ]; then mv -f $f out/frames/$b; else [ -f out/frames/$b ] || mv $f out/frames/$b; fi; done      # 9+: tramos rehechos con la cámara suavizada (mandan)
       rm -rf out/tmp_$tag; touch out/$tag.done; echo "$(date +%H:%M) $br $tag metido"
     done
   done

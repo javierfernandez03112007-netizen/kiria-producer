@@ -14,7 +14,7 @@ async function buildScene() {
   const W_ = (w, li, d = 0) => { const k = norm(w) + '_' + li, o = Object.getPrototypeOf(K) === Object.prototype ? K : K; const v = WORDS.find(x => x.li === li && x.n.startsWith(norm(w))); return v ? v.start - 0.03 + d : LS(li) + d; };
   TL = { end: END, L: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(LS), E: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(LE),
     stamp: W_('firmar', 1, 0.25), tocar: W_('tocar', 1), trono: W_('trono', 2), ley2: W_('ley', 2), semana: W_('semana', 2), homen: W_('homenajeara', 2), seguidor: W_('seguidor', 2), final: W_('final', 3), tu: W_('tu', 3),
-    crece: W_('crece', 4), pedis: W_('pedis', 4), sushi: W_('sushi', 5), mesa: W_('mesa', 5), libre: W_('mesa', 5, 0.4), past: W_('pasteleria', 6), tartas: W_('tartas', 6), escap: W_('escaparate', 6), cola: W_('cola', 6), esquina: W_('esquina', 6),
+    crece: W_('crece', 4), pedis: W_('pedis', 4), sushi: W_('sushi', 5), mesa: W_('mesa', 5), libre: W_('mesa', 5, 0.15), past: W_('pasteleria', 6), tartas: W_('tartas', 6), escap: W_('escaparate', 6), cola: W_('cola', 6), esquina: W_('esquina', 6),
     vet: W_('veterinario', 7), paciente: W_('paciente', 7), perro: W_('perro', 7), vacunar: W_('vacunar', 7), plaza: W_('plaza', 8), pedestal: W_('pedestal', 8), vacio: W_('vacio', 8),
     coment: W_('comentario', 9), gusta: W_('gusta', 9), semana9: W_('semana', 9), construir: W_('construira', 9), nombre: W_('nombre', 9), estatua: W_('estatua', 9), oro: W_('oro', 9), manda: W_('mandaselo', 10), estatua10: W_('estatua', 10) };
   townMats(); const G = new THREE.Group(); scene.add(G); S.G = G;
