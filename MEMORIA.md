@@ -248,7 +248,11 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   la luz de relleno baja dan las sombras que hacen «real» la escena; (4) giros de cámara de 90° en 0,2 s y pasadas a 2 m de una fachada se ven
   como saltos: girar con claves cada 45° y separarse de la fachada; (5) al cambiar claves de cámara, el interpolador monótono cambia también los
   tramos vecinos: comparar `camAt` antes/después para saber qué fotogramas rehacer; (6) esta escena (≈ 5.000 mallas) va a ≈ 7–19 fotogramas/min
-  por máquina: el render tarda mucho más que el de escenas sencillas (la próxima vez, juntar geometría estática). Nombres en local con
+  por máquina: el render tarda mucho más que el de escenas sencillas (la próxima vez, juntar geometría estática); (7) la revisión de saltos
+  pilló dos fallos tras montar: una pareja del sushi a 0,4 m del objetivo (su pelo llenaba el plano) y un giro de 180° del veterinario a la
+  plaza que pasaba mirando al suelo (el punto al que mira cruzaba por debajo de la cámara). Ahora hay `web/check_people.mjs` (avisa si alguien
+  queda a < 1,2 m dentro del encuadre, contando su tamaño): pasarlo SIEMPRE antes de renderizar; y un giro grande junto a una fachada o una
+  fila de gente se hace subiendo primero (mirando hacia abajo por el cristal) y girando por el lado abierto, con claves cada ~45°. Nombres en local con
   `web/labels.mjs` + `compose_ciudad.py` (los cuatro de la voz y el rey en dorado; el resto, sorteo fijo de la lista del 17-11; se apilan sin pisarse).
 
 ## Próximas ideas
