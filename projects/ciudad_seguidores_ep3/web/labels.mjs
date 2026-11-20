@@ -11,7 +11,7 @@ const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
 page.on('console', m => { if (m.text().startsWith('ERROR')) console.log('[page]', m.text()); });
 await page.goto(`http://127.0.0.1:${server.address().port}/projects/ciudad_seguidores_ep3/web/index.html`);
 await page.waitForFunction(() => window.ready === true || window.failed, null, { timeout: 400000 });
-fs.writeFileSync(path.join(path.dirname(out), 'jobs.json'), JSON.stringify(await page.evaluate(() => ({ jobs: window.JOBS, vip: window.VIPS, king: window.KINGI }))));
+fs.writeFileSync(path.join(path.dirname(out), 'jobs.json'), JSON.stringify(await page.evaluate(() => window.whoIs())));
 const w = fs.createWriteStream(out); let tot = 0, mx = 0;
 for (let f = 0; f < Number(N); f++) { const L = await page.evaluate(t => window.labelsAt(t), f / FPS); tot += L.p.length + L.h.length; mx = Math.max(mx, L.p.length + L.h.length); w.write(JSON.stringify(L) + '\n'); }
 await new Promise(r => w.end(r)); console.log(`ok ${N} fotogramas, ${tot} rótulos, máx ${mx} en un fotograma`); await browser.close(); server.close();
