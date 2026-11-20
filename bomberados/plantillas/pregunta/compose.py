@@ -3345,7 +3345,128 @@ def sfx_track_oro(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_forestal(path):
+    """«Este incendio tiene cabeza, cola… ¡y dedos!» (partes de un incendio forestal): el rugido del incendio sigue a su
+    tamaño (el mismo F(t) que forestal.js: fuerte en el gancho, se rebobina hasta casi nada y vuelve a crecer), viento y
+    chasquidos; un toque en cada rótulo, el sello del examen, el rebobinado (al revés), la chispa del origen, la ráfaga de
+    viento, el perímetro que se dibuja, la lengua que se escapa, la pavesa que silba y prende fuera, las letras, el papel de
+    los apuntes y la venta."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    rw0, rw1 = c["cae"] - 0.05, c["nace"] - 0.12
+    j0 = c["pavesa"] + 0.05
+    j1 = max(c["fuera"] + 0.12, j0 + 0.8)
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe")); w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh")); fuego = _load("fuego")
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # el tamaño del incendio en cada instante (como FK en forestal.js) → volumen del rugido
+    FK = [(0, 0.985), (rw0, 1.0), (rw1, 0.0), (c["origen"] + 0.35, 0.03), (c["viento"], 0.055), (c["caliente"] + 0.3, 0.33),
+          (c["flancos"] + 0.45, 0.42), (c["despacio"] + 0.4, 0.5), (c["perimetro"] + 0.6, 0.555), (c["dedo"] + 0.45, 0.76),
+          (c["bolsa"] + 0.4, 0.82), (c["isla"] + 0.4, 0.86), (j1, 0.904), (c["empiezas"], 0.97), (c["apuntes"], 1.0), (END, 1.03)]
+    tk = [FK[0][0]]
+    for t0, _ in FK[1:]:
+        tk.append(max(t0, tk[-1] + 0.12))
+    ts = np.arange(N2) / sfx.SR
+    Ft = np.interp(ts, tk, [f for _, f in FK])
+    paper = np.clip((ts - c["apuntes"]) / 0.6, 0, 1)
+    roar = (0.06 + 0.94 * np.clip(Ft / 0.6, 0, 1) ** 1.3) * (1 - 0.85 * paper)
+    fl = _to(_loop(fuego, END + 1.0), -27)[:N2]
+    amb[:len(fl)] += fl * roar[:len(fl), None]
+    put(_loop(_load("aire"), END + 0.5), 0.0, -32, T["fin"], 0.3, 1.0, track=amb)
+    br = _to(_loop(_load("brasas"), END + 1.0), -33)[:N2]
+    amb[:len(br)] += br * (0.3 + 0.7 * np.clip(Ft / 0.4, 0, 1))[:len(br), None] * (1 - paper)[:len(br), None]
+    # el gancho: cabeza, cola… ¡y dedos!
+    put(_pitch(wh, 0.7), 0.05, -28, 1.3)
+    for k, f in (("cabeza1", 1.0), ("cola1", 1.12), ("dedos", 1.26)):
+        put(_pitch(toque, f), c[k] - 0.02, -24, 0.4)
+    put(_pitch(golpe, 1.4), c["dedos"] + 0.05, -26, 0.3, 0.003, 0.15)
+    # siempre cae en el examen: el sello; el rebobinado (al revés) hasta la chispa
+    put("golpe", c["examen"] + 0.1, -21, 0.7, 0.003, 0.3)
+    put(_pitch(w2, 1.3)[::-1].copy(), rw0, -25, max(0.4, rw1 - rw0), 0.05, 0.05)
+    put(_pitch(fuego[: int(3 * sfx.SR)], 2.4)[::-1].copy(), rw0 + 0.05, -31, max(0.3, rw1 - rw0 - 0.1), 0.1, 0.05)
+    # nace aquí: la chispa
+    put("destello", c["nace"] - 0.05, -26, 0.6)
+    put(_pitch(tic, 1.8), c["nace"] + 0.1, -26, 0.12)
+    put(fuego[int(0.2 * sfx.SR):], c["origen"] - 0.2, -31, 0.9, 0.05, 0.4)
+    put(_pitch(toque, 0.9), c["origen"] - 0.02, -24, 0.4)
+    # el viento lo empuja; la cabeza, lo más caliente
+    put(_pitch(wh, 0.6), c["viento"] - 0.15, -23, 1.4, 0.05, 0.5)
+    put(_pitch(w2, 0.8), c["empuja"], -27, 1.0)
+    put(_pitch(toque, 1.0), c["cabeza"] - 0.02, -24, 0.4)
+    put(fuego[int(0.3 * sfx.SR):], c["caliente"] - 0.25, -24, 1.2, 0.08, 0.5)
+    put(_pitch(golpe, 0.75), c["caliente"] - 0.02, -24, 0.6, 0.003, 0.3)
+    # los flancos, la cola
+    put(_pitch(toque, 1.12), c["flancos"] - 0.02, -24, 0.35)
+    put(_pitch(toque, 1.26), c["flancos"] + 0.14, -25, 0.35)
+    put(_pitch(nota, 0.75), c["cola"] - 0.02, -26, 0.7)
+    # el perímetro se dibuja
+    put(_pitch(w2, 1.6), c["borde"] - 0.05, -27, max(0.6, c["perimetro"] + 0.35 - c["borde"]), 0.05, 0.2)
+    put(_pitch(nota, 1.12), c["perimetro"] - 0.02, -25, 0.7)
+    # la lengua que se estira: un dedo
+    put(_pitch(wh, 1.1), c["lengua"] - 0.1, -24, 1.1, 0.02, 0.4)
+    put(fuego[int(0.5 * sfx.SR):], c["estira"] - 0.1, -27, 1.0, 0.05, 0.4)
+    put(_pitch(toque, 1.33), c["dedo"] - 0.02, -24, 0.4)
+    # la bolsa, la isla
+    put(_pitch(bub, 0.9), c["bolsa"] - 0.02, -25, 0.15, 0.001, 0.05)
+    put(_pitch(toque, 1.0), c["bolsa"] + 0.02, -26, 0.35)
+    put(_pitch(bub, 1.2), c["isla"] - 0.02, -25, 0.15, 0.001, 0.05)
+    put(_pitch(toque, 1.19), c["isla"] + 0.02, -26, 0.35)
+    # la pavesa salta (silbido que sube y baja) y prende fuera
+    n = int((j1 - j0) * sfx.SR)
+    u = np.linspace(0, 1, max(n, 2))
+    fr = 900 + 900 * np.sin(np.pi * u)
+    ph = 2 * np.pi * np.cumsum(fr) / sfx.SR
+    wsl = (np.sin(ph) * (0.6 + 0.4 * np.random.default_rng(5).random(len(u))) * np.sin(np.pi * u) ** 0.5)[:, None] * np.ones((1, 2))
+    put(wsl, j0, -33, j1 - j0, 0.05, 0.05)
+    put(_pitch(wh, 1.4), j0, -29, j1 - j0)
+    put(_pitch(golpe, 1.8), j1 - 0.02, -27, 0.3, 0.003, 0.15)
+    put(fuego[int(0.25 * sfx.SR):], j1, -27, 1.4, 0.03, 0.5)
+    put(_pitch(toque, 0.84), c["foco"] - 0.02, -24, 0.4)
+    # ¿por dónde empiezas a apagarlo? A, B, C o D
+    put(_pitch(wh, 0.7), c["empiezas"] - 0.35, -26, 1.0)
+    put("tension", c["empiezas"], -31, c["compartir"] - c["empiezas"] - 0.3, 0.3, 0.3, track=amb)
+    for i, k in enumerate(("letA", "letB", "letC", "letD")):
+        put(_pitch(bub, 1.0 + 0.12 * i), c[k] - 0.02, -24, 0.14, 0.001, 0.05)
+    # los apuntes: el monte se vuelve papel
+    put(_onset(_load("papeles")), c["apuntes"] - 0.15, -24, 0.9, 0.01, 0.3)
+    put("flip", c["apuntes"] + 0.05, -26, 0.5)
+    put(_pitch(nota, 1.26), c["elite"] - 0.02, -27, 0.6)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "forestal":
+        return sfx_track_forestal(path)
     if Q.get("formato") == "oro":
         return sfx_track_oro(path)
     if Q.get("formato") == "estab":

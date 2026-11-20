@@ -1,0 +1,597 @@
+[
+ {
+  "text": "Este incendio tiene cabeza, cola… ¡y dedos!",
+  "start": 0.0,
+  "end": 3.061,
+  "words": [
+   {
+    "w": "Este",
+    "start": 0.0,
+    "end": 0.357
+   },
+   {
+    "w": "incendio",
+    "start": 0.357,
+    "end": 0.874
+   },
+   {
+    "w": "tiene",
+    "start": 0.874,
+    "end": 1.231
+   },
+   {
+    "w": "cabeza,",
+    "start": 1.231,
+    "end": 1.747
+   },
+   {
+    "w": "cola…",
+    "start": 1.847,
+    "end": 2.205
+   },
+   {
+    "w": "¡y",
+    "start": 2.505,
+    "end": 2.703
+   },
+   {
+    "w": "dedos!",
+    "start": 2.703,
+    "end": 3.061
+   }
+  ]
+ },
+ {
+  "text": "Y cae siempre en el examen.",
+  "start": 3.361,
+  "end": 5.03,
+  "words": [
+   {
+    "w": "Y",
+    "start": 3.361,
+    "end": 3.56
+   },
+   {
+    "w": "cae",
+    "start": 3.56,
+    "end": 3.758
+   },
+   {
+    "w": "siempre",
+    "start": 3.758,
+    "end": 4.116
+   },
+   {
+    "w": "en",
+    "start": 4.116,
+    "end": 4.315
+   },
+   {
+    "w": "el",
+    "start": 4.315,
+    "end": 4.513
+   },
+   {
+    "w": "examen.",
+    "start": 4.513,
+    "end": 5.03
+   }
+  ]
+ },
+ {
+  "text": "Nace aquí: el origen.",
+  "start": 5.33,
+  "end": 6.94,
+  "words": [
+   {
+    "w": "Nace",
+    "start": 5.33,
+    "end": 5.687
+   },
+   {
+    "w": "aquí:",
+    "start": 5.687,
+    "end": 6.045
+   },
+   {
+    "w": "el",
+    "start": 6.225,
+    "end": 6.424
+   },
+   {
+    "w": "origen.",
+    "start": 6.424,
+    "end": 6.94
+   }
+  ]
+ },
+ {
+  "text": "El viento lo empuja: delante, la cabeza, lo más caliente.",
+  "start": 7.24,
+  "end": 11.036,
+  "words": [
+   {
+    "w": "El",
+    "start": 7.24,
+    "end": 7.439
+   },
+   {
+    "w": "viento",
+    "start": 7.439,
+    "end": 7.796
+   },
+   {
+    "w": "lo",
+    "start": 7.796,
+    "end": 7.995
+   },
+   {
+    "w": "empuja:",
+    "start": 7.995,
+    "end": 8.511
+   },
+   {
+    "w": "delante,",
+    "start": 8.691,
+    "end": 9.207
+   },
+   {
+    "w": "la",
+    "start": 9.307,
+    "end": 9.506
+   },
+   {
+    "w": "cabeza,",
+    "start": 9.506,
+    "end": 10.022
+   },
+   {
+    "w": "lo",
+    "start": 10.122,
+    "end": 10.321
+   },
+   {
+    "w": "más",
+    "start": 10.321,
+    "end": 10.52
+   },
+   {
+    "w": "caliente.",
+    "start": 10.52,
+    "end": 11.036
+   }
+  ]
+ },
+ {
+  "text": "A los lados, los flancos.",
+  "start": 11.336,
+  "end": 12.747,
+  "words": [
+   {
+    "w": "A",
+    "start": 11.336,
+    "end": 11.535
+   },
+   {
+    "w": "los",
+    "start": 11.535,
+    "end": 11.733
+   },
+   {
+    "w": "lados,",
+    "start": 11.733,
+    "end": 12.091
+   },
+   {
+    "w": "los",
+    "start": 12.191,
+    "end": 12.39
+   },
+   {
+    "w": "flancos.",
+    "start": 12.39,
+    "end": 12.747
+   }
+  ]
+ },
+ {
+  "text": "Detrás, la cola: arde despacio.",
+  "start": 13.047,
+  "end": 15.114,
+  "words": [
+   {
+    "w": "Detrás,",
+    "start": 13.047,
+    "end": 13.404
+   },
+   {
+    "w": "la",
+    "start": 13.504,
+    "end": 13.703
+   },
+   {
+    "w": "cola:",
+    "start": 13.703,
+    "end": 14.061
+   },
+   {
+    "w": "arde",
+    "start": 14.241,
+    "end": 14.598
+   },
+   {
+    "w": "despacio.",
+    "start": 14.598,
+    "end": 15.114
+   }
+  ]
+ },
+ {
+  "text": "Su borde: el perímetro.",
+  "start": 15.414,
+  "end": 17.024,
+  "words": [
+   {
+    "w": "Su",
+    "start": 15.414,
+    "end": 15.613
+   },
+   {
+    "w": "borde:",
+    "start": 15.613,
+    "end": 15.97
+   },
+   {
+    "w": "el",
+    "start": 16.15,
+    "end": 16.349
+   },
+   {
+    "w": "perímetro.",
+    "start": 16.349,
+    "end": 17.024
+   }
+  ]
+ },
+ {
+  "text": "Una lengua que se estira: un dedo.",
+  "start": 17.324,
+  "end": 19.689,
+  "words": [
+   {
+    "w": "Una",
+    "start": 17.324,
+    "end": 17.681
+   },
+   {
+    "w": "lengua",
+    "start": 17.681,
+    "end": 18.039
+   },
+   {
+    "w": "que",
+    "start": 18.039,
+    "end": 18.238
+   },
+   {
+    "w": "se",
+    "start": 18.238,
+    "end": 18.436
+   },
+   {
+    "w": "estira:",
+    "start": 18.436,
+    "end": 18.953
+   },
+   {
+    "w": "un",
+    "start": 19.133,
+    "end": 19.331
+   },
+   {
+    "w": "dedo.",
+    "start": 19.331,
+    "end": 19.689
+   }
+  ]
+ },
+ {
+  "text": "Y el hueco sin quemar: una bolsa.",
+  "start": 19.989,
+  "end": 22.195,
+  "words": [
+   {
+    "w": "Y",
+    "start": 19.989,
+    "end": 20.188
+   },
+   {
+    "w": "el",
+    "start": 20.188,
+    "end": 20.386
+   },
+   {
+    "w": "hueco",
+    "start": 20.386,
+    "end": 20.744
+   },
+   {
+    "w": "sin",
+    "start": 20.744,
+    "end": 20.943
+   },
+   {
+    "w": "quemar:",
+    "start": 20.943,
+    "end": 21.3
+   },
+   {
+    "w": "una",
+    "start": 21.48,
+    "end": 21.838
+   },
+   {
+    "w": "bolsa.",
+    "start": 21.838,
+    "end": 22.195
+   }
+  ]
+ },
+ {
+  "text": "Dentro, lo que no arde: una isla.",
+  "start": 22.495,
+  "end": 24.801,
+  "words": [
+   {
+    "w": "Dentro,",
+    "start": 22.495,
+    "end": 22.852
+   },
+   {
+    "w": "lo",
+    "start": 22.952,
+    "end": 23.151
+   },
+   {
+    "w": "que",
+    "start": 23.151,
+    "end": 23.35
+   },
+   {
+    "w": "no",
+    "start": 23.35,
+    "end": 23.549
+   },
+   {
+    "w": "arde:",
+    "start": 23.549,
+    "end": 23.906
+   },
+   {
+    "w": "una",
+    "start": 24.086,
+    "end": 24.444
+   },
+   {
+    "w": "isla.",
+    "start": 24.444,
+    "end": 24.801
+   }
+  ]
+ },
+ {
+  "text": "Si una pavesa salta fuera: foco secundario.",
+  "start": 25.101,
+  "end": 28.101,
+  "words": [
+   {
+    "w": "Si",
+    "start": 25.101,
+    "end": 25.3
+   },
+   {
+    "w": "una",
+    "start": 25.3,
+    "end": 25.657
+   },
+   {
+    "w": "pavesa",
+    "start": 25.657,
+    "end": 26.173
+   },
+   {
+    "w": "salta",
+    "start": 26.173,
+    "end": 26.531
+   },
+   {
+    "w": "fuera:",
+    "start": 26.531,
+    "end": 26.888
+   },
+   {
+    "w": "foco",
+    "start": 27.068,
+    "end": 27.426
+   },
+   {
+    "w": "secundario.",
+    "start": 27.426,
+    "end": 28.101
+   }
+  ]
+ },
+ {
+  "text": "¿Por dónde empiezas a apagarlo? ¿A, B, C o D?",
+  "start": 28.401,
+  "end": 31.641,
+  "words": [
+   {
+    "w": "¿Por",
+    "start": 28.401,
+    "end": 28.6
+   },
+   {
+    "w": "dónde",
+    "start": 28.6,
+    "end": 28.957
+   },
+   {
+    "w": "empiezas",
+    "start": 28.957,
+    "end": 29.473
+   },
+   {
+    "w": "a",
+    "start": 29.473,
+    "end": 29.672
+   },
+   {
+    "w": "apagarlo?",
+    "start": 29.672,
+    "end": 30.347
+   },
+   {
+    "w": "¿A,",
+    "start": 30.447,
+    "end": 30.646
+   },
+   {
+    "w": "B,",
+    "start": 30.746,
+    "end": 30.944
+   },
+   {
+    "w": "C",
+    "start": 31.044,
+    "end": 31.243
+   },
+   {
+    "w": "o",
+    "start": 31.243,
+    "end": 31.442
+   },
+   {
+    "w": "D?",
+    "start": 31.442,
+    "end": 31.641
+   }
+  ]
+ },
+ {
+  "text": "Está en los apuntes de Élite Bomberos.",
+  "start": 31.941,
+  "end": 34.443,
+  "words": [
+   {
+    "w": "Está",
+    "start": 31.941,
+    "end": 32.298
+   },
+   {
+    "w": "en",
+    "start": 32.298,
+    "end": 32.497
+   },
+   {
+    "w": "los",
+    "start": 32.497,
+    "end": 32.696
+   },
+   {
+    "w": "apuntes",
+    "start": 32.696,
+    "end": 33.212
+   },
+   {
+    "w": "de",
+    "start": 33.212,
+    "end": 33.411
+   },
+   {
+    "w": "Élite",
+    "start": 33.411,
+    "end": 33.927
+   },
+   {
+    "w": "Bomberos.",
+    "start": 33.927,
+    "end": 34.443
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 34.743,
+  "end": 37.383,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 34.743,
+    "end": 35.583
+   },
+   {
+    "w": "a",
+    "start": 35.583,
+    "end": 35.823
+   },
+   {
+    "w": "quien",
+    "start": 35.823,
+    "end": 36.063
+   },
+   {
+    "w": "quiera",
+    "start": 36.063,
+    "end": 36.503
+   },
+   {
+    "w": "ser",
+    "start": 36.503,
+    "end": 36.743
+   },
+   {
+    "w": "bombero!",
+    "start": 36.743,
+    "end": 37.383
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 37.683,
+  "end": 41.323,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 37.683,
+    "end": 38.523
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 38.623,
+    "end": 39.463
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 39.563,
+    "end": 40.203
+   },
+   {
+    "w": "gratis",
+    "start": 40.203,
+    "end": 40.643
+   },
+   {
+    "w": "cinco",
+    "start": 40.643,
+    "end": 41.083
+   },
+   {
+    "w": "días!",
+    "start": 41.083,
+    "end": 41.323
+   }
+  ]
+ }
+]

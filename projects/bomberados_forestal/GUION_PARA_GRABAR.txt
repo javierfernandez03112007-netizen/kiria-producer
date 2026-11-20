@@ -1,0 +1,63 @@
+«ESTE INCENDIO TIENE CABEZA, COLA… ¡Y DEDOS!» — las partes de un incendio forestal (idea de Adrián, Notion «DOMINGO 22.
+PARTES DE UN INCENDIO FORESTAL»: «siempre entra en el examen; mostrar las partes en poco tiempo y decir que lo tienes
+en los apuntes de Élite Bomberos»). 30–40 s: este sale en ≈ 37 s.
+
+Cómo está hecho (plan: «¿cuál es cuál?» en 3D con dron, la teoría la cuenta una escena, sin lista en pantalla): un dron
+sobre un monte de pinos. Primer fotograma: el incendio ya grande visto desde arriba, con forma de bicho — «CABEZA»,
+«COLA» y «DEDO» salen sobre el fuego. Luego el fuego se rebobina hasta una chispa y vuelve a crecer delante de ti: cada
+parte aparece cuando se forma (el viento lo estira, la cabeza se levanta, los flancos, la cola que apenas avanza, el borde
+que se ilumina, la lengua que se escapa, el hueco que queda sin quemar, los pinos que se salvan dentro y la pavesa que salta
+y enciende otro fuego fuera). Cierre para comentar: cuatro letras sobre el incendio y «¿por dónde empiezas a apagarlo?».
+Al decir «apuntes», el monte se convierte en la hoja de apuntes con el dibujo del incendio y sus nueve partes.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido y claro, como quien señala en un mapa. Lo más fuerte: el arranque («¡y DEDOS!») y el final («¡MÁNDASELO…!»,
+«¡BOMBERADOS!», «¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[intrigued, mysterious] Este incendio tiene cabeza, cola… [surprised, amused] ¡y DEDOS!
+[confident] Y cae SIEMPRE en el examen.
+[clear, fast] Nace aquí: el origen.
+[clear, fast] El viento lo empuja: delante, la cabeza, lo más CALIENTE.
+[clear, fast] A los lados, los flancos.
+[clear, fast] Detrás, la cola: arde despacio.
+[clear, fast] Su borde: el perímetro.
+[clear, fast] Una lengua que se estira: un dedo.
+[clear, fast] Y el hueco sin quemar: una bolsa.
+[clear, fast] Dentro, lo que no arde: una isla.
+[tense] Si una pavesa salta fuera: foco SECUNDARIO.
+[challenging] ¿Por dónde empiezas a apagarlo? ¿A, B, C o D?
+[warm, clear] Está en los apuntes de Élite Bomberos.
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de día con humo, con un dron que no para:
+1. «Este incendio tiene cabeza, cola… ¡y dedos!» — primer fotograma: el incendio grande desde el dron; salen «CABEZA»
+   (delante, llamas altas), «COLA» (detrás) y «DEDO» (una lengua estrecha) sobre el fuego.
+2. «Y cae siempre en el examen.» — sello «SIEMPRE CAE EN EL EXAMEN»; el fuego se rebobina hasta un punto.
+3. «Nace aquí: el origen.» — una chispa en el suelo y una chincheta: ORIGEN.
+4. «El viento lo empuja: delante, la cabeza, lo más caliente.» — flechas de viento; el fuego se estira; delante las llamas
+   crecen: CABEZA · LO MÁS CALIENTE.
+5. «A los lados, los flancos.» — FLANCO a cada lado, con flechas paralelas al avance.
+6. «Detrás, la cola: arde despacio.» — llamas bajitas detrás: COLA · LENTA.
+7. «Su borde: el perímetro.» — una línea de luz recorre todo el borde: PERÍMETRO.
+8. «Una lengua que se estira: un dedo.» — una franja estrecha de fuego se adelanta: DEDO.
+9. «Y el hueco sin quemar: una bolsa.» — el trozo verde entre el dedo y el incendio se marca: BOLSA.
+10. «Dentro, lo que no arde: una isla.» — unos pinos verdes que se salvan dentro de lo quemado: ISLA.
+11. «Si una pavesa salta fuera: foco secundario.» — una pavesa vuela por encima del borde y enciende otro fuego: FOCO
+    SECUNDARIO.
+12. «¿Por dónde empiezas a apagarlo? ¿A, B, C o D?» — A en la cabeza, B en un flanco, C en la cola, D en la bolsa; «💬 COMENTA».
+13. «Está en los apuntes de Élite Bomberos.» — el monte se vuelve papel: la hoja de apuntes con el dibujo y las 9 partes.
+14. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+15. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la pregunta (para el comentario fijado, no va en el vídeo): C, LA COLA. Se puede atacar cualquier parte, pero
+lo más seguro es anclarse en la cola (arde despacio y detrás queda lo ya quemado), seguir por los flancos y cerrar la cabeza
+al final. Por delante de la cabeza no: es lo más caliente y viene hacia ti.
+Fuentes (en FUENTES.md): los apuntes de Élite Bomberos que pone Adrián en Notion (las 9 partes) y el Manual básico del bombero
+forestal de Extremadura (INFOEX) para la respuesta. CONFIRMAR la prueba gratis de 5 días.
