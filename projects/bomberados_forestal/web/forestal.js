@@ -1144,12 +1144,12 @@ async function overlay(t) {
   if (va > 0.01) {
     const zc = O.z - KC * F, ph = (t * 1.6) % 1;
     g.save(); g.globalAlpha = va;
-    for (const x of [-14, 0, 14]) {
-      const z0 = zc + 22 - ph * 6, a = proj(G3(x, z0, 16)), b = proj(G3(x, z0 - 20, 16));
+    for (const x of [-11, 0, 11]) {
+      const z0 = O.z + 8 - ph * 5, a = proj(G3(x, z0, 7)), b = proj(G3(x, z0 - 18, 7));
       if (a.ok && b.ok) arrow2(a, b, 'rgba(235,242,250,0.95)', 7, 26);
     }
     g.restore();
-    const lb = proj(G3(14, zc + 22, 16)); label(lb.x + 120, lb.y, 'VIENTO', '#E8EEF5', va, { px: 50, icon: 'up' });
+    const lb = proj(G3(11, O.z + 8, 7)); label(lb.x + 110, lb.y + 40, 'VIENTO', '#E8EEF5', va, { px: 50, icon: 'up' });
   }
   // la cabeza: lo más caliente
   const H = headAt(F);
