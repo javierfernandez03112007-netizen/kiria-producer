@@ -1,0 +1,779 @@
+[
+ {
+  "text": "Este hombre ya no puede hablar, pero su cerebro todavía sabe qué quiere decir.",
+  "start": 0.0,
+  "end": 4.6,
+  "words": [
+   {
+    "w": "Este",
+    "start": 0.0,
+    "end": 0.4
+   },
+   {
+    "w": "hombre",
+    "start": 0.4,
+    "end": 0.8
+   },
+   {
+    "w": "ya",
+    "start": 0.8,
+    "end": 0.96
+   },
+   {
+    "w": "no",
+    "start": 0.96,
+    "end": 1.12
+   },
+   {
+    "w": "puede",
+    "start": 1.12,
+    "end": 1.44
+   },
+   {
+    "w": "hablar,",
+    "start": 1.44,
+    "end": 2.01
+   },
+   {
+    "w": "pero",
+    "start": 2.01,
+    "end": 2.17
+   },
+   {
+    "w": "su",
+    "start": 2.17,
+    "end": 2.33
+   },
+   {
+    "w": "cerebro",
+    "start": 2.33,
+    "end": 2.89
+   },
+   {
+    "w": "todavía",
+    "start": 2.89,
+    "end": 3.37
+   },
+   {
+    "w": "sabe",
+    "start": 3.37,
+    "end": 3.69
+   },
+   {
+    "w": "qué",
+    "start": 3.69,
+    "end": 3.93
+   },
+   {
+    "w": "quiere",
+    "start": 3.93,
+    "end": 4.41
+   },
+   {
+    "w": "decir.",
+    "start": 4.41,
+    "end": 4.6
+   }
+  ]
+ },
+ {
+  "text": "Tiene ELA, una enfermedad que destruye las neuronas que controlan los músculos del habla.",
+  "start": 5.1,
+  "end": 10.26,
+  "words": [
+   {
+    "w": "Tiene",
+    "start": 5.1,
+    "end": 5.46
+   },
+   {
+    "w": "ELA,",
+    "start": 5.46,
+    "end": 6.13
+   },
+   {
+    "w": "una",
+    "start": 6.13,
+    "end": 6.32
+   },
+   {
+    "w": "enfermedad",
+    "start": 6.32,
+    "end": 6.88
+   },
+   {
+    "w": "que",
+    "start": 6.88,
+    "end": 7.04
+   },
+   {
+    "w": "destruye",
+    "start": 7.04,
+    "end": 7.68
+   },
+   {
+    "w": "las",
+    "start": 7.68,
+    "end": 7.84
+   },
+   {
+    "w": "neuronas",
+    "start": 7.84,
+    "end": 8.4
+   },
+   {
+    "w": "que",
+    "start": 8.4,
+    "end": 8.56
+   },
+   {
+    "w": "controlan",
+    "start": 8.56,
+    "end": 9.12
+   },
+   {
+    "w": "los",
+    "start": 9.12,
+    "end": 9.28
+   },
+   {
+    "w": "músculos",
+    "start": 9.28,
+    "end": 9.76
+   },
+   {
+    "w": "del",
+    "start": 9.76,
+    "end": 10.0
+   },
+   {
+    "w": "habla.",
+    "start": 10.0,
+    "end": 10.26
+   }
+  ]
+ },
+ {
+  "text": "Pero sus pensamientos siguen intactos.",
+  "start": 10.66,
+  "end": 12.55,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 10.66,
+    "end": 10.84
+   },
+   {
+    "w": "sus",
+    "start": 10.84,
+    "end": 11.16
+   },
+   {
+    "w": "pensamientos",
+    "start": 11.16,
+    "end": 11.864
+   },
+   {
+    "w": "siguen",
+    "start": 11.864,
+    "end": 12.216
+   },
+   {
+    "w": "intactos.",
+    "start": 12.216,
+    "end": 12.55
+   }
+  ]
+ },
+ {
+  "text": "Y los científicos han encontrado la forma de escucharlos.",
+  "start": 12.9,
+  "end": 16.1,
+  "words": [
+   {
+    "w": "Y",
+    "start": 12.9,
+    "end": 13.003
+   },
+   {
+    "w": "los",
+    "start": 13.003,
+    "end": 13.13
+   },
+   {
+    "w": "científicos",
+    "start": 13.13,
+    "end": 13.93
+   },
+   {
+    "w": "han",
+    "start": 13.93,
+    "end": 14.17
+   },
+   {
+    "w": "encontrado",
+    "start": 14.17,
+    "end": 14.73
+   },
+   {
+    "w": "la",
+    "start": 14.73,
+    "end": 14.89
+   },
+   {
+    "w": "forma",
+    "start": 14.89,
+    "end": 15.21
+   },
+   {
+    "w": "de",
+    "start": 15.21,
+    "end": 15.37
+   },
+   {
+    "w": "escucharlos.",
+    "start": 15.37,
+    "end": 16.1
+   }
+  ]
+ },
+ {
+  "text": "Le implantaron cuatro pequeños chips en el cerebro, con 256 electrodos capaces de captar su actividad neuronal.",
+  "start": 16.56,
+  "end": 24.02,
+  "words": [
+   {
+    "w": "Le",
+    "start": 16.56,
+    "end": 16.73
+   },
+   {
+    "w": "implantaron",
+    "start": 16.73,
+    "end": 17.45
+   },
+   {
+    "w": "cuatro",
+    "start": 17.45,
+    "end": 17.77
+   },
+   {
+    "w": "pequeños",
+    "start": 17.77,
+    "end": 18.17
+   },
+   {
+    "w": "chips",
+    "start": 18.17,
+    "end": 18.65
+   },
+   {
+    "w": "en",
+    "start": 18.65,
+    "end": 18.73
+   },
+   {
+    "w": "el",
+    "start": 18.73,
+    "end": 18.89
+   },
+   {
+    "w": "cerebro,",
+    "start": 18.89,
+    "end": 19.51
+   },
+   {
+    "w": "con",
+    "start": 19.51,
+    "end": 19.67
+   },
+   {
+    "w": "256",
+    "start": 19.67,
+    "end": 21.03
+   },
+   {
+    "w": "electrodos",
+    "start": 21.03,
+    "end": 21.83
+   },
+   {
+    "w": "capaces",
+    "start": 21.83,
+    "end": 22.23
+   },
+   {
+    "w": "de",
+    "start": 22.23,
+    "end": 22.39
+   },
+   {
+    "w": "captar",
+    "start": 22.39,
+    "end": 22.87
+   },
+   {
+    "w": "su",
+    "start": 22.87,
+    "end": 23.03
+   },
+   {
+    "w": "actividad",
+    "start": 23.03,
+    "end": 23.51
+   },
+   {
+    "w": "neuronal.",
+    "start": 23.51,
+    "end": 24.02
+   }
+  ]
+ },
+ {
+  "text": "Cuando intenta hablar, la inteligencia artificial interpreta esas señales y las convierte en palabras.",
+  "start": 24.42,
+  "end": 30.25,
+  "words": [
+   {
+    "w": "Cuando",
+    "start": 24.42,
+    "end": 24.58
+   },
+   {
+    "w": "intenta",
+    "start": 24.58,
+    "end": 25.06
+   },
+   {
+    "w": "hablar,",
+    "start": 25.06,
+    "end": 25.73
+   },
+   {
+    "w": "la",
+    "start": 25.73,
+    "end": 25.91
+   },
+   {
+    "w": "inteligencia",
+    "start": 25.91,
+    "end": 26.55
+   },
+   {
+    "w": "artificial",
+    "start": 26.55,
+    "end": 27.19
+   },
+   {
+    "w": "interpreta",
+    "start": 27.19,
+    "end": 27.83
+   },
+   {
+    "w": "esas",
+    "start": 27.83,
+    "end": 28.07
+   },
+   {
+    "w": "señales",
+    "start": 28.07,
+    "end": 28.55
+   },
+   {
+    "w": "y",
+    "start": 28.55,
+    "end": 28.71
+   },
+   {
+    "w": "las",
+    "start": 28.71,
+    "end": 28.95
+   },
+   {
+    "w": "convierte",
+    "start": 28.95,
+    "end": 29.59
+   },
+   {
+    "w": "en",
+    "start": 29.59,
+    "end": 29.75
+   },
+   {
+    "w": "palabras.",
+    "start": 29.75,
+    "end": 30.25
+   }
+  ]
+ },
+ {
+  "text": "El resultado: una precisión cercana al 97%.",
+  "start": 30.65,
+  "end": 34.76,
+  "words": [
+   {
+    "w": "El",
+    "start": 30.65,
+    "end": 30.81
+   },
+   {
+    "w": "resultado:",
+    "start": 30.81,
+    "end": 31.59
+   },
+   {
+    "w": "una",
+    "start": 31.59,
+    "end": 31.84
+   },
+   {
+    "w": "precisión",
+    "start": 31.84,
+    "end": 32.308
+   },
+   {
+    "w": "cercana",
+    "start": 32.308,
+    "end": 32.88
+   },
+   {
+    "w": "al",
+    "start": 32.88,
+    "end": 33.2
+   },
+   {
+    "w": "97%.",
+    "start": 33.2,
+    "end": 34.76
+   }
+  ]
+ },
+ {
+  "text": "Y lo más increíble: utiliza grabaciones antiguas para reconstruir su propia voz, en lugar de una voz robótica.",
+  "start": 35.21,
+  "end": 41.97,
+  "words": [
+   {
+    "w": "Y",
+    "start": 35.21,
+    "end": 35.29
+   },
+   {
+    "w": "lo",
+    "start": 35.29,
+    "end": 35.53
+   },
+   {
+    "w": "más",
+    "start": 35.53,
+    "end": 35.77
+   },
+   {
+    "w": "increíble:",
+    "start": 35.77,
+    "end": 36.58
+   },
+   {
+    "w": "utiliza",
+    "start": 36.58,
+    "end": 37.07
+   },
+   {
+    "w": "grabaciones",
+    "start": 37.07,
+    "end": 37.71
+   },
+   {
+    "w": "antiguas",
+    "start": 37.71,
+    "end": 38.27
+   },
+   {
+    "w": "para",
+    "start": 38.27,
+    "end": 38.51
+   },
+   {
+    "w": "reconstruir",
+    "start": 38.51,
+    "end": 39.31
+   },
+   {
+    "w": "su",
+    "start": 39.31,
+    "end": 39.47
+   },
+   {
+    "w": "propia",
+    "start": 39.47,
+    "end": 39.87
+   },
+   {
+    "w": "voz,",
+    "start": 39.87,
+    "end": 40.34
+   },
+   {
+    "w": "en",
+    "start": 40.34,
+    "end": 40.43
+   },
+   {
+    "w": "lugar",
+    "start": 40.43,
+    "end": 40.75
+   },
+   {
+    "w": "de",
+    "start": 40.75,
+    "end": 40.91
+   },
+   {
+    "w": "una",
+    "start": 40.91,
+    "end": 41.15
+   },
+   {
+    "w": "voz",
+    "start": 41.15,
+    "end": 41.47
+   },
+   {
+    "w": "robótica.",
+    "start": 41.47,
+    "end": 41.97
+   }
+  ]
+ },
+ {
+  "text": "En 2025, esta tecnología ya podía hacerlo prácticamente en tiempo real.",
+  "start": 42.42,
+  "end": 47.44,
+  "words": [
+   {
+    "w": "En",
+    "start": 42.42,
+    "end": 42.49
+   },
+   {
+    "w": "2025,",
+    "start": 42.49,
+    "end": 43.78
+   },
+   {
+    "w": "esta",
+    "start": 43.78,
+    "end": 44.01
+   },
+   {
+    "w": "tecnología",
+    "start": 44.01,
+    "end": 44.65
+   },
+   {
+    "w": "ya",
+    "start": 44.65,
+    "end": 44.89
+   },
+   {
+    "w": "podía",
+    "start": 44.89,
+    "end": 45.29
+   },
+   {
+    "w": "hacerlo",
+    "start": 45.29,
+    "end": 45.85
+   },
+   {
+    "w": "prácticamente",
+    "start": 45.85,
+    "end": 46.57
+   },
+   {
+    "w": "en",
+    "start": 46.57,
+    "end": 46.73
+   },
+   {
+    "w": "tiempo",
+    "start": 46.73,
+    "end": 47.13
+   },
+   {
+    "w": "real.",
+    "start": 47.13,
+    "end": 47.44
+   }
+  ]
+ },
+ {
+  "text": "Todavía es experimental, pero abre una posibilidad extraordinaria: recuperar la comunicación sin necesidad de mover los labios.",
+  "start": 47.86,
+  "end": 55.7,
+  "words": [
+   {
+    "w": "Todavía",
+    "start": 47.86,
+    "end": 48.25
+   },
+   {
+    "w": "es",
+    "start": 48.25,
+    "end": 48.49
+   },
+   {
+    "w": "experimental,",
+    "start": 48.49,
+    "end": 49.47
+   },
+   {
+    "w": "pero",
+    "start": 49.47,
+    "end": 49.64
+   },
+   {
+    "w": "abre",
+    "start": 49.64,
+    "end": 50.04
+   },
+   {
+    "w": "una",
+    "start": 50.04,
+    "end": 50.2
+   },
+   {
+    "w": "posibilidad",
+    "start": 50.2,
+    "end": 50.84
+   },
+   {
+    "w": "extraordinaria:",
+    "start": 50.84,
+    "end": 52.03
+   },
+   {
+    "w": "recuperar",
+    "start": 52.03,
+    "end": 52.76
+   },
+   {
+    "w": "la",
+    "start": 52.76,
+    "end": 52.92
+   },
+   {
+    "w": "comunicación",
+    "start": 52.92,
+    "end": 53.72
+   },
+   {
+    "w": "sin",
+    "start": 53.72,
+    "end": 53.96
+   },
+   {
+    "w": "necesidad",
+    "start": 53.96,
+    "end": 54.52
+   },
+   {
+    "w": "de",
+    "start": 54.52,
+    "end": 54.68
+   },
+   {
+    "w": "mover",
+    "start": 54.68,
+    "end": 55.0
+   },
+   {
+    "w": "los",
+    "start": 55.0,
+    "end": 55.24
+   },
+   {
+    "w": "labios.",
+    "start": 55.24,
+    "end": 55.7
+   }
+  ]
+ },
+ {
+  "text": "Porque quizá, en el futuro, perder la voz ya no signifique quedarse sin palabras.",
+  "start": 56.15,
+  "end": 61.098,
+  "words": [
+   {
+    "w": "Porque",
+    "start": 56.15,
+    "end": 56.44
+   },
+   {
+    "w": "quizá,",
+    "start": 56.44,
+    "end": 57.09
+   },
+   {
+    "w": "en",
+    "start": 57.09,
+    "end": 57.19
+   },
+   {
+    "w": "el",
+    "start": 57.19,
+    "end": 57.35
+   },
+   {
+    "w": "futuro,",
+    "start": 57.35,
+    "end": 58.0
+   },
+   {
+    "w": "perder",
+    "start": 58.0,
+    "end": 58.32
+   },
+   {
+    "w": "la",
+    "start": 58.32,
+    "end": 58.48
+   },
+   {
+    "w": "voz",
+    "start": 58.48,
+    "end": 58.977
+   },
+   {
+    "w": "ya",
+    "start": 58.977,
+    "end": 59.18
+   },
+   {
+    "w": "no",
+    "start": 59.18,
+    "end": 59.413
+   },
+   {
+    "w": "signifique",
+    "start": 59.413,
+    "end": 59.878
+   },
+   {
+    "w": "quedarse",
+    "start": 59.878,
+    "end": 60.42
+   },
+   {
+    "w": "sin",
+    "start": 60.42,
+    "end": 60.653
+   },
+   {
+    "w": "palabras.",
+    "start": 60.653,
+    "end": 61.098
+   }
+  ]
+ }
+]

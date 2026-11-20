@@ -1,12 +1,11 @@
-Este hombre ya no puede mover la boca… pero su cerebro sigue dando la orden de hablar.
-¿Cómo le devolvieron la voz? Te lo enseño paso a paso.
-Tiene ELA: las neuronas que mueven los músculos se van apagando, y la orden se queda por el camino.
-Pero la orden sigue saliendo de aquí: la zona del cerebro que controla la lengua, los labios y la garganta.
-Los cirujanos le pusieron cuatro chips del tamaño de una lenteja, con doscientos cincuenta y seis electrodos.
-Cuando intenta decir una palabra, sus neuronas se encienden… y los electrodos lo escuchan.
-Un ordenador recibe esas señales y una inteligencia artificial aprende qué patrón es cada sonido.
-Acierta noventa y siete de cada cien palabras.
-Y la voz que sale no es de robot: la clonaron de vídeos antiguos, de cuando aún hablaba.
-En dos mil veinticinco ya lo hacían casi al instante: en una cuarentésima de segundo.
-Todavía es un ensayo… pero la voz que había perdido, vuelve a ser suya.
-Mándaselo a quien cree que leer el cerebro es ciencia ficción.
+Este hombre ya no puede hablar, pero su cerebro todavía sabe qué quiere decir.
+Tiene ELA, una enfermedad que destruye las neuronas que controlan los músculos del habla.
+Pero sus pensamientos siguen intactos.
+Y los científicos han encontrado la forma de escucharlos.
+Le implantaron cuatro pequeños chips en el cerebro, con 256 electrodos capaces de captar su actividad neuronal.
+Cuando intenta hablar, la inteligencia artificial interpreta esas señales y las convierte en palabras.
+El resultado: una precisión cercana al 97%.
+Y lo más increíble: utiliza grabaciones antiguas para reconstruir su propia voz, en lugar de una voz robótica.
+En 2025, esta tecnología ya podía hacerlo prácticamente en tiempo real.
+Todavía es experimental, pero abre una posibilidad extraordinaria: recuperar la comunicación sin necesidad de mover los labios.
+Porque quizá, en el futuro, perder la voz ya no signifique quedarse sin palabras.

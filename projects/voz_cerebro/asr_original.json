@@ -1,0 +1,687 @@
+[
+{
+"w": "Este",
+"start": 0.0,
+"end": 0.08
+},
+{
+"w": "hombre",
+"start": 0.4,
+"end": 0.64
+},
+{
+"w": "ya",
+"start": 0.8,
+"end": 0.88
+},
+{
+"w": "no",
+"start": 0.96,
+"end": 1.04
+},
+{
+"w": "puede",
+"start": 1.12,
+"end": 1.2
+},
+{
+"w": "hablar,",
+"start": 1.44,
+"end": 2.0
+},
+{
+"w": "pero",
+"start": 2.08,
+"end": 2.16
+},
+{
+"w": "su",
+"start": 2.32,
+"end": 2.4
+},
+{
+"w": "cerebro",
+"start": 2.48,
+"end": 2.88
+},
+{
+"w": "todavía",
+"start": 3.04,
+"end": 3.44
+},
+{
+"w": "sabe",
+"start": 3.52,
+"end": 3.6
+},
+{
+"w": "qué",
+"start": 3.84,
+"end": 3.92
+},
+{
+"w": "quiere",
+"start": 4.08,
+"end": 4.4
+},
+{
+"w": "decir.",
+"start": 4.56,
+"end": 4.96
+},
+{
+"w": "Tiene",
+"start": 5.2,
+"end": 5.6
+},
+{
+"w": "ELA,",
+"start": 5.68,
+"end": 6.32
+},
+{
+"w": "una",
+"start": 6.56,
+"end": 6.64
+},
+{
+"w": "enfermedad",
+"start": 6.8,
+"end": 7.28
+},
+{
+"w": "que",
+"start": 7.36,
+"end": 7.44
+},
+{
+"w": "destruye",
+"start": 7.52,
+"end": 8.0
+},
+{
+"w": "las",
+"start": 8.16,
+"end": 8.24
+},
+{
+"w": "neuronas",
+"start": 8.32,
+"end": 8.8
+},
+{
+"w": "que",
+"start": 8.88,
+"end": 8.96
+},
+{
+"w": "controlan",
+"start": 9.04,
+"end": 9.44
+},
+{
+"w": "los",
+"start": 9.6,
+"end": 9.68
+},
+{
+"w": "músculos",
+"start": 9.76,
+"end": 10.16
+},
+{
+"w": "del",
+"start": 10.24,
+"end": 10.32
+},
+{
+"w": "habla.",
+"start": 10.48,
+"end": 10.96
+},
+{
+"w": "Pero",
+"start": 11.12,
+"end": 11.2
+},
+{
+"w": "sus",
+"start": 11.36,
+"end": 11.44
+},
+{
+"w": "pensamientí.",
+"start": 11.68,
+"end": 13.28
+},
+{
+"w": "Y",
+"start": 13.44,
+"end": 13.52
+},
+{
+"w": "los",
+"start": 13.6,
+"end": 13.68
+},
+{
+"w": "científicos",
+"start": 13.76,
+"end": 14.4
+},
+{
+"w": "han",
+"start": 14.56,
+"end": 14.64
+},
+{
+"w": "encontrado",
+"start": 14.8,
+"end": 15.44
+},
+{
+"w": "la",
+"start": 15.36,
+"end": 15.44
+},
+{
+"w": "forma",
+"start": 15.52,
+"end": 15.6
+},
+{
+"w": "de",
+"start": 15.84,
+"end": 15.92
+},
+{
+"w": "escucharlos.",
+"start": 16.0,
+"end": 16.88
+},
+{
+"w": "Le",
+"start": 17.04,
+"end": 17.12
+},
+{
+"w": "implantaron",
+"start": 17.36,
+"end": 17.92
+},
+{
+"w": "cuatro",
+"start": 18.08,
+"end": 18.32
+},
+{
+"w": "pequeños",
+"start": 18.4,
+"end": 18.72
+},
+{
+"w": "chips",
+"start": 18.8,
+"end": 19.2
+},
+{
+"w": "en",
+"start": 19.28,
+"end": 19.36
+},
+{
+"w": "el",
+"start": 19.36,
+"end": 19.44
+},
+{
+"w": "cerebro,",
+"start": 19.52,
+"end": 20.0
+},
+{
+"w": "con",
+"start": 20.16,
+"end": 20.24
+},
+{
+"w": "256",
+"start": 20.32,
+"end": 21.52
+},
+{
+"w": "electrodos",
+"start": 21.68,
+"end": 22.4
+},
+{
+"w": "capaces",
+"start": 22.48,
+"end": 22.88
+},
+{
+"w": "de",
+"start": 22.88,
+"end": 22.96
+},
+{
+"w": "captar",
+"start": 23.04,
+"end": 23.36
+},
+{
+"w": "su",
+"start": 23.52,
+"end": 23.6
+},
+{
+"w": "actividad",
+"start": 23.68,
+"end": 24.08
+},
+{
+"w": "neuronal.",
+"start": 24.16,
+"end": 24.88
+},
+{
+"w": "Cuando",
+"start": 24.96,
+"end": 25.2
+},
+{
+"w": "intenta",
+"start": 25.28,
+"end": 25.6
+},
+{
+"w": "hablar,",
+"start": 25.76,
+"end": 26.08
+},
+{
+"w": "La",
+"start": 26.29,
+"end": 26.37
+},
+{
+"w": "inteligencia",
+"start": 26.61,
+"end": 27.17
+},
+{
+"w": "artificial",
+"start": 27.25,
+"end": 27.73
+},
+{
+"w": "interpreta",
+"start": 27.89,
+"end": 28.37
+},
+{
+"w": "esas",
+"start": 28.53,
+"end": 28.77
+},
+{
+"w": "señales",
+"start": 28.77,
+"end": 29.17
+},
+{
+"w": "y",
+"start": 29.25,
+"end": 29.33
+},
+{
+"w": "las",
+"start": 29.41,
+"end": 29.49
+},
+{
+"w": "convierte",
+"start": 29.65,
+"end": 30.13
+},
+{
+"w": "en",
+"start": 30.29,
+"end": 30.37
+},
+{
+"w": "palabras.",
+"start": 30.45,
+"end": 31.09
+},
+{
+"w": "El",
+"start": 31.33,
+"end": 31.41
+},
+{
+"w": "resultado,",
+"start": 31.57,
+"end": 32.21
+},
+{
+"w": "una",
+"start": 32.45,
+"end": 32.53
+},
+{
+"w": "precisiana",
+"start": 32.77,
+"end": 33.73
+},
+{
+"w": "al",
+"start": 33.81,
+"end": 33.89
+},
+{
+"w": "97%.",
+"start": 34.13,
+"end": 35.81
+},
+{
+"w": "Y",
+"start": 35.97,
+"end": 36.05
+},
+{
+"w": "lo",
+"start": 36.21,
+"end": 36.29
+},
+{
+"w": "más",
+"start": 36.45,
+"end": 36.53
+},
+{
+"w": "increíble,",
+"start": 36.69,
+"end": 37.33
+},
+{
+"w": "utiliza",
+"start": 37.57,
+"end": 37.97
+},
+{
+"w": "grabaciones",
+"start": 38.13,
+"end": 38.61
+},
+{
+"w": "antiguas",
+"start": 38.77,
+"end": 39.25
+},
+{
+"w": "para",
+"start": 39.33,
+"end": 39.41
+},
+{
+"w": "reconstruir",
+"start": 39.57,
+"end": 40.29
+},
+{
+"w": "su",
+"start": 40.37,
+"end": 40.45
+},
+{
+"w": "propia",
+"start": 40.53,
+"end": 40.85
+},
+{
+"w": "voz,",
+"start": 40.93,
+"end": 41.25
+},
+{
+"w": "en",
+"start": 41.33,
+"end": 41.41
+},
+{
+"w": "lugar",
+"start": 41.49,
+"end": 41.57
+},
+{
+"w": "de",
+"start": 41.81,
+"end": 41.89
+},
+{
+"w": "una",
+"start": 41.97,
+"end": 42.05
+},
+{
+"w": "voz",
+"start": 42.21,
+"end": 42.45
+},
+{
+"w": "robótica.",
+"start": 42.53,
+"end": 43.17
+},
+{
+"w": "En",
+"start": 43.33,
+"end": 43.41
+},
+{
+"w": "2025,",
+"start": 43.57,
+"end": 44.69
+},
+{
+"w": "esta",
+"start": 44.85,
+"end": 44.93
+},
+{
+"w": "tecnología",
+"start": 45.09,
+"end": 45.65
+},
+{
+"w": "ya",
+"start": 45.73,
+"end": 45.81
+},
+{
+"w": "podía",
+"start": 45.97,
+"end": 46.29
+},
+{
+"w": "hacerlo",
+"start": 46.37,
+"end": 46.77
+},
+{
+"w": "prácticamente",
+"start": 46.93,
+"end": 47.57
+},
+{
+"w": "en",
+"start": 47.65,
+"end": 47.73
+},
+{
+"w": "tiempo",
+"start": 47.81,
+"end": 47.89
+},
+{
+"w": "real.",
+"start": 48.21,
+"end": 48.61
+},
+{
+"w": "Todavía",
+"start": 48.85,
+"end": 49.25
+},
+{
+"w": "es",
+"start": 49.33,
+"end": 49.41
+},
+{
+"w": "experimental,",
+"start": 49.57,
+"end": 50.45
+},
+{
+"w": "pero",
+"start": 50.53,
+"end": 50.61
+},
+{
+"w": "abre",
+"start": 50.77,
+"end": 51.09
+},
+{
+"w": "una",
+"start": 51.17,
+"end": 51.25
+},
+{
+"w": "posibilidad",
+"start": 51.33,
+"end": 51.81
+},
+{
+"w": "extraordinaria.",
+"start": 51.97,
+"end": 52.93
+},
+{
+"w": "Recuperar",
+"start": 53.26,
+"end": 53.98
+},
+{
+"w": "la",
+"start": 54.06,
+"end": 54.14
+},
+{
+"w": "comunicación",
+"start": 54.22,
+"end": 54.86
+},
+{
+"w": "sin",
+"start": 55.02,
+"end": 55.1
+},
+{
+"w": "necesidad",
+"start": 55.26,
+"end": 55.66
+},
+{
+"w": "de",
+"start": 55.82,
+"end": 55.9
+},
+{
+"w": "mover",
+"start": 55.98,
+"end": 56.22
+},
+{
+"w": "los",
+"start": 56.3,
+"end": 56.38
+},
+{
+"w": "labios.",
+"start": 56.54,
+"end": 57.18
+},
+{
+"w": "Porque",
+"start": 57.34,
+"end": 57.66
+},
+{
+"w": "quizá,",
+"start": 57.74,
+"end": 58.3
+},
+{
+"w": "en",
+"start": 58.38,
+"end": 58.46
+},
+{
+"w": "el",
+"start": 58.54,
+"end": 58.62
+},
+{
+"w": "futuro,",
+"start": 58.7,
+"end": 59.18
+},
+{
+"w": "perder",
+"start": 59.42,
+"end": 59.74
+},
+{
+"w": "la",
+"start": 59.82,
+"end": 59.9
+},
+{
+"w": "voz",
+"start": 59.98,
+"end": 60.3
+},
+{
+"w": "ya",
+"start": 60.46,
+"end": 60.54
+},
+{
+"w": "no",
+"start": 60.7,
+"end": 60.78
+},
+{
+"w": "signifique",
+"start": 60.94,
+"end": 61.34
+},
+{
+"w": "quedarse",
+"start": 61.42,
+"end": 61.9
+},
+{
+"w": "sin",
+"start": 61.98,
+"end": 62.06
+},
+{
+"w": "palabras.",
+"start": 62.22,
+"end": 62.78
+}
+]

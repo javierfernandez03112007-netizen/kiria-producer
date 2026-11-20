@@ -1,0 +1,37 @@
+🧠 Este hombre ya no podía hablar… y un implante en su cerebro le devolvió la voz. Su propia voz.
+
+⚡ Tiene ELA: la enfermedad destruye las neuronas que mueven los músculos del habla. Pero la orden de hablar sigue naciendo en su cerebro.
+
+🔬 Le colocaron 4 chips diminutos, con 256 electrodos, en la zona que controla el habla. Cuando intenta hablar, una inteligencia artificial traduce esas señales en palabras y acierta el 97 % de ellas. Y las dice con una voz hecha a partir de grabaciones de antes de enfermar.
+
+⏱️ En 2025 ya lo hacía casi en tiempo real: unas 25 milésimas de segundo de la señal a la voz.
+
+🧪 Todavía es un ensayo clínico, pero abre una puerta enorme.
+
+👇 Mándaselo a quien todavía piensa que la ciencia no hace milagros.
+
+📚 Fuentes: Card y otros, New England Journal of Medicine, 2024 (ensayo BrainGate2, UC Davis: 4 matrices, 256 electrodos, 97,5 % de palabras acertadas) · Wairagkar y otros, Nature, 2025 (voz casi instantánea, unos 25 ms). Las imágenes son 3D hechas por kiria.ai, no del paciente.
+
+🎨 Cabeza 3D: escaneo de Lee Perry-Smith (Infinite-Realities), CC BY 3.0 · Cerebro: atlas Conte69 (Human Connectome Project).
+
+#ELA #ciencia #neurociencia #inteligenciaartificial #tecnologia #medicina #cerebro #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+🧠 Tenía ELA y ya no podía hablar. Cuatro chips en su cerebro y una IA le devolvieron la voz: la suya. 👇
+
+#ELA #ciencia #IA #kiriaai
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Voz: la de Javi (su MP3 de ElevenLabs), a tempo 1,0; solo se recortaron silencios largos.
+- Confirmar dos palabras que la transcripción automática oyó mal: «sus pensamientos SIGUEN INTACTOS» y «una PRECISIÓN CERCANA al 97 %». Si dijo otra cosa, se cambian los subtítulos.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música.
+- No hay imágenes reales del paciente: todo es 3D propio basado en las láminas de Javi (ref/ref_33 … ref_36).
+- «Hola, sigo aquí» es una frase de ejemplo (en pantalla pone «frase de ejemplo»).
+- Primer fotograma = último (bucle).
+- La grabación no tiene «mándaselo a…»: va en la descripción.
+- El crédito de la cabeza 3D (CC BY 3.0) es obligatorio: no lo quites de la descripción.
