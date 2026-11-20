@@ -663,7 +663,7 @@ function glowSprite(col, s = 1, op = 1) { const m = new THREE.Sprite(new THREE.S
 const HOLO_VS = `#include <common>
 #include <logdepthbuf_pars_vertex>
 varying vec3 vN; varying vec3 vV; varying vec3 vW;
-void main(){ vec4 w = modelMatrix * vec4(position, 1.); vW = w.xyz; vN = normalize(mat3(modelMatrix) * normal); vV = cameraPosition - w.xyz; gl_Position = projectionMatrix * viewMatrix * w;
+void main(){ vec4 w = modelMatrix * vec4(position, 1.); vW = w.xyz; vN = normalize(mat3(modelMatrix) * normal); vV = cameraPosition - w.xyz; vec4 mv = modelViewMatrix * vec4(position, 1.); gl_Position = projectionMatrix * mv;   // igual que el material de la pasada de profundidad
 #include <logdepthbuf_vertex>
 }`;
 const HOLO_FS = `#include <common>
@@ -672,6 +672,9 @@ uniform vec3 col, col2; uniform float op, scan, time, edge;
 varying vec3 vN; varying vec3 vV; varying vec3 vW;
 void main(){
 #include <logdepthbuf_fragment>
+#ifdef USE_LOGDEPTHBUF
+  gl_FragDepth -= 3e-6;   // un pelo más cerca que la pasada de profundidad: sin esto, el redondeo dejaba manchas negras en la piel de cristal
+#endif
   vec3 N = normalize(vN), V = normalize(vV); float f = 1. - abs(dot(N, V)), fr = pow(f, edge);
   float sl = 0.5 + 0.5 * sin(vW.y * 260. - time * 2.0); sl = smoothstep(0.6, 1.0, sl) * scan;
   vec3 c = mix(col2, col, fr) * (0.035 + 1.25 * fr + 0.08 * sl);
