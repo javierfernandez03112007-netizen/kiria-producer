@@ -225,7 +225,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   la aplasta en un muro visible; (4) la normal de un vértice puede ser la de la pared de un surco: para colocar algo en la corteza, media de 15 mm y
   el punto más saliente (cresta del giro); (5) en un plano general vertical, comprobar con números que el objeto entero cabe (caja proyectada).
   Dos palabras dudosas del ASR que Javi debe confirmar: «siguen **intactos**» y «**precisión cercana** al 97 %». «Hola, sigo aquí» va marcada
-  «frase de ejemplo». Render con las seis máquinas «Lanzamiento · render 1–6» (Javi lo aprobó en el diálogo), ramas `render-vc-1…6` + local 0–520.
+  «frase de ejemplo». Render con las seis máquinas «Lanzamiento · render 1–6» (Javi lo aprobó en el diálogo), ramas `render-vc-1…10` + local.
+  (6) **manchas negras en la cabeza de cristal**: la pasada de profundidad (MeshBasic) y el brillo (ShaderMaterial) calculaban la posición con
+  cuentas distintas y, con el búfer de profundidad logarítmico, el redondeo dejaba parches sin brillo → en `HOLO_VS` usar `modelViewMatrix` como
+  three.js y restar 3e-6 a `gl_FragDepth` (05_world.js); (7) si se borran `out/frames`, borrar también los `out/chunk_*.done` (si no, el
+  recolector no vuelve a sacar ese trozo). **Entregado el 20-11 (13:40)**: 62,3 s, 3.737 fotogramas, 1080 × 1920, 60 fps, −14,7 LUFS, 52 MB,
+  con portada y miniatura. Pendiente de permiso: borrar las ramas `render-vc-*`.
 
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
