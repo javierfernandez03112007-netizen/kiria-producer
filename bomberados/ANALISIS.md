@@ -35,6 +35,14 @@ Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: fal
 5. **La app, solo como cierre:** «Reta a otro opositor» se ha estancado en 11.000.
 6. Siguen: bomberos en acción en 3D con dron; teoría solo si la cuenta una escena; «mándaselo a quien quiera ser bombero».
 
+### Seguidores (16 nov 18:31 → 18 nov 9:15, ≈ 1,6 días)
+| Cuenta | 16 nov | 18 nov | Crecimiento | Por día |
+|---|---|---|---|---|
+| Bomberados | 3.460 | 3.733 | +273 (+8 %) | ≈ 170 |
+| Élite Bomberos | 9.933 | **10.221** | +288 (+3 %) | ≈ 179 |
+
+Élite pasa de 10.000. Bomberados acelera (≈ 125/día en el periodo anterior); coincide con el panel naranja en 3D.
+
 ### Lo nuevo del 19 nov (cifras del 18 nov)
 | Vídeo | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
 |---|---|---|---|---|
