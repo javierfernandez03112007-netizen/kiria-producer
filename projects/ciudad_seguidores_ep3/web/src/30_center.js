@@ -109,7 +109,8 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
     else if (r.k === 'bar') { poseSit(p, 0.1); p.userData.J.pelvis.position.y = 0.74 * p.userData.k; faceAt(p, t, { talk: (Math.sin(t * 0.7 + ph) > 0.3) ? 1 : 0, smile: 0.45 }); }
     else if (r.k === 'chefSushi' || r.k === 'baker') { poseWork(p, t, 1); faceAt(p, t, { smile: 0.55 }); }
     else if (r.k === 'owner') { faceAt(p, t, { smile: 0.7, talk: bump(t, TL.sushi, TL.libre, 0.2, 0.2) }); const w = bump(t, TL.sushi + 0.2, TL.libre + 0.3, 0.3, 0.3); if (w > 0.01) poseWave(p, 'R', t, w); }
-    else if (r.k === 'couple') { const k = sm5(seg(t, TL.sushi - 0.6, TL.libre - 0.2)), sad = bump(t, TL.libre + 0.1, TL.L[6], 0.2, 0.4); p.position.z = lerp(3.4, 2.0, k); p.position.x = p.userData.x0 ?? (p.userData.x0 = p.position.x); if (k > 0.01 && k < 0.99) poseWalk(p, k * 3, 1);
+    else if (r.k === 'couple') { const k = 0,   // se quedan en la acera: si se acercaban al cristal, la cámara les pasaba rozando la cabeza
+      sad = bump(t, TL.libre + 0.1, TL.L[6], 0.2, 0.4); p.position.z = lerp(3.4, 2.0, k); p.position.x = p.userData.x0 ?? (p.userData.x0 = p.position.x); if (k > 0.01 && k < 0.99) poseWalk(p, k * 3, 1);
       if (sad > 0.01) { for (const [n, s] of [['L', -1], ['R', 1]]) { p.userData.J['sh' + n].rotation.z = s * (0.08 + 0.55 * sad); p.userData.J['el' + n].rotation.x = -1.3 * sad; } } faceAt(p, t, { open: 0.45 * sad, brow: 0.8 * sad, smile: 0.35 - 0.6 * sad }); }
     else if (r.k === 'queue') { faceAt(p, t, { talk: Math.sin(t * 0.6 + ph) > 0.4 ? 1 : 0, smile: 0.4 }); if (r.i % 4 === 1) lookAtP(p, p.localToWorld(_v(0.6, 1.5, 0.2)), 0.5); }
     else if (r.k === 'vet') { const sy = bump(t, TL.paciente - 0.3, TL.L[8] + 0.2, 0.4, 0.4), oh = bump(t, TL.vacunar - 0.45, TL.L[8] + 0.4, 0.15, 0.4);

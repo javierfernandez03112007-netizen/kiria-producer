@@ -1703,7 +1703,8 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.
     else if (r.k === 'bar') { poseSit(p, 0.1); p.userData.J.pelvis.position.y = 0.74 * p.userData.k; faceAt(p, t, { talk: (Math.sin(t * 0.7 + ph) > 0.3) ? 1 : 0, smile: 0.45 }); }
     else if (r.k === 'chefSushi' || r.k === 'baker') { poseWork(p, t, 1); faceAt(p, t, { smile: 0.55 }); }
     else if (r.k === 'owner') { faceAt(p, t, { smile: 0.7, talk: bump(t, TL.sushi, TL.libre, 0.2, 0.2) }); const w = bump(t, TL.sushi + 0.2, TL.libre + 0.3, 0.3, 0.3); if (w > 0.01) poseWave(p, 'R', t, w); }
-    else if (r.k === 'couple') { const k = sm5(seg(t, TL.sushi - 0.6, TL.libre - 0.2)), sad = bump(t, TL.libre + 0.1, TL.L[6], 0.2, 0.4); p.position.z = lerp(3.4, 2.0, k); p.position.x = p.userData.x0 ?? (p.userData.x0 = p.position.x); if (k > 0.01 && k < 0.99) poseWalk(p, k * 3, 1);
+    else if (r.k === 'couple') { const k = 0,   // se quedan en la acera: si se acercaban al cristal, la cámara les pasaba rozando la cabeza
+      sad = bump(t, TL.libre + 0.1, TL.L[6], 0.2, 0.4); p.position.z = lerp(3.4, 2.0, k); p.position.x = p.userData.x0 ?? (p.userData.x0 = p.position.x); if (k > 0.01 && k < 0.99) poseWalk(p, k * 3, 1);
       if (sad > 0.01) { for (const [n, s] of [['L', -1], ['R', 1]]) { p.userData.J['sh' + n].rotation.z = s * (0.08 + 0.55 * sad); p.userData.J['el' + n].rotation.x = -1.3 * sad; } } faceAt(p, t, { open: 0.45 * sad, brow: 0.8 * sad, smile: 0.35 - 0.6 * sad }); }
     else if (r.k === 'queue') { faceAt(p, t, { talk: Math.sin(t * 0.6 + ph) > 0.4 ? 1 : 0, smile: 0.4 }); if (r.i % 4 === 1) lookAtP(p, p.localToWorld(_v(0.6, 1.5, 0.2)), 0.5); }
     else if (r.k === 'vet') { const sy = bump(t, TL.paciente - 0.3, TL.L[8] + 0.2, 0.4, 0.4), oh = bump(t, TL.vacunar - 0.45, TL.L[8] + 0.4, 0.15, 0.4);
@@ -1752,8 +1753,11 @@ function buildCam() { const T = TL, P0 = [1.3, 2.4, -30.95], L0 = [0.93, 2.15, -
     [T.mesa - 0.05, [22.6, 1.65, -6.6], [25.0, 1.7, -5.5], 40], [T.E[5] - 0.05, [22.75, 1.7, -5.3], [25.0, 1.6, -5.5], 40], [T.E[5] + 0.3, [20.6, 2.0, -3.6], [25.3, 1.8, -3.0], 42],   // se aparta de la fachada para pasar a la pastelería              // «COMPLETO»
     [T.past + 0.15, [21.6, 1.9, -2.2], [25.6, 1.45, -1.4], 42], [T.tartas + 0.2, [22.6, 1.55, -1.6], [25.8, 1.1, -1.9], 40],              // el escaparate de tartas
     [T.cola - 0.2, [22.2, 2.2, 0.8], [23.6, 1.45, 7.0], 44], [T.esquina + 0.3, [22.0, 2.4, 5.6], [23.7, 1.4, 14.5], 44],                   // la cola hasta la esquina
-    [T.vet + 0.1, [24.2, 1.7, 5.4], [27.3, 1.25, 5.9], 40], [T.vacunar - 0.5, [24.3, 1.5, 6.0], [27.4, 1.0, 6.2], 38], [T.E[7] + 0.3, [24.3, 1.45, 6.9], [27.0, 0.45, 7.5], 40], [T.E[7] + 0.62, [24.1, 3.3, 7.2], [20.0, 2.6, 6.0], 44],   // sube antes de cruzar (no atraviesa la cola)   // el perro
-    [T.L[8] + 0.5, [18.0, 4.2, 8.0], [6.0, 2.5, 3.0], 46], [T.pedestal + 0.1, [2.3, 2.2, 6.3], [0.0, 2.0, 0.0], 42],                         // a la plaza: el pedestal vacío
+    [T.vet + 0.1, [24.2, 1.7, 5.4], [27.3, 1.25, 5.9], 40], [T.vacunar - 0.5, [24.3, 1.5, 6.0], [27.4, 1.0, 6.2], 38], [T.E[7] - 0.2, [24.3, 1.462, 6.477], [27.278, 0.621, 7.077], 38.7],   // el perro
+    [T.E[7] + 0.15, [24.25, 3.0, 6.75], [26.2, 0.45, 4.9], 41],   // sube mirando hacia abajo por el cristal (la cámara está a 0,7 m de la fachada)
+    [T.E[7] + 0.32, [23.807, 3.219, 6.863], [23.9, 0.4, 3.6], 42],   // pasa por encima de la cola mirando la fila desde arriba (sin barrer la pared)
+    [T.E[7] + 0.5, [22.9, 3.4, 7.0], [21.18, 2.4, 2.73], 43], [T.E[7] + 0.85, [20.3, 3.9, 7.5], [15.0, 3.0, 2.7], 45],   // y gira hacia la plaza (por el sur)
+    [T.L[8] + 0.7, [16.8, 4.2, 7.8], [5.0, 2.5, 2.6], 46], [T.pedestal + 0.1, [2.3, 2.2, 6.3], [0.0, 2.0, 0.0], 42],                         // a la plaza: el pedestal vacío
     [T.coment, [2.7, 2.4, 5.2], [0.0, 3.4, 0.0], 42], [T.construir, [2.9, 2.5, 4.6], [0.0, 3.6, 0.0], 42], [T.estatua + 0.5, [3.2, 2.3, 5.8], [0.0, 3.9, 0.0], 46], [T.E[9] + 0.1, [2.1, 1.85, 3.7], [0.0, 2.3, 0.3], 42],
     [T.manda + 0.2, [1.6, 4.2, -3.0], [0.5, 3.0, -20.0], 46], [T.estatua10 + 0.1, [0.4, 2.9, -16.0], [0.6, 2.5, -28.0], 44], [END - 0.45, [1.38, 2.5, -30.7], [0.93, 2.15, -31.66], 38],   // vuelta al salón…
     [END, P0, L0, 36],                                                                                                                         // …y al pergamino (bucle)
