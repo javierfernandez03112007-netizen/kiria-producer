@@ -252,7 +252,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   pilló dos fallos tras montar: una pareja del sushi a 0,4 m del objetivo (su pelo llenaba el plano) y un giro de 180° del veterinario a la
   plaza que pasaba mirando al suelo (el punto al que mira cruzaba por debajo de la cámara). Ahora hay `web/check_people.mjs` (avisa si alguien
   queda a < 1,2 m dentro del encuadre, contando su tamaño): pasarlo SIEMPRE antes de renderizar; y un giro grande junto a una fachada o una
-  fila de gente se hace subiendo primero (mirando hacia abajo por el cristal) y girando por el lado abierto, con claves cada ~45°. Nombres en local con
+  fila de gente se hace subiendo primero (mirando hacia abajo por el cristal) y girando por el lado abierto, con claves cada ~45°.
+  (8) Las etiquetas de nombre pueden tapar lo importante del plano (el cartel COMPLETO): `keepclear.json` = zonas protegidas por fotograma
+  (la proyección del cartel), que `compose_ciudad.py` trata como ocupadas, así que el nombre se sube por encima. (9) El texto de los
+  carteles pintados en lienzo tiene que caber: «COMPLETO» en 900 64px no cabe en 256 px y se lee «OMPLET» (medir con measureText y
+  reducir la letra). **Entregado el 20-11-2026 a las 17:15**: `out/ciudad_seguidores_ep3.mp4` (48,3 s, 2.899 fotogramas, 1080×1920,
+  60 fps, −14,5 LUFS, 40 MB) + `out/portada.jpg` + `out/miniatura.jpg` + DESCRIPCION.txt. Nombres en local con
   `web/labels.mjs` + `compose_ciudad.py` (los cuatro de la voz y el rey en dorado; el resto, sorteo fijo de la lista del 17-11; se apilan sin pisarse).
 
 ## Próximas ideas

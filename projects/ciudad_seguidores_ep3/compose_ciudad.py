@@ -51,6 +51,7 @@ WHO = {}
 VIPTXT = {"king": ("@iannyanezz_", "rey"), "lydiaa.rc": ("@lydiaa.rc", "dueña"), "salvadormatthias34": ("@salvadormatthias34", "pastelero"), "zamii.luu": ("@zamii.luu", "veterinaria")}
 JOBTXT = {"chefSushi": "cocinero", "guard": "guardia real", "owner2": "su dueño", "court": None}
 LABELS_F = os.path.join(ROOT, "out", "labels.jsonl")
+KEEP = {}
 NAMES, HIDE, LABELS, _TAG, _FONT, _FONT_S = None, set(), None, {}, None, None
 TOP = 430                                           # por encima de esta altura no hay nombres (subtítulos)
 BASE = 44                                           # tamaño de letra de la etiqueta base (luego se escala)
@@ -104,7 +105,8 @@ def draw_tags(img, fi):
     if LABELS is None or fi >= len(LABELS):
         return
     L = LABELS[fi]
-    placed = []                                      # rectángulos ya ocupados: los nombres no se pisan (se suben un piso o se quedan fuera)
+    placed = [(r[0] - 12, r[1] - 12, r[2] + 12, r[3] + 12) for r in KEEP.get(fi, [])]   # rectángulos ya ocupados (y zonas protegidas):
+                                                     # los nombres no se pisan ni las tapan (se suben un piso o se quedan fuera)
     for i, x, y, p10 in sorted(L["p"], key=lambda e: (not tag(e[0])[2], -e[3])):   # primero los dorados, luego los más cercanos
         vip = tag(i)[2]
         ppm = p10 / 10; s = min(36.0, max(16.0, ppm * 0.075)) / BASE * (1.3 if vip else 1.0); h = 66 * s
@@ -154,10 +156,15 @@ def compose(fi):
 def init():
     global SUBS, NAMES, HIDE, LABELS, _FONT, _FONT_S
     SUBS = Subs(LINES, KEY, {}, y=330, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")
-    global WHO
+    global WHO, KEEP
     d = json.load(open(NAMES_F)); NAMES, HIDE = d["names"], set(d["hide"])
     WHO = {int(k): v for k, v in json.load(open(JOBS_F)).items()}
     LABELS = [json.loads(l) for l in open(LABELS_F)]
+    KEEP = {}                                         # zonas que ningún nombre puede tapar (p. ej. el cartel COMPLETO del sushi), por fotograma
+    kf = os.path.join(ROOT, "keepclear.json")         # generado con la cámara (proyección del cartel en cada fotograma)
+    if os.path.exists(kf):
+        for zona in json.load(open(kf)).values():
+            for f, r in zona.items(): KEEP.setdefault(int(f), []).append(r)
     _FONT = ImageFont.truetype(os.path.join(ROOT, "..", "..", "engine", "fonts", "Inter-Bold.otf"), BASE)
     _FONT_S = ImageFont.truetype(os.path.join(ROOT, "..", "..", "engine", "fonts", "Inter-Bold.otf"), 34)
 
