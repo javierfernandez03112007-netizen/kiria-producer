@@ -104,17 +104,27 @@ def draw_tags(img, fi):
     if LABELS is None or fi >= len(LABELS):
         return
     L = LABELS[fi]
-    for i, x, y, p10 in sorted(L["p"], key=lambda e: (tag(e[0])[2], e[2])):
+    placed = []                                      # rectángulos ya ocupados: los nombres no se pisan (se suben un piso o se quedan fuera)
+    for i, x, y, p10 in sorted(L["p"], key=lambda e: (not tag(e[0])[2], -e[3])):   # primero los dorados, luego los más cercanos
         vip = tag(i)[2]
-        ppm = p10 / 10; s = min(36.0, max(16.0, ppm * 0.075)) / BASE * (1.3 if vip else 1.0); h = 66 * s; y0 = y - h - 6
+        ppm = p10 / 10; s = min(36.0, max(16.0, ppm * 0.075)) / BASE * (1.3 if vip else 1.0); h = 66 * s
+        rgb0, al0 = scaled(tag(i), s, 1.0); w = rgb0.shape[1]
+        x0 = x - w / 2
+        if vip:
+            x0 = min(max(x0, 14), W - w - 14)
+        y0 = y - h - 6
+        for _ in range(4):
+            hit = [r for r in placed if not (x0 + w < r[0] or x0 > r[2] or y0 + h < r[1] or y0 > r[3])]
+            if not hit:
+                break
+            y0 = min(r[1] for r in hit) - h - 4
+        else:
+            continue
         a = min(1.0, (ppm - 95) / 30) * min(1.0, max(0.0, (y0 - TOP) / 60))
         if a <= 0.02:
             continue
-        rgb, al = scaled(tag(i), s, a)
-        x0 = x - rgb.shape[1] / 2
-        if vip:                                      # los que nombra la voz no se salen de la pantalla
-            x0 = min(max(x0, 14), W - rgb.shape[1] - 14)
-        paste(img, rgb, al, int(x0), int(y0))
+        placed.append((x0 - 4, y0 - 2, x0 + w + 4, y0 + h + 2))
+        paste(img, rgb0 * a, al0 * a, int(x0), int(y0))
 
 
 # ---------------------------------------------------------------- subtítulos
