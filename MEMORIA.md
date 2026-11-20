@@ -210,6 +210,23 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   cada una en esta escena). **Entregado el 19-11 (21:15; versión corregida a las 21:35, la buena)**: 39,75 s, 2.385 fotogramas, 1080 × 1920, 60 fps, −14,8 LUFS, 28 MB, con portada,
   miniatura y `DESCRIPCION.txt`. Sin música (regla del canal). Pendiente de permiso: borrar las ramas `render-dt-*` y `render-bk-*`.
 
+- **«Le devolvieron la voz» (`projects/voz_cerebro/`, 20-11-2026) — implante cerebral que convierte en voz lo que intenta decir un hombre con ELA**
+  (BrainGate2, UC Davis; NEJM 2024 y Nature 2025). Javi pidió ideas de descubrimientos «de especial impacto», eligió esta y pidió «lo más profesional
+  posible, nada de animación, que se vea despacio cómo funciona cada cosa»; luego mandó **4 láminas** (`ref/ref_33…36.png`) + su MP3 con **su propio
+  texto** (distinto del mío: `script.txt`) y «básate en ellas… fondo negro o blanco, muy sintético… añade flujo óptico». A mitad: «ya estás cambiando
+  bastante las imágenes… hazlas como las que te he pasado» → **cada escena copia una lámina**: cerebro dorado con borde azul (lámina 1), cabeza de
+  cristal con el cerebro dentro (microchip), cerebro rosa brillante con herramientas cromadas de aros cian (implantación), neuronas azules con núcleo
+  de oro y sinapsis (lámina 1b), cerebro azul eléctrico con la onda EEG cruzándolo (señales), cara de partículas con la onda de colores saliendo de la
+  boca (una voz propia). **Cerebro real**: superficies Conte69 del HCP (paquete BrainSpace, BSD-3; `web/assets/brain_*.bin`), cabeza = escaneo de
+  Lee Perry-Smith (CC BY 3.0: **crédito obligatorio en la descripción**). «Flujo óptico» = polvo de luz con estelas (`03_flow.js`) + vuelo recto del
+  cerebro azul a la cara atravesando un túnel de polvo (la escena de la voz está en VOX = (−60, 0, 0) girada 90°) + 60 fps con desenfoque de movimiento.
+  **Lecciones**: (1) `hash(i*k)` con índices seguidos dibuja **columnas y rayas** en las nubes de puntos: usar `rng(seed)` (mulberry32, en 00_head.js);
+  (2) `x % 1` de un negativo es negativo en JS (la onda EEG pintaba columnas de puntos): `((x % 1) + 1) % 1`; (3) `Math.max(-0.2, x)` en una nube
+  la aplasta en un muro visible; (4) la normal de un vértice puede ser la de la pared de un surco: para colocar algo en la corteza, media de 15 mm y
+  el punto más saliente (cresta del giro); (5) en un plano general vertical, comprobar con números que el objeto entero cabe (caja proyectada).
+  Dos palabras dudosas del ASR que Javi debe confirmar: «siguen **intactos**» y «**precisión cercana** al 97 %». «Hola, sigo aquí» va marcada
+  «frase de ejemplo». Render con las seis máquinas «Lanzamiento · render 1–6» (Javi lo aprobó en el diálogo), ramas `render-vc-1…6` + local 0–520.
+
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
