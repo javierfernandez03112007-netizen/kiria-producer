@@ -1,0 +1,29 @@
+// ---------------------------------------------------------------- LA CÁMARA: un solo plano, sin cortes. Empieza pegada al pergamino (el sello cae), sube a la cara del rey, vuelve
+// a leer la ley, el rey señala a cámara, sale volando por la puerta a la plaza (estelas de polvo), recorre las tres tiendas por sus cristales, sigue la
+// cola hasta la esquina, ve escaparse al perro, cruza a la plaza (el pedestal vacío, la tarjeta del comentario, la estatua de oro) y vuelve al salón
+// hasta el mismo pergamino del principio (bucle).
+let CK = [], CUTS = [];
+function buildCam() { const T = TL, P0 = [1.12, 2.36, -31.35], L0 = [0.85, 2.03, -31.85];
+  CK = [
+    [0, P0, L0, 34], [T.stamp + 0.15, [1.08, 2.3, -31.42], [0.86, 2.05, -31.85], 34],                                                        // el sello cae sobre la ley
+    [T.trono - 0.2, [0.78, 2.62, -30.85], [0.08, 2.33, -32.4], 34], [T.ley2 - 0.1, [0.62, 2.56, -30.6], [0.05, 2.32, -32.4], 34],           // la cara del rey
+    [T.semana - 0.15, [0.97, 2.6, -31.48], [0.85, 2.03, -31.85], 30], [T.seguidor + 0.3, [0.93, 2.5, -31.42], [0.85, 2.03, -31.85], 30],     // la ley, de cerca
+    [T.final - 0.1, [0.42, 2.72, -29.3], [0.0, 2.27, -32.3], 36], [T.E[3] + 0.12, [0.25, 2.9, -27.6], [0.0, 2.2, -32.0], 38],               // «cómo ser tú»: el rey señala
+    [T.L[4] - 0.05, [0.5, 2.85, -25.6], [4.0, 2.6, -27.0], 40], [T.crece, [0.3, 2.85, -21.0], [1.5, 2.6, -14.0], 42],                     // gira hacia la puerta…
+    [T.pedis - 0.2, [0.0, 2.85, -15.4], [2.0, 2.8, -5.0], 44], [T.E[4] + 0.15, [6.0, 3.4, -8.0], [24.0, 2.8, -7.0], 44],                  // …sale a la plaza y mira a las tiendas
+    [T.sushi - 0.1, [16.8, 2.1, -9.0], [25.5, 1.9, -8.4], 40], [T.mesa - 0.2, [21.6, 1.7, -8.8], [27.2, 1.35, -8.6], 40],                // el sushi lleno
+    [T.libre - 0.25, [22.6, 1.65, -6.6], [25.0, 1.7, -5.5], 40], [T.E[5] + 0.1, [22.75, 1.7, -5.3], [25.0, 1.6, -5.5], 40],              // «COMPLETO»
+    [T.past - 0.1, [21.6, 1.9, -2.2], [25.6, 1.45, -1.4], 42], [T.tartas + 0.2, [22.6, 1.55, -1.6], [25.8, 1.1, -1.9], 40],              // el escaparate de tartas
+    [T.cola - 0.2, [22.2, 2.2, 0.8], [23.6, 1.45, 7.0], 44], [T.esquina + 0.3, [22.0, 2.4, 5.6], [23.7, 1.4, 14.5], 44],                   // la cola hasta la esquina
+    [T.vet + 0.1, [24.2, 1.7, 5.4], [27.3, 1.25, 5.9], 40], [T.vacunar - 0.3, [24.3, 1.5, 6.0], [27.4, 1.0, 6.0], 38], [T.E[7] + 0.2, [24.3, 1.45, 6.6], [27.0, 0.5, 5.8], 40],   // el perro
+    [T.L[8] + 0.2, [20.0, 4.0, 6.0], [8.0, 2.5, 3.0], 46], [T.pedestal + 0.1, [5.5, 2.3, 4.5], [0.0, 2.0, 0.0], 42],                         // a la plaza: el pedestal vacío
+    [T.coment, [4.6, 2.6, 3.0], [0.0, 3.2, 0.0], 42], [T.construir, [4.0, 2.8, 1.6], [0.0, 3.6, 0.0], 42], [T.estatua + 0.5, [3.6, 2.4, -0.6], [0.0, 3.6, 0.0], 42], [T.E[9] + 0.1, [3.4, 2.0, -2.8], [0.0, 2.4, 0.0], 42],
+    [T.manda + 0.2, [2.5, 3.5, -7.0], [0.5, 3.0, -20.0], 46], [T.estatua10 + 0.1, [0.4, 2.9, -16.0], [0.6, 2.5, -28.0], 44], [END - 0.45, [1.05, 2.42, -30.9], [0.85, 2.03, -31.85], 36],   // vuelta al salón…
+    [END, P0, L0, 34],                                                                                                                         // …y al pergamino (bucle)
+  ];
+  for (let i = 1; i < CK.length; i++) if (CK[i][0] <= CK[i - 1][0]) console.error('ERROR claves de cámara desordenadas en ' + i + ': ' + CK[i - 1][0].toFixed(2) + ' → ' + CK[i][0].toFixed(2)); }
+function camAt(t) { return camKeys(clamp(t, 0, END), CK); }
+function prevT(t, dt) { return Math.max(0, t - dt); }
+function whiteAt(t) { return 0; }
+function flashAt(t) { return 0; }
+function dofAt(t, st) { const f = st.p.distanceTo(st.l); return { focus: f, scale: f < 1.2 ? 0.35 * f : 0.05 * f }; }
