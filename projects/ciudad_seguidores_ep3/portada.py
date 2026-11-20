@@ -1,6 +1,6 @@
 """Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Kiria World, día 3».
 Base: la estatua de oro en el pedestal con «TU NOMBRE» y el ayuntamiento detrás (sin interfaz):
-    COVER=1 COVER_T=44.6 FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+    COVER=1 COVER_T=44.6 COVER_CAM="5.2,1.7,7.6,0,3.9,0,46" FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos."""
 import os
 import sys
