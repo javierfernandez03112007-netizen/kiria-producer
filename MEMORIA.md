@@ -50,7 +50,7 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   El 1-11-2026 el proxy respondía «upstream auth failed» (no leía la clave del entorno) y se trabajó con una clave que Javi
   pegó en el chat solo para esa sesión (no está guardada en ningún sitio): **pedirle que la regenere y la vuelva a guardar en
   el entorno**. Comprobar al empezar: `curl -s -D - -o /dev/null https://api.elevenlabs.io/v1/voices`.
-- Dominios pedidos para el entorno: `www.boe.es`, `boe.es`, `www.ciencia.gob.es` (verificar datos), `polyhaven.com`, `api.polyhaven.com`,
+- Dominios pedidos para el entorno: `elitebomberos.com` y `academia.elitebomberos.com` (20 nov, la web de la academia y de Bomberados), `www.boe.es`, `boe.es`, `www.ciencia.gob.es` (verificar datos), `polyhaven.com`, `api.polyhaven.com`,
   `dl.polyhaven.org` (texturas, modelos y luces HDRI CC0 para más realismo). Comprobar en cada sesión nueva que responden.
 - Reconocedor de voz: Parakeet TDT v3 (sherpa-onnx), ver `projects/derecho/asr_parakeet.py` (el modelo se descarga aparte).
 - Plan futuro: tarea programada nocturna (buscar noticias del nicho, analizar competencia, guion, voz, vídeo con plantillas fijas) y

@@ -14,7 +14,9 @@ Cada vídeo vive en `projects/bomberados_<nombre>/` (mismo esquema que siempre: 
 
 ## Lo que sabemos de la marca (todo pendiente de CONFIRMAR con la marca)
 - **Bomberados**: app para opositores a bombero, de la academia **Élite Bomberos** (Instagram @elitebomberos,
-  https://elitebomberos.com/ — la web no se abre desde estas máquinas: el dominio no está en la lista de red permitida).
+  https://elitebomberos.com/ — desde el 20 nov se abre desde aquí: lo que vende y promete está en `bomberados/WEB_ELITE.md`).
+- **Ojo (20 nov)**: la web no menciona ninguna «prueba gratis de 5 días» (Bomberados va incluido en los planes de 75 €/mes,
+  390 €/semestre y 660 €/año, sin matrícula ni permanencia). CONFIRMAR con Adrián antes de seguir diciéndolo en los vídeos.
 - Funciones conocidas: ruleta con los temarios; test; partidas en directo o en diferido contra otros opositores
   y contra una IA; una IA que, para una pregunta fallada, dice en qué manual y página está, la define y la compara
   con preguntas parecidas; **prueba gratis de 5 días**.
