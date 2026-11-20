@@ -177,3 +177,31 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   (verificar) · La cuarta es «poner a tierra y…» (en cortocircuito) · ¿Para qué se bloquea? (evitar la realimentación) ·
   ¿Qué norma las recoge? (RD 614/2001, Anexo II).
 
+## 20 nov 2026 · Partes de un incendio forestal
+
+### Fuente — apuntes de Élite Bomberos que pone Adrián Luna (Notion, fila «DOMINGO 22»: «esto siempre entra en el examen»)
+- **Origen**: donde se ha iniciado el incendio.
+- **Cabeza o frente**: hacia donde se dirige el incendio; la parte más caliente y activa.
+- **Flancos**: los lados, paralelos a la dirección principal de propagación.
+- **Cola**: la parte opuesta a la cabeza; se quema más despacio; a menudo está cerca del origen.
+- **Perímetro**: línea límite o borde del incendio.
+- **Dedo o lengua**: área, normalmente una franja estrecha, que es una extensión del incendio principal.
+- **Bolsa o entrante**: área sin quemar entre el incendio principal y cualquiera de los dedos.
+- **Isla**: área de combustible sin quemar dentro del perímetro.
+- **Focos secundarios**: áreas ardiendo fuera del perímetro, generadas por material incandescente (pavesas, piñas); si se
+  desarrollan pueden ser focos independientes con sus propias partes y normalmente acaban juntándose con el principal.
+- Para la pregunta del vídeo (por dónde se empieza): Manual básico del bombero forestal (INFOEX, Junta de Extremadura):
+  se puede atacar cualquier parte, pero lo más seguro es anclarse en la cola, seguir por los flancos y atacar la cabeza
+  al final; el MITECO pone «intentar un ataque a la cabeza» entre las situaciones de peligro. (Visto en el resumen del
+  buscador: los PDF no se abren desde estas máquinas → CONFIRMAR.)
+
+### Vídeos hechos con esto
+- «Este incendio tiene cabeza, cola… ¡y dedos!» (`projects/bomberados_forestal/`): el incendio entero con forma de bicho,
+  se rebobina hasta la chispa y vuelve a crecer parte a parte; cierre: ¿por dónde empiezas a apagarlo? (C, la cola) y el
+  monte que se vuelve la hoja de apuntes con las nueve partes.
+
+### Preguntas de examen que salen de aquí
+- ¿Qué parte es la más caliente y activa? (la cabeza) · ¿Cuál arde más despacio y suele estar cerca del origen? (la cola)
+  · Los flancos son… (paralelos a la dirección de propagación) · ¿Cómo se llama lo que no ha ardido dentro del perímetro?
+  (isla) · ¿Y lo que queda sin quemar entre un dedo y el incendio? (bolsa o entrante) · ¿Qué es un foco secundario? (fuego
+  fuera del perímetro, por pavesas o piñas) · ¿Por dónde es más seguro empezar? (anclaje en la cola, luego los flancos).
