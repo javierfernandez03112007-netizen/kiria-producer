@@ -111,7 +111,7 @@ async function buildScene() {
   { const g = S.shops.pastry; add(person({ seed: 301, topType: 'chef', hat: 'chef', hairStyle: 'short' }), 0.6, 0, -5.25, 0, { k: 'work' }, g); }
   // la tarjeta del comentario (sobre la gente) y los drones
   S.cardT = signTex(1024, 384, () => {}); S.card = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 0.9), new THREE.MeshBasicMaterial({ map: S.cardT, transparent: true, toneMapped: false })); S.card.position.set(0.6, 4.6, 3.2); G.add(S.card); S.card.visible = false;
-  S.swarm = droneSwarm(G, 420, _v(4, 27, 4));
+  S.swarm = droneSwarm(G, 640, _v(4, 27, 4));
   S.kingSparks = sparks(G, 120, 0xffe08a, 0.05);
   // polvo/bruma en el aire de la noche (flujo óptico suave) cerca de la plaza y del cuartel
   const r1 = rng(11), r2 = rng(22);

@@ -87,16 +87,20 @@ let _dotTex = null; function dotTex() { if (_dotTex) return _dotTex; const c = d
   _dotTex = new THREE.CanvasTexture(c); return _dotTex; }
 // puntos de una forma dibujada en un lienzo (texto o dibujo), centrados y con ancho w (m)
 function shapePoints(draw, n, w, seed) { const c = document.createElement('canvas'); c.width = 600; c.height = 300; const g = c.getContext('2d'); g.fillStyle = '#000'; g.fillRect(0, 0, 600, 300); g.fillStyle = '#fff'; g.strokeStyle = '#fff'; draw(g);
-  const d = g.getImageData(0, 0, 600, 300).data, on = []; for (let y = 0; y < 300; y += 3) for (let x = 0; x < 600; x += 3) if (d[(y * 600 + x) * 4] > 128) on.push([x, y]);
-  const R = rng(seed), out = []; let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; for (const [x, y] of on) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
-  const sc = w / Math.max(1, x1 - x0); for (let i = 0; i < n; i++) { const [x, y] = on[Math.floor(R() * on.length) % on.length]; out.push([(x - (x0 + x1) / 2) * sc, -(y - (y0 + y1) / 2) * sc]); } return out; }
-function droneSwarm(G, n, center) {
+  const d = g.getImageData(0, 0, 600, 300).data, on = s => { const o = []; for (let y = 0; y < 300; y += s) for (let x = (Math.round(y / s) % 2) * s * 0.5; x < 600; x += s) if (d[(Math.round(y) * 600 + Math.round(x)) * 4] > 128) o.push([x, y]); return o; };
+  // rejilla regular (como en los espectáculos de drones de verdad): el paso más fino que no pasa de n puntos
+  let s = 3, pts = on(s); while (pts.length > n && s < 40) { s += 0.25; pts = on(s); }
+  let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; for (const [x, y] of pts) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+  const sc = w / Math.max(1, x1 - x0), R = rng(seed), out = pts.map(([x, y]) => [(x - (x0 + x1) / 2) * sc, -(y - (y0 + y1) / 2) * sc]);
+  while (out.length < n) { const q = out[Math.floor(R() * pts.length)]; out.push([q[0] + (R() - 0.5) * 0.02, q[1] + (R() - 0.5) * 0.02]); }   // los que sobran, encima de otro
+  return out; }
+function droneSwarm(G, n, center) {   // n drones
   const geo = new THREE.BufferGeometry(), pos = new Float32Array(n * 3), col = new Float32Array(n * 3); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   const m = new THREE.PointsMaterial({ map: dotTex(), size: 0.75, sizeAttenuation: true, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false });
   const pts = new THREE.Points(geo, m); pts.frustumCulled = false; G.add(pts); const R = rng(808);
   // donde esperan: una nube suelta muy alta sobre la plaza
   const idle = Array.from({ length: n }, () => _v(center.x + (R() - 0.5) * 34, center.y + 6 + R() * 10, center.z + (R() - 0.5) * 34));
-  const num = shapePoints(g => { g.font = '900 210px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('6.438', 300, 150); }, n, 12, 9);
+  const num = shapePoints(g => { g.font = '800 200px Inter'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('6.438', 300, 150); }, n, 12, 9);
   const lupa = shapePoints(g => { g.lineWidth = 30; g.beginPath(); g.arc(250, 130, 82, 0, Math.PI * 2); g.stroke(); g.lineWidth = 44; g.lineCap = 'round'; g.beginPath(); g.moveTo(312, 192); g.lineTo(400, 270); g.stroke(); }, n, 8, 10);
   pts.userData = { idle, num, lupa, center: center.clone(), n, ph: Array.from({ length: n }, () => R() * 6.28) };
   return pts;

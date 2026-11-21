@@ -1,5 +1,5 @@
 #!/bin/bash
-# Máquina de ayuda: renderiza los fotogramas A..B-1 de «Kiria World, día 3», los codifica en chunks/chunk_A_B.mp4 y
+# Máquina de ayuda: renderiza los fotogramas A..B-1 de «Kiria World, día 4», los codifica en chunks/chunk_A_B.mp4 y
 # los sube a la rama <PFX>-X (por defecto render-c4). Uso (desde la raíz del repo, en la rama claude/stoic-newton-ja94mt al día):
 #   bash projects/ciudad_seguidores_ep4/render_chunk.sh A B X [PFX]
 set -u
@@ -25,6 +25,6 @@ n=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_r
 cd ../..
 git checkout -q -B $PFX-$X
 git add -f projects/ciudad_seguidores_ep4/$F
-git commit -qm "Kiria World día 3: trozo $A-$B renderizado (máquina de ayuda $X)"
+git commit -qm "Kiria World día 4: trozo $A-$B renderizado (máquina de ayuda $X)"
 for i in 1 2 3 4 5; do git push -q -f -u origin $PFX-$X && break; sleep $((2 ** i)); done
 echo "SUBIDO $PFX-$X $F ($(du -h projects/ciudad_seguidores_ep4/$F | cut -f1))"
