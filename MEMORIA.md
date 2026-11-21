@@ -257,7 +257,26 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   (la proyección del cartel), que `compose_ciudad.py` trata como ocupadas, así que el nombre se sube por encima. (9) El texto de los
   carteles pintados en lienzo tiene que caber: «COMPLETO» en 900 64px no cabe en 256 px y se lee «OMPLET» (medir con measureText y
   reducir la letra). **Entregado el 20-11-2026 a las 17:15**: `out/ciudad_seguidores_ep3.mp4` (48,3 s, 2.899 fotogramas, 1080×1920,
-  60 fps, −14,5 LUFS, 40 MB) + `out/portada.jpg` + `out/miniatura.jpg` + DESCRIPCION.txt. Nombres en local con
+  60 fps, −14,5 LUFS, 40 MB) + `out/portada.jpg` + `out/miniatura.jpg` + DESCRIPCION.txt.
+- **«Kiria World, día 4» (`projects/ciudad_seguidores_ep4/`, 21-11-2026) — DE NOCHE.** Javi: «la estatua será una estatua de kiria impuesta por
+  el actual rey que vuelve a ser el rey; marcos13_08 quiere un cuartel militar, Iz.her_019 una ferretería con servicio de electricista, jossl53g un
+  hotel con piscina arriba y un bar de copas; el día de hoy será de noche; mantenemos los gráficos, la cámara más lenta entre las personas para
+  que se aprecien los nombres, y un 5 % más de personas; tenemos 6438 seguidores». (Lo llamó «día 3»; se tituló **día 4** y se le avisó.)
+  Gancho: «Esta estatua de oro la ha pedido el rey… y no es para él.» + «Al final te digo de quién es.» → al final «Es Kiria, la que da nombre a
+  la ciudad. Por orden del rey.»; cierre «Mándaselo a quien se haría una estatua a sí mismo». Voz de Javi 54,4 s (vídeo 55,3 s, 3.320 fotogramas).
+  **Piezas nuevas**: `25_night.js` (la noche: luna y estrellas; **luces baratas** solo difusas en el sombreador de TODOS los materiales: las 16
+  fuentes más cercanas a lo que mira la cámara, con fundido, en vez de cien PointLight; zonas de luz con `powerAt` para el apagón; ventanas
+  encendidas `lightWindows`; farolas con halo `nightLamp`); `26_barracks.js` (cuartel: muro, portón «CUARTEL», garita morada y dorada, patio con
+  focos, mástil, camión; gorra militar, medallas, casco con linterna, chaleco, pajarita para la gente); `27_hardware.js` (ferretería con
+  `shopFrame` girado, furgoneta con luz naranja, armario de la luz con chispas); `28_hotel.js` (hotel de 8 plantas que se enciende planta a
+  planta, piscina con cáusticas por sombreador, bar con neón «COPAS» y guirnaldas); `29_kiria.js` (estatua de Kiria de oro con reflejos
+  propios `envMapFixed`; **tela que cuelga de los puntos altos de la figura** y cae al tirar; drones en **rejilla regular** que forman
+  «6.438» y una lupa). 80 personas (el día 3 tenía 67). Los nombres no salen a través de paredes (cajas `OCC` en `40_hudplan.js`).
+  **Lecciones**: (1) una constante con el mismo nombre que otra del motor (`HW`) rompe toda la página sin aviso en la consola de la sonda:
+  la sonda debe escuchar `pageerror`; (2) el cristal no debe recibir las luces difusas (salía una pared rosa); (3) objeto que se mueve lejos de
+  donde nace (la tela) → `frustumCulled = false` o desaparece; (4) puntos al azar para formar cifras dejan grumos: rejilla regular;
+  (5) giros con gente o fachadas a menos de 1 m: subir primero y girar por el lado abierto; pasar `web/check_people.mjs` antes del render.
+ Nombres en local con
   `web/labels.mjs` + `compose_ciudad.py` (los cuatro de la voz y el rey en dorado; el resto, sorteo fijo de la lista del 17-11; se apilan sin pisarse).
 
 ## Próximas ideas
