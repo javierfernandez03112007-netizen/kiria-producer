@@ -48,8 +48,8 @@ def at(word, k=1, line=None):
 NAMES_F = os.environ.get("NAMES", os.path.join(ROOT, "..", "ciudad_seguidores", "out", "names.json"))   # la lista del 17-11 (fuera del repo)
 JOBS_F = os.path.join(ROOT, "out", "jobs.json")                 # quién es quién (lo escribe web/labels.mjs: {índice: {k, vip}})
 WHO = {}
-VIPTXT = {"king": ("@iannyanezz_", "rey"), "lydiaa.rc": ("@lydiaa.rc", "dueña"), "salvadormatthias34": ("@salvadormatthias34", "pastelero"), "zamii.luu": ("@zamii.luu", "veterinaria")}
-JOBTXT = {"chefSushi": "cocinero", "guard": "guardia real", "owner2": "su dueño", "court": None}
+VIPTXT = {"king": ("@iannyanezz_", "rey"), "marcos13_08": ("@marcos13_08", "coronel"), "iz.her_019": ("@iz.her_019", "ferretera"), "jossl53g": ("@jossl53g", "dueño del hotel")}
+JOBTXT = {"soldier": "soldado", "sentry": "centinela", "guard": "guardia real", "elec": "electricista", "bartender": "camarero", "doorman": "portero"}
 LABELS_F = os.path.join(ROOT, "out", "labels.jsonl")
 KEEP = {}
 NAMES, HIDE, LABELS, _TAG, _FONT, _FONT_S = None, set(), None, {}, None, None
@@ -131,16 +131,18 @@ def draw_tags(img, fi):
 
 # ---------------------------------------------------------------- subtítulos
 GO, R, WH, GR, CY, AM, OR, PK = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547", "#FF9A3D", "#FF5FB8"
-_K = {1: {"rey": GO, "kiria": GR, "world": GR, "ley": GO, "ti": CY},
-      2: {"iannyanezz": GO, "trono": GO, "ley": GO, "semana": CY, "homenajeará": GR, "mejor": GO, "seguidor": GO},
-      3: {"final": CY, "tú": GO},
-      4: {"kiria": GR, "world": GR, "crece": GR, "pedís": CY},
-      5: {"lydiaa.rc": GO, "sushi": R, "mesa": OR},
-      6: {"pastelería": PK, "salvadormatthias34": GO, "tartas": PK, "escaparate": PK, "cola": OR, "esquina": OR},
-      7: {"zamii.luu": GO, "veterinario": GR, "perro": OR, "vacunar": R},
-      8: {"plaza": CY, "pedestal": GO, "vacío": WH},
-      9: {"comentario": CY, "gusta": PK, "semana": CY, "construirá": GR, "nombre": GO, "estatua": GO, "oro": GO},
-      10: {"mándaselo": GR, "estatua": GO}}
+_K = {1: {"estatua": GO, "oro": GO, "rey": GO, "él": R},
+      2: {"final": CY, "quién": CY},
+      3: {"iannyanezz": GO, "comentario": CY, "gusta": PK, "rey": GO, "premio": GO},
+      4: {"kiria": GR, "world": GR, "duerme": CY},
+      5: {"marcos13_08": GO, "cuartel": GR, "militar": GR, "medianoche": CY, "revista": GR},
+      6: {"ferretería": OR, "iz.her_019": GO, "electricista": AM, "noche": CY, "luz": R, "calle": R},
+      7: {"jossl53g": GO, "hotel": PK, "piscina": CY, "azotea": CY, "bar": PK, "copas": PK, "nadie": OR},
+      8: {"seis": GO, "mil": GO, "cuatrocientos": GO, "treinta": GO, "y": GO, "ocho": GO, "visto": CY},
+      9: {"plaza": CY, "rey": GO, "tela": R},
+      10: {"kiria": GO, "nombre": GR, "ciudad": GR, "orden": GO, "rey": GO},
+      11: {"justo": R, "comentario": CY, "gusta": PK, "semana": CY, "nuevo": GO, "rey": GO},
+      12: {"mándaselo": GR, "estatua": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -200,40 +202,46 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    stamp = at("firmar") + 0.25
-    # 1: el sello de oro cae sobre la ley (chispas); 2: el rey, la ley, el aplauso
-    put("avion/sello", stamp - 0.02, 0.6, 0.46, 0.25)
-    put("magisterio/chispa", stamp + 0.02, 0.8, 0.3, 0.3)
-    put("avion/brillo", at("trono") - 0.15, 1.0, 0.32, 0.4)
-    put("lanzamiento/papel", at("ley", 1, 2) - 0.05, 0.6, 0.34, 0.2)
-    put("ade/multitud", at("seguidor") + 0.1, 1.8, 0.22, 0.7)
-    # 3: «cómo ser tú»: el rey señala; 4: sale volando por la puerta a la plaza
-    put("lanzamiento/ping", at("tú", 1, 3) - 0.02, 0.5, 0.3, 0.2)
-    put("avion/whoosh_largo", at("mientras") - 0.2, 1.2, 0.3, 0.4)
-    # 5: el sushi lleno y el cartel que gira a COMPLETO
-    put("tapas/plato", at("sushi") - 0.05, 0.6, 0.3, 0.25)
-    put("lanzamiento/voltea", at("mesa") + 0.35, 0.6, 0.38, 0.2)
-    # 6: el toldo de la pastelería, las tartas, la cola hasta la esquina
-    put("lanzamiento/toldo", at("pastelería") - 0.1, 0.8, 0.32, 0.3)
-    put("tapas/pop", at("tartas") - 0.02, 0.4, 0.32, 0.15)
-    put("avion/whoosh", at("cola") - 0.2, 0.6, 0.26)
-    # 7: el veterinario; el perro salta de la camilla y corre
-    put("medicina/instrumental", at("veterinario") - 0.1, 0.8, 0.28, 0.3)
-    put("cripto/salto", at("vacunar") - 0.47, 0.6, 0.38, 0.2)
-    put("robo_banco/pasos", at("vacunar") + 0.1, 0.7, 0.24, 0.2)
-    # 8: vuela a la plaza: el pedestal vacío con su foco
-    put("avion/whoosh_largo", at("plaza") - 0.6, 1.2, 0.28, 0.4)
-    put("promo_web/focos", at("pedestal") - 0.05, 1.0, 0.36, 0.4)
-    # 9: el comentario y sus «me gusta»; se construirá; la placa con el nombre; la estatua de oro (aplausos)
-    put("lanzamiento/mensaje", at("comentario") - 0.05, 0.6, 0.36, 0.2)
-    put("lanzamiento/corazon", at("gusta") - 0.15, 0.9, 0.38, 0.3)
-    put("lanzamiento/contador", at("gusta") + 0.1, 1.2, 0.26, 0.4)
-    put("avion/construye", at("construirá") - 0.1, 1.0, 0.3, 0.4)
-    put("economia/medalla", at("nombre") - 0.05, 0.8, 0.34, 0.3)
-    put("medicina/dorado", at("estatua", 1, 9) - 0.1, 1.2, 0.38, 0.4)
-    put("ade/multitud", at("oro") + 0.1, 1.6, 0.24, 0.6)
-    # 10: vuelve volando al salón del trono (bucle con el primer fotograma)
-    put("avion/whoosh_largo", at("mándaselo") + 0.05, 1.2, 0.28, 0.4)
+    fix = LINES[5]["end"] + 0.3                                    # el electricista arregla la luz (igual que en la escena)
+    pull = at("tira") + 0.05                                        # el rey tira de la tela
+    # 1-2: la estatua tapada (brillo de oro), el rey dice que no es para él; ¿de quién es?
+    put("medicina/dorado", at("oro") - 0.1, 1.0, 0.3, 0.4)
+    put("cripto/pregunta", at("quién") - 0.05, 0.7, 0.3, 0.25)
+    # 3: la tarjeta del comentario y sus «me gusta»; sigue siendo rey; su premio
+    put("lanzamiento/mensaje", at("comentario", 1) - 0.05, 0.6, 0.34, 0.2)
+    put("lanzamiento/corazon", at("gusta", 1) - 0.15, 0.9, 0.34, 0.3)
+    put("avion/brillo", at("sigue") - 0.1, 0.9, 0.3, 0.35)
+    # 4: sube sobre la plaza de noche; 5: el cuartel: marcha y pasos del coronel
+    put("avion/whoosh_largo", at("mientras") + 0.1, 1.2, 0.28, 0.4)
+    put("ade/marcha", at("cuartel") - 0.1, 1.6, 0.3, 0.5)
+    put("robo_banco/pasos", at("medianoche") + 0.3, 1.4, 0.26, 0.4)
+    # 6: vuela a la ferretería; el armario se abre; se va la luz; chispazo y vuelve
+    put("avion/whoosh", at("ferretería") - 0.1, 0.8, 0.26, 0.3)
+    put("cerradura/clic_abre", at("trabajo") - 0.15, 0.5, 0.32, 0.2)
+    put("robo_banco/apagado", at("luz") - 0.18, 1.0, 0.42, 0.4)
+    put("gafas/rayo", fix - 0.06, 0.6, 0.38, 0.25)
+    put("quimica/encendido", fix + 0.15, 0.9, 0.32, 0.35)
+    # 7: el hotel se enciende planta a planta; la piscina; el bar de copas
+    put("robo_banco/bombillas", at("jossl53g") + 0.1, 1.4, 0.26, 0.5)
+    put("cerradura/zambullida", at("piscina") - 0.05, 0.9, 0.3, 0.35)
+    put("tapas/vierte", at("bar") - 0.1, 0.7, 0.3, 0.25)
+    put("tapas/ronda", at("copas") - 0.05, 0.9, 0.3, 0.35)
+    # 8: los drones forman «6.438» y la lupa; baja en picado a la plaza
+    put("robot_neuronas/zumbido", at("somos") - 0.2, 1.5, 0.22, 0.6)
+    put("lanzamiento/cifra", at("treinta") - 0.1, 0.8, 0.32, 0.3)
+    put("lanzamiento/ping", at("visto") - 0.1, 0.5, 0.3, 0.2)
+    put("avion/whoosh_largo", at("visto") + 0.2, 1.2, 0.28, 0.4)
+    # 9-10: el tirón de la tela, la estatua de Kiria (brillo y la gente), la placa del rey
+    put("lanzamiento/desliza", pull - 0.02, 0.9, 0.38, 0.3)
+    put("economia/medalla", at("kiria", 1, 10) - 0.08, 0.9, 0.36, 0.35)
+    put("ade/multitud", at("kiria", 1, 10) + 0.3, 1.8, 0.24, 0.7)
+    put("avion/sello", at("orden") - 0.05, 0.5, 0.36, 0.2)
+    # 11: ¿es justo? (la gente discute); el comentario de la semana: el nuevo rey
+    put("cripto/duelo", at("justo") - 0.1, 0.8, 0.26, 0.3)
+    put("lanzamiento/tarjeta", at("comentario", 2) - 0.05, 0.6, 0.32, 0.2)
+    put("economia/medalla", at("nuevo") - 0.05, 0.8, 0.32, 0.3)
+    # 12: mándaselo
+    put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.7, 0.3, 0.25)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 

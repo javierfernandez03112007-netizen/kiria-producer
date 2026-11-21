@@ -1,0 +1,28 @@
+👑 @iannyanezz_ ha vuelto a tener el comentario con más «me gusta»: sigue siendo el rey de Kiria World… y ha pedido una estatua de oro. Pero no es para él.
+
+🌙 Esta noche la ciudad no duerme: @marcos13_08 ya tiene su cuartel militar (con revista a medianoche), la ferretería de @iz.her_019 tiene electricista (y le ha tocado arreglar un apagón) y @jossl53g ha levantado un hotel con piscina en la azotea y bar de copas.
+
+✨ Ya somos 6.438 en Kiria World. ¿Te has visto?
+
+👇 ¿Te parece justo? El comentario con más «me gusta» de esta semana será el nuevo rey. Mándaselo a quien se haría una estatua a sí mismo.
+
+#kiriaworld #kiriaai #ciudad #comunidad #seguidores #serie
+
+---
+
+Versión corta (TikTok):
+
+👑 El rey de Kiria World ha pedido una estatua de oro… y no es para él. ¿De quién es? 👇
+
+#kiriaworld #kiriaai #comunidad
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Voz: la de Javi (su MP3 de ElevenLabs del 21-11), a tempo 1,0; solo se recortaron los silencios largos (54,4 s; vídeo de 55,3 s).
+- Los nombres encima de la gente son seguidores al azar de la lista del 17-11 (5.997): los nuevos hasta 6.438 no salen hasta que pases la
+  exportación nueva («Seguidores y seguidos»). Los cuatro que nombra la voz (el rey, @marcos13_08, @iz.her_019 y @jossl53g) van en dorado.
+- La tarjeta del rey dice «1º» (el comentario con más «me gusta»): se da por hecho porque vuelve a ser rey (regla de la serie). Sin cifras inventadas.
+- La tarjeta del final («Tu comentario») es un EJEMPLO de cómo funciona, con un contador de ejemplo.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música.
+- Bucle: el primer fotograma (la estatua tapada con la luna detrás) y el último (la misma vista, ya destapada).
