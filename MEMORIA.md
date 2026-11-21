@@ -276,6 +276,10 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   la sonda debe escuchar `pageerror`; (2) el cristal no debe recibir las luces difusas (salía una pared rosa); (3) objeto que se mueve lejos de
   donde nace (la tela) → `frustumCulled = false` o desaparece; (4) puntos al azar para formar cifras dejan grumos: rejilla regular;
   (5) giros con gente o fachadas a menos de 1 m: subir primero y girar por el lado abierto; pasar `web/check_people.mjs` antes del render.
+  (6) la cámara cruzó una hoja de la reja del portón y salió un fotograma negro (el escaneo de personas no mira objetos): se quitó la hoja
+  cuando ya no se ve y se rehicieron 43 fotogramas. Render: 6 máquinas + esta, ≈ 40 min (esta va a ≈ 14 fotogramas/min con 4 procesos:
+  darle a ella el trozo más corto). **Entregado el 21-11-2026 a las 16:12**: `out/ciudad_seguidores_ep4.mp4` (55,3 s, 3.319 fotogramas,
+  1080×1920, 60 fps, −14,7 LUFS, 49 MB) + portada («LA PIDIÓ EL REY… y no es para él») + miniatura + DESCRIPCION.txt.
  Nombres en local con
   `web/labels.mjs` + `compose_ciudad.py` (los cuatro de la voz y el rey en dorado; el resto, sorteo fijo de la lista del 17-11; se apilan sin pisarse).
 
