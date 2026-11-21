@@ -35,6 +35,15 @@ Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: fal
 5. **La app, solo como cierre:** «Reta a otro opositor» se ha estancado en 11.000.
 6. Siguen: bomberos en acción en 3D con dron; teoría solo si la cuenta una escena; «mándaselo a quien quiera ser bombero».
 
+### Seguidores (18 nov 9:15 → 20 nov 12:31, ≈ 2,1 días)
+| Cuenta | 18 nov | 20 nov | Crecimiento | Por día |
+|---|---|---|---|---|
+| Bomberados | 3.733 | 3.952 | +219 (+6 %) | ≈ 102 |
+| Élite Bomberos | 10.221 | 10.446 | +225 (+2 %) | ≈ 105 |
+
+Frena respecto a los días anteriores (≈ 170 y 179/día). No hay cifras de vídeos desde el 18 nov: falta saber cómo van la
+motosierra, el RSCIEI, la estabilización, las 5 reglas de oro y el incendio forestal.
+
 ### Seguidores (16 nov 18:31 → 18 nov 9:15, ≈ 1,6 días)
 | Cuenta | 16 nov | 18 nov | Crecimiento | Por día |
 |---|---|---|---|---|
