@@ -1705,7 +1705,7 @@ function buildBarracks(G, wallM) {
   const sign = signPlane(5.4, 0.62, 1024, (c, w, h) => { c.fillStyle = '#2b2238'; c.fillRect(0, 0, w, h); c.fillStyle = '#e8b64a'; c.font = '900 92px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.letterSpacing = '26px'; c.fillText('CUARTEL', w / 2, h / 2 + 4); }, { r: 0.5, glow: 0.9 });
   sign.position.set(X + 0.36, 4.3, 0); sign.rotation.y = Math.PI / 2; g.add(sign); nightMat(sign.material);
   const crest = signPlane(1.3, 0.9, 512, (c, w, h) => { c.clearRect(0, 0, w, h); KW_FLAG(c, w, h); }, { r: 0.5 }); crest.position.set(X + 0.36, 5.25, 0); crest.rotation.y = Math.PI / 2; g.add(crest);
-  for (const s of [-1, 1]) { const leaf = new THREE.Group(); leaf.position.set(X, 0, s * GW); leaf.rotation.y = s * 1.25; g.add(leaf); for (let i = 0; i <= 12; i++) leaf.add(box(0.04, 2.6, 0.04, T.iron, -0.02, 1.3, -s * i * 0.24)); for (const y of [0.25, 1.35, 2.5]) leaf.add(box(0.05, 0.06, GW, T.iron, -0.02, y, -s * GW / 2));
+  U.leaves = []; for (const s of [-1, 1]) { const leaf = new THREE.Group(); leaf.position.set(X, 0, s * GW); leaf.rotation.y = s * 1.25; g.add(leaf); U.leaves.push(leaf); for (let i = 0; i <= 12; i++) leaf.add(box(0.04, 2.6, 0.04, T.iron, -0.02, 1.3, -s * i * 0.24)); for (const y of [0.25, 1.35, 2.5]) leaf.add(box(0.05, 0.06, GW, T.iron, -0.02, y, -s * GW / 2));
     for (let i = 0; i <= 12; i += 2) { const sp = new THREE.Mesh(new THREE.ConeGeometry(0.035, 0.14, 6), T.iron); sp.position.set(-0.02, 2.68, -s * i * 0.24); leaf.add(sp); } }
   // garita con su luz
   const sb = sentryBox(); sb.position.set(X + 1.1, 0, GW + 1.6); sb.rotation.y = Math.PI / 2; g.add(sb); nightSrc(_v(X + 1.6, 2.3, GW + 1.6), 0xffc58a, 14, 2.6);
@@ -2139,6 +2139,7 @@ function drawCard(n, a, who, txt) { const c = S.cardT.image.getContext('2d'), w 
 const _rp = [new THREE.Vector3(), new THREE.Vector3()];
 function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.grassTime) S.grassTime.value = t; if (S.poolT) S.poolT.value = t;
   const H = S.hall.userData; for (const f of H.flags) flagWave(f, t); flagWave(S.barracks.userData.flag, t + 3);
+  S.barracks.userData.leaves[1].visible = t < TL.militar + 0.27;     // la cámara cruza esa hoja de la reja al entrar: se quita cuando ya no se ve (salía un fotograma negro)
   moodMix({ noche: 1 });
   const PT = S.ped.userData.top;
   // la tela: cubre la estatua hasta el tirón del rey; después resbala hacia él y cae

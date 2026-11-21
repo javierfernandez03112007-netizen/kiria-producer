@@ -133,6 +133,7 @@ function drawCard(n, a, who, txt) { const c = S.cardT.image.getContext('2d'), w 
 const _rp = [new THREE.Vector3(), new THREE.Vector3()];
 function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); if (S.grassTime) S.grassTime.value = t; if (S.poolT) S.poolT.value = t;
   const H = S.hall.userData; for (const f of H.flags) flagWave(f, t); flagWave(S.barracks.userData.flag, t + 3);
+  S.barracks.userData.leaves[1].visible = t < TL.militar + 0.27;     // la cámara cruza esa hoja de la reja al entrar: se quita cuando ya no se ve (salía un fotograma negro)
   moodMix({ noche: 1 });
   const PT = S.ped.userData.top;
   // la tela: cubre la estatua hasta el tirón del rey; después resbala hacia él y cae
