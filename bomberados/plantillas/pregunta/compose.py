@@ -3464,7 +3464,104 @@ def sfx_track_forestal(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def _siseo(dur, seed=3):
+    """Aire que entra en un cojín: ruido agudo filtrado con un leve temblor."""
+    n = int(dur * sfx.SR)
+    w = np.random.default_rng(seed).standard_normal(n)
+    hp = np.diff(w, prepend=0.0)
+    k = 6
+    lp = np.convolve(hp, np.ones(k) / k, "same")
+    tt = np.arange(n) / sfx.SR
+    y = lp * (0.8 + 0.2 * np.sin(2 * np.pi * 7.3 * tt))
+    return np.stack([y, y * 0.96], 1)
+
+
+def sfx_track_cojines(path):
+    """«Un coche encima de una pierna… y este cojín lo levanta» (cojines de alta presión): noche en la carretera (viento,
+    motor de la autobomba al ralentí), latido en el gancho, el cojín que entra arrastrándose, el aire que sisea mientras se
+    hincha cada cojín (delante; luego la pila de atrás; luego la pregunta), el coche que cruje al subir, el manómetro, el
+    sello del «¡NO!», los bloques y las cuñas, la pregunta de Bomberados y la venta. Tiempos como en cojines.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe")); w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    put(_loop(_load("aire"), END + 0.5), 0.0, -31, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -37, T["fin"], 0.6, 1.0, track=amb)
+    put("tension", 0.0, -32, c["levanta1"], 0.2, 0.3, track=amb)
+    for k in range(3):
+        put("latido", 0.2 + 0.85 * k, -23, 0.7)
+    # el cojín entra (se arrastra por el asfalto) y el guante
+    sl0, sl1 = c["cojin"] - 0.55, c["cojin"] + 0.6
+    put(_pitch(_onset(_load("papeles")), 0.7), sl0, -27, sl1 - sl0, 0.05, 0.15)
+    put(_pitch(toque, 1.1), c["libreta"] - 0.02, -26, 0.35)
+    # el aire: delante (sube), la pila de atrás, la pregunta
+    for t0, t1, db, sd in ((c["levanta1"] - 0.15, c["mucho"] + 0.25, -29, 3), (c["no"] - 0.05, c["pequeno"] + 0.4, -28, 5), (c["infla"] - 0.05, c["letC"] + 0.3, -32, 7)):
+        put(_siseo(t1 - t0 + 0.3, sd), t0, db, t1 - t0, 0.08, 0.15)
+    # el coche cruje al subir
+    for t0 in (c["levanta1"] + 0.1, c["levanta1"] + 0.7, c["mucho"] - 0.3, c["alto"] - 0.1, c["levante"]):
+        put(_pitch(golpe, 0.55), t0, -27, 0.5, 0.01, 0.3)
+    put(_pitch(tic, 1.5), c["doce"] - 0.02, -26, 0.12); put(_pitch(tic, 1.8), c["doce"] + 0.1, -28, 0.1)
+    put(_pitch(nota, 0.84), c["sesenta"] - 0.03, -26, 0.8); put("destello", c["toneladas"] - 0.05, -29, 0.5)
+    put(_pitch(toque, 1.26), c["medio"] - 0.02, -26, 0.35)
+    # la pila: entran el grande y el pequeño
+    put(_pitch(w2, 1.3), c["pones"] - 0.35, -29, 0.7)
+    put(_pitch(golpe, 1.6), c["pones"] + 0.38, -27, 0.25, 0.003, 0.12)
+    put(_pitch(golpe, 1.9), c["dos"] + 0.53, -27, 0.25, 0.003, 0.12)
+    put(_pitch(toque, 0.9), c["doble"] - 0.02, -25, 0.4)
+    # ¡no!
+    put("golpe", c["no"] - 0.02, -20, 0.8, 0.003, 0.35)
+    put("fallo", c["no"] + 0.02, -25, 0.5)
+    put(_pitch(nota, 1.12), c["pequeno"] - 0.03, -25, 0.7)
+    # el grande abajo (✓) y al revés (✗)
+    put("fallo", c["grande"] + 0.05, -29, 0.4)
+    put("acierto", c["centrado"] - 0.05, -27, 0.7)
+    # bloques y cuñas
+    for i in range(3):
+        put(_pitch(golpe, 1.3 + 0.15 * i), c["calzas"] - 0.15 + i * 0.22 + 0.55, -24, 0.3, 0.003, 0.15)
+    put(_pitch(w2, 0.9), c["sube7"] + 0.15, -30, 1.0)
+    # la pregunta de Bomberados
+    put(_pitch(wh, 0.7), c["infla"] - 0.35, -26, 1.0)
+    put("tension", c["infla"], -31, c["compartir"] - c["infla"] - 0.3, 0.3, 0.3, track=amb)
+    for i, k in enumerate(("letA", "letB", "letC")):
+        put(_pitch(bub, 1.0 + 0.12 * i), c[k] - 0.02, -24, 0.14, 0.001, 0.05)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "cojines":
+        return sfx_track_cojines(path)
     if Q.get("formato") == "forestal":
         return sfx_track_forestal(path)
     if Q.get("formato") == "oro":

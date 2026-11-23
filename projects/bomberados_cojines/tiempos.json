@@ -1,551 +1,551 @@
 [
  {
   "text": "Un coche encima de una pierna… y este cojín, fino como una libreta, lo levanta.",
-  "start": 0.0,
-  "end": 5.703,
+  "start": 0.06,
+  "end": 6.094,
   "words": [
    {
     "w": "Un",
-    "start": 0.0,
-    "end": 0.199
+    "start": 0.06,
+    "end": 0.219
    },
    {
     "w": "coche",
-    "start": 0.199,
-    "end": 0.556
+    "start": 0.219,
+    "end": 0.698
    },
    {
     "w": "encima",
-    "start": 0.556,
-    "end": 1.072
+    "start": 0.698,
+    "end": 1.097
    },
    {
     "w": "de",
-    "start": 1.072,
-    "end": 1.271
+    "start": 1.097,
+    "end": 1.257
    },
    {
     "w": "una",
-    "start": 1.271,
-    "end": 1.629
+    "start": 1.257,
+    "end": 1.416
    },
    {
     "w": "pierna…",
-    "start": 1.629,
-    "end": 1.986
+    "start": 1.416,
+    "end": 2.354
    },
    {
     "w": "y",
-    "start": 2.286,
-    "end": 2.485
+    "start": 2.354,
+    "end": 2.454
    },
    {
     "w": "este",
-    "start": 2.485,
-    "end": 2.842
+    "start": 2.454,
+    "end": 2.773
    },
    {
     "w": "cojín,",
-    "start": 2.842,
-    "end": 3.2
+    "start": 2.773,
+    "end": 3.601
    },
    {
     "w": "fino",
-    "start": 3.3,
-    "end": 3.657
+    "start": 3.601,
+    "end": 4.049
    },
    {
     "w": "como",
-    "start": 3.657,
-    "end": 4.015
+    "start": 4.049,
+    "end": 4.209
    },
    {
     "w": "una",
-    "start": 4.015,
-    "end": 4.372
+    "start": 4.209,
+    "end": 4.448
    },
    {
     "w": "libreta,",
-    "start": 4.372,
-    "end": 4.888
+    "start": 4.448,
+    "end": 5.326
    },
    {
     "w": "lo",
-    "start": 4.988,
-    "end": 5.187
+    "start": 5.326,
+    "end": 5.486
    },
    {
     "w": "levanta.",
-    "start": 5.187,
-    "end": 5.703
+    "start": 5.486,
+    "end": 6.094
    }
   ]
  },
  {
   "text": "Con aire a doce bares, los hay de sesenta y ocho toneladas.",
-  "start": 6.003,
-  "end": 9.916,
+  "start": 6.383,
+  "end": 9.954,
   "words": [
    {
     "w": "Con",
-    "start": 6.003,
-    "end": 6.202
+    "start": 6.383,
+    "end": 6.523
    },
    {
     "w": "aire",
-    "start": 6.202,
-    "end": 6.559
+    "start": 6.523,
+    "end": 6.922
    },
    {
     "w": "a",
-    "start": 6.559,
-    "end": 6.758
+    "start": 6.922,
+    "end": 7.002
    },
    {
     "w": "doce",
-    "start": 6.758,
-    "end": 7.115
+    "start": 7.002,
+    "end": 7.321
    },
    {
     "w": "bares,",
-    "start": 7.115,
-    "end": 7.473
+    "start": 7.321,
+    "end": 7.919
    },
    {
     "w": "los",
-    "start": 7.573,
-    "end": 7.772
+    "start": 7.919,
+    "end": 8.119
    },
    {
     "w": "hay",
-    "start": 7.772,
-    "end": 7.97
+    "start": 8.119,
+    "end": 8.358
    },
    {
     "w": "de",
-    "start": 7.97,
-    "end": 8.169
+    "start": 8.358,
+    "end": 8.518
    },
    {
     "w": "sesenta",
-    "start": 8.169,
-    "end": 8.685
+    "start": 8.518,
+    "end": 8.841
    },
    {
     "w": "y",
-    "start": 8.685,
-    "end": 8.884
+    "start": 8.841,
+    "end": 8.948
    },
    {
     "w": "ocho",
-    "start": 8.884,
-    "end": 9.241
+    "start": 8.948,
+    "end": 9.236
    },
    {
     "w": "toneladas.",
-    "start": 9.241,
-    "end": 9.916
+    "start": 9.236,
+    "end": 9.954
    }
   ]
  },
  {
   "text": "Pero sube poco: medio metro, como mucho.",
-  "start": 10.216,
-  "end": 12.998,
+  "start": 10.313,
+  "end": 12.886,
   "words": [
    {
     "w": "Pero",
-    "start": 10.216,
-    "end": 10.573
+    "start": 10.313,
+    "end": 10.512
    },
    {
     "w": "sube",
-    "start": 10.573,
-    "end": 10.931
+    "start": 10.512,
+    "end": 10.991
    },
    {
     "w": "poco:",
-    "start": 10.931,
-    "end": 11.288
+    "start": 10.991,
+    "end": 11.55
    },
    {
     "w": "medio",
-    "start": 11.468,
-    "end": 11.826
+    "start": 11.55,
+    "end": 11.949
    },
    {
     "w": "metro,",
-    "start": 11.826,
-    "end": 12.183
+    "start": 11.949,
+    "end": 12.347
    },
    {
     "w": "como",
-    "start": 12.283,
-    "end": 12.641
+    "start": 12.347,
+    "end": 12.667
    },
    {
     "w": "mucho.",
-    "start": 12.641,
-    "end": 12.998
+    "start": 12.667,
+    "end": 12.886
    }
   ]
  },
  {
   "text": "¿Y si pones dos, uno encima de otro? ¿Levanta el doble?",
-  "start": 13.298,
-  "end": 16.954,
+  "start": 13.285,
+  "end": 16.437,
   "words": [
    {
     "w": "¿Y",
-    "start": 13.298,
-    "end": 13.497
+    "start": 13.285,
+    "end": 13.366
    },
    {
     "w": "si",
-    "start": 13.497,
-    "end": 13.695
+    "start": 13.366,
+    "end": 13.465
    },
    {
     "w": "pones",
-    "start": 13.695,
-    "end": 14.053
+    "start": 13.465,
+    "end": 13.863
    },
    {
     "w": "dos,",
-    "start": 14.053,
-    "end": 14.252
+    "start": 13.863,
+    "end": 14.352
    },
    {
     "w": "uno",
     "start": 14.352,
-    "end": 14.709
+    "end": 14.582
    },
    {
     "w": "encima",
-    "start": 14.709,
-    "end": 15.225
+    "start": 14.582,
+    "end": 14.901
    },
    {
     "w": "de",
-    "start": 15.225,
-    "end": 15.424
+    "start": 14.901,
+    "end": 15.06
    },
    {
     "w": "otro?",
-    "start": 15.424,
-    "end": 15.781
+    "start": 15.06,
+    "end": 15.669
    },
    {
     "w": "¿Levanta",
-    "start": 15.881,
-    "end": 16.398
+    "start": 15.669,
+    "end": 16.098
    },
    {
     "w": "el",
-    "start": 16.398,
-    "end": 16.596
+    "start": 16.098,
+    "end": 16.177
    },
    {
     "w": "doble?",
-    "start": 16.596,
-    "end": 16.954
+    "start": 16.177,
+    "end": 16.437
    }
   ]
  },
  {
   "text": "¡No! Solo sube más alto: levanta lo que levante el pequeño.",
-  "start": 17.254,
-  "end": 21.149,
+  "start": 16.816,
+  "end": 20.646,
   "words": [
    {
     "w": "¡No!",
-    "start": 17.254,
-    "end": 17.453
+    "start": 16.816,
+    "end": 17.484
    },
    {
     "w": "Solo",
-    "start": 17.553,
-    "end": 17.91
+    "start": 17.484,
+    "end": 17.693
    },
    {
     "w": "sube",
-    "start": 17.91,
-    "end": 18.268
+    "start": 17.693,
+    "end": 18.172
    },
    {
     "w": "más",
-    "start": 18.268,
-    "end": 18.466
+    "start": 18.172,
+    "end": 18.332
    },
    {
     "w": "alto:",
-    "start": 18.466,
-    "end": 18.824
+    "start": 18.332,
+    "end": 18.99
    },
    {
     "w": "levanta",
-    "start": 19.004,
-    "end": 19.52
+    "start": 18.99,
+    "end": 19.449
    },
    {
     "w": "lo",
-    "start": 19.52,
-    "end": 19.719
+    "start": 19.449,
+    "end": 19.608
    },
    {
     "w": "que",
-    "start": 19.719,
-    "end": 19.917
+    "start": 19.608,
+    "end": 19.688
    },
    {
     "w": "levante",
-    "start": 19.917,
-    "end": 20.434
+    "start": 19.688,
+    "end": 20.167
    },
    {
     "w": "el",
-    "start": 20.434,
-    "end": 20.632
+    "start": 20.167,
+    "end": 20.247
    },
    {
     "w": "pequeño.",
-    "start": 20.632,
-    "end": 21.149
+    "start": 20.247,
+    "end": 20.646
    }
   ]
  },
  {
   "text": "Por eso, el grande abajo, el pequeño centrado encima.",
-  "start": 21.449,
-  "end": 25.025,
+  "start": 20.945,
+  "end": 24.047,
   "words": [
    {
     "w": "Por",
-    "start": 21.449,
-    "end": 21.648
+    "start": 20.945,
+    "end": 21.124
    },
    {
     "w": "eso,",
-    "start": 21.648,
-    "end": 22.005
+    "start": 21.124,
+    "end": 21.523
    },
    {
     "w": "el",
-    "start": 22.105,
-    "end": 22.304
+    "start": 21.523,
+    "end": 21.603
    },
    {
     "w": "grande",
-    "start": 22.304,
-    "end": 22.661
+    "start": 21.603,
+    "end": 22.002
    },
    {
     "w": "abajo,",
-    "start": 22.661,
-    "end": 23.178
+    "start": 22.002,
+    "end": 22.561
    },
    {
     "w": "el",
-    "start": 23.278,
-    "end": 23.476
+    "start": 22.561,
+    "end": 22.64
    },
    {
     "w": "pequeño",
-    "start": 23.476,
-    "end": 23.992
+    "start": 22.64,
+    "end": 23.199
    },
    {
     "w": "centrado",
-    "start": 23.992,
-    "end": 24.509
+    "start": 23.199,
+    "end": 23.678
    },
    {
     "w": "encima.",
-    "start": 24.509,
-    "end": 25.025
+    "start": 23.678,
+    "end": 24.047
    }
   ]
  },
  {
   "text": "Y según sube, calzas con cuñas.",
-  "start": 25.325,
-  "end": 27.252,
+  "start": 24.316,
+  "end": 26.301,
   "words": [
    {
     "w": "Y",
-    "start": 25.325,
-    "end": 25.524
+    "start": 24.316,
+    "end": 24.396
    },
    {
     "w": "según",
-    "start": 25.524,
-    "end": 25.881
+    "start": 24.396,
+    "end": 24.715
    },
    {
     "w": "sube,",
-    "start": 25.881,
-    "end": 26.239
+    "start": 24.715,
+    "end": 25.273
    },
    {
     "w": "calzas",
-    "start": 26.339,
-    "end": 26.696
+    "start": 25.273,
+    "end": 25.672
    },
    {
     "w": "con",
-    "start": 26.696,
-    "end": 26.895
+    "start": 25.672,
+    "end": 25.832
    },
    {
     "w": "cuñas.",
-    "start": 26.895,
-    "end": 27.252
+    "start": 25.832,
+    "end": 26.301
    }
   ]
  },
  {
   "text": "Cuanto más se infla, ¿empuja más, igual o menos? ¿A, B o C?",
-  "start": 27.552,
-  "end": 31.488,
+  "start": 26.54,
+  "end": 31.397,
   "words": [
    {
     "w": "Cuanto",
-    "start": 27.552,
-    "end": 27.909
+    "start": 26.54,
+    "end": 26.789
    },
    {
     "w": "más",
-    "start": 27.909,
-    "end": 28.108
+    "start": 26.789,
+    "end": 26.949
    },
    {
     "w": "se",
-    "start": 28.108,
-    "end": 28.307
+    "start": 26.949,
+    "end": 27.109
    },
    {
     "w": "infla,",
-    "start": 28.307,
-    "end": 28.664
+    "start": 27.109,
+    "end": 27.777
    },
    {
     "w": "¿empuja",
-    "start": 28.764,
-    "end": 29.281
+    "start": 27.777,
+    "end": 28.385
    },
    {
     "w": "más,",
-    "start": 29.281,
-    "end": 29.479
+    "start": 28.385,
+    "end": 28.784
    },
    {
     "w": "igual",
-    "start": 29.579,
-    "end": 29.937
+    "start": 28.784,
+    "end": 29.263
    },
    {
     "w": "o",
-    "start": 29.937,
-    "end": 30.135
+    "start": 29.263,
+    "end": 29.502
    },
    {
     "w": "menos?",
-    "start": 30.135,
-    "end": 30.493
+    "start": 29.502,
+    "end": 30.141
    },
    {
     "w": "¿A,",
-    "start": 30.593,
-    "end": 30.792
+    "start": 30.141,
+    "end": 30.54
    },
    {
     "w": "B",
-    "start": 30.892,
-    "end": 31.09
+    "start": 30.54,
+    "end": 31.038
    },
    {
     "w": "o",
-    "start": 31.09,
-    "end": 31.289
+    "start": 31.038,
+    "end": 31.178
    },
    {
     "w": "C?",
-    "start": 31.289,
-    "end": 31.488
+    "start": 31.178,
+    "end": 31.397
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien quiera ser bombero!",
-  "start": 31.788,
-  "end": 34.428,
+  "start": 31.627,
+  "end": 33.612,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 31.788,
-    "end": 32.628
+    "start": 31.627,
+    "end": 32.375
    },
    {
     "w": "a",
-    "start": 32.628,
-    "end": 32.868
+    "start": 32.375,
+    "end": 32.534
    },
    {
     "w": "quien",
-    "start": 32.868,
-    "end": 33.108
+    "start": 32.534,
+    "end": 32.694
    },
    {
     "w": "quiera",
-    "start": 33.108,
-    "end": 33.548
+    "start": 32.694,
+    "end": 33.013
    },
    {
     "w": "ser",
-    "start": 33.548,
-    "end": 33.788
+    "start": 33.013,
+    "end": 33.173
    },
    {
     "w": "bombero!",
-    "start": 33.788,
-    "end": 34.428
+    "start": 33.173,
+    "end": 33.612
    }
   ]
  },
  {
   "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 34.728,
-  "end": 38.368,
+  "start": 33.891,
+  "end": 37.731,
   "words": [
    {
     "w": "¿Opositas?",
-    "start": 34.728,
-    "end": 35.568
+    "start": 33.891,
+    "end": 34.758
    },
    {
     "w": "¡Bomberados!",
-    "start": 35.668,
-    "end": 36.508
+    "start": 34.758,
+    "end": 36.045
    },
    {
     "w": "¡Pruébala",
-    "start": 36.608,
-    "end": 37.248
+    "start": 36.045,
+    "end": 36.444
    },
    {
     "w": "gratis",
-    "start": 37.248,
-    "end": 37.688
+    "start": 36.444,
+    "end": 37.003
    },
    {
     "w": "cinco",
-    "start": 37.688,
-    "end": 38.128
+    "start": 37.003,
+    "end": 37.322
    },
    {
     "w": "días!",
-    "start": 38.128,
-    "end": 38.368
+    "start": 37.322,
+    "end": 37.731
    }
   ]
  }
