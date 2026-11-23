@@ -282,6 +282,25 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   1080×1920, 60 fps, −14,7 LUFS, 49 MB) + portada («LA PIDIÓ EL REY… y no es para él») + miniatura + DESCRIPCION.txt.
  Nombres en local con
   `web/labels.mjs` + `compose_ciudad.py` (los cuatro de la voz y el rey en dorado; el resto, sorteo fijo de la lista del 17-11; se apilan sin pisarse).
+- **«Kiria World, día 5» (`projects/ciudad_seguidores_ep5/`, 23-11-2026) — AL ATARDECER.** Javi pasó 3 capturas de comentarios del día 4 y
+  «Vamos a hacer el video de hoy». Regla de la serie: el comentario con más «me gusta» es el nuevo rey → **@yugo_gb (18 ❤, corazón del autor)**:
+  no quiere corona convencional sino «una máscara de acero noble» que refleje el cielo (la parte religiosa de su comentario NO se usa). Se
+  construye: club genérico (@ammmm_mal pidió el de un videojuego: no se copia), cine y restaurante chino (@god_nika0206), club de fútbol con el 7
+  (@luquita.berna), soldado del rey (@victorelcrepeer_mc; @marcos13_08 le respondió «Adelante»), y con su nombre y oficio @rojas.esthe
+  (electricista) y @danielxd22114 (mecánico). Gancho: «El nuevo rey de Kiria World ha dicho que no a la corona.» + «Al final te enseño lo que se
+  pone en su lugar.»; cierre «Mándaselo a quien nunca se quitaría la corona». Voz de Javi 50,8 s (vídeo 51,8 s, 3.105 fotogramas).
+  **Piezas nuevas** (`32_day5.js`): la corona que **rueda** por el mármol (cae del cojín, rebota, rueda y se acuesta girando como una moneda;
+  `crownState(u)` y bucle: al final vuelve al cojín fuera de cámara y cae otra vez); **máscara de acero** como placa de cara (frente a barbilla,
+  ojos almendrados oscuros, nariz y cejas en relieve, filo dorado, reflejos fijos del cielo del atardecer `envMapFixed`); fragua con chispas por
+  golpe; fachadas con planta baja abierta (`frontShell(..., hollow)`), neón (`neonSign`), cordón dorado, marquesina con bombillas; campo de fútbol
+  con red que se hincha, dorsales (`shirtNumber`), bocadillo de texto; cielo **«atardecer» con nubes** (fbm en el sombreador del cielo, también
+  en los reflejos) y salón «salonT»; balcón real en el tejado del ayuntamiento; puerta sur del cuartel. 125 personas.
+  **Lecciones**: (1) la pregunta de las máquinas (AskUserQuestion) se cerró 4 veces por reinicios de la sesión: si pasa, preguntar en el chat
+  («contesta sí o no») y Javi contestó «si»; (2) una función con el mismo nombre que otra del motor (`hammer`) la sustituye EN SILENCIO
+  (renombrar: `smithHammer`); (3) `burst()` de chispas usa coordenadas del padre de los puntos, no del mundo; (4) máscara como esfera cromada =
+  parece una bola: hacerla con forma de cara y dejar ver el pelo; (5) en vertical, un rótulo de más de ~3,5 m no cabe entero: tablero corto;
+  (6) para enseñar un dorsal, que el jugador se dé la vuelta y se aleje de la cámara; (7) salir de un edificio girando 180°: salir de espaldas
+  y girar ya fuera (si no, una columna llena el plano); (8) recorrido de cámara por la calle: rodear las manzanas, no atravesarlas.
 
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
