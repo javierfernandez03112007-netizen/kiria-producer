@@ -1,0 +1,52 @@
+«UN COCHE ENCIMA DE UNA PIERNA… Y ESTE COJÍN LO LEVANTA» — cómo funcionan los cojines de alta presión (idea de Adrián,
+Notion «LUNES 23»: «¿Sabes cómo funcionan los cojines de alta presión? (se usan en accidentes de tráfico)» + publicidad
+de Bomberados muy rápida). 30–40 s: este sale en ≈ 36 s.
+
+Cómo está hecho (3D con dron, una sola idea): un coche ha caído sobre la pierna de alguien. Un bombero mete debajo un
+cojín negro y plano y el coche sube. La idea que nadie espera: si apilas dos cojines NO levantan el doble; solo suben más
+alto, y el bloque levanta lo que levante el pequeño (se ve con números redondos: 40 t abajo + 20 t encima = 20 t, no 60).
+Cierre para comentar: «cuanto más se infla, ¿empuja más, igual o menos?» (respuesta: menos), en una tarjeta de pregunta
+de Bomberados, y la venta rápida.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+Ritmo rápido y firme. Lo más fuerte: el arranque («lo LEVANTA»), el «¡NO!» y el final («¡MÁNDASELO…!», «¡BOMBERADOS!»,
+«¡Pruébala GRATIS!»).
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[tense, urgent] Un coche encima de una pierna… [intrigued] y este cojín, fino como una libreta, lo LEVANTA.
+[impressed] Con aire a doce bares, los hay de SESENTA Y OCHO toneladas.
+[clear] Pero sube poco: medio metro, como mucho.
+[curious, challenging] ¿Y si pones dos, uno encima de otro? ¿Levanta el DOBLE?
+[firm] ¡NO! Solo sube más alto: levanta lo que levante el PEQUEÑO.
+[clear, fast] Por eso, el grande abajo, el pequeño centrado encima.
+[clear, fast] Y según sube, calzas con cuñas.
+[challenging] Cuanto más se infla, ¿empuja más, igual o menos? ¿A, B o C?
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, con un dron que no para:
+1. «Un coche encima de una pierna…» — primer fotograma: el bajo de un coche aplastando una pierna, luz de emergencia.
+   «…y este cojín, fino como una libreta, lo levanta» — un guante mete debajo un cojín negro y plano (2,5 cm); silba el
+   aire, el cojín se hincha y el coche sube.
+2. «Con aire a doce bares, los hay de sesenta y ocho toneladas» — el manómetro marca 12 BAR; rótulo «HASTA 68 T».
+3. «Pero sube poco: medio metro, como mucho» — una regla al lado: el cojín, hinchado del todo, se para en 52 CM.
+4. «¿Y si pones dos, uno encima de otro? ¿Levanta el doble?» — un segundo cojín se coloca encima: «40 T» abajo, «20 T»
+   arriba, y «¿60 T?».
+5. «¡No! Solo sube más alto: levanta lo que levante el pequeño» — el bloque sube más, pero el marcador dice 20 T; el «60»
+   se tacha en rojo.
+6. «Por eso, el grande abajo, el pequeño centrado encima» — al revés (pequeño abajo) sale un ✗; bien colocado, ✓.
+7. «Y según sube, calzas con cuñas» — entran cuñas y tacos bajo el coche; la pierna queda libre.
+8. «Cuanto más se infla, ¿empuja más, igual o menos? ¿A, B o C?» — tarjeta de pregunta de Bomberados: A MÁS · B IGUAL ·
+   C MENOS; «💬 COMENTA TU LETRA».
+9. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+10. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta de la pregunta (para el comentario fijado, no va en el vídeo): C, MENOS. Al hincharse, el cojín toca menos
+superficie de la carga y la fuerza baja: empuja más al principio del recorrido y menos cuanto más sube.
+Fuentes (en FUENTES.md): los apuntes de Élite Bomberos que pone Adrián en Notion. Los 40 t / 20 t del vídeo son un EJEMPLO.
+CONFIRMAR la prueba gratis de 5 días (la web de Élite no la menciona).

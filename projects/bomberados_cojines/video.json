@@ -1,0 +1,244 @@
+{
+ "formato": "cojines",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "¿LEVANTAN EL DOBLE?",
+  "etiqueta": "COJINES DE ALTA PRESIÓN",
+  "t": 3.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 1.0,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "coche": [
+   "coche",
+   1,
+   1
+  ],
+  "pierna": [
+   "pierna",
+   1,
+   1
+  ],
+  "cojin": [
+   "cojín",
+   1,
+   1
+  ],
+  "libreta": [
+   "libreta",
+   1,
+   1
+  ],
+  "levanta1": [
+   "levanta",
+   1,
+   1
+  ],
+  "aire": [
+   "aire",
+   1,
+   2
+  ],
+  "doce": [
+   "doce",
+   1,
+   2
+  ],
+  "bares": [
+   "bares",
+   1,
+   2
+  ],
+  "sesenta": [
+   "sesenta",
+   1,
+   2
+  ],
+  "toneladas": [
+   "toneladas",
+   1,
+   2
+  ],
+  "sube3": [
+   "sube",
+   1,
+   3
+  ],
+  "poco": [
+   "poco",
+   1,
+   3
+  ],
+  "medio": [
+   "medio",
+   1,
+   3
+  ],
+  "mucho": [
+   "mucho",
+   1,
+   3
+  ],
+  "pones": [
+   "pones",
+   1,
+   4
+  ],
+  "dos": [
+   "dos",
+   1,
+   4
+  ],
+  "encima4": [
+   "encima",
+   1,
+   4
+  ],
+  "levanta4": [
+   "Levanta",
+   1,
+   4
+  ],
+  "doble": [
+   "doble",
+   1,
+   4
+  ],
+  "no": [
+   "No",
+   1,
+   5
+  ],
+  "alto": [
+   "alto",
+   1,
+   5
+  ],
+  "levante": [
+   "levante",
+   1,
+   5
+  ],
+  "pequeno": [
+   "pequeño",
+   1,
+   5
+  ],
+  "grande": [
+   "grande",
+   1,
+   6
+  ],
+  "abajo": [
+   "abajo",
+   1,
+   6
+  ],
+  "pequeno6": [
+   "pequeño",
+   1,
+   6
+  ],
+  "centrado": [
+   "centrado",
+   1,
+   6
+  ],
+  "encima6": [
+   "encima",
+   1,
+   6
+  ],
+  "sube7": [
+   "sube",
+   1,
+   7
+  ],
+  "calzas": [
+   "calzas",
+   1,
+   7
+  ],
+  "cunas": [
+   "cuñas",
+   1,
+   7
+  ],
+  "infla": [
+   "infla",
+   1,
+   8
+  ],
+  "empuja": [
+   "empuja",
+   1,
+   8
+  ],
+  "igual": [
+   "igual",
+   1,
+   8
+  ],
+  "menos": [
+   "menos",
+   1,
+   8
+  ],
+  "letA": [
+   "A",
+   1,
+   8
+  ],
+  "letB": [
+   "B",
+   1,
+   8
+  ],
+  "letC": [
+   "C",
+   1,
+   8
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   9
+  ],
+  "acierta": [
+   "quien",
+   1,
+   9
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   10
+  ],
+  "marca": [
+   "Bomberados",
+   1,
+   10
+  ],
+  "prueba": [
+   "Pruébala",
+   1,
+   10
+  ]
+ }
+}
