@@ -46,6 +46,8 @@ async function open() { for (let i = 0; i < 6; i++) { const c = await openPage()
 let { browser, page } = await open();
 const t0 = Date.now();
 if (process.env.COVER) { await page.evaluate(() => window.renderCover()); await page.screenshot({ path: path.join(outDir, 'cover3d.png') }); frames = []; }
+// (día 5) el primer fotograma que pinta cada proceso salía distinto (más claro): se pinta uno de calentamiento y se tira
+if (frames.length) await page.evaluate(t => window.renderAt(t), frames[0] / FPS);
 for (const f of frames) {
   const file = path.join(outDir, `f${String(f).padStart(5, '0')}.jpg`);
   if (process.env.SKIP && fs.existsSync(file)) continue;
