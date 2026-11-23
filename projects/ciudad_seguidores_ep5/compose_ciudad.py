@@ -48,8 +48,11 @@ def at(word, k=1, line=None):
 NAMES_F = os.environ.get("NAMES", os.path.join(ROOT, "..", "ciudad_seguidores", "out", "names.json"))   # la lista del 17-11 (fuera del repo)
 JOBS_F = os.path.join(ROOT, "out", "jobs.json")                 # quién es quién (lo escribe web/labels.mjs: {índice: {k, vip}})
 WHO = {}
-VIPTXT = {"king": ("@iannyanezz_", "rey"), "marcos13_08": ("@marcos13_08", "coronel"), "iz.her_019": ("@iz.her_019", "ferretera"), "jossl53g": ("@jossl53g", "dueño del hotel")}
-JOBTXT = {"soldier": "soldado", "sentry": "centinela", "guard": "guardia real", "elec": "electricista", "bartender": "camarero", "doorman": "portero"}
+VIPTXT = {"yugo_gb": ("@yugo_gb", "rey"), "ammmm_mal": ("@ammmm_mal", "dueño del club"), "god_nika0206": ("@god_nika0206", "cine y chino"),
+          "luquita.berna": ("@luquita.berna", "el 7"), "victorelcrepeer_mc": ("@victorelcrepeer_mc", "soldado"), "marcos13_08": ("@marcos13_08", "coronel")}
+VIPW = {"rojas.esthe": ("@rojas.esthe", "electricista"), "danielxd22114": ("@danielxd22114", "mecánico")}   # pidieron oficio: su nombre de verdad, en blanco
+JOBTXT = {"soldier": "soldado", "sentry": "centinela", "hguard": "guardia real", "cham": "mayordomo real", "smith": "herrero", "bouncer": "portero",
+          "ticket": "taquillera", "waiter": "camarero", "keeper": "portero", "ref": "árbitro"}
 LABELS_F = os.path.join(ROOT, "out", "labels.jsonl")
 KEEP = {}
 NAMES, HIDE, LABELS, _TAG, _FONT, _FONT_S = None, set(), None, {}, None, None
@@ -71,6 +74,8 @@ def tag(i):                                         # etiqueta «@nombre · ofic
         w0 = WHO.get(i, {}); vipk = w0.get("vip")
         if vipk:
             txt, job = VIPTXT[vipk]
+        elif w0.get("vipW"):
+            txt, job = VIPW[w0["vipW"]]
         else:
             txt, job = "@" + name_of(i), JOBTXT.get(w0.get("k"))
         vip = bool(vipk)
@@ -105,7 +110,7 @@ def draw_tags(img, fi):
     if LABELS is None or fi >= len(LABELS):
         return
     L = LABELS[fi]
-    placed = [(r[0] - 12, r[1] - 12, r[2] + 12, r[3] + 12) for r in KEEP.get(fi, [])]   # rectángulos ya ocupados (y zonas protegidas):
+    placed = [(r[0] - 12, r[1] - 12, r[2] + 12, r[3] + 12) for r in KEEP.get(fi, []) + L.get("k", [])]   # ocupados y protegidos (tarjetas, bocadillo):
                                                      # los nombres no se pisan ni las tapan (se suben un piso o se quedan fuera)
     for i, x, y, p10 in sorted(L["p"], key=lambda e: (not tag(e[0])[2], -e[3])):   # primero los dorados, luego los más cercanos
         vip = tag(i)[2]
@@ -131,18 +136,18 @@ def draw_tags(img, fi):
 
 # ---------------------------------------------------------------- subtítulos
 GO, R, WH, GR, CY, AM, OR, PK = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547", "#FF9A3D", "#FF5FB8"
-_K = {1: {"estatua": GO, "oro": GO, "rey": GO, "él": R},
-      2: {"final": CY, "quién": CY},
-      3: {"iannyanezz": GO, "comentario": CY, "gusta": PK, "rey": GO, "premio": GO},
-      4: {"kiria": GR, "world": GR, "duerme": CY},
-      5: {"marcos13_08": GO, "cuartel": GR, "militar": GR, "medianoche": CY, "revista": GR},
-      6: {"ferretería": OR, "iz.her_019": GO, "electricista": AM, "noche": CY, "luz": R, "calle": R},
-      7: {"jossl53g": GO, "hotel": PK, "piscina": CY, "azotea": CY, "bar": PK, "copas": PK, "nadie": OR},
-      8: {"seis": GO, "mil": GO, "cuatrocientos": GO, "treinta": GO, "y": GO, "ocho": GO, "visto": CY},
-      9: {"plaza": CY, "rey": GO, "tela": R},
-      10: {"kiria": GO, "nombre": GR, "ciudad": GR, "orden": GO, "rey": GO},
-      11: {"justo": R, "comentario": CY, "gusta": PK, "semana": CY, "nuevo": GO, "rey": GO},
-      12: {"mándaselo": GR, "estatua": GO}}
+_K = {1: {"rey": GO, "no": R, "corona": GO},
+      2: {"final": CY, "lugar": CY},
+      3: {"yugo_gb": GO, "comentario": CY, "dieciocho": PK, "gusta": PK, "condición": R},
+      4: {"forjan": OR, "ciudad": GR, "pedisteis": GR},
+      5: {"ammmm_mal": GO, "club": PK, "portero": OR, "nadie": R},
+      6: {"god_nika0206": GO, "cine": AM, "restaurante": R, "chino": R, "estreno": AM, "rollito": OR},
+      7: {"luquita.berna": GO, "club": GR, "fútbol": GR, "siete": GO},
+      8: {"victorelcrepeer_mc": GO, "soldado": GR, "rey": GO, "marcos13_08": GO, "adelante": GR},
+      9: {"rey": GO, "balcón": CY},
+      10: {"máscara": CY, "acero": CY, "refleja": CY, "cielo": CY},
+      11: {"corona": GO, "comentario": CY, "gusta": PK, "próximo": GO, "rey": GO},
+      12: {"mándaselo": GR, "corona": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -160,6 +165,8 @@ def init():
     SUBS = Subs(LINES, KEY, {}, y=330, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")
     global WHO, KEEP
     d = json.load(open(NAMES_F)); NAMES, HIDE = d["names"], set(d["hide"])
+    named = {v[0].lstrip("@").lower() for v in list(VIPTXT.values()) + list(VIPW.values())}   # los que ya salen con su nombre no se repiten en otra persona
+    HIDE |= {j for j, n in enumerate(NAMES) if n.lstrip("@").lower() in named}
     WHO = {int(k): v for k, v in json.load(open(JOBS_F)).items()}
     LABELS = [json.loads(l) for l in open(LABELS_F)]
     KEEP = {}                                         # zonas que ningún nombre puede tapar (p. ej. el cartel COMPLETO del sushi), por fotograma
@@ -202,46 +209,52 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    fix = LINES[5]["end"] + 0.3                                    # el electricista arregla la luz (igual que en la escena)
-    pull = at("tira") + 0.05                                        # el rey tira de la tela
-    # 1-2: la estatua tapada (brillo de oro), el rey dice que no es para él; ¿de quién es?
-    put("medicina/dorado", at("oro") - 0.1, 1.0, 0.3, 0.4)
-    put("cripto/pregunta", at("quién") - 0.05, 0.7, 0.3, 0.25)
-    # 3: la tarjeta del comentario y sus «me gusta»; sigue siendo rey; su premio
+    E = LINES[-1]["end"] + 1.2
+    hit0, fut = LINES[3]["start"] - 4, at("fútbol")                # golpes del herrero: cada 0,62 s desde ahí (igual que en la escena)
+    # 1: la corona rueda por el mármol y acaba girando como una moneda; 2: ¿qué se pondrá?
+    put("cerradura/rasca", 0.0, 1.0, 0.16, 0.5)
+    put("economia/moneda_sola", 2.05, 0.84, 0.34, 0.3)
+    put("cripto/pregunta", at("lugar") - 0.05, 0.8, 0.28, 0.3)
+    # 3: la tarjeta de @yugo_gb, sus 18 me gusta y la condición
     put("lanzamiento/mensaje", at("comentario", 1) - 0.05, 0.6, 0.34, 0.2)
-    put("lanzamiento/corazon", at("gusta", 1) - 0.15, 0.9, 0.34, 0.3)
-    put("avion/brillo", at("sigue") - 0.1, 0.9, 0.3, 0.35)
-    # 4: sube sobre la plaza de noche; 5: el cuartel: marcha y pasos del coronel
-    put("avion/whoosh_largo", at("mientras") + 0.1, 1.2, 0.28, 0.4)
-    put("ade/marcha", at("cuartel") - 0.1, 1.6, 0.3, 0.5)
-    put("robo_banco/pasos", at("medianoche") + 0.3, 1.4, 0.26, 0.4)
-    # 6: vuela a la ferretería; el armario se abre; se va la luz; chispazo y vuelve
-    put("avion/whoosh", at("ferretería") - 0.1, 0.8, 0.26, 0.3)
-    put("cerradura/clic_abre", at("trabajo") - 0.15, 0.5, 0.32, 0.2)
-    put("robo_banco/apagado", at("luz") - 0.18, 1.0, 0.42, 0.4)
-    put("gafas/rayo", fix - 0.06, 0.6, 0.38, 0.25)
-    put("quimica/encendido", fix + 0.15, 0.9, 0.32, 0.35)
-    # 7: el hotel se enciende planta a planta; la piscina; el bar de copas
-    put("robo_banco/bombillas", at("jossl53g") + 0.1, 1.4, 0.26, 0.5)
-    put("cerradura/zambullida", at("piscina") - 0.05, 0.9, 0.3, 0.35)
-    put("tapas/vierte", at("bar") - 0.1, 0.7, 0.3, 0.25)
-    put("tapas/ronda", at("copas") - 0.05, 0.9, 0.3, 0.35)
-    # 8: los drones forman «6.438» y la lupa; baja en picado a la plaza
-    put("robot_neuronas/zumbido", at("somos") - 0.2, 1.5, 0.22, 0.6)
-    put("lanzamiento/cifra", at("treinta") - 0.1, 0.8, 0.32, 0.3)
-    put("lanzamiento/ping", at("visto") - 0.1, 0.5, 0.3, 0.2)
-    put("avion/whoosh_largo", at("visto") + 0.2, 1.2, 0.28, 0.4)
-    # 9-10: el tirón de la tela, la estatua de Kiria (brillo y la gente), la placa del rey
-    put("lanzamiento/desliza", pull - 0.02, 0.9, 0.38, 0.3)
-    put("economia/medalla", at("kiria", 1, 10) - 0.08, 0.9, 0.36, 0.35)
-    put("ade/multitud", at("kiria", 1, 10) + 0.3, 1.8, 0.24, 0.7)
-    put("avion/sello", at("orden") - 0.05, 0.5, 0.36, 0.2)
-    # 11: ¿es justo? (la gente discute); el comentario de la semana: el nuevo rey
-    put("cripto/duelo", at("justo") - 0.1, 0.8, 0.26, 0.3)
-    put("lanzamiento/tarjeta", at("comentario", 2) - 0.05, 0.6, 0.32, 0.2)
-    put("economia/medalla", at("nuevo") - 0.05, 0.8, 0.32, 0.3)
-    # 12: mándaselo
-    put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.7, 0.3, 0.25)
+    put("lanzamiento/corazon", at("gusta", 1) - 0.15, 0.52, 0.34, 0.2)
+    put("avion/sello", at("condición") - 0.05, 0.5, 0.3, 0.2)
+    # 4: sale del salón; la fragua (martillo y chispas); sube sobre la ciudad
+    put("avion/whoosh", at("mientras") + 0.05, 0.6, 0.26, 0.25)
+    for k in range(2):
+        th = hit0 + 0.62 * (round((at("forjan") - hit0) / 0.62) + k)
+        put("cerradura/metal", th - 0.01, 0.45, 0.34 - 0.08 * k, 0.2)
+    put("magisterio/chispa", at("forjan") + 0.1, 0.9, 0.26, 0.3)
+    put("avion/whoosh_largo", at("ciudad") + 0.1, 1.2, 0.26, 0.4)
+    # 5: el club (se enciende el neón) y el portero: «COMPLETO»
+    put("ade/letrero_on", at("club", 1, 5) - 0.1, 0.9, 0.3, 0.3)
+    put("cerradura/denegado", at("nadie", 1, 5) - 0.1, 0.52, 0.34, 0.15)
+    # 6: el cine con estreno (focos) y el último rollito
+    put("robo_banco/luces_camara", at("cine") - 0.1, 0.9, 0.28, 0.3)
+    put("promo_web/focos", at("estreno") - 0.1, 0.9, 0.3, 0.3)
+    put("tapas/plato", at("rollito") + 0.05, 0.8, 0.32, 0.3)
+    # 7: el chut, la red y la grada
+    put("avion/whoosh", at("luquita.berna") + 0.2, 0.6, 0.24, 0.25)
+    put("gafas/impacto", fut + 0.3, 0.6, 0.34, 0.2)
+    put("magisterio/red", fut + 0.75, 1.1, 0.32, 0.4)
+    put("ade/multitud", fut + 0.85, 2.2, 0.26, 0.8)
+    # 8: el cuartel (marcha), el bocadillo «¡Adelante!» y la gorra
+    put("ade/marcha", at("soldado") - 0.1, 1.8, 0.26, 0.6)
+    put("avion/pop", at("adelante") - 0.15, 0.52, 0.34, 0.15)
+    put("magisterio/pop", at("adelante") + 0.88, 0.52, 0.28, 0.15)
+    # 9-10: sale del patio hacia el balcón; la gente; la máscara brilla y refleja el cielo
+    put("avion/whoosh_largo", at("ahora") + 0.2, 1.2, 0.26, 0.4)
+    put("ade/multitud", at("sale") + 0.1, 2.4, 0.24, 0.8)
+    put("medicina/brillo", at("máscara") - 0.05, 1.0, 0.3, 0.35)
+    put("medicina/dorado", at("refleja") - 0.05, 0.84, 0.3, 0.3)
+    # 11: la gente vitorea; la tarjeta del próximo rey
+    put("ade/multitud", at("mejor") + 0.4, 2.6, 0.22, 0.9)
+    put("lanzamiento/tarjeta", at("comentario", 1, 11) - 0.05, 0.52, 0.32, 0.2)
+    put("economia/medalla", at("próximo") - 0.05, 0.63, 0.3, 0.25)
+    # 12: mándaselo; vuelve al salón y la corona cae otra vez (enlaza con el principio)
+    put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.63, 0.3, 0.25)
+    put("avion/whoosh_largo", at("mándaselo") + 0.6, 1.2, 0.22, 0.4)
+    put("cerradura/metal", E - 0.77, 0.6, 0.3, 0.3)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 

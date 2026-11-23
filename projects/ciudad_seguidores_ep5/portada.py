@@ -1,6 +1,6 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Kiria World, día 4».
-Base: la tela roja empieza a resbalar y asoman la corona, la antorcha y el escudo de oro, de noche (sin interfaz):
-    COVER=1 COVER_T=42.15 COVER_CAM="-2.8,1.5,7.8,0.2,4.6,0,46" FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Kiria World, día 5».
+Base: el rey @yugo_gb en el balcón con la máscara de acero que refleja el cielo del atardecer (sin interfaz):
+    COVER=1 COVER_T=43.3 COVER_CAM="0.95,13.7,-13.0,0.0,14.0,-15.1,36" FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
 Título en Impact con contorno, como los subtítulos."""
 import os
 import sys
@@ -29,10 +29,10 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    row(img, [("KIRIA", None), ("WORLD", GREEN), ("·", None), ("DÍA", None), ("4", GOLD)], y + 70 * k, int(92 * k), int(8 * k))
-    row(img, [("LA", None), ("PIDIÓ", None)], y + 205 * k, int(150 * k), int(11 * k))
-    row(img, [("EL", None), ("REY", GOLD)], y + 360 * k, int(150 * k), int(11 * k))
-    paste(img, chip("…y no es para él", int(46 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 480 * k)
+    row(img, [("KIRIA", None), ("WORLD", GREEN), ("·", None), ("DÍA", None), ("5", GOLD)], y + 70 * k, int(92 * k), int(8 * k))
+    row(img, [("DIJO", None), ("NO", PINK)], y + 205 * k, int(150 * k), int(11 * k))
+    row(img, [("A", None), ("LA", None), ("CORONA", GOLD)], y + 360 * k, int(150 * k), int(11 * k))
+    paste(img, chip("…y eligió esto", int(46 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 480 * k)
 
 
 def main():

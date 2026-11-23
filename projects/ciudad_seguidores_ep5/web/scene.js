@@ -2537,9 +2537,14 @@ window.labelsAt = function (t) {
     p.updateMatrixWorld(true); const hp = p.userData.J.head.getWorldPosition(_v()).add(_v(0, 0.36 * p.userData.k, 0)), cw = e[3] * hp.x + e[7] * hp.y + e[11] * hp.z + e[15]; if (cw <= 0.3) return;
     const ppm = f / cw; if (ppm < 95) return; const sx = ((e[0] * hp.x + e[4] * hp.y + e[8] * hp.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * hp.x + e[5] * hp.y + e[9] * hp.z + e[13]) / cw) / 2 * H;
     if (sx < -150 || sx > W + 150 || sy < 0 || sy > H + 150) return; if (hiddenBy(cam.position, hp)) return; out.push([i, R(sx), R(sy), R(ppm * 10)]); });
-  return { p: out, h: [] }; };
+  // zonas que ningún nombre puede tapar: las tarjetas del comentario y el bocadillo «¡Adelante!» (rectángulo en pantalla)
+  const K = []; for (const o of [S.card, S.bubble]) { if (!o || !o.visible) continue; o.updateMatrixWorld(true); const g = o.geometry.parameters, hw = g.width / 2, hh = g.height / 2; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, ok = true;
+    for (const [a, b] of [[-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]]) { const q = o.localToWorld(_v(a, b, 0)), cw = e[3] * q.x + e[7] * q.y + e[11] * q.z + e[15]; if (cw <= 0.05) { ok = false; break; }
+      const sx = ((e[0] * q.x + e[4] * q.y + e[8] * q.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * q.x + e[5] * q.y + e[9] * q.z + e[13]) / cw) / 2 * H; x0 = Math.min(x0, sx); x1 = Math.max(x1, sx); y0 = Math.min(y0, sy); y1 = Math.max(y1, sy); }
+    if (ok) K.push([R(x0), R(y0), R(x1), R(y1)]); }
+  return { p: out, h: [], k: K }; };
 // quién es quién (índices de PEOPLE): los cuatro que nombra la voz y el oficio de algunos
-window.whoIs = () => { const r = {}; PEOPLE.forEach((p, i) => { const R0 = p.userData.role; r[i] = { k: R0.k, vip: R0.vip || null }; }); return r; };
+window.whoIs = () => { const r = {}; PEOPLE.forEach((p, i) => { const R0 = p.userData.role; r[i] = { k: R0.k, vip: R0.vip || null, vipW: R0.vipW || null }; }); return r; };
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }
 const vpOf = () => new THREE.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse);
