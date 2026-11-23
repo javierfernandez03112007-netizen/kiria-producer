@@ -301,6 +301,13 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   parece una bola: hacerla con forma de cara y dejar ver el pelo; (5) en vertical, un rótulo de más de ~3,5 m no cabe entero: tablero corto;
   (6) para enseñar un dorsal, que el jugador se dé la vuelta y se aleje de la cámara; (7) salir de un edificio girando 180°: salir de espaldas
   y girar ya fuera (si no, una columna llena el plano); (8) recorrido de cámara por la calle: rodear las manzanas, no atravesarlas.
+  (9) una máquina de ayuda puede quedarse con el código viejo aunque diga el commit nuevo: mandar `git checkout -q -f -B …` + `git log -1` y
+  comparar 1 fotograma de cada trozo con uno hecho aquí (diferencia media ≈ 0,3 si es igual); (10) el PRIMER fotograma de cada proceso salía más
+  claro (sin sombras): `capture.mjs` pinta ahora uno de calentamiento y lo tira; (11) ANTES del render, comprobar con `labelsAt` que cada nombre
+  de la voz y de oficio sale (el mecánico quedaba tapado por el muro); (12) los nombres no deben tapar carteles clave (zonas `k` en `labelsAt`).
+  Render: 6 máquinas + esta (que se reinició 3 veces); 3 rondas de arreglos (≈ 20 min cada una). **Entregado el 23-11-2026 a las 23:15**:
+  `out/ciudad_seguidores_ep5.mp4` (51,75 s, 3.105 fotogramas, 1080×1920, 60 fps, −14,9 LUFS, 45 MB) + portada («DIJO NO A LA CORONA… y eligió
+  esto») + miniatura + DESCRIPCION.txt.
 
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
