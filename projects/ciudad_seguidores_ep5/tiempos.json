@@ -1,0 +1,776 @@
+[
+ {
+  "text": "El nuevo rey de Kiria World ha dicho que no a la corona.",
+  "start": 0.0,
+  "end": 3.35,
+  "words": [
+   {
+    "w": "El",
+    "start": 0.0,
+    "end": 0.16
+   },
+   {
+    "w": "nuevo",
+    "start": 0.16,
+    "end": 0.4
+   },
+   {
+    "w": "rey",
+    "start": 0.4,
+    "end": 0.64
+   },
+   {
+    "w": "de",
+    "start": 0.64,
+    "end": 0.8
+   },
+   {
+    "w": "Kiria",
+    "start": 0.8,
+    "end": 1.36
+   },
+   {
+    "w": "World",
+    "start": 1.36,
+    "end": 1.84
+   },
+   {
+    "w": "ha",
+    "start": 1.84,
+    "end": 2.0
+   },
+   {
+    "w": "dicho",
+    "start": 2.0,
+    "end": 2.24
+   },
+   {
+    "w": "que",
+    "start": 2.24,
+    "end": 2.48
+   },
+   {
+    "w": "no",
+    "start": 2.48,
+    "end": 2.72
+   },
+   {
+    "w": "a",
+    "start": 2.72,
+    "end": 2.8
+   },
+   {
+    "w": "la",
+    "start": 2.8,
+    "end": 2.96
+   },
+   {
+    "w": "corona.",
+    "start": 2.96,
+    "end": 3.35
+   }
+  ]
+ },
+ {
+  "text": "Al final te enseño lo que se pone en su lugar.",
+  "start": 3.75,
+  "end": 5.95,
+  "words": [
+   {
+    "w": "Al",
+    "start": 3.75,
+    "end": 3.83
+   },
+   {
+    "w": "final",
+    "start": 3.83,
+    "end": 4.15
+   },
+   {
+    "w": "te",
+    "start": 4.15,
+    "end": 4.31
+   },
+   {
+    "w": "enseño",
+    "start": 4.31,
+    "end": 4.79
+   },
+   {
+    "w": "lo",
+    "start": 4.79,
+    "end": 4.87
+   },
+   {
+    "w": "que",
+    "start": 4.87,
+    "end": 5.03
+   },
+   {
+    "w": "se",
+    "start": 5.03,
+    "end": 5.11
+   },
+   {
+    "w": "pone",
+    "start": 5.11,
+    "end": 5.43
+   },
+   {
+    "w": "en",
+    "start": 5.43,
+    "end": 5.51
+   },
+   {
+    "w": "su",
+    "start": 5.51,
+    "end": 5.67
+   },
+   {
+    "w": "lugar.",
+    "start": 5.67,
+    "end": 5.95
+   }
+  ]
+ },
+ {
+  "text": "Es yugo_gb: su comentario tuvo dieciocho me gusta… y puso una condición.",
+  "start": 6.35,
+  "end": 11.59,
+  "words": [
+   {
+    "w": "Es",
+    "start": 6.35,
+    "end": 6.5
+   },
+   {
+    "w": "yugo_gb:",
+    "start": 6.5,
+    "end": 7.7
+   },
+   {
+    "w": "su",
+    "start": 7.7,
+    "end": 7.84
+   },
+   {
+    "w": "comentario",
+    "start": 7.84,
+    "end": 8.4
+   },
+   {
+    "w": "tuvo",
+    "start": 8.4,
+    "end": 8.72
+   },
+   {
+    "w": "dieciocho",
+    "start": 8.72,
+    "end": 9.36
+   },
+   {
+    "w": "me",
+    "start": 9.36,
+    "end": 9.6
+   },
+   {
+    "w": "gusta…",
+    "start": 9.6,
+    "end": 10.31
+   },
+   {
+    "w": "y",
+    "start": 10.31,
+    "end": 10.475
+   },
+   {
+    "w": "puso",
+    "start": 10.475,
+    "end": 10.86
+   },
+   {
+    "w": "una",
+    "start": 10.86,
+    "end": 11.1
+   },
+   {
+    "w": "condición.",
+    "start": 11.1,
+    "end": 11.59
+   }
+  ]
+ },
+ {
+  "text": "Mientras se la forjan, la ciudad cumple lo que pedisteis.",
+  "start": 11.99,
+  "end": 15.02,
+  "words": [
+   {
+    "w": "Mientras",
+    "start": 11.99,
+    "end": 12.23
+   },
+   {
+    "w": "se",
+    "start": 12.23,
+    "end": 12.39
+   },
+   {
+    "w": "la",
+    "start": 12.39,
+    "end": 12.55
+   },
+   {
+    "w": "forjan,",
+    "start": 12.55,
+    "end": 13.24
+   },
+   {
+    "w": "la",
+    "start": 13.24,
+    "end": 13.4
+   },
+   {
+    "w": "ciudad",
+    "start": 13.4,
+    "end": 13.72
+   },
+   {
+    "w": "cumple",
+    "start": 13.72,
+    "end": 14.2
+   },
+   {
+    "w": "lo",
+    "start": 14.2,
+    "end": 14.28
+   },
+   {
+    "w": "que",
+    "start": 14.28,
+    "end": 14.44
+   },
+   {
+    "w": "pedisteis.",
+    "start": 14.44,
+    "end": 15.02
+   }
+  ]
+ },
+ {
+  "text": "ammmm_mal pidió un club… y el portero ya no deja entrar a nadie más.",
+  "start": 15.47,
+  "end": 19.42,
+  "words": [
+   {
+    "w": "ammmm_mal",
+    "start": 15.47,
+    "end": 16.1
+   },
+   {
+    "w": "pidió",
+    "start": 16.1,
+    "end": 16.5
+   },
+   {
+    "w": "un",
+    "start": 16.5,
+    "end": 16.58
+   },
+   {
+    "w": "club…",
+    "start": 16.58,
+    "end": 17.2
+   },
+   {
+    "w": "y",
+    "start": 17.2,
+    "end": 17.319
+   },
+   {
+    "w": "el",
+    "start": 17.319,
+    "end": 17.438
+   },
+   {
+    "w": "portero",
+    "start": 17.438,
+    "end": 17.86
+   },
+   {
+    "w": "ya",
+    "start": 17.86,
+    "end": 18.02
+   },
+   {
+    "w": "no",
+    "start": 18.02,
+    "end": 18.1
+   },
+   {
+    "w": "deja",
+    "start": 18.1,
+    "end": 18.5
+   },
+   {
+    "w": "entrar",
+    "start": 18.5,
+    "end": 18.82
+   },
+   {
+    "w": "a",
+    "start": 18.82,
+    "end": 18.9
+   },
+   {
+    "w": "nadie",
+    "start": 18.9,
+    "end": 19.3
+   },
+   {
+    "w": "más.",
+    "start": 19.3,
+    "end": 19.42
+   }
+  ]
+ },
+ {
+  "text": "god_nika0206 quería un cine y un restaurante chino: hoy hay estreno, y no queda ni un rollito.",
+  "start": 19.87,
+  "end": 26.5,
+  "words": [
+   {
+    "w": "god_nika0206",
+    "start": 19.87,
+    "end": 21.77
+   },
+   {
+    "w": "quería",
+    "start": 21.77,
+    "end": 22.17
+   },
+   {
+    "w": "un",
+    "start": 22.17,
+    "end": 22.33
+   },
+   {
+    "w": "cine",
+    "start": 22.33,
+    "end": 22.65
+   },
+   {
+    "w": "y",
+    "start": 22.65,
+    "end": 22.81
+   },
+   {
+    "w": "un",
+    "start": 22.81,
+    "end": 22.89
+   },
+   {
+    "w": "restaurante",
+    "start": 22.89,
+    "end": 23.53
+   },
+   {
+    "w": "chino:",
+    "start": 23.53,
+    "end": 24.01
+   },
+   {
+    "w": "hoy",
+    "start": 24.01,
+    "end": 24.24
+   },
+   {
+    "w": "hay",
+    "start": 24.24,
+    "end": 24.48
+   },
+   {
+    "w": "estreno,",
+    "start": 24.48,
+    "end": 25.05
+   },
+   {
+    "w": "y",
+    "start": 25.05,
+    "end": 25.19
+   },
+   {
+    "w": "no",
+    "start": 25.19,
+    "end": 25.35
+   },
+   {
+    "w": "queda",
+    "start": 25.35,
+    "end": 25.67
+   },
+   {
+    "w": "ni",
+    "start": 25.67,
+    "end": 25.83
+   },
+   {
+    "w": "un",
+    "start": 25.83,
+    "end": 25.99
+   },
+   {
+    "w": "rollito.",
+    "start": 25.99,
+    "end": 26.5
+   }
+  ]
+ },
+ {
+  "text": "luquita.berna ha fundado un club de fútbol… y el siete es suyo.",
+  "start": 26.95,
+  "end": 31.05,
+  "words": [
+   {
+    "w": "luquita.berna",
+    "start": 26.95,
+    "end": 27.94
+   },
+   {
+    "w": "ha",
+    "start": 27.94,
+    "end": 28.02
+   },
+   {
+    "w": "fundado",
+    "start": 28.02,
+    "end": 28.5
+   },
+   {
+    "w": "un",
+    "start": 28.5,
+    "end": 28.58
+   },
+   {
+    "w": "club",
+    "start": 28.58,
+    "end": 28.82
+   },
+   {
+    "w": "de",
+    "start": 28.82,
+    "end": 28.98
+   },
+   {
+    "w": "fútbol…",
+    "start": 28.98,
+    "end": 29.66
+   },
+   {
+    "w": "y",
+    "start": 29.66,
+    "end": 29.786
+   },
+   {
+    "w": "el",
+    "start": 29.786,
+    "end": 29.94
+   },
+   {
+    "w": "siete",
+    "start": 29.94,
+    "end": 30.46
+   },
+   {
+    "w": "es",
+    "start": 30.46,
+    "end": 30.66
+   },
+   {
+    "w": "suyo.",
+    "start": 30.66,
+    "end": 31.05
+   }
+  ]
+ },
+ {
+  "text": "Y victorelcrepeer_mc quería ser soldado del rey: marcos13_08 le dijo «adelante».",
+  "start": 31.5,
+  "end": 37.72,
+  "words": [
+   {
+    "w": "Y",
+    "start": 31.5,
+    "end": 31.783
+   },
+   {
+    "w": "victorelcrepeer_mc",
+    "start": 31.783,
+    "end": 33.39
+   },
+   {
+    "w": "quería",
+    "start": 33.39,
+    "end": 33.71
+   },
+   {
+    "w": "ser",
+    "start": 33.71,
+    "end": 33.95
+   },
+   {
+    "w": "soldado",
+    "start": 33.95,
+    "end": 34.43
+   },
+   {
+    "w": "del",
+    "start": 34.43,
+    "end": 34.59
+   },
+   {
+    "w": "rey:",
+    "start": 34.59,
+    "end": 35.05
+   },
+   {
+    "w": "marcos13_08",
+    "start": 35.05,
+    "end": 36.4
+   },
+   {
+    "w": "le",
+    "start": 36.4,
+    "end": 36.56
+   },
+   {
+    "w": "dijo",
+    "start": 36.56,
+    "end": 37.11
+   },
+   {
+    "w": "«adelante».",
+    "start": 37.11,
+    "end": 37.72
+   }
+  ]
+ },
+ {
+  "text": "Ahora sí, el rey sale al balcón…",
+  "start": 38.17,
+  "end": 40.42,
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 38.17,
+    "end": 38.53
+   },
+   {
+    "w": "sí,",
+    "start": 38.53,
+    "end": 39.02
+   },
+   {
+    "w": "el",
+    "start": 39.02,
+    "end": 39.09
+   },
+   {
+    "w": "rey",
+    "start": 39.09,
+    "end": 39.49
+   },
+   {
+    "w": "sale",
+    "start": 39.49,
+    "end": 39.81
+   },
+   {
+    "w": "al",
+    "start": 39.81,
+    "end": 39.97
+   },
+   {
+    "w": "balcón…",
+    "start": 39.97,
+    "end": 40.42
+   }
+  ]
+ },
+ {
+  "text": "…con una máscara de acero que refleja el cielo.",
+  "start": 40.84,
+  "end": 43.27,
+  "words": [
+   {
+    "w": "…con",
+    "start": 40.84,
+    "end": 40.93
+   },
+   {
+    "w": "una",
+    "start": 40.93,
+    "end": 41.17
+   },
+   {
+    "w": "máscara",
+    "start": 41.17,
+    "end": 41.57
+   },
+   {
+    "w": "de",
+    "start": 41.57,
+    "end": 41.73
+   },
+   {
+    "w": "acero",
+    "start": 41.73,
+    "end": 42.21
+   },
+   {
+    "w": "que",
+    "start": 42.21,
+    "end": 42.29
+   },
+   {
+    "w": "refleja",
+    "start": 42.29,
+    "end": 42.85
+   },
+   {
+    "w": "el",
+    "start": 42.85,
+    "end": 42.93
+   },
+   {
+    "w": "cielo.",
+    "start": 42.93,
+    "end": 43.27
+   }
+  ]
+ },
+ {
+  "text": "¿Mejor que una corona? El comentario con más me gusta será el próximo rey.",
+  "start": 43.72,
+  "end": 47.798,
+  "words": [
+   {
+    "w": "¿Mejor",
+    "start": 43.72,
+    "end": 44.04
+   },
+   {
+    "w": "que",
+    "start": 44.04,
+    "end": 44.2
+   },
+   {
+    "w": "una",
+    "start": 44.2,
+    "end": 44.44
+   },
+   {
+    "w": "corona?",
+    "start": 44.44,
+    "end": 45.019
+   },
+   {
+    "w": "El",
+    "start": 45.019,
+    "end": 45.119
+   },
+   {
+    "w": "comentario",
+    "start": 45.119,
+    "end": 45.674
+   },
+   {
+    "w": "con",
+    "start": 45.674,
+    "end": 45.913
+   },
+   {
+    "w": "más",
+    "start": 45.913,
+    "end": 46.151
+   },
+   {
+    "w": "me",
+    "start": 46.151,
+    "end": 46.31
+   },
+   {
+    "w": "gusta",
+    "start": 46.31,
+    "end": 46.627
+   },
+   {
+    "w": "será",
+    "start": 46.627,
+    "end": 46.945
+   },
+   {
+    "w": "el",
+    "start": 46.945,
+    "end": 47.104
+   },
+   {
+    "w": "próximo",
+    "start": 47.104,
+    "end": 47.58
+   },
+   {
+    "w": "rey.",
+    "start": 47.58,
+    "end": 47.798
+   }
+  ]
+ },
+ {
+  "text": "Mándaselo a quien nunca se quitaría la corona.",
+  "start": 48.265,
+  "end": 50.558,
+  "words": [
+   {
+    "w": "Mándaselo",
+    "start": 48.265,
+    "end": 48.89
+   },
+   {
+    "w": "a",
+    "start": 48.89,
+    "end": 48.97
+   },
+   {
+    "w": "quien",
+    "start": 48.97,
+    "end": 49.208
+   },
+   {
+    "w": "nunca",
+    "start": 49.208,
+    "end": 49.446
+   },
+   {
+    "w": "se",
+    "start": 49.446,
+    "end": 49.605
+   },
+   {
+    "w": "quitaría",
+    "start": 49.605,
+    "end": 50.161
+   },
+   {
+    "w": "la",
+    "start": 50.161,
+    "end": 50.24
+   },
+   {
+    "w": "corona.",
+    "start": 50.24,
+    "end": 50.558
+   }
+  ]
+ }
+]
