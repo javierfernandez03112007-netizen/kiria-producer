@@ -20,7 +20,7 @@ window.labelsAt = function (t) {
     const ppm = f / cw; if (ppm < 95) return; const sx = ((e[0] * hp.x + e[4] * hp.y + e[8] * hp.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * hp.x + e[5] * hp.y + e[9] * hp.z + e[13]) / cw) / 2 * H;
     if (sx < -150 || sx > W + 150 || sy < 0 || sy > H + 150) return; if (hiddenBy(cam.position, hp)) return; out.push([i, R(sx), R(sy), R(ppm * 10)]); });
   // zonas que ningún nombre puede tapar: las tarjetas del comentario y el bocadillo «¡Adelante!» (rectángulo en pantalla)
-  const K = []; for (const o of [S.card, S.bubble]) { if (!o || !o.visible) continue; o.updateMatrixWorld(true); const g = o.geometry.parameters, hw = g.width / 2, hh = g.height / 2; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, ok = true;
+  const K = [], CU = S.club.userData, KO = [S.card, S.bubble, CU.signMesh, CU.subMesh, S.cinema.userData.board, t > TL.nadie - 0.2 ? CU.fullMesh : null]; for (const o of KO) { if (!o || !o.visible) continue; o.updateMatrixWorld(true); const g = o.geometry.parameters, hw = g.width / 2, hh = g.height / 2; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, ok = true;
     for (const [a, b] of [[-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]]) { const q = o.localToWorld(_v(a, b, 0)), cw = e[3] * q.x + e[7] * q.y + e[11] * q.z + e[15]; if (cw <= 0.05) { ok = false; break; }
       const sx = ((e[0] * q.x + e[4] * q.y + e[8] * q.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * q.x + e[5] * q.y + e[9] * q.z + e[13]) / cw) / 2 * H; x0 = Math.min(x0, sx); x1 = Math.max(x1, sx); y0 = Math.min(y0, sy); y1 = Math.max(y1, sy); }
     if (ok) K.push([R(x0), R(y0), R(x1), R(y1)]); }

@@ -2424,14 +2424,14 @@ function clubFront(w) { const black = stdM(0x17131c, 0.45), g = frontShell(w, bl
   const strip = nightMat(new THREE.MeshStandardMaterial({ color: 0x10141c, emissive: 0x7a3dff, emissiveIntensity: 2.6, roughness: 0.4 })); for (const s of [-1, 1]) g.add(box(0.08, U.H - 0.6, 0.06, strip, s * (w / 2 - 0.3), (U.H - 0.6) / 2, 0.04));
   ropePosts(g, [1.25, 2.45, 3.65], 0.95, 0.14);
   const ft = signTex(512, 160, (c, W, H) => { c.fillStyle = '#0b0b0e'; c.fillRect(0, 0, W, H); c.fillStyle = '#ff2a3a'; c.font = '900 92px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('COMPLETO', W / 2, H / 2 + 4); });
-  U.full = new THREE.MeshStandardMaterial({ color: 0x1a0a0a, map: ft, emissiveMap: ft, emissive: 0xffffff, emissiveIntensity: 0.05, roughness: 0.4 }); const fs = new THREE.Mesh(new THREE.PlaneGeometry(1.15, 0.36), U.full); fs.position.set(-1.75, 2.3, 0.06); g.add(fs); g.add(box(1.25, 0.46, 0.05, stdM(0x2a2a30, 0.4), -1.75, 2.3, 0.02));
+  U.full = new THREE.MeshStandardMaterial({ color: 0x1a0a0a, map: ft, emissiveMap: ft, emissive: 0xffffff, emissiveIntensity: 0.05, roughness: 0.4 }); const fs = new THREE.Mesh(new THREE.PlaneGeometry(1.15, 0.36), U.full); fs.position.set(-1.75, 2.3, 0.06); g.add(fs); U.fullMesh = fs; U.signMesh = sign; U.subMesh = sub; g.add(box(1.25, 0.46, 0.05, stdM(0x2a2a30, 0.4), -1.75, 2.3, 0.02));
   U.src = nightSrc(_v(0, 2.6, 1.2), 0xff5ad8, 16, 3.2);
   shadowAll(g, true, true); sign.castShadow = sub.castShadow = false; return g; }
 // EL CINE de @god_nika0206: marquesina con bombillas y «ESTRENO HOY», «CINE» en neón, carteles propios, alfombra roja y taquilla
 function cinemaFront(w) { const [sc, sh] = stuccoCanvases([122, 40, 52], 71), wall = texMat(sc, sh, [3, 3], { r: 0.85, ns: 0.4 }), g = frontShell(w, wall, 2), H0 = g.userData.H0, U = g.userData;
   g.add(box(w - 0.6, 0.95, 1.7, stdM(0x2a1f2e, 0.5), 0, H0 - 0.6, 0.85));
   const txt = signPlane(3.5, 0.74, 1024, (c, W, H) => { c.fillStyle = '#fff6dc'; c.fillRect(0, 0, W, H); c.fillStyle = '#c8102e'; c.font = '900 132px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.letterSpacing = '4px'; c.fillText('ESTRENO HOY', W / 2, H / 2 + 8); }, { r: 0.5, glow: 1.1 });
-  txt.position.set(0, H0 - 0.6, 1.71); g.add(txt); nightMat(txt.material);
+  txt.position.set(0, H0 - 0.6, 1.71); g.add(txt); nightMat(txt.material); U.board = txt;
   U.bulbM = nightMat(new THREE.MeshStandardMaterial({ color: 0xfff4d8, emissive: 0xffc860, emissiveIntensity: 5, roughness: 0.3 }));
   for (let i = 0; i < 22; i++) { const x = -w / 2 + 0.6 + i * (w - 1.2) / 21; for (const y of [H0 - 0.15, H0 - 1.05]) ad(g, sph(0.05, U.bulbM, 8, 6)).position.set(x, y, 1.72); }
   const cname = neonSign('CINE', 2.6, 1.0, '#ffcf4a', 3.4); cname.position.set(0, H0 + 0.85, 0.09); g.add(cname); nightMat(cname.material);
@@ -2538,7 +2538,7 @@ window.labelsAt = function (t) {
     const ppm = f / cw; if (ppm < 95) return; const sx = ((e[0] * hp.x + e[4] * hp.y + e[8] * hp.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * hp.x + e[5] * hp.y + e[9] * hp.z + e[13]) / cw) / 2 * H;
     if (sx < -150 || sx > W + 150 || sy < 0 || sy > H + 150) return; if (hiddenBy(cam.position, hp)) return; out.push([i, R(sx), R(sy), R(ppm * 10)]); });
   // zonas que ningún nombre puede tapar: las tarjetas del comentario y el bocadillo «¡Adelante!» (rectángulo en pantalla)
-  const K = []; for (const o of [S.card, S.bubble]) { if (!o || !o.visible) continue; o.updateMatrixWorld(true); const g = o.geometry.parameters, hw = g.width / 2, hh = g.height / 2; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, ok = true;
+  const K = [], CU = S.club.userData, KO = [S.card, S.bubble, CU.signMesh, CU.subMesh, S.cinema.userData.board, t > TL.nadie - 0.2 ? CU.fullMesh : null]; for (const o of KO) { if (!o || !o.visible) continue; o.updateMatrixWorld(true); const g = o.geometry.parameters, hw = g.width / 2, hh = g.height / 2; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, ok = true;
     for (const [a, b] of [[-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]]) { const q = o.localToWorld(_v(a, b, 0)), cw = e[3] * q.x + e[7] * q.y + e[11] * q.z + e[15]; if (cw <= 0.05) { ok = false; break; }
       const sx = ((e[0] * q.x + e[4] * q.y + e[8] * q.z + e[12]) / cw + 1) / 2 * W, sy = (1 - (e[1] * q.x + e[5] * q.y + e[9] * q.z + e[13]) / cw) / 2 * H; x0 = Math.min(x0, sx); x1 = Math.max(x1, sx); y0 = Math.min(y0, sy); y1 = Math.max(y1, sy); }
     if (ok) K.push([R(x0), R(y0), R(x1), R(y1)]); }
