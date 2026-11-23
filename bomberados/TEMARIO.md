@@ -205,3 +205,26 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   · Los flancos son… (paralelos a la dirección de propagación) · ¿Cómo se llama lo que no ha ardido dentro del perímetro?
   (isla) · ¿Y lo que queda sin quemar entre un dedo y el incendio? (bolsa o entrante) · ¿Qué es un foco secundario? (fuego
   fuera del perímetro, por pavesas o piñas) · ¿Por dónde es más seguro empezar? (anclaje en la cola, luego los flancos).
+
+## 23 nov 2026 · Cojines de alta presión (rescate en accidentes de tráfico)
+
+### Fuente — apuntes de Élite Bomberos que pone Adrián Luna (Notion, fila «LUNES 23»)
+- Presión de trabajo 8–12 bar; presión de rotura hasta 72 bar según modelos; mangueras de menor diámetro que los de baja
+  y conexión rápida (express o de zafaje rápido).
+- Más fuerza que los de baja presión pero menos altura: hasta 52 cm y hasta 68 t según modelos.
+- Al inflarse disminuye la superficie de contacto; a más superficie, más fuerza (al principio del recorrido); la capacidad
+  de elevación baja con la altura.
+- No apilar más de 2 (salvo los diseñados para ello); el mayor abajo y el menor centrado encima. **Apilar no aumenta la
+  capacidad, solo la altura: el bloque levanta lo que el cojín pequeño (el de arriba).**
+- Bajo la carga al menos el 70–75 % de su superficie; evitar ángulos de más de 30º; ojo a la resistencia del suelo.
+- Dejarlo en carga: cerrar la válvula de paso (órgano de corte) y desconectar el latiguillo. Calzar con cuñas y tacos
+  según sube.
+
+### Vídeos hechos con esto
+- «Un coche encima de una pierna… y este cojín lo levanta» (`projects/bomberados_cojines/`): dos cojines no levantan el
+  doble (40 t + 20 t = 20 t); cierre: ¿empuja más, igual o menos al inflarse? (C, menos).
+
+### Preguntas de examen que salen de aquí
+- ¿Presión de trabajo? (8–12 bar) · ¿Cuántos cojines como máximo apilados? (2) · ¿Cuál va abajo? (el mayor) · Dos apilados
+  ¿qué aumentan? (solo la altura; la capacidad es la del pequeño) · ¿Qué superficie mínima bajo la carga? (70–75 %) ·
+  ¿Ángulo máximo? (30º) · ¿Cómo se deja en carga? (cerrando el órgano de corte y desconectando el latiguillo).
