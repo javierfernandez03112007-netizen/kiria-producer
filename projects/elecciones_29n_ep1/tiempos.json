@@ -1,0 +1,797 @@
+[
+{
+"text": "El domingo no eliges presidente.",
+"start": 0.0,
+"end": 2.055,
+"words": [
+{
+"w": "El",
+"start": 0.0,
+"end": 0.189
+},
+{
+"w": "domingo",
+"start": 0.189,
+"end": 0.695
+},
+{
+"w": "no",
+"start": 0.695,
+"end": 0.884
+},
+{
+"w": "eliges",
+"start": 0.884,
+"end": 1.39
+},
+{
+"w": "presidente.",
+"start": 1.39,
+"end": 2.055
+}
+]
+},
+{
+"text": "Eliges trescientos cincuenta diputados… y ellos lo eligen.",
+"start": 2.505,
+"end": 6.269,
+"words": [
+{
+"w": "Eliges",
+"start": 2.505,
+"end": 3.011
+},
+{
+"w": "trescientos",
+"start": 3.011,
+"end": 3.517
+},
+{
+"w": "cincuenta",
+"start": 3.517,
+"end": 4.023
+},
+{
+"w": "diputados…",
+"start": 4.023,
+"end": 4.688
+},
+{
+"w": "y",
+"start": 5.038,
+"end": 5.227
+},
+{
+"w": "ellos",
+"start": 5.227,
+"end": 5.574
+},
+{
+"w": "lo",
+"start": 5.574,
+"end": 5.763
+},
+{
+"w": "eligen.",
+"start": 5.763,
+"end": 6.269
+}
+]
+},
+{
+"text": "Hay más partidos, pero estos cuatro debaten el jueves. Dos medidas del programa de cada uno:",
+"start": 6.719,
+"end": 12.111,
+"words": [
+{
+"w": "Hay",
+"start": 6.719,
+"end": 6.908
+},
+{
+"w": "más",
+"start": 6.908,
+"end": 7.097
+},
+{
+"w": "partidos,",
+"start": 7.097,
+"end": 7.603
+},
+{
+"w": "pero",
+"start": 7.753,
+"end": 8.1
+},
+{
+"w": "estos",
+"start": 8.1,
+"end": 8.448
+},
+{
+"w": "cuatro",
+"start": 8.448,
+"end": 8.795
+},
+{
+"w": "debaten",
+"start": 8.795,
+"end": 9.302
+},
+{
+"w": "el",
+"start": 9.302,
+"end": 9.49
+},
+{
+"w": "jueves.",
+"start": 9.49,
+"end": 9.838
+},
+{
+"w": "Dos",
+"start": 9.838,
+"end": 10.027
+},
+{
+"w": "medidas",
+"start": 10.027,
+"end": 10.533
+},
+{
+"w": "del",
+"start": 10.533,
+"end": 10.721
+},
+{
+"w": "programa",
+"start": 10.721,
+"end": 11.228
+},
+{
+"w": "de",
+"start": 11.228,
+"end": 11.416
+},
+{
+"w": "cada",
+"start": 11.416,
+"end": 11.764
+},
+{
+"w": "uno:",
+"start": 11.764,
+"end": 12.111
+}
+]
+},
+{
+"text": "Feijóo, PP: construir un millón de viviendas y bajar el IVA de la primera casa a los menores de cuarenta.",
+"start": 12.711,
+"end": 19.008,
+"words": [
+{
+"w": "Feijóo,",
+"start": 12.711,
+"end": 13.059
+},
+{
+"w": "PP:",
+"start": 13.209,
+"end": 13.397
+},
+{
+"w": "construir",
+"start": 13.547,
+"end": 13.895
+},
+{
+"w": "un",
+"start": 13.895,
+"end": 14.084
+},
+{
+"w": "millón",
+"start": 14.084,
+"end": 14.431
+},
+{
+"w": "de",
+"start": 14.431,
+"end": 14.62
+},
+{
+"w": "viviendas",
+"start": 14.62,
+"end": 15.126
+},
+{
+"w": "y",
+"start": 15.126,
+"end": 15.315
+},
+{
+"w": "bajar",
+"start": 15.315,
+"end": 15.662
+},
+{
+"w": "el",
+"start": 15.662,
+"end": 15.851
+},
+{
+"w": "IVA",
+"start": 15.851,
+"end": 16.198
+},
+{
+"w": "de",
+"start": 16.198,
+"end": 16.387
+},
+{
+"w": "la",
+"start": 16.387,
+"end": 16.576
+},
+{
+"w": "primera",
+"start": 16.576,
+"end": 17.082
+},
+{
+"w": "casa",
+"start": 17.082,
+"end": 17.43
+},
+{
+"w": "a",
+"start": 17.43,
+"end": 17.618
+},
+{
+"w": "los",
+"start": 17.618,
+"end": 17.807
+},
+{
+"w": "menores",
+"start": 17.807,
+"end": 18.313
+},
+{
+"w": "de",
+"start": 18.313,
+"end": 18.502
+},
+{
+"w": "cuarenta.",
+"start": 18.502,
+"end": 19.008
+}
+]
+},
+{
+"text": "Sánchez, PSOE: el uno por ciento del PIB cada año para vivienda y blindar las pensiones en la Constitución.",
+"start": 19.458,
+"end": 25.566,
+"words": [
+{
+"w": "Sánchez,",
+"start": 19.458,
+"end": 19.806
+},
+{
+"w": "PSOE:",
+"start": 19.956,
+"end": 20.144
+},
+{
+"w": "el",
+"start": 20.294,
+"end": 20.483
+},
+{
+"w": "uno",
+"start": 20.483,
+"end": 20.83
+},
+{
+"w": "por",
+"start": 20.83,
+"end": 21.019
+},
+{
+"w": "ciento",
+"start": 21.019,
+"end": 21.367
+},
+{
+"w": "del",
+"start": 21.367,
+"end": 21.555
+},
+{
+"w": "PIB",
+"start": 21.555,
+"end": 21.744
+},
+{
+"w": "cada",
+"start": 21.744,
+"end": 22.092
+},
+{
+"w": "año",
+"start": 22.092,
+"end": 22.439
+},
+{
+"w": "para",
+"start": 22.439,
+"end": 22.787
+},
+{
+"w": "vivienda",
+"start": 22.787,
+"end": 23.293
+},
+{
+"w": "y",
+"start": 23.293,
+"end": 23.481
+},
+{
+"w": "blindar",
+"start": 23.481,
+"end": 23.829
+},
+{
+"w": "las",
+"start": 23.829,
+"end": 24.018
+},
+{
+"w": "pensiones",
+"start": 24.018,
+"end": 24.524
+},
+{
+"w": "en",
+"start": 24.524,
+"end": 24.713
+},
+{
+"w": "la",
+"start": 24.713,
+"end": 24.901
+},
+{
+"w": "Constitución.",
+"start": 24.901,
+"end": 25.566
+}
+]
+},
+{
+"text": "Abascal, Vox: prohibir las regularizaciones masivas de inmigrantes y prioridad nacional en vivienda y ayudas.",
+"start": 26.016,
+"end": 32.798,
+"words": [
+{
+"w": "Abascal,",
+"start": 26.016,
+"end": 26.522
+},
+{
+"w": "Vox:",
+"start": 26.672,
+"end": 26.861
+},
+{
+"w": "prohibir",
+"start": 27.011,
+"end": 27.517
+},
+{
+"w": "las",
+"start": 27.517,
+"end": 27.706
+},
+{
+"w": "regularizaciones",
+"start": 27.706,
+"end": 28.847
+},
+{
+"w": "masivas",
+"start": 28.847,
+"end": 29.353
+},
+{
+"w": "de",
+"start": 29.353,
+"end": 29.542
+},
+{
+"w": "inmigrantes",
+"start": 29.542,
+"end": 30.207
+},
+{
+"w": "y",
+"start": 30.207,
+"end": 30.396
+},
+{
+"w": "prioridad",
+"start": 30.396,
+"end": 30.902
+},
+{
+"w": "nacional",
+"start": 30.902,
+"end": 31.408
+},
+{
+"w": "en",
+"start": 31.408,
+"end": 31.597
+},
+{
+"w": "vivienda",
+"start": 31.597,
+"end": 32.103
+},
+{
+"w": "y",
+"start": 32.103,
+"end": 32.292
+},
+{
+"w": "ayudas.",
+"start": 32.292,
+"end": 32.798
+}
+]
+},
+{
+"text": "Colau, Frente Amplio: jornada de treinta y dos horas y un millón y medio de viviendas públicas.",
+"start": 33.248,
+"end": 38.82,
+"words": [
+{
+"w": "Colau,",
+"start": 33.248,
+"end": 33.595
+},
+{
+"w": "Frente",
+"start": 33.745,
+"end": 34.093
+},
+{
+"w": "Amplio:",
+"start": 34.093,
+"end": 34.44
+},
+{
+"w": "jornada",
+"start": 34.59,
+"end": 35.097
+},
+{
+"w": "de",
+"start": 35.097,
+"end": 35.285
+},
+{
+"w": "treinta",
+"start": 35.285,
+"end": 35.633
+},
+{
+"w": "y",
+"start": 35.633,
+"end": 35.821
+},
+{
+"w": "dos",
+"start": 35.821,
+"end": 36.01
+},
+{
+"w": "horas",
+"start": 36.01,
+"end": 36.358
+},
+{
+"w": "y",
+"start": 36.358,
+"end": 36.546
+},
+{
+"w": "un",
+"start": 36.546,
+"end": 36.735
+},
+{
+"w": "millón",
+"start": 36.735,
+"end": 37.083
+},
+{
+"w": "y",
+"start": 37.083,
+"end": 37.271
+},
+{
+"w": "medio",
+"start": 37.271,
+"end": 37.619
+},
+{
+"w": "de",
+"start": 37.619,
+"end": 37.807
+},
+{
+"w": "viviendas",
+"start": 37.807,
+"end": 38.314
+},
+{
+"w": "públicas.",
+"start": 38.314,
+"end": 38.82
+}
+]
+},
+{
+"text": "Y uno de los cuatro lleva esto en su programa: si tienes entre dieciocho y treinta y cinco años, cero IRPF en tu primer año de trabajo.",
+"start": 39.27,
+"end": 48.316,
+"words": [
+{
+"w": "Y",
+"start": 39.27,
+"end": 39.459
+},
+{
+"w": "uno",
+"start": 39.459,
+"end": 39.806
+},
+{
+"w": "de",
+"start": 39.806,
+"end": 39.995
+},
+{
+"w": "los",
+"start": 39.995,
+"end": 40.183
+},
+{
+"w": "cuatro",
+"start": 40.183,
+"end": 40.531
+},
+{
+"w": "lleva",
+"start": 40.531,
+"end": 40.878
+},
+{
+"w": "esto",
+"start": 40.878,
+"end": 41.226
+},
+{
+"w": "en",
+"start": 41.226,
+"end": 41.415
+},
+{
+"w": "su",
+"start": 41.415,
+"end": 41.603
+},
+{
+"w": "programa:",
+"start": 41.603,
+"end": 42.11
+},
+{
+"w": "si",
+"start": 42.26,
+"end": 42.448
+},
+{
+"w": "tienes",
+"start": 42.448,
+"end": 42.796
+},
+{
+"w": "entre",
+"start": 42.796,
+"end": 43.143
+},
+{
+"w": "dieciocho",
+"start": 43.143,
+"end": 43.649
+},
+{
+"w": "y",
+"start": 43.649,
+"end": 43.838
+},
+{
+"w": "treinta",
+"start": 43.838,
+"end": 44.186
+},
+{
+"w": "y",
+"start": 44.186,
+"end": 44.374
+},
+{
+"w": "cinco",
+"start": 44.374,
+"end": 44.722
+},
+{
+"w": "años,",
+"start": 44.722,
+"end": 45.069
+},
+{
+"w": "cero",
+"start": 45.219,
+"end": 45.567
+},
+{
+"w": "IRPF",
+"start": 45.567,
+"end": 46.549
+},
+{
+"w": "en",
+"start": 46.549,
+"end": 46.738
+},
+{
+"w": "tu",
+"start": 46.738,
+"end": 46.927
+},
+{
+"w": "primer",
+"start": 46.927,
+"end": 47.274
+},
+{
+"w": "año",
+"start": 47.274,
+"end": 47.621
+},
+{
+"w": "de",
+"start": 47.621,
+"end": 47.81
+},
+{
+"w": "trabajo.",
+"start": 47.81,
+"end": 48.316
+}
+]
+},
+{
+"text": "¿Quién… y con qué letra pequeña? Mañana, capítulo uno.",
+"start": 48.766,
+"end": 52.393,
+"words": [
+{
+"w": "¿Quién…",
+"start": 48.766,
+"end": 48.955
+},
+{
+"w": "y",
+"start": 49.305,
+"end": 49.494
+},
+{
+"w": "con",
+"start": 49.494,
+"end": 49.683
+},
+{
+"w": "qué",
+"start": 49.683,
+"end": 49.871
+},
+{
+"w": "letra",
+"start": 49.871,
+"end": 50.219
+},
+{
+"w": "pequeña?",
+"start": 50.219,
+"end": 50.725
+},
+{
+"w": "Mañana,",
+"start": 50.725,
+"end": 51.231
+},
+{
+"w": "capítulo",
+"start": 51.381,
+"end": 52.046
+},
+{
+"w": "uno.",
+"start": 52.046,
+"end": 52.393
+}
+]
+},
+{
+"text": "Mándaselo a quien aún no sabe a quién votar.",
+"start": 52.843,
+"end": 55.336,
+"words": [
+{
+"w": "Mándaselo",
+"start": 52.843,
+"end": 53.508
+},
+{
+"w": "a",
+"start": 53.508,
+"end": 53.697
+},
+{
+"w": "quien",
+"start": 53.697,
+"end": 53.886
+},
+{
+"w": "aún",
+"start": 53.886,
+"end": 54.075
+},
+{
+"w": "no",
+"start": 54.075,
+"end": 54.263
+},
+{
+"w": "sabe",
+"start": 54.263,
+"end": 54.611
+},
+{
+"w": "a",
+"start": 54.611,
+"end": 54.8
+},
+{
+"w": "quién",
+"start": 54.8,
+"end": 54.988
+},
+{
+"w": "votar.",
+"start": 54.988,
+"end": 55.336
+}
+]
+}
+]
