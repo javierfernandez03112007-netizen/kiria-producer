@@ -33,4 +33,5 @@ function camAt(t) { return camKeys(clamp(t, 0, END), CK); }
 function prevT(t, dt) { return Math.max(0, t - dt); }
 function whiteAt(t) { return 0; }
 function flashAt(t) { return 0; }
-function dofAt(t, st) { const f = st.p.distanceTo(st.l); return { focus: f, scale: f < 1.2 ? 0.35 * f : 0.03 * f }; }
+// desenfoque de fondo SOLO dentro y cerca de la urna (el principio y el final): en el resto no se nota (todo está casi a la misma distancia) y cuesta el 40 % del render
+function dofAt(t, st) { const f = st.p.distanceTo(st.l), k = Math.max(1 - win(t, TL.E[1] + 0.3, 0.9), win(t, TL.manda + 0.6, 0.9)); return { focus: f, scale: k < 0.004 ? 0 : k * (f < 1.2 ? 0.35 * f : 0.03 * f) }; }

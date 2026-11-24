@@ -10,7 +10,7 @@ function lectern(id) { const P = PARTY[id], g = new THREE.Group(), dark = new TH
     c.fillStyle = P.ink; c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '900 84px Inter'; c.fillText(P.short.toUpperCase(), W / 2, 80, W - 40);
     c.fillStyle = '#f4f6fa'; const two = P.sig.includes(' '); c.font = `900 ${two ? 100 : 200}px Inter`;
     if (two) { const [a, b] = P.sig.split(' '); c.fillText(a, W / 2, H * 0.42); c.fillText(b, W / 2, H * 0.57); } else c.fillText(P.sig, W / 2, H * 0.5, W - 50); });
-  const front = new THREE.Mesh(new THREE.PlaneGeometry(0.46, 0.75), nightMat(new THREE.MeshStandardMaterial({ map: t, emissiveMap: t, emissive: 0xffffff, emissiveIntensity: 0.95, roughness: 0.4 }))); front.position.set(0, 0.685, 0.158); g.add(front); U.front = front;
+  const front = new THREE.Mesh(new THREE.PlaneGeometry(0.46, 0.75), new THREE.MeshBasicMaterial({ map: t, color: new THREE.Color().setScalar(1.05) })); front.position.set(0, 0.685, 0.158); g.add(front); U.front = front;
   const strip = nightMat(new THREE.MeshStandardMaterial({ color: 0x050505, emissive: P.col, emissiveIntensity: 3.0, roughness: 0.4 })); for (const s of [-1, 1]) g.add(box(0.02, 1.0, 0.02, strip, s * 0.262, 0.56, 0.15)); U.strip = strip;
   const top = box(0.66, 0.035, 0.46, dark, 0, 1.12, 0.0); top.rotation.x = 0.2; g.add(top);
   shadowAll(g, true, true); front.castShadow = false; return g; }
@@ -69,7 +69,7 @@ function buildSet(G) { const dark = new THREE.MeshPhysicalMaterial({ color: 0x06
   const riser = cyl(5.6, 5.6, 0.16, new THREE.MeshPhysicalMaterial({ color: 0x0a0c11, roughness: 0.3, clearcoat: 0.6 }), 72); riser.position.set(0, 0.08, 0.4); riser.castShadow = false; G.add(riser); S.FL = 0.16;
   // pantalla gigante curva
   S.wallC = cnv(WALL.W, WALL.H); S.wallT = new THREE.CanvasTexture(S.wallC); S.wallT.colorSpace = THREE.SRGBColorSpace; S.wallT.anisotropy = 8; S.wallT.wrapS = THREE.RepeatWrapping; S.wallT.repeat.x = -1; S.wallT.offset.x = 1; S.seats = hemiSeats();
-  S.wallM = nightMat(new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffffff, emissiveMap: S.wallT, emissiveIntensity: 1.25, roughness: 0.5, side: THREE.BackSide }));
+  S.wallM = new THREE.MeshBasicMaterial({ map: S.wallT, color: new THREE.Color().setScalar(1.25), side: THREE.BackSide });          // sin luces ni reflejos: emite y ya (más rápido de pintar)
   const wg = new THREE.CylinderGeometry(SET.WALL_R, SET.WALL_R, 5.4, 72, 1, true, Math.PI - 0.6, 1.2);
   for (const par of [G, mirror]) { const wall = new THREE.Mesh(wg, S.wallM); wall.position.set(0, 3.5, SET.WALL_Z + SET.WALL_R); par.add(wall); }
   const frameM = stdM(0x0b0d12, 0.4, { metalness: 0.5 }); for (const y of [0.74, 6.26]) { const f = new THREE.Mesh(new THREE.CylinderGeometry(SET.WALL_R - 0.02, SET.WALL_R - 0.02, 0.12, 72, 1, true, Math.PI - 0.62, 1.24), new THREE.MeshStandardMaterial({ color: 0x0b0d12, roughness: 0.4, side: THREE.DoubleSide })); f.position.set(0, y, SET.WALL_Z + SET.WALL_R); G.add(f); }

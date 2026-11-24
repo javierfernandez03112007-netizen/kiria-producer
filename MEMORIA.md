@@ -309,6 +309,31 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   `out/ciudad_seguidores_ep5.mp4` (51,75 s, 3.105 fotogramas, 1080×1920, 60 fps, −14,9 LUFS, 45 MB) + portada («DIJO NO A LA CORONA… y eligió
   esto») + miniatura + DESCRIPCION.txt.
 
+- **«29N, capítulo 0: los cuatro en sus atriles» (`projects/elecciones_29n_ep1/`, 24-11-2026) — SERIE DE LAS ELECCIONES.** Javi pidió una serie
+  explicativa y neutral sobre las generales del 29-11-2026, un vídeo por partido; el primero, los cuatro juntos en sus atriles (PP, PSOE, Vox y
+  Frente Amplio) con intriga para el siguiente. Orden de la serie = escaños del Congreso saliente: cap. 1 PP, 2 PSOE, 3 Vox, 4 Frente Amplio; cada
+  capítulo acaba con una intriga equivalente del siguiente. Gancho: «El domingo no eliges presidente.» + «Eliges 350 diputados… y ellos lo
+  eligen»; intriga: «uno de los cuatro lleva cero IRPF en tu primer año de trabajo (18–35 años): ¿quién… y con qué letra pequeña? Mañana,
+  capítulo uno» (es el PP: 100/75/50/25 % los cuatro primeros años; va en el cap. 1); cierre «Mándaselo a quien aún no sabe a quién votar».
+  145 palabras; voz de Javi 54,0 s (vídeo 55,0 s, 3.300 fotogramas).
+  **Javi rechazó los muñecos (24-11): «he dicho lo más realista posible… hazlos realistas».** Solución: los candidatos son sus **FOTOS REALES**
+  (Wikimedia Commons con licencia libre: PP CC0, Moncloa con atribución, Vox CC0, Ajuntament de Barcelona CC BY 4.0; tabla en `FUENTES.md`)
+  en una pantalla vertical con relieve detrás de cada atril. **No se generan caras ni vídeo con IA ni se les anima o hace hablar** (sería un
+  deepfake en plena campaña). `retratos.py` las iguala (misma distancia entre ojos y misma altura) sobre el color de su partido; el fondo se quita
+  con `@imgly/background-removal-node` (npm; trae el modelo dentro, funciona sin red: `npm i @imgly/background-removal-node@1.4.5
+  --onnxruntime-node-install-cuda=skip`). Ojo: la foto libre y neutra más reciente de Colau es de 2022 (ahora lleva el pelo canoso).
+  **Neutralidad (se mantiene en toda la serie)**: mismos segundos, misma distancia de cámara y mismo sitio y tamaño de rótulos para los cuatro;
+  apellido y siglas en el color de cada partido y las medidas en los mismos dos colores; medidas con las palabras de su programa; sin sondeos
+  (LOREG 69.7: prohibidos del 24 al 28-11) ni «quién va ganando»; se dice «hay más partidos»; aviso en pantalla «Plató virtual · fotos reales
+  de archivo» y créditos de las fotos en la descripción. La serie debe acabar el viernes 27 (el 28 es jornada de reflexión).
+  **Composición con los subtítulos arriba** (y=305): de arriba abajo, subtítulo → cara → medidas como objetos sobre el atril (objeto a la
+  izquierda, rótulo a la derecha) → apellido → siglas (lo de más abajo lo tapa Instagram). Plantilla para los capítulos siguientes.
+  **Lecciones**: (1) Wikimedia desde aquí: la API da 429; funcionan las páginas HTML de categorías y de cada fichero (autor y licencia) y los
+  ORIGINALES que están en caché (los que usa Wikipedia); las miniaturas salen de `thumb.wikimedia.org`, que el entorno no permite, y los originales
+  poco vistos dan 429. No intentar saltarse esos límites por otras vías; (2) los avisos de permiso (cambiar el entorno, preguntas) se cierran solos
+  si la sesión se reinicia o Javi escribe: no depender de ellos; (3) SwiftShader ya usa los 4 núcleos: 4 procesos de render NO van más rápido
+  que 2 (≈ 4 s por fotograma a tamaño real); (4) `window.dbgEval` puede sustituir funciones de la escena para una portada (p. ej. dejar la pantalla
+  del fondo sin texto).
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de

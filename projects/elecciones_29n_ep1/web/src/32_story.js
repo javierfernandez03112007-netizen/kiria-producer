@@ -19,6 +19,7 @@ async function buildScene() {
   // cuándo manda cada atril (del principio de su frase al de la siguiente)
   TL.turn = { pp: [TL.L[4] - 0.25, TL.L[5] - 0.25], psoe: [TL.L[5] - 0.25, TL.L[6] - 0.25], vox: [TL.L[6] - 0.25, TL.L[7] - 0.25], fa: [TL.L[7] - 0.25, TL.L[8] - 0.2] };
   const G = new THREE.Group(); scene.add(G); S.G = G; T.lampGlow = new THREE.MeshStandardMaterial({ color: 0xfff1cf, emissive: 0xffd89a, emissiveIntensity: 1.6 }); T.glassDark = M.glass;
+  S.depth = {}; for (const id of ORDER) S.depth[id] = await depthData('cand_' + id + '_d.jpg');
   buildSet(G); S.P = buildProps(G);
   const r1 = rng(11); S.flow = [flowCloud(2600, () => [-7 + r1() * 14, 0.4 + r1() * 6.5, -4 + r1() * 13], { size: 0.8, bright: 0.2, seed: 1, nearF: 0.5, farF: 0.03, col: 0xcfe0ff })];
   envAll(scene); nightify(scene); NIGHT.on = true;
@@ -44,8 +45,8 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); moodMi
     const quiet = bump(t, TL.L[4] - 0.65, TL.manana - 0.1, 0.3, 0.3);
     wallDraw({ hemi: hA > 0.01 ? Math.round(seg(t, TL.trescientos - 0.05, TL.diputados + 0.25) * 350) / 350 : 0, hemiA: q2(hA), pres: q2(win(t, TL.ellos - 0.05, 0.45)), cita: q2(cita), man: q2(man), base: q2(clamp(1 - hA - cita - man - quiet)), band: ORDER.map(id => q2(colK(id, t) * (1 - 0.85 * hA))) }); }
   // las pantallas de los cuatro (y su reflejo: comparten material) y las de los demás partidos, que se encienden un momento
-  for (const id of ORDER) { const k = totK(id, t); S.tot[id].mat.emissiveIntensity = SCREEN_I * k; S.spots[id].cone.material.uniforms.op.value = 0.015 + 0.04 * spotK(id, t); }
-  { const k = bump(t, TL.hay - 0.1, TL.estos + 0.15, 0.3, 0.45); S.dims.forEach((d, i) => { const f = k * (0.6 + 0.4 * Math.sin(t * 5 + i)); d.userData.pl.emissiveIntensity = 0.5 * f; d.userData.tm.emissiveIntensity = 0.12 + 0.9 * f; }); }
+  for (const id of ORDER) { const k = totK(id, t); S.tot[id].mat.color.setScalar(SCREEN_I * k); S.spots[id].cone.material.uniforms.op.value = 0.015 + 0.04 * spotK(id, t); }
+  { const k = bump(t, TL.hay - 0.1, TL.estos + 0.15, 0.3, 0.45); S.dims.forEach((d, i) => { const f = k * (0.6 + 0.4 * Math.sin(t * 5 + i)); d.userData.pl.emissiveIntensity = 0.5 * f; d.userData.tm.color.setScalar(0.12 + 0.9 * f); }); }
   ORDER.forEach((id, i) => S.P.slots[id].forEach((m, j) => { const t0 = TL.dos3 - 0.05 + i * 0.09 + j * 0.16, k = bump(t, t0, TL.L[4] - 0.5, 0.001, 0.2); m.visible = k > 0.01; if (m.visible) m.scale.setScalar(Math.max(0.01, pop(t, t0, 0.32)) * Math.min(1, k * 1.2)); }));   // «dos medidas de cada uno»
   // las medidas (cada objeto aparece con su palabra, sobre el atril)
   const P = S.P, vis = (g, a, b) => { const k = bump(t, a, b, 0.001, 0.2); g.visible = k > 0.01; if (g.visible) g.scale.setScalar(Math.max(0.01, pop(t, a, 0.4)) * Math.min(1, k * 1.2)); return g.visible; }, ps = (o, t0, d = 0.35) => o.scale.setScalar(Math.max(0.001, pop(t, t0, d)));

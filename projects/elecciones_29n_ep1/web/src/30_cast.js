@@ -17,14 +17,17 @@ function totemFrame(col, zone = 'city') { const g = new THREE.Group(), W = TOTEM
   const strip = nightMat(new THREE.MeshStandardMaterial({ color: 0x050505, emissive: col, emissiveIntensity: 2.6, roughness: 0.4 }), zone);
   for (const s of [-1, 1]) g.add(box(0.022, H + 0.07, 0.03, strip, s * (W / 2 + 0.046), H / 2, 0)); g.add(box(W + 0.114, 0.022, 0.03, strip, 0, H + 0.046, 0));
   shadowAll(g, true, true); return { g, strip }; }
-// pantalla de un candidato: su foto (emite luz: no depende de los focos) con relieve
-function totem(id) { const { g, strip } = totemFrame(PARTY[id].col, 'tot_' + id), map = tx('cand_' + id + '.jpg'), dm = tx('cand_' + id + '_d.jpg', false);
-  const mat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 1, metalness: 0, emissive: 0xffffff, emissiveMap: map, emissiveIntensity: 1, displacementMap: dm, displacementScale: TOTEM.RELIEF });
-  const scr = new THREE.Mesh(new THREE.PlaneGeometry(TOTEM.W, TOTEM.H, 60, 90), mat); scr.position.set(0, TOTEM.H / 2, 0.012); g.add(scr);
+// mapa de relieve de un retrato (imagen en gris) leído a memoria: el relieve se aplica a la malla una vez (material sin luces: mucho más rápido de pintar)
+async function depthData(file) { const im = new Image(); im.src = ASSET + file; await im.decode(); const c = cnv(im.width, im.height), g = c.getContext('2d'); g.drawImage(im, 0, 0); return { w: im.width, h: im.height, d: g.getImageData(0, 0, im.width, im.height).data }; }
+// pantalla de un candidato: su foto (emite luz: no depende de los focos) con relieve. El brillo se cambia con mat.color.
+function totem(id) { const { g, strip } = totemFrame(PARTY[id].col, 'tot_' + id), map = tx('cand_' + id + '.jpg'), D = S.depth[id];
+  const mat = new THREE.MeshBasicMaterial({ map }), geo = new THREE.PlaneGeometry(TOTEM.W, TOTEM.H, 60, 90), P = geo.attributes.position, UV = geo.attributes.uv;
+  for (let i = 0; i < P.count; i++) { const x = Math.min(D.w - 1, Math.round(UV.getX(i) * (D.w - 1))), y = Math.min(D.h - 1, Math.round((1 - UV.getY(i)) * (D.h - 1))); P.setZ(i, TOTEM.RELIEF * D.d[(y * D.w + x) * 4] / 255); }
+  const scr = new THREE.Mesh(geo, mat); scr.position.set(0, TOTEM.H / 2, 0.012); g.add(scr);
   return { g, mat, strip, scr }; }
 // pantalla de otro partido (hay más de cuatro): apagada, con una silueta genérica que se enciende un momento
 function dimTotem() { const { g, strip } = totemFrame(0x8a93a6); strip.emissiveIntensity = 0.25;
   const t = signTex(300, 450, (c, w, h) => { const gr = c.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#0b0e15'); gr.addColorStop(1, '#1b212d'); c.fillStyle = gr; c.fillRect(0, 0, w, h);
     c.fillStyle = '#3b4352'; c.beginPath(); c.arc(w / 2, h * 0.36, w * 0.2, 0, 7); c.fill(); c.beginPath(); c.ellipse(w / 2, h * 0.86, w * 0.4, h * 0.3, 0, Math.PI, 0); c.fill(); });
-  const mat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 1, emissive: 0xffffff, emissiveMap: t, emissiveIntensity: 0.1 });
+  const mat = new THREE.MeshBasicMaterial({ map: t, color: new THREE.Color().setScalar(0.1) });
   const scr = new THREE.Mesh(new THREE.PlaneGeometry(TOTEM.W, TOTEM.H), mat); scr.position.set(0, TOTEM.H / 2, 0.012); g.add(scr); return { g, mat, strip }; }

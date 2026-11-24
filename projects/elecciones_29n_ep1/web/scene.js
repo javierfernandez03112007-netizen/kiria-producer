@@ -1159,16 +1159,19 @@ function totemFrame(col, zone = 'city') { const g = new THREE.Group(), W = TOTEM
   const strip = nightMat(new THREE.MeshStandardMaterial({ color: 0x050505, emissive: col, emissiveIntensity: 2.6, roughness: 0.4 }), zone);
   for (const s of [-1, 1]) g.add(box(0.022, H + 0.07, 0.03, strip, s * (W / 2 + 0.046), H / 2, 0)); g.add(box(W + 0.114, 0.022, 0.03, strip, 0, H + 0.046, 0));
   shadowAll(g, true, true); return { g, strip }; }
-// pantalla de un candidato: su foto (emite luz: no depende de los focos) con relieve
-function totem(id) { const { g, strip } = totemFrame(PARTY[id].col, 'tot_' + id), map = tx('cand_' + id + '.jpg'), dm = tx('cand_' + id + '_d.jpg', false);
-  const mat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 1, metalness: 0, emissive: 0xffffff, emissiveMap: map, emissiveIntensity: 1, displacementMap: dm, displacementScale: TOTEM.RELIEF });
-  const scr = new THREE.Mesh(new THREE.PlaneGeometry(TOTEM.W, TOTEM.H, 60, 90), mat); scr.position.set(0, TOTEM.H / 2, 0.012); g.add(scr);
+// mapa de relieve de un retrato (imagen en gris) leído a memoria: el relieve se aplica a la malla una vez (material sin luces: mucho más rápido de pintar)
+async function depthData(file) { const im = new Image(); im.src = ASSET + file; await im.decode(); const c = cnv(im.width, im.height), g = c.getContext('2d'); g.drawImage(im, 0, 0); return { w: im.width, h: im.height, d: g.getImageData(0, 0, im.width, im.height).data }; }
+// pantalla de un candidato: su foto (emite luz: no depende de los focos) con relieve. El brillo se cambia con mat.color.
+function totem(id) { const { g, strip } = totemFrame(PARTY[id].col, 'tot_' + id), map = tx('cand_' + id + '.jpg'), D = S.depth[id];
+  const mat = new THREE.MeshBasicMaterial({ map }), geo = new THREE.PlaneGeometry(TOTEM.W, TOTEM.H, 60, 90), P = geo.attributes.position, UV = geo.attributes.uv;
+  for (let i = 0; i < P.count; i++) { const x = Math.min(D.w - 1, Math.round(UV.getX(i) * (D.w - 1))), y = Math.min(D.h - 1, Math.round((1 - UV.getY(i)) * (D.h - 1))); P.setZ(i, TOTEM.RELIEF * D.d[(y * D.w + x) * 4] / 255); }
+  const scr = new THREE.Mesh(geo, mat); scr.position.set(0, TOTEM.H / 2, 0.012); g.add(scr);
   return { g, mat, strip, scr }; }
 // pantalla de otro partido (hay más de cuatro): apagada, con una silueta genérica que se enciende un momento
 function dimTotem() { const { g, strip } = totemFrame(0x8a93a6); strip.emissiveIntensity = 0.25;
   const t = signTex(300, 450, (c, w, h) => { const gr = c.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#0b0e15'); gr.addColorStop(1, '#1b212d'); c.fillStyle = gr; c.fillRect(0, 0, w, h);
     c.fillStyle = '#3b4352'; c.beginPath(); c.arc(w / 2, h * 0.36, w * 0.2, 0, 7); c.fill(); c.beginPath(); c.ellipse(w / 2, h * 0.86, w * 0.4, h * 0.3, 0, Math.PI, 0); c.fill(); });
-  const mat = new THREE.MeshStandardMaterial({ color: 0x000000, roughness: 1, emissive: 0xffffff, emissiveMap: t, emissiveIntensity: 0.1 });
+  const mat = new THREE.MeshBasicMaterial({ map: t, color: new THREE.Color().setScalar(0.1) });
   const scr = new THREE.Mesh(new THREE.PlaneGeometry(TOTEM.W, TOTEM.H), mat); scr.position.set(0, TOTEM.H / 2, 0.012); g.add(scr); return { g, mat, strip }; }
 // ---------------------------------------------------------------- 29N · EL PLATÓ del debate a cuatro: tarima redonda, cuatro atriles con las siglas y el color de cada
 // partido (sin logotipos) y, detrás de cada uno, la pantalla con la foto real de su candidato; pantalla gigante curva (el hemiciclo, la cita del jueves, «mañana, capítulo 1»), focos con haz, cámaras de estudio,
@@ -1182,7 +1185,7 @@ function lectern(id) { const P = PARTY[id], g = new THREE.Group(), dark = new TH
     c.fillStyle = P.ink; c.textAlign = 'center'; c.textBaseline = 'middle'; c.font = '900 84px Inter'; c.fillText(P.short.toUpperCase(), W / 2, 80, W - 40);
     c.fillStyle = '#f4f6fa'; const two = P.sig.includes(' '); c.font = `900 ${two ? 100 : 200}px Inter`;
     if (two) { const [a, b] = P.sig.split(' '); c.fillText(a, W / 2, H * 0.42); c.fillText(b, W / 2, H * 0.57); } else c.fillText(P.sig, W / 2, H * 0.5, W - 50); });
-  const front = new THREE.Mesh(new THREE.PlaneGeometry(0.46, 0.75), nightMat(new THREE.MeshStandardMaterial({ map: t, emissiveMap: t, emissive: 0xffffff, emissiveIntensity: 0.95, roughness: 0.4 }))); front.position.set(0, 0.685, 0.158); g.add(front); U.front = front;
+  const front = new THREE.Mesh(new THREE.PlaneGeometry(0.46, 0.75), new THREE.MeshBasicMaterial({ map: t, color: new THREE.Color().setScalar(1.05) })); front.position.set(0, 0.685, 0.158); g.add(front); U.front = front;
   const strip = nightMat(new THREE.MeshStandardMaterial({ color: 0x050505, emissive: P.col, emissiveIntensity: 3.0, roughness: 0.4 })); for (const s of [-1, 1]) g.add(box(0.02, 1.0, 0.02, strip, s * 0.262, 0.56, 0.15)); U.strip = strip;
   const top = box(0.66, 0.035, 0.46, dark, 0, 1.12, 0.0); top.rotation.x = 0.2; g.add(top);
   shadowAll(g, true, true); front.castShadow = false; return g; }
@@ -1241,7 +1244,7 @@ function buildSet(G) { const dark = new THREE.MeshPhysicalMaterial({ color: 0x06
   const riser = cyl(5.6, 5.6, 0.16, new THREE.MeshPhysicalMaterial({ color: 0x0a0c11, roughness: 0.3, clearcoat: 0.6 }), 72); riser.position.set(0, 0.08, 0.4); riser.castShadow = false; G.add(riser); S.FL = 0.16;
   // pantalla gigante curva
   S.wallC = cnv(WALL.W, WALL.H); S.wallT = new THREE.CanvasTexture(S.wallC); S.wallT.colorSpace = THREE.SRGBColorSpace; S.wallT.anisotropy = 8; S.wallT.wrapS = THREE.RepeatWrapping; S.wallT.repeat.x = -1; S.wallT.offset.x = 1; S.seats = hemiSeats();
-  S.wallM = nightMat(new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffffff, emissiveMap: S.wallT, emissiveIntensity: 1.25, roughness: 0.5, side: THREE.BackSide }));
+  S.wallM = new THREE.MeshBasicMaterial({ map: S.wallT, color: new THREE.Color().setScalar(1.25), side: THREE.BackSide });          // sin luces ni reflejos: emite y ya (más rápido de pintar)
   const wg = new THREE.CylinderGeometry(SET.WALL_R, SET.WALL_R, 5.4, 72, 1, true, Math.PI - 0.6, 1.2);
   for (const par of [G, mirror]) { const wall = new THREE.Mesh(wg, S.wallM); wall.position.set(0, 3.5, SET.WALL_Z + SET.WALL_R); par.add(wall); }
   const frameM = stdM(0x0b0d12, 0.4, { metalness: 0.5 }); for (const y of [0.74, 6.26]) { const f = new THREE.Mesh(new THREE.CylinderGeometry(SET.WALL_R - 0.02, SET.WALL_R - 0.02, 0.12, 72, 1, true, Math.PI - 0.62, 1.24), new THREE.MeshStandardMaterial({ color: 0x0b0d12, roughness: 0.4, side: THREE.DoubleSide })); f.position.set(0, y, SET.WALL_Z + SET.WALL_R); G.add(f); }
@@ -1360,6 +1363,7 @@ async function buildScene() {
   // cuándo manda cada atril (del principio de su frase al de la siguiente)
   TL.turn = { pp: [TL.L[4] - 0.25, TL.L[5] - 0.25], psoe: [TL.L[5] - 0.25, TL.L[6] - 0.25], vox: [TL.L[6] - 0.25, TL.L[7] - 0.25], fa: [TL.L[7] - 0.25, TL.L[8] - 0.2] };
   const G = new THREE.Group(); scene.add(G); S.G = G; T.lampGlow = new THREE.MeshStandardMaterial({ color: 0xfff1cf, emissive: 0xffd89a, emissiveIntensity: 1.6 }); T.glassDark = M.glass;
+  S.depth = {}; for (const id of ORDER) S.depth[id] = await depthData('cand_' + id + '_d.jpg');
   buildSet(G); S.P = buildProps(G);
   const r1 = rng(11); S.flow = [flowCloud(2600, () => [-7 + r1() * 14, 0.4 + r1() * 6.5, -4 + r1() * 13], { size: 0.8, bright: 0.2, seed: 1, nearF: 0.5, farF: 0.03, col: 0xcfe0ff })];
   envAll(scene); nightify(scene); NIGHT.on = true;
@@ -1385,8 +1389,8 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); moodMi
     const quiet = bump(t, TL.L[4] - 0.65, TL.manana - 0.1, 0.3, 0.3);
     wallDraw({ hemi: hA > 0.01 ? Math.round(seg(t, TL.trescientos - 0.05, TL.diputados + 0.25) * 350) / 350 : 0, hemiA: q2(hA), pres: q2(win(t, TL.ellos - 0.05, 0.45)), cita: q2(cita), man: q2(man), base: q2(clamp(1 - hA - cita - man - quiet)), band: ORDER.map(id => q2(colK(id, t) * (1 - 0.85 * hA))) }); }
   // las pantallas de los cuatro (y su reflejo: comparten material) y las de los demás partidos, que se encienden un momento
-  for (const id of ORDER) { const k = totK(id, t); S.tot[id].mat.emissiveIntensity = SCREEN_I * k; S.spots[id].cone.material.uniforms.op.value = 0.015 + 0.04 * spotK(id, t); }
-  { const k = bump(t, TL.hay - 0.1, TL.estos + 0.15, 0.3, 0.45); S.dims.forEach((d, i) => { const f = k * (0.6 + 0.4 * Math.sin(t * 5 + i)); d.userData.pl.emissiveIntensity = 0.5 * f; d.userData.tm.emissiveIntensity = 0.12 + 0.9 * f; }); }
+  for (const id of ORDER) { const k = totK(id, t); S.tot[id].mat.color.setScalar(SCREEN_I * k); S.spots[id].cone.material.uniforms.op.value = 0.015 + 0.04 * spotK(id, t); }
+  { const k = bump(t, TL.hay - 0.1, TL.estos + 0.15, 0.3, 0.45); S.dims.forEach((d, i) => { const f = k * (0.6 + 0.4 * Math.sin(t * 5 + i)); d.userData.pl.emissiveIntensity = 0.5 * f; d.userData.tm.color.setScalar(0.12 + 0.9 * f); }); }
   ORDER.forEach((id, i) => S.P.slots[id].forEach((m, j) => { const t0 = TL.dos3 - 0.05 + i * 0.09 + j * 0.16, k = bump(t, t0, TL.L[4] - 0.5, 0.001, 0.2); m.visible = k > 0.01; if (m.visible) m.scale.setScalar(Math.max(0.01, pop(t, t0, 0.32)) * Math.min(1, k * 1.2)); }));   // «dos medidas de cada uno»
   // las medidas (cada objeto aparece con su palabra, sobre el atril)
   const P = S.P, vis = (g, a, b) => { const k = bump(t, a, b, 0.001, 0.2); g.visible = k > 0.01; if (g.visible) g.scale.setScalar(Math.max(0.01, pop(t, a, 0.4)) * Math.min(1, k * 1.2)); return g.visible; }, ps = (o, t0, d = 0.35) => o.scale.setScalar(Math.max(0.001, pop(t, t0, d)));
@@ -1444,7 +1448,8 @@ function camAt(t) { return camKeys(clamp(t, 0, END), CK); }
 function prevT(t, dt) { return Math.max(0, t - dt); }
 function whiteAt(t) { return 0; }
 function flashAt(t) { return 0; }
-function dofAt(t, st) { const f = st.p.distanceTo(st.l); return { focus: f, scale: f < 1.2 ? 0.35 * f : 0.03 * f }; }
+// desenfoque de fondo SOLO dentro y cerca de la urna (el principio y el final): en el resto no se nota (todo está casi a la misma distancia) y cuesta el 40 % del render
+function dofAt(t, st) { const f = st.p.distanceTo(st.l), k = Math.max(1 - win(t, TL.E[1] + 0.3, 0.9), win(t, TL.manda + 0.6, 0.9)); return { focus: f, scale: k < 0.004 ? 0 : k * (f < 1.2 ? 0.35 * f : 0.03 * f) }; }
 // ---------------------------------------------------------------- RÓTULOS: en este vídeo los nombres van en el frente de cada atril (apellido y siglas); no hay etiquetas del montaje.
 function buildHudPlan() { HFONT = 'Inter'; HW = [700, 500]; }
 function hudAt(t) { hudBegin(); }
