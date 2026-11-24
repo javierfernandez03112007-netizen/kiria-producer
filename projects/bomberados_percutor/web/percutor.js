@@ -548,7 +548,7 @@ const std = (c, r = 0.6, mt = 0) => new THREE.MeshStandardMaterial({ color: c, r
 const WX0 = -0.22, WX1 = 0.66, WY0 = 0.9, WY1 = 1.37, WZ = 0.815;
 const IMP = V(0.5, 0.99, WZ);
 const NX = 26, NY = 15;
-let truck, beacons = [], blink = [], car, panelG, pane, tiles, tileInfo = [], film, tool, toolBody, spring, pin, ring, glove, occ, glassM, workL, crackPts = [];
+let glove2, truck, beacons = [], blink = [], car, panelG, pane, tiles, tileInfo = [], film, tool, toolBody, spring, pin, ring, glove, occ, glassM, workL, crackPts = [];
 
 function makeCar(col) {
   const G = new THREE.Group();
@@ -575,18 +575,28 @@ function makeCar(col) {
   quad([[-1.25, 0.9, 0.81], [-0.38, 0.9, 0.81], [-0.38, 1.37, 0.81], [-1.25, 1.37, 0.81]]);         // atrás, lado cercano
   quad([[-1.25, 0.9, -0.81], [0.66, 0.9, -0.81], [0.66, 1.37, -0.81], [-1.25, 1.37, -0.81]]);       // lado lejano
   const inner = std(0x1b1d22, 0.95);
-  add(new THREE.BoxGeometry(3.0, 0.05, 1.5), inner, -0.2, 0.86, 0);
-  for (const z of [0.4, -0.4]) { add(new RoundedBoxGeometry(0.5, 0.12, 0.5, 2, 0.04), std(0x262a31, 0.9), -0.2, 0.92, z); add(new RoundedBoxGeometry(0.1, 0.62, 0.5, 2, 0.04), std(0x262a31, 0.9), -0.48, 1.2, z, 0, 0, -0.15); }
-  add(new THREE.TorusGeometry(0.17, 0.02, 8, 24), std(0x111111, 0.6), 0.32, 1.1, 0.4, 0, Math.PI / 2 - 0.35, 0);
-  add(new THREE.BoxGeometry(0.4, 0.25, 1.5), std(0x15171b, 0.9), 0.62, 0.98, 0);
+  add(new THREE.BoxGeometry(3.0, 0.004, 1.56), inner, -0.2, 0.872, 0);                                        // la «moqueta» (encima de la carrocería)
+  for (const z of [0.4, -0.4]) add(new RoundedBoxGeometry(0.1, 0.46, 0.5, 2, 0.04), std(0x262a31, 0.9), -0.5, 1.11, z, 0, 0, -0.12);   // respaldos (por debajo del techo)
+  add(new THREE.TorusGeometry(0.17, 0.02, 8, 24), std(0x111111, 0.6), 0.3, 1.1, 0.4, 0, Math.PI / 2 - 0.35, 0);
+  add(new THREE.BoxGeometry(0.3, 0.22, 1.5), std(0x15171b, 0.9), 0.57, 0.985, 0);                                // salpicadero (detrás del parabrisas)
   G.userData = {}; return G;
+}
+function landY(x, z) {               // altura donde se para un trocito que cae dentro del coche (lo que hay debajo)
+  if (Math.hypot(x + 0.13, z - 0.48) < 0.1) return 1.37;                                   // la cabeza
+  if (x > -0.39 && x < -0.09 && z > 0.25 && z < 0.55) return 1.18;                          // los hombros
+  if (x > -0.15 && x < 0.21 && (Math.abs(z - 0.24) < 0.05 || Math.abs(z - 0.57) < 0.05)) return 1.16;   // los brazos
+  if (x > -0.22 && x < 0.22 && z > 0.25 && z < 0.57) return 1.015;                          // las piernas
+  if (x > 0.42 && x < 0.72) return 1.098;                                                   // el salpicadero
+  return 0.876;                                                                             // la moqueta
 }
 function makeOccupant() {          // el conductor, herido, con la cabeza caída
   const G = new THREE.Group(), jacket = std(0x4a2c26, 0.8), skin = std(0xc48a66, 0.55), hair = std(0x2a1b10, 0.9);
-  const t = new THREE.Mesh(new THREE.CapsuleGeometry(0.16, 0.3, 6, 12), jacket); t.position.set(-0.22, 1.12, 0.4); t.rotation.z = -0.15; G.add(t);
-  const h = new THREE.Mesh(new THREE.SphereGeometry(0.1, 18, 14), skin); h.position.set(-0.13, 1.39, 0.47); G.add(h);
+  const t = new THREE.Mesh(new THREE.CapsuleGeometry(0.15, 0.26, 6, 12), jacket); t.position.set(-0.24, 0.94, 0.4); t.rotation.z = -0.1; G.add(t);
+  const h = new THREE.Mesh(new THREE.SphereGeometry(0.1, 18, 14), skin); h.position.set(-0.13, 1.27, 0.48); G.add(h);
+  const jeans = std(0x252f44, 0.85);
+  for (const z of [0.32, 0.5]) { const th = new THREE.Mesh(new THREE.CapsuleGeometry(0.07, 0.3, 4, 10), jeans); th.rotation.z = Math.PI / 2; th.position.set(0.0, 0.944, z); G.add(th); }
   const hr = new THREE.Mesh(new THREE.SphereGeometry(0.105, 18, 14, 0, Math.PI * 2, 0, 1.5), hair); hr.position.copy(h.position); hr.rotation.set(-0.3, 0, 0.5); G.add(hr);
-  for (const z of [0.25, 0.56]) { const a = new THREE.Mesh(new THREE.CapsuleGeometry(0.045, 0.3, 4, 10), jacket); a.position.set(0.05, 1.08, z); a.rotation.z = Math.PI / 2 - 0.3; G.add(a); }
+  for (const z of [0.24, 0.57]) { const a = new THREE.Mesh(new THREE.CapsuleGeometry(0.045, 0.3, 4, 10), jacket); a.position.set(0.03, 1.1, z); a.rotation.z = Math.PI / 2 - 0.3; G.add(a); }
   G.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
   return G;
 }
@@ -614,7 +624,7 @@ function makeTool() {
 function makeGlove() {
   const G = new THREE.Group(), gm = std(0x15161a, 0.8), band = new THREE.MeshStandardMaterial({ color: 0xd9d34a, roughness: 0.4, emissive: 0x777a20, emissiveIntensity: 0.25 });
   const palm = new THREE.Mesh(new RoundedBoxGeometry(0.1, 0.045, 0.11, 2, 0.02), gm); G.add(palm);
-  for (let i = 0; i < 4; i++) { const f = new THREE.Mesh(new THREE.CapsuleGeometry(0.013, 0.05, 4, 8), gm); f.rotation.z = Math.PI / 2; f.position.set(0.075, 0.012, -0.038 + i * 0.025); f.rotation.y = 0; G.add(f); }
+  for (let i = 0; i < 4; i++) { const f = new THREE.Mesh(new THREE.CapsuleGeometry(0.013, 0.03, 4, 8), gm); f.rotation.z = Math.PI / 2; f.position.set(0.062, 0.01, -0.038 + i * 0.025); G.add(f); }
   const cuff = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.06, 0.12, 14), gm); cuff.rotation.z = Math.PI / 2; cuff.position.x = -0.1; G.add(cuff);
   const b = new THREE.Mesh(new THREE.CylinderGeometry(0.057, 0.062, 0.03, 14), band); b.rotation.z = Math.PI / 2; b.position.x = -0.13; G.add(b);
   const sl = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.07, 0.5, 14), std(0x2a3346, 0.8)); sl.rotation.z = Math.PI / 2; sl.position.x = -0.4; G.add(sl);
@@ -653,7 +663,13 @@ function buildWorld() {
   for (let j = 0; j < NY; j++) for (let i = 0; i < NX; i++) {
     const k = j * NX + i, x = -W / 2 + (i + 0.5) * tw + (rnd(k * 1.3) - 0.5) * tw * 0.15, y = (j + 0.5) * th + (rnd(k * 2.7) - 0.5) * th * 0.15;
     const wx = panelG.position.x + x, wy = WY0 + y, d = Math.hypot(wx - IMP.x, wy - IMP.y);
-    tileInfo.push({ x, y, d, rx: (rnd(k * 3.1) - 0.5) * 0.12, ry: (rnd(k * 4.7) - 0.5) * 0.12, vx: (rnd(k * 5.3) - 0.5) * 0.25, vz: -0.25 - rnd(k * 6.1) * 0.55, spin: (rnd(k * 7.7) - 0.5) * 14, del: rnd(k * 8.9) * 0.18 });
+    const ti = { x, y, d, rx: (rnd(k * 3.1) - 0.5) * 0.12, ry: (rnd(k * 4.7) - 0.5) * 0.12, vx: (rnd(k * 5.3) - 0.5) * 0.25, vz: -0.25 - rnd(k * 6.1) * 0.55, spin: (rnd(k * 7.7) - 0.5) * 14, del: rnd(k * 8.9) * 0.18, yaw: rnd(k * 9.7) * 6.28 };
+    let tl = 9;
+    for (let tau = 0.005; tau < 1.2; tau += 0.005) {
+      const lx = x + ti.vx * tau, ly = y - 2.9 * tau * tau, lz = ti.vz * tau, X = panelG.position.x + lx, Y = WY0 + ly, Z = WZ + lz;
+      if (Y <= landY(X, Z) + 0.003) { tl = tau; ti.lx = lx; ti.ly = landY(X, Z) - WY0 + 0.003; ti.lz = lz; break; }
+    }
+    ti.tl = tl; tileInfo.push(ti);
   }
   // la lámina adhesiva (se extiende de izquierda a derecha)
   film = new THREE.Mesh(new THREE.PlaneGeometry(W + 0.04, H + 0.04), new THREE.MeshBasicMaterial({ color: 0x6fd3ff, transparent: true, opacity: 0.12, depthWrite: false, side: THREE.DoubleSide, fog: false }));
@@ -663,6 +679,7 @@ function buildWorld() {
     for (let s = 0; s < 14; s++) { L.push([x, y]); a += (rnd(r * 31 + s) - 0.5) * 0.5; x += Math.cos(a) * 0.05; y += Math.sin(a) * 0.05; if (x < -W / 2 || x > W / 2 || y < 0 || y > H) break; } crackPts.push(L); }
   tool = makeTool(); world.add(tool);
   glove = makeGlove(); world.add(glove);
+  glove2 = makeGlove(); glove2.visible = false; world.add(glove2);
   // la autobomba al fondo y el foco de trabajo
   truck = makeTruck(); truck.rotation.y = Math.PI * 0.85; truck.position.set(-6.5, 0, -4.2); world.add(truck);
   truck.traverse(o => { if (o.isMesh) o.castShadow = true; }); beacons = truck.userData.lbar;
@@ -679,7 +696,7 @@ function setupTimes() {
   T.tA = T.coche - 0.05; T.rA0 = T.percutor - 0.1; T.rA1 = T.rompe + 0.35;          // 1: revienta (gancho) y se rebobina
   T.tB = T.estalla - 0.1; T.fB = T.trocitos - 0.1; T.rB0 = T.primero - 0.35; T.rB1 = T.primero + 0.35;   // 2: sin lámina, cae sobre el herido
   T.tC = T.golpeas + 0.05; T.pC = T.pieza - 0.35;                                    // 3: con lámina, sale de una pieza
-  const PH = [0.62, 1.08, 1.2], PT = [IMP.x, IMP.y, WZ + 0.056], PH2 = [0.72, 1.18, 1.15], PW = [1.08, 1.22, 0.36];
+  const PH = [0.62, 1.08, 1.2], PT = [IMP.x, IMP.y, WZ + 0.062], PH2 = [0.72, 1.18, 1.15], PW = [1.08, 1.22, 0.36];
   const k = (t, p, ry, rz = 0, vis = 1) => [t, [...p, ry, rz, vis]];
   TK = [
     k(0, PH, Math.PI / 2 + 0.7, 0.15), k(T.llavero, [0.61, 1.09, 1.2], Math.PI / 2 + 0.35, 0.05), k(T.revienta + 0.15, [0.56, 1.03, 1.05], Math.PI / 2 + 0.1),
@@ -808,7 +825,17 @@ function update(t) {
   tool.position.set(v[0], v[1], v[2]); tool.rotation.set(0, v[3], v[4]);
   tool.visible = glove.visible = v[5] > 0.5;
   tool.updateMatrixWorld(true);
-  glove.position.copy(tool.localToWorld(V(-0.03, -0.04, 0.0))); glove.quaternion.copy(tool.quaternion);
+  glove.position.copy(tool.localToWorld(V(-0.055, -0.04, 0.0))); glove.quaternion.copy(tool.quaternion);
+  // la otra mano: agarra el cristal por arriba (palma fuera de la lámina) y lo saca entero
+  const gk = e3(pr(t, T.pC - 0.5, 0.45)), gOn = t > T.pC - 0.5 && t < T.parabrisas + 0.2;
+  glove2.visible = gOn;
+  if (gOn) {
+    panelG.updateMatrixWorld(true);
+    const Hh = WY1 - WY0, grip = panelG.localToWorld(V(0.12, Hh - 0.07, 0.032));
+    const Bq = new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(V(0, -1, 0), V(0, 0, 1), V(-1, 0, 0)));
+    glove2.quaternion.copy(panelG.getWorldQuaternion(new THREE.Quaternion())).multiply(Bq);
+    glove2.position.copy(grip).add(V(0.05, 0.25, 0.4).multiplyScalar(1 - gk));
+  }
   // rayos X: el muelle se carga y suelta la punta
   const xr = sm(T.aprietas - 0.25, T.aprietas + 0.15, t) * (1 - sm(T.punto + 0.6, T.templado - 0.2, t));
   toolBody.material.opacity = 1 - 0.78 * xr; tool.userData.cap.material.opacity = 1 - 0.7 * xr;
@@ -820,15 +847,19 @@ function update(t) {
   // la ventanilla
   const [seq, fall, crack, ca] = fallState(t); SEQ = seq; FALL = fall; CRACK = crack; CRACKA = ca;
   pane.visible = seq === 0; tiles.visible = seq > 0;
-  tiles.material.opacity = 0.15 + 0.4 * sm(0.02, 0.12, fall); tiles.material.emissiveIntensity = 0.1 + 0.9 * sm(0.02, 0.12, fall);
+  tiles.material.opacity = 0.15 + 0.35 * sm(0.02, 0.12, fall); tiles.material.emissiveIntensity = 0.1 + 0.3 * sm(0.02, 0.12, fall);
   if (seq > 0) {
     const D = seq === 2 ? 1.6 : 1.0;
     tileInfo.forEach((ti, k) => {
       const tau = Math.max(0, fall * D - ti.del - ti.d * 0.4);
-      let x = ti.x + ti.vx * tau, y = ti.y - 2.9 * tau * tau, z = ti.vz * tau;
-      const vis = y > -0.04 && (seq !== 2 || tau < 1.4);
-      E4.set(ti.rx + ti.spin * tau * 0.6, ti.ry + ti.spin * tau, ti.spin * tau * 0.3); Q4.setFromEuler(E4);
-      S4.setScalar(vis ? 1 : 0); P4.set(x, y, z); M4.compose(P4, Q4, S4); tiles.setMatrixAt(k, M4);
+      if (tau >= ti.tl) {                       // ya ha caído: se queda tumbado donde tocó
+        P4.set(ti.lx, ti.ly, ti.lz); E4.set(-Math.PI / 2 + ti.rx, ti.yaw, 0);
+      } else {
+        P4.set(ti.x + ti.vx * tau, ti.y - 2.9 * tau * tau, ti.vz * tau);
+        const f = ti.tl < 9 ? cl(tau / ti.tl) : 0;
+        E4.set(ti.rx + (ti.spin * tau * 0.6) * (1 - f) + (-Math.PI / 2) * f * f, ti.ry + ti.spin * tau, ti.spin * tau * 0.3);
+      }
+      Q4.setFromEuler(E4); S4.setScalar(1); M4.compose(P4, Q4, S4); tiles.setMatrixAt(k, M4);
     });
     tiles.instanceMatrix.needsUpdate = true;
   }
