@@ -334,6 +334,19 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   si la sesión se reinicia o Javi escribe: no depender de ellos; (3) SwiftShader ya usa los 4 núcleos: 4 procesos de render NO van más rápido
   que 2 (≈ 4 s por fotograma a tamaño real); (4) `window.dbgEval` puede sustituir funciones de la escena para una portada (p. ej. dejar la pantalla
   del fondo sin texto).
+  **Entregado el 24-11-2026 (≈ 21:40)**: 55,0 s, 3.299 fotogramas a 60 fps, −14,9 LUFS, 28,7 MB + portada, miniatura 4:5 y `DESCRIPCION.txt`.
+  Javi aprobó las 6 máquinas de apoyo («Abre máquinas para hacerlo»): cada una hace ≈ 1,3 s por fotograma (500 fotogramas en unos 12 minutos).
+  **Más lecciones del render**: (5) los haces de foco (`lightCone`) dejaban algún píxel defectuoso que el brillo (bloom) convertía en un **disco
+  blanco de un solo fotograma**: quitados. Detector: contar por fotograma los píxeles > 238 y buscar picos aislados (mayor que sus dos vecinos);
+  (6) cruzar con la cámara una pared transparente (la urna) da un salto de brillo de un fotograma: la pared se desvanece con la distancia a la
+  cámara; (7) **render 2,2 veces más rápido**: lo que solo emite luz (pantallas, frentes de atril) va con `MeshBasicMaterial` (sin reflejos ni
+  luces) y el desenfoque de fondo solo donde se nota (era el 40 % del tiempo); (8) las máquinas de ayuda suben **JPG sueltos** (`ALL=1
+  render_chunk.sh A B X` → `chunks/all_A_B/`, recoge `fetch_odd.sh`): salen idénticos píxel a píxel a los de aquí, sin recodificar; (9) NO subir
+  commits nuevos a la rama después de decir a las máquinas «tiene que salir el commit X»: una se paró a preguntar. Decir «X o posterior» o no
+  tocar la rama hasta que acaben; (10) `git archive` con ruta relativa falla desde una subcarpeta: usar `git -C <raíz>`; (11) antes del render
+  final, medir con `window.renderAt` qué cuesta cada cosa (DOF, sombras, reflejos, MSAA): diez minutos de medida ahorraron horas.
+  **Pendiente de la serie**: capítulos 1 (PP), 2 (PSOE), 3 (Vox) y 4 (Frente Amplio) con la misma plantilla (pantalla con la foto, medidas sobre
+  el atril) y antes del viernes 27 a medianoche.
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
