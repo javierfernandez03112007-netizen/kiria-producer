@@ -1,15 +1,34 @@
-El domingo no eliges presidente: eliges 350 diputados, y ellos lo eligen. 🗳️
+🗳️ El domingo no eliges presidente: eliges 350 diputados… y ellos lo eligen.
 
-29N, capítulo 0. Los cuatro candidatos que debaten el jueves y dos medidas del programa de cada uno, tal como las escriben ellos. Sin opinión y sin encuestas.
+🎤 29N, capítulo 0. Los cuatro candidatos que debaten el jueves y dos medidas del programa de cada uno, con sus propias palabras. Sin opinión y sin encuestas. Hay más partidos que se presentan: estos cuatro son los del debate a cuatro (jueves 26, 22:00).
 
-Uno de los cuatro lleva en su programa «cero IRPF en tu primer año de trabajo» para quien tiene entre 18 y 35 años. ¿Quién… y con qué letra pequeña? Mañana, capítulo 1.
+🔎 Uno de los cuatro lleva en su programa «cero IRPF en tu primer año de trabajo» si tienes entre 18 y 35 años. ¿Quién… y con qué letra pequeña? Mañana, capítulo 1.
 
-Hay más partidos que se presentan: estos cuatro son los del debate a cuatro (jueves 26, 22:00).
+👇 Mándaselo a quien aún no sabe a quién votar.
 
-Mándaselo a quien aún no sabe a quién votar.
+📚 Fuentes: calendario de la Junta Electoral Central; Constitución (arts. 68 y 99) y ley electoral (LOREG); y los programas de PP («Reconstrucción Nacional»), PSOE, Vox («Es sentido común») y Frente Amplio, según sus webs y lo publicado por Infobae, Artículo 14, El Independiente, El Plural, El Español, The Objective y Euronews.
 
-—
-Fuentes: Junta Electoral Central (calendario), Constitución (arts. 68 y 99) y los programas de PP, PSOE, Vox y Frente Amplio, según su propia web y varios medios. Lista completa con enlaces: en los comentarios.
-Imágenes: plató virtual hecho por ordenador; no es una imagen del debate. Las caras son fotos reales, sin animar: Feijóo (Partido Popular, 2025, CC0), Sánchez (Pool Moncloa / Carlos Spottorno de las Morenas, 2026; Ministerio de la Presidencia, Gobierno de España), Abascal (Vox España, 2026, CC0) y Colau (Laura Guerrero / Ajuntament de Barcelona, 2022, CC BY 4.0), de Wikimedia Commons, con el fondo quitado.
+🎬 Plató virtual hecho por ordenador: no es una imagen del debate. Las caras son fotos reales, sin animar ni retocar (solo se les ha quitado el fondo), de Wikimedia Commons: Feijóo (Partido Popular, 2025, CC0), Sánchez (Pool Moncloa / Carlos Spottorno de las Morenas, 2026; Ministerio de la Presidencia, Gobierno de España), Abascal (Vox España, 2026, CC0) y Colau (Laura Guerrero / Ajuntament de Barcelona, 2022, CC BY 4.0).
 
-#29N #elecciones #eleccionesgenerales #política #España #debate #votar
+#29N #elecciones #eleccionesgenerales #elecciones2026 #política #España #debate #votar #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+🗳️ El domingo no eliges presidente: eliges 350 diputados. Los cuatro del debate y dos medidas de cada uno, sin opinión. ¿Quién promete cero IRPF en tu primer año de trabajo? Mañana, capítulo 1. Fotos reales (Wikimedia Commons), plató virtual.
+
+#29N #elecciones #política #España
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). El audio dice el guion entero.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Un solo plano sin cortes; primer fotograma = último (bucle).
+- Los candidatos son sus FOTOS REALES en pantallas (no vídeo ni caras generadas con IA). Los créditos de arriba hay que dejarlos (la de Colau, CC BY, lo exige).
+- La foto de Colau es de 2022 (ahora lleva el pelo canoso): es la libre y neutra más reciente que hay en Wikimedia Commons.
+- Sin sondeos: la ley (LOREG, art. 69.7) prohíbe publicarlos del 24 al 28. Tampoco responder en comentarios con «quién va ganando».
+- La respuesta a la intriga es el PP (IRPF de 18 a 35 años: 100 % el primer año de tributación, 75 %, 50 % y 25 %). No decirla en comentarios: es el capítulo 1.
+- Calendario: la campaña acaba el viernes 27 a medianoche y el sábado 28 es jornada de reflexión: la serie tiene que estar publicada antes. Con cuatro capítulos por delante, tocan dos al día (jueves y viernes, mañana y tarde).
+- Instagram no recomienda por defecto el contenido político a quien no te sigue (RECETA, 7 bis): contar con menos alcance.
+- Antes de publicar, abrir al menos un enlace por partido de FUENTES.md (desde aquí no se pueden abrir las webs de los medios).
