@@ -30,7 +30,7 @@ async function buildScene() {
 function turnK(id, t) { const [a, b] = TL.turn[id]; return bump(t, a, b, 0.35, 0.35); }
 function anyTurn(t) { let k = 0; for (const id of ORDER) k = Math.max(k, turnK(id, t)); return k; }
 function colK(id, t) { const on = win(t, TL.estos - 0.2 + ORDER.indexOf(id) * 0.14, 0.3), me = turnK(id, t), other = anyTurn(t) - me; return clamp((0.45 + 0.55 * on) * (1 + 0.15 * me - 0.6 * other), 0, 1.2); }
-function spotK(id, t) { const on = win(t, TL.estos - 0.2 + ORDER.indexOf(id) * 0.14, 0.3), me = turnK(id, t), other = anyTurn(t) - me, sweep = bump(t, TL.quien - 0.1, TL.manana, 0.2, 0.3) * (0.5 + 0.5 * Math.sin(t * 9 - ORDER.indexOf(id) * 1.57)); return clamp((0.3 + 0.7 * on) * (1 + 0.5 * me - 0.5 * other) + 0.6 * sweep, 0, 1.7); }
+function spotK(id, t) { const on = win(t, TL.estos - 0.2 + ORDER.indexOf(id) * 0.14, 0.3), me = turnK(id, t), other = anyTurn(t) - me, sweep = bump(t, TL.quien - 0.1, TL.manana, 0.2, 0.3) * (0.5 + 0.5 * Math.sin(t * 9 - ORDER.indexOf(id) * 1.57)); return clamp((0.3 + 0.7 * on) * (1 + 0.25 * me - 0.45 * other) + 0.5 * sweep, 0, 1.5); }
 // el sobre: cae dentro de la urna hacia la cámara. u = segundos desde el primer fotograma (cae de −0,55 a 0,7); la segunda caída enlaza el final con el principio
 function envU(t) { return t < END / 2 ? t : t - END; }
 function envAt(u) { const e = S.env, base = S.urn.position.y, ux = SET.URN[0], uz = SET.URN[2], k = clamp((u + 0.5) / 1.5), fall = Math.pow(k, 1.3);

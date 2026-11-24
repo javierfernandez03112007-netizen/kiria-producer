@@ -19,7 +19,7 @@ const MOODS = {
   salonT: { zen: 0x34447e, hor: 0xffa070, gnd: 0x5a4a52, sunD: [-0.86, 0.1, 0.5], sunC: 0xffb070, sunS: 1.1, stars: 0.0, clouds: 1.0, fogC: 0xe8a684, fogD: 0.0,
            key: [0xffa86a, 2.6], keyD: [-0.86, 0.3, 0.42], fill: [0xffd2a0, 0.3], hemi: [0xffdcb8, 0x5a4232, 0.7], env: 0.5, exp: 1.0 },
   plato: { zen: 0x04060c, hor: 0x0a0f20, gnd: 0x020305, sunD: [0.0, 0.9, 0.45], sunC: 0x000000, sunS: 0.0, stars: 0.0, fogC: 0x060a16, fogD: 0.012,
-           key: [0xfff1dc, 2.5], keyD: [0.12, 0.72, 0.68], fill: [0x8fb0ff, 0.5], hemi: [0x9fb4e8, 0x0c0e14, 0.42], env: 0.5, exp: 1.0 },
+           key: [0xfff1dc, 2.1], keyD: [0.12, 0.72, 0.68], fill: [0x8fb0ff, 0.5], hemi: [0x9fb4e8, 0x0c0e14, 0.42], env: 0.5, exp: 1.0 },
   salon: { zen: 0x5d9be0, hor: 0xd6e8f4, gnd: 0x7d8a6a, sunD: [-0.5, 0.62, 0.6], sunC: 0xfff1d6, sunS: 0.9, stars: 0.0, fogC: 0xd2e2ee, fogD: 0.0,
            key: [0xfff0d8, 3.1], keyD: [-0.5, 0.62, 0.6], fill: [0xffd9a8, 0.35], hemi: [0xffe6c8, 0x5a4232, 0.75], env: 0.55, exp: 1.0 },
 };
