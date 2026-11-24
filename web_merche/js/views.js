@@ -3,6 +3,7 @@ import { SHOP, NEEDS, GROUPS, CATS } from './config.js';
 import { PRODUCTS, byId, card, eur, esc, picture, brandName, related, search, look, featured } from './catalog.js';
 import * as cart from './cart.js';
 import * as fx from './fx.js';
+import { navigate } from './nav.js';
 
 const param = (q, o) => { const p = new URLSearchParams(q); Object.entries(o).forEach(([k, v]) => (v ? p.set(k, v) : p.delete(k))); const s = p.toString(); return '#/tienda' + (s ? '?' + s : ''); };
 const PAGE = 24;
@@ -55,7 +56,7 @@ export function tienda(q) {
     </div></section>`,
     mount(root) {
       fx.words(root); fx.reveal(root); fx.tilt(root); fx.drag(root); fx.lazyVideos(root);
-      root.querySelectorAll('[data-sel]').forEach(s => s.addEventListener('change', e => { location.hash = param(q, { [s.dataset.sel]: e.target.value, ...(s.dataset.sel === 'need' ? { cat: '', linea: '' } : {}) }); }));
+      root.querySelectorAll('[data-sel]').forEach(s => s.addEventListener('change', e => { navigate(param(q, { [s.dataset.sel]: e.target.value, ...(s.dataset.sel === 'need' ? { cat: '', linea: '' } : {}) })); }));
       const more = root.querySelector('#more'), grid = root.querySelector('#grid'); let shown = PAGE;
       if (more) more.addEventListener('click', () => {
         const t = document.createElement('template'); t.innerHTML = cells(shown, shown + PAGE); shown += PAGE;
@@ -217,7 +218,7 @@ export function caja() {
         root.querySelector('#pay').textContent = `Pagar ${eur(sub + ship)}`;
       };
       form.addEventListener('change', paint); paint();
-      const onBag = () => { if (!form.isConnected) return document.removeEventListener('bolsa', onBag); if (!cart.count()) location.hash = '#/tienda'; else paint(); };
+      const onBag = () => { if (!form.isConnected) return document.removeEventListener('bolsa', onBag); if (!cart.count()) navigate('#/tienda'); else paint(); };
       document.addEventListener('bolsa', onBag);
       form.addEventListener('submit', e => {
         e.preventDefault(); let bad = null;
@@ -229,7 +230,7 @@ export function caja() {
         const total = cart.subtotal() + cart.shipCost(form.envio.value);
         try { sessionStorage.setItem('bsm-pedido', JSON.stringify({ n: 'BSM-' + String(Date.now()).slice(-6), total, pick: !!M.find(m => m.id === form.envio.value)?.pickup })); } catch { }
         document.removeEventListener('bolsa', onBag);
-        cart.clear(); location.hash = '#/gracias';
+        cart.clear(); navigate('#/gracias');
       });
     },
   };

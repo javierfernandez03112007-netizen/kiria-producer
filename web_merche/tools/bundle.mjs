@@ -27,6 +27,21 @@ let html = readFileSync(join(root, 'index.html'), 'utf8')
   .replace(/<link rel="stylesheet" href="css\/motion\.css">\n?/, '')
   .replace(/<script type="module" src="js\/app\.js"><\/script>/, () => `<script>${js.replace(/<\/script/gi, '<\\/script')}</script>`);
 if (/href="css\/|src="js\//.test(html)) throw new Error('quedan referencias a archivos sueltos');
+
+// --artifact: la misma web como «fragmento» para publicarla de vista previa privada en claude.ai.
+// Allí la página va dentro de un marco: sin <html>/<head>/<body> propios, título corto y rutas en memoria (js/nav.js).
+if (process.argv.includes('--artifact')) {
+  const src = readFileSync(join(root, 'index.html'), 'utf8');
+  const pre = /<script>\s*\/\* Antes de pintar[\s\S]*?<\/script>/.exec(src)[0];
+  const body = /<body>([\s\S]*)<\/body>/.exec(src)[1]
+    .replace(/<script type="module" src="js\/app\.js"><\/script>/, () => `<script>${js.replace(/<\/script/gi, '<\\/script')}</script>`);
+  const frag = `<title>Beauty Salon Merche</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n<style>${css}</style>\n`
+    + `<script>window.__MEM_ROUTER = true; document.documentElement.lang = 'es';</script>\n${pre}\n${body.trim()}\n`;
+  if (/<!doctype|<html[\s>]|<head[\s>]|<body[\s>]/i.test(frag.replace(/<script>[\s\S]*?<\/script>/g, ''))) throw new Error('el fragmento no puede llevar doctype, html, head ni body');
+  const out2 = process.env.OUT || join(root, 'dist/artifact.html');
+  mkdirSync(dirname(out2), { recursive: true }); writeFileSync(out2, frag);
+  console.log(`${out2} · ${(frag.length / 1e6).toFixed(2)} MB (fragmento para claude.ai)`);
+}
 mkdirSync(join(root, 'dist'), { recursive: true });
 const dest = join(root, 'dist/beauty-salon-merche-demo.html');
 writeFileSync(dest, html);

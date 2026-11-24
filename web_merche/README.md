@@ -4,6 +4,12 @@ Tienda online de **Beauty Salon Merche** (Merche Herrera, Motril) para vender **
 Contexto, decisiones y pendientes del proyecto: `merche/README.md`. Esto explica cómo está hecha la web y cómo se cambia.
 
 ## Verla
+- **Enlace privado (vista previa en claude.ai, publicado el 24-11-2026 porque Javi lo pidió):** https://claude.ai/artifact/MyPr7aV3fpCqdQVF3dcX62
+  Solo lo abre Javi con su cuenta hasta que lo comparta desde el menú «Compartir» (Merche no puede abrirlo mientras tanto).
+  Para actualizarlo: `OUT=<ruta>/beauty-salon-merche.html node tools/bundle.mjs --artifact` y publicar ese archivo con la herramienta Artifact
+  pasando esa `url` (si no, se crea un enlace nuevo). Esa versión es un «fragmento» (sin `<html>`/`<head>`/`<body>`) y lleva la ruta en memoria
+  (`window.__MEM_ROUTER`, ver `js/nav.js`), porque dentro del marco de claude.ai no pasan direcciones como `#/tienda`: allí el botón «atrás» del
+  navegador no cambia de página dentro de la tienda. Como la web lleva el nombre de un negocio real, **no se publica ni se comparte sin que Javi lo pida**.
 - **Sin servidor:** abre `dist/beauty-salon-merche-demo.html` (todo en un archivo). Se regenera con `node tools/bundle.mjs` (necesita `esbuild`).
 - **En desarrollo:** `python3 -m http.server` dentro de esta carpeta y abre `http://localhost:8000`.
 - `?sinintro` salta la intro y `?intro` la fuerza. La intro solo sale en la primera visita, y nunca si se entra directamente a un producto
@@ -26,6 +32,7 @@ Contexto, decisiones y pendientes del proyecto: `merche/README.md`. Esto explica
 | `js/cart.js` | La bolsa (se guarda en el navegador) |
 | `js/intro.js` | La intro: vídeo con IA si existe; si no, la bolsa en 3D (three.js) |
 | `js/app.js` | Arranque y rutas (`#/tienda`, `#/p/<id>`, `#/caja`…) |
+| `js/nav.js` | Navegación: ruta en la dirección (normal) o en memoria (vista previa de claude.ai). **Nunca uses `location.hash` directamente: usa `navigate()` y `hash()`** |
 | `data/` | Catálogo en JSON + `build.py` + `overrides.json` |
 | `tools/bundle.mjs` | Empaqueta todo en un archivo |
 
@@ -58,6 +65,7 @@ Recomendado: fotos 1200×1500 (4:5) con fondo limpio; vídeos de producto 4:5, 4
 - **Nada fuera de pantalla sin recortar:** la bolsa cerrada, el telón y el cursor viven dentro de `.clip` (caja fija con `overflow:hidden`). Si no, en el
   móvil la página se ensancha y todo lo fijo se descoloca. Rejillas de una columna: `minmax(0, 1fr)`.
 - **Animaciones de entrada sin `forwards`:** un `animation` que se queda activo convierte al elemento en contenedor de lo `position: fixed` que lleve dentro.
+- **Zonas seguras del móvil:** el margen lateral (`--pad`) y lo que va pegado a un borde (cabecera, bolsa, buscador, menú) suman `env(safe-area-inset-*)`.
 - Las escenas fijadas (lo más vendido, ghd) solo se activan en pantallas de más de 860 px y sin «reducir movimiento»; en el móvil son carruseles y pestañas.
 - Las marcas se escriben en texto. **Logos y fotos oficiales, solo con permiso de ghd y de Henkel.**
 

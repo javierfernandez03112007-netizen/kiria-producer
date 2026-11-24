@@ -25,6 +25,8 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 ## La web (`web_merche/`) — estado el 24-11-2026: montada entera como maqueta que funciona
 **Cómo está hecha y cómo se toca: `web_merche/README.md`** (léelo antes de cambiar nada). Resumen:
 - HTML, CSS y JS sin librerías (solo three.js para la intro), fuentes alojadas en la propia web (RGPD). Cuando esté aprobada, se pasa a un tema de Shopify.
+- **Enlace privado de vista previa** (lo pidió Javi el 24-11): https://claude.ai/artifact/MyPr7aV3fpCqdQVF3dcX62 — solo lo abre él hasta que lo comparta.
+  Cómo se actualiza: `web_merche/README.md`.
 - **Para enseñarla sin servidor:** `web_merche/dist/beauty-salon-merche-demo.html` (un solo archivo de ≈ 1,1 MB; se abre con doble clic).
 - **Catálogo: 169 productos** (59 ghd + 110 Schwarzkopf Professional) con descripción, ventajas, modo de uso, datos técnicos, precio de referencia y fuente.
   Sale de `web_merche/data/*.json`. Los precios son PVP o de tiendas (nov. 2026): **el precio final lo pone Merche**; los campos dudosos van en `confirm`.

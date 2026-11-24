@@ -402,3 +402,15 @@ footer.foot { overflow-x: clip; }
 .mnav.on a { opacity: 1; transform: none; }
 .mnav.on a:nth-child(1) { transition-delay: .12s; } .mnav.on a:nth-child(2) { transition-delay: .17s; } .mnav.on a:nth-child(3) { transition-delay: .22s; }
 .mnav.on a:nth-child(4) { transition-delay: .27s; } .mnav.on a:nth-child(5) { transition-delay: .32s; } .mnav.on a:nth-child(6) { transition-delay: .37s; }
+
+/* ---------- zonas seguras del móvil (barras del sistema): los márgenes laterales y lo que va pegado a un borde las respetan ---------- */
+:root { --pad: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
+header.top { top: env(safe-area-inset-top, 0px); }
+header.top.hide { transform: translateY(calc(-101% - env(safe-area-inset-top, 0px))); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 45; background: var(--bg); pointer-events: none; }
+.prog { top: env(safe-area-inset-top, 0px); }
+.clip .drawer { padding-top: env(safe-area-inset-top, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.search { padding-top: calc(26px + env(safe-area-inset-top, 0px)); }
+.mnav { padding-top: calc(150px + env(safe-area-inset-top, 0px)); }
+#intro .skip { right: calc(20px + env(safe-area-inset-right, 0px)); }
+@media (max-width: 860px) { .sticky-buy { padding-inline: var(--pad); } }

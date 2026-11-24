@@ -5,6 +5,7 @@ import * as fx from './fx.js';
 import * as cart from './cart.js';
 import * as home from './home.js';
 import * as views from './views.js';
+import * as nav from './nav.js';
 
 const $ = s => document.querySelector(s);
 const view = $('#view');
@@ -12,7 +13,7 @@ try { history.scrollRestoration = 'manual'; } catch { }
 
 // ---------- rutas (#/tienda?g=…, #/p/<id>, #/caja…) ----------
 function parse() {
-  const h = location.hash.replace(/^#\/?/, ''), [path, qs = ''] = h.split('?');
+  const h = nav.hash().replace(/^#\/?/, ''), [path, qs = ''] = h.split('?');
   return { path: path.replace(/\/$/, ''), q: new URLSearchParams(qs) };
 }
 function resolve({ path, q }) {
@@ -37,7 +38,7 @@ function show(r, route, keepScroll) {
   view.innerHTML = v.html; document.title = v.title;
   document.body.dataset.route = r.kind.split(':')[0];
   v.mount(view); fx.relayout();
-  const here = location.hash || '#/';
+  const here = nav.hash() || '#/';
   document.querySelectorAll('.nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === here));
   if (keepScroll) scrollTo(0, Math.min(y, Math.max(0, document.documentElement.scrollHeight - innerHeight)));
   else { scrollTo(0, 0); const s = route.q.get('s'); if (r.kind === 'home' && s) requestAnimationFrame(() => toSection(s, false)); }
@@ -51,11 +52,15 @@ function go(first = false) {
   if (r.kind === 'tienda' && current === 'tienda') return show(r, route, true);
   fx.curtain(() => show(r, route));
 }
-addEventListener('hashchange', () => go());
-// pulsar un enlace que ya es la dirección actual (p. ej. «¿Cuál es mi ghd?» dos veces) también debe responder
+nav.onNavigate(() => go());
+// Enlaces internos. Con la ruta en memoria los llevamos nosotros; con la ruta en la dirección solo hay que atender
+// el caso de pulsar un enlace que ya es la dirección actual (p. ej. «¿Cuál es mi ghd?» dos veces).
 document.addEventListener('click', e => {
   const a = e.target.closest('a[href^="#/"]');
-  if (a && !e.defaultPrevented && a.getAttribute('href') === (location.hash || '#/')) { e.preventDefault(); go(); }
+  if (!a || e.defaultPrevented || e.target.closest('button, [data-add]')) return;
+  const h = a.getAttribute('href');
+  if (nav.memory) { e.preventDefault(); nav.navigate(h); }
+  else if (h === (location.hash || '#/')) { e.preventDefault(); go(); }
 });
 
 // ---------- avisos ----------
@@ -94,7 +99,7 @@ function buscador() {
   $('#search-btn').addEventListener('click', () => { sbox.classList.add('on'); inp.value = ''; draw(); setTimeout(() => inp.focus(), 60); });
   sbox.querySelector('[data-x]').addEventListener('click', closeSearch);
   inp.addEventListener('input', draw);
-  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && inp.value.trim()) location.hash = '#/tienda?q=' + encodeURIComponent(inp.value.trim()); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && inp.value.trim()) nav.navigate('#/tienda?q=' + encodeURIComponent(inp.value.trim())); });
   sbox.querySelector('.hint').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { inp.value = b.textContent; draw(); inp.focus(); } });
   addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
 }
@@ -126,7 +131,7 @@ async function intro(force = false) {
   if (introBusy) return; introBusy = true;
   try { sessionStorage.setItem('bsm-intro', '1'); } catch { }
   if (force) { // repetirla: se vuelve arriba, a la portada, y la página se prepara para «entrar» otra vez
-    if (current !== 'home') { location.hash = '#/'; }
+    if (current !== 'home') nav.navigate('#/');
     scrollTo(0, 0); document.body.classList.remove('entered', 'is-quick'); document.documentElement.classList.remove('no-intro');
   }
   if (!box) {
