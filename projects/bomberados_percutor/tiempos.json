@@ -1,0 +1,517 @@
+[
+ {
+  "text": "¿Sabes qué es esto? Cabe en un llavero… y revienta la ventanilla de un coche.",
+  "start": 0.0,
+  "end": 4.704,
+  "words": [
+   {
+    "w": "¿Sabes",
+    "start": 0.0,
+    "end": 0.479
+   },
+   {
+    "w": "qué",
+    "start": 0.479,
+    "end": 0.639
+   },
+   {
+    "w": "es",
+    "start": 0.639,
+    "end": 0.799
+   },
+   {
+    "w": "esto?",
+    "start": 0.799,
+    "end": 1.468
+   },
+   {
+    "w": "Cabe",
+    "start": 1.468,
+    "end": 1.758
+   },
+   {
+    "w": "en",
+    "start": 1.758,
+    "end": 1.838
+   },
+   {
+    "w": "un",
+    "start": 1.838,
+    "end": 1.998
+   },
+   {
+    "w": "llavero…",
+    "start": 1.998,
+    "end": 2.757
+   },
+   {
+    "w": "y",
+    "start": 2.757,
+    "end": 2.877
+   },
+   {
+    "w": "revienta",
+    "start": 2.877,
+    "end": 3.596
+   },
+   {
+    "w": "la",
+    "start": 3.596,
+    "end": 3.676
+   },
+   {
+    "w": "ventanilla",
+    "start": 3.676,
+    "end": 4.155
+   },
+   {
+    "w": "de",
+    "start": 4.155,
+    "end": 4.235
+   },
+   {
+    "w": "un",
+    "start": 4.235,
+    "end": 4.395
+   },
+   {
+    "w": "coche.",
+    "start": 4.395,
+    "end": 4.704
+   }
+  ]
+ },
+ {
+  "text": "Es un percutor rompecristales.",
+  "start": 5.014,
+  "end": 6.642,
+  "words": [
+   {
+    "w": "Es",
+    "start": 5.014,
+    "end": 5.095
+   },
+   {
+    "w": "un",
+    "start": 5.095,
+    "end": 5.194
+   },
+   {
+    "w": "percutor",
+    "start": 5.194,
+    "end": 5.753
+   },
+   {
+    "w": "rompecristales.",
+    "start": 5.753,
+    "end": 6.642
+   }
+  ]
+ },
+ {
+  "text": "Aprietas, salta un muelle y la punta golpea un solo punto.",
+  "start": 7.002,
+  "end": 10.477,
+  "words": [
+   {
+    "w": "Aprietas,",
+    "start": 7.002,
+    "end": 7.671
+   },
+   {
+    "w": "salta",
+    "start": 7.671,
+    "end": 8.07
+   },
+   {
+    "w": "un",
+    "start": 8.07,
+    "end": 8.15
+   },
+   {
+    "w": "muelle",
+    "start": 8.15,
+    "end": 8.55
+   },
+   {
+    "w": "y",
+    "start": 8.55,
+    "end": 8.71
+   },
+   {
+    "w": "la",
+    "start": 8.71,
+    "end": 8.789
+   },
+   {
+    "w": "punta",
+    "start": 8.789,
+    "end": 9.109
+   },
+   {
+    "w": "golpea",
+    "start": 9.109,
+    "end": 9.668
+   },
+   {
+    "w": "un",
+    "start": 9.668,
+    "end": 9.828
+   },
+   {
+    "w": "solo",
+    "start": 9.828,
+    "end": 10.148
+   },
+   {
+    "w": "punto.",
+    "start": 10.148,
+    "end": 10.477
+   }
+  ]
+ },
+ {
+  "text": "La ventanilla es de cristal templado: estalla entera en trocitos.",
+  "start": 10.847,
+  "end": 14.662,
+  "words": [
+   {
+    "w": "La",
+    "start": 10.847,
+    "end": 10.951
+   },
+   {
+    "w": "ventanilla",
+    "start": 10.951,
+    "end": 11.426
+   },
+   {
+    "w": "es",
+    "start": 11.426,
+    "end": 11.586
+   },
+   {
+    "w": "de",
+    "start": 11.586,
+    "end": 11.666
+   },
+   {
+    "w": "cristal",
+    "start": 11.666,
+    "end": 12.145
+   },
+   {
+    "w": "templado:",
+    "start": 12.145,
+    "end": 12.944
+   },
+   {
+    "w": "estalla",
+    "start": 12.944,
+    "end": 13.504
+   },
+   {
+    "w": "entera",
+    "start": 13.504,
+    "end": 13.903
+   },
+   {
+    "w": "en",
+    "start": 13.903,
+    "end": 14.063
+   },
+   {
+    "w": "trocitos.",
+    "start": 14.063,
+    "end": 14.662
+   }
+  ]
+ },
+ {
+  "text": "Pero dentro hay un herido.",
+  "start": 15.032,
+  "end": 16.36,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 15.032,
+    "end": 15.182
+   },
+   {
+    "w": "dentro",
+    "start": 15.182,
+    "end": 15.581
+   },
+   {
+    "w": "hay",
+    "start": 15.581,
+    "end": 15.821
+   },
+   {
+    "w": "un",
+    "start": 15.821,
+    "end": 15.981
+   },
+   {
+    "w": "herido.",
+    "start": 15.981,
+    "end": 16.36
+   }
+  ]
+ },
+ {
+  "text": "Por eso, primero pegas una lámina adhesiva… y luego golpeas.",
+  "start": 16.7,
+  "end": 20.336,
+  "words": [
+   {
+    "w": "Por",
+    "start": 16.7,
+    "end": 16.86
+   },
+   {
+    "w": "eso,",
+    "start": 16.86,
+    "end": 17.179
+   },
+   {
+    "w": "primero",
+    "start": 17.179,
+    "end": 17.499
+   },
+   {
+    "w": "pegas",
+    "start": 17.499,
+    "end": 17.898
+   },
+   {
+    "w": "una",
+    "start": 17.898,
+    "end": 18.058
+   },
+   {
+    "w": "lámina",
+    "start": 18.058,
+    "end": 18.458
+   },
+   {
+    "w": "adhesiva…",
+    "start": 18.458,
+    "end": 19.307
+   },
+   {
+    "w": "y",
+    "start": 19.307,
+    "end": 19.412
+   },
+   {
+    "w": "luego",
+    "start": 19.412,
+    "end": 19.656
+   },
+   {
+    "w": "golpeas.",
+    "start": 19.656,
+    "end": 20.336
+   }
+  ]
+ },
+ {
+  "text": "Los trocitos se quedan pegados y el cristal sale de una pieza.",
+  "start": 20.655,
+  "end": 23.881,
+  "words": [
+   {
+    "w": "Los",
+    "start": 20.655,
+    "end": 20.808
+   },
+   {
+    "w": "trocitos",
+    "start": 20.808,
+    "end": 21.334
+   },
+   {
+    "w": "se",
+    "start": 21.334,
+    "end": 21.414
+   },
+   {
+    "w": "quedan",
+    "start": 21.414,
+    "end": 21.734
+   },
+   {
+    "w": "pegados",
+    "start": 21.734,
+    "end": 22.133
+   },
+   {
+    "w": "y",
+    "start": 22.133,
+    "end": 22.293
+   },
+   {
+    "w": "el",
+    "start": 22.293,
+    "end": 22.373
+   },
+   {
+    "w": "cristal",
+    "start": 22.373,
+    "end": 22.853
+   },
+   {
+    "w": "sale",
+    "start": 22.853,
+    "end": 23.172
+   },
+   {
+    "w": "de",
+    "start": 23.172,
+    "end": 23.332
+   },
+   {
+    "w": "una",
+    "start": 23.332,
+    "end": 23.572
+   },
+   {
+    "w": "pieza.",
+    "start": 23.572,
+    "end": 23.881
+   }
+  ]
+ },
+ {
+  "text": "¿Y en el parabrisas, funciona? ¿Sí o no?",
+  "start": 24.291,
+  "end": 26.758,
+  "words": [
+   {
+    "w": "¿Y",
+    "start": 24.291,
+    "end": 24.363
+   },
+   {
+    "w": "en",
+    "start": 24.363,
+    "end": 24.435
+   },
+   {
+    "w": "el",
+    "start": 24.435,
+    "end": 24.531
+   },
+   {
+    "w": "parabrisas,",
+    "start": 24.531,
+    "end": 25.37
+   },
+   {
+    "w": "funciona?",
+    "start": 25.37,
+    "end": 26.189
+   },
+   {
+    "w": "¿Sí",
+    "start": 26.189,
+    "end": 26.448
+   },
+   {
+    "w": "o",
+    "start": 26.448,
+    "end": 26.608
+   },
+   {
+    "w": "no?",
+    "start": 26.608,
+    "end": 26.758
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 27.097,
+  "end": 29.065,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 27.097,
+    "end": 27.807
+   },
+   {
+    "w": "a",
+    "start": 27.807,
+    "end": 27.886
+   },
+   {
+    "w": "quien",
+    "start": 27.886,
+    "end": 28.126
+   },
+   {
+    "w": "quiera",
+    "start": 28.126,
+    "end": 28.446
+   },
+   {
+    "w": "ser",
+    "start": 28.446,
+    "end": 28.606
+   },
+   {
+    "w": "bombero!",
+    "start": 28.606,
+    "end": 29.065
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Élite Bomberos! ¡Sin matrícula y sin permanencia!",
+  "start": 29.375,
+  "end": 33.709,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 29.375,
+    "end": 30.028
+   },
+   {
+    "w": "¡Élite",
+    "start": 30.028,
+    "end": 30.843
+   },
+   {
+    "w": "Bomberos!",
+    "start": 30.843,
+    "end": 31.642
+   },
+   {
+    "w": "¡Sin",
+    "start": 31.642,
+    "end": 31.882
+   },
+   {
+    "w": "matrícula",
+    "start": 31.882,
+    "end": 32.601
+   },
+   {
+    "w": "y",
+    "start": 32.601,
+    "end": 32.761
+   },
+   {
+    "w": "sin",
+    "start": 32.761,
+    "end": 33.0
+   },
+   {
+    "w": "permanencia!",
+    "start": 33.0,
+    "end": 33.709
+   }
+  ]
+ }
+]

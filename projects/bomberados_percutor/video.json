@@ -1,0 +1,194 @@
+{
+ "formato": "percutor",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "¿SABES QUÉ ES ESTO?",
+  "etiqueta": "RESCATE EN TRÁFICO",
+  "t": 1.4,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 0.8,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "sabes": [
+   "Sabes",
+   1,
+   1
+  ],
+  "esto": [
+   "esto",
+   1,
+   1
+  ],
+  "llavero": [
+   "llavero",
+   1,
+   1
+  ],
+  "revienta": [
+   "revienta",
+   1,
+   1
+  ],
+  "ventanilla": [
+   "ventanilla",
+   1,
+   1
+  ],
+  "coche": [
+   "coche",
+   1,
+   1
+  ],
+  "percutor": [
+   "percutor",
+   1,
+   2
+  ],
+  "rompe": [
+   "rompecristales",
+   1,
+   2
+  ],
+  "aprietas": [
+   "Aprietas",
+   1,
+   3
+  ],
+  "muelle": [
+   "muelle",
+   1,
+   3
+  ],
+  "punta": [
+   "punta",
+   1,
+   3
+  ],
+  "punto": [
+   "punto",
+   1,
+   3
+  ],
+  "templado": [
+   "templado",
+   1,
+   4
+  ],
+  "estalla": [
+   "estalla",
+   1,
+   4
+  ],
+  "trocitos": [
+   "trocitos",
+   1,
+   4
+  ],
+  "dentro": [
+   "dentro",
+   1,
+   5
+  ],
+  "herido": [
+   "herido",
+   1,
+   5
+  ],
+  "primero": [
+   "primero",
+   1,
+   6
+  ],
+  "lamina": [
+   "lámina",
+   1,
+   6
+  ],
+  "adhesiva": [
+   "adhesiva",
+   1,
+   6
+  ],
+  "golpeas": [
+   "golpeas",
+   1,
+   6
+  ],
+  "pegados": [
+   "pegados",
+   1,
+   7
+  ],
+  "pieza": [
+   "pieza",
+   1,
+   7
+  ],
+  "parabrisas": [
+   "parabrisas",
+   1,
+   8
+  ],
+  "funciona": [
+   "funciona",
+   1,
+   8
+  ],
+  "si": [
+   "Sí",
+   1,
+   8
+  ],
+  "no": [
+   "no",
+   1,
+   8
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   9
+  ],
+  "acierta": [
+   "quien",
+   1,
+   9
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   10
+  ],
+  "marca": [
+   "Élite",
+   1,
+   10
+  ],
+  "prueba": [
+   "Sin",
+   1,
+   10
+  ],
+  "permanencia": [
+   "permanencia",
+   1,
+   10
+  ]
+ }
+}

@@ -3559,7 +3559,91 @@ def sfx_track_cojines(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_percutor(path):
+    """«¿Sabes qué es esto?» (percutor rompecristales): noche en la carretera, el tintineo del llavero, el chasquido del muelle
+    y el cristal que estalla (tres veces: el gancho, sin lámina —con los trocitos cayendo— y con lámina, apagado), el
+    rebobinado, la lámina que se pega, el cristal que sale entero, la pregunta y la venta de Élite. Tiempos como en
+    percutor.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    T = dict(c)
+    T["fin"] = c["compartir"] - 0.25
+    tA, rA0, rA1 = c["coche"] - 0.05, c["percutor"] - 0.1, c["rompe"] + 0.35
+    tB, fB, rB0 = c["estalla"] - 0.1, c["trocitos"] - 0.1, c["primero"] - 0.35
+    tC, pC = c["golpeas"] + 0.05, c["pieza"] - 0.35
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe")); w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh")); cris = _onset(_load("cristales"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    put(_loop(_load("aire"), END + 0.5), 0.0, -31, T["fin"], 0.3, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -38, T["fin"], 0.6, 1.0, track=amb)
+    put("tension", 0.0, -32, c["revienta"], 0.2, 0.3, track=amb)
+    # el llavero
+    for k in range(3):
+        put(_pitch(tic, 2.4 + 0.3 * k), c["llavero"] + 0.08 * k, -29, 0.08)
+    put(_pitch(toque, 1.0), c["esto"] - 0.02, -25, 0.4)
+    # 1: revienta (y se rebobina)
+    put(_pitch(tic, 1.4), tA - 0.03, -21, 0.1)
+    put(cris, tA, -18, 1.1, 0.002, 0.4)
+    put(_pitch(golpe, 1.5), tA, -22, 0.3, 0.002, 0.15)
+    put(_pitch(w2, 1.3)[::-1].copy(), rA0, -26, rA1 - rA0, 0.05, 0.05)
+    put(_pitch(nota, 1.0), c["percutor"] - 0.02, -26, 0.7)
+    # el muelle se carga y suelta la punta
+    put(_pitch(_load("tension"), 1.6), c["aprietas"], -32, c["punta"] - c["aprietas"], 0.1, 0.02)
+    put(_pitch(tic, 0.8), c["punta"] + 0.02, -18, 0.12)
+    put(_pitch(golpe, 2.2), c["punta"] + 0.02, -23, 0.2, 0.002, 0.1)
+    put(_pitch(toque, 1.26), c["punto"] - 0.02, -26, 0.35)
+    # 2: estalla entero; los trocitos caen sobre el herido; rebobinado
+    put(_pitch(cris, 0.9), tB, -19, 1.2, 0.002, 0.4)
+    put(_pitch(cris, 1.15), fB, -24, 1.6, 0.02, 0.5)
+    put("latido", c["herido"] - 0.1, -23, 0.7)
+    put(_pitch(w2, 1.3)[::-1].copy(), rB0, -27, 0.7, 0.05, 0.05)
+    # 3: la lámina (se pega) y el golpe: se agrieta sin caer y sale de una pieza
+    put(_pitch(_onset(_load("papeles")), 1.2), c["lamina"] - 0.05, -25, c["adhesiva"] + 0.55 - c["lamina"], 0.03, 0.15)
+    put(_pitch(tic, 1.4), tC - 0.03, -21, 0.1)
+    put(_pitch(cris, 0.75), tC, -24, 0.5, 0.002, 0.25)
+    put(_pitch(nota, 1.12), c["pegados"] - 0.03, -26, 0.7)
+    put(_pitch(wh, 0.8), pC, -27, 1.1)
+    put("acierto", c["pieza"] - 0.03, -25, 0.8)
+    # la pregunta
+    put(_pitch(wh, 0.7), c["parabrisas"] - 0.35, -26, 1.0)
+    put("tension", c["parabrisas"], -31, c["compartir"] - c["parabrisas"] - 0.3, 0.3, 0.3, track=amb)
+    put(_pitch(bub, 1.0), c["si"] - 0.02, -24, 0.14, 0.001, 0.05)
+    put(_pitch(bub, 1.2), c["no"] - 0.02, -24, 0.14, 0.001, 0.05)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", T["fin"] - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", T["fin"], -36, END - T["fin"], 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "percutor":
+        return sfx_track_percutor(path)
     if Q.get("formato") == "cojines":
         return sfx_track_cojines(path)
     if Q.get("formato") == "forestal":
