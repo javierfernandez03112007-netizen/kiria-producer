@@ -19,25 +19,36 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 4. **Javi** graba o genera los vídeos y me los manda.
 5. **Yo** los edito: montaje, subtítulos, rótulos, detalles en 3D, sonido y versiones de cada formato.
 - Los guiones de cada producto van en `merche/guiones/<producto>.md` y los vídeos en `merche/videos/<producto>/`.
-- **La web se hace parte por parte** (decisión de Javi, 24-11): yo propongo cada sección, la monto, te mando capturas y vídeo (`merche/web_avances/`) y seguimos cuando le da el visto bueno.
+- **La web**: el 24-11 Javi pidió montarla ya entera y «de 10»: dinámica (escenas que se mueven en horizontal, cambios de plano, nada de
+  «una página que baja y ya»), con **todos los productos de ghd y Schwarzkopf Professional** y huecos para las fotos y vídeos que irá mandando.
 
-## La web (`web_merche/`), parte por parte
-Es una maqueta en HTML, CSS y JS sin librerías (salvo three.js para la intro), con las fuentes alojadas en la propia web por el RGPD.
-Cuando esté aprobada, se pasa a un tema de Shopify. Para verla: `cd web_merche && python3 -m http.server`.
-Añadiendo `?sinintro` a la dirección se salta la intro, y con `?intro` se fuerza.
-| # | Parte | Estado |
-|---|---|---|
-| 1 | Base + intro de 5 s (bolsa 3D; el vídeo con IA se enchufa en `js/config.js`) + avisos + cabecera + portada | **hecha 24-11**, esperando el visto bueno |
-| 2 | Tienda: categorías por necesidad y tarjetas con vídeo | siguiente |
-| 3 | Ficha de producto (vídeo, consejo de Merche, «lo recibes el…», combínalo con) | — |
-| 4 | Carrito y caja (envíos, recogida en el salón, pago) | — |
-| 5 | «¿Cuál es tu ghd?» (comparador) | — |
-| 6 | «Compra y Merche te enseña» (el tutorial) + packs | — |
-| 7 | Tu rutina en 30 s (test) | — |
-| 8 | Merche, el salón y novias | — |
-| 9 | Confianza (original, garantía, envíos, devoluciones) + preguntas frecuentes | — |
-| 10 | Pie + textos legales + buscador | — |
-- `js/art.js`: siluetas provisionales del producto, mientras no haya foto oficial. `css/styles.css` ya trae los estilos de casi todas las partes.
+## La web (`web_merche/`) — estado el 24-11-2026: montada entera como maqueta que funciona
+**Cómo está hecha y cómo se toca: `web_merche/README.md`** (léelo antes de cambiar nada). Resumen:
+- HTML, CSS y JS sin librerías (solo three.js para la intro), fuentes alojadas en la propia web (RGPD). Cuando esté aprobada, se pasa a un tema de Shopify.
+- **Para enseñarla sin servidor:** `web_merche/dist/beauty-salon-merche-demo.html` (un solo archivo de ≈ 1,1 MB; se abre con doble clic).
+- **Catálogo: 169 productos** (59 ghd + 110 Schwarzkopf Professional) con descripción, ventajas, modo de uso, datos técnicos, precio de referencia y fuente.
+  Sale de `web_merche/data/*.json`. Los precios son PVP o de tiendas (nov. 2026): **el precio final lo pone Merche**; los campos dudosos van en `confirm`.
+- **Fotos y vídeos:** basta con dejar el archivo en `web_merche/media/productos/<id>.jpg` (foto), `<id>.mp4` (vídeo) o `<id>-tutorial.mp4`
+  (tutorial de Merche) y ejecutar `python3 data/build.py`. Los generales (intro, vídeo de portada, foto de Merche) se ponen en `js/config.js`.
+- Lo que tiene:
+  | Parte | Qué hace |
+  |---|---|
+  | Intro de 5 s | La bolsa en 3D (o el vídeo con IA cuando exista). Solo la primera visita y nunca si se llega directo a un producto desde un anuncio. Se puede repetir desde el pie |
+  | Entrada | El nombre sube desde la bolsa a la cabecera y la portada aparece por partes |
+  | Lo más vendido | Escena fijada: al bajar, las tarjetas se desplazan en horizontal (en el móvil, carrusel con el dedo). **La selección es provisional** |
+  | ¿Qué necesita tu pelo? | Lista grande; al pasar por cada necesidad cambia el plano de la derecha |
+  | ¿Cuál es tu ghd? | Escena negra fijada por pasos (Original → Gold → Platinum+ → Chronos → Sculpt). Textos orientativos nuestros: que los revise Merche |
+  | Novedades | Cinta grande que corre en sentido contrario + carril |
+  | Compras, y Merche te enseña | Los 3 pasos y el móvil con el correo del tutorial |
+  | Schwarzkopf | Paneles que se abren por línea (Bonacure, Fibre Clinix, BLONDME, Scalp Clinix, OSiS, Session Label, Silhouette) |
+  | Tu rutina en 30 s | Test de 3 preguntas que propone productos y los añade a la bolsa |
+  | Packs y estuches | Carril que se arrastra. El precio del pack es la suma (sin descuentos inventados) |
+  | Merche y novias | Texto real (20 años, Motril, novias); foto pendiente |
+  | Tienda | Filtros por grupo, marca, necesidad, línea y tipo; ordenar; «ver más»; buscador |
+  | Ficha | Foto, hueco de vídeo y de tutorial, precio, «recíbelo el…», consejo de Merche (pendiente), datos, «combínalo con» |
+  | La bolsa y la caja | Bolsa lateral con barra de envío gratis; caja en un paso con envíos, recogida en el salón y pago. **Es una demostración: no cobra ni guarda datos** |
+- Todo lo que falta por confirmar sale en la web con una etiqueta amarilla discontinua («pendiente», «por confirmar»).
+- Vídeos de cómo se ve: `merche/web_avances/` (recorrido en ordenador y en móvil).
 
 ## Reglas de los vídeos
 - Cada dato del producto sale de la ficha oficial de la marca y se dice como suyo («según ghd…»). Lo dudoso se marca con «CONFIRMAR».
@@ -61,4 +72,8 @@ Añadiendo `?sinintro` a la dirección se salta la intro, y con `?intro` se fuer
 
 ## Pendiente
 - **De Merche:** permisos de ghd y de Henkel, consentimiento de imagen, logo y bolsa, precios (de venta y de compra) y acceso a su Meta Business.
+  Para la web: qué productos vende de verdad (de los 169), sus precios, lo más vendido real, envíos (transportista, costes, gratis desde…),
+  formas de pago, su WhatsApp e Instagram, sus datos fiscales para los textos legales, su foto y una frase por producto estrella.
 - **De Javi:** qué era «triple» (¿TPV? ¿Stripe?), si la web actual la hicimos nosotros, la clave de la IA de vídeo, la clave de ElevenLabs y el precio que le cobra a Merche.
+  Para la web: visto bueno o cambios de la maqueta, fotos y vídeos (los va mandando) y si quiere un enlace privado para verla en el móvil.
+- **Mío (siguiente):** poner fotos y vídeos reales según lleguen, textos de Merche por producto, y pasar la maqueta aprobada a Shopify.

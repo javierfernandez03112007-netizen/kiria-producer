@@ -19,3 +19,6 @@ Sección **Bomberados** (vídeos para la marca, estructuras propias): antes de c
 
 Web del estudio (venta de vídeos hechos con IA a empresas): `web_estudio/`. Antes de tocarla lee `web_estudio/README.md`
 (idea base aprobada, datos reales que usa y lo que falta). Las versiones nuevas parten de la rama `web-estudio-v1`.
+
+Cliente **Beauty Salon Merche** (tienda online de ghd y Schwarzkopf Professional + vídeos + anuncios): antes de tocar nada lee `merche/README.md`
+(idea, forma de trabajar, lo investigado y lo pendiente) y, para la web, `web_merche/README.md` (cómo está hecha, catálogo, cómo se añaden fotos y vídeos).
