@@ -228,3 +228,22 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
 - ¿Presión de trabajo? (8–12 bar) · ¿Cuántos cojines como máximo apilados? (2) · ¿Cuál va abajo? (el mayor) · Dos apilados
   ¿qué aumentan? (solo la altura; la capacidad es la del pequeño) · ¿Qué superficie mínima bajo la carga? (70–75 %) ·
   ¿Ángulo máximo? (30º) · ¿Cómo se deja en carga? (cerrando el órgano de corte y desconectando el latiguillo).
+
+## 24 nov 2026 · Percutor rompecristales (rescate en accidentes de tráfico)
+
+### Fuente — ficha de Élite Bomberos que pone Adrián Luna (Notion, fila «MARTES 24»)
+- Percutor rompecristales: se emplea en el tratamiento de cristales de las ventanillas de los ocupantes, que son de
+  **cristal templado**. **Primero se pega la lámina adhesiva y después se emplea el percutor** (los trocitos quedan
+  pegados y el cristal sale de una pieza, sin caer sobre el herido).
+- Cómo funciona (descripción general): al apretarlo contra el cristal se carga un muelle que suelta la punta contra un
+  solo punto; el templado estalla entero en trocitos.
+- El parabrisas es **laminado** (dos vidrios con una lámina de plástico): se raja pero no se desprende; no se quita con el
+  percutor, se corta (diferencia clásica de los manuales de excarcelación).
+
+### Vídeos hechos con esto
+- «¿Sabes qué es esto?» (`projects/bomberados_percutor/`): sin lámina, los trocitos caen sobre el herido; con lámina,
+  sale de una pieza; cierre: ¿funciona en el parabrisas? (no, es laminado). Venta de Élite Bomberos.
+
+### Preguntas de examen que salen de aquí
+- ¿De qué es la ventanilla lateral? (templado) · ¿Y el parabrisas? (laminado) · ¿Qué va antes, la lámina o el golpe? (la
+  lámina) · ¿Para qué sirve la lámina? (que los trozos queden pegados y el cristal salga entero, sin caer sobre el herido).
