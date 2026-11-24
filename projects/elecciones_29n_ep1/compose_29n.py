@@ -6,6 +6,7 @@ fotogramas 3D a 60 fps (out/frames; los candidatos son sus FOTOS REALES en panta
     python3 ajustar_voz.py && python3 env_voz.py
     (render → out/frames)
     python3 projects/elecciones_29n_ep1/compose_29n.py [--test t1 t2 ...] [--sfx]
+    HALF=1 python3 …/compose_29n.py out/previa_30fps.mp4     (vista previa con solo los fotogramas pares)
 """
 import json
 import os
@@ -28,6 +29,7 @@ END = LINES[-1]["end"] + 1.2
 N = int(END * FPS)
 FRAMES = os.environ.get("FRAMES_DIR", os.path.join(ROOT, "out", "frames"))
 AUDIO = os.path.join(ROOT, "assets", "voz.mp3")
+HALF = bool(os.environ.get("HALF"))                    # HALF=1: vista previa con solo los fotogramas pares (30 fps reales)
 WORDS = [dict(w, n=norm(w["w"]), line=i + 1) for i, l in enumerate(LINES) for w in l["words"]]
 
 
@@ -60,7 +62,10 @@ SUBS = None
 
 def compose(fi):
     t = fi / FPS
-    img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
+    src = os.path.join(FRAMES, f"f{fi:05d}.jpg")
+    if HALF and not os.path.exists(src):               # vista previa a 30 fps: si falta un fotograma impar, se repite el par anterior
+        src = os.path.join(FRAMES, f"f{fi - fi % 2:05d}.jpg")
+    img = cv2.imread(src).astype(np.float32) / 255
     SUBS.draw(img, t, 1 - prog(t, END - 0.5, 0.3))
     k = prog(t, NOTE_T[0], 0.3) * (1 - prog(t, NOTE_T[1], 0.3))       # aviso discreto mientras se ve el plató entero: no es una imagen del debate
     if k > 0.01:
@@ -164,7 +169,7 @@ def sfx_track(path):
 
 
 def main(dst=os.path.join(ROOT, "out", "elecciones_29n_ep1.mp4")):
-    missing = [i for i in range(N) if not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
+    missing = [i for i in range(N) if (i % 2 == 0 or not HALF) and not os.path.exists(os.path.join(FRAMES, f"f{i:05d}.jpg"))]
     if missing:
         sys.exit(f"faltan {len(missing)} fotogramas (p. ej. {missing[:5]})")
     sfxp = os.path.join(ROOT, "out", "sfx.wav")
@@ -192,5 +197,7 @@ if __name__ == "__main__":
             cv2.imwrite(os.path.join(ROOT, "out", "ctest", f"c{t:05.2f}.jpg"), fr)
     elif len(sys.argv) > 1 and sys.argv[1] == "--sfx":
         sfx_track(os.path.join(ROOT, "out", "sfx.wav"))
+    elif len(sys.argv) > 1:
+        main(os.path.join(ROOT, sys.argv[1]))
     else:
         main()
