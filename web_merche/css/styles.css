@@ -430,3 +430,33 @@ footer.foot { background: var(--noir); color: #cfc2b1; padding: clamp(48px, 6vw,
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .rise { opacity: 1; transform: none; }
 }
+
+/* ---------- parte 1: portada con imagen (añadido 24-11) ---------- */
+#intro .stage3d { position: absolute; inset: 0; }
+.hero-grid { align-items: center; }
+.hero-media { margin: 0; position: relative; border-radius: calc(var(--r) * 1.2); overflow: hidden; aspect-ratio: 4 / 5; max-height: 78vh; justify-self: end; width: 100%; max-width: 520px; background: #1b1512; box-shadow: var(--shadow); }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 2.4s var(--ease); }
+body.entered .hero-media img { transform: none; }
+.hero-media figcaption { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #efe3cf; font-size: 13px; background: rgba(17, 13, 11, .55); backdrop-filter: blur(8px); border-radius: 12px; padding: 10px 12px; }
+.hero-media .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-2); box-shadow: 0 0 0 4px rgba(214, 185, 127, .25); }
+.hero-media .pend { margin-left: auto; }
+.next-parts { padding: 64px var(--pad) 120px; color: var(--muted); border: 1.5px dashed var(--line); border-radius: var(--r); margin: 48px auto; text-align: center; }
+@media (max-width: 860px) {
+  .hero-media { max-width: none; max-height: none; aspect-ratio: 4 / 4.4; order: -1; }
+  .hero { padding-top: 16px; }
+}
+.hero h1 { font-size: clamp(44px, 5.4vw, 88px); max-width: 12ch; }
+@media (max-width: 860px) {
+  .ann { height: 34px; font-size: 10px; letter-spacing: .12em; }
+  .ann li { white-space: nowrap; overflow: hidden; }
+  .ann li i { display: none; }
+  .hero-media { aspect-ratio: 5 / 4; max-height: 46vh; }
+  .hero-media img { object-position: 50% 45%; }
+  .hero-media figcaption { left: 10px; right: auto; bottom: 10px; padding: 6px 8px; font-size: 11px; }
+  .hero-media figcaption .txt { display: none; }
+  .hero h1 { font-size: clamp(38px, 10.5vw, 60px); margin-top: 8px; }
+  .hero .ctas .btn { flex: 1; padding: 0 14px; }
+  .by-merche { margin-top: 16px; }
+}
+.hero h1 { margin-bottom: 22px; }
+#intro .skip { background: rgba(17, 13, 11, .5); }

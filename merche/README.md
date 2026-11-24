@@ -19,7 +19,25 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 4. **Javi** graba o genera los vídeos y me los manda.
 5. **Yo** los edito: montaje, subtítulos, rótulos, detalles en 3D, sonido y versiones de cada formato.
 - Los guiones de cada producto van en `merche/guiones/<producto>.md` y los vídeos en `merche/videos/<producto>/`.
-- **Todavía no se toca la página web** («todavía no hagas nada de página», 21-11). La maqueta empezada (intro 3D de la bolsa) está en `web_merche/`.
+- **La web se hace parte por parte** (decisión de Javi, 24-11): yo propongo cada sección, la monto, te mando capturas y vídeo (`merche/web_avances/`) y seguimos cuando le da el visto bueno.
+
+## La web (`web_merche/`), parte por parte
+Es una maqueta en HTML, CSS y JS sin librerías (salvo three.js para la intro), con las fuentes alojadas en la propia web por el RGPD.
+Cuando esté aprobada, se pasa a un tema de Shopify. Para verla: `cd web_merche && python3 -m http.server`.
+Añadiendo `?sinintro` a la dirección se salta la intro, y con `?intro` se fuerza.
+| # | Parte | Estado |
+|---|---|---|
+| 1 | Base + intro de 5 s (bolsa 3D; el vídeo con IA se enchufa en `js/config.js`) + avisos + cabecera + portada | **hecha 24-11**, esperando el visto bueno |
+| 2 | Tienda: categorías por necesidad y tarjetas con vídeo | siguiente |
+| 3 | Ficha de producto (vídeo, consejo de Merche, «lo recibes el…», combínalo con) | — |
+| 4 | Carrito y caja (envíos, recogida en el salón, pago) | — |
+| 5 | «¿Cuál es tu ghd?» (comparador) | — |
+| 6 | «Compra y Merche te enseña» (el tutorial) + packs | — |
+| 7 | Tu rutina en 30 s (test) | — |
+| 8 | Merche, el salón y novias | — |
+| 9 | Confianza (original, garantía, envíos, devoluciones) + preguntas frecuentes | — |
+| 10 | Pie + textos legales + buscador | — |
+- `js/art.js`: siluetas provisionales del producto, mientras no haya foto oficial. `css/styles.css` ya trae los estilos de casi todas las partes.
 
 ## Reglas de los vídeos
 - Cada dato del producto sale de la ficha oficial de la marca y se dice como suyo («según ghd…»). Lo dudoso se marca con «CONFIRMAR».
