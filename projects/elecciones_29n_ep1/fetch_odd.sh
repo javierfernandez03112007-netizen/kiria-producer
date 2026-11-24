@@ -8,7 +8,7 @@ missing() { python3 -c "import os; print(sum(1 for i in range($N) if not os.path
 while true; do
   git fetch -q origin "+refs/heads/$PFX-*:refs/remotes/origin/$PFX-*" 2>/dev/null
   for br in $(git branch -r --list "origin/$PFX-*"); do
-    for d in $(git ls-tree --full-tree --name-only $br projects/elecciones_29n_ep1/chunks/ 2>/dev/null | grep -E '(odd|all)_[0-9]+_[0-9]+$'); do
+    for d in $(git ls-tree --full-tree --name-only $br projects/elecciones_29n_ep1/chunks/ 2>/dev/null | grep -E 'all_[0-9]+_[0-9]+$'); do
       tag=$(basename $d); h=$(git rev-parse $br:$d 2>/dev/null); [ -f out/$tag.$h.done ] && continue
       rm -rf out/tmp_$tag && mkdir -p out/tmp_$tag && git -C /home/user/kiria-producer archive $br $d | tar -x -C out/tmp_$tag || continue
       k=0; for f in out/tmp_$tag/$d/f[0-9][0-9][0-9][0-9][0-9].jpg; do b=$(basename $f); [ -s "$f" ] || continue; if [ ! -f out/frames/$b ]; then mv $f out/frames/$b; k=$((k + 1)); fi; done
