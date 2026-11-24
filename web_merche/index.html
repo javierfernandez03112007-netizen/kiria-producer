@@ -8,7 +8,17 @@
 <meta name="theme-color" content="#f6f1eb">
 <link rel="preload" href="fonts/bodoni-moda-latin-opsz-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+/* Antes de pintar: ¿toca la intro? (solo la primera visita, y nunca si se entra directo a un producto desde un anuncio) */
+try {
+  var s = location.search, forced = /[?&]intro\b/.test(s);
+  if (!forced && (/[?&]sinintro\b/.test(s) || location.hash.length > 2 || sessionStorage.getItem('bsm-intro') === '1' || matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    window.__noIntro = true; document.documentElement.className += ' no-intro';
+  }
+} catch (e) {}
+</script>
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/motion.css">
 </head>
 <body>
 
@@ -19,27 +29,26 @@
   <button id="skip" class="skip" type="button">Saltar</button>
 </div>
 
-<!-- AVISOS -->
+<div class="prog" aria-hidden="true"><i></i></div>
+<div class="clip z-curtain"><div class="curtain" aria-hidden="true"><div><small>BEAUTY SALON</small><b>Merche</b></div></div></div>
+
 <div class="ann" role="region" aria-label="Avisos"><ul></ul></div>
 
-<!-- CABECERA -->
 <header class="top">
   <div class="wrap bar">
     <nav class="nav" aria-label="Principal">
-      <a href="#tienda">Tienda</a>
-      <a href="#herramientas">Herramientas</a>
-      <a href="#cuidado">Cuidado</a>
-      <a href="#novias">Novias</a>
+      <a href="#/tienda">Tienda</a>
+      <a href="#/tienda?g=herramientas">Herramientas</a>
+      <a href="#/tienda?g=cuidado">Cuidado</a>
+      <a href="#/?s=novias">Novias</a>
     </nav>
-    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 16h16"/></svg>
-    </button>
-    <a class="logo" href="#" aria-label="Beauty Salon Merche, inicio"><small>BEAUTY SALON</small><b>Merche</b></a>
+    <button class="icon-btn menu-btn" type="button" aria-label="Menú" aria-expanded="false" aria-controls="mnav"><span class="bars"><i></i><i></i></span></button>
+    <a class="logo" href="#/" aria-label="Beauty Salon Merche, inicio"><small>BEAUTY SALON</small><b>Merche</b></a>
     <div class="tools">
-      <button class="icon-btn" type="button" aria-label="Buscar">
+      <button class="icon-btn" id="search-btn" type="button" aria-label="Buscar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
       </button>
-      <button class="icon-btn" type="button" aria-label="Carrito">
+      <button class="icon-btn" id="cart-btn" type="button" aria-label="Tu bolsa">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8h13l-1 12.5h-11z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
         <span class="count">0</span>
       </button>
@@ -47,53 +56,37 @@
   </div>
 </header>
 
-<nav class="mnav" aria-label="Menú móvil">
-  <a href="#tienda">Tienda</a>
-  <a href="#herramientas">Herra<em>mientas</em></a>
-  <a href="#cuidado">Cuidado</a>
-  <a href="#novias"><em>Novias</em></a>
-  <a href="#merche">Merche</a>
+<nav class="mnav" id="mnav" aria-label="Menú móvil">
+  <a href="#/tienda">Tienda</a>
+  <a href="#/tienda?g=herramientas">Herra<em>mientas</em></a>
+  <a href="#/tienda?g=cuidado">Cuidado</a>
+  <a href="#/tienda?g=peinado">Peinado</a>
+  <a href="#/?s=cual-ghd">¿Cuál es <em>mi ghd?</em></a>
+  <a href="#/?s=novias"><em>Novias</em></a>
 </nav>
 
-<main>
-  <!-- PORTADA -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-txt">
-        <div class="eyebrow rise" style="--i:0">Peluquería en Motril · más de 20 años</div>
-        <h1 class="rise" style="--i:1">Lo que usamos en el salón, <em>ahora en tu casa.</em></h1>
-        <p class="lead rise" style="--i:2">Herramientas ghd y cuidado Schwarzkopf Professional, elegidos por Merche.
-          Y cuando compras, <b>ella te enseña a usarlo</b> con su vídeo.</p>
-        <div class="ctas rise" style="--i:3">
-          <a class="btn" href="#tienda">Ver la tienda</a>
-          <a class="btn ghost" href="#cual-ghd">¿Cuál es mi ghd?</a>
-        </div>
-        <div class="by-merche rise" style="--i:4">
-          <span class="av">M</span>
-          <span><b>Merche Herrera</b><br>Peluquera de novias y eventos</span>
-        </div>
-      </div>
-      <figure class="hero-media rise" style="--i:2">
-        <img src="img/bolsa-hero.jpg" alt="Bolsa negra de Beauty Salon Merche con el nombre en dorado sobre un mostrador de mármol" width="1200" height="1500" fetchpriority="high">
-        <figcaption><span class="dot"></span><span class="txt">Aquí irá el vídeo de Merche en su mostrador</span> <span class="pend">vídeo IA pendiente</span></figcaption>
-      </figure>
-    </div>
-  </section>
+<main id="view"></main>
 
-  <div class="ticker rise" style="--i:5" aria-hidden="true">
-    <div class="tr">
-      <span>ghd</span><span>Schwarzkopf Professional</span><span>Producto original</span><span>El tutorial de Merche con cada compra</span><span>Recogida en el salón</span>
-      <span>ghd</span><span>Schwarzkopf Professional</span><span>Producto original</span><span>El tutorial de Merche con cada compra</span><span>Recogida en el salón</span>
-    </div>
+<footer class="foot" id="contacto"></footer>
+
+<!-- la bolsa -->
+<div class="scrim"></div>
+<div class="clip z-drawer"><aside class="drawer" aria-label="Tu bolsa" aria-hidden="true">
+  <header><h3>Tu bolsa</h3><button class="icon-btn" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header>
+  <div class="body"></div>
+</aside></div>
+
+<!-- buscador -->
+<div class="search" role="dialog" aria-label="Buscar">
+  <div class="in">
+    <div class="sbar"><input type="search" placeholder="¿Qué buscas?" aria-label="Buscar productos"><button class="icon-btn" type="button" data-x aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="hint">Prueba: <button class="chip" type="button">plancha</button><button class="chip" type="button">rubio</button><button class="chip" type="button">secador</button><button class="chip" type="button">laca</button><button class="chip" type="button">reparar</button></div>
+    <div class="res"></div>
   </div>
+</div>
 
-  <!-- Aquí irán las siguientes partes: tienda, ¿cuál es tu ghd?, el tutorial, packs, Merche, confianza, preguntas y pie -->
-  <section id="tienda" class="wrap next-parts">
-    <p class="eyebrow">Parte 2 · en construcción</p>
-    <p>Aquí va la tienda: categorías y productos con vídeo.</p>
-  </section>
-</main>
+<div class="toast" role="status"><span></span><button type="button">Ver la bolsa</button></div>
 
-<script type="module" src="js/main.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,1304 @@
+[
+ {
+  "id": "ghd-unplugged",
+  "brand": "ghd",
+  "line": "Planchas",
+  "name": "ghd Unplugged",
+  "cat": "plancha",
+  "size": "",
+  "price": 340,
+  "priceSrc": "Sephora.es",
+  "short": "Plancha sin cable para retoques y viajes, con 20 min de autonomía",
+  "desc": "Plancha inalámbrica de tamaño compacto pensada para retocar el peinado fuera de casa o llevarla de viaje. Trabaja a la temperatura fija de 185 ºC y sirve para alisar o marcar ondas en cualquier tipo de pelo, sobre todo en retoques y melenas cortas o medias.",
+  "benefits": [
+   "Hasta 20 minutos de peinado continuo sin cable",
+   "Carga por USB-C en unas 2 horas",
+   "Temperatura constante de 185 ºC",
+   "Apta para llevar en el equipaje de mano"
+  ],
+  "use": "Con el pelo seco y con protector térmico, pasa la plancha mechón a mechón de raíz a puntas; recárgala por USB-C al terminar.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Autonomía": "hasta 20 min",
+   "Carga": "unas 2 h por USB-C",
+   "Calentamiento": "45 s",
+   "Batería": "ion-litio"
+  },
+  "needs": [
+   "alisar"
+  ],
+  "colors": [
+   "negro",
+   "blanco"
+  ],
+  "url": "https://www.sephora.es/p/styler-unplugged---plancha-de-pelo-sin-cable-558457.html",
+  "confirm": [
+   "colors"
+  ]
+ },
+ {
+  "id": "ghd-max",
+  "brand": "ghd",
+  "line": "Planchas",
+  "name": "ghd Max",
+  "cat": "plancha",
+  "size": "placas de 42 mm",
+  "price": 259,
+  "priceSrc": "Primor",
+  "short": "Plancha de placas anchas para melenas largas, gruesas o muy rizadas",
+  "desc": "Plancha con placas cerámicas de 42 mm, más anchas que las de una ghd estándar, para abarcar más pelo en cada pasada. Está pensada para cabellos largos, gruesos o muy rizados. Es el modelo de placa ancha anterior a la Chronos Max.",
+  "benefits": [
+   "Placas anchas de 42 mm que cubren más pelo por pasada",
+   "Tecnología dual-zone con temperatura estable de 185 ºC",
+   "Alisado más rápido en melenas con mucho volumen"
+  ],
+  "use": "Con el pelo seco y con protector térmico, trabaja por secciones amplias y desliza la plancha de raíz a puntas de una sola pasada.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Placas": "cerámicas de 42 mm",
+   "Tecnología": "dual-zone"
+  },
+  "needs": [
+   "alisar"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.primor.eu/es_es/ghd-max-styler-plancha-de-pelo-2046.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-air",
+  "brand": "ghd",
+  "line": "Secadores",
+  "name": "ghd Air",
+  "cat": "secador",
+  "size": "",
+  "price": 159,
+  "priceSrc": "Sephora.es",
+  "short": "Secador profesional de 2100 W con tecnología iónica",
+  "desc": "Secador de corte profesional con motor AC de 2100 W y tecnología iónica. Sirve para todo tipo de cabello y busca un secado rápido con menos encrespamiento. Es el secador de entrada de la marca, por debajo de Helios y Speed.",
+  "benefits": [
+   "Motor AC profesional de 2100 W",
+   "Tecnología iónica que reduce el encrespamiento",
+   "Secado hasta dos veces más rápido, según la marca",
+   "Incluye boquilla concentradora"
+  ],
+  "use": "Sobre el pelo secado con toalla, seca por secciones con la boquilla apuntando de raíz a puntas y remata con aire frío.",
+  "facts": {
+   "Potencia": "2100 W",
+   "Motor": "AC profesional",
+   "Tecnología": "iónica"
+  },
+  "needs": [
+   "secar",
+   "encrespamiento"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/seche-cheveux-ghd-air---seche-cheveux-445883.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-flight-plus",
+  "brand": "ghd",
+  "line": "Secadores",
+  "name": "ghd Flight+",
+  "cat": "secador",
+  "size": "",
+  "price": 99.99,
+  "priceSrc": "Druni",
+  "short": "Secador de viaje plegable, ligero y con doble voltaje",
+  "desc": "Secador compacto con mango plegable pensado para la maleta. Según ghd, da el 78 % de la potencia de un secador de tamaño normal y funciona con doble voltaje, así que se puede usar en otros países.",
+  "benefits": [
+   "Mango plegable y tamaño reducido",
+   "Doble voltaje para usarlo en el extranjero",
+   "78 % de la potencia de un secador estándar, según la marca",
+   "Bastante más ligero y pequeño que el ghd Air"
+  ],
+  "use": "Despliega el mango, seca el pelo por secciones como con un secador normal y guárdalo plegado cuando se enfríe.",
+  "facts": {
+   "Potencia": "1600 W",
+   "Peso": "unos 453 g",
+   "Voltaje": "dual (120/240 V)",
+   "Mango": "plegable"
+  },
+  "needs": [
+   "secar"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.druni.es/flight-travel-hair-dryer-ghd-secador-viaje",
+  "confirm": [
+   "facts"
+  ]
+ },
+ {
+  "id": "ghd-speed-difusor",
+  "brand": "ghd",
+  "line": "Accesorios",
+  "name": "ghd Speed Difusor",
+  "cat": "accesorio",
+  "size": "",
+  "price": 39,
+  "priceSrc": "Sephora.es",
+  "short": "Difusor magnético para definir rizos con el secador ghd Speed",
+  "desc": "Difusor que se acopla por imán al secador ghd Speed. Reparte el aire para secar rizos y ondas naturales sin deshacerlos y con menos encrespamiento. Solo es compatible con ghd Speed.",
+  "benefits": [
+   "Fijación magnética al secador",
+   "Define el rizo y reduce el encrespamiento",
+   "Púas diseñadas para repartir el aire de forma uniforme"
+  ],
+  "use": "Acóplalo al ghd Speed y seca los rizos por zonas, apoyando el pelo en el difusor sin moverlo en exceso.",
+  "facts": {
+   "Compatibilidad": "ghd Speed",
+   "Fijación": "magnética"
+  },
+  "needs": [
+   "rizos-naturales",
+   "secar",
+   "encrespamiento"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/ghd-speed---difusor-magnetico-profesional-para-rizos-803862.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-speed-pro-styling",
+  "brand": "ghd",
+  "line": "Accesorios",
+  "name": "ghd Speed Pro Styling",
+  "cat": "accesorio",
+  "size": "",
+  "price": 35,
+  "priceSrc": "Sephora.es",
+  "short": "Boquilla estrecha de precisión para el secador ghd Speed",
+  "desc": "Boquilla concentradora de salida estrecha que se fija por imán al ghd Speed. Dirige el aire con precisión para trabajar con cepillo, mechón a mechón, y dar forma desde la raíz.",
+  "benefits": [
+   "Aire muy concentrado para un brushing preciso",
+   "Fijación magnética",
+   "Ayuda a levantar la raíz al secar con cepillo"
+  ],
+  "use": "Colócala en el ghd Speed y seca cada mechón con un cepillo redondo, siguiendo el cepillo con la boquilla.",
+  "facts": {
+   "Compatibilidad": "ghd Speed",
+   "Fijación": "magnética"
+  },
+  "needs": [
+   "secar",
+   "volumen"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/ghd-speed-pro-styling---boquilla-magnetica-profesional-concentradora-de-precisio-803863.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-speed-styling",
+  "brand": "ghd",
+  "line": "Accesorios",
+  "name": "ghd Speed Styling",
+  "cat": "accesorio",
+  "size": "",
+  "price": 35,
+  "priceSrc": "Sephora.es",
+  "short": "Boquilla concentradora Halo de repuesto para ghd Speed",
+  "desc": "Es la boquilla concentradora estándar del ghd Speed, la misma que viene en la caja, vendida suelta como repuesto o para cambiar de color. Concentra el aire para un secado dirigido y un acabado pulido.",
+  "benefits": [
+   "La misma boquilla que incluye el secador",
+   "Fijación magnética",
+   "Disponible en negro y en blanco"
+  ],
+  "use": "Acóplala al ghd Speed y dirige el aire de raíz a puntas mientras secas por secciones.",
+  "facts": {
+   "Compatibilidad": "ghd Speed",
+   "Fijación": "magnética"
+  },
+  "needs": [
+   "secar"
+  ],
+  "colors": [
+   "negro",
+   "blanco"
+  ],
+  "url": "https://www.sephora.es/p/ghd-speed-styling---boquilla-magnetica-halo-styling-concentradora-803866.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-speed-smoothing",
+  "brand": "ghd",
+  "line": "Accesorios",
+  "name": "ghd Speed Smoothing",
+  "cat": "accesorio",
+  "size": "88 mm",
+  "price": 35,
+  "priceSrc": "Sephora.es",
+  "short": "Boquilla ancha de 88 mm para alisar melenas largas con ghd Speed",
+  "desc": "Boquilla concentradora extra ancha para el secador ghd Speed. Está pensada para cabellos largos y gruesos: cubre mechones más anchos y deja el pelo más alineado y pulido durante el secado.",
+  "benefits": [
+   "Salida de aire de 88 mm",
+   "Hasta 3 veces más alineación del cabello, según ghd",
+   "Fijación magnética"
+  ],
+  "use": "Acóplala al ghd Speed y seca mechones anchos con cepillo plano o paddle, de raíz a puntas.",
+  "facts": {
+   "Anchura": "88 mm",
+   "Compatibilidad": "ghd Speed",
+   "Fijación": "magnética"
+  },
+  "needs": [
+   "secar",
+   "alisar",
+   "encrespamiento"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/ghd-speed-smoothing---boquilla-magnetica-halo-smoothing-ancha-concentradora-803865.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-speed-comb",
+  "brand": "ghd",
+  "line": "Accesorios",
+  "name": "ghd Speed Comb",
+  "cat": "accesorio",
+  "size": "",
+  "price": 39,
+  "priceSrc": "Sephora.es",
+  "short": "Boquilla con peine para estirar y desenredar rizos con ghd Speed",
+  "desc": "Accesorio con púas que se acopla por imán al ghd Speed. Sirve para desenredar, estirar y alisar cabello rizado, muy rizado o afro mientras se seca. El enganche evita que gire durante el uso.",
+  "benefits": [
+   "Púas que dan tensión para estirar el rizo",
+   "Fijación magnética que no gira",
+   "Pensado para cabello rizado y texturizado"
+  ],
+  "use": "Acóplalo al ghd Speed y peina cada sección de raíz a puntas mientras secas, manteniendo el mechón tenso.",
+  "facts": {
+   "Compatibilidad": "ghd Speed",
+   "Fijación": "magnética"
+  },
+  "needs": [
+   "secar",
+   "alisar",
+   "rizos-naturales"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/ghd-speed-comb---boquilla-magnetica-profesional-con-peine-803864.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-difusor-helios-air",
+  "brand": "ghd",
+  "line": "Accesorios",
+  "name": "Difusor ghd para Helios y Air",
+  "cat": "accesorio",
+  "size": "",
+  "price": null,
+  "priceSrc": "",
+  "short": "Difusor para secar rizos con los secadores ghd Helios y ghd Air",
+  "desc": "Difusor profesional para los secadores ghd Helios y ghd Air. Reparte el aire para definir rizos y ondas naturales y dar cuerpo. En el Helios se monta con el anillo adaptador que viene incluido.",
+  "benefits": [
+   "Define rizos y ondas naturales",
+   "Compatible con ghd Helios y ghd Air",
+   "Anillo adaptador para Helios incluido"
+  ],
+  "use": "Encájalo en el secador y seca los rizos por zonas a velocidad y temperatura medias, sin tocar demasiado el pelo.",
+  "facts": {
+   "Compatibilidad": "ghd Helios (con anillo adaptador) y ghd Air"
+  },
+  "needs": [
+   "rizos-naturales",
+   "secar",
+   "volumen"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.ghdhair.com/ie/hair-dryers/ghd-air-hair-dryer-diffuser",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-chronos-curve-conical-wand",
+  "brand": "ghd",
+  "line": "Rizadores",
+  "name": "ghd Chronos Curve Conical Wand",
+  "cat": "rizador",
+  "size": "28-23 mm",
+  "price": 249,
+  "priceSrc": "Sephora.es",
+  "short": "Tenacilla cónica de 28-23 mm para rizos playeros con textura",
+  "desc": "Rizador sin pinza de la gama Chronos Curve con barril cónico de 28 a 23 mm. Crea rizos y ondas de aspecto playero en melenas de cortas a largas. Su tecnología curl-responsive mantiene los 185 ºC de raíz a puntas.",
+  "benefits": [
+   "Tecnología curl-responsive a 185 ºC constantes",
+   "Rizo formado en 3-5 segundos por mechón",
+   "Punta fría y reposo automático a los 20 minutos"
+  ],
+  "use": "Enrolla cada mechón alrededor del barril con la punta fría hacia abajo, espera unos segundos y suelta el rizo en la mano para que se enfríe.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Barril": "cónico de 28-23 mm",
+   "Tecnología": "curl-responsive",
+   "Reposo automático": "20 min"
+  },
+  "needs": [
+   "rizar"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.ghdhair.com/curling-wands-and-tongs/ghd-chronos-curve-conical-wand-p-702",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-chronos-curve-max-wand",
+  "brand": "ghd",
+  "line": "Rizadores",
+  "name": "ghd Chronos Curve Max Wand",
+  "cat": "rizador",
+  "size": "38 mm",
+  "price": 249,
+  "priceSrc": "Sephora.es",
+  "short": "Tenacilla de 38 mm para ondas sueltas en melenas largas",
+  "desc": "Rizador sin pinza con el barril más grande de la gama Chronos Curve, de 38 mm. Está indicado para pelo largo y muy largo y deja ondas amplias y con volumen. Mantiene 185 ºC constantes gracias a la tecnología curl-responsive.",
+  "benefits": [
+   "Barril de 38 mm, el mayor de la gama",
+   "Tecnología curl-responsive a 185 ºC",
+   "Punta fría, soporte de seguridad y reposo automático",
+   "Incluye guante de protección"
+  ],
+  "use": "Enrolla mechones anchos alrededor del barril sin superponerlos, espera unos segundos y deja enfriar la onda antes de peinarla.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Barril": "38 mm",
+   "Tecnología": "curl-responsive",
+   "Reposo automático": "20 min",
+   "Cable": "2,7 m"
+  },
+  "needs": [
+   "rizar",
+   "volumen"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/ghd-chronos-curve-max--modelador-para-ondas-descontraidas-787270.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-wave",
+  "brand": "ghd",
+  "line": "Rizadores",
+  "name": "ghd Wave",
+  "cat": "rizador",
+  "size": "3 cilindros",
+  "price": 209,
+  "priceSrc": "El Corte Inglés",
+  "short": "Ondulador de tres cilindros para ondas tipo sirena",
+  "desc": "Tenacilla triple que marca ondas uniformes al presionar el mechón entre sus tres cilindros, sin necesidad de enrollar el pelo. Trabaja a 185 ºC en los tres barriles y funciona mejor en melenas medias y largas.",
+  "benefits": [
+   "Tres cilindros a 185 ºC constantes",
+   "Ondas marcadas en unos 3 segundos por tramo",
+   "Hasta un 30 % más de brillo y la mitad de encrespamiento, según ghd"
+  ],
+  "use": "Toma un mechón mediano, cierra el ondulador cerca de la raíz unos segundos y baja por tramos encajando la última onda.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Cilindros": "3",
+   "Calentamiento": "unos 50 s"
+  },
+  "needs": [
+   "rizar"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/perfumeria/MP_0000346_5056668012249-tenacilla-triple-ghd-wave/",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-curve-thin-wand",
+  "brand": "ghd",
+  "line": "Rizadores",
+  "name": "ghd Curve Thin Wand",
+  "cat": "rizador",
+  "size": "14 mm",
+  "price": 209,
+  "priceSrc": "Clips / Tiendas Diba (distribuidores)",
+  "short": "Tenacilla fina de 14 mm para rizos pequeños y muy definidos",
+  "desc": "Rizador sin pinza con el barril más estrecho de ghd, de 14 mm. Hace rizos pequeños y apretados y también sirve para redefinir rizos naturales o trabajar pelo corto. Pertenece a la gama Curve anterior a Chronos Curve.",
+  "benefits": [
+   "Barril cerámico de 14 mm",
+   "Temperatura óptima de 185 ºC",
+   "Rizo marcado desde 3 segundos y definición hasta 24 h, según ghd"
+  ],
+  "use": "Enrolla mechones finos alrededor del barril, espera unos segundos y suelta el rizo sin estirarlo hasta que se enfríe.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Barril": "14 mm"
+  },
+  "needs": [
+   "rizar",
+   "rizos-naturales"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.clipshair.es/tenacillas-y-rizadores/19043-rizador-ghd-curve-thin-wand-tight-curls-5060760613754.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-glide-plus-max",
+  "brand": "ghd",
+  "line": "Cepillos térmicos",
+  "name": "ghd Glide+ Max",
+  "cat": "cepillo-termico",
+  "size": "",
+  "price": 199,
+  "priceSrc": "Sephora.es",
+  "short": "Cepillo alisador de pala grande para melenas largas o gruesas",
+  "desc": "Versión grande del cepillo térmico Glide+, con una superficie más ancha que alisa secciones mayores en menos pasadas. Está pensado para cabello largo, grueso o rizado y se usa sobre el pelo seco para un liso natural y rápido.",
+  "benefits": [
+   "Pala extra grande: menos pasadas",
+   "Ionizador integrado contra el encrespamiento",
+   "Hasta un 57 % más de brillo, según ghd",
+   "Púas que no enganchan el pelo"
+  ],
+  "use": "Con el pelo seco y desenredado, pasa el cepillo despacio de raíz a puntas, sección a sección.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Tecnología": "calentador cerámico con ionizador"
+  },
+  "needs": [
+   "alisar",
+   "encrespamiento",
+   "brillo"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.sephora.es/p/ghd-glide-max---cepillo-electrico-de-alisado-f%C3%A1cil-y-r%C3%A1pido-821438.html",
+  "confirm": [
+   "facts"
+  ]
+ },
+ {
+  "id": "ghd-the-blow-dryer-talla-1",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Blow Dryer talla 1",
+  "cat": "cepillo",
+  "size": "25 mm",
+  "price": 27.4,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo redondo cerámico de 25 mm para pelo corto y flequillos",
+  "desc": "Cepillo radial con barril cerámico ventilado de 25 mm. El barril conserva el calor del secador para acelerar el brushing. Es la talla indicada para pelo corto, flequillos y capas cortas, y para dar volumen en la raíz.",
+  "benefits": [
+   "Barril cerámico que retiene el calor",
+   "Brushing más rápido",
+   "Indicado para flequillo y capas cortas"
+  ],
+  "use": "Enrolla el mechón en el cepillo y sigue su recorrido con el secador, de raíz a puntas.",
+  "facts": {
+   "Barril": "cerámico ventilado de 25 mm"
+  },
+  "needs": [
+   "secar",
+   "volumen"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": []
+ },
+ {
+  "id": "ghd-the-blow-dryer-talla-2",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Blow Dryer talla 2",
+  "cat": "cepillo",
+  "size": "35 mm",
+  "price": 27.4,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo redondo cerámico de 35 mm para pelo corto y media melena",
+  "desc": "Cepillo radial con barril cerámico ventilado de 35 mm. Es la talla más versátil de la gama: da cuerpo o un acabado liso en cabellos cortos y de largo medio. El barril retiene el calor para secar antes.",
+  "benefits": [
+   "Barril cerámico que retiene el calor",
+   "Talla versátil para corto y medio",
+   "Sirve para dar cuerpo o para alisar"
+  ],
+  "use": "Enrolla el mechón en el cepillo y sigue su recorrido con el secador, de raíz a puntas.",
+  "facts": {
+   "Barril": "cerámico ventilado de 35 mm"
+  },
+  "needs": [
+   "secar",
+   "volumen",
+   "alisar"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": []
+ },
+ {
+  "id": "ghd-the-blow-dryer-talla-3",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Blow Dryer talla 3",
+  "cat": "cepillo",
+  "size": "45 mm",
+  "price": 30.7,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo redondo cerámico de 45 mm para melena larga",
+  "desc": "Cepillo radial con barril cerámico ventilado de 45 mm. Su diámetro grande está pensado para secar y alisar melenas largas con cepillo. El barril conserva el calor del secador y acorta el brushing.",
+  "benefits": [
+   "Barril cerámico que retiene el calor",
+   "Diámetro grande para pelo largo",
+   "Brushing más rápido"
+  ],
+  "use": "Enrolla el mechón en el cepillo y sigue su recorrido con el secador, de raíz a puntas.",
+  "facts": {
+   "Barril": "cerámico ventilado de 45 mm"
+  },
+  "needs": [
+   "secar",
+   "alisar"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": []
+ },
+ {
+  "id": "ghd-the-blow-dryer-talla-4",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Blow Dryer talla 4",
+  "cat": "cepillo",
+  "size": "55 mm",
+  "price": 30.7,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo redondo cerámico de 55 mm para pelo muy largo o más volumen",
+  "desc": "Cepillo radial con el barril cerámico más grande de la gama, de 55 mm. Sirve para pelo largo y muy largo, o para conseguir mucho volumen en melenas de largo medio. El barril retiene el calor del secador.",
+  "benefits": [
+   "El barril más grande de la gama",
+   "Para pelo largo y muy largo",
+   "Volumen amplio en media melena"
+  ],
+  "use": "Enrolla el mechón en el cepillo y sigue su recorrido con el secador, de raíz a puntas.",
+  "facts": {
+   "Barril": "cerámico ventilado de 55 mm"
+  },
+  "needs": [
+   "secar",
+   "alisar",
+   "volumen"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": []
+ },
+ {
+  "id": "ghd-the-smoother",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Smoother",
+  "cat": "cepillo",
+  "size": "35 mm (talla 2)",
+  "price": 30.7,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo redondo de cerdas naturales para un brushing liso",
+  "desc": "Cepillo radial de cerdas naturales que alisa y estira el pelo durante el secado, con un acabado suave y brillante. La talla 2, de 35 mm, es la más polivalente para pelo corto y media melena; ghd fabrica más diámetros.",
+  "benefits": [
+   "Cerdas naturales para un acabado sedoso",
+   "Alisa y estira el pelo al secar",
+   "Talla versátil para corto y medio"
+  ],
+  "use": "Tensa el mechón con el cepillo y acompáñalo con el secador de raíz a puntas.",
+  "facts": {
+   "Cerdas": "naturales",
+   "Barril": "35 mm"
+  },
+  "needs": [
+   "secar",
+   "alisar",
+   "brillo"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": [
+   "size"
+  ]
+ },
+ {
+  "id": "ghd-the-dresser",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Dresser",
+  "cat": "cepillo",
+  "size": "",
+  "price": 34,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo ovalado de acabado para pulir el peinado y dar brillo",
+  "desc": "Cepillo ovalado de peinado que combina cerdas naturales con púas de nailon antiestáticas. Las de nailon penetran mejor en la melena, por lo que sirve para todo tipo de cabello. Se usa para cepillar, pulir el peinado y dar brillo.",
+  "benefits": [
+   "Mezcla de cerdas naturales y nailon antiestático",
+   "Apto para todo tipo de cabello",
+   "Pule el peinado y aporta brillo"
+  ],
+  "use": "Cepilla el pelo seco de raíz a puntas para pulirlo o para abrir y suavizar ondas ya frías.",
+  "facts": {
+   "Cerdas": "naturales y nailon antiestático"
+  },
+  "needs": [
+   "brillo",
+   "encrespamiento"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.druni.es/the-dresser-ghd-cepillo-ovalado",
+  "confirm": []
+ },
+ {
+  "id": "ghd-the-final-touch",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Final Touch",
+  "cat": "cepillo",
+  "size": "",
+  "price": 34,
+  "priceSrc": "El Corte Inglés",
+  "short": "Cepillo estrecho para cardar, pulir y rematar recogidos",
+  "desc": "Cepillo estrecho de acabado con cerdas naturales y mango terminado en punta para trazar secciones. Se usa para cardar, dar volumen en la raíz y pulir recogidos y peinados de fiesta.",
+  "benefits": [
+   "Formato estrecho para trabajar con precisión",
+   "Mango en punta para separar mechones",
+   "Útil para cardar y pulir recogidos"
+  ],
+  "use": "Carda la raíz con pasadas cortas hacia el cuero cabelludo y alisa la superficie con suavidad.",
+  "facts": {
+   "Cerdas": "naturales"
+  },
+  "needs": [
+   "volumen"
+  ],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": []
+ },
+ {
+  "id": "ghd-the-comb-out",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Comb Out",
+  "cat": "cepillo",
+  "size": "",
+  "price": 17.5,
+  "priceSrc": "El Corte Inglés",
+  "short": "Peine de púas anchas para desenredar sin tirones",
+  "desc": "Peine desenredante de púas anchas. Sirve para desenredar el pelo mojado o seco y para repartir los productos de peinado antes de usar el secador o la plancha.",
+  "benefits": [
+   "Púas anchas que desenredan con suavidad",
+   "Reparte de forma uniforme los productos de peinado",
+   "Válido en mojado y en seco"
+  ],
+  "use": "Desenreda empezando por las puntas y sube poco a poco hacia la raíz.",
+  "facts": {},
+  "needs": [],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/ghd/perfumeria/cosmetica-capilar/accesorios/",
+  "confirm": [
+   "benefits"
+  ]
+ },
+ {
+  "id": "ghd-the-sectioner",
+  "brand": "ghd",
+  "line": "Cepillos",
+  "name": "ghd The Sectioner",
+  "cat": "cepillo",
+  "size": "",
+  "price": 17.5,
+  "priceSrc": "El Corte Inglés",
+  "short": "Peine de cola para trazar rayas y separar mechones",
+  "desc": "Peine de púa fina con mango en cola. Se usa para dividir el pelo en secciones limpias antes de planchar, rizar o secar con cepillo, y para marcar la raya con precisión.",
+  "benefits": [
+   "Cola fina para secciones precisas",
+   "Púas juntas que tensan el mechón",
+   "Complemento básico para planchar y rizar"
+  ],
+  "use": "Traza la sección con la cola del peine, sujétala con una pinza y peina el mechón antes de pasar la herramienta.",
+  "facts": {},
+  "needs": [],
+  "colors": [
+   "negro"
+  ],
+  "url": "https://www.elcorteingles.es/perfumeria/MP_0000346_5060829516323-peine-ghd-the-sectioner",
+  "confirm": [
+   "benefits"
+  ]
+ },
+ {
+  "id": "ghd-bodyguard-cabello-fino",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Bodyguard cabello fino",
+  "cat": "protector",
+  "size": "120 ml",
+  "price": 26,
+  "priceSrc": "Sephora.es",
+  "short": "Protector térmico en spray que da cuerpo al cabello fino",
+  "desc": "Versión del protector térmico Bodyguard formulada para cabello fino y delicado. Protege del calor de planchas, secadores y tenacillas y, a la vez, aporta cuerpo sin apelmazar. También protege frente a los rayos UV.",
+  "benefits": [
+   "Protección térmica hasta 230 ºC",
+   "Aumenta el grosor aparente de cada mechón",
+   "Fórmula ligera que no apelmaza",
+   "Protección UV"
+  ],
+  "use": "Pulveriza sobre el pelo húmedo o seco antes de usar cualquier herramienta de calor y peina para repartirlo.",
+  "facts": {
+   "Protección térmica": "hasta 230 ºC",
+   "Formato": "spray de 120 ml"
+  },
+  "needs": [
+   "proteccion-calor",
+   "volumen"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-bodyguard-thin-hair---protector-termico-para-pelo-fino-720480.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-bodyguard-cabello-tenido",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Bodyguard cabello teñido",
+  "cat": "protector",
+  "size": "120 ml",
+  "price": 26,
+  "priceSrc": "Sephora.es",
+  "short": "Protector térmico en spray para cabello teñido o con mechas",
+  "desc": "Protector térmico Bodyguard adaptado al cabello teñido, decolorado o con mechas. Protege del calor de las herramientas y refuerza la defensa frente al sol para que el color se apague menos.",
+  "benefits": [
+   "Protección térmica hasta 230 ºC",
+   "Doble protección UV para cuidar el color",
+   "Textura acondicionadora, no pegajosa"
+  ],
+  "use": "Pulveriza sobre el pelo húmedo o seco antes de usar cualquier herramienta de calor y peina para repartirlo.",
+  "facts": {
+   "Protección térmica": "hasta 230 ºC",
+   "Formato": "spray de 120 ml"
+  },
+  "needs": [
+   "proteccion-calor",
+   "color"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-bodyguard-coloured-hair---proteccion-termica-para-pelo-tenido-720479.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-curly-ever-after",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Curly Ever After",
+  "cat": "styling",
+  "size": "120 ml",
+  "price": 26,
+  "priceSrc": "Sephora.es",
+  "short": "Spray fijador para que rizos y ondas duren más",
+  "desc": "Spray ligero de preparación para peinados con tenacilla, rizador o plancha. Ayuda a que el rizo se forme y aguante, y protege el pelo del calor. No deja el cabello acartonado ni pegajoso.",
+  "benefits": [
+   "Rizo fijado hasta 24 h con herramientas ghd, según la marca",
+   "Incluye protección térmica",
+   "Controla el encrespamiento y la electricidad estática"
+  ],
+  "use": "Pulveriza de raíz a puntas sobre cada mechón seco justo antes de rizarlo.",
+  "facts": {
+   "Formato": "spray de 120 ml"
+  },
+  "needs": [
+   "rizar",
+   "fijacion",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-curly-ever-after--spray-definicion-rizos-445468.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-straight-on",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Straight On",
+  "cat": "styling",
+  "size": "120 ml",
+  "price": 25,
+  "priceSrc": "Sephora.es",
+  "short": "Spray alisador con protección térmica y efecto antiencrespamiento",
+  "desc": "Spray de preparación para el alisado. Suaviza la fibra, protege del calor y ayuda a que el liso dure más y con menos encrespamiento. Se puede usar en pelo húmedo antes del secador o en seco antes de la plancha.",
+  "benefits": [
+   "Potencia el resultado de la plancha",
+   "Protección térmica",
+   "Menos encrespamiento y liso más duradero",
+   "Apto para todo tipo de cabello"
+  ],
+  "use": "Pulveriza sobre el pelo húmedo antes de secar o sobre el pelo seco antes de pasar la plancha.",
+  "facts": {
+   "Formato": "spray de 120 ml"
+  },
+  "needs": [
+   "alisar",
+   "encrespamiento",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-straight-on---spray-de-alisado-811180.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-pick-me-up",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Pick Me Up",
+  "cat": "styling",
+  "size": "120 ml",
+  "price": 25,
+  "priceSrc": "Sephora.es",
+  "short": "Spray de volumen para levantar la raíz del cabello fino o lacio",
+  "desc": "Spray voluminizador que se aplica en la raíz antes del secado. Levanta el pelo desde la base y da cuerpo duradero con un tacto ligero. Lleva el sistema de protección térmica de ghd.",
+  "benefits": [
+   "Levanta la raíz al instante",
+   "Volumen duradero con tacto natural",
+   "Protección térmica",
+   "Hasta 2,5 veces más volumen con el cepillo ghd Rise, según la marca"
+  ],
+  "use": "Aplica en la raíz con el pelo húmedo y seca levantando con cepillo o con los dedos.",
+  "facts": {
+   "Formato": "spray de 120 ml"
+  },
+  "needs": [
+   "volumen",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-pick-me-up---spray-de-volumen-776569.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-body-goals",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Body Goals",
+  "cat": "styling",
+  "size": "200 ml",
+  "price": 24.99,
+  "priceSrc": "Druni",
+  "short": "Espuma ligera de volumen para todo tipo de cabello",
+  "desc": "Mousse voluminizadora que se aplica antes del secado para dar cuerpo de raíz a puntas. Tiene textura ligera, sirve para todo tipo de cabello y está pensada para usarse con herramientas de calor.",
+  "benefits": [
+   "Volumen y cuerpo sin apelmazar",
+   "Apta para todo tipo de cabello",
+   "Incluye protección térmica"
+  ],
+  "use": "Reparte una nuez de espuma por el pelo húmedo, de raíz a puntas, y seca con secador.",
+  "facts": {
+   "Formato": "espuma de 200 ml"
+  },
+  "needs": [
+   "volumen",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.druni.es/body-goals-ghd-espuma-voluminizadora",
+  "confirm": []
+ },
+ {
+  "id": "ghd-sleek-talker",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Sleek Talker",
+  "cat": "aceite",
+  "size": "95 ml",
+  "price": 44,
+  "priceSrc": "Sephora.es",
+  "short": "Aceite de peinado para pasar de mojado a liso pulido",
+  "desc": "Aceite ligero y no graso con aceite de argán que se aplica sobre el pelo mojado antes de secar y alisar. Está pensado para usarse con la Duet Style y deja el pelo más alineado, suave y con menos encrespamiento.",
+  "benefits": [
+   "Hasta 72 horas de suavidad, según ghd",
+   "4 veces más alineación usado con Duet Style",
+   "25 % más de resistencia al encrespamiento",
+   "Protección térmica"
+  ],
+  "use": "Reparte 2 o 3 dosis por el pelo secado con toalla, de medios a puntas, y después seca y alisa.",
+  "facts": {
+   "Formato": "aceite de 95 ml",
+   "Con": "aceite de argán",
+   "Suavidad": "hasta 72 h (dato de marca)"
+  },
+  "needs": [
+   "alisar",
+   "encrespamiento",
+   "proteccion-calor",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/sleek-talker---aceite-de-styling-de-mojado-a-pulido-658564.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-shiny-ever-after",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Shiny Ever After",
+  "cat": "styling",
+  "size": "100 ml",
+  "price": 19,
+  "priceSrc": "Sephora.es",
+  "short": "Spray de brillo ligero para el acabado final",
+  "desc": "Bruma de acabado que aporta brillo y pule el peinado una vez terminado. Es ligera, no engrasa y ayuda a controlar los pelillos sueltos.",
+  "benefits": [
+   "Brillo inmediato",
+   "Textura ligera que no apelmaza",
+   "Controla los pelos sueltos"
+  ],
+  "use": "Con el peinado terminado, pulveriza a unos 30 cm sobre medios y puntas.",
+  "facts": {
+   "Formato": "spray de 100 ml"
+  },
+  "needs": [
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://www.druni.es/shiny-ever-after-ghd-spray-brillo-acabado-luminoso",
+  "confirm": []
+ },
+ {
+  "id": "ghd-perfect-ending",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Perfect Ending",
+  "cat": "laca",
+  "size": "75 ml",
+  "price": 11,
+  "priceSrc": "Sephora.es",
+  "short": "Laca de fijación final en formato de viaje",
+  "desc": "Laca de acabado con fijación firme pero flexible. Mantiene tanto un liso como unos rizos sin dejar el pelo rígido y se retira con el cepillado. El envase de 75 ml cabe en el bolso o el neceser.",
+  "benefits": [
+   "Fijación firme y flexible",
+   "Se elimina al cepillar",
+   "Formato de 75 ml para llevar"
+  ],
+  "use": "Pulveriza a unos 30 cm sobre el peinado terminado.",
+  "facts": {
+   "Formato": "laca de 75 ml"
+  },
+  "needs": [
+   "fijacion"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/perfect-ending---spray-de-fijacion-mini-459121.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-once-again",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Once Again",
+  "cat": "styling",
+  "size": "200 ml",
+  "price": 23,
+  "priceSrc": "Sephora.es",
+  "short": "Champú en seco que refresca la raíz y da volumen entre lavados",
+  "desc": "Champú en seco lanzado en 2026. Absorbe el exceso de grasa de la raíz sin agua, refresca el peinado y aporta cuerpo con un acabado ligero. Sirve para alargar el peinado un día más.",
+  "benefits": [
+   "Absorbe el exceso de grasa sin agua",
+   "El doble de volumen al instante, según ghd",
+   "Acabado ligero sin residuos visibles",
+   "Envase reciclable"
+  ],
+  "use": "Agita, pulveriza en la raíz a unos 30 cm, masajea el cuero cabelludo y cepilla.",
+  "facts": {
+   "Formato": "aerosol de 200 ml"
+  },
+  "needs": [
+   "volumen",
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-once-again---champu-seco-827243.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-rehab-split-end-sealer",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Rehab Split End Sealer",
+  "cat": "tratamiento",
+  "size": "100 ml",
+  "price": 40,
+  "priceSrc": "Sephora.es",
+  "short": "Tratamiento sin aclarado que sella las puntas abiertas",
+  "desc": "Crema sin aclarado de la gama Rehab que se activa con el calor del secador o la plancha. Sella y refuerza las puntas abiertas y deja medios y puntas más lisos y fuertes. Sirve para todo tipo de cabello.",
+  "benefits": [
+   "Sella las puntas abiertas hasta 10 lavados, según ghd",
+   "Se activa con el calor",
+   "Textura ligera que no engrasa"
+  ],
+  "use": "Aplica una pequeña cantidad en medios y puntas con el pelo húmedo y después seca o plancha.",
+  "facts": {
+   "Formato": "crema de 100 ml",
+   "Activación": "con calor (óptimo 185 ºC)"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-rehab----split-end-sealer-788337.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-rehab-dry-hair-nourisher",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Rehab Dry Hair Nourisher",
+  "cat": "tratamiento",
+  "size": "95 ml",
+  "price": 40,
+  "priceSrc": "Sephora.es",
+  "short": "Tratamiento nutritivo sin aclarado para pelo seco o encrespado",
+  "desc": "Tratamiento sin aclarado de la gama Rehab para cabello seco y con encrespamiento. Nutre la fibra y la deja más suave y flexible sin engrasar. Se activa con el calor de las herramientas.",
+  "benefits": [
+   "Nutre el cabello seco",
+   "3 veces menos encrespamiento con Duet Style, según ghd",
+   "Se activa con el calor"
+  ],
+  "use": "Reparte por medios y puntas con el pelo húmedo y seca o peina con calor.",
+  "facts": {
+   "Formato": "95 ml",
+   "Activación": "con calor"
+  },
+  "needs": [
+   "hidratar",
+   "encrespamiento"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-rehab---dry-hair-nourisher-776501.html",
+  "confirm": []
+ },
+ {
+  "id": "ghd-rehab-damaged-hair-repairer",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Rehab Damaged Hair Repairer",
+  "cat": "tratamiento",
+  "size": "",
+  "price": 39.99,
+  "priceSrc": "Druni",
+  "short": "Spray reparador sin aclarado para cabello dañado y quebradizo",
+  "desc": "Spray sin aclarado de la gama Rehab para cabello debilitado o que se rompe con facilidad. Alisa la cutícula y refuerza la fibra, y se activa con el calor del secador o la plancha.",
+  "benefits": [
+   "Hasta un 99 % menos de rotura, según ghd",
+   "Cabello más fuerte desde el primer uso",
+   "Se activa con el calor"
+  ],
+  "use": "Pulveriza sobre el pelo húmedo, peina para repartir y seca o peina con calor.",
+  "facts": {
+   "Formato": "spray sin aclarado",
+   "Activación": "con calor"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.sephora.es/p/ghd-rehab---damage-hair-repairer-800311.html",
+  "confirm": [
+   "size"
+  ]
+ },
+ {
+  "id": "ghd-rehab-fine-hair-thickener",
+  "brand": "ghd",
+  "line": "Peinado y cuidado",
+  "name": "ghd Rehab Fine Hair Thickener",
+  "cat": "tratamiento",
+  "size": "95 ml",
+  "price": 39.99,
+  "priceSrc": "Druni",
+  "short": "Spray engrosador sin aclarado para cabello fino",
+  "desc": "Spray sin aclarado de la gama Rehab para cabello fino o con poco cuerpo. Aumenta el diámetro de cada pelo para un efecto de melena más densa al instante y se activa con el calor.",
+  "benefits": [
+   "Efecto engrosador inmediato",
+   "Aumenta el diámetro del cabello, según ghd",
+   "Se activa con el calor"
+  ],
+  "use": "Pulveriza sobre el pelo húmedo, de raíz a puntas, y seca con secador.",
+  "facts": {
+   "Formato": "spray de 95 ml",
+   "Activación": "con calor"
+  },
+  "needs": [
+   "volumen"
+  ],
+  "colors": [],
+  "url": "https://www.druni.es/rehab-ghd-tratamiento-texturizante-cabellos-finos",
+  "confirm": [
+   "size"
+  ]
+ },
+ {
+  "id": "ghd-gold-cashmere-collection",
+  "brand": "ghd",
+  "line": "Estuches",
+  "name": "ghd Gold Cashmere Collection (set de regalo)",
+  "cat": "pack",
+  "size": "",
+  "price": 259,
+  "priceSrc": "Sephora.es",
+  "short": "Plancha Gold en beige cashmere con mini cepillo y neceser",
+  "desc": "Edición limitada de Navidad 2026 de la plancha ghd Gold en color beige cashmere con detalles cobre. El set incluye un mini cepillo paddle a juego y un neceser resistente al calor. La plancha es la Gold de siempre, con placas a 185 ºC.",
+  "benefits": [
+   "Edición limitada en beige cashmere",
+   "Incluye mini cepillo paddle y neceser térmico",
+   "Plancha Gold con tecnología dual-zone a 185 ºC"
+  ],
+  "use": "Úsala como una ghd Gold normal; el neceser térmico permite guardarla aún templada.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Contenido": "plancha Gold + mini cepillo paddle + neceser"
+  },
+  "needs": [
+   "alisar"
+  ],
+  "colors": [
+   "beige cashmere"
+  ],
+  "url": "https://www.ghdhair.com/es/ediciones-limitadas/plancha-ghd-gold-beige-cashmere-p-791",
+  "confirm": []
+ },
+ {
+  "id": "ghd-chronos-cashmere-collection",
+  "brand": "ghd",
+  "line": "Estuches",
+  "name": "ghd Chronos Cashmere Collection (set de regalo)",
+  "cat": "pack",
+  "size": "",
+  "price": 389,
+  "priceSrc": "Grazia / Alimarket (PVP de marca)",
+  "short": "Plancha Chronos en beige cashmere con mini cepillo y neceser",
+  "desc": "Edición limitada de Navidad 2026 de la plancha ghd Chronos en beige cashmere. Viene con un mini cepillo paddle y un neceser de edición limitada. La Chronos usa la tecnología HD motion-responsive para un liso más rápido.",
+  "benefits": [
+   "Edición limitada en beige cashmere",
+   "Incluye mini cepillo paddle y neceser",
+   "Plancha Chronos con tecnología HD motion-responsive"
+  ],
+  "use": "Úsala como una ghd Chronos normal, sobre el pelo seco y con protector térmico.",
+  "facts": {
+   "Temperatura": "185 ºC",
+   "Contenido": "plancha Chronos + mini cepillo paddle + neceser"
+  },
+  "needs": [
+   "alisar"
+  ],
+  "colors": [
+   "beige cashmere"
+  ],
+  "url": "https://www.sephora.es/p/gift-set-cashmere-collection---plancha-de-pelo-chronos-P1000216855.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "ghd-deluxe-cashmere-collection",
+  "brand": "ghd",
+  "line": "Estuches",
+  "name": "ghd Deluxe Cashmere Collection (Speed + Chronos)",
+  "cat": "pack",
+  "size": "",
+  "price": 789,
+  "priceSrc": "Alimarket (PVP de marca)",
+  "short": "Cofre de regalo con secador Speed y plancha Chronos en beige cashmere",
+  "desc": "Set más completo de la colección Cashmere de Navidad 2026: reúne el secador ghd Speed y la plancha ghd Chronos en beige cashmere dentro de un cofre de edición limitada. Está pensado como regalo de gama alta.",
+  "benefits": [
+   "Secador Speed y plancha Chronos a juego",
+   "Cofre de edición limitada",
+   "Acabado beige cashmere con detalles cobre"
+  ],
+  "use": "Seca primero con el Speed y remata con la Chronos sobre el pelo completamente seco.",
+  "facts": {
+   "Contenido": "secador Speed + plancha Chronos + cofre o neceser de edición limitada"
+  },
+  "needs": [
+   "secar",
+   "alisar"
+  ],
+  "colors": [
+   "beige cashmere"
+  ],
+  "url": "https://rdifusion.es/products/ghd-cashmere-collection-deluxe-set",
+  "confirm": [
+   "facts"
+  ]
+ },
+ {
+  "id": "ghd-cashmere-neceser-bodyguard-mini-paddle",
+  "brand": "ghd",
+  "line": "Estuches",
+  "name": "ghd Cashmere Collection: neceser con Bodyguard y mini cepillo paddle",
+  "cat": "pack",
+  "size": "",
+  "price": 30,
+  "priceSrc": "Sephora.es",
+  "short": "Neceser de edición limitada con protector térmico y mini cepillo",
+  "desc": "Set pequeño de la colección Cashmere de Navidad 2026. Incluye un neceser beige, el protector térmico ghd Bodyguard y un mini cepillo paddle a juego. Es la opción de regalo más económica de la colección.",
+  "benefits": [
+   "Neceser beige de edición limitada",
+   "Incluye protector térmico Bodyguard",
+   "Mini cepillo paddle a juego"
+  ],
+  "use": "Aplica el Bodyguard antes de cualquier herramienta de calor y usa el mini cepillo para desenredar y retocar.",
+  "facts": {
+   "Contenido": "neceser + protector térmico Bodyguard + mini cepillo paddle"
+  },
+  "needs": [
+   "proteccion-calor"
+  ],
+  "colors": [
+   "beige cashmere"
+  ],
+  "url": "https://www.sephora.es/p/cashmere-collection---neceser-con-bodyguard-y-cepillo-mini-paddle-841874.html",
+  "confirm": []
+ }
+]

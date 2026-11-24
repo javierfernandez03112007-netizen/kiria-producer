@@ -1,0 +1,1640 @@
+[
+ {
+  "id": "sk-bonacure-repair-rescue-plus-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Repair Rescue+",
+  "name": "Bonacure Repair Rescue+ Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 12.99,
+  "priceSrc": "Druni",
+  "short": "Acondicionador reparador que desenreda y refuerza el cabello dañado",
+  "desc": "Acondicionador de la nueva generación Repair Rescue+ para cabello dañado. Combina la tecnología Bond Repair con multipéptidos (Peptide Bond Complex) y una alternativa vegana a la queratina. Deja el pelo suave, manejable y más resistente.",
+  "benefits": [
+   "Cabello un 100 % más fuerte y resistente frente al cabello sin tratar, según la marca",
+   "Facilita el desenredado y el peinado",
+   "Fórmula vegana y sin siliconas",
+   "Refuerza la reparación cuando se usa con el champú de la gama"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "siliconas",
+   "Tecnología": "Peptide Bond Complex (Bond Repair + multipéptidos)"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/acondicionador.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-repair-rescue-plus-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Repair Rescue+",
+  "name": "Bonacure Repair Rescue+ Tratamiento",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Mascarilla reparadora intensiva para cabello dañado",
+  "desc": "Tratamiento con aclarado, tipo mascarilla, para cabello dañado. Trabaja con el Peptide Bond Complex de la gama para devolver fuerza y elasticidad a la fibra. Es el paso intensivo de la rutina Repair Rescue+.",
+  "benefits": [
+   "Repara el daño hasta un 90 % en cada uso, según la marca",
+   "Devuelve fuerza y elasticidad",
+   "Ayuda a reducir la rotura",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar hasta 10 minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Tecnología": "Peptide Bond Complex",
+   "Tiempo de exposición": "hasta 10 minutos"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/tratamiento.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-repair-rescue-plus-spray-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Repair Rescue+",
+  "name": "Bonacure Repair Rescue+ Spray Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Acondicionador en spray sin aclarado para cabello dañado",
+  "desc": "Acondicionador ligero en spray que se deja puesto, pensado para cabello dañado. Desenreda al momento y deja el pelo suave e hidratado durante 24 horas, además de protegerlo del calor del secador.",
+  "benefits": [
+   "Desenreda al instante y mejora la peinabilidad",
+   "Hasta un 65 % menos de encrespamiento y un 95 % menos de rotura frente al cabello sin tratar, según la marca",
+   "Protege del calor del secador hasta 230 °C",
+   "Fórmula vegana"
+  ],
+  "use": "Agitar y vaporizar por secciones (8-10 pulsaciones) sobre el cabello secado con toalla; no aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Aclarado": "no",
+   "Protección térmica": "hasta 230 °C",
+   "Hidratación": "24 horas"
+  },
+  "needs": [
+   "reparar",
+   "proteccion-calor",
+   "encrespamiento"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/spray-acondicionador.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-repair-rescue-plus-champu-1000ml",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Repair Rescue+",
+  "name": "Bonacure Repair Rescue+ Champú 1000 ml",
+  "cat": "champu",
+  "size": "1000 ml",
+  "price": 34.0,
+  "priceSrc": "Coserty",
+  "short": "Formato salón del champú reparador para cabello dañado",
+  "desc": "Envase de litro del champú reparador de la gama, primer paso de la rutina para cabello dañado. Limpia con suavidad mientras ayuda a recuperar la fuerza de la fibra. Es el formato de lavacabezas, práctico también para uso familiar.",
+  "benefits": [
+   "Limpieza suave para cabello dañado",
+   "Ayuda a restaurar la fuerza del cabello",
+   "Sin sulfatos SLS/SLES",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "sulfatos SLS/SLES",
+   "Formato": "1000 ml (tamaño salón)"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.coserty.com/en/products/schwarzkopf-champ-reparador-bc-bonacure-clean-repair-rescue-1000-ml",
+  "confirm": [
+   "price",
+   "name"
+  ]
+ },
+ {
+  "id": "sk-bonacure-color-freeze-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Color Freeze",
+  "name": "Bonacure Color Freeze Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 12.99,
+  "priceSrc": "Druni",
+  "short": "Acondicionador pH 4.5 que protege el color del cabello teñido",
+  "desc": "Acondicionador para cabello teñido o con mechas. Trabaja a pH 4.5 para mantener los pigmentos sellados dentro de la fibra y evitar que el color se apague. Suaviza y desenreda el pelo coloreado.",
+  "benefits": [
+   "Ayuda a sellar los pigmentos gracias a la tecnología pH 4.5",
+   "Desenreda y suaviza el cabello coloreado",
+   "Realza el brillo del color",
+   "Fórmula vegana"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "pH": "4.5"
+  },
+  "needs": [
+   "color",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078155",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-color-freeze-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Color Freeze",
+  "name": "Bonacure Color Freeze Tratamiento",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Mascarilla intensiva pH 4.5 para cabello teñido",
+  "desc": "Tratamiento cremoso con aclarado para cabello coloreado o con mechas. Nutre y repara en profundidad mientras ayuda a mantener el pH 4.5 que fija los pigmentos. Es el cuidado intensivo de la gama Color Freeze.",
+  "benefits": [
+   "Cuidado intensivo para cabello teñido",
+   "Tecnología pH 4.5 que ayuda a retener el color",
+   "Deja el cabello suave y con brillo",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar unos minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "pH": "4.5"
+  },
+  "needs": [
+   "color",
+   "reparar",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/en/c/BC-Core-Color-Freeze/p/3078185",
+  "confirm": [
+   "use"
+  ]
+ },
+ {
+  "id": "sk-bonacure-color-freeze-spray-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Color Freeze",
+  "name": "Bonacure Color Freeze Spray Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Spray sin aclarado que desenreda y reaviva el color",
+  "desc": "Acondicionador en spray sin aclarado para cabello coloreado o con mechas que tiende a perder intensidad. Lleva el cabello a su pH óptimo de 4.5 para sellar los pigmentos y añade protección frente al secador.",
+  "benefits": [
+   "Desenreda al instante y mejora la peinabilidad",
+   "Reaviva los colores apagados y aporta brillo",
+   "Protección térmica frente al secador",
+   "Fórmula vegana"
+  ],
+  "use": "Agitar, vaporizar por secciones sobre el cabello secado con toalla y no aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "pH": "4.5",
+   "Aclarado": "no",
+   "Protección térmica": "hasta 230 °C"
+  },
+  "needs": [
+   "color",
+   "brillo",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/color-freeze/spray-acondicionador.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-color-freeze-champu-1000ml",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Color Freeze",
+  "name": "Bonacure Color Freeze Champú 1000 ml",
+  "cat": "champu",
+  "size": "1000 ml",
+  "price": 34.0,
+  "priceSrc": "Coserty",
+  "short": "Formato salón del champú pH 4.5 para cabello teñido",
+  "desc": "Envase de litro del champú Color Freeze para cabello teñido. Su tecnología pH 4.5 ayuda a mantener los pigmentos dentro de la fibra; la marca declara hasta un 90 % de retención del color durante 30 lavados.",
+  "benefits": [
+   "Hasta un 90 % de retención del color durante 30 lavados, según la marca",
+   "Lleva el cabello a su pH óptimo de 4.5",
+   "Sin sulfatos SLS/SLES",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "pH": "4.5",
+   "Sin": "sulfatos SLS/SLES",
+   "Formato": "1000 ml (tamaño salón)"
+  },
+  "needs": [
+   "color"
+  ],
+  "colors": [],
+  "url": "https://www.coserty.com/en/collections/bonacure-schwarzkopf-professional",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-moisture-kick-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Moisture Kick",
+  "name": "Bonacure Moisture Kick Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": null,
+  "priceSrc": "",
+  "short": "Acondicionador hidratante ligero para cabello normal a seco",
+  "desc": "Acondicionador ligero para cabello de normal a seco u ondulado. Su complejo hidratante con aloe vera repone el nivel de agua del cabello sin apelmazar. Pertenece a la versión renovada de Moisture Kick.",
+  "benefits": [
+   "Sensación de cabello ligero e hidratado hasta 72 horas, según la marca",
+   "Desenreda sin aportar peso",
+   "Sin siliconas ni colorantes artificiales",
+   "Fórmula vegana"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "siliconas, colorantes artificiales",
+   "Ingrediente clave": "aloe vera"
+  },
+  "needs": [
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/moisture-kick/acondicionador.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-moisture-kick-spray-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Moisture Kick",
+  "name": "Bonacure Moisture Kick Spray Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Spray hidratante sin aclarado para cabello seco o rizado",
+  "desc": "Acondicionador ligero en spray, sin aclarado, para cabello de normal a seco, texturizado o rizado. Desenreda y aporta hidratación inmediata con glicerol y aloe vera, y protege del calor del secador.",
+  "benefits": [
+   "Desenreda e hidrata al momento",
+   "Sensación de ligereza hasta 48 horas, según la marca",
+   "Protección frente al secador hasta 230 °C",
+   "Fórmula vegana"
+  ],
+  "use": "Agitar, vaporizar 8-10 veces por secciones sobre el cabello secado con toalla y no aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Aclarado": "no",
+   "Protección térmica": "hasta 230 °C",
+   "Ingredientes clave": "glicerol, aloe vera"
+  },
+  "needs": [
+   "hidratar",
+   "rizos-naturales",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/moisture-kick/spray-acondicionador.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-moisture-kick-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Moisture Kick",
+  "name": "Bonacure Moisture Kick Tratamiento",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Mascarilla hidratante intensiva para cabello seco o rizado",
+  "desc": "Tratamiento intensivo con aclarado para cabello de normal a seco, rizado o quebradizo. Su fórmula con glicerol y una alternativa vegana a la queratina ayuda a retener la hidratación y mejora la elasticidad.",
+  "benefits": [
+   "Cabello hidratado hasta 48 horas, según la marca",
+   "Mejora la elasticidad",
+   "Nutre el cabello seco, rizado o quebradizo",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar unos minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingredientes clave": "glicerol, alternativa vegana a la queratina"
+  },
+  "needs": [
+   "hidratar",
+   "rizos-naturales"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3013349",
+  "confirm": [
+   "use"
+  ]
+ },
+ {
+  "id": "sk-bonacure-moisture-kick-curl-bounce",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Moisture Kick",
+  "name": "Bonacure Moisture Kick Curl Bounce",
+  "cat": "styling",
+  "size": "150 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Crema sin aclarado que define rizos y ondas",
+  "desc": "Crema hidratante sin aclarado de la línea Moisture Kick para cabello rizado u ondulado. Se trabaja sobre el pelo mojado para marcar el rizo y mantenerlo hidratado.",
+  "benefits": [
+   "Define rizos y ondas",
+   "Hidrata el cabello rizado",
+   "No necesita aclarado"
+  ],
+  "use": "Repartir sobre el cabello mojado, dar forma al rizo y secar al aire o con difusor.",
+  "facts": {
+   "Aclarado": "no"
+  },
+  "needs": [
+   "rizos-naturales",
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://www.druni.es/moisture-kick-bonacure-crema-rizos-hidratante",
+  "confirm": [
+   "price",
+   "benefits"
+  ]
+ },
+ {
+  "id": "sk-bonacure-moisture-kick-champu-1000ml",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Moisture Kick",
+  "name": "Bonacure Moisture Kick Champú 1000 ml",
+  "cat": "champu",
+  "size": "1000 ml",
+  "price": 34.0,
+  "priceSrc": "Coserty",
+  "short": "Formato salón del champú hidratante para cabello seco",
+  "desc": "Envase de litro del champú hidratante Moisture Kick para cabello de normal a seco, rizado o quebradizo. Limpia con suavidad y ayuda a reponer la hidratación con su complejo con aloe vera.",
+  "benefits": [
+   "Hidratación duradera, hasta 72 horas según la marca",
+   "Limpieza suave del cabello seco",
+   "Sin sulfatos SLS/SLES ni siliconas",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "sulfatos SLS/SLES, siliconas",
+   "Formato": "1000 ml (tamaño salón)"
+  },
+  "needs": [
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3013343",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-volume-boost-champu",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Volume Boost",
+  "name": "Bonacure Volume Boost Champú",
+  "cat": "champu",
+  "size": "250 ml",
+  "price": 9.99,
+  "priceSrc": "Druni",
+  "short": "Champú que da cuerpo y volumen al cabello fino",
+  "desc": "Champú ligero para cabello fino, lacio o debilitado. Retira con suavidad el exceso de grasa y los residuos que restan volumen, y su fórmula con creatina refuerza el cabello por dentro para que se note con más cuerpo.",
+  "benefits": [
+   "Más volumen y sensación de cuerpo hasta 48 horas, según la marca",
+   "Elimina grasa y residuos que apelmazan",
+   "Refuerza el cabello fino con creatina",
+   "Vegano y sin sulfatos SLS/SLES"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "sulfatos SLS/SLES",
+   "Ingrediente clave": "creatina"
+  },
+  "needs": [
+   "volumen"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/volume-boost/champu.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-volume-boost-gelatina-acondicionadora",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Volume Boost",
+  "name": "Bonacure Volume Boost Gelatina Acondicionadora",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 12.99,
+  "priceSrc": "Druni",
+  "short": "Acondicionador en gel muy ligero para cabello fino",
+  "desc": "Acondicionador de textura gel, muy ligero, para cabello fino y frágil. Desenreda y devuelve elasticidad sin restar volumen, y ayuda a evitar la electricidad estática.",
+  "benefits": [
+   "Desenreda sin apelmazar",
+   "Mejora la peinabilidad",
+   "Ayuda a prevenir la electricidad estática",
+   "Acompaña el efecto volumen de la gama (hasta 48 horas)"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingrediente clave": "creatina"
+  },
+  "needs": [
+   "volumen"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/volume-boost/gelatina-acondicionadora.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-frizz-away-champu",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Frizz Away",
+  "name": "Bonacure Frizz Away Champú",
+  "cat": "champu",
+  "size": "250 ml",
+  "price": 11.02,
+  "priceSrc": "Promofarma",
+  "short": "Champú antiencrespamiento para cabello grueso y rebelde",
+  "desc": "Champú para cabello grueso, rebelde y con tendencia a encresparse. Limpia con suavidad y, con aceite de babasú, ayuda a mantener el encrespamiento bajo control.",
+  "benefits": [
+   "Hasta 72 horas de control del encrespamiento, según la marca",
+   "Con aceite de babasú",
+   "Limpieza suave del cabello rebelde",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingrediente clave": "aceite de babasú"
+  },
+  "needs": [
+   "encrespamiento"
+  ],
+  "colors": [],
+  "url": "https://www.promofarma.com/en/schwarzkopf-bonacure-frizz-away-champu-250ml/p-679483",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-frizz-away-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Frizz Away",
+  "name": "Bonacure Frizz Away Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 11.66,
+  "priceSrc": "Promofarma",
+  "short": "Acondicionador ligero que controla el encrespamiento",
+  "desc": "Acondicionador ligero para cabello grueso, rebelde o encrespado. Desenreda, reduce la electricidad estática y deja el pelo más manejable.",
+  "benefits": [
+   "Controla el encrespamiento",
+   "Reduce la electricidad estática",
+   "Desenreda con facilidad",
+   "Con aceite de babasú"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingrediente clave": "aceite de babasú"
+  },
+  "needs": [
+   "encrespamiento"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Antiencrespamiento/p/3036015",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-frizz-away-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Frizz Away",
+  "name": "Bonacure Frizz Away Tratamiento",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 14.95,
+  "priceSrc": "Primor",
+  "short": "Mascarilla semanal antiencrespamiento con aceite de babasú",
+  "desc": "Tratamiento con aclarado para cabello grueso, rebelde y encrespado. Se usa como mascarilla semanal dentro de la rutina antiencrespamiento de la gama.",
+  "benefits": [
+   "Cuidado intensivo antiencrespamiento",
+   "Para cabello grueso y rebelde",
+   "Con aceite de babasú",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar una vez por semana sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingrediente clave": "aceite de babasú",
+   "Tiempo de exposición": "5-10 minutos"
+  },
+  "needs": [
+   "encrespamiento"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Antiencrespamiento/p/3035988",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-frizz-away-aceite-suavizante",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Frizz Away",
+  "name": "Bonacure Frizz Away Aceite Suavizante",
+  "cat": "aceite",
+  "size": "50 ml",
+  "price": 15.33,
+  "priceSrc": "Promofarma",
+  "short": "Aceite con babasú que frena el encrespamiento y da brillo",
+  "desc": "Aceite de acabado para cabello grueso, rebelde y encrespado, formulado con aceite de babasú. Protege el pelo de la humedad ambiental y lo deja suave y brillante.",
+  "benefits": [
+   "Hasta 72 horas de control del encrespamiento, según la marca",
+   "Protege de la humedad",
+   "Deja el cabello suave y brillante",
+   "Protección térmica hasta 210 °C"
+  ],
+  "use": "Repartir unas gotas por medios y puntas sobre el cabello húmedo o seco; no aclarar.",
+  "facts": {
+   "Ingrediente clave": "aceite de babasú",
+   "Protección térmica": "hasta 210 °C",
+   "Aclarado": "no"
+  },
+  "needs": [
+   "encrespamiento",
+   "brillo",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.promofarma.com/en/schwarzkopf-bonacure-frizz-away-smoothing-oil-50ml/p-679489",
+  "confirm": [
+   "price",
+   "facts",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-bonacure-time-restore-champu",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Time Restore",
+  "name": "Bonacure Time Restore Champú",
+  "cat": "champu",
+  "size": "250 ml",
+  "price": null,
+  "priceSrc": "",
+  "short": "Champú fortalecedor con Q10+ para cabello maduro",
+  "desc": "Champú para cabello maduro y frágil. Limpia con suavidad y ayuda a fortalecer la fibra con Q10+, el ingrediente clave de la gama.",
+  "benefits": [
+   "Limpieza suave para cabello maduro",
+   "Ayuda a fortalecer el cabello frágil",
+   "Con Q10+",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingrediente clave": "Q10+"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/campaign-bonacure-sustain-time-restore-2024",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-time-restore-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Time Restore",
+  "name": "Bonacure Time Restore Acondicionador",
+  "cat": "acondicionador",
+  "size": "200 ml",
+  "price": 12.99,
+  "priceSrc": "Druni",
+  "short": "Acondicionador con Q10+ para cabello maduro, seco y frágil",
+  "desc": "Acondicionador para cabello maduro, seco y quebradizo. Desenreda y deja el pelo suave y con brillo, con Q10+ como activo de la gama.",
+  "benefits": [
+   "Desenreda el cabello maduro y quebradizo",
+   "Suavidad y brillo inmediatos",
+   "Sin siliconas ni colorantes artificiales",
+   "Fórmula vegana"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "sulfatos SLS/SLES, siliconas, colorantes artificiales",
+   "Ingrediente clave": "Q10+"
+  },
+  "needs": [
+   "reparar",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/time-restore/acondicionador.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-time-restore-tratamiento-de-arcilla",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Time Restore",
+  "name": "Bonacure Time Restore Tratamiento de Arcilla",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 14.99,
+  "priceSrc": "Druni",
+  "short": "Mascarilla de arcilla con Q10+ para cabello y cuero cabelludo",
+  "desc": "Tratamiento fortalecedor para cabello maduro y frágil, de textura gelatinosa y color gris por la arcilla que contiene. Se aplica en cabello y cuero cabelludo: ayuda a desobstruir los poros y devuelve elasticidad.",
+  "benefits": [
+   "Fortalece el cabello frágil y maduro",
+   "Ayuda a desobstruir los poros del cuero cabelludo",
+   "Hasta 48 horas de sensación de hidratación y más elasticidad, según la marca",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar en cabello y cuero cabelludo secados con toalla, dejar actuar hasta 10 minutos y aclarar abundantemente.",
+  "facts": {
+   "Vegano": "sí",
+   "Ingredientes clave": "Q10+, arcilla",
+   "Tiempo de exposición": "hasta 10 minutos"
+  },
+  "needs": [
+   "reparar",
+   "cuero-cabelludo",
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/time-restore/tratamiento-de-arcilla.html",
+  "confirm": []
+ },
+ {
+  "id": "sk-bonacure-scalp-champu-calmante",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Scalp",
+  "name": "Bonacure Scalp Champú Calmante",
+  "cat": "champu",
+  "size": "250 ml",
+  "price": 14.95,
+  "priceSrc": "Coserty",
+  "short": "Champú suave para cuero cabelludo seco o sensible",
+  "desc": "Champú para cueros cabelludos secos, sensibles o con tendencia a irritarse. Limpia con suavidad y ayuda a equilibrar la hidratación del cuero cabelludo con un complejo de kale y madecassoside.",
+  "benefits": [
+   "Limpieza suave del cuero cabelludo sensible",
+   "Ayuda a equilibrar la hidratación del cuero cabelludo",
+   "Con kale y madecassoside (de la centella asiática)",
+   "Vegano, sin sulfatos SLS/SLES ni siliconas"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "sulfatos SLS/SLES, siliconas, colorantes artificiales",
+   "Ingredientes clave": "kale, madecassoside"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/en/c/BC-Specialties-Scalp-Genesis/p/2921824",
+  "confirm": [
+   "price",
+   "name"
+  ]
+ },
+ {
+  "id": "sk-bonacure-scalp-champu-anticaspa",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Scalp",
+  "name": "Bonacure Scalp Champú Anticaspa",
+  "cat": "champu",
+  "size": "250 ml",
+  "price": 14.95,
+  "priceSrc": "Coserty",
+  "short": "Champú anticaspa aprobado dermatológicamente",
+  "desc": "Champú para cueros cabelludos con tendencia a la caspa. Ayuda a retirar las escamas visibles con un complejo de superbayas y AHA, y cuenta con aprobación dermatológica.",
+  "benefits": [
+   "Ayuda a eliminar la caspa visible",
+   "Aprobado dermatológicamente",
+   "Con superbayas y AHA",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Testado": "aprobado dermatológicamente",
+   "Ingredientes clave": "superbayas, AHA"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/BC-Specialties-Scalp-Genesis/p/3078176",
+  "confirm": [
+   "price",
+   "name"
+  ]
+ },
+ {
+  "id": "sk-scalp-clinix-champu-anticaida",
+  "brand": "schwarzkopf",
+  "line": "Scalp Clinix",
+  "name": "Scalp Clinix Champú Anticaída",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 17.85,
+  "priceSrc": "Coserty",
+  "short": "Champú para cabello debilitado con tendencia a la caída",
+  "desc": "Champú de la línea Scalp Clinix para cabello debilitado o que pierde densidad. Combina tartrato de carnitina, taurina y extracto de equinácea, y está pensado para usarse junto al sérum anticaída de la gama.",
+  "benefits": [
+   "Reduce la caída no patológica tras 6 semanas usado con el sérum, según la marca",
+   "Con tartrato de carnitina, taurina y equinácea",
+   "Tecnología biótica que cuida el equilibrio del cuero cabelludo"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Ingredientes clave": "tartrato de carnitina, taurina, extracto de equinácea",
+   "Tecnología": "biótica (equilibrio del microbioma)"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://coserty.com/en/schwarzkopf-anti-hair-loss-shampoo-scalp-clinix-300-ml",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-scalp-clinix-champu-control-caspa",
+  "brand": "schwarzkopf",
+  "line": "Scalp Clinix",
+  "name": "Scalp Clinix Champú de Control de la Caspa",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 17.85,
+  "priceSrc": "Coserty",
+  "short": "Champú que elimina con suavidad la caspa visible",
+  "desc": "Champú para todo tipo de caspa. Retira con suavidad las escamas visibles con piroctona olamina y la tecnología biótica de la gama, que ayuda a mantener el equilibrio del cuero cabelludo.",
+  "benefits": [
+   "Elimina suavemente las escamas visibles",
+   "Apto para todo tipo de caspa",
+   "Sin sulfatos SLS/SLES ni siliconas",
+   "Con activo para el microbioma del cuero cabelludo"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Sin": "sulfatos SLS/SLES, siliconas",
+   "Ingrediente clave": "piroctona olamina",
+   "Tecnología": "biótica"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Flake-Control/p/3075328",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-scalp-clinix-champu-control-grasa",
+  "brand": "schwarzkopf",
+  "line": "Scalp Clinix",
+  "name": "Scalp Clinix Champú de Control de la Grasa",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 17.85,
+  "priceSrc": "Coserty",
+  "short": "Champú purificante para cuero cabelludo graso",
+  "desc": "Champú para cuero cabelludo graso. Limpia en profundidad, retira el exceso de sebo y deja sensación de frescor, con extractos de eucalipto y romero.",
+  "benefits": [
+   "Limpia en profundidad y elimina el exceso de grasa",
+   "Efecto refrescante",
+   "Sin sulfatos SLS/SLES ni siliconas",
+   "Con activo para reequilibrar el microbioma"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Sin": "sulfatos SLS/SLES, siliconas",
+   "Ingredientes clave": "extractos de eucalipto y romero",
+   "Tecnología": "biótica"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Oil-Control/p/3075330",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-scalp-clinix-champu-calmante",
+  "brand": "schwarzkopf",
+  "line": "Scalp Clinix",
+  "name": "Scalp Clinix Champú Calmante",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 17.85,
+  "priceSrc": "Coserty",
+  "short": "Champú calmante para cuero cabelludo seco y delicado",
+  "desc": "Champú sin sulfatos para cuero cabelludo seco o sensible. Limpia con suavidad mientras calma y ayuda a equilibrar la hidratación, con bisabolol y extracto de centella asiática.",
+  "benefits": [
+   "Limpia con suavidad y calma el cuero cabelludo",
+   "Ayuda a equilibrar la hidratación",
+   "Con bisabolol y centella asiática",
+   "Sin sulfatos SLS/SLES"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Sin": "sulfatos SLS/SLES",
+   "Ingredientes clave": "bisabolol, extracto de centella asiática",
+   "Tecnología": "biótica"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Soothing/p/3075329",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-scalp-clinix-serum-anticaida",
+  "brand": "schwarzkopf",
+  "line": "Scalp Clinix",
+  "name": "Scalp Clinix Sérum Anticaída 7x10 ml",
+  "cat": "tratamiento",
+  "size": "7 x 10 ml",
+  "price": 28.65,
+  "priceSrc": "Coserty",
+  "short": "Sérum en monodosis para cabello con tendencia a la caída",
+  "desc": "Tratamiento para el cuero cabelludo en siete monodosis de 10 ml, indicado para cabello debilitado. Es la pareja del champú anticaída: usados juntos de forma regular, la marca declara una reducción de la caída no patológica tras seis semanas.",
+  "benefits": [
+   "Reduce la caída no patológica tras 6 semanas junto al champú, según la marca",
+   "Con tartrato de carnitina, taurina y equinácea",
+   "Formato en monodosis"
+  ],
+  "use": "Aplicar una monodosis sobre el cuero cabelludo, masajear y no aclarar.",
+  "facts": {
+   "Ingredientes clave": "tartrato de carnitina, taurina, extracto de equinácea",
+   "Formato": "7 monodosis de 10 ml"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://coserty.com/es/schwarzkopf-tratamiento-antica%C3%ADda-anti-hair-loss-serum-scalp-clinix-7-x-10-ml",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-bonacure-sun-protect-fluido-verano-10en1",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Sun Protect",
+  "name": "Bonacure Sun Protect Fluido de Verano 10en1",
+  "cat": "tratamiento",
+  "size": "100 ml",
+  "price": 12.0,
+  "priceSrc": "Notino",
+  "short": "Fluido sin aclarado con 10 beneficios para el pelo en verano",
+  "desc": "Tratamiento ligero sin aclarado con aceite de coco prensado en frío, para cabello expuesto al sol. Reúne diez beneficios en un solo producto, del desenredado a la protección frente al secador, y puede aplicarse también sobre el pelo seco durante el día.",
+  "benefits": [
+   "Antirrotura y antiencrespamiento",
+   "Hidrata, nutre y sella las puntas",
+   "Protege del calor del secador y aporta brillo y suavidad",
+   "Vegano, sin siliconas ni colorantes artificiales"
+  ],
+  "use": "Aplicar sobre el cabello húmedo antes de peinar o sobre el cabello seco durante el día; no aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "siliconas, colorantes artificiales",
+   "Ingrediente clave": "aceite de coco prensado en frío",
+   "Aclarado": "no"
+  },
+  "needs": [
+   "proteccion-calor",
+   "hidratar",
+   "encrespamiento",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/sun-protect/10-in-1-summer-fluid.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-bonacure-sun-protect-bruma-spf20",
+  "brand": "schwarzkopf",
+  "line": "Bonacure Sun Protect",
+  "name": "Bonacure Sun Protect Bruma para Cuero Cabelludo y Cabello SPF 20",
+  "cat": "protector",
+  "size": "100 ml",
+  "price": 12.95,
+  "priceSrc": "Primor",
+  "short": "Bruma sin aclarado con SPF 20 para cuero cabelludo y cabello",
+  "desc": "Spray sin aclarado con factor de protección 20 que protege el cuero cabelludo de la radiación UV. Tiene textura no grasa y sirve para todo tipo de cabello y cuero cabelludo.",
+  "benefits": [
+   "Protege el cuero cabelludo de los rayos UV (SPF 20)",
+   "Textura no grasa",
+   "Apta para todo tipo de cabello y cuero cabelludo",
+   "Aprobada dermatológicamente para uso en el cuero cabelludo"
+  ],
+  "use": "Vaporizar sobre el cuero cabelludo y el cabello antes de la exposición al sol y reaplicar con frecuencia; no aclarar.",
+  "facts": {
+   "SPF": "20",
+   "Aclarado": "no",
+   "Testado": "aprobado dermatológicamente"
+  },
+  "needs": [
+   "cuero-cabelludo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/en/c/BC-Specialties-Sun-Protect/p/3010869",
+  "confirm": [
+   "price",
+   "name",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-fortify-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Fortify Acondicionador Fortificante",
+  "cat": "acondicionador",
+  "size": "250 ml",
+  "price": 25.2,
+  "priceSrc": "Keshop",
+  "short": "Acondicionador con multipéptidos para cabello dañado",
+  "desc": "Acondicionador de cuidado en casa para cabello dañado o muy procesado. Formulado con multipéptidos y tecnología BondXtend, suaviza la fibra y mejora su resistencia para prolongar el resultado del servicio de salón.",
+  "benefits": [
+   "Hasta un 83 % menos de rotura frente al cabello sin tratar, según la marca (gama Fortify)",
+   "Suaviza y mejora la resistencia",
+   "Con multipéptidos",
+   "Tecnología BondXtend"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "multipéptidos"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/Schwarzkopf-fortify-fibre-clinix/fortify-conditioner-250-ml.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-fortify-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Fortify Tratamiento Fortificante",
+  "cat": "mascarilla",
+  "size": "250 ml",
+  "price": 31.25,
+  "priceSrc": "Keshop",
+  "short": "Mascarilla fortificante para cabello dañado y sobreprocesado",
+  "desc": "Tratamiento con aclarado para cabello dañado o sobreprocesado. Acondiciona y nutre en profundidad con multipéptidos y tecnología BondXtend.",
+  "benefits": [
+   "Acondiciona y nutre en profundidad",
+   "Hasta un 83 % menos de rotura frente al cabello sin tratar, según la marca (gama Fortify)",
+   "Con multipéptidos",
+   "Tecnología BondXtend"
+  ],
+  "use": "Tras el champú, aplicar en medios y puntas, dejar actuar unos minutos y aclarar.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "multipéptidos"
+  },
+  "needs": [
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/Schwarzkopf-fortify-fibre-clinix/fortify-treatment-250-ml.html",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-hydrate-champu",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Hydrate Champú Hidratante",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 21.85,
+  "priceSrc": "Keshop",
+  "short": "Champú hidratante con electrolitos para cabello seco",
+  "desc": "Champú de cuidado en casa para cabello seco y quebradizo. Limpia con suavidad y aporta hidratación con electrolitos y tecnología BondXtend.",
+  "benefits": [
+   "Sensación de hidratación durante 48 horas, según la marca (gama Hydrate)",
+   "Limpieza suave",
+   "Mejora la elasticidad",
+   "Tecnología BondXtend"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "electrolitos"
+  },
+  "needs": [
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/en/c/Fibre-Clinix-Hydrate/p/3063130",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-hydrate-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Hydrate Acondicionador Hidratante",
+  "cat": "acondicionador",
+  "size": "250 ml",
+  "price": 25.2,
+  "priceSrc": "Keshop",
+  "short": "Acondicionador hidratante que suaviza sin apelmazar",
+  "desc": "Acondicionador para cabello seco y quebradizo. Suaviza sin restar ligereza y aporta hidratación con electrolitos y tecnología BondXtend.",
+  "benefits": [
+   "Suaviza sin apelmazar",
+   "Sensación de hidratación durante 48 horas, según la marca (gama Hydrate)",
+   "Con electrolitos",
+   "Tecnología BondXtend"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "electrolitos"
+  },
+  "needs": [
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/schwarzkopf-hydrate-fibre-clinix/hydrate-conditioner-250-ml.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-hydrate-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Hydrate Tratamiento Hidratante",
+  "cat": "mascarilla",
+  "size": "250 ml",
+  "price": 31.25,
+  "priceSrc": "Keshop",
+  "short": "Mascarilla de hidratación intensa para cabello seco",
+  "desc": "Tratamiento con aclarado para cabello seco y quebradizo. Hidrata intensamente y mejora la elasticidad con electrolitos y tecnología BondXtend.",
+  "benefits": [
+   "Hidratación intensa",
+   "Mejora la elasticidad",
+   "Sensación de hidratación durante 48 horas, según la marca (gama Hydrate)",
+   "Tecnología BondXtend"
+  ],
+  "use": "Tras el champú, aplicar en medios y puntas, dejar actuar unos minutos y aclarar.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "electrolitos"
+  },
+  "needs": [
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/schwarzkopf-hydrate-fibre-clinix/hydrate-treatment-250-ml.html",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-vibrancy-champu",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Vibrancy Champú Color Radiante",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 21.85,
+  "priceSrc": "Keshop",
+  "short": "Champú con AHA que protege la intensidad del color",
+  "desc": "Champú de cuidado en casa para cabello teñido. Su fórmula con alfahidroxiácidos (AHA) y tecnología BondXtend limpia mientras protege y sella la intensidad del color y alisa la superficie del cabello.",
+  "benefits": [
+   "Reduce la pérdida de color hasta un 90 % en 30 lavados, según la marca",
+   "Color y brillo 4 veces más intensos frente al cabello sin tratar (gama Vibrancy)",
+   "Con AHA",
+   "Tecnología BondXtend"
+  ],
+  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "AHA (alfahidroxiácidos)"
+  },
+  "needs": [
+   "color",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Vibrancy/p/3063134",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-vibrancy-acondicionador",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Vibrancy Acondicionador Color Radiante",
+  "cat": "acondicionador",
+  "size": "250 ml",
+  "price": 25.2,
+  "priceSrc": "Keshop",
+  "short": "Acondicionador con AHA para cabello teñido",
+  "desc": "Acondicionador para cabello coloreado. Con AHA y tecnología BondXtend, suaviza la superficie del cabello y ayuda a mantener el color vivo y brillante.",
+  "benefits": [
+   "Ayuda a prolongar la intensidad del color",
+   "Color y brillo 4 veces más intensos frente al cabello sin tratar, según la marca (gama Vibrancy)",
+   "Suaviza y desenreda",
+   "Tecnología BondXtend"
+  ],
+  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "AHA (alfahidroxiácidos)"
+  },
+  "needs": [
+   "color",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/schwarzkopf-vibrancy-fibre-clinix/vibrancy-conditioner-250-ml.html",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-vibrancy-tratamiento",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Vibrancy Tratamiento Color Radiante",
+  "cat": "mascarilla",
+  "size": "250 ml",
+  "price": 31.25,
+  "priceSrc": "Keshop",
+  "short": "Mascarilla para cabello teñido que nutre y cuida el color",
+  "desc": "Tratamiento con aclarado para cabello coloreado. Nutre en profundidad, protege del calor y ayuda a conservar la intensidad y el brillo del color con AHA y tecnología BondXtend.",
+  "benefits": [
+   "Nutre el cabello teñido",
+   "Protege del calor",
+   "Color y brillo 4 veces más intensos frente al cabello sin tratar, según la marca (gama Vibrancy)",
+   "Tecnología BondXtend"
+  ],
+  "use": "Tras el champú, aplicar en medios y puntas, dejar actuar unos minutos y aclarar.",
+  "facts": {
+   "Tecnología": "BondXtend",
+   "Ingrediente clave": "AHA (alfahidroxiácidos)"
+  },
+  "needs": [
+   "color",
+   "brillo",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/schwarzkopf-vibrancy-fibre-clinix/vibrancy-treatment-250-ml.html",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-fibre-clinix-aceite-en-crema-intensivo-bondfinity",
+  "brand": "schwarzkopf",
+  "line": "Fibre Clinix",
+  "name": "Fibre Clinix Aceite en Crema Intensivo Bondfinity",
+  "cat": "aceite",
+  "size": "100 ml",
+  "price": 28.95,
+  "priceSrc": "Keshop",
+  "short": "Aceite en crema reparador para cabello grueso",
+  "desc": "Aceite en crema multiusos con tecnología Bondfinity, orientado a cabello grueso. Su textura pasa de crema a aceite para nutrir, controlar el encrespamiento y hacer el pelo más manejable. Sirve como tratamiento prelavado, mezclado con la mascarilla como refuerzo o como acabado.",
+  "benefits": [
+   "5 veces más nutrición en cabello grueso, según la marca",
+   "Reduce el encrespamiento hasta un 93 %",
+   "Tres usos: prelavado, potenciador y acabado",
+   "Protección térmica hasta 230 °C"
+  ],
+  "use": "Como acabado, repartir una pequeña cantidad por medios y puntas; también puede usarse antes del champú o mezclado con el tratamiento.",
+  "facts": {
+   "Tecnología": "Bondfinity",
+   "Protección térmica": "hasta 230 °C"
+  },
+  "needs": [
+   "reparar",
+   "encrespamiento",
+   "proteccion-calor"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Heroes/p/3063137",
+  "confirm": [
+   "price",
+   "facts",
+   "desc"
+  ]
+ },
+ {
+  "id": "sk-blondme-champu-nutritivo-bond-repair",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Champú Nutritivo Bond Repair",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 18.9,
+  "priceSrc": "Keshop",
+  "short": "Champú nutritivo con Bond Repair para cabello rubio",
+  "desc": "Champú de uso diario para cabello rubio o aclarado. Limpia con suavidad mientras nutre y, con la tecnología Bond Repair, hace el cabello más resistente a la rotura.",
+  "benefits": [
+   "Hasta un 80 % más de resistencia a la rotura al peinar frente al cabello dañado sin tratar, según la marca",
+   "Limpieza suave y nutritiva",
+   "Sin sulfatos SLS/SLES",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Aplicar sobre el cabello mojado, dejar actuar 1 minuto y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bond Repair",
+   "Sin": "sulfatos SLS/SLES"
+  },
+  "needs": [
+   "rubio",
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://coserty.com/es/schwarzkopf-champ%C3%BA-nutritivo-blondme-bond-repair-nourishing-300-ml",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-blondme-acondicionador-nutritivo-bond-repair",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Acondicionador Nutritivo Bond Repair",
+  "cat": "acondicionador",
+  "size": "250 ml",
+  "price": 21.9,
+  "priceSrc": "Keshop",
+  "short": "Acondicionador nutritivo para cabello rubio o aclarado",
+  "desc": "Acondicionador para cabello rubio, decolorado o con mechas. Nutre y desenreda con la tecnología Bond Repair de la gama, pensada para reforzar el cabello aclarado.",
+  "benefits": [
+   "Nutre y desenreda el cabello rubio",
+   "Tecnología Bond Repair",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Repartir de forma uniforme sobre el cabello secado con toalla, dejar actuar unos minutos y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bond Repair"
+  },
+  "needs": [
+   "rubio",
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.keshop.com/en/blondme/bond-repair-nourishing-conditioner.html",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-blondme-tratamiento-nutritivo-bond-repair",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Tratamiento Nutritivo Bond Repair",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 26.9,
+  "priceSrc": "Keshop",
+  "short": "Mascarilla nutritiva que cuida el rubio sin apelmazar",
+  "desc": "Mascarilla intensiva para cabello rubio o aclarado. Nutre e hidrata en profundidad sin restar ligereza y alisa la superficie del cabello poroso.",
+  "benefits": [
+   "Hasta un 95 % menos de rotura al peinar frente al cabello dañado sin tratar, según la marca",
+   "Nutre en profundidad sin apelmazar",
+   "Suaviza el cabello poroso",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bond Repair"
+  },
+  "needs": [
+   "rubio",
+   "reparar",
+   "hidratar"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair/p/3114107",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-blondme-acondicionador-morado-bond-repair",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Acondicionador Morado Bond Repair",
+  "cat": "acondicionador",
+  "size": "250 ml",
+  "price": 21.9,
+  "priceSrc": "Keshop",
+  "short": "Acondicionador morado que neutraliza los tonos amarillos",
+  "desc": "Acondicionador con pigmento morado para rubios fríos. Neutraliza los matices amarillos, aporta brillo y refuerza el cabello con la tecnología Bond Repair.",
+  "benefits": [
+   "Neutraliza los tonos amarillos",
+   "Aporta brillo",
+   "Cabello 5 veces más fuerte tras un uso, según la marca",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 2 a 5 minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bond Repair",
+   "Tiempo de exposición": "2-5 minutos"
+  },
+  "needs": [
+   "rubio",
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/en/c/BLONDME-Bond-Repair-Purple/p/3119739",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-blondme-tratamiento-morado-bond-repair",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Tratamiento Morado Bond Repair",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 22.1,
+  "priceSrc": "Notino",
+  "short": "Mascarilla morada que matiza y nutre el rubio",
+  "desc": "Mascarilla con pigmentos fríos para cabello rubio. Neutraliza los matices amarillos, ayuda a evitar que el tono se vuelva cálido y nutre en profundidad, facilitando el desenredado.",
+  "benefits": [
+   "Neutraliza los tonos amarillos y mantiene el rubio frío",
+   "Nutre en profundidad",
+   "Cabello 7 veces más fuerte tras un uso, según la marca",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bond Repair",
+   "Tiempo de exposición": "5-10 minutos"
+  },
+  "needs": [
+   "rubio",
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair-Morado/p/3119698",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-blondme-spray-acondicionador-morado-bond-repair",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Spray Acondicionador Morado Bond Repair",
+  "cat": "acondicionador",
+  "size": "150 ml",
+  "price": 21.9,
+  "priceSrc": "Coserty",
+  "short": "Spray morado sin aclarado que desenreda y matiza",
+  "desc": "Acondicionador en spray sin aclarado para cabello rubio. Desenreda al instante y neutraliza los matices amarillos entre lavados.",
+  "benefits": [
+   "Desenreda al instante",
+   "Neutraliza los tonos amarillos",
+   "Cabello 10 veces más fuerte tras un uso, según la marca",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Agitar bien, vaporizar sobre el cabello secado con toalla o seco y no aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bond Repair",
+   "Aclarado": "no"
+  },
+  "needs": [
+   "rubio"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/en/c/BLONDME-Bond-Repair-Purple/p/3080912",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-blondme-tratamiento-reparador-intensivo-bondfinity",
+  "brand": "schwarzkopf",
+  "line": "BLONDME",
+  "name": "BLONDME Tratamiento Reparador Intensivo Bondfinity",
+  "cat": "mascarilla",
+  "size": "200 ml",
+  "price": 18.5,
+  "priceSrc": "Notino",
+  "short": "Mascarilla de reparación profunda para rubios dañados",
+  "desc": "Mascarilla de la línea Blonde Essentials Bondfinity para cabello rubio o decolorado dañado. Repara en profundidad y ayuda a evitar la rotura y la pérdida de queratina.",
+  "benefits": [
+   "Cabello hasta 20 veces más fuerte tras un uso, según la marca",
+   "Ayuda a prevenir la rotura y la pérdida de queratina",
+   "Tecnología Bondfinity",
+   "Vegano y certificado por PETA"
+  ],
+  "use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar bien.",
+  "facts": {
+   "Vegano": "sí",
+   "Certificación": "PETA",
+   "Tecnología": "Bondfinity",
+   "Tiempo de exposición": "5-10 minutos"
+  },
+  "needs": [
+   "rubio",
+   "reparar"
+  ],
+  "colors": [],
+  "url": "https://www.notino.es/schwarzkopf-professional/blondme-bondfinity-deep-repair-mask-mascarilla-de-regeneracion-profunda/",
+  "confirm": [
+   "price"
+  ]
+ },
+ {
+  "id": "sk-oil-ultime-tratamiento-acabado-argan",
+  "brand": "schwarzkopf",
+  "line": "Oil Ultime",
+  "name": "Oil Ultime Tratamiento de Acabado de Argán",
+  "cat": "aceite",
+  "size": "100 ml",
+  "price": 20.41,
+  "priceSrc": "Promofarma",
+  "short": "Aceite de acabado con argán para cabello normal a grueso",
+  "desc": "Aceite de acabado formulado con aceite de argán purificado 100 % natural, para cabello de normal a grueso. Se aplica al final del peinado como toque de cuidado y brillo.",
+  "benefits": [
+   "Con aceite de argán purificado 100 % natural",
+   "Indicado para cabello de normal a grueso",
+   "Acabado suave y con brillo"
+  ],
+  "use": "Repartir unas gotas por medios y puntas sobre el cabello húmedo o seco; no aclarar.",
+  "facts": {
+   "Ingrediente clave": "aceite de argán purificado 100 % natural",
+   "Aclarado": "no"
+  },
+  "needs": [
+   "brillo"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Oil-Ultime-Finishing-Oil/p/3050391",
+  "confirm": [
+   "price",
+   "use",
+   "benefits"
+  ]
+ },
+ {
+  "id": "sk-chroma-id-bonding-color-mask",
+  "brand": "schwarzkopf",
+  "line": "Chroma ID",
+  "name": "Chroma ID Bonding Color Mask",
+  "cat": "mascarilla",
+  "size": "300 ml",
+  "price": 30.0,
+  "priceSrc": "Coserty",
+  "short": "Mascarilla de color semipermanente con tecnología bonding",
+  "desc": "Mascarilla de color semipermanente que matiza, intensifica o refresca el tono entre coloraciones. Incorpora tecnología bonding y deja brillo inmediato. Se vende en tonos naturales, pastel e intensos, además de una versión Clear sin pigmento.",
+  "benefits": [
+   "Refresca y matiza el color de forma temporal",
+   "Brillo inmediato",
+   "Tecnología bonding integrada",
+   "Fórmula vegana"
+  ],
+  "use": "Aplicar con guantes sobre el cabello lavado y secado con toalla, dejar de 3 a 5 minutos para refrescar (más tiempo para un tono intenso) y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Tipo": "color semipermanente",
+   "Tecnología": "bonding"
+  },
+  "needs": [
+   "color",
+   "brillo"
+  ],
+  "colors": [
+   "6-46",
+   "6-88",
+   "7-77",
+   "8-19",
+   "8-46 Caramelo Glaseado",
+   "9-12 Gris Platino",
+   "9,5-1 Plata Perlado",
+   "9,5-4 Beige Arena",
+   "9,5-19 Rosa Empolvado",
+   "Pink",
+   "Red",
+   "Purple",
+   "Blue",
+   "Clear 0-00"
+  ],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Chroma-ID/p/3050801",
+  "confirm": [
+   "price",
+   "colors",
+   "use"
+  ]
+ },
+ {
+  "id": "sk-goodbye-yellow-champu-neutralizante",
+  "brand": "schwarzkopf",
+  "line": "Goodbye Yellow",
+  "name": "Goodbye Yellow Champú Neutralizante",
+  "cat": "champu",
+  "size": "300 ml",
+  "price": 12.99,
+  "priceSrc": "Promofarma",
+  "short": "Champú muy pigmentado que neutraliza los tonos amarillos",
+  "desc": "Champú neutralizante de alta pigmentación para rubios medios a claros. Su mezcla de pigmentos morados y azules corrige los matices amarillos no deseados. Fórmula vegana, sin sulfatos y con pH 4.5.",
+  "benefits": [
+   "Neutraliza los matices amarillos",
+   "Mezcla de pigmentos morados y azules",
+   "pH 4.5",
+   "Vegano y sin sulfatos"
+  ],
+  "use": "Aplicar con guantes sobre el cabello mojado, dejar actuar unos minutos según la intensidad deseada y aclarar.",
+  "facts": {
+   "Vegano": "sí",
+   "Sin": "sulfatos",
+   "pH": "4.5",
+   "Base recomendada": "rubio medio a claro"
+  },
+  "needs": [
+   "rubio"
+  ],
+  "colors": [],
+  "url": "https://shop.schwarzkopf-professional.es/es/c/Goodbye-Yellow/p/2809210",
+  "confirm": [
+   "price",
+   "use"
+  ]
+ }
+]

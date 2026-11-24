@@ -84,6 +84,16 @@ const SHAPES = {
       <rect x="188" y="300" width="24" height="8" rx="4" fill="${a}"/>
       <circle cx="200" cy="38" r="12" fill="${mix(c, '#000000', .3)}"/>
     </g>`,
+  cone: (g, c, a) => `
+    <path d="M150 170 h100 l44 190 q4 22-18 22 h-152 q-22 0-18-22z" fill="url(#${g})"/>
+    <rect x="142" y="140" width="116" height="40" rx="12" fill="url(#${g}b)"/>
+    <rect x="118" y="330" width="164" height="12" rx="6" fill="${a}" opacity=".9"/>
+    <g fill="${mix(c, '#ffffff', .4)}" opacity=".55">${Array.from({ length: 5 }, (_, i) => `<rect x="${150 + i * 22}" y="230" width="8" height="80" rx="4"/>`).join('')}</g>`,
+  box: (g, c, a) => `
+    <path d="M110 210 h180 v190 q0 14-14 14 h-152 q-14 0-14-14z" fill="url(#${g})"/>
+    <rect x="100" y="176" width="200" height="44" rx="8" fill="url(#${g}b)"/>
+    <rect x="188" y="176" width="24" height="238" fill="${a}" opacity=".9"/>
+    <path d="M200 176 q-46-60-70-26 q-10 22 70 26 q80-4 70-26 q-24-34-70 26z" fill="${a}"/>`,
   brush: (g, c, a) => `
     <g transform="rotate(-18 200 250)">
       <rect x="150" y="40" width="100" height="190" rx="46" fill="url(#${g}b)"/>
@@ -94,7 +104,7 @@ const SHAPES = {
 };
 
 /** SVG provisional del producto. p.shape, p.tone = [cuerpo, fondo], p.accent */
-export function art(p, { label = true } = {}) {
+export function art(p, { label = true, bg: withBg = true } = {}) {
   const id = 'g' + (++uid);
   const body = p.tone?.[0] || '#2a2420';
   const bg = p.tone?.[1] || '#efe6dc';
@@ -109,7 +119,7 @@ export function art(p, { label = true } = {}) {
       <linearGradient id="${id}s" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".35" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
       <radialGradient id="${id}sh" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
     </defs>
-    <rect width="400" height="500" fill="url(#${id}bg)"/>
+    ${withBg ? `<rect width="400" height="500" fill="url(#${id}bg)"/>` : ''}
     <ellipse cx="200" cy="438" rx="120" ry="16" fill="url(#${id}sh)"/>
     <g class="art-obj">${shape(id, body, acc)}</g>
     ${label ? `<text x="200" y="478" text-anchor="middle" class="art-tag">imagen oficial · pendiente</text>` : ''}
