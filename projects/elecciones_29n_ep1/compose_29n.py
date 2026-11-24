@@ -1,9 +1,9 @@
-"""Compone «Kiria World, día 3» (el rey firma la ley del homenaje semanal; sushi, pastelería y veterinario): fotogramas 3D a 60 fps (out/frames)
-+ el NOMBRE de los seguidores encima de su cabeza (solo en local: la lista no se sube al repo; los cuatro que nombra la voz van en dorado)
-+ subtítulos en Impact + la voz de Javi (tempo 1,0) + efectos SOLO de la biblioteca de ElevenLabs del canal (projects/*/assets/sfx).
+"""Compone «29N, capítulo 0: los cuatro en sus atriles» (elecciones generales del 29-11-2026, serie explicativa y neutral):
+fotogramas 3D a 60 fps (out/frames; los candidatos son sus FOTOS REALES en pantallas, ver retratos.py y FUENTES.md)
++ subtítulos en Impact (arriba; el apellido y las siglas de cada uno, en el color de su partido; las medidas, todas con los mismos dos colores)
++ la voz de Javi (tempo 1,0) + efectos SOLO de la biblioteca de ElevenLabs del canal (projects/*/assets/sfx). Sin música.
 
     python3 ajustar_voz.py && python3 env_voz.py
-    node web/labels.mjs out/labels.jsonl 2899        (posiciones de los rótulos; local, sin render)
     (render → out/frames)
     python3 projects/elecciones_29n_ep1/compose_29n.py [--test t1 t2 ...] [--sfx]
 """
@@ -21,9 +21,6 @@ PROJ = os.path.abspath(os.path.join(ROOT, ".."))
 sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 from engine.fin_draw import prog, hex_bgr  # noqa: E402
 from engine.subs import Subs, norm  # noqa: E402
-
-
-from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
 FPS, W, H = 60, 1080, 1920
 LINES = json.load(open(os.path.join(ROOT, "tiempos.json")))
@@ -44,110 +41,19 @@ def at(word, k=1, line=None):
     raise KeyError(word)
 
 
-# ---------------------------------------------------------------- nombres de los seguidores (en local)
-NAMES_F = os.environ.get("NAMES", os.path.join(ROOT, "..", "ciudad_seguidores", "out", "names.json"))   # la lista del 17-11 (fuera del repo)
-JOBS_F = os.path.join(ROOT, "out", "jobs.json")                 # quién es quién (lo escribe web/labels.mjs: {índice: {k, vip}})
-WHO = {}
-VIPTXT = {"yugo_gb": ("@yugo_gb", "rey"), "ammmm_mal": ("@ammmm_mal", "dueño del club"), "god_nika0206": ("@god_nika0206", "cine y chino"),
-          "luquita.berna": ("@luquita.berna", "el 7"), "victorelcrepeer_mc": ("@victorelcrepeer_mc", "soldado"), "marcos13_08": ("@marcos13_08", "coronel")}
-VIPW = {"rojas.esthe": ("@rojas.esthe", "electricista"), "danielxd22114": ("@danielxd22114", "mecánico")}   # pidieron oficio: su nombre de verdad, en blanco
-JOBTXT = {"soldier": "soldado", "sentry": "centinela", "hguard": "guardia real", "cham": "mayordomo real", "smith": "herrero", "bouncer": "portero",
-          "ticket": "taquillera", "waiter": "camarero", "keeper": "portero", "ref": "árbitro"}
-LABELS_F = os.path.join(ROOT, "out", "labels.jsonl")
-KEEP = {}
-NAMES, HIDE, LABELS, _TAG, _FONT, _FONT_S = None, set(), None, {}, None, None
-TOP = 430                                           # por encima de esta altura no hay nombres (subtítulos)
-BASE = 44                                           # tamaño de letra de la etiqueta base (luego se escala)
-
-
-def name_of(i):                                     # nombre fijo de la persona i (sorteo estable sobre la lista de seguidores, sin los ocultos)
-    n = len(NAMES)
-    for k in range(50):
-        j = (313 + i * 977 + k * 131) % n
-        if j not in HIDE:
-            return NAMES[j]
-    return NAMES[0]
-
-
-def tag(i):                                         # etiqueta «@nombre · oficio»: píldora oscura; dorada para los cuatro que nombra la voz
-    if i not in _TAG:
-        w0 = WHO.get(i, {}); vipk = w0.get("vip")
-        if vipk:
-            txt, job = VIPTXT[vipk]
-        elif w0.get("vipW"):
-            txt, job = VIPW[w0["vipW"]]
-        else:
-            txt, job = "@" + name_of(i), JOBTXT.get(w0.get("k"))
-        vip = bool(vipk)
-        l, t, r, b = _FONT.getbbox(txt); jw = (_FONT_S.getbbox(job)[2] + 16) if job else 0
-        w, h = r - l + 36 + jw, 66
-        im = Image.new("RGBA", (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-        d.rounded_rectangle((0, 0, w - 1, h - 1), radius=h // 2, fill=(255, 208, 74, 245) if vip else (18, 24, 34, 225))
-        d.text((18 - l, 9), txt, font=_FONT, fill=(40, 28, 0, 255) if vip else (255, 255, 255, 255))
-        if job:
-            d.text((18 + r - l + 14, 17), job, font=_FONT_S, fill=(90, 62, 0, 255) if vip else (124, 224, 160, 255))
-        a = np.asarray(im, np.float32) / 255
-        _TAG[i] = (a[..., [2, 1, 0]] * a[..., 3:], a[..., 3:], vip)
-    return _TAG[i]
-
-
-def paste(img, rgb, al, x0, y0):
-    h, w = rgb.shape[:2]
-    xa, ya, xb, yb = max(0, x0), max(0, y0), min(W, x0 + w), min(H, y0 + h)
-    if xa >= xb or ya >= yb:
-        return
-    sl = (slice(ya - y0, yb - y0), slice(xa - x0, xb - x0))
-    img[ya:yb, xa:xb] = img[ya:yb, xa:xb] * (1 - al[sl]) + rgb[sl]
-
-
-def scaled(sp, s, a):
-    rgb, al = sp[0], sp[1]
-    w, h = max(2, int(rgb.shape[1] * s + 0.5)), max(2, int(rgb.shape[0] * s + 0.5))
-    return cv2.resize(rgb, (w, h), interpolation=cv2.INTER_AREA) * a, cv2.resize(al, (w, h), interpolation=cv2.INTER_AREA)[..., None] * a
-
-
-def draw_tags(img, fi):
-    if LABELS is None or fi >= len(LABELS):
-        return
-    L = LABELS[fi]
-    placed = [(r[0] - 12, r[1] - 12, r[2] + 12, r[3] + 12) for r in KEEP.get(fi, []) + L.get("k", [])]   # ocupados y protegidos (tarjetas, bocadillo):
-                                                     # los nombres no se pisan ni las tapan (se suben un piso o se quedan fuera)
-    for i, x, y, p10 in sorted(L["p"], key=lambda e: (not tag(e[0])[2], -e[3])):   # primero los dorados, luego los más cercanos
-        vip = tag(i)[2]
-        ppm = p10 / 10; s = min(36.0, max(16.0, ppm * 0.075)) / BASE * (1.3 if vip else 1.0); h = 66 * s
-        rgb0, al0 = scaled(tag(i), s, 1.0); w = rgb0.shape[1]
-        x0 = x - w / 2
-        if vip:
-            x0 = min(max(x0, 14), W - w - 14)
-        y0 = y - h - 6
-        for _ in range(4):
-            hit = [r for r in placed if not (x0 + w < r[0] or x0 > r[2] or y0 + h < r[1] or y0 > r[3])]
-            if not hit:
-                break
-            y0 = min(r[1] for r in hit) - h - 4
-        else:
-            continue
-        a = min(1.0, (ppm - 95) / 30) * min(1.0, max(0.0, (y0 - TOP) / 60))
-        if a <= 0.02:
-            continue
-        placed.append((x0 - 4, y0 - 2, x0 + w + 4, y0 + h + 2))
-        paste(img, rgb0 * a, al0 * a, int(x0), int(y0))
-
-
-# ---------------------------------------------------------------- subtítulos
-GO, R, WH, GR, CY, AM, OR, PK = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547", "#FF9A3D", "#FF5FB8"
-_K = {1: {"rey": GO, "no": R, "corona": GO},
-      2: {"final": CY, "lugar": CY},
-      3: {"yugo_gb": GO, "comentario": CY, "dieciocho": PK, "gusta": PK, "condición": R},
-      4: {"forjan": OR, "ciudad": GR, "pedisteis": GR},
-      5: {"ammmm_mal": GO, "club": PK, "portero": OR, "nadie": R},
-      6: {"god_nika0206": GO, "cine": AM, "restaurante": R, "chino": R, "estreno": AM, "rollito": OR},
-      7: {"luquita.berna": GO, "club": GR, "fútbol": GR, "siete": GO},
-      8: {"victorelcrepeer_mc": GO, "soldado": GR, "rey": GO, "marcos13_08": GO, "adelante": GR},
-      9: {"rey": GO, "balcón": CY},
-      10: {"máscara": CY, "acero": CY, "refleja": CY, "cielo": CY},
-      11: {"corona": GO, "comentario": CY, "gusta": PK, "próximo": GO, "rey": GO},
-      12: {"mándaselo": GR, "corona": GO}}
+# ---------------------------------------------------------------- subtítulos: mismo trato para los cuatro (nombre y siglas en el color del partido; medidas en dorado y cian)
+GO, R, WH, GR, CY, AM = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547"
+PPC, PSC, VXC, FAC = "#4FA8F0", "#FF4A55", "#7ADB45", "#FF7A45"          # los colores de cada partido, algo aclarados para que se lean
+_K = {1: {"domingo": GO, "no": R, "presidente": GO},
+      2: {"trescientos": CY, "cincuenta": CY, "diputados": CY, "ellos": GO},
+      3: {"más": AM, "cuatro": GO, "jueves": GO, "dos": CY, "medidas": CY},
+      4: {"feijóo": PPC, "pp": PPC, "millón": GO, "viviendas": GO, "iva": CY, "cuarenta": CY},
+      5: {"sánchez": PSC, "psoe": PSC, "uno": GO, "ciento": GO, "pib": GO, "pensiones": CY, "constitución": CY},
+      6: {"abascal": VXC, "vox": VXC, "prohibir": GO, "regularizaciones": GO, "prioridad": CY, "nacional": CY},
+      7: {"colau": FAC, "frente": FAC, "amplio": FAC, "treinta": GO, "dos": GO, "horas": GO, "millón": CY, "medio": CY, "públicas": CY},
+      8: {"uno": GO, "cuatro": GO, "dieciocho": CY, "treinta": CY, "cinco": CY, "cero": GR, "irpf": GR},
+      9: {"quién": GO, "letra": R, "pequeña": R, "mañana": CY, "capítulo": CY, "uno": CY},
+      10: {"mándaselo": GR, "votar": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -155,27 +61,13 @@ SUBS = None
 def compose(fi):
     t = fi / FPS
     img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
-    draw_tags(img, fi)
     SUBS.draw(img, t, 1 - prog(t, END - 0.5, 0.3))
     return (np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes()
 
 
 def init():
-    global SUBS, NAMES, HIDE, LABELS, _FONT, _FONT_S
-    SUBS = Subs(LINES, KEY, {}, y=330, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")
-    global WHO, KEEP
-    d = json.load(open(NAMES_F)); NAMES, HIDE = d["names"], set(d["hide"])
-    named = {v[0].lstrip("@").lower() for v in list(VIPTXT.values()) + list(VIPW.values())}   # los que ya salen con su nombre no se repiten en otra persona
-    HIDE |= {j for j, n in enumerate(NAMES) if n.lstrip("@").lower() in named}
-    WHO = {int(k): v for k, v in json.load(open(JOBS_F)).items()}
-    LABELS = [json.loads(l) for l in open(LABELS_F)]
-    KEEP = {}                                         # zonas que ningún nombre puede tapar (p. ej. el cartel COMPLETO del sushi), por fotograma
-    kf = os.path.join(ROOT, "keepclear.json")         # generado con la cámara (proyección del cartel en cada fotograma)
-    if os.path.exists(kf):
-        for zona in json.load(open(kf)).values():
-            for f, r in zona.items(): KEEP.setdefault(int(f), []).append(r)
-    _FONT = ImageFont.truetype(os.path.join(ROOT, "..", "..", "engine", "fonts", "Inter-Bold.otf"), BASE)
-    _FONT_S = ImageFont.truetype(os.path.join(ROOT, "..", "..", "engine", "fonts", "Inter-Bold.otf"), 34)
+    global SUBS
+    SUBS = Subs(LINES, KEY, {}, y=305, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")   # algo más arriba de lo habitual (330): debajo empieza la pantalla de cada candidato
 
 
 # ---------------------------------------------------------------- efectos: SOLO de la biblioteca de ElevenLabs del canal (projects/<vídeo>/assets/sfx),
@@ -210,51 +102,56 @@ def sfx_track(path):
         sfx.mix(out, x, max(0.0, t0), g)
 
     E = LINES[-1]["end"] + 1.2
-    hit0, fut = LINES[3]["start"] - 4, at("fútbol")                # golpes del herrero: cada 0,62 s desde ahí (igual que en la escena)
-    # 1: la corona rueda por el mármol y acaba girando como una moneda; 2: ¿qué se pondrá?
-    put("cerradura/rasca", 0.0, 1.0, 0.16, 0.5)
-    put("economia/moneda_sola", 2.05, 0.84, 0.34, 0.3)
-    put("cripto/pregunta", at("lugar") - 0.05, 0.8, 0.28, 0.3)
-    # 3: la tarjeta de @yugo_gb, sus 18 me gusta y la condición
-    put("lanzamiento/mensaje", at("comentario", 1) - 0.05, 0.6, 0.34, 0.2)
-    put("lanzamiento/corazon", at("gusta", 1) - 0.15, 0.52, 0.34, 0.2)
-    put("avion/sello", at("condición") - 0.05, 0.5, 0.3, 0.2)
-    # 4: sale del salón; la fragua (martillo y chispas); sube sobre la ciudad
-    put("avion/whoosh", at("mientras") + 0.05, 0.6, 0.26, 0.25)
-    for k in range(2):
-        th = hit0 + 0.62 * (round((at("forjan") - hit0) / 0.62) + k)
-        put("cerradura/metal", th - 0.01, 0.45, 0.34 - 0.08 * k, 0.2)
-    put("magisterio/chispa", at("forjan") + 0.1, 0.9, 0.26, 0.3)
-    put("avion/whoosh_largo", at("ciudad") + 0.1, 1.2, 0.26, 0.4)
-    # 5: el club (se enciende el neón) y el portero: «COMPLETO»
-    put("ade/letrero_on", at("club", 1, 5) - 0.1, 0.9, 0.3, 0.3)
-    put("cerradura/denegado", at("nadie", 1, 5) - 0.1, 0.52, 0.34, 0.15)
-    # 6: el cine con estreno (focos) y el último rollito
-    put("robo_banco/luces_camara", at("cine") - 0.1, 0.9, 0.28, 0.3)
-    put("promo_web/focos", at("estreno") - 0.1, 0.9, 0.3, 0.3)
-    put("tapas/plato", at("rollito") + 0.05, 0.8, 0.32, 0.3)
-    # 7: el chut, la red y la grada
-    put("avion/whoosh", at("luquita.berna") + 0.2, 0.6, 0.24, 0.25)
-    put("gafas/impacto", fut + 0.3, 0.6, 0.34, 0.2)
-    put("magisterio/red", fut + 0.75, 1.1, 0.32, 0.4)
-    put("ade/multitud", fut + 0.85, 2.2, 0.26, 0.8)
-    # 8: el cuartel (marcha), el bocadillo «¡Adelante!» y la gorra
-    put("ade/marcha", at("soldado") - 0.1, 1.8, 0.26, 0.6)
-    put("avion/pop", at("adelante") - 0.15, 0.52, 0.34, 0.15)
-    put("magisterio/pop", at("adelante") + 0.88, 0.52, 0.28, 0.15)
-    # 9-10: sale del patio hacia el balcón; la gente; la máscara brilla y refleja el cielo
-    put("avion/whoosh_largo", at("ahora") + 0.2, 1.2, 0.26, 0.4)
-    put("ade/multitud", at("sale") + 0.1, 2.4, 0.24, 0.8)
-    put("medicina/brillo", at("máscara") - 0.05, 1.0, 0.3, 0.35)
-    put("medicina/dorado", at("refleja") - 0.05, 0.84, 0.3, 0.3)
-    # 11: la gente vitorea; la tarjeta del próximo rey
-    put("ade/multitud", at("mejor") + 0.4, 2.6, 0.22, 0.9)
-    put("lanzamiento/tarjeta", at("comentario", 1, 11) - 0.05, 0.52, 0.32, 0.2)
-    put("economia/medalla", at("próximo") - 0.05, 0.63, 0.3, 0.25)
-    # 12: mándaselo; vuelve al salón y la corona cae otra vez (enlaza con el principio)
-    put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.63, 0.3, 0.25)
-    put("avion/whoosh_largo", at("mándaselo") + 0.6, 1.2, 0.22, 0.4)
-    put("cerradura/metal", E - 0.77, 0.6, 0.3, 0.3)
+    L = [l["start"] for l in LINES]; Le = [l["end"] for l in LINES]
+    # 1-2: el sobre cae dentro de la urna; la cámara sale; el hemiciclo cuenta 350 y ellos señalan al presidente
+    put("lanzamiento/papel", 0.05, 0.84, 0.3, 0.3)
+    put("avion/tap", 0.98, 0.4, 0.26, 0.15)
+    put("avion/whoosh", Le[0] + 0.05, 0.6, 0.24, 0.25)
+    put("cripto/contador", at("trescientos") - 0.02, 1.04, 0.26, 0.2)
+    put("avion/cifra", at("diputados") + 0.22, 0.5, 0.3, 0.2)
+    put("avion/ding", at("ellos") + 0.05, 0.8, 0.3, 0.3)
+    # 3: los otros atriles se encienden un momento; los cuatro y la cita del jueves en la pantalla
+    put("ade/letrero_on", at("hay") + 0.02, 0.9, 0.2, 0.3)
+    put("avion/whoosh_largo", at("estos") - 0.2, 1.1, 0.2, 0.4)
+    put("economia/pantalla", at("debaten") - 0.3, 0.5, 0.3, 0.2)
+    # 4: Feijóo (PP): casitas que brotan; la casa y el IVA que cambia
+    put("avion/whoosh", L[3] - 0.36, 0.6, 0.26, 0.25)
+    put("avion/construye", at("construir") - 0.05, 1.35, 0.26, 0.3)
+    put("avion/pop", at("bajar") - 0.1, 0.5, 0.3, 0.15)
+    put("lanzamiento/voltea", at("menores") - 0.12, 0.5, 0.3, 0.15)
+    # 5: Sánchez (PSOE): las monedas del PIB, una se vuelve casa; el libro y el candado
+    put("avion/whoosh", Le[3] + 0.05, 0.6, 0.26, 0.25)
+    put("cripto/monedas", at("uno", 1, 5) - 0.1, 0.75, 0.26, 0.25)
+    put("economia/moneda_sola", at("pib") - 0.08, 0.8, 0.28, 0.3)
+    put("avion/pop", at("vivienda", 1, 5) - 0.08, 0.5, 0.3, 0.15)
+    put("magisterio/libro", at("blindar") - 0.08, 0.6, 0.3, 0.2)
+    put("medicina/candado", at("constitución") + 0.24, 0.5, 0.34, 0.15)
+    # 6: Abascal (Vox): el papel y el sello; el «1.º», la casa y la ayuda
+    put("avion/whoosh", Le[4] + 0.05, 0.6, 0.26, 0.25)
+    put("avion/pop", at("prohibir") - 0.1, 0.5, 0.28, 0.15)
+    put("lanzamiento/papel", at("regularizaciones") - 0.1, 0.6, 0.26, 0.2)
+    put("avion/sello", at("masivas") + 0.25, 0.5, 0.36, 0.15)
+    put("cripto/check", at("prioridad") - 0.08, 0.5, 0.3, 0.15)
+    put("avion/pop", at("vivienda", 1, 6) - 0.1, 0.5, 0.26, 0.15)
+    put("avion/pop", at("ayudas") - 0.1, 0.5, 0.26, 0.15)
+    # 7: Colau (Frente Amplio): la barra de 40 horas se queda en 32; los bloques suben
+    put("avion/whoosh", Le[5] + 0.05, 0.6, 0.26, 0.25)
+    put("economia/barras", at("jornada") - 0.1, 0.6, 0.28, 0.2)
+    put("lanzamiento/desliza", at("treinta", 1, 7) - 0.05, 0.5, 0.3, 0.15)
+    put("gta6/edificios", at("millón", 1, 7) - 0.2, 1.3, 0.26, 0.3)
+    # 8: abre; la nómina; 18–35 años; IRPF a cero
+    put("avion/whoosh_largo", Le[6] + 0.08, 1.1, 0.2, 0.4)
+    put("lanzamiento/tarjeta", at("lleva") - 0.14, 0.5, 0.3, 0.15)
+    put("avion/pop", at("dieciocho") - 0.1, 0.5, 0.26, 0.15)
+    put("economia/cajero", at("cero") - 0.02, 1.0, 0.32, 0.3)
+    # 9: ¿quién?; la lupa en la letra pequeña; mañana, capítulo 1
+    put("avion/pregunta", at("quién", 1, 9) - 0.05, 0.95, 0.3, 0.3)
+    put("medicina/busca", at("letra") - 0.2, 0.6, 0.28, 0.2)
+    put("robo_banco/titulo", at("mañana") - 0.08, 1.3, 0.28, 0.4)
+    # 10: mándaselo; la cámara baja a la urna y el sobre cae otra vez (enlaza con el principio)
+    put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.6, 0.3, 0.25)
+    put("avion/whoosh_largo", at("mándaselo") + 0.55, 1.1, 0.2, 0.4)
+    put("lanzamiento/papel", E - 0.5, 0.5, 0.26, 0.2)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
