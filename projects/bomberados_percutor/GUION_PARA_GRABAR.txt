@@ -1,0 +1,45 @@
+«¿SABES QUÉ ES ESTO?» — el percutor rompecristales (idea de Adrián, Notion «MARTES 24»: «¿sabes qué herramienta es
+esta? ¿sabes para qué se utiliza?» + PUBLICIDAD ÉLITE). 30–40 s: este sale en ≈ 34 s.
+
+Cómo está hecho (¿cuál es cuál? en 3D, de noche, con dron): primer plano de una herramienta pequeña y amarilla en un guante
+(sin marca): «¿QUÉ ES ESTO?». La idea: la ventanilla de un coche es de cristal templado y con un golpe en UN punto estalla
+entera; dentro hay un herido, así que primero se pega una lámina adhesiva y el cristal sale de una pieza. Se ve dos veces:
+sin lámina (los trocitos le caen encima) y con lámina (se queda pegado y sale entero). Cierre para comentar: «¿y en el
+parabrisas, funciona? ¿Sí o no?». La venta de hoy es de ÉLITE BOMBEROS (lo pide Adrián), con lo que dice su web.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[intrigued, mysterious] ¿Sabes qué es esto? Cabe en un llavero… [excited] y REVIENTA la ventanilla de un coche.
+[confident] Es un percutor rompecristales.
+[clear, fast] Aprietas, salta un muelle y la punta golpea un solo punto.
+[clear] La ventanilla es de cristal templado: [impressed] estalla ENTERA en trocitos.
+[tense, serious] Pero dentro hay un herido.
+[clear, fast] Por eso, primero pegas una lámina adhesiva… y luego golpeas.
+[satisfied] Los trocitos se quedan pegados y el cristal sale de una pieza.
+[challenging] ¿Y en el parabrisas, funciona? ¿Sí o no?
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡ÉLITE BOMBEROS! [excited, emphatic] ¡Sin matrícula y SIN permanencia!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con un dron que no para:
+1. «¿Sabes qué es esto? Cabe en un llavero…» — primer plano: una herramienta amarilla colgada de una anilla en un guante,
+   «¿QUÉ ES ESTO?». «…y revienta la ventanilla de un coche» — la apoya en la ventanilla: el cristal estalla.
+2. «Es un percutor rompecristales» — rótulo PERCUTOR ROMPECRISTALES (el cristal vuelve a su sitio).
+3. «Aprietas, salta un muelle y la punta golpea un solo punto» — por dentro (rayos X): el muelle se carga y suelta la punta.
+4. «La ventanilla es de cristal templado: estalla entera en trocitos» — una grieta desde el punto recorre todo el cristal:
+   TEMPLADO.
+5. «Pero dentro hay un herido» — los trocitos le caen encima al conductor (✗ rojo).
+6. «Por eso, primero pegas una lámina adhesiva… y luego golpeas» — la lámina se pega sobre el cristal y, ahora sí, golpe.
+7. «Los trocitos se quedan pegados y el cristal sale de una pieza» — se agrieta, pero no cae: sale entero. ✓ DE UNA PIEZA.
+8. «¿Y en el parabrisas, funciona? ¿Sí o no?» — el percutor delante del parabrisas, «?», SÍ / NO; «💬 COMENTA».
+9. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+10. ★ «¿Opositas? ¡Élite Bomberos! ¡Sin matrícula y sin permanencia!» — placa ÉLITE BOMBEROS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Respuesta (para el comentario fijado, no va en el vídeo): NO. El parabrisas es LAMINADO (dos cristales con una lámina de
+plástico en medio): se raja pero no estalla ni se cae; se quita cortándolo. El percutor es para los cristales templados.
+Fuentes (en FUENTES.md): la ficha de Adrián en Notion y la web de Élite Bomberos («sin matrícula, sin permanencia»).
