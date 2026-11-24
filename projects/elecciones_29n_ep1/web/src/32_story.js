@@ -40,6 +40,8 @@ function envAt(u) { const e = S.env, base = S.urn.position.y, ux = SET.URN[0], u
   e.position.set(ux + 0.025 * flut + 0.005, y, uz - 0.1 + 0.03 * Math.sin(k * 5) * (1 - k)); e.rotation.set(lerp(-0.2, -Math.PI / 2 + 0.06, Math.pow(k, 2.2)) + 0.2 * flut, 0.2 * flut + 0.12, 0.12 * flut); }
 function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); moodMix({ plato: 1 });
   envAt(envU(t));
+  { const U = S.urn.userData, sm = x => { const u = clamp((x - 0.04) / 0.22); return u * u * (3 - 2 * u); }, near = Math.abs(st.p.x - SET.URN[0]) < 0.8 && st.p.y < S.urn.position.y + 1.2 ? 1 : 0;      // las paredes que cruza la cámara se desvanecen al acercarse
+    U.acB.opacity = 0.035 * (near ? sm(Math.abs(st.p.z - (SET.URN[2] - 0.21))) : 1); U.acF.opacity = 0.05 * (near ? sm(Math.abs(st.p.z - (SET.URN[2] + 0.21))) : 1); U.acB.visible = U.acB.opacity > 0.001; U.acF.visible = U.acF.opacity > 0.001; }
   // la pantalla grande: «29N» → hemiciclo que cuenta 350 y señala al presidente → la cita del jueves → «29N» → «mañana, capítulo 1»
   { const hA = bump(t, TL.eliges2 - 0.25, TL.hay + 0.1, 0.3, 0.35), cita = bump(t, TL.debaten - 0.35, TL.L[4] - 0.35, 0.3, 0.3), man = bump(t, TL.manana - 0.15, TL.manda + 0.5, 0.25, 0.4), q2 = x => Math.round(x * 20) / 20;
     const quiet = bump(t, TL.L[4] - 0.65, TL.manana - 0.1, 0.3, 0.3);

@@ -1,15 +1,16 @@
 #!/bin/bash
 # Máquina de ayuda: renderiza los fotogramas A..B-1 de «29N, capítulo 0» y los sube a la rama <PFX>-X (por defecto render-e1).
 #   bash projects/elecciones_29n_ep1/render_chunk.sh A B X [PFX]            → todos, codificados en chunks/chunk_A_B.mp4
-#   ODD=1 bash projects/elecciones_29n_ep1/render_chunk.sh A B X [PFX]      → solo los IMPARES (los pares ya están hechos), como JPG sueltos en
-#                                                                             chunks/odd_A_B/ (sin recodificar: salen idénticos a los de la máquina principal)
+#   ALL=1 bash projects/elecciones_29n_ep1/render_chunk.sh A B X [PFX]      → todos, como JPG sueltos en chunks/all_A_B/ (sin recodificar: idénticos a los
+#                                                                             de la máquina principal; es lo que se usa)
+#   ODD=1 bash projects/elecciones_29n_ep1/render_chunk.sh A B X [PFX]      → solo los IMPARES, como JPG sueltos en chunks/odd_A_B/
 # Desde la raíz del repo, en la rama claude/stoic-newton-ja94mt al día.
 set -u
-A=$1; B=$2; X=$3; PFX=${4:-render-e1}; ODD=${ODD:-0}
+A=$1; B=$2; X=$3; PFX=${4:-render-e1}; ODD=${ODD:-0}; ALL=${ALL:-0}
 cd "$(dirname "$0")"
 (cd web && npm install --silent >/dev/null 2>&1; ./build.sh)
 mkdir -p out/frames chunks
-if [ "$ODD" = "1" ]; then SEL="i % 2 == 1"; WS="1 3 5"; NW=6; else SEL="True"; WS="0 1 2"; NW=3; fi
+if [ "$ODD" = "1" ]; then SEL="i % 2 == 1"; WS="1 3 5"; NW=6; TAG=odd; else SEL="True"; WS="0 1 2"; NW=3; TAG=all; fi
 for attempt in 1 2 3 4; do
   for w in $WS; do FPS=60 SKIP=1 timeout 30000 node web/capture.mjs out/frames --range $A $B $w $NW > out/w$w.log 2>&1 & sleep 5; done
   wait
@@ -18,12 +19,12 @@ for attempt in 1 2 3 4; do
   [ "$miss" = "0" ] && break
 done
 [ "$miss" = "0" ] || { echo "ERROR: faltan $miss fotogramas"; exit 1; }
-if [ "$ODD" = "1" ]; then
-  F=chunks/odd_${A}_${B}; rm -rf $F && mkdir -p $F
+if [ "$ODD" = "1" ] || [ "$ALL" = "1" ]; then
+  F=chunks/${TAG}_${A}_${B}; rm -rf chunks/odd_* chunks/all_*; mkdir -p $F
   python3 -c "
 import shutil
 for i in range($A, $B):
-    if i % 2 == 1: shutil.copy('out/frames/f%05d.jpg' % i, '$F/f%05d.jpg' % i)"
+    if $SEL: shutil.copy('out/frames/f%05d.jpg' % i, '$F/f%05d.jpg' % i)"
 else
   F=chunks/chunk_${A}_${B}.mp4
   for crf in 14 17 20; do
