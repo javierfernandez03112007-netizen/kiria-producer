@@ -1,5 +1,5 @@
 #!/bin/bash
-# Render local de «Kiria World, día 5»: fotogramas A..B-1 a 60 fps en out/frames (4 procesos; salta los que ya existen).
+# Render local de «29N, capítulo 0»: fotogramas A..B-1 a 60 fps en out/frames (4 procesos; salta los que ya existen).
 # Uso: nohup ./render_local.sh A B > out/local.log 2>&1 &
 cd "$(dirname "$0")"; A=$1; B=$2; mkdir -p out/frames
 for attempt in 1 2 3; do

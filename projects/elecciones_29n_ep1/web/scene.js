@@ -1199,7 +1199,7 @@ function ballotBox() { const g = new THREE.Group(), U = g.userData, W = 0.42, Hh
   const edge = new THREE.MeshStandardMaterial({ color: 0xdfeaf6, roughness: 0.2, transparent: true, opacity: 0.55 }); for (const sx of [-1, 1]) for (const sz of [-1, 1]) g.add(box(0.012, Hh, 0.012, edge, sx * W / 2, Hh / 2, sz * D / 2));
   const lidM = new THREE.MeshPhysicalMaterial({ color: 0xeaf4ff, roughness: 0.05, transparent: true, opacity: 0.16, clearcoat: 1, depthWrite: false }); for (const s of [-1, 1]) g.add(box(W + 0.03, 0.02, (D + 0.03) / 2 - 0.012, lidM, 0, Hh + 0.01, s * ((D + 0.03) / 4 + 0.006))); for (const s of [-1, 1]) g.add(box((W + 0.03 - 0.2) / 2, 0.02, 0.024, lidM, s * ((W + 0.03) / 2 - (W + 0.03 - 0.2) / 4), Hh + 0.01, 0));
   g.add(box(W + 0.03, 0.012, D + 0.03, new THREE.MeshPhysicalMaterial({ color: 0xdfe6ee, roughness: 0.3, clearcoat: 0.6 }), 0, 0.006, 0)); for (const s of [-1, 1]) g.add(box(0.2, 0.004, 0.004, new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 1.2 }), 0, Hh + 0.021, s * 0.013));
-  const lab = signPlane(0.3, 0.085, 512, (c, w, h) => { c.fillStyle = '#ffffff'; c.fillRect(0, 0, w, h); c.fillStyle = '#1a1d22'; c.font = '900 46px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('CONGRESO DE LOS DIPUTADOS', w / 2, h / 2 + 2, w - 24); }, { r: 0.6 }); lab.position.set(0, Hh * 0.62, D / 2 + 0.005); g.add(lab);
+  const lab = signPlane(0.3, 0.085, 512, (c, w, h) => { c.fillStyle = '#ffffff'; c.fillRect(0, 0, w, h); c.fillStyle = '#1a1d22'; c.font = '900 46px Inter'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('CONGRESO DE LOS DIPUTADOS', w / 2, h / 2 + 2, w - 24); }, { r: 0.6 }); lab.position.set(0, Hh * 0.2, D / 2 + 0.005); g.add(lab);
   U.pile = []; const R = rng(29); for (let i = 0; i < 22; i++) { const e = envelope(); e.position.set((R() - 0.5) * 0.24, 0.02 + i * 0.0036 + R() * 0.012, -0.03 + (R() - 0.5) * 0.24); e.rotation.set(-Math.PI / 2 + (R() - 0.5) * 0.5, (R() - 0.5) * 0.4, R() * 6.28); g.add(e); U.pile.push(e); }
   U.size = [W, Hh, D]; return g; }
 // sobre de votación (blanco, con el rótulo del Congreso)
@@ -1327,9 +1327,12 @@ function buildProps(G) { const P = {}, OX = -0.26, PX = 0.275, PW = 0.54, PH = 0
     P.pay.m = new THREE.Mesh(new THREE.PlaneGeometry(P.pay.W, P.pay.H), new THREE.MeshBasicMaterial({ map: P.pay.t, transparent: true, toneMapped: false, alphaTest: 0.05 })); P.pay.m.renderOrder = 7; g.add(P.pay.m);
     P.pay.mag = magnifier(); g.add(P.pay.mag);
     P.q = {}; for (const id of ORDER) { const q = plate('?', 0.6, 0.66, { bg: 'rgba(0,0,0,0)', ink: '#ffd66a' }); q.position.set(0, TOTEM.Y + TOTEM.H + 0.42, TOTEM.Z + 0.05); S.lect[id].add(q); P.q[id] = q; } }
+  // las dos casillas de cada atril («dos medidas del programa de cada uno»)
+  P.slots = {}; for (const id of ORDER) { P.slots[id] = [1, 2].map(n => { const m = plate(String(n), 0.24, 0.24, { edge: PARTY[id].css }); m.position.set((n === 1 ? -0.16 : 0.16), 0.17, 0.08); m.visible = false; P[id].g.add(m); return m; }); }
   for (const id of ORDER) { P[id].a.visible = P[id].b.visible = false; } return P; }
-function drawPay(k0, kAge) { const c = S.P.pay.cv.getContext('2d'), w = 1216, h = 800; c.clearRect(0, 0, w, h); c.fillStyle = '#fbfaf6'; rr(c, 8, 8, w - 16, h - 16, 30); c.fill(); c.textBaseline = 'middle';
-  c.fillStyle = '#1a1d22'; c.textAlign = 'left'; c.font = '900 96px Inter'; c.fillText('NÓMINA', 60, 100); c.fillStyle = '#6b7280'; c.textAlign = 'right'; c.font = '700 44px Inter'; c.fillText('Primer año de trabajo', w - 60, 106); c.fillStyle = '#d7dbe2'; c.fillRect(60, 166, w - 120, 6);
+function drawPay(k0, kAge, kHead = 0) { const c = S.P.pay.cv.getContext('2d'), w = 1216, h = 800; c.clearRect(0, 0, w, h); c.fillStyle = '#fbfaf6'; rr(c, 8, 8, w - 16, h - 16, 30); c.fill(); c.textBaseline = 'middle';
+  c.fillStyle = '#1a1d22'; c.textAlign = 'left'; c.font = '900 96px Inter'; c.fillText('NÓMINA', 60, 100); if (kHead > 0.02) { c.globalAlpha = kHead; c.fillStyle = '#ffd66a'; rr(c, w - 560, 62, 520, 88, 24); c.fill(); c.globalAlpha = 1; }
+  c.fillStyle = kHead > 0.5 ? '#1a1405' : '#6b7280'; c.textAlign = 'right'; c.font = '700 44px Inter'; c.fillText('Primer año de trabajo', w - 60, 106); c.fillStyle = '#d7dbe2'; c.fillRect(60, 166, w - 120, 6);
   const row = (y, a, b, col = '#1a1d22', big = false) => { c.fillStyle = col; c.font = `${big ? 900 : 700} ${big ? 112 : 52}px Inter`; c.textAlign = 'left'; c.fillText(a, big ? 84 : 60, y); c.textAlign = 'right'; c.fillText(b, w - (big ? 84 : 60), y); };
   row(232, 'Salario bruto', '· · · · ·'); row(306, 'Seguridad Social', '− · · ·', '#6b7280');
   c.fillStyle = k0 > 0.5 ? 'rgba(255,214,106,0.55)' : 'rgba(0,0,0,0.05)'; rr(c, 40, 356, w - 80, 164, 26); c.fill(); row(442, 'IRPF', k0 > 0.5 ? '0 €' : '− · · ·', k0 > 0.5 ? '#0a7a3c' : '#1a1d22', true);
@@ -1352,7 +1355,7 @@ async function buildScene() {
     sanchez: W_('sanchez', 5), uno5: W_('uno', 5), pib: W_('pib', 5), vivienda5: W_('vivienda', 5), blindar: W_('blindar', 5), pensiones: W_('pensiones', 5), constitucion: W_('constitucion', 5),
     abascal: W_('abascal', 6), prohibir: W_('prohibir', 6), regularizaciones: W_('regularizaciones', 6), masivas: W_('masivas', 6), prioridad: W_('prioridad', 6), vivienda6: W_('vivienda', 6), ayudas: W_('ayudas', 6),
     colau: W_('colau', 7), jornada: W_('jornada', 7), treinta7: W_('treinta', 7), horas: W_('horas', 7), millon7: W_('millon', 7), publicas: W_('publicas', 7),
-    uno8: W_('uno', 8), lleva: W_('lleva', 8), si: W_('si', 8), dieciocho: W_('dieciocho', 8), cero: W_('cero', 8), irpf: W_('irpf', 8), trabajo: W_('trabajo', 8),
+    uno8: W_('uno', 8), lleva: W_('lleva', 8), primer: W_('primer', 8), si: W_('si', 8), dieciocho: W_('dieciocho', 8), cero: W_('cero', 8), irpf: W_('irpf', 8), trabajo: W_('trabajo', 8),
     quien: W_('quien', 9), letra: W_('letra', 9), manana: W_('manana', 9), capitulo: W_('capitulo', 9), manda: W_('mandaselo', 10), votar: W_('votar', 10) };
   // cuándo manda cada atril (del principio de su frase al de la siguiente)
   TL.turn = { pp: [TL.L[4] - 0.25, TL.L[5] - 0.25], psoe: [TL.L[5] - 0.25, TL.L[6] - 0.25], vox: [TL.L[6] - 0.25, TL.L[7] - 0.25], fa: [TL.L[7] - 0.25, TL.L[8] - 0.2] };
@@ -1366,7 +1369,8 @@ async function buildScene() {
 function turnK(id, t) { const [a, b] = TL.turn[id]; return bump(t, a, b, 0.35, 0.35); }
 function anyTurn(t) { let k = 0; for (const id of ORDER) k = Math.max(k, turnK(id, t)); return k; }
 function totK(id, t) { const i = ORDER.indexOf(id), me = turnK(id, t), other = anyTurn(t) - me, pay = bump(t, TL.lleva - 0.2, TL.quien - 0.15, 0.3, 0.3), sweep = bump(t, TL.quien - 0.1, TL.letra - 0.1, 0.15, 0.25) * (0.5 + 0.5 * Math.sin(t * 9.5 - i * 1.57));
-  return clamp(0.86 + 0.14 * me - 0.42 * other - 0.12 * pay + 0.14 * sweep - 0.3 * bump(t, TL.quien - 0.1, TL.letra - 0.1, 0.15, 0.25) * (1 - (0.5 + 0.5 * Math.sin(t * 9.5 - i * 1.57))), 0.3, 1); }
+  const run = bump(t, TL.uno8 - 0.1, TL.lleva + 0.1, 0.12, 0.25), hit = Math.exp(-Math.pow((t - (TL.uno8 + 0.08 + i * 0.2)) / 0.13, 2));                 // «uno de los cuatro»: el brillo pasa de una a otra
+  return clamp(0.86 + 0.14 * me - 0.42 * other - 0.12 * pay + 0.14 * sweep - 0.3 * bump(t, TL.quien - 0.1, TL.letra - 0.1, 0.15, 0.25) * (1 - (0.5 + 0.5 * Math.sin(t * 9.5 - i * 1.57))) - 0.34 * run * (1 - hit) + 0.14 * run * hit, 0.3, 1); }
 function colK(id, t) { const me = turnK(id, t), other = anyTurn(t) - me; return clamp(0.5 * (1 + 0.3 * me - 0.6 * other), 0, 1); }
 function spotK(id, t) { const me = turnK(id, t), other = anyTurn(t) - me; return clamp(0.55 * (1 + 0.6 * me - 0.6 * other), 0, 1); }
 // el sobre: cae dentro de la urna hacia la cámara. u = segundos desde el primer fotograma; la segunda caída enlaza el final con el principio
@@ -1378,11 +1382,12 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); moodMi
   envAt(envU(t));
   // la pantalla grande: «29N» → hemiciclo que cuenta 350 y señala al presidente → la cita del jueves → «29N» → «mañana, capítulo 1»
   { const hA = bump(t, TL.eliges2 - 0.25, TL.hay + 0.1, 0.3, 0.35), cita = bump(t, TL.debaten - 0.35, TL.L[4] - 0.35, 0.3, 0.3), man = bump(t, TL.manana - 0.15, TL.manda + 0.5, 0.25, 0.4), q2 = x => Math.round(x * 20) / 20;
-    const quiet = Math.max(anyTurn(t), bump(t, TL.lleva - 0.3, TL.manana, 0.3, 0.3));
+    const quiet = bump(t, TL.L[4] - 0.65, TL.manana - 0.1, 0.3, 0.3);
     wallDraw({ hemi: hA > 0.01 ? Math.round(seg(t, TL.trescientos - 0.05, TL.diputados + 0.25) * 350) / 350 : 0, hemiA: q2(hA), pres: q2(win(t, TL.ellos - 0.05, 0.45)), cita: q2(cita), man: q2(man), base: q2(clamp(1 - hA - cita - man - quiet)), band: ORDER.map(id => q2(colK(id, t) * (1 - 0.85 * hA))) }); }
   // las pantallas de los cuatro (y su reflejo: comparten material) y las de los demás partidos, que se encienden un momento
   for (const id of ORDER) { const k = totK(id, t); S.tot[id].mat.emissiveIntensity = SCREEN_I * k; S.spots[id].cone.material.uniforms.op.value = 0.015 + 0.04 * spotK(id, t); }
   { const k = bump(t, TL.hay - 0.1, TL.estos + 0.15, 0.3, 0.45); S.dims.forEach((d, i) => { const f = k * (0.6 + 0.4 * Math.sin(t * 5 + i)); d.userData.pl.emissiveIntensity = 0.5 * f; d.userData.tm.emissiveIntensity = 0.12 + 0.9 * f; }); }
+  ORDER.forEach((id, i) => S.P.slots[id].forEach((m, j) => { const t0 = TL.dos3 - 0.05 + i * 0.09 + j * 0.16, k = bump(t, t0, TL.L[4] - 0.5, 0.001, 0.2); m.visible = k > 0.01; if (m.visible) m.scale.setScalar(Math.max(0.01, pop(t, t0, 0.32)) * Math.min(1, k * 1.2)); }));   // «dos medidas de cada uno»
   // las medidas (cada objeto aparece con su palabra, sobre el atril)
   const P = S.P, vis = (g, a, b) => { const k = bump(t, a, b, 0.001, 0.2); g.visible = k > 0.01; if (g.visible) g.scale.setScalar(Math.max(0.01, pop(t, a, 0.4)) * Math.min(1, k * 1.2)); return g.visible; }, ps = (o, t0, d = 0.35) => o.scale.setScalar(Math.max(0.001, pop(t, t0, d)));
   if (vis(P.pp.a, TL.construir - 0.1, TL.bajar - 0.12)) P.pp.houses.forEach((h, i) => { const s0 = h.userData.s0 ?? (h.userData.s0 = 1); h.scale.setScalar(Math.max(0.001, pop(t, lerp(TL.construir, TL.viviendas4 + 0.15, i / 14), 0.3)) * s0); });
@@ -1397,8 +1402,8 @@ function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); moodMi
     P.fa.h40.visible = P.fa.lab40.visible = f < 0.5; P.fa.h32.visible = P.fa.lab32.visible = f >= 0.5; ps(P.fa.h32, TL.treinta7 + 0.15); ps(P.fa.lab32, TL.treinta7 + 0.15); }
   if (vis(P.fa.b, TL.millon7 - 0.28, TL.turn.fa[1] + 0.1)) P.fa.blocks.forEach((b, i) => { b.scale.set(1, Math.max(0.001, pop(t, lerp(TL.millon7 - 0.2, TL.publicas, i / 4), 0.45)), 1); });
   // la intriga: la nómina (IRPF a cero), un «?» sobre cada pantalla y la lupa en la letra pequeña
-  { const a = bump(t, TL.lleva - 0.15, TL.manana - 0.05, 0.01, 0.3); P.pay.g.visible = a > 0.01; if (P.pay.g.visible) { P.pay.g.scale.setScalar(Math.max(0.01, pop(t, TL.lleva - 0.15, 0.45)) * Math.min(1, a * 1.3)); P.pay.g.rotation.z = 0.012 * Math.sin(t * 1.1);
-      drawPay(t > TL.cero + 0.02 ? 1 : 0, Math.round(win(t, TL.dieciocho - 0.1, 0.3) * 10) / 10); const mg = bump(t, TL.letra - 0.25, TL.manana - 0.05, 0.25, 0.25); P.pay.mag.visible = mg > 0.01; P.pay.mag.position.set(-0.55 + 1.0 * seg(t, TL.letra - 0.15, TL.manana - 0.15), -0.5 + 0.03 * Math.sin(t * 3), 0.08); P.pay.mag.scale.setScalar(2.4 * Math.max(0.01, mg)); }
+  { const a = bump(t, TL.lleva - 0.15, TL.manana - 0.05, 0.01, 0.3); P.pay.g.visible = a > 0.01; if (P.pay.g.visible) { P.pay.g.scale.setScalar(Math.max(0.01, pop(t, TL.lleva - 0.15, 0.45)) * Math.min(1, a * 1.3) * (1 + 0.07 * Math.exp(-Math.pow((t - TL.cero - 0.1) / 0.13, 2)))); P.pay.g.rotation.z = 0.012 * Math.sin(t * 1.1);
+      drawPay(t > TL.cero + 0.02 ? 1 : 0, Math.round(win(t, TL.dieciocho - 0.1, 0.3) * 10) / 10, Math.round(bump(t, TL.primer - 0.08, TL.quien + 0.2, 0.2, 0.3) * 10) / 10); const mg = bump(t, TL.letra - 0.25, TL.manana - 0.05, 0.25, 0.25); P.pay.mag.visible = mg > 0.01; P.pay.mag.position.set(-0.55 + 1.0 * seg(t, TL.letra - 0.15, TL.manana - 0.15), -0.5 + 0.03 * Math.sin(t * 3), 0.08); P.pay.mag.scale.setScalar(2.4 * Math.max(0.01, mg)); }
     ORDER.forEach((id, i) => { const q = P.q[id], k = bump(t, TL.quien - 0.1 + i * 0.1, TL.letra - 0.45, 0.01, 0.2); q.visible = k > 0.01; if (q.visible) { q.scale.setScalar(Math.max(0.01, pop(t, TL.quien - 0.1 + i * 0.1, 0.35)) * Math.min(1, k * 1.3)); q.position.y = TOTEM.Y + TOTEM.H + 0.42 + 0.04 * Math.sin(t * 3 + i); } }); }
   for (const c of S.cams) c.userData.head.rotation.y = 0.15 * Math.sin(t * 0.4 + c.position.x);
 }
@@ -1424,8 +1429,8 @@ function buildCam() { const T = TL, UB = S.urn.position.y, UZ = SET.URN[2], P0 =
     [T.sanchez + 0.3, ...mid(1, 0.1, 0)], [T.E[5] + 0.05, ...mid(1, -0.07, 1)],                                                           // Sánchez (PSOE)
     [T.abascal + 0.3, ...mid(2, 0.1, 0)], [T.E[6] + 0.05, ...mid(2, -0.07, 1)],                                                           // Abascal (Vox)
     [T.colau + 0.3, ...mid(3, 0.1, 0)], [T.E[7] + 0.05, ...mid(3, -0.07, 1)],                                                             // Colau (Frente Amplio)
-    [T.lleva + 0.15, [0.35, 1.98, 8.65], [0.0, 1.98, 0.0], 50],                                                                          // abre: los cuatro y, delante, la nómina
-    [T.si + 0.2, [0.0, 1.9, 8.2], [0.0, 1.88, 0.0], 50], [T.trabajo + 0.3, [0.0, 1.86, 7.9], [0.0, 1.84, 0.0], 50],
+    [T.lleva + 0.15, [0.45, 1.98, 8.65], [0.0, 1.98, 0.0], 50],                                                                          // abre: los cuatro y, delante, la nómina
+    [T.si + 0.2, [0.12, 1.9, 8.25], [0.0, 1.88, 0.0], 50], [T.trabajo + 0.3, [-0.4, 1.86, 7.95], [0.0, 1.84, 0.0], 50],                  // deriva lateral: la nómina se despega del fondo
     [T.quien + 0.3, [0.0, 1.9, 8.1], [0.0, 1.9, 0.0], 50],                                                                               // ¿quién?
     [T.letra - 0.3, [0.72, 1.7, 7.35], [0.2, 1.1, 3.3], 48],                                                                             // rodea la urna por un lado…
     [T.letra + 0.4, [0.5, 1.2, 6.1], [-0.12, 0.78, 3.3], 46],                                                                             // …y baja a la letra pequeña

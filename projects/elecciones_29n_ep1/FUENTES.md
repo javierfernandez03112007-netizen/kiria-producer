@@ -11,8 +11,11 @@ Pedido por Javi el 24-11-2026: serie explicativa y neutral, un vídeo por partid
   El mismo orden tendrá la serie: capítulo 1 PP, 2 PSOE, 3 Vox, 4 Frente Amplio. Cada capítulo acaba con una intriga equivalente del siguiente.
 - **Sin sondeos**: la ley electoral (LOREG, art. 69.7) prohíbe publicar o reproducir sondeos los cinco días anteriores a la votación
   (del 24 al 28-11). Tampoco se dice quién «va ganando».
-- Personas reales: muñecos estilizados (no fotos ni imágenes realistas), con su nombre; no se les atribuyen frases; sin logotipos de
-  partidos (siglas en letra normal y su color).
+- Personas reales (Javi, 24-11: «lo más realista posible»): se usa **la foto real de cada uno** (oficial o del propio partido, con licencia
+  libre: tabla de abajo) en una pantalla detrás de su atril. **No se generan caras ni vídeo con IA, no se les anima ni se les hace hablar**
+  y no se les atribuyen frases. Mismo trato: las cuatro fotos a la misma escala y altura de ojos, cada una sobre el color de su partido.
+  Sin logotipos de partidos (siglas en letra normal y su color).
+- Es un montaje gráfico (plató virtual), no una imagen del debate: se dice en la descripción.
 
 **Ojo**: desde este entorno no se pueden abrir las webs de los medios ni de los partidos (la red las bloquea): los datos salen de
 resúmenes del buscador de varias fuentes que coinciden. Antes de publicar conviene abrir al menos un enlace por partido.
@@ -21,7 +24,7 @@ resúmenes del buscador de varias fuentes que coinciden. Antes de publicar convi
 |---|---|---|
 | «El domingo» | Elecciones a Cortes Generales el domingo 29-11-2026; campaña del 13 al 27; el 28, jornada de reflexión. Calendario de la Junta Electoral Central (https://www.juntaelectoralcentral.es/cs/jec/documentos/eg2026_calendario.pdf), nota del INE (https://www.ine.es/dyngs/Prensa/es/EG2026.htm) | OK |
 | «no eliges presidente. Eliges 350 diputados… y ellos lo eligen» | Constitución, arts. 68 (Congreso: 300–400 diputados; son 350 por la LOREG, art. 162) y 99 (el Congreso inviste al presidente). También se vota el Senado (no se dice para no alargar) | OK |
-| Rótulo: «38,7 millones pueden votar» | 38.728.356 electores (35.958.711 en España y 2.769.645 en el extranjero); 1.615.127 votan por primera vez en unas generales. Nota del INE y guía del Ministerio del Interior (https://www.moncloa.com/2026/10/22/elecciones-generales-29n-guia-censo-calendario-3453357, https://mapaelectoral.es/elecciones/censo-electoral-2026/) | OK (resumen) |
+| (No se usa en el vídeo) «38,7 millones pueden votar» | 38.728.356 electores (35.958.711 en España y 2.769.645 en el extranjero); 1.615.127 votan por primera vez en unas generales. Nota del INE y guía del Ministerio del Interior (https://www.moncloa.com/2026/10/22/elecciones-generales-29n-guia-censo-calendario-3453357, https://mapaelectoral.es/elecciones/censo-electoral-2026/) | OK (resumen) |
 | «estos cuatro debaten el jueves» | Debate a cuatro: jueves 26-11, 22:00, Academia de Televisión, Plató A de Madrid Content City (Tres Cantos); Sánchez, Feijóo, Abascal y Colau; modera María Casado (https://www.articulo14.es/politica/debate-a-cuatro-del-29n-cuando-es-a-que-hora-empieza-y-donde-ver-a-sanchez-feijoo-abascal-y-colau-20261123.html, https://www.eldiario.es/vertele/noticias/academia-tv-organizara-debate-electoral-cuatro-jueves-26-noviembre_1_13668381.html, https://www.moncloa.com/2026/11/17/abascal-debate-electoral-cuatro-26n-3469596/) | OK |
 | Candidatos | Sánchez (PSOE), Feijóo (PP), Abascal (Vox), Ada Colau (Frente Amplio: coalición de 15 partidos con Sumar, IU, Más Madrid, Compromís, Comuns…; presentada el 17-10; Podemos va aparte con Irene Montero) (https://www.articulo14.es/politica/quienes-son-los-candidatos-a-las-elecciones-generales-del-29-de-noviembre-de-2026-20261106.html, https://www.infobae.com/espana/2026/10/17/frente-amplio-presenta-a-ada-colau-de-candidata-tras-el-fracaso-del-acuerdo-con-podemos-sabemos-que-no-estamos-todas/) | OK |
 | «Feijóo, PP: construir un millón de viviendas» | Programa «Reconstrucción Nacional» (249 medidas): un millón de viviendas (https://www.moncloa.com/2026/11/16/programa-electoral-pp-249-medidas-3468978/, https://www.elespanol.com/invertia/observatorios/vivienda/20261123/millon-casas-expropiaciones-propuestas-electorales-partidos-acabar-crisis-vivienda/1003744466831_0.html) | OK (resumen) |
@@ -34,7 +37,25 @@ resúmenes del buscador de varias fuentes que coinciden. Antes de publicar convi
 | «…y un millón y medio de viviendas públicas» | 1,5 millones de viviendas públicas en 12 años con el 1 % del PIB al año (https://www.elplural.com/politica/espana/frente-amplio-propone-construir-15-millones-viviendas-publicas-limitar-herencias-200-euros-mes-hijo_804309102, https://es.euronews.com/2026/11/20/elecciones-generales-2026-propuestas-vivienda-pp-psoe-vox-frente-amplio). Rótulo: «en 12 años» | OK (resumen) |
 | «uno de los cuatro lleva esto en su programa: entre 18 y 35 años, cero IRPF en tu primer año de trabajo» | PP: rebaja del IRPF para trabajadores y autónomos de 18 a 35 años en sus cuatro primeros años de tributación: 100 % el primero, 75 %, 50 % y 25 % (https://www.infobae.com/espana/2026/11/10/el-pp-anuncia-sus-propuestas-economicas-para-el-29-n-los-jovenes-de-18-a-35-anos-no-pagaran-irpf-en-su-primer-ano-como-contribuyentes-y-los-alimentos-basicos-tendran-iva-cero/, https://capital.es/economia/el-pp-propone-rebajar-el-irpf-a-los-jovenes-y-eximirlos-en-su-primer-ano-de-tributacion/234099, https://www.hoyaragon.es/bolsillo/irpf-cero-primer-ano-trabajo-menores-35-29n/20261113111140152547.html) | OK (resumen). La respuesta (PP) NO se da en este vídeo: es el capítulo 1 |
 | «con qué letra pequeña» | Lo que cuentan las mismas fuentes: solo los cuatro primeros años de tributación; no aclara el tramo autonómico; sin coste cifrado; hace falta cambiar la ley del IRPF. Va en el capítulo 1 | — |
-| Parecido de los muñecos | Feijóo, sin gafas desde octubre de 2024 (operación de cataratas: https://www.libertaddigital.com/chic/vida-estilo/2024-10-21/los-sutiles-cambios-de-look-de-feijoo-que-estan-causando-furor-7176525/). Colores de Frente Amplio: bermellón con letras lima (https://graffica.info/frente-amplio-estrena-logo/). Fotos de referencia: categorías de Wikimedia Commons (no se usan en el vídeo) | — |
+| Colores | Los de cada partido; Frente Amplio: bermellón con letras lima (https://graffica.info/frente-amplio-estrena-logo/) | — |
+| Rótulo «40 horas a la semana, hoy» (Frente Amplio) | La jornada máxima legal sigue en 40 horas semanales de promedio anual (Estatuto de los Trabajadores, art. 34.1: https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430) | OK |
 | Lemas (solo si hacen falta en rótulos) | PSOE «La fuerza de la gente», PP «El cambio necesario», Vox «Es sentido común», Frente Amplio «Un voto como una casa» (https://brandemia.org/partidos-politicos-espana, https://www.elindependiente.com/espana/2026/11/13/carteles-campana-electoral-elecciones-generales-29-n/) | No se usan en la voz |
 
 Efectos de sonido: biblioteca de ElevenLabs del canal. Voz: Javi (ElevenLabs). Sin música.
+
+## Fotos de los candidatos (Wikimedia Commons)
+
+Bajadas el 24-11-2026 de upload.wikimedia.org (originales en `assets/fotos/*_original.jpg`). Lo único que se les hace (`retratos.py`): quitar el fondo
+(`assets/fotos/*_recorte.png`, con @imgly/background-removal-node), igualar la escala, un ajuste suave de luz y un fundido por abajo. No se retoca la cara ni el cuerpo.
+
+| Candidato | Fichero en Commons | Autor y fecha | Licencia |
+|---|---|---|---|
+| Alberto Núñez Feijóo (PP) | «ALBERTO NÚÑEZ FEIJÓO.jpg» — https://commons.wikimedia.org/wiki/File:ALBERTO_N%C3%9A%C3%91EZ_FEIJ%C3%93O.jpg | Partido Popular (Flickr «populares», foto 54529486666), 14-05-2025 | CC0 1.0 (dominio público) |
+| Pedro Sánchez (PSOE) | «Pedro Sánchez in 2026.jpg» (recorte de «100226-sanchez-biografia4.jpg») — https://commons.wikimedia.org/wiki/File:Pedro_S%C3%A1nchez_in_2026.jpg | Pool Moncloa / Carlos Spottorno de las Morenas, 11-02-2026. Fuente: La Moncloa | Aviso legal de La Moncloa (Ministerio de la Presidencia. Gobierno de España): reproducción y modificación autorizadas citando la fuente y la fecha, sin desvirtuar el contenido |
+| Santiago Abascal (Vox) | «Santiago Abascal 2026 (2x3 cropped).jpg» — https://commons.wikimedia.org/wiki/File:Santiago_Abascal_2026_(2x3_cropped).jpg | Vox España (Flickr «voxespana», foto 55056120434), 21-01-2026 (desayuno informativo del Foro Empresarial de Madrid) | CC0 1.0 (dominio público) |
+| Ada Colau (Frente Amplio) | «Ada Colau, 2022.jpg» — https://commons.wikimedia.org/wiki/File:Ada_Colau,_2022.jpg | Laura Guerrero / Ajuntament de Barcelona, 01-06-2022 | CC BY 4.0 (hay que citar a la autora e indicar los cambios: fondo quitado) |
+
+**Ojo con la de Colau**: es de 2022 (la foto libre, de retrato y neutra más reciente que hay en Commons; en la de 2024 sale con el pelo canoso y un pañuelo
+palestino, y es un selfi). Si Javi tiene una actual con permiso de uso, se cambia en `assets/fotos/fa_original.jpg` y se rehace con `retratos.py`.
+La de Abascal es un recorte muy cerrado (cabeza y cuello); el original completo no se pudo bajar (Wikimedia limita las descargas desde este entorno).
+

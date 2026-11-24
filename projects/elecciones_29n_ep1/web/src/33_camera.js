@@ -18,8 +18,8 @@ function buildCam() { const T = TL, UB = S.urn.position.y, UZ = SET.URN[2], P0 =
     [T.sanchez + 0.3, ...mid(1, 0.1, 0)], [T.E[5] + 0.05, ...mid(1, -0.07, 1)],                                                           // Sánchez (PSOE)
     [T.abascal + 0.3, ...mid(2, 0.1, 0)], [T.E[6] + 0.05, ...mid(2, -0.07, 1)],                                                           // Abascal (Vox)
     [T.colau + 0.3, ...mid(3, 0.1, 0)], [T.E[7] + 0.05, ...mid(3, -0.07, 1)],                                                             // Colau (Frente Amplio)
-    [T.lleva + 0.15, [0.35, 1.98, 8.65], [0.0, 1.98, 0.0], 50],                                                                          // abre: los cuatro y, delante, la nómina
-    [T.si + 0.2, [0.0, 1.9, 8.2], [0.0, 1.88, 0.0], 50], [T.trabajo + 0.3, [0.0, 1.86, 7.9], [0.0, 1.84, 0.0], 50],
+    [T.lleva + 0.15, [0.45, 1.98, 8.65], [0.0, 1.98, 0.0], 50],                                                                          // abre: los cuatro y, delante, la nómina
+    [T.si + 0.2, [0.12, 1.9, 8.25], [0.0, 1.88, 0.0], 50], [T.trabajo + 0.3, [-0.4, 1.86, 7.95], [0.0, 1.84, 0.0], 50],                  // deriva lateral: la nómina se despega del fondo
     [T.quien + 0.3, [0.0, 1.9, 8.1], [0.0, 1.9, 0.0], 50],                                                                               // ¿quién?
     [T.letra - 0.3, [0.72, 1.7, 7.35], [0.2, 1.1, 3.3], 48],                                                                             // rodea la urna por un lado…
     [T.letra + 0.4, [0.5, 1.2, 6.1], [-0.12, 0.78, 3.3], 46],                                                                             // …y baja a la letra pequeña

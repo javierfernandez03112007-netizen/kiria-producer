@@ -19,7 +19,7 @@ import numpy as np
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.abspath(os.path.join(ROOT, ".."))
 sys.path.insert(0, os.path.join(ROOT, "..", ".."))
-from engine.fin_draw import prog, hex_bgr  # noqa: E402
+from engine.fin_draw import prog, hex_bgr, chip, paste  # noqa: E402
 from engine.subs import Subs, norm  # noqa: E402
 
 FPS, W, H = 60, 1080, 1920
@@ -62,11 +62,17 @@ def compose(fi):
     t = fi / FPS
     img = cv2.imread(os.path.join(FRAMES, f"f{fi:05d}.jpg")).astype(np.float32) / 255
     SUBS.draw(img, t, 1 - prog(t, END - 0.5, 0.3))
+    k = prog(t, NOTE_T[0], 0.3) * (1 - prog(t, NOTE_T[1], 0.3))       # aviso discreto mientras se ve el plató entero: no es una imagen del debate
+    if k > 0.01:
+        rgb, a = NOTE
+        paste(img, (rgb, a * k), W / 2, 196)
     return (np.clip(img, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes()
 
 
 def init():
-    global SUBS
+    global SUBS, NOTE, NOTE_T
+    NOTE = chip("Plató virtual · fotos reales de archivo", 30, "#DCE3EE", "#10141C", "bold")
+    NOTE_T = (at("estos") + 0.3, LINES[3]["start"] - 0.5)
     SUBS = Subs(LINES, KEY, {}, y=305, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")   # algo más arriba de lo habitual (330): debajo empieza la pantalla de cada candidato
 
 
@@ -114,6 +120,8 @@ def sfx_track(path):
     put("ade/letrero_on", at("hay") + 0.02, 0.9, 0.2, 0.3)
     put("avion/whoosh_largo", at("estos") - 0.2, 1.1, 0.2, 0.4)
     put("economia/pantalla", at("debaten") - 0.3, 0.5, 0.3, 0.2)
+    put("cerradura/blip", at("dos") - 0.05, 0.5, 0.22, 0.15)
+    put("cerradura/blip", at("dos") + 0.3, 0.5, 0.2, 0.15)
     # 4: Feijóo (PP): casitas que brotan; la casa y el IVA que cambia
     put("avion/whoosh", L[3] - 0.36, 0.6, 0.26, 0.25)
     put("avion/construye", at("construir") - 0.05, 1.35, 0.26, 0.3)
