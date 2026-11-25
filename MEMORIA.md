@@ -410,6 +410,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   **Al llegar cada voz**: comprobar a qué guion corresponde (reconocedor y parecido con los `script.txt`: 0,91 frente a 0,09), copiarla a
   `assets/voz_original.mp3`, `asr_parakeet.py` → `ajustar_voz.py` → `env_voz.py` → `web/build.sh`, mirar con `probe.mjs` que no falte ninguna palabra y que las
   claves de cámara estén ordenadas, 36 fotogramas de prueba, render, `compose_*.py`, `portada.py --render`, controles y entrega.
+  **Pasada de prueba de las tres escenas (25-11, 17:50 UTC; 1/4 de tamaño, 30 fps, ≈ 6 min cada una con el equipo libre)**: sin errores; los únicos picos
+  de continuidad están en los cambios de objeto o de rótulo y el último fotograma casa con el primero en las tres (Vox 7,4 frente a 7,3; PP 3,8 frente a
+  4,2; Frente Amplio 3,7 frente a 3,3).
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
