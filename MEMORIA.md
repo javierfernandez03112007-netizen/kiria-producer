@@ -347,6 +347,27 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   final, medir con `window.renderAt` qué cuesta cada cosa (DOF, sombras, reflejos, MSAA): diez minutos de medida ahorraron horas.
   **Pendiente de la serie**: capítulos 1 (PP), 2 (PSOE), 3 (Vox) y 4 (Frente Amplio) con la misma plantilla (pantalla con la foto, medidas sobre
   el atril) y antes del viernes 27 a medianoche.
+- **«29N: el PSOE» (`projects/elecciones_29n_psoe/`, 25-11-2026) — capítulo de un partido (plantilla para PP, Vox y Frente Amplio).** Javi:
+  «vamos a hacer el vídeo del siguiente partido político, PSOE». **Estado (25-11, tarde): guion enviado, escena, subtítulos, efectos, portada y
+  descripción hechos con tiempos PROVISIONALES (`provisional_tiempos.py`); falta la voz de Javi** (al llegar: copiarla a `assets/voz_original.mp3`,
+  `asr_parakeet.py`, `ajustar_voz.py`, `env_voz.py`, `web/build.sh`, render y `compose_psoe.py`; `portada.py --render`).
+  **Plantilla del capítulo de un partido** (10 frases, ≈ 156 palabras, ≈ 58 s): (1-2) gancho con una promesa del partido y un número comprobable
+  (aquí: blindar las pensiones en la Constitución pide 210 diputados; el récord de un partido son 202) como objeto gigante delante del hemiciclo de
+  la pantalla grande (candado de combinación: las cifras giran, se paran en 2-1-0, pasan a 2-0-2 y el arco no cierra); (3) «su programa trae N.
+  Cuatro que te tocan»: la cámara baja a la pantalla del partido; (4-7) cuatro temas (pestaña ámbar «1 · VIVIENDA»… encima del rótulo), cada medida
+  como objeto sobre el atril y rótulo que aparece cuando la voz lo dice; (8) «¿y con qué dinero?»; (9) intriga del siguiente partido sobre SU atril
+  (mismo plano base); (10) «mándaselo a…» y vuelta al objeto del gancho (bucle).
+  **Reglas nuevas de la plantilla**: los objetos de las medidas van en dorado y cian (los dos colores de la serie), NO en el color del partido
+  (rojo sobre la pantalla roja no se veía): el color del partido solo va en su nombre, sus siglas y el borde de los rótulos. El metal dorado
+  (`M.gold`) refleja el plató oscuro y sale marrón: monedas con material «encendido» (emissive). Con ≈ 38 s seguidos delante de la misma pantalla,
+  la cámara tiene que moverse: `mid(n, th, k, dy)` rodea el atril ±0,2 rad alrededor de los rótulos, se acerca poco (los rótulos y objetos ocupan
+  casi todo el ancho: más cerca se cortan) y sube mirando hacia abajo; un lado distinto en cada medida.
+  **Orden de la serie (sin decidir)**: el capítulo 0 promete «mañana, capítulo uno» el cero IRPF, que es del PP, y Javi pidió el PSOE como
+  «siguiente». El guion va escrito para publicarse DESPUÉS del PP (termina «en el próximo capítulo, Vox»). Si se publica antes que el PP, cambian dos
+  frases: al principio, «El cero IRPF es del PP: lo verás en su capítulo.» (o se deja la intriga abierta) y al final «En el próximo capítulo, el PP:
+  cero IRPF en tu primer año de trabajo… y su letra pequeña.» (y la escena: `CH.next = 'pp'` y la tabla del atril siguiente).
+  **Datos por comprobar antes de publicar** (una sola fuente; las webs de los medios no se abren desde aquí): SMI por ley ≥ 60 % del salario medio,
+  y que la paga por crianza no trae cuantía. Portada: «PARA BLINDAR LAS PENSIONES HACEN FALTA 210» con el candado encima de la pantalla de Sánchez.
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
