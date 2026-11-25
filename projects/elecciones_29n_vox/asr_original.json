@@ -1,0 +1,692 @@
+[
+{
+"w": "Vox",
+"start": 0.08,
+"end": 0.32
+},
+{
+"w": "promete",
+"start": 0.48,
+"end": 0.72
+},
+{
+"w": "bajarte",
+"start": 0.88,
+"end": 1.2
+},
+{
+"w": "el",
+"start": 1.28,
+"end": 1.36
+},
+{
+"w": "IRPF",
+"start": 1.52,
+"end": 2.32
+},
+{
+"w": "según",
+"start": 2.56,
+"end": 2.8
+},
+{
+"w": "los",
+"start": 2.88,
+"end": 2.96
+},
+{
+"w": "hijos",
+"start": 3.04,
+"end": 3.28
+},
+{
+"w": "que",
+"start": 3.36,
+"end": 3.44
+},
+{
+"w": "tengas.",
+"start": 3.52,
+"end": 4.08
+},
+{
+"w": "¿Cuánto?",
+"start": 4.16,
+"end": 4.96
+},
+{
+"w": "Su",
+"start": 5.2,
+"end": 5.28
+},
+{
+"w": "programa",
+"start": 5.44,
+"end": 5.76
+},
+{
+"w": "tiene",
+"start": 5.84,
+"end": 5.92
+},
+{
+"w": "66",
+"start": 6.24,
+"end": 6.8
+},
+{
+"w": "páginas",
+"start": 7.04,
+"end": 7.36
+},
+{
+"w": "y",
+"start": 7.52,
+"end": 7.6
+},
+{
+"w": "no",
+"start": 7.76,
+"end": 7.84
+},
+{
+"w": "lo",
+"start": 7.92,
+"end": 8.0
+},
+{
+"w": "dice.",
+"start": 8.08,
+"end": 8.56
+},
+{
+"w": "El",
+"start": 8.72,
+"end": 8.8
+},
+{
+"w": "15",
+"start": 8.96,
+"end": 9.28
+},
+{
+"w": "y",
+"start": 9.36,
+"end": 9.44
+},
+{
+"w": "el",
+"start": 9.52,
+"end": 9.6
+},
+{
+"w": "25%",
+"start": 9.6,
+"end": 10.24
+},
+{
+"w": "que",
+"start": 10.48,
+"end": 10.56
+},
+{
+"w": "circulan",
+"start": 10.64,
+"end": 11.2
+},
+{
+"w": "son",
+"start": 11.36,
+"end": 11.44
+},
+{
+"w": "de",
+"start": 11.52,
+"end": 11.6
+},
+{
+"w": "otro",
+"start": 11.68,
+"end": 11.76
+},
+{
+"w": "documento",
+"start": 11.92,
+"end": 12.32
+},
+{
+"w": "suyo,",
+"start": 12.48,
+"end": 12.88
+},
+{
+"w": "de",
+"start": 13.04,
+"end": 13.12
+},
+{
+"w": "2025.",
+"start": 13.2,
+"end": 14.32
+},
+{
+"w": "Trae",
+"start": 14.56,
+"end": 14.8
+},
+{
+"w": "115",
+"start": 15.04,
+"end": 15.68
+},
+{
+"w": "medidas.",
+"start": 15.84,
+"end": 16.48
+},
+{
+"w": "Cuatro",
+"start": 16.64,
+"end": 16.88
+},
+{
+"w": "que",
+"start": 17.04,
+"end": 17.12
+},
+{
+"w": "te",
+"start": 17.2,
+"end": 17.28
+},
+{
+"w": "tocan.",
+"start": 17.36,
+"end": 17.92
+},
+{
+"w": "Vivienda.",
+"start": 18.16,
+"end": 18.8
+},
+{
+"w": "Iba",
+"start": 18.96,
+"end": 19.28
+},
+{
+"w": "cero",
+"start": 19.44,
+"end": 19.68
+},
+{
+"w": "al",
+"start": 19.76,
+"end": 19.84
+},
+{
+"w": "comprar",
+"start": 19.92,
+"end": 20.24
+},
+{
+"w": "tu",
+"start": 20.32,
+"end": 20.4
+},
+{
+"w": "primera",
+"start": 20.48,
+"end": 20.72
+},
+{
+"w": "casa,",
+"start": 20.72,
+"end": 21.04
+},
+{
+"w": "si",
+"start": 21.12,
+"end": 21.2
+},
+{
+"w": "es",
+"start": 21.28,
+"end": 21.36
+},
+{
+"w": "nueva,",
+"start": 21.44,
+"end": 21.84
+},
+{
+"w": "y",
+"start": 21.84,
+"end": 21.92
+},
+{
+"w": "la",
+"start": 22.0,
+"end": 22.08
+},
+{
+"w": "compra",
+"start": 22.16,
+"end": 22.4
+},
+{
+"w": "una",
+"start": 22.56,
+"end": 22.64
+},
+{
+"w": "familia",
+"start": 22.72,
+"end": 23.04
+},
+{
+"w": "española.",
+"start": 23.12,
+"end": 23.76
+},
+{
+"w": "Inmigración.",
+"start": 24.0,
+"end": 24.88
+},
+{
+"w": "Prohibir",
+"start": 25.16,
+"end": 25.8
+},
+{
+"w": "regularizaciones",
+"start": 25.88,
+"end": 26.68
+},
+{
+"w": "masivas",
+"start": 26.76,
+"end": 27.16
+},
+{
+"w": "y",
+"start": 27.24,
+"end": 27.32
+},
+{
+"w": "repatriar",
+"start": 27.4,
+"end": 27.88
+},
+{
+"w": "a",
+"start": 27.96,
+"end": 28.04
+},
+{
+"w": "quien",
+"start": 28.04,
+"end": 28.2
+},
+{
+"w": "esté",
+"start": 28.28,
+"end": 28.52
+},
+{
+"w": "en",
+"start": 28.52,
+"end": 28.6
+},
+{
+"w": "situación",
+"start": 28.68,
+"end": 29.0
+},
+{
+"w": "irregular.",
+"start": 29.08,
+"end": 29.8
+},
+{
+"w": "Ayudas,",
+"start": 30.04,
+"end": 30.68
+},
+{
+"w": "prioridad",
+"start": 30.92,
+"end": 31.48
+},
+{
+"w": "nacional.",
+"start": 31.56,
+"end": 32.12
+},
+{
+"w": "Los",
+"start": 32.36,
+"end": 32.44
+},
+{
+"w": "españoles",
+"start": 32.52,
+"end": 33.16
+},
+{
+"w": "primero",
+"start": 33.32,
+"end": 33.64
+},
+{
+"w": "en",
+"start": 33.72,
+"end": 33.8
+},
+{
+"w": "vivienda",
+"start": 33.88,
+"end": 34.28
+},
+{
+"w": "pública,",
+"start": 34.36,
+"end": 34.68
+},
+{
+"w": "guarderías",
+"start": 34.76,
+"end": 35.48
+},
+{
+"w": "y",
+"start": 35.56,
+"end": 35.64
+},
+{
+"w": "ayudas",
+"start": 35.72,
+"end": 36.12
+},
+{
+"w": "sociales.",
+"start": 36.12,
+"end": 36.84
+},
+{
+"w": "Sanidad,",
+"start": 37.0,
+"end": 37.72
+},
+{
+"w": "tarjeta",
+"start": 37.88,
+"end": 38.36
+},
+{
+"w": "sanitaria",
+"start": 38.44,
+"end": 38.92
+},
+{
+"w": "única",
+"start": 39.0,
+"end": 39.32
+},
+{
+"w": "y,",
+"start": 39.48,
+"end": 39.72
+},
+{
+"w": "para",
+"start": 39.8,
+"end": 39.88
+},
+{
+"w": "extranjeros",
+"start": 40.04,
+"end": 40.6
+},
+{
+"w": "sin",
+"start": 40.68,
+"end": 40.76
+},
+{
+"w": "residencia",
+"start": 40.92,
+"end": 41.32
+},
+{
+"w": "legal,",
+"start": 41.4,
+"end": 41.8
+},
+{
+"w": "solo",
+"start": 41.88,
+"end": 41.96
+},
+{
+"w": "urgencias",
+"start": 42.28,
+"end": 42.76
+},
+{
+"w": "graves.",
+"start": 42.84,
+"end": 43.4
+},
+{
+"w": "¿Y",
+"start": 43.56,
+"end": 43.72
+},
+{
+"w": "con",
+"start": 43.88,
+"end": 43.96
+},
+{
+"w": "qué",
+"start": 44.04,
+"end": 44.12
+},
+{
+"w": "dinero?",
+"start": 44.36,
+"end": 44.76
+},
+{
+"w": "Recortando",
+"start": 44.92,
+"end": 45.56
+},
+{
+"w": "el",
+"start": 45.64,
+"end": 45.72
+},
+{
+"w": "gas",
+"start": 45.72,
+"end": 45.88
+},
+{
+"w": "que",
+"start": 46.04,
+"end": 46.12
+},
+{
+"w": "llama",
+"start": 46.2,
+"end": 46.52
+},
+{
+"w": "superfluo",
+"start": 46.6,
+"end": 47.16
+},
+{
+"w": "e",
+"start": 47.24,
+"end": 47.32
+},
+{
+"w": "ideológico.",
+"start": 47.4,
+"end": 48.28
+},
+{
+"w": "¿Cuánto",
+"start": 48.44,
+"end": 49.0
+},
+{
+"w": "tampoco",
+"start": 49.16,
+"end": 49.4
+},
+{
+"w": "lo",
+"start": 49.56,
+"end": 49.64
+},
+{
+"w": "dice?",
+"start": 49.72,
+"end": 50.12
+},
+{
+"w": "En",
+"start": 50.4,
+"end": 50.48
+},
+{
+"w": "el",
+"start": 50.72,
+"end": 50.8
+},
+{
+"w": "próximo",
+"start": 50.88,
+"end": 51.2
+},
+{
+"w": "capítulo,",
+"start": 51.28,
+"end": 51.92
+},
+{
+"w": "Frente",
+"start": 52.08,
+"end": 52.48
+},
+{
+"w": "Amplio.",
+"start": 52.64,
+"end": 53.2
+},
+{
+"w": "Que",
+"start": 53.28,
+"end": 53.44
+},
+{
+"w": "nadie",
+"start": 53.44,
+"end": 53.68
+},
+{
+"w": "herede",
+"start": 53.84,
+"end": 54.16
+},
+{
+"w": "más",
+"start": 54.4,
+"end": 54.48
+},
+{
+"w": "de",
+"start": 54.56,
+"end": 54.64
+},
+{
+"w": "10",
+"start": 54.64,
+"end": 54.96
+},
+{
+"w": "millones",
+"start": 55.04,
+"end": 55.36
+},
+{
+"w": "de",
+"start": 55.44,
+"end": 55.52
+},
+{
+"w": "euros.",
+"start": 55.6,
+"end": 56.08
+},
+{
+"w": "Y",
+"start": 56.24,
+"end": 56.32
+},
+{
+"w": "lo",
+"start": 56.48,
+"end": 56.56
+},
+{
+"w": "que",
+"start": 56.64,
+"end": 56.72
+},
+{
+"w": "pase",
+"start": 56.8,
+"end": 57.04
+},
+{
+"w": "de",
+"start": 57.12,
+"end": 57.2
+},
+{
+"w": "ahí,",
+"start": 57.2,
+"end": 57.52
+},
+{
+"w": "mándaselo",
+"start": 57.6,
+"end": 58.16
+},
+{
+"w": "a",
+"start": 58.32,
+"end": 58.4
+},
+{
+"w": "quien",
+"start": 58.48,
+"end": 58.64
+},
+{
+"w": "tiene",
+"start": 58.64,
+"end": 58.72
+},
+{
+"w": "hijos.",
+"start": 58.96,
+"end": 59.36
+}
+]
