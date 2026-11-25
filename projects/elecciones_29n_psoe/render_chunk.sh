@@ -1,5 +1,5 @@
 #!/bin/bash
-# Máquina de ayuda: renderiza los fotogramas A..B-1 de «29N, capítulo 0» y los sube a la rama <PFX>-X (por defecto render-e2).
+# Máquina de ayuda: renderiza los fotogramas A..B-1 de «29N: el PSOE» y los sube a la rama <PFX>-X (por defecto render-e2).
 #   bash projects/elecciones_29n_psoe/render_chunk.sh A B X [PFX]            → todos, codificados en chunks/chunk_A_B.mp4
 #   ALL=1 bash projects/elecciones_29n_psoe/render_chunk.sh A B X [PFX]      → todos, como JPG sueltos en chunks/all_A_B/ (sin recodificar: idénticos a los
 #                                                                             de la máquina principal; es lo que se usa)
@@ -37,6 +37,6 @@ fi
 cd ../..
 git checkout -q -B $PFX-$X
 git add -f projects/elecciones_29n_psoe/$F
-git commit -qm "29N capítulo 0: trozo $A-$B renderizado (máquina de ayuda $X)"
+git commit -qm "29N PSOE: trozo $A-$B renderizado (máquina de ayuda $X)"
 for i in 1 2 3 4 5; do git push -q -f -u origin $PFX-$X && break; sleep $((2 ** i)); done
 echo "SUBIDO $PFX-$X $F ($(du -sh projects/elecciones_29n_psoe/$F | cut -f1))"
