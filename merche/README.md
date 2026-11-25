@@ -27,8 +27,9 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 - HTML, CSS y JS sin librerías (solo three.js para la intro), fuentes alojadas en la propia web (RGPD). Cuando esté aprobada, se pasa a un tema de Shopify.
 - **Enlace privado de vista previa** (lo pidió Javi el 24-11): https://claude.ai/artifact/MyPr7aV3fpCqdQVF3dcX62 — solo lo abre él hasta que lo comparta.
   Cómo se actualiza: `web_merche/README.md`.
-- **Para enseñarla sin servidor:** `web_merche/dist/beauty-salon-merche-demo.html` (un solo archivo de ≈ 1,1 MB; se abre con doble clic).
-- **Catálogo: 169 productos** (59 ghd + 110 Schwarzkopf Professional) con descripción, ventajas, modo de uso, datos técnicos, precio de referencia y fuente.
+- **Para enseñarla sin servidor:** `web_merche/dist/beauty-salon-merche-demo.html` (un solo archivo de ≈ 1,7 MB; se abre con doble clic).
+- **Catálogo: 160 productos** (59 ghd + 101 Schwarzkopf Professional) con descripción, ventajas, modo de uso, datos técnicos, precio de referencia y fuente.
+  Eran 169: el 25-11-2026 se quitaron 9 de Schwarzkopf que la marca ya no publica (ver «Fotos, estado» más abajo).
   Sale de `web_merche/data/*.json`. Los precios son PVP o de tiendas (nov. 2026): **el precio final lo pone Merche**; los campos dudosos van en `confirm`.
 - **Fotos y vídeos:** basta con dejar el archivo en `web_merche/media/productos/<id>.jpg` (foto), `<id>.mp4` (vídeo) o `<id>-tutorial.mp4`
   (tutorial de Merche) y ejecutar `python3 data/build.py`. Los generales (intro, vídeo de portada, foto de Merche) se ponen en `js/config.js`.
@@ -77,14 +78,17 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 
 ## Pendiente
 - **De Merche:** permisos de ghd y de Henkel, consentimiento de imagen, logo y bolsa, precios (de venta y de compra) y acceso a su Meta Business.
-  Para la web: qué productos vende de verdad (de los 169), sus precios, lo más vendido real, envíos (transportista, costes, gratis desde…),
+  Para la web: qué productos vende de verdad (de los 160), sus precios, lo más vendido real, envíos (transportista, costes, gratis desde…),
   formas de pago, su WhatsApp e Instagram, sus datos fiscales para los textos legales, su foto y una frase por producto estrella.
 - **De Javi:** qué era «triple» (¿TPV? ¿Stripe?), si la web actual la hicimos nosotros, la clave de la IA de vídeo, la clave de ElevenLabs y el precio que le cobra a Merche.
   Para la web: visto bueno o cambios de la maqueta, fotos y vídeos (los va mandando) y si quiere un enlace privado para verla en el móvil.
 - **Mío (siguiente):** poner fotos y vídeos reales según lleguen, textos de Merche por producto, y pasar la maqueta aprobada a Shopify.
-- **Fotos, estado el 25-11-2026:** 100 de 169 puestas (las 100 de Schwarzkopf que están en la tienda oficial, descargadas de la propia marca:
-  **Javi confirmó que tienen permiso de ghd y Schwarzkopf para usar sus fotos**). Faltan las 59 de ghd (su web bloquea esta máquina: **las manda Javi**)
-  y 10 de Schwarzkopf que ya no están en el catálogo oficial (pendiente de que Javi diga si se quitan). El enlace privado va por la versión 2.
+- **Fotos, estado el 25-11-2026:** 101 de 160 puestas: **Schwarzkopf está completo** (sus 101 productos llevan la foto y la ficha oficiales, descargadas de la
+  propia marca: **Javi confirmó que tienen permiso de ghd y Schwarzkopf para usar sus fotos**). 100 salen de la tienda oficial y la Bruma Sun Protect SPF 20,
+  de la web de marca. **Solo faltan las 59 de ghd** (su web bloquea esta máquina: **las manda Javi**). El enlace privado va por la versión 3.
+- **Productos quitados el 25-11-2026 (9):** Javi dijo «los que no aparezcan quítalos». No están ni en la tienda oficial ni en la web de marca de
+  Schwarzkopf España: Moisture Kick Curl Bounce (nº 79), Frizz Away ×4 (82–85), Time Restore ×3 (86–88) y OSiS Pump Up (128). Sus números no se reutilizan
+  y sus fichas están guardadas en `web_merche/data/_retirados.json` por si Merche los tiene en el salón y hay que volver a ponerlos.
 - **Entorno:** el 25-11 Javi aprobó el entorno «kiria-producer» (solo permite `www.ghdhair.com`, `shop.schwarzkopf-professional.es`,
   `www.schwarzkopf-professional.com` y `dm.henkel-dam.com`). Las claves de ElevenLabs y Higgsfield siguen solo en «Predeterminado».
 - **En curso desde el 25-11: las fotos de producto.** Javi dijo que la base de la web «es muy buena» y que él va mandando las fotos por el chat.

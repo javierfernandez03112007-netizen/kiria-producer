@@ -248,36 +248,6 @@
   "confirm": []
  },
  {
-  "id": "sk-osis-pump-up",
-  "brand": "schwarzkopf",
-  "line": "OSiS",
-  "name": "OSiS Pump Up",
-  "cat": "styling",
-  "size": "85 ml",
-  "price": 8.5,
-  "priceSrc": "Coserty",
-  "short": "Pasta voluminizadora multiusos de fijación media",
-  "desc": "Pasta ligera y versátil que levanta la raíz y da un volumen duradero con una textura suave. Aporta agarre al pelo recién lavado y realza la textura natural; se trabaja tanto en húmedo como en seco.",
-  "benefits": [
-   "Volumen duradero y elevación de raíz",
-   "Fijación media",
-   "Textura ligera con agarre suave",
-   "Uso en cabello húmedo o seco"
-  ],
-  "use": "Emulsionar una pequeña cantidad en las manos y aplicar en raíces y medios, en húmedo o en seco.",
-  "facts": {
-   "Fijación": "media (++)"
-  },
-  "needs": [
-   "volumen"
-  ],
-  "colors": [],
-  "url": "https://coserty.com/es/schwarzkopf-pasta-voluminizadora-multi-usos-osis-pump-up-85-ml",
-  "confirm": [
-   "price"
-  ]
- },
- {
   "id": "sk-osis-soft-dust",
   "brand": "schwarzkopf",
   "line": "OSiS",

@@ -1,7 +1,9 @@
-# Lista de productos para las fotos (169)
+# Lista de productos para las fotos (160)
 
-Generada por `web_merche/tools/lista.py`. Con foto: **100** de 169. ★ = sale en la portada (prioridad).
+Generada por `web_merche/tools/lista.py`. Con foto: **101** de 160. ★ = sale en la portada (prioridad).
 El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen de cada foto está en `web_merche/data/fotos.json`.
+
+Números que ya no existen (9 productos quitados de la tienda; no se reutilizan): **79, 82–88 y 128**. Sus fichas están guardadas en `web_merche/data/_retirados.json`.
 
 ## ghd
 
@@ -108,22 +110,10 @@ El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen 
 - [x] **76** · Bonacure Moisture Kick Spray Acondicionador · 200 ml  `sk-bonacure-moisture-kick-spray-acondicionador` — foto oficial
 - [x] **77** · Bonacure Moisture Kick Tratamiento · 200 ml  `sk-bonacure-moisture-kick-tratamiento` — foto oficial
 - [x] **78** · Bonacure Moisture Kick Sérum Hialurónico · 50 ml  `sk-moisture-kick-serum` — foto oficial
-- [ ] **79** · Bonacure Moisture Kick Curl Bounce · 150 ml  `sk-bonacure-moisture-kick-curl-bounce`
 
 ### Bonacure Volume Boost
 - [x] **80** · Bonacure Volume Boost Champú · 250 ml  `sk-bonacure-volume-boost-champu` — foto oficial
 - [x] **81** · Bonacure Volume Boost Gelatina Acondicionadora · 200 ml  `sk-bonacure-volume-boost-gelatina-acondicionadora` — foto oficial
-
-### Bonacure Frizz Away
-- [ ] **82** · Bonacure Frizz Away Champú · 250 ml  `sk-bonacure-frizz-away-champu`
-- [ ] **83** · Bonacure Frizz Away Acondicionador · 200 ml  `sk-bonacure-frizz-away-acondicionador`
-- [ ] **84** · Bonacure Frizz Away Tratamiento · 200 ml  `sk-bonacure-frizz-away-tratamiento`
-- [ ] **85** · Bonacure Frizz Away Aceite Suavizante · 50 ml  `sk-bonacure-frizz-away-aceite-suavizante`
-
-### Bonacure Time Restore
-- [ ] **86** · Bonacure Time Restore Champú · 250 ml  `sk-bonacure-time-restore-champu`
-- [ ] **87** · Bonacure Time Restore Acondicionador · 200 ml  `sk-bonacure-time-restore-acondicionador`
-- [ ] **88** · Bonacure Time Restore Tratamiento de Arcilla · 200 ml  `sk-bonacure-time-restore-tratamiento-de-arcilla`
 
 ### Bonacure Scalp
 - [x] **89** · Bonacure Scalp Champú Calmante · 250 ml  `sk-bonacure-scalp-champu-calmante` — foto oficial
@@ -131,7 +121,7 @@ El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen 
 
 ### Bonacure Sun Protect
 - [x] **91** · Bonacure Sun Protect Fluido de Verano 10en1 · 100 ml  `sk-bonacure-sun-protect-fluido-verano-10en1` — foto oficial
-- [ ] **92** · Bonacure Sun Protect Bruma para Cuero Cabelludo y Cabello SPF 20 · 100 ml  `sk-bonacure-sun-protect-bruma-spf20`
+- [x] **92** · Bonacure Sun Protect Bruma para Cuero Cabelludo y Cabello SPF 20 · 100 ml  `sk-bonacure-sun-protect-bruma-spf20` — foto oficial
 
 ### Fibre Clinix
 - [x] **93** · Fibre Clinix Champú Fortificante · 300 ml ★  `sk-fibre-clinix-fortify-champu` — foto oficial
@@ -181,7 +171,6 @@ El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen 
 - [x] **125** · OSiS Volume Up · 300 ml  `sk-osis-volume-up` — foto oficial
 - [x] **126** · OSiS Upload · 200 ml  `sk-osis-upload` — foto oficial
 - [x] **127** · OSiS Hairbody · 200 ml  `sk-osis-hairbody` — foto oficial
-- [ ] **128** · OSiS Pump Up · 85 ml  `sk-osis-pump-up`
 - [x] **129** · OSiS Soft Dust · 10 g  `sk-osis-soft-dust` — foto oficial
 - [x] **130** · OSiS Thrill · 100 ml  `sk-osis-thrill` — foto oficial
 - [x] **131** · OSiS Velvet · 200 ml  `sk-osis-velvet` — foto oficial

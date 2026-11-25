@@ -10,6 +10,9 @@ e = html.escape
 allp = [p for _, _, ps in d['groups'] for p in ps]
 tot, done = len(allp), sum(1 for p in allp if p['img'])
 first = [p for p in allp if p['home'] and not p['img']]
+ng = len(d.get('retirados', []))
+gone_note = (f" Los números <b style='font:600 8pt Jost;color:#1a1411'>{e(d['retirados_txt'])}</b> ya no existen: {'eran productos que la marca ya no tiene' if ng > 1 else 'era un producto que la marca ya no tiene'} "
+             f"en su web y se {'han' if ng > 1 else 'ha'} quitado de la tienda.") if ng else ''
 hoy = datetime.date.today(); MES = 'enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre'.split()
 def row(p, star=True):
     return (f"<div class='r{' ok' if p['img'] else ''}'><i>{'✓' if p['img'] else ''}</i><b>{p['n']}</b><span>{e(p['name'])}"
@@ -55,7 +58,7 @@ h3{{font:500 7.6pt/1 Jost;letter-spacing:.2em;text-transform:uppercase;color:#a8
 <div><b>4</b><span>El producto entero y de frente, sobre fondo blanco o liso, sin letras ni marcas de agua encima. Cuanto más grande, mejor (mínimo 800 px). JPG, PNG o WebP.</span></div>
 <div><b>5</b><span>Yo la recorto, la dejo igual que las demás y la pongo en la tarjeta, la ficha y la bolsa.</span></div>
 <div><b>6</b><span>Si Merche no vende alguno, dime el número y lo quito de la tienda.</span></div>
-<div class="note">Empieza por los ★: son los que salen en la portada.</div></div>
+<div class="note">Empieza por los ★: son los que salen en la portada.{gone_note}</div></div>
 {f'<div class="first"><h3>Primero, estos {len(first)} (salen en la portada y aún no tienen foto) ★</h3><div class="cols">' + ''.join(row(p, False) for p in first) + '</div></div>' if first else ''}
 {''.join(body)}
 </body></html>"""

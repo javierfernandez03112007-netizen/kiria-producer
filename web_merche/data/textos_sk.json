@@ -436,5 +436,23 @@
 "desc": "Laca de fijación flexible, duradera e invisible. Da volumen con elasticidad y brillo sin sobrecargar el pelo, y seca rápido.",
 "use": "Aplica sobre el pelo seco a unos 30 cm, con pulverizaciones cortas.",
 "short": "Laca de fijación flexible e invisible"
+},
+"sk-bonacure-sun-protect-bruma-spf20": {
+"desc": "Bruma ligera y no grasa, sin aclarado, con SPF 20: protege el cuero cabelludo de los rayos UV en los días de sol y, con aceite de coco prensado en frío, deja el pelo más suave y manejable. Sirve para todo tipo de cabello y cuero cabelludo. Fórmula vegana, sin siliconas ni colorantes artificiales.",
+"use": "Aplícala sobre el cuero cabelludo y el pelo secado con toalla unos 15 minutos antes de salir al sol. Con la cabeza inclinada hacia delante, pulveriza en la coronilla y reparte con los dedos por secciones; para la raya y el nacimiento del pelo, pulveriza en los dedos y extiende. Peina para llevarla al resto del cabello y no aclares. Repite a las 4 horas, o antes si hace falta.",
+"short": "Bruma sin aclarado con SPF 20 para cuero cabelludo y cabello",
+"benefits": [
+"Protección UV con SPF 20 para el cuero cabelludo",
+"Textura ligera y no grasa, sin aclarado",
+"Deja el pelo más suave y manejable",
+"Para todo tipo de cabello y cuero cabelludo",
+"Fórmula vegana con aceite de coco prensado en frío"
+],
+"facts": {
+"SPF": "20",
+"Aclarado": "no",
+"Vegano": "sí",
+"Sin": "siliconas, colorantes artificiales"
+}
 }
 }

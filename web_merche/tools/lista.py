@@ -5,6 +5,7 @@
 
 - Cada producto tiene un NÚMERO fijo (data/numeros.json: id -> número). Los números no cambian nunca:
   si entran productos nuevos, reciben los siguientes. Así «la foto del 23» siempre es el mismo producto.
+- Si un producto se quita de la tienda (data/_retirados.json), su número se queda libre y no se reutiliza.
 - ★ = sale en la portada (lo más vendido, guía de ghd, novedades, packs y estuches): son las primeras fotos que conviene tener.
 """
 import json, os, re
@@ -36,11 +37,23 @@ for p in ordered:
     if not groups or groups[-1][0] != b or groups[-1][1] != p['line']: groups.append((b, p['line'], []))
     groups[-1][2].append(p)
 have = sum(1 for p in P if p.get('img'))
+rpath = os.path.join(root, 'data', '_retirados.json')
+gone = sorted(((r['n'], r['ficha']['name']) for r in json.load(open(rpath, encoding='utf-8'))['productos']), key=lambda r: r[0]) if os.path.exists(rpath) else []
+def ranges(ns):
+    """[79, 82, 83, 84, 128] -> '79, 82–84 y 128'"""
+    out, i = [], 0
+    while i < len(ns):
+        j = i
+        while j + 1 < len(ns) and ns[j + 1] == ns[j] + 1: j += 1
+        out.append(str(ns[i]) if i == j else f'{ns[i]}–{ns[j]}' if j > i + 1 else f'{ns[i]}, {ns[j]}'); i = j + 1
+    return out[0] if len(out) == 1 else ', '.join(out[:-1]) + ' y ' + out[-1]
 fpath = os.path.join(root, 'data', 'fotos.json')
 fotos = json.load(open(fpath, encoding='utf-8')) if os.path.exists(fpath) else {}     # de dónde sale cada foto (oficial, propia, provisional…)
 out = [f"# Lista de productos para las fotos ({len(P)})", '',
        f"Generada por `web_merche/tools/lista.py`. Con foto: **{have}** de {len(P)}. ★ = sale en la portada (prioridad).",
        'El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen de cada foto está en `web_merche/data/fotos.json`.', '']
+if gone: out += [f"Números que ya no existen ({len(gone)} productos quitados de la tienda; no se reutilizan): **{ranges([n for n, _ in gone])}**. "
+                 'Sus fichas están guardadas en `web_merche/data/_retirados.json`.', '']
 brand = None
 for b, line, ps in groups:
     if b != brand: out += [f'## {b}', '']; brand = b
@@ -50,6 +63,7 @@ for b, line, ps in groups:
         out.append(f"- [{'x' if p.get('img') else ' '}] **{nums[p['id']]}** · {p['name']}{' · ' + p['size'] if p['size'] else ''}{' ★' if p['id'] in home else ''}  `{p['id']}`{org}")
     out.append('')
 open(os.path.join(root, '..', 'merche', 'LISTA_FOTOS.md'), 'w', encoding='utf-8').write('\n'.join(out))
-json.dump({'groups': [[b, l, [{'n': nums[p['id']], 'id': p['id'], 'name': p['name'], 'size': p['size'], 'home': p['id'] in home, 'img': bool(p.get('img'))} for p in ps]] for b, l, ps in groups]},
+json.dump({'retirados': [{'n': n, 'name': name} for n, name in gone], 'retirados_txt': ranges([n for n, _ in gone]) if gone else '',
+           'groups': [[b, l, [{'n': nums[p['id']], 'id': p['id'], 'name': p['name'], 'size': p['size'], 'home': p['id'] in home, 'img': bool(p.get('img'))} for p in ps]] for b, l, ps in groups]},
           open(os.path.join(root, 'data', '_lista.json'), 'w', encoding='utf-8'), ensure_ascii=False)
-print(len(P), 'productos ·', len(home), 'en portada ·', have, 'con foto')
+print(len(P), 'productos ·', len(home), 'en portada ·', have, 'con foto' + (f' · {len(gone)} retirados' if gone else ''))

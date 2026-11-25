@@ -356,37 +356,6 @@
   ]
  },
  {
-  "id": "sk-bonacure-moisture-kick-curl-bounce",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Moisture Kick",
-  "name": "Bonacure Moisture Kick Curl Bounce",
-  "cat": "styling",
-  "size": "150 ml",
-  "price": 14.99,
-  "priceSrc": "Druni",
-  "short": "Crema sin aclarado que define rizos y ondas",
-  "desc": "Crema hidratante sin aclarado de la línea Moisture Kick para cabello rizado u ondulado. Se trabaja sobre el pelo mojado para marcar el rizo y mantenerlo hidratado.",
-  "benefits": [
-   "Define rizos y ondas",
-   "Hidrata el cabello rizado",
-   "No necesita aclarado"
-  ],
-  "use": "Repartir sobre el cabello mojado, dar forma al rizo y secar al aire o con difusor.",
-  "facts": {
-   "Aclarado": "no"
-  },
-  "needs": [
-   "rizos-naturales",
-   "hidratar"
-  ],
-  "colors": [],
-  "url": "https://www.druni.es/moisture-kick-bonacure-crema-rizos-hidratante",
-  "confirm": [
-   "price",
-   "benefits"
-  ]
- },
- {
   "id": "sk-bonacure-moisture-kick-champu-1000ml",
   "brand": "schwarzkopf",
   "line": "Bonacure Moisture Kick",
@@ -475,230 +444,6 @@
   ],
   "colors": [],
   "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/volume-boost/gelatina-acondicionadora.html",
-  "confirm": []
- },
- {
-  "id": "sk-bonacure-frizz-away-champu",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Frizz Away",
-  "name": "Bonacure Frizz Away Champú",
-  "cat": "champu",
-  "size": "250 ml",
-  "price": 11.02,
-  "priceSrc": "Promofarma",
-  "short": "Champú antiencrespamiento para cabello grueso y rebelde",
-  "desc": "Champú para cabello grueso, rebelde y con tendencia a encresparse. Limpia con suavidad y, con aceite de babasú, ayuda a mantener el encrespamiento bajo control.",
-  "benefits": [
-   "Hasta 72 horas de control del encrespamiento, según la marca",
-   "Con aceite de babasú",
-   "Limpieza suave del cabello rebelde",
-   "Fórmula vegana"
-  ],
-  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
-  "facts": {
-   "Vegano": "sí",
-   "Ingrediente clave": "aceite de babasú"
-  },
-  "needs": [
-   "encrespamiento"
-  ],
-  "colors": [],
-  "url": "https://www.promofarma.com/en/schwarzkopf-bonacure-frizz-away-champu-250ml/p-679483",
-  "confirm": [
-   "price"
-  ]
- },
- {
-  "id": "sk-bonacure-frizz-away-acondicionador",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Frizz Away",
-  "name": "Bonacure Frizz Away Acondicionador",
-  "cat": "acondicionador",
-  "size": "200 ml",
-  "price": 11.66,
-  "priceSrc": "Promofarma",
-  "short": "Acondicionador ligero que controla el encrespamiento",
-  "desc": "Acondicionador ligero para cabello grueso, rebelde o encrespado. Desenreda, reduce la electricidad estática y deja el pelo más manejable.",
-  "benefits": [
-   "Controla el encrespamiento",
-   "Reduce la electricidad estática",
-   "Desenreda con facilidad",
-   "Con aceite de babasú"
-  ],
-  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
-  "facts": {
-   "Vegano": "sí",
-   "Ingrediente clave": "aceite de babasú"
-  },
-  "needs": [
-   "encrespamiento"
-  ],
-  "colors": [],
-  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Antiencrespamiento/p/3036015",
-  "confirm": [
-   "price"
-  ]
- },
- {
-  "id": "sk-bonacure-frizz-away-tratamiento",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Frizz Away",
-  "name": "Bonacure Frizz Away Tratamiento",
-  "cat": "mascarilla",
-  "size": "200 ml",
-  "price": 14.95,
-  "priceSrc": "Primor",
-  "short": "Mascarilla semanal antiencrespamiento con aceite de babasú",
-  "desc": "Tratamiento con aclarado para cabello grueso, rebelde y encrespado. Se usa como mascarilla semanal dentro de la rutina antiencrespamiento de la gama.",
-  "benefits": [
-   "Cuidado intensivo antiencrespamiento",
-   "Para cabello grueso y rebelde",
-   "Con aceite de babasú",
-   "Fórmula vegana"
-  ],
-  "use": "Aplicar una vez por semana sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar.",
-  "facts": {
-   "Vegano": "sí",
-   "Ingrediente clave": "aceite de babasú",
-   "Tiempo de exposición": "5-10 minutos"
-  },
-  "needs": [
-   "encrespamiento"
-  ],
-  "colors": [],
-  "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Antiencrespamiento/p/3035988",
-  "confirm": [
-   "price"
-  ]
- },
- {
-  "id": "sk-bonacure-frizz-away-aceite-suavizante",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Frizz Away",
-  "name": "Bonacure Frizz Away Aceite Suavizante",
-  "cat": "aceite",
-  "size": "50 ml",
-  "price": 15.33,
-  "priceSrc": "Promofarma",
-  "short": "Aceite con babasú que frena el encrespamiento y da brillo",
-  "desc": "Aceite de acabado para cabello grueso, rebelde y encrespado, formulado con aceite de babasú. Protege el pelo de la humedad ambiental y lo deja suave y brillante.",
-  "benefits": [
-   "Hasta 72 horas de control del encrespamiento, según la marca",
-   "Protege de la humedad",
-   "Deja el cabello suave y brillante",
-   "Protección térmica hasta 210 °C"
-  ],
-  "use": "Repartir unas gotas por medios y puntas sobre el cabello húmedo o seco; no aclarar.",
-  "facts": {
-   "Ingrediente clave": "aceite de babasú",
-   "Protección térmica": "hasta 210 °C",
-   "Aclarado": "no"
-  },
-  "needs": [
-   "encrespamiento",
-   "brillo",
-   "proteccion-calor"
-  ],
-  "colors": [],
-  "url": "https://www.promofarma.com/en/schwarzkopf-bonacure-frizz-away-smoothing-oil-50ml/p-679489",
-  "confirm": [
-   "price",
-   "facts",
-   "use"
-  ]
- },
- {
-  "id": "sk-bonacure-time-restore-champu",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Time Restore",
-  "name": "Bonacure Time Restore Champú",
-  "cat": "champu",
-  "size": "250 ml",
-  "price": null,
-  "priceSrc": "",
-  "short": "Champú fortalecedor con Q10+ para cabello maduro",
-  "desc": "Champú para cabello maduro y frágil. Limpia con suavidad y ayuda a fortalecer la fibra con Q10+, el ingrediente clave de la gama.",
-  "benefits": [
-   "Limpieza suave para cabello maduro",
-   "Ayuda a fortalecer el cabello frágil",
-   "Con Q10+",
-   "Fórmula vegana"
-  ],
-  "use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
-  "facts": {
-   "Vegano": "sí",
-   "Ingrediente clave": "Q10+"
-  },
-  "needs": [
-   "reparar"
-  ],
-  "colors": [],
-  "url": "https://shop.schwarzkopf-professional.es/es/campaign-bonacure-sustain-time-restore-2024",
-  "confirm": [
-   "price"
-  ]
- },
- {
-  "id": "sk-bonacure-time-restore-acondicionador",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Time Restore",
-  "name": "Bonacure Time Restore Acondicionador",
-  "cat": "acondicionador",
-  "size": "200 ml",
-  "price": 12.99,
-  "priceSrc": "Druni",
-  "short": "Acondicionador con Q10+ para cabello maduro, seco y frágil",
-  "desc": "Acondicionador para cabello maduro, seco y quebradizo. Desenreda y deja el pelo suave y con brillo, con Q10+ como activo de la gama.",
-  "benefits": [
-   "Desenreda el cabello maduro y quebradizo",
-   "Suavidad y brillo inmediatos",
-   "Sin siliconas ni colorantes artificiales",
-   "Fórmula vegana"
-  ],
-  "use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
-  "facts": {
-   "Vegano": "sí",
-   "Sin": "sulfatos SLS/SLES, siliconas, colorantes artificiales",
-   "Ingrediente clave": "Q10+"
-  },
-  "needs": [
-   "reparar",
-   "brillo"
-  ],
-  "colors": [],
-  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/time-restore/acondicionador.html",
-  "confirm": []
- },
- {
-  "id": "sk-bonacure-time-restore-tratamiento-de-arcilla",
-  "brand": "schwarzkopf",
-  "line": "Bonacure Time Restore",
-  "name": "Bonacure Time Restore Tratamiento de Arcilla",
-  "cat": "mascarilla",
-  "size": "200 ml",
-  "price": 14.99,
-  "priceSrc": "Druni",
-  "short": "Mascarilla de arcilla con Q10+ para cabello y cuero cabelludo",
-  "desc": "Tratamiento fortalecedor para cabello maduro y frágil, de textura gelatinosa y color gris por la arcilla que contiene. Se aplica en cabello y cuero cabelludo: ayuda a desobstruir los poros y devuelve elasticidad.",
-  "benefits": [
-   "Fortalece el cabello frágil y maduro",
-   "Ayuda a desobstruir los poros del cuero cabelludo",
-   "Hasta 48 horas de sensación de hidratación y más elasticidad, según la marca",
-   "Fórmula vegana"
-  ],
-  "use": "Aplicar en cabello y cuero cabelludo secados con toalla, dejar actuar hasta 10 minutos y aclarar abundantemente.",
-  "facts": {
-   "Vegano": "sí",
-   "Ingredientes clave": "Q10+, arcilla",
-   "Tiempo de exposición": "hasta 10 minutos"
-  },
-  "needs": [
-   "reparar",
-   "cuero-cabelludo",
-   "hidratar"
-  ],
-  "colors": [],
-  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/time-restore/tratamiento-de-arcilla.html",
   "confirm": []
  },
  {
@@ -965,7 +710,7 @@
   "brand": "schwarzkopf",
   "line": "Bonacure Sun Protect",
   "name": "Bonacure Sun Protect Bruma para Cuero Cabelludo y Cabello SPF 20",
-  "cat": "protector",
+  "cat": "tratamiento",
   "size": "100 ml",
   "price": 12.95,
   "priceSrc": "Primor",
@@ -987,11 +732,9 @@
    "cuero-cabelludo"
   ],
   "colors": [],
-  "url": "https://shop.schwarzkopf-professional.es/en/c/BC-Specialties-Sun-Protect/p/3010869",
+  "url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/sun-protect/scalp-hair-mist.html",
   "confirm": [
-   "price",
-   "name",
-   "use"
+   "price"
   ]
  },
  {

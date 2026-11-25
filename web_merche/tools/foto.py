@@ -15,13 +15,16 @@ here = os.path.dirname(os.path.abspath(__file__)); root = os.path.dirname(here)
 MEDIA = os.path.join(root, 'media', 'productos'); MINI = os.path.join(MEDIA, 'mini')
 nums = json.load(open(os.path.join(root, 'data', 'numeros.json'), encoding='utf-8'))
 by_num = {str(n): i for i, n in nums.items()}
+_ret = os.path.join(root, 'data', '_retirados.json')        # productos que se quitaron de la tienda: conservan el número, pero ya no llevan foto
+RET = {r['ficha']['id']: r for r in json.load(open(_ret, encoding='utf-8'))['productos']} if os.path.exists(_ret) else {}
 EXT = ('.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif', '.bmp', '.tif', '.tiff', '.heic')
 
 def resolve(key):
     key = str(key).strip().lower()
-    if key in by_num: return by_num[key]
-    if key in nums: return key
-    raise SystemExit(f'No conozco el producto «{key}» (usa el número de la lista o el id)')
+    pid = by_num.get(key) or (key if key in nums else None)
+    if not pid: raise SystemExit(f'No conozco el producto «{key}» (usa el número de la lista o el id)')
+    if pid in RET: raise SystemExit(f"El {nums[pid]} ({RET[pid]['ficha']['name']}) se retiró de la tienda el {RET[pid]['fecha']}: está en data/_retirados.json")
+    return pid
 
 def trim(im):
     """Recorta el margen sobrante. Devuelve (imagen, cómo era el fondo)."""
@@ -76,7 +79,7 @@ if __name__ == '__main__':
     a = sys.argv[1:]
     if not a or a[0] in ('-h', '--help'): print(__doc__); sys.exit(0)
     if a[0] == '--lote':
-        folder = a[1]; pending = []
+        folder = a[1]; pending = []; gone = []
         for f in sorted(os.listdir(folder)):
             base, ext = os.path.splitext(f)
             if ext.lower() not in EXT: continue
@@ -84,9 +87,12 @@ if __name__ == '__main__':
             if key not in by_num and key not in nums:      # «23-2» o «ghd-gold-2» = otra foto del mismo producto
                 m = re.fullmatch(r'(.+?)[-_ ]+(\d)', key)
                 if m: key, extra = m.group(1).strip(), True
-            if key in by_num or key in nums: process(os.path.join(folder, f), resolve(key), extra)
+            pid = by_num.get(key) or (key if key in nums else None)
+            if pid in RET: gone.append(f)
+            elif pid: process(os.path.join(folder, f), pid, extra)
             else: pending.append(f)
         if pending: print('  Sin asignar (hay que mirarlas y decir de qué producto son):', ', '.join(pending))
+        if gone: print('  De productos retirados de la tienda (no se colocan; ver data/_retirados.json):', ', '.join(gone))
     else:
         process(a[0], resolve(a[1]), '--extra' in a)
     rebuild()
