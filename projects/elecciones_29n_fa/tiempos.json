@@ -1,0 +1,837 @@
+[
+{
+"text": "El Frente Amplio quiere que nadie herede más de diez millones de euros.",
+"start": 0.0,
+"end": 3.882,
+"words": [
+{
+"w": "El",
+"start": 0.0,
+"end": 0.189
+},
+{
+"w": "Frente",
+"start": 0.189,
+"end": 0.536
+},
+{
+"w": "Amplio",
+"start": 0.536,
+"end": 0.884
+},
+{
+"w": "quiere",
+"start": 0.884,
+"end": 1.231
+},
+{
+"w": "que",
+"start": 1.231,
+"end": 1.42
+},
+{
+"w": "nadie",
+"start": 1.42,
+"end": 1.767
+},
+{
+"w": "herede",
+"start": 1.767,
+"end": 2.273
+},
+{
+"w": "más",
+"start": 2.273,
+"end": 2.462
+},
+{
+"w": "de",
+"start": 2.462,
+"end": 2.651
+},
+{
+"w": "diez",
+"start": 2.651,
+"end": 2.84
+},
+{
+"w": "millones",
+"start": 2.84,
+"end": 3.346
+},
+{
+"w": "de",
+"start": 3.346,
+"end": 3.535
+},
+{
+"w": "euros.",
+"start": 3.535,
+"end": 3.882
+}
+]
+},
+{
+"text": "¿Y lo que pase de ahí? Un impuesto del cien por cien: iría entero a duplicar el gasto en vivienda social.",
+"start": 4.332,
+"end": 10.509,
+"words": [
+{
+"w": "¿Y",
+"start": 4.332,
+"end": 4.521
+},
+{
+"w": "lo",
+"start": 4.521,
+"end": 4.71
+},
+{
+"w": "que",
+"start": 4.71,
+"end": 4.898
+},
+{
+"w": "pase",
+"start": 4.898,
+"end": 5.246
+},
+{
+"w": "de",
+"start": 5.246,
+"end": 5.434
+},
+{
+"w": "ahí?",
+"start": 5.434,
+"end": 5.782
+},
+{
+"w": "Un",
+"start": 5.782,
+"end": 5.971
+},
+{
+"w": "impuesto",
+"start": 5.971,
+"end": 6.477
+},
+{
+"w": "del",
+"start": 6.477,
+"end": 6.666
+},
+{
+"w": "cien",
+"start": 6.666,
+"end": 6.854
+},
+{
+"w": "por",
+"start": 6.854,
+"end": 7.043
+},
+{
+"w": "cien:",
+"start": 7.043,
+"end": 7.232
+},
+{
+"w": "iría",
+"start": 7.382,
+"end": 7.729
+},
+{
+"w": "entero",
+"start": 7.729,
+"end": 8.235
+},
+{
+"w": "a",
+"start": 8.235,
+"end": 8.424
+},
+{
+"w": "duplicar",
+"start": 8.424,
+"end": 8.93
+},
+{
+"w": "el",
+"start": 8.93,
+"end": 9.119
+},
+{
+"w": "gasto",
+"start": 9.119,
+"end": 9.467
+},
+{
+"w": "en",
+"start": 9.467,
+"end": 9.655
+},
+{
+"w": "vivienda",
+"start": 9.655,
+"end": 10.161
+},
+{
+"w": "social.",
+"start": 10.161,
+"end": 10.509
+}
+]
+},
+{
+"text": "Su programa tiene ciento cincuenta y una páginas. Cuatro medidas que te tocan:",
+"start": 10.959,
+"end": 15.476,
+"words": [
+{
+"w": "Su",
+"start": 10.959,
+"end": 11.148
+},
+{
+"w": "programa",
+"start": 11.148,
+"end": 11.654
+},
+{
+"w": "tiene",
+"start": 11.654,
+"end": 12.001
+},
+{
+"w": "ciento",
+"start": 12.001,
+"end": 12.349
+},
+{
+"w": "cincuenta",
+"start": 12.349,
+"end": 12.855
+},
+{
+"w": "y",
+"start": 12.855,
+"end": 13.044
+},
+{
+"w": "una",
+"start": 13.044,
+"end": 13.391
+},
+{
+"w": "páginas.",
+"start": 13.391,
+"end": 13.897
+},
+{
+"w": "Cuatro",
+"start": 13.897,
+"end": 14.245
+},
+{
+"w": "medidas",
+"start": 14.245,
+"end": 14.751
+},
+{
+"w": "que",
+"start": 14.751,
+"end": 14.94
+},
+{
+"w": "te",
+"start": 14.94,
+"end": 15.128
+},
+{
+"w": "tocan:",
+"start": 15.128,
+"end": 15.476
+}
+]
+},
+{
+"text": "Trabajo: jornada de treinta y dos horas cobrando lo mismo, empezando por treinta y siete y media, y un salario mínimo del sesenta por ciento del sueldo medio.",
+"start": 16.076,
+"end": 25.62,
+"words": [
+{
+"w": "Trabajo:",
+"start": 16.076,
+"end": 16.582
+},
+{
+"w": "jornada",
+"start": 16.732,
+"end": 17.238
+},
+{
+"w": "de",
+"start": 17.238,
+"end": 17.427
+},
+{
+"w": "treinta",
+"start": 17.427,
+"end": 17.774
+},
+{
+"w": "y",
+"start": 17.774,
+"end": 17.963
+},
+{
+"w": "dos",
+"start": 17.963,
+"end": 18.152
+},
+{
+"w": "horas",
+"start": 18.152,
+"end": 18.499
+},
+{
+"w": "cobrando",
+"start": 18.499,
+"end": 19.006
+},
+{
+"w": "lo",
+"start": 19.006,
+"end": 19.194
+},
+{
+"w": "mismo,",
+"start": 19.194,
+"end": 19.542
+},
+{
+"w": "empezando",
+"start": 19.692,
+"end": 20.357
+},
+{
+"w": "por",
+"start": 20.357,
+"end": 20.545
+},
+{
+"w": "treinta",
+"start": 20.545,
+"end": 20.893
+},
+{
+"w": "y",
+"start": 20.893,
+"end": 21.082
+},
+{
+"w": "siete",
+"start": 21.082,
+"end": 21.429
+},
+{
+"w": "y",
+"start": 21.429,
+"end": 21.618
+},
+{
+"w": "media,",
+"start": 21.618,
+"end": 21.965
+},
+{
+"w": "y",
+"start": 22.115,
+"end": 22.304
+},
+{
+"w": "un",
+"start": 22.304,
+"end": 22.493
+},
+{
+"w": "salario",
+"start": 22.493,
+"end": 22.999
+},
+{
+"w": "mínimo",
+"start": 22.999,
+"end": 23.505
+},
+{
+"w": "del",
+"start": 23.505,
+"end": 23.694
+},
+{
+"w": "sesenta",
+"start": 23.694,
+"end": 24.2
+},
+{
+"w": "por",
+"start": 24.2,
+"end": 24.389
+},
+{
+"w": "ciento",
+"start": 24.389,
+"end": 24.736
+},
+{
+"w": "del",
+"start": 24.736,
+"end": 24.925
+},
+{
+"w": "sueldo",
+"start": 24.925,
+"end": 25.272
+},
+{
+"w": "medio.",
+"start": 25.272,
+"end": 25.62
+}
+]
+},
+{
+"text": "Vivienda: un millón y medio de pisos públicos en doce años y un tope al precio del alquiler.",
+"start": 26.07,
+"end": 31.68,
+"words": [
+{
+"w": "Vivienda:",
+"start": 26.07,
+"end": 26.576
+},
+{
+"w": "un",
+"start": 26.726,
+"end": 26.915
+},
+{
+"w": "millón",
+"start": 26.915,
+"end": 27.262
+},
+{
+"w": "y",
+"start": 27.262,
+"end": 27.451
+},
+{
+"w": "medio",
+"start": 27.451,
+"end": 27.798
+},
+{
+"w": "de",
+"start": 27.798,
+"end": 27.987
+},
+{
+"w": "pisos",
+"start": 27.987,
+"end": 28.335
+},
+{
+"w": "públicos",
+"start": 28.335,
+"end": 28.841
+},
+{
+"w": "en",
+"start": 28.841,
+"end": 29.03
+},
+{
+"w": "doce",
+"start": 29.03,
+"end": 29.377
+},
+{
+"w": "años",
+"start": 29.377,
+"end": 29.724
+},
+{
+"w": "y",
+"start": 29.724,
+"end": 29.913
+},
+{
+"w": "un",
+"start": 29.913,
+"end": 30.102
+},
+{
+"w": "tope",
+"start": 30.102,
+"end": 30.449
+},
+{
+"w": "al",
+"start": 30.449,
+"end": 30.638
+},
+{
+"w": "precio",
+"start": 30.638,
+"end": 30.986
+},
+{
+"w": "del",
+"start": 30.986,
+"end": 31.174
+},
+{
+"w": "alquiler.",
+"start": 31.174,
+"end": 31.68
+}
+]
+},
+{
+"text": "Familias: doscientos euros al mes por cada hijo menor de dieciocho, ganes lo que ganes.",
+"start": 32.13,
+"end": 37.166,
+"words": [
+{
+"w": "Familias:",
+"start": 32.13,
+"end": 32.637
+},
+{
+"w": "doscientos",
+"start": 32.787,
+"end": 33.293
+},
+{
+"w": "euros",
+"start": 33.293,
+"end": 33.64
+},
+{
+"w": "al",
+"start": 33.64,
+"end": 33.829
+},
+{
+"w": "mes",
+"start": 33.829,
+"end": 34.018
+},
+{
+"w": "por",
+"start": 34.018,
+"end": 34.207
+},
+{
+"w": "cada",
+"start": 34.207,
+"end": 34.554
+},
+{
+"w": "hijo",
+"start": 34.554,
+"end": 34.901
+},
+{
+"w": "menor",
+"start": 34.901,
+"end": 35.249
+},
+{
+"w": "de",
+"start": 35.249,
+"end": 35.438
+},
+{
+"w": "dieciocho,",
+"start": 35.438,
+"end": 35.944
+},
+{
+"w": "ganes",
+"start": 36.094,
+"end": 36.441
+},
+{
+"w": "lo",
+"start": 36.441,
+"end": 36.63
+},
+{
+"w": "que",
+"start": 36.63,
+"end": 36.819
+},
+{
+"w": "ganes.",
+"start": 36.819,
+"end": 37.166
+}
+]
+},
+{
+"text": "Colegio: comedor escolar gratis.",
+"start": 37.616,
+"end": 39.632,
+"words": [
+{
+"w": "Colegio:",
+"start": 37.616,
+"end": 38.122
+},
+{
+"w": "comedor",
+"start": 38.272,
+"end": 38.779
+},
+{
+"w": "escolar",
+"start": 38.779,
+"end": 39.285
+},
+{
+"w": "gratis.",
+"start": 39.285,
+"end": 39.632
+}
+]
+},
+{
+"text": "¿Y con qué dinero? Con más impuestos a las grandes fortunas, y que las empresas paguen, como mínimo, un veinte por ciento.",
+"start": 40.082,
+"end": 47.065,
+"words": [
+{
+"w": "¿Y",
+"start": 40.082,
+"end": 40.271
+},
+{
+"w": "con",
+"start": 40.271,
+"end": 40.46
+},
+{
+"w": "qué",
+"start": 40.46,
+"end": 40.648
+},
+{
+"w": "dinero?",
+"start": 40.648,
+"end": 41.155
+},
+{
+"w": "Con",
+"start": 41.155,
+"end": 41.343
+},
+{
+"w": "más",
+"start": 41.343,
+"end": 41.532
+},
+{
+"w": "impuestos",
+"start": 41.532,
+"end": 42.038
+},
+{
+"w": "a",
+"start": 42.038,
+"end": 42.227
+},
+{
+"w": "las",
+"start": 42.227,
+"end": 42.416
+},
+{
+"w": "grandes",
+"start": 42.416,
+"end": 42.763
+},
+{
+"w": "fortunas,",
+"start": 42.763,
+"end": 43.269
+},
+{
+"w": "y",
+"start": 43.419,
+"end": 43.608
+},
+{
+"w": "que",
+"start": 43.608,
+"end": 43.797
+},
+{
+"w": "las",
+"start": 43.797,
+"end": 43.986
+},
+{
+"w": "empresas",
+"start": 43.986,
+"end": 44.492
+},
+{
+"w": "paguen,",
+"start": 44.492,
+"end": 44.839
+},
+{
+"w": "como",
+"start": 44.989,
+"end": 45.337
+},
+{
+"w": "mínimo,",
+"start": 45.337,
+"end": 45.843
+},
+{
+"w": "un",
+"start": 45.993,
+"end": 46.182
+},
+{
+"w": "veinte",
+"start": 46.182,
+"end": 46.529
+},
+{
+"w": "por",
+"start": 46.529,
+"end": 46.718
+},
+{
+"w": "ciento.",
+"start": 46.718,
+"end": 47.065
+}
+]
+},
+{
+"text": "Ya has visto los cuatro programas. El domingo decides tú.",
+"start": 47.515,
+"end": 50.672,
+"words": [
+{
+"w": "Ya",
+"start": 47.515,
+"end": 47.704
+},
+{
+"w": "has",
+"start": 47.704,
+"end": 47.893
+},
+{
+"w": "visto",
+"start": 47.893,
+"end": 48.24
+},
+{
+"w": "los",
+"start": 48.24,
+"end": 48.429
+},
+{
+"w": "cuatro",
+"start": 48.429,
+"end": 48.776
+},
+{
+"w": "programas.",
+"start": 48.776,
+"end": 49.283
+},
+{
+"w": "El",
+"start": 49.283,
+"end": 49.471
+},
+{
+"w": "domingo",
+"start": 49.471,
+"end": 49.977
+},
+{
+"w": "decides",
+"start": 49.977,
+"end": 50.484
+},
+{
+"w": "tú.",
+"start": 50.484,
+"end": 50.672
+}
+]
+},
+{
+"text": "Mándaselo a quien aún no sabe a quién votar.",
+"start": 51.122,
+"end": 53.615,
+"words": [
+{
+"w": "Mándaselo",
+"start": 51.122,
+"end": 51.787
+},
+{
+"w": "a",
+"start": 51.787,
+"end": 51.976
+},
+{
+"w": "quien",
+"start": 51.976,
+"end": 52.165
+},
+{
+"w": "aún",
+"start": 52.165,
+"end": 52.353
+},
+{
+"w": "no",
+"start": 52.353,
+"end": 52.542
+},
+{
+"w": "sabe",
+"start": 52.542,
+"end": 52.89
+},
+{
+"w": "a",
+"start": 52.89,
+"end": 53.078
+},
+{
+"w": "quién",
+"start": 53.078,
+"end": 53.267
+},
+{
+"w": "votar.",
+"start": 53.267,
+"end": 53.615
+}
+]
+}
+]

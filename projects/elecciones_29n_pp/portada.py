@@ -21,7 +21,7 @@ from engine import post  # noqa: E402
 W, H = 1080, 1920
 RED, GOLD, CYAN = "#FF5A4E", "#FFD76A", "#5CF2E6"
 CAM = "-1.65,2.75,4.6,-1.65,2.95,-0.3,52"              # posición, punto de mira y ángulo de la cámara de la portada: de frente al atril del partido
-PAD = "S.pay.position.set(-1.65, 2.98, -0.1); S.pay.scale.setScalar(0.5); S.pay.rotation.z = 0; S.pay.visible = true; S.pay.userData.lupa.visible = false; S.bars.visible = false;"   # la nómina, encima de su pantalla (solo en la portada)
+PAD = "S.pay.position.set(-1.65, 3.06, -0.1); S.pay.scale.setScalar(0.64); S.pay.rotation.z = 0; S.pay.visible = true; S.pay.userData.lupa.visible = false; S.bars.visible = false;"   # la nómina, encima de su pantalla (solo en la portada)
 MINI_Y = 285                                           # la miniatura 4:5 es el centro de la portada (lo que enseña la cuadrícula de Instagram)
 
 
