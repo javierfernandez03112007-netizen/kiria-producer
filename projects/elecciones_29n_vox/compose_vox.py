@@ -47,16 +47,16 @@ def at(word, k=1, line=None):
 # ---------------------------------------------------------------- subtítulos: mismo trato en los cuatro capítulos (siglas en el color del partido; tema en ámbar; medidas en dorado y cian)
 GO, R, WH, GR, CY, AM = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547"
 PPC, PSC, VXC, FAC = "#4FA8F0", "#FF4A55", "#7ADB45", "#FF7A45"          # los colores de cada partido, algo aclarados para que se lean
-_K = {1: {"pensiones": GO, "constitución": GO, "doscientos": CY, "diez": CY, "diputados": CY},
-      2: {"ningún": R, "nunca": R, "récord": GO, "doscientos": CY, "dos": CY},
-      3: {"psoe": PSC, "quinientas": GO, "cuatro": CY},
-      4: {"vivienda": AM, "uno": GO, "ciento": GO, "pib": GO, "cien": CY, "mil": CY, "pisos": CY, "públicos": CY},
-      5: {"trabajo": AM, "treinta": GO, "siete": GO, "horas": GO, "media": GO, "salario": CY, "mínimo": CY, "ley": CY, "sesenta": CY, "ciento": CY},
-      6: {"familias": AM, "paga": GO, "crianza": GO, "ocho": CY, "millones": CY, "niños": CY, "cuánto": GO, "no": R, "dice": R},
-      7: {"estudiantes": AM, "primer": GO, "curso": GO, "gratis": GO, "doscientos": CY, "euros": CY, "dentista": CY},
-      8: {"dinero": AM, "impuestos": GO, "nuevos": GO, "grandes": CY, "patrimonios": CY, "especula": CY},
-      9: {"próximo": CY, "capítulo": CY, "vox": VXC, "irpf": GO, "hijos": GO, "cuánto": GO},
-      10: {"mándaselo": GR, "jubila": GO, "pronto": GO}}
+_K = {1: {"vox": VXC, "irpf": GO, "hijos": GO},
+      2: {"cuánto": GO, "sesenta": CY, "seis": CY, "páginas": CY, "no": R, "dice": R, "quince": GO, "veinticinco": GO, "otro": CY, "documento": CY, "dos": CY, "mil": CY},
+      3: {"ciento": GO, "quince": GO, "medidas": GO, "cuatro": CY},
+      4: {"vivienda": AM, "iva": GO, "cero": GO, "primera": GO, "casa": GO, "nueva": CY, "familia": CY, "española": CY},
+      5: {"inmigración": AM, "prohibir": GO, "regularizaciones": GO, "masivas": GO, "repatriar": CY, "situación": CY, "irregular": CY},
+      6: {"ayudas": AM, "prioridad": GO, "nacional": GO, "españoles": CY, "primero": CY, "vivienda": CY, "pública": CY, "guarderías": CY, "sociales": CY},
+      7: {"sanidad": AM, "tarjeta": GO, "sanitaria": GO, "única": GO, "extranjeros": CY, "residencia": CY, "legal": CY, "urgencias": CY, "graves": CY},
+      8: {"dinero": AM, "recortando": GO, "gasto": GO, "superfluo": CY, "ideológico": CY, "cuánto": GO, "tampoco": R, "dice": R},
+      9: {"próximo": CY, "capítulo": CY, "frente": FAC, "amplio": FAC, "diez": GO, "millones": GO, "euros": GO, "pase": GO},
+      10: {"mándaselo": GR, "hijos": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -78,7 +78,7 @@ def compose(fi):
 def init():
     global SUBS, NOTE, NOTE_T
     NOTE = chip("Plató virtual · fotos reales de archivo", 30, "#DCE3EE", "#10141C", "bold")
-    NOTE_T = (at("ningún") - 0.2, at("programa") - 0.25)      # desde que se ven las cuatro pantallas hasta que la cámara ya está delante de la del partido
+    NOTE_T = (at("sesenta") - 0.2, at("ciento", 1, 3) + 0.4)      # desde que se ven las pantallas (el libro entero) hasta que la cámara ya está delante de la del partido
     SUBS = Subs(LINES, KEY, {}, y=305, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")   # algo más arriba de lo habitual (330): debajo empieza la pantalla de cada candidato
 
 
@@ -115,66 +115,67 @@ def sfx_track(path):
 
     E = LINES[-1]["end"] + 1.2
     L = [l["start"] for l in LINES]; Le = [l["end"] for l in LINES]
-    # 1: el candado de combinación: las ruedas giran; el hemiciclo cuenta hasta 210 y las tres cifras se paran en 2-1-0
-    put("medicina/candado", 0.0, 0.5, 0.34, 0.15)
-    put("cerradura/pitones", 0.32, 0.8, 0.26, 0.25)
-    put("cripto/contador", at("hacen") - 0.1, 1.04, 0.24, 0.2)
+    # 1: el libro gigante del programa pasa hojas solo; se para en la página de la promesa y aparecen las tres interrogaciones
+    put("magisterio/libro", 0.0, 0.6, 0.32, 0.2)
+    put("ade/papeles", 0.35, max(0.4, at("irpf") - 0.75), 0.24, 0.3)
     for i in range(3):
-        put("cerradura/blip", at("doscientos", 1, 1) - 0.35 + 0.22 * i, 0.3, 0.2 + 0.03 * i, 0.1)
-    # 2: el récord (202): faltan 8 escaños, que parpadean; las cifras pasan a 2-0-2 y el arco baja, choca y no cierra
-    put("cerradura/aviso", at("récord") - 0.12, 0.6, 0.28, 0.2)
-    put("cerradura/blip", at("doscientos", 1, 2) + 0.29, 0.3, 0.2, 0.1)          # ruedan la segunda y la tercera cifra (la primera ya es un 2)
-    put("cerradura/blip", at("doscientos", 1, 2) + 0.43, 0.3, 0.22, 0.1)
-    put("cerradura/choca", at("dos", 1, 2) + 0.0, 0.3, 0.4, 0.12)                  # el arco baja y choca en «dos»…
-    put("cerradura/denegado", at("dos", 1, 2) + 0.3, 0.4, 0.26, 0.15)              # …y rebota: no cierra
-    # 3: la cámara baja al atril del partido; el libro del programa; las cuatro fichas
+        put("avion/tap", at("hijos", 1, 1) - 0.15 + 0.1 * i, 0.25, 0.22, 0.1)
+    # 2: «¿cuánto?» (laten); cuenta de las 66 páginas en la pantalla; «no lo dice»; las tarjetas 15 % y 25 % dan vueltas y acaban en el otro documento (2025)
+    put("avion/pregunta", at("cuánto", 1, 2) - 0.08, 0.95, 0.3, 0.3)
+    put("avion/whoosh", at("programa") + 0.0, 0.6, 0.22, 0.25)
+    put("ade/papeles", at("programa") + 0.1, max(0.5, at("páginas") + 0.4 - at("programa") - 0.1), 0.22, 0.3)
+    put("cripto/contador", at("sesenta") - 0.1, 1.04, 0.22, 0.25)
+    put("cerradura/denegado", at("no", 1, 2) - 0.1, 0.45, 0.3, 0.15)
+    put("avion/pop", at("quince", 1, 2) - 0.12, 0.4, 0.28, 0.15)
+    put("avion/pop", at("veinticinco", 1, 2) - 0.12, 0.4, 0.28, 0.15)
+    put("avion/giro", at("circulan") - 0.1, 0.5, 0.26, 0.15)
+    put("magisterio/carpeta", at("otro") - 0.2, 0.5, 0.3, 0.15)
+    put("lanzamiento/tarjeta", at("documento") + 0.4, 0.4, 0.28, 0.12)
+    put("lanzamiento/tarjeta", at("documento") + 0.52, 0.4, 0.28, 0.12)
+    # 3: la cámara baja al atril del partido; el libro del programa, ya pequeño; las cuatro fichas
     put("avion/whoosh", Le[1] + 0.25, 0.6, 0.24, 0.25)
-    put("magisterio/libro", at("programa") - 0.12, 0.6, 0.3, 0.2)
+    put("magisterio/libro", at("ciento", 1, 3) - 0.12, 0.6, 0.3, 0.2)
     for i in range(4):
         put("avion/tap", at("cuatro", 1, 3) - 0.05 + 0.1 * i, 0.25, 0.2 + 0.03 * i, 0.1)
-    # 4 · vivienda: el montón del PIB, la moneda que sale (el 1 %) y los bloques que suben
-    put("cripto/monedas", at("uno", 1, 4) - 0.1, 0.75, 0.26, 0.25)
-    put("economia/moneda_sola", at("pib") - 0.1, 0.8, 0.28, 0.3)
-    put("gta6/edificios", at("cien") - 0.1, 1.3, 0.26, 0.3)
-    # 5 · trabajo: las 16 casillas de la jornada; se va una (37,5 h); las dos barras del salario, el sello «LEY» y la raya del 60 %
-    put("economia/barras", at("jornada") - 0.08, 0.6, 0.28, 0.2)
-    put("lanzamiento/desliza", at("treinta", 1, 5) + 0.1, 0.5, 0.3, 0.15)
-    put("avion/pop", at("treinta", 1, 5) + 0.32, 0.4, 0.26, 0.15)
-    put("avion/pop", at("salario") - 0.15, 0.4, 0.26, 0.15)
-    put("avion/sello", at("ley") - 0.08, 0.5, 0.3, 0.2)
-    put("avion/sube", at("sesenta") - 0.25, 0.7, 0.28, 0.25)
-    put("avion/ding", at("sesenta") + 0.3, 0.7, 0.28, 0.3)
-    # 6 · familias: el biberón, los tres cubos, los 8 millones y «cuánto, no lo dice»
-    put("avion/pop", at("paga") - 0.05, 0.4, 0.28, 0.15)
-    for i in range(3):
-        put("magisterio/madera_toc", at("crianza") - 0.05 + 0.12 * i, 0.25, 0.28, 0.1)
-    put("avion/cifra", at("ocho") - 0.05, 0.5, 0.3, 0.2)
-    put("avion/pregunta", at("cuánto", 1, 6) - 0.08, 0.95, 0.3, 0.3)
-    # 7 · estudiantes: los libros y el birrete, el «0 €»; la muela y los 200 €
-    put("magisterio/libro", L[6] - 0.08, 0.6, 0.28, 0.2)
-    put("avion/pop", at("primer") - 0.05, 0.4, 0.26, 0.15)
-    put("cripto/check", at("gratis") - 0.08, 0.45, 0.32, 0.15)
-    put("avion/pop", at("ayuda") - 0.25, 0.4, 0.28, 0.15)
-    put("economia/moneda_sola", at("doscientos", 1, 7) - 0.08, 0.8, 0.28, 0.3)
-    # 8: ¿y con qué dinero? (la moneda gira); el rótulo cambia; la caja fuerte y la casa con su «%»
+    # 4 · vivienda: la casa; la etiqueta del IVA (10 %) pasa a 0 %; «obra nueva»
+    put("avion/pop", L[3] + 0.03, 0.4, 0.28, 0.15)
+    put("avion/tap", at("iva") - 0.08, 0.3, 0.24, 0.1)
+    put("lanzamiento/voltea", at("cero") - 0.05, 0.5, 0.3, 0.15)
+    put("avion/ding", at("cero") + 0.2, 0.7, 0.24, 0.3)
+    put("avion/construye", at("nueva") - 0.1, 0.9, 0.24, 0.3)
+    # 5 · inmigración: los papeles; la señal de prohibido encima; el avión que despega
+    put("lanzamiento/papel", L[4] + 0.03, 0.6, 0.26, 0.2)
+    put("avion/sello", at("prohibir") - 0.06, 0.5, 0.34, 0.2)
+    put("avion/jet", at("repatriar") - 0.05, 1.8, 0.2, 0.6)
+    # 6 · ayudas: el podio y el «1.º»; la casa, el cubo y la moneda
+    put("avion/pop", at("prioridad") - 0.08, 0.4, 0.28, 0.15)
+    put("economia/medalla", at("primero") - 0.1, 0.7, 0.3, 0.25)
+    put("avion/pop", at("vivienda", 1, 6) - 0.08, 0.4, 0.26, 0.15)
+    put("magisterio/madera_toc", at("guarderías") - 0.08, 0.3, 0.28, 0.1)
+    put("economia/moneda_sola", at("sociales") - 0.33, 0.7, 0.26, 0.3)
+    # 7 · sanidad: la tarjeta sanitaria; el rótulo de urgencias
+    put("lanzamiento/tarjeta", at("tarjeta") - 0.08, 0.5, 0.3, 0.15)
+    put("lanzamiento/voltea", at("extranjeros") - 0.1, 0.5, 0.26, 0.15)
+    put("ade/letrero_on", at("solo", 1, 7) - 0.12, 0.8, 0.26, 0.3)
+    # 8: ¿y con qué dinero? (la moneda gira); las tijeras cortan la barra del gasto; «cuánto, tampoco lo dice»
     put("economia/giro", L[7] - 0.08, 0.5, 0.3, 0.15)
     put("avion/pregunta", at("dinero") - 0.3, 0.95, 0.26, 0.3)
-    put("lanzamiento/voltea", at("impuestos") - 0.1, 0.5, 0.3, 0.15)
-    put("cerradura/clunk", at("grandes") - 0.1, 0.5, 0.32, 0.2)
-    put("avion/pop", at("especula") - 0.1, 0.4, 0.28, 0.15)
-    put("avion/tap", at("especula") + 0.15, 0.3, 0.26, 0.1)
-    # 9: abre a las cuatro pantallas; «PRÓXIMO CAPÍTULO»; se enciende la del siguiente y la cámara va a su atril: el rótulo y la tabla
+    put("lanzamiento/voltea", at("recortando") - 0.1, 0.5, 0.28, 0.15)
+    put("avion/tiza_tachar", at("gasto") + 0.1, 0.6, 0.3, 0.2)
+    put("avion/cae", at("gasto") + 0.55, 0.5, 0.26, 0.2)
+    put("avion/pregunta", at("cuánto", 1, 8) - 0.08, 0.95, 0.3, 0.3)
+    # 9: abre a las cuatro pantallas; «PRÓXIMO CAPÍTULO»; se enciende la del siguiente y la cámara va a su atril: los lingotes, la raya del tope y el «?»
     put("avion/whoosh_largo", Le[7] + 0.05, 1.1, 0.2, 0.4)
     put("robo_banco/titulo", at("próximo") + 0.1, 1.2, 0.28, 0.4)
-    put("ade/letrero_on", at("vox") - 0.3, 0.9, 0.22, 0.3)
-    put("avion/whoosh", at("vox") + 0.12, 0.6, 0.22, 0.25)
-    put("avion/pop", at("promete") - 0.1, 0.4, 0.28, 0.15)
-    put("lanzamiento/tarjeta", at("irpf") - 0.15, 0.5, 0.3, 0.15)
-    put("avion/pregunta", at("cuánto", 1, 9) - 0.05, 0.95, 0.3, 0.3)
-    # 10: mándaselo; la cámara sube otra vez al candado y las ruedas vuelven a girar (enlaza con el principio)
+    put("ade/letrero_on", at("frente") - 0.3, 0.9, 0.22, 0.3)
+    put("avion/whoosh", at("frente") + 0.35, 0.6, 0.22, 0.25)
+    put("economia/monton", at("nadie") - 0.2, 0.7, 0.3, 0.2)
+    put("avion/cifra", at("diez") - 0.1, 0.5, 0.3, 0.2)
+    put("avion/pregunta", at("pase") - 0.25, 0.95, 0.3, 0.3)
+    # 10: mándaselo; la cámara sube otra vez al libro, que vuelve a pasar hojas (enlaza con el principio)
     put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.6, 0.3, 0.25)
     put("avion/whoosh_largo", at("mándaselo") + 0.3, 1.1, 0.2, 0.4)
-    put("cerradura/pitones", E - 0.85, 0.8, 0.24, 0.3)
+    put("ade/papeles", E - 0.6, 0.6, 0.24, 0.25)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
