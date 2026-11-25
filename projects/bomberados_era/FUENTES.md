@@ -35,6 +35,11 @@
 - **La espaldera** (placa dorsal) sujeta la botella, el reductor y el arnés.
 
 ## La escena (todo es 3D generado)
-- Bombero y equipo genéricos (sin escudos ni marcas), edificio en llamas de noche. El aire como luz azul que corre por
-  dentro y los pulmones en «rayos X» son recursos visuales.
-- Voz: Danny (ElevenLabs, Eleven v3), grabada por Javi. Efectos: sintetizados (`engine/sfx.py`) y de vídeos anteriores.
+- De día, en una calle (regla de Javi del 25 nov, «vida real»): un edificio en llamas (humo negro por las ventanas), la
+  autobomba con otro bombero en la bomba y la manguera de ataque entrando por la puerta, el cordón con curiosos (uno graba
+  con el móvil, otro señala, otra se tapa la boca) y una vecina asomada al balcón de enfrente.
+- Bomberos y equipo genéricos (sin escudos ni marcas). El aire como luz azul que corre por dentro, la botella y los
+  pulmones en «rayos X», el ⏩ hasta la reserva y el ⏪ son recursos visuales. Dentro del humo, un bombero en el suelo con el
+  bodyguard pitando hasta que una linterna le encuentra.
+- Voz: Danny (ElevenLabs, Eleven v3), grabada por Javi. Efectos: de la biblioteca de vídeos anteriores (silbato, fuego,
+  ciudad, vapor…) y sintetizados en `compose.py` (la alarma del bodyguard y la respiración por el pulmoautomático).

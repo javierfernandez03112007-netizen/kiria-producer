@@ -3640,8 +3640,149 @@ def sfx_track_percutor(path):
         wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
+def _pass_alarma(dur, seed=1):
+    """Alarma personal (bodyguard) de un ERA: pitidos agudos que suben, 4 por segundo."""
+    n = int(dur * sfx.SR); tt = np.arange(n) / sfx.SR
+    on = ((tt % 0.25) < 0.14).astype(float)
+    f = 2700 + 900 * ((tt % 1.0) ** 1.5)
+    ph = 2 * np.pi * np.cumsum(f) / sfx.SR
+    x = 0.55 * np.sin(ph) + 0.25 * np.sign(np.sin(ph)) + 0.12 * np.sin(2 * ph)
+    env = np.convolve(on, np.ones(96) / 96, "same")
+    y = x * env
+    return np.stack([y, y * 0.97], 1)
+
+
+def _respira(dur, inspira=True, seed=5):
+    """Respiración por el pulmoautomático: al inspirar, siseo de la válvula; al espirar, soplo con el clac de la válvula."""
+    n = int(dur * sfx.SR); tt = np.arange(n) / sfx.SR
+    w = np.random.default_rng(seed).standard_normal(n)
+    if inspira:
+        hp = np.diff(w, prepend=0.0); y = np.convolve(hp, np.ones(5) / 5, "same")
+        e = np.sin(np.pi * np.clip(tt / dur, 0, 1)) ** 0.7
+    else:
+        y = np.convolve(w, np.ones(18) / 18, "same") * 3.0
+        y = y * (1 + 0.35 * np.sin(2 * np.pi * 31 * tt))
+        e = np.sin(np.pi * np.clip(tt / dur, 0, 1)) ** 1.2
+    y = y * e
+    if not inspira:
+        k = int(0.012 * sfx.SR); y[:k] += np.hanning(2 * k)[:k] * 0.6 * np.sign(np.random.default_rng(seed + 1).standard_normal(k))
+    return np.stack([y, y * 0.95], 1)
+
+
+def sfx_track_era(path):
+    """«Tu botella va a 300 bares» (las 10 piezas del ERA), de día en la calle: ciudad y fuego, el escáner de rayos X, el
+    golpe rojo que subiría a la boca y los pulmones que revientan (rebobinado), el grifo que se abre (chorro de aire y el
+    silbato que pía un instante), el manorreductor (300 → 7), la de alta y la aguja, el ⏩ hasta la reserva con el SILBATO de
+    verdad, la de media, la respiración por el pulmoautomático, la espaldera, dentro del humo la alarma del bodyguard y la
+    linterna, las diez a la vez y la venta. Tiempos como en era.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    fin = c["compartir"] - 0.25
+    r0, boca = c["llegaran"] - 0.05, c["boca"]
+    rw0, rw1 = max(c["pulmones"] + 0.45, c["poreso"] - 0.55), c["poreso"] - 0.02
+    h1, h2 = c["grifo"] - 0.05, c["manorreductor"] - 0.05
+    a0, a1 = c["manguera"] - 0.05, c["manom"] - 0.05
+    tl0, tl1 = c["silbato"] + 0.15, c["pita"] - 0.04
+    rv0, rv1 = max(c["pita"] + 1.0, c["media"] - 0.45), c["media"] - 0.12
+    m0, m1 = c["media"] - 0.05, c["pulmo"] - 0.02
+    ex0, ex1, in0, in1 = c["solo"] - 0.05, c["inspiras"] - 0.15, c["inspiras"] - 0.1, c["mascara"] - 0.05
+    al0, al1 = c["pita2"] - 0.05, c["cuantas"] - 0.1
+    b0, sumT = c["encuentren"] - 0.25, c["cuantas"] + 0.45
+    dentro0, dentro1 = c["bodyguard"] + 0.2, c["cuantas"] + 0.3
+    nota, toque, bub, tic = _onset(_load("nota")), _onset(_load("toque")), _onset(_load("burbuja")), _onset(_load("tic"))
+    golpe = _onset(_load("golpe")); w2 = _onset(_load("whoosh2")); wh = _onset(_load("whoosh")); vapor = _onset(_load("vapor"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # ambiente: la calle (fuera) y el fuego (más fuerte dentro del humo)
+    put(_loop(_load("ciudad"), END + 0.5), 0.0, -33, dentro0, 0.3, 0.4, track=amb)
+    put(_loop(_load("ciudad"), END + 0.5), dentro1, -34, fin - dentro1, 0.4, 1.0, track=amb)
+    put(_loop(_load("fuego"), END + 0.5), 0.0, -31, dentro0, 0.3, 0.3, track=amb)
+    put(_loop(_load("fuego"), END + 0.5), dentro0 - 0.2, -24, dentro1 - dentro0 + 0.2, 0.25, 0.35, track=amb)
+    put(_loop(_load("fuego"), END + 0.5), dentro1, -32, fin - dentro1, 0.3, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -39, dentro0, 0.5, 0.3, track=amb)
+    # el escáner de rayos X y los 300 bar
+    put(_pitch(wh, 0.9), 0.0, -30, 0.9, 0.05, 0.2)
+    put(_pitch(_load("tension"), 1.5), 0.0, -33, 0.9, 0.05, 0.15)
+    put(_pitch(golpe, 0.8), c["trescientos"] - 0.02, -21, 0.5, 0.002, 0.2)
+    put(_pitch(nota, 0.9), c["bares"] - 0.03, -27, 0.7)
+    # el golpe rojo sube a la boca… y los pulmones revientan; se rebobina
+    put(_pitch(w2, 0.85), r0, -25, boca - r0 + 0.05, 0.08, 0.04)
+    put(_pitch(golpe, 1.1), boca, -20, 0.35, 0.002, 0.15)
+    put(_pitch(vapor, 0.8), c["reventarian"] - 0.25, -27, c["pulmones"] - c["reventarian"] + 0.3, 0.25, 0.02)
+    put("latido", c["reventarian"], -24, c["pulmones"] - c["reventarian"] + 0.05, 0.02, 0.05)
+    put(_pitch(golpe, 0.6), c["pulmones"] + 0.04, -16, 0.6, 0.002, 0.3)
+    put(_pitch(_onset(_load("cristales")), 0.7), c["pulmones"] + 0.05, -27, 0.4, 0.002, 0.2)
+    put(_pitch(w2, 1.3)[::-1].copy(), rw0, -25, rw1 - rw0, 0.05, 0.05)
+    # el grifo: la mano lo gira, sale el aire (y el silbato pía un instante) y el manorreductor lo baja: 300 → 7
+    put(_pitch(_onset(_load("llave")), 0.9), h1 - 0.02, -26, h2 - h1, 0.01, 0.08)
+    put(_pitch(vapor, 1.15), c["grifo"] + 0.02, -21, 0.75, 0.003, 0.4)
+    put(_pitch(_onset(_load("silbato")), 1.0), c["grifo"] + 0.06, -31, 0.16, 0.005, 0.06)
+    put(_pitch(nota, 1.06), c["manorreductor"] - 0.03, -27, 0.6)
+    put("reloj_rapido", c["baja"] - 0.03, -28, c["siete"] - c["baja"] + 0.1, 0.01, 0.05)
+    put(_pitch(toque, 1.33), c["siete"] - 0.02, -24, 0.5)
+    # la de alta: el aire corre hasta el manómetro (la aguja sube a 300)
+    put(_pitch(wh, 1.15), a0, -28, a1 - a0 + 0.1, 0.05, 0.1)
+    put(_pitch(tic, 1.2), a1, -24, 0.12)
+    put(_pitch(nota, 1.12), c["manom"] - 0.03, -27, 0.6)
+    put(_pitch(toque, 1.0), c["silbato"] - 0.02, -27, 0.4)
+    # ⏩ hasta la reserva… y el SILBATO; ⏪ vuelve a 300
+    put("reloj_rapido", tl0, -26, tl1 - tl0, 0.05, 0.03)
+    put(_onset(_load("silbato")), c["pita"] - 0.02, -19, rv0 - c["pita"] + 0.05, 0.005, 0.12)
+    put(_pitch(w2, 1.35)[::-1].copy(), rv0, -26, rv1 - rv0 + 0.05, 0.03, 0.05)
+    # la de media hasta el pulmoautomático (clac); la respiración: espira (no entra aire) e inspira (siseo)
+    put(_pitch(wh, 1.3), m0, -29, m1 - m0 + 0.1, 0.05, 0.1)
+    put(_pitch(tic, 0.7), c["pulmo"] - 0.01, -20, 0.12)
+    put(_respira(max(0.3, ex1 - ex0), False), ex0, -27, ex1 - ex0, 0.02, 0.06)
+    put(_respira(max(0.3, in1 + 0.3 - in0), True), in0, -25, in1 + 0.3 - in0, 0.03, 0.12)
+    put(_respira(0.7, False, 9), in1 + 0.35, -30, 0.7, 0.02, 0.1)
+    put(_pitch(nota, 1.0), c["mascara"] - 0.03, -28, 0.6)
+    # la espaldera; el dron vuela hacia la puerta y entra en el humo
+    put(_pitch(toque, 0.9), c["espaldera"] - 0.02, -27, 0.4)
+    put(_pitch(w2, 0.8), c["espaldera"] + 0.45, -24, dentro0 - c["espaldera"] + 0.2, 0.1, 0.2)
+    # dentro: la alarma del bodyguard (hasta que la cámara sale) y la linterna que le encuentra
+    put(_pass_alarma(al1 - al0 + 0.6), al0, -24, al1 - al0 + 0.5, 0.02, 0.35)
+    put(_pitch(tic, 1.6), b0, -24, 0.1)
+    put("destello", b0 + 0.05, -30, 0.5, 0.002, 0.2)
+    put(_pitch(w2, 1.0), c["cuantas"] - 0.05, -24, 0.9, 0.05, 0.25)
+    # las diez a la vez (una cascada de toques) y «comenta tu número»
+    for i in range(10):
+        put(_pitch(bub, 1.0 + 0.06 * i), sumT + 0.07 * i, -27, 0.12, 0.001, 0.04)
+    put("logro", sumT + 0.75, -27, 0.9)
+    put(_pitch(bub, 1.2), c["comentaN"] - 0.02, -24, 0.14, 0.001, 0.05)
+    # venta
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", fin - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    tM = c["marca"]
+    fuego = _load("fuego")
+    put(fuego[int(0.3 * sfx.SR):], tM - 0.3, -27, 0.9, 0.02, 0.3)
+    put("brasas", fin, -36, END - fin, 0.4, 0.3, track=amb)
+    put("marca", tM - 0.05, -26, 1.0, 0.002, 0.25)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
 
 def sfx_any(path):
+    if Q.get("formato") == "era":
+        return sfx_track_era(path)
     if Q.get("formato") == "percutor":
         return sfx_track_percutor(path)
     if Q.get("formato") == "cojines":

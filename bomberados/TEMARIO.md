@@ -247,3 +247,27 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
 ### Preguntas de examen que salen de aquí
 - ¿De qué es la ventanilla lateral? (templado) · ¿Y el parabrisas? (laminado) · ¿Qué va antes, la lámina o el golpe? (la
   lámina) · ¿Para qué sirve la lámina? (que los trozos queden pegados y el cristal salga entero, sin caer sobre el herido).
+
+## 25 nov 2026 · Equipo de respiración autónomo (ERA): las 10 piezas
+
+### Fuente — ficha de Élite Bomberos que pone Adrián Luna (Notion, fila «MIÉRCOLES 25», PUBLICIDAD BOMBERADOS)
+- 1 máscara completa · 2 espaldera o placa dorsal · 3 botella de aire comprimido · 4 grifo · 5 manorreductor o reductor de
+  presión · 6 avisador acústico o silbato · 7 manómetro · 8 bodyguard · 9 pulmoautomático o reductor de caudal ·
+  10 mangueras de alta y media presión (con una foto del equipo numerado: la de alta va del reductor al manómetro y al
+  silbato; la de media, al pulmoautomático de la máscara).
+- Datos comprobados (detalle y enlaces en `projects/bomberados_era/FUENTES.md`): botellas de 200 o 300 bar; el
+  manorreductor deja una presión media de unos 7–8 bar; el silbato salta hacia 55 bar (50–60) al entrar en la reserva;
+  el pulmoautomático da el aire según respiras (a demanda); el bodyguard es la alarma personal que pita si te quedas
+  inmóvil (y en algunos modelos muestra la presión y el tiempo que queda).
+
+### Vídeos hechos con esto
+- «Tu botella va a 300 bares» (`projects/bomberados_era/`): el dron sigue al aire por el equipo (botella → grifo →
+  manorreductor → mangueras de alta y media → manómetro y silbato / pulmoautomático y máscara), con contador 10/10 y
+  cierre «¿cuántas te sabías?». Antes: «¿Cuánto aire te queda?» (`projects/bomberados_botella/`, autonomía del ERA).
+
+### Preguntas de examen que salen de aquí
+- ¿Qué pieza baja la presión de la botella a presión media? (el manorreductor) · ¿Qué lleva la manguera de alta? (la presión
+  de la botella al manómetro y al avisador) · ¿Cuándo suena el silbato? (al entrar en la reserva, ≈ 55 bar) · ¿Qué es el
+  pulmoautomático? (el regulador a demanda que da aire al inspirar) · ¿Para qué sirve el bodyguard? (alarma si el bombero
+  se queda inmóvil).
+
