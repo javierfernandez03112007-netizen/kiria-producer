@@ -1,0 +1,523 @@
+[
+ {
+  "text": "Tu botella va a trescientos bares. Si te llegaran así a la boca… te reventarían los pulmones.",
+  "start": 0.06,
+  "end": 6.687,
+  "words": [
+   {
+    "w": "Tu",
+    "start": 0.06,
+    "end": 0.22
+   },
+   {
+    "w": "botella",
+    "start": 0.22,
+    "end": 0.699
+   },
+   {
+    "w": "va",
+    "start": 0.699,
+    "end": 0.858
+   },
+   {
+    "w": "a",
+    "start": 0.858,
+    "end": 1.018
+   },
+   {
+    "w": "trescientos",
+    "start": 1.018,
+    "end": 1.737
+   },
+   {
+    "w": "bares.",
+    "start": 1.737,
+    "end": 2.705
+   },
+   {
+    "w": "Si",
+    "start": 2.705,
+    "end": 2.854
+   },
+   {
+    "w": "te",
+    "start": 2.854,
+    "end": 3.014
+   },
+   {
+    "w": "llegaran",
+    "start": 3.014,
+    "end": 3.573
+   },
+   {
+    "w": "así",
+    "start": 3.573,
+    "end": 3.812
+   },
+   {
+    "w": "a",
+    "start": 3.812,
+    "end": 3.892
+   },
+   {
+    "w": "la",
+    "start": 3.892,
+    "end": 4.052
+   },
+   {
+    "w": "boca…",
+    "start": 4.052,
+    "end": 4.89
+   },
+   {
+    "w": "te",
+    "start": 4.89,
+    "end": 5.01
+   },
+   {
+    "w": "reventarían",
+    "start": 5.01,
+    "end": 5.888
+   },
+   {
+    "w": "los",
+    "start": 5.888,
+    "end": 6.128
+   },
+   {
+    "w": "pulmones.",
+    "start": 6.128,
+    "end": 6.687
+   }
+  ]
+ },
+ {
+  "text": "Por eso, al abrir el grifo, el manorreductor los baja a unos siete.",
+  "start": 7.245,
+  "end": 10.629,
+  "words": [
+   {
+    "w": "Por",
+    "start": 7.245,
+    "end": 7.325
+   },
+   {
+    "w": "eso,",
+    "start": 7.325,
+    "end": 7.645
+   },
+   {
+    "w": "al",
+    "start": 7.645,
+    "end": 7.804
+   },
+   {
+    "w": "abrir",
+    "start": 7.804,
+    "end": 8.124
+   },
+   {
+    "w": "el",
+    "start": 8.124,
+    "end": 8.204
+   },
+   {
+    "w": "grifo,",
+    "start": 8.204,
+    "end": 8.762
+   },
+   {
+    "w": "el",
+    "start": 8.762,
+    "end": 8.842
+   },
+   {
+    "w": "manorreductor",
+    "start": 8.842,
+    "end": 9.561
+   },
+   {
+    "w": "los",
+    "start": 9.561,
+    "end": 9.721
+   },
+   {
+    "w": "baja",
+    "start": 9.721,
+    "end": 10.04
+   },
+   {
+    "w": "a",
+    "start": 10.04,
+    "end": 10.12
+   },
+   {
+    "w": "unos",
+    "start": 10.12,
+    "end": 10.359
+   },
+   {
+    "w": "siete.",
+    "start": 10.359,
+    "end": 10.629
+   }
+  ]
+ },
+ {
+  "text": "La manguera de alta va al manómetro… y al silbato, que pita en la reserva.",
+  "start": 11.048,
+  "end": 15.04,
+  "words": [
+   {
+    "w": "La",
+    "start": 11.048,
+    "end": 11.144
+   },
+   {
+    "w": "manguera",
+    "start": 11.144,
+    "end": 11.477
+   },
+   {
+    "w": "de",
+    "start": 11.477,
+    "end": 11.557
+   },
+   {
+    "w": "alta",
+    "start": 11.557,
+    "end": 11.876
+   },
+   {
+    "w": "va",
+    "start": 11.876,
+    "end": 12.036
+   },
+   {
+    "w": "al",
+    "start": 12.036,
+    "end": 12.196
+   },
+   {
+    "w": "manómetro…",
+    "start": 12.196,
+    "end": 13.024
+   },
+   {
+    "w": "y",
+    "start": 13.024,
+    "end": 13.118
+   },
+   {
+    "w": "al",
+    "start": 13.118,
+    "end": 13.234
+   },
+   {
+    "w": "silbato,",
+    "start": 13.234,
+    "end": 13.982
+   },
+   {
+    "w": "que",
+    "start": 13.982,
+    "end": 14.117
+   },
+   {
+    "w": "pita",
+    "start": 14.117,
+    "end": 14.431
+   },
+   {
+    "w": "en",
+    "start": 14.431,
+    "end": 14.511
+   },
+   {
+    "w": "la",
+    "start": 14.511,
+    "end": 14.671
+   },
+   {
+    "w": "reserva.",
+    "start": 14.671,
+    "end": 15.04
+   }
+  ]
+ },
+ {
+  "text": "La de media, al pulmoautomático: solo da aire cuando inspiras, dentro de la máscara.",
+  "start": 15.429,
+  "end": 20.09,
+  "words": [
+   {
+    "w": "La",
+    "start": 15.429,
+    "end": 15.519
+   },
+   {
+    "w": "de",
+    "start": 15.519,
+    "end": 15.629
+   },
+   {
+    "w": "media,",
+    "start": 15.629,
+    "end": 16.028
+   },
+   {
+    "w": "al",
+    "start": 16.028,
+    "end": 16.188
+   },
+   {
+    "w": "pulmoautomático:",
+    "start": 16.188,
+    "end": 17.455
+   },
+   {
+    "w": "solo",
+    "start": 17.455,
+    "end": 17.625
+   },
+   {
+    "w": "da",
+    "start": 17.625,
+    "end": 17.864
+   },
+   {
+    "w": "aire",
+    "start": 17.864,
+    "end": 18.263
+   },
+   {
+    "w": "cuando",
+    "start": 18.263,
+    "end": 18.503
+   },
+   {
+    "w": "inspiras,",
+    "start": 18.503,
+    "end": 19.142
+   },
+   {
+    "w": "dentro",
+    "start": 19.142,
+    "end": 19.461
+   },
+   {
+    "w": "de",
+    "start": 19.461,
+    "end": 19.541
+   },
+   {
+    "w": "la",
+    "start": 19.541,
+    "end": 19.701
+   },
+   {
+    "w": "máscara.",
+    "start": 19.701,
+    "end": 20.09
+   }
+  ]
+ },
+ {
+  "text": "Todo, en la espaldera. Y el bodyguard pita si te quedas quieto… para que te encuentren.",
+  "start": 20.489,
+  "end": 25.349,
+  "words": [
+   {
+    "w": "Todo,",
+    "start": 20.489,
+    "end": 20.948
+   },
+   {
+    "w": "en",
+    "start": 20.948,
+    "end": 21.033
+   },
+   {
+    "w": "la",
+    "start": 21.033,
+    "end": 21.138
+   },
+   {
+    "w": "espaldera.",
+    "start": 21.138,
+    "end": 22.146
+   },
+   {
+    "w": "Y",
+    "start": 22.146,
+    "end": 22.323
+   },
+   {
+    "w": "el",
+    "start": 22.323,
+    "end": 22.5
+   },
+   {
+    "w": "bodyguard",
+    "start": 22.5,
+    "end": 22.934
+   },
+   {
+    "w": "pita",
+    "start": 22.934,
+    "end": 23.293
+   },
+   {
+    "w": "si",
+    "start": 23.293,
+    "end": 23.373
+   },
+   {
+    "w": "te",
+    "start": 23.373,
+    "end": 23.453
+   },
+   {
+    "w": "quedas",
+    "start": 23.453,
+    "end": 23.852
+   },
+   {
+    "w": "quieto…",
+    "start": 23.852,
+    "end": 24.461
+   },
+   {
+    "w": "para",
+    "start": 24.461,
+    "end": 24.571
+   },
+   {
+    "w": "que",
+    "start": 24.571,
+    "end": 24.731
+   },
+   {
+    "w": "te",
+    "start": 24.731,
+    "end": 24.89
+   },
+   {
+    "w": "encuentren.",
+    "start": 24.89,
+    "end": 25.349
+   }
+  ]
+ },
+ {
+  "text": "¿Cuántas te sabías? Comenta tu número.",
+  "start": 25.888,
+  "end": 27.944,
+  "words": [
+   {
+    "w": "¿Cuántas",
+    "start": 25.888,
+    "end": 26.168
+   },
+   {
+    "w": "te",
+    "start": 26.168,
+    "end": 26.327
+   },
+   {
+    "w": "sabías?",
+    "start": 26.327,
+    "end": 27.086
+   },
+   {
+    "w": "Comenta",
+    "start": 27.086,
+    "end": 27.525
+   },
+   {
+    "w": "tu",
+    "start": 27.525,
+    "end": 27.685
+   },
+   {
+    "w": "número.",
+    "start": 27.685,
+    "end": 27.944
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 28.293,
+  "end": 30.339,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 28.293,
+    "end": 29.042
+   },
+   {
+    "w": "a",
+    "start": 29.042,
+    "end": 29.122
+   },
+   {
+    "w": "quien",
+    "start": 29.122,
+    "end": 29.361
+   },
+   {
+    "w": "quiera",
+    "start": 29.361,
+    "end": 29.681
+   },
+   {
+    "w": "ser",
+    "start": 29.681,
+    "end": 29.92
+   },
+   {
+    "w": "bombero!",
+    "start": 29.92,
+    "end": 30.339
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 30.709,
+  "end": 34.421,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 30.709,
+    "end": 31.597
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 31.597,
+    "end": 32.834
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 32.834,
+    "end": 33.273
+   },
+   {
+    "w": "gratis",
+    "start": 33.273,
+    "end": 33.752
+   },
+   {
+    "w": "cinco",
+    "start": 33.752,
+    "end": 34.072
+   },
+   {
+    "w": "días!",
+    "start": 34.072,
+    "end": 34.421
+   }
+  ]
+ }
+]

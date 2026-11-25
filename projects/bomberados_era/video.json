@@ -1,0 +1,234 @@
+{
+ "formato": "era",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "¿CUÁNTAS TE SABES?",
+  "etiqueta": "LAS 10 PIEZAS DEL ERA",
+  "t": 28.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 0.85,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "botella": [
+   "botella",
+   1,
+   1
+  ],
+  "trescientos": [
+   "trescientos",
+   1,
+   1
+  ],
+  "bares": [
+   "bares",
+   1,
+   1
+  ],
+  "llegaran": [
+   "llegaran",
+   1,
+   1
+  ],
+  "boca": [
+   "boca",
+   1,
+   1
+  ],
+  "reventarian": [
+   "reventarían",
+   1,
+   1
+  ],
+  "pulmones": [
+   "pulmones",
+   1,
+   1
+  ],
+  "poreso": [
+   "Por",
+   1,
+   2
+  ],
+  "abrir": [
+   "abrir",
+   1,
+   2
+  ],
+  "grifo": [
+   "grifo",
+   1,
+   2
+  ],
+  "manorreductor": [
+   "manorreductor",
+   1,
+   2
+  ],
+  "baja": [
+   "baja",
+   1,
+   2
+  ],
+  "siete": [
+   "siete",
+   1,
+   2
+  ],
+  "manguera": [
+   "manguera",
+   1,
+   3
+  ],
+  "alta": [
+   "alta",
+   1,
+   3
+  ],
+  "manom": [
+   "manómetro",
+   1,
+   3
+  ],
+  "silbato": [
+   "silbato",
+   1,
+   3
+  ],
+  "pita": [
+   "pita",
+   1,
+   3
+  ],
+  "reserva": [
+   "reserva",
+   1,
+   3
+  ],
+  "media": [
+   "media",
+   1,
+   4
+  ],
+  "pulmo": [
+   "pulmoautomático",
+   1,
+   4
+  ],
+  "solo": [
+   "solo",
+   1,
+   4
+  ],
+  "inspiras": [
+   "inspiras",
+   1,
+   4
+  ],
+  "dentro": [
+   "dentro",
+   1,
+   4
+  ],
+  "mascara": [
+   "máscara",
+   1,
+   4
+  ],
+  "todo": [
+   "Todo",
+   1,
+   5
+  ],
+  "espaldera": [
+   "espaldera",
+   1,
+   5
+  ],
+  "bodyguard": [
+   "bodyguard",
+   1,
+   5
+  ],
+  "pita2": [
+   "pita",
+   1,
+   5
+  ],
+  "quieto": [
+   "quieto",
+   1,
+   5
+  ],
+  "encuentren": [
+   "encuentren",
+   1,
+   5
+  ],
+  "cuantas": [
+   "Cuántas",
+   1,
+   6
+  ],
+  "sabias": [
+   "sabías",
+   1,
+   6
+  ],
+  "comentaN": [
+   "Comenta",
+   1,
+   6
+  ],
+  "numero": [
+   "número",
+   1,
+   6
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   7
+  ],
+  "acierta": [
+   "quien",
+   1,
+   7
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   8
+  ],
+  "marca": [
+   "Bomberados",
+   1,
+   8
+  ],
+  "prueba": [
+   "Pruébala",
+   1,
+   8
+  ],
+  "dias": [
+   "días",
+   1,
+   8
+  ]
+ }
+}
