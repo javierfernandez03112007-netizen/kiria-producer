@@ -36,15 +36,18 @@ for p in ordered:
     if not groups or groups[-1][0] != b or groups[-1][1] != p['line']: groups.append((b, p['line'], []))
     groups[-1][2].append(p)
 have = sum(1 for p in P if p.get('img'))
+fpath = os.path.join(root, 'data', 'fotos.json')
+fotos = json.load(open(fpath, encoding='utf-8')) if os.path.exists(fpath) else {}     # de dónde sale cada foto (oficial, propia, provisional…)
 out = [f"# Lista de productos para las fotos ({len(P)})", '',
        f"Generada por `web_merche/tools/lista.py`. Con foto: **{have}** de {len(P)}. ★ = sale en la portada (prioridad).",
-       'El número de cada producto es fijo (`web_merche/data/numeros.json`).', '']
+       'El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen de cada foto está en `web_merche/data/fotos.json`.', '']
 brand = None
 for b, line, ps in groups:
     if b != brand: out += [f'## {b}', '']; brand = b
     out.append(f'### {line}')
     for p in ps:
-        out.append(f"- [{'x' if p.get('img') else ' '}] **{nums[p['id']]}** · {p['name']}{' · ' + p['size'] if p['size'] else ''}{' ★' if p['id'] in home else ''}  `{p['id']}`")
+        org = f" — foto {fotos[p['id']]['origen']}" if p.get('img') and p['id'] in fotos else (' — foto sin origen apuntado' if p.get('img') else '')
+        out.append(f"- [{'x' if p.get('img') else ' '}] **{nums[p['id']]}** · {p['name']}{' · ' + p['size'] if p['size'] else ''}{' ★' if p['id'] in home else ''}  `{p['id']}`{org}")
     out.append('')
 open(os.path.join(root, '..', 'merche', 'LISTA_FOTOS.md'), 'w', encoding='utf-8').write('\n'.join(out))
 json.dump({'groups': [[b, l, [{'n': nums[p['id']], 'id': p['id'], 'name': p['name'], 'size': p['size'], 'home': p['id'] in home, 'img': bool(p.get('img'))} for p in ps]] for b, l, ps in groups]},

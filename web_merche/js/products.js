@@ -1312,7 +1312,7 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Champú reparador para cabello dañado",
-"desc": "Champú para cabello dañado, poroso o que se rompe. Limpia con suavidad mientras repara la fibra.",
+"desc": "Champú reparador para cabello dañado. Limpia con suavidad y, con las tecnologías Bond Repair y Multi-Peptide, devuelve fuerza, elasticidad y brillo: repara hasta el 70 % del daño en cada lavado, según Schwarzkopf Professional.",
 "benefits": [
 "Repara hasta el 70 % del daño en cada uso, según la marca",
 "Tecnologías Bond Repair y Multi-Peptide",
@@ -1327,11 +1327,15 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/champu.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069116",
 "confirm": [
 "price"
 ],
-"new": true
+"gtin": "4067971163857",
+"official": "Champú Bonacure Repair Rescue+ 250ml",
+"code": "3069116",
+"new": true,
+"img": "media/productos/sk-repair-rescue-champu.webp"
 },
 {
 "id": "sk-color-freeze-champu",
@@ -1343,13 +1347,13 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Champú para que el color del tinte dure más",
-"desc": "Champú suave para cabello teñido. Devuelve el cabello a su pH óptimo de 4,5 para dejar los pigmentos sellados.",
+"desc": "Champú suave para cabello teñido. Devuelve al pelo su pH óptimo y sella los pigmentos dentro de la fibra para que el color dure más. Ideal después de teñirte y para mantener el color en casa.",
 "benefits": [
 "Hasta un 90 % de retención del color durante 30 lavados, según la marca",
 "pH 4,5",
 "Vegano, sin sulfatos SLS/SLES ni siliconas"
 ],
-"use": "Aplica sobre el pelo mojado, deja 1–2 minutos y aclara.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
 "facts": {
 "pH": "4,5",
 "Vegano": "sí"
@@ -1358,8 +1362,12 @@ export const PRODUCTS = [
 "color"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/color-freeze/champu.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078156",
+"confirm": [],
+"gtin": "4067971178356",
+"official": "Bonacure Color Freeze Champú 250ml",
+"code": "3078156",
+"img": "media/productos/sk-color-freeze-champu.webp"
 },
 {
 "id": "sk-color-freeze-silver",
@@ -1371,13 +1379,13 @@ export const PRODUCTS = [
 "price": null,
 "priceSrc": "",
 "short": "Champú matizador para canas, grises y rubios",
-"desc": "Champú con pigmentos azul-violeta para cabello canoso, gris, rubio o con mechas. Neutraliza los tonos amarillos.",
+"desc": "Champú con pigmentos para cabello blanco, canoso o aclarado. Neutraliza los tonos cálidos que no quieres y reaviva los fríos, a la vez que devuelve al pelo su pH óptimo para proteger el color.",
 "benefits": [
 "Pigmentos azul-violeta",
 "Neutraliza los tonos amarillos y cálidos",
 "pH 4,5"
 ],
-"use": "Como un champú normal.",
+"use": "Aplica sobre el pelo mojado y masajea. Para matizar, deja actuar de 2 a 5 minutos y aclara bien.",
 "facts": {
 "pH": "4,5"
 },
@@ -1386,11 +1394,14 @@ export const PRODUCTS = [
 "color"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/color-freeze/champu-especial-canas.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078157",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971178394",
+"official": "Bonacure Color Freeze Champú Especial Canas 250ml",
+"code": "3078157",
+"img": "media/productos/sk-color-freeze-silver.webp"
 },
 {
 "id": "sk-moisture-kick-champu",
@@ -1402,13 +1413,13 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Champú hidratante para pelo normal a seco",
-"desc": "Champú hidratante para cabello normal a seco, ondulado o quebradizo.",
+"desc": "Champú hidratante con aloe vera para cabello normal a seco, quebradizo u ondulado. Limpia con delicadeza y ayuda al pelo a recuperar su nivel de hidratación. Sin sulfatos SLS/SLES, siliconas ni colorantes artificiales.",
 "benefits": [
 "Con aloe vera",
 "Vegano",
 "Sin sulfatos SLS/SLES ni siliconas"
 ],
-"use": "Aplica sobre el pelo mojado, masajea y aclara.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
 "facts": {
 "Vegano": "sí"
 },
@@ -1417,26 +1428,30 @@ export const PRODUCTS = [
 "rizos-naturales"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/moisture-kick/champu.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3078192",
+"confirm": [],
+"gtin": "4067971109817",
+"official": "Bonacure Moisture Kick Champú 250ml",
+"code": "3078192",
+"img": "media/productos/sk-moisture-kick-champu.webp"
 },
 {
 "id": "sk-fibre-clinix-fortify-champu",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Fortify Champú",
+"name": "Fibre Clinix Champú Fortificante",
 "cat": "champu",
 "size": "300 ml",
 "price": 19,
 "priceSrc": "Keshop",
 "short": "Champú reparador para pelo muy procesado",
-"desc": "Champú para cabello dañado y muy procesado. Limpia con suavidad y refuerza la fibra debilitada.",
+"desc": "Champú reparador para cabello dañado y muy procesado. Con la tecnología BondXtend, que crea puentes dentro de la fibra, y multipéptidos: limpia con suavidad, fortalece al instante y deja el pelo más liso y brillante.",
 "benefits": [
 "Tecnología BondXtend, que crea enlaces internos",
 "Hasta un 83 % menos de rotura, según la marca",
 "Sin sulfatos SLS/SLES"
 ],
-"use": "Aplica sobre el pelo mojado, masajea y aclara. Repite si hace falta.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien. Repite si hace falta.",
 "facts": {
 "Tecnología": "BondXtend"
 },
@@ -1444,10 +1459,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/fibre-clinix/experimenta-una-actualizacion-revolucionaria-con-fibre-clinix.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Fortify/p/3063127",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971068480",
+"official": "Fibre Clinix Champú Fortificante 300ml",
+"code": "3063127",
+"img": "media/productos/sk-fibre-clinix-fortify-champu.webp"
 },
 {
 "id": "sk-blondme-champu-morado",
@@ -1459,13 +1478,13 @@ export const PRODUCTS = [
 "price": 17.5,
 "priceSrc": "Notino.es",
 "short": "Champú violeta que quita el amarillo del rubio",
-"desc": "Champú violeta para rubios naturales, aclarados o con mechas. Neutraliza los tonos amarillos mientras limpia y nutre.",
+"desc": "Champú violeta para rubios. Sus pigmentos fríos neutralizan el tono amarillo y frenan la calidez sin cambiar el color, mientras limpia con suavidad y nutre con aceite de almendras. Con tecnología Bond Repair, que refuerza el pelo creando puentes internos.",
 "benefits": [
 "Pigmentos fríos que neutralizan el amarillo",
 "Tecnología Bond Repair",
 "Sin sulfatos SLS/SLES y vegano"
 ],
-"use": "Aplica sobre el pelo húmedo, deja 2 minutos y aclara.",
+"use": "Aplica de manera uniforme sobre el pelo húmedo, deja actuar 2 minutos y aclara bien.",
 "facts": {
 "Tiempo de pose": "2 min",
 "Vegano": "sí"
@@ -1475,26 +1494,30 @@ export const PRODUCTS = [
 ],
 "colors": [],
 "url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair-Morado/p/3119751",
-"confirm": []
+"confirm": [],
+"gtin": "4067971081106",
+"official": "Champú Morado Bond Repair de BLONDME 300ml",
+"code": "3119751",
+"img": "media/productos/sk-blondme-champu-morado.webp"
 },
 {
 "id": "sk-bonacure-repair-rescue-plus-champu-1000ml",
 "brand": "schwarzkopf",
 "line": "Bonacure Repair Rescue+",
-"name": "Bonacure Repair Rescue+ Champú 1000 ml",
+"name": "Bonacure Repair Rescue Champú 1000 ml",
 "cat": "champu",
 "size": "1000 ml",
 "price": 34.0,
 "priceSrc": "Coserty",
-"short": "Formato salón del champú reparador para cabello dañado",
-"desc": "Envase de litro del champú reparador de la gama, primer paso de la rutina para cabello dañado. Limpia con suavidad mientras ayuda a recuperar la fuerza de la fibra. Es el formato de lavacabezas, práctico también para uso familiar.",
+"short": "Champú reparador para cabello dañado, en formato de litro",
+"desc": "El champú reparador de Bonacure en formato de litro, pensado para cabello dañado. Deja un efecto acondicionador que dura y devuelve fuerza y elasticidad sin apelmazar. Fórmula vegana.",
 "benefits": [
-"Limpieza suave para cabello dañado",
-"Ayuda a restaurar la fuerza del cabello",
-"Sin sulfatos SLS/SLES",
-"Fórmula vegana"
+"Para cabello dañado",
+"Devuelve fuerza y elasticidad sin apelmazar",
+"Formato de 1 litro",
+"Vegano"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Sin": "sulfatos SLS/SLES",
@@ -1504,11 +1527,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.coserty.com/en/products/schwarzkopf-champ-reparador-bc-bonacure-clean-repair-rescue-1000-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069114",
 "confirm": [
-"price",
-"name"
-]
+"price"
+],
+"gtin": "4067971163772",
+"official": "Bonacure Repair Rescue Champú 1000ml",
+"code": "3069114",
+"img": "media/productos/sk-bonacure-repair-rescue-plus-champu-1000ml.webp"
 },
 {
 "id": "sk-bonacure-color-freeze-champu-1000ml",
@@ -1520,14 +1546,14 @@ export const PRODUCTS = [
 "price": 34.0,
 "priceSrc": "Coserty",
 "short": "Formato salón del champú pH 4.5 para cabello teñido",
-"desc": "Envase de litro del champú Color Freeze para cabello teñido. Su tecnología pH 4.5 ayuda a mantener los pigmentos dentro de la fibra; la marca declara hasta un 90 % de retención del color durante 30 lavados.",
+"desc": "El champú para cabello teñido de Bonacure en formato de litro. Devuelve al pelo su pH óptimo y sella los pigmentos dentro de la fibra para que el color dure más.",
 "benefits": [
 "Hasta un 90 % de retención del color durante 30 lavados, según la marca",
 "Lleva el cabello a su pH óptimo de 4.5",
 "Sin sulfatos SLS/SLES",
 "Fórmula vegana"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "pH": "4.5",
@@ -1538,10 +1564,14 @@ export const PRODUCTS = [
 "color"
 ],
 "colors": [],
-"url": "https://www.coserty.com/en/collections/bonacure-schwarzkopf-professional",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078163",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971178158",
+"official": "Bonacure Color Freeze Champú 1000ml",
+"code": "3078163",
+"img": "media/productos/sk-bonacure-color-freeze-champu-1000ml.webp"
 },
 {
 "id": "sk-bonacure-moisture-kick-champu-1000ml",
@@ -1553,14 +1583,14 @@ export const PRODUCTS = [
 "price": 34.0,
 "priceSrc": "Coserty",
 "short": "Formato salón del champú hidratante para cabello seco",
-"desc": "Envase de litro del champú hidratante Moisture Kick para cabello de normal a seco, rizado o quebradizo. Limpia con suavidad y ayuda a reponer la hidratación con su complejo con aloe vera.",
+"desc": "El champú hidratante de Bonacure en formato de litro, para cabello normal a seco, quebradizo o rizado. Limpia con suavidad y ayuda a retener la hidratación: el pelo se nota ligero y elástico hasta 48 horas, según la marca.",
 "benefits": [
 "Hidratación duradera, hasta 72 horas según la marca",
 "Limpieza suave del cabello seco",
 "Sin sulfatos SLS/SLES ni siliconas",
 "Fórmula vegana"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Sin": "sulfatos SLS/SLES, siliconas",
@@ -1570,10 +1600,14 @@ export const PRODUCTS = [
 "hidratar"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3013343",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3078191",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971109770",
+"official": "Bonacure Moisture Kick Champú 1000ml",
+"code": "3078191",
+"img": "media/productos/sk-bonacure-moisture-kick-champu-1000ml.webp"
 },
 {
 "id": "sk-bonacure-volume-boost-champu",
@@ -1585,14 +1619,14 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Champú que da cuerpo y volumen al cabello fino",
-"desc": "Champú ligero para cabello fino, lacio o debilitado. Retira con suavidad el exceso de grasa y los residuos que restan volumen, y su fórmula con creatina refuerza el cabello por dentro para que se note con más cuerpo.",
+"desc": "Champú para dar volumen al cabello fino. Retira con suavidad el exceso de grasa y los residuos que lo apelmazan, y sus polímeros de cuidado evitan la electricidad estática: el pelo queda con más cuerpo y más manejable.",
 "benefits": [
 "Más volumen y sensación de cuerpo hasta 48 horas, según la marca",
 "Elimina grasa y residuos que apelmazan",
 "Refuerza el cabello fino con creatina",
 "Vegano y sin sulfatos SLS/SLES"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Sin": "sulfatos SLS/SLES",
@@ -1602,8 +1636,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/volume-boost/champu.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Potenciador-de-volumen/p/3078161",
+"confirm": [],
+"gtin": "4067971178554",
+"official": "Bonacure Volume Boost Champú 250ml",
+"code": "3078161",
+"img": "media/productos/sk-bonacure-volume-boost-champu.webp"
 },
 {
 "id": "sk-bonacure-frizz-away-champu",
@@ -1677,14 +1715,14 @@ export const PRODUCTS = [
 "price": 14.95,
 "priceSrc": "Coserty",
 "short": "Champú suave para cuero cabelludo seco o sensible",
-"desc": "Champú para cueros cabelludos secos, sensibles o con tendencia a irritarse. Limpia con suavidad y ayuda a equilibrar la hidratación del cuero cabelludo con un complejo de kale y madecassoside.",
+"desc": "Champú suave para el cuero cabelludo que se irrita con facilidad, aprobado dermatológicamente. Calma, nutre y equilibra la hidratación del cuero cabelludo. Fórmula vegana.",
 "benefits": [
 "Limpieza suave del cuero cabelludo sensible",
 "Ayuda a equilibrar la hidratación del cuero cabelludo",
 "Con kale y madecassoside (de la centella asiática)",
 "Vegano, sin sulfatos SLS/SLES ni siliconas"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo húmedo, masajea durante 2 minutos y aclara.",
 "facts": {
 "Vegano": "sí",
 "Sin": "sulfatos SLS/SLES, siliconas, colorantes artificiales",
@@ -1694,11 +1732,14 @@ export const PRODUCTS = [
 "cuero-cabelludo"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/BC-Specialties-Scalp-Genesis/p/2921824",
+"url": "https://shop.schwarzkopf-professional.es/es/c/BC-Specialties-Scalp-Genesis/p/3078181",
 "confirm": [
-"price",
-"name"
-]
+"price"
+],
+"gtin": "4067971179193",
+"official": "Bonacure Champú Calmante 250ml",
+"code": "3078181",
+"img": "media/productos/sk-bonacure-scalp-champu-calmante.webp"
 },
 {
 "id": "sk-bonacure-scalp-champu-anticaspa",
@@ -1710,14 +1751,14 @@ export const PRODUCTS = [
 "price": 14.95,
 "priceSrc": "Coserty",
 "short": "Champú anticaspa aprobado dermatológicamente",
-"desc": "Champú para cueros cabelludos con tendencia a la caspa. Ayuda a retirar las escamas visibles con un complejo de superbayas y AHA, y cuenta con aprobación dermatológica.",
+"desc": "Champú suave para el cuero cabelludo con tendencia a la caspa, aprobado dermatológicamente. Elimina la caspa visible y respeta el pH del cuero cabelludo. Fórmula vegana.",
 "benefits": [
 "Ayuda a eliminar la caspa visible",
 "Aprobado dermatológicamente",
 "Con superbayas y AHA",
 "Fórmula vegana"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea durante 2 minutos y aclara.",
 "facts": {
 "Vegano": "sí",
 "Testado": "aprobado dermatológicamente",
@@ -1729,9 +1770,12 @@ export const PRODUCTS = [
 "colors": [],
 "url": "https://shop.schwarzkopf-professional.es/es/c/BC-Specialties-Scalp-Genesis/p/3078176",
 "confirm": [
-"price",
-"name"
-]
+"price"
+],
+"gtin": "4067971178998",
+"official": "Bonacure Champú Anticaspa 250ml",
+"code": "3078176",
+"img": "media/productos/sk-bonacure-scalp-champu-anticaspa.webp"
 },
 {
 "id": "sk-scalp-clinix-champu-anticaida",
@@ -1743,13 +1787,13 @@ export const PRODUCTS = [
 "price": 17.85,
 "priceSrc": "Coserty",
 "short": "Champú para cabello debilitado con tendencia a la caída",
-"desc": "Champú de la línea Scalp Clinix para cabello debilitado o que pierde densidad. Combina tartrato de carnitina, taurina y extracto de equinácea, y está pensado para usarse junto al sérum anticaída de la gama.",
+"desc": "Champú que ayuda a reforzar el cabello y deja el cuero cabelludo hidratado. Prepara para el Sérum Anticaída: usados juntos de forma continuada, reducen la caída no patológica a las 6 semanas, según la marca.",
 "benefits": [
 "Reduce la caída no patológica tras 6 semanas usado con el sérum, según la marca",
 "Con tartrato de carnitina, taurina y equinácea",
 "Tecnología biótica que cuida el equilibrio del cuero cabelludo"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien.",
 "facts": {
 "Ingredientes clave": "tartrato de carnitina, taurina, extracto de equinácea",
 "Tecnología": "biótica (equilibrio del microbioma)"
@@ -1758,10 +1802,14 @@ export const PRODUCTS = [
 "cuero-cabelludo"
 ],
 "colors": [],
-"url": "https://coserty.com/en/schwarzkopf-anti-hair-loss-shampoo-scalp-clinix-300-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Anti-Hair-Loss/p/3075327",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787770186",
+"official": "Scalp Clinix Champú Anticaída 300ml",
+"code": "3075327",
+"img": "media/productos/sk-scalp-clinix-champu-anticaida.webp"
 },
 {
 "id": "sk-scalp-clinix-champu-control-caspa",
@@ -1773,14 +1821,14 @@ export const PRODUCTS = [
 "price": 17.85,
 "priceSrc": "Coserty",
 "short": "Champú que elimina con suavidad la caspa visible",
-"desc": "Champú para todo tipo de caspa. Retira con suavidad las escamas visibles con piroctona olamina y la tecnología biótica de la gama, que ayuda a mantener el equilibrio del cuero cabelludo.",
+"desc": "Champú que retira con suavidad las escamas visibles y deja en el cuero cabelludo una sensación calmante y refrescante. Sin sulfatos SLS/SLES ni siliconas.",
 "benefits": [
 "Elimina suavemente las escamas visibles",
 "Apto para todo tipo de caspa",
 "Sin sulfatos SLS/SLES ni siliconas",
 "Con activo para el microbioma del cuero cabelludo"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien.",
 "facts": {
 "Sin": "sulfatos SLS/SLES, siliconas",
 "Ingrediente clave": "piroctona olamina",
@@ -1793,7 +1841,11 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Flake-Control/p/3075328",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787770148",
+"official": "Scalp Clinix Champú de Control de la Caspa 300ml",
+"code": "3075328",
+"img": "media/productos/sk-scalp-clinix-champu-control-caspa.webp"
 },
 {
 "id": "sk-scalp-clinix-champu-control-grasa",
@@ -1805,14 +1857,14 @@ export const PRODUCTS = [
 "price": 17.85,
 "priceSrc": "Coserty",
 "short": "Champú purificante para cuero cabelludo graso",
-"desc": "Champú para cuero cabelludo graso. Limpia en profundidad, retira el exceso de sebo y deja sensación de frescor, con extractos de eucalipto y romero.",
+"desc": "Champú que limpia en profundidad y elimina el exceso de grasa, con un efecto refrescante que alarga la sensación de limpieza. Sin sulfatos SLS/SLES ni siliconas.",
 "benefits": [
 "Limpia en profundidad y elimina el exceso de grasa",
 "Efecto refrescante",
 "Sin sulfatos SLS/SLES ni siliconas",
 "Con activo para reequilibrar el microbioma"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien.",
 "facts": {
 "Sin": "sulfatos SLS/SLES, siliconas",
 "Ingredientes clave": "extractos de eucalipto y romero",
@@ -1825,7 +1877,11 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Oil-Control/p/3075330",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787769944",
+"official": "Scalp Clinix Champú de Control de la Grasa 300ml",
+"code": "3075330",
+"img": "media/productos/sk-scalp-clinix-champu-control-grasa.webp"
 },
 {
 "id": "sk-scalp-clinix-champu-calmante",
@@ -1837,14 +1893,14 @@ export const PRODUCTS = [
 "price": 17.85,
 "priceSrc": "Coserty",
 "short": "Champú calmante para cuero cabelludo seco y delicado",
-"desc": "Champú sin sulfatos para cuero cabelludo seco o sensible. Limpia con suavidad mientras calma y ayuda a equilibrar la hidratación, con bisabolol y extracto de centella asiática.",
+"desc": "Champú suave que calma el cuero cabelludo y ayuda a equilibrar su hidratación. Sin sulfatos SLS/SLES ni siliconas.",
 "benefits": [
 "Limpia con suavidad y calma el cuero cabelludo",
 "Ayuda a equilibrar la hidratación",
 "Con bisabolol y centella asiática",
 "Sin sulfatos SLS/SLES"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien.",
 "facts": {
 "Sin": "sulfatos SLS/SLES",
 "Ingredientes clave": "bisabolol, extracto de centella asiática",
@@ -1857,26 +1913,30 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Soothing/p/3075329",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787770100",
+"official": "Scalp Clinix Champú Calmante 300ml",
+"code": "3075329",
+"img": "media/productos/sk-scalp-clinix-champu-calmante.webp"
 },
 {
 "id": "sk-fibre-clinix-hydrate-champu",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Hydrate Champú Hidratante",
+"name": "Fibre Clinix Champú Hidratante",
 "cat": "champu",
 "size": "300 ml",
 "price": 21.85,
 "priceSrc": "Keshop",
 "short": "Champú hidratante con electrolitos para cabello seco",
-"desc": "Champú de cuidado en casa para cabello seco y quebradizo. Limpia con suavidad y aporta hidratación con electrolitos y tecnología BondXtend.",
+"desc": "Champú hidratante y reparador para cabello seco y quebradizo. Con tecnología BondXtend y electrolitos: limpia con suavidad y devuelve suavidad, brillo y elasticidad.",
 "benefits": [
 "Sensación de hidratación durante 48 horas, según la marca (gama Hydrate)",
 "Limpieza suave",
 "Mejora la elasticidad",
 "Tecnología BondXtend"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien. Repite si hace falta.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "electrolitos"
@@ -1885,29 +1945,33 @@ export const PRODUCTS = [
 "hidratar"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/Fibre-Clinix-Hydrate/p/3063130",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Hydrate/p/3063130",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971068640",
+"official": "Fibre Clinix Champú Hidratante 300ml",
+"code": "3063130",
+"img": "media/productos/sk-fibre-clinix-hydrate-champu.webp"
 },
 {
 "id": "sk-fibre-clinix-vibrancy-champu",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Vibrancy Champú Color Radiante",
+"name": "Fibre Clinix Champú Color Radiante",
 "cat": "champu",
 "size": "300 ml",
 "price": 21.85,
 "priceSrc": "Keshop",
 "short": "Champú con AHA que protege la intensidad del color",
-"desc": "Champú de cuidado en casa para cabello teñido. Su fórmula con alfahidroxiácidos (AHA) y tecnología BondXtend limpia mientras protege y sella la intensidad del color y alisa la superficie del cabello.",
+"desc": "Champú reparador para cabello teñido. Con tecnología BondXtend y ácidos AHA: suaviza la fibra y sella la intensidad del color para que dure más.",
 "benefits": [
 "Reduce la pérdida de color hasta un 90 % en 30 lavados, según la marca",
 "Color y brillo 4 veces más intensos frente al cabello sin tratar (gama Vibrancy)",
 "Con AHA",
 "Tecnología BondXtend"
 ],
-"use": "Aplicar sobre el cabello mojado, masajear hasta hacer espuma y aclarar bien.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien. Repite si hace falta.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "AHA (alfahidroxiácidos)"
@@ -1920,7 +1984,11 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Vibrancy/p/3063134",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971068848",
+"official": "Fibre Clinix Champú Color Radiante 300ml",
+"code": "3063134",
+"img": "media/productos/sk-fibre-clinix-vibrancy-champu.webp"
 },
 {
 "id": "sk-blondme-champu-nutritivo-bond-repair",
@@ -1932,14 +2000,14 @@ export const PRODUCTS = [
 "price": 18.9,
 "priceSrc": "Keshop",
 "short": "Champú nutritivo con Bond Repair para cabello rubio",
-"desc": "Champú de uso diario para cabello rubio o aclarado. Limpia con suavidad mientras nutre y, con la tecnología Bond Repair, hace el cabello más resistente a la rotura.",
+"desc": "Champú de uso diario para cabello rubio. Limpia con suavidad, hidrata y, con la tecnología Bond Repair, refuerza el pelo creando puentes internos. Con aceite de almendras y té blanco.",
 "benefits": [
 "Hasta un 80 % más de resistencia a la rotura al peinar frente al cabello dañado sin tratar, según la marca",
 "Limpieza suave y nutritiva",
 "Sin sulfatos SLS/SLES",
 "Vegano y certificado por PETA"
 ],
-"use": "Aplicar sobre el cabello mojado, dejar actuar 1 minuto y aclarar.",
+"use": "Aplica sobre el pelo mojado, deja actuar 1 minuto y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -1951,10 +2019,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://coserty.com/es/schwarzkopf-champ%C3%BA-nutritivo-blondme-bond-repair-nourishing-300-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair/p/3114084",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971081984",
+"official": "Champú Nutritivo Bond Repair de BLONDME 300ml",
+"code": "3114084",
+"img": "media/productos/sk-blondme-champu-nutritivo-bond-repair.webp"
 },
 {
 "id": "sk-goodbye-yellow-champu-neutralizante",
@@ -1966,14 +2038,14 @@ export const PRODUCTS = [
 "price": 12.99,
 "priceSrc": "Promofarma",
 "short": "Champú muy pigmentado que neutraliza los tonos amarillos",
-"desc": "Champú neutralizante de alta pigmentación para rubios medios a claros. Su mezcla de pigmentos morados y azules corrige los matices amarillos no deseados. Fórmula vegana, sin sulfatos y con pH 4.5.",
+"desc": "Champú muy pigmentado que neutraliza al momento los tonos amarillos del rubio medio a claro. Limpia con suavidad y lleva tecnología Bonding. Fórmula vegana.",
 "benefits": [
 "Neutraliza los matices amarillos",
 "Mezcla de pigmentos morados y azules",
 "pH 4.5",
 "Vegano y sin sulfatos"
 ],
-"use": "Aplicar con guantes sobre el cabello mojado, dejar actuar unos minutos según la intensidad deseada y aclarar.",
+"use": "Úsalo como un champú sobre el pelo mojado y deja actuar unos 5 minutos: el resultado depende del tiempo y del estado del pelo. Aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Sin": "sulfatos",
@@ -1984,11 +2056,14 @@ export const PRODUCTS = [
 "rubio"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/c/Goodbye-Yellow/p/2809210",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Goodbye-Yellow/p/3050824",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4045787736410",
+"official": "SKP Goodbye Yellow Champú 300ml",
+"code": "3050824",
+"img": "media/productos/sk-goodbye-yellow-champu-neutralizante.webp"
 },
 {
 "id": "sk-bonacure-repair-rescue-plus-acondicionador",
@@ -2000,14 +2075,14 @@ export const PRODUCTS = [
 "price": 12.99,
 "priceSrc": "Druni",
 "short": "Acondicionador reparador que desenreda y refuerza el cabello dañado",
-"desc": "Acondicionador de la nueva generación Repair Rescue+ para cabello dañado. Combina la tecnología Bond Repair con multipéptidos (Peptide Bond Complex) y una alternativa vegana a la queratina. Deja el pelo suave, manejable y más resistente.",
+"desc": "Acondicionador para cabello dañado que desenreda y facilita el peinado. Revitaliza en profundidad después de cada lavado y deja el pelo suave, resistente y con brillo, sin apelmazar.",
 "benefits": [
 "Cabello un 100 % más fuerte y resistente frente al cabello sin tratar, según la marca",
 "Facilita el desenredado y el peinado",
 "Fórmula vegana y sin siliconas",
 "Refuerza la reparación cuando se usa con el champú de la gama"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Tras el champú, aplica sobre el pelo secado con toalla y masajea. Deja actuar 2 minutos y aclara.",
 "facts": {
 "Vegano": "sí",
 "Sin": "siliconas",
@@ -2017,10 +2092,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/acondicionador.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069118",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971163932",
+"official": "Acondicionador Bonacure Repair Rescue+ 200ml",
+"code": "3069118",
+"img": "media/productos/sk-bonacure-repair-rescue-plus-acondicionador.webp"
 },
 {
 "id": "sk-bonacure-repair-rescue-plus-spray-acondicionador",
@@ -2032,14 +2111,14 @@ export const PRODUCTS = [
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Acondicionador en spray sin aclarado para cabello dañado",
-"desc": "Acondicionador ligero en spray que se deja puesto, pensado para cabello dañado. Desenreda al momento y deja el pelo suave e hidratado durante 24 horas, además de protegerlo del calor del secador.",
+"desc": "Acondicionador en spray sin aclarado para cabello dañado. Desenreda al instante, mantiene el pelo hidratado 24 horas y ayuda a reparar los puentes del cabello en cada uso, según la marca.",
 "benefits": [
 "Desenreda al instante y mejora la peinabilidad",
 "Hasta un 65 % menos de encrespamiento y un 95 % menos de rotura frente al cabello sin tratar, según la marca",
 "Protege del calor del secador hasta 230 °C",
 "Fórmula vegana"
 ],
-"use": "Agitar y vaporizar por secciones (8-10 pulsaciones) sobre el cabello secado con toalla; no aclarar.",
+"use": "Agita bien y pulveriza por secciones sobre el pelo secado con toalla. No aclares y peina como siempre.",
 "facts": {
 "Vegano": "sí",
 "Aclarado": "no",
@@ -2052,8 +2131,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/spray-acondicionador.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069123",
+"confirm": [],
+"gtin": "4067971164137",
+"official": "Spray Acondicionador Bonacure Repair Rescue+ 200ml",
+"code": "3069123",
+"img": "media/productos/sk-bonacure-repair-rescue-plus-spray-acondicionador.webp"
 },
 {
 "id": "sk-bonacure-color-freeze-acondicionador",
@@ -2065,14 +2148,14 @@ export const PRODUCTS = [
 "price": 12.99,
 "priceSrc": "Druni",
 "short": "Acondicionador pH 4.5 que protege el color del cabello teñido",
-"desc": "Acondicionador para cabello teñido o con mechas. Trabaja a pH 4.5 para mantener los pigmentos sellados dentro de la fibra y evitar que el color se apague. Suaviza y desenreda el pelo coloreado.",
+"desc": "Acondicionador suave para cabello teñido y poroso. Desenreda, facilita el peinado y devuelve al pelo su pH óptimo para sellar los pigmentos y evitar que el color se pierda.",
 "benefits": [
 "Ayuda a sellar los pigmentos gracias a la tecnología pH 4.5",
 "Desenreda y suaviza el cabello coloreado",
 "Realza el brillo del color",
 "Fórmula vegana"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 2 minutos y aclara.",
 "facts": {
 "Vegano": "sí",
 "pH": "4.5"
@@ -2083,7 +2166,11 @@ export const PRODUCTS = [
 ],
 "colors": [],
 "url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078155",
-"confirm": []
+"confirm": [],
+"gtin": "4067971178073",
+"official": "Bonacure Color Freeze Acondicionador 200ml",
+"code": "3078155",
+"img": "media/productos/sk-bonacure-color-freeze-acondicionador.webp"
 },
 {
 "id": "sk-bonacure-color-freeze-spray-acondicionador",
@@ -2095,14 +2182,14 @@ export const PRODUCTS = [
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Spray sin aclarado que desenreda y reaviva el color",
-"desc": "Acondicionador en spray sin aclarado para cabello coloreado o con mechas que tiende a perder intensidad. Lleva el cabello a su pH óptimo de 4.5 para sellar los pigmentos y añade protección frente al secador.",
+"desc": "Acondicionador ligero en spray, sin aclarado y con protección térmica, para cabello teñido. Desenreda y ayuda a sellar los pigmentos para que el color no se apague.",
 "benefits": [
 "Desenreda al instante y mejora la peinabilidad",
 "Reaviva los colores apagados y aporta brillo",
 "Protección térmica frente al secador",
 "Fórmula vegana"
 ],
-"use": "Agitar, vaporizar por secciones sobre el cabello secado con toalla y no aclarar.",
+"use": "Agita bien y pulveriza por secciones sobre el pelo secado con toalla. No aclares y peina como siempre.",
 "facts": {
 "Vegano": "sí",
 "pH": "4.5",
@@ -2115,8 +2202,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/color-freeze/spray-acondicionador.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078158",
+"confirm": [],
+"gtin": "4067971178479",
+"official": "Bonacure Color Freeze Spray Acondicionador 200ml",
+"code": "3078158",
+"img": "media/productos/sk-bonacure-color-freeze-spray-acondicionador.webp"
 },
 {
 "id": "sk-bonacure-moisture-kick-acondicionador",
@@ -2128,14 +2219,14 @@ export const PRODUCTS = [
 "price": null,
 "priceSrc": "",
 "short": "Acondicionador hidratante ligero para cabello normal a seco",
-"desc": "Acondicionador ligero para cabello de normal a seco u ondulado. Su complejo hidratante con aloe vera repone el nivel de agua del cabello sin apelmazar. Pertenece a la versión renovada de Moisture Kick.",
+"desc": "Acondicionador hidratante y ligero con aloe vera, para cabello normal a seco, quebradizo u ondulado. Acondiciona con delicadeza y ayuda a recuperar la hidratación. Sin siliconas ni colorantes artificiales.",
 "benefits": [
 "Sensación de cabello ligero e hidratado hasta 72 horas, según la marca",
 "Desenreda sin aportar peso",
 "Sin siliconas ni colorantes artificiales",
 "Fórmula vegana"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Aclara bien a los 2 minutos.",
 "facts": {
 "Vegano": "sí",
 "Sin": "siliconas, colorantes artificiales",
@@ -2145,10 +2236,14 @@ export const PRODUCTS = [
 "hidratar"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/moisture-kick/acondicionador.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3078188",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971109732",
+"official": "Bonacure Moisture Kick Acondicionador 200ml",
+"code": "3078188",
+"img": "media/productos/sk-bonacure-moisture-kick-acondicionador.webp"
 },
 {
 "id": "sk-bonacure-moisture-kick-spray-acondicionador",
@@ -2160,14 +2255,14 @@ export const PRODUCTS = [
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Spray hidratante sin aclarado para cabello seco o rizado",
-"desc": "Acondicionador ligero en spray, sin aclarado, para cabello de normal a seco, texturizado o rizado. Desenreda y aporta hidratación inmediata con glicerol y aloe vera, y protege del calor del secador.",
+"desc": "Acondicionador en spray sin aclarado para cabello normal a seco, quebradizo o rizado. Hidrata y acondiciona al instante y ayuda al pelo a retener la hidratación sin perder ligereza.",
 "benefits": [
 "Desenreda e hidrata al momento",
 "Sensación de ligereza hasta 48 horas, según la marca",
 "Protección frente al secador hasta 230 °C",
 "Fórmula vegana"
 ],
-"use": "Agitar, vaporizar 8-10 veces por secciones sobre el cabello secado con toalla y no aclarar.",
+"use": "Agita bien y pulveriza por secciones sobre el pelo secado con toalla. No aclares y peina como siempre.",
 "facts": {
 "Vegano": "sí",
 "Aclarado": "no",
@@ -2180,8 +2275,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/moisture-kick/spray-acondicionador.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3078159",
+"confirm": [],
+"gtin": "4067971178431",
+"official": "Bonacure Moisture Kick Spray Acondicionador 200ml",
+"code": "3078159",
+"img": "media/productos/sk-bonacure-moisture-kick-spray-acondicionador.webp"
 },
 {
 "id": "sk-bonacure-volume-boost-gelatina-acondicionadora",
@@ -2193,14 +2292,14 @@ export const PRODUCTS = [
 "price": 12.99,
 "priceSrc": "Druni",
 "short": "Acondicionador en gel muy ligero para cabello fino",
-"desc": "Acondicionador de textura gel, muy ligero, para cabello fino y frágil. Desenreda y devuelve elasticidad sin restar volumen, y ayuda a evitar la electricidad estática.",
+"desc": "Acondicionador ligero en textura de gelatina para cabello fino. Desenreda y acondiciona sin peso, para devolver la elasticidad y dar más volumen. Vegano y sin colorantes artificiales.",
 "benefits": [
 "Desenreda sin apelmazar",
 "Mejora la peinabilidad",
 "Ayuda a prevenir la electricidad estática",
 "Acompaña el efecto volumen de la gama (hasta 48 horas)"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 2 minutos y aclara.",
 "facts": {
 "Vegano": "sí",
 "Ingrediente clave": "creatina"
@@ -2209,8 +2308,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/volume-boost/gelatina-acondicionadora.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Potenciador-de-volumen/p/3078160",
+"confirm": [],
+"gtin": "4067971178516",
+"official": "Bonacure Volume Boost Gelatina Acondicionadora 200ml",
+"code": "3078160",
+"img": "media/productos/sk-bonacure-volume-boost-gelatina-acondicionadora.webp"
 },
 {
 "id": "sk-bonacure-frizz-away-acondicionador",
@@ -2278,20 +2381,20 @@ export const PRODUCTS = [
 "id": "sk-fibre-clinix-fortify-acondicionador",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Fortify Acondicionador Fortificante",
+"name": "Fibre Clinix Acondicionador Fortificante",
 "cat": "acondicionador",
 "size": "250 ml",
 "price": 25.2,
 "priceSrc": "Keshop",
 "short": "Acondicionador con multipéptidos para cabello dañado",
-"desc": "Acondicionador de cuidado en casa para cabello dañado o muy procesado. Formulado con multipéptidos y tecnología BondXtend, suaviza la fibra y mejora su resistencia para prolongar el resultado del servicio de salón.",
+"desc": "Acondicionador reparador para cabello dañado y muy procesado. Con tecnología BondXtend y multipéptidos: desenreda, suaviza y sella la superficie del pelo.",
 "benefits": [
 "Hasta un 83 % menos de rotura frente al cabello sin tratar, según la marca (gama Fortify)",
 "Suaviza y mejora la resistencia",
 "Con multipéptidos",
 "Tecnología BondXtend"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Aplica en medios y puntas con el pelo húmedo, deja actuar 2 minutos y aclara.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "multipéptidos"
@@ -2300,29 +2403,33 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/Schwarzkopf-fortify-fibre-clinix/fortify-conditioner-250-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Fortify/p/3063125",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971068404",
+"official": "Fibre Clinix Acondicionador Fortificante 250ml",
+"code": "3063125",
+"img": "media/productos/sk-fibre-clinix-fortify-acondicionador.webp"
 },
 {
 "id": "sk-fibre-clinix-hydrate-acondicionador",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Hydrate Acondicionador Hidratante",
+"name": "Fibre Clinix Acondicionador Hidratante",
 "cat": "acondicionador",
 "size": "250 ml",
 "price": 25.2,
 "priceSrc": "Keshop",
 "short": "Acondicionador hidratante que suaviza sin apelmazar",
-"desc": "Acondicionador para cabello seco y quebradizo. Suaviza sin restar ligereza y aporta hidratación con electrolitos y tecnología BondXtend.",
+"desc": "Acondicionador hidratante y reparador para cabello seco y quebradizo. Con tecnología BondXtend y electrolitos: desenreda, suaviza y ayuda a retener la hidratación.",
 "benefits": [
 "Suaviza sin apelmazar",
 "Sensación de hidratación durante 48 horas, según la marca (gama Hydrate)",
 "Con electrolitos",
 "Tecnología BondXtend"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Aplica en medios y puntas con el pelo húmedo, deja actuar 2 minutos y aclara.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "electrolitos"
@@ -2331,29 +2438,33 @@ export const PRODUCTS = [
 "hidratar"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/schwarzkopf-hydrate-fibre-clinix/hydrate-conditioner-250-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Hydrate/p/3063129",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971068602",
+"official": "Fibre Clinix Acondicionador Hidratante 250ml",
+"code": "3063129",
+"img": "media/productos/sk-fibre-clinix-hydrate-acondicionador.webp"
 },
 {
 "id": "sk-fibre-clinix-vibrancy-acondicionador",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Vibrancy Acondicionador Color Radiante",
+"name": "Fibre Clinix Acondicionador Color Radiante",
 "cat": "acondicionador",
 "size": "250 ml",
 "price": 25.2,
 "priceSrc": "Keshop",
 "short": "Acondicionador con AHA para cabello teñido",
-"desc": "Acondicionador para cabello coloreado. Con AHA y tecnología BondXtend, suaviza la superficie del cabello y ayuda a mantener el color vivo y brillante.",
+"desc": "Acondicionador reparador para cabello teñido. Con tecnología BondXtend y ácidos AHA: desenreda, facilita el peinado y protege la intensidad del color.",
 "benefits": [
 "Ayuda a prolongar la intensidad del color",
 "Color y brillo 4 veces más intensos frente al cabello sin tratar, según la marca (gama Vibrancy)",
 "Suaviza y desenreda",
 "Tecnología BondXtend"
 ],
-"use": "Tras el champú, repartir por medios y puntas, dejar actuar un par de minutos y aclarar.",
+"use": "Aplica en medios y puntas con el pelo húmedo, deja actuar 2 minutos y aclara.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "AHA (alfahidroxiácidos)"
@@ -2363,10 +2474,14 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/schwarzkopf-vibrancy-fibre-clinix/vibrancy-conditioner-250-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Vibrancy/p/3063133",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971068800",
+"official": "Fibre Clinix Acondicionador Color Radiante 250ml",
+"code": "3063133",
+"img": "media/productos/sk-fibre-clinix-vibrancy-acondicionador.webp"
 },
 {
 "id": "sk-blondme-acondicionador-nutritivo-bond-repair",
@@ -2378,13 +2493,13 @@ export const PRODUCTS = [
 "price": 21.9,
 "priceSrc": "Keshop",
 "short": "Acondicionador nutritivo para cabello rubio o aclarado",
-"desc": "Acondicionador para cabello rubio, decolorado o con mechas. Nutre y desenreda con la tecnología Bond Repair de la gama, pensada para reforzar el cabello aclarado.",
+"desc": "Acondicionador para cabello rubio que nutre y desenreda al instante sin apelmazar. Con tecnología Bond Repair, que refuerza el pelo creando puentes internos.",
 "benefits": [
 "Nutre y desenreda el cabello rubio",
 "Tecnología Bond Repair",
 "Vegano y certificado por PETA"
 ],
-"use": "Repartir de forma uniforme sobre el cabello secado con toalla, dejar actuar unos minutos y aclarar.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar 2 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -2395,11 +2510,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/blondme/bond-repair-nourishing-conditioner.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair/p/3114104",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971081861",
+"official": "Acondicionador Nutritivo Bond Repair de BLONDME 250ml",
+"code": "3114104",
+"img": "media/productos/sk-blondme-acondicionador-nutritivo-bond-repair.webp"
 },
 {
 "id": "sk-blondme-acondicionador-morado-bond-repair",
@@ -2411,14 +2529,14 @@ export const PRODUCTS = [
 "price": 21.9,
 "priceSrc": "Keshop",
 "short": "Acondicionador morado que neutraliza los tonos amarillos",
-"desc": "Acondicionador con pigmento morado para rubios fríos. Neutraliza los matices amarillos, aporta brillo y refuerza el cabello con la tecnología Bond Repair.",
+"desc": "Acondicionador violeta para rubios. Neutraliza el tono amarillo, frena la calidez y desenreda al instante de medios a puntas, dejando el pelo sedoso.",
 "benefits": [
 "Neutraliza los tonos amarillos",
 "Aporta brillo",
 "Cabello 5 veces más fuerte tras un uso, según la marca",
 "Vegano y certificado por PETA"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 2 a 5 minutos y aclarar bien.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 2 a 5 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -2430,10 +2548,14 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/BLONDME-Bond-Repair-Purple/p/3119739",
+"url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair-Morado/p/3119739",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971082066",
+"official": "Acondicionador Morado Bond Repair de BLONDME 250ml",
+"code": "3119739",
+"img": "media/productos/sk-blondme-acondicionador-morado-bond-repair.webp"
 },
 {
 "id": "sk-blondme-spray-acondicionador-morado-bond-repair",
@@ -2445,14 +2567,14 @@ export const PRODUCTS = [
 "price": 21.9,
 "priceSrc": "Coserty",
 "short": "Spray morado sin aclarado que desenreda y matiza",
-"desc": "Acondicionador en spray sin aclarado para cabello rubio. Desenreda al instante y neutraliza los matices amarillos entre lavados.",
+"desc": "Acondicionador violeta en spray, sin aclarado. Neutraliza el tono amarillo, desenreda al instante y deja un brillo plateado.",
 "benefits": [
 "Desenreda al instante",
 "Neutraliza los tonos amarillos",
 "Cabello 10 veces más fuerte tras un uso, según la marca",
 "Vegano y certificado por PETA"
 ],
-"use": "Agitar bien, vaporizar sobre el cabello secado con toalla o seco y no aclarar.",
+"use": "Agita bien y pulveriza de manera uniforme sobre el pelo secado con toalla o seco. No aclares y peina como quieras.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -2463,10 +2585,14 @@ export const PRODUCTS = [
 "rubio"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/BLONDME-Bond-Repair-Purple/p/3080912",
+"url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair-Morado/p/3080912",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971181332",
+"official": "Spray Acondicionador Morado Bond Repair de BLONDME 150ml",
+"code": "3080912",
+"img": "media/productos/sk-blondme-spray-acondicionador-morado-bond-repair.webp"
 },
 {
 "id": "sk-bonacure-repair-rescue-plus-tratamiento",
@@ -2478,14 +2604,14 @@ export const PRODUCTS = [
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Mascarilla reparadora intensiva para cabello dañado",
-"desc": "Tratamiento con aclarado, tipo mascarilla, para cabello dañado. Trabaja con el Peptide Bond Complex de la gama para devolver fuerza y elasticidad a la fibra. Es el paso intensivo de la rutina Repair Rescue+.",
+"desc": "Mascarilla de cuidado intenso para cabello dañado. Actúa desde el interior de la fibra y ayuda a reparar hasta el 90 % del daño en cada uso, según la marca: el pelo recupera fuerza, elasticidad y un aspecto más sano.",
 "benefits": [
 "Repara el daño hasta un 90 % en cada uso, según la marca",
 "Devuelve fuerza y elasticidad",
 "Ayuda a reducir la rotura",
 "Fórmula vegana"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar hasta 10 minutos y aclarar bien.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 10 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Tecnología": "Peptide Bond Complex",
@@ -2495,10 +2621,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/tratamiento.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069121",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971164052",
+"official": "Tratamiento Bonacure Repair Rescue+ 200ml",
+"code": "3069121",
+"img": "media/productos/sk-bonacure-repair-rescue-plus-tratamiento.webp"
 },
 {
 "id": "sk-bonacure-color-freeze-tratamiento",
@@ -2510,14 +2640,14 @@ export const PRODUCTS = [
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Mascarilla intensiva pH 4.5 para cabello teñido",
-"desc": "Tratamiento cremoso con aclarado para cabello coloreado o con mechas. Nutre y repara en profundidad mientras ayuda a mantener el pH 4.5 que fija los pigmentos. Es el cuidado intensivo de la gama Color Freeze.",
+"desc": "Mascarilla en crema de cuidado intensivo para cabello teñido. Su fórmula renovada con el complejo Care Boost acondiciona en profundidad sin restar ligereza al pelo. Vegana.",
 "benefits": [
 "Cuidado intensivo para cabello teñido",
 "Tecnología pH 4.5 que ayuda a retener el color",
 "Deja el cabello suave y con brillo",
 "Fórmula vegana"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar unos minutos y aclarar bien.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 10 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "pH": "4.5"
@@ -2528,10 +2658,12 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/BC-Core-Color-Freeze/p/3078185",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Fijaci%C3%B3n-del-color/p/3078185",
+"confirm": [],
+"gtin": "4067971178110",
+"official": "Bonacure Color Freeze Tratamiento 200ml",
+"code": "3078185",
+"img": "media/productos/sk-bonacure-color-freeze-tratamiento.webp"
 },
 {
 "id": "sk-bonacure-moisture-kick-tratamiento",
@@ -2543,14 +2675,14 @@ export const PRODUCTS = [
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Mascarilla hidratante intensiva para cabello seco o rizado",
-"desc": "Tratamiento intensivo con aclarado para cabello de normal a seco, rizado o quebradizo. Su fórmula con glicerol y una alternativa vegana a la queratina ayuda a retener la hidratación y mejora la elasticidad.",
+"desc": "Mascarilla de hidratación profunda para cabello normal a seco, quebradizo o rizado. Su fórmula renovada con el complejo Care Boost acondiciona a fondo y deja el pelo ligero.",
 "benefits": [
 "Cabello hidratado hasta 48 horas, según la marca",
 "Mejora la elasticidad",
 "Nutre el cabello seco, rizado o quebradizo",
 "Fórmula vegana"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar unos minutos y aclarar bien.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 10 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Ingredientes clave": "glicerol, alternativa vegana a la queratina"
@@ -2560,10 +2692,12 @@ export const PRODUCTS = [
 "rizos-naturales"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3013349",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3078194",
+"confirm": [],
+"gtin": "4067971110257",
+"official": "Bonacure Moisture Kick Tratamiento 200ml",
+"code": "3078194",
+"img": "media/productos/sk-bonacure-moisture-kick-tratamiento.webp"
 },
 {
 "id": "sk-bonacure-frizz-away-tratamiento",
@@ -2633,20 +2767,20 @@ export const PRODUCTS = [
 "id": "sk-fibre-clinix-fortify-tratamiento",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Fortify Tratamiento Fortificante",
+"name": "Fibre Clinix Tratamiento Fortificante",
 "cat": "mascarilla",
 "size": "250 ml",
 "price": 31.25,
 "priceSrc": "Keshop",
 "short": "Mascarilla fortificante para cabello dañado y sobreprocesado",
-"desc": "Tratamiento con aclarado para cabello dañado o sobreprocesado. Acondiciona y nutre en profundidad con multipéptidos y tecnología BondXtend.",
+"desc": "Mascarilla reparadora para cabello dañado y muy procesado. Con tecnología BondXtend y multipéptidos: nutre intensamente y fortalece el pelo en profundidad.",
 "benefits": [
 "Acondiciona y nutre en profundidad",
 "Hasta un 83 % menos de rotura frente al cabello sin tratar, según la marca (gama Fortify)",
 "Con multipéptidos",
 "Tecnología BondXtend"
 ],
-"use": "Tras el champú, aplicar en medios y puntas, dejar actuar unos minutos y aclarar.",
+"use": "Aplica de 15 a 25 g (el tamaño de una ciruela) en medios y puntas con el pelo húmedo. Deja actuar hasta 10 minutos y aclara bien.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "multipéptidos"
@@ -2655,30 +2789,33 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/Schwarzkopf-fortify-fibre-clinix/fortify-treatment-250-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Fortify/p/3063128",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971068527",
+"official": "Fibre Clinix Tratamiento Fortificante 250ml",
+"code": "3063128",
+"img": "media/productos/sk-fibre-clinix-fortify-tratamiento.webp"
 },
 {
 "id": "sk-fibre-clinix-hydrate-tratamiento",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Hydrate Tratamiento Hidratante",
+"name": "Fibre Clinix Tratamiento Hidratante",
 "cat": "mascarilla",
 "size": "250 ml",
 "price": 31.25,
 "priceSrc": "Keshop",
 "short": "Mascarilla de hidratación intensa para cabello seco",
-"desc": "Tratamiento con aclarado para cabello seco y quebradizo. Hidrata intensamente y mejora la elasticidad con electrolitos y tecnología BondXtend.",
+"desc": "Mascarilla de hidratación intensiva para cabello seco y quebradizo. Con tecnología BondXtend y electrolitos: recarga el pelo de hidratación y lo fortalece en profundidad.",
 "benefits": [
 "Hidratación intensa",
 "Mejora la elasticidad",
 "Sensación de hidratación durante 48 horas, según la marca (gama Hydrate)",
 "Tecnología BondXtend"
 ],
-"use": "Tras el champú, aplicar en medios y puntas, dejar actuar unos minutos y aclarar.",
+"use": "Aplica de 15 a 25 g (el tamaño de una ciruela) en medios y puntas con el pelo húmedo. Deja actuar hasta 10 minutos y aclara bien.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "electrolitos"
@@ -2687,30 +2824,33 @@ export const PRODUCTS = [
 "hidratar"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/schwarzkopf-hydrate-fibre-clinix/hydrate-treatment-250-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Hydrate/p/3063132",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971068725",
+"official": "Fibre Clinix Tratamiento Hidratante 250ml",
+"code": "3063132",
+"img": "media/productos/sk-fibre-clinix-hydrate-tratamiento.webp"
 },
 {
 "id": "sk-fibre-clinix-vibrancy-tratamiento",
 "brand": "schwarzkopf",
 "line": "Fibre Clinix",
-"name": "Fibre Clinix Vibrancy Tratamiento Color Radiante",
+"name": "Fibre Clinix Tratamiento Color Radiante",
 "cat": "mascarilla",
 "size": "250 ml",
 "price": 31.25,
 "priceSrc": "Keshop",
 "short": "Mascarilla para cabello teñido que nutre y cuida el color",
-"desc": "Tratamiento con aclarado para cabello coloreado. Nutre en profundidad, protege del calor y ayuda a conservar la intensidad y el brillo del color con AHA y tecnología BondXtend.",
+"desc": "Mascarilla reparadora para cabello teñido. Con tecnología BondXtend: nutre intensamente, fortalece y realza la intensidad del color para que el resultado dure.",
 "benefits": [
 "Nutre el cabello teñido",
 "Protege del calor",
 "Color y brillo 4 veces más intensos frente al cabello sin tratar, según la marca (gama Vibrancy)",
 "Tecnología BondXtend"
 ],
-"use": "Tras el champú, aplicar en medios y puntas, dejar actuar unos minutos y aclarar.",
+"use": "Aplica de 15 a 25 g (el tamaño de una ciruela) en medios y puntas con el pelo húmedo. Deja actuar hasta 10 minutos y aclara bien.",
 "facts": {
 "Tecnología": "BondXtend",
 "Ingrediente clave": "AHA (alfahidroxiácidos)"
@@ -2721,11 +2861,14 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/schwarzkopf-vibrancy-fibre-clinix/vibrancy-treatment-250-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Vibrancy/p/3063136",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971068923",
+"official": "Fibre Clinix Tratamiento Color Radiante 250ml",
+"code": "3063136",
+"img": "media/productos/sk-fibre-clinix-vibrancy-tratamiento.webp"
 },
 {
 "id": "sk-blondme-tratamiento-nutritivo-bond-repair",
@@ -2737,14 +2880,14 @@ export const PRODUCTS = [
 "price": 26.9,
 "priceSrc": "Keshop",
 "short": "Mascarilla nutritiva que cuida el rubio sin apelmazar",
-"desc": "Mascarilla intensiva para cabello rubio o aclarado. Nutre e hidrata en profundidad sin restar ligereza y alisa la superficie del cabello poroso.",
+"desc": "Mascarilla para cabello rubio que nutre en profundidad sin apelmazar y suaviza la fibra porosa. Con tecnología Bond Repair, que refuerza el pelo creando puentes internos.",
 "benefits": [
 "Hasta un 95 % menos de rotura al peinar frente al cabello dañado sin tratar, según la marca",
 "Nutre en profundidad sin apelmazar",
 "Suaviza el cabello poroso",
 "Vegano y certificado por PETA"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar bien.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 5 a 10 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -2758,9 +2901,12 @@ export const PRODUCTS = [
 "colors": [],
 "url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair/p/3114107",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971081465",
+"official": "Tratamiento Nutritivo Bond Repair de BLONDME 200ml",
+"code": "3114107",
+"img": "media/productos/sk-blondme-tratamiento-nutritivo-bond-repair.webp"
 },
 {
 "id": "sk-blondme-tratamiento-morado-bond-repair",
@@ -2772,14 +2918,14 @@ export const PRODUCTS = [
 "price": 22.1,
 "priceSrc": "Notino",
 "short": "Mascarilla morada que matiza y nutre el rubio",
-"desc": "Mascarilla con pigmentos fríos para cabello rubio. Neutraliza los matices amarillos, ayuda a evitar que el tono se vuelva cálido y nutre en profundidad, facilitando el desenredado.",
+"desc": "Mascarilla violeta para rubios. Neutraliza el tono amarillo, frena la calidez y nutre en profundidad, con aceite de almendras y pigmentos fríos que mantienen el rubio nítido.",
 "benefits": [
 "Neutraliza los tonos amarillos y mantiene el rubio frío",
 "Nutre en profundidad",
 "Cabello 7 veces más fuerte tras un uso, según la marca",
 "Vegano y certificado por PETA"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar bien.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 5 a 10 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -2794,7 +2940,11 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bond-Repair-Morado/p/3119698",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971081946",
+"official": "Tratamiento Morado Bond Repair de BLONDME 200ml",
+"code": "3119698",
+"img": "media/productos/sk-blondme-tratamiento-morado-bond-repair.webp"
 },
 {
 "id": "sk-blondme-tratamiento-reparador-intensivo-bondfinity",
@@ -2806,14 +2956,14 @@ export const PRODUCTS = [
 "price": 18.5,
 "priceSrc": "Notino",
 "short": "Mascarilla de reparación profunda para rubios dañados",
-"desc": "Mascarilla de la línea Blonde Essentials Bondfinity para cabello rubio o decolorado dañado. Repara en profundidad y ayuda a evitar la rotura y la pérdida de queratina.",
+"desc": "Mascarilla de reparación profunda para cabello rubio y aclarado. Con la tecnología Bondfinity, que crea puentes resistentes y sella la queratina del propio cabello, repara y fortalece sin apelmazar.",
 "benefits": [
 "Cabello hasta 20 veces más fuerte tras un uso, según la marca",
 "Ayuda a prevenir la rotura y la pérdida de queratina",
 "Tecnología Bondfinity",
 "Vegano y certificado por PETA"
 ],
-"use": "Aplicar sobre el cabello secado con toalla, dejar actuar de 5 a 10 minutos y aclarar bien.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 5 a 10 minutos y aclara bien.",
 "facts": {
 "Vegano": "sí",
 "Certificación": "PETA",
@@ -2825,10 +2975,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.notino.es/schwarzkopf-professional/blondme-bondfinity-deep-repair-mask-mascarilla-de-regeneracion-profunda/",
+"url": "https://shop.schwarzkopf-professional.es/es/c/BLONDME-Bondfinity/p/3119752",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971081540",
+"official": "Tratamiento Reparador Intensivo Bondfinity de BLONDME 200ml",
+"code": "3119752",
+"img": "media/productos/sk-blondme-tratamiento-reparador-intensivo-bondfinity.webp"
 },
 {
 "id": "sk-chroma-id-bonding-color-mask",
@@ -2840,14 +2994,14 @@ export const PRODUCTS = [
 "price": 30.0,
 "priceSrc": "Coserty",
 "short": "Mascarilla de color semipermanente con tecnología bonding",
-"desc": "Mascarilla de color semipermanente que matiza, intensifica o refresca el tono entre coloraciones. Incorpora tecnología bonding y deja brillo inmediato. Se vende en tonos naturales, pastel e intensos, además de una versión Clear sin pigmento.",
+"desc": "Mascarilla de color semipermanente que refresca y realza el tono entre visitas al salón, a la vez que acondiciona en profundidad y da brillo al instante. Hay varios tonos: cada uno sirve para una base de color distinta.",
 "benefits": [
 "Refresca y matiza el color de forma temporal",
 "Brillo inmediato",
 "Tecnología bonding integrada",
 "Fórmula vegana"
 ],
-"use": "Aplicar con guantes sobre el cabello lavado y secado con toalla, dejar de 3 a 5 minutos para refrescar (más tiempo para un tono intenso) y aclarar.",
+"use": "Usa guantes y protege la ropa, la piel y las superficies para que no se manchen. Sigue las instrucciones del envase para el tiempo de pose.",
 "facts": {
 "Vegano": "sí",
 "Tipo": "color semipermanente",
@@ -2876,9 +3030,12 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Chroma-ID/p/3050801",
 "confirm": [
 "price",
-"colors",
-"use"
-]
+"colors"
+],
+"gtin": "4045787983494",
+"official": "Chroma ID Bonding Color Mask 7-77 300ml",
+"code": "3050801",
+"img": "media/productos/sk-chroma-id-bonding-color-mask.webp"
 },
 {
 "id": "ghd-rehab-split-end-sealer",
@@ -3007,13 +3164,13 @@ export const PRODUCTS = [
 "price": 14.95,
 "priceSrc": "Primor",
 "short": "Tratamiento líquido que repara y da brillo de espejo",
-"desc": "Tratamiento concentrado que se vuelve crema al masajearlo. Refuerza los puentes del cabello y devuelve el brillo al pelo poroso o apagado. Sustituye al acondicionador.",
+"desc": "Tratamiento líquido concentrado que repara y refuerza los puentes del cabello y alisa la cutícula al momento. Potencia el brillo hasta un 150 %, según la marca, y deja un acabado luminoso.",
 "benefits": [
 "Hasta un 95 % menos de rotura, según la marca",
 "Hasta un 150 % más de brillo, según la marca",
 "Vegano y sin siliconas"
 ],
-"use": "Tras el champú, aplica 20 ml en medios y puntas, masajea hasta que haga crema y aclara.",
+"use": "Aplica 20 ml en medios y puntas con el pelo húmedo. Masajea hasta que se convierta en crema y aclara bien.",
 "facts": {
 "Vegano": "sí"
 },
@@ -3022,26 +3179,30 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/repair-rescue/shine-treatment.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069127",
+"confirm": [],
+"gtin": "4067971164298",
+"official": "Tratamiento Iluminador Bonacure Repair Rescue+ 200ml",
+"code": "3069127",
+"img": "media/productos/sk-repair-rescue-iluminador.webp"
 },
 {
 "id": "sk-repair-rescue-puntas",
 "brand": "schwarzkopf",
 "line": "Bonacure Repair Rescue+",
-"name": "Bonacure Repair Rescue Sérum Puntas Abiertas+",
+"name": "Bonacure Repair Rescue+ Sérum para Puntas Abiertas+",
 "cat": "tratamiento",
 "size": "100 ml",
 "price": 14.99,
 "priceSrc": "Druni",
 "short": "Sérum sin aclarado que sella las puntas abiertas",
-"desc": "Sérum sin aclarado para las puntas del cabello dañado y poroso. Sella las puntas abiertas y reduce la rotura.",
+"desc": "Sérum sin aclarado para las puntas del cabello dañado. Penetra en la fibra para ayudar a repararla y sella hasta el 90 % de las puntas abiertas en cada uso, según la marca.",
 "benefits": [
 "Sella las puntas abiertas",
 "Reduce la rotura",
 "Sin aclarado"
 ],
-"use": "Con el pelo secado con toalla, aplica en las puntas y peina. No aclares.",
+"use": "Reparte de manera uniforme sobre el pelo secado con toalla, sin aclarar, y peina como siempre.",
 "facts": {
 "Vegano": "sí"
 },
@@ -3049,10 +3210,14 @@ export const PRODUCTS = [
 "reparar"
 ],
 "colors": [],
-"url": "https://www.druni.es/repair-rescue-bonacure-serum-puntas-abiertas",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Reparaci%C3%B3n-Intensiva/p/3069124",
 "confirm": [
 "benefits"
-]
+],
+"gtin": "4067971164175",
+"official": "Sérum para Puntas Abiertas+ Bonacure Repair Rescue+ 100ml",
+"code": "3069124",
+"img": "media/productos/sk-repair-rescue-puntas.webp"
 },
 {
 "id": "sk-moisture-kick-serum",
@@ -3064,13 +3229,13 @@ export const PRODUCTS = [
 "price": 12.95,
 "priceSrc": "Primor",
 "short": "Sérum ligero que hidrata y controla el encrespamiento",
-"desc": "Sérum sin aclarado para cabello normal a seco u ondulado. Hidrata y ayuda a controlar el encrespamiento.",
+"desc": "Sérum hialurónico muy ligero y de absorción rápida para cabello normal a seco y ondulado. Mantiene la sensación de hidratación y suaviza la fibra; funciona mejor aún con el champú o el acondicionador Moisture Kick.",
 "benefits": [
 "2 % de ácido hialurónico",
 "Hidratación hasta 72 horas, según la marca",
 "Vegano"
 ],
-"use": "Con el pelo secado con toalla, aplica en medios y puntas. No aclares.",
+"use": "Aplica en medios y puntas con el pelo secado con toalla, masajea suavemente y peina.",
 "facts": {
 "Ácido hialurónico": "2 %"
 },
@@ -3079,8 +3244,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/moisture-kick/hyaluronic-serum.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Hidrataci%C3%B3n-Intensiva/p/3078190",
+"confirm": [],
+"gtin": "4067971110332",
+"official": "Bonacure Moisture Kick Sérum Hialurónico 50ml",
+"code": "3078190",
+"img": "media/productos/sk-moisture-kick-serum.webp"
 },
 {
 "id": "sk-scalp-clinix-serum-anticaida",
@@ -3092,13 +3261,13 @@ export const PRODUCTS = [
 "price": 28.65,
 "priceSrc": "Coserty",
 "short": "Sérum en monodosis para cabello con tendencia a la caída",
-"desc": "Tratamiento para el cuero cabelludo en siete monodosis de 10 ml, indicado para cabello debilitado. Es la pareja del champú anticaída: usados juntos de forma regular, la marca declara una reducción de la caída no patológica tras seis semanas.",
+"desc": "Sérum para el cuero cabelludo que favorece la microcirculación y refuerza el folículo. Usado con regularidad junto con el Champú Anticaída, reduce la caída no patológica a las 6 semanas, según la marca.",
 "benefits": [
 "Reduce la caída no patológica tras 6 semanas junto al champú, según la marca",
 "Con tartrato de carnitina, taurina y equinácea",
 "Formato en monodosis"
 ],
-"use": "Aplicar una monodosis sobre el cuero cabelludo, masajear y no aclarar.",
+"use": "Aplica dos veces al día directamente sobre el cuero cabelludo, haciendo rayas en el pelo. Reparte, masajea y no aclares.",
 "facts": {
 "Ingredientes clave": "tartrato de carnitina, taurina, extracto de equinácea",
 "Formato": "7 monodosis de 10 ml"
@@ -3107,11 +3276,14 @@ export const PRODUCTS = [
 "cuero-cabelludo"
 ],
 "colors": [],
-"url": "https://coserty.com/es/schwarzkopf-tratamiento-antica%C3%ADda-anti-hair-loss-serum-scalp-clinix-7-x-10-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Scalp-Clinix-Anti-Hair-Loss/p/3075319",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4045787769821",
+"official": "Scalp Clinix Sérum Anticaída 7x10ml",
+"code": "3075319",
+"img": "media/productos/sk-scalp-clinix-serum-anticaida.webp"
 },
 {
 "id": "sk-bonacure-sun-protect-fluido-verano-10en1",
@@ -3123,14 +3295,14 @@ export const PRODUCTS = [
 "price": 12.0,
 "priceSrc": "Notino",
 "short": "Fluido sin aclarado con 10 beneficios para el pelo en verano",
-"desc": "Tratamiento ligero sin aclarado con aceite de coco prensado en frío, para cabello expuesto al sol. Reúne diez beneficios en un solo producto, del desenredado a la protección frente al secador, y puede aplicarse también sobre el pelo seco durante el día.",
+"desc": "Crema ligera sin aclarado para el pelo castigado por el sol, con diez beneficios en uno: entre ellos, menos rotura y encrespamiento, protección frente al secador, cuidado del color, desenredado, hidratación y sellado de puntas.",
 "benefits": [
 "Antirrotura y antiencrespamiento",
 "Hidrata, nutre y sella las puntas",
 "Protege del calor del secador y aporta brillo y suavidad",
 "Vegano, sin siliconas ni colorantes artificiales"
 ],
-"use": "Aplicar sobre el cabello húmedo antes de peinar o sobre el cabello seco durante el día; no aclarar.",
+"use": "Aplica una pequeña cantidad de manera uniforme sobre el pelo húmedo o seco. No aclares.",
 "facts": {
 "Vegano": "sí",
 "Sin": "siliconas, colorantes artificiales",
@@ -3144,10 +3316,14 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/cuidado/bonacure/sun-protect/10-in-1-summer-fluid.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Bonacure-Specialties-Protecci%C3%B3n-Solar/p/3078196",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971179872",
+"official": "Bonacure Sun Protect Fluido de Verano 10en1 100ml",
+"code": "3078196",
+"img": "media/productos/sk-bonacure-sun-protect-fluido-verano-10en1.webp"
 },
 {
 "id": "ghd-sleek-talker",
@@ -3192,24 +3368,27 @@ export const PRODUCTS = [
 "price": 28.95,
 "priceSrc": "Keshop",
 "short": "Aceite reparador ligero para pelo fino a medio",
-"desc": "Aceite multiuso y ligero para cabello fino a medio. Nutre y da brillo sin apelmazar.",
+"desc": "Aceite fluido reparador para cabello normal a fino. Con la tecnología Bondfinity, que sella la queratina del propio cabello, y un complejo de 5 aceites: da suavidad y brillo con una hidratación ligera.",
 "benefits": [
 "Tecnología de enlaces (bonding)",
 "Complejo de 5 aceites",
 "No apelmaza"
 ],
-"use": "Unas gotas en medios y puntas, en húmedo antes de secar o en seco como acabado.",
+"use": "Reparte unas gotas en las palmas. Tiene varios usos: como prechampú sobre el pelo húmedo (se aclara antes de lavar) o en medios y puntas como acabado.",
 "facts": {},
 "needs": [
 "reparar",
 "brillo"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/campaign-fibre-clinix-rl-2024",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Heroes/p/3063121",
 "confirm": [
-"price",
-"use"
-]
+"price"
+],
+"gtin": "4067971068206",
+"official": "Fibre Clinix Aceite Ligero Bondfinity 100ml",
+"code": "3063121",
+"img": "media/productos/sk-fibre-clinix-aceite-ligero.webp"
 },
 {
 "id": "sk-bonacure-frizz-away-aceite-suavizante",
@@ -3257,14 +3436,14 @@ export const PRODUCTS = [
 "price": 28.95,
 "priceSrc": "Keshop",
 "short": "Aceite en crema reparador para cabello grueso",
-"desc": "Aceite en crema multiusos con tecnología Bondfinity, orientado a cabello grueso. Su textura pasa de crema a aceite para nutrir, controlar el encrespamiento y hacer el pelo más manejable. Sirve como tratamiento prelavado, mezclado con la mascarilla como refuerzo o como acabado.",
+"desc": "Aceite reparador en crema para cabello grueso. Con tecnología Bondfinity y un complejo de 5 aceites: al frotarlo en las manos pasa de crema a aceite y deja el pelo suave, brillante e hidratado.",
 "benefits": [
 "5 veces más nutrición en cabello grueso, según la marca",
 "Reduce el encrespamiento hasta un 93 %",
 "Tres usos: prelavado, potenciador y acabado",
 "Protección térmica hasta 230 °C"
 ],
-"use": "Como acabado, repartir una pequeña cantidad por medios y puntas; también puede usarse antes del champú o mezclado con el tratamiento.",
+"use": "Frótalo en las palmas hasta que pase de crema a aceite. Tiene varios usos: como prechampú sobre el pelo húmedo (se aclara antes de lavar) o en medios y puntas como acabado.",
 "facts": {
 "Tecnología": "Bondfinity",
 "Protección térmica": "hasta 230 °C"
@@ -3278,9 +3457,12 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Fibre-Clinix-Heroes/p/3063137",
 "confirm": [
 "price",
-"facts",
-"desc"
-]
+"facts"
+],
+"gtin": "4067971069005",
+"official": "Fibre Clinix Aceite en Crema Intensivo Bondfinity 100ml",
+"code": "3063137",
+"img": "media/productos/sk-fibre-clinix-aceite-en-crema-intensivo-bondfinity.webp"
 },
 {
 "id": "sk-oil-ultime-tratamiento-acabado-argan",
@@ -3292,13 +3474,13 @@ export const PRODUCTS = [
 "price": 20.41,
 "priceSrc": "Promofarma",
 "short": "Aceite de acabado con argán para cabello normal a grueso",
-"desc": "Aceite de acabado formulado con aceite de argán purificado 100 % natural, para cabello de normal a grueso. Se aplica al final del peinado como toque de cuidado y brillo.",
+"desc": "Aceite de acabado con aceite de argán para cabello normal a grueso. Su fórmula ligera nutre, da brillo y suavidad y combate el encrespamiento sin apelmazar.",
 "benefits": [
 "Con aceite de argán purificado 100 % natural",
 "Indicado para cabello de normal a grueso",
 "Acabado suave y con brillo"
 ],
-"use": "Repartir unas gotas por medios y puntas sobre el cabello húmedo o seco; no aclarar.",
+"use": "Aplica una pequeña cantidad sobre el pelo seco o secado con toalla y peina como quieras.",
 "facts": {
 "Ingrediente clave": "aceite de argán purificado 100 % natural",
 "Aclarado": "no"
@@ -3310,9 +3492,12 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Oil-Ultime-Finishing-Oil/p/3050391",
 "confirm": [
 "price",
-"use",
 "benefits"
-]
+],
+"gtin": "4067971053844",
+"official": "Oil UltimeTratamiento de acabado de Argán 100 ml",
+"code": "3050391",
+"img": "media/productos/sk-oil-ultime-tratamiento-acabado-argan.webp"
 },
 {
 "id": "sk-osis-glow",
@@ -3324,22 +3509,26 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Sérum antiencrespamiento que aporta brillo",
-"desc": "Sérum de acabado que controla el encrespamiento, ayuda a proteger el cabello de la humedad y realza el brillo. Suaviza el pelo áspero y apagado sin apelmazarlo y facilita el peinado.",
+"desc": "Sérum de brillo antiencrespamiento. Suaviza el pelo áspero y apagado sin apelmazarlo y controla el encrespamiento y la electricidad estática.",
 "benefits": [
 "Controla el encrespamiento",
 "Realza el brillo",
 "Ayuda a proteger de la humedad",
 "No apelmaza"
 ],
-"use": "Extender unas gotas en las manos y aplicar de medios a puntas, en húmedo o en seco.",
+"use": "Aplica una pequeña cantidad sobre el pelo húmedo o seco.",
 "facts": {},
 "needs": [
 "brillo",
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-glow-50ml-30911",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Suavidad-y-Brillo/p/3066410",
+"confirm": [],
+"gtin": "4045787999754",
+"official": "OSiS Glow 50ml",
+"code": "3066410",
+"img": "media/productos/sk-osis-glow.webp"
 },
 {
 "id": "sk-osis-sparkler",
@@ -3351,14 +3540,14 @@ export const PRODUCTS = [
 "price": 10.95,
 "priceSrc": "Salontotal",
 "short": "Spray de brillo sin siliconas y sin fijación",
-"desc": "Spray de brillo sin siliconas que deja un acabado luminoso al instante sin sobrecargar el cabello. Reduce el encrespamiento, facilita el desenredado con un acondicionado ligero y protege de la humedad.",
+"desc": "Spray de brillo que reduce el encrespamiento, facilita el desenredado y protege de la humedad.",
 "benefits": [
 "Brillo inmediato",
 "Sin siliconas",
 "No sobrecarga el cabello",
 "Desenreda y acondiciona ligeramente"
 ],
-"use": "Pulverizar sobre el cabello seco a unos 30 cm como toque final.",
+"use": "Pulveriza en pequeñas dosis, a unos 30 cm, sobre el pelo seco.",
 "facts": {
 "Fijación": "sin fijación",
 "Siliconas": "no contiene",
@@ -3369,8 +3558,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/Osis%2B-Smooth-&-Shine/p/2984297",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Suavidad-y-Brillo/p/3067194",
+"confirm": [],
+"gtin": "4045787999730",
+"official": "OSiS Sparkler 300ml",
+"code": "3067194",
+"img": "media/productos/sk-osis-sparkler.webp"
 },
 {
 "id": "sk-session-label-the-serum",
@@ -3381,15 +3574,15 @@ export const PRODUCTS = [
 "size": "100 ml",
 "price": 22.8,
 "priceSrc": "Coserty",
-"short": "Aceite de acabado ligero que alisa la superficie y da brillo",
-"desc": "Aceite de acabado ligero que alisa la superficie del cabello y aporta brillo sin apelmazar. Sirve para todo tipo de cabello y ayuda a prevenir las puntas abiertas y los pelillos sueltos.",
+"short": "Sérum ligero de brillo y suavidad",
+"desc": "Sérum ligero que suaviza, da brillo y deja el pelo sedoso sin sobrecargarlo. También controla la electricidad estática, el encrespamiento y las puntas abiertas. Vegano.",
 "benefits": [
 "Suaviza y da brillo",
 "No apelmaza",
 "Ayuda a prevenir las puntas abiertas",
 "Controla los pelillos sueltos"
 ],
-"use": "Aplicar una o dos dosis en medios y puntas, sobre el cabello húmedo o seco.",
+"use": "Reparte una pequeña cantidad en las palmas y aplica de raíz a puntas, sobre el pelo húmedo o seco.",
 "facts": {
 "Fórmula": "vegana"
 },
@@ -3398,10 +3591,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/Marca/Session+Label/c/186089",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3003662",
+"confirm": [],
+"gtin": "4067971102634",
+"official": "SESSION LABEL EL SÉRUM 100ml",
+"code": "3003662",
+"img": "media/productos/sk-session-label-the-serum.webp"
 },
 {
 "id": "ghd-curly-ever-after",
@@ -3587,13 +3782,13 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Polvo matificante que levanta la raíz al instante",
-"desc": "Polvo de textura con acabado mate que da volumen y levanta la raíz. Ideal para cabello fino o medio.",
+"desc": "Polvo matificante de fijación fuerte que da agarre al instante y un volumen que aguanta.",
 "benefits": [
 "Volumen inmediato en la raíz",
 "Acabado mate",
 "Fijación fuerte"
 ],
-"use": "Agita suavemente, aplica en la raíz con el pelo seco y trabaja con los dedos.",
+"use": "Agítalo suavemente y aplícalo con los dedos sobre el pelo seco; en la raíz, para levantarla.",
 "facts": {
 "Acabado": "mate"
 },
@@ -3602,8 +3797,12 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.druni.es/polvo-matificante-capilar-schwarzkopf-fijacion-fuerte-osis-dust-it",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/2985375",
+"confirm": [],
+"gtin": "4045787936094",
+"official": "OSiS Dust It 10g",
+"code": "2985375",
+"img": "media/productos/sk-osis-dust-it.webp"
 },
 {
 "id": "sk-bonacure-moisture-kick-curl-bounce",
@@ -3646,14 +3845,14 @@ export const PRODUCTS = [
 "price": 10.95,
 "priceSrc": "Salontotal",
 "short": "Espuma de fijación extrafuerte con volumen y protección térmica",
-"desc": "Espuma de peinado de fijación extrafuerte, capaz de mantener en su sitio incluso el cabello grueso. Reduce la electricidad estática, controla el encrespamiento y protege del calor durante el secado.",
+"desc": "Espuma de fijación extrafuerte que da volumen y brillo natural, sujeta incluso el pelo más grueso y lo protege del calor del secador.",
 "benefits": [
 "Fijación extrafuerte",
 "Controla incluso el cabello grueso",
 "Reduce la estática y el encrespamiento",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Agitar, repartir una nuez de espuma sobre el cabello húmedo y secar con secador.",
+"use": "Agita bien, mantén el envase en vertical y pon la espuma en la mano. Aplica sobre el pelo húmedo y seca con secador.",
 "facts": {
 "Fijación": "extrafuerte (++++)",
 "Protección térmica": "hasta 230 ºC"
@@ -3664,8 +3863,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/volume-body/grip.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Volumen-y-Cuerpo/p/3067196",
+"confirm": [],
+"gtin": "4045787999631",
+"official": "OSiS Grip 200ml",
+"code": "3067196",
+"img": "media/productos/sk-osis-grip.webp"
 },
 {
 "id": "sk-osis-air-whip",
@@ -3677,14 +3880,14 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Espuma flexible de fijación ligera que se puede aplicar por capas",
-"desc": "Espuma ligera y flexible que da cuerpo sin dejar el pelo pegajoso ni acartonado. Admite varias capas para subir la fijación y deja un tacto más suave que OSiS Grip.",
+"desc": "Espuma flexible de fijación ligera. Hace el pelo más manejable al secarlo, lo protege del calor y se puede aplicar por capas para sumar fijación sin apelmazar.",
 "benefits": [
 "Fijación ligera y flexible",
 "Se refuerza aplicando más capas",
 "Sin efecto pegajoso ni acartonado",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Agitar, repartir la espuma sobre el cabello húmedo y secar con secador.",
+"use": "Agita bien y dispensa con el envase boca abajo. Aplica sobre el pelo húmedo y seca con secador.",
 "facts": {
 "Fijación": "ligera (+)",
 "Protección térmica": "hasta 230 ºC"
@@ -3695,10 +3898,14 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/volume-body/air-whip.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Volumen-y-Cuerpo/p/3067195",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787936254",
+"official": "OSiS Air Whip 200ml",
+"code": "3067195",
+"img": "media/productos/sk-osis-air-whip.webp"
 },
 {
 "id": "sk-osis-volume-up",
@@ -3710,14 +3917,14 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Spray voluminizador de fijación media para levantar la raíz",
-"desc": "Spray potenciador de volumen que da cuerpo desde la raíz con una fijación media. Tiene efecto antiestático, no deja residuos y protege del calor; va bien en melenas largas a las que les falta cuerpo.",
+"desc": "Spray voluminizador antiestático para melenas largas a las que les falta cuerpo y fijación. Realza la textura y da volumen.",
 "benefits": [
 "Volumen duradero desde la raíz",
 "Fijación media",
 "Efecto antiestático, sin residuos",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Pulverizar en ráfagas cortas a unos 30 cm sobre el cabello húmedo, levantando mechones, y secar con secador.",
+"use": "Pulveriza en ráfagas cortas, a unos 30 cm, mientras levantas secciones grandes de pelo.",
 "facts": {
 "Fijación": "media (++)",
 "Protección térmica": "hasta 230 ºC"
@@ -3727,10 +3934,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.druni.es/spray-voluminazador-capilar-schwarzkopf-osis-volume-up",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Volumen-y-Cuerpo/p/3067202",
+"confirm": [],
+"gtin": "4045787936292",
+"official": "OSiS Volume Up 300ml",
+"code": "3067202",
+"img": "media/productos/sk-osis-volume-up.webp"
 },
 {
 "id": "sk-osis-upload",
@@ -3742,14 +3951,14 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Crema de volumen de fijación ligera para cabello fino",
-"desc": "Crema voluminizadora de fijación ligera y nada pegajosa. Da cuerpo y sensación de más densidad a la vez que controla el encrespamiento; indicada para cabello de fino a normal.",
+"desc": "Crema voluminizadora para el secado. Da definición ligera y volumen, y sus agentes acondicionadores suavizan el pelo poroso y lo protegen del calor del secador.",
 "benefits": [
 "Crea volumen y sensación de más cuerpo",
 "Fijación ligera, no pegajosa",
 "Controla el encrespamiento",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Repartir una pequeña cantidad sobre el cabello húmedo y secar con secador y cepillo.",
+"use": "Aplica sobre el pelo húmedo y seca con secador y cepillo redondo para levantar la raíz.",
 "facts": {
 "Fijación": "ligera (+)",
 "Protección térmica": "hasta 230 ºC"
@@ -3760,8 +3969,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/volume-body/upload.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Volumen-y-Cuerpo/p/3066443",
+"confirm": [],
+"gtin": "4045787999815",
+"official": "OSiS Upload 200ml",
+"code": "3066443",
+"img": "media/productos/sk-osis-upload.webp"
 },
 {
 "id": "sk-osis-hairbody",
@@ -3773,14 +3986,14 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Spray de peinado y cuidado que da volumen natural",
-"desc": "Spray de preparación de fijación ligera que aporta volumen natural sin apelmazar. Facilita el desenredado y hace el cabello más manejable durante el secado; pensado para pelo liso que necesita cuerpo y movimiento.",
+"desc": "Spray de volumen de fijación ligera para pelo liso. Da cuerpo y movimiento natural, con efecto de mayor grosor y sin dejar el pelo pegajoso ni rígido.",
 "benefits": [
 "Volumen natural con fijación ligera",
 "No apelmaza",
 "Facilita el desenredado",
 "Mejora la manejabilidad al secar"
 ],
-"use": "Pulverizar sobre el cabello húmedo y secar con secador y cepillo redondo, o dejar secar al aire.",
+"use": "Pulveriza sobre el pelo húmedo. Seca con secador y cepillo redondo para más volumen, o deja secar al aire.",
 "facts": {
 "Fijación": "ligera (+)"
 },
@@ -3788,8 +4001,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/volume-body/hairbody.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Volumen-y-Cuerpo/p/3066421",
+"confirm": [],
+"gtin": "4045787999778",
+"official": "OSiS Hairbody 200ml",
+"code": "3066421",
+"img": "media/productos/sk-osis-hairbody.webp"
 },
 {
 "id": "sk-osis-pump-up",
@@ -3831,14 +4048,14 @@ export const PRODUCTS = [
 "price": 9.86,
 "priceSrc": "Salontotal",
 "short": "Polvo de volumen suave para melenas largas de pelo fino o normal",
-"desc": "Polvo voluminizador de tacto suave, formulado para cabello largo de densidad fina a normal. Da volumen inmediato y una textura sutil sin sensación arenosa, y mantiene el movimiento flexible.",
+"desc": "Polvo de volumen de fijación ligera, pensado para melenas largas. Da cuerpo visible y deja el pelo suave y flexible.",
 "benefits": [
 "Volumen instantáneo sin tacto arenoso",
 "Fijación ligera",
 "Textura sutil y agarre",
 "Movimiento flexible"
 ],
-"use": "Aplicar el polvo en la raíz con el cabello seco y trabajar con los dedos.",
+"use": "Agítalo suavemente, mantenlo en vertical y aplícalo sobre el pelo seco. Trabájalo con los dedos.",
 "facts": {
 "Fijación": "ligera (+)"
 },
@@ -3846,10 +4063,14 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-soft-dust-10g-13802",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Volumen-y-Cuerpo/p/3066422",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787999792",
+"official": "OSiS Soft Dust 10g",
+"code": "3066422",
+"img": "media/productos/sk-osis-soft-dust.webp"
 },
 {
 "id": "sk-osis-thrill",
@@ -3861,14 +4082,14 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Goma fibrosa elástica de fijación media con brillo",
-"desc": "Goma de fibras elásticas que separa y define mechones con una fijación media remodelable. Realza el brillo y reduce el encrespamiento y los pelillos sueltos; contiene cera de carnauba de origen natural.",
+"desc": "Goma fibrosa elástica de fijación media para marcar cualquier textura. Separa y define, se puede remoldear, da brillo y reduce el encrespamiento.",
 "benefits": [
 "Separación remodelable",
 "Fijación media",
 "Realza el brillo",
 "Reduce el encrespamiento"
 ],
-"use": "Calentar una pequeña cantidad entre las manos y moldear sobre el cabello seco.",
+"use": "Aplica una pequeña cantidad sobre el pelo húmedo o seco y peina.",
 "facts": {
 "Fijación": "media (++)",
 "Ingrediente destacado": "cera de carnauba"
@@ -3879,8 +4100,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/texture/thrill.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3067191",
+"confirm": [],
+"gtin": "4067971185361",
+"official": "OSiS Thrill 100ml",
+"code": "3067191",
+"img": "media/productos/sk-osis-thrill.webp"
 },
 {
 "id": "sk-osis-velvet",
@@ -3892,14 +4117,14 @@ export const PRODUCTS = [
 "price": 11.4,
 "priceSrc": "Notino",
 "short": "Spray de efecto cera para definición suave y brillo natural",
-"desc": "Spray ligero con efecto cera que da una definición suave y remodelable sin dejar el pelo pegajoso. Deja un tacto aterciopelado y brillo natural; recomendable en cabello fino.",
+"desc": "Spray de fijación ligera con efecto cera. Su bruma ultrafina deja el pelo aterciopelado y ligero, también el fino.",
 "benefits": [
 "Fijación ligera",
 "Definición remodelable",
 "Tacto no pegajoso",
 "Brillo natural"
 ],
-"use": "Pulverizar sobre el cabello seco y dar forma con los dedos.",
+"use": "Pulveriza sobre el pelo seco para conseguir una textura moldeable y un brillo natural.",
 "facts": {
 "Fijación": "ligera (+)"
 },
@@ -3908,8 +4133,12 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.notino.es/schwarzkopf-professional/osis-velvet-cera-de-fijacion-en-spray/",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3067201",
+"confirm": [],
+"gtin": "4045787936377",
+"official": "OSiS Velvet 200ml",
+"code": "3067201",
+"img": "media/productos/sk-osis-velvet.webp"
 },
 {
 "id": "sk-osis-flexwax",
@@ -3921,14 +4150,14 @@ export const PRODUCTS = [
 "price": 10.45,
 "priceSrc": "Salontotal",
 "short": "Cera en crema remodelable de fijación fuerte y brillo natural",
-"desc": "Cera cremosa que se puede remodelar a lo largo del día. Da una fijación fuerte con textura y buena definición, y deja un brillo natural.",
+"desc": "Cera en crema remoldeable de fijación fuerte. Realza la textura y da definición con un brillo natural.",
 "benefits": [
 "Fijación fuerte",
 "Remodelable",
 "Fijación con textura",
 "Brillo natural"
 ],
-"use": "Emulsionar una pequeña cantidad en las palmas y aplicar sobre el cabello seco.",
+"use": "Repártela en las palmas, aplícala sobre el pelo seco y peina.",
 "facts": {
 "Fijación": "fuerte (+++)"
 },
@@ -3938,7 +4167,11 @@ export const PRODUCTS = [
 ],
 "colors": [],
 "url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3064862",
-"confirm": []
+"confirm": [],
+"gtin": "4045787999327",
+"official": "OSiS Flexwax 85ml",
+"code": "3064862",
+"img": "media/productos/sk-osis-flexwax.webp"
 },
 {
 "id": "sk-osis-mess-up",
@@ -3950,14 +4183,14 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Pasta mate remodelable de fijación media para pelo corto",
-"desc": "Pasta de acabado mate y seco que crea una textura difuminada y se puede remodelar. Da agarre con movimiento flexible; funciona especialmente bien en cortes cortos y en cabello fino.",
+"desc": "Pasta mate remoldeable de fijación media, perfecta para pelo corto y looks despeinados. Deja textura seca y movimiento flexible.",
 "benefits": [
 "Acabado mate y seco",
 "Fijación media remodelable",
 "Textura difuminada",
 "Agarre con movimiento flexible"
 ],
-"use": "Calentar una pequeña cantidad entre las manos y trabajar sobre el cabello seco.",
+"use": "Frota una pequeña cantidad en las manos, aplícala sobre el pelo seco y peina.",
 "facts": {
 "Fijación": "media (++)",
 "Acabado": "mate"
@@ -3966,8 +4199,12 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-mess-up-100ml-6445",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3070008",
+"confirm": [],
+"gtin": "4045787999839",
+"official": "OSiS+ Mess Up 100 ml",
+"code": "3070008",
+"img": "media/productos/sk-osis-mess-up.webp"
 },
 {
 "id": "sk-osis-mighty-matte",
@@ -3979,14 +4216,14 @@ export const PRODUCTS = [
 "price": 11.45,
 "priceSrc": "Salontotal",
 "short": "Crema mate de fijación fuerte con textura y separación",
-"desc": "Crema de fijación fuerte que mantiene en su sitio incluso el cabello grueso con un acabado mate. Marca textura y separación, se remodela y se aplica y se lava con facilidad. Fija y matifica más que OSiS Mess Up.",
+"desc": "Crema de peinado de fijación fuerte y acabado mate. Da textura y definición y sujeta incluso el pelo más grueso.",
 "benefits": [
 "Fijación fuerte",
 "Acabado mate",
 "Textura y separación marcadas",
 "Remodelable y fácil de lavar"
 ],
-"use": "Emulsionar una pequeña cantidad en las manos y aplicar sobre el cabello seco.",
+"use": "Frota una pequeña cantidad en las manos, aplícala sobre el pelo seco y peina.",
 "facts": {
 "Fijación": "fuerte (+++)",
 "Acabado": "mate"
@@ -3995,10 +4232,14 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/Osis%2B-Texture/p/3070009",
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3070009",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787999488",
+"official": "OSiS Mighty Matte 100ml",
+"code": "3070009",
+"img": "media/productos/sk-osis-mighty-matte.webp"
 },
 {
 "id": "sk-osis-rock-hard",
@@ -4010,13 +4251,13 @@ export const PRODUCTS = [
 "price": 10.45,
 "priceSrc": "Salontotal",
 "short": "Pegamento capilar de fijación extrafuerte e inmediata",
-"desc": "Gel-pegamento de fijación extrafuerte para peinados extremos. Fija al instante y sujeta incluso el cabello más rebelde.",
+"desc": "Pegamento de peinado de fijación extrafuerte para los estilos más exigentes: fija al instante y aguanta.",
 "benefits": [
 "Fijación extrafuerte",
 "Sujeción inmediata",
 "Apto para cabellos rebeldes"
 ],
-"use": "Aplicar una pequeña cantidad sobre el cabello y dar forma con rapidez, porque fija enseguida.",
+"use": "Aplica sobre el pelo seco y peina como quieras. También se puede usar sobre el pelo húmedo.",
 "facts": {
 "Fijación": "extrafuerte (++++)"
 },
@@ -4024,10 +4265,12 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/schwarzkopf-osis-texture/osis-rock-hard-150-ml.html",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3067198",
+"confirm": [],
+"gtin": "4067971177366",
+"official": "OSiS Rock Hard 150ml",
+"code": "3067198",
+"img": "media/productos/sk-osis-rock-hard.webp"
 },
 {
 "id": "sk-osis-g-force",
@@ -4039,14 +4282,14 @@ export const PRODUCTS = [
 "price": 10.45,
 "priceSrc": "Salontotal",
 "short": "Gel de fijación extrafuerte con definición y brillo",
-"desc": "Gel clásico de fijación extrafuerte con el que se puede moldear casi cualquier estilo. Define con brillo, no deja escamas, se puede cepillar y se lava fácilmente.",
+"desc": "El gel clásico de fijación extrafuerte. Para cualquier peinado que pida definición y brillo, con un acabado sin residuos.",
 "benefits": [
 "Fijación extrafuerte",
 "Definición marcada con brillo",
 "Sin escamas",
 "Fácil de lavar"
 ],
-"use": "Repartir sobre el cabello húmedo o seco y peinar con la forma deseada.",
+"use": "Reparte la cantidad que necesites entre las palmas, aplica sobre el pelo húmedo o seco y peina.",
 "facts": {
 "Fijación": "extrafuerte (++++)"
 },
@@ -4055,10 +4298,14 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-gforce-150ml-6446",
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3066425",
 "confirm": [
 "benefits"
-]
+],
+"gtin": "4067971177328",
+"official": "OSiS G. Force 150ml",
+"code": "3066425",
+"img": "media/productos/sk-osis-g-force.webp"
 },
 {
 "id": "sk-osis-texture-craft",
@@ -4070,14 +4317,14 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Spray de textura en seco de fijación ligera para pelo largo",
-"desc": "Spray seco e invisible que da agarre, textura y volumen manteniendo un tacto suave y natural. Está formulado para melenas largas, sobre todo de cabello fino, y además protege del calor.",
+"desc": "Spray texturizante en seco para melenas largas. Da una fijación ligera y deja que el pelo se mueva con naturalidad.",
 "benefits": [
 "Textura seca con tacto suave",
 "Fijación ligera",
 "Efecto volumen",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Agitar y pulverizar sobre el cabello seco, mechón a mechón, y trabajar con los dedos.",
+"use": "Agita bien y pulveriza en pequeñas dosis, a unos 20 cm, sobre el pelo seco, levantando secciones grandes.",
 "facts": {
 "Fijación": "ligera (+)",
 "Protección térmica": "hasta 230 ºC"
@@ -4087,8 +4334,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.druni.es/spray-texturizante-capilar-schwarzkopf-seco-osis",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/OSiS%2B-Textura/p/3066427",
+"confirm": [],
+"gtin": "4045787999617",
+"official": "OSiS Texture Craft 300ml",
+"code": "3066427",
+"img": "media/productos/sk-osis-texture-craft.webp"
 },
 {
 "id": "sk-osis-bounty-balm",
@@ -4100,14 +4351,14 @@ export const PRODUCTS = [
 "price": 12.45,
 "priceSrc": "Salontotal",
 "short": "Crema para rizos y ondas que reduce el encrespamiento",
-"desc": "Crema de peinado nutritiva, sin fijación, que realza rizos y ondas reduciendo el encrespamiento y aportando brillo y suavidad. Formulada con glicerina y aceite de oliva; también ayuda a domar el cabello liso rebelde.",
+"desc": "Bálsamo para rizos y ondas. Mantiene su movimiento natural, reduce el encrespamiento y da brillo y suavidad; también calma el pelo liso rebelde y electrizado.",
 "benefits": [
 "Realza rizos y ondas",
 "Reduce el encrespamiento",
 "Aporta brillo y suavidad",
 "No deja residuos"
 ],
-"use": "Repartir sobre el cabello húmedo y secar al aire o con difusor.",
+"use": "Aplica sobre el pelo húmedo, ondulado o rizado, y define la textura con los dedos. Deja secar al aire o usa difusor.",
 "facts": {
 "Fijación": "sin fijación",
 "Ingredientes destacados": "glicerina y aceite de oliva"
@@ -4118,8 +4369,12 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://coserty.com/es/schwarzkopf-crema-para-rizos-osis-bounty-balm-150-ml",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Rizos-y-ondas/p/3076767",
+"confirm": [],
+"gtin": "4067971177694",
+"official": "OSiS Bounty Balm 150ml",
+"code": "3076767",
+"img": "media/productos/sk-osis-bounty-balm.webp"
 },
 {
 "id": "sk-osis-curl-jam",
@@ -4131,14 +4386,14 @@ export const PRODUCTS = [
 "price": 11.95,
 "priceSrc": "Salontotal",
 "short": "Gel definidor de fijación ligera para rizos muy marcados",
-"desc": "Gel para rizos de fijación ligera que realza rizos y bucles naturales y les devuelve el rebote. Mejora la manejabilidad y deja el pelo hidratado, suave y con más brillo; ideal para cabello muy rizado.",
+"desc": "Gel de definición de rizos con fijación ligera. Realza rizos y bucles, les devuelve flexibilidad y elasticidad y deja el pelo hidratado y suave, sin apelmazar.",
 "benefits": [
 "Realza rizos y bucles naturales",
 "Fijación ligera",
 "Tacto hidratado y suave",
 "Más brillo y manejabilidad"
 ],
-"use": "Aplicar sobre el cabello húmedo mechón a mechón y secar al aire o con difusor; se puede mezclar con Bounty Balm.",
+"use": "Aplica sobre el pelo húmedo y define los rizos con los dedos. Deja secar al aire o usa difusor.",
 "facts": {
 "Fijación": "ligera (+)"
 },
@@ -4147,8 +4402,12 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-curl-jam-300ml-30914",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Rizos-y-ondas/p/3079317",
+"confirm": [],
+"gtin": "4067971180779",
+"official": "OSiS Curl Jam 300ml",
+"code": "3079317",
+"img": "media/productos/sk-osis-curl-jam.webp"
 },
 {
 "id": "sk-osis-tipsy-twirl",
@@ -4160,14 +4419,14 @@ export const PRODUCTS = [
 "price": 10.75,
 "priceSrc": "Salontotal",
 "short": "Gelatina de fijación media que potencia ondas y rizos",
-"desc": "Gelatina texturizante que define ondas y rizos naturales con una fijación media. Da un volumen ligero y una definición marcada sin efecto acartonado; formulada con glicerina y polvo de algas rojas.",
+"desc": "Gelatina de rizos de fijación media. Realza la textura natural, define ondas y rizos con un volumen ligero y reduce el encrespamiento, sin tacto crujiente.",
 "benefits": [
 "Define ondas y rizos",
 "Fijación media",
 "Volumen ligero",
 "Sin efecto acartonado"
 ],
-"use": "Repartir sobre el cabello húmedo, apretar los rizos con las manos y secar al aire o con difusor.",
+"use": "Trabaja la gelatina entre las palmas, aplícala sobre el pelo húmedo y define los rizos.",
 "facts": {
 "Fijación": "media (++)",
 "Ingredientes destacados": "glicerina y polvo de algas rojas"
@@ -4177,10 +4436,14 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-tipsy-twirl-300ml-30915",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Rizos-y-ondas/p/3079348",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971180939",
+"official": "OSiS Tipsy Twirl 300ml",
+"code": "3079348",
+"img": "media/productos/sk-osis-tipsy-twirl.webp"
 },
 {
 "id": "sk-osis-curl-souffle",
@@ -4192,14 +4455,14 @@ export const PRODUCTS = [
 "price": 9.95,
 "priceSrc": "Salontotal",
 "short": "Espuma nutritiva de fijación ligera para rizos y coils",
-"desc": "Espuma moldeadora lanzada en 2026 dentro de la gama Rizos y Ondas. Define rizos y coils conservando su elasticidad y rebote, controla el encrespamiento y protege de la humedad y del calor. Contiene glicerina y manteca de karité.",
+"desc": "Espuma moldeadora de fijación ligera para rizos definidos y con memoria. Intensifica el patrón natural del rizo, da suavidad y controla el encrespamiento.",
 "benefits": [
 "Define rizos y coils con memoria de rizo",
 "Fijación ligera",
 "Controla el encrespamiento y la humedad",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Repartir la espuma sobre el cabello húmedo y secar al aire o con difusor.",
+"use": "Agita y dispensa con el envase boca abajo. Separa los rizos húmedos y aplica la espuma de la raíz a las puntas.",
 "facts": {
 "Fijación": "ligera (+)",
 "Protección térmica": "hasta 230 ºC",
@@ -4211,9 +4474,13 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-curl-souffle-200ml-60117",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Rizos-y-ondas/p/3079319",
 "confirm": [],
-"new": true
+"gtin": "4067971180816",
+"official": "OSiS Curl Soufflé 200ml",
+"code": "3079319",
+"new": true,
+"img": "media/productos/sk-osis-curl-souffle.webp"
 },
 {
 "id": "sk-osis-curl-retouch",
@@ -4225,14 +4492,14 @@ export const PRODUCTS = [
 "price": 8.1,
 "priceSrc": "Coserty",
 "short": "Spray ligero para reavivar los rizos del día siguiente",
-"desc": "Spray ligero, novedad de 2026, que refresca y redefine los rizos entre lavados. Aporta brillo, reduce el encrespamiento y deja una fijación ligera; lleva glicerina y aceite de semilla de jojoba.",
+"desc": "Spray que reaviva los rizos entre lavados. Devuelve elasticidad y definición, da brillo, controla el encrespamiento y deja una fijación ligera.",
 "benefits": [
 "Reaviva y redefine los rizos",
 "Reduce el encrespamiento",
 "Aporta brillo",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Pulverizar a unos 20 cm sobre el cabello seco y apretar suavemente los rizos con las manos.",
+"use": "Agita bien. Pulveriza con generosidad sobre el pelo húmedo, peina y define ondas y rizos; deja secar al aire.",
 "facts": {
 "Fijación": "ligera (+)",
 "Protección térmica": "hasta 230 ºC",
@@ -4244,11 +4511,15 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.coserty.com/en/products/schwarzkopf-spray-reavivador-de-rizos-osis-curl-retouch",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Rizos-y-ondas/p/3079341",
 "confirm": [
 "price"
 ],
-"new": true
+"gtin": "4067971179919",
+"official": "OSiS Curl Retouch 200ml",
+"code": "3079341",
+"new": true,
+"img": "media/productos/sk-osis-curl-retouch.webp"
 },
 {
 "id": "sk-osis-refresh-dust",
@@ -4260,13 +4531,13 @@ export const PRODUCTS = [
 "price": 10.95,
 "priceSrc": "Salontotal",
 "short": "Champú en seco que refresca la raíz y da cuerpo",
-"desc": "Champú en seco voluminizador de la gama 2nd Day. Absorbe el exceso de grasa, refresca el peinado entre lavados y aporta cuerpo y textura al cabello.",
+"desc": "Champú en seco que da volumen. Absorbe la grasa, levanta el pelo al instante y deja un acabado mate y empolvado.",
 "benefits": [
 "Absorbe el exceso de grasa",
 "Refresca el peinado entre lavados",
 "Aporta cuerpo y volumen"
 ],
-"use": "Pulverizar a unos 20 cm sobre el cabello seco, dejar actuar y masajear o cepillar.",
+"use": "Agita bien antes de usar y entre pulverizaciones. Dirige la boquilla a la raíz y aplica con pulverizaciones cortas.",
 "facts": {
 "Gama": "2nd Day Hair"
 },
@@ -4274,8 +4545,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/producto/schwarzkopf-professional-osis-refresh-dust-300ml-6442",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-2nd-Hair-Day/p/3067192",
+"confirm": [],
+"gtin": "4045787999402",
+"official": "OSiS Refresh Dust 300ml",
+"code": "3067192",
+"img": "media/productos/sk-osis-refresh-dust.webp"
 },
 {
 "id": "sk-session-label-the-texturizer",
@@ -4286,15 +4561,15 @@ export const PRODUCTS = [
 "size": "300 ml",
 "price": 22.8,
 "priceSrc": "Coserty",
-"short": "Spray de textura y volumen de fijación ligera",
-"desc": "Spray de textura que da volumen y un aspecto despeinado con una fijación ligera. Deja una textura liviana que se cepilla con facilidad; su fórmula incluye almidón de tapioca y pantenol.",
+"short": "Spray de textura para looks despeinados",
+"desc": "Spray de textura para looks informales: crea una textura ligera y volumen, con efecto despeinado. Vegano.",
 "benefits": [
 "Textura ligera con efecto despeinado",
 "Más volumen",
 "Fijación ligera",
 "Se cepilla fácilmente"
 ],
-"use": "Agitar y pulverizar sobre el cabello seco; combinar con The Powder para más elevación en la raíz.",
+"use": "Agita bien y pulveriza sobre el pelo seco a unos 30 cm, en pulverizaciones cortas. Estruja el pelo con las manos para marcar la textura.",
 "facts": {
 "Fijación": "ligera",
 "Ingredientes destacados": "almidón de tapioca y pantenol"
@@ -4306,7 +4581,11 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063252",
 "confirm": [
 "facts"
-]
+],
+"gtin": "4045787788624",
+"official": "SESSION LABEL EL SPRAY DE TEXTURA 300ml",
+"code": "3063252",
+"img": "media/productos/sk-session-label-the-texturizer.webp"
 },
 {
 "id": "sk-session-label-the-thickener",
@@ -4317,15 +4596,15 @@ export const PRODUCTS = [
 "size": "200 ml",
 "price": 20.8,
 "priceSrc": "Coserty",
-"short": "Spray de secado que da grosor y agarre al cabello",
-"desc": "Spray voluminizador para el secado que aporta cuerpo y agarre. Deja el cabello con sensación de más grosor de forma natural, sin tacto pegajoso ni rígido.",
+"short": "Spray de secado que da cuerpo y grosor",
+"desc": "Spray de secado que da volumen y densidad: el pelo se nota más grueso y sujeto, nunca pegajoso. Vegano.",
 "benefits": [
 "Aporta cuerpo y grosor",
 "Da agarre para peinar",
 "Sin tacto pegajoso ni rígido",
 "Fórmula vegana"
 ],
-"use": "Aplicar de raíz a puntas sobre el cabello húmedo y secar con secador, con o sin cepillo.",
+"use": "Pulveriza sobre el pelo húmedo de raíz a puntas. Seca con secador, con o sin cepillo, o deja secar al aire.",
 "facts": {
 "Fórmula": "vegana"
 },
@@ -4333,8 +4612,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/session-label/the-thickener.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063225",
+"confirm": [],
+"gtin": "4067971161976",
+"official": "SESSION LABEL EL SPRAY DE SECADO 200ml",
+"code": "3063225",
+"img": "media/productos/sk-session-label-the-thickener.webp"
 },
 {
 "id": "sk-session-label-the-miracle",
@@ -4345,15 +4628,15 @@ export const PRODUCTS = [
 "size": "50 ml",
 "price": 21.5,
 "priceSrc": "Coserty",
-"short": "Bálsamo multifunción que prepara, protege y define",
-"desc": "Bálsamo de peinado multiusos que sirve de prebase, define y controla el cabello sin sobrecargarlo. Mantiene el pelo flexible y crea una barrera frente al daño del secador y de las herramientas de calor.",
+"short": "Bálsamo de acabado polivalente con protección térmica",
+"desc": "Bálsamo de acabado polivalente: prepara, define y controla sin sobrecargar el pelo, con protección térmica hasta 230 ºC, según la marca.",
 "benefits": [
 "Prepara, define y controla",
 "No sobrecarga el cabello",
 "Mantiene la flexibilidad",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Repartir una pequeña cantidad sobre el cabello húmedo antes del secado, o en seco para pulir.",
+"use": "Aplica sobre el pelo húmedo antes de secar, o sobre el pelo seco o húmedo antes de usar herramientas de calor.",
 "facts": {
 "Protección térmica": "hasta 230 ºC"
 },
@@ -4362,10 +4645,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/Session-Label/p/3063230",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063230",
+"confirm": [],
+"gtin": "4045787789102",
+"official": "SESSION LABEL EL BÁLSAMO DE FIJACIÓN POLIVALENTE 50ml",
+"code": "3063230",
+"img": "media/productos/sk-session-label-the-miracle.webp"
 },
 {
 "id": "sk-session-label-the-mousse",
@@ -4376,15 +4661,15 @@ export const PRODUCTS = [
 "size": "200 ml",
 "price": 20.8,
 "priceSrc": "Coserty",
-"short": "Espuma en spray ligera para volumen localizado y raíz",
-"desc": "Espuma ligera en formato spray que da volumen localizado y cuerpo y levanta la raíz al instante. Su fijación es flexible, sin rigidez, y resulta útil en cabello fino.",
+"short": "Espuma en spray que da volumen desde la raíz",
+"desc": "Espuma ligera en spray que da volumen localizado y cuerpo, y levanta la raíz al instante. Vegana.",
 "benefits": [
 "Volumen localizado y cuerpo",
 "Eleva la raíz al instante",
 "Fijación flexible",
 "Fórmula vegana"
 ],
-"use": "Aplicar en la raíz o en la zona deseada sobre el cabello húmedo y secar con secador.",
+"use": "Agita bien y mantén el envase en vertical. Aplica sobre el pelo húmedo, sobre todo en la raíz.",
 "facts": {
 "Fijación": "flexible",
 "Fórmula": "vegana"
@@ -4393,8 +4678,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/session-label/the-mousse.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063239",
+"confirm": [],
+"gtin": "4045787788983",
+"official": "SESSION LABEL LA ESPUMA EN SPRAY DE VOLUMEN 200ml",
+"code": "3063239",
+"img": "media/productos/sk-session-label-the-mousse.webp"
 },
 {
 "id": "sk-session-label-the-definer",
@@ -4405,15 +4694,15 @@ export const PRODUCTS = [
 "size": "150 ml",
 "price": 22.8,
 "priceSrc": "Coserty",
-"short": "Crema de rizos que define y controla sin rigidez",
-"desc": "Crema para rizos y ondas que da forma, controla y define sin dejar el cabello rígido. Ayuda a domar el encrespamiento y protege del calor hasta 230 ºC.",
+"short": "Crema de rizos que define sin encrespar",
+"desc": "Crema de rizos que da forma, controla y define sin encrespar ni dejar tacto crujiente, con protección térmica hasta 230 ºC, según la marca.",
 "benefits": [
 "Define rizos y ondas",
 "Control sin rigidez",
 "Doma el encrespamiento",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Repartir sobre el cabello húmedo y secar al aire o con difusor.",
+"use": "Aplica de raíz a puntas sobre el pelo rizado húmedo y deja secar al aire.",
 "facts": {
 "Protección térmica": "hasta 230 ºC"
 },
@@ -4423,8 +4712,12 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/session-label/the-definer.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063226",
+"confirm": [],
+"gtin": "4067971157337",
+"official": "SESSION LABEL LA CREMA DE RIZOS 150ml",
+"code": "3063226",
+"img": "media/productos/sk-session-label-the-definer.webp"
 },
 {
 "id": "sk-session-label-the-powder",
@@ -4435,24 +4728,25 @@ export const PRODUCTS = [
 "size": "8 g",
 "price": 21.6,
 "priceSrc": "Coserty",
-"short": "Polvo de peinado para textura, agarre y volumen",
-"desc": "Polvo de peinado ligero en formato de 8 g. La marca lo define por tres efectos: textura, agarre y volumen, sobre todo en la raíz.",
+"short": "Polvo en spray de volumen y textura",
+"desc": "Polvo en spray de textura seca. Su bruma fina da volumen localizado, textura flexible y fijación instantánea. Vegano.",
 "benefits": [
 "Textura",
 "Agarre",
 "Volumen"
 ],
-"use": "Aplicar una pequeña cantidad en la raíz con el cabello seco y trabajar con los dedos.",
+"use": "Mantén el envase en vertical. Pulveriza en la raíz, sobre el pelo seco, para levantarla; en medios y puntas, para dar textura.",
 "facts": {},
 "needs": [
 "volumen"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/Marca/Session+Label/c/186089",
-"confirm": [
-"desc",
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063246",
+"confirm": [],
+"gtin": "42431459",
+"official": "SESSION LABEL EL POLVO EN SPRAY 8g",
+"code": "3063246",
+"img": "media/productos/sk-session-label-the-powder.webp"
 },
 {
 "id": "sk-session-label-the-salt",
@@ -4463,15 +4757,15 @@ export const PRODUCTS = [
 "size": "200 ml",
 "price": 20.8,
 "priceSrc": "Coserty",
-"short": "Spray de sal para textura, movimiento y cuerpo",
-"desc": "Spray de sal para conseguir un acabado con textura. Aporta movimiento natural, definición y cuerpo sin apelmazar el cabello.",
+"short": "Spray salino para ondas con textura",
+"desc": "Spray salino que crea un acabado con textura, movimiento natural, definición y cuerpo, sin sobrecargar el pelo. Vegano.",
 "benefits": [
 "Movimiento natural",
 "Definición y cuerpo",
 "No apelmaza",
 "Fórmula vegana"
 ],
-"use": "Pulverizar sobre el cabello húmedo o seco y secar al aire o con difusor.",
+"use": "Aplica sobre el pelo secado con toalla, da forma a ondas o rizos y deja secar al aire o con secador.",
 "facts": {
 "Fórmula": "vegana"
 },
@@ -4479,10 +4773,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/session-label/the-salt.html",
-"confirm": [
-"use"
-]
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063227",
+"confirm": [],
+"gtin": "4045787789188",
+"official": "SESSION LABEL EL SPRAY SALINO 200ml",
+"code": "3063227",
+"img": "media/productos/sk-session-label-the-salt.webp"
 },
 {
 "id": "sk-session-label-the-paste",
@@ -4493,14 +4789,14 @@ export const PRODUCTS = [
 "size": "65 ml",
 "price": 21.4,
 "priceSrc": "Coserty",
-"short": "Pasta mate remodelable para volumen y definición",
-"desc": "Pasta de peinado de acabado mate, flexible y remodelable. Da volumen y definición con una fijación media; contiene cera de bayas y almidón de tapioca.",
+"short": "Pasta mate remoldeable",
+"desc": "Pasta mate remoldeable de textura flexible, para dar volumen y definición. Vegana.",
 "benefits": [
 "Acabado mate",
 "Volumen y definición",
 "Textura flexible y remodelable"
 ],
-"use": "Frotar una pequeña cantidad entre las palmas y trabajar sobre el cabello seco o húmedo.",
+"use": "Reparte una pequeña cantidad en las manos, aplica sobre el pelo húmedo o seco y moldea.",
 "facts": {
 "Fijación": "media",
 "Acabado": "mate",
@@ -4514,7 +4810,11 @@ export const PRODUCTS = [
 "url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063245",
 "confirm": [
 "facts"
-]
+],
+"gtin": "4045787789744",
+"official": "SESSION LABEL LA PASTA MATE 65ml",
+"code": "3063245",
+"img": "media/productos/sk-session-label-the-paste.webp"
 },
 {
 "id": "sk-session-label-the-mud",
@@ -4525,15 +4825,15 @@ export const PRODUCTS = [
 "size": "65 ml",
 "price": 21.4,
 "priceSrc": "Coserty",
-"short": "Arcilla moldeable de textura seca y acabado mate",
-"desc": "Masilla moldeable que crea una textura seca y difuminada para un resultado natural y sin brillo. Da forma y definición con una fijación media que se puede remodelar durante el día.",
+"short": "Arcilla moldeable de acabado seco",
+"desc": "Arcilla moldeable de fijación media y acabado seco y difuminado. Se puede remoldear tantas veces como quieras. Vegana.",
 "benefits": [
 "Textura seca y difuminada",
 "Acabado sin brillo",
 "Forma y definición",
 "Remodelable"
 ],
-"use": "Calentar una pequeña cantidad entre las palmas y repartir por medios y puntas.",
+"use": "Extiende una pequeña cantidad en las manos, aplica sobre el pelo seco y moldea.",
 "facts": {
 "Fijación": "media",
 "Acabado": "mate"
@@ -4542,10 +4842,14 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://coserty.com/en/schwarzkopf-moldable-putty-the-mud-session-label-65-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063229",
 "confirm": [
 "facts"
-]
+],
+"gtin": "4045787788747",
+"official": "SESSION LABEL THE MUD 65ml (LA ARCILLA MOLDEABLE)",
+"code": "3063229",
+"img": "media/productos/sk-session-label-the-mud.webp"
 },
 {
 "id": "sk-session-label-the-jelly",
@@ -4556,15 +4860,15 @@ export const PRODUCTS = [
 "size": "150 ml",
 "price": 25.4,
 "priceSrc": "Coserty",
-"short": "Gel transparente de fijación flexible para moldear y definir",
-"desc": "Gel de textura transparente y fijación flexible con el que se moldea, define y controla el cabello. Deja un acabado brillante sin rigidez ni tacto pegajoso.",
+"short": "Gelatina de fijación flexible y con brillo",
+"desc": "Gelatina de fijación flexible que define y controla el pelo y le da brillo, sin tacto pegajoso ni crujiente.",
 "benefits": [
 "Moldea, define y controla",
 "Fijación flexible",
 "Acabado brillante",
 "No pegajoso"
 ],
-"use": "Aplicar sobre el cabello húmedo o seco y dar forma.",
+"use": "Aplica sobre el pelo húmedo o seco. Seca con secador o dale forma y deja secar al aire.",
 "facts": {
 "Fijación": "flexible"
 },
@@ -4573,11 +4877,15 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.coserty.com/en/products/schwarzkopf-gelatina-fijaci-n-flexible-the-jelly-session-label-150-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063250",
 "confirm": [
 "benefits",
 "price"
-]
+],
+"gtin": "4067971160856",
+"official": "SESSION LABEL LA GELATINA 150ml",
+"code": "3063250",
+"img": "media/productos/sk-session-label-the-jelly.webp"
 },
 {
 "id": "sk-silhouette-espuma-super-hold",
@@ -4588,14 +4896,14 @@ export const PRODUCTS = [
 "size": "500 ml",
 "price": 11.95,
 "priceSrc": "Tinte y Más",
-"short": "Espuma de fijación extrafuerte que conserva el brillo",
-"desc": "Espuma de la gama Super Hold que da una fijación muy fuerte y duradera sin restar brillo al cabello. Pensada para peinados con volumen que tienen que aguantar todo el día.",
+"short": "Espuma de fijación fuerte con brillo",
+"desc": "Espuma de fijación fuerte que mantiene el brillo del pelo y se retira fácilmente con el cepillado.",
 "benefits": [
 "Fijación extrafuerte y duradera",
 "Mantiene el brillo",
 "Control invisible"
 ],
-"use": "Agitar, aplicar una nuez de espuma sobre el cabello húmedo y secar.",
+"use": "Agita bien y dispensa con el envase boca abajo. Aplica sobre el pelo secado con toalla, antes de secar o marcar.",
 "facts": {
 "Fijación": "Super Hold (extrafuerte)",
 "Otros formatos": "200 ml"
@@ -4606,10 +4914,14 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://www.tinteymas.es/silhouette",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Silhouette-Fijaci%C3%B3n-Fuerte/p/3075302",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787292510",
+"official": "Silhouette Espuma Fuerte 500 ml",
+"code": "3075302",
+"img": "media/productos/sk-silhouette-espuma-super-hold.webp"
 },
 {
 "id": "sk-silhouette-gel-super-hold",
@@ -4620,14 +4932,14 @@ export const PRODUCTS = [
 "size": "250 ml",
 "price": 6.7,
 "priceSrc": "Coserty",
-"short": "Gel de fijación extrafuerte con brillo natural y definición",
-"desc": "Gel con una combinación de agentes filmógenos que da una fijación muy fuerte e inmediata. Deja brillo natural y aporta estructura y definición al peinado.",
+"short": "Gel de fijación extrafuerte y brillo natural",
+"desc": "Gel de fijación extrafuerte inmediata, con brillo natural y definición. Seca rápido, no deja residuos y se elimina fácilmente con el lavado.",
 "benefits": [
 "Fijación extrafuerte inmediata",
 "Brillo natural",
 "Estructura y definición"
 ],
-"use": "Repartir sobre el cabello húmedo o seco y peinar.",
+"use": "Pon en la palma una cantidad del tamaño de una avellana y aplica en medios y puntas, sobre el pelo húmedo o seco.",
 "facts": {
 "Fijación": "Super Hold (extrafuerte)"
 },
@@ -4636,10 +4948,14 @@ export const PRODUCTS = [
 "brillo"
 ],
 "colors": [],
-"url": "https://coserty.com/es/silhouette-schwarzkopf",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Silhouette-Fijaci%C3%B3n-Fuerte/p/3037869",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971143422",
+"official": "Silhouette Gel Súper Fijación 250 ml",
+"code": "3037869",
+"img": "media/productos/sk-silhouette-gel-super-hold.webp"
 },
 {
 "id": "sk-silhouette-espuma-flexible-hold",
@@ -4650,15 +4966,15 @@ export const PRODUCTS = [
 "size": "500 ml",
 "price": 10.1,
 "priceSrc": "Keshop",
-"short": "Espuma de fijación flexible con volumen elástico",
-"desc": "Espuma de la gama Flexible Hold que da cuerpo y volumen elástico sin sobrecargar el cabello. Mantiene el peinado con un control invisible y duradero y efecto memoria tras el cepillado.",
+"short": "Espuma de fijación flexible con volumen",
+"desc": "Espuma de fijación flexible, duradera e invisible. Da volumen con elasticidad y brillo sin sobrecargar el pelo.",
 "benefits": [
 "Fijación flexible",
 "Volumen elástico sin sobrecargar",
 "Control invisible y duradero",
 "Efecto memoria tras el cepillado"
 ],
-"use": "Agitar, aplicar una nuez de espuma sobre el cabello húmedo y secar.",
+"use": "Agita bien y dispensa con el envase boca abajo. Aplica sobre el pelo secado con toalla.",
 "facts": {
 "Fijación": "Flexible Hold (flexible)",
 "Otros formatos": "200 ml"
@@ -4668,10 +4984,14 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.keshop.com/en/flexible-hold/silhouette-flexible-hold-mousse-500-ml.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Silhouette-Flexible-Hold/p/3075277",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787292497",
+"official": "Silhouette Espuma Flexible 500 ml",
+"code": "3075277",
+"img": "media/productos/sk-silhouette-espuma-flexible-hold.webp"
 },
 {
 "id": "ghd-perfect-ending",
@@ -4710,13 +5030,13 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Laca de fijación extra fuerte",
-"desc": "Laca de fijación extra fuerte para cualquier tipo de cabello, sobre todo el fuerte y rebelde. Protege del viento y la humedad.",
+"desc": "Laca de fijación extrafuerte para peinados que tienen que durar. Protege de la humedad, el calor y el viento, deja un acabado brillante y se retira con el cepillado sin dejar residuos.",
 "benefits": [
 "Fijación extra fuerte",
 "Se quita con el cepillado, sin restos",
 "Protección térmica hasta 230 ºC, según la marca"
 ],
-"use": "Pulverizaciones cortas sobre el pelo seco, a 30 cm.",
+"use": "Aplica en pulverizaciones cortas sobre el pelo seco, a unos 30 cm.",
 "facts": {
 "Fijación": "extra fuerte"
 },
@@ -4724,10 +5044,14 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/hold/session.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Fijaci%C3%B3n/p/3066429",
 "confirm": [
 "price"
-]
+],
+"gtin": "4067971181783",
+"official": "OSiS Session 500ml",
+"code": "3066429",
+"img": "media/productos/sk-osis-session.webp"
 },
 {
 "id": "sk-silhouette-laca",
@@ -4738,14 +5062,14 @@ export const PRODUCTS = [
 "size": "500 ml",
 "price": 9.99,
 "priceSrc": "Druni",
-"short": "Laca invisible de fijación muy fuerte",
-"desc": "Laca de fijación muy fuerte que no se nota y mantiene el brillo del cabello. Pensada para peinados con volumen.",
+"short": "Laca de fijación fuerte que no se nota",
+"desc": "Laca de fijación fuerte, duradera e invisible, con formadores de película microfinos que no sobrecargan el pelo. Seca rápido, no deja tacto pegajoso y se retira con el cepillado.",
 "benefits": [
 "Fijación muy fuerte",
 "Secado rápido, no pega",
 "Se quita con el cepillado"
 ],
-"use": "Pulveriza sobre el peinado terminado.",
+"use": "Pulveriza sobre el pelo seco a unos 30 cm, con pulverizaciones cortas.",
 "facts": {
 "Fijación": "muy fuerte"
 },
@@ -4754,8 +5078,12 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/silhouette.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Silhouette-Fijaci%C3%B3n-Fuerte/p/3075310",
+"confirm": [],
+"gtin": "4045787464030",
+"official": "Silhouette Laca Fuerte 500 ml",
+"code": "3075310",
+"img": "media/productos/sk-silhouette-laca.webp"
 },
 {
 "id": "sk-session-label-the-strong",
@@ -4766,15 +5094,15 @@ export const PRODUCTS = [
 "size": "300 ml",
 "price": 19.76,
 "priceSrc": "Keshop",
-"short": "Laca de secado instantáneo para recogidos",
-"desc": "Laca de fijación fuerte y secado instantáneo para recogidos y acabados que duran. Controla la electricidad estática.",
+"short": "Laca de fijación fuerte para recogidos",
+"desc": "Laca de fijación fuerte y duradera para un control máximo. Es fácil de trabajar y deja el pelo más manejable al hacer recogidos. Vegana.",
 "benefits": [
 "Fijación fuerte",
 "Pulverización microfina",
 "No deja restos",
 "Vegana"
 ],
-"use": "Aplica sobre el pelo seco a 30 cm, en capas si quieres más fijación.",
+"use": "Aplica sobre el pelo seco a 30 cm. Añade capas para más fijación.",
 "facts": {
 "Vegano": "sí"
 },
@@ -4782,10 +5110,14 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/session-label/the-strong.html",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063240",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787789584",
+"official": "SESSION LABEL LA LACA DE FIJACIÓN FUERTE 300ml",
+"code": "3063240",
+"img": "media/productos/sk-session-label-the-strong.webp"
 },
 {
 "id": "sk-osis-elastic",
@@ -4797,14 +5129,14 @@ export const PRODUCTS = [
 "price": 10.45,
 "priceSrc": "Salontotal",
 "short": "Laca de fijación media, flexible y modulable por capas",
-"desc": "Laca en aerosol de fijación media que sujeta el peinado sin dejarlo rígido. Se puede aplicar en capas para ganar sujeción y se retira con el cepillo sin dejar residuos. Indicada para acabados naturales con movimiento en cualquier tipo de cabello.",
+"desc": "Laca de fijación media y moldeable. Mantiene el peinado, se puede aplicar por capas y se elimina fácilmente con el lavado, sin residuos.",
 "benefits": [
 "Fijación media que se refuerza por capas",
 "Se cepilla sin dejar escamas",
 "Ayuda a proteger de la humedad",
 "Protección térmica hasta 230 ºC"
 ],
-"use": "Pulverizar sobre el cabello seco a unos 30 cm; repetir en capas si se quiere más fijación.",
+"use": "Aplica en pulverizaciones cortas sobre el pelo seco, a unos 30 cm.",
 "facts": {
 "Fijación": "media (++)",
 "Protección térmica": "hasta 230 ºC",
@@ -4814,8 +5146,12 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Fijaci%C3%B3n/p/2984327",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Fijaci%C3%B3n/p/3067200",
+"confirm": [],
+"gtin": "4045787999242",
+"official": "OSiS Elastic 300ml",
+"code": "3067200",
+"img": "media/productos/sk-osis-elastic.webp"
 },
 {
 "id": "sk-osis-freeze",
@@ -4827,14 +5163,14 @@ export const PRODUCTS = [
 "price": 10.45,
 "priceSrc": "Salontotal",
 "short": "Laca de fijación fuerte, secado rápido y efecto antihumedad",
-"desc": "Laca en aerosol de pulverización muy fina y secado rápido, pensada para dar el toque final al peinado. Aporta un control fuerte y duradero, resiste la humedad y se elimina con el cepillado.",
+"desc": "Laca de fijación fuerte y larga duración. Sujeta el peinado todo el día sin apelmazar y protege del calor hasta 230 ºC, según la marca.",
 "benefits": [
 "Fijación fuerte y duradera",
 "Bruma ultrafina de secado rápido",
 "Efecto antihumedad",
 "Se cepilla sin dejar residuos"
 ],
-"use": "Pulverizar sobre el cabello seco a unos 30 cm como acabado.",
+"use": "Pulveriza sobre el pelo seco a 30 cm, con pulverizaciones cortas.",
 "facts": {
 "Fijación": "fuerte (+++)",
 "Protección térmica": "hasta 230 ºC",
@@ -4844,10 +5180,14 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://www.salontotal.es/marcas/schwarzkopf-professional/osis-hold",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Fijaci%C3%B3n/p/3067203",
 "confirm": [
 "facts"
-]
+],
+"gtin": "4045787999389",
+"official": "OSiS Freeze 300ml",
+"code": "3067203",
+"img": "media/productos/sk-osis-freeze.webp"
 },
 {
 "id": "sk-osis-freeze-pump",
@@ -4859,14 +5199,14 @@ export const PRODUCTS = [
 "price": 10.95,
 "priceSrc": "Salontotal",
 "short": "Laca sin aerosol de fijación fuerte para definir ondas y rizos",
-"desc": "Laca de bomba, sin gas, que deposita una bruma fina de secado rápido. Da una fijación fuerte y duradera y está pensada sobre todo para marcar y sujetar ondas y rizos, aunque sirve para cualquier tipo y largo de cabello.",
+"desc": "Laca sin aerosol de secado rápido y bruma fina. Da una fijación fuerte y duradera, ideal para definir y fijar ondas y rizos.",
 "benefits": [
 "Fijación fuerte y duradera",
 "Bruma fina de secado rápido",
 "Protección térmica hasta 230 ºC",
 "Se elimina con el cepillado sin residuos"
 ],
-"use": "Pulverizar a unos 20 cm sobre el cabello seco; también puede aplicarse en húmedo antes del secador.",
+"use": "Aplica a unos 20 cm. También se puede usar sobre el pelo húmedo antes de secar.",
 "facts": {
 "Fijación": "fuerte (+++)",
 "Protección térmica": "hasta 230 ºC",
@@ -4877,8 +5217,12 @@ export const PRODUCTS = [
 "rizos-naturales"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/hold/freeze-pump.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Fijaci%C3%B3n/p/3066441",
+"confirm": [],
+"gtin": "4045787999082",
+"official": "OSiS Freeze Pump 200ml",
+"code": "3066441",
+"img": "media/productos/sk-osis-freeze-pump.webp"
 },
 {
 "id": "sk-session-label-the-flexible",
@@ -4889,15 +5233,15 @@ export const PRODUCTS = [
 "size": "300 ml",
 "price": 20.2,
 "priceSrc": "Coserty",
-"short": "Laca seca de fijación ligera, flexible y trabajable",
-"desc": "Laca en aerosol de fijación ligera y acabado seco que permite seguir trabajando el peinado. Seca rápido y sale en una bruma muy fina que da control sin rigidez.",
+"short": "Laca seca de fijación flexible",
+"desc": "Laca seca y ligera, de secado rápido y bruma microfina, para una fijación flexible y con control. Vegana.",
 "benefits": [
 "Fijación ligera y trabajable",
 "Secado rápido",
 "Pulverización muy fina",
 "Acabado seco"
 ],
-"use": "Pulverizar sobre el cabello seco a unos 30 cm, durante el peinado o como acabado.",
+"use": "Aplica sobre el pelo seco a 30 cm. Añade capas para más fijación.",
 "facts": {
 "Fijación": "ligera",
 "Otros formatos": "500 ml"
@@ -4906,8 +5250,12 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/es/Marca/Session+Label/c/186089",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063238",
+"confirm": [],
+"gtin": "4045787789669",
+"official": "SESSION LABEL LA LACA DE FIJACIÓN FLEXIBLE 300ml",
+"code": "3063238",
+"img": "media/productos/sk-session-label-the-flexible.webp"
 },
 {
 "id": "sk-silhouette-pumpspray-super-hold",
@@ -4918,14 +5266,14 @@ export const PRODUCTS = [
 "size": "200 ml",
 "price": 7.1,
 "priceSrc": "Coserty",
-"short": "Laca sin aerosol de fijación extrafuerte",
-"desc": "Laca en pulverizador de bomba, sin gas, de la gama Super Hold. Ofrece la fijación fuerte y duradera de la línea, con brillo y un control que no se nota en el pelo.",
+"short": "Laca sin aerosol de fijación fuerte",
+"desc": "Laca sin aerosol de fijación fuerte que conserva el brillo y la vitalidad del pelo. Fijación duradera e invisible que no lo sobrecarga.",
 "benefits": [
 "Fijación extrafuerte y duradera",
 "Sin aerosol",
 "Aporta brillo"
 ],
-"use": "Pulverizar sobre el cabello seco a unos 20-30 cm.",
+"use": "Pulveriza sobre el pelo húmedo a unos 20 cm.",
 "facts": {
 "Fijación": "Super Hold (extrafuerte)",
 "Formato": "pulverizador sin aerosol",
@@ -4935,13 +5283,15 @@ export const PRODUCTS = [
 "fijacion"
 ],
 "colors": [],
-"url": "https://coserty.com/es/schwarzkopf-laca-sin-aerosol-extra-fuerte-silhouette-super-hold-pumpspray-200-ml",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Silhouette-Fijaci%C3%B3n-Fuerte/p/3075312",
 "confirm": [
 "price",
-"desc",
-"benefits",
-"use"
-]
+"benefits"
+],
+"gtin": "4045787675405",
+"official": "Silhouette Laca No Aerosol Fuerte 200 ml",
+"code": "3075312",
+"img": "media/productos/sk-silhouette-pumpspray-super-hold.webp"
 },
 {
 "id": "sk-silhouette-laca-flexible-hold",
@@ -4952,15 +5302,15 @@ export const PRODUCTS = [
 "size": "500 ml",
 "price": 11.36,
 "priceSrc": "Beapura",
-"short": "Laca de fijación flexible con volumen elástico",
-"desc": "Laca en aerosol que sujeta sin rigidez. Da un control invisible y duradero, volumen elástico sin sobrecargar el cabello y un efecto memoria que se mantiene incluso después de cepillar.",
+"short": "Laca de fijación flexible e invisible",
+"desc": "Laca de fijación flexible, duradera e invisible. Da volumen con elasticidad y brillo sin sobrecargar el pelo, y seca rápido.",
 "benefits": [
 "Fijación flexible sin perder sujeción",
 "Control invisible y duradero",
 "Volumen elástico",
 "Efecto memoria tras el cepillado"
 ],
-"use": "Pulverizar sobre el cabello seco a unos 30 cm.",
+"use": "Aplica sobre el pelo seco a unos 30 cm, con pulverizaciones cortas.",
 "facts": {
 "Fijación": "Flexible Hold (flexible)"
 },
@@ -4969,10 +5319,14 @@ export const PRODUCTS = [
 "volumen"
 ],
 "colors": [],
-"url": "https://www.beapura.com/es/marcas_c67469641264700/schwarzkopf-professional-cabeza-negra_c67469641281750/silhouette_c67469641296457/schwarzkopf-professional-silhouette-flexible-hold-hairspray-500-ml_p4953",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Silhouette-Flexible-Hold/p/3075285",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787814170",
+"official": "Silhouette Laca Flexible 500 ml",
+"code": "3075285",
+"img": "media/productos/sk-silhouette-laca-flexible-hold.webp"
 },
 {
 "id": "ghd-bodyguard",
@@ -5072,13 +5426,13 @@ export const PRODUCTS = [
 "price": 9.99,
 "priceSrc": "Druni",
 "short": "Protector térmico para usar con la plancha",
-"desc": "Spray protector del calor para el uso diario de la plancha. Controla el encrespamiento y deja el pelo suave y brillante.",
+"desc": "Protector térmico para usar a diario con la plancha y otras herramientas de calor. Protege hasta 230 ºC, según la marca, y reduce el encrespamiento para un pelo suave y sin enredos.",
 "benefits": [
 "Protección térmica hasta 230 ºC, según la marca",
 "Controla el encrespamiento",
 "Fijación ligera"
 ],
-"use": "Pulveriza sobre el pelo seco antes de la plancha.",
+"use": "Pulveriza sobre el pelo seco antes de usar la plancha.",
 "facts": {
 "Protección": "hasta 230 ºC"
 },
@@ -5088,8 +5442,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/es/es/acabado/osis/smooth-shine/flatliner.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Suavidad-y-Brillo/p/3103675",
+"confirm": [],
+"gtin": "4045787999570",
+"official": "OSiS Flatliner 200ml",
+"code": "3103675",
+"img": "media/productos/sk-osis-flatliner.webp"
 },
 {
 "id": "sk-bonacure-sun-protect-bruma-spf20",
@@ -5135,14 +5493,14 @@ export const PRODUCTS = [
 "price": 11.95,
 "priceSrc": "Salontotal",
 "short": "Spray protector multiusos para melenas largas",
-"desc": "Spray de protección multiusos formulado especialmente para cabello largo. No aporta fijación: protege del calor de las herramientas hasta 230 ºC y de la contaminación.",
+"desc": "Spray protector multiusos pensado para melenas largas. Protege de la contaminación, el calor y la humedad, combate el encrespamiento y los enredos y reaviva el pelo apagado.",
 "benefits": [
 "Protección térmica hasta 230 ºC",
 "Protección frente a la contaminación",
 "Sin fijación",
 "Pensado para cabello largo"
 ],
-"use": "Pulverizar sobre el cabello antes de usar secador, plancha o tenacilla.",
+"use": "Pulveriza en dosis cortas, a unos 30 cm, antes del secado o sobre el pelo seco.",
 "facts": {
 "Fijación": "sin fijación",
 "Protección térmica": "hasta 230 ºC"
@@ -5151,10 +5509,14 @@ export const PRODUCTS = [
 "proteccion-calor"
 ],
 "colors": [],
-"url": "https://shop.schwarzkopf-professional.es/en/c/Osis%2B-Smooth-&-Shine/p/3066426",
+"url": "https://shop.schwarzkopf-professional.es/es/c/Osis%2B-Suavidad-y-Brillo/p/3066426",
 "confirm": [
 "price"
-]
+],
+"gtin": "4045787936612",
+"official": "OSiS Super Shield 300ml",
+"code": "3066426",
+"img": "media/productos/sk-osis-super-shield.webp"
 },
 {
 "id": "sk-session-label-the-coat",
@@ -5165,15 +5527,15 @@ export const PRODUCTS = [
 "size": "300 ml",
 "price": 22.8,
 "priceSrc": "Coserty",
-"short": "Spray protector sin fijación con brillo y control del frizz",
-"desc": "Spray de acabado sin siliconas ni fijación que da brillo y protege. Combate el encrespamiento y la electricidad estática y protege el cabello y el color del calor de las herramientas hasta 230 ºC.",
+"short": "Spray de brillo que protege del calor, el encrespamiento y la estática",
+"desc": "Spray de brillo multiprotección: protege del encrespamiento, la electricidad estática y el calor hasta 230 ºC, según la marca, y deja el pelo suave y muy brillante.",
 "benefits": [
 "Protección térmica hasta 230 ºC",
 "Antiencrespamiento y antiestático",
 "Brillo sin siliconas",
 "Sin fijación"
 ],
-"use": "Pulverizar sobre el cabello antes de las herramientas de calor o como toque final.",
+"use": "Agita bien antes de cada uso y aplica sobre el pelo húmedo o seco a unos 30 cm.",
 "facts": {
 "Fijación": "sin fijación",
 "Protección térmica": "hasta 230 ºC",
@@ -5185,8 +5547,12 @@ export const PRODUCTS = [
 "encrespamiento"
 ],
 "colors": [],
-"url": "https://www.schwarzkopf-professional.com/gb/en/styling/session-label/the-coat.html",
-"confirm": []
+"url": "https://shop.schwarzkopf-professional.es/es/c/Session-Label/p/3063228",
+"confirm": [],
+"gtin": "4045787949353",
+"official": "SESSION LABEL EL PROTECTOR 300ml",
+"code": "3063228",
+"img": "media/productos/sk-session-label-the-coat.webp"
 },
 {
 "id": "ghd-gold-cashmere-collection",

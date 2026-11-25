@@ -425,3 +425,4 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* en la escena negra de ghd la foto va dentro del círculo claro */
 .ghd-art .pimg { position: absolute; left: 6%; top: 9%; width: 88%; height: 82%; border-radius: 50%; padding: 15%; }
 .ghd-stage:has(.ghd-art.on .pimg) .ghd-ring { background: #fff; }
+.chips.lines .chip.on { background: var(--ink); color: var(--paper); border-style: solid; }

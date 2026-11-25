@@ -21,9 +21,9 @@ DEF = (('line',''),('size',''),('price',None),('priceSrc',''),('short',''),('des
 clean = lambda s: re.sub(r'\s+', ' ', re.sub(r'<[^>]*>', '', str(s))).strip()
 
 seen, out = set(), []
-skip = {'overrides.json', 'numeros.json'}        # no son catálogo (y tampoco los que empiezan por «_»)
+skip = {'overrides.json', 'numeros.json', 'fotos.json'}   # no son catálogo (tampoco los que empiezan por «_», «textos_» u «oficial_»)
 files = [os.path.join(here, 'base.json')] + sorted(f for f in glob.glob(os.path.join(here, '*.json'))
-                                                   if os.path.basename(f) not in skip | {'base.json'} and not os.path.basename(f).startswith('_'))
+                                                   if os.path.basename(f) not in skip | {'base.json'} and not os.path.basename(f).startswith(('_', 'textos_', 'oficial_')))
 for f in files:
     for p in json.load(open(f, encoding='utf-8')):
         pid = re.sub(r'[^a-z0-9-]', '-', str(p.get('id', '')).lower()).strip('-')
@@ -41,8 +41,20 @@ for f in files:
         if not re.match(r'^https://[\w.-]+/', p['url'] or ''): p['url'] = ''   # solo enlaces https normales
         out.append(p)
 
-ov = json.load(open(os.path.join(here, 'overrides.json'), encoding='utf-8'))
 byid = {p['id']: p for p in out}
+# Datos contrastados con la web oficial de la marca:
+#  textos_*.json  -> nuestra redacción (nombre, resumen, descripción, modo de uso) hecha a partir de la ficha oficial
+#  oficial_*.json -> código de la marca, nombre oficial, EAN y dirección de la ficha oficial
+for f in sorted(glob.glob(os.path.join(here, 'textos_*.json'))):
+    for k, v in json.load(open(f, encoding='utf-8')).items():
+        if k in byid:
+            byid[k].update(v)
+            byid[k]['confirm'] = [c for c in byid[k]['confirm'] if c not in ('name', 'size', 'desc', 'use', 'short')]   # ya contrastado
+n_of = 0
+for f in sorted(glob.glob(os.path.join(here, 'oficial_*.json'))):
+    for k, v in json.load(open(f, encoding='utf-8')).items():
+        if k in byid: byid[k].update({'gtin': v.get('gtin', ''), 'url': v.get('url') or byid[k]['url'], 'official': v.get('official', ''), 'code': v.get('code', '')}); n_of += 1
+ov = json.load(open(os.path.join(here, 'overrides.json'), encoding='utf-8'))
 for k, v in ov.items():
     if k.startswith('_'): continue
     if k in byid: byid[k].update(v)
@@ -64,4 +76,4 @@ out.sort(key=lambda p: (CATS.index(p['cat']), p['brand'] != 'ghd'))   # orden es
 js = '// GENERADO por data/build.py a partir de data/*.json. No lo edites a mano.\nexport const PRODUCTS = ' + json.dumps(out, ensure_ascii=False, indent=0) + ';\n'
 open(os.path.join(root, 'js', 'products.js'), 'w', encoding='utf-8').write(js)
 from collections import Counter
-print(len(out), 'productos ·', dict(Counter(p['brand'] for p in out)), '· con foto:', n_img, '· con vídeo:', n_vid, '· sin precio:', sum(p['price'] is None for p in out))
+print(len(out), 'productos ·', dict(Counter(p['brand'] for p in out)), '· contrastados con la web oficial:', n_of, '· con foto:', n_img, '· con vídeo:', n_vid, '· sin precio:', sum(p['price'] is None for p in out))

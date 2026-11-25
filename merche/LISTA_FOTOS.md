@@ -1,7 +1,7 @@
 # Lista de productos para las fotos (169)
 
-Generada por `web_merche/tools/lista.py`. Con foto: **0** de 169. ★ = sale en la portada (prioridad).
-El número de cada producto es fijo (`web_merche/data/numeros.json`).
+Generada por `web_merche/tools/lista.py`. Con foto: **100** de 169. ★ = sale en la portada (prioridad).
+El número de cada producto es fijo (`web_merche/data/numeros.json`). El origen de cada foto está en `web_merche/data/fotos.json`.
 
 ## ghd
 
@@ -85,34 +85,34 @@ El número de cada producto es fijo (`web_merche/data/numeros.json`).
 ## Schwarzkopf Professional
 
 ### Bonacure Repair Rescue+
-- [ ] **60** · Bonacure Repair Rescue+ Champú · 250 ml ★  `sk-repair-rescue-champu`
-- [ ] **61** · Bonacure Repair Rescue+ Champú 1000 ml · 1000 ml  `sk-bonacure-repair-rescue-plus-champu-1000ml`
-- [ ] **62** · Bonacure Repair Rescue+ Acondicionador · 200 ml  `sk-bonacure-repair-rescue-plus-acondicionador`
-- [ ] **63** · Bonacure Repair Rescue+ Spray Acondicionador · 200 ml  `sk-bonacure-repair-rescue-plus-spray-acondicionador`
-- [ ] **64** · Bonacure Repair Rescue+ Tratamiento · 200 ml  `sk-bonacure-repair-rescue-plus-tratamiento`
-- [ ] **65** · Bonacure Repair Rescue+ Tratamiento Iluminador · 200 ml ★  `sk-repair-rescue-iluminador`
-- [ ] **66** · Bonacure Repair Rescue Sérum Puntas Abiertas+ · 100 ml ★  `sk-repair-rescue-puntas`
+- [x] **60** · Bonacure Repair Rescue+ Champú · 250 ml ★  `sk-repair-rescue-champu` — foto oficial
+- [x] **61** · Bonacure Repair Rescue Champú 1000 ml · 1000 ml  `sk-bonacure-repair-rescue-plus-champu-1000ml` — foto oficial
+- [x] **62** · Bonacure Repair Rescue+ Acondicionador · 200 ml  `sk-bonacure-repair-rescue-plus-acondicionador` — foto oficial
+- [x] **63** · Bonacure Repair Rescue+ Spray Acondicionador · 200 ml  `sk-bonacure-repair-rescue-plus-spray-acondicionador` — foto oficial
+- [x] **64** · Bonacure Repair Rescue+ Tratamiento · 200 ml  `sk-bonacure-repair-rescue-plus-tratamiento` — foto oficial
+- [x] **65** · Bonacure Repair Rescue+ Tratamiento Iluminador · 200 ml ★  `sk-repair-rescue-iluminador` — foto oficial
+- [x] **66** · Bonacure Repair Rescue+ Sérum para Puntas Abiertas+ · 100 ml ★  `sk-repair-rescue-puntas` — foto oficial
 
 ### Bonacure Color Freeze
-- [ ] **67** · Bonacure Color Freeze Champú · 250 ml  `sk-color-freeze-champu`
-- [ ] **68** · Bonacure Color Freeze Champú Especial Canas · 250 ml  `sk-color-freeze-silver`
-- [ ] **69** · Bonacure Color Freeze Champú 1000 ml · 1000 ml  `sk-bonacure-color-freeze-champu-1000ml`
-- [ ] **70** · Bonacure Color Freeze Acondicionador · 200 ml  `sk-bonacure-color-freeze-acondicionador`
-- [ ] **71** · Bonacure Color Freeze Spray Acondicionador · 200 ml  `sk-bonacure-color-freeze-spray-acondicionador`
-- [ ] **72** · Bonacure Color Freeze Tratamiento · 200 ml  `sk-bonacure-color-freeze-tratamiento`
+- [x] **67** · Bonacure Color Freeze Champú · 250 ml  `sk-color-freeze-champu` — foto oficial
+- [x] **68** · Bonacure Color Freeze Champú Especial Canas · 250 ml  `sk-color-freeze-silver` — foto oficial
+- [x] **69** · Bonacure Color Freeze Champú 1000 ml · 1000 ml  `sk-bonacure-color-freeze-champu-1000ml` — foto oficial
+- [x] **70** · Bonacure Color Freeze Acondicionador · 200 ml  `sk-bonacure-color-freeze-acondicionador` — foto oficial
+- [x] **71** · Bonacure Color Freeze Spray Acondicionador · 200 ml  `sk-bonacure-color-freeze-spray-acondicionador` — foto oficial
+- [x] **72** · Bonacure Color Freeze Tratamiento · 200 ml  `sk-bonacure-color-freeze-tratamiento` — foto oficial
 
 ### Bonacure Moisture Kick
-- [ ] **73** · Bonacure Moisture Kick Champú · 250 ml  `sk-moisture-kick-champu`
-- [ ] **74** · Bonacure Moisture Kick Champú 1000 ml · 1000 ml  `sk-bonacure-moisture-kick-champu-1000ml`
-- [ ] **75** · Bonacure Moisture Kick Acondicionador · 200 ml  `sk-bonacure-moisture-kick-acondicionador`
-- [ ] **76** · Bonacure Moisture Kick Spray Acondicionador · 200 ml  `sk-bonacure-moisture-kick-spray-acondicionador`
-- [ ] **77** · Bonacure Moisture Kick Tratamiento · 200 ml  `sk-bonacure-moisture-kick-tratamiento`
-- [ ] **78** · Bonacure Moisture Kick Sérum Hialurónico · 50 ml  `sk-moisture-kick-serum`
+- [x] **73** · Bonacure Moisture Kick Champú · 250 ml  `sk-moisture-kick-champu` — foto oficial
+- [x] **74** · Bonacure Moisture Kick Champú 1000 ml · 1000 ml  `sk-bonacure-moisture-kick-champu-1000ml` — foto oficial
+- [x] **75** · Bonacure Moisture Kick Acondicionador · 200 ml  `sk-bonacure-moisture-kick-acondicionador` — foto oficial
+- [x] **76** · Bonacure Moisture Kick Spray Acondicionador · 200 ml  `sk-bonacure-moisture-kick-spray-acondicionador` — foto oficial
+- [x] **77** · Bonacure Moisture Kick Tratamiento · 200 ml  `sk-bonacure-moisture-kick-tratamiento` — foto oficial
+- [x] **78** · Bonacure Moisture Kick Sérum Hialurónico · 50 ml  `sk-moisture-kick-serum` — foto oficial
 - [ ] **79** · Bonacure Moisture Kick Curl Bounce · 150 ml  `sk-bonacure-moisture-kick-curl-bounce`
 
 ### Bonacure Volume Boost
-- [ ] **80** · Bonacure Volume Boost Champú · 250 ml  `sk-bonacure-volume-boost-champu`
-- [ ] **81** · Bonacure Volume Boost Gelatina Acondicionadora · 200 ml  `sk-bonacure-volume-boost-gelatina-acondicionadora`
+- [x] **80** · Bonacure Volume Boost Champú · 250 ml  `sk-bonacure-volume-boost-champu` — foto oficial
+- [x] **81** · Bonacure Volume Boost Gelatina Acondicionadora · 200 ml  `sk-bonacure-volume-boost-gelatina-acondicionadora` — foto oficial
 
 ### Bonacure Frizz Away
 - [ ] **82** · Bonacure Frizz Away Champú · 250 ml  `sk-bonacure-frizz-away-champu`
@@ -126,104 +126,104 @@ El número de cada producto es fijo (`web_merche/data/numeros.json`).
 - [ ] **88** · Bonacure Time Restore Tratamiento de Arcilla · 200 ml  `sk-bonacure-time-restore-tratamiento-de-arcilla`
 
 ### Bonacure Scalp
-- [ ] **89** · Bonacure Scalp Champú Calmante · 250 ml  `sk-bonacure-scalp-champu-calmante`
-- [ ] **90** · Bonacure Scalp Champú Anticaspa · 250 ml  `sk-bonacure-scalp-champu-anticaspa`
+- [x] **89** · Bonacure Scalp Champú Calmante · 250 ml  `sk-bonacure-scalp-champu-calmante` — foto oficial
+- [x] **90** · Bonacure Scalp Champú Anticaspa · 250 ml  `sk-bonacure-scalp-champu-anticaspa` — foto oficial
 
 ### Bonacure Sun Protect
-- [ ] **91** · Bonacure Sun Protect Fluido de Verano 10en1 · 100 ml  `sk-bonacure-sun-protect-fluido-verano-10en1`
+- [x] **91** · Bonacure Sun Protect Fluido de Verano 10en1 · 100 ml  `sk-bonacure-sun-protect-fluido-verano-10en1` — foto oficial
 - [ ] **92** · Bonacure Sun Protect Bruma para Cuero Cabelludo y Cabello SPF 20 · 100 ml  `sk-bonacure-sun-protect-bruma-spf20`
 
 ### Fibre Clinix
-- [ ] **93** · Fibre Clinix Fortify Champú · 300 ml ★  `sk-fibre-clinix-fortify-champu`
-- [ ] **94** · Fibre Clinix Hydrate Champú Hidratante · 300 ml  `sk-fibre-clinix-hydrate-champu`
-- [ ] **95** · Fibre Clinix Vibrancy Champú Color Radiante · 300 ml  `sk-fibre-clinix-vibrancy-champu`
-- [ ] **96** · Fibre Clinix Fortify Acondicionador Fortificante · 250 ml  `sk-fibre-clinix-fortify-acondicionador`
-- [ ] **97** · Fibre Clinix Hydrate Acondicionador Hidratante · 250 ml  `sk-fibre-clinix-hydrate-acondicionador`
-- [ ] **98** · Fibre Clinix Vibrancy Acondicionador Color Radiante · 250 ml  `sk-fibre-clinix-vibrancy-acondicionador`
-- [ ] **99** · Fibre Clinix Fortify Tratamiento Fortificante · 250 ml  `sk-fibre-clinix-fortify-tratamiento`
-- [ ] **100** · Fibre Clinix Hydrate Tratamiento Hidratante · 250 ml  `sk-fibre-clinix-hydrate-tratamiento`
-- [ ] **101** · Fibre Clinix Vibrancy Tratamiento Color Radiante · 250 ml  `sk-fibre-clinix-vibrancy-tratamiento`
-- [ ] **102** · Fibre Clinix Aceite Ligero Bondfinity · 100 ml ★  `sk-fibre-clinix-aceite-ligero`
-- [ ] **103** · Fibre Clinix Aceite en Crema Intensivo Bondfinity · 100 ml  `sk-fibre-clinix-aceite-en-crema-intensivo-bondfinity`
+- [x] **93** · Fibre Clinix Champú Fortificante · 300 ml ★  `sk-fibre-clinix-fortify-champu` — foto oficial
+- [x] **94** · Fibre Clinix Champú Hidratante · 300 ml  `sk-fibre-clinix-hydrate-champu` — foto oficial
+- [x] **95** · Fibre Clinix Champú Color Radiante · 300 ml  `sk-fibre-clinix-vibrancy-champu` — foto oficial
+- [x] **96** · Fibre Clinix Acondicionador Fortificante · 250 ml  `sk-fibre-clinix-fortify-acondicionador` — foto oficial
+- [x] **97** · Fibre Clinix Acondicionador Hidratante · 250 ml  `sk-fibre-clinix-hydrate-acondicionador` — foto oficial
+- [x] **98** · Fibre Clinix Acondicionador Color Radiante · 250 ml  `sk-fibre-clinix-vibrancy-acondicionador` — foto oficial
+- [x] **99** · Fibre Clinix Tratamiento Fortificante · 250 ml  `sk-fibre-clinix-fortify-tratamiento` — foto oficial
+- [x] **100** · Fibre Clinix Tratamiento Hidratante · 250 ml  `sk-fibre-clinix-hydrate-tratamiento` — foto oficial
+- [x] **101** · Fibre Clinix Tratamiento Color Radiante · 250 ml  `sk-fibre-clinix-vibrancy-tratamiento` — foto oficial
+- [x] **102** · Fibre Clinix Aceite Ligero Bondfinity · 100 ml ★  `sk-fibre-clinix-aceite-ligero` — foto oficial
+- [x] **103** · Fibre Clinix Aceite en Crema Intensivo Bondfinity · 100 ml  `sk-fibre-clinix-aceite-en-crema-intensivo-bondfinity` — foto oficial
 
 ### BLONDME
-- [ ] **104** · BLONDME Champú Morado Bond Repair · 300 ml ★  `sk-blondme-champu-morado`
-- [ ] **105** · BLONDME Champú Nutritivo Bond Repair · 300 ml  `sk-blondme-champu-nutritivo-bond-repair`
-- [ ] **106** · BLONDME Acondicionador Nutritivo Bond Repair · 250 ml  `sk-blondme-acondicionador-nutritivo-bond-repair`
-- [ ] **107** · BLONDME Acondicionador Morado Bond Repair · 250 ml  `sk-blondme-acondicionador-morado-bond-repair`
-- [ ] **108** · BLONDME Spray Acondicionador Morado Bond Repair · 150 ml  `sk-blondme-spray-acondicionador-morado-bond-repair`
-- [ ] **109** · BLONDME Tratamiento Nutritivo Bond Repair · 200 ml  `sk-blondme-tratamiento-nutritivo-bond-repair`
-- [ ] **110** · BLONDME Tratamiento Morado Bond Repair · 200 ml  `sk-blondme-tratamiento-morado-bond-repair`
-- [ ] **111** · BLONDME Tratamiento Reparador Intensivo Bondfinity · 200 ml  `sk-blondme-tratamiento-reparador-intensivo-bondfinity`
+- [x] **104** · BLONDME Champú Morado Bond Repair · 300 ml ★  `sk-blondme-champu-morado` — foto oficial
+- [x] **105** · BLONDME Champú Nutritivo Bond Repair · 300 ml  `sk-blondme-champu-nutritivo-bond-repair` — foto oficial
+- [x] **106** · BLONDME Acondicionador Nutritivo Bond Repair · 250 ml  `sk-blondme-acondicionador-nutritivo-bond-repair` — foto oficial
+- [x] **107** · BLONDME Acondicionador Morado Bond Repair · 250 ml  `sk-blondme-acondicionador-morado-bond-repair` — foto oficial
+- [x] **108** · BLONDME Spray Acondicionador Morado Bond Repair · 150 ml  `sk-blondme-spray-acondicionador-morado-bond-repair` — foto oficial
+- [x] **109** · BLONDME Tratamiento Nutritivo Bond Repair · 200 ml  `sk-blondme-tratamiento-nutritivo-bond-repair` — foto oficial
+- [x] **110** · BLONDME Tratamiento Morado Bond Repair · 200 ml  `sk-blondme-tratamiento-morado-bond-repair` — foto oficial
+- [x] **111** · BLONDME Tratamiento Reparador Intensivo Bondfinity · 200 ml  `sk-blondme-tratamiento-reparador-intensivo-bondfinity` — foto oficial
 
 ### Scalp Clinix
-- [ ] **112** · Scalp Clinix Champú Anticaída · 300 ml  `sk-scalp-clinix-champu-anticaida`
-- [ ] **113** · Scalp Clinix Champú de Control de la Caspa · 300 ml  `sk-scalp-clinix-champu-control-caspa`
-- [ ] **114** · Scalp Clinix Champú de Control de la Grasa · 300 ml  `sk-scalp-clinix-champu-control-grasa`
-- [ ] **115** · Scalp Clinix Champú Calmante · 300 ml  `sk-scalp-clinix-champu-calmante`
-- [ ] **116** · Scalp Clinix Sérum Anticaída 7x10 ml · 7 x 10 ml  `sk-scalp-clinix-serum-anticaida`
+- [x] **112** · Scalp Clinix Champú Anticaída · 300 ml  `sk-scalp-clinix-champu-anticaida` — foto oficial
+- [x] **113** · Scalp Clinix Champú de Control de la Caspa · 300 ml  `sk-scalp-clinix-champu-control-caspa` — foto oficial
+- [x] **114** · Scalp Clinix Champú de Control de la Grasa · 300 ml  `sk-scalp-clinix-champu-control-grasa` — foto oficial
+- [x] **115** · Scalp Clinix Champú Calmante · 300 ml  `sk-scalp-clinix-champu-calmante` — foto oficial
+- [x] **116** · Scalp Clinix Sérum Anticaída 7x10 ml · 7 x 10 ml  `sk-scalp-clinix-serum-anticaida` — foto oficial
 
 ### Oil Ultime
-- [ ] **117** · Oil Ultime Tratamiento de Acabado de Argán · 100 ml  `sk-oil-ultime-tratamiento-acabado-argan`
+- [x] **117** · Oil Ultime Tratamiento de Acabado de Argán · 100 ml  `sk-oil-ultime-tratamiento-acabado-argan` — foto oficial
 
 ### Chroma ID
-- [ ] **118** · Chroma ID Bonding Color Mask · 300 ml  `sk-chroma-id-bonding-color-mask`
+- [x] **118** · Chroma ID Bonding Color Mask · 300 ml  `sk-chroma-id-bonding-color-mask` — foto oficial
 
 ### Goodbye Yellow
-- [ ] **119** · Goodbye Yellow Champú Neutralizante · 300 ml  `sk-goodbye-yellow-champu-neutralizante`
+- [x] **119** · Goodbye Yellow Champú Neutralizante · 300 ml  `sk-goodbye-yellow-champu-neutralizante` — foto oficial
 
 ### OSiS
-- [ ] **120** · OSiS Glow · 50 ml  `sk-osis-glow`
-- [ ] **121** · OSiS Sparkler · 300 ml  `sk-osis-sparkler`
-- [ ] **122** · OSiS Dust It · 10 g ★  `sk-osis-dust-it`
-- [ ] **123** · OSiS Grip · 200 ml  `sk-osis-grip`
-- [ ] **124** · OSiS Air Whip · 200 ml  `sk-osis-air-whip`
-- [ ] **125** · OSiS Volume Up · 300 ml  `sk-osis-volume-up`
-- [ ] **126** · OSiS Upload · 200 ml  `sk-osis-upload`
-- [ ] **127** · OSiS Hairbody · 200 ml  `sk-osis-hairbody`
+- [x] **120** · OSiS Glow · 50 ml  `sk-osis-glow` — foto oficial
+- [x] **121** · OSiS Sparkler · 300 ml  `sk-osis-sparkler` — foto oficial
+- [x] **122** · OSiS Dust It · 10 g ★  `sk-osis-dust-it` — foto oficial
+- [x] **123** · OSiS Grip · 200 ml  `sk-osis-grip` — foto oficial
+- [x] **124** · OSiS Air Whip · 200 ml  `sk-osis-air-whip` — foto oficial
+- [x] **125** · OSiS Volume Up · 300 ml  `sk-osis-volume-up` — foto oficial
+- [x] **126** · OSiS Upload · 200 ml  `sk-osis-upload` — foto oficial
+- [x] **127** · OSiS Hairbody · 200 ml  `sk-osis-hairbody` — foto oficial
 - [ ] **128** · OSiS Pump Up · 85 ml  `sk-osis-pump-up`
-- [ ] **129** · OSiS Soft Dust · 10 g  `sk-osis-soft-dust`
-- [ ] **130** · OSiS Thrill · 100 ml  `sk-osis-thrill`
-- [ ] **131** · OSiS Velvet · 200 ml  `sk-osis-velvet`
-- [ ] **132** · OSiS Flexwax · 85 ml  `sk-osis-flexwax`
-- [ ] **133** · OSiS Mess Up · 100 ml  `sk-osis-mess-up`
-- [ ] **134** · OSiS Mighty Matte · 100 ml  `sk-osis-mighty-matte`
-- [ ] **135** · OSiS Rock Hard · 150 ml  `sk-osis-rock-hard`
-- [ ] **136** · OSiS G.Force · 150 ml  `sk-osis-g-force`
-- [ ] **137** · OSiS Texture Craft · 300 ml  `sk-osis-texture-craft`
-- [ ] **138** · OSiS Bounty Balm · 150 ml  `sk-osis-bounty-balm`
-- [ ] **139** · OSiS Curl Jam · 300 ml  `sk-osis-curl-jam`
-- [ ] **140** · OSiS Tipsy Twirl · 300 ml  `sk-osis-tipsy-twirl`
-- [ ] **141** · OSiS Curl Soufflé · 200 ml ★  `sk-osis-curl-souffle`
-- [ ] **142** · OSiS Curl Retouch · 200 ml ★  `sk-osis-curl-retouch`
-- [ ] **143** · OSiS Refresh Dust · 300 ml  `sk-osis-refresh-dust`
-- [ ] **144** · OSiS Session · 500 ml ★  `sk-osis-session`
-- [ ] **145** · OSiS Elastic · 300 ml  `sk-osis-elastic`
-- [ ] **146** · OSiS Freeze · 300 ml  `sk-osis-freeze`
-- [ ] **147** · OSiS Freeze Pump · 200 ml  `sk-osis-freeze-pump`
-- [ ] **148** · OSiS Flatliner · 200 ml ★  `sk-osis-flatliner`
-- [ ] **149** · OSiS Super Shield · 300 ml  `sk-osis-super-shield`
+- [x] **129** · OSiS Soft Dust · 10 g  `sk-osis-soft-dust` — foto oficial
+- [x] **130** · OSiS Thrill · 100 ml  `sk-osis-thrill` — foto oficial
+- [x] **131** · OSiS Velvet · 200 ml  `sk-osis-velvet` — foto oficial
+- [x] **132** · OSiS Flexwax · 85 ml  `sk-osis-flexwax` — foto oficial
+- [x] **133** · OSiS Mess Up · 100 ml  `sk-osis-mess-up` — foto oficial
+- [x] **134** · OSiS Mighty Matte · 100 ml  `sk-osis-mighty-matte` — foto oficial
+- [x] **135** · OSiS Rock Hard · 150 ml  `sk-osis-rock-hard` — foto oficial
+- [x] **136** · OSiS G.Force · 150 ml  `sk-osis-g-force` — foto oficial
+- [x] **137** · OSiS Texture Craft · 300 ml  `sk-osis-texture-craft` — foto oficial
+- [x] **138** · OSiS Bounty Balm · 150 ml  `sk-osis-bounty-balm` — foto oficial
+- [x] **139** · OSiS Curl Jam · 300 ml  `sk-osis-curl-jam` — foto oficial
+- [x] **140** · OSiS Tipsy Twirl · 300 ml  `sk-osis-tipsy-twirl` — foto oficial
+- [x] **141** · OSiS Curl Soufflé · 200 ml ★  `sk-osis-curl-souffle` — foto oficial
+- [x] **142** · OSiS Curl Retouch · 200 ml ★  `sk-osis-curl-retouch` — foto oficial
+- [x] **143** · OSiS Refresh Dust · 300 ml  `sk-osis-refresh-dust` — foto oficial
+- [x] **144** · OSiS Session · 500 ml ★  `sk-osis-session` — foto oficial
+- [x] **145** · OSiS Elastic · 300 ml  `sk-osis-elastic` — foto oficial
+- [x] **146** · OSiS Freeze · 300 ml  `sk-osis-freeze` — foto oficial
+- [x] **147** · OSiS Freeze Pump · 200 ml  `sk-osis-freeze-pump` — foto oficial
+- [x] **148** · OSiS Flatliner · 200 ml ★  `sk-osis-flatliner` — foto oficial
+- [x] **149** · OSiS Super Shield · 300 ml  `sk-osis-super-shield` — foto oficial
 
 ### Session Label
-- [ ] **150** · Session Label The Serum · 100 ml  `sk-session-label-the-serum`
-- [ ] **151** · Session Label The Texturizer · 300 ml  `sk-session-label-the-texturizer`
-- [ ] **152** · Session Label The Thickener · 200 ml  `sk-session-label-the-thickener`
-- [ ] **153** · Session Label The Miracle · 50 ml  `sk-session-label-the-miracle`
-- [ ] **154** · Session Label The Mousse · 200 ml  `sk-session-label-the-mousse`
-- [ ] **155** · Session Label The Definer · 150 ml  `sk-session-label-the-definer`
-- [ ] **156** · Session Label The Powder · 8 g  `sk-session-label-the-powder`
-- [ ] **157** · Session Label The Salt · 200 ml  `sk-session-label-the-salt`
-- [ ] **158** · Session Label The Paste · 65 ml  `sk-session-label-the-paste`
-- [ ] **159** · Session Label The Mud · 65 ml  `sk-session-label-the-mud`
-- [ ] **160** · Session Label The Jelly · 150 ml  `sk-session-label-the-jelly`
-- [ ] **161** · Session Label The Strong · 300 ml  `sk-session-label-the-strong`
-- [ ] **162** · Session Label The Flexible · 300 ml  `sk-session-label-the-flexible`
-- [ ] **163** · Session Label The Coat · 300 ml  `sk-session-label-the-coat`
+- [x] **150** · Session Label The Serum · 100 ml  `sk-session-label-the-serum` — foto oficial
+- [x] **151** · Session Label The Texturizer · 300 ml  `sk-session-label-the-texturizer` — foto oficial
+- [x] **152** · Session Label The Thickener · 200 ml  `sk-session-label-the-thickener` — foto oficial
+- [x] **153** · Session Label The Miracle · 50 ml  `sk-session-label-the-miracle` — foto oficial
+- [x] **154** · Session Label The Mousse · 200 ml  `sk-session-label-the-mousse` — foto oficial
+- [x] **155** · Session Label The Definer · 150 ml  `sk-session-label-the-definer` — foto oficial
+- [x] **156** · Session Label The Powder · 8 g  `sk-session-label-the-powder` — foto oficial
+- [x] **157** · Session Label The Salt · 200 ml  `sk-session-label-the-salt` — foto oficial
+- [x] **158** · Session Label The Paste · 65 ml  `sk-session-label-the-paste` — foto oficial
+- [x] **159** · Session Label The Mud · 65 ml  `sk-session-label-the-mud` — foto oficial
+- [x] **160** · Session Label The Jelly · 150 ml  `sk-session-label-the-jelly` — foto oficial
+- [x] **161** · Session Label The Strong · 300 ml  `sk-session-label-the-strong` — foto oficial
+- [x] **162** · Session Label The Flexible · 300 ml  `sk-session-label-the-flexible` — foto oficial
+- [x] **163** · Session Label The Coat · 300 ml  `sk-session-label-the-coat` — foto oficial
 
 ### Silhouette
-- [ ] **164** · Silhouette Espuma Super Hold · 500 ml  `sk-silhouette-espuma-super-hold`
-- [ ] **165** · Silhouette Gel Super Hold · 250 ml  `sk-silhouette-gel-super-hold`
-- [ ] **166** · Silhouette Espuma Flexible Hold · 500 ml  `sk-silhouette-espuma-flexible-hold`
-- [ ] **167** · Silhouette Laca Super Hold · 500 ml  `sk-silhouette-laca`
-- [ ] **168** · Silhouette Pumpspray Super Hold · 200 ml  `sk-silhouette-pumpspray-super-hold`
-- [ ] **169** · Silhouette Laca Flexible Hold · 500 ml  `sk-silhouette-laca-flexible-hold`
+- [x] **164** · Silhouette Espuma Super Hold · 500 ml  `sk-silhouette-espuma-super-hold` — foto oficial
+- [x] **165** · Silhouette Gel Super Hold · 250 ml  `sk-silhouette-gel-super-hold` — foto oficial
+- [x] **166** · Silhouette Espuma Flexible Hold · 500 ml  `sk-silhouette-espuma-flexible-hold` — foto oficial
+- [x] **167** · Silhouette Laca Super Hold · 500 ml  `sk-silhouette-laca` — foto oficial
+- [x] **168** · Silhouette Pumpspray Super Hold · 200 ml  `sk-silhouette-pumpspray-super-hold` — foto oficial
+- [x] **169** · Silhouette Laca Flexible Hold · 500 ml  `sk-silhouette-laca-flexible-hold` — foto oficial

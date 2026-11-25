@@ -36,7 +36,8 @@ def trim(im):
     bg = tuple(sorted(c[i] for c in corners)[1] for i in range(3))          # mediana de las esquinas
     if max(max(abs(c[i] - bg[i]) for i in range(3)) for c in corners) > 18: return im, 'no liso (no se recorta)'
     diff = ImageChops.difference(im, Image.new('RGB', im.size, bg)).convert('L').filter(ImageFilter.MedianFilter(5))
-    box = diff.point(lambda v: 255 if v > 16 else 0).getbbox()
+    thr = 8 if min(bg) >= 250 else 16                     # sobre blanco puro se afina más: los envases blancos apenas se distinguen del fondo
+    box = diff.point(lambda v: 255 if v > thr else 0).getbbox()
     if not box: return im, 'liso'
     if min(bg) < 235:                                     # fondo liso pero no blanco: se deja tal cual, sin recortar a ras
         return im, f'liso de color {bg}'
@@ -46,7 +47,7 @@ def process(src, pid, extra=False):
     im = ImageOps.exif_transpose(Image.open(src)); im.load()
     w0, h0 = im.size
     im, bg = trim(im)
-    w, h = im.size; m = round(max(w, h) * .03)             # un 3 % de aire alrededor
+    w, h = im.size; m = round(max(w, h) * .04)             # un 4 % de aire alrededor
     canvas = Image.new(im.mode, (w + 2 * m, h + 2 * m), (255, 255, 255, 0) if im.mode == 'RGBA' else (255, 255, 255))
     canvas.paste(im, (m, m)); im = canvas
     if max(im.size) > 1200: im.thumbnail((1200, 1200), Image.LANCZOS)

@@ -1,0 +1,440 @@
+{
+"sk-repair-rescue-champu": {
+"desc": "Champú reparador para cabello dañado. Limpia con suavidad y, con las tecnologías Bond Repair y Multi-Peptide, devuelve fuerza, elasticidad y brillo: repara hasta el 70 % del daño en cada lavado, según Schwarzkopf Professional.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien."
+},
+"sk-bonacure-repair-rescue-plus-champu-1000ml": {
+"desc": "El champú reparador de Bonacure en formato de litro, pensado para cabello dañado. Deja un efecto acondicionador que dura y devuelve fuerza y elasticidad sin apelmazar. Fórmula vegana.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien.",
+"name": "Bonacure Repair Rescue Champú 1000 ml",
+"short": "Champú reparador para cabello dañado, en formato de litro",
+"benefits": [
+"Para cabello dañado",
+"Devuelve fuerza y elasticidad sin apelmazar",
+"Formato de 1 litro",
+"Vegano"
+]
+},
+"sk-bonacure-repair-rescue-plus-acondicionador": {
+"desc": "Acondicionador para cabello dañado que desenreda y facilita el peinado. Revitaliza en profundidad después de cada lavado y deja el pelo suave, resistente y con brillo, sin apelmazar.",
+"use": "Tras el champú, aplica sobre el pelo secado con toalla y masajea. Deja actuar 2 minutos y aclara."
+},
+"sk-bonacure-repair-rescue-plus-spray-acondicionador": {
+"desc": "Acondicionador en spray sin aclarado para cabello dañado. Desenreda al instante, mantiene el pelo hidratado 24 horas y ayuda a reparar los puentes del cabello en cada uso, según la marca.",
+"use": "Agita bien y pulveriza por secciones sobre el pelo secado con toalla. No aclares y peina como siempre."
+},
+"sk-bonacure-repair-rescue-plus-tratamiento": {
+"desc": "Mascarilla de cuidado intenso para cabello dañado. Actúa desde el interior de la fibra y ayuda a reparar hasta el 90 % del daño en cada uso, según la marca: el pelo recupera fuerza, elasticidad y un aspecto más sano.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 10 minutos y aclara bien."
+},
+"sk-repair-rescue-iluminador": {
+"desc": "Tratamiento líquido concentrado que repara y refuerza los puentes del cabello y alisa la cutícula al momento. Potencia el brillo hasta un 150 %, según la marca, y deja un acabado luminoso.",
+"use": "Aplica 20 ml en medios y puntas con el pelo húmedo. Masajea hasta que se convierta en crema y aclara bien."
+},
+"sk-repair-rescue-puntas": {
+"desc": "Sérum sin aclarado para las puntas del cabello dañado. Penetra en la fibra para ayudar a repararla y sella hasta el 90 % de las puntas abiertas en cada uso, según la marca.",
+"use": "Reparte de manera uniforme sobre el pelo secado con toalla, sin aclarar, y peina como siempre.",
+"name": "Bonacure Repair Rescue+ Sérum para Puntas Abiertas+"
+},
+"sk-color-freeze-champu": {
+"desc": "Champú suave para cabello teñido. Devuelve al pelo su pH óptimo y sella los pigmentos dentro de la fibra para que el color dure más. Ideal después de teñirte y para mantener el color en casa.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien."
+},
+"sk-color-freeze-silver": {
+"desc": "Champú con pigmentos para cabello blanco, canoso o aclarado. Neutraliza los tonos cálidos que no quieres y reaviva los fríos, a la vez que devuelve al pelo su pH óptimo para proteger el color.",
+"use": "Aplica sobre el pelo mojado y masajea. Para matizar, deja actuar de 2 a 5 minutos y aclara bien."
+},
+"sk-bonacure-color-freeze-champu-1000ml": {
+"desc": "El champú para cabello teñido de Bonacure en formato de litro. Devuelve al pelo su pH óptimo y sella los pigmentos dentro de la fibra para que el color dure más.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien."
+},
+"sk-bonacure-color-freeze-acondicionador": {
+"desc": "Acondicionador suave para cabello teñido y poroso. Desenreda, facilita el peinado y devuelve al pelo su pH óptimo para sellar los pigmentos y evitar que el color se pierda.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 2 minutos y aclara."
+},
+"sk-bonacure-color-freeze-spray-acondicionador": {
+"desc": "Acondicionador ligero en spray, sin aclarado y con protección térmica, para cabello teñido. Desenreda y ayuda a sellar los pigmentos para que el color no se apague.",
+"use": "Agita bien y pulveriza por secciones sobre el pelo secado con toalla. No aclares y peina como siempre."
+},
+"sk-bonacure-color-freeze-tratamiento": {
+"desc": "Mascarilla en crema de cuidado intensivo para cabello teñido. Su fórmula renovada con el complejo Care Boost acondiciona en profundidad sin restar ligereza al pelo. Vegana.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 10 minutos y aclara bien."
+},
+"sk-moisture-kick-champu": {
+"desc": "Champú hidratante con aloe vera para cabello normal a seco, quebradizo u ondulado. Limpia con delicadeza y ayuda al pelo a recuperar su nivel de hidratación. Sin sulfatos SLS/SLES, siliconas ni colorantes artificiales.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien."
+},
+"sk-bonacure-moisture-kick-champu-1000ml": {
+"desc": "El champú hidratante de Bonacure en formato de litro, para cabello normal a seco, quebradizo o rizado. Limpia con suavidad y ayuda a retener la hidratación: el pelo se nota ligero y elástico hasta 48 horas, según la marca.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien."
+},
+"sk-bonacure-moisture-kick-acondicionador": {
+"desc": "Acondicionador hidratante y ligero con aloe vera, para cabello normal a seco, quebradizo u ondulado. Acondiciona con delicadeza y ayuda a recuperar la hidratación. Sin siliconas ni colorantes artificiales.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Aclara bien a los 2 minutos."
+},
+"sk-bonacure-moisture-kick-spray-acondicionador": {
+"desc": "Acondicionador en spray sin aclarado para cabello normal a seco, quebradizo o rizado. Hidrata y acondiciona al instante y ayuda al pelo a retener la hidratación sin perder ligereza.",
+"use": "Agita bien y pulveriza por secciones sobre el pelo secado con toalla. No aclares y peina como siempre."
+},
+"sk-bonacure-moisture-kick-tratamiento": {
+"desc": "Mascarilla de hidratación profunda para cabello normal a seco, quebradizo o rizado. Su fórmula renovada con el complejo Care Boost acondiciona a fondo y deja el pelo ligero.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 10 minutos y aclara bien."
+},
+"sk-moisture-kick-serum": {
+"desc": "Sérum hialurónico muy ligero y de absorción rápida para cabello normal a seco y ondulado. Mantiene la sensación de hidratación y suaviza la fibra; funciona mejor aún con el champú o el acondicionador Moisture Kick.",
+"use": "Aplica en medios y puntas con el pelo secado con toalla, masajea suavemente y peina."
+},
+"sk-bonacure-volume-boost-champu": {
+"desc": "Champú para dar volumen al cabello fino. Retira con suavidad el exceso de grasa y los residuos que lo apelmazan, y sus polímeros de cuidado evitan la electricidad estática: el pelo queda con más cuerpo y más manejable.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien."
+},
+"sk-bonacure-volume-boost-gelatina-acondicionadora": {
+"desc": "Acondicionador ligero en textura de gelatina para cabello fino. Desenreda y acondiciona sin peso, para devolver la elasticidad y dar más volumen. Vegano y sin colorantes artificiales.",
+"use": "Aplica sobre el pelo secado con toalla y masajea. Deja actuar 2 minutos y aclara."
+},
+"sk-bonacure-scalp-champu-calmante": {
+"desc": "Champú suave para el cuero cabelludo que se irrita con facilidad, aprobado dermatológicamente. Calma, nutre y equilibra la hidratación del cuero cabelludo. Fórmula vegana.",
+"use": "Aplica sobre el pelo húmedo, masajea durante 2 minutos y aclara."
+},
+"sk-bonacure-scalp-champu-anticaspa": {
+"desc": "Champú suave para el cuero cabelludo con tendencia a la caspa, aprobado dermatológicamente. Elimina la caspa visible y respeta el pH del cuero cabelludo. Fórmula vegana.",
+"use": "Aplica sobre el pelo mojado, masajea durante 2 minutos y aclara."
+},
+"sk-bonacure-sun-protect-fluido-verano-10en1": {
+"desc": "Crema ligera sin aclarado para el pelo castigado por el sol, con diez beneficios en uno: entre ellos, menos rotura y encrespamiento, protección frente al secador, cuidado del color, desenredado, hidratación y sellado de puntas.",
+"use": "Aplica una pequeña cantidad de manera uniforme sobre el pelo húmedo o seco. No aclares."
+},
+"sk-fibre-clinix-fortify-champu": {
+"desc": "Champú reparador para cabello dañado y muy procesado. Con la tecnología BondXtend, que crea puentes dentro de la fibra, y multipéptidos: limpia con suavidad, fortalece al instante y deja el pelo más liso y brillante.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien. Repite si hace falta.",
+"name": "Fibre Clinix Champú Fortificante"
+},
+"sk-fibre-clinix-hydrate-champu": {
+"desc": "Champú hidratante y reparador para cabello seco y quebradizo. Con tecnología BondXtend y electrolitos: limpia con suavidad y devuelve suavidad, brillo y elasticidad.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien. Repite si hace falta.",
+"name": "Fibre Clinix Champú Hidratante"
+},
+"sk-fibre-clinix-vibrancy-champu": {
+"desc": "Champú reparador para cabello teñido. Con tecnología BondXtend y ácidos AHA: suaviza la fibra y sella la intensidad del color para que dure más.",
+"use": "Aplica sobre el pelo mojado, masajea y aclara bien. Repite si hace falta.",
+"name": "Fibre Clinix Champú Color Radiante"
+},
+"sk-fibre-clinix-fortify-acondicionador": {
+"desc": "Acondicionador reparador para cabello dañado y muy procesado. Con tecnología BondXtend y multipéptidos: desenreda, suaviza y sella la superficie del pelo.",
+"use": "Aplica en medios y puntas con el pelo húmedo, deja actuar 2 minutos y aclara.",
+"name": "Fibre Clinix Acondicionador Fortificante"
+},
+"sk-fibre-clinix-hydrate-acondicionador": {
+"desc": "Acondicionador hidratante y reparador para cabello seco y quebradizo. Con tecnología BondXtend y electrolitos: desenreda, suaviza y ayuda a retener la hidratación.",
+"use": "Aplica en medios y puntas con el pelo húmedo, deja actuar 2 minutos y aclara.",
+"name": "Fibre Clinix Acondicionador Hidratante"
+},
+"sk-fibre-clinix-vibrancy-acondicionador": {
+"desc": "Acondicionador reparador para cabello teñido. Con tecnología BondXtend y ácidos AHA: desenreda, facilita el peinado y protege la intensidad del color.",
+"use": "Aplica en medios y puntas con el pelo húmedo, deja actuar 2 minutos y aclara.",
+"name": "Fibre Clinix Acondicionador Color Radiante"
+},
+"sk-fibre-clinix-fortify-tratamiento": {
+"desc": "Mascarilla reparadora para cabello dañado y muy procesado. Con tecnología BondXtend y multipéptidos: nutre intensamente y fortalece el pelo en profundidad.",
+"use": "Aplica de 15 a 25 g (el tamaño de una ciruela) en medios y puntas con el pelo húmedo. Deja actuar hasta 10 minutos y aclara bien.",
+"name": "Fibre Clinix Tratamiento Fortificante"
+},
+"sk-fibre-clinix-hydrate-tratamiento": {
+"desc": "Mascarilla de hidratación intensiva para cabello seco y quebradizo. Con tecnología BondXtend y electrolitos: recarga el pelo de hidratación y lo fortalece en profundidad.",
+"use": "Aplica de 15 a 25 g (el tamaño de una ciruela) en medios y puntas con el pelo húmedo. Deja actuar hasta 10 minutos y aclara bien.",
+"name": "Fibre Clinix Tratamiento Hidratante"
+},
+"sk-fibre-clinix-vibrancy-tratamiento": {
+"desc": "Mascarilla reparadora para cabello teñido. Con tecnología BondXtend: nutre intensamente, fortalece y realza la intensidad del color para que el resultado dure.",
+"use": "Aplica de 15 a 25 g (el tamaño de una ciruela) en medios y puntas con el pelo húmedo. Deja actuar hasta 10 minutos y aclara bien.",
+"name": "Fibre Clinix Tratamiento Color Radiante"
+},
+"sk-fibre-clinix-aceite-ligero": {
+"desc": "Aceite fluido reparador para cabello normal a fino. Con la tecnología Bondfinity, que sella la queratina del propio cabello, y un complejo de 5 aceites: da suavidad y brillo con una hidratación ligera.",
+"use": "Reparte unas gotas en las palmas. Tiene varios usos: como prechampú sobre el pelo húmedo (se aclara antes de lavar) o en medios y puntas como acabado."
+},
+"sk-fibre-clinix-aceite-en-crema-intensivo-bondfinity": {
+"desc": "Aceite reparador en crema para cabello grueso. Con tecnología Bondfinity y un complejo de 5 aceites: al frotarlo en las manos pasa de crema a aceite y deja el pelo suave, brillante e hidratado.",
+"use": "Frótalo en las palmas hasta que pase de crema a aceite. Tiene varios usos: como prechampú sobre el pelo húmedo (se aclara antes de lavar) o en medios y puntas como acabado."
+},
+"sk-blondme-champu-morado": {
+"desc": "Champú violeta para rubios. Sus pigmentos fríos neutralizan el tono amarillo y frenan la calidez sin cambiar el color, mientras limpia con suavidad y nutre con aceite de almendras. Con tecnología Bond Repair, que refuerza el pelo creando puentes internos.",
+"use": "Aplica de manera uniforme sobre el pelo húmedo, deja actuar 2 minutos y aclara bien."
+},
+"sk-blondme-champu-nutritivo-bond-repair": {
+"desc": "Champú de uso diario para cabello rubio. Limpia con suavidad, hidrata y, con la tecnología Bond Repair, refuerza el pelo creando puentes internos. Con aceite de almendras y té blanco.",
+"use": "Aplica sobre el pelo mojado, deja actuar 1 minuto y aclara bien."
+},
+"sk-blondme-acondicionador-nutritivo-bond-repair": {
+"desc": "Acondicionador para cabello rubio que nutre y desenreda al instante sin apelmazar. Con tecnología Bond Repair, que refuerza el pelo creando puentes internos.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar 2 minutos y aclara bien."
+},
+"sk-blondme-acondicionador-morado-bond-repair": {
+"desc": "Acondicionador violeta para rubios. Neutraliza el tono amarillo, frena la calidez y desenreda al instante de medios a puntas, dejando el pelo sedoso.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 2 a 5 minutos y aclara bien."
+},
+"sk-blondme-spray-acondicionador-morado-bond-repair": {
+"desc": "Acondicionador violeta en spray, sin aclarado. Neutraliza el tono amarillo, desenreda al instante y deja un brillo plateado.",
+"use": "Agita bien y pulveriza de manera uniforme sobre el pelo secado con toalla o seco. No aclares y peina como quieras."
+},
+"sk-blondme-tratamiento-nutritivo-bond-repair": {
+"desc": "Mascarilla para cabello rubio que nutre en profundidad sin apelmazar y suaviza la fibra porosa. Con tecnología Bond Repair, que refuerza el pelo creando puentes internos.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 5 a 10 minutos y aclara bien."
+},
+"sk-blondme-tratamiento-morado-bond-repair": {
+"desc": "Mascarilla violeta para rubios. Neutraliza el tono amarillo, frena la calidez y nutre en profundidad, con aceite de almendras y pigmentos fríos que mantienen el rubio nítido.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 5 a 10 minutos y aclara bien."
+},
+"sk-blondme-tratamiento-reparador-intensivo-bondfinity": {
+"desc": "Mascarilla de reparación profunda para cabello rubio y aclarado. Con la tecnología Bondfinity, que crea puentes resistentes y sella la queratina del propio cabello, repara y fortalece sin apelmazar.",
+"use": "Aplica de manera uniforme sobre el pelo secado con toalla, deja actuar de 5 a 10 minutos y aclara bien."
+},
+"sk-scalp-clinix-champu-anticaida": {
+"desc": "Champú que ayuda a reforzar el cabello y deja el cuero cabelludo hidratado. Prepara para el Sérum Anticaída: usados juntos de forma continuada, reducen la caída no patológica a las 6 semanas, según la marca.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien."
+},
+"sk-scalp-clinix-champu-control-caspa": {
+"desc": "Champú que retira con suavidad las escamas visibles y deja en el cuero cabelludo una sensación calmante y refrescante. Sin sulfatos SLS/SLES ni siliconas.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien."
+},
+"sk-scalp-clinix-champu-control-grasa": {
+"desc": "Champú que limpia en profundidad y elimina el exceso de grasa, con un efecto refrescante que alarga la sensación de limpieza. Sin sulfatos SLS/SLES ni siliconas.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien."
+},
+"sk-scalp-clinix-champu-calmante": {
+"desc": "Champú suave que calma el cuero cabelludo y ayuda a equilibrar su hidratación. Sin sulfatos SLS/SLES ni siliconas.",
+"use": "Aplica sobre el pelo húmedo, haz mucha espuma y aclara bien."
+},
+"sk-scalp-clinix-serum-anticaida": {
+"desc": "Sérum para el cuero cabelludo que favorece la microcirculación y refuerza el folículo. Usado con regularidad junto con el Champú Anticaída, reduce la caída no patológica a las 6 semanas, según la marca.",
+"use": "Aplica dos veces al día directamente sobre el cuero cabelludo, haciendo rayas en el pelo. Reparte, masajea y no aclares."
+},
+"sk-oil-ultime-tratamiento-acabado-argan": {
+"desc": "Aceite de acabado con aceite de argán para cabello normal a grueso. Su fórmula ligera nutre, da brillo y suavidad y combate el encrespamiento sin apelmazar.",
+"use": "Aplica una pequeña cantidad sobre el pelo seco o secado con toalla y peina como quieras."
+},
+"sk-chroma-id-bonding-color-mask": {
+"desc": "Mascarilla de color semipermanente que refresca y realza el tono entre visitas al salón, a la vez que acondiciona en profundidad y da brillo al instante. Hay varios tonos: cada uno sirve para una base de color distinta.",
+"use": "Usa guantes y protege la ropa, la piel y las superficies para que no se manchen. Sigue las instrucciones del envase para el tiempo de pose."
+},
+"sk-goodbye-yellow-champu-neutralizante": {
+"desc": "Champú muy pigmentado que neutraliza al momento los tonos amarillos del rubio medio a claro. Limpia con suavidad y lleva tecnología Bonding. Fórmula vegana.",
+"use": "Úsalo como un champú sobre el pelo mojado y deja actuar unos 5 minutos: el resultado depende del tiempo y del estado del pelo. Aclara bien."
+},
+"sk-osis-glow": {
+"desc": "Sérum de brillo antiencrespamiento. Suaviza el pelo áspero y apagado sin apelmazarlo y controla el encrespamiento y la electricidad estática.",
+"use": "Aplica una pequeña cantidad sobre el pelo húmedo o seco."
+},
+"sk-osis-sparkler": {
+"desc": "Spray de brillo que reduce el encrespamiento, facilita el desenredado y protege de la humedad.",
+"use": "Pulveriza en pequeñas dosis, a unos 30 cm, sobre el pelo seco."
+},
+"sk-osis-dust-it": {
+"desc": "Polvo matificante de fijación fuerte que da agarre al instante y un volumen que aguanta.",
+"use": "Agítalo suavemente y aplícalo con los dedos sobre el pelo seco; en la raíz, para levantarla."
+},
+"sk-osis-grip": {
+"desc": "Espuma de fijación extrafuerte que da volumen y brillo natural, sujeta incluso el pelo más grueso y lo protege del calor del secador.",
+"use": "Agita bien, mantén el envase en vertical y pon la espuma en la mano. Aplica sobre el pelo húmedo y seca con secador."
+},
+"sk-osis-air-whip": {
+"desc": "Espuma flexible de fijación ligera. Hace el pelo más manejable al secarlo, lo protege del calor y se puede aplicar por capas para sumar fijación sin apelmazar.",
+"use": "Agita bien y dispensa con el envase boca abajo. Aplica sobre el pelo húmedo y seca con secador."
+},
+"sk-osis-volume-up": {
+"desc": "Spray voluminizador antiestático para melenas largas a las que les falta cuerpo y fijación. Realza la textura y da volumen.",
+"use": "Pulveriza en ráfagas cortas, a unos 30 cm, mientras levantas secciones grandes de pelo."
+},
+"sk-osis-upload": {
+"desc": "Crema voluminizadora para el secado. Da definición ligera y volumen, y sus agentes acondicionadores suavizan el pelo poroso y lo protegen del calor del secador.",
+"use": "Aplica sobre el pelo húmedo y seca con secador y cepillo redondo para levantar la raíz."
+},
+"sk-osis-hairbody": {
+"desc": "Spray de volumen de fijación ligera para pelo liso. Da cuerpo y movimiento natural, con efecto de mayor grosor y sin dejar el pelo pegajoso ni rígido.",
+"use": "Pulveriza sobre el pelo húmedo. Seca con secador y cepillo redondo para más volumen, o deja secar al aire."
+},
+"sk-osis-soft-dust": {
+"desc": "Polvo de volumen de fijación ligera, pensado para melenas largas. Da cuerpo visible y deja el pelo suave y flexible.",
+"use": "Agítalo suavemente, mantenlo en vertical y aplícalo sobre el pelo seco. Trabájalo con los dedos."
+},
+"sk-osis-thrill": {
+"desc": "Goma fibrosa elástica de fijación media para marcar cualquier textura. Separa y define, se puede remoldear, da brillo y reduce el encrespamiento.",
+"use": "Aplica una pequeña cantidad sobre el pelo húmedo o seco y peina."
+},
+"sk-osis-velvet": {
+"desc": "Spray de fijación ligera con efecto cera. Su bruma ultrafina deja el pelo aterciopelado y ligero, también el fino.",
+"use": "Pulveriza sobre el pelo seco para conseguir una textura moldeable y un brillo natural."
+},
+"sk-osis-flexwax": {
+"desc": "Cera en crema remoldeable de fijación fuerte. Realza la textura y da definición con un brillo natural.",
+"use": "Repártela en las palmas, aplícala sobre el pelo seco y peina."
+},
+"sk-osis-mess-up": {
+"desc": "Pasta mate remoldeable de fijación media, perfecta para pelo corto y looks despeinados. Deja textura seca y movimiento flexible.",
+"use": "Frota una pequeña cantidad en las manos, aplícala sobre el pelo seco y peina."
+},
+"sk-osis-mighty-matte": {
+"desc": "Crema de peinado de fijación fuerte y acabado mate. Da textura y definición y sujeta incluso el pelo más grueso.",
+"use": "Frota una pequeña cantidad en las manos, aplícala sobre el pelo seco y peina."
+},
+"sk-osis-rock-hard": {
+"desc": "Pegamento de peinado de fijación extrafuerte para los estilos más exigentes: fija al instante y aguanta.",
+"use": "Aplica sobre el pelo seco y peina como quieras. También se puede usar sobre el pelo húmedo."
+},
+"sk-osis-g-force": {
+"desc": "El gel clásico de fijación extrafuerte. Para cualquier peinado que pida definición y brillo, con un acabado sin residuos.",
+"use": "Reparte la cantidad que necesites entre las palmas, aplica sobre el pelo húmedo o seco y peina."
+},
+"sk-osis-texture-craft": {
+"desc": "Spray texturizante en seco para melenas largas. Da una fijación ligera y deja que el pelo se mueva con naturalidad.",
+"use": "Agita bien y pulveriza en pequeñas dosis, a unos 20 cm, sobre el pelo seco, levantando secciones grandes."
+},
+"sk-osis-bounty-balm": {
+"desc": "Bálsamo para rizos y ondas. Mantiene su movimiento natural, reduce el encrespamiento y da brillo y suavidad; también calma el pelo liso rebelde y electrizado.",
+"use": "Aplica sobre el pelo húmedo, ondulado o rizado, y define la textura con los dedos. Deja secar al aire o usa difusor."
+},
+"sk-osis-curl-jam": {
+"desc": "Gel de definición de rizos con fijación ligera. Realza rizos y bucles, les devuelve flexibilidad y elasticidad y deja el pelo hidratado y suave, sin apelmazar.",
+"use": "Aplica sobre el pelo húmedo y define los rizos con los dedos. Deja secar al aire o usa difusor."
+},
+"sk-osis-tipsy-twirl": {
+"desc": "Gelatina de rizos de fijación media. Realza la textura natural, define ondas y rizos con un volumen ligero y reduce el encrespamiento, sin tacto crujiente.",
+"use": "Trabaja la gelatina entre las palmas, aplícala sobre el pelo húmedo y define los rizos."
+},
+"sk-osis-curl-souffle": {
+"desc": "Espuma moldeadora de fijación ligera para rizos definidos y con memoria. Intensifica el patrón natural del rizo, da suavidad y controla el encrespamiento.",
+"use": "Agita y dispensa con el envase boca abajo. Separa los rizos húmedos y aplica la espuma de la raíz a las puntas."
+},
+"sk-osis-curl-retouch": {
+"desc": "Spray que reaviva los rizos entre lavados. Devuelve elasticidad y definición, da brillo, controla el encrespamiento y deja una fijación ligera.",
+"use": "Agita bien. Pulveriza con generosidad sobre el pelo húmedo, peina y define ondas y rizos; deja secar al aire."
+},
+"sk-osis-refresh-dust": {
+"desc": "Champú en seco que da volumen. Absorbe la grasa, levanta el pelo al instante y deja un acabado mate y empolvado.",
+"use": "Agita bien antes de usar y entre pulverizaciones. Dirige la boquilla a la raíz y aplica con pulverizaciones cortas."
+},
+"sk-osis-session": {
+"desc": "Laca de fijación extrafuerte para peinados que tienen que durar. Protege de la humedad, el calor y el viento, deja un acabado brillante y se retira con el cepillado sin dejar residuos.",
+"use": "Aplica en pulverizaciones cortas sobre el pelo seco, a unos 30 cm."
+},
+"sk-osis-elastic": {
+"desc": "Laca de fijación media y moldeable. Mantiene el peinado, se puede aplicar por capas y se elimina fácilmente con el lavado, sin residuos.",
+"use": "Aplica en pulverizaciones cortas sobre el pelo seco, a unos 30 cm."
+},
+"sk-osis-freeze": {
+"desc": "Laca de fijación fuerte y larga duración. Sujeta el peinado todo el día sin apelmazar y protege del calor hasta 230 ºC, según la marca.",
+"use": "Pulveriza sobre el pelo seco a 30 cm, con pulverizaciones cortas."
+},
+"sk-osis-freeze-pump": {
+"desc": "Laca sin aerosol de secado rápido y bruma fina. Da una fijación fuerte y duradera, ideal para definir y fijar ondas y rizos.",
+"use": "Aplica a unos 20 cm. También se puede usar sobre el pelo húmedo antes de secar."
+},
+"sk-osis-flatliner": {
+"desc": "Protector térmico para usar a diario con la plancha y otras herramientas de calor. Protege hasta 230 ºC, según la marca, y reduce el encrespamiento para un pelo suave y sin enredos.",
+"use": "Pulveriza sobre el pelo seco antes de usar la plancha."
+},
+"sk-osis-super-shield": {
+"desc": "Spray protector multiusos pensado para melenas largas. Protege de la contaminación, el calor y la humedad, combate el encrespamiento y los enredos y reaviva el pelo apagado.",
+"use": "Pulveriza en dosis cortas, a unos 30 cm, antes del secado o sobre el pelo seco."
+},
+"sk-session-label-the-serum": {
+"desc": "Sérum ligero que suaviza, da brillo y deja el pelo sedoso sin sobrecargarlo. También controla la electricidad estática, el encrespamiento y las puntas abiertas. Vegano.",
+"use": "Reparte una pequeña cantidad en las palmas y aplica de raíz a puntas, sobre el pelo húmedo o seco.",
+"short": "Sérum ligero de brillo y suavidad"
+},
+"sk-session-label-the-texturizer": {
+"desc": "Spray de textura para looks informales: crea una textura ligera y volumen, con efecto despeinado. Vegano.",
+"use": "Agita bien y pulveriza sobre el pelo seco a unos 30 cm, en pulverizaciones cortas. Estruja el pelo con las manos para marcar la textura.",
+"short": "Spray de textura para looks despeinados"
+},
+"sk-session-label-the-thickener": {
+"desc": "Spray de secado que da volumen y densidad: el pelo se nota más grueso y sujeto, nunca pegajoso. Vegano.",
+"use": "Pulveriza sobre el pelo húmedo de raíz a puntas. Seca con secador, con o sin cepillo, o deja secar al aire.",
+"short": "Spray de secado que da cuerpo y grosor"
+},
+"sk-session-label-the-miracle": {
+"desc": "Bálsamo de acabado polivalente: prepara, define y controla sin sobrecargar el pelo, con protección térmica hasta 230 ºC, según la marca.",
+"use": "Aplica sobre el pelo húmedo antes de secar, o sobre el pelo seco o húmedo antes de usar herramientas de calor.",
+"short": "Bálsamo de acabado polivalente con protección térmica"
+},
+"sk-session-label-the-mousse": {
+"desc": "Espuma ligera en spray que da volumen localizado y cuerpo, y levanta la raíz al instante. Vegana.",
+"use": "Agita bien y mantén el envase en vertical. Aplica sobre el pelo húmedo, sobre todo en la raíz.",
+"short": "Espuma en spray que da volumen desde la raíz"
+},
+"sk-session-label-the-definer": {
+"desc": "Crema de rizos que da forma, controla y define sin encrespar ni dejar tacto crujiente, con protección térmica hasta 230 ºC, según la marca.",
+"use": "Aplica de raíz a puntas sobre el pelo rizado húmedo y deja secar al aire.",
+"short": "Crema de rizos que define sin encrespar"
+},
+"sk-session-label-the-powder": {
+"desc": "Polvo en spray de textura seca. Su bruma fina da volumen localizado, textura flexible y fijación instantánea. Vegano.",
+"use": "Mantén el envase en vertical. Pulveriza en la raíz, sobre el pelo seco, para levantarla; en medios y puntas, para dar textura.",
+"short": "Polvo en spray de volumen y textura"
+},
+"sk-session-label-the-salt": {
+"desc": "Spray salino que crea un acabado con textura, movimiento natural, definición y cuerpo, sin sobrecargar el pelo. Vegano.",
+"use": "Aplica sobre el pelo secado con toalla, da forma a ondas o rizos y deja secar al aire o con secador.",
+"short": "Spray salino para ondas con textura"
+},
+"sk-session-label-the-paste": {
+"desc": "Pasta mate remoldeable de textura flexible, para dar volumen y definición. Vegana.",
+"use": "Reparte una pequeña cantidad en las manos, aplica sobre el pelo húmedo o seco y moldea.",
+"short": "Pasta mate remoldeable"
+},
+"sk-session-label-the-mud": {
+"desc": "Arcilla moldeable de fijación media y acabado seco y difuminado. Se puede remoldear tantas veces como quieras. Vegana.",
+"use": "Extiende una pequeña cantidad en las manos, aplica sobre el pelo seco y moldea.",
+"short": "Arcilla moldeable de acabado seco"
+},
+"sk-session-label-the-jelly": {
+"desc": "Gelatina de fijación flexible que define y controla el pelo y le da brillo, sin tacto pegajoso ni crujiente.",
+"use": "Aplica sobre el pelo húmedo o seco. Seca con secador o dale forma y deja secar al aire.",
+"short": "Gelatina de fijación flexible y con brillo"
+},
+"sk-session-label-the-strong": {
+"desc": "Laca de fijación fuerte y duradera para un control máximo. Es fácil de trabajar y deja el pelo más manejable al hacer recogidos. Vegana.",
+"use": "Aplica sobre el pelo seco a 30 cm. Añade capas para más fijación.",
+"short": "Laca de fijación fuerte para recogidos"
+},
+"sk-session-label-the-flexible": {
+"desc": "Laca seca y ligera, de secado rápido y bruma microfina, para una fijación flexible y con control. Vegana.",
+"use": "Aplica sobre el pelo seco a 30 cm. Añade capas para más fijación.",
+"short": "Laca seca de fijación flexible"
+},
+"sk-session-label-the-coat": {
+"desc": "Spray de brillo multiprotección: protege del encrespamiento, la electricidad estática y el calor hasta 230 ºC, según la marca, y deja el pelo suave y muy brillante.",
+"use": "Agita bien antes de cada uso y aplica sobre el pelo húmedo o seco a unos 30 cm.",
+"short": "Spray de brillo que protege del calor, el encrespamiento y la estática"
+},
+"sk-silhouette-espuma-super-hold": {
+"desc": "Espuma de fijación fuerte que mantiene el brillo del pelo y se retira fácilmente con el cepillado.",
+"use": "Agita bien y dispensa con el envase boca abajo. Aplica sobre el pelo secado con toalla, antes de secar o marcar.",
+"short": "Espuma de fijación fuerte con brillo"
+},
+"sk-silhouette-gel-super-hold": {
+"desc": "Gel de fijación extrafuerte inmediata, con brillo natural y definición. Seca rápido, no deja residuos y se elimina fácilmente con el lavado.",
+"use": "Pon en la palma una cantidad del tamaño de una avellana y aplica en medios y puntas, sobre el pelo húmedo o seco.",
+"short": "Gel de fijación extrafuerte y brillo natural"
+},
+"sk-silhouette-espuma-flexible-hold": {
+"desc": "Espuma de fijación flexible, duradera e invisible. Da volumen con elasticidad y brillo sin sobrecargar el pelo.",
+"use": "Agita bien y dispensa con el envase boca abajo. Aplica sobre el pelo secado con toalla.",
+"short": "Espuma de fijación flexible con volumen"
+},
+"sk-silhouette-laca": {
+"desc": "Laca de fijación fuerte, duradera e invisible, con formadores de película microfinos que no sobrecargan el pelo. Seca rápido, no deja tacto pegajoso y se retira con el cepillado.",
+"use": "Pulveriza sobre el pelo seco a unos 30 cm, con pulverizaciones cortas.",
+"short": "Laca de fijación fuerte que no se nota"
+},
+"sk-silhouette-pumpspray-super-hold": {
+"desc": "Laca sin aerosol de fijación fuerte que conserva el brillo y la vitalidad del pelo. Fijación duradera e invisible que no lo sobrecarga.",
+"use": "Pulveriza sobre el pelo húmedo a unos 20 cm.",
+"short": "Laca sin aerosol de fijación fuerte"
+},
+"sk-silhouette-laca-flexible-hold": {
+"desc": "Laca de fijación flexible, duradera e invisible. Da volumen con elasticidad y brillo sin sobrecargar el pelo, y seca rápido.",
+"use": "Aplica sobre el pelo seco a unos 30 cm, con pulverizaciones cortas.",
+"short": "Laca de fijación flexible e invisible"
+}
+}

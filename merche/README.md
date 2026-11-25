@@ -82,6 +82,11 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 - **De Javi:** qué era «triple» (¿TPV? ¿Stripe?), si la web actual la hicimos nosotros, la clave de la IA de vídeo, la clave de ElevenLabs y el precio que le cobra a Merche.
   Para la web: visto bueno o cambios de la maqueta, fotos y vídeos (los va mandando) y si quiere un enlace privado para verla en el móvil.
 - **Mío (siguiente):** poner fotos y vídeos reales según lleguen, textos de Merche por producto, y pasar la maqueta aprobada a Shopify.
+- **Fotos, estado el 25-11-2026:** 100 de 169 puestas (las 100 de Schwarzkopf que están en la tienda oficial, descargadas de la propia marca:
+  **Javi confirmó que tienen permiso de ghd y Schwarzkopf para usar sus fotos**). Faltan las 59 de ghd (su web bloquea esta máquina: **las manda Javi**)
+  y 10 de Schwarzkopf que ya no están en el catálogo oficial (pendiente de que Javi diga si se quitan). El enlace privado va por la versión 2.
+- **Entorno:** el 25-11 Javi aprobó el entorno «kiria-producer» (solo permite `www.ghdhair.com`, `shop.schwarzkopf-professional.es`,
+  `www.schwarzkopf-professional.com` y `dm.henkel-dam.com`). Las claves de ElevenLabs y Higgsfield siguen solo en «Predeterminado».
 - **En curso desde el 25-11: las fotos de producto.** Javi dijo que la base de la web «es muy buena» y que él va mandando las fotos por el chat.
   Tiene la lista numerada (`merche/LISTA_PRODUCTOS_FOTOS.pdf`); el estado foto a foto está en `merche/LISTA_FOTOS.md` y el procedimiento en `web_merche/README.md`.
   Tras cada tanda: colocar, regenerar, republicar el enlace privado y decirle cuántas van y cuáles faltan.

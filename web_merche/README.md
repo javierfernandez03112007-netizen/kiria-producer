@@ -45,6 +45,14 @@ Contexto, decisiones y pendientes del proyecto: `merche/README.md`. Esto explica
   (web oficial, tienda oficial de Schwarzkopf, Sephora, Druni, El Corte Inglés, Primor, Keshop, Coserty…). Los textos están redactados por nosotros
   y las cifras se dicen como de la marca («según ghd»). **Los precios son de referencia (PVP o de tiendas, nov. 2026): el precio lo pone Merche.**
   Lo dudoso está en `confirm` y sale en la ficha como «por confirmar». 4 productos van sin precio («Consultar»).
+- **Schwarzkopf, contrastado con la web oficial (25-11-2026):** 100 de los 110 productos están en la tienda oficial de la marca
+  (`shop.schwarzkopf-professional.es`). De ahí salen su **foto oficial**, el nombre, el EAN y la base de la descripción y del modo de uso:
+  `data/oficial_sk.json` (código, nombre oficial, EAN, dirección), `data/textos_sk.json` (nuestra redacción a partir de la ficha oficial) y
+  `data/fotos.json` (de dónde sale cada foto). Cómo se hizo y cómo repetirlo: `tools/oficial/LEEME.md`.
+  **10 productos no están en el catálogo oficial actual** (seguramente descatalogados; Javi tiene que decidir si se quitan): Moisture Kick Curl Bounce (79),
+  Frizz Away ×4 (82–85), Time Restore ×3 (86–88), Sun Protect Bruma SPF 20 (92) y OSiS Pump Up (128).
+  La marca tiene además unos 40 productos de venta al público que no están en nuestro catálogo (otros tamaños, Fibre Clinix antiencrespado, Scalp Clinix tratamientos…).
+- **ghd:** datos de buscadores (sin contrastar con su web, que bloquea esta máquina). Fotos: las manda Javi.
 - **Para cambiar un dato sin tocar los ficheros grandes:** `data/overrides.json` → `{"<id>": {"price": 239, "new": true, "merche": "Su consejo…"}}`.
 - Después de cualquier cambio: `python3 data/build.py` (regenera `js/products.js`).
 
