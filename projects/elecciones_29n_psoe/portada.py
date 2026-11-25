@@ -1,8 +1,12 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «29N, capítulo 0: los cuatro en sus atriles».
-Base: plano general del plató con las cuatro pantallas (fotos reales) y los atriles, con la pantalla grande del fondo sin texto (sin interfaz):
-    COVER=1 COVER_T=9.9 EVAL="const _w = wallDraw; wallDraw = st => _w({ ...st, cita: 0, man: 0, base: 0, hemi: 0, hemiA: 0 });" FPS=60 node web/capture.mjs out/cover 0 → out/cover/cover3d.png
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «29N: el PSOE» (capítulo de un partido).
+Base: de frente al atril del partido, con su pantalla (foto real) y, encima, el candado «PENSIONES EN LA CONSTITUCIÓN» parado en 2-1-0; detrás, el
+hemiciclo con los 210 escaños dorados. Sin el rótulo de la pantalla grande (lo dice el título). Todo lo importante cabe en el centro 4:5:
+    python3 portada.py --render      (saca out/cover/cover3d.png con la cámara de la portada y luego compone)
+    python3 portada.py               (solo compone)
 Título en Impact con contorno, como los subtítulos: la frase del gancho."""
+import json
 import os
+import subprocess
 import sys
 
 import cv2
@@ -16,6 +20,17 @@ from engine import post  # noqa: E402
 
 W, H = 1080, 1920
 RED, GOLD, CYAN = "#FF5A4E", "#FFD76A", "#5CF2E6"
+CAM = "-0.55,2.75,4.6,-0.55,2.95,-0.3,52"              # posición, punto de mira y ángulo de la cámara de la portada: de frente al atril del partido
+PAD = "S.pad.position.set(-0.55, 2.84, -0.1); S.pad.scale.setScalar(0.62); S.pad.rotation.z = 0;"   # el candado, encima de su pantalla (solo en la portada)
+MINI_Y = 285                                           # la miniatura 4:5 es el centro de la portada (lo que enseña la cuadrícula de Instagram)
+
+
+def render():
+    lines = json.load(open(os.path.join(ROOT, "tiempos.json")))
+    t = [w for w in lines[0]["words"] if w["w"].lower().startswith("doscientos")][0]["start"] + 0.75      # las tres cifras ya paradas en 2-1-0 y los 210 escaños encendidos
+    env = dict(os.environ, COVER="1", COVER_T=f"{t:.2f}", COVER_CAM=CAM, FPS="60",
+               EVAL="const _w = wallDraw; wallDraw = st => _w({ ...st, lab: 0 }); const _p = padAt; padAt = t => { _p(t); " + PAD + " };")
+    subprocess.run(["node", "web/capture.mjs", "out/cover", "0"], cwd=ROOT, env=env, check=True)
 
 
 def row(img, parts, cy, size, stroke):
@@ -29,23 +44,25 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    paste(img, chip("29N · CAPÍTULO 0", int(44 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 40 * k)
-    row(img, [("EL", None), ("DOMINGO", GOLD)], y + 165 * k, int(128 * k), int(10 * k))
-    row(img, [("NO", RED), ("ELIGES", None)], y + 305 * k, int(128 * k), int(10 * k))
-    row(img, [("PRESIDENTE", GOLD)], y + 445 * k, int(128 * k), int(10 * k))
+    paste(img, chip("29N · EL PSOE", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 36 * k)
+    row(img, [("PARA", None), ("BLINDAR", None)], y + 140 * k, int(108 * k), int(10 * k))
+    row(img, [("LAS", None), ("PENSIONES", GOLD)], y + 260 * k, int(108 * k), int(10 * k))
+    row(img, [("HACEN", None), ("FALTA", None), ("210", CYAN)], y + 380 * k, int(108 * k), int(10 * k))
 
 
 def main():
     base = cv2.imread(os.path.join(ROOT, "out", "cover", "cover3d.png")).astype(np.float32) / 255
     img = base.copy()
-    title(img, 250)
+    title(img, 292)
     post.grain(img, 0, 0.006)
     cv2.imwrite(os.path.join(ROOT, "out", "portada.jpg"), post.finish(img), [cv2.IMWRITE_JPEG_QUALITY, 95])
-    m = base[285:285 + 1350].copy()
-    title(m, 40, 0.92)
+    m = base[MINI_Y:MINI_Y + 1350].copy()
+    title(m, 292 - MINI_Y)
     cv2.imwrite(os.path.join(ROOT, "out", "miniatura.jpg"), post.finish(m), [cv2.IMWRITE_JPEG_QUALITY, 95])
     print("portada → out/portada.jpg · miniatura → out/miniatura.jpg")
 
 
 if __name__ == "__main__":
+    if "--render" in sys.argv:
+        render()
     main()
