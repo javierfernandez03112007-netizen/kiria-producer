@@ -1,0 +1,36 @@
+🧾 El cero IRPF en tu primer año de trabajo es una promesa del PP. La letra pequeña: es para quien tiene entre 18 y 35 años, y baja cada año (75 % el segundo, la mitad el tercero y un 25 % el cuarto).
+
+📘 29N, el programa del PP («La Reconstrucción Nacional»). Trae 249 medidas; aquí van cuatro temas que te tocan, con sus propias palabras: vivienda (un millón de casas nuevas y el IVA de la primera, del 10 al 4 %, si tienes menos de 40), la compra (IVA cero en los alimentos básicos, mientras dure la crisis de precios), pensiones (subirlas cada año lo que suba el IPC) e inmigración (un cupo anual según los trabajadores que hagan falta y más control de fronteras). ¿Y con qué dinero? Empieza por auditar todo el gasto público en sus primeros cien días. Sin opinión y sin encuestas.
+
+🔎 En el próximo capítulo, el PSOE: quiere blindar las pensiones en la Constitución. ¿Qué le hace falta?
+
+👇 Mándaselo a quien empieza a trabajar.
+
+📚 Fuentes: programa electoral del PP para el 29N («La Reconstrucción Nacional», 82 páginas y 249 medidas), según lo publicado por Infobae, El Español, The Objective, Vozpópuli, Hoy Aragón, Capital y Demócrata.
+
+🎬 Plató virtual hecho por ordenador: no es una imagen de un acto real. Las caras son fotos reales, sin animar ni retocar (solo se les ha quitado el fondo), de Wikimedia Commons: Feijóo (Partido Popular, 2025, CC0), Sánchez (Pool Moncloa / Carlos Spottorno de las Morenas, 2026; Ministerio de la Presidencia, Gobierno de España), Abascal (Vox España, 2026, CC0) y Colau (Laura Guerrero / Ajuntament de Barcelona, 2022, CC BY 4.0).
+
+#29N #elecciones #eleccionesgenerales #elecciones2026 #PP #IRPF #política #España #votar #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+🧾 El cero IRPF en tu primer año de trabajo es del PP: de 18 a 35 años, y baja cada año (75, 50 y 25 %). Su programa para el 29N en cuatro temas que te tocan, con sus palabras y sin opinión. En el próximo capítulo, el PSOE. Fotos reales (Wikimedia Commons), plató virtual.
+
+#29N #elecciones #PP #política #España
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). El audio dice el guion entero.
+- Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Un solo plano sin cortes; primer fotograma = último (bucle).
+- ORDEN: este capítulo resuelve la intriga del capítulo 0 (el cero IRPF) y termina anunciando al PSOE: va justo DESPUÉS del capítulo 0 y ANTES del PSOE.
+- Datos por comprobar antes de publicar (resúmenes de varios medios; las webs no se abren desde aquí): que el cupo de inmigración es «anual» y que la rebaja del IRPF de los años 2.º a 4.º es del 75, 50 y 25 %.
+- «Primer año de trabajo» es, en el programa, el primer año como contribuyente del IRPF (la primera declaración), para trabajadores y autónomos de 18 a 35 años.
+- Las medidas están contadas con las palabras del programa y con los mismos colores que en los demás capítulos (dorado y cian); el azul del partido solo va en su nombre, sus siglas, su libro y el borde de los rótulos. Mismo trato que a los demás: cuatro temas, «¿y con qué dinero?» y una «letra pequeña».
+- Los candidatos son sus FOTOS REALES en pantallas (no vídeo ni caras generadas con IA). En los planos abiertos se ven las cuatro: los créditos de arriba hay que dejarlos (la de Colau, CC BY, lo exige).
+- Sin sondeos: la ley (LOREG, art. 69.7) prohíbe publicarlos del 24 al 28. No responder en comentarios con «quién va ganando».
+- Calendario: la campaña acaba el viernes 27 a medianoche y el sábado 28 es jornada de reflexión: la serie tiene que estar publicada antes.
+- Instagram no recomienda por defecto el contenido político a quien no te sigue (RECETA, 7 bis): contar con menos alcance.
+- Antes de publicar, abrir al menos un enlace de FUENTES.md (desde aquí no se pueden abrir las webs de los medios).
