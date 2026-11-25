@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------- 29N · capítulo de un partido: LA HISTORIA (los tiempos salen de la voz, tiempos.json).
-// La nómina gigante con el IRPF a cero, la lupa y las barras de la rebaja (gancho) → baja al atril del partido: cuatro medidas como objetos sobre el atril, «¿y con qué dinero?» →
-// la intriga del siguiente partido sobre su atril → sube otra vez a la nómina (bucle). Nadie habla ni se mueve: las caras son fotos reales.
+// La torre de lingotes con la raya del tope y la vivienda social (gancho) → baja al atril del partido: cuatro medidas como objetos sobre el atril, «¿y con qué dinero?» →
+// las cuatro pantallas encendidas («el domingo decides tú») → sube otra vez a la torre (bucle). Nadie habla ni se mueve: las caras son fotos reales.
 let TL = {};
 async function buildScene() {
   const LS = i => (WORDS.find(w => w.li === i) || { start: 0 }).start, LE = i => { const ws = WORDS.filter(w => w.li === i); return ws.length ? ws[ws.length - 1].end : 0; };
@@ -8,15 +8,15 @@ async function buildScene() {
   const W_ = (w, li, d = 0, exact = false, k = 1) => { const v = find(w, li, exact, k); if (!v) console.error('ERROR sin palabra ' + w + '_' + li); return v ? v.start - 0.03 + d : LS(li) + d; };
   const IDX = Array.from({ length: 11 }, (_, i) => i);
   TL = { end: END, L: IDX.map(LS), E: IDX.map(LE),
-    cero: W_('cero', 1), irpf: W_('irpf', 1), primer: W_('primer', 1), trabajo: W_('trabajo', 1), promesa: W_('promesa', 1), pp: W_('pp', 1),
-    letra: W_('letra', 2), pequena: W_('pequena', 2), dieciocho: W_('dieciocho', 2), treinta: W_('treinta', 2), baja: W_('baja', 2), setenta: W_('setenta', 2), segundo: W_('segundo', 2), mitad: W_('mitad', 2), tercero: W_('tercero', 2), veinticinco: W_('veinticinco', 2), cuarto: W_('cuarto', 2),
-    trae: W_('trae', 3), doscientas: W_('doscientas', 3), medidas: W_('medidas', 3), cuatro: W_('cuatro', 3),
-    millon: W_('millon', 4), casas: W_('casas', 4), iva: W_('iva', 4), primera: W_('primera', 4), diez: W_('diez', 4), cuatro4: W_('cuatro', 4), menos: W_('menos', 4), cuarenta: W_('cuarenta', 4),
-    iva5: W_('iva', 5), cero5: W_('cero', 5), alimentos: W_('alimentos', 5), mientras: W_('mientras', 5), crisis: W_('crisis', 5),
-    subirlas: W_('subirlas', 6), ipc: W_('ipc', 6),
-    cupo: W_('cupo', 7), trabajadores: W_('trabajadores', 7), control: W_('control', 7), fronteras: W_('fronteras', 7),
-    dinero: W_('dinero', 8), empieza: W_('empieza', 8), auditar: W_('auditar', 8), gasto: W_('gasto', 8), cien: W_('cien', 8, 0, true),
-    proximo: W_('proximo', 9), psoe: W_('psoe', 9), blindar: W_('blindar', 9), pensiones: W_('pensiones', 9), constitucion: W_('constitucion', 9), falta: W_('falta', 9),
+    frente: W_('frente', 1), nadie: W_('nadie', 1), herede: W_('herede', 1), diez: W_('diez', 1), millones: W_('millones', 1),
+    pase: W_('pase', 2), impuesto: W_('impuesto', 2), cien: W_('cien', 2, 0, true), iria: W_('iria', 2), duplicar: W_('duplicar', 2), social: W_('social', 2),
+    programa: W_('programa', 3), ciento: W_('ciento', 3), paginas: W_('paginas', 3), cuatro: W_('cuatro', 3),
+    jornada: W_('jornada', 4), treinta: W_('treinta', 4), cobrando: W_('cobrando', 4), empezando: W_('empezando', 4), treinta2: W_('treinta', 4, 0, false, 2), salario: W_('salario', 4), sesenta: W_('sesenta', 4), sueldo: W_('sueldo', 4),
+    millon: W_('millon', 5), pisos: W_('pisos', 5), doce: W_('doce', 5), tope: W_('tope', 5), alquiler: W_('alquiler', 5),
+    doscientos: W_('doscientos', 6), mes: W_('mes', 6, 0, true), hijo: W_('hijo', 6), dieciocho: W_('dieciocho', 6), ganes: W_('ganes', 6),
+    comedor: W_('comedor', 7), gratis: W_('gratis', 7),
+    dinero: W_('dinero', 8), impuestos: W_('impuestos', 8), fortunas: W_('fortunas', 8), empresas: W_('empresas', 8), veinte: W_('veinte', 8),
+    visto: W_('visto', 9), domingo: W_('domingo', 9), decides: W_('decides', 9),
     manda: W_('mandaselo', 10) };
   const G = new THREE.Group(); scene.add(G); S.G = G; T.lampGlow = new THREE.MeshStandardMaterial({ color: 0xfff1cf, emissive: 0xffd89a, emissiveIntensity: 1.6 }); T.glassDark = M.glass;
   S.depth = {}; for (const id of ORDER) S.depth[id] = await depthData('cand_' + id + '_d.jpg');

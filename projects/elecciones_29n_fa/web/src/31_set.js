@@ -54,7 +54,7 @@ function wallDraw(st) { const key = JSON.stringify(st); if (key === WALL.key) re
   // un rótulo ancho (la cuenta de páginas y el resultado)
   if (st.pillA > 0 && st.pill) { c.globalAlpha = st.pillA; c.fillStyle = st.pillC || '#eef2fc'; c.font = '900 54px Inter'; const tw = Math.min(760, c.measureText(st.pill).width + 100); rr(c, W / 2 - tw / 2 + PILLX, 152, tw, 92, 46); c.fill(); c.fillStyle = '#12100a'; fitFont(c, st.pill, 900, 54, 660); c.fillText(st.pill, W / 2 + PILLX, 200); c.globalAlpha = 1; }
   const panel = (y0, y1, a) => { c.globalAlpha = a * 0.72; c.fillStyle = '#060b1c'; rr(c, W / 2 - 590, y0, 1180, y1 - y0, 46); c.fill(); c.globalAlpha = a; };
-  if (st.next > 0) { panel(H * 0.19, H * 0.58, st.next); c.fillStyle = '#ffd66a'; c.font = '900 92px Inter'; c.fillText('PRÓXIMO CAPÍTULO', W / 2, H * 0.3, 1080); c.fillStyle = '#ffffff'; c.font = '900 176px Inter'; c.fillText(PARTY[CH.next].sig, W / 2, H * 0.46, 1080); c.globalAlpha = 1; }
+  if (st.next > 0) { panel(H * 0.19, H * 0.58, st.next); c.fillStyle = '#ffd66a'; c.font = '900 92px Inter'; c.fillText(st.t1 || 'PRÓXIMO CAPÍTULO', W / 2, H * 0.3, 1080); c.fillStyle = '#ffffff'; c.font = '900 176px Inter'; c.fillText(st.t2 || (CH.next ? PARTY[CH.next].sig : ''), W / 2, H * 0.46, 1080); c.globalAlpha = 1; }
   S.wallT.needsUpdate = true; }
 function buildSet(G) { const dark = new THREE.MeshBasicMaterial({ color: 0x2f2e2e, transparent: true, opacity: 0.84 });      // suelo y tarima sin reflejos calculados: mismo gris que daba el barniz y un 25 % menos de tiempo por fotograma
   const mirror = new THREE.Group(); mirror.scale.y = -1; G.add(mirror); S.mirror = mirror;                         // reflejo barato: lo que brilla, repetido bajo el suelo semitransparente
