@@ -388,6 +388,20 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   avión, podio «1.º» con casa, cubo y moneda, tarjeta sanitaria y rótulo de urgencias, tijeras que cortan la barra del gasto («?»), y en el atril del Frente
   Amplio, lingotes con la raya del tope «10 M €». **Ojo**: `nightUpdate` pisa cada fotograma el `emissiveIntensity` de los materiales registrados con
   `nightMat`: lo que tenga que parpadear va con un material SIN registrar. La portada compone a tamaño real (no usar PR < 1 con `portada.py --render`).
+- **«29N: el PP» (`projects/elecciones_29n_pp/`) y «29N: Frente Amplio» (`projects/elecciones_29n_fa/`), 25-11-2026: guion, fuentes, escena, subtítulos,
+  efectos, portada y descripción hechos con tiempos PROVISIONALES; faltan las voces.** PP: nómina gigante encima de la pantalla de Feijóo (`payslip`,
+  `wheelAt`: la rueda del IRPF se para en 0 al decir «cero» y al final gira hasta quedar como en el primer fotograma), sello «promesa del PP», lupa en la
+  letra pequeña («de 18 a 35 años») y cuatro barras 100/75/50/25 % («rebaja del IRPF», año 1 a 4); medidas: casitas e IVA 10 → 4 %, cesta con IVA 0 %,
+  escaleras IPC/pensión, cupo anual con cascos y barrera, libro de cuentas con lupa y «100 días»; intriga del PSOE: el candado pequeño con las cifras girando.
+  Frente Amplio (`CH.next = null`): torre de 14 lingotes que se apila sola (uno cada 0,11 s desde −0,6 s; al volver empieza en END − 0,6), raya del tope
+  «10 millones por heredero», «?» → «100 %», los cuatro de arriba vuelan a dos bloques («gasto en vivienda social», «×2»); medidas: barra de 40 a 32 horas
+  con «sueldo =» y la marca del primer paso (37,5), salario mínimo al 60 %, bloques y etiqueta del alquiler con su tope, 200 € al mes por hijo, bandeja del
+  comedor a 0 €, caja fuerte y oficinas con el 20 %; final: las cuatro pantallas encendidas y en la pantalla grande «29N · EL DOMINGO / DECIDES TÚ»
+  (`wallDraw` acepta `t1` y `t2` para ese rótulo). Cada proyecto es copia del anterior (`web/`, guiones de voz y render) con su `35_chapter.js`, sus palabras
+  en `32_story.js` y sus claves en `33_camera.js`; ramas de ayuda `render-e2` (PSOE), `-e3` (Vox), `-e4` (PP) y `-e5` (Frente Amplio).
+  **Al llegar cada voz**: comprobar a qué guion corresponde (reconocedor y parecido con los `script.txt`: 0,91 frente a 0,09), copiarla a
+  `assets/voz_original.mp3`, `asr_parakeet.py` → `ajustar_voz.py` → `env_voz.py` → `web/build.sh`, mirar con `probe.mjs` que no falte ninguna palabra y que las
+  claves de cámara estén ordenadas, 36 fotogramas de prueba, render, `compose_*.py`, `portada.py --render`, controles y entrega.
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
