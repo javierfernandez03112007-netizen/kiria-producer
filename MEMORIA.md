@@ -388,8 +388,12 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   194 fotogramas (a otra carpeta y copiados encima; los que no cambian salen idénticos bit a bit). Ya está puesto en Vox y PP; el control del bucle
   (comparar el último fotograma con el primero) se hace SIEMPRE antes de montar. Ojo: `pgrep -f patrón` dentro de un `until` se encuentra a sí mismo y
   la espera no acaba nunca: esperar por número de ficheros o por un fichero testigo.
-- **«29N: Vox» (`projects/elecciones_29n_vox/`, 25-11-2026): escena, subtítulos, efectos, portada y descripción hechos con tiempos PROVISIONALES; falta la
-  voz.** Gancho: el libro gigante del programa pasando hojas solo encima de la pantalla de Abascal (`bigBook`, `bookAt`: seis hojas con bisagra en el lomo,
+- **«29N: Vox» (`projects/elecciones_29n_vox/`, 25-11-2026). Javi: «ahora el de vox» (18:03 UTC) y su MP3 a las 19:31 UTC (el guion recortado; 59,2 s →
+  56,1 s sin pausas largas). ENTREGADO el 25-11-2026 a las 21:00 UTC (22:00 en España)**: `out/elecciones_29n_vox.mp4` (57,0 s, 3.420 fotogramas,
+  1080×1920, 60 fps, −15,2 LUFS, 30,9 MB) + portada («BAJAR EL IRPF SEGÚN LOS HIJOS: ¿CUÁNTO?») + miniatura 4:5 + `DESCRIPCION.txt`. Render solo aquí
+  (1 h 19 min: Javi no dio permiso para las máquinas de apoyo). Controles: bucle 9,6 frente a 7,5 entre fotogramas seguidos (las hojas pasan deprisa),
+  continuidad solo en los cambios de objeto, sin destellos. El reconocedor no oyó un «las» y entendió «gas» por «gasto»: el subtítulo lleva el guion.
+  Lo que sigue es cómo está hecha la escena. Gancho: el libro gigante del programa pasando hojas solo encima de la pantalla de Abascal (`bigBook`, `bookAt`: seis hojas con bisagra en el lomo,
   tramos `flipSpans`; el último tramo empieza en END − 0,6 para que el bucle case con el principio, que empieza en −0,6); la página de la derecha es la tabla
   «IRPF más bajo según los hijos» con «−? %»; la pantalla grande cuenta «PÁGINA n DE 66» y da «66 PÁGINAS · NO LO DICE»; dos tarjetas «15 %» y «25 %» dan
   vueltas alrededor del libro y acaban pegadas en «OTRO DOCUMENTO · 2025». Objetos: casa con etiqueta de IVA 10 % → 0 %, papeles con señal de prohibido y
