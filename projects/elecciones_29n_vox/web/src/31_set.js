@@ -38,6 +38,7 @@ function envelope() { if (!_envT) _envT = signTex(512, 256, (c, w, h) => { c.fil
   const m = new THREE.Mesh(new THREE.BoxGeometry(0.176, 0.12, 0.0016), [0, 1, 2, 3, 4, 5].map(i => new THREE.MeshStandardMaterial({ color: 0xfbfaf6, map: i === 4 ? _envT : null, roughness: 0.85 }))); m.castShadow = true; m.receiveShadow = true; return m; }
 // ---- la pantalla gigante (lienzo que se repinta): hemiciclo, cita del debate, «mañana, capítulo 1»
 const WALL = { W: 2048, H: 1024, key: '' };
+const PILLX = 80;                                     // el rótulo, algo a la derecha: encima del libro del gancho
 function hemiSeats() { const out = [], rows = 10, cx = WALL.W / 2, cy = WALL.H * 0.54, n0 = 22; let tot = 0; const per = []; for (let r = 0; r < rows; r++) { per.push(n0 + r * 3); tot += n0 + r * 3; }
   let extra = 350 - tot; for (let r = rows - 1; extra !== 0; r = (r - 1 + rows) % rows) { per[r] += Math.sign(extra); extra -= Math.sign(extra); }
   for (let r = 0; r < rows; r++) for (let i = 0; i < per[r]; i++) { const a = Math.PI * (0.03 + 0.94 * (i + 0.5) / per[r]), R0 = 172 + r * 30.4; out.push([cx - Math.cos(a) * R0, cy - Math.sin(a) * R0, r, a]); }
@@ -50,10 +51,8 @@ function wallDraw(st) { const key = JSON.stringify(st); if (key === WALL.key) re
   ORDER.forEach((id, i) => { const k = st.band[i]; if (k <= 0.01) return; const x = wallU(lectX(i) * 1.22), w = 150, g2 = c.createLinearGradient(x - w, 0, x + w, 0); g2.addColorStop(0, 'rgba(0,0,0,0)'); g2.addColorStop(0.32, PARTY[id].css); g2.addColorStop(0.68, PARTY[id].css); g2.addColorStop(1, 'rgba(0,0,0,0)');
     c.globalAlpha = Math.min(1, k) * 0.9; c.fillStyle = g2; c.fillRect(x - w, 0, 2 * w, H); c.globalAlpha = 1; });
   c.textAlign = 'center'; c.textBaseline = 'middle';
-  // el hemiciclo: se encienden «lit» escaños (dorados: los 210 que hacen falta; blancos: el récord, 202) y parpadean los que faltan hasta 210
-  if (st.hemiA > 0) { const a = st.hemiA, cy = H * 0.54; c.globalAlpha = a * 0.75; c.fillStyle = '#060b1c'; c.beginPath(); c.arc(W / 2, cy, 490, Math.PI, 0); c.lineTo(W / 2 + 490, cy + 60); c.lineTo(W / 2 - 490, cy + 60); c.fill();
-    c.globalAlpha = a; for (let i = 0; i < S.seats.length; i++) { const [x, y] = S.seats[i]; let col = 'rgba(150,170,210,0.2)'; if (i < st.lit) col = st.rec ? '#eef2fc' : '#ffd66a'; else if (st.rec && i < 210) col = st.blink ? '#ff6a4e' : 'rgba(255,106,78,0.3)'; c.fillStyle = col; c.beginPath(); c.arc(x, y, 10, 0, 7); c.fill(); }
-    if (st.lab > 0) { const txt = st.rec ? 'RÉCORD: 202 · FALTAN 8' : '210 DE 350 · TRES QUINTOS'; c.globalAlpha = a * st.lab; c.fillStyle = st.rec ? '#eef2fc' : '#ffd66a'; rr(c, W / 2 - 370, 8, 740, 88, 44); c.fill(); c.fillStyle = '#12100a'; fitFont(c, txt, 900, 56, 680); c.fillText(txt, W / 2, 54); } c.globalAlpha = 1; }
+  // un rótulo ancho (la cuenta de páginas y el resultado)
+  if (st.pillA > 0 && st.pill) { c.globalAlpha = st.pillA; c.fillStyle = st.pillC || '#eef2fc'; c.font = '900 54px Inter'; const tw = Math.min(760, c.measureText(st.pill).width + 100); rr(c, W / 2 - tw / 2 + PILLX, 152, tw, 92, 46); c.fill(); c.fillStyle = '#12100a'; fitFont(c, st.pill, 900, 54, 660); c.fillText(st.pill, W / 2 + PILLX, 200); c.globalAlpha = 1; }
   const panel = (y0, y1, a) => { c.globalAlpha = a * 0.72; c.fillStyle = '#060b1c'; rr(c, W / 2 - 590, y0, 1180, y1 - y0, 46); c.fill(); c.globalAlpha = a; };
   if (st.next > 0) { panel(H * 0.19, H * 0.58, st.next); c.fillStyle = '#ffd66a'; c.font = '900 92px Inter'; c.fillText('PRÓXIMO CAPÍTULO', W / 2, H * 0.3, 1080); c.fillStyle = '#ffffff'; c.font = '900 176px Inter'; c.fillText(PARTY[CH.next].sig, W / 2, H * 0.46, 1080); c.globalAlpha = 1; }
   S.wallT.needsUpdate = true; }
@@ -93,7 +92,7 @@ function buildSet(G) { const dark = new THREE.MeshBasicMaterial({ color: 0x2f2e2
   const tb = new THREE.Group(); tb.position.set(SET.URN[0], 0, SET.URN[2]); G.add(tb); tb.add(box(0.7, 0.04, 0.62, new THREE.MeshPhysicalMaterial({ color: 0x0c0e13, roughness: 0.25, clearcoat: 0.8 }), 0, 0.9, 0)); ad(tb, cyl(0.05, 0.07, 0.88, stdM(0x15171c, 0.4, { metalness: 0.5 }), 14)).position.y = 0.44; ad(tb, cyl(0.26, 0.3, 0.04, stdM(0x15171c, 0.4, { metalness: 0.5 }), 20)).position.y = 0.02; shadowAll(tb, true, true);
   S.urn = ballotBox(); S.urn.position.set(SET.URN[0], 0.92, SET.URN[2]); G.add(S.urn); nightSrc(_v(SET.URN[0], 1.9, SET.URN[2] + 0.3), 0xdfeaff, 9, 1.6, 'urn');
   S.env = envelope(); G.add(S.env);
-  wallDraw({ band: [1, 1, 1, 1], hemiA: 0, lit: 0, rec: 0, blink: 0, lab: 0, next: 0 }); }
+  wallDraw({ band: [1, 1, 1, 1], pill: '', pillA: 0, next: 0 }); }
 // ---------------------------------------------------------------- las medidas: objetos que aparecen SOBRE el atril de cada candidato, delante de la parte baja de su pantalla,
 // cuando la voz las nombra (a la izquierda el objeto, a la derecha el rótulo con las palabras de su programa). Mismo sitio y mismo tamaño para los cuatro.
 const STAGE = { Y: 1.17 };                             // altura del tablero del atril sobre su suelo
