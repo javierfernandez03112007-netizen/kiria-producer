@@ -57,14 +57,14 @@ function wallDraw(st) { const key = JSON.stringify(st); if (key === WALL.key) re
   const panel = (y0, y1, a) => { c.globalAlpha = a * 0.72; c.fillStyle = '#060b1c'; rr(c, W / 2 - 590, y0, 1180, y1 - y0, 46); c.fill(); c.globalAlpha = a; };
   if (st.next > 0) { panel(H * 0.19, H * 0.58, st.next); c.fillStyle = '#ffd66a'; c.font = '900 92px Inter'; c.fillText('PRÓXIMO CAPÍTULO', W / 2, H * 0.3, 1080); c.fillStyle = '#ffffff'; c.font = '900 176px Inter'; c.fillText(PARTY[CH.next].sig, W / 2, H * 0.46, 1080); c.globalAlpha = 1; }
   S.wallT.needsUpdate = true; }
-function buildSet(G) { const dark = new THREE.MeshPhysicalMaterial({ color: 0x06080c, roughness: 0.22, metalness: 0.2, clearcoat: 0.7, clearcoatRoughness: 0.15, transparent: true, opacity: 0.84 });
+function buildSet(G) { const dark = new THREE.MeshBasicMaterial({ color: 0x2f2e2e, transparent: true, opacity: 0.84 });      // suelo y tarima sin reflejos calculados: mismo gris que daba el barniz y un 25 % menos de tiempo por fotograma
   const mirror = new THREE.Group(); mirror.scale.y = -1; G.add(mirror); S.mirror = mirror;                         // reflejo barato: lo que brilla, repetido bajo el suelo semitransparente
   const floor = new THREE.Mesh(new THREE.CircleGeometry(40, 64), dark); floor.rotation.x = -Math.PI / 2; floor.position.y = 0; floor.receiveShadow = true; floor.renderOrder = 1; G.add(floor);
   const under = new THREE.Mesh(new THREE.CircleGeometry(60, 32), new THREE.MeshBasicMaterial({ color: 0x010203 })); under.rotation.x = -Math.PI / 2; under.position.y = -9; G.add(under);
   // tarima con aro de luz
   const ringM = nightMat(new THREE.MeshStandardMaterial({ color: 0x0a0c10, emissive: 0xbcd4ff, emissiveIntensity: 2.2, roughness: 0.4 }));
   for (const par of [G, mirror]) { const ring = new THREE.Mesh(new THREE.TorusGeometry(5.6, 0.035, 8, 96), ringM); ring.rotation.x = Math.PI / 2; ring.position.set(0, 0.17, 0.4); par.add(ring); }
-  const riser = cyl(5.6, 5.6, 0.16, new THREE.MeshPhysicalMaterial({ color: 0x0a0c11, roughness: 0.3, clearcoat: 0.6 }), 72); riser.position.set(0, 0.08, 0.4); riser.castShadow = false; G.add(riser); S.FL = 0.16;
+  const riser = cyl(5.6, 5.6, 0.16, new THREE.MeshBasicMaterial({ color: 0x2f2e2e }), 72); riser.position.set(0, 0.08, 0.4); riser.castShadow = false; G.add(riser); S.FL = 0.16;
   // pantalla gigante curva
   S.wallC = cnv(WALL.W, WALL.H); S.wallT = new THREE.CanvasTexture(S.wallC); S.wallT.colorSpace = THREE.SRGBColorSpace; S.wallT.anisotropy = 8; S.wallT.wrapS = THREE.RepeatWrapping; S.wallT.repeat.x = -1; S.wallT.offset.x = 1; S.seats = hemiSeats();
   S.wallM = new THREE.MeshBasicMaterial({ map: S.wallT, color: new THREE.Color().setScalar(1.25), side: THREE.BackSide });          // sin luces ni reflejos: emite y ya (más rápido de pintar)
