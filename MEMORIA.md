@@ -367,7 +367,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   frases: al principio, «El cero IRPF es del PP: lo verás en su capítulo.» (o se deja la intriga abierta) y al final «En el próximo capítulo, el PP:
   cero IRPF en tu primer año de trabajo… y su letra pequeña.» (y la escena: `CH.next = 'pp'` y la tabla del atril siguiente).
   **Datos por comprobar antes de publicar** (una sola fuente; las webs de los medios no se abren desde aquí): SMI por ley ≥ 60 % del salario medio,
-  y que la paga por crianza no trae cuantía. Portada: «PARA BLINDAR LAS PENSIONES HACEN FALTA 210» con el candado encima de la pantalla de Sánchez.
+  y que la paga por crianza no trae cuantía (esto último, confirmado el 25-11 por varios medios: compromiso 192). Portada: «PARA BLINDAR LAS PENSIONES
+  HACEN FALTA 210» con el candado encima de la pantalla de Sánchez.
+  **Render**: el suelo y la tarima del plató con `MeshBasicMaterial` (el barniz `MeshPhysicalMaterial` costaba el 25 % de cada fotograma y se veía igual
+  con el gris 0x2f2e2e): ≈ 1,7–2,2 s por fotograma aquí (4 s con desenfoque, solo en el candado de cerca). Pasada de prueba completa a 1/4 de tamaño
+  y 30 fps (`PR=0.25 … --range 0 N w 4`, 14 min): sin saltos fuera de los cambios de objeto. `page.screenshot` no es el cuello de botella: es el pintado.
+  **Guiones adelantados el 25-11 (con `FUENTES.md` y versión para ElevenLabs), a falta de la voz**: Vox (`projects/elecciones_29n_vox/`: IRPF según los
+  hijos, «no lo dice»; termina con la intriga del Frente Amplio: herencias de más de 10 millones) y PP (`projects/elecciones_29n_pp/`: resuelve el cero
+  IRPF del capítulo 0; termina con la intriga del PSOE). Falta el guion del Frente Amplio (gancho previsto: tope de 10 millones por heredero y 100 % a lo
+  que pase; 200 € al mes por hijo; jornada de 32 horas; 1,5 millones de viviendas públicas en 12 años).
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
