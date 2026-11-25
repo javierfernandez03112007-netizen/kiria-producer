@@ -374,8 +374,20 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   y 30 fps (`PR=0.25 … --range 0 N w 4`, 14 min): sin saltos fuera de los cambios de objeto. `page.screenshot` no es el cuello de botella: es el pintado.
   **Guiones adelantados el 25-11 (con `FUENTES.md` y versión para ElevenLabs), a falta de la voz**: Vox (`projects/elecciones_29n_vox/`: IRPF según los
   hijos, «no lo dice»; termina con la intriga del Frente Amplio: herencias de más de 10 millones) y PP (`projects/elecciones_29n_pp/`: resuelve el cero
-  IRPF del capítulo 0; termina con la intriga del PSOE). Falta el guion del Frente Amplio (gancho previsto: tope de 10 millones por heredero y 100 % a lo
-  que pase; 200 € al mes por hijo; jornada de 32 horas; 1,5 millones de viviendas públicas en 12 años).
+  IRPF del capítulo 0; termina con la intriga del PSOE) y Frente Amplio (`projects/elecciones_29n_fa/`: herencias de más de 10 millones al 100 %; es el
+  último y cierra la serie: «Ya has visto los cuatro programas. El domingo decides tú»). Los cuatro guiones se le dieron a Javi el 25-11 por la tarde.
+  El de Vox se recortó (pasaba del minuto: los guiones se miden en SÍLABAS, ≈ 5,3 por segundo con pausas; 295 sílabas ≈ 56 s; la versión larga está en
+  `script_largo.txt`).
+  **Voz del PSOE recibida el 25-11 (15:32 UTC)**: 60,2 s → 55,6 s sin pausas largas; vídeo de 56,6 s (3.394 fotogramas). Javi no contestó a lo de las
+  máquinas de apoyo: render solo aquí (≈ 0,67 fotogramas por segundo con 2 procesos; ≈ 1 h 25 min).
+- **«29N: Vox» (`projects/elecciones_29n_vox/`, 25-11-2026): escena, subtítulos, efectos, portada y descripción hechos con tiempos PROVISIONALES; falta la
+  voz.** Gancho: el libro gigante del programa pasando hojas solo encima de la pantalla de Abascal (`bigBook`, `bookAt`: seis hojas con bisagra en el lomo,
+  tramos `flipSpans`; el último tramo empieza en END − 0,6 para que el bucle case con el principio, que empieza en −0,6); la página de la derecha es la tabla
+  «IRPF más bajo según los hijos» con «−? %»; la pantalla grande cuenta «PÁGINA n DE 66» y da «66 PÁGINAS · NO LO DICE»; dos tarjetas «15 %» y «25 %» dan
+  vueltas alrededor del libro y acaban pegadas en «OTRO DOCUMENTO · 2025». Objetos: casa con etiqueta de IVA 10 % → 0 %, papeles con señal de prohibido y
+  avión, podio «1.º» con casa, cubo y moneda, tarjeta sanitaria y rótulo de urgencias, tijeras que cortan la barra del gasto («?»), y en el atril del Frente
+  Amplio, lingotes con la raya del tope «10 M €». **Ojo**: `nightUpdate` pisa cada fotograma el `emissiveIntensity` de los materiales registrados con
+  `nightMat`: lo que tenga que parpadear va con un material SIN registrar. La portada compone a tamaño real (no usar PR < 1 con `portada.py --render`).
 ## Próximas ideas
 -1. **Serie «la ciudad de los seguidores» (idea de Javi, 17-11-2026; episodio 1 hecho el 18-11)**. Javi: «una serie
    donde creamos un universo, un país… donde cada seguidor es una persona; cuanto más seguidores, más grande es; cada personaje con su nombre de
