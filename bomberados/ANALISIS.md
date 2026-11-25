@@ -25,6 +25,52 @@ los estilos. Nunca se quita algo que funciona sin datos que lo justifiquen.
 (PAS 1,6; ADR 1,1; Reducción 1,0 por 1.000): tarjeta final con las letras **A/B/C/D** en pantalla y «comenta tu letra».
 Los 3D se quedan en 0,3–0,7 comentarios/1.000 aunque la voz pida comentar: falta algo concreto que escribir.
 
+**Nuevo requisito desde el 25 nov (Javi): ESCENA DE VIDA REAL.** El incendio forestal (exterior, de día, bosque realista,
+mensaje señalado sobre el propio fuego) es el vídeo que más rápido ha crecido: **131.000 vistas en ≈ 3 días** (el acoplamiento
+llegó a 106.000 en más de una semana). Desde ahora, todos: exterior y de día cuando se pueda, entorno que parezca real,
+**curiosos mirando** cuando pase algo (detrás del cordón, con el móvil, en el balcón) y algo vivo en el plano. Detalle en
+`bomberados/MEMORIA_BOMBERADOS.md` → «ESCENA DE VIDA REAL».
+
+## 📌 Para los próximos vídeos (plan del 25 nov)
+
+1. **Escena de vida real (Javi, 25 nov):** exterior y de día, con sol y cielo; suelo, vegetación, calle y coches a escala real.
+   El molde es el incendio forestal (`projects/bomberados_forestal/`).
+2. **Gente mirando como en la vida real:** 5–12 curiosos detrás del cordón o al otro lado de la calle, alguno grabando con el
+   móvil, un vecino en el balcón. Se mueven un poco y no tapan la acción. Nada atraviesa nada (regla de realismo del 24 nov).
+3. **El mensaje, señalado sobre lo real:** una idea, con etiquetas y flechas encima del fuego, la pieza o el coche
+   («cabeza / cola / dedos»), no en una pizarra aparte.
+4. **Duración: 30–40 s** (Javi, 18 nov).
+5. **Cierre para comentar** (letras A/B/C/D o pregunta personal): sigue en 0,1–0,4 comentarios/1.000 en todos los de esta semana.
+6. **La venta, solo al final y en dos frases:** el percutor (venta de Élite) se queda en 13.300 vistas, 12,6 me gusta/1.000
+   y 0,6 compartidos/1.000, lo más bajo de la semana. Provisional (1 día).
+7. Siguen: bomberos en acción, dron que no para, planos abiertos, «mándaselo a quien quiera ser bombero».
+
+### Lo nuevo del 25 nov (cifras del 25 nov)
+| Vídeo | Vistas | Me gusta/1.000 | Coment./1.000 | Compart./1.000 |
+|---|---|---|---|---|
+| **Partes de un incendio forestal** (exterior, de día) | **131.000** | 36,1 | 0,2 | 5,4 |
+| Las 5 reglas de oro (electricidad) | 58.800 | 26,5 | 0,1 | 1,9 |
+| RSCIEI: lo que decide es el vecino | 30.200 | 34,4 | 0,2 | 3,1 |
+| La motosierra | 20.200 | 24,4 | 0,3 | 4,3 |
+| Bloqueadores: la camilla | 17.300 | 39,9 | 0,3 | 2,9 |
+| Coche volcado: ¿cuál es la más estable? | 16.900 | **48,7** | 0,4 | **7,2** |
+| Percutor rompecristales (venta de Élite) | 13.300 | 12,6 | 0,2 | 0,6 |
+| Cojines de alta presión | 9.516 | 20,3 | 0,2 | 4,6 |
+
+- **El incendio forestal es el más visto de la cuenta** y el más rápido. Javi lo atribuye a que parece vida real: exterior,
+  de día, bosque realista y un mensaje claro. Pasa a los requisitos.
+- Las 5 reglas de oro llegan lejos (58.800) pero gustan y se comparten poco (26,5 y 1,9/1.000).
+- El coche volcado es el que más gusta y más se comparte por 1.000 esta semana, con menos alcance.
+
+### Seguidores (20 nov 12:31 → 25 nov 9:42, ≈ 4,9 días)
+| Cuenta | 20 nov | 25 nov | Crecimiento | Por día |
+|---|---|---|---|---|
+| Bomberados | 3.952 | 4.122 | +170 (+4 %) | ≈ 35 |
+| Élite Bomberos | 10.446 | **11.487** | **+1.041 (+10 %)** | ≈ 213 |
+
+Élite se dispara y Bomberados frena (≈ 102/día en el periodo anterior). Coincide con el incendio forestal; hay que confirmar
+en qué cuenta se publicó y si el enlace de la bio lleva a Élite. Provisional.
+
 ## 📌 Para los próximos vídeos (plan del 19 nov)
 
 1. **Duración: 30–40 s** (la fijó Javi el 18 nov; sustituye a los 45–57 s de planes anteriores).
