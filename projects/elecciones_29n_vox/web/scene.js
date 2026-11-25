@@ -1401,7 +1401,7 @@ function bookAt(t) { const B = S.book, U = B.userData, T = TL;
   // «el 15 y el 25 por ciento que circulan»: dos tarjetas dan vueltas alrededor del libro… y acaban en OTRO documento (el de 2025), que aparece a su izquierda
   const D = S.doc, dk = bump(t, T.otro - 0.2, T.L[3] + 0.35, 0.001, 0.25); D.visible = dk > 0.01; if (D.visible) D.scale.setScalar(Math.max(0.01, pop(t, T.otro - 0.2, 0.4)) * Math.min(1, dk * 1.2));
   S.cards.forEach((c, i) => { const t0 = (i ? T.veinticinco : T.quince) - 0.12, k = bump(t, t0, T.L[3] + 0.35, 0.001, 0.25); c.visible = k > 0.01; if (!c.visible) return;
-    const th = 2.2 + i * Math.PI + 2.3 * (t - t0), ox = BOOKP[0] + 1.0 * Math.cos(th), oy = BOOKP[1] + 0.05 + 0.16 * Math.sin(th * 2 + i), oz = BOOKP[2] + 0.12 + 0.55 * Math.sin(th);
+    const th = 2.2 + i * Math.PI + 2.3 * (t - t0), ox = BOOKP[0] + 0.82 * Math.cos(th), oy = BOOKP[1] + 0.05 + 0.16 * Math.sin(th * 2 + i), oz = BOOKP[2] + 0.12 + 0.55 * Math.sin(th);
     const d = sm5(seg(t, T.documento - 0.05 + i * 0.12, T.documento + 0.5 + i * 0.12)), dx = DOCP[0] + 0.01, dy = DOCP[1] + 0.13 - i * 0.2, dz = DOCP[2] + 0.05;
     c.position.set(lerp(ox, dx, d), lerp(oy, dy, d), lerp(oz, dz, d)); c.rotation.set(0, lerp(0, 0.22, d), lerp(0.08 * Math.sin(t * 3 + i), 0, d)); c.scale.setScalar(Math.max(0.01, pop(t, t0, 0.3)) * Math.min(1, k * 1.2) * lerp(1, 0.78, d)); }); }
 const DOCP = [BOOKP[0] - 1.02, BOOKP[1] - 0.08, BOOKP[2] + 0.25];
