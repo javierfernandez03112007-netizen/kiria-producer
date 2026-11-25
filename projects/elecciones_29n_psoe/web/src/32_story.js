@@ -11,7 +11,7 @@ async function buildScene() {
     blindar: W_('blindar', 1), pensiones: W_('pensiones', 1), constitucion: W_('constitucion', 1), hacen: W_('hacen', 1), doscientos: W_('doscientos', 1), diputados: W_('diputados', 1),
     ningun: W_('ningun', 2), nunca: W_('nunca', 2), record: W_('record', 2), doscientos2: W_('doscientos', 2), dos2: W_('dos', 2, 0, true),
     promesas: W_('promesas', 3), psoe: W_('psoe', 3), programa: W_('programa', 3), quinientas: W_('quinientas', 3), cuatro: W_('cuatro', 3),
-    uno4: W_('uno', 4), pib: W_('pib', 4), cien: W_('cien', 4), pisos: W_('pisos', 4), publicos: W_('publicos', 4),
+    uno4: W_('uno', 4), pib: W_('pib', 4), cien: W_('cien', 4, 0, true), pisos: W_('pisos', 4), publicos: W_('publicos', 4),
     jornada: W_('jornada', 5), treinta5: W_('treinta', 5), media: W_('media', 5), salario: W_('salario', 5), ley: W_('ley', 5), sesenta: W_('sesenta', 5), sueldo: W_('sueldo', 5),
     paga: W_('paga', 6), crianza: W_('crianza', 6), ocho: W_('ocho', 6), cuanto: W_('cuanto', 6),
     primer: W_('primer', 7), gratis: W_('gratis', 7), ayuda: W_('ayuda', 7), doscientos7: W_('doscientos', 7), dentista: W_('dentista', 7),

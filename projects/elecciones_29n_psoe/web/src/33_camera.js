@@ -15,9 +15,9 @@ function buildCam() { const T = TL, PP = PADP, K0 = [[PP[0], PP[1] + 0.1, PP[2] 
     [T.E[1] + 0.35, [0.0, 2.7, 7.3], [0.0, 3.35, -3.0], 50],                                                // …y las cuatro pantallas debajo
     [T.nunca - 0.15, [-0.1, 3.0, 4.7], [-0.05, 3.95, -5.2], 50],                                            // «ningún partido…»: se acerca al candado (el hemiciclo llena el ancho)
     [T.record + 0.4, [-0.14, 3.05, 4.2], [-0.06, 3.98, -5.2], 50],                                          // el récord: 202; faltan 8 (parpadean al lado del arco)
-    [T.dos2 + 0.45, [-0.18, 3.1, 3.7], [-0.08, 4.07, -5.2], 50],                                            // el arco baja, choca y no cierra
-    [T.E[2] + 0.35, [-0.2, 3.1, 3.6], [-0.08, 4.08, -5.2], 50],
-    [T.psoe + 0.2, ...mid(i, 0.03, 0)],                                                                      // baja al atril del partido (el candado estaba justo encima)
+    [T.dos2 + 0.1, [-0.18, 3.1, 3.7], [-0.08, 4.07, -5.2], 50],                                             // el arco baja, choca y no cierra
+    [T.dos2 + 0.5, [-0.2, 3.1, 3.6], [-0.08, 4.08, -5.2], 50],
+    [T.psoe + 0.3, ...mid(i, 0.03, 0)],                                                                      // baja al atril del partido (el candado estaba justo encima)
     [T.cuatro + 0.5, ...mid(i, -0.03, 0.6)],
     // en cada medida la cámara rodea el atril hacia un lado, sube un poco y se acerca; en la siguiente, hacia el otro
     [T.L[4] + 0.5, ...mid(i, -0.17, 0.9, 0.22)], [T.E[4], ...mid(i, -0.05, 1.2, 0.3)],                                                // 1 · vivienda

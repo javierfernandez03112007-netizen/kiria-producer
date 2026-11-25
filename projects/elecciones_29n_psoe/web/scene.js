@@ -1296,7 +1296,7 @@ async function buildScene() {
     blindar: W_('blindar', 1), pensiones: W_('pensiones', 1), constitucion: W_('constitucion', 1), hacen: W_('hacen', 1), doscientos: W_('doscientos', 1), diputados: W_('diputados', 1),
     ningun: W_('ningun', 2), nunca: W_('nunca', 2), record: W_('record', 2), doscientos2: W_('doscientos', 2), dos2: W_('dos', 2, 0, true),
     promesas: W_('promesas', 3), psoe: W_('psoe', 3), programa: W_('programa', 3), quinientas: W_('quinientas', 3), cuatro: W_('cuatro', 3),
-    uno4: W_('uno', 4), pib: W_('pib', 4), cien: W_('cien', 4), pisos: W_('pisos', 4), publicos: W_('publicos', 4),
+    uno4: W_('uno', 4), pib: W_('pib', 4), cien: W_('cien', 4, 0, true), pisos: W_('pisos', 4), publicos: W_('publicos', 4),
     jornada: W_('jornada', 5), treinta5: W_('treinta', 5), media: W_('media', 5), salario: W_('salario', 5), ley: W_('ley', 5), sesenta: W_('sesenta', 5), sueldo: W_('sueldo', 5),
     paga: W_('paga', 6), crianza: W_('crianza', 6), ocho: W_('ocho', 6), cuanto: W_('cuanto', 6),
     primer: W_('primer', 7), gratis: W_('gratis', 7), ayuda: W_('ayuda', 7), doscientos7: W_('doscientos', 7), dentista: W_('dentista', 7),
@@ -1335,9 +1335,9 @@ function buildCam() { const T = TL, PP = PADP, K0 = [[PP[0], PP[1] + 0.1, PP[2] 
     [T.E[1] + 0.35, [0.0, 2.7, 7.3], [0.0, 3.35, -3.0], 50],                                                // …y las cuatro pantallas debajo
     [T.nunca - 0.15, [-0.1, 3.0, 4.7], [-0.05, 3.95, -5.2], 50],                                            // «ningún partido…»: se acerca al candado (el hemiciclo llena el ancho)
     [T.record + 0.4, [-0.14, 3.05, 4.2], [-0.06, 3.98, -5.2], 50],                                          // el récord: 202; faltan 8 (parpadean al lado del arco)
-    [T.dos2 + 0.45, [-0.18, 3.1, 3.7], [-0.08, 4.07, -5.2], 50],                                            // el arco baja, choca y no cierra
-    [T.E[2] + 0.35, [-0.2, 3.1, 3.6], [-0.08, 4.08, -5.2], 50],
-    [T.psoe + 0.2, ...mid(i, 0.03, 0)],                                                                      // baja al atril del partido (el candado estaba justo encima)
+    [T.dos2 + 0.1, [-0.18, 3.1, 3.7], [-0.08, 4.07, -5.2], 50],                                             // el arco baja, choca y no cierra
+    [T.dos2 + 0.5, [-0.2, 3.1, 3.6], [-0.08, 4.08, -5.2], 50],
+    [T.psoe + 0.3, ...mid(i, 0.03, 0)],                                                                      // baja al atril del partido (el candado estaba justo encima)
     [T.cuatro + 0.5, ...mid(i, -0.03, 0.6)],
     // en cada medida la cámara rodea el atril hacia un lado, sube un poco y se acerca; en la siguiente, hacia el otro
     [T.L[4] + 0.5, ...mid(i, -0.17, 0.9, 0.22)], [T.E[4], ...mid(i, -0.05, 1.2, 0.3)],                                                // 1 · vivienda
@@ -1382,7 +1382,7 @@ function padlock() { const g = new THREE.Group(), U = g.userData, BW = 0.9, BH =
   shadowAll(g, true, true); return g; }
 // las tres cifras en el instante t: giran al empezar, se paran en 2-1-0, pasan a 2-0-2 (el récord) y al final vuelven a girar (bucle)
 function padDigits(t) { const A = [2, 1, 0], B = [2, 0, 2], out = [];
-  for (let i = 0; i < 3; i++) { const rate = 7 + 2.5 * i, base = [3.3, 7.1, 5.6][i], a = TL.doscientos - 0.35 + 0.22 * i, b = TL.dos2 - 0.25 + 0.14 * i, c = TL.L[10] + 0.5 + 0.1 * i; let v;
+  for (let i = 0; i < 3; i++) { const rate = 7 + 2.5 * i, base = [3.3, 7.1, 5.6][i], a = TL.doscientos - 0.35 + 0.22 * i, b = TL.doscientos2 + 0.15 + 0.14 * i, c = TL.L[10] + 0.5 + 0.1 * i; let v;
     if (t < a - 0.8) v = base + rate * t;
     else if (t < a) { const v0 = base + rate * (a - 0.8), land = A[i] + 10 * Math.ceil((v0 + rate * 0.3 - A[i]) / 10), u = (t - (a - 0.8)) / 0.8; v = lerp(v0, land, 1 - Math.pow(1 - u, 3)); }
     else { v = A[i]; if (t >= b) { const u = clamp((t - b) / 0.45), d = ((B[i] - A[i]) % 10 + 10) % 10; v = A[i] + d * (1 - Math.pow(1 - u, 3)); }
@@ -1390,7 +1390,7 @@ function padDigits(t) { const A = [2, 1, 0], B = [2, 0, 2], out = [];
     out.push(((v % 10) + 10) % 10); }
   return out; }
 function padAt(t) { const U = S.pad.userData, D = padDigits(t); for (let i = 0; i < 3; i++) U.dig[i].offset.y = 1 - (D[i] + 1) / 11;
-  const tau = TL.dos2 + 0.4, pulse = Math.exp(-Math.pow((t - tau - 0.14) / 0.07, 2)) + 0.5 * Math.exp(-Math.pow((t - tau - 0.44) / 0.06, 2)), o = 1 - 0.9 * Math.min(1, pulse);   // el arco baja, choca y rebota: no cierra
+  const tau = TL.dos2 - 0.1, pulse = Math.exp(-Math.pow((t - tau - 0.14) / 0.07, 2)) + 0.5 * Math.exp(-Math.pow((t - tau - 0.44) / 0.06, 2)), o = 1 - 0.9 * Math.min(1, pulse);   // el arco baja, choca y rebota: no cierra
   U.sh.position.y = U.BH / 2 + 0.15 * o; U.sh.rotation.y = 0.7 * o; S.pad.rotation.z = 0.035 * Math.sin(t * 46) * Math.min(1, pulse) + 0.012 * Math.sin(t * 0.9); S.pad.position.y = PADP[1] + 0.03 * Math.sin(t * 1.3);
   const vis = clamp(1 - win(t, TL.psoe - 0.25, 0.4) + win(t, TL.manda + 0.2, 0.45)); S.pad.visible = vis > 0.01; S.pad.scale.setScalar(Math.max(0.01, vis)); }
 const PADP = [-0.45, 3.5, -1.6];                       // encima de la pantalla del partido (algo a la izquierda del centro del hemiciclo: a su derecha se ven los 8 escaños que faltan)
@@ -1461,7 +1461,7 @@ function chapterAt(t, st) { const P = S.P, T = TL, id = CH.id;
   // la pantalla grande: el hemiciclo (210 dorados → el récord, 202, y los 8 que faltan) y, al final, el aviso del siguiente capítulo
   { const q2 = x => Math.round(x * 20) / 20, hA = Math.max(1 - win(t, T.psoe - 0.2, 0.6), win(t, T.L[10] + 0.25, 0.5)), rec = t > T.record - 0.15 && t < T.L[4] ? 1 : 0;
     const lit = t > T.L[4] ? 0 : rec ? 202 : Math.round(210 * seg(t, T.hacen - 0.1, T.doscientos + 0.35));
-    wallDraw({ band: ORDER.map(o => q2(0.25 + 0.65 * (totK(o, t) - 0.3) / 0.7)), hemiA: q2(hA), lit, rec, blink: rec ? Math.floor(t * 5) % 2 : 0, lab: q2(win(t, T.doscientos - 0.15, 0.3) * (1 - win(t, T.E[2] + 0.3, 0.35))), next: q2(bump(t, T.proximo + 0.12, T.vox + 0.3, 0.3, 0.3)) }); }
+    wallDraw({ band: ORDER.map(o => q2(0.25 + 0.65 * (totK(o, t) - 0.3) / 0.7)), hemiA: q2(hA), lit, rec, blink: rec ? Math.floor(t * 5) % 2 : 0, lab: q2(win(t, T.doscientos - 0.15, 0.3) * (1 - win(t, T.E[2] + 0.2, 0.35))), next: q2(bump(t, T.proximo + 0.12, T.vox + 0.3, 0.3, 0.3)) }); }
   // los objetos (cada uno aparece con su palabra)
   const vis = (g, a, b) => { const k = bump(t, a, b, 0.001, 0.2); g.visible = k > 0.01; if (g.visible) g.scale.setScalar(Math.max(0.01, pop(t, a, 0.4)) * Math.min(1, k * 1.2)); return g.visible; }, ps = (o, t0, d = 0.35, s = 1) => o.scale.setScalar(Math.max(0.001, pop(t, t0, d)) * s);
   if (vis(P.prog, T.programa - 0.12, T.cuatro - 0.12)) P.book.rotation.y = 0.25 + 0.08 * Math.sin(t * 1.4);
