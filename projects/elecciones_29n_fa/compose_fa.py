@@ -1,4 +1,4 @@
-"""Compone «29N: Frente Amplio» (elecciones generales del 29-11-2026, serie explicativa y neutral; capítulo de un partido):
+"""Compone «29N: Frente Amplio» (elecciones generales del 29-11-2026, serie explicativa y neutral; capítulo de un partido y cierre de la serie):
 fotogramas 3D a 60 fps (out/frames; los candidatos son sus FOTOS REALES en pantallas, ver ../elecciones_29n_ep1/retratos.py y FUENTES.md)
 + subtítulos en Impact (arriba; las siglas, en el color del partido; el tema de cada medida en ámbar y las medidas con los mismos dos colores
 que en los demás capítulos: dorado y cian) + la voz de Javi (tempo 1,0) + efectos SOLO de la biblioteca de ElevenLabs del canal
@@ -47,16 +47,16 @@ def at(word, k=1, line=None):
 # ---------------------------------------------------------------- subtítulos: mismo trato en los cuatro capítulos (siglas en el color del partido; tema en ámbar; medidas en dorado y cian)
 GO, R, WH, GR, CY, AM = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547"
 PPC, PSC, VXC, FAC = "#4FA8F0", "#FF4A55", "#7ADB45", "#FF7A45"          # los colores de cada partido, algo aclarados para que se lean
-_K = {1: {"cero": GO, "irpf": GO, "primer": CY, "año": CY, "pp": PPC},
-      2: {"letra": R, "pequeña": R, "dieciocho": GO, "treinta": GO, "cinco": GO, "setenta": CY, "mitad": CY, "veinticinco": CY},
-      3: {"doscientas": GO, "cuarenta": GO, "nueve": GO, "medidas": GO, "cuatro": CY},
-      4: {"vivienda": AM, "millón": GO, "casas": GO, "iva": CY, "diez": CY, "cuatro": CY, "ciento": CY, "cuarenta": CY},
-      5: {"compra": AM, "iva": GO, "cero": GO, "alimentos": GO, "básicos": GO, "mientras": CY, "crisis": CY},
-      6: {"pensiones": AM, "subirlas": GO, "año": GO, "ipc": CY},
-      7: {"inmigración": AM, "cupo": GO, "anual": GO, "trabajadores": GO, "control": CY, "fronteras": CY},
-      8: {"dinero": AM, "auditar": GO, "gasto": GO, "público": GO, "cien": CY, "días": CY},
-      9: {"próximo": CY, "capítulo": CY, "psoe": PSC, "pensiones": GO, "constitución": GO, "falta": GO},
-      10: {"mándaselo": GR, "trabajar": GO}}
+_K = {1: {"frente": FAC, "amplio": FAC, "nadie": R, "diez": GO, "millones": GO, "euros": GO},
+      2: {"pase": GO, "cien": CY, "ciento": CY, "duplicar": GO, "vivienda": GO, "social": GO},
+      3: {"ciento": GO, "cincuenta": GO, "una": GO, "páginas": GO, "cuatro": CY},
+      4: {"trabajo": AM, "treinta": GO, "dos": GO, "horas": GO, "mismo": GO, "siete": CY, "media": CY, "salario": CY, "mínimo": CY, "sesenta": CY},
+      5: {"vivienda": AM, "millón": GO, "medio": GO, "pisos": GO, "públicos": GO, "doce": GO, "tope": CY, "alquiler": CY},
+      6: {"familias": AM, "doscientos": GO, "euros": GO, "mes": GO, "hijo": CY, "dieciocho": CY, "ganes": CY},
+      7: {"colegio": AM, "comedor": GO, "escolar": GO, "gratis": CY},
+      8: {"dinero": AM, "impuestos": GO, "grandes": GO, "fortunas": GO, "empresas": CY, "veinte": CY},
+      9: {"cuatro": GO, "programas": GO, "domingo": CY, "decides": CY, "tú": CY},
+      10: {"mándaselo": GR, "votar": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -78,7 +78,7 @@ def compose(fi):
 def init():
     global SUBS, NOTE, NOTE_T
     NOTE = chip("Plató virtual · fotos reales de archivo", 30, "#DCE3EE", "#10141C", "bold")
-    NOTE_T = (at("setenta") - 0.2, at("doscientas") + 0.4)      # desde que se ven las pantallas (las barras) hasta que la cámara ya está delante de la del partido
+    NOTE_T = (at("duplicar") - 0.2, at("ciento", 1, 3) + 0.4)      # desde que se ven las pantallas (plano abierto de la torre) hasta que la cámara ya está delante de la del partido
     SUBS = Subs(LINES, KEY, {}, y=305, size=96, style="accent", accent=hex_bgr(WH), stroke=8, face="impact")   # algo más arriba de lo habitual (330): debajo empieza la pantalla de cada candidato
 
 
@@ -115,63 +115,60 @@ def sfx_track(path):
 
     E = LINES[-1]["end"] + 1.2
     L = [l["start"] for l in LINES]; Le = [l["end"] for l in LINES]
-    # 1: la nómina gigante: la rueda del IRPF gira y se para en 0; se ve entera («primer año»); el sello «promesa del PP»
-    put("cerradura/pitones", 0.0, 0.35, 0.28, 0.1)
-    put("cerradura/blip", at("cero", 1, 1) + 0.28, 0.3, 0.28, 0.1)
-    put("avion/ding", at("cero", 1, 1) + 0.4, 0.7, 0.26, 0.3)
-    put("avion/whoosh", at("primer") - 0.1, 0.6, 0.2, 0.25)
-    put("avion/sello", at("promesa") - 0.1, 0.5, 0.34, 0.2)
-    # 2: la lupa baja a la letra pequeña («de 18 a 35 años»); las cuatro barras de la rebaja
-    put("medicina/busca", at("letra") - 0.15, 0.6, 0.28, 0.2)
-    put("avion/pop", at("dieciocho") - 0.12, 0.4, 0.28, 0.15)
-    put("avion/whoosh", at("baja") - 0.4, 0.6, 0.2, 0.25)
-    for i, w in enumerate(["baja", "setenta", "mitad", "veinticinco"]):
-        put("economia/barras", at(w) - 0.12, 0.4, 0.3 - 0.02 * i, 0.15)
+    # 1: la torre de lingotes se apila sola (uno cada 0,11 s); la raya del tope y su rótulo
+    for i in range(9):
+        put("economia/monton" if i % 4 == 0 else "avion/tap", max(0.0, -0.6 + (i + 5) * 0.11) + (0.0 if i else 0.0), 0.3, 0.24 if i % 4 == 0 else 0.18, 0.1)
+    put("economia/linea", at("diez") - 0.3, 0.6, 0.28, 0.2)
+    put("avion/cifra", at("diez") - 0.2, 0.5, 0.28, 0.2)
+    # 2: «¿y lo que pase de ahí?» (los de arriba laten); «100 %»; vuelan a la vivienda social, que se duplica
+    put("avion/pregunta", at("pase") - 0.2, 0.95, 0.3, 0.3)
+    put("avion/sello", at("cien", 1, 2) - 0.12, 0.5, 0.34, 0.2)
+    put("avion/whoosh", at("iría") - 0.1, 0.7, 0.24, 0.3)
+    put("avion/construye", at("iría") + 0.4, 0.9, 0.24, 0.3)
+    put("gta6/edificios", at("duplicar") + 0.1, 1.0, 0.26, 0.3)
+    put("avion/ding", at("duplicar") + 0.35, 0.7, 0.26, 0.3)
     # 3: la cámara baja al atril del partido; el libro del programa; las cuatro fichas
     put("avion/whoosh", Le[1] + 0.25, 0.6, 0.24, 0.25)
-    put("magisterio/libro", at("doscientas") - 0.12, 0.6, 0.3, 0.2)
+    put("magisterio/libro", at("programa") - 0.12, 0.6, 0.3, 0.2)
     for i in range(4):
         put("avion/tap", at("cuatro", 1, 3) - 0.05 + 0.1 * i, 0.25, 0.2 + 0.03 * i, 0.1)
-    # 4 · vivienda: las casitas que brotan; la etiqueta del IVA (10 % → 4 %); «menores de 40»
-    put("avion/pop", L[3] + 0.03, 0.4, 0.26, 0.15)
-    put("avion/construye", at("millón") - 0.1, 0.9, 0.26, 0.3)
-    put("avion/tap", at("diez") - 0.08, 0.3, 0.24, 0.1)
-    put("lanzamiento/voltea", at("cuatro", 1, 4) - 0.05, 0.5, 0.3, 0.15)
-    put("avion/pop", at("menos") - 0.1, 0.4, 0.26, 0.15)
-    # 5 · la compra: la cesta y sus alimentos; el «IVA 0 %»; «mientras dure la crisis»
-    put("tapas/caja", L[4] + 0.03, 0.5, 0.26, 0.2)
-    put("lanzamiento/voltea", at("cero", 1, 5) - 0.05, 0.5, 0.3, 0.15)
-    for i in range(4):
-        put("avion/tap", at("alimentos") - 0.15 + 0.09 * i, 0.25, 0.2, 0.1)
-    put("avion/pop", at("mientras") - 0.1, 0.4, 0.26, 0.15)
-    # 6 · pensiones: las dos escaleras (IPC y pensión) suben a la vez
-    for i in range(4):
-        put("economia/barras", at("subirlas") - 0.05 + 0.16 * i, 0.3, 0.22 + 0.02 * i, 0.12)
-    put("avion/ding", at("ipc") + 0.1, 0.7, 0.24, 0.3)
-    # 7 · inmigración: el cupo anual y los tres cascos; la barrera que baja
-    put("avion/pop", at("cupo") - 0.08, 0.4, 0.28, 0.15)
+    # 4 · trabajo: la barra de 40 horas se acorta a 32; «sueldo =»; la marca del primer paso (37,5); las barras del salario mínimo y la raya del 60 %
+    put("economia/barras", at("jornada") - 0.08, 0.5, 0.28, 0.2)
+    put("lanzamiento/desliza", at("treinta", 1, 4) - 0.05, 0.55, 0.3, 0.15)
+    put("cripto/check", at("cobrando") - 0.08, 0.45, 0.3, 0.15)
+    put("avion/tap", at("treinta", 2, 4) - 0.1, 0.3, 0.26, 0.1)
+    put("avion/pop", at("salario") - 0.15, 0.4, 0.26, 0.15)
+    put("avion/sube", at("sesenta") - 0.25, 0.7, 0.28, 0.25)
+    put("avion/ding", at("sesenta") + 0.3, 0.7, 0.26, 0.3)
+    # 5 · vivienda: los bloques suben; la etiqueta del alquiler y la tapa del tope
+    put("gta6/edificios", at("millón") - 0.05, 1.2, 0.26, 0.3)
+    put("lanzamiento/voltea", at("tope") - 0.1, 0.5, 0.28, 0.15)
+    put("cerradura/clunk", at("tope") + 0.55, 0.45, 0.3, 0.2)
+    # 6 · familias: el biberón, los cubos, «200 €» y «al mes»; «ganes lo que ganes»
+    put("avion/pop", L[5] + 0.03, 0.4, 0.26, 0.15)
+    put("economia/moneda_sola", at("doscientos") - 0.08, 0.7, 0.28, 0.3)
     for i in range(3):
-        put("magisterio/madera_toc", at("trabajadores") - 0.1 + 0.1 * i, 0.25, 0.26, 0.1)
-    put("avion/servo", at("control") + 0.05, 0.8, 0.26, 0.3)
-    put("cerradura/clunk", at("fronteras") + 0.25, 0.45, 0.3, 0.2)
-    # 8: ¿y con qué dinero? (la moneda gira); el libro de cuentas bajo la lupa; «100 días»
+        put("magisterio/madera_toc", at("hijo") - 0.1 + 0.1 * i, 0.25, 0.26, 0.1)
+    put("avion/pop", at("ganes") - 0.1, 0.4, 0.26, 0.15)
+    # 7 · colegio: la bandeja del comedor; «0 €»
+    put("tapas/plato", at("comedor") - 0.1, 0.5, 0.28, 0.2)
+    put("cripto/check", at("gratis") - 0.08, 0.45, 0.32, 0.15)
+    # 8: ¿y con qué dinero? (la moneda gira); la caja fuerte; el edificio de oficinas y el «20 %»
     put("economia/giro", L[7] - 0.08, 0.5, 0.3, 0.15)
     put("avion/pregunta", at("dinero") - 0.3, 0.95, 0.26, 0.3)
-    put("magisterio/libro", at("empieza") - 0.1, 0.6, 0.28, 0.2)
-    put("medicina/busca", at("auditar") - 0.05, 0.6, 0.26, 0.2)
-    put("avion/cifra", at("cien") - 0.1, 0.5, 0.3, 0.2)
-    # 9: abre a las cuatro pantallas; «PRÓXIMO CAPÍTULO»; se enciende la del siguiente y la cámara va a su atril: el candado con las cifras girando
+    put("lanzamiento/voltea", at("impuestos") - 0.1, 0.5, 0.28, 0.15)
+    put("cerradura/clunk", at("fortunas") - 0.25, 0.5, 0.3, 0.2)
+    put("avion/pop", at("empresas") - 0.1, 0.4, 0.28, 0.15)
+    put("avion/cifra", at("veinte") - 0.1, 0.5, 0.3, 0.2)
+    # 9: abre a las cuatro pantallas, que se encienden; «EL DOMINGO DECIDES TÚ»
     put("avion/whoosh_largo", Le[7] + 0.05, 1.1, 0.2, 0.4)
-    put("robo_banco/titulo", at("próximo") + 0.1, 1.2, 0.28, 0.4)
-    put("ade/letrero_on", at("psoe") - 0.3, 0.9, 0.22, 0.3)
-    put("avion/whoosh", at("psoe") + 0.35, 0.6, 0.22, 0.25)
-    put("medicina/candado", at("blindar") - 0.2, 0.5, 0.32, 0.15)
-    put("cerradura/pitones", at("pensiones", 1, 9) - 0.05, 0.8, 0.22, 0.25)
-    put("avion/pregunta", at("falta") - 0.5, 0.95, 0.3, 0.3)
-    # 10: mándaselo; la cámara sube otra vez a la nómina y la rueda vuelve a girar (enlaza con el principio)
+    put("ade/letrero_on", L[8] + 0.1, 0.9, 0.24, 0.3)
+    put("robo_banco/titulo", at("domingo") - 0.15, 1.2, 0.28, 0.4)
+    # 10: mándaselo; la cámara sube otra vez a la torre, que vuelve a apilarse (enlaza con el principio)
     put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.6, 0.3, 0.25)
     put("avion/whoosh_largo", at("mándaselo") + 0.3, 1.1, 0.2, 0.4)
-    put("cerradura/pitones", E - 0.85, 0.8, 0.24, 0.3)
+    for i in range(5):
+        put("economia/monton" if i == 0 else "avion/tap", E - 0.6 + i * 0.11, 0.3, 0.24 if i == 0 else 0.18, 0.1)
     sfx.write(path, out, drive=1.0, level=0.9)
 
 
