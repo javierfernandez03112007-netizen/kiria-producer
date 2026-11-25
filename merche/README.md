@@ -69,6 +69,9 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 ## Accesos (comprobado el 21-11-2026)
 - **Funciona:** nuestro motor de vídeo, Metricool (solo con kiria.ai) y Notion.
 - **Bloqueado desde la sesión:** ElevenLabs (403 del proxy), Instagram/Meta, las webs de las marcas, Google Drive, Dropbox y WeTransfer.
+- **Por qué (visto el 25-11):** esta sesión corre en el entorno «Default», que no tiene ningún dominio permitido ni claves. Las claves de Javi
+  (ElevenLabs y Higgsfield) y sus dominios están en su otro entorno, «Predeterminado», al que una sesión en marcha no se puede cambiar: hay que
+  abrir una sesión nueva en él. En «Predeterminado» la clave de Higgsfield está guardada para `api.higgfield.ai` (sin la «s»): parece una errata.
 - **No hay clave de vídeo con IA.** La API de Google (Veo) sí responde desde aquí, así que solo haría falta la clave.
 - **Cómo me pasa los vídeos Javi:** adjuntos en el chat, como el audio. Si pesan mucho, comprimidos o en trozos; lo probamos con el primero.
 
@@ -79,3 +82,6 @@ No competimos en precio con Druni, Primor, El Corte Inglés, Sephora ni con la p
 - **De Javi:** qué era «triple» (¿TPV? ¿Stripe?), si la web actual la hicimos nosotros, la clave de la IA de vídeo, la clave de ElevenLabs y el precio que le cobra a Merche.
   Para la web: visto bueno o cambios de la maqueta, fotos y vídeos (los va mandando) y si quiere un enlace privado para verla en el móvil.
 - **Mío (siguiente):** poner fotos y vídeos reales según lleguen, textos de Merche por producto, y pasar la maqueta aprobada a Shopify.
+- **En curso desde el 25-11: las fotos de producto.** Javi dijo que la base de la web «es muy buena» y que él va mandando las fotos por el chat.
+  Tiene la lista numerada (`merche/LISTA_PRODUCTOS_FOTOS.pdf`); el estado foto a foto está en `merche/LISTA_FOTOS.md` y el procedimiento en `web_merche/README.md`.
+  Tras cada tanda: colocar, regenerar, republicar el enlace privado y decirle cuántas van y cuáles faltan.

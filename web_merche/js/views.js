@@ -84,7 +84,7 @@ const slot = (t, d, tag) => `<div><div class="ring">${PLAY}</div><b>${t}</b><p>$
 
 function shots(p) {
   const th = picture(p, { label: false }), a = [{ html: picture(p), thumb: th, label: '', aria: 'Imagen' }];
-  (p.gallery || []).forEach(src => { const im = `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy">`; a.push({ html: im, thumb: im, label: '', aria: 'Otra imagen' }); });
+  (p.gallery || []).forEach(src => { const im = `<img class="pimg" src="${esc(src)}" alt="${esc(p.name)}" loading="lazy">`; a.push({ html: im, thumb: im, label: '', aria: 'Otra imagen' }); });
   a.push(p.video ? { html: `<video src="${esc(p.video)}" muted loop playsinline preload="metadata" data-auto></video>`, thumb: th, label: 'VÍDEO', aria: 'Vídeo del producto' }
     : { cls: 'vslot', html: slot(`El vídeo de ${esc(p.name)}`, 'Aquí irá el vídeo profesional del producto.', 'vídeo pendiente'), thumb: th, label: 'VÍDEO', aria: 'Vídeo del producto' });
   a.push(p.tutorial ? { html: `<video src="${esc(p.tutorial)}" controls playsinline preload="none"></video>`, thumb: th, label: 'MERCHE', aria: 'Tutorial de Merche' }
@@ -158,7 +158,7 @@ export function producto(id) {
       });
       const sb = root.querySelector('.sticky-buy');
       if (sb && buy && 'IntersectionObserver' in window) new IntersectionObserver(es => sb.classList.toggle('on', !es[0].isIntersecting)).observe(buy);
-      stage.style.background = look(p).tone[1];
+      stage.style.background = p.img ? '#fff' : look(p).tone[1];
     },
   };
 }

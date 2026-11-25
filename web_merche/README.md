@@ -34,7 +34,9 @@ Contexto, decisiones y pendientes del proyecto: `merche/README.md`. Esto explica
 | `js/app.js` | Arranque y rutas (`#/tienda`, `#/p/<id>`, `#/caja`…) |
 | `js/nav.js` | Navegación: ruta en la dirección (normal) o en memoria (vista previa de claude.ai). **Nunca uses `location.hash` directamente: usa `navigate()` y `hash()`** |
 | `data/` | Catálogo en JSON + `build.py` + `overrides.json` |
-| `tools/bundle.mjs` | Empaqueta todo en un archivo |
+| `tools/bundle.mjs` | Empaqueta todo en un archivo (y con `--artifact`, la versión para claude.ai) |
+| `tools/foto.py` | Coloca la foto de un producto (recorta, iguala y guarda) |
+| `tools/lista.py` | Lista numerada de productos y qué fotos faltan (`merche/LISTA_FOTOS.md`) |
 
 ## Catálogo (169 productos: 59 ghd + 110 Schwarzkopf Professional)
 - `data/base.json` (los 32 principales, escritos a mano) + `data/ghd_extra.json`, `data/sk_care.json`, `data/sk_styling.json` (investigados el 24-11-2026).
@@ -46,17 +48,25 @@ Contexto, decisiones y pendientes del proyecto: `merche/README.md`. Esto explica
 - **Para cambiar un dato sin tocar los ficheros grandes:** `data/overrides.json` → `{"<id>": {"price": 239, "new": true, "merche": "Su consejo…"}}`.
 - Después de cualquier cambio: `python3 data/build.py` (regenera `js/products.js`).
 
-## Fotos y vídeos (lo que irá mandando Javi)
-Basta con dejar el archivo con el nombre del `id` del producto y ejecutar `python3 data/build.py`:
-| Archivo | Dónde sale |
-|---|---|
-| `media/productos/<id>.jpg` (o `.webp`, `.png`) | Foto del producto en tarjetas, ficha, bolsa (sustituye a la silueta) |
-| `media/productos/<id>-2.jpg`, `-3.jpg`… | Más fotos en la ficha |
-| `media/productos/<id>.mp4` | Vídeo del producto: en la tarjeta (al pasar el ratón; en el móvil, al verse) y en la ficha |
-| `media/productos/<id>-tutorial.mp4` | Tutorial de Merche en la ficha |
-Generales, en `js/config.js`: `intro.video.portrait` / `landscape` (vídeo de la intro en 9:16 y 16:9), `media.heroVideo` (Merche en su mostrador),
-`media.merchePhoto` (foto de Merche) y `media.tutorialTeaser` (trozo de tutorial en el móvil dibujado).
-Recomendado: fotos 1200×1500 (4:5) con fondo limpio; vídeos de producto 4:5, 4–6 s, sin sonido, ≈ 1 MB; intro ≤ 3 MB.
+## Fotos y vídeos (los va mandando Javi por el chat)
+**Flujo acordado el 25-11-2026:** Javi tiene la lista numerada (`merche/LISTA_PRODUCTOS_FOTOS.pdf`; en texto, `merche/LISTA_FOTOS.md`) y va adjuntando fotos
+en el chat; yo las coloco. Los adjuntos llegan a `/mnt/user-data/uploads/`.
+1. Cada producto tiene un **número fijo** (`data/numeros.json`, generado por `tools/lista.py`; no cambia aunque se añadan productos).
+2. Colocar una foto: `python3 tools/foto.py <archivo> <número o id>` (añade `--extra` para una foto más del mismo producto).
+   Un lote: `python3 tools/foto.py --lote <carpeta>` con archivos llamados `23.jpg`, `23-2.png`, `ghd-gold.webp`… Los que no lleven número o id
+   salen como «sin asignar»: se miran (se reconoce el producto por la etiqueta), se confirma con Javi si hay duda y se colocan a mano.
+3. La herramienta endereza la foto, le quita los metadatos, recorta el fondo blanco o transparente que sobra, la deja a 1.200 px como mucho y la guarda en
+   `media/productos/<id>.webp` (más una miniatura en `media/productos/mini/`). Después regenera el catálogo y la lista (`[x]` = ya tiene foto).
+4. Regenerar y republicar: `node tools/bundle.mjs --artifact` (ver «Verla»). En la versión de claude.ai las fotos **no van incrustadas**: se publican como
+   archivos aparte con el parámetro `files` de la herramienta Artifact, usando el mapa que deja el empaquetador en `<salida>.archivos.json`
+   (ruta publicada → archivo). En el archivo único de `dist/` van incrustadas las miniaturas.
+- Cómo se ven: la clase `.pimg` las muestra **enteras y sobre blanco** en tarjetas, ficha, bolsa, packs y en el círculo de la escena de ghd.
+- Si Javi dice que Merche no vende un producto: se quita del catálogo (borrarlo de su JSON en `data/`) y **su número no se reutiliza**.
+- Otros archivos por producto (mismo sistema, a mano): `media/productos/<id>.mp4` (vídeo en tarjeta y ficha) y `media/productos/<id>-tutorial.mp4` (tutorial de Merche).
+- Generales, en `js/config.js`: `intro.video.portrait` / `landscape` (vídeo de la intro en 9:16 y 16:9), `media.heroVideo` (Merche en su mostrador),
+  `media.merchePhoto` (foto de Merche) y `media.tutorialTeaser` (trozo de tutorial en el móvil dibujado).
+- Recomendado: fotos de 800 px o más, producto entero sobre fondo blanco o liso; vídeos de producto 4:5, 4–6 s, sin sonido, ≈ 1 MB; intro ≤ 3 MB.
+- **Las fotos oficiales de ghd y Schwarzkopf necesitan el permiso de las marcas antes de publicar la web.**
 
 ## Reglas que hay que respetar
 - **Nada inventado:** ni reseñas, ni frases de Merche, ni descuentos, ni «más vendido» sin sus datos. Lo que falta lleva la etiqueta `.pend` (amarilla, discontinua).

@@ -414,3 +414,14 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .mnav { padding-top: calc(150px + env(safe-area-inset-top, 0px)); }
 #intro .skip { right: calc(20px + env(safe-area-inset-right, 0px)); }
 @media (max-width: 860px) { .sticky-buy { padding-inline: var(--pad); } }
+
+/* ---------- fotos reales de producto: siempre enteras y sobre blanco, estén donde estén ---------- */
+.pimg { background: #fff; object-fit: contain !important; padding: 9%; box-sizing: border-box; }
+.th .pimg, .th img { display: block; width: 100%; height: 100%; padding: 6%; }
+.thumbs .pimg, .panel .minis .pimg, .pk-art .pimg { padding: 7%; }
+.stage .shot .pimg { padding: 7%; }
+.needs-stage .pane .pimg { padding: 12% 12% 22%; }
+.fly-ghost .pimg { padding: 9%; }
+/* en la escena negra de ghd la foto va dentro del círculo claro */
+.ghd-art .pimg { position: absolute; left: 6%; top: 9%; width: 88%; height: 82%; border-radius: 50%; padding: 15%; }
+.ghd-stage:has(.ghd-art.on .pimg) .ghd-ring { background: #fff; }

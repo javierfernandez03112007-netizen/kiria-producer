@@ -8,7 +8,8 @@
 - Si existe media/productos/<id>.jpg|.webp|.png  -> foto oficial del producto (campo img)
            media/productos/<id>.mp4               -> vídeo del producto (campo video)
            media/productos/<id>-tutorial.mp4      -> tutorial de Merche (campo tutorial)
-           media/productos/<id>-2.jpg, -3.jpg…    -> más fotos (campo gallery)
+           media/productos/<id>-2.webp, -3.webp…  -> más fotos (campo gallery)
+  Las fotos se colocan con tools/foto.py, que las recorta y las deja todas iguales.
 """
 import json, glob, os, re
 here = os.path.dirname(os.path.abspath(__file__))
@@ -20,8 +21,9 @@ DEF = (('line',''),('size',''),('price',None),('priceSrc',''),('short',''),('des
 clean = lambda s: re.sub(r'\s+', ' ', re.sub(r'<[^>]*>', '', str(s))).strip()
 
 seen, out = set(), []
-skip = {'overrides.json'}
-files = [os.path.join(here, 'base.json')] + sorted(f for f in glob.glob(os.path.join(here, '*.json')) if os.path.basename(f) not in skip | {'base.json'})
+skip = {'overrides.json', 'numeros.json'}        # no son catálogo (y tampoco los que empiezan por «_»)
+files = [os.path.join(here, 'base.json')] + sorted(f for f in glob.glob(os.path.join(here, '*.json'))
+                                                   if os.path.basename(f) not in skip | {'base.json'} and not os.path.basename(f).startswith('_'))
 for f in files:
     for p in json.load(open(f, encoding='utf-8')):
         pid = re.sub(r'[^a-z0-9-]', '-', str(p.get('id', '')).lower()).strip('-')
@@ -51,7 +53,7 @@ media = os.path.join(root, 'media', 'productos')
 have = set(os.listdir(media)) if os.path.isdir(media) else set()
 n_img = n_vid = 0
 for p in out:
-    for ext in ('jpg', 'webp', 'png'):
+    for ext in ('webp', 'jpg', 'png'):
         if f"{p['id']}.{ext}" in have: p['img'] = f"media/productos/{p['id']}.{ext}"; n_img += 1; break
     g = sorted(f for f in have if re.fullmatch(re.escape(p['id']) + r'-\d+\.(jpg|webp|png)', f))
     if g: p['gallery'] = ['media/productos/' + f for f in g]

@@ -34,7 +34,7 @@ export function look(p) {
   return { shape, tone: [t[1], t[2]], accent: t[3] };
 }
 export function picture(p, opts) {
-  if (p.img) return `<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">`;
+  if (p.img) return `<img class="pimg" src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">`;   // foto real: entera, sobre blanco
   return art({ ...p, ...look(p) }, opts);
 }
 
