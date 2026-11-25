@@ -1228,7 +1228,7 @@ function wallDraw(st) { const key = JSON.stringify(st); if (key === WALL.key) re
   // el hemiciclo: se encienden «lit» escaños (dorados: los 210 que hacen falta; blancos: el récord, 202) y parpadean los que faltan hasta 210
   if (st.hemiA > 0) { const a = st.hemiA, cy = H * 0.54; c.globalAlpha = a * 0.75; c.fillStyle = '#060b1c'; c.beginPath(); c.arc(W / 2, cy, 490, Math.PI, 0); c.lineTo(W / 2 + 490, cy + 60); c.lineTo(W / 2 - 490, cy + 60); c.fill();
     c.globalAlpha = a; for (let i = 0; i < S.seats.length; i++) { const [x, y] = S.seats[i]; let col = 'rgba(150,170,210,0.2)'; if (i < st.lit) col = st.rec ? '#eef2fc' : '#ffd66a'; else if (st.rec && i < 210) col = st.blink ? '#ff6a4e' : 'rgba(255,106,78,0.3)'; c.fillStyle = col; c.beginPath(); c.arc(x, y, 10, 0, 7); c.fill(); }
-    if (st.lab > 0) { const txt = st.rec ? 'RÉCORD: 202 · FALTAN 8' : '210 DE 350 · TRES QUINTOS'; c.globalAlpha = a * st.lab; c.fillStyle = st.rec ? '#eef2fc' : '#ffd66a'; rr(c, W / 2 - 450, 6, 900, 92, 46); c.fill(); c.fillStyle = '#12100a'; fitFont(c, txt, 900, 62, 840); c.fillText(txt, W / 2, 55); } c.globalAlpha = 1; }
+    if (st.lab > 0) { const txt = st.rec ? 'RÉCORD: 202 · FALTAN 8' : '210 DE 350 · TRES QUINTOS'; c.globalAlpha = a * st.lab; c.fillStyle = st.rec ? '#eef2fc' : '#ffd66a'; rr(c, W / 2 - 370, 8, 740, 88, 44); c.fill(); c.fillStyle = '#12100a'; fitFont(c, txt, 900, 56, 680); c.fillText(txt, W / 2, 54); } c.globalAlpha = 1; }
   const panel = (y0, y1, a) => { c.globalAlpha = a * 0.72; c.fillStyle = '#060b1c'; rr(c, W / 2 - 590, y0, 1180, y1 - y0, 46); c.fill(); c.globalAlpha = a; };
   if (st.next > 0) { panel(H * 0.19, H * 0.58, st.next); c.fillStyle = '#ffd66a'; c.font = '900 92px Inter'; c.fillText('PRÓXIMO CAPÍTULO', W / 2, H * 0.3, 1080); c.fillStyle = '#ffffff'; c.font = '900 176px Inter'; c.fillText(PARTY[CH.next].sig, W / 2, H * 0.46, 1080); c.globalAlpha = 1; }
   S.wallT.needsUpdate = true; }
@@ -1323,27 +1323,32 @@ function fillAt(t) { return { k: 0, c: [0, 0, 0] }; }
 // atril, apellido debajo), con una deriva lenta en cada medida → abre a las cuatro (se enciende la siguiente) → el atril del siguiente partido, a la MISMA
 // distancia y altura → sube otra vez al candado (bucle).
 let CK = [], CUTS = [];
-function buildCam() { const T = TL, PP = PADP, K0 = [[0.0, PP[1] + 0.1, PP[2] + 2.3], [0.0, PP[1] + 0.06, PP[2]], 50], i = ORDER.indexOf(CH.id), j = ORDER.indexOf(CH.next), WIDE = [[0.0, 1.98, 8.6], [0.0, 1.98, 0.0], 50];
-  const mid = (n, dx, k) => { const ry = lectRy(n), nx = Math.sin(ry), nz = Math.cos(ry), cx = lectX(n), cz = lectZ(n) - 0.2, d = 3.2 - 0.2 * k, y = S.FL + 1.6;
-    return [[cx + nx * d + nz * dx, y, cz + nz * d - nx * dx], [cx + nz * dx * 0.25, y, cz - nx * dx * 0.25], 44]; };
+function buildCam() { const T = TL, PP = PADP, K0 = [[PP[0], PP[1] + 0.1, PP[2] + 2.3], [PP[0], PP[1] + 0.06, PP[2]], 50], i = ORDER.indexOf(CH.id), j = ORDER.indexOf(CH.next), WIDE = [[0.0, 1.98, 8.6], [0.0, 1.98, 0.0], 50];
+  // de frente a un atril: gira «th» radianes alrededor de los rótulos (la cara, detrás, se desplaza un poco: relieve), se acerca con «k» y sube «dy» mirando algo hacia abajo
+  // (así la cara no cambia de sitio y los objetos se ven desde arriba). Con th = 0, k = 0 y dy = 0 es el plano base: cara arriba, medidas sobre el atril, apellido y siglas debajo.
+  const mid = (n, th, k, dy = 0) => { const ry = lectRy(n), a = ry + th, d = 2.88 - 0.2 * k, y0 = S.FL + 1.6, sx = lectX(n) + Math.sin(ry) * 0.12, sz = lectZ(n) + Math.cos(ry) * 0.12;
+    return [[sx + Math.sin(a) * d, y0 + dy, sz + Math.cos(a) * d], [sx, y0 + dy * (1 - d / (d + 0.52)), sz], 44]; };
   CK = [
     [0, ...K0],                                                                                              // el candado, de cerca: las cifras giran
-    [T.hacen - 0.1, [0.1, PP[1] - 0.1, PP[2] + 3.6], [0.0, PP[1] + 0.1, PP[2]], 50],
-    [T.doscientos + 0.3, [0.0, 3.0, 5.4], [0.0, 3.6, -3.0], 50],                                            // se aleja: el candado delante del hemiciclo (210 escaños dorados)
+    [T.hacen - 0.1, [PP[0] + 0.1, PP[1] - 0.1, PP[2] + 3.6], [PP[0] + 0.05, PP[1] + 0.1, PP[2]], 50],
+    [T.doscientos + 0.3, [-0.15, 3.0, 5.4], [-0.1, 3.6, -3.0], 50],                                         // se aleja: el candado delante del hemiciclo (210 escaños dorados)
     [T.E[1] + 0.35, [0.0, 2.7, 7.3], [0.0, 3.35, -3.0], 50],                                                // …y las cuatro pantallas debajo
-    [T.record + 0.3, [-0.15, 2.85, 6.2], [-0.05, 3.5, -3.0], 50],                                           // el récord: 202; faltan 8 (algo más cerca)
-    [T.E[2] + 0.3, [-0.25, 2.9, 5.7], [-0.1, 3.55, -3.0], 50],
-    [T.psoe + 0.2, ...mid(i, 0.1, 0)],                                                                       // baja al atril del partido
-    [T.cuatro + 0.5, ...mid(i, -0.05, 0.6)],
-    [T.L[4] + 0.4, ...mid(i, 0.08, 0.2)], [T.E[4], ...mid(i, -0.06, 1)],                                     // 1 · vivienda
-    [T.L[5] + 0.4, ...mid(i, -0.1, 0.3)], [T.salario, ...mid(i, 0.02, 0.9)], [T.E[5], ...mid(i, 0.1, 0.4)],  // 2 · trabajo (jornada y salario mínimo)
-    [T.L[6] + 0.4, ...mid(i, 0.1, 0.1)], [T.E[6], ...mid(i, -0.08, 1)],                                      // 3 · familias
-    [T.L[7] + 0.4, ...mid(i, -0.1, 0.2)], [T.ayuda, ...mid(i, 0.0, 0.8)], [T.E[7], ...mid(i, 0.1, 0.3)],     // 4 · estudiantes y dentista
-    [T.L[8] + 0.4, ...mid(i, 0.08, 0.0)], [T.E[8], ...mid(i, -0.06, 1)],                                     // ¿y con qué dinero?
+    [T.nunca - 0.15, [-0.1, 3.0, 4.7], [-0.05, 3.95, -5.2], 50],                                            // «ningún partido…»: se acerca al candado (el hemiciclo llena el ancho)
+    [T.record + 0.4, [-0.14, 3.05, 4.2], [-0.06, 3.98, -5.2], 50],                                          // el récord: 202; faltan 8 (parpadean al lado del arco)
+    [T.dos2 + 0.45, [-0.18, 3.1, 3.7], [-0.08, 4.07, -5.2], 50],                                            // el arco baja, choca y no cierra
+    [T.E[2] + 0.35, [-0.2, 3.1, 3.6], [-0.08, 4.08, -5.2], 50],
+    [T.psoe + 0.2, ...mid(i, 0.03, 0)],                                                                      // baja al atril del partido (el candado estaba justo encima)
+    [T.cuatro + 0.5, ...mid(i, -0.03, 0.6)],
+    // en cada medida la cámara rodea el atril hacia un lado, sube un poco y se acerca; en la siguiente, hacia el otro
+    [T.L[4] + 0.5, ...mid(i, -0.17, 0.9, 0.22)], [T.E[4], ...mid(i, -0.05, 1.2, 0.3)],                                                // 1 · vivienda
+    [T.L[5] + 0.45, ...mid(i, 0.12, 0.6, 0.12)], [T.salario - 0.1, ...mid(i, 0.17, 1.1, 0.26)], [T.E[5], ...mid(i, 0.04, 0.8, 0.18)],  // 2 · trabajo (jornada y salario mínimo)
+    [T.L[6] + 0.45, ...mid(i, -0.1, 0.5, 0.05)], [T.E[6], ...mid(i, -0.19, 1.2, 0.3)],                                                // 3 · familias
+    [T.L[7] + 0.45, ...mid(i, 0.05, 0.8, 0.2)], [T.ayuda, ...mid(i, 0.18, 1.1, 0.28)], [T.E[7], ...mid(i, 0.08, 0.7, 0.12)],           // 4 · estudiantes y dentista
+    [T.L[8] + 0.4, ...mid(i, 0.0, 0.2, 0.0)], [T.E[8], ...mid(i, -0.12, 1.0, 0.2)],                                                   // ¿y con qué dinero? (de frente: el atril entero)
     [Math.min(T.proximo + 0.55, T.vox - 0.25), ...WIDE],                                                     // «en el próximo capítulo…»: las cuatro; se enciende la siguiente
     [T.vox + 0.05, [0.0, 1.96, 8.25], [0.0, 1.98, 0.0], 50],
-    [T.irpf - 0.25, ...mid(j, 0.1, 0)], [T.E[9] + 0.1, ...mid(j, -0.06, 1)],                                 // el atril del siguiente partido: su intriga
-    [T.manda + 0.8, [0.1, 2.9, 5.4], [0.0, 3.5, -3.0], 50],                                                  // sube otra vez al candado (bucle)
+    [T.irpf - 0.25, ...mid(j, 0.04, 0)], [T.E[9] + 0.1, ...mid(j, -0.06, 0.9, 0.1)],                         // el atril del siguiente partido: su intriga (mismo plano base)
+    [T.manda + 0.8, [PP[0] + 0.25, 2.9, 5.4], [PP[0] + 0.15, 3.5, -3.0], 50],                                // sube otra vez al candado (bucle)
     [END, ...K0],
   ];
   for (let i = 1; i < CK.length; i++) if (CK[i][0] <= CK[i - 1][0]) console.error('ERROR claves de cámara desordenadas en ' + i + ': ' + CK[i - 1][0].toFixed(2) + ' → ' + CK[i][0].toFixed(2)); }
@@ -1388,12 +1393,13 @@ function padAt(t) { const U = S.pad.userData, D = padDigits(t); for (let i = 0; 
   const tau = TL.dos2 + 0.4, pulse = Math.exp(-Math.pow((t - tau - 0.14) / 0.07, 2)) + 0.5 * Math.exp(-Math.pow((t - tau - 0.44) / 0.06, 2)), o = 1 - 0.9 * Math.min(1, pulse);   // el arco baja, choca y rebota: no cierra
   U.sh.position.y = U.BH / 2 + 0.15 * o; U.sh.rotation.y = 0.7 * o; S.pad.rotation.z = 0.035 * Math.sin(t * 46) * Math.min(1, pulse) + 0.012 * Math.sin(t * 0.9); S.pad.position.y = PADP[1] + 0.03 * Math.sin(t * 1.3);
   const vis = clamp(1 - win(t, TL.psoe - 0.25, 0.4) + win(t, TL.manda + 0.2, 0.45)); S.pad.visible = vis > 0.01; S.pad.scale.setScalar(Math.max(0.01, vis)); }
-const PADP = [0, 3.5, -1.6];
+const PADP = [-0.45, 3.5, -1.6];                       // encima de la pantalla del partido (algo a la izquierda del centro del hemiciclo: a su derecha se ven los 8 escaños que faltan)
 // ---- los objetos de las medidas, sobre el atril del partido (y la intriga, sobre el atril del siguiente)
 function buildProps(G) { const P = {}, id = CH.id, OX = -0.26, PX = 0.275, PW = 0.54, PH = 0.34, PY = 0.19, S3 = { sz: [0.4, 0.2, 0.17], ys: [0.28, 0.62, 0.84], nbig: 1 }, S3b = { sz: [0.36, 0.19, 0.26], ys: [0.25, 0.55, 0.81], nbig: 1 };
   const g = new THREE.Group(); g.position.set(0, STAGE.Y, 0.02); S.lect[id].add(g); P.g = g;
   const grp = () => { const q = new THREE.Group(); q.visible = false; g.add(q); return q; }, pl = (txt, o = {}) => { const p = plate(txt, PW, PH, { edge: PARTY[id].css, ...o }); p.position.set(PX, PY, 0.1); return p; }, slab = (w, d) => box(w, 0.02, d, stdM(0x1a2230, 0.5), OX, 0.01, 0);
   const lit = (col, I = 0.5) => nightMat(new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: I, roughness: 0.5 }));
+  P.tabs = ['VIVIENDA', 'TRABAJO', 'FAMILIAS', 'ESTUDIANTES'].map((s, n) => { const m = plate((n + 1) + ' · ' + s, 0.36, 0.075, { ink: '#ffb547' }); m.position.set(PX - PW / 2 + 0.18, PY + PH / 2 + 0.045, 0.1); m.visible = false; g.add(m); return m; });   // el tema, en ámbar (como en los subtítulos)
   // «su programa trae quinientas»: el libro del programa
   { const q = P.prog = grp(), bk = new THREE.Group(); bk.position.set(OX, 0.185, 0); bk.rotation.set(0.05, 0.25, 0); q.add(bk); P.book = bk; bk.add(box(0.26, 0.35, 0.07, stdM(0xb31220, 0.5), 0, 0, 0)); bk.add(box(0.24, 0.33, 0.076, M.paper, 0.008, 0, 0));
     const cv = signPlane(0.26, 0.35, 512, (c, w, h) => { c.fillStyle = '#b31220'; c.fillRect(0, 0, w, h); c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle'; fitFont(c, 'PROGRAMA', 900, 80, w - 60); c.fillText('PROGRAMA', w / 2, h * 0.2); fitFont(c, PARTY[id].sig, 900, 150, w - 60); c.fillText(PARTY[id].sig, w / 2, h * 0.5); c.font = '700 44px Inter'; c.fillText('29N · 2026', w / 2, h * 0.78); }, { r: 0.5 }); cv.position.z = 0.039; bk.add(cv);
@@ -1404,7 +1410,7 @@ function buildProps(G) { const P = {}, id = CH.id, OX = -0.26, PX = 0.275, PW = 
   { const q = P.viv = grp(), stack = new THREE.Group(); stack.position.set(OX - 0.17, 0, 0); q.add(stack); P.stack = stack; const cg = [lit(0xf0c648, 0.42), lit(0xc9962e, 0.38)]; for (let i = 0; i < 9; i++) ad(stack, cyl(0.075, 0.075, 0.027, cg[i % 2], 28)).position.y = 0.014 + i * 0.03; const lb = plate('PIB', 0.16, 0.075, {}); lb.position.set(0, 0.13, 0.09); stack.add(lb);
     P.slice = cyl(0.075, 0.075, 0.012, nightMat(new THREE.MeshStandardMaterial({ color: 0xffe08a, emissive: 0xffc840, emissiveIntensity: 1.2, metalness: 0.8, roughness: 0.3 })), 28); q.add(P.slice);
     q.add(box(0.32, 0.02, 0.2, stdM(0x1a2230, 0.5), OX + 0.1, 0.01, 0)); P.blocks = [0, 1, 2].map(i => { const b = miniBlock(4 + i, [0xdfe3ea, 0xe9dcc4, 0xcfd8e6][i], 0.6); b.position.set(OX + i * 0.1, 0.02, (i % 2) * 0.05 - 0.02); q.add(b); return b; });
-    q.add(pl(['100.000', 'PISOS PÚBLICOS', '1 % DEL PIB CADA AÑO'], S3)); }
+    P.vA = pl(['1 % DEL PIB', 'CADA AÑO', 'PARA VIVIENDA']); q.add(P.vA); P.vB = pl(['100.000', 'PISOS PÚBLICOS', '1 % DEL PIB CADA AÑO'], S3); q.add(P.vB); }
   // 2a · trabajo: la jornada, de 40 a 37,5 horas (16 casillas de dos horas y media: se va una)
   { const q = P.jor = grp(); q.add(box(0.46, 0.02, 0.1, stdM(0x1a2230, 0.5), OX, 0.05, 0)); const cm = lit(0xffd66a, 0.55); P.cells = []; for (let i = 0; i < 16; i++) { const d = box(0.023, 0.2, 0.06, cm, OX - 0.2025 + i * 0.027, 0.16, 0); q.add(d); P.cells.push(d); }
     P.j40 = plate('40 h', 0.2, 0.085, {}); P.j40.position.set(OX, 0.32, 0.06); q.add(P.j40); P.j37 = plate('37,5 h', 0.24, 0.085, { ink: '#ffd66a' }); P.j37.position.set(OX - 0.016, 0.32, 0.06); q.add(P.j37);
@@ -1414,7 +1420,8 @@ function buildProps(G) { const P = {}, id = CH.id, OX = -0.26, PX = 0.275, PW = 
     const la = plate(['SUELDO', 'MEDIO'], 0.2, 0.1, { sz: [0.4, 0.4], ys: [0.3, 0.72], nbig: 2 }); la.position.set(OX - 0.11, 0.07, 0.06); q.add(la); const lb = plate(['SALARIO', 'MÍNIMO'], 0.2, 0.1, { sz: [0.4, 0.4], ys: [0.3, 0.72], nbig: 2 }); lb.position.set(OX + 0.11, 0.07, 0.06); q.add(lb);
     P.line = box(0.5, 0.006, 0.012, nightMat(new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xffd66a, emissiveIntensity: 2.2 })), OX, 0.2, 0.05); q.add(P.line);
     P.p60 = plate('60 %', 0.15, 0.07, { ink: '#ffd66a' }); P.p60.position.set(OX + 0.11, 0.255, 0.08); q.add(P.p60);
-    q.add(pl(['SALARIO MÍNIMO', '60 % DEL SUELDO MEDIO', 'POR LEY'], { sz: [0.27, 0.19, 0.25], ys: [0.24, 0.52, 0.8], nbig: 1 })); }
+    P.sA = pl(['SALARIO', 'MÍNIMO'], { sz: [0.36, 0.36], ys: [0.31, 0.71], nbig: 2 }); q.add(P.sA); P.sB = pl(['SALARIO MÍNIMO', '60 % DEL SUELDO MEDIO', 'POR LEY'], { sz: [0.27, 0.19, 0.25], ys: [0.24, 0.52, 0.8], nbig: 1 }); q.add(P.sB);
+    P.ley = badge('LEY', 0.14, '#ffd66a', '#12100a'); P.ley.position.set(OX + 0.11, 0.37, 0.08); q.add(P.ley); }
   // 3 · familias: paga por crianza para todos los hogares con hijos (biberón y cubos); «cuánto, no lo dice»
   { const q = P.cri = grp(); q.add(slab(0.5, 0.2)); const bt = new THREE.Group(); bt.position.set(OX - 0.15, 0.02, 0.02); q.add(bt); P.bottle = bt;
     ad(bt, cyl(0.039, 0.039, 0.08, stdM(0xfaf6ea, 0.5), 20)).position.y = 0.045; ad(bt, cyl(0.04, 0.04, 0.14, new THREE.MeshPhysicalMaterial({ color: 0xeaf4ff, roughness: 0.1, transparent: true, opacity: 0.5 }), 20)).position.y = 0.07; ad(bt, cyl(0.045, 0.045, 0.03, stdM(0x4aa3df, 0.5), 20)).position.y = 0.155; ad(bt, cyl(0.012, 0.028, 0.045, stdM(0xe9c9a0, 0.6), 14)).position.y = 0.19;
@@ -1424,7 +1431,7 @@ function buildProps(G) { const P = {}, id = CH.id, OX = -0.26, PX = 0.275, PW = 
   // 4a · estudiantes: el primer curso de la universidad pública, gratis (birrete sobre libros)
   { const q = P.uni = grp(); q.add(slab(0.5, 0.2)); [[0x2f5fa8, 0], [0xb7a68a, 0.045], [0x3f8a5e, 0.09]].forEach(([col, y], i) => { const b = box(0.24 - i * 0.02, 0.04, 0.17, stdM(col, 0.6), OX + (i - 1) * 0.01, 0.04 + y, 0); b.rotation.y = (i - 1) * 0.12; q.add(b); });
     const cap = new THREE.Group(); cap.position.set(OX, 0.19, 0); cap.rotation.set(0.12, 0.5, 0.06); q.add(cap); P.cap = cap; const km = stdM(0x15171c, 0.5); cap.add(cyl(0.07, 0.075, 0.05, km, 20)); cap.add(box(0.24, 0.012, 0.24, km, 0, 0.03, 0)); const tas = cyl(0.006, 0.006, 0.11, stdM(0xffd66a, 0.4), 8); tas.position.set(0.11, -0.02, 0.11); cap.add(tas); ad(cap, sph(0.014, stdM(0xffd66a, 0.4), 10, 8)).position.set(0.11, -0.08, 0.11);
-    P.free = badge('0 €', 0.15, '#ffd66a', '#12100a'); P.free.position.set(OX + 0.18, 0.3, 0.1); q.add(P.free); q.add(pl(['1.er CURSO', 'UNIVERSIDAD PÚBLICA', 'GRATIS'], S3b)); }
+    P.free = badge('0 €', 0.15, '#ffd66a', '#12100a'); P.free.position.set(OX + 0.18, 0.3, 0.1); q.add(P.free); P.uA = pl(['1.er CURSO', 'UNIVERSIDAD', 'PÚBLICA'], { sz: [0.36, 0.2, 0.2], ys: [0.25, 0.57, 0.8], nbig: 1 }); q.add(P.uA); P.uB = pl(['1.er CURSO', 'UNIVERSIDAD PÚBLICA', 'GRATIS'], S3b); q.add(P.uB); }
   // 4b · ayuda de hasta 200 € al año para el dentista (una muela)
   { const q = P.den = grp(); q.add(slab(0.4, 0.2)); const th = new THREE.Group(); th.position.set(OX, 0.2, 0); q.add(th); P.tooth = th; const wm = new THREE.MeshPhysicalMaterial({ color: 0xfbfaf4, roughness: 0.25, clearcoat: 0.6 });
     const cr = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 16), wm); cr.scale.set(0.1, 0.085, 0.075); cr.position.y = 0.03; th.add(cr);
@@ -1459,13 +1466,14 @@ function chapterAt(t, st) { const P = S.P, T = TL, id = CH.id;
   const vis = (g, a, b) => { const k = bump(t, a, b, 0.001, 0.2); g.visible = k > 0.01; if (g.visible) g.scale.setScalar(Math.max(0.01, pop(t, a, 0.4)) * Math.min(1, k * 1.2)); return g.visible; }, ps = (o, t0, d = 0.35, s = 1) => o.scale.setScalar(Math.max(0.001, pop(t, t0, d)) * s);
   if (vis(P.prog, T.programa - 0.12, T.cuatro - 0.12)) P.book.rotation.y = 0.25 + 0.08 * Math.sin(t * 1.4);
   if (vis(P.tiles, T.cuatro - 0.08, T.L[4] - 0.3)) P.tile.forEach((m, i) => ps(m, T.cuatro - 0.05 + i * 0.1, 0.3));
-  if (vis(P.viv, T.L[4] - 0.08, T.L[5] - 0.22)) { const k = sm5(seg(t, T.pib - 0.1, T.cien - 0.05)); P.slice.position.set(lerp(-0.43, -0.2, k), lerp(0.29, 0.1, k) + 0.1 * Math.sin(k * Math.PI), 0); P.slice.rotation.z = -k * 1.2; P.slice.visible = t > T.uno4 && k < 0.97; ps(P.stack, T.uno4 - 0.05);
+  P.tabs.forEach((m, n) => { const a = T.L[4 + n] - 0.05, k = bump(t, a, T.L[5 + n] - 0.22, 0.001, 0.2); m.visible = k > 0.01; if (m.visible) m.scale.setScalar(Math.max(0.01, pop(t, a, 0.35)) * Math.min(1, k * 1.2)); });
+  if (vis(P.viv, T.L[4] - 0.08, T.L[5] - 0.22)) { { const f = t > T.cien - 0.1; P.vA.visible = !f; P.vB.visible = f; ps(P.vB, T.cien - 0.1); } const k = sm5(seg(t, T.pib - 0.1, T.cien - 0.05)); P.slice.position.set(lerp(-0.43, -0.2, k), lerp(0.29, 0.1, k) + 0.1 * Math.sin(k * Math.PI), 0); P.slice.rotation.z = -k * 1.2; P.slice.visible = t > T.uno4 && k < 0.97; ps(P.stack, T.L[4] + 0.05);
     P.blocks.forEach((b, i) => { b.scale.set(1, Math.max(0.001, pop(t, lerp(T.cien - 0.05, T.publicos - 0.05, i / 2), 0.45)), 1); }); }
   if (vis(P.jor, T.L[5] - 0.08, T.salario - 0.3)) { const f = win(t, T.treinta5 + 0.1, 0.5), c = P.cells[15]; c.scale.set(1, Math.max(0.02, 1 - f), 1); c.position.y = 0.06 + 0.1 * Math.max(0.02, 1 - f); c.visible = f < 0.98;
     P.cells.forEach((d, i) => { if (i < 15) d.scale.setScalar(Math.max(0.001, pop(t, T.jornada - 0.05 + i * 0.02, 0.25))); }); P.p40.visible = P.j40.visible = f < 0.5; P.p37.visible = P.j37.visible = f >= 0.5; ps(P.p37, T.treinta5 + 0.32); ps(P.j37, T.treinta5 + 0.32); }
-  if (vis(P.smi, T.salario - 0.25, T.L[6] - 0.22)) { const k = 0.6 * sm5(seg(t, T.sesenta - 0.25, T.sesenta + 0.45)) + 0.001; P.min.scale.y = k; P.min.position.y = 0.02 + 0.15 * k; P.line.scale.x = Math.max(0.001, win(t, T.sesenta - 0.1, 0.35)); ps(P.p60, T.sesenta + 0.3); ps(P.avg, T.salario - 0.15); }
+  if (vis(P.smi, T.salario - 0.25, T.L[6] - 0.22)) { { const f = t > T.sesenta - 0.12; P.sA.visible = !f; P.sB.visible = f; ps(P.sB, T.sesenta - 0.12); ps(P.ley, T.ley - 0.08); } const k = 0.6 * sm5(seg(t, T.sesenta - 0.25, T.sesenta + 0.45)) + 0.001; P.min.scale.y = k; P.min.position.y = 0.02 + 0.15 * k; P.line.scale.x = Math.max(0.001, win(t, T.sesenta - 0.1, 0.35)); ps(P.p60, T.sesenta + 0.3); ps(P.avg, T.salario - 0.15); }
   if (vis(P.cri, T.L[6] - 0.08, T.L[7] - 0.22)) { ps(P.bottle, T.paga - 0.05); P.cubes.forEach((b, i) => ps(b, T.crianza - 0.05 + i * 0.12)); ps(P.kids, T.ocho - 0.05); const f = t > T.cuanto - 0.08; P.c1.visible = !f; P.c2.visible = f; ps(P.c2, T.cuanto - 0.08); P.bottle.rotation.z = 0.08 * Math.sin(t * 2.2); }
-  if (vis(P.uni, T.L[7] - 0.08, T.ayuda - 0.45)) { ps(P.cap, T.primer - 0.05); ps(P.free, T.gratis - 0.08); P.cap.rotation.y = 0.5 + 0.15 * Math.sin(t * 1.6); }
+  if (vis(P.uni, T.L[7] - 0.08, T.ayuda - 0.45)) { { const f = t > T.gratis - 0.08; P.uA.visible = !f; P.uB.visible = f; ps(P.uB, T.gratis - 0.08); } ps(P.cap, T.primer - 0.05); ps(P.free, T.gratis - 0.08); P.cap.rotation.y = 0.5 + 0.15 * Math.sin(t * 1.6); }
   if (vis(P.den, T.ayuda - 0.35, T.L[8] - 0.22)) { ps(P.tooth, T.ayuda - 0.25); ps(P.eur, T.doscientos7 - 0.08); P.tooth.rotation.y = 0.35 * Math.sin(t * 1.5); }
   if (vis(P.tax, T.L[8] - 0.08, T.L[9] - 0.25)) { const f = t > T.impuestos - 0.1; P.t0.visible = !f; P.t1.visible = f; ps(P.t1, T.impuestos - 0.1); { const ck = 1 - win(t, T.grandes - 0.12, 0.2), a = t * 2.4; P.coin.visible = ck > 0.02; P.coin.scale.setScalar(Math.max(0.01, ck)); P.coin.rotation.y = a; P.coinF.forEach(b => b.material.color.setScalar(0.62 + 0.38 * Math.abs(Math.cos(a)))); } ps(P.safe, T.grandes - 0.1); ps(P.hs, T.especula - 0.1); ps(P.pct, T.especula + 0.15); }
   if (vis(P.nx, T.vox + 0.25, T.L[10] + 0.2)) { ps(P.card, T.irpf - 0.15); ps(P.np, T.promete - 0.1); }

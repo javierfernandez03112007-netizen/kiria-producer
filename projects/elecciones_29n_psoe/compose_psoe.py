@@ -136,11 +136,12 @@ def sfx_track(path):
     put("cripto/monedas", at("uno", 1, 4) - 0.1, 0.75, 0.26, 0.25)
     put("economia/moneda_sola", at("pib") - 0.1, 0.8, 0.28, 0.3)
     put("gta6/edificios", at("cien") - 0.1, 1.3, 0.26, 0.3)
-    # 5 · trabajo: las 16 casillas de la jornada; se va una (37,5 h); las dos barras del salario y la raya del 60 %
+    # 5 · trabajo: las 16 casillas de la jornada; se va una (37,5 h); las dos barras del salario, el sello «LEY» y la raya del 60 %
     put("economia/barras", at("jornada") - 0.08, 0.6, 0.28, 0.2)
     put("lanzamiento/desliza", at("treinta", 1, 5) + 0.1, 0.5, 0.3, 0.15)
     put("avion/pop", at("treinta", 1, 5) + 0.32, 0.4, 0.26, 0.15)
     put("avion/pop", at("salario") - 0.15, 0.4, 0.26, 0.15)
+    put("avion/sello", at("ley") - 0.08, 0.5, 0.3, 0.2)
     put("avion/sube", at("sesenta") - 0.25, 0.7, 0.28, 0.25)
     put("avion/ding", at("sesenta") + 0.3, 0.7, 0.28, 0.3)
     # 6 · familias: el biberón, los tres cubos, los 8 millones y «cuánto, no lo dice»
