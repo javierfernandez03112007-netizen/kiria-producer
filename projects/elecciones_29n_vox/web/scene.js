@@ -1396,7 +1396,7 @@ function bookAt(t) { const B = S.book, U = B.userData, T = TL;
   U.pages.forEach((p, j) => { let u = -1; for (const [a, b] of flipSpans()) { const k = Math.floor((t - a - j * FLIP.DT) / (6 * FLIP.DT)); if (k < 0) continue; const s = a + (j + 6 * k) * FLIP.DT; if (s < b && t - s < FLIP.D) u = (t - s) / FLIP.D; }
     p.pv.visible = u >= 0; if (u >= 0) { const th = U.A + (Math.PI - 2 * U.A) * sm5(u); p.pv.rotation.y = -th; p.m.material.color.setScalar(0.78 + 0.22 * Math.abs(Math.cos(th))); } });
   const qk = 1 + 0.35 * bump(t, T.cuanto - 0.1, T.cuanto + 0.55, 0.15, 0.3) * (0.6 + 0.4 * Math.sin(t * 22)); U.q.forEach((m, i) => m.scale.setScalar(Math.max(0.001, pop(t, T.hijos - 0.15 + i * 0.1, 0.3)) * qk));
-  B.rotation.z = 0.012 * Math.sin(t * 0.9); B.position.y = BOOKP[1] + 0.03 * Math.sin(t * 1.3);
+  { const ts = t > 30 ? t - END : t; B.rotation.z = 0.012 * Math.sin(ts * 0.9); B.position.y = BOOKP[1] + 0.03 * Math.sin(ts * 1.3); }      // vaivén: al final se cuenta desde END (bucle)
   const vis = clamp(1 - win(t, T.L[3] + 0.45, 0.4) + win(t, T.manda + 0.2, 0.45)); B.visible = vis > 0.01; B.scale.setScalar(Math.max(0.01, vis));
   // «el 15 y el 25 por ciento que circulan»: dos tarjetas dan vueltas alrededor del libro… y acaban en OTRO documento (el de 2025), que aparece a su izquierda
   const D = S.doc, dk = bump(t, T.otro - 0.2, T.L[3] + 0.35, 0.001, 0.25); D.visible = dk > 0.01; if (D.visible) D.scale.setScalar(Math.max(0.01, pop(t, T.otro - 0.2, 0.4)) * Math.min(1, dk * 1.2));

@@ -57,7 +57,7 @@ function buildHook(G) { S.pay = payslip(); S.pay.position.set(...HP); G.add(S.pa
     const top = plate(['100 %', '75 %', '50 %', '25 %'][i], 0.34, 0.13, { ink: i ? '#5cf2e6' : '#ffd66a' }); top.position.set(0, h + 0.1, 0.06); q.add(top); const lab = plate('AÑO ' + (i + 1), 0.33, 0.1, {}); lab.position.set(0, -0.08, 0.06); q.add(lab); return q; });
   S.barT = plate('REBAJA DEL IRPF', 0.9, 0.13, { ink: '#ffb547' }); S.barT.position.set(0.555, 1.55, 0.06); bg.add(S.barT); shadowAll(bg, false, false); }
 function hookAt(t) { const T = TL, P = S.pay, U = P.userData; U.dig.offset.y = 1 - (wheelAt(t) + 1) / 11;
-  P.rotation.z = 0.012 * Math.sin(t * 0.9); P.position.y = HP[1] + 0.03 * Math.sin(t * 1.3);
+  { const ts = t > 30 ? t - END : t; P.rotation.z = 0.012 * Math.sin(ts * 0.9); P.position.y = HP[1] + 0.03 * Math.sin(ts * 1.3); }      // vaivén: al final se cuenta desde END (bucle)
   const vis = clamp(1 - win(t, T.L[3] + 0.45, 0.4) + win(t, T.manda + 0.2, 0.45)); P.visible = vis > 0.01; P.scale.setScalar(Math.max(0.01, vis));
   U.stamp.scale.setScalar(Math.max(0.001, pop(t, T.promesa - 0.1, 0.35) * (1 - win(t, T.L[3] + 0.3, 0.3))));
   // la lupa entra desde la derecha y se queda sobre la letra pequeña del pie

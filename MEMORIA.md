@@ -380,6 +380,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   `script_largo.txt`).
   **Voz del PSOE recibida el 25-11 (15:32 UTC)**: 60,2 s → 55,6 s sin pausas largas; vídeo de 56,6 s (3.394 fotogramas). Javi no contestó a lo de las
   máquinas de apoyo: render solo aquí (≈ 0,67 fotogramas por segundo con 2 procesos; ≈ 1 h 25 min).
+  **ENTREGADO a Javi el 25-11-2026 a las 17:35 UTC (18:35 en España)**: `out/elecciones_29n_psoe.mp4` (56,57 s, 3.394 fotogramas, 1080×1920, 60 fps,
+  −15,0 LUFS, 30,9 MB) + portada + miniatura 4:5 + `DESCRIPCION.txt`. Controles: continuidad (solo picos en los cambios de objeto), sin destellos, voz y
+  efectos en su sitio, fotogramas sacados del archivo final. **Lección del bucle**: el vaivén del objeto del gancho (`sin(t·1,3)`) no valía lo mismo en el
+  último fotograma que en el primero y el candado saltaba ≈ 26 px al repetirse el vídeo (diferencia último↔primero 17,7 frente a 4,6 entre fotogramas
+  seguidos). Arreglo: al final el vaivén se cuenta desde END (`ts = t > 30 ? t − END : t`; el objeto no se ve en medio) y solo hubo que repetir los últimos
+  194 fotogramas (a otra carpeta y copiados encima; los que no cambian salen idénticos bit a bit). Ya está puesto en Vox y PP; el control del bucle
+  (comparar el último fotograma con el primero) se hace SIEMPRE antes de montar. Ojo: `pgrep -f patrón` dentro de un `until` se encuentra a sí mismo y
+  la espera no acaba nunca: esperar por número de ficheros o por un fichero testigo.
 - **«29N: Vox» (`projects/elecciones_29n_vox/`, 25-11-2026): escena, subtítulos, efectos, portada y descripción hechos con tiempos PROVISIONALES; falta la
   voz.** Gancho: el libro gigante del programa pasando hojas solo encima de la pantalla de Abascal (`bigBook`, `bookAt`: seis hojas con bisagra en el lomo,
   tramos `flipSpans`; el último tramo empieza en END − 0,6 para que el bucle case con el principio, que empieza en −0,6); la página de la derecha es la tabla

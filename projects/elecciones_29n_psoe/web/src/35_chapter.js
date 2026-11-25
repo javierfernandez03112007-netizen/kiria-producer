@@ -31,7 +31,8 @@ function padDigits(t) { const A = [2, 1, 0], B = [2, 0, 2], out = [];
   return out; }
 function padAt(t) { const U = S.pad.userData, D = padDigits(t); for (let i = 0; i < 3; i++) U.dig[i].offset.y = 1 - (D[i] + 1) / 11;
   const tau = TL.dos2 - 0.1, pulse = Math.exp(-Math.pow((t - tau - 0.14) / 0.07, 2)) + 0.5 * Math.exp(-Math.pow((t - tau - 0.44) / 0.06, 2)), o = 1 - 0.9 * Math.min(1, pulse);   // el arco baja, choca y rebota: no cierra
-  U.sh.position.y = U.BH / 2 + 0.15 * o; U.sh.rotation.y = 0.7 * o; S.pad.rotation.z = 0.035 * Math.sin(t * 46) * Math.min(1, pulse) + 0.012 * Math.sin(t * 0.9); S.pad.position.y = PADP[1] + 0.03 * Math.sin(t * 1.3);
+  U.sh.position.y = U.BH / 2 + 0.15 * o; U.sh.rotation.y = 0.7 * o; const ts = t > 30 ? t - END : t;      /* vaivén: al final se cuenta desde END para que el último fotograma case con el primero (bucle) */
+  S.pad.rotation.z = 0.035 * Math.sin(t * 46) * Math.min(1, pulse) + 0.012 * Math.sin(ts * 0.9); S.pad.position.y = PADP[1] + 0.03 * Math.sin(ts * 1.3);
   const vis = clamp(1 - win(t, TL.psoe - 0.25, 0.4) + win(t, TL.manda + 0.2, 0.45)); S.pad.visible = vis > 0.01; S.pad.scale.setScalar(Math.max(0.01, vis)); }
 const PADP = [-0.45, 3.5, -1.6];                       // encima de la pantalla del partido (algo a la izquierda del centro del hemiciclo: a su derecha se ven los 8 escaños que faltan)
 // ---- los objetos de las medidas, sobre el atril del partido (y la intriga, sobre el atril del siguiente)
