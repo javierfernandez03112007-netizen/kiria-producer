@@ -123,10 +123,10 @@ def sfx_track(path):
         put("cerradura/blip", at("doscientos", 1, 1) - 0.35 + 0.22 * i, 0.3, 0.2 + 0.03 * i, 0.1)
     # 2: el récord (202): faltan 8 escaños, que parpadean; las cifras pasan a 2-0-2 y el arco baja, choca y no cierra
     put("cerradura/aviso", at("récord") - 0.12, 0.6, 0.28, 0.2)
-    put("cerradura/blip", at("dos", 1, 2) - 0.25, 0.3, 0.2, 0.1)
-    put("cerradura/blip", at("dos", 1, 2) - 0.08, 0.3, 0.22, 0.1)
-    put("cerradura/choca", at("dos", 1, 2) + 0.5, 0.45, 0.4, 0.15)
-    put("cerradura/denegado", at("dos", 1, 2) + 0.8, 0.4, 0.26, 0.15)
+    put("cerradura/blip", at("doscientos", 1, 2) + 0.29, 0.3, 0.2, 0.1)          # ruedan la segunda y la tercera cifra (la primera ya es un 2)
+    put("cerradura/blip", at("doscientos", 1, 2) + 0.43, 0.3, 0.22, 0.1)
+    put("cerradura/choca", at("dos", 1, 2) + 0.0, 0.3, 0.4, 0.12)                  # el arco baja y choca en «dos»…
+    put("cerradura/denegado", at("dos", 1, 2) + 0.3, 0.4, 0.26, 0.15)              # …y rebota: no cierra
     # 3: la cámara baja al atril del partido; el libro del programa; las cuatro fichas
     put("avion/whoosh", Le[1] + 0.25, 0.6, 0.24, 0.25)
     put("magisterio/libro", at("programa") - 0.12, 0.6, 0.3, 0.2)
