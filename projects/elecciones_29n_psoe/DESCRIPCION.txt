@@ -6,7 +6,7 @@
 
 👇 Mándaselo a quien se jubila pronto.
 
-📚 Fuentes: Constitución (arts. 50 y 167); resultados electorales del Ministerio del Interior (202 escaños: PSOE, 1982); programa electoral del PSOE para el 29N (114 páginas, 500 compromisos), según lo publicado por Demócrata, Artículo 14, Vozpópuli y Forbes; y programa de Vox («Es sentido común»), según Demócrata y Merca2.
+📚 Fuentes: Constitución (arts. 50 y 167); resultados electorales del Ministerio del Interior (202 escaños: PSOE, 1982); programa electoral del PSOE para el 29N (114 páginas, 500 compromisos), según lo publicado por Demócrata, Artículo 14, Vozpópuli, Forbes, El Salto y elDiario.es; y programa de Vox («Es sentido común»), según Demócrata y Merca2.
 
 🎬 Plató virtual hecho por ordenador: no es una imagen de un acto real. Las caras son fotos reales, sin animar ni retocar (solo se les ha quitado el fondo), de Wikimedia Commons: Sánchez (Pool Moncloa / Carlos Spottorno de las Morenas, 2026; Ministerio de la Presidencia, Gobierno de España), Feijóo (Partido Popular, 2025, CC0), Abascal (Vox España, 2026, CC0) y Colau (Laura Guerrero / Ajuntament de Barcelona, 2022, CC BY 4.0).
 
@@ -26,7 +26,7 @@ NOTAS PARA LA ENTREGA (no publicar):
 - Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). El audio dice el guion entero.
 - Efectos: solo de la biblioteca de ElevenLabs del canal (uno por suceso), sin música. Un solo plano sin cortes; primer fotograma = último (bucle).
 - ORDEN: este capítulo termina con «en el próximo capítulo, Vox» y no resuelve la intriga del capítulo 0 (el cero IRPF, que es del PP). Está pensado para ir DESPUÉS del capítulo del PP y antes del de Vox. Si se publica antes que el del PP, hay que cambiar la primera frase y la del próximo capítulo (están apuntadas en FUENTES.md).
-- Dos datos salen de una sola fuente (Demócrata) y conviene mirarlos en el PDF del programa antes de publicar: «salario mínimo, por ley, en el 60 % del sueldo medio» y que la paga por crianza no trae cuantía («cuánto, no lo dice»). Si el programa da una cifra, se cambia esa frase.
+- Un dato sale de un solo medio (Demócrata, en dos piezas) y conviene mirarlo en el PDF del programa antes de publicar: «salario mínimo, por ley, en el 60 % del sueldo medio». Que la paga por crianza no trae cuantía («cuánto, no lo dice») lo confirman varios medios (compromiso 192 del programa).
 - Las medidas están contadas con las palabras del programa y con los mismos colores que en los demás capítulos (dorado y cian); el rojo del partido solo va en su nombre, sus siglas y el borde de los rótulos.
 - Los candidatos son sus FOTOS REALES en pantallas (no vídeo ni caras generadas con IA). En los planos abiertos se ven las cuatro: los créditos de arriba hay que dejarlos (la de Colau, CC BY, lo exige).
 - Sin sondeos: la ley (LOREG, art. 69.7) prohíbe publicarlos del 24 al 28. El 202 es un resultado histórico (1982), no una encuesta. No responder en comentarios con «quién va ganando» ni con si «le llegarán» los 210.
