@@ -133,7 +133,7 @@ def sfx_track(path):
     for i in range(4):
         put("avion/tap", at("cuatro", 1, 3) - 0.05 + 0.1 * i, 0.25, 0.2 + 0.03 * i, 0.1)
     # 4 · vivienda: el montón del PIB, la moneda que sale (el 1 %) y los bloques que suben
-    put("cripto/monedas", at("uno", 1, 4) - 0.1, 0.75, 0.26, 0.25)
+    put("cripto/monedas", L[3] + 0.03, 0.75, 0.26, 0.25)                           # el montón aparece con «Vivienda:»
     put("economia/moneda_sola", at("pib") - 0.1, 0.8, 0.28, 0.3)
     put("gta6/edificios", at("cien") - 0.1, 1.3, 0.26, 0.3)
     # 5 · trabajo: las 16 casillas de la jornada; se va una (37,5 h); las dos barras del salario, el sello «LEY» y la raya del 60 %
