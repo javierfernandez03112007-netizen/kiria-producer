@@ -1,0 +1,51 @@
+«TU BOTELLA VA A 300 BARES» — las 10 piezas del ERA (idea de Adrián, Notion «MIÉRCOLES 25»: explicar rápido los
+componentes del equipo de respiración autónomo + PUBLICIDAD BOMBERADOS). 30–40 s: este sale en ≈ 36 s.
+
+Cómo está hecho (3D cinematográfico, de noche, un dron que no para; el molde de la presión, el acoplamiento y la botella):
+un bombero equipado delante de un edificio en llamas. La idea, en una frase: el aire de la botella va a 300 bares y te
+mataría, así que baja por escalones hasta lo que respiras. El dron SIGUE AL AIRE por el equipo (luz azul que corre por
+dentro, como el agua de la presión) y cada pieza se enciende con su rótulo cuando la nombras: no es una lista, es un viaje.
+Un contador «PIEZAS 7/10» va subiendo (engancha hasta la última) y al final salen las 10 juntas, como en la foto de Adrián
+(para guardarlo). Cierre para comentar que se contesta sin saber nada: «¿Cuántas te sabías?». Venta de BOMBERADOS.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, intense] ¡Tu botella va a TRESCIENTOS bares! [serious, ominous] Si te llegaran así a la boca… te REVENTARÍAN los pulmones.
+[clear, fast] Por eso, al abrir el grifo, el manorreductor los baja a unos siete.
+[clear] La manguera de alta va al manómetro… [alarmed] y al silbato, que pita en la reserva.
+[clear] La de media, al pulmoautomático: [calm] solo da aire cuando inspiras, dentro de la máscara.
+[confident] Todo, en la espaldera. [serious, tense] Y el bodyguard pita si te quedas quieto… para que te encuentren.
+[challenging, playful] ¿Cuántas te sabías? ¡Comenta tu número!
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de noche, con un dron que no para:
+1. «¡Tu botella va a trescientos bares!» — por detrás del bombero, frente al fuego: la botella se ve por dentro (rayos X,
+   aire azul que gira) y «300 BAR». «Si te llegaran así a la boca… te reventarían los pulmones» — un golpe ROJO sube por la
+   manguera hasta la máscara, los pulmones (rayos X) se hinchan en rojo, ✗… y todo se rebobina.
+2. «Por eso, al abrir el grifo, el manorreductor los baja a unos siete» — el guante de su compañero abre el grifo; el aire
+   (azul) baja al manorreductor y el número cae: 300 → 7 BAR. Rótulos BOTELLA · GRIFO · MANORREDUCTOR (3/10).
+3. «La manguera de alta va al manómetro… y al silbato, que pita en la reserva» — el dron sube por el hombro izquierdo
+   siguiendo la manguera de alta hasta el pecho: la aguja en 300, baja deprisa a la zona roja y suena el silbato: RESERVA.
+4. «La de media, al pulmoautomático: solo da aire cuando inspiras, dentro de la máscara» — por el otro hombro, la manguera
+   de media hasta la cara: el pulmoautomático encaja en la máscara (clic) y, en cada inspiración, un soplo azul entra.
+5. «Todo, en la espaldera. Y el bodyguard pita si te quedas quieto… para que te encuentren» — se enciende la placa de la
+   espalda; dentro del humo, el bombero quieto en el suelo y el bodyguard parpadeando en rojo, pitando; la linterna de un
+   compañero lo encuentra.
+6. «¿Cuántas te sabías? Comenta tu número» — plano abierto: las 10 piezas a la vez con su número (10/10); «💬 COMENTA».
+7. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+8. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — placa BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Las 10 piezas (las de la ficha de Adrián): 1 máscara · 2 espaldera · 3 botella · 4 grifo · 5 manorreductor · 6 avisador
+acústico (silbato) · 7 manómetro · 8 bodyguard · 9 pulmoautomático · 10 mangueras de alta y media presión.
+Datos (en FUENTES.md): botellas de 200 o 300 bar; el manorreductor deja una presión media de 7–8 bar; el silbato salta hacia
+55 bar (50–60), al entrar en la reserva; el pulmoautomático da el aire según respiras; el bodyguard es la alarma que pita
+si te quedas inmóvil. Todo el equipo, sin marcas.
+OJO (pendiente de Adrián): «Pruébala gratis cinco días» no aparece en la web de Élite. Si no existe, graba la última
+frase así: «¿Opositas? ¡Bomberados! ¡Sin matrícula y sin permanencia!» (es lo que promete la web).
