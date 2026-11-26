@@ -1,0 +1,510 @@
+[
+ {
+  "text": "¡Estás sacando a un herido… y la puerta del coche se te cierra encima!",
+  "start": 0.06,
+  "end": 4.095,
+  "words": [
+   {
+    "w": "¡Estás",
+    "start": 0.06,
+    "end": 0.459
+   },
+   {
+    "w": "sacando",
+    "start": 0.459,
+    "end": 0.859
+   },
+   {
+    "w": "a",
+    "start": 0.859,
+    "end": 0.939
+   },
+   {
+    "w": "un",
+    "start": 0.939,
+    "end": 1.179
+   },
+   {
+    "w": "herido…",
+    "start": 1.179,
+    "end": 1.958
+   },
+   {
+    "w": "y",
+    "start": 1.958,
+    "end": 2.039
+   },
+   {
+    "w": "la",
+    "start": 2.039,
+    "end": 2.137
+   },
+   {
+    "w": "puerta",
+    "start": 2.137,
+    "end": 2.377
+   },
+   {
+    "w": "del",
+    "start": 2.377,
+    "end": 2.537
+   },
+   {
+    "w": "coche",
+    "start": 2.537,
+    "end": 2.936
+   },
+   {
+    "w": "se",
+    "start": 2.936,
+    "end": 3.016
+   },
+   {
+    "w": "te",
+    "start": 3.016,
+    "end": 3.176
+   },
+   {
+    "w": "cierra",
+    "start": 3.176,
+    "end": 3.656
+   },
+   {
+    "w": "encima!",
+    "start": 3.656,
+    "end": 4.095
+   }
+  ]
+ },
+ {
+  "text": "En cuesta, la puerta vuelve sola… y no avisa.",
+  "start": 4.614,
+  "end": 8.2,
+  "words": [
+   {
+    "w": "En",
+    "start": 4.614,
+    "end": 4.774
+   },
+   {
+    "w": "cuesta,",
+    "start": 4.774,
+    "end": 5.573
+   },
+   {
+    "w": "la",
+    "start": 5.573,
+    "end": 5.733
+   },
+   {
+    "w": "puerta",
+    "start": 5.733,
+    "end": 6.133
+   },
+   {
+    "w": "vuelve",
+    "start": 6.133,
+    "end": 6.612
+   },
+   {
+    "w": "sola…",
+    "start": 6.612,
+    "end": 7.301
+   },
+   {
+    "w": "y",
+    "start": 7.301,
+    "end": 7.411
+   },
+   {
+    "w": "no",
+    "start": 7.411,
+    "end": 7.651
+   },
+   {
+    "w": "avisa.",
+    "start": 7.651,
+    "end": 8.2
+   }
+  ]
+ },
+ {
+  "text": "¿Sabes qué lo evita? Esto: un trinquete de seguridad.",
+  "start": 8.73,
+  "end": 12.135,
+  "words": [
+   {
+    "w": "¿Sabes",
+    "start": 8.73,
+    "end": 9.009
+   },
+   {
+    "w": "qué",
+    "start": 9.009,
+    "end": 9.169
+   },
+   {
+    "w": "lo",
+    "start": 9.169,
+    "end": 9.329
+   },
+   {
+    "w": "evita?",
+    "start": 9.329,
+    "end": 10.108
+   },
+   {
+    "w": "Esto:",
+    "start": 10.108,
+    "end": 10.827
+   },
+   {
+    "w": "un",
+    "start": 10.827,
+    "end": 10.927
+   },
+   {
+    "w": "trinquete",
+    "start": 10.927,
+    "end": 11.566
+   },
+   {
+    "w": "de",
+    "start": 11.566,
+    "end": 11.726
+   },
+   {
+    "w": "seguridad.",
+    "start": 11.726,
+    "end": 12.135
+   }
+  ]
+ },
+ {
+  "text": "Un gancho a la puerta, el otro al coche… y tiras del extremo suelto.",
+  "start": 12.605,
+  "end": 16.071,
+  "words": [
+   {
+    "w": "Un",
+    "start": 12.605,
+    "end": 12.749
+   },
+   {
+    "w": "gancho",
+    "start": 12.749,
+    "end": 13.084
+   },
+   {
+    "w": "a",
+    "start": 13.084,
+    "end": 13.164
+   },
+   {
+    "w": "la",
+    "start": 13.164,
+    "end": 13.244
+   },
+   {
+    "w": "puerta,",
+    "start": 13.244,
+    "end": 13.644
+   },
+   {
+    "w": "el",
+    "start": 13.644,
+    "end": 13.803
+   },
+   {
+    "w": "otro",
+    "start": 13.803,
+    "end": 14.043
+   },
+   {
+    "w": "al",
+    "start": 14.043,
+    "end": 14.203
+   },
+   {
+    "w": "coche…",
+    "start": 14.203,
+    "end": 14.762
+   },
+   {
+    "w": "y",
+    "start": 14.762,
+    "end": 14.882
+   },
+   {
+    "w": "tiras",
+    "start": 14.882,
+    "end": 15.162
+   },
+   {
+    "w": "del",
+    "start": 15.162,
+    "end": 15.322
+   },
+   {
+    "w": "extremo",
+    "start": 15.322,
+    "end": 15.721
+   },
+   {
+    "w": "suelto.",
+    "start": 15.721,
+    "end": 16.071
+   }
+  ]
+ },
+ {
+  "text": "La cuerda se tensa y el trinquete no la deja volver: la puerta ya no se mueve.",
+  "start": 16.44,
+  "end": 20.855,
+  "words": [
+   {
+    "w": "La",
+    "start": 16.44,
+    "end": 16.56
+   },
+   {
+    "w": "cuerda",
+    "start": 16.56,
+    "end": 16.84
+   },
+   {
+    "w": "se",
+    "start": 16.84,
+    "end": 17.0
+   },
+   {
+    "w": "tensa",
+    "start": 17.0,
+    "end": 17.399
+   },
+   {
+    "w": "y",
+    "start": 17.399,
+    "end": 17.559
+   },
+   {
+    "w": "el",
+    "start": 17.559,
+    "end": 17.639
+   },
+   {
+    "w": "trinquete",
+    "start": 17.639,
+    "end": 18.118
+   },
+   {
+    "w": "no",
+    "start": 18.118,
+    "end": 18.278
+   },
+   {
+    "w": "la",
+    "start": 18.278,
+    "end": 18.438
+   },
+   {
+    "w": "deja",
+    "start": 18.438,
+    "end": 18.757
+   },
+   {
+    "w": "volver:",
+    "start": 18.757,
+    "end": 19.397
+   },
+   {
+    "w": "la",
+    "start": 19.397,
+    "end": 19.556
+   },
+   {
+    "w": "puerta",
+    "start": 19.556,
+    "end": 19.956
+   },
+   {
+    "w": "ya",
+    "start": 19.956,
+    "end": 20.196
+   },
+   {
+    "w": "no",
+    "start": 20.196,
+    "end": 20.356
+   },
+   {
+    "w": "se",
+    "start": 20.356,
+    "end": 20.515
+   },
+   {
+    "w": "mueve.",
+    "start": 20.515,
+    "end": 20.855
+   }
+  ]
+ },
+ {
+  "text": "Y trabajas tranquilo con el herido.",
+  "start": 21.204,
+  "end": 22.882,
+  "words": [
+   {
+    "w": "Y",
+    "start": 21.204,
+    "end": 21.337
+   },
+   {
+    "w": "trabajas",
+    "start": 21.337,
+    "end": 21.794
+   },
+   {
+    "w": "tranquilo",
+    "start": 21.794,
+    "end": 22.193
+   },
+   {
+    "w": "con",
+    "start": 22.193,
+    "end": 22.353
+   },
+   {
+    "w": "el",
+    "start": 22.353,
+    "end": 22.513
+   },
+   {
+    "w": "herido.",
+    "start": 22.513,
+    "end": 22.882
+   }
+  ]
+ },
+ {
+  "text": "¿Lo conocías? ¿Sí o no? Comenta.",
+  "start": 23.282,
+  "end": 25.509,
+  "words": [
+   {
+    "w": "¿Lo",
+    "start": 23.282,
+    "end": 23.392
+   },
+   {
+    "w": "conocías?",
+    "start": 23.392,
+    "end": 24.281
+   },
+   {
+    "w": "¿Sí",
+    "start": 24.281,
+    "end": 24.431
+   },
+   {
+    "w": "o",
+    "start": 24.431,
+    "end": 24.59
+   },
+   {
+    "w": "no?",
+    "start": 24.59,
+    "end": 25.03
+   },
+   {
+    "w": "Comenta.",
+    "start": 25.03,
+    "end": 25.509
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 25.829,
+  "end": 27.847,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 25.829,
+    "end": 26.588
+   },
+   {
+    "w": "a",
+    "start": 26.588,
+    "end": 26.668
+   },
+   {
+    "w": "quien",
+    "start": 26.668,
+    "end": 26.908
+   },
+   {
+    "w": "quiera",
+    "start": 26.908,
+    "end": 27.227
+   },
+   {
+    "w": "ser",
+    "start": 27.227,
+    "end": 27.387
+   },
+   {
+    "w": "bombero!",
+    "start": 27.387,
+    "end": 27.847
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Élite Bomberos! ¡Sin matrícula y sin permanencia!",
+  "start": 28.146,
+  "end": 32.331,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 28.146,
+    "end": 29.095
+   },
+   {
+    "w": "¡Élite",
+    "start": 29.095,
+    "end": 29.544
+   },
+   {
+    "w": "Bomberos!",
+    "start": 29.544,
+    "end": 30.324
+   },
+   {
+    "w": "¡Sin",
+    "start": 30.324,
+    "end": 30.583
+   },
+   {
+    "w": "matrícula",
+    "start": 30.583,
+    "end": 31.222
+   },
+   {
+    "w": "y",
+    "start": 31.222,
+    "end": 31.462
+   },
+   {
+    "w": "sin",
+    "start": 31.462,
+    "end": 31.622
+   },
+   {
+    "w": "permanencia!",
+    "start": 31.622,
+    "end": 32.331
+   }
+  ]
+ }
+]

@@ -1,0 +1,234 @@
+{
+ "formato": "trinquete",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 0,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "¿LO CONOCÍAS?",
+  "etiqueta": "TRINQUETE DE SEGURIDAD",
+  "t": 12.0,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 0.85,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "sacando": [
+   "sacando",
+   1,
+   1
+  ],
+  "herido": [
+   "herido",
+   1,
+   1
+  ],
+  "puerta": [
+   "puerta",
+   1,
+   1
+  ],
+  "coche": [
+   "coche",
+   1,
+   1
+  ],
+  "cierra": [
+   "cierra",
+   1,
+   1
+  ],
+  "encima": [
+   "encima",
+   1,
+   1
+  ],
+  "cuesta": [
+   "cuesta",
+   1,
+   2
+  ],
+  "vuelve": [
+   "vuelve",
+   1,
+   2
+  ],
+  "sola": [
+   "sola",
+   1,
+   2
+  ],
+  "avisa": [
+   "avisa",
+   1,
+   2
+  ],
+  "sabes": [
+   "Sabes",
+   1,
+   3
+  ],
+  "evita": [
+   "evita",
+   1,
+   3
+  ],
+  "esto": [
+   "Esto",
+   1,
+   3
+  ],
+  "trinquete": [
+   "trinquete",
+   1,
+   3
+  ],
+  "seguridad": [
+   "seguridad",
+   1,
+   3
+  ],
+  "gancho": [
+   "gancho",
+   1,
+   4
+  ],
+  "puerta2": [
+   "puerta",
+   1,
+   4
+  ],
+  "otro": [
+   "otro",
+   1,
+   4
+  ],
+  "coche2": [
+   "coche",
+   1,
+   4
+  ],
+  "tiras": [
+   "tiras",
+   1,
+   4
+  ],
+  "extremo": [
+   "extremo",
+   1,
+   4
+  ],
+  "suelto": [
+   "suelto",
+   1,
+   4
+  ],
+  "cuerda": [
+   "cuerda",
+   1,
+   5
+  ],
+  "tensa": [
+   "tensa",
+   1,
+   5
+  ],
+  "trinquete2": [
+   "trinquete",
+   1,
+   5
+  ],
+  "volver": [
+   "volver",
+   1,
+   5
+  ],
+  "puerta3": [
+   "puerta",
+   1,
+   5
+  ],
+  "mueve": [
+   "mueve",
+   1,
+   5
+  ],
+  "trabajas": [
+   "trabajas",
+   1,
+   6
+  ],
+  "tranquilo": [
+   "tranquilo",
+   1,
+   6
+  ],
+  "herido2": [
+   "herido",
+   1,
+   6
+  ],
+  "conocias": [
+   "conocías",
+   1,
+   7
+  ],
+  "si": [
+   "Sí",
+   1,
+   7
+  ],
+  "no": [
+   "no",
+   1,
+   7
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   7
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   8
+  ],
+  "acierta": [
+   "quien",
+   1,
+   8
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   9
+  ],
+  "marca": [
+   "Élite",
+   1,
+   9
+  ],
+  "prueba": [
+   "Sin",
+   1,
+   9
+  ],
+  "permanencia": [
+   "permanencia",
+   1,
+   9
+  ]
+ }
+}

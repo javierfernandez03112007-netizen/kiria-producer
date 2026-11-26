@@ -1,0 +1,447 @@
+[
+ {
+  "w": "Estás",
+  "start": 0.08,
+  "end": 0.48
+ },
+ {
+  "w": "sacando",
+  "start": 0.48,
+  "end": 0.88
+ },
+ {
+  "w": "a",
+  "start": 0.88,
+  "end": 0.96
+ },
+ {
+  "w": "un",
+  "start": 0.96,
+  "end": 1.2
+ },
+ {
+  "w": "herido",
+  "start": 1.2,
+  "end": 1.84
+ },
+ {
+  "w": "y",
+  "start": 1.84,
+  "end": 2.0
+ },
+ {
+  "w": "la",
+  "start": 2.0,
+  "end": 2.16
+ },
+ {
+  "w": "puerta",
+  "start": 2.16,
+  "end": 2.4
+ },
+ {
+  "w": "del",
+  "start": 2.4,
+  "end": 2.56
+ },
+ {
+  "w": "coche",
+  "start": 2.56,
+  "end": 2.96
+ },
+ {
+  "w": "se",
+  "start": 2.96,
+  "end": 3.04
+ },
+ {
+  "w": "te",
+  "start": 3.04,
+  "end": 3.2
+ },
+ {
+  "w": "cierra",
+  "start": 3.2,
+  "end": 3.68
+ },
+ {
+  "w": "encima.",
+  "start": 3.68,
+  "end": 4.56
+ },
+ {
+  "w": "En",
+  "start": 4.56,
+  "end": 4.8
+ },
+ {
+  "w": "Cuesta,",
+  "start": 4.8,
+  "end": 5.52
+ },
+ {
+  "w": "la",
+  "start": 5.52,
+  "end": 5.76
+ },
+ {
+  "w": "puerta",
+  "start": 5.76,
+  "end": 6.16
+ },
+ {
+  "w": "vuelve",
+  "start": 6.16,
+  "end": 6.64
+ },
+ {
+  "w": "sola.",
+  "start": 6.64,
+  "end": 7.2
+ },
+ {
+  "w": "Y",
+  "start": 7.2,
+  "end": 7.44
+ },
+ {
+  "w": "no",
+  "start": 7.44,
+  "end": 7.68
+ },
+ {
+  "w": "avisa.",
+  "start": 7.68,
+  "end": 8.48
+ },
+ {
+  "w": "¿Sabes",
+  "start": 8.48,
+  "end": 9.04
+ },
+ {
+  "w": "qué",
+  "start": 9.04,
+  "end": 9.2
+ },
+ {
+  "w": "lo",
+  "start": 9.2,
+  "end": 9.36
+ },
+ {
+  "w": "evita?",
+  "start": 9.36,
+  "end": 10.08
+ },
+ {
+  "w": "Esto.",
+  "start": 10.08,
+  "end": 10.8
+ },
+ {
+  "w": "Un",
+  "start": 10.8,
+  "end": 10.96
+ },
+ {
+  "w": "trinquete",
+  "start": 10.96,
+  "end": 11.6
+ },
+ {
+  "w": "de",
+  "start": 11.6,
+  "end": 11.76
+ },
+ {
+  "w": "seguridad.",
+  "start": 11.76,
+  "end": 12.48
+ },
+ {
+  "w": "Un",
+  "start": 12.48,
+  "end": 12.64
+ },
+ {
+  "w": "gancho",
+  "start": 12.64,
+  "end": 13.12
+ },
+ {
+  "w": "a",
+  "start": 13.12,
+  "end": 13.2
+ },
+ {
+  "w": "la",
+  "start": 13.2,
+  "end": 13.28
+ },
+ {
+  "w": "puerta,",
+  "start": 13.28,
+  "end": 13.68
+ },
+ {
+  "w": "el",
+  "start": 13.68,
+  "end": 13.84
+ },
+ {
+  "w": "otro",
+  "start": 13.84,
+  "end": 14.08
+ },
+ {
+  "w": "al",
+  "start": 14.08,
+  "end": 14.24
+ },
+ {
+  "w": "coche",
+  "start": 14.24,
+  "end": 14.64
+ },
+ {
+  "w": "y",
+  "start": 14.64,
+  "end": 14.8
+ },
+ {
+  "w": "tiras",
+  "start": 14.8,
+  "end": 15.2
+ },
+ {
+  "w": "del",
+  "start": 15.2,
+  "end": 15.36
+ },
+ {
+  "w": "extremo",
+  "start": 15.36,
+  "end": 15.76
+ },
+ {
+  "w": "suelto.",
+  "start": 15.76,
+  "end": 16.32
+ },
+ {
+  "w": "La",
+  "start": 16.32,
+  "end": 16.48
+ },
+ {
+  "w": "cuerda",
+  "start": 16.48,
+  "end": 16.88
+ },
+ {
+  "w": "se",
+  "start": 16.88,
+  "end": 17.04
+ },
+ {
+  "w": "tensa",
+  "start": 17.04,
+  "end": 17.44
+ },
+ {
+  "w": "y",
+  "start": 17.44,
+  "end": 17.6
+ },
+ {
+  "w": "el",
+  "start": 17.6,
+  "end": 17.68
+ },
+ {
+  "w": "trinquete",
+  "start": 17.68,
+  "end": 18.16
+ },
+ {
+  "w": "no",
+  "start": 18.16,
+  "end": 18.32
+ },
+ {
+  "w": "la",
+  "start": 18.32,
+  "end": 18.48
+ },
+ {
+  "w": "deja",
+  "start": 18.48,
+  "end": 18.8
+ },
+ {
+  "w": "volver.",
+  "start": 18.8,
+  "end": 19.44
+ },
+ {
+  "w": "La",
+  "start": 19.44,
+  "end": 19.6
+ },
+ {
+  "w": "puerta",
+  "start": 19.6,
+  "end": 20.0
+ },
+ {
+  "w": "ya",
+  "start": 20.0,
+  "end": 20.24
+ },
+ {
+  "w": "no",
+  "start": 20.24,
+  "end": 20.4
+ },
+ {
+  "w": "se",
+  "start": 20.4,
+  "end": 20.56
+ },
+ {
+  "w": "mueve.",
+  "start": 20.56,
+  "end": 21.12
+ },
+ {
+  "w": "Y",
+  "start": 21.12,
+  "end": 21.28
+ },
+ {
+  "w": "trabajas",
+  "start": 21.28,
+  "end": 21.84
+ },
+ {
+  "w": "tranquilo",
+  "start": 21.84,
+  "end": 22.24
+ },
+ {
+  "w": "con",
+  "start": 22.24,
+  "end": 22.4
+ },
+ {
+  "w": "el",
+  "start": 22.4,
+  "end": 22.56
+ },
+ {
+  "w": "herido.",
+  "start": 22.56,
+  "end": 23.12
+ },
+ {
+  "w": "¿Lo",
+  "start": 23.12,
+  "end": 23.44
+ },
+ {
+  "w": "conocías?",
+  "start": 23.44,
+  "end": 24.16
+ },
+ {
+  "w": "¿Sí",
+  "start": 24.16,
+  "end": 24.48
+ },
+ {
+  "w": "o",
+  "start": 24.48,
+  "end": 24.64
+ },
+ {
+  "w": "no?",
+  "start": 24.64,
+  "end": 25.04
+ },
+ {
+  "w": "Comenta.",
+  "start": 25.04,
+  "end": 25.84
+ },
+ {
+  "w": "Mándaselo",
+  "start": 25.84,
+  "end": 26.64
+ },
+ {
+  "w": "a",
+  "start": 26.64,
+  "end": 26.72
+ },
+ {
+  "w": "quien",
+  "start": 26.72,
+  "end": 26.96
+ },
+ {
+  "w": "quiera",
+  "start": 26.96,
+  "end": 27.28
+ },
+ {
+  "w": "ser",
+  "start": 27.28,
+  "end": 27.44
+ },
+ {
+  "w": "bombero.",
+  "start": 27.44,
+  "end": 28.08
+ },
+ {
+  "w": "Opositas.",
+  "start": 28.08,
+  "end": 28.96
+ },
+ {
+  "w": "¡Élite",
+  "start": 28.96,
+  "end": 29.6
+ },
+ {
+  "w": "Bomberos!",
+  "start": 29.6,
+  "end": 30.32
+ },
+ {
+  "w": "¡Sin",
+  "start": 30.32,
+  "end": 30.64
+ },
+ {
+  "w": "matrícula",
+  "start": 30.64,
+  "end": 31.28
+ },
+ {
+  "w": "y",
+  "start": 31.28,
+  "end": 31.52
+ },
+ {
+  "w": "sin",
+  "start": 31.52,
+  "end": 31.68
+ },
+ {
+  "w": "permanencia!",
+  "start": 31.68,
+  "end": 32.601
+ }
+]
