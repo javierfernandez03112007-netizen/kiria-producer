@@ -271,3 +271,20 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
   pulmoautomático? (el regulador a demanda que da aire al inspirar) · ¿Para qué sirve el bodyguard? (alarma si el bombero
   se queda inmóvil).
 
+## 26 nov 2026 · Trinquete de seguridad (rope ratchet) · rescate en accidentes de tráfico
+
+### Fuente — ficha de Élite Bomberos que pone Adrián Luna (Notion, fila «JUEVES 26»)
+- «**Rope-Ratchet.** Trinquete de seguridad. Simplemente hay que colocar los dos ganchos y tirar del extremo suelto de la
+  cuerda para obtener la tensión segura que necesita. Para asegurar cargas (como una puerta de un vehículo) y así poder
+  trabajar cómodamente.»
+- Cómo funciona (descripción general de las poleas de trinquete): la polea tiene dientes y un trinquete con muelle; la
+  cuerda solo avanza en el sentido de tensar y para soltarla se aparta el trinquete con su palanca.
+
+### Vídeos hechos con esto
+- «La puerta se te cierra encima» (`projects/bomberados_trinquete/`): en cuesta, la puerta abierta vuelve sola; un gancho
+  a la puerta, otro a la rueda, se tira del extremo suelto y queda quieta. Cierre: ¿lo conocías? Venta de Élite.
+
+### Preguntas de examen que salen de aquí
+- ¿Para qué sirve el rope ratchet? (asegurar cargas, p. ej. la puerta de un vehículo) · ¿Cómo se usa? (se colocan los dos
+  ganchos y se tira del extremo suelto de la cuerda) · ¿Qué impide que la cuerda vuelva? (el trinquete).
+
