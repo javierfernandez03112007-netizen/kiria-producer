@@ -1036,6 +1036,8 @@ function makeRescueCar(col) {
 
 // ------------------------------------------------------------------ el trinquete de seguridad (genérico): polea con trinquete, dos ganchos y la cuerda
 let ratchet = {};
+let lens = null, bigP = null;                                      // la lupa: el trinquete en grande y en rayos X, flotando encima de su línea
+const LENS = V(1.02, 1.73, -0.96), LENS_R = 0.5, LENS_K = 0.84;   // dónde flota (coordenadas del coche: encima del capó, sin tocar a nadie), radio y escala
 function hookMesh(mat) {             // gancho en J (acero)
   const pts = [V(0, 0, 0), V(0, -0.05, 0), V(0, -0.075, 0), V(0.006, -0.088, 0), V(0.022, -0.092, 0), V(0.034, -0.082, 0), V(0.036, -0.066, 0)];
   const m = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 24, 0.0042, 8), mat); m.castShadow = true; return m;
@@ -1179,6 +1181,25 @@ function buildWorld() {
   ropeSegs = ropeLine(18, 0.0042, ropeM); freeSegs = ropeLine(14, 0.0042, ropeM);
   rope.hookB = hookMesh(new THREE.MeshStandardMaterial({ color: 0xc9ced6, metalness: 1, roughness: 0.25 })); rope.hookB.scale.setScalar(2.0); world.add(rope.hookB);
   rope.coil = new THREE.Mesh(new THREE.TorusGeometry(0.09, 0.012, 6, 28), ropeM); rope.coil.castShadow = true; world.add(rope.coil);
+  // la lupa (Javi: «los rayos X flotando encima de su línea, en la misma escena»): el mismo trinquete 4,5 veces más grande,
+  // con las chapas de cristal, la cuerda que pasa por la polea (hacia la puerta y el extremo suelto) y un fondo oscuro para leerlo
+  lens = new THREE.Group(); lens.visible = false; world.add(lens);
+  const realP = ratchet, bigX = makeRatchet(); bigP = ratchet; ratchet = realP;
+  bigX.scale.setScalar(2.0 * 4.5); bigX.position.y = 0.025 * 9; lens.add(bigX);
+  bigX.traverse(o => { if (o.isMesh && o.geometry.type === 'TubeGeometry') o.visible = false; });   // sin el gancho (no cabe en la lupa)
+  bigP.plateM.color.set(0x5d7a96); bigP.plateM.opacity = 0.16; bigP.plateM.depthWrite = false;
+  bigP.sm2.emissiveIntensity = 0.45; bigP.pm.emissiveIntensity = 0.5;
+  const lensBack = new THREE.Mesh(new THREE.CircleGeometry(LENS_R, 72), new THREE.MeshBasicMaterial({ color: 0x0a0e13, transparent: true, opacity: 0.78, depthWrite: false, fog: false }));
+  lensBack.position.z = -0.2; lensBack.renderOrder = -1; lens.add(lensBack);
+  const lensRim = new THREE.Mesh(new THREE.TorusGeometry(LENS_R, 0.012, 8, 120), GLOW(CYAN2, 1.1)); lensRim.position.z = -0.2; lens.add(lensRim);
+  const ropeTex = (rx, ry) => { const tx = canvasTex(64, 64, x => { x.fillStyle = '#e9e4d8'; x.fillRect(0, 0, 64, 64); x.strokeStyle = '#8f877a'; x.lineWidth = 9;
+    for (let i = -64; i < 128; i += 21) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 64, 64); x.stroke(); } }); tx.wrapS = tx.wrapT = THREE.RepeatWrapping; tx.repeat.set(rx, ry); return tx; };
+  const lropeM = new THREE.MeshStandardMaterial({ map: ropeTex(10, 1), roughness: 0.8, emissive: 0x3a3630, emissiveIntensity: 0.5 });
+  const lropeS = new THREE.MeshStandardMaterial({ map: ropeTex(1, 7), roughness: 0.8, emissive: 0x3a3630, emissiveIntensity: 0.5 });
+  const RR = 0.2, yb = -Math.sqrt(LENS_R * LENS_R - RR * RR) + 0.01;
+  const wrap = new THREE.Mesh(new THREE.TorusGeometry(RR, 0.032, 8, 40, Math.PI), lropeM); lens.add(wrap);
+  for (const sx of [-1, 1]) { const s = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 1, 10), lropeS); between(s, V(sx * RR, 0, 0), V(sx * RR, yb, 0)); lens.add(s); }
+  lens.traverse(o => { if (o.isMesh) { o.castShadow = false; o.receiveShadow = false; } });
 }
 
 // ------------------------------------------------------------------ tiempos y cámara (un dron que no para)
@@ -1213,14 +1234,12 @@ function camKeys() {
     k(T.gancho + 0.2, [0.9, 2.1, -4.4], [0.8, 0.85, -1.45], 36),       // un gancho a la puerta, el otro a la rueda
     k(T.tiras, [1.0, 2.0, -4.2], [0.9, 0.8, -1.4], 35),
     k(T.suelto + 0.3, [1.05, 1.9, -4.0], [0.95, 0.78, -1.35], 35),
-    k(T.tensa - 0.45, [2.9, 1.95, -0.95], [1.3, 1.55, -0.92], 30),     // (rodeando a C por delante)
-    k(T.tensa, [2.02, 0.86, -1.03], [1.3, 0.62, -0.92], 28),             // por dentro: el trinquete (desde la carretera, a ras de la rueda)
-    k(T.volver + 0.4, [2.0, 0.87, -1.04], [1.3, 0.62, -0.92], 28),
-    k(T.volver + 0.75, [2.9, 1.95, -1.0], [0.6, 1.45, -1.3], 32),     // (rodeando a C por delante)
-    k(T.puerta3 + 0.2, [1.6, 1.7, -3.6], [0.25, 1.05, -1.55], 35),           // la puerta ya no se mueve
-    k(T.mueve + 0.4, [1.5, 1.72, -3.55], [0.25, 1.05, -1.55], 35),
-    k(T.trabajas + 0.3, [-1.6, 1.75, -2.4], [-0.05, 1.1, -0.5], 34),   // trabajas tranquilo con el herido
-    k(T.herido2 + 0.5, [-1.55, 1.78, -2.35], [-0.05, 1.1, -0.5], 34),
+    k(T.tensa - 0.35, [2.9, 2.2, -4.7], [1.05, 1.3, -1.1], 39),         // se abre el plano: la cuerda tensa y, encima, el trinquete en grande (rayos X)
+    k(T.volver + 0.4, [3.3, 2.3, -5.0], [1.0, 1.3, -1.1], 40),
+    k(T.puerta3 + 0.3, [2.6, 2.1, -4.4], [0.4, 1.0, -1.4], 38),          // la puerta ya no se mueve
+    k(T.mueve + 0.4, [2.45, 2.15, -4.3], [0.4, 1.0, -1.4], 38),
+    k(T.trabajas + 0.35, [1.6, 2.9, -4.9], [0.15, 1.0, -0.85], 36),      // trabajas tranquilo: todo a la vista, todo sujeto
+    k(T.herido2 + 0.5, [1.05, 3.1, -5.2], [0.1, 1.0, -0.85], 37),
     k(T.conocias + 0.4, [-3.2, 3.8, -6.8], [0.4, 0.9, -1.2], 38),      // abierto: ¿lo conocías?
     k(T.compartir + 0.6, [-4.2, 5.0, -8.5], [0.4, 1.0, -1.0], 40),
     k(T.end, [-5.5, 6.5, -10.5], [0.4, 1.0, -1.0], 42),
@@ -1373,6 +1392,17 @@ function update(t) {
   ratchet.sheave.rotation.z = -Math.PI * 6 * pullK + 0.18 * pulse(t, T.back + 0.1, 0.08);
   ratchet.pawl.rotation.z = 0.25 * Math.abs(Math.sin(pullK * Math.PI * 12)) * (pullK < 1 ? 1 : 0);
   ratchet.pm.emissiveIntensity = 2.2 * xr * (0.4 + 0.6 * pulse(t, T.back + 0.12, 0.25)); ratchet.sm2.emissiveIntensity = 0.6 * xr;
+  // la lupa: aparece al tensarse la cuerda, gira (clic, clic…) en el sentido de tirar y, al volver, el trinquete la bloquea
+  const lk = sm(T.x0 - 0.2, T.x0 + 0.2, t) * (1 - sm(T.x1 - 0.25, T.x1, t));
+  lens.visible = lk > 0.003;
+  if (lens.visible) {
+    lens.position.copy(carW(LENS.x, LENS.y, LENS.z)); lens.lookAt(cam.position);
+    lens.scale.setScalar(LENS_K * Math.max(0.001, mx(0.2, 1, bk(cl(lk)))));
+    const spinK = e3(pr(t, T.cuerda + 0.3, T.trinquete2 - T.cuerda - 0.45));
+    bigP.sheave.rotation.z = -Math.PI * 2.5 * spinK + 0.14 * pulse(t, T.back + 0.12, 0.07);
+    bigP.pawl.rotation.z = spinK > 0 && spinK < 1 ? 0.3 * Math.abs(Math.sin(spinK * Math.PI * 15)) : 0;
+    bigP.pm.emissiveIntensity = 0.5 + 3.2 * pulse(t, T.back + 0.14, 0.22);
+  }
   // la cuerda: del gancho de B (en su mano o en la puerta) al trinquete (con comba hasta que se tensa)
   const hookPos = t < T.hb1 ? B.arms[1].glove.getWorldPosition(V()).add(V(0, -0.06, 0)) : corner;
   rope.hookB.position.copy(hookPos); rope.hookB.rotation.set(0, B.G.rotation.y, Math.PI);
@@ -1469,13 +1499,33 @@ async function overlay(t) {
   if (pa > 0.01) { const p0 = tool.localToWorld(V(0, -0.06, 0)), dirW = carW(0.15, -0.2, -0.42).sub(carW(0, 0, 0)).normalize(); arrow2(p0.clone().add(dirW.clone().multiplyScalar(0.12)), p0.clone().add(dirW.clone().multiplyScalar(0.5)), GREEN2, pa);
     label(800, 1520, 'TIRA', GREEN2, pa, { px: 70, s: pop(T.tiras) }); }
   const mid = corner.clone().lerp(rimW, 0.5);
-  tag(mid, 'TENSA', GREEN2, win(T.tensa - 0.05, T.volver - 0.1), 0, 0, { px: 60, icon: 'ok', at: [300, 900], s: pop(T.tensa) });
+  tag(mid, 'TENSA', GREEN2, win(T.tensa - 0.05, T.volver - 0.1), 0, 0, { px: 60, icon: 'ok', at: [270, 1210], s: pop(T.tensa) });
   // por dentro: el trinquete (el diente que solo deja girar en un sentido)
-  tag(ratchet.pawl.getWorldPosition(V()), 'TRINQUETE', GOLD2, win(T.trinquete2 - 0.05, T.puerta3 - 0.1), 0, 0, { px: 60, sub: 'SOLO GIRA EN UN SENTIDO', at: [540, 820], s: pop(T.trinquete2) });
+  // la lupa: el cono que la une al trinquete de verdad (en la rueda) y las flechas de la cuerda
+  if (lens.visible) {
+    const lk = sm(T.x0 - 0.2, T.x0 + 0.2, t) * (1 - sm(T.x1 - 0.25, T.x1, t));
+    const pc = proj(lens.position), rgt = V(1, 0, 0).applyQuaternion(cam.quaternion), pe = proj(lens.position.clone().add(rgt.multiplyScalar(LENS_R * lens.scale.x)));
+    const R = Math.hypot(pe.x - pc.x, pe.y - pc.y), p0 = proj(tool.getWorldPosition(V())), la = cl(lk * 1.2);
+    const dx = p0.x - pc.x, dy = p0.y - pc.y, dd = Math.hypot(dx, dy);
+    if (pc.ok && p0.ok && dd > R + 20) {
+      const th = Math.atan2(dy, dx), ph = Math.acos(R / dd), t1 = [pc.x + R * Math.cos(th + ph), pc.y + R * Math.sin(th + ph)], t2 = [pc.x + R * Math.cos(th - ph), pc.y + R * Math.sin(th - ph)];
+      g.save(); g.globalAlpha = la * 0.9;
+      g.beginPath(); g.moveTo(p0.x, p0.y); g.lineTo(t1[0], t1[1]); g.arc(pc.x, pc.y, R, th + ph, th - ph + Math.PI * 2, false); g.closePath(); g.fillStyle = 'rgba(72,214,255,0.10)'; g.fill();
+      g.beginPath(); g.moveTo(t1[0], t1[1]); g.lineTo(p0.x, p0.y); g.lineTo(t2[0], t2[1]); g.strokeStyle = CYAN2; g.lineWidth = 3; g.setLineDash([14, 10]); g.stroke(); g.setLineDash([]);
+      g.beginPath(); g.arc(p0.x, p0.y, 16, 0, 7); g.lineWidth = 5; g.stroke(); g.restore();
+    }
+    const LW = (x, y) => lens.localToWorld(V(x, y, 0));
+    const ga = win(T.cuerda + 0.25, T.trinquete2 + 0.35) * la;          // al tirar: la cuerda entra por un lado y sale por el otro
+    arrow2(LW(-0.2, -0.44), LW(-0.2, -0.12), GREEN2, ga, 9); arrow2(LW(0.2, -0.12), LW(0.2, -0.44), GREEN2, ga, 9);
+    const ra = win(T.volver - 0.1, T.puerta3 - 0.1) * la;               // la puerta tira hacia atrás… y no se mueve
+    arrow2(LW(-0.2, -0.12), LW(-0.2, -0.44), RED2, ra * (0.55 + 0.45 * pulse(t, T.back + 0.12, 0.3)), 9);
+    tag(bigP.pawl.getWorldPosition(V()), 'TRINQUETE', GOLD2, win(T.trinquete2 - 0.05, T.puerta3 - 0.1) * la, 0, 0, { px: 60, sub: 'SOLO GIRA EN UN SENTIDO', at: [540, 1050], s: pop(T.trinquete2) });
+  }
   const bk2 = win(T.volver - 0.1, T.puerta3 - 0.1);
-  if (bk2 > 0.01) { const p0 = tool.localToWorld(V(0, 0.02, 0)), up2 = corner.clone().sub(p0).normalize(); arrow2(p0.clone().add(up2.clone().multiplyScalar(0.07)), p0.clone().add(up2.clone().multiplyScalar(0.3)), RED2, bk2);
+  if (bk2 > 0.01) {
     label(540, 1480, 'NO VUELVE', GREEN2, bk2, { px: 72, icon: 'ok', s: pop(T.volver) }); }
   label(540, 1460, 'NO SE MUEVE', GREEN2, win(T.mueve - 0.1, T.trabajas), { px: 78, icon: 'ok', s: pop(T.mueve) });
+  tag(carW(0.0, 1.22, -0.42), 'HERIDO', GREEN2, win(T.herido2 - 0.12, T.conocias - 0.1), 0, 0, { px: 60, icon: 'ok', at: [330, 960], s: pop(T.herido2) });   // el herido, atendido con calma (como al principio, pero en verde)
   // ¿lo conocías?
   const qa = sm(T.conocias - 0.15, T.conocias + 0.15, t) * (1 - sm(T.compartir - 0.4, T.compartir - 0.1, t));
   if (qa > 0.005) {
