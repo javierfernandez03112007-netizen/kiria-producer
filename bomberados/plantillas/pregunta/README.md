@@ -21,6 +21,7 @@ Chispas de fuego realistas por detrás, subtítulos Impact palabra a palabra, 10
 
 Pruebas rápidas: `PROJ=projects/<p> FPS=60 node bomberados/plantillas/pregunta/capture.mjs projects/<p>/out/test 1,5,9`
 y `python3 bomberados/plantillas/pregunta/compose.py projects/<p> --test 1 5 9` (con subtítulos) o `--sfx`.
+Cámara que no roce a nadie (escenas 3D, antes de renderizar): `node bomberados/plantillas/pregunta/camcheck.mjs projects/<p>` → los tramos en que algo a menos de 1,4 m tapa más del 12 % de la pantalla (necesita `window.DBG` con scene, cam, THREE y update).
 
 ## Intros que hay (`"intro"` en pregunta.json)
 

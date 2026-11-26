@@ -3844,6 +3844,10 @@ def sfx_track_trinquete(path):
     put(_carraca(p1 - p0, 15.0), p0 + 0.05, -23, p1 - p0, 0.01, 0.05)
     # la cuerda se tensa; el trinquete bloquea («no la deja volver»); la puerta quieta
     put(_cuerda_tensa(0.6), c["tensa"] - 0.03, -24, 0.6, 0.002, 0.2)
+    # la lupa de rayos X: aparece (zas suave) y la polea gira al tirar (clic, clic…) antes de que el trinquete bloquee
+    put(_pitch(wh, 1.3), c["cuerda"] + 0.07, -30, 0.45, 0.02, 0.12)
+    s0, s1 = c["cuerda"] + 0.3, c["trinquete2"] - 0.15
+    put(_carraca(s1 - s0, 24.0, 7), s0, -27, s1 - s0, 0.01, 0.05)
     put(_pitch(tic, 0.9), c["trinquete2"] - 0.02, -24, 0.12)
     put(_pitch(golpe, 2.4), c["volver"] - 0.02, -21, 0.25, 0.002, 0.12)
     put(_pitch(tic, 0.7), c["volver"], -20, 0.12)
