@@ -54,6 +54,7 @@ Léelo antes de escribir cualquier guion de Bomberados (junto con `engine/HOOKS.
 7. La app, solo al final (ya era regla).
 
 ## Comprobación antes de mandar un guion a Javi
+- (Javi, 26 nov) ¿Es personal y sentimental, como un videojuego? Alguien a quien quieres en peligro («Es tu madre…»), misión, tres opciones A/B/C (dos son la trampa), el vídeo elige la correcta, la explicación se hace mientras la salvas y «¡misión cumplida!»; cierre «¿Tú qué habrías elegido? Comenta tu letra». Molde en `MEMORIA_BOMBERADOS.md` → «Reglas fijas».
 - ¿Cuál es LA idea, en una frase? ¿Es de cómo funciona el oficio (no un nombre ni una lista)?
 - ¿Quién está en juego en la escena? ¿El espectador está dentro (segunda persona)?
 - ¿Lo entendería alguien que no oposita?

@@ -9,6 +9,13 @@
   y sin marca). La fila «VIERNES 27» solo dice «PUBLICIDAD BOMBERADOS», sin tema.
 
 ## Los datos que dice el vídeo
+- **La correcta es la C, «lo sujetas tal como está»**, y las otras dos son el error que haría cualquiera:
+  - **B, «lo pones derecho»: no.** Apuntes de Élite que puso Adrián en Notion (fila «VIERNES 20», estabilización de
+    vehículos): «El vehículo se estabiliza en la posición en la que es encontrado (lo más importante)»; el objetivo es
+    limitar los movimientos verticales, horizontales y de balanceo para no agravar el estado de las víctimas.
+  - **A, «la sacas ya»: no.** Primero se estabiliza el vehículo y luego se trabaja con la víctima: «primero se estabiliza
+    e inmoviliza el vehículo para que los bomberos trabajen con seguridad» ([DGT, «Rescatar vidas a contrarreloj»](https://www.dgt.es/comunicacion/noticias/20250807-rescatar-vidas-a-contrarreloj)).
+    Sobre su lateral es la posición más inestable (apuntes de Élite del viernes 20).
 - **«A unos sesenta grados del suelo»**: la ficha de Adrián (arriba) y el manual de puntales del Consorcio Provincial de
   Bomberos de Valencia (2007): «Cuando se vaya a usar como Puntal, situarlo con una inclinación de unos 60º»
   ([MANUAL-PUNTALES, bombersdv.es](https://www.bombersdv.es/wp-content/uploads/2016/08/MANUAL-PUNTALES-NIKE..pdf)).

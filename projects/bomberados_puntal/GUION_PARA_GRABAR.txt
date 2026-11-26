@@ -1,25 +1,27 @@
-«UN COCHE DE LADO… Y LO SUJETAN DOS PALOS» — el puntal de estabilización (idea de Adrián, Notion «SÁBADO 28»: «¿Sabes cómo
-se utiliza esta herramienta? ¿Sabes lo que es?», STABFAST + PUBLICIDAD BOMBERADOS; la fila «VIERNES 27» solo dice
-«PUBLICIDAD BOMBERADOS», sin tema). 30–40 s: este sale en ≈ 34 s.
+«SALVA A TU MADRE» — el puntal de estabilización, como un videojuego (idea de Adrián, Notion «SÁBADO 28»: STABFAST +
+PUBLICIDAD BOMBERADOS; la fila «VIERNES 27» solo dice «PUBLICIDAD BOMBERADOS», sin tema). Formato nuevo que pide Javi
+(26 nov): personal y sentimental, como un videojuego: alguien a quien quieres está en peligro, tres opciones (A, B o C), el
+vídeo elige la correcta y, al elegirla, la explicación se hace mientras la salvas. 30–40 s: este sale en ≈ 35 s.
 
-Cómo está hecho (3D, DE DÍA y con vida real): un coche tumbado de lado en la carretera, a pleno sol, con alguien colgado
-del cinturón dentro; curiosos detrás del guardarraíl (uno graba con el móvil), la autobomba y la ambulancia con sus luces.
-La idea, en una frase: dos palos de aluminio sujetan más de una tonelada porque NO lo sujetan ellos: puntal, cinta y coche
-forman un triángulo y el peso del propio coche lo aprieta. Las tres cosas de la ficha de Adrián que se ven: los 60° con el
-suelo, la cinta al punto más bajo tensada con el trinquete y la zona verde para el tubo de escape. Cierre para comentar
-fácil: «¿Te meterías dentro con solo esto? ¿Sí o no?». La venta de hoy es de BOMBERADOS (lo pide Adrián).
+Cómo está hecho (3D, DE DÍA y con vida real): un coche tumbado de lado en la carretera, a pleno sol, con TU MADRE dentro,
+colgada del cinturón; curiosos detrás del guardarraíl (uno graba con el móvil), la autobomba y la ambulancia con sus luces.
+Encima, la capa de videojuego: «MISIÓN: SALVA A TU MADRE», un corazón que late y una barra de vida que va bajando.
+La idea, en una frase: antes de sacarla, el coche no se puede mover; se sujeta tal como está, con dos puntales a unos 60°
+y la cinta tensa, y el peso del propio coche aprieta el triángulo. La trampa son las dos cosas que haría cualquiera:
+sacarla corriendo o poner el coche derecho.
 
 Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
 Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
 
 ----- COPIAR DESDE AQUÍ (Eleven v3) -----
-[urgent, alarmed] ¡Un coche de lado… con alguien DENTRO! [tense] Y lo vas a sujetar con dos palos de aluminio.
-[intrigued] ¿Cómo aguantan más de una TONELADA?
-[clear] Cada puntal, contra el coche, a unos SESENTA grados del suelo.
-[clear, fast] La cinta, de su pie al punto más bajo del coche… y la tensas con el trinquete.
-[matter-of-fact] La zona verde, por si toca el escape, que QUEMA.
-[revealing, satisfied] ¿El truco? Lo sujeta el PROPIO coche: su peso aprieta el triángulo.
-[challenging, playful] ¿Te meterías dentro con solo esto? ¿Sí o no? ¡Comenta!
+[urgent, scared] Es tu MADRE. Está dentro de ese coche tumbado… [panicked] ¡y se puede caer!
+[tense, fast] ¿Qué haces? ¿A, la sacas ya? ¿B, lo pones derecho? ¿O C, lo sujetas tal como está?
+[confident, excited] ¡La C!
+[clear, urgent] Primero, que no se mueva: dos puntales contra el coche, a unos SESENTA grados del suelo.
+[clear, fast] La cinta, al punto más bajo… y la tensas con el trinquete.
+[satisfied] El peso del coche aprieta el triángulo: ya no se mueve.
+[relieved, emotional] Ahora sí… ¡la sacáis!
+[challenging, playful] ¿Tú qué habrías elegido? ¡Comenta tu letra!
 [excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
 [energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited] ¡Pruébala gratis cinco días!
 ----- HASTA AQUÍ -----
@@ -27,28 +29,31 @@ Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS so
 Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
 
 GUION COMPLETO (voz y pantalla) — todo en 3D, de día, con un dron que no para y sin rozar a nadie:
-1. «¡Un coche de lado… con alguien dentro! Y lo vas a sujetar con dos palos de aluminio» — desde arriba: carretera de día,
-   un coche tumbado de lado que se balancea (flechas rojas «SE MUEVE»), alguien colgado del cinturón dentro
-   («ALGUIEN DENTRO»), curiosos detrás del guardarraíl, autobomba y ambulancia; dos bomberos llegan con los dos puntales.
-2. «¿Cómo aguantan más de una tonelada?» — encima del coche, su peso con una flecha hacia abajo; los puntales, finos al lado.
-3. «Cada puntal, contra el coche, a unos sesenta grados del suelo» — el puntal se alarga, la cabeza muerde la chapa de
-   arriba y en el suelo se dibuja el transportador: «60°».
-4. «La cinta, de su pie al punto más bajo del coche… y la tensas con el trinquete» — el gancho entra abajo, la cinta va
-   hasta el trinquete del puntal y, clic, clic, se pone tensa: «TENSA».
-5. «La zona verde, por si toca el escape, que quema» — la funda verde de la cinta apoyada en el tubo de escape, con el aire
-   que tiembla del calor: «ESCAPE · QUEMA».
-6. «¿El truco? Lo sujeta el propio coche: su peso aprieta el triángulo» — flechas: el peso del coche empuja el puntal, el
-   puntal empuja el suelo y la cinta tira; se enciende el TRIÁNGULO y el coche deja de moverse: «✓ QUIETO».
-7. «¿Te meterías dentro con solo esto? ¿Sí o no? Comenta» — plano abierto: SÍ / NO y «💬 COMENTA».
-8. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
-9. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — la placa de Bomberados.
+1. «Es tu madre. Está dentro de ese coche tumbado… ¡y se puede caer!» — primer segundo: la capa de juego sobre la escena
+   real («MISIÓN: SALVA A TU MADRE», corazón que late, barra de vida que baja); el coche tumbado de lado se balancea
+   (flechas rojas) y dentro, tu madre colgada del cinturón («MAMÁ»); curiosos, autobomba y ambulancia.
+2. «¿Qué haces? ¿A…? ¿B…? ¿O C…?» — tres tarjetas de juego que se encienden al decirlas: A, la sacas ya (vas corriendo
+   al coche); B, lo pones derecho (un coche fantasma que gira); C, lo sujetas tal como está (dos puntales).
+3. «¡La C!» — el cursor elige la C: «✓ CORRECTA» con sonido de acierto; A y B se tachan.
+4. «Primero, que no se mueva: dos puntales contra el coche, a unos sesenta grados del suelo» — dos bomberos meten los
+   puntales; la cabeza muerde la chapa y en el suelo se dibuja el transportador: «60°» (PASO 1/3).
+5. «La cinta, al punto más bajo… y la tensas con el trinquete» — el gancho abajo, clic, clic: «TENSA» (PASO 2/3).
+6. «El peso del coche aprieta el triángulo: ya no se mueve» — flechas: el peso empuja el puntal, el puntal el suelo y
+   la cinta tira; se enciende el TRIÁNGULO, el coche deja de balancearse y la barra de vida para (PASO 3/3).
+7. «Ahora sí… ¡la sacáis!» — tu madre, fuera y a salvo en la camilla junto a la ambulancia: «¡MISIÓN CUMPLIDA!».
+8. «¿Tú qué habrías elegido? Comenta tu letra» — A / B / C y «💬 COMENTA TU LETRA».
+9. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+10. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — la placa de Bomberados.
 ★ = momentos de venta: los más fuertes del vídeo.
+
+Comentario fijado sugerido: «📌 La C: el coche se estabiliza tal como está, antes de sacar a nadie. Si la sacas ya, el
+coche se puede mover con ella y contigo dentro; si lo pones derecho, la mueves a ella. ¿Cuál habías elegido?»
 
 Ojo: la «prueba gratis 5 días» sigue sin aparecer en la web de Élite (CONFIRMAR con Adrián, como en el ERA).
 El puntal del vídeo es genérico (sin marca): Adrián lo llama por su nombre comercial (STABFAST).
 
-Fuentes (en FUENTES.md): la ficha de Adrián en Notion («Se emplea como sistema de estabilización. Debe formar un ángulo de
-unos 60° con el suelo. En la cinta posee una zona (verde) protectora para las zonas calientes (como el tubo de escape)…»),
-el manual de puntales del Consorcio Provincial de Bomberos de Valencia («situarlo con una inclinación de unos 60º») y el
-manual del fabricante (la cinta al punto más bajo del vehículo, tensada con el trinquete del puntal; «el sistema utiliza la
-propia masa del vehículo a estabilizar»).
+Fuentes (en FUENTES.md): la ficha de Adrián del sábado 28 (60° con el suelo, la cinta y su zona protectora, la cuña), los
+apuntes de Élite del viernes 20 («el vehículo se estabiliza en la posición en la que es encontrado»; objetivo: no agravar
+el estado de las víctimas), la DGT (primero se estabiliza el vehículo para trabajar con seguridad), el manual de puntales
+de Bombers de València («inclinación de unos 60º») y el manual del fabricante (cinta al punto más bajo, tensada con el
+trinquete; «el sistema utiliza la propia masa del vehículo»).
