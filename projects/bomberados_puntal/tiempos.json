@@ -1,0 +1,542 @@
+[
+ {
+  "text": "Es tu madre. Está dentro de ese coche tumbado… ¡y se puede caer!",
+  "start": 0.06,
+  "end": 4.146,
+  "words": [
+   {
+    "w": "Es",
+    "start": 0.06,
+    "end": 0.299
+   },
+   {
+    "w": "tu",
+    "start": 0.299,
+    "end": 0.458
+   },
+   {
+    "w": "madre.",
+    "start": 0.458,
+    "end": 1.226
+   },
+   {
+    "w": "Está",
+    "start": 1.226,
+    "end": 1.415
+   },
+   {
+    "w": "dentro",
+    "start": 1.415,
+    "end": 1.734
+   },
+   {
+    "w": "de",
+    "start": 1.734,
+    "end": 1.814
+   },
+   {
+    "w": "ese",
+    "start": 1.814,
+    "end": 2.053
+   },
+   {
+    "w": "coche",
+    "start": 2.053,
+    "end": 2.372
+   },
+   {
+    "w": "tumbado…",
+    "start": 2.372,
+    "end": 3.129
+   },
+   {
+    "w": "¡y",
+    "start": 3.129,
+    "end": 3.249
+   },
+   {
+    "w": "se",
+    "start": 3.249,
+    "end": 3.408
+   },
+   {
+    "w": "puede",
+    "start": 3.408,
+    "end": 3.727
+   },
+   {
+    "w": "caer!",
+    "start": 3.727,
+    "end": 4.146
+   }
+  ]
+ },
+ {
+  "text": "¿Qué haces? ¿A, la sacas ya? ¿B, lo pones derecho? ¿O C, lo sujetas tal como está?",
+  "start": 4.594,
+  "end": 10.733,
+  "words": [
+   {
+    "w": "¿Qué",
+    "start": 4.594,
+    "end": 4.764
+   },
+   {
+    "w": "haces?",
+    "start": 4.764,
+    "end": 5.531
+   },
+   {
+    "w": "¿A,",
+    "start": 5.531,
+    "end": 6.029
+   },
+   {
+    "w": "la",
+    "start": 6.029,
+    "end": 6.119
+   },
+   {
+    "w": "sacas",
+    "start": 6.119,
+    "end": 6.518
+   },
+   {
+    "w": "ya?",
+    "start": 6.518,
+    "end": 7.076
+   },
+   {
+    "w": "¿B,",
+    "start": 7.076,
+    "end": 7.644
+   },
+   {
+    "w": "lo",
+    "start": 7.644,
+    "end": 7.784
+   },
+   {
+    "w": "pones",
+    "start": 7.784,
+    "end": 8.112
+   },
+   {
+    "w": "derecho?",
+    "start": 8.112,
+    "end": 8.81
+   },
+   {
+    "w": "¿O",
+    "start": 8.81,
+    "end": 8.909
+   },
+   {
+    "w": "C,",
+    "start": 8.909,
+    "end": 9.457
+   },
+   {
+    "w": "lo",
+    "start": 9.457,
+    "end": 9.547
+   },
+   {
+    "w": "sujetas",
+    "start": 9.547,
+    "end": 10.105
+   },
+   {
+    "w": "tal",
+    "start": 10.105,
+    "end": 10.265
+   },
+   {
+    "w": "como",
+    "start": 10.265,
+    "end": 10.584
+   },
+   {
+    "w": "está?",
+    "start": 10.584,
+    "end": 10.733
+   }
+  ]
+ },
+ {
+  "text": "¡La C!",
+  "start": 11.112,
+  "end": 11.63,
+  "words": [
+   {
+    "w": "¡La",
+    "start": 11.112,
+    "end": 11.301
+   },
+   {
+    "w": "C!",
+    "start": 11.301,
+    "end": 11.63
+   }
+  ]
+ },
+ {
+  "text": "Primero, que no se mueva: dos puntales contra el coche, a unos sesenta grados del suelo.",
+  "start": 12.058,
+  "end": 16.683,
+  "words": [
+   {
+    "w": "Primero,",
+    "start": 12.058,
+    "end": 12.587
+   },
+   {
+    "w": "que",
+    "start": 12.587,
+    "end": 12.736
+   },
+   {
+    "w": "no",
+    "start": 12.736,
+    "end": 12.816
+   },
+   {
+    "w": "se",
+    "start": 12.816,
+    "end": 12.975
+   },
+   {
+    "w": "mueva:",
+    "start": 12.975,
+    "end": 13.663
+   },
+   {
+    "w": "dos",
+    "start": 13.663,
+    "end": 13.852
+   },
+   {
+    "w": "puntales",
+    "start": 13.852,
+    "end": 14.331
+   },
+   {
+    "w": "contra",
+    "start": 14.331,
+    "end": 14.65
+   },
+   {
+    "w": "el",
+    "start": 14.65,
+    "end": 14.729
+   },
+   {
+    "w": "coche,",
+    "start": 14.729,
+    "end": 15.208
+   },
+   {
+    "w": "a",
+    "start": 15.208,
+    "end": 15.287
+   },
+   {
+    "w": "unos",
+    "start": 15.287,
+    "end": 15.527
+   },
+   {
+    "w": "sesenta",
+    "start": 15.527,
+    "end": 15.925
+   },
+   {
+    "w": "grados",
+    "start": 15.925,
+    "end": 16.244
+   },
+   {
+    "w": "del",
+    "start": 16.244,
+    "end": 16.404
+   },
+   {
+    "w": "suelo.",
+    "start": 16.404,
+    "end": 16.683
+   }
+  ]
+ },
+ {
+  "text": "La cinta, al punto más bajo… y la tensas con el trinquete.",
+  "start": 17.111,
+  "end": 20.32,
+  "words": [
+   {
+    "w": "La",
+    "start": 17.111,
+    "end": 17.201
+   },
+   {
+    "w": "cinta,",
+    "start": 17.201,
+    "end": 17.759
+   },
+   {
+    "w": "al",
+    "start": 17.759,
+    "end": 17.998
+   },
+   {
+    "w": "punto",
+    "start": 17.998,
+    "end": 18.317
+   },
+   {
+    "w": "más",
+    "start": 18.317,
+    "end": 18.476
+   },
+   {
+    "w": "bajo…",
+    "start": 18.476,
+    "end": 19.064
+   },
+   {
+    "w": "y",
+    "start": 19.064,
+    "end": 19.201
+   },
+   {
+    "w": "la",
+    "start": 19.201,
+    "end": 19.338
+   },
+   {
+    "w": "tensas",
+    "start": 19.338,
+    "end": 19.672
+   },
+   {
+    "w": "con",
+    "start": 19.672,
+    "end": 19.752
+   },
+   {
+    "w": "el",
+    "start": 19.752,
+    "end": 19.911
+   },
+   {
+    "w": "trinquete.",
+    "start": 19.911,
+    "end": 20.32
+   }
+  ]
+ },
+ {
+  "text": "El peso del coche aprieta el triángulo: ya no se mueve.",
+  "start": 20.669,
+  "end": 23.469,
+  "words": [
+   {
+    "w": "El",
+    "start": 20.669,
+    "end": 20.753
+   },
+   {
+    "w": "peso",
+    "start": 20.753,
+    "end": 20.948
+   },
+   {
+    "w": "del",
+    "start": 20.948,
+    "end": 21.107
+   },
+   {
+    "w": "coche",
+    "start": 21.107,
+    "end": 21.426
+   },
+   {
+    "w": "aprieta",
+    "start": 21.426,
+    "end": 21.984
+   },
+   {
+    "w": "el",
+    "start": 21.984,
+    "end": 22.064
+   },
+   {
+    "w": "triángulo:",
+    "start": 22.064,
+    "end": 22.732
+   },
+   {
+    "w": "ya",
+    "start": 22.732,
+    "end": 22.941
+   },
+   {
+    "w": "no",
+    "start": 22.941,
+    "end": 23.1
+   },
+   {
+    "w": "se",
+    "start": 23.1,
+    "end": 23.18
+   },
+   {
+    "w": "mueve.",
+    "start": 23.18,
+    "end": 23.469
+   }
+  ]
+ },
+ {
+  "text": "Ahora sí… ¡la sacáis!",
+  "start": 23.918,
+  "end": 25.682,
+  "words": [
+   {
+    "w": "Ahora",
+    "start": 23.918,
+    "end": 24.376
+   },
+   {
+    "w": "sí…",
+    "start": 24.376,
+    "end": 24.974
+   },
+   {
+    "w": "¡la",
+    "start": 24.974,
+    "end": 25.094
+   },
+   {
+    "w": "sacáis!",
+    "start": 25.094,
+    "end": 25.682
+   }
+  ]
+ },
+ {
+  "text": "¿Tú qué habrías elegido? Comenta tu letra.",
+  "start": 26.17,
+  "end": 28.293,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 26.17,
+    "end": 26.26
+   },
+   {
+    "w": "qué",
+    "start": 26.26,
+    "end": 26.369
+   },
+   {
+    "w": "habrías",
+    "start": 26.369,
+    "end": 26.768
+   },
+   {
+    "w": "elegido?",
+    "start": 26.768,
+    "end": 27.436
+   },
+   {
+    "w": "Comenta",
+    "start": 27.436,
+    "end": 27.884
+   },
+   {
+    "w": "tu",
+    "start": 27.884,
+    "end": 28.043
+   },
+   {
+    "w": "letra.",
+    "start": 28.043,
+    "end": 28.293
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 28.621,
+  "end": 30.545,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 28.621,
+    "end": 29.319
+   },
+   {
+    "w": "a",
+    "start": 29.319,
+    "end": 29.399
+   },
+   {
+    "w": "quien",
+    "start": 29.399,
+    "end": 29.638
+   },
+   {
+    "w": "quiera",
+    "start": 29.638,
+    "end": 29.957
+   },
+   {
+    "w": "ser",
+    "start": 29.957,
+    "end": 30.116
+   },
+   {
+    "w": "bombero!",
+    "start": 30.116,
+    "end": 30.545
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
+  "start": 30.914,
+  "end": 34.421,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 30.914,
+    "end": 31.741
+   },
+   {
+    "w": "¡Bomberados!",
+    "start": 31.741,
+    "end": 32.947
+   },
+   {
+    "w": "¡Pruébala",
+    "start": 32.947,
+    "end": 33.305
+   },
+   {
+    "w": "gratis",
+    "start": 33.305,
+    "end": 33.784
+   },
+   {
+    "w": "cinco",
+    "start": 33.784,
+    "end": 34.103
+   },
+   {
+    "w": "días!",
+    "start": 34.103,
+    "end": 34.421
+   }
+  ]
+ }
+]

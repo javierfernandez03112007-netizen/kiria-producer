@@ -3881,7 +3881,98 @@ def sfx_track_trinquete(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_puntal(path):
+    """«Salva a tu madre» (el puntal de estabilización, como un videojuego): tráfico lejano, la autobomba al ralentí, la radio
+    y los intermitentes; un latido que acompaña a la barra de vida hasta que el coche ya no se mueve; los sonidos de juego
+    (aparece la misión, cada tarjeta A/B/C, el cursor, el acierto de la C y «¡misión cumplida!»); el coche que cruje y se
+    mueve; los puntales que suben y se alargan, la cuchilla que muerde la chapa, la carraca del trinquete y la cinta que se
+    tensa; el peso que asienta el triángulo; la pregunta y la venta de Bomberados. Tiempos como en puntal.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    fin = c["compartir"] - 0.25
+    tic, bub, nota, toque, golpe = _onset(_load("tic")), _onset(_load("burbuja")), _onset(_load("nota")), _onset(_load("toque")), _onset(_load("golpe"))
+    wh, w2, llave = _onset(_load("whoosh")), _onset(_load("whoosh2")), _onset(_load("llave"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    # ambiente: tráfico lejano, la autobomba al ralentí, la radio y los intermitentes
+    put(_loop(_load("ciudad"), END + 0.5), 0.0, -36, fin, 0.3, 1.0, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -38, fin, 0.5, 1.0, track=amb)
+    put("radio", 0.6, -34, 2.0, 0.05, 0.3, track=amb)
+    for k in range(int(fin * 1.6 * 2)):
+        put(_pitch(tic, 0.55), k / 3.2, -41, 0.06, 0.001, 0.03, track=amb)
+    # el latido de la barra de vida (hasta que ya no se mueve) y la capa de juego
+    put(_loop(_load("latido"), c["mueve"] + 1), 0.15, -27, c["mueve"] - 0.1, 0.3, 0.5)
+    put(_pitch(_load("destello"), 1.2), 0.05, -27, 0.6, 0.002, 0.2)
+    put(_pitch(nota, 1.25), c["madre"] - 0.03, -28, 0.6)
+    # ¡y se puede caer!: el coche cruje y se mueve
+    put(_pitch(_load("tension"), 0.6), c["caer"] - 0.35, -27, 0.9, 0.1, 0.3)
+    put(_pitch(golpe, 0.7), c["caer"] + 0.05, -19, 0.45, 0.002, 0.25)
+    # las tres opciones: cada tarjeta, el cursor, y lo que pasaría con A y B
+    for k, p in (("a", 1.0), ("b", 1.15), ("c", 1.3)):
+        put(_pitch(bub, p), c[k] - 0.12, -23, 0.14, 0.001, 0.05)
+        put(_pitch(tic, 1.6), c[k] - 0.1, -27, 0.08)
+    put(_pitch(_load("tension"), 0.55), c["sacas"] - 0.2, -30, 0.7, 0.05, 0.25)
+    put(_pitch(golpe, 0.55), c["sacas"] + 0.3, -26, 0.35, 0.002, 0.2)
+    put(_pitch(wh, 0.6), c["pones"] - 0.1, -28, 0.9, 0.05, 0.2)
+    put(_pitch(toque, 1.1), c["sujetas"] - 0.05, -28, 0.5)
+    # ¡la C!: acierto de juego
+    put("acierto", c["lac"] - 0.06, -18, 0.9)
+    put(_pitch(_load("logro"), 1.1), c["lac"] + 0.05, -26, 0.9, 0.01, 0.3)
+    # los puntales suben y se alargan; la cuchilla muerde la chapa
+    put(_pitch(wh, 1.4), c["puntales"] - 0.25, -29, 0.5)
+    put(_pitch(llave, 1.1), c["contra"] - 0.05, -24, 0.4)
+    put(_pitch(llave, 1.4), c["contra"] + 0.15, -27, 0.3)
+    put(_pitch(golpe, 2.2), c["coche2"] + 0.3, -20, 0.25, 0.002, 0.12)
+    put(_pitch(tic, 0.8), c["coche2"] + 0.32, -22, 0.1)
+    put(_pitch(golpe, 2.0), c["coche2"] + 0.45, -24, 0.2, 0.002, 0.1)
+    put(_pitch(nota, 1.0), c["sesenta"] - 0.03, -28, 0.6)
+    # la cinta: el gancho en el punto más bajo y la carraca del trinquete hasta que se tensa
+    put(_pitch(toque, 1.3), c["punto"] - 0.05, -27, 0.4)
+    p0, p1 = c["tensas"] - 0.05, c["trinquete"] + 0.45
+    put(_carraca(p1 - p0, 11.0, 5), p0, -22, p1 - p0, 0.01, 0.05)
+    put(_cuerda_tensa(0.6), c["trinquete"] + 0.33, -24, 0.6, 0.002, 0.2)
+    # el peso aprieta el triángulo: ya no se mueve
+    put(_pitch(golpe, 0.5), c["peso"] - 0.02, -24, 0.5, 0.002, 0.3)
+    put(_pitch(_load("destello"), 0.9), c["triangulo"] - 0.05, -26, 0.6, 0.002, 0.2)
+    put("acierto", c["mueve"] - 0.03, -24, 0.8)
+    # ¡la sacáis!: a la ambulancia y «¡misión cumplida!»
+    put(_pitch(w2, 0.9), c["ahora"] + 0.1, -26, 0.9)
+    put("logro", c["sacais"] - 0.04, -17, 1.4, 0.005, 0.4)
+    put(_pitch(_load("destello"), 1.3), c["sacais"] - 0.02, -24, 0.6, 0.002, 0.2)
+    # la pregunta (A, B, C) y la venta (Bomberados)
+    put(_pitch(wh, 0.7), c["elegido"] - 0.3, -27, 0.9)
+    for k in range(3):
+        put(_pitch(bub, 1.0 + 0.15 * k), c["elegido"] + 0.1 * k, -25, 0.14, 0.001, 0.05)
+    for k in ("compartir", "marca", "prueba"):
+        put("destello", c[k] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", fin - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    put("marca", c["marca"] - 0.05, -26, 1.0, 0.002, 0.25)
+    put(_loop(_load("ciudad"), END + 0.5), fin, -38, END - fin, 0.4, 0.3, track=amb)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "puntal":
+        return sfx_track_puntal(path)
     if Q.get("formato") == "trinquete":
         return sfx_track_trinquete(path)
     if Q.get("formato") == "era":
