@@ -1,0 +1,48 @@
+«LA PUERTA SE TE CIERRA ENCIMA» — el trinquete de seguridad (rope ratchet) (idea de Adrián, Notion «JUEVES 26»:
+«¿sabes qué herramienta es esta? ¿sabes para qué se utiliza?» + PUBLICIDAD ÉLITE). 30–40 s: este sale en ≈ 33 s.
+
+Cómo está hecho (3D, DE DÍA y con vida real, como pidió Javi el 25 nov): un accidente en una carretera en cuesta, a pleno
+sol; curiosos detrás del cordón (uno graba con el móvil), la autobomba y la ambulancia con sus luces, otros bomberos
+trabajando. La idea, en una frase: en cuesta, la puerta abierta vuelve sola y puede caer sobre ti o sobre el herido; con
+dos ganchos y un tirón, el trinquete la deja quieta. Primero se VE el peligro (la puerta se cierra sobre el brazo del
+bombero que atiende al herido… ✗ y se rebobina), luego la herramienta en la mano de un bombero (no un primer plano de
+juguete: el bombero entero, junto al coche) y cómo se usa. Cierre para comentar fácil: «¿Lo conocías? ¿Sí o no?».
+La venta de hoy es de ÉLITE BOMBEROS (lo pide Adrián), con lo que dice su web.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Estás sacando a un herido… y la puerta del coche se te cierra ENCIMA!
+[serious] En cuesta, la puerta vuelve sola… [tense] y no avisa.
+[intrigued] ¿Sabes qué lo evita? [confident] Esto: un trinquete de seguridad.
+[clear, fast] Un gancho a la puerta, el otro al coche… y tiras del extremo suelto.
+[clear] La cuerda se tensa y el trinquete no la deja volver: [satisfied] la puerta ya no se mueve.
+[calm, warm] Y trabajas tranquilo con el herido.
+[challenging, playful] ¿Lo conocías? ¿Sí o no? ¡Comenta!
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡ÉLITE BOMBEROS! [excited, emphatic] ¡Sin matrícula y SIN permanencia!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de día, con un dron que no para:
+1. «¡Estás sacando a un herido… y la puerta del coche se te cierra encima!» — desde arriba: carretera en cuesta, coche
+   empotrado, curiosos tras el cordón, luces azules. El dron baja: un bombero metido en el hueco de la puerta, con el
+   herido… y la puerta empieza a cerrarse sola hacia su brazo. ✗ rojo y se rebobina.
+2. «En cuesta, la puerta vuelve sola… y no avisa» — una flecha sobre la cuesta y la puerta que se mueve sola: «PENDIENTE».
+3. «¿Sabes qué lo evita? Esto: un trinquete de seguridad» — otro bombero lo saca: polea pequeña, dos ganchos y una cuerda:
+   «¿QUÉ ES ESTO?» → «TRINQUETE DE SEGURIDAD · ROPE RATCHET».
+4. «Un gancho a la puerta, el otro al coche… y tiras del extremo suelto» — engancha el marco de la puerta y la rueda;
+   tira de la cuerda suelta (rótulos GANCHO 1 · GANCHO 2 · TIRA).
+5. «La cuerda se tensa y el trinquete no la deja volver: la puerta ya no se mueve» — por dentro (rayos X) el diente del
+   trinquete se clava en la polea: la cuerda solo avanza en un sentido. La puerta, quieta: ✓ «NO SE MUEVE».
+6. «Y trabajas tranquilo con el herido» — el compañero le pone el collarín, con la puerta bien sujeta.
+7. «¿Lo conocías? ¿Sí o no? Comenta» — SÍ / NO y «💬 COMENTA».
+8. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+9. ★ «¿Opositas? ¡Élite Bomberos! ¡Sin matrícula y sin permanencia!» — placa ÉLITE BOMBEROS (como el percutor).
+★ = momentos de venta: los más fuertes del vídeo.
+
+Fuentes (en FUENTES.md): la ficha de Adrián en Notion («Rope-Ratchet: trinquete de seguridad. Simplemente hay que colocar
+los dos ganchos y tirar del extremo suelto de la cuerda para obtener la tensión segura que necesita. Para asegurar cargas
+(como una puerta de un vehículo) y así poder trabajar cómodamente») y la web de Élite («sin matrícula, sin permanencia»).
