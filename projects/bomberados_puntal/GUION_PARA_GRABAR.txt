@@ -1,0 +1,54 @@
+«UN COCHE DE LADO… Y LO SUJETAN DOS PALOS» — el puntal de estabilización (idea de Adrián, Notion «SÁBADO 28»: «¿Sabes cómo
+se utiliza esta herramienta? ¿Sabes lo que es?», STABFAST + PUBLICIDAD BOMBERADOS; la fila «VIERNES 27» solo dice
+«PUBLICIDAD BOMBERADOS», sin tema). 30–40 s: este sale en ≈ 34 s.
+
+Cómo está hecho (3D, DE DÍA y con vida real): un coche tumbado de lado en la carretera, a pleno sol, con alguien colgado
+del cinturón dentro; curiosos detrás del guardarraíl (uno graba con el móvil), la autobomba y la ambulancia con sus luces.
+La idea, en una frase: dos palos de aluminio sujetan más de una tonelada porque NO lo sujetan ellos: puntal, cinta y coche
+forman un triángulo y el peso del propio coche lo aprieta. Las tres cosas de la ficha de Adrián que se ven: los 60° con el
+suelo, la cinta al punto más bajo tensada con el trinquete y la zona verde para el tubo de escape. Cierre para comentar
+fácil: «¿Te meterías dentro con solo esto? ¿Sí o no?». La venta de hoy es de BOMBERADOS (lo pide Adrián).
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, alarmed] ¡Un coche de lado… con alguien DENTRO! [tense] Y lo vas a sujetar con dos palos de aluminio.
+[intrigued] ¿Cómo aguantan más de una TONELADA?
+[clear] Cada puntal, contra el coche, a unos SESENTA grados del suelo.
+[clear, fast] La cinta, de su pie al punto más bajo del coche… y la tensas con el trinquete.
+[matter-of-fact] La zona verde, por si toca el escape, que QUEMA.
+[revealing, satisfied] ¿El truco? Lo sujeta el PROPIO coche: su peso aprieta el triángulo.
+[challenging, playful] ¿Te meterías dentro con solo esto? ¿Sí o no? ¡Comenta!
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited] ¡Pruébala gratis cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — todo en 3D, de día, con un dron que no para y sin rozar a nadie:
+1. «¡Un coche de lado… con alguien dentro! Y lo vas a sujetar con dos palos de aluminio» — desde arriba: carretera de día,
+   un coche tumbado de lado que se balancea (flechas rojas «SE MUEVE»), alguien colgado del cinturón dentro
+   («ALGUIEN DENTRO»), curiosos detrás del guardarraíl, autobomba y ambulancia; dos bomberos llegan con los dos puntales.
+2. «¿Cómo aguantan más de una tonelada?» — encima del coche, su peso con una flecha hacia abajo; los puntales, finos al lado.
+3. «Cada puntal, contra el coche, a unos sesenta grados del suelo» — el puntal se alarga, la cabeza muerde la chapa de
+   arriba y en el suelo se dibuja el transportador: «60°».
+4. «La cinta, de su pie al punto más bajo del coche… y la tensas con el trinquete» — el gancho entra abajo, la cinta va
+   hasta el trinquete del puntal y, clic, clic, se pone tensa: «TENSA».
+5. «La zona verde, por si toca el escape, que quema» — la funda verde de la cinta apoyada en el tubo de escape, con el aire
+   que tiembla del calor: «ESCAPE · QUEMA».
+6. «¿El truco? Lo sujeta el propio coche: su peso aprieta el triángulo» — flechas: el peso del coche empuja el puntal, el
+   puntal empuja el suelo y la cinta tira; se enciende el TRIÁNGULO y el coche deja de moverse: «✓ QUIETO».
+7. «¿Te meterías dentro con solo esto? ¿Sí o no? Comenta» — plano abierto: SÍ / NO y «💬 COMENTA».
+8. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
+9. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — la placa de Bomberados.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Ojo: la «prueba gratis 5 días» sigue sin aparecer en la web de Élite (CONFIRMAR con Adrián, como en el ERA).
+El puntal del vídeo es genérico (sin marca): Adrián lo llama por su nombre comercial (STABFAST).
+
+Fuentes (en FUENTES.md): la ficha de Adrián en Notion («Se emplea como sistema de estabilización. Debe formar un ángulo de
+unos 60° con el suelo. En la cinta posee una zona (verde) protectora para las zonas calientes (como el tubo de escape)…»),
+el manual de puntales del Consorcio Provincial de Bomberos de Valencia («situarlo con una inclinación de unos 60º») y el
+manual del fabricante (la cinta al punto más bajo del vehículo, tensada con el trinquete del puntal; «el sistema utiliza la
+propia masa del vehículo a estabilizar»).
