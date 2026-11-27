@@ -29,6 +29,12 @@
   [PDF del fabricante](https://www.weber-rescue.com/wAssets/docs/feuerwehr/zusatzausruestung/stabilisierung/stab-fast-alu/BA_STAB-FAST_ALU_2016A_Ansicht.pdf)).
 - **«Lo sujeta el propio coche: su peso aprieta el triángulo»**: el mismo manual, «El sistema utiliza la propia masa del
   vehículo a estabilizar», y el principio de la forma de triángulo («Diese Dreiecksform ist das Grundprinzip»).
+- **v2 (lo que pidió el cliente: explicarlo entero)** — todo de la ficha de Adrián: «La cuña del pie, para que no resbale»
+  («cuña de seguridad apoyada en el suelo para evitar deslizamientos»); «Si no hay dónde, el cuchillo del kit abre un hueco»
+  («el pack trae un cuchillo para abrir hueco para el gancho»; los apuntes de Élite del viernes 20 hablan de «una cuchilla
+  que atraviesa la carrocería para enganchar el gancho»); «La zona verde la protege del escape, que quema» («zona
+  protectora para las zonas calientes, como el tubo de escape»); «un tubo de aluminio que se alarga» (puntal telescópico,
+  longitud 1.720–2.500 mm según los apuntes de Élite del viernes 20; ALU en el modelo del fabricante).
 - **«Palos de aluminio»**: los puntales del modelo son de aluminio (ALU)
   ([Weber Rescue, Stab-Fast ALU+](https://weber-rescue.com/es/feuerwehr/zusatzausruestung/stabilisierung/stab-fast-alu/stab-fast-alu-plus.php)).
 - **«La zona verde, por si toca el escape, que quema»**: la ficha de Adrián (zona protectora de la cinta para las zonas

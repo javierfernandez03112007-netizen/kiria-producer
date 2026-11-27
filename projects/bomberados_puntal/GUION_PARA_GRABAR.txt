@@ -1,25 +1,22 @@
-«SALVA A TU MADRE» — el puntal de estabilización, como un videojuego (idea de Adrián, Notion «SÁBADO 28»: STABFAST +
-PUBLICIDAD BOMBERADOS; la fila «VIERNES 27» solo dice «PUBLICIDAD BOMBERADOS», sin tema). Formato nuevo que pide Javi
-(26 nov): personal y sentimental, como un videojuego: alguien a quien quieres está en peligro, tres opciones (A, B o C), el
-vídeo elige la correcta y, al elegirla, la explicación se hace mientras la salvas. 30–40 s: este sale en ≈ 35 s.
-
-Cómo está hecho (3D, DE DÍA y con vida real): un coche tumbado de lado en la carretera, a pleno sol, con TU MADRE dentro,
-colgada del cinturón; curiosos detrás del guardarraíl (uno graba con el móvil), la autobomba y la ambulancia con sus luces.
-Encima, la capa de videojuego: «MISIÓN: SALVA A TU MADRE», un corazón que late y una barra de vida que va bajando.
-La idea, en una frase: antes de sacarla, el coche no se puede mover; se sujeta tal como está, con dos puntales a unos 60°
-y la cinta tensa, y el peso del propio coche aprieta el triángulo. La trampa son las dos cosas que haría cualquiera:
-sacarla corriendo o poner el coche derecho.
+«SALVA A TU MADRE» v2 — el puntal de estabilización, como un videojuego (idea de Adrián, Notion «SÁBADO 28»: STABFAST +
+PUBLICIDAD BOMBERADOS). Lo que pide el cliente tras la v1: 1) CINCO SEGUNDOS de espera antes de que el vídeo elija (cuenta
+atrás 5→1 con tic-tac y bocina, como las preguntas de examen), y 2) el puntal EXPLICADO BIEN, no de pasada: todo lo de la
+ficha de Adrián (qué es, los 60°, la cuña del pie, el gancho al punto más bajo, el cuchillo del kit, el trinquete, la zona
+verde de la cinta y el triángulo). Por eso sale más largo: ≈ 55 s (la cuenta y la explicación completa).
 
 Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
 Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+No hace falta dejar silencio tras «¡Cinco segundos!»: la cuenta de 5 s la meto yo en el montaje.
 
 ----- COPIAR DESDE AQUÍ (Eleven v3) -----
 [urgent, scared] Es tu MADRE. Está dentro de ese coche tumbado… [panicked] ¡y se puede caer!
 [tense, fast] ¿Qué haces? ¿A, la sacas ya? ¿B, lo pones derecho? ¿O C, lo sujetas tal como está?
-[confident, excited] ¡La C!
-[clear, urgent] Primero, que no se mueva: dos puntales contra el coche, a unos SESENTA grados del suelo.
-[clear, fast] La cinta, al punto más bajo… y la tensas con el trinquete.
-[satisfied] El peso del coche aprieta el triángulo: ya no se mueve.
+[challenging, urgent] ¡Cinco segundos!
+[confident, excited] ¡La C! [clear, urgent] Primero, que no se mueva. Con el puntal: un tubo de aluminio que se alarga.
+[clear] Lo apoyas contra el coche, a unos SESENTA grados del suelo. La cuña del pie, para que no resbale.
+[clear] El gancho de la cinta, al punto más bajo. Si no hay dónde, el cuchillo del kit abre un hueco.
+[clear, fast] La tensas con el trinquete. La zona verde la protege del escape, que QUEMA.
+[satisfied] Y el peso del coche aprieta el triángulo: ya no se mueve.
 [relieved, emotional] Ahora sí… ¡la sacáis!
 [challenging, playful] ¿Tú qué habrías elegido? ¡Comenta tu letra!
 [excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
@@ -28,32 +25,30 @@ Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS so
 
 Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
 
-GUION COMPLETO (voz y pantalla) — todo en 3D, de día, con un dron que no para y sin rozar a nadie:
-1. «Es tu madre. Está dentro de ese coche tumbado… ¡y se puede caer!» — primer segundo: la capa de juego sobre la escena
-   real («MISIÓN: SALVA A TU MADRE», corazón que late, barra de vida que baja); el coche tumbado de lado se balancea
-   (flechas rojas) y dentro, tu madre colgada del cinturón («MAMÁ»); curiosos, autobomba y ambulancia.
-2. «¿Qué haces? ¿A…? ¿B…? ¿O C…?» — tres tarjetas de juego que se encienden al decirlas: A, la sacas ya (vas corriendo
-   al coche); B, lo pones derecho (un coche fantasma que gira); C, lo sujetas tal como está (dos puntales).
-3. «¡La C!» — el cursor elige la C: «✓ CORRECTA» con sonido de acierto; A y B se tachan.
-4. «Primero, que no se mueva: dos puntales contra el coche, a unos sesenta grados del suelo» — dos bomberos meten los
-   puntales; la cabeza muerde la chapa y en el suelo se dibuja el transportador: «60°» (PASO 1/3).
-5. «La cinta, al punto más bajo… y la tensas con el trinquete» — el gancho abajo, clic, clic: «TENSA» (PASO 2/3).
-6. «El peso del coche aprieta el triángulo: ya no se mueve» — flechas: el peso empuja el puntal, el puntal el suelo y
-   la cinta tira; se enciende el TRIÁNGULO, el coche deja de balancearse y la barra de vida para (PASO 3/3).
-7. «Ahora sí… ¡la sacáis!» — tu madre, fuera y a salvo en la camilla junto a la ambulancia: «¡MISIÓN CUMPLIDA!».
-8. «¿Tú qué habrías elegido? Comenta tu letra» — A / B / C y «💬 COMENTA TU LETRA».
-9. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel TÚ → QUIEN QUIERA SER BOMBERO.
-10. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — la placa de Bomberados.
-★ = momentos de venta: los más fuertes del vídeo.
+GUION COMPLETO (voz y pantalla) — 3D de día, con la capa de videojuego, un dron que no para y sin rozar a nadie:
+1. «Es tu madre. Está dentro de ese coche tumbado… ¡y se puede caer!» — la capa de juego («MISIÓN: SALVA A TU MADRE»,
+   corazón y barra de vida que baja) sobre el coche tumbado en la carretera; tu madre, colgada del cinturón («MAMÁ»).
+2. «¿Qué haces? ¿A…? ¿B…? ¿O C…?» — las tres tarjetas de juego, cada una con lo que pasaría (A: el coche se te viene
+   encima; B: lo pones derecho; C: dos puntales).
+3. «¡Cinco segundos!» — CUENTA ATRÁS 5, 4, 3, 2, 1 en grande (tic-tac y bocina), el cursor salta entre A, B y C y la vida
+   sigue bajando: tiempo para que el que mira elija.
+4. «¡La C! Primero, que no se mueva. Con el puntal: un tubo de aluminio que se alarga» — «✓ CORRECTA»; el puntal se
+   inclina y se alarga («PUNTAL · TUBO DE ALUMINIO»).
+5. «Lo apoyas contra el coche, a unos sesenta grados del suelo. La cuña del pie, para que no resbale» — transportador
+   «60°» y la cuña amarilla del pie, señalada («CUÑA: NO RESBALA»).
+6. «El gancho de la cinta, al punto más bajo. Si no hay dónde, el cuchillo del kit abre un hueco» — el gancho en el punto
+   más bajo y, en una lupa flotando encima, el cuchillo que abre el hueco en la chapa y el gancho que entra.
+7. «La tensas con el trinquete. La zona verde la protege del escape, que quema» — el trinquete (clic, clic) y la cinta
+   tensa; en la lupa, la funda verde de la cinta sobre el tubo de escape caliente.
+8. «Y el peso del coche aprieta el triángulo: ya no se mueve» — flecha de peso y los TRIÁNGULOS; «✓ QUIETO» y la vida
+   deja de bajar.
+9. «Ahora sí… ¡la sacáis!» — tu madre a salvo en la ambulancia, con la manta térmica: «¡MISIÓN CUMPLIDA!».
+10. «¿Tú qué habrías elegido? Comenta tu letra» — A / B / C y «💬 COMENTA TU LETRA».
+11. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel.
+12. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — la placa de Bomberados.
 
 Comentario fijado sugerido: «📌 La C: el coche se estabiliza tal como está, antes de sacar a nadie. Si la sacas ya, el
 coche se puede mover con ella y contigo dentro; si lo pones derecho, la mueves a ella. ¿Cuál habías elegido?»
 
-Ojo: la «prueba gratis 5 días» sigue sin aparecer en la web de Élite (CONFIRMAR con Adrián, como en el ERA).
-El puntal del vídeo es genérico (sin marca): Adrián lo llama por su nombre comercial (STABFAST).
-
-Fuentes (en FUENTES.md): la ficha de Adrián del sábado 28 (60° con el suelo, la cinta y su zona protectora, la cuña), los
-apuntes de Élite del viernes 20 («el vehículo se estabiliza en la posición en la que es encontrado»; objetivo: no agravar
-el estado de las víctimas), la DGT (primero se estabiliza el vehículo para trabajar con seguridad), el manual de puntales
-de Bombers de València («inclinación de unos 60º») y el manual del fabricante (cinta al punto más bajo, tensada con el
-trinquete; «el sistema utiliza la propia masa del vehículo»).
+Ojo: la «prueba gratis 5 días» sigue sin aparecer en la web de Élite (CONFIRMAR con Adrián). El ángulo: su ficha dice
+60° con el suelo; el manual del fabricante, 30–50° sin decir respecto a qué (FUENTES.md). Puntal genérico, sin marca.
