@@ -3,7 +3,8 @@
  "estilo": "app",
  "voz": {
   "tempo": 1.0,
-  "count": 0,
+  "count": 5.0,
+  "count_line": 2,
   "cortar": false,
   "pause_def": 0.3
  },
@@ -17,7 +18,7 @@
  "portada": {
   "titulo": "¿QUÉ HACES?",
   "etiqueta": "SALVA A TU MADRE",
-  "t": 4.95,
+  "t": 5.0,
   "oscurecer": true
  },
  "mezcla": {
@@ -95,10 +96,20 @@
    1,
    2
   ],
+  "cinco": [
+   "Cinco",
+   1,
+   3
+  ],
+  "segundos": [
+   "segundos",
+   1,
+   3
+  ],
   "lac": [
    "C",
    1,
-   3
+   4
   ],
   "primero": [
    "Primero",
@@ -110,140 +121,215 @@
    1,
    4
   ],
-  "puntales": [
-   "puntales",
+  "puntal": [
+   "puntal",
    1,
    4
   ],
-  "contra": [
-   "contra",
+  "tubo": [
+   "tubo",
    1,
    4
+  ],
+  "aluminio": [
+   "aluminio",
+   1,
+   4
+  ],
+  "alarga": [
+   "alarga",
+   1,
+   4
+  ],
+  "apoyas": [
+   "apoyas",
+   1,
+   5
   ],
   "coche2": [
    "coche",
    1,
-   4
+   5
   ],
   "sesenta": [
    "sesenta",
    1,
-   4
+   5
   ],
   "grados": [
    "grados",
    1,
-   4
+   5
   ],
   "suelo": [
    "suelo",
    1,
-   4
+   5
+  ],
+  "cuna": [
+   "cuña",
+   1,
+   5
+  ],
+  "pie": [
+   "pie",
+   1,
+   5
+  ],
+  "resbale": [
+   "resbale",
+   1,
+   5
+  ],
+  "gancho": [
+   "gancho",
+   1,
+   6
   ],
   "cinta": [
    "cinta",
    1,
-   5
+   6
   ],
   "punto": [
    "punto",
    1,
-   5
+   6
   ],
   "bajo": [
    "bajo",
    1,
-   5
+   6
+  ],
+  "donde": [
+   "dónde",
+   1,
+   6
+  ],
+  "cuchillo": [
+   "cuchillo",
+   1,
+   6
+  ],
+  "kit": [
+   "kit",
+   1,
+   6
+  ],
+  "hueco": [
+   "hueco",
+   1,
+   6
   ],
   "tensas": [
    "tensas",
    1,
-   5
+   7
   ],
   "trinquete": [
    "trinquete",
    1,
-   5
+   7
+  ],
+  "verde": [
+   "verde",
+   1,
+   7
+  ],
+  "protege": [
+   "protege",
+   1,
+   7
+  ],
+  "escape": [
+   "escape",
+   1,
+   7
+  ],
+  "quema": [
+   "quema",
+   1,
+   7
   ],
   "peso": [
    "peso",
    1,
-   6
+   8
   ],
   "coche3": [
    "coche",
    1,
-   6
+   8
   ],
   "aprieta": [
    "aprieta",
    1,
-   6
+   8
   ],
   "triangulo": [
    "triángulo",
    1,
-   6
+   8
   ],
   "mueve": [
    "mueve",
    1,
-   6
+   8
   ],
   "ahora": [
    "Ahora",
    1,
-   7
+   9
   ],
   "sacais": [
    "sacáis",
    1,
-   7
+   9
   ],
   "elegido": [
    "elegido",
    1,
-   8
+   10
   ],
   "comenta": [
    "Comenta",
    1,
-   8
+   10
   ],
   "letra": [
    "letra",
    1,
-   8
+   10
   ],
   "compartir": [
    "Mándaselo",
    1,
-   9
+   11
   ],
   "acierta": [
    "quien",
    1,
-   9
+   11
   ],
   "descripcion": [
    "Opositas",
    1,
-   10
+   12
   ],
   "marca": [
    "Bomberados",
    1,
-   10
+   12
   ],
   "prueba": [
    "Pruébala",
    1,
-   10
+   12
   ],
   "dias": [
    "días",
    1,
-   10
+   12
   ]
  }
 }

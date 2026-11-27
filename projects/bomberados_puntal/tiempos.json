@@ -1,541 +1,770 @@
 [
  {
   "text": "Es tu madre. Está dentro de ese coche tumbado… ¡y se puede caer!",
-  "start": 0.06,
-  "end": 4.146,
+  "start": 0.0,
+  "end": 4.007,
   "words": [
    {
     "w": "Es",
-    "start": 0.06,
-    "end": 0.299
+    "start": 0.0,
+    "end": 0.32
    },
    {
     "w": "tu",
-    "start": 0.299,
-    "end": 0.458
+    "start": 0.32,
+    "end": 0.48
    },
    {
     "w": "madre.",
-    "start": 0.458,
-    "end": 1.226
+    "start": 0.48,
+    "end": 1.169
    },
    {
     "w": "Está",
-    "start": 1.226,
-    "end": 1.415
+    "start": 1.169,
+    "end": 1.359
    },
    {
     "w": "dentro",
-    "start": 1.415,
-    "end": 1.734
+    "start": 1.359,
+    "end": 1.679
    },
    {
     "w": "de",
-    "start": 1.734,
-    "end": 1.814
+    "start": 1.679,
+    "end": 1.758
    },
    {
     "w": "ese",
-    "start": 1.814,
-    "end": 2.053
+    "start": 1.758,
+    "end": 1.998
    },
    {
     "w": "coche",
-    "start": 2.053,
-    "end": 2.372
+    "start": 1.998,
+    "end": 2.318
    },
    {
     "w": "tumbado…",
-    "start": 2.372,
-    "end": 3.129
+    "start": 2.318,
+    "end": 3.077
    },
    {
     "w": "¡y",
-    "start": 3.129,
-    "end": 3.249
+    "start": 3.077,
+    "end": 3.197
    },
    {
     "w": "se",
-    "start": 3.249,
-    "end": 3.408
+    "start": 3.197,
+    "end": 3.357
    },
    {
     "w": "puede",
-    "start": 3.408,
-    "end": 3.727
+    "start": 3.357,
+    "end": 3.597
    },
    {
     "w": "caer!",
-    "start": 3.727,
-    "end": 4.146
+    "start": 3.597,
+    "end": 4.007
    }
   ]
  },
  {
   "text": "¿Qué haces? ¿A, la sacas ya? ¿B, lo pones derecho? ¿O C, lo sujetas tal como está?",
-  "start": 4.594,
-  "end": 10.733,
+  "start": 4.456,
+  "end": 10.331,
   "words": [
    {
     "w": "¿Qué",
-    "start": 4.594,
-    "end": 4.764
+    "start": 4.456,
+    "end": 4.636
    },
    {
     "w": "haces?",
-    "start": 4.764,
-    "end": 5.531
+    "start": 4.636,
+    "end": 5.345
    },
    {
     "w": "¿A,",
-    "start": 5.531,
-    "end": 6.029
+    "start": 5.345,
+    "end": 5.745
    },
    {
     "w": "la",
-    "start": 6.029,
-    "end": 6.119
+    "start": 5.745,
+    "end": 5.835
    },
    {
     "w": "sacas",
-    "start": 6.119,
-    "end": 6.518
+    "start": 5.835,
+    "end": 6.235
    },
    {
     "w": "ya?",
-    "start": 6.518,
-    "end": 7.076
+    "start": 6.235,
+    "end": 6.754
    },
    {
     "w": "¿B,",
-    "start": 7.076,
-    "end": 7.644
+    "start": 6.754,
+    "end": 7.264
    },
    {
     "w": "lo",
-    "start": 7.644,
-    "end": 7.784
+    "start": 7.264,
+    "end": 7.354
    },
    {
     "w": "pones",
-    "start": 7.784,
-    "end": 8.112
+    "start": 7.354,
+    "end": 7.753
    },
    {
     "w": "derecho?",
-    "start": 8.112,
-    "end": 8.81
+    "start": 7.753,
+    "end": 8.423
    },
    {
     "w": "¿O",
-    "start": 8.81,
-    "end": 8.909
+    "start": 8.423,
+    "end": 8.706
    },
    {
     "w": "C,",
-    "start": 8.909,
-    "end": 9.457
+    "start": 8.706,
+    "end": 9.052
    },
    {
     "w": "lo",
-    "start": 9.457,
-    "end": 9.547
+    "start": 9.052,
+    "end": 9.209
    },
    {
     "w": "sujetas",
-    "start": 9.547,
-    "end": 10.105
+    "start": 9.209,
+    "end": 9.751
    },
    {
     "w": "tal",
-    "start": 10.105,
-    "end": 10.265
+    "start": 9.751,
+    "end": 9.911
    },
    {
     "w": "como",
-    "start": 10.265,
-    "end": 10.584
+    "start": 9.911,
+    "end": 10.151
    },
    {
     "w": "está?",
-    "start": 10.584,
-    "end": 10.733
+    "start": 10.151,
+    "end": 10.331
    }
   ]
  },
  {
-  "text": "¡La C!",
-  "start": 11.112,
-  "end": 11.63,
+  "text": "¡Cinco segundos!",
+  "start": 10.661,
+  "end": 11.51,
+  "words": [
+   {
+    "w": "¡Cinco",
+    "start": 10.661,
+    "end": 11.03
+   },
+   {
+    "w": "segundos!",
+    "start": 11.03,
+    "end": 11.51
+   }
+  ]
+ },
+ {
+  "text": "¡La C! Primero, que no se mueva. Con el puntal: un tubo de aluminio que se alarga.",
+  "start": 16.85,
+  "end": 21.995,
   "words": [
    {
     "w": "¡La",
-    "start": 11.112,
-    "end": 11.301
+    "start": 16.85,
+    "end": 17.069
    },
    {
     "w": "C!",
-    "start": 11.301,
-    "end": 11.63
-   }
-  ]
- },
- {
-  "text": "Primero, que no se mueva: dos puntales contra el coche, a unos sesenta grados del suelo.",
-  "start": 12.058,
-  "end": 16.683,
-  "words": [
+    "start": 17.069,
+    "end": 17.749
+   },
    {
     "w": "Primero,",
-    "start": 12.058,
-    "end": 12.587
+    "start": 17.749,
+    "end": 18.268
    },
    {
     "w": "que",
-    "start": 12.587,
-    "end": 12.736
+    "start": 18.268,
+    "end": 18.428
    },
    {
     "w": "no",
-    "start": 12.736,
-    "end": 12.816
+    "start": 18.428,
+    "end": 18.588
    },
    {
     "w": "se",
-    "start": 12.816,
-    "end": 12.975
+    "start": 18.588,
+    "end": 18.748
    },
    {
-    "w": "mueva:",
-    "start": 12.975,
-    "end": 13.663
+    "w": "mueva.",
+    "start": 18.748,
+    "end": 19.487
    },
    {
-    "w": "dos",
-    "start": 13.663,
-    "end": 13.852
+    "w": "Con",
+    "start": 19.487,
+    "end": 19.586
    },
    {
-    "w": "puntales",
-    "start": 13.852,
-    "end": 14.331
+    "w": "el",
+    "start": 19.586,
+    "end": 19.707
+   },
+   {
+    "w": "puntal:",
+    "start": 19.707,
+    "end": 20.457
+   },
+   {
+    "w": "un",
+    "start": 20.457,
+    "end": 20.567
+   },
+   {
+    "w": "tubo",
+    "start": 20.567,
+    "end": 20.826
+   },
+   {
+    "w": "de",
+    "start": 20.826,
+    "end": 20.906
+   },
+   {
+    "w": "aluminio",
+    "start": 20.906,
+    "end": 21.386
+   },
+   {
+    "w": "que",
+    "start": 21.386,
+    "end": 21.466
+   },
+   {
+    "w": "se",
+    "start": 21.466,
+    "end": 21.625
+   },
+   {
+    "w": "alarga.",
+    "start": 21.625,
+    "end": 21.995
+   }
+  ]
+ },
+ {
+  "text": "Lo apoyas contra el coche, a unos sesenta grados del suelo. La cuña del pie, para que no resbale.",
+  "start": 22.385,
+  "end": 27.59,
+  "words": [
+   {
+    "w": "Lo",
+    "start": 22.385,
+    "end": 22.52
+   },
+   {
+    "w": "apoyas",
+    "start": 22.52,
+    "end": 22.984
    },
    {
     "w": "contra",
-    "start": 14.331,
-    "end": 14.65
+    "start": 22.984,
+    "end": 23.224
    },
    {
     "w": "el",
-    "start": 14.65,
-    "end": 14.729
+    "start": 23.224,
+    "end": 23.304
    },
    {
     "w": "coche,",
-    "start": 14.729,
-    "end": 15.208
+    "start": 23.304,
+    "end": 23.844
    },
    {
     "w": "a",
-    "start": 15.208,
-    "end": 15.287
+    "start": 23.844,
+    "end": 23.943
    },
    {
     "w": "unos",
-    "start": 15.287,
-    "end": 15.527
+    "start": 23.943,
+    "end": 24.183
    },
    {
     "w": "sesenta",
-    "start": 15.527,
-    "end": 15.925
+    "start": 24.183,
+    "end": 24.663
    },
    {
     "w": "grados",
-    "start": 15.925,
-    "end": 16.244
+    "start": 24.663,
+    "end": 24.983
    },
    {
     "w": "del",
-    "start": 16.244,
-    "end": 16.404
+    "start": 24.983,
+    "end": 25.142
    },
    {
     "w": "suelo.",
-    "start": 16.404,
-    "end": 16.683
-   }
-  ]
- },
- {
-  "text": "La cinta, al punto más bajo… y la tensas con el trinquete.",
-  "start": 17.111,
-  "end": 20.32,
-  "words": [
+    "start": 25.142,
+    "end": 25.782
+   },
    {
     "w": "La",
-    "start": 17.111,
-    "end": 17.201
+    "start": 25.782,
+    "end": 25.862
    },
    {
-    "w": "cinta,",
-    "start": 17.201,
-    "end": 17.759
-   },
-   {
-    "w": "al",
-    "start": 17.759,
-    "end": 17.998
-   },
-   {
-    "w": "punto",
-    "start": 17.998,
-    "end": 18.317
-   },
-   {
-    "w": "más",
-    "start": 18.317,
-    "end": 18.476
-   },
-   {
-    "w": "bajo…",
-    "start": 18.476,
-    "end": 19.064
-   },
-   {
-    "w": "y",
-    "start": 19.064,
-    "end": 19.201
-   },
-   {
-    "w": "la",
-    "start": 19.201,
-    "end": 19.338
-   },
-   {
-    "w": "tensas",
-    "start": 19.338,
-    "end": 19.672
-   },
-   {
-    "w": "con",
-    "start": 19.672,
-    "end": 19.752
-   },
-   {
-    "w": "el",
-    "start": 19.752,
-    "end": 19.911
-   },
-   {
-    "w": "trinquete.",
-    "start": 19.911,
-    "end": 20.32
-   }
-  ]
- },
- {
-  "text": "El peso del coche aprieta el triángulo: ya no se mueve.",
-  "start": 20.669,
-  "end": 23.469,
-  "words": [
-   {
-    "w": "El",
-    "start": 20.669,
-    "end": 20.753
-   },
-   {
-    "w": "peso",
-    "start": 20.753,
-    "end": 20.948
+    "w": "cuña",
+    "start": 25.862,
+    "end": 26.182
    },
    {
     "w": "del",
-    "start": 20.948,
-    "end": 21.107
+    "start": 26.182,
+    "end": 26.341
    },
    {
-    "w": "coche",
-    "start": 21.107,
-    "end": 21.426
+    "w": "pie,",
+    "start": 26.341,
+    "end": 26.761
    },
    {
-    "w": "aprieta",
-    "start": 21.426,
-    "end": 21.984
+    "w": "para",
+    "start": 26.761,
+    "end": 26.845
    },
    {
-    "w": "el",
-    "start": 21.984,
-    "end": 22.064
-   },
-   {
-    "w": "triángulo:",
-    "start": 22.064,
-    "end": 22.732
-   },
-   {
-    "w": "ya",
-    "start": 22.732,
-    "end": 22.941
+    "w": "que",
+    "start": 26.845,
+    "end": 26.901
    },
    {
     "w": "no",
-    "start": 22.941,
-    "end": 23.1
+    "start": 26.901,
+    "end": 27.141
+   },
+   {
+    "w": "resbale.",
+    "start": 27.141,
+    "end": 27.59
+   }
+  ]
+ },
+ {
+  "text": "El gancho de la cinta, al punto más bajo. Si no hay dónde, el cuchillo del kit abre un hueco.",
+  "start": 27.96,
+  "end": 33.026,
+  "words": [
+   {
+    "w": "El",
+    "start": 27.96,
+    "end": 28.098
+   },
+   {
+    "w": "gancho",
+    "start": 28.098,
+    "end": 28.42
+   },
+   {
+    "w": "de",
+    "start": 28.42,
+    "end": 28.499
+   },
+   {
+    "w": "la",
+    "start": 28.499,
+    "end": 28.659
+   },
+   {
+    "w": "cinta,",
+    "start": 28.659,
+    "end": 29.059
+   },
+   {
+    "w": "al",
+    "start": 29.059,
+    "end": 29.299
+   },
+   {
+    "w": "punto",
+    "start": 29.299,
+    "end": 29.619
+   },
+   {
+    "w": "más",
+    "start": 29.619,
+    "end": 29.858
+   },
+   {
+    "w": "bajo.",
+    "start": 29.858,
+    "end": 30.568
+   },
+   {
+    "w": "Si",
+    "start": 30.568,
+    "end": 30.644
+   },
+   {
+    "w": "no",
+    "start": 30.644,
+    "end": 30.738
+   },
+   {
+    "w": "hay",
+    "start": 30.738,
+    "end": 30.897
+   },
+   {
+    "w": "dónde,",
+    "start": 30.897,
+    "end": 31.297
+   },
+   {
+    "w": "el",
+    "start": 31.297,
+    "end": 31.457
+   },
+   {
+    "w": "cuchillo",
+    "start": 31.457,
+    "end": 31.857
+   },
+   {
+    "w": "del",
+    "start": 31.857,
+    "end": 32.016
+   },
+   {
+    "w": "kit",
+    "start": 32.016,
+    "end": 32.336
+   },
+   {
+    "w": "abre",
+    "start": 32.336,
+    "end": 32.656
+   },
+   {
+    "w": "un",
+    "start": 32.656,
+    "end": 32.736
+   },
+   {
+    "w": "hueco.",
+    "start": 32.736,
+    "end": 33.026
+   }
+  ]
+ },
+ {
+  "text": "La tensas con el trinquete. La zona verde la protege del escape, que quema.",
+  "start": 33.365,
+  "end": 37.232,
+  "words": [
+   {
+    "w": "La",
+    "start": 33.365,
+    "end": 33.455
+   },
+   {
+    "w": "tensas",
+    "start": 33.455,
+    "end": 34.015
+   },
+   {
+    "w": "con",
+    "start": 34.015,
+    "end": 34.095
+   },
+   {
+    "w": "el",
+    "start": 34.095,
+    "end": 34.175
+   },
+   {
+    "w": "trinquete.",
+    "start": 34.175,
+    "end": 34.894
+   },
+   {
+    "w": "La",
+    "start": 34.894,
+    "end": 34.974
+   },
+   {
+    "w": "zona",
+    "start": 34.974,
+    "end": 35.214
+   },
+   {
+    "w": "verde",
+    "start": 35.214,
+    "end": 35.453
+   },
+   {
+    "w": "la",
+    "start": 35.453,
+    "end": 35.613
+   },
+   {
+    "w": "protege",
+    "start": 35.613,
+    "end": 36.013
+   },
+   {
+    "w": "del",
+    "start": 36.013,
+    "end": 36.253
+   },
+   {
+    "w": "escape,",
+    "start": 36.253,
+    "end": 36.762
+   },
+   {
+    "w": "que",
+    "start": 36.762,
+    "end": 36.892
+   },
+   {
+    "w": "quema.",
+    "start": 36.892,
+    "end": 37.232
+   }
+  ]
+ },
+ {
+  "text": "Y el peso del coche aprieta el triángulo: ya no se mueve.",
+  "start": 37.552,
+  "end": 40.519,
+  "words": [
+   {
+    "w": "Y",
+    "start": 37.552,
+    "end": 37.615
+   },
+   {
+    "w": "el",
+    "start": 37.615,
+    "end": 37.691
+   },
+   {
+    "w": "peso",
+    "start": 37.691,
+    "end": 37.931
+   },
+   {
+    "w": "del",
+    "start": 37.931,
+    "end": 38.091
+   },
+   {
+    "w": "coche",
+    "start": 38.091,
+    "end": 38.411
+   },
+   {
+    "w": "aprieta",
+    "start": 38.411,
+    "end": 38.97
+   },
+   {
+    "w": "el",
+    "start": 38.97,
+    "end": 39.05
+   },
+   {
+    "w": "triángulo:",
+    "start": 39.05,
+    "end": 39.73
+   },
+   {
+    "w": "ya",
+    "start": 39.73,
+    "end": 39.93
+   },
+   {
+    "w": "no",
+    "start": 39.93,
+    "end": 40.089
    },
    {
     "w": "se",
-    "start": 23.1,
-    "end": 23.18
+    "start": 40.089,
+    "end": 40.249
    },
    {
     "w": "mueve.",
-    "start": 23.18,
-    "end": 23.469
+    "start": 40.249,
+    "end": 40.519
    }
   ]
  },
  {
   "text": "Ahora sí… ¡la sacáis!",
-  "start": 23.918,
-  "end": 25.682,
+  "start": 40.909,
+  "end": 42.677,
   "words": [
    {
     "w": "Ahora",
-    "start": 23.918,
-    "end": 24.376
+    "start": 40.909,
+    "end": 41.288
    },
    {
     "w": "sí…",
-    "start": 24.376,
-    "end": 24.974
+    "start": 41.288,
+    "end": 41.958
    },
    {
     "w": "¡la",
-    "start": 24.974,
-    "end": 25.094
+    "start": 41.958,
+    "end": 42.088
    },
    {
     "w": "sacáis!",
-    "start": 25.094,
-    "end": 25.682
+    "start": 42.088,
+    "end": 42.677
    }
   ]
  },
  {
   "text": "¿Tú qué habrías elegido? Comenta tu letra.",
-  "start": 26.17,
-  "end": 28.293,
+  "start": 43.077,
+  "end": 45.315,
   "words": [
    {
     "w": "¿Tú",
-    "start": 26.17,
-    "end": 26.26
+    "start": 43.077,
+    "end": 43.171
    },
    {
     "w": "qué",
-    "start": 26.26,
-    "end": 26.369
+    "start": 43.171,
+    "end": 43.287
    },
    {
     "w": "habrías",
-    "start": 26.369,
-    "end": 26.768
+    "start": 43.287,
+    "end": 43.686
    },
    {
     "w": "elegido?",
-    "start": 26.768,
-    "end": 27.436
+    "start": 43.686,
+    "end": 44.426
    },
    {
     "w": "Comenta",
-    "start": 27.436,
-    "end": 27.884
+    "start": 44.426,
+    "end": 44.885
    },
    {
     "w": "tu",
-    "start": 27.884,
-    "end": 28.043
+    "start": 44.885,
+    "end": 45.045
    },
    {
     "w": "letra.",
-    "start": 28.043,
-    "end": 28.293
+    "start": 45.045,
+    "end": 45.315
    }
   ]
  },
  {
   "text": "¡Mándaselo a quien quiera ser bombero!",
-  "start": 28.621,
-  "end": 30.545,
+  "start": 45.645,
+  "end": 47.583,
   "words": [
    {
     "w": "¡Mándaselo",
-    "start": 28.621,
-    "end": 29.319
+    "start": 45.645,
+    "end": 46.324
    },
    {
     "w": "a",
-    "start": 29.319,
-    "end": 29.399
+    "start": 46.324,
+    "end": 46.404
    },
    {
     "w": "quien",
-    "start": 29.399,
-    "end": 29.638
+    "start": 46.404,
+    "end": 46.644
    },
    {
     "w": "quiera",
-    "start": 29.638,
-    "end": 29.957
+    "start": 46.644,
+    "end": 46.963
    },
    {
     "w": "ser",
-    "start": 29.957,
-    "end": 30.116
+    "start": 46.963,
+    "end": 47.123
    },
    {
     "w": "bombero!",
-    "start": 30.116,
-    "end": 30.545
+    "start": 47.123,
+    "end": 47.583
    }
   ]
  },
  {
   "text": "¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!",
-  "start": 30.914,
-  "end": 34.421,
+  "start": 47.873,
+  "end": 51.509,
   "words": [
    {
     "w": "¿Opositas?",
-    "start": 30.914,
-    "end": 31.741
+    "start": 47.873,
+    "end": 48.752
    },
    {
     "w": "¡Bomberados!",
-    "start": 31.741,
-    "end": 32.947
+    "start": 48.752,
+    "end": 49.951
    },
    {
     "w": "¡Pruébala",
-    "start": 32.947,
-    "end": 33.305
+    "start": 49.951,
+    "end": 50.4
    },
    {
     "w": "gratis",
-    "start": 33.305,
-    "end": 33.784
+    "start": 50.4,
+    "end": 50.8
    },
    {
     "w": "cinco",
-    "start": 33.784,
-    "end": 34.103
+    "start": 50.8,
+    "end": 51.12
    },
    {
     "w": "días!",
-    "start": 34.103,
-    "end": 34.421
+    "start": 51.12,
+    "end": 51.509
    }
   ]
  }

@@ -3920,22 +3920,36 @@ def sfx_track_puntal(path):
     put(_pitch(golpe, 0.55), c["sacas"] + 0.3, -26, 0.35, 0.002, 0.2)
     put(_pitch(wh, 0.6), c["pones"] - 0.1, -28, 0.9, 0.05, 0.2)
     put(_pitch(toque, 1.1), c["sujetas"] - 0.05, -28, 0.5)
+    # la cuenta atrás (5 s): un tic por segundo y la bocina al final
+    cnt0 = c["segundos"] + 0.55
+    for k in range(5):
+        put(_pitch(tic, 1.25 if k < 3 else 1.5), cnt0 + k, -18, 0.12, 0.001, 0.05)
+        put(_pitch(_load("reloj"), 1.0), cnt0 + k + 0.5, -30, 0.1, 0.001, 0.04)
+    put("bocina", cnt0 + 5.0 - 0.02, -21, 0.7, 0.005, 0.2)
     # ¡la C!: acierto de juego
     put("acierto", c["lac"] - 0.06, -18, 0.9)
     put(_pitch(_load("logro"), 1.1), c["lac"] + 0.05, -26, 0.9, 0.01, 0.3)
     # los puntales suben y se alargan; la cuchilla muerde la chapa
-    put(_pitch(wh, 1.4), c["puntales"] - 0.25, -29, 0.5)
-    put(_pitch(llave, 1.1), c["contra"] - 0.05, -24, 0.4)
-    put(_pitch(llave, 1.4), c["contra"] + 0.15, -27, 0.3)
+    put(_pitch(wh, 1.4), c["puntal"] - 0.25, -29, 0.5)
+    put(_pitch(llave, 1.1), c["alarga"] - 0.3, -24, 0.4)
+    put(_pitch(llave, 1.4), c["alarga"] - 0.05, -27, 0.3)
     put(_pitch(golpe, 2.2), c["coche2"] + 0.3, -20, 0.25, 0.002, 0.12)
     put(_pitch(tic, 0.8), c["coche2"] + 0.32, -22, 0.1)
     put(_pitch(golpe, 2.0), c["coche2"] + 0.45, -24, 0.2, 0.002, 0.1)
     put(_pitch(nota, 1.0), c["sesenta"] - 0.03, -28, 0.6)
     # la cinta: el gancho en el punto más bajo y la carraca del trinquete hasta que se tensa
     put(_pitch(toque, 1.3), c["punto"] - 0.05, -27, 0.4)
-    p0, p1 = c["tensas"] - 0.05, c["trinquete"] + 0.45
+    # la cuña del pie; el cuchillo del kit abre el hueco y entra el gancho
+    put(_pitch(toque, 0.9), c["cuna"] - 0.05, -27, 0.4)
+    put(_pitch(llave, 1.8), c["cuchillo"] - 0.1, -25, 0.3)
+    put(_pitch(_load("tension"), 1.7), c["cuchillo"] + 0.3, -29, 0.6, 0.02, 0.15)
+    put(_pitch(tic, 1.4), c["hueco"] + 0.2, -22, 0.1)
+    put(_pitch(llave, 1.3), c["hueco"] + 0.25, -25, 0.3)
+    p0, p1 = c["tensas"] - 0.05, c["trinquete"] + 0.35
     put(_carraca(p1 - p0, 11.0, 5), p0, -22, p1 - p0, 0.01, 0.05)
     put(_cuerda_tensa(0.6), c["trinquete"] + 0.33, -24, 0.6, 0.002, 0.2)
+    # la zona verde: el escape que quema (chisporroteo)
+    put("vapor", c["quema"] - 0.15, -28, 1.0, 0.05, 0.3)
     # el peso aprieta el triángulo: ya no se mueve
     put(_pitch(golpe, 0.5), c["peso"] - 0.02, -24, 0.5, 0.002, 0.3)
     put(_pitch(_load("destello"), 0.9), c["triangulo"] - 0.05, -26, 0.6, 0.002, 0.2)

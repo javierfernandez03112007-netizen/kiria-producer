@@ -1,7 +1,7 @@
 [
  {
-  "w": "Es",
-  "start": 0.08,
+  "w": "¡Es",
+  "start": 0.0,
   "end": 0.32
  },
  {
@@ -10,463 +10,673 @@
   "end": 0.48
  },
  {
-  "w": "madre.",
+  "w": "madre!",
   "start": 0.48,
-  "end": 1.12
+  "end": 1.04
  },
  {
-  "w": "Está",
-  "start": 1.12,
-  "end": 1.44
+  "w": "¡Está",
+  "start": 1.04,
+  "end": 1.36
  },
  {
   "w": "dentro",
-  "start": 1.44,
-  "end": 1.76
+  "start": 1.36,
+  "end": 1.68
  },
  {
   "w": "de",
-  "start": 1.76,
-  "end": 1.84
+  "start": 1.68,
+  "end": 1.76
  },
  {
   "w": "ese",
-  "start": 1.84,
-  "end": 2.08
+  "start": 1.76,
+  "end": 2.0
  },
  {
   "w": "coche",
-  "start": 2.08,
-  "end": 2.4
+  "start": 2.0,
+  "end": 2.32
  },
  {
-  "w": "tumbado.",
-  "start": 2.4,
+  "w": "tumbado",
+  "start": 2.32,
   "end": 3.04
  },
  {
-  "w": "¡Y",
+  "w": "y",
   "start": 3.04,
-  "end": 3.28
+  "end": 3.2
  },
  {
   "w": "se",
-  "start": 3.28,
-  "end": 3.44
+  "start": 3.2,
+  "end": 3.36
  },
  {
   "w": "puede",
-  "start": 3.44,
-  "end": 3.76
+  "start": 3.36,
+  "end": 3.6
  },
  {
   "w": "caer!",
-  "start": 3.76,
-  "end": 4.4
+  "start": 3.6,
+  "end": 4.24
  },
  {
   "w": "¿Qué",
-  "start": 4.4,
-  "end": 4.8
+  "start": 4.24,
+  "end": 4.64
  },
  {
   "w": "haces?",
-  "start": 4.8,
-  "end": 5.44
+  "start": 4.64,
+  "end": 5.2
  },
  {
   "w": "A.",
-  "start": 5.44,
-  "end": 5.84
+  "start": 5.2,
+  "end": 5.6
  },
  {
   "w": "¿La",
-  "start": 5.84,
-  "end": 6.16
+  "start": 5.6,
+  "end": 5.84
  },
  {
   "w": "sacas",
-  "start": 6.16,
-  "end": 6.56
+  "start": 5.84,
+  "end": 6.24
  },
  {
   "w": "ya?",
-  "start": 6.56,
-  "end": 7.12
+  "start": 6.24,
+  "end": 6.72
  },
  {
   "w": "B.",
-  "start": 7.12,
-  "end": 7.52
+  "start": 6.72,
+  "end": 7.12
  },
  {
   "w": "¿Lo",
-  "start": 7.52,
-  "end": 7.76
+  "start": 7.12,
+  "end": 7.36
  },
  {
   "w": "pones",
-  "start": 7.76,
-  "end": 8.16
+  "start": 7.36,
+  "end": 7.76
  },
  {
   "w": "derecho?",
-  "start": 8.16,
-  "end": 8.72
+  "start": 7.76,
+  "end": 8.24
  },
  {
   "w": "O",
-  "start": 8.72,
+  "start": 8.24,
+  "end": 8.48
+ },
+ {
+  "w": "C.",
+  "start": 8.48,
   "end": 8.96
  },
  {
-  "w": "C.",
-  "start": 8.96,
-  "end": 9.44
- },
- {
   "w": "Lo",
-  "start": 9.44,
-  "end": 9.6
+  "start": 8.96,
+  "end": 9.12
  },
  {
   "w": "sujetas",
-  "start": 9.6,
-  "end": 10.16
+  "start": 9.12,
+  "end": 9.76
  },
  {
   "w": "tal",
-  "start": 10.16,
-  "end": 10.32
+  "start": 9.76,
+  "end": 9.92
  },
  {
   "w": "como",
-  "start": 10.32,
-  "end": 10.64
+  "start": 9.92,
+  "end": 10.16
  },
  {
   "w": "está.",
-  "start": 10.64,
+  "start": 10.16,
+  "end": 10.56
+ },
+ {
+  "w": "¡Cinco",
+  "start": 10.56,
   "end": 11.04
  },
  {
-  "w": "¡La",
+  "w": "segundos!",
   "start": 11.04,
-  "end": 11.36
+  "end": 11.68
  },
  {
-  "w": "C.",
-  "start": 11.36,
-  "end": 12.0
+  "w": "¡La",
+  "start": 11.68,
+  "end": 12.08
  },
  {
-  "w": "Primero,",
-  "start": 12.0,
-  "end": 12.56
+  "w": "Co",
+  "start": 12.08,
+  "end": 13.28
  },
  {
   "w": "que",
-  "start": 12.56,
-  "end": 12.8
+  "start": 13.28,
+  "end": 13.44
  },
  {
   "w": "no",
-  "start": 12.8,
-  "end": 12.88
+  "start": 13.44,
+  "end": 13.6
  },
  {
   "w": "se",
-  "start": 12.88,
-  "end": 13.04
+  "start": 13.6,
+  "end": 13.76
  },
  {
   "w": "mueva.",
-  "start": 13.04,
-  "end": 13.68
- },
- {
-  "w": "Dos",
-  "start": 13.68,
-  "end": 13.92
- },
- {
-  "w": "puntales",
-  "start": 13.92,
+  "start": 13.76,
   "end": 14.4
  },
  {
-  "w": "contra",
+  "w": "Con",
   "start": 14.4,
+  "end": 14.56
+ },
+ {
+  "w": "el",
+  "start": 14.56,
   "end": 14.72
  },
  {
-  "w": "el",
+  "w": "puntal.",
   "start": 14.72,
-  "end": 14.8
- },
- {
-  "w": "coche,",
-  "start": 14.8,
-  "end": 15.2
- },
- {
-  "w": "a",
-  "start": 15.2,
   "end": 15.36
  },
  {
-  "w": "unos",
+  "w": "Un",
   "start": 15.36,
-  "end": 15.6
+  "end": 15.52
  },
  {
-  "w": "60",
-  "start": 15.6,
-  "end": 16.0
+  "w": "tubo",
+  "start": 15.52,
+  "end": 15.84
  },
  {
-  "w": "grados",
-  "start": 16.0,
-  "end": 16.32
+  "w": "de",
+  "start": 15.84,
+  "end": 15.92
  },
  {
-  "w": "del",
-  "start": 16.32,
+  "w": "aluminio",
+  "start": 15.92,
+  "end": 16.4
+ },
+ {
+  "w": "que",
+  "start": 16.4,
   "end": 16.48
  },
  {
-  "w": "suelo.",
+  "w": "se",
   "start": 16.48,
-  "end": 17.12
+  "end": 16.64
  },
  {
-  "w": "La",
-  "start": 17.12,
+  "w": "alarga.",
+  "start": 16.64,
   "end": 17.28
  },
  {
-  "w": "cinta,",
+  "w": "Lo",
   "start": 17.28,
-  "end": 17.84
+  "end": 17.44
  },
  {
-  "w": "al",
-  "start": 17.84,
-  "end": 18.08
+  "w": "apoyas",
+  "start": 17.44,
+  "end": 18.0
  },
  {
-  "w": "punto",
-  "start": 18.08,
-  "end": 18.4
+  "w": "contra",
+  "start": 18.0,
+  "end": 18.24
  },
  {
-  "w": "más",
-  "start": 18.4,
-  "end": 18.56
+  "w": "el",
+  "start": 18.24,
+  "end": 18.32
  },
  {
-  "w": "bajo,",
-  "start": 18.56,
+  "w": "coche,",
+  "start": 18.32,
+  "end": 18.8
+ },
+ {
+  "w": "a",
+  "start": 18.8,
   "end": 18.96
  },
  {
-  "w": "y",
+  "w": "unos",
   "start": 18.96,
-  "end": 19.12
+  "end": 19.2
  },
  {
-  "w": "la",
-  "start": 19.12,
-  "end": 19.28
+  "w": "60",
+  "start": 19.2,
+  "end": 19.68
  },
  {
-  "w": "tensas",
-  "start": 19.28,
-  "end": 19.76
- },
- {
-  "w": "con",
-  "start": 19.76,
-  "end": 19.84
- },
- {
-  "w": "el",
-  "start": 19.84,
+  "w": "grados",
+  "start": 19.68,
   "end": 20.0
  },
  {
-  "w": "trinquete.",
-  "start": 20.0,
-  "end": 20.64
- },
- {
-  "w": "El",
-  "start": 20.64,
-  "end": 20.8
- },
- {
-  "w": "peso",
-  "start": 20.8,
-  "end": 21.04
- },
- {
   "w": "del",
-  "start": 21.04,
+  "start": 20.0,
+  "end": 20.16
+ },
+ {
+  "w": "suelo.",
+  "start": 20.16,
+  "end": 20.72
+ },
+ {
+  "w": "La",
+  "start": 20.72,
+  "end": 20.88
+ },
+ {
+  "w": "cuña",
+  "start": 20.88,
   "end": 21.2
  },
  {
-  "w": "coche",
+  "w": "del",
   "start": 21.2,
-  "end": 21.52
+  "end": 21.36
  },
  {
-  "w": "aprieta",
-  "start": 21.52,
-  "end": 22.08
+  "w": "pie",
+  "start": 21.36,
+  "end": 21.68
  },
  {
-  "w": "el",
-  "start": 22.08,
-  "end": 22.16
+  "w": "para",
+  "start": 21.68,
+  "end": 21.84
  },
  {
-  "w": "triángulo.",
-  "start": 22.16,
-  "end": 22.8
- },
- {
-  "w": "Ya",
-  "start": 22.8,
-  "end": 23.04
+  "w": "que",
+  "start": 21.84,
+  "end": 21.92
  },
  {
   "w": "no",
+  "start": 21.92,
+  "end": 22.16
+ },
+ {
+  "w": "resbale.",
+  "start": 22.16,
+  "end": 22.88
+ },
+ {
+  "w": "El",
+  "start": 22.88,
+  "end": 23.04
+ },
+ {
+  "w": "gancho",
   "start": 23.04,
-  "end": 23.2
+  "end": 23.44
  },
  {
-  "w": "se",
-  "start": 23.2,
-  "end": 23.28
- },
- {
-  "w": "mueve.",
-  "start": 23.28,
-  "end": 24.0
- },
- {
-  "w": "Ahora",
-  "start": 24.0,
-  "end": 24.48
- },
- {
-  "w": "sí,",
-  "start": 24.48,
-  "end": 24.96
+  "w": "de",
+  "start": 23.44,
+  "end": 23.52
  },
  {
   "w": "la",
-  "start": 24.96,
-  "end": 25.2
+  "start": 23.52,
+  "end": 23.68
  },
  {
-  "w": "sacáis.",
-  "start": 25.2,
-  "end": 26.0
+  "w": "cinta",
+  "start": 23.68,
+  "end": 24.08
  },
  {
-  "w": "¿Tú",
-  "start": 26.0,
+  "w": "al",
+  "start": 24.08,
+  "end": 24.32
+ },
+ {
+  "w": "punto",
+  "start": 24.32,
+  "end": 24.64
+ },
+ {
+  "w": "más",
+  "start": 24.64,
+  "end": 24.88
+ },
+ {
+  "w": "bajo.",
+  "start": 24.88,
+  "end": 25.44
+ },
+ {
+  "w": "Si",
+  "start": 25.44,
+  "end": 25.6
+ },
+ {
+  "w": "no",
+  "start": 25.6,
+  "end": 25.76
+ },
+ {
+  "w": "hay",
+  "start": 25.76,
+  "end": 25.92
+ },
+ {
+  "w": "donde,",
+  "start": 25.92,
   "end": 26.32
  },
  {
-  "w": "qué",
+  "w": "el",
   "start": 26.32,
   "end": 26.48
  },
  {
-  "w": "habrías",
+  "w": "cuchillo",
   "start": 26.48,
   "end": 26.88
  },
  {
-  "w": "elegido?",
+  "w": "del",
   "start": 26.88,
-  "end": 27.52
+  "end": 27.04
  },
  {
-  "w": "Comenta",
-  "start": 27.52,
-  "end": 28.0
+  "w": "kit",
+  "start": 27.04,
+  "end": 27.36
  },
  {
-  "w": "tu",
-  "start": 28.0,
-  "end": 28.16
+  "w": "abre",
+  "start": 27.36,
+  "end": 27.68
  },
  {
-  "w": "letra.",
-  "start": 28.16,
-  "end": 28.72
+  "w": "un",
+  "start": 27.68,
+  "end": 27.76
  },
  {
-  "w": "Mándaselo",
-  "start": 28.72,
-  "end": 29.44
+  "w": "hueco.",
+  "start": 27.76,
+  "end": 28.24
  },
  {
-  "w": "a",
-  "start": 29.44,
-  "end": 29.52
+  "w": "La",
+  "start": 28.24,
+  "end": 28.48
  },
  {
-  "w": "quien",
-  "start": 29.52,
-  "end": 29.76
+  "w": "tensas",
+  "start": 28.48,
+  "end": 29.04
  },
  {
-  "w": "quiera",
-  "start": 29.76,
-  "end": 30.08
+  "w": "con",
+  "start": 29.04,
+  "end": 29.12
  },
  {
-  "w": "ser",
-  "start": 30.08,
+  "w": "el",
+  "start": 29.12,
+  "end": 29.2
+ },
+ {
+  "w": "trinquete.",
+  "start": 29.2,
+  "end": 29.84
+ },
+ {
+  "w": "La",
+  "start": 29.84,
+  "end": 30.0
+ },
+ {
+  "w": "zona",
+  "start": 30.0,
   "end": 30.24
  },
  {
-  "w": "bombero.",
+  "w": "verde",
   "start": 30.24,
-  "end": 30.88
+  "end": 30.48
  },
  {
-  "w": "Opositas.",
-  "start": 30.88,
+  "w": "la",
+  "start": 30.48,
+  "end": 30.64
+ },
+ {
+  "w": "protege",
+  "start": 30.64,
+  "end": 31.04
+ },
+ {
+  "w": "del",
+  "start": 31.04,
+  "end": 31.28
+ },
+ {
+  "w": "escape,",
+  "start": 31.28,
   "end": 31.76
  },
  {
-  "w": "¡Bomberados!",
+  "w": "que",
   "start": 31.76,
-  "end": 32.88
+  "end": 31.92
  },
  {
-  "w": "Pruébala",
-  "start": 32.88,
+  "w": "quema.",
+  "start": 31.92,
+  "end": 32.48
+ },
+ {
+  "w": "Y",
+  "start": 32.48,
+  "end": 32.64
+ },
+ {
+  "w": "el",
+  "start": 32.64,
+  "end": 32.72
+ },
+ {
+  "w": "peso",
+  "start": 32.72,
+  "end": 32.96
+ },
+ {
+  "w": "del",
+  "start": 32.96,
+  "end": 33.12
+ },
+ {
+  "w": "coche",
+  "start": 33.12,
   "end": 33.44
  },
  {
-  "w": "gratis",
+  "w": "aprieta",
   "start": 33.44,
-  "end": 33.92
+  "end": 34.0
+ },
+ {
+  "w": "el",
+  "start": 34.0,
+  "end": 34.08
+ },
+ {
+  "w": "triángulo.",
+  "start": 34.08,
+  "end": 34.72
+ },
+ {
+  "w": "Ya",
+  "start": 34.72,
+  "end": 34.96
+ },
+ {
+  "w": "no",
+  "start": 34.96,
+  "end": 35.12
+ },
+ {
+  "w": "se",
+  "start": 35.12,
+  "end": 35.28
+ },
+ {
+  "w": "mueve.",
+  "start": 35.28,
+  "end": 35.92
+ },
+ {
+  "w": "Ahora",
+  "start": 35.92,
+  "end": 36.32
+ },
+ {
+  "w": "sí.",
+  "start": 36.32,
+  "end": 36.8
+ },
+ {
+  "w": "¡La",
+  "start": 36.8,
+  "end": 37.12
+ },
+ {
+  "w": "sacáis!",
+  "start": 37.12,
+  "end": 37.84
+ },
+ {
+  "w": "¿Tú",
+  "start": 37.84,
+  "end": 38.16
+ },
+ {
+  "w": "qué",
+  "start": 38.16,
+  "end": 38.32
+ },
+ {
+  "w": "habrías",
+  "start": 38.32,
+  "end": 38.72
+ },
+ {
+  "w": "elegido?",
+  "start": 38.72,
+  "end": 39.36
+ },
+ {
+  "w": "Comenta",
+  "start": 39.36,
+  "end": 39.92
+ },
+ {
+  "w": "tu",
+  "start": 39.92,
+  "end": 40.08
+ },
+ {
+  "w": "letra.",
+  "start": 40.08,
+  "end": 40.56
+ },
+ {
+  "w": "¡Mándaselo",
+  "start": 40.56,
+  "end": 41.36
+ },
+ {
+  "w": "a",
+  "start": 41.36,
+  "end": 41.44
+ },
+ {
+  "w": "quien",
+  "start": 41.44,
+  "end": 41.68
+ },
+ {
+  "w": "quiera",
+  "start": 41.68,
+  "end": 42.0
+ },
+ {
+  "w": "ser",
+  "start": 42.0,
+  "end": 42.16
+ },
+ {
+  "w": "bombero!",
+  "start": 42.16,
+  "end": 42.72
+ },
+ {
+  "w": "¡Opositas,",
+  "start": 42.72,
+  "end": 43.68
+ },
+ {
+  "w": "¡Bomberados!",
+  "start": 43.68,
+  "end": 44.8
+ },
+ {
+  "w": "¡Pruébala",
+  "start": 44.8,
+  "end": 45.44
+ },
+ {
+  "w": "gratis",
+  "start": 45.44,
+  "end": 45.84
  },
  {
   "w": "cinco",
-  "start": 33.92,
-  "end": 34.24
+  "start": 45.84,
+  "end": 46.16
  },
  {
-  "w": "días.",
-  "start": 34.24,
-  "end": 34.691
+  "w": "días!",
+  "start": 46.16,
+  "end": 46.759
  }
 ]

@@ -947,6 +947,7 @@ const HINGE = V(0.62, 0, -SW), DOORL = 1.1;
 const CAR_T = V(0, 0.905, 0.2);                                   // el coche tumbado sobre su lado derecho: los bajos miran a −Z, el techo a +Z
 let car, carR, carPiv, collar, mom, A, B, C, F, truck, amb, beacons = [], ambLights = [], hz = [], sunL;
 let struts = [], ghostCar, ghostM, gStruts = [], gStrutM, momOut, medic, ambDoors = [];
+let lensK = null, lensG = null, LK = {}, LG = {}, greenM;                // las dos lupas: el cuchillo del kit abre el hueco; la zona verde sobre el escape caliente
 const SX = [0.75, -0.72];                                         // los dos puntales (x en el coche): delante, junto al pilar A, y detrás
 const HEAD_L = (x) => V(x, 0.25, -0.62);                          // donde muerde la cabeza: los bajos, junto al estribo de arriba (coordenadas del coche)
 const ANCH_L = (x) => V(x, 0.2, 0.8);                             // el punto más bajo: el estribo de abajo, pegado al suelo
@@ -1133,6 +1134,25 @@ function buildWorld() {
   ];
   for (const q of P0) { const p = makePerson(q); onGround(p.G, q.x, q.z); const to = V(0 - q.x, 0, 0.9 - q.z); p.G.rotation.y = Math.atan2(-to.x, -to.z); world.add(p.G); people.push(p); }
   const stopped = makeCar(0xb8b8b4); stopped.position.set(17, 0, -1.9); stopped.rotation.y = Math.PI; world.add(stopped); hazards.push(...stopped.userData.hz);
+  // las lupas (Javi: «los rayos X flotando encima de su línea»): el cuchillo del kit abre el hueco y entra el gancho; la zona verde de la cinta sobre el escape caliente
+  greenM = new THREE.MeshStandardMaterial({ color: 0x2fbf5a, roughness: 0.6, emissive: 0x1a7a34, emissiveIntensity: 0.35 });
+  const mkLens = () => { const L = new THREE.Group(); L.visible = false; world.add(L);
+    const bk = new THREE.Mesh(new THREE.CircleGeometry(0.5, 72), new THREE.MeshBasicMaterial({ color: 0x0a0e13, transparent: true, opacity: 0.82, depthWrite: false, fog: false })); bk.position.z = -0.12; bk.renderOrder = -1; L.add(bk);
+    const rim = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.012, 8, 120), GLOW(CYAN2, 1.1)); rim.position.z = -0.12; L.add(rim); return L; };
+  lensK = mkLens();
+  LK.plate = new THREE.Mesh(new RoundedBoxGeometry(0.7, 0.4, 0.03, 2, 0.01), new THREE.MeshStandardMaterial({ color: 0x5b6068, metalness: 0.6, roughness: 0.45 })); LK.plate.position.set(0, -0.02, -0.02); lensK.add(LK.plate);
+  LK.slot = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.04, 0.035), new THREE.MeshBasicMaterial({ color: 0x050607 })); LK.slot.position.set(0, 0.02, 0.0); lensK.add(LK.slot);
+  LK.knife = new THREE.Group(); lensK.add(LK.knife);
+  const bladeS = new THREE.Shape(); bladeS.moveTo(-0.022, 0); bladeS.lineTo(0.022, 0); bladeS.lineTo(0.022, 0.2); bladeS.lineTo(0, 0.25); bladeS.lineTo(-0.022, 0.2); bladeS.closePath();
+  const blade = new THREE.Mesh(new THREE.ExtrudeGeometry(bladeS, { depth: 0.008, bevelEnabled: false }), new THREE.MeshStandardMaterial({ color: 0xdfe3e8, metalness: 1, roughness: 0.18 })); blade.rotation.z = Math.PI; blade.position.set(0, 0, -0.004); LK.knife.add(blade);
+  const handle = new THREE.Mesh(new RoundedBoxGeometry(0.06, 0.17, 0.04, 2, 0.015), new THREE.MeshStandardMaterial({ color: 0xe8661a, roughness: 0.5 })); handle.position.set(0, 0.085, 0); LK.knife.add(handle);
+  LK.hook = makeHookJ(new THREE.MeshStandardMaterial({ color: 0xe6e8ec, metalness: 1, roughness: 0.16 })); LK.hook.scale.setScalar(2.6); lensK.add(LK.hook);
+  LK.strap = new THREE.Mesh(new THREE.BoxGeometry(0.085, 0.5, 0.01), strapM); lensK.add(LK.strap);
+  lensG = mkLens();
+  LG.pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.86, 24), new THREE.MeshStandardMaterial({ color: 0x2c2e33, metalness: 0.7, roughness: 0.35, emissive: 0xd81e0a, emissiveIntensity: 0.6 })); LG.pipe.rotation.z = Math.PI / 2; LG.pipe.position.set(0, -0.08, -0.06); lensG.add(LG.pipe);
+  LG.strap = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.86, 0.012), strapM); LG.strap.position.set(0.02, 0.0, 0.04); lensG.add(LG.strap);
+  LG.sleeve = new THREE.Mesh(new RoundedBoxGeometry(0.13, 0.32, 0.035, 2, 0.012), greenM); LG.sleeve.position.set(0.02, -0.07, 0.045); lensG.add(LG.sleeve);
+  for (const L of [lensK, lensG]) L.traverse(o => { if (o.isMesh) { o.castShadow = false; o.receiveShadow = false; } });
   // los tres bomberos: A (de rodillas delante del parabrisas, le habla), B y C (de rodillas, cada uno con su puntal)
   A = makeHero({ noEra: true }); world.add(A.G); onGround(A.G, 0.35, 2.95); A.G.rotation.y = 0.05;
   B = makeHero({ noEra: true, helmet: 0xe6e8ea }); kneel(B, 0.37, false); world.add(B.G); onGround(B.G, SX[0] - 0.43, -0.12, 0.37); B.G.rotation.y = Math.atan2(-0.95, -0.32);
@@ -1245,15 +1265,16 @@ function kneel(R, dy = 0.37, rightDown = true) {
 
 function sagCurve(a, b, sag, n) { const P = []; for (let i = 0; i <= n; i++) { const k = i / n, p = a.clone().lerp(b, k); p.y -= sag * 4 * k * (1 - k); P.push(p); } return P; }
 
-// ------------------------------------------------------------------ tiempos y cámara (un dron que no para, siempre por espacio libre)
+// ------------------------------------------------------------------ tiempos y cámara (v2: cuenta de 5 s antes de elegir y el puntal explicado entero)
 let T = {}, KEYS = null, KH = null;
 function setupTimes() {
   T = { ...CUE, end: END };
   T.fin = T.compartir - 0.25;
-  T.rise0 = T.puntales - 0.25; T.rise1 = T.contra + 0.1;                // los puntales se inclinan hacia el coche…
-  T.ext0 = T.contra - 0.05; T.ext1 = T.coche2 + 0.25;                   // …se alargan…
-  T.bite = T.coche2 + 0.3;                                               // …y la cabeza muerde la chapa
-  T.crank0 = T.tensas - 0.05; T.crank1 = T.trinquete + 0.45;             // el trinquete: la cinta se tensa
+  T.cnt0 = T.segundos + 0.55; T.cnt1 = T.cnt0 + 5.0;                   // la cuenta atrás (5 s): elige tú
+  T.rise0 = T.puntal - 0.25; T.rise1 = T.tubo + 0.3;                    // el puntal se inclina hacia el coche…
+  T.ext0 = T.alarga - 0.35; T.ext1 = T.apoyas + 0.5;                    // …se alarga hasta apoyarse…
+  T.bite = T.coche2 + 0.1;                                               // …y apoya firme
+  T.crank0 = T.tensas - 0.05; T.crank1 = T.trinquete + 0.35;              // el trinquete: la cinta se tensa
   T.still = T.mueve;                                                     // ya no se mueve
   T.out = T.ahora + 0.35;                                                // (fuera: en la ambulancia)
   KEYS = camKeys(); KH = KEYS;
@@ -1267,11 +1288,19 @@ function camKeys() {
     k(T.caer, [3.8, 1.25, 1.12], [-0.06, 1.1, 1.42], 27),
     k(T.haces, [5.4, 4.3, -3.0], [-0.1, 0.45, 0.4], 40),                 // las opciones (el coche arriba, las tarjetas abajo)
     k(T.c + 0.3, [5.6, 4.5, -3.6], [-0.1, 0.45, 0.35], 40),
-    k(T.lac + 0.45, [4.4, 2.2, -3.6], [0.75, 0.75, 0.0], 36),            // ¡la C!: el puntal de delante, con B detrás
-    k(T.contra, [4.1, 1.9, -3.5], [0.75, 0.8, 0.0], 35),
+    k(T.cnt0 + 0.4, [5.3, 4.2, -3.9], [-0.1, 0.45, 0.35], 40),           // la cuenta: el dron sigue, despacio
+    k(T.cnt1, [4.9, 3.8, -4.2], [0.0, 0.5, 0.3], 39),
+    k(T.lac + 0.45, [4.6, 2.4, -3.8], [0.75, 0.75, 0.0], 36),            // ¡la C!: el puntal de delante, con B detrás
+    k(T.primero + 0.6, [4.5, 2.3, -3.7], [0.75, 0.75, 0.0], 36),
+    k(T.puntal, [4.1, 1.9, -3.5], [0.75, 0.8, 0.0], 35),                 // el puntal: un tubo de aluminio que se alarga
+    k(T.alarga, [4.0, 1.8, -3.4], [0.75, 0.85, 0.05], 35),
     k(T.sesenta + 0.2, [3.8, 1.3, -3.1], [0.75, 0.65, 0.0], 34),          // 60° con el suelo
-    k(T.cinta, [3.6, 1.05, -3.0], [0.75, 0.45, 0.05], 34),               // la cinta, al punto más bajo
-    k(T.trinquete + 0.4, [3.5, 1.1, -2.9], [0.8, 0.5, 0.0], 34),         // el trinquete
+    k(T.cuna, [3.5, 0.95, -2.9], [0.75, 0.15, -0.3], 32),                // la cuña del pie
+    k(T.resbale + 0.3, [3.5, 0.95, -2.85], [0.75, 0.2, -0.25], 32),
+    k(T.punto, [3.6, 1.05, -3.0], [0.75, 0.3, 0.15], 34),                // el gancho, al punto más bajo
+    k(T.cuchillo + 0.3, [3.9, 1.5, -3.4], [0.8, 0.6, 0.0], 36),          // la lupa: el cuchillo del kit abre el hueco
+    k(T.tensas, [3.5, 1.1, -2.9], [0.8, 0.5, 0.0], 34),                  // el trinquete
+    k(T.verde + 0.3, [3.9, 1.5, -3.4], [0.6, 0.6, 0.0], 36),             // la lupa: la zona verde sobre el escape
     k(T.peso + 0.2, [5.6, 2.3, -5.0], [0.0, 0.8, 0.0], 38),              // el triángulo y el peso del coche
     k(T.mueve + 0.2, [5.2, 2.4, -5.3], [0.0, 0.8, 0.0], 38),
     k(T.sacais - 0.3, [4.6, 1.9, 1.1], [8.0, 1.0, 1.1], 34),             // ¡la sacáis!: en la ambulancia, a salvo
@@ -1395,7 +1424,7 @@ function update(t) {
     ghostCar.rotation.x = th; ghostM.opacity = 0.4 * Math.max(gA, gB) * (0.85 + 0.15 * Math.sin(t * 9));
   }
   // la C: los dos puntales fantasma, en su sitio
-  const gC = sm(T.c - 0.1, T.c + 0.1, t) * (1 - sm(T.lac + 0.05, T.lac + 0.35, t));
+  const gC = sm(T.c - 0.1, T.c + 0.1, t) * (1 - sm(T.cnt0 - 0.3, T.cnt0, t));
   gStruts.forEach((m, j) => { m.visible = gC > 0.01 && window.COVER_T === undefined; if (m.visible) { const F = FOOT(SX[j]), H = car.localToWorld(HEAD_L(SX[j])); between(m, F, H); } });
   gStrutM.opacity = 0.55 * gC * (0.8 + 0.2 * Math.sin(t * 8));
   // los puntales: de pie en manos de B y C → se inclinan → se alargan → la cuchilla muerde → el trinquete tensa la cinta
@@ -1422,7 +1451,26 @@ function update(t) {
     const pts = sagCurve(p0, anc.clone().addScaledVector(up, 0.06), sag, S.strap.length).map(p => { if (p.y < 0.012) p.y = 0.012; return p; });
     for (let k = 0; k < S.strap.length; k++) between(S.strap[k], pts[k], pts[k + 1]);
     S.state = st;
+    if (greenM && S.strap[S.strap.length - 1].material !== greenM) for (let k = S.strap.length - 3; k < S.strap.length; k++) S.strap[k].material = greenM;
   });
+  // las lupas, flotando delante del puntal de delante: el cuchillo del kit abre el hueco y entra el gancho; la zona verde sobre el escape
+  const LP = V(1.62, 1.04, -0.88), lkA = sm(T.cuchillo - 0.45, T.cuchillo - 0.15, t) * (1 - sm(T.tensas - 0.35, T.tensas - 0.1, t));
+  lensK.visible = lkA > 0.003;
+  if (lensK.visible) {
+    lensK.position.copy(LP); lensK.lookAt(cam.position); lensK.scale.setScalar(0.74 * Math.max(0.001, mx(0.2, 1, bk(cl(lkA)))));
+    const k1 = e3(pr(t, T.cuchillo - 0.15, 0.45)), k2 = e3(pr(t, T.cuchillo + 0.3, T.kit + 0.25 - T.cuchillo - 0.3)), k3 = e3(pr(t, T.kit + 0.3, 0.45));
+    const kx = mx(0.09, -0.09, k2), kp = lerpV(V(0.3, 0.36, 0.26), V(0.09, 0.07, 0.03), k1).add(V(kx - 0.09, 0, 0).multiplyScalar(k1 > 0.99 ? 1 : 0)).add(V(0.25, 0.3, 0.22).multiplyScalar(k3));
+    LK.knife.position.copy(kp); LK.knife.rotation.set(-0.35, 0, -0.5 + 0.2 * k2); LK.knife.visible = k3 < 0.98;
+    LK.slot.scale.set(Math.max(0.02, k2), 1, 1); LK.slot.position.x = 0.09 - 0.09 * k2;
+    const kh = e3(pr(t, T.hueco - 0.25, 0.6));
+    LK.hook.visible = LK.strap.visible = kh > 0.001;
+    LK.hook.position.set(-0.07, mx(-0.42, 0.03, kh), mx(0.22, 0.04, kh)); LK.hook.rotation.set(0, Math.PI / 2, 0);
+    between(LK.strap, LK.hook.position.clone().add(V(0, -0.0, 0)), LK.hook.position.clone().add(V(0.0, -0.5, 0.05)));
+  }
+  const lgA = sm(T.verde - 0.25, T.verde + 0.05, t) * (1 - sm(T.peso - 0.35, T.peso - 0.1, t));
+  lensG.visible = lgA > 0.003;
+  if (lensG.visible) { lensG.position.copy(LP); lensG.lookAt(cam.position); lensG.scale.setScalar(0.74 * Math.max(0.001, mx(0.2, 1, bk(cl(lgA)))));
+    LG.pipe.material.emissiveIntensity = 0.45 + 0.2 * Math.sin(t * 7) + 0.6 * pulse(t, T.quema, 0.25); greenM.emissiveIntensity = 0.35 + 0.9 * pulse(t, T.verde + 0.1, 0.3); }
   // B y C: las manos en su puntal (y una en la palanca del trinquete mientras tensan)
   [[B, struts[0]], [C, struts[1]]].forEach(([R, S]) => {
     const st = S.state, d = st.dir, F = st.F, off = V(-st.side * 0.05, 0, 0);
@@ -1498,7 +1546,7 @@ function hud(t) {
   g.restore();
 }
 function step(t) {
-  const S = [[T.primero - 0.1, T.cinta - 0.15, 'PASO 1/3 · QUE NO SE MUEVA'], [T.cinta - 0.15, T.peso - 0.15, 'PASO 2/3 · LA CINTA, TENSA'], [T.peso - 0.15, T.ahora - 0.05, 'PASO 3/3 · EL TRIÁNGULO']];
+  const S = [[T.primero - 0.1, T.gancho - 0.15, 'PASO 1/4 · EL PUNTAL, CONTRA EL COCHE'], [T.gancho - 0.15, T.tensas - 0.15, 'PASO 2/4 · LA CINTA, AL PUNTO MÁS BAJO'], [T.tensas - 0.15, T.peso - 0.15, 'PASO 3/4 · TENSA CON EL TRINQUETE'], [T.peso - 0.15, T.ahora - 0.05, 'PASO 4/4 · EL TRIÁNGULO']];
   for (const [t0, t1, s] of S) {
     const a = sm(t0, t0 + 0.2, t) * (1 - sm(t1 - 0.15, t1, t)); if (a <= 0.01) continue;
     g.save(); g.globalAlpha = a; g.translate(540, 1580); const k = 0.85 + 0.15 * bk(pr(t, t0, 0.35)); g.scale(k, k);
@@ -1519,8 +1567,8 @@ async function overlay(t) {
     arrow2(top, top.clone().add(V(0, 0, -0.55 * r)), RED2, ca, 9);
     label(540, 1440, '¡SE PUEDE CAER!', RED2, ca, { px: 76, icon: 'warn', s: pop(T.caer) }); }
   // las tres opciones (tarjetas de juego) y el cursor
-  const cA = T.a - 0.12, cB = T.b - 0.12, cC = T.c - 0.12, sel = T.lac - 0.05, hide = T.primero - 0.05;
-  const cur = t < cB ? 'A' : t < cC ? 'B' : 'C', chosen = t >= sel;
+  const cA = T.a - 0.12, cB = T.b - 0.12, cC = T.c - 0.12, sel = T.lac - 0.05, hide = T.primero + 0.75;
+  const cur = t < cB ? 'A' : t < cC ? 'B' : t < T.cnt0 ? 'C' : ['A', 'B', 'C'][Math.floor((t - T.cnt0) / 0.42) % 3], chosen = t >= sel;
   const ap = (t0) => sm(t0, t0 + 0.18, t) * (1 - sm(hide, hide + 0.3, t));
   if (window.COVER_T !== undefined) {           // portada: las tres opciones, sin cursor (no se destripa la respuesta)
     card(1110, 'A', 'LA SACAS YA', 1, 0); card(1265, 'B', 'LO PONES DERECHO', 1, 0); card(1420, 'C', 'LO SUJETAS TAL COMO ESTÁ', 1, 0);
@@ -1529,11 +1577,21 @@ async function overlay(t) {
   card(1110, 'A', 'LA SACAS YA', ap(cA), chosen ? 3 : cur === 'A' ? 1 : 0);
   card(1265, 'B', 'LO PONES DERECHO', ap(cB), chosen ? 3 : cur === 'B' ? 1 : 0);
   card(1420, 'C', 'LO SUJETAS TAL COMO ESTÁ', ap(cC), chosen ? 2 : cur === 'C' && t > cC ? 1 : 0);
-  const ok = win(sel, T.primero + 0.25);
+  // la cuenta atrás: 5, 4, 3, 2, 1 (elige tú)
+  const ka = sm(T.cnt0 - 0.1, T.cnt0 + 0.1, t) * (1 - sm(T.cnt1 - 0.05, T.cnt1 + 0.2, t));
+  if (ka > 0.01) {
+    const el = cl((t - T.cnt0) / 5), n = Math.max(1, 5 - Math.floor((t - T.cnt0) + 1e-6)), fr = (t - T.cnt0) % 1, pp = 1 + 0.22 * Math.exp(-fr * 7);
+    g.save(); g.globalAlpha = ka; g.translate(540, 730);
+    g.beginPath(); g.arc(0, 0, 132, 0, 7); g.fillStyle = 'rgba(8,10,14,0.88)'; g.fill();
+    g.beginPath(); g.arc(0, 0, 132, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (1 - el), false); g.strokeStyle = n <= 2 ? RED2 : GOLD2; g.lineWidth = 14; g.lineCap = 'round'; g.shadowColor = g.strokeStyle; g.shadowBlur = 24; g.stroke(); g.shadowBlur = 0;
+    g.scale(pp, pp); txt(String(n), 0, 70, 200, n <= 2 ? '#FF6B5E' : '#FFFFFF', 400, 'center', 'Bebas'); g.restore();
+    g.save(); g.globalAlpha = ka; txt('ELIGE: A, B O C', 540, 560, 62, '#FFD65C', 400, 'center', 'Bebas'); g.restore();
+  }
+  const ok = win(sel, T.primero + 0.6);
   if (ok > 0.01) stamp('¡CORRECTA!', 860, GREEN2, ok, 130, -0.05);
   // paso 1: el ángulo (60° con el suelo) en el puntal de delante
   const S0 = struts[0].state;
-  const aa = win(T.sesenta - 0.1, T.cinta - 0.1);
+  const aa = win(T.sesenta - 0.1, T.cuna - 0.15);
   if (aa > 0.01 && S0) {
     const F = S0.F, R0 = 0.42, pts = [];
     for (let k = 0; k <= 24; k++) { const an = (k / 24) * Math.atan2(S0.dir.y, S0.dir.z); pts.push(proj(F.clone().add(V(0, Math.sin(an) * R0, Math.cos(an) * R0)))); }
@@ -1544,11 +1602,35 @@ async function overlay(t) {
   }
   // paso 2: la cinta al punto más bajo y el trinquete
   const anc0 = car.localToWorld(ANCH_L(SX[0]));
-  ring(anc0, CYAN2, win(T.punto - 0.1, T.tensas), T.punto, t, 32);
-  tag(anc0, 'PUNTO MÁS BAJO', CYAN2, win(T.punto - 0.1, T.tensas), 0, 0, { px: 56, at: [330, 1420], s: pop(T.punto) });
+  ring(anc0, CYAN2, win(T.gancho - 0.1, T.donde - 0.1), T.gancho, t, 32);
+  tag(anc0, 'PUNTO MÁS BAJO', CYAN2, win(T.punto - 0.1, T.donde - 0.1), 0, 0, { px: 56, sub: 'AQUÍ VA EL GANCHO DE LA CINTA', at: [330, 1420], s: pop(T.punto) });
+  // el puntal: un tubo de aluminio que se alarga (y la flecha mientras se alarga)
+  const S0s = struts[0].state;
+  if (S0s) {
+    const mid = S0s.F.clone().addScaledVector(S0s.dir, 1.05);
+    tag(mid, 'PUNTAL', CYAN2, win(T.puntal - 0.1, T.apoyas - 0.1), 0, 0, { px: 62, sub: 'TUBO DE ALUMINIO QUE SE ALARGA', at: [330, 1000], s: pop(T.puntal) });
+    const ea = win(T.alarga - 0.3, T.apoyas + 0.3);
+    if (ea > 0.01) { const a0 = S0s.F.clone().addScaledVector(S0s.dir, 1.15), a1 = S0s.F.clone().addScaledVector(S0s.dir, S0s.L + 0.08); arrow2(a0, a1, GREEN2, ea, 9); }
+    // la cuña del pie
+    const wp = struts[0].wedge.getWorldPosition(V()).add(V(0, 0.05, 0));
+    ring(wp, GOLD2, win(T.cuna - 0.1, T.gancho - 0.15), T.cuna, t, 30);
+    tag(wp, 'CUÑA', GOLD2, win(T.cuna - 0.1, T.gancho - 0.15), 0, 0, { px: 62, sub: 'PARA QUE EL PIE NO RESBALE', at: [700, 1430], s: pop(T.cuna) });
+  }
+  // las lupas: su cono hasta el sitio de verdad y su rótulo
+  const lensCone = (L, P, la) => { const pc = proj(L.position), rgt = V(1, 0, 0).applyQuaternion(cam.quaternion), pe = proj(L.position.clone().add(rgt.multiplyScalar(0.5 * L.scale.x)));
+    const R = Math.hypot(pe.x - pc.x, pe.y - pc.y), p0 = proj(P), dx = p0.x - pc.x, dy = p0.y - pc.y, dd = Math.hypot(dx, dy);
+    if (!pc.ok || !p0.ok || dd <= R + 20) return; const th = Math.atan2(dy, dx), ph = Math.acos(R / dd), t1 = [pc.x + R * Math.cos(th + ph), pc.y + R * Math.sin(th + ph)], t2 = [pc.x + R * Math.cos(th - ph), pc.y + R * Math.sin(th - ph)];
+    g.save(); g.globalAlpha = la * 0.9; g.beginPath(); g.moveTo(p0.x, p0.y); g.lineTo(t1[0], t1[1]); g.arc(pc.x, pc.y, R, th + ph, th - ph + Math.PI * 2, false); g.closePath(); g.fillStyle = 'rgba(72,214,255,0.10)'; g.fill();
+    g.beginPath(); g.moveTo(t1[0], t1[1]); g.lineTo(p0.x, p0.y); g.lineTo(t2[0], t2[1]); g.strokeStyle = CYAN2; g.lineWidth = 3; g.setLineDash([14, 10]); g.stroke(); g.setLineDash([]);
+    g.beginPath(); g.arc(p0.x, p0.y, 16, 0, 7); g.lineWidth = 5; g.stroke(); g.restore(); return { pc, R }; };
+  if (lensK.visible) { const la = cl(sm(T.cuchillo - 0.45, T.cuchillo - 0.15, t) * 1.2) * (1 - sm(T.tensas - 0.35, T.tensas - 0.1, t)); lensCone(lensK, anc0, la);
+    label(540, 1440, 'CUCHILLO DEL KIT', ORANGE2, la, { px: 64, sub: 'ABRE EL HUECO PARA EL GANCHO', s: pop(T.cuchillo) }); }
+  if (lensG.visible) { const la = cl(sm(T.verde - 0.25, T.verde + 0.05, t) * 1.2) * (1 - sm(T.peso - 0.35, T.peso - 0.1, t)); const r = lensCone(lensG, car.localToWorld(V(-0.4, 0.19, 0.28)), la);
+    label(540, 1440, 'ZONA VERDE', GREEN2, la, { px: 64, sub: 'PROTEGE LA CINTA DEL ESCAPE, QUE QUEMA', s: pop(T.verde) });
+    if (r) { const py = proj(lensG.localToWorld(V(0, -0.08, 0))); g.save(); g.globalAlpha = la * 0.95; g.strokeStyle = '#FF4A2E'; g.lineWidth = 6; g.lineCap = 'round'; g.shadowColor = '#FF4A2E'; g.shadowBlur = 12; for (const w of [-0.62, -0.32, 0.32, 0.62]) { g.beginPath(); for (let k = 0; k <= 14; k++) { const yy = py.y - r.R * 0.16 - k * r.R * 0.045, xx = py.x + w * r.R + r.R * 0.05 * Math.sin(k * 0.9 + t * 10 + w * 5); k ? g.lineTo(xx, yy) : g.moveTo(xx, yy); } g.stroke(); } g.restore(); } }
   const rp = struts[0].rat.getWorldPosition(V());
-  tag(rp, 'TRINQUETE', ORANGE2, win(T.trinquete - 0.08, T.peso - 0.15), 0, 0, { px: 58, at: [760, 1100], s: pop(T.trinquete) });
-  label(540, 1430, 'TENSA', GREEN2, win(T.trinquete + 0.35, T.peso - 0.15), { px: 72, icon: 'ok', s: pop(T.trinquete + 0.35) });
+  tag(rp, 'TRINQUETE', ORANGE2, win(T.trinquete - 0.08, T.verde - 0.3), 0, 0, { px: 58, at: [760, 1100], s: pop(T.trinquete) });
+  label(540, 1250, 'TENSA', GREEN2, win(T.trinquete + 0.3, T.verde + 0.25), { px: 72, icon: 'ok', s: pop(T.trinquete + 0.3) });
   // paso 3: el peso del coche aprieta el triángulo (puntal, cinta y coche)
   const pa = win(T.peso - 0.1, T.ahora - 0.05);
   if (pa > 0.01) { const cg = car.localToWorld(V(-0.1, 0.75, -0.1)); arrow2(cg, cg.clone().add(V(0, -0.0, -0.75)), ORANGE2, pa, 10);
