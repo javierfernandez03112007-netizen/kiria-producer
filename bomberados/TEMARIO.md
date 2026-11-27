@@ -288,3 +288,25 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
 - ¿Para qué sirve el rope ratchet? (asegurar cargas, p. ej. la puerta de un vehículo) · ¿Cómo se usa? (se colocan los dos
   ganchos y se tira del extremo suelto de la cuerda) · ¿Qué impide que la cuerda vuelva? (el trinquete).
 
+## 26 nov 2026 · Puntal de estabilización (tipo STABFAST) · vehículo sobre un lateral
+
+### Fuente — ficha de Élite Bomberos que pone Adrián Luna (Notion, fila «SÁBADO 28», PUBLICIDAD BOMBERADOS)
+Para el uso, además, el manual de puntales de Bombers de València y el del fabricante (`projects/bomberados_puntal/FUENTES.md`).
+- «Se emplea como sistema de estabilización. Debe formar un ángulo de unos 60° con el suelo. En la cinta posee una zona
+  (verde) protectora para las zonas calientes (como el tubo de escape). El pack trae un cuchillo para abrir hueco para el
+  gancho. Posee una cuña de seguridad apoyada en el suelo para evitar deslizamientos.»
+- Uso (manual del fabricante): el gancho de la cinta, en el punto más bajo posible del vehículo; la cinta se tensa con el
+  trinquete del propio puntal; el sistema aprovecha la masa del vehículo (forma de triángulo). El fabricante da «30–50°»
+  sin que el extracto diga respecto a qué: CONFIRMAR con Adrián (su ficha dice 60° con el suelo).
+- El vehículo se estabiliza en la posición en la que se encuentra (apuntes de Élite del viernes 20): sobre su lateral es la
+  posición más inestable.
+
+### Vídeos hechos con esto
+- «Salva a tu madre» (`projects/bomberados_puntal/`, el primero con el formato de videojuego de Javi): tu madre en un coche
+  tumbado; ¿A, la sacas ya? ¿B, lo pones derecho? ¿C, lo sujetas tal como está? → C: dos puntales a unos 60°, la cinta al
+  punto más bajo con el trinquete y el peso del coche aprieta el triángulo. Venta de Bomberados.
+
+### Preguntas de examen que salen de aquí
+- ¿Qué ángulo debe formar el puntal con el suelo? (unos 60°, según la ficha) · ¿Dónde se engancha la cinta? (en el punto
+  más bajo del vehículo) · ¿Para qué es la zona protectora de la cinta? (zonas calientes, como el tubo de escape) · ¿Para qué
+  sirve la cuña? (evitar que el pie del puntal deslice) · ¿En qué posición se estabiliza el vehículo? (tal como se encuentra).

@@ -1389,14 +1389,14 @@ function update(t) {
   mom.visible = t < T.out; momOut.visible = medic.G.visible = t >= T.out;
   // las opciones que NO son: A, el coche se mueve al sacarla (se te viene encima); B, lo pones derecho
   const gA = sm(T.a - 0.1, T.a + 0.1, t) * (1 - sm(T.b - 0.3, T.b - 0.1, t)), gB = sm(T.b - 0.1, T.b + 0.1, t) * (1 - sm(T.c - 0.3, T.c - 0.1, t));
-  ghostCar.visible = gA + gB > 0.01;
+  ghostCar.visible = gA + gB > 0.01 && window.COVER_T === undefined;
   if (ghostCar.visible) {
     const th = gA > 0.01 ? Math.PI / 2 - 0.42 * e3(pr(t, T.sacas - 0.25, 0.55)) : Math.PI / 2 - (Math.PI / 2) * e3(pr(t, T.pones - 0.15, T.derecho + 0.45 - T.pones));
     ghostCar.rotation.x = th; ghostM.opacity = 0.4 * Math.max(gA, gB) * (0.85 + 0.15 * Math.sin(t * 9));
   }
   // la C: los dos puntales fantasma, en su sitio
   const gC = sm(T.c - 0.1, T.c + 0.1, t) * (1 - sm(T.lac + 0.05, T.lac + 0.35, t));
-  gStruts.forEach((m, j) => { m.visible = gC > 0.01; if (m.visible) { const F = FOOT(SX[j]), H = car.localToWorld(HEAD_L(SX[j])); between(m, F, H); } });
+  gStruts.forEach((m, j) => { m.visible = gC > 0.01 && window.COVER_T === undefined; if (m.visible) { const F = FOOT(SX[j]), H = car.localToWorld(HEAD_L(SX[j])); between(m, F, H); } });
   gStrutM.opacity = 0.55 * gC * (0.8 + 0.2 * Math.sin(t * 8));
   // los puntales: de pie en manos de B y C → se inclinan → se alargan → la cuchilla muerde → el trinquete tensa la cinta
   const ck = crankK(t);
@@ -1513,8 +1513,8 @@ async function overlay(t) {
   const pop = t0 => 1 + 0.16 * pulse(t, t0 + 0.12, 0.18);
   // tu madre, dentro, y el coche que se puede caer
   const mh = mom.userData.head.getWorldPosition(V());
-  tag(mh, 'MAMÁ', PINK2, win(T.madre - 0.05, T.haces - 0.1), 0, 0, { px: 62, at: [300, 980], s: pop(T.madre) });
-  const ca = win(T.caer - 0.15, T.haces - 0.05);
+  if (window.COVER_T === undefined) tag(mh, 'MAMÁ', PINK2, win(T.madre - 0.05, T.haces - 0.1), 0, 0, { px: 62, at: [300, 980], s: pop(T.madre) });
+  const ca = window.COVER_T === undefined ? win(T.caer - 0.15, T.haces - 0.05) : 0;
   if (ca > 0.01) { const r = rockAng(t) > 0 ? 1 : -1, top = car.localToWorld(V(-0.3, 0.9, -0.9));
     arrow2(top, top.clone().add(V(0, 0, -0.55 * r)), RED2, ca, 9);
     label(540, 1440, '¡SE PUEDE CAER!', RED2, ca, { px: 76, icon: 'warn', s: pop(T.caer) }); }
@@ -1522,6 +1522,10 @@ async function overlay(t) {
   const cA = T.a - 0.12, cB = T.b - 0.12, cC = T.c - 0.12, sel = T.lac - 0.05, hide = T.primero - 0.05;
   const cur = t < cB ? 'A' : t < cC ? 'B' : 'C', chosen = t >= sel;
   const ap = (t0) => sm(t0, t0 + 0.18, t) * (1 - sm(hide, hide + 0.3, t));
+  if (window.COVER_T !== undefined) {           // portada: las tres opciones, sin cursor (no se destripa la respuesta)
+    card(1110, 'A', 'LA SACAS YA', 1, 0); card(1265, 'B', 'LO PONES DERECHO', 1, 0); card(1420, 'C', 'LO SUJETAS TAL COMO ESTÁ', 1, 0);
+    g.setTransform(1, 0, 0, 1, 0, 0); return;
+  }
   card(1110, 'A', 'LA SACAS YA', ap(cA), chosen ? 3 : cur === 'A' ? 1 : 0);
   card(1265, 'B', 'LO PONES DERECHO', ap(cB), chosen ? 3 : cur === 'B' ? 1 : 0);
   card(1420, 'C', 'LO SUJETAS TAL COMO ESTÁ', ap(cC), chosen ? 2 : cur === 'C' && t > cC ? 1 : 0);
