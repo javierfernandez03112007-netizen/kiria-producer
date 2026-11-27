@@ -1290,18 +1290,22 @@ async function buildScene() {
   const LS = i => (WORDS.find(w => w.li === i) || { start: 0 }).start, LE = i => { const ws = WORDS.filter(w => w.li === i); return ws.length ? ws[ws.length - 1].end : 0; };
   const find = (w, li, exact, k = 1) => WORDS.filter(x => x.li === li && (exact ? x.n === norm(w) : x.n.startsWith(norm(w))))[k - 1];
   const W_ = (w, li, d = 0, exact = false, k = 1) => { const v = find(w, li, exact, k); if (!v) console.error('ERROR sin palabra ' + w + '_' + li); return v ? v.start - 0.03 + d : LS(li) + d; };
-  const IDX = Array.from({ length: 11 }, (_, i) => i);
+  const IDX = Array.from({ length: 15 }, (_, i) => i);
   TL = { end: END, L: IDX.map(LS), E: IDX.map(LE),
-    anoche: W_('anoche', 1), cuatro: W_('cuatro', 1), candidatos: W_('candidatos', 1), cronometraron: W_('cronometraron', 1), arbitros: W_('arbitros', 1), baloncesto: W_('baloncesto', 1),
-    siguieron: W_('siguieron', 2), diez: W_('diez', 2), millones: W_('millones', 2), personas: W_('personas', 2), cinco: W_('cinco', 2), bloques: W_('bloques', 2), vivienda: W_('vivienda', 2), inmigracion: W_('inmigracion', 2),
-    cuatro3: W_('cuatro', 3), ataques: W_('ataques', 3), uno: W_('uno', 3, 0, true),
-    feijoo4: W_('feijoo', 4), colau4: W_('colau', 4), usted: W_('usted', 4), calladita: W_('calladita', 4), sanchez4: W_('sanchez', 4), machista: W_('machista', 4), feijoo4b: W_('feijoo', 4, 0, false, 2), reprochaba: W_('reprochaba', 4), paiporta: W_('paiporta', 4),
-    abascal5: W_('abascal', 5), buitre: W_('buitre', 5), sanchez5: W_('sanchez', 5), fondos: W_('fondos', 5),
-    sanchez6: W_('sanchez', 6), feijoo6: W_('feijoo', 6), abascal6: W_('abascal', 6), unico: W_('unico', 6), mili: W_('mili', 6), bandera: W_('bandera', 6),
-    colau7: W_('colau', 7), abascal7: W_('abascal', 7), verguenza: W_('verguenza', 7), insultos: W_('insultos', 7),
-    dato: W_('dato', 8), sanchez8: W_('sanchez', 8), colau8: W_('colau', 8), tutearon: W_('tutearon', 8), feijoo8: W_('feijoo', 8), abascal8: W_('abascal', 8), apenas: W_('apenas', 8),
-    gano: W_('gano', 9), ley: W_('ley', 9), encuestas: W_('encuestas', 9), domingo: W_('domingo', 9), decides: W_('decides', 9),
-    manda: W_('mandaselo', 10) };
+    cuatro: W_('cuatro', 1), candidatos: W_('candidatos', 1), baloncesto: W_('baloncesto', 1),
+    siguieron: W_('siguieron', 2), diez: W_('diez', 2), millones: W_('millones', 2), cinco: W_('cinco', 2), inmigracion: W_('inmigracion', 2),
+    empezo: W_('empezo', 3), colau3: W_('colau', 3), condenar: W_('condenar', 3), cuarenta: W_('cuarenta', 3), machistas: W_('machistas', 3), sanchez3: W_('sanchez', 3), feijoo3: W_('feijoo', 3), sumaron: W_('sumaron', 3), abascal3: W_('abascal', 3),
+    ataques: W_('ataques', 4), dos4: W_('dos', 4, 0, true), cada: W_('cada', 4),
+    feijoo5: W_('feijoo', 5), sanchez5: W_('sanchez', 5), pizza: W_('pizza', 5), cojonuda: W_('cojonuda', 5), tuiteo: W_('tuiteo', 5), precios: W_('precios', 5),
+    colau6: W_('colau', 6), feijoo6: W_('feijoo', 6), gestion: W_('gestion', 6), mantiene: W_('mantiene', 6), mazon: W_('mazon', 6),
+    feijoo7: W_('feijoo', 7), colau7: W_('colau', 7), usted: W_('usted', 7), calladita: W_('calladita', 7), sanchez7: W_('sanchez', 7), machista: W_('machista', 7), feijoo7b: W_('feijoo', 7, 0, false, 2), paiporta: W_('paiporta', 7),
+    abascal8: W_('abascal', 8), buitre: W_('buitre', 8), sanchez8: W_('sanchez', 8), fondos: W_('fondos', 8), banda: W_('banda', 8), guarros: W_('guarros', 8), primarias: W_('primarias', 8),
+    sanchez9: W_('sanchez', 9), gobernar: W_('gobernar', 9), motosierra: W_('motosierra', 9),
+    feijoo10: W_('feijoo', 10), abascal10: W_('abascal', 10), unico: W_('unico', 10), mili: W_('mili', 10), bandera: W_('bandera', 10), abascal10b: W_('abascal', 10, 0, false, 2), servicio: W_('servicio', 10),
+    colau11: W_('colau', 11), abascal11: W_('abascal', 11), verguenza: W_('verguenza', 11), insultos: W_('insultos', 11),
+    dato: W_('dato', 12), sanchez12: W_('sanchez', 12), colau12: W_('colau', 12), tutearon: W_('tutearon', 12), feijoo12: W_('feijoo', 12), abascal12: W_('abascal', 12), apenas: W_('apenas', 12),
+    gano: W_('gano', 13), ley: W_('ley', 13), encuestas: W_('encuestas', 13), domingo: W_('domingo', 13), decides: W_('decides', 13),
+    manda: W_('mandaselo', 14) };
   const G = new THREE.Group(); scene.add(G); S.G = G; T.lampGlow = new THREE.MeshStandardMaterial({ color: 0xfff1cf, emissive: 0xffd89a, emissiveIntensity: 1.6 }); T.glassDark = M.glass;
   S.depth = {}; for (const id of ORDER) S.depth[id] = await depthData('cand_' + id + '_d.jpg');
   buildSet(G); S.env.visible = false;
@@ -1326,17 +1330,20 @@ function buildCam() { const T = TL, K0 = [[SB.X, SB.Y - 0.02, SB.Z + 3.95], [SB.
   const pair = (cx, d, y = 2.95) => [[cx, y, SB.Z + d], [cx, y + 0.14, SB.Z], 50];
   CK = [
     [0, ...K0],                                                                                              // el reloj del marcador, de cerca: corre
-    [T.candidatos + 0.2, [0.0, 3.4, 3.4], [0.0, 3.32, -0.6], 50],                                           // se aleja: los relojes de posesión encima de las pantallas
+    [T.candidatos + 0.2, [0.0, 3.4, 3.4], [0.0, 3.32, -0.6], 50],                                            // se aleja: los relojes de posesión encima de las pantallas
     [T.E[1] + 0.35, ...WIDE],                                                                                // los cuatro atriles
-    [T.millones + 0.2, ...pair(0.0, 6.2, 3.1)],                                                             // audiencia y cinco bloques: el marcador, más cerca
-    [T.E[2], ...pair(0.0, 5.5, 3.25)],
-    [T.E[3], [0.0, 2.35, 7.3], [0.0, 2.5, 0.0], 50],                                                         // cuatro ataques, uno de cada uno
-    [T.usted + 0.2, [0.0, 2.3, 8.3], [0.0, 2.45, 0.0], 50], [T.E[4], [0.0, 2.32, 8.1], [0.0, 2.47, 0.0], 50],                               // 1 · Feijóo → Colau (los dos extremos: plano abierto)
-    [T.buitre + 0.2, ...pair(0.0, 5.8)], [T.E[5], ...pair(0.05, 5.6)],                                         // 2 · Abascal → Sánchez (vecinos)
-    [T.feijoo6 + 0.2, ...pair(-0.28, 6.4, 2.85)], [T.E[6], ...pair(-0.24, 6.2, 2.85)],                         // 3 · Sánchez → Feijóo y Abascal
-    [T.abascal7 + 0.2, ...pair(0.24, 6.2)], [T.E[7], ...pair(0.22, 6.05)],                                      // 4 · Colau → Abascal
-    [T.tutearon + 0.2, ...pair(0.0, 6.7, 2.85)], [T.E[8], ...pair(0.0, 6.5, 2.87)],                                // el dato: los dos arcos
-    [T.encuestas + 0.2, ...pair(0.0, 6.0, 3.0)], [T.E[9], ...pair(0.0, 5.8, 3.02)],                           // ¿quién ganó?: el marcador y las cuatro pantallas
+    [T.millones + 0.2, ...pair(0.0, 6.2, 3.1)], [T.E[2], ...pair(0.0, 5.5, 3.25)],                            // audiencia y cinco bloques: el marcador, más cerca
+    [T.colau3 + 0.4, ...pair(0.3, 7.0, 2.9)], [T.sanchez3 - 0.1, ...pair(0.22, 7.2, 2.9)], [T.E[3], [0.0, 2.35, 8.1], [0.0, 2.5, 0.0], 50],   // el arranque: Colau; luego los cuatro
+    [T.E[4], ...pair(0.0, 6.0, 3.0)],                                                                         // ocho ataques, dos de cada uno
+    [T.pizza + 0.2, ...pair(-0.4, 6.9, 2.9)], [T.E[5], ...pair(-0.36, 6.7, 2.9)],                              // 1 · Feijóo → Sánchez (la pizza)
+    [T.gestion + 0.2, [0.0, 2.3, 8.3], [0.0, 2.45, 0.0], 50], [T.E[6], [0.0, 2.32, 8.15], [0.0, 2.47, 0.0], 50],     // 2 · Colau → Feijóo (los extremos: plano abierto)
+    [T.usted + 0.2, [0.0, 2.34, 8.0], [0.0, 2.49, 0.0], 50], [T.E[7], [0.0, 2.36, 7.85], [0.0, 2.5, 0.0], 50],         // 3 · Feijóo → Colau
+    [T.buitre + 0.2, ...pair(0.0, 5.8)], [T.banda, ...pair(0.04, 5.6)], [T.E[8], ...pair(0.0, 5.5)],          // 4 y 5 · Abascal → Sánchez
+    [T.gobernar + 0.2, ...pair(-0.3, 6.6, 2.85)], [T.E[9], ...pair(-0.26, 6.45, 2.85)],                        // 6 · Sánchez → PP y Vox
+    [T.feijoo10 + 0.2, ...pair(-0.24, 6.3, 2.85)], [T.E[10], ...pair(-0.2, 6.15, 2.85)],                       // 7 · Sánchez → Feijóo y Abascal
+    [T.abascal11 + 0.2, ...pair(0.4, 6.9, 2.9)], [T.E[11], ...pair(0.36, 6.75, 2.9)],                          // 8 · Colau → Abascal
+    [T.tutearon + 0.2, ...pair(0.0, 6.7, 2.85)], [T.E[12], ...pair(0.0, 6.5, 2.87)],                           // el dato: los dos arcos
+    [T.encuestas + 0.2, ...pair(0.0, 6.0, 3.0)], [T.E[13], ...pair(0.0, 5.8, 3.02)],                           // ¿quién ganó?: el marcador y las cuatro pantallas
     [T.manda + 0.7, [0.0, 3.4, 3.4], [0.0, 3.32, -0.6], 50],
     [END, ...K0],
   ];
@@ -1375,13 +1382,18 @@ function sbDraw(st) { const key = JSON.stringify(st); if (key === S.sbKey) retur
     B.forEach((b, i) => { const y = 215 + i * 142, on = i < st.nb, cur = i === st.nb - 1; c.fillStyle = cur ? '#2a2006' : '#0d1118'; rr(c, 60, y - 58, 1240, 116, 20); c.fill();
       c.textAlign = 'left'; c.fillStyle = on ? (cur ? GOLDC : '#ffffff') : '#3a4250'; c.font = '900 84px Inter'; c.fillText((i + 1) + '  ' + b, 100, y + 4); });
     ledText(c, mmss(st.clock), 1660, 520, 230, LED); c.textAlign = 'center'; c.fillStyle = '#c9d5f2'; c.font = '900 60px Inter'; c.fillText('POR BLOQUE', 1660, 700); }
-  else if (M === 'atk') { c.textAlign = 'center'; const who = st.who, a = st.a, b = [].concat(st.b);
-    c.font = '900 104px Inter'; const parts = [[SIG[a], PARTY[a].css], ['  →  ', '#c9d5f2']].concat(b.map((o, i) => [(i ? ' Y ' : '') + SIG[o], i ? '#c9d5f2' : PARTY[o].css]));
-    if (b.length > 1) parts.splice(2, parts.length - 2, [SIG[b[0]], PARTY[b[0]].css], [' Y ', '#c9d5f2'], [SIG[b[1]], PARTY[b[1]].css]);
+  else if (M === 'atk') { c.textAlign = 'center'; const a = st.a, b = [].concat(st.b), NM = st.party ? PARTY : null, nm = o => NM ? PARTY[o].sig : SIG[o];
+    c.font = '900 104px Inter'; const parts = [[SIG[a], PARTY[a].css], ['  →  ', '#c9d5f2'], [nm(b[0]), PARTY[b[0]].css]];
+    if (b.length > 1) parts.push([' Y ', '#c9d5f2'], [nm(b[1]), PARTY[b[1]].css]);
     let tw = parts.reduce((s, [t]) => s + c.measureText(t).width, 0), x = W / 2 - tw / 2; c.textAlign = 'left';
     for (const [t, col] of parts) { c.fillStyle = col; c.fillText(t, x, 230); x += c.measureText(t).width; }
     c.textAlign = 'center'; (st.q || []).forEach((q, i) => { const n = st.q.length, big = st.qbig ?? 150; c.fillStyle = i === 0 && st.qc0 ? st.qc0 : '#ffffff'; fitFont(c, q, 900, i === 0 ? big : (st.qsmall ?? 96), W - 160); c.fillText(q, W / 2, 470 + (i - (n - 1) / 2) * (n > 2 ? 150 : 190)); });
     if (st.note) { c.fillStyle = '#c9d5f2'; fitFont(c, st.note, 900, 66, W - 200); c.fillText(st.note, W / 2, 790); } }
+  else if (M === 'open') { c.textAlign = 'center'; c.fillStyle = PARTY.fa.css; c.font = '900 92px Inter'; c.fillText('COLAU PIDE CONDENAR', W / 2, 225);
+    c.fillStyle = '#ffffff'; c.font = '900 210px Inter'; c.fillText('49', W / 2 - 560, 440); c.textAlign = 'left'; c.font = '900 84px Inter'; c.fillText('ASESINATOS', W / 2 - 400, 395); c.fillText('MACHISTAS DEL AÑO', W / 2 - 400, 490);
+    const row = (y, lab, ids, k) => { if (!k) return; c.globalAlpha = k; c.font = '900 84px Inter'; const parts = [[lab, '#c9d5f2']].concat(ids.flatMap((o, i) => (i ? [[' · ', '#c9d5f2']] : []).concat([[SIG[o], PARTY[o].css]]))); let x = W / 2 - parts.reduce((s2, [t2]) => s2 + c.measureText(t2).width, 0) / 2;
+      c.textAlign = 'left'; for (const [t2, cl] of parts) { c.fillStyle = cl; c.fillText(t2, x, y); x += c.measureText(t2).width; } c.globalAlpha = 1; };
+    row(660, 'SE SUMARON: ', ['psoe', 'pp'], st.k1); row(800, 'NO SE SUMÓ: ', ['vox'], st.k2); }
   else if (M === 'dato') { const row = (y, a, b, txt, col, k) => { c.globalAlpha = k; c.textAlign = 'left'; c.font = '900 92px Inter'; const parts = [[SIG[a], PARTY[a].css], [' · ', '#c9d5f2'], [SIG[b], PARTY[b].css]]; let x = W / 2 - parts.reduce((s2, [t2]) => s2 + c.measureText(t2).width, 0) / 2;
       for (const [t2, cl] of parts) { c.fillStyle = cl; c.fillText(t2, x, y); x += c.measureText(t2).width; } c.textAlign = 'center'; c.fillStyle = col; c.font = '900 130px Inter'; c.fillText(txt, W / 2, y + 135); c.globalAlpha = 1; };
     row(300, 'psoe', 'fa', 'SE TUTEARON', GOLDC, st.k1); row(610, 'pp', 'vox', 'APENAS SE HABLARON', '#9aa4b4', st.k2); }
@@ -1398,7 +1410,7 @@ function beam(a, b, col, r = 0.02, dz = 0.25, op = 1) { const A = S.top[a], B = 
   const m = new THREE.MeshBasicMaterial({ color: col, toneMapped: false, transparent: op < 1, opacity: op }); const mesh = new THREE.Mesh(geo, m); mesh.visible = false; S.G.add(mesh);
   const tip = new THREE.Mesh(new THREE.ConeGeometry(r * 3.2, r * 9, 14), m); tip.visible = false; S.G.add(tip); const end = curve.getPoint(1), tan = curve.getTangent(1);
   tip.position.copy(end); tip.quaternion.setFromUnitVectors(_v(0, 1, 0), tan); return { mesh, tip, n: geo.index.count, curve }; }
-function beamAt(B, t, a, b, tip = true) { const k = clamp((t - a) / 0.45), vis = t > a && t < b; B.mesh.visible = vis; B.tip.visible = tip && vis && k >= 1; if (!vis) return;
+function beamAt(B, t, wins, tip = true) { let a = -1, b = -1; for (const w of wins) if (t > w[0] && t < w[1]) { a = w[0]; b = w[1]; } const k = clamp((t - a) / 0.45), vis = a >= 0; B.mesh.visible = vis; B.tip.visible = tip && vis && k >= 1; if (!vis) return;
   B.mesh.geometry.setDrawRange(0, Math.max(6, Math.round(B.n * sm5(k) / 6) * 6)); const p = 0.75 + 0.25 * Math.sin(t * 9); B.mesh.material.color.setScalar ? 0 : 0; B.mesh.scale.setScalar(1); B.tip.scale.setScalar(Math.max(0.01, pop(t, a + 0.45, 0.3))); }
 function buildHook(G) { S.G = G;
   // el marcador colgado: caja, cara (lienzo), dos cables al techo
@@ -1411,17 +1423,21 @@ function buildHook(G) { S.G = G;
     const q = new THREE.Group(); q.position.set(cx, bb.max.y + 0.14, cz + 0.06); q.rotation.y = lectRy(i); G.add(q); q.add(box(0.56, 0.26, 0.12, new THREE.MeshBasicMaterial({ color: 0x14181f }), 0, 0, -0.065));
     const c = cnv(512, 224), t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; const f = new THREE.Mesh(new THREE.PlaneGeometry(0.52, 0.227), new THREE.MeshBasicMaterial({ map: t, toneMapped: false })); f.position.z = 0.002; q.add(f);
     S.shot.push({ g: q, c, t, key: '' }); S.top[o] = _v(cx, BEAM_Y, cz + 0.1); });
-  const GC = 0xffd66a; S.bm = { a1: beam('pp', 'fa', GC), a2: beam('vox', 'psoe', GC), a3a: beam('psoe', 'pp', GC), a3b: beam('psoe', 'vox', GC), a4: beam('fa', 'vox', GC),
+  const GC = 0xffd66a; S.bm = { pp_psoe: beam('pp', 'psoe', GC), fa_pp: beam('fa', 'pp', GC), pp_fa: beam('pp', 'fa', GC), vox_psoe: beam('vox', 'psoe', GC), psoe_pp: beam('psoe', 'pp', GC), psoe_vox: beam('psoe', 'vox', GC), fa_vox: beam('fa', 'vox', GC),
     d1: beam('psoe', 'fa', GC, 0.02, 0.12), d2: beam('pp', 'vox', 0x8a93a6, 0.012, 0.38, 0.55) };
   S.tu = badge('TÚ', 0.2, GOLDC, '#12100a'); S.tu.position.copy(S.bm.d1.curve.getPoint(0.62)).add(_v(0, -0.12, 0.05)); S.tu.visible = false; G.add(S.tu);
   S.dots = badge('…', 0.16, '#8a93a6', '#12100a'); S.dots.position.copy(S.bm.d2.curve.getPoint(0.5)).add(_v(0, -0.1, 0.05)); S.dots.visible = false; G.add(S.dots); }
 function buildProps(G) { return {}; }
 // ---- quién está «en pista» en cada momento (brillo de su pantalla) y los ataques
 function atkList() { const T = TL; return [
-  { a: 'pp', b: 'fa', t0: T.L[4] - 0.1, t1: T.L[5] - 0.1, bm: ['a1'] },
-  { a: 'vox', b: 'psoe', t0: T.L[5] - 0.1, t1: T.L[6] - 0.1, bm: ['a2'] },
-  { a: 'psoe', b: ['pp', 'vox'], t0: T.L[6] - 0.1, t1: T.L[7] - 0.1, bm: ['a3a', 'a3b'] },
-  { a: 'fa', b: 'vox', t0: T.L[7] - 0.1, t1: T.L[8] - 0.1, bm: ['a4'] }]; }
+  { a: 'fa', b: [], t0: T.L[3] - 0.1, t1: T.L[4] - 0.1 },
+  { a: 'pp', b: 'psoe', t0: T.L[5] - 0.1, t1: T.L[6] - 0.1 },
+  { a: 'fa', b: 'pp', t0: T.L[6] - 0.1, t1: T.L[7] - 0.1 },
+  { a: 'pp', b: 'fa', t0: T.L[7] - 0.1, t1: T.L[8] - 0.1 },
+  { a: 'vox', b: 'psoe', t0: T.L[8] - 0.1, t1: T.L[9] - 0.1 },
+  { a: 'psoe', b: ['pp', 'vox'], t0: T.L[9] - 0.1, t1: T.L[10] - 0.1 },
+  { a: 'psoe', b: ['pp', 'vox'], t0: T.L[10] - 0.1, t1: T.L[11] - 0.1 },
+  { a: 'fa', b: 'vox', t0: T.L[11] - 0.1, t1: T.L[12] - 0.1 }]; }
 function totK(o, t) { const A = atkList(); for (const x of A) if (t > x.t0 - 0.15 && t < x.t1 - 0.05) { const on = x.a === o || [].concat(x.b).includes(o); return on ? 1 : 0.38; } return 0.9; }
 function chapterAt(t, st) { const T = TL, A = atkList();
   for (const o of ORDER) S.tot[o].mat.color.setScalar(SCREEN_I * totK(o, t));
@@ -1430,34 +1446,39 @@ function chapterAt(t, st) { const T = TL, A = atkList();
   // relojes de posesión: 5:00 para todos; en cada ataque corre el del que habla; en el «¿quién ganó?», interrogaciones; al final, otra vez 5:00
   const shot = ORDER.map(() => 300); let act = -1;
   A.forEach(x => { const i = ORDER.indexOf(x.a); if (t > x.t0) shot[i] = 300 - Math.min(t, x.t1) + x.t0; if (t > x.t0 && t < x.t1) act = i; });
-  const lit = t < T.L[3] ? ORDER.map((o, i) => t > T.cuatro - 0.1 + i * 0.12) : ORDER.map(() => true), qm = t > T.gano - 0.1 && t < T.manda + 0.3, reset = t > T.manda + 0.3;
+  const lit = ORDER.map((o, i) => t > T.cuatro - 0.1 + i * 0.12), qm = t > T.gano - 0.1 && t < T.manda + 0.3, reset = t > T.manda + 0.3;
   ORDER.forEach((o, i) => { shotDraw(i, { s: reset ? 300 : Math.round(shot[i]), on: (i === act || (t < T.L[2] && lit[i]) || qm) && !reset ? 1 : 0, q: qm ? 1 : 0 }); S.shot[i].g.scale.setScalar(Math.max(0.01, t < T.L[2] ? pop(t, T.cuatro - 0.1 + i * 0.12, 0.3) || 0.001 : 1)); });
   if (t < T.cuatro - 0.1) ORDER.forEach((o, i) => { S.shot[i].g.scale.setScalar(0.001); });
   // el marcador
-  let s;
+  let s; const after = (w, d = 0.12) => t > w - d;
   if (t < T.L[2] - 0.15 || t > T.manda + 0.3) s = { mode: 'clock', head: t < T.L[2] ? 'BLOQUE 1 · CRONO: ÁRBITROS DE BALONCESTO' : 'BLOQUE 1', clock: 1200 - Math.max(0, Math.floor((t > T.manda ? 0 : t) - 0.4)) };
   else if (t < T.cinco - 0.15) { const k = sm5(seg(t, T.siguieron - 0.1, T.millones + 0.3)); s = { mode: 'aud', head: 'AUDIENCIA', aud: (k * 10.2).toFixed(1).replace('.', ',') + ' M' }; }
   else if (t < T.L[3] - 0.1) { const nb = 1 + Math.min(4, Math.floor(seg(t, T.cinco, T.inmigracion + 0.1) * 5)); s = { mode: 'blocks', head: '5 BLOQUES', nb, clock: 1200 - Math.floor((t - T.cinco) * 60) % 1200 }; }
-  else if (t < T.L[4] - 0.1) { const n = Math.min(4, 1 + Math.floor(seg(t, T.ataques - 0.1, T.E[3]) * 4)); s = { mode: 'clock', head: n + (n > 1 ? ' ATAQUES' : ' ATAQUE') + ' · UNO DE CADA UNO', clock: 1200 }; s.mode = 'atk'; s.a = ORDER[n - 1]; s.b = []; s.q = ['4 ATAQUES', 'UNO DE CADA UNO']; s.qc0 = GOLDC; s.who = 0; s.b = ORDER.filter((o, i) => i !== n - 1).slice(0, 0); }
-  else if (t < T.L[5] - 0.1) { const two = t > T.sanchez4 - 0.12; s = { mode: 'atk', head: 'ATAQUE 1 DE 4', a: 'pp', b: 'fa', q: two ? ['SÁNCHEZ: «ES MACHISTA»', 'FEIJÓO: REPROCHE POR PAIPORTA'] : ['«Y USTED, CALLADITA»'], qbig: two ? 132 : 190, qsmall: 132, qc0: two ? '#ffffff' : GOLDC }; if (two && t < T.feijoo4b - 0.12) s.q = ['SÁNCHEZ: «ES MACHISTA»']; }
-  else if (t < T.L[6] - 0.1) s = { mode: 'atk', head: 'ATAQUE 2 DE 4', a: 'vox', b: 'psoe', q: ['«BUITRE»'], qbig: 230, qc0: GOLDC, note: t > T.fondos - 0.12 ? 'HABLANDO DE FONDOS BUITRE' : '' };
-  else if (t < T.L[7] - 0.1) s = { mode: 'atk', head: 'ATAQUE 3 DE 4', a: 'psoe', b: ['pp', 'vox'], q: t > T.unico - 0.12 ? ['EL ÚNICO DE LOS TRES', 'QUE HIZO LA MILI Y JURÓ BANDERA'] : [], qbig: 140, qsmall: 104, qc0: GOLDC };
-  else if (t < T.L[8] - 0.1) s = { mode: 'atk', head: 'ATAQUE 4 DE 4', a: 'fa', b: 'vox', q: t > T.verguenza - 0.12 ? ['«UNA VERGÜENZA»', 'NORMALIZAR ESOS INSULTOS'] : [], qbig: 170, qsmall: 100, qc0: GOLDC };
-  else if (t < T.L[9] - 0.1) s = { mode: 'dato', head: 'UN DATO', k1: t > T.sanchez8 - 0.12 ? 1 : 0, k2: t > T.feijoo8 - 0.12 ? 1 : 0 };
-  else s = { mode: 'end', head: '29N · DOMINGO', k1: t > T.ley - 0.12 ? 1 : 0, k2: t > T.decides - 0.12 ? 1 : 0 };
-  if (s.mode === 'atk' && s.q && s.q[0] === '4 ATAQUES') { s = { mode: 'atk', head: 'UNO DE CADA UNO', a: null, b: [], q: ['4 ATAQUES'], qbig: 260, qc0: GOLDC }; }
+  else if (t < T.L[4] - 0.1) s = { mode: 'open', head: 'EL ARRANQUE', k1: after(T.sanchez3) ? 1 : 0, k2: after(T.abascal3) ? 1 : 0 };
+  else if (t < T.L[5] - 0.1) s = { mode: 'big', head: 'DOS DE CADA UNO', big: '8 ATAQUES', sub: 'DOS DE CADA UNO' };
+  else if (t < T.L[6] - 0.1) s = { mode: 'atk', head: 'ATAQUE 1 DE 8', a: 'pp', b: 'psoe', q: after(T.pizza, 0.2) ? ['«PIZZA COJONUDA»'] : [], qbig: 200, qc0: GOLDC, note: after(T.tuiteo) ? 'SU TUIT DE 2010 · LO QUE HAN SUBIDO LOS PRECIOS' : '' };
+  else if (t < T.L[7] - 0.1) s = { mode: 'atk', head: 'ATAQUE 2 DE 8', a: 'fa', b: 'pp', q: after(T.gestion, 0.35) ? ['¿«BUENA GESTIÓN»?'] : [], qbig: 180, qc0: GOLDC, note: after(T.mantiene) ? 'SI EL PP MANTIENE AFORADO A MAZÓN' : '' };
+  else if (t < T.L[8] - 0.1) { const two = after(T.sanchez7); s = { mode: 'atk', head: 'ATAQUE 3 DE 8', a: 'pp', b: 'fa', q: two ? (after(T.feijoo7b) ? ['SÁNCHEZ: «ES MACHISTA»', 'FEIJÓO: REPROCHE POR PAIPORTA'] : ['SÁNCHEZ: «ES MACHISTA»']) : ['«Y USTED, CALLADITA»'], qbig: two ? 132 : 190, qsmall: 132, qc0: two ? '#ffffff' : GOLDC }; }
+  else if (t < T.L[9] - 0.1) { const g = after(T.banda); s = { mode: 'atk', head: g ? 'ATAQUE 5 DE 8' : 'ATAQUE 4 DE 8', a: 'vox', b: 'psoe', q: g ? ['«BANDA DE GUARROS»'] : ['«BUITRE»'], qbig: g ? 170 : 230, qc0: GOLDC, note: g ? (after(T.primarias, 0.6) ? 'QUIENES LE ACOMPAÑARON EN LAS PRIMARIAS DE 2017' : '') : (after(T.fondos) ? 'HABLANDO DE FONDOS BUITRE' : '') }; }
+  else if (t < T.L[10] - 0.1) s = { mode: 'atk', head: 'ATAQUE 6 DE 8', a: 'psoe', b: ['pp', 'vox'], party: 1, q: after(T.motosierra, 0.3) ? ['«LA MOTOSIERRA»', '112.000 MILLONES AL AÑO'] : [], qbig: 190, qsmall: 104, qc0: GOLDC };
+  else if (t < T.L[11] - 0.1) { const r = after(T.abascal10b); s = { mode: 'atk', head: 'ATAQUE 7 DE 8', a: 'psoe', b: ['pp', 'vox'], q: r ? ['ABASCAL: «MÁS SERVICIO MILITAR»'] : (after(T.unico) ? ['EL ÚNICO DE LOS TRES', 'QUE HIZO LA MILI Y JURÓ BANDERA'] : []), qbig: r ? 120 : 140, qsmall: 104, qc0: r ? '#ffffff' : GOLDC }; }
+  else if (t < T.L[12] - 0.1) s = { mode: 'atk', head: 'ATAQUE 8 DE 8', a: 'fa', b: 'vox', q: after(T.verguenza) ? ['«UNA VERGÜENZA»', 'NORMALIZAR ESOS INSULTOS'] : [], qbig: 170, qsmall: 100, qc0: GOLDC };
+  else if (t < T.L[13] - 0.1) s = { mode: 'dato', head: 'UN DATO', k1: after(T.sanchez12) ? 1 : 0, k2: after(T.feijoo12) ? 1 : 0 };
+  else s = { mode: 'end', head: '29N · DOMINGO', k1: after(T.ley) ? 1 : 0, k2: after(T.decides) ? 1 : 0 };
   sbDrawSafe(s);
   S.sb.position.y = SB.Y + 0.01 * Math.sin((t > 30 ? t - END : t) * 1.1);
   // los haces: cada ataque, del que habla al atacado; en el dato, Sánchez–Colau (se tutearon) y Feijóo–Abascal (apenas se hablaron)
-  const W_ = { a1: [T.usted - 0.25, T.L[5] - 0.15], a2: [T.buitre - 0.25, T.L[6] - 0.15], a3a: [T.feijoo6 - 0.1, T.L[7] - 0.15], a3b: [T.abascal6 - 0.1, T.L[7] - 0.15], a4: [T.abascal7 - 0.1, T.L[8] - 0.15],
-    d1: [T.tutearon - 0.35, T.L[9] - 0.2], d2: [T.feijoo8 - 0.05, T.L[9] - 0.2] };
-  for (const k in S.bm) beamAt(S.bm[k], t, W_[k][0], W_[k][1], k[0] === 'a');
-  S.tu.visible = t > W_.d1[0] + 0.45 && t < W_.d1[1]; if (S.tu.visible) S.tu.scale.setScalar(Math.max(0.01, pop(t, W_.d1[0] + 0.45, 0.3)));
-  S.dots.visible = t > W_.d2[0] + 0.45 && t < W_.d2[1]; if (S.dots.visible) S.dots.scale.setScalar(Math.max(0.01, pop(t, W_.d2[0] + 0.45, 0.3)));
+  const W_ = { pp_psoe: [[T.pizza - 0.35, T.L[6] - 0.15]], fa_pp: [[T.gestion - 0.35, T.L[7] - 0.15]], pp_fa: [[T.usted - 0.25, T.L[8] - 0.15]], vox_psoe: [[T.buitre - 0.25, T.banda - 0.3], [T.banda - 0.2, T.L[9] - 0.15]],
+    psoe_pp: [[T.gobernar - 0.1, T.L[10] - 0.15], [T.feijoo10 - 0.1, T.L[11] - 0.15]], psoe_vox: [[T.gobernar, T.L[10] - 0.15], [T.abascal10 - 0.1, T.L[11] - 0.15]], fa_vox: [[T.abascal11 - 0.1, T.L[12] - 0.15]],
+    d1: [[T.tutearon - 0.35, T.L[13] - 0.2]], d2: [[T.feijoo12 - 0.05, T.L[13] - 0.2]] };
+  for (const k in S.bm) beamAt(S.bm[k], t, W_[k], k[0] !== 'd');
+  const d1 = W_.d1[0], d2 = W_.d2[0];
+  S.tu.visible = t > d1[0] + 0.45 && t < d1[1]; if (S.tu.visible) S.tu.scale.setScalar(Math.max(0.01, pop(t, d1[0] + 0.45, 0.3)));
+  S.dots.visible = t > d2[0] + 0.45 && t < d2[1]; if (S.dots.visible) S.dots.scale.setScalar(Math.max(0.01, pop(t, d2[0] + 0.45, 0.3)));
 }
-function sbDrawSafe(s) { if (s.mode === 'atk' && !s.a) { const c = S.sbC.getContext('2d'); const key = JSON.stringify(s); if (key === S.sbKey) return; S.sbKey = key; c.fillStyle = '#05070a'; c.fillRect(0, 0, CW, CHh); c.strokeStyle = '#1d2430'; c.lineWidth = 10; c.strokeRect(5, 5, CW - 10, CHh - 10);
+function sbDrawSafe(s) { if (s.mode === 'big') { const c = S.sbC.getContext('2d'); const key = JSON.stringify(s); if (key === S.sbKey) return; S.sbKey = key; c.fillStyle = '#05070a'; c.fillRect(0, 0, CW, CHh); c.strokeStyle = '#1d2430'; c.lineWidth = 10; c.strokeRect(5, 5, CW - 10, CHh - 10);
     c.fillStyle = '#0d1118'; c.fillRect(10, 10, CW - 20, 130); c.textBaseline = 'middle'; c.fillStyle = '#ffffff'; c.textAlign = 'left'; c.font = '900 76px Inter'; c.fillText('DEBATE 29N', 46, 76); c.textAlign = 'right'; c.fillStyle = AMB; c.font = '900 66px Inter'; c.fillText(s.head, CW - 46, 76);
-    c.textAlign = 'center'; c.fillStyle = GOLDC; c.font = '900 260px Inter'; c.fillText('4 ATAQUES', CW / 2, 450); c.fillStyle = '#c9d5f2'; c.font = '900 96px Inter'; c.fillText('UNO DE CADA UNO', CW / 2, 700); S.sbT.needsUpdate = true; return; }
+    c.textAlign = 'center'; c.fillStyle = GOLDC; c.font = '900 260px Inter'; c.fillText(s.big, CW / 2, 450); c.fillStyle = '#c9d5f2'; c.font = '900 96px Inter'; c.fillText(s.sub, CW / 2, 700); S.sbT.needsUpdate = true; return; }
   sbDraw(s); }
 // ---------------------------------------------------------------- RÓTULOS: en este vídeo los nombres van en el frente de cada atril (apellido y siglas); no hay etiquetas del montaje.
 function buildHudPlan() { HFONT = 'Inter'; HW = [700, 500]; }

@@ -46,15 +46,19 @@ def at(word, k=1, line=None):
 GO, R, WH, GR, CY, AM = "#FFD76A", "#FF5A4E", "#EEF2F6", "#7CF0A9", "#5CF2E6", "#FFB547"
 PPC, PSC, VXC, FAC = "#4FA8F0", "#FF4A55", "#7ADB45", "#FF7A45"          # los colores de cada partido, algo aclarados para que se lean
 _K = {1: {"anoche": CY, "cuatro": CY, "árbitros": GO, "baloncesto": GO},
-      2: {"diez": CY, "millones": CY, "cinco": CY, "bloques": CY},
-      3: {"cuatro": GO, "ataques": GO, "uno": CY, "cada": CY},
-      4: {"feijóo": PPC, "colau": FAC, "usted": GO, "calladita": GO, "sánchez": PSC, "machista": CY, "paiporta": CY},
-      5: {"abascal": VXC, "buitre": GO, "sánchez": PSC, "fondos": CY},
-      6: {"sánchez": PSC, "feijóo": PPC, "abascal": VXC, "único": GO, "mili": GO, "juró": GO, "bandera": GO},
-      7: {"colau": FAC, "abascal": VXC, "vergüenza": GO, "insultos": CY},
-      8: {"dato": CY, "sánchez": PSC, "colau": FAC, "tutearon": GO, "feijóo": PPC, "abascal": VXC, "apenas": CY},
-      9: {"ganó": GO, "ley": CY, "encuestas": CY, "domingo": GO, "decides": GO, "tú": GO},
-      10: {"mándaselo": GR, "debate": GO}}
+      2: {"diez": CY, "millones": CY, "cinco": CY, "bloques": CY, "veinte": CY, "minutos": CY},
+      3: {"colau": FAC, "condenar": GO, "cuarenta": CY, "nueve": CY, "asesinatos": CY, "machistas": CY, "sánchez": PSC, "feijóo": PPC, "sumaron": GO, "abascal": VXC},
+      4: {"ataques": GO, "dos": CY, "cada": CY},
+      5: {"feijóo": PPC, "sánchez": PSC, "pizza": GO, "cojonuda": GO, "dos": CY, "mil": CY, "diez": CY, "precios": CY},
+      6: {"colau": FAC, "feijóo": PPC, "buena": GO, "gestión": GO, "pp": PPC, "aforado": CY, "mazón": CY},
+      7: {"feijóo": PPC, "colau": FAC, "usted": GO, "calladita": GO, "sánchez": PSC, "machista": CY, "paiporta": CY},
+      8: {"abascal": VXC, "buitre": GO, "sánchez": PSC, "fondos": CY, "banda": GO, "guarros": GO, "primarias": CY},
+      9: {"sánchez": PSC, "pp": PPC, "vox": VXC, "motosierra": GO, "ciento": CY, "doce": CY, "mil": CY, "millones": CY},
+      10: {"feijóo": PPC, "abascal": VXC, "único": GO, "mili": GO, "juró": GO, "bandera": GO, "servicio": CY, "militar": CY},
+      11: {"colau": FAC, "abascal": VXC, "vergüenza": GO, "insultos": CY},
+      12: {"dato": CY, "sánchez": PSC, "colau": FAC, "tutearon": GO, "feijóo": PPC, "abascal": VXC, "apenas": CY},
+      13: {"ganó": GO, "ley": CY, "encuestas": CY, "domingo": GO, "decides": GO, "tú": GO},
+      14: {"mándaselo": GR, "debate": GO}}
 KEY = {li: {norm(w): c for w, c in d.items()} for li, d in _K.items()}
 SUBS = None
 
@@ -123,37 +127,49 @@ def sfx_track(path):
     # 2: el marcador enseña la audiencia (cuenta hasta 10,2 M) y los cinco bloques
     put("avion/whoosh", Le[0] + 0.05, 0.6, 0.22, 0.25)
     put("economia/panel", at("siguieron") - 0.1, 0.6, 0.26, 0.2)
-    put("cripto/contador", at("diez") - 0.15, 0.9, 0.24, 0.25)
+    put("cripto/contador", at("diez", 1, 2) - 0.15, 0.9, 0.24, 0.25)
     for i in range(5):
         put("avion/tap", at("cinco") + (at("inmigración") + 0.1 - at("cinco")) * i / 5, 0.25, 0.2, 0.1)
-    # 3: «cuatro ataques»
-    put("lanzamiento/marcador", at("cuatro", 1, 3) - 0.1, 0.5, 0.3, 0.15)
+    # 3: el arranque: la petición de Colau (49) y quién se sumó
+    put("economia/panel", L[2] - 0.1, 0.6, 0.24, 0.2)
+    put("avion/cifra", at("cuarenta") - 0.05, 0.5, 0.26, 0.2)
+    put("cripto/check", at("sánchez", 1, 3) - 0.1, 0.45, 0.26, 0.15)
+    put("avion/pop", at("abascal", 1, 3) - 0.1, 0.4, 0.24, 0.15)
+    # 4: «ocho ataques, dos de cada uno»
+    put("lanzamiento/marcador", L[3] - 0.1, 0.5, 0.3, 0.15)
     put("avion/cifra", at("ataques") - 0.05, 0.5, 0.26, 0.2)
-    # 4-7: cada ataque: el reloj del que habla empieza a correr, el haz va de su pantalla a la del atacado y el marcador cambia
+    # 5-11: cada ataque: el reloj del que habla empieza a correr, el haz va de su pantalla a la del atacado y el marcador cambia
     def ataque(tb, tq, n=1):
         put("lanzamiento/laser", tb - 0.05, 0.7, 0.24, 0.2)
         for k in range(n):
             put("avion/impacto", tb + 0.42 + 0.1 * k, 0.5, 0.24, 0.2)
         put("economia/panel", tq - 0.12, 0.6, 0.24, 0.2)
-    for li, (w, k) in zip((4, 5, 6, 7), ((("usted", 1), 1), (("buitre", 1), 1), (("feijóo", 1), 2), (("abascal", 1), 1))):
+    for li in range(5, 12):
         put("cripto/reloj", L[li - 1] - 0.05, 1.2, 0.14, 0.4)
+    ataque(at("pizza") - 0.35, at("pizza") - 0.2)
+    put("avion/pop", at("tuiteó") - 0.12, 0.4, 0.22, 0.15)
+    ataque(at("gestión") - 0.35, at("gestión") - 0.35)
+    put("avion/pop", at("mantiene") - 0.12, 0.4, 0.22, 0.15)
     ataque(at("usted") - 0.25, at("usted"))
-    put("lanzamiento/voltea", at("sánchez", 1, 4) - 0.12, 0.5, 0.26, 0.15)
-    put("avion/pop", at("feijóo", 2, 4) - 0.12, 0.4, 0.24, 0.15)
+    put("lanzamiento/voltea", at("sánchez", 1, 7) - 0.12, 0.5, 0.26, 0.15)
+    put("avion/pop", at("feijóo", 2, 7) - 0.12, 0.4, 0.24, 0.15)
     ataque(at("buitre") - 0.25, at("buitre"))
     put("avion/pop", at("fondos") - 0.12, 0.4, 0.22, 0.15)
-    ataque(at("feijóo", 1, 6) - 0.1, at("único"), 2)
-    ataque(at("abascal", 1, 7) - 0.1, at("vergüenza"))
-    # 8: el dato: el arco Sánchez–Colau («TÚ») y el gris Feijóo–Abascal («…»)
+    ataque(at("banda") - 0.2, at("banda"))
+    ataque(at("gobernar") - 0.1, at("motosierra") - 0.3, 2)
+    ataque(at("feijóo", 1, 10) - 0.1, at("único"), 2)
+    put("lanzamiento/voltea", at("abascal", 2, 10) - 0.12, 0.5, 0.24, 0.15)
+    ataque(at("abascal", 1, 11) - 0.1, at("vergüenza"))
+    # 12: el dato: el arco Sánchez–Colau («TÚ») y el gris Feijóo–Abascal («…»)
     put("avion/whoosh", at("tutearon") - 0.35, 0.6, 0.22, 0.25)
     put("cripto/check", at("tutearon") + 0.1, 0.45, 0.28, 0.15)
-    put("avion/whoosh", at("feijóo", 1, 8) - 0.05, 0.6, 0.16, 0.25)
+    put("avion/whoosh", at("feijóo", 1, 12) - 0.05, 0.6, 0.16, 0.25)
     put("avion/pop", at("apenas") - 0.05, 0.4, 0.22, 0.15)
-    # 9: ¿quién ganó?: interrogaciones en los relojes; encuestas prohibidas; lo decides tú
+    # 13: ¿quién ganó?: interrogaciones en los relojes; encuestas prohibidas; lo decides tú
     put("avion/pregunta", at("ganó") - 0.2, 0.95, 0.3, 0.3)
     put("avion/sello", at("ley") - 0.12, 0.5, 0.32, 0.2)
     put("avion/ding", at("decides") - 0.1, 0.7, 0.28, 0.3)
-    # 10: mándaselo; vuelve el reloj del marcador a 20:00 y la bocina (enlaza con el principio)
+    # 14: mándaselo; vuelve el reloj del marcador a 20:00 y la bocina (enlaza con el principio)
     put("lanzamiento/enviado", at("mándaselo") - 0.05, 0.6, 0.3, 0.25)
     put("avion/whoosh_largo", at("mándaselo") + 0.3, 1.1, 0.2, 0.4)
     put("lanzamiento/marcador", E - 0.55, 0.5, 0.26, 0.15)
