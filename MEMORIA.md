@@ -400,6 +400,17 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   avión, podio «1.º» con casa, cubo y moneda, tarjeta sanitaria y rótulo de urgencias, tijeras que cortan la barra del gasto («?»), y en el atril del Frente
   Amplio, lingotes con la raya del tope «10 M €». **Ojo**: `nightUpdate` pisa cada fotograma el `emissiveIntensity` de los materiales registrados con
   `nightMat`: lo que tenga que parpadear va con un material SIN registrar. La portada compone a tamaño real (no usar PR < 1 con `portada.py --render`).
+- **«29N: el debate a cuatro» (`projects/elecciones_29n_debate/`, viernes 27-11-2026).** Javi (≈ 17:10 en España): «vamos a explicar qué fue lo que
+  pasó ayer en el debate, los aspectos más importantes, y si quieres puedes comentar algunos de los ataques más destacados que tuvieron los 4».
+  **Hay que publicarlo el mismo viernes antes de medianoche** (fin de campaña; el sábado es jornada de reflexión). Guion de 129 palabras (≈ 50 s): gancho
+  con un dato raro y comprobable (los tiempos los controlaron oficiales de mesa de la Federación Madrileña de Baloncesto), audiencia (10,2 millones de
+  media) y bloques, **un ataque de cada candidato** (literal solo cuando todos los medios coinciden; si no, estilo indirecto; el «calladita», con las dos
+  lecturas), un dato de la dinámica (Sánchez y Colau se tutearon; Feijóo y Abascal apenas se hablaron) y cierre sin «quién ganó» (LOREG 69.7 prohíbe
+  publicar sondeos, también los de «quién ganó el debate»). Escena: el plató de los cuatro atriles con un **marcador de pabellón** colgado encima (reloj
+  del bloque, audiencia, bloques, la frase de cada ataque, «¿quién ganó?»), un **reloj de posesión** encima de cada pantalla (corre el del que habla) y
+  **haces de luz** de la pantalla del que ataca a la del atacado (TubeGeometry con `setDrawRange` para que crezca; punta de cono). Lección: las cajas de
+  las pantallas hay que calcularlas después de `updateMatrixWorld(true)` (si no, salen todas en el centro) y `g.add(x).position…` mueve el PADRE (usar
+  `ad(g, x)`): el marcador se fue de sitio por eso.
 - **«29N: el PP» (`projects/elecciones_29n_pp/`) y «29N: Frente Amplio» (`projects/elecciones_29n_fa/`), 25-11-2026: guion, fuentes, escena, subtítulos,
   efectos, portada y descripción hechos con tiempos PROVISIONALES; faltan las voces.** PP: nómina gigante encima de la pantalla de Feijóo (`payslip`,
   `wheelAt`: la rueda del IRPF se para en 0 al decir «cero» y al final gira hasta quedar como en el primer fotograma), sello «promesa del PP», lupa en la
