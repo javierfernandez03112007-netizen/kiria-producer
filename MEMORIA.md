@@ -411,6 +411,14 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   **haces de luz** de la pantalla del que ataca a la del atacado (TubeGeometry con `setDrawRange` para que crezca; punta de cono). Lección: las cajas de
   las pantallas hay que calcularlas después de `updateMatrixWorld(true)` (si no, salen todas en el centro) y `g.add(x).position…` mueve el PADRE (usar
   `ad(g, x)`): el marcador se fue de sitio por eso.
+  **Versión larga** (Javi: «puede durar más»): DOS ataques de cada candidato y el arranque (la petición de Colau de condenar los 49 asesinatos machistas;
+  Sánchez y Feijóo se sumaron, Abascal no), 235 palabras. La versión corta quedó en `script_corto.txt`. Voz recibida a las 17:22 UTC (83,05 s).
+  **ENTREGADO el 27-11-2026 a las 19:00 UTC (20:00 en España)**: `out/elecciones_29n_debate.mp4` (84,0 s, 5.040 fotogramas, 1080×1920, 60 fps,
+  −15,1 LUFS, 38,9 MB) + portada («EL DEBATE EN 8 ATAQUES, DOS DE CADA UNO»; la primera que se envió aún decía «4 ATAQUES, UNO DE CADA UNO», de la
+  versión corta, y se corrigió y reenvió enseguida) + miniatura + `DESCRIPCION.txt`. Javi aprobó las máquinas («Abre máquinas»): aquí 0–3.000 y las seis
+  máquinas 3.000–5.040 en tramos de 340 (ramas `render-e6-1…6`): cada una tardó ≈ 5 minutos con la escena ligera del debate (≈ 1 fotograma por segundo
+  aquí con 2 procesos). Un fotograma de cada máquina repetido aquí: idéntico (diferencia media 0,000). Lección: entre el arranque del render local y el
+  envío de los mensajes pasaron ≈ 35 minutos sin que se hiciera nada: enviar los mensajes a las máquinas lo PRIMERO, en cuanto Javi dé permiso.
 - **«29N: el PP» (`projects/elecciones_29n_pp/`) y «29N: Frente Amplio» (`projects/elecciones_29n_fa/`), 25-11-2026: guion, fuentes, escena, subtítulos,
   efectos, portada y descripción hechos con tiempos PROVISIONALES; faltan las voces.** PP: nómina gigante encima de la pantalla de Feijóo (`payslip`,
   `wheelAt`: la rueda del IRPF se para en 0 al decir «cero» y al final gira hasta quedar como en el primer fotograma), sello «promesa del PP», lupa en la

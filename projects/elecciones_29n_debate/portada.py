@@ -46,8 +46,8 @@ def row(img, parts, cy, size, stroke):
 def title(img, y, k=1.0):
     paste(img, chip("29N · DEBATE A CUATRO", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 36 * k)
     row(img, [("EL", None), ("DEBATE", GOLD)], y + 140 * k, int(112 * k), int(10 * k))
-    row(img, [("EN", None), ("4", CYAN), ("ATAQUES", CYAN)], y + 262 * k, int(112 * k), int(10 * k))
-    row(img, [("UNO", None), ("DE", None), ("CADA", None), ("UNO", None)], y + 380 * k, int(96 * k), int(10 * k))
+    row(img, [("EN", None), ("8", CYAN), ("ATAQUES", CYAN)], y + 262 * k, int(112 * k), int(10 * k))
+    row(img, [("DOS", None), ("DE", None), ("CADA", None), ("UNO", None)], y + 380 * k, int(96 * k), int(10 * k))
 
 
 def main():
