@@ -1,9 +1,14 @@
 ⏱️ Anoche, a los cuatro candidatos los cronometraron árbitros de baloncesto (oficiales de mesa de la Federación Madrileña). Lo siguieron 10,2 millones de personas de media: cinco bloques de 20 minutos (vivienda; economía y fiscalidad; política social y servicios públicos; corrupción y regeneración; migración y política exterior).
 
-🎯 Cuatro ataques, uno de cada uno:
+🟣 Empezó así: Colau pidió condenar los 49 asesinatos machistas del año. Sánchez y Feijóo se sumaron; Abascal, no.
+
+🎯 Ocho ataques, dos de cada uno:
+· Feijóo, a Sánchez: le recordó la «pizza cojonuda» que tuiteó en 2010, para hablarle de lo que han subido los precios.
+· Colau, a Feijóo: cómo puede hablar de buena gestión si el PP mantiene aforado a Mazón.
 · Feijóo, a Colau: «Y usted, calladita». Sánchez lo llamó machista; Feijóo dice que le reprochaba callar sobre Paiporta.
-· Abascal llamó «buitre» a Sánchez mientras se hablaba de fondos buitre.
-· Sánchez, a Feijóo y Abascal: que él es el único de los tres que hizo la mili y juró bandera.
+· Abascal llamó «buitre» a Sánchez mientras se hablaba de fondos buitre, y «banda de guarros» a quienes le acompañaron en sus primarias de 2017.
+· Sánchez, a PP y Vox: que gobernar juntos sería «la motosierra de 112.000 millones al año» (cifra que atribuyó al portavoz económico de Vox).
+· Sánchez, a Feijóo y Abascal: que él es el único de los tres que hizo la mili y juró bandera. Abascal le contestó que él había hecho más servicio militar.
 · Colau, a Abascal: que es una vergüenza normalizar insultos como los suyos.
 Y un dato: Sánchez y Colau se tutearon; Feijóo y Abascal apenas se dirigieron la palabra.
 
@@ -21,7 +26,7 @@ Y un dato: Sánchez y Colau se tutearon; Feijóo y Abascal apenas se dirigieron 
 
 Versión corta (TikTok):
 
-⏱️ El debate a cuatro en un minuto: árbitros de baloncesto, 10,2 millones de espectadores y un ataque de cada candidato, con sus palabras y sin opinión. ¿Quién ganó? Esta semana la ley prohíbe publicar encuestas: lo decides tú el domingo. Fotos reales (Wikimedia Commons), plató virtual.
+⏱️ El debate a cuatro en minuto y medio: árbitros de baloncesto, 10,2 millones de espectadores y dos ataques de cada candidato, con sus palabras y sin opinión. ¿Quién ganó? Esta semana la ley prohíbe publicar encuestas: lo decides tú el domingo. Fotos reales (Wikimedia Commons), plató virtual.
 
 #29N #debate #elecciones #política #España
 
@@ -30,8 +35,9 @@ Versión corta (TikTok):
 NOTAS PARA LA ENTREGA (no publicar):
 - PUBLICAR HOY, VIERNES 27, ANTES DE MEDIANOCHE: a las 00:00 acaba la campaña y el sábado 28 es jornada de reflexión.
 - Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). Efectos solo de la biblioteca del canal, sin música. Un solo plano; primer fotograma = último (bucle).
-- Neutralidad: un ataque de cada candidato, con el mismo haz de luz, el mismo color y el mismo sitio en el marcador. El «calladita» lleva las dos lecturas (la de Sánchez y Colau y la de Feijóo), porque los medios no coinciden en su intención. El «buitre», la mili y la frase de Colau van en estilo indirecto porque la literalidad varía entre medios.
+- Neutralidad: dos ataques de cada candidato, con el mismo haz de luz, el mismo color y el mismo sitio en el marcador. Versión larga (≈ 84 s) porque Javi dijo «puede durar más». El «calladita» lleva las dos lecturas (la de Sánchez y Colau y la de Feijóo), porque los medios no coinciden en su intención. El «buitre», la mili y la frase de Colau van en estilo indirecto porque la literalidad varía entre medios.
 - Sin encuestas ni «quién ganó»: los sondeos de «quién ganó el debate» también son sondeos (LOREG 69.7). No responder en comentarios con resultados de encuestas ni con «quién va ganando».
 - Los candidatos son sus FOTOS REALES en pantallas (no vídeo ni caras generadas con IA). Los créditos de arriba hay que dejarlos (la de Colau, CC BY, lo exige).
-- Otros momentos muy citados que no caben (por no repetir candidato): la «banda de guarros» y el «candidato marroquí» de Abascal, la «pizza cojonuda» que Feijóo rescató de un tuit de Sánchez de 2010, la «motosierra» y los «bulos». Si alguien los pide en comentarios, están en FUENTES.md.
+- Otros momentos muy citados que no caben: el «candidato marroquí» de Abascal a Sánchez, los «bulos», la pregunta de Sánchez a Feijóo sobre si aceptaría el resultado y la crítica de Colau a la vivienda de Sánchez. Están en FUENTES.md.
+- La cifra de la «pizza» (Feijóo dijo que había subido un 45 %) NO se dice: no se puede atribuir esa subida a esa pizza.
 - Las webs de los medios no se abren desde aquí: los datos salen de resúmenes del buscador de varias fuentes que coinciden. Antes de publicar, abrir al menos un enlace de FUENTES.md.
