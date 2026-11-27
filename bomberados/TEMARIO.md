@@ -310,3 +310,30 @@ Para el uso, además, el manual de puntales de Bombers de València y el del fab
 - ¿Qué ángulo debe formar el puntal con el suelo? (unos 60°, según la ficha) · ¿Dónde se engancha la cinta? (en el punto
   más bajo del vehículo) · ¿Para qué es la zona protectora de la cinta? (zonas calientes, como el tubo de escape) · ¿Para qué
   sirve la cuña? (evitar que el pie del puntal deslice) · ¿En qué posición se estabiliza el vehículo? (tal como se encuentra).
+
+## 27 nov 2026 · Cámara térmica (visor térmico) · incendios
+
+### Fuente — ficha de Élite Bomberos que pone Adrián Luna (Notion, fila «DOMINGO 29», PUBLICIDAD ELITE; sus apuntes, pág. 11)
+- Qué es: «dispositivo que percibe la radiación infrarroja emitida de los cuerpos detectados y que las transforma en
+  imágenes luminosas para ser visualizadas por el ojo humano». Enseña en una pantalla las diferentes temperaturas, sin
+  necesidad de iluminación.
+- Para qué: ver a través del humo en un incendio y localizar a las víctimas, el foco del incendio…
+- Qué NO hace: no permite ver a través del cristal, el hielo ni las paredes. En un cristal no lo atraviesa: en la pantalla
+  saldríamos nosotros (el reflejo).
+- Principio: la energía infrarroja que emiten los cuerpos cuando su temperatura es superior al cero absoluto (0 K); los
+  cuerpos con mayor temperatura emiten más radiación infrarroja. Operan entre los 8 y 14 micrones.
+- Escalas: lo más caliente, en blanco, y lo más frío, en negro; algunos modelos usan colores (rojo caliente, azul frío) o
+  escalas de grises.
+- Partes: una lente de germanio que captura y enfoca la radiación sobre el detector (sensor: un microbolómetro), que la
+  convierte en una señal eléctrica; un procesador, y la pantalla de visualización (LCD).
+
+### Vídeos hechos con esto
+- «Salva a tu hermano» (`projects/bomberados_termica/`, formato de videojuego): tu hermano en una casa llena de humo y tú
+  con la cámara térmica; ¿le ves A, tras la pared? ¿B, tras el cristal? ¿C, entre el humo? → C, y la cámara explicada
+  entera (infrarrojos, 8–14 µm, 0 K, germanio, microbolómetro, procesador, pantalla, escalas, lo que no atraviesa). Venta de Élite.
+
+### Preguntas de examen que salen de aquí
+- ¿Qué detecta la cámara térmica? (la radiación infrarroja que emiten los cuerpos) · ¿Ve a través de un cristal? (no: verías
+  tu reflejo) · ¿Y de una pared o del hielo? (no) · ¿Entre qué longitudes de onda trabaja? (8–14 micrones) · ¿De qué es la
+  lente? (germanio) · ¿Cómo se llama el sensor? (microbolómetro) · ¿De qué color sale lo más caliente? (blanco, o rojo en
+  los modelos de color).

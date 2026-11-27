@@ -1,0 +1,64 @@
+«SALVA A TU HERMANO» — la cámara térmica, como un videojuego (idea de Adrián, Notion «DOMINGO 29»: «¿Sabes cómo funciona
+una cámara térmica?», con su ficha de Élite + PUBLICIDAD ÉLITE). Formato de Javi y lo que pidió el cliente: personal y
+sentimental, tres opciones (A, B o C), 5 segundos para elegir, el vídeo elige la correcta y la herramienta se explica ENTERA
+(todo lo de la ficha) mientras lo salvas. ≈ 60 s (la cuenta y la ficha completa: es más larga que la del puntal).
+
+Cómo está hecho (3D, empieza fuera y de día, con vida real): una casa con humo saliendo por las ventanas, curiosos tras el
+cordón (uno graba con el móvil), la autobomba y la ambulancia. Dentro, el pasillo lleno de humo: no se ve nada. Tú, con el
+ERA y la cámara térmica (genérica, sin marca); su pantalla, en grande y flotando en la escena, enseña lo que ve. Capa de
+videojuego: «MISIÓN: SALVA A TU HERMANO», corazón y barra de vida que baja.
+La idea, en una frase: la cámara térmica no ve la luz, ve el calor; por eso ve a través del humo… pero NO a través de una
+pared ni de un cristal (en el cristal te verías a ti). La trampa es la de las películas: «ve a través de las paredes».
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque TAL CUAL (lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+No hace falta dejar silencio tras «¡Cinco segundos!»: la cuenta de 5 s la meto yo en el montaje.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, scared] Es tu HERMANO. Está dentro de esa casa… [panicked] y el humo no te deja ver NADA.
+[tense, fast] Llevas una cámara térmica. ¿Dónde le ves? ¿A, tras la pared? ¿B, tras el cristal? ¿O C, entre el humo?
+[challenging, urgent] ¡Cinco segundos!
+[confident, excited] ¡La C! [clear] La cámara térmica no ve la luz: ve el CALOR, los infrarrojos de ocho a catorce micras.
+[clear] Todo cuerpo por encima del cero absoluto los emite: cuanto más caliente, MÁS.
+[clear, fast] Una lente de germanio los enfoca, el microbolómetro los convierte en señal eléctrica y el procesador la pinta en la pantalla.
+[clear] Caliente, blanco o rojo; frío, negro o azul.
+[clear, serious] Ve sin luz y a través del humo: así encuentras a las víctimas y el foco del fuego.
+[serious, emphatic] Pero NO atraviesa paredes, hielo ni cristal: en un cristal, te verías a ti.
+[relieved, emotional] Ahí está, en el suelo del pasillo. Ahora sí… ¡lo sacáis!
+[challenging, playful] ¿Tú qué habrías elegido? ¡Comenta tu letra!
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡ÉLITE BOMBEROS! [excited, emphatic] ¡Sin matrícula y SIN permanencia!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — 3D, de día fuera y con humo dentro, un dron que no para y sin rozar a nadie:
+1. «Es tu hermano. Está dentro de esa casa… y el humo no te deja ver nada» — la capa de juego («MISIÓN: SALVA A TU
+   HERMANO», corazón y vida que baja) sobre la casa con humo, los curiosos y la autobomba; el dron entra contigo por la
+   puerta y dentro todo es humo gris.
+2. «Llevas una cámara térmica. ¿Dónde le ves? ¿A…? ¿B…? ¿O C…?» — la cámara en tu mano y su pantalla en grande; tres
+   tarjetas de juego: A, apuntas a la pared; B, al cristal de la puerta de la cocina; C, al humo del pasillo.
+3. «¡Cinco segundos!» — CUENTA ATRÁS 5→1 en grande (tic-tac y bocina); el cursor salta entre A, B y C.
+4. «¡La C! La cámara térmica no ve la luz: ve el calor, los infrarrojos de ocho a catorce micras» — «✓ CORRECTA»; una
+   regla de ondas: el ojo, «LUZ VISIBLE · 380–750 nm» (lo de la ficha); la cámara, mucho más allá, «INFRARROJOS · 8–14 µm».
+5. «Todo cuerpo por encima del cero absoluto los emite: cuanto más caliente, más» — ondas rojas que salen de todo, más
+   fuertes del fuego y de las personas: «> 0 K (−273 °C)».
+6. «Una lente de germanio los enfoca, el microbolómetro los convierte en señal eléctrica y el procesador la pinta en la
+   pantalla» — en una lupa flotando, la cámara por dentro, pieza a pieza al oírla: LENTE DE GERMANIO → MICROBOLÓMETRO →
+   PROCESADOR → PANTALLA.
+7. «Caliente, blanco o rojo; frío, negro o azul» — la pantalla cambia de escala: blanco/negro y luego rojo/azul.
+8. «Ve sin luz y a través del humo: así encuentras a las víctimas y el foco del fuego» — se apaga la luz y la pantalla
+   sigue viendo; el foco del fuego, en blanco, al fondo.
+9. «Pero no atraviesa paredes, hielo ni cristal: en un cristal, te verías a ti» — la pantalla contra la pared (✗ nada),
+   contra el cristal (✗ sales TÚ, tu reflejo).
+10. «Ahí está, en el suelo del pasillo. Ahora sí… ¡lo sacáis!» — la mancha blanca en el suelo: es él; lo sacáis y está a
+   salvo junto a la ambulancia: «¡MISIÓN CUMPLIDA!».
+11. «¿Tú qué habrías elegido? Comenta tu letra» — A / B / C y «💬 COMENTA TU LETRA».
+12. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel.
+13. ★ «¿Opositas? ¡Élite Bomberos! ¡Sin matrícula y sin permanencia!» — la placa de ÉLITE BOMBEROS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Comentario fijado sugerido: «📌 La C: la cámara térmica ve a través del humo, pero no atraviesa paredes, hielo ni
+cristal (en un cristal verías tu propio reflejo). ¿Cuál habías elegido?»
+
+Fuentes (FUENTES.md): la ficha de Adrián (apuntes de Élite) y la web de Élite («sin matrícula, sin permanencia»).
