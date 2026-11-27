@@ -1447,8 +1447,7 @@ function chapterAt(t, st) { const T = TL, A = atkList();
   const shot = ORDER.map(() => 300); let act = -1;
   A.forEach(x => { const i = ORDER.indexOf(x.a); if (t > x.t0) shot[i] = 300 - Math.min(t, x.t1) + x.t0; if (t > x.t0 && t < x.t1) act = i; });
   const lit = ORDER.map((o, i) => t > T.cuatro - 0.1 + i * 0.12), qm = t > T.gano - 0.1 && t < T.manda + 0.3, reset = t > T.manda + 0.3;
-  ORDER.forEach((o, i) => { shotDraw(i, { s: reset ? 300 : Math.round(shot[i]), on: (i === act || (t < T.L[2] && lit[i]) || qm) && !reset ? 1 : 0, q: qm ? 1 : 0 }); S.shot[i].g.scale.setScalar(Math.max(0.01, t < T.L[2] ? pop(t, T.cuatro - 0.1 + i * 0.12, 0.3) || 0.001 : 1)); });
-  if (t < T.cuatro - 0.1) ORDER.forEach((o, i) => { S.shot[i].g.scale.setScalar(0.001); });
+  ORDER.forEach((o, i) => { shotDraw(i, { s: reset ? 300 : Math.round(shot[i]), on: (i === act || (t < T.L[2] && lit[i]) || qm) && !reset ? 1 : 0, q: qm ? 1 : 0 }); const k = (t < T.L[2] ? pop(t, T.cuatro - 0.1 + i * 0.12, 0.3) : 1) * (1 - win(t, T.manda + 0.4, 0.45)); S.shot[i].g.visible = k > 0.01; S.shot[i].g.scale.setScalar(Math.max(0.001, k)); });   /* al final se recogen: el último fotograma casa con el primero (bucle) */
   // el marcador
   let s; const after = (w, d = 0.12) => t > w - d;
   if (t < T.L[2] - 0.15 || t > T.manda + 0.3) s = { mode: 'clock', head: t < T.L[2] ? 'BLOQUE 1 · CRONO: ÁRBITROS DE BALONCESTO' : 'BLOQUE 1', clock: 1200 - Math.max(0, Math.floor((t > T.manda ? 0 : t) - 0.4)) };
