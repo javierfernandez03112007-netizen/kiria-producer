@@ -1,9 +1,9 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «29N: el debate a cuatro» (capítulo de un partido).
-Base: de frente al atril del partido, con su pantalla (foto real) y, encima, la torre de lingotes con la raya del tope («10 millones por heredero»).
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «29N: el debate a cuatro».
+Base: plano abierto de los cuatro atriles (fotos reales) con sus relojes de posesión y el marcador de pabellón encima (el reloj del bloque corriendo).
 Todo lo importante cabe en el centro 4:5:
     python3 portada.py --render      (saca out/cover/cover3d.png con la cámara de la portada y luego compone)
     python3 portada.py               (solo compone)
-Título en Impact con contorno, como los subtítulos: la frase del gancho."""
+Título en Impact con contorno, como los subtítulos."""
 import json
 import os
 import subprocess
@@ -20,16 +20,16 @@ from engine import post  # noqa: E402
 
 W, H = 1080, 1920
 RED, GOLD, CYAN = "#FF5A4E", "#FFD76A", "#5CF2E6"
-CAM = "1.65,2.75,4.6,1.65,2.95,-0.3,52"              # posición, punto de mira y ángulo de la cámara de la portada: de frente al atril del partido
-PAD = "S.tower.position.set(1.78, 2.72, -0.1); S.tower.scale.setScalar(0.5); S.tower.visible = true; S.hsoc.visible = false; S.cien.scale.setScalar(0.001); S.qm.scale.setScalar(0.001);"   # la torre, encima de su pantalla (solo en la portada)
+CAM = "0,2.75,7.4,0,3.6,-0.6,50"                       # plano abierto algo picado hacia arriba: título, marcador y las cuatro pantallas en el centro 4:5
+PAD = ""
 MINI_Y = 285                                           # la miniatura 4:5 es el centro de la portada (lo que enseña la cuadrícula de Instagram)
 
 
 def render():
     lines = json.load(open(os.path.join(ROOT, "tiempos.json")))
-    t = [w for w in lines[0]["words"] if w["w"].lower().startswith("euros")][0]["start"] + 0.2      # la torre entera con la raya del tope y su rótulo
+    t = [w for w in lines[0]["words"] if w["w"].lower().startswith("baloncesto")][0]["start"] + 0.3      # el reloj del bloque corriendo y los cuatro relojes de posesión a la vista
     env = dict(os.environ, COVER="1", COVER_T=f"{t:.2f}", COVER_CAM=CAM, FPS="60",
-               EVAL="const _p = hookAt; hookAt = t => { _p(t); " + PAD + " };")
+               EVAL="0;")
     subprocess.run(["node", "web/capture.mjs", "out/cover", "0"], cwd=ROOT, env=env, check=True)
 
 
@@ -44,10 +44,10 @@ def row(img, parts, cy, size, stroke):
 
 
 def title(img, y, k=1.0):
-    paste(img, chip("29N · FRENTE AMPLIO", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 36 * k)
-    row(img, [("QUE", None), ("NADIE", None), ("HEREDE", None)], y + 140 * k, int(104 * k), int(10 * k))
-    row(img, [("MÁS", None), ("DE", None), ("10", GOLD), ("MILLONES.", GOLD)], y + 258 * k, int(96 * k), int(10 * k))
-    row(img, [("¿Y", None), ("LO", None), ("QUE", None), ("PASE?", CYAN)], y + 374 * k, int(104 * k), int(10 * k))
+    paste(img, chip("29N · DEBATE A CUATRO", int(42 * k), "#000000", "#FFFFFF", "bold"), W / 2, y + 36 * k)
+    row(img, [("EL", None), ("DEBATE", GOLD)], y + 140 * k, int(112 * k), int(10 * k))
+    row(img, [("EN", None), ("4", CYAN), ("ATAQUES", CYAN)], y + 262 * k, int(112 * k), int(10 * k))
+    row(img, [("UNO", None), ("DE", None), ("CADA", None), ("UNO", None)], y + 380 * k, int(96 * k), int(10 * k))
 
 
 def main():
