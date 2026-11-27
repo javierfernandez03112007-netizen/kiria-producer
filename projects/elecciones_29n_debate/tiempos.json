@@ -57,9 +57,9 @@
 ]
 },
 {
-"text": "Lo siguieron diez millones de personas: cinco bloques, de la vivienda a la inmigración.",
+"text": "Lo siguieron diez millones de personas: cinco bloques de veinte minutos, de la vivienda a la inmigración.",
 "start": 4.868,
-"end": 9.874,
+"end": 10.916,
 "words": [
 {
 "w": "Lo",
@@ -97,620 +97,1178 @@
 "end": 7.45
 },
 {
-"w": "bloques,",
+"w": "bloques",
 "start": 7.45,
 "end": 7.798
 },
 {
 "w": "de",
-"start": 7.948,
-"end": 8.137
+"start": 7.798,
+"end": 7.987
+},
+{
+"w": "veinte",
+"start": 7.987,
+"end": 8.334
+},
+{
+"w": "minutos,",
+"start": 8.334,
+"end": 8.84
+},
+{
+"w": "de",
+"start": 8.99,
+"end": 9.179
 },
 {
 "w": "la",
-"start": 8.137,
-"end": 8.325
+"start": 9.179,
+"end": 9.368
 },
 {
 "w": "vivienda",
-"start": 8.325,
-"end": 8.832
+"start": 9.368,
+"end": 9.874
 },
 {
 "w": "a",
-"start": 8.832,
-"end": 9.02
+"start": 9.874,
+"end": 10.063
 },
 {
 "w": "la",
-"start": 9.02,
-"end": 9.209
+"start": 10.063,
+"end": 10.251
 },
 {
 "w": "inmigración.",
-"start": 9.209,
-"end": 9.874
+"start": 10.251,
+"end": 10.916
 }
 ]
 },
 {
-"text": "Y cuatro ataques, uno de cada uno.",
-"start": 10.324,
-"end": 12.747,
+"text": "Empezó así: Colau pidió condenar los cuarenta y nueve asesinatos machistas del año. Sánchez y Feijóo se sumaron; Abascal, no.",
+"start": 11.366,
+"end": 19.092,
 "words": [
 {
-"w": "Y",
-"start": 10.324,
-"end": 10.513
+"w": "Empezó",
+"start": 11.366,
+"end": 11.873
 },
 {
-"w": "cuatro",
-"start": 10.513,
-"end": 10.86
+"w": "así:",
+"start": 11.873,
+"end": 12.22
 },
 {
-"w": "ataques,",
-"start": 10.86,
-"end": 11.366
+"w": "Colau",
+"start": 12.37,
+"end": 12.717
 },
 {
-"w": "uno",
-"start": 11.516,
-"end": 11.864
+"w": "pidió",
+"start": 12.717,
+"end": 13.065
 },
 {
-"w": "de",
-"start": 11.864,
-"end": 12.053
-},
-{
-"w": "cada",
-"start": 12.053,
-"end": 12.4
-},
-{
-"w": "uno.",
-"start": 12.4,
-"end": 12.747
-}
-]
-},
-{
-"text": "Feijóo, a Colau: «Y usted, calladita». Sánchez lo llamó machista; Feijóo dice que le reprochaba callar sobre Paiporta.",
-"start": 13.197,
-"end": 20.06,
-"words": [
-{
-"w": "Feijóo,",
-"start": 13.197,
-"end": 13.545
-},
-{
-"w": "a",
-"start": 13.695,
-"end": 13.884
-},
-{
-"w": "Colau:",
-"start": 13.884,
-"end": 14.231
-},
-{
-"w": "«Y",
-"start": 14.381,
-"end": 14.57
-},
-{
-"w": "usted,",
-"start": 14.57,
-"end": 14.917
-},
-{
-"w": "calladita».",
-"start": 15.067,
-"end": 15.732
-},
-{
-"w": "Sánchez",
-"start": 15.732,
-"end": 16.08
-},
-{
-"w": "lo",
-"start": 16.08,
-"end": 16.268
-},
-{
-"w": "llamó",
-"start": 16.268,
-"end": 16.616
-},
-{
-"w": "machista;",
-"start": 16.616,
-"end": 17.122
-},
-{
-"w": "Feijóo",
-"start": 17.122,
-"end": 17.47
-},
-{
-"w": "dice",
-"start": 17.47,
-"end": 17.817
-},
-{
-"w": "que",
-"start": 17.817,
-"end": 18.006
-},
-{
-"w": "le",
-"start": 18.006,
-"end": 18.194
-},
-{
-"w": "reprochaba",
-"start": 18.194,
-"end": 18.859
-},
-{
-"w": "callar",
-"start": 18.859,
-"end": 19.207
-},
-{
-"w": "sobre",
-"start": 19.207,
-"end": 19.554
-},
-{
-"w": "Paiporta.",
-"start": 19.554,
-"end": 20.06
-}
-]
-},
-{
-"text": "Abascal llamó «buitre» a Sánchez mientras se hablaba de fondos buitre.",
-"start": 20.51,
-"end": 24.174,
-"words": [
-{
-"w": "Abascal",
-"start": 20.51,
-"end": 21.017
-},
-{
-"w": "llamó",
-"start": 21.017,
-"end": 21.364
-},
-{
-"w": "«buitre»",
-"start": 21.364,
-"end": 21.712
-},
-{
-"w": "a",
-"start": 21.712,
-"end": 21.9
-},
-{
-"w": "Sánchez",
-"start": 21.9,
-"end": 22.248
-},
-{
-"w": "mientras",
-"start": 22.248,
-"end": 22.595
-},
-{
-"w": "se",
-"start": 22.595,
-"end": 22.784
-},
-{
-"w": "hablaba",
-"start": 22.784,
-"end": 23.29
-},
-{
-"w": "de",
-"start": 23.29,
-"end": 23.479
-},
-{
-"w": "fondos",
-"start": 23.479,
-"end": 23.826
-},
-{
-"w": "buitre.",
-"start": 23.826,
-"end": 24.174
-}
-]
-},
-{
-"text": "Sánchez, a Feijóo y Abascal: que él es el único de los tres que hizo la mili y juró bandera.",
-"start": 24.624,
-"end": 30.444,
-"words": [
-{
-"w": "Sánchez,",
-"start": 24.624,
-"end": 24.971
-},
-{
-"w": "a",
-"start": 25.121,
-"end": 25.31
-},
-{
-"w": "Feijóo",
-"start": 25.31,
-"end": 25.657
-},
-{
-"w": "y",
-"start": 25.657,
-"end": 25.846
-},
-{
-"w": "Abascal:",
-"start": 25.846,
-"end": 26.352
-},
-{
-"w": "que",
-"start": 26.502,
-"end": 26.691
-},
-{
-"w": "él",
-"start": 26.691,
-"end": 26.88
-},
-{
-"w": "es",
-"start": 26.88,
-"end": 27.069
-},
-{
-"w": "el",
-"start": 27.069,
-"end": 27.257
-},
-{
-"w": "único",
-"start": 27.257,
-"end": 27.763
-},
-{
-"w": "de",
-"start": 27.763,
-"end": 27.952
+"w": "condenar",
+"start": 13.065,
+"end": 13.571
 },
 {
 "w": "los",
-"start": 27.952,
-"end": 28.141
+"start": 13.571,
+"end": 13.76
 },
 {
-"w": "tres",
-"start": 28.141,
-"end": 28.33
-},
-{
-"w": "que",
-"start": 28.33,
-"end": 28.518
-},
-{
-"w": "hizo",
-"start": 28.518,
-"end": 28.866
-},
-{
-"w": "la",
-"start": 28.866,
-"end": 29.055
-},
-{
-"w": "mili",
-"start": 29.055,
-"end": 29.402
+"w": "cuarenta",
+"start": 13.76,
+"end": 14.266
 },
 {
 "w": "y",
-"start": 29.402,
-"end": 29.591
+"start": 14.266,
+"end": 14.455
+},
+{
+"w": "nueve",
+"start": 14.455,
+"end": 14.802
+},
+{
+"w": "asesinatos",
+"start": 14.802,
+"end": 15.626
+},
+{
+"w": "machistas",
+"start": 15.626,
+"end": 16.132
+},
+{
+"w": "del",
+"start": 16.132,
+"end": 16.321
+},
+{
+"w": "año.",
+"start": 16.321,
+"end": 16.668
+},
+{
+"w": "Sánchez",
+"start": 16.668,
+"end": 17.016
+},
+{
+"w": "y",
+"start": 17.016,
+"end": 17.204
+},
+{
+"w": "Feijóo",
+"start": 17.204,
+"end": 17.552
+},
+{
+"w": "se",
+"start": 17.552,
+"end": 17.741
+},
+{
+"w": "sumaron;",
+"start": 17.741,
+"end": 18.247
+},
+{
+"w": "Abascal,",
+"start": 18.247,
+"end": 18.753
+},
+{
+"w": "no.",
+"start": 18.903,
+"end": 19.092
+}
+]
+},
+{
+"text": "Y luego, los ataques. Dos de cada uno.",
+"start": 19.542,
+"end": 21.995,
+"words": [
+{
+"w": "Y",
+"start": 19.542,
+"end": 19.73
+},
+{
+"w": "luego,",
+"start": 19.73,
+"end": 20.078
+},
+{
+"w": "los",
+"start": 20.228,
+"end": 20.417
+},
+{
+"w": "ataques.",
+"start": 20.417,
+"end": 20.923
+},
+{
+"w": "Dos",
+"start": 20.923,
+"end": 21.112
+},
+{
+"w": "de",
+"start": 21.112,
+"end": 21.3
+},
+{
+"w": "cada",
+"start": 21.3,
+"end": 21.648
+},
+{
+"w": "uno.",
+"start": 21.648,
+"end": 21.995
+}
+]
+},
+{
+"text": "Feijóo, a Sánchez: le recordó la «pizza cojonuda» que tuiteó en dos mil diez, para hablarle de lo que han subido los precios.",
+"start": 22.445,
+"end": 29.617,
+"words": [
+{
+"w": "Feijóo,",
+"start": 22.445,
+"end": 22.793
+},
+{
+"w": "a",
+"start": 22.943,
+"end": 23.131
+},
+{
+"w": "Sánchez:",
+"start": 23.131,
+"end": 23.479
+},
+{
+"w": "le",
+"start": 23.629,
+"end": 23.818
+},
+{
+"w": "recordó",
+"start": 23.818,
+"end": 24.324
+},
+{
+"w": "la",
+"start": 24.324,
+"end": 24.513
+},
+{
+"w": "«pizza",
+"start": 24.513,
+"end": 24.86
+},
+{
+"w": "cojonuda»",
+"start": 24.86,
+"end": 25.525
+},
+{
+"w": "que",
+"start": 25.525,
+"end": 25.714
+},
+{
+"w": "tuiteó",
+"start": 25.714,
+"end": 26.061
+},
+{
+"w": "en",
+"start": 26.061,
+"end": 26.25
+},
+{
+"w": "dos",
+"start": 26.25,
+"end": 26.439
+},
+{
+"w": "mil",
+"start": 26.439,
+"end": 26.627
+},
+{
+"w": "diez,",
+"start": 26.627,
+"end": 26.816
+},
+{
+"w": "para",
+"start": 26.966,
+"end": 27.313
+},
+{
+"w": "hablarle",
+"start": 27.313,
+"end": 27.82
+},
+{
+"w": "de",
+"start": 27.82,
+"end": 28.008
+},
+{
+"w": "lo",
+"start": 28.008,
+"end": 28.197
+},
+{
+"w": "que",
+"start": 28.197,
+"end": 28.386
+},
+{
+"w": "han",
+"start": 28.386,
+"end": 28.575
+},
+{
+"w": "subido",
+"start": 28.575,
+"end": 29.081
+},
+{
+"w": "los",
+"start": 29.081,
+"end": 29.27
+},
+{
+"w": "precios.",
+"start": 29.27,
+"end": 29.617
+}
+]
+},
+{
+"text": "Colau, a Feijóo: cómo puede hablar de buena gestión si el PP mantiene aforado a Mazón.",
+"start": 30.067,
+"end": 35.609,
+"words": [
+{
+"w": "Colau,",
+"start": 30.067,
+"end": 30.414
+},
+{
+"w": "a",
+"start": 30.564,
+"end": 30.753
+},
+{
+"w": "Feijóo:",
+"start": 30.753,
+"end": 31.101
+},
+{
+"w": "cómo",
+"start": 31.251,
+"end": 31.598
+},
+{
+"w": "puede",
+"start": 31.598,
+"end": 31.946
+},
+{
+"w": "hablar",
+"start": 31.946,
+"end": 32.293
+},
+{
+"w": "de",
+"start": 32.293,
+"end": 32.482
+},
+{
+"w": "buena",
+"start": 32.482,
+"end": 32.829
+},
+{
+"w": "gestión",
+"start": 32.829,
+"end": 33.177
+},
+{
+"w": "si",
+"start": 33.177,
+"end": 33.365
+},
+{
+"w": "el",
+"start": 33.365,
+"end": 33.554
+},
+{
+"w": "PP",
+"start": 33.554,
+"end": 33.902
+},
+{
+"w": "mantiene",
+"start": 33.902,
+"end": 34.408
+},
+{
+"w": "aforado",
+"start": 34.408,
+"end": 35.073
+},
+{
+"w": "a",
+"start": 35.073,
+"end": 35.261
+},
+{
+"w": "Mazón.",
+"start": 35.261,
+"end": 35.609
+}
+]
+},
+{
+"text": "Y Feijóo, a Colau: «Y usted, calladita». Sánchez lo llamó machista; Feijóo dice que le reprochaba callar sobre Paiporta.",
+"start": 36.059,
+"end": 43.111,
+"words": [
+{
+"w": "Y",
+"start": 36.059,
+"end": 36.248
+},
+{
+"w": "Feijóo,",
+"start": 36.248,
+"end": 36.595
+},
+{
+"w": "a",
+"start": 36.745,
+"end": 36.934
+},
+{
+"w": "Colau:",
+"start": 36.934,
+"end": 37.281
+},
+{
+"w": "«Y",
+"start": 37.431,
+"end": 37.62
+},
+{
+"w": "usted,",
+"start": 37.62,
+"end": 37.967
+},
+{
+"w": "calladita».",
+"start": 38.117,
+"end": 38.782
+},
+{
+"w": "Sánchez",
+"start": 38.782,
+"end": 39.13
+},
+{
+"w": "lo",
+"start": 39.13,
+"end": 39.319
+},
+{
+"w": "llamó",
+"start": 39.319,
+"end": 39.666
+},
+{
+"w": "machista;",
+"start": 39.666,
+"end": 40.172
+},
+{
+"w": "Feijóo",
+"start": 40.172,
+"end": 40.52
+},
+{
+"w": "dice",
+"start": 40.52,
+"end": 40.867
+},
+{
+"w": "que",
+"start": 40.867,
+"end": 41.056
+},
+{
+"w": "le",
+"start": 41.056,
+"end": 41.245
+},
+{
+"w": "reprochaba",
+"start": 41.245,
+"end": 41.91
+},
+{
+"w": "callar",
+"start": 41.91,
+"end": 42.257
+},
+{
+"w": "sobre",
+"start": 42.257,
+"end": 42.604
+},
+{
+"w": "Paiporta.",
+"start": 42.604,
+"end": 43.111
+}
+]
+},
+{
+"text": "Abascal llamó «buitre» a Sánchez mientras se hablaba de fondos buitre, y «banda de guarros» a quienes le acompañaron en sus primarias de dos mil diecisiete.",
+"start": 43.561,
+"end": 52.11,
+"words": [
+{
+"w": "Abascal",
+"start": 43.561,
+"end": 44.067
+},
+{
+"w": "llamó",
+"start": 44.067,
+"end": 44.414
+},
+{
+"w": "«buitre»",
+"start": 44.414,
+"end": 44.762
+},
+{
+"w": "a",
+"start": 44.762,
+"end": 44.95
+},
+{
+"w": "Sánchez",
+"start": 44.95,
+"end": 45.298
+},
+{
+"w": "mientras",
+"start": 45.298,
+"end": 45.645
+},
+{
+"w": "se",
+"start": 45.645,
+"end": 45.834
+},
+{
+"w": "hablaba",
+"start": 45.834,
+"end": 46.34
+},
+{
+"w": "de",
+"start": 46.34,
+"end": 46.529
+},
+{
+"w": "fondos",
+"start": 46.529,
+"end": 46.877
+},
+{
+"w": "buitre,",
+"start": 46.877,
+"end": 47.224
+},
+{
+"w": "y",
+"start": 47.374,
+"end": 47.563
+},
+{
+"w": "«banda",
+"start": 47.563,
+"end": 47.91
+},
+{
+"w": "de",
+"start": 47.91,
+"end": 48.099
+},
+{
+"w": "guarros»",
+"start": 48.099,
+"end": 48.446
+},
+{
+"w": "a",
+"start": 48.446,
+"end": 48.635
+},
+{
+"w": "quienes",
+"start": 48.635,
+"end": 48.983
+},
+{
+"w": "le",
+"start": 48.983,
+"end": 49.171
+},
+{
+"w": "acompañaron",
+"start": 49.171,
+"end": 49.995
+},
+{
+"w": "en",
+"start": 49.995,
+"end": 50.184
+},
+{
+"w": "sus",
+"start": 50.184,
+"end": 50.372
+},
+{
+"w": "primarias",
+"start": 50.372,
+"end": 50.879
+},
+{
+"w": "de",
+"start": 50.879,
+"end": 51.067
+},
+{
+"w": "dos",
+"start": 51.067,
+"end": 51.256
+},
+{
+"w": "mil",
+"start": 51.256,
+"end": 51.445
+},
+{
+"w": "diecisiete.",
+"start": 51.445,
+"end": 52.11
+}
+]
+},
+{
+"text": "Sánchez, a PP y Vox: que gobernar juntos sería «la motosierra de ciento doce mil millones al año».",
+"start": 52.56,
+"end": 58.479,
+"words": [
+{
+"w": "Sánchez,",
+"start": 52.56,
+"end": 52.907
+},
+{
+"w": "a",
+"start": 53.057,
+"end": 53.246
+},
+{
+"w": "PP",
+"start": 53.246,
+"end": 53.593
+},
+{
+"w": "y",
+"start": 53.593,
+"end": 53.782
+},
+{
+"w": "Vox:",
+"start": 53.782,
+"end": 53.971
+},
+{
+"w": "que",
+"start": 54.121,
+"end": 54.31
+},
+{
+"w": "gobernar",
+"start": 54.31,
+"end": 54.816
+},
+{
+"w": "juntos",
+"start": 54.816,
+"end": 55.163
+},
+{
+"w": "sería",
+"start": 55.163,
+"end": 55.511
+},
+{
+"w": "«la",
+"start": 55.511,
+"end": 55.699
+},
+{
+"w": "motosierra",
+"start": 55.699,
+"end": 56.364
+},
+{
+"w": "de",
+"start": 56.364,
+"end": 56.553
+},
+{
+"w": "ciento",
+"start": 56.553,
+"end": 56.9
+},
+{
+"w": "doce",
+"start": 56.9,
+"end": 57.248
+},
+{
+"w": "mil",
+"start": 57.248,
+"end": 57.437
+},
+{
+"w": "millones",
+"start": 57.437,
+"end": 57.943
+},
+{
+"w": "al",
+"start": 57.943,
+"end": 58.132
+},
+{
+"w": "año».",
+"start": 58.132,
+"end": 58.479
+}
+]
+},
+{
+"text": "Y a Feijóo y Abascal: que él es el único de los tres que hizo la mili y juró bandera. Abascal le contestó que él había hecho más servicio militar.",
+"start": 58.929,
+"end": 67.916,
+"words": [
+{
+"w": "Y",
+"start": 58.929,
+"end": 59.118
+},
+{
+"w": "a",
+"start": 59.118,
+"end": 59.307
+},
+{
+"w": "Feijóo",
+"start": 59.307,
+"end": 59.654
+},
+{
+"w": "y",
+"start": 59.654,
+"end": 59.843
+},
+{
+"w": "Abascal:",
+"start": 59.843,
+"end": 60.349
+},
+{
+"w": "que",
+"start": 60.499,
+"end": 60.688
+},
+{
+"w": "él",
+"start": 60.688,
+"end": 60.876
+},
+{
+"w": "es",
+"start": 60.876,
+"end": 61.065
+},
+{
+"w": "el",
+"start": 61.065,
+"end": 61.254
+},
+{
+"w": "único",
+"start": 61.254,
+"end": 61.76
+},
+{
+"w": "de",
+"start": 61.76,
+"end": 61.949
+},
+{
+"w": "los",
+"start": 61.949,
+"end": 62.137
+},
+{
+"w": "tres",
+"start": 62.137,
+"end": 62.326
+},
+{
+"w": "que",
+"start": 62.326,
+"end": 62.515
+},
+{
+"w": "hizo",
+"start": 62.515,
+"end": 62.862
+},
+{
+"w": "la",
+"start": 62.862,
+"end": 63.051
+},
+{
+"w": "mili",
+"start": 63.051,
+"end": 63.399
+},
+{
+"w": "y",
+"start": 63.399,
+"end": 63.587
 },
 {
 "w": "juró",
-"start": 29.591,
-"end": 29.938
+"start": 63.587,
+"end": 63.935
 },
 {
 "w": "bandera.",
-"start": 29.938,
-"end": 30.444
+"start": 63.935,
+"end": 64.441
+},
+{
+"w": "Abascal",
+"start": 64.441,
+"end": 64.947
+},
+{
+"w": "le",
+"start": 64.947,
+"end": 65.136
+},
+{
+"w": "contestó",
+"start": 65.136,
+"end": 65.642
+},
+{
+"w": "que",
+"start": 65.642,
+"end": 65.831
+},
+{
+"w": "él",
+"start": 65.831,
+"end": 66.02
+},
+{
+"w": "había",
+"start": 66.02,
+"end": 66.367
+},
+{
+"w": "hecho",
+"start": 66.367,
+"end": 66.714
+},
+{
+"w": "más",
+"start": 66.714,
+"end": 66.903
+},
+{
+"w": "servicio",
+"start": 66.903,
+"end": 67.409
+},
+{
+"w": "militar.",
+"start": 67.409,
+"end": 67.916
 }
 ]
 },
 {
 "text": "Colau, a Abascal: que es una vergüenza normalizar insultos como los suyos.",
-"start": 30.894,
-"end": 35.523,
+"start": 68.366,
+"end": 72.994,
 "words": [
 {
 "w": "Colau,",
-"start": 30.894,
-"end": 31.242
+"start": 68.366,
+"end": 68.713
 },
 {
 "w": "a",
-"start": 31.392,
-"end": 31.581
+"start": 68.863,
+"end": 69.052
 },
 {
 "w": "Abascal:",
-"start": 31.581,
-"end": 32.087
+"start": 69.052,
+"end": 69.558
 },
 {
 "w": "que",
-"start": 32.237,
-"end": 32.426
+"start": 69.708,
+"end": 69.897
 },
 {
 "w": "es",
-"start": 32.426,
-"end": 32.614
+"start": 69.897,
+"end": 70.085
 },
 {
 "w": "una",
-"start": 32.614,
-"end": 32.962
+"start": 70.085,
+"end": 70.433
 },
 {
 "w": "vergüenza",
-"start": 32.962,
-"end": 33.468
+"start": 70.433,
+"end": 70.939
 },
 {
 "w": "normalizar",
-"start": 33.468,
-"end": 34.133
+"start": 70.939,
+"end": 71.604
 },
 {
 "w": "insultos",
-"start": 34.133,
-"end": 34.639
+"start": 71.604,
+"end": 72.11
 },
 {
 "w": "como",
-"start": 34.639,
-"end": 34.987
+"start": 72.11,
+"end": 72.458
 },
 {
 "w": "los",
-"start": 34.987,
-"end": 35.175
+"start": 72.458,
+"end": 72.646
 },
 {
 "w": "suyos.",
-"start": 35.175,
-"end": 35.523
+"start": 72.646,
+"end": 72.994
 }
 ]
 },
 {
-"text": "Y un dato: Sánchez y Colau se tutearon; Feijóo y Abascal apenas se dirigieron la palabra.",
-"start": 35.973,
-"end": 41.523,
+"text": "Un dato: Sánchez y Colau se tutearon; Feijóo y Abascal apenas se dirigieron la palabra.",
+"start": 73.444,
+"end": 78.806,
 "words": [
 {
-"w": "Y",
-"start": 35.973,
-"end": 36.161
-},
-{
-"w": "un",
-"start": 36.161,
-"end": 36.35
+"w": "Un",
+"start": 73.444,
+"end": 73.633
 },
 {
 "w": "dato:",
-"start": 36.35,
-"end": 36.698
+"start": 73.633,
+"end": 73.98
 },
 {
 "w": "Sánchez",
-"start": 36.848,
-"end": 37.195
+"start": 74.13,
+"end": 74.477
 },
 {
 "w": "y",
-"start": 37.195,
-"end": 37.384
+"start": 74.477,
+"end": 74.666
 },
 {
 "w": "Colau",
-"start": 37.384,
-"end": 37.731
+"start": 74.666,
+"end": 75.014
 },
 {
 "w": "se",
-"start": 37.731,
-"end": 37.92
+"start": 75.014,
+"end": 75.202
 },
 {
 "w": "tutearon;",
-"start": 37.92,
-"end": 38.426
+"start": 75.202,
+"end": 75.709
 },
 {
 "w": "Feijóo",
-"start": 38.426,
-"end": 38.774
+"start": 75.709,
+"end": 76.056
 },
 {
 "w": "y",
-"start": 38.774,
-"end": 38.962
+"start": 76.056,
+"end": 76.245
 },
 {
 "w": "Abascal",
-"start": 38.962,
-"end": 39.469
+"start": 76.245,
+"end": 76.751
 },
 {
 "w": "apenas",
-"start": 39.469,
-"end": 39.975
+"start": 76.751,
+"end": 77.257
 },
 {
 "w": "se",
-"start": 39.975,
-"end": 40.163
+"start": 77.257,
+"end": 77.446
 },
 {
 "w": "dirigieron",
-"start": 40.163,
-"end": 40.828
+"start": 77.446,
+"end": 78.111
 },
 {
 "w": "la",
-"start": 40.828,
-"end": 41.017
+"start": 78.111,
+"end": 78.3
 },
 {
 "w": "palabra.",
-"start": 41.017,
-"end": 41.523
+"start": 78.3,
+"end": 78.806
 }
 ]
 },
 {
 "text": "¿Quién ganó? La ley prohíbe publicar encuestas hasta el domingo: eso lo decides tú.",
-"start": 41.973,
-"end": 46.829,
+"start": 79.256,
+"end": 84.111,
 "words": [
 {
 "w": "¿Quién",
-"start": 41.973,
-"end": 42.162
+"start": 79.256,
+"end": 79.444
 },
 {
 "w": "ganó?",
-"start": 42.162,
-"end": 42.51
+"start": 79.444,
+"end": 79.792
 },
 {
 "w": "La",
-"start": 42.51,
-"end": 42.698
+"start": 79.792,
+"end": 79.981
 },
 {
 "w": "ley",
-"start": 42.698,
-"end": 42.887
+"start": 79.981,
+"end": 80.169
 },
 {
 "w": "prohíbe",
-"start": 42.887,
-"end": 43.393
+"start": 80.169,
+"end": 80.676
 },
 {
 "w": "publicar",
-"start": 43.393,
-"end": 43.899
+"start": 80.676,
+"end": 81.182
 },
 {
 "w": "encuestas",
-"start": 43.899,
-"end": 44.406
+"start": 81.182,
+"end": 81.688
 },
 {
 "w": "hasta",
-"start": 44.406,
-"end": 44.753
+"start": 81.688,
+"end": 82.035
 },
 {
 "w": "el",
-"start": 44.753,
-"end": 44.942
+"start": 82.035,
+"end": 82.224
 },
 {
 "w": "domingo:",
-"start": 44.942,
-"end": 45.448
+"start": 82.224,
+"end": 82.73
 },
 {
 "w": "eso",
-"start": 45.598,
-"end": 45.945
+"start": 82.88,
+"end": 83.228
 },
 {
 "w": "lo",
-"start": 45.945,
-"end": 46.134
+"start": 83.228,
+"end": 83.417
 },
 {
 "w": "decides",
-"start": 46.134,
-"end": 46.64
+"start": 83.417,
+"end": 83.923
 },
 {
 "w": "tú.",
-"start": 46.64,
-"end": 46.829
+"start": 83.923,
+"end": 84.111
 }
 ]
 },
 {
 "text": "Mándaselo a quien no vio el debate.",
-"start": 47.279,
-"end": 49.394,
+"start": 84.561,
+"end": 86.676,
 "words": [
 {
 "w": "Mándaselo",
-"start": 47.279,
-"end": 47.944
+"start": 84.561,
+"end": 85.226
 },
 {
 "w": "a",
-"start": 47.944,
-"end": 48.133
+"start": 85.226,
+"end": 85.415
 },
 {
 "w": "quien",
-"start": 48.133,
-"end": 48.321
+"start": 85.415,
+"end": 85.604
 },
 {
 "w": "no",
-"start": 48.321,
-"end": 48.51
+"start": 85.604,
+"end": 85.793
 },
 {
 "w": "vio",
-"start": 48.51,
-"end": 48.699
+"start": 85.793,
+"end": 85.981
 },
 {
 "w": "el",
-"start": 48.699,
-"end": 48.888
+"start": 85.981,
+"end": 86.17
 },
 {
 "w": "debate.",
-"start": 48.888,
-"end": 49.394
+"start": 86.17,
+"end": 86.676
 }
 ]
 }
