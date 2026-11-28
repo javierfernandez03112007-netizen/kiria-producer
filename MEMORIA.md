@@ -419,7 +419,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   máquinas 3.000–5.040 en tramos de 340 (ramas `render-e6-1…6`): cada una tardó ≈ 5 minutos con la escena ligera del debate (≈ 1 fotograma por segundo
   aquí con 2 procesos). Un fotograma de cada máquina repetido aquí: idéntico (diferencia media 0,000). Lección: entre el arranque del render local y el
   envío de los mensajes pasaron ≈ 35 minutos sin que se hiciera nada: enviar los mensajes a las máquinas lo PRIMERO, en cuanto Javi dé permiso.
-- **«Empieza torcido» VERSIÓN 2 (28-11-2026, en blanco, negro y grises).** Javi vio la versión 1 (abajo) y dijo: «No me gusta nada, en tonos blancos
+- **«La sombra» (`projects/la_sombra/`, 28-11-2026), formato «Metáfora visual».** Javi, al ver «Empieza torcido» v2: «Cambia de tema no me gusta nada,
+  más despacio más largo y mejor hecho». Se le propusieron tres temas (la sombra, las raíces, el círculo de luz) y eligió **la sombra**. 21 s sin voz, en
+  blanco, negro y grises: habitación a oscuras, pared de yeso (textura con grietas), suelo de hormigón y un farol con vela en el suelo (foco con sombra
+  en la llama, 2048, hacia la pared; luz puntual baja para el suelo; parpadeo de la llama que hace temblar la sombra). Él (maniquí gris claro) está entre
+  el farol y la pared: su sombra mide ≈ 9 m (física real: escala = distancia farol–pared / distancia farol–él); se sobresalta, retrocede dos pasos (la
+  sombra crece y se sale del plano), se encoge tapándose la cabeza y tiembla, se calma, respira, avanza (primer paso con duda) y la sombra encoge con
+  cada paso; al llegar, gira hacia la pared y la toca: su mano y la de su sombra se juntan. Andar nuevo sin pies que patinen (`23_walk.js`: la fase sale
+  de la distancia andada, zancada 1,05 m × amplitud) y posturas de miedo (`poseCower`, `poseStartle`, `shake`, `breath`). Frase en dos líneas:
+  «DE CERCA, EL MIEDO / ES DE TU TAMAÑO.». Sonido: pasos calculados con la misma curva que la escena (`compose_sombra.py`), corazón rápido → lento,
+  latido al tocar la pared. Lección: la cámara del principio tiene que enseñar a la vez al muñeco pequeño y la sombra entera (cámara baja que mira hacia
+  arriba); con la cámara alta, el muñeco quedaba fuera del plano.
+- **«Empieza torcido» VERSIÓN 2 (28-11-2026, en blanco, negro y grises). Tampoco le gustó («cambia de tema»).** Javi vio la versión 1 (abajo) y dijo: «No me gusta nada, en tonos blancos
   negros y grises y que sea de otra manera, eso no pega». **Lección: en estos vídeos sin voz, nada de colores cálidos ni escenarios recargados: fondo
   negro, una sola luz blanca que cuenta la historia y el personaje grande** (además, `engine/REGLAS.md` ya pedía monocromo). Rehecha en el mismo
   proyecto (`30_stage.js`): todo negro, suelo oscuro con un charco de luz, una puerta que flota arriba a la derecha (marco que brilla, hoja oscura con
