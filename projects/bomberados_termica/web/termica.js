@@ -1478,6 +1478,7 @@ function subframes(t) {
 }
 
 function camAt(t) {
+  if (window.COVER_CAM && window.COVER_T !== undefined) { const c = window.COVER_CAM; return pose(V(c[0], c[1], c[2]), V(c[3], c[4], c[5]), c[6]); }   // portada: cámara a medida
   const v = hermite(KH, t), s = Math.min(1, Math.hypot(v[0] - v[3], v[1] - v[4], v[2] - v[5]) / 2);
   const sh = 0.004 * pulse(t, T.lac + 0.05, 0.12);
   return pose(V(v[0] + 0.012 * s * Math.sin(t * 0.7) + sh * Math.sin(t * 90), v[1] + 0.01 * s * Math.sin(t * 0.53 + 1) + sh * Math.sin(t * 70), v[2]), V(v[3], v[4], v[5]), v[6]);
@@ -1851,9 +1852,9 @@ async function overlay(t) {
   const cur = t < cB ? 'A' : t < cC ? 'B' : t < T.cnt0 ? 'C' : ['A', 'B', 'C'][Math.floor((t - T.cnt0) / 0.42) % 3], chosen = t >= sel;
   const ap = (t0) => sm(t0, t0 + 0.18, t) * (1 - sm(hide, hide + 0.3, t));
   if (COV) {
-    marker(PA_(), 'A', 1, 0, t); marker(PB_(), 'B', 1, 0, t); marker(PC_(), 'C', 1, 0, t);
-    card(1110, 'A', 'TRAS LA PARED', 1, 0); card(1265, 'B', 'TRAS EL CRISTAL', 1, 0); card(1420, 'C', 'ENTRE EL HUMO', 1, 0);
-    hud(t); g.setTransform(1, 0, 0, 1, 0, 0); return;
+    if (cam.position.z < 0) { marker(PA_(), 'A', 1, 0, t); marker(PB_(), 'B', 1, 0, t); marker(PC_(), 'C', 1, 0, t); }   // (portada de fuera: sin las letras en su sitio)
+    card(1260, 'A', 'TRAS LA PARED', 1, 0); card(1415, 'B', 'TRAS EL CRISTAL', 1, 0); card(1570, 'C', 'ENTRE EL HUMO', 1, 0);
+    g.setTransform(1, 0, 0, 1, 0, 0); return;
   }
   const mk = (t0) => sm(t0, t0 + 0.18, t) * (1 - sm(sel + 0.25, sel + 0.6, t));
   const counting = t > T.cnt0 && t < sel;
