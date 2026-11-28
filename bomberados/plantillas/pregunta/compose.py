@@ -3984,7 +3984,135 @@ def sfx_track_puntal(path):
         wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
 
 
+def sfx_track_termica(path):
+    """«Salva a tu hermano» (la cámara térmica, como un videojuego): fuera, la calle, la autobomba al ralentí, la radio y el
+    fuego; dentro, el fuego apagado por el humo, la respiración del ERA y el latido de la barra de vida; los sonidos de juego
+    (la misión, «nuevo objeto», cada tarjeta, la cuenta, el acierto); la pantalla que se enciende; la regla de ondas, cada
+    pieza de la cámara por dentro, el cambio de colores; «sin luz» (se apaga todo), el error en la pared, el hielo y el
+    cristal; ¡ahí está! y ¡misión cumplida!; la pregunta y la venta de Élite. Tiempos como en termica.js."""
+    N2 = int((END + 1) * sfx.SR)
+    out = np.zeros((N2, 2))
+    amb = np.zeros((N2, 2))
+    c = {k: at(v) for k, v in Q["cues"].items()}
+    fin = c["compartir"] - 0.25
+    tic, bub, nota, toque, golpe = _onset(_load("tic")), _onset(_load("burbuja")), _onset(_load("nota")), _onset(_load("toque")), _onset(_load("golpe"))
+    wh, w2, fallo = _onset(_load("whoosh")), _onset(_load("whoosh2")), _onset(_load("fallo"))
+
+    def put(x, t0, db, dur, fi=0.005, fo=0.1, track=None, g=1.0):
+        x = _onset(_load(x)) if isinstance(x, str) else x
+        _put(out if track is None else track, _tramo(_to(x, db), max(0.05, dur), fi, fo), max(0.0, t0), g)
+
+    dentro = c["nada"] - 0.2                     # el dron cruza la puerta
+    sale = c["sacais"] - 0.15                    # y vuelve a salir (a la ambulancia)
+    # fuera: la calle, la autobomba al ralentí, la radio, el fuego y una sirena lejos
+    put(_loop(_load("ciudad"), END + 0.5), 0.0, -35, dentro + 0.4, 0.3, 0.5, track=amb)
+    put(_loop(_load("motor"), END + 0.5), 0.0, -37, dentro + 0.4, 0.4, 0.5, track=amb)
+    put(_loop(_load("fuego"), END + 0.5), 0.0, -28, dentro + 0.6, 0.2, 0.6, track=amb)
+    put("radio", 0.5, -33, 2.0, 0.05, 0.3, track=amb)
+    put("sirena", 0.2, -38, 3.5, 0.5, 0.8, track=amb)
+    # dentro: el fuego, más grave y apagado por el humo; las brasas; la respiración del ERA
+    put(_pitch(_loop(_load("fuego"), END + 0.5), 0.7), dentro, -27, sale - dentro, 0.4, 0.3, track=amb)
+    put(_loop(_load("brasas"), END + 0.5), dentro, -33, sale - dentro, 0.4, 0.3, track=amb)
+    aire = _onset(_load("aire"))
+    k = dentro + 0.6
+    while k < sale - 1.0:
+        put(aire, k, -31, 1.6, 0.05, 0.35, track=amb)
+        k += 3.4
+    put(w2, dentro - 0.15, -24, 0.8, 0.02, 0.2)
+    # el latido de la barra de vida (hasta que lo sacáis) y la capa de juego
+    put(_loop(_load("latido"), c["sacais"] + 1), 0.15, -27, c["sacais"] - 0.2, 0.3, 0.4)
+    put(_pitch(_load("destello"), 1.2), 0.05, -27, 0.6, 0.002, 0.2)
+    put(_pitch(nota, 1.25), c["hermano"] - 0.03, -27, 0.6)
+    # «nuevo objeto»: la cámara térmica
+    put(_pitch(_load("logro"), 1.35), c["llevas"] - 0.1, -24, 0.9, 0.005, 0.3)
+    put(_pitch(_load("flip"), 1.2), c["donde"] - 0.25, -26, 0.4)
+    # las tres opciones y su letra en el sitio
+    for kk, p in (("a", 1.0), ("b", 1.15), ("c", 1.3)):
+        put(_pitch(bub, p), c[kk] - 0.12, -23, 0.14, 0.001, 0.05)
+        put(_pitch(tic, 1.6), c[kk] - 0.1, -27, 0.08)
+    # la cuenta atrás (5 s): un tic por segundo y la bocina al final
+    cnt0 = c["segundos"] + 0.55
+    for kk in range(5):
+        put(_pitch(tic, 1.25 if kk < 3 else 1.5), cnt0 + kk, -18, 0.12, 0.001, 0.05)
+        put(_pitch(_load("reloj"), 1.0), cnt0 + kk + 0.5, -30, 0.1, 0.001, 0.04)
+    put("bocina", cnt0 + 5.0 - 0.02, -21, 0.7, 0.005, 0.2)
+    # ¡la C!: acierto y la pantalla de la cámara que se enciende
+    put("acierto", c["lac"] - 0.06, -18, 0.9)
+    put(_pitch(_load("glitch"), 0.8), c["lac"] + 0.1, -24, 0.16, 0.001, 0.05)
+    put(_pitch(_load("rele"), 1.4), c["lac"] + 0.12, -30, 0.25, 0.001, 0.1)
+    put(_pitch(_load("glitch"), 1.1), c["lac"] + 0.32, -27, 0.16, 0.001, 0.05)
+    # paso 1: la regla de ondas (luz, calor, 8–14 µm) y los infrarrojos que emite todo
+    put(_pitch(wh, 1.2), c["luz"] - 0.3, -29, 0.5)
+    put(_pitch(nota, 1.0), c["calor"] - 0.03, -27, 0.6)
+    put(_pitch(toque, 1.3), c["ocho"] - 0.05, -28, 0.4)
+    for kk in range(4):
+        put(_pitch(toque, 0.7 + 0.1 * kk), c["emite"] - 0.05 + 0.22 * kk, -31 + kk, 0.35)
+    put(_pitch(_load("destello"), 1.0), c["mas"] - 0.03, -27, 0.6, 0.002, 0.2)
+    # paso 2: la cámara por dentro, pieza a pieza
+    put(_pitch(wh, 0.9), c["lente"] - 0.35, -28, 0.6)
+    for kk, p in (("lente", 1.0), ("microbolometro", 1.12), ("procesador", 1.25), ("pinta", 1.4)):
+        put(_pitch(bub, p), c[kk] - 0.1, -23, 0.14, 0.001, 0.05)
+    put(_pitch(_load("rele"), 2.0), c["senal"] - 0.05, -30, 0.5, 0.001, 0.1)
+    put(_pitch(_load("glitch"), 1.6), c["senal"] + 0.15, -30, 0.16, 0.001, 0.05)
+    put(_pitch(nota, 1.2), c["pantalla"] - 0.03, -28, 0.5)
+    # paso 3: los colores (al decir «rojo», la pantalla se parte en dos)
+    put(_pitch(toque, 1.4), c["blanco"] - 0.04, -28, 0.4)
+    put(_pitch(_load("flip"), 0.9), c["rojo"] - 0.15, -25, 0.4)
+    put(_pitch(toque, 0.9), c["negro"] - 0.04, -28, 0.4)
+    put(_pitch(toque, 1.1), c["azul"] - 0.04, -28, 0.4)
+    # paso 4: sin luz (se apaga todo), a través del humo; la víctima y el foco del fuego
+    put(_pitch(_load("rele"), 0.7), c["ve"] - 0.08, -24, 0.3, 0.001, 0.1)
+    put(_pitch(golpe, 0.45), c["ve"] - 0.05, -25, 0.5, 0.002, 0.3)
+    put(_pitch(toque, 1.2), c["sinluz"] - 0.04, -28, 0.4)
+    put(_pitch(toque, 1.35), c["humo3"] - 0.04, -28, 0.4)
+    put(_pitch(nota, 1.3), c["victimas"] - 0.03, -26, 0.6)
+    put(_pitch(_load("fuego"), 1.1), c["foco"] - 0.1, -26, 0.9, 0.05, 0.3)
+    # pero no atraviesa paredes, hielo ni cristal: el error de juego; y en el cristal, tú
+    put(_pitch(wh, 1.1), c["paredes"] - 0.5, -29, 0.5)
+    put(fallo, c["paredes"] - 0.02, -25, 0.6, 0.002, 0.15)
+    put(_pitch(fallo, 1.15), c["hielo"] - 0.02, -27, 0.5, 0.002, 0.15)
+    put(_pitch(wh, 1.0), c["hielo"] + 0.1, -29, 0.7)
+    put(_pitch(fallo, 1.3), c["cristal2"] - 0.02, -27, 0.5, 0.002, 0.15)
+    put(_pitch(toque, 1.8), c["cristal3"] - 0.03, -26, 0.5)
+    put(_pitch(_load("destello"), 1.4), c["verias"] - 0.03, -27, 0.5, 0.002, 0.2)
+    # ¡ahí está!: el zoom sobre tu hermano; ahora sí… ¡lo sacáis!: fuera, a la ambulancia
+    put(_pitch(wh, 0.9), c["ahi"] - 0.4, -27, 0.6)
+    put(_pitch(nota, 1.5), c["ahi"] - 0.02, -24, 0.7)
+    put(_pitch(w2, 0.9), c["ahora"] + 0.1, -25, 0.9)
+    put("logro", c["sacais"] - 0.04, -17, 1.4, 0.005, 0.4)
+    put(_pitch(_load("destello"), 1.3), c["sacais"] - 0.02, -24, 0.6, 0.002, 0.2)
+    put(_loop(_load("ciudad"), END + 0.5), sale, -36, fin - sale, 0.3, 0.4, track=amb)
+    put(_loop(_load("motor"), END + 0.5), sale, -38, fin - sale, 0.3, 0.4, track=amb)
+    put("radio", sale + 0.6, -34, 1.6, 0.05, 0.3, track=amb)
+    # la pregunta (A, B, C) y la venta (Élite)
+    put(_pitch(wh, 0.7), c["elegido"] - 0.3, -27, 0.9)
+    for kk in range(3):
+        put(_pitch(bub, 1.0 + 0.15 * kk), c["elegido"] + 0.1 * kk, -25, 0.14, 0.001, 0.05)
+    for kk in ("compartir", "marca", "prueba"):
+        put("destello", c[kk] - 0.04, -24, 0.6, 0.002, 0.2)
+    put("whoosh2", fin - 0.1, -28, 0.6)
+    av = _onset(_load("avion"))
+    put(av, c["compartir"], -28, 0.62, 0.02, 0.1)
+    put(av, c["compartir"] + 0.6, -30, 0.6, 0.08, 0.15)
+    put(bub, c["compartir"] + 1.2, -24, 0.12, 0.001, 0.04)
+    put("marca", c["marca"] - 0.05, -26, 1.0, 0.002, 0.25)
+    put(_loop(_load("ciudad"), END + 0.5), fin, -38, END - fin, 0.4, 0.3, track=amb)
+    sp = np.zeros(N2 // 480 + 1)
+    for w in WORDS:
+        sp[int((w["start"] - 0.06) * 100):int((w["end"] + 0.06) * 100)] = 1
+    sp = np.convolve(sp, np.ones(14) / 14, "same")
+    duck = 1 - 0.5 * np.interp(np.arange(N2) / sfx.SR * 100, np.arange(len(sp)), sp)
+    out += amb * duck[:, None]
+    y = np.tanh(out) * 0.98
+    import wave
+    with wave.open(path, "wb") as wv:
+        wv.setnchannels(2); wv.setsampwidth(2); wv.setframerate(sfx.SR)
+        wv.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+
+
 def sfx_any(path):
+    if Q.get("formato") == "termica":
+        return sfx_track_termica(path)
     if Q.get("formato") == "puntal":
         return sfx_track_puntal(path)
     if Q.get("formato") == "trinquete":

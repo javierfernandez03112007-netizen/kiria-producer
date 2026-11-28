@@ -1,0 +1,400 @@
+{
+ "formato": "termica",
+ "estilo": "app",
+ "voz": {
+  "tempo": 1.0,
+  "count": 5.0,
+  "count_line": 2,
+  "cortar": false,
+  "pause_def": 0.3
+ },
+ "realce": [
+  "compartir",
+  "marca",
+  "prueba"
+ ],
+ "compartir_a": "QUIEN QUIERA SER BOMBERO",
+ "compartir_titulo": "¿A QUIÉN SE LO MANDAS?",
+ "portada": {
+  "titulo": "¿DÓNDE LE VES?",
+  "etiqueta": "SALVA A TU HERMANO",
+  "t": 9.6,
+  "oscurecer": true
+ },
+ "mezcla": {
+  "sfx": 0.85,
+  "ganancia": 0.0
+ },
+ "cues": {
+  "hermano": [
+   "hermano",
+   1,
+   1
+  ],
+  "dentro": [
+   "dentro",
+   1,
+   1
+  ],
+  "casa": [
+   "casa",
+   1,
+   1
+  ],
+  "humo": [
+   "humo",
+   1,
+   1
+  ],
+  "nada": [
+   "nada",
+   1,
+   1
+  ],
+  "llevas": [
+   "Llevas",
+   1,
+   2
+  ],
+  "termica": [
+   "térmica",
+   1,
+   2
+  ],
+  "donde": [
+   "Dónde",
+   1,
+   2
+  ],
+  "a": [
+   "A",
+   1,
+   2
+  ],
+  "pared": [
+   "pared",
+   1,
+   2
+  ],
+  "b": [
+   "B",
+   1,
+   2
+  ],
+  "cristal": [
+   "cristal",
+   1,
+   2
+  ],
+  "c": [
+   "C",
+   1,
+   2
+  ],
+  "humo2": [
+   "humo",
+   1,
+   2
+  ],
+  "cinco": [
+   "Cinco",
+   1,
+   3
+  ],
+  "segundos": [
+   "segundos",
+   1,
+   3
+  ],
+  "lac": [
+   "C",
+   1,
+   4
+  ],
+  "camara2": [
+   "cámara",
+   1,
+   4
+  ],
+  "luz": [
+   "luz",
+   1,
+   4
+  ],
+  "calor": [
+   "calor",
+   1,
+   4
+  ],
+  "infrarrojos": [
+   "infrarrojos",
+   1,
+   4
+  ],
+  "ocho": [
+   "ocho",
+   1,
+   4
+  ],
+  "catorce": [
+   "catorce",
+   1,
+   4
+  ],
+  "micras": [
+   "micras",
+   1,
+   4
+  ],
+  "cuerpo": [
+   "cuerpo",
+   1,
+   5
+  ],
+  "cero": [
+   "cero",
+   1,
+   5
+  ],
+  "absoluto": [
+   "absoluto",
+   1,
+   5
+  ],
+  "emite": [
+   "emite",
+   1,
+   5
+  ],
+  "caliente": [
+   "caliente",
+   1,
+   5
+  ],
+  "mas": [
+   "más",
+   2,
+   5
+  ],
+  "lente": [
+   "lente",
+   1,
+   6
+  ],
+  "germanio": [
+   "germanio",
+   1,
+   6
+  ],
+  "enfoca": [
+   "enfoca",
+   1,
+   6
+  ],
+  "microbolometro": [
+   "microbolómetro",
+   1,
+   6
+  ],
+  "senal": [
+   "señal",
+   1,
+   6
+  ],
+  "electrica": [
+   "eléctrica",
+   1,
+   6
+  ],
+  "procesador": [
+   "procesador",
+   1,
+   6
+  ],
+  "pinta": [
+   "pinta",
+   1,
+   6
+  ],
+  "pantalla": [
+   "pantalla",
+   1,
+   6
+  ],
+  "caliente2": [
+   "Caliente",
+   1,
+   7
+  ],
+  "blanco": [
+   "blanco",
+   1,
+   7
+  ],
+  "rojo": [
+   "rojo",
+   1,
+   7
+  ],
+  "frio": [
+   "frío",
+   1,
+   7
+  ],
+  "negro": [
+   "negro",
+   1,
+   7
+  ],
+  "azul": [
+   "azul",
+   1,
+   7
+  ],
+  "ve": [
+   "Ve",
+   1,
+   8
+  ],
+  "sinluz": [
+   "luz",
+   1,
+   8
+  ],
+  "humo3": [
+   "humo",
+   1,
+   8
+  ],
+  "encuentras": [
+   "encuentras",
+   1,
+   8
+  ],
+  "victimas": [
+   "víctimas",
+   1,
+   8
+  ],
+  "foco": [
+   "foco",
+   1,
+   8
+  ],
+  "fuego": [
+   "fuego",
+   1,
+   8
+  ],
+  "pero": [
+   "Pero",
+   1,
+   9
+  ],
+  "atraviesa": [
+   "atraviesa",
+   1,
+   9
+  ],
+  "paredes": [
+   "paredes",
+   1,
+   9
+  ],
+  "hielo": [
+   "hielo",
+   1,
+   9
+  ],
+  "cristal2": [
+   "cristal",
+   1,
+   9
+  ],
+  "cristal3": [
+   "cristal",
+   2,
+   9
+  ],
+  "verias": [
+   "verías",
+   1,
+   9
+  ],
+  "ti": [
+   "ti",
+   1,
+   9
+  ],
+  "ahi": [
+   "Ahí",
+   1,
+   10
+  ],
+  "suelo": [
+   "suelo",
+   1,
+   10
+  ],
+  "pasillo": [
+   "pasillo",
+   1,
+   10
+  ],
+  "ahora": [
+   "Ahora",
+   1,
+   10
+  ],
+  "sacais": [
+   "sacáis",
+   1,
+   10
+  ],
+  "elegido": [
+   "elegido",
+   1,
+   11
+  ],
+  "comenta": [
+   "Comenta",
+   1,
+   11
+  ],
+  "letra": [
+   "letra",
+   1,
+   11
+  ],
+  "compartir": [
+   "Mándaselo",
+   1,
+   12
+  ],
+  "acierta": [
+   "quien",
+   1,
+   12
+  ],
+  "descripcion": [
+   "Opositas",
+   1,
+   13
+  ],
+  "marca": [
+   "Élite",
+   1,
+   13
+  ],
+  "prueba": [
+   "Sin",
+   1,
+   13
+  ],
+  "permanencia": [
+   "permanencia",
+   1,
+   13
+  ]
+ }
+}

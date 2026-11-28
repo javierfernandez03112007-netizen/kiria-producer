@@ -1,0 +1,908 @@
+[
+ {
+  "text": "Es tu hermano. Está dentro de esa casa… y el humo no te deja ver nada.",
+  "start": 0.0,
+  "end": 5.057,
+  "words": [
+   {
+    "w": "Es",
+    "start": 0.0,
+    "end": 0.18
+   },
+   {
+    "w": "tu",
+    "start": 0.18,
+    "end": 0.36
+   },
+   {
+    "w": "hermano.",
+    "start": 0.36,
+    "end": 1.899
+   },
+   {
+    "w": "Está",
+    "start": 1.899,
+    "end": 2.099
+   },
+   {
+    "w": "dentro",
+    "start": 2.099,
+    "end": 2.399
+   },
+   {
+    "w": "de",
+    "start": 2.399,
+    "end": 2.499
+   },
+   {
+    "w": "esa",
+    "start": 2.499,
+    "end": 2.649
+   },
+   {
+    "w": "casa…",
+    "start": 2.649,
+    "end": 3.418
+   },
+   {
+    "w": "y",
+    "start": 3.418,
+    "end": 3.495
+   },
+   {
+    "w": "el",
+    "start": 3.495,
+    "end": 3.588
+   },
+   {
+    "w": "humo",
+    "start": 3.588,
+    "end": 3.908
+   },
+   {
+    "w": "no",
+    "start": 3.908,
+    "end": 4.068
+   },
+   {
+    "w": "te",
+    "start": 4.068,
+    "end": 4.148
+   },
+   {
+    "w": "deja",
+    "start": 4.148,
+    "end": 4.547
+   },
+   {
+    "w": "ver",
+    "start": 4.547,
+    "end": 4.787
+   },
+   {
+    "w": "nada.",
+    "start": 4.787,
+    "end": 5.057
+   }
+  ]
+ },
+ {
+  "text": "Llevas una cámara térmica. ¿Dónde le ves? ¿A, tras la pared? ¿B, tras el cristal? ¿O C, entre el humo?",
+  "start": 5.447,
+  "end": 12.323,
+  "words": [
+   {
+    "w": "Llevas",
+    "start": 5.447,
+    "end": 5.827
+   },
+   {
+    "w": "una",
+    "start": 5.827,
+    "end": 5.987
+   },
+   {
+    "w": "cámara",
+    "start": 5.987,
+    "end": 6.306
+   },
+   {
+    "w": "térmica.",
+    "start": 6.306,
+    "end": 7.016
+   },
+   {
+    "w": "¿Dónde",
+    "start": 7.016,
+    "end": 7.266
+   },
+   {
+    "w": "le",
+    "start": 7.266,
+    "end": 7.506
+   },
+   {
+    "w": "ves?",
+    "start": 7.506,
+    "end": 8.046
+   },
+   {
+    "w": "¿A,",
+    "start": 8.046,
+    "end": 8.435
+   },
+   {
+    "w": "tras",
+    "start": 8.435,
+    "end": 8.625
+   },
+   {
+    "w": "la",
+    "start": 8.625,
+    "end": 8.785
+   },
+   {
+    "w": "pared?",
+    "start": 8.785,
+    "end": 9.415
+   },
+   {
+    "w": "¿B,",
+    "start": 9.415,
+    "end": 9.954
+   },
+   {
+    "w": "tras",
+    "start": 9.954,
+    "end": 10.144
+   },
+   {
+    "w": "el",
+    "start": 10.144,
+    "end": 10.304
+   },
+   {
+    "w": "cristal?",
+    "start": 10.304,
+    "end": 11.104
+   },
+   {
+    "w": "¿O",
+    "start": 11.104,
+    "end": 11.184
+   },
+   {
+    "w": "C,",
+    "start": 11.184,
+    "end": 11.703
+   },
+   {
+    "w": "entre",
+    "start": 11.703,
+    "end": 11.903
+   },
+   {
+    "w": "el",
+    "start": 11.903,
+    "end": 12.063
+   },
+   {
+    "w": "humo?",
+    "start": 12.063,
+    "end": 12.323
+   }
+  ]
+ },
+ {
+  "text": "¡Cinco segundos!",
+  "start": 12.533,
+  "end": 13.463,
+  "words": [
+   {
+    "w": "¡Cinco",
+    "start": 12.533,
+    "end": 12.943
+   },
+   {
+    "w": "segundos!",
+    "start": 12.943,
+    "end": 13.463
+   }
+  ]
+ },
+ {
+  "text": "¡La C! La cámara térmica no ve la luz: ve el calor, los infrarrojos de ocho a catorce micras.",
+  "start": 18.742,
+  "end": 24.939,
+  "words": [
+   {
+    "w": "¡La",
+    "start": 18.742,
+    "end": 18.982
+   },
+   {
+    "w": "C!",
+    "start": 18.982,
+    "end": 19.682
+   },
+   {
+    "w": "La",
+    "start": 19.682,
+    "end": 19.782
+   },
+   {
+    "w": "cámara",
+    "start": 19.782,
+    "end": 20.102
+   },
+   {
+    "w": "térmica",
+    "start": 20.102,
+    "end": 20.581
+   },
+   {
+    "w": "no",
+    "start": 20.581,
+    "end": 20.741
+   },
+   {
+    "w": "ve",
+    "start": 20.741,
+    "end": 21.061
+   },
+   {
+    "w": "la",
+    "start": 21.061,
+    "end": 21.141
+   },
+   {
+    "w": "luz:",
+    "start": 21.141,
+    "end": 21.621
+   },
+   {
+    "w": "ve",
+    "start": 21.621,
+    "end": 21.861
+   },
+   {
+    "w": "el",
+    "start": 21.861,
+    "end": 22.021
+   },
+   {
+    "w": "calor,",
+    "start": 22.021,
+    "end": 22.73
+   },
+   {
+    "w": "los",
+    "start": 22.73,
+    "end": 22.82
+   },
+   {
+    "w": "infrarrojos",
+    "start": 22.82,
+    "end": 23.54
+   },
+   {
+    "w": "de",
+    "start": 23.54,
+    "end": 23.7
+   },
+   {
+    "w": "ocho",
+    "start": 23.7,
+    "end": 24.019
+   },
+   {
+    "w": "a",
+    "start": 24.019,
+    "end": 24.099
+   },
+   {
+    "w": "catorce",
+    "start": 24.099,
+    "end": 24.499
+   },
+   {
+    "w": "micras.",
+    "start": 24.499,
+    "end": 24.939
+   }
+  ]
+ },
+ {
+  "text": "Todo cuerpo por encima del cero absoluto los emite: cuanto más caliente, más.",
+  "start": 25.259,
+  "end": 29.696,
+  "words": [
+   {
+    "w": "Todo",
+    "start": 25.259,
+    "end": 25.459
+   },
+   {
+    "w": "cuerpo",
+    "start": 25.459,
+    "end": 25.778
+   },
+   {
+    "w": "por",
+    "start": 25.778,
+    "end": 25.938
+   },
+   {
+    "w": "encima",
+    "start": 25.938,
+    "end": 26.258
+   },
+   {
+    "w": "del",
+    "start": 26.258,
+    "end": 26.418
+   },
+   {
+    "w": "cero",
+    "start": 26.418,
+    "end": 26.818
+   },
+   {
+    "w": "absoluto",
+    "start": 26.818,
+    "end": 27.218
+   },
+   {
+    "w": "los",
+    "start": 27.218,
+    "end": 27.458
+   },
+   {
+    "w": "emite:",
+    "start": 27.458,
+    "end": 28.107
+   },
+   {
+    "w": "cuanto",
+    "start": 28.107,
+    "end": 28.417
+   },
+   {
+    "w": "más",
+    "start": 28.417,
+    "end": 28.577
+   },
+   {
+    "w": "caliente,",
+    "start": 28.577,
+    "end": 29.376
+   },
+   {
+    "w": "más.",
+    "start": 29.376,
+    "end": 29.696
+   }
+  ]
+ },
+ {
+  "text": "Una lente de germanio los enfoca, el microbolómetro los convierte en señal eléctrica y el procesador la pinta en la pantalla.",
+  "start": 30.026,
+  "end": 36.283,
+  "words": [
+   {
+    "w": "Una",
+    "start": 30.026,
+    "end": 30.096
+   },
+   {
+    "w": "lente",
+    "start": 30.096,
+    "end": 30.416
+   },
+   {
+    "w": "de",
+    "start": 30.416,
+    "end": 30.496
+   },
+   {
+    "w": "germanio",
+    "start": 30.496,
+    "end": 31.135
+   },
+   {
+    "w": "los",
+    "start": 31.135,
+    "end": 31.295
+   },
+   {
+    "w": "enfoca,",
+    "start": 31.295,
+    "end": 31.885
+   },
+   {
+    "w": "el",
+    "start": 31.885,
+    "end": 32.005
+   },
+   {
+    "w": "microbolómetro",
+    "start": 32.005,
+    "end": 32.815
+   },
+   {
+    "w": "los",
+    "start": 32.815,
+    "end": 32.894
+   },
+   {
+    "w": "convierte",
+    "start": 32.894,
+    "end": 33.294
+   },
+   {
+    "w": "en",
+    "start": 33.294,
+    "end": 33.454
+   },
+   {
+    "w": "señal",
+    "start": 33.454,
+    "end": 33.774
+   },
+   {
+    "w": "eléctrica",
+    "start": 33.774,
+    "end": 34.334
+   },
+   {
+    "w": "y",
+    "start": 34.334,
+    "end": 34.494
+   },
+   {
+    "w": "el",
+    "start": 34.494,
+    "end": 34.574
+   },
+   {
+    "w": "procesador",
+    "start": 34.574,
+    "end": 35.133
+   },
+   {
+    "w": "la",
+    "start": 35.133,
+    "end": 35.293
+   },
+   {
+    "w": "pinta",
+    "start": 35.293,
+    "end": 35.693
+   },
+   {
+    "w": "en",
+    "start": 35.693,
+    "end": 35.773
+   },
+   {
+    "w": "la",
+    "start": 35.773,
+    "end": 35.853
+   },
+   {
+    "w": "pantalla.",
+    "start": 35.853,
+    "end": 36.283
+   }
+  ]
+ },
+ {
+  "text": "Caliente, blanco o rojo; frío, negro o azul.",
+  "start": 36.572,
+  "end": 39.881,
+  "words": [
+   {
+    "w": "Caliente,",
+    "start": 36.572,
+    "end": 37.292
+   },
+   {
+    "w": "blanco",
+    "start": 37.292,
+    "end": 37.692
+   },
+   {
+    "w": "o",
+    "start": 37.692,
+    "end": 37.932
+   },
+   {
+    "w": "rojo;",
+    "start": 37.932,
+    "end": 38.511
+   },
+   {
+    "w": "frío,",
+    "start": 38.511,
+    "end": 39.051
+   },
+   {
+    "w": "negro",
+    "start": 39.051,
+    "end": 39.451
+   },
+   {
+    "w": "o",
+    "start": 39.451,
+    "end": 39.611
+   },
+   {
+    "w": "azul.",
+    "start": 39.611,
+    "end": 39.881
+   }
+  ]
+ },
+ {
+  "text": "Ve sin luz y a través del humo: así encuentras a las víctimas y el foco del fuego.",
+  "start": 40.19,
+  "end": 44.728,
+  "words": [
+   {
+    "w": "Ve",
+    "start": 40.19,
+    "end": 40.49
+   },
+   {
+    "w": "sin",
+    "start": 40.49,
+    "end": 40.65
+   },
+   {
+    "w": "luz",
+    "start": 40.65,
+    "end": 40.89
+   },
+   {
+    "w": "y",
+    "start": 40.89,
+    "end": 41.05
+   },
+   {
+    "w": "a",
+    "start": 41.05,
+    "end": 41.13
+   },
+   {
+    "w": "través",
+    "start": 41.13,
+    "end": 41.37
+   },
+   {
+    "w": "del",
+    "start": 41.37,
+    "end": 41.61
+   },
+   {
+    "w": "humo:",
+    "start": 41.61,
+    "end": 42.129
+   },
+   {
+    "w": "así",
+    "start": 42.129,
+    "end": 42.409
+   },
+   {
+    "w": "encuentras",
+    "start": 42.409,
+    "end": 42.969
+   },
+   {
+    "w": "a",
+    "start": 42.969,
+    "end": 43.049
+   },
+   {
+    "w": "las",
+    "start": 43.049,
+    "end": 43.209
+   },
+   {
+    "w": "víctimas",
+    "start": 43.209,
+    "end": 43.609
+   },
+   {
+    "w": "y",
+    "start": 43.609,
+    "end": 43.768
+   },
+   {
+    "w": "el",
+    "start": 43.768,
+    "end": 43.928
+   },
+   {
+    "w": "foco",
+    "start": 43.928,
+    "end": 44.248
+   },
+   {
+    "w": "del",
+    "start": 44.248,
+    "end": 44.408
+   },
+   {
+    "w": "fuego.",
+    "start": 44.408,
+    "end": 44.728
+   }
+  ]
+ },
+ {
+  "text": "Pero no atraviesa paredes, hielo ni cristal: en un cristal, te verías a ti.",
+  "start": 45.008,
+  "end": 50.035,
+  "words": [
+   {
+    "w": "Pero",
+    "start": 45.008,
+    "end": 45.208
+   },
+   {
+    "w": "no",
+    "start": 45.208,
+    "end": 45.447
+   },
+   {
+    "w": "atraviesa",
+    "start": 45.447,
+    "end": 46.167
+   },
+   {
+    "w": "paredes,",
+    "start": 46.167,
+    "end": 46.727
+   },
+   {
+    "w": "hielo",
+    "start": 46.727,
+    "end": 47.127
+   },
+   {
+    "w": "ni",
+    "start": 47.127,
+    "end": 47.366
+   },
+   {
+    "w": "cristal:",
+    "start": 47.366,
+    "end": 48.106
+   },
+   {
+    "w": "en",
+    "start": 48.106,
+    "end": 48.205
+   },
+   {
+    "w": "un",
+    "start": 48.205,
+    "end": 48.326
+   },
+   {
+    "w": "cristal,",
+    "start": 48.326,
+    "end": 48.936
+   },
+   {
+    "w": "te",
+    "start": 48.936,
+    "end": 49.045
+   },
+   {
+    "w": "verías",
+    "start": 49.045,
+    "end": 49.445
+   },
+   {
+    "w": "a",
+    "start": 49.445,
+    "end": 49.605
+   },
+   {
+    "w": "ti.",
+    "start": 49.605,
+    "end": 50.035
+   }
+  ]
+ },
+ {
+  "text": "Ahí está, en el suelo del pasillo. Ahora sí… ¡lo sacáis!",
+  "start": 50.035,
+  "end": 54.123,
+  "words": [
+   {
+    "w": "Ahí",
+    "start": 50.035,
+    "end": 50.485
+   },
+   {
+    "w": "está,",
+    "start": 50.485,
+    "end": 50.944
+   },
+   {
+    "w": "en",
+    "start": 50.944,
+    "end": 51.025
+   },
+   {
+    "w": "el",
+    "start": 51.025,
+    "end": 51.124
+   },
+   {
+    "w": "suelo",
+    "start": 51.124,
+    "end": 51.444
+   },
+   {
+    "w": "del",
+    "start": 51.444,
+    "end": 51.604
+   },
+   {
+    "w": "pasillo.",
+    "start": 51.604,
+    "end": 52.464
+   },
+   {
+    "w": "Ahora",
+    "start": 52.464,
+    "end": 52.803
+   },
+   {
+    "w": "sí…",
+    "start": 52.803,
+    "end": 53.393
+   },
+   {
+    "w": "¡lo",
+    "start": 53.393,
+    "end": 53.523
+   },
+   {
+    "w": "sacáis!",
+    "start": 53.523,
+    "end": 54.123
+   }
+  ]
+ },
+ {
+  "text": "¿Tú qué habrías elegido? Comenta tu letra.",
+  "start": 54.502,
+  "end": 56.651,
+  "words": [
+   {
+    "w": "¿Tú",
+    "start": 54.502,
+    "end": 54.601
+   },
+   {
+    "w": "qué",
+    "start": 54.601,
+    "end": 54.722
+   },
+   {
+    "w": "habrías",
+    "start": 54.722,
+    "end": 55.122
+   },
+   {
+    "w": "elegido?",
+    "start": 55.122,
+    "end": 55.802
+   },
+   {
+    "w": "Comenta",
+    "start": 55.802,
+    "end": 56.241
+   },
+   {
+    "w": "tu",
+    "start": 56.241,
+    "end": 56.401
+   },
+   {
+    "w": "letra.",
+    "start": 56.401,
+    "end": 56.651
+   }
+  ]
+ },
+ {
+  "text": "¡Mándaselo a quien quiera ser bombero!",
+  "start": 56.961,
+  "end": 58.93,
+  "words": [
+   {
+    "w": "¡Mándaselo",
+    "start": 56.961,
+    "end": 57.681
+   },
+   {
+    "w": "a",
+    "start": 57.681,
+    "end": 57.761
+   },
+   {
+    "w": "quien",
+    "start": 57.761,
+    "end": 58.001
+   },
+   {
+    "w": "quiera",
+    "start": 58.001,
+    "end": 58.32
+   },
+   {
+    "w": "ser",
+    "start": 58.32,
+    "end": 58.48
+   },
+   {
+    "w": "bombero!",
+    "start": 58.48,
+    "end": 58.93
+   }
+  ]
+ },
+ {
+  "text": "¿Opositas? ¡Élite Bomberos! ¡Sin matrícula y sin permanencia!",
+  "start": 59.24,
+  "end": 63.427,
+  "words": [
+   {
+    "w": "¿Opositas?",
+    "start": 59.24,
+    "end": 59.862
+   },
+   {
+    "w": "¡Élite",
+    "start": 59.862,
+    "end": 60.639
+   },
+   {
+    "w": "Bomberos!",
+    "start": 60.639,
+    "end": 61.439
+   },
+   {
+    "w": "¡Sin",
+    "start": 61.439,
+    "end": 61.678
+   },
+   {
+    "w": "matrícula",
+    "start": 61.678,
+    "end": 62.318
+   },
+   {
+    "w": "y",
+    "start": 62.318,
+    "end": 62.478
+   },
+   {
+    "w": "sin",
+    "start": 62.478,
+    "end": 62.718
+   },
+   {
+    "w": "permanencia!",
+    "start": 62.718,
+    "end": 63.427
+   }
+  ]
+ }
+]
