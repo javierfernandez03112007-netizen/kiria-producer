@@ -1376,6 +1376,7 @@ function buildInnards() {
 let T = {}, KEYS = null, KH = null;
 function setupTimes() {
   T = { ...CUE, end: END };
+  T.hermano = 0.35; T.dentro = 0.75; T.casa = 2.25;                      // la entrada, con tiempos fijos (no depende de cómo caiga la 1.ª frase de la voz)
   T.fin = T.compartir - 0.25;
   T.cnt0 = T.segundos + 0.55; T.cnt1 = T.cnt0 + 5.0;                    // la cuenta atrás (5 s): elige tú
   T.on = T.lac + 0.1;                                                    // se enciende la pantalla de la cámara
