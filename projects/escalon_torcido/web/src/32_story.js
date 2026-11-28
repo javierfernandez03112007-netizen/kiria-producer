@@ -29,7 +29,7 @@ async function buildScene() {
   TL.rw0 = TL.quieto8 - 0.1; TL.rw1 = TL.mejorar - 0.05; TL.gr0 = TL.mejorar + 0.05; TL.gr1 = TL.multiplica + 0.15;
   const G = new THREE.Group(); scene.add(G); S.G = G;
   S.isl = island(G); S.H = buildHouse(G); S.tree = seasonTree(G, WIN.x + 0.2, HO.zb - 2.1);
-  S.cnt = slabCounter(G);
+  S.cnt = slabCounter(G); buildFall(G);
   buildStairs(G);
   S.bench = workbench(G); S.stool = stool(G); S.lamp = deskLamp(G); S.block = perfectBlock(); G.add(S.block); S.block.position.copy(BLOCK0);
   paperBalls(G); S.sk = sketches(G); S.spot = theaterSpot(G);

@@ -43,13 +43,13 @@ function hudAt(t) { hudBegin(); const T = TL, n = stairN(t);
   chipC('CREÍAN: LA MITAD (1 DE CADA 2)', 640, '#FFB547', win(t, T.mitad - 0.1, 0.3) * (1 - win(t, T.nadie, 0.4)), 28);
   chipC('DE VERDAD: 1 DE CADA 4', 730, '#62E3D4', win(t, T.cuatro - 0.15, 0.3) * (1 - win(t, T.nadie, 0.4)), 30);
   // ---- L8: el año otra vez: 1,01 elevado al día
-  { const k = win(t, T.ciento - 0.1, 0.3) * (1 - win(t, T.escalon9 - 0.3, 0.4)); if (k > 0.01) { const d = dayOf(n); hg.save(); hg.globalAlpha = k; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '3px';
+  { const k = win(t, T.ciento - 0.1, 0.3) * (1 - win(t, T.E[8] + 0.02, 0.3)); if (k > 0.01) { const d = dayOf(n); hg.save(); hg.globalAlpha = k; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '3px';
       hg.fillStyle = 'rgba(12,14,20,0.72)'; rr(hg, W / 2 - 215, 556, 450, 84, 42); hg.fill();
       hfont(34); hg.fillStyle = '#FFF4E2'; hg.fillText('1,01', W / 2 - 46, 600); hfont(22); hg.fillText(String(d), W / 2 + 18, 578); hfont(34); hg.fillStyle = '#FFC861'; hg.fillText('= ' + fmt1(mult(d)), W / 2 + 125, 600); hg.restore(); } }
   // él, arriba del todo de su escalera (al final de L2 y en el ×37)
   { const k = win(t, T.todos - 0.2, 0.3) * (1 - win(t, T.abajo3, 0.25)); if (k > 0.01 && CAST.T.visible) {
-      const P = proj(CAST.T.position.clone().add(_v(0, 0.85, 0))); if (P.ok && P.x > 40 && P.x < W - 40 && P.y > 420 && P.y < H - 200) { brackets(P, 90, 130, k, '#FFC861', 3);
+      const P = proj(CAST.T.position.clone().add(_v(0, 0.85, 0))); if (P.ok && P.x > 40 && P.x < W - 40 && P.y > 400 && P.y < H - 200) { brackets(P, 90, 130, k, '#FFC861', 3);
         hg.save(); hg.globalAlpha = k; hfont(24); hg.letterSpacing = '3px'; hg.textAlign = 'center'; hg.fillStyle = '#FFC861'; hg.fillText('ÉL · DÍA ' + dayOf(n), P.x, P.y + 100); hg.restore(); } } }
-  bigText('×37,8', W / 2, 760, 150, '#FFC861', win(t, T.treinta - 0.05, 0.3) * (1 - win(t, T.escalon9 - 0.3, 0.4)), { glow: 30, dark: 24, type: false });
+  bigText('×37,8', W / 2, 760, 150, '#FFC861', win(t, T.treinta - 0.05, 0.3) * (1 - win(t, T.E[8] + 0.02, 0.3)), { glow: 30, dark: 24, type: false });
 }
 window.labelsAt = function (t) { frame(t); return { p: [], h: [], k: [] }; };

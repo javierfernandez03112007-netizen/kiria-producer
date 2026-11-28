@@ -108,7 +108,7 @@ function animAt(t, st) {
   const n = stairN(t); stairsAt(n, t);
   counterDraw(S.cnt, { txt: 'DÍA ' + dayOf(n) }); S.cnt.material.opacity = clamp((st.p.distanceTo(S.cnt.position) - 4.5) / 1.5) * (1 - 0.9 * darkK(t)); S.cnt.visible = S.cnt.material.opacity > 0.01;
   papersAt(t > TL.rw0 && t < TL.gr1 + 0.5 ? clamp(n / ST.N) : 1);
-  animSeason(t, n); animA(t); animB(t); animT(t, n); animAud(t); animSpot(t); animHatch(t); animGlint(t);
+  animSeason(t, n); fallAt(t); animA(t); animB(t); animT(t, n); animAud(t); animSpot(t); animHatch(t); animGlint(t);
   S.block.position.copy(blockPos(t)); S.block.rotation.y = 0;
   S.lamp.bulbM.emissiveIntensity = 3.0 * lampK(t);
 }

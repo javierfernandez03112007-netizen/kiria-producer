@@ -1621,7 +1621,7 @@ async function buildScene() {
   TL.rw0 = TL.quieto8 - 0.1; TL.rw1 = TL.mejorar - 0.05; TL.gr0 = TL.mejorar + 0.05; TL.gr1 = TL.multiplica + 0.15;
   const G = new THREE.Group(); scene.add(G); S.G = G;
   S.isl = island(G); S.H = buildHouse(G); S.tree = seasonTree(G, WIN.x + 0.2, HO.zb - 2.1);
-  S.cnt = slabCounter(G);
+  S.cnt = slabCounter(G); buildFall(G);
   buildStairs(G);
   S.bench = workbench(G); S.stool = stool(G); S.lamp = deskLamp(G); S.block = perfectBlock(); G.add(S.block); S.block.position.copy(BLOCK0);
   paperBalls(G); S.sk = sketches(G); S.spot = theaterSpot(G);
@@ -1660,8 +1660,11 @@ function buildCam() { const T = TL, WIDE = [[0.0, 3.0, 14.6], [0.0, 3.55, 0.0], 
     [T.dia2, [0.6, 4.9, 6.2], [0.4, 5.4, -0.8], 46],
     [T.torcidos + 0.1, [0.9, 5.7, 5.9], [0.7, 6.3, -0.8], 46],                            // los ángulos de los bloques (por delante de la casa)
     [T.casi + 0.25, [1.0, 6.0, 5.6], [0.7, 6.9, -0.8], 46],
-    [T.E[2] + 0.3, [1.5, 7.9, 4.6], [0.4, 30, -2.2], 50],                                // escalera arriba, hasta el cielo
-    [T.abajo3 + 0.35, [0.3, 1.45, 3.4], [0.0, 1.0, 0.3], 42],                          // baja deprisa al de abajo
+    [T.todos + 0.15, [1.2, 6.8, 5.2], [0.6, 12.5, -1.4], 48],                            // mira escalera arriba…
+    [T.E[2] + 0.15, [1.5, 7.9, 4.6], [0.4, 30, -2.2], 50],                               // …hasta el cielo (él, arriba del todo)
+    [T.L[3] + 0.08, [1.45, 7.8, 4.65], [0.45, 30, -2.0], 49],
+    [T.abajo3 - 0.05, [0.8, 3.7, 7.2], [0.1, 2.0, 0.0], 46],                             // baja por delante de la casa
+    [T.abajo3 + 0.35, [0.3, 1.45, 3.4], [0.0, 1.0, 0.3], 42],                          // al de abajo
     [T.cerebro + 0.1, [0.15, 1.4, 1.95], [-0.12, 1.1, 0.42], 38],                         // su cabeza: el cerebro
     [T.foco + 0.25, [0.32, 1.62, 2.8], [-0.02, 1.0, 0.35], 42],                            // el foco
     [T.mundo + 0.1, [0.55, 2.95, 7.8], [-0.1, 1.05, 0.5], 42],                              // detrás de la sala
@@ -1673,8 +1676,10 @@ function buildCam() { const T = TL, WIDE = [[0.0, 3.0, 14.6], [0.0, 3.55, 0.0], 
     [T.mejorar, [0.0, 3.0, 13.6], [0.0, 3.5, 0.0], 50],                                   // la casa entera: el año otra vez
     [T.anyo8, [0.0, 4.6, 15.4], [0.0, 6.2, 0.0], 50],
     [T.siete + 0.2, [1.5, 7.9, 4.6], [0.4, 34, -2.2], 54],                                // ×37: escalera arriba
-    [T.escalon9 + 0.25, [0.55, 0.95, 2.6], [-0.05, 1.7, 0.45], 46],                        // baja a la trampilla, mirando un poco arriba
-    [T.poco, [0.48, 1.25, 1.55], [0.07, 2.0, 0.42], 44],                                  // las dos manos
+    [T.E[8] + 0.3, [0.9, 3.9, 7.6], [0.15, 1.9, 0.0], 46],                                // baja por delante de la casa
+    [T.escalon9 + 0.25, [0.25, 1.1, 3.5], [0.0, 1.5, 0.4], 50],                           // la planta baja: el de abajo y la trampilla que se abre
+    [T.deja9b, [0.3, 1.15, 3.1], [0.02, 1.6, 0.42], 48],                                  // se levanta y pone su escalón
+    [T.poco, [0.48, 1.3, 1.75], [0.07, 1.95, 0.42], 44],                                  // las dos manos
     [T.manda + 0.3, [0.6, 0.9, 2.2], [0.05, 2.9, 0.35], 50],                               // mira arriba mientras sube
     [T.quien + 0.05, [0.5, 1.2, 2.7], [0.02, 1.0, 0.4], 46],                               // baja al banco: otra persona
     [T.perfecto, [0.15, 2.4, 8.2], [0.05, 2.0, 0.0], 48],
@@ -1847,10 +1852,28 @@ function animAt(t, st) {
   const n = stairN(t); stairsAt(n, t);
   counterDraw(S.cnt, { txt: 'DÍA ' + dayOf(n) }); S.cnt.material.opacity = clamp((st.p.distanceTo(S.cnt.position) - 4.5) / 1.5) * (1 - 0.9 * darkK(t)); S.cnt.visible = S.cnt.material.opacity > 0.01;
   papersAt(t > TL.rw0 && t < TL.gr1 + 0.5 ? clamp(n / ST.N) : 1);
-  animSeason(t, n); animA(t); animB(t); animT(t, n); animAud(t); animSpot(t); animHatch(t); animGlint(t);
+  animSeason(t, n); fallAt(t); animA(t); animB(t); animT(t, n); animAud(t); animSpot(t); animHatch(t); animGlint(t);
   S.block.position.copy(blockPos(t)); S.block.rotation.y = 0;
   S.lamp.bulbM.emissiveIntensity = 3.0 * lampK(t);
 }
+// ---------------------------------------------------------------- «El escalón torcido»: LAS ESTACIONES QUE CAEN (solo en el año otra vez, L8): nieve en invierno,
+// pétalos en primavera y hojas en otoño alrededor de la casa (también se ven por las ventanas). Fuera del año otra vez no cae nada (el bucle no cambia).
+const FALL = { N: 700, box: [-5.5, 5.5, -1.5, 10.5, -5.0, 3.2] };
+let _dotT = null;
+function dotTex() { if (_dotT) return _dotT; const c = cnv(64, 64), g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 30); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.55, 'rgba(255,255,255,0.85)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, 64, 64); _dotT = new THREE.CanvasTexture(c); return _dotT; }
+function buildFall(G) { const R = rng(91), [x0, x1, y0, y1, z0, z1] = FALL.box; S.fall = [];
+  for (const [kind, col, size, n] of [['snow', 0xffffff, 0.07, FALL.N], ['petal', 0xffc2d6, 0.06, 420], ['leaf', 0xe0812c, 0.08, 420]]) {
+    const pos = new Float32Array(n * 3), seed = []; for (let i = 0; i < n; i++) { const s = { x: x0 + R() * (x1 - x0), y: y0 + R() * (y1 - y0), z: z0 + R() * (z1 - z0), v: kind === 'snow' ? 0.6 + R() * 0.5 : 0.9 + R() * 0.6, ph: R() * 6.28, a: 0.15 + R() * 0.3 };
+      // nada dentro de la casa (las plantas se ven limpias)
+      if (s.x > HO.x0 - 0.3 && s.x < HO.x1 + 0.3 && s.z > HO.zb - 0.3 && s.z < HO.zf + 0.2) s.z = HO.zb - 0.6 - R() * 3.5;
+      seed.push(s); }
+    const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const m = new THREE.PointsMaterial({ color: col, size, map: dotTex(), transparent: true, opacity: 0, depthWrite: false, sizeAttenuation: true, fog: true });
+    const p = new THREE.Points(geo, m); p.frustumCulled = false; p.visible = false; G.add(p); S.fall.push({ kind, p, seed, m }); } }
+function fallAt(t) { const lap = win(t, TL.gr0 - 0.1, 0.25) * (1 - win(t, TL.gr1, 0.35)), w = S.season || [0, 0, 1, 0], [x0, x1, y0, y1] = FALL.box, Hh = y1 - y0;
+  for (const F of S.fall) { const k = lap * (F.kind === 'snow' ? w[0] : F.kind === 'petal' ? w[1] : w[3]); F.p.visible = k > 0.02; F.m.opacity = 0.95 * k; if (!F.p.visible) continue;
+    const a = F.p.geometry.attributes.position; F.seed.forEach((s, i) => { const y = y1 - ((y1 - s.y + s.v * t) % Hh + Hh) % Hh; a.setXYZ(i, s.x + Math.sin(t * 1.3 + s.ph) * s.a, y, s.z + Math.cos(t * 1.1 + s.ph) * s.a * 0.6); }); a.needsUpdate = true; } }
 // ---------------------------------------------------------------- «El escalón torcido»: RÓTULOS (formato «Dos vidas»): en cada planta, arriba a la izquierda, lo que hay
 // y cómo es, en monoespaciada; arriba a la derecha, cuánto ha crecido (×37,8 frente a ×1). Y los datos de cada frase: el ángulo de los bloques torcidos, «efecto foco»,
 // Cornell, «creían: la mitad» → «de verdad: 1 de cada 4», 1,01³⁶⁵. Nada por encima de y ≈ 470 (ahí van los subtítulos).
@@ -1896,14 +1919,14 @@ function hudAt(t) { hudBegin(); const T = TL, n = stairN(t);
   chipC('CREÍAN: LA MITAD (1 DE CADA 2)', 640, '#FFB547', win(t, T.mitad - 0.1, 0.3) * (1 - win(t, T.nadie, 0.4)), 28);
   chipC('DE VERDAD: 1 DE CADA 4', 730, '#62E3D4', win(t, T.cuatro - 0.15, 0.3) * (1 - win(t, T.nadie, 0.4)), 30);
   // ---- L8: el año otra vez: 1,01 elevado al día
-  { const k = win(t, T.ciento - 0.1, 0.3) * (1 - win(t, T.escalon9 - 0.3, 0.4)); if (k > 0.01) { const d = dayOf(n); hg.save(); hg.globalAlpha = k; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '3px';
+  { const k = win(t, T.ciento - 0.1, 0.3) * (1 - win(t, T.E[8] + 0.02, 0.3)); if (k > 0.01) { const d = dayOf(n); hg.save(); hg.globalAlpha = k; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '3px';
       hg.fillStyle = 'rgba(12,14,20,0.72)'; rr(hg, W / 2 - 215, 556, 450, 84, 42); hg.fill();
       hfont(34); hg.fillStyle = '#FFF4E2'; hg.fillText('1,01', W / 2 - 46, 600); hfont(22); hg.fillText(String(d), W / 2 + 18, 578); hfont(34); hg.fillStyle = '#FFC861'; hg.fillText('= ' + fmt1(mult(d)), W / 2 + 125, 600); hg.restore(); } }
   // él, arriba del todo de su escalera (al final de L2 y en el ×37)
   { const k = win(t, T.todos - 0.2, 0.3) * (1 - win(t, T.abajo3, 0.25)); if (k > 0.01 && CAST.T.visible) {
-      const P = proj(CAST.T.position.clone().add(_v(0, 0.85, 0))); if (P.ok && P.x > 40 && P.x < W - 40 && P.y > 420 && P.y < H - 200) { brackets(P, 90, 130, k, '#FFC861', 3);
+      const P = proj(CAST.T.position.clone().add(_v(0, 0.85, 0))); if (P.ok && P.x > 40 && P.x < W - 40 && P.y > 400 && P.y < H - 200) { brackets(P, 90, 130, k, '#FFC861', 3);
         hg.save(); hg.globalAlpha = k; hfont(24); hg.letterSpacing = '3px'; hg.textAlign = 'center'; hg.fillStyle = '#FFC861'; hg.fillText('ÉL · DÍA ' + dayOf(n), P.x, P.y + 100); hg.restore(); } } }
-  bigText('×37,8', W / 2, 760, 150, '#FFC861', win(t, T.treinta - 0.05, 0.3) * (1 - win(t, T.escalon9 - 0.3, 0.4)), { glow: 30, dark: 24, type: false });
+  bigText('×37,8', W / 2, 760, 150, '#FFC861', win(t, T.treinta - 0.05, 0.3) * (1 - win(t, T.E[8] + 0.02, 0.3)), { glow: 30, dark: 24, type: false });
 }
 window.labelsAt = function (t) { frame(t); return { p: [], h: [], k: [] }; };
 // ---------------------------------------------------------------- un fotograma
