@@ -1,0 +1,10 @@
+TÉRMICA («Salva a tu hermano») — estado (28 nov, madrugada)
+- Voz: Javi mandó la toma SIN la 1.ª frase («Es tu hermano. Está dentro de esa casa…»): assets/voz_toma1.mp3.
+  Provisional: voz_original = 3,35 s de relleno + la toma (asr_original con 8 palabras inventadas en 0–3,0 s y la toma +3,35 s).
+- Plan: cuando llegue la frase, meterla en el hueco de 3,35 s (recortar silencio inicial para que «Es» empiece ≤ 0,06 s;
+  rellenar con silencio al final o atempo ≤ 1,08 si no cabe), asr solo de esa frase + palabras de la toma tal cual (+3,35),
+  ajustar_voz → comprobar que las cues de las líneas 2–13 NO cambian → re-render SOLO fotogramas 0–389 (≤ 6,5 s) → compose.
+- Render de 390–3878 con commit 5fafcb4: m1 390–910, m2 910–1430, m3 1430–1950, m4 1950–2470, m5 2470–2990, m6 2990–3510,
+  local 3510–3878 (out/frames, 2 procesos). Recoger: ESPERA=6 REV=5fafcb4 bash bomberados/plantillas/pregunta/recoger_trozos.sh projects/bomberados_termica
+- Portada: COVER=1 COVER_T=1.0 COVER_CAM="-0.9,0.75,6.5,-2.3,1.9,0,54" → out/cover1/cover3d.png (ya hecho). Tras compose:
+  copiar como out/frames/f00060.jpg y portada.py (video.json portada.t = 1.0).
