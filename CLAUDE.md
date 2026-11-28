@@ -14,8 +14,8 @@ Motor: `engine/` (Python: audio, subtítulos, marioneta, dibujo 2D) y `engine/we
 `compose_*.py` (subtítulos, marioneta, voz), `FUENTES.md` y `DESCRIPCION.txt`.
 
 Formatos guardados: `engine/FORMATO_CODIGO.md` (algoritmos: monitor con código arriba + barras 3D de plástico abajo,
-sonido sintetizado con `engine/sfx.py`; plantilla `projects/burbuja/`) y `engine/FORMATO_DOS_VIDAS.md` (dos vidas en paralelo, una sola decisión
-distinta: casa de dos plantas, contador en medio, final emocional; plantilla `projects/escalon_torcido/`).
+sonido sintetizado con `engine/sfx.py`; plantilla `projects/burbuja/`) y `engine/FORMATO_METAFORA.md` (vídeo corto SIN voz: una metáfora visual que se
+entiende sola, frase corta arriba, efectos de sonido; 8–12 s; plantilla `projects/empieza_torcido/`). `engine/FORMATO_DOS_VIDAS.md` quedó descartado (Javi, 28-11).
 
 Sección **Bomberados** (vídeos para la marca, estructuras propias): antes de cualquier vídeo de Bomberados lee
 `bomberados/MARCA.md` (qué cambia respecto a kiria.ai), `bomberados/FORMATOS.md` e `bomberados/IDEAS.md`.

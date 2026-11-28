@@ -419,7 +419,19 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   máquinas 3.000–5.040 en tramos de 340 (ramas `render-e6-1…6`): cada una tardó ≈ 5 minutos con la escena ligera del debate (≈ 1 fotograma por segundo
   aquí con 2 procesos). Un fotograma de cada máquina repetido aquí: idéntico (diferencia media 0,000). Lección: entre el arranque del render local y el
   envío de los mensajes pasaron ≈ 35 minutos sin que se hiciera nada: enviar los mensajes a las máquinas lo PRIMERO, en cuanto Javi dé permiso.
-- **«El escalón torcido» (`projects/escalon_torcido/`, 28-11-2026), primer vídeo del formato «Dos vidas» (`engine/FORMATO_DOS_VIDAS.md`).** Javi mandó un
+- **«Empieza torcido» (`projects/empieza_torcido/`, 28-11-2026), primer vídeo del formato «Metáfora visual» (`engine/FORMATO_METAFORA.md`).**
+  Javi vio la versión con voz de «El escalón torcido» y la paró: «No entiendes, no quiero una comparación de eso, sino un mensaje inspiracional […] o
+  sin mensaje que se muestre todo visualmente […] sin voz, solo con sonidos o alguna canción que le pegue» (con dos vídeos más de @neuronvisuals:
+  el muro entre dos y la multitud vendada hacia el precipicio). **Lección: cuando Javi manda referencias de vídeos cortos sin voz, quiere eso, una
+  metáfora que se entienda sola en 5–12 s, no un vídeo explicativo con voz y datos.** Vídeo de 10 s sin voz: isla que flota partida por la mitad, sótano
+  frío dentro de la roca (tablas, flexo, bocetos tachados), él pule un bloque perfecto junto a un montón de 20 bloques torcidos con una X roja; entra un
+  rayo de sol por la rendija de la trampilla; deja su bloque perfecto en el suelo (primer escalón) y los 20 bloques tachados vuelan uno a uno y forman la
+  escalera (6 columnas: 1 + 2 + 3 + 4 + 5 + 6); sube, se va calentando de gris a blanco, empuja la trampilla, sale a la hierba de cara al sol y el árbol
+  desnudo florece con pétalos. Frase fija arriba: «EMPIEZA TORCIDO.» (monoespaciada, oscura sobre el cielo claro). Sonido: solo efectos de la biblioteca,
+  un golpe de madera por bloque (marcan el ritmo). Tiempos fijos en `32_story.js` (`TT`) y en `compose_empieza.py`; `tiempos.json` solo fija la duración.
+  Lección técnica: la cinemática inversa (`reachTo`, `lookAtP`) trabaja en coordenadas del MUNDO; con el personaje dentro de un grupo desplazado (el sótano,
+  `S.B` en y = −2,95) hay que sumar la posición del grupo a los objetivos (si no, los brazos apuntan al techo).
+- **«El escalón torcido» (`projects/escalon_torcido/`, 28-11-2026), DESCARTADO por Javi (lo sustituye «Empieza torcido», arriba). Era el formato «Dos vidas» (`engine/FORMATO_DOS_VIDAS.md`).** Javi mandó un
   vídeo de @neuronvisuals («5 MINUTES» / «NO TIME») y pidió guardar el formato sin copiarlo, con el mensaje «el que actúa gana al perfeccionista», «muy muy
   sentimental y muy visual» y un recurso de la mente. Guion de 137 palabras (≈ 50 s) con el **efecto foco** (Gilovich, Medvec y Savitsky, 2000, Cornell: la
   camiseta; «creían la mitad, la vio uno de cada cuatro») y el 1 % diario (1,01³⁶⁵ = 37,8). Escena (tiempos provisionales mientras llega la voz): **casa cortada

@@ -1,5 +1,9 @@
 # Formato «Dos vidas» (guardado el 28-11-2026, a petición de Javi)
 
+> **Aviso (28-11-2026):** Javi vio «El escalón torcido» (con voz, datos y comparación) y dijo que no era eso. Lo que quiere es el formato
+> **«Metáfora visual» sin voz**: `engine/FORMATO_METAFORA.md`. Esta página queda solo como registro.
+
+
 Javi (28-11-2026), con un vídeo de @neuronvisuals de referencia («5 MINUTES» / «NO TIME»): «no quiero que lo copies pero guarda ese tipo de
 formato, sin ser los edificios del fondo iguales, y transfiere el mensaje principal: el que hace más obtiene más, el que actúa gana más que el
 perfeccionista… que sea muy muy sentimental y muy visual, puede ser con voz o sin voz contando algún recurso de la mente que no controlamos o tenemos
