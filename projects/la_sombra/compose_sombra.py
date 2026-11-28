@@ -121,7 +121,7 @@ def main(dst=os.path.join(ROOT, "out", "la_sombra.mp4")):
     sfxp = os.path.join(ROOT, "out", "sfx.wav")
     sfx_track(sfxp)
     cmd = ["ffmpeg", "-v", "error", "-y", "-framerate", str(FPS), "-i", os.path.join(FRAMES, "f%05d.jpg"), "-i", sfxp, "-filter_complex",
-           "[1:a]loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000,aformat=channel_layouts=stereo,apad[a]",
+           "[1:a]loudnorm=I=-16:TP=-1.5:LRA=11,volume=2.5dB,alimiter=limit=0.89:level=false,aresample=48000,aformat=channel_layouts=stereo,apad[a]",
            "-map", "0:v", "-map", "[a]", "-frames:v", str(N), "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", "-shortest", "-movflags", "+faststart", dst]
     subprocess.run(cmd, check=True)

@@ -429,7 +429,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   de la distancia andada, zancada 1,05 m × amplitud) y posturas de miedo (`poseCower`, `poseStartle`, `shake`, `breath`). Frase en dos líneas:
   «DE CERCA, EL MIEDO / ES DE TU TAMAÑO.». Sonido: pasos calculados con la misma curva que la escena (`compose_sombra.py`), corazón rápido → lento,
   latido al tocar la pared. Lección: la cámara del principio tiene que enseñar a la vez al muñeco pequeño y la sombra entera (cámara baja que mira hacia
-  arriba); con la cámara alta, el muñeco quedaba fuera del plano.
+  arriba); con la cámara alta, el muñeco quedaba fuera del plano. **ENTREGADO el 28-11-2026 (≈ 10:45 UTC)**: `out/la_sombra.mp4` (21,0 s, 1.260
+  fotogramas, 60 fps, −16,1 LUFS, 21 MB; render aquí ≈ 30 min con 2 procesos; continuidad sin picos) + portada y miniatura (la frase en tres líneas
+  sobre la sombra gigante). Se probó una franja oscura detrás de la frase al final y quedaba peor (una barra gris): se dejó sin ella.
 - **«Empieza torcido» VERSIÓN 2 (28-11-2026, en blanco, negro y grises). Tampoco le gustó («cambia de tema»).** Javi vio la versión 1 (abajo) y dijo: «No me gusta nada, en tonos blancos
   negros y grises y que sea de otra manera, eso no pega». **Lección: en estos vídeos sin voz, nada de colores cálidos ni escenarios recargados: fondo
   negro, una sola luz blanca que cuenta la historia y el personaje grande** (además, `engine/REGLAS.md` ya pedía monocromo). Rehecha en el mismo
