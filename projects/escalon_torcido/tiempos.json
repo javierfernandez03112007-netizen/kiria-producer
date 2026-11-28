@@ -1,0 +1,757 @@
+[
+{
+"text": "El de abajo lleva un año puliendo el mismo escalón.",
+"start": 0.0,
+"end": 3.316,
+"words": [
+{
+"w": "El",
+"start": 0.0,
+"end": 0.189
+},
+{
+"w": "de",
+"start": 0.189,
+"end": 0.377
+},
+{
+"w": "abajo",
+"start": 0.377,
+"end": 0.884
+},
+{
+"w": "lleva",
+"start": 0.884,
+"end": 1.231
+},
+{
+"w": "un",
+"start": 1.231,
+"end": 1.42
+},
+{
+"w": "año",
+"start": 1.42,
+"end": 1.767
+},
+{
+"w": "puliendo",
+"start": 1.767,
+"end": 2.273
+},
+{
+"w": "el",
+"start": 2.273,
+"end": 2.462
+},
+{
+"w": "mismo",
+"start": 2.462,
+"end": 2.81
+},
+{
+"w": "escalón.",
+"start": 2.81,
+"end": 3.316
+}
+]
+},
+{
+"text": "El de arriba ha puesto uno cada día. Torcidos, casi todos.",
+"start": 3.766,
+"end": 7.42,
+"words": [
+{
+"w": "El",
+"start": 3.766,
+"end": 3.955
+},
+{
+"w": "de",
+"start": 3.955,
+"end": 4.143
+},
+{
+"w": "arriba",
+"start": 4.143,
+"end": 4.65
+},
+{
+"w": "ha",
+"start": 4.65,
+"end": 4.838
+},
+{
+"w": "puesto",
+"start": 4.838,
+"end": 5.186
+},
+{
+"w": "uno",
+"start": 5.186,
+"end": 5.533
+},
+{
+"w": "cada",
+"start": 5.533,
+"end": 5.881
+},
+{
+"w": "día.",
+"start": 5.881,
+"end": 6.069
+},
+{
+"w": "Torcidos,",
+"start": 6.069,
+"end": 6.576
+},
+{
+"w": "casi",
+"start": 6.726,
+"end": 7.073
+},
+{
+"w": "todos.",
+"start": 7.073,
+"end": 7.42
+}
+]
+},
+{
+"text": "Y el de abajo no es vago. Su cerebro le hace una trampa: el efecto foco.",
+"start": 7.87,
+"end": 12.786,
+"words": [
+{
+"w": "Y",
+"start": 7.87,
+"end": 8.059
+},
+{
+"w": "el",
+"start": 8.059,
+"end": 8.248
+},
+{
+"w": "de",
+"start": 8.248,
+"end": 8.437
+},
+{
+"w": "abajo",
+"start": 8.437,
+"end": 8.943
+},
+{
+"w": "no",
+"start": 8.943,
+"end": 9.132
+},
+{
+"w": "es",
+"start": 9.132,
+"end": 9.32
+},
+{
+"w": "vago.",
+"start": 9.32,
+"end": 9.668
+},
+{
+"w": "Su",
+"start": 9.668,
+"end": 9.857
+},
+{
+"w": "cerebro",
+"start": 9.857,
+"end": 10.363
+},
+{
+"w": "le",
+"start": 10.363,
+"end": 10.551
+},
+{
+"w": "hace",
+"start": 10.551,
+"end": 10.899
+},
+{
+"w": "una",
+"start": 10.899,
+"end": 11.246
+},
+{
+"w": "trampa:",
+"start": 11.246,
+"end": 11.594
+},
+{
+"w": "el",
+"start": 11.744,
+"end": 11.933
+},
+{
+"w": "efecto",
+"start": 11.933,
+"end": 12.439
+},
+{
+"w": "foco.",
+"start": 12.439,
+"end": 12.786
+}
+]
+},
+{
+"text": "Creemos que todo el mundo está mirando nuestros errores.",
+"start": 13.236,
+"end": 16.363,
+"words": [
+{
+"w": "Creemos",
+"start": 13.236,
+"end": 13.584
+},
+{
+"w": "que",
+"start": 13.584,
+"end": 13.772
+},
+{
+"w": "todo",
+"start": 13.772,
+"end": 14.12
+},
+{
+"w": "el",
+"start": 14.12,
+"end": 14.309
+},
+{
+"w": "mundo",
+"start": 14.309,
+"end": 14.656
+},
+{
+"w": "está",
+"start": 14.656,
+"end": 15.003
+},
+{
+"w": "mirando",
+"start": 15.003,
+"end": 15.51
+},
+{
+"w": "nuestros",
+"start": 15.51,
+"end": 15.857
+},
+{
+"w": "errores.",
+"start": 15.857,
+"end": 16.363
+}
+]
+},
+{
+"text": "En la Universidad de Cornell hicieron entrar a unos estudiantes en clase con una camiseta vergonzosa.",
+"start": 16.813,
+"end": 23.008,
+"words": [
+{
+"w": "En",
+"start": 16.813,
+"end": 17.002
+},
+{
+"w": "la",
+"start": 17.002,
+"end": 17.191
+},
+{
+"w": "Universidad",
+"start": 17.191,
+"end": 18.014
+},
+{
+"w": "de",
+"start": 18.014,
+"end": 18.203
+},
+{
+"w": "Cornell",
+"start": 18.203,
+"end": 18.551
+},
+{
+"w": "hicieron",
+"start": 18.551,
+"end": 19.057
+},
+{
+"w": "entrar",
+"start": 19.057,
+"end": 19.404
+},
+{
+"w": "a",
+"start": 19.404,
+"end": 19.593
+},
+{
+"w": "unos",
+"start": 19.593,
+"end": 19.94
+},
+{
+"w": "estudiantes",
+"start": 19.94,
+"end": 20.605
+},
+{
+"w": "en",
+"start": 20.605,
+"end": 20.794
+},
+{
+"w": "clase",
+"start": 20.794,
+"end": 21.142
+},
+{
+"w": "con",
+"start": 21.142,
+"end": 21.33
+},
+{
+"w": "una",
+"start": 21.33,
+"end": 21.678
+},
+{
+"w": "camiseta",
+"start": 21.678,
+"end": 22.343
+},
+{
+"w": "vergonzosa.",
+"start": 22.343,
+"end": 23.008
+}
+]
+},
+{
+"text": "Creían que la había visto la mitad de la sala. La vio uno de cada cuatro.",
+"start": 23.458,
+"end": 27.588,
+"words": [
+{
+"w": "Creían",
+"start": 23.458,
+"end": 23.646
+},
+{
+"w": "que",
+"start": 23.646,
+"end": 23.835
+},
+{
+"w": "la",
+"start": 23.835,
+"end": 24.024
+},
+{
+"w": "había",
+"start": 24.024,
+"end": 24.371
+},
+{
+"w": "visto",
+"start": 24.371,
+"end": 24.719
+},
+{
+"w": "la",
+"start": 24.719,
+"end": 24.907
+},
+{
+"w": "mitad",
+"start": 24.907,
+"end": 25.255
+},
+{
+"w": "de",
+"start": 25.255,
+"end": 25.444
+},
+{
+"w": "la",
+"start": 25.444,
+"end": 25.632
+},
+{
+"w": "sala.",
+"start": 25.632,
+"end": 25.98
+},
+{
+"w": "La",
+"start": 25.98,
+"end": 26.169
+},
+{
+"w": "vio",
+"start": 26.169,
+"end": 26.357
+},
+{
+"w": "uno",
+"start": 26.357,
+"end": 26.705
+},
+{
+"w": "de",
+"start": 26.705,
+"end": 26.893
+},
+{
+"w": "cada",
+"start": 26.893,
+"end": 27.241
+},
+{
+"w": "cuatro.",
+"start": 27.241,
+"end": 27.588
+}
+]
+},
+{
+"text": "Nadie te mira tanto como crees. Pero el miedo a hacerlo mal te deja quieto.",
+"start": 28.038,
+"end": 32.457,
+"words": [
+{
+"w": "Nadie",
+"start": 28.038,
+"end": 28.386
+},
+{
+"w": "te",
+"start": 28.386,
+"end": 28.575
+},
+{
+"w": "mira",
+"start": 28.575,
+"end": 28.922
+},
+{
+"w": "tanto",
+"start": 28.922,
+"end": 29.27
+},
+{
+"w": "como",
+"start": 29.27,
+"end": 29.617
+},
+{
+"w": "crees.",
+"start": 29.617,
+"end": 29.806
+},
+{
+"w": "Pero",
+"start": 29.806,
+"end": 30.153
+},
+{
+"w": "el",
+"start": 30.153,
+"end": 30.342
+},
+{
+"w": "miedo",
+"start": 30.342,
+"end": 30.689
+},
+{
+"w": "a",
+"start": 30.689,
+"end": 30.878
+},
+{
+"w": "hacerlo",
+"start": 30.878,
+"end": 31.384
+},
+{
+"w": "mal",
+"start": 31.384,
+"end": 31.573
+},
+{
+"w": "te",
+"start": 31.573,
+"end": 31.762
+},
+{
+"w": "deja",
+"start": 31.762,
+"end": 32.109
+},
+{
+"w": "quieto.",
+"start": 32.109,
+"end": 32.457
+}
+]
+},
+{
+"text": "Y quieto no se mejora. Mejorar un uno por ciento cada día, en un año, te multiplica por treinta y siete.",
+"start": 32.907,
+"end": 39.392,
+"words": [
+{
+"w": "Y",
+"start": 32.907,
+"end": 33.095
+},
+{
+"w": "quieto",
+"start": 33.095,
+"end": 33.443
+},
+{
+"w": "no",
+"start": 33.443,
+"end": 33.632
+},
+{
+"w": "se",
+"start": 33.632,
+"end": 33.82
+},
+{
+"w": "mejora.",
+"start": 33.82,
+"end": 34.327
+},
+{
+"w": "Mejorar",
+"start": 34.327,
+"end": 34.833
+},
+{
+"w": "un",
+"start": 34.833,
+"end": 35.021
+},
+{
+"w": "uno",
+"start": 35.021,
+"end": 35.369
+},
+{
+"w": "por",
+"start": 35.369,
+"end": 35.558
+},
+{
+"w": "ciento",
+"start": 35.558,
+"end": 35.905
+},
+{
+"w": "cada",
+"start": 35.905,
+"end": 36.253
+},
+{
+"w": "día,",
+"start": 36.253,
+"end": 36.441
+},
+{
+"w": "en",
+"start": 36.591,
+"end": 36.78
+},
+{
+"w": "un",
+"start": 36.78,
+"end": 36.969
+},
+{
+"w": "año,",
+"start": 36.969,
+"end": 37.316
+},
+{
+"w": "te",
+"start": 37.466,
+"end": 37.655
+},
+{
+"w": "multiplica",
+"start": 37.655,
+"end": 38.32
+},
+{
+"w": "por",
+"start": 38.32,
+"end": 38.509
+},
+{
+"w": "treinta",
+"start": 38.509,
+"end": 38.856
+},
+{
+"w": "y",
+"start": 38.856,
+"end": 39.045
+},
+{
+"w": "siete.",
+"start": 39.045,
+"end": 39.392
+}
+]
+},
+{
+"text": "El escalón torcido no te deja en ridículo. Te deja un poco más arriba.",
+"start": 39.842,
+"end": 44.389,
+"words": [
+{
+"w": "El",
+"start": 39.842,
+"end": 40.031
+},
+{
+"w": "escalón",
+"start": 40.031,
+"end": 40.537
+},
+{
+"w": "torcido",
+"start": 40.537,
+"end": 41.043
+},
+{
+"w": "no",
+"start": 41.043,
+"end": 41.232
+},
+{
+"w": "te",
+"start": 41.232,
+"end": 41.421
+},
+{
+"w": "deja",
+"start": 41.421,
+"end": 41.768
+},
+{
+"w": "en",
+"start": 41.768,
+"end": 41.957
+},
+{
+"w": "ridículo.",
+"start": 41.957,
+"end": 42.622
+},
+{
+"w": "Te",
+"start": 42.622,
+"end": 42.811
+},
+{
+"w": "deja",
+"start": 42.811,
+"end": 43.158
+},
+{
+"w": "un",
+"start": 43.158,
+"end": 43.347
+},
+{
+"w": "poco",
+"start": 43.347,
+"end": 43.694
+},
+{
+"w": "más",
+"start": 43.694,
+"end": 43.883
+},
+{
+"w": "arriba.",
+"start": 43.883,
+"end": 44.389
+}
+]
+},
+{
+"text": "Mándaselo a quien lleva meses esperando el momento perfecto.",
+"start": 44.839,
+"end": 48.443,
+"words": [
+{
+"w": "Mándaselo",
+"start": 44.839,
+"end": 45.504
+},
+{
+"w": "a",
+"start": 45.504,
+"end": 45.693
+},
+{
+"w": "quien",
+"start": 45.693,
+"end": 45.882
+},
+{
+"w": "lleva",
+"start": 45.882,
+"end": 46.229
+},
+{
+"w": "meses",
+"start": 46.229,
+"end": 46.577
+},
+{
+"w": "esperando",
+"start": 46.577,
+"end": 47.241
+},
+{
+"w": "el",
+"start": 47.241,
+"end": 47.43
+},
+{
+"w": "momento",
+"start": 47.43,
+"end": 47.936
+},
+{
+"w": "perfecto.",
+"start": 47.936,
+"end": 48.443
+}
+]
+}
+]
