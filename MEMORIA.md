@@ -426,7 +426,9 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   bisagra, plano de luz detrás que se ve por las rendijas, foco con sombra y haz visible); él (maniquí gris oscuro) arrodillado pule un cubo blanco de
   espejo junto a 10 bloques grises con una X de tiza; la puerta se entreabre (rayo), mira, deja el cubo como primer escalón, 7 bloques vuelan y forman
   la escalera en diagonal (polvo blanco al posarse), sube aclarándose hasta blanco, abre la puerta y se queda en el umbral a contraluz. 8 s. Antes del
-  render completo se le mandaron 4 fotogramas de estilo (`out/estilo_v2.jpg`).
+  render completo se le mandaron 4 fotogramas de estilo (`out/estilo_v2.jpg`). **ENTREGADA el 28-11-2026 (≈ 08:55 UTC)**: `out/empieza_torcido.mp4`
+  (8,0 s, 480 fotogramas, 60 fps, −15,6 LUFS, 4,4 MB; render aquí ≈ 13 min con 2 procesos; continuidad sin picos) + portada y miniatura («EMPIEZA /
+  TORCIDO.» en blanco encima de la puerta). La versión 1 queda en `out/*_v1.*` (no se sube al repo).
 - **«Empieza torcido» versión 1 (`projects/empieza_torcido/`, 28-11-2026), primer vídeo del formato «Metáfora visual» (`engine/FORMATO_METAFORA.md`). NO LE GUSTÓ (ver arriba).**
   Javi vio la versión con voz de «El escalón torcido» y la paró: «No entiendes, no quiero una comparación de eso, sino un mensaje inspiracional […] o
   sin mensaje que se muestre todo visualmente […] sin voz, solo con sonidos o alguna canción que le pegue» (con dos vídeos más de @neuronvisuals:
