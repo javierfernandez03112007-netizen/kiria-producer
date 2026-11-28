@@ -1,5 +1,5 @@
-"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Empieza torcido».
-Base: el último plano (él de pie en la hierba, de cara al sol, el árbol en flor y, debajo, la escalera de bloques tachados), sin la frase del vídeo;
+"""Portada (1080x1920) y miniatura 4:5 (1080x1350) de «Empieza torcido» (v2, blanco y negro).
+Base: el último plano (su silueta en la puerta de luz y, debajo, la escalera de bloques tachados con el cubo blanco de primer escalón), sin la frase del vídeo;
 encima, la frase en la misma letra monoespaciada, más grande y dentro del centro 4:5 (lo que enseña la cuadrícula de Instagram).
     python3 portada.py --render      (saca out/cover/cover3d.png y compone)
     python3 portada.py               (solo compone)"""
@@ -12,11 +12,11 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FONT = os.path.join(ROOT, "..", "..", "engine", "fonts", "SpaceMono-Bold.ttf")
 W, H, MINI_Y = 1080, 1920, 285
-LINES, SIZE, SP, Y, DX = ["EMPIEZA", "TORCIDO."], 112, 16, 760, 70        # dos líneas en el cielo limpio, entre el sol y su cabeza (lejos del árbol en flor)
+LINES, SIZE, SP, Y, DX = ["EMPIEZA", "TORCIDO."], 112, 16, 360, 0         # dos líneas en el negro de arriba, encima de la puerta
 
 
 def render():
-    env = dict(os.environ, COVER="1", COVER_T="9.95", FPS="60", EVAL="0;")
+    env = dict(os.environ, COVER="1", COVER_T="7.95", FPS="60", EVAL="0;")
     subprocess.run(["node", "web/capture.mjs", "out/cover", "0"], cwd=ROOT, env=env, check=True)
 
 
@@ -31,9 +31,9 @@ def phrase(img, y):
     for x, yy, c in pos:
         dg.text((x, yy), c, font=f, fill=200, anchor="lm")
     glow = glow.filter(ImageFilter.GaussianBlur(16))
-    img.paste(Image.new("RGB", img.size, (255, 238, 218)), (0, 0), glow.point(lambda v: int(v * 0.75)))
+    img.paste(Image.new("RGB", img.size, (255, 255, 255)), (0, 0), glow.point(lambda v: int(v * 0.35)))
     for x, yy, c in pos:
-        dt.text((x, yy), c, font=f, fill=(36, 26, 20), anchor="lm")
+        dt.text((x, yy), c, font=f, fill=(242, 242, 242), anchor="lm")
 
 
 def main():

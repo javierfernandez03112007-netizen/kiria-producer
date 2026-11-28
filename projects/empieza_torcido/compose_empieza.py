@@ -1,4 +1,4 @@
-"""Compone «Empieza torcido» (vídeo corto SIN VOZ, formato «Metáfora visual», engine/FORMATO_METAFORA.md):
+"""Compone «Empieza torcido» v2 (blanco, negro y grises; vídeo corto SIN VOZ, formato «Metáfora visual», engine/FORMATO_METAFORA.md):
 fotogramas 3D a 60 fps (out/frames, la frase de arriba ya va en el fotograma) + efectos SOLO de la biblioteca de ElevenLabs del canal
 (projects/*/assets/sfx), uno por suceso y en su instante exacto (los tiempos salen de web/src/32_story.js y 35_anim.js). Sin música: si Javi quiere
 canción, la pone al subirlo desde la biblioteca de la red social (con derechos).
@@ -16,16 +16,16 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJ = os.path.abspath(os.path.join(ROOT, ".."))
 sys.path.insert(0, os.path.join(ROOT, "..", ".."))
 
-FPS, W, H, DUR = 60, 1080, 1920, 10.0
+FPS, W, H, DUR = 60, 1080, 1920, 8.0
 N = int(DUR * FPS)
 FRAMES = os.path.join(ROOT, "out", "frames")
 # los mismos tiempos que la escena (32_story.js: TT; 35_anim.js: launchT/landT)
-TT = dict(ray=1.9, look=2.2, stand=2.75, place=3.5, step0=3.72, fly0=3.85, fly1=6.15, push=6.45, open=6.7, out0=6.9, out1=7.95, bloom=7.55, turn=8.1)
-FLY, NB = 0.36, 20
+TT = dict(crack=1.25, look=1.5, stand=2.0, place=2.5, step0=2.68, fly0=2.72, fly1=4.95, push=5.2, open=5.38, walk0=5.55, walk1=6.45)
+FLY, NB = 0.38, 7
 
 
 def land(k):
-    return TT["fly0"] + (TT["fly1"] - FLY - TT["fly0"]) * (k / (NB - 1)) ** 0.78 + FLY
+    return TT["fly0"] + (TT["fly1"] - FLY - TT["fly0"]) * (k / (NB - 1)) ** 0.82 + FLY
 
 
 _CACHE = {}
@@ -55,19 +55,16 @@ def sfx_track(path):
         fo = min(len(x), int(fade * sr)); x[len(x) - fo:] *= np.cos(np.linspace(0, np.pi / 2, fo)) ** 2
         sfx.mix(out, x, max(0.0, t0), g)
 
-    put("cerradura/rasca_larga", 0.0, 1.95, 0.13, 0.5)                    # pule (empieza en el 0: al volver a empezar suena igual)
-    put("magisterio/brillo", TT["ray"] - 0.05, 1.0, 0.24, 0.35)            # entra el rayo de sol y el bloque brilla
-    put("magisterio/madera", TT["stand"], 0.5, 0.12, 0.2)                 # se levanta del taburete
-    put("magisterio/madera_toc", TT["place"] - 0.04, 0.45, 0.3, 0.15)     # deja su bloque perfecto en el suelo: el primer escalón
-    woods = ["magisterio/madera_toc", "robo_banco/madera", "magisterio/madera_toc", "magisterio/madera"]
+    put("cerradura/rasca_larga", 0.0, 1.4, 0.13, 0.45)                    # pule el cubo (empieza en el 0: al volver a empezar suena igual)
+    put("cerradura/puerta_abre", TT["crack"] - 0.05, 0.55, 0.18, 0.3)     # la puerta se entreabre…
+    put("magisterio/brillo", TT["crack"] + 0.05, 1.0, 0.22, 0.4)           # …y le cae el rayo de luz
+    put("avion/solido", TT["place"] - 0.03, 0.5, 0.3, 0.15)               # deja el cubo perfecto: el primer escalón
     for k in range(NB):                                                    # cada bloque tachado que cae en su sitio
-        put(woods[k % len(woods)], land(k) - 0.02, 0.28, 0.17 + 0.05 * (k % 3 == 0) + 0.04 * k / NB, 0.1)
-    put("cerradura/puerta_abre", TT["open"] - 0.12, 1.0, 0.32, 0.3)       # empuja la trampilla y se abre
-    put("avion/brillo", TT["open"] + 0.05, 1.0, 0.22, 0.4)                # entra la luz
-    put("avion/whoosh_largo", TT["out0"], 1.2, 0.15, 0.5)                 # sale: el aire de fuera
-    put("magisterio/ding", TT["bloom"] + 0.05, 0.6, 0.2, 0.3)             # el árbol florece
-    put("medicina/dorado", TT["turn"], 0.85, 0.18, 0.4)                   # de cara al sol
-    put("avion/aire", TT["turn"] + 0.4, 1.4, 0.1, 0.6)
+        put(["avion/solido", "lanzamiento/solido", "lanzamiento/taco"][k % 3], land(k) - 0.02, 0.4, 0.2 + 0.05 * k / NB, 0.12)
+    put("cerradura/puerta_abre", TT["open"] - 0.1, 1.0, 0.3, 0.3)         # abre la puerta
+    put("avion/brillo", TT["open"] + 0.05, 1.0, 0.24, 0.4)                # la luz lo inunda
+    put("avion/whoosh_largo", TT["open"] + 0.15, 1.2, 0.14, 0.5)
+    put("medicina/dorado", TT["walk1"] - 0.1, 0.85, 0.2, 0.4)             # en el umbral
     sfx.write(path, out, drive=1.0, level=0.9)
 
 

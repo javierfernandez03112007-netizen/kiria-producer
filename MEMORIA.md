@@ -419,7 +419,15 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   máquinas 3.000–5.040 en tramos de 340 (ramas `render-e6-1…6`): cada una tardó ≈ 5 minutos con la escena ligera del debate (≈ 1 fotograma por segundo
   aquí con 2 procesos). Un fotograma de cada máquina repetido aquí: idéntico (diferencia media 0,000). Lección: entre el arranque del render local y el
   envío de los mensajes pasaron ≈ 35 minutos sin que se hiciera nada: enviar los mensajes a las máquinas lo PRIMERO, en cuanto Javi dé permiso.
-- **«Empieza torcido» (`projects/empieza_torcido/`, 28-11-2026), primer vídeo del formato «Metáfora visual» (`engine/FORMATO_METAFORA.md`).**
+- **«Empieza torcido» VERSIÓN 2 (28-11-2026, en blanco, negro y grises).** Javi vio la versión 1 (abajo) y dijo: «No me gusta nada, en tonos blancos
+  negros y grises y que sea de otra manera, eso no pega». **Lección: en estos vídeos sin voz, nada de colores cálidos ni escenarios recargados: fondo
+  negro, una sola luz blanca que cuenta la historia y el personaje grande** (además, `engine/REGLAS.md` ya pedía monocromo). Rehecha en el mismo
+  proyecto (`30_stage.js`): todo negro, suelo oscuro con un charco de luz, una puerta que flota arriba a la derecha (marco que brilla, hoja oscura con
+  bisagra, plano de luz detrás que se ve por las rendijas, foco con sombra y haz visible); él (maniquí gris oscuro) arrodillado pule un cubo blanco de
+  espejo junto a 10 bloques grises con una X de tiza; la puerta se entreabre (rayo), mira, deja el cubo como primer escalón, 7 bloques vuelan y forman
+  la escalera en diagonal (polvo blanco al posarse), sube aclarándose hasta blanco, abre la puerta y se queda en el umbral a contraluz. 8 s. Antes del
+  render completo se le mandaron 4 fotogramas de estilo (`out/estilo_v2.jpg`).
+- **«Empieza torcido» versión 1 (`projects/empieza_torcido/`, 28-11-2026), primer vídeo del formato «Metáfora visual» (`engine/FORMATO_METAFORA.md`). NO LE GUSTÓ (ver arriba).**
   Javi vio la versión con voz de «El escalón torcido» y la paró: «No entiendes, no quiero una comparación de eso, sino un mensaje inspiracional […] o
   sin mensaje que se muestre todo visualmente […] sin voz, solo con sonidos o alguna canción que le pegue» (con dos vídeos más de @neuronvisuals:
   el muro entre dos y la multitud vendada hacia el precipicio). **Lección: cuando Javi manda referencias de vídeos cortos sin voz, quiere eso, una

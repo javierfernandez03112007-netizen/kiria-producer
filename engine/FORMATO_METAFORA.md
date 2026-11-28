@@ -16,14 +16,17 @@ vídeos por ejemplo sin voz, solo con sonidos o alguna canción que le pegue, y 
 1. **Una metáfora visual de un mensaje que inspire** (o sin mensaje) que se entienda sin voz y sin datos. Nada de comparar dos vidas con cifras ni
    de explicar estudios: eso era «El escalón torcido» y Javi lo descartó.
 2. **8–12 s**, con un solo plano que se mueve despacio. Empieza ya en la imagen rara (primer segundo) y acaba en la imagen que da esperanza.
-3. **Nuestro estilo, no el suyo**: maniquíes de arcilla (`22_clay.js`), escenarios 3D cortados (isla que flota, casa de muñecas) y luz cálida frente
-   a fría. Nada de figuras de palo sobre negro.
+3. **En blanco, negro y grises** (Javi, 28-11, al ver la primera versión con amanecer, madera y flores: «no me gusta nada, en tonos blancos, negros
+   y grises y que sea de otra manera, eso no pega»; además es lo que dice `engine/REGLAS.md`). Fondo negro, una sola fuente de luz blanca que
+   cuenta la historia (una puerta, un foco), el personaje grande y legible. **Nuestro estilo, no el suyo**: maniquíes 3D de `22_clay.js` (gris
+   oscuro → blanco), bloques con textura y tiza, luz volumétrica y sombras de verdad; nada de figuras de palo.
 4. **Frase arriba desde el primer fotograma**: corta (2–4 palabras), en mayúsculas, monoespaciada y con punto final, y que se lea sobre el fondo
    (oscura sobre cielo claro o clara sobre oscuro). La frase larga va en la descripción.
 5. **Sonido**: efectos de la biblioteca del canal, uno por suceso y en su instante (los golpes marcan el ritmo). Sin voz. Si Javi quiere canción,
    la pone él al subirlo desde la biblioteca de la red social (con derechos); nosotros no metemos música con copyright.
 6. **Bucle**: el último fotograma no tiene que ser igual que el primero (la red lo repite), pero mejor si enlaza.
 
-Primer vídeo: `projects/empieza_torcido/` («Empieza torcido»: dentro de una isla que flota, alguien pule un bloque perfecto en un sótano junto al
-montón de intentos que tachó; entra un rayo de sol; deja su bloque perfecto como primer escalón; los bloques tachados vuelan y forman la escalera
-torcida; sube, empuja la trampilla, sale al sol y el árbol florece. Arriba, «EMPIEZA TORCIDO.»).
+Primer vídeo: `projects/empieza_torcido/` («Empieza torcido», versión 2: todo negro; arriba flota una puerta cerrada con luz por las rendijas;
+abajo, alguien arrodillado pule un cubo blanco perfecto junto al montón de bloques grises que tachó con tiza; la puerta se entreabre y le cae un
+rayo; deja el cubo como primer escalón; los bloques tachados vuelan y forman la escalera torcida; sube, abre la puerta, la luz lo inunda y se queda
+en el umbral como una silueta. Arriba, «EMPIEZA TORCIDO.». La versión 1, con isla, sótano, amanecer y flores, no le gustó).

@@ -1,15 +1,12 @@
-// ---------------------------------------------------------------- «Empieza torcido»: LA CÁMARA (un solo plano que se mueve despacio).
-// La isla cortada entera (sótano abajo, hierba y cielo arriba) → se acerca a él cuando mira la luz → sigue la escalera mientras se forma → sube con él a la hierba
-// → se queda detrás de él, de cara al sol, mientras caen los pétalos.
+// ---------------------------------------------------------------- «Empieza torcido» (v2): LA CÁMARA. De frente y casi quieta (como un escenario): se acerca despacio
+// y sube un poco con él. Todo cabe en el plano: él abajo a la izquierda, la escalera en diagonal y la puerta arriba a la derecha; la frase, encima.
 let CK = [], CUTS = [];
 function buildCam() { const T = TT;
   CK = [
-    [0, [0.05, -1.0, 8.8], [0.05, -1.1, -0.8], 48],
-    [T.look + 0.3, [-0.3, -1.45, 6.6], [-0.4, -1.55, -0.9], 46],                      // se acerca: él mira la luz
-    [T.fly0 + 0.6, [0.05, -1.5, 6.9], [0.15, -1.45, -0.8], 46],                        // la escalera que se forma
-    [T.push, [0.55, -1.1, 6.8], [0.7, -0.95, -0.8], 46],
-    [T.out1, [0.45, 0.5, 6.8], [0.55, 0.85, -1.5], 46],                                 // sube con él a la hierba
-    [END, [-0.15, 1.0, 6.3], [-0.1, 1.45, -1.8], 46],                                   // detrás de él, de cara al sol, con el árbol en flor
+    [0, [0.05, 1.95, 10.4], [0.05, 2.05, 0], 45],
+    [T.look + 0.4, [0.0, 1.9, 9.9], [0.0, 2.0, 0], 45],
+    [T.fly1, [0.1, 2.1, 9.8], [0.1, 2.2, 0], 45],
+    [END, [0.3, 2.45, 9.2], [0.3, 2.55, 0], 45],
   ];
   for (let i = 1; i < CK.length; i++) if (CK[i][0] <= CK[i - 1][0]) console.error('ERROR claves de cámara desordenadas en ' + i); }
 function camAt(t) { return camKeys(clamp(t, 0, END), CK); }

@@ -1,8 +1,8 @@
 Los intentos que tiraste por imperfectos no son basura: son tu escalera.
 
-Nadie sale del sótano puliendo el mismo escalón. Se sale poniendo uno torcido, y otro, y otro.
+Nadie llega a esa puerta puliendo el mismo escalón. Se llega poniendo uno torcido, y otro, y otro.
 
-Empieza torcido. 🪜☀️
+Empieza torcido. 🚪
 
 👇 Mándaselo a quien lleva meses esperando el momento perfecto.
 
@@ -11,6 +11,6 @@ Empieza torcido. 🪜☀️
 ---
 
 NOTAS PARA LA ENTREGA (no publicar):
-- Formato nuevo «Metáfora visual» (engine/FORMATO_METAFORA.md), pedido por Javi el 28-11 con vídeos de @neuronvisuals de referencia: sin voz, una frase corta arriba, se entiende solo con la imagen. Sin copiar su estilo (nada de figuras de palo sobre negro).
-- 10 s, 60 fps. Solo efectos de la biblioteca del canal (uno por suceso: el roce al pulir, el destello del rayo, un golpe de madera por cada bloque que cae en su sitio, la trampilla, el aire de fuera, la campanita al florecer). Sin música.
-- Si quieres canción: ponla al subirlo desde la biblioteca de Instagram/TikTok (piano o cuerdas lentas que vayan creciendo; que el subidón caiga hacia el segundo 7, cuando se abre la trampilla) y baja el sonido original al 30–40 %.
+- Formato «Metáfora visual» (engine/FORMATO_METAFORA.md): sin voz, una frase corta arriba, se entiende solo con la imagen. Versión 2 en blanco, negro y grises (Javi, 28-11: la primera, con isla, amanecer y flores, «no pega»).
+- 8 s, 60 fps. Solo efectos de la biblioteca del canal (uno por suceso: el roce al pulir, la puerta que se entreabre, el rayo, un golpe seco por cada bloque que cae en su sitio, la puerta que se abre, la luz). Sin música.
+- Si quieres canción: ponla al subirlo desde la biblioteca de Instagram/TikTok (piano o cuerdas lentas que vayan creciendo; que el subidón caiga hacia el segundo 5,4, cuando se abre la puerta) y baja el sonido original al 30–40 %.

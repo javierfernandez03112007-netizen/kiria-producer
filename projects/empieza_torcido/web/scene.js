@@ -1384,204 +1384,101 @@ const WIN_LIT = [];
 function winLitMat(i, zone) { const k = zone + i; if (WIN_LIT[k]) return WIN_LIT[k]; const cols = [0xffc982, 0xffb46a, 0xffe0b0, 0x9fc4ff];
   return WIN_LIT[k] = nightMat(new THREE.MeshStandardMaterial({ color: 0x302418, emissive: cols[i % 4], emissiveIntensity: [2.2, 1.7, 2.6, 1.3][i % 4], roughness: 0.4 }), zone); }
 function lightWindows(root, frac, seed, zone = 'city', glassM = T.glassDark) { const R = rng(seed); root.traverse(o => { if (o.isMesh && o.material === glassM && R() < frac) o.material = winLitMat(Math.floor(R() * 4), zone); }); }
-// ---------------------------------------------------------------- «Empieza torcido»: LA ISLA CORTADA. Un trozo de tierra que flota al amanecer, partido por la mitad
-// (se ve el corte: hierba, tierra, roca). Arriba, la hierba con un árbol y una trampilla de madera; abajo, dentro de la roca, un sótano frío donde alguien pule
-// un bloque perfecto junto al montón de bloques torcidos que fue descartando. Unidades en metros: x a la derecha, y arriba, z hacia la cámara (el corte es z = 0).
-const BS = { x0: -1.65, x1: 1.65, zb: -2.15, zf: 0, y0: -2.95, y1: -0.42 };      // el sótano (suelo y0, techo y1); la hierba está en y = 0
-const R0 = 4.4;                                                                    // radio de la isla
-const HATCH = { x: 1.12, z: -0.5, s: 0.82 };                                       // la trampilla (en la hierba, encima del final de la escalera)
-const TREE = { x: -1.75, z: -2.6 };
-function tex2(w, h, draw) { const c = cnv(w, h), g = c.getContext('2d'); draw(g, w, h); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; t.wrapS = t.wrapT = THREE.RepeatWrapping; return t; }
-// el corte de la isla: hierba arriba, tierra con raíces y piedras, y estratos de roca hacia abajo (textura en metros: x −4,6…4,6, y −7…0,2)
-function cutTex() { return tex2(1024, 1024, (g, W, H) => { const R = rng(19), Y = y => (0.2 - y) / 7.2 * H;
-  const gr = g.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, '#5f4a38'); gr.addColorStop(0.2, '#54422f'); gr.addColorStop(0.45, '#6b5a4c'); gr.addColorStop(1, '#4a3d35'); g.fillStyle = gr; g.fillRect(0, 0, W, H);
-  for (let i = 0; i < 18; i++) { const y = Y(-0.7 - i * 0.36 - R() * 0.2); g.fillStyle = `rgba(${150 + R() * 40 | 0},${130 + R() * 30 | 0},${110 + R() * 30 | 0},${0.12 + R() * 0.12})`; g.beginPath(); g.moveTo(0, y); for (let x = 0; x <= W; x += 32) g.lineTo(x, y + Math.sin(x * 0.012 + i) * 10 + R() * 6); g.lineTo(W, y + 26 + R() * 20); g.lineTo(0, y + 26 + R() * 20); g.fill(); }
-  for (let i = 0; i < 260; i++) { const x = R() * W, y = Y(-0.5 - R() * 6.3), r = 2 + R() * 7; g.fillStyle = `rgba(${170 + R() * 50 | 0},${160 + R() * 40 | 0},${150 + R() * 40 | 0},0.5)`; g.beginPath(); g.ellipse(x, y, r * 1.4, r, R() * 3, 0, 7); g.fill(); }
-  g.strokeStyle = 'rgba(40,28,18,0.55)'; for (let i = 0; i < 40; i++) { let x = R() * W, y = Y(-0.06); g.lineWidth = 1 + R() * 2.5; g.beginPath(); g.moveTo(x, y); for (let k = 0; k < 6; k++) { x += (R() - 0.5) * 24; y += 6 + R() * 12; g.lineTo(x, y); } g.stroke(); }
-  g.fillStyle = '#5d7d38'; g.fillRect(0, 0, W, Y(-0.07)); g.fillStyle = '#7a9a48'; for (let x = 0; x < W; x += 3) g.fillRect(x, Y(-0.07) - 2, 2, 2 + R() * 9); }); }
-function plankTex(base, seed, n = 7) { const [c, h] = woodCanvases(base, seed, 512, n); const m = texMat(c, h, [1, 1], { r: 0.85, ns: 0.5 }); return m; }
-// perfil de la roca (radio según la altura): ancho arriba, en punta abajo, con algún saliente
-function rockR(y) { const u = clamp((-0.4 - y) / 6.3); return Math.max(0.12, R0 * (1 - Math.pow(u, 1.45)) * (1 + 0.05 * Math.sin(u * 17 + 1) + 0.03 * Math.sin(u * 41))); }
-function buildIsland(G) { const g = new THREE.Group(); G.add(g); const U = {}; g.userData = U;
-  // la hierba (media tapa: solo la mitad de atrás, z ≤ 0) y su color de estación
-  U.grass = new THREE.MeshStandardMaterial({ color: 0x6f9a48, roughness: 0.95 });
-  // la tapa de hierba: media isla (z ≤ 0) extruida, con el hueco de la trampilla
-  { const sh = new THREE.Shape(); const N = 96; sh.moveTo(R0, 0); for (let i = 1; i <= N; i++) { const a = Math.PI / 2 + Math.PI * i / N; sh.lineTo(R0 * Math.sin(a), R0 * Math.cos(a)); } sh.lineTo(R0, 0);
-    // forma en el plano x–z (al girarla, su segunda coordenada es la z del mundo); agujero = la trampilla
-    const hole = new THREE.Path(); const hx0 = HATCH.x - HATCH.s / 2, hx1 = HATCH.x + HATCH.s / 2, hz0 = HATCH.z - HATCH.s / 2, hz1 = HATCH.z + HATCH.s / 2;
-    hole.moveTo(hx0, hz1); hole.lineTo(hx1, hz1); hole.lineTo(hx1, hz0); hole.lineTo(hx0, hz0); hole.lineTo(hx0, hz1); sh.holes.push(hole);
-    const geo = new THREE.ExtrudeGeometry(sh, { depth: 0.4, bevelEnabled: false, curveSegments: 4 }); geo.rotateX(Math.PI / 2); geo.translate(0, 0, 0);       // y: 0 → −0.4
-    const m = new THREE.Mesh(geo, [U.grass, U.grass]); m.receiveShadow = true; m.castShadow = true; g.add(m); U.top = m; }
-  // la roca: medio torno (z ≤ 0)
-  const prof = []; for (let k = 0; k <= 40; k++) { const y = -0.4 - 6.3 * k / 40; prof.push(new THREE.Vector2(rockR(y), y)); }
-  const rock = new THREE.Mesh(new THREE.LatheGeometry(prof, 64, Math.PI / 2, Math.PI), new THREE.MeshStandardMaterial({ color: 0x7a6656, roughness: 0.95, flatShading: true, side: THREE.DoubleSide }));
-  rock.castShadow = true; rock.receiveShadow = true; g.add(rock);
-  // la cara del corte (z = 0), con el hueco del sótano
-  { const sh = new THREE.Shape(); sh.moveTo(-R0, 0); sh.lineTo(R0, 0); sh.lineTo(R0, -0.4); for (let k = 1; k <= 40; k++) { const y = -0.4 - 6.3 * k / 40; sh.lineTo(rockR(y), y); } for (let k = 40; k >= 1; k--) { const y = -0.4 - 6.3 * k / 40; sh.lineTo(-rockR(y), y); } sh.lineTo(-R0, -0.4); sh.lineTo(-R0, 0);
-    const hole = new THREE.Path(); hole.moveTo(BS.x0, BS.y0); hole.lineTo(BS.x0, BS.y1); hole.lineTo(BS.x1, BS.y1); hole.lineTo(BS.x1, BS.y0); hole.lineTo(BS.x0, BS.y0); sh.holes.push(hole);
-    const geo = new THREE.ShapeGeometry(sh, 8); const t = cutTex(); t.repeat.set(1 / 9.2, 1 / 7.2); t.offset.set(4.6 / 9.2, 7.0 / 7.2);
-    const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ map: t, roughness: 0.95 })); m.position.z = 0.002; m.receiveShadow = true; g.add(m); U.cut = m; }
+// ---------------------------------------------------------------- «Empieza torcido» (versión 2, en blanco, negro y grises; Javi, 28-11: «en tonos blancos, negros y
+// grises y que sea de otra manera»). Escenario: negro, un suelo oscuro con un charco de luz, y arriba a la derecha una PUERTA que flota en la oscuridad: cerrada,
+// con luz blanca por las rendijas; al final se abre y la luz lo inunda todo. Unidades en metros; el suelo es y = 0; la cámara mira de frente (−z).
+const DOOR = { x: 1.55, y: 2.42, w: 0.86, h: 1.62, z: 0 };                  // la puerta: esquina de abajo a la altura del último escalón
+const grey = (v, r = 0.7, o = {}) => new THREE.MeshStandardMaterial({ color: new THREE.Color(v, v, v), roughness: r, ...o });
+function buildStage(G) { const g = new THREE.Group(); G.add(g); const U = {}; g.userData = U;
+  // suelo: disco oscuro que se funde con el negro (textura radial) y recibe sombras
+  const t = tex2(512, 512, (c, W, H) => { const gr = c.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, W / 2); gr.addColorStop(0, '#2a2a2a'); gr.addColorStop(0.45, '#141414'); gr.addColorStop(1, '#000000'); c.fillStyle = gr; c.fillRect(0, 0, W, H); });
+  const fl = new THREE.Mesh(new THREE.CircleGeometry(9, 96), new THREE.MeshStandardMaterial({ map: t, roughness: 0.55, metalness: 0.0 })); fl.rotation.x = -Math.PI / 2; fl.position.set(0.2, 0, -0.5); fl.receiveShadow = true; g.add(fl); U.floor = fl;
+  // la puerta: marco que brilla, la hoja oscura (bisagra a la izquierda) y la luz de detrás
+  const D = new THREE.Group(); D.position.set(DOOR.x, DOOR.y, DOOR.z); g.add(D); U.door = D;
+  U.frameM = new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xffffff, emissiveIntensity: 0.6, roughness: 0.5 });
+  const fw = 0.06; for (const [w, h, x, y] of [[DOOR.w + 2 * fw, fw, 0, DOOR.h + fw / 2], [fw, DOOR.h, -DOOR.w / 2 - fw / 2, DOOR.h / 2], [fw, DOOR.h, DOOR.w / 2 + fw / 2, DOOR.h / 2], [DOOR.w + 2 * fw, fw * 0.6, 0, -fw * 0.3]]) D.add(box(w, h, 0.1, U.frameM, x, y, 0));
+  U.lightM = new THREE.MeshBasicMaterial({ color: new THREE.Color(1, 1, 1).multiplyScalar(2.2), toneMapped: false }); const lp = new THREE.Mesh(new THREE.PlaneGeometry(DOOR.w, DOOR.h), U.lightM); lp.position.set(0, DOOR.h / 2, -0.06); D.add(lp); U.lightP = lp;
+  const hinge = new THREE.Group(); hinge.position.set(-DOOR.w / 2 + 0.01, 0, 0.02); D.add(hinge); U.hinge = hinge;
+  const leafM = grey(0.09, 0.6); const leaf = box(DOOR.w - 0.04, DOOR.h - 0.04, 0.05, leafM, DOOR.w / 2 - 0.01, DOOR.h / 2, 0); hinge.add(leaf);
+  const knob = sph(0.03, grey(0.5, 0.3, { metalness: 0.8 }), 12, 8); knob.position.set(DOOR.w - 0.12, DOOR.h * 0.48, 0.05); hinge.add(knob);
+  shadowAll(D, false, false);
+  // la luz que sale de la puerta (foco con sombra hacia abajo a la izquierda) y el haz visible
+  U.sp = new THREE.SpotLight(0xffffff, 0, 14, 0.75, 0.55, 1.1); U.sp.position.set(DOOR.x - 0.15, DOOR.y + DOOR.h * 0.55, 0.9); U.sp.target.position.set(-0.7, 0, 0.2);
+  U.sp.castShadow = true; U.sp.shadow.mapSize.set(1536, 1536); U.sp.shadow.bias = -0.0004; U.sp.shadow.radius = 3; g.add(U.sp, U.sp.target);
+  U.beam = new THREE.Mesh(new THREE.ConeGeometry(1, 1, 48, 1, true), new THREE.ShaderMaterial({ uniforms: { k: { value: 0 }, w: { value: 0.2 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+    vertexShader: 'varying vec2 vU; varying vec3 vN, vV; void main(){ vU = uv; vec4 mv = modelViewMatrix * vec4(position,1.); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }',
+    fragmentShader: 'uniform float k; varying vec2 vU; varying vec3 vN, vV; void main(){ float f = abs(dot(vN, vV)); float a = k * (0.02 + 0.12 * vU.y) * smoothstep(0.0, 0.7, f); gl_FragColor = vec4(vec3(a), 1.); }' }));
+  U.beam.renderOrder = 5; U.beam.frustumCulled = false; g.add(U.beam);
   return g; }
-// el sótano: tablas viejas en las paredes, suelo de tablas, techo con vigas y la trampilla
-function buildBasement(G) { const g = new THREE.Group(); G.add(g); const U = {}; g.userData = U;
-  const wall = plankTex([92, 84, 78], 71, 9), floor = plankTex([78, 74, 72], 73, 7), beam = stdM(0x4a3a2e, 0.85), dark = stdM(0x2e2723, 0.9);
-  const { x0, x1, zb, zf, y0, y1 } = BS, Wd = x1 - x0, D = zf - zb, Hh = y1 - y0;
-  g.add(box(Wd, Hh, 0.06, wall, (x0 + x1) / 2, (y0 + y1) / 2, zb + 0.03));                           // pared de atrás
-  for (const s of [-1, 1]) g.add(box(0.06, Hh, D, wall, s > 0 ? x1 - 0.03 : x0 + 0.03, (y0 + y1) / 2, (zb + zf) / 2));    // laterales
-  g.add(box(Wd, 0.04, D, floor, (x0 + x1) / 2, y0 + 0.02, (zb + zf) / 2));                           // suelo
-  // techo: tablas con el hueco de la trampilla y vigas
-  { const hx0 = HATCH.x - HATCH.s / 2, hx1 = HATCH.x + HATCH.s / 2, hz0 = HATCH.z - HATCH.s / 2, hz1 = HATCH.z + HATCH.s / 2, yc = y1 + 0.02;
-    const p = (xa, xb, za, zz) => { if (xb - xa < 1e-3 || zz - za < 1e-3) return; g.add(box(xb - xa, 0.04, zz - za, dark, (xa + xb) / 2, yc, (za + zz) / 2)); };
-    p(x0, x1, zb, hz0); p(x0, x1, hz1, zf); p(x0, hx0, hz0, hz1); p(hx1, x1, hz0, hz1);
-    for (const xx of [-1.1, -0.3, 0.5]) g.add(box(0.14, 0.16, D, beam, xx, y1 - 0.08, (zb + zf) / 2));
-    for (const [w, d, xx, zz] of [[HATCH.s + 0.1, 0.05, HATCH.x, hz0 - 0.025], [HATCH.s + 0.1, 0.05, HATCH.x, hz1 + 0.025], [0.05, HATCH.s, hx0 - 0.025, HATCH.z], [0.05, HATCH.s, hx1 + 0.025, HATCH.z]]) g.add(box(w, 0.08, d, beam, xx, y1 - 0.02, zz)); }
-  // el hueco de la trampilla atraviesa la hierba (paredes de tierra) y las dos hojas de madera, con bisagras a los lados; se abren hacia arriba
-  { const soil = stdM(0x4d3b2c, 0.95), hz = HATCH.z, hs = HATCH.s; for (const [w, d, xx, zz] of [[hs, 0.02, HATCH.x, hz - hs / 2 + 0.01], [hs, 0.02, HATCH.x, hz + hs / 2 - 0.01], [0.02, hs, HATCH.x - hs / 2 + 0.01, hz], [0.02, hs, HATCH.x + hs / 2 - 0.01, hz]]) g.add(box(w, -y1 + 0.02, d, soil, xx, y1 / 2, zz));
-    U.hatch = []; const wood = stdM(0x8a5f3a, 0.8), wdk = stdM(0x5e4029, 0.85);
-    for (const s of [-1, 1]) { const piv = new THREE.Group(); piv.position.set(HATCH.x + s * hs / 2, 0.0, hz); g.add(piv); const leaf = new THREE.Group(); piv.add(leaf); const lw = hs / 2 - 0.01;
-      leaf.add(box(lw, 0.06, hs - 0.02, wood, -s * lw / 2, -0.03, 0)); for (const zz of [-0.28, 0.28]) leaf.add(box(lw * 0.92, 0.014, 0.06, wdk, -s * lw / 2, 0.007, zz));
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(0.035, 0.008, 6, 16), metal(0x8a8478, 0.4)); ring.rotation.x = Math.PI / 2; ring.position.set(-s * (lw - 0.06), 0.01, 0); leaf.add(ring);
-      shadowAll(leaf); U.hatch.push({ piv, s }); }
-    // rendijas de luz cálida alrededor de la trampilla cerrada (se ven desde abajo)
-    U.leakM = new THREE.MeshBasicMaterial({ color: 0xffc27a, transparent: true, opacity: 0.9, toneMapped: false }); U.leak = new THREE.Group(); g.add(U.leak);
-    for (const [w, d, xx, zz] of [[hs, 0.012, HATCH.x, hz - hs / 2 + 0.004], [hs, 0.012, HATCH.x, hz + hs / 2 - 0.004], [0.012, hs, HATCH.x - hs / 2 + 0.004, hz], [0.012, hs, HATCH.x + hs / 2 - 0.004, hz], [0.012, hs, HATCH.x, hz]]) { const b = new THREE.Mesh(new THREE.BoxGeometry(w, 0.004, d), U.leakM); b.position.set(xx, y1 - 0.003, zz); U.leak.add(b); } }
-  // una bombilla apagada colgando y unas estanterías con más bloques tachados
-  { const cord = cyl(0.004, 0.004, 0.35, dark, 6); cord.position.set(-0.4, y1 - 0.2, -1.0); g.add(cord); const bulb = sph(0.04, stdM(0x8c8a82, 0.3), 12, 8); bulb.position.set(-0.4, y1 - 0.4, -1.0); g.add(bulb); }
-  shadowAll(g, true, true); return g; }
-// el árbol (desnudo al principio, florece cuando sale): reutiliza el árbol de estaciones
-function seasonTree(G, x, z) { const g = new THREE.Group(); g.position.set(x, 0, z); G.add(g); const U = g.userData, bark = stdM(0x5a4636, 0.9);
-  const tr = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.22, 3.0, 12), bark); tr.position.y = 1.5; tr.castShadow = true; g.add(tr);
-  const R = rng(17); U.br = [];
-  for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2 + R() * 0.5, L = 1.1 + R() * 0.8, b = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.07, L, 8), bark); b.geometry.translate(0, L / 2, 0);
-    b.position.set(0, 2.3 + R() * 0.9, 0); b.rotation.set(0.8 * Math.sin(a), 0, -0.8 * Math.cos(a)); b.castShadow = true; g.add(b); U.br.push(b);
-    const tw = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.03, L * 0.6, 6), bark); tw.geometry.translate(0, L * 0.3, 0); tw.position.y = L * 0.7; tw.rotation.set(0.5, 0, 0.6 * (R() - 0.5)); b.add(tw); }
-  U.leaf = new THREE.MeshStandardMaterial({ color: 0x8cc25a, roughness: 0.85, flatShading: true }); U.crown = new THREE.Group(); U.crown.position.y = 3.4; g.add(U.crown);
-  for (let i = 0; i < 11; i++) { const s = new THREE.Mesh(new THREE.IcosahedronGeometry(0.7 + R() * 0.4, 1), U.leaf); s.position.set((R() - 0.5) * 2.1, (R() - 0.3) * 1.4, (R() - 0.5) * 1.5); s.castShadow = true; U.crown.add(s); }
-  U.bloom = new THREE.MeshStandardMaterial({ color: 0xffc4d8, roughness: 0.7, flatShading: true, emissive: 0xff8fb5, emissiveIntensity: 0.0 }); U.flowers = new THREE.Group(); U.crown.add(U.flowers);
-  for (let i = 0; i < 90; i++) { const s = new THREE.Mesh(new THREE.IcosahedronGeometry(0.08 + R() * 0.07, 0), U.bloom); const a = R() * 6.28, e = R() * 1.4 - 0.4, r = 1.15 + R() * 0.4;
-    s.position.set(Math.cos(a) * Math.cos(e) * r, Math.sin(e) * r * 0.8, Math.sin(a) * Math.cos(e) * r * 0.8); s.userData.d = R(); U.flowers.add(s); }
-  return g; }
-// ---------------------------------------------------------------- «Empieza torcido»: LOS MUEBLES DEL SÓTANO (coordenadas del sótano: el suelo es y = 0; x y z como el mundo).
-// Banco, taburete, flexo frío, el bloque perfecto (brillo de espejo), bolas de papel, bocetos tachados en la pared y EL MONTÓN: 20 bloques torcidos con una X roja
-// (los intentos que fue tirando). Al final vuelan uno a uno y forman la escalera: 6 columnas (1 + 2 + 3 + 4 + 5 + 6); la primera, el bloque perfecto.
-const BENCH = { x: -0.42, z: -1.0, top: 0.7, L: 0.9, W: 0.55 };
-const SEAT = { x: -1.12, z: -1.0, h: 0.56 };
-const BLOCK0 = _v(-0.72, BENCH.top + 0.11, -1.0);                // el bloque perfecto, encima del banco
-const STP = { x0: -0.25, dx: 0.27, z: -0.45, bw: 0.32, bh: 0.22, bd: 0.55, cols: 6 };
-const PILE = { x: -1.22, z: -1.78 };
-function workbench(G) { const g = new THREE.Group(); g.position.set(BENCH.x, 0, BENCH.z); G.add(g); const wood = stdM(0x6f5642, 0.75), dark = stdM(0x3f3127, 0.85);
-  g.add(box(BENCH.L, 0.06, BENCH.W, wood, 0, BENCH.top - 0.03, 0)); for (const sx of [-1, 1]) for (const sz of [-1, 1]) g.add(box(0.05, BENCH.top - 0.06, 0.05, dark, sx * (BENCH.L / 2 - 0.06), (BENCH.top - 0.06) / 2, sz * (BENCH.W / 2 - 0.06)));
-  g.add(box(BENCH.L - 0.1, 0.03, BENCH.W - 0.1, dark, 0, 0.18, 0));
-  const sand = stdM(0xc9a46a, 0.95); for (let i = 0; i < 4; i++) { const s = box(0.14, 0.004, 0.1, sand, 0.05 + i * 0.05, BENCH.top + 0.003 + i * 0.004, -0.14 + i * 0.02); s.rotation.y = i * 0.4; g.add(s); }
-  const rule = box(0.32, 0.006, 0.03, metal(0xc8ccd2, 0.3), 0.15, BENCH.top + 0.004, 0.19); rule.rotation.y = 0.3; g.add(rule);
-  shadowAll(g); return g; }
-function stool(G) { const g = new THREE.Group(); g.position.set(SEAT.x, 0, SEAT.z); G.add(g); const w = stdM(0x5e4838, 0.8);
-  ad(g, cyl(0.19, 0.19, 0.05, w, 20)).position.y = SEAT.h - 0.025; for (let i = 0; i < 3; i++) { const a = i / 3 * Math.PI * 2, l = cyl(0.018, 0.022, SEAT.h - 0.04, w, 8); l.position.set(Math.cos(a) * 0.12, (SEAT.h - 0.04) / 2, Math.sin(a) * 0.12); l.rotation.set(Math.sin(a) * 0.1, 0, -Math.cos(a) * 0.1); g.add(l); }
-  shadowAll(g); return g; }
-// flexo: pie, dos brazos y la pantalla; la bombilla es una luz barata fría
-function deskLamp(G) { const g = new THREE.Group(); g.position.set(BENCH.x + 0.32, BENCH.top, BENCH.z - 0.16); g.rotation.y = Math.PI; G.add(g); const m = stdM(0x2c3036, 0.4, { metalness: 0.5 });
-  ad(g, cyl(0.08, 0.09, 0.025, m, 20)).position.y = 0.012; const a1 = new THREE.Group(); a1.position.y = 0.03; a1.rotation.z = 0.5; g.add(a1); const r1 = cyl(0.012, 0.012, 0.36, m, 8); r1.position.y = 0.18; a1.add(r1);
-  const a2 = new THREE.Group(); a2.position.y = 0.36; a2.rotation.z = 1.35; a1.add(a2); const r2 = cyl(0.011, 0.011, 0.32, m, 8); r2.position.y = 0.16; a2.add(r2);
-  const hd = new THREE.Group(); hd.position.y = 0.32; hd.rotation.z = 0.75; a2.add(hd); const sh = new THREE.Mesh(new THREE.ConeGeometry(0.09, 0.13, 24, 1, true), stdM(0x2c3036, 0.4, { metalness: 0.5, side: THREE.DoubleSide })); sh.position.y = -0.03; hd.add(sh);
-  const bulbM = new THREE.MeshStandardMaterial({ color: 0xf4f8ff, emissive: 0xdfe9ff, emissiveIntensity: 3.0 }); const bulb = sph(0.03, bulbM, 14, 10); bulb.position.y = -0.07; hd.add(bulb);
-  shadowAll(g); g.updateMatrixWorld(true); const wp = bulb.getWorldPosition(new THREE.Vector3());
-  return { g, bulbM, bulb, src: nightSrc(wp.clone().add(_v(0, -0.05, 0)), 0xcfe0ff, 3.0, 1.35, 'lamp'), glow: nightGlow(G, wp, 0xe8f0ff, 0.32, 0.55, 'lamp') }; }
-// el bloque perfecto: canto vivo, brillo de espejo
-function perfectBlock() { const m = new THREE.MeshPhysicalMaterial({ color: 0xf6f3ee, roughness: 0.06, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.02, reflectivity: 0.6, emissive: 0xffd9a0, emissiveIntensity: 0 });
-  const b = rboxM(STP.bw, STP.bh, STP.bd, 0.004, m, 2); b.userData.m = m; return b; }
-// bolas de papel por el suelo
-const PAPER = { N: 46 };
-function paperBalls(G) { const geo = new THREE.IcosahedronGeometry(0.045, 1); { const p = geo.attributes.position, R = rng(31); for (let i = 0; i < p.count; i++) { const v = _v(p.getX(i), p.getY(i), p.getZ(i)), k = 0.75 + R() * 0.5; p.setXYZ(i, v.x * k, v.y * k, v.z * k); } geo.computeVertexNormals(); }
-  const m = new THREE.MeshStandardMaterial({ color: 0xe6e3da, roughness: 0.95, flatShading: true }); const im = new THREE.InstancedMesh(geo, m, PAPER.N); im.castShadow = im.receiveShadow = true; im.frustumCulled = false; G.add(im);
-  const R = rng(37), o = new THREE.Object3D();
-  for (let i = 0; i < PAPER.N; i++) { let x, z, ok = false; for (let k = 0; k < 40 && !ok; k++) { x = -1.55 + R() * 1.6; z = -2.0 + R() * 1.85;
-      ok = !(Math.abs(x - BENCH.x) < 0.5 && Math.abs(z - BENCH.z) < 0.32) && !(x > STP.x0 - 0.25 && Math.abs(z - STP.z) < 0.4) && Math.hypot(x - PILE.x, z - PILE.z) > 0.45; }
-    const s = 0.8 + R() * 0.6; o.position.set(x, 0.04 * s, z); o.rotation.set(R() * 6, R() * 6, R() * 6); o.scale.setScalar(s); o.updateMatrix(); im.setMatrixAt(i, o.matrix); }
-  return im; }
-// bocetos clavados en la pared de atrás (escalones dibujados y tachados en rojo)
-function sketches(G) { const g = new THREE.Group(); G.add(g); const R = rng(53);
-  for (let i = 0; i < 10; i++) { const w = 0.28, h = 0.2, p = signPlane(w, h, 256, (c, W, H) => { c.fillStyle = '#ece6d8'; c.fillRect(0, 0, W, H); c.strokeStyle = '#4a5260'; c.lineWidth = 3;
-      c.strokeRect(W * 0.25, H * 0.3, W * 0.5, H * 0.35); c.beginPath(); c.moveTo(W * 0.25, H * 0.3); c.lineTo(W * 0.35, H * 0.18); c.lineTo(W * 0.85, H * 0.18); c.lineTo(W * 0.75, H * 0.3); c.moveTo(W * 0.85, H * 0.18); c.lineTo(W * 0.85, H * 0.53); c.lineTo(W * 0.75, H * 0.65); c.stroke();
-      c.font = '700 18px SpaceMono'; c.fillStyle = '#4a5260'; c.fillText('v' + (i + 2), 12, H - 14); c.strokeStyle = 'rgba(200,40,40,0.85)'; c.lineWidth = 6; c.beginPath(); c.moveTo(W * 0.15, H * 0.15); c.lineTo(W * 0.9, H * 0.85); c.moveTo(W * 0.9, H * 0.15); c.lineTo(W * 0.15, H * 0.85); c.stroke(); }, { r: 0.9 });
-    p.position.set(-1.45 + (i % 5) * 0.34 + (R() - 0.5) * 0.05, 1.35 + Math.floor(i / 5) * 0.25 + (R() - 0.5) * 0.04, BS.zb + 0.065); p.rotation.z = (R() - 0.5) * 0.14; g.add(p); }
-  return g; }
-// ---- el montón y la escalera
+// el haz va de la puerta al suelo (cono con la punta en la puerta); w = anchura en el suelo
+function beamAt(U, k, w) { const top = _v(DOOR.x - 0.1, DOOR.y + DOOR.h * 0.45, 0.05), bot = _v(-0.55, 0, 0.15), d = bot.clone().sub(top), L = d.length();
+  U.beam.visible = k > 0.005; U.beam.material.uniforms.k.value = k; U.beam.position.copy(top).addScaledVector(d, 0.5); U.beam.quaternion.setFromUnitVectors(_v(0, -1, 0), d.normalize()); U.beam.scale.set(w, L, w); }
+function tex2(w, h, draw) { const c = cnv(w, h), g = c.getContext('2d'); draw(g, w, h); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; }
+// ---------------------------------------------------------------- «Empieza torcido» (v2): EL CUBO PERFECTO, EL MONTÓN DE BLOQUES TACHADOS Y LA ESCALERA.
+// El cubo blanco brilla como un espejo (lo pule); los bloques son grises, desiguales y llevan una X de tiza: al final vuelan uno a uno y forman la escalera
+// torcida hasta la puerta. El cubo es el primer escalón.
+const KNEEL = _v(-1.05, 0, 0.12);                                         // donde está arrodillado (mira a +x)
+const CUBE0 = _v(-0.6, 0.15, 0.12);                                      // el cubo, en el suelo delante de él
+const STEP0 = _v(-0.45, 0.15, 0.12);                                       // donde lo deja (primer escalón)
+const STEPS = { n: 7, dx: 0.27, dy: 0.305, z: 0.12 };
+const PILE = { x: -1.6, z: -0.5, n: 10 };
+const stepTopAt = i => i === 0 ? _v(STEP0.x, 0.3, STEP0.z) : _v(STEP0.x + STEPS.dx * i, 0.3 + STEPS.dy * i, STEPS.z);
+function perfectCube() { const m = new THREE.MeshPhysicalMaterial({ color: 0xf4f4f4, roughness: 0.05, metalness: 0.0, clearcoat: 1, clearcoatRoughness: 0.02, emissive: 0xffffff, emissiveIntensity: 0 });
+  const b = rboxM(0.3, 0.3, 0.3, 0.006, m, 3); b.userData.m = m; return b; }
+let _chalkT = null;
+function chalkX() { if (_chalkT) return _chalkT; _chalkT = signTex(256, 256, (c, W, H) => { c.clearRect(0, 0, W, H); c.strokeStyle = 'rgba(245,245,245,0.9)'; c.lineCap = 'round'; c.lineWidth = 16; const R = rng(5);
+    for (const [a, b, d, e] of [[0.22, 0.24, 0.78, 0.76], [0.78, 0.22, 0.24, 0.8]]) { for (let k = 0; k < 3; k++) { c.globalAlpha = 0.35 + 0.25 * k; c.beginPath(); c.moveTo(W * a + (R() - 0.5) * 8, H * b + (R() - 0.5) * 8); c.lineTo(W * d + (R() - 0.5) * 8, H * e + (R() - 0.5) * 8); c.stroke(); } } }); return _chalkT; }
 const PB = { list: [] };
-let _xT = null;
-function xTex() { if (_xT) return _xT; _xT = signTex(256, 256, (c, W, H) => { c.clearRect(0, 0, W, H); c.strokeStyle = 'rgba(205,38,38,0.92)'; c.lineCap = 'round'; c.lineWidth = 26; c.beginPath(); c.moveTo(W * 0.2, H * 0.22); c.lineTo(W * 0.8, H * 0.78); c.moveTo(W * 0.8, H * 0.2); c.lineTo(W * 0.22, H * 0.8); c.stroke(); }); return _xT; }
-// destino de cada bloque en la escalera: columna c (1…5), nivel l (0…c)
-function stepSlot(c, l) { return _v(STP.x0 + STP.dx * c, STP.bh * (l + 0.5), STP.z); }
-function buildPile(G) { const R = rng(83), geo = rboxM(STP.bw, STP.bh, STP.bd, 0.02, null, 2).geometry, xm = new THREE.MeshStandardMaterial({ map: xTex(), transparent: true, depthWrite: false, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: -2 });
-  // orden de vuelo: columna por columna, de abajo arriba
-  const slots = []; for (let c = 1; c < STP.cols; c++) for (let l = 0; l <= c; l++) slots.push([c, l]);
-  // sitio en el montón: capas (8, 6, 4, 2); los de arriba son los primeros en volar
-  const pileP = []; const layers = [8, 6, 4, 2]; let k = 0;
-  for (let L = 0; L < layers.length; L++) for (let i = 0; i < layers[L]; i++, k++) { const a = i / layers[L] * Math.PI * 2 + L * 0.7, r = (0.42 - L * 0.1) * (0.7 + R() * 0.3);
-    pileP.push({ p: _v(PILE.x + Math.cos(a) * r * 1.1, STP.bh * (L + 0.5) - L * 0.02, PILE.z + Math.sin(a) * r * 0.75), r: _v((R() - 0.5) * 0.5, R() * 6.28, (R() - 0.5) * 0.5) }); }
-  pileP.reverse();                                                                                         // el primero en volar es el de más arriba
-  slots.forEach(([c, l], i) => { const col = new THREE.Color().setHSL(0.07 + (R() - 0.5) * 0.03, 0.3 + R() * 0.12, 0.62 + (R() - 0.5) * 0.12);
-    const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: col, roughness: 0.8 })); m.castShadow = m.receiveShadow = true; G.add(m);
-    const x = new THREE.Mesh(new THREE.PlaneGeometry(STP.bw * 0.7, STP.bh * 0.78), xm); x.position.z = STP.bd / 2 + 0.004; m.add(x);
-    const tgt = stepSlot(c, l).add(_v((R() - 0.5) * 0.04, 0, (R() - 0.5) * 0.06)), tr = _v((R() - 0.5) * 0.08, (R() - 0.5) * 0.24, (R() - 0.5) * 0.12);
-    PB.list.push({ m, x, from: pileP[i], to: { p: tgt, r: tr }, c, l, i }); });
+function buildBlocks(G) { const R = rng(83), xm = new THREE.MeshStandardMaterial({ map: chalkX(), transparent: true, depthWrite: false, roughness: 0.9, polygonOffset: true, polygonOffsetFactor: -2 });
+  const [sc, sh] = stuccoCanvases([140, 140, 140], 61, 256);
+  // sitio en el montón: dos capas desordenadas; los primeros en volar son los de arriba
+  const pileP = []; for (let i = 0; i < PILE.n; i++) { const L = i < 6 ? 0 : 1, a = (L ? (i - 6) / 4 : i / 6) * Math.PI * 2 + L, r = L ? 0.16 : 0.34;
+    pileP.push({ p: _v(PILE.x + Math.cos(a) * r * 1.2, 0.14 + L * 0.27, PILE.z + Math.sin(a) * r * 0.8), r: _v((R() - 0.5) * 0.4, R() * 6.28, (R() - 0.5) * 0.4) }); }
+  pileP.reverse();
+  for (let i = 0; i < PILE.n; i++) { const w = 0.36 + R() * 0.09, h = 0.25 + R() * 0.06, d = 0.44 + R() * 0.12, v = 0.42 + R() * 0.16;
+    const m = texMat(sc, sh, [1, 1], { r: 0.88, ns: 0.8 }); m.color.setRGB(v * 1.6, v * 1.6, v * 1.6);
+    const b = rboxM(w, h, d, 0.03, m, 2); b.castShadow = b.receiveShadow = true; G.add(b);
+    const x = new THREE.Mesh(new THREE.PlaneGeometry(w * 0.7, h * 0.78), xm); x.position.z = d / 2 + 0.004; b.add(x);
+    const step = i < STEPS.n ? i + 1 : 0, top = step ? stepTopAt(step) : null;
+    PB.list.push({ m: b, h, i, step, from: pileP[i], to: step ? { p: top.clone().add(_v((R() - 0.5) * 0.03, -h / 2, (R() - 0.5) * 0.05)), r: _v((R() - 0.5) * 0.1, (R() - 0.5) * 0.34, (R() - 0.5) * 0.2) } : null });
+    b.position.copy(pileP[i].p); b.rotation.set(pileP[i].r.x, pileP[i].r.y, pileP[i].r.z); }
   return PB; }
-// ---------------------------------------------------------------- «Empieza torcido»: LA HISTORIA (sin voz: los tiempos son fijos, en segundos; dura 10 s).
-// Sótano frío dentro de la isla: pule el bloque perfecto junto al montón de intentos tachados → entra un rayo de sol por la rendija de la trampilla → mira arriba →
-// deja su bloque perfecto en el suelo (primer escalón) → los bloques tachados vuelan uno a uno y forman la escalera torcida → sube (se va calentando) → empuja la
-// trampilla → sale a la hierba, de cara al sol, y el árbol florece. Arriba, todo el rato: «EMPIEZA TORCIDO.»
+// polvo blanco al posarse cada bloque (partículas que salen y caen)
+const DUST = { n: 26 };
+function buildDust(G) { const per = DUST.n, tot = per * STEPS.n, pos = new Float32Array(tot * 3), R = rng(7); DUST.seed = [];
+  for (let i = 0; i < tot; i++) DUST.seed.push({ a: R() * Math.PI * 2, v: 0.4 + R() * 0.9, up: 0.3 + R() * 0.8, s: R() });
+  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const c = cnv(64, 64), g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 30); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+  const m = new THREE.PointsMaterial({ color: 0xdedede, size: 0.035, map: new THREE.CanvasTexture(c), transparent: true, opacity: 0.85, depthWrite: false, sizeAttenuation: true });
+  const p = new THREE.Points(geo, m); p.frustumCulled = false; G.add(p); DUST.p = p; }
+// ---------------------------------------------------------------- «Empieza torcido» (v2, blanco, negro y grises): LA HISTORIA (sin voz: tiempos fijos; dura 8 s).
+// Arrodillado, pule un cubo blanco perfecto junto al montón de bloques tachados; arriba flota una puerta cerrada con luz por las rendijas → se entreabre y le
+// cae un rayo → mira arriba → deja el cubo como primer escalón → los bloques tachados vuelan y forman la escalera torcida → sube (de gris a blanco) → abre la
+// puerta: la luz lo inunda → se queda en el umbral, silueta. Arriba, todo el rato: «EMPIEZA TORCIDO.»
 let TL = {};
-const TT = { ray: 1.9, look: 2.2, stand: 2.75, place: 3.5, step0: 3.72, fly0: 3.85, fly1: 6.15, push: 6.45, open: 6.7, out0: 6.9, out1: 7.95, bloom: 7.55, turn: 8.1 };
-MOODS.alba = { zen: 0x3d4f88, hor: 0xffbe92, gnd: 0xe9b998, sunD: [0.12, 0.16, -0.98], sunC: 0xffc27a, sunS: 1.2, stars: 0.0, clouds: 0.85, fogC: 0xefc2a6, fogD: 0.004,
-  key: [0xffd2a0, 3.3], keyD: [0.25, 0.5, -0.83], fill: [0xaebdf0, 0.22], hemi: [0xffe2c8, 0x4a3e44, 0.32], env: 0.3, exp: 1.0 };
-MOODS.sol = { zen: 0x5a78b8, hor: 0xffd4a4, gnd: 0xf0caa8, sunD: [0.12, 0.2, -0.98], sunC: 0xffd08a, sunS: 1.7, stars: 0.0, clouds: 0.85, fogC: 0xf6d2b6, fogD: 0.0035,
-  key: [0xffdcae, 4.2], keyD: [0.25, 0.5, -0.83], fill: [0xc8d2f4, 0.32], hemi: [0xfff0dc, 0x5a4a50, 0.46], env: 0.42, exp: 1.0 };
+const TT = { crack: 1.25, look: 1.5, stand: 2.0, place: 2.5, step0: 2.68, fly0: 2.72, fly1: 4.95, push: 5.2, open: 5.38, walk0: 5.55, walk1: 6.45 };
+MOODS.negro = { zen: 0x000000, hor: 0x070707, gnd: 0x000000, sunD: [0.2, 0.3, -0.9], sunC: 0x000000, sunS: 0.0, stars: 0.0, clouds: 0.0, fogC: 0x000000, fogD: 0.018,
+  key: [0xffffff, 0.28], keyD: [-0.5, 0.75, 0.45], fill: [0xffffff, 0.08], hemi: [0xffffff, 0x000000, 0.07], env: 0.12, exp: 1.0 };
 async function buildScene() {
   TL = { end: END, ...TT };
   const G = new THREE.Group(); scene.add(G); S.G = G;
-  S.isl = buildIsland(G); S.bas = buildBasement(G); S.tree = seasonTree(G, TREE.x, TREE.z);
-  // todo lo del sótano va en un grupo con el suelo en y = 0
-  const B = new THREE.Group(); B.position.y = BS.y0; G.add(B); S.B = B;
-  S.bench = workbench(B); S.stool = stool(B); S.lamp = deskLamp(B); S.block = perfectBlock(); B.add(S.block); S.block.position.copy(BLOCK0);
-  paperBalls(B); S.sk = sketches(B); buildPile(B);
-  buildCast(B);
-  S.glint = glowSprite(0xffffff, 0.2, 0); B.add(S.glint);
-  // el rayo de sol por la rendija (un haz fino hasta el bloque) y su luz
-  { const m = new THREE.ShaderMaterial({ uniforms: { k: { value: 0 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
-      vertexShader: 'varying vec2 vU; varying vec3 vN, vV; void main(){ vU = uv; vec4 mv = modelViewMatrix * vec4(position,1.); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }',
-      fragmentShader: 'uniform float k; varying vec2 vU; varying vec3 vN, vV; void main(){ float f = abs(dot(vN, vV)); float a = k * (0.08 + 0.36 * vU.y) * smoothstep(0.05, 0.85, f); gl_FragColor = vec4(vec3(1., 0.82, 0.55) * a, 1.); }' });
-    const g = new THREE.CylinderGeometry(0.02, 0.11, 1, 16, 1, true); g.translate(0, -0.5, 0); const r = new THREE.Mesh(g, m); r.frustumCulled = false; r.renderOrder = 5; B.add(r); S.ray = r; }
-  S.raySrc = nightSrc(_v(0, 0, 0), 0xffc890, 0, 0.9, 'ray');
-  // la luz de la trampilla abierta: foco cálido encima (con sombra: solo entra por el hueco) y un haz visible
-  S.hsp = new THREE.SpotLight(0xffc98e, 0, 9, 0.6, 0.45, 1.0); S.hsp.position.set(HATCH.x - 0.2, 1.8, HATCH.z - 0.6); S.hsp.target.position.set(HATCH.x + 0.05, BS.y0, HATCH.z + 0.2);
-  S.hsp.castShadow = true; S.hsp.shadow.mapSize.set(1024, 1024); S.hsp.shadow.bias = -0.0006; G.add(S.hsp, S.hsp.target); S.hsp.visible = false;
-  { const Hh = BS.y1 - BS.y0, geo = new THREE.CylinderGeometry(HATCH.s * 0.66, HATCH.s * 0.86, Hh, 4, 1, true); geo.rotateY(Math.PI / 4);
-    const m = new THREE.ShaderMaterial({ uniforms: { k: { value: 0 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
-      vertexShader: 'varying vec2 vU; varying vec3 vN, vV; void main(){ vU = uv; vec4 mv = modelViewMatrix * vec4(position,1.); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }',
-      fragmentShader: 'uniform float k; varying vec2 vU; varying vec3 vN, vV; void main(){ float f = abs(dot(vN, vV)); float a = k * (0.04 + 0.14 * vU.y) * smoothstep(0.0, 0.5, f); gl_FragColor = vec4(vec3(1., 0.8, 0.52) * a, 1.); }' });
-    const sh = new THREE.Mesh(geo, m); sh.position.set(HATCH.x + 0.05, (BS.y0 + BS.y1) / 2, HATCH.z + 0.08); sh.renderOrder = 5; G.add(sh); S.shaft = sh; }
-  S.hsrc = nightSrc(_v(HATCH.x, BS.y1 - 0.3, HATCH.z), 0xffc98e, 0, 2.2, 'hatch');
-  // una luz fría y baja de relleno en el sótano (que se lea la habitación) y otra cálida fuera
-  nightSrc(_v(-0.4, BS.y0 + 1.7, -0.4), 0x8fa6d0, 0.35, 2.6, 'dn');
-  buildFall(G);
+  S.st = buildStage(G); S.cube = perfectCube(); G.add(S.cube); S.cube.position.copy(CUBE0);
+  buildBlocks(G); buildDust(G); buildCast(G);
+  S.glint = glowSprite(0xffffff, 0.2, 0); G.add(S.glint);
   S.flow = [];
   envAll(scene); nightify(scene); NIGHT.on = true;
-  NIGHT.zones.lamp = t => 1; NIGHT.zones.ray = t => 1; NIGHT.zones.hatch = t => 1; NIGHT.zones.dn = t => 1;
 }
-const sunK = t => win(t, TT.open - 0.1, 1.6);                         // el amanecer se enciende cuando abre la trampilla
-function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); const k = sunK(t); moodMix({ alba: 1 - k + 1e-4, sol: k + 1e-4 }); animAt(t, st); }
+function stageAt(t, st) { NOW = t; lightsAt(st.l, st.p.distanceTo(st.l)); moodMix({ negro: 1 }); animAt(t, st); }
 function fillAt(t) { return { k: 0, c: [0, 0, 0] }; }
-// ---------------------------------------------------------------- «Empieza torcido»: LA CÁMARA (un solo plano que se mueve despacio).
-// La isla cortada entera (sótano abajo, hierba y cielo arriba) → se acerca a él cuando mira la luz → sigue la escalera mientras se forma → sube con él a la hierba
-// → se queda detrás de él, de cara al sol, mientras caen los pétalos.
+// ---------------------------------------------------------------- «Empieza torcido» (v2): LA CÁMARA. De frente y casi quieta (como un escenario): se acerca despacio
+// y sube un poco con él. Todo cabe en el plano: él abajo a la izquierda, la escalera en diagonal y la puerta arriba a la derecha; la frase, encima.
 let CK = [], CUTS = [];
 function buildCam() { const T = TT;
   CK = [
-    [0, [0.05, -1.0, 8.8], [0.05, -1.1, -0.8], 48],
-    [T.look + 0.3, [-0.3, -1.45, 6.6], [-0.4, -1.55, -0.9], 46],                      // se acerca: él mira la luz
-    [T.fly0 + 0.6, [0.05, -1.5, 6.9], [0.15, -1.45, -0.8], 46],                        // la escalera que se forma
-    [T.push, [0.55, -1.1, 6.8], [0.7, -0.95, -0.8], 46],
-    [T.out1, [0.45, 0.5, 6.8], [0.55, 0.85, -1.5], 46],                                 // sube con él a la hierba
-    [END, [-0.15, 1.0, 6.3], [-0.1, 1.45, -1.8], 46],                                   // detrás de él, de cara al sol, con el árbol en flor
+    [0, [0.05, 1.95, 10.4], [0.05, 2.05, 0], 45],
+    [T.look + 0.4, [0.0, 1.9, 9.9], [0.0, 2.0, 0], 45],
+    [T.fly1, [0.1, 2.1, 9.8], [0.1, 2.2, 0], 45],
+    [END, [0.3, 2.45, 9.2], [0.3, 2.55, 0], 45],
   ];
   for (let i = 1; i < CK.length; i++) if (CK[i][0] <= CK[i - 1][0]) console.error('ERROR claves de cámara desordenadas en ' + i); }
 function camAt(t) { return camKeys(clamp(t, 0, END), CK); }
@@ -1589,105 +1486,75 @@ function prevT(t, dt) { return Math.max(0, t - dt); }
 function whiteAt(t) { return 0; }
 function flashAt(t) { return 0; }
 function dofAt(t, st) { return { focus: st.p.distanceTo(st.l), scale: 0 }; }
-// ---------------------------------------------------------------- «Empieza torcido»: EL PERSONAJE (maniquí de arcilla de 22_clay.js: gris azulado y encorvado
-// en el sótano; se va calentando mientras sube hasta el blanco cálido de fuera).
-const COL = { A: 0x8f9bab, W: 0xf3e5cf };
+// ---------------------------------------------------------------- «Empieza torcido» (v2): EL PERSONAJE (maniquí de 22_clay.js; gris oscuro abajo, blanco al llegar a la luz).
 const CAST = {};
-function buildCast(B) { CAST.A = mannequin({ col: COL.A, h: 1.62, phase: 0.4 }); B.add(CAST.A); CAST.AM = CAST.A.userData.mat; CAST.A0 = new THREE.Color(COL.A); CAST.A1 = new THREE.Color(COL.W); }
-// ---------------------------------------------------------------- «Empieza torcido»: LO QUE PASA EN CADA FOTOGRAMA (todo depende solo de t).
-const FLY = 0.36;                                                     // lo que tarda cada bloque en volar del montón a su sitio
-function launchT(k) { const n = PB.list.length - 1; return TT.fly0 + (TT.fly1 - FLY - TT.fly0) * Math.pow(k / n, 0.78); }
+function buildCast(G) { CAST.A = mannequin({ col: 0x6b6b6b, h: 1.66, phase: 0.4 }); G.add(CAST.A); CAST.AM = CAST.A.userData.mat; CAST.A0 = new THREE.Color(0x5c5c5c); CAST.A1 = new THREE.Color(0xf2f2f2); }
+// ---------------------------------------------------------------- «Empieza torcido» (v2): LO QUE PASA EN CADA FOTOGRAMA (todo depende solo de t).
+const FLY = 0.38;
+function launchT(k) { return TT.fly0 + (TT.fly1 - FLY - TT.fly0) * Math.pow(k / (STEPS.n - 1), 0.82); }
 function landT(k) { return launchT(k) + FLY; }
-function colDone(c) { let last = -1; PB.list.forEach((b, i) => { if (b.c === c) last = i; }); return landT(last); }
-const SLOT0 = () => _v(STP.x0, STP.bh / 2, STP.z);
-const colTop = c => _v(STP.x0 + STP.dx * c, STP.bh * (c + 1), STP.z);   // dónde pisa en la columna c (0 = el bloque perfecto)
-// en qué columna está subido (con decimales mientras salta a la siguiente)
-function climbC(t) { let c = 0; for (let k = 1; k < STP.cols; k++) { const t0 = colDone(k) + 0.1; c += eio(seg(t, t0, t0 + 0.26)); } return c; }
-// ---- el bloque perfecto: en el banco → en sus manos → en el suelo (primer escalón)
-function carryPos(t) { const A = CAST.A; A.updateMatrixWorld(true); const f = _v(Math.sin(A.rotation.y), 0, Math.cos(A.rotation.y)); return A.position.clone().addScaledVector(f, 0.3).add(_v(0, 0.98, 0)); }
-function blockAt(t) { if (t < TT.stand + 0.05) return { p: BLOCK0.clone(), r: 0 };
-  if (t >= TT.place) return { p: SLOT0(), r: 0 };
-  const up = BLOCK0.clone().add(_v(0.05, 0.22, 0.05)), a = eio(seg(t, TT.stand + 0.05, TT.stand + 0.3));
-  if (t < TT.stand + 0.3) return { p: BLOCK0.clone().lerp(up, a), r: 0 };
-  const c = carryPos(t), b = eio(seg(t, TT.place - 0.32, TT.place)); return { p: c.lerp(SLOT0(), b), r: 0 }; }
-// ---- A
-function animA(t) { const A = CAST.A, U = A.userData, J = U.J; poseReset(A); A.visible = true;
-  const bp = blockAt(t).p.add(S.B.position);                             // en coordenadas del mundo (la IK trabaja en el mundo)
-  if (t < TT.stand) {                                                    // sentado: pule; luego se queda quieto y mira la luz
-    A.position.set(SEAT.x, SEAT.h - 0.47 * U.k, SEAT.z); A.rotation.set(0, Math.PI / 2, 0); poseSit(A, 0.08); poseHunch(A, 1); A.updateMatrixWorld(true);
-    const stop = win(t, TT.look - 0.25, 0.3); posePolish(A, bp, t, 1 - 0.999 * stop, 1 - stop);
-    const lk = win(t, TT.look, 0.4); if (lk > 0) { J.spine.rotation.x = lerp(J.spine.rotation.x, 0.05, lk); J.chest.rotation.x = lerp(J.chest.rotation.x, 0, lk); J.neck.rotation.x = lerp(J.neck.rotation.x, 0, lk); J.head.rotation.x = lerp(J.head.rotation.x, 0, lk); A.updateMatrixWorld(true); lookAtP(A, _v(HATCH.x - 0.1, BS.y1, HATCH.z), lk); }
-  } else if (t < TT.step0) {                                             // se levanta con el bloque, va al sitio y lo deja en el suelo
-    const up = eio(seg(t, TT.stand, TT.stand + 0.35)), w = seg(t, TT.stand + 0.25, TT.place - 0.3), dest = _v(STP.x0 - 0.36, 0, STP.z), from = _v(SEAT.x, 0, SEAT.z);
-    const p = from.clone().lerp(dest, eio(w)); A.position.copy(p); A.position.y = (SEAT.h - 0.47 * U.k) * (1 - up);
-    const ang = Math.atan2(dest.x - from.x, dest.z - from.z); A.rotation.set(0, lerp(Math.PI / 2, ang, eio(seg(t, TT.stand + 0.1, TT.stand + 0.4))) * (1 - eio(seg(t, TT.place - 0.45, TT.place - 0.2))) + Math.PI / 2 * eio(seg(t, TT.place - 0.45, TT.place - 0.2)), 0);
-    poseSit(A, 0.08); for (const n of ['hpL', 'hpR', 'knL', 'knR']) J[n].rotation.x *= 1 - up; J.pelvis.position.y = lerp(0.47 * U.k, U.base.pelY, up);
-    if (w > 0 && w < 1) poseWalk(A, w * 1.6, 0.7);
-    const bend = Math.sin(clamp(seg(t, TT.place - 0.32, TT.step0 - 0.02)) * Math.PI); J.spine.rotation.x += 0.75 * bend; J.hpL.rotation.x -= 0.6 * bend; J.hpR.rotation.x -= 0.6 * bend; J.knL.rotation.x += 0.9 * bend; J.knR.rotation.x += 0.9 * bend; J.pelvis.position.y -= 0.2 * bend;
-    J.head.rotation.x = 0.25; A.updateMatrixWorld(true);
-    const hold = t < TT.place ? 1 : 1 - seg(t, TT.place, TT.place + 0.12); reachTo(A, 'L', bp.clone().add(_v(-0.02, 0.02, 0.2)), hold, _v(0, -1, -0.3)); reachTo(A, 'R', bp.clone().add(_v(-0.02, 0.02, -0.2)), hold, _v(0, -1, -0.3));
-  } else if (t < TT.open) {                                              // sube columna a columna mirando los bloques que vuelan; arriba, empuja la trampilla
-    const c = climbC(t), c0 = Math.floor(c), f = c - c0, a = colTop(c0), b = colTop(Math.min(STP.cols - 1, c0 + 1)), on = eio(seg(t, TT.step0, TT.step0 + 0.22));
-    const p = c0 >= STP.cols - 1 ? a : a.clone().lerp(b, f); p.y += Math.sin(f * Math.PI) * 0.12; if (on < 1) { const st = _v(STP.x0 - 0.36, 0, STP.z); p.lerp(st, 1 - on); p.y += Math.sin(on * Math.PI) * 0.1; }
+// en qué escalón está (con decimales mientras salta al siguiente)
+function climbI(t) { let c = 0; for (let i = 1; i <= STEPS.n; i++) { const t0 = landT(i - 1) + 0.08; c += eio(seg(t, t0, t0 + 0.26)); } return c; }
+const doorC = () => _v(DOOR.x, DOOR.y + DOOR.h * 0.55, DOOR.z);
+// ---- el cubo: en el suelo delante de él → lo levanta → lo deja un poco más allá (primer escalón)
+function cubeAt(t) { if (t < TT.stand + 0.2) return CUBE0.clone(); if (t >= TT.place) return STEP0.clone();
+  const u = seg(t, TT.stand + 0.2, TT.place), p = CUBE0.clone().lerp(STEP0, eio(u)); p.y += Math.sin(u * Math.PI) * 0.22; return p; }
+function animA(t) { const A = CAST.A, U = A.userData, J = U.J; poseReset(A); const cb = cubeAt(t);
+  if (t < TT.stand) {                                                  // arrodillado, pule; luego para y mira la puerta
+    A.position.copy(KNEEL); A.rotation.set(0, Math.PI / 2, 0); poseKneel(A, 1); poseHunch(A, 0.8); A.updateMatrixWorld(true);
+    const stop = win(t, TT.look - 0.25, 0.3); posePolish(A, cb.clone().add(_v(0, 0.02, 0)), t, 1 - 0.999 * stop, 1 - stop);
+    const lk = win(t, TT.look, 0.4); if (lk > 0) { J.spine.rotation.x = lerp(J.spine.rotation.x, 0.15, lk); J.chest.rotation.x = lerp(J.chest.rotation.x, 0, lk); J.neck.rotation.x = lerp(J.neck.rotation.x, 0, lk); J.head.rotation.x = lerp(J.head.rotation.x, 0, lk); A.updateMatrixWorld(true); lookAtP(A, doorC(), lk); }
+  } else if (t < TT.step0) {                                           // se levanta, lleva el cubo un poco más allá, lo deja y se sube
+    const up = eio(seg(t, TT.stand, TT.stand + 0.3)), w = eio(seg(t, TT.stand + 0.15, TT.place)), on = eio(seg(t, TT.place + 0.02, TT.step0));
+    const base = KNEEL.clone().lerp(_v(STEP0.x - 0.42, 0, STEP0.z), w); A.position.copy(base); A.rotation.set(0, Math.PI / 2, 0);
+    poseKneel(A, 1 - up); const bend = Math.sin(clamp(seg(t, TT.stand + 0.1, TT.place + 0.05)) * Math.PI) * 0.8 + 0.3 * (1 - up);
+    J.spine.rotation.x += 0.6 * bend; J.hpL.rotation.x -= 0.5 * bend; J.hpR.rotation.x -= 0.5 * bend; J.knL.rotation.x += 0.8 * bend; J.knR.rotation.x += 0.8 * bend; J.pelvis.position.y -= 0.16 * bend;
+    if (w > 0.02 && w < 0.98) poseWalk(A, w * 1.2, 0.35);
+    A.updateMatrixWorld(true); const hold = t < TT.place ? 1 : 1 - seg(t, TT.place, TT.place + 0.1);
+    reachTo(A, 'L', cb.clone().add(_v(-0.02, 0.04, 0.17)), hold, _v(0, -1, -0.3)); reachTo(A, 'R', cb.clone().add(_v(-0.02, 0.04, -0.17)), hold, _v(0, -1, -0.3));
+    lookAtP(A, cb, 0.7);
+  } else if (t < TT.open) {                                            // sube escalón a escalón mirando los bloques que vuelan; arriba, la mano en la puerta
+    const c = climbI(t), c0 = Math.floor(c), f = c - c0, on = eio(seg(t, TT.step0, TT.step0 + 0.22));
+    const a = stepTopAt(c0), b = stepTopAt(Math.min(STEPS.n, c0 + 1)), p = c0 >= STEPS.n ? a : a.clone().lerp(b, f); p.y += Math.sin(f * Math.PI) * 0.1;
+    if (on < 1) { const st = _v(STEP0.x - 0.42, 0, STEP0.z); p.lerp(st, 1 - on); p.y += Math.sin(on * Math.PI) * 0.08; }
     A.position.copy(p); A.rotation.set(0, Math.PI / 2, 0); breathe(A, t);
-    const hop = Math.sin(f * Math.PI); J.hpL.rotation.x = -0.5 * hop; J.knL.rotation.x = 0.9 * hop; J.hpR.rotation.x = 0.15 * hop; J.knR.rotation.x = 0.3 * hop;
-    J.shL.rotation.z = -0.25; J.shR.rotation.z = 0.25; J.elL.rotation.x = -0.4; J.elR.rotation.x = -0.4;
-    // mira el bloque que vuela (o arriba, a la trampilla, cuando ya no quedan)
-    let tgt = null; for (const bk of PB.list) if (t >= launchT(bk.i) - 0.05 && t < landT(bk.i) + 0.1) { tgt = bk.m.position.clone(); break; }
-    A.updateMatrixWorld(true); const hatchL = _v(HATCH.x, BS.y1 - BS.y0, HATCH.z); lookAtP(A, (tgt || hatchL).clone().add(S.B.position), 0.8);
-    const push = win(t, TT.push - 0.2, 0.25); if (push > 0) { const hy = BS.y1 - BS.y0 - 0.02 + 0.08 * win(t, TT.open - 0.1, 0.1); reachTo(A, 'L', _v(HATCH.x - 0.12, hy, HATCH.z + 0.18).add(S.B.position), push, _v(0, 0, -1)); reachTo(A, 'R', _v(HATCH.x - 0.12, hy, HATCH.z - 0.18).add(S.B.position), push, _v(0, 0, -1)); J.head.rotation.x = -0.5 * push; }
-  } else {                                                               // sale a la hierba y se queda de cara al sol
-    const o = eio(seg(t, TT.out0, TT.out1)), top = colTop(STP.cols - 1), grassY = -BS.y0, out = _v(HATCH.x - 0.02, grassY, HATCH.z - HATCH.s / 2 - 0.42);
-    const p = top.clone().lerp(out, o); p.y = lerp(top.y, grassY, eio(seg(t, TT.open, TT.out1 - 0.25))); A.position.copy(p);
-    A.rotation.set(0, lerp(Math.PI / 2, Math.PI, eio(seg(t, TT.out0 + 0.3, TT.out1 + 0.2))), 0); breathe(A, t);
-    const climb = Math.sin(clamp(seg(t, TT.open, TT.out1)) * Math.PI); J.hpL.rotation.x = -0.9 * climb; J.knL.rotation.x = 1.3 * climb; J.spine.rotation.x = 0.35 * climb;
-    J.shL.rotation.x = J.shR.rotation.x = -2.6 * climb; J.elL.rotation.x = J.elR.rotation.x = -0.3 * climb;
-    const open = win(t, TT.turn, 1.2); J.shL.rotation.z = -0.06 - 0.5 * open; J.shR.rotation.z = 0.06 + 0.5 * open; J.head.rotation.x = -0.25 * open; J.chest.rotation.x = -0.08 * open; }
-  // color: se calienta al subir
-  const warm = clamp((A.position.y - 0.15) / 2.6); CAST.AM.color.copy(CAST.A0).lerp(CAST.A1, sm5(warm)); }
-// ---- los bloques tachados: del montón a la escalera
+    const hop = Math.sin(f * Math.PI); J.hpL.rotation.x = -0.55 * hop; J.knL.rotation.x = 0.95 * hop; J.hpR.rotation.x = 0.15 * hop; J.knR.rotation.x = 0.35 * hop;
+    J.shL.rotation.z = -0.25; J.shR.rotation.z = 0.25; J.elL.rotation.x = -0.35; J.elR.rotation.x = -0.35;
+    let tgt = null; for (const bk of PB.list) if (bk.step && t >= launchT(bk.i) - 0.05 && t < landT(bk.i) + 0.1) { tgt = bk.m.position.clone(); break; }
+    A.updateMatrixWorld(true); lookAtP(A, tgt || doorC(), 0.8);
+    const push = win(t, TT.push - 0.15, 0.2); if (push > 0) reachTo(A, 'L', _v(DOOR.x + DOOR.w / 2 - 0.14, DOOR.y + DOOR.h * 0.48, 0.12), push, _v(0, -1, 0.3));
+  } else {                                                             // entra por la puerta y se queda en el umbral, de espaldas, a contraluz
+    const w = eio(seg(t, TT.walk0, TT.walk1)), from = stepTopAt(STEPS.n), to = _v(DOOR.x + 0.02, DOOR.y, 0.0), p = from.clone().lerp(to, w);
+    p.y += Math.sin(w * Math.PI) * 0.06; A.position.copy(p); A.rotation.set(0, lerp(Math.PI / 2, Math.PI, eio(seg(t, TT.open, TT.walk0 + 0.4))), 0); breathe(A, t);
+    if (w > 0.01 && w < 0.99) poseWalk(A, w * 1.4, 0.5);
+    const open = win(t, TT.walk1, 0.9); J.shL.rotation.z = -0.06 - 0.32 * open; J.shR.rotation.z = 0.06 + 0.32 * open; J.head.rotation.x = -0.12 * open; }
+  const warm = clamp((A.position.y - 0.25) / 2.1); CAST.AM.color.copy(CAST.A0).lerp(CAST.A1, sm5(warm)); CAST.AM.emissive = CAST.AM.emissive || new THREE.Color(); }
+// ---- los bloques tachados: del montón a su escalón (arco y un pequeño aplastamiento al posarse)
 const _bq = new THREE.Quaternion(), _bq2 = new THREE.Quaternion(), _be = new THREE.Euler();
-function animPile(t) { for (const b of PB.list) { const t0 = launchT(b.i), u = clamp((t - t0) / FLY), m = b.m;
-    const f = b.from, to = b.to; m.position.copy(f.p).lerp(to.p, u); m.position.y += Math.sin(u * Math.PI) * (0.45 + 0.3 * f.p.distanceTo(to.p));
-    // al posarse, un pequeño aplastamiento
+function animBlocks(t) { for (const b of PB.list) { if (!b.step) continue; const t0 = launchT(b.i), u = clamp((t - t0) / FLY), m = b.m, f = b.from, to = b.to;
+    m.position.copy(f.p).lerp(to.p, eio(u)); m.position.y += Math.sin(u * Math.PI) * (0.5 + 0.25 * f.p.distanceTo(to.p));
     const land = clamp((t - t0 - FLY) / 0.18), sq = land > 0 && land < 1 ? Math.sin(land * Math.PI) * 0.08 : 0; m.scale.set(1 + sq, 1 - sq, 1 + sq);
     _bq.setFromEuler(_be.set(f.r.x, f.r.y, f.r.z)); _bq2.setFromEuler(_be.set(to.r.x, to.r.y, to.r.z)); m.quaternion.copy(_bq).slerp(_bq2, eio(u)); if (u > 0 && u < 1) m.rotateX(u * Math.PI * 2 * (b.i % 2 ? 1 : -1)); } }
-// ---- la trampilla, las rendijas, el rayo, la luz de arriba, el flexo, el árbol, la hierba
-function animLight(t) { const U = S.bas.userData, o = eio(seg(t, TT.open, TT.open + 0.35)) + Math.sin(clamp(seg(t, TT.open + 0.35, TT.open + 0.7)) * Math.PI) * 0.06, push = win(t, TT.push, 0.25) * (1 - o);
-  for (const h of U.hatch) h.piv.rotation.z = -h.s * (1.95 * o + 0.08 * push);
-  U.leak.visible = o < 0.05; U.leakM.opacity = 0.75 + 0.25 * win(t, TT.ray - 0.2, 0.3) + 0.3 * push;
-  const ry = win(t, TT.ray, 0.25) * (1 - win(t, TT.stand + 0.3, 0.5)), from = _v(HATCH.x - 0.08, BS.y1 - BS.y0, HATCH.z + 0.02), to = BLOCK0.clone().add(_v(0.02, 0.1, 0)), d = to.clone().sub(from);
-  S.ray.visible = ry > 0.01; S.ray.position.copy(from); S.ray.quaternion.setFromUnitVectors(_v(0, -1, 0), d.clone().normalize()); S.ray.scale.set(1, d.length(), 1); S.ray.material.uniforms.k.value = ry;
-  S.raySrc.p.copy(to).add(S.B.position).add(_v(0, 0.12, 0.1)); S.raySrc.I = 1.6 * ry;
-  S.block.userData.m.emissiveIntensity = 0.35 * ry + 0.25 * win(t, TT.place, 0.3) * (1 - o * 0.5);
-  S.hsp.visible = o > 0.01; S.hsp.intensity = 34 * o; S.shaft.visible = o > 0.01; S.shaft.material.uniforms.k.value = o; S.hsrc.I = 5 * o;
-  S.lamp.bulbM.emissiveIntensity = 3.0 * (1 - 0.5 * o);
-  // el árbol: desnudo; florece cuando sale
-  const T = S.tree.userData, bl = win(t, TT.bloom - 0.15, 0.6); T.crown.visible = bl > 0.01; T.crown.scale.setScalar(Math.max(0.001, 0.3 + 0.7 * eo(bl)));
-  for (const c of T.crown.children) if (c.isMesh) c.visible = false; T.flowers.visible = bl > 0.01; T.flowers.children.forEach(f => { const k = eo(clamp((bl - f.userData.d * 0.5) / 0.5)); f.scale.setScalar(Math.max(0.001, k)); });
-  T.bloom.emissiveIntensity = 0.25 * bl; S.isl.userData.grass.color.set(0x7a7a4e).lerp(new THREE.Color(0x6f9e48), bl); }
-function animGlint(t) { const g = S.glint, ph = ((t + 0.2) % 2.0) / 2.0, k = t < TT.look ? Math.sin(clamp(ph / 0.35) * Math.PI) : Math.max(0, win(t, TT.ray + 0.05, 0.2) * (1 - win(t, TT.stand, 0.3)));
-  const bp = blockAt(t).p; g.position.copy(bp).add(_v(-0.12 + 0.24 * clamp(ph / 0.35), STP.bh / 2 + 0.01, STP.bd / 2 - 0.05)); g.material.opacity = 0.95 * k; g.scale.setScalar(0.1 + 0.2 * k); g.material.rotation = t * 0.8; }
-function animAt(t, st) {
-  animA(t); animPile(t); animLight(t); animGlint(t); fallAt(t);
-  const bk = blockAt(t); S.block.position.copy(bk.p); S.block.rotation.set(0, 0, 0);
-}
-// ---------------------------------------------------------------- «Empieza torcido»: PÉTALOS (cuando sale, el árbol florece y el viento suelta pétalos hacia la cámara).
-const FALL = { N: 380 };
-let _dotT = null;
-function dotTex() { if (_dotT) return _dotT; const c = cnv(64, 64), g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 30); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(0.55, 'rgba(255,255,255,0.85)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
-  g.fillStyle = gr; g.fillRect(0, 0, 64, 64); _dotT = new THREE.CanvasTexture(c); return _dotT; }
-function buildFall(G) { const R = rng(91), n = FALL.N, pos = new Float32Array(n * 3); S.pet = [];
-  for (let i = 0; i < n; i++) S.pet.push({ x: TREE.x + (R() - 0.5) * 2.4, y: 3.0 + R() * 1.8, z: TREE.z + (R() - 0.5) * 1.8, vx: 0.5 + R() * 0.9, vy: -0.25 - R() * 0.35, vz: 0.7 + R() * 1.1, ph: R() * 6.28, d: R() * 0.9 });
-  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const m = new THREE.PointsMaterial({ color: 0xff6f9e, size: 0.085, map: dotTex(), transparent: true, opacity: 0, depthWrite: false, sizeAttenuation: true }); const p = new THREE.Points(geo, m); p.frustumCulled = false; p.visible = false; G.add(p); S.petP = p; }
-function fallAt(t) { const k = win(t, TT.bloom, 0.4); S.petP.visible = k > 0.01; S.petP.material.opacity = 0.95 * k; if (!S.petP.visible) return;
-  const a = S.petP.geometry.attributes.position; S.pet.forEach((s, i) => { const u = Math.max(0, t - TT.bloom - s.d); a.setXYZ(i, s.x + s.vx * u + Math.sin(t * 2 + s.ph) * 0.12, s.y + s.vy * u + Math.sin(t * 1.3 + s.ph) * 0.06, s.z + s.vz * u); }); a.needsUpdate = true; }
-// ---------------------------------------------------------------- «Empieza torcido»: LA FRASE de arriba (fija desde el primer fotograma, monoespaciada, como un rótulo).
+// ---- polvo de cada bloque al posarse
+function animDust(t) { const a = DUST.p.geometry.attributes.position, per = DUST.n; let any = false;
+  for (let j = 0; j < STEPS.n; j++) { const b = PB.list[j], u = t - landT(j), c = b.to.p.clone().add(_v(0, -b.h / 2, 0));
+    for (let k = 0; k < per; k++) { const s = DUST.seed[j * per + k], i = j * per + k; if (u < 0 || u > 0.7) { a.setXYZ(i, 0, -50, 0); continue; } any = true;
+      const r = s.v * Math.min(u, 0.35) * 1.2; a.setXYZ(i, c.x + Math.cos(s.a) * r, c.y + s.up * u - 1.1 * u * u, c.z + Math.sin(s.a) * r * 0.6); } }
+  a.needsUpdate = true; DUST.p.visible = any; }
+// ---- la puerta: rendijas, entreabierta (el rayo), abierta (la luz lo inunda)
+function animDoor(t) { const U = S.st.userData, crack = win(t, TT.crack, 0.35), open = eio(seg(t, TT.open, TT.open + 0.5));
+  U.hinge.rotation.y = -(0.14 * crack * (1 - open) + 1.95 * open);
+  const k = 0.25 + 0.45 * crack + 1.0 * open; U.sp.intensity = 6 + 28 * crack + 110 * open; U.frameM.emissiveIntensity = 0.7 + 0.6 * crack + 1.6 * open;
+  U.lightM.color.setScalar(2.2 + 2.5 * open); beamAt(U, 0.35 * crack + 0.9 * open, 0.35 + 1.4 * open);
+  S.cube.userData.m.emissiveIntensity = 0.25 * crack * (1 - win(t, TT.place, 0.3)) + 0.18 * win(t, TT.place - 0.05, 0.1) * (1 - win(t, TT.place + 0.1, 0.5)); }
+function animGlint(t) { const g = S.glint, ph = ((t + 0.2) % 1.8) / 1.8, k = t < TT.look ? Math.sin(clamp(ph / 0.35) * Math.PI) : win(t, TT.crack, 0.2) * (1 - win(t, TT.stand, 0.3));
+  const cb = cubeAt(t); g.position.copy(cb).add(_v(-0.1 + 0.2 * clamp(ph / 0.35), 0.15, 0.16)); g.material.opacity = 0.95 * k; g.scale.setScalar(0.08 + 0.18 * k); g.material.rotation = t * 0.8; }
+function animAt(t, st) { animA(t); animBlocks(t); animDust(t); animDoor(t); animGlint(t); S.cube.position.copy(cubeAt(t)); }
+// ---------------------------------------------------------------- «Empieza torcido» (v2): LA FRASE de arriba (fija desde el primer fotograma, blanca y monoespaciada).
 function buildHudPlan() { HFONT = MONO; HW = [700, 400]; }
 const PHRASE = 'EMPIEZA TORCIDO.';
-function hudAt(t) { hudBegin(); hg.save(); hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '11px'; hfont(52);
-  hg.shadowColor = 'rgba(255,236,214,0.7)'; hg.shadowBlur = 16; hg.fillStyle = '#241A14'; hg.fillText(PHRASE, W / 2 + 5, 300); hg.restore(); }
+function hudAt(t) { hudBegin(); hg.save(); hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '11px'; hfont(50);
+  hg.shadowColor = 'rgba(255,255,255,0.35)'; hg.shadowBlur = 14; hg.fillStyle = '#F2F2F2'; hg.fillText(PHRASE, W / 2 + 5, 290); hg.restore(); }
 window.labelsAt = function (t) { frame(t); return { p: [], h: [], k: [] }; };
 // ---------------------------------------------------------------- un fotograma
 function placeCam(st) { if (cam.fov !== st.f) { cam.fov = st.f; cam.updateProjectionMatrix(); } cam.position.copy(st.p); cam.up.set(0, 1, 0); cam.lookAt(st.l); cam.rotateZ(st.roll || 0); cam.updateMatrixWorld(); }

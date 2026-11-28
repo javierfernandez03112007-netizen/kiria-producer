@@ -1,5 +1,3 @@
-// ---------------------------------------------------------------- «Empieza torcido»: EL PERSONAJE (maniquí de arcilla de 22_clay.js: gris azulado y encorvado
-// en el sótano; se va calentando mientras sube hasta el blanco cálido de fuera).
-const COL = { A: 0x8f9bab, W: 0xf3e5cf };
+// ---------------------------------------------------------------- «Empieza torcido» (v2): EL PERSONAJE (maniquí de 22_clay.js; gris oscuro abajo, blanco al llegar a la luz).
 const CAST = {};
-function buildCast(B) { CAST.A = mannequin({ col: COL.A, h: 1.62, phase: 0.4 }); B.add(CAST.A); CAST.AM = CAST.A.userData.mat; CAST.A0 = new THREE.Color(COL.A); CAST.A1 = new THREE.Color(COL.W); }
+function buildCast(G) { CAST.A = mannequin({ col: 0x6b6b6b, h: 1.66, phase: 0.4 }); G.add(CAST.A); CAST.AM = CAST.A.userData.mat; CAST.A0 = new THREE.Color(0x5c5c5c); CAST.A1 = new THREE.Color(0xf2f2f2); }
