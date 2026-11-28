@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FONT = os.path.join(ROOT, "..", "..", "engine", "fonts", "SpaceMono-Bold.ttf")
 W, H, MINI_Y = 1080, 1920, 285
-PHRASE, SIZE, SP, Y = "EMPIEZA TORCIDO.", 74, 14, 430
+LINES, SIZE, SP, Y, DX = ["EMPIEZA", "TORCIDO."], 112, 16, 760, 70        # dos líneas en el cielo limpio, entre el sol y su cabeza (lejos del árbol en flor)
 
 
 def render():
@@ -22,17 +22,18 @@ def render():
 
 def phrase(img, y):
     f = ImageFont.truetype(FONT, SIZE)
-    ws = [f.getlength(c) for c in PHRASE]
-    tw = sum(ws) + SP * (len(PHRASE) - 1)
     glow = Image.new("L", img.size, 0); dg = ImageDraw.Draw(glow); dt = ImageDraw.Draw(img)
-    x = (W - tw) / 2
-    for c, w in zip(PHRASE, ws):
-        dg.text((x, y), c, font=f, fill=200, anchor="lm"); x += w + SP
-    glow = glow.filter(ImageFilter.GaussianBlur(14))
-    img.paste(Image.new("RGB", img.size, (255, 236, 214)), (0, 0), glow.point(lambda v: int(v * 0.7)))
-    x = (W - tw) / 2
-    for c, w in zip(PHRASE, ws):
-        dt.text((x, y), c, font=f, fill=(36, 26, 20), anchor="lm"); x += w + SP
+    pos = []
+    for i, line in enumerate(LINES):
+        ws = [f.getlength(c) for c in line]; tw = sum(ws) + SP * (len(line) - 1); x = (W - tw) / 2 + DX
+        for c, w in zip(line, ws):
+            pos.append((x, y + i * SIZE * 1.12, c)); x += w + SP
+    for x, yy, c in pos:
+        dg.text((x, yy), c, font=f, fill=200, anchor="lm")
+    glow = glow.filter(ImageFilter.GaussianBlur(16))
+    img.paste(Image.new("RGB", img.size, (255, 238, 218)), (0, 0), glow.point(lambda v: int(v * 0.75)))
+    for x, yy, c in pos:
+        dt.text((x, yy), c, font=f, fill=(36, 26, 20), anchor="lm")
 
 
 def main():

@@ -429,6 +429,8 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   escalera (6 columnas: 1 + 2 + 3 + 4 + 5 + 6); sube, se va calentando de gris a blanco, empuja la trampilla, sale a la hierba de cara al sol y el árbol
   desnudo florece con pétalos. Frase fija arriba: «EMPIEZA TORCIDO.» (monoespaciada, oscura sobre el cielo claro). Sonido: solo efectos de la biblioteca,
   un golpe de madera por bloque (marcan el ritmo). Tiempos fijos en `32_story.js` (`TT`) y en `compose_empieza.py`; `tiempos.json` solo fija la duración.
+  **ENTREGADO el 28-11-2026 (≈ 07:50 UTC)**: `out/empieza_torcido.mp4` (10,0 s, 600 fotogramas, 1080×1920, 60 fps, −15,6 LUFS, 7,3 MB; render solo aquí,
+  ≈ 17 min con 2 procesos; continuidad sin picos) + portada y miniatura («EMPIEZA / TORCIDO.» en dos líneas sobre el último plano) + `DESCRIPCION.txt`.
   Lección técnica: la cinemática inversa (`reachTo`, `lookAtP`) trabaja en coordenadas del MUNDO; con el personaje dentro de un grupo desplazado (el sótano,
   `S.B` en y = −2,95) hay que sumar la posición del grupo a los objetivos (si no, los brazos apuntan al techo).
 - **«El escalón torcido» (`projects/escalon_torcido/`, 28-11-2026), DESCARTADO por Javi (lo sustituye «Empieza torcido», arriba). Era el formato «Dos vidas» (`engine/FORMATO_DOS_VIDAS.md`).** Javi mandó un
