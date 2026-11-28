@@ -1,0 +1,17 @@
+Una ficha de un centímetro y medio. Diecinueve fichas después, una de doce metros.
+
+Cada ficha puede tumbar a otra una vez y media más grande. Lo que empiezas pequeño, crece solo.
+
+Lo pequeño mueve lo enorme.
+
+👇 Mándaselo a quien cree que lo suyo es demasiado pequeño para importar.
+
+#efectodominó #motivación #hábitos #constancia #mentalidad #crecimientopersonal #disciplina #kiriaai
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Formato «Metáfora visual» (engine/FORMATO_METAFORA.md): sin voz, frase fija arriba («LO PEQUEÑO / MUEVE LO ENORME.»), en blanco, negro y grises. Hecho después de que Javi pidiera (28-11) «algo dinámico con mucho movimiento constante, no parado».
+- 21,5 s, 60 fps. Física real simulada: una ficha puede tumbar a otra ≈ 1,5 veces mayor (Whitehead, 1983, ver FUENTES.md). Cámara lenta variable: la cadena real duraría unos 3 s.
+- Solo efectos de la biblioteca del canal: el toque del dedo, un golpe por ficha (de un clic diminuto a un golpe seco y grave), la gigante contra el suelo y el aire al volver. Sin música.
+- Si quieres canción: ponla al subirlo desde la biblioteca de Instagram/TikTok (algo que vaya creciendo sin parar hasta el segundo 17,7, cuando cae la gigante) y baja el sonido original al 30–40 %.

@@ -419,7 +419,18 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   máquinas 3.000–5.040 en tramos de 340 (ramas `render-e6-1…6`): cada una tardó ≈ 5 minutos con la escena ligera del debate (≈ 1 fotograma por segundo
   aquí con 2 procesos). Un fotograma de cada máquina repetido aquí: idéntico (diferencia media 0,000). Lección: entre el arranque del render local y el
   envío de los mensajes pasaron ≈ 35 minutos sin que se hiciera nada: enviar los mensajes a las máquinas lo PRIMERO, en cuanto Javi dé permiso.
-- **«La sombra» (`projects/la_sombra/`, 28-11-2026), formato «Metáfora visual».** Javi, al ver «Empieza torcido» v2: «Cambia de tema no me gusta nada,
+- **«El efecto dominó» (`projects/domino/`, 28-11-2026), formato «Metáfora visual».** Javi, al ver «La sombra»: «No me gusta nada, de otra forma algo
+  dinámico con mucho movimiento constante por favor no parado un video movido». 21,5 s sin voz, en blanco y negro: suelo negro brillante con reflejo
+  (copia boca abajo de las fichas bajo un suelo algo transparente: el `Reflector` de three.js no va con el búfer de profundidad logarítmico), una mano
+  de arcilla suelta para el primer plano (yema en el origen del grupo), 19 fichas de 1,5 cm a 12 m (×1,45; Whitehead 1983: una ficha tumba a otra
+  ≈ 1,5 veces mayor) con **física simulada al arrancar** (`30_domino.js`: giro sobre el canto, empuje y apoyo en la siguiente; 1/2400 s) y **cámara lenta
+  variable** (`WARP`: la cadena real dura 3 s; en el vídeo, 13,9 s hasta la última y 2,6 s su caída). Cámara: primer plano del dedo → corre con la ola a
+  una distancia proporcional a la ficha que cae, cambiando de lado y de altura (`CB`), → la gigante cae vista desde abajo y de lado → sube y vuelve volando
+  hasta detrás de la persona. Lecciones: (1) el bisel de `rboxM` agranda la caja: colocar por `boundingBox` y poner los puntos delante de ella (si no, la
+  textura queda dentro y no se ve); (2) un suavizado con índices no enteros dio `NaN` y la cámara se quedó en negro; (3) `lightsAt` del proyecto acerca la luz
+  según la escala (sombras bien de 1,5 cm a 12 m); (4) en la sombra del suelo, con fichas tan pequeñas, el `bias` va en −0,00002. Antes del render bueno se
+  le mandó una vista previa a 30 fps (`out/vista_previa.mp4`).
+- **«La sombra» (`projects/la_sombra/`, 28-11-2026), formato «Metáfora visual». NO LE GUSTÓ (muy quieto).** Javi, al ver «Empieza torcido» v2: «Cambia de tema no me gusta nada,
   más despacio más largo y mejor hecho». Se le propusieron tres temas (la sombra, las raíces, el círculo de luz) y eligió **la sombra**. 21 s sin voz, en
   blanco, negro y grises: habitación a oscuras, pared de yeso (textura con grietas), suelo de hormigón y un farol con vela en el suelo (foco con sombra
   en la llama, 2048, hacia la pared; luz puntual baja para el suelo; parpadeo de la llama que hace temblar la sombra). Él (maniquí gris claro) está entre

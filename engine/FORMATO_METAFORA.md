@@ -15,9 +15,10 @@ vídeos por ejemplo sin voz, solo con sonidos o alguna canción que le pegue, y 
 ## Nuestra versión (lo que se guarda)
 1. **Una metáfora visual de un mensaje que inspire** (o sin mensaje) que se entienda sin voz y sin datos. Nada de comparar dos vidas con cifras ni
    de explicar estudios: eso era «El escalón torcido» y Javi lo descartó.
-2. **Unos 20 s, despacio** (Javi, 28-11, después de dos versiones de 8–10 s: «más despacio, más largo y mejor hecho»), con un solo plano que se
-   mueve lento, pausas para que respire la escena y una animación cuidada (andar sin que patinen los pies: `23_walk.js` de `projects/la_sombra/`).
-   Empieza ya en la imagen rara (primer segundo) y acaba en la imagen que da esperanza.
+2. **Unos 20 s y MOVIMIENTO CONSTANTE** (Javi, 28-11: primero «más despacio, más largo y mejor hecho»; después, al ver «La sombra», con momentos
+   quietos: «algo dinámico con mucho movimiento constante, por favor, no parado, un vídeo movido»). Siempre pasa algo y la cámara nunca para: una
+   reacción en cadena, algo que crece, una carrera; nada de personajes quietos pensando. Empieza ya en la imagen rara (primer segundo) y acaba en la
+   imagen que da esperanza. Enseñar a Javi una vista previa en movimiento (30 fps, baja calidad) antes de dar el vídeo por bueno.
 3. **En blanco, negro y grises** (Javi, 28-11, al ver la primera versión con amanecer, madera y flores: «no me gusta nada, en tonos blancos, negros
    y grises y que sea de otra manera, eso no pega»; además es lo que dice `engine/REGLAS.md`). Fondo negro, una sola fuente de luz blanca que
    cuenta la historia (una puerta, un foco), el personaje grande y legible. **Nuestro estilo, no el suyo**: maniquíes 3D de `22_clay.js` (gris
@@ -28,7 +29,11 @@ vídeos por ejemplo sin voz, solo con sonidos o alguna canción que le pegue, y 
    la pone él al subirlo desde la biblioteca de la red social (con derechos); nosotros no metemos música con copyright.
 6. **Bucle**: el último fotograma no tiene que ser igual que el primero (la red lo repite), pero mejor si enlaza.
 
-Vídeo que gustó para seguir: `projects/la_sombra/` («La sombra», 21 s: un muñeco entre un farol en el suelo y una pared; su sombra de nueve metros
+Vídeo actual de este formato: `projects/domino/` («El efecto dominó», 21,5 s: un dedo gigante empuja una ficha de 1,5 cm y 19 fichas, cada una 1,45 veces
+mayor y con física simulada, caen hasta una de 12 m; la cámara corre con la ola sin parar; al final, la persona pequeña delante de toda la cadena caída.
+Frase: «LO PEQUEÑO / MUEVE LO ENORME.»).
+
+Antes: `projects/la_sombra/` (no le gustó: demasiado quieto; «La sombra», 21 s: un muñeco entre un farol en el suelo y una pared; su sombra de nueve metros
 le asusta, retrocede y crece, se encoge y tiembla; se calma, avanza y la sombra encoge con cada paso, física de verdad; al llegar a la pared, su mano
 y la de su sombra se juntan, del mismo tamaño. Frase: «DE CERCA, EL MIEDO / ES DE TU TAMAÑO.»; tema elegido por Javi entre tres propuestas).
 
