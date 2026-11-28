@@ -1,0 +1,32 @@
+🪜 El de abajo lleva un año puliendo el mismo escalón. El de arriba ha puesto uno cada día: torcidos, casi todos. Su escalera ya sale por el tejado.
+
+🔦 El de abajo no es vago. Su cerebro le hace una trampa: el efecto foco. Creemos que todo el mundo está mirando nuestros errores.
+
+👕 En la Universidad de Cornell (Gilovich, Medvec y Savitsky, 2000) hicieron entrar a unos estudiantes en una clase con una camiseta que les daba vergüenza. Creían que la había visto la mitad de la sala. La vio uno de cada cuatro.
+
+📈 Nadie te mira tanto como crees. Pero el miedo a hacerlo mal te deja quieto, y quieto no se mejora. Mejorar un 1 % cada día, en un año, te multiplica por 37 (1,01 elevado a 365 = 37,8).
+
+El escalón torcido no te deja en ridículo. Te deja un poco más arriba.
+
+👇 Mándaselo a quien lleva meses esperando el momento perfecto.
+
+📚 Fuente: Gilovich, T., Medvec, V. H. y Savitsky, K. (2000). «The spotlight effect in social judgment: An egocentric bias in estimates of the salience of one's own actions and appearance». Journal of Personality and Social Psychology, 78(2), 211–222. Los porcentajes del estudio se suelen resumir como «creían que les vería cerca de la mitad; les vio alrededor de una cuarta parte». La cuenta del 1 %: 1,01³⁶⁵ ≈ 37,8.
+
+🎬 Animación hecha por ordenador; la camiseta del vídeo es inventada (en el estudio era la de un cantante).
+
+#efectofoco #psicología #motivación #perfeccionismo #hábitos #mejoracontinua #1porciento #mente #kiriaai
+
+---
+
+Versión corta (TikTok):
+
+🪜 Uno pule el mismo escalón un año; el otro pone uno torcido cada día. El efecto foco (Cornell, 2000): creían que les miraba la mitad de la sala y les miró uno de cada cuatro. Mejorar un 1 % al día = ×37,8 en un año. Mándaselo a quien espera el momento perfecto.
+
+#efectofoco #psicología #motivación #hábitos
+
+---
+
+NOTAS PARA LA ENTREGA (no publicar):
+- Formato nuevo «Dos vidas» (engine/FORMATO_DOS_VIDAS.md), pedido por Javi el 28-11 con un vídeo de @neuronvisuals de referencia: sin copiarlo (casa cortada de dos plantas en una isla que flota; nada de figuras de palo ni de ciudad de fondo).
+- Voz: la de Javi (su MP3, ElevenLabs), a tempo 1,0 (solo se recortan silencios largos). Efectos solo de la biblioteca del canal, uno por suceso, sin música. Un solo plano; primer fotograma = último (bucle: al final se enciende el flexo y abajo hay otra persona puliendo, «quien lleva meses esperando el momento perfecto»).
+- Datos: la camiseta del estudio original era de Barry Manilow; en el vídeo es una inventada (corazón y arcoíris) para no sacar a una persona real. «Uno de cada cuatro» es el redondeo prudente de los resúmenes (≈ 23–25 %; algunos dicen «cerca del 20 %»). El ×37,8 es aritmética (1,01³⁶⁵), no un dato del estudio.

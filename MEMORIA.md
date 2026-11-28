@@ -419,6 +419,21 @@ datos oficiales, respuesta al final y pregunta de bando al cierre («¿abogado o
   máquinas 3.000–5.040 en tramos de 340 (ramas `render-e6-1…6`): cada una tardó ≈ 5 minutos con la escena ligera del debate (≈ 1 fotograma por segundo
   aquí con 2 procesos). Un fotograma de cada máquina repetido aquí: idéntico (diferencia media 0,000). Lección: entre el arranque del render local y el
   envío de los mensajes pasaron ≈ 35 minutos sin que se hiciera nada: enviar los mensajes a las máquinas lo PRIMERO, en cuanto Javi dé permiso.
+- **«El escalón torcido» (`projects/escalon_torcido/`, 28-11-2026), primer vídeo del formato «Dos vidas» (`engine/FORMATO_DOS_VIDAS.md`).** Javi mandó un
+  vídeo de @neuronvisuals («5 MINUTES» / «NO TIME») y pidió guardar el formato sin copiarlo, con el mensaje «el que actúa gana al perfeccionista», «muy muy
+  sentimental y muy visual» y un recurso de la mente. Guion de 137 palabras (≈ 50 s) con el **efecto foco** (Gilovich, Medvec y Savitsky, 2000, Cornell: la
+  camiseta; «creían la mitad, la vio uno de cada cuatro») y el 1 % diario (1,01³⁶⁵ = 37,8). Escena (tiempos provisionales mientras llega la voz): **casa cortada
+  de dos plantas en una isla que flota** al amanecer; abajo, el perfeccionista (maniquí de arcilla gris azulada, `22_clay.js`: mismas articulaciones que
+  `person()` de `21_folk.js`, así sirven sus poses y `reachTo`) pule el mismo bloque con flexo y papeles arrugados; arriba, **365 bloques torcidos** (uno por
+  día, `InstancedMesh`; tramo recto dentro, sale por un agujero del tejado y sube en espiral hasta ≈ 70 m, hacia el sol); el contador «DÍA 365» va en el canto
+  del forjado; rótulos de cada planta en el HUD («365 ESCALONES / UNO CADA DÍA · TORCIDOS» ×37,8 frente a «1 ESCALÓN / EL MISMO · PERFECTO» ×1,0). El efecto
+  foco: cabeza transparente con el cerebro, foco de teatro que cae del techo, sala de 16 siluetas delante de la casa con **líneas de mirada** (de cada cabeza al
+  pecho de A: se ven desde detrás de la sala, mejor que ojos), pupitres, la camiseta inventada (corazón y arcoíris; en el estudio era de Barry Manilow), la
+  mitad → uno de cada cuatro. El año otra vez: la escalera se recoge al día 1 y vuelve a crecer con «1,01^día = …» y las estaciones en el árbol. Final: la
+  trampilla del forjado se abre (foco cálido con sombra: la luz solo entra por el hueco), el de arriba se asoma boca abajo, se tocan las manos, sube y se
+  vuelve cálido; se cierra la trampilla y, en «quien lleva meses esperando», **se enciende el flexo y abajo hay otra persona puliendo** (bucle exacto con el
+  primer fotograma). Lecciones: `g.add(x).position…` volvió a mover el padre (taburete, flexo, asientos): usar siempre `ad(g, x)`; para que las manos se
+  toquen por la trampilla, la planta baja tiene 2,4 m y el de arriba mete el pecho por el hueco (si no, quedan a 40 cm). Ramas de ayuda: `render-e7-*`.
 - **«29N: el PP» (`projects/elecciones_29n_pp/`) y «29N: Frente Amplio» (`projects/elecciones_29n_fa/`), 25-11-2026: guion, fuentes, escena, subtítulos,
   efectos, portada y descripción hechos con tiempos PROVISIONALES; faltan las voces.** PP: nómina gigante encima de la pantalla de Feijóo (`payslip`,
   `wheelAt`: la rueda del IRPF se para en 0 al decir «cero» y al final gira hasta quedar como en el primer fotograma), sello «promesa del PP», lupa en la

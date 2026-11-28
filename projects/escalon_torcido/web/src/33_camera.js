@@ -26,7 +26,7 @@ function buildCam() { const T = TL, WIDE = [[0.0, 3.0, 14.6], [0.0, 3.55, 0.0], 
     [T.anyo8, [0.0, 4.6, 15.4], [0.0, 6.2, 0.0], 50],
     [T.siete + 0.2, [1.5, 7.9, 4.6], [0.4, 34, -2.2], 54],                                // ×37: escalera arriba
     [T.escalon9 + 0.25, [0.55, 0.95, 2.6], [-0.05, 1.7, 0.45], 46],                        // baja a la trampilla, mirando un poco arriba
-    [T.poco, [0.6, 0.85, 2.3], [0.0, 1.95, 0.45], 46],
+    [T.poco, [0.48, 1.25, 1.55], [0.07, 2.0, 0.42], 44],                                  // las dos manos
     [T.manda + 0.3, [0.6, 0.9, 2.2], [0.05, 2.9, 0.35], 50],                               // mira arriba mientras sube
     [T.quien + 0.05, [0.5, 1.2, 2.7], [0.02, 1.0, 0.4], 46],                               // baja al banco: otra persona
     [T.perfecto, [0.15, 2.4, 8.2], [0.05, 2.0, 0.0], 48],

@@ -1674,7 +1674,7 @@ function buildCam() { const T = TL, WIDE = [[0.0, 3.0, 14.6], [0.0, 3.55, 0.0], 
     [T.anyo8, [0.0, 4.6, 15.4], [0.0, 6.2, 0.0], 50],
     [T.siete + 0.2, [1.5, 7.9, 4.6], [0.4, 34, -2.2], 54],                                // ×37: escalera arriba
     [T.escalon9 + 0.25, [0.55, 0.95, 2.6], [-0.05, 1.7, 0.45], 46],                        // baja a la trampilla, mirando un poco arriba
-    [T.poco, [0.6, 0.85, 2.3], [0.0, 1.95, 0.45], 46],
+    [T.poco, [0.48, 1.25, 1.55], [0.07, 2.0, 0.42], 44],                                  // las dos manos
     [T.manda + 0.3, [0.6, 0.9, 2.2], [0.05, 2.9, 0.35], 50],                               // mira arriba mientras sube
     [T.quien + 0.05, [0.5, 1.2, 2.7], [0.02, 1.0, 0.4], 46],                               // baja al banco: otra persona
     [T.perfecto, [0.15, 2.4, 8.2], [0.05, 2.0, 0.0], 48],
@@ -1880,7 +1880,8 @@ function hudAt(t) { hudBegin(); const T = TL, n = stairN(t);
   tag(dnR.x - 8, dnR.y + 10, '×1,0', null, kd, { right: true, s1: 40, c1: '#9FB6D6' });
   // ---- L2: «torcidos, casi todos»: el ángulo de unos bloques (y uno recto)
   const kt = win(t, T.torcidos - 0.05, 0.25) * (1 - win(t, T.E[2] - 0.1, 0.3));
-  if (!S.calls) { const c = [], R = []; for (let i = 6; i < 17; i++) { const b = STAIR.base[i]; if (b.straight) R.push(i); else if (Math.abs(b.rz) > 0.09) c.push(i); } S.calls = [...c.slice(0, 3), ...R.slice(0, 1)]; }
+  if (!S.calls) { const c = [], R = [], seen = new Set(); for (let i = 6; i < 17; i++) { const b = STAIR.base[i]; if (b.straight) R.push(i); else c.push(i); }
+    c.sort((a, b) => Math.abs(STAIR.base[b].rz) - Math.abs(STAIR.base[a].rz)); const pickd = []; for (const i of c) { const d = Math.round(STAIR.base[i].rz * 180 / Math.PI); if (!seen.has(d) && pickd.length < 3) { seen.add(d); pickd.push(i); } } S.calls = [...pickd.sort((a, b) => a - b), ...R.slice(0, 1)]; }
   S.calls.forEach((i, j) => { const [dx, dy] = [[150, -90], [-170, -60], [160, 70], [-160, 90]][j], d = j * 0.08; const b = STAIR.base[i], P = proj(b.p.clone().add(_v(0, ST.bh / 2, 0))); if (!onScr(P, 40, 470, H - 120)) return;
     const deg = Math.round(b.rz * 180 / Math.PI), txt = b.straight ? '0°' : (deg > 0 ? '+' : '−') + Math.abs(deg) + '°';
     callout(P, txt, b.straight ? 'RECTO' : 'TORCIDO', clamp((kt - d) / 0.5) * kt, { dx, dy, len: 40, size: 38, subSize: 22, color: b.straight ? HC.teal : HC.amber }); });
@@ -1896,8 +1897,8 @@ function hudAt(t) { hudBegin(); const T = TL, n = stairN(t);
   chipC('DE VERDAD: 1 DE CADA 4', 730, '#62E3D4', win(t, T.cuatro - 0.15, 0.3) * (1 - win(t, T.nadie, 0.4)), 30);
   // ---- L8: el año otra vez: 1,01 elevado al día
   { const k = win(t, T.ciento - 0.1, 0.3) * (1 - win(t, T.escalon9 - 0.3, 0.4)); if (k > 0.01) { const d = dayOf(n); hg.save(); hg.globalAlpha = k; hg.textAlign = 'center'; hg.textBaseline = 'middle'; hg.letterSpacing = '3px';
-      hg.fillStyle = 'rgba(12,14,20,0.72)'; rr(hg, W / 2 - 190, 556, 380, 84, 42); hg.fill();
-      hfont(34); hg.fillStyle = '#FFF4E2'; hg.fillText('1,01', W / 2 - 46, 600); hfont(22); hg.fillText(String(d), W / 2 + 18, 578); hfont(34); hg.fillStyle = '#FFC861'; hg.fillText('= ' + fmt1(mult(d)), W / 2 + 120, 600); hg.restore(); } }
+      hg.fillStyle = 'rgba(12,14,20,0.72)'; rr(hg, W / 2 - 215, 556, 450, 84, 42); hg.fill();
+      hfont(34); hg.fillStyle = '#FFF4E2'; hg.fillText('1,01', W / 2 - 46, 600); hfont(22); hg.fillText(String(d), W / 2 + 18, 578); hfont(34); hg.fillStyle = '#FFC861'; hg.fillText('= ' + fmt1(mult(d)), W / 2 + 125, 600); hg.restore(); } }
   // él, arriba del todo de su escalera (al final de L2 y en el ×37)
   { const k = win(t, T.todos - 0.2, 0.3) * (1 - win(t, T.abajo3, 0.25)); if (k > 0.01 && CAST.T.visible) {
       const P = proj(CAST.T.position.clone().add(_v(0, 0.85, 0))); if (P.ok && P.x > 40 && P.x < W - 40 && P.y > 420 && P.y < H - 200) { brackets(P, 90, 130, k, '#FFC861', 3);
