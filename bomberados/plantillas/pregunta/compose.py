@@ -47,7 +47,8 @@ def at(spec):
 def init():
     global SUBS
     key = {int(k): v for k, v in Q.get("subs_key", {}).items()}
-    SUBS = Subs(LINES, key, {}, y=330, size=96, style="accent", accent=hex_bgr("#EEF2F6"), stroke=8, face="impact")
+    sl = json.load(open(os.environ["SUBS_TIEMPOS"])) if os.environ.get("SUBS_TIEMPOS") else LINES   # SUBS_TIEMPOS=…: otros subtítulos (p. ej. sin una frase que falta en la voz)
+    SUBS = Subs(sl, key, {}, y=330, size=96, style="accent", accent=hex_bgr("#EEF2F6"), stroke=8, face="impact")
 
 
 def compose(fi):
