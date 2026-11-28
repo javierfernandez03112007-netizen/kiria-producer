@@ -50,6 +50,12 @@ Antes de usar un dato en un vídeo, apuntarlo en el `FUENTES.md` del proyecto co
 - Preguntas del día: ¿con qué se dispersa una fuga de gas? · ¿qué agente para un incendio de GLP? · ¿qué es lo primero
   tras una deflagración? · ¿qué norma clasifica los gases en familias?
 
+### Vídeos hechos con esto
+- «Salva a tu abuela» (`projects/bomberados_gas/`, 28 nov, formato videojuego, para el hueco «VIERNES 27 · PUBLICIDAD
+  BOMBERADOS»): la bombona de su cocina pierde gas y arde; ¿A, la apagas con el extintor? ¿B, le echas agua? ¿C, cierras el gas?
+  → C (se corta el gas y se apaga solo), por qué no apagarlo antes (se acumula y explota), butano 2,03 (baja), polvo químico
+  seco solo para llegar a la llave y agua pulverizada para enfriar.
+
 ## 14 nov 2026 · Bloqueadores (trabajos en cuerda)
 
 ### Fuente — tabla «Bloqueadores» del manual que manda Adrián Luna (Élite Bomberos; imagen en Notion, fila «MARTES 17 EXPLICAR LOS BLOQUEADORES EN 30 SEGUNDOS»; manual y página por confirmar)

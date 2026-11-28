@@ -1,0 +1,66 @@
+«SALVA A TU ABUELA» — una fuga de gas que arde, como un videojuego (tema de los apuntes de Adrián del 3 nov: gas natural y
+fugas; para la fila «VIERNES 27» de Notion, PUBLICIDAD BOMBERADOS). Formato de Javi con lo que pidió el cliente: personal
+y sentimental, tres opciones (A, B o C), 5 segundos para elegir, el vídeo elige la correcta y lo explica ENTERO (todo lo de
+la ficha) mientras la salvas. ≈ 54 s.
+
+Cómo está hecho (3D, de día y con vida real): la casa de tu abuela en una calle de pueblo; por la ventana de la cocina sale
+humo y se ve la llama; vecinos mirando (uno graba con el móvil), la autobomba. Dentro, la cocina: la bombona de butano
+(naranja, sin marca) junto a los fogones, con una llamarada que sale del regulador; tu abuela, asustada en la puerta del
+patio. Capa de videojuego: «MISIÓN: SALVA A TU ABUELA», corazón y barra de vida que baja.
+La idea, en una frase: en una fuga de gas que arde, lo primero es CORTAR EL GAS: el fuego se apaga solo. Si lo apagas sin
+cortarlo, el gas sigue saliendo, se acumula abajo (el butano pesa el doble que el aire)… y una chispa lo hace explotar.
+
+Voz: Danny (Relatable, Expressive and Warm, español peninsular) · Modelo: Eleven v3 · Estabilidad: Natural
+Pega el bloque ENTERO, DESDE LA PRIMERA LÍNEA (en la de la cámara térmica la toma llegó sin la primera frase), TAL CUAL
+(lo que va entre corchetes no se lee; las MAYÚSCULAS son énfasis). Saca 2 o 3 tomas y mándamelas.
+No hace falta dejar silencio tras «¡Cinco segundos!»: la cuenta de 5 s la meto yo en el montaje.
+
+----- COPIAR DESDE AQUÍ (Eleven v3) -----
+[urgent, scared] Es tu ABUELA. La bombona de su cocina pierde gas… [panicked] ¡y está ARDIENDO!
+[tense, fast] ¿Qué haces? ¿A, la apagas con el extintor? ¿B, le echas agua? ¿O C, cierras el gas?
+[challenging, urgent] ¡Cinco segundos!
+[confident, excited] ¡La C! [clear] Cierras la llave… y el fuego se apaga SOLO: ya no le llega gas.
+[serious] Si lo apagas sin cortar el gas, sigue saliendo y se acumula. [tense] Una chispa… y EXPLOTA.
+[clear] Y el butano pesa el DOBLE que el aire: baja y se queda abajo, en sótanos y alcantarillas.
+[clear, fast] Solo lo apagas antes si hace falta para llegar a la llave, y sabiendo que la vas a cerrar: con polvo químico seco.
+[clear] ¿Y el agua? Pulverizada, para enfriar la bombona.
+[relieved, emotional] Ahora sí: ventilas… y tu abuela, a salvo.
+[challenging, playful] ¿Tú qué habrías elegido? ¡Comenta tu letra!
+[excited, emphatic] ¡MÁNDASELO a quien quiera ser bombero!
+[energetic] ¿Opositas?… [proud, excited] ¡BOMBERADOS! [excited, emphatic] ¡Pruébala GRATIS cinco días!
+----- HASTA AQUÍ -----
+
+Si usas Multilingual v2, el mismo texto sin lo que va entre corchetes.
+
+GUION COMPLETO (voz y pantalla) — 3D, de día, un dron que no para y sin rozar a nadie:
+1. «Es tu abuela. La bombona de su cocina pierde gas… ¡y está ardiendo!» — la capa de juego («MISIÓN: SALVA A TU ABUELA»,
+   corazón y vida que baja) sobre la calle: humo y llama por la ventana de la cocina, vecinos, la autobomba; el dron entra
+   por la puerta: la llamarada que sale del regulador de la bombona y tu abuela, asustada.
+2. «¿Qué haces? ¿A…? ¿B…? ¿O C…?» — tres tarjetas de juego con su letra en el sitio: A, el extintor; B, un cubo de agua;
+   C, la llave de la bombona.
+3. «¡Cinco segundos!» — CUENTA ATRÁS 5→1 en grande (tic-tac y bocina); el cursor salta entre A, B y C.
+4. «¡La C! Cierras la llave… y el fuego se apaga solo: ya no le llega gas» — «✓ CORRECTA»; tu mano gira la llave del
+   regulador y la llamarada se encoge hasta apagarse; rótulo «SIN GAS, NO HAY FUEGO».
+5. «Si lo apagas sin cortar el gas, sigue saliendo y se acumula. Una chispa… y explota» — el «¿y si…?» en fantasma: el
+   extintor apaga la llama, el gas (una nube verde) sigue saliendo y se extiende por el suelo… chispa (la nevera, un
+   interruptor) y destello rojo: «EXPLOSIÓN».
+6. «Y el butano pesa el doble que el aire: baja y se queda abajo, en sótanos y alcantarillas» — balanza «BUTANO 2,03 · AIRE 1»;
+   la nube baja, se arrastra por el suelo y cae por la rejilla de la calle (la alcantarilla) y la escalera del sótano.
+7. «Solo lo apagas antes si hace falta para llegar a la llave, y sabiendo que la vas a cerrar: con polvo químico seco» —
+   el extintor de POLVO QUÍMICO SECO con su rótulo y la condición en dos fichas: «PARA LLEGAR A LA LLAVE» + «Y SEGURO QUE
+   LA CIERRAS».
+8. «¿Y el agua? Pulverizada, para enfriar la bombona» — tu compañero con la lanza en pulverizado: una cortina de agua que
+   enfría la bombona (de rojo de calor a azul): «AGUA PULVERIZADA = ENFRIAR».
+9. «Ahora sí: ventilas… y tu abuela, a salvo» — se abren las ventanas, la nube sale; fuera, tu abuela sentada en un banco
+   con la manta y el sanitario: «¡MISIÓN CUMPLIDA!».
+10. «¿Tú qué habrías elegido? Comenta tu letra» — A / B / C y «💬 COMENTA TU LETRA».
+11. ★ «¡Mándaselo a quien quiera ser bombero!» — el avión de papel.
+12. ★ «¿Opositas? ¡Bomberados! ¡Pruébala gratis cinco días!» — la placa de BOMBERADOS.
+★ = momentos de venta: los más fuertes del vídeo.
+
+Comentario fijado sugerido: «📌 La C: en una fuga de gas que arde, primero se corta el gas y el fuego se apaga solo. Si lo
+apagas sin cortarlo, el gas sigue saliendo, se acumula abajo (el butano pesa el doble que el aire) y puede explotar.
+¿Cuál habías elegido?»
+
+Fuentes (FUENTES.md): los apuntes de Adrián del 3 nov (manual de emergencias, pág. 226, y Manual de Bomberos del Ayuntamiento
+de Madrid, «Gas Natural», pág. 2).
